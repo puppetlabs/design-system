@@ -1,0 +1,149 @@
+$white:                          #fff !default;
+$gray-base:                      #201F1E !default;
+$gray-darker:                    lighten($gray-base, 19%) !default;
+$gray-dark:                      lighten($gray-base, 38%) !default;
+$gray:                           lighten($gray-base, 56%) !default;
+$gray-light:                     lighten($gray-base, 80%) !default;
+$gray-lighter:                   lighten($gray-base, 84%) !default;
+
+$red:                            #E62E53 !default;
+$green:                          #00DFA2 !default;
+$yellow:                         #DFA200 !default;
+
+$brand-primary:                  #30CEFF !default;
+$brand-success:                  #5cb85c !default;
+$brand-info:                     #5bc0de !default;
+$brand-warning:                  #f0ad4e !default;
+$brand-danger:                   #d9534f !default;
+
+$border-color:                   #dedede !default;
+$border-hover-color:             $gray !default;
+$border-radius:                  4px !default;
+$border:                         1px solid $border-color !default;
+$border-heavy:                   2px solid $border-color !default;
+$border-hover:                   1px solid $border-hover-color !default;
+
+$outer-shadow:                   0 0px 1px rgba(0, 0, 0, .05) !default;
+$hover-shadow:                   0px 0px 0px 1px $gray !default;
+$selected-shadow:                0px 0px 0px 1px $brand-primary !default;
+
+$font-size-base:                 16px !default;
+$line-height-base:               1.428571429 !default; // 20/14
+
+$input-border-focus:             $brand-primary !default;
+$layer-popover:                  26 !default;
+
+$header-height:                  130px !default;
+$header-bg:                      $white !default;
+$header-border:                  1px solid $border-color !default;
+
+$nav-color:                      $gray !default;
+$nav-font-size:                  14px !default;
+$nav-color-hover:                $brand-primary !default;
+$nav-color-active:               $brand-primary !default;
+$nav-pill-bg:                    $gray-lighter !default;
+
+//
+// Typograph
+//
+$heading-vertical-margin:        17.25px !default;
+
+//
+// Forms
+//
+$form-section-border:           1px solid $border-color !default;
+$input-border-radius:           $border-radius !default;
+
+//
+// Tab variables/options
+//
+$tab-background-color:          $white !default;
+$tab-color:                     $gray !default;
+$tab-active-background-color:   $brand-primary !default;
+$tab-active-color:              $white !default;
+$tab-font-weight:               normal !default;
+$tab-text-transform:            uppercase !default;
+$tab-border-radius:             ($grid-gutter-width) !default;
+
+
+$tab-horizontal-spacing:        ($grid-gutter-width / 4) !default;
+$tab-horizontal-padding:        15px !default;
+$tab-vertical-padding:          5px !default;
+
+//
+// Button variables/options
+//
+$button-disabled-background-color:     #ccc !default;
+$button-default-background-color:      $brand-primary !default;
+
+$button-border-radius:                 $border-radius !default;
+$button-font-weight:                   normal !default;
+
+$floating-action-button-height:        60px !default;
+
+//
+// Loading indicator options
+//
+$loading-indicator-fill:                   $gray-dark !default;
+$loading-indicator-vertical-spacing:       $grid-gutter-width !default;
+
+//
+// Select
+//
+$select-item-background:          lighten($brand-primary, 10%);
+$select-item-border:              $brand-primary;
+
+//
+// Switch
+//
+$switch-height:           21px;
+$switch-width:            47px;
+$switch-padding:          5px;
+$switch-border:           $border-heavy;
+$switch-handle-height:    $switch-height - ($switch-padding * 2);
+
+//
+// Radio variables/options
+//
+$radio-border:                    2px solid $gray-lighter;
+$radio-color:                     $gray;
+$radio-hover-border:              2px solid $gray-light;
+$radio-active-border:             2px solid $brand-primary;
+$radio-font-weight:               normal;
+$radio-text-transform:            uppercase;
+
+$radio-horizontal-spacing:        ($grid-gutter-width / 4);
+$radio-horizontal-padding:        15px;
+$radio-vertical-padding:          5px;
+
+
+//
+// Panel
+//
+$panel-border:                    1px solid $border-color;
+$panel-selectable-hover-border:   1px solid $gray;
+$panel-selected-border:           1px solid $brand-primary;
+$panel-hover-shadow:              $hover-shadow;
+$panel-selected-shadow:           $selected-shadow;
+$panel-bg:                        $gray-lighter;
+$panel-heading-bg:                $white;
+$panel-shadow:                    $outer-shadow;
+
+//
+// Modal
+//
+$modal-border:                    $border-color;
+$modal-overlay-bg:                rgba(255, 255, 255, 0.9);
+
+//
+// Cards
+//
+$card-bg:                         $white;
+$card-border:                     $border;
+$card-border-hover:               $border-hover;
+$card-shadow:                     $outer-shadow;
+$card-gradient:                   linear-gradient(to top, $white 10%, rgba(255,255,255,0) 120%);
+$card-shadow-hover:               $hover-shadow;
+$card-remove-background:          $gray-lighter;
+$card-title-color:                $gray-darker;
+$card-subtitle-color:             $gray;
