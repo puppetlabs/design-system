@@ -1,0 +1,5 @@
+# Ignore generated stuffs
+/node_modules
+/build
+/dist
+*.sw[onp]
