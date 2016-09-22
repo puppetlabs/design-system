@@ -1,0 +1,19 @@
+{
+  "name": "@reflect/reflect-components",
+  "version": "0.0.1",
+  "description": "A React component library to assist in the creation of user interfaces.",
+  "main": "source/index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reflect/reflect-components.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/reflect/reflect-components/issues"
+  },
+  "homepage": "https://github.com/reflect/reflect-components#readme"
+}
