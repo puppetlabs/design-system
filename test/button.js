@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
-import Button from '../build/react/Button';
+import Button from '../source/react/Button';
 
 describe('<Button />', () => {
   jsdom();
