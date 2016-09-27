@@ -6,7 +6,9 @@
   "scripts": {
     "prebuild": "rimraf build",
     "build": "npm run build:js",
-    "build:js": "NODE_ENV=development babel ./source --out-dir ./build --ignore .scss"
+    "build:js": "NODE_ENV=development babel ./source --out-dir ./build --ignore .scss",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register"
+
   },
   "repository": {
     "type": "git",
@@ -33,12 +35,20 @@
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "babel-preset-react-hmre": "^1.1.1",
+    "chai": "^3.5.0",
+    "chai-enzyme": "^0.5.1",
+    "enzyme": "^2.4.1",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
     "eslint-plugin-import": "^1.15.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0",
+    "jsdom": "^9.5.0",
+    "mocha": "^3.1.0",
+    "mocha-jsdom": "^1.1.0",
     "react-addons-test-utils": "^15.3.2",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-server": "^1.16.1"
   }
