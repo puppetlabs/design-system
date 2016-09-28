@@ -1,3 +1,7 @@
 import Button from './react/Button';
+import Card from './react/Card';
 
-export default Button;
+export {
+  Button,
+  Card,
+};

@@ -1,0 +1,136 @@
+.rui-card {
+  background: $card-bg;
+  border: $card-border;
+  border-radius: $border-radius;
+  box-shadow: $outer-shadow;
+  margin-bottom: 20px;
+  display: block;
+
+  &.rui-card-xs {
+    padding: 2px;
+    background-position: center center;
+    background-size: cover;
+
+    .rui-card-content {
+      background: none;
+      padding: 13px 0px;
+      border: 2px solid white;
+
+      .rui-card-title {
+        margin: 0px;
+        text-align: center;
+        visibility: hidden;
+        font-size: 1em;
+      }
+    }
+
+    &:hover {
+      .rui-card-content {
+        background: $card-bg;
+        .rui-card-title {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  &.rui-card-large {
+    padding-top: 100px;;
+
+    .rui-card-title {
+      margin-top: 80px;
+      font-size: 1.3em;
+    }
+  }
+
+  &.rui-card-small {
+    padding-top: 0;
+
+    .rui-card-title {
+      margin-top: 0px;
+      font-size: 1.1em;
+    }
+  }
+
+  .rui-card-content {
+    padding: 20px;
+    background: $card-gradient;
+    border-bottom-right-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+
+  &.rui-card-clickable {
+    cursor: pointer;
+  }
+
+  &.rui-card-removable {
+    position: relative;
+
+    &:hover {
+      .remove-corner {
+        display: flex;
+      }
+    }
+  }
+
+  .remove-corner {
+    width: 21px;
+    height: 21px;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    float: right;
+
+    display: none;
+    background: $card-remove-background;
+    border-left: 2px solid $gray;
+    border-bottom: 2px solid $gray;
+    border-bottom-left-radius: $border-radius;
+    border-top-right-radius: 2px;
+
+    .rui-card-remove:before {
+      position: absolute;
+      top: -1px;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &:hover {
+      color: $red;
+      background: $gray;
+
+      .rui-card-remove {
+        color: #fff;
+      }
+    }
+
+    .rui-card-remove {
+      color: $gray;
+    }
+  }
+
+  &:hover {
+    border: $card-border-hover;
+    @include box-shadow($card-shadow-hover);
+  }
+
+  .rui-card-title {
+    color: $card-title-color;
+    margin-top: 30px;
+    font-size: 1.2em;
+
+    @extend .truncate;
+  }
+
+  .rui-card-subtitle {
+    color: $card-subtitle-color;
+    font-size: 0.8em;
+
+    @extend .truncate;
+  }
+}
