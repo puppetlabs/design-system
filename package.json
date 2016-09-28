@@ -7,7 +7,8 @@
     "prebuild": "rimraf build",
     "build": "npm run build:js",
     "build:js": "NODE_ENV=development babel ./source --out-dir ./build --ignore .scss",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register"
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register",
+    "lint": "./node_modules/.bin/eslint --quiet source/**/*.js"
 
   },
   "repository": {
