@@ -2,6 +2,7 @@ import jsdom from 'mocha-jsdom';
 import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
+import React from 'react';
 
 import Button from '../source/react/Button';
 
