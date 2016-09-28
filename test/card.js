@@ -11,7 +11,19 @@ describe('<Card />', () => {
 
   const wrapper = shallow(<Card />);
 
-  xit('should be pending', () => {
+  it('should respond to click events if onClick provided', () => {
+    const onClick = sinon.spy();
+    wrapper.setProps({ onClick });
+    wrapper.simulate('click', { preventDefault: () => {} });
 
+    expect(onClick.called).to.equal(true);
+  });
+
+  it('should respond to remove link if onRemove provided', () => {
+    const onRemove = sinon.spy();
+    wrapper.setProps({ onRemove });
+    wrapper.find('.rui-card-remove').simulate('click', { preventDefault: () => {} });
+
+    expect(onRemove.called).to.equal(true);
   });
 });
