@@ -4,8 +4,9 @@ import classnames from 'classnames';
 const propTypes = {
   size: React.PropTypes.string,
   title: React.PropTypes.string,
-  children: React.PropTypes.object,
   subtitle: React.PropTypes.string,
+  children: React.PropTypes.object,
+  className: React.PropTypes.string,
   onRemove: React.PropTypes.func,
   onClick: React.PropTypes.func,
 };
@@ -68,7 +69,7 @@ class Card extends React.Component {
       'rui-card-small': size === 'small',
       'rui-card-xs': size === 'xs',
       'rui-card-removable': onRemove,
-    });
+    }, this.props.className);
     const content = this.renderContent();
     let jsx;
 
