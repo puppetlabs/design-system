@@ -6,6 +6,8 @@ const propTypes = {
   title: React.PropTypes.string,
   subtitle: React.PropTypes.string,
   children: React.PropTypes.object,
+  height: React.PropTypes.string,
+  selected: React.PropTypes.bool,
   className: React.PropTypes.string,
   onRemove: React.PropTypes.func,
   onClick: React.PropTypes.func,
@@ -63,20 +65,36 @@ class Card extends React.Component {
   }
 
   render() {
-    const { size, onRemove } = this.props;
+    const { size, onRemove, height, selected } = this.props;
     const className = classnames('rui-card', {
       'rui-card-large': size === 'large',
       'rui-card-small': size === 'small',
       'rui-card-xs': size === 'xs',
+      'rui-card-selected': selected,
       'rui-card-removable': onRemove,
     }, this.props.className);
     const content = this.renderContent();
+    const styles = {};
     let jsx;
 
+    if (height) {
+      styles.height = height;
+    }
+
+
     if (this.props.onClick) {
-      jsx = <a onClick={ this.onClick } href="" className={ className }>{ content }</a>;
+      jsx = (
+        <a
+          onClick={ this.onClick }
+          href=""
+          className={ className }
+          style={ styles }
+        >
+          { content }
+        </a>
+      );
     } else {
-      jsx = <div className={ className }>{ content }</div>;
+      jsx = <div className={ className } style={ styles }>{ content }</div>;
     }
 
     return jsx;
