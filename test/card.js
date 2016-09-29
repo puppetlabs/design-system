@@ -26,4 +26,16 @@ describe('<Card />', () => {
 
     expect(onRemove.called).to.equal(true);
   });
+
+  it('should accept a classname prop', () => {
+    wrapper.setProps({ className: 'cards-rule' });
+
+    expect(wrapper.find('.cards-rule')).to.have.length(1);
+  });
+
+  it('should accept a selected prop', () => {
+    wrapper.setProps({ selected: true });
+
+    expect(wrapper.find('.rui-card-selected')).to.have.length(1);
+  });
 });
