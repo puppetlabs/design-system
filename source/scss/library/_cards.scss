@@ -5,6 +5,7 @@
   box-shadow: $outer-shadow;
   margin-bottom: 20px;
   display: block;
+  color: $card-color;
 
   &.rui-card-xs {
     padding: 2px;
@@ -12,7 +13,6 @@
     background-size: cover;
 
     .rui-card-content {
-      background: none;
       padding: 13px 0px;
       border: 2px solid white;
 
@@ -52,15 +52,16 @@
     }
   }
 
-  .rui-card-content {
-    padding: 20px;
-    background: $card-gradient;
-    border-bottom-right-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
-  }
-
   &.rui-card-clickable {
     cursor: pointer;
+  }
+
+  &.rui-card-selected {
+    border: $card-selected-border;
+
+    &:hover {
+      border: $card-selected-border;
+    }
   }
 
   &.rui-card-removable {
@@ -71,6 +72,12 @@
         display: flex;
       }
     }
+  }
+
+  &:hover {
+    color: $card-subtitle-color;
+    border: $card-border-hover;
+    @include box-shadow($card-shadow-hover);
   }
 
   .remove-corner {
@@ -114,9 +121,9 @@
     }
   }
 
-  &:hover {
-    border: $card-border-hover;
-    @include box-shadow($card-shadow-hover);
+  .rui-card-content {
+    background: transparent !important;
+    padding: 20px;
   }
 
   .rui-card-title {

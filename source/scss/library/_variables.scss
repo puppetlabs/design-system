@@ -140,10 +140,12 @@ $modal-overlay-bg:                rgba(255, 255, 255, 0.9);
 //
 $card-bg:                         $white;
 $card-border:                     $border;
+$card-selected-border:            1px solid $brand-primary;
 $card-border-hover:               $border-hover;
 $card-shadow:                     $outer-shadow;
 $card-gradient:                   linear-gradient(to top, $white 10%, rgba(255,255,255,0) 120%);
 $card-shadow-hover:               $hover-shadow;
 $card-remove-background:          $gray-lighter;
+$card-color:                      $gray;
 $card-title-color:                $gray-darker;
 $card-subtitle-color:             $gray;
