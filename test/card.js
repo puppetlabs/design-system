@@ -9,9 +9,8 @@ import Card from '../source/react/Card';
 describe('<Card />', () => {
   jsdom();
 
-  const wrapper = shallow(<Card />);
-
   it('should respond to click events if onClick provided', () => {
+    const wrapper = shallow(<Card />);
     const onClick = sinon.spy();
     wrapper.setProps({ onClick });
     wrapper.simulate('click', { preventDefault: () => {} });
@@ -20,6 +19,7 @@ describe('<Card />', () => {
   });
 
   it('should respond to remove link if onRemove provided', () => {
+    const wrapper = shallow(<Card />);
     const onRemove = sinon.spy();
     wrapper.setProps({ onRemove });
     wrapper.find('.rui-card-remove').simulate('click', { preventDefault: () => {} });
@@ -28,12 +28,14 @@ describe('<Card />', () => {
   });
 
   it('should accept a classname prop', () => {
+    const wrapper = shallow(<Card />);
     wrapper.setProps({ className: 'cards-rule' });
 
     expect(wrapper.find('.cards-rule')).to.have.length(1);
   });
 
   it('should accept a selected prop', () => {
+    const wrapper = shallow(<Card />);
     wrapper.setProps({ selected: true });
 
     expect(wrapper.find('.rui-card-selected')).to.have.length(1);
