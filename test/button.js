@@ -22,7 +22,7 @@ describe('<Button />', () => {
     wrapper.setProps({ disabled: true, onClick });
     wrapper.simulate('click', { preventDefault: () => { } });
 
-    expect(onClick.called).to.be.false;
+    expect(onClick.called).to.equal(false);
   });
 
   it('should respond to click events', () => {
@@ -30,6 +30,6 @@ describe('<Button />', () => {
     wrapper.setProps({ disabled: false, onClick });
     wrapper.simulate('click');
 
-    expect(onClick.called).to.be.true;
+    expect(onClick.called).to.equal(true);
   });
 });
