@@ -2,7 +2,7 @@
   "name": "@reflect/reflect-components",
   "version": "0.0.1",
   "description": "A React component library to assist in the creation of user interfaces.",
-  "main": "source/index.js",
+  "main": "build/index.js",
   "scripts": {
     "prebuild": "rimraf build",
     "build": "npm run build:js",
