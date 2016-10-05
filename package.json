@@ -6,8 +6,9 @@
   "scripts": {
     "prebuild": "rimraf build",
     "build": "npm run build:js",
-    "build:js": "NODE_ENV=development babel ./source --out-dir ./build --ignore .scss",
+    "build:js": "NODE_ENV=production babel ./source --out-dir ./build --ignore .scss",
     "prepublish": "npm run build",
+    "watch:js": "nodemon --watch source -e js -x \"npm run build:js\"",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register",
     "lint": "./node_modules/.bin/eslint --quiet source/**/*.js"
 
@@ -48,6 +49,7 @@
     "jsdom": "^9.5.0",
     "mocha": "^3.1.0",
     "mocha-jsdom": "^1.1.0",
+    "nodemon": "^1.10.2",
     "react-addons-test-utils": "^15.3.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
