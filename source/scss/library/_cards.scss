@@ -1,4 +1,4 @@
-.rui-card {
+.rc-card {
   background: $card-bg;
   border: $card-border;
   border-radius: $border-radius;
@@ -7,16 +7,16 @@
   display: block;
   color: $card-color;
 
-  &.rui-card-xs {
+  &.rc-card-xs {
     padding: 2px;
     background-position: center center;
     background-size: cover;
 
-    .rui-card-content {
+    .rc-card-content {
       padding: 13px 0px;
       border: 2px solid white;
 
-      .rui-card-title {
+      .rc-card-title {
         margin: 0px;
         text-align: center;
         visibility: hidden;
@@ -25,46 +25,51 @@
     }
 
     &:hover {
-      .rui-card-content {
+      .rc-card-content {
         background: $card-bg;
-        .rui-card-title {
+        .rc-card-title {
           visibility: visible;
         }
       }
     }
   }
 
-  &.rui-card-large {
+  &.rc-card-large {
     padding-top: 100px;;
 
-    .rui-card-title {
+    .rc-card-title {
       margin-top: 80px;
       font-size: 1.3em;
     }
   }
 
-  &.rui-card-small {
+  &.rc-card-small {
     padding-top: 0;
 
-    .rui-card-title {
+    .rc-card-title {
       margin-top: 0px;
       font-size: 1.1em;
     }
   }
 
-  &.rui-card-clickable {
+  &.rc-card-selectable {
     cursor: pointer;
-  }
-
-  &.rui-card-selected {
-    border: $card-selected-border;
 
     &:hover {
-      border: $card-selected-border;
+      border: $card-border-hover;
     }
   }
 
-  &.rui-card-removable {
+  &.rc-card-selected {
+    border: $card-border-selected;
+    box-shadow: $card-shadow-selected;
+
+    &:hover {
+      border: $card-border-selected;
+    }
+  }
+
+  &.rc-card-removable {
     position: relative;
 
     &:hover {
@@ -72,12 +77,6 @@
         display: flex;
       }
     }
-  }
-
-  &:hover {
-    color: $card-subtitle-color;
-    border: $card-border-hover;
-    @include box-shadow($card-shadow-hover);
   }
 
   .remove-corner {
@@ -96,7 +95,7 @@
     border-bottom-left-radius: $border-radius;
     border-top-right-radius: 2px;
 
-    .rui-card-remove:before {
+    .rc-card-remove:before {
       position: absolute;
       top: -1px;
       left: 0;
@@ -111,22 +110,22 @@
       color: $red;
       background: $gray;
 
-      .rui-card-remove {
+      .rc-card-remove {
         color: #fff;
       }
     }
 
-    .rui-card-remove {
+    .rc-card-remove {
       color: $gray;
     }
   }
 
-  .rui-card-content {
+  .rc-card-content {
     background: transparent !important;
     padding: 20px;
   }
 
-  .rui-card-title {
+  .rc-card-title {
     color: $card-title-color;
     margin-top: 30px;
     font-size: 1.2em;
@@ -134,7 +133,7 @@
     @extend .truncate;
   }
 
-  .rui-card-subtitle {
+  .rc-card-subtitle {
     color: $card-subtitle-color;
     font-size: 0.8em;
 

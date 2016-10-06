@@ -22,7 +22,7 @@ describe('<Card />', () => {
     const onRemove = sinon.spy();
     const wrapper = mount(<Card onRemove={ onRemove } />);
 
-    wrapper.find('.rui-card-remove').simulate('click');
+    wrapper.find('.rc-card-remove').simulate('click');
 
     expect(onRemove.called).to.equal(true);
   });
@@ -36,6 +36,6 @@ describe('<Card />', () => {
   it('should accept a selected prop', () => {
     const wrapper = shallow(<Card selected />);
 
-    expect(wrapper.hasClass('.rui-card-selected'));
+    expect(wrapper.hasClass('.rc-card-selected'));
   });
 });
