@@ -1,4 +1,4 @@
-.rui-button {
+.rc-button {
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 12px;
@@ -60,19 +60,19 @@
     margin-top: 10px;
   }
 
-  &.rui-button-small {
+  &.rc-button-small {
     padding: 0px 20px;
     height: 38px;
     font-size: 11px;
     line-height: 37px;
   }
 
-  &.rui-button-top-right {
+  &.rc-button-top-right {
     float: right;
     margin-top: 15px;
   }
 
-  &.rui-button-float-right {
+  &.rc-button-float-right {
     float: right;
     margin-left: 5px;
   }
@@ -91,22 +91,22 @@
   }
 }
 
-.rui-button-group {
+.rc-button-group {
   margin-bottom: 5px;
 
-  &.rui-button-group-two-up {
-    .rui-button {
+  &.rc-button-group-two-up {
+    .rc-button {
       width: 50%;
     }
   }
 
-  &.rui-button-group-three-up {
-    .rui-button {
+  &.rc-button-group-three-up {
+    .rc-button {
       width: 33.33%;
     }
   }
 
-  .rui-button {
+  .rc-button {
     display: inline-block;
     border-radius: 0;
     height: 25px;
@@ -124,7 +124,7 @@
   }
 }
 
-.rui-floating-action-button {
+.rc-floating-action-button {
   border-radius: 60px;
   height: $floating-action-button-height;
   line-height: $floating-action-button-height;

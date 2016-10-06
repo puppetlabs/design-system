@@ -33,11 +33,11 @@ class Button extends React.Component {
 
   render() {
     const { children, label, type, secondary, disabled, href, className, floating } = this.props;
-    let cssClass = 'rui-button';
+    let cssClass = 'rc-button';
     let button;
 
     cssClass = classnames(className, cssClass, {
-      'rui-floating-action-button': floating,
+      'rc-floating-action-button': floating,
       secondary,
     });
 

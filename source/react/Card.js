@@ -42,7 +42,7 @@ class Card extends React.Component {
     if (this.props.onRemove) {
       jsx = (
         <div className="remove-corner">
-          <a href="" className="rui-card-remove fa fa-close" onClick={ this.onRemove }>Remove</a>
+          <a href="" className="rc-card-remove fa fa-close" onClick={ this.onRemove }>Remove</a>
         </div>
       );
     }
@@ -55,23 +55,24 @@ class Card extends React.Component {
     const { title, subtitle, children } = this.props;
 
     return (
-      <div className="rui-card-content">
+      <div className="rc-card-content">
         { removeButton }
         { children }
-        <div className="rui-card-title">{ title }</div>
-        <span className="rui-card-subtitle">{ subtitle }</span>
+        <div className="rc-card-title">{ title }</div>
+        <span className="rc-card-subtitle">{ subtitle }</span>
       </div>
     );
   }
 
   render() {
-    const { size, onRemove, height, selected } = this.props;
-    const className = classnames('rui-card', {
-      'rui-card-large': size === 'large',
-      'rui-card-small': size === 'small',
-      'rui-card-xs': size === 'xs',
-      'rui-card-selected': selected,
-      'rui-card-removable': onRemove,
+    const { size, onRemove, onClick, height, selected } = this.props;
+    const className = classnames('rc-card', {
+      'rc-card-large': size === 'large',
+      'rc-card-small': size === 'small',
+      'rc-card-xs': size === 'xs',
+      'rc-card-selected': selected,
+      'rc-card-selectable': onClick,
+      'rc-card-removable': onRemove,
     }, this.props.className);
     const content = this.renderContent();
     const styles = {};
