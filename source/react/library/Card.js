@@ -50,16 +50,40 @@ class Card extends React.Component {
     return jsx;
   }
 
+  renderTitle() {
+    const title = this.props.title;
+    let jsx;
+
+    if (title) {
+      jsx = <div className="rc-card-title">{ title }</div>;
+    }
+
+    return jsx;
+  }
+
+  renderSubtitle() {
+    const subtitle = this.props.subtitle;
+    let jsx;
+
+    if (subtitle) {
+      jsx = <span className="rc-card-subtitle">{ subtitle }</span>;
+    }
+
+    return jsx;
+  }
+
   renderContent() {
     const removeButton = this.renderRemoveButton();
-    const { title, subtitle, children } = this.props;
+    const children = this.props.children;
+    const title = this.renderTitle();
+    const subtitle = this.renderSubtitle();
 
     return (
       <div className="rc-card-content">
         { removeButton }
         { children }
-        <div className="rc-card-title">{ title }</div>
-        <span className="rc-card-subtitle">{ subtitle }</span>
+        { title }
+        { subtitle }
       </div>
     );
   }
