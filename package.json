@@ -10,7 +10,8 @@
     "prepublish": "npm run build",
     "watch:js": "nodemon --watch source -e js -x \"npm run build:js\"",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register",
-    "lint": "./node_modules/.bin/eslint --quiet source/**/*.js"
+    "lint": "./node_modules/.bin/eslint --quiet source/**/*.js",
+    "start": "./node_modules/.bin/webpack-dev-server"
   },
   "repository": {
     "type": "git",
