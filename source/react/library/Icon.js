@@ -16,7 +16,17 @@ const Icon = (props) => {
   let icon = icons[type];
 
   if (icon) {
-    icon = <svg x="0px" y="0px" width={ pixelSize } height={ pixelSize } viewBox="0 0 30 30">{ icon }</svg>;
+    icon = (
+      <svg
+        x="0px"
+        y="0px"
+        width={ pixelSize }
+        height={ pixelSize }
+        viewBox="0 0 30 30"
+      >
+        { icon }
+      </svg>
+    );
   }
 
   return icon;
