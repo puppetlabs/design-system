@@ -2,30 +2,40 @@ import React from 'react';
 import icons from './icons.js';
 
 const propTypes = {
-  size: React.PropTypes.number,
+  height: React.PropTypes.string,
+  width: React.PropTypes.string,
   type: React.PropTypes.string,
 };
 
 const defaultProps = {
-  size: 30,
+  height: '30px',
+  width: '30px',
+};
+
+const defaultViewBox = {
+  loader: '0 0 40 40',
+  default: '0 0 30 30',
 };
 
 const Icon = (props) => {
   const type = props.type;
-  const pixelSize = `${props.size}px`;
+  const height = props.height;
+  const width = props.width;
+  let viewBox = props.viewBox;
+
+  if (!viewBox) {
+    if (defaultViewBox[type]) {
+      viewBox = defaultViewBox[type];
+    } else {
+      viewBox = defaultViewBox.default;
+    }
+  }
+
   let icon = icons[type];
 
   if (icon) {
     icon = (
-      <svg
-        x="0px"
-        y="0px"
-        width={ pixelSize }
-        height={ pixelSize }
-        viewBox="0 0 30 30"
-      >
-        { icon }
-      </svg>
+      <svg width={ width } height={ height } viewBox={ viewBox }>{ icon }</svg>
     );
   }
 
