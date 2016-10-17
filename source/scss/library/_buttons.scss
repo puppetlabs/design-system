@@ -1,4 +1,5 @@
 .rc-button {
+  font-family: $button-font-family;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 12px;
@@ -20,7 +21,7 @@
     width: 100%;
   }
 
-  &.rc-button-loading {
+  &.rc-button-processing {
     position: relative;
 
     .rc-button-content {
@@ -58,45 +59,16 @@
     }
   }
 
-  &.large {
-    font-size: 14px;
-    height: 60px;
-    line-height: 59px;
-  }
-
-  .small {
+  &.rc-button-small {
     font-size: 12px;
     height: 40px;
     line-height: 39px;
   }
 
-  &.block {
-    width: 100%;
-  }
-
-  &.margin {
-    margin-top: 20px;
-  }
-
-  &.margin-small {
-    margin-top: 10px;
-  }
-
-  &.rc-button-small {
-    padding: 0px 20px;
-    height: 38px;
-    font-size: 11px;
-    line-height: 37px;
-  }
-
-  &.rc-button-top-right {
-    float: right;
-    margin-top: 15px;
-  }
-
-  &.rc-button-float-right {
-    float: right;
-    margin-left: 5px;
+  &.rc-button-large {
+    font-size: 14px;
+    height: 60px;
+    line-height: 59px;
   }
 
   &:hover {
