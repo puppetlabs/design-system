@@ -2,6 +2,7 @@ import React from 'react';
 import Card from '../library/Card';
 import Loading from '../library/LoadingIndicator';
 import Button from '../library/Button';
+import Icon from '../library/Icon';
 
 class Styleguide extends React.Component {
 
@@ -20,6 +21,7 @@ class Styleguide extends React.Component {
       <div>
         <Loading />
         <Card title="hello world!" />
+        <Icon type="delete" size={ 15 } />
         <Button type="submit" label="Bar" />
       </div>
     );

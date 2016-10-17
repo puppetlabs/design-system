@@ -6,17 +6,23 @@ const propTypes = {
   type: React.PropTypes.string,
 };
 
+const defaultProps = {
+  size: 30,
+};
+
 const Icon = (props) => {
   const type = props.type;
-  let icon = null;
+  const pixelSize = `${props.size}px`;
+  let icon = icons[type];
 
-  if (icons[type]) {
-    icon = <svg x="0px" y="0px" width="30px" height="30px" viewBox="0 0 30 30">{ icon }</svg>;
+  if (icon) {
+    icon = <svg x="0px" y="0px" width={ pixelSize } height={ pixelSize } viewBox="0 0 30 30">{ icon }</svg>;
   }
 
   return icon;
 };
 
 Icon.propTypes = propTypes;
+Icon.defaultProps = defaultProps;
 
 export default Icon;
