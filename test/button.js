@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import Button from '../source/react/Button';
+import Button from '../source/react/library/Button';
 
 describe('<Button />', () => {
   jsdom();

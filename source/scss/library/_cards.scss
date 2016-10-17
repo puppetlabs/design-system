@@ -129,14 +129,10 @@
     color: $card-title-color;
     margin-top: 30px;
     font-size: 1.2em;
-
-    @extend .truncate;
   }
 
   .rc-card-subtitle {
     color: $card-subtitle-color;
     font-size: 0.8em;
-
-    @extend .truncate;
   }
 }

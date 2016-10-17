@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import Card from '../source/react/Card';
+import Card from '../source/react/library/Card';
 
 describe('<Card />', () => {
   jsdom();
