@@ -24,8 +24,8 @@ class Styleguide extends React.Component {
         <div className="content">
           <Loading />
           <Card title="hello world!" />
-          <Icon type="delete" size={ 15 } />
-          <Button type="submit" label="Bar" />
+          <Icon type="loader" />
+          <Button type="submit" block loading label="Bar" />
         </div>
       </div>
     );

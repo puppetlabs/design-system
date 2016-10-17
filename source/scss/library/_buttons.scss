@@ -15,6 +15,28 @@
   border-radius: $button-border-radius;
   outline: none;
 
+  &.rc-button-block {
+    display: block;
+    width: 100%;
+  }
+
+  &.rc-button-loading {
+    position: relative;
+
+    .rc-button-content {
+      visibility: hidden;
+    }
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      fill: white;
+    }
+  }
+
   &.danger {
     background: $red;
     color: $white;

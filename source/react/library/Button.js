@@ -1,11 +1,14 @@
 import React from 'react';
 import classnames from 'classnames';
+import Icon from './Icon';
 
 const propTypes = {
   className: React.PropTypes.string,
   secondary: React.PropTypes.bool,
   floating: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
+  loading: React.PropTypes.bool,
+  block: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   label: React.PropTypes.string,
   type: React.PropTypes.string,
@@ -32,11 +35,23 @@ class Button extends React.Component {
   }
 
   render() {
-    const { children, label, type, secondary, disabled, href, className, floating } = this.props;
-    let cssClass = 'rc-button';
+    const {
+      children,
+      label,
+      type,
+      secondary,
+      disabled,
+      loading,
+      block,
+      href,
+      className,
+      floating,
+    } = this.props;
     let button;
 
-    cssClass = classnames(className, cssClass, {
+    const cssClass = classnames(className, 'rc-button', {
+      'rc-button-block': block,
+      'rc-button-loading': loading,
       'rc-floating-action-button': floating,
       secondary,
     });
@@ -49,12 +64,13 @@ class Button extends React.Component {
       className: cssClass,
     };
 
-    const content = children || label;
+    const content = <span className="rc-button-content">{ children || label }</span>;
+    const loader = loading ? <Icon height="100%" width="100%" type="loader" /> : null;
 
     if (type) {
-      button = <button { ...btnProps }>{ content }</button>;
+      button = <button { ...btnProps }>{ content }{ loader }</button>;
     } else {
-      button = <a { ...btnProps }>{ content }</a>;
+      button = <a { ...btnProps }>{ content }{ loader }</a>;
     }
 
     return button;
