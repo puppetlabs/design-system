@@ -1,3 +1,6 @@
+@import url('//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+@import url('//fonts.googleapis.com/css?family=Montserrat');
+
 $white:                          #fff !default;
 $gray-base:                      #201F1E !default;
 $gray-darker:                    lighten($gray-base, 19%) !default;
@@ -32,6 +35,7 @@ $line-height-base:               1.428571429 !default; // 20/14
 //
 // Button variables/options
 //
+$button-font-family:                   'Montserrat';
 $button-disabled-background-color:     #ccc !default;
 $button-default-background-color:      $brand-primary !default;
 
@@ -39,6 +43,11 @@ $button-border-radius:                 $border-radius !default;
 $button-font-weight:                   normal !default;
 
 $floating-action-button-height:        60px !default;
+
+//
+// Loading indicator options
+//
+$loading-indicator-fill:                   $gray-dark !default;
 
 //
 // Cards

@@ -1,5 +1,5 @@
-import Button from './react/Button';
-import Card from './react/Card';
+import Button from './react/library/Button';
+import Card from './react/library/Card';
 
 export {
   Button,
