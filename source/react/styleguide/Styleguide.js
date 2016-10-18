@@ -25,7 +25,7 @@ class Styleguide extends React.Component {
           <Loading />
           <Card title="hello world!" />
           <Icon type="loader" />
-          <Button type="submit" block loading label="Bar" />
+          <Button type="submit" processing label="Bar" />
         </div>
       </div>
     );
