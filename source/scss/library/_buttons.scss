@@ -1,4 +1,5 @@
 .rc-button {
+  font-family: $button-font-family;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 12px;
@@ -14,6 +15,28 @@
   cursor: pointer;
   border-radius: $button-border-radius;
   outline: none;
+
+  &.rc-button-block {
+    display: block;
+    width: 100%;
+  }
+
+  &.rc-button-processing {
+    position: relative;
+
+    .rc-button-content {
+      visibility: hidden;
+    }
+
+    svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      fill: white;
+    }
+  }
 
   &.danger {
     background: $red;
@@ -36,45 +59,15 @@
     }
   }
 
-  &.large {
+  &.rc-button-small {
+    height: 33px;
+    line-height: 33px;
+  }
+
+  &.rc-button-large {
     font-size: 14px;
     height: 60px;
     line-height: 59px;
-  }
-
-  .small {
-    font-size: 12px;
-    height: 40px;
-    line-height: 39px;
-  }
-
-  &.block {
-    width: 100%;
-  }
-
-  &.margin {
-    margin-top: 20px;
-  }
-
-  &.margin-small {
-    margin-top: 10px;
-  }
-
-  &.rc-button-small {
-    padding: 0px 20px;
-    height: 38px;
-    font-size: 11px;
-    line-height: 37px;
-  }
-
-  &.rc-button-top-right {
-    float: right;
-    margin-top: 15px;
-  }
-
-  &.rc-button-float-right {
-    float: right;
-    margin-left: 5px;
   }
 
   &:hover {

@@ -1,7 +1,9 @@
 import React from 'react';
+import Sidebar from './Sidebar';
 import Card from '../library/Card';
 import Loading from '../library/LoadingIndicator';
 import Button from '../library/Button';
+import Icon from '../library/Icon';
 
 class Styleguide extends React.Component {
 
@@ -18,9 +20,13 @@ class Styleguide extends React.Component {
 
     return (
       <div>
-        <Loading />
-        <Card title="hello world!" />
-        <Button type="submit" label="Bar" />
+        <Sidebar />
+        <div className="content">
+          <Loading />
+          <Card title="hello world!" />
+          <Icon type="loader" />
+          <Button type="submit" processing label="Bar" />
+        </div>
       </div>
     );
   }
