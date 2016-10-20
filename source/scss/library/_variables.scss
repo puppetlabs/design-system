@@ -28,6 +28,8 @@ $font-size-base:                 16px !default;
 $small-font-size:                12px !default;
 $line-height-base:               1.428571429 !default; // 20/14
 
+$padding:                        16px;
+
 //
 // Button variables/options
 //
@@ -51,7 +53,8 @@ $loading-indicator-fill:                   $gray-dark !default;
 $popover-bg:                      $white !default;
 $popover-border:                  $border !default;
 $popover-border-radius:           $border-radius !default;
-$popover-padding:                 16px;
+$popover-padding:                 $padding;
+$popover-shadow:                  $outer-shadow;
 
 //
 // Cards
