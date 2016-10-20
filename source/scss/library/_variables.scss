@@ -19,6 +19,8 @@ $brand-info:                     #5bc0de !default;
 $brand-warning:                  #f0ad4e !default;
 $brand-danger:                   #d9534f !default;
 
+$font-family:                   'Open Sans', sans-serif;
+
 $border-color:                   #dedede !default;
 $border-hover-color:             $gray !default;
 $border-radius:                  4px !default;
@@ -35,7 +37,7 @@ $line-height-base:               1.428571429 !default; // 20/14
 //
 // Button variables/options
 //
-$button-font-family:                   'Montserrat';
+$button-font-family:                   'Montserrat', sans-serif;
 $button-disabled-background-color:     #ccc !default;
 $button-default-background-color:      $brand-primary !default;
 

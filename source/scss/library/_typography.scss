@@ -1,2 +1,10 @@
 @import url('//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 @import url('//fonts.googleapis.com/css?family=Montserrat');
+
+[class^="rc-"]  {
+  font-family: $font-family;
+
+  h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+  }
+}

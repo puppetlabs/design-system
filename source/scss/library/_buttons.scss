@@ -1,5 +1,4 @@
 .rc-button {
-  font-family: $button-font-family;
   text-transform: uppercase;
   letter-spacing: 1px;
   font-size: 12px;
@@ -81,6 +80,10 @@
     }
 
     background-color: $button-disabled-background-color;
+  }
+
+  .rc-button-content {
+    font-family: $button-font-family;
   }
 }
 
