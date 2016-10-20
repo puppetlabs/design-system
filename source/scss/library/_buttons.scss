@@ -67,10 +67,10 @@
 
   &[disabled] {
     &:hover {
-      background-color: $button-disabled-background-color;
+      background-color: $button-disabled-bg;
     }
 
-    background-color: $button-disabled-background-color;
+    background-color: $button-disabled-bg;
   }
 
   .rc-button-content {

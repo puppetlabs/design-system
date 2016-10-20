@@ -2,13 +2,23 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+  devServer: {
+    publicPath: '/build/',
+    colors: true,
+    quiet: false,
+    noInfo: false,
+    inline: true,
+    lazy: false,
+  },
   entry: {
-    library: './source/index.js',
+    styleguide: [
+      'webpack-dev-server/client?http://localhost:8080',
+      './source/react/app.js',
+    ],
   },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js',
-    libraryTarget: 'commonjs2',
   },
   module: {
     loaders: [{

@@ -2,16 +2,15 @@
   "name": "@reflect/reflect-components",
   "version": "0.0.1",
   "description": "A React component library to assist in the creation of user interfaces.",
-  "main": "build/index.js",
+  "main": "build/library.js",
   "scripts": {
     "prebuild": "rimraf build",
-    "build": "npm run build:js",
-    "build:js": "NODE_ENV=production babel ./source --out-dir ./build --ignore .scss",
+    "build": "NODE_ENV=production webpack",
     "prepublish": "npm run build",
-    "watch:js": "nodemon --watch source -e js -x \"npm run build:js\"",
+    "watch": "nodemon --watch source -x \"npm run build\"",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register",
     "lint": "./node_modules/.bin/eslint --quiet source/**/*.js",
-    "start": "./node_modules/.bin/webpack-dev-server"
+    "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
