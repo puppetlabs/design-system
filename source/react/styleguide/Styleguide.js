@@ -4,7 +4,7 @@ import Card from '../library/Card';
 import Loading from '../library/LoadingIndicator';
 import Button from '../library/Button';
 import Icon from '../library/Icon';
-import Popover from '../library/Popover';
+import DropdownMenu from '../library/dropdown/DropdownMenu';
 
 class Styleguide extends React.Component {
 
@@ -27,7 +27,9 @@ class Styleguide extends React.Component {
     let jsx;
 
     if (this.state.popoverOpen && this.target) {
-      jsx = <Popover target={ this.target }>Hello world!</Popover>;
+      const options = ['users', 'companies'];
+
+      jsx = <DropdownMenu target={ this.target } options={ options } />;
     }
 
     return jsx;
@@ -44,7 +46,7 @@ class Styleguide extends React.Component {
           <Loading />
           <Card title="hello world!" />
           <Icon type="loader" />
-          <Button processing label="Bar" />
+          <Button label="Bar" />
           <Button
             ref={ (c) => { this.target = c; } }
             label="Popover"

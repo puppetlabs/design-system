@@ -1,0 +1,18 @@
+.rc-dropdown {
+  .rc-dropdown-menu-item {
+    border-bottom: $dropdown-menu-item-border;
+
+    a {
+      display: block;
+      padding: $dropdown-padding/3 $dropdown-padding;
+
+      &:hover {
+        background: $dropdown-menu-item-hover-bg;
+      }
+    }
+  }
+
+  li:last-of-type {
+    border-bottom: none;
+  }
+}

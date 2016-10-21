@@ -33,19 +33,19 @@ $padding:                        16px;
 //
 // Button variables/options
 //
-$button-font-family:                   'Montserrat', sans-serif !default;
-$button-font-size:                     $small-font-size !default;
-$button-font-weight:                   normal !default;
-$button-disabled-bg:     #ccc !default;
-$button-bg:                            $brand-primary !default;
-$button-border-radius:                 $border-radius !default;
+$button-font-family:              'Montserrat', sans-serif !default;
+$button-font-size:                $small-font-size !default;
+$button-font-weight:              normal !default;
+$button-disabled-bg:              #ccc !default;
+$button-bg:                       $brand-primary !default;
+$button-border-radius:            $border-radius !default;
 
-$floating-action-button-height:        60px !default;
+$floating-action-button-height:   60px !default;
 
 //
 // Loading indicator options
 //
-$loading-indicator-fill:                   $gray-dark !default;
+$loading-indicator-fill:          $gray-dark !default;
 
 //
 // Popover
@@ -53,8 +53,14 @@ $loading-indicator-fill:                   $gray-dark !default;
 $popover-bg:                      $white !default;
 $popover-border:                  $border !default;
 $popover-border-radius:           $border-radius !default;
-$popover-padding:                 $padding;
 $popover-shadow:                  $outer-shadow;
+
+//
+// Dropdown
+//
+$dropdown-padding:                $padding;
+$dropdown-menu-item-border:       $border;
+$dropdown-menu-item-hover-bg:     $gray-lighter;
 
 //
 // Cards

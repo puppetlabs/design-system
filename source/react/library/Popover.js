@@ -1,15 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Portal from 'react-portal';
+import classnames from 'classnames';
 
 const propTypes = {
   target: React.PropTypes.object,
-  children: React.PropTypes.object,
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.array,
+    React.PropTypes.string,
+  ]),
   width: React.PropTypes.string,
+  margin: React.PropTypes.number,
+  className: React.PropTypes.string,
 };
 
 const defaultProps = {
   width: 'auto',
+  margin: 5,
 };
 
 class Popover extends React.Component {
@@ -27,19 +34,21 @@ class Popover extends React.Component {
   }
 
   setPosition(target) {
+    /* eslint-disable react/no-find-dom-node */
     const el = ReactDOM.findDOMNode(target || this.wrapper);
+    /* eslint-enable react/no-find-dom-node */
     const elPosition = el.getBoundingClientRect();
 
     this.setState({
       position: {
-        top: elPosition.bottom,
+        top: elPosition.bottom + this.props.margin,
         left: elPosition.left,
       },
     });
   }
 
   render() {
-    const cssClass = 'rc-popover';
+    const className = classnames('rc-popover', this.props.className);
     const styles = this.state.position;
 
     if (this.props.width !== 'auto') {
@@ -48,8 +57,8 @@ class Popover extends React.Component {
 
     return (
       <div ref={ (c) => { this.wrapper = c; } }>
-        <Portal isOpened closeOnEsc closeOnOutsideClick>
-          <div className={ cssClass } style={ styles }>
+        <Portal isOpened>
+          <div className={ className } style={ styles }>
             { this.props.children }
           </div>
         </Portal>
