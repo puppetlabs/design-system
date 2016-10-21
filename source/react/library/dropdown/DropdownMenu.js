@@ -4,6 +4,11 @@ import DropdownMenuItem from './DropdownMenuItem';
 
 const propTypes = {
   target: React.PropTypes.object,
+  onChange: React.PropTypes.func,
+  selected: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.array,
+  ]),
   hint: React.PropTypes.string,
   options: React.PropTypes.array,
   multiple: React.PropTypes.bool,
@@ -14,16 +19,21 @@ class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
 
+    const selected = Array.isArray(props.selected) ? props.selected : [props.selected];
+
     this.state = {
       open: false,
-      selected: null,
+      selected,
     };
 
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(val) {
-    console.log(val);
+  onChange(option, selected) {
+
+    if (this.props.onChange) {
+      this.props.onChange(this.state.selected);
+    }
   }
 
   renderHint() {
@@ -69,7 +79,7 @@ class DropdownMenu extends React.Component {
 
     return (
       <Popover
-        className="rc-dropdown"
+        className="rc-dropdown-menu"
         target={ this.props.target }
       >
         { hint }

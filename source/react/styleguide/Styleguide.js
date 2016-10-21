@@ -4,6 +4,7 @@ import Card from '../library/Card';
 import Loading from '../library/LoadingIndicator';
 import Button from '../library/Button';
 import Icon from '../library/Icon';
+import Dropdown from '../library/dropdown/Dropdown';
 import DropdownMenu from '../library/dropdown/DropdownMenu';
 
 class Styleguide extends React.Component {
@@ -17,10 +18,15 @@ class Styleguide extends React.Component {
     };
 
     this.onClick = this.onClick.bind(this);
+    this.onDropdownChange = this.onDropdownChange.bind(this);
   }
 
   onClick() {
     this.setState({ popoverOpen: !this.state.popoverOpen });
+  }
+
+  onDropdownChange(selected) {
+consle.log(selected)
   }
 
   renderPopover() {
@@ -54,6 +60,11 @@ class Styleguide extends React.Component {
           />
           { popover }
         </div>
+        <Dropdown
+          selected="option 1"
+          options={ ['option 1', 'option 2'] }
+          onChange={ this.onDropdownChange }
+        />
       </div>
     );
   }
