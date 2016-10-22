@@ -1,18 +1,45 @@
-.rc-dropdown-menu {
-  .rc-dropdown-menu-item {
-    border-bottom: $dropdown-menu-item-border;
+$dropdown-padding-top: $dropdown-padding/3;
 
+.rc-dropdown-menu {
+  .rc-dropdown-item {
     a {
       display: block;
-      padding: $dropdown-padding/3 $dropdown-padding;
+      padding: $dropdown-padding-top $dropdown-padding;
 
       &:hover {
-        background: $dropdown-menu-item-hover-bg;
+        color: $dropdown-item-hover-color;
+        background: $dropdown-item-hover-bg;
       }
+    }
+  }
+
+  .rc-dropdown-item-selected {
+    a {
+      color: $dropdown-item-selected-color;
+      background: $dropdown-item-selected-bg;
     }
   }
 
   li:last-of-type {
     border-bottom: none;
+  }
+}
+
+.rc-dropdown-menu-multiple {
+  .rc-dropdown-item {
+    a {
+      position: relative;
+      padding-left: $dropdown-padding * 2;
+
+      svg {
+        position: absolute;
+        top: $dropdown-padding-top * 2;
+        left: $dropdown-padding/1.5;
+
+        * {
+          fill: $dropdown-item-selected-color;
+        }
+      }
+    }
   }
 }

@@ -26,7 +26,7 @@ class Styleguide extends React.Component {
   }
 
   onDropdownChange(selected) {
-consle.log(selected)
+console.log(selected)
   }
 
   renderPopover() {
@@ -35,7 +35,7 @@ consle.log(selected)
     if (this.state.popoverOpen && this.target) {
       const options = ['users', 'companies'];
 
-      jsx = <DropdownMenu target={ this.target } options={ options } />;
+      jsx = <DropdownMenu width="200px" target={ this.target } options={ options } />;
     }
 
     return jsx;
@@ -61,6 +61,7 @@ consle.log(selected)
           { popover }
         </div>
         <Dropdown
+          multiple
           selected="option 1"
           options={ ['option 1', 'option 2'] }
           onChange={ this.onDropdownChange }

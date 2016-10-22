@@ -1,10 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
+import Icon from '../Icon';
 
 const propTypes = {
   onClick: React.PropTypes.func,
   selected: React.PropTypes.bool,
   option: React.PropTypes.object,
+  multiple: React.PropTypes.bool,
 };
 
 class DropdownMenuItem extends React.Component {
@@ -22,15 +24,26 @@ class DropdownMenuItem extends React.Component {
     }
   }
 
+  renderCheckmark() {
+    let jsx;
+
+    if (this.props.selected && this.props.multiple) {
+      jsx = <Icon type="checkmark" height="16px" width="16px" />;
+    }
+
+    return jsx;
+  }
+
   render() {
     const option = this.props.option;
-    const className = classnames('rc-dropdown-menu-item', {
-      'rc-dropdown-menu-item-selected': this.props.selected,
+    const checkmark = this.renderCheckmark();
+    const className = classnames('rc-dropdown-item', {
+      'rc-dropdown-item-selected': this.props.selected,
     });
 
     return (
       <li className={ className }>
-        <a href={ option.id } onClick={ this.onClick }>{ option.value }</a>
+        <a href={ option.id } onClick={ this.onClick }>{ checkmark }{ option.value }</a>
       </li>
     );
   }

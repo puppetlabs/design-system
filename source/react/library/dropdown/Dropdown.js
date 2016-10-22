@@ -4,6 +4,7 @@ import DropdownMenu from './DropdownMenu';
 const propTypes = {
   onChange: React.PropTypes.func,
   options: React.PropTypes.array,
+  multiple: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
@@ -34,7 +35,7 @@ class Dropdown extends React.Component {
   onChange(selected) {
     this.setState({ selected }, () => {
       if (this.props.onChange) {
-        this.prop.onChange(selected);
+        this.props.onChange(selected);
       }
     });
   }
@@ -45,6 +46,7 @@ class Dropdown extends React.Component {
     if (this.state.open && this.trigger) {
       jsx = (
         <DropdownMenu
+          multiple={ this.props.multiple }
           trigger={ this.trigger }
           onChange={ this.onChange }
           options={ this.props.options }

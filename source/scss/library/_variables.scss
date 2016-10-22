@@ -59,8 +59,10 @@ $popover-shadow:                  $outer-shadow;
 // Dropdown
 //
 $dropdown-padding:                $padding;
-$dropdown-menu-item-border:       $border;
-$dropdown-menu-item-hover-bg:     $gray-lighter;
+$dropdown-item-hover-color:       $white;
+$dropdown-item-hover-bg:          darken($brand-primary, 10%);
+$dropdown-item-selected-color:    $white;
+$dropdown-item-selected-bg:       $brand-primary;
 
 //
 // Cards
