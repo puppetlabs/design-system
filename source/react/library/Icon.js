@@ -21,7 +21,9 @@ const Icon = (props) => {
   const type = props.type;
   const height = props.height;
   const width = props.width;
+  const svg = icons[type];
   let viewBox = props.viewBox;
+  let icon;
 
   if (!viewBox) {
     if (defaultViewBox[type]) {
@@ -31,12 +33,19 @@ const Icon = (props) => {
     }
   }
 
-  let icon = icons[type];
+  if (svg) {
+    const className = `icon-${type}`;
 
-  if (icon) {
     icon = (
-      <svg width={ width } height={ height } viewBox={ viewBox }>{ icon }</svg>
-    );
+      <svg
+        className={ className }
+        width={ width }
+        height={ height }
+        viewBox={ viewBox }
+      >
+        { svg }
+      </svg>
+    )
   }
 
   return icon;
