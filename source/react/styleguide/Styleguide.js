@@ -61,9 +61,15 @@ console.log(selected)
           { popover }
         </div>
         <Dropdown
+          hint="Select Field"
           multiple
-          selected="option 1"
-          options={ ['option 1', 'option 2'] }
+          selected={ 1 }
+          options={ [
+            { id: 1, value: 'option 1' },
+            { id: 2, value: 'option 2' },
+            { id: 3, value: 'option 3' },
+            { id: 4, value: 'option 4' },
+          ] }
           onChange={ this.onDropdownChange }
         />
       </div>

@@ -4,8 +4,8 @@ import Popover from '../Popover';
 import DropdownMenuItem from './DropdownMenuItem';
 
 const propTypes = {
-  target: React.PropTypes.object,
   onChange: React.PropTypes.func,
+  target: React.PropTypes.object,
   width: React.PropTypes.string,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
@@ -28,11 +28,17 @@ class DropdownMenu extends React.Component {
     const selected = Array.isArray(props.selected) ? props.selected : [props.selected];
 
     this.state = {
-      open: false,
       selected,
     };
 
+    this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
+  }
+
+  onClose() {
+    if (this.props.onChange) {
+      this.props.onChange(this.state.selected);
+    }
   }
 
   onChange(option, selected) {
@@ -50,32 +56,18 @@ class DropdownMenu extends React.Component {
       }
     });
 
-    this.setState({ selected: nextSelected }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(nextSelected);
-      }
-    });
+    this.setState({ selected: nextSelected });
   }
 
   getOptions() {
-    return this.props.options.map((o) => {
-      let obj;
-
-      if (typeof o === 'string') {
-        obj = { id: o, value: o };
-      } else {
-        obj = o;
-      }
-
-      return obj;
-    });
+    return this.props.options;
   }
 
   renderHint() {
     let jsx;
 
     if (this.props.hint) {
-      jsx = <p>{ this.props.hint }</p>;
+      jsx = <small className="rc-dropdown-hint">{ this.props.hint }</small>;
     }
 
     return jsx;
@@ -114,6 +106,7 @@ class DropdownMenu extends React.Component {
         width={ this.props.width }
         className={ className }
         target={ this.props.target }
+        onClose={ this.onClose }
       >
         { hint }
         { options }

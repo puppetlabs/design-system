@@ -25,7 +25,8 @@ $hover-shadow:                   0px 0px 0px 1px $gray !default;
 $selected-shadow:                0px 0px 0px 1px $brand-primary !default;
 
 $font-size-base:                 16px !default;
-$small-font-size:                12px !default;
+$font-size-small:                12px !default;
+$font-size-medium:               14px !default;
 $line-height-base:               1.428571429 !default; // 20/14
 
 $padding:                        16px;
@@ -34,7 +35,7 @@ $padding:                        16px;
 // Button variables/options
 //
 $button-font-family:              'Montserrat', sans-serif !default;
-$button-font-size:                $small-font-size !default;
+$button-font-size:                $font-size-small !default;
 $button-font-weight:              normal !default;
 $button-disabled-bg:              #ccc !default;
 $button-bg:                       $brand-primary !default;
@@ -53,16 +54,18 @@ $loading-indicator-fill:          $gray-dark !default;
 $popover-bg:                      $white !default;
 $popover-border:                  $border !default;
 $popover-border-radius:           $border-radius !default;
-$popover-shadow:                  $outer-shadow;
+$popover-shadow:                  $outer-shadow !default;
 
 //
 // Dropdown
 //
-$dropdown-padding:                $padding;
-$dropdown-item-hover-color:       $white;
-$dropdown-item-hover-bg:          darken($brand-primary, 10%);
-$dropdown-item-selected-color:    $white;
-$dropdown-item-selected-bg:       $brand-primary;
+$dropdown-padding:                12px !default;
+$dropdown-hint-color:             $gray-dark !default;
+$dropdown-hint-font-size:         $font-size-medium !default;
+$dropdown-item-hover-color:       $white !default;
+$dropdown-item-hover-bg:          darken($brand-primary, 10%) !default;
+$dropdown-item-selected-color:    $white !default;
+$dropdown-item-selected-bg:       $brand-primary !default;
 
 //
 // Cards

@@ -1,10 +1,19 @@
-$dropdown-padding-top: $dropdown-padding/3;
+.rc-dropdown-label {
+  text-decoration: underline;
+}
 
 .rc-dropdown-menu {
+  .rc-dropdown-hint {
+    display: block;
+    padding: $dropdown-padding;
+    color: $dropdown-hint-color;
+    font-size: $dropdown-hint-font-size;
+  }
+
   .rc-dropdown-item {
     a {
       display: block;
-      padding: $dropdown-padding-top $dropdown-padding;
+      padding: $dropdown-padding;
 
       &:hover {
         color: $dropdown-item-hover-color;
@@ -29,12 +38,13 @@ $dropdown-padding-top: $dropdown-padding/3;
   .rc-dropdown-item {
     a {
       position: relative;
-      padding-left: $dropdown-padding * 2;
+      padding-left: $dropdown-padding * 3;
 
       svg {
         position: absolute;
-        top: $dropdown-padding-top * 2;
-        left: $dropdown-padding/1.5;
+        top: 50%;
+        transform: translateY(-25%);
+        left: $dropdown-padding;
 
         * {
           fill: $dropdown-item-selected-color;

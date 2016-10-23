@@ -4,6 +4,7 @@ import Portal from 'react-portal';
 import classnames from 'classnames';
 
 const propTypes = {
+  onClose: React.PropTypes.func.isRequired,
   target: React.PropTypes.object,
   children: React.PropTypes.oneOfType([
     React.PropTypes.array,
@@ -27,10 +28,18 @@ class Popover extends React.Component {
     this.state = {
       position: {},
     };
+
+    this.onClose = this.onClose.bind(this);
   }
 
   componentDidMount() {
     this.setPosition(this.props.target);
+  }
+
+  onClose() {
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
   }
 
   setPosition(target) {
@@ -57,7 +66,7 @@ class Popover extends React.Component {
 
     return (
       <div ref={ (c) => { this.wrapper = c; } }>
-        <Portal isOpened>
+        <Portal isOpened closeOnOutsideClick onClose={ this.onClose }>
           <div className={ className } style={ styles }>
             { this.props.children }
           </div>
