@@ -44,7 +44,7 @@ class Popover extends React.Component {
 
   setPosition() {
     /* eslint-disable react/no-find-dom-node */
-    const el = ReactDOM.findDOMNode(this.wrapper);
+    const el = ReactDOM.findDOMNode(this);
     /* eslint-enable react/no-find-dom-node */
     const elPosition = el.getBoundingClientRect();
 
@@ -65,7 +65,7 @@ class Popover extends React.Component {
     }
 
     return (
-      <div style={ { display: 'inline-block' } } ref={ (c) => { this.wrapper = c; } }>
+      <div style={ { display: 'inline-block' } }>
         <Portal closeOnOutsideClick onClose={ this.onClose } openByClickOn={ this.props.target }>
           <div className={ className } style={ styles }>
             { this.props.children }

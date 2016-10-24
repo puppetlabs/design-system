@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production webpack",
     "prepublish": "npm run build",
     "watch": "nodemon --watch source -x \"npm run build\"",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
     "lint": "./node_modules/.bin/eslint --quiet source/**/*.js",
     "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.config.js"
   },

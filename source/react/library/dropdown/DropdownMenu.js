@@ -10,6 +10,7 @@ const propTypes = {
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
+    React.PropTypes.number,
   ]),
   hint: React.PropTypes.string,
   options: React.PropTypes.array,
