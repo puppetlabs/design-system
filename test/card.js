@@ -36,6 +36,6 @@ describe('<Card />', () => {
   it('should accept a selected prop', () => {
     const wrapper = shallow(<Card selected />);
 
-    expect(wrapper.hasClass('.rc-card-selected'));
+    expect(wrapper.hasClass('rc-card-selected'));
   });
 });
