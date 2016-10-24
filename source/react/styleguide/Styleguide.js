@@ -14,31 +14,20 @@ class Styleguide extends React.Component {
 
     this.state = {
       page: 'Card',
-      popoverOpen: false,
     };
 
-    this.onClick = this.onClick.bind(this);
     this.onDropdownChange = this.onDropdownChange.bind(this);
   }
 
-  onClick() {
-    this.setState({ popoverOpen: !this.state.popoverOpen });
-  }
-
-  onDropdownChange(selected) {
-console.log(selected)
+  onDropdownChange() {
+console.log('i changed!');
   }
 
   renderPopover() {
-    let jsx;
+    const options = [{ id: 1, value: 'users' }, { id: 2, value: 'companies' }];
+    const button = <Button label="Popover" />;
 
-    if (this.state.popoverOpen && this.target) {
-      const options = ['users', 'companies'];
-
-      jsx = <DropdownMenu width="200px" target={ this.target } options={ options } />;
-    }
-
-    return jsx;
+    return <DropdownMenu width="200px" target={ button } options={ options } />;
   }
 
   render() {
@@ -53,16 +42,11 @@ console.log(selected)
           <Card title="hello world!" />
           <Icon type="loader" />
           <Button label="Bar" />
-          <Button
-            ref={ (c) => { this.target = c; } }
-            label="Popover"
-            onClick={ this.onClick }
-          />
           { popover }
         </div>
         <Dropdown
           hint="Select Field"
-          multiple
+          multiple={ true }
           selected={ 1 }
           options={ [
             { id: 1, value: 'option 1' },

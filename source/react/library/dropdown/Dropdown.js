@@ -9,6 +9,7 @@ const propTypes = {
   required: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
+    React.PropTypes.number,
     React.PropTypes.array,
   ]),
 };
@@ -19,23 +20,13 @@ class Dropdown extends React.Component {
 
     const selected = Array.isArray(props.selected) ? props.selected : [props.selected];
 
-    this.state = {
-      open: false,
-      selected,
-    };
+    this.state = { selected };
 
-    this.onClick = this.onClick.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  onClick(e) {
-    e.preventDefault();
-
-    this.setState({ open: !this.state.open });
-  }
-
   onChange(selected) {
-    this.setState({ open: false, selected }, () => {
+    this.setState({ selected }, () => {
       if (this.props.onChange) {
         this.props.onChange(selected);
       }
@@ -56,25 +47,20 @@ class Dropdown extends React.Component {
     });
   }
 
-  renderDropdownMenu() {
+  renderDropdownMenu(button) {
     const options = this.getOptions();
-    let jsx;
 
-    if (this.state.open && this.trigger) {
-      jsx = (
-        <DropdownMenu
-          width="260px"
-          hint={ this.props.hint }
-          multiple={ this.props.multiple }
-          trigger={ this.trigger }
-          onChange={ this.onChange }
-          options={ options }
-          selected={ this.state.selected }
-        />
-      );
-    }
-
-    return jsx;
+    return (
+      <DropdownMenu
+        width="260px"
+        hint={ this.props.hint }
+        multiple={ this.props.multiple }
+        target={ button }
+        onChange={ this.onChange }
+        options={ options }
+        selected={ this.state.selected }
+      />
+    );
   }
 
   renderLabel() {
@@ -101,14 +87,12 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const dropdownMenu = this.renderDropdownMenu();
     const label = this.renderLabel();
+    const button = <a className="rc-dropdown-link" href="javascript:void(0)">{ label }</a>;
+    const dropdownMenu = this.renderDropdownMenu(button);
 
     return (
       <span className="rc-dropdown">
-        <a href="dropdown" ref={ (c) => { this.trigger = c; } } onClick={ this.onClick }>
-          { label }
-        </a>
         { dropdownMenu }
       </span>
     );
