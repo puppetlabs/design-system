@@ -17,7 +17,7 @@ const propTypes = {
 
 const defaultProps = {
   width: 'auto',
-  margin: 5,
+  margin: 10,
 };
 
 class Popover extends React.Component {
@@ -33,7 +33,7 @@ class Popover extends React.Component {
   }
 
   componentDidMount() {
-    this.setPosition(this.props.target);
+    this.setPosition();
   }
 
   onClose() {
@@ -42,9 +42,9 @@ class Popover extends React.Component {
     }
   }
 
-  setPosition(target) {
+  setPosition() {
     /* eslint-disable react/no-find-dom-node */
-    const el = ReactDOM.findDOMNode(target || this.wrapper);
+    const el = ReactDOM.findDOMNode(this.wrapper);
     /* eslint-enable react/no-find-dom-node */
     const elPosition = el.getBoundingClientRect();
 
@@ -65,8 +65,8 @@ class Popover extends React.Component {
     }
 
     return (
-      <div ref={ (c) => { this.wrapper = c; } }>
-        <Portal isOpened closeOnOutsideClick onClose={ this.onClose }>
+      <div style={ { display: 'inline-block' } } ref={ (c) => { this.wrapper = c; } }>
+        <Portal closeOnOutsideClick onClose={ this.onClose } openByClickOn={ this.props.target }>
           <div className={ className } style={ styles }>
             { this.props.children }
           </div>
