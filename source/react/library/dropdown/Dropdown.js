@@ -83,12 +83,12 @@ class Dropdown extends React.Component {
       label = 'Select One';
     }
 
-    return <span className="rc-dropdown-label">{ label }</span>;
+    return label;
   }
 
   render() {
     const label = this.renderLabel();
-    const button = <a className="rc-dropdown-link" href="javascript:void(0)">{ label }</a>;
+    const button = <a className="rc-dropdown-label" href="/dropdown">{ label }</a>;
     const dropdownMenu = this.renderDropdownMenu(button);
 
     return (
