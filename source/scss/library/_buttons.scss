@@ -1,14 +1,12 @@
 .rc-button {
-  font-family: $button-font-family;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-size: 12px;
   display: inline-block;
   height: 44px;
   line-height: 43px;
   text-align: center;
   padding: 0px 20px;
-  background: $button-default-background-color;
+  background: $button-bg;
   color: white;
   border: 1px solid transparent;
   white-space: nowrap;
@@ -35,15 +33,6 @@
       width: 100%;
       height: 100%;
       fill: white;
-    }
-  }
-
-  &.danger {
-    background: $red;
-    color: $white;
-
-    &:hover {
-      background: darken($red, 10%);
     }
   }
 
@@ -77,10 +66,15 @@
 
   &[disabled] {
     &:hover {
-      background-color: $button-disabled-background-color;
+      background-color: $button-disabled-bg;
     }
 
-    background-color: $button-disabled-background-color;
+    background-color: $button-disabled-bg;
+  }
+
+  .rc-button-content {
+    font-family: $button-font-family;
+    font-size: $button-font-size;
   }
 }
 
