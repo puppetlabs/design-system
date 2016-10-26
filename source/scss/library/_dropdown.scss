@@ -1,8 +1,11 @@
 .rc-dropdown-label {
   text-decoration: underline;
+  font-size: $dropdown-label-font-size;
+  font-weight: $dropdown-label-font-weight;
 }
 
 .rc-dropdown-menu {
+
   .rc-dropdown-hint {
     display: block;
     padding: $dropdown-padding;
@@ -26,6 +29,19 @@
     a {
       color: $dropdown-item-selected-color;
       background: $dropdown-item-selected-bg;
+    }
+  }
+
+  .rc-dropdown-item-disabled {
+    a {
+      color: $dropdown-item-disabled-color;
+      background: $dropdown-item-disabled-bg;
+      cursor: default;
+
+      &:hover {
+        color: $dropdown-item-disabled-color;
+        background: $dropdown-item-disabled-bg;
+      }
     }
   }
 

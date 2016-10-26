@@ -4,4 +4,5 @@
   border: $popover-border;
   border-radius: $popover-border-radius;
   box-shadow: $popover-shadow;
+  padding-bottom: $popover-border-radius * 2;
 }

@@ -40,4 +40,13 @@ describe('<DropdownMenuItem />', () => {
 
     expect(onClick.called).to.equal(true);
   });
+
+  it('not respond to click events when disabled', () => {
+    const onClick = sinon.spy();
+    const option = { id: 1, value: 'option 1', disabled: true };
+    const wrapper = shallow(<DropdownMenuItem onClick={ onClick } option={ option } />);
+    wrapper.find('a').simulate('click', { preventDefault: () => { } });
+
+    expect(onClick.called).to.equal(false);
+  });
 });
