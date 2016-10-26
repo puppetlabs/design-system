@@ -78,12 +78,13 @@ class Dropdown extends React.Component {
       if (values.length > 1) {
         const lastIndex = values.length - 1;
         values[lastIndex] = `and ${values[lastIndex]}`;
-        label = values;
-      } else {
-        label = values;
       }
 
-      label = values.join(', ');
+      if (values.length === 2) {
+        label = values.join(' ');
+      } else {
+        label = values.join(', ');
+      }
 
       if (!label) {
         label = 'Select One';
