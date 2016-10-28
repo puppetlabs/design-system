@@ -14,6 +14,8 @@ const defaultProps = {
 
 const defaultViewBox = {
   loader: '0 0 40 40',
+  plus: '0 0 25 25',
+  checkmark: '0 0 27.002 19.146',
   default: '0 0 30 30',
 };
 

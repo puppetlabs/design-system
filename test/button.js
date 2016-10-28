@@ -37,4 +37,11 @@ describe('<Button />', () => {
 
     expect(Icon.prop('type')).to.equal('loader');
   });
+
+  it('should render an icon when provided', () => {
+    const wrapper = shallow(<Button icon="plus" />);
+    const Icon = wrapper.find('Icon');
+
+    expect(Icon.prop('type')).to.equal('plus');
+  });
 });

@@ -14,6 +14,11 @@
   border-radius: $button-border-radius;
   outline: none;
 
+  svg {
+    fill: white;
+    height: 100%;
+  }
+
   &.rc-button-block {
     display: block;
     width: 100%;
@@ -31,8 +36,6 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
-      fill: white;
     }
   }
 
@@ -51,6 +54,7 @@
   &.rc-button-small {
     height: 33px;
     line-height: 33px;
+    padding: 0 8px;
   }
 
   &.rc-button-large {
@@ -72,9 +76,19 @@
     background-color: $button-disabled-bg;
   }
 
+  .rc-button-icon {
+    display: block;
+    height: 100%;
+    float: left;
+  }
+
   .rc-button-content {
     font-family: $button-font-family;
     font-size: $button-font-size;
+  }
+
+  .rc-button-icon + .rc-button-content {
+    padding-left: 10px;
   }
 }
 
