@@ -68,6 +68,10 @@ class Popover extends React.Component {
     });
   }
 
+  close() {
+    this.setState({ open: false });
+  }
+
   render() {
     const className = classnames('rc-popover', this.props.className);
     const styles = this.state.position;

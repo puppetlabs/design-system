@@ -7,6 +7,7 @@ const propTypes = {
   selected: React.PropTypes.bool,
   option: React.PropTypes.object,
   multiple: React.PropTypes.bool,
+  disabled: React.PropTypes.bool,
 };
 
 class DropdownMenuItem extends React.Component {
@@ -19,7 +20,7 @@ class DropdownMenuItem extends React.Component {
   onClick(e) {
     e.preventDefault();
 
-    if (this.props.onClick) {
+    if (this.props.onClick && !this.props.option.disabled) {
       this.props.onClick(this.props.option, !this.props.selected);
     }
   }
@@ -39,6 +40,7 @@ class DropdownMenuItem extends React.Component {
     const checkmark = this.renderCheckmark();
     const className = classnames('rc-dropdown-item', {
       'rc-dropdown-item-selected': this.props.selected,
+      'rc-dropdown-item-disabled': this.props.option.disabled,
     });
 
     return (
