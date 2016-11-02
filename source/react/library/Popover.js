@@ -5,9 +5,11 @@ import debounce from 'debounce';
 import PopoverContent from './PopoverContent';
 
 const propTypes = {
-  onClose: React.PropTypes.func.isRequired,
+  open: React.PropTypes.bool,
+  onClose: React.PropTypes.func,
   target: React.PropTypes.object,
   children: React.PropTypes.oneOfType([
+    React.PropTypes.element,
     React.PropTypes.array,
     React.PropTypes.string,
   ]),
@@ -17,6 +19,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  open: false,
   width: 'auto',
   margin: 10,
 };
@@ -28,7 +31,7 @@ class Popover extends React.Component {
 
     this.state = {
       position: {},
-      open: false,
+      open: props.open,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -36,6 +39,7 @@ class Popover extends React.Component {
     this.onResize = debounce(this.onResize.bind(this), 250);
     this.setPosition = this.setPosition.bind(this);
     this.onOutsideClick = this.onOutsideClick.bind(this);
+    this.setPosition = this.setPosition.bind(this);
   }
 
   componentDidMount() {

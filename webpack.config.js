@@ -22,7 +22,6 @@ module.exports = {
       "commonjs": "react-dom",
       "commonjs2": "react-dom",
       "amd": "react-dom",
-      // React dep should be available as window.React, not window.react
       "root": "ReactDOM"
     }
   },

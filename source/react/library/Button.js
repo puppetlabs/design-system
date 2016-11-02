@@ -51,6 +51,8 @@ class Button extends React.Component {
       floating,
     } = this.props;
     let button;
+    let content;
+    let icon;
 
     const cssClass = classnames(className, 'rc-button', {
       'rc-button-block': block,
@@ -68,10 +70,11 @@ class Button extends React.Component {
       className: cssClass,
     };
 
-    const content = <span className="rc-button-content">{ children || label }</span>;
     const loader = processing ? <Icon height="100%" width="100%" type="loader" /> : null;
 
-    let icon;
+    if (children || label) {
+      content = <span className="rc-button-content">{ children || label }</span>;
+    }
 
     if (this.props.icon) {
       icon = (
