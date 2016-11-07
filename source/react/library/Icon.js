@@ -14,6 +14,8 @@ const defaultProps = {
 
 const defaultViewBox = {
   loader: '0 0 40 40',
+  plus: '0 0 25 25',
+  checkmark: '0 0 27.002 19.146',
   default: '0 0 30 30',
 };
 
@@ -21,7 +23,9 @@ const Icon = (props) => {
   const type = props.type;
   const height = props.height;
   const width = props.width;
+  const svg = icons[type];
   let viewBox = props.viewBox;
+  let icon;
 
   if (!viewBox) {
     if (defaultViewBox[type]) {
@@ -31,12 +35,19 @@ const Icon = (props) => {
     }
   }
 
-  let icon = icons[type];
+  if (svg) {
+    const className = `icon-${type}`;
 
-  if (icon) {
     icon = (
-      <svg width={ width } height={ height } viewBox={ viewBox }>{ icon }</svg>
-    );
+      <svg
+        className={ className }
+        width={ width }
+        height={ height }
+        viewBox={ viewBox }
+      >
+        { svg }
+      </svg>
+    )
   }
 
   return icon;

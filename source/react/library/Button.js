@@ -6,6 +6,7 @@ const propTypes = {
   className: React.PropTypes.string,
   size: React.PropTypes.string,
   secondary: React.PropTypes.bool,
+  icon: React.PropTypes.string,
   floating: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   processing: React.PropTypes.bool,
@@ -70,10 +71,20 @@ class Button extends React.Component {
     const content = <span className="rc-button-content">{ children || label }</span>;
     const loader = processing ? <Icon height="100%" width="100%" type="loader" /> : null;
 
+    let icon;
+
+    if (this.props.icon) {
+      icon = (
+        <span className="rc-button-icon">
+          <Icon height={ '20px' } width={ '20px' } type={ this.props.icon } />
+        </span>
+      );
+    }
+
     if (type) {
-      button = <button { ...btnProps }>{ content }{ loader }</button>;
+      button = <button { ...btnProps }>{ icon } { content }{ loader }</button>;
     } else {
-      button = <a { ...btnProps }>{ content }{ loader }</a>;
+      button = <a { ...btnProps }>{ icon } { content }{ loader }</a>;
     }
 
     return button;
