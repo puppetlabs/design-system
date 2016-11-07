@@ -1,6 +1,6 @@
 {
   "name": "@reflect/reflect-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A React component library to assist in the creation of user interfaces.",
   "main": "build/index.js",
   "scripts": {
