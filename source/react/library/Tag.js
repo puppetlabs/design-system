@@ -43,7 +43,7 @@ class Card extends React.Component {
       'rc-tag-removable': onRemove,
     }, this.props.className);
     let jsx;
-console.log(this.props.selected);
+
     if (this.props.onClick) {
       jsx = (
         <a onClick={ this.onClick } href="" className={ className }>

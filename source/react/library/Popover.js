@@ -102,7 +102,11 @@ class Popover extends React.Component {
     }
 
     return (
-      <div style={ { display: 'inline-block' } } ref={ (c) => { this.elem = c; } }>
+      <div
+        style={ { display: 'inline-block' } }
+        className="rc-popover-wrapper"
+        ref={ (c) => { this.elem = c; } }
+      >
         { button }
         <Portal isOpened={ this.state.open } onClose={ this.onClose }>
           <PopoverContent

@@ -43,6 +43,15 @@ $button-border-radius:            $border-radius !default;
 
 $floating-action-button-height:   60px !default;
 
+// Tags
+
+$tag-font-size:                   $button-font-size !default;
+$tag-font-weight:                 $button-font-weight !default;
+$tag-height:                      33px;
+$tag-bg:                          $gray-light !default;
+$tag-color:                       $gray !default;
+$tag-border-radius:               $button-radius !default;
+
 //
 // Loading indicator options
 //

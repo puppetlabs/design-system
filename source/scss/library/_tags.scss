@@ -1,11 +1,11 @@
 .rc-tag {
   display: block;
   float: left;
-  font-size: 12px;
-  height: 33px;
-  line-height: 33px;
+  font-size: $tag-font-size;
+  height: $tag-height;
+  line-height: $tag-height;
   padding: 0 10px;
-  background: #efefef;
+  background: $tag-bg;
   margin-right: 10px;
-  border-radius: 5px;
+  border-radius: $tag-border-radius;
 }
