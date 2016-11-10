@@ -1,6 +1,7 @@
 import React from 'react';
 import Portal from 'react-portal';
 import classnames from 'classnames';
+import debounce from 'debounce';
 import PopoverContent from './PopoverContent';
 
 const propTypes = {
@@ -32,10 +33,22 @@ class Popover extends React.Component {
 
     this.onClick = this.onClick.bind(this);
     this.onClose = this.onClose.bind(this);
+    this.onResize = debounce(this.onResize.bind(this), 250);
+    this.setPosition = this.setPosition.bind(this);
     this.onOutsideClick = this.onOutsideClick.bind(this);
   }
 
   componentDidMount() {
+    this.setPosition();
+
+    window.addEventListener('resize', this.onResize);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  onResize() {
     this.setPosition();
   }
 
