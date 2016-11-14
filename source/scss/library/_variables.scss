@@ -48,9 +48,12 @@ $floating-action-button-height:   60px !default;
 $tag-font-size:                   $button-font-size !default;
 $tag-font-weight:                 $button-font-weight !default;
 $tag-height:                      33px;
+$tag-line-height:                 29px;
 $tag-bg:                          $gray-light !default;
 $tag-color:                       $gray !default;
-$tag-border-radius:               $button-radius !default;
+$tag-border-radius:               $button-border-radius !default;
+$tag-border:                      2px solid $tag-bg !default;
+$tag-border-selected:             2px solid $brand-primary !default;
 
 //
 // Loading indicator options

@@ -9,7 +9,7 @@ const propTypes = {
   onClick: React.PropTypes.func,
 };
 
-class Card extends React.Component {
+class Tag extends React.Component {
 
   constructor(props) {
     super(props);
@@ -62,6 +62,6 @@ class Card extends React.Component {
   }
 }
 
-Card.propTypes = propTypes;
+Tag.propTypes = propTypes;
 
-export default Card;
+export default Tag;

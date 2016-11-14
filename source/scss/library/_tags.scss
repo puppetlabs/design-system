@@ -1,11 +1,17 @@
 .rc-tag {
   display: block;
   float: left;
+  background: $tag-bg;
+  color: $tag-color !important;
   font-size: $tag-font-size;
   height: $tag-height;
-  line-height: $tag-height;
+  line-height: $tag-line-height;
   padding: 0 10px;
-  background: $tag-bg;
   margin-right: 10px;
   border-radius: $tag-border-radius;
+  border: $tag-border;
+}
+
+.rc-tag-selected {
+  border: $tag-border-selected;
 }
