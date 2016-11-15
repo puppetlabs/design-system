@@ -77,9 +77,11 @@ class Button extends React.Component {
     }
 
     if (this.props.icon) {
+      const iconSize = this.props.size === 'small' ? '15px' : '20px';
+
       icon = (
         <span className="rc-button-icon">
-          <Icon height={ '20px' } width={ '20px' } type={ this.props.icon } />
+          <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />
         </span>
       );
     }
