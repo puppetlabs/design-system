@@ -5,6 +5,8 @@
 }
 
 .rc-dropdown-menu {
+  padding: 0;
+  padding-bottom: $popover-border-radius * 2;
 
   .rc-dropdown-hint {
     display: block;

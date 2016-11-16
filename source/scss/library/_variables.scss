@@ -43,6 +43,18 @@ $button-border-radius:            $border-radius !default;
 
 $floating-action-button-height:   60px !default;
 
+// Tags
+
+$tag-font-size:                   $button-font-size !default;
+$tag-font-weight:                 $button-font-weight !default;
+$tag-height:                      33px;
+$tag-line-height:                 29px;
+$tag-bg:                          $gray-light !default;
+$tag-color:                       $gray !default;
+$tag-border-radius:               $button-border-radius !default;
+$tag-border:                      2px solid $tag-bg !default;
+$tag-border-selected:             2px solid $brand-primary !default;
+
 //
 // Loading indicator options
 //
@@ -55,6 +67,7 @@ $popover-bg:                      $white !default;
 $popover-border:                  none !default;
 $popover-border-radius:           $border-radius !default;
 $popover-shadow:                  0 0 6px rgba(0, 0, 0, .2) !default;
+$popover-padding:                 $padding;
 
 //
 // Dropdown

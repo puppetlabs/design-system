@@ -15,7 +15,11 @@ const propTypes = {
   onOutsideClick: React.PropTypes.func,
   className: React.PropTypes.string,
   style: React.PropTypes.object,
-  children: React.PropTypes.array,
+  children: React.PropTypes.oneOfType([
+    React.PropTypes.element,
+    React.PropTypes.array,
+    React.PropTypes.string,
+  ]),
 };
 
 class PopoverContent extends React.Component {
