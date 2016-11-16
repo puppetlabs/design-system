@@ -42,12 +42,12 @@
   &.secondary {
     background: transparent;
     border: 1px solid $gray;
-    color: $gray;
+    color: $gray !important;
 
     &:hover {
       background: $gray-dark;
       border: 1px solid $gray-dark;
-      color: white;
+      color: white !important;
     }
   }
 
@@ -65,7 +65,7 @@
 
   &:hover {
     background: darken($brand-primary, 10%);
-    color: #fff;
+    color: #fff !important;
   }
 
   &[disabled] {
