@@ -22,13 +22,9 @@ module.exports = {
       "commonjs": "react-dom",
       "commonjs2": "react-dom",
       "amd": "react-dom",
-      // React dep should be available as window.React, not window.react
       "root": "ReactDOM"
     }
   },
-  plugins: [
-    new webpack.optimize.UglifyJsPlugin({ compress: { warnings: false } })
-  ],
   module: {
     loaders: [{
       test: /\.js$/,
