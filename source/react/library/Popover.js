@@ -37,7 +37,6 @@ class Popover extends React.Component {
     this.onClick = this.onClick.bind(this);
     this.onClose = this.onClose.bind(this);
     this.onResize = debounce(this.onResize.bind(this), 250);
-    this.setPosition = this.setPosition.bind(this);
     this.onOutsideClick = this.onOutsideClick.bind(this);
     this.setPosition = this.setPosition.bind(this);
   }
@@ -46,6 +45,12 @@ class Popover extends React.Component {
     this.setPosition();
 
     window.addEventListener('resize', this.onResize);
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    if (this.state.open !== nextState.open) {
+      this.setPosition();
+    }
   }
 
   componentWillUnmount() {

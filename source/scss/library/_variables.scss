@@ -12,7 +12,7 @@ $brand-info:                     #5bc0de !default;
 $brand-warning:                  #f0ad4e !default;
 $brand-danger:                   #d9534f !default;
 
-$font-family:                   'Open Sans', sans-serif;
+$font-family:                   'Open Sans', sans-serif !default;
 
 $border-color:                   #dedede !default;
 $border-hover-color:             $gray !default;
@@ -75,8 +75,11 @@ $popover-padding:                 $padding;
 $dropdown-padding:                12px !default;
 $dropdown-label-font-size:        $font-size-medium !default;
 $dropdown-label-font-weight:      600 !default;
+$dropdown-label-color:            $brand-primary !default;
 $dropdown-hint-color:             $gray !default;
 $dropdown-hint-font-size:         $font-size-medium !default;
+$dropdown-item-font-size:         $font-size-base !default;
+$dropdown-item-line-height:       $font-size-base !default;
 $dropdown-item-hover-color:       $white !default;
 $dropdown-item-hover-bg:          darken($brand-primary, 10%) !default;
 $dropdown-item-selected-color:    $white !default;
