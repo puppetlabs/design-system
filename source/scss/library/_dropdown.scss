@@ -2,6 +2,7 @@
   text-decoration: underline;
   font-size: $dropdown-label-font-size;
   font-weight: $dropdown-label-font-weight;
+  color: $dropdown-label-color;
 }
 
 .rc-dropdown-menu {
@@ -16,6 +17,9 @@
   }
 
   .rc-dropdown-item {
+    font-size: $dropdown-item-font-size;
+    line-height: $dropdown-item-line-height;
+
     a {
       display: block;
       padding: $dropdown-padding;
@@ -61,7 +65,7 @@
       svg {
         position: absolute;
         top: 50%;
-        transform: translateY(-25%);
+        transform: translateY(-27%);
         left: $dropdown-padding;
 
         * {
