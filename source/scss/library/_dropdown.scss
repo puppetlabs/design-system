@@ -60,12 +60,13 @@
   .rc-dropdown-item {
     a {
       position: relative;
-      padding-left: $dropdown-padding * 3;
+      // 16px is currently the size of the checkmark icon.
+      padding-left: $dropdown-padding + 16px + $dropdown-padding;
 
       svg {
         position: absolute;
         top: 50%;
-        transform: translateY(-27%);
+        transform: translateY(-50%);
         left: $dropdown-padding;
 
         * {
