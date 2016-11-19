@@ -84,8 +84,8 @@ class Popover extends React.Component {
 
     this.setState({
       position: {
-        top: elPosition.bottom + this.props.margin + window.scrollY,
-        left: elPosition.left + window.scrollX,
+        top: elPosition.bottom + this.props.margin + window.pageYOffset,
+        left: elPosition.left + window.pageXOffset,
       },
     });
   }
