@@ -7,6 +7,7 @@ import Icon from '../library/Icon';
 import icons from '../library/icons';
 import Dropdown from '../library/dropdown/Dropdown';
 import DropdownMenu from '../library/dropdown/DropdownMenu';
+import Input from '../library/Input';
 
 class Styleguide extends React.Component {
 
@@ -69,6 +70,8 @@ class Styleguide extends React.Component {
             { id: 4, value: 'option 4' },
           ] }
         />
+      < Input size="small" placeholder="Placeholder" />
+        < Input type="checkbox" />
       </div>
     );
   }
