@@ -1,0 +1,78 @@
+.rc-dropdown-label {
+  text-decoration: underline;
+  font-size: $dropdown-label-font-size;
+  font-weight: $dropdown-label-font-weight;
+  color: $dropdown-label-color;
+}
+
+.rc-dropdown-menu {
+  padding: 0;
+  padding-bottom: $popover-border-radius * 2;
+
+  .rc-dropdown-hint {
+    display: block;
+    padding: $dropdown-padding;
+    color: $dropdown-hint-color;
+    font-size: $dropdown-hint-font-size;
+  }
+
+  .rc-dropdown-item {
+    font-size: $dropdown-item-font-size;
+    line-height: $dropdown-item-line-height;
+
+    a {
+      display: block;
+      padding: $dropdown-padding;
+
+      &:hover {
+        color: $dropdown-item-hover-color;
+        background: $dropdown-item-hover-bg;
+      }
+    }
+  }
+
+  .rc-dropdown-item-selected {
+    a {
+      color: $dropdown-item-selected-color;
+      background: $dropdown-item-selected-bg;
+    }
+  }
+
+  .rc-dropdown-item-disabled {
+    a {
+      color: $dropdown-item-disabled-color;
+      background: $dropdown-item-disabled-bg;
+      cursor: default;
+
+      &:hover {
+        color: $dropdown-item-disabled-color;
+        background: $dropdown-item-disabled-bg;
+      }
+    }
+  }
+
+  li:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.rc-dropdown-menu-multiple {
+  .rc-dropdown-item {
+    a {
+      position: relative;
+      // 16px is currently the size of the checkmark icon.
+      padding-left: $dropdown-padding + 16px + $dropdown-padding;
+
+      svg {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: $dropdown-padding;
+
+        * {
+          fill: $dropdown-item-selected-color;
+        }
+      }
+    }
+  }
+}

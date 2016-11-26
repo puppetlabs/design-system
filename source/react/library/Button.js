@@ -6,6 +6,7 @@ const propTypes = {
   className: React.PropTypes.string,
   size: React.PropTypes.string,
   secondary: React.PropTypes.bool,
+  icon: React.PropTypes.string,
   floating: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   processing: React.PropTypes.bool,
@@ -50,6 +51,8 @@ class Button extends React.Component {
       floating,
     } = this.props;
     let button;
+    let content;
+    let icon;
 
     const cssClass = classnames(className, 'rc-button', {
       'rc-button-block': block,
@@ -67,13 +70,26 @@ class Button extends React.Component {
       className: cssClass,
     };
 
-    const content = <span className="rc-button-content">{ children || label }</span>;
     const loader = processing ? <Icon height="100%" width="100%" type="loader" /> : null;
 
+    if (children || label) {
+      content = <span className="rc-button-content">{ children || label }</span>;
+    }
+
+    if (this.props.icon) {
+      const iconSize = this.props.size === 'small' ? '15px' : '20px';
+
+      icon = (
+        <span className="rc-button-icon">
+          <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />
+        </span>
+      );
+    }
+
     if (type) {
-      button = <button { ...btnProps }>{ content }{ loader }</button>;
+      button = <button { ...btnProps }>{ icon } { content }{ loader }</button>;
     } else {
-      button = <a { ...btnProps }>{ content }{ loader }</a>;
+      button = <a { ...btnProps }>{ icon } { content }{ loader }</a>;
     }
 
     return button;

@@ -2,16 +2,15 @@
   "name": "@reflect/reflect-components",
   "version": "0.0.2",
   "description": "A React component library to assist in the creation of user interfaces.",
-  "main": "build/index.js",
+  "main": "build/library.js",
   "scripts": {
-    "prebuild": "rimraf build",
-    "build": "npm run build:js",
-    "build:js": "NODE_ENV=production babel ./source --out-dir ./build --ignore .scss",
+    "prebuild": "./node_modules/.bin/rimraf build",
+    "build": "NODE_ENV=production webpack",
     "prepublish": "npm run build",
-    "watch:js": "nodemon --watch source -e js -x \"npm run build:js\"",
-    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register",
+    "watch": "nodemon --watch source -x \"npm run build\"",
+    "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
     "lint": "./node_modules/.bin/eslint --quiet source/**/*.js",
-    "start": "./node_modules/.bin/webpack-dev-server"
+    "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -23,11 +22,6 @@
     "url": "https://github.com/reflect/reflect-components/issues"
   },
   "homepage": "https://github.com/reflect/reflect-components#readme",
-  "dependencies": {
-    "classnames": "^2.2.5",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2"
-  },
   "devDependencies": {
     "babel-cli": "^6.14.0",
     "babel-core": "^6.14.0",
@@ -40,7 +34,9 @@
     "babel-preset-react-hmre": "^1.1.1",
     "chai": "^3.5.0",
     "chai-enzyme": "^0.5.1",
+    "classnames": "^2.2.5",
     "css-loader": "^0.25.0",
+    "debounce": "^1.0.0",
     "enzyme": "^2.4.1",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^11.1.0",
@@ -53,12 +49,19 @@
     "mocha-jsdom": "^1.1.0",
     "nodemon": "^1.10.2",
     "node-sass": "^3.10.1",
+    "react": "^15.3.2",
     "react-addons-test-utils": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-portal": "^2.2.1",
     "sass-loader": "^4.0.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.25",
     "webpack-dev-server": "^1.16.1"
+  },
+  "peerDependencies": {
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2"
   }
 }
