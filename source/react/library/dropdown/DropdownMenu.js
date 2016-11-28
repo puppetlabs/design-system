@@ -103,7 +103,7 @@ class DropdownMenu extends React.Component {
     const options = this.getOptions();
 
     if (this.props.options) {
-      options.forEach((option) => {
+      options.forEach(option => {
         jsx.push(
           <DropdownMenuItem
             key={ option.id }
