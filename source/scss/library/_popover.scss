@@ -5,4 +5,16 @@
   border-radius: $popover-border-radius;
   box-shadow: $popover-shadow;
   padding: $popover-padding;
+
+  &.rc-popover-small {
+    width: $popover-small-width;
+  }
+
+  &.rc-popover-medium {
+    width: $popover-medium-width;
+  }
+
+  &.rc-popover-large {
+    width: $popover-large-width;
+  }
 }
