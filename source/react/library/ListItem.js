@@ -51,13 +51,9 @@ class ListItem extends React.Component {
 
     if (this.props.onRemove) {
       jsx = (
-        <a
-          href="/#/list-item-remove"
-          className="rc-list-item-remove"
-          onClick={ this.onRemove }
-        >
+        <button className="rc-list-item-remove" onClick={ this.onRemove }>
           <Icon type="delete" />
-        </a>
+        </button>
       );
     }
 
@@ -69,13 +65,9 @@ class ListItem extends React.Component {
 
     if (this.props.onEdit) {
       jsx = (
-        <a
-          href="/#/list-item-edit"
-          className="rc-list-item-edit"
-          onClick={ this.onEdit }
-        >
+        <button className="rc-list-item-edit" onClick={ this.onEdit }>
           <Icon type="edit" />
-        </a>
+        </button>
       );
     }
 
@@ -88,11 +80,13 @@ class ListItem extends React.Component {
     const remove = this.renderRemove();
 
     return (
-      <a href="/#/list-item-click" className={ className } onClick={ this.onClick }>
-        { this.props.children }
-        { edit }
-        { remove }
-      </a>
+      <li className={ className }>
+        <a href="/#/list-item-click" onClick={ this.onClick }>
+          { this.props.children }
+          { edit }
+          { remove }
+        </a>
+      </li>
     );
   }
 }
