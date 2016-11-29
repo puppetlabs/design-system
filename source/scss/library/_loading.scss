@@ -1,5 +1,7 @@
-.rui-loading {
+.rc-loading {
   width: 100%;
+  text-align: center;
+  line-height: 1;
 
   path {
     fill: $loading-indicator-fill;
