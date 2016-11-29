@@ -7,6 +7,7 @@ const propTypes = {
   children: React.PropTypes.string,
   onRemove: React.PropTypes.func,
   onEdit: React.PropTypes.func,
+  onClick: React.PropTypes.func,
 };
 
 class ListItem extends React.Component {
@@ -15,11 +16,21 @@ class ListItem extends React.Component {
     super(props);
 
     this.onRemove = this.onRemove.bind(this);
+    this.onClick = this.onClick.bind(this);
     this.onEdit = this.onEdit.bind(this);
+  }
+
+  onClick(e) {
+    e.preventDefault();
+
+    if (this.props.onClick) {
+      this.props.onClick();
+    }
   }
 
   onRemove(e) {
     e.preventDefault();
+    e.stopPropagation();
 
     if (this.props.onRemove) {
       this.props.onRemove(this.props.id);
@@ -28,6 +39,7 @@ class ListItem extends React.Component {
 
   onEdit(e) {
     e.preventDefault();
+    e.stopPropagation();
 
     if (this.props.onEdit) {
       this.props.onEdit(this.props.id);
@@ -38,7 +50,15 @@ class ListItem extends React.Component {
     let jsx;
 
     if (this.props.onRemove) {
-      jsx = <a href="#/remove" onClick={ this.onRemove }><Icon type="delete" /></a>;
+      jsx = (
+        <a
+          href="/#/list-item-remove"
+          className="rc-list-item-remove"
+          onClick={ this.onRemove }
+        >
+          <Icon type="delete" />
+        </a>
+      );
     }
 
     return jsx;
@@ -48,7 +68,15 @@ class ListItem extends React.Component {
     let jsx;
 
     if (this.props.onEdit) {
-      jsx = <a href="#/edit" onClick={ this.onEdit }><Icon type="edit" /></a>;
+      jsx = (
+        <a
+          href="/#/list-item-edit"
+          className="rc-list-item-edit"
+          onClick={ this.onEdit }
+        >
+          <Icon type="edit" />
+        </a>
+      );
     }
 
     return jsx;
@@ -60,11 +88,11 @@ class ListItem extends React.Component {
     const remove = this.renderRemove();
 
     return (
-      <li className={ className }>
+      <a href="/#/list-item-click" className={ className } onClick={ this.onClick }>
         { this.props.children }
         { edit }
         { remove }
-      </li>
+      </a>
     );
   }
 }

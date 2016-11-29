@@ -37,7 +37,7 @@ const Icon = (props) => {
   }
 
   if (svg) {
-    const className = `icon-${type}`;
+    const className = `rc-icon rc-icon-${type}`;
 
     icon = (
       <svg
@@ -48,7 +48,7 @@ const Icon = (props) => {
       >
         { svg }
       </svg>
-    )
+    );
   }
 
   return icon;

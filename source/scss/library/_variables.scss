@@ -107,6 +107,25 @@ $card-title-color:                $gray !default;
 $card-subtitle-color:             $gray !default;
 
 //
+// List Item
+//
+
+$list-item-color:                 $gray !default;
+$list-item-border:                $border !default;
+$list-item-border-radius:         $border-radius !default;
+$list-item-font-size:             $button-font-size !default;
+$list-item-padding:               6px 12px !default;
+$list-item-margin-bottom:         10px !default;
+$list-item-icon-top:              6px !default;
+$list-item-icon-height:           16px !default;
+
+//
+// Icons
+//
+
+$icon-fill:                       $gray !default;
+
+//
 // Input
 //
-$input-border-radius:            $border-radius;
+$input-border-radius:             $border-radius !default;

@@ -1,0 +1,33 @@
+a.rc-list-item {
+  display: block;
+  position: relative;
+  color: $list-item-color;
+  border: $list-item-border;
+  border-radius: $list-item-border-radius;
+  font-size: $list-item-font-size;
+  padding: $list-item-padding;
+  margin-bottom: $list-item-margin-bottom;
+
+  .rc-list-item-edit, .rc-list-item-remove {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: block;
+    width: 30px;
+    text-align: center;
+  }
+
+  .rc-list-item-edit {
+    right: 30px;
+  }
+
+  .rc-list-item-remove {
+    right: 0;
+  }
+
+  .rc-icon {
+    position: relative;
+    top: $list-item-icon-top;
+    height: $list-item-icon-height;
+  }
+}
