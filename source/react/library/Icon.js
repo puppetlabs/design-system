@@ -13,6 +13,7 @@ const defaultProps = {
 };
 
 const defaultViewBox = {
+  edit: '0 0 25.979 25.979',
   loader: '0 0 40 40',
   plus: '0 0 25 25',
   checkmark: '0 0 27.002 19.146',
