@@ -1,0 +1,47 @@
+.rc-input {
+
+  padding: 10px 12px;
+  width: 100%;
+  color: $gray-darker;
+  border: 1px solid $border-color;
+  border-radius: $input-border-radius;
+  outline: none;
+
+  &:focus {
+    background: #fff;
+    border: 1px solid $brand-primary;
+    box-shadow: 0px 0px 0px 1px $brand-primary;
+  }
+
+  &[disabled] {
+    background: $gray-lighter;
+    color: $gray;
+  }
+
+  &.rc-input-large {
+    padding: 0px 20px;
+    height: 60px;
+    font-size: 18px;
+  }
+
+  &.rc-input-small {
+    font-size: 11px;
+    padding: 6px 6px;
+  }
+
+  &::-webkit-input-placeholder {
+    color: #ccc;
+  }
+
+  &:-moz-placeholder { /* Firefox 18- */
+    color: #ccc;
+  }
+
+  &::-moz-placeholder {  /* Firefox 19+ */
+    color: #ccc;
+  }
+
+  &:-ms-input-placeholder {
+    color: #ccc;
+  }
+}

@@ -1,4 +1,5 @@
 $white:                          #fff !default;
+
 $gray-base:                      #201F1E !default;
 $gray-darker:                    lighten($gray-base, 19%) !default;
 $gray-dark:                      lighten($gray-base, 38%) !default;
@@ -73,6 +74,7 @@ $popover-padding:                 $padding;
 // Dropdown
 //
 $dropdown-padding:                12px !default;
+$dropdown-max-height:             400px !default;
 $dropdown-label-font-size:        $font-size-medium !default;
 $dropdown-label-font-weight:      600 !default;
 $dropdown-label-color:            $brand-primary !default;
@@ -100,3 +102,8 @@ $card-remove-background:          $gray-lighter !default;
 $card-color:                      $gray !default;
 $card-title-color:                $gray !default;
 $card-subtitle-color:             $gray !default;
+
+//
+// Input
+//
+$input-border-radius:            $border-radius;

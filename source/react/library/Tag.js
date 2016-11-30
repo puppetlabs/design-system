@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: React.PropTypes.object,
+  children: React.PropTypes.any,
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
   onRemove: React.PropTypes.func,
