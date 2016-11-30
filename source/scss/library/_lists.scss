@@ -9,6 +9,8 @@
     padding: $list-item-padding;
     margin-bottom: $list-item-margin-bottom;
 
+
+    // resets for the standard button
     button {
       cursor: pointer;
       background: none;
@@ -26,12 +28,12 @@
       top: 0;
       bottom: 0;
       display: block;
-      width: 30px;
+      width: $list-item-action-width;
       text-align: center;
     }
 
     .rc-list-item-edit {
-      right: 30px;
+      right: $list-item-action-width;
     }
 
     .rc-list-item-remove {
