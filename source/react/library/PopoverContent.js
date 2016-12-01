@@ -5,6 +5,7 @@ function isNodeInRoot(node, root) {
     if (node === root) {
       return true;
     }
+
     node = node.parentNode;
   }
 
@@ -15,11 +16,7 @@ const propTypes = {
   onOutsideClick: React.PropTypes.func,
   className: React.PropTypes.string,
   style: React.PropTypes.object,
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.array,
-    React.PropTypes.string,
-  ]),
+  children: React.PropTypes.any,
 };
 
 class PopoverContent extends React.Component {
@@ -31,21 +28,15 @@ class PopoverContent extends React.Component {
   }
 
   componentWillMount() {
-    document.addEventListener('click', this.onOutsideClick);
+    document.addEventListener('click', this.onOutsideClick, true);
   }
 
   componentWillUnmount() {
-    document.removeEventListener('click', this.onOutsideClick);
+    document.removeEventListener('click', this.onOutsideClick, true);
   }
 
   onOutsideClick(e) {
-    e.stopPropagation();
-
-    if (isNodeInRoot(e.target, this.elem)) {
-      return;
-    }
-
-    if (this.props.onOutsideClick) {
+    if (!isNodeInRoot(e.target, this.elem) && this.props.onOutsideClick) {
       this.props.onOutsideClick(e);
     }
   }
