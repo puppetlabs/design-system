@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import Icon from './Icon';
+import Button from './Button';
 
 const propTypes = {
   id: React.PropTypes.number,
@@ -51,9 +52,14 @@ class ListItem extends React.Component {
 
     if (this.props.onRemove) {
       jsx = (
-        <button className="rc-list-item-remove" onClick={ this.onRemove }>
-          <Icon type="delete" />
-        </button>
+        <Button
+          transparent
+          className="rc-list-item-remove"
+          type="button"
+          size="small"
+          icon="delete"
+          onClick={ this.onRemove }
+        />
       );
     }
 
@@ -65,9 +71,14 @@ class ListItem extends React.Component {
 
     if (this.props.onEdit) {
       jsx = (
-        <button className="rc-list-item-edit" onClick={ this.onEdit }>
-          <Icon type="edit" />
-        </button>
+        <Button
+          transparent
+          className="rc-list-item-edit"
+          type="button"
+          size="small"
+          icon="edit"
+          onClick={ this.onEdit }
+        />
       );
     }
 

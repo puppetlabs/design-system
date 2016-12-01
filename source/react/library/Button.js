@@ -6,6 +6,7 @@ const propTypes = {
   className: React.PropTypes.string,
   size: React.PropTypes.string,
   secondary: React.PropTypes.bool,
+  transparent: React.PropTypes.bool,
   icon: React.PropTypes.string,
   floating: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
@@ -42,6 +43,7 @@ class Button extends React.Component {
       label,
       type,
       secondary,
+      transparent,
       disabled,
       processing,
       block,
@@ -50,6 +52,7 @@ class Button extends React.Component {
       className,
       floating,
     } = this.props;
+
     let button;
     let content;
     let icon;
@@ -58,8 +61,9 @@ class Button extends React.Component {
       'rc-button-block': block,
       'rc-button-processing': processing,
       'rc-floating-action-button': floating,
+      'rc-button-secondary': secondary,
+      'rc-button-transparent': transparent,
       [`rc-button-${size}`]: size,
-      secondary,
     });
 
     const btnProps = {
@@ -79,11 +83,7 @@ class Button extends React.Component {
     if (this.props.icon) {
       const iconSize = this.props.size === 'small' ? '15px' : '20px';
 
-      icon = (
-        <span className="rc-button-icon">
-          <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />
-        </span>
-      );
+      icon = <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />;
     }
 
     if (type) {

@@ -9,20 +9,6 @@
     padding: $list-item-padding;
     margin-bottom: $list-item-margin-bottom;
 
-
-    // resets for the standard button
-    button {
-      cursor: pointer;
-      background: none;
-      border: 0;
-      padding: 0;
-      line-height: normal;
-      outline: none;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-    }
-
     .rc-list-item-edit, .rc-list-item-remove {
       position: absolute;
       top: 0;
@@ -38,12 +24,6 @@
 
     .rc-list-item-remove {
       right: 0;
-    }
-
-    .rc-icon {
-      position: relative;
-      top: $list-item-icon-top;
-      height: $list-item-icon-height;
     }
   }
 }

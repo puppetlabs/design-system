@@ -1,3 +1,23 @@
+@mixin button-colors($bg, $bg-hover, $color, $color-hover, $border, $border-hover) {
+  background: $bg;
+  border: 1px solid $border;
+  color: $color !important;
+
+  .rc-icon {
+    fill: $color;
+  }
+
+  &:hover {
+    background: $bg-hover;
+    border: 1px solid $border;
+    color: $color-hover !important;
+
+    .rc-icon {
+      fill: $color-hover;
+    }
+  }
+}
+
 .rc-button {
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -6,18 +26,19 @@
   line-height: 43px;
   text-align: center;
   padding: 0px 20px;
-  background: $button-bg;
-  color: white !important;
-  border: 1px solid transparent;
   white-space: nowrap;
   cursor: pointer;
   border-radius: $button-border-radius;
   outline: none;
 
-  svg {
-    fill: white;
-    height: 100%;
-  }
+  @include button-colors(
+    $button-bg,
+    $button-bg-hover,
+    $button-color,
+    $button-color-hover,
+    $button-border-color,
+    $button-border-color-hover
+  );
 
   &.rc-button-block {
     display: block;
@@ -31,7 +52,7 @@
       visibility: hidden;
     }
 
-    svg {
+    .rc-icon {
       position: absolute;
       top: 0;
       left: 0;
@@ -39,17 +60,29 @@
     }
   }
 
-  &.secondary {
-    background: transparent;
-    border: 1px solid $gray;
-    color: $gray !important;
-
-    &:hover {
-      background: $gray-dark;
-      border: 1px solid $gray-dark;
-      color: white !important;
-    }
+  &.rc-button-secondary {
+    @include button-colors(
+      $button-secondary-bg,
+      $button-secondary-bg-hover,
+      $button-secondary-color,
+      $button-secondary-color-hover,
+      $button-secondary-border-color,
+      $button-secondary-border-color-hover
+    )
   }
+
+  &.rc-button-transparent {
+    @include button-colors(
+      transparent,
+      transparent,
+      $button-transparent-color,
+      $button-transparent-color-hover,
+      transparent,
+      transparent
+    );
+  }
+
+  &rc
 
   &.rc-button-small {
     height: 33px;
@@ -63,11 +96,6 @@
     line-height: 59px;
   }
 
-  &:hover {
-    background: darken($brand-primary, 10%);
-    color: #fff !important;
-  }
-
   &[disabled] {
     &:hover {
       background-color: $button-disabled-bg;
@@ -77,10 +105,10 @@
     background-color: $button-disabled-bg;
   }
 
-  .rc-button-icon {
+  .rc-icon {
+    float: left;
     display: block;
     height: 100%;
-    float: left;
   }
 
   .rc-button-content {
