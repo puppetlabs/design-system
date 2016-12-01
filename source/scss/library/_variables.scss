@@ -126,7 +126,10 @@ $card-subtitle-color:             $gray !default;
 // List Item
 //
 
+$list-item-bg:                    $white !default;
+$list-item-bg-hover:              $gray-lighter !default;
 $list-item-color:                 $gray !default;
+$list-item-color-hover:           $gray-dark !default;
 $list-item-border:                $border !default;
 $list-item-border-radius:         $border-radius !default;
 $list-item-font-size:             $font-size-medium !default;

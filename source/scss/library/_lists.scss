@@ -2,12 +2,18 @@
   a {
     display: block;
     position: relative;
+    background: $list-item-bg;
     color: $list-item-color;
     border: $list-item-border;
     border-radius: $list-item-border-radius;
     font-size: $list-item-font-size;
     padding: $list-item-padding;
     margin-bottom: $list-item-margin-bottom;
+
+    &:hover {
+      color: $list-item-color-hover;
+      background: $list-item-bg-hover;
+    }
 
     .rc-list-item-edit, .rc-list-item-remove {
       position: absolute;
