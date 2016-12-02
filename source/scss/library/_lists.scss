@@ -10,6 +10,10 @@
     padding: $list-item-padding;
     margin-bottom: $list-item-margin-bottom;
 
+    &.rc-list-item-selected {
+      border: $list-item-border-selected;
+    }
+
     &:hover {
       color: $list-item-color-hover;
       background: $list-item-bg-hover;

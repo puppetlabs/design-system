@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import Button from './Button';
 
 const propTypes = {
@@ -7,6 +8,7 @@ const propTypes = {
   onRemove: React.PropTypes.func,
   onEdit: React.PropTypes.func,
   onClick: React.PropTypes.func,
+  selected: React.PropTypes.bool,
 };
 
 class ListItem extends React.Component {
@@ -84,13 +86,13 @@ class ListItem extends React.Component {
   }
 
   render() {
-    const className = 'rc-list-item';
+    const className = classnames('rc-list-item', { 'rc-list-item-selected': this.props.selected });
     const edit = this.renderEdit();
     const remove = this.renderRemove();
 
     return (
       <li className={ className }>
-        <a href="/#/list-item-click" onClick={ this.onClick }>
+        <a href="/#/list-item-click" className="rc-list-item-link" onClick={ this.onClick }>
           { this.props.children }
           { edit }
           { remove }

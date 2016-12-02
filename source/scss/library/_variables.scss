@@ -19,6 +19,7 @@ $border-color:                   #dedede !default;
 $border-hover-color:             $gray !default;
 $border-radius:                  4px !default;
 $border:                         1px solid $border-color !default;
+$border-active:                  1px solid $brand-primary !default;
 $border-hover:                   1px solid $border-hover-color !default;
 
 $outer-shadow:                   0 0px 1px rgba(0, 0, 0, .05) !default;
@@ -131,6 +132,7 @@ $list-item-bg-hover:              $gray-lighter !default;
 $list-item-color:                 $gray !default;
 $list-item-color-hover:           $gray-dark !default;
 $list-item-border:                $border !default;
+$list-item-border-selected:       $border-active !default;
 $list-item-border-radius:         $border-radius !default;
 $list-item-font-size:             $font-size-medium !default;
 $list-item-padding:               6px 12px !default;
