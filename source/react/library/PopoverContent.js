@@ -38,6 +38,7 @@ class PopoverContent extends React.Component {
   onOutsideClick(e) {
     if (!isNodeInRoot(e.target, this.elem) && this.props.onOutsideClick) {
       this.props.onOutsideClick(e);
+      e.stopPropagation();
     }
   }
 
