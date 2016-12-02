@@ -3,12 +3,15 @@ import classnames from 'classnames';
 import Button from './Button';
 
 const propTypes = {
-  id: React.PropTypes.number,
   children: React.PropTypes.string,
   onRemove: React.PropTypes.func,
   onEdit: React.PropTypes.func,
   onClick: React.PropTypes.func,
   selected: React.PropTypes.bool,
+};
+
+const defaultProps = {
+  selected: false,
 };
 
 class ListItem extends React.Component {
@@ -25,7 +28,7 @@ class ListItem extends React.Component {
     e.preventDefault();
 
     if (this.props.onClick) {
-      this.props.onClick();
+      this.props.onClick(!this.props.selected);
     }
   }
 
@@ -34,7 +37,7 @@ class ListItem extends React.Component {
     e.stopPropagation();
 
     if (this.props.onRemove) {
-      this.props.onRemove(this.props.id);
+      this.props.onRemove();
     }
   }
 
@@ -43,7 +46,7 @@ class ListItem extends React.Component {
     e.stopPropagation();
 
     if (this.props.onEdit) {
-      this.props.onEdit(this.props.id);
+      this.props.onEdit();
     }
   }
 
@@ -103,5 +106,6 @@ class ListItem extends React.Component {
 }
 
 ListItem.propTypes = propTypes;
+ListItem.defaultProps = defaultProps;
 
 export default ListItem;

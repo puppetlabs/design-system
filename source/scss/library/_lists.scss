@@ -1,4 +1,11 @@
 .rc-list-item {
+
+  &.rc-list-item-selected {
+    a {
+      border: $list-item-border-selected;  
+    }
+  }
+
   a {
     display: block;
     position: relative;
@@ -9,10 +16,6 @@
     font-size: $list-item-font-size;
     padding: $list-item-padding;
     margin-bottom: $list-item-margin-bottom;
-
-    &.rc-list-item-selected {
-      border: $list-item-border-selected;
-    }
 
     &:hover {
       color: $list-item-color-hover;
