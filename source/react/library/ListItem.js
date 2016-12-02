@@ -1,6 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
-import Icon from './Icon';
 import Button from './Button';
 
 const propTypes = {
@@ -86,7 +84,7 @@ class ListItem extends React.Component {
   }
 
   render() {
-    const className = classnames('rc-list-item');
+    const className = 'rc-list-item';
     const edit = this.renderEdit();
     const remove = this.renderRemove();
 
