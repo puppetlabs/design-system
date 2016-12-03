@@ -5,6 +5,7 @@
   border-radius: $popover-border-radius;
   box-shadow: $popover-shadow;
   padding: $popover-padding;
+  z-index: $popover-elevation;
 
   &.rc-popover-small {
     width: $popover-small-width;
