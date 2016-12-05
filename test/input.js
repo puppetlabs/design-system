@@ -6,7 +6,7 @@ import React from 'react';
 
 import Input from '../source/react/library/Input';
 
-describe.only('<Input />', () => {
+describe('<Input />', () => {
   jsdom();
 
   it('should respond to click events if onClick is provided', () => {
