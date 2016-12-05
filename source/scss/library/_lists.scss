@@ -1,0 +1,42 @@
+.rc-list-item {
+
+  &.rc-list-item-selected {
+    a {
+      border: $list-item-border-selected;  
+    }
+  }
+
+  a {
+    display: block;
+    position: relative;
+    background: $list-item-bg;
+    color: $list-item-color;
+    border: $list-item-border;
+    border-radius: $list-item-border-radius;
+    font-size: $list-item-font-size;
+    padding: $list-item-padding;
+    margin-bottom: $list-item-margin-bottom;
+
+    &:hover {
+      color: $list-item-color-hover;
+      background: $list-item-bg-hover;
+    }
+
+    .rc-list-item-edit, .rc-list-item-remove {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      display: block;
+      width: $list-item-action-width;
+      text-align: center;
+    }
+
+    .rc-list-item-edit {
+      right: $list-item-action-width;
+    }
+
+    .rc-list-item-remove {
+      right: 0;
+    }
+  }
+}

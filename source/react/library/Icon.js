@@ -13,6 +13,7 @@ const defaultProps = {
 };
 
 const defaultViewBox = {
+  edit: '0 0 25.979 25.979',
   loader: '0 0 40 40',
   plus: '0 0 25 25',
   checkmark: '0 0 27.002 19.146',
@@ -36,7 +37,7 @@ const Icon = (props) => {
   }
 
   if (svg) {
-    const className = `icon-${type}`;
+    const className = `rc-icon rc-icon-${type}`;
 
     icon = (
       <svg
@@ -47,7 +48,7 @@ const Icon = (props) => {
       >
         { svg }
       </svg>
-    )
+    );
   }
 
   return icon;

@@ -6,6 +6,8 @@ import Popover from './react/library/Popover';
 import Dropdown from './react/library/dropdown/Dropdown';
 import Input from './react/library/Input';
 import DropdownMenu from './react/library/dropdown/DropdownMenu';
+import Loading from './react/library/Loading';
+import ListItem from './react/library/ListItem';
 
 export {
   Button,
@@ -16,4 +18,6 @@ export {
   Dropdown,
   Input,
   DropdownMenu,
+  Loading,
+  ListItem,
 };
