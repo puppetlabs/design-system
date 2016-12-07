@@ -7,9 +7,9 @@ class Buttons extends React.Component {
     return (
       <div>
         <h1>Buttons</h1>
-        <Button size="small" label="small button" />
-        <Button label="default button" />
-        <Button size="large" label="large button" />
+        <Button label="default" />
+        <Button secondary label="secondary" />
+        <Button disabled label="disabled" />
       </div>
     );
   }
