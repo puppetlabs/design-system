@@ -143,9 +143,22 @@ $list-item-icon-height:           16px !default;
 $list-item-action-width:          30px !default;
 
 //
+// Modal
+//
+$modal-bg:                        $white !default;
+$modal-border-radius:             $border-radius !default;
+$modal-overlay-bg:                rgba(255, 255, 255, 0.8) !default;
+$modal-width:                     1200px !default;
+$modal-title-padding:             40px 80px !default;
+$modal-title-border:              $border !default;
+$modal-sidebar-bg:                #f6f6f6 !default;
+$modal-sidebar-width:             400px !default;
+$modal-actions-border:            $border !default;
+$modal-actions-padding:           30px !default;
+
+//
 // Icons
 //
-
 $icon-fill:                       $gray !default;
 
 //
