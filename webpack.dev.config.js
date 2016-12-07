@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   devServer: {
     publicPath: '/build/',
+    historyApiFallback: true,
     colors: true,
     quiet: false,
     noInfo: false,
@@ -12,7 +13,6 @@ module.exports = {
   },
   entry: {
     styleguide: [
-      'webpack-dev-server/client?http://localhost:8080',
       './source/react/app.js',
     ],
   },
