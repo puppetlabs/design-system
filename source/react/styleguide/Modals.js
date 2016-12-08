@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from '../library/Button';
-import Modal from '../library/Modal';
+import Modal from '../library/modals/Modal';
 
 class Modals extends React.Component {
 
