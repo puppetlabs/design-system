@@ -19,6 +19,10 @@ const propTypes = {
   ]),
 };
 
+const defaultProps = {
+  height: '90%',
+};
+
 function setBodyOverflow(value) {
   const body = document.getElementsByTagName('body')[0];
   body.style.overflow = value;
@@ -41,6 +45,10 @@ class Modal extends React.Component {
     }
 
     setBodyOverflow('hidden');
+    this.setPosition();
+  }
+
+  componentDidUpdate() {
     this.setPosition();
   }
 
@@ -117,16 +125,13 @@ class Modal extends React.Component {
   }
 
   setPosition() {
+    this.resetHeights();
     this.setContentHeight();
     this.setSidebarHeight();
     this.setTop();
   }
 
   setContentHeight() {
-    // resetting the height and maxHeight values to start fresh
-    this.content.style.maxHeight = '';
-    this.content.style.height = '';
-
     const windowHeight = window.innerHeight;
     // window padding is the amount of space we always want around the modal;
     const windowPadding = 64 * 2;
@@ -144,18 +149,18 @@ class Modal extends React.Component {
 
       if (modalHeight > propHeight) {
         const heightDecrease = modalHeight - propHeight;
-        const remainder = contentHeight - heightDecrease;
+        const newHeight = contentHeight - heightDecrease;
 
-        this.content.style.maxHeight = `${remainder}px`;
+        this.content.style.height = `${newHeight}px`;
       } else {
         const heightIncrease = propHeight - modalHeight;
-        const remainder = heightIncrease + contentHeight;
+        const newHeight = heightIncrease + contentHeight;
 
-        this.content.style.height = `${remainder}px`;
+        this.content.style.height = `${newHeight}px`;
       }
     } else if (modalHeight > windowHeight) {
       const heightDecrease = (modalHeight - windowHeight) + windowPadding;
-      this.content.style.maxHeight = `${contentHeight - heightDecrease}px`;
+      this.content.style.height = `${contentHeight - heightDecrease}px`;
     }
   }
 
@@ -163,8 +168,9 @@ class Modal extends React.Component {
     if (this.props.sidebar) {
       const modalHeight = this.getModalHeight();
       const titleHeight = this.getTitleHeight();
+      const newHeight = modalHeight - titleHeight;
 
-      this.sidebar.style.height = `${modalHeight - titleHeight}px`;
+      this.sidebar.style.height = `${newHeight}px`;
       this.sidebar.style.overflowY = 'scroll';
     }
   }
@@ -175,6 +181,17 @@ class Modal extends React.Component {
     const topPosition = (windowHeight - modalHeight) / 2;
 
     this.modal.style.top = `${topPosition}px`;
+  }
+
+  resetHeights() {
+    if (this.content) {
+      this.content.style.height = '';
+    }
+
+    if (this.sidebar) {
+      this.sidebar.style.height = '';
+      this.sidebar.style.overflowY = '';
+    }
   }
 
   renderCloseLink() {
@@ -254,6 +271,7 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = propTypes;
+Modal.defaultProps = defaultProps;
 
 export { Modal as BareModal };
 export default mouseTrap(portal(Modal));
