@@ -8,7 +8,7 @@
   z-index: 24;
 }
 
-.rc-modal-close {
+a.rc-modal-close {
   position: fixed;
   top: 0;
   left: 0;
@@ -17,10 +17,11 @@
   color: lighten($gray, 20%);
   cursor: pointer;
   text-align: center;
+  color: $gray;
   padding-top: 20px;
 
   &:hover {
-    color: $gray;
+    color: $gray-dark;
   }
 }
 
