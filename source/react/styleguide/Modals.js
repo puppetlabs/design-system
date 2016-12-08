@@ -21,7 +21,7 @@ class Modals extends React.Component {
 
     if (this.state.open) {
       const actions = [
-        <Button label="Submit" />,
+        <Button key="submit-button" label="Submit" />,
       ];
 
       jsx = (
