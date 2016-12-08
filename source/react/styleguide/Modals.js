@@ -30,9 +30,10 @@ class Modals extends React.Component {
           sidebar="testing"
           onClose={ this.onClick }
           actions={ actions }
+          height="800px"
         >
-          Hello world
-      </Modal>
+          I really am happy, i swear!
+        </Modal>
       );
     }
 

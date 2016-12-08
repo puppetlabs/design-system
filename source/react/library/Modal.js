@@ -86,15 +86,39 @@ class Modal extends React.Component {
   }
 
   setContentHeight() {
+    // resetting the height and maxHeight values to start fresh
+    this.content.style.maxHeight = '';
+    this.content.style.height = '';
+
     const windowHeight = window.innerHeight;
     // window padding is the amount of space we always want around the modal;
     const windowPadding = 64 * 2;
     const modalHeight = this.getModalHeight();
     const contentHeight = this.getContentHeight();
+    let propHeight = this.props.height;
 
-    if (modalHeight > windowHeight) {
-      const heightReduction = (modalHeight - windowHeight) + windowPadding;
-      this.content.style.maxHeight = `${contentHeight - heightReduction}px`;
+    if (propHeight) {
+      if (propHeight.match(/%$/)) {
+        const multiplier = parseFloat(propHeight) / 100.0;
+        propHeight = Math.floor(windowHeight * multiplier);
+      } else {
+        propHeight = parseFloat(propHeight);
+      }
+
+      if (modalHeight > propHeight) {
+        const heightDecrease = modalHeight - propHeight;
+        const remainder = contentHeight - heightDecrease;
+
+        this.content.style.maxHeight = `${remainder}px`;
+      } else {
+        const heightIncrease = propHeight - modalHeight;
+        const remainder = heightIncrease + contentHeight;
+
+        this.content.style.height = `${remainder}px`;
+      }
+    } else if (modalHeight > windowHeight) {
+      const heightDecrease = (modalHeight - windowHeight) + windowPadding;
+      this.content.style.maxHeight = `${contentHeight - heightDecrease}px`;
     }
   }
 
