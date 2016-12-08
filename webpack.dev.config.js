@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   devServer: {
     publicPath: '/build/',
+    historyApiFallback: true,
     colors: true,
     quiet: false,
     noInfo: false,
@@ -12,7 +13,6 @@ module.exports = {
   },
   entry: {
     styleguide: [
-      'webpack-dev-server/client?http://localhost:8080',
       './source/react/app.js',
     ],
   },
@@ -24,7 +24,7 @@ module.exports = {
     loaders: [{
       test: /\.scss$/,
       exclude: /node_modules/,
-      loaders: ExtractTextPlugin.extract('css!sass'),
+      loaders: ExtractTextPlugin.extract('css-loader!sass-loader'),
     },
     {
       test: /\.js$/,
