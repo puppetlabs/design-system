@@ -5,8 +5,8 @@ import { mouseTrap } from 'react-mousetrap';
 import portal from '../portal';
 
 const propTypes = {
-  unbindShortcut: React.PropTypes.func.isRequired,
-  bindShortcut: React.PropTypes.func.isRequired,
+  unbindShortcut: React.PropTypes.func,
+  bindShortcut: React.PropTypes.func,
   onClose: React.PropTypes.func,
   children: React.PropTypes.any,
   height: React.PropTypes.string,
@@ -36,7 +36,7 @@ class Modal extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this.onResize);
 
-    if (this.props.onClose) {
+    if (this.props.onClose && this.props.bindShortcut) {
       this.props.bindShortcut('esc', this.onClose);
     }
 
@@ -47,7 +47,7 @@ class Modal extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
 
-    if (this.props.onClose) {
+    if (this.props.onClose && this.props.unbindShortcut) {
       this.props.unbindShortcut('esc');
     }
   }
