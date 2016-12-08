@@ -15,6 +15,13 @@ $brand-danger:                   #d9534f !default;
 
 $font-family:                   'Open Sans', sans-serif !default;
 
+$font-size-base:                 16px !default;
+$font-size-small:                12px !default;
+$font-size-medium:               14px !default;
+$line-height-base:               1.428571429 !default; // 20/14
+
+$font-color-base:                $gray-darker;
+
 $border-color:                   #dedede !default;
 $border-hover-color:             $gray !default;
 $border-radius:                  4px !default;
@@ -25,11 +32,6 @@ $border-hover:                   1px solid $border-hover-color !default;
 $outer-shadow:                   0 0px 1px rgba(0, 0, 0, .05) !default;
 $hover-shadow:                   0px 0px 0px 1px $gray !default;
 $selected-shadow:                0px 0px 0px 1px $brand-primary !default;
-
-$font-size-base:                 16px !default;
-$font-size-small:                12px !default;
-$font-size-medium:               14px !default;
-$line-height-base:               1.428571429 !default; // 20/14
 
 $padding:                        16px;
 
@@ -146,6 +148,7 @@ $list-item-action-width:          30px !default;
 // Modal
 //
 $modal-bg:                        $white !default;
+$modal-color:                     $font-color-base !default;
 $modal-border-radius:             $border-radius !default;
 $modal-overlay-bg:                rgba(255, 255, 255, 0.8) !default;
 $modal-width:                     1200px !default;

@@ -165,6 +165,7 @@ class Modal extends React.Component {
       const titleHeight = this.getTitleHeight();
 
       this.sidebar.style.height = `${modalHeight - titleHeight}px`;
+      this.sidebar.style.overflowY = 'scroll';
     }
   }
 

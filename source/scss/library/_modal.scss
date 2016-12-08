@@ -30,6 +30,7 @@ a.rc-modal-close {
   width: $modal-width;
   box-shadow: 0 0 60px rgba(0, 0, 0, .3);
   border-radius: $modal-border-radius;
+  color: $modal-color;
   background: $modal-bg;
   margin: 0 auto;
   overflow: hidden;
@@ -62,7 +63,6 @@ a.rc-modal-close {
     width: $modal-sidebar-width;
     background-color: transparent;
     padding: 60px;
-    overflow-y: auto;
   }
 
   .rc-modal-actions {
