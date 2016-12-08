@@ -82,8 +82,6 @@ a.rc-button, button.rc-button {
     );
   }
 
-  &rc
-
   &.rc-button-small {
     height: 33px;
     line-height: 29px;
@@ -136,7 +134,7 @@ a.rc-button, button.rc-button {
     }
   }
 
-  .rc-button {
+  a.rc-button, button.rc-button {
     display: inline-block;
     border-radius: 0;
     height: 25px;
@@ -154,7 +152,7 @@ a.rc-button, button.rc-button {
   }
 }
 
-.rc-floating-action-button {
+a.rc-floating-action-button, button.rc-floating-action-button {
   border-radius: 60px;
   height: $floating-action-button-height;
   line-height: $floating-action-button-height;
