@@ -14,6 +14,7 @@ const propTypes = {
     React.PropTypes.string,
   ]),
   width: React.PropTypes.string,
+  size: React.PropTypes.string,
   margin: React.PropTypes.number,
   className: React.PropTypes.string,
 };
@@ -95,7 +96,9 @@ class Popover extends React.Component {
   }
 
   render() {
-    const className = classnames('rc-popover', this.props.className);
+    const className = classnames('rc-popover', this.props.className, {
+      [`rc-popover-${this.props.size}`]: this.props.size,
+    });
     const styles = this.state.position;
     const button = React.cloneElement(this.props.target, {
       onClick: this.onClick,

@@ -1,4 +1,5 @@
 $white:                          #fff !default;
+
 $gray-base:                      #201F1E !default;
 $gray-darker:                    lighten($gray-base, 19%) !default;
 $gray-dark:                      lighten($gray-base, 38%) !default;
@@ -18,6 +19,7 @@ $border-color:                   #dedede !default;
 $border-hover-color:             $gray !default;
 $border-radius:                  4px !default;
 $border:                         1px solid $border-color !default;
+$border-active:                  1px solid $brand-primary !default;
 $border-hover:                   1px solid $border-hover-color !default;
 
 $outer-shadow:                   0 0px 1px rgba(0, 0, 0, .05) !default;
@@ -38,8 +40,24 @@ $button-font-family:              'Montserrat', sans-serif !default;
 $button-font-size:                $font-size-small !default;
 $button-font-weight:              normal !default;
 $button-disabled-bg:              #ccc !default;
-$button-bg:                       $brand-primary !default;
 $button-border-radius:            $border-radius !default;
+
+$button-bg:                       $brand-primary !default;
+$button-bg-hover:                 darken($brand-primary, 10%) !default;
+$button-color:                    $white !default;
+$button-color-hover:              $white !default;
+$button-border-color:             transparent !default;
+$button-border-color-hover:       transparent !default;
+
+$button-secondary-bg:                 transparent !default;
+$button-secondary-bg-hover:           $gray-dark !default;
+$button-secondary-color:              $gray !default;
+$button-secondary-color-hover:        $white !default;
+$button-secondary-border-color:       $gray !default;
+$button-secondary-border-color-hover: $gray-dark !default;
+
+$button-transparent-color:        $gray !default;
+$button-transparent-color-hover:  $gray-dark !default;
 
 $floating-action-button-height:   60px !default;
 
@@ -68,11 +86,16 @@ $popover-border:                  none !default;
 $popover-border-radius:           $border-radius !default;
 $popover-shadow:                  0 0 6px rgba(0, 0, 0, .2) !default;
 $popover-padding:                 $padding;
+$popover-small-width:             200px;
+$popover-medium-width:            300px;
+$popover-large-width:             400px;
+$popover-elevation:               24;
 
 //
 // Dropdown
 //
 $dropdown-padding:                12px !default;
+$dropdown-max-height:             400px !default;
 $dropdown-label-font-size:        $font-size-medium !default;
 $dropdown-label-font-weight:      600 !default;
 $dropdown-label-color:            $brand-primary !default;
@@ -100,3 +123,32 @@ $card-remove-background:          $gray-lighter !default;
 $card-color:                      $gray !default;
 $card-title-color:                $gray !default;
 $card-subtitle-color:             $gray !default;
+
+//
+// List Item
+//
+
+$list-item-bg:                    $white !default;
+$list-item-bg-hover:              $gray-lighter !default;
+$list-item-color:                 $gray !default;
+$list-item-color-hover:           $gray-dark !default;
+$list-item-border:                $border !default;
+$list-item-border-selected:       $border-active !default;
+$list-item-border-radius:         $border-radius !default;
+$list-item-font-size:             $font-size-medium !default;
+$list-item-padding:               6px 12px !default;
+$list-item-margin-bottom:         10px !default;
+$list-item-icon-top:              2px !default;
+$list-item-icon-height:           16px !default;
+$list-item-action-width:          30px !default;
+
+//
+// Icons
+//
+
+$icon-fill:                       $gray !default;
+
+//
+// Input
+//
+$input-border-radius:             $border-radius !default;

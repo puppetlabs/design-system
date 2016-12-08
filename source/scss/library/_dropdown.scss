@@ -51,6 +51,11 @@
     }
   }
 
+  ul {
+    max-height: $dropdown-max-height;
+    overflow: scroll;
+  }
+
   li:last-of-type {
     border-bottom: none;
   }
