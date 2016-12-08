@@ -2,11 +2,8 @@ import React from 'react';
 import classname from 'classnames';
 import Portal from 'react-portal';
 import debounce from 'debounce';
-import { mouseTrap } from 'react-mousetrap';
 
 const propTypes = {
-  unbindShortcut: React.PropTypes.func.isRequired,
-  bindShortcut: React.PropTypes.func.isRequired,
   onClose: React.PropTypes.func,
   children: React.PropTypes.any,
   height: React.PropTypes.string,
@@ -36,20 +33,12 @@ class Modal extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this.onResize);
 
-    if (this.props.onClose) {
-      this.props.bindShortcut('esc', this.props.onClose);
-    }
-
     setBodyOverflow('hidden');
     this.setPosition();
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
-
-    if (this.props.onClose) {
-      this.props.unbindShortcut('esc');
-    }
   }
 
   onResize() {
@@ -223,7 +212,7 @@ class Modal extends React.Component {
     }, this.props.className);
 
     return (
-      <Portal isOpened>
+      <Portal isOpened closeOnEsc>
         <div className="rc-modal-overlay">
           { closeLink }
           <div ref={ (c) => { this.modal = c; } } className={ className }>
@@ -244,4 +233,4 @@ class Modal extends React.Component {
 
 Modal.propTypes = propTypes;
 
-export default mouseTrap(Modal);
+export default Modal;
