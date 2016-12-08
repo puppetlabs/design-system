@@ -80,8 +80,23 @@ class Modal extends React.Component {
     return contentRect.height;
   }
 
+  getTitleHeight() {
+    const title = this.title;
+    const titleRect = title.getBoundingClientRect();
+
+    return titleRect.height;
+  }
+
+  getSidebarHeight() {
+    const sidebar = this.sidebar;
+    const sidebarRect = sidebar.getBoundingClientRect();
+
+    return sidebarRect.height;
+  }
+
   setPosition() {
     this.setContentHeight();
+    this.setSidebarHeight();
     this.setTop();
   }
 
@@ -122,6 +137,15 @@ class Modal extends React.Component {
     }
   }
 
+  setSidebarHeight() {
+    if (this.props.sidebar) {
+      const modalHeight = this.getModalHeight();
+      const titleHeight = this.getTitleHeight();
+
+      this.sidebar.style.height = `${modalHeight - titleHeight}px`;
+    }
+  }
+
   setTop() {
     const windowHeight = window.innerHeight;
     const modalHeight = this.getModalHeight();
@@ -144,7 +168,14 @@ class Modal extends React.Component {
     let jsx;
 
     if (this.props.sidebar) {
-      jsx = <div className="rc-modal-sidebar">{ this.props.sidebar }</div>;
+      jsx = (
+        <div
+          ref={ (c) => { this.sidebar = c; } }
+          className="rc-modal-sidebar"
+        >
+          { this.props.sidebar }
+        </div>
+      );
     }
 
     return jsx;
@@ -173,7 +204,7 @@ class Modal extends React.Component {
         <div className="rc-modal-overlay">
           { closeLink }
           <div ref={ (c) => { this.modal = c; } } className={ className }>
-            <div className="rc-modal-title">
+            <div ref={ (c) => { this.title = c; } } className="rc-modal-title">
               { this.props.title }
             </div>
             { sidebar }

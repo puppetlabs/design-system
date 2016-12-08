@@ -58,6 +58,7 @@ a.rc-modal-close {
 
   .rc-modal-sidebar {
     float: right;
+    height: 1px; // this will get dynamically set via the react component.
     width: $modal-sidebar-width;
     background-color: transparent;
     padding: 60px;
