@@ -37,7 +37,7 @@ class Modal extends React.Component {
     window.addEventListener('resize', this.onResize);
 
     if (this.props.onClose) {
-      this.props.bindShortcut('esc', this.props.onClose);
+      this.props.bindShortcut('esc', this.onClose);
     }
 
     setBodyOverflow('hidden');
