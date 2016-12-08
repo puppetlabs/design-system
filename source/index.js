@@ -8,6 +8,7 @@ import Input from './react/library/Input';
 import DropdownMenu from './react/library/dropdown/DropdownMenu';
 import Loading from './react/library/Loading';
 import ListItem from './react/library/ListItem';
+import Modal from './react/library/modals/Modal';
 
 export {
   Button,
@@ -20,4 +21,5 @@ export {
   DropdownMenu,
   Loading,
   ListItem,
+  Modal,
 };
