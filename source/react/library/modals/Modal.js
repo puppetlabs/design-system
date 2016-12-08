@@ -187,6 +187,20 @@ class Modal extends React.Component {
     return jsx;
   }
 
+  renderTitle() {
+    let jsx;
+
+    if (this.props.title) {
+      jsx = (
+        <div ref={ (c) => { this.title = c; } } className="rc-modal-title">
+          { this.props.title }
+        </div>
+      );
+    }
+
+    return jsx;
+  }
+
   renderSidebar() {
     let jsx;
 
@@ -216,6 +230,7 @@ class Modal extends React.Component {
 
   render() {
     const closeLink = this.renderCloseLink();
+    const title = this.renderTitle();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
     const className = classname('rc-modal', {
@@ -226,9 +241,7 @@ class Modal extends React.Component {
       <div className="rc-modal-overlay">
         { closeLink }
         <div ref={ (c) => { this.modal = c; } } className={ className }>
-          <div ref={ (c) => { this.title = c; } } className="rc-modal-title">
-            { this.props.title }
-          </div>
+          { title }
           { sidebar }
           <div ref={ (c) => { this.content = c; } }className="rc-modal-content">
             { this.props.children }
