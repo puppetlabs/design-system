@@ -67,31 +67,53 @@ class Modal extends React.Component {
   }
 
   getModalHeight() {
-    const modal = this.modal;
-    const modalRect = modal.getBoundingClientRect();
+    let height = 0;
 
-    return modalRect.height;
+    if (this.modal) {
+      const modal = this.modal;
+      const modalRect = modal.getBoundingClientRect();
+
+      height = modalRect.height;
+    }
+
+    return height;
   }
 
   getContentHeight() {
-    const content = this.content;
-    const contentRect = content.getBoundingClientRect();
+    let height = 0;
 
-    return contentRect.height;
+    if (this.content) {
+      const content = this.content;
+      const contentRect = content.getBoundingClientRect();
+      height = contentRect.height;
+    }
+
+    return height;
   }
 
   getTitleHeight() {
-    const title = this.title;
-    const titleRect = title.getBoundingClientRect();
+    let height = 0;
 
-    return titleRect.height;
+    if (this.props.title && this.title) {
+      const title = this.title;
+      const titleRect = title.getBoundingClientRect();
+
+      height = titleRect.height;
+    }
+
+    return height;
   }
 
   getSidebarHeight() {
-    const sidebar = this.sidebar;
-    const sidebarRect = sidebar.getBoundingClientRect();
+    let height = 0;
 
-    return sidebarRect.height;
+    if (this.props.sidebar && this.sidebar) {
+      const sidebar = this.sidebar;
+      const sidebarRect = sidebar.getBoundingClientRect();
+      height = sidebarRect.height;
+    }
+
+    return height;
   }
 
   setPosition() {
