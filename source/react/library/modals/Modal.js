@@ -1,9 +1,12 @@
 import React from 'react';
 import classname from 'classnames';
 import debounce from 'debounce';
+import { mouseTrap } from 'react-mousetrap';
 import portal from '../portal';
 
 const propTypes = {
+  unbindShortcut: React.PropTypes.func.isRequired,
+  bindShortcut: React.PropTypes.func.isRequired,
   onClose: React.PropTypes.func,
   children: React.PropTypes.any,
   height: React.PropTypes.string,
@@ -33,12 +36,20 @@ class Modal extends React.Component {
   componentDidMount() {
     window.addEventListener('resize', this.onResize);
 
+    if (this.props.onClose) {
+      this.props.bindShortcut('esc', this.props.onClose);
+    }
+
     setBodyOverflow('hidden');
     this.setPosition();
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
+
+    if (this.props.onClose) {
+      this.props.unbindShortcut('esc');
+    }
   }
 
   onResize() {
@@ -232,4 +243,4 @@ class Modal extends React.Component {
 Modal.propTypes = propTypes;
 
 export { Modal as BareModal };
-export default portal(Modal, { closeOnEsc: true });
+export default mouseTrap(portal(Modal));
