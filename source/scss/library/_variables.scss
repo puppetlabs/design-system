@@ -181,6 +181,23 @@ $modal-actions-border:            $border !default;
 $modal-actions-padding:           20px 30px !default;
 
 //
+// Tab variables/options
+//
+$tab-background-color:            $white !default;
+$tab-color:                       $gray !default;
+$tab-active-background-color:     $brand-primary !default;
+$tab-active-color:                $white !default;
+$tab-font-weight:                 normal !default;
+$tab-text-transform:              uppercase !default;
+$tab-border-radius:               $border-radius !default;
+
+
+$tab-horizontal-spacing:          5px;
+$tab-horizontal-padding:          15px;
+$tab-vertical-padding:            5px;
+
+
+//
 // Icons
 //
 $icon-fill:                       $gray !default;

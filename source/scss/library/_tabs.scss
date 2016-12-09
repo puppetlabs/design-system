@@ -1,0 +1,47 @@
+.rc-tab-panels {
+  .rc-tabs {
+    margin-bottom: 10px;
+    .rc-tab {
+      display: inline-block;
+
+      border-radius: $tab-border-radius;
+      background-color: $tab-background-color;
+      margin-right: $tab-horizontal-spacing;
+
+      &:hover {
+        background-color: $gray-lighter;
+      }
+
+      &.rc-tab-panel-active {
+        background-color: $tab-active-background-color;
+
+        a {
+          color: $tab-active-color;
+        }
+      }
+
+      a {
+        font-size: 11px;
+        letter-spacing: 1px;
+        display: block;
+        color: $tab-color;
+        font-weight: $tab-font-weight;
+        padding: $tab-vertical-padding;
+        padding-left: $tab-horizontal-padding;
+        padding-right: $tab-horizontal-padding;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  .rc-tab-panel {
+    display: none;
+
+    &.rc-tab-panel-active {
+      display: block;
+    }
+  }
+}
