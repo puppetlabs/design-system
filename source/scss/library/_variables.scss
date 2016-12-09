@@ -26,6 +26,7 @@ $border-color:                   #dedede !default;
 $border-hover-color:             $gray !default;
 $border-radius:                  4px !default;
 $border:                         1px solid $border-color !default;
+$border-heavy:                   2px solid $border-color;
 $border-active:                  1px solid $brand-primary !default;
 $border-hover:                   1px solid $border-hover-color !default;
 
@@ -127,6 +128,24 @@ $card-title-color:                $gray !default;
 $card-subtitle-color:             $gray !default;
 
 //
+// Input
+//
+$input-border-radius:            $border-radius;
+
+//
+// Switch
+//
+$switch-height:                   21px;
+$switch-width:                    47px;
+$switch-padding:                  5px;
+$switch-border:                   $border-heavy;
+$switch-handle-height:            $switch-height - ($switch-padding * 2);
+$switch-on-icon-fill:             $white;
+$switch-on-icon-size:             13px;
+$switch-off-icon-fill:            $gray;
+$switch-off-icon-size:            10px;
+
+//
 // List Item
 //
 
@@ -163,8 +182,3 @@ $modal-actions-padding:           20px 30px !default;
 // Icons
 //
 $icon-fill:                       $gray !default;
-
-//
-// Input
-//
-$input-border-radius:             $border-radius !default;

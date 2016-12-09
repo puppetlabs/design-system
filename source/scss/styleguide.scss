@@ -49,3 +49,21 @@ h1, h2, h3, h4, h5, h6, p {
 .sg-section {
   margin-bottom: 40px;
 }
+
+.sg-icon {
+  float: left;
+  border: 1px solid $gray-light;
+  width: 100px;
+  margin-right: 10px; 
+  text-align: center;
+
+  .sg-icon-wrapper {
+    padding: 10px 5px;
+  }
+
+  .sg-icon-title {
+    font-family: $font-family;
+    border-top: 1px solid $gray-light;
+    padding: 4px;
+  }
+}
