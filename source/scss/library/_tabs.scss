@@ -8,16 +8,16 @@
       background-color: $tab-background-color;
       margin-right: $tab-horizontal-spacing;
 
+      &.rc-tab-active {
+        color: $tab-active-color;
+      }
+
       &:hover {
         background-color: $gray-lighter;
       }
 
       &.rc-tab-panel-active {
         background-color: $tab-active-background-color;
-
-        a {
-          color: $tab-active-color;
-        }
       }
 
       a {

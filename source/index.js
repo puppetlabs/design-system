@@ -10,6 +10,8 @@ import Switch from './react/library/Switch';
 import Loading from './react/library/Loading';
 import ListItem from './react/library/ListItem';
 import Modal from './react/library/modals/Modal';
+import Tabs from './react/library/tabs/Tabs';
+import TabPanel from './react/library/tabs/TabPanel';
 
 export {
   Button,
@@ -24,4 +26,6 @@ export {
   Loading,
   ListItem,
   Modal,
+  Tabs,
+  TabPanel,
 };
