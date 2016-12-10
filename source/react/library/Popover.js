@@ -1,18 +1,14 @@
 import React from 'react';
-import Portal from 'react-portal';
 import classnames from 'classnames';
 import debounce from 'debounce';
 import PopoverContent from './PopoverContent';
 
 const propTypes = {
   open: React.PropTypes.bool,
+  position: React.PropTypes.object,
   onClose: React.PropTypes.func,
   target: React.PropTypes.object,
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.array,
-    React.PropTypes.string,
-  ]),
+  children: React.PropTypes.any,
   width: React.PropTypes.string,
   size: React.PropTypes.string,
   margin: React.PropTypes.number,
@@ -48,6 +44,12 @@ class Popover extends React.Component {
     window.addEventListener('resize', this.onResize);
   }
 
+  componentWillReceiveProps(props) {
+    if (props.open !== this.state.open) {
+      this.setState({ open: props.open });
+    }
+  }
+
   componentWillUpdate(nextProps, nextState) {
     if (this.state.open !== nextState.open) {
       this.setPosition();
@@ -80,19 +82,37 @@ class Popover extends React.Component {
   }
 
   setPosition() {
-    const el = this.elem;
-    const elPosition = el.getBoundingClientRect();
+    const newState = { position: {} };
 
-    this.setState({
-      position: {
-        top: elPosition.bottom + this.props.margin + window.pageYOffset,
-        left: elPosition.left + window.pageXOffset,
-      },
-    });
+    if (this.props.position) {
+      newState.position.top = this.props.position.top;
+      newState.position.left = this.props.position.left;
+    } else {
+      const el = this.elem;
+      const elPosition = el.getBoundingClientRect();
+
+      newState.position.top = elPosition.bottom + this.props.margin + window.pageYOffset;
+      newState.position.left = elPosition.left + window.pageXOffset;
+    }
+
+    this.setState(newState);
   }
 
   close() {
     this.setState({ open: false });
+  }
+
+  renderButton() {
+    let jsx;
+
+    if (this.props.target) {
+      jsx = React.cloneElement(this.props.target, {
+        onClick: this.onClick,
+        ref: (c) => { this.button = c; },
+      });
+    }
+
+    return jsx;
   }
 
   render() {
@@ -100,10 +120,7 @@ class Popover extends React.Component {
       [`rc-popover-${this.props.size}`]: this.props.size,
     });
     const styles = this.state.position;
-    const button = React.cloneElement(this.props.target, {
-      onClick: this.onClick,
-      ref: (c) => { this.button = c; },
-    });
+    const button = this.renderButton();
 
     if (this.props.width !== 'auto') {
       styles.width = this.props.width;
@@ -116,15 +133,14 @@ class Popover extends React.Component {
         ref={ (c) => { this.elem = c; } }
       >
         { button }
-        <Portal isOpened={ this.state.open } onClose={ this.onClose }>
-          <PopoverContent
-            className={ className }
-            style={ styles }
-            onOutsideClick={ this.onOutsideClick }
-          >
-            { this.props.children }
-          </PopoverContent>
-        </Portal>
+        <PopoverContent
+          isOpened={ this.state.open }
+          className={ className }
+          style={ styles }
+          onOutsideClick={ this.onOutsideClick }
+        >
+          { this.props.children }
+        </PopoverContent>
       </div>
     );
   }
