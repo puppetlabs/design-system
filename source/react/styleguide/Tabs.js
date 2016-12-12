@@ -19,6 +19,16 @@ class TabsPage extends React.Component {
             </TabPanel>
           </Tabs>
         </StyleguideSection>
+        <StyleguideSection title="Vertical Tabs">
+          <Tabs vertical>
+            <TabPanel title="Tab 1">
+              I'm a happy panel
+            </TabPanel>
+            <TabPanel title="Tab 2">
+              I'm another happy panel
+            </TabPanel>
+          </Tabs>
+        </StyleguideSection>
       </div>
     );
   }

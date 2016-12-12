@@ -4,6 +4,7 @@ import TabPanel from './TabPanel';
 
 const propTypes = {
   children: React.PropTypes.any,
+  vertical: React.PropTypes.bool,
   activeTab: React.PropTypes.number,
 };
 
@@ -45,7 +46,7 @@ class Tabs extends React.Component {
     });
 
     return (
-      <ul className="rc-tabs">
+      <ul>
         {tabs}
       </ul>
     );
@@ -63,9 +64,12 @@ class Tabs extends React.Component {
   render() {
     const tabs = this.renderTabs();
     const panels = this.renderPanels();
+    const className = classnames('rc-tabs', {
+      'rc-tabs-vertical': this.props.vertical,
+    });
 
     return (
-      <div className="rc-tab-panels">
+      <div className={ className }>
         {tabs}
         {panels}
       </div>

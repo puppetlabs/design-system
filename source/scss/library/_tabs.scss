@@ -1,31 +1,58 @@
-.rc-tab-panels {
-  .rc-tabs {
-    margin-bottom: 10px;
+.rc-tabs {
+
+  &.rc-tabs-vertical {
+
+    ul {
+      float: left;
+      width: $tab-width-vertical;
+    }
 
     .rc-tab {
-      display: inline-block;
+      display: block;
 
       &.rc-tab-active {
         a {
-          color: $tab-active-color;
-          border-bottom: $tab-active-border;
+          border-bottom: none;
+          border-right: $tab-border-active;
         }
       }
 
       a {
-        display: block;
-        padding: $tab-padding;
-        color: $tab-color;
-        background: $tab-bg;
-        font-family: $tab-font-family;
-        font-size: $tab-font-size;
-        font-weight: $tab-font-weight;
-        text-transform: $tab-text-transform;
+        border-right: $tab-border;
+        border-bottom: none;
       }
+    }
 
-      &:last-child {
-        margin-right: 0;
+    .rc-tab-panel {
+      margin-left: $tab-width-vertical;
+      padding: $tab-panel-padding-vertical;
+    }
+  }
+
+  .rc-tab {
+    display: inline-block;
+
+    &.rc-tab-active {
+      a {
+        color: $tab-color-active;
+        border-bottom: $tab-border-active;
       }
+    }
+
+    a {
+      display: block;
+      padding: $tab-padding;
+      border-bottom: $tab-border;
+      color: $tab-color;
+      background: $tab-bg;
+      font-family: $tab-font-family;
+      font-size: $tab-font-size;
+      font-weight: $tab-font-weight;
+      text-transform: $tab-text-transform;
+    }
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 

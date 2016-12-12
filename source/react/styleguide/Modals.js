@@ -24,7 +24,7 @@ class Modals extends React.Component {
       const actions = [
         <Button key="submit-button" label="Submit" />,
       ];
-console.log('open me damn it!');
+
       jsx = (
         <Modal
           title="I am a happy modal"
