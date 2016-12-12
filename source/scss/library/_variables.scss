@@ -46,7 +46,6 @@ $button-disabled-bg:              #ccc !default;
 $button-disabled-color:           $gray !default;
 $button-disabled-color-hover:     $gray !default;
 $button-border-radius:            $border-radius !default;
-
 $button-bg:                       $brand-primary !default;
 $button-bg-hover:                 darken($brand-primary, 10%) !default;
 $button-color:                    $white !default;
@@ -77,6 +76,20 @@ $tag-color:                       $gray !default;
 $tag-border-radius:               $button-border-radius !default;
 $tag-border:                      2px solid $tag-bg !default;
 $tag-border-selected:             2px solid $brand-primary !default;
+
+//
+// Tab variables/options
+//
+$tab-font-family:                 $button-font-family !default;
+$tab-font-size:                   $font-size-small !default;
+$tab-font-weight:                 normal !default;
+$tab-color:                       $gray !default;
+$tab-active-color:                $brand-primary !default;
+$tab-active-border:               2px solid $brand-primary !default;
+$tab-bg:                          $white !default;
+$tab-text-transform:              uppercase !default;
+$tab-padding:                     10px 20px !default;
+$tab-panel-padding:               20px 0 !default;
 
 //
 // Loading indicator options
@@ -179,22 +192,6 @@ $modal-sidebar-bg:                #f6f6f6 !default;
 $modal-sidebar-width:             400px !default;
 $modal-actions-border:            $border !default;
 $modal-actions-padding:           20px 30px !default;
-
-//
-// Tab variables/options
-//
-$tab-background-color:            $white !default;
-$tab-color:                       $gray !default;
-$tab-active-background-color:     $brand-primary !default;
-$tab-active-color:                $white !default;
-$tab-font-weight:                 normal !default;
-$tab-text-transform:              uppercase !default;
-$tab-border-radius:               $border-radius !default;
-
-
-$tab-horizontal-spacing:          5px;
-$tab-horizontal-padding:          15px;
-$tab-vertical-padding:            5px;
 
 
 //
