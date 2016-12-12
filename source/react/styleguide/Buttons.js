@@ -21,14 +21,14 @@ class Buttons extends React.Component {
             <h3 className="sg-subsection-title">Secondary</h3>
             <Button secondary label="default" />
             <Button secondary disabled label="disabled" />
-            <Button secondary processing label="processing" />
+            <Button secondary disabled processing label="processing" />
           </div>
 
           <div className="sg-subsection">
             <h3 className="sg-subsection-title">Transparent</h3>
             <Button transparent label="default" />
             <Button transparent disabled label="disabled" />
-            <Button transparent processing label="processing" />
+            <Button transparent disabled processing label="processing" />
           </div>
         </div>
         <div className="sg-section">
