@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router';
 
-const Sidebar = () => (
-  <div className="sidebar">
+const StyleguideSidebar = () => (
+  <div className="sg-sidebar">
     <ul>
       <li><Link to="/buttons">Buttons</Link></li>
       <li><Link to="/modals">Modals</Link></li>
@@ -15,4 +15,4 @@ const Sidebar = () => (
   </div>
 );
 
-export default Sidebar;
+export default StyleguideSidebar;

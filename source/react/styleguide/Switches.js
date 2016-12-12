@@ -1,4 +1,5 @@
 import React from 'react';
+import StyleguideSection from './partials/StyleguideSection';
 import Switch from '../library/Switch';
 
 class Switches extends React.Component {
@@ -7,24 +8,22 @@ class Switches extends React.Component {
     return (
       <div>
         <h1>Switches</h1>
-        <div className="sg-section">
-        <h2 className="sg-section-title">Open</h2>
+        <StyleguideSection title="Open">
           <Switch
             name="foo"
             className="test-class"
             checked
             onChange={ () => console.log('switched!') }
           />
-        </div>
-        <div className="sg-section">
-        <h2 className="sg-section-title">Closed</h2>
+        </StyleguideSection>
+        <StyleguideSection title="Closed">
           <Switch
             name="foo"
             className="test-class"
             checked={ false }
             onChange={ () => console.log('switched!') }
           />
-        </div>
+        </StyleguideSection>
       </div>
     );
   }
