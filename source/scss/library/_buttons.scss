@@ -69,6 +69,10 @@ a.rc-button, button.rc-button {
       $button-secondary-border-color,
       $button-secondary-border-color-hover
     )
+
+    &.rc-button-processing {
+      background-color: $button-disabled-bg;
+    }
   }
 
   &.rc-button-transparent {
