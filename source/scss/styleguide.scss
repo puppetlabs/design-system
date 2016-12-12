@@ -48,6 +48,19 @@ h1, h2, h3, h4, h5, h6, p {
 
 .sg-section {
   margin-bottom: 40px;
+  border: $border;
+
+  .sg-section-title {
+    font-family: $font-family;
+    font-weight: normal;
+    background: $gray-lighter;
+    border-bottom: $border;
+    padding: 10px 20px;
+  }
+
+  .sg-section-content {
+    padding: 20px;
+  }
 }
 
 .sg-subsection {
@@ -62,7 +75,7 @@ h1, h2, h3, h4, h5, h6, p {
   float: left;
   border: 1px solid $gray-light;
   width: 100px;
-  margin-right: 10px; 
+  margin-right: 10px;
   text-align: center;
 
   .sg-icon-wrapper {

@@ -1,4 +1,5 @@
 import React from 'react';
+import StyleguideSection from './partials/StyleguideSection';
 import Tabs from '../library/tabs/Tabs';
 import TabPanel from '../library/tabs/TabPanel';
 
@@ -8,7 +9,7 @@ class TabsPage extends React.Component {
     return (
       <div>
         <h1>Tabs</h1>
-        <div className="sg-section">
+        <StyleguideSection title="Standard Tabs">
           <Tabs>
             <TabPanel title="Tab 1">
               I'm a happy panel
@@ -17,7 +18,7 @@ class TabsPage extends React.Component {
               I'm another happy panel
             </TabPanel>
           </Tabs>
-        </div>
+        </StyleguideSection>
       </div>
     );
   }
