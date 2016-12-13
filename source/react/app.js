@@ -7,6 +7,7 @@ import Forms from './styleguide/Forms';
 import Cards from './styleguide/Cards';
 import Icons from './styleguide/Icons';
 import Modals from './styleguide/Modals';
+import Dropdowns from './styleguide/Dropdowns';
 import Switches from './styleguide/Switches';
 import Tabs from './styleguide/Tabs';
 import '../scss/library/all.scss';
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <Route component={ Styleguide } path="/">
         <Route path="buttons" components={ Buttons } />
         <Route path="modals" components={ Modals } />
+        <Route path="dropdowns" components={ Dropdowns } />
         <Route path="cards" components={ Cards } />
         <Route path="forms" components={ Forms } />
         <Route path="icons" components={ Icons } />
