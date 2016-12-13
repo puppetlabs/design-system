@@ -43,6 +43,8 @@ $button-font-family:              'Montserrat', sans-serif !default;
 $button-font-size:                $font-size-small !default;
 $button-font-weight:              normal !default;
 $button-disabled-bg:              #ccc !default;
+$button-disabled-color:           $gray !default;
+$button-disabled-color-hover:     $gray !default;
 $button-border-radius:            $border-radius !default;
 
 $button-bg:                       $brand-primary !default;
@@ -55,7 +57,7 @@ $button-border-color-hover:       transparent !default;
 $button-secondary-bg:                 transparent !default;
 $button-secondary-bg-hover:           $gray-dark !default;
 $button-secondary-color:              $gray !default;
-$button-secondary-color-hover:        $gray !default;
+$button-secondary-color-hover:        $white !default;
 $button-secondary-border-color:       $gray !default;
 $button-secondary-border-color-hover: $gray-dark !default;
 
