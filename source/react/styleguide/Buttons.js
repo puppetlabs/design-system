@@ -9,9 +9,27 @@ class Buttons extends React.Component {
         <h1>Buttons</h1>
         <div className="sg-section">
           <h2 className="sg-section-title">Standard Buttons</h2>
-          <Button label="default" />
-          <Button secondary label="secondary" />
-          <Button disabled label="disabled" />
+
+          <div className="sg-subsection">
+            <h3 className="sg-subsection-title">Default</h3>
+            <Button label="default" />
+            <Button disabled label="disabled" />
+            <Button disabled processing label="processing" />
+          </div>
+
+          <div className="sg-subsection">
+            <h3 className="sg-subsection-title">Secondary</h3>
+            <Button secondary label="default" />
+            <Button secondary disabled label="disabled" />
+            <Button secondary disabled processing label="processing" />
+          </div>
+
+          <div className="sg-subsection">
+            <h3 className="sg-subsection-title">Transparent</h3>
+            <Button transparent label="default" />
+            <Button transparent disabled label="disabled" />
+            <Button transparent disabled processing label="processing" />
+          </div>
         </div>
         <div className="sg-section">
           <h2 className="sg-section-title">Floating Action Buttons</h2>

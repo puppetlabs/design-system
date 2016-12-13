@@ -96,10 +96,12 @@ a.rc-button, button.rc-button {
 
   &[disabled] {
     &:hover {
+      color: $button-disabled-color-hover !important;
       background-color: $button-disabled-bg;
     }
 
     cursor: default;
+    color: $button-disabled-color !important;
     background-color: $button-disabled-bg;
   }
 

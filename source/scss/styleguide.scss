@@ -50,6 +50,14 @@ h1, h2, h3, h4, h5, h6, p {
   margin-bottom: 40px;
 }
 
+.sg-subsection {
+  margin-bottom: 20px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
 .sg-icon {
   float: left;
   border: 1px solid $gray-light;

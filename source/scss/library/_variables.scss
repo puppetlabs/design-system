@@ -43,6 +43,8 @@ $button-font-family:              'Montserrat', sans-serif !default;
 $button-font-size:                $font-size-small !default;
 $button-font-weight:              normal !default;
 $button-disabled-bg:              #ccc !default;
+$button-disabled-color:           $gray !default;
+$button-disabled-color-hover:     $gray !default;
 $button-border-radius:            $border-radius !default;
 
 $button-bg:                       $brand-primary !default;
