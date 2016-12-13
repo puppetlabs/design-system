@@ -2,15 +2,19 @@ import React from 'react';
 import Portal from 'react-portal';
 
 const portal = function portal(Base, opts = {}) {
-  return (props) => {
-    const isOpened = {}.hasOwnProperty.call(props, 'isOpened') ? props.isOpened : true;
+  const defaultProps = { isOpened: true };
 
+  const component = props => {
     return (
-      <Portal isOpened={ isOpened } { ...opts }>
+      <Portal isOpened={ props.isOpened } { ...opts }>
         <Base { ...props } />
       </Portal>
     );
   };
+
+  component.defaultProps = defaultProps;
+
+  return component;
 };
 
 export default portal;
