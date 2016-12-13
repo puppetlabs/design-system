@@ -1,4 +1,5 @@
 import React from 'react';
+import StyleguideSection from './partials/StyleguideSection';
 import icons from '../library/icons';
 import Icon from '../library/Icon';
 
@@ -8,7 +9,7 @@ class Icons extends React.Component {
     return (
       <div>
         <h1>Icons</h1>
-        <div className="sg-section">
+        <StyleguideSection title="Icons">
           {
             Object.keys(icons).map(icon => (
               <div className="sg-icon">
@@ -21,7 +22,7 @@ class Icons extends React.Component {
               </div>
             ))
           }
-        </div>
+        </StyleguideSection>
       </div>
     );
   }

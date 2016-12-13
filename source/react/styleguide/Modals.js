@@ -1,4 +1,5 @@
 import React from 'react';
+import StyleguideSection from './partials/StyleguideSection';
 import Button from '../library/Button';
 import Modal from '../library/modals/Modal';
 
@@ -7,7 +8,7 @@ class Modals extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { default: false };
+    this.state = { open: false };
 
     this.onClick = this.onClick.bind(this);
   }
@@ -45,7 +46,9 @@ class Modals extends React.Component {
     return (
       <div>
         <h1>Modals</h1>
-        <Button label="Default Modal" onClick={ this.onClick } />
+        <StyleguideSection title="Default Modal">
+          <Button label="Default Modal" onClick={ this.onClick } />
+        </StyleguideSection>
         { modal }
       </div>
     );

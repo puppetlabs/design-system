@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from './partials/Sidebar';
+import Sidebar from './partials/StyleguideSidebar';
 
 const propTypes = {
   children: React.PropTypes.any,
@@ -8,7 +8,7 @@ const propTypes = {
 const Styleguide = props => (
   <div>
     <Sidebar />
-    <div className="content">
+    <div className="sg-content">
       { props.children }
     </div>
   </div>

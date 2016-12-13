@@ -46,7 +46,6 @@ $button-disabled-bg:              #ccc !default;
 $button-disabled-color:           $gray !default;
 $button-disabled-color-hover:     $gray !default;
 $button-border-radius:            $border-radius !default;
-
 $button-bg:                       $brand-primary !default;
 $button-bg-hover:                 darken($brand-primary, 10%) !default;
 $button-color:                    $white !default;
@@ -66,8 +65,9 @@ $button-transparent-color-hover:  $gray-dark !default;
 
 $floating-action-button-height:   60px !default;
 
+//
 // Tags
-
+//
 $tag-font-size:                   $button-font-size !default;
 $tag-font-weight:                 $button-font-weight !default;
 $tag-height:                      33px;
@@ -77,6 +77,23 @@ $tag-color:                       $gray !default;
 $tag-border-radius:               $button-border-radius !default;
 $tag-border:                      2px solid $tag-bg !default;
 $tag-border-selected:             2px solid $brand-primary !default;
+
+//
+// Tab variables/options
+//
+$tab-font-family:                 $button-font-family !default;
+$tab-font-size:                   $font-size-small !default;
+$tab-font-weight:                 normal !default;
+$tab-color:                       $gray !default;
+$tab-color-active:                $brand-primary !default;
+$tab-border:                      2px solid $gray-lighter !default;
+$tab-border-active:               2px solid $brand-primary !default;
+$tab-bg:                          $white !default;
+$tab-text-transform:              uppercase !default;
+$tab-padding:                     10px 20px !default;
+$tab-width-vertical:              140px !default;
+$tab-panel-padding:               20px 0 !default;
+$tab-panel-padding-vertical:      0 20px !default;
 
 //
 // Loading indicator options
@@ -179,6 +196,7 @@ $modal-sidebar-bg:                #f6f6f6 !default;
 $modal-sidebar-width:             400px !default;
 $modal-actions-border:            $border !default;
 $modal-actions-padding:           20px 30px !default;
+
 
 //
 // Icons
