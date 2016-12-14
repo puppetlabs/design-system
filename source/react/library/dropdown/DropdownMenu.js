@@ -13,6 +13,7 @@ const propTypes = {
     React.PropTypes.array,
     React.PropTypes.number,
   ]),
+  blank: React.PropTypes.string,
   hint: React.PropTypes.string,
   options: React.PropTypes.array,
   multiple: React.PropTypes.bool,
@@ -99,11 +100,11 @@ class DropdownMenu extends React.Component {
   }
 
   renderOptions() {
-    const jsx = [];
+    let jsx = [];
     const options = this.getOptions();
 
-    if (this.props.options) {
-      options.forEach(option => {
+    if (this.props.options && this.props.options.length > 0) {
+      options.forEach((option) => {
         jsx.push(
           <DropdownMenuItem
             key={ option.id }
@@ -114,9 +115,13 @@ class DropdownMenu extends React.Component {
           />
         );
       });
+
+      jsx = <ul>{ jsx }</ul>;
+    } else if (this.props.blank) {
+      jsx = <p className="rc-dropdown-blank">{ this.props.blank }</p>;
     }
 
-    return <ul>{ jsx }</ul>;
+    return jsx;
   }
 
   render() {
