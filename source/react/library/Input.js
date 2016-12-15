@@ -4,6 +4,7 @@ import classnames from 'classnames';
 const propTypes = {
   placeholder: React.PropTypes.string,
   className: React.PropTypes.string,
+  autoFocus: React.PropTypes.bool,
   onChange: React.PropTypes.func,
   disabled: React.PropTypes.bool,
   value: React.PropTypes.string,
@@ -76,6 +77,7 @@ class Input extends React.Component {
 
     const props = {
       placeholder: this.props.placeholder,
+      autoFocus: this.props.autoFocus,
       disabled: this.props.disabled,
       onKeyUp: this.props.onKeyUp,
       checked: this.props.checked,

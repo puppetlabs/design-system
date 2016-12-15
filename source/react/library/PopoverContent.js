@@ -1,4 +1,5 @@
 import React from 'react';
+import portal from './portal';
 
 function isNodeInRoot(node, root) {
   while (node) {
@@ -55,4 +56,4 @@ class PopoverContent extends React.Component {
 
 PopoverContent.propTypes = propTypes;
 
-export default PopoverContent;
+export default portal(PopoverContent);

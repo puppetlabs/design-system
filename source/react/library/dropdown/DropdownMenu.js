@@ -7,12 +7,14 @@ const propTypes = {
   onChange: React.PropTypes.func,
   target: React.PropTypes.object,
   width: React.PropTypes.string,
+  size: React.PropTypes.string,
   required: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
     React.PropTypes.number,
   ]),
+  blank: React.PropTypes.string,
   hint: React.PropTypes.string,
   options: React.PropTypes.array,
   multiple: React.PropTypes.bool,
@@ -99,11 +101,11 @@ class DropdownMenu extends React.Component {
   }
 
   renderOptions() {
-    const jsx = [];
+    let jsx = [];
     const options = this.getOptions();
 
-    if (this.props.options) {
-      options.forEach(option => {
+    if (this.props.options && this.props.options.length > 0) {
+      options.forEach((option) => {
         jsx.push(
           <DropdownMenuItem
             key={ option.id }
@@ -114,9 +116,13 @@ class DropdownMenu extends React.Component {
           />
         );
       });
+
+      jsx = <ul>{ jsx }</ul>;
+    } else if (this.props.blank) {
+      jsx = <p className="rc-dropdown-blank">{ this.props.blank }</p>;
     }
 
-    return <ul>{ jsx }</ul>;
+    return jsx;
   }
 
   render() {
@@ -134,6 +140,7 @@ class DropdownMenu extends React.Component {
         target={ this.props.target }
         onClose={ this.onClose }
         margin={ this.props.margin }
+        size={ this.props.size }
       >
         { hint }
         { options }

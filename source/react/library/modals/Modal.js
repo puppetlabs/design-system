@@ -19,9 +19,7 @@ const propTypes = {
   ]),
 };
 
-const defaultProps = {
-  height: '90%',
-};
+const defaultProps = { height: '90%' };
 
 function setBodyOverflow(value) {
   const body = document.getElementsByTagName('body')[0];

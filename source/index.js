@@ -6,9 +6,12 @@ import Popover from './react/library/Popover';
 import Dropdown from './react/library/dropdown/Dropdown';
 import Input from './react/library/Input';
 import DropdownMenu from './react/library/dropdown/DropdownMenu';
+import Switch from './react/library/Switch';
 import Loading from './react/library/Loading';
 import ListItem from './react/library/ListItem';
 import Modal from './react/library/modals/Modal';
+import Tabs from './react/library/tabs/Tabs';
+import TabPanel from './react/library/tabs/TabPanel';
 
 export {
   Button,
@@ -19,7 +22,10 @@ export {
   Dropdown,
   Input,
   DropdownMenu,
+  Switch,
   Loading,
   ListItem,
   Modal,
+  Tabs,
+  TabPanel,
 };

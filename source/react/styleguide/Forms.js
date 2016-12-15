@@ -1,12 +1,27 @@
 import React from 'react';
+import Input from '../library/Input';
+import StyleguideSection from './partials/StyleguideSection';
+
+const InputSmall = <Input size="small" placeholder="It was the best of times, it was the worst of times..." />;
+const InputLarge = <Input size="large" placeholder="It was the best of times, it was the worst of times..." />;
+const InputCheckbox = <Input type="checkbox" />;
 
 class Forms extends React.Component {
 
   render() {
     return (
       <div>
-        <h1>Forms</h1>
-        Forms go here!
+
+        <StyleguideSection title="Input Small">
+          { InputSmall }
+        </StyleguideSection>
+        <StyleguideSection title="Input Large">
+          { InputLarge }
+        </StyleguideSection>
+        <StyleguideSection title="Input Checkbox">
+          { InputCheckbox }
+        </StyleguideSection>
+
       </div>
     );
   }

@@ -26,6 +26,7 @@ $border-color:                   #dedede !default;
 $border-hover-color:             $gray !default;
 $border-radius:                  4px !default;
 $border:                         1px solid $border-color !default;
+$border-heavy:                   2px solid $border-color;
 $border-active:                  1px solid $brand-primary !default;
 $border-hover:                   1px solid $border-hover-color !default;
 
@@ -42,8 +43,9 @@ $button-font-family:              'Montserrat', sans-serif !default;
 $button-font-size:                $font-size-small !default;
 $button-font-weight:              normal !default;
 $button-disabled-bg:              #ccc !default;
+$button-disabled-color:           $gray !default;
+$button-disabled-color-hover:     $gray !default;
 $button-border-radius:            $border-radius !default;
-
 $button-bg:                       $brand-primary !default;
 $button-bg-hover:                 darken($brand-primary, 10%) !default;
 $button-color:                    $white !default;
@@ -63,8 +65,9 @@ $button-transparent-color-hover:  $gray-dark !default;
 
 $floating-action-button-height:   60px !default;
 
+//
 // Tags
-
+//
 $tag-font-size:                   $button-font-size !default;
 $tag-font-weight:                 $button-font-weight !default;
 $tag-height:                      33px;
@@ -74,6 +77,23 @@ $tag-color:                       $gray !default;
 $tag-border-radius:               $button-border-radius !default;
 $tag-border:                      2px solid $tag-bg !default;
 $tag-border-selected:             2px solid $brand-primary !default;
+
+//
+// Tab variables/options
+//
+$tab-font-family:                 $button-font-family !default;
+$tab-font-size:                   $font-size-small !default;
+$tab-font-weight:                 normal !default;
+$tab-color:                       $gray !default;
+$tab-color-active:                $brand-primary !default;
+$tab-border:                      2px solid $gray-lighter !default;
+$tab-border-active:               2px solid $brand-primary !default;
+$tab-bg:                          $white !default;
+$tab-text-transform:              uppercase !default;
+$tab-padding:                     10px 20px !default;
+$tab-width-vertical:              140px !default;
+$tab-panel-padding:               20px 0 !default;
+$tab-panel-padding-vertical:      0 20px !default;
 
 //
 // Loading indicator options
@@ -101,6 +121,8 @@ $dropdown-max-height:             400px !default;
 $dropdown-label-font-size:        $font-size-medium !default;
 $dropdown-label-font-weight:      600 !default;
 $dropdown-label-color:            $brand-primary !default;
+$dropdown-chevron-height:         6px !default;
+$dropdown-chevron-width:          10px !default;
 $dropdown-hint-color:             $gray !default;
 $dropdown-hint-font-size:         $font-size-medium !default;
 $dropdown-item-font-size:         $font-size-base !default;
@@ -109,8 +131,8 @@ $dropdown-item-hover-color:       $white !default;
 $dropdown-item-hover-bg:          darken($brand-primary, 10%) !default;
 $dropdown-item-selected-color:    $white !default;
 $dropdown-item-selected-bg:       $brand-primary !default;
-$dropdown-item-disabled-color:    $white;
-$dropdown-item-disabled-bg:       $gray-light;
+$dropdown-item-disabled-color:    $white !default;
+$dropdown-item-disabled-bg:       $gray-light !default;
 
 //
 // Cards
@@ -125,6 +147,24 @@ $card-remove-background:          $gray-lighter !default;
 $card-color:                      $gray !default;
 $card-title-color:                $gray !default;
 $card-subtitle-color:             $gray !default;
+
+//
+// Input
+//
+$input-border-radius:            $border-radius;
+
+//
+// Switch
+//
+$switch-height:                   21px;
+$switch-width:                    47px;
+$switch-padding:                  5px;
+$switch-border:                   $border-heavy;
+$switch-handle-height:            $switch-height - ($switch-padding * 2);
+$switch-on-icon-fill:             $white;
+$switch-on-icon-size:             13px;
+$switch-off-icon-fill:            $gray;
+$switch-off-icon-size:            10px;
 
 //
 // List Item
@@ -159,12 +199,8 @@ $modal-sidebar-width:             400px !default;
 $modal-actions-border:            $border !default;
 $modal-actions-padding:           20px 30px !default;
 
+
 //
 // Icons
 //
 $icon-fill:                       $gray !default;
-
-//
-// Input
-//
-$input-border-radius:             $border-radius !default;
