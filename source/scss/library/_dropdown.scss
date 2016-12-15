@@ -3,6 +3,12 @@
   font-size: $dropdown-label-font-size;
   font-weight: $dropdown-label-font-weight;
   color: $dropdown-label-color;
+
+  .rc-icon {
+    height: $dropdown-chevron-height;
+    width: 15px;
+    fill: $dropdown-label-color;
+  }
 }
 
 .rc-dropdown-menu {

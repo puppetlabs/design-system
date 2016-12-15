@@ -16,7 +16,7 @@ class Icons extends React.Component {
                 <div className="sg-icon-wrapper">
                   <Icon type={ icon } />
                 </div>
-                <div className="sg-icon-title">
+                <div className="sg-icon-title" title={ icon }>
                   { icon }
                 </div>
               </div>
