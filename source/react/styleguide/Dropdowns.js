@@ -1,6 +1,8 @@
 import React from 'react';
 import StyleguideSection from './partials/StyleguideSection';
+import Button from '../library/Button';
 import Dropdown from '../library/dropdown/Dropdown';
+import DropdownMenu from '../library/dropdown/DropdownMenu';
 
 const Dropdowns = () => {
   const options = [
@@ -16,11 +18,25 @@ const Dropdowns = () => {
     />
   );
 
+  const menuTarget = <Button label="Toggle Dropdown" />;
+
+  const blank = (
+    <DropdownMenu
+      target={ menuTarget }
+      hint="I'm a hint"
+      options={ [] }
+      blank="Congratulations! You've added all the things!"
+    />
+  );
+
   return (
     <div>
       <h1>Dropdowns</h1>
       <StyleguideSection title="Default Dropdown">
         { dropdown }
+      </StyleguideSection>
+      <StyleguideSection title="Blank Slate Dropdown">
+        { blank }
       </StyleguideSection>
     </div>
   );

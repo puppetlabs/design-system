@@ -5,6 +5,7 @@ const propTypes = {
   onChange: React.PropTypes.func,
   options: React.PropTypes.array,
   hint: React.PropTypes.string,
+  blank: React.PropTypes.string,
   label: React.PropTypes.string,
   multiple: React.PropTypes.bool,
   required: React.PropTypes.bool,
@@ -55,6 +56,7 @@ class Dropdown extends React.Component {
       <DropdownMenu
         width="260px"
         margin={ -60 }
+        blank={ this.props.blank }
         hint={ this.props.hint }
         multiple={ this.props.multiple }
         target={ button }
