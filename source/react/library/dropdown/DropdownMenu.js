@@ -7,6 +7,7 @@ const propTypes = {
   onChange: React.PropTypes.func,
   target: React.PropTypes.object,
   width: React.PropTypes.string,
+  size: React.PropTypes.string,
   required: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
@@ -139,6 +140,7 @@ class DropdownMenu extends React.Component {
         target={ this.props.target }
         onClose={ this.onClose }
         margin={ this.props.margin }
+        size={ this.props.size }
       >
         { hint }
         { options }
