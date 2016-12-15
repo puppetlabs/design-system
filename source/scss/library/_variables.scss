@@ -121,6 +121,8 @@ $dropdown-max-height:             400px !default;
 $dropdown-label-font-size:        $font-size-medium !default;
 $dropdown-label-font-weight:      600 !default;
 $dropdown-label-color:            $brand-primary !default;
+$dropdown-chevron-height:         6px !default;
+$dropdown-chevron-width:          10px !default;
 $dropdown-hint-color:             $gray !default;
 $dropdown-hint-font-size:         $font-size-medium !default;
 $dropdown-item-font-size:         $font-size-base !default;
@@ -129,8 +131,8 @@ $dropdown-item-hover-color:       $white !default;
 $dropdown-item-hover-bg:          darken($brand-primary, 10%) !default;
 $dropdown-item-selected-color:    $white !default;
 $dropdown-item-selected-bg:       $brand-primary !default;
-$dropdown-item-disabled-color:    $white;
-$dropdown-item-disabled-bg:       $gray-light;
+$dropdown-item-disabled-color:    $white !default;
+$dropdown-item-disabled-bg:       $gray-light !default;
 
 //
 // Cards

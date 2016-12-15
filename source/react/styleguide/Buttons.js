@@ -1,6 +1,5 @@
 import React from 'react';
 import StyleguideSection from './partials/StyleguideSection';
-
 import Button from '../library/Button';
 import ButtonGroup from '../library/ButtonGroup';
 

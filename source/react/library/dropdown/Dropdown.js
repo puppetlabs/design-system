@@ -1,5 +1,6 @@
 import React from 'react';
 import DropdownMenu from './DropdownMenu';
+import Icon from '../Icon';
 
 const propTypes = {
   onChange: React.PropTypes.func,
@@ -93,7 +94,11 @@ class Dropdown extends React.Component {
       }
     }
 
-    return <span className="rc-dropdown-label">{ label }</span>;
+    return (
+      <span className="rc-dropdown-label">
+        <span className="rc-dropdown-label-text">{ label }</span> <Icon type="chevron-down" />
+      </span>
+    );
   }
 
   render() {
