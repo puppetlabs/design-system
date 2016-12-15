@@ -138,6 +138,7 @@ class Popover extends React.Component {
           className={ className }
           style={ styles }
           onOutsideClick={ this.onOutsideClick }
+          onClose={ this.onClose }
         >
           { this.props.children }
         </PopoverContent>
