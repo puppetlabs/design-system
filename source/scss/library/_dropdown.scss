@@ -16,6 +16,11 @@
     font-size: $dropdown-hint-font-size;
   }
 
+  .rc-dropdown-blank {
+    padding: $dropdown-padding;
+    font-size: $dropdown-item-font-size;
+  }
+
   .rc-dropdown-item {
     font-size: $dropdown-item-font-size;
     line-height: $dropdown-item-line-height;
