@@ -53,10 +53,13 @@ a.rc-button, button.rc-button {
     }
 
     .rc-icon {
+      float: none;
       position: absolute;
-      top: 0;
+      top: 50%;
       left: 0;
       width: 100%;
+      height: 80%;
+      transform: translateY(-50%);
     }
   }
 
