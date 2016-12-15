@@ -37,6 +37,13 @@ describe('<DropdownMenu />', () => {
     expect(wrapper.find('.rc-dropdown-hint').text()).to.equal('I love hints!');
   });
 
+  it('should render a blank slate', () => {
+    const options = [];
+    const wrapper = shallow(<DropdownMenu blank="I love blank slates!" options={ options } />);
+
+    expect(wrapper.find('.rc-dropdown-blank').text()).to.equal('I love blank slates!');
+  });
+
   it('should render a popover', () => {
     const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
     const wrapper = shallow(<DropdownMenu options={ options } />);
