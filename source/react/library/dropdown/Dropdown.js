@@ -94,7 +94,11 @@ class Dropdown extends React.Component {
       }
     }
 
-    return <span className="rc-dropdown-label">{ label } <Icon type="chevron-down" /></span>;
+    return (
+      <span className="rc-dropdown-label">
+        <span className="rc-dropdown-label-text">{ label }</span> <Icon type="chevron-down" />
+      </span>
+    );
   }
 
   render() {
