@@ -1,12 +1,14 @@
 .rc-dropdown-label {
-  text-decoration: underline;
   font-size: $dropdown-label-font-size;
   font-weight: $dropdown-label-font-weight;
   color: $dropdown-label-color;
 
   .rc-icon {
+    position: relative;
+    top: -1px;
+    left: -2px;
     height: $dropdown-chevron-height;
-    width: 15px;
+    width: $dropdown-chevron-width;
     fill: $dropdown-label-color;
   }
 }
