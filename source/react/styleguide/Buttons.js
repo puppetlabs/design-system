@@ -1,6 +1,8 @@
 import React from 'react';
-import Button from '../library/Button';
 import StyleguideSection from './partials/StyleguideSection';
+
+import Button from '../library/Button';
+import ButtonGroup from '../library/ButtonGroup';
 
 const Buttons = () => (
   <div>
@@ -19,6 +21,12 @@ const Buttons = () => (
       <Button transparent label="default" />
       <Button transparent disabled label="disabled" />
       <Button transparent disabled processing label="processing" />
+    </StyleguideSection>
+    <StyleguideSection title="Button Groups">
+      <ButtonGroup>
+        <Button label="default" />
+        <Button secondary label="secondary" />
+      </ButtonGroup>
     </StyleguideSection>
     <StyleguideSection title="Floating Action Buttons">
       <Button floating />

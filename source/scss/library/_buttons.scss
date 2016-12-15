@@ -121,39 +121,6 @@ a.rc-button, button.rc-button {
   }
 }
 
-.rc-button-group {
-  margin-bottom: 5px;
-
-  &.rc-button-group-two-up {
-    .rc-button {
-      width: 50%;
-    }
-  }
-
-  &.rc-button-group-three-up {
-    .rc-button {
-      width: 33.33%;
-    }
-  }
-
-  a.rc-button, button.rc-button {
-    display: inline-block;
-    border-radius: 0;
-    height: 25px;
-    line-height: 25px;
-    font-size: 11px;
-    letter-spacing: 1px;
-    padding: 0;
-
-    &:first-of-type {
-      border-left-radius: $button-border-radius;
-    }
-    &:last-of-type {
-      border-right-radius: $button-border-radius;
-    }
-  }
-}
-
 a.rc-floating-action-button, button.rc-floating-action-button {
   border-radius: 60px;
   height: $floating-action-button-height;
@@ -164,5 +131,15 @@ a.rc-floating-action-button, button.rc-floating-action-button {
   &:before {
     content: '+';
     font-size: 36px;
+  }
+}
+
+.rc-button-group {
+  a.rc-button, button.rc-button {
+    margin-right: 5px;
+
+    &:last-of-type {
+      margin-right: 0;
+    }
   }
 }
