@@ -71,6 +71,12 @@ a.rc-modal-close {
     overflow: hidden;
     border-top: $modal-actions-border;
     text-align: right;
+
+    .rc-modal-actions-cta {
+      float: left;
+      margin: 0;
+      padding: $modal-actions-cta-padding;
+    }
   }
 
   // Centering our loading spinners within the modal.

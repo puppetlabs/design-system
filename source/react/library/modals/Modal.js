@@ -234,10 +234,16 @@ class Modal extends React.Component {
   }
 
   renderActions() {
+    const { actions, actionsCTA } = this.props;
     let jsx;
+    let cta = null;
 
-    if (this.props.actions) {
-      jsx = <div className="rc-modal-actions">{ this.props.actions }</div>;
+    if (actions) {
+      if (actionsCTA) {
+        cta = <span className="rc-modal-actions-cta">{ actionsCTA }</span>;
+      }
+
+      jsx = <div className="rc-modal-actions">{ cta }{ actions }</div>;
     }
 
     return jsx;
