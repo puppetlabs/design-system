@@ -14,7 +14,9 @@ class Modals extends React.Component {
   }
 
   onClick() {
-    this.setState({ open: !this.state.open });
+    const open = !this.state.open;
+
+    this.setState({ open });
   }
 
   renderModal() {

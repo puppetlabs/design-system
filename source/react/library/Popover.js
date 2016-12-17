@@ -16,7 +16,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-  open: false,
   width: 'auto',
   margin: 10,
 };
@@ -28,7 +27,7 @@ class Popover extends React.Component {
 
     this.state = {
       position: {},
-      open: props.open,
+      open: props.open || false,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -45,7 +44,7 @@ class Popover extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.open !== this.state.open) {
+    if (typeof props.open !== 'undefined' && (props.open !== this.state.open)) {
       this.setState({ open: props.open });
     }
   }
@@ -100,6 +99,8 @@ class Popover extends React.Component {
 
   close() {
     this.setState({ open: false });
+
+    this.onClose();
   }
 
   renderButton() {
