@@ -44,7 +44,7 @@ class Popover extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.open && (props.open !== this.state.open)) {
+    if (typeof props.open !== 'undefined' && (props.open !== this.state.open)) {
       this.setState({ open: props.open });
     }
   }
