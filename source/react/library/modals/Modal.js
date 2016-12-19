@@ -13,7 +13,14 @@ const propTypes = {
   title: React.PropTypes.any,
   sidebar: React.PropTypes.any,
   actions: React.PropTypes.any,
-  className: React.PropTypes.object,
+  modalClassName: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.object,
+  ]),
+  overlayClassName: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.object,
+  ]),
 };
 
 const defaultProps = { height: '90%' };
@@ -251,11 +258,11 @@ class Modal extends React.Component {
     const title = this.renderTitle();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
-    const { children, className } = this.props;
+    const { children } = this.props;
     const modalClassName = classname('rc-modal', {
       'rc-modal-with-sidebar': sidebar,
-    }, className.modal);
-    const overlayClassName = classname('rc-modal-overlay', className.overlay);
+    }, this.props.modalClassName);
+    const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
 
     return (
       <div className={ overlayClassName } >
