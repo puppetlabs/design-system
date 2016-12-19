@@ -1,7 +1,6 @@
 .rc-progress {
   .rc-progress-step-active {
-    -webkit-transition: -webkit-transform 2s;
+    -webkit-transition: -webkit-transform 400ms;
     transition: transform 400ms;
-    transform: translateX(120px);
   }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 
 const propTypes = {
   color: React.PropTypes.string,
@@ -21,10 +20,6 @@ class Progress extends React.Component {
 
     // TODO: Get this to work with various sizes, then move this to props.
     this.state = { stepSize: 10 };
-  }
-
-  componentWillReceiveProps(newProps) {
-    console.log(newProps.active, this.props.active);
   }
 
   renderLines() {
@@ -54,18 +49,38 @@ class Progress extends React.Component {
     );
   }
 
-  renderStep(idx) {
-    const { steps, color, active, width } = this.props;
+  renderActive() {
+    const { steps, color, width, active } = this.props;
     const { stepSize } = this.state;
-    const isActive = active === idx;
+    const cx = ((width / (steps - 1)) * active) + stepSize;
+    const props = {
+      cx: 0,
+      cy: 10,
+      r: 7,
+      fill: color,
+      stroke: color,
+      strokeWidth: 6,
+      className: 'rc-progress-step rc-progress-step-active',
+      style: {
+        transform: `translateX(${cx}px)`,
+      },
+      key: 'active',
+    };
+
+    return <circle { ...props } />;
+  }
+
+  renderStep(idx) {
+    const { steps, color, width } = this.props;
+    const { stepSize } = this.state;
     const props = {
       cx: ((width / (steps - 1)) * idx) + stepSize,
       cy: 10,
-      r: isActive ? 7 : 8,
-      fill: isActive ? color : 'none',
+      r: 8,
+      fill: 'none',
       stroke: color,
-      strokeWidth: isActive ? 6 : 4,
-      className: classnames('rc-progress-step', { 'rc-progress-step-active': isActive }),
+      strokeWidth: 4,
+      className: 'rc-progress-step',
       key: idx,
     };
 
@@ -79,6 +94,8 @@ class Progress extends React.Component {
     for (let n = 0; n < steps; n++) {
       circles.push(this.renderStep(n));
     }
+
+    circles.push(this.renderActive());
 
     return (
       <g className="rc-progress-steps">
