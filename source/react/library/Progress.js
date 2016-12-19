@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 
 const propTypes = {
   color: React.PropTypes.string,
@@ -20,6 +21,10 @@ class Progress extends React.Component {
 
     // TODO: Get this to work with various sizes, then move this to props.
     this.state = { stepSize: 10 };
+  }
+
+  componentWillReceiveProps(newProps) {
+    console.log(newProps.active, this.props.active);
   }
 
   renderLines() {
@@ -60,6 +65,7 @@ class Progress extends React.Component {
       fill: isActive ? color : 'none',
       stroke: color,
       strokeWidth: isActive ? 6 : 4,
+      className: classnames('rc-progress-step', { 'rc-progress-step-active': isActive }),
       key: idx,
     };
 
