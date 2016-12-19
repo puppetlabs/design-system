@@ -31,11 +31,12 @@ class Progress extends React.Component {
       const lineWidth = (width / (steps - 1)) - circleWidth;
 
       const props = {
-        y1: this.state.stepSize,
+        y1: 15,
         x1: (circleWidth * (n + 1)) + (lineWidth * n),
         x2: (circleWidth + lineWidth) * (n + 1),
-        y2: this.state.stepSize,
-        style: { stroke: color, strokeWidth: 3 },
+        y2: 15,
+        stroke: color,
+        strokeWidth: 3,
         key: n,
       };
 
@@ -55,10 +56,11 @@ class Progress extends React.Component {
     const cx = ((width / (steps - 1)) * active) + stepSize;
     const props = {
       cx: 0,
-      cy: 10,
-      r: 7,
+      cy: 15,
+      r: 10,
       fill: color,
-      stroke: color,
+      stroke: '#000',
+      strokeOpacity: 0.1,
       strokeWidth: 6,
       className: 'rc-progress-step rc-progress-step-active',
       style: {
@@ -75,7 +77,7 @@ class Progress extends React.Component {
     const { stepSize } = this.state;
     const props = {
       cx: ((width / (steps - 1)) * idx) + stepSize,
-      cy: 10,
+      cy: 15,
       r: 8,
       fill: 'none',
       stroke: color,
@@ -109,10 +111,12 @@ class Progress extends React.Component {
     const steps = this.renderSteps();
     const { width } = this.props;
     const { stepSize } = this.state;
-    const svgWidth = width + (stepSize * 2);
+    const svgWidth = width + (stepSize * 4);
+    const svgHeight = (stepSize * 4);
+    const style = { padding: stepSize };
 
     return (
-      <svg width={ svgWidth } height={ stepSize * 2 } className="rc-progress">
+      <svg style={ style } width={ svgWidth } height={ svgHeight } className="rc-progress">
         { line }
         { steps }
       </svg>
