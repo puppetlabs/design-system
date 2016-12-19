@@ -37,6 +37,7 @@ class Progress extends React.Component {
         y2: 15,
         stroke: color,
         strokeWidth: 3,
+        className: 'rc-progress-line',
         key: n,
       };
 
@@ -53,6 +54,8 @@ class Progress extends React.Component {
   renderActive() {
     const { steps, color, width, active } = this.props;
     const { stepSize } = this.state;
+    // Calculate how far on the x axis we should position this, based on the number of steps,
+    // their size, and the width of the bar.
     const cx = ((width / (steps - 1)) * active) + stepSize;
     const props = {
       cx: 0,
@@ -78,7 +81,7 @@ class Progress extends React.Component {
     const props = {
       cx: ((width / (steps - 1)) * idx) + stepSize,
       cy: 15,
-      r: 8,
+      r: 8, // TODO: Remove these hardcoded values
       fill: 'none',
       stroke: color,
       strokeWidth: 4,
@@ -97,6 +100,7 @@ class Progress extends React.Component {
       circles.push(this.renderStep(n));
     }
 
+    // Once we've rendered every step, let's also render the active step.
     circles.push(this.renderActive());
 
     return (
