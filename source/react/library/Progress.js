@@ -4,14 +4,14 @@ const propTypes = {
   color: React.PropTypes.string,
   steps: React.PropTypes.number,
   active: React.PropTypes.number,
-  width: React.PropTypes.width,
+  width: React.PropTypes.number,
 };
 
 const defaultProps = {
   color: '#009cf6',
-  steps: 5,
+  steps: 4,
   active: 1,
-  width: 400,
+  width: 300,
 };
 
 class Progress extends React.Component {
@@ -22,19 +22,31 @@ class Progress extends React.Component {
     this.state = { stepSize: 10 };
   }
 
-  renderLine() {
-    const { width, color } = this.props;
-    const { stepSize } = this.state;
+  renderLines() {
+    const { width, color, steps } = this.props;
+    const circleWidth = this.state.stepSize * 2;
+    const lines = [];
 
-    const props = {
-      y1: stepSize,
-      x1: stepSize,
-      x2: width + stepSize,
-      y2: stepSize,
-      style: { stroke: color, strokeWidth: 3 },
-    };
+    for (let n = 0; n < steps - 1; n++) {
+      const lineWidth = (width / (steps - 1)) - circleWidth;
 
-    return <line { ...props } />;
+      const props = {
+        y1: this.state.stepSize,
+        x1: (circleWidth * (n + 1)) + (lineWidth * n),
+        x2: (circleWidth + lineWidth) * (n + 1),
+        y2: this.state.stepSize,
+        style: { stroke: color, strokeWidth: 3 },
+        key: n,
+      };
+
+      lines.push(<line { ...props } />);
+    }
+
+    return (
+      <g className="rc-progress-lines">
+        { lines }
+      </g>
+    );
   }
 
   renderStep(idx) {
@@ -44,8 +56,8 @@ class Progress extends React.Component {
     const props = {
       cx: ((width / (steps - 1)) * idx) + stepSize,
       cy: 10,
-      r: 6,
-      fill: isActive ? color : 'white',
+      r: isActive ? 7 : 8,
+      fill: isActive ? color : 'none',
       stroke: color,
       strokeWidth: isActive ? 6 : 4,
       key: idx,
@@ -63,21 +75,21 @@ class Progress extends React.Component {
     }
 
     return (
-      <g>
+      <g className="rc-progress-steps">
         { circles }
       </g>
     );
   }
 
   render() {
-    const line = this.renderLine();
+    const line = this.renderLines();
     const steps = this.renderSteps();
     const { width } = this.props;
     const { stepSize } = this.state;
     const svgWidth = width + (stepSize * 2);
 
     return (
-      <svg width={ svgWidth } height={ stepSize * 2 }>
+      <svg width={ svgWidth } height={ stepSize * 2 } className="rc-progress">
         { line }
         { steps }
       </svg>
