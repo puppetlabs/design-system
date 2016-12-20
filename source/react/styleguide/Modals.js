@@ -8,21 +8,27 @@ class Modals extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { open: false };
+    this.state = {
+      openDefault: false,
+      openSmall: false,
+    };
 
-    this.onClick = this.onClick.bind(this);
+    this.onToggleDefault = this.onToggleDefault.bind(this);
+    this.onToggleSmall = this.onToggleSmall.bind(this);
   }
 
-  onClick() {
-    const open = !this.state.open;
+  onToggleDefault() {
+    this.setState({ openDefault: !this.state.openDefault });
+  }
 
-    this.setState({ open });
+  onToggleSmall() {
+    this.setState({ openSmall: !this.state.openSmall });
   }
 
   renderModal() {
     let jsx;
 
-    if (this.state.open) {
+    if (this.state.openDefault) {
       const actions = [
         <Button key="submit-button" label="Submit" />,
       ];
@@ -44,16 +50,32 @@ class Modals extends React.Component {
     return jsx;
   }
 
+  renderSmallModal() {
+    let jsx;
+
+
+    if (this.state.openSmall) {
+      jsx = <Modal size="small" onClose={ this.onToggleSmall }>Small Modal</Modal>;
+    }
+
+    return jsx;
+  }
+
   render() {
     const modal = this.renderModal();
+    const smallModal = this.renderSmallModal();
 
     return (
       <div>
         <h1>Modals</h1>
         <StyleguideSection title="Default Modal">
-          <Button label="Default Modal" onClick={ this.onClick } />
+          <Button label="Default Modal" onClick={ this.onToggleDefault } />
+        </StyleguideSection>
+        <StyleguideSection title="Small Modal">
+          <Button label="Small Modal" onClick={ this.onToggleSmall } />
         </StyleguideSection>
         { modal }
+        { smallModal }
       </div>
     );
   }

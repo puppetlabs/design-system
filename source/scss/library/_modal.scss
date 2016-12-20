@@ -44,6 +44,14 @@ a.rc-modal-close {
     }
   }
 
+  &.rc-modal-small {
+    width: $modal-width-small;
+  }
+
+  &.rc-modal-medium {
+    width: $modal-width-medium;
+  }
+
   .rc-modal-title {
     padding: $modal-title-padding;
     background: $modal-bg;
