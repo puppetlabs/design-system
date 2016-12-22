@@ -22,7 +22,7 @@ class Progress extends React.Component {
 
   renderLines() {
     const { width, steps } = this.props;
-    const circleWidth = this.state.stepSize * 2;
+    const circleWidth = this.state.stepSize * 3;
     const lines = [];
 
     for (let n = 0; n < steps - 1; n++) {
@@ -31,7 +31,7 @@ class Progress extends React.Component {
       const props = {
         y1: 15,
         x1: (circleWidth * (n + 1)) + (lineWidth * n),
-        x2: (circleWidth + lineWidth) * (n + 1),
+        x2: ((circleWidth + lineWidth) * (n + 1)) + (circleWidth / 3),
         y2: 15,
         strokeWidth: 3,
         className: 'rc-progress-line',
@@ -53,29 +53,44 @@ class Progress extends React.Component {
     const { stepSize } = this.state;
     // Calculate how far on the x axis we should position this, based on the number of steps,
     // their size, and the width of the bar.
-    const cx = ((width / (steps - 1)) * active) + stepSize;
-    const props = {
+    const cx = ((width / (steps - 1)) * active) + (stepSize * 2);
+    const mainProps = {
       cx: 0,
       cy: 15,
-      r: 10,
-      stroke: '#000',
-      strokeOpacity: 0.1,
-      strokeWidth: 6,
+      r: 8,
       className: 'rc-progress-step rc-progress-step-active',
       style: {
         transform: `translateX(${cx}px)`,
       },
-      key: 'active',
+      key: 'main',
     };
 
-    return <circle { ...props } />;
+    const shadowProps = {
+      cx: 0,
+      cy: 15,
+      r: 15,
+      fill: '#000',
+      fillOpacity: 0.1,
+      className: 'rc-progress-step rc-progress-step-active rc-progress-step-active-shadow',
+      style: {
+        transform: `translateX(${cx}px)`,
+      },
+      key: 'shadow',
+    };
+
+    return (
+      <g key="active">
+        <circle { ...mainProps } />
+        <circle { ...shadowProps } />
+      </g>
+    );
   }
 
   renderStep(idx) {
     const { steps, width } = this.props;
     const { stepSize } = this.state;
     const props = {
-      cx: ((width / (steps - 1)) * idx) + stepSize,
+      cx: ((width / (steps - 1)) * idx) + (stepSize * 2),
       cy: 15,
       r: 8, // TODO: Remove these hardcoded values
       fill: 'none',
@@ -111,11 +126,10 @@ class Progress extends React.Component {
     const { width } = this.props;
     const { stepSize } = this.state;
     const svgWidth = width + (stepSize * 4);
-    const svgHeight = (stepSize * 4);
-    const style = { padding: stepSize };
+    const svgHeight = (stepSize * 3);
 
     return (
-      <svg style={ style } width={ svgWidth } height={ svgHeight } className="rc-progress">
+      <svg width={ svgWidth } height={ svgHeight } className="rc-progress">
         { line }
         { steps }
       </svg>
