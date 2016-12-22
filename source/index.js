@@ -12,6 +12,7 @@ import ListItem from './react/library/ListItem';
 import Modal from './react/library/modals/Modal';
 import Tabs from './react/library/tabs/Tabs';
 import TabPanel from './react/library/tabs/TabPanel';
+import Progress from './react/library/Progress';
 
 export {
   Button,
@@ -28,4 +29,5 @@ export {
   Modal,
   Tabs,
   TabPanel,
+  Progress,
 };
