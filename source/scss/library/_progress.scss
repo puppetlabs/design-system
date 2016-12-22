@@ -1,6 +1,15 @@
 .rc-progress {
+  .rc-progress-line {
+    stroke: $rc-progress-color;
+  }
+
+  .rc-progress-step {
+   stroke: $rc-progress-color;
+  }
+
   .rc-progress-step-active {
-    -webkit-transition: -webkit-transform 400ms;
-    transition: transform 400ms;
+    fill: $rc-progress-color;
+    -webkit-transition: -webkit-transform $rc-progress-animation;
+    transition: transform $rc-progress-animation;
   }
 }

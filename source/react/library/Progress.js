@@ -1,14 +1,12 @@
 import React from 'react';
 
 const propTypes = {
-  color: React.PropTypes.string,
   steps: React.PropTypes.number,
   active: React.PropTypes.number,
   width: React.PropTypes.number,
 };
 
 const defaultProps = {
-  color: '#009cf6',
   steps: 4,
   active: 1,
   width: 300,
@@ -23,7 +21,7 @@ class Progress extends React.Component {
   }
 
   renderLines() {
-    const { width, color, steps } = this.props;
+    const { width, steps } = this.props;
     const circleWidth = this.state.stepSize * 2;
     const lines = [];
 
@@ -35,7 +33,6 @@ class Progress extends React.Component {
         x1: (circleWidth * (n + 1)) + (lineWidth * n),
         x2: (circleWidth + lineWidth) * (n + 1),
         y2: 15,
-        stroke: color,
         strokeWidth: 3,
         className: 'rc-progress-line',
         key: n,
@@ -52,7 +49,7 @@ class Progress extends React.Component {
   }
 
   renderActive() {
-    const { steps, color, width, active } = this.props;
+    const { steps, width, active } = this.props;
     const { stepSize } = this.state;
     // Calculate how far on the x axis we should position this, based on the number of steps,
     // their size, and the width of the bar.
@@ -61,7 +58,6 @@ class Progress extends React.Component {
       cx: 0,
       cy: 15,
       r: 10,
-      fill: color,
       stroke: '#000',
       strokeOpacity: 0.1,
       strokeWidth: 6,
@@ -76,14 +72,13 @@ class Progress extends React.Component {
   }
 
   renderStep(idx) {
-    const { steps, color, width } = this.props;
+    const { steps, width } = this.props;
     const { stepSize } = this.state;
     const props = {
       cx: ((width / (steps - 1)) * idx) + stepSize,
       cy: 15,
       r: 8, // TODO: Remove these hardcoded values
       fill: 'none',
-      stroke: color,
       strokeWidth: 4,
       className: 'rc-progress-step',
       key: idx,
