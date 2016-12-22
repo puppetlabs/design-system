@@ -65,6 +65,8 @@ class Popover extends React.Component {
 
   onOutsideClick() {
     this.setState({ open: false });
+
+    this.onClose();
   }
 
   onClick(e) {
