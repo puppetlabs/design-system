@@ -30,12 +30,13 @@ function setBodyOverflow(value) {
 }
 
 function getDefaultState(props) {
-  const state = { height: '90%', margin: null };
+  const state = { height: null, margin: 200 };
 
-  // If margin is supplied, prefer that.
   if (props.margin) {
-    state.height = null;
     state.margin = props.margin;
+  } else if (props.height) {
+    state.margin = null;
+    state.height = props.height;
   }
 
   return state;
