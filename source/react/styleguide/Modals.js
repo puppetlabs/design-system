@@ -14,7 +14,9 @@ class Modals extends React.Component {
   }
 
   onClick() {
-    this.setState({ open: !this.state.open });
+    const open = !this.state.open;
+
+    this.setState({ open });
   }
 
   renderModal() {
@@ -30,7 +32,9 @@ class Modals extends React.Component {
           title="I am a happy modal"
           sidebar="Happy Sidebar!"
           onClose={ this.onClick }
+          margin={ 200 }
           actions={ actions }
+          actionsCTA="I'm a happy action cta!"
         >
           Happy Content!
         </Modal>

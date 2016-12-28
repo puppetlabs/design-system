@@ -9,21 +9,38 @@ const propTypes = {
   bindShortcut: React.PropTypes.func,
   onClose: React.PropTypes.func,
   children: React.PropTypes.any,
+  margin: React.PropTypes.number,
   height: React.PropTypes.string,
   title: React.PropTypes.any,
   sidebar: React.PropTypes.any,
   actions: React.PropTypes.any,
-  className: React.PropTypes.oneOfType([
+  actionsCTA: React.PropTypes.string,
+  modalClassName: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.object,
+  ]),
+  overlayClassName: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.object,
   ]),
 };
 
-const defaultProps = { height: '90%' };
-
 function setBodyOverflow(value) {
   const body = document.getElementsByTagName('body')[0];
   body.style.overflow = value;
+}
+
+function getDefaultState(props) {
+  const state = { height: null, margin: 200 };
+
+  if (props.margin) {
+    state.margin = props.margin;
+  } else if (props.height) {
+    state.margin = null;
+    state.height = props.height;
+  }
+
+  return state;
 }
 
 class Modal extends React.Component {
@@ -33,6 +50,8 @@ class Modal extends React.Component {
 
     this.onClose = this.onClose.bind(this);
     this.onResize = debounce(this.onResize.bind(this), 250);
+
+    this.state = getDefaultState(props);
   }
 
   componentDidMount() {
@@ -130,12 +149,13 @@ class Modal extends React.Component {
   }
 
   setContentHeight() {
+    let propHeight = this.state.height;
+    const propMargin = this.state.margin;
     const windowHeight = window.innerHeight;
     // window padding is the amount of space we always want around the modal;
-    const windowPadding = 64 * 2;
+    const windowPadding = propMargin || (64 * 2);
     const modalHeight = this.getModalHeight();
     const contentHeight = this.getContentHeight();
-    let propHeight = this.props.height;
 
     if (propHeight) {
       if (propHeight.match(/%$/)) {
@@ -156,7 +176,7 @@ class Modal extends React.Component {
 
         this.content.style.height = `${newHeight}px`;
       }
-    } else if (modalHeight > windowHeight) {
+    } else if (propMargin || modalHeight > windowHeight) {
       const heightDecrease = (modalHeight - windowHeight) + windowPadding;
       this.content.style.height = `${contentHeight - heightDecrease}px`;
     }
@@ -234,10 +254,16 @@ class Modal extends React.Component {
   }
 
   renderActions() {
+    const { actions, actionsCTA } = this.props;
     let jsx;
+    let cta = null;
 
-    if (this.props.actions) {
-      jsx = <div className="rc-modal-actions">{ this.props.actions }</div>;
+    if (actions) {
+      if (actionsCTA) {
+        cta = <span className="rc-modal-actions-cta">{ actionsCTA }</span>;
+      }
+
+      jsx = <div className="rc-modal-actions">{ cta }{ actions }</div>;
     }
 
     return jsx;
@@ -248,18 +274,20 @@ class Modal extends React.Component {
     const title = this.renderTitle();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
-    const className = classname('rc-modal', {
+    const { children } = this.props;
+    const modalClassName = classname('rc-modal', {
       'rc-modal-with-sidebar': sidebar,
-    }, this.props.className);
+    }, this.props.modalClassName);
+    const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
 
     return (
-      <div className="rc-modal-overlay">
+      <div className={ overlayClassName } >
         { closeLink }
-        <div ref={ (c) => { this.modal = c; } } className={ className }>
+        <div ref={ (c) => { this.modal = c; } } className={ modalClassName }>
           { title }
           { sidebar }
-          <div ref={ (c) => { this.content = c; } }className="rc-modal-content">
-            { this.props.children }
+          <div ref={ (c) => { this.content = c; } } className="rc-modal-content">
+            { children }
           </div>
           { actions }
         </div>
@@ -269,7 +297,6 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = propTypes;
-Modal.defaultProps = defaultProps;
 
 export { Modal as BareModal };
 export default mouseTrap(portal(Modal));

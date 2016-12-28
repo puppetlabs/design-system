@@ -6,6 +6,7 @@ import PopoverContent from './PopoverContent';
 const propTypes = {
   open: React.PropTypes.bool,
   position: React.PropTypes.object,
+  anchor: React.PropTypes.string,
   onClose: React.PropTypes.func,
   target: React.PropTypes.object,
   children: React.PropTypes.any,
@@ -16,9 +17,9 @@ const propTypes = {
 };
 
 const defaultProps = {
-  open: false,
   width: 'auto',
   margin: 10,
+  anchor: 'bottom left',
 };
 
 class Popover extends React.Component {
@@ -28,7 +29,7 @@ class Popover extends React.Component {
 
     this.state = {
       position: {},
-      open: props.open,
+      open: props.open || false,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -45,7 +46,7 @@ class Popover extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.open !== this.state.open) {
+    if (typeof props.open !== 'undefined' && (props.open !== this.state.open)) {
       this.setState({ open: props.open });
     }
   }
@@ -66,6 +67,8 @@ class Popover extends React.Component {
 
   onOutsideClick() {
     this.setState({ open: false });
+
+    this.onClose();
   }
 
   onClick(e) {
@@ -91,8 +94,15 @@ class Popover extends React.Component {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
 
-      newState.position.top = elPosition.bottom + this.props.margin + window.pageYOffset;
-      newState.position.left = elPosition.left + window.pageXOffset;
+      switch (this.props.anchor) {
+        case 'bottom right':
+          newState.position.top = elPosition.bottom + this.props.margin + window.pageYOffset;
+          newState.position.right = window.innerWidth - (elPosition.right + window.pageXOffset);
+          break;
+        case 'bottom left': default:
+          newState.position.top = elPosition.bottom + this.props.margin + window.pageYOffset;
+          newState.position.left = elPosition.left + window.pageXOffset;
+      }
     }
 
     this.setState(newState);
@@ -100,6 +110,8 @@ class Popover extends React.Component {
 
   close() {
     this.setState({ open: false });
+
+    this.onClose();
   }
 
   renderButton() {

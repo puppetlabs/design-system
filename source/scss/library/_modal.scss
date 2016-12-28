@@ -62,7 +62,7 @@ a.rc-modal-close {
     height: 1px; // this will get dynamically set via the react component.
     width: $modal-sidebar-width;
     background-color: transparent;
-    padding: 60px;
+    padding: $modal-sidebar-padding;
   }
 
   .rc-modal-actions {
@@ -71,6 +71,12 @@ a.rc-modal-close {
     overflow: hidden;
     border-top: $modal-actions-border;
     text-align: right;
+
+    .rc-modal-actions-cta {
+      float: left;
+      margin: 0;
+      padding: $modal-actions-cta-padding;
+    }
   }
 
   // Centering our loading spinners within the modal.

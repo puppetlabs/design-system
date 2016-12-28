@@ -57,4 +57,11 @@ describe('<Modal />', () => {
 
     expect(modal.find('Button').prop('label')).to.equal('submit');
   });
+
+  it('should contain an actionsCTA if one is provided', () => {
+    const actions = [<Button key="submit-button" label="submit" />];
+    const modal = shallow(<Modal actionsCTA="happy actions cta" actions={ actions } />);
+
+    expect(modal.find('.rc-modal-actions-cta').text()).to.eql('happy actions cta');
+  });
 });

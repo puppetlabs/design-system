@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Styleguide from './styleguide/Styleguide';
 import Buttons from './styleguide/Buttons';
+import ProgressBars from './styleguide/ProgressBars';
 import Forms from './styleguide/Forms';
 import Cards from './styleguide/Cards';
 import Icons from './styleguide/Icons';
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <Router history={ browserHistory }>
       <Route component={ Styleguide } path="/">
         <Route path="buttons" components={ Buttons } />
+        <Route path="progress" components={ ProgressBars } />
         <Route path="modals" components={ Modals } />
         <Route path="dropdowns" components={ Dropdowns } />
         <Route path="cards" components={ Cards } />
