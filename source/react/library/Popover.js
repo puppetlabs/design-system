@@ -14,12 +14,14 @@ const propTypes = {
   size: React.PropTypes.string,
   margin: React.PropTypes.number,
   className: React.PropTypes.string,
+  allowBubble: React.PropTypes.bool,
 };
 
 const defaultProps = {
   width: 'auto',
   margin: 10,
   anchor: 'bottom left',
+  allowBubble: false,
 };
 
 class Popover extends React.Component {
@@ -46,13 +48,28 @@ class Popover extends React.Component {
   }
 
   componentWillReceiveProps(props) {
+    const newState = {};
+
     if (typeof props.open !== 'undefined' && (props.open !== this.state.open)) {
-      this.setState({ open: props.open });
+      newState.open = props.open;
+    }
+
+    if (props.position) {
+      newState.position = props.position;
+    }
+
+    if (newState) {
+      this.setState(newState);
     }
   }
 
   componentWillUpdate(nextProps, nextState) {
-    if (this.state.open !== nextState.open) {
+    const position = this.state.position;
+
+    if (
+      this.state.open !== nextState.open ||
+      (nextState.position.top !== position.top || nextState.position.left !== position.left)
+    ) {
       this.setPosition();
     }
   }
@@ -151,6 +168,7 @@ class Popover extends React.Component {
           style={ styles }
           onOutsideClick={ this.onOutsideClick }
           onClose={ this.onClose }
+          allowBubble={ this.props.allowBubble }
         >
           { this.props.children }
         </PopoverContent>
