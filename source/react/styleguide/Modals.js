@@ -32,6 +32,7 @@ class Modals extends React.Component {
           title="I am a happy modal"
           sidebar="Happy Sidebar!"
           onClose={ this.onClick }
+          margin={ 200 }
           actions={ actions }
           actionsCTA="I'm a happy action cta!"
         >
