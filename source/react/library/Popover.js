@@ -6,6 +6,7 @@ import PopoverContent from './PopoverContent';
 const propTypes = {
   open: React.PropTypes.bool,
   position: React.PropTypes.object,
+  anchor: React.PropTypes.string,
   onClose: React.PropTypes.func,
   target: React.PropTypes.object,
   children: React.PropTypes.any,
@@ -18,6 +19,7 @@ const propTypes = {
 const defaultProps = {
   width: 'auto',
   margin: 10,
+  anchor: 'bottom left',
 };
 
 class Popover extends React.Component {
@@ -92,8 +94,15 @@ class Popover extends React.Component {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
 
-      newState.position.top = elPosition.bottom + this.props.margin + window.pageYOffset;
-      newState.position.left = elPosition.left + window.pageXOffset;
+      switch (this.props.anchor) {
+        case 'bottom right':
+          newState.position.top = elPosition.bottom + this.props.margin + window.pageYOffset;
+          newState.position.right = window.innerWidth - (elPosition.right + window.pageXOffset);
+          break;
+        case 'bottom left': default:
+          newState.position.top = elPosition.bottom + this.props.margin + window.pageYOffset;
+          newState.position.left = elPosition.left + window.pageXOffset;
+      }
     }
 
     this.setState(newState);
