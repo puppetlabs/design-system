@@ -14,6 +14,7 @@ const propTypes = {
   title: React.PropTypes.any,
   sidebar: React.PropTypes.any,
   actions: React.PropTypes.any,
+  actionsCTA: React.PropTypes.string,
   modalClassName: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.object,
