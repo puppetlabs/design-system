@@ -12,6 +12,7 @@ const propTypes = {
   margin: React.PropTypes.number,
   height: React.PropTypes.string,
   title: React.PropTypes.any,
+  size: React.PropTypes.string,
   sidebar: React.PropTypes.any,
   actions: React.PropTypes.any,
   actionsCTA: React.PropTypes.string,
@@ -274,9 +275,10 @@ class Modal extends React.Component {
     const title = this.renderTitle();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
-    const { children } = this.props;
+    const { children, size } = this.props;
     const modalClassName = classname('rc-modal', {
       'rc-modal-with-sidebar': sidebar,
+      [`rc-modal-${size}`]: size,
     }, this.props.modalClassName);
     const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
 

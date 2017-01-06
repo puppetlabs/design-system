@@ -1,4 +1,5 @@
 import Button from './react/library/Button';
+import ButtonGroup from './react/library/ButtonGroup';
 import Card from './react/library/Card';
 import Icon from './react/library/Icon';
 import Tag from './react/library/Tag';
@@ -16,6 +17,7 @@ import Progress from './react/library/Progress';
 
 export {
   Button,
+  ButtonGroup,
   Card,
   Icon,
   Tag,

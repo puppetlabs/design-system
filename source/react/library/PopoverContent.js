@@ -18,6 +18,7 @@ const propTypes = {
   className: React.PropTypes.string,
   style: React.PropTypes.object,
   children: React.PropTypes.any,
+  allowBubble: React.PropTypes.bool,
 };
 
 class PopoverContent extends React.Component {
@@ -39,7 +40,10 @@ class PopoverContent extends React.Component {
   onOutsideClick(e) {
     if (!isNodeInRoot(e.target, this.elem) && this.props.onOutsideClick) {
       this.props.onOutsideClick(e);
-      e.stopPropagation();
+
+      if (!this.props.allowBubble) {
+        e.stopPropagation();
+      }
     }
   }
 
