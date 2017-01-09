@@ -1,7 +1,9 @@
 import React from 'react';
 import StyleguideSection from './partials/StyleguideSection';
 import Button from '../library/Button';
+import ButtonGroup from '../library/ButtonGroup';
 import Modal from '../library/modals/Modal';
+import ConfirmationModal from '../library/modals/ConfirmationModal';
 
 class Modals extends React.Component {
 
@@ -11,10 +13,12 @@ class Modals extends React.Component {
     this.state = {
       openDefault: false,
       openSmall: false,
+      openConfirm: false,
     };
 
     this.onToggleDefault = this.onToggleDefault.bind(this);
     this.onToggleSmall = this.onToggleSmall.bind(this);
+    this.onToggleConfirm = this.onToggleConfirm.bind(this);
   }
 
   onToggleDefault() {
@@ -23,6 +27,10 @@ class Modals extends React.Component {
 
   onToggleSmall() {
     this.setState({ openSmall: !this.state.openSmall });
+  }
+
+  onToggleConfirm() {
+    this.setState({ openConfirm: !this.state.openConfirm });
   }
 
   renderModal() {
@@ -53,7 +61,6 @@ class Modals extends React.Component {
   renderSmallModal() {
     let jsx;
 
-
     if (this.state.openSmall) {
       jsx = <Modal size="small" onClose={ this.onToggleSmall }>Small Modal</Modal>;
     }
@@ -61,8 +68,25 @@ class Modals extends React.Component {
     return jsx;
   }
 
+  renderConfirmationModal() {
+    let jsx;
+
+    if (this.state.openConfirm) {
+      jsx = (
+        <ConfirmationModal
+          onCancel={ this.onToggleConfirm }
+          onConfirm={ () => console.log('confirmed!') }
+          confirmationMessage="Are you really sure you want to proceed?"
+        />
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
     const modal = this.renderModal();
+    const confirmationModal = this.renderConfirmationModal();
     const smallModal = this.renderSmallModal();
 
     return (
@@ -74,8 +98,12 @@ class Modals extends React.Component {
         <StyleguideSection title="Small Modal">
           <Button label="Small Modal" onClick={ this.onToggleSmall } />
         </StyleguideSection>
+        <StyleguideSection title="Confirmation Modal">
+          <Button label="Confirmation Modal" onClick={ this.onToggleConfirm } />
+        </StyleguideSection>
         { modal }
         { smallModal }
+        { confirmationModal }
       </div>
     );
   }

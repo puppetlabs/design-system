@@ -46,6 +46,12 @@ a.rc-modal-close {
 
   &.rc-modal-small {
     width: $modal-width-small;
+    .rc-modal-content {
+      padding: 20px;
+    }
+    .rc-modal-actions {
+      padding: 20px;
+    }
   }
 
   &.rc-modal-medium {

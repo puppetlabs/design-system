@@ -3,6 +3,7 @@ import classname from 'classnames';
 import debounce from 'debounce';
 import { mouseTrap } from 'react-mousetrap';
 import portal from '../portal';
+import ButtonGroup from '../ButtonGroup';
 
 const propTypes = {
   unbindShortcut: React.PropTypes.func,
@@ -32,7 +33,11 @@ function setBodyOverflow(value) {
 }
 
 function getDefaultState(props) {
-  const state = { height: null, margin: 200 };
+  const state = {
+    previousContentScroll: 0,
+    height: null,
+    margin: 200,
+  };
 
   if (props.margin) {
     state.margin = props.margin;
@@ -64,6 +69,12 @@ class Modal extends React.Component {
 
     setBodyOverflow('hidden');
     this.setPosition();
+  }
+
+  componentWillReceiveProps() {
+    const previousContentScroll = this.getContentScroll();
+
+    this.setState({ previousContentScroll });
   }
 
   componentDidUpdate() {
@@ -117,6 +128,17 @@ class Modal extends React.Component {
     return height;
   }
 
+  getContentScroll() {
+    let scroll = 0;
+
+    if (this.content) {
+      const content = this.content;
+      scroll = content.scrollTop;
+    }
+
+    return scroll;
+  }
+
   getTitleHeight() {
     let height = 0;
 
@@ -147,6 +169,7 @@ class Modal extends React.Component {
     this.setContentHeight();
     this.setSidebarHeight();
     this.setTop();
+    this.setContentScroll();
   }
 
   setContentHeight() {
@@ -181,6 +204,12 @@ class Modal extends React.Component {
       const heightDecrease = (modalHeight - windowHeight) + windowPadding;
       this.content.style.height = `${contentHeight - heightDecrease}px`;
     }
+  }
+
+  setContentScroll() {
+    const { previousContentScroll } = this.state;
+
+    this.content.scrollTop = previousContentScroll;
   }
 
   setSidebarHeight() {
@@ -264,7 +293,7 @@ class Modal extends React.Component {
         cta = <span className="rc-modal-actions-cta">{ actionsCTA }</span>;
       }
 
-      jsx = <div className="rc-modal-actions">{ cta }{ actions }</div>;
+      jsx = (<div className="rc-modal-actions">{ cta }<ButtonGroup>{ actions }</ButtonGroup></div>);
     }
 
     return jsx;
