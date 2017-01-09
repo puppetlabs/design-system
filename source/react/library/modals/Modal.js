@@ -3,6 +3,7 @@ import classname from 'classnames';
 import debounce from 'debounce';
 import { mouseTrap } from 'react-mousetrap';
 import portal from '../portal';
+import ButtonGroup from '../ButtonGroup';
 
 const propTypes = {
   unbindShortcut: React.PropTypes.func,
@@ -292,7 +293,7 @@ class Modal extends React.Component {
         cta = <span className="rc-modal-actions-cta">{ actionsCTA }</span>;
       }
 
-      jsx = <div className="rc-modal-actions">{ cta }{ actions }</div>;
+      jsx = (<div className="rc-modal-actions">{ cta }<ButtonGroup>{ actions }</ButtonGroup></div>);
     }
 
     return jsx;
