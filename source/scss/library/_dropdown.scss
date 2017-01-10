@@ -1,7 +1,11 @@
 .rc-dropdown-label {
-  font-size: $dropdown-label-font-size;
-  font-weight: $dropdown-label-font-weight;
   color: $dropdown-label-color;
+  cursor: pointer;
+
+  .rc-dropdown-label-text {
+    font-size: $dropdown-label-font-size;
+    font-weight: $dropdown-label-font-weight;
+  }
 
   .rc-icon {
     position: relative;
@@ -36,10 +40,12 @@
     a {
       display: block;
       padding: $dropdown-padding;
+      text-decoration: none;
 
       &:hover {
         color: $dropdown-item-hover-color;
         background: $dropdown-item-hover-bg;
+        text-decoration: none;
       }
     }
   }
