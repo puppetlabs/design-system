@@ -48,4 +48,14 @@ describe('<Dropdown />', () => {
 
     expect(wrapper.find('.rc-dropdown-label-text').text()).to.equal('I\'m a label');
   });
+
+  it('should toggle a dropdown menu when clicking on the label', () => {
+    const wrapper = mount(<Dropdown selected={ 1 } options={ options } />);
+
+    expect(document.getElementsByClassName('rc-dropdown-menu').length).to.equal(0);
+    wrapper.find('.rc-dropdown-toggle').first().simulate('click');
+    expect(document.getElementsByClassName('rc-dropdown-menu').length).to.equal(1);
+    wrapper.find('.rc-dropdown-toggle').first().simulate('click');
+    expect(document.getElementsByClassName('rc-dropdown-menu').length).to.equal(0);
+  });
 });
