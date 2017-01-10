@@ -1,4 +1,5 @@
 import React from 'react';
+import portal from './portal';
 
 function isNodeInRoot(node, root) {
   while (node) {
@@ -17,6 +18,7 @@ const propTypes = {
   className: React.PropTypes.string,
   style: React.PropTypes.object,
   children: React.PropTypes.any,
+  allowBubble: React.PropTypes.bool,
 };
 
 class PopoverContent extends React.Component {
@@ -38,7 +40,10 @@ class PopoverContent extends React.Component {
   onOutsideClick(e) {
     if (!isNodeInRoot(e.target, this.elem) && this.props.onOutsideClick) {
       this.props.onOutsideClick(e);
-      e.stopPropagation();
+
+      if (!this.props.allowBubble) {
+        e.stopPropagation();
+      }
     }
   }
 
@@ -55,4 +60,4 @@ class PopoverContent extends React.Component {
 
 PopoverContent.propTypes = propTypes;
 
-export default PopoverContent;
+export default portal(PopoverContent);

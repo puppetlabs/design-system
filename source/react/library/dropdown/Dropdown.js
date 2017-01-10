@@ -1,10 +1,12 @@
 import React from 'react';
 import DropdownMenu from './DropdownMenu';
+import Icon from '../Icon';
 
 const propTypes = {
   onChange: React.PropTypes.func,
   options: React.PropTypes.array,
   hint: React.PropTypes.string,
+  blank: React.PropTypes.string,
   label: React.PropTypes.string,
   multiple: React.PropTypes.bool,
   required: React.PropTypes.bool,
@@ -48,13 +50,16 @@ class Dropdown extends React.Component {
     });
   }
 
-  renderDropdownMenu(button) {
+  renderDropdownMenu() {
     const options = this.getOptions();
+    const label = this.renderLabel();
+    const button = <a className="rc-dropdown-toggle">{ label }</a>;
 
     return (
       <DropdownMenu
         width="260px"
         margin={ -60 }
+        blank={ this.props.blank }
         hint={ this.props.hint }
         multiple={ this.props.multiple }
         target={ button }
@@ -91,13 +96,15 @@ class Dropdown extends React.Component {
       }
     }
 
-    return <span className="rc-dropdown-label">{ label }</span>;
+    return (
+      <span className="rc-dropdown-label">
+        <span className="rc-dropdown-label-text">{ label }</span> <Icon type="chevron-down" />
+      </span>
+    );
   }
 
   render() {
-    const label = this.renderLabel();
-    const button = <a href="/dropdown">{ label }</a>;
-    const dropdownMenu = this.renderDropdownMenu(button);
+    const dropdownMenu = this.renderDropdownMenu();
 
     return (
       <span className="rc-dropdown">

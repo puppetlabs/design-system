@@ -2,9 +2,11 @@ import React from 'react';
 import icons from './icons.js';
 
 const propTypes = {
+  viewBox: React.PropTypes.string,
   height: React.PropTypes.string,
   width: React.PropTypes.string,
   type: React.PropTypes.string,
+  svg: React.PropTypes.element,
 };
 
 const defaultProps = {
@@ -12,28 +14,18 @@ const defaultProps = {
   width: '30px',
 };
 
-const defaultViewBox = {
-  edit: '0 0 25.979 25.979',
-  loader: '0 0 40 40',
-  plus: '0 0 25 25',
-  checkmark: '0 0 27.002 19.146',
-  default: '0 0 30 30',
-};
-
-const Icon = (props) => {
-  const type = props.type;
-  const height = props.height;
-  const width = props.width;
-  const svg = icons[type];
+const Icon = props => {
+  const { width, type, height } = props;
+  let svg = props.svg;
   let viewBox = props.viewBox;
-  let icon;
+  let icon = null;
 
-  if (!viewBox) {
-    if (defaultViewBox[type]) {
-      viewBox = defaultViewBox[type];
-    } else {
-      viewBox = defaultViewBox.default;
-    }
+  if (!svg && icons[type]) {
+    svg = icons[type].svg;
+  }
+
+  if (!viewBox && icons[type]) {
+    viewBox = icons[type].viewBox;
   }
 
   if (svg) {

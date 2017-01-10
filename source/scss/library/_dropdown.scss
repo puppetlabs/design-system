@@ -1,8 +1,20 @@
 .rc-dropdown-label {
-  text-decoration: underline;
-  font-size: $dropdown-label-font-size;
-  font-weight: $dropdown-label-font-weight;
   color: $dropdown-label-color;
+  cursor: pointer;
+
+  .rc-dropdown-label-text {
+    font-size: $dropdown-label-font-size;
+    font-weight: $dropdown-label-font-weight;
+  }
+
+  .rc-icon {
+    position: relative;
+    top: -1px;
+    left: -2px;
+    height: $dropdown-chevron-height;
+    width: $dropdown-chevron-width;
+    fill: $dropdown-label-color;
+  }
 }
 
 .rc-dropdown-menu {
@@ -16,6 +28,11 @@
     font-size: $dropdown-hint-font-size;
   }
 
+  .rc-dropdown-blank {
+    padding: $dropdown-padding;
+    font-size: $dropdown-item-font-size;
+  }
+
   .rc-dropdown-item {
     font-size: $dropdown-item-font-size;
     line-height: $dropdown-item-line-height;
@@ -23,10 +40,12 @@
     a {
       display: block;
       padding: $dropdown-padding;
+      text-decoration: none;
 
       &:hover {
         color: $dropdown-item-hover-color;
         background: $dropdown-item-hover-bg;
+        text-decoration: none;
       }
     }
   }

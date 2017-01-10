@@ -1,0 +1,103 @@
+.rc-modal-overlay {
+  background: $modal-overlay-bg;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 24;
+}
+
+a.rc-modal-close {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: lighten($gray, 20%);
+  cursor: pointer;
+  text-align: center;
+  color: $gray;
+  padding-top: 20px;
+
+  &:hover {
+    color: $gray-dark;
+  }
+}
+
+.rc-modal {
+  position: relative;
+  width: $modal-width;
+  box-shadow: 0 0 60px rgba(0, 0, 0, .3);
+  border-radius: $modal-border-radius;
+  color: $modal-color;
+  background: $modal-bg;
+  margin: 0 auto;
+  overflow: hidden;
+  top: 64px;
+
+  &.rc-modal-with-sidebar {
+    background: $modal-sidebar-bg;
+
+    .rc-modal-content, .rc-modal-actions {
+      margin-right: $modal-sidebar-width;
+    }
+  }
+
+  &.rc-modal-small {
+    width: $modal-width-small;
+    .rc-modal-content {
+      padding: 20px;
+    }
+    .rc-modal-actions {
+      padding: 20px;
+    }
+  }
+
+  &.rc-modal-medium {
+    width: $modal-width-medium;
+  }
+
+  .rc-modal-title {
+    padding: $modal-title-padding;
+    background: $modal-bg;
+    font-size: 24px;
+    border-bottom: $modal-title-border;
+  }
+
+  .rc-modal-content {
+    background: $modal-bg;
+    padding: 60px 80px;
+    overflow-y: scroll;
+  }
+
+  .rc-modal-sidebar {
+    float: right;
+    height: 1px; // this will get dynamically set via the react component.
+    width: $modal-sidebar-width;
+    background-color: transparent;
+    padding: $modal-sidebar-padding;
+  }
+
+  .rc-modal-actions {
+    padding: $modal-actions-padding;
+    background: $modal-bg;
+    overflow: hidden;
+    border-top: $modal-actions-border;
+    text-align: right;
+
+    .rc-modal-actions-cta {
+      float: left;
+      margin: 0;
+      padding: $modal-actions-cta-padding;
+    }
+  }
+
+  // Centering our loading spinners within the modal.
+  .rc-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+  }
+}
