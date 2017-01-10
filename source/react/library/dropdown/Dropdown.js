@@ -53,7 +53,7 @@ class Dropdown extends React.Component {
   renderDropdownMenu() {
     const options = this.getOptions();
     const label = this.renderLabel();
-    const button = <a>{ label }</a>;
+    const button = <a className="rc-dropdown-toggle">{ label }</a>;
 
     return (
       <DropdownMenu
