@@ -37,10 +37,12 @@
     a {
       display: block;
       padding: $dropdown-padding;
+      text-decoration: none;
 
       &:hover {
         color: $dropdown-item-hover-color;
         background: $dropdown-item-hover-bg;
+        text-decoration: none;
       }
     }
   }
