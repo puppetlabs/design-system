@@ -50,8 +50,10 @@ class Dropdown extends React.Component {
     });
   }
 
-  renderDropdownMenu(button) {
+  renderDropdownMenu() {
     const options = this.getOptions();
+    const label = this.renderLabel();
+    const button = <a>{ label }</a>;
 
     return (
       <DropdownMenu
@@ -102,9 +104,7 @@ class Dropdown extends React.Component {
   }
 
   render() {
-    const label = this.renderLabel();
-    const button = <a href="/dropdown">{ label }</a>;
-    const dropdownMenu = this.renderDropdownMenu(button);
+    const dropdownMenu = this.renderDropdownMenu();
 
     return (
       <span className="rc-dropdown">
