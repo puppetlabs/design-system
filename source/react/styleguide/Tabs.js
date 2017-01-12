@@ -27,6 +27,13 @@ class TabsPage extends React.Component {
             <TabPanel title="Tab 2">
               I'm another happy panel
             </TabPanel>
+            <TabPanel
+              onClick={ (e) => {
+                e.preventDefault();
+                console.log('you got me');
+              } }
+              title="click me"
+            />
           </Tabs>
         </StyleguideSection>
       </div>

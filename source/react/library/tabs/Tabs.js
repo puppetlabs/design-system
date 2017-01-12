@@ -34,13 +34,14 @@ class Tabs extends React.Component {
     const children = this.props.children;
     const tabPanels = !Array.isArray(children) ? [children] : children;
     const tabs = tabPanels.map((panel, i) => {
+      const onClick = panel.props.onClick ? panel.props.onClick : this.onChange.bind(this, i);
       const className = classnames('rc-tab', {
         'rc-tab-active': this.state.activeTab === i,
       });
 
       return (
         <li className={ className }>
-          <a href="/#/tab" onClick={ this.onChange.bind(self, i) }>{ panel.props.title }</a>
+          <a href="/#/tab" onClick={ onClick }>{ panel.props.title }</a>
         </li>
       );
     });
@@ -53,12 +54,18 @@ class Tabs extends React.Component {
   }
 
   renderPanels() {
-    return this.props.children.map((panel, i) => {
+    const panels = [];
+
+    this.props.children.forEach((panel, i) => {
       const props = panel.props;
       const active = this.state.activeTab === i;
 
-      return <TabPanel { ...props } active={ active } />;
+      if (!panel.props.onClick) {
+        panels.push(<TabPanel { ...props } active={ active } />);
+      }
     });
+
+    return panels;
   }
 
   render() {
