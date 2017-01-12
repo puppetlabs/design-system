@@ -146,11 +146,11 @@ a.rc-floating-action-button, button.rc-floating-action-button {
 }
 
 .rc-button-group {
-  a.rc-button, button.rc-button {
+  .rc-button {
     margin-right: 5px;
+  }
 
-    &:last-of-type {
-      margin-right: 0;
-    }
+  &:last-child {
+    margin-right: 0;
   }
 }
