@@ -1,3 +1,7 @@
 .rc-icon {
   fill: $icon-fill;
 }
+
+.rc-icon-filter {
+  transform: rotate(180deg);
+}
