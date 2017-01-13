@@ -24,23 +24,25 @@ class Tabs extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(tabIndex, e) {
-    e.preventDefault();
+  onChange(tabIndex) {
+    return (e) => {
+      e.preventDefault();
 
-    this.setState({ activeTab: tabIndex });
+      this.setState({ activeTab: tabIndex });
+    };
   }
 
   renderTabs() {
     const children = this.props.children;
     const tabPanels = !Array.isArray(children) ? [children] : children;
     const tabs = tabPanels.map((panel, i) => {
-      const onClick = panel.props.onClick ? panel.props.onClick : this.onChange.bind(this, i);
+      const onClick = panel.props.onClick ? panel.props.onClick : this.onChange(i);
       const className = classnames('rc-tab', {
         'rc-tab-active': this.state.activeTab === i,
       });
 
       return (
-        <li className={ className }>
+        <li key={ `tab-${i}` } className={ className }>
           <a href="/#/tab" onClick={ onClick }>{ panel.props.title }</a>
         </li>
       );
@@ -61,7 +63,7 @@ class Tabs extends React.Component {
       const active = this.state.activeTab === i;
 
       if (!panel.props.onClick) {
-        panels.push(<TabPanel { ...props } active={ active } />);
+        panels.push(<TabPanel key={ `tab-panel-${i}` } { ...props } active={ active } />);
       }
     });
 
