@@ -20,15 +20,12 @@
   &.position-right {
     .tooltip-carat {
       border-color: transparent #ccc transparent transparent;
-      top: 1px;
-      left: -16px;
     }
   }
 
   &.position-bottom {
     .tooltip-carat {
       border-color: transparent transparent #ccc transparent;
-      left: 50px;
       top: -16px;
     }
   }
