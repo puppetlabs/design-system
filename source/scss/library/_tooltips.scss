@@ -5,9 +5,9 @@
 .rc-tooltip {
   position: absolute;
   display: inline;
-  background: #ccc;
-  padding: 5px 10px 5px 10px;
-  border-radius: 3px;
+  background: $rc-tooltip-bg;
+  padding: $rc-tooltip-padding;
+  border-radius: $border-radius;
 
   .tooltip-carat {
     position: absolute;
@@ -19,15 +19,22 @@
 
   &.position-right {
     .tooltip-carat {
-      border-color: transparent #ccc transparent transparent;
+      border-color: transparent $rc-tooltip-bg transparent transparent;
       left: -16px;
     }
   }
 
   &.position-bottom {
     .tooltip-carat {
-      border-color: transparent transparent #ccc transparent;
+      border-color: transparent transparent $rc-tooltip-bg transparent;
       top: -16px;
+    }
+  }
+
+  &.position-left {
+    .tooltip-carat {
+      border-color: transparent transparent transparent $rc-tooltip-bg;
+      right: -16px;
     }
   }
 }

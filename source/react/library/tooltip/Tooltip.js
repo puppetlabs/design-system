@@ -53,8 +53,6 @@ class Tooltip extends React.Component {
           this.setPositionBottom(target);
           break;
         case 'right':
-          this.setPositionRight(target);
-          break;
         default:
           this.setPositionRight(target);
           break;
