@@ -3,6 +3,7 @@ import React from 'react';
 import Tooltip from './Tooltip';
 
 const propTypes = {
+  anchor: React.PropTypes.string,
   tooltip: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
@@ -33,7 +34,7 @@ class TooltipHoverArea extends React.Component {
 
   renderTooltip() {
     return (
-      <Tooltip target={ this.elem }>
+      <Tooltip target={ this.elem } anchor={ this.props.anchor }>
         { this.props.tooltip }
       </Tooltip>
     );
