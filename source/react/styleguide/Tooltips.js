@@ -30,6 +30,12 @@ class Tooltips extends React.Component {
               Click me to toggle tooltip anchor
             </Button>
           </TooltipHoverArea>
+
+          <br />
+
+          <TooltipHoverArea tooltip={ tooltip } anchor={ this.state.anchor }>
+            <img src="http://i.giphy.com/10kABVanhwykJW.gif"></img>
+          </TooltipHoverArea>
         </StyleguideSection>
       </div>
     );

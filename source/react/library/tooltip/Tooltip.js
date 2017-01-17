@@ -88,7 +88,7 @@ class Tooltip extends React.Component {
 
     const newState = getDefaultState();
 
-    newState.tooltipPosition.top = elPosition.bottom + (tooltipHeight / 2) + (offsetY + 10);
+    newState.tooltipPosition.top = elPosition.bottom + (tooltipHeight / 2) + offsetY;
     newState.tooltipPosition.left = (elPosition.left + (elPosition.width / 2)) - (tooltipWidth / 2);
 
     newState.caratPosition.left = (tooltipWidth / 2) - 10;

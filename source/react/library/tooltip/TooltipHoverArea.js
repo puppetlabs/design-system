@@ -51,7 +51,7 @@ class TooltipHoverArea extends React.Component {
       <div>
         { tooltip }
         <div
-          style={ { display: 'inline' } }
+          style={ { display: 'inline-block' } }
           onMouseOver={ this.onMouseOver }
           onMouseOut={ this.onMouseOut }
           ref={ c => { this.elem = c; } }
