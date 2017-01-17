@@ -14,14 +14,19 @@ const propTypes = {
 };
 
 const defaultProps = {
-  anchor: 'bottom',
+  anchor: 'right',
 };
+
+const getDefaultState = () => ({
+  tooltipPosition: { },
+  caratPosition: { },
+});
 
 class Tooltip extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { position: { } };
+    this.state = getDefaultState();
 
     this.setPosition = this.setPosition.bind(this);
     this.setPositionRight = this.setPositionRight.bind(this);
@@ -60,11 +65,16 @@ class Tooltip extends React.Component {
   setPositionRight(target) {
     const elPosition = target.getBoundingClientRect();
     const offsetY = window.pageYOffset;
+    const tooltipWH = this.getTooltipWH();
+    const tooltipHeight = tooltipWH.h;
 
-    const newState = { position: { } };
+    const newState = getDefaultState();
 
-    newState.position.top = elPosition.top + offsetY;
-    newState.position.left = elPosition.right + 10;
+    const elPositionMiddle = (elPosition.top + (elPosition.height / 2));
+    newState.tooltipPosition.top = (elPositionMiddle - (tooltipHeight / 2)) + offsetY;
+    newState.tooltipPosition.left = elPosition.right + 10;
+
+    newState.caratPosition.top = (tooltipHeight / 2) - 10;
 
     this.setState(newState);
   }
@@ -76,10 +86,12 @@ class Tooltip extends React.Component {
     const tooltipWidth = tooltipWH.w;
     const tooltipHeight = tooltipWH.h;
 
-    const newState = { position: { } };
+    const newState = getDefaultState();
 
-    newState.position.top = elPosition.bottom + (tooltipHeight / 2) + (offsetY + 20);
-    newState.position.left = (elPosition.left + (elPosition.width / 2)) - (tooltipWidth / 2);
+    newState.tooltipPosition.top = elPosition.bottom + (tooltipHeight / 2) + (offsetY + 10);
+    newState.tooltipPosition.left = (elPosition.left + (elPosition.width / 2)) - (tooltipWidth / 2);
+
+    newState.caratPosition.left = (tooltipWidth / 2) - 10;
 
     this.setState(newState);
   }
@@ -99,15 +111,14 @@ class Tooltip extends React.Component {
   }
 
   render() {
-    const { position } = this.state;
+    const { tooltipPosition, caratPosition } = this.state;
     const { anchor } = this.props;
     const className = classnames('rc-tooltip', `position-${anchor}`);
 
     return (
-      <div className="rc-tooltip-container" style={ position } ref={ c => { this.tooltip = c; } }>
-        <div className={ className }>
-          { this.props.children }
-        </div>
+      <div className={ className } style={ tooltipPosition } ref={ c => { this.tooltip = c; } }>
+        <div className="tooltip-carat" style={ caratPosition } />
+        { this.props.children }
       </div>
     );
   }

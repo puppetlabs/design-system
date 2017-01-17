@@ -3,19 +3,22 @@
 }
 
 .rc-tooltip {
+  position: absolute;
   display: inline;
   background: #ccc;
   padding: 5px 10px 5px 10px;
   border-radius: 3px;
 
+  .tooltip-carat {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-width: 10px;
+    border-style: solid;
+  }
+
   &.position-right {
-    &:before {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 0;
-      border-width: 10px;
-      border-style: solid;
+    .tooltip-carat {
       border-color: transparent #ccc transparent transparent;
       top: 1px;
       left: -16px;
@@ -23,16 +26,10 @@
   }
 
   &.position-bottom {
-    &:before {
-      content: '';
-      position: absolute;
-      width: 0;
-      height: 0;
-      border-width: 10px;
-      border-style: solid;
+    .tooltip-carat {
       border-color: transparent transparent #ccc transparent;
       left: 50px;
-      top: -25px;
+      top: -16px;
     }
   }
 }
