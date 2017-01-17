@@ -11,6 +11,7 @@ import Modals from './styleguide/Modals';
 import Dropdowns from './styleguide/Dropdowns';
 import Switches from './styleguide/Switches';
 import Tabs from './styleguide/Tabs';
+import Tooltips from './styleguide/Tooltips';
 import '../scss/library/all.scss';
 import '../scss/styleguide.scss';
 
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route path="icons" components={ Icons } />
         <Route path="switches" components={ Switches } />
         <Route path="tabs" components={ Tabs } />
+        <Route path="tooltips" components={ Tooltips } />
         <IndexRoute component={ Buttons } />
       </Route>
     </Router>
