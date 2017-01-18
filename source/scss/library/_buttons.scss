@@ -154,3 +154,50 @@ a.rc-floating-action-button, button.rc-floating-action-button {
     margin-right: 0;
   }
 }
+
+.rc-split-button {
+  display: flex;
+
+  .rc-button-main {
+    padding: 0 10px;
+
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .rc-button-menu {
+    .rc-button-menu-inner {
+      border-radius: $border-radius;
+      background: $white;
+      padding: 3px;
+      display: inline-block;
+
+      svg {
+        padding: 3px;
+
+        path {
+          fill: $brand-primary
+        }
+      }
+    }
+
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+
+    &:hover {
+      .rc-button-menu-inner {
+        path {
+          fill: $button-bg-hover;
+        }
+      }
+    }
+
+    .rc-button-content {
+      display: flex;
+    }
+  }
+}

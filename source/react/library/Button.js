@@ -16,6 +16,7 @@ const propTypes = {
   label: React.PropTypes.string,
   type: React.PropTypes.string,
   href: React.PropTypes.string,
+  dropdownMenu: React.PropTypes.object,
   children: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
@@ -37,6 +38,10 @@ class Button extends React.Component {
     }
   }
 
+  renderDropdown() {
+    return this.props.dropdownMenu;
+  }
+
   render() {
     const {
       children,
@@ -51,11 +56,13 @@ class Button extends React.Component {
       href,
       className,
       floating,
+      dropdownMenu,
     } = this.props;
 
     let button;
     let content;
     let icon;
+    let menu;
 
     const cssClass = classnames(className, 'rc-button', {
       'rc-button-block': block,
@@ -63,6 +70,7 @@ class Button extends React.Component {
       'rc-floating-action-button': floating,
       'rc-button-secondary': secondary,
       'rc-button-transparent': transparent,
+      'rc-button-split': dropdownMenu,
       [`rc-button-${size}`]: size,
     });
 
@@ -73,6 +81,10 @@ class Button extends React.Component {
       onClick: this.onClick,
       className: cssClass,
     };
+
+    if (dropdownMenu) {
+      menu = this.renderDropdown();
+    }
 
     const loader = processing ? <Icon height="100%" width="100%" type="loader" /> : null;
 
@@ -87,9 +99,9 @@ class Button extends React.Component {
     }
 
     if (type) {
-      button = <button { ...btnProps }>{ icon } { content }{ loader }</button>;
+      button = <button { ...btnProps }>{ icon } { content }{ loader }{ menu }</button>;
     } else {
-      button = <a { ...btnProps }>{ icon } { content }{ loader }</a>;
+      button = <a { ...btnProps }>{ icon } { content }{ loader }{ menu }</a>;
     }
 
     return button;

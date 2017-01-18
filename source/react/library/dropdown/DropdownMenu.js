@@ -5,6 +5,7 @@ import Popover from '../Popover';
 import DropdownMenuItem from './DropdownMenuItem';
 
 const propTypes = {
+  anchor: React.PropTypes.string,
   onChange: React.PropTypes.func,
   target: React.PropTypes.object,
   width: React.PropTypes.string,
@@ -153,6 +154,7 @@ class DropdownMenu extends React.Component {
 
     return (
       <Popover
+        anchor={ this.props.anchor }
         ref={ (c) => { this.popover = c; } }
         width={ this.props.width }
         className={ className }
