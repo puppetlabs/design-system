@@ -38,10 +38,6 @@ class Button extends React.Component {
     }
   }
 
-  renderDropdown() {
-    return this.props.dropdownMenu;
-  }
-
   render() {
     const {
       children,
@@ -62,7 +58,6 @@ class Button extends React.Component {
     let button;
     let content;
     let icon;
-    let menu;
 
     const cssClass = classnames(className, 'rc-button', {
       'rc-button-block': block,
@@ -82,10 +77,6 @@ class Button extends React.Component {
       className: cssClass,
     };
 
-    if (dropdownMenu) {
-      menu = this.renderDropdown();
-    }
-
     const loader = processing ? <Icon height="100%" width="100%" type="loader" /> : null;
 
     if (children || label) {
@@ -99,9 +90,9 @@ class Button extends React.Component {
     }
 
     if (type) {
-      button = <button { ...btnProps }>{ icon } { content }{ loader }{ menu }</button>;
+      button = <button { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</button>;
     } else {
-      button = <a { ...btnProps }>{ icon } { content }{ loader }{ menu }</a>;
+      button = <a { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</a>;
     }
 
     return button;

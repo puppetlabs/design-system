@@ -8,6 +8,7 @@ const propTypes = {
   onOptionClick: React.PropTypes.func.isRequired,
   options: React.PropTypes.array.isRequired,
   label: React.PropTypes.string.isRequired,
+  size: React.PropTypes.string,
 };
 
 class SplitButton extends React.Component {
@@ -31,10 +32,12 @@ class SplitButton extends React.Component {
   }
 
   renderDropdownTarget() {
+    const iconSize = this.props.size === 'small' ? '15px' : '20px';
+
     return (
-      <Button className="rc-button-menu">
+      <Button className="rc-button-menu" size={ this.props.size }>
         <div className="rc-button-menu-inner">
-          <Icon height={ '20px' } width={ '20px' } type="chevron-down" />
+          <Icon height={ iconSize } width={ iconSize } type="chevron-down" />
         </div>
       </Button>
     );
@@ -57,11 +60,16 @@ class SplitButton extends React.Component {
 
   render() {
     const dropdown = this.renderDropdown();
-    const { label } = this.props;
+    const { label, size } = this.props;
 
     return (
       <div className="rc-split-button">
-        <Button onClick={ this.onClick } label={ label } className="rc-button-main" />
+        <Button
+          size={ size }
+          onClick={ this.onClick }
+          label={ label }
+          className="rc-button-main"
+        />
         { dropdown }
       </div>
     );

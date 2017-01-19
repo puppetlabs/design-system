@@ -170,6 +170,12 @@ a.rc-floating-action-button, button.rc-floating-action-button {
       background: $button-bg-hover;
     }
 
+    &.rc-button-small {
+      .rc-button-menu-inner {
+        padding: 1px;
+      }
+    }
+
     .rc-button-menu-inner {
       border-radius: $border-radius;
       background: $white;
