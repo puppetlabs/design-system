@@ -39,10 +39,31 @@ class Dropdown extends React.Component {
     }
   }
 
-  onChange(selected) {
-    this.setState({ selected }, () => {
+  onChange(option) {
+    const prevSelected = this.state.selected;
+    const options = this.getOptions();
+    let nextSelected = [];
+
+    options.forEach((o) => {
+      const id = o.id;
+      const wasSelected = prevSelected.indexOf(id) >= 0;
+
+      if (id !== option.id && this.props.multiple && wasSelected) {
+        nextSelected.push(id);
+      }
+
+      if (id === option.id && !wasSelected) {
+        nextSelected.push(id);
+      }
+    });
+
+    if (this.props.required && nextSelected.length === 0) {
+      nextSelected = prevSelected;
+    }
+
+    this.setState({ selected: nextSelected }, () => {
       if (this.props.onChange) {
-        this.props.onChange(selected);
+        this.props.onChange(nextSelected);
       }
     });
   }

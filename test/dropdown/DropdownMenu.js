@@ -1,5 +1,4 @@
 import jsdom from 'mocha-jsdom';
-import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
@@ -14,20 +13,6 @@ describe('<DropdownMenu />', () => {
     const wrapper = shallow(<DropdownMenu options={ options } />);
 
     expect(wrapper.find('DropdownMenuItem')).to.have.length(2);
-  });
-
-  it('should mark the correct menu item as selected', () => {
-    const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
-    const wrapper = shallow(<DropdownMenu selected={ 2 } options={ options } />);
-    const menuItems = wrapper.find('DropdownMenuItem');
-
-    menuItems.forEach((item, key) => {
-      const selected = key === 1;
-
-      expect(item.prop('selected')).to.equal(selected);
-    });
-
-    expect(menuItems).to.have.length(2);
   });
 
   it('should render a hint', () => {
