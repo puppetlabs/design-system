@@ -11,8 +11,8 @@ class Buttons extends React.Component {
     this.onSplitButtonClick = this.onSplitButtonClick.bind(this);
   }
 
-  onSplitButtonClick(button) {
-    console.log(button);
+  onSplitButtonClick(item) {
+    console.log(item);
   }
 
   render() {

@@ -38,7 +38,7 @@ class DropdownMenu extends React.Component {
   onChange(option) {
     this.props.onChange(option);
 
-    if (!this.props.multiple) {
+    if (this.popover && !this.props.multiple) {
       this.popover.close();
     }
   }
