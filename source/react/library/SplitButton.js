@@ -48,7 +48,6 @@ class SplitButton extends React.Component {
       <DropdownMenu
         anchor="bottom right"
         margin={ 5 }
-        selected={ [] }
         onChange={ this.onOptionClick }
         target={ target }
         options={ options }

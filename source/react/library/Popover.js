@@ -132,12 +132,18 @@ class Popover extends React.Component {
   }
 
   renderButton() {
+    const target = this.props.target;
     let jsx;
 
-    if (this.props.target) {
-      jsx = React.cloneElement(this.props.target, {
+    if (target) {
+      const className = classnames(target.props.className, {
+        'rc-popover-target-open': this.state.open,
+      });
+
+      jsx = React.cloneElement(target, {
         onClick: this.onClick,
         ref: (c) => { this.button = c; },
+        className,
       });
     }
 

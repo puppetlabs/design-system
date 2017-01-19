@@ -166,6 +166,10 @@ a.rc-floating-action-button, button.rc-floating-action-button {
   }
 
   .rc-button-menu {
+    &.rc-popover-target-open {
+      background: $button-bg-hover;
+    }
+
     .rc-button-menu-inner {
       border-radius: $border-radius;
       background: $white;
