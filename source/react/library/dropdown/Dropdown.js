@@ -28,6 +28,17 @@ class Dropdown extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    const nextState = {};
+    const selected = Array.isArray(nextProps.selected) ? nextProps.selected : [nextProps.selected];
+
+    if ({}.hasOwnProperty.call(nextProps, 'selected')) {
+      nextState.selected = selected;
+    }
+
+    this.setState(nextState);
+  }
+
   onChange(selected) {
     this.setState({ selected }, () => {
       if (this.props.onChange) {
