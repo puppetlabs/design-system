@@ -8,6 +8,8 @@ const propTypes = {
   onOptionClick: React.PropTypes.func.isRequired,
   options: React.PropTypes.array.isRequired,
   label: React.PropTypes.string.isRequired,
+  dropdownWidth: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
   size: React.PropTypes.string,
 };
 
@@ -23,9 +25,7 @@ class SplitButton extends React.Component {
     this.props.onClick();
   }
 
-  onOptionClick(selected) {
-    const option = selected[0];
-
+  onOptionClick(option) {
     if (this.props.onOptionClick && typeof option !== 'undefined') {
       this.props.onOptionClick(option);
     }
@@ -45,11 +45,12 @@ class SplitButton extends React.Component {
 
   renderDropdown() {
     const target = this.renderDropdownTarget();
-    const options = this.props.options;
+    const { options, dropdownWidth } = this.props
 
     return (
       <DropdownMenu
         anchor="bottom right"
+        width={ dropdownWidth }
         margin={ 5 }
         onChange={ this.onOptionClick }
         target={ target }
@@ -60,7 +61,7 @@ class SplitButton extends React.Component {
 
   render() {
     const dropdown = this.renderDropdown();
-    const { label, size } = this.props;
+    const { label, size, disabled } = this.props;
 
     return (
       <div className="rc-split-button">
@@ -68,6 +69,7 @@ class SplitButton extends React.Component {
           size={ size }
           onClick={ this.onClick }
           label={ label }
+          disabled={ disabled }
           className="rc-button-main"
         />
         { dropdown }

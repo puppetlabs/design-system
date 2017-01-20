@@ -163,7 +163,6 @@ class Popover extends React.Component {
 
     return (
       <div
-        style={ { display: 'inline-block' } }
         className="rc-popover-wrapper"
         ref={ (c) => { this.elem = c; } }
       >
