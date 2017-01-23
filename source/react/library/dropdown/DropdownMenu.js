@@ -38,17 +38,6 @@ class DropdownMenu extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    const nextState = {};
-    const selected = Array.isArray(nextProps.selected) ? nextProps.selected : [nextProps.selected];
-
-    if ({}.hasOwnProperty.call(nextProps, 'selected')) {
-      nextState.selected = selected;
-    }
-
-    this.setState(nextState);
-  }
-
   componentDidUpdate(prevProps, prevState) {
     // If this is a single select option menu and the selections have been updated
     // then lets force the popover to close.
