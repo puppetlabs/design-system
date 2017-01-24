@@ -33,7 +33,7 @@ class DropdownMenu extends React.Component {
 
     const selected = this.getSelected();
 
-    this.state = { selected };
+    this.state = { selected: this.getDefaultSelected(selected) };
 
     this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
