@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import equals from 'deep-equal';
 import Popover from '../Popover';
 import DropdownMenuItem from './DropdownMenuItem';
 
@@ -30,12 +31,22 @@ class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
 
-    const selected = Array.isArray(props.selected) ? props.selected : [props.selected];
+    const selected = this.getSelected();
 
-    this.state = { selected: this.getDefaultSelected(selected) };
+    this.state = { selected };
 
     this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const selectedChanged = equals(this.props.selected, nextProps.selected);
+
+    if ({}.hasOwnProperty.call(nextProps, 'selected') && selectedChanged) {
+      const selected = this.getSelected();
+
+      this.setState({ selected });
+    }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -88,6 +99,14 @@ class DropdownMenu extends React.Component {
     }
 
     return nextSelected;
+  }
+
+  getSelected() {
+    let selected = this.props.selected;
+
+    selected = Array.isArray(selected) ? selected : [selected];
+
+    return selected;
   }
 
   renderHint() {
