@@ -8,6 +8,7 @@ const propTypes = {
   onChange: React.PropTypes.func,
   target: React.PropTypes.object,
   width: React.PropTypes.string,
+  onClose: React.PropTypes.func,
   size: React.PropTypes.string,
   required: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
@@ -32,7 +33,14 @@ class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
+  }
+
+  onClose() {
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
   }
 
   onChange(option) {
@@ -58,7 +66,7 @@ class DropdownMenu extends React.Component {
     const options = this.props.options;
 
     if (options && options.length) {
-      options.forEach((option) => {
+      options.forEach(option => {
         jsx.push(
           <DropdownMenuItem
             key={ option.id }
