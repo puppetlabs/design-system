@@ -1,4 +1,5 @@
 import React from 'react';
+import equals from 'deep-equal';
 import DropdownMenu from './DropdownMenu';
 import Icon from '../Icon';
 
@@ -21,11 +22,21 @@ class Dropdown extends React.Component {
   constructor(props) {
     super(props);
 
-    const selected = Array.isArray(props.selected) ? props.selected : [props.selected];
+    const selected = this.getSelected();
 
     this.state = { selected };
 
     this.onChange = this.onChange.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const selectedChanged = equals(this.props.selected, nextProps.selected);
+
+    if ({}.hasOwnProperty.call(nextProps, 'selected') && selectedChanged) {
+      const selected = this.getSelected();
+
+      this.setState({ selected });
+    }
   }
 
   onChange(selected) {
@@ -48,6 +59,14 @@ class Dropdown extends React.Component {
 
       return obj;
     });
+  }
+
+  getSelected() {
+    let selected = this.props.selected;
+
+    selected = Array.isArray(selected) ? selected : [selected];
+
+    return selected;
   }
 
   renderDropdownMenu() {
