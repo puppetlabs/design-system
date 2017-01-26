@@ -16,6 +16,7 @@ const propTypes = {
   label: React.PropTypes.string,
   type: React.PropTypes.string,
   href: React.PropTypes.string,
+  dropdownMenu: React.PropTypes.object,
   children: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
@@ -51,6 +52,7 @@ class Button extends React.Component {
       href,
       className,
       floating,
+      dropdownMenu,
     } = this.props;
 
     let button;
@@ -63,6 +65,7 @@ class Button extends React.Component {
       'rc-floating-action-button': floating,
       'rc-button-secondary': secondary,
       'rc-button-transparent': transparent,
+      'rc-button-split': dropdownMenu,
       [`rc-button-${size}`]: size,
     });
 
@@ -87,9 +90,9 @@ class Button extends React.Component {
     }
 
     if (type) {
-      button = <button { ...btnProps }>{ icon } { content }{ loader }</button>;
+      button = <button { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</button>;
     } else {
-      button = <a { ...btnProps }>{ icon } { content }{ loader }</a>;
+      button = <a { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</a>;
     }
 
     return button;

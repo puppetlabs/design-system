@@ -102,11 +102,10 @@ class Popover extends React.Component {
   }
 
   setPosition() {
-    const newState = { position: {} };
+    const newState = { position: { } };
 
     if (this.props.position) {
-      newState.position.top = this.props.position.top;
-      newState.position.left = this.props.position.left;
+      newState.position = this.props.position;
     } else {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
@@ -132,12 +131,18 @@ class Popover extends React.Component {
   }
 
   renderButton() {
+    const target = this.props.target;
     let jsx;
 
-    if (this.props.target) {
-      jsx = React.cloneElement(this.props.target, {
+    if (target) {
+      const className = classnames(target.props.className, {
+        'rc-popover-target-open': this.state.open,
+      });
+
+      jsx = React.cloneElement(target, {
         onClick: this.onClick,
         ref: (c) => { this.button = c; },
+        className,
       });
     }
 
@@ -157,7 +162,6 @@ class Popover extends React.Component {
 
     return (
       <div
-        style={ { display: 'inline-block' } }
         className="rc-popover-wrapper"
         ref={ (c) => { this.elem = c; } }
       >

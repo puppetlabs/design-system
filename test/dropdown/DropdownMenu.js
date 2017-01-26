@@ -1,7 +1,7 @@
 import jsdom from 'mocha-jsdom';
-import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
+import sinon from 'sinon';
 import React from 'react';
 
 import DropdownMenu from '../../source/react/library/dropdown/DropdownMenu';
@@ -14,20 +14,6 @@ describe('<DropdownMenu />', () => {
     const wrapper = shallow(<DropdownMenu options={ options } />);
 
     expect(wrapper.find('DropdownMenuItem')).to.have.length(2);
-  });
-
-  it('should mark the correct menu item as selected', () => {
-    const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
-    const wrapper = shallow(<DropdownMenu selected={ 2 } options={ options } />);
-    const menuItems = wrapper.find('DropdownMenuItem');
-
-    menuItems.forEach((item, key) => {
-      const selected = key === 1;
-
-      expect(item.prop('selected')).to.equal(selected);
-    });
-
-    expect(menuItems).to.have.length(2);
   });
 
   it('should render a hint', () => {
@@ -49,6 +35,18 @@ describe('<DropdownMenu />', () => {
     const wrapper = shallow(<DropdownMenu options={ options } />);
 
     expect(wrapper.find('Popover')).to.have.length(1);
+  });
+
+  it('should fire onChange callback when an item is clicked', () => {
+    const options = [{ id: 1, value: 'option 1' }];
+    const onChange = sinon.spy();
+    const wrapper = shallow(<DropdownMenu options={ options } onChange={ onChange } />);
+
+    // We manually call the onClick prop passed to DropdownMenuItem
+    wrapper.find('DropdownMenuItem').props().onClick(options[0]);
+
+    expect(onChange.calledOnce).to.eql(true);
+    expect(onChange.lastCall.args[0]).to.eql(options[0]);
   });
 
   it('should set the width of the popover', () => {

@@ -24,8 +24,9 @@ class Dropdown extends React.Component {
 
     const selected = this.getSelected();
 
-    this.state = { selected };
+    this.state = { selected, displayed: selected };
 
+    this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
@@ -39,12 +40,45 @@ class Dropdown extends React.Component {
     }
   }
 
-  onChange(selected) {
-    this.setState({ selected }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(selected);
+  onChange(option) {
+    const prevSelected = this.state.selected;
+    const options = this.getOptions();
+    let nextSelected = [];
+
+    options.forEach((o) => {
+      const id = o.id;
+      const wasSelected = prevSelected.indexOf(id) >= 0;
+
+      if (id !== option.id && this.props.multiple && wasSelected) {
+        nextSelected.push(id);
+      }
+
+      if (id === option.id && !wasSelected) {
+        nextSelected.push(id);
       }
     });
+
+    if (this.props.required && nextSelected.length === 0) {
+      nextSelected = prevSelected;
+    }
+
+    this.setState({ selected: nextSelected }, () => {
+      if (!this.props.multiple) {
+        this.setState({ displayed: nextSelected });
+
+        if (this.props.onChange) {
+          this.props.onChange(nextSelected);
+        }
+      }
+    });
+  }
+
+  onClose() {
+    this.setState({ displayed: this.state.selected });
+
+    if (this.props.multiple && this.props.onChange) {
+      this.props.onChange(this.state.selected);
+    }
   }
 
   getOptions() {
@@ -77,6 +111,7 @@ class Dropdown extends React.Component {
     return (
       <DropdownMenu
         width="260px"
+        onClose={ this.onClose }
         margin={ -60 }
         blank={ this.props.blank }
         hint={ this.props.hint }
@@ -92,7 +127,7 @@ class Dropdown extends React.Component {
 
   renderLabel() {
     const options = this.getOptions();
-    const selected = options.filter(e => this.state.selected.indexOf(e.id) >= 0);
+    const selected = options.filter(e => this.state.displayed.indexOf(e.id) >= 0);
     const values = selected.map(s => s.value);
     let label;
 
