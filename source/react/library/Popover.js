@@ -102,13 +102,10 @@ class Popover extends React.Component {
   }
 
   setPosition() {
-    const newState = { position: {} };
+    const newState = { position: { } };
 
     if (this.props.position) {
-      newState.position.top = this.props.position.top;
-      newState.position.left = this.props.position.left;
-      newState.position.right = this.props.position.right;
-      newState.position.bottom = this.props.position.bottom;
+      newState.position = this.props.position;
     } else {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
