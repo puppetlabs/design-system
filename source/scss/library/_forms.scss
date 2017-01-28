@@ -1,0 +1,90 @@
+.rc-filter-form {
+  background: $gray-light;
+  padding: 0 3px 3px;
+  border-radius: $border-radius;
+
+  .rc-split-button {
+    background: $gray-light;
+
+    .rc-button-main {
+      background: $gray-light;
+      font-weight: bolder;
+      width: 100%;
+
+      .rc-button-content {
+        color: $brand-primary;
+        float: left;
+      }
+
+      &:hover {
+        background: $gray-lighter;
+      }
+    }
+
+    .rc-button-menu {
+      background: $gray-light;
+
+      .rc-button-menu-inner {
+        background: $brand-primary;
+
+        path {
+          fill: $white;
+        }
+      }
+
+      &:hover {
+        background: $gray-lighter;
+
+        .rc-button-menu-inner {
+          path {
+            fill: $gray-lighter;
+          }
+        }
+      }
+    }
+  }
+
+  .Select-row {
+    display: flex;
+
+    .Select-small {
+      font-size: 16px;
+
+      .Select-control {
+        border-color: $gray-light;
+
+        .Select-placeholder {
+          padding: 6px 28px 6px 10px;
+          color: $button-disabled-bg;
+        }
+
+        .Select-value {
+          top: inherit;
+          bottom: inherit;
+        }
+      }
+
+      &.Select-left {
+        .Select-control {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      }
+      &.Select-right {
+        .Select-control {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+    }
+  }
+
+  .rc-input {
+    margin-top: 1px;
+    border-color: $gray-light;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
