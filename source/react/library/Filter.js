@@ -115,11 +115,13 @@ class Filter extends React.Component {
     return (
       <div className="rc-filter-form">
         { splitButton }
-        <div className="Select-row">
-          { fieldSelect }
-          { operatorSelect }
+        <div className="rc-filter-form-fields">
+          <div className="Select-row">
+            { fieldSelect }
+            { operatorSelect }
+          </div>
+          { valueInput }
         </div>
-        { valueInput }
       </div>
     );
   }

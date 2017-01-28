@@ -1,10 +1,10 @@
 .rc-filter-form {
-  background: $gray-light;
-  padding: 0 3px 3px;
-  border-radius: $border-radius;
 
   .rc-split-button {
+    visibility: hidden;
     background: $gray-light;
+    border-top-right-radius: $border-radius;
+    border-top-left-radius: $border-radius;
 
     .rc-button-main {
       background: $gray-light;
@@ -44,47 +44,64 @@
     }
   }
 
-  .Select-row {
-    display: flex;
+  .rc-filter-form-fields {
+    background: $gray-light;
+    padding: 3px;
+    border-radius: $border-radius;
 
-    .Select-small {
-      font-size: 16px;
+    .Select-row {
+      display: flex;
 
-      .Select-control {
-        border-color: $gray-light;
+      .Select-small {
+        font-size: 16px;
 
-        .Select-placeholder {
-          padding: 6px 28px 6px 10px;
-          color: $button-disabled-bg;
-        }
-
-        .Select-value {
-          top: inherit;
-          bottom: inherit;
-        }
-      }
-
-      &.Select-left {
         .Select-control {
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-          border-bottom-left-radius: 0;
+          border-color: $gray-light;
+
+          .Select-placeholder {
+            padding: 6px 28px 6px 10px;
+            color: $button-disabled-bg;
+          }
+
+          .Select-value {
+            top: inherit;
+            bottom: inherit;
+          }
         }
-      }
-      &.Select-right {
-        .Select-control {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
+
+        &.Select-left {
+          .Select-control {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+          }
+        }
+        &.Select-right {
+          .Select-control {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-bottom-right-radius: 0;
+          }
         }
       }
     }
+
+    .rc-input {
+      margin-top: 1px;
+      border-color: $gray-light;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
   }
 
-  .rc-input {
-    margin-top: 1px;
-    border-color: $gray-light;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
+  &:hover {
+    .rc-split-button {
+      visibility: visible;
+    }
+
+    .rc-filter-form-fields {
+      border-top-right-radius: 0;
+      border-top-left-radius: 0;
+    }
   }
 }
