@@ -21,6 +21,7 @@ const propTypes = {
   options: React.PropTypes.array,
   multiple: React.PropTypes.bool,
   margin: React.PropTypes.number,
+  disablePortal: React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -103,6 +104,7 @@ class DropdownMenu extends React.Component {
         onClose={ this.onClose }
         margin={ this.props.margin }
         size={ this.props.size }
+        disablePortal={ this.props.disablePortal }
       >
         { hint }
         { options }

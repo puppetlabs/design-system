@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import debounce from 'debounce';
-import PopoverContent from './PopoverContent';
+import PopoverContent, { PopoverContentWithoutPortal } from './PopoverContent';
 
 const propTypes = {
   open: React.PropTypes.bool,
@@ -15,6 +15,7 @@ const propTypes = {
   margin: React.PropTypes.number,
   className: React.PropTypes.string,
   allowBubble: React.PropTypes.bool,
+  disablePortal: React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -160,22 +161,25 @@ class Popover extends React.Component {
       styles.width = this.props.width;
     }
 
+    const component = this.props.disablePortal ? PopoverContentWithoutPortal : PopoverContent;
+
+    const popoverContent = React.createElement(component, {
+      isOpened: this.state.open,
+      className,
+      style: styles,
+      onOutsideClick: this.onOutsideClick,
+      onClose: this.onClose,
+      allowBubble: this.props.allowBubble,
+      children: this.props.children,
+    });
+
     return (
       <div
         className="rc-popover-wrapper"
         ref={ (c) => { this.elem = c; } }
       >
         { button }
-        <PopoverContent
-          isOpened={ this.state.open }
-          className={ className }
-          style={ styles }
-          onOutsideClick={ this.onOutsideClick }
-          onClose={ this.onClose }
-          allowBubble={ this.props.allowBubble }
-        >
-          { this.props.children }
-        </PopoverContent>
+        { popoverContent }
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React from 'react';
 import portal from './portal';
+import togglable from './togglable';
 
 function isNodeInRoot(node, root) {
   while (node) {
@@ -60,4 +61,6 @@ class PopoverContent extends React.Component {
 
 PopoverContent.propTypes = propTypes;
 
+const PopoverContentWithoutPortal = togglable(PopoverContent);
+export { PopoverContentWithoutPortal };
 export default portal(PopoverContent);
