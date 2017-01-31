@@ -75,7 +75,7 @@
 
           .Select-option.is-selected {
             background-color: $white;
-            color: #cccccc;
+            color: $button-disabled-bg;
           }
           .Select-option.is-focused {
             background-color: lighten($brand-primary, 10%);
