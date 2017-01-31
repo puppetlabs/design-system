@@ -11,7 +11,7 @@
   color: $tooltip-color;
   font-size: $tooltip-font-size;
 
-  .tooltip-carat {
+  .rc-tooltip-carat {
     position: absolute;
     width: 0;
     height: 0;
@@ -19,22 +19,22 @@
     border-style: solid;
   }
 
-  &.position-right {
-    .tooltip-carat {
+  &.rc-tooltip-position-right {
+    .rc-tooltip-carat {
       border-color: transparent $tooltip-bg transparent transparent;
       left: -16px;
     }
   }
 
-  &.position-bottom {
-    .tooltip-carat {
+  &.rc-tooltip-position-bottom {
+    .rc-tooltip-carat {
       border-color: transparent transparent $tooltip-bg transparent;
       top: -16px;
     }
   }
 
-  &.position-left {
-    .tooltip-carat {
+  &.rc-tooltip-position-left {
+    .rc-tooltip-carat {
       border-color: transparent transparent transparent $tooltip-bg;
       right: -16px;
     }

@@ -116,11 +116,11 @@ class Tooltip extends React.Component {
   render() {
     const { tooltipPosition, caratPosition } = this.state;
     const { anchor } = this.props;
-    const className = classnames('rc-tooltip', `position-${anchor}`);
+    const className = classnames('rc-tooltip', `rc-tooltip-position-${anchor}`);
 
     return (
       <div className={ className } style={ tooltipPosition } ref={ c => { this.tooltip = c; } }>
-        <div className="tooltip-carat" style={ caratPosition } />
+        <div className="rc-tooltip-carat" style={ caratPosition } />
         { this.props.children }
       </div>
     );
