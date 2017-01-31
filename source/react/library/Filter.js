@@ -19,30 +19,39 @@ class Filter extends React.Component {
       value: '',
     };
 
-    this.getOption = this.getOption.bind(this);
+    this.getSelectOption = this.getSelectOption.bind(this);
+    this.getDropdownOption = this.getDropdownOption.bind(this);
   }
 
-  getOption(option) {
+  getSelectOption(option) {
     option.type = option.type || 'field';
 
-    if (option.type === 'dropdownOption') {
-      const action = `on${option.value}`;
-      this.props[action]();
-    } else {
-      this.setState({ [option.type]: option.value });
+    this.setState({ [option.type]: option.value });
+  }
+
+  getDropdownOption(option) {
+    switch (option.value) {
+      case 'Duplicate':
+        this.props.onDuplicate();
+        break;
+      case 'Delete':
+        this.props.onDelete();
+        break;
+      default:
+        // do nothing
     }
   }
 
   renderSplitButton() {
     const dropdownOptions = [
-      { value: 'Duplicate', type: 'dropdownOption', id: 0 },
-      { value: 'Delete', type: 'dropdownOption', id: 1 },
+      { value: 'Duplicate', id: 0 },
+      { value: 'Delete', id: 1 },
     ];
 
     return (
       <SplitButton
         size="small"
-        onOptionClick={ this.getOption }
+        onOptionClick={ this.getDropdownOption }
         onClick={ this.props.onDelete }
         options={ dropdownOptions }
         label="Delete"
@@ -59,7 +68,7 @@ class Filter extends React.Component {
         placeholder="Field"
         value={ this.state.field }
         options={ fields }
-        onChange={ this.getOption }
+        onChange={ this.getSelectOption }
         clearable={ false }
         className="Select-small Select-left"
       />
@@ -81,7 +90,7 @@ class Filter extends React.Component {
         placeholder="Operator"
         value={ this.state.operator }
         options={ operators }
-        onChange={ this.getOption }
+        onChange={ this.getSelectOption }
         clearable={ false }
         className="Select-small Select-right"
       />
