@@ -5,37 +5,38 @@
 .rc-tooltip {
   position: absolute;
   display: inline;
-  background: $rc-tooltip-bg;
-  padding: $rc-tooltip-padding;
-  border-radius: $border-radius;
+  background: $tooltip-bg;
+  padding: $tooltip-padding;
+  border-radius: $tooltip-radius;
+  color: $tooltip-color;
+  font-size: $tooltip-font-size;
 
   .tooltip-carat {
     position: absolute;
     width: 0;
     height: 0;
-    border-width: 10px;
+    border-width: 8px;
     border-style: solid;
   }
 
   &.position-right {
     .tooltip-carat {
-      border-color: transparent $rc-tooltip-bg transparent transparent;
+      border-color: transparent $tooltip-bg transparent transparent;
       left: -16px;
     }
   }
 
   &.position-bottom {
     .tooltip-carat {
-      border-color: transparent transparent $rc-tooltip-bg transparent;
+      border-color: transparent transparent $tooltip-bg transparent;
       top: -16px;
     }
   }
 
   &.position-left {
     .tooltip-carat {
-      border-color: transparent transparent transparent $rc-tooltip-bg;
+      border-color: transparent transparent transparent $tooltip-bg;
       right: -16px;
     }
   }
 }
-

@@ -16,6 +16,8 @@ const propTypes = {
   ]),
 };
 
+const CARAT_HEIGHT = 8;
+
 const defaultProps = {
   anchor: 'right',
 };
@@ -73,9 +75,9 @@ class Tooltip extends React.Component {
 
     const elPositionMiddle = (elPosition.top + (elPosition.height / 2));
     newState.tooltipPosition.top = (elPositionMiddle - (tooltipHeight / 2)) + offsetY;
-    newState.tooltipPosition.left = elPosition.right + 10;
+    newState.tooltipPosition.left = elPosition.right + CARAT_HEIGHT;
 
-    newState.caratPosition.top = (tooltipHeight / 2) - 10;
+    newState.caratPosition.top = (tooltipHeight / 2) - CARAT_HEIGHT;
 
     this.setState(newState);
   }
@@ -92,7 +94,7 @@ class Tooltip extends React.Component {
     newState.tooltipPosition.top = elPosition.bottom + (tooltipHeight / 2) + offsetY;
     newState.tooltipPosition.left = (elPosition.left + (elPosition.width / 2)) - (tooltipWidth / 2);
 
-    newState.caratPosition.left = (tooltipWidth / 2) - 10;
+    newState.caratPosition.left = (tooltipWidth / 2) - CARAT_HEIGHT;
 
     this.setState(newState);
   }

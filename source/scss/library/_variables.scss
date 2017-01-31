@@ -216,7 +216,10 @@ $rc-progress-color:               $brand-primary !default;
 $rc-progress-animation:           400ms !default;
 
 //
-// Progress Indicator
+// Tooltip
 //
-$rc-tooltip-bg:                  $gray;
-$rc-tooltip-padding:             5px 10px 5px 10px;
+$tooltip-bg:                  rgba(0, 0, 0, .75);
+$tooltip-color:               $gray-light;
+$tooltip-padding:             5px 15px;
+$tooltip-radius:              $border-radius;
+$tooltip-font-size:           $font-size-medium;
