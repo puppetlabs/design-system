@@ -4,7 +4,10 @@ import classnames from 'classnames';
 import TooltipHoverArea from './TooltipHoverArea';
 
 const propTypes = {
-  target: React.PropTypes.element.isRequired,
+  target: React.PropTypes.oneOfType([
+    React.PropTypes.object,
+    React.PropTypes.element,
+  ]).isRequired,
   className: React.PropTypes.string,
   anchor: React.PropTypes.string,
   children: React.PropTypes.oneOfType([
