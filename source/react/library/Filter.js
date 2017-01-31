@@ -102,6 +102,7 @@ class Filter extends React.Component {
       <Input
         placeholder="Value"
         onChange={ getValue }
+        size="small"
       />
     );
   }

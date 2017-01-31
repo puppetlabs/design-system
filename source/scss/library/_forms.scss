@@ -5,19 +5,21 @@
     background: $gray-light;
     border-top-right-radius: $border-radius;
     border-top-left-radius: $border-radius;
+    margin-bottom: -3px;
 
     .rc-button-main {
       background: $gray-light;
-      font-weight: bolder;
       width: 100%;
 
       .rc-button-content {
-        color: $brand-primary;
+        color: $button-bg;
         float: left;
       }
 
       &:hover {
-        background: $gray-lighter;
+        .rc-button-content {
+          color: $button-bg-hover;
+        }
       }
     }
 
@@ -25,7 +27,7 @@
       background: $gray-light;
 
       .rc-button-menu-inner {
-        background: $brand-primary;
+        background: $button-bg;
 
         path {
           fill: $white;
@@ -33,12 +35,8 @@
       }
 
       &:hover {
-        background: $gray-lighter;
-
         .rc-button-menu-inner {
-          path {
-            fill: $gray-lighter;
-          }
+          background: $button-bg-hover;
         }
       }
     }
@@ -53,19 +51,32 @@
       display: flex;
 
       .Select-small {
-        font-size: 16px;
+        font-size: 11px;
+        width: 50%;
 
         .Select-control {
           border-color: $gray-light;
+          height: 17px;
 
           .Select-placeholder {
-            padding: 6px 28px 6px 10px;
+            line-height: normal;
             color: $button-disabled-bg;
+            padding: 6px 28px 6px 6px;
           }
 
           .Select-value {
-            top: inherit;
-            bottom: inherit;
+            line-height: normal;
+            padding: 6px 28px 6px 6px;
+          }
+          .Select-input {
+            height: 17px;
+            vertical-align: inherit;
+            padding-left: 0;
+
+            input {
+              line-height: normal;
+              padding: 0;
+            }
           }
         }
 
