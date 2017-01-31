@@ -55,4 +55,10 @@ describe('<DropdownMenu />', () => {
 
     expect(wrapper.find('Popover').prop('width')).to.equal('200px');
   });
+
+  it('should pass disablePortal to Popover', () => {
+    const wrapper = shallow(<DropdownMenu disablePortal />);
+
+    expect(wrapper.find('Popover').prop('disablePortal')).to.eql(true);
+  });
 });
