@@ -5,7 +5,7 @@ import React from 'react';
 
 import TooltipHoverArea from '../../source/react/library/tooltip/TooltipHoverArea';
 
-describe.only('<TooltipHoverArea />', () => {
+describe('<TooltipHoverArea />', () => {
   jsdom();
 
   const defaultProps = {
