@@ -214,3 +214,12 @@ $icon-fill:                       $gray !default;
 //
 $rc-progress-color:               $brand-primary !default;
 $rc-progress-animation:           400ms !default;
+
+//
+// Tooltip
+//
+$tooltip-bg:                  rgba(0, 0, 0, .75);
+$tooltip-color:               $gray-light;
+$tooltip-padding:             5px 15px;
+$tooltip-radius:              $border-radius;
+$tooltip-font-size:           $font-size-medium;
