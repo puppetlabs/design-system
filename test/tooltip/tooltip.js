@@ -16,8 +16,8 @@ describe('<Tooltip />', () => {
     const wrapper = shallow(<Tooltip { ...defaultProps } />);
 
     expect(wrapper.find('.rc-tooltip')).to.have.length(1);
-    expect(wrapper.find('.rc-tooltip').hasClass('position-right')).to.eql(true);
-    expect(wrapper.find('.tooltip-carat')).to.have.length(1);
+    expect(wrapper.find('.rc-tooltip').hasClass('rc-tooltip-position-right')).to.eql(true);
+    expect(wrapper.find('.rc-tooltip-carat')).to.have.length(1);
   });
 
   it('should render childern within tooltip', () => {
