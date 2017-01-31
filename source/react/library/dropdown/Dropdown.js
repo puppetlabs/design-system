@@ -11,6 +11,7 @@ const propTypes = {
   label: React.PropTypes.string,
   multiple: React.PropTypes.bool,
   required: React.PropTypes.bool,
+  disablePortal: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.number,
@@ -121,6 +122,7 @@ class Dropdown extends React.Component {
         options={ options }
         selected={ this.state.selected }
         required={ this.props.required }
+        disablePortal={ this.props.disablePortal }
       />
     );
   }
