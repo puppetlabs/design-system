@@ -9,6 +9,7 @@ const propTypes = {
   options: React.PropTypes.array.isRequired,
   label: React.PropTypes.string.isRequired,
   dropdownWidth: React.PropTypes.string,
+  disablePortal: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   size: React.PropTypes.string,
 };
@@ -45,7 +46,7 @@ class SplitButton extends React.Component {
 
   renderDropdown() {
     const target = this.renderDropdownTarget();
-    const { options, dropdownWidth } = this.props
+    const { options, dropdownWidth, disablePortal } = this.props;
 
     return (
       <DropdownMenu
@@ -55,6 +56,7 @@ class SplitButton extends React.Component {
         onChange={ this.onOptionClick }
         target={ target }
         options={ options }
+        disablePortal={ disablePortal }
       />
     );
   }

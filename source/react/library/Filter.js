@@ -47,6 +47,7 @@ class Filter extends React.Component {
         options={ dropdownOptions }
         label="Delete"
         dropdownWidth="100px"
+        disablePortal
       />
     );
   }
