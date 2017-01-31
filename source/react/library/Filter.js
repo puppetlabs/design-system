@@ -117,7 +117,7 @@ class Filter extends React.Component {
       <div className="rc-filter-form">
         { splitButton }
         <div className="rc-filter-form-fields">
-          <div className="Select-row">
+          <div className="rc-selects-row">
             { fieldSelect }
             { operatorSelect }
           </div>

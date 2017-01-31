@@ -44,19 +44,49 @@
 
   .rc-filter-form-fields {
     background: $gray-light;
-    padding: 3px;
     border-radius: $border-radius;
+    padding: 3px;
 
-    .Select-row {
+    .rc-selects-row {
       display: flex;
 
       .Select-small {
+        flex-grow: 1;
         font-size: 11px;
-        width: 50%;
+
+        &.is-focused:not(.is-open) {
+          background: $white;
+          border: none;
+          box-shadow: none;
+
+          .Select-control {
+            z-index: $popover-elevation;
+            background: $white;
+            border-color: $brand-primary;
+            box-shadow: 0px 0px 0px 1px $brand-primary;
+          }
+        }
+
+        .Select-menu-outer {
+          margin-top: 0;
+          background-color: $white;
+          border: 1px solid $brand-primary;
+          box-shadow: 0px 0px 0px 1px $brand-primary;
+
+          .Select-option.is-selected {
+            background-color: $white;
+            color: #cccccc;
+          }
+          .Select-option.is-focused {
+            background-color: lighten($brand-primary, 10%);
+            color: $white;
+          }
+        }
 
         .Select-control {
           border-color: $gray-light;
           height: 17px;
+          padding: 6px;
 
           .Select-placeholder {
             line-height: normal;
@@ -68,6 +98,7 @@
             line-height: normal;
             padding: 6px 28px 6px 6px;
           }
+
           .Select-input {
             height: 17px;
             vertical-align: inherit;
@@ -78,21 +109,29 @@
               padding: 0;
             }
           }
+
+          .Select-arrow-zone {
+            padding-right: 0;
+          }
         }
 
-        &.Select-left {
-          .Select-control {
-            border-top-right-radius: 0;
-            border-bottom-right-radius: 0;
-            border-bottom-left-radius: 0;
-          }
+        &.is-open > .Select-control {
+          z-index: $popover-elevation;
+          background: $white;
+          border-color: $brand-primary;
+          box-shadow: 0px 0px 0px 1px $brand-primary;
         }
-        &.Select-right {
-          .Select-control {
-            border-top-left-radius: 0;
-            border-bottom-left-radius: 0;
-            border-bottom-right-radius: 0;
-          }
+
+        &.Select-left > .Select-control {
+          border-top-right-radius: 0;
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+
+        &.Select-right > .Select-control {
+          border-top-left-radius: 0;
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
         }
       }
     }
@@ -102,6 +141,12 @@
       border-color: $gray-light;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
+
+      &:focus {
+        background: $white;
+        border-color: $brand-primary;
+        box-shadow: 0px 0px 0px 1px $brand-primary;
+      }
     }
   }
 
