@@ -19,17 +19,17 @@ class Filter extends React.Component {
       value: '',
     };
 
-    this.getSelectOption = this.getSelectOption.bind(this);
-    this.getDropdownOption = this.getDropdownOption.bind(this);
+    this.onOptionSelect = this.onOptionSelect.bind(this);
+    this.onDropdownSelect = this.onDropdownSelect.bind(this);
   }
 
-  getSelectOption(option) {
+  onOptionSelect(option) {
     option.type = option.type || 'field';
 
     this.setState({ [option.type]: option.value });
   }
 
-  getDropdownOption(option) {
+  onDropdownSelect(option) {
     switch (option.value) {
       case 'Duplicate':
         this.props.onDuplicate();
@@ -51,7 +51,7 @@ class Filter extends React.Component {
     return (
       <SplitButton
         size="small"
-        onOptionClick={ this.getDropdownOption }
+        onOptionClick={ this.onDropdownSelect }
         onClick={ this.props.onDelete }
         options={ dropdownOptions }
         label="Delete"
@@ -68,7 +68,7 @@ class Filter extends React.Component {
         placeholder="Field"
         value={ this.state.field }
         options={ fields }
-        onChange={ this.getSelectOption }
+        onChange={ this.onOptionSelect }
         clearable={ false }
         className="Select-small Select-left"
       />
@@ -90,7 +90,7 @@ class Filter extends React.Component {
         placeholder="Operator"
         value={ this.state.operator }
         options={ operators }
-        onChange={ this.getSelectOption }
+        onChange={ this.onOptionSelect }
         clearable={ false }
         className="Select-small Select-right"
       />
