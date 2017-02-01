@@ -8,6 +8,7 @@ import Popover from './react/library/Popover';
 import Dropdown from './react/library/dropdown/Dropdown';
 import Input from './react/library/Input';
 import DropdownMenu from './react/library/dropdown/DropdownMenu';
+import Filter from './react/library/Filter';
 import Switch from './react/library/Switch';
 import Loading from './react/library/Loading';
 import ListItem from './react/library/ListItem';
@@ -28,6 +29,7 @@ export {
   Dropdown,
   Input,
   DropdownMenu,
+  Filter,
   Switch,
   Loading,
   ListItem,
