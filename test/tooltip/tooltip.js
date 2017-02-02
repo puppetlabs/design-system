@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import Tooltip from '../../source/react/library/tooltip/Tooltip';
+import Tooltip from '../../source/react/library/tooltips/Tooltip';
 
 describe('<Tooltip />', () => {
   jsdom();

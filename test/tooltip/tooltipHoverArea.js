@@ -3,7 +3,7 @@ import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import TooltipHoverArea from '../../source/react/library/tooltip/TooltipHoverArea';
+import TooltipHoverArea from '../../source/react/library/tooltips/TooltipHoverArea';
 
 describe('<TooltipHoverArea />', () => {
   jsdom();
