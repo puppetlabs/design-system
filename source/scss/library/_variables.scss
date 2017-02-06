@@ -203,6 +203,7 @@ $modal-sidebar-padding:           40px !default;
 $modal-actions-border:            $border !default;
 $modal-actions-padding:           20px 30px !default;
 $modal-actions-cta-padding:       10px 0 10px 0 !default;
+$modal-elevation:                 24;
 
 
 //
@@ -224,3 +225,4 @@ $tooltip-color:               $gray-light;
 $tooltip-padding:             5px 15px;
 $tooltip-radius:              $border-radius;
 $tooltip-font-size:           $font-size-medium;
+$tooltip-elevation:           24;

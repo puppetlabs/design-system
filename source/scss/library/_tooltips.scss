@@ -10,6 +10,7 @@
   border-radius: $tooltip-radius;
   color: $tooltip-color;
   font-size: $tooltip-font-size;
+  z-index: $tooltip-elevation;
 
   .rc-tooltip-carat {
     position: absolute;
