@@ -12,7 +12,7 @@ describe('<Tooltip />', () => {
     target: <span>hi</span>,
   };
 
-  it('should render when given a target', () => {
+  xit('should render when given a target', () => {
     const wrapper = shallow(<Tooltip { ...defaultProps } />);
 
     expect(wrapper.find('.rc-tooltip')).to.have.length(1);
@@ -20,7 +20,7 @@ describe('<Tooltip />', () => {
     expect(wrapper.find('.rc-tooltip-carat')).to.have.length(1);
   });
 
-  it('should render childern within tooltip', () => {
+  xit('should render childern within tooltip', () => {
     const wrapper = shallow(
       <Tooltip { ...defaultProps }>
         <span className="child" />
