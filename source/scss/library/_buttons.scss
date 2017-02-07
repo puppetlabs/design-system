@@ -93,6 +93,13 @@ a.rc-button, button.rc-button {
     }
   }
 
+  &.rc-button-tiny {
+    height: 22px;
+    line-height: 20px;
+    padding: 0 2px;
+    font-size: $font-size-tiny;
+  }
+
   &.rc-button-small {
     height: 33px;
     line-height: 29px;
@@ -103,6 +110,10 @@ a.rc-button, button.rc-button {
     font-size: 14px;
     height: 60px;
     line-height: 59px;
+  }
+
+  &.rc-button-round {
+    border-radius: 10000px;
   }
 
   &[disabled] {

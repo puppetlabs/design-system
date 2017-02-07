@@ -3,6 +3,7 @@ import React from 'react';
 import Tooltip from './Tooltip';
 
 const propTypes = {
+  onClick: React.PropTypes.func,
   anchor: React.PropTypes.string,
   tooltip: React.PropTypes.oneOfType([
     React.PropTypes.string,
@@ -22,6 +23,16 @@ class TooltipHoverArea extends React.Component {
 
     this.onMouseOver = this.onMouseOver.bind(this);
     this.onMouseOut = this.onMouseOut.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick(e) {
+    if (this.props.onClick) {
+      // If something is going to happen on click, let's just close the tooltip.
+      this.setState({ open: false });
+
+      this.props.onClick(e);
+    }
   }
 
   onMouseOver() {
@@ -48,17 +59,17 @@ class TooltipHoverArea extends React.Component {
     }
 
     return (
-      <div>
+      <span onClick={ this.onClick }>
         { tooltip }
         <div
-          style={ { display: 'inline-block' } }
+          className="rc-tooltip-hover-area"
           onMouseOver={ this.onMouseOver }
           onMouseOut={ this.onMouseOut }
-          ref={ c => { this.elem = c; } }
+          ref={ (c) => { this.elem = c; } }
         >
           { this.props.children }
         </div>
-      </div>
+      </span>
     );
   }
 }

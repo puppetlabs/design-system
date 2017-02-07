@@ -87,6 +87,8 @@ class Modal extends React.Component {
     if (this.props.onClose && this.props.unbindShortcut) {
       this.props.unbindShortcut('esc');
     }
+
+    setBodyOverflow('');
   }
 
   onResize() {
@@ -95,8 +97,6 @@ class Modal extends React.Component {
 
   onClose(e) {
     e.preventDefault();
-
-    setBodyOverflow('');
 
     if (this.props.onClose) {
       this.props.onClose();

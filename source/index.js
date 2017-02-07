@@ -8,6 +8,7 @@ import Popover from './react/library/Popover';
 import Dropdown from './react/library/dropdown/Dropdown';
 import Input from './react/library/Input';
 import DropdownMenu from './react/library/dropdown/DropdownMenu';
+import Filter from './react/library/Filter';
 import Switch from './react/library/Switch';
 import Loading from './react/library/Loading';
 import ListItem from './react/library/ListItem';
@@ -16,6 +17,7 @@ import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import Tabs from './react/library/tabs/Tabs';
 import TabPanel from './react/library/tabs/TabPanel';
 import Progress from './react/library/Progress';
+import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 
 export {
   Button,
@@ -28,6 +30,7 @@ export {
   Dropdown,
   Input,
   DropdownMenu,
+  Filter,
   Switch,
   Loading,
   ListItem,
@@ -36,4 +39,5 @@ export {
   Tabs,
   TabPanel,
   Progress,
+  TooltipHoverArea,
 };

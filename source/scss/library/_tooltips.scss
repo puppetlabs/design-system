@@ -2,6 +2,10 @@
   position: absolute;
 }
 
+.rc-tooltip-hover-area {
+  display: inline-block;
+}
+
 .rc-tooltip {
   position: absolute;
   display: inline;
@@ -10,6 +14,7 @@
   border-radius: $tooltip-radius;
   color: $tooltip-color;
   font-size: $tooltip-font-size;
+  z-index: $tooltip-elevation;
 
   .rc-tooltip-carat {
     position: absolute;

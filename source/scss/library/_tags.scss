@@ -7,9 +7,16 @@
   height: $tag-height;
   line-height: $tag-line-height;
   padding: 0 10px;
-  margin-right: 10px;
+  margin: 0 5px 5px 0;
   border-radius: $tag-border-radius;
   border: $tag-border;
+
+  &.rc-tag-tiny {
+    font-size: $font-size-tiny;
+    height: 22px;
+    line-height: 19px;
+    padding: 0 2px;
+  }
 }
 
 .rc-tag-selected {

@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import portal from '../portal';
 
 import TooltipHoverArea from './TooltipHoverArea';
 
@@ -131,4 +132,4 @@ Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;
 
 export { TooltipHoverArea };
-export default Tooltip;
+export default portal(Tooltip);
