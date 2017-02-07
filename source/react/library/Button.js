@@ -65,6 +65,7 @@ class Button extends React.Component {
       'rc-button-block': block,
       'rc-button-processing': processing,
       'rc-floating-action-button': floating,
+      'rc-button-primary': !secondary && !transparent,
       'rc-button-secondary': secondary,
       'rc-button-transparent': transparent,
       'rc-button-split': dropdownMenu,
