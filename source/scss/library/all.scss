@@ -1,4 +1,6 @@
-@import "../../../node_modules/react-select/dist/react-select.css";
+@import url('//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
+@import url('//fonts.googleapis.com/css?family=Montserrat');
+
 @import "variables";
 @import "resets";
 @import "typography";
@@ -18,3 +20,4 @@
 @import "tabs";
 @import "progress";
 @import "tooltips";
+@import "../../../node_modules/react-select/dist/react-select.css";
