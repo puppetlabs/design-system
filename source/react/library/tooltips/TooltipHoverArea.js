@@ -59,7 +59,7 @@ class TooltipHoverArea extends React.Component {
     }
 
     return (
-      <div onClick={ this.onClick }>
+      <span onClick={ this.onClick }>
         { tooltip }
         <div
           className="rc-tooltip-hover-area"
@@ -69,7 +69,7 @@ class TooltipHoverArea extends React.Component {
         >
           { this.props.children }
         </div>
-      </div>
+      </span>
     );
   }
 }
