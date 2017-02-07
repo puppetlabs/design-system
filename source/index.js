@@ -17,6 +17,7 @@ import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import Tabs from './react/library/tabs/Tabs';
 import TabPanel from './react/library/tabs/TabPanel';
 import Progress from './react/library/Progress';
+import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 
 export {
   Button,
@@ -38,4 +39,5 @@ export {
   Tabs,
   TabPanel,
   Progress,
+  TooltipHoverArea,
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import StyleguideSection from './partials/StyleguideSection';
 import Button from '../library/Button';
-import { TooltipHoverArea } from '../library/tooltip/Tooltip';
+import { TooltipHoverArea } from '../library/tooltips/Tooltip';
 
 class Tooltips extends React.Component {
   constructor(props) {

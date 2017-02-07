@@ -7,7 +7,7 @@ $gray:                           lighten($gray-base, 56%) !default;
 $gray-light:                     lighten($gray-base, 80%) !default;
 $gray-lighter:                   lighten($gray-base, 84%) !default;
 
-$brand-primary:                  #30CEFF !default;
+$brand-primary:                  #269CFF !default;
 $brand-success:                  #5cb85c !default;
 $brand-info:                     #5bc0de !default;
 $brand-warning:                  #f0ad4e !default;
@@ -17,6 +17,7 @@ $font-family:                   'Open Sans', sans-serif !default;
 
 $font-size-base:                 16px !default;
 $font-size-small:                12px !default;
+$font-size-tiny:                 10px !default;
 $font-size-medium:               14px !default;
 $line-height-base:               1.428571429 !default; // 20/14
 
@@ -202,6 +203,7 @@ $modal-sidebar-padding:           40px !default;
 $modal-actions-border:            $border !default;
 $modal-actions-padding:           20px 30px !default;
 $modal-actions-cta-padding:       10px 0 10px 0 !default;
+$modal-elevation:                 24;
 
 
 //
@@ -223,3 +225,4 @@ $tooltip-color:               $gray-light;
 $tooltip-padding:             5px 15px;
 $tooltip-radius:              $border-radius;
 $tooltip-font-size:           $font-size-medium;
+$tooltip-elevation:           24;
