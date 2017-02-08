@@ -10,7 +10,6 @@ import Button from '../../source/react/library/Button';
 describe('<Modal />', () => {
   jsdom();
 
-  const title = 'title';
   const content = 'content';
   const sidebar = 'sidebar';
 
@@ -31,12 +30,6 @@ describe('<Modal />', () => {
     const modal = shallow(<Modal />);
 
     expect(modal.find('.rc-modal-close').length).to.equal(0);
-  });
-
-  it('should contain a valid title', () => {
-    const modal = shallow(<Modal title={ title } />);
-
-    expect(modal.find('.rc-modal-title').text()).to.equal(title);
   });
 
   it('should contain a valid sidebar text', () => {
