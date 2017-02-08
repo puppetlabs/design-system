@@ -59,6 +59,7 @@ class Buttons extends React.Component {
           />
           <SplitButton
             disabled
+            disabledMenu
             onOptionClick={ this.onSplitButtonClick }
             onClick={ this.onSplitButtonClick }
             options={ splitButtonOptions }
