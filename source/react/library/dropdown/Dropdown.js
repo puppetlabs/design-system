@@ -7,16 +7,22 @@ const propTypes = {
   onChange: React.PropTypes.func,
   options: React.PropTypes.array,
   hint: React.PropTypes.string,
+  placeholder: React.PropTypes.string,
   blank: React.PropTypes.string,
   label: React.PropTypes.string,
   multiple: React.PropTypes.bool,
   required: React.PropTypes.bool,
+  disabled: React.PropTypes.bool,
   disablePortal: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.number,
     React.PropTypes.array,
   ]),
+};
+
+const defaultProps = {
+  disable: false,
 };
 
 class Dropdown extends React.Component {
@@ -107,7 +113,7 @@ class Dropdown extends React.Component {
   renderDropdownMenu() {
     const options = this.getOptions();
     const label = this.renderLabel();
-    const button = <a className="rc-dropdown-toggle">{ label }</a>;
+    const button = <a disabled={ this.props.disabled } className="rc-dropdown-toggle">{ label }</a>;
 
     return (
       <DropdownMenu
@@ -128,6 +134,7 @@ class Dropdown extends React.Component {
   }
 
   renderLabel() {
+    const placeholder = this.props.placeholder;
     const options = this.getOptions();
     const selected = options.filter(e => this.state.displayed.indexOf(e.id) >= 0);
     const values = selected.map(s => s.value);
@@ -147,7 +154,9 @@ class Dropdown extends React.Component {
         label = values.join(', ');
       }
 
-      if (!label) {
+      if (placeholder && !label) {
+        label = placeholder;
+      } else if (!label) {
         label = 'Select One';
       }
     }
@@ -171,5 +180,6 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = propTypes;
+Dropdown.defaultProps = defaultProps;
 
 export default Dropdown;

@@ -1,6 +1,21 @@
+.rc-dropdown-toggle {
+  &[disabled] {
+    pointer-events: none;
+
+    .rc-dropdown-label {
+      color: $dropdown-label-disabled-color;
+    }
+
+    .rc-icon {
+      fill: $dropdown-label-disabled-color;
+    }
+  }
+}
+
 .rc-dropdown-label {
   color: $dropdown-label-color;
   cursor: pointer;
+  white-space: nowrap;
 
   .rc-dropdown-label-text {
     font-size: $dropdown-label-font-size;
