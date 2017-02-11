@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import Popover from '../Popover';
-import DropdownMenuItem from './DropdownMenuItem';
+import Menu from '../menu/Menu';
 
 const propTypes = {
   anchor: React.PropTypes.string,
@@ -10,7 +10,6 @@ const propTypes = {
   width: React.PropTypes.string,
   onClose: React.PropTypes.func,
   size: React.PropTypes.string,
-  required: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
@@ -62,24 +61,19 @@ class DropdownMenu extends React.Component {
     return jsx;
   }
 
-  renderOptions() {
-    let jsx = [];
-    const options = this.props.options;
+  renderMenu() {
+    const { options, selected } = this.props;
+    let jsx;
 
-    if (options && options.length) {
-      options.forEach(option => {
-        jsx.push(
-          <DropdownMenuItem
-            key={ option.id }
-            option={ option }
-            selected={ this.props.selected.indexOf(option.id) >= 0 }
-            onClick={ this.onChange }
-            multiple={ this.props.multiple }
-          />
-        );
-      });
-
-      jsx = <ul>{ jsx }</ul>;
+    if (options.length > 0) {
+      jsx = (
+        <Menu
+          options={ options }
+          selected={ selected }
+          multiple={ this.props.multiple }
+          onChange={ this.onChange }
+        />
+      );
     } else if (this.props.blank) {
       jsx = <p className="rc-dropdown-blank">{ this.props.blank }</p>;
     }
@@ -88,7 +82,7 @@ class DropdownMenu extends React.Component {
   }
 
   render() {
-    const options = this.renderOptions();
+    const menu = this.renderMenu();
     const hint = this.renderHint();
     const className = classnames('rc-dropdown-menu', {
       'rc-dropdown-menu-multiple': this.props.multiple,
@@ -107,7 +101,7 @@ class DropdownMenu extends React.Component {
         disablePortal={ this.props.disablePortal }
       >
         { hint }
-        { options }
+        { menu }
       </Popover>
     );
   }
