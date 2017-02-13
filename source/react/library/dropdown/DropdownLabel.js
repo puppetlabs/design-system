@@ -18,7 +18,7 @@ const DropdownLabel = (props) => {
   }
 
   return (
-    <a href="toggle-dropdown" disabled={ props.disabled } onClick={ props.onClick } className="rc-dropdown-toggle">
+    <a disabled={ props.disabled } onClick={ props.onClick } className="rc-dropdown-toggle">
       <span className="rc-dropdown-label">
         <span className="rc-dropdown-label-text">{ label }</span> <Icon type="chevron-down" />
       </span>

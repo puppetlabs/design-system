@@ -64,6 +64,10 @@ class Input extends React.Component {
     }
   }
 
+  focus() {
+    this.input.focus();
+  }
+
   render() {
     const className = classnames('rc-input', {
       [this.props.className]: this.props.className,
@@ -86,7 +90,7 @@ class Input extends React.Component {
       className,
     };
 
-    return <input { ...props } />;
+    return <input ref={ (c) => { this.input = c; } } { ...props } />;
   }
 }
 
