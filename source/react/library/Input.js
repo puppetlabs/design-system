@@ -7,6 +7,7 @@ const propTypes = {
   autoFocus: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   readonly: React.PropTypes.bool,
+  type: React.PropTypes.string,
   value: React.PropTypes.string,
   name: React.PropTypes.string,
   size: React.PropTypes.string,
@@ -77,6 +78,7 @@ class Input extends React.Component {
       value: this.props.value,
       name: this.props.name,
       onKeyUp: this.props.onKeyUp,
+      type: this.props.type,
       onBlur: this.props.onBlur,
       onChange: this.onChange,
       onFocus: this.onFocus,
@@ -84,7 +86,7 @@ class Input extends React.Component {
       className,
     };
 
-    return <input type="text" { ...props } />;
+    return <input { ...props } />;
   }
 }
 
