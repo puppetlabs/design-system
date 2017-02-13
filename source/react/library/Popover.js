@@ -12,6 +12,7 @@ const propTypes = {
   children: React.PropTypes.any,
   width: React.PropTypes.string,
   size: React.PropTypes.string,
+  hint: React.PropTypes.string,
   margin: React.PropTypes.number,
   className: React.PropTypes.string,
   allowBubble: React.PropTypes.bool,
@@ -166,6 +167,7 @@ class Popover extends React.Component {
     const popoverContent = React.createElement(component, {
       isOpened: this.state.open,
       className,
+      hint: this.props.hint,
       style: styles,
       onOutsideClick: this.onOutsideClick,
       onClose: this.onClose,

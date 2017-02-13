@@ -7,6 +7,14 @@
   padding: $popover-padding;
   z-index: $popover-elevation;
 
+  .rc-popover-hint {
+    display: block;
+    padding: 0;
+    padding-bottom: $popover-padding;
+    color: $dropdown-hint-color;
+    font-size: $dropdown-hint-font-size;
+  }
+
   &.rc-popover-small {
     width: $popover-small-width;
   }

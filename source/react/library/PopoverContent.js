@@ -19,6 +19,7 @@ const propTypes = {
   className: React.PropTypes.string,
   style: React.PropTypes.object,
   children: React.PropTypes.any,
+  hint: React.PropTypes.string,
   allowBubble: React.PropTypes.bool,
 };
 
@@ -49,10 +50,16 @@ class PopoverContent extends React.Component {
   }
 
   render() {
-    const { className, style } = this.props;
+    const { className, style, hint } = this.props;
+    let hintArea;
+
+    if (hint) {
+      hintArea = <small className="rc-popover-hint">{ hint }</small>;
+    }
 
     return (
       <div ref={ (c) => { this.elem = c; } } className={ className } style={ style }>
+        { hintArea }
         { this.props.children }
       </div>
     );
