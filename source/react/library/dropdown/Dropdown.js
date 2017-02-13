@@ -1,7 +1,7 @@
 import React from 'react';
 import equals from 'deep-equal';
 import DropdownMenu from './DropdownMenu';
-import Icon from '../Icon';
+import DropdownLabel from './DropdownLabel';
 
 const propTypes = {
   onChange: React.PropTypes.func,
@@ -110,31 +110,7 @@ class Dropdown extends React.Component {
     return selected;
   }
 
-  renderDropdownMenu() {
-    const options = this.getOptions();
-    const label = this.renderLabel();
-    const button = <a disabled={ this.props.disabled } className="rc-dropdown-toggle">{ label }</a>;
-
-    return (
-      <DropdownMenu
-        width="260px"
-        onClose={ this.onClose }
-        margin={ -60 }
-        blank={ this.props.blank }
-        hint={ this.props.hint }
-        multiple={ this.props.multiple }
-        target={ button }
-        onChange={ this.onChange }
-        options={ options }
-        selected={ this.state.selected }
-        required={ this.props.required }
-        disablePortal={ this.props.disablePortal }
-      />
-    );
-  }
-
-  renderLabel() {
-    const placeholder = this.props.placeholder;
+  renderToggle() {
     const options = this.getOptions();
     const selected = options.filter(e => this.state.displayed.indexOf(e.id) >= 0);
     const values = selected.map(s => s.value);
@@ -153,18 +129,36 @@ class Dropdown extends React.Component {
       } else {
         label = values.join(', ');
       }
-
-      if (placeholder && !label) {
-        label = placeholder;
-      } else if (!label) {
-        label = 'Select One';
-      }
     }
 
     return (
-      <span className="rc-dropdown-label">
-        <span className="rc-dropdown-label-text">{ label }</span> <Icon type="chevron-down" />
-      </span>
+      <DropdownLabel
+        disabled={ this.props.disabled }
+        placeholder={ this.props.placeholder }
+        label={ label }
+      />
+    );
+  }
+
+  renderDropdownMenu() {
+    const options = this.getOptions();
+    const button = this.renderToggle();
+
+    return (
+      <DropdownMenu
+        width="260px"
+        onClose={ this.onClose }
+        margin={ -60 }
+        blank={ this.props.blank }
+        hint={ this.props.hint }
+        multiple={ this.props.multiple }
+        target={ button }
+        onChange={ this.onChange }
+        options={ options }
+        selected={ this.state.selected }
+        required={ this.props.required }
+        disablePortal={ this.props.disablePortal }
+      />
     );
   }
 
