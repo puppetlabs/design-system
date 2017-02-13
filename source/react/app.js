@@ -12,6 +12,7 @@ import Dropdowns from './styleguide/Dropdowns';
 import Switches from './styleguide/Switches';
 import Tabs from './styleguide/Tabs';
 import Tooltips from './styleguide/Tooltips';
+import Tables from './styleguide/Tables';
 import '../scss/library/all.scss';
 import '../scss/styleguide.scss';
 
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route path="switches" components={ Switches } />
         <Route path="tabs" components={ Tabs } />
         <Route path="tooltips" components={ Tooltips } />
+        <Route path="tables" components={ Tables } />
         <IndexRoute component={ Buttons } />
       </Route>
     </Router>

@@ -18,6 +18,9 @@ import Tabs from './react/library/tabs/Tabs';
 import TabPanel from './react/library/tabs/TabPanel';
 import Progress from './react/library/Progress';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
+import Table from './react/library/table/Table';
+import ColumnSelect from './react/library/table/ColumnSelect';
+import ColumnInput from './react/library/table/ColumnInput';
 
 export {
   Button,
@@ -40,4 +43,7 @@ export {
   TabPanel,
   Progress,
   TooltipHoverArea,
+  Table,
+  ColumnSelect,
+  ColumnInput,
 };
