@@ -121,8 +121,9 @@ $dropdown-padding:                12px !default;
 $dropdown-max-height:             400px !default;
 $dropdown-label-font-size:        $font-size-medium !default;
 $dropdown-label-font-weight:      600 !default;
-$dropdown-label-disabled-color:   $gray-light !default;
+$dropdown-label-disabled-color:   $gray !default;
 $dropdown-label-color:            $brand-primary !default;
+$dropdown-label-color-error:      $brand-danger !default;
 $dropdown-chevron-height:         6px !default;
 $dropdown-chevron-width:          10px !default;
 $dropdown-hint-color:             $gray !default;
@@ -154,6 +155,7 @@ $card-subtitle-color:             $gray !default;
 // Input
 //
 $input-border-radius:            $border-radius;
+$input-border-error:             1px solid $brand-danger;
 
 //
 // Switch

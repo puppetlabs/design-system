@@ -12,6 +12,7 @@ const propTypes = {
   name: React.PropTypes.string,
   size: React.PropTypes.string,
   onKeyUp: React.PropTypes.func,
+  error: React.PropTypes.string,
   onChange: React.PropTypes.func,
   onClick: React.PropTypes.func,
   onFocus: React.PropTypes.func,
@@ -70,6 +71,7 @@ class Input extends React.Component {
 
   render() {
     const className = classnames('rc-input', {
+      'rc-input-error': this.props.error,
       [this.props.className]: this.props.className,
       [`rc-input-${this.props.size}`]: this.props.size,
     });

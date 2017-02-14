@@ -1,4 +1,24 @@
 .rc-dropdown-toggle {
+  &.rc-dropdown-toggle-error {
+    .rc-dropdown-label {
+      color: $dropdown-label-color-error;
+    }
+
+    .rc-icon {
+      fill: $dropdown-label-color-error;
+    }
+  }
+
+  &:focus {
+    .rc-dropdown-label {
+      color: darken($dropdown-label-color, 20%);
+    }
+
+    .rc-icon {
+      fill: darken($dropdown-label-color, 20%)
+    }
+  }
+
   &[disabled] {
     pointer-events: none;
 

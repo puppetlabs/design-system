@@ -13,6 +13,8 @@ const propTypes = {
   multiple: React.PropTypes.bool,
   required: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
+  tabIndex: React.PropTypes.string,
+  error: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
@@ -133,6 +135,8 @@ class Dropdown extends React.Component {
 
     return (
       <DropdownLabel
+        error={ this.props.error }
+        tabIndex={ this.props.tabIndex }
         disabled={ this.props.disabled }
         placeholder={ this.props.placeholder }
         label={ label }
