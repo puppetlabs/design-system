@@ -17,6 +17,12 @@
     line-height: 19px;
     padding: 0 2px;
   }
+
+  &.rc-tag-block {
+    width: auto;
+    float: none;
+    margin-right: 0 !important;
+  }
 }
 
 .rc-tag-selected {
