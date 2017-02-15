@@ -99,6 +99,7 @@ class DropdownMenu extends React.Component {
         onClose={ this.onClose }
         margin={ this.props.margin }
         size={ this.props.size }
+        width={ this.props.width }
         disablePortal={ this.props.disablePortal }
       >
         { hint }
