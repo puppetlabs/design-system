@@ -53,14 +53,5 @@
 
     border-top: $slidein-actions-border;
     padding: $slidein-actions-padding;
-
-    // For the buttons, let's make sure they have proper spacing.
-    .rc-button {
-      margin-right: $slidein-actions-button-margin;
-
-      &:last-child {
-        margin-right: 0;
-      }
-    }
   }
 }

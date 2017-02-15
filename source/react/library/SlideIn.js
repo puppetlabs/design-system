@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from './Button';
+import ButtonGroup from './ButtonGroup';
 import classnames from 'classnames';
 
 const propTypes = {
@@ -39,10 +40,16 @@ class SlideIn extends React.Component {
       );
     }
 
+    if (!closeAction && !submitAction) {
+      return;
+    }
+
     return (
       <div className="rc-slidein-actions">
-        {closeAction}
-        {submitAction}
+        <ButtonGroup>
+          {closeAction}
+          {submitAction}
+        </ButtonGroup>
       </div>
     );
   }
