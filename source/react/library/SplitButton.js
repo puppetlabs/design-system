@@ -15,6 +15,10 @@ const propTypes = {
   size: React.PropTypes.string,
 };
 
+const defaultProps = {
+  dropdownWidth: '125px',
+};
+
 class SplitButton extends React.Component {
   constructor(props) {
     super(props);
@@ -83,5 +87,6 @@ class SplitButton extends React.Component {
 }
 
 SplitButton.propTypes = propTypes;
+SplitButton.defaultProps = defaultProps;
 
 export default SplitButton;

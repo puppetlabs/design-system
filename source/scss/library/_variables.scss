@@ -107,21 +107,25 @@ $loading-indicator-fill:          $gray-dark !default;
 $popover-bg:                      $white !default;
 $popover-border:                  none !default;
 $popover-border-radius:           $border-radius !default;
+$popover-close-color:             $gray-light !default;
 $popover-shadow:                  0 0 6px rgba(0, 0, 0, .2) !default;
-$popover-padding:                 $padding;
-$popover-small-width:             200px;
-$popover-medium-width:            300px;
-$popover-large-width:             400px;
-$popover-elevation:               24;
+$popover-padding:                 $padding !default;
+$popover-small-width:             260px !default;
+$popover-medium-width:            300px !default;
+$popover-large-width:             400px !default;
+$popover-elevation:               24 !default;
 
 //
 // Dropdown
 //
 $dropdown-padding:                12px !default;
 $dropdown-max-height:             400px !default;
+$dropdown-width:                  260px;
 $dropdown-label-font-size:        $font-size-medium !default;
 $dropdown-label-font-weight:      600 !default;
+$dropdown-label-disabled-color:   $gray !default;
 $dropdown-label-color:            $brand-primary !default;
+$dropdown-label-color-error:      $brand-danger !default;
 $dropdown-chevron-height:         6px !default;
 $dropdown-chevron-width:          10px !default;
 $dropdown-hint-color:             $gray !default;
@@ -153,6 +157,7 @@ $card-subtitle-color:             $gray !default;
 // Input
 //
 $input-border-radius:            $border-radius;
+$input-border-error:             1px solid $brand-danger;
 
 //
 // Switch

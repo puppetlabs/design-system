@@ -1,6 +1,41 @@
+.rc-dropdown-toggle {
+  &.rc-dropdown-toggle-error {
+    .rc-dropdown-label {
+      color: $dropdown-label-color-error;
+    }
+
+    .rc-icon {
+      fill: $dropdown-label-color-error;
+    }
+  }
+
+  &:focus {
+    .rc-dropdown-label {
+      color: darken($dropdown-label-color, 20%);
+    }
+
+    .rc-icon {
+      fill: darken($dropdown-label-color, 20%)
+    }
+  }
+
+  &[disabled] {
+    pointer-events: none;
+
+    .rc-dropdown-label {
+      color: $dropdown-label-disabled-color;
+    }
+
+    .rc-icon {
+      fill: $dropdown-label-disabled-color;
+    }
+  }
+}
+
 .rc-dropdown-label {
   color: $dropdown-label-color;
   cursor: pointer;
+  white-space: nowrap;
 
   .rc-dropdown-label-text {
     font-size: $dropdown-label-font-size;

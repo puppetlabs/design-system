@@ -6,6 +6,7 @@ const propTypes = {
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
   size: React.PropTypes.string,
+  block: React.PropTypes.bool,
   onRemove: React.PropTypes.func,
   onClick: React.PropTypes.func,
 };
@@ -37,11 +38,12 @@ class Tag extends React.Component {
   }
 
   render() {
-    const { onRemove, onClick, selected, size } = this.props;
+    const { onRemove, onClick, selected, size, block } = this.props;
     const className = classnames('rc-tag', {
       'rc-tag-selected': selected,
       'rc-tag-selectable': onClick,
       'rc-tag-removable': onRemove,
+      'rc-tag-block': block,
       [`rc-tag-${size}`]: size,
     }, this.props.className);
     let jsx;
