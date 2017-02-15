@@ -76,7 +76,7 @@ class PopoverContent extends React.Component {
       );
     }
 
-    if (hint) {
+    if (hint || closeButton) {
       hintArea = <small className="rc-popover-hint">{ hint }{close}</small>;
     }
 
