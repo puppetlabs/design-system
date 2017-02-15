@@ -7,12 +7,15 @@
   padding: $popover-padding;
   z-index: $popover-elevation;
 
-  .rc-popover-hint {
+  .rc-popover-header {
     position: relative;
+    margin-bottom: $popover-padding;
+  }
+
+  .rc-popover-hint {
     display: block;
     padding: 0;
-    padding-bottom: $popover-padding;
-    padding-right: 33px;
+    margin-right: 33px;
     color: $dropdown-hint-color;
     font-size: $dropdown-hint-font-size;
   }

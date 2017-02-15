@@ -61,7 +61,7 @@ class PopoverContent extends React.Component {
 
   render() {
     const { className, style, hint, closeButton } = this.props;
-    let hintArea;
+    let header;
     let close;
 
     if (closeButton) {
@@ -77,12 +77,17 @@ class PopoverContent extends React.Component {
     }
 
     if (hint || closeButton) {
-      hintArea = <small className="rc-popover-hint">{ hint }{close}</small>;
+      header = (
+        <div className="rc-popover-header">
+          <small className="rc-popover-hint">{ hint }</small>
+          {close}
+        </div>
+      );
     }
 
     return (
       <div ref={ (c) => { this.elem = c; } } className={ className } style={ style }>
-        { hintArea }
+        { header }
         { this.props.children }
       </div>
     );

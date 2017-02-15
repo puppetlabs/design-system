@@ -26,6 +26,7 @@ const propTypes = {
 const defaultProps = {
   selected: [],
   options: [],
+  size: 'small',
   width: 'auto',
 };
 
@@ -93,7 +94,6 @@ class DropdownMenu extends React.Component {
       <Popover
         anchor={ this.props.anchor }
         ref={ (c) => { this.popover = c; } }
-        width={ this.props.width }
         className={ className }
         target={ this.props.target }
         onClose={ this.onClose }
