@@ -150,7 +150,6 @@ class Dropdown extends React.Component {
 
     return (
       <DropdownMenu
-        width="260px"
         onClose={ this.onClose }
         margin={ -60 }
         blank={ this.props.blank }

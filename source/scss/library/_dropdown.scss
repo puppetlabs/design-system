@@ -53,6 +53,7 @@
 }
 
 .rc-dropdown-menu {
+  width: $dropdown-width;
   padding: 0;
   padding-bottom: $popover-border-radius * 2;
   padding-top: $popover-border-radius * 2;
