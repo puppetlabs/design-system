@@ -25,6 +25,7 @@ const propTypes = {
 
 const defaultProps = {
   selected: [],
+  options: [],
   width: 'auto',
 };
 

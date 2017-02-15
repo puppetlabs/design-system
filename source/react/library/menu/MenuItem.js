@@ -10,7 +10,7 @@ const propTypes = {
   disabled: React.PropTypes.bool,
 };
 
-class DropdownMenuItem extends React.Component {
+class MenuItem extends React.Component {
   constructor(props) {
     super(props);
 
@@ -51,6 +51,6 @@ class DropdownMenuItem extends React.Component {
   }
 }
 
-DropdownMenuItem.propTypes = propTypes;
+MenuItem.propTypes = propTypes;
 
-export default DropdownMenuItem;
+export default MenuItem;

@@ -1,20 +1,12 @@
 import jsdom from 'mocha-jsdom';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import sinon from 'sinon';
 import React from 'react';
 
 import DropdownMenu from '../../source/react/library/dropdown/DropdownMenu';
 
 describe('<DropdownMenu />', () => {
   jsdom();
-
-  it('should render the correct number of menu items', () => {
-    const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
-    const wrapper = shallow(<DropdownMenu options={ options } />);
-
-    expect(wrapper.find('DropdownMenuItem')).to.have.length(2);
-  });
 
   it('should render a hint', () => {
     const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
@@ -37,18 +29,6 @@ describe('<DropdownMenu />', () => {
     expect(wrapper.find('Popover')).to.have.length(1);
   });
 
-  it('should fire onChange callback when an item is clicked', () => {
-    const options = [{ id: 1, value: 'option 1' }];
-    const onChange = sinon.spy();
-    const wrapper = shallow(<DropdownMenu options={ options } onChange={ onChange } />);
-
-    // We manually call the onClick prop passed to DropdownMenuItem
-    wrapper.find('DropdownMenuItem').props().onClick(options[0]);
-
-    expect(onChange.calledOnce).to.eql(true);
-    expect(onChange.lastCall.args[0]).to.eql(options[0]);
-  });
-
   it('should set the width of the popover', () => {
     const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
     const wrapper = shallow(<DropdownMenu width="200px" options={ options } />);
@@ -58,7 +38,12 @@ describe('<DropdownMenu />', () => {
 
   it('should pass disablePortal to Popover', () => {
     const wrapper = shallow(<DropdownMenu disablePortal />);
-
     expect(wrapper.find('Popover').prop('disablePortal')).to.eql(true);
+  });
+
+  it('should pass the correct number of options to Menu', () => {
+    const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
+    const wrapper = shallow(<DropdownMenu options={ options } />);
+    expect(wrapper.find('Menu').prop('options').length).to.eql(2);
   });
 });

@@ -9,8 +9,11 @@ const propTypes = {
     React.PropTypes.number,
   ]),
   multiple: React.PropTypes.bool,
-  required: React.PropTypes.bool,
   onChange: React.PropTypes.func,
+};
+
+const defaultProps = {
+  selected: '',
 };
 
 class Menu extends React.Component {
@@ -45,5 +48,6 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = propTypes;
+Menu.defaultProps = defaultProps;
 
 export default Menu;
