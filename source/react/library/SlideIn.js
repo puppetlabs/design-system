@@ -7,7 +7,7 @@ const propTypes = {
   onClose: React.PropTypes.func,
   className: React.PropTypes.string,
   position: React.PropTypes.string,
-  okButtonLabel: React.PropTypes.string,
+  submitButtonLabel: React.PropTypes.string,
   closeButtonLabel: React.PropTypes.string,
 };
 
@@ -56,7 +56,7 @@ class SlideIn extends React.Component {
       'rc-slidein-left': this.props.position == 'left',
       'rc-slidein-right': this.props.position == 'right',
       'rc-slidein-has-actions': actions,
-    });
+    }, this.props.className);
 
     return (
       <div className={className}>
