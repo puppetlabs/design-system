@@ -6,6 +6,7 @@ import PopoverContent, { PopoverContentWithoutPortal } from './PopoverContent';
 const propTypes = {
   open: React.PropTypes.bool,
   position: React.PropTypes.object,
+  closeButton: React.PropTypes.bool,
   anchor: React.PropTypes.string,
   onClose: React.PropTypes.func,
   target: React.PropTypes.object,
@@ -38,6 +39,7 @@ class Popover extends React.Component {
 
     this.onClick = this.onClick.bind(this);
     this.onClose = this.onClose.bind(this);
+    this.close = this.close.bind(this);
     this.onResize = debounce(this.onResize.bind(this), 250);
     this.onOutsideClick = this.onOutsideClick.bind(this);
     this.setPosition = this.setPosition.bind(this);
@@ -169,8 +171,9 @@ class Popover extends React.Component {
       className,
       hint: this.props.hint,
       style: styles,
+      closeButton: this.props.closeButton,
       onOutsideClick: this.onOutsideClick,
-      onClose: this.onClose,
+      onClose: this.close,
       allowBubble: this.props.allowBubble,
       children: this.props.children,
     });

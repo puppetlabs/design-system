@@ -1,6 +1,7 @@
 import React from 'react';
 import portal from './portal';
 import togglable from './togglable';
+import Button from './Button';
 
 function isNodeInRoot(node, root) {
   while (node) {
@@ -17,10 +18,12 @@ function isNodeInRoot(node, root) {
 const propTypes = {
   onOutsideClick: React.PropTypes.func,
   className: React.PropTypes.string,
+  closeButton: React.PropTypes.bool,
   style: React.PropTypes.object,
   children: React.PropTypes.any,
   hint: React.PropTypes.string,
   allowBubble: React.PropTypes.bool,
+  onClose: React.PropTypes.func,
 };
 
 class PopoverContent extends React.Component {
@@ -29,6 +32,7 @@ class PopoverContent extends React.Component {
     super(props);
 
     this.onOutsideClick = this.onOutsideClick.bind(this);
+    this.onClose = this.onClose.bind(this);
   }
 
   componentWillMount() {
@@ -49,12 +53,31 @@ class PopoverContent extends React.Component {
     }
   }
 
+  onClose() {
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
+  }
+
   render() {
-    const { className, style, hint } = this.props;
+    const { className, style, hint, closeButton } = this.props;
     let hintArea;
+    let close;
+
+    if (closeButton) {
+      close = (
+        <Button
+          transparent
+          size="small"
+          className="rc-popover-close"
+          icon="delete"
+          onClick={ this.onClose }
+        />
+      );
+    }
 
     if (hint) {
-      hintArea = <small className="rc-popover-hint">{ hint }</small>;
+      hintArea = <small className="rc-popover-hint">{ hint }{close}</small>;
     }
 
     return (

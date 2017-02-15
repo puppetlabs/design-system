@@ -107,12 +107,13 @@ $loading-indicator-fill:          $gray-dark !default;
 $popover-bg:                      $white !default;
 $popover-border:                  none !default;
 $popover-border-radius:           $border-radius !default;
+$popover-close-color:             $gray-light !default;
 $popover-shadow:                  0 0 6px rgba(0, 0, 0, .2) !default;
-$popover-padding:                 $padding;
-$popover-small-width:             200px;
-$popover-medium-width:            300px;
-$popover-large-width:             400px;
-$popover-elevation:               24;
+$popover-padding:                 $padding !default;
+$popover-small-width:             200px !default;
+$popover-medium-width:            300px !default;
+$popover-large-width:             400px !default;
+$popover-elevation:               24 !default;
 
 //
 // Dropdown

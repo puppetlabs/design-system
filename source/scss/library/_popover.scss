@@ -8,11 +8,19 @@
   z-index: $popover-elevation;
 
   .rc-popover-hint {
+    position: relative;
     display: block;
     padding: 0;
     padding-bottom: $popover-padding;
+    padding-right: 33px;
     color: $dropdown-hint-color;
     font-size: $dropdown-hint-font-size;
+  }
+
+  .rc-popover-close {
+    position: absolute;
+    top: -7px;
+    right: -7px;
   }
 
   &.rc-popover-small {
