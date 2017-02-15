@@ -1,0 +1,66 @@
+.rc-slidein {
+  position: fixed;
+  background-color: $slidein-bg;
+  color: $slidein-color;
+  box-shadow: 0 0 60px rgba(0, 0, 0, .3);
+
+  &.rc-slidein-bottom {
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: $slidein-vertical-height;
+  }
+
+  &.rc-slidein-top {
+    top: 0;
+    left: 0;
+    right: 0;
+
+    width: 100%;
+    height: $slidein-vertical-height;
+  }
+
+  &.rc-slidein-left {
+    top: 0;
+    left: 0;
+    bottom: 0;
+
+    width: $slidein-horizontal-width;
+    height: 100%;
+  }
+
+  &.rc-slidein-right {
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    width: $slidein-horizontal-width;
+    height: 100%;
+  }
+
+  .rc-slidein-content {
+    padding: $slidein-padding;
+  }
+
+  .rc-slidein-actions {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: right;
+
+    border-top: $slidein-actions-border;
+    padding: $slidein-actions-padding;
+
+    // For the buttons, let's make sure they have proper spacing.
+    .rc-button {
+      margin-right: $slidein-actions-button-margin;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+}
