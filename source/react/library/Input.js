@@ -77,7 +77,6 @@ class Input extends React.Component {
     });
 
     const props = {
-      placeholder: this.props.placeholder,
       autoFocus: this.props.autoFocus,
       disabled: this.props.disabled,
       readOnly: this.props.readonly,
@@ -91,6 +90,10 @@ class Input extends React.Component {
       onClick: this.onClick,
       className,
     };
+
+    if (!this.props.value) {
+      props.placeholder = this.props.placeholder;
+    }
 
     return <input ref={ (c) => { this.input = c; } } { ...props } />;
   }
