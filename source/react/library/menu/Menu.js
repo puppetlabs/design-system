@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import MenuItem from './MenuItem';
 
 const propTypes = {
@@ -28,7 +29,10 @@ class Menu extends React.Component {
   }
 
   render() {
-    const { selected, options } = this.props;
+    const { selected, options, multiple } = this.props;
+    const className = classnames('rc-menu', {
+      'rc-menu-multiple': multiple,
+    });
     const jsx = [];
 
     options.forEach((option) => {
@@ -38,12 +42,12 @@ class Menu extends React.Component {
           option={ option }
           selected={ selected.indexOf(option.id) >= 0 }
           onClick={ this.onChange }
-          multiple={ this.props.multiple }
+          multiple={ multiple }
         />
       );
     });
 
-    return <ul className="rc-menu">{ jsx }</ul>;
+    return <ul className={ className }>{ jsx }</ul>;
   }
 }
 
