@@ -42,8 +42,6 @@ class Accordion extends React.Component {
       const key = this.getKey(child, index);
       const title = child.props.title;
 
-      console.log(key);
-
       // This element is "active" if the current key is indeed active.
       let active = activeKey === key;
 
