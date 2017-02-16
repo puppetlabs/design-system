@@ -18,6 +18,7 @@ import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import Tabs from './react/library/tabs/Tabs';
 import TabPanel from './react/library/tabs/TabPanel';
 import Progress from './react/library/Progress';
+import SlideIn from './react/library/SlideIn';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 import Table from './react/library/table/Table';
 import ColumnSelect from './react/library/table/ColumnSelect';
@@ -48,4 +49,5 @@ export {
   Table,
   ColumnSelect,
   ColumnInput,
+  SlideIn
 };
