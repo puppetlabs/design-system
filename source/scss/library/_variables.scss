@@ -243,3 +243,17 @@ $slidein-vertical-height:         330px !default;
 $slidein-actions-border:          $border !default;
 $slidein-actions-padding:         20px 30px !default;
 $slidein-actions-button-margin:   7px !default;
+
+//
+// Accordions
+//
+$accordion-item-title-font-family:     $button-font-family !default;
+$accordion-item-title-font-size:       $font-size-small !default;
+$accordion-item-title-color:           $gray !default;
+$accordion-item-title-color-active:    $brand-primary !default;
+$accordion-item-title-border:          2px solid $gray-lighter !default;
+$accordion-item-title-border-active:   2px solid $brand-primary !default;
+$accordion-item-title-padding:         5px 10px !default;
+$accordion-item-title-text-transform:  uppercase !default;
+$accordion-item-content-padding:       20px 12px !default;
+
