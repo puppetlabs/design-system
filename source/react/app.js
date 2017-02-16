@@ -14,6 +14,7 @@ import Tabs from './styleguide/Tabs';
 import Tooltips from './styleguide/Tooltips';
 import Tables from './styleguide/Tables';
 import SlideIns from './styleguide/SlideIns';
+import Accordions from './styleguide/Accordions';
 import '../scss/library/all.scss';
 import '../scss/styleguide.scss';
 
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route path="tooltips" components={ Tooltips } />
         <Route path="tables" components={ Tables } />
         <Route path="slideins" components={ SlideIns } />
+        <Route path="accordions" components={ Accordions } />
         <IndexRoute component={ Buttons } />
       </Route>
     </Router>
