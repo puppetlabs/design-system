@@ -69,6 +69,7 @@ a.rc-modal-close {
     background: $modal-bg;
     padding: 60px 80px;
     overflow-y: scroll;
+    transform: translateZ(0);
   }
 
   .rc-modal-sidebar {

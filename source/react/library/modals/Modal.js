@@ -12,7 +12,6 @@ const propTypes = {
   children: React.PropTypes.any,
   margin: React.PropTypes.number,
   height: React.PropTypes.string,
-  title: React.PropTypes.any,
   size: React.PropTypes.string,
   sidebar: React.PropTypes.any,
   actions: React.PropTypes.any,
@@ -139,19 +138,6 @@ class Modal extends React.Component {
     return scroll;
   }
 
-  getTitleHeight() {
-    let height = 0;
-
-    if (this.props.title && this.title) {
-      const title = this.title;
-      const titleRect = title.getBoundingClientRect();
-
-      height = titleRect.height;
-    }
-
-    return height;
-  }
-
   getSidebarHeight() {
     let height = 0;
 
@@ -215,8 +201,7 @@ class Modal extends React.Component {
   setSidebarHeight() {
     if (this.props.sidebar) {
       const modalHeight = this.getModalHeight();
-      const titleHeight = this.getTitleHeight();
-      const newHeight = modalHeight - titleHeight;
+      const newHeight = modalHeight;
 
       this.sidebar.style.height = `${newHeight}px`;
       this.sidebar.style.overflowY = 'scroll';
@@ -247,20 +232,6 @@ class Modal extends React.Component {
 
     if (this.props.onClose) {
       jsx = <a href="/#/close" onClick={ this.onClose } className="rc-modal-close">Close</a>;
-    }
-
-    return jsx;
-  }
-
-  renderTitle() {
-    let jsx;
-
-    if (this.props.title) {
-      jsx = (
-        <div ref={ (c) => { this.title = c; } } className="rc-modal-title">
-          { this.props.title }
-        </div>
-      );
     }
 
     return jsx;
@@ -301,7 +272,6 @@ class Modal extends React.Component {
 
   render() {
     const closeLink = this.renderCloseLink();
-    const title = this.renderTitle();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
     const { children, size } = this.props;
@@ -315,7 +285,6 @@ class Modal extends React.Component {
       <div className={ overlayClassName } >
         { closeLink }
         <div ref={ (c) => { this.modal = c; } } className={ modalClassName }>
-          { title }
           { sidebar }
           <div ref={ (c) => { this.content = c; } } className="rc-modal-content">
             { children }

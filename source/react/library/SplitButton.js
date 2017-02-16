@@ -11,7 +11,12 @@ const propTypes = {
   dropdownWidth: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
+  disabledMenu: React.PropTypes.bool,
   size: React.PropTypes.string,
+};
+
+const defaultProps = {
+  dropdownWidth: '125px',
 };
 
 class SplitButton extends React.Component {
@@ -34,9 +39,10 @@ class SplitButton extends React.Component {
 
   renderDropdownTarget() {
     const iconSize = this.props.size === 'small' ? '15px' : '20px';
+    const disabledMenu = this.props.disabledMenu;
 
     return (
-      <Button className="rc-button-menu" size={ this.props.size }>
+      <Button className="rc-button-menu" size={ this.props.size } disabled={ disabledMenu }>
         <div className="rc-button-menu-inner">
           <Icon height={ iconSize } width={ iconSize } type="chevron-down" />
         </div>
@@ -81,5 +87,6 @@ class SplitButton extends React.Component {
 }
 
 SplitButton.propTypes = propTypes;
+SplitButton.defaultProps = defaultProps;
 
 export default SplitButton;

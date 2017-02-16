@@ -3,6 +3,11 @@ import StyleguideSection from './partials/StyleguideSection';
 import Button from '../library/Button';
 import { TooltipHoverArea } from '../library/tooltips/Tooltip';
 
+// const { TooltipHoverArea } = Tooltip;
+
+// console.log('tooltipHoverArea', TooltipHoverArea);
+// console.log('tooltip', Tooltip);
+
 class Tooltips extends React.Component {
   constructor(props) {
     super(props);

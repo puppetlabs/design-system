@@ -68,6 +68,6 @@
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
-    "react-select": "^1.0.0-rc.2"
+    "react-select": "0.9.1"
   }
 }

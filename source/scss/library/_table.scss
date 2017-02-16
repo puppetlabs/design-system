@@ -1,0 +1,108 @@
+.rc-table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+  border-spacing: 0;
+
+  // Hide the sticky header divs
+  th > div {
+    display: none;
+  }
+
+  th, td {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    font-size: 12px;
+    background: white;
+  }
+
+  th {
+    @extend .uppercase;
+    color: $gray;
+    font-size: 10px;
+    letter-spacing: 1px;
+    background: $white;
+  }
+
+  .rc-table-column-checkbox {
+    width: 30px;
+
+    input[type="checkbox"] {
+      font-size: 12px;
+    }
+  }
+
+  .rc-table-header-sortable {
+    cursor: pointer;
+  }
+}
+
+.rc-table-fixed {
+  table-layout: fixed;
+
+  .rc-table-column-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.rc-table-list {
+  border-collapse: separate;
+  border-spacing: 0 10px;
+
+  th {
+    padding: 0 20px;
+    border-bottom: none;
+    background: none;
+  }
+
+  td {
+    padding: 20px 20px;
+    border-top: 1px solid #ddd;
+    border-bottom: 1px solid #ddd;
+    font-size: 16px;
+
+    &:first-child {
+      border-top-left-radius: $border-radius;
+      border-bottom-left-radius: $border-radius;
+      border-left: 1px solid #ddd;
+    }
+
+    &:last-child {
+      border-top-right-radius: $border-radius;
+      border-bottom-right-radius: $border-radius;
+      border-right: 1px solid #ddd;
+    }
+  }
+}
+
+.rc-table-sticky-wrapper {
+  position: relative;
+  overflow-x: hidden;
+
+  .rc-table-sticky-container {
+    height: 500px;
+    overflow-y: scroll;
+
+    th {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    th > div {
+      display: block;
+      @extend .uppercase;
+      border-bottom: 1px solid #ccc;
+      padding: 10px;
+      font-size: 12px;
+      color: $gray;
+      font-size: 10px;
+      letter-spacing: 1px;
+      background: $white;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
+  }
+}

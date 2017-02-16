@@ -6,6 +6,7 @@ import Icon from './react/library/Icon';
 import Tag from './react/library/Tag';
 import Popover from './react/library/Popover';
 import Dropdown from './react/library/dropdown/Dropdown';
+import DropdownLabel from './react/library/dropdown/DropdownLabel';
 import Input from './react/library/Input';
 import DropdownMenu from './react/library/dropdown/DropdownMenu';
 import Filter from './react/library/Filter';
@@ -18,6 +19,9 @@ import Tabs from './react/library/tabs/Tabs';
 import TabPanel from './react/library/tabs/TabPanel';
 import Progress from './react/library/Progress';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
+import Table from './react/library/table/Table';
+import ColumnSelect from './react/library/table/ColumnSelect';
+import ColumnInput from './react/library/table/ColumnInput';
 
 export {
   Button,
@@ -29,6 +33,7 @@ export {
   Popover,
   Dropdown,
   Input,
+  DropdownLabel,
   DropdownMenu,
   Filter,
   Switch,
@@ -40,4 +45,7 @@ export {
   TabPanel,
   Progress,
   TooltipHoverArea,
+  Table,
+  ColumnSelect,
+  ColumnInput,
 };

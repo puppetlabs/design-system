@@ -42,11 +42,4 @@ describe('<Input />', () => {
 
     expect(wrapper.hasClass('rc-input-large')).to.equal(true);
   });
-
-  it('should have className "rc-checkbox" if "checkbox" is passed in as type', () => {
-    const props = { type: 'checkbox' };
-    const wrapper = shallow(<Input { ...props } />);
-
-    expect(wrapper.hasClass('rc-checkbox')).to.equal(true);
-  });
 });

@@ -7,20 +7,16 @@ const propTypes = {
   autoFocus: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   readonly: React.PropTypes.bool,
-  value: React.PropTypes.string,
-  checked: React.PropTypes.bool,
-  onKeyUp: React.PropTypes.func,
-  name: React.PropTypes.string,
   type: React.PropTypes.string,
+  value: React.PropTypes.string,
+  name: React.PropTypes.string,
   size: React.PropTypes.string,
+  onKeyUp: React.PropTypes.func,
+  error: React.PropTypes.string,
   onChange: React.PropTypes.func,
   onClick: React.PropTypes.func,
   onFocus: React.PropTypes.func,
   onBlur: React.PropTypes.func,
-};
-
-const defaultProps = {
-  type: 'text',
 };
 
 class Input extends React.Component {
@@ -69,35 +65,40 @@ class Input extends React.Component {
     }
   }
 
+  focus() {
+    this.input.focus();
+  }
+
   render() {
     const className = classnames('rc-input', {
-      'rc-checkbox': this.props.type === 'checkbox',
+      'rc-input-error': this.props.error,
       [this.props.className]: this.props.className,
       [`rc-input-${this.props.size}`]: this.props.size,
     });
 
     const props = {
-      placeholder: this.props.placeholder,
       autoFocus: this.props.autoFocus,
       disabled: this.props.disabled,
       readOnly: this.props.readonly,
-      onKeyUp: this.props.onKeyUp,
-      checked: this.props.checked,
-      onBlur: this.props.onBlur,
       value: this.props.value,
-      onChange: this.onChange,
       name: this.props.name,
-      onFocus: this.onFocus,
+      onKeyUp: this.props.onKeyUp,
       type: this.props.type,
+      onBlur: this.props.onBlur,
+      onChange: this.onChange,
+      onFocus: this.onFocus,
       onClick: this.onClick,
       className,
     };
 
-    return <input { ...props } />;
+    if (!this.props.value) {
+      props.placeholder = this.props.placeholder;
+    }
+
+    return <input ref={ (c) => { this.input = c; } } { ...props } />;
   }
 }
 
 Input.propTypes = propTypes;
-Input.defaultProps = defaultProps;
 
 export default Input;
