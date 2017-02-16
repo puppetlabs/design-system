@@ -18,13 +18,13 @@ class Accordions extends React.Component {
         <h1>Accordions</h1>
         <StyleguideSection title="Accordions">
            <Accordion>
-             <AccordionItem title="First element">
+             <AccordionItem key="elem1" title="First element">
                <div>Hello, world! From the first element.</div>
              </AccordionItem>
-             <AccordionItem title="Second element">
+             <AccordionItem key="elem2" title="Second element">
                <div>Hello, world! From the second element.</div>
              </AccordionItem>
-             <AccordionItem title="Third element">
+             <AccordionItem key="elem3" title="Third element">
                <div>Hello, world! From the third element.</div>
              </AccordionItem>
            </Accordion>
