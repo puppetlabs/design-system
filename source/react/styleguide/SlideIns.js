@@ -40,7 +40,7 @@ class SlideIns extends React.Component {
     }
 
     return (
-      <SlideIn position={this.state.position} onClose={this.onRemove.bind(this)} onSubmit={() => console.log('ok clicked')}>
+      <SlideIn position={this.state.position} onRemove={this.onRemove.bind(this)} removeable onClose={this.onRemove.bind(this)} onSubmit={() => console.log('ok clicked')}>
         I am a Slide in!
       </SlideIn>
     );

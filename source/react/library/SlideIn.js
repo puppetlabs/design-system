@@ -6,8 +6,10 @@ import classnames from 'classnames';
 const propTypes = {
   onSubmit: React.PropTypes.func,
   onClose: React.PropTypes.func,
+  onRemove: React.PropTypes.func,
   className: React.PropTypes.string,
   position: React.PropTypes.string,
+  removeable: React.PropTypes.bool,
   submitButtonLabel: React.PropTypes.string,
   closeButtonLabel: React.PropTypes.string,
 };
@@ -54,8 +56,26 @@ class SlideIn extends React.Component {
     );
   }
 
+  renderRemove() {
+    // if they don't have "removeable" enabled at all then...
+    if (!this.props.removeable) return;
+
+    let removeButton;
+
+    if (this.props.onRemove) {
+      removeButton = (
+        <div className="rc-slidein-remove">
+          <Button icon="close" transparent size="small" onClick={this.props.onRemove} />
+        </div>
+      );
+    }
+
+    return removeButton;
+  }
+
   render() {
     let actions = this.renderActions();
+    let remove = this.renderRemove();
 
     const className = classnames('rc-slidein', {
       'rc-slidein-bottom': this.props.position == 'bottom',
@@ -67,6 +87,7 @@ class SlideIn extends React.Component {
 
     return (
       <div className={className}>
+        {remove}
         <div className="rc-slidein-content">
           {this.renderContent()}
         </div>

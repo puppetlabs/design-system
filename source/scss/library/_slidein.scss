@@ -54,4 +54,10 @@
     border-top: $slidein-actions-border;
     padding: $slidein-actions-padding;
   }
+
+  .rc-slidein-remove {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+  }
 }
