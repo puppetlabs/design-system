@@ -113,15 +113,28 @@ class Popover extends React.Component {
     } else {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
+      let bottom;
+      let right;
+      let left;
+
+      if (!this.props.disablePortal) {
+        bottom = elPosition.bottom + window.pageYOffset;
+        left = elPosition.left + window.pageXOffset;
+        right = elPosition.right + window.pageXOffset;
+      } else {
+        bottom = elPosition.height;
+        left = 0;
+        right = 0;
+      }
 
       switch (this.props.anchor) {
         case 'bottom right':
-          newState.position.top = elPosition.bottom + this.props.margin + window.pageYOffset;
-          newState.position.right = window.innerWidth - (elPosition.right + window.pageXOffset);
+          newState.position.top = bottom + this.props.margin;
+          newState.position.right = window.innerWidth - right;
           break;
         case 'bottom left': default:
-          newState.position.top = elPosition.bottom + this.props.margin + window.pageYOffset;
-          newState.position.left = elPosition.left + window.pageXOffset;
+          newState.position.top = bottom + this.props.margin;
+          newState.position.left = left;
       }
     }
 
@@ -154,6 +167,9 @@ class Popover extends React.Component {
   }
 
   render() {
+    const wrapperClassName = classnames('rc-popover-wrapper', {
+      'rc-popover-wrapper-relative': this.props.disablePortal,
+    });
     const className = classnames('rc-popover', this.props.className, {
       [`rc-popover-${this.props.size}`]: this.props.size,
     });
@@ -180,7 +196,7 @@ class Popover extends React.Component {
 
     return (
       <div
-        className="rc-popover-wrapper"
+        className={ wrapperClassName }
         ref={ (c) => { this.elem = c; } }
       >
         { button }

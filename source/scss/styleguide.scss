@@ -49,7 +49,6 @@ h1, h2, h3, h4, h5, h6, p {
 .sg-section {
   margin-bottom: 40px;
   border: $border;
-  overflow: auto; // hack for clearfix
 
   .sg-section-title {
     font-family: $font-family;
@@ -61,7 +60,6 @@ h1, h2, h3, h4, h5, h6, p {
 
   .sg-section-content {
     padding: 20px;
-    overflow: auto;
   }
 }
 
@@ -106,4 +104,10 @@ h1, h2, h3, h4, h5, h6, p {
     width: 200px;
     display: block;
   }
+}
+
+.sg-clearfix:after {
+  content: "";
+  display: table;
+  clear: both;
 }

@@ -121,11 +121,13 @@ $popover-elevation:               24 !default;
 $dropdown-padding:                12px !default;
 $dropdown-max-height:             400px !default;
 $dropdown-width:                  260px;
+
 $dropdown-label-font-size:        $font-size-medium !default;
 $dropdown-label-font-weight:      600 !default;
-$dropdown-label-disabled-color:   $gray !default;
 $dropdown-label-color:            $brand-primary !default;
 $dropdown-label-color-error:      $brand-danger !default;
+$dropdown-label-color-disabled:   $gray !default;
+
 $dropdown-chevron-height:         6px !default;
 $dropdown-chevron-width:          10px !default;
 $dropdown-hint-color:             $gray !default;
@@ -138,6 +140,21 @@ $dropdown-item-selected-color:    $white !default;
 $dropdown-item-selected-bg:       $brand-primary !default;
 $dropdown-item-disabled-color:    $white !default;
 $dropdown-item-disabled-bg:       $gray-light !default;
+
+//
+// Menu
+//
+$menu-item-font-size:             $font-size-base !default;
+$menu-item-line-height:           $font-size-base !default;
+$menu-item-color:                 $brand-primary !default;
+$menu-item-bg:                    $white !default;
+$menu-item-color-hover:           $white !default;
+$menu-item-bg-hover:              darken($brand-primary, 10%) !default;
+$menu-item-color-selected:        $white !default;
+$menu-item-bg-selected:           $brand-primary !default;
+$menu-item-color-disabled:        $white !default;
+$menu-item-bg-disabled:           $gray-light !default;
+
 
 //
 // Cards
@@ -231,3 +248,29 @@ $tooltip-padding:             5px 15px;
 $tooltip-radius:              $border-radius;
 $tooltip-font-size:           $font-size-medium;
 $tooltip-elevation:           24;
+
+//
+// Slide ins
+//
+$slidein-bg:                      $white !default;
+$slidein-color:                   $font-color-base !default;
+$slidein-padding:                 20px 30px !default;
+$slidein-horizontal-width:        330px !default;
+$slidein-vertical-height:         330px !default;
+$slidein-actions-border:          $border !default;
+$slidein-actions-padding:         20px 30px !default;
+$slidein-actions-button-margin:   7px !default;
+
+//
+// Accordions
+//
+$accordion-item-title-font-family:     $button-font-family !default;
+$accordion-item-title-font-size:       $font-size-small !default;
+$accordion-item-title-color:           $gray !default;
+$accordion-item-title-color-active:    $brand-primary !default;
+$accordion-item-title-border:          2px solid $gray-lighter !default;
+$accordion-item-title-border-active:   2px solid $brand-primary !default;
+$accordion-item-title-padding:         5px 10px !default;
+$accordion-item-title-text-transform:  uppercase !default;
+$accordion-item-content-padding:       20px 12px !default;
+

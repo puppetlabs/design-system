@@ -1,0 +1,35 @@
+.rc-accordion {
+  .rc-accordion-item-title {
+    a {
+      display: block;
+
+      color: $accordion-item-title-color;
+      font-size: $accordion-item-title-font-size;
+      font-family: $accordion-item-title-font-family;
+
+      border-left: $accordion-item-title-border;
+      padding: $accordion-item-title-padding;
+      text-transform: $accordion-item-title-text-transform;
+    }
+
+    &.rc-accordion-item-title-active {
+      a {
+        color: $accordion-item-title-color-active;
+        border-left: $accordion-item-title-border-active;
+      }
+    }
+  }
+
+  .rc-accordion-item {
+    .rc-accordion-item-content {
+      display: none;
+      padding: $accordion-item-content-padding;
+    }
+
+    &.rc-accordion-item-active {
+      .rc-accordion-item-content {
+        display: block;
+      }
+    }
+  }
+}

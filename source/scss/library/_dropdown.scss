@@ -1,58 +1,85 @@
-.rc-dropdown-toggle {
+@mixin dropdown-label-colors($color, $color-disabled, $color-error) {
   &.rc-dropdown-toggle-error {
     .rc-dropdown-label {
-      color: $dropdown-label-color-error;
+      color: $color-error;
     }
 
     .rc-icon {
-      fill: $dropdown-label-color-error;
+      fill: $color-error;
+    }
+
+    &:focus {
+      .rc-dropdown-label {
+        color: darken($color-error, 20%);
+      }
+
+      .rc-icon {
+        fill: darken($color-error, 20%);
+      }
     }
   }
 
   &:focus {
     .rc-dropdown-label {
-      color: darken($dropdown-label-color, 20%);
+      color: darken($color, 20%);
     }
 
     .rc-icon {
-      fill: darken($dropdown-label-color, 20%)
+      fill: darken($color, 20%);
     }
   }
 
   &[disabled] {
-    pointer-events: none;
-
     .rc-dropdown-label {
-      color: $dropdown-label-disabled-color;
+      color: $color-disabled;
     }
 
     .rc-icon {
-      fill: $dropdown-label-disabled-color;
+      fill: $color-disabled;
     }
   }
-}
 
-.rc-dropdown-label {
-  color: $dropdown-label-color;
-  cursor: pointer;
-  white-space: nowrap;
-
-  .rc-dropdown-label-text {
-    font-size: $dropdown-label-font-size;
-    font-weight: $dropdown-label-font-weight;
+  .rc-dropdown-label {
+    color: $color;
   }
 
   .rc-icon {
-    position: relative;
-    top: -1px;
-    left: -2px;
-    height: $dropdown-chevron-height;
-    width: $dropdown-chevron-width;
-    fill: $dropdown-label-color;
+    fill: $color;
+  }
+}
+
+.rc-dropdown-toggle {
+  @include dropdown-label-colors(
+    $dropdown-label-color,
+    $dropdown-label-color-disabled,
+    $dropdown-label-color-error
+  );
+
+  &[disabled] {
+    pointer-events: none;
+  }
+
+  .rc-dropdown-label {
+    cursor: pointer;
+    white-space: nowrap;
+
+    .rc-dropdown-label-text {
+      font-size: $dropdown-label-font-size;
+      font-weight: $dropdown-label-font-weight;
+    }
+
+    .rc-icon {
+      position: relative;
+      top: -1px;
+      left: -2px;
+      height: $dropdown-chevron-height;
+      width: $dropdown-chevron-width;
+    }
   }
 }
 
 .rc-dropdown-menu {
+  width: $dropdown-width;
   padding: 0;
   padding-bottom: $popover-border-radius * 2;
   padding-top: $popover-border-radius * 2;
