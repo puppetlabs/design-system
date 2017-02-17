@@ -8,7 +8,7 @@ const propTypes = {
 const StyleguideSection = props => (
   <div className="sg-section">
     <div className="sg-section-title">{ props.title }</div>
-    <div className="sg-section-content">
+    <div className="sg-section-content sg-clearfix">
       { props.children }
     </div>
   </div>

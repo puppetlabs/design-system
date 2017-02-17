@@ -3,10 +3,6 @@
   border: 1px solid $border;
   color: $color !important;
 
-  .rc-icon {
-    fill: $color;
-  }
-
   &:hover {
     background: $bg-hover;
     border: 1px solid $border-hover;
@@ -14,6 +10,26 @@
 
     .rc-icon {
       fill: $color-hover;
+    }
+
+    .rc-button-menu-inner {
+      .rc-icon {
+        path {
+          fill: $bg-hover;
+        }
+      }
+    }
+  }
+
+  .rc-icon {
+    fill: $color;
+  }
+
+  .rc-button-menu-inner {
+    .rc-icon {
+      path {
+        fill: $bg;
+      }
     }
   }
 }
@@ -195,10 +211,6 @@ a.rc-floating-action-button, button.rc-floating-action-button {
 
       svg {
         padding: 3px;
-
-        path {
-          fill: $brand-primary
-        }
       }
     }
 
@@ -208,14 +220,6 @@ a.rc-floating-action-button, button.rc-floating-action-button {
 
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
-
-    &:hover {
-      .rc-button-menu-inner {
-        path {
-          fill: $button-bg-hover;
-        }
-      }
-    }
 
     .rc-button-content {
       display: flex;

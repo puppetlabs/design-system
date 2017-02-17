@@ -38,9 +38,9 @@ class MenuItem extends React.Component {
   render() {
     const option = this.props.option;
     const checkmark = this.renderCheckmark();
-    const className = classnames('rc-dropdown-item', {
-      'rc-dropdown-item-selected': this.props.selected,
-      'rc-dropdown-item-disabled': this.props.option.disabled,
+    const className = classnames('rc-menu-item', {
+      'rc-menu-item-selected': this.props.selected,
+      'rc-menu-item-disabled': this.props.option.disabled,
     });
 
     return (
