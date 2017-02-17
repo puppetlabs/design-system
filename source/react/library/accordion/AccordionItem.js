@@ -5,7 +5,7 @@ const propTypes = {
   key:       React.PropTypes.string.isRequired,
   children:  React.PropTypes.any,
   title:     React.PropTypes.string,
-  active:      React.PropTypes.bool,
+  active:    React.PropTypes.bool,
   className: React.PropTypes.string,
 };
 
