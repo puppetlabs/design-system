@@ -55,9 +55,26 @@
     padding: $slidein-actions-padding;
   }
 
+  .rc-slidein-header {
+    display: flex;
+    padding: $slidein-header-padding;
+  }
+
   .rc-slidein-remove {
-    position: absolute;
-    top: 0px;
-    right: 0px;
+    display: flex;
+    width: 25%;
+    text-align: right;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .rc-slidein-title {
+    display: flex;
+    width: 75%;
+    align-items: center;
+
+    h2 {
+      font-size: $slidein-title-font-size;
+    }
   }
 }

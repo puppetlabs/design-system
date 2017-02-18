@@ -254,12 +254,14 @@ $tooltip-elevation:           24;
 //
 $slidein-bg:                      $white !default;
 $slidein-color:                   $font-color-base !default;
-$slidein-padding:                 20px 30px !default;
+$slidein-padding:                 10px 20px !default;
 $slidein-horizontal-width:        330px !default;
 $slidein-vertical-height:         330px !default;
 $slidein-actions-border:          $border !default;
-$slidein-actions-padding:         10px 10px !default;
+$slidein-actions-padding:         10px 20px !default;
 $slidein-actions-button-margin:   7px !default;
+$slidein-title-font-size:         $font-size-base;
+$slidein-header-padding:          10px 20px !default;
 
 //
 // Accordions

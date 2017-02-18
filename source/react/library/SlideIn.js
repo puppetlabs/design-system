@@ -4,6 +4,7 @@ import ButtonGroup from './ButtonGroup';
 import classnames from 'classnames';
 
 const propTypes = {
+  title: React.PropTypes.string,
   onSubmit: React.PropTypes.func,
   onClose: React.PropTypes.func,
   onRemove: React.PropTypes.func,
@@ -65,12 +66,22 @@ class SlideIn extends React.Component {
     if (this.props.onRemove) {
       removeButton = (
         <div className="rc-slidein-remove">
-          <Button icon="close" transparent size="small" onClick={this.props.onRemove} />
+          <Button icon="close" transparent size="tiny" onClick={this.props.onRemove} />
         </div>
       );
     }
 
     return removeButton;
+  }
+
+  renderTitle() {
+    if (!this.props.title) return;
+
+    return (
+      <div className="rc-slidein-title">
+        <h2>{this.props.title}</h2>
+      </div>
+    );
   }
 
   render() {
@@ -85,9 +96,22 @@ class SlideIn extends React.Component {
       'rc-slidein-has-actions': actions,
     }, this.props.className);
 
+    const title = this.renderTitle();
+
+    let header;
+    
+    if (title || remove) {
+      header = (
+        <div className="rc-slidein-header">
+          {title}
+          {remove}
+        </div>
+      );
+    }
+
     return (
       <div className={className}>
-        {remove}
+        {header}
         <div className="rc-slidein-content">
           {this.renderContent()}
         </div>
