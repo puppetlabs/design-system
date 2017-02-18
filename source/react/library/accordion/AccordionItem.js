@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from '../Icon';
 import classnames from 'classnames';
 
 const propTypes = {
@@ -38,9 +39,20 @@ class AccordionItem extends React.Component {
       'rc-accordion-item-title-active': this.props.active
     });
 
+    var icon = (<Icon width='15px' height='15px' type={this.props.active ? 'minus' : 'plus'} />);
+
+
     return (
       <div className={className}>
-        <a href="" onClick={this.onClick.bind(this)}>{this.props.title}</a>
+        <a href="" onClick={this.onClick.bind(this)}>
+          <span className="rc-accordion-item-title-text">
+            {this.props.title}
+          </span>
+
+          <span className="rc-accordion-item-title-icon">
+            {icon}
+          </span>
+        </a>
       </div>
     );
   }
