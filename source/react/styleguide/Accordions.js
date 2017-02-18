@@ -75,7 +75,7 @@ class Accordions extends React.Component {
         </StyleguideSection>
 
         <StyleguideSection title="Accordions with React Components">
-           <Accordion>
+           <Accordion autoOpen>
              <AccordionItem key="elem1" title="With a Button">
                <Button label="My Button" />
              </AccordionItem>
