@@ -40,10 +40,6 @@
     height: 100%;
   }
 
-  .rc-slidein-content {
-    padding: $slidein-padding;
-  }
-
   .rc-slidein-actions {
     position: absolute;
     bottom: 0;
@@ -53,5 +49,28 @@
 
     border-top: $slidein-actions-border;
     padding: $slidein-actions-padding;
+  }
+
+  .rc-slidein-header {
+    display: flex;
+    padding: $slidein-header-padding;
+  }
+
+  .rc-slidein-remove {
+    display: flex;
+    width: 25%;
+    text-align: right;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .rc-slidein-title {
+    display: flex;
+    width: 75%;
+    align-items: center;
+
+    h2 {
+      font-size: $slidein-title-font-size;
+    }
   }
 }
