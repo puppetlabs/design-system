@@ -2,6 +2,7 @@ import React, { Children } from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
+  autoOpen:  React.PropTypes.bool,
   onChange:  React.PropTypes.func,
   children:  React.PropTypes.any,
   className: React.PropTypes.string,
@@ -42,10 +43,12 @@ class Accordion extends React.Component {
       const key = this.getKey(child, index);
       const title = child.props.title;
 
-      console.log(key);
-
       // This element is "active" if the current key is indeed active.
       let active = activeKey === key;
+
+      if (this.props.autoOpen && !activeKey && index == 0) {
+        active = true;
+      }
 
       const props = {
         key,

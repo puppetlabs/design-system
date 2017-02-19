@@ -204,7 +204,7 @@ class Table extends React.Component {
 
   reOrderColumns(data) {
     const metaData = this.props.columns;
-    const sortedMetaData = metaData.sort(metaData, ['order']);
+    const sortedMetaData = metaData.sort((a, b) => (a.order - b.order));
 
     return data.map((datum) => {
       const sortedRow = { meta: datum.meta };

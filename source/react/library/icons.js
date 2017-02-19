@@ -17,6 +17,16 @@ const icons = {
     ),
   },
 
+  // group: editing, filename: delete.svg
+  minus: {
+    viewBox: '0 0 25 5',
+    svg: (
+      <g>
+        <path d="M22.5,5C23.881,5,25,3.881,25,2.5S23.881,0,22.5,0h-20C1.119,0,0,1.119,0,2.5S1.119,5,2.5,5H22.5z"/>
+      </g>
+    )
+  },
+
   // group: editing, filename: add.svg
   plus: {
     viewBox: '0 0 25 25',
