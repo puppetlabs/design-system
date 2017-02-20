@@ -11,6 +11,7 @@ const propTypes = {
   floating: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   processing: React.PropTypes.bool,
+  badge: React.PropTypes.bool,
   block: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   label: React.PropTypes.string,
@@ -39,6 +40,17 @@ class Button extends React.Component {
     }
   }
 
+  renderBadge() {
+    const enabled = this.props.badge && !this.props.disabled;
+    let jsx;
+
+    if (enabled) {
+      jsx = <div className="rc-button-badge" />;
+    }
+
+    return jsx;
+  }
+
   render() {
     const {
       children,
@@ -56,6 +68,7 @@ class Button extends React.Component {
       dropdownMenu,
       round,
     } = this.props;
+    const badge = this.renderBadge();
 
     let button;
     let content;
@@ -97,6 +110,15 @@ class Button extends React.Component {
       button = <button { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</button>;
     } else {
       button = <a { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</a>;
+    }
+
+    if (badge) {
+      button = (
+        <div className="rc-button-badge-container">
+          { badge }
+          { button }
+        </div>
+      );
     }
 
     return button;

@@ -44,4 +44,22 @@ describe('<Button />', () => {
 
     expect(Icon.prop('type')).to.equal('plus');
   });
+
+  describe('button with badge', () => {
+    it('should render within container', () => {
+      const wrapper = shallow(<Button badge icon="plus" />);
+      const container = wrapper.find('.rc-button-badge-container');
+
+      expect(container.length).to.eql(1);
+      expect(container.find('.rc-button').length).to.eql(1);
+      expect(container.find('.rc-button-badge').length).to.eql(1);
+    });
+
+    it('should not render badge if button is disabled', () => {
+      const wrapper = shallow(<Button badge disabled icon="plus" />);
+      const container = wrapper.find('.rc-button-badge-container');
+
+      expect(container.length).to.eql(0);
+    });
+  });
 });
