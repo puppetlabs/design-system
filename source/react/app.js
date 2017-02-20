@@ -13,6 +13,7 @@ import Switches from './styleguide/Switches';
 import Tabs from './styleguide/Tabs';
 import Tooltips from './styleguide/Tooltips';
 import Tables from './styleguide/Tables';
+import Toggles from './styleguide/Toggles';
 import SlideIns from './styleguide/SlideIns';
 import Accordions from './styleguide/Accordions';
 import '../scss/library/all.scss';
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route path="tabs" components={ Tabs } />
         <Route path="tooltips" components={ Tooltips } />
         <Route path="tables" components={ Tables } />
+        <Route path="toggles" components={ Toggles } />
         <Route path="slideins" components={ SlideIns } />
         <Route path="accordions" components={ Accordions } />
         <IndexRoute component={ Buttons } />
