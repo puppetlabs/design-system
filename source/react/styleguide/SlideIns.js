@@ -65,6 +65,9 @@ class SlideIns extends React.Component {
             <AccordionItem title="Section 2">
               I'm also happy, boi!
             </AccordionItem>
+            <AccordionItem title="Section 3">
+              <Button>also happy</Button>
+            </AccordionItem>
           </Accordion>
         </SlideIn>
       );
