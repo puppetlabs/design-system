@@ -1,8 +1,9 @@
 import React from 'react';
 import StyleguideSection from './partials/StyleguideSection';
 import SlideIn from '../library/SlideIn';
+import Accordion from '../library/accordion/Accordion';
+import AccordionItem from '../library/accordion/AccordionItem';
 import Button from '../library/Button';
-import SplitButton from '../library/SplitButton';
 import ButtonGroup from '../library/ButtonGroup';
 
 class SlideIns extends React.Component {
@@ -10,60 +11,86 @@ class SlideIns extends React.Component {
     super(props);
 
     this.state = {
-      position: null
+      active: null,
     };
+
+    this.onRemove = this.onRemove.bind(this);
+    this.onDisplay = this.onDisplay.bind(this);
   }
 
-  onBottomClick() {
-    this.setState({ position: 'bottom' });
-  }
-
-  onTopClick() {
-    this.setState({ position: 'top' });
-  }
-
-  onLeftClick() {
-    this.setState({ position: 'left' });
-  }
-
-  onRightClick() {
-    this.setState({ position: 'right' });
+  onDisplay(active) {
+    return () => this.setState({ active });
   }
 
   onRemove() {
-    this.setState({position: null});
+    this.setState({ active: null });
   }
 
-  renderSlideIn() {
-    if (!this.state.position) {
-      return;
+  renderMainSlideIn() {
+    if (!this.state.active || this.state.active === 'accordion') {
+      return null;
     }
 
     return (
       <SlideIn
-        position={this.state.position}
-        onRemove={this.onRemove.bind(this)}
+        position={ this.state.active }
+        onRemove={ this.onRemove }
         removeable
-        onClose={this.onRemove.bind(this)}
-        onSubmit={() => console.log('ok clicked')}
+        onClose={ this.onRemove }
+        onSubmit={ () => console.log('ok clicked') }
         title="I'm a slide in!"
-        >
-        Look at my go!
+      >
+        Look at me go!
       </SlideIn>
     );
   }
 
+  renderAccordionSlideIn() {
+    let jsx;
+
+    if (this.state.active === 'accordion') {
+      jsx = (
+        <SlideIn
+          position="right"
+          onRemove={ this.onRemove }
+          removeable
+          onClose={ this.onRemove }
+          onSubmit={ () => console.log('ok clicked') }
+          title="I'm a slide in!"
+        >
+          <Accordion autoOpen>
+            <AccordionItem title="Section 1">
+              I'm a happy section!
+            </AccordionItem>
+            <AccordionItem title="Section 2">
+              I'm also happy, boi!
+            </AccordionItem>
+          </Accordion>
+        </SlideIn>
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
+    const mainSlideIn = this.renderMainSlideIn();
+    const accordionSlideIn = this.renderAccordionSlideIn();
+
     return (
       <div>
         <h1>SlideIns</h1>
         <StyleguideSection title="SlideIns">
-          <Button label="Bottom" onClick={this.onBottomClick.bind(this)} />
-          <Button label="Top" onClick={this.onTopClick.bind(this)} />
-          <Button label="Left" onClick={this.onLeftClick.bind(this)} />
-          <Button label="Right" onClick={this.onRightClick.bind(this)} />
+          <ButtonGroup>
+            <Button label="Bottom" onClick={ this.onDisplay('bottom') } />
+            <Button label="Top" onClick={ this.onDisplay('top') } />
+            <Button label="Left" onClick={ this.onDisplay('left') } />
+            <Button label="Right" onClick={ this.onDisplay('right') } />
+            <Button label="With accordion" onClick={ this.onDisplay('accordion') } />
+          </ButtonGroup>
         </StyleguideSection>
-        {this.renderSlideIn()}
+        { accordionSlideIn }
+        { mainSlideIn }
       </div>
     );
   }
