@@ -120,7 +120,7 @@ class Popover extends React.Component {
       if (!this.props.disablePortal) {
         bottom = elPosition.bottom + window.pageYOffset;
         left = elPosition.left + window.pageXOffset;
-        right = elPosition.right + window.pageXOffset;
+        right = window.innerWidth - (elPosition.right + window.pageXOffset);
       } else {
         bottom = elPosition.height;
         left = 0;
@@ -130,7 +130,7 @@ class Popover extends React.Component {
       switch (this.props.anchor) {
         case 'bottom right':
           newState.position.top = bottom + this.props.margin;
-          newState.position.right = window.innerWidth - right;
+          newState.position.right = right;
           break;
         case 'bottom left': default:
           newState.position.top = bottom + this.props.margin;

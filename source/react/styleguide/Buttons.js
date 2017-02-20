@@ -66,6 +66,24 @@ class Buttons extends React.Component {
             label="I'm a split button!"
           />
         </StyleguideSection>
+        <StyleguideSection title="Split button (no portal)">
+          <SplitButton
+            onOptionClick={ this.onSplitButtonClick }
+            onClick={ this.onSplitButtonClick }
+            options={ splitButtonOptions }
+            disablePortal
+            label="I'm a split button!"
+          />
+          <SplitButton
+            disabled
+            disabledMenu
+            disablePortal
+            onOptionClick={ this.onSplitButtonClick }
+            onClick={ this.onSplitButtonClick }
+            options={ splitButtonOptions }
+            label="I'm a split button!"
+          />
+        </StyleguideSection>
         <StyleguideSection title="Split button small">
           <SplitButton
             size="small"
