@@ -39,23 +39,45 @@ class AccordionItem extends React.Component {
   }
 
   renderTitle() {
+    const { active, title } = this.props;
     const className = classnames('rc-accordion-item-title', {
-      'rc-accordion-item-title-active': this.props.active,
+      'rc-accordion-item-title-active': active,
     });
+    const icon = <Icon width="15px" height="15px" type="plus" />;
+    let titleContent;
+    let iconContent;
+    let content;
 
-    const icon = <Icon width="15px" height="15px" type={ this.props.active ? 'minus' : 'plus' } />;
+    titleContent = (
+      <span className="rc-accordion-item-title-text">
+        { title }
+      </span>
+    );
+
+    iconContent = (
+      <span className="rc-accordion-item-title-icon">
+        { icon }
+      </span>
+    );
+
+    if (active) {
+      content = (
+        <div className="rc-accordion-item-header">
+          { titleContent }
+        </div>
+      );
+    } else {
+      content = (
+        <a className="rc-accordion-item-header" href="" onClick={ this.onClick }>
+          { titleContent }
+          { iconContent }
+        </a>
+      );
+    }
 
     return (
       <div className={ className }>
-        <a href="" onClick={ this.onClick }>
-          <span className="rc-accordion-item-title-text">
-            { this.props.title }
-          </span>
-
-          <span className="rc-accordion-item-title-icon">
-            {icon}
-          </span>
-        </a>
+        { content }
       </div>
     );
   }
