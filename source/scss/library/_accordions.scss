@@ -32,7 +32,7 @@
   }
 
   .rc-accordion-item {
-    margin-bottom: $accordion-item-margin;
+    border-bottom: 1px solid $gray-light;
 
     .rc-accordion-item-content {
       display: none;
