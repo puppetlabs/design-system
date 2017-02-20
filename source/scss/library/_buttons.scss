@@ -1,54 +1,42 @@
 @mixin button-colors($bg, $bg-hover, $color, $color-hover, $border, $border-hover) {
-  a.rc-button, button.rc-button {
-    background: $bg;
-    border: 1px solid $border;
-    color: $color !important;
+  background: $bg;
+  border: 1px solid $border;
+  color: $color !important;
 
-    &:hover {
-      background: $bg-hover;
-      border: 1px solid $border-hover;
-      color: $color-hover !important;
-
-      .rc-icon {
-        fill: $color-hover;
-      }
-
-      .rc-button-menu-inner {
-        .rc-icon {
-          path {
-            fill: $bg-hover;
-          }
-        }
-      }
-    }
+  &:hover {
+    background: $bg-hover;
+    border: 1px solid $border-hover;
+    color: $color-hover !important;
 
     .rc-icon {
-      fill: $color;
+      fill: $color-hover;
     }
 
     .rc-button-menu-inner {
       .rc-icon {
         path {
-          fill: $bg;
+          fill: $bg-hover;
         }
       }
     }
   }
 
-  .rc-button-badge {
+  &:after {
     background: $bg;
   }
+
+  .rc-icon {
+    fill: $color;
+  }
+
+  .rc-button-menu-inner {
+    .rc-icon {
+      path {
+        fill: $bg;
+      }
+    }
+  }
 }
-
-@include button-colors(
-  $button-bg,
-  $button-bg-hover,
-  $button-color,
-  $button-color-hover,
-  $button-border-color,
-  $button-border-color-hover
-);
-
 a.rc-button, button.rc-button {
   text-transform: uppercase;
   letter-spacing: 1px;
@@ -62,9 +50,36 @@ a.rc-button, button.rc-button {
   border-radius: $button-border-radius;
   outline: none;
 
+  @include button-colors(
+    $button-bg,
+    $button-bg-hover,
+    $button-color,
+    $button-color-hover,
+    $button-border-color,
+    $button-border-color-hover
+  );
+
   &.rc-button-block {
     display: block;
     width: 100%;
+  }
+
+  &.rc-button-badged {
+    position: relative;
+
+    &:after {
+      content: ' ';
+      height: $button-badge-size;
+      width: $button-badge-size;
+
+      border: ($button-badge-size / 3) solid white;
+      border-radius: 100px;
+      box-sizing: content-box;
+
+      position: absolute;
+      right: -($button-badge-size / 2);
+      top: -($button-badge-size / 2);
+    }
   }
 
   &.rc-button-processing {
@@ -230,23 +245,5 @@ a.rc-floating-action-button, button.rc-floating-action-button {
     .rc-button-content {
       display: flex;
     }
-  }
-}
-
-.rc-button-badge-container {
-  display: inline-block;
-  position: relative;
-
-  .rc-button-badge {
-    height: $button-badge-size;
-    width: $button-badge-size;
-
-    border: ($button-badge-size / 3) solid white;
-    border-radius: 100px;
-    box-sizing: content-box;
-
-    position: absolute;
-    right: -($button-badge-size / 2);
-    top: -($button-badge-size / 2);
   }
 }

@@ -40,17 +40,6 @@ class Button extends React.Component {
     }
   }
 
-  renderBadge() {
-    const enabled = this.props.badge && !this.props.disabled;
-    let jsx;
-
-    if (enabled) {
-      jsx = <div className="rc-button-badge" />;
-    }
-
-    return jsx;
-  }
-
   render() {
     const {
       children,
@@ -61,6 +50,7 @@ class Button extends React.Component {
       disabled,
       processing,
       block,
+      badge,
       size,
       href,
       className,
@@ -68,7 +58,6 @@ class Button extends React.Component {
       dropdownMenu,
       round,
     } = this.props;
-    const badge = this.renderBadge();
 
     let button;
     let content;
@@ -78,6 +67,7 @@ class Button extends React.Component {
       'rc-button-block': block,
       'rc-button-processing': processing,
       'rc-floating-action-button': floating,
+      'rc-button-badged': badge && !disabled,
       'rc-button-primary': !secondary && !transparent,
       'rc-button-secondary': secondary,
       'rc-button-transparent': transparent,
@@ -110,15 +100,6 @@ class Button extends React.Component {
       button = <button { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</button>;
     } else {
       button = <a { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</a>;
-    }
-
-    if (badge) {
-      button = (
-        <div className="rc-button-badge-container">
-          { badge }
-          { button }
-        </div>
-      );
     }
 
     return button;
