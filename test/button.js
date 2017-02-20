@@ -44,4 +44,10 @@ describe('<Button />', () => {
 
     expect(Icon.prop('type')).to.equal('plus');
   });
+
+  it('should render a button with a badge', () => {
+    const wrapper = shallow(<Button badge icon="plus" />);
+
+    expect(wrapper).to.have.className('rc-button-badged');
+  });
 });

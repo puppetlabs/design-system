@@ -40,6 +40,11 @@ class Buttons extends React.Component {
           <Button transparent disabled label="disabled" />
           <Button transparent disabled processing label="processing" />
         </StyleguideSection>
+        <StyleguideSection title="Buttons With Badge">
+          <Button badge label="default" />
+          <Button badge disabled label="disabled" />
+          <Button badge disabled processing label="processing" />
+        </StyleguideSection>
         <StyleguideSection title="Button Groups">
           <ButtonGroup>
             <Button label="default" />
