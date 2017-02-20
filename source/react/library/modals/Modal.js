@@ -14,6 +14,7 @@ const propTypes = {
   height: React.PropTypes.string,
   size: React.PropTypes.string,
   sidebar: React.PropTypes.any,
+  sidebarPosition: React.PropTypes.string,
   actions: React.PropTypes.any,
   actionsCTA: React.PropTypes.string,
   modalClassName: React.PropTypes.oneOfType([
@@ -24,6 +25,10 @@ const propTypes = {
     React.PropTypes.string,
     React.PropTypes.object,
   ]),
+};
+
+const defaultProps = {
+  sidebarPosition: 'right',
 };
 
 function setBodyOverflow(value) {
@@ -274,9 +279,10 @@ class Modal extends React.Component {
     const closeLink = this.renderCloseLink();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
-    const { children, size } = this.props;
+    const { children, size, sidebarPosition } = this.props;
     const modalClassName = classname('rc-modal', {
       'rc-modal-with-sidebar': sidebar,
+      'rc-modal-with-sidebar-left': sidebar && sidebarPosition === 'left',
       [`rc-modal-${size}`]: size,
     }, this.props.modalClassName);
     const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
@@ -297,6 +303,7 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = propTypes;
+Modal.defaultProps = defaultProps;
 
 export { Modal as BareModal };
 export default mouseTrap(portal(Modal));

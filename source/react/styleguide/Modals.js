@@ -1,7 +1,6 @@
 import React from 'react';
 import StyleguideSection from './partials/StyleguideSection';
 import Button from '../library/Button';
-import ButtonGroup from '../library/ButtonGroup';
 import Modal from '../library/modals/Modal';
 import ConfirmationModal from '../library/modals/ConfirmationModal';
 
@@ -12,17 +11,23 @@ class Modals extends React.Component {
 
     this.state = {
       openDefault: false,
+      openLeftSidebarModal: false,
       openSmall: false,
       openConfirm: false,
     };
 
     this.onToggleDefault = this.onToggleDefault.bind(this);
+    this.onToggleLeftSidebar = this.onToggleLeftSidebar.bind(this);
     this.onToggleSmall = this.onToggleSmall.bind(this);
     this.onToggleConfirm = this.onToggleConfirm.bind(this);
   }
 
   onToggleDefault() {
     this.setState({ openDefault: !this.state.openDefault });
+  }
+
+  onToggleLeftSidebar() {
+    this.setState({ openLeftSidebarModal: !this.state.openLeftSidebarModal });
   }
 
   onToggleSmall() {
@@ -45,6 +50,32 @@ class Modals extends React.Component {
         <Modal
           title="I am a happy modal"
           sidebar="Happy Sidebar!"
+          onClose={ this.onToggleDefault }
+          margin={ 200 }
+          actions={ actions }
+          actionsCTA="I'm a happy action cta!"
+        >
+          Happy Content!
+        </Modal>
+      );
+    }
+
+    return jsx;
+  }
+
+  renderLeftSidebarModal() {
+    let jsx;
+
+    if (this.state.openLeftSidebarModal) {
+      const actions = [
+        <Button key="submit-button" label="Submit" />,
+      ];
+
+      jsx = (
+        <Modal
+          title="I am a happy modal"
+          sidebar="Happy Sidebar!"
+          sidebarPosition="left"
           onClose={ this.onToggleDefault }
           margin={ 200 }
           actions={ actions }
@@ -86,6 +117,7 @@ class Modals extends React.Component {
 
   render() {
     const modal = this.renderModal();
+    const leftSidebarModal = this.renderLeftSidebarModal();
     const confirmationModal = this.renderConfirmationModal();
     const smallModal = this.renderSmallModal();
 
@@ -95,6 +127,9 @@ class Modals extends React.Component {
         <StyleguideSection title="Default Modal">
           <Button label="Default Modal" onClick={ this.onToggleDefault } />
         </StyleguideSection>
+        <StyleguideSection title="Left Sidebar Modal">
+          <Button label="Left Sidebar Modal" onClick={ this.onToggleLeftSidebar } />
+        </StyleguideSection>
         <StyleguideSection title="Small Modal">
           <Button label="Small Modal" onClick={ this.onToggleSmall } />
         </StyleguideSection>
@@ -102,6 +137,7 @@ class Modals extends React.Component {
           <Button label="Confirmation Modal" onClick={ this.onToggleConfirm } />
         </StyleguideSection>
         { modal }
+        { leftSidebarModal }
         { smallModal }
         { confirmationModal }
       </div>
