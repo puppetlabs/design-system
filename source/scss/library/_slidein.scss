@@ -4,6 +4,9 @@
   color: $slidein-color;
   box-shadow: 0 0 60px rgba(0, 0, 0, .3);
 
+  border-radius: $border-radius;
+  border: 1px solid $gray-light;
+
   &.rc-slidein-bottom {
     bottom: 0;
     left: 0;
@@ -54,6 +57,7 @@
   .rc-slidein-header {
     display: flex;
     padding: $slidein-header-padding;
+    border-bottom: 1px solid $gray-light;
   }
 
   .rc-slidein-remove {
