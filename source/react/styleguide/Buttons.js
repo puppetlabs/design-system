@@ -40,6 +40,11 @@ class Buttons extends React.Component {
           <Button transparent disabled label="disabled" />
           <Button transparent disabled processing label="processing" />
         </StyleguideSection>
+        <StyleguideSection title="Buttons With Badge">
+          <Button badge label="default" />
+          <Button badge disabled label="disabled" />
+          <Button badge disabled processing label="processing" />
+        </StyleguideSection>
         <StyleguideSection title="Button Groups">
           <ButtonGroup>
             <Button label="default" />
@@ -60,6 +65,24 @@ class Buttons extends React.Component {
           <SplitButton
             disabled
             disabledMenu
+            onOptionClick={ this.onSplitButtonClick }
+            onClick={ this.onSplitButtonClick }
+            options={ splitButtonOptions }
+            label="I'm a split button!"
+          />
+        </StyleguideSection>
+        <StyleguideSection title="Split button (no portal)">
+          <SplitButton
+            onOptionClick={ this.onSplitButtonClick }
+            onClick={ this.onSplitButtonClick }
+            options={ splitButtonOptions }
+            disablePortal
+            label="I'm a split button!"
+          />
+          <SplitButton
+            disabled
+            disabledMenu
+            disablePortal
             onOptionClick={ this.onSplitButtonClick }
             onClick={ this.onSplitButtonClick }
             options={ splitButtonOptions }

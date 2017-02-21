@@ -1,6 +1,6 @@
 .rc-accordion {
   .rc-accordion-item-title {
-    a {
+    .rc-accordion-item-header {
       display: block;
       background-color: $accordion-item-title-bg-color;
       color: $accordion-item-title-color;
@@ -32,7 +32,7 @@
   }
 
   .rc-accordion-item {
-    margin-bottom: $accordion-item-margin;
+    border-bottom: 1px solid $gray-light;
 
     .rc-accordion-item-content {
       display: none;

@@ -1,31 +1,27 @@
 import React from 'react';
-import Icon from '../Icon';
 import classnames from 'classnames';
 
+import Icon from '../Icon';
+
 const propTypes = {
-  key:       React.PropTypes.string.isRequired,
-  children:  React.PropTypes.any,
-  title:     React.PropTypes.string,
-  active:    React.PropTypes.bool,
+  key: React.PropTypes.string.isRequired,
+  children: React.PropTypes.any,
+  title: React.PropTypes.string,
+  active: React.PropTypes.bool,
   className: React.PropTypes.string,
+  onOpen: React.PropTypes.func,
 };
 
 class AccordionItem extends React.Component {
   constructor(props) {
     super(props);
-  }
 
-  renderContent() {
-    return (
-      <div className="rc-accordion-item-content">
-        {this.props.children}
-      </div>
-    );
+    this.onClick = this.onClick.bind(this);
   }
 
   onClick(e) {
     if (e.nativeEvent) {
-      let nativeEvent = e.nativeEvent;
+      const nativeEvent = e.nativeEvent;
       nativeEvent.preventDefault();
     }
 
@@ -34,41 +30,74 @@ class AccordionItem extends React.Component {
     }
   }
 
+  renderContent() {
+    return (
+      <div className="rc-accordion-item-content">
+        { this.props.children }
+      </div>
+    );
+  }
+
   renderTitle() {
-    var className = classnames("rc-accordion-item-title", {
-      'rc-accordion-item-title-active': this.props.active
+    const { active, title } = this.props;
+    const className = classnames('rc-accordion-item-title', {
+      'rc-accordion-item-title-active': active,
     });
+    const icon = <Icon width="15px" height="15px" type="plus" />;
+    let titleContent;
+    let iconContent;
+    let content;
 
-    var icon = (<Icon width='15px' height='15px' type={this.props.active ? 'minus' : 'plus'} />);
+    titleContent = (
+      <span className="rc-accordion-item-title-text">
+        { title }
+      </span>
+    );
 
+    iconContent = (
+      <span className="rc-accordion-item-title-icon">
+        { icon }
+      </span>
+    );
+
+    if (active) {
+      content = (
+        <div className="rc-accordion-item-header">
+          { titleContent }
+        </div>
+      );
+    } else {
+      content = (
+        <a className="rc-accordion-item-header" href="" onClick={ this.onClick }>
+          { titleContent }
+          { iconContent }
+        </a>
+      );
+    }
 
     return (
-      <div className={className}>
-        <a href="" onClick={this.onClick.bind(this)}>
-          <span className="rc-accordion-item-title-text">
-            {this.props.title}
-          </span>
-
-          <span className="rc-accordion-item-title-icon">
-            {icon}
-          </span>
-        </a>
+      <div className={ className }>
+        { content }
       </div>
     );
   }
 
   render() {
-    var className = classnames("rc-accordion-item", {
-      'rc-accordion-item-active': this.props.active
+    const className = classnames('rc-accordion-item', {
+      'rc-accordion-item-active': this.props.active,
     }, this.props.className);
+    const title = this.renderTitle();
+    const content = this.renderContent();
 
     return (
-      <div className={className}>
-        {this.renderTitle()}
-        {this.renderContent()}
+      <div className={ className }>
+        { title }
+        { content }
       </div>
     );
   }
 }
 
-export default AccordionItem
+AccordionItem.propTypes = propTypes;
+
+export default AccordionItem;

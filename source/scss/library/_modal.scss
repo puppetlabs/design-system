@@ -44,6 +44,17 @@ a.rc-modal-close {
     }
   }
 
+  &.rc-modal-with-sidebar-left {
+    .rc-modal-sidebar {
+      float: left;
+    }
+
+    .rc-modal-content, .rc-modal-actions {
+      margin-right: 0;
+      margin-left: $modal-sidebar-width;
+    }
+  }
+
   &.rc-modal-small {
     width: $modal-width-small;
     .rc-modal-content {

@@ -1,0 +1,31 @@
+.rc-toggle {
+  .rc-toggle-label {
+    color: $font-color-base;
+    cursor: pointer;
+
+    &.rc-toggle-active {
+      color: $brand-primary;
+    }
+  }
+
+  .rc-switch {
+    margin-left: 10px;
+    margin-right: 10px;
+
+    .rc-switch-label {
+      border: none;
+
+      background: $toggle-bg;
+
+      &:after {
+        background: $toggle-color;
+      }
+    }
+
+    .rc-switch-checkbox {
+      &:checked + .rc-switch-label {
+        color: $toggle-color;
+      }
+    }
+  }
+}
