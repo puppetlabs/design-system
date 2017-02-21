@@ -6,6 +6,8 @@
     border-top-right-radius: $border-radius;
     border-top-left-radius: $border-radius;
     margin-bottom: -3px;
+    // We probably shouldn't hardcode this...
+    margin-top: -33px;
 
     .rc-button-main {
       background: $gray-light;
@@ -37,6 +39,10 @@
       &:hover {
         .rc-button-menu-inner {
           background: $button-bg-hover;
+
+          path {
+            fill: $white;
+          }
         }
       }
     }
