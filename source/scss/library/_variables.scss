@@ -192,6 +192,12 @@ $switch-off-icon-fill:            $gray;
 $switch-off-icon-size:            10px;
 
 //
+// Toggle
+//
+$toggle-bg:                      $gray-light !default;
+$toggle-color:                   $brand-primary !default;
+
+//
 // List Item
 //
 
@@ -263,18 +269,17 @@ $slidein-actions-border:          $border !default;
 $slidein-actions-padding:         10px 20px !default;
 $slidein-actions-button-margin:   7px !default;
 $slidein-title-font-size:         $font-size-base;
-$slidein-header-padding:          10px 12px !default;
+$slidein-header-padding:          12px 16px !default;
 
 //
 // Accordions
 //
-$accordion-item-margin:                2px !default;
 $accordion-item-title-font-family:     $button-font-family !default;
 $accordion-item-title-font-size:       $font-size-base !default;
-$accordion-item-title-color:           $gray-dark !default;
+$accordion-item-title-color:           $gray-darker !default;
 $accordion-item-title-bg-color:        $gray-lighter !default;
 $accordion-item-title-border:          2px solid $gray-lighter !default;
-$accordion-item-title-padding:         5px 12px !default;
+$accordion-item-title-padding:         10px 16px !default;
 $accordion-item-title-text-transform:  auto !default;
-$accordion-item-content-padding:       20px 12px !default;
+$accordion-item-content-padding:       20px 16px !default;
 

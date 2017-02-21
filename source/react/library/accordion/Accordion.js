@@ -2,9 +2,9 @@ import React, { Children } from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  autoOpen:  React.PropTypes.bool,
-  onChange:  React.PropTypes.func,
-  children:  React.PropTypes.any,
+  autoOpen: React.PropTypes.bool,
+  onChange: React.PropTypes.func,
+  children: React.PropTypes.any,
   className: React.PropTypes.string,
 };
 
@@ -12,13 +12,7 @@ class Accordion extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      activeKey: null
-    };
-  }
-
-  getKey(child, idx) {
-    return child.key || String(idx);
+    this.state = { activeKey: null };
   }
 
   onOpen(key) {
@@ -26,9 +20,13 @@ class Accordion extends React.Component {
       this.setState({ activeKey: key });
 
       if (this.props.onChange) {
-	this.props.onChange(key);
+        this.props.onChange(key);
       }
     };
+  }
+
+  getKey(child, idx) {
+    return child.key || String(idx);
   }
 
   renderItems() {
@@ -46,7 +44,7 @@ class Accordion extends React.Component {
       // This element is "active" if the current key is indeed active.
       let active = activeKey === key;
 
-      if (this.props.autoOpen && !activeKey && index == 0) {
+      if (this.props.autoOpen && !activeKey && index === 0) {
         active = true;
       }
 
@@ -65,11 +63,12 @@ class Accordion extends React.Component {
   }
 
   render() {
-    var className = classnames("rc-accordion", this.props.className);
+    const className = classnames('rc-accordion', this.props.className);
+    const items = this.renderItems();
 
     return (
-      <div className={className}>
-        {this.renderItems()}
+      <div className={ className }>
+        { items }
       </div>
     );
   }
@@ -77,4 +76,4 @@ class Accordion extends React.Component {
 
 Accordion.propTypes = propTypes;
 
-export default Accordion
+export default Accordion;
