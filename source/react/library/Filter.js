@@ -1,32 +1,59 @@
 import React from 'react';
 import Select from 'react-select';
+import equals from 'deep-equal';
 import Input from './Input';
 import SplitButton from './SplitButton';
 
 const propTypes = {
-  fields: React.PropTypes.array.isRequired,
   onDelete: React.PropTypes.func.isRequired,
-  onDuplicate: React.PropTypes.func.isRequired,
+  fields: React.PropTypes.array.isRequired,
+  onDuplicate: React.PropTypes.func,
+  onChange: React.PropTypes.func,
+  filter: React.PropTypes.shape({
+    field: React.PropTypes.string,
+    value: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number,
+    ]),
+    op: React.PropTypes.string,
+  }),
+};
+
+const defaultProps = {
+  onChange: () => {},
+  filter: {
+    field: '',
+    op: '',
+    value: '',
+  },
 };
 
 class Filter extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      field: '',
-      operator: '',
-      value: '',
-    };
+    this.state = props.filter;
 
     this.onOptionSelect = this.onOptionSelect.bind(this);
     this.onDropdownSelect = this.onDropdownSelect.bind(this);
   }
 
-  onOptionSelect(option) {
-    option.type = option.type || 'field';
+  componentWillReceiveProps(newProps) {
+    if (!equals(newProps.filter, this.state)) {
+      this.setState(newProps.filter);
+    }
+  }
 
-    this.setState({ [option.type]: option.value });
+  componentDidUpdate(newProps, newState) {
+    if (!equals(newState, this.state)) {
+      this.props.onChange(this.state);
+    }
+  }
+
+  onOptionSelect(type) {
+    return value => {
+      this.setState({ [type]: value });
+    };
   }
 
   onDropdownSelect(option) {
@@ -44,9 +71,14 @@ class Filter extends React.Component {
 
   renderSplitButton() {
     const dropdownOptions = [
-      { value: 'Duplicate', id: 0 },
       { value: 'Delete', id: 1 },
     ];
+
+    if (this.props.onDuplicate) {
+      dropdownOptions.push(
+        { value: 'Duplicate', id: 0 },
+      );
+    }
 
     return (
       <SplitButton
@@ -68,7 +100,7 @@ class Filter extends React.Component {
         placeholder="Field"
         value={ this.state.field }
         options={ fields }
-        onChange={ this.onOptionSelect }
+        onChange={ this.onOptionSelect('field') }
         clearable={ false }
         className="Select-small Select-left"
       />
@@ -88,9 +120,9 @@ class Filter extends React.Component {
       <Select
         name="operator-select"
         placeholder="Operator"
-        value={ this.state.operator }
+        value={ this.state.op }
         options={ operators }
-        onChange={ this.onOptionSelect }
+        onChange={ this.onOptionSelect('op') }
         clearable={ false }
         className="Select-small Select-right"
       />
@@ -98,13 +130,14 @@ class Filter extends React.Component {
   }
 
   renderValueInput() {
-    const getValue = (e) => {
+    const getValue = e => {
       this.setState({ value: e.target.value });
     };
 
     return (
       <Input
         placeholder="Value"
+        value={ this.state.value }
         onChange={ getValue }
         size="small"
       />
@@ -133,5 +166,6 @@ class Filter extends React.Component {
 }
 
 Filter.propTypes = propTypes;
+Filter.defaultProps = defaultProps;
 
 export default Filter;
