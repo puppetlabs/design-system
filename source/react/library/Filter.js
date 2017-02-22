@@ -127,11 +127,13 @@ class Filter extends React.Component {
 
   renderOperatorSelect() {
     const operators = [
-      { value: '>', label: 'Greater than', type: 'operator', id: 0 },
-      { value: '<', label: 'Less than', type: 'operator', id: 1 },
-      { value: '=', label: 'Equal to', type: 'operator', id: 2 },
-      { value: '>=', label: 'Greater than or Equal to', type: 'operator', id: 3 },
-      { value: '<=', label: 'Less than or Equal to', type: 'operator', id: 4 },
+      { value: '=', label: 'Equals', type: 'operator', id: 0 },
+      { value: '!=', label: 'Doesn\'t equal', type: 'operator', id: 1 },
+      { value: '=~', label: 'Contains', type: 'operator', id: 2 },
+      { value: '>', label: 'Greater than', type: 'operator', id: 3 },
+      { value: '<', label: 'Less than', type: 'operator', id: 4 },
+      { value: '>=', label: 'Greater than or equal to', type: 'operator', id: 5 },
+      { value: '<=', label: 'Less than or equal to', type: 'operator', id: 6 },
     ];
 
     return (
