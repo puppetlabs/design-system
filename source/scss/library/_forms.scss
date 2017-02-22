@@ -1,21 +1,22 @@
 .rc-filter-form {
+  position: relative;
 
   .rc-split-button {
     visibility: hidden;
     background: $gray-light;
     border-top-right-radius: $border-radius;
     border-top-left-radius: $border-radius;
-    margin-bottom: -3px;
+    position: absolute;
+    right: 0;
     // We probably shouldn't hardcode this...
-    margin-top: -33px;
+    top: -30px;
 
     .rc-button-main {
       background: $gray-light;
-      width: 100%;
 
       .rc-button-content {
         color: $button-bg;
-        float: left;
+        float: right;
       }
 
       &:hover {
@@ -162,7 +163,6 @@
 
     .rc-filter-form-fields {
       border-top-right-radius: 0;
-      border-top-left-radius: 0;
     }
   }
 }

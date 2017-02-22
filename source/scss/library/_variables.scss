@@ -282,3 +282,9 @@ $accordion-item-title-padding:         10px 16px !default;
 $accordion-item-title-text-transform:  auto !default;
 $accordion-item-content-padding:       20px 16px !default;
 
+
+//
+// Select
+//
+$select-item-background:  lighten($brand-primary, 10%);
+$select-item-border:      $brand-primary;

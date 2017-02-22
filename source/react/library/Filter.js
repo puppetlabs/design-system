@@ -1,5 +1,6 @@
 import React from 'react';
 import Select from 'react-select';
+import clone from 'clone';
 import equals from 'deep-equal';
 import Input from './Input';
 import SplitButton from './SplitButton';
@@ -28,31 +29,48 @@ const defaultProps = {
   },
 };
 
+const isValid = filter => !!(filter.field && filter.op && filter.value);
+
 class Filter extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = props.filter;
+    this.state = {
+      filter: props.filter,
+      valid: isValid(props.filter),
+    };
 
+    this.onFilterChange = this.onFilterChange.bind(this);
     this.onOptionSelect = this.onOptionSelect.bind(this);
     this.onDropdownSelect = this.onDropdownSelect.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
-    if (!equals(newProps.filter, this.state)) {
-      this.setState(newProps.filter);
+    if (!equals(newProps.filter, this.state.filter)) {
+      const valid = isValid(newProps.filter);
+
+      this.setState({ filter: newProps.filter, valid });
     }
   }
 
-  componentDidUpdate(newProps, newState) {
-    if (!equals(newState, this.state)) {
-      this.props.onChange(this.state);
+  componentDidUpdate(oldProps, oldState) {
+    if (this.state.valid && !oldState.valid) {
+      this.props.onChange(this.state.filter);
+    } else if (!equals(oldState.filter, this.state.filter) && this.state.valid) {
+      this.props.onChange(this.state.filter);
     }
+  }
+
+  onFilterChange(prop, value) {
+    const newFilter = clone(this.state.filter);
+    newFilter[prop] = value;
+
+    this.setState({ filter: newFilter });
   }
 
   onOptionSelect(type) {
     return value => {
-      this.setState({ [type]: value });
+      this.onFilterChange(type, value);
     };
   }
 
@@ -98,7 +116,7 @@ class Filter extends React.Component {
       <Select
         name="field-select"
         placeholder="Field"
-        value={ this.state.field }
+        value={ this.state.filter.field }
         options={ fields }
         onChange={ this.onOptionSelect('field') }
         clearable={ false }
@@ -120,7 +138,7 @@ class Filter extends React.Component {
       <Select
         name="operator-select"
         placeholder="Operator"
-        value={ this.state.op }
+        value={ this.state.filter.op }
         options={ operators }
         onChange={ this.onOptionSelect('op') }
         clearable={ false }
@@ -130,15 +148,27 @@ class Filter extends React.Component {
   }
 
   renderValueInput() {
-    const getValue = e => {
-      this.setState({ value: e.target.value });
+    const onChange = e => {
+      this.onFilterChange('value', e.target.value);
+    };
+
+    const onBlur = () => {
+      const valid = isValid(this.state.filter);
+
+      this.setState({ valid });
+    };
+
+    const onFocus = () => {
+      this.setState({ valid: false });
     };
 
     return (
       <Input
         placeholder="Value"
-        value={ this.state.value }
-        onChange={ getValue }
+        value={ this.state.filter.value }
+        onChange={ onChange }
+        onFocus={ onFocus }
+        onBlur={ onBlur }
         size="small"
       />
     );
