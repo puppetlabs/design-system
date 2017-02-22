@@ -100,7 +100,7 @@ class Filter extends React.Component {
 
     return (
       <SplitButton
-        size="small"
+        size="tiny"
         onOptionClick={ this.onDropdownSelect }
         onClick={ this.props.onDelete }
         options={ dropdownOptions }
