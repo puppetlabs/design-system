@@ -3,6 +3,10 @@
 body {
   padding: 0;
   margin: 0;
+
+  #app {
+    position: relative;
+  }
 }
 
 h1, h2, h3, h4, h5, h6, p {
@@ -23,6 +27,7 @@ h1, h2, h3, h4, h5, h6, p {
   width: 200px;
   padding: 20px;
   background: $brand-primary;
+  height: 100%;
 
   ul {
     list-style: none;

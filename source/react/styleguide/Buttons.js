@@ -89,9 +89,17 @@ class Buttons extends React.Component {
             label="I'm a split button!"
           />
         </StyleguideSection>
-        <StyleguideSection title="Split button small">
+        <StyleguideSection title="Split button sizes">
           <SplitButton
             size="small"
+            onOptionClick={ this.onSplitButtonClick }
+            onClick={ this.onSplitButtonClick }
+            options={ splitButtonOptions }
+            label="I'm a split button!"
+          />
+          <br/>
+          <SplitButton
+            size="tiny"
             onOptionClick={ this.onSplitButtonClick }
             onClick={ this.onSplitButtonClick }
             options={ splitButtonOptions }

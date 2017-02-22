@@ -38,7 +38,14 @@ class SplitButton extends React.Component {
   }
 
   renderDropdownTarget() {
-    const iconSize = this.props.size === 'small' ? '15px' : '20px';
+    let iconSize = '20px';
+
+    if (this.props.size === 'tiny') {
+      iconSize = '14px';
+    } else if (this.props.size === 'small') {
+      iconSize = '15px';
+    }
+
     const disabledMenu = this.props.disabledMenu;
 
     return (
