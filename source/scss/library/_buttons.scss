@@ -211,6 +211,14 @@ a.rc-floating-action-button, button.rc-floating-action-button {
 
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+
+    &.rc-button-tiny {
+      .rc-button-content {
+        padding: 1px;
+
+        font-size: $font-size-tiny;
+      }
+    }
   }
 
   .rc-button-menu {
@@ -221,6 +229,16 @@ a.rc-floating-action-button, button.rc-floating-action-button {
     &.rc-button-small {
       .rc-button-menu-inner {
         padding: 1px;
+      }
+    }
+
+    &.rc-button-tiny {
+      .rc-button-content {
+        padding: 3px;
+      }
+
+      .rc-button-menu-inner {
+        padding: 0;
       }
     }
 

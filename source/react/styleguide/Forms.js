@@ -13,12 +13,12 @@ const fields = [
 ];
 const onDelete = () => { console.log('Filter deleted'); };
 const onDuplicate = () => { console.log('Filter duplicated'); };
+const onChange = filter => { console.log('Filter changed', filter); };
 
 class Forms extends React.Component {
   render() {
     return (
       <div>
-
         <StyleguideSection title="Input Small">
           { InputSmall }
         </StyleguideSection>
@@ -33,9 +33,9 @@ class Forms extends React.Component {
             fields={ fields }
             onDelete={ onDelete }
             onDuplicate={ onDuplicate }
+            onChange={ onChange }
           />
         </StyleguideSection>
-
       </div>
     );
   }
