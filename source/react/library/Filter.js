@@ -161,6 +161,8 @@ class Filter extends React.Component {
     };
 
     const onFocus = () => {
+      // When focused we don't want to communicate changes.
+      // We'll wait to do that until onBlur
       this.setState({ valid: false });
     };
 
