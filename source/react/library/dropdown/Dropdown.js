@@ -25,7 +25,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-  size: 'small',
   disable: false,
 };
 
