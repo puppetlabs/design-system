@@ -121,8 +121,10 @@ $popover-elevation:               24 !default;
 // Dropdown
 //
 $dropdown-padding:                12px !default;
+$dropdown-padding-tiny:           10px !default;
 $dropdown-max-height:             400px !default;
-$dropdown-width:                  260px;
+$dropdown-width:                  260px !default;
+$dropdown-width-tiny:             180px !default;
 
 $dropdown-label-font-size:        $font-size-medium !default;
 $dropdown-label-font-weight:      600 !default;
@@ -134,8 +136,11 @@ $dropdown-chevron-height:         6px !default;
 $dropdown-chevron-width:          10px !default;
 $dropdown-hint-color:             $gray !default;
 $dropdown-hint-font-size:         $font-size-medium !default;
+$dropdown-hint-font-size-tiny:    $font-size-small !default;
 $dropdown-item-font-size:         $font-size-base !default;
+$dropdown-item-font-size-tiny:    $font-size-medium !default;
 $dropdown-item-line-height:       $font-size-base !default;
+$dropdown-item-line-height-tiny:  $font-size-medium !default;
 $dropdown-item-hover-color:       $white !default;
 $dropdown-item-hover-bg:          darken($brand-primary, 10%) !default;
 $dropdown-item-selected-color:    $white !default;
@@ -147,7 +152,9 @@ $dropdown-item-disabled-bg:       $gray-light !default;
 // Menu
 //
 $menu-item-font-size:             $font-size-base !default;
+$menu-item-font-size-tiny:        $font-size-medium !default;
 $menu-item-line-height:           $font-size-base !default;
+$menu-item-line-height-tiny:      $font-size-medium !default;
 $menu-item-color:                 $brand-primary !default;
 $menu-item-bg:                    $white !default;
 $menu-item-color-hover:           $white !default;

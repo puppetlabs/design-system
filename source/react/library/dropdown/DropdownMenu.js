@@ -64,12 +64,13 @@ class DropdownMenu extends React.Component {
   }
 
   renderMenu() {
-    const { options, selected } = this.props;
+    const { size, options, selected } = this.props;
     let jsx;
 
     if (options.length > 0) {
       jsx = (
         <Menu
+          size={ size }
           options={ options }
           selected={ selected }
           multiple={ this.props.multiple }
@@ -86,7 +87,7 @@ class DropdownMenu extends React.Component {
   render() {
     const menu = this.renderMenu();
     const hint = this.renderHint();
-    const className = classnames('rc-dropdown-menu', {
+    const className = classnames('rc-dropdown-menu', `rc-dropdown-menu-${this.props.size}`, {
       'rc-dropdown-menu-multiple': this.props.multiple,
     });
 

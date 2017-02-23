@@ -18,6 +18,15 @@ const Dropdowns = () => {
     />
   );
 
+  const tinyDropdown = (
+    <Dropdown
+      label="I'm a tiny dropdown"
+      size="tiny"
+      hint="I'm a hint"
+      options={ options }
+    />
+  );
+
   const dropdownWithoutPortal = (
     <Dropdown
       label="I'm a dropdown"
@@ -53,6 +62,8 @@ const Dropdowns = () => {
       <h1>Dropdowns</h1>
       <StyleguideSection title="Default Dropdown">
         { dropdown }
+        <br />
+        { tinyDropdown }
       </StyleguideSection>
       <StyleguideSection title="Dropdown outside portal">
         { dropdownWithoutPortal }

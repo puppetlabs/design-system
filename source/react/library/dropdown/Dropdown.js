@@ -4,6 +4,7 @@ import DropdownMenu from './DropdownMenu';
 import DropdownLabel from './DropdownLabel';
 
 const propTypes = {
+  size: React.PropTypes.string,
   onChange: React.PropTypes.func,
   options: React.PropTypes.array,
   hint: React.PropTypes.string,
@@ -24,6 +25,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  size: 'small',
   disable: false,
 };
 
@@ -150,6 +152,7 @@ class Dropdown extends React.Component {
 
     return (
       <DropdownMenu
+        size={ this.props.size }
         onClose={ this.onClose }
         margin={ -60 }
         blank={ this.props.blank }
