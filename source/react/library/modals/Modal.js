@@ -12,9 +12,9 @@ const propTypes = {
   children: React.PropTypes.any,
   margin: React.PropTypes.number,
   height: React.PropTypes.string,
-  title: React.PropTypes.any,
   size: React.PropTypes.string,
   sidebar: React.PropTypes.any,
+  sidebarPosition: React.PropTypes.string,
   actions: React.PropTypes.any,
   actionsCTA: React.PropTypes.string,
   modalClassName: React.PropTypes.oneOfType([
@@ -25,6 +25,10 @@ const propTypes = {
     React.PropTypes.string,
     React.PropTypes.object,
   ]),
+};
+
+const defaultProps = {
+  sidebarPosition: 'right',
 };
 
 function setBodyOverflow(value) {
@@ -87,6 +91,8 @@ class Modal extends React.Component {
     if (this.props.onClose && this.props.unbindShortcut) {
       this.props.unbindShortcut('esc');
     }
+
+    setBodyOverflow('');
   }
 
   onResize() {
@@ -95,8 +101,6 @@ class Modal extends React.Component {
 
   onClose(e) {
     e.preventDefault();
-
-    setBodyOverflow('');
 
     if (this.props.onClose) {
       this.props.onClose();
@@ -137,19 +141,6 @@ class Modal extends React.Component {
     }
 
     return scroll;
-  }
-
-  getTitleHeight() {
-    let height = 0;
-
-    if (this.props.title && this.title) {
-      const title = this.title;
-      const titleRect = title.getBoundingClientRect();
-
-      height = titleRect.height;
-    }
-
-    return height;
   }
 
   getSidebarHeight() {
@@ -215,8 +206,7 @@ class Modal extends React.Component {
   setSidebarHeight() {
     if (this.props.sidebar) {
       const modalHeight = this.getModalHeight();
-      const titleHeight = this.getTitleHeight();
-      const newHeight = modalHeight - titleHeight;
+      const newHeight = modalHeight;
 
       this.sidebar.style.height = `${newHeight}px`;
       this.sidebar.style.overflowY = 'scroll';
@@ -247,20 +237,6 @@ class Modal extends React.Component {
 
     if (this.props.onClose) {
       jsx = <a href="/#/close" onClick={ this.onClose } className="rc-modal-close">Close</a>;
-    }
-
-    return jsx;
-  }
-
-  renderTitle() {
-    let jsx;
-
-    if (this.props.title) {
-      jsx = (
-        <div ref={ (c) => { this.title = c; } } className="rc-modal-title">
-          { this.props.title }
-        </div>
-      );
     }
 
     return jsx;
@@ -301,12 +277,12 @@ class Modal extends React.Component {
 
   render() {
     const closeLink = this.renderCloseLink();
-    const title = this.renderTitle();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
-    const { children, size } = this.props;
+    const { children, size, sidebarPosition } = this.props;
     const modalClassName = classname('rc-modal', {
       'rc-modal-with-sidebar': sidebar,
+      'rc-modal-with-sidebar-left': sidebar && sidebarPosition === 'left',
       [`rc-modal-${size}`]: size,
     }, this.props.modalClassName);
     const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
@@ -315,7 +291,6 @@ class Modal extends React.Component {
       <div className={ overlayClassName } >
         { closeLink }
         <div ref={ (c) => { this.modal = c; } } className={ modalClassName }>
-          { title }
           { sidebar }
           <div ref={ (c) => { this.content = c; } } className="rc-modal-content">
             { children }
@@ -328,6 +303,7 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = propTypes;
+Modal.defaultProps = defaultProps;
 
 export { Modal as BareModal };
 export default mouseTrap(portal(Modal));

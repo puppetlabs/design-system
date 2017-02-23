@@ -1,14 +1,15 @@
 import React from 'react';
 import classnames from 'classnames';
 import Popover from '../Popover';
-import DropdownMenuItem from './DropdownMenuItem';
+import Menu from '../menu/Menu';
 
 const propTypes = {
+  anchor: React.PropTypes.string,
   onChange: React.PropTypes.func,
   target: React.PropTypes.object,
   width: React.PropTypes.string,
+  onClose: React.PropTypes.func,
   size: React.PropTypes.string,
-  required: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
@@ -19,9 +20,13 @@ const propTypes = {
   options: React.PropTypes.array,
   multiple: React.PropTypes.bool,
   margin: React.PropTypes.number,
+  disablePortal: React.PropTypes.bool,
 };
 
 const defaultProps = {
+  selected: [],
+  options: [],
+  size: 'small',
   width: 'auto',
 };
 
@@ -30,64 +35,22 @@ class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
 
-    const selected = Array.isArray(props.selected) ? props.selected : [props.selected];
-
-    this.state = { selected: this.getDefaultSelected(selected) };
-
     this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    // If this is a single select option menu and the selections have been updated
-    // then lets force the popover to close.
-    if (!this.props.multiple && prevState.selected[0] !== this.state.selected[0]) {
+  onClose() {
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
+  }
+
+  onChange(option) {
+    this.props.onChange(option);
+
+    if (this.popover && !this.props.multiple) {
       this.popover.close();
     }
-  }
-
-  onClose() {
-    if (this.props.onChange) {
-      this.props.onChange(this.state.selected);
-    }
-  }
-
-  onChange(option, selected) {
-    const prevSelected = this.state.selected;
-    const options = this.getOptions();
-    const multiple = this.props.multiple;
-    let nextSelected = [];
-
-    options.forEach((o) => {
-      const id = o.id;
-      const wasSelected = prevSelected.indexOf(id) >= 0;
-
-      if ((id === option.id && selected) || (id !== option.id && wasSelected && multiple)) {
-        nextSelected.push(id);
-      }
-    });
-
-    if (this.props.required && nextSelected.length === 0) {
-      nextSelected = prevSelected;
-    }
-
-    this.setState({ selected: nextSelected });
-  }
-
-  getOptions() {
-    return this.props.options;
-  }
-
-  getDefaultSelected(selected) {
-    let nextSelected = [];
-
-    if (this.props.required && selected.length === 0 && this.props.options.length > 0) {
-      nextSelected.push(this.props.options[0].id);
-    } else {
-      nextSelected = selected;
-    }
-
-    return nextSelected;
   }
 
   renderHint() {
@@ -100,24 +63,19 @@ class DropdownMenu extends React.Component {
     return jsx;
   }
 
-  renderOptions() {
-    let jsx = [];
-    const options = this.getOptions();
+  renderMenu() {
+    const { options, selected } = this.props;
+    let jsx;
 
-    if (this.props.options && this.props.options.length > 0) {
-      options.forEach((option) => {
-        jsx.push(
-          <DropdownMenuItem
-            key={ option.id }
-            option={ option }
-            selected={ this.state.selected.indexOf(option.id) >= 0 }
-            onClick={ this.onChange }
-            multiple={ this.props.multiple }
-          />
-        );
-      });
-
-      jsx = <ul>{ jsx }</ul>;
+    if (options.length > 0) {
+      jsx = (
+        <Menu
+          options={ options }
+          selected={ selected }
+          multiple={ this.props.multiple }
+          onChange={ this.onChange }
+        />
+      );
     } else if (this.props.blank) {
       jsx = <p className="rc-dropdown-blank">{ this.props.blank }</p>;
     }
@@ -126,7 +84,7 @@ class DropdownMenu extends React.Component {
   }
 
   render() {
-    const options = this.renderOptions();
+    const menu = this.renderMenu();
     const hint = this.renderHint();
     const className = classnames('rc-dropdown-menu', {
       'rc-dropdown-menu-multiple': this.props.multiple,
@@ -134,16 +92,18 @@ class DropdownMenu extends React.Component {
 
     return (
       <Popover
+        anchor={ this.props.anchor }
         ref={ (c) => { this.popover = c; } }
-        width={ this.props.width }
         className={ className }
         target={ this.props.target }
         onClose={ this.onClose }
         margin={ this.props.margin }
         size={ this.props.size }
+        width={ this.props.width }
+        disablePortal={ this.props.disablePortal }
       >
         { hint }
-        { options }
+        { menu }
       </Popover>
     );
   }

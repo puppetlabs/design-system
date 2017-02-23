@@ -1,5 +1,4 @@
 import jsdom from 'mocha-jsdom';
-import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
@@ -8,27 +7,6 @@ import DropdownMenu from '../../source/react/library/dropdown/DropdownMenu';
 
 describe('<DropdownMenu />', () => {
   jsdom();
-
-  it('should render the correct number of menu items', () => {
-    const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
-    const wrapper = shallow(<DropdownMenu options={ options } />);
-
-    expect(wrapper.find('DropdownMenuItem')).to.have.length(2);
-  });
-
-  it('should mark the correct menu item as selected', () => {
-    const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
-    const wrapper = shallow(<DropdownMenu selected={ 2 } options={ options } />);
-    const menuItems = wrapper.find('DropdownMenuItem');
-
-    menuItems.forEach((item, key) => {
-      const selected = key === 1;
-
-      expect(item.prop('selected')).to.equal(selected);
-    });
-
-    expect(menuItems).to.have.length(2);
-  });
 
   it('should render a hint', () => {
     const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
@@ -56,5 +34,16 @@ describe('<DropdownMenu />', () => {
     const wrapper = shallow(<DropdownMenu width="200px" options={ options } />);
 
     expect(wrapper.find('Popover').prop('width')).to.equal('200px');
+  });
+
+  it('should pass disablePortal to Popover', () => {
+    const wrapper = shallow(<DropdownMenu disablePortal />);
+    expect(wrapper.find('Popover').prop('disablePortal')).to.eql(true);
+  });
+
+  it('should pass the correct number of options to Menu', () => {
+    const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
+    const wrapper = shallow(<DropdownMenu options={ options } />);
+    expect(wrapper.find('Menu').prop('options').length).to.eql(2);
   });
 });

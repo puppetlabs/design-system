@@ -7,6 +7,10 @@
   border-radius: $input-border-radius;
   outline: none;
 
+  &.rc-input-error {
+    border: $input-border-error;
+  }
+
   &:focus {
     background: #fff;
     border: 1px solid $brand-primary;

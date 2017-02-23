@@ -1,15 +1,21 @@
 import React from 'react';
+import equals from 'deep-equal';
 import DropdownMenu from './DropdownMenu';
-import Icon from '../Icon';
+import DropdownLabel from './DropdownLabel';
 
 const propTypes = {
   onChange: React.PropTypes.func,
   options: React.PropTypes.array,
   hint: React.PropTypes.string,
+  placeholder: React.PropTypes.string,
   blank: React.PropTypes.string,
   label: React.PropTypes.string,
   multiple: React.PropTypes.bool,
   required: React.PropTypes.bool,
+  disabled: React.PropTypes.bool,
+  tabIndex: React.PropTypes.string,
+  error: React.PropTypes.string,
+  disablePortal: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.number,
@@ -17,23 +23,71 @@ const propTypes = {
   ]),
 };
 
+const defaultProps = {
+  disable: false,
+};
+
 class Dropdown extends React.Component {
   constructor(props) {
     super(props);
 
-    const selected = Array.isArray(props.selected) ? props.selected : [props.selected];
+    const selected = this.getSelected();
 
-    this.state = { selected };
+    this.state = { selected, displayed: selected };
 
+    this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
-  onChange(selected) {
-    this.setState({ selected }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(selected);
+  componentWillReceiveProps(nextProps) {
+    const selectedChanged = equals(this.props.selected, nextProps.selected);
+
+    if ({}.hasOwnProperty.call(nextProps, 'selected') && selectedChanged) {
+      const selected = this.getSelected();
+
+      this.setState({ selected });
+    }
+  }
+
+  onChange(option) {
+    const prevSelected = this.state.selected;
+    const options = this.getOptions();
+    let nextSelected = [];
+
+    options.forEach((o) => {
+      const id = o.id;
+      const wasSelected = prevSelected.indexOf(id) >= 0;
+
+      if (id !== option.id && this.props.multiple && wasSelected) {
+        nextSelected.push(id);
+      }
+
+      if (id === option.id && !wasSelected) {
+        nextSelected.push(id);
       }
     });
+
+    if (this.props.required && nextSelected.length === 0) {
+      nextSelected = prevSelected;
+    }
+
+    this.setState({ selected: nextSelected }, () => {
+      if (!this.props.multiple) {
+        this.setState({ displayed: nextSelected });
+
+        if (this.props.onChange) {
+          this.props.onChange(nextSelected);
+        }
+      }
+    });
+  }
+
+  onClose() {
+    this.setState({ displayed: this.state.selected });
+
+    if (this.props.multiple && this.props.onChange) {
+      this.props.onChange(this.state.selected);
+    }
   }
 
   getOptions() {
@@ -50,30 +104,17 @@ class Dropdown extends React.Component {
     });
   }
 
-  renderDropdownMenu() {
-    const options = this.getOptions();
-    const label = this.renderLabel();
-    const button = <a className="rc-dropdown-toggle">{ label }</a>;
+  getSelected() {
+    let selected = this.props.selected;
 
-    return (
-      <DropdownMenu
-        width="260px"
-        margin={ -60 }
-        blank={ this.props.blank }
-        hint={ this.props.hint }
-        multiple={ this.props.multiple }
-        target={ button }
-        onChange={ this.onChange }
-        options={ options }
-        selected={ this.state.selected }
-        required={ this.props.required }
-      />
-    );
+    selected = Array.isArray(selected) ? selected : [selected];
+
+    return selected;
   }
 
-  renderLabel() {
+  renderToggle() {
     const options = this.getOptions();
-    const selected = options.filter(e => this.state.selected.indexOf(e.id) >= 0);
+    const selected = options.filter(e => this.state.displayed.indexOf(e.id) >= 0);
     const values = selected.map(s => s.value);
     let label;
 
@@ -90,16 +131,37 @@ class Dropdown extends React.Component {
       } else {
         label = values.join(', ');
       }
-
-      if (!label) {
-        label = 'Select One';
-      }
     }
 
     return (
-      <span className="rc-dropdown-label">
-        <span className="rc-dropdown-label-text">{ label }</span> <Icon type="chevron-down" />
-      </span>
+      <DropdownLabel
+        error={ this.props.error }
+        tabIndex={ this.props.tabIndex }
+        disabled={ this.props.disabled }
+        placeholder={ this.props.placeholder }
+        label={ label }
+      />
+    );
+  }
+
+  renderDropdownMenu() {
+    const options = this.getOptions();
+    const button = this.renderToggle();
+
+    return (
+      <DropdownMenu
+        onClose={ this.onClose }
+        margin={ -60 }
+        blank={ this.props.blank }
+        hint={ this.props.hint }
+        multiple={ this.props.multiple }
+        target={ button }
+        onChange={ this.onChange }
+        options={ options }
+        selected={ this.state.selected }
+        required={ this.props.required }
+        disablePortal={ this.props.disablePortal }
+      />
     );
   }
 
@@ -115,5 +177,6 @@ class Dropdown extends React.Component {
 }
 
 Dropdown.propTypes = propTypes;
+Dropdown.defaultProps = defaultProps;
 
 export default Dropdown;

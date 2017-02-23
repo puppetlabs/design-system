@@ -5,7 +5,6 @@ import Dropdown from '../library/dropdown/Dropdown';
 import DropdownMenu from '../library/dropdown/DropdownMenu';
 
 const Dropdowns = () => {
-
   const options = [
     { id: 1, value: 'option 1' },
     { id: 2, value: 'option 2' },
@@ -15,6 +14,15 @@ const Dropdowns = () => {
     <Dropdown
       label="I'm a dropdown"
       hint="I'm a hint"
+      options={ options }
+    />
+  );
+
+  const dropdownWithoutPortal = (
+    <Dropdown
+      label="I'm a dropdown"
+      hint="I'm a hint"
+      disablePortal
       options={ options }
     />
   );
@@ -45,6 +53,9 @@ const Dropdowns = () => {
       <h1>Dropdowns</h1>
       <StyleguideSection title="Default Dropdown">
         { dropdown }
+      </StyleguideSection>
+      <StyleguideSection title="Dropdown outside portal">
+        { dropdownWithoutPortal }
       </StyleguideSection>
       <StyleguideSection title="Multiple Dropdown">
         { multiple }

@@ -1,5 +1,7 @@
 import React from 'react';
 import portal from './portal';
+import togglable from './togglable';
+import Button from './Button';
 
 function isNodeInRoot(node, root) {
   while (node) {
@@ -16,9 +18,12 @@ function isNodeInRoot(node, root) {
 const propTypes = {
   onOutsideClick: React.PropTypes.func,
   className: React.PropTypes.string,
+  closeButton: React.PropTypes.bool,
   style: React.PropTypes.object,
   children: React.PropTypes.any,
+  hint: React.PropTypes.string,
   allowBubble: React.PropTypes.bool,
+  onClose: React.PropTypes.func,
 };
 
 class PopoverContent extends React.Component {
@@ -27,6 +32,7 @@ class PopoverContent extends React.Component {
     super(props);
 
     this.onOutsideClick = this.onOutsideClick.bind(this);
+    this.onClose = this.onClose.bind(this);
   }
 
   componentWillMount() {
@@ -47,11 +53,41 @@ class PopoverContent extends React.Component {
     }
   }
 
+  onClose() {
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
+  }
+
   render() {
-    const { className, style } = this.props;
+    const { className, style, hint, closeButton } = this.props;
+    let header;
+    let close;
+
+    if (closeButton) {
+      close = (
+        <Button
+          transparent
+          size="small"
+          className="rc-popover-close"
+          icon="delete"
+          onClick={ this.onClose }
+        />
+      );
+    }
+
+    if (hint || closeButton) {
+      header = (
+        <div className="rc-popover-header">
+          <small className="rc-popover-hint">{ hint }</small>
+          {close}
+        </div>
+      );
+    }
 
     return (
       <div ref={ (c) => { this.elem = c; } } className={ className } style={ style }>
+        { header }
         { this.props.children }
       </div>
     );
@@ -60,4 +96,6 @@ class PopoverContent extends React.Component {
 
 PopoverContent.propTypes = propTypes;
 
+const PopoverContentWithoutPortal = togglable(PopoverContent);
+export { PopoverContentWithoutPortal };
 export default portal(PopoverContent);

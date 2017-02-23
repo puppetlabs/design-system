@@ -7,7 +7,7 @@ $gray:                           lighten($gray-base, 56%) !default;
 $gray-light:                     lighten($gray-base, 80%) !default;
 $gray-lighter:                   lighten($gray-base, 84%) !default;
 
-$brand-primary:                  #30CEFF !default;
+$brand-primary:                  #269CFF !default;
 $brand-success:                  #5cb85c !default;
 $brand-info:                     #5bc0de !default;
 $brand-warning:                  #f0ad4e !default;
@@ -16,8 +16,9 @@ $brand-danger:                   #d9534f !default;
 $font-family:                   'Open Sans', sans-serif !default;
 
 $font-size-base:                 16px !default;
-$font-size-small:                12px !default;
 $font-size-medium:               14px !default;
+$font-size-small:                12px !default;
+$font-size-tiny:                 10px !default;
 $line-height-base:               1.428571429 !default; // 20/14
 
 $font-color-base:                $gray-darker;
@@ -65,6 +66,8 @@ $button-transparent-color-hover:  $gray-dark !default;
 
 $floating-action-button-height:   60px !default;
 
+$button-badge-size:               10px !default;
+
 //
 // Tags
 //
@@ -106,21 +109,27 @@ $loading-indicator-fill:          $gray-dark !default;
 $popover-bg:                      $white !default;
 $popover-border:                  none !default;
 $popover-border-radius:           $border-radius !default;
+$popover-close-color:             $gray-light !default;
 $popover-shadow:                  0 0 6px rgba(0, 0, 0, .2) !default;
-$popover-padding:                 $padding;
-$popover-small-width:             200px;
-$popover-medium-width:            300px;
-$popover-large-width:             400px;
-$popover-elevation:               24;
+$popover-padding:                 $padding !default;
+$popover-small-width:             260px !default;
+$popover-medium-width:            300px !default;
+$popover-large-width:             400px !default;
+$popover-elevation:               24 !default;
 
 //
 // Dropdown
 //
 $dropdown-padding:                12px !default;
 $dropdown-max-height:             400px !default;
+$dropdown-width:                  260px;
+
 $dropdown-label-font-size:        $font-size-medium !default;
 $dropdown-label-font-weight:      600 !default;
 $dropdown-label-color:            $brand-primary !default;
+$dropdown-label-color-error:      $brand-danger !default;
+$dropdown-label-color-disabled:   $gray !default;
+
 $dropdown-chevron-height:         6px !default;
 $dropdown-chevron-width:          10px !default;
 $dropdown-hint-color:             $gray !default;
@@ -133,6 +142,21 @@ $dropdown-item-selected-color:    $white !default;
 $dropdown-item-selected-bg:       $brand-primary !default;
 $dropdown-item-disabled-color:    $white !default;
 $dropdown-item-disabled-bg:       $gray-light !default;
+
+//
+// Menu
+//
+$menu-item-font-size:             $font-size-base !default;
+$menu-item-line-height:           $font-size-base !default;
+$menu-item-color:                 $brand-primary !default;
+$menu-item-bg:                    $white !default;
+$menu-item-color-hover:           $white !default;
+$menu-item-bg-hover:              darken($brand-primary, 10%) !default;
+$menu-item-color-selected:        $white !default;
+$menu-item-bg-selected:           $brand-primary !default;
+$menu-item-color-disabled:        $white !default;
+$menu-item-bg-disabled:           $gray-light !default;
+
 
 //
 // Cards
@@ -152,6 +176,7 @@ $card-subtitle-color:             $gray !default;
 // Input
 //
 $input-border-radius:            $border-radius;
+$input-border-error:             1px solid $brand-danger;
 
 //
 // Switch
@@ -159,12 +184,17 @@ $input-border-radius:            $border-radius;
 $switch-height:                   21px;
 $switch-width:                    47px;
 $switch-padding:                  5px;
-$switch-border:                   $border-heavy;
 $switch-handle-height:            $switch-height - ($switch-padding * 2);
 $switch-on-icon-fill:             $white;
 $switch-on-icon-size:             13px;
 $switch-off-icon-fill:            $gray;
 $switch-off-icon-size:            10px;
+
+//
+// Toggle
+//
+$toggle-bg:                      $gray-light !default;
+$toggle-color:                   $brand-primary !default;
 
 //
 // List Item
@@ -202,6 +232,7 @@ $modal-sidebar-padding:           40px !default;
 $modal-actions-border:            $border !default;
 $modal-actions-padding:           20px 30px !default;
 $modal-actions-cta-padding:       10px 0 10px 0 !default;
+$modal-elevation:                 24;
 
 
 //
@@ -214,3 +245,52 @@ $icon-fill:                       $gray !default;
 //
 $rc-progress-color:               $brand-primary !default;
 $rc-progress-animation:           400ms !default;
+
+//
+// Tooltip
+//
+$tooltip-bg:                  rgba(0, 0, 0, .75);
+$tooltip-color:               $gray-light;
+$tooltip-padding:             5px 15px;
+$tooltip-radius:              $border-radius;
+$tooltip-font-size:           $font-size-medium;
+$tooltip-elevation:           24;
+
+//
+// Slide ins
+//
+$slidein-bg:                      $white !default;
+$slidein-color:                   $font-color-base !default;
+$slidein-padding:                 10px 12px !default;
+$slidein-horizontal-width:        330px !default;
+$slidein-vertical-height:         330px !default;
+$slidein-actions-border:          $border !default;
+$slidein-actions-padding:         10px 20px !default;
+$slidein-actions-button-margin:   7px !default;
+$slidein-title-font-size:         $font-size-base;
+$slidein-header-padding:          12px 16px !default;
+
+//
+// Accordions
+//
+$accordion-item-title-font-family:     $button-font-family !default;
+$accordion-item-title-font-size:       $font-size-base !default;
+$accordion-item-title-color:           $gray-darker !default;
+$accordion-item-title-bg-color:        $gray-lighter !default;
+$accordion-item-title-border:          2px solid $gray-lighter !default;
+$accordion-item-title-padding:         10px 16px !default;
+$accordion-item-title-text-transform:  auto !default;
+$accordion-item-content-padding:       20px 16px !default;
+
+
+//
+// Select
+//
+$select-item-background:  lighten($brand-primary, 10%);
+$select-item-border:      $brand-primary;
+
+//
+// Blank Slates
+//
+
+$blank-slate-icon-color: $brand-primary;

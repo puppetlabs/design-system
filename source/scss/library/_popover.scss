@@ -7,6 +7,25 @@
   padding: $popover-padding;
   z-index: $popover-elevation;
 
+  .rc-popover-header {
+    position: relative;
+    margin-bottom: $popover-padding;
+  }
+
+  .rc-popover-hint {
+    display: block;
+    padding: 0;
+    margin-right: 33px;
+    color: $dropdown-hint-color;
+    font-size: $dropdown-hint-font-size;
+  }
+
+  .rc-popover-close {
+    position: absolute;
+    top: -7px;
+    right: -7px;
+  }
+
   &.rc-popover-small {
     width: $popover-small-width;
   }
@@ -18,4 +37,12 @@
   &.rc-popover-large {
     width: $popover-large-width;
   }
+}
+
+.rc-popover-wrapper {
+  display: inline-block;
+}
+
+.rc-popover-wrapper-relative {
+  position: relative;
 }

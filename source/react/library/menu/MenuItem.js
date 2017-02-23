@@ -10,7 +10,7 @@ const propTypes = {
   disabled: React.PropTypes.bool,
 };
 
-class DropdownMenuItem extends React.Component {
+class MenuItem extends React.Component {
   constructor(props) {
     super(props);
 
@@ -38,9 +38,9 @@ class DropdownMenuItem extends React.Component {
   render() {
     const option = this.props.option;
     const checkmark = this.renderCheckmark();
-    const className = classnames('rc-dropdown-item', {
-      'rc-dropdown-item-selected': this.props.selected,
-      'rc-dropdown-item-disabled': this.props.option.disabled,
+    const className = classnames('rc-menu-item', {
+      'rc-menu-item-selected': this.props.selected,
+      'rc-menu-item-disabled': this.props.option.disabled,
     });
 
     return (
@@ -51,6 +51,6 @@ class DropdownMenuItem extends React.Component {
   }
 }
 
-DropdownMenuItem.propTypes = propTypes;
+MenuItem.propTypes = propTypes;
 
-export default DropdownMenuItem;
+export default MenuItem;

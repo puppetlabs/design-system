@@ -1,0 +1,48 @@
+.rc-accordion {
+  .rc-accordion-item-title {
+    .rc-accordion-item-header {
+      display: block;
+      background-color: $accordion-item-title-bg-color;
+      color: $accordion-item-title-color;
+
+      font-size: $accordion-item-title-font-size;
+      font-family: $accordion-item-title-font-family;
+
+      padding: $accordion-item-title-padding;
+      text-transform: $accordion-item-title-text-transform;
+
+      display: flex;
+
+      .rc-accordion-item-title-text {
+        align-items: center;
+        display: flex;
+        flex-grow: 2;
+      }
+
+      .rc-accordion-item-title-icon {
+        display: flex;
+        align-items: center;
+
+        // NOTE: No flex-grow here because it'll push the icon to the right.
+      }
+    }
+
+    &.rc-accordion-item-title-active {
+    }
+  }
+
+  .rc-accordion-item {
+    border-bottom: 1px solid $gray-light;
+
+    .rc-accordion-item-content {
+      display: none;
+      padding: $accordion-item-content-padding;
+    }
+
+    &.rc-accordion-item-active {
+      .rc-accordion-item-content {
+        display: block;
+      }
+    }
+  }
+}

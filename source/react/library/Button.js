@@ -11,11 +11,14 @@ const propTypes = {
   floating: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   processing: React.PropTypes.bool,
+  badge: React.PropTypes.bool,
   block: React.PropTypes.bool,
   onClick: React.PropTypes.func,
   label: React.PropTypes.string,
   type: React.PropTypes.string,
   href: React.PropTypes.string,
+  round: React.PropTypes.bool,
+  dropdownMenu: React.PropTypes.object,
   children: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
@@ -47,10 +50,13 @@ class Button extends React.Component {
       disabled,
       processing,
       block,
+      badge,
       size,
       href,
       className,
       floating,
+      dropdownMenu,
+      round,
     } = this.props;
 
     let button;
@@ -61,9 +67,13 @@ class Button extends React.Component {
       'rc-button-block': block,
       'rc-button-processing': processing,
       'rc-floating-action-button': floating,
+      'rc-button-badged': badge && !disabled,
+      'rc-button-primary': !secondary && !transparent,
       'rc-button-secondary': secondary,
       'rc-button-transparent': transparent,
+      'rc-button-split': dropdownMenu,
       [`rc-button-${size}`]: size,
+      'rc-button-round': round,
     });
 
     const btnProps = {
@@ -81,15 +91,15 @@ class Button extends React.Component {
     }
 
     if (this.props.icon) {
-      const iconSize = this.props.size === 'small' ? '15px' : '20px';
+      const iconSize = size === 'small' || size === 'tiny' ? '15px' : '20px';
 
       icon = <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />;
     }
 
     if (type) {
-      button = <button { ...btnProps }>{ icon } { content }{ loader }</button>;
+      button = <button { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</button>;
     } else {
-      button = <a { ...btnProps }>{ icon } { content }{ loader }</a>;
+      button = <a { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</a>;
     }
 
     return button;
