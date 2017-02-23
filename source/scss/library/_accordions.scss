@@ -17,11 +17,15 @@
         align-items: center;
         display: flex;
         flex-grow: 2;
+        font-size: $accordion-item-title-font-size;
       }
 
       .rc-accordion-item-title-icon {
         display: flex;
         align-items: center;
+        height: 10px;
+        width: 10px;
+        margin-top: 5px;
 
         // NOTE: No flex-grow here because it'll push the icon to the right.
       }
@@ -38,6 +42,9 @@
     .rc-accordion-item-content {
       display: none;
       padding: $accordion-item-content-padding;
+      .form-field {
+        margin-bottom: 8px;
+      }
     }
 
     &.rc-accordion-item-active {
