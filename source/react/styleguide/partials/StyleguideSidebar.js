@@ -18,6 +18,7 @@ const StyleguideSidebar = () => (
       <li><Link to="/tables">Tables</Link></li>
       <li><Link to="/slideins">Slide Ins</Link></li>
       <li><Link to="/accordions">Accordions</Link></li>
+      <li><Link to="/blankslates">Blank Slates</Link></li>
     </ul>
   </div>
 );

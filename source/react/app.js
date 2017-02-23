@@ -16,6 +16,7 @@ import Tables from './styleguide/Tables';
 import Toggles from './styleguide/Toggles';
 import SlideIns from './styleguide/SlideIns';
 import Accordions from './styleguide/Accordions';
+import BlankSlates from './styleguide/BlankSlates';
 import '../scss/library/all.scss';
 import '../scss/styleguide.scss';
 
@@ -39,6 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route path="toggles" components={ Toggles } />
         <Route path="slideins" components={ SlideIns } />
         <Route path="accordions" components={ Accordions } />
+        <Route path="blankslates" components={ BlankSlates } />
         <IndexRoute component={ Buttons } />
       </Route>
     </Router>
