@@ -68,6 +68,17 @@
       cursor: default;
     }
   }
+
+  &.rc-menu-tiny {
+    .rc-menu-item {
+      font-size: $menu-item-font-size-tiny;
+      line-height: $menu-item-line-height-tiny;
+
+      a {
+        padding: $dropdown-padding-tiny;
+      }
+    }
+  }
 }
 
 .rc-menu-multiple {
