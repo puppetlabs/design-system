@@ -26,6 +26,7 @@ import ColumnSelect from './react/library/table/ColumnSelect';
 import ColumnInput from './react/library/table/ColumnInput';
 import Accordion from './react/library/accordion/Accordion';
 import AccordionItem from './react/library/accordion/AccordionItem';
+import BlankSlate from './react/library/BlankSlate';
 
 export {
   Button,
@@ -55,5 +56,6 @@ export {
   ColumnInput,
   Accordion,
   AccordionItem,
-  SlideIn
+  SlideIn,
+  BlankSlate,
 };
