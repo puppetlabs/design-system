@@ -142,6 +142,29 @@
   li:last-of-type {
     border-bottom: none;
   }
+
+
+  &.rc-dropdown-menu-tiny {
+    width: $dropdown-width-tiny;
+
+    .rc-dropdown-item {
+      font-size: $dropdown-item-font-size-tiny;
+      line-height: $dropdown-item-line-height-tiny;
+    }
+
+    .rc-dropdown-hint {
+      font-size: $dropdown-item-font-size-tiny;
+
+      padding: $dropdown-padding-tiny;
+      padding-top: $dropdown-padding-tiny - $popover-border-radius * 2;
+    }
+
+    .rc-dropdown-item {
+      a {
+        padding: $dropdown-padding-tiny;
+      }
+    }
+  }
 }
 
 .rc-dropdown-menu-multiple {
