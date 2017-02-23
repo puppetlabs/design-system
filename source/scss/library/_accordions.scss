@@ -26,13 +26,14 @@
         // NOTE: No flex-grow here because it'll push the icon to the right.
       }
     }
-
-    &.rc-accordion-item-title-active {
-    }
   }
 
   .rc-accordion-item {
     border-bottom: 1px solid $gray-light;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
 
     .rc-accordion-item-content {
       display: none;
