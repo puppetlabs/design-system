@@ -31,7 +31,7 @@ class MenuList extends React.Component {
   render() {
     const { selected, options, multiple } = this.props;
     const className = classnames('rc-menu-list', {
-      'rc-menu-list-multiple': multiple,
+      'rc-menu-multiple': multiple,
     });
     const jsx = [];
 
