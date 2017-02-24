@@ -1,7 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import MenuItem from './MenuItem';
-import MenuList from './MenuList';
 
 const propTypes = {
   children: React.PropTypes.any,
@@ -18,8 +16,5 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = propTypes;
-
-Menu.MenuItem = MenuItem;
-Menu.MenuList = MenuList;
 
 export default Menu;
