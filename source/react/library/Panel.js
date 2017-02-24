@@ -4,6 +4,7 @@ import classnames from 'classnames';
 const propTypes = {
   children: React.PropTypes.any,
   secondary: React.PropTypes.bool,
+  className: React.PropTypes.string,
 };
 
 const defaultProps = {
@@ -13,7 +14,7 @@ const defaultProps = {
 const Panel = (props) => {
   const className = classnames('rc-panel', {
     'rc-panel-secondary': props.secondary,
-  });
+  }, props.className);
 
   return (
     <div className={ className }>

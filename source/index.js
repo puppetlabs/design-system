@@ -29,6 +29,7 @@ import ColumnInput from './react/library/table/ColumnInput';
 import Accordion from './react/library/accordion/Accordion';
 import AccordionItem from './react/library/accordion/AccordionItem';
 import BlankSlate from './react/library/BlankSlate';
+import Panel from './react/library/Panel';
 
 export {
   Button,
@@ -62,4 +63,5 @@ export {
   AccordionItem,
   SlideIn,
   BlankSlate,
+  Panel,
 };
