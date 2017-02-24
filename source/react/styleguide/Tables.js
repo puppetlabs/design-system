@@ -107,22 +107,13 @@ class Tables extends React.Component {
     return (
       <div>
         <h1>Tables</h1>
-        <StyleguideSection title="Striped">
+        <StyleguideSection title="Basic Table">
           <Table
-            className="rc-table-fixed rc-table-striped"
             selectable
             striped
             data={ this.state.stripedData }
             columns={ columns }
             onChange={ this.onStripedChange }
-          />
-        </StyleguideSection>
-        <StyleguideSection title="List">
-          <Table
-            className="rc-table-list"
-            data={ this.state.listData }
-            columns={ columns }
-            onChange={ this.onListChange }
           />
         </StyleguideSection>
       </div>
