@@ -302,11 +302,22 @@ $accordion-item-content-padding:       20px 16px !default;
 //
 // Select
 //
-$select-item-background:  lighten($brand-primary, 10%);
-$select-item-border:      $brand-primary;
+$select-item-background:               lighten($brand-primary, 10%) !default;
+$select-item-border:                   $brand-primary !default;
 
 //
 // Blank Slates
 //
 
-$blank-slate-icon-color: $brand-primary;
+$blank-slate-icon-color:               $brand-primary !default;
+
+//
+// Panel
+//
+
+$panel-bg:                             $white !default;
+$panel-bg-secondary:                   $gray-lighter !default;
+$panel-padding:                        $padding !default;
+$panel-border:                         $border !default;
+$panel-border-radius:                  $border-radius !default;
+$panel-outer-shadow:                   $outer-shadow !default;
