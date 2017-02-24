@@ -88,6 +88,8 @@
 
   .rc-menu-close {
     display: flex;
+    justify-content: flex-end;
+    flex-grow: 2;
 
     .rc-icon {
       float: right;
