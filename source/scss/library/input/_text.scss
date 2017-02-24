@@ -29,8 +29,8 @@
   }
 
   &.rc-input-small {
-    font-size: 11px;
-    padding: 6px 6px;
+    font-size: $font-size-small;
+    padding: 7px;
   }
 
   &::-webkit-input-placeholder {
