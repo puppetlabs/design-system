@@ -241,6 +241,15 @@ $modal-actions-padding:           20px 30px !default;
 $modal-actions-cta-padding:       10px 0 10px 0 !default;
 $modal-elevation:                 24;
 
+//
+// Tables
+//
+
+$table-border:                  1px solid $gray-light !default;
+$table-shadow:                  $outer-shadow !default;
+$table-header-bg:               $gray-lighter !default;
+$table-header-color:            $gray !default;
+$table-border-radius:           $border-radius !default;
 
 //
 // Icons
