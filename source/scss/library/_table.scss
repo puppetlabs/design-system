@@ -30,7 +30,7 @@
   }
 
   th {
-    @extend .uppercase;
+    @extend .rc-uppercase;
     font-size: 10px;
     letter-spacing: 1px;
     background-color: $table-header-bg;
@@ -125,7 +125,7 @@
 
     th > div {
       display: block;
-      @extend .uppercase;
+      @extend .rc-uppercase;
       border-bottom: 1px solid #ccc;
       padding: 10px;
       font-size: 12px;
