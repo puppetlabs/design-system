@@ -168,6 +168,7 @@ class Popover extends React.Component {
 
   render() {
     const wrapperClassName = classnames('rc-popover-wrapper', {
+      'rc-popover-wrapper-open': this.state.open,
       'rc-popover-wrapper-relative': this.props.disablePortal,
     });
     const className = classnames('rc-popover', this.props.className, {
