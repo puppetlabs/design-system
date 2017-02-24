@@ -37,6 +37,10 @@
   &.rc-popover-large {
     width: $popover-large-width;
   }
+
+  &.rc-popover-no-padding {
+    padding: 0;
+  }
 }
 
 .rc-popover-wrapper {
