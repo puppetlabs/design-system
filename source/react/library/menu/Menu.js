@@ -4,6 +4,7 @@ import MenuItem from './MenuItem';
 
 const propTypes = {
   options: React.PropTypes.array,
+  size: React.PropTypes.string,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
@@ -14,6 +15,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  size: 'small',
   selected: '',
 };
 
@@ -29,8 +31,8 @@ class Menu extends React.Component {
   }
 
   render() {
-    const { selected, options, multiple } = this.props;
-    const className = classnames('rc-menu', {
+    const { selected, options, multiple, size } = this.props;
+    const className = classnames('rc-menu', `rc-menu-${size}`, {
       'rc-menu-multiple': multiple,
     });
     const jsx = [];

@@ -1,8 +1,21 @@
 .rc-table {
   width: 100%;
   text-align: left;
-  border-collapse: collapse;
+  border-collapse: separate;
   border-spacing: 0;
+  box-shadow: $table-shadow;
+
+  tr:last-of-type {
+    td {
+      &:first-of-type {
+        border-bottom-left-radius: $table-border-radius;
+      }
+
+      &:last-of-type {
+        border-bottom-right-radius: $table-border-radius;
+      }
+    }
+  }
 
   // Hide the sticky header divs
   th > div {
@@ -10,18 +23,39 @@
   }
 
   th, td {
-    border-bottom: 1px solid #ccc;
+    border-bottom: $table-border;
     padding: 10px;
     font-size: 12px;
     background: white;
   }
 
   th {
-    @extend .uppercase;
-    color: $gray;
+    @extend .rc-uppercase;
     font-size: 10px;
     letter-spacing: 1px;
-    background: $white;
+    background-color: $table-header-bg;
+    border-top: $table-border;
+    color: $table-header-color;
+
+    &:first-of-type {
+      border-left: $table-border;
+      border-top-left-radius: $table-border-radius;
+    }
+
+    &:last-of-type {
+      border-right: $table-border;
+      border-top-right-radius: $table-border-radius;
+    }
+  }
+
+  td {
+    &:first-of-type {
+      border-left: $table-border;
+    }
+
+    &:last-of-type {
+      border-right: $table-border;
+    }
   }
 
   .rc-table-column-checkbox {
@@ -91,7 +125,7 @@
 
     th > div {
       display: block;
-      @extend .uppercase;
+      @extend .rc-uppercase;
       border-bottom: 1px solid #ccc;
       padding: 10px;
       font-size: 12px;

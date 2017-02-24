@@ -53,6 +53,11 @@ a.rc-modal-close {
       margin-right: 0;
       margin-left: $modal-sidebar-width;
     }
+
+    .rc-modal-content {
+      border-top-right-radius: $modal-border-radius;
+      border-top-left-radius: 0
+    }
   }
 
   &.rc-modal-small {
@@ -81,6 +86,7 @@ a.rc-modal-close {
     padding: 60px 80px;
     overflow-y: scroll;
     transform: translateZ(0);
+    border-top-left-radius: $modal-border-radius;
   }
 
   .rc-modal-sidebar {

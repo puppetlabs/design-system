@@ -62,10 +62,13 @@
 
   .rc-slidein-remove {
     display: flex;
-    width: 25%;
-    text-align: right;
-    justify-content: flex-end;
-    align-items: center;
+    .rc-icon {
+      float: right;
+      width: 8px;
+      height: 8px;
+      margin-top: 8px;
+      margin-right: -2px;
+    }
   }
 
   .rc-slidein-title {
