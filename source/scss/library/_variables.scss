@@ -305,6 +305,13 @@ $accordion-item-content-padding:       20px 16px !default;
 $select-item-background:               lighten($brand-primary, 10%) !default;
 $select-item-border:                   $brand-primary !default;
 
+// These are for the beginning of us building our own selects
+$select-label-font-size:               $font-size-small !default;
+$select-label-padding:                 6px 7px !default;
+$select-label-bg:                      $gray-light !default;
+$select-label-border:                  $border !default;
+$select-label-border-radius:           $border-radius !default;
+
 //
 // Blank Slates
 //
