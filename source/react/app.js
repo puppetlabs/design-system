@@ -8,6 +8,7 @@ import Forms from './styleguide/Forms';
 import Cards from './styleguide/Cards';
 import Icons from './styleguide/Icons';
 import Modals from './styleguide/Modals';
+import Menus from './styleguide/Menus';
 import Dropdowns from './styleguide/Dropdowns';
 import Switches from './styleguide/Switches';
 import Tabs from './styleguide/Tabs';
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route path="buttons" components={ Buttons } />
         <Route path="progress" components={ ProgressBars } />
         <Route path="modals" components={ Modals } />
+        <Route path="menus" components={ Menus } />
         <Route path="dropdowns" components={ Dropdowns } />
         <Route path="cards" components={ Cards } />
         <Route path="forms" components={ Forms } />
