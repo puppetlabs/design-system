@@ -2,6 +2,7 @@ import React from 'react';
 import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 import classnames from 'classnames';
+import onClickOutside from 'react-onclickoutside';
 
 const propTypes = {
   title: React.PropTypes.string,
@@ -119,8 +120,14 @@ class SlideIn extends React.Component {
       </div>
     );
   }
+
+  handleClickOutside() {
+    if (this.props.onRemove) {
+      this.props.onRemove();
+    }
+  }
 }
 
 SlideIn.propTypes = propTypes;
 
-export default SlideIn;
+export default onClickOutside(SlideIn);
