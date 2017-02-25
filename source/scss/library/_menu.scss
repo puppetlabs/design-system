@@ -80,11 +80,18 @@
   }
 }
 
+.rc-menu-section {
+  padding: $menu-section-padding;
+
+  &:not(last-of-type) {
+    border-bottom: $menu-section-border;
+  }
+}
 
 .rc-menu-header {
   display: flex;
   padding: $menu-header-padding;
-  border-bottom: 1px solid $gray-light;
+  border-bottom: $menu-header-border;
 
   .rc-menu-close {
     display: flex;
@@ -106,7 +113,7 @@
     align-items: center;
 
     h2 {
-      color: $gray;
+      color: $menu-title-color;
       font-size: $menu-title-font-size;
     }
   }
