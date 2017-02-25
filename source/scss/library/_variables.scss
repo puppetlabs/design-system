@@ -15,6 +15,7 @@ $brand-danger:                   #d9534f !default;
 
 $font-family:                   'Open Sans', sans-serif !default;
 
+$font-size-large:                18px !default;
 $font-size-base:                 16px !default;
 $font-size-medium:               14px !default;
 $font-size-small:                12px !default;
@@ -241,12 +242,14 @@ $modal-sidebar-padding:           40px !default;
 $modal-actions-border:            $border !default;
 $modal-actions-padding:           20px 30px !default;
 $modal-actions-cta-padding:       10px 0 10px 0 !default;
-$modal-elevation:                 24;
+$modal-elevation:                 24 !default;
+$modal-padding:                   40px !default;
 
 //
 // Tables
 //
 
+$table-font-size:               $font-size-medium !default;
 $table-border:                  1px solid $gray-light !default;
 $table-shadow:                  $outer-shadow !default;
 $table-header-bg:               $gray-lighter !default;
@@ -302,11 +305,29 @@ $accordion-item-content-padding:       20px 16px !default;
 //
 // Select
 //
-$select-item-background:  lighten($brand-primary, 10%);
-$select-item-border:      $brand-primary;
+$select-item-background:               lighten($brand-primary, 10%) !default;
+$select-item-border:                   $brand-primary !default;
+
+// These are for the beginning of us building our own selects
+$select-label-font-size:               $font-size-small !default;
+$select-label-padding:                 6px 7px !default;
+$select-label-bg:                      $gray-light !default;
+$select-label-border:                  $border !default;
+$select-label-border-radius:           $border-radius !default;
 
 //
 // Blank Slates
 //
 
-$blank-slate-icon-color: $brand-primary;
+$blank-slate-icon-color:               $brand-primary !default;
+
+//
+// Panel
+//
+
+$panel-bg:                             $white !default;
+$panel-bg-secondary:                   $gray-lighter !default;
+$panel-padding:                        $padding !default;
+$panel-border:                         $border !default;
+$panel-border-radius:                  $border-radius !default;
+$panel-outer-shadow:                   $outer-shadow !default;

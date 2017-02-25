@@ -74,16 +74,9 @@ a.rc-modal-close {
     width: $modal-width-medium;
   }
 
-  .rc-modal-title {
-    padding: $modal-title-padding;
-    background: $modal-bg;
-    font-size: 24px;
-    border-bottom: $modal-title-border;
-  }
-
   .rc-modal-content {
     background: $modal-bg;
-    padding: 60px 80px;
+    padding: $modal-padding;
     overflow-y: scroll;
     transform: translateZ(0);
     border-top-left-radius: $modal-border-radius;
