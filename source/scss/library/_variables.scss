@@ -164,7 +164,7 @@ $menu-item-bg-selected:           $brand-primary !default;
 $menu-item-color-disabled:        $white !default;
 $menu-item-bg-disabled:           $gray-light !default;
 
-$menu-header-padding:             7px 16px 9px !default;
+$menu-header-padding:             7px $padding 9px !default;
 $menu-title-font-size:            $font-size-medium !default;
 
 //

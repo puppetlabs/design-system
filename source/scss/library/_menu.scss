@@ -80,11 +80,18 @@
   }
 }
 
+.rc-menu-section {
+  padding: $padding;
+
+  &:not(last-of-type) {
+    border-bottom: $border;
+  }
+}
 
 .rc-menu-header {
   display: flex;
   padding: $menu-header-padding;
-  border-bottom: 1px solid $gray-light;
+  border-bottom: $border;
 
   .rc-menu-close {
     display: flex;
