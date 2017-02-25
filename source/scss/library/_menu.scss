@@ -35,7 +35,6 @@
   }
 }
 
-
 .rc-menu {
   @include menu-item-colors(
     $menu-item-bg,
@@ -77,6 +76,38 @@
       a {
         padding: $dropdown-padding-tiny;
       }
+    }
+  }
+}
+
+
+.rc-menu-header {
+  display: flex;
+  padding: $menu-header-padding;
+  border-bottom: 1px solid $gray-light;
+
+  .rc-menu-close {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 2;
+
+    .rc-icon {
+      float: right;
+      width: 8px;
+      height: 8px;
+      margin-top: 8px;
+      margin-right: -2px;
+    }
+  }
+
+  .rc-menu-title {
+    display: flex;
+    width: 75%;
+    align-items: center;
+
+    h2 {
+      color: $gray;
+      font-size: $menu-title-font-size;
     }
   }
 }

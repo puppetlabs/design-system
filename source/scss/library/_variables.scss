@@ -164,6 +164,8 @@ $menu-item-bg-selected:           $brand-primary !default;
 $menu-item-color-disabled:        $white !default;
 $menu-item-bg-disabled:           $gray-light !default;
 
+$menu-header-padding:             7px 16px 9px !default;
+$menu-title-font-size:            $font-size-medium !default;
 
 //
 // Cards
@@ -283,8 +285,6 @@ $slidein-vertical-height:         330px !default;
 $slidein-actions-border:          $border !default;
 $slidein-actions-padding:         10px 20px !default;
 $slidein-actions-button-margin:   7px !default;
-$slidein-title-font-size:         14px;
-$slidein-header-padding:          7px 16px 9px !default;
 
 //
 // Accordions

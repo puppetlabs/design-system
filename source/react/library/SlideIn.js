@@ -3,6 +3,8 @@ import Button from './Button';
 import ButtonGroup from './ButtonGroup';
 import classnames from 'classnames';
 import onClickOutside from 'react-onclickoutside';
+import Menu from './menu/Menu';
+import MenuHeader from './menu/MenuHeader';
 
 const propTypes = {
   title: React.PropTypes.string,
@@ -17,8 +19,10 @@ const propTypes = {
 };
 
 class SlideIn extends React.Component {
-  constructor(props) {
-    super(props);
+  handleClickOutside() {
+    if (this.props.onRemove) {
+      this.props.onRemove();
+    }
   }
 
   renderContent() {
@@ -51,80 +55,52 @@ class SlideIn extends React.Component {
     return (
       <div className="rc-slidein-actions">
         <ButtonGroup>
-          {closeAction}
-          {submitAction}
+          { closeAction }
+          { submitAction }
         </ButtonGroup>
       </div>
     );
   }
 
-  renderRemove() {
-    // if they don't have "removeable" enabled at all then...
-    if (!this.props.removeable) return;
+  renderHeader() {
+    let onClose;
 
-    let removeButton;
-
-    if (this.props.onRemove) {
-      removeButton = (
-        <div className="rc-slidein-remove">
-          <Button icon="close" transparent size="tiny" onClick={this.props.onRemove} />
-        </div>
-      );
+    if (this.props.removeable && this.props.onRemove) {
+      onClose = this.props.onRemove;
     }
 
-    return removeButton;
-  }
-
-  renderTitle() {
-    if (!this.props.title) return;
-
     return (
-      <div className="rc-slidein-title">
-        <h2>{this.props.title}</h2>
-      </div>
+      <MenuHeader
+        title={ this.props.title }
+        onClose={ onClose }
+      />
     );
   }
 
   render() {
-    let actions = this.renderActions();
-    let remove = this.renderRemove();
+    const actions = this.renderActions();
+    const header = this.renderHeader();
+    const content = this.renderContent();
 
     const className = classnames('rc-slidein', {
-      'rc-slidein-bottom': this.props.position == 'bottom',
-      'rc-slidein-top': this.props.position == 'top',
-      'rc-slidein-left': this.props.position == 'left',
-      'rc-slidein-right': this.props.position == 'right',
+      'rc-slidein-bottom': this.props.position === 'bottom',
+      'rc-slidein-top': this.props.position === 'top',
+      'rc-slidein-left': this.props.position === 'left',
+      'rc-slidein-right': this.props.position === 'right',
       'rc-slidein-has-actions': actions,
     }, this.props.className);
 
-    const title = this.renderTitle();
-
-    let header;
-    
-    if (title || remove) {
-      header = (
-        <div className="rc-slidein-header">
-          {title}
-          {remove}
-        </div>
-      );
-    }
-
     return (
-      <div className={className}>
-        {header}
-        <div className="rc-slidein-content">
-          {this.renderContent()}
-        </div>
-        {actions}
+      <div className={ className }>
+        <Menu>
+          { header }
+          <div className="rc-slidein-content">
+            { content }
+          </div>
+          { actions }
+        </Menu>
       </div>
     );
-  }
-
-  handleClickOutside() {
-    if (this.props.onRemove) {
-      this.props.onRemove();
-    }
   }
 }
 

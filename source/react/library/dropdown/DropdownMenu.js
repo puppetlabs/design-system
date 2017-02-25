@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import Popover from '../Popover';
 import Menu from '../menu/Menu';
+import MenuList from '../menu/MenuList';
 
 const propTypes = {
   anchor: React.PropTypes.string,
@@ -71,11 +72,14 @@ class DropdownMenu extends React.Component {
       jsx = (
         <Menu
           size={ size }
-          options={ options }
-          selected={ selected }
-          multiple={ this.props.multiple }
-          onChange={ this.onChange }
-        />
+        >
+          <MenuList
+            options={ options }
+            selected={ selected }
+            multiple={ this.props.multiple }
+            onChange={ this.onChange }
+          />
+        </Menu>
       );
     } else if (this.props.blank) {
       jsx = <p className="rc-dropdown-blank">{ this.props.blank }</p>;
