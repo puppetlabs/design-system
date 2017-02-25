@@ -9,6 +9,9 @@ import Dropdown from './react/library/dropdown/Dropdown';
 import DropdownLabel from './react/library/dropdown/DropdownLabel';
 import Input from './react/library/Input';
 import DropdownMenu from './react/library/dropdown/DropdownMenu';
+import Menu from './react/library/menu/Menu';
+import MenuHeader from './react/library/menu/MenuHeader';
+import MenuSection from './react/library/menu/MenuSection';
 import Filter from './react/library/Filter';
 import Switch from './react/library/Switch';
 import Loading from './react/library/Loading';
@@ -27,6 +30,7 @@ import ColumnInput from './react/library/table/ColumnInput';
 import Accordion from './react/library/accordion/Accordion';
 import AccordionItem from './react/library/accordion/AccordionItem';
 import BlankSlate from './react/library/BlankSlate';
+import Panel from './react/library/Panel';
 
 export {
   Button,
@@ -40,6 +44,9 @@ export {
   Input,
   DropdownLabel,
   DropdownMenu,
+  MenuSection,
+  Menu,
+  MenuHeader,
   Filter,
   Switch,
   Loading,
@@ -58,4 +65,5 @@ export {
   AccordionItem,
   SlideIn,
   BlankSlate,
+  Panel,
 };

@@ -53,32 +53,4 @@
     border-top: $slidein-actions-border;
     padding: $slidein-actions-padding;
   }
-
-  .rc-slidein-header {
-    display: flex;
-    padding: $slidein-header-padding;
-    border-bottom: 1px solid $gray-light;
-  }
-
-  .rc-slidein-remove {
-    display: flex;
-    .rc-icon {
-      float: right;
-      width: 8px;
-      height: 8px;
-      margin-top: 8px;
-      margin-right: -2px;
-    }
-  }
-
-  .rc-slidein-title {
-    display: flex;
-    width: 75%;
-    align-items: center;
-
-    h2 {
-      color: $gray;
-      font-size: $slidein-title-font-size;
-    }
-  }
 }

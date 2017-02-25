@@ -44,6 +44,6 @@ describe('<DropdownMenu />', () => {
   it('should pass the correct number of options to Menu', () => {
     const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
     const wrapper = shallow(<DropdownMenu options={ options } />);
-    expect(wrapper.find('Menu').prop('options').length).to.eql(2);
+    expect(wrapper.find('MenuList').prop('options').length).to.eql(2);
   });
 });

@@ -55,6 +55,34 @@
     $dropdown-label-color-error
   );
 
+  &.rc-dropdown-toggle-select {
+    display: block;
+    background: $select-label-bg;
+    border: $select-label-border;
+    border-radius: $select-label-border-radius;
+    padding: $select-label-padding;
+
+    .rc-dropdown-label {
+      position: relative;
+      display: block;
+      font-size: $select-label-font-size;
+
+      .rc-dropdown-label-text {
+        display: block;
+        margin-right: 20px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .rc-icon {
+        position: absolute;
+        right: 5px;
+        top: 7px;
+        left: auto;
+      }
+    }
+  }
+
   &[disabled] {
     pointer-events: none;
   }

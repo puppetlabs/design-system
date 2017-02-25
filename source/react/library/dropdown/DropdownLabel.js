@@ -5,6 +5,7 @@ import Icon from '../Icon';
 const propTypes = {
   placeholder: React.PropTypes.string,
   label: React.PropTypes.string,
+  select: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   error: React.PropTypes.string,
   tabIndex: React.PropTypes.string,
@@ -21,6 +22,7 @@ const DropdownLabel = (props) => {
   }
 
   const className = classnames('rc-dropdown-toggle', {
+    'rc-dropdown-toggle-select': props.select,
     'rc-dropdown-toggle-error': props.error,
   });
 
