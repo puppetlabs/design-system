@@ -6,6 +6,7 @@ import PopoverContent, { PopoverContentWithoutPortal } from './PopoverContent';
 const propTypes = {
   open: React.PropTypes.bool,
   position: React.PropTypes.object,
+  padding: React.PropTypes.bool,
   closeButton: React.PropTypes.bool,
   anchor: React.PropTypes.string,
   onClose: React.PropTypes.func,
@@ -23,6 +24,7 @@ const propTypes = {
 const defaultProps = {
   width: 'auto',
   margin: 10,
+  padding: true,
   anchor: 'bottom left',
   allowBubble: false,
 };
@@ -173,6 +175,7 @@ class Popover extends React.Component {
     });
     const className = classnames('rc-popover', this.props.className, {
       [`rc-popover-${this.props.size}`]: this.props.size,
+      'rc-popover-no-padding': !this.props.padding,
     });
     const styles = this.state.position;
     const button = this.renderButton();

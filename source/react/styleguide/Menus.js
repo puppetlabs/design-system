@@ -30,15 +30,15 @@ class Menus extends React.Component {
       <div>
         <h1>Menus</h1>
         <StyleguideSection title="Menu With List">
-          <Popover target={ listTarget } className="rc-popover-no-padding">
+          <Popover target={ listTarget } padding={ false } >
             <Menu>
               <MenuHeader title="I'm a happy menu title!" />
-              <MenuList options={ listOptions }/>
+              <MenuList options={ listOptions } />
             </Menu>
           </Popover>
         </StyleguideSection>
         <StyleguideSection title="Menu With Sections">
-          <Popover target={ sectionTarget } className="rc-popover-no-padding">
+          <Popover target={ sectionTarget } padding={ false} >
             <Menu>
               <MenuHeader title="I'm a happy menu title!" />
               <MenuSection>
