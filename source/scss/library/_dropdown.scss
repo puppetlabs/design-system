@@ -164,7 +164,7 @@
 
   ul {
     max-height: $dropdown-max-height;
-    overflow: scroll;
+    overflow: auto;
   }
 
   li:last-of-type {

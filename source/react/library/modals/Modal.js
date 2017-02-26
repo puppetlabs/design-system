@@ -209,7 +209,7 @@ class Modal extends React.Component {
       const newHeight = modalHeight;
 
       this.sidebar.style.height = `${newHeight}px`;
-      this.sidebar.style.overflowY = 'scroll';
+      this.sidebar.style.overflowY = 'auto';
     }
   }
 

@@ -77,7 +77,7 @@ a.rc-modal-close {
   .rc-modal-content {
     background: $modal-bg;
     padding: $modal-padding;
-    overflow-y: scroll;
+    overflow-y: auto;
     transform: translateZ(0);
     border-top-left-radius: $modal-border-radius;
   }
