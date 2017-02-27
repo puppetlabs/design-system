@@ -1,0 +1,20 @@
+.rc-grid-block {
+  fill: $gray-lighter;
+}
+
+.rc-grid-div {
+  height: 170px;
+  position: relative;
+}
+
+.rc-stencil-grid {
+  position: absolute;
+  top: 0px;
+}
+
+.rc-grid-block-icon-container {
+  .rc-icon {
+    fill: $brand-primary !important;
+    stroke: $gray-lighter;
+  }
+}

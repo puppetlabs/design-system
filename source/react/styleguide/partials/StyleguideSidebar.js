@@ -12,6 +12,7 @@ const StyleguideSidebar = () => (
       <li><Link to="/dropdowns">Dropdowns</Link></li>
       <li><Link to="/forms">Forms</Link></li>
       <li><Link to="/cards">Cards</Link></li>
+      <li><Link to="/stencils">Stencils</Link></li>
       <li><Link to="/icons">Icons</Link></li>
       <li><Link to="/switches">Switches</Link></li>
       <li><Link to="/tabs">Tabs</Link></li>
