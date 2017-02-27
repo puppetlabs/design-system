@@ -17,9 +17,14 @@ class Menus extends React.Component {
     return <Button>Open menu with sections</Button>;
   }
 
+  renderPopoverTarget() {
+    return <Button>Open Popover with Menu</Button>;
+  }
+
   render() {
     const listTarget = this.renderListTarget();
     const sectionTarget = this.renderSectionTarget();
+    const popoverTarget = this.renderPopoverTarget();
 
     const listOptions = [
       { id: 0, value: 'option1' },
@@ -30,15 +35,16 @@ class Menus extends React.Component {
       <div>
         <h1>Menus</h1>
         <StyleguideSection title="Menu With List">
-          <Popover target={ listTarget } className="rc-popover-no-padding">
+          <Popover target={ listTarget } padding={ false } >
             <Menu>
               <MenuHeader title="I'm a happy menu title!" />
-              <MenuList options={ listOptions }/>
+              <MenuList options={ listOptions } />
             </Menu>
           </Popover>
         </StyleguideSection>
+
         <StyleguideSection title="Menu With Sections">
-          <Popover target={ sectionTarget } className="rc-popover-no-padding">
+          <Popover target={ sectionTarget } padding={ false} >
             <Menu>
               <MenuHeader title="I'm a happy menu title!" />
               <MenuSection>
@@ -50,6 +56,15 @@ class Menus extends React.Component {
             </Menu>
           </Popover>
         </StyleguideSection>
+
+        <StyleguideSection title="Menu Inside Popover">
+          <Popover hint="hello!" target={ popoverTarget } menu closeButton >
+            <MenuSection>
+              I'm a happy section!
+            </MenuSection>
+          </Popover>
+        </StyleguideSection>
+
       </div>
     );
   }

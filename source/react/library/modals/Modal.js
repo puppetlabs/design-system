@@ -3,6 +3,7 @@ import classname from 'classnames';
 import debounce from 'debounce';
 import { mouseTrap } from 'react-mousetrap';
 import portal from '../portal';
+import Icon from '../Icon';
 import ButtonGroup from '../ButtonGroup';
 
 const propTypes = {
@@ -209,7 +210,7 @@ class Modal extends React.Component {
       const newHeight = modalHeight;
 
       this.sidebar.style.height = `${newHeight}px`;
-      this.sidebar.style.overflowY = 'scroll';
+      this.sidebar.style.overflowY = 'auto';
     }
   }
 
@@ -236,7 +237,11 @@ class Modal extends React.Component {
     let jsx;
 
     if (this.props.onClose) {
-      jsx = <a href="/#/close" onClick={ this.onClose } className="rc-modal-close">Close</a>;
+      jsx = (
+        <a href="/#/close" onClick={ this.onClose } className="rc-modal-close">
+          <Icon type="delete" />
+        </a>
+      );
     }
 
     return jsx;
