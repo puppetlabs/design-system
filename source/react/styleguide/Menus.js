@@ -58,7 +58,7 @@ class Menus extends React.Component {
         </StyleguideSection>
 
         <StyleguideSection title="Menu Inside Popover">
-          <Popover hint="hello!" target={ popoverTarget } menu >
+          <Popover hint="hello!" target={ popoverTarget } menu closeButton >
             <MenuSection>
               I'm a happy section!
             </MenuSection>

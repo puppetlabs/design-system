@@ -88,7 +88,7 @@ class PopoverContent extends React.Component {
         jsx = (
           <div className="rc-popover-header">
             <small className="rc-popover-hint">{ hint }</small>
-            {close}
+            { close }
           </div>
         );
       }
