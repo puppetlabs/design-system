@@ -8,6 +8,7 @@ const propTypes = {
   onOptionClick: React.PropTypes.func.isRequired,
   options: React.PropTypes.array.isRequired,
   label: React.PropTypes.string.isRequired,
+  processing: React.PropTypes.bool,
   dropdownWidth: React.PropTypes.string,
   dropdownSize: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
@@ -78,11 +79,12 @@ class SplitButton extends React.Component {
 
   render() {
     const dropdown = this.renderDropdown();
-    const { label, size, disabled } = this.props;
+    const { label, size, disabled, processing } = this.props;
 
     return (
       <div className="rc-split-button">
         <Button
+          processing={ processing }
           size={ size }
           onClick={ this.onClick }
           label={ label }
