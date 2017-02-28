@@ -2,6 +2,7 @@ import Button from './react/library/Button';
 import SplitButton from './react/library/SplitButton';
 import ButtonGroup from './react/library/ButtonGroup';
 import Card from './react/library/Card';
+import StencilGrid from './react/library/stencils/StencilGrid';
 import Icon from './react/library/Icon';
 import Tag from './react/library/Tag';
 import Popover from './react/library/Popover';
@@ -37,6 +38,7 @@ export {
   ButtonGroup,
   SplitButton,
   Card,
+  StencilGrid,
   Icon,
   Tag,
   Popover,
