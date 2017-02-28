@@ -16,6 +16,41 @@ const defaultProps = {
   },
 };
 
+const staticView = [
+  {
+    type: 'bars',
+    layout: { w: 12, h: 2, x: 0, y: 0 },
+  },
+  {
+    type: 'timeseries',
+    layout: { w: 12, h: 2, x: 0, y: 2 },
+  },
+  {
+    type: 'donut',
+    layout: { w: 12, h: 2, x: 0, y: 4 },
+  },
+];
+
+const validateBlocks = (blocks) => {
+  let valid = true;
+  let x;
+  let y;
+
+  blocks.forEach((block) => {
+    const layout = typeof block.layout === 'undefined';
+    if (!layout) {
+      x = typeof block.layout.x === 'undefined';
+      y = typeof block.layout.y === 'undefined';
+    }
+
+    if (layout || y || x) {
+      valid = false;
+    }
+  });
+
+  return valid;
+};
+
 class StencilGrid extends React.Component {
 
   constructor(props) {
@@ -36,9 +71,9 @@ class StencilGrid extends React.Component {
   getGridBlocks(blocks) {
     const gridBlocks = [];
 
-    blocks.forEach((block) => {
+    blocks.forEach((block, i) => {
       const coords = this.getCoords(block.layout);
-      gridBlocks.push(<GridBlock coords={ coords } type={ block.type } />);
+      gridBlocks.push(<GridBlock key={ `grid-block-${i}` } coords={ coords } type={ block.type } />);
     });
 
     return gridBlocks;
@@ -47,7 +82,8 @@ class StencilGrid extends React.Component {
   render() {
     const components = this.props.view.configuration.components;
     const settings = this.props.settings;
-    const gridBlocks = this.getGridBlocks(components);
+    const gridBlocks = validateBlocks(components) ?
+      this.getGridBlocks(components) : this.getGridBlocks(staticView);
 
     return (
       <div className="rc-grid-div">
