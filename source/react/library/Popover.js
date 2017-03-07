@@ -113,7 +113,7 @@ class Popover extends React.Component {
 
     if (this.props.position) {
       newState.position = this.props.position;
-    } else {
+    } else if (this.elem) {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
       let bottom;
