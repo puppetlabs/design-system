@@ -7,6 +7,7 @@ const propTypes = {
   onConfirm: React.PropTypes.func,
   children: React.PropTypes.any,
   confirmationMessage: React.PropTypes.string,
+  processingConfirmation: React.PropTypes.bool,
 };
 
 class ConfirmationModal extends React.Component {
@@ -42,8 +43,19 @@ class ConfirmationModal extends React.Component {
 
   render() {
     const actions = [
-      <Button key="cancel-button" label="cancel" size="small" onClick={ this.onCancel } />,
-      <Button key="submit-button" label="confirm" size="small" onClick={ this.onConfirm } />,
+      <Button
+        key="cancel-button"
+        label="cancel"
+        size="small"
+        onClick={ this.onCancel }
+      />,
+      <Button
+        key="submit-button"
+        label="confirm"
+        size="small"
+        onClick={ this.onConfirm }
+        processing={ this.props.processingConfirmation }
+      />,
     ];
 
     return (
