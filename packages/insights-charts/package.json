@@ -1,0 +1,46 @@
+{
+  "name": "@reflect/reflect-charts",
+  "version": "0.0.1",
+  "description": "Highly customizable charting library built on top of D3",
+  "main": "build/index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reflect/reflect-charts.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/reflect/reflect-charts/issues"
+  },
+  "homepage": "https://github.com/reflect/reflect-charts#readme",
+  "dependencies": {
+    "d3": "^4.7.2"
+  },
+  "devDependencies": {
+    "babel-core": "6.23.1",
+    "babel-eslint": "7.1.1",
+    "babel-loader": "6.3.2",
+    "babel-preset-es2015": "6.22.0",
+    "chai": "^3.5.0",
+    "eslint": "3.17.0",
+    "eslint-config-airbnb": "14.1.0",
+    "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jsx-a11y": "4.0.0",
+    "eslint-plugin-react": "6.10.0",
+    "jsdom": "^9.5.0",
+    "mocha": "^3.1.0",
+    "mocha-jsdom": "^1.1.0",
+    "node-sass": "^3.10.1",
+    "nodemon": "^1.11.0",
+    "sinon": "^1.17.6",
+    "sinon-chai": "^2.8.0",
+    "webpack": "2.2.1",
+    "webpack-dev-server": "2.4.1"
+  },
+  "peerDependencies": {
+    "moment": "^2.11.2"
+  }
+}

@@ -1,0 +1,7 @@
+# Ignore generated stuffs
+/node_modules
+npm-debug.log
+/build
+/dist
+*.sw[onp]
+.DS_Store
