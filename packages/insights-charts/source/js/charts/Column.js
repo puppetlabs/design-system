@@ -1,6 +1,6 @@
-import Visualization from './Visualization';
+import Chart from './Chart';
 
-class Column extends Visualization {
+class Column extends Chart {
   constructor(elem, data, options) {
     super(elem, data, options);
   }

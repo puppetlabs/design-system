@@ -1,6 +1,7 @@
-import Visualization from './Visualization';
+import Chart from './Chart';
+import * as d3 from 'd3';
 
-class Line extends Visualization {
+class Line extends Chart {
   constructor(elem, data, options) {
     super(elem, data, options);
   }

@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import moment from 'moment';
 
-class Visualization {
+class Chart {
   constructor(elem, data, options) {
     this.elem = elem;
     this.options = options;
@@ -18,4 +18,4 @@ class Visualization {
   }
 }
 
-export default Visualization;
+export default Chart;

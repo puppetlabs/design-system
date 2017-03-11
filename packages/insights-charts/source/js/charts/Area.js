@@ -1,6 +1,6 @@
-import Visualization from './Visualization';
+import Chart from './Chart';
 
-class Area extends Visualization {
+class Area extends Chart {
   constructor(elem, data, options) {
     super(elem, data, options);
   }

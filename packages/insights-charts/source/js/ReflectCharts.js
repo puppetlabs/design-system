@@ -1,7 +1,7 @@
-import Area from './visualizations/Area';
-import Column from './visualizations/Column';
-import Line from './visualizations/Line';
-import Pie from './visualizations/Pie';
+import Area from './charts/Area';
+import Column from './charts/Column';
+import Line from './charts/Line';
+import Pie from './charts/Pie';
 
 class ReflectChart {
   constructor(type, elem, data = {}, options = {}) {
@@ -10,40 +10,40 @@ class ReflectChart {
     this.setup(elem, data, options);
   }
 
-  getVisualization() {
+  getChart() {
     const type = this.type;
-    let Visualization;
+    let chart;
 
     switch (type) {
       case 'area':
-        Visualization = Area;
+        chart = Area;
         break;
       case 'line':
-        Visualization = Line;
+        chart = Line;
         break;
       case 'Column':
-        Visualization = Column;
+        chart = Column;
         break;
       case 'pie':
-        Visualization = Pie;
+        chart = Pie;
         break;
       default:
         break;
     }
 
-    return Visualization;
+    return chart;
   }
 
   setup(elem, data, options) {
-    const Visualization = this.getVisualization();
+    const Chart = this.getChart();
 
-    if (!Visualization) {
+    if (!Chart) {
       throw new Error('Invalid chart type');
     }
 
-    const visualization = new Visualization(elem, data, options);
+    const chart = new Chart(elem, data, options);
 
-    visualization.render();
+    chart.render();
   }
 }
 

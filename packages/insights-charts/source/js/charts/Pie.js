@@ -1,6 +1,6 @@
-import Visualization from './Visualization';
+import Chart from './Chart';
 
-class Pie extends Visualization {
+class Pie extends Chart {
   constructor(elem, data, options) {
     super(elem, options);
   }
