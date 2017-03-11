@@ -1,0 +1,39 @@
+$white:                          #fff !default;
+
+$gray-base:                      #201F1E !default;
+$gray-darker:                    lighten($gray-base, 19%) !default;
+$gray-dark:                      lighten($gray-base, 38%) !default;
+$gray:                           lighten($gray-base, 56%) !default;
+$gray-light:                     lighten($gray-base, 80%) !default;
+$gray-lighter:                   lighten($gray-base, 84%) !default;
+
+$brand-primary:                  #269CFF !default;
+$brand-success:                  #5cb85c !default;
+$brand-info:                     #5bc0de !default;
+$brand-warning:                  #f0ad4e !default;
+$brand-danger:                   #d9534f !default;
+
+$font-family:                   'Open Sans', sans-serif !default;
+
+$font-size-large:                18px !default;
+$font-size-base:                 16px !default;
+$font-size-medium:               14px !default;
+$font-size-small:                12px !default;
+$font-size-tiny:                 10px !default;
+$line-height-base:               1.428571429 !default; // 20/14
+
+$font-color-base:                $gray-darker;
+
+$border-color:                   #dedede !default;
+$border-hover-color:             $gray !default;
+$border-radius:                  4px !default;
+$border:                         1px solid $border-color !default;
+$border-heavy:                   2px solid $border-color;
+$border-active:                  1px solid $brand-primary !default;
+$border-hover:                   1px solid $border-hover-color !default;
+
+$outer-shadow:                   0 0px 1px rgba(0, 0, 0, .05) !default;
+$hover-shadow:                   0px 0px 0px 1px $gray !default;
+$selected-shadow:                0px 0px 0px 1px $brand-primary !default;
+
+$padding:                        16px;

@@ -1,14 +1,16 @@
 import Area from './visualizations/Area';
-import Bar from './visualizations/Bar';
+import Column from './visualizations/Column';
 import Line from './visualizations/Line';
 import Pie from './visualizations/Pie';
 
 class ReflectChart {
-  constructor(type, selector, options) {
-    this.render(type, selector, options);
+  constructor(type, elem, data = {}, options = {}) {
+    this.type = type;
+
+    this.setup(elem, data, options);
   }
 
-  classifyType() {
+  getVisualization() {
     const type = this.type;
     let Visualization;
 
@@ -19,8 +21,8 @@ class ReflectChart {
       case 'line':
         Visualization = Line;
         break;
-      case 'bar':
-        Visualization = Bar;
+      case 'Column':
+        Visualization = Column;
         break;
       case 'pie':
         Visualization = Pie;
@@ -32,18 +34,14 @@ class ReflectChart {
     return Visualization;
   }
 
-  render(type, selector, options) {
-    const elem = document.getElementById(selector);
-
-    elem.innerHTML = '';
-
-    const Visualization = this.classifyType(type);
+  setup(elem, data, options) {
+    const Visualization = this.getVisualization();
 
     if (!Visualization) {
-      throw new Error(`Invalid chart type: ${type}`);
+      throw new Error('Invalid chart type');
     }
 
-    const visualization = new Visualization(selector, options);
+    const visualization = new Visualization(elem, data, options);
 
     visualization.render();
   }

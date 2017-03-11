@@ -1,8 +1,12 @@
 import Visualization from './Visualization';
 
 class Line extends Visualization {
-  constructor(selector, options) {
-    super(selector, options);
+  constructor(elem, data, options) {
+    super(elem, data, options);
+  }
+
+  build() {
+    this.visualization = 'hello world';
   }
 }
 

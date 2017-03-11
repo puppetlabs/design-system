@@ -1,8 +1,8 @@
 import Visualization from './Visualization';
 
 class Pie extends Visualization {
-  constructor(selector, options) {
-    super(selector, options);
+  constructor(elem, data, options) {
+    super(elem, options);
   }
 }
 

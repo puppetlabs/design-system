@@ -1,8 +1,8 @@
 import Visualization from './Visualization';
 
 class Column extends Visualization {
-  constructor(selector, options) {
-    super(selector, options);
+  constructor(elem, data, options) {
+    super(elem, data, options);
   }
 }
 
