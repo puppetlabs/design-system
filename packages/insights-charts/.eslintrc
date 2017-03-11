@@ -1,0 +1,17 @@
+{
+  "parser": "babel-eslint",
+  "extends": "airbnb",
+  "rules": {
+    "import/no-extraneous-dependencies": 0,
+    "import/no-unresolved": 0,
+    "import/extensions": 0,
+    "newline-before-return": 2,
+    "no-param-reassign": [0, {
+      "props": false
+    }]
+  },
+  "globals": {
+    "window": true,
+    "document": true,
+  }
+}
