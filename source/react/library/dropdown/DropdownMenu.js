@@ -1,8 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
 import Popover from '../Popover';
+import Button from '../Button';
 import Menu from '../menu/Menu';
 import MenuList from '../menu/MenuList';
+import MenuHeader from '../menu/MenuHeader';
+import MenuSection from '../menu/MenuSection';
 
 const propTypes = {
   anchor: React.PropTypes.string,
@@ -58,7 +61,9 @@ class DropdownMenu extends React.Component {
     let jsx;
 
     if (this.props.hint) {
-      jsx = <small className="rc-dropdown-hint">{ this.props.hint }</small>;
+      jsx = (
+        <MenuHeader title={ this.props.hint } />
+      );
     }
 
     return jsx;
@@ -70,9 +75,7 @@ class DropdownMenu extends React.Component {
 
     if (options.length > 0) {
       jsx = (
-        <Menu
-          size={ size }
-        >
+        <Menu size={ size }>
           <MenuList
             options={ options }
             selected={ selected }
@@ -85,12 +88,31 @@ class DropdownMenu extends React.Component {
       jsx = <p className="rc-dropdown-blank">{ this.props.blank }</p>;
     }
 
+    return <MenuSection className="rc-dropdown-menu-section-list">{ jsx }</MenuSection>;
+  }
+
+  renderApplyButton() {
+    let jsx;
+
+    if (this.props.multiple) {
+      jsx = (
+        <MenuSection className="rc-dropdown-menu-section-actions">
+          <Button
+            block
+            size="small"
+            label="Apply"
+          />
+        </MenuSection>
+      );
+    }
+
     return jsx;
   }
 
   render() {
     const menu = this.renderMenu();
     const hint = this.renderHint();
+    const applyButton = this.renderApplyButton();
     const className = classnames('rc-dropdown-menu', `rc-dropdown-menu-${this.props.size}`, {
       'rc-dropdown-menu-multiple': this.props.multiple,
     });
@@ -109,6 +131,7 @@ class DropdownMenu extends React.Component {
       >
         { hint }
         { menu }
+        { applyButton }
       </Popover>
     );
   }

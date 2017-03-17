@@ -1,14 +1,20 @@
 import React from 'react';
+import classnames from 'classnames';
 
 const propTypes = {
   children: React.PropTypes.any,
+  className: React.PropTypes.string,
 };
 
-const MenuSection = props => (
-  <div className="rc-menu-section">
-    { props.children }
-  </div>
-);
+const MenuSection = (props) => {
+  const className = classnames('rc-menu-section', props.className);
+
+  return (
+    <div className={ className }>
+      { props.children }
+    </div>
+  );
+};
 
 MenuSection.propTypes = propTypes;
 
