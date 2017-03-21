@@ -10,7 +10,6 @@
   margin: 0 5px 5px 0;
   border-radius: $tag-border-radius;
   border: $tag-border;
-  max-width: 100%;
 
   &.rc-tag-tiny {
     font-size: $font-size-tiny;
@@ -26,6 +25,7 @@
   }
 
   .rc-tag-content, .rc-tooltip-hover-area {
+    font-size: $tag-font-size;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
