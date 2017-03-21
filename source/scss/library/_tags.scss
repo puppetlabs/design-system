@@ -10,6 +10,7 @@
   margin: 0 5px 5px 0;
   border-radius: $tag-border-radius;
   border: $tag-border;
+  max-width: 100%;
 
   &.rc-tag-tiny {
     font-size: $font-size-tiny;
@@ -22,6 +23,13 @@
     width: auto;
     float: none;
     margin-right: 0 !important;
+  }
+
+  .rc-tag-content, .rc-tooltip-hover-area {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
   }
 }
 

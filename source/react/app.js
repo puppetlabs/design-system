@@ -13,6 +13,7 @@ import Panels from './styleguide/Panels';
 import Dropdowns from './styleguide/Dropdowns';
 import Switches from './styleguide/Switches';
 import Tabs from './styleguide/Tabs';
+import Tags from './styleguide/Tags';
 import Tooltips from './styleguide/Tooltips';
 import Tables from './styleguide/Tables';
 import Toggles from './styleguide/Toggles';
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route path="icons" components={ Icons } />
         <Route path="switches" components={ Switches } />
         <Route path="tabs" components={ Tabs } />
+        <Route path="tags" components={ Tags } />
         <Route path="tooltips" components={ Tooltips } />
         <Route path="tables" components={ Tables } />
         <Route path="toggles" components={ Toggles } />

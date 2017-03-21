@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { TooltipHoverArea } from './tooltips/Tooltip';
 
 const propTypes = {
   children: React.PropTypes.any,
@@ -9,6 +10,7 @@ const propTypes = {
   block: React.PropTypes.bool,
   onRemove: React.PropTypes.func,
   onClick: React.PropTypes.func,
+  tooltip: React.PropTypes.bool,
 };
 
 class Tag extends React.Component {
@@ -37,6 +39,25 @@ class Tag extends React.Component {
     }
   }
 
+  renderContent() {
+    const { children, tooltip } = this.props;
+    let jsx = (
+      <div className="rc-tag-content">
+        { children }
+      </div>
+    );
+
+    if (tooltip) {
+      jsx = (
+        <TooltipHoverArea anchor="bottom" tooltip={ jsx }>
+          { jsx }
+        </TooltipHoverArea>
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
     const { onRemove, onClick, selected, size, block } = this.props;
     const className = classnames('rc-tag', {
@@ -46,18 +67,19 @@ class Tag extends React.Component {
       'rc-tag-block': block,
       [`rc-tag-${size}`]: size,
     }, this.props.className);
+    let content = this.renderContent();
     let jsx;
 
-    if (this.props.onClick) {
+    if (onClick) {
       jsx = (
         <a onClick={ this.onClick } href="" className={ className }>
-          { this.props.children }
+          { content }
         </a>
       );
     } else {
       jsx = (
         <div className={ className }>
-          { this.props.children }
+          { content }
         </div>
       );
     }
