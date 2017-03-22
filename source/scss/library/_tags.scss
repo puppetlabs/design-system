@@ -23,6 +23,14 @@
     float: none;
     margin-right: 0 !important;
   }
+
+  .rc-tag-content, .rc-tooltip-hover-area {
+    font-size: $tag-font-size;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
 }
 
 .rc-tag-selected {
