@@ -20,6 +20,7 @@ const propTypes = {
   className: React.PropTypes.string,
   allowBubble: React.PropTypes.bool,
   disablePortal: React.PropTypes.bool,
+  disableOutsideClick: React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -28,6 +29,7 @@ const defaultProps = {
   padding: true,
   anchor: 'bottom left',
   allowBubble: false,
+  disableOutsideClick: false,
 };
 
 class Popover extends React.Component {
@@ -90,9 +92,11 @@ class Popover extends React.Component {
   }
 
   onOutsideClick() {
-    this.setState({ open: false });
+    if (!this.props.disableOutsideClick) {
+      this.setState({ open: false });
 
-    this.onClose();
+      this.onClose();
+    }
   }
 
   onClick(e) {
