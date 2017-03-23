@@ -1,12 +1,16 @@
 .rc-list-item {
 
+  .rc-tooltip-hover-area {
+    display: block;
+  }
+
   &.rc-list-item-selected {
     a {
-      border: $list-item-border-selected;  
+      border: $list-item-border-selected;
     }
   }
 
-  a {
+  a.rc-list-item-link {
     display: block;
     position: relative;
     background: $list-item-bg;
@@ -16,6 +20,10 @@
     font-size: $list-item-font-size;
     padding: $list-item-padding;
     margin-bottom: $list-item-margin-bottom;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-right: $list-item-action-width * 2;
 
     &:hover {
       color: $list-item-color-hover;
