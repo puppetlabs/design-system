@@ -91,13 +91,16 @@ class ListItem extends React.Component {
   }
 
   render() {
-    const className = classnames('rc-list-item', { 'rc-list-item-selected': this.props.selected });
+    const className = classnames('rc-list-item', {
+      'rc-list-item-clickable': this.props.onClick,
+      'rc-list-item-selected': this.props.selected,
+    });
     const edit = this.renderEdit();
     const remove = this.renderRemove();
     const content = this.props.children;
 
     let jsx = (
-      <a href="/#/list-item-click" className="rc-list-item-link" onClick={ this.onClick }>
+      <a href="" className="rc-list-item-link" onClick={ this.onClick }>
         { content }
         { edit }
         { remove }

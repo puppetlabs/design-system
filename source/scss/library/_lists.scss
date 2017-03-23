@@ -24,11 +24,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     padding-right: $list-item-action-width * 2;
-
-    &:hover {
-      color: $list-item-color-hover;
-      background: $list-item-bg-hover;
-    }
+    cursor: default;
 
     .rc-list-item-edit, .rc-list-item-remove {
       position: absolute;
@@ -46,5 +42,14 @@
     .rc-list-item-remove {
       right: 0;
     }
+  }
+}
+
+
+.rc-list-item-clickable {
+  &:hover {
+    color: $list-item-color-hover;
+    background: $list-item-bg-hover;
+    cursor: pointer;
   }
 }
