@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import Button from './Button';
+import { TooltipHoverArea } from './tooltips/Tooltip';
 
 const propTypes = {
   children: React.PropTypes.string,
@@ -8,6 +9,7 @@ const propTypes = {
   onEdit: React.PropTypes.func,
   onClick: React.PropTypes.func,
   selected: React.PropTypes.bool,
+  tooltip: React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -89,17 +91,33 @@ class ListItem extends React.Component {
   }
 
   render() {
-    const className = classnames('rc-list-item', { 'rc-list-item-selected': this.props.selected });
+    const className = classnames('rc-list-item', {
+      'rc-list-item-clickable': this.props.onClick,
+      'rc-list-item-selected': this.props.selected,
+    });
     const edit = this.renderEdit();
     const remove = this.renderRemove();
+    const content = this.props.children;
+
+    let jsx = (
+      <a href="" className="rc-list-item-link" onClick={ this.onClick }>
+        { content }
+        { edit }
+        { remove }
+      </a>
+    );
+
+    if (this.props.tooltip) {
+      jsx = (
+        <TooltipHoverArea anchor="bottom" tooltip={ content }>
+          { jsx }
+        </TooltipHoverArea>
+      );
+    }
 
     return (
       <li className={ className }>
-        <a href="/#/list-item-click" className="rc-list-item-link" onClick={ this.onClick }>
-          { this.props.children }
-          { edit }
-          { remove }
-        </a>
+        { jsx }
       </li>
     );
   }
