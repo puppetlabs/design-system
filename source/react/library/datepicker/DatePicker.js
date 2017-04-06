@@ -32,13 +32,10 @@ class DatePicker extends React.Component {
     }
 
     this.state = {
-      open: false,
       start,
       end,
     };
 
-    this.showPicker = this.showPicker.bind(this);
-    this.hidePicker = this.hidePicker.bind(this);
     this.setDateRange = this.setDateRange.bind(this);
     this.onChange = this.onChange.bind(this);
   }
@@ -61,7 +58,6 @@ class DatePicker extends React.Component {
     this.setState({
       start,
       end,
-      open: false,
     });
   }
 
@@ -70,8 +66,6 @@ class DatePicker extends React.Component {
     const props = {
       color: (message ? 'dashed' : 'white'),
       className: 'rc-datepicker-button',
-      onClick: this.showPicker,
-      // Only disable it if we're in edit mode and there's a message to display
       disabled: this.props.disabled,
     };
     let buttonBody;
@@ -95,7 +89,6 @@ class DatePicker extends React.Component {
     const button = this.getButton(start, end);
     const anchor = this.props.anchor;
     const props = {
-      onHide: this.hidePicker,
       setRange: this.setDateRange,
       range: moment.range(start, end),
       ranges: this.props.ranges,
@@ -124,14 +117,6 @@ class DatePicker extends React.Component {
 
     // It's configured!
     return message;
-  }
-
-  showPicker() {
-    this.setState({ open: true });
-  }
-
-  hidePicker() {
-    this.setState({ open: false });
   }
 
   render() {
