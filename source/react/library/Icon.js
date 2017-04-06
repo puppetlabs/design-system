@@ -7,6 +7,7 @@ const propTypes = {
   width: React.PropTypes.string,
   type: React.PropTypes.string,
   svg: React.PropTypes.element,
+  onClick: React.PropTypes.func,
 };
 
 const defaultProps = {
@@ -20,7 +21,7 @@ const defaultProps = {
  *
  * @example ../../../docs/Icon.md
  */
-const Icon = props => {
+const Icon = (props) => {
   const { width, type, height } = props;
   let svg = props.svg;
   let viewBox = props.viewBox;
@@ -43,6 +44,7 @@ const Icon = props => {
         width={ width }
         height={ height }
         viewBox={ viewBox }
+        onClick={ props.onClick }
       >
         { svg }
       </svg>

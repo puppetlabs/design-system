@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import Icon from './Icon';
 import { TooltipHoverArea } from './tooltips/Tooltip';
 
 const propTypes = {
@@ -40,10 +41,12 @@ class Tag extends React.Component {
   }
 
   renderContent() {
+    const removeButton = this.renderRemoveButton();
     const { children, tooltip } = this.props;
     let jsx = (
       <div className="rc-tag-content">
         { children }
+        { removeButton }
       </div>
     );
 
@@ -58,6 +61,16 @@ class Tag extends React.Component {
     return jsx;
   }
 
+  renderRemoveButton() {
+    let jsx;
+
+    if (this.props.onRemove) {
+      jsx = <Icon type="delete" height="12px" width="12px" onClick={ this.onRemove } />;
+    }
+
+    return jsx;
+  }
+
   render() {
     const { onRemove, onClick, selected, size, block } = this.props;
     const className = classnames('rc-tag', {
@@ -67,7 +80,7 @@ class Tag extends React.Component {
       'rc-tag-block': block,
       [`rc-tag-${size}`]: size,
     }, this.props.className);
-    let content = this.renderContent();
+    const content = this.renderContent();
     let jsx;
 
     if (onClick) {

@@ -13,6 +13,7 @@ import DropdownMenu from './react/library/dropdown/DropdownMenu';
 import Menu from './react/library/menu/Menu';
 import MenuHeader from './react/library/menu/MenuHeader';
 import MenuSection from './react/library/menu/MenuSection';
+import MenuList from './react/library/menu/MenuList';
 import Filter from './react/library/Filter';
 import Switch from './react/library/Switch';
 import Loading from './react/library/Loading';
@@ -46,9 +47,10 @@ export {
   Input,
   DropdownLabel,
   DropdownMenu,
-  MenuSection,
   Menu,
   MenuHeader,
+  MenuSection,
+  MenuList,
   Filter,
   Switch,
   Loading,

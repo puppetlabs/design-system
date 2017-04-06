@@ -11,6 +11,13 @@
   border-radius: $tag-border-radius;
   border: $tag-border;
 
+  .rc-icon-delete {
+    position: relative;
+    top: 2px;
+    margin-left: 6px;
+    cursor: pointer;
+  }
+
   &.rc-tag-tiny {
     font-size: $font-size-tiny;
     height: 22px;

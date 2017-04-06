@@ -40,7 +40,7 @@ class MenuList extends React.Component {
         <MenuItem
           key={ option.id }
           option={ option }
-          selected={ selected.indexOf(option.id) >= 0 }
+          selected={ selected && selected === option.id }
           onClick={ this.onChange }
           multiple={ multiple }
         />

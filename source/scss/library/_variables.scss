@@ -74,13 +74,13 @@ $button-badge-size:               10px !default;
 //
 $tag-font-size:                   $button-font-size !default;
 $tag-font-weight:                 $button-font-weight !default;
-$tag-height:                      33px;
-$tag-line-height:                 29px;
+$tag-height:                      33px !default;
+$tag-line-height:                 $tag-height !default;
 $tag-bg:                          $gray-light !default;
 $tag-color:                       $gray !default;
 $tag-border-radius:               $button-border-radius !default;
-$tag-border:                      2px solid $tag-bg !default;
-$tag-border-selected:             2px solid $brand-primary !default;
+$tag-border:                      1px solid $tag-bg !default;
+$tag-border-selected:             1px solid $brand-primary !default;
 
 //
 // Tab variables/options
@@ -121,7 +121,7 @@ $popover-elevation:               24 !default;
 //
 // Dropdown
 //
-$dropdown-padding:                12px !default;
+$dropdown-padding:                16px !default;
 $dropdown-padding-tiny:           10px !default;
 $dropdown-max-height:             400px !default;
 $dropdown-width:                  260px !default;
@@ -164,6 +164,7 @@ $menu-item-color-selected:        $white !default;
 $menu-item-bg-selected:           $brand-primary !default;
 $menu-item-color-disabled:        $white !default;
 $menu-item-bg-disabled:           $gray-light !default;
+$menu-item-padding:               12px 16px !default
 
 $menu-section-border:             $border !default;
 $menu-section-padding:            $padding !default;
@@ -336,3 +337,11 @@ $panel-padding:                        $padding !default;
 $panel-border:                         $border !default;
 $panel-border-radius:                  $border-radius !default;
 $panel-outer-shadow:                   $outer-shadow !default;
+
+//
+// Forms
+//
+$form-label-font-size:                $font-size-medium !default;
+$form-label-margin-bottom:            6px !default;
+$form-label-text-transform:           none !default;
+$form-label-color:                    $gray !default;
