@@ -10,6 +10,7 @@ import MenuSection from '../menu/MenuSection';
 const propTypes = {
   anchor: React.PropTypes.string,
   onChange: React.PropTypes.func,
+  onApply: React.PropTypes.func,
   target: React.PropTypes.object,
   width: React.PropTypes.string,
   onClose: React.PropTypes.func,
@@ -41,12 +42,18 @@ class DropdownMenu extends React.Component {
 
     this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onApply = this.onApply.bind(this);
+    this.onClosePopover = this.onClosePopover.bind(this);
   }
 
   onClose() {
     if (this.props.onClose) {
       this.props.onClose();
     }
+  }
+
+  onClosePopover() {
+    this.popover.close();
   }
 
   onChange(option) {
@@ -57,12 +64,19 @@ class DropdownMenu extends React.Component {
     }
   }
 
+  onApply() {
+    if (this.props.onApply) {
+      this.props.onApply();
+      this.popover.close();
+    }
+  }
+
   renderHint() {
     let jsx;
 
     if (this.props.hint) {
       jsx = (
-        <MenuHeader title={ this.props.hint } />
+        <MenuHeader title={ this.props.hint } onClose={ this.onClosePopover } />
       );
     }
 
@@ -88,7 +102,7 @@ class DropdownMenu extends React.Component {
       jsx = <p className="rc-dropdown-blank">{ this.props.blank }</p>;
     }
 
-    return <MenuSection className="rc-dropdown-menu-section-list">{ jsx }</MenuSection>;
+    return <MenuSection className="rc-menu-section-list">{ jsx }</MenuSection>;
   }
 
   renderApplyButton() {
@@ -96,11 +110,12 @@ class DropdownMenu extends React.Component {
 
     if (this.props.multiple) {
       jsx = (
-        <MenuSection className="rc-dropdown-menu-section-actions">
+        <MenuSection>
           <Button
             block
             size="small"
             label="Apply"
+            onClick={ this.onApply }
           />
         </MenuSection>
       );

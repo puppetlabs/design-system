@@ -109,13 +109,11 @@
 .rc-dropdown-menu {
   width: $dropdown-width;
   padding: 0;
-  padding-bottom: $popover-border-radius * 2;
-  padding-top: $popover-border-radius * 2;
 
   .rc-dropdown-hint {
     display: block;
     padding: $dropdown-padding;
-    padding-top: $dropdown-padding - $popover-border-radius * 2;
+    padding-top: $popover-border-radius * 2;
     color: $dropdown-hint-color;
     font-size: $dropdown-hint-font-size;
   }
@@ -216,10 +214,6 @@
   }
 
   .rc-dropdown-menu-section-list {
-    padding: 0; 
-  }
-
-  .rc-dropdown-menu-section-actions {
-    padding: $dropdown-padding;
+    padding: 0;
   }
 }

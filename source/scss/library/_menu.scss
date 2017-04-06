@@ -86,6 +86,10 @@
   &:not(last-of-type) {
     border-bottom: $menu-section-border;
   }
+
+  &.rc-menu-section-list {
+    padding: 0;
+  }
 }
 
 .rc-menu-header {

@@ -44,6 +44,7 @@ class Dropdown extends React.Component {
 
     this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onApply = this.onApply.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -93,6 +94,12 @@ class Dropdown extends React.Component {
     this.setState({ displayed: this.state.selected });
 
     if (this.props.multiple && this.props.onChange) {
+      this.props.onChange(this.state.selected);
+    }
+  }
+
+  onApply() {
+    if (this.props.onChange) {
       this.props.onChange(this.state.selected);
     }
   }
@@ -165,6 +172,7 @@ class Dropdown extends React.Component {
         multiple={ this.props.multiple }
         target={ button }
         onChange={ this.onChange }
+        onApply={ this.onApply }
         options={ options }
         selected={ this.state.selected }
         required={ this.props.required }
