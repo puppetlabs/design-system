@@ -10,6 +10,11 @@ const propTypes = {
   ranges: React.PropTypes.array,
   message: React.PropTypes.string,
   disabled: React.PropTypes.bool,
+  anchor: React.PropTypes.string,
+};
+
+const defaultProps = {
+  anchor: 'bottom left',
 };
 
 class DatePicker extends React.Component {
@@ -88,6 +93,7 @@ class DatePicker extends React.Component {
 
   getWrapper(start, end) {
     const button = this.getButton(start, end);
+    const anchor = this.props.anchor;
     const props = {
       onHide: this.hidePicker,
       setRange: this.setDateRange,
@@ -100,7 +106,7 @@ class DatePicker extends React.Component {
       jsx = button;
     } else {
       jsx = (
-        <Popover padding={ false } target={ button } >
+        <Popover padding={ false } target={ button } anchor={ anchor } >
           <DatePickerWrapper { ...props } />
         </Popover>
       );
@@ -141,5 +147,6 @@ class DatePicker extends React.Component {
 }
 
 DatePicker.propTypes = propTypes;
+DatePicker.defaultProps = defaultProps;
 
 export default DatePicker;
