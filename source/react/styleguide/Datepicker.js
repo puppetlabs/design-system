@@ -15,9 +15,20 @@ class DatePickerPage extends React.Component {
     return (
       <div>
         <h1>DatePicker</h1>
-        <StyleguideSection title="DatePicker">
+        <StyleguideSection title="Basic DatePicker">
           <DatePicker
             onChange={ () => {  console.log(arguments); } }
+            dates={ dates }
+          />
+        </StyleguideSection>
+        <StyleguideSection title="DatePicker with Ranges">
+          <DatePicker
+            onChange={ () => {  console.log(arguments); } }
+            ranges={ [
+              { count: 1, unit: 'week' },
+              { count: 1, unit: 'month' },
+              { count: 1, unit: 'year' }
+            ] }
             dates={ dates }
           />
         </StyleguideSection>
