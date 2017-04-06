@@ -1,0 +1,371 @@
+.rc-datepicker-wrapper {
+  position: relative;
+}
+
+.rc-datepicker-container {
+  display: flex;
+  padding-top: 10px;
+
+  .rc-ranges {
+    padding: 0;
+    margin-top: 10px;
+    margin-right: 20px;
+    list-style: none;
+    min-width: 150px;
+
+    li {
+      color: $date-range-color;
+      cursor: pointer;
+      font-size: 14px;
+      border: 1px solid $date-range-border;
+      border-radius: $datepicker-radius;
+      padding: 3px 12px;
+      margin-bottom: 8px;
+
+      &:hover, &.selected {
+        color: #fff;
+        border: 1px solid $date-range-hover-border;
+        background: $date-range-hover-bg;
+      }
+
+      &.active {
+        color: #fff;
+        border: 1px solid $date-range-hover-border;
+        background: $date-range-hover-bg;
+      }
+    }
+  }
+}
+
+.rc-datepicker-button {
+  float: right;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+$arrow-size: 6px !default;
+$selection-radius: $datepicker-radius !default;
+$selection-margin: 0 !default;
+$ns: rc-datepicker !default;
+
+.#{$ns} {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 0;
+  position: relative;
+  user-select: none;
+
+  &__Legend {
+    color: #52575e;
+    font-size: 14px;
+    line-height: 16px;
+    list-style-type: none;
+    margin: 20px 0;
+    padding: 0;
+  }
+
+  &__LegendItem {
+    display: inline-block;
+    margin: 0 20px;
+  }
+
+  &__LegendItemColor {
+    border-radius: 50%;
+    display: inline-block;
+    height: 14px;
+    margin-right: 6px;
+    vertical-align: text-bottom;
+    width: 14px;
+    border: 1px solid rgba(#000, .25);
+
+    &--selection {
+      background-color: $datepicker-selected-bg;
+    }
+  }
+
+  &__PaginationArrow {
+    border: 0;
+    cursor: pointer;
+    display: block;
+    height: 35px;
+    outline: none;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    white-space: nowrap;
+    width: 35px;
+    z-index: 1;
+
+    &--previous {
+      left: 20px;
+    }
+
+    &--next {
+      right: 20px;
+    }
+  }
+
+  &__PaginationArrowIcon {
+    border-bottom: $arrow-size solid transparent;
+    border-top: $arrow-size solid transparent;
+    height: 0;
+    position: absolute;
+    top: 10px;
+    width: 0;
+
+    &--is-disabled {
+      opacity: .25;
+    }
+
+    &--previous {
+      border-left: $arrow-size solid transparent;
+      border-right: $arrow-size solid #aaa;
+      right: 30px / 2 - ($arrow-size / 2);
+
+      &:hover {
+        border-right-color: $datepicker-selected-bg;
+      }
+    }
+
+    &--next {
+      border-left: $arrow-size solid #aaa;
+      border-right: $arrow-size solid transparent;
+      left: 30px / 2 - ($arrow-size / 2);
+
+      &:hover {
+        border-left-color: $datepicker-selected-bg;
+      }
+    }
+  }
+
+  &__Month {
+    color: #333;
+    display: inline-block;
+    margin: 0 20px;
+    position: relative;
+    user-select: none;
+    width: 275px;
+  }
+
+  &__MonthHeader {
+    color: $datepicker-month-color;
+    font-size: 14px;
+    font-weight: $datepicker-month-font-weight;
+    height: 35px;
+    line-height: 35px;
+    position: relative;
+    text-align: center;
+  }
+
+  &__MonthHeaderLabel {
+    display: inline-block;
+    position: relative;
+  }
+
+  &__MonthHeaderSelect {
+    background: #e4e4e4;
+    border: 0;
+    cursor: pointer;
+    display: inline-block;
+    height: 100%;
+    left: 0;
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+  }
+
+  &__MonthDates {
+    border-bottom: 1px solid #f4f5f6;
+    border-collapse: separate;
+    border-spacing: 0 1px;
+    margin: 0;
+    width: 100%;
+  }
+
+  &__WeekdayHeading,
+  &__Date {
+    font-size: 12px;
+    line-height: 1;
+    padding: 10px 0;
+    text-align: center;
+    width: 14.285714285714286%;
+  }
+
+  &__WeekdayHeading {
+    border-bottom: 1px solid #f4f5f6;
+    color: $datepicker-weekday-color;
+    font-weight: $datepicker-weekday-font-weight;
+
+    abbr[title] {
+      border-bottom-width: 0;
+      color: $datepicker-weekday-color;
+      cursor: pointer;
+      font-size: inherit;
+      text-decoration: none;
+    }
+  }
+
+  &__Date {
+    border: 0 solid #f4f5f6;
+    border-right-width: 1px;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+
+    &:first-child {
+      border-left-width: 1px;
+    }
+
+    &--weekend {
+      background-color: $datepicker-bg;
+    }
+
+    &--otherMonth {
+      opacity: .25;
+    }
+
+    &--is-disabled {
+      color: #cdcdd1;
+      cursor: default;
+    }
+
+    &--is-selected {
+      color: #fff;
+    }
+
+    &--is-highlighted {
+      color: #333;
+    }
+  }
+
+  &__CalendarDatePeriod {
+    bottom: 0;
+    position: absolute;
+    top: 0;
+
+    &--am {
+      left: 0;
+      right: 50%;
+    }
+
+    &--pm {
+      left: 50%;
+      right: 0;
+    }
+  }
+
+  &__CalendarSelection {
+    background-color: $datepicker-selected-bg;
+    border: 1px solid darken($datepicker-selected-bg, 5);
+    bottom: $selection-margin;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: $selection-margin;
+
+    &--inOtherMonth {
+      opacity: .5;
+    }
+
+    &--start {
+      border-bottom-left-radius: $selection-radius;
+      border-right-width: 0;
+      border-top-left-radius: $selection-radius;
+      left: $selection-margin;
+    }
+
+    &--end {
+      border-bottom-right-radius: $selection-radius;
+      border-left-width: 0;
+      border-top-right-radius: $selection-radius;
+      right: $selection-margin;
+    }
+
+    &--segment {
+      border-left-width: 0;
+      border-right-width: 0;
+    }
+
+    &--single {
+      border-radius: $selection-radius;
+      left: $selection-margin;
+      right: $selection-margin;
+    }
+
+    &--is-pending {
+      background-color: rgba($datepicker-selected-bg, .75);
+      border-width: 0;
+    }
+  }
+
+  &__CalendarHighlight {
+    background-color: rgba(255, 255, 255, .25);
+    border: 1px solid rgba(0, 0, 0, .25);
+    bottom: $selection-margin;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: $selection-margin;
+
+    &--inOtherMonth {
+      opacity: .5;
+    }
+
+    &--start {
+      border-bottom-left-radius: $selection-radius;
+      border-right-width: 0;
+      border-top-left-radius: $selection-radius;
+      left: $selection-margin;
+    }
+
+    &--end {
+      border-bottom-right-radius: $selection-radius;
+      border-left-width: 0;
+      border-top-right-radius: $selection-radius;
+      right: $selection-margin;
+    }
+
+    &--segment {
+      border-left-width: 0;
+      border-right-width: 0;
+    }
+
+    &--single {
+      background-color: #fff;
+      border: 1px solid darken($datepicker-selected-bg, 5);
+      border-radius: $selection-radius;
+      left: $selection-margin;
+      right: $selection-margin;
+    }
+  }
+
+  &__HalfDateStates {
+    bottom: -50px;
+    left: -50px;
+    position: absolute;
+    right: -50px;
+    top: -50px;
+    transform: rotate(30deg);
+  }
+
+  &__FullDateStates {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__DateLabel {
+    display: block;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    z-index: 1;
+  }
+}

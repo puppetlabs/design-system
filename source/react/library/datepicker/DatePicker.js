@@ -2,12 +2,14 @@ import React from 'react';
 import moment from 'moment';
 import DatePickerWrapper from './DatePickerWrapper';
 import Button from '../Button';
-
-const EVENT_IDENTIFIER = 'datePicker';
+import Popover from '../Popover';
 
 const propTypes = {
+  onChange: React.PropTypes.func.isRequired,
   dates: React.PropTypes.object,
   ranges: React.PropTypes.array,
+  message: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
 };
 
 class DatePicker extends React.Component {
@@ -33,6 +35,7 @@ class DatePicker extends React.Component {
     this.showPicker = this.showPicker.bind(this);
     this.hidePicker = this.hidePicker.bind(this);
     this.setDateRange = this.setDateRange.bind(this);
+    this.onChange = this.onChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -44,20 +47,12 @@ class DatePicker extends React.Component {
     }
   }
 
+  onChange() {
+    this.props.onChange();
+  }
+
   // Default to current time
   setDateRange(start, end = moment().endOf('day')) {
-    const newRange = { start, end };
-    const oldRange = { start: this.state.start, end: this.state.end };
-    const newFilters = helpers.rangeToFilters(newRange, this.props.fields, true);
-    const oldFilters = helpers.rangeToFilters(oldRange, this.props.fields, true);
-
-    this.props.dispatch(updateDates({ primary: newRange }));
-    this.props.dispatch(replaceFilters(oldFilters, newFilters));
-
-    const newDates = [moment(newFilters[0].value), moment(newFilters[1].value)];
-
-    this.props.dispatchEvent(EVENT_IDENTIFIER, DATE_RANGE_CHANGE, newDates);
-
     this.setState({
       start,
       end,
@@ -65,23 +60,24 @@ class DatePicker extends React.Component {
     });
   }
 
-  getButton(start, end, message) {
+  getButton(start, end) {
+    const message = this.state.message;
     const props = {
       color: (message ? 'dashed' : 'white'),
-      className: 'viz-datepicker-button',
+      className: 'rc-datepicker-button',
       onClick: this.showPicker,
       // Only disable it if we're in edit mode and there's a message to display
-      disabled: !!(this.props.editMode && message),
+      disabled: this.props.disabled,
     };
     let buttonBody;
 
     if (message) {
       buttonBody = message;
-    } else {
+    } else if (start && end) {
       buttonBody = (
         <div>
           <span className="date">{ start.format('MMM D, YYYY') }</span>
-          <span className="viz-separator"> to </span>
+          <span> to </span>
           <span className="date">{ end.format('MMM D, YYYY') }</span>
         </div>
       );
@@ -91,23 +87,33 @@ class DatePicker extends React.Component {
   }
 
   getWrapper(start, end) {
+    const button = this.getButton(start, end);
     const props = {
       onHide: this.hidePicker,
       setRange: this.setDateRange,
       range: moment.range(start, end),
       ranges: this.props.ranges,
     };
+    let jsx;
 
-    return <DatePickerWrapper { ...props } />;
+    if (this.props.message) {
+      jsx = button;
+    } else {
+      jsx = (
+        <Popover padding={ false } target={ button } >
+          <DatePickerWrapper { ...props } />
+        </Popover>
+      );
+    }
+
+    return jsx;
   }
 
   getConfigurationMessage() {
     let message;
 
-    if (!this.props.fields || !this.props.fields.length) {
-      message = 'Set a time field on a component';
-    } else if (!this.state.start || !this.state.end) {
-      message = 'Set a default range';
+    if (this.props.message) {
+      message = this.props.message;
     }
 
     // It's configured!
@@ -123,24 +129,11 @@ class DatePicker extends React.Component {
   }
 
   render() {
-    const { open, start, end } = this.state;
-
-    const configurationMessage = this.getConfigurationMessage();
-    let wrapper = null;
-
-    if (!this.props.editMode && configurationMessage) {
-      return null;
-    }
-
-    const button = this.getButton(start, end, configurationMessage);
-
-    if (open) {
-      wrapper = this.getWrapper(start, end);
-    }
+    const { start, end } = this.state;
+    const wrapper = this.getWrapper(start, end);
 
     return (
-      <div>
-        { button }
+      <div className="rc-datepicker-wrapper">
         { wrapper }
       </div>
     );

@@ -1,5 +1,4 @@
 import React from 'react';
-import listensToClickOutside from 'react-onclickoutside/decorator';
 import classnames from 'classnames';
 import DateRangePicker from 'react-daterange-picker';
 import moment from 'moment';
@@ -68,7 +67,7 @@ class DateRangePickerWrapper extends React.Component {
     ranges.push(<li key="custom" className={ classnames({ selected: custom }) }>Custom range</li>);
 
     return (
-      <ul className="viz-ranges">
+      <ul className="rc-ranges">
         {ranges}
       </ul>
     );
@@ -78,11 +77,11 @@ class DateRangePickerWrapper extends React.Component {
     const ranges = this._getRanges();
 
     return (
-      <div className="viz-datepicker-container">
+      <div className="rc-datepicker-container">
         <DateRangePicker
           numberOfCalendars={ 2 }
           selectionType={ 'range' }
-          bemBlock="viz-datepicker"
+          bemBlock="rc-datepicker"
           onSelect={ this._setRange }
           value={ this.props.range }
           singleDateRange
@@ -93,4 +92,4 @@ class DateRangePickerWrapper extends React.Component {
   }
 }
 
-export default listensToClickOutside(DateRangePickerWrapper);
+export default DateRangePickerWrapper;

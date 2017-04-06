@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 import Styleguide from './styleguide/Styleguide';
 import Buttons from './styleguide/Buttons';
-import Datepicker from './styleguide/Datepicker';
+import DatePicker from './styleguide/DatePicker';
 import ProgressBars from './styleguide/ProgressBars';
 import Forms from './styleguide/Forms';
 import Cards from './styleguide/Cards';
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <Router history={ browserHistory }>
       <Route component={ Styleguide } path="/">
         <Route path="buttons" components={ Buttons } />
-        <Route path="datepicker" components={ Datepicker } />
+        <Route path="datepicker" components={ DatePicker } />
         <Route path="progress" components={ ProgressBars } />
         <Route path="modals" components={ Modals } />
         <Route path="menus" components={ Menus } />

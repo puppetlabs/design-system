@@ -5,7 +5,7 @@ const StyleguideSidebar = () => (
   <div className="sg-sidebar">
     <ul>
       <li><Link to="/buttons">Buttons</Link></li>
-      <li><Link to="/datepicker">Datepicker</Link></li>
+      <li><Link to="/datepicker">DatePicker</Link></li>
       <li><Link to="/progress">Progress bars</Link></li>
       <li><Link to="/modals">Modals</Link></li>
       <li><Link to="/menus">Menus</Link></li>

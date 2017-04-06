@@ -66,7 +66,8 @@
   },
   "peerDependencies": {
     "react": "^15.3.2",
-    "react-dom": "^15.3.2"
+    "react-dom": "^15.3.2",
+    "moment": "^2.11.2"
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
