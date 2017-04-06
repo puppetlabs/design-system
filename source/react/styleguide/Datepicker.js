@@ -32,6 +32,12 @@ class DatePickerPage extends React.Component {
             dates={ dates }
           />
         </StyleguideSection>
+        <StyleguideSection title="DatePicker with message">
+          <DatePicker
+            onChange={ () => {  console.log(arguments); } }
+            message="This isn't configured correctly"
+          />
+        </StyleguideSection>
       </div>
     );
   }

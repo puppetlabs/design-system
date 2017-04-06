@@ -66,7 +66,7 @@ class DatePicker extends React.Component {
   }
 
   getButton(start, end) {
-    const message = this.state.message;
+    const message = this.props.message;
     const props = {
       color: (message ? 'dashed' : 'white'),
       className: 'rc-datepicker-button',
