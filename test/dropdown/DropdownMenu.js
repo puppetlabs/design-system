@@ -8,11 +8,11 @@ import DropdownMenu from '../../source/react/library/dropdown/DropdownMenu';
 describe('<DropdownMenu />', () => {
   jsdom();
 
-  it('should render a hint', () => {
+  it('should render a menu title', () => {
     const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
     const wrapper = shallow(<DropdownMenu hint="I love hints!" options={ options } />);
 
-    expect(wrapper.find('.rc-dropdown-hint').text()).to.equal('I love hints!');
+    expect(wrapper.find('MenuHeader').prop('title')).to.equal('I love hints!');
   });
 
   it('should render a blank slate', () => {
