@@ -33,8 +33,6 @@ $border-active:                  1px solid $brand-primary !default;
 $border-hover:                   1px solid $border-hover-color !default;
 
 $outer-shadow:                   0 0px 1px rgba(0, 0, 0, .05) !default;
-$hover-shadow:                   0px 0px 0px 1px $gray !default;
-$selected-shadow:                0px 0px 0px 1px $brand-primary !default;
 
 $padding:                        16px;
 
@@ -43,6 +41,7 @@ $padding:                        16px;
 //
 $button-font-family:              'Montserrat', sans-serif !default;
 $button-font-size:                $font-size-small !default;
+$button-font-size-tiny:           10px !default;
 $button-font-weight:              normal !default;
 $button-disabled-bg:              #ccc !default;
 $button-disabled-color:           $gray !default;

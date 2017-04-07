@@ -132,9 +132,13 @@ a.rc-button, button.rc-button {
 
   &.rc-button-tiny {
     height: 22px;
-    line-height: 20px;
-    padding: 0 2px;
-    font-size: $font-size-tiny;
+    line-height: 22px;
+    padding: 0 5px;
+
+    .rc-button-content {
+      display: block;
+      font-size: $font-size-tiny;
+    }
   }
 
   &.rc-button-small {
@@ -200,6 +204,25 @@ a.rc-floating-action-button, button.rc-floating-action-button {
 
   &:last-child {
     margin-right: 0;
+  }
+
+  &.rc-button-group-collapsed {
+    .rc-button {
+      margin-right: 0;
+      border-radius: 0 !important;
+    }
+
+    :first-child {
+      border-top-left-radius: $border-radius !important;
+      border-bottom-left-radius: $border-radius !important;
+      border-right: none !important;
+    }
+
+    :last-child {
+      border-top-right-radius: $border-radius !important;
+      border-bottom-right-radius: $border-radius !important;
+      border-left: none !important;
+    }
   }
 }
 
