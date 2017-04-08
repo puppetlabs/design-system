@@ -16,6 +16,12 @@ const defaultProps = {
   label: true,
 };
 
+/**
+ * `Switch` allows the user to enable or disable something.
+ *
+ * @example ../../../docs/Switch.md
+ */
+
 class Switch extends React.Component {
   renderLabel() {
     let jsx;

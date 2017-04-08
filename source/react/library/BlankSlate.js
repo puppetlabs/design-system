@@ -2,9 +2,17 @@ import React from 'react';
 import Icon from './Icon';
 
 const propTypes = {
+  /** Visual aide for the user */
   icon: React.PropTypes.string,
+  /** Textual aide for the user */
   message: React.PropTypes.any,
 };
+
+/**
+ * `BlankSlate` is used to signify that no objects have been created yet.
+ *
+ * @example ../../../docs/BlankSlate.md
+ */
 
 const BlankSlate = props => (
   <div className="rc-blank-slate">

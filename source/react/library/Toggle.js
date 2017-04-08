@@ -14,6 +14,12 @@ const defaultProps = {
   onChange: () => {},
 };
 
+/**
+ * `Toggle` allows the user to toggle between two options.
+ *
+ * @example ../../../docs/Toggle.md
+ */
+
 class Toggle extends React.Component {
   constructor(props) {
     super(props);

@@ -4,8 +4,15 @@ import Icon from './Icon';
 
 const propTypes = {
   className: React.PropTypes.string,
+  /** Currently only `small` is supported */
   size: React.PropTypes.string,
 };
+
+/**
+ * `LoadingIndicator` does what you would think, it indicates a loading state.
+ *
+ * @example ../../../docs/LoadingIndicator.md
+ */
 
 const LoadingIndicator = (props) => {
   const className = classnames('rc-loading', props.className);
