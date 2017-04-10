@@ -17,6 +17,12 @@ const defaultProps = {
   anchor: 'bottom left',
 };
 
+/**
+ * `Datepicker` allows a user to select a single date range
+ *
+ * @example ../../../../docs/DatePicker.md
+ */
+
 class DatePicker extends React.Component {
 
   constructor(props) {
@@ -27,8 +33,11 @@ class DatePicker extends React.Component {
     let end = null;
 
     if (dates) {
-      start = dates.primary.start;
-      end = dates.primary.end;
+      const primaryStart = dates.primary.start;
+      const primaryEnd = dates.primary.end;
+
+      start = moment.isMoment(primaryStart) ? primaryStart : moment(primaryStart);
+      end = moment.isMoment(primaryEnd) ? primaryEnd : moment(primaryEnd);
     }
 
     this.state = {
@@ -64,6 +73,7 @@ class DatePicker extends React.Component {
   getButton(start, end) {
     const message = this.props.message;
     const props = {
+      transparent: true,
       color: (message ? 'dashed' : 'white'),
       className: 'rc-datepicker-button',
       disabled: this.props.disabled,

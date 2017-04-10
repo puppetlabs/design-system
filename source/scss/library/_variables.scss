@@ -350,19 +350,21 @@ $form-label-color:                    $gray !default;
 //
 // Datepicker
 //
-$datepicker-bg: $white !default;
-$datepicker-radius: $border-radius !default;
-$datepicker-box-shadow: 0px 0px 6px rgba(0,0,0,0.2) !default;
+$datepicker-button-border-color:      $button-secondary-border-color !default;
 
-$datepicker-month-color: $gray-dark !default;
-$datepicker-month-font-weight: 600 !default;
-$datepicker-weekday-color: $gray-dark !default;
-$datepicker-weekday-font-weight: 600 !default;
+$datepicker-bg:                       $bg-primary !default;
+$datepicker-radius:                   $border-radius !default;
+$datepicker-box-shadow:               0px 0px 6px rgba(0,0,0,0.2) !default;
 
-$datepicker-selected-bg: $brand-primary !default;
+$datepicker-month-color:              $gray-dark !default;
+$datepicker-month-font-weight:        600 !default;
+$datepicker-weekday-color:            $gray-dark !default;
+$datepicker-weekday-font-weight:      600 !default;
+
+$datepicker-selected-bg:              $brand-primary !default;
 
 // Preset ranges
-$date-range-color: $brand-primary !default;
-$date-range-border: $white !default;
-$date-range-hover-bg: $brand-primary !default;
-$date-range-hover-border: $brand-primary !default;
+$date-range-color:                    $brand-primary !default;
+$date-range-border:                   $bg-primary !default;
+$date-range-hover-bg:                 $brand-primary !default;
+$date-range-hover-border:             $brand-primary !default;

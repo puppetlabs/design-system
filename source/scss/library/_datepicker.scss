@@ -2,6 +2,10 @@
   position: relative;
 }
 
+.rc-datepicker-button {
+  border: 1px solid $datepicker-button-border-color !important;
+}
+
 .rc-datepicker-container {
   display: flex;
   padding-top: 10px;
