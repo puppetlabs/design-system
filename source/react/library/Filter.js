@@ -10,6 +10,12 @@ const propTypes = {
   fields: React.PropTypes.array.isRequired,
   onDuplicate: React.PropTypes.func,
   onChange: React.PropTypes.func,
+  /** The filter operators that we support */
+  operators: React.PropTypes.arrayOf(React.PropTypes.shape({
+    symbol: React.PropTypes.string,
+    label: React.PropTypes.string,
+  })),
+  /** A filter that the user can modify */
   filter: React.PropTypes.shape({
     field: React.PropTypes.string,
     value: React.PropTypes.oneOfType([
@@ -22,6 +28,7 @@ const propTypes = {
 
 const defaultProps = {
   onChange: () => {},
+  operators: [],
   filter: {
     field: '',
     op: '',
@@ -30,6 +37,12 @@ const defaultProps = {
 };
 
 const isValid = filter => !!(filter.field && filter.op && filter.value);
+
+/**
+ * `Filter` is a control for creating and editing filters.
+ *
+ * @example ../../../docs/Filter.md
+ */
 
 class Filter extends React.Component {
   constructor(props) {
@@ -126,15 +139,12 @@ class Filter extends React.Component {
   }
 
   renderOperatorSelect() {
-    const operators = [
-      { value: '=', label: 'Equals', type: 'operator', id: 0 },
-      { value: '!=', label: 'Doesn\'t equal', type: 'operator', id: 1 },
-      { value: '=~', label: 'Contains', type: 'operator', id: 2 },
-      { value: '>', label: 'Greater than', type: 'operator', id: 3 },
-      { value: '<', label: 'Less than', type: 'operator', id: 4 },
-      { value: '>=', label: 'Greater than or equal to', type: 'operator', id: 5 },
-      { value: '<=', label: 'Less than or equal to', type: 'operator', id: 6 },
-    ];
+    const operators = this.props.operators.map((type, i) => ({
+      value: type.symbol,
+      label: type.label,
+      type: 'operator',
+      id: i,
+    }));
 
     return (
       <Select
