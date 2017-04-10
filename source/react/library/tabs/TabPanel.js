@@ -6,6 +6,11 @@ const propTypes = {
   active: React.PropTypes.bool,
 };
 
+/**
+ * `TabPanel` groups components together within `Tabs`.
+ *
+ * @example ../../../../docs/TabPanel.md
+ */
 const TabPanel = (props) => {
   const className = classnames('rc-tab-panel', {
     'rc-tab-panel-active': props.active,
