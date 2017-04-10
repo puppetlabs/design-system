@@ -7,6 +7,11 @@ const propTypes = {
   ]),
 };
 
+/**
+ * `ButtonGroup` allows you to render buttons next to eachother.
+ *
+ * @example ../../../docs/ButtonGroup.md
+ */
 const ButtonGroup = props => <div className="rc-button-group">{ props.children }</div>;
 
 ButtonGroup.propTypes = propTypes;

@@ -2,12 +2,16 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
+  /** Placeholder for when value is unset */
   placeholder: React.PropTypes.string,
+  /** Class name applied to input element */
   className: React.PropTypes.string,
   autoFocus: React.PropTypes.bool,
+  /** Disallow user input */
   disabled: React.PropTypes.bool,
   readonly: React.PropTypes.bool,
   type: React.PropTypes.string,
+  /** Value string */
   value: React.PropTypes.string,
   name: React.PropTypes.string,
   size: React.PropTypes.string,
@@ -19,6 +23,11 @@ const propTypes = {
   onBlur: React.PropTypes.func,
 };
 
+/**
+ * `Input` renders a DOM `input` element.
+ *
+ * @example ../../../docs/Input.md
+ */
 class Input extends React.Component {
   constructor(props) {
     super(props);

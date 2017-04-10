@@ -28,6 +28,12 @@ const defaultProps = {
   disable: false,
 };
 
+/**
+ * `Dropdpown` displays a list of items.
+ *
+ * @example ../../../../docs/Dropdown.md
+ */
+
 class Dropdown extends React.Component {
   constructor(props) {
     super(props);

@@ -11,6 +11,11 @@ const defaultProps = {
   secondary: false,
 };
 
+/**
+ * `Panel` groups components together.
+ *
+ * @example ../../../docs/Panel.md
+ */
 const Panel = (props) => {
   const className = classnames('rc-panel', {
     'rc-panel-secondary': props.secondary,

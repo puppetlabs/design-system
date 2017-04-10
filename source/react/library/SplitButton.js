@@ -4,22 +4,33 @@ import Icon from './Icon';
 import DropdownMenu from './dropdown/DropdownMenu';
 
 const propTypes = {
+  /** Primary button click handler */
   onClick: React.PropTypes.func.isRequired,
+  /** Option click handler */
   onOptionClick: React.PropTypes.func.isRequired,
   options: React.PropTypes.array.isRequired,
+  /** Primary button label */
   label: React.PropTypes.string.isRequired,
   processing: React.PropTypes.bool,
   dropdownWidth: React.PropTypes.string,
   dropdownSize: React.PropTypes.string,
+  /** Whether or not to render the Menu in a Portal */
   disablePortal: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   disabledMenu: React.PropTypes.bool,
+  /** Either "small" or "tiny" */
   size: React.PropTypes.string,
 };
 
 const defaultProps = {
   dropdownWidth: '125px',
 };
+
+/**
+ * `SplitButton` is a `Button` with a `Dropdown`.
+ *
+ * @example ../../../docs/SplitButton.md
+ */
 
 class SplitButton extends React.Component {
   constructor(props) {
