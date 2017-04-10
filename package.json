@@ -10,7 +10,8 @@
     "watch": "nodemon --watch source -x \"npm run build\"",
     "test": "./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
     "lint": "./node_modules/.bin/eslint --quiet source/**/*.js",
-    "start": "./node_modules/.bin/styleguidist server"
+    "start": "./node_modules/.bin/styleguidist server",
+    "styleguide:build": "./node_modules/.bin/styleguidist build"
   },
   "repository": {
     "type": "git",
