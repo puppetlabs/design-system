@@ -14,5 +14,5 @@ release_npm:
 build_styleguide:
 	npm run styleguide:build
 
-release_styleguide:
-	aws s3 cp styleguide/ s3://$(CONTENT_BUCKET) --recursive --acl public-read --profile $(AWS_PROFILE) --region us-east-1
+release_styleguide: build_styleguide
+	aws s3 sync styleguide/ s3://$(CONTENT_BUCKET) --delete --acl public-read --profile $(AWS_PROFILE) --region us-east-1
