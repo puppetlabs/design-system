@@ -4,14 +4,28 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 const propTypes = {
+  /** A unique key to identify the item */
   key: React.PropTypes.string.isRequired,
   children: React.PropTypes.any,
+  /** A string to identify the item visually for the user */
   title: React.PropTypes.string,
+  /**
+    Whether or not the children are displayed. Usually controlled by the parent
+    `Accordion`
+  */
   active: React.PropTypes.bool,
+  /** Class name to apply to container */
   className: React.PropTypes.string,
+  /** Callback for when the user opens the item */
   onOpen: React.PropTypes.func,
 };
 
+/**
+ * `AccordionItem`s are containers which are meant to be rendered within an
+ * `Accordion`.
+ *
+ * @example ../../../../docs/AccordionItem.md
+ */
 class AccordionItem extends React.Component {
   constructor(props) {
     super(props);

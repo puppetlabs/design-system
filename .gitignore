@@ -2,6 +2,7 @@
 /node_modules
 /build
 /dist
+/styleguide
 npm-debug.log
 *.sw[onp]
 .DS_Store

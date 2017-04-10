@@ -2,12 +2,22 @@ import React, { Children } from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
+  /** Whether to open the first item by default */
   autoOpen: React.PropTypes.bool,
+  /** Called with the `key` of the opened `AccordionItem` */
   onChange: React.PropTypes.func,
+  /** `AccordionItem`s to render */
   children: React.PropTypes.any,
+  /** Class name to apply to the `Accordion` container wrapper div */
   className: React.PropTypes.string,
 };
 
+/**
+ * `Accordion` renders multiple `AccordionItem`s, keeping track of which one is
+ * open.
+ *
+ * @example ../../../../docs/Accordion.md
+ */
 class Accordion extends React.Component {
   constructor(props) {
     super(props);

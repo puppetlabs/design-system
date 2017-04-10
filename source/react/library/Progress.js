@@ -12,6 +12,12 @@ const defaultProps = {
   width: 300,
 };
 
+/**
+ * `Progress` displays the progress of a specific process.
+ *
+ * @example ../../../docs/Progress.md
+ */
+
 class Progress extends React.Component {
   constructor(props) {
     super(props);

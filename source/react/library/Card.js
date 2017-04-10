@@ -3,16 +3,29 @@ import classnames from 'classnames';
 
 const propTypes = {
   size: React.PropTypes.string,
+  /** Primary title of the card */
   title: React.PropTypes.string,
+  /** Secondary title of the card */
   subtitle: React.PropTypes.string,
   children: React.PropTypes.object,
+  /** Card height in px */
   height: React.PropTypes.string,
+  /** Manual active state */
   selected: React.PropTypes.bool,
+  /** Class name to apply to container element */
   className: React.PropTypes.string,
+  /** Callback for detecting user remove action */
   onRemove: React.PropTypes.func,
+  /** Card will be wrapped in anchor tag when passed `onClick` */
   onClick: React.PropTypes.func,
 };
 
+/**
+ * `Card` displays information about an object, usually as a more visual
+ * alternative to a `List`.
+ *
+ * @example ../../../docs/Card.md
+ */
 class Card extends React.Component {
 
   constructor(props) {

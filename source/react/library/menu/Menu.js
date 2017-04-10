@@ -6,6 +6,14 @@ const propTypes = {
   size: React.PropTypes.string,
 };
 
+/**
+ * Menu can be used to present a list of options, form items, and various
+ * buttons to the user. It can contain `MenuHeader`, `MenuList`, and
+ * `MenuSection` components.
+ *
+ * @example ../../../../docs/Menu.md
+ */
+
 class Menu extends React.Component {
   render() {
     const { size, children } = this.props;
