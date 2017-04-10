@@ -8,14 +8,6 @@
 <Input placeholder="I'm a happy input with a placeholder!" />
 ```
 
-Autofocused `Input`:
-```
-<Input
-  autoFocus
-  placeholder="I'm a happy autofocused Input!"
-/>
-```
-
 Small `Input`:
 ```
 <Input
