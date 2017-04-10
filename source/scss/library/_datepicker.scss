@@ -339,7 +339,7 @@ $ns: rc-datepicker !default;
     }
 
     &--single {
-      background-color: #fff;
+      background-color: $datepicker-bg;
       border: 1px solid darken($datepicker-selected-bg, 5);
       border-radius: $selection-radius;
       left: $selection-margin;
