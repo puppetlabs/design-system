@@ -6,5 +6,5 @@ const dates = {
   },
 };
 
-<DatePicker dates={ dates }>I'm a button!</DatePicker>
+<DatePicker dates={ dates } onChange={ (dates) => { console.log(dates) }}>I'm a button!</DatePicker>
 ```
