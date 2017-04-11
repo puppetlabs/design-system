@@ -45,7 +45,6 @@ class DatePicker extends React.Component {
       end,
     };
 
-    this.setDateRange = this.setDateRange.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
@@ -58,16 +57,10 @@ class DatePicker extends React.Component {
     }
   }
 
-  onChange() {
-    this.props.onChange();
-  }
+  onChange(dates) {
+    this.props.onChange(dates);
 
-  // Default to current time
-  setDateRange(start, end = moment().endOf('day')) {
-    this.setState({
-      start,
-      end,
-    });
+    this.popover.close();
   }
 
   getButton(start, end) {
@@ -99,9 +92,9 @@ class DatePicker extends React.Component {
     const button = this.getButton(start, end);
     const anchor = this.props.anchor;
     const props = {
-      setRange: this.setDateRange,
       range: moment.range(start, end),
       ranges: this.props.ranges,
+      onChange: this.onChange,
     };
     let jsx;
 
@@ -109,7 +102,12 @@ class DatePicker extends React.Component {
       jsx = button;
     } else {
       jsx = (
-        <Popover padding={ false } target={ button } anchor={ anchor } >
+        <Popover
+          ref={ (c) => { this.popover = c; } }
+          padding={ false }
+          target={ button }
+          anchor={ anchor }
+        >
           <DatePickerWrapper { ...props } />
         </Popover>
       );

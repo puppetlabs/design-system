@@ -3,63 +3,53 @@ import classnames from 'classnames';
 import DateRangePicker from 'react-daterange-picker';
 import moment from 'moment';
 
-class DateRangePickerWrapper extends React.Component {
+const propTypes = {
+  onChange: React.PropTypes.func.isRequired,
+  range: React.PropTypes.object,
+  ranges: React.PropTypes.array,
+};
+
+class DatePickerWrapper extends React.Component {
   constructor(props) {
     super(props);
 
-    this._setRange = this._setRange.bind(this);
+    this.setRange = this.setRange.bind(this);
   }
 
-  handleClickOutside() {
-    this.props.onHide();
-  }
+  setRange(range) {
+    const dates = {};
 
-  _setRange(range) {
     if (range.start && range.end) {
-      this.props.setRange(range.start, range.end);
+      dates.start = range.start;
+      dates.end = range.end;
     } else {
-      this.props.setRange(range);
+      dates.start = range;
+      dates.end = moment().endOf('day');
     }
+
+    this.props.onChange(dates);
   }
 
-  _isSelected(range) {
-    let currentStart = this.props.range.start,
-      currentEnd = this.props.range.end,
-      rangeStart = moment().startOf('day').subtract(range.count, range.unit),
-      rangeEnd = moment().startOf('day');
-
-    return (currentStart.diff(rangeStart, 'days') === 0) &&
-      (currentEnd.diff(rangeEnd, 'days') === 0);
-  }
-
-  _getRanges() {
+  getRanges() {
     if (!this.props.ranges || this.props.ranges.length === 0) return null;
 
-    let ranges = [],
-      custom = true,
-      pluralize;
+    const ranges = [];
+    let custom = true;
 
     // Um, we can do better than this...
-    pluralize = function (thing, count) {
-      if (count > 1) {
-        return thing + 's';
-      } else {
-        return thing;
-      }
-    };
+    const pluralize = (thing, count) => (count > 1 ? `${thing}s` : thing);
 
     this.props.ranges.forEach((range, key) => {
-      let start = moment().startOf('day').subtract(range.count, range.unit),
-        onClick = this._setRange.bind(this, start),
-        selected = this._isSelected(range),
-        className = classnames({ selected }),
-        props;
+      const start = moment().startOf('day').subtract(range.count, range.unit);
+      const onClick = this.setRange.bind(this, start);
+      const selected = this.isSelected(range);
+      const className = classnames({ selected });
 
       if (selected) {
         custom = false;
       }
 
-      props = { key, onClick, className };
+      const props = { key, onClick, className };
 
       ranges.push(<li { ...props }>{range.count} {pluralize(range.unit, range.count)}</li>);
     });
@@ -73,8 +63,18 @@ class DateRangePickerWrapper extends React.Component {
     );
   }
 
+  isSelected(range) {
+    const currentStart = this.props.range.start;
+    const currentEnd = this.props.range.end;
+    const rangeStart = moment().startOf('day').subtract(range.count, range.unit);
+    const rangeEnd = moment().startOf('day');
+
+    return (currentStart.diff(rangeStart, 'days') === 0) &&
+      (currentEnd.diff(rangeEnd, 'days') === 0);
+  }
+
   render() {
-    const ranges = this._getRanges();
+    const ranges = this.getRanges();
 
     return (
       <div className="rc-datepicker-container">
@@ -82,7 +82,7 @@ class DateRangePickerWrapper extends React.Component {
           numberOfCalendars={ 2 }
           selectionType={ 'range' }
           bemBlock="rc-datepicker"
-          onSelect={ this._setRange }
+          onSelect={ this.props.onChange }
           value={ this.props.range }
           singleDateRange
         />
@@ -92,4 +92,6 @@ class DateRangePickerWrapper extends React.Component {
   }
 }
 
-export default DateRangePickerWrapper;
+DatePickerWrapper.propTypes = propTypes;
+
+export default DatePickerWrapper;
