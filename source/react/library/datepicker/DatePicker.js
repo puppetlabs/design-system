@@ -125,7 +125,6 @@ class DatePicker extends React.Component {
       message = this.props.message;
     }
 
-    // It's configured!
     return message;
   }
 
