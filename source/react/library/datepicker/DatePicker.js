@@ -1,16 +1,18 @@
 import React from 'react';
 import moment from 'moment';
+import classnames from 'classnames';
 import DatePickerWrapper from './DatePickerWrapper';
 import Button from '../Button';
 import Popover from '../Popover';
 
 const propTypes = {
   onChange: React.PropTypes.func.isRequired,
-  dates: React.PropTypes.object,
-  ranges: React.PropTypes.array,
-  message: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
   anchor: React.PropTypes.string,
+  className: React.PropTypes.string,
+  dates: React.PropTypes.object,
+  disabled: React.PropTypes.bool,
+  message: React.PropTypes.string,
+  ranges: React.PropTypes.array,
 };
 
 const defaultProps = {
@@ -128,11 +130,11 @@ class DatePicker extends React.Component {
   }
 
   render() {
-    const { start, end } = this.state;
-    const wrapper = this.getWrapper(start, end);
+    const wrapper = this.getWrapper(this.state.start, this.state.end);
+    const className = classnames('rc-datepicker-wrapper', this.props.className);
 
     return (
-      <div className="rc-datepicker-wrapper">
+      <div className={ className }>
         { wrapper }
       </div>
     );
