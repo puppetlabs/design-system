@@ -11,6 +11,7 @@ const fields = [
 ];
 
 <Filter
+  onChange={ filter => { console.log('filter changed', filter); } }
   onDelete={ () => { console.log('filter deleted'); } }
   fields={ fields }
   operators={ operators }
@@ -34,6 +35,7 @@ const fields = [
 const filter = { field: 'Field 1', op: 'null' };
 
 <Filter
+  onChange={ filter => { console.log('filter changed', filter); } }
   onDelete={ () => { console.log('filter deleted'); } }
   fields={ fields }
   filter={ filter }
