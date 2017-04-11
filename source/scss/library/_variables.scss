@@ -22,6 +22,9 @@ $font-size-base:                 16px !default;
 $font-size-medium:               14px !default;
 $font-size-small:                12px !default;
 $font-size-tiny:                 10px !default;
+
+$font-weight-heavy:              600 !default;
+
 $line-height-base:               1.428571429 !default; // 20/14
 
 $font-color-base:                $gray-darker;
@@ -129,7 +132,7 @@ $dropdown-width:                  260px !default;
 $dropdown-width-tiny:             180px !default;
 
 $dropdown-label-font-size:        $font-size-medium !default;
-$dropdown-label-font-weight:      600 !default;
+$dropdown-label-font-weight:      $font-weight-heavy !default;
 $dropdown-label-color:            $brand-primary !default;
 $dropdown-label-color-error:      $brand-danger !default;
 $dropdown-label-color-disabled:   $gray !default;
@@ -346,3 +349,25 @@ $form-label-font-size:                $font-size-medium !default;
 $form-label-margin-bottom:            6px !default;
 $form-label-text-transform:           none !default;
 $form-label-color:                    $gray !default;
+
+//
+// Datepicker
+//
+$datepicker-button-border-color:      $button-secondary-border-color !default;
+
+$datepicker-bg:                       $bg-primary !default;
+$datepicker-radius:                   $border-radius !default;
+$datepicker-box-shadow:               0px 0px 6px rgba(0,0,0,0.2) !default;
+
+$datepicker-month-color:              $gray-dark !default;
+$datepicker-month-font-weight:        $font-weight-heavy !default;
+$datepicker-weekday-color:            $gray-dark !default;
+$datepicker-weekday-font-weight:      $font-weight-heavy !default;
+
+$datepicker-selected-bg:              $brand-primary !default;
+
+// Preset ranges
+$date-range-color:                    $brand-primary !default;
+$date-range-border:                   $bg-primary !default;
+$date-range-hover-bg:                 $brand-primary !default;
+$date-range-hover-border:             $brand-primary !default;

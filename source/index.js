@@ -25,6 +25,7 @@ import Toggle from './react/library/Toggle';
 import TabPanel from './react/library/tabs/TabPanel';
 import Progress from './react/library/Progress';
 import SlideIn from './react/library/SlideIn';
+import DatePicker from './react/library/datepicker/DatePicker';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 import Table from './react/library/table/Table';
 import ColumnSelect from './react/library/table/ColumnSelect';
@@ -70,4 +71,5 @@ export {
   SlideIn,
   BlankSlate,
   Panel,
+  DatePicker,
 };
