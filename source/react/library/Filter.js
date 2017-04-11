@@ -14,6 +14,7 @@ const propTypes = {
   operators: React.PropTypes.arrayOf(React.PropTypes.shape({
     symbol: React.PropTypes.string,
     label: React.PropTypes.string,
+    noValue: React.PropTypes.bool,
   })),
   /** A filter that the user can modify */
   filter: React.PropTypes.shape({
@@ -98,6 +99,20 @@ class Filter extends React.Component {
       default:
         // do nothing
     }
+  }
+
+  shouldRenderValue() {
+    let render = true;
+
+    if (this.state.filter.op) {
+      const fullOp = this.props.operators.find(op => op.noValue);
+
+      if (fullOp && fullOp.noValue) {
+        render = false;
+      }
+    }
+
+    return render;
   }
 
   renderSplitButton() {
@@ -192,7 +207,12 @@ class Filter extends React.Component {
     const splitButton = this.renderSplitButton();
     const fieldSelect = this.renderFieldSelect(this.props.fields);
     const operatorSelect = this.renderOperatorSelect();
-    const valueInput = this.renderValueInput();
+    const shouldRenderValue = this.shouldRenderValue();
+    let valueInput;
+
+    if (shouldRenderValue) {
+      valueInput = this.renderValueInput();
+    }
 
     return (
       <div className="rc-filter-form">
