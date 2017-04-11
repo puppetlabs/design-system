@@ -107,7 +107,7 @@ class Filter extends React.Component {
     if (this.state.filter.op) {
       const fullOp = this.props.operators.find(op => op.noValue);
 
-      if (fullOp && fullOp.noValue) {
+      if (fullOp && fullOp.noValue && fullOp.symbol === this.state.filter.op) {
         render = false;
       }
     }
