@@ -2,6 +2,7 @@ import React from 'react';
 import GridBlock from './GridBlock';
 
 const propTypes = {
+  /** A view configuration from the Reflect API */
   view: React.PropTypes.object,
   settings: React.PropTypes.object,
 };
@@ -15,6 +16,8 @@ const defaultProps = {
     rowHeight: 25,
   },
 };
+
+const DEFAULT_TYPE = 'chart';
 
 const staticView = [
   {
@@ -51,10 +54,21 @@ const validateBlocks = (blocks) => {
   return valid;
 };
 
-class StencilGrid extends React.Component {
+/**
+ * `StencilGrid` is used to display a stencil of one of a Reflect view.
+ *
+ * @example ../../../../docs/StencilGrid.md
+ */
 
-  constructor(props) {
-    super(props);
+class StencilGrid extends React.Component {
+  getType(type) {
+    const known = ['bars', 'timeseries', 'donut', 'datagrid', 'kpi'];
+
+    if (known.indexOf(type) < 0) {
+      type = DEFAULT_TYPE;
+    }
+
+    return type;
   }
 
   getCoords({ x, y, w, h }) {
@@ -73,7 +87,9 @@ class StencilGrid extends React.Component {
 
     blocks.forEach((block, i) => {
       const coords = this.getCoords(block.layout);
-      gridBlocks.push(<GridBlock key={ `grid-block-${i}` } coords={ coords } type={ block.type } />);
+      const type = this.getType(block.type);
+
+      gridBlocks.push(<GridBlock key={ `grid-block-${i}` } coords={ coords } type={ type } />);
     });
 
     return gridBlocks;

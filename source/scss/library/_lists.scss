@@ -5,7 +5,7 @@
   }
 
   &.rc-list-item-selected {
-    a {
+    a.rc-list-item-link {
       border: $list-item-border-selected;
     }
   }
@@ -43,13 +43,13 @@
       right: 0;
     }
   }
-}
 
-
-.rc-list-item-clickable {
-  &:hover {
-    color: $list-item-color-hover;
-    background: $list-item-bg-hover;
-    cursor: pointer;
+  &.rc-list-item-clickable:hover {
+    a.rc-list-item-link {
+      color: $list-item-color-hover;
+      background: $list-item-bg-hover;
+      cursor: pointer;
+    }
   }
 }
+

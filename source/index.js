@@ -16,7 +16,8 @@ import MenuSection from './react/library/menu/MenuSection';
 import Filter from './react/library/Filter';
 import Switch from './react/library/Switch';
 import Loading from './react/library/Loading';
-import ListItem from './react/library/ListItem';
+import List from './react/library/list/List';
+import ListItem from './react/library/list/ListItem';
 import Modal from './react/library/modals/Modal';
 import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import Tabs from './react/library/tabs/Tabs';
@@ -52,6 +53,7 @@ export {
   Filter,
   Switch,
   Loading,
+  List,
   ListItem,
   Modal,
   ConfirmationModal,
