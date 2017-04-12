@@ -102,7 +102,11 @@ class DropdownMenu extends React.Component {
       jsx = <p className="rc-dropdown-blank">{ this.props.blank }</p>;
     }
 
-    return <MenuSection className="rc-menu-section-list">{ jsx }</MenuSection>;
+    if (this.props.blank || this.props.multiple) {
+      jsx = <MenuSection className="rc-menu-section-list">{ jsx }</MenuSection>;
+    }
+
+    return jsx;
   }
 
   renderApplyButton() {
