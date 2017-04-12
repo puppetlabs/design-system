@@ -21,6 +21,64 @@ describe('<Filter />', () => {
     expect(wrapper.length).to.eql(1);
   });
 
+  describe('when creating a new filter', () => {
+    it('shouldn\'t respond to change events until value is changed', () => {
+      const onChange = sinon.spy();
+      const wrapper = shallow(
+        <Filter
+          { ...defaultProps }
+          onChange={ onChange }
+        />
+      );
+
+      wrapper.find({ name: 'field-select' }).simulate('change', 'mockField1');
+
+      expect(onChange.callCount).to.eql(0);
+
+      wrapper.find({ name: 'operator-select' }).simulate('change', 'mockOp1');
+
+      expect(onChange.callCount).to.eql(0);
+
+      wrapper.find('Input').simulate('change', {
+        target: { value: 'mockValue1' },
+      });
+
+      expect(onChange.callCount).to.eql(0);
+
+      wrapper.find('Input').simulate('blur');
+
+      expect(onChange.callCount).to.eql(1);
+
+      expect(onChange.lastCall.args).to.eql([
+        { field: 'mockField1', op: 'mockOp1', value: 'mockValue1' },
+      ]);
+    });
+
+    it('should respond to op change when the op has no value', () => {
+      const onChange = sinon.spy();
+      const operators = [{ symbol: 'null', label: 'Is null', noValue: true }];
+      const wrapper = shallow(
+        <Filter
+          { ...defaultProps }
+          onChange={ onChange }
+          operators={ operators }
+        />
+      );
+
+      wrapper.find({ name: 'field-select' }).simulate('change', 'mockField1');
+
+      expect(onChange.callCount).to.eql(0);
+
+      wrapper.find({ name: 'operator-select' }).simulate('change', 'null');
+
+      expect(onChange.callCount).to.eql(1);
+
+      expect(onChange.lastCall.args).to.eql([
+        { field: 'mockField1', op: 'null', value: '' },
+      ]);
+    });
+  });
+
   describe('when passed a filter', () => {
     const filter = { field: 'myField', op: '=', value: 'mockValue' };
 

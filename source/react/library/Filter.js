@@ -113,7 +113,7 @@ class Filter extends React.Component {
     let valid = !!(filter.field && filter.op && filter.value);
 
     if (filter.op && !filter.value) {
-      const fullOp = this.props.operators.filter(op => op.noValue && op.symbol === filter.op);
+      const fullOp = this.props.operators.find(op => op.noValue && op.symbol === filter.op);
 
       if (fullOp) {
         valid = !!(filter.field && filter.op);
