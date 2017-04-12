@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import Button from './Button';
-import { TooltipHoverArea } from './tooltips/Tooltip';
+import Button from '../Button';
+import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
   children: React.PropTypes.string,
@@ -16,8 +16,12 @@ const defaultProps = {
   selected: false,
 };
 
-class ListItem extends React.Component {
-
+/**
+ * `ListItem` renders an item in a list.
+ *
+ * @example ../../../../docs/ListItem.md
+ */
+class ListItem extends React.PureComponent {
   constructor(props) {
     super(props);
 
@@ -27,7 +31,9 @@ class ListItem extends React.Component {
   }
 
   onClick(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
     if (this.props.onClick) {
       this.props.onClick(!this.props.selected);
@@ -35,8 +41,10 @@ class ListItem extends React.Component {
   }
 
   onRemove(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
 
     if (this.props.onRemove) {
       this.props.onRemove();
@@ -44,8 +52,10 @@ class ListItem extends React.Component {
   }
 
   onEdit(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
 
     if (this.props.onEdit) {
       this.props.onEdit();
