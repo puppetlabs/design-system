@@ -18,7 +18,7 @@ Removable `Card`:
 ```
 <Card
   onRemove={ () => alert('Card removed!') }
-  title="I'm a happy selected card!"
+  title="I'm a happy removable card!"
   subtitle="I'm a happy subtitle!"
 />
 ```

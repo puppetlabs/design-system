@@ -4,7 +4,9 @@ import Icon from './Icon';
 import { TooltipHoverArea } from './tooltips/Tooltip';
 
 const propTypes = {
+  /** Items to render inside the Tag */
   children: React.PropTypes.any,
+  /** Selected state */
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
   size: React.PropTypes.string,
@@ -14,8 +16,12 @@ const propTypes = {
   tooltip: React.PropTypes.bool,
 };
 
+/**
+ * `Tag` is used to repesent a removable, clickable item.
+ *
+ * @example ../../../docs/Tag.md
+ */
 class Tag extends React.Component {
-
   constructor(props) {
     super(props);
 
