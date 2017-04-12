@@ -130,6 +130,12 @@ a.rc-button, button.rc-button {
     }
   }
 
+  &.rc-button-auto {
+    padding: 0;
+    height: auto;
+    line-height: normal;
+  }
+
   &.rc-button-tiny {
     height: 22px;
     line-height: 22px;

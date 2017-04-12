@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import Button from './Button';
 import Icon from './Icon';
 import { TooltipHoverArea } from './tooltips/Tooltip';
 
@@ -71,7 +72,11 @@ class Tag extends React.Component {
     let jsx;
 
     if (this.props.onRemove) {
-      jsx = <Icon type="delete" height="12px" width="12px" onClick={ this.onRemove } />;
+      jsx = (
+        <Button transparent size="auto" onClick={ this.onRemove }>
+          <Icon type="delete" height="12px" width="12px" />
+        </Button>
+      );
     }
 
     return jsx;

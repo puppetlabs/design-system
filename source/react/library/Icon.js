@@ -7,7 +7,6 @@ const propTypes = {
   width: React.PropTypes.string,
   type: React.PropTypes.string,
   svg: React.PropTypes.element,
-  onClick: React.PropTypes.func,
 };
 
 const defaultProps = {
@@ -44,7 +43,6 @@ const Icon = (props) => {
         width={ width }
         height={ height }
         viewBox={ viewBox }
-        onClick={ props.onClick }
       >
         { svg }
       </svg>
