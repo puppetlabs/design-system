@@ -31,7 +31,9 @@ class ListItem extends React.PureComponent {
   }
 
   onClick(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
     if (this.props.onClick) {
       this.props.onClick(!this.props.selected);
@@ -39,8 +41,10 @@ class ListItem extends React.PureComponent {
   }
 
   onRemove(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
 
     if (this.props.onRemove) {
       this.props.onRemove();
@@ -48,8 +52,10 @@ class ListItem extends React.PureComponent {
   }
 
   onEdit(e) {
-    e.preventDefault();
-    e.stopPropagation();
+    if (e) {
+      e.preventDefault();
+      e.stopPropagation();
+    }
 
     if (this.props.onEdit) {
       this.props.onEdit();
