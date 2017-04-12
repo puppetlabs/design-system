@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import clone from 'clone';
+import classnames from 'classnames';
 import equals from 'deep-equal';
 import Input from './Input';
 import SplitButton from './SplitButton';
@@ -230,6 +231,9 @@ class Filter extends React.Component {
     const fieldSelect = this.renderFieldSelect(this.props.fields);
     const operatorSelect = this.renderOperatorSelect();
     const shouldRenderValue = this.shouldRenderValue();
+    const className = classnames('rc-filter-form', {
+      'rc-filter-form-no-value': !shouldRenderValue,
+    });
     let valueInput;
 
     if (shouldRenderValue) {
@@ -237,7 +241,7 @@ class Filter extends React.Component {
     }
 
     return (
-      <div className="rc-filter-form">
+      <div className={ className }>
         { splitButton }
         <div className="rc-filter-form-fields">
           <div className="rc-selects-row">

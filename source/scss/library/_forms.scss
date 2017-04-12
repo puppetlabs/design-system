@@ -156,6 +156,18 @@
     }
   }
 
+  &.rc-filter-form-no-value {
+    .rc-filter-form-fields .rc-selects-row {
+      .Select-small.Select-left > .Select-control {
+        border-bottom-left-radius: $border-radius;
+      }
+
+      .Select-small.Select-right > .Select-control {
+        border-bottom-right-radius: $border-radius;
+      }
+    }
+  }
+
   &:hover {
     .rc-split-button {
       visibility: visible;
