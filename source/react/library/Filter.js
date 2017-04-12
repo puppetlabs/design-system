@@ -86,6 +86,13 @@ class Filter extends React.Component {
       const isValid = this.isValid(newFilter);
 
       newState.valid = isValid;
+
+      const fullOp = this.getFullValuelessOperator(value);
+
+      // If the op is valueless, lets clear a previously set value.
+      if (fullOp) {
+        newState.filter.value = defaultProps.filter.value;
+      }
     }
 
     this.setState(newState);
@@ -110,11 +117,15 @@ class Filter extends React.Component {
     }
   }
 
+  getFullValuelessOperator(shortOp) {
+    return this.props.operators.filter(op => op.noValue && op.symbol === shortOp)[0];
+  }
+
   isValid(filter) {
     let valid = !!(filter.field && filter.op && filter.value);
 
     if (filter.op && !filter.value) {
-      const fullOp = this.props.operators.filter(op => op.noValue && op.symbol === filter.op)[0];
+      const fullOp = this.getFullValuelessOperator(filter.op);
 
       if (fullOp) {
         valid = !!(filter.field && filter.op);
@@ -128,8 +139,7 @@ class Filter extends React.Component {
     let render = true;
 
     // Find the current operator in the props.operators array, where noValue is true
-    const fullOp = this.props.operators.filter(op =>
-      op.noValue && op.symbol === this.state.filter.op)[0];
+    const fullOp = this.getFullValuelessOperator(this.state.filter.op);
 
     if (fullOp) {
       render = false;

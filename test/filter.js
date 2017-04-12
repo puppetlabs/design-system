@@ -109,5 +109,26 @@ describe('<Filter />', () => {
         { field: 'myField', op: '=', value: 'mockValue2' },
       ]);
     });
+
+    it('should clear value when changing to a valueless op', () => {
+      const onChange = sinon.spy();
+      const operators = [{ symbol: 'notNull', label: 'Is null', noValue: true }];
+      const wrapper = shallow(
+        <Filter
+          { ...defaultProps }
+          onChange={ onChange }
+          filter={ filter }
+          operators={ operators }
+        />
+      );
+
+      wrapper.find({ name: 'operator-select' }).simulate('change', 'notNull');
+
+      expect(onChange.callCount).to.eql(1);
+
+      expect(onChange.lastCall.args).to.eql([
+        { field: 'myField', op: 'notNull', value: '' },
+      ]);
+    });
   });
 });
