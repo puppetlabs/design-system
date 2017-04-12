@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import Button from './Button';
-import { TooltipHoverArea } from './tooltips/Tooltip';
+import Button from '../Button';
+import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
   children: React.PropTypes.string,
@@ -16,8 +16,12 @@ const defaultProps = {
   selected: false,
 };
 
-class ListItem extends React.Component {
-
+/**
+ * `ListItem` renders an item in a list.
+ *
+ * @example ../../../../docs/ListItem.md
+ */
+class ListItem extends React.PureComponent {
   constructor(props) {
     super(props);
 
