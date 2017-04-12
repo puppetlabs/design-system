@@ -114,7 +114,7 @@ class Filter extends React.Component {
     let valid = !!(filter.field && filter.op && filter.value);
 
     if (filter.op && !filter.value) {
-      const fullOp = this.props.operators.find(op => op.noValue && op.symbol === filter.op);
+      const fullOp = this.props.operators.filter(op => op.noValue && op.symbol === filter.op)[0];
 
       if (fullOp) {
         valid = !!(filter.field && filter.op);
@@ -128,8 +128,8 @@ class Filter extends React.Component {
     let render = true;
 
     // Find the current operator in the props.operators array, where noValue is true
-    const fullOp = this.props.operators.find(op =>
-      op.noValue && op.symbol === this.state.filter.op);
+    const fullOp = this.props.operators.filter(op =>
+      op.noValue && op.symbol === this.state.filter.op)[0];
 
     if (fullOp) {
       render = false;
