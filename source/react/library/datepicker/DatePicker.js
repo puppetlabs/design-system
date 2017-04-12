@@ -70,7 +70,7 @@ class DatePicker extends React.Component {
     const props = {
       transparent: true,
       className: 'rc-datepicker-button',
-      disabled: this.props.disabled || this.props.message,
+      disabled: !!(this.props.disabled || this.props.message),
     };
     let buttonBody;
 
