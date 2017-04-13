@@ -9,6 +9,7 @@ const propTypes = {
   onChange: React.PropTypes.func.isRequired,
   anchor: React.PropTypes.string,
   className: React.PropTypes.string,
+  buttonClassName: React.PropTypes.string,
   dates: React.PropTypes.object,
   disabled: React.PropTypes.bool,
   message: React.PropTypes.string,
@@ -69,7 +70,9 @@ class DatePicker extends React.Component {
     const message = this.props.message;
     const props = {
       transparent: true,
-      className: 'rc-datepicker-button',
+      className: classnames('rc-datepicker-button', {
+        [this.props.buttonClassName]: this.props.buttonClassName,
+      }),
       disabled: !!(this.props.disabled || this.props.message),
     };
     let buttonBody;
