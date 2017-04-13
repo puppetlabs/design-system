@@ -138,11 +138,11 @@ a.rc-button, button.rc-button {
 
   &.rc-button-tiny {
     height: 22px;
-    line-height: 22px;
-    padding: 0 5px;
+    line-height: 20px;
+    padding: 0 2px;
+    font-size: $font-size-tiny;
 
     .rc-button-content {
-      display: block;
       font-size: $font-size-tiny;
     }
   }
