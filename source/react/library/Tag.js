@@ -1,9 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
+import Button from './Button';
+import Icon from './Icon';
 import { TooltipHoverArea } from './tooltips/Tooltip';
 
 const propTypes = {
+  /** Items to render inside the Tag */
   children: React.PropTypes.any,
+  /** Selected state */
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
   size: React.PropTypes.string,
@@ -13,8 +17,12 @@ const propTypes = {
   tooltip: React.PropTypes.bool,
 };
 
+/**
+ * `Tag` is used to repesent a removable, clickable item.
+ *
+ * @example ../../../docs/Tag.md
+ */
 class Tag extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -40,10 +48,12 @@ class Tag extends React.Component {
   }
 
   renderContent() {
+    const removeButton = this.renderRemoveButton();
     const { children, tooltip } = this.props;
     let jsx = (
       <div className="rc-tag-content">
         { children }
+        { removeButton }
       </div>
     );
 
@@ -52,6 +62,20 @@ class Tag extends React.Component {
         <TooltipHoverArea anchor="bottom" tooltip={ jsx }>
           { jsx }
         </TooltipHoverArea>
+      );
+    }
+
+    return jsx;
+  }
+
+  renderRemoveButton() {
+    let jsx;
+
+    if (this.props.onRemove) {
+      jsx = (
+        <Button transparent size="auto" onClick={ this.onRemove }>
+          <Icon type="delete" height="12px" width="12px" />
+        </Button>
       );
     }
 
@@ -67,7 +91,7 @@ class Tag extends React.Component {
       'rc-tag-block': block,
       [`rc-tag-${size}`]: size,
     }, this.props.className);
-    let content = this.renderContent();
+    const content = this.renderContent();
     let jsx;
 
     if (onClick) {

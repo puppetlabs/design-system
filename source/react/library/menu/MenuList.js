@@ -36,11 +36,19 @@ class MenuList extends React.Component {
     const jsx = [];
 
     options.forEach((option) => {
+      let isSelected = false;
+
+      if (Array.isArray(selected)) {
+        isSelected = selected.indexOf(option.id) >= 0;
+      } else {
+        isSelected = selected === option.id;
+      }
+
       jsx.push(
         <MenuItem
           key={ option.id }
           option={ option }
-          selected={ selected.indexOf(option.id) >= 0 }
+          selected={ isSelected }
           onClick={ this.onChange }
           multiple={ multiple }
         />

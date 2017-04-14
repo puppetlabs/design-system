@@ -44,6 +44,7 @@ const Dropdowns = () => {
       hint="I'm a hint"
       selected={ [1] }
       options={ options }
+      onChange={ () => {} }
     />
   );
 

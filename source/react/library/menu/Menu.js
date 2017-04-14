@@ -17,7 +17,9 @@ const propTypes = {
 class Menu extends React.Component {
   render() {
     const { size, children } = this.props;
-    const className = classnames('rc-menu', `rc-menu-${size}`);
+    const className = classnames('rc-menu', {
+      [`rc-menu-${size}`]: size,
+    });
 
     return <div className={ className }>{ children }</div>;
   }

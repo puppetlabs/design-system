@@ -13,6 +13,8 @@ $brand-info:                     #5bc0de !default;
 $brand-warning:                  #f0ad4e !default;
 $brand-danger:                   #d9534f !default;
 
+$bg-primary:                     #fff !default;
+
 $font-family:                   'Open Sans', sans-serif !default;
 
 $font-size-large:                18px !default;
@@ -20,6 +22,9 @@ $font-size-base:                 16px !default;
 $font-size-medium:               14px !default;
 $font-size-small:                12px !default;
 $font-size-tiny:                 10px !default;
+
+$font-weight-heavy:              600 !default;
+
 $line-height-base:               1.428571429 !default; // 20/14
 
 $font-color-base:                $gray-darker;
@@ -33,8 +38,6 @@ $border-active:                  1px solid $brand-primary !default;
 $border-hover:                   1px solid $border-hover-color !default;
 
 $outer-shadow:                   0 0px 1px rgba(0, 0, 0, .05) !default;
-$hover-shadow:                   0px 0px 0px 1px $gray !default;
-$selected-shadow:                0px 0px 0px 1px $brand-primary !default;
 
 $padding:                        16px;
 
@@ -43,6 +46,7 @@ $padding:                        16px;
 //
 $button-font-family:              'Montserrat', sans-serif !default;
 $button-font-size:                $font-size-small !default;
+$button-font-size-tiny:           10px !default;
 $button-font-weight:              normal !default;
 $button-disabled-bg:              #ccc !default;
 $button-disabled-color:           $gray !default;
@@ -74,13 +78,13 @@ $button-badge-size:               10px !default;
 //
 $tag-font-size:                   $button-font-size !default;
 $tag-font-weight:                 $button-font-weight !default;
-$tag-height:                      33px;
-$tag-line-height:                 29px;
+$tag-height:                      33px !default;
+$tag-line-height:                 $tag-height !default;
 $tag-bg:                          $gray-light !default;
 $tag-color:                       $gray !default;
 $tag-border-radius:               $button-border-radius !default;
-$tag-border:                      2px solid $tag-bg !default;
-$tag-border-selected:             2px solid $brand-primary !default;
+$tag-border:                      1px solid $tag-bg !default;
+$tag-border-selected:             1px solid $brand-primary !default;
 
 //
 // Tab variables/options
@@ -92,7 +96,7 @@ $tab-color:                       $gray !default;
 $tab-color-active:                $brand-primary !default;
 $tab-border:                      2px solid $gray-lighter !default;
 $tab-border-active:               2px solid $brand-primary !default;
-$tab-bg:                          $white !default;
+$tab-bg:                          $bg-primary !default;
 $tab-text-transform:              uppercase !default;
 $tab-padding:                     10px 20px !default;
 $tab-width-vertical:              140px !default;
@@ -107,7 +111,7 @@ $loading-indicator-fill:          $gray-dark !default;
 //
 // Popover
 //
-$popover-bg:                      $white !default;
+$popover-bg:                      $bg-primary !default;
 $popover-border:                  none !default;
 $popover-border-radius:           $border-radius !default;
 $popover-close-color:             $gray-light !default;
@@ -121,14 +125,14 @@ $popover-elevation:               24 !default;
 //
 // Dropdown
 //
-$dropdown-padding:                12px !default;
+$dropdown-padding:                16px !default;
 $dropdown-padding-tiny:           10px !default;
 $dropdown-max-height:             400px !default;
 $dropdown-width:                  260px !default;
 $dropdown-width-tiny:             180px !default;
 
 $dropdown-label-font-size:        $font-size-medium !default;
-$dropdown-label-font-weight:      600 !default;
+$dropdown-label-font-weight:      $font-weight-heavy !default;
 $dropdown-label-color:            $brand-primary !default;
 $dropdown-label-color-error:      $brand-danger !default;
 $dropdown-label-color-disabled:   $gray !default;
@@ -157,26 +161,27 @@ $menu-item-font-size-tiny:        $font-size-medium !default;
 $menu-item-line-height:           $font-size-base !default;
 $menu-item-line-height-tiny:      $font-size-medium !default;
 $menu-item-color:                 $brand-primary !default;
-$menu-item-bg:                    $white !default;
+$menu-item-bg:                    $bg-primary !default;
 $menu-item-color-hover:           $white !default;
 $menu-item-bg-hover:              darken($brand-primary, 10%) !default;
 $menu-item-color-selected:        $white !default;
 $menu-item-bg-selected:           $brand-primary !default;
 $menu-item-color-disabled:        $white !default;
 $menu-item-bg-disabled:           $gray-light !default;
+$menu-item-padding:               12px 16px !default
 
 $menu-section-border:             $border !default;
 $menu-section-padding:            $padding !default;
 
 $menu-header-border:              $border !default;
-$menu-header-padding:             7px $padding 9px !default;
+$menu-header-padding:             12px $padding !default;
 $menu-title-font-size:            $font-size-medium !default;
 $menu-title-color:                $gray !default;
 
 //
 // Cards
 //
-$card-bg:                         $white !default;
+$card-bg:                         $bg-primary !default;
 $card-border:                     $border !default;
 $card-border-hover:               $border-hover !default;
 $card-shadow-hover:               0px 0px 0px 1px $gray !default;
@@ -215,7 +220,7 @@ $toggle-color:                   $brand-primary !default;
 // List Item
 //
 
-$list-item-bg:                    $white !default;
+$list-item-bg:                    $bg-primary !default;
 $list-item-bg-hover:              $gray-lighter !default;
 $list-item-color:                 $gray !default;
 $list-item-color-hover:           $gray-dark !default;
@@ -232,7 +237,7 @@ $list-item-action-width:          30px !default;
 //
 // Modal
 //
-$modal-bg:                        $white !default;
+$modal-bg:                        $bg-primary !default;
 $modal-color:                     $font-color-base !default;
 $modal-border-radius:             10px !default;
 $modal-overlay-bg:                rgba(255, 255, 255, 0.8) !default;
@@ -285,7 +290,7 @@ $tooltip-elevation:           24;
 //
 // Slide ins
 //
-$slidein-bg:                      $white !default;
+$slidein-bg:                      $bg-primary !default;
 $slidein-color:                   $font-color-base !default;
 $slidein-padding:                 10px 12px !default;
 $slidein-horizontal-width:        330px !default;
@@ -330,9 +335,39 @@ $blank-slate-icon-color:               $brand-primary !default;
 // Panel
 //
 
-$panel-bg:                             $white !default;
+$panel-bg:                             $bg-primary !default;
 $panel-bg-secondary:                   $gray-lighter !default;
 $panel-padding:                        $padding !default;
 $panel-border:                         $border !default;
 $panel-border-radius:                  $border-radius !default;
 $panel-outer-shadow:                   $outer-shadow !default;
+
+//
+// Forms
+//
+$form-label-font-size:                $font-size-medium !default;
+$form-label-margin-bottom:            6px !default;
+$form-label-text-transform:           none !default;
+$form-label-color:                    $gray !default;
+
+//
+// Datepicker
+//
+$datepicker-button-border-color:      $button-secondary-border-color !default;
+
+$datepicker-bg:                       $bg-primary !default;
+$datepicker-radius:                   $border-radius !default;
+$datepicker-box-shadow:               0px 0px 6px rgba(0,0,0,0.2) !default;
+
+$datepicker-month-color:              $gray-dark !default;
+$datepicker-month-font-weight:        $font-weight-heavy !default;
+$datepicker-weekday-color:            $gray-dark !default;
+$datepicker-weekday-font-weight:      $font-weight-heavy !default;
+
+$datepicker-selected-bg:              $brand-primary !default;
+
+// Preset ranges
+$date-range-color:                    $brand-primary !default;
+$date-range-border:                   $bg-primary !default;
+$date-range-hover-bg:                 $brand-primary !default;
+$date-range-hover-border:             $brand-primary !default;

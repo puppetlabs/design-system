@@ -166,3 +166,12 @@
     }
   }
 }
+
+.rc-form {
+  .rc-form-label {
+    font-size: $form-label-font-size;
+    margin-bottom: $form-label-margin-bottom;
+    text-transform: $form-label-text-transform;
+    color: $form-label-color;
+  }
+}
