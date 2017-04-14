@@ -4,7 +4,7 @@ import Icon from './Icon';
 
 const propTypes = {
   className: React.PropTypes.string,
-  size: React.PropTypes.string,
+  size: React.PropTypes.oneOf(['tiny', 'small', 'large', 'auto']),
   secondary: React.PropTypes.bool,
   transparent: React.PropTypes.bool,
   icon: React.PropTypes.string,
