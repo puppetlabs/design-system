@@ -134,6 +134,7 @@ class DropdownMenu extends React.Component {
     const applyButton = this.renderApplyButton();
     const className = classnames('rc-dropdown-menu', `rc-dropdown-menu-${this.props.size}`, {
       'rc-dropdown-menu-multiple': this.props.multiple,
+      'rc-dropdown-menu-with-header': this.props.hint,
     });
 
     return (
