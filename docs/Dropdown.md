@@ -42,3 +42,16 @@ const options = [
   options={ options }
 />
 ```
+Dropdown without header
+```
+const options = [
+  { id: 1, value: 'option 1' },
+  { id: 2, value: 'option 2' },
+];
+
+<Dropdown
+  label="I'm a dropdown without a header"
+  selected={ [1] }
+  options={ options }
+/>
+```

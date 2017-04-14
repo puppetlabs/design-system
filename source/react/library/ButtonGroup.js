@@ -1,10 +1,12 @@
 import React from 'react';
+import classnames from 'classnames';
 
 const propTypes = {
   children: React.PropTypes.oneOfType([
     React.PropTypes.element,
     React.PropTypes.array,
   ]),
+  collapsed: React.PropTypes.bool,
 };
 
 /**
@@ -12,7 +14,15 @@ const propTypes = {
  *
  * @example ../../../docs/ButtonGroup.md
  */
-const ButtonGroup = props => <div className="rc-button-group">{ props.children }</div>;
+const ButtonGroup = (props) => {
+  const classname = classnames('rc-button-group', {
+    'rc-button-group-collapsed': props.collapsed,
+  });
+
+  return (
+    <div className={ classname }>{ props.children }</div>
+  );
+};
 
 ButtonGroup.propTypes = propTypes;
 

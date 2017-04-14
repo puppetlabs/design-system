@@ -20,7 +20,7 @@ const defaultProps = {
  *
  * @example ../../../docs/Icon.md
  */
-const Icon = props => {
+const Icon = (props) => {
   const { width, type, height } = props;
   let svg = props.svg;
   let viewBox = props.viewBox;

@@ -130,11 +130,21 @@ a.rc-button, button.rc-button {
     }
   }
 
+  &.rc-button-auto {
+    padding: 0;
+    height: auto;
+    line-height: normal;
+  }
+
   &.rc-button-tiny {
     height: 22px;
     line-height: 20px;
-    padding: 0 2px;
+    padding: 0 5px;
     font-size: $font-size-tiny;
+
+    .rc-button-content {
+      font-size: $font-size-tiny;
+    }
   }
 
   &.rc-button-small {
@@ -201,6 +211,25 @@ a.rc-floating-action-button, button.rc-floating-action-button {
   &:last-child {
     margin-right: 0;
   }
+
+  &.rc-button-group-collapsed {
+    .rc-button {
+      margin-right: 0;
+      border-radius: 0 !important;
+    }
+
+    :first-child {
+      border-top-left-radius: $border-radius !important;
+      border-bottom-left-radius: $border-radius !important;
+      border-right: none !important;
+    }
+
+    :last-child {
+      border-top-right-radius: $border-radius !important;
+      border-bottom-right-radius: $border-radius !important;
+      border-left: none !important;
+    }
+  }
 }
 
 .rc-split-button {
@@ -234,7 +263,7 @@ a.rc-floating-action-button, button.rc-floating-action-button {
 
     &.rc-button-tiny {
       .rc-button-content {
-        padding: 3px;
+        padding: 0;
       }
 
       .rc-button-menu-inner {
