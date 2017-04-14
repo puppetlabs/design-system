@@ -139,7 +139,7 @@ a.rc-button, button.rc-button {
   &.rc-button-tiny {
     height: 22px;
     line-height: 20px;
-    padding: 0 2px;
+    padding: 0 5px;
     font-size: $font-size-tiny;
 
     .rc-button-content {
@@ -263,7 +263,7 @@ a.rc-floating-action-button, button.rc-floating-action-button {
 
     &.rc-button-tiny {
       .rc-button-content {
-        padding: 3px;
+        padding: 0;
       }
 
       .rc-button-menu-inner {
