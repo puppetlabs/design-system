@@ -12,11 +12,15 @@ const propTypes = {
   onClose: React.PropTypes.func,
   children: React.PropTypes.any,
   margin: React.PropTypes.number,
+  /** Height in px */
   height: React.PropTypes.string,
-  size: React.PropTypes.string,
+  size: React.PropTypes.oneOf(['small', 'medium']),
+  /** Content to render within sidebar */
   sidebar: React.PropTypes.any,
-  sidebarPosition: React.PropTypes.string,
+  sidebarPosition: React.PropTypes.oneOf(['left', 'right']),
+  /** Actions to render */
   actions: React.PropTypes.any,
+  /** Supporting text to render next to actions */
   actionsCTA: React.PropTypes.string,
   modalClassName: React.PropTypes.oneOfType([
     React.PropTypes.string,
@@ -54,8 +58,14 @@ function getDefaultState(props) {
   return state;
 }
 
-class Modal extends React.Component {
+/**
+ * `Modal` renders content above the page. They can contain sidebars, either on the left or the
+ * right, and come in various sizes. Actions can be rendered within the modal.
+ *
+ * @example ../../../../docs/Modal.md
+ */
 
+class Modal extends React.Component {
   constructor(props) {
     super(props);
 
@@ -287,7 +297,7 @@ class Modal extends React.Component {
     const { children, size, sidebarPosition } = this.props;
     const modalClassName = classname('rc-modal', {
       'rc-modal-with-sidebar': sidebar,
-      'rc-modal-with-sidebar-left': sidebar && sidebarPosition === 'left',
+      [`rc-modal-with-sidebar-${sidebarPosition}`]: sidebar,
       [`rc-modal-${size}`]: size,
     }, this.props.modalClassName);
     const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
