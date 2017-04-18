@@ -28,6 +28,7 @@ $font-weight-heavy:              600 !default;
 $line-height-base:               1.428571429 !default; // 20/14
 
 $font-color-base:                $gray-darker !default;
+$font-color-subtle:              $gray !default;
 
 $border-color:                   #dedede !default;
 $border-hover-color:             $gray !default;
@@ -177,7 +178,7 @@ $menu-section-padding:            $padding !default;
 $menu-header-border:              $border !default;
 $menu-header-padding:             12px $padding !default;
 $menu-title-font-size:            $font-size-medium !default;
-$menu-title-color:                $gray !default;
+$menu-title-color:                $font-color-subtle !default;
 
 //
 // Cards
@@ -349,7 +350,7 @@ $panel-outer-shadow:                   $outer-shadow !default;
 $form-label-font-size:                $font-size-medium !default;
 $form-label-margin-bottom:            6px !default;
 $form-label-text-transform:           none !default;
-$form-label-color:                    $gray !default;
+$form-label-color:                    $font-color-subtle !default;
 
 //
 // Datepicker
