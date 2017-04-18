@@ -27,17 +27,18 @@ $font-weight-heavy:              600 !default;
 
 $line-height-base:               1.428571429 !default; // 20/14
 
-$font-color-base:                $gray-darker;
+$font-color-base:                $gray-darker !default;
 
 $border-color:                   #dedede !default;
 $border-hover-color:             $gray !default;
 $border-radius:                  4px !default;
 $border:                         1px solid $border-color !default;
-$border-heavy:                   2px solid $border-color;
+$border-heavy:                   2px solid $border-color !default;
 $border-active:                  1px solid $brand-primary !default;
 $border-hover:                   1px solid $border-hover-color !default;
 
-$outer-shadow:                   0 0px 1px rgba(0, 0, 0, .05) !default;
+$outer-shadow:                   0 0 1px rgba(0, 0, 0, .05) !default;
+$outer-shadow-large:             0 0 6px rgba(0, 0, 0, .2) !default;
 
 $padding:                        16px;
 
@@ -48,9 +49,9 @@ $button-font-family:              'Montserrat', sans-serif !default;
 $button-font-size:                $font-size-small !default;
 $button-font-size-tiny:           10px !default;
 $button-font-weight:              normal !default;
-$button-disabled-bg:              #ccc !default;
-$button-disabled-color:           $gray !default;
-$button-disabled-color-hover:     $gray !default;
+$button-bg-disabled:              #ccc !default;
+$button-color-disabled:           $gray !default;
+$button-color-disabled-hover:     $gray !default;
 $button-border-radius:            $border-radius !default;
 $button-bg:                       $brand-primary !default;
 $button-bg-hover:                 darken($brand-primary, 10%) !default;
@@ -115,7 +116,7 @@ $popover-bg:                      $bg-primary !default;
 $popover-border:                  none !default;
 $popover-border-radius:           $border-radius !default;
 $popover-close-color:             $gray-light !default;
-$popover-shadow:                  0 0 6px rgba(0, 0, 0, .2) !default;
+$popover-shadow:                  $outer-shadow-large !default;
 $popover-padding:                 $padding !default;
 $popover-small-width:             260px !default;
 $popover-medium-width:            300px !default;
@@ -161,7 +162,7 @@ $menu-item-font-size-tiny:        $font-size-medium !default;
 $menu-item-line-height:           $font-size-base !default;
 $menu-item-line-height-tiny:      $font-size-medium !default;
 $menu-item-color:                 $brand-primary !default;
-$menu-item-bg:                    $bg-primary !default;
+$menu-item-bg:                    transparent !default;
 $menu-item-color-hover:           $white !default;
 $menu-item-bg-hover:              darken($brand-primary, 10%) !default;
 $menu-item-color-selected:        $white !default;
@@ -357,7 +358,11 @@ $datepicker-button-border-color:      $button-secondary-border-color !default;
 
 $datepicker-bg:                       $bg-primary !default;
 $datepicker-radius:                   $border-radius !default;
-$datepicker-box-shadow:               0px 0px 6px rgba(0,0,0,0.2) !default;
+$datepicker-box-shadow:               $outer-shadow-large !default;
+$datepicker-border-color:             $border-color !default;
+$datepicker-color:                    $font-color-base !default;
+$datepicker-color-selected:           $white !default;
+$datepicker-color-highlighted:        $datepicker-color !default;
 
 $datepicker-month-color:              $gray-dark !default;
 $datepicker-month-font-weight:        $font-weight-heavy !default;
@@ -368,6 +373,6 @@ $datepicker-selected-bg:              $brand-primary !default;
 
 // Preset ranges
 $date-range-color:                    $brand-primary !default;
-$date-range-border:                   $bg-primary !default;
+$date-range-border:                   1px solid $bg-primary !default;
 $date-range-hover-bg:                 $brand-primary !default;
-$date-range-hover-border:             $brand-primary !default;
+$date-range-hover-border:             1px solid $brand-primary !default;
