@@ -56,7 +56,15 @@ a.rc-modal-close {
 
     .rc-modal-content {
       border-top-right-radius: $modal-border-radius;
+      border-bottom-left-radius: 0;
       border-top-left-radius: 0
+    }
+  }
+
+  &.rc-modal-with-sidebar-right {
+    .rc-modal-content {
+      border-bottom-right-radius: 0;
+      border-top-right-radius: 0
     }
   }
 
@@ -79,7 +87,7 @@ a.rc-modal-close {
     padding: $modal-padding;
     overflow-y: auto;
     transform: translateZ(0);
-    border-top-left-radius: $modal-border-radius;
+    border-radius: $modal-border-radius;
   }
 
   .rc-modal-sidebar {

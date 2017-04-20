@@ -21,20 +21,20 @@
       color: $date-range-color;
       cursor: pointer;
       font-size: 14px;
-      border: 1px solid $date-range-border;
+      border: $date-range-border;
       border-radius: $datepicker-radius;
       padding: 3px 12px;
       margin-bottom: 8px;
 
       &:hover, &.selected {
         color: #fff;
-        border: 1px solid $date-range-hover-border;
+        border: $date-range-hover-border;
         background: $date-range-hover-bg;
       }
 
       &.active {
         color: #fff;
-        border: 1px solid $date-range-hover-border;
+        border: $date-range-hover-border;
         background: $date-range-hover-bg;
       }
     }
@@ -183,7 +183,7 @@ $ns: rc-datepicker !default;
   }
 
   &__MonthDates {
-    border-bottom: 1px solid #f4f5f6;
+    border-bottom: 1px solid $datepicker-border-color;
     border-collapse: separate;
     border-spacing: 0 1px;
     margin: 0;
@@ -200,7 +200,7 @@ $ns: rc-datepicker !default;
   }
 
   &__WeekdayHeading {
-    border-bottom: 1px solid #f4f5f6;
+    border-bottom: 1px solid $datepicker-border-color;
     color: $datepicker-weekday-color;
     font-weight: $datepicker-weekday-font-weight;
 
@@ -214,7 +214,8 @@ $ns: rc-datepicker !default;
   }
 
   &__Date {
-    border: 0 solid #f4f5f6;
+    color: $datepicker-color;
+    border: 0 solid $datepicker-border-color;
     border-right-width: 1px;
     cursor: pointer;
     overflow: hidden;
@@ -238,11 +239,11 @@ $ns: rc-datepicker !default;
     }
 
     &--is-selected {
-      color: #fff;
+      color: $datepicker-color-selected;
     }
 
     &--is-highlighted {
-      color: #333;
+      color: $datepicker-color-highlighted;
     }
   }
 

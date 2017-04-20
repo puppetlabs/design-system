@@ -7,8 +7,15 @@ const propTypes = {
   onConfirm: React.PropTypes.func,
   children: React.PropTypes.any,
   confirmationMessage: React.PropTypes.string,
+  /** Indicate that we've seen the confirmation, and are performing the action. */
   processingConfirmation: React.PropTypes.bool,
 };
+
+/**
+ * `ConfirmationModal` renders a confirmation for the user to confirm or cancel an action.
+ *
+ * @example ../../../../docs/ConfirmationModal.md
+ */
 
 class ConfirmationModal extends React.Component {
   constructor(props) {

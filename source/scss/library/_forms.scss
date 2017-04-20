@@ -82,7 +82,7 @@
 
           .Select-option.is-selected {
             background-color: $white;
-            color: $button-disabled-bg;
+            color: $button-bg-disabled;
           }
           .Select-option.is-focused {
             background-color: lighten($brand-primary, 10%);
@@ -96,7 +96,7 @@
 
           .Select-placeholder {
             line-height: normal;
-            color: $button-disabled-bg;
+            color: $button-bg-disabled;
             padding: 6px 28px 6px 6px;
           }
 
@@ -152,6 +152,18 @@
         background: $white;
         border-color: $brand-primary;
         box-shadow: 0px 0px 0px 1px $brand-primary;
+      }
+    }
+  }
+
+  &.rc-filter-form-no-value {
+    .rc-filter-form-fields .rc-selects-row {
+      .Select-small.Select-left > .Select-control {
+        border-bottom-left-radius: $border-radius;
+      }
+
+      .Select-small.Select-right > .Select-control {
+        border-bottom-right-radius: $border-radius;
       }
     }
   }

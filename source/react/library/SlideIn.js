@@ -12,11 +12,17 @@ const propTypes = {
   onClose: React.PropTypes.func,
   onRemove: React.PropTypes.func,
   className: React.PropTypes.string,
-  position: React.PropTypes.string,
+  position: React.PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
   removeable: React.PropTypes.bool,
   submitButtonLabel: React.PropTypes.string,
   closeButtonLabel: React.PropTypes.string,
 };
+
+/**
+ * `SlideIn` is a fixed panel that can be positioned to any side of the screen.
+ *
+ * @example ../../../docs/SlideIn.md
+ */
 
 class SlideIn extends React.Component {
   handleClickOutside() {
@@ -78,17 +84,15 @@ class SlideIn extends React.Component {
   }
 
   render() {
+    const { position, className: classProp } = this.props;
     const actions = this.renderActions();
     const header = this.renderHeader();
     const content = this.renderContent();
 
     const className = classnames('rc-slidein', {
-      'rc-slidein-bottom': this.props.position === 'bottom',
-      'rc-slidein-top': this.props.position === 'top',
-      'rc-slidein-left': this.props.position === 'left',
-      'rc-slidein-right': this.props.position === 'right',
+      [`rc-slidein-${position}`]: position,
       'rc-slidein-has-actions': actions,
-    }, this.props.className);
+    }, classProp);
 
     return (
       <div className={ className }>
