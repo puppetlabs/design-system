@@ -165,13 +165,13 @@ a.rc-button, button.rc-button {
 
   &[disabled] {
     &:hover {
-      color: $button-disabled-color-hover !important;
-      background: $button-disabled-bg;
+      color: $button-color-disabled-hover !important;
+      background: $button-bg-disabled;
     }
 
     cursor: default;
-    color: $button-disabled-color !important;
-    background: $button-disabled-bg;
+    color: $button-color-disabled !important;
+    background: $button-bg-disabled;
   }
 
   .rc-icon {
