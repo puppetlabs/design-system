@@ -142,6 +142,10 @@ a.rc-button, button.rc-button {
     padding: 0 5px;
     font-size: $font-size-tiny;
 
+    &.rc-button-round {
+      padding: 0 2px;
+    }
+
     .rc-button-content {
       font-size: $font-size-tiny;
     }
