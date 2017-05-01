@@ -14,7 +14,7 @@ const propTypes = {
   /** Value string */
   value: React.PropTypes.string,
   name: React.PropTypes.string,
-  size: React.PropTypes.string,
+  size: React.PropTypes.oneOf(['large', 'small', 'tiny']),
   onKeyUp: React.PropTypes.func,
   error: React.PropTypes.string,
   onChange: React.PropTypes.func,

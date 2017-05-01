@@ -33,6 +33,11 @@
     padding: 7px;
   }
 
+  &.rc-input-tiny {
+    font-size: $font-size-tiny;
+    padding: 3px 5px;
+  }
+
   &::-webkit-input-placeholder {
     color: #ccc;
   }
