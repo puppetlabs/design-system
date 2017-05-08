@@ -1,5 +1,5 @@
 .rc-grid-block {
-  fill: $gray-lighter;
+  fill: $reflect-gray-lighter;
 }
 
 .rc-grid-div {
@@ -14,7 +14,7 @@
 
 .rc-grid-block-icon-container {
   .rc-icon {
-    fill: $brand-primary !important;
-    stroke: $gray-lighter;
+    fill: $reflect-brand-primary !important;
+    stroke: $reflect-gray-lighter;
   }
 }

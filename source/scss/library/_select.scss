@@ -18,23 +18,23 @@
   min-height: 44px;
   transition: all 200ms ease;
 
-  background-color: $white;
-  color: $gray-darker;
-  border: 1px solid $border-color;
-  border-radius: $input-border-radius;
+  background-color: $reflect-bg-primary;
+  color: $reflect-gray-darker;
+  border: 1px solid $reflect-border-color;
+  border-radius: $reflect-input-border-radius;
   outline: none;
 }
 .is-disabled > .Select-control {
-  background: $gray-lighter;
-  color: $gray;
+  background: $reflect-gray-lighter;
+  color: $reflect-gray;
 }
 .is-searchable.is-open > .Select-control {
   cursor: text;
 }
 .is-open > .Select-control {
-  background: $white;
-  border-color: $brand-primary;
-  box-shadow: 0px 0px 0px 1px $brand-primary;
+  background: $reflect-bg-primary;
+  border-color: $reflect-brand-primary;
+  box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
 }
 .is-open > .Select-control > .Select-arrow {
   border-color: transparent transparent #999999;
@@ -44,7 +44,7 @@
   cursor: text;
 }
 .Select-placeholder {
-  color: $gray;
+  color: $reflect-gray;
   padding: 10px 40px 10px 13px;
   position: absolute;
   top: 0;
@@ -56,7 +56,7 @@
   white-space: nowrap;
 }
 .has-value > .Select-control > .Select-placeholder {
-  color: $gray-dark;
+  color: $reflect-gray-dark;
 }
 .Select-input > input {
   cursor: default;
@@ -139,9 +139,9 @@
   cursor: pointer;
 }
 .Select-menu-outer {
-  background-color: $white;
-  border: 1px solid $brand-primary;
-  box-shadow: 0px 0px 0px 1px $brand-primary;
+  background-color: $reflect-bg-primary;
+  border: 1px solid $reflect-brand-primary;
+  box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
   box-sizing: border-box;
   margin-top: -1px;
   max-height: 160px;
@@ -165,8 +165,8 @@
 .Select-option:last-child {
 }
 .Select-option.is-focused {
-  background-color: lighten($brand-primary, 10%);
-  color: $white;
+  background-color: lighten($reflect-brand-primary, 10%);
+  color: $reflect-bg-primary;
 }
 .Select-option.is-disabled {
   color: #cccccc;
@@ -174,7 +174,7 @@
 }
 .Select-noresults {
   box-sizing: border-box;
-  color: $gray;
+  color: $reflect-gray;
   cursor: default;
   display: block;
   padding: 8px 10px;
@@ -189,10 +189,10 @@
   padding: 3px 0;
 }
 .Select-item {
-  background-color: $select-item-background;
-  border-radius: $border-radius;
-  border: 1px solid $select-item-border;
-  color: $white;
+  background-color: $reflect-select-item-background;
+  border-radius: $reflect-border-radius;
+  border: 1px solid $reflect-select-item-border;
+  color: $reflect-bg-primary;
   display: inline-block;
   font-size: 0.9em;
   margin-right: 2px;
@@ -212,16 +212,16 @@
 }
 .Select-item-icon {
   cursor: pointer;
-  border-right: 1px solid $select-item-border;
+  border-right: 1px solid $reflect-select-item-border;
   padding: 3px 6px;
 }
 .Select-item-icon:hover,
 .Select-item-icon:focus {
-  background-color: $select-item-background;
-  color: $gray-dark;
+  background-color: $reflect-select-item-background;
+  color: $reflect-gray-dark;
 }
 .Select-item-icon:active {
-  background-color: $select-item-background;
+  background-color: $reflect-select-item-background;
 }
 .Select.is-multi.is-disabled .Select-item {
   background-color: #f2f2f2;

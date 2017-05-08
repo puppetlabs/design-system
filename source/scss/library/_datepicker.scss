@@ -3,7 +3,7 @@
 }
 
 .rc-datepicker-button {
-  border: 1px solid $datepicker-button-border-color !important;
+  border: 1px solid $reflect-datepicker-button-border-color !important;
 }
 
 .rc-datepicker-container {
@@ -18,24 +18,24 @@
     min-width: 150px;
 
     li {
-      color: $date-range-color;
+      color: $reflect-date-range-color;
       cursor: pointer;
       font-size: 14px;
-      border: $date-range-border;
-      border-radius: $datepicker-radius;
+      border: $reflect-date-range-border;
+      border-radius: $reflect-datepicker-radius;
       padding: 3px 12px;
       margin-bottom: 8px;
 
       &:hover, &.selected {
         color: #fff;
-        border: $date-range-hover-border;
-        background: $date-range-hover-bg;
+        border: $reflect-date-range-hover-border;
+        background: $reflect-date-range-hover-bg;
       }
 
       &.active {
         color: #fff;
-        border: $date-range-hover-border;
-        background: $date-range-hover-bg;
+        border: $reflect-date-range-hover-border;
+        background: $reflect-date-range-hover-bg;
       }
     }
   }
@@ -47,7 +47,7 @@
 }
 
 $arrow-size: 6px !default;
-$selection-radius: $datepicker-radius !default;
+$selection-radius: $reflect-datepicker-radius !default;
 $selection-margin: 0 !default;
 $ns: rc-datepicker !default;
 
@@ -82,7 +82,7 @@ $ns: rc-datepicker !default;
     border: 1px solid rgba(#000, .25);
 
     &--selection {
-      background-color: $datepicker-selected-bg;
+      background-color: $reflect-datepicker-selected-bg;
     }
   }
 
@@ -128,7 +128,7 @@ $ns: rc-datepicker !default;
       right: 30px / 2 - ($arrow-size / 2);
 
       &:hover {
-        border-right-color: $datepicker-selected-bg;
+        border-right-color: $reflect-datepicker-selected-bg;
       }
     }
 
@@ -138,7 +138,7 @@ $ns: rc-datepicker !default;
       left: 30px / 2 - ($arrow-size / 2);
 
       &:hover {
-        border-left-color: $datepicker-selected-bg;
+        border-left-color: $reflect-datepicker-selected-bg;
       }
     }
   }
@@ -153,9 +153,9 @@ $ns: rc-datepicker !default;
   }
 
   &__MonthHeader {
-    color: $datepicker-month-color;
+    color: $reflect-datepicker-month-color;
     font-size: 14px;
-    font-weight: $datepicker-month-font-weight;
+    font-weight: $reflect-datepicker-month-font-weight;
     height: 35px;
     line-height: 35px;
     position: relative;
@@ -183,7 +183,7 @@ $ns: rc-datepicker !default;
   }
 
   &__MonthDates {
-    border-bottom: 1px solid $datepicker-border-color;
+    border-bottom: 1px solid $reflect-datepicker-border-color;
     border-collapse: separate;
     border-spacing: 0 1px;
     margin: 0;
@@ -200,13 +200,13 @@ $ns: rc-datepicker !default;
   }
 
   &__WeekdayHeading {
-    border-bottom: 1px solid $datepicker-border-color;
-    color: $datepicker-weekday-color;
-    font-weight: $datepicker-weekday-font-weight;
+    border-bottom: 1px solid $reflect-datepicker-border-color;
+    color: $reflect-datepicker-weekday-color;
+    font-weight: $reflect-datepicker-weekday-font-weight;
 
     abbr[title] {
       border-bottom-width: 0;
-      color: $datepicker-weekday-color;
+      color: $reflect-datepicker-weekday-color;
       cursor: pointer;
       font-size: inherit;
       text-decoration: none;
@@ -214,8 +214,8 @@ $ns: rc-datepicker !default;
   }
 
   &__Date {
-    color: $datepicker-color;
-    border: 0 solid $datepicker-border-color;
+    color: $reflect-datepicker-color;
+    border: 0 solid $reflect-datepicker-border-color;
     border-right-width: 1px;
     cursor: pointer;
     overflow: hidden;
@@ -226,7 +226,7 @@ $ns: rc-datepicker !default;
     }
 
     &--weekend {
-      background-color: $datepicker-bg;
+      background-color: $reflect-datepicker-bg;
     }
 
     &--otherMonth {
@@ -239,11 +239,11 @@ $ns: rc-datepicker !default;
     }
 
     &--is-selected {
-      color: $datepicker-color-selected;
+      color: $reflect-datepicker-color-selected;
     }
 
     &--is-highlighted {
-      color: $datepicker-color-highlighted;
+      color: $reflect-datepicker-color-highlighted;
     }
   }
 
@@ -264,8 +264,8 @@ $ns: rc-datepicker !default;
   }
 
   &__CalendarSelection {
-    background-color: $datepicker-selected-bg;
-    border: 1px solid darken($datepicker-selected-bg, 5);
+    background-color: $reflect-datepicker-selected-bg;
+    border: 1px solid darken($reflect-datepicker-selected-bg, 5);
     bottom: $selection-margin;
     left: 0;
     position: absolute;
@@ -302,7 +302,7 @@ $ns: rc-datepicker !default;
     }
 
     &--is-pending {
-      background-color: rgba($datepicker-selected-bg, .75);
+      background-color: rgba($reflect-datepicker-selected-bg, .75);
       border-width: 0;
     }
   }
@@ -340,8 +340,8 @@ $ns: rc-datepicker !default;
     }
 
     &--single {
-      background-color: $datepicker-bg;
-      border: 1px solid darken($datepicker-selected-bg, 5);
+      background-color: $reflect-datepicker-bg;
+      border: 1px solid darken($reflect-datepicker-selected-bg, 5);
       border-radius: $selection-radius;
       left: $selection-margin;
       right: $selection-margin;
