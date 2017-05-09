@@ -37,6 +37,16 @@ describe('<Dropdown />', () => {
     expect(wrapper.find('.rc-dropdown-label-text').text()).to.equal('option 1 and option 2');
   });
 
+  it('should update the label when selected changes', () => {
+    const wrapper = mount(<Dropdown selected={ [1, 2] } options={ options } />);
+
+    expect(wrapper.find('DropdownLabel').prop('label')).to.equal('option 1 and option 2');
+
+    wrapper.setProps({ selected: 2 });
+
+    expect(wrapper.find('DropdownLabel').prop('label')).to.equal('option 2');
+  });
+
   it('should render the correct label based off three selections', () => {
     const wrapper = mount(<Dropdown selected={ [1, 2, 3] } options={ options } />);
 
