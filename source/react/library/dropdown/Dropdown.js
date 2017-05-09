@@ -38,7 +38,7 @@ class Dropdown extends React.Component {
   constructor(props) {
     super(props);
 
-    const selected = this.getSelected();
+    const selected = this.getSelected(props);
 
     this.state = { selected, displayed: selected };
 
@@ -48,12 +48,12 @@ class Dropdown extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const selectedChanged = equals(this.props.selected, nextProps.selected);
+    const selectedChanged = !equals(this.props.selected, nextProps.selected);
 
     if ({}.hasOwnProperty.call(nextProps, 'selected') && selectedChanged) {
-      const selected = this.getSelected();
+      const selected = this.getSelected(nextProps);
 
-      this.setState({ selected });
+      this.setState({ selected, displayed: selected });
     }
   }
 
@@ -118,8 +118,8 @@ class Dropdown extends React.Component {
     });
   }
 
-  getSelected() {
-    let selected = this.props.selected;
+  getSelected(props) {
+    let selected = props.selected;
 
     selected = Array.isArray(selected) ? selected : [selected];
 
