@@ -6,7 +6,7 @@ import React from 'react';
 import List from '../../source/react/library/list/List';
 
 describe('<List />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
     const wrapper = shallow(<List />);

@@ -7,7 +7,7 @@ import React from 'react';
 import Input from '../source/react/library/Input';
 
 describe('<Input />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should respond to click events if onClick is provided', () => {
     const onClick = sinon.spy();

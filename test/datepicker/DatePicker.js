@@ -7,7 +7,8 @@ import React from 'react';
 import DatePicker from '../../source/react/library/datepicker/DatePicker';
 
 describe('<DatePicker />', () => {
-  jsdom();
+  jsdom({skipWindowCheck: true});
+
   const noop = () => {};
   const dates = {
     primary: {

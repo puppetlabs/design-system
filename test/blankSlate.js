@@ -6,7 +6,7 @@ import React from 'react';
 import BlankSlate from '../source/react/library/BlankSlate';
 
 describe('<BlankSlate />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
     const wrapper = shallow(<BlankSlate icon="fields" message="Hello!" />);

@@ -7,7 +7,7 @@ import React from 'react';
 import Filter from '../source/react/library/Filter';
 
 describe('<Filter />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
   const noop = () => {};
 
   const defaultProps = {

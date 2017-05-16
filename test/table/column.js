@@ -15,7 +15,7 @@ const defaultProps = {
 };
 
 describe('<Column />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
     const wrapper = shallow(<Column { ...defaultProps } />);
