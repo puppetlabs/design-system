@@ -2,14 +2,14 @@
   .rc-accordion-item-title {
     .rc-accordion-item-header {
       display: block;
-      background-color: $accordion-item-title-bg-color;
-      color: $accordion-item-title-color;
+      background-color: $reflect-accordion-item-title-bg-color;
+      color: $reflect-accordion-item-title-color;
 
-      font-size: $accordion-item-title-font-size;
-      font-family: $accordion-item-title-font-family;
+      font-size: $reflect-accordion-item-title-font-size;
+      font-family: $reflect-accordion-item-title-font-family;
 
-      padding: $accordion-item-title-padding;
-      text-transform: $accordion-item-title-text-transform;
+      padding: $reflect-accordion-item-title-padding;
+      text-transform: $reflect-accordion-item-title-text-transform;
 
       display: flex;
 
@@ -17,7 +17,7 @@
         align-items: center;
         display: flex;
         flex-grow: 2;
-        font-size: $accordion-item-title-font-size;
+        font-size: $reflect-accordion-item-title-font-size;
       }
 
       .rc-accordion-item-title-icon {
@@ -33,7 +33,7 @@
   }
 
   .rc-accordion-item {
-    border-bottom: 1px solid $gray-light;
+    border-bottom: 1px solid $reflect-gray-light;
 
     &:last-of-type {
       border-bottom: none;
@@ -41,7 +41,7 @@
 
     .rc-accordion-item-content {
       display: none;
-      padding: $accordion-item-content-padding;
+      padding: $reflect-accordion-item-content-padding;
       .form-field {
         margin-bottom: 8px;
       }

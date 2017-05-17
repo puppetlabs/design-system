@@ -3,46 +3,46 @@
 
   .rc-split-button {
     visibility: hidden;
-    background: $gray-light;
-    border-top-right-radius: $border-radius;
-    border-top-left-radius: $border-radius;
+    background: $reflect-gray-light;
+    border-top-right-radius: $reflect-border-radius;
+    border-top-left-radius: $reflect-border-radius;
     position: absolute;
     right: 0;
     // We probably shouldn't hardcode this...
     top: -19px;
 
     .rc-button-main {
-      background: $gray-light;
+      background: $reflect-gray-light;
 
       .rc-button-content {
-        color: $button-bg;
+        color: $reflect-button-bg;
         float: right;
       }
 
       &:hover {
         .rc-button-content {
-          color: $button-bg-hover;
+          color: $reflect-button-bg-hover;
         }
       }
     }
 
     .rc-button-menu {
-      background: $gray-light;
+      background: $reflect-gray-light;
 
       .rc-button-menu-inner {
-        background: $button-bg;
+        background: $reflect-button-bg;
 
         path {
-          fill: $white;
+          fill: $reflect-bg-primary;
         }
       }
 
       &:hover {
         .rc-button-menu-inner {
-          background: $button-bg-hover;
+          background: $reflect-button-bg-hover;
 
           path {
-            fill: $white;
+            fill: $reflect-bg-primary;
           }
         }
       }
@@ -50,8 +50,8 @@
   }
 
   .rc-filter-form-fields {
-    background: $gray-light;
-    border-radius: $border-radius;
+    background: $reflect-gray-light;
+    border-radius: $reflect-border-radius;
     padding: 3px;
 
     .rc-selects-row {
@@ -62,41 +62,41 @@
         font-size: 11px;
 
         &.is-focused:not(.is-open) {
-          background: $white;
+          background: $reflect-bg-primary;
           border: none;
           box-shadow: none;
 
           .Select-control {
-            z-index: $popover-elevation;
-            background: $white;
-            border-color: $brand-primary;
-            box-shadow: 0px 0px 0px 1px $brand-primary;
+            z-index: $reflect-popover-elevation;
+            background: $reflect-bg-primary;
+            border-color: $reflect-brand-primary;
+            box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
           }
         }
 
         .Select-menu-outer {
           margin-top: 0;
-          background-color: $white;
-          border: 1px solid $brand-primary;
-          box-shadow: 0px 0px 0px 1px $brand-primary;
+          background-color: $reflect-bg-primary;
+          border: 1px solid $reflect-brand-primary;
+          box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
 
           .Select-option.is-selected {
-            background-color: $white;
-            color: $button-bg-disabled;
+            background-color: $reflect-bg-primary;
+            color: $reflect-button-bg-disabled;
           }
           .Select-option.is-focused {
-            background-color: lighten($brand-primary, 10%);
-            color: $white;
+            background-color: lighten($reflect-brand-primary, 10%);
+            color: $reflect-bg-primary;
           }
         }
 
         .Select-control {
-          border-color: $gray-light;
+          border-color: $reflect-gray-light;
           padding: 6px;
 
           .Select-placeholder {
             line-height: normal;
-            color: $button-bg-disabled;
+            color: $reflect-button-bg-disabled;
             padding: 6px 28px 6px 6px;
           }
 
@@ -122,10 +122,10 @@
         }
 
         &.is-open > .Select-control {
-          z-index: $popover-elevation;
-          background: $white;
-          border-color: $brand-primary;
-          box-shadow: 0px 0px 0px 1px $brand-primary;
+          z-index: $reflect-popover-elevation;
+          background: $reflect-bg-primary;
+          border-color: $reflect-brand-primary;
+          box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
         }
 
         &.Select-left > .Select-control {
@@ -144,14 +144,14 @@
 
     .rc-input {
       margin-top: 1px;
-      border-color: $gray-light;
+      border-color: $reflect-gray-light;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
 
       &:focus {
-        background: $white;
-        border-color: $brand-primary;
-        box-shadow: 0px 0px 0px 1px $brand-primary;
+        background: $reflect-bg-primary;
+        border-color: $reflect-brand-primary;
+        box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
       }
     }
   }
@@ -159,11 +159,11 @@
   &.rc-filter-form-no-value {
     .rc-filter-form-fields .rc-selects-row {
       .Select-small.Select-left > .Select-control {
-        border-bottom-left-radius: $border-radius;
+        border-bottom-left-radius: $reflect-border-radius;
       }
 
       .Select-small.Select-right > .Select-control {
-        border-bottom-right-radius: $border-radius;
+        border-bottom-right-radius: $reflect-border-radius;
       }
     }
   }
@@ -181,9 +181,9 @@
 
 .rc-form {
   .rc-form-label {
-    font-size: $form-label-font-size;
-    margin-bottom: $form-label-margin-bottom;
-    text-transform: $form-label-text-transform;
-    color: $form-label-color;
+    font-size: $reflect-form-label-font-size;
+    margin-bottom: $reflect-form-label-margin-bottom;
+    text-transform: $reflect-form-label-text-transform;
+    color: $reflect-form-label-color;
   }
 }
