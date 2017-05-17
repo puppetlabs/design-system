@@ -6,8 +6,17 @@ import React from 'react';
 
 import DatePicker from '../../source/react/library/datepicker/DatePicker';
 
+// Importing this as a way of finding the relevant child components.
+import DatePickerWrapper from '../../source/react/library/datepicker/DatePickerWrapper';
+
 describe('<DatePicker />', () => {
   jsdom({skipWindowCheck: true});
+
+  const fireMouseUp = () => {
+    const event = document.createEvent('MouseEvents');
+    event.initEvent('mouseup', true, true);
+    document.dispatchEvent(event);
+  };
 
   const noop = () => {};
   const dates = {
@@ -68,5 +77,32 @@ describe('<DatePicker />', () => {
     const wrapper = shallow(<DatePicker onChange={ noop } message="message" />);
 
     expect(wrapper.find('Button').prop('children')).to.equal('message');
+  });
+
+  it.only('should emit dates in the supplied timezone', (done) => {
+    const timezone = 'America/New_York';
+
+    const callback = (dates) => {
+      expect(dates.start.tz()).to.equal(timezone);
+      expect(dates.end.tz()).to.equal(timezone);
+      done();
+    };
+
+    const wrapper = mount(<DatePicker disablePopoverPortal={ true } onChange={ callback } timezone="America/New_York" dates={ dates } />);
+
+    // Open the DatePicker
+    wrapper.find('.rc-datepicker-button').first().simulate('click');
+
+    // Find the wrapper, we'll simulate a change event on it.
+    const first = wrapper.find('.rc-datepicker__Date').first();
+    first.simulate('mouseenter');
+    first.simulate('mousedown');
+    fireMouseUp();
+
+    const last = wrapper.find('.rc-datepicker__Date').last();
+
+    last.simulate('mouseenter');
+    last.simulate('mousedown');
+    fireMouseUp();
   });
 });

@@ -5,6 +5,9 @@ import DatePickerWrapper from './DatePickerWrapper';
 import Button from '../Button';
 import Popover from '../Popover';
 
+// moment-timezone monkey patches moment.
+import 'moment-timezone';
+
 const propTypes = {
   onChange: React.PropTypes.func.isRequired,
   anchor: React.PropTypes.string,
@@ -13,11 +16,15 @@ const propTypes = {
   dates: React.PropTypes.object,
   disabled: React.PropTypes.bool,
   message: React.PropTypes.string,
+  timezone: React.PropTypes.string,
   ranges: React.PropTypes.array,
+  disablePopoverPortal: React.PropTypes.bool,
 };
 
 const defaultProps = {
+  disablePopoverPortal: false,
   anchor: 'bottom left',
+  timezone: 'Etc/UTC',
 };
 
 /**
@@ -39,8 +46,8 @@ class DatePicker extends React.Component {
       const primaryStart = dates.primary.start;
       const primaryEnd = dates.primary.end;
 
-      start = moment.isMoment(primaryStart) ? primaryStart : moment(primaryStart);
-      end = moment.isMoment(primaryEnd) ? primaryEnd : moment(primaryEnd);
+      start = moment.isMoment(primaryStart) ? primaryStart : moment(primaryStart).tz(this.props.timezone);
+      end = moment.isMoment(primaryEnd) ? primaryEnd : moment(primaryEnd).tz(this.props.timezone);
     }
 
     this.state = {
@@ -61,6 +68,10 @@ class DatePicker extends React.Component {
   }
 
   onChange(dates) {
+    // Convert the dates coming out of the picker in to the local dates.
+    dates.start = moment.tz(dates.start.format('YYYY-MM-DD'), this.props.timezone);
+    dates.end = moment.tz(dates.end.format('YYYY-MM-DD'), this.props.timezone);
+
     this.props.onChange(dates);
 
     this.popover.close();
@@ -107,6 +118,7 @@ class DatePicker extends React.Component {
     } else {
       jsx = (
         <Popover
+          disablePortal={ this.props.disablePopoverPortal }
           ref={ (c) => { this.popover = c; } }
           padding={ false }
           target={ button }
