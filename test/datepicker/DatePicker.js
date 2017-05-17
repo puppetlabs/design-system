@@ -79,7 +79,7 @@ describe('<DatePicker />', () => {
     expect(wrapper.find('Button').prop('children')).to.equal('message');
   });
 
-  it.only('should emit dates in the supplied timezone', (done) => {
+  it('should emit dates in the supplied timezone', (done) => {
     const timezone = 'America/New_York';
 
     const callback = (dates) => {
