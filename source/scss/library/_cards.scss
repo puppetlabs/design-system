@@ -1,10 +1,10 @@
 .rc-card {
-  background: $card-bg;
-  border: $card-border;
-  border-radius: $border-radius;
-  box-shadow: $outer-shadow;
+  background: $reflect-card-bg;
+  border: $reflect-card-border;
+  border-radius: $reflect-border-radius;
+  box-shadow: $reflect-outer-shadow;
   display: block;
-  color: $card-color;
+  color: $reflect-card-color;
 
   &.rc-card-xs {
     padding: 2px;
@@ -25,7 +25,7 @@
 
     &:hover {
       .rc-card-content {
-        background: $card-bg;
+        background: $reflect-card-bg;
         .rc-card-title {
           visibility: visible;
         }
@@ -55,16 +55,16 @@
     cursor: pointer;
 
     &:hover {
-      border: $card-border-hover;
+      border: $reflect-card-border-hover;
     }
   }
 
   &.rc-card-selected {
-    border: $card-border-selected;
-    box-shadow: $card-shadow-selected;
+    border: $reflect-card-border-selected;
+    box-shadow: $reflect-card-shadow-selected;
 
     &:hover {
-      border: $card-border-selected;
+      border: $reflect-card-border-selected;
     }
   }
 
@@ -88,10 +88,10 @@
     float: right;
 
     display: none;
-    background: $card-remove-background;
-    border-left: 2px solid $gray;
-    border-bottom: 2px solid $gray;
-    border-bottom-left-radius: $border-radius;
+    background: $reflect-card-remove-background;
+    border-left: 2px solid $reflect-gray;
+    border-bottom: 2px solid $reflect-gray;
+    border-bottom-left-radius: $reflect-border-radius;
     border-top-right-radius: 2px;
 
     .rc-card-remove:before {
@@ -106,7 +106,7 @@
     }
 
     &:hover {
-      background: $gray;
+      background: $reflect-gray;
 
       .rc-card-remove {
         color: #fff;
@@ -114,7 +114,7 @@
     }
 
     .rc-card-remove {
-      color: $gray;
+      color: $reflect-gray;
     }
   }
 
@@ -124,13 +124,13 @@
   }
 
   .rc-card-title {
-    color: $card-title-color;
+    color: $reflect-card-title-color;
     margin-top: 30px;
     font-size: 1.2em;
   }
 
   .rc-card-subtitle {
-    color: $card-subtitle-color;
+    color: $reflect-card-subtitle-color;
     font-size: 0.8em;
   }
 }

@@ -1,11 +1,11 @@
 .rc-modal-overlay {
-  background: $modal-overlay-bg;
+  background: $reflect-modal-overlay-bg;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: $modal-elevation;
+  z-index: $reflect-modal-elevation;
 }
 
 a.rc-modal-close {
@@ -14,33 +14,33 @@ a.rc-modal-close {
   left: 0;
   width: 100%;
   height: 100%;
-  color: lighten($gray, 20%);
+  color: lighten($reflect-gray, 20%);
   cursor: pointer;
   text-align: center;
-  color: $gray;
+  color: $reflect-gray;
   padding-top: 20px;
 
   &:hover {
-    color: $gray-dark;
+    color: $reflect-gray-dark;
   }
 }
 
 .rc-modal {
   position: relative;
-  width: $modal-width;
+  width: $reflect-modal-width;
   box-shadow: 0 0 60px rgba(0, 0, 0, .3);
-  border-radius: $modal-border-radius;
-  color: $modal-color;
-  background: $modal-bg;
+  border-radius: $reflect-modal-border-radius;
+  color: $reflect-modal-color;
+  background: $reflect-modal-bg;
   margin: 0 auto;
   overflow: hidden;
   top: 64px;
 
   &.rc-modal-with-sidebar {
-    background: $modal-sidebar-bg;
+    background: $reflect-modal-sidebar-bg;
 
     .rc-modal-content, .rc-modal-actions {
-      margin-right: $modal-sidebar-width;
+      margin-right: $reflect-modal-sidebar-width;
     }
   }
 
@@ -51,11 +51,11 @@ a.rc-modal-close {
 
     .rc-modal-content, .rc-modal-actions {
       margin-right: 0;
-      margin-left: $modal-sidebar-width;
+      margin-left: $reflect-modal-sidebar-width;
     }
 
     .rc-modal-content {
-      border-top-right-radius: $modal-border-radius;
+      border-top-right-radius: $reflect-modal-border-radius;
       border-bottom-left-radius: 0;
       border-top-left-radius: 0
     }
@@ -69,7 +69,7 @@ a.rc-modal-close {
   }
 
   &.rc-modal-small {
-    width: $modal-width-small;
+    width: $reflect-modal-width-small;
     .rc-modal-content {
       padding: 20px;
     }
@@ -79,36 +79,36 @@ a.rc-modal-close {
   }
 
   &.rc-modal-medium {
-    width: $modal-width-medium;
+    width: $reflect-modal-width-medium;
   }
 
   .rc-modal-content {
-    background: $modal-bg;
-    padding: $modal-padding;
+    background: $reflect-modal-bg;
+    padding: $reflect-modal-padding;
     overflow-y: auto;
     transform: translateZ(0);
-    border-radius: $modal-border-radius;
+    border-radius: $reflect-modal-border-radius;
   }
 
   .rc-modal-sidebar {
     float: right;
     height: 1px; // this will get dynamically set via the react component.
-    width: $modal-sidebar-width;
+    width: $reflect-modal-sidebar-width;
     background-color: transparent;
-    padding: $modal-sidebar-padding;
+    padding: $reflect-modal-sidebar-padding;
   }
 
   .rc-modal-actions {
-    padding: $modal-actions-padding;
-    background: $modal-bg;
+    padding: $reflect-modal-actions-padding;
+    background: $reflect-modal-bg;
     overflow: hidden;
-    border-top: $modal-actions-border;
+    border-top: $reflect-modal-actions-border;
     text-align: right;
 
     .rc-modal-actions-cta {
       float: left;
       margin: 0;
-      padding: $modal-actions-cta-padding;
+      padding: $reflect-modal-actions-cta-padding;
     }
   }
 

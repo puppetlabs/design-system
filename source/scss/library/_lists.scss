@@ -6,24 +6,24 @@
 
   &.rc-list-item-selected {
     a.rc-list-item-link {
-      border: $list-item-border-selected;
+      border: $reflect-list-item-border-selected;
     }
   }
 
   a.rc-list-item-link {
     display: block;
     position: relative;
-    background: $list-item-bg;
-    color: $list-item-color;
-    border: $list-item-border;
-    border-radius: $list-item-border-radius;
-    font-size: $list-item-font-size;
-    padding: $list-item-padding;
-    margin-bottom: $list-item-margin-bottom;
+    background: $reflect-list-item-bg;
+    color: $reflect-list-item-color;
+    border: $reflect-list-item-border;
+    border-radius: $reflect-list-item-border-radius;
+    font-size: $reflect-list-item-font-size;
+    padding: $reflect-list-item-padding;
+    margin-bottom: $reflect-list-item-margin-bottom;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-right: $list-item-action-width * 2;
+    padding-right: $reflect-list-item-action-width * 2;
     cursor: default;
 
     .rc-list-item-edit, .rc-list-item-remove {
@@ -31,12 +31,12 @@
       top: 0;
       bottom: 0;
       display: block;
-      width: $list-item-action-width;
+      width: $reflect-list-item-action-width;
       text-align: center;
     }
 
     .rc-list-item-edit {
-      right: $list-item-action-width;
+      right: $reflect-list-item-action-width;
     }
 
     .rc-list-item-remove {
@@ -46,8 +46,8 @@
 
   &.rc-list-item-clickable:hover {
     a.rc-list-item-link {
-      color: $list-item-color-hover;
-      background: $list-item-bg-hover;
+      color: $reflect-list-item-color-hover;
+      background: $reflect-list-item-bg-hover;
       cursor: pointer;
     }
   }
