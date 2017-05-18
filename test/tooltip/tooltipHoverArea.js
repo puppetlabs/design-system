@@ -6,7 +6,7 @@ import React from 'react';
 import TooltipHoverArea from '../../source/react/library/tooltips/TooltipHoverArea';
 
 describe('<TooltipHoverArea />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   const defaultProps = {
     tooltip: <span className="tooltip">I'm the tooltip</span>,

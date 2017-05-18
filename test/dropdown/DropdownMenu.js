@@ -6,7 +6,7 @@ import React from 'react';
 import DropdownMenu from '../../source/react/library/dropdown/DropdownMenu';
 
 describe('<DropdownMenu />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render a menu title', () => {
     const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];

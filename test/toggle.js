@@ -7,7 +7,7 @@ import React from 'react';
 import Toggle from '../source/react/library/Toggle';
 
 describe('<Toggle />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   const defaultProps = {
     left: 'option 1',

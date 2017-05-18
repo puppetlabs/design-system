@@ -13,7 +13,7 @@ const defaultProps = {
 };
 
 describe('<ColumnSelect />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
     const wrapper = shallow(<ColumnSelect { ...defaultProps } />);

@@ -8,7 +8,7 @@ import { BareModal as Modal } from '../../source/react/library/modals/Modal';
 import Button from '../../source/react/library/Button';
 
 describe('<Modal />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   const content = 'content';
   const sidebar = 'sidebar';

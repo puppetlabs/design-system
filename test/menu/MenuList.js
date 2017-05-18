@@ -7,7 +7,7 @@ import React from 'react';
 import MenuList from '../../source/react/library/menu/MenuList';
 
 describe('<MenuList />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render the correct number of menu items', () => {
     const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];

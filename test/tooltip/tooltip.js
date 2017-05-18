@@ -6,7 +6,7 @@ import React from 'react';
 import Tooltip from '../../source/react/library/tooltips/Tooltip';
 
 describe('<Tooltip />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   const defaultProps = {
     target: <span>hi</span>,

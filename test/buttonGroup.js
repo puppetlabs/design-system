@@ -6,7 +6,7 @@ import React from 'react';
 import ButtonGroup from '../source/react/library/ButtonGroup';
 
 describe('<ButtonGroup />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should wrap children in a div', () => {
     const wrapper = shallow(<ButtonGroup><span>hi</span></ButtonGroup>);

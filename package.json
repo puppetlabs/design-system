@@ -8,7 +8,7 @@
     "build": "NODE_ENV=production webpack",
     "prepublish": "npm run build",
     "watch": "nodemon --watch source -x \"npm run build\"",
-    "test": "./node_modules/.bin/nyc --reporter=html ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
+    "test": "./node_modules/.bin/nyc --require=./test/jsdom.js --reporter=html ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
     "lint": "./node_modules/.bin/eslint --quiet source/**/*.js",
     "start": "./node_modules/.bin/styleguidist server",
     "styleguide:build": "./node_modules/.bin/styleguidist build"
@@ -72,6 +72,7 @@
   },
   "dependencies": {
     "deep-equal": "^1.0.1",
+    "moment-timezone": "^0.5.13",
     "react-daterange-picker": "^1.1.0",
     "react-onclickoutside": "^5.9.0",
     "react-select": "0.9.1"

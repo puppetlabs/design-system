@@ -8,7 +8,7 @@ import moment from 'moment';
 import DatePickerWrapper from '../../source/react/library/datepicker/DatePickerWrapper';
 
 describe('<DatePickerWrapper />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
   const noop = () => {};
   const range = moment.range('2017-01-01', '2017-01-06');
   const ranges = [

@@ -7,7 +7,7 @@ import React from 'react';
 import Switch from '../source/react/library/Switch';
 
 describe('<Switch />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   const defaultProps = {
     name: 'id',

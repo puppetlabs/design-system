@@ -7,7 +7,7 @@ import React from 'react';
 import Card from '../source/react/library/Card';
 
 describe('<Card />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should respond to click events if onClick provided', () => {
     const onClick = sinon.spy();
