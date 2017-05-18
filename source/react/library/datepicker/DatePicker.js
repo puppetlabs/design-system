@@ -24,7 +24,6 @@ const propTypes = {
 const defaultProps = {
   disablePopoverPortal: false,
   anchor: 'bottom left',
-  timezone: 'Etc/UTC',
 };
 
 /**
@@ -68,9 +67,12 @@ class DatePicker extends React.Component {
   }
 
   onChange(dates) {
-    // Convert the dates coming out of the picker in to the local dates.
-    dates.start = moment.tz(dates.start.format('YYYY-MM-DD'), this.props.timezone);
-    dates.end = moment.tz(dates.end.format('YYYY-MM-DD'), this.props.timezone);
+    // Convert the dates coming out of the picker in to the requested timezone
+    // if the timezone info has been configured on the datepicker.
+    if (this.props.timezone) {
+      dates.start = moment.tz(dates.start.format('YYYY-MM-DD'), this.props.timezone);
+      dates.end = moment.tz(dates.end.format('YYYY-MM-DD'), this.props.timezone);
+    }
 
     this.props.onChange(dates);
 
