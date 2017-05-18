@@ -7,7 +7,7 @@ import togglable from '../source/react/library/togglable';
 import Button from '../source/react/library/Button';
 
 describe('Button wrapped with togglable', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   const renderer = togglable(Button);
 

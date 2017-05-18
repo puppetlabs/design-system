@@ -7,7 +7,7 @@ import React from 'react';
 import ListItem from '../../source/react/library/list/ListItem';
 
 describe('<ListItem />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should respond to click events if onClick provided', () => {
     const onClick = sinon.spy();

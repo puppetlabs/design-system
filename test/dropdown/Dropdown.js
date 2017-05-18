@@ -6,7 +6,7 @@ import React from 'react';
 import Dropdown from '../../source/react/library/dropdown/Dropdown';
 
 describe('<Dropdown />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   const options = [{
     id: 1,

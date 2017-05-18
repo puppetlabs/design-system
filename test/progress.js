@@ -6,7 +6,7 @@ import React from 'react';
 import Progress from '../source/react/library/Progress';
 
 describe('<Progress />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render an svg', () => {
     const wrapper = shallow(<Progress />);

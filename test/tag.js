@@ -6,7 +6,7 @@ import React from 'react';
 import Tag from '../source/react/library/Tag';
 
 describe('<Tag />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render the children provided', () => {
     const wrapper = shallow(<Tag>hello world!</Tag>);

@@ -7,7 +7,7 @@ import React from 'react';
 import Button from '../source/react/library/Button';
 
 describe('<Button />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should have disabled attr when passed disabled prop', () => {
     const wrapper = shallow(<Button disabled />);
