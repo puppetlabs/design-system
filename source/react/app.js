@@ -22,7 +22,7 @@ import SlideIns from './styleguide/SlideIns';
 import Accordions from './styleguide/Accordions';
 import BlankSlates from './styleguide/BlankSlates';
 import Stencils from './styleguide/Stencils';
-import '../scss/library/all.scss';
+import '../scss/library/ui.scss';
 import '../scss/styleguide.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
