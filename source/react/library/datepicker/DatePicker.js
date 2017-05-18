@@ -26,6 +26,24 @@ const defaultProps = {
   anchor: 'bottom left',
 };
 
+const convertDate = (date, timezone) => {
+  if (timezone) {
+    return moment(date).tz(timezone);
+  }
+
+  return moment(date);
+}
+
+const parseDate = (date, timezone) => {
+  // Not timezone is supplied so we don't want to do anything.
+  if (!timezone) {
+    return date;
+  }
+
+  return moment.tz(date.format('YYYY-MM-DD'), timezone);
+}
+
+
 /**
  * `Datepicker` allows a user to select a single date range
  *
@@ -45,8 +63,8 @@ class DatePicker extends React.Component {
       const primaryStart = dates.primary.start;
       const primaryEnd = dates.primary.end;
 
-      start = moment.isMoment(primaryStart) ? primaryStart : moment(primaryStart).tz(this.props.timezone);
-      end = moment.isMoment(primaryEnd) ? primaryEnd : moment(primaryEnd).tz(this.props.timezone);
+      start = moment.isMoment(primaryStart) ? primaryStart : convertDate(primaryStart, this.props.timezone);
+      end = moment.isMoment(primaryEnd) ? primaryEnd : convertDate(primaryEnd, this.props.timezone);
     }
 
     this.state = {
@@ -60,8 +78,8 @@ class DatePicker extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.dates && nextProps.dates.primary) {
       this.setState({
-        start: nextProps.dates.primary.start,
-        end: nextProps.dates.primary.end,
+        start: convertDate(nextProps.dates.primary.start),
+        end: convertDate(nextProps.dates.primary.end),
       });
     }
   }
@@ -69,10 +87,8 @@ class DatePicker extends React.Component {
   onChange(dates) {
     // Convert the dates coming out of the picker in to the requested timezone
     // if the timezone info has been configured on the datepicker.
-    if (this.props.timezone) {
-      dates.start = moment.tz(dates.start.format('YYYY-MM-DD'), this.props.timezone);
-      dates.end = moment.tz(dates.end.format('YYYY-MM-DD'), this.props.timezone);
-    }
+    dates.start = parseDate(dates.start, this.props.timezone);
+    dates.end = parseDate(dates.end, this.props.timezone);
 
     this.props.onChange(dates);
 
