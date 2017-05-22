@@ -18,11 +18,13 @@ make setup
 
 This will install the necessary dependencies.
 
-To see the components in an isolated context, we have a small app we call our
-Styleguide. It's build using
-[React Styleguidist](https://github.com/styleguidist/react-styleguidist) and
-the contents are sourced from the `docs/` directory in this repo. After running
-the previous command, you're good to boot up the styleguide:
+## Styleguide
+
+The Reflect Components styleguide allows us to see and test components in an
+isolated context. It's built using [React Styleguidist](https://github.com/styleguidist/react-styleguidist)
+and the contents are sourced from the `docs/` directory in this repo.
+
+After installing your dependencies, you're good to boot up the styleguide:
 
 ```
 npm start
@@ -31,3 +33,21 @@ npm start
 This will start the styleguide at http://localhost:6060. It's still a work in
 progress, so some components have not been documented yet. Please feel free to
 [add them](https://github.com/styleguidist/react-styleguidist/blob/master/docs/Documenting.md)!
+
+## Linting
+
+We use ESLint and enforce it during CI. The following command will lint your
+files:
+
+```
+npm run lint
+```
+
+We recommend using [Syntastic](https://github.com/vim-syntastic/syntastic) for
+vim or [linter-eslint](https://github.com/AtomLinter/linter-eslint) for Atom.
+
+## Releasing
+
+Reflect Components is distributed via [npm](https://www.npmjs.com/package/@reflect/reflect-components).
+Upon merge to master, our CI process releases a new version to the registry.
+Please update the CHANGELOG.md file before merging your pull requests to master.
