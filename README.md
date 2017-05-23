@@ -59,6 +59,8 @@ can be done from within the `reflect-ui` directory, for example.
 npm link @reflect/reflect-components
 ```
 
+### Watching for changes
+
 As you make changes in `reflect-components`, you'll probably want your
 changes to be build so you can see them in other projects. This command
 will do that, rebuilding every time you make a change:
