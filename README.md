@@ -34,6 +34,39 @@ This will start the styleguide at http://localhost:6060. It's still a work in
 progress, so some components have not been documented yet. Please feel free to
 [add them](https://github.com/styleguidist/react-styleguidist/blob/master/docs/Documenting.md)!
 
+## Developing with other projects
+
+As all of our frontend projects are npm modules, we can use [npm link](https://docs.npmjs.com/cli/link)
+to symlink them into eachother when doing local development. This allows us to
+make changes in one project (e.g. reflect-components) then instantly see those
+changes in another project, such as ReflectUI or Reflect App.
+
+### Symlinking into a project
+
+First, symlink `reflect-components`:
+
+```
+npm link
+```
+
+This will build reflect-components and symlink it to a place where it's
+globally accessible to other local projects.
+
+Next, symlink it into another project, using the full module name. This
+can be done from within the `reflect-ui` directory, for example.
+
+```
+npm link @reflect/reflect-components
+```
+
+As you make changes in `reflect-components`, you'll probably want your
+changes to be build so you can see them in other projects. This command
+will do that, rebuilding every time you make a change:
+
+```
+npm run watch
+```
+
 ## Linting
 
 We use ESLint and enforce it during CI. The following command will lint your
