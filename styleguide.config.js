@@ -9,7 +9,7 @@ module.exports = {
   },
   components: 'source/react/library/**/*.js',
   require: [
-    path.join(__dirname, 'source/scss/library/all.scss'),
+    path.join(__dirname, 'source/scss/library/ui.scss'),
   ],
   webpackConfig: {
     module: {
