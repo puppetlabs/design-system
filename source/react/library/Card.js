@@ -56,7 +56,7 @@ class Card extends React.Component {
     if (this.props.onRemove) {
       jsx = (
         <div className="remove-corner">
-          <a href="" className="rc-card-remove" onClick={ this.onRemove }><Icon width="10" height="10" type="close" /></a>
+          <a href="" className="rc-card-remove" onClick={ this.onRemove }><Icon width="11" height="11" type="close" /></a>
         </div>
       );
     }
