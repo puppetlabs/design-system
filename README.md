@@ -34,6 +34,19 @@ This will start the styleguide at http://localhost:6060. It's still a work in
 progress, so some components have not been documented yet. Please feel free to
 [add them](https://github.com/styleguidist/react-styleguidist/blob/master/docs/Documenting.md)!
 
+### Legacy styleguide
+
+We're currently working on porting our components over to our new Styleguide.
+In the interim, it may be necessary to run the old one: You can do so with
+the following command:
+
+```
+./node_modules/.bin/webpack-dev-server --config webpack.dev.config.js
+```
+
+This will start a server at port 8080 which will refresh when you make
+updates to any of the components.
+
 ## Developing with other projects
 
 As all of our frontend projects are npm modules, we can use [npm link](https://docs.npmjs.com/cli/link)
