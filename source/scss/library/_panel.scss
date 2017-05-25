@@ -5,6 +5,8 @@
   border-radius: $reflect-panel-border-radius;
   box-shadow: $reflect-panel-outer-shadow;
 
+  @include with-remove('panel');
+
   &.rc-panel-secondary {
     background: $reflect-panel-bg-secondary;
   }

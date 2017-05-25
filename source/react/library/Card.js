@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import Icon from './Icon';
 
 const propTypes = {
   size: React.PropTypes.string,
@@ -55,7 +56,7 @@ class Card extends React.Component {
     if (this.props.onRemove) {
       jsx = (
         <div className="remove-corner">
-          <a href="" className="rc-card-remove fa fa-close" onClick={ this.onRemove }>Remove</a>
+          <a href="" className="rc-card-remove" onClick={ this.onRemove }><Icon width="10" height="10" type="close" /></a>
         </div>
       );
     }

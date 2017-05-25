@@ -10,3 +10,9 @@ Secondary `Panel`:
   I am a happy secondary panel.
 </Panel>
 ```
+
+Removable `Panel`:
+```
+<Panel onRemove={ () => alert('Panel removed!') }>
+  I am the Frito Bandito.
+</Panel>

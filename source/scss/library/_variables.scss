@@ -69,6 +69,11 @@ $reflect-floating-action-button-height:   60px !default;
 $reflect-button-badge-size:               10px !default;
 
 //
+// Removable components
+//
+$reflect-remove-background:               $reflect-gray-lighter !default;
+
+//
 // Tags
 //
 $reflect-tag-font-size:                   $reflect-button-font-size !default;
@@ -163,7 +168,7 @@ $reflect-menu-item-color-selected:        $reflect-bg-primary !default;
 $reflect-menu-item-bg-selected:           $reflect-brand-primary !default;
 $reflect-menu-item-color-disabled:        $reflect-bg-primary !default;
 $reflect-menu-item-bg-disabled:           $reflect-gray-light !default;
-$reflect-menu-item-padding:               12px 16px !default
+$reflect-menu-item-padding:               12px 16px !default;
 
 $reflect-menu-section-border:             $reflect-border !default;
 $reflect-menu-section-padding:            $reflect-padding !default;
@@ -182,7 +187,6 @@ $reflect-card-border-hover:               $reflect-border-hover !default;
 $reflect-card-shadow-hover:               0px 0px 0px 1px $reflect-gray !default;
 $reflect-card-border-selected:            1px solid $reflect-brand-primary !default;
 $reflect-card-shadow-selected:            0px 0px 0px 1px $reflect-brand-primary !default;
-$reflect-card-remove-background:          $reflect-gray-lighter !default;
 $reflect-card-color:                      $reflect-gray !default;
 $reflect-card-title-color:                $reflect-gray !default;
 $reflect-card-subtitle-color:             $reflect-gray !default;
