@@ -4,12 +4,35 @@ $reflect-gray-dark:                      lighten($reflect-gray-base, 38%) !defau
 $reflect-gray:                           lighten($reflect-gray-base, 56%) !default;
 $reflect-gray-light:                     lighten($reflect-gray-base, 80%) !default;
 $reflect-gray-lighter:                   lighten($reflect-gray-base, 84%) !default;
+$reflect-white:                          #fff !default;
 
 $reflect-brand-primary:                  #269CFF !default;
 $reflect-brand-danger:                   #d9534f !default;
 
-$reflect-bg-primary:                     #fff !default;
+$reflect-bg-primary:                     $reflect-white !default;
 
+// Action Colors
+// Colors used for primary buttons, links, checkboxes and other active elements
+$reflect-action-color:                   $reflect-brand-primary !default;
+$reflect-action-hover:                   darken($reflect-action-color, 10%) !default;
+$reflect-action-border:                  darken($reflect-action-color, 5%) !default;
+$reflect-action-border-hover:            darken($reflect-action-color, 15%) !default;
+
+// Secondary Action Colors
+// A more subdued alternative to the primary action
+$reflect-action-color-alt:               $reflect-brand-primary !default;
+$reflect-action-hover-alt:               darken($reflect-brand-primary, 10%) !default;
+$reflect-action-border-alt:              $reflect-brand-primary !default;
+$reflect-action-border-hover-alt:        darken($reflect-brand-primary, 10%) !default;
+
+// Danger Colors
+// Used to provide a warning for irreversible actions and errors
+$reflect-danger-color:                   $reflect-brand-danger !default;
+$reflect-danger-hover:                   $reflect-brand-danger !default;
+$reflect-danger-border:                  $reflect-brand-danger !default;
+$reflect-danger-border-hover:            $reflect-brand-danger !default;
+
+// Typography
 $reflect-font-family:                   'Open Sans', sans-serif !default;
 
 $reflect-font-size-large:                18px !default;
@@ -23,6 +46,7 @@ $reflect-font-weight-heavy:              600 !default;
 $reflect-font-color-base:                $reflect-gray-darker !default;
 $reflect-font-color-subtle:              $reflect-gray !default;
 
+// Borders
 $reflect-border-color:                   #dedede !default;
 $reflect-border-hover-color:             $reflect-gray !default;
 $reflect-border-radius:                  4px !default;
@@ -31,9 +55,11 @@ $reflect-border-heavy:                   2px solid $reflect-border-color !defaul
 $reflect-border-active:                  1px solid $reflect-brand-primary !default;
 $reflect-border-hover:                   1px solid $reflect-border-hover-color !default;
 
+// Shadows
 $reflect-outer-shadow:                   0 0 1px rgba(0, 0, 0, .05) !default;
 $reflect-outer-shadow-large:             0 0 6px rgba(0, 0, 0, .2) !default;
 
+// Spacing Defaults
 $reflect-padding:                        16px;
 
 //
@@ -43,10 +69,13 @@ $reflect-button-font-family:              'Montserrat', sans-serif !default;
 $reflect-button-font-size:                $reflect-font-size-small !default;
 $reflect-button-font-size-tiny:           10px !default;
 $reflect-button-font-weight:              normal !default;
+
 $reflect-button-bg-disabled:              #ccc !default;
 $reflect-button-color-disabled:           $reflect-gray !default;
 $reflect-button-color-disabled-hover:     $reflect-gray !default;
+
 $reflect-button-border-radius:            $reflect-border-radius !default;
+
 $reflect-button-bg:                       $reflect-brand-primary !default;
 $reflect-button-bg-hover:                 darken($reflect-brand-primary, 10%) !default;
 $reflect-button-color:                    $reflect-bg-primary !default;
