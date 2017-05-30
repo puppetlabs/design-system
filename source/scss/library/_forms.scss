@@ -82,7 +82,7 @@
 
           .Select-option.is-selected {
             background-color: $reflect-bg-primary;
-            color: $reflect-button-bg-disabled;
+            color: $reflect-button-disabled-bg;
           }
           .Select-option.is-focused {
             background-color: lighten($reflect-brand-primary, 10%);
@@ -96,7 +96,7 @@
 
           .Select-placeholder {
             line-height: normal;
-            color: $reflect-button-bg-disabled;
+            color: $reflect-button-disabled-bg;
             padding: 6px 28px 6px 6px;
           }
 

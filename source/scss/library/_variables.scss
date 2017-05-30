@@ -13,17 +13,40 @@ $reflect-bg-primary:                     $reflect-white !default;
 
 // Action Colors
 // Colors used for primary buttons, links, checkboxes and other active elements
+// Text is typically on a bg color - by default it is white text on a blue bg
 $reflect-action-color:                   $reflect-brand-primary !default;
 $reflect-action-hover:                   darken($reflect-action-color, 10%) !default;
-$reflect-action-border:                  darken($reflect-action-color, 5%) !default;
-$reflect-action-border-hover:            darken($reflect-action-color, 15%) !default;
+$reflect-action-border:                  transparent !default;
+$reflect-action-border-hover:            transparent !default;
+$reflect-action-text:                    $reflect-white !default;
+$reflect-action-text-hover:              $reflect-white !default;
+$reflect-action-icon:                    $reflect-white !default;
+$reflect-action-icon-hover:              $reflect-white !default;
 
 // Secondary Action Colors
 // A more subdued alternative to the primary action
-$reflect-action-color-alt:               $reflect-brand-primary !default;
-$reflect-action-hover-alt:               darken($reflect-brand-primary, 10%) !default;
-$reflect-action-border-alt:              $reflect-brand-primary !default;
-$reflect-action-border-hover-alt:        darken($reflect-brand-primary, 10%) !default;
+$reflect-action-color-alt:               transparent !default;
+$reflect-action-hover-alt:               $reflect-gray-dark !default;
+$reflect-action-border-alt:              $reflect-gray !default;
+$reflect-action-border-hover-alt:        $reflect-gray-dark !default;
+$reflect-action-text-alt:                $reflect-gray !default;
+$reflect-action-text-hover-alt:          $reflect-white !default;
+$reflect-action-icon-alt:                $reflect-gray !default;
+$reflect-action-icon-hover-alt:          $reflect-gray !default;
+
+$reflect-disabled-color:                 #ccc !default;
+$reflect-disabled-hover:                 #ccc !default;
+$reflect-disabled-border:                transparent !default;
+$reflect-disabled-border-hover:          transparent !default;
+$reflect-disabled-text:                  $reflect-gray !default;
+$reflect-disabled-text-hover:            $reflect-gray !default;
+$reflect-disabled-icon:                  $reflect-gray !default;
+$reflect-disabled-icon-hover:            $reflect-gray !default;
+
+// Link Colors
+// For stand alone links, not buttons
+$reflect-anchor-color:                   $reflect-action-color;
+$reflect-anchor-hover:                   $reflect-action-hover;
 
 // Danger Colors
 // Used to provide a warning for irreversible actions and errors
@@ -45,11 +68,13 @@ $reflect-font-weight-heavy:              600 !default;
 
 $reflect-font-color-base:                $reflect-gray-darker !default;
 $reflect-font-color-subtle:              $reflect-gray !default;
+$reflect-font-color-light:               $reflect-white !default;
 
 // Borders
 $reflect-border-color:                   #dedede !default;
 $reflect-border-hover-color:             $reflect-gray !default;
 $reflect-border-radius:                  4px !default;
+$reflect-circle-radius:                  50% !default;
 $reflect-border:                         1px solid $reflect-border-color !default;
 $reflect-border-heavy:                   2px solid $reflect-border-color !default;
 $reflect-border-active:                  1px solid $reflect-brand-primary !default;
@@ -62,36 +87,69 @@ $reflect-outer-shadow-large:             0 0 6px rgba(0, 0, 0, .2) !default;
 // Spacing Defaults
 $reflect-padding:                        16px;
 
-//
 // Button variables/options
-//
-$reflect-button-font-family:              'Montserrat', sans-serif !default;
-$reflect-button-font-size:                $reflect-font-size-small !default;
-$reflect-button-font-size-tiny:           10px !default;
-$reflect-button-font-weight:              normal !default;
-
-$reflect-button-bg-disabled:              #ccc !default;
-$reflect-button-color-disabled:           $reflect-gray !default;
-$reflect-button-color-disabled-hover:     $reflect-gray !default;
-
 $reflect-button-border-radius:            $reflect-border-radius !default;
 
-$reflect-button-bg:                       $reflect-brand-primary !default;
-$reflect-button-bg-hover:                 darken($reflect-brand-primary, 10%) !default;
-$reflect-button-color:                    $reflect-bg-primary !default;
-$reflect-button-color-hover:              $reflect-bg-primary !default;
-$reflect-button-border-color:             transparent !default;
-$reflect-button-border-color-hover:       transparent !default;
+// Button Sizes
+$reflect-button-font-family:              'Montserrat', sans-serif !default;
+$reflect-button-font-weight:              normal !default;
+$reflect-button-text-transform:              uppercase;
+$reflect-button-font-size:                $reflect-font-size-small !default;
+$reflect-button-height:                   44px !default;
+$reflect-button-padding:                  20px !default; //left and right padding
 
+// Tiny Buttons
+$reflect-button-tiny-font-size:           $reflect-font-size-tiny !default;
+$reflect-button-tiny-height:              22px !default;
+$reflect-button-tiny-padding:             5px !default;
+
+$reflect-button-small-font-size:          $reflect-font-size-small !default;
+$reflect-button-small-height:             33px !default;
+$reflect-button-small-padding:            8px !default;
+
+$reflect-button-large-font-size:          $reflect-font-size-medium !default;
+$reflect-button-large-height:             60px !default;
+$reflect-button-large-padding:            30px !default;
+
+// Primary Buttons
+$reflect-button-bg:                       $reflect-action-color !default;
+$reflect-button-bg-hover:                 $reflect-action-hover !default;
+$reflect-button-color:                    $reflect-action-text !default;
+$reflect-button-color-hover:              $reflect-action-text-hover !default;
+$reflect-button-icon-color:               $reflect-action-icon !default;
+$reflect-button-icon-color-hover:         $reflect-action-icon-hover !default;
+$reflect-button-border-color:             $reflect-action-border !default;
+$reflect-button-border-color-hover:       $reflect-action-border-hover !default;
+
+// Secondary Buttons
 $reflect-button-secondary-bg:                 transparent !default;
-$reflect-button-secondary-bg-hover:           $reflect-gray-dark !default;
-$reflect-button-secondary-color:              $reflect-gray !default;
-$reflect-button-secondary-color-hover:        $reflect-bg-primary !default;
-$reflect-button-secondary-border-color:       $reflect-gray !default;
-$reflect-button-secondary-border-color-hover: $reflect-gray-dark !default;
+$reflect-button-secondary-bg-hover:           $reflect-action-hover-alt !default;
+$reflect-button-secondary-color:              $reflect-action-text-alt !default;
+$reflect-button-secondary-color-hover:        $reflect-action-text-hover-alt !default;
+$reflect-button-secondary-icon-color:         $reflect-action-icon-alt !default;
+$reflect-button-secondary-icon-color-hover:   $reflect-action-icon-hover-alt !default;
+$reflect-button-secondary-border-color:       $reflect-action-border-alt !default;
+$reflect-button-secondary-border-color-hover: $reflect-action-border-hover-alt !default;
 
-$reflect-button-transparent-color:        $reflect-gray !default;
-$reflect-button-transparent-color-hover:  $reflect-gray-dark !default;
+// Transparent Buttons
+$reflect-button-transparent-bg:               transparent !default;
+$reflect-button-transparent-bg-hover:         transparent !default;
+$reflect-button-transparent-color:            $reflect-gray !default;
+$reflect-button-transparent-color-hover:      $reflect-gray-dark !default;
+$reflect-button-transparent-icon-color:       $reflect-gray !default;
+$reflect-button-transparent-icon-color-hover: $reflect-gray-dark !default;
+$reflect-button-transparent-border-color:     transparent !default;
+$reflect-button-transparent-border-color-hover: transparent !default;
+
+// Disabled Buttons
+$reflect-button-disabled-bg:              $reflect-disabled-color !default;
+$reflect-button-disabled-bg-hover:        $reflect-disabled-color !default;
+$reflect-button-disabled-color:           $reflect-disabled-text !default;
+$reflect-button-disabled-color-hover:     $reflect-disabled-text !default;
+$reflect-button-disabled-icon-color:      $reflect-disabled-icon !default;
+$reflect-button-disabled-icon-color-hover:$reflect-disabled-icon-hover !default;
+$reflect-button-disabled-border-color:    $reflect-disabled-border !default;
+$reflect-button-disabled-border-color-hover:$reflect-disabled-border-hover !default;
 
 $reflect-floating-action-button-height:   60px !default;
 
@@ -298,6 +356,7 @@ $reflect-table-border-radius:           $reflect-border-radius !default;
 // Icons
 //
 $reflect-icon-fill:                       $reflect-gray !default;
+$reflect-icon-light:                      $reflect-white !default;
 
 //
 // Progress Indicator
