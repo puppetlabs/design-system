@@ -4,9 +4,14 @@
   border-radius: $reflect-card-border-radius;
   box-shadow: $reflect-outer-shadow;
   display: block;
+  position: relative;
   color: $reflect-card-color;
 
-  @include with-remove('card');
+  &:hover {
+    .rc-card-actions-hidden {
+      display: block;
+    }
+  }
 
   &.rc-card-selectable {
     cursor: pointer;
@@ -34,12 +39,41 @@
 
   .rc-card-title {
     color: $reflect-card-title-color;
-    // margin-top: 30px;
     font-size: $reflect-card-title-size;
   }
 
   .rc-card-subtitle {
     color: $reflect-card-subtitle-color;
     font-size: $reflect-card-subtitle-size;
+  }
+
+  .rc-card-section {
+    margin: -20px;
+    padding: 20px;
+  }
+
+  .rc-card-actions {
+    top: 5px;
+    right: 5px;
+    z-index: 24;
+
+    position: absolute;
+    float: right;
+
+    .rc-card-remove {
+      width: 21px;
+      height: 21px;
+
+      background: $reflect-remove-background;
+      border-radius: 50%;
+
+      cursor: pointer;
+      text-align: center;
+      line-height: 20px;
+    }
+  }
+
+  .rc-card-actions-hidden {
+    display: none;
   }
 }
