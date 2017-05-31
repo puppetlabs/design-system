@@ -285,10 +285,6 @@ a.rc-floating-action-button, button.rc-floating-action-button {
   }
 
   .rc-button-menu {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
-    display: block;
 
     &.rc-popover-target-open {
       background: $reflect-button-bg-hover;
@@ -322,8 +318,7 @@ a.rc-floating-action-button, button.rc-floating-action-button {
     }
 
     padding: 0 10px;
-    display: flex;
-    align-items: center;
+    display: block;
 
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
