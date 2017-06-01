@@ -1,10 +1,10 @@
 .rc-toggle {
   .rc-toggle-label {
-    color: $reflect-font-color-base;
+    color: $reflect-toggle-off-color;
     cursor: pointer;
 
     &.rc-toggle-active {
-      color: $reflect-brand-primary;
+      color: $reflect-toggle-on-color;
     }
   }
 
@@ -14,17 +14,16 @@
 
     .rc-switch-label {
       border: none;
-
       background: $reflect-toggle-bg;
 
       &:after {
-        background: $reflect-toggle-color;
+        background: $reflect-toggle-on-color;
       }
     }
 
     .rc-switch-checkbox {
       &:checked + .rc-switch-label {
-        color: $reflect-toggle-color;
+        color: $reflect-toggle-on-color;
       }
     }
   }

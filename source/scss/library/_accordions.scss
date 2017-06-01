@@ -30,6 +30,17 @@
         // NOTE: No flex-grow here because it'll push the icon to the right.
       }
     }
+
+    a.rc-accordion-item-header:hover {
+      // Open accordion items are a div intead of an anchor
+      // This allows us to only change the color for accordion items you can click
+      // which would be the anchors
+      color: $reflect-accordion-item-title-hover;
+
+      .rc-icon {
+          fill: $reflect-icon-fill-hover;
+        }
+      }
   }
 
   .rc-accordion-item {

@@ -1,6 +1,10 @@
 ```
 <Button>I'm a button!</Button>
 ```
+Secondary Button:
+```
+<Button secondary>I'm a secondary button!</Button>
+```
 
 Tiny button:
 ```

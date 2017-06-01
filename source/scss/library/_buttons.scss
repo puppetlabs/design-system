@@ -1,17 +1,22 @@
-@mixin button-colors($bg, $bg-hover, $color, $color-hover, $icon-color, $icon-hover, $reflect-border, $reflect-border-hover) {
+@mixin button-square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin button-colors($bg, $bg-hover, $color, $color-hover, $icon-color, $icon-hover, $border, $border-hover) {
   background: $bg;
-  border: 1px solid $reflect-border;
+  border: 1px solid $border;
   color: $color !important;
 
   &[disabled] {
     &:hover {
-      border-color: $reflect-border;
+      border-color: $border;
     }
   }
 
   &:hover {
     background: $bg-hover;
-    border: 1px solid $reflect-border-hover;
+    border: 1px solid $border-hover;
     color: $color-hover !important;
 
     .rc-icon {
@@ -33,7 +38,7 @@
 
   &.rc-button-processing:hover {
     background: $bg;
-    border-color: $reflect-border;
+    border-color: $border;
   }
 
   .rc-icon {
@@ -48,6 +53,7 @@
     }
   }
 }
+
 a.rc-button, button.rc-button {
   text-transform: $reflect-button-text-transform;
   letter-spacing: 1px;
@@ -60,6 +66,7 @@ a.rc-button, button.rc-button {
   border-radius: $reflect-button-border-radius;
   outline: none;
 
+
   @include button-colors(
     $reflect-button-bg,
     $reflect-button-bg-hover,
@@ -71,10 +78,13 @@ a.rc-button, button.rc-button {
     $reflect-button-border-color-hover
   );
 
+
   &.rc-button-block {
     display: block;
     width: 100%;
   }
+
+
 
   &.rc-button-badged {
     position: relative;
@@ -158,7 +168,7 @@ a.rc-button, button.rc-button {
     padding: 0 $reflect-button-tiny-padding;
 
     &.rc-button-round {
-      padding: 0 2px;
+      padding: 0 3px;
     }
 
     .rc-button-content {
@@ -187,7 +197,7 @@ a.rc-button, button.rc-button {
   }
 
   &.rc-button-round {
-    border-radius: 10000px;
+    border-radius: $reflect-circle-radius;
   }
 
   &[disabled] {
@@ -328,3 +338,82 @@ a.rc-floating-action-button, button.rc-floating-action-button {
     }
   }
 }
+
+// $reflect-buttons: (
+//   rc-button-primary: (
+//     bg: $reflect-action-color,
+//     bg-hover: $reflect-action-hover,
+//     border: transparent,
+//     border-hover: transparent,
+//     text: $reflect-white,
+//     text-hover: $reflect-white,
+//     icon: $reflect-white,
+//     icon-hover: $reflect-white
+//   ),
+//   rc-button-secondary: (
+//     bg: transparent,
+//     bg-color: $reflect-gray-dark,
+//     border: $reflect-gray,
+//     border-hover: $reflect-gray-dark,
+//     text: $reflect-gray,
+//     text-hover: $reflect-white,
+//     icon: $reflect-gray,
+//     icon-hover: $reflect-gray
+//   )
+// );
+
+// .rc-button {
+//   @each $color, $name in $reflect-buttons {
+//     &.#{$color} {
+//       background-color: map-get($name, bg);
+//       border-color: map-get($name, border);
+//       color: map-get($name, text-color) !important;
+
+//       &[disabled] {
+//         &:hover {
+//           border-color: map-get($name, border);
+//         }
+//       }
+
+//       &:hover {
+//         background-color: map-get($name, bg-hover);
+//         border: 1px solid map-get($name, border-hover);
+//         color: map-get($name, text-hover) !important;
+//         .rc-icon {
+//           fill: map-get($name, icon-hover);
+//         }
+
+//         .rc-button-menu-inner {
+//           .rc-icon {
+//             path {
+//               fill: map-get($name, bg-hover);
+//             }
+//           }
+//         }
+//       }
+
+//       &:after {
+//         background: map-get($name, bg);
+//       }
+
+//       &.rc-button-processing:hover {
+//         background: map-get($name, bg);
+//         border-color: map-get($name, border);
+//       }
+
+//       .rc-icon {
+//         fill: map-get($name, icon);
+//       }
+
+//       .rc-button-menu-inner {
+//         .rc-icon {
+//           path {
+//             fill: map-get($name, bg);
+//           }
+//         }
+//       }
+
+//     }
+//   }
+// }
+
