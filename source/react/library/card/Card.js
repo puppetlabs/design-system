@@ -1,8 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import Title from './Title';
-
 const propTypes = {
   size: React.PropTypes.string,
   children: React.PropTypes.any,
@@ -84,5 +82,4 @@ class Card extends React.Component {
 
 Card.propTypes = propTypes;
 
-export { Title };
 export default Card;
