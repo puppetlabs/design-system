@@ -68,6 +68,9 @@ class Toggle extends React.Component {
     const leftLabel = this.renderLabel(left);
     const rightLabel = this.renderLabel(right);
 
+    // We have to make this unique.
+    const name = left + right;
+
     return (
       <div className="rc-toggle">
         { leftLabel }
@@ -76,7 +79,7 @@ class Toggle extends React.Component {
           onChange={ this.onChange }
           className="rc-switch-toggle"
           checked={ this.state.active === right }
-          name="toggle"
+          name={ name }
         />
         { rightLabel }
       </div>

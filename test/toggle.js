@@ -27,6 +27,12 @@ describe('<Toggle />', () => {
     expect(wrapper.find('.rc-toggle-active').text()).to.eql('option 2');
   });
 
+  it('should set a unique name on Switch', () => {
+    const wrapper = shallow(<Toggle { ...defaultProps } />);
+
+    expect(wrapper.find('Switch').prop('name')).to.eql('option 1option 2');
+  });
+
   it('should trigger provided onChange function from props when input is changed', () => {
     const wrapper = mount(<Toggle { ...defaultProps } />);
 
