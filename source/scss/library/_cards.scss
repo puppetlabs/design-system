@@ -8,51 +8,6 @@
 
   @include with-remove('card');
 
-  &.rc-card-xs {
-    padding: 2px;
-    background-position: center center;
-    background-size: cover;
-
-    .rc-card-content {
-      padding: 13px 0px;
-      border: 2px solid white;
-
-      .rc-card-title {
-        margin: 0px;
-        text-align: center;
-        visibility: hidden;
-        font-size: 1em;
-      }
-    }
-
-    &:hover {
-      .rc-card-content {
-        background: $reflect-card-bg;
-        .rc-card-title {
-          visibility: visible;
-        }
-      }
-    }
-  }
-
-  &.rc-card-large {
-    padding-top: 100px;;
-
-    .rc-card-title {
-      margin-top: 80px;
-      font-size: 1.3em;
-    }
-  }
-
-  &.rc-card-small {
-    padding-top: 0;
-
-    .rc-card-title {
-      margin-top: 0px;
-      font-size: 1.1em;
-    }
-  }
-
   &.rc-card-selectable {
     cursor: pointer;
 
@@ -74,17 +29,17 @@
 
   .rc-card-content {
     background: transparent !important;
-    padding: 20px;
+    padding: $reflect-card-padding;
   }
 
   .rc-card-title {
     color: $reflect-card-title-color;
-    margin-top: 30px;
-    font-size: 1.2em;
+    // margin-top: 30px;
+    font-size: $reflect-card-title-size;
   }
 
   .rc-card-subtitle {
     color: $reflect-card-subtitle-color;
-    font-size: 0.8em;
+    font-size: $reflect-card-subtitle-size;
   }
 }
