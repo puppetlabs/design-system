@@ -6,6 +6,7 @@ import Switch from './Switch';
 const propTypes = {
   left: React.PropTypes.string.isRequired,
   right: React.PropTypes.string.isRequired,
+  name: React.PropTypes.string,
   onChange: React.PropTypes.func,
   active: React.PropTypes.string,
 };
@@ -64,12 +65,12 @@ class Toggle extends React.Component {
   }
 
   render() {
-    const { left, right } = this.props;
+    const { left, right, name } = this.props;
     const leftLabel = this.renderLabel(left);
     const rightLabel = this.renderLabel(right);
 
     // We have to make this unique.
-    const name = left + right;
+    const switchName = name || left + right;
 
     return (
       <div className="rc-toggle">
@@ -79,7 +80,7 @@ class Toggle extends React.Component {
           onChange={ this.onChange }
           className="rc-switch-toggle"
           checked={ this.state.active === right }
-          name={ name }
+          name={ switchName }
         />
         { rightLabel }
       </div>
