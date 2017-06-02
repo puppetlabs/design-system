@@ -27,7 +27,13 @@ describe('<Toggle />', () => {
     expect(wrapper.find('.rc-toggle-active').text()).to.eql('option 2');
   });
 
-  it('should set a unique name on Switch', () => {
+  it('should allow you to specify a name for the Switch', () => {
+    const wrapper = shallow(<Toggle { ...defaultProps } name="Slim Shady" />);
+
+    expect(wrapper.find('Switch').prop('name')).to.eql('Slim Shady');
+  });
+
+  it('should set a unique name on Switch when you don\'t provide one', () => {
     const wrapper = shallow(<Toggle { ...defaultProps } />);
 
     expect(wrapper.find('Switch').prop('name')).to.eql('option 1option 2');
