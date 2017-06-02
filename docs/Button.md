@@ -6,25 +6,36 @@ Secondary Button:
 <Button secondary>I'm a secondary button!</Button>
 ```
 
-Tiny button:
+Button Sizes:
 ```
-<Button size="tiny">I'm a tiny button!</Button>
+<Button size="large">Large Button</Button>
 ```
+```
+<Button size="small">Small Button</Button>
+```
+```
+<Button size="tiny">Tiny Button</Button>
+```
+
+Processing
+```
+<Button processing disabled>Processing</Button>
+```
+```
+<Button size="large" processing disabled>Large Button</Button>
+```
+```
+<Button size="small" processing disabled>Small Button</Button>
+```
+```
+<Button size="tiny" processing disabled>Tiny Button</Button>
+```
+
 
 Tiny Button round:
 
 ```
 <Button icon="plus" size="tiny" round />
-```
-
-Small button:
-```
-<Button size="small">I'm a small button!</Button>
-```
-
-Large button:
-```
-<Button size="large">I'm a large button!</Button>
 ```
 
 Disabled button:

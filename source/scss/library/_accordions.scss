@@ -44,7 +44,7 @@
   }
 
   .rc-accordion-item {
-    border-bottom: 1px solid $reflect-gray-light;
+    border-bottom: $reflect-accordion-item-title-border;
 
     &:last-of-type {
       border-bottom: none;

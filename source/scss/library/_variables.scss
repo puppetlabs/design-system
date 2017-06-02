@@ -74,6 +74,7 @@ $reflect-danger-border-hover:            darken($reflect-danger-color, 10%) !def
 // Typography
 $reflect-font-family:                   'Open Sans', sans-serif !default;
 
+$reflect-font-size-huge:                 22px !default;
 $reflect-font-size-large:                18px !default;
 $reflect-font-size-base:                 16px !default;
 $reflect-font-size-medium:               14px !default;
@@ -91,16 +92,25 @@ $reflect-font-color-light:               $reflect-white !default;
 $reflect-border-color:                   $reflect-gray-light !default;
 $reflect-border-hover-color:             $reflect-gray !default;
 $reflect-border-size:                    1px !default;
+$reflect-border-style:                   solid !default;
 $reflect-border-radius:                  4px !default;
 $reflect-circle-radius:                  50% !default;
-$reflect-border:                         1px solid $reflect-border-color !default;
-$reflect-border-heavy:                   2px solid $reflect-border-color !default;
-$reflect-border-active:                  1px solid $reflect-action-color !default;
-$reflect-border-hover:                   1px solid $reflect-border-hover-color !default;
+$reflect-border:                         $reflect-border-size $reflect-border-style $reflect-border-color !default;
+$reflect-border-hover:                   $reflect-border-size $reflect-border-style $reflect-border-hover-color !default;
+$reflect-border-active:                  $reflect-border-size $reflect-border-style $reflect-action-color !default;
+$reflect-border-active-hover:            $reflect-border-size $reflect-border-style $reflect-action-hover !default;
+$reflect-border-heavy:                   $reflect-border-size*2 $reflect-border-style $reflect-border-color !default;
 
 // Shadows
 $reflect-outer-shadow:                   0 0 1px rgba(0, 0, 0, .05) !default;
 $reflect-outer-shadow-large:             0 0 6px rgba(0, 0, 0, .2) !default;
+$reflect-outer-shadow-huge:              0 0 10px rgba(0, 0, 0, .08) !default;
+$reflect-outer-shadow-giant:             0 0 60px rgba(0, 0, 0, .3) !default;
+
+$reflect-selectable-shadow:              0 0 0 1px $reflect-border-color !default;
+$reflect-selectable-shadow-hover:        0 0 0 1px $reflect-border-hover-color !default;
+$reflect-selected-shadow:                0 0 0 1px $reflect-action-color !default;
+$reflect-selected-shadow-hover:          0 0 0 1px $reflect-action-hover !default;
 
 // Spacing Defaults
 $reflect-padding:                        16px;
@@ -309,14 +319,20 @@ $reflect-menu-title-color:                $reflect-font-color-subtle !default;
 // Cards
 //
 $reflect-card-bg:                         $reflect-bg-primary !default;
+
 $reflect-card-border:                     $reflect-border !default;
 $reflect-card-border-hover:               $reflect-border-hover !default;
+$reflect-card-border-radius:              $reflect-border-radius !default;
 $reflect-card-shadow-hover:               0px 0px 0px 1px $reflect-gray !default;
-$reflect-card-border-selected:            1px solid $reflect-action-color !default;
-$reflect-card-shadow-selected:            0px 0px 0px 1px $reflect-action-color !default;
-$reflect-card-color:                      $reflect-gray !default;
-$reflect-card-title-color:                $reflect-gray !default;
-$reflect-card-subtitle-color:             $reflect-gray !default;
+
+$reflect-card-border-selected:            $reflect-border-active !default;
+$reflect-card-border-selected-hover:      $reflect-border-active-hover !default;
+$reflect-card-shadow-selected:            $reflect-selected-shadow !default;
+$reflect-card-shadow-selected-hover:      $reflect-selected-shadow-hover !default;
+
+$reflect-card-color:                      $reflect-font-color-subtle !default;
+$reflect-card-title-color:                $reflect-font-color-subtle !default;
+$reflect-card-subtitle-color:             $reflect-font-color-subtle !default;
 
 //
 // Input
@@ -362,6 +378,7 @@ $reflect-modal-actions-padding:           20px 30px !default;
 $reflect-modal-actions-cta-padding:       10px 0 10px 0 !default;
 $reflect-modal-elevation:                 24 !default;
 $reflect-modal-padding:                   40px !default;
+$reflect-modal-shadow:                    $reflect-outer-shadow-giant !default;
 
 //
 // Tables
@@ -401,16 +418,17 @@ $reflect-slidein-vertical-height:         330px !default;
 $reflect-slidein-actions-border:          $reflect-border !default;
 $reflect-slidein-actions-padding:         10px 20px !default;
 $reflect-slidein-actions-button-margin:   7px !default;
+$reflect-slidein-shadow:                  $reflect-outer-shadow-giant !default;
 
 //
 // Accordions
 //
 $reflect-accordion-item-title-font-family:     $reflect-button-font-family !default;
-$reflect-accordion-item-title-font-size:       14px !default;
+$reflect-accordion-item-title-font-size:       $reflect-font-size-medium !default;
 $reflect-accordion-item-title-color:           $reflect-font-color-medium !default;
 $reflect-accordion-item-title-hover:           $reflect-font-color-base !default;
 $reflect-accordion-item-title-bg-color:        $reflect-bg-subtle !default;
-$reflect-accordion-item-title-border:          2px solid $reflect-gray-lighter !default;
+$reflect-accordion-item-title-border:          $reflect-border !default;
 $reflect-accordion-item-title-padding:         9px 16px 11px !default;
 $reflect-accordion-item-title-text-transform:  auto !default;
 $reflect-accordion-item-content-padding:       20px 16px !default;
@@ -435,7 +453,15 @@ $reflect-select-label-border-radius:           $reflect-border-radius !default;
 // Blank Slates
 //
 
+$reflect-blank-slate-font-size:                $reflect-font-size-huge !default;
+$reflect-blank-slate-font-color:               $reflect-font-color-subtle !default;
+$reflect-blank-slate-font-weight:              normal;
+$reflect-blank-slate-bg:                       $reflect-bg-primary !default;
 $reflect-blank-slate-icon-color:               $reflect-action-color !default;
+$reflect-blank-slate-shadow:                   $reflect-outer-shadow-huge !default;
+$reflect-blank-slate-radius:                   $reflect-circle-radius !default;
+$reflect-blank-slate-size:                     100px;
+$reflect-blank-slate-max-width:                500px;
 
 //
 // Panel

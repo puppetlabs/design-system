@@ -1,7 +1,7 @@
 .rc-card {
   background: $reflect-card-bg;
   border: $reflect-card-border;
-  border-radius: $reflect-border-radius;
+  border-radius: $reflect-card-border-radius;
   box-shadow: $reflect-outer-shadow;
   display: block;
   color: $reflect-card-color;
@@ -58,6 +58,7 @@
 
     &:hover {
       border: $reflect-card-border-hover;
+      box-shadow: $reflect-card-shadow-hover;
     }
   }
 
@@ -66,7 +67,8 @@
     box-shadow: $reflect-card-shadow-selected;
 
     &:hover {
-      border: $reflect-card-border-selected;
+      border: $reflect-card-border-selected-hover;
+      box-shadow: $reflect-card-shadow-selected-hover;
     }
   }
 

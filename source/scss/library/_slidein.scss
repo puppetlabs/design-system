@@ -2,7 +2,7 @@
   position: fixed;
   background-color: $reflect-slidein-bg;
   color: $reflect-slidein-color;
-  box-shadow: 0 0 60px rgba(0, 0, 0, .3);
+  box-shadow: $reflect-slidein-shadow;
 
   border-radius: $reflect-border-radius;
   border: 1px solid $reflect-gray-light;
