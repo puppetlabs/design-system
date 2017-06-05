@@ -14,10 +14,11 @@ $reflect-bg-subtle:                      $reflect-gray-lighter !default;
 
 // Sizing Defaults
 $reflect-small:                          10px !default;
-$reflect-medium:                         $reflect-size * 1.6 !default;
-$reflect-large:                          $reflect-size * 2 !default;
-$reflect-huge:                           $reflect-size * 4 !default;
-$reflect-giant:                          $reflect-size * 6 !default;
+$reflect-tiny:                           $reflect-small * 0.8 !default;
+$reflect-medium:                         $reflect-small * 1.6 !default;
+$reflect-large:                          $reflect-small * 2 !default;
+$reflect-huge:                           $reflect-small * 4 !default;
+$reflect-giant:                          $reflect-small * 6 !default;
 
 // Typography
 $reflect-font-family:                   'Open Sans', sans-serif !default;
