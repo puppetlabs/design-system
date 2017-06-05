@@ -214,7 +214,7 @@ $ns: rc-datepicker !default;
   }
 
   &__Date {
-    color: $reflect-datepicker-color;
+    color: $reflect-datepicker-font-color;
     border: 0 solid $reflect-datepicker-border-color;
     border-right-width: 1px;
     cursor: pointer;
@@ -239,11 +239,11 @@ $ns: rc-datepicker !default;
     }
 
     &--is-selected {
-      color: $reflect-datepicker-color-selected;
+      color: $reflect-datepicker-font-color-selected;
     }
 
     &--is-highlighted {
-      color: $reflect-datepicker-color-highlighted;
+      color: $reflect-datepicker-font-color-highlighted;
     }
   }
 

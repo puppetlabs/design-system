@@ -22,14 +22,14 @@
 
     display: none;
     background: $reflect-remove-background;
-    border-radius: 50%;
+    border-radius: $reflect-circle-radius;
 
     cursor: pointer;
 
     .rc-#{$component}-remove:before {
       background: $reflect-remove-background;
       border: none;
-      border-radius: 50%;
+      border-radius: $reflect-circle-radius;
 
       position: absolute;
       top: -1px;
