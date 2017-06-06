@@ -14,7 +14,7 @@ $reflect-bg-subtle:                      $reflect-gray-lighter !default;
 
 // Sizing Defaults
 $reflect-size-base:                      10px !default;
-$reflect-tiny:                           $reflect-size-base * 0.8 !default;
+$reflect-tiny:                           $reflect-size-base * 0.6 !default;
 $reflect-small:                          $reflect-size-base !default;
 $reflect-medium:                         $reflect-size-base * 1.6 !default;
 $reflect-large:                          $reflect-size-base * 2 !default;
@@ -44,6 +44,8 @@ $reflect-font-color-light:               $reflect-white !default;
 $reflect-icon-fill:                       $reflect-gray !default;
 $reflect-icon-fill-hover:                 $reflect-gray-dark !default;
 $reflect-icon-light:                      $reflect-white !default;
+$reflect-icon-action:                     $reflect-brand-primary !default;
+$reflect-icon-action-hover:               darken($reflect-icon-action, 10%) !default;
 
 // Action Colors
 // Colors used for primary buttons and other action elements
@@ -69,6 +71,7 @@ $reflect-action-icon-alt:                $reflect-gray !default;
 $reflect-action-icon-hover-alt:          $reflect-gray-dark !default;
 
 // Disabled Colors
+$reflect-disabled-opacity:               0.25 !default;
 $reflect-disabled-color:                 lighten($reflect-gray, 10%) !default;
 $reflect-disabled-hover:                 $reflect-disabled-color !default;
 $reflect-disabled-border:                transparent !default;
@@ -498,24 +501,49 @@ $reflect-form-label-color:                    $reflect-font-color-subtle !defaul
 //
 // Datepicker
 //
-$reflect-datepicker-button-border-color:      $reflect-button-secondary-border-color !default;
-
+$reflect-arrow-size:                          $reflect-tiny !default;
 $reflect-datepicker-bg:                       $reflect-bg-primary !default;
+$reflect-datepicker-button-border-color:      $reflect-button-secondary-border-color !default;
+$reflect-datepicker-icon:                     $reflect-icon-fill !default;
+$reflect-datepicker-icon-hover:               $reflect-action-hover !default;
+$reflect-datepicker-othermonth-opacity:       0.25 !default;
+$reflect-datepicker-padding:                  $reflect-large !default;
 $reflect-datepicker-radius:                   $reflect-border-radius !default;
-$reflect-datepicker-border-color:             $reflect-border-color !default;
-$reflect-datepicker-font-color:               $reflect-font-color-base !default;
-$reflect-datepicker-font-color-highlighted:   $reflect-datepicker-font-color !default;
 
+$reflect-datepicker-border-color:             transparent !default;
+$reflect-datepicker-border-width:             0px !default;
+
+$reflect-datepicker-font-color:               $reflect-font-color-base !default;
+$reflect-datepicker-disabled-color:           $reflect-disabled-color !default;
+
+$reflect-datepicker-month-bg:                 $reflect-bg-subtle !default;
 $reflect-datepicker-month-color:              $reflect-font-color-medium !default;
+$reflect-datepicker-month-font-size:          $reflect-font-size-medium !default
 $reflect-datepicker-month-font-weight:        $reflect-font-weight-heavy !default;
-$reflect-datepicker-weekday-color:            $reflect-font-color-medium !default;
+$reflect-datepicker-month-border:             $reflect-datepicker-border-width solid $reflect-datepicker-border-color !default;
+
+$reflect-datepicker-weekday-color:            $reflect-font-color-subtle !default;
 $reflect-datepicker-weekday-font-weight:      $reflect-font-weight-heavy !default;
+$reflect-datepicker-weekday-text:             uppercase !default;
+$reflect-datepicker-weekday-font-size:        $reflect-font-size-tiny !default;
+$reflect-datepicker-weekday-letter-spacing:   1px !default;
+$reflect-datepicker-weekday-border:           $reflect-datepicker-border-width solid $reflect-datepicker-border-color !default;
 
 $reflect-datepicker-selected-bg:              $reflect-action-color !default;
-$reflect-datepicker-font-color-selected:      $reflect-font-color-light !default;
+$reflect-datepicker-selected-border:          $reflect-datepicker-border-width solid $reflect-datepicker-selected-bg;
+$reflect-datepicker-selected-color:           $reflect-font-color-light !default;
+$reflect-datepicker-selected-edges-bg:        $reflect-action-hover !default;
+$reflect-datepicker-selected-edges-radius:    $reflect-datepicker-radius !default;
+$reflect-datepicker-selection-margin:         1px !default;
+
+$reflect-datepicker-newrange-bg:              $reflect-datepicker-selected-bg;
+
+$reflect-datepicker-hover-bg:                 $reflect-action-hover !default;
+$reflect-datepicker-hover-color:              $reflect-font-color-light !default;
+$reflect-datepicker-hover-border:             0px solid transparent !default;
 
 // Preset ranges
-$reflect-date-range-color:                    $reflect-action-color !default;
-$reflect-date-range-border:                   1px solid $reflect-bg-primary !default;
-$reflect-date-range-hover-bg:                 $reflect-action-color !default;
-$reflect-date-range-hover-border:             1px solid $reflect-action-color !default;
+$reflect-date-range-color:                    $reflect-datepicker-selected-bg !default;
+$reflect-date-range-border:                   $reflect-datepicker-border-width solid $reflect-datepicker-border-color !default;
+$reflect-date-range-hover-bg:                 $reflect-datepicker-selected-bg !default;
+$reflect-date-range-hover-border:             $reflect-datepicker-border-width solid $reflect-date-range-hover-bg !default;
