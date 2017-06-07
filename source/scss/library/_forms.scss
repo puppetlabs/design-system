@@ -4,8 +4,8 @@
   .rc-split-button {
     visibility: hidden;
     background: $reflect-gray-light;
-    border-top-right-radius: $reflect-border-radius;
-    border-top-left-radius: $reflect-border-radius;
+    border-top-right-radius: $reflect-filter-radius;
+    border-top-left-radius: $reflect-filter-radius;
     position: absolute;
     right: 0;
     // We probably shouldn't hardcode this...
@@ -33,7 +33,7 @@
         background: $reflect-button-bg;
 
         path {
-          fill: $reflect-bg-primary;
+          fill: $reflect-filter-input-bg;
         }
       }
 
@@ -42,7 +42,7 @@
           background: $reflect-button-bg-hover;
 
           path {
-            fill: $reflect-bg-primary;
+            fill: $reflect-filter-input-bg;
           }
         }
       }
@@ -50,9 +50,9 @@
   }
 
   .rc-filter-form-fields {
-    background: $reflect-gray-light;
-    border-radius: $reflect-border-radius;
-    padding: 3px;
+    background: $reflect-filter-bg;
+    border-radius: $reflect-filter-radius;
+    padding: $reflect-filter-padding;
 
     .rc-selects-row {
       display: flex;
@@ -62,41 +62,41 @@
         font-size: 11px;
 
         &.is-focused:not(.is-open) {
-          background: $reflect-bg-primary;
+          background: $reflect-filter-input-bg;
           border: none;
           box-shadow: none;
 
           .Select-control {
             z-index: $reflect-popover-elevation;
-            background: $reflect-bg-primary;
-            border-color: $reflect-brand-primary;
-            box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
+            background: $reflect-filter-input-bg;
+            border-color: $reflect-action-color;
+            box-shadow: $reflect-filter-selected-shadow;
           }
         }
 
         .Select-menu-outer {
           margin-top: 0;
-          background-color: $reflect-bg-primary;
-          border: 1px solid $reflect-brand-primary;
-          box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
+          background-color: $reflect-filter-input-bg;
+          border: $reflect-filter-border-active;
+          box-shadow: $reflect-filter-selected-shadow;
 
           .Select-option.is-selected {
-            background-color: $reflect-bg-primary;
+            background-color: $reflect-filter-input-bg;
             color: $reflect-button-disabled-bg;
           }
           .Select-option.is-focused {
-            background-color: lighten($reflect-brand-primary, 10%);
-            color: $reflect-bg-primary;
+            background-color: lighten($reflect-action-color, 10%);
+            color: $reflect-filter-input-bg;
           }
         }
 
         .Select-control {
-          border-color: $reflect-gray-light;
-          padding: 6px;
+          border: $reflect-filter-border;
+          padding: $reflect-filter-padding;
 
           .Select-placeholder {
             line-height: normal;
-            color: $reflect-button-disabled-bg;
+            color: $reflect-filter-placeholder-color;
             padding: 6px 28px 6px 6px;
           }
 
@@ -106,7 +106,7 @@
           }
 
           .Select-input {
-            height: 17px;
+            height: $reflect-filter-select-height;
             vertical-align: inherit;
             padding-left: 0;
 
@@ -123,9 +123,9 @@
 
         &.is-open > .Select-control {
           z-index: $reflect-popover-elevation;
-          background: $reflect-bg-primary;
-          border-color: $reflect-brand-primary;
-          box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
+          background: $reflect-filter-input-bg;
+          border: $reflect-filter-border-active;
+          box-shadow: $reflect-filter-selected-shadow;
         }
 
         &.Select-left > .Select-control {
@@ -144,14 +144,12 @@
 
     .rc-input {
       margin-top: 1px;
-      border-color: $reflect-gray-light;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-
+      border-color: $reflect-filter-border-color;
       &:focus {
-        background: $reflect-bg-primary;
-        border-color: $reflect-brand-primary;
-        box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
+        box-shadow: $reflect-filter-selected-shadow;
+        border: $reflect-filter-border-active;
       }
     }
   }
@@ -159,11 +157,11 @@
   &.rc-filter-form-no-value {
     .rc-filter-form-fields .rc-selects-row {
       .Select-small.Select-left > .Select-control {
-        border-bottom-left-radius: $reflect-border-radius;
+        border-bottom-left-radius: $reflect-filter-radius;
       }
 
       .Select-small.Select-right > .Select-control {
-        border-bottom-right-radius: $reflect-border-radius;
+        border-bottom-right-radius: $reflect-filter-radius;
       }
     }
   }

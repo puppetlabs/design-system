@@ -8,10 +8,23 @@
 <Input placeholder="I'm a happy input with a placeholder!" />
 ```
 
+Disabled `Input`:
+```
+<Input
+  disabled
+  placeholder="I am disabled"
+/>
+```
+
 Small `Input`:
 ```
 <Input
   size="small"
   placeholder="I'm a happy small Input!"
 />
+```
+
+Large `Input`:
+```
+<Input size="large" placeholder="I'm a large input" />
 ```
