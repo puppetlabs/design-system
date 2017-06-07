@@ -1,6 +1,5 @@
 .rc-tag {
-  display: block;
-  float: left;
+  display: inline-block;
   background: $reflect-tag-bg;
   color: $reflect-tag-color !important;
   font-size: $reflect-tag-font-size;
@@ -14,20 +13,25 @@
   .rc-icon-delete {
     position: relative;
     top: 2px;
-    margin-left: $reflect-icon-spacing;
+    margin-left: $reflect-tag-icon-spacing;
     cursor: pointer;
   }
 
   &.rc-tag-tiny {
-    font-size: $reflect-tag-tiny-font-size;
     height: $reflect-tag-tiny-height;
     line-height: $reflect-tag-tiny-line-height;
     padding: $reflect-tag-tiny-padding;
+
+    .rc-tag-content {
+      font-size: $reflect-tag-tiny-font-size;
+      letter-spacing: $reflect-tag-tiny-letterspacing;
+      text-transform: $reflect-tag-tiny-case;
+    }
   }
 
   &.rc-tag-block {
     width: auto;
-    float: none;
+    display: block;
     margin-right: 0 !important;
   }
 

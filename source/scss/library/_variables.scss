@@ -11,9 +11,11 @@ $reflect-brand-danger:                   #d9534f !default;
 
 $reflect-bg-primary:                     $reflect-white !default;
 $reflect-bg-subtle:                      $reflect-gray-lighter !default;
+$reflect-bg-dark:                        $reflect-gray-base !default;
 
 // Sizing Defaults
 $reflect-size-base:                      10px !default;
+$reflect-mini:                           $reflect-size-base * 0.3 !default;
 $reflect-tiny:                           $reflect-size-base * 0.6 !default;
 $reflect-small:                          $reflect-size-base !default;
 $reflect-medium:                         $reflect-size-base * 1.6 !default;
@@ -222,24 +224,26 @@ $reflect-remove-background:               $reflect-bg-subtle !default;
 //
 // Tags
 //
-$reflect-tag-font-size:                   $reflect-button-font-size !default;
-$reflect-tag-font-weight:                 $reflect-button-font-weight !default;
-$reflect-tag-height:                      33px !default;
-$reflect-tag-line-height:                 $reflect-tag-height !default;
-$reflect-tag-bg:                          $reflect-gray-light !default;
-$reflect-tag-color:                       $reflect-font-color-subtle !default;
+$reflect-tag-bg:                          $reflect-bg-subtle !default;
 $reflect-tag-border-radius:               $reflect-border-radius !default;
 $reflect-tag-border:                      1px solid $reflect-tag-bg !default;
 $reflect-tag-border-selected:             $reflect-border-active !default;
-$reflect-tag-shadow-selected:             $reflect-selected-shadow !default;
-$reflect-tag-padding:                     0 $reflect-small !default;
+$reflect-tag-color:                       $reflect-font-color-medium !default;
+$reflect-tag-font-size:                   $reflect-button-font-size !default;
+$reflect-tag-font-weight:                 $reflect-button-font-weight !default;
+$reflect-tag-height:                      33px !default;
+$reflect-tag-icon-spacing:                $reflect-tiny !default;
+$reflect-tag-line-height:                 $reflect-tag-height !default;
 $reflect-tag-margin:                      0 $reflect-tiny $reflect-tiny 0 !default;
-$reflect-icon-spacing:                    $reflect-tiny !default;
+$reflect-tag-padding:                     0 $reflect-small !default;
+$reflect-tag-shadow-selected:             $reflect-selected-shadow !default;
 
-$reflect-tag-tiny-height:                 22px !default;
+$reflect-tag-tiny-case:                   uppercase !default;
 $reflect-tag-tiny-font-size:              $reflect-font-size-tiny !default;
-$reflect-tag-tiny-line-height:            $reflect-large !default;
-$reflect-tag-tiny-padding:                0 2px;
+$reflect-tag-tiny-height:                 22px !default;
+$reflect-tag-tiny-letterspacing:          1px !default;
+$reflect-tag-tiny-line-height:            $reflect-tag-tiny-height !default;
+$reflect-tag-tiny-padding:                0 $reflect-mini !default;
 
 
 //
@@ -428,9 +432,9 @@ $reflect-progress-animation:           400ms !default;
 //
 // Tooltip
 //
-$reflect-tooltip-bg:                  rgba(0, 0, 0, .75);
+$reflect-tooltip-bg:                  rgba($reflect-bg-dark, .75);
 $reflect-tooltip-color:               $reflect-gray-light;
-$reflect-tooltip-padding:             5px 15px;
+$reflect-tooltip-padding:             $reflect-tiny $reflect-small;
 $reflect-tooltip-radius:              $reflect-border-radius;
 $reflect-tooltip-font-size:           $reflect-font-size-medium;
 $reflect-tooltip-elevation:           24;
@@ -439,13 +443,15 @@ $reflect-tooltip-elevation:           24;
 // Slide ins
 //
 $reflect-slidein-bg:                      $reflect-bg-primary !default;
+$reflect-slidein-border:                  $reflect-border !default;
+$reflect-slidein-radius:                  $reflect-border-radius !default;
 $reflect-slidein-color:                   $reflect-font-color-base !default;
-$reflect-slidein-padding:                 $reflect-small 12px !default;
+$reflect-slidein-padding:                 $reflect-small !default;
 $reflect-slidein-horizontal-width:        330px !default;
 $reflect-slidein-vertical-height:         330px !default;
 $reflect-slidein-actions-border:          $reflect-border !default;
 $reflect-slidein-actions-padding:         $reflect-small $reflect-large !default;
-$reflect-slidein-actions-button-margin:   7px !default;
+$reflect-slidein-actions-button-margin:   $reflect-tiny !default;
 $reflect-slidein-shadow:                  $reflect-outer-shadow-giant !default;
 
 //
@@ -564,7 +570,6 @@ $reflect-date-range-hover-border:             $reflect-datepicker-border-width s
 //
 // Stencils
 //
-
 $reflect-stencil-bg:                          $reflect-bg-subtle !default;
 $reflect-stencil-height:                      170px !default;
 $reflect-stencil-icon:                        $reflect-action-color !default;
