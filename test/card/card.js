@@ -4,7 +4,7 @@ import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import { Card } from '../../source/react/library/Card';
+import Card from '../../source/react/library/card/Card';
 
 describe('<Card />', () => {
   jsdom({ skipWindowCheck: true });
