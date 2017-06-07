@@ -3,7 +3,7 @@
 
   .rc-split-button {
     visibility: hidden;
-    background: $reflect-gray-light;
+    background: $reflect-filter-split-bg;
     border-top-right-radius: $reflect-filter-radius;
     border-top-left-radius: $reflect-filter-radius;
     position: absolute;
@@ -12,7 +12,7 @@
     top: -19px;
 
     .rc-button-main {
-      background: $reflect-gray-light;
+      background: $reflect-filter-split-bg;
 
       .rc-button-content {
         color: $reflect-button-bg;
@@ -27,10 +27,10 @@
     }
 
     .rc-button-menu {
-      background: $reflect-gray-light;
+      background: $reflect-filter-split-bg;
 
       .rc-button-menu-inner {
-        background: $reflect-button-bg;
+        background: $reflect-filter-split-bg;
 
         path {
           fill: $reflect-filter-input-bg;
@@ -69,7 +69,7 @@
           .Select-control {
             z-index: $reflect-popover-elevation;
             background: $reflect-filter-input-bg;
-            border-color: $reflect-action-color;
+            border-color: $reflect-filter-border-active;
             box-shadow: $reflect-filter-selected-shadow;
           }
         }

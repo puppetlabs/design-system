@@ -1,3 +1,4 @@
+// Colors
 $reflect-gray-base:                      #201F1E !default;
 $reflect-gray-darker:                    lighten($reflect-gray-base, 19%) !default;
 $reflect-gray-dark:                      lighten($reflect-gray-base, 38%) !default;
@@ -395,6 +396,10 @@ $reflect-filter-border-active:           $reflect-border-active !default;
 
 $reflect-filter-select-padding:          $reflect-tiny !default;
 $reflect-filter-select-height:           $reflect-medium !default;
+
+$reflect-filter-split-bg:                $reflect-gray-light !default;
+
+
 //
 // List Item
 //
