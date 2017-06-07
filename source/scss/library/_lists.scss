@@ -7,6 +7,7 @@
   &.rc-list-item-selected {
     a.rc-list-item-link {
       border: $reflect-list-item-border-selected;
+      box-shadow: $reflect-list-item-shadow-selected
     }
   }
 
@@ -18,12 +19,12 @@
     border: $reflect-list-item-border;
     border-radius: $reflect-list-item-border-radius;
     font-size: $reflect-list-item-font-size;
-    padding: $reflect-list-item-padding;
+    padding: $reflect-list-item-padding-v $reflect-list-item-padding-h;
     margin-bottom: $reflect-list-item-margin-bottom;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding-right: $reflect-list-item-action-width * 2;
+    padding-right: $reflect-list-item-icon-width * 2 + $reflect-list-item-padding-h;
     cursor: default;
 
     .rc-list-item-edit, .rc-list-item-remove {
@@ -31,16 +32,18 @@
       top: 0;
       bottom: 0;
       display: block;
-      width: $reflect-list-item-action-width;
+      width: $reflect-list-item-icon-width;
+      height: $reflect-list-item-icon-height;
+      padding: 0;
       text-align: center;
     }
 
     .rc-list-item-edit {
-      right: $reflect-list-item-action-width;
+      right: $reflect-list-item-padding-h + $reflect-list-item-icon-width + $reflect-small;
     }
 
     .rc-list-item-remove {
-      right: 0;
+      right: $reflect-list-item-padding-h;
     }
   }
 

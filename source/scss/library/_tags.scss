@@ -6,23 +6,23 @@
   font-size: $reflect-tag-font-size;
   height: $reflect-tag-height;
   line-height: $reflect-tag-line-height;
-  padding: 0 10px;
-  margin: 0 5px 5px 0;
+  padding: $reflect-tag-padding;
+  margin: $reflect-tag-margin;
   border-radius: $reflect-tag-border-radius;
   border: $reflect-tag-border;
 
   .rc-icon-delete {
     position: relative;
     top: 2px;
-    margin-left: 6px;
+    margin-left: $reflect-icon-spacing;
     cursor: pointer;
   }
 
   &.rc-tag-tiny {
-    font-size: $reflect-font-size-tiny;
-    height: 22px;
-    line-height: 19px;
-    padding: 0 2px;
+    font-size: $reflect-tag-tiny-font-size;
+    height: $reflect-tag-tiny-height;
+    line-height: $reflect-tag-tiny-line-height;
+    padding: $reflect-tag-tiny-padding;
   }
 
   &.rc-tag-block {
@@ -42,4 +42,5 @@
 
 .rc-tag-selected {
   border: $reflect-tag-border-selected;
+  box-shadow: $reflect-tag-shadow-selected;
 }

@@ -230,7 +230,17 @@ $reflect-tag-bg:                          $reflect-gray-light !default;
 $reflect-tag-color:                       $reflect-font-color-subtle !default;
 $reflect-tag-border-radius:               $reflect-border-radius !default;
 $reflect-tag-border:                      1px solid $reflect-tag-bg !default;
-$reflect-tag-border-selected:             1px solid $reflect-action-color !default;
+$reflect-tag-border-selected:             $reflect-border-active !default;
+$reflect-tag-shadow-selected:             $reflect-selected-shadow !default;
+$reflect-tag-padding:                     0 $reflect-small !default;
+$reflect-tag-margin:                      0 $reflect-tiny $reflect-tiny 0 !default;
+$reflect-icon-spacing:                    $reflect-tiny !default;
+
+$reflect-tag-tiny-height:                 22px !default;
+$reflect-tag-tiny-font-size:              $reflect-font-size-tiny !default;
+$reflect-tag-tiny-line-height:            $reflect-large !default;
+$reflect-tag-tiny-padding:                0 2px;
+
 
 //
 // Tab variables/options
@@ -252,7 +262,7 @@ $reflect-tab-panel-padding-vertical:      0 $reflect-large !default;
 //
 // Loading indicator options
 //
-$reflect-loading-indicator-fill:          $reflect-gray !default;
+$reflect-loading-indicator-fill:          $reflect-icon-fill !default;
 
 //
 // Popover
@@ -353,8 +363,8 @@ $reflect-card-shadow-selected-hover:      $reflect-selected-shadow-hover !defaul
 //
 // Input
 //
-$reflect-input-border-radius:            $reflect-border-radius;
-$reflect-input-border-error:             1px solid $reflect-danger-color;
+$reflect-input-border-radius:            $reflect-border-radius !default;
+$reflect-input-border-error:             1px solid $reflect-danger-color !default;
 
 //
 // List Item
@@ -366,13 +376,15 @@ $reflect-list-item-color:                 $reflect-gray !default;
 $reflect-list-item-color-hover:           $reflect-gray-dark !default;
 $reflect-list-item-border:                $reflect-border !default;
 $reflect-list-item-border-selected:       $reflect-border-active !default;
+$reflect-list-item-shadow-selected:       $reflect-selected-shadow !default;
 $reflect-list-item-border-radius:         $reflect-border-radius !default;
 $reflect-list-item-font-size:             $reflect-font-size-medium !default;
-$reflect-list-item-padding:               6px 12px !default;
-$reflect-list-item-margin-bottom:         10px !default;
+$reflect-list-item-padding-v:             $reflect-tiny !default;
+$reflect-list-item-padding-h:             $reflect-small !default;
+$reflect-list-item-margin-bottom:         $reflect-small !default;
 $reflect-list-item-icon-top:              2px !default;
-$reflect-list-item-icon-height:           16px !default;
-$reflect-list-item-action-width:          30px !default;
+$reflect-list-item-icon-height:           33px !default; // should be the height of the list item to center
+$reflect-list-item-icon-width:            16px !default;
 
 //
 // Modal
@@ -547,3 +559,13 @@ $reflect-date-range-color:                    $reflect-datepicker-selected-bg !d
 $reflect-date-range-border:                   $reflect-datepicker-border-width solid $reflect-datepicker-border-color !default;
 $reflect-date-range-hover-bg:                 $reflect-datepicker-selected-bg !default;
 $reflect-date-range-hover-border:             $reflect-datepicker-border-width solid $reflect-date-range-hover-bg !default;
+
+
+//
+// Stencils
+//
+
+$reflect-stencil-bg:                          $reflect-bg-subtle !default;
+$reflect-stencil-height:                      170px !default;
+$reflect-stencil-icon:                        $reflect-action-color !default;
+$reflect-stencil-icon-stroke:                 $reflect-stencil-bg !default;
