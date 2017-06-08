@@ -42,7 +42,7 @@
     }
 
     &:hover .rc-#{$component}-remove .rc-icon {
-      fill: $reflect-brand-danger;
+      fill: $reflect-danger-color;
     }
 
     .rc-#{$component}-remove {

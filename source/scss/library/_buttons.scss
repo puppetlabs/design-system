@@ -55,7 +55,7 @@
 }
 
 a.rc-button, button.rc-button {
-  text-transform: $reflect-button-text-transform;
+  text-transform: $reflect-button-text-case;
   letter-spacing: 1px;
   display: inline-block;
   height: $reflect-button-height;
@@ -135,21 +135,21 @@ a.rc-button, button.rc-button {
 
   &.rc-button-transparent {
     @include button-colors(
-      $reflect-button-transparent-bg,
-      $reflect-button-transparent-bg-hover,
-      $reflect-button-transparent-color,
-      $reflect-button-transparent-color-hover,
-      $reflect-button-transparent-icon-color,
-      $reflect-button-transparent-icon-color-hover,
-      $reflect-button-transparent-border-color,
-      $reflect-button-transparent-border-color-hover
+      $reflect-button-clear-bg,
+      $reflect-button-clear-bg-hover,
+      $reflect-button-clear-color,
+      $reflect-button-clear-color-hover,
+      $reflect-button-clear-icon-color,
+      $reflect-button-clear-icon-color-hover,
+      $reflect-button-clear-border-color,
+      $reflect-button-clear-border-color-hover
     );
 
     &[disabled] {
-      background: $reflect-button-transparent-bg;
+      background: $reflect-button-clear-bg;
 
       &:hover {
-        background: $reflect-button-transparent-bg;
+        background: $reflect-button-clear-bg;
       }
     }
   }
