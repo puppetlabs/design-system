@@ -1,7 +1,7 @@
 import Button from './react/library/Button';
 import SplitButton from './react/library/SplitButton';
 import ButtonGroup from './react/library/ButtonGroup';
-import Card from './react/library/Card';
+import * as Card from './react/library/card';
 import StencilGrid from './react/library/stencils/StencilGrid';
 import Icon from './react/library/Icon';
 import Tag from './react/library/Tag';
