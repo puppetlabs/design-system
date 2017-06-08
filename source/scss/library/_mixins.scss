@@ -56,9 +56,8 @@
 }
 
 @mixin v-center($display: block, $position: relative) {
-  position: relative;
-  top: 50%;
-  transform: translateY(-50%);
   display: $display;
   position: $position;
+  top: 50%;
+  transform: translateY(-50%);
 }
