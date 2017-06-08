@@ -13,6 +13,51 @@
     }
   }
 
+  &.rc-card-xs {
+    padding: 2px;
+    background-position: center center;
+    background-size: cover;
+
+    .rc-card-content {
+      padding: 13px 0px;
+      border: 2px solid white;
+
+      .rc-card-title {
+        margin: 0px;
+        text-align: center;
+        visibility: hidden;
+        font-size: 1em;
+      }
+    }
+
+    &:hover {
+      .rc-card-content {
+        background: $reflect-card-bg;
+        .rc-card-title {
+          visibility: visible;
+        }
+      }
+    }
+  }
+
+  &.rc-card-large {
+    padding-top: 100px;;
+
+    .rc-card-title {
+      margin-top: 80px;
+      font-size: 1.3em;
+    }
+  }
+
+  &.rc-card-small {
+    padding-top: 0;
+
+    .rc-card-title {
+      margin-top: 0px;
+      font-size: 1.1em;
+    }
+  }
+
   &.rc-card-selectable {
     cursor: pointer;
 
@@ -45,6 +90,36 @@
   .rc-card-subtitle {
     color: $reflect-card-subtitle-color;
     font-size: $reflect-card-subtitle-size;
+  }
+
+  .rc-card-section {
+    margin: -20px;
+    padding: 20px;
+  }
+
+  .rc-card-actions {
+    top: 5px;
+    right: 5px;
+    z-index: 24;
+
+    position: absolute;
+    float: right;
+
+    .rc-card-remove {
+      width: 21px;
+      height: 21px;
+
+      background: $reflect-remove-background;
+      border-radius: 50%;
+
+      cursor: pointer;
+      text-align: center;
+      line-height: 20px;
+    }
+  }
+
+  .rc-card-actions-hidden {
+    display: none;
   }
 
   .rc-card-section {
