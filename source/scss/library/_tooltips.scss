@@ -9,12 +9,12 @@
 .rc-tooltip {
   position: absolute;
   display: inline;
-  background: $reflect-tooltip-bg;
-  padding: $reflect-tooltip-padding;
-  border-radius: $reflect-tooltip-radius;
-  color: $reflect-tooltip-color;
-  font-size: $reflect-tooltip-font-size;
-  z-index: $reflect-tooltip-elevation;
+  background: $reflect-tooltip-hint-bg;
+  padding: $reflect-tooltip-hint-padding;
+  border-radius: $reflect-tooltip-hint-radius;
+  color: $reflect-tooltip-hint-color;
+  font-size: $reflect-tooltip-hint-font-size;
+  z-index: $reflect-tooltip-hint-elevation;
 
   .rc-tooltip-carat {
     position: absolute;
@@ -26,21 +26,21 @@
 
   &.rc-tooltip-position-right {
     .rc-tooltip-carat {
-      border-color: transparent $reflect-tooltip-bg transparent transparent;
+      border-color: transparent $reflect-tooltip-hint-bg transparent transparent;
       left: -16px;
     }
   }
 
   &.rc-tooltip-position-bottom {
     .rc-tooltip-carat {
-      border-color: transparent transparent $reflect-tooltip-bg transparent;
+      border-color: transparent transparent $reflect-tooltip-hint-bg transparent;
       top: -16px;
     }
   }
 
   &.rc-tooltip-position-left {
     .rc-tooltip-carat {
-      border-color: transparent transparent transparent $reflect-tooltip-bg;
+      border-color: transparent transparent transparent $reflect-tooltip-hint-bg;
       right: -16px;
     }
   }

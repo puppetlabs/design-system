@@ -8,6 +8,7 @@ const propTypes = {
   right: React.PropTypes.string.isRequired,
   name: React.PropTypes.string,
   onChange: React.PropTypes.func,
+  disabled: React.PropTypes.bool,
   active: React.PropTypes.string,
 };
 
@@ -42,7 +43,7 @@ class Toggle extends React.Component {
 
   onLabelClick(active) {
     return () => {
-      if (active !== this.state.active) {
+      if (active !== this.state.active && !this.props.disabled) {
         this.setState({ active }, this.props.onChange(active));
       }
     };
@@ -65,18 +66,22 @@ class Toggle extends React.Component {
   }
 
   render() {
-    const { left, right, name } = this.props;
+    const { left, right, name, disabled } = this.props;
     const leftLabel = this.renderLabel(left);
     const rightLabel = this.renderLabel(right);
+    const className = classnames('rc-toggle', {
+      'rc-toggle-disabled': disabled,
+    });
 
     // We have to make this unique.
     const switchName = name || left + right;
 
     return (
-      <div className="rc-toggle">
+      <div className={ className }>
         { leftLabel }
         <Switch
           label={ false }
+          disabled={ disabled }
           onChange={ this.onChange }
           className="rc-switch-toggle"
           checked={ this.state.active === right }
