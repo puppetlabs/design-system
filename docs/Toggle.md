@@ -12,3 +12,13 @@
   />
 </div>
 ```
+
+Disabled toggle:
+```
+<Toggle
+  left="disabled"
+  right="also disabled"
+  disabled
+  onChange={ () => { console.log('impossible!') } }
+/>
+```

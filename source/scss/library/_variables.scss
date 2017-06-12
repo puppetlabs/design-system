@@ -279,12 +279,12 @@ $reflect-progress-animation:           400ms !default;
 //
 // Tooltip
 //
-$reflect-tooltip-bg:                  rgba(0, 0, 0, .75);
-$reflect-tooltip-color:               $reflect-gray-light;
-$reflect-tooltip-padding:             5px 15px;
-$reflect-tooltip-radius:              $reflect-border-radius;
-$reflect-tooltip-font-size:           $reflect-font-size-medium;
-$reflect-tooltip-elevation:           24;
+$reflect-tooltip-hint-bg:                  rgba(0, 0, 0, .75);
+$reflect-tooltip-hint-color:               $reflect-gray-light;
+$reflect-tooltip-hint-padding:             5px 15px;
+$reflect-tooltip-hint-radius:              $reflect-border-radius;
+$reflect-tooltip-hint-font-size:           $reflect-font-size-medium;
+$reflect-tooltip-hint-elevation:           24;
 
 //
 // Slide ins
