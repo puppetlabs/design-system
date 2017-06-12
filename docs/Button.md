@@ -1,5 +1,5 @@
 ```
-<Button>I'm a button!</Button>
+<Button type="button">I'm a button!</Button>
 ```
 Secondary Button:
 ```
