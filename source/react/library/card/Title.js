@@ -1,8 +1,11 @@
 import React from 'react';
+import classnames from 'classnames';
 
 const propTypes = {
   /** Primary title */
   title: React.PropTypes.string,
+  /** Class to the title eelement */
+  titleClassName: React.PropTypes.string,
   /** Secondary title */
   subtitle: React.PropTypes.string,
 };
@@ -10,10 +13,11 @@ const propTypes = {
 class CardTitle extends React.Component {
   renderTitle() {
     const title = this.props.title;
+    const className = classnames('rc-card-title', this.props.titleClassName);
     let jsx = null;
 
     if (title) {
-      jsx = <div key="title" className="rc-card-title">{ title }</div>;
+      jsx = <div key="title" className={ className }>{ title }</div>;
     }
 
     return jsx;
