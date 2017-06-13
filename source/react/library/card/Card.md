@@ -51,3 +51,15 @@ Card with an action:
   Hello world!
 </Card>
 ```
+Card with action dropdown
+```
+const menuOptions = [
+  { value: 'I\'m a test value!', id: 0 },
+  { value: 'Me too!', id: 1 },
+  { value: 'Me three...', id: 2 },
+];
+<Card>
+  <CardTitle title="I am a title" />
+  <CardActions menuOptions={ menuOptions } />
+</Card>
+```

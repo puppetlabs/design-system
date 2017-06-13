@@ -1,9 +1,12 @@
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../Icon';
+import Button from '../Button';
+import DropdownMenu from '../dropdown/DropdownMenu';
 
 const propTypes = {
   children: React.PropTypes.object,
+  menuOptions: React.PropTypes.object,
   className: React.PropTypes.string,
   onRemove: React.PropTypes.func,
 };
@@ -39,15 +42,36 @@ class CardActions extends React.Component {
     return jsx;
   }
 
+  renderActionMenu() {
+    let jsx;
+
+    if (this.props.menuOptions) {
+      const target = <Button transparent icon="kebab" size="tiny" />;
+
+      jsx = (
+        <DropdownMenu
+          size="tiny"
+          anchor="bottom right"
+          target={ target }
+          options={ this.props.menuOptions }
+        />
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
     const { children, className: classProp } = this.props;
     const className = classnames('rc-card-actions', classProp);
     const remove = this.renderRemove();
+    const actionMenu = this.renderActionMenu();
 
     return (
       <div className={ className } >
         { remove }
         { children }
+        { actionMenu }
       </div>
     );
   }
