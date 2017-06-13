@@ -27,6 +27,17 @@ const icons = {
     ),
   },
 
+  kebab: {
+    viewBox: '0 0 7 27',
+    svg: (
+      <g transform="translate(3.500000, 13.500000) rotate(-270.000000) translate(-3.500000, -13.500000) translate(-10.000000, 10.000000)">
+        <circle id="Oval" cx="3.481" cy="3.48" r="3.48" />
+        <circle id="Oval" cx="13.481" cy="3.48" r="3.48" />
+        <circle id="Oval" cx="23.481" cy="3.48" r="3.48" />
+      </g>
+    ),
+  },
+
   // group: editing, filename: add.svg
   plus: {
     viewBox: '0 0 25 25',
