@@ -1,0 +1,83 @@
+@mixin reflect-line-color($color, $opacity: 1) {
+  .reflect-charts-line-path {
+    stroke: $color;
+    stroke-opacity: $opacity;
+
+    &:hover {
+      stroke: $color;
+      stroke-opacity: 1;
+    }
+  }
+}
+
+@mixin reflect-area-color($color, $opacity: .8) {
+  .reflect-charts-area-path {
+    fill: $color;
+    fill-opacity: $opacity;
+
+    &:hover {
+      fill: $color;
+      fill-opacity: 1;
+    }
+  }
+}
+
+@mixin reflect-column-color($color, $opacity: .8) {
+  .reflect-charts-column-rect {
+    fill: $color;
+    fill-opacity: $opacity;
+
+    &:hover {
+      fill: $color;
+      fill-opacity: 1;
+    }
+  }
+}
+
+@mixin reflect-donut-color($color, $opacity: 1) {
+  .reflect-charts-donut-arc {
+    stroke: $color;
+    fill: $color;
+  }
+}
+
+@mixin reflect-poi-color($color, $opacity: 1) {
+  .reflect-charts-poi {
+    stroke: $color;
+    fill: $reflect-poi-fill;
+  }
+}
+
+@mixin reflect-indicator-color($color, $opacity: 1) {
+  .reflect-charts-series-indicator {
+    background: $color;
+  }
+}
+
+@mixin reflect-colors($type, $palette: $reflect-palette) {
+  $limit: length($palette);
+  $i: 0;
+
+  @while $i < $limit {
+    $color: map-get($palette, $i);
+
+    .reflect-charts-color-#{$i} {
+      transition: opacity $reflect-transition-time linear;
+      @include reflect-poi-color($color);
+      @include reflect-indicator-color($color);
+
+      @if $type == line {
+        @include reflect-line-color($color);
+      } @else if $type == area {
+        @include reflect-line-color($color);
+        @include reflect-area-color($color);
+      } @else if $type == column {
+        @include reflect-column-color($color);
+      } @else if $type == donut {
+        @include reflect-donut-color($color);
+      }
+    }
+
+    $i: $i + 1;
+  }
+}

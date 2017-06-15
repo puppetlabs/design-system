@@ -7,7 +7,7 @@ const propTypes = {
 
 const Styleguide = props => (
   <div>
-    <Sidebar />
+    <Sidebar pages={ props.route.childRoutes } />
     <div className="sg-content">
       { props.children }
     </div>

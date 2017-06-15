@@ -1,6 +1,6 @@
-import path from 'path';
+const path = require('path');
 
-const config = {
+module.exports = {
   entry: {
     library: './source/js/ReflectCharts.js',
   },
@@ -23,11 +23,11 @@ const config = {
       use: {
         loader: 'babel-loader',
         options: {
-          presets: ['es2015'],
+          presets: [
+            [ 'es2015', { modules: false } ],
+          ],
         },
       },
     }],
   },
 };
-
-export default config;

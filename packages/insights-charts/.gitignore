@@ -4,4 +4,6 @@ npm-debug.log
 /build
 /dist
 *.sw[onp]
+.nyc_output/
+/coverage
 .DS_Store

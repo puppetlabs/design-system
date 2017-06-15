@@ -1,0 +1,23 @@
+machine:
+  timezone:
+    America/Los_Angeles
+  node:
+    version: 6.3.0
+
+dependencies:
+  pre:
+    - echo -e "$NPM_USER\n$NPM_PASS\n$NPM_EMAIL" | npm login
+    - make setup
+
+test:
+  pre:
+    - ./scripts/check-pull-request-base.sh
+  override:
+    - npm run lint
+    - npm test
+
+deployment:
+  production:
+    branch: master
+    commands:
+      - ./scripts/release-if-master.sh

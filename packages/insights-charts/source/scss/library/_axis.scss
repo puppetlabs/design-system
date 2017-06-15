@@ -1,0 +1,20 @@
+.reflect-charts-axis {
+  .domain {
+    stroke: $reflect-axis-stroke;
+  }
+
+  .tick {
+    line {
+      stroke: $reflect-axis-stroke;
+    }
+
+    text {
+      fill: $reflect-axis-stroke;
+      font-size: $reflect-axis-font-size;
+    }
+  }
+}
+
+.reflect-charts-axis-title {
+  fill: $reflect-axis-stroke;
+}

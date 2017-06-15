@@ -1,0 +1,24 @@
+.reflect-charts-legend {
+  max-width: 150px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.reflect-charts-legend-item {
+  transition: opacity $reflect-transition-time linear;
+  cursor: pointer;
+  font-size: $reflect-legend-font-size;
+}
+
+.reflect-charts-legend-item-disabled {
+  opacity: .22;
+}
+
+.reflect-charts-series-indicator {
+  display: inline-block;
+  height: $reflect-legend-font-size/1.5;
+  width: $reflect-legend-font-size;
+  margin-right: 10px;
+  border-radius: $reflect-series-indicator-border-radius;
+}

@@ -1,20 +1,20 @@
-import * as d3 from 'd3';
-import moment from 'moment';
-
 class Chart {
-  constructor(elem, data, options) {
+  constructor({ elem, data, options, dispatchers }) {
     this.elem = elem;
+    this.data = data;
     this.options = options;
+    this.dispatchers = dispatchers;
 
-    this.build();
-  }
+    if (!this.render) {
+      throw new Error('All charts require a render method for rendering the chart');
+    }
 
-  build() {
-    console.log('falling back...');
-  }
-
-  render() {
-    this.elem.innerHTML = this.visualization;
+    if (!this.update) {
+      throw new Error('All charts require an update method for resizing and updating the chart');
+    } else {
+      this.update = this.update.bind(this);
+      this.dispatchers.on('update', this.update);
+    }
   }
 }
 

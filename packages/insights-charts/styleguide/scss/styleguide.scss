@@ -1,4 +1,4 @@
-@import '../../source/scss/library/variables';
+@import '../../source/scss/all';
 
 body {
   padding: 0;
@@ -21,7 +21,7 @@ h1, h2, h3, h4, h5, h6, p {
   left: 0;
   bottom: 0;
   width: 200px;
-  padding: 20px;
+  padding-top: 20px;
   background: $brand-primary;
   height: 100%;
 
@@ -29,15 +29,25 @@ h1, h2, h3, h4, h5, h6, p {
     list-style: none;
     margin: 0;
     padding: 0;
+  }
 
-    li {
-      a {
-        font-family: $font-family;
-        text-decoration: none;
-        padding: 5px;
-        color: $white;
-        display: block;
-      }
+  .sg-sidebar-link {
+    font-family: $font-family;
+    text-decoration: none;
+    padding: 10px 20px 10px 20px;
+    color: $white;
+    display: block;
+
+    &:hover {
+      background: darken($brand-primary, 5%);
+    }
+  }
+
+  .sg-sidebar-link-active {
+    background: darken($brand-primary, 10%);
+
+    &:hover {
+      background: darken($brand-primary, 10%);
     }
   }
 }
@@ -72,47 +82,13 @@ h1, h2, h3, h4, h5, h6, p {
   }
 }
 
-.sg-icon {
-  display: inline-block;
-  border: 1px solid $gray-light;
-  width: 100px;
-  margin-right: 10px;
-  text-align: center;
-
-  .sg-icon-wrapper {
-    padding: 10px 5px;
-  }
-
-  .sg-icon-title {
-    font-family: $font-family;
-    font-size: $font-size-small;
-    border-top: 1px solid $gray-light;
-    padding: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-}
-
-.input {
-  width: 40%;
-  padding-bottom: 20px;
-}
-
-.sg-progress-bars {
-  .rc-button {
-    margin-top: 20px;
-    width: 200px;
-    display: block;
-  }
+.sg-chart {
+  overflow: hidden;
+  height: 400px;
 }
 
 .sg-clearfix:after {
   content: "";
   display: table;
   clear: both;
-}
-
-.blank-slates-styleguide {
-  background: $gray-lighter;
 }
