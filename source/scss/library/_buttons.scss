@@ -215,8 +215,8 @@ a.rc-button, button.rc-button {
 
   .rc-icon {
     float: left;
-    display: block;
-    height: 100%;
+    // height: 100%;
+    @include v-center(block, relative);
   }
 
   .rc-button-content {
@@ -227,13 +227,18 @@ a.rc-button, button.rc-button {
 
   .rc-icon + .rc-button-content {
     padding-left: 10px;
+    display: inline-block;
+    float: left;
   }
 }
 
 button.rc-button {
-  .rc-button-content {
+  .rc-icon, .rc-button-content {
     top: initial;
     transform: none; // <button> doesn't play nice with v-center
+  }
+  .rc-button-content {
+    padding-top: 1px;
   }
 }
 

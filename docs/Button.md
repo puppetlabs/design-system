@@ -1,5 +1,8 @@
 ```
-<Button type="button">I'm a button!</Button>
+<Button type="button" icon="edit">I'm a button!</Button>
+```
+```
+<Button icon="edit">I'm a button too!</Button>
 ```
 Secondary Button:
 ```
