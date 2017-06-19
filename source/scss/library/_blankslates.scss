@@ -4,26 +4,27 @@
 }
 
 .rc-blank-slate-icon {
-  box-shadow: 0px 0px 10px lighten($gray, 25%);
+  box-shadow: 0px 0px 10px lighten($reflect-gray, 25%);
   background: white;
   border-radius: 50%;
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   margin-bottom: 20px;
+
   .rc-icon {
-    fill: $blank-slate-icon-color;
+    fill: $reflect-blank-slate-icon-color;
   }
 }
 
 .rc-blank-slate-message {
   display: block;
   margin: auto;
-  font-family: $font-family;
+  font-weight: normal;
   max-width: 500px;
-  font-size: 1rem;
-  font-weight: 300;
-  color: $gray;
+  font-size: 22px;
+  line-height: 35px;
+  color: $reflect-gray;
 }

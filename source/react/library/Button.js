@@ -4,16 +4,19 @@ import Icon from './Icon';
 
 const propTypes = {
   className: React.PropTypes.string,
-  size: React.PropTypes.string,
+  size: React.PropTypes.oneOf(['tiny', 'small', 'large', 'auto']),
   secondary: React.PropTypes.bool,
   transparent: React.PropTypes.bool,
   icon: React.PropTypes.string,
   floating: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   processing: React.PropTypes.bool,
+  /** Badge can signify an that the button is "applied" */
   badge: React.PropTypes.bool,
   block: React.PropTypes.bool,
+  /** onClick is called with the click event */
   onClick: React.PropTypes.func,
+  /** label can be used in place of children */
   label: React.PropTypes.string,
   type: React.PropTypes.string,
   href: React.PropTypes.string,
@@ -24,6 +27,13 @@ const propTypes = {
     React.PropTypes.element,
   ]),
 };
+
+/**
+ * `Button` is a generalized component we use for rendering buttons. They can be used in different
+ * contexts, such as within a `SplitButton` or `ButtonGroup`.
+ *
+ * @example ../../../docs/Button.md
+ */
 
 class Button extends React.Component {
   constructor(props) {

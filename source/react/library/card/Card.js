@@ -3,23 +3,29 @@ import classnames from 'classnames';
 
 const propTypes = {
   size: React.PropTypes.string,
-  title: React.PropTypes.string,
-  subtitle: React.PropTypes.string,
-  children: React.PropTypes.object,
+  children: React.PropTypes.any,
+  /** Card height in px */
   height: React.PropTypes.string,
+  /** Manual active state */
   selected: React.PropTypes.bool,
+  /** Class name to apply to container element */
   className: React.PropTypes.string,
+  /** Callback for detecting user remove action */
   onRemove: React.PropTypes.func,
+  /** Card will be wrapped in anchor tag when passed `onClick` */
   onClick: React.PropTypes.func,
 };
 
+/**
+ * `Card` displays information about an object, usually as a more visual
+ * alternative to a `List`.
+ */
 class Card extends React.Component {
 
   constructor(props) {
     super(props);
 
     this.onClick = this.onClick.bind(this);
-    this.onRemove = this.onRemove.bind(this);
   }
 
   onClick(e) {
@@ -28,75 +34,24 @@ class Card extends React.Component {
     this.props.onClick(e);
   }
 
-  onRemove(e) {
-    e.preventDefault();
-
-    if (this.props.onRemove) {
-      this.props.onRemove(e);
-    }
-  }
-
-  renderRemoveButton() {
-    let jsx;
-
-    if (this.props.onRemove) {
-      jsx = (
-        <div className="remove-corner">
-          <a href="" className="rc-card-remove fa fa-close" onClick={ this.onRemove }>Remove</a>
-        </div>
-      );
-    }
-
-    return jsx;
-  }
-
-  renderTitle() {
-    const title = this.props.title;
-    let jsx;
-
-    if (title) {
-      jsx = <div className="rc-card-title">{ title }</div>;
-    }
-
-    return jsx;
-  }
-
-  renderSubtitle() {
-    const subtitle = this.props.subtitle;
-    let jsx;
-
-    if (subtitle) {
-      jsx = <span className="rc-card-subtitle">{ subtitle }</span>;
-    }
-
-    return jsx;
-  }
-
   renderContent() {
-    const removeButton = this.renderRemoveButton();
     const children = this.props.children;
-    const title = this.renderTitle();
-    const subtitle = this.renderSubtitle();
 
     return (
       <div className="rc-card-content">
-        { removeButton }
         { children }
-        { title }
-        { subtitle }
       </div>
     );
   }
 
   render() {
-    const { size, onRemove, onClick, height, selected } = this.props;
+    const { size, onClick, height, selected } = this.props;
     const className = classnames('rc-card', {
       'rc-card-large': size === 'large',
       'rc-card-small': size === 'small',
       'rc-card-xs': size === 'xs',
       'rc-card-selected': selected,
       'rc-card-selectable': onClick,
-      'rc-card-removable': onRemove,
     }, this.props.className);
     const content = this.renderContent();
     const styles = {};
@@ -105,7 +60,6 @@ class Card extends React.Component {
     if (height) {
       styles.height = height;
     }
-
 
     if (this.props.onClick) {
       jsx = (

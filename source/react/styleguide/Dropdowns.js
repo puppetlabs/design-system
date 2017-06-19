@@ -3,6 +3,7 @@ import StyleguideSection from './partials/StyleguideSection';
 import Button from '../library/Button';
 import Dropdown from '../library/dropdown/Dropdown';
 import DropdownMenu from '../library/dropdown/DropdownMenu';
+import DropdownLabel from '../library/dropdown/DropdownLabel';
 
 const Dropdowns = () => {
   const options = [
@@ -43,6 +44,7 @@ const Dropdowns = () => {
       hint="I'm a hint"
       selected={ [1] }
       options={ options }
+      onChange={ () => {} }
     />
   );
 
@@ -73,6 +75,9 @@ const Dropdowns = () => {
       </StyleguideSection>
       <StyleguideSection title="Blank Slate Dropdown">
         { blank }
+      </StyleguideSection>
+      <StyleguideSection title="Select Style Dropdown Label">
+        <DropdownLabel select label="I am a label" />
       </StyleguideSection>
     </div>
   );

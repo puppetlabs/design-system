@@ -13,7 +13,7 @@ const defaultProps = {
 };
 
 describe('<ColumnCheckbox />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
     const wrapper = shallow(<ColumnCheckbox { ...defaultProps } />);

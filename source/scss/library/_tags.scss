@@ -1,18 +1,25 @@
 .rc-tag {
   display: block;
   float: left;
-  background: $tag-bg;
-  color: $tag-color !important;
-  font-size: $tag-font-size;
-  height: $tag-height;
-  line-height: $tag-line-height;
+  background: $reflect-tag-bg;
+  color: $reflect-tag-color !important;
+  font-size: $reflect-tag-font-size;
+  height: $reflect-tag-height;
+  line-height: $reflect-tag-line-height;
   padding: 0 10px;
   margin: 0 5px 5px 0;
-  border-radius: $tag-border-radius;
-  border: $tag-border;
+  border-radius: $reflect-tag-border-radius;
+  border: $reflect-tag-border;
+
+  .rc-icon-delete {
+    position: relative;
+    top: 2px;
+    margin-left: 6px;
+    cursor: pointer;
+  }
 
   &.rc-tag-tiny {
-    font-size: $font-size-tiny;
+    font-size: $reflect-font-size-tiny;
     height: 22px;
     line-height: 19px;
     padding: 0 2px;
@@ -23,8 +30,16 @@
     float: none;
     margin-right: 0 !important;
   }
+
+  .rc-tag-content, .rc-tooltip-hover-area {
+    font-size: $reflect-tag-font-size;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+  }
 }
 
 .rc-tag-selected {
-  border: $tag-border-selected;
+  border: $reflect-tag-border-selected;
 }

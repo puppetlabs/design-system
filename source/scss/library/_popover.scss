@@ -1,23 +1,23 @@
 .rc-popover {
   position: absolute;
-  background: $popover-bg;
-  border: $popover-border;
-  border-radius: $popover-border-radius;
-  box-shadow: $popover-shadow;
-  padding: $popover-padding;
-  z-index: $popover-elevation;
+  background: $reflect-popover-bg;
+  border: $reflect-popover-border;
+  border-radius: $reflect-popover-border-radius;
+  box-shadow: $reflect-popover-shadow;
+  padding: $reflect-popover-padding;
+  z-index: $reflect-popover-elevation;
 
   .rc-popover-header {
     position: relative;
-    margin-bottom: $popover-padding;
+    margin-bottom: $reflect-popover-padding;
   }
 
   .rc-popover-hint {
     display: block;
     padding: 0;
     margin-right: 33px;
-    color: $dropdown-hint-color;
-    font-size: $dropdown-hint-font-size;
+    color: $reflect-dropdown-hint-color;
+    font-size: $reflect-dropdown-hint-font-size;
   }
 
   .rc-popover-close {
@@ -27,15 +27,19 @@
   }
 
   &.rc-popover-small {
-    width: $popover-small-width;
+    width: $reflect-popover-small-width;
   }
 
   &.rc-popover-medium {
-    width: $popover-medium-width;
+    width: $reflect-popover-medium-width;
   }
 
   &.rc-popover-large {
-    width: $popover-large-width;
+    width: $reflect-popover-large-width;
+  }
+
+  &.rc-popover-no-padding {
+    padding: 0;
   }
 }
 

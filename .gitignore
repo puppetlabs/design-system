@@ -2,6 +2,9 @@
 /node_modules
 /build
 /dist
+/styleguide
 npm-debug.log
 *.sw[onp]
+.nyc_output/
+/coverage
 .DS_Store

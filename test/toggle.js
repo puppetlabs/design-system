@@ -7,7 +7,7 @@ import React from 'react';
 import Toggle from '../source/react/library/Toggle';
 
 describe('<Toggle />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   const defaultProps = {
     left: 'option 1',
@@ -27,6 +27,18 @@ describe('<Toggle />', () => {
     expect(wrapper.find('.rc-toggle-active').text()).to.eql('option 2');
   });
 
+  it('should allow you to specify a name for the Switch', () => {
+    const wrapper = shallow(<Toggle { ...defaultProps } name="Slim Shady" />);
+
+    expect(wrapper.find('Switch').prop('name')).to.eql('Slim Shady');
+  });
+
+  it('should set a unique name on Switch when you don\'t provide one', () => {
+    const wrapper = shallow(<Toggle { ...defaultProps } />);
+
+    expect(wrapper.find('Switch').prop('name')).to.eql('option 1option 2');
+  });
+
   it('should trigger provided onChange function from props when input is changed', () => {
     const wrapper = mount(<Toggle { ...defaultProps } />);
 
@@ -35,5 +47,13 @@ describe('<Toggle />', () => {
     input.simulate('change');
 
     expect(wrapper.prop('onChange').calledOnce).to.equal(true);
+  });
+
+  describe('when disabled', () => {
+    it('should disable the toggle', () => {
+      const wrapper = shallow(<Toggle { ...defaultProps } disabled />);
+
+      expect(wrapper.find('Switch').prop('disabled')).to.eql(true);
+    });
   });
 });

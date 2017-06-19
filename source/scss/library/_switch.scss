@@ -19,14 +19,14 @@
     box-sizing: content-box;
     display: block;
     position: relative;
-    width: $switch-width;
-    height: $switch-height;
+    width: $reflect-switch-width;
+    height: $reflect-switch-height;
     margin: 0;
     padding: 0;
     border-radius: 21px;
     outline: 0;
     cursor: pointer;
-    background: $gray-lighter;
+    background: $reflect-gray-lighter;
     color: #ccc;
     transition: all 0.4s ease;
 
@@ -40,12 +40,12 @@
       position: absolute;
       display: block;
       content: "";
-      top: $switch-padding;
-      left: $switch-padding;
-      width: $switch-handle-height;
-      height: $switch-handle-height;
+      top: $reflect-switch-padding;
+      left: $reflect-switch-padding;
+      width: $reflect-switch-handle-height;
+      height: $reflect-switch-handle-height;
       background: #ccc;
-      border-radius: $switch-handle-height;
+      border-radius: $reflect-switch-handle-height;
       transition: all 0.2s ease;
     }
 
@@ -55,10 +55,10 @@
       @include show-text;
 
       .rc-icon {
-        height: $switch-off-icon-size;
-        width: $switch-off-icon-size;
-        right: $switch-padding * 1.4;
-        fill: $switch-off-icon-fill;
+        height: $reflect-switch-off-icon-size;
+        width: $reflect-switch-off-icon-size;
+        right: $reflect-switch-padding * 1.4;
+        fill: $reflect-switch-off-icon-fill;
       }
     }
 
@@ -68,10 +68,10 @@
       @include hide-text;
 
       .rc-icon {
-        height: $switch-on-icon-size;
-        width: $switch-on-icon-size;
-        left: $switch-padding * 1.4;
-        fill: $switch-on-icon-fill;
+        height: $reflect-switch-on-icon-size;
+        width: $reflect-switch-on-icon-size;
+        left: $reflect-switch-padding * 1.4;
+        fill: $reflect-switch-on-icon-fill;
       }
     }
   }
@@ -80,8 +80,8 @@
 [class*="rc-switch-label-"] {
   position: absolute;
   display: inline-block;
-  line-height: $switch-height;
-  height: $switch-height;
+  line-height: $reflect-switch-height;
+  height: $reflect-switch-height;
 }
 
 .rc-switch-checkbox {
@@ -95,13 +95,13 @@
   border: 0;
 
   &:checked + .rc-switch-label {
-    background: $brand-primary;
-    color: $white;
+    background: $reflect-brand-primary;
+    color: $reflect-bg-primary;
 
     &:after {
       left: auto;
-      right: $switch-padding;
-      background: $white;
+      right: $reflect-switch-padding;
+      background: $reflect-bg-primary;
     }
 
     .rc-switch-label-off {

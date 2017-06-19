@@ -1,18 +1,28 @@
 import React from 'react';
 import classnames from 'classnames';
+import Button from './Button';
+import Icon from './Icon';
+import { TooltipHoverArea } from './tooltips/Tooltip';
 
 const propTypes = {
+  /** Items to render inside the Tag */
   children: React.PropTypes.any,
+  /** Selected state */
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
   size: React.PropTypes.string,
   block: React.PropTypes.bool,
   onRemove: React.PropTypes.func,
   onClick: React.PropTypes.func,
+  tooltip: React.PropTypes.bool,
 };
 
+/**
+ * `Tag` is used to repesent a removable, clickable item.
+ *
+ * @example ../../../docs/Tag.md
+ */
 class Tag extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -37,6 +47,41 @@ class Tag extends React.Component {
     }
   }
 
+  renderContent() {
+    const removeButton = this.renderRemoveButton();
+    const { children, tooltip } = this.props;
+    let jsx = (
+      <div className="rc-tag-content">
+        { children }
+        { removeButton }
+      </div>
+    );
+
+    if (tooltip) {
+      jsx = (
+        <TooltipHoverArea anchor="bottom" tooltip={ jsx }>
+          { jsx }
+        </TooltipHoverArea>
+      );
+    }
+
+    return jsx;
+  }
+
+  renderRemoveButton() {
+    let jsx;
+
+    if (this.props.onRemove) {
+      jsx = (
+        <Button transparent size="auto" onClick={ this.onRemove }>
+          <Icon type="delete" height="12px" width="12px" />
+        </Button>
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
     const { onRemove, onClick, selected, size, block } = this.props;
     const className = classnames('rc-tag', {
@@ -46,18 +91,19 @@ class Tag extends React.Component {
       'rc-tag-block': block,
       [`rc-tag-${size}`]: size,
     }, this.props.className);
+    const content = this.renderContent();
     let jsx;
 
-    if (this.props.onClick) {
+    if (onClick) {
       jsx = (
         <a onClick={ this.onClick } href="" className={ className }>
-          { this.props.children }
+          { content }
         </a>
       );
     } else {
       jsx = (
         <div className={ className }>
-          { this.props.children }
+          { content }
         </div>
       );
     }

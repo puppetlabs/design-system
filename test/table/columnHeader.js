@@ -11,7 +11,7 @@ const column = { displayName: 'foo', column: 'foo' };
 const onClick = () => {};
 
 describe('<ColumnHeader />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
     const wrapper = shallow(<ColumnHeader

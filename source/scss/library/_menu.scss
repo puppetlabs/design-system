@@ -35,26 +35,25 @@
   }
 }
 
-
 .rc-menu {
   @include menu-item-colors(
-    $menu-item-bg,
-    $menu-item-bg-hover,
-    $menu-item-color,
-    $menu-item-color-hover,
-    $menu-item-bg-selected,
-    $menu-item-color-selected,
-    $menu-item-bg-disabled,
-    $menu-item-color-disabled
+    $reflect-menu-item-bg,
+    $reflect-menu-item-bg-hover,
+    $reflect-menu-item-color,
+    $reflect-menu-item-color-hover,
+    $reflect-menu-item-bg-selected,
+    $reflect-menu-item-color-selected,
+    $reflect-menu-item-bg-disabled,
+    $reflect-menu-item-color-disabled
   );
 
   .rc-menu-item {
-    font-size: $menu-item-font-size;
-    line-height: $menu-item-line-height;
+    font-size: $reflect-menu-item-font-size;
+    line-height: $reflect-menu-item-line-height;
 
     a {
       display: block;
-      padding: $dropdown-padding;
+      padding: $reflect-menu-item-padding;
       text-decoration: none;
 
       &:hover {
@@ -71,12 +70,56 @@
 
   &.rc-menu-tiny {
     .rc-menu-item {
-      font-size: $menu-item-font-size-tiny;
-      line-height: $menu-item-line-height-tiny;
+      font-size: $reflect-menu-item-font-size-tiny;
+      line-height: $reflect-menu-item-line-height-tiny;
 
       a {
-        padding: $dropdown-padding-tiny;
+        padding: $reflect-dropdown-padding-tiny;
       }
+    }
+  }
+}
+
+.rc-menu-section {
+  padding: $reflect-menu-section-padding;
+  border-bottom: $reflect-menu-section-border;
+
+  &.rc-menu-section-list {
+    padding: 0;
+  }
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.rc-menu-header {
+  display: flex;
+  padding: $reflect-menu-header-padding;
+  border-bottom: $reflect-menu-header-border;
+
+  .rc-menu-close {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 2;
+
+    .rc-icon {
+      float: right;
+      width: 8px;
+      height: 8px;
+      margin-top: 8px;
+      margin-right: -2px;
+    }
+  }
+
+  .rc-menu-title {
+    display: flex;
+    width: 90%;
+    align-items: center;
+
+    h2 {
+      color: $reflect-menu-title-color;
+      font-size: $reflect-menu-title-font-size;
     }
   }
 }
@@ -86,13 +129,13 @@
     a {
       position: relative;
       // 16px is currently the size of the checkmark icon.
-      padding-left: $dropdown-padding + 16px + $dropdown-padding;
+      padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
 
       svg {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        left: $dropdown-padding;
+        left: $reflect-dropdown-padding;
       }
     }
   }

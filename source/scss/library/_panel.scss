@@ -1,0 +1,13 @@
+.rc-panel {
+  background: $reflect-panel-bg;
+  border: $reflect-panel-border;
+  padding: $reflect-panel-padding;
+  border-radius: $reflect-panel-border-radius;
+  box-shadow: $reflect-panel-outer-shadow;
+
+  @include with-remove('panel');
+
+  &.rc-panel-secondary {
+    background: $reflect-panel-bg-secondary;
+  }
+}

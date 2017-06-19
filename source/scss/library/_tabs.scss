@@ -4,7 +4,7 @@
 
     ul {
       float: left;
-      width: $tab-width-vertical;
+      width: $reflect-tab-width-vertical;
     }
 
     .rc-tab {
@@ -13,19 +13,19 @@
       &.rc-tab-active {
         a {
           border-bottom: none;
-          border-right: $tab-border-active;
+          border-right: $reflect-tab-border-active;
         }
       }
 
       a {
-        border-right: $tab-border;
+        border-right: $reflect-tab-border;
         border-bottom: none;
       }
     }
 
     .rc-tab-panel {
-      margin-left: $tab-width-vertical;
-      padding: $tab-panel-padding-vertical;
+      margin-left: $reflect-tab-width-vertical;
+      padding: $reflect-tab-panel-padding-vertical;
     }
   }
 
@@ -34,21 +34,21 @@
 
     &.rc-tab-active {
       a {
-        color: $tab-color-active;
-        border-bottom: $tab-border-active;
+        color: $reflect-tab-color-active;
+        border-bottom: $reflect-tab-border-active;
       }
     }
 
     a {
       display: block;
-      padding: $tab-padding;
-      border-bottom: $tab-border;
-      color: $tab-color;
-      background: $tab-bg;
-      font-family: $tab-font-family;
-      font-size: $tab-font-size;
-      font-weight: $tab-font-weight;
-      text-transform: $tab-text-transform;
+      padding: $reflect-tab-padding;
+      border-bottom: $reflect-tab-border;
+      color: $reflect-tab-color;
+      background: $reflect-tab-bg;
+      font-family: $reflect-tab-font-family;
+      font-size: $reflect-tab-font-size;
+      font-weight: $reflect-tab-font-weight;
+      text-transform: $reflect-tab-text-transform;
     }
 
     &:last-child {
@@ -58,7 +58,7 @@
 
   .rc-tab-panel {
     display: none;
-    padding: $tab-panel-padding;
+    padding: $reflect-tab-panel-padding;
 
     &.rc-tab-panel-active {
       display: block;

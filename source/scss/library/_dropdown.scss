@@ -50,10 +50,38 @@
 
 .rc-dropdown-toggle {
   @include dropdown-label-colors(
-    $dropdown-label-color,
-    $dropdown-label-color-disabled,
-    $dropdown-label-color-error
+    $reflect-dropdown-label-color,
+    $reflect-dropdown-label-color-disabled,
+    $reflect-dropdown-label-color-error
   );
+
+  &.rc-dropdown-toggle-select {
+    display: block;
+    background: $reflect-select-label-bg;
+    border: $reflect-select-label-border;
+    border-radius: $reflect-select-label-border-radius;
+    padding: $reflect-select-label-padding;
+
+    .rc-dropdown-label {
+      position: relative;
+      display: block;
+      font-size: $reflect-select-label-font-size;
+
+      .rc-dropdown-label-text {
+        display: block;
+        margin-right: 20px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+      }
+
+      .rc-icon {
+        position: absolute;
+        right: 5px;
+        top: 7px;
+        left: auto;
+      }
+    }
+  }
 
   &[disabled] {
     pointer-events: none;
@@ -64,51 +92,43 @@
     white-space: nowrap;
 
     .rc-dropdown-label-text {
-      font-size: $dropdown-label-font-size;
-      font-weight: $dropdown-label-font-weight;
+      font-size: $reflect-dropdown-label-font-size;
+      font-weight: $reflect-dropdown-label-font-weight;
     }
 
     .rc-icon {
       position: relative;
       top: -1px;
       left: -2px;
-      height: $dropdown-chevron-height;
-      width: $dropdown-chevron-width;
+      height: $reflect-dropdown-chevron-height;
+      width: $reflect-dropdown-chevron-width;
     }
   }
 }
 
 .rc-dropdown-menu {
-  width: $dropdown-width;
+  width: $reflect-dropdown-width;
   padding: 0;
-  padding-bottom: $popover-border-radius * 2;
-  padding-top: $popover-border-radius * 2;
-
-  .rc-dropdown-hint {
-    display: block;
-    padding: $dropdown-padding;
-    padding-top: $dropdown-padding - $popover-border-radius * 2;
-    color: $dropdown-hint-color;
-    font-size: $dropdown-hint-font-size;
-  }
+  padding-top: $reflect-popover-border-radius * 2;
+  padding-bottom: $reflect-popover-border-radius * 2;
 
   .rc-dropdown-blank {
-    padding: $dropdown-padding;
-    font-size: $dropdown-item-font-size;
+    padding: $reflect-dropdown-padding;
+    font-size: $reflect-dropdown-item-font-size;
   }
 
   .rc-dropdown-item {
-    font-size: $dropdown-item-font-size;
-    line-height: $dropdown-item-line-height;
+    font-size: $reflect-dropdown-item-font-size;
+    line-height: $reflect-dropdown-item-line-height;
 
     a {
       display: block;
-      padding: $dropdown-padding;
+      padding: $reflect-dropdown-padding;
       text-decoration: none;
 
       &:hover {
-        color: $dropdown-item-hover-color;
-        background: $dropdown-item-hover-bg;
+        color: $reflect-dropdown-item-hover-color;
+        background: $reflect-dropdown-item-hover-bg;
         text-decoration: none;
       }
     }
@@ -116,27 +136,27 @@
 
   .rc-dropdown-item-selected {
     a {
-      color: $dropdown-item-selected-color;
-      background: $dropdown-item-selected-bg;
+      color: $reflect-dropdown-item-selected-color;
+      background: $reflect-dropdown-item-selected-bg;
     }
   }
 
   .rc-dropdown-item-disabled {
     a {
-      color: $dropdown-item-disabled-color;
-      background: $dropdown-item-disabled-bg;
+      color: $reflect-dropdown-item-disabled-color;
+      background: $reflect-dropdown-item-disabled-bg;
       cursor: default;
 
       &:hover {
-        color: $dropdown-item-disabled-color;
-        background: $dropdown-item-disabled-bg;
+        color: $reflect-dropdown-item-disabled-color;
+        background: $reflect-dropdown-item-disabled-bg;
       }
     }
   }
 
   ul {
-    max-height: $dropdown-max-height;
-    overflow: scroll;
+    max-height: $reflect-dropdown-max-height;
+    overflow: auto;
   }
 
   li:last-of-type {
@@ -145,45 +165,48 @@
 
 
   &.rc-dropdown-menu-tiny {
-    width: $dropdown-width-tiny;
+    width: $reflect-dropdown-width-tiny;
 
     .rc-dropdown-item {
-      font-size: $dropdown-item-font-size-tiny;
-      line-height: $dropdown-item-line-height-tiny;
-    }
-
-    .rc-dropdown-hint {
-      font-size: $dropdown-item-font-size-tiny;
-
-      padding: $dropdown-padding-tiny;
-      padding-top: $dropdown-padding-tiny - $popover-border-radius * 2;
+      font-size: $reflect-dropdown-item-font-size-tiny;
+      line-height: $reflect-dropdown-item-line-height-tiny;
     }
 
     .rc-dropdown-item {
       a {
-        padding: $dropdown-padding-tiny;
+        padding: $reflect-dropdown-padding-tiny;
       }
     }
   }
 }
 
+.rc-dropdown-menu-with-header {
+  padding-top: 0;
+}
+
 .rc-dropdown-menu-multiple {
+  padding-bottom: 0;
+
   .rc-dropdown-item {
     a {
       position: relative;
       // 16px is currently the size of the checkmark icon.
-      padding-left: $dropdown-padding + 16px + $dropdown-padding;
+      padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
 
       svg {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        left: $dropdown-padding;
+        left: $reflect-dropdown-padding;
 
         * {
-          fill: $dropdown-item-selected-color;
+          fill: $reflect-dropdown-item-selected-color;
         }
       }
     }
+  }
+
+  .rc-dropdown-menu-section-list {
+    padding: 0;
   }
 }

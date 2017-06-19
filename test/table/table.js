@@ -37,7 +37,7 @@ const defaultColumns = [{
 }];
 
 describe('<Table />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
     const wrapper = shallow(<Table

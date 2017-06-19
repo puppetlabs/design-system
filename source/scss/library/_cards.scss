@@ -1,10 +1,17 @@
 .rc-card {
-  background: $card-bg;
-  border: $card-border;
-  border-radius: $border-radius;
-  box-shadow: $outer-shadow;
+  background: $reflect-card-bg;
+  border: $reflect-card-border;
+  border-radius: $reflect-border-radius;
+  box-shadow: $reflect-outer-shadow;
   display: block;
-  color: $card-color;
+  position: relative;
+  color: $reflect-card-color;
+
+  &:hover {
+    .rc-card-actions-hidden {
+      display: block;
+    }
+  }
 
   &.rc-card-xs {
     padding: 2px;
@@ -25,7 +32,7 @@
 
     &:hover {
       .rc-card-content {
-        background: $card-bg;
+        background: $reflect-card-bg;
         .rc-card-title {
           visibility: visible;
         }
@@ -55,66 +62,16 @@
     cursor: pointer;
 
     &:hover {
-      border: $card-border-hover;
+      border: $reflect-card-border-hover;
     }
   }
 
   &.rc-card-selected {
-    border: $card-border-selected;
-    box-shadow: $card-shadow-selected;
+    border: $reflect-card-border-selected;
+    box-shadow: $reflect-card-shadow-selected;
 
     &:hover {
-      border: $card-border-selected;
-    }
-  }
-
-  &.rc-card-removable {
-    position: relative;
-
-    &:hover {
-      .remove-corner {
-        display: flex;
-      }
-    }
-  }
-
-  .remove-corner {
-    width: 21px;
-    height: 21px;
-
-    position: absolute;
-    top: 0;
-    right: 0;
-    float: right;
-
-    display: none;
-    background: $card-remove-background;
-    border-left: 2px solid $gray;
-    border-bottom: 2px solid $gray;
-    border-bottom-left-radius: $border-radius;
-    border-top-right-radius: 2px;
-
-    .rc-card-remove:before {
-      position: absolute;
-      top: -1px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    &:hover {
-      background: $gray;
-
-      .rc-card-remove {
-        color: #fff;
-      }
-    }
-
-    .rc-card-remove {
-      color: $gray;
+      border: $reflect-card-border-selected;
     }
   }
 
@@ -124,13 +81,42 @@
   }
 
   .rc-card-title {
-    color: $card-title-color;
-    margin-top: 30px;
+    color: $reflect-card-title-color;
     font-size: 1.2em;
   }
 
   .rc-card-subtitle {
-    color: $card-subtitle-color;
+    color: $reflect-card-subtitle-color;
     font-size: 0.8em;
+  }
+
+  .rc-card-section {
+    margin: -20px;
+    padding: 20px;
+  }
+
+  .rc-card-actions {
+    top: 5px;
+    right: 5px;
+    z-index: 24;
+
+    position: absolute;
+    float: right;
+
+    .rc-card-remove {
+      width: 21px;
+      height: 21px;
+
+      background: $reflect-remove-background;
+      border-radius: 50%;
+
+      cursor: pointer;
+      text-align: center;
+      line-height: 20px;
+    }
+  }
+
+  .rc-card-actions-hidden {
+    display: none;
   }
 }

@@ -5,7 +5,9 @@ import PopoverContent, { PopoverContentWithoutPortal } from './PopoverContent';
 
 const propTypes = {
   open: React.PropTypes.bool,
+  menu: React.PropTypes.bool,
   position: React.PropTypes.object,
+  padding: React.PropTypes.bool,
   closeButton: React.PropTypes.bool,
   anchor: React.PropTypes.string,
   onClose: React.PropTypes.func,
@@ -18,13 +20,16 @@ const propTypes = {
   className: React.PropTypes.string,
   allowBubble: React.PropTypes.bool,
   disablePortal: React.PropTypes.bool,
+  disableOutsideClick: React.PropTypes.bool,
 };
 
 const defaultProps = {
   width: 'auto',
   margin: 10,
+  padding: true,
   anchor: 'bottom left',
   allowBubble: false,
+  disableOutsideClick: false,
 };
 
 class Popover extends React.Component {
@@ -87,9 +92,11 @@ class Popover extends React.Component {
   }
 
   onOutsideClick() {
-    this.setState({ open: false });
+    if (!this.props.disableOutsideClick) {
+      this.setState({ open: false });
 
-    this.onClose();
+      this.onClose();
+    }
   }
 
   onClick(e) {
@@ -110,7 +117,7 @@ class Popover extends React.Component {
 
     if (this.props.position) {
       newState.position = this.props.position;
-    } else {
+    } else if (this.elem) {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
       let bottom;
@@ -173,6 +180,7 @@ class Popover extends React.Component {
     });
     const className = classnames('rc-popover', this.props.className, {
       [`rc-popover-${this.props.size}`]: this.props.size,
+      'rc-popover-no-padding': !this.props.padding || this.props.menu,
     });
     const styles = this.state.position;
     const button = this.renderButton();
@@ -193,6 +201,7 @@ class Popover extends React.Component {
       onClose: this.close,
       allowBubble: this.props.allowBubble,
       children: this.props.children,
+      menu: this.props.menu,
     });
 
     return (

@@ -1,59 +1,30 @@
 import React from 'react';
 import classnames from 'classnames';
-import MenuItem from './MenuItem';
 
 const propTypes = {
-  options: React.PropTypes.array,
+  children: React.PropTypes.any,
   size: React.PropTypes.string,
-  selected: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.array,
-    React.PropTypes.number,
-  ]),
-  multiple: React.PropTypes.bool,
-  onChange: React.PropTypes.func,
 };
 
-const defaultProps = {
-  size: 'small',
-  selected: '',
-};
+/**
+ * Menu can be used to present a list of options, form items, and various
+ * buttons to the user. It can contain `MenuHeader`, `MenuList`, and
+ * `MenuSection` components.
+ *
+ * @example ../../../../docs/Menu.md
+ */
 
 class Menu extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange(selected) {
-    this.props.onChange(selected);
-  }
-
   render() {
-    const { selected, options, multiple, size } = this.props;
-    const className = classnames('rc-menu', `rc-menu-${size}`, {
-      'rc-menu-multiple': multiple,
-    });
-    const jsx = [];
-
-    options.forEach((option) => {
-      jsx.push(
-        <MenuItem
-          key={ option.id }
-          option={ option }
-          selected={ selected.indexOf(option.id) >= 0 }
-          onClick={ this.onChange }
-          multiple={ multiple }
-        />
-      );
+    const { size, children } = this.props;
+    const className = classnames('rc-menu', {
+      [`rc-menu-${size}`]: size,
     });
 
-    return <ul className={ className }>{ jsx }</ul>;
+    return <div className={ className }>{ children }</div>;
   }
 }
 
 Menu.propTypes = propTypes;
-Menu.defaultProps = defaultProps;
 
 export default Menu;

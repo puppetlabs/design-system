@@ -2,6 +2,7 @@
 @import url('//fonts.googleapis.com/css?family=Montserrat');
 
 @import "variables";
+@import "mixins";
 @import "resets";
 @import "typography";
 @import "buttons";
@@ -11,8 +12,7 @@
 @import "dropdown";
 @import "select";
 @import "forms";
-@import "input/checkboxes";
-@import "input/text";
+@import "text";
 @import "tags";
 @import "lists";
 @import "icons";
@@ -27,3 +27,6 @@
 @import "accordions";
 @import "menu";
 @import "blankslates";
+@import "panel";
+@import "stencils";
+@import "datepicker";

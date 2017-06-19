@@ -28,25 +28,32 @@ const defaultProps = {
   disable: false,
 };
 
+/**
+ * `Dropdpown` displays a list of items.
+ *
+ * @example ../../../../docs/Dropdown.md
+ */
+
 class Dropdown extends React.Component {
   constructor(props) {
     super(props);
 
-    const selected = this.getSelected();
+    const selected = this.getSelected(props);
 
     this.state = { selected, displayed: selected };
 
     this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onApply = this.onApply.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    const selectedChanged = equals(this.props.selected, nextProps.selected);
+    const selectedChanged = !equals(this.props.selected, nextProps.selected);
 
     if ({}.hasOwnProperty.call(nextProps, 'selected') && selectedChanged) {
-      const selected = this.getSelected();
+      const selected = this.getSelected(nextProps);
 
-      this.setState({ selected });
+      this.setState({ selected, displayed: selected });
     }
   }
 
@@ -91,6 +98,12 @@ class Dropdown extends React.Component {
     }
   }
 
+  onApply() {
+    if (this.props.onChange) {
+      this.props.onChange(this.state.selected);
+    }
+  }
+
   getOptions() {
     return this.props.options.map((o) => {
       let obj;
@@ -105,8 +118,8 @@ class Dropdown extends React.Component {
     });
   }
 
-  getSelected() {
-    let selected = this.props.selected;
+  getSelected(props) {
+    let selected = props.selected;
 
     selected = Array.isArray(selected) ? selected : [selected];
 
@@ -159,6 +172,7 @@ class Dropdown extends React.Component {
         multiple={ this.props.multiple }
         target={ button }
         onChange={ this.onChange }
+        onApply={ this.onApply }
         options={ options }
         selected={ this.state.selected }
         required={ this.props.required }

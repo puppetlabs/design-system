@@ -1,11 +1,11 @@
 .rc-slidein {
   position: fixed;
-  background-color: $slidein-bg;
-  color: $slidein-color;
+  background-color: $reflect-slidein-bg;
+  color: $reflect-slidein-color;
   box-shadow: 0 0 60px rgba(0, 0, 0, .3);
 
-  border-radius: $border-radius;
-  border: 1px solid $gray-light;
+  border-radius: $reflect-border-radius;
+  border: 1px solid $reflect-gray-light;
 
   &.rc-slidein-bottom {
     bottom: 0;
@@ -13,7 +13,7 @@
     right: 0;
 
     width: 100%;
-    height: $slidein-vertical-height;
+    height: $reflect-slidein-vertical-height;
   }
 
   &.rc-slidein-top {
@@ -22,7 +22,7 @@
     right: 0;
 
     width: 100%;
-    height: $slidein-vertical-height;
+    height: $reflect-slidein-vertical-height;
   }
 
   &.rc-slidein-left {
@@ -30,7 +30,7 @@
     left: 0;
     bottom: 0;
 
-    width: $slidein-horizontal-width;
+    width: $reflect-slidein-horizontal-width;
     height: 100%;
   }
 
@@ -39,7 +39,7 @@
     right: 0;
     bottom: 0;
 
-    width: $slidein-horizontal-width;
+    width: $reflect-slidein-horizontal-width;
     height: 100%;
   }
 
@@ -50,35 +50,7 @@
     right: 0;
     text-align: right;
 
-    border-top: $slidein-actions-border;
-    padding: $slidein-actions-padding;
-  }
-
-  .rc-slidein-header {
-    display: flex;
-    padding: $slidein-header-padding;
-    border-bottom: 1px solid $gray-light;
-  }
-
-  .rc-slidein-remove {
-    display: flex;
-    .rc-icon {
-      float: right;
-      width: 8px;
-      height: 8px;
-      margin-top: 8px;
-      margin-right: -2px;
-    }
-  }
-
-  .rc-slidein-title {
-    display: flex;
-    width: 75%;
-    align-items: center;
-
-    h2 {
-      color: $gray;
-      font-size: $slidein-title-font-size;
-    }
+    border-top: $reflect-slidein-actions-border;
+    padding: $reflect-slidein-actions-padding;
   }
 }

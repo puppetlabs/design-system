@@ -1,3 +1,7 @@
+# 0.0.28
+
+* DatePicker learns how to respect timezones
+
 # 0.0.27
 
 * Add Tooltip component.

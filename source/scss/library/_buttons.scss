@@ -1,11 +1,11 @@
-@mixin button-colors($bg, $bg-hover, $color, $color-hover, $border, $border-hover) {
+@mixin button-colors($bg, $bg-hover, $color, $color-hover, $reflect-border, $reflect-border-hover) {
   background: $bg;
-  border: 1px solid $border;
+  border: 1px solid $reflect-border;
   color: $color !important;
 
   &:hover {
     background: $bg-hover;
-    border: 1px solid $border-hover;
+    border: 1px solid $reflect-border-hover;
     color: $color-hover !important;
 
     .rc-icon {
@@ -47,16 +47,16 @@ a.rc-button, button.rc-button {
   padding: 0px 20px;
   white-space: nowrap;
   cursor: pointer;
-  border-radius: $button-border-radius;
+  border-radius: $reflect-button-border-radius;
   outline: none;
 
   @include button-colors(
-    $button-bg,
-    $button-bg-hover,
-    $button-color,
-    $button-color-hover,
-    $button-border-color,
-    $button-border-color-hover
+    $reflect-button-bg,
+    $reflect-button-bg-hover,
+    $reflect-button-color,
+    $reflect-button-color-hover,
+    $reflect-button-border-color,
+    $reflect-button-border-color-hover
   );
 
   &.rc-button-block {
@@ -69,16 +69,16 @@ a.rc-button, button.rc-button {
 
     &:after {
       content: ' ';
-      height: $button-badge-size;
-      width: $button-badge-size;
+      height: $reflect-button-badge-size;
+      width: $reflect-button-badge-size;
 
-      border: ($button-badge-size / 3) solid white;
+      border: ($reflect-button-badge-size / 3) solid white;
       border-radius: 100px;
       box-sizing: content-box;
 
       position: absolute;
-      right: -($button-badge-size / 2);
-      top: -($button-badge-size / 2);
+      right: -($reflect-button-badge-size / 2);
+      top: -($reflect-button-badge-size / 2);
     }
   }
 
@@ -102,12 +102,12 @@ a.rc-button, button.rc-button {
 
   &.rc-button-secondary {
     @include button-colors(
-      $button-secondary-bg,
-      $button-secondary-bg-hover,
-      $button-secondary-color,
-      $button-secondary-color-hover,
-      $button-secondary-border-color,
-      $button-secondary-border-color-hover
+      $reflect-button-secondary-bg,
+      $reflect-button-secondary-bg-hover,
+      $reflect-button-secondary-color,
+      $reflect-button-secondary-color-hover,
+      $reflect-button-secondary-border-color,
+      $reflect-button-secondary-border-color-hover
     )
   }
 
@@ -115,8 +115,8 @@ a.rc-button, button.rc-button {
     @include button-colors(
       transparent,
       transparent,
-      $button-transparent-color,
-      $button-transparent-color-hover,
+      $reflect-button-transparent-color,
+      $reflect-button-transparent-color-hover,
       transparent,
       transparent
     );
@@ -130,11 +130,25 @@ a.rc-button, button.rc-button {
     }
   }
 
+  &.rc-button-auto {
+    padding: 0;
+    height: auto;
+    line-height: normal;
+  }
+
   &.rc-button-tiny {
     height: 22px;
     line-height: 20px;
-    padding: 0 2px;
-    font-size: $font-size-tiny;
+    padding: 0 5px;
+    font-size: $reflect-font-size-tiny;
+
+    &.rc-button-round {
+      padding: 0 2px;
+    }
+
+    .rc-button-content {
+      font-size: $reflect-font-size-tiny;
+    }
   }
 
   &.rc-button-small {
@@ -155,13 +169,13 @@ a.rc-button, button.rc-button {
 
   &[disabled] {
     &:hover {
-      color: $button-disabled-color-hover !important;
-      background: $button-disabled-bg;
+      color: $reflect-button-color-disabled-hover !important;
+      background: $reflect-button-bg-disabled;
     }
 
     cursor: default;
-    color: $button-disabled-color !important;
-    background: $button-disabled-bg;
+    color: $reflect-button-color-disabled !important;
+    background: $reflect-button-bg-disabled;
   }
 
   .rc-icon {
@@ -171,8 +185,8 @@ a.rc-button, button.rc-button {
   }
 
   .rc-button-content {
-    font-family: $button-font-family;
-    font-size: $button-font-size;
+    font-family: $reflect-button-font-family;
+    font-size: $reflect-button-font-size;
   }
 
   .rc-icon + .rc-button-content {
@@ -182,9 +196,9 @@ a.rc-button, button.rc-button {
 
 a.rc-floating-action-button, button.rc-floating-action-button {
   border-radius: 60px;
-  height: $floating-action-button-height;
-  line-height: $floating-action-button-height;
-  width: $floating-action-button-height;
+  height: $reflect-floating-action-button-height;
+  line-height: $reflect-floating-action-button-height;
+  width: $reflect-floating-action-button-height;
   padding: 0;
 
   &:before {
@@ -201,6 +215,25 @@ a.rc-floating-action-button, button.rc-floating-action-button {
   &:last-child {
     margin-right: 0;
   }
+
+  &.rc-button-group-collapsed {
+    .rc-button {
+      margin-right: 0;
+      border-radius: 0 !important;
+    }
+
+    :first-child {
+      border-top-left-radius: $reflect-border-radius !important;
+      border-bottom-left-radius: $reflect-border-radius !important;
+      border-right: none !important;
+    }
+
+    :last-child {
+      border-top-right-radius: $reflect-border-radius !important;
+      border-bottom-right-radius: $reflect-border-radius !important;
+      border-left: none !important;
+    }
+  }
 }
 
 .rc-split-button {
@@ -216,14 +249,14 @@ a.rc-floating-action-button, button.rc-floating-action-button {
       .rc-button-content {
         padding: 1px;
 
-        font-size: $font-size-tiny;
+        font-size: $reflect-font-size-tiny;
       }
     }
   }
 
   .rc-button-menu {
     &.rc-popover-target-open {
-      background: $button-bg-hover;
+      background: $reflect-button-bg-hover;
     }
 
     &.rc-button-small {
@@ -234,7 +267,7 @@ a.rc-floating-action-button, button.rc-floating-action-button {
 
     &.rc-button-tiny {
       .rc-button-content {
-        padding: 3px;
+        padding: 0;
       }
 
       .rc-button-menu-inner {
@@ -243,8 +276,8 @@ a.rc-floating-action-button, button.rc-floating-action-button {
     }
 
     .rc-button-menu-inner {
-      border-radius: $border-radius;
-      background: $white;
+      border-radius: $reflect-border-radius;
+      background: $reflect-bg-primary;
       padding: 3px;
       display: inline-block;
 

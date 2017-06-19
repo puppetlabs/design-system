@@ -7,6 +7,7 @@ const propTypes = {
   onChange: React.PropTypes.func.isRequired,
   name: React.PropTypes.string.isRequired,
   className: React.PropTypes.string,
+  disabled: React.PropTypes.bool,
   checked: React.PropTypes.bool,
   label: React.PropTypes.bool,
 };
@@ -15,6 +16,12 @@ const defaultProps = {
   checked: false,
   label: true,
 };
+
+/**
+ * `Switch` allows the user to enable or disable something.
+ *
+ * @example ../../../docs/Switch.md
+ */
 
 class Switch extends React.Component {
   renderLabel() {
@@ -47,6 +54,7 @@ class Switch extends React.Component {
       <div className={ className }>
         <input
           className="rc-switch-checkbox"
+          disabled={ this.props.disabled }
           checked={ this.props.checked }
           type="checkbox" id={ this.props.name }
           onChange={ this.props.onChange }

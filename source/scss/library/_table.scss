@@ -3,16 +3,16 @@
   text-align: left;
   border-collapse: separate;
   border-spacing: 0;
-  box-shadow: $table-shadow;
+  box-shadow: $reflect-table-shadow;
 
   tr:last-of-type {
     td {
       &:first-of-type {
-        border-bottom-left-radius: $table-border-radius;
+        border-bottom-left-radius: $reflect-table-border-radius;
       }
 
       &:last-of-type {
-        border-bottom-right-radius: $table-border-radius;
+        border-bottom-right-radius: $reflect-table-border-radius;
       }
     }
   }
@@ -23,9 +23,9 @@
   }
 
   th, td {
-    border-bottom: $table-border;
+    border-bottom: $reflect-table-border;
     padding: 10px;
-    font-size: 12px;
+    font-size: $reflect-table-font-size;
     background: white;
   }
 
@@ -33,28 +33,28 @@
     @extend .rc-uppercase;
     font-size: 10px;
     letter-spacing: 1px;
-    background-color: $table-header-bg;
-    border-top: $table-border;
-    color: $table-header-color;
+    background-color: $reflect-table-header-bg;
+    border-top: $reflect-table-border;
+    color: $reflect-table-header-color;
 
     &:first-of-type {
-      border-left: $table-border;
-      border-top-left-radius: $table-border-radius;
+      border-left: $reflect-table-border;
+      border-top-left-radius: $reflect-table-border-radius;
     }
 
     &:last-of-type {
-      border-right: $table-border;
-      border-top-right-radius: $table-border-radius;
+      border-right: $reflect-table-border;
+      border-top-right-radius: $reflect-table-border-radius;
     }
   }
 
   td {
     &:first-of-type {
-      border-left: $table-border;
+      border-left: $reflect-table-border;
     }
 
     &:last-of-type {
-      border-right: $table-border;
+      border-right: $reflect-table-border;
     }
   }
 
@@ -97,14 +97,14 @@
     font-size: 16px;
 
     &:first-child {
-      border-top-left-radius: $border-radius;
-      border-bottom-left-radius: $border-radius;
+      border-top-left-radius: $reflect-border-radius;
+      border-bottom-left-radius: $reflect-border-radius;
       border-left: 1px solid #ddd;
     }
 
     &:last-child {
-      border-top-right-radius: $border-radius;
-      border-bottom-right-radius: $border-radius;
+      border-top-right-radius: $reflect-border-radius;
+      border-bottom-right-radius: $reflect-border-radius;
       border-right: 1px solid #ddd;
     }
   }
@@ -116,7 +116,7 @@
 
   .rc-table-sticky-container {
     height: 500px;
-    overflow-y: scroll;
+    overflow-y: auto;
 
     th {
       padding-left: 0;
@@ -129,10 +129,10 @@
       border-bottom: 1px solid #ccc;
       padding: 10px;
       font-size: 12px;
-      color: $gray;
+      color: $reflect-gray;
       font-size: 10px;
       letter-spacing: 1px;
-      background: $white;
+      background: $reflect-bg-primary;
       position: absolute;
       top: 0;
       width: 100%;

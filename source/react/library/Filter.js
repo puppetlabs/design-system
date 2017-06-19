@@ -1,6 +1,7 @@
 import React from 'react';
 import Select from 'react-select';
 import clone from 'clone';
+import classnames from 'classnames';
 import equals from 'deep-equal';
 import Input from './Input';
 import SplitButton from './SplitButton';
@@ -10,6 +11,13 @@ const propTypes = {
   fields: React.PropTypes.array.isRequired,
   onDuplicate: React.PropTypes.func,
   onChange: React.PropTypes.func,
+  /** The filter operators that we support */
+  operators: React.PropTypes.arrayOf(React.PropTypes.shape({
+    symbol: React.PropTypes.string,
+    label: React.PropTypes.string,
+    noValue: React.PropTypes.bool,
+  })),
+  /** A filter that the user can modify */
   filter: React.PropTypes.shape({
     field: React.PropTypes.string,
     value: React.PropTypes.oneOfType([
@@ -22,6 +30,7 @@ const propTypes = {
 
 const defaultProps = {
   onChange: () => {},
+  operators: [],
   filter: {
     field: '',
     op: '',
@@ -29,7 +38,11 @@ const defaultProps = {
   },
 };
 
-const isValid = filter => !!(filter.field && filter.op && filter.value);
+/**
+ * `Filter` is a control for creating and editing filters.
+ *
+ * @example ../../../docs/Filter.md
+ */
 
 class Filter extends React.Component {
   constructor(props) {
@@ -37,9 +50,10 @@ class Filter extends React.Component {
 
     this.state = {
       filter: props.filter,
-      valid: isValid(props.filter),
+      valid: this.isValid(props.filter),
     };
 
+    this.isValid = this.isValid.bind(this);
     this.onFilterChange = this.onFilterChange.bind(this);
     this.onOptionSelect = this.onOptionSelect.bind(this);
     this.onDropdownSelect = this.onDropdownSelect.bind(this);
@@ -47,7 +61,7 @@ class Filter extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (!equals(newProps.filter, this.state.filter)) {
-      const valid = isValid(newProps.filter);
+      const valid = this.isValid(newProps.filter);
 
       this.setState({ filter: newProps.filter, valid });
     }
@@ -62,10 +76,26 @@ class Filter extends React.Component {
   }
 
   onFilterChange(prop, value) {
+    const newState = {};
     const newFilter = clone(this.state.filter);
     newFilter[prop] = value;
+    newState.filter = newFilter;
 
-    this.setState({ filter: newFilter });
+    // We want to check any changes to op, as value is sometimes not used.
+    if (prop === 'op') {
+      const isValid = this.isValid(newFilter);
+
+      newState.valid = isValid;
+
+      const fullOp = this.getFullValuelessOperator(value);
+
+      // If the op is valueless, lets clear a previously set value.
+      if (fullOp) {
+        newState.filter.value = defaultProps.filter.value;
+      }
+    }
+
+    this.setState(newState);
   }
 
   onOptionSelect(type) {
@@ -87,14 +117,45 @@ class Filter extends React.Component {
     }
   }
 
+  getFullValuelessOperator(shortOp) {
+    return this.props.operators.filter(op => op.noValue && op.symbol === shortOp)[0];
+  }
+
+  isValid(filter) {
+    let valid = !!(filter.field && filter.op && filter.value);
+
+    if (filter.op && !filter.value) {
+      const fullOp = this.getFullValuelessOperator(filter.op);
+
+      if (fullOp) {
+        valid = !!(filter.field && filter.op);
+      }
+    }
+
+    return valid;
+  }
+
+  shouldRenderValue() {
+    let render = true;
+
+    // Find the current operator in the props.operators array, where noValue is true
+    const fullOp = this.getFullValuelessOperator(this.state.filter.op);
+
+    if (fullOp) {
+      render = false;
+    }
+
+    return render;
+  }
+
   renderSplitButton() {
     const dropdownOptions = [
-      { value: 'Delete', id: 1 },
+      { value: 'Delete', id: 0 },
     ];
 
     if (this.props.onDuplicate) {
       dropdownOptions.push(
-        { value: 'Duplicate', id: 0 },
+        { value: 'Duplicate', id: 1 },
       );
     }
 
@@ -126,15 +187,12 @@ class Filter extends React.Component {
   }
 
   renderOperatorSelect() {
-    const operators = [
-      { value: '=', label: 'Equals', type: 'operator', id: 0 },
-      { value: '!=', label: 'Doesn\'t equal', type: 'operator', id: 1 },
-      { value: '=~', label: 'Contains', type: 'operator', id: 2 },
-      { value: '>', label: 'Greater than', type: 'operator', id: 3 },
-      { value: '<', label: 'Less than', type: 'operator', id: 4 },
-      { value: '>=', label: 'Greater than or equal to', type: 'operator', id: 5 },
-      { value: '<=', label: 'Less than or equal to', type: 'operator', id: 6 },
-    ];
+    const operators = this.props.operators.map((type, i) => ({
+      value: type.symbol,
+      label: type.label,
+      type: 'operator',
+      id: i,
+    }));
 
     return (
       <Select
@@ -155,7 +213,7 @@ class Filter extends React.Component {
     };
 
     const onBlur = () => {
-      const valid = isValid(this.state.filter);
+      const valid = this.isValid(this.state.filter);
 
       this.setState({ valid });
     };
@@ -182,10 +240,18 @@ class Filter extends React.Component {
     const splitButton = this.renderSplitButton();
     const fieldSelect = this.renderFieldSelect(this.props.fields);
     const operatorSelect = this.renderOperatorSelect();
-    const valueInput = this.renderValueInput();
+    const shouldRenderValue = this.shouldRenderValue();
+    const className = classnames('rc-filter-form', {
+      'rc-filter-form-no-value': !shouldRenderValue,
+    });
+    let valueInput;
+
+    if (shouldRenderValue) {
+      valueInput = this.renderValueInput();
+    }
 
     return (
-      <div className="rc-filter-form">
+      <div className={ className }>
         { splitButton }
         <div className="rc-filter-form-fields">
           <div className="rc-selects-row">

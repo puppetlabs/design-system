@@ -6,7 +6,7 @@ import React from 'react';
 import Icon from '../source/react/library/Icon';
 
 describe('<Icon />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should have className "rc-icon-edit" if "edit" is passed in as type', () => {
     const props = { type: 'edit' };

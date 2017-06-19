@@ -12,7 +12,7 @@ const defaultProps = {
 };
 
 describe('<ColumnInput />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
     const wrapper = shallow(<ColumnInput { ...defaultProps } />);

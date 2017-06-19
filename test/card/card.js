@@ -4,10 +4,10 @@ import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import Card from '../source/react/library/Card';
+import Card from '../../source/react/library/card/Card';
 
 describe('<Card />', () => {
-  jsdom();
+  jsdom({ skipWindowCheck: true });
 
   it('should respond to click events if onClick provided', () => {
     const onClick = sinon.spy();
@@ -16,15 +16,6 @@ describe('<Card />', () => {
     wrapper.simulate('click');
 
     expect(onClick.called).to.equal(true);
-  });
-
-  it('should respond to remove link if onRemove provided', () => {
-    const onRemove = sinon.spy();
-    const wrapper = mount(<Card onRemove={ onRemove } />);
-
-    wrapper.find('.rc-card-remove').simulate('click');
-
-    expect(onRemove.called).to.equal(true);
   });
 
   it('should accept a classname prop', () => {
@@ -37,5 +28,15 @@ describe('<Card />', () => {
     const wrapper = shallow(<Card selected />);
 
     expect(wrapper.hasClass('rc-card-selected'));
+  });
+
+  it('should properly render provided children', () => {
+    const wrapper = shallow(
+      <Card>
+        <span className="test-child">hello!</span>
+      </Card>
+    );
+
+    expect(wrapper.find('.test-child').length).to.eql(1);
   });
 });
