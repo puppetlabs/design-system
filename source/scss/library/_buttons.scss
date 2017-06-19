@@ -230,6 +230,13 @@ a.rc-button, button.rc-button {
   }
 }
 
+button.rc-button {
+  .rc-button-content {
+    top: initial;
+    transform: none; // <button> doesn't play nice with v-center
+  }
+}
+
 a.rc-floating-action-button, button.rc-floating-action-button {
   border-radius: 60px;
   height: $reflect-floating-action-button-height;
