@@ -22,14 +22,14 @@
 
     display: none;
     background: $reflect-remove-background;
-    border-radius: 50%;
+    border-radius: $reflect-circle-radius;
 
     cursor: pointer;
 
     .rc-#{$component}-remove:before {
       background: $reflect-remove-background;
       border: none;
-      border-radius: 50%;
+      border-radius: $reflect-circle-radius;
 
       position: absolute;
       top: -1px;
@@ -42,7 +42,7 @@
     }
 
     &:hover .rc-#{$component}-remove .rc-icon {
-      fill: $reflect-brand-danger;
+      fill: $reflect-danger-color;
     }
 
     .rc-#{$component}-remove {
@@ -53,4 +53,11 @@
       line-height: 20px;
     }
   }
+}
+
+@mixin v-center($display: block, $position: relative) {
+  display: $display;
+  position: $position;
+  top: 50%;
+  transform: translateY(-50%);
 }
