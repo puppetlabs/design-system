@@ -1,6 +1,6 @@
 {
   "name": "@reflect/reflect-charts",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Highly customizable charting library built on top of D3",
   "main": "build/library.js",
   "scripts": {
