@@ -1,10 +1,11 @@
 .rc-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   background: $reflect-card-bg;
   border: $reflect-card-border;
   border-radius: $reflect-card-border-radius;
   box-shadow: $reflect-outer-shadow;
-  display: block;
-  position: relative;
   color: $reflect-card-color;
 
   &:hover {
@@ -14,28 +15,22 @@
   }
 
   &.rc-card-xs {
-    padding: 2px;
+    padding: 13px 2px;
     background-position: center center;
     background-size: cover;
+    border: 2px solid white;
 
-    .rc-card-content {
-      padding: 13px 0px;
-      border: 2px solid white;
-
-      .rc-card-title {
-        margin: 0px;
-        text-align: center;
-        visibility: hidden;
-        font-size: 1em;
-      }
+    .rc-card-title {
+      margin: 0px;
+      text-align: center;
+      visibility: hidden;
+      font-size: 1em;
     }
 
     &:hover {
-      .rc-card-content {
-        background: $reflect-card-bg;
-        .rc-card-title {
-          visibility: visible;
-        }
+      background: $reflect-card-bg;
+      .rc-card-title {
+        visibility: visible;
       }
     }
   }
@@ -77,11 +72,6 @@
     }
   }
 
-  .rc-card-content {
-    background: transparent !important;
-    padding: $reflect-card-padding;
-  }
-
   .rc-card-title {
     color: $reflect-card-title-color;
     font-size: $reflect-card-title-size;
@@ -93,47 +83,19 @@
   }
 
   .rc-card-section {
-    margin: -20px;
-    padding: 20px;
-  }
+    padding: $reflect-card-padding;
+    border-bottom: $reflect-card-border;
 
-  .rc-card-actions {
-    top: 5px;
-    right: 5px;
-    z-index: 24;
-
-    position: absolute;
-    float: right;
-
-    .rc-card-remove {
-      width: 21px;
-      height: 21px;
-
-      background: $reflect-remove-background;
-      border-radius: 50%;
-
-      cursor: pointer;
-      text-align: center;
-      line-height: 20px;
+    &:last-of-type {
+      border-bottom: none;
     }
   }
 
-  .rc-card-actions-hidden {
-    display: none;
-  }
-
-  .rc-card-section {
-    margin: -20px;
-    padding: 20px;
-  }
-
   .rc-card-actions {
-    top: 5px;
-    right: 5px;
-    z-index: 24;
-
     position: absolute;
-    float: right;
+    top: $reflect-card-action-padding;
+    right: $reflect-card-action-padding;
+    z-index: 24;
 
     .rc-card-remove {
       width: 21px;

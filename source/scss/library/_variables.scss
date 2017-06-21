@@ -239,11 +239,12 @@ $reflect-button-disabled-border-color-hover: $reflect-disabled-border-hover !def
 
 // Cards
 // ----------------------------------------------------------------------------
-$reflect-card-padding:                   $reflect-large;
+$reflect-card-padding:                   $reflect-medium !default;
+$reflect-card-action-padding:            $reflect-medium !default;
 
 $reflect-card-color:                     $reflect-font-color-subtle !default;
-$reflect-card-title-size:                $reflect-font-size-large !default;
-$reflect-card-title-color:               $reflect-font-color-subtle !default;
+$reflect-card-title-size:                $reflect-font-size-base !default;
+$reflect-card-title-color:               $reflect-font-color-base !default;
 $reflect-card-subtitle-size:             $reflect-font-size-small !default;
 $reflect-card-subtitle-color:            $reflect-font-color-subtle !default;
 

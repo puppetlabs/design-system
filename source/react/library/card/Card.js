@@ -34,16 +34,6 @@ class Card extends React.Component {
     this.props.onClick(e);
   }
 
-  renderContent() {
-    const children = this.props.children;
-
-    return (
-      <div className="rc-card-content">
-        { children }
-      </div>
-    );
-  }
-
   render() {
     const { size, onClick, height, selected } = this.props;
     const className = classnames('rc-card', {
@@ -53,7 +43,7 @@ class Card extends React.Component {
       'rc-card-selected': selected,
       'rc-card-selectable': onClick,
     }, this.props.className);
-    const content = this.renderContent();
+    const content = this.props.children;
     const styles = {};
     let jsx;
 
