@@ -48,4 +48,12 @@ describe('<Toggle />', () => {
 
     expect(wrapper.prop('onChange').calledOnce).to.equal(true);
   });
+
+  describe('when disabled', () => {
+    it('should disable the toggle', () => {
+      const wrapper = shallow(<Toggle { ...defaultProps } disabled />);
+
+      expect(wrapper.find('Switch').prop('disabled')).to.eql(true);
+    });
+  });
 });

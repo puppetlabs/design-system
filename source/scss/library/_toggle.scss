@@ -1,6 +1,7 @@
 .rc-toggle {
   .rc-toggle-label {
     color: $reflect-toggle-off-color;
+    transition: color 0.3s;
     cursor: pointer;
 
     &.rc-toggle-active {
