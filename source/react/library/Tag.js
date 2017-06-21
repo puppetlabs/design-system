@@ -73,8 +73,7 @@ class Tag extends React.Component {
 
     if (this.props.onRemove) {
       jsx = (
-        <Button transparent size="auto" onClick={ this.onRemove }>
-          <Icon type="delete" height="12px" width="12px" />
+        <Button icon="delete" transparent size="auto" onClick={ this.onRemove }>
         </Button>
       );
     }

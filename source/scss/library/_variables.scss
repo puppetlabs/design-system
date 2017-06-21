@@ -563,11 +563,14 @@ $reflect-tag-color:                      $reflect-font-color-medium !default;
 $reflect-tag-font-size:                  $reflect-button-font-size !default;
 $reflect-tag-font-weight:                $reflect-button-font-weight !default;
 $reflect-tag-height:                     33px !default;
-$reflect-tag-icon-spacing:               $reflect-tiny !default;
 $reflect-tag-line-height:                $reflect-tag-height !default;
-$reflect-tag-margin:                     0 $reflect-tiny $reflect-tiny 0 !default;
-$reflect-tag-padding:                    0 $reflect-small !default;
+$reflect-tag-margin:                     $reflect-tiny $reflect-tiny 0 !default;
+$reflect-tag-padding:                    $reflect-small !default;
 $reflect-tag-shadow-selected:            $reflect-selected-shadow !default;
+
+$reflect-tag-icon-spacing:               $reflect-tiny !default;
+$reflect-tag-icon-size:                  14px !default;
+
 
 $reflect-tag-tiny-case:                  uppercase !default;
 $reflect-tag-tiny-font-size:             $reflect-font-size-tiny !default;
