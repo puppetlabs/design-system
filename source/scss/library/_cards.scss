@@ -1,7 +1,7 @@
 .rc-card {
   background: $reflect-card-bg;
   border: $reflect-card-border;
-  border-radius: $reflect-border-radius;
+  border-radius: $reflect-card-border-radius;
   box-shadow: $reflect-outer-shadow;
   display: block;
   position: relative;
@@ -63,6 +63,7 @@
 
     &:hover {
       border: $reflect-card-border-hover;
+      box-shadow: $reflect-card-shadow-hover;
     }
   }
 
@@ -71,23 +72,54 @@
     box-shadow: $reflect-card-shadow-selected;
 
     &:hover {
-      border: $reflect-card-border-selected;
+      border: $reflect-card-border-selected-hover;
+      box-shadow: $reflect-card-shadow-selected-hover;
     }
   }
 
   .rc-card-content {
     background: transparent !important;
-    padding: 20px;
+    padding: $reflect-card-padding;
   }
 
   .rc-card-title {
     color: $reflect-card-title-color;
-    font-size: 1.2em;
+    font-size: $reflect-card-title-size;
   }
 
   .rc-card-subtitle {
     color: $reflect-card-subtitle-color;
-    font-size: 0.8em;
+    font-size: $reflect-card-subtitle-size;
+  }
+
+  .rc-card-section {
+    margin: -20px;
+    padding: 20px;
+  }
+
+  .rc-card-actions {
+    top: 5px;
+    right: 5px;
+    z-index: 24;
+
+    position: absolute;
+    float: right;
+
+    .rc-card-remove {
+      width: 21px;
+      height: 21px;
+
+      background: $reflect-remove-background;
+      border-radius: 50%;
+
+      cursor: pointer;
+      text-align: center;
+      line-height: 20px;
+    }
+  }
+
+  .rc-card-actions-hidden {
+    display: none;
   }
 
   .rc-card-section {

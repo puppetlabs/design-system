@@ -1,5 +1,8 @@
 .rc-icon {
   fill: $reflect-icon-fill;
+  &:hover {
+    fill: $reflect-icon-fill-hover;
+  }
 }
 
 .rc-icon-filter {

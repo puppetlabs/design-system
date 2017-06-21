@@ -26,8 +26,8 @@
     border-radius: 21px;
     outline: 0;
     cursor: pointer;
-    background: $reflect-gray-lighter;
-    color: #ccc;
+    background: $reflect-switch-off-bg;
+    color: $reflect-switch-off-text;
     transition: all 0.4s ease;
 
     .rc-icon {
@@ -44,7 +44,7 @@
       left: $reflect-switch-padding;
       width: $reflect-switch-handle-height;
       height: $reflect-switch-handle-height;
-      background: #ccc;
+      background: $reflect-action-icon-alt;
       border-radius: $reflect-switch-handle-height;
       transition: all 0.2s ease;
     }
@@ -95,13 +95,13 @@
   border: 0;
 
   &:checked + .rc-switch-label {
-    background: $reflect-brand-primary;
-    color: $reflect-bg-primary;
+    background: $reflect-switch-on-bg;
+    color: $reflect-switch-on-text;
 
     &:after {
       left: auto;
       right: $reflect-switch-padding;
-      background: $reflect-bg-primary;
+      background: $reflect-switch-on-icon-fill;
     }
 
     .rc-switch-label-off {

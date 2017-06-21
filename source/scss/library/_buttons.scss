@@ -1,15 +1,26 @@
-@mixin button-colors($bg, $bg-hover, $color, $color-hover, $reflect-border, $reflect-border-hover) {
+@mixin button-square($size) {
+  width: $size;
+  height: $size;
+}
+
+@mixin button-colors($bg, $bg-hover, $color, $color-hover, $icon-color, $icon-hover, $border, $border-hover) {
   background: $bg;
-  border: 1px solid $reflect-border;
+  border: 1px solid $border;
   color: $color !important;
+
+  &[disabled] {
+    &:hover {
+      border-color: $border;
+    }
+  }
 
   &:hover {
     background: $bg-hover;
-    border: 1px solid $reflect-border-hover;
+    border: 1px solid $border-hover;
     color: $color-hover !important;
 
     .rc-icon {
-      fill: $color-hover;
+      fill: $icon-hover;
     }
 
     .rc-button-menu-inner {
@@ -25,8 +36,13 @@
     background: $bg;
   }
 
+  &.rc-button-processing:hover {
+    background: $bg;
+    border-color: $border;
+  }
+
   .rc-icon {
-    fill: $color;
+    fill: $icon-color;
   }
 
   .rc-button-menu-inner {
@@ -37,32 +53,38 @@
     }
   }
 }
+
 a.rc-button, button.rc-button {
-  text-transform: uppercase;
+  text-transform: $reflect-button-text-case;
   letter-spacing: 1px;
   display: inline-block;
-  height: 44px;
-  line-height: 40px;
+  height: $reflect-button-height;
   text-align: center;
-  padding: 0px 20px;
+  padding: 0px $reflect-button-padding;
   white-space: nowrap;
   cursor: pointer;
   border-radius: $reflect-button-border-radius;
   outline: none;
+
 
   @include button-colors(
     $reflect-button-bg,
     $reflect-button-bg-hover,
     $reflect-button-color,
     $reflect-button-color-hover,
+    $reflect-button-icon-color,
+    $reflect-button-icon-color-hover,
     $reflect-button-border-color,
     $reflect-button-border-color-hover
   );
+
 
   &.rc-button-block {
     display: block;
     width: 100%;
   }
+
+
 
   &.rc-button-badged {
     position: relative;
@@ -73,7 +95,7 @@ a.rc-button, button.rc-button {
       width: $reflect-button-badge-size;
 
       border: ($reflect-button-badge-size / 3) solid white;
-      border-radius: 100px;
+      border-radius: $reflect-circle-radius;
       box-sizing: content-box;
 
       position: absolute;
@@ -91,12 +113,10 @@ a.rc-button, button.rc-button {
 
     .rc-icon {
       float: none;
-      position: absolute;
-      top: 50%;
       left: 0;
       width: 100%;
       height: 80%;
-      transform: translateY(-50%);
+      @include v-center(block, absolute);
     }
   }
 
@@ -106,6 +126,8 @@ a.rc-button, button.rc-button {
       $reflect-button-secondary-bg-hover,
       $reflect-button-secondary-color,
       $reflect-button-secondary-color-hover,
+      $reflect-button-secondary-icon-color,
+      $reflect-button-secondary-icon-color-hover,
       $reflect-button-secondary-border-color,
       $reflect-button-secondary-border-color-hover
     )
@@ -113,19 +135,21 @@ a.rc-button, button.rc-button {
 
   &.rc-button-transparent {
     @include button-colors(
-      transparent,
-      transparent,
-      $reflect-button-transparent-color,
-      $reflect-button-transparent-color-hover,
-      transparent,
-      transparent
+      $reflect-button-clear-bg,
+      $reflect-button-clear-bg-hover,
+      $reflect-button-clear-color,
+      $reflect-button-clear-color-hover,
+      $reflect-button-clear-icon-color,
+      $reflect-button-clear-icon-color-hover,
+      $reflect-button-clear-border-color,
+      $reflect-button-clear-border-color-hover
     );
 
     &[disabled] {
-      background: transparent;
+      background: $reflect-button-clear-bg;
 
       &:hover {
-        background: transparent;
+        background: $reflect-button-clear-bg;
       }
     }
   }
@@ -137,60 +161,84 @@ a.rc-button, button.rc-button {
   }
 
   &.rc-button-tiny {
-    height: 22px;
-    line-height: 20px;
-    padding: 0 5px;
-    font-size: $reflect-font-size-tiny;
+    height: $reflect-button-tiny-height;
+    // line-height: $reflect-button-tiny-line-height;
+    padding: 0 $reflect-button-tiny-padding;
 
     &.rc-button-round {
-      padding: 0 2px;
+      padding: 0 3px;
     }
 
     .rc-button-content {
-      font-size: $reflect-font-size-tiny;
+      font-size: $reflect-button-tiny-font-size;
     }
   }
 
   &.rc-button-small {
-    height: 33px;
-    line-height: 29px;
-    padding: 0 8px;
+    height: $reflect-button-small-height;
+    // line-height: $reflect-button-small-line-height;
+    padding: 0 $reflect-button-small-padding;
+
+    .rc-button-content {
+      font-size: $reflect-button-font-size;
+    }
   }
 
   &.rc-button-large {
-    font-size: 14px;
-    height: 60px;
-    line-height: 59px;
+    height: $reflect-button-large-height;
+    // line-height: $reflect-button-large-line-height;
+    padding: 0 $reflect-button-large-padding;
+
+    .rc-button-content {
+      font-size: $reflect-button-large-font-size;
+    }
   }
 
   &.rc-button-round {
-    border-radius: 10000px;
+    border-radius: $reflect-circle-radius;
   }
 
   &[disabled] {
-    &:hover {
-      color: $reflect-button-color-disabled-hover !important;
-      background: $reflect-button-bg-disabled;
-    }
+    @include button-colors(
+      $reflect-button-disabled-bg,
+      $reflect-button-disabled-bg-hover,
+      $reflect-button-disabled-color,
+      $reflect-button-disabled-color-hover,
+      $reflect-button-disabled-icon-color,
+      $reflect-button-disabled-icon-color-hover,
+      $reflect-button-disabled-border-color,
+      $reflect-button-disabled-border-color-hover
+    );
 
     cursor: default;
-    color: $reflect-button-color-disabled !important;
-    background: $reflect-button-bg-disabled;
   }
 
   .rc-icon {
     float: left;
-    display: block;
-    height: 100%;
+    // height: 100%;
+    @include v-center(block, relative);
   }
 
   .rc-button-content {
     font-family: $reflect-button-font-family;
     font-size: $reflect-button-font-size;
+    @include v-center(block, relative);
   }
 
   .rc-icon + .rc-button-content {
     padding-left: 10px;
+    display: inline-block;
+    float: left;
+  }
+}
+
+button.rc-button {
+  .rc-icon, .rc-button-content {
+    top: initial;
+    transform: none; // <button> doesn't play nice with v-center
+  }
+  .rc-button-content {
+    padding-top: 1px;
   }
 }
 
@@ -248,13 +296,13 @@ a.rc-floating-action-button, button.rc-floating-action-button {
     &.rc-button-tiny {
       .rc-button-content {
         padding: 1px;
-
-        font-size: $reflect-font-size-tiny;
+        font-size: $reflect-button-tiny-font-size;
       }
     }
   }
 
   .rc-button-menu {
+
     &.rc-popover-target-open {
       background: $reflect-button-bg-hover;
     }
@@ -287,8 +335,7 @@ a.rc-floating-action-button, button.rc-floating-action-button {
     }
 
     padding: 0 10px;
-    display: flex;
-    align-items: center;
+    display: block;
 
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
