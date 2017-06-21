@@ -1,8 +1,8 @@
-import { curveCardinal, line as d3Line } from 'd3-shape';
+import { curveCatmullRom, line as d3Line } from 'd3-shape';
 
 const Line = (x, y, data, options) => {
   const isStacked = options.layout === 'stacked';
-  const type = options.type;
+  const spline = options.spline;
 
   const line = d3Line()
     .x(d => (x(d.x)))
@@ -18,8 +18,8 @@ const Line = (x, y, data, options) => {
       return result;
     });
 
-  if (type === 'spline') {
-    line.curve(curveCardinal);
+  if (spline) {
+    line.curve(curveCatmullRom);
   }
 
   return line(data);

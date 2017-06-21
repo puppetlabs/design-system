@@ -1,8 +1,12 @@
+import clone from 'clone';
+import DataSet from '../lib/DataSet';
+
 class Chart {
-  constructor({ elem, data, options, dispatchers }) {
+  constructor({ elem, type, data, options, dispatchers }) {
     this.elem = elem;
-    this.data = data;
-    this.options = options;
+    this.type = type;
+    this.options = clone(options);
+    this.data = new DataSet(data, this.options, type);
     this.dispatchers = dispatchers;
 
     if (!this.render) {
@@ -15,6 +19,10 @@ class Chart {
       this.update = this.update.bind(this);
       this.dispatchers.on('update', this.update);
     }
+  }
+
+  getPlotOptions(type) {
+    return this.options[type] || {};
   }
 }
 

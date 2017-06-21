@@ -1,3 +1,14 @@
+# 0.0.3
+
+## Improvements
+
+* Combination charts
+* Support for splines
+
+## Fixes
+
+* Various bug fixes related to options, axis, etc.
+
 # 0.0.2
 
 ## Improvements

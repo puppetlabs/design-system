@@ -61,31 +61,35 @@ class Container {
     const xScale = new XScale(categories, options, dimensions, this.type);
     const x = xScale.generate();
 
-    const xAxis = new XAxis(categories, x, dimensions, options.axis.x);
-    const tempX = xAxis.render(testSVG);
+    if (options.axis.x.enabled !== false) {
+      const xAxis = new XAxis(categories, x, dimensions, options.axis.x);
+      const tempX = xAxis.render(testSVG);
 
-    const xAxisHeight = tempX.node().getBBox().height;
-    this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
+      const xAxisHeight = tempX.node().getBBox().height;
+      this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
+    }
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
-      const data = this.data.getDataByYAxis(yAxisIndex);
+      if (yOptions.enabled !== false) {
+        const data = this.data.getDataByYAxis(yAxisIndex);
 
-      if (data.length > 0) {
-        const yScale = new YScale(data, yOptions, options.layout, dimensions);
-        const y = yScale.generate();
+        if (data.length > 0) {
+          const yScale = new YScale(data, yOptions, options.layout, dimensions, options);
+          const y = yScale.generate();
 
-        const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
-        const axis = yAxis.render(testSVG);
+          const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
+          const axis = yAxis.render(testSVG);
 
-        const yAxisWidth = axis.node().getBBox().width;
+          const yAxisWidth = axis.node().getBBox().width;
 
-        // TODO: This is currently assuming there is only 1 left axis and 1 right axis
-        // We haven't found a use case for more than 1 axis with the same orientation yet
-        // If we do this will need to be updated.
-        if (!yOptions.orientation || yOptions.orientation === 'left') {
-          this.dimensions.margins.left = yAxisWidth + dimensions.defaultMargins.left;
-        } else {
-          this.dimensions.margins.right = yAxisWidth + dimensions.defaultMargins.right;
+          // TODO: This is currently assuming there is only 1 left axis and 1 right axis
+          // We haven't found a use case for more than 1 axis with the same orientation yet
+          // If we do this will need to be updated.
+          if (!yOptions.orientation || yOptions.orientation === 'left') {
+            this.dimensions.margins.left = yAxisWidth + dimensions.defaultMargins.left;
+          } else {
+            this.dimensions.margins.right = yAxisWidth + dimensions.defaultMargins.right;
+          }
         }
       }
     });

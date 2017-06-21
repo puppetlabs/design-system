@@ -1,3 +1,4 @@
+import clone from 'clone';
 import Chart from './Chart';
 import { XScale, YScale } from '../lib/scales';
 import { XAxis, YAxis } from '../lib/axis';
@@ -8,15 +9,15 @@ import Tooltip from '../lib/Tooltip';
 import SeriesColumn from '../lib/series/SeriesColumn';
 
 class ColumnChart extends Chart {
-  constructor({ elem, data, options, dispatchers }) {
-    super({ elem, data, options, dispatchers });
+  constructor({ elem, type, data, options, dispatchers }) {
+    super({ elem, type, data, options, dispatchers });
 
-    this.type = 'column';
     this.yScales = {};
   }
 
   getOptions() {
-    const { options, data } = this;
+    const data = this.data;
+    const options = clone(this.options);
     const isMultiSeries = data.getSeries().length > 1;
     let layout = 'normal';
 
@@ -60,15 +61,18 @@ class ColumnChart extends Chart {
     this.xScale1 = new XScale(groups, options, x1Dimensions, this.type);
     const x1 = this.xScale1.generate();
 
-    this.tooltip = new Tooltip(seriesData, dimensions, options.tooltips, dispatchers);
+    this.tooltip = new Tooltip(seriesData, dimensions, options, dispatchers);
     this.tooltip.render(wrapper);
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        const yScale = new YScale(data, yOptions, options.layout, dimensions);
+        const plotOptions = this.getPlotOptions(this.type);
+
+        const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
+
         const yAxis = new YAxis(y, dimensions, yOptions);
         yAxis.render(svg);
 
@@ -83,7 +87,7 @@ class ColumnChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
           x1,
@@ -113,7 +117,7 @@ class ColumnChart extends Chart {
     const dimensions = this.container.getDimensions();
 
     this.clipPath.update(dimensions);
-    this.tooltip.update(seriesData, dimensions, options.tooltips, dispatchers);
+    this.tooltip.update(seriesData, dimensions, options, dispatchers);
 
     const x = this.xScale.update(categories, options, dimensions, this.type);
     this.xAxis.update(categories, x, dimensions, options.axis.x);
@@ -127,7 +131,7 @@ class ColumnChart extends Chart {
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const y = scale.yScale.update(data, yOptions, options.layout, dimensions);
+        const y = scale.yScale.update(data, yOptions, options.layout, dimensions, options);
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
@@ -135,13 +139,15 @@ class ColumnChart extends Chart {
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
+        const plotOptions = this.getPlotOptions(this.type);
+
         scale.seriesColumn.update(
           data,
           dimensions,
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
           x1,

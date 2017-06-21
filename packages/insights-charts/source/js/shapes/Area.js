@@ -1,7 +1,8 @@
-import { area as d3Area } from 'd3-shape';
+import { curveCatmullRom, area as d3Area } from 'd3-shape';
 
 const Area = (x, y, data, dimensions, options) => {
   const isStacked = options.layout === 'stacked';
+  const spline = options.spline;
 
   const area = d3Area()
     .x(d => (x(d.x)))
@@ -34,6 +35,10 @@ const Area = (x, y, data, dimensions, options) => {
 
       return yPos;
     });
+
+  if (spline) {
+    area.curve(curveCatmullRom);
+  }
 
   return area(data);
 };

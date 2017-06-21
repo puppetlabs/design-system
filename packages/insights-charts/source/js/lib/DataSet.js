@@ -1,11 +1,10 @@
-import clone from 'clone';
 import moment from 'moment';
+import clone from 'clone';
 import helpers from '../helpers/charting';
 
 class DataSet {
-  constructor(data, options = {}) {
+  constructor(data) {
     this.data = clone(data);
-    this.options = options;
 
     this.validateSeries();
   }
@@ -14,8 +13,16 @@ class DataSet {
     return this.data.series.filter(d => d.disabled !== true).map(d => d.label);
   }
 
+  getGroupsByType(type) {
+    return this.data.series.filter(d => d.disabled !== true && d.type === type).map(d => d.label);
+  }
+
+  getCategoryType() {
+    return helpers.detectCategoryType(this.data.categories);
+  }
+
   getCategories() {
-    const type = helpers.detectCategoryType(this.data.categories);
+    const type = this.getCategoryType();
 
     return this.data.categories.map((category) => {
       let result;
@@ -43,9 +50,8 @@ class DataSet {
     ));
   }
 
-  getSeries(idx) {
+  getSeries() {
     const categories = this.getCategories();
-    const options = this.options;
     let series;
 
     series = this.data.series.map((s, index) => {
@@ -66,46 +72,40 @@ class DataSet {
       return s;
     });
 
-    if (options.layout === 'stacked') {
-      const setupStack = function (originalSeries) {
-        const columns = {};
+    const setupStack = function (originalSeries) {
+      const columns = {};
 
-        originalSeries.forEach((s) => {
-          if (s.disabled !== true) {
-            const yIndex = s.axis !== undefined ? s.axis : 0;
+      originalSeries.forEach((s) => {
+        if (s.disabled !== true) {
+          const yIndex = s.axis !== undefined ? s.axis : 0;
 
-            if (typeof columns[yIndex] === 'undefined') {
-              columns[yIndex] = {};
+          if (typeof columns[yIndex] === 'undefined') {
+            columns[yIndex] = {};
+          }
+
+          s.data.forEach((d) => {
+            if (typeof columns[yIndex][d.x] === 'undefined') {
+              columns[yIndex][d.x] = {
+                y0Positive: 0,
+                y0Negative: 0,
+              };
             }
 
-            s.data.forEach((d) => {
-              if (typeof columns[yIndex][d.x] === 'undefined') {
-                columns[yIndex][d.x] = {
-                  y0Positive: 0,
-                  y0Negative: 0,
-                };
-              }
+            if (d.y >= 0) {
+              d.y0 = columns[yIndex][d.x].y0Positive;
+              columns[yIndex][d.x].y0Positive += d.y;
+            } else if (d.y < 0) {
+              d.y0 = columns[yIndex][d.x].y0Negative;
+              columns[yIndex][d.x].y0Negative += d.y;
+            }
+          });
+        }
+      });
 
-              if (d.y >= 0) {
-                d.y0 = columns[yIndex][d.x].y0Positive;
-                columns[yIndex][d.x].y0Positive += d.y;
-              } else if (d.y < 0) {
-                d.y0 = columns[yIndex][d.x].y0Negative;
-                columns[yIndex][d.x].y0Negative += d.y;
-              }
-            });
-          }
-        });
+      return originalSeries;
+    };
 
-        return originalSeries;
-      };
-
-      series = setupStack(series);
-    }
-
-    if (typeof idx !== 'undefined') {
-      series = this.data.series[idx];
-    }
+    series = setupStack(series);
 
     this.seriesData = series;
 

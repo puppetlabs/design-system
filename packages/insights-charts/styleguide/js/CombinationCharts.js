@@ -2,7 +2,7 @@ import React from 'react';
 import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
-class AreaCharts extends React.Component {
+class CombinationCharts extends React.Component {
   componentDidMount() {
     const dataPoints = 10;
 
@@ -11,17 +11,33 @@ class AreaCharts extends React.Component {
       series: [
         {
           label: 'Profit',
+          type: 'column',
+          data: getRandomData(dataPoints),
+        },
+        {
+          label: 'Loss',
+          type: 'column',
+          data: getRandomData(dataPoints),
+        },
+        {
+          label: 'Margin',
+          type: 'line',
+          axis: 1,
           data: getRandomData(dataPoints),
         },
       ],
     };
 
     const options = {
-      area: {},
+      column: {
+        layout: 'grouped',
+      },
+      line: {
+        spline: true,
+      },
       axis: {
         y: [
           {
-            enabled: false,
             ticks: 4,
             orientation: 'left',
             title: 'Left Axis',
@@ -38,45 +54,29 @@ class AreaCharts extends React.Component {
         },
       },
       grid: {
-        enabled: false,
-        horizontal: false,
-        vertical: false,
+        enabled: true,
+        horizontal: true,
+        vertical: true,
       },
     };
 
-    const area = new ReflectChart(this.basic, {
-      type: 'area',
+    const chart1 = new ReflectChart(this.basic, {
+      type: 'combination',
       data,
       options,
     });
 
-    area.render();
-
-    options.area.layout = 'stacked';
-
-    const stackedArea = new ReflectChart(this.stacked, {
-      type: 'area',
-      data,
-      options,
-    });
-
-    stackedArea.on('legendItemClick', () => {
-      console.log('you got me!!!');
-    });
-
-    stackedArea.render();
+    chart1.render();
   }
 
   render() {
     return (
       <div>
-        <h1>Basic Area</h1>
+        <h1>Combination (Column & Line)</h1>
         <div className="sg-chart" ref={ (c) => { this.basic = c; } } />
-        <h1>Stacked Area</h1>
-        <div className="sg-chart" ref={ (c) => { this.stacked = c; } } />
       </div>
     );
   }
 }
 
-export default AreaCharts;
+export default CombinationCharts;

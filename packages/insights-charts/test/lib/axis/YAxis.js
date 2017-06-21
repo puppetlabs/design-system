@@ -42,4 +42,25 @@ describe('YAxis', () => {
 
     expect(global.chart.select('.reflect-charts-axis-y').attr('transform')).to.eql(`translate(${dimensions.width}, 0)`);
   });
+
+  describe('when disabled', () => {
+    it('should not render anything', () => {
+      const yAxis = new YAxis(y, dimensions, { enabled: false });
+      const axis = yAxis.render(global.chart);
+
+      expect(axis).to.not.exist;
+
+      expect(global.chart.select('.reflect-charts-axis-y').empty()).to.eql(true);
+    });
+
+    it('should not update', () => {
+      const yAxis = new YAxis(y, dimensions, { enabled: false });
+      const axis = yAxis.render(global.chart);
+      yAxis.update(y, dimensions, { enabled: false });
+
+      expect(axis).to.not.exist;
+
+      expect(global.chart.select('.reflect-charts-axis-y').empty()).to.eql(true);
+    });
+  });
 });

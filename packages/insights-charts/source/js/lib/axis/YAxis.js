@@ -90,6 +90,8 @@ class YAxis {
   }
 
   update(y, dimensions, options) {
+    if (!this.axis) return;
+
     this.y = y;
     this.dimensions = dimensions;
     this.options = options;

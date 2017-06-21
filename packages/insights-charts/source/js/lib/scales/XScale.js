@@ -25,6 +25,7 @@ class XScale {
           .range([0, width]);
       } else {
         this.x = scalePoint()
+          .padding(0.5)
           .range([0, width]);
       }
 

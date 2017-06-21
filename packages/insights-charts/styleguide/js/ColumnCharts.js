@@ -7,7 +7,7 @@ class ColumnCharts extends React.Component {
     const dataPoints = 10;
 
     const data = {
-      categories: getRandomCategories(dataPoints, 'ordinal'),
+      categories: getRandomCategories(dataPoints),
       series: [
         {
           label: 'Profit',
@@ -21,16 +21,19 @@ class ColumnCharts extends React.Component {
     };
 
     const singleSeriesData = {
-      categories: getRandomCategories(dataPoints, 'ordinal'),
+      categories: getRandomCategories(dataPoints),
       series: [
         {
           label: 'Profit',
-          data: getRandomData(dataPoints, -10000000000, 10000, true),
+          data: getRandomData(dataPoints),
         },
       ],
     };
 
     const options = {
+      column: {
+        layout: 'stacked',
+      },
       axis: {
         y: [{
           ticks: 4,
@@ -59,7 +62,7 @@ class ColumnCharts extends React.Component {
 
     chart1.render();
 
-    options.layout = 'grouped';
+    options.column.layout = 'grouped';
 
     const chart2 = new ReflectChart(this.grouped, {
       type: 'column',
@@ -69,7 +72,7 @@ class ColumnCharts extends React.Component {
 
     chart2.render();
 
-    options.layout = 'stacked';
+    options.column.layout = 'stacked';
 
     const chart3 = new ReflectChart(this.stacked, {
       type: 'column',

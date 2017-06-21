@@ -1,8 +1,12 @@
 .reflect-charts-legend {
-  max-width: 150px;
+  max-width: $reflect-legend-max-width;
+
   position: absolute;
   top: 0;
   right: 0;
+  bottom: 0;
+
+  overflow-y: scroll;
 }
 
 .reflect-charts-legend-item {

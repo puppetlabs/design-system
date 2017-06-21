@@ -16,7 +16,7 @@ describe('formatters', () => {
 
   describe('numeric', () => {
     it('should properly format with the precision of 0', () => {
-      expect(formatters.numeric(1000000.0000)).to.eql('1000000');
+      expect(formatters.numeric(1000000.0000)).to.eql('1,000,000');
     });
   });
 

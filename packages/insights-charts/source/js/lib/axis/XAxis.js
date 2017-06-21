@@ -118,7 +118,7 @@ class XAxis {
     const { height, width } = this.dimensions;
     const options = this.options;
 
-    if (options.enabled) {
+    if (options.enabled !== false) {
       const axis = this.getAxisFunction(this.x, options);
 
       this.axis = elem.append('g')
@@ -141,6 +141,8 @@ class XAxis {
   }
 
   update(categories, x, dimensions, options) {
+    if (!this.axis) return;
+
     this.categories = categories;
     this.x = x;
     this.dimensions = dimensions;

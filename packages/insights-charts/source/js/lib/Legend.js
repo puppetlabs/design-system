@@ -40,6 +40,10 @@ class Legend {
         legend.style('margin-top', `${margins.top}px`);
       }
 
+      if (margins.bottom) {
+        legend.style('margin-bottom', `${margins.bottom}px`);
+      }
+
       if (margins.right) {
         legend.style('margin-right', `${margins.right}px`);
       }

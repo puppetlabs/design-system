@@ -7,7 +7,6 @@ describe('YScale', () => {
   const generator = new DataGenerator();
 
   const dimensions = { height: 100, margins: { top: 10, bottom: 10, left: 10, right: 10 } };
-  const margins = dimensions.margins;
 
   describe('normal layout', () => {
     const randomData = generator.generate();
@@ -48,7 +47,7 @@ describe('YScale', () => {
   describe('stacked layout', () => {
     generator.setSeriesCount(2);
     const randomData = generator.generate();
-    const data = new DataSet(randomData, { layout: 'stacked' });
+    const data = new DataSet(randomData);
     const seriesData = data.getSeries();
 
     it('should create a domain with the min value of 0 when stacking is enabled and the min is greater than 0', () => {

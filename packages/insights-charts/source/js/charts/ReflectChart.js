@@ -2,12 +2,12 @@ import { select } from 'd3-selection';
 import clone from 'clone';
 import deepmerge from 'deepmerge';
 import Dispatchers from '../lib/Dispatchers';
-import DataSet from '../lib/DataSet';
 
 import AreaChart from './AreaChart';
 import LineChart from './LineChart';
 import ColumnChart from './ColumnChart';
 import DonutChart from './DonutChart';
+import CombinationChart from './CombinationChart';
 
 const defaultOptions = {
 
@@ -96,7 +96,8 @@ class Chart {
     this.beforeRender();
 
     this.chart = new ChartType({
-      data: new DataSet(this.data, this.options, type),
+      data: this.data,
+      type,
       elem: this.elem,
       options: this.options,
       dispatchers: this.dispatchers,
@@ -138,6 +139,9 @@ class Chart {
         break;
       case 'donut':
         chart = DonutChart;
+        break;
+      case 'combination':
+        chart = CombinationChart;
         break;
       default:
         break;

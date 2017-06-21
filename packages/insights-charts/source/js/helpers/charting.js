@@ -90,7 +90,7 @@ const helpers = {
     let highestNumber = 0;
     let highestKey = null;
 
-    if (chartType === 'column' || chartType === 'bar') {
+    if (chartType === 'column' || chartType === 'bar' || chartType === 'combination') {
       highestKey = 'ordinal';
     } else {
       domain.forEach((d) => {

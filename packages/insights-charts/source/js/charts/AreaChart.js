@@ -13,10 +13,9 @@ import SeriesPoi from '../lib/series/SeriesPoi';
 import CSS from '../helpers/css';
 
 class AreaChart extends Chart {
-  constructor({ elem, data, options, dispatchers }) {
-    super({ elem, data, options, dispatchers });
+  constructor({ elem, type, data, options, dispatchers }) {
+    super({ elem, type, data, options, dispatchers });
 
-    this.type = 'area';
     this.yScales = {};
   }
 
@@ -36,7 +35,7 @@ class AreaChart extends Chart {
     this.clipPath = new ClipPath({ width: 0, height: dimensions.height }, options.animations);
     this.clipPath.render(svg);
 
-    this.tooltip = new Tooltip(seriesData, dimensions, options.tooltips, dispatchers);
+    this.tooltip = new Tooltip(seriesData, dimensions, options, dispatchers);
     this.tooltip.render(wrapper);
 
     this.xScale = new XScale(categories, options, dimensions, this.type);
@@ -52,7 +51,9 @@ class AreaChart extends Chart {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        const yScale = new YScale(data, yOptions, options.layout, dimensions);
+        const plotOptions = this.getPlotOptions(this.type);
+
+        const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
         const yAxis = new YAxis(y, dimensions, yOptions);
         yAxis.render(svg);
@@ -68,7 +69,7 @@ class AreaChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
         );
@@ -81,7 +82,7 @@ class AreaChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
         );
@@ -94,7 +95,7 @@ class AreaChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
         );
@@ -126,19 +127,20 @@ class AreaChart extends Chart {
     const dimensions = this.container.getDimensions();
 
     this.clipPath.update(dimensions);
-    this.tooltip.update(seriesData, dimensions, options.tooltips, dispatchers);
+    this.tooltip.update(seriesData, dimensions, options, dispatchers);
 
     const x = this.xScale.update(categories, options, dimensions, this.type);
     this.xAxis.update(categories, x, dimensions, options.axis.x);
 
-    this.pointOverlay.update(categories, x, dimensions, dispatchers);
+    this.pointOverlay.update(categories, x, dimensions, dispatchers, options);
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       const data = this.data.getDataByYAxis(yAxisIndex);
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const y = scale.yScale.update(data, yOptions, options.layout, dimensions);
+        const plotOptions = this.getPlotOptions(this.type);
+        const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
@@ -152,7 +154,7 @@ class AreaChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
         );
@@ -163,7 +165,7 @@ class AreaChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
         );
@@ -174,7 +176,7 @@ class AreaChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
         );

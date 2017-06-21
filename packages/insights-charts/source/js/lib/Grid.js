@@ -53,7 +53,9 @@ class Grid {
       }
     }
 
-    this.grid.lower();
+    if (this.grid) {
+      this.grid.lower();
+    }
 
     return this.grid;
   }
@@ -66,8 +68,13 @@ class Grid {
 
     const { height, width } = dimensions;
 
-    this.verticalGrid.call(this.renderXGridLines().tickSize(-height).tickFormat(''));
-    this.horizontalGrid.call(this.renderYGridLines().tickSize(-width).tickFormat(''));
+    if (this.verticalGrid) {
+      this.verticalGrid.call(this.renderXGridLines().tickSize(-height).tickFormat(''));
+    }
+
+    if (this.horizontalGrid) {
+      this.horizontalGrid.call(this.renderYGridLines().tickSize(-width).tickFormat(''));
+    }
   }
 }
 

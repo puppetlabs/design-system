@@ -213,7 +213,7 @@ class Tooltip {
     let mouseY = mouse[1] + (dimensions.margins.top - (this.tooltipDimensions.height / 2));
 
     // Don't let tooltip bleed above the top
-    if (mouseY < 0) {
+    if (mouseY < TOOLTIP_VERTICAL_PADDING) {
       mouseY = TOOLTIP_VERTICAL_PADDING;
     }
 

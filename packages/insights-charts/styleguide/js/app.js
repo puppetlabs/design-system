@@ -6,6 +6,7 @@ import LineCharts from './LineCharts';
 import ColumnCharts from './ColumnCharts';
 import AreaCharts from './AreaCharts';
 import DonutCharts from './DonutCharts';
+import CombinationCharts from './CombinationCharts';
 import '../scss/styleguide.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -18,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route name="Area charts" path="area-charts" components={ AreaCharts } />
         <Route name="Column charts" path="column-charts" components={ ColumnCharts } />
         <Route name="Donut charts" path="donut-charts" components={ DonutCharts } />
+        <Route
+          name="Combination charts"
+          path="combination-charts"
+          components={ CombinationCharts }
+        />
         <IndexRedirect to="/line-charts" />
       </Route>
     </Router>

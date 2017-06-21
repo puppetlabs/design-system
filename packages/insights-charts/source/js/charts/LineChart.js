@@ -12,10 +12,9 @@ import SeriesPoi from '../lib/series/SeriesPoi';
 import CSS from '../helpers/css';
 
 class LineChart extends Chart {
-  constructor({ elem, data, options, dispatchers }) {
-    super({ elem, data, options, dispatchers });
+  constructor({ elem, type, data, options, dispatchers }) {
+    super({ elem, type, data, options, dispatchers });
 
-    this.type = 'line';
     this.yScales = {};
   }
 
@@ -51,7 +50,7 @@ class LineChart extends Chart {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        const yScale = new YScale(data, yOptions, options.layout, dimensions);
+        const yScale = new YScale(data, yOptions, options.layout, dimensions, options);
         const y = yScale.generate();
 
         // only use the first series for the grid
@@ -63,13 +62,15 @@ class LineChart extends Chart {
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
 
+        const plotOptions = this.getPlotOptions(this.type);
+
         const seriesLine = new SeriesLine(
           data,
           dimensions,
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
         );
@@ -82,7 +83,7 @@ class LineChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
         );
@@ -118,14 +119,14 @@ class LineChart extends Chart {
     const x = this.xScale.update(categories, options, dimensions, this.type);
     this.xAxis.update(categories, x, dimensions, options.axis.x);
 
-    this.pointOverlay.update(categories, x, dimensions, dispatchers);
+    this.pointOverlay.update(categories, x, dimensions, dispatchers, options);
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       const data = this.data.getDataByYAxis(yAxisIndex);
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const y = scale.yScale.update(data, yOptions, options.layout, dimensions);
+        const y = scale.yScale.update(data, yOptions, options.layout, dimensions, options);
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
@@ -133,13 +134,15 @@ class LineChart extends Chart {
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
+        const plotOptions = this.getPlotOptions(this.type);
+
         scale.seriesLine.update(
           data,
           dimensions,
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
         );
@@ -150,7 +153,7 @@ class LineChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
         );

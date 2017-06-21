@@ -44,7 +44,7 @@ describe('DataSet', () => {
     });
 
     it('should stack the data when using stacked layout', () => {
-      const dataset = new DataSet(seriesDataFixture, { layout: 'stacked' });
+      const dataset = new DataSet(seriesDataFixture);
       const series = dataset.getSeries();
 
       series.forEach((s, seriesIndex) => {

@@ -1,7 +1,5 @@
-.reflect-charts-area {
-  @include reflect-colors(area);
+@include reflect-colors(area);
 
-  .reflect-charts-area-path {
-    pointer-events: none;
-  }
+.reflect-charts-area-path {
+  pointer-events: none;
 }
