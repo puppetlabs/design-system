@@ -7,8 +7,13 @@ import DropdownMenu from '../dropdown/DropdownMenu';
 const propTypes = {
   children: React.PropTypes.object,
   menuOptions: React.PropTypes.object,
+  onOptionClick: React.PropTypes.func,
   className: React.PropTypes.string,
   onRemove: React.PropTypes.func,
+};
+
+const defaultProps = {
+  onOptionClick: () => {},
 };
 
 class CardActions extends React.Component {
@@ -54,6 +59,7 @@ class CardActions extends React.Component {
           anchor="bottom right"
           target={ target }
           options={ this.props.menuOptions }
+          onChange={ this.props.onOptionClick }
         />
       );
     }
@@ -78,5 +84,6 @@ class CardActions extends React.Component {
 }
 
 CardActions.propTypes = propTypes;
+CardActions.defaultProps = defaultProps;
 
 export default CardActions;
