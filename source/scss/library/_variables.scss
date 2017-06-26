@@ -22,6 +22,9 @@ $reflect-bg-primary:                     $reflect-white !default;
 $reflect-bg-subtle:                      $reflect-gray-lighter !default;
 $reflect-bg-dark:                        $reflect-gray-base !default;
 
+// Charts
+$reflect-primary-chart-color:            $reflect-brand-primary !default;
+
 // Action Colors
 // Colors used for primary buttons and other action elements
 // Text is typically on a bg color - by default it is white text & icons on a blue bg
@@ -68,12 +71,18 @@ $reflect-inactive-color-hover:           $reflect-action-hover-alt !default;
 $reflect-anchor-color:                   $reflect-action-color !default;
 $reflect-anchor-hover:                   $reflect-action-hover !default;
 
-// Danger Colors
-// Used to provide a warning for irreversible actions and errors
+// Status Colors
+// Danger - Used to provide a warning for irreversible actions and errors
 $reflect-danger-color:                   #d9534f !default;
 $reflect-danger-hover:                   darken($reflect-danger-color, 10%) !default;
 $reflect-danger-border:                  $reflect-danger-color !default;
 $reflect-danger-border-hover:            darken($reflect-danger-color, 10%) !default;
+
+// Success
+$reflect-success-color:                  #5cb85c !default;
+$reflect-success-hover:                  darken($reflect-success-color, 10%) !default;
+$reflect-success-border:                 $reflect-success-color !default;
+$reflect-success-border-hover:           darken($reflect-success-color, 10%) !default;
 
 // Sizing Defaults
 // ----------------------------------------------------------------------------
@@ -128,7 +137,7 @@ $reflect-border-heavy:                   $reflect-border-size*2 $reflect-border-
 
 // Shadows
 // ----------------------------------------------------------------------------
-$reflect-outer-shadow:                   0 0 1px rgba(0, 0, 0, .05) !default;
+$reflect-outer-shadow:                   0 1px 2px rgba(0, 0, 0, .02) !default;
 $reflect-outer-shadow-large:             0 0 6px rgba(0, 0, 0, .2) !default;
 $reflect-outer-shadow-huge:              0 0 10px rgba(0, 0, 0, .08) !default;
 $reflect-outer-shadow-giant:             0 0 60px rgba(0, 0, 0, .3) !default;
@@ -239,11 +248,16 @@ $reflect-button-disabled-border-color-hover: $reflect-disabled-border-hover !def
 
 // Cards
 // ----------------------------------------------------------------------------
-$reflect-card-padding:                   $reflect-medium !default;
-$reflect-card-action-padding:            $reflect-medium !default;
+$reflect-card-padding:                   24px !default;
+$reflect-card-action-padding:            19px !default;
+
+
+$reflect-card-title-padding:             0; //19px 24px !default;
+$reflect-card-controls-bg:               rgba($reflect-bg-subtle, 0.5) !default;
+
 
 $reflect-card-color:                     $reflect-font-color-subtle !default;
-$reflect-card-title-size:                $reflect-font-size-base !default;
+$reflect-card-title-size:                $reflect-font-size-large !default;
 $reflect-card-title-color:               $reflect-font-color-base !default;
 $reflect-card-subtitle-size:             $reflect-font-size-small !default;
 $reflect-card-subtitle-color:            $reflect-font-color-subtle !default;
