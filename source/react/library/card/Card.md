@@ -6,9 +6,12 @@
 </Card>
 ```
 
-Selected `Card`:
+Selectable `Card`:
 ```
-<Card selected>
+<Card className="rc-card-selectable">
+  <CardTitle title="I'm selectable!" subtitle="I am a selectable subtitle!" />
+</Card>
+```
   <CardTitle title="I'm a happy selected card!" subtitle="I'm the subtitle!" />
 </Card>
 ```
