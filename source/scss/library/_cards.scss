@@ -89,7 +89,6 @@
 
 .rc-card-section {
   padding: $reflect-card-padding;
-  border-bottom: $reflect-card-border;
 
   &:last-of-type {
     border-bottom: none;
@@ -123,4 +122,8 @@
   background: $reflect-card-controls-bg;
   padding: $reflect-card-controls-padding;
   font-size: $reflect-card-controls-font-size;
+
+  .rc-dropdown-label-text {
+    font-size: $reflect-card-controls-font-size;
+  }
 }

@@ -91,11 +91,6 @@
     cursor: pointer;
     white-space: nowrap;
 
-    .rc-dropdown-label-text {
-      font-size: $reflect-dropdown-label-font-size;
-      font-weight: $reflect-dropdown-label-font-weight;
-    }
-
     .rc-icon {
       position: relative;
       top: -1px;
@@ -104,6 +99,11 @@
       width: $reflect-dropdown-chevron-width;
     }
   }
+}
+
+.rc-dropdown-label-text {
+  font-size: $reflect-dropdown-label-font-size;
+  font-weight: $reflect-dropdown-label-font-weight;
 }
 
 .rc-dropdown-menu {
