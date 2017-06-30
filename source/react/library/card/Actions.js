@@ -55,6 +55,7 @@ class CardActions extends React.Component {
 
       jsx = (
         <DropdownMenu
+          disablePortal
           size="tiny"
           anchor="bottom right"
           target={ target }

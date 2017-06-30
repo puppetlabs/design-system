@@ -252,8 +252,11 @@ $reflect-card-padding:                   24px !default;
 $reflect-card-action-padding:            19px !default;
 
 
-$reflect-card-title-padding:             0; //19px 24px !default;
+$reflect-card-title-padding:             0 !default;
+
 $reflect-card-controls-bg:               rgba($reflect-bg-subtle, 0.5) !default;
+$reflect-card-controls-padding:          9px 24px !default;
+$reflect-card-controls-font-size:        $reflect-font-size-small !default;
 
 
 $reflect-card-color:                     $reflect-font-color-subtle !default;

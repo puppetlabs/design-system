@@ -118,3 +118,9 @@
 .rc-card-actions-hidden {
   display: none;
 }
+
+.rc-card-controls {
+  background: $reflect-card-controls-bg;
+  padding: $reflect-card-controls-padding;
+  font-size: $reflect-card-controls-font-size;
+}
