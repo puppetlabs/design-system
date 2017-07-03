@@ -52,49 +52,49 @@ class Container {
   }
 
   setSVGMargins() {
-    const options = this.options;
-    const dimensions = this.getDimensions();
-    const elem = this.elem;
-    const categories = this.data.getCategories();
-    const testSVG = select(elem).append('svg');
+    if (this.type !== 'sparkline') {
+      const options = this.options;
+      const dimensions = this.getDimensions();
+      const elem = this.elem;
+      const categories = this.data.getCategories();
+      const testSVG = select(elem).append('svg');
 
-    const xScale = new XScale(categories, options, dimensions, this.type);
-    const x = xScale.generate();
+      const xScale = new XScale(categories, options, dimensions, this.type);
+      const x = xScale.generate();
 
-    if (options.axis.x.enabled !== false) {
       const xAxis = new XAxis(categories, x, dimensions, options.axis.x);
       const tempX = xAxis.render(testSVG);
 
       const xAxisHeight = tempX.node().getBBox().height;
       this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
-    }
 
-    options.axis.y.forEach((yOptions, yAxisIndex) => {
-      if (yOptions.enabled !== false) {
-        const data = this.data.getDataByYAxis(yAxisIndex);
+      options.axis.y.forEach((yOptions, yAxisIndex) => {
+        if (yOptions.enabled !== false) {
+          const data = this.data.getDataByYAxis(yAxisIndex);
 
-        if (data.length > 0) {
-          const yScale = new YScale(data, yOptions, options.layout, dimensions, options);
-          const y = yScale.generate();
+          if (data.length > 0) {
+            const yScale = new YScale(data, yOptions, options.layout, dimensions, options);
+            const y = yScale.generate();
 
-          const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
-          const axis = yAxis.render(testSVG);
+            const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
+            const axis = yAxis.render(testSVG);
 
-          const yAxisWidth = axis.node().getBBox().width;
+            const yAxisWidth = axis.node().getBBox().width;
 
-          // TODO: This is currently assuming there is only 1 left axis and 1 right axis
-          // We haven't found a use case for more than 1 axis with the same orientation yet
-          // If we do this will need to be updated.
-          if (!yOptions.orientation || yOptions.orientation === 'left') {
-            this.dimensions.margins.left = yAxisWidth + dimensions.defaultMargins.left;
-          } else {
-            this.dimensions.margins.right = yAxisWidth + dimensions.defaultMargins.right;
+            // TODO: This is currently assuming there is only 1 left axis and 1 right axis
+            // We haven't found a use case for more than 1 axis with the same orientation yet
+            // If we do this will need to be updated.
+            if (!yOptions.orientation || yOptions.orientation === 'left') {
+              this.dimensions.margins.left = yAxisWidth + dimensions.defaultMargins.left;
+            } else {
+              this.dimensions.margins.right = yAxisWidth + dimensions.defaultMargins.right;
+            }
           }
         }
-      }
-    });
+      });
 
-    testSVG.remove();
+      testSVG.remove();
+    }
   }
 
   setSVGHeight() {
@@ -152,19 +152,21 @@ class Container {
   }
 
   renderLegend() {
-    const { wrapper, data, options, dispatchers } = this;
-    const legendOptions = options.legend;
-    const margins = options.margins;
-    const seriesData = data.getSeries();
+    if (this.type !== 'sparkline') {
+      const { wrapper, data, options, dispatchers } = this;
+      const legendOptions = options.legend;
+      const margins = options.margins;
+      const seriesData = data.getSeries();
 
-    // Since donut only supports one series... always expand it.
-    if (this.type === 'donut') {
-      legendOptions.expanded = true;
+      // Since donut only supports one series... always expand it.
+      if (this.type === 'donut') {
+        legendOptions.expanded = true;
+      }
+
+      const { legend } = new Legend(wrapper, seriesData, legendOptions, margins, dispatchers);
+
+      this.legend = legend;
     }
-
-    const { legend } = new Legend(wrapper, seriesData, legendOptions, margins, dispatchers);
-
-    this.legend = legend;
   }
 
   renderSVG() {

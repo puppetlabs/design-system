@@ -8,6 +8,7 @@ import LineChart from './LineChart';
 import ColumnChart from './ColumnChart';
 import DonutChart from './DonutChart';
 import CombinationChart from './CombinationChart';
+import SparklineChart from './SparklineChart';
 
 const defaultOptions = {
 
@@ -142,6 +143,9 @@ class Chart {
         break;
       case 'combination':
         chart = CombinationChart;
+        break;
+      case 'sparkline':
+        chart = SparklineChart;
         break;
       default:
         break;

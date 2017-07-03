@@ -45,6 +45,10 @@ class DataSet {
   getDataByYAxis(axisIndex) {
     const i = axisIndex;
 
+    if (this.seriesData === undefined) {
+      this.getSeries();
+    }
+
     return this.seriesData.filter(s => (
       (s.axis === i || (s.axis === undefined && i === 0)) && s.disabled !== true
     ));

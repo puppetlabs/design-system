@@ -7,6 +7,7 @@ import ColumnCharts from './ColumnCharts';
 import AreaCharts from './AreaCharts';
 import DonutCharts from './DonutCharts';
 import CombinationCharts from './CombinationCharts';
+import SparklineCharts from './SparklineCharts';
 import '../scss/styleguide.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
           path="combination-charts"
           components={ CombinationCharts }
         />
+        <Route name="Sparkline charts" path="sparkline-charts" components={ SparklineCharts } />
         <IndexRedirect to="/line-charts" />
       </Route>
     </Router>
