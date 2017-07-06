@@ -74,11 +74,7 @@ class PointsOfInterest {
 
         return cyPos;
       })
-      .attr('style', (d) => {
-        const color = d.seriesColor;
-
-        return color ? `stroke: ${color}` : null;
-      })
+      .attr('style', d => (d.color ? `stroke: ${d.color}` : null))
       .on('mousemove', function (d) {
         dispatchers.call('activatePointOfInterest', this, d.x);
       })

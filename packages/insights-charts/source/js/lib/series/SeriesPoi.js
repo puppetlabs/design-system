@@ -1,6 +1,12 @@
 import { select, mouse } from 'd3-selection';
 import { easeLinear } from 'd3-ease';
-import { POI_RADIUS, POI_RADIUS_ACTIVE, POI_ANIMATION_DURATION } from '../../constants';
+import {
+  POI_RADIUS,
+  POI_RADIUS_ACTIVE,
+  POI_RADIUS_INITIAL,
+  POI_ANIMATION_DURATION,
+  POI_ANIMATION_DURATION_INITIAL,
+} from '../../constants';
 import CSS from '../../helpers/css';
 import Series from './Series';
 
@@ -39,6 +45,7 @@ class SeriesPoi extends Series {
   render(selection) {
     const { x, y, options, dispatchers } = this;
     const isStacked = options.layout === 'stacked';
+    const animationEnabled = options.animations && options.animations.enabled;
 
     if (!this.selection) {
       this.selection = selection;
@@ -75,10 +82,11 @@ class SeriesPoi extends Series {
         .attr('clip-path', `url(#${this.clipPathId})`)
       .selectAll(CSS.getClassSelector('poi'))
         .data(d => (!d.disabled ? d.data : []))
-        .enter()
+
+    const circle = this.series.enter()
       .append('circle')
         .attr('class', CSS.getClassName('poi'))
-        .attr('r', POI_RADIUS)
+        .attr('r', animationEnabled ? POI_RADIUS_INITIAL : POI_RADIUS)
         .attr('cx', d => (x(d.x)))
         .attr('cy', (d) => {
           let cyPos;
@@ -95,11 +103,7 @@ class SeriesPoi extends Series {
 
           return cyPos;
         })
-        .attr('style', (d) => {
-          const color = d.seriesColor;
-
-          return color ? `stroke: ${color}` : null;
-        })
+        .attr('style', (d) => (d.color ? `stroke: ${d.color}` : null))
         .on('mousemove', function (d) {
           dispatchers.call('activatePointOfInterest', this, d.x);
         })
@@ -108,9 +112,18 @@ class SeriesPoi extends Series {
           dispatchers.call('highlightSeries', this, d.seriesIndex);
         })
         .on('mouseout', () => {
+          dispatchers.call('tooltipHide');
+          dispatchers.call('activatePointOfInterest');
           dispatchers.call('unHighlightSeries');
-        })
-      .merge(this.series);
+        });
+
+    if (animationEnabled) {
+      circle.transition()
+        .duration(POI_ANIMATION_DURATION_INITIAL)
+        .attr('r', POI_RADIUS);
+    }
+
+    circle.merge(this.series);
 
     return this.series;
   }

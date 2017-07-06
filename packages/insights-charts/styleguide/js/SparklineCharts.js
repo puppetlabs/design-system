@@ -19,33 +19,39 @@ class SparklineCharts extends React.Component {
 
     const options = {};
 
-    const chart1 = new ReflectChart(this.line, {
+    this.lineSparkline = new ReflectChart(this.line, {
       type: 'sparkline',
       data,
       options,
     });
 
-    chart1.render();
+    this.lineSparkline.render();
 
     data.series[0].type = 'area';
 
-    const chart2 = new ReflectChart(this.area, {
+    this.areaSparkline = new ReflectChart(this.area, {
       type: 'sparkline',
       data,
       options,
     });
 
-    chart2.render();
+    this.areaSparkline.render();
 
     data.series[0].type = 'column';
 
-    const chart3 = new ReflectChart(this.column, {
+    this.columnSparkline = new ReflectChart(this.column, {
       type: 'sparkline',
       data,
       options,
     });
 
-    chart3.render();
+    this.columnSparkline.render();
+  }
+
+  componentWillUnmount() {
+    this.lineSparkline.destroy();
+    this.areaSparkline.destroy();
+    this.columnSparkline.destroy();
   }
 
   render() {

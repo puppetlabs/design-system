@@ -25,20 +25,22 @@ class DataSet {
     const type = this.getCategoryType();
 
     return this.data.categories.map((category) => {
-      let result;
+      if (typeof category.label === 'undefined') {
+        category = { label: category };
+      }
 
       switch (type) {
         case 'date':
-          result = moment(category);
+          category.label = moment(category.label);
           break;
         case 'number':
-          result = parseInt(category, 10);
+          category.label = parseInt(category.label, 10);
           break;
         default:
-          result = category;
+          category.label = category.label;
       }
 
-      return result;
+      return category;
     });
   }
 
@@ -62,12 +64,14 @@ class DataSet {
       s.seriesIndex = index;
 
       s.data = s.data.map((d, i) => {
-        const datum = (typeof d === 'object' ? d : { x: categories[i], y: d });
+        const category = categories[i];
+
+        const datum = (typeof d === 'object' ? d : { x: category.label, y: d });
 
         datum.seriesIndex = index;
         datum.axis = s.axis || 0;
         datum.seriesLabel = s.label;
-        datum.seriesColor = s.color;
+        datum.color = s.color || category.color;
         datum.formatter = s.formatter;
 
         return datum;

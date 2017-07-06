@@ -54,37 +54,43 @@ class ColumnCharts extends React.Component {
       },
     };
 
-    const chart1 = new ReflectChart(this.single, {
+    this.columnChart = new ReflectChart(this.single, {
       type: 'column',
       data: singleSeriesData,
       options,
     });
 
-    chart1.render();
+    this.columnChart.render();
 
     options.column.layout = 'grouped';
 
-    const chart2 = new ReflectChart(this.grouped, {
+    this.groupedColumnChart = new ReflectChart(this.grouped, {
       type: 'column',
       data,
       options,
     });
 
-    chart2.render();
+    this.groupedColumnChart.render();
 
     options.column.layout = 'stacked';
 
-    const chart3 = new ReflectChart(this.stacked, {
+    this.stackedColumnChart = new ReflectChart(this.stacked, {
       type: 'column',
       data,
       options,
     });
 
-    chart3.on('legendItemClick', () => {
+    this.stackedColumnChart.on('legendItemClick', () => {
       console.log('you got me!!!');
     });
 
-    chart3.render();
+    this.stackedColumnChart.render();
+  }
+
+  componentWillUnmount() {
+    this.columnChart.destroy();
+    this.groupedColumnChart.destroy();
+    this.stackedColumnChart.destroy();
   }
 
   render() {

@@ -138,26 +138,30 @@ class LineCharts extends React.Component {
       },
     };
 
-    const multi = new ReflectChart(this.multi, {
+    this.multiSeriesLineChart = new ReflectChart(this.multi, {
       type: 'line',
       data: multiData,
       options,
     });
 
-    multi.on('legendItemClick', () => {
+    this.multiSeriesLineChart.on('legendItemClick', () => {
       console.log('you got me!!!');
     });
 
-    multi.render();
+    this.multiSeriesLineChart.render();
 
-    const single = new ReflectChart(this.single, {
+    this.lineChart = new ReflectChart(this.single, {
       type: 'line',
       data: singleData,
       options,
     });
 
-    single.render();
+    this.lineChart.render();
+  }
 
+  componentWillUnmount() {
+    this.lineChart.destroy();
+    this.multiSeriesLineChart.destroy();
   }
 
   render() {

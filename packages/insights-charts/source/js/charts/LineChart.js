@@ -19,7 +19,7 @@ class LineChart extends Chart {
   }
 
   render() {
-    const categories = this.data.getCategories();
+    const categories = this.data.getCategories().map(c => (c.label));
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
     const options = this.options;
@@ -105,7 +105,7 @@ class LineChart extends Chart {
   }
 
   update() {
-    const categories = this.data.getCategories();
+    const categories = this.data.getCategories().map(c => (c.label));
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
     const options = this.options;

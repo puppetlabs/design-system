@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge';
 import { selectAll } from 'd3-selection';
 import Chart from './Chart';
 import { XScale, YScale } from '../lib/scales';
@@ -21,7 +22,7 @@ class CombinationChart extends Chart {
   }
 
   render() {
-    const categories = this.data.getCategories();
+    const categories = this.data.getCategories().map(c => (c.label));
     const seriesData = this.data.getSeries();
     const groups = this.data.getGroupsByType('column');
     const dispatchers = this.dispatchers;
@@ -54,6 +55,7 @@ class CombinationChart extends Chart {
       let seriesColumn;
       let seriesLine;
       let seriesLinePoi;
+      let seriesScatter;
       let seriesArea;
       let seriesAreaLine;
       let seriesAreaPoi;
@@ -69,7 +71,6 @@ class CombinationChart extends Chart {
           this.grid = new Grid(x, y, dimensions, options);
           this.grid.render(svg);
         }
-
 
         if (types.indexOf('column') >= 0) {
           const xScaleColumn = new XScale(categories, options, dimensions, 'column');
@@ -95,6 +96,24 @@ class CombinationChart extends Chart {
           );
 
           seriesColumn.render(svg);
+        }
+
+        if (types.indexOf('scatter') >= 0) {
+          const scatterData = data.filter(d => (d.type === 'scatter'));
+          const plotOptions = this.getPlotOptions('scatter');
+
+          seriesScatter = new SeriesPoi(
+            scatterData,
+            dimensions,
+            x,
+            y,
+            this.clipPath.id,
+            deepmerge(plotOptions, { animations: { enabled: true } }),
+            dispatchers,
+            yAxisIndex,
+          );
+
+          seriesScatter.render(svg);
         }
 
         if (types.indexOf('line') >= 0) {
@@ -127,7 +146,6 @@ class CombinationChart extends Chart {
 
           seriesLinePoi.render(svg);
         }
-
 
         if (types.indexOf('area') >= 0) {
           const areaData = data.filter(d => (d.type === 'area'));
@@ -179,6 +197,7 @@ class CombinationChart extends Chart {
           seriesColumn,
           seriesLine,
           seriesLinePoi,
+          seriesScatter,
           seriesArea,
           seriesAreaLine,
           seriesAreaPoi,
@@ -192,7 +211,7 @@ class CombinationChart extends Chart {
   }
 
   update() {
-    const categories = this.data.getCategories();
+    const categories = this.data.getCategories().map(c => (c.label));
     const groups = this.data.getGroupsByType('column');
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
@@ -244,6 +263,22 @@ class CombinationChart extends Chart {
             dispatchers,
             yAxisIndex,
             x1,
+          );
+        }
+
+        if (scale.seriesScatter) {
+          const scatterData = data.filter(d => (d.type === 'scatter'));
+          const plotOptions = this.getPlotOptions('scatter');
+
+          scale.seriesScatter.update(
+            scatterData,
+            dimensions,
+            x,
+            y,
+            this.clipPath.id,
+            deepmerge(plotOptions, { animations: { enabled: true } }),
+            dispatchers,
+            yAxisIndex,
           );
         }
 

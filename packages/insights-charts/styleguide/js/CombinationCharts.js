@@ -11,7 +11,7 @@ class CombinationCharts extends React.Component {
       series: [
         {
           label: 'Profit',
-          type: 'column',
+          type: 'scatter',
           data: getRandomData(dataPoints),
         },
         {
@@ -60,19 +60,23 @@ class CombinationCharts extends React.Component {
       },
     };
 
-    const chart1 = new ReflectChart(this.basic, {
+    this.combinationChart = new ReflectChart(this.basic, {
       type: 'combination',
       data,
       options,
     });
 
-    chart1.render();
+    this.combinationChart.render();
+  }
+
+  componentWillUnmount() {
+    this.combinationChart.destroy();
   }
 
   render() {
     return (
       <div>
-        <h1>Combination (Column & Line)</h1>
+        <h1>Combination (Column, Line & Scatter)</h1>
         <div className="sg-chart" ref={ (c) => { this.basic = c; } } />
       </div>
     );

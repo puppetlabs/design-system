@@ -25,8 +25,8 @@ describe('YScale', () => {
       const yScale = new YScale(seriesData, {}, 'normal', dimensions);
       const y = yScale.generate();
 
-      expect(y.domain()[0]).to.eql(Math.min(...randomData.series[0].data) * 0.95);
-      expect(y.domain()[1]).to.eql(Math.max(...randomData.series[0].data));
+      expect(y.domain()[0]).to.eql(Math.min(...randomData.series[0].data) * 0.3);
+      expect(y.domain()[1]).to.eql(Math.max(...randomData.series[0].data) / 0.95);
     });
 
     it('should create a domain with the min value of 0 when the options is provided', () => {
@@ -75,7 +75,10 @@ describe('YScale', () => {
 
       const maxValues = Object.keys(stackedMax).map(key => (stackedMax[key]));
 
-      expect(y.domain()[1]).to.eql(Math.max(...maxValues));
+      let max = Math.max(...maxValues);
+      max /= .95;
+
+      expect(y.domain()[1]).to.eql(max);
     });
   });
 });

@@ -5,13 +5,15 @@ import ReflectChart from '../../source/js/ReflectCharts';
 class AreaCharts extends React.Component {
   componentDidMount() {
     const dataPoints = 10;
+    const dataArr = getRandomData(dataPoints);
 
     const data = {
       categories: getRandomCategories(dataPoints),
       series: [
         {
           label: 'Profit',
-          data: getRandomData(dataPoints),
+          aggregate: dataArr.reduce((a, b) => (a + b)),
+          data: dataArr,
         },
       ],
     };
@@ -44,27 +46,32 @@ class AreaCharts extends React.Component {
       },
     };
 
-    const area = new ReflectChart(this.basic, {
+    this.areaChart = new ReflectChart(this.basic, {
       type: 'area',
       data,
       options,
     });
 
-    area.render();
+    this.areaChart.render();
 
     options.area.layout = 'stacked';
 
-    const stackedArea = new ReflectChart(this.stacked, {
+    this.stackedAreaChart = new ReflectChart(this.stacked, {
       type: 'area',
       data,
       options,
     });
 
-    stackedArea.on('legendItemClick', () => {
+    this.stackedAreaChart.on('legendItemClick', () => {
       console.log('you got me!!!');
     });
 
-    stackedArea.render();
+    this.stackedAreaChart.render();
+  }
+
+  componentWillUnmount() {
+    this.areaChart.destroy();
+    this.stackedAreaChart.destroy();
   }
 
   render() {

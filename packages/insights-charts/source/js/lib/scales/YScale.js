@@ -55,7 +55,7 @@ class YScale {
     let layout = this.layout;
     let max;
     let min;
-    let scale;
+    let minScale;
 
     if (multiSeries) {
       this.data.forEach((d) => {
@@ -119,8 +119,13 @@ class YScale {
 
     if (minOption === undefined) {
       // This gives some padding to the scale so that you can still see the minimum value
-      scale = (min > 0 ? 0.95 : 1.05);
-      min *= scale;
+      minScale = (min > 0 ? 0.3 : 1);
+
+      min *= minScale;
+    }
+
+    if (maxOption === undefined) {
+      max /= 0.95;
     }
 
     y.domain([min, max]);

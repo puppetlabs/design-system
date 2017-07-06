@@ -37,4 +37,16 @@ describe('formatters', () => {
       expect(formatters.summary(1000000.000000)).to.eql('1.0M');
     });
   });
+
+  describe('summary_percentage', () => {
+    it('should format the value with the correct precision', () => {
+      expect(formatters.summary_percentage(0.20)).to.eql('20%');
+    });
+  });
+
+  describe('summary_numeric_percentage', () => {
+    it('should format the value with the correct precision', () => {
+      expect(formatters.summary_numeric_percentage(20)).to.eql('20%');
+    });
+  });
 });

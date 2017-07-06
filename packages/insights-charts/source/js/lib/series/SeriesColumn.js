@@ -106,7 +106,7 @@ class SeriesColumn extends Series {
       .attr('x', this.getXPosition)
       .attr('y', this.getYPosition)
       .attr('width', this.getColumnWidth)
-      .attr('style', d => (d.seriesColor ? `fill: ${d.seriesColor};` : null))
+      .attr('style', d => (d.color ? `fill: ${d.color};` : null))
       .attr('height', this.getColumnHeight);
 
     this.series.exit().remove();
@@ -124,7 +124,7 @@ class SeriesColumn extends Series {
         .attr('x', this.getXPosition)
         .attr('y', this.getYPosition)
         .attr('width', this.getColumnWidth)
-        .attr('style', d => (d.seriesColor ? `fill: ${d.seriesColor};` : null))
+        .attr('style', d => (d.color ? `fill: ${d.color};` : null))
         .attr('height', this.getColumnHeight)
         .on('mousemove', function (d, i) {
           const dims = mouse(this);

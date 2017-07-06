@@ -15,6 +15,7 @@ class Legend {
       values = seriesData[0].data.map((d, i) => ({
         label: d.x,
         seriesIndex: i,
+        color: d.color,
       }));
     } else {
       values = seriesData;
@@ -32,25 +33,21 @@ class Legend {
         .append('div')
         .attr('class', CSS.getClassName('legend'));
 
-      const legend = container
-        .append('div')
-        .attr('class', CSS.getClassName('legend-inner'));
-
       if (margins.top) {
-        legend.style('margin-top', `${margins.top}px`);
+        container.style('top', `${margins.top}px`);
       }
 
       if (margins.bottom) {
-        legend.style('margin-bottom', `${margins.bottom}px`);
+        container.style('bottom', `${margins.bottom}px`);
       }
 
       if (margins.right) {
-        legend.style('margin-right', `${margins.right}px`);
+        container.style('padding-right', `${margins.right}px`);
       }
 
       const data = this.getLegendValues(seriesData, options.expanded);
 
-      legendItems = legend.selectAll(CSS.getClassName('legend-item'))
+      legendItems = container.selectAll(CSS.getClassName('legend-item'))
         .data(data)
         .enter().append('div')
           .attr('class', (d, i) => (
@@ -73,7 +70,7 @@ class Legend {
 
 
       dispatchers.on('update.legend', () => {
-        legend.selectAll(CSS.getClassSelector('legend-item'))
+        container.selectAll(CSS.getClassSelector('legend-item'))
           .classed(CSS.getClassName('legend-item-disabled'), d => (d.disabled));
       });
 
@@ -94,7 +91,7 @@ class Legend {
         .attr('style', d => (d.color ? `background: ${d.color};` : null));
 
       legendItems.append('span')
-        .text(d => (d.label));
+        .text(d => (d.aggregate ? `${d.label}: ${d.aggregate}` : d.label));
     }
 
     this.legend = container;

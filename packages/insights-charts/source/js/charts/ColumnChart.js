@@ -15,9 +15,9 @@ class ColumnChart extends Chart {
     this.yScales = {};
   }
 
-  getOptions() {
-    const data = this.data;
-    const options = clone(this.options);
+  getLayout() {
+    const { data, type } = this;
+    const options = this.getPlotOptions(type);
     const isMultiSeries = data.getSeries().length > 1;
     let layout = 'normal';
 
@@ -27,17 +27,16 @@ class ColumnChart extends Chart {
       layout = options.layout;
     }
 
-    options.layout = layout;
-
-    return options;
+    return layout;
   }
 
   render() {
-    const categories = this.data.getCategories();
+    const categories = this.data.getCategories().map(c => (c.label));
     const groups = this.data.getGroups();
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
-    const options = this.getOptions();
+    const options = clone(this.options);
+    const layout = this.getLayout();
 
     this.container = new Container(this.data, options, this.type, dispatchers);
     this.container.render(this.elem);
@@ -69,8 +68,9 @@ class ColumnChart extends Chart {
 
       if (data.length > 0) {
         const plotOptions = this.getPlotOptions(this.type);
+        plotOptions.layout = layout;
 
-        const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
+        const yScale = new YScale(data, yOptions, layout, dimensions, options);
         const y = yScale.generate();
 
         const yAxis = new YAxis(y, dimensions, yOptions);
@@ -107,11 +107,12 @@ class ColumnChart extends Chart {
   }
 
   update() {
-    const categories = this.data.getCategories();
+    const categories = this.data.getCategories().map(c => (c.label));
     const groups = this.data.getGroups();
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
-    const options = this.getOptions();
+    const options = clone(this.options);
+    const layout = this.getLayout();
 
     this.container.update(this.data, options, this.type, dispatchers);
     const dimensions = this.container.getDimensions();
@@ -131,7 +132,7 @@ class ColumnChart extends Chart {
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const y = scale.yScale.update(data, yOptions, options.layout, dimensions, options);
+        const y = scale.yScale.update(data, yOptions, layout, dimensions, options);
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
@@ -140,6 +141,7 @@ class ColumnChart extends Chart {
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
         const plotOptions = this.getPlotOptions(this.type);
+        plotOptions.layout = layout;
 
         scale.seriesColumn.update(
           data,

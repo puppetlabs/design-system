@@ -7,7 +7,7 @@ class DonutCharts extends React.Component {
     const dataPoints = 3;
 
     const data = {
-      categories: ['Geoff', 'Brad', 'Colby'],
+      categories: ['Geoff', 'Brad', { label: 'Colby', color: 'green' }],
       series: [
         {
           label: 'Productivity',
@@ -19,17 +19,21 @@ class DonutCharts extends React.Component {
     const options = {
     };
 
-    const chart = new ReflectChart(this.elem, {
+    this.donutChart = new ReflectChart(this.elem, {
       type: 'donut',
       data,
       options,
     });
 
-    chart.on('legendItemClick', () => {
+    this.donutChart.on('legendItemClick', () => {
       console.log('you got me!!!');
     });
 
-    chart.render();
+    this.donutChart.render();
+  }
+
+  componentWillUnmount() {
+    this.donutChart.destroy();
   }
 
   render() {

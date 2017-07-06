@@ -199,18 +199,20 @@ class Tooltip {
 
   positionTooltip(mouse) {
     const { dimensions } = this;
+    let mouseX = mouse[0];
+    let mouseY = mouse[1];
 
     if (!this.tooltipDimensions) {
       this.tooltipDimensions = this.getTooltipDimensions();
     }
 
-    let mouseX = mouse[0] + dimensions.margins.left + TOOLTIP_POINTER_MARGIN;
+    mouseX = mouseX + dimensions.margins.left + TOOLTIP_POINTER_MARGIN;
 
     if ((mouseX + TOOLTIP_CONTAINER_OVERFLOW) >= (dimensions.left + dimensions.width)) {
       mouseX = (mouse[0] - this.tooltipDimensions.width) + TOOLTIP_POINTER_MARGIN;
     }
 
-    let mouseY = mouse[1] + (dimensions.margins.top - (this.tooltipDimensions.height / 2));
+    mouseY += (dimensions.margins.top - (this.tooltipDimensions.height / 2));
 
     // Don't let tooltip bleed above the top
     if (mouseY < TOOLTIP_VERTICAL_PADDING) {

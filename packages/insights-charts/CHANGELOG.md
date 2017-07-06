@@ -1,3 +1,25 @@
+# 0.1.2
+
+## Improvements
+
+* Introduce scatter plot
+
+## Fixes
+
+* Support for custom colors
+* Nodemon for rebuilding on changes
+* Scroll bar gets cut off on the bottom of the legend
+* Bottom margin isn't being applied to the legend
+* Donut is getting too much left margin
+* Percentage summary formatters
+* Support for rendering legend aggregates
+
+# 0.1.1
+
+## Improvements
+
+* Introduce sparkline chart
+
 # 0.1.0
 
 ## Improvements

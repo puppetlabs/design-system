@@ -6,6 +6,7 @@ import LineCharts from './LineCharts';
 import ColumnCharts from './ColumnCharts';
 import AreaCharts from './AreaCharts';
 import DonutCharts from './DonutCharts';
+import ScatterCharts from './ScatterCharts';
 import CombinationCharts from './CombinationCharts';
 import SparklineCharts from './SparklineCharts';
 import '../scss/styleguide.scss';
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route name="Area charts" path="area-charts" components={ AreaCharts } />
         <Route name="Column charts" path="column-charts" components={ ColumnCharts } />
         <Route name="Donut charts" path="donut-charts" components={ DonutCharts } />
+        <Route name="Scatter charts" path="scatter-charts" components={ ScatterCharts } />
         <Route
           name="Combination charts"
           path="combination-charts"

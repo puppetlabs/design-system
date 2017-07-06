@@ -90,6 +90,8 @@ class Donut {
 
     const paths = newArcs.append('path')
       .attr('class', CSS.getClassName('donut-arc'))
+      .attr('style', d =>
+        (d.data.color ? `fill: ${d.data.color}; stroke: ${d.data.color};` : null))
       .attr('d', path);
 
     this.arcs = newArcs.merge(this.arcs);

@@ -2,7 +2,11 @@ import { expect } from 'chai';
 import DataSet from '../../source/js/lib/DataSet';
 
 const seriesDataFixture = {
-  categories: ['category 1', 'category 2', 'category 3'],
+  categories: [
+    { label: 'category 1' },
+    { label: 'category 2' },
+    { label: 'category 3' },
+  ],
   series: [{
     title: 'series 1',
     data: [1, 1, 1],

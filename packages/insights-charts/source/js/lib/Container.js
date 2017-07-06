@@ -56,7 +56,7 @@ class Container {
       const options = this.options;
       const dimensions = this.getDimensions();
       const elem = this.elem;
-      const categories = this.data.getCategories();
+      const categories = this.data.getCategories().map(c => (c.label));
       const testSVG = select(elem).append('svg');
 
       const xScale = new XScale(categories, options, dimensions, this.type);
@@ -69,7 +69,7 @@ class Container {
       this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
 
       options.axis.y.forEach((yOptions, yAxisIndex) => {
-        if (yOptions.enabled !== false) {
+        if (yOptions.enabled !== false && this.type !== 'donut') {
           const data = this.data.getDataByYAxis(yAxisIndex);
 
           if (data.length > 0) {

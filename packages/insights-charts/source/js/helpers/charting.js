@@ -45,6 +45,10 @@ const helpers = {
     let highestKey = null;
 
     categories.forEach((d) => {
+      if (d.label) {
+        d = d.label;
+      }
+
       if (d && d._isAMomentObject) { // eslint-disable-line no-underscore-dangle
         if (!types.date) {
           types.date = 0;
