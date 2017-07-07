@@ -418,6 +418,22 @@ const icons = {
     ),
   },
 
+  scatter: {
+    viewBox: '0 0 64 39',
+    svg: (
+      <g>
+        <rect id="Rectangle-2" x="0" y="0" width="3" height="39" />
+        <rect id="Rectangle-3" x="0" y="35" width="64" height="3" />
+        <circle id="Oval" cx="12.5" cy="27.5" r="3.5" />
+        <circle id="Oval" cx="57.5" cy="3.5" r="3.5" />
+        <circle id="Oval" cx="50.5" cy="17.5" r="3.5" />
+        <circle id="Oval" cx="40.5" cy="8.5" r="3.5" />
+        <circle id="Oval" cx="22.5" cy="14.5" r="3.5" />
+        <circle id="Oval" cx="33.5" cy="23.5" r="3.5" />
+      </g>
+    ),
+  },
+
   timeseries: {
     viewBox: '0 0 102 67',
     svg: (
