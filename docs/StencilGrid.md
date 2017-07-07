@@ -23,6 +23,10 @@ const testView = {
         type: 'kpi',
         layout: { w: 2, h: 1, x: 10, y: 3 },
       },
+      {
+        type: 'scatter',
+        layout: { w: 12, h: 2, x: 0, y: 4 },
+      },
     ],
   },
 };
