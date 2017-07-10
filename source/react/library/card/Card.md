@@ -51,6 +51,13 @@ Card with an action:
   Hello world!
 </Card>
 ```
+Card with search
+```
+<Card>
+  <CardTitle title="I am a title" />
+  <CardSearch />
+</Card>
+```
 Card with action dropdown
 ```
 const menuOptions = [

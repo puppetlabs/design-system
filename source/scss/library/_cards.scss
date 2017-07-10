@@ -127,3 +127,17 @@
     font-size: $reflect-card-controls-font-size;
   }
 }
+
+.rc-card-search {
+  position: absolute;
+  display: flex;
+  top: $reflect-card-action-padding - ($reflect-input-small-padding/2);
+  right: 50px;
+  width: 160px;
+
+  .rc-icon {
+    position: relative;
+    top: 5px;
+    margin-right: 5px;
+  }
+}

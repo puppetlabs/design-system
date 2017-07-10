@@ -15,12 +15,17 @@ const propTypes = {
   value: React.PropTypes.string,
   name: React.PropTypes.string,
   size: React.PropTypes.oneOf(['large', 'small', 'tiny']),
+  simple: React.PropTypes.bool,
   onKeyUp: React.PropTypes.func,
   error: React.PropTypes.string,
   onChange: React.PropTypes.func,
   onClick: React.PropTypes.func,
   onFocus: React.PropTypes.func,
   onBlur: React.PropTypes.func,
+};
+
+const defaultProps = {
+  simple: false,
 };
 
 /**
@@ -83,6 +88,7 @@ class Input extends React.Component {
       'rc-input-error': this.props.error,
       [this.props.className]: this.props.className,
       [`rc-input-${this.props.size}`]: this.props.size,
+      'rc-input-simple': this.props.simple,
     });
 
     const props = {
@@ -109,5 +115,6 @@ class Input extends React.Component {
 }
 
 Input.propTypes = propTypes;
+Input.defaultProps = defaultProps;
 
 export default Input;
