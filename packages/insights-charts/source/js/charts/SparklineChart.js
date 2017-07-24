@@ -137,7 +137,7 @@ class SparklineChart extends Chart {
   }
 
   update() {
-    const categories = this.data.getCategories();
+    const categories = this.data.getCategories().map(c => (c.label));
     const groups = this.data.getGroups();
     const dispatchers = this.dispatchers;
     const options = this.options;

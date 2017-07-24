@@ -11,7 +11,7 @@ class CombinationCharts extends React.Component {
       series: [
         {
           label: 'Profit',
-          type: 'scatter',
+          type: 'column',
           data: getRandomData(dataPoints),
         },
         {
@@ -58,6 +58,13 @@ class CombinationCharts extends React.Component {
         horizontal: true,
         vertical: true,
       },
+      annotations: [{
+        highestPoint: true,
+        tooltip: {
+          title: 'this is a title',
+          message: 'this is a message',
+        },
+      }],
     };
 
     this.combinationChart = new ReflectChart(this.basic, {

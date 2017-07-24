@@ -15,6 +15,10 @@ class AreaCharts extends React.Component {
           aggregate: dataArr.reduce((a, b) => (a + b)),
           data: dataArr,
         },
+        {
+          label: 'Loss',
+          data: getRandomData(dataPoints),
+        },
       ],
     };
 
@@ -23,7 +27,6 @@ class AreaCharts extends React.Component {
       axis: {
         y: [
           {
-            enabled: false,
             ticks: 4,
             orientation: 'left',
             title: 'Left Axis',
@@ -44,6 +47,13 @@ class AreaCharts extends React.Component {
         horizontal: false,
         vertical: false,
       },
+      annotations: [{
+        highestPoint: true,
+        tooltip: {
+          title: 'this is a title',
+          message: 'this is a message',
+        },
+      }],
     };
 
     this.areaChart = new ReflectChart(this.basic, {
@@ -64,6 +74,10 @@ class AreaCharts extends React.Component {
 
     this.stackedAreaChart.on('legendItemClick', () => {
       console.log('you got me!!!');
+    });
+
+    this.stackedAreaChart.on('dataPointClick', (data) => {
+      console.log(data);
     });
 
     this.stackedAreaChart.render();

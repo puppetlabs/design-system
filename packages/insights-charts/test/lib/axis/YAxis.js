@@ -33,7 +33,7 @@ describe('YAxis', () => {
     const yAxis = new YAxis(y, dimensions, {});
     yAxis.render(global.chart);
 
-    expect(global.chart.select('.reflect-charts-axis-y').attr('transform')).to.eql(null);
+    expect(global.chart.select('.reflect-charts-axis-y').attr('transform')).to.eql('translate(0, 0)');
   });
 
   it('should render an axis in the correct location if orientation is set to right', () => {

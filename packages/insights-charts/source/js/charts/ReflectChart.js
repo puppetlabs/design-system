@@ -6,6 +6,7 @@ import Dispatchers from '../lib/Dispatchers';
 import AreaChart from './AreaChart';
 import LineChart from './LineChart';
 import ColumnChart from './ColumnChart';
+import BarChart from './BarChart';
 import DonutChart from './DonutChart';
 import ScatterChart from './ScatterChart';
 import CombinationChart from './CombinationChart';
@@ -93,6 +94,8 @@ class Chart {
       this.options.axis.y = [this.options.axis.y];
     }
 
+    this.setupEvents(options.events);
+
     const ChartType = this.getChart();
 
     this.beforeRender();
@@ -109,7 +112,15 @@ class Chart {
   }
 
   on(eventType, callback) {
-    this.dispatchers.on(eventType, callback);
+    this.dispatchers.on(`${eventType}.external`, callback);
+  }
+
+  setupEvents(events = {}) {
+    Object.keys(events).forEach((type) => {
+      const callback = events[type];
+
+      this.on(type, callback);
+    });
   }
 
   render() {
@@ -139,6 +150,9 @@ class Chart {
       case 'column':
         chart = ColumnChart;
         break;
+      case 'bar':
+        chart = BarChart;
+        break;
       case 'donut':
         chart = DonutChart;
         break;
@@ -159,11 +173,11 @@ class Chart {
   }
 
   beforeRender() {
-    console.log('before render fired...');
+    this.dispatchers.call('beforeRender');
   }
 
   afterRender() {
-    console.log('after render fired...');
+    this.dispatchers.call('afterRender');
   }
 }
 

@@ -2,12 +2,12 @@ import React from 'react';
 import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
-class ColumnCharts extends React.Component {
+class BarCharts extends React.Component {
   componentDidMount() {
     const dataPoints = 10;
 
     const data = {
-      categories: getRandomCategories(dataPoints),
+      categories: getRandomCategories(dataPoints, 'ordinal'),
       series: [
         {
           label: 'Profit',
@@ -21,7 +21,7 @@ class ColumnCharts extends React.Component {
     };
 
     const singleSeriesData = {
-      categories: getRandomCategories(dataPoints),
+      categories: getRandomCategories(dataPoints, 'ordinal'),
       series: [
         {
           label: 'Profit',
@@ -31,7 +31,7 @@ class ColumnCharts extends React.Component {
     };
 
     const options = {
-      column: {
+      bar: {
         layout: 'stacked',
       },
       axis: {
@@ -61,28 +61,28 @@ class ColumnCharts extends React.Component {
       }],
     };
 
-    this.columnChart = new ReflectChart(this.single, {
-      type: 'column',
+    this.barChart = new ReflectChart(this.single, {
+      type: 'bar',
       data: singleSeriesData,
       options,
     });
 
-    this.columnChart.render();
+    this.barChart.render();
 
-    options.column.layout = 'grouped';
+    options.bar.layout = 'grouped';
 
     this.groupedColumnChart = new ReflectChart(this.grouped, {
-      type: 'column',
+      type: 'bar',
       data,
       options,
     });
 
     this.groupedColumnChart.render();
 
-    options.column.layout = 'stacked';
+    options.bar.layout = 'stacked';
 
     this.stackedColumnChart = new ReflectChart(this.stacked, {
-      type: 'column',
+      type: 'bar',
       data,
       options,
     });
@@ -91,16 +91,11 @@ class ColumnCharts extends React.Component {
       console.log('you got me!!!');
     });
 
-    this.stackedColumnChart.on('dataPointClick', ({ event, data }) => {
-      console.log(JSON.stringify(event));
-      console.log(JSON.stringify(data));
-    });
-
     this.stackedColumnChart.render();
   }
 
   componentWillUnmount() {
-    this.columnChart.destroy();
+    this.barChart.destroy();
     this.groupedColumnChart.destroy();
     this.stackedColumnChart.destroy();
   }
@@ -119,4 +114,4 @@ class ColumnCharts extends React.Component {
   }
 }
 
-export default ColumnCharts;
+export default BarCharts;

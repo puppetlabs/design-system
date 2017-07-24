@@ -2,6 +2,7 @@ import clone from 'clone';
 import Chart from './Chart';
 import { XScale, YScale } from '../lib/scales';
 import { XAxis, YAxis } from '../lib/axis';
+import Annotations from '../lib/Annotations';
 import Container from '../lib/Container';
 import ClipPath from '../lib/ClipPath';
 import Grid from '../lib/Grid';
@@ -67,8 +68,7 @@ class ColumnChart extends Chart {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        const plotOptions = this.getPlotOptions(this.type);
-        plotOptions.layout = layout;
+        options.layout = layout;
 
         const yScale = new YScale(data, yOptions, layout, dimensions, options);
         const y = yScale.generate();
@@ -87,7 +87,7 @@ class ColumnChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          plotOptions,
+          options,
           dispatchers,
           yAxisIndex,
           x1,
@@ -95,10 +95,24 @@ class ColumnChart extends Chart {
 
         seriesColumn.render(svg);
 
+        const annotations = new Annotations(
+          data,
+          x,
+          y,
+          options,
+          layout,
+          dispatchers,
+          yAxisIndex,
+          x1,
+        );
+
+        annotations.render(svg);
+
         this.yScales[yAxisIndex] = {
           yScale,
           yAxis,
           seriesColumn,
+          annotations,
         };
       }
     });
@@ -140,8 +154,7 @@ class ColumnChart extends Chart {
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
-        const plotOptions = this.getPlotOptions(this.type);
-        plotOptions.layout = layout;
+        options.layout = layout;
 
         scale.seriesColumn.update(
           data,
@@ -149,7 +162,18 @@ class ColumnChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          plotOptions,
+          options,
+          dispatchers,
+          yAxisIndex,
+          x1,
+        );
+
+        scale.annotations.update(
+          data,
+          x,
+          y,
+          options,
+          layout,
           dispatchers,
           yAxisIndex,
           x1,

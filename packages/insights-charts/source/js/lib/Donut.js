@@ -1,4 +1,4 @@
-import { mouse, select } from 'd3-selection';
+import { event, mouse, select } from 'd3-selection';
 import { interpolate } from 'd3-interpolate';
 import { arc, pie as d3Pie } from 'd3-shape';
 import { UNHIGHLIGHTED_OPACITY } from '../constants';
@@ -48,6 +48,11 @@ class Donut {
       .sortValues(null);
 
     const radius = Math.min(width, height) / 3;
+    let innerRadius = radius + 30;
+
+    if (options.layout === 'pie') {
+      innerRadius = 0;
+    }
 
     const getMouseDimensions = (dims) => {
       const x = dims[0] + (width / 2);
@@ -58,7 +63,7 @@ class Donut {
 
     const path = arc()
       .outerRadius(radius)
-      .innerRadius(radius + 30);
+      .innerRadius(innerRadius);
 
     this.arcs = selection.selectAll(CSS.getClassSelector('donut-arc-wrapper'))
       .data(pie(this.seriesData[0].data.filter(d => !d.disabled)), d => d.data.x);
@@ -91,8 +96,17 @@ class Donut {
     const paths = newArcs.append('path')
       .attr('class', CSS.getClassName('donut-arc'))
       .attr('style', d =>
-        (d.data.color ? `fill: ${d.data.color}; stroke: ${d.data.color};` : null))
-      .attr('d', path);
+        (d.data.color ? `fill: ${d.data.color}; stroke: ${d.data.color};` : null));
+
+    if (dispatchers.enabled('dataPointClick.external')) {
+      paths
+        .style('cursor', 'pointer')
+        .on('click', function (d) {
+          dispatchers.call('dataPointClick', this, { event, data: { point: d.data } });
+        });
+    }
+
+    paths.attr('d', path);
 
     this.arcs = newArcs.merge(this.arcs);
 

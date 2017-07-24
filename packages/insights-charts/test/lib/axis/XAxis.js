@@ -8,11 +8,10 @@ describe('XAxis', () => {
   const generator = new DataGenerator();
   const randomData = generator.generate();
   const data = new DataSet(randomData);
-  const seriesData = data.getSeries();
   const categories = data.getCategories();
   const dimensions = { height: 100, margins: { top: 10, bottom: 10, left: 10, right: 10 } };
 
-  const xScale = new XScale(seriesData, {}, 'normal', dimensions);
+  const xScale = new XScale(categories, { axis: { x: { orientation: 'bottom' } } }, dimensions);
   const x = xScale.generate();
 
   it('should render a basic y axis', () => {
@@ -43,7 +42,7 @@ describe('XAxis', () => {
     it('should not update', () => {
       const xAxis = new XAxis(categories, x, dimensions, { enabled: false });
       const axis = xAxis.render(global.chart);
-      xAxis.update(x, dimensions, { enabled: false });
+      xAxis.update(categories, x, dimensions, { enabled: false });
 
       expect(axis).to.not.exist;
 

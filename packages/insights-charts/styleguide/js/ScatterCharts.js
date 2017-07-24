@@ -32,6 +32,7 @@ class ScatterCharts extends React.Component {
 
     const options = {
       axis: {
+        x: {},
         y: [
           {
             ticks: 4,
@@ -49,6 +50,13 @@ class ScatterCharts extends React.Component {
         horizontal: true,
         vertical: true,
       },
+      annotations: [{
+        highestPoint: true,
+        tooltip: {
+          title: 'this is a title',
+          message: 'this is a message',
+        },
+      }],
     };
 
     this.multiSeriesScatterChart = new ReflectChart(this.multi, {
@@ -70,6 +78,17 @@ class ScatterCharts extends React.Component {
     });
 
     this.scatterChart.render();
+
+    options.axis.x.orientation = 'left';
+    options.axis.y[0].orientation = 'bottom';
+
+    this.flippedScatterChart = new ReflectChart(this.flipped, {
+      type: 'scatter',
+      data: singleData,
+      options,
+    });
+
+    this.flippedScatterChart.render();
   }
 
   componentWillUnmount() {
@@ -84,6 +103,8 @@ class ScatterCharts extends React.Component {
         <div className="sg-chart" ref={ (c) => { this.multi = c; } } />
         <h1>Single series</h1>
         <div className="sg-chart" ref={ (c) => { this.single = c; } } />
+        <h1>Flipped Axis - Single series</h1>
+        <div className="sg-chart" ref={ (c) => { this.flipped = c; } } />
       </div>
     );
   }

@@ -10,21 +10,37 @@ class Grid {
   }
 
   renderXGridLines() {
-    const axis = axisBottom(this.x);
+    const options = this.options.axis.x;
+    const orientation = options.orientation;
+    let axis;
 
-    if (this.options.axis.x.ticks) {
-      axis.ticks(this.options.axis.x.ticks);
+    if (orientation === 'left' || orientation === 'right') {
+      axis = axisLeft(this.x);
+    } else {
+      axis = axisBottom(this.x);
+    }
+
+    if (options.ticks) {
+      axis.ticks(options.ticks);
     }
 
     return axis;
   }
 
   renderYGridLines() {
-    const axis = axisLeft(this.y);
+    const options = this.options.axis.y[0];
+    const orientation = options.orientation || 'left';
+    let axis;
+
+    if (orientation === 'bottom' || orientation === 'top') {
+      axis = axisBottom(this.y);
+    } else {
+      axis = axisLeft(this.y);
+    }
 
     // y axis is always converted to array and we always use the first y axis for the grid
-    if (this.options.axis.y[0].ticks) {
-      axis.ticks(this.options.axis.y[0].ticks);
+    if (options.ticks) {
+      axis.ticks(options.ticks);
     }
 
     return axis;
@@ -33,23 +49,52 @@ class Grid {
   render(elem) {
     const options = this.options.grid;
 
+    if (elem) {
+      this.elem = elem;
+    }
+
     if (options.enabled) {
       const { width, height } = this.dimensions;
 
-      this.grid = elem.append('g')
+      this.grid = this.elem.append('g')
         .attr('class', CSS.getClassName('grid'));
 
       if (options.vertical) {
+        const orientation = this.options.axis.x.orientation;
+        let translate;
+        let tickSize;
+
+        if (orientation === 'left') {
+          translate = '0, 0';
+          tickSize = -width;
+        } else {
+          translate = `0, ${height}`;
+          tickSize = -height;
+        }
+
         this.verticalGrid = this.grid.append('g')
           .attr('class', CSS.getClassName('grid-vertical'))
-          .attr('transform', `translate(0, ${height})`)
-          .call(this.renderXGridLines().tickSize(-height).tickFormat(''));
+          .attr('transform', `translate(${translate})`)
+          .call(this.renderXGridLines().tickSize(tickSize).tickFormat(''));
       }
 
       if (options.horizontal) {
+        const orientation = this.options.axis.y[0].orientation || 'left';
+        let translate;
+        let tickSize;
+
+        if (orientation === 'left') {
+          translate = '0, 0';
+          tickSize = -width;
+        } else {
+          translate = `0, ${height}`;
+          tickSize = -height;
+        }
+
         this.horizontalGrid = this.grid.append('g')
+          .attr('transform', `translate(${translate})`)
           .attr('class', CSS.getClassName('grid-horizontal'))
-          .call(this.renderYGridLines().tickSize(-width).tickFormat(''));
+          .call(this.renderYGridLines().tickSize(tickSize).tickFormat(''));
       }
     }
 
@@ -66,15 +111,11 @@ class Grid {
     this.dimensions = dimensions;
     this.options = options;
 
-    const { height, width } = dimensions;
-
-    if (this.verticalGrid) {
-      this.verticalGrid.call(this.renderXGridLines().tickSize(-height).tickFormat(''));
+    if (this.grid) {
+      this.grid.remove();
     }
 
-    if (this.horizontalGrid) {
-      this.horizontalGrid.call(this.renderYGridLines().tickSize(-width).tickFormat(''));
-    }
+    this.render();
   }
 }
 

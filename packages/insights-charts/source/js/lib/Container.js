@@ -54,6 +54,7 @@ class Container {
   setSVGMargins() {
     if (this.type !== 'sparkline') {
       const options = this.options;
+      const orientation = options.axis.x.orientation;
       const dimensions = this.getDimensions();
       const elem = this.elem;
       const categories = this.data.getCategories().map(c => (c.label));
@@ -65,8 +66,23 @@ class Container {
       const xAxis = new XAxis(categories, x, dimensions, options.axis.x);
       const tempX = xAxis.render(testSVG);
 
-      const xAxisHeight = tempX.node().getBBox().height;
-      this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
+      if (orientation === 'left' || orientation === 'right') {
+        const xAxisWidth = tempX.node().getBBox().width;
+
+        if (orientation === 'left') {
+          this.dimensions.margins.left = xAxisWidth + dimensions.defaultMargins.left;
+        } else {
+          this.dimensions.margins.right = xAxisWidth + dimensions.defaultMargins.right;
+        }
+      } else {
+        const xAxisHeight = tempX.node().getBBox().height;
+
+        if (orientation === 'top') {
+          this.dimensions.margins.top = xAxisHeight + dimensions.defaultMargins.top;
+        } else {
+          this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
+        }
+      }
 
       options.axis.y.forEach((yOptions, yAxisIndex) => {
         if (yOptions.enabled !== false && this.type !== 'donut') {
@@ -79,15 +95,25 @@ class Container {
             const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
             const axis = yAxis.render(testSVG);
 
-            const yAxisWidth = axis.node().getBBox().width;
-
             // TODO: This is currently assuming there is only 1 left axis and 1 right axis
             // We haven't found a use case for more than 1 axis with the same orientation yet
             // If we do this will need to be updated.
-            if (!yOptions.orientation || yOptions.orientation === 'left') {
-              this.dimensions.margins.left = yAxisWidth + dimensions.defaultMargins.left;
+            if (yOptions.orientation === 'top' || yOptions.orientation === 'bottom') {
+              const yAxisHeight = axis.node().getBBox().height;
+
+              if (yOptions.orientation === 'top') {
+                this.dimensions.margins.top = yAxisHeight + dimensions.defaultMargins.top;
+              } else {
+                this.dimensions.margins.bottom = yAxisHeight + dimensions.defaultMargins.bottom;
+              }
             } else {
-              this.dimensions.margins.right = yAxisWidth + dimensions.defaultMargins.right;
+              const yAxisWidth = axis.node().getBBox().width;
+
+              if (yOptions.orientation === 'right') {
+                this.dimensions.margins.right = yAxisWidth + dimensions.defaultMargins.right;
+              } else {
+                this.dimensions.margins.left = yAxisWidth + dimensions.defaultMargins.left;
+              }
             }
           }
         }

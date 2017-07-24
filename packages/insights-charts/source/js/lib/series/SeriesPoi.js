@@ -1,4 +1,4 @@
-import { select, mouse } from 'd3-selection';
+import { event, select, mouse } from 'd3-selection';
 import { easeLinear } from 'd3-ease';
 import {
   POI_RADIUS,
@@ -15,6 +15,9 @@ class SeriesPoi extends Series {
     super(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex, 'series-poi');
 
     this.eventName = `activatePointOfInterest.axis-y-${yAxisIndex}`;
+
+    this.getX = this.getX.bind(this);
+    this.getY = this.getY.bind(this);
 
     dispatchers.on(this.eventName, (category) => {
       if (category && category._isAMomentObject) {  // eslint-disable-line no-underscore-dangle
@@ -42,9 +45,37 @@ class SeriesPoi extends Series {
     });
   }
 
-  render(selection) {
-    const { x, y, options, dispatchers } = this;
+  isHorizontal() {
+    const orientation = this.options.axis.x.orientation;
+
+    return orientation === 'left' || orientation === 'right';
+  }
+
+  getX(d) {
+    return this.x(d.x);
+  }
+
+  getY(d) {
+    const { y, options } = this;
     const isStacked = options.layout === 'stacked';
+
+    let cyPos;
+
+    if (isStacked) {
+      if (d.y < 0 && d.y0 > 0) {
+        cyPos = y(d.y);
+      } else {
+        cyPos = y(d.y0 + d.y);
+      }
+    } else {
+      cyPos = y(d.y);
+    }
+
+    return cyPos;
+  }
+
+  render(selection) {
+    const { options, dispatchers } = this;
     const animationEnabled = options.animations && options.animations.enabled;
 
     if (!this.selection) {
@@ -57,22 +88,8 @@ class SeriesPoi extends Series {
     this.series
       .attr('class', d => (CSS.getClassName('series', this.selector, `color-${d.seriesIndex}`)))
       .selectAll(CSS.getClassSelector('poi'))
-        .attr('cx', d => x(d.x))
-        .attr('cy', (d) => {
-          let cyPos;
-
-          if (isStacked) {
-            if (d.y < 0 && d.y0 > 0) {
-              cyPos = y(d.y);
-            } else {
-              cyPos = y(d.y0 + d.y);
-            }
-          } else {
-            cyPos = y(d.y);
-          }
-
-          return cyPos;
-        });
+        .attr('cx', this.isHorizontal() ? this.getY : this.getX)
+        .attr('cy', this.isHorizontal() ? this.getX : this.getY);
 
     this.series.exit().remove();
 
@@ -81,29 +98,15 @@ class SeriesPoi extends Series {
         .attr('class', d => (CSS.getClassName('series', this.selector, `color-${d.seriesIndex}`)))
         .attr('clip-path', `url(#${this.clipPathId})`)
       .selectAll(CSS.getClassSelector('poi'))
-        .data(d => (!d.disabled ? d.data : []))
+        .data(d => (!d.disabled ? d.data : []));
 
     const circle = this.series.enter()
       .append('circle')
         .attr('class', CSS.getClassName('poi'))
         .attr('r', animationEnabled ? POI_RADIUS_INITIAL : POI_RADIUS)
-        .attr('cx', d => (x(d.x)))
-        .attr('cy', (d) => {
-          let cyPos;
-
-          if (isStacked) {
-            if (d.y < 0 && d.y0 > 0) {
-              cyPos = y(d.y);
-            } else {
-              cyPos = y(d.y0 + d.y);
-            }
-          } else {
-            cyPos = y(d.y);
-          }
-
-          return cyPos;
-        })
-        .attr('style', (d) => (d.color ? `stroke: ${d.color}` : null))
+        .attr('cx', this.isHorizontal() ? this.getY : this.getX)
+        .attr('cy', this.isHorizontal() ? this.getX : this.getY)
+        .attr('style', d => (d.color ? `stroke: ${d.color}` : null))
         .on('mousemove', function (d) {
           dispatchers.call('activatePointOfInterest', this, d.x);
         })
@@ -116,6 +119,14 @@ class SeriesPoi extends Series {
           dispatchers.call('activatePointOfInterest');
           dispatchers.call('unHighlightSeries');
         });
+
+    if (dispatchers.enabled('dataPointClick.external')) {
+      circle
+        .style('cursor', 'pointer')
+        .on('click', function (point) {
+          dispatchers.call('dataPointClick', this, { event, data: { point } });
+        });
+    }
 
     if (animationEnabled) {
       circle.transition()

@@ -4,6 +4,7 @@ import { Router, Route, IndexRedirect, browserHistory } from 'react-router';
 import Styleguide from './Styleguide';
 import LineCharts from './LineCharts';
 import ColumnCharts from './ColumnCharts';
+import BarCharts from './BarCharts';
 import AreaCharts from './AreaCharts';
 import DonutCharts from './DonutCharts';
 import ScatterCharts from './ScatterCharts';
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <Route name="Line charts" path="line-charts" components={ LineCharts } />
         <Route name="Area charts" path="area-charts" components={ AreaCharts } />
         <Route name="Column charts" path="column-charts" components={ ColumnCharts } />
+        <Route name="Bar charts" path="bar-charts" components={ BarCharts } />
         <Route name="Donut charts" path="donut-charts" components={ DonutCharts } />
         <Route name="Scatter charts" path="scatter-charts" components={ ScatterCharts } />
         <Route

@@ -25,17 +25,24 @@ const helpers = {
     return false;
   },
 
-  getStacking(type, stacking) {
-    const stackable = ['area', 'bar'];
-    const stackTypes = ['normal', 'percentage'];
-    const isStackable = stackable.indexOf(type) >= 0 && stackTypes.indexOf(stacking) >= 0;
-    let stacked;
+  getMaximumPoint(data, options, layout) {
+    let maxPoint = { y: 0, y0: 0, x: 0 };
 
-    if (isStackable) {
-      stacked = stacking;
-    }
+    data.forEach((s) => {
+      s.data.forEach((d) => {
+        if (layout === 'combination') {
+          layout = options[d.seriesType].layout;
+        }
 
-    return stacked;
+        if (layout === 'stacked' && ((d.y + d.y0) > (maxPoint.y + maxPoint.y0))) {
+          maxPoint = d;
+        } else if (layout !== 'stacked' && d.y > maxPoint.y) {
+          maxPoint = d;
+        }
+      });
+    });
+
+    return maxPoint;
   },
 
   detectCategoryType(categories) {

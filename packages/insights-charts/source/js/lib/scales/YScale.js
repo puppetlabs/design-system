@@ -46,8 +46,8 @@ class YScale {
 
   generate() {
     const { data, options, dimensions } = this;
+    const { width, height } = dimensions;
     const y = scaleLinear();
-    const height = dimensions.height;
     const minOption = options.min;
     const maxOption = options.max;
     const multiSeries = data.length > 1;
@@ -129,7 +129,14 @@ class YScale {
     }
 
     y.domain([min, max]);
-    y.range([height, 0]);
+
+
+    if (options.orientation === 'bottom' || options.orientation === 'top') {
+      y.range([0, width]);
+    } else {
+      y.range([height, 0]);
+    }
+
 
     return y;
   }

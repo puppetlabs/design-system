@@ -13,33 +13,37 @@ class XScale {
 
   generate() {
     const categories = this.categories;
-    const width = this.dimensions.width;
+    const { width, height } = this.dimensions;
     const type = this.type;
+    const options = this.options;
 
     // If the domain is all strings we'll use an ordinal type instead of a
     // linear one.
     if (this.scale === 'ordinal') {
       if (type === 'column' || type === 'bar') {
-        this.x = scaleBand()
-          .padding(0.05)
-          .range([0, width]);
+        this.x = scaleBand();
       } else {
-        this.x = scalePoint()
-          .padding(0.5)
-          .range([0, width]);
+        this.x = scalePoint();
       }
 
-      this.x.domain(categories);
+      this.x.padding(0.05)
+        .domain(categories);
     } else {
       if (this.scale === 'time') {
         this.x = scaleTime();
-        this.x.range([0, width]);
       } else {
         this.x = scaleLinear();
-        this.x.rangeRound([0, width]);
       }
 
       this.x.domain(extent(categories));
+    }
+
+    const orientation = options.axis.x.orientation;
+
+    if (orientation === 'left' || orientation === 'right') {
+      this.x.range([0, height]);
+    } else {
+      this.x.range([0, width]);
     }
 
     return this.x;

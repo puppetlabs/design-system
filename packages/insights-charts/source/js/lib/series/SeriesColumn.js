@@ -1,4 +1,4 @@
-import { mouse } from 'd3-selection';
+import { event, mouse } from 'd3-selection';
 import CSS from '../../helpers/css';
 import Series from './Series';
 
@@ -7,10 +7,16 @@ class SeriesColumn extends Series {
     super(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex, 'series-column', x1);
 
     this.getTransform = this.getTransform.bind(this);
-    this.getColumnWidth = this.getColumnWidth.bind(this);
-    this.getColumnHeight = this.getColumnHeight.bind(this);
+    this.getColumnThickness = this.getColumnThickness.bind(this);
+    this.getColumnLength = this.getColumnLength.bind(this);
     this.getXPosition = this.getXPosition.bind(this);
     this.getYPosition = this.getYPosition.bind(this);
+  }
+
+  isBar() {
+    const orientation = this.options.axis.x.orientation;
+
+    return orientation === 'left' || orientation === 'right';
   }
 
   isStacked() {
@@ -25,26 +31,30 @@ class SeriesColumn extends Series {
     const x = this.x;
     let result;
 
-    if (this.isGrouped()) {
+    if (this.isGrouped() && !this.isBar()) {
       result = `translate(${x(d.x)},0)`;
+    } else if (this.isGrouped() && this.isBar()) {
+      result = `translate(0, ${x(d.x)})`;
     }
 
     return result;
   }
 
-  getColumnWidth() {
+  getColumnThickness() {
     const { x, x1 } = this;
 
     return this.isGrouped() ? x1.bandwidth() : x.bandwidth();
   }
 
-  getColumnHeight(d) {
+  getColumnLength(d) {
     const { y, dimensions } = this;
-    const height = dimensions.height;
+    const { height } = dimensions;
     let val;
 
     if (this.isStacked()) {
       val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : y(d.y0) - y(d.y0 + d.y);
+    } else if (this.isBar()) {
+      val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : y(d.y);
     } else {
       val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : height - y(d.y);
     }
@@ -54,10 +64,12 @@ class SeriesColumn extends Series {
 
   getXPosition(d) {
     const { x, x1 } = this;
-    let val = x(d.x);
+    let val;
 
     if (this.isGrouped()) {
       val = x1(d.seriesLabel);
+    } else {
+      val = x(d.x);
     }
 
     return val;
@@ -67,7 +79,26 @@ class SeriesColumn extends Series {
     const y = this.y;
     let yPos;
 
-    if (this.isStacked()) {
+    if (this.isBar() && !this.isStacked()) {
+      // pretty sure this is incorrect
+      if (d.y < 0) {
+        yPos = y(d.y);
+      } else if (y.domain()[0] > 0) {
+        yPos = y(y.domain()[0]);
+      } else {
+        yPos = y(0);
+      }
+    } else if (this.isBar() && this.isStacked()) {
+      if (d.y < 0 && d.y0 < 0) {
+        yPos = y(d.y0 + d.y);
+      } else if (d.y < 0 && d.y0 >= 0) {
+        yPos = y(d.y);
+      } else if (d.y0 === 0 && d.y > 0) {
+        yPos = y(0);
+      } else {
+        yPos = y(d.y0);
+      }
+    } else if (!this.isBar() && this.isStacked()) {
       if (d.y < 0 && d.y0 < 0) {
         yPos = y(d.y0);
       } else if (d.y < 0 && d.y0 >= 0) {
@@ -103,11 +134,11 @@ class SeriesColumn extends Series {
 
     this.series.selectAll(CSS.getClassSelector('column-rect'))
       .attr('transform', this.getTransform)
-      .attr('x', this.getXPosition)
-      .attr('y', this.getYPosition)
-      .attr('width', this.getColumnWidth)
+      .attr('x', this.isBar() ? this.getYPosition : this.getXPosition)
+      .attr('y', this.isBar() ? this.getXPosition : this.getYPosition)
+      .attr('width', this.isBar() ? this.getColumnLength : this.getColumnThickness)
       .attr('style', d => (d.color ? `fill: ${d.color};` : null))
-      .attr('height', this.getColumnHeight);
+      .attr('height', this.isBar() ? this.getColumnThickness : this.getColumnLength);
 
     this.series.exit().remove();
 
@@ -117,15 +148,16 @@ class SeriesColumn extends Series {
           (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
         .attr('clip-path', `url(#${this.clipPathId})`)
       .selectAll(CSS.getClassSelector('column-rect'))
-        .data(d => d.data)
-        .enter()
-      .append('svg:rect')
+        .data(d => d.data);
+
+    const rect = this.series.enter()
+        .append('svg:rect')
         .attr('transform', this.getTransform)
-        .attr('x', this.getXPosition)
-        .attr('y', this.getYPosition)
-        .attr('width', this.getColumnWidth)
+        .attr('x', this.isBar() ? this.getYPosition : this.getXPosition)
+        .attr('y', this.isBar() ? this.getXPosition : this.getYPosition)
+        .attr('width', this.isBar() ? this.getColumnLength : this.getColumnThickness)
         .attr('style', d => (d.color ? `fill: ${d.color};` : null))
-        .attr('height', this.getColumnHeight)
+        .attr('height', this.isBar() ? this.getColumnThickness : this.getColumnLength)
         .on('mousemove', function (d, i) {
           const dims = mouse(this);
 
@@ -143,8 +175,17 @@ class SeriesColumn extends Series {
           dispatchers.call('tooltipHide');
           dispatchers.call('unHighlightSeries');
         })
-        .attr('class', CSS.getClassName('column-rect'))
-      .merge(this.series);
+        .attr('class', CSS.getClassName('column-rect'));
+
+    if (dispatchers.enabled('dataPointClick.external')) {
+      rect
+        .style('cursor', 'pointer')
+        .on('click', function (point) {
+          dispatchers.call('dataPointClick', this, { event, data: { point } });
+        });
+    }
+
+    this.series.merge(this.series);
 
     return this.series;
   }

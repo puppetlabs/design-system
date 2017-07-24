@@ -1,7 +1,9 @@
+import deepmerge from 'deepmerge';
 import { selectAll } from 'd3-selection';
 import Chart from './Chart';
 import { XScale, YScale } from '../lib/scales';
 import { XAxis, YAxis } from '../lib/axis';
+import Annotations from '../lib/Annotations';
 import Container from '../lib/Container';
 import ClipPath from '../lib/ClipPath';
 import Grid from '../lib/Grid';
@@ -51,7 +53,7 @@ class AreaChart extends Chart {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        const plotOptions = this.getPlotOptions(this.type);
+        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
 
         const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
@@ -102,12 +104,25 @@ class AreaChart extends Chart {
 
         seriesPoi.render(svg);
 
+        const annotations = new Annotations(
+          data,
+          x,
+          y,
+          options,
+          plotOptions.layout,
+          dispatchers,
+          yAxisIndex,
+        );
+
+        annotations.render(svg);
+
         this.yScales[yAxisIndex] = {
           yScale,
           yAxis,
           seriesArea,
           seriesLine,
           seriesPoi,
+          annotations,
         };
       }
     });
@@ -139,7 +154,7 @@ class AreaChart extends Chart {
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const plotOptions = this.getPlotOptions(this.type);
+        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
         const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
 
         if (yAxisIndex === 0) {
@@ -180,6 +195,8 @@ class AreaChart extends Chart {
           dispatchers,
           yAxisIndex,
         );
+
+        scale.annotations.update(data, x, y, options, plotOptions.layout, dispatchers, yAxisIndex);
       }
     });
   }

@@ -1,4 +1,4 @@
-import { axisLeft, axisRight } from 'd3-axis';
+import { axisTop, axisRight, axisBottom, axisLeft } from 'd3-axis';
 import CSS from '../../helpers/css';
 import formatters from '../../helpers/formatters';
 
@@ -45,13 +45,21 @@ class YAxis {
   }
 
   getAxisFunction(y, options) {
-    const rightAligned = this.isRightAligned();
+    const orientation = options.orientation;
     let axis;
 
-    if (rightAligned) {
-      axis = axisRight(this.y);
-    } else {
-      axis = axisLeft(this.y);
+    switch (orientation) {
+      case 'top':
+        axis = axisTop(y);
+        break;
+      case 'right':
+        axis = axisRight(y);
+        break;
+      case 'bottom':
+        axis = axisBottom(y);
+        break;
+      default:
+        axis = axisLeft(y);
     }
 
     if (options.ticks) {
@@ -64,35 +72,70 @@ class YAxis {
 
   render(elem) {
     const options = this.options;
-    const rightAligned = this.isRightAligned();
+    const orientation = options.orientation || 'left';
     const { height, width } = this.dimensions;
+
+    if (elem) {
+      this.elem = elem;
+    }
 
     if (options.enabled !== false) {
       const axis = this.getAxisFunction(this.y, options);
-      let title;
+      let translate;
 
-      this.axis = elem.append('g')
+      switch (orientation) {
+        case 'top':
+          translate = '0, 0';
+          break;
+        case 'right':
+          translate = `${width}, 0`;
+          break;
+        case 'bottom':
+          translate = `0, ${height}`;
+          break;
+        default:
+          translate = '0, 0';
+      }
+
+      this.axis = this.elem.append('g')
         .attr('class', CSS.getClassName('axis', 'axis-y', `axis-y-${this.yAxisIndex}`))
+        .attr('transform', `translate(${translate})`)
         .call(axis);
 
       if (options.title) {
-        title = this.axis.append('text')
+        this.axis.append('text')
           .attr('y', 0)
-          .attr('dy', -40)
+          .attr('x', () => {
+            let xPos;
+
+            if (orientation === 'bottom' || orientation === 'top') {
+              xPos = width / 2;
+            } else {
+              xPos = -(height / 2);
+            }
+
+            return xPos;
+          })
+          .attr('dy', orientation === 'left' || orientation === 'top' ? -40 : 40)
           .style('text-anchor', 'middle')
           .attr('class', CSS.getClassName('axis-title'))
           .text(options.title)
-          .attr('x', -(height / 2))
-          .attr('transform', 'rotate(-90)');
-      }
+          .attr('transform', () => {
+            let rotation;
 
-      if (rightAligned) {
-        this.axis.attr('transform', `translate(${width}, 0)`);
+            switch (orientation) {
+              case 'right':
+                rotation = 90;
+                break;
+              case 'left':
+                rotation = -90;
+                break;
+              default:
+                rotation = 0;
+            }
 
-        if (title) {
-          title.attr('x', (height / 2))
-            .attr('transform', 'rotate(90)');
-        }
+            return `rotate(${rotation})`;
+          });
       }
     }
 
@@ -100,20 +143,15 @@ class YAxis {
   }
 
   update(y, dimensions, options) {
-    if (!this.axis) return;
-
     this.y = y;
     this.dimensions = dimensions;
     this.options = options;
-    const rightAligned = this.isRightAligned();
 
-    const axis = this.getAxisFunction(y, options);
-    this.axis
-      .call(axis);
-
-    if (rightAligned) {
-      this.axis.attr('transform', `translate(${this.dimensions.width}, 0)`);
+    if (this.axis) {
+      this.axis.remove();
     }
+
+    this.render();
   }
 }
 

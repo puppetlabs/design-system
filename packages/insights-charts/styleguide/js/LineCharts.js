@@ -136,6 +136,13 @@ class LineCharts extends React.Component {
         horizontal: true,
         vertical: true,
       },
+      annotations: [{
+        highestPoint: true,
+        tooltip: {
+          title: 'this is a title',
+          message: 'this is a message',
+        },
+      }],
     };
 
     this.multiSeriesLineChart = new ReflectChart(this.multi, {
@@ -154,6 +161,16 @@ class LineCharts extends React.Component {
       type: 'line',
       data: singleData,
       options,
+    });
+
+    this.lineChart.on('dataPointClick', ({ event, data }) => {
+      console.log(JSON.stringify(event));
+      console.log(JSON.stringify(data));
+    });
+
+    this.lineChart.on('annotationClick', ({ event, data }) => {
+      console.log(JSON.stringify(event));
+      console.log(JSON.stringify(data));
     });
 
     this.lineChart.render();

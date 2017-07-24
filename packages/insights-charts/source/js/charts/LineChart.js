@@ -1,7 +1,9 @@
+import deepmerge from 'deepmerge';
 import { selectAll } from 'd3-selection';
 import Chart from './Chart';
 import { XScale, YScale } from '../lib/scales';
 import { XAxis, YAxis } from '../lib/axis';
+import Annotations from '../lib/Annotations';
 import Container from '../lib/Container';
 import ClipPath from '../lib/ClipPath';
 import Grid from '../lib/Grid';
@@ -62,7 +64,7 @@ class LineChart extends Chart {
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
 
-        const plotOptions = this.getPlotOptions(this.type);
+        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
 
         const seriesLine = new SeriesLine(
           data,
@@ -90,11 +92,24 @@ class LineChart extends Chart {
 
         seriesPoi.render(svg);
 
+        const annotations = new Annotations(
+          data,
+          x,
+          y,
+          options,
+          plotOptions.layout,
+          dispatchers,
+          yAxisIndex,
+        );
+
+        annotations.render(svg);
+
         this.yScales[yAxisIndex] = {
           yScale,
           yAxis,
           seriesLine,
           seriesPoi,
+          annotations,
         };
       }
     });
@@ -134,7 +149,7 @@ class LineChart extends Chart {
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
-        const plotOptions = this.getPlotOptions(this.type);
+        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
 
         scale.seriesLine.update(
           data,
@@ -157,6 +172,8 @@ class LineChart extends Chart {
           dispatchers,
           yAxisIndex,
         );
+
+        scale.annotations.update(data, x, y, options, plotOptions.layout, dispatchers, yAxisIndex);
       }
     });
   }

@@ -1,4 +1,4 @@
-import { axisBottom } from 'd3-axis';
+import { axisTop, axisRight, axisBottom, axisLeft } from 'd3-axis';
 import CSS from '../../helpers/css';
 import formatters from '../../helpers/formatters';
 
@@ -99,7 +99,24 @@ class XAxis {
 
   getAxisFunction(x, options) {
     const { categories, dimensions } = this;
-    const axis = axisBottom(x)
+    const orientation = options && options.orientation ? options.orientation : 'bottom';
+    let axis;
+
+    switch (orientation) {
+      case 'top':
+        axis = axisTop(x);
+        break;
+      case 'right':
+        axis = axisRight(x);
+        break;
+      case 'left':
+        axis = axisLeft(x);
+        break;
+      default:
+        axis = axisBottom(x);
+    }
+
+    axis = axis
       .tickSizeOuter(0)
       .tickFormat(this.getAxisFormatter());
 
@@ -117,21 +134,69 @@ class XAxis {
   render(elem) {
     const { height, width } = this.dimensions;
     const options = this.options;
+    const orientation = options && options.orientation ? options.orientation : 'bottom';
+
+    if (elem) {
+      this.elem = elem;
+    }
 
     if (options.enabled !== false) {
       const axis = this.getAxisFunction(this.x, options);
 
-      this.axis = elem.append('g')
+      let translate;
+
+      switch (orientation) {
+        case 'top':
+          translate = '0, 0';
+          break;
+        case 'right':
+          translate = `${width}, 0`;
+          break;
+        case 'left':
+          translate = '0, 0';
+          break;
+        default:
+          translate = `0, ${height}`;
+      }
+
+      this.axis = this.elem.append('g')
         .attr('class', CSS.getClassName('axis', 'axis-x'))
-        .attr('transform', `translate(0,${height})`)
+        .attr('transform', `translate(${translate})`)
         .call(axis);
 
       if (options.title) {
         this.axis.append('text')
           .attr('y', 0)
           .attr('dy', 40)
-          .attr('x', width / 2)
+          .attr('x', () => {
+            let xPos;
+
+            if (orientation === 'left' || orientation === 'right') {
+              xPos = height / 2;
+            } else {
+              xPos = width / 2;
+            }
+
+            return xPos;
+          })
           .style('text-anchor', 'middle')
+          .attr('transform', () => {
+            let rotation;
+
+            switch (orientation) {
+              case 'left':
+                rotation = 90;
+                break;
+              case 'right':
+                rotation = -90;
+                break;
+              default:
+                rotation = 0;
+            }
+
+
+            return `rotate(${rotation})`;
+          })
           .attr('class', CSS.getClassName('axis-title'))
           .text(options.title);
       }
@@ -141,21 +206,16 @@ class XAxis {
   }
 
   update(categories, x, dimensions, options) {
-    if (!this.axis) return;
-
     this.categories = categories;
     this.x = x;
     this.dimensions = dimensions;
     this.options = options;
 
-    const axis = this.getAxisFunction(x, options);
+    if (this.axis) {
+      this.axis.remove();
+    }
 
-    this.axis
-      .attr('transform', `translate(0, ${dimensions.height})`)
-      .call(axis);
-
-    this.axis.select(CSS.getClassSelector('axis-title'))
-      .attr('x', dimensions.width / 2);
+    this.render();
   }
 }
 

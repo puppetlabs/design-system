@@ -69,8 +69,10 @@ class DataSet {
         const datum = (typeof d === 'object' ? d : { x: category.label, y: d });
 
         datum.seriesIndex = index;
-        datum.axis = s.axis || 0;
+        datum.categoryIndex = i;
         datum.seriesLabel = s.label;
+        datum.seriesType = s.type;
+        datum.axis = s.axis || 0;
         datum.color = s.color || category.color;
         datum.formatter = s.formatter;
 

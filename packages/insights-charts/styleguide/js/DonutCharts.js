@@ -17,6 +17,7 @@ class DonutCharts extends React.Component {
     };
 
     const options = {
+      layout: 'pie',
     };
 
     this.donutChart = new ReflectChart(this.elem, {
@@ -27,6 +28,11 @@ class DonutCharts extends React.Component {
 
     this.donutChart.on('legendItemClick', () => {
       console.log('you got me!!!');
+    });
+
+    this.donutChart.on('dataPointClick', ({ event, data }) => {
+      console.log(JSON.stringify(event));
+      console.log(JSON.stringify(data.point));
     });
 
     this.donutChart.render();
