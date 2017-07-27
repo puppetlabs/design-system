@@ -29,7 +29,7 @@ class CombinationChart extends Chart {
     const dispatchers = this.dispatchers;
     const options = this.options;
 
-    this.container = new Container(this.data, options, this.type, dispatchers);
+    this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
 
     const wrapper = this.container.getWrapper();
@@ -42,10 +42,11 @@ class CombinationChart extends Chart {
     this.tooltip = new Tooltip(seriesData, dimensions, options.tooltips, dispatchers);
     this.tooltip.render(wrapper);
 
-    this.xScale = new XScale(categories, options, dimensions, 'column');
+    const ordinalOptions = deepmerge(options, { type: 'column' });
+    this.xScale = new XScale(categories, ordinalOptions, dimensions);
     const x = this.xScale.generate();
 
-    this.xScalePoint = new XScale(categories, options, dimensions, this.type);
+    this.xScalePoint = new XScale(categories, options, dimensions);
     const xPoint = this.xScalePoint.generate();
 
     this.xAxis = new XAxis(categories, x, dimensions, options.axis.x);
@@ -79,7 +80,7 @@ class CombinationChart extends Chart {
 
         if (types.indexOf('column') >= 0) {
           const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
-          this.xScale1 = new XScale(groups, options, x1Dimensions, 'column');
+          this.xScale1 = new XScale(groups, ordinalOptions, x1Dimensions);
           x1 = this.xScale1.generate();
 
           const columnData = data.filter(d => (d.type === 'column'));
@@ -120,7 +121,7 @@ class CombinationChart extends Chart {
 
         if (types.indexOf('line') >= 0) {
           const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = this.getPlotOptions('line');
+          const plotOptions = deepmerge(this.getPlotOptions('line'), options);
 
           seriesLine = new SeriesLine(
             lineData,
@@ -151,7 +152,7 @@ class CombinationChart extends Chart {
 
         if (types.indexOf('area') >= 0) {
           const areaData = data.filter(d => (d.type === 'area'));
-          const plotOptions = this.getPlotOptions('area');
+          const plotOptions = deepmerge(this.getPlotOptions('area'), options);
 
           seriesArea = new SeriesArea(
             areaData,
@@ -233,13 +234,14 @@ class CombinationChart extends Chart {
     const dispatchers = this.dispatchers;
     const options = this.options;
 
-    this.container.update(this.data, options, this.type, dispatchers);
+    this.container.update(this.data, options, dispatchers);
     const dimensions = this.container.getDimensions();
 
     this.clipPath.update(dimensions);
     this.tooltip.update(seriesData, dimensions, options.tooltips, dispatchers);
 
-    const x = this.xScale.update(categories, options, dimensions, 'column');
+    const ordinalOptions = deepmerge(options, { type: 'column' });
+    const x = this.xScale.update(categories, ordinalOptions, dimensions);
     const xPoint = this.xScalePoint.update(categories, options, dimensions, this.type);
     this.xAxis.update(categories, x, dimensions, options.axis.x);
 
@@ -263,7 +265,7 @@ class CombinationChart extends Chart {
           const columnData = data.filter(d => (d.type === 'column'));
           const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
 
-          this.xScale1 = new XScale(groups, options, x1Dimensions, 'column');
+          this.xScale1 = new XScale(groups, ordinalOptions, x1Dimensions, 'column');
           x1 = this.xScale1.generate();
 
           const plotOptions = deepmerge(this.getPlotOptions('column'), options);
@@ -299,7 +301,7 @@ class CombinationChart extends Chart {
 
         if (scale.seriesLine) {
           const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = this.getPlotOptions('line');
+          const plotOptions = deepmerge(this.getPlotOptions('line'), options);
 
           scale.seriesLine.update(
             lineData,
@@ -326,7 +328,7 @@ class CombinationChart extends Chart {
 
         if (scale.seriesArea) {
           const areaData = data.filter(d => (d.type === 'area'));
-          const plotOptions = this.getPlotOptions('area');
+          const plotOptions = deepmerge(this.getPlotOptions('area'), options);
 
           scale.seriesArea.update(
             areaData,

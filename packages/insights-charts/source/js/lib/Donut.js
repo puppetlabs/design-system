@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import { event, mouse, select } from 'd3-selection';
 import { interpolate } from 'd3-interpolate';
 import { arc, pie as d3Pie } from 'd3-shape';
@@ -80,7 +81,10 @@ class Donut {
     const newArcs = this.arcs.enter()
       .append('g')
         .attr('transform', `translate(${(width / 2)},${(height / 2)})`)
-        .attr('class', (_, i) => CSS.getClassName('donut-arc-wrapper', `color-${i}`))
+        .attr('class', (_, i) => classnames(
+          CSS.getClassName('donut-arc-wrapper'),
+          CSS.getColorClassName(i),
+        ))
         .on('mousemove', function mousemove(d, i) {
           const dims = mouse(this);
 

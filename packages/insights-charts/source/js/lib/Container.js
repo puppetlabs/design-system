@@ -8,10 +8,10 @@ import XAxis from './axis/XAxis';
 import YAxis from './axis/YAxis';
 
 class Container {
-  constructor(data, options, type, dispatchers) {
+  constructor(data, options, dispatchers) {
     this.data = data;
     this.options = options;
-    this.type = type;
+    this.type = options.type;
     this.dispatchers = dispatchers;
     this.dimensions = {
       width: options.width,
@@ -60,7 +60,7 @@ class Container {
       const categories = this.data.getCategories().map(c => (c.label));
       const testSVG = select(elem).append('svg');
 
-      const xScale = new XScale(categories, options, dimensions, this.type);
+      const xScale = new XScale(categories, options, dimensions);
       const x = xScale.generate();
 
       const xAxis = new XAxis(categories, x, dimensions, options.axis.x);
@@ -209,10 +209,10 @@ class Container {
     return this;
   }
 
-  update(data, options, type, dispatchers) {
+  update(data, options, dispatchers) {
     this.data = data;
     this.options = options;
-    this.type = type;
+    this.type = options.type;
     this.dispatchers = dispatchers;
 
     this.setWrapperDimensions();

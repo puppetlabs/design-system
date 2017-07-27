@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge';
 import { selectAll } from 'd3-selection';
 import Chart from './Chart';
 import { XScale, YScale } from '../lib/scales';
@@ -21,7 +22,7 @@ class SparklineChart extends Chart {
     const dispatchers = this.dispatchers;
     const options = this.options;
 
-    this.container = new Container(this.data, options, this.type, dispatchers);
+    this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
 
     const svg = this.container.getSVG();
@@ -30,7 +31,7 @@ class SparklineChart extends Chart {
     this.clipPath = new ClipPath({ width: 0, height: dimensions.height }, options.animations);
     this.clipPath.render(svg);
 
-    this.xScale = new XScale(categories, options, dimensions, this.type);
+    this.xScale = new XScale(categories, options, dimensions);
     const x = this.xScale.generate();
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
@@ -46,7 +47,8 @@ class SparklineChart extends Chart {
         const y = yScale.generate();
 
         if (types.indexOf('column') >= 0) {
-          const xScaleColumn = new XScale(categories, options, dimensions, 'column');
+          const columnOptions = deepmerge(options, { type: 'column' });
+          const xScaleColumn = new XScale(categories, columnOptions, dimensions);
           const xColumn = xScaleColumn.generate();
 
           const x1Dimensions = Object.assign({}, dimensions, { width: xColumn.bandwidth() });
@@ -54,7 +56,7 @@ class SparklineChart extends Chart {
           const x1 = this.xScale1.generate();
 
           const columnData = data.filter(d => (d.type === 'column'));
-          const plotOptions = this.getPlotOptions('column');
+          const plotOptions = deepmerge(this.getPlotOptions('column'), options);
 
           seriesColumn = new SeriesColumn(
             columnData,
@@ -73,7 +75,7 @@ class SparklineChart extends Chart {
 
         if (types.indexOf('line') >= 0) {
           const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = this.getPlotOptions('line');
+          const plotOptions = deepmerge(this.getPlotOptions('line'), options);
 
           seriesLine = new SeriesLine(
             lineData,
@@ -92,7 +94,7 @@ class SparklineChart extends Chart {
 
         if (types.indexOf('area') >= 0) {
           const areaData = data.filter(d => (d.type === 'area'));
-          const plotOptions = this.getPlotOptions('area');
+          const plotOptions = deepmerge(this.getPlotOptions('area'), options);
 
           seriesArea = new SeriesArea(
             areaData,
@@ -142,7 +144,7 @@ class SparklineChart extends Chart {
     const dispatchers = this.dispatchers;
     const options = this.options;
 
-    this.container.update(this.data, options, this.type, dispatchers);
+    this.container.update(this.data, options, dispatchers);
     const dimensions = this.container.getDimensions();
 
     const x = this.xScale.update(categories, options, dimensions, this.type);
@@ -158,14 +160,15 @@ class SparklineChart extends Chart {
 
         if (scale.seriesColumn) {
           const columnData = data.filter(d => (d.type === 'column'));
-          const xScaleColumn = new XScale(categories, options, dimensions, 'column');
+          const columnOptions = deepmerge(options, { type: 'column' });
+          const xScaleColumn = new XScale(categories, columnOptions, dimensions);
           const xColumn = xScaleColumn.generate();
 
           const x1Dimensions = Object.assign({}, dimensions, { width: xColumn.bandwidth() });
-          this.xScale1 = new XScale(groups, options, x1Dimensions, this.type);
+          this.xScale1 = new XScale(groups, options, x1Dimensions);
           const x1 = this.xScale1.generate();
 
-          const plotOptions = this.getPlotOptions('column');
+          const plotOptions = deepmerge(this.getPlotOptions('column'), options);
 
           scale.seriesColumn.update(
             columnData,
@@ -182,7 +185,7 @@ class SparklineChart extends Chart {
 
         if (scale.seriesLine) {
           const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = this.getPlotOptions('line');
+          const plotOptions = deepmerge(this.getPlotOptions('line'), options);
 
           scale.seriesLine.update(
             lineData,
@@ -198,7 +201,7 @@ class SparklineChart extends Chart {
 
         if (scale.seriesArea) {
           const areaData = data.filter(d => (d.type === 'area'));
-          const plotOptions = this.getPlotOptions('area');
+          const plotOptions = deepmerge(this.getPlotOptions('area'), options);
 
           scale.seriesArea.update(
             areaData,

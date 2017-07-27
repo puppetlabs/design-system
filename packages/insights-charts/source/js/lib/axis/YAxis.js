@@ -116,7 +116,23 @@ class YAxis {
 
             return xPos;
           })
-          .attr('dy', orientation === 'left' || orientation === 'top' ? -40 : 40)
+          .attr('dy', () => {
+            let result;
+
+            try {
+              const yAxis = this.elem.select(CSS.getClassSelector(`axis-y-${this.yAxisIndex}`)).node().getBBox();
+
+              if (orientation === 'left' || orientation === 'right') {
+                result = -yAxis.width - 15;
+              } else {
+                result = yAxis.height + 15;
+              }
+            } catch (e) {
+              result = 0;
+            }
+
+            return result;
+          })
           .style('text-anchor', 'middle')
           .attr('class', CSS.getClassName('axis-title'))
           .text(options.title)

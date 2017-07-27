@@ -27,7 +27,7 @@ class AreaChart extends Chart {
     const dispatchers = this.dispatchers;
     const options = this.options;
 
-    this.container = new Container(this.data, options, this.type, dispatchers);
+    this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
 
     const wrapper = this.container.getWrapper();
@@ -40,7 +40,7 @@ class AreaChart extends Chart {
     this.tooltip = new Tooltip(seriesData, dimensions, options, dispatchers);
     this.tooltip.render(wrapper);
 
-    this.xScale = new XScale(categories, options, dimensions, this.type);
+    this.xScale = new XScale(categories, options, dimensions);
     const x = this.xScale.generate();
 
     this.xAxis = new XAxis(categories, x, dimensions, options.axis.x);
@@ -138,7 +138,7 @@ class AreaChart extends Chart {
     const dispatchers = this.dispatchers;
     const options = this.options;
 
-    this.container.update(this.data, options, this.type, dispatchers);
+    this.container.update(this.data, options, dispatchers);
     const dimensions = this.container.getDimensions();
 
     this.clipPath.update(dimensions);

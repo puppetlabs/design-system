@@ -3,12 +3,12 @@ import { extent } from 'd3-array';
 import helpers from '../../helpers/charting';
 
 class XScale {
-  constructor(categories, options, dimensions, type) {
+  constructor(categories, options, dimensions) {
     this.categories = categories;
     this.options = options;
-    this.scale = helpers.detectScaleType(categories, type);
+    this.scale = helpers.detectScaleType(categories, options.type);
     this.dimensions = dimensions;
-    this.type = type;
+    this.type = options.type;
   }
 
   generate() {
@@ -49,11 +49,11 @@ class XScale {
     return this.x;
   }
 
-  update(categories, options, dimensions, type) {
+  update(categories, options, dimensions) {
     this.categories = categories;
     this.options = options;
     this.dimensions = dimensions;
-    this.type = type;
+    this.type = options.type;
 
     return this.generate();
   }

@@ -6,6 +6,7 @@ class Chart {
     this.elem = elem;
     this.type = type;
     this.options = clone(options);
+    this.options.type = type;
     this.data = new DataSet(data, this.options, type);
     this.dispatchers = dispatchers;
 

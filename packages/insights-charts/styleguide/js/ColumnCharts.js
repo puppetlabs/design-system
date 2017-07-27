@@ -7,7 +7,7 @@ class ColumnCharts extends React.Component {
     const dataPoints = 10;
 
     const data = {
-      categories: getRandomCategories(dataPoints),
+      categories: ['Geoff super long name', 'Jessica super long name', 'Abigail super long name', 'Jacob super long name', 'Kayla super long name', 'Alex super long name', 'Brad super long name', 'Colby super long name', 'Farrah super long name', 'Sebastian super long name'],
       series: [
         {
           label: 'Profit',
@@ -45,6 +45,9 @@ class ColumnCharts extends React.Component {
         }],
         x: {
           title: 'I am a x axis title',
+          labels: {
+            rotated: true,
+          },
         },
       },
       grid: {

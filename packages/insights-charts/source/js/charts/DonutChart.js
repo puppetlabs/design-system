@@ -13,7 +13,7 @@ class DonutChart extends Chart {
     const dispatchers = this.dispatchers;
     const options = this.options;
 
-    this.container = new Container(this.data, options, this.type, dispatchers);
+    this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
 
     const wrapper = this.container.getWrapper();
@@ -32,7 +32,7 @@ class DonutChart extends Chart {
     const seriesData = this.data.getSeries();
     const { options, dispatchers } = this;
 
-    this.container.update(this.data, options, this.type, dispatchers);
+    this.container.update(this.data, options, dispatchers);
     const dimensions = this.container.getDimensions();
 
     this.tooltip.update(seriesData, dimensions, options, dispatchers);

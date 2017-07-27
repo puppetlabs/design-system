@@ -39,7 +39,7 @@ class ColumnChart extends Chart {
     const options = clone(this.options);
     const layout = this.getLayout();
 
-    this.container = new Container(this.data, options, this.type, dispatchers);
+    this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
 
     const wrapper = this.container.getWrapper();
@@ -51,14 +51,14 @@ class ColumnChart extends Chart {
     this.clipPath = new ClipPath(dimensions, clipPathOptions);
     this.clipPath.render(svg);
 
-    this.xScale = new XScale(categories, options, dimensions, this.type);
+    this.xScale = new XScale(categories, options, dimensions);
     const x = this.xScale.generate();
 
     this.xAxis = new XAxis(categories, x, dimensions, options.axis.x);
     this.xAxis.render(svg);
 
     const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
-    this.xScale1 = new XScale(groups, options, x1Dimensions, this.type);
+    this.xScale1 = new XScale(groups, options, x1Dimensions);
     const x1 = this.xScale1.generate();
 
     this.tooltip = new Tooltip(seriesData, dimensions, options, dispatchers);
@@ -128,7 +128,7 @@ class ColumnChart extends Chart {
     const options = clone(this.options);
     const layout = this.getLayout();
 
-    this.container.update(this.data, options, this.type, dispatchers);
+    this.container.update(this.data, options, dispatchers);
     const dimensions = this.container.getDimensions();
 
     this.clipPath.update(dimensions);
@@ -138,7 +138,7 @@ class ColumnChart extends Chart {
     this.xAxis.update(categories, x, dimensions, options.axis.x);
 
     const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
-    this.xScale1 = new XScale(groups, options, x1Dimensions, this.type);
+    this.xScale1 = new XScale(groups, options, x1Dimensions);
     const x1 = this.xScale1.generate();
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {

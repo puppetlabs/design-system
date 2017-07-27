@@ -1,5 +1,6 @@
 import { axisTop, axisRight, axisBottom, axisLeft } from 'd3-axis';
 import CSS from '../../helpers/css';
+import helpers from '../../helpers/charting';
 import formatters from '../../helpers/formatters';
 
 class XAxis {
@@ -97,6 +98,17 @@ class XAxis {
     return formatter;
   }
 
+  getLabelsRotatation() {
+    const options = this.options;
+    let result = false;
+
+    if (options.labels && options.labels.rotated) {
+      result = true;
+    }
+
+    return result;
+  }
+
   getAxisFunction(x, options) {
     const { categories, dimensions } = this;
     const orientation = options && options.orientation ? options.orientation : 'bottom';
@@ -126,6 +138,12 @@ class XAxis {
       axis.ticks(options.ticks);
     } else if (ticks) {
       axis.ticks(ticks.length);
+
+      const scaleType = helpers.detectScaleType(categories, options.type);
+
+      if (scaleType === 'ordinal' && !this.getLabelsRotatation()) {
+        axis.tickValues(ticks);
+      }
     }
 
     return axis;
@@ -164,10 +182,34 @@ class XAxis {
         .attr('transform', `translate(${translate})`)
         .call(axis);
 
+      if (this.getLabelsRotatation()) {
+        this.axis.selectAll('.tick > text')
+          .attr('transform', 'rotate(-45)')
+          .style('text-anchor', 'end');
+      }
+
       if (options.title) {
         this.axis.append('text')
           .attr('y', 0)
-          .attr('dy', 40)
+          .attr('dy', () => {
+            let result;
+
+            try {
+              const xAxis = this.elem.select(CSS.getClassSelector('axis-x')).node().getBBox();
+
+              if (orientation === 'left' || orientation === 'right') {
+                result = xAxis.width;
+              } else {
+                result = xAxis.height;
+              }
+
+              result += 15;
+            } catch (e) {
+              result = 0;
+            }
+
+            return result;
+          })
           .attr('x', () => {
             let xPos;
 
