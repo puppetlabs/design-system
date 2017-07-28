@@ -52,7 +52,7 @@ class SeriesColumn extends Series {
     let val;
 
     if (this.isStacked()) {
-      val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : y(d.y0) - y(d.y0 + d.y);
+      val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : Math.abs(y(d.y0) - y(d.y0 + d.y));
     } else if (this.isBar()) {
       val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : y(d.y);
     } else {

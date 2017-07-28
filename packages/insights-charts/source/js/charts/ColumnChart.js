@@ -31,6 +31,12 @@ class ColumnChart extends Chart {
     return layout;
   }
 
+  isBar() {
+    const orientation = this.options.axis.x.orientation;
+
+    return orientation === 'left' || orientation === 'right';
+  }
+
   render() {
     const categories = this.data.getCategories().map(c => (c.label));
     const groups = this.data.getGroups();
@@ -57,7 +63,15 @@ class ColumnChart extends Chart {
     this.xAxis = new XAxis(categories, x, dimensions, options.axis.x);
     this.xAxis.render(svg);
 
-    const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
+    let x1Dimension;
+
+    if (this.isBar()) {
+      x1Dimension = { height: x.bandwidth() };
+    } else {
+      x1Dimension = { width: x.bandwidth() };
+    }
+
+    const x1Dimensions = Object.assign({}, dimensions, x1Dimension);
     this.xScale1 = new XScale(groups, options, x1Dimensions);
     const x1 = this.xScale1.generate();
 
@@ -137,7 +151,15 @@ class ColumnChart extends Chart {
     const x = this.xScale.update(categories, options, dimensions, this.type);
     this.xAxis.update(categories, x, dimensions, options.axis.x);
 
-    const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
+    let x1Dimension;
+
+    if (this.isBar()) {
+      x1Dimension = { height: x.bandwidth() };
+    } else {
+      x1Dimension = { width: x.bandwidth() };
+    }
+
+    const x1Dimensions = Object.assign({}, dimensions, x1Dimension);
     this.xScale1 = new XScale(groups, options, x1Dimensions);
     const x1 = this.xScale1.generate();
 

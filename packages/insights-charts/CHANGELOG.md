@@ -1,3 +1,8 @@
+# 0.1.5
+
+* Set defaults for grid
+* Allow column chart to be rotated into a bar chart via its axis
+
 # 0.1.2
 
 ## Improvements

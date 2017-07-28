@@ -66,7 +66,11 @@ const defaultOptions = {
     enabled: true,
   },
 
-  grid: { },
+  grid: {
+    enabled: false,
+    horizontal: true,
+    vertical: true,
+  },
 };
 
 class Chart {
