@@ -20,7 +20,6 @@ class DonutChart extends Chart {
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    options.tooltips.expanded = true;
     this.tooltip = new Tooltip(seriesData, dimensions, options, dispatchers);
     this.tooltip.render(wrapper);
 

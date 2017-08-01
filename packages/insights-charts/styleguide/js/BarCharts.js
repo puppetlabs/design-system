@@ -31,20 +31,18 @@ class BarCharts extends React.Component {
     };
 
     const options = {
-      bar: {
+      column: {
         layout: 'stacked',
       },
       axis: {
         y: [{
           ticks: 4,
           title: 'Left axis',
-        }, {
-          ticks: 4,
-          orientation: 'right',
-          title: 'Right axis',
+          orientation: 'bottom',
         }],
         x: {
           title: 'I am a x axis title',
+          orientation: 'left',
         },
       },
       grid: {
@@ -62,27 +60,27 @@ class BarCharts extends React.Component {
     };
 
     this.barChart = new ReflectChart(this.single, {
-      type: 'bar',
+      type: 'column',
       data: singleSeriesData,
       options,
     });
 
     this.barChart.render();
 
-    options.bar.layout = 'grouped';
+    options.column.layout = 'grouped';
 
     this.groupedColumnChart = new ReflectChart(this.grouped, {
-      type: 'bar',
+      type: 'column',
       data,
       options,
     });
 
     this.groupedColumnChart.render();
 
-    options.bar.layout = 'stacked';
+    options.column.layout = 'stacked';
 
     this.stackedColumnChart = new ReflectChart(this.stacked, {
-      type: 'bar',
+      type: 'column',
       data,
       options,
     });

@@ -66,21 +66,24 @@ class Container {
       const xAxis = new XAxis(categories, x, dimensions, options.axis.x);
       const tempX = xAxis.render(testSVG);
 
-      if (orientation === 'left' || orientation === 'right') {
-        const xAxisWidth = tempX.node().getBBox().width;
 
-        if (orientation === 'left') {
-          this.dimensions.margins.left = xAxisWidth + dimensions.defaultMargins.left;
-        } else {
-          this.dimensions.margins.right = xAxisWidth + dimensions.defaultMargins.right;
-        }
-      } else {
-        const xAxisHeight = tempX.node().getBBox().height;
+      if (tempX) {
+        if (orientation === 'left' || orientation === 'right') {
+          const xAxisWidth = tempX.node().getBBox().width;
 
-        if (orientation === 'top') {
-          this.dimensions.margins.top = xAxisHeight + dimensions.defaultMargins.top;
+          if (orientation === 'left') {
+            this.dimensions.margins.left = xAxisWidth + dimensions.defaultMargins.left;
+          } else {
+            this.dimensions.margins.right = xAxisWidth + dimensions.defaultMargins.right;
+          }
         } else {
-          this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
+          const xAxisHeight = tempX.node().getBBox().height;
+
+          if (orientation === 'top') {
+            this.dimensions.margins.top = xAxisHeight + dimensions.defaultMargins.top;
+          } else {
+            this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
+          }
         }
       }
 
@@ -98,21 +101,23 @@ class Container {
             // TODO: This is currently assuming there is only 1 left axis and 1 right axis
             // We haven't found a use case for more than 1 axis with the same orientation yet
             // If we do this will need to be updated.
-            if (yOptions.orientation === 'top' || yOptions.orientation === 'bottom') {
-              const yAxisHeight = axis.node().getBBox().height;
+            if (axis) {
+              if (yOptions.orientation === 'top' || yOptions.orientation === 'bottom') {
+                const yAxisHeight = axis.node().getBBox().height;
 
-              if (yOptions.orientation === 'top') {
-                this.dimensions.margins.top = yAxisHeight + dimensions.defaultMargins.top;
+                if (yOptions.orientation === 'top') {
+                  this.dimensions.margins.top = yAxisHeight + dimensions.defaultMargins.top;
+                } else {
+                  this.dimensions.margins.bottom = yAxisHeight + dimensions.defaultMargins.bottom;
+                }
               } else {
-                this.dimensions.margins.bottom = yAxisHeight + dimensions.defaultMargins.bottom;
-              }
-            } else {
-              const yAxisWidth = axis.node().getBBox().width;
+                const yAxisWidth = axis.node().getBBox().width;
 
-              if (yOptions.orientation === 'right') {
-                this.dimensions.margins.right = yAxisWidth + dimensions.defaultMargins.right;
-              } else {
-                this.dimensions.margins.left = yAxisWidth + dimensions.defaultMargins.left;
+                if (yOptions.orientation === 'right') {
+                  this.dimensions.margins.right = yAxisWidth + dimensions.defaultMargins.right;
+                } else {
+                  this.dimensions.margins.left = yAxisWidth + dimensions.defaultMargins.left;
+                }
               }
             }
           }
@@ -183,11 +188,6 @@ class Container {
       const legendOptions = options.legend;
       const margins = options.margins;
       const seriesData = data.getSeries();
-
-      // Since donut only supports one series... always expand it.
-      if (this.type === 'donut') {
-        legendOptions.expanded = true;
-      }
 
       const { legend } = new Legend(wrapper, seriesData, legendOptions, margins, dispatchers);
 

@@ -1,3 +1,8 @@
+# 0.1.6
+
+* Properly support single series datasets
+* Fix bug where axis were being rendered over series elements
+
 # 0.1.5
 
 * Set defaults for grid

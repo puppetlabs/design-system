@@ -11,21 +11,8 @@ class Tooltip {
   constructor(seriesData, dimensions, options, dispatchers) {
     this.seriesData = seriesData;
     this.options = options;
-    this.tooltipOptions = options.tooltip || {};
     this.dimensions = dimensions;
     this.dispatchers = dispatchers;
-  }
-
-  getLegendValues(expanded, seriesData) {
-    let values = [];
-
-    if (expanded) {
-      values = seriesData[0].data.map(d => ({ label: d.x, value: d.y }));
-    } else {
-      values = seriesData;
-    }
-
-    return values;
   }
 
   getSeriesValue(d, categoryIndex) {
@@ -165,21 +152,20 @@ class Tooltip {
     value.enter().append('span')
       .attr('class', CSS.getClassName('tooltip-value'))
     .merge(value)
-      .text(d => this.getFormattedItem(d.data[categoryIndex]));
+      .text(d => (this.getFormattedItem(d.data[categoryIndex])));
   }
 
   renderTooltip(categoryIndex, category) {
     const { seriesData } = this;
-    const data = this.getLegendValues(this.tooltipOptions.expanded, seriesData);
-    const multiSeries = data.length > 1;
+    const multiSeries = seriesData.length > 1;
 
     this.selection.selectAll(CSS.getClassSelector('tooltip-header'))
       .text(this.getFormattedHeader(category));
 
     if (multiSeries) {
-      this.renderMultiSeries(categoryIndex, data);
+      this.renderMultiSeries(categoryIndex, seriesData);
     } else {
-      this.renderSingleSeries(categoryIndex, data);
+      this.renderSingleSeries(categoryIndex, seriesData);
     }
   }
 
@@ -239,7 +225,6 @@ class Tooltip {
     this.seriesData = seriesData;
     this.dimensions = dimensions;
     this.options = options;
-    this.tooltipOptions = options.tooltip || {};
     this.dispatchers = dispatchers;
   }
 }

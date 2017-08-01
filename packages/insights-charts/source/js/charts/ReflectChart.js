@@ -6,7 +6,6 @@ import Dispatchers from '../lib/Dispatchers';
 import AreaChart from './AreaChart';
 import LineChart from './LineChart';
 import ColumnChart from './ColumnChart';
-import BarChart from './BarChart';
 import DonutChart from './DonutChart';
 import ScatterChart from './ScatterChart';
 import CombinationChart from './CombinationChart';
@@ -153,9 +152,6 @@ class Chart {
         break;
       case 'column':
         chart = ColumnChart;
-        break;
-      case 'bar':
-        chart = BarChart;
         break;
       case 'donut':
         chart = DonutChart;

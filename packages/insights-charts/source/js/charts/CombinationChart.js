@@ -1,5 +1,4 @@
 import deepmerge from 'deepmerge';
-import { selectAll } from 'd3-selection';
 import Chart from './Chart';
 import { XScale, YScale } from '../lib/scales';
 import { XAxis, YAxis } from '../lib/axis';
@@ -222,7 +221,7 @@ class CombinationChart extends Chart {
       }
     });
 
-    selectAll(CSS.getClassSelector('series')).raise();
+    svg.selectAll(CSS.getClassSelector('series')).raise();
 
     this.clipPath.animate(dimensions);
   }
@@ -235,6 +234,8 @@ class CombinationChart extends Chart {
     const options = this.options;
 
     this.container.update(this.data, options, dispatchers);
+
+    const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
     this.clipPath.update(dimensions);
@@ -376,6 +377,8 @@ class CombinationChart extends Chart {
         );
       }
     });
+
+    svg.selectAll(CSS.getClassSelector('series')).raise();
   }
 }
 

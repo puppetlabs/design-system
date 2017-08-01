@@ -8,6 +8,7 @@ import ClipPath from '../lib/ClipPath';
 import Grid from '../lib/Grid';
 import Tooltip from '../lib/Tooltip';
 import SeriesColumn from '../lib/series/SeriesColumn';
+import CSS from '../helpers/css';
 
 class ColumnChart extends Chart {
   constructor({ elem, type, data, options, dispatchers }) {
@@ -131,6 +132,8 @@ class ColumnChart extends Chart {
       }
     });
 
+    svg.selectAll(CSS.getClassSelector('series')).raise();
+
     this.clipPath.animate(dimensions);
   }
 
@@ -143,6 +146,8 @@ class ColumnChart extends Chart {
     const layout = this.getLayout();
 
     this.container.update(this.data, options, dispatchers);
+
+    const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
     this.clipPath.update(dimensions);
@@ -202,6 +207,8 @@ class ColumnChart extends Chart {
         );
       }
     });
+
+    svg.selectAll(CSS.getClassSelector('series')).raise();
   }
 }
 

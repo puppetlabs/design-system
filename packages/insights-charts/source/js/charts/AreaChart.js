@@ -1,5 +1,4 @@
 import deepmerge from 'deepmerge';
-import { selectAll } from 'd3-selection';
 import Chart from './Chart';
 import { XScale, YScale } from '../lib/scales';
 import { XAxis, YAxis } from '../lib/axis';
@@ -127,7 +126,7 @@ class AreaChart extends Chart {
       }
     });
 
-    selectAll(CSS.getClassSelector('series')).raise();
+    svg.selectAll(CSS.getClassSelector('series')).raise();
 
     this.clipPath.animate(dimensions);
   }
@@ -139,6 +138,8 @@ class AreaChart extends Chart {
     const options = this.options;
 
     this.container.update(this.data, options, dispatchers);
+
+    const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
     this.clipPath.update(dimensions);
@@ -199,6 +200,8 @@ class AreaChart extends Chart {
         scale.annotations.update(data, x, y, options, plotOptions.layout, dispatchers, yAxisIndex);
       }
     });
+
+    svg.selectAll(CSS.getClassSelector('series')).raise();
   }
 }
 

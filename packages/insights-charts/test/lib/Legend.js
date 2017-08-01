@@ -17,19 +17,23 @@ describe('Legend', () => {
     expect(global.chart.selectAll('.reflect-charts-legend').size()).to.eql(1);
   });
 
-  it('should render aggregates', () => {
+  it('should render aggregates when chart is multiseries', () => {
     const seriesData = [{
-      label: 'blah',
+      label: 'foo',
       aggregate: 45,
-      data: [{ y: 1 }, { y: 2 }],
+      data: [{ x: 'foo', y: 1 }, { x: 'bar', y: 2 }],
+    }, {
+      label: 'bar',
+      aggregate: 45,
+      data: [{ x: 'foo', y: 1 }, { x: 'bar', y: 2 }],
     }];
 
     new Legend(global.chart, seriesData, options, margins, dispatchers);
 
-    expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('blah: 45');
+    expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('foo: 45');
   });
 
-  describe('when expanded', () => {
+  describe('when single series', () => {
     it('should list data points as series', () => {
       options = { enabled: true, expanded: true };
 

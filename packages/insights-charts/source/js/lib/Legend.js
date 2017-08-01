@@ -8,14 +8,17 @@ class Legend {
     this.render(elem, seriesData, options, margins, dispatchers);
   }
 
-  getLegendValues(seriesData, expanded) {
+  getLegendValues(seriesData) {
     let values = [];
+
+    const expanded = seriesData.length === 1;
 
     if (expanded) {
       values = seriesData[0].data.map((d, i) => ({
         label: d.x,
         seriesIndex: i,
         color: d.color,
+        aggregate: d.aggregate,
       }));
     } else {
       values = seriesData;
@@ -45,11 +48,12 @@ class Legend {
         container.style('padding-right', `${margins.right}px`);
       }
 
-      const data = this.getLegendValues(seriesData, options.expanded);
+      const data = this.getLegendValues(seriesData);
 
       legendItems = container.selectAll(CSS.getClassName('legend-item'))
         .data(data)
-        .enter().append('div')
+        .enter()
+        .append('div')
           .attr('class', (d, i) => (
             classnames(CSS.getClassName('legend-item'), CSS.getColorClassName(i), {
               [CSS.getClassName('legend-item-disabled')]: d.disabled,
