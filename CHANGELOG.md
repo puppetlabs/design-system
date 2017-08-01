@@ -1,3 +1,7 @@
+# 0.0.65
+
+* Bar stencils should be the same as bars
+
 # 0.0.28
 
 * DatePicker learns how to respect timezones
