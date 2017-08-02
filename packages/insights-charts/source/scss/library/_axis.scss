@@ -9,12 +9,12 @@
     }
 
     text {
-      fill: $reflect-axis-stroke;
-      font-size: $reflect-axis-font-size;
+      fill: $reflect-axis-label-color;
+      font-size: $reflect-axis-label-font-size;
     }
   }
 }
 
 .reflect-charts-axis-title {
-  fill: $reflect-axis-stroke;
+  fill: $reflect-axis-title-color;
 }

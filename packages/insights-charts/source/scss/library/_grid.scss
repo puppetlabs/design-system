@@ -8,3 +8,7 @@
     stroke: $reflect-grid-stroke;
   }
 }
+
+.reflect-charts-zero-line .domain {
+  stroke: $reflect-zero-line-stroke;
+}

@@ -1,4 +1,5 @@
 import deepmerge from 'deepmerge';
+import clone from 'clone';
 import Chart from './Chart';
 import { XScale, YScale } from '../lib/scales';
 import { XAxis, YAxis } from '../lib/axis';
@@ -6,6 +7,7 @@ import Annotations from '../lib/Annotations';
 import Container from '../lib/Container';
 import ClipPath from '../lib/ClipPath';
 import Grid from '../lib/Grid';
+import ZeroLine from '../lib/ZeroLine';
 import ClosestPointOverlay from '../lib/ClosestPointOverlay';
 import Tooltip from '../lib/Tooltip';
 import SeriesArea from '../lib/series/SeriesArea';
@@ -20,11 +22,27 @@ class AreaChart extends Chart {
     this.yScales = {};
   }
 
+  getLayout() {
+    const { data, type } = this;
+    const options = this.getPlotOptions(type);
+    const isMultiSeries = data.getSeries().length > 1;
+    let layout = 'normal';
+
+    if (isMultiSeries && !options.layout) {
+      layout = 'stacked';
+    } else if (isMultiSeries && options.layout) {
+      layout = options.layout;
+    }
+
+    return layout;
+  }
+
   render() {
     const categories = this.data.getCategories().map(c => (c.label));
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
-    const options = this.options;
+    const options = clone(this.options);
+    const layout = this.getLayout();
 
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
@@ -52,9 +70,11 @@ class AreaChart extends Chart {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
+        options.layout = layout;
+
         const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
 
-        const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
+        const yScale = new YScale(data, yOptions, layout, dimensions, options);
         const y = yScale.generate();
         const yAxis = new YAxis(y, dimensions, yOptions);
         yAxis.render(svg);
@@ -62,6 +82,9 @@ class AreaChart extends Chart {
         if (yAxisIndex === 0) {
           this.grid = new Grid(x, y, dimensions, options);
           this.grid.render(svg);
+
+          this.zeroLine = new ZeroLine(x, y, dimensions, options);
+          this.zeroLine.render(svg);
         }
 
         const seriesArea = new SeriesArea(
@@ -108,7 +131,7 @@ class AreaChart extends Chart {
           x,
           y,
           options,
-          plotOptions.layout,
+          layout,
           dispatchers,
           yAxisIndex,
         );
@@ -135,7 +158,8 @@ class AreaChart extends Chart {
     const categories = this.data.getCategories().map(c => (c.label));
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
-    const options = this.options;
+    const options = clone(this.options);
+    const layout = this.getLayout();
 
     this.container.update(this.data, options, dispatchers);
 
@@ -151,15 +175,18 @@ class AreaChart extends Chart {
     this.pointOverlay.update(categories, x, dimensions, dispatchers, options);
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
+      options.layout = layout;
+
       const data = this.data.getDataByYAxis(yAxisIndex);
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
         const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
-        const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
+        const y = scale.yScale.update(data, yOptions, layout, dimensions, options);
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
+          this.zeroLine.update(x, y, dimensions, options);
         }
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
@@ -197,7 +224,7 @@ class AreaChart extends Chart {
           yAxisIndex,
         );
 
-        scale.annotations.update(data, x, y, options, plotOptions.layout, dispatchers, yAxisIndex);
+        scale.annotations.update(data, x, y, options, layout, dispatchers, yAxisIndex);
       }
     });
 

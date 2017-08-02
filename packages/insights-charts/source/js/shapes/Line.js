@@ -1,6 +1,6 @@
 import { curveCatmullRom, line as d3Line } from 'd3-shape';
 
-const Line = (x, y, data, options) => {
+const Line = (x, y, data = [], options = {}) => {
   const isStacked = options.layout === 'stacked';
   const spline = options.spline;
 

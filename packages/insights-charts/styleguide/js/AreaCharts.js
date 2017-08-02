@@ -56,7 +56,7 @@ class AreaCharts extends React.Component {
       }],
     };
 
-    this.areaChart = new ReflectChart(this.basic, {
+    this.areaChart = new ReflectChart(this.stacked, {
       type: 'area',
       data,
       options,
@@ -64,37 +64,37 @@ class AreaCharts extends React.Component {
 
     this.areaChart.render();
 
-    options.area.layout = 'stacked';
+    options.area.layout = 'normal';
 
-    this.stackedAreaChart = new ReflectChart(this.stacked, {
+    this.nonStackedAreaChart = new ReflectChart(this.nonStacked, {
       type: 'area',
       data,
       options,
     });
 
-    this.stackedAreaChart.on('legendItemClick', () => {
+    this.nonStackedAreaChart.on('legendItemClick', () => {
       console.log('you got me!!!');
     });
 
-    this.stackedAreaChart.on('dataPointClick', (data) => {
+    this.nonStackedAreaChart.on('dataPointClick', (data) => {
       console.log(data);
     });
 
-    this.stackedAreaChart.render();
+    this.nonStackedAreaChart.render();
   }
 
   componentWillUnmount() {
     this.areaChart.destroy();
-    this.stackedAreaChart.destroy();
+    this.nonStackedAreaChart.destroy();
   }
 
   render() {
     return (
       <div>
-        <h1>Basic Area</h1>
-        <div className="sg-chart" ref={ (c) => { this.basic = c; } } />
-        <h1>Stacked Area</h1>
+        <h1>Multiseries Stacked Area</h1>
         <div className="sg-chart" ref={ (c) => { this.stacked = c; } } />
+        <h1>Multiseries Non-Stacked Area</h1>
+        <div className="sg-chart" ref={ (c) => { this.nonStacked = c; } } />
       </div>
     );
   }

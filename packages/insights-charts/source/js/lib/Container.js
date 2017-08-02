@@ -185,9 +185,14 @@ class Container {
   renderLegend() {
     if (this.type !== 'sparkline') {
       const { wrapper, data, options, dispatchers } = this;
-      const legendOptions = options.legend;
+      const legendOptions = clone(options.legend);
       const margins = options.margins;
       const seriesData = data.getSeries();
+
+      // Since donut only supports one series... always expand it.
+      if (this.type === 'donut') {
+        legendOptions.expanded = true;
+      }
 
       const { legend } = new Legend(wrapper, seriesData, legendOptions, margins, dispatchers);
 

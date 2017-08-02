@@ -6,7 +6,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6, p {
-  font-family: $font-family;
+  font-family: $reflect-font-family;
   font-weight: normal;
   margin-top: 0;
 }
@@ -22,7 +22,7 @@ h1, h2, h3, h4, h5, h6, p {
   bottom: 0;
   width: 200px;
   padding-top: 20px;
-  background: $brand-primary;
+  background: $reflect-brand-primary;
   height: 100%;
 
   ul {
@@ -32,22 +32,22 @@ h1, h2, h3, h4, h5, h6, p {
   }
 
   .sg-sidebar-link {
-    font-family: $font-family;
+    font-family: $reflect-font-family;
     text-decoration: none;
     padding: 10px 20px 10px 20px;
-    color: $white;
+    color: $reflect-white;
     display: block;
 
     &:hover {
-      background: darken($brand-primary, 5%);
+      background: darken($reflect-brand-primary, 5%);
     }
   }
 
   .sg-sidebar-link-active {
-    background: darken($brand-primary, 10%);
+    background: darken($reflect-brand-primary, 10%);
 
     &:hover {
-      background: darken($brand-primary, 10%);
+      background: darken($reflect-brand-primary, 10%);
     }
   }
 }
@@ -59,13 +59,13 @@ h1, h2, h3, h4, h5, h6, p {
 
 .sg-section {
   margin-bottom: 40px;
-  border: $border;
+  border: $reflect-border;
 
   .sg-section-title {
-    font-family: $font-family;
+    font-family: $reflect-font-family;
     font-weight: normal;
-    background: $gray-lighter;
-    border-bottom: $border;
+    background: $reflect-gray-lighter;
+    border-bottom: $reflect-border;
     padding: 10px 20px;
   }
 

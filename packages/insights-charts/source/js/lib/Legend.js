@@ -8,10 +8,8 @@ class Legend {
     this.render(elem, seriesData, options, margins, dispatchers);
   }
 
-  getLegendValues(seriesData) {
+  getLegendValues(seriesData, expanded) {
     let values = [];
-
-    const expanded = seriesData.length === 1;
 
     if (expanded) {
       values = seriesData[0].data.map((d, i) => ({
@@ -48,7 +46,7 @@ class Legend {
         container.style('padding-right', `${margins.right}px`);
       }
 
-      const data = this.getLegendValues(seriesData);
+      const data = this.getLegendValues(seriesData, options.expanded);
 
       legendItems = container.selectAll(CSS.getClassName('legend-item'))
         .data(data)

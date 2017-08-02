@@ -6,6 +6,7 @@ import Annotations from '../lib/Annotations';
 import Container from '../lib/Container';
 import ClipPath from '../lib/ClipPath';
 import Grid from '../lib/Grid';
+import ZeroLine from '../lib/ZeroLine';
 import Tooltip from '../lib/Tooltip';
 import SeriesColumn from '../lib/series/SeriesColumn';
 import CSS from '../helpers/css';
@@ -24,7 +25,7 @@ class ColumnChart extends Chart {
     let layout = 'normal';
 
     if (isMultiSeries && !options.layout) {
-      layout = 'grouped';
+      layout = 'stacked';
     } else if (isMultiSeries && options.layout) {
       layout = options.layout;
     }
@@ -94,6 +95,9 @@ class ColumnChart extends Chart {
         if (yAxisIndex === 0) {
           this.grid = new Grid(x, y, dimensions, options);
           this.grid.render(svg);
+
+          this.zeroLine = new ZeroLine(x, y, dimensions, options);
+          this.zeroLine.render(svg);
         }
 
         const seriesColumn = new SeriesColumn(
@@ -177,6 +181,7 @@ class ColumnChart extends Chart {
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
+          this.zeroLine.update(x, y, dimensions, options);
         }
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);

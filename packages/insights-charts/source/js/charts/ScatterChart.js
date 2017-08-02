@@ -6,6 +6,7 @@ import Annotations from '../lib/Annotations';
 import Container from '../lib/Container';
 import ClipPath from '../lib/ClipPath';
 import Grid from '../lib/Grid';
+import ZeroLine from '../lib/ZeroLine';
 import Tooltip from '../lib/Tooltip';
 import SeriesPoi from '../lib/series/SeriesPoi';
 import CSS from '../helpers/css';
@@ -53,6 +54,9 @@ class ScatterChart extends Chart {
         if (yAxisIndex === 0) {
           this.grid = new Grid(x, y, dimensions, options);
           this.grid.render(svg);
+
+          this.zeroLine = new ZeroLine(x, y, dimensions, options);
+          this.zeroLine.render(svg);
         }
 
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
@@ -126,6 +130,7 @@ class ScatterChart extends Chart {
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
+          this.zeroLine.update(x, y, dimensions, options);
         }
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);

@@ -105,11 +105,11 @@ class LineCharts extends React.Component {
     };
 
     const singleData = {
-      categories: getRandomCategories(dataPoints, 'ordinal'),
+      categories: getRandomCategories(dataPoints),
       series: [
         {
           label: 'Profit',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, -10000000000, 10000, true),
         },
       ],
     };
