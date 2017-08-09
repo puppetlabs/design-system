@@ -1,3 +1,11 @@
+# 0.1.9
+
+* Better formatting for axis labels
+* Catch errors and pass to onError callback if applicable
+* Add additional measurements to x axis for determine margins
+* Fix bug where pie arcs would turn black after updating
+* Fix bug where pies were incorrectly sized
+
 # 0.1.6
 
 * Properly support single series datasets

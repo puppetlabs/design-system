@@ -16,14 +16,9 @@ class DonutCharts extends React.Component {
       ],
     };
 
-    const options = {
-      layout: 'pie',
-    };
-
-    this.donutChart = new ReflectChart(this.elem, {
+    this.donutChart = new ReflectChart(this.donut, {
       type: 'donut',
       data,
-      options,
     });
 
     this.donutChart.on('legendItemClick', () => {
@@ -36,6 +31,18 @@ class DonutCharts extends React.Component {
     });
 
     this.donutChart.render();
+
+    const options = {
+      layout: 'pie',
+    };
+
+    this.pieChart = new ReflectChart(this.pie, {
+      type: 'donut',
+      data,
+      options,
+    });
+
+    this.pieChart.render();
   }
 
   componentWillUnmount() {
@@ -44,7 +51,10 @@ class DonutCharts extends React.Component {
 
   render() {
     return (
-      <div className="sg-chart" ref={ (c) => { this.elem = c; } } />
+      <div>
+        <div className="sg-chart" ref={ (c) => { this.donut = c; } } />
+        <div className="sg-chart" ref={ (c) => { this.pie = c; } } />
+      </div>
     );
   }
 }

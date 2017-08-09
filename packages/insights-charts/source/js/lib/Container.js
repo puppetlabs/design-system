@@ -52,7 +52,7 @@ class Container {
   }
 
   setSVGMargins() {
-    if (this.type !== 'sparkline') {
+    if (this.type !== 'sparkline' && this.type !== 'donut') {
       const options = this.options;
       const orientation = options.axis.x.orientation;
       const dimensions = this.getDimensions();
@@ -65,11 +65,13 @@ class Container {
 
       const xAxis = new XAxis(categories, x, dimensions, options.axis.x);
       const tempX = xAxis.render(testSVG);
-
+      let additionalLeftPadding;
 
       if (tempX) {
+        const tempXDimensions = tempX.node().getBBox();
+
         if (orientation === 'left' || orientation === 'right') {
-          const xAxisWidth = tempX.node().getBBox().width;
+          const xAxisWidth = tempXDimensions.width;
 
           if (orientation === 'left') {
             this.dimensions.margins.left = xAxisWidth + dimensions.defaultMargins.left;
@@ -77,12 +79,16 @@ class Container {
             this.dimensions.margins.right = xAxisWidth + dimensions.defaultMargins.right;
           }
         } else {
-          const xAxisHeight = tempX.node().getBBox().height;
+          const xAxisHeight = tempXDimensions.height;
 
           if (orientation === 'top') {
             this.dimensions.margins.top = xAxisHeight + dimensions.defaultMargins.top;
           } else {
             this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
+          }
+
+          if (tempXDimensions.x < 0) {
+            additionalLeftPadding = Math.abs(tempXDimensions.x);
           }
         }
       }
@@ -123,6 +129,10 @@ class Container {
           }
         }
       });
+
+      if (additionalLeftPadding) {
+        this.dimensions.margins.left += additionalLeftPadding;
+      }
 
       testSVG.remove();
     }

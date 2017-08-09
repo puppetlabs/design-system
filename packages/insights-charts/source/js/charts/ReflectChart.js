@@ -127,12 +127,29 @@ class Chart {
   }
 
   render() {
-    this.chart.render();
-    this.afterRender();
+    try {
+      this.chart.render();
+
+      this.afterRender();
+    } catch (e) {
+      if (this.onError) {
+        this.onError(e);
+      } else {
+        throw (e);
+      }
+    }
   }
 
   resize() {
-    this.chart.update();
+    try {
+      this.chart.update();
+    } catch (e) {
+      if (this.onError) {
+        this.onError(e);
+      } else {
+        throw (e);
+      }
+    }
   }
 
   destroy() {

@@ -48,8 +48,8 @@ class Donut {
       // if we do decide we'd like to sort it, we'll need to sort the legend too.
       .sortValues(null);
 
-    const radius = Math.min(width, height) / 3;
-    let innerRadius = radius + 30;
+    const radius = (Math.min(width, height) / 2.4);
+    let innerRadius = radius - (radius / 4);
 
     if (options.layout === 'pie') {
       innerRadius = 0;
@@ -71,7 +71,10 @@ class Donut {
 
     this.arcs
       .attr('transform', `translate(${(width / 2)},${(height / 2)})`)
-      .attr('class', (_, i) => CSS.getClassName('donut-arc-wrapper', `color-${i}`));
+      .attr('class', (_, i) => classnames(
+        CSS.getClassName('donut-arc-wrapper'),
+        CSS.getColorClassName(i),
+      ));
 
     this.arcs.selectAll(CSS.getClassSelector('donut-arc'))
       .attr('d', path);

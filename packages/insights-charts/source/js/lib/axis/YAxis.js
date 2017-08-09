@@ -22,23 +22,11 @@ class YAxis {
     let formatter;
 
     if (optionFormatter && Object.keys(formatters).indexOf(optionFormatter) >= 0) {
-      let summary = optionFormatter;
-
-      // Only on the y axis do we want to convert numeric to the summary formatter.
-      // For examples: this provides more spacing to the chart by converting 1,000,000 to 1M
-      if (optionFormatter === 'numeric') {
-        summary = 'summary';
-      } else if (optionFormatter === 'percentage') {
-        summary = 'summary_percentage';
-      } else if (optionFormatter === 'numeric_percentage') {
-        summary = 'summary_numeric_percentage';
-      }
-
-      formatter = formatters[summary];
+      formatter = formatters[optionFormatter];
     } else if (typeof optionFormatter === 'function') {
       formatter = optionFormatter;
     } else {
-      formatter = formatters.summary;
+      formatter = formatters.numeric;
     }
 
     return formatter;
