@@ -13,6 +13,7 @@ import SeriesArea from '../lib/series/SeriesArea';
 import SeriesLine from '../lib/series/SeriesLine';
 import SeriesPoi from '../lib/series/SeriesPoi';
 import SeriesColumn from '../lib/series/SeriesColumn';
+import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
 
 class CombinationChart extends Chart {
@@ -42,12 +43,8 @@ class CombinationChart extends Chart {
     this.tooltip = new Tooltip(seriesData, dimensions, options.tooltips, dispatchers);
     this.tooltip.render(wrapper);
 
-    const ordinalOptions = deepmerge(options, { type: 'column' });
-    this.xScale = new XScale(categories, ordinalOptions, dimensions);
+    this.xScale = new XScale(categories, options, dimensions);
     const x = this.xScale.generate();
-
-    this.xScalePoint = new XScale(categories, options, dimensions);
-    const xPoint = this.xScalePoint.generate();
 
     this.xAxis = new XAxis(categories, x, dimensions, options.axis.x);
     this.xAxis.render(svg);
@@ -58,12 +55,16 @@ class CombinationChart extends Chart {
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       const data = this.data.getDataByYAxis(yAxisIndex);
       let seriesColumn;
+      let seriesColumnDataLabel;
       let seriesLine;
+      let seriesLineDataLabel;
       let seriesLinePoi;
       let seriesScatter;
+      let seriesScatterDataLabel;
       let seriesArea;
       let seriesAreaLine;
       let seriesAreaPoi;
+      let seriesAreaDataLabel;
       let x1;
 
       if (data.length > 0) {
@@ -83,11 +84,12 @@ class CombinationChart extends Chart {
 
         if (types.indexOf('column') >= 0) {
           const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
-          this.xScale1 = new XScale(groups, ordinalOptions, x1Dimensions);
+          this.xScale1 = new XScale(groups, options, x1Dimensions);
           x1 = this.xScale1.generate();
 
           const columnData = data.filter(d => (d.type === 'column'));
           const plotOptions = deepmerge(this.getPlotOptions('column'), options);
+          plotOptions.type = 'column';
 
           seriesColumn = new SeriesColumn(
             columnData,
@@ -102,6 +104,20 @@ class CombinationChart extends Chart {
           );
 
           seriesColumn.render(svg);
+
+          seriesColumnDataLabel = new SeriesDataLabel(
+            columnData,
+            dimensions,
+            x,
+            y,
+            this.clipPath.id,
+            plotOptions,
+            dispatchers,
+            yAxisIndex,
+            x1,
+          );
+
+          seriesColumnDataLabel.render(svg);
         }
 
         if (types.indexOf('scatter') >= 0) {
@@ -111,7 +127,7 @@ class CombinationChart extends Chart {
           seriesScatter = new SeriesPoi(
             scatterData,
             dimensions,
-            xPoint,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -120,6 +136,19 @@ class CombinationChart extends Chart {
           );
 
           seriesScatter.render(svg);
+
+          seriesScatterDataLabel = new SeriesDataLabel(
+            scatterData,
+            dimensions,
+            x,
+            y,
+            this.clipPath.id,
+            plotOptions,
+            dispatchers,
+            yAxisIndex,
+          );
+
+          seriesScatterDataLabel.render(svg);
         }
 
         if (types.indexOf('line') >= 0) {
@@ -129,7 +158,7 @@ class CombinationChart extends Chart {
           seriesLine = new SeriesLine(
             lineData,
             dimensions,
-            xPoint,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -142,7 +171,7 @@ class CombinationChart extends Chart {
           seriesLinePoi = new SeriesPoi(
             lineData,
             dimensions,
-            xPoint,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -151,6 +180,19 @@ class CombinationChart extends Chart {
           );
 
           seriesLinePoi.render(svg);
+
+          seriesLineDataLabel = new SeriesDataLabel(
+            lineData,
+            dimensions,
+            x,
+            y,
+            this.clipPath.id,
+            plotOptions,
+            dispatchers,
+            yAxisIndex,
+          );
+
+          seriesLineDataLabel.render(svg);
         }
 
         if (types.indexOf('area') >= 0) {
@@ -160,7 +202,7 @@ class CombinationChart extends Chart {
           seriesArea = new SeriesArea(
             areaData,
             dimensions,
-            xPoint,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -173,7 +215,7 @@ class CombinationChart extends Chart {
           seriesAreaLine = new SeriesLine(
             areaData,
             dimensions,
-            xPoint,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -186,7 +228,7 @@ class CombinationChart extends Chart {
           seriesAreaPoi = new SeriesPoi(
             areaData,
             dimensions,
-            xPoint,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -195,6 +237,19 @@ class CombinationChart extends Chart {
           );
 
           seriesAreaPoi.render(svg);
+
+          seriesAreaDataLabel = new SeriesPoi(
+            areaData,
+            dimensions,
+            x,
+            y,
+            this.clipPath.id,
+            plotOptions,
+            dispatchers,
+            yAxisIndex,
+          );
+
+          seriesAreaDataLabel.render(svg);
         }
 
         const annotations = new Annotations(
@@ -214,12 +269,16 @@ class CombinationChart extends Chart {
           yScale,
           yAxis,
           seriesColumn,
+          seriesColumnDataLabel,
           seriesLine,
           seriesLinePoi,
+          seriesLineDataLabel,
           seriesScatter,
+          seriesScatterDataLabel,
           seriesArea,
           seriesAreaLine,
           seriesAreaPoi,
+          seriesAreaDataLabel,
           annotations,
         };
       }
@@ -245,9 +304,7 @@ class CombinationChart extends Chart {
     this.clipPath.update(dimensions);
     this.tooltip.update(seriesData, dimensions, options.tooltips, dispatchers);
 
-    const ordinalOptions = deepmerge(options, { type: 'column' });
-    const x = this.xScale.update(categories, ordinalOptions, dimensions);
-    const xPoint = this.xScalePoint.update(categories, options, dimensions, this.type);
+    const x = this.xScale.update(categories, options, dimensions);
     this.xAxis.update(categories, x, dimensions, options.axis.x);
 
     this.pointOverlay.update(categories, x, dimensions, dispatchers, options);
@@ -271,12 +328,25 @@ class CombinationChart extends Chart {
           const columnData = data.filter(d => (d.type === 'column'));
           const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
 
-          this.xScale1 = new XScale(groups, ordinalOptions, x1Dimensions, 'column');
+          this.xScale1 = new XScale(groups, options, x1Dimensions);
           x1 = this.xScale1.generate();
 
           const plotOptions = deepmerge(this.getPlotOptions('column'), options);
+          plotOptions.type = 'column';
 
           scale.seriesColumn.update(
+            columnData,
+            dimensions,
+            x,
+            y,
+            this.clipPath.id,
+            plotOptions,
+            dispatchers,
+            yAxisIndex,
+            x1,
+          );
+
+          scale.seriesColumnDataLabel.update(
             columnData,
             dimensions,
             x,
@@ -296,7 +366,18 @@ class CombinationChart extends Chart {
           scale.seriesScatter.update(
             scatterData,
             dimensions,
-            xPoint,
+            x,
+            y,
+            this.clipPath.id,
+            plotOptions,
+            dispatchers,
+            yAxisIndex,
+          );
+
+          scale.seriesScatterDataLabel.update(
+            scatterData,
+            dimensions,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -312,7 +393,7 @@ class CombinationChart extends Chart {
           scale.seriesLine.update(
             lineData,
             dimensions,
-            xPoint,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -323,7 +404,18 @@ class CombinationChart extends Chart {
           scale.seriesLinePoi.update(
             lineData,
             dimensions,
-            xPoint,
+            x,
+            y,
+            this.clipPath.id,
+            plotOptions,
+            dispatchers,
+            yAxisIndex,
+          );
+
+          scale.seriesLineDataLabel.update(
+            lineData,
+            dimensions,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -339,7 +431,7 @@ class CombinationChart extends Chart {
           scale.seriesArea.update(
             areaData,
             dimensions,
-            xPoint,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -350,7 +442,7 @@ class CombinationChart extends Chart {
           scale.seriesAreaLine.update(
             areaData,
             dimensions,
-            xPoint,
+            x,
             y,
             this.clipPath.id,
             plotOptions,
@@ -361,7 +453,18 @@ class CombinationChart extends Chart {
           scale.seriesAreaPoi.update(
             areaData,
             dimensions,
-            xPoint,
+            x,
+            y,
+            this.clipPath.id,
+            plotOptions,
+            dispatchers,
+            yAxisIndex,
+          );
+
+          scale.seriesAreaDataLabel.update(
+            areaData,
+            dimensions,
+            x,
             y,
             this.clipPath.id,
             plotOptions,

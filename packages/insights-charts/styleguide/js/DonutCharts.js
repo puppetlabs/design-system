@@ -33,6 +33,7 @@ class DonutCharts extends React.Component {
     this.donutChart.render();
 
     const options = {
+      legend: { enabled: true, aggregates: true },
       layout: 'pie',
     };
 

@@ -10,6 +10,7 @@
 @import 'library/poi';
 @import 'library/tooltip';
 @import 'library/annotation';
+@import 'library/data_labels';
 
 @import 'library/charts/mixins';
 @import 'library/charts/line';
@@ -20,6 +21,7 @@
 .reflect-charts-wrapper {
   position: relative;
 
+  height: 100%;
   width: 100%;
 }
 

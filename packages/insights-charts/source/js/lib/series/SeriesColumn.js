@@ -1,5 +1,6 @@
 import { event, mouse } from 'd3-selection';
 import CSS from '../../helpers/css';
+import helpers from '../../helpers/charting';
 import Series from './Series';
 
 class SeriesColumn extends Series {
@@ -47,19 +48,9 @@ class SeriesColumn extends Series {
   }
 
   getColumnLength(d) {
-    const { y, dimensions } = this;
-    const { height } = dimensions;
-    let val;
+    const { y, dimensions, options } = this;
 
-    if (this.isStacked()) {
-      val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : Math.abs(y(d.y0) - y(d.y0 + d.y));
-    } else if (this.isBar()) {
-      val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : y(d.y);
-    } else {
-      val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : height - y(d.y);
-    }
-
-    return val;
+    return helpers.getColumnLength(options, dimensions, y, d);
   }
 
   getXPosition(d) {

@@ -51,11 +51,10 @@ class Container {
     this.dimensions.height = height;
   }
 
-  setSVGMargins() {
+  setSVGMargins(dimensions) {
     if (this.type !== 'sparkline' && this.type !== 'donut') {
       const options = this.options;
       const orientation = options.axis.x.orientation;
-      const dimensions = this.getDimensions();
       const elem = this.elem;
       const categories = this.data.getCategories().map(c => (c.label));
       const testSVG = select(elem).append('svg');
@@ -138,32 +137,26 @@ class Container {
     }
   }
 
-  setSVGHeight() {
-    const { options, legend } = this;
-    const { height, margins } = this.getDimensions();
+  setSVGHeight({ height, margins }, legend) {
+    const { options } = this;
     let newHeight = height - margins.top - margins.bottom;
 
-    if (legend && (options.legend.position === 'top' || options.legend.position === 'bottom')) {
-      const rect = legend.node().getBoundingClientRect();
-
-      if (rect && rect.height) {
-        newHeight -= rect.height;
+    if (legend && (options.legend.orientation === 'top' || options.legend.orientation === 'bottom')) {
+      if (legend.height) {
+        newHeight -= legend.height;
       }
     }
 
     this.dimensions.height = newHeight;
   }
 
-  setSVGWidth() {
-    const { options, legend } = this;
-    const { width, margins } = this.getDimensions();
+  setSVGWidth({ width, margins }, legend) {
+    const { options } = this;
     let newWidth = width - margins.left - margins.right;
 
-    if (legend && (options.legend.position === 'left' || options.legend.position === 'right')) {
-      const rect = legend.node().getBoundingClientRect();
-
-      if (rect && rect.width) {
-        newWidth -= rect.width;
+    if (legend && (options.legend.orientation === 'left' || options.legend.orientation === 'right')) {
+      if (legend.width) {
+        newWidth -= legend.width;
       }
     }
 
@@ -177,11 +170,22 @@ class Container {
 
     this.renderWrapper(this.elem);
     this.setWrapperDimensions();
+
+    const dimensions = this.getDimensions();
+
+    this.setSVGMargins(dimensions);
+
     this.renderLegend();
 
-    this.setSVGMargins();
-    this.setSVGHeight();
-    this.setSVGWidth();
+    let legend;
+
+    if (this.legend && this.legend.container) {
+      legend = this.legend.container.node().getBoundingClientRect();
+    }
+
+    this.setSVGHeight(dimensions, legend);
+    this.setSVGWidth(dimensions, legend);
+
 
     this.renderSVG();
   }
@@ -194,17 +198,21 @@ class Container {
 
   renderLegend() {
     if (this.type !== 'sparkline') {
-      const { wrapper, data, options, dispatchers } = this;
-      const legendOptions = clone(options.legend);
-      const margins = options.margins;
+      const { wrapper, data, options, dimensions, dispatchers } = this;
+      const legendOptions = clone(options);
+      const margins = clone(dimensions.defaultMargins);
       const seriesData = data.getSeries();
+
+      margins.left = this.dimensions.margins.left;
 
       // Since donut only supports one series... always expand it.
       if (this.type === 'donut') {
-        legendOptions.expanded = true;
+        legendOptions.legend.expanded = true;
       }
 
-      const { legend } = new Legend(wrapper, seriesData, legendOptions, margins, dispatchers);
+      const legend = new Legend(wrapper, seriesData, legendOptions, margins, dispatchers);
+
+      legend.render();
 
       this.legend = legend;
     }
@@ -232,9 +240,18 @@ class Container {
 
     this.setWrapperDimensions();
 
-    this.setSVGMargins();
-    this.setSVGHeight();
-    this.setSVGWidth();
+    const dimensions = this.getDimensions();
+
+    this.setSVGMargins(dimensions);
+
+    let legend;
+
+    if (this.legend && this.legend.container) {
+      legend = this.legend.container.node().getBoundingClientRect();
+    }
+
+    this.setSVGHeight(dimensions, legend);
+    this.setSVGWidth(dimensions, legend);
 
     const { width, height, margins } = this.getDimensions();
 

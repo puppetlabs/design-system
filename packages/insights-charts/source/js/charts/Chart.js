@@ -22,8 +22,17 @@ class Chart {
     }
   }
 
-  getPlotOptions(type) {
-    return this.options[type] || {};
+  getPlotOptions(type, stackable = true) {
+    const options = this.options[type] || {};
+    const series = this.data.getSeries();
+
+    if (series.length <= 1) {
+      options.layout = 'normal';
+    } else if (series.length > 1 && !options.layout && stackable) {
+      options.layout = 'stacked';
+    }
+
+    return options;
   }
 }
 

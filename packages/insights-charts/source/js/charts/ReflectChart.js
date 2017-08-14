@@ -56,7 +56,7 @@ const defaultOptions = {
     enabled: true,
 
     // What side to render the legend on.
-    position: 'right',
+    orientation: 'right',
   },
 
   // Settings specific to tooltips.
@@ -132,8 +132,8 @@ class Chart {
 
       this.afterRender();
     } catch (e) {
-      if (this.onError) {
-        this.onError(e);
+      if (this.dispatchers.enabled('onError.external')) {
+        this.dispatchers.call('onError', this, e);
       } else {
         throw (e);
       }
@@ -144,8 +144,8 @@ class Chart {
     try {
       this.chart.update();
     } catch (e) {
-      if (this.onError) {
-        this.onError(e);
+      if (this.dispatchers.enabled('onError.external')) {
+        this.dispatchers.call('onError', this, e);
       } else {
         throw (e);
       }

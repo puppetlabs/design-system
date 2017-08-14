@@ -23,7 +23,11 @@ class AreaCharts extends React.Component {
     };
 
     const options = {
-      area: {},
+      area: {
+        data_labels: {
+          enabled: true,
+        },
+      },
       axis: {
         y: [
           {
@@ -47,13 +51,6 @@ class AreaCharts extends React.Component {
         horizontal: false,
         vertical: false,
       },
-      annotations: [{
-        highestPoint: true,
-        tooltip: {
-          title: 'this is a title',
-          message: 'this is a message',
-        },
-      }],
     };
 
     this.areaChart = new ReflectChart(this.stacked, {

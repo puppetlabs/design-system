@@ -1,0 +1,16 @@
+.reflect-charts-data-label {
+  font-size: $reflect-charts-data-label-font-size;
+  alignment-baseline: middle;
+  pointer-events: none;
+}
+
+.reflect-charts-data-label-shadow {
+  font-size: $reflect-charts-data-label-font-size;
+  alignment-baseline: middle;
+  fill: $reflect-charts-data-label-shadow;
+  stroke: $reflect-charts-data-label-shadow;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+  opacity: .25;
+  pointer-events: none;
+}

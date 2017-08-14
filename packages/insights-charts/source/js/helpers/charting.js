@@ -1,4 +1,5 @@
 import moment from 'moment';
+import formatters from './formatters';
 
 const helpers = {
 
@@ -23,6 +24,35 @@ const helpers = {
     }
 
     return false;
+  },
+
+  getColumnLength(options, dimensions, y, d) {
+    const isStacked = options.layout === 'stacked';
+    const isHorizontal = options.axis.x.orientation === 'left' || options.axis.x.orientation === 'right';
+    const height = dimensions.height;
+    let val = 0;
+
+    if (isStacked) {
+      val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : Math.abs(y(d.y0) - y(d.y0 + d.y));
+    } else if (isHorizontal) {
+      val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : y(d.y);
+    } else {
+      val = y.domain()[0] < 0 ? Math.abs(y(d.y) - y(0)) : height - y(d.y);
+    }
+
+    return val;
+  },
+
+  getFormattedValue(optionFormatter, value) {
+    let formatter = d => (d);
+
+    if (optionFormatter && Object.keys(formatters).indexOf(optionFormatter) >= 0) {
+      formatter = formatters[optionFormatter];
+    } else if (optionFormatter && typeof optionFormatter === 'function') {
+      formatter = optionFormatter;
+    }
+
+    return formatter(value);
   },
 
   getMaximumPoint(data, options, layout) {

@@ -32,7 +32,13 @@ class ColumnCharts extends React.Component {
 
     const options = {
       column: {
-        layout: 'stacked',
+        data_labels: {
+          enabled: true,
+        },
+      },
+      legend: {
+        enabled: true,
+        orientation: 'bottom',
       },
       axis: {
         y: [{
@@ -55,13 +61,6 @@ class ColumnCharts extends React.Component {
         horizontal: true,
         vertical: true,
       },
-      annotations: [{
-        highestPoint: true,
-        tooltip: {
-          title: 'this is a title',
-          message: 'this is a message',
-        },
-      }],
     };
 
     this.columnChart = new ReflectChart(this.single, {

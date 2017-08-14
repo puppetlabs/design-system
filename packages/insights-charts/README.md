@@ -67,7 +67,7 @@ options: {
 options: {
   legend: {
     enabled: true,
-    position: 'right', // can be top, right, bottom, or left
+    orientation: 'right', // can be top, right, bottom, or left
   },
 }
 ```

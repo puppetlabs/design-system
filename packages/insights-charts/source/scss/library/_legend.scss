@@ -1,4 +1,4 @@
-.reflect-charts-legend {
+.reflect-charts-legend-right {
   max-width: $reflect-legend-max-width;
 
   position: absolute;
@@ -8,6 +8,21 @@
   padding-left: 20px;
   bottom: 20px;
   overflow-y: auto;
+}
+
+.reflect-charts-legend-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  .reflect-charts-legend-item {
+    width: auto;
+    overflow: hidden;
+    display: block;
+    float: left;
+    margin-right: 20px;
+  }
 }
 
 .reflect-charts-legend-item {

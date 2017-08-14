@@ -5,14 +5,14 @@ import { expect } from 'chai';
 import Legend from '../../source/js/lib/Legend';
 
 describe('Legend', () => {
-  let options = { enabled: true };
+  let options = { legend: { enabled: true } };
   const margins = {};
   const dispatchers = { on: () => {} };
 
   it('should properly render the legend', () => {
     const seriesData = [{ label: 'blah', data: [{ y: 1 }, { y: 2 }] }];
 
-    new Legend(global.chart, seriesData, options, margins, dispatchers);
+    new Legend(global.chart, seriesData, options, margins, dispatchers).render();
 
     expect(global.chart.selectAll('.reflect-charts-legend').size()).to.eql(1);
   });
@@ -28,20 +28,20 @@ describe('Legend', () => {
       data: [{ x: 'foo', y: 1 }, { x: 'bar', y: 2 }],
     }];
 
-    new Legend(global.chart, seriesData, options, margins, dispatchers);
+    new Legend(global.chart, seriesData, options, margins, dispatchers).render();
 
     expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('foo: 45');
   });
 
   describe('when single series', () => {
     it('should list data points as series', () => {
-      options = { enabled: true, expanded: true };
+      options = { legend: { enabled: true, expanded: true } };
 
       const seriesData = [{
         data: [{ y: 1, x: 'test1' }, { y: 2, x: 'test2' }],
       }];
 
-      new Legend(global.chart, seriesData, options, margins, dispatchers);
+      new Legend(global.chart, seriesData, options, margins, dispatchers).render();
 
       expect(global.chart.selectAll('.reflect-charts-legend-item').size()).to.eql(2);
       expect(global.chart.select('.reflect-charts-legend-item').text()).to.eql('test1');

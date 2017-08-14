@@ -1,3 +1,4 @@
+import deepmerge from 'deepmerge';
 import clone from 'clone';
 import Chart from './Chart';
 import { XScale, YScale } from '../lib/scales';
@@ -9,6 +10,7 @@ import Grid from '../lib/Grid';
 import ZeroLine from '../lib/ZeroLine';
 import Tooltip from '../lib/Tooltip';
 import SeriesColumn from '../lib/series/SeriesColumn';
+import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
 
 class ColumnChart extends Chart {
@@ -16,21 +18,6 @@ class ColumnChart extends Chart {
     super({ elem, type, data, options, dispatchers });
 
     this.yScales = {};
-  }
-
-  getLayout() {
-    const { data, type } = this;
-    const options = this.getPlotOptions(type);
-    const isMultiSeries = data.getSeries().length > 1;
-    let layout = 'normal';
-
-    if (isMultiSeries && !options.layout) {
-      layout = 'stacked';
-    } else if (isMultiSeries && options.layout) {
-      layout = options.layout;
-    }
-
-    return layout;
   }
 
   isBar() {
@@ -45,7 +32,6 @@ class ColumnChart extends Chart {
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
     const options = clone(this.options);
-    const layout = this.getLayout();
 
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
@@ -84,9 +70,8 @@ class ColumnChart extends Chart {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        options.layout = layout;
-
-        const yScale = new YScale(data, yOptions, layout, dimensions, options);
+        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
+        const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
 
         const yAxis = new YAxis(y, dimensions, yOptions);
@@ -106,7 +91,7 @@ class ColumnChart extends Chart {
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
           dispatchers,
           yAxisIndex,
           x1,
@@ -114,12 +99,26 @@ class ColumnChart extends Chart {
 
         seriesColumn.render(svg);
 
+        const seriesDataLabel = new SeriesDataLabel(
+          data,
+          dimensions,
+          x,
+          y,
+          this.clipPath.id,
+          plotOptions,
+          dispatchers,
+          yAxisIndex,
+          x1,
+        );
+
+        seriesDataLabel.render(svg);
+
         const annotations = new Annotations(
           data,
           x,
           y,
-          options,
-          layout,
+          plotOptions,
+          plotOptions.layout,
           dispatchers,
           yAxisIndex,
           x1,
@@ -131,6 +130,7 @@ class ColumnChart extends Chart {
           yScale,
           yAxis,
           seriesColumn,
+          seriesDataLabel,
           annotations,
         };
       }
@@ -147,7 +147,6 @@ class ColumnChart extends Chart {
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
     const options = clone(this.options);
-    const layout = this.getLayout();
 
     this.container.update(this.data, options, dispatchers);
 
@@ -177,7 +176,8 @@ class ColumnChart extends Chart {
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const y = scale.yScale.update(data, yOptions, layout, dimensions, options);
+        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
+        const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
@@ -186,15 +186,25 @@ class ColumnChart extends Chart {
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
-        options.layout = layout;
-
         scale.seriesColumn.update(
           data,
           dimensions,
           x,
           y,
           this.clipPath.id,
-          options,
+          plotOptions,
+          dispatchers,
+          yAxisIndex,
+          x1,
+        );
+
+        scale.seriesDataLabel.update(
+          data,
+          dimensions,
+          x,
+          y,
+          this.clipPath.id,
+          plotOptions,
           dispatchers,
           yAxisIndex,
           x1,
@@ -204,8 +214,8 @@ class ColumnChart extends Chart {
           data,
           x,
           y,
-          options,
-          layout,
+          plotOptions,
+          plotOptions.layout,
           dispatchers,
           yAxisIndex,
           x1,

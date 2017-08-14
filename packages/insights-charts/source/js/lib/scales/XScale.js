@@ -20,7 +20,7 @@ class XScale {
     // If the domain is all strings we'll use an ordinal type instead of a
     // linear one.
     if (this.scale === 'ordinal') {
-      if (type === 'column' || type === 'bar') {
+      if (type === 'column' || type === 'bar' || type === 'combination') {
         this.x = scaleBand();
       } else {
         this.x = scalePoint();

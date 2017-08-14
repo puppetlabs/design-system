@@ -2,7 +2,7 @@ import { select } from 'd3-selection';
 import classnames from 'classnames';
 import { TOOLTIP_POINTER_MARGIN, UNHIGHLIGHTED_OPACITY } from '../constants';
 import CSS from '../helpers/css';
-import formatters from '../helpers/formatters';
+import helpers from '../helpers/charting';
 
 const TOOLTIP_VERTICAL_PADDING = 5;
 const TOOLTIP_CONTAINER_OVERFLOW = 300;
@@ -31,35 +31,21 @@ class Tooltip {
     const options = this.options;
     const xOptions = options.axis && options.axis.x ? options.axis.x : {};
     const optionFormatter = xOptions.values && xOptions.values.formatter;
-    let formatter = d => (d);
 
-    if (optionFormatter && Object.keys(formatters).indexOf(optionFormatter) >= 0) {
-      formatter = formatters[optionFormatter];
-    } else if (optionFormatter && typeof optionFormatter === 'function') {
-      formatter = optionFormatter;
-    }
-
-    return formatter(category);
+    return helpers.getFormattedValue(optionFormatter, category);
   }
 
   getFormattedItem(datum, group) {
     const options = this.options;
     const yOptions = options.axis && options.axis.y ? options.axis.y[datum.axis] : {};
     const optionFormatter = yOptions.values && yOptions.values.formatter;
-    let formatter = d => (d);
     let item = '';
-
-    if (optionFormatter && Object.keys(formatters).indexOf(optionFormatter) >= 0) {
-      formatter = formatters[optionFormatter];
-    } else if (optionFormatter && typeof optionFormatter === 'function') {
-      formatter = optionFormatter;
-    }
 
     if (group) {
       item += `${group}: `;
     }
 
-    item += formatter(datum.y);
+    item += helpers.getFormattedValue(optionFormatter, datum.y);
 
     return item;
   }
@@ -72,7 +58,7 @@ class Tooltip {
       this.selection = selection;
     }
 
-    if (!options.tooltip || options.tooltip.enabled) {
+    if (!options.tooltips || options.tooltips.enabled) {
       tooltip = selection.append('div')
         .attr('class', CSS.getClassName('tooltip'));
 

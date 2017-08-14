@@ -5,6 +5,7 @@ class Dispatchers {
     this.dispatchers = dispatch(
       'beforeRender',
       'afterRender',
+      'onError',
       'update',
       'dataPointClick',
       'legendItemClick',

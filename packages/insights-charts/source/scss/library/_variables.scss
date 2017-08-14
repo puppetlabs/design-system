@@ -104,10 +104,13 @@ $reflect-series-indicator-border-radius:  2px !default;
 $reflect-tooltip-bg:                    $reflect-bg-primary !default;
 $reflect-tooltip-shadow:                $reflect-outer-shadow-large !default;
 $reflect-tooltip-border:                1px solid $reflect-border-color !default;
-$reflect-tooltip-border-radius:   $reflect-border-radius !default;
-$reflect-tooltip-font-color:      $reflect-font-color-base !default;
-$reflect-tooltip-header-bg:       $reflect-border-color !default;
-$reflect-tooltip-value-font-size: $reflect-font-size-large !default;
+$reflect-tooltip-border-radius:         $reflect-border-radius !default;
+$reflect-tooltip-font-color:            $reflect-font-color-base !default;
+$reflect-tooltip-header-bg:             $reflect-border-color !default;
+$reflect-tooltip-value-font-size:       $reflect-font-size-large !default;
 
 
-$reflect-annotation-fill:         $reflect-gray-dark !default;
+$reflect-annotation-fill:               $reflect-gray-dark !default;
+
+$reflect-charts-data-label-font-size:   $reflect-font-size-tiny !default;
+$reflect-charts-data-label-shadow:      $reflect-bg-primary !default;

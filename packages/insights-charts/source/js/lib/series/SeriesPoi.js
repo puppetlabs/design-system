@@ -52,7 +52,13 @@ class SeriesPoi extends Series {
   }
 
   getX(d) {
-    return this.x(d.x);
+    let result = this.x(d.x);
+
+    if (this.x.bandwidth) {
+      result += this.x.bandwidth() / 2;
+    }
+
+    return result;
   }
 
   getY(d) {

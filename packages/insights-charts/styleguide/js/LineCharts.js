@@ -117,6 +117,9 @@ class LineCharts extends React.Component {
     const options = {
       line: {
         spline: true,
+        data_labels: {
+          enabled: true,
+        },
       },
       axis: {
         y: [
@@ -136,13 +139,10 @@ class LineCharts extends React.Component {
         horizontal: true,
         vertical: true,
       },
-      annotations: [{
-        highestPoint: true,
-        tooltip: {
-          title: 'this is a title',
-          message: 'this is a message',
-        },
-      }],
+      legend: {
+        enabled: true,
+        orientation: 'bottom',
+      },
     };
 
     this.multiSeriesLineChart = new ReflectChart(this.multi, {

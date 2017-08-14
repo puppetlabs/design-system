@@ -11,6 +11,7 @@ import ClosestPointOverlay from '../lib/ClosestPointOverlay';
 import Tooltip from '../lib/Tooltip';
 import SeriesLine from '../lib/series/SeriesLine';
 import SeriesPoi from '../lib/series/SeriesPoi';
+import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
 
 class LineChart extends Chart {
@@ -67,7 +68,7 @@ class LineChart extends Chart {
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
 
-        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
+        const plotOptions = deepmerge(this.getPlotOptions(this.type, false), options);
 
         const seriesLine = new SeriesLine(
           data,
@@ -95,6 +96,19 @@ class LineChart extends Chart {
 
         seriesPoi.render(svg);
 
+        const seriesDataLabel = new SeriesDataLabel(
+          data,
+          dimensions,
+          x,
+          y,
+          this.clipPath.id,
+          plotOptions,
+          dispatchers,
+          yAxisIndex,
+        );
+
+        seriesDataLabel.render(svg);
+
         const annotations = new Annotations(
           data,
           x,
@@ -112,6 +126,7 @@ class LineChart extends Chart {
           yAxis,
           seriesLine,
           seriesPoi,
+          seriesDataLabel,
           annotations,
         };
       }
@@ -169,6 +184,17 @@ class LineChart extends Chart {
         );
 
         scale.seriesPoi.update(
+          data,
+          dimensions,
+          x,
+          y,
+          this.clipPath.id,
+          plotOptions,
+          dispatchers,
+          yAxisIndex,
+        );
+
+        scale.seriesDataLabel.update(
           data,
           dimensions,
           x,

@@ -13,6 +13,7 @@ import Tooltip from '../lib/Tooltip';
 import SeriesArea from '../lib/series/SeriesArea';
 import SeriesLine from '../lib/series/SeriesLine';
 import SeriesPoi from '../lib/series/SeriesPoi';
+import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
 
 class AreaChart extends Chart {
@@ -126,6 +127,19 @@ class AreaChart extends Chart {
 
         seriesPoi.render(svg);
 
+        const seriesDataLabel = new SeriesDataLabel(
+          data,
+          dimensions,
+          x,
+          y,
+          this.clipPath.id,
+          plotOptions,
+          dispatchers,
+          yAxisIndex,
+        );
+
+        seriesDataLabel.render(svg);
+
         const annotations = new Annotations(
           data,
           x,
@@ -144,6 +158,7 @@ class AreaChart extends Chart {
           seriesArea,
           seriesLine,
           seriesPoi,
+          seriesDataLabel,
           annotations,
         };
       }
@@ -214,6 +229,17 @@ class AreaChart extends Chart {
         );
 
         scale.seriesPoi.update(
+          data,
+          dimensions,
+          x,
+          y,
+          this.clipPath.id,
+          plotOptions,
+          dispatchers,
+          yAxisIndex,
+        );
+
+        scale.seriesDataLabel.update(
           data,
           dimensions,
           x,

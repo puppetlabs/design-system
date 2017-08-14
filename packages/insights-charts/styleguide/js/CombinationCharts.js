@@ -31,9 +31,15 @@ class CombinationCharts extends React.Component {
     const options = {
       column: {
         layout: 'grouped',
+        data_labels: {
+          enabled: true,
+        },
       },
       line: {
         spline: true,
+        data_labels: {
+          enabled: true,
+        },
       },
       axis: {
         y: [
@@ -58,13 +64,6 @@ class CombinationCharts extends React.Component {
         horizontal: true,
         vertical: true,
       },
-      annotations: [{
-        highestPoint: true,
-        tooltip: {
-          title: 'this is a title',
-          message: 'this is a message',
-        },
-      }],
     };
 
     this.combinationChart = new ReflectChart(this.basic, {

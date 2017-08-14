@@ -5,9 +5,18 @@ const Area = (x, y, data, dimensions, options) => {
   const spline = options.spline;
 
   const area = d3Area()
-    .x(d => (x(d.x)))
+    .x((d) => {
+      let result = x(d.x);
+
+      if (x.bandwidth) {
+        result += x.bandwidth() / 2;
+      }
+
+      return result;
+    })
     .y0((d) => {
       let yPos;
+
       if (isStacked) {
         if (d.y < 0 && d.y0 >= 0) {
           yPos = y(0);

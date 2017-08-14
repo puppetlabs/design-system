@@ -5,7 +5,15 @@ const Line = (x, y, data = [], options = {}) => {
   const spline = options.spline;
 
   const line = d3Line()
-    .x(d => (x(d.x)))
+    .x((d) => {
+      let result = x(d.x);
+
+      if (x.bandwidth) {
+        result += x.bandwidth() / 2;
+      }
+
+      return result;
+    })
     .y((d) => {
       let result;
 

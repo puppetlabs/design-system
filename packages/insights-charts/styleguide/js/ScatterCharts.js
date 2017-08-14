@@ -50,13 +50,6 @@ class ScatterCharts extends React.Component {
         horizontal: true,
         vertical: true,
       },
-      annotations: [{
-        highestPoint: true,
-        tooltip: {
-          title: 'this is a title',
-          message: 'this is a message',
-        },
-      }],
     };
 
     this.multiSeriesScatterChart = new ReflectChart(this.multi, {

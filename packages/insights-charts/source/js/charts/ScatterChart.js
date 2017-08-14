@@ -9,6 +9,7 @@ import Grid from '../lib/Grid';
 import ZeroLine from '../lib/ZeroLine';
 import Tooltip from '../lib/Tooltip';
 import SeriesPoi from '../lib/series/SeriesPoi';
+import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
 
 class ScatterChart extends Chart {
@@ -77,6 +78,19 @@ class ScatterChart extends Chart {
 
         seriesPoi.render(svg);
 
+        const seriesDataLabel = new SeriesDataLabel(
+          data,
+          dimensions,
+          x,
+          y,
+          this.clipPath.id,
+          plotOptions,
+          dispatchers,
+          yAxisIndex,
+        );
+
+        seriesDataLabel.render(svg);
+
         const annotations = new Annotations(
           data,
           x,
@@ -93,6 +107,7 @@ class ScatterChart extends Chart {
           yScale,
           yAxis,
           seriesPoi,
+          seriesDataLabel,
           annotations,
         };
       }
@@ -136,6 +151,17 @@ class ScatterChart extends Chart {
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
         scale.seriesPoi.update(
+          data,
+          dimensions,
+          x,
+          y,
+          this.clipPath.id,
+          plotOptions,
+          dispatchers,
+          yAxisIndex,
+        );
+
+        scale.seriesDataLabel.update(
           data,
           dimensions,
           x,

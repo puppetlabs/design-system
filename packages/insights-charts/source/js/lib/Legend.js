@@ -2,40 +2,89 @@ import { select } from 'd3-selection';
 import classnames from 'classnames';
 import { UNHIGHLIGHTED_OPACITY } from '../constants';
 import CSS from '../helpers/css';
+import helpers from '../helpers/charting';
 
 class Legend {
   constructor(elem, seriesData, options, margins, dispatchers) {
-    this.render(elem, seriesData, options, margins, dispatchers);
+    this.elem = elem;
+    this.seriesData = seriesData;
+    this.options = options;
+    this.margins = margins;
+    this.dispatchers = dispatchers;
+
+    this.getFormattedAggregate = this.getFormattedAggregate.bind(this);
+  }
+
+  getFormattedValue(value) {
+    const options = this.options;
+    const xOptions = options.axis && options.axis.x ? options.axis.x : {};
+    const optionFormatter = xOptions.values && xOptions.values.formatter;
+
+    return helpers.getFormattedValue(optionFormatter, value);
+  }
+
+  getFormattedAggregate(datum) {
+    const options = this.options;
+    const yOptions = options.axis && options.axis.y ? options.axis.y[datum.axis] : {};
+    const optionFormatter = yOptions.values && yOptions.values.formatter;
+
+    return helpers.getFormattedValue(optionFormatter, datum.aggregate);
   }
 
   getLegendValues(seriesData, expanded) {
     let values = [];
 
     if (expanded) {
-      values = seriesData[0].data.map((d, i) => ({
-        label: d.x,
-        seriesIndex: i,
-        color: d.color,
-        aggregate: d.aggregate,
-      }));
+      values = seriesData[0].data.map((d, i) => {
+        const val = {
+          label: this.getFormattedValue(d.x),
+          axis: d.axis,
+          seriesIndex: i,
+          color: d.color,
+        };
+
+        if (this.options.legend && this.options.legend.aggregates) {
+          val.aggregate = d.y;
+        }
+
+        return val;
+      });
     } else {
-      values = seriesData;
+      // We need to set the axis for each series.
+      values = seriesData.map((s) => {
+        if (s.data) {
+          s.axis = s.data[0].axis;
+        }
+
+        return s;
+      });
     }
 
     return values;
   }
 
-  render(elem, seriesData, options, margins, dispatchers) {
+  render() {
+    const { elem, seriesData, options, margins, dispatchers } = this;
+    const { enabled, orientation } = options.legend;
     let container;
     let legendItems;
 
-    if (options.enabled) {
+    if (enabled) {
+      elem.selectAll(CSS.getClassSelector('legend')).remove();
+
       container = elem
         .append('div')
-        .attr('class', CSS.getClassName('legend'));
+        .attr('class', classnames(
+          CSS.getClassName('legend'),
+          CSS.getClassName(`legend-${orientation}`),
+        ));
 
-      if (margins.top) {
+      if (orientation === 'top' && margins.top) {
         container.style('top', `${margins.top}px`);
+      }
+
+      if (orientation === 'bottom' && margins.left) {
+        container.style('padding-left', `${margins.left}px`);
       }
 
       if (margins.bottom) {
@@ -46,7 +95,7 @@ class Legend {
         container.style('padding-right', `${margins.right}px`);
       }
 
-      const data = this.getLegendValues(seriesData, options.expanded);
+      const data = this.getLegendValues(seriesData, options.legend.expanded);
 
       legendItems = container.selectAll(CSS.getClassName('legend-item'))
         .data(data)
@@ -93,10 +142,10 @@ class Legend {
         .attr('style', d => (d.color ? `background: ${d.color};` : null));
 
       legendItems.append('span')
-        .text(d => (d.aggregate ? `${d.label}: ${d.aggregate}` : d.label));
+        .text(d => (d.aggregate ? `${d.label}: ${this.getFormattedAggregate(d)}` : d.label));
     }
 
-    this.legend = container;
+    this.container = container;
   }
 }
 
