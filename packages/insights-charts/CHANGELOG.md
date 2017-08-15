@@ -1,3 +1,8 @@
+# 0.1.13
+
+* Remove support for toggling series via the legend
+* Ignore pointer-events over tooltips
+
 # 0.1.12
 
 * Legends should be disabled by default

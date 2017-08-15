@@ -11,6 +11,7 @@
   border-radius: $reflect-tooltip-border-radius;
   color: $reflect-tooltip-font-color;
   z-index: 23;
+  pointer-events: none;
 }
 
 .reflect-charts-tooltip-item {

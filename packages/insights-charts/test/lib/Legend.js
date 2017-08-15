@@ -7,7 +7,7 @@ import Legend from '../../source/js/lib/Legend';
 describe('Legend', () => {
   let options = { legend: { enabled: true } };
   const margins = {};
-  const dispatchers = { on: () => {} };
+  const dispatchers = { on: () => {}, enabled: () => {} };
 
   it('should properly render the legend', () => {
     const seriesData = [{ label: 'blah', data: [{ y: 1 }, { y: 2 }] }];

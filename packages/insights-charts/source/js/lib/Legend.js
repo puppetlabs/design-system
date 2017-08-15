@@ -111,14 +111,15 @@ class Legend {
           })
           .on('mouseout', () => {
             dispatchers.call('unHighlightSeries');
-          })
-          .on('click', (d) => {
-            d.disabled = !d.disabled;
-
-            dispatchers.call('legendItemClick', this, d);
-            dispatchers.call('update');
           });
 
+
+      if (dispatchers.enabled('legendItemClick.external')) {
+        legendItems
+          .on('click', function (d) {
+            dispatchers.call('legendItemClick', this, d);
+          });
+      }
 
       dispatchers.on('update.legend', () => {
         container.selectAll(CSS.getClassSelector('legend-item'))

@@ -43,6 +43,10 @@ class DonutCharts extends React.Component {
       options,
     });
 
+    this.pieChart.on('legendItemClick', (d) => {
+      console.log('I was clicked!', d)
+    });
+
     this.pieChart.render();
   }
 
