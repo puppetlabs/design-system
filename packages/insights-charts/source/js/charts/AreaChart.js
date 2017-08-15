@@ -55,7 +55,7 @@ class AreaChart extends Chart {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        const plotOptions = deepmerge(options, this.getPlotOptions(this.type));
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
 
         const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
@@ -175,7 +175,7 @@ class AreaChart extends Chart {
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const plotOptions = deepmerge(options, this.getPlotOptions(this.type));
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
         const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
 
         if (yAxisIndex === 0) {

@@ -1,3 +1,8 @@
+# 0.1.12
+
+* Legends should be disabled by default
+* Fix regression in combination and sparkline layouts
+
 # 0.1.11
 
 * Bug fix for default stacking layout
