@@ -23,27 +23,11 @@ class AreaChart extends Chart {
     this.yScales = {};
   }
 
-  getLayout() {
-    const { data, type } = this;
-    const options = this.getPlotOptions(type);
-    const isMultiSeries = data.getSeries().length > 1;
-    let layout = 'normal';
-
-    if (isMultiSeries && !options.layout) {
-      layout = 'stacked';
-    } else if (isMultiSeries && options.layout) {
-      layout = options.layout;
-    }
-
-    return layout;
-  }
-
   render() {
     const categories = this.data.getCategories().map(c => (c.label));
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
     const options = clone(this.options);
-    const layout = this.getLayout();
 
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
@@ -71,11 +55,9 @@ class AreaChart extends Chart {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        options.layout = layout;
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type));
 
-        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
-
-        const yScale = new YScale(data, yOptions, layout, dimensions, options);
+        const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
         const yAxis = new YAxis(y, dimensions, yOptions);
         yAxis.render(svg);
@@ -145,7 +127,7 @@ class AreaChart extends Chart {
           x,
           y,
           options,
-          layout,
+          plotOptions.layout,
           dispatchers,
           yAxisIndex,
         );
@@ -174,7 +156,6 @@ class AreaChart extends Chart {
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
     const options = clone(this.options);
-    const layout = this.getLayout();
 
     this.container.update(this.data, options, dispatchers);
 
@@ -190,14 +171,12 @@ class AreaChart extends Chart {
     this.pointOverlay.update(categories, x, dimensions, dispatchers, options);
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
-      options.layout = layout;
-
       const data = this.data.getDataByYAxis(yAxisIndex);
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
-        const y = scale.yScale.update(data, yOptions, layout, dimensions, options);
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type));
+        const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
@@ -250,7 +229,7 @@ class AreaChart extends Chart {
           yAxisIndex,
         );
 
-        scale.annotations.update(data, x, y, options, layout, dispatchers, yAxisIndex);
+        scale.annotations.update(data, x, y, options, plotOptions.layout, dispatchers, yAxisIndex);
       }
     });
 

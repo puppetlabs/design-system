@@ -1,3 +1,14 @@
+# 0.1.11
+
+* Bug fix for default stacking layout
+
+# 0.1.10
+
+* Support for horizontal legends
+* Data labels
+* Optionally handle errors through dispatchers
+* Fixes for formatting and aggregating expanded legends
+
 # 0.1.9
 
 * Better formatting for axis labels

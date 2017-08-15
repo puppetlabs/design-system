@@ -70,7 +70,7 @@ class ColumnChart extends Chart {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type));
         const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
 
@@ -176,7 +176,7 @@ class ColumnChart extends Chart {
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type));
         const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
 
         if (yAxisIndex === 0) {

@@ -68,7 +68,7 @@ class LineChart extends Chart {
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
 
-        const plotOptions = deepmerge(this.getPlotOptions(this.type, false), options);
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, false));
 
         const seriesLine = new SeriesLine(
           data,
@@ -170,7 +170,7 @@ class LineChart extends Chart {
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
-        const plotOptions = deepmerge(this.getPlotOptions(this.type), options);
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, false));
 
         scale.seriesLine.update(
           data,
