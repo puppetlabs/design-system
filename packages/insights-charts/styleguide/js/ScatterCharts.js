@@ -45,6 +45,9 @@ class ScatterCharts extends React.Component {
           },
         ],
       },
+      tooltips: {
+        type: 'simple',
+      },
       grid: {
         enabled: true,
         horizontal: true,

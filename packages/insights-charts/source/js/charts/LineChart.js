@@ -46,8 +46,10 @@ class LineChart extends Chart {
     this.xAxis = new XAxis(categories, x, dimensions, options.axis.x);
     this.xAxis.render(svg);
 
-    this.pointOverlay = new ClosestPointOverlay(categories, x, dimensions, dispatchers);
-    this.pointOverlay.render(svg);
+    if (!options.tooltips || !options.tooltips.type === 'simple') {
+      this.pointOverlay = new ClosestPointOverlay(categories, x, dimensions, dispatchers);
+      this.pointOverlay.render(svg);
+    }
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       const data = this.data.getDataByYAxis(yAxisIndex);
@@ -154,7 +156,9 @@ class LineChart extends Chart {
     const x = this.xScale.update(categories, options, dimensions, this.type);
     this.xAxis.update(categories, x, dimensions, options.axis.x);
 
-    this.pointOverlay.update(categories, x, dimensions, dispatchers, options);
+    if (this.pointOverlay) {
+      this.pointOverlay.update(categories, x, dimensions, dispatchers, options);
+    }
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       const data = this.data.getDataByYAxis(yAxisIndex);

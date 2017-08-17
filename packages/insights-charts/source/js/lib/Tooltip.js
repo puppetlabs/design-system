@@ -72,8 +72,8 @@ class Tooltip {
         tooltip.style('display', 'none');
       });
 
-      dispatchers.on('tooltipMove', (categoryIndex, category, mouse) => {
-        this.renderTooltip(categoryIndex, category);
+      dispatchers.on('tooltipMove', (categoryIndex, seriesIndex, category, mouse) => {
+        this.renderTooltip(categoryIndex, seriesIndex, category);
         this.positionTooltip(mouse);
       });
 
@@ -141,17 +141,20 @@ class Tooltip {
       .text(d => (this.getFormattedItem(d.data[categoryIndex])));
   }
 
-  renderTooltip(categoryIndex, category) {
-    const { seriesData } = this;
+  renderTooltip(categoryIndex, seriesIndex, category) {
+    const { seriesData, options } = this;
     const multiSeries = seriesData.length > 1;
+    const simple = options.tooltips && options.tooltips.type === 'simple';
 
     this.selection.selectAll(CSS.getClassSelector('tooltip-header'))
       .text(this.getFormattedHeader(category));
 
-    if (multiSeries) {
+    if (multiSeries && !simple) {
       this.renderMultiSeries(categoryIndex, seriesData);
     } else {
-      this.renderSingleSeries(categoryIndex, seriesData);
+      const series = seriesData.filter(s => (s.seriesIndex === seriesIndex));
+
+      this.renderSingleSeries(categoryIndex, series);
     }
   }
 

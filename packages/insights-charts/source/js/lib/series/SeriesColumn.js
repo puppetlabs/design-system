@@ -152,14 +152,14 @@ class SeriesColumn extends Series {
         .on('mousemove', function (d, i) {
           const dims = mouse(this);
 
-          dispatchers.call('tooltipMove', this, i, d.x, getMouseDimensions(dims, d));
+          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, getMouseDimensions(dims, d));
           dispatchers.call('activatePointOfInterest', this, d.x);
         })
         .on('mouseover', function (d, i) {
           const index = d.seriesIndex;
           const dims = mouse(this);
 
-          dispatchers.call('tooltipMove', this, i, d.x, getMouseDimensions(dims, d));
+          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, getMouseDimensions(dims, d));
           dispatchers.call('highlightSeries', this, index);
         })
         .on('mouseout', () => {

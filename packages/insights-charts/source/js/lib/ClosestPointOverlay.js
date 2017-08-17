@@ -80,7 +80,7 @@ class ClosestPointOverlay {
         }
 
         dispatchers.call('activatePointOfInterest', this, category);
-        dispatchers.call('tooltipMove', this, categoryIndex, category, m);
+        dispatchers.call('tooltipMove', this, categoryIndex, 0, category, m);
       });
   }
 

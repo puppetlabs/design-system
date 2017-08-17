@@ -91,7 +91,7 @@ class Donut {
         .on('mousemove', function mousemove(d, i) {
           const dims = mouse(this);
 
-          dispatchers.call('tooltipMove', this, i, d.data.x, getMouseDimensions(dims));
+          dispatchers.call('tooltipMove', this, i, 0, d.data.x, getMouseDimensions(dims));
           dispatchers.call('activatePointOfInterest', this, d.data.x);
           dispatchers.call('highlightSeries', this, i);
         })

@@ -1,3 +1,11 @@
+# 0.1.15
+
+* Add the ability to render simple tooltips
+
+# 0.1.14
+
+* Bug fixes to prevent scatters from stacking, update the default legend display state, etc
+
 # 0.1.13
 
 * Remove support for toggling series via the legend

@@ -117,7 +117,7 @@ class SeriesPoi extends Series {
           dispatchers.call('activatePointOfInterest', this, d.x);
         })
         .on('mouseover', function (d, i) {
-          dispatchers.call('tooltipMove', this, i, d.x, mouse(this));
+          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, mouse(this));
           dispatchers.call('highlightSeries', this, d.seriesIndex);
         })
         .on('mouseout', () => {

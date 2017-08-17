@@ -32,12 +32,13 @@ describe('Tooltip', () => {
     it('should properly render the tooltip for a single series chart', () => {
       const dispatchCallback = (eventName, cb) => {
         if (eventName === 'tooltipMove') {
-          cb(0, 'hello', [30, 30]);
+          cb(0, 0, 'hello', [30, 30]);
         }
       };
 
       const seriesData = [{
         data: [{ y: 1 }, { y: 2 }],
+        seriesIndex: 0,
         label: 'My series',
       }];
 
