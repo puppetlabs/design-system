@@ -53,7 +53,7 @@ const defaultOptions = {
   // Properties for legend placement.
   legend: {
     // Should we display the legend?.
-    enabled: false,
+    enabled: true,
 
     // What side to render the legend on.
     orientation: 'right',

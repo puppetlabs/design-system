@@ -122,7 +122,7 @@ class CombinationChart extends Chart {
 
         if (types.indexOf('scatter') >= 0) {
           const scatterData = data.filter(d => (d.type === 'scatter'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('scatter', scatterData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('scatter', scatterData, false));
 
           seriesScatter = new SeriesPoi(
             scatterData,
@@ -153,7 +153,7 @@ class CombinationChart extends Chart {
 
         if (types.indexOf('line') >= 0) {
           const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData, false));
 
           seriesLine = new SeriesLine(
             lineData,
@@ -361,7 +361,7 @@ class CombinationChart extends Chart {
 
         if (scale.seriesScatter) {
           const scatterData = data.filter(d => (d.type === 'scatter'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('scatter', scatterData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('scatter', scatterData, false));
 
           scale.seriesScatter.update(
             scatterData,
@@ -388,7 +388,7 @@ class CombinationChart extends Chart {
 
         if (scale.seriesLine) {
           const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData, false));
 
           scale.seriesLine.update(
             lineData,

@@ -56,7 +56,7 @@ class SparklineChart extends Chart {
           const x1 = this.xScale1.generate();
 
           const columnData = data.filter(d => (d.type === 'column'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('column'), columnData);
+          const plotOptions = deepmerge(options, this.getPlotOptions('column', columnData));
 
           seriesColumn = new SeriesColumn(
             columnData,
