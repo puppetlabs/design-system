@@ -28,7 +28,7 @@ class Annotations {
 
       if (point) {
         if (layout === 'combination') {
-          layout = this.options[point.seriesType].layout;
+          layout = this.options[point.seriesType] && this.options[point.seriesType].layout;
         }
 
         if (layout === 'grouped') {

@@ -61,7 +61,7 @@ const helpers = {
     data.forEach((s) => {
       s.data.forEach((d) => {
         if (layout === 'combination') {
-          layout = options[d.seriesType].layout;
+          layout = options[d.seriesType] && options[d.seriesType].layout;
         }
 
         if (layout === 'stacked' && ((d.y + d.y0) > (maxPoint.y + maxPoint.y0))) {

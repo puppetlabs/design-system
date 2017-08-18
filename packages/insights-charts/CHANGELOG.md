@@ -1,3 +1,7 @@
+# 0.1.17
+
+* Bug fix for combination charts when no series layout has been set and an annotation is provided
+
 # 0.1.16
 
 * Properly disable closest point overlay with simple tooltip
