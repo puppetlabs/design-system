@@ -64,6 +64,9 @@ class CombinationCharts extends React.Component {
         horizontal: true,
         vertical: true,
       },
+      annotations: [{
+        highestPoint: true,
+      }],
     };
 
     this.combinationChart = new ReflectChart(this.basic, {

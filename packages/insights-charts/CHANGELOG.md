@@ -1,3 +1,9 @@
+# 0.1.16
+
+* Properly disable closest point overlay with simple tooltip
+* Adding more variables to help improve theming. Particularly around data labels and legends
+* Fix right axis titles
+
 # 0.1.15
 
 * Add the ability to render simple tooltips

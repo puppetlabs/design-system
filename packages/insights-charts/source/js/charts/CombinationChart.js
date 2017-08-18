@@ -49,7 +49,7 @@ class CombinationChart extends Chart {
     this.xAxis = new XAxis(categories, x, dimensions, options.axis.x);
     this.xAxis.render(svg);
 
-    if (!options.tooltips || !options.tooltips.type === 'simple') {
+    if (!options.tooltips || !options.tooltips.type || options.tooltips.type !== 'simple') {
       this.pointOverlay = new ClosestPointOverlay(categories, x, dimensions, dispatchers);
       this.pointOverlay.render(svg);
     }
@@ -73,7 +73,7 @@ class CombinationChart extends Chart {
         const types = data.map(d => (d.type));
         const yScale = new YScale(data, yOptions, null, dimensions, options);
         const y = yScale.generate();
-        const yAxis = new YAxis(y, dimensions, yOptions);
+        const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
 
         if (yAxisIndex === 0) {

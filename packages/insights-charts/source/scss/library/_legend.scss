@@ -5,7 +5,7 @@
   top: 0;
   right: 0;
 
-  padding-left: 20px;
+  padding: $reflect-legend-right-padding;
   bottom: 20px;
   overflow-y: auto;
 }
@@ -15,6 +15,7 @@
   bottom: 0;
   left: 0;
   right: 0;
+  padding: $reflect-legend-bottom-padding;
 
   .reflect-charts-legend-item {
     width: auto;

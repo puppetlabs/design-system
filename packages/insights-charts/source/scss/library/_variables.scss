@@ -65,6 +65,7 @@ $reflect-axis-stroke:                   $reflect-border-color !default;
 $reflect-axis-label-color:              $reflect-font-color-base !default;
 $reflect-axis-label-font-size:          $reflect-font-size-tiny !default;
 $reflect-axis-title-color:              $reflect-font-color-base !default;
+$reflect-axis-title-font-size:          $reflect-font-size-medium !default;
 
 //
 // Grid
@@ -92,6 +93,8 @@ $reflect-poi-stroke-width:              $reflect-stroke-width-series !default;
 //
 $reflect-legend-font-size:              $reflect-font-size-medium !default;
 $reflect-legend-max-width:              200px !default;
+$reflect-legend-right-padding:          0 0 0 20px !default;
+$reflect-legend-bottom-padding:         20px 0 0 0 !default;
 
 //
 // Series Indicator
@@ -113,4 +116,5 @@ $reflect-tooltip-value-font-size:       $reflect-font-size-large !default;
 $reflect-annotation-fill:               $reflect-gray-dark !default;
 
 $reflect-charts-data-label-font-size:   $reflect-font-size-tiny !default;
+$reflect-charts-data-label-color:       $reflect-gray-base !default;
 $reflect-charts-data-label-shadow:      $reflect-bg-primary !default;

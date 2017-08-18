@@ -74,7 +74,7 @@ class ColumnChart extends Chart {
         const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
 
-        const yAxis = new YAxis(y, dimensions, yOptions);
+        const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
 
         if (yAxisIndex === 0) {

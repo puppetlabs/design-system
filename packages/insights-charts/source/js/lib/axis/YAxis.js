@@ -100,6 +100,10 @@ class YAxis {
               xPos = width / 2;
             } else {
               xPos = -(height / 2);
+
+              if (this.isRightAligned()) {
+                xPos = Math.abs(xPos);
+              }
             }
 
             return xPos;
