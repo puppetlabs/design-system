@@ -78,8 +78,8 @@ class Tooltip {
       });
 
       dispatchers.on('highlightSeries.tooltip', (seriesIndex) => {
-        selection.selectAll(CSS.getClassSelector('tooltip-item')).each(function (d, i) {
-          select(this).attr('style', (i === seriesIndex) ? null : `opacity: ${UNHIGHLIGHTED_OPACITY};`);
+        selection.selectAll(CSS.getClassSelector('tooltip-item')).each(function (d) {
+          select(this).attr('style', (d.seriesIndex === seriesIndex) ? null : `opacity: ${UNHIGHLIGHTED_OPACITY};`);
         });
       });
 
@@ -97,7 +97,7 @@ class Tooltip {
     const content = this.selection.selectAll(CSS.getClassSelector('tooltip-content'));
 
     const tooltipItems = content.selectAll(CSS.getClassSelector('tooltip-item'))
-      .data(data);
+      .data(data, d => (d.seriesIndex));
 
     // if text items already exist then update them
     const textItems = content.selectAll(CSS.getClassSelector('tooltip-text'));
@@ -106,10 +106,10 @@ class Tooltip {
     const item = tooltipItems
       .enter()
         .append('div')
-        .attr('class', (d, i) => (
+        .attr('class', d => (
           classnames(
             CSS.getClassName('tooltip-item'),
-            CSS.getColorClassName(i),
+            CSS.getColorClassName(d.seriesIndex),
           )
         ));
 
@@ -149,8 +149,14 @@ class Tooltip {
     this.selection.selectAll(CSS.getClassSelector('tooltip-header'))
       .text(this.getFormattedHeader(category));
 
-    if (multiSeries && !simple) {
-      this.renderMultiSeries(categoryIndex, seriesData);
+    if (multiSeries) {
+      if (simple) {
+        const series = seriesData.filter(s => (s.seriesIndex === seriesIndex));
+
+        this.renderMultiSeries(categoryIndex, series);
+      } else {
+        this.renderMultiSeries(categoryIndex, seriesData);
+      }
     } else {
       const series = seriesData.filter(s => (s.seriesIndex === seriesIndex));
 

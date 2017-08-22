@@ -1,3 +1,7 @@
+# 0.1.18
+
+* Update how we display simple tooltips for multiseries charts
+
 # 0.1.17
 
 * Bug fix for combination charts when no series layout has been set and an annotation is provided
