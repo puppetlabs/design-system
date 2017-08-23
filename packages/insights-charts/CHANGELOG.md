@@ -1,3 +1,7 @@
+# 0.1.19
+
+* Bug fix to annotations when animations are turned off
+
 # 0.1.18
 
 * Update how we display simple tooltips for multiseries charts

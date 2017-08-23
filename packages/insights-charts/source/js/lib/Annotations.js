@@ -112,6 +112,8 @@ class Annotations {
             return this.getTransform(t, margin);
           })
           .style('visibility', 'visible');
+    } else {
+      point.attr('transform', this.getTransform);
     }
 
     if (dispatchers.enabled('annotationClick.external')) {
