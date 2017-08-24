@@ -62,9 +62,22 @@ const validateBlocks = (blocks) => {
 
 class StencilGrid extends React.Component {
   getType(type) {
-    const known = ['bars', 'bar', 'timeseries', 'donut', 'datagrid', 'kpi', 'scatter'];
+    const types = {
+      kpi: 'kpi',
+      bar: 'bars',
+      bars: 'bars',
+      text: 'text',
+      donut: 'donut',
+      summary: 'summary',
+      scatter: 'scatter',
+      datagrid: 'datagrid',
+      timeseries: 'timeseries',
+      combination: 'combination',
+    };
 
-    if (known.indexOf(type) < 0) {
+    type = types[type];
+
+    if (!type) {
       type = DEFAULT_TYPE;
     }
 
