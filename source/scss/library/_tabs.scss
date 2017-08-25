@@ -1,67 +1,61 @@
 .rc-tabs {
-
-  &.rc-tabs-vertical {
-
-    ul {
-      float: left;
-      width: $reflect-tab-width-vertical;
-    }
-
-    .rc-tab {
-      display: block;
-
-      &.rc-tab-active {
-        a {
-          border-bottom: none;
-          border-right: $reflect-tab-border-active;
-        }
-      }
-
-      a {
-        border-right: $reflect-tab-border;
-        border-bottom: none;
-      }
-    }
-
-    .rc-tab-panel {
-      margin-left: $reflect-tab-width-vertical;
-      padding: $reflect-tab-panel-padding-vertical;
-    }
-  }
-
   .rc-tab {
     display: inline-block;
+  }
 
-    &.rc-tab-active {
-      a {
-        color: $reflect-tab-color-active;
-        border-bottom: $reflect-tab-border-active;
-      }
-    }
+  .rc-tab a {
+    background: $reflect-tab-bg;
+    border-bottom: $reflect-tab-border;
+    color: $reflect-tab-color;
+    display: block;
+    font-family: $reflect-tab-font-family;
+    font-size: $reflect-tab-font-size;
+    font-weight: $reflect-tab-font-weight;
+    padding: $reflect-tab-padding;
+    text-transform: $reflect-tab-case;
+  }
 
-    a {
-      display: block;
-      padding: $reflect-tab-padding;
-      border-bottom: $reflect-tab-border;
-      color: $reflect-tab-color;
-      background: $reflect-tab-bg;
-      font-family: $reflect-tab-font-family;
-      font-size: $reflect-tab-font-size;
-      font-weight: $reflect-tab-font-weight;
-      text-transform: $reflect-tab-case;
-    }
+  .rc-tab.rc-tab-active a {
+    border-bottom: $reflect-tab-border-active;
+    color: $reflect-tab-color-active;
+  }
 
-    &:last-child {
-      margin-right: 0;
-    }
+  .rc-tab:last-child {
+    margin-right: 0;
   }
 
   .rc-tab-panel {
     display: none;
     padding: $reflect-tab-panel-padding;
+  }
 
-    &.rc-tab-panel-active {
-      display: block;
-    }
+  .rc-tab-panel.rc-tab-panel-active {
+    display: block;
+  }
+}
+
+.rc-tabs-vertical {
+  ul {
+    float: left;
+    width: $reflect-tab-width-vertical;
+  }
+
+  .rc-tab {
+    display: block;
+  }
+
+  .rc-tab a {
+    border-bottom: 0;
+    border-right: $reflect-tab-border;
+  }
+
+  .rc-tab.rc-tab-active a {
+    border-bottom: 0;
+    border-right: $reflect-tab-border-active;
+  }
+
+  .rc-tab-panel {
+    margin-left: $reflect-tab-width-vertical;
+    padding: $reflect-tab-panel-padding-vertical;
   }
 }

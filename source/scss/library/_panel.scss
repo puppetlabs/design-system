@@ -1,9 +1,9 @@
 .rc-panel {
   background: $reflect-panel-bg;
   border: $reflect-panel-border;
-  padding: $reflect-panel-padding;
   border-radius: $reflect-panel-border-radius;
   box-shadow: $reflect-panel-outer-shadow;
+  padding: $reflect-panel-padding;
 
   @include with-remove('panel');
 

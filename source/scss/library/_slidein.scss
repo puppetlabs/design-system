@@ -1,50 +1,50 @@
 .rc-slidein {
   background-color: $reflect-slidein-bg;
-  border-radius: $reflect-slidein-radius;
   border: $reflect-slidein-border;
+  border-radius: $reflect-slidein-radius;
   box-shadow: $reflect-slidein-shadow;
   color: $reflect-slidein-color;
   position: fixed;
 
   &.rc-slidein-bottom {
     bottom: 0;
+    height: $reflect-slidein-vertical-height;
     left: 0;
     right: 0;
     width: 100%;
-    height: $reflect-slidein-vertical-height;
   }
 
   &.rc-slidein-top {
-    top: 0;
+    height: $reflect-slidein-vertical-height;
     left: 0;
     right: 0;
+    top: 0;
     width: 100%;
-    height: $reflect-slidein-vertical-height;
   }
 
   &.rc-slidein-left {
-    top: 0;
-    left: 0;
     bottom: 0;
-    width: $reflect-slidein-horizontal-width;
     height: 100%;
+    left: 0;
+    top: 0;
+    width: $reflect-slidein-horizontal-width;
   }
 
   &.rc-slidein-right {
-    top: 0;
-    right: 0;
     bottom: 0;
-    width: $reflect-slidein-horizontal-width;
     height: 100%;
+    right: 0;
+    top: 0;
+    width: $reflect-slidein-horizontal-width;
   }
 
   .rc-slidein-actions {
-    position: absolute;
+    border-top: $reflect-slidein-actions-border;
     bottom: 0;
     left: 0;
+    padding: $reflect-slidein-actions-padding;
+    position: absolute;
     right: 0;
     text-align: right;
-    border-top: $reflect-slidein-actions-border;
-    padding: $reflect-slidein-actions-padding;
   }
 }

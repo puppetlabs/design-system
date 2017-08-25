@@ -1,58 +1,57 @@
 .rc-list-item {
-
   .rc-tooltip-hover-area {
     display: block;
   }
+}
 
-  &.rc-list-item-selected {
-    a.rc-list-item-link {
-      border: $reflect-list-item-border-selected;
-      box-shadow: $reflect-list-item-shadow-selected
-    }
-  }
-
-  a.rc-list-item-link {
-    display: block;
-    position: relative;
-    background: $reflect-list-item-bg;
-    color: $reflect-list-item-color;
-    border: $reflect-list-item-border;
-    border-radius: $reflect-list-item-border-radius;
-    font-size: $reflect-list-item-font-size;
-    padding: $reflect-list-item-padding-v $reflect-list-item-padding-h;
-    margin-bottom: $reflect-list-item-margin-bottom;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    padding-right: $reflect-list-item-icon-width * 2 + $reflect-list-item-padding-h;
-    cursor: default;
-
-    .rc-list-item-edit, .rc-list-item-remove {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      display: block;
-      width: $reflect-list-item-icon-width;
-      height: $reflect-list-item-icon-height;
-      padding: 0;
-      text-align: center;
-    }
-
-    .rc-list-item-edit {
-      right: $reflect-list-item-padding-h + $reflect-list-item-icon-width + $reflect-small;
-    }
-
-    .rc-list-item-remove {
-      right: $reflect-list-item-padding-h;
-    }
-  }
-
-  &.rc-list-item-clickable:hover {
-    a.rc-list-item-link {
-      color: $reflect-list-item-color-hover;
-      background: $reflect-list-item-bg-hover;
-      cursor: pointer;
-    }
+.rc-list-item-selected {
+  .rc-list-item-link {
+    border: $reflect-list-item-border-selected;
+    box-shadow: $reflect-list-item-shadow-selected;
   }
 }
 
+.rc-list-item-link {
+  background: $reflect-list-item-bg;
+  border: $reflect-list-item-border;
+  border-radius: $reflect-list-item-border-radius;
+  color: $reflect-list-item-color;
+  cursor: default;
+  display: block;
+  font-size: $reflect-list-item-font-size;
+  margin-bottom: $reflect-list-item-margin-bottom;
+  overflow: hidden;
+  padding: $reflect-list-item-padding-v $reflect-list-item-padding-h;
+  padding-right: $reflect-list-item-icon-width * 2 + $reflect-list-item-padding-h;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  .rc-list-item-edit,
+  .rc-list-item-remove {
+    bottom: 0;
+    display: block;
+    height: $reflect-list-item-icon-height;
+    padding: 0;
+    position: absolute;
+    text-align: center;
+    top: 0;
+    width: $reflect-list-item-icon-width;
+  }
+
+  .rc-list-item-edit {
+    right: $reflect-list-item-padding-h + $reflect-list-item-icon-width + $reflect-small;
+  }
+
+  .rc-list-item-remove {
+    right: $reflect-list-item-padding-h;
+  }
+}
+
+.rc-list-item-clickable:hover {
+  .rc-list-item-link {
+    background: $reflect-list-item-bg-hover;
+    color: $reflect-list-item-color-hover;
+    cursor: pointer;
+  }
+}
