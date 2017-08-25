@@ -307,6 +307,8 @@ button.rc-floating-action-button {
     }
 
     &.rc-button-tiny {
+      padding: 0 $reflect-button-tiny-padding;
+
       .rc-button-content {
         padding: 0;
       }
