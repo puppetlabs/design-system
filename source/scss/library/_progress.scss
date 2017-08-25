@@ -1,20 +1,17 @@
-.rc-progress {
-  .rc-progress-line {
-    stroke: $reflect-progress-color;
-  }
+.rc-progress-line {
+  stroke: $reflect-progress-color;
+}
 
-  .rc-progress-step {
-   stroke: $reflect-progress-color;
-  }
+.rc-progress-step {
+  stroke: $reflect-progress-color;
+}
 
-  .rc-progress-step-active {
-    fill: $reflect-progress-color;
-    -webkit-transition: -webkit-transform $reflect-progress-animation;
-    transition: transform $reflect-progress-animation;
+.rc-progress-step-active {
+  fill: $reflect-progress-color;
+  transition: transform $reflect-progress-animation;
 
-    &.rc-progress-step-active-shadow {
-      fill: #000;
-      stroke: none;
-    }
+  &.rc-progress-step-active-shadow {
+    fill: #000;
+    stroke: none;
   }
 }

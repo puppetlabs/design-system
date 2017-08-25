@@ -1,18 +1,18 @@
 .rc-blank-slate {
-  text-align: center;
   margin-top: 40px;
+  text-align: center;
 }
 
 .rc-blank-slate-icon {
-  box-shadow: $reflect-blank-slate-shadow;
+  align-items: center;
   background: $reflect-blank-slate-bg;
   border-radius: $reflect-blank-slate-radius;
+  box-shadow: $reflect-blank-slate-shadow;
   display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: $reflect-blank-slate-size;
   height: $reflect-blank-slate-size;
+  justify-content: center;
   margin-bottom: 30px;
+  width: $reflect-blank-slate-size;
 
   .rc-icon {
     fill: $reflect-blank-slate-icon-color;
@@ -20,11 +20,10 @@
 }
 
 .rc-blank-slate-message {
-  display: block;
-  margin: auto;
-  font-weight: $reflect-blank-slate-font-weight;
-  max-width: $reflect-blank-slate-max-width;
-  font-size: $reflect-blank-slate-font-size;
-  // line-height: 35px;
   color: $reflect-blank-slate-font-color;
+  display: block;
+  font-size: $reflect-blank-slate-font-size;
+  font-weight: $reflect-blank-slate-font-weight;
+  margin: auto;
+  max-width: $reflect-blank-slate-max-width;
 }

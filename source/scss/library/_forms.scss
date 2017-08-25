@@ -1,15 +1,16 @@
+/* stylelint-disable  */
 .rc-filter-form {
   position: relative;
 
   .rc-split-button {
-    visibility: hidden;
     background: $reflect-filter-split-bg;
-    border-top-right-radius: $reflect-filter-radius;
     border-top-left-radius: $reflect-filter-radius;
+    border-top-right-radius: $reflect-filter-radius;
     position: absolute;
     right: 0;
     // We probably shouldn't hardcode this...
     top: -19px;
+    visibility: hidden;
 
     .rc-button-main {
       background: $reflect-filter-split-bg;
@@ -179,9 +180,10 @@
 
 .rc-form {
   .rc-form-label {
+    color: $reflect-form-label-color;
     font-size: $reflect-form-label-font-size;
     margin-bottom: $reflect-form-label-margin-bottom;
     text-transform: $reflect-form-label-case;
-    color: $reflect-form-label-color;
   }
 }
+/* stylelint-enable  */

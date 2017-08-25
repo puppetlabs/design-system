@@ -1,7 +1,8 @@
 .rc-loading {
-  width: 100%;
-  text-align: center;
   line-height: 1;
+  text-align: center;
+  width: 100%;
+
   path {
     fill: $reflect-loading-indicator-fill;
   }

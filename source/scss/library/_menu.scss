@@ -1,36 +1,30 @@
 @mixin menu-item-colors($bg, $bg-hover, $color, $color-hover, $bg-selected, $color-selected, $bg-disabled, $color-disabled) {
-  .rc-menu-item {
-    a {
-      color: $color;
-      background: $bg;
+  .rc-menu-item a {
+    background: $bg;
+    color: $color;
 
-      &:hover {
-        color: $color-hover;
-        background: $bg-hover;
-      }
+    &:hover {
+      background: $bg-hover;
+      color: $color-hover;
+    }
 
-      svg {
-        fill: $color-selected;
-      }
+    svg {
+      fill: $color-selected;
     }
   }
 
-  .rc-menu-item-selected {
-    a {
-      color: $color-selected;
-      background: $bg-selected;
-    }
+  .rc-menu-item-selected  a {
+    background: $bg-selected;
+    color: $color-selected;
   }
 
-  .rc-menu-item-disabled {
-    a {
-      color: $color-disabled;
+  .rc-menu-item-disabled  a {
+    background: $bg-disabled;
+    color: $color-disabled;
+
+    &:hover {
       background: $bg-disabled;
-
-      &:hover {
-        color: $color-disabled;
-        background: $bg-disabled;
-      }
+      color: $color-disabled;
     }
   }
 }
@@ -50,91 +44,87 @@
   .rc-menu-item {
     font-size: $reflect-menu-item-font-size;
     line-height: $reflect-menu-item-line-height;
-
-    a {
-      display: block;
-      padding: $reflect-menu-item-padding;
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: none;
-      }
-    }
   }
 
-  .rc-menu-item-disabled {
-    a {
-      cursor: default;
-    }
+  .rc-menu-item a {
+    display: block;
+    padding: $reflect-menu-item-padding;
+    text-decoration: none;
   }
 
-  &.rc-menu-tiny {
-    .rc-menu-item {
-      font-size: $reflect-menu-item-font-size-tiny;
-      line-height: $reflect-menu-item-line-height-tiny;
+  .rc-menu-item a:hover {
+    text-decoration: none;
+  }
 
-      a {
-        padding: $reflect-dropdown-padding-tiny;
-      }
-    }
+  .rc-menu-item-disabled a {
+    cursor: default;
+  }
+}
+
+.rc-menu-tiny {
+  .rc-menu-item {
+    font-size: $reflect-menu-item-font-size-tiny;
+    line-height: $reflect-menu-item-line-height-tiny;
+  }
+
+  .rc-menu-item a {
+    padding: $reflect-dropdown-padding-tiny;
   }
 }
 
 .rc-menu-section {
-  padding: $reflect-menu-section-padding;
   border-bottom: $reflect-menu-section-border;
+  padding: $reflect-menu-section-padding;
 
   &.rc-menu-section-list {
     padding: 0;
   }
 
   &:last-of-type {
-    border-bottom: none;
+    border-bottom: 0;
   }
 }
 
 .rc-menu-header {
+  border-bottom: $reflect-menu-header-border;
   display: flex;
   padding: $reflect-menu-header-padding;
-  border-bottom: $reflect-menu-header-border;
+}
 
-  .rc-menu-close {
-    display: flex;
-    justify-content: flex-end;
-    flex-grow: 2;
+.rc-menu-title {
+  align-items: center;
+  display: flex;
+  width: 90%;
 
-    .rc-icon {
-      float: right;
-      width: 8px;
-      height: 8px;
-    }
+  h2 {
+    color: $reflect-menu-title-color;
+    font-size: $reflect-menu-title-font-size;
   }
+}
 
-  .rc-menu-title {
-    display: flex;
-    width: 90%;
-    align-items: center;
+.rc-menu-close {
+  display: flex;
+  flex-grow: 2;
+  justify-content: flex-end;
 
-    h2 {
-      color: $reflect-menu-title-color;
-      font-size: $reflect-menu-title-font-size;
-    }
+  .rc-icon {
+    float: right;
+    height: 8px;
+    width: 8px;
   }
 }
 
 .rc-menu-multiple {
-  .rc-menu-item {
-    a {
-      position: relative;
-      // 16px is currently the size of the checkmark icon.
-      padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
+  .rc-menu-item  a {
+    // 16px is currently the size of the checkmark icon.
+    padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
+    position: relative;
+  }
 
-      svg {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: $reflect-dropdown-padding;
-      }
-    }
+  .rc-menu-item svg {
+    left: $reflect-dropdown-padding;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 }

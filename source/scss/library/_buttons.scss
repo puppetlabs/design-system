@@ -1,6 +1,7 @@
+/* stylelint-disable selector-no-qualifying-type, max-nesting-depth  */
 @mixin button-square($size) {
-  width: $size;
   height: $size;
+  width: $size;
 }
 
 @mixin button-colors($bg, $bg-hover, $color, $color-hover, $icon-color, $icon-hover, $border, $border-hover) {
@@ -23,16 +24,12 @@
       fill: $icon-hover;
     }
 
-    .rc-button-menu-inner {
-      .rc-icon {
-        path {
-          fill: $bg-hover;
-        }
-      }
+    .rc-button-menu-inner .rc-icon {
+      fill: $bg-hover;
     }
   }
 
-  &:after {
+  &::after {
     background: $bg;
   }
 
@@ -47,25 +44,23 @@
 
   .rc-button-menu-inner {
     .rc-icon {
-      path {
-        fill: $bg;
-      }
+      fill: $bg;
     }
   }
 }
 
-a.rc-button, button.rc-button {
-  text-transform: $reflect-button-text-case;
-  letter-spacing: 1px;
+a.rc-button,
+button.rc-button {
+  border-radius: $reflect-button-border-radius;
+  cursor: pointer;
   display: inline-block;
   height: $reflect-button-height;
-  text-align: center;
-  padding: 0px $reflect-button-padding;
-  white-space: nowrap;
-  cursor: pointer;
-  border-radius: $reflect-button-border-radius;
+  letter-spacing: 1px;
   outline: none;
-
+  padding: 0 $reflect-button-padding;
+  text-align: center;
+  text-transform: $reflect-button-text-case;
+  white-space: nowrap;
 
   @include button-colors(
     $reflect-button-bg,
@@ -84,23 +79,19 @@ a.rc-button, button.rc-button {
     width: 100%;
   }
 
-
-
   &.rc-button-badged {
     position: relative;
 
-    &:after {
-      content: ' ';
-      height: $reflect-button-badge-size;
-      width: $reflect-button-badge-size;
-
-      border: ($reflect-button-badge-size / 3) solid white;
+    &::after {
+      border: ($reflect-button-badge-size / 3) solid #fff;
       border-radius: $reflect-circle-radius;
       box-sizing: content-box;
-
+      content: ' ';
+      height: $reflect-button-badge-size;
       position: absolute;
       right: -($reflect-button-badge-size / 2);
       top: -($reflect-button-badge-size / 2);
+      width: $reflect-button-badge-size;
     }
   }
 
@@ -113,9 +104,9 @@ a.rc-button, button.rc-button {
 
     .rc-icon {
       float: none;
+      height: 80%;
       left: 0;
       width: 100%;
-      height: 80%;
       @include v-center(block, absolute);
     }
   }
@@ -130,7 +121,7 @@ a.rc-button, button.rc-button {
       $reflect-button-secondary-icon-color-hover,
       $reflect-button-secondary-border-color,
       $reflect-button-secondary-border-color-hover
-    )
+    );
   }
 
   &.rc-button-transparent {
@@ -155,9 +146,9 @@ a.rc-button, button.rc-button {
   }
 
   &.rc-button-auto {
-    padding: 0;
     height: auto;
     line-height: normal;
+    padding: 0;
   }
 
   &.rc-button-tiny {
@@ -226,30 +217,33 @@ a.rc-button, button.rc-button {
   }
 
   .rc-icon + .rc-button-content {
-    padding-left: 10px;
     display: inline-block;
     float: left;
+    padding-left: 10px;
   }
 }
 
 button.rc-button {
-  .rc-icon, .rc-button-content {
+  .rc-icon,
+  .rc-button-content {
     top: initial;
     transform: none; // <button> doesn't play nice with v-center
   }
+
   .rc-button-content {
     padding-top: 1px;
   }
 }
 
-a.rc-floating-action-button, button.rc-floating-action-button {
+a.rc-floating-action-button,
+button.rc-floating-action-button {
   border-radius: 60px;
   height: $reflect-floating-action-button-height;
   line-height: $reflect-floating-action-button-height;
-  width: $reflect-floating-action-button-height;
   padding: 0;
+  width: $reflect-floating-action-button-height;
 
-  &:before {
+  &::before {
     content: '+';
     font-size: 36px;
   }
@@ -263,24 +257,24 @@ a.rc-floating-action-button, button.rc-floating-action-button {
   &:last-child {
     margin-right: 0;
   }
+}
 
-  &.rc-button-group-collapsed {
-    .rc-button {
-      margin-right: 0;
-      border-radius: 0 !important;
-    }
+.rc-button-group-collapsed {
+  .rc-button {
+    border-radius: 0 !important;
+    margin-right: 0;
+  }
 
-    :first-child {
-      border-top-left-radius: $reflect-border-radius !important;
-      border-bottom-left-radius: $reflect-border-radius !important;
-      border-right: none !important;
-    }
+  :first-child {
+    border-bottom-left-radius: $reflect-border-radius !important;
+    border-right: 0 !important;
+    border-top-left-radius: $reflect-border-radius !important;
+  }
 
-    :last-child {
-      border-top-right-radius: $reflect-border-radius !important;
-      border-bottom-right-radius: $reflect-border-radius !important;
-      border-left: none !important;
-    }
+  :last-child {
+    border-bottom-right-radius: $reflect-border-radius !important;
+    border-left: 0 !important;
+    border-top-right-radius: $reflect-border-radius !important;
   }
 }
 
@@ -288,32 +282,33 @@ a.rc-floating-action-button, button.rc-floating-action-button {
   display: flex;
 
   .rc-button-main {
-    padding: 0 10px;
-
-    border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    padding: 0 10px;
+  }
 
-    &.rc-button-tiny {
-      .rc-button-content {
-        padding: 1px;
-        font-size: $reflect-button-tiny-font-size;
-      }
-    }
+  .rc-button-main.rc-button-tiny .rc-button-content {
+    font-size: $reflect-button-tiny-font-size;
+    padding: 1px;
   }
 
   .rc-button-menu {
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    display: block;
+    padding: 0 10px;
 
     &.rc-popover-target-open {
       background: $reflect-button-bg-hover;
     }
 
-    &.rc-button-small {
-      .rc-button-menu-inner {
-        padding: 1px;
-      }
+    &.rc-button-small .rc-button-menu-inner {
+      padding: 1px;
     }
 
     &.rc-button-tiny {
+      padding: 0 $reflect-button-tiny-padding;
+
       .rc-button-content {
         padding: 0;
       }
@@ -324,24 +319,21 @@ a.rc-floating-action-button, button.rc-floating-action-button {
     }
 
     .rc-button-menu-inner {
-      border-radius: $reflect-border-radius;
       background: $reflect-bg-primary;
-      padding: 3px;
+      border-radius: $reflect-border-radius;
       display: inline-block;
+      padding: 3px;
 
-      svg {
+      // stylelint-disable selector-max-compound-selectors
+      .rc-icon {
         padding: 3px;
       }
+      // stylelint-enable selector-max-compound-selectors
     }
-
-    padding: 0 10px;
-    display: block;
-
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
 
     .rc-button-content {
       display: flex;
     }
   }
 }
+/* stylelint-enable selector-no-qualifying-type, max-nesting-depth  */

@@ -7,15 +7,15 @@
     .rc-icon {
       fill: $color-error;
     }
+  }
 
-    &:focus {
-      .rc-dropdown-label {
-        color: darken($color-error, 20%);
-      }
+  &.rc-dropdown-toggle-error:focus {
+    .rc-dropdown-label {
+      color: darken($color-error, 20%);
+    }
 
-      .rc-icon {
-        fill: darken($color-error, 20%);
-      }
+    .rc-icon {
+      fill: darken($color-error, 20%);
     }
   }
 
@@ -55,34 +55,6 @@
     $reflect-dropdown-label-color-error
   );
 
-  &.rc-dropdown-toggle-select {
-    display: block;
-    background: $reflect-select-label-bg;
-    border: $reflect-select-label-border;
-    border-radius: $reflect-select-label-border-radius;
-    padding: $reflect-select-label-padding;
-
-    .rc-dropdown-label {
-      position: relative;
-      display: block;
-      font-size: $reflect-select-label-font-size;
-
-      .rc-dropdown-label-text {
-        display: block;
-        margin-right: 20px;
-        text-overflow: ellipsis;
-        overflow: hidden;
-      }
-
-      .rc-icon {
-        position: absolute;
-        right: 5px;
-        top: 7px;
-        left: auto;
-      }
-    }
-  }
-
   &[disabled] {
     pointer-events: none;
   }
@@ -90,68 +62,92 @@
   .rc-dropdown-label {
     cursor: pointer;
     white-space: nowrap;
+  }
 
-    .rc-dropdown-label-text {
-      font-size: $reflect-dropdown-label-font-size;
-      font-weight: $reflect-dropdown-label-font-weight;
-    }
+  .rc-dropdown-label-text {
+    font-size: $reflect-dropdown-label-font-size;
+    font-weight: $reflect-dropdown-label-font-weight;
+  }
 
-    .rc-icon {
-      position: relative;
-      top: -1px;
-      left: -2px;
-      height: $reflect-dropdown-chevron-height;
-      width: $reflect-dropdown-chevron-width;
-    }
+  .rc-icon {
+    height: $reflect-dropdown-chevron-height;
+    left: -2px;
+    position: relative;
+    top: -1px;
+    width: $reflect-dropdown-chevron-width;
+  }
+}
+
+.rc-dropdown-toggle-select {
+  background: $reflect-select-label-bg;
+  border: $reflect-select-label-border;
+  border-radius: $reflect-select-label-border-radius;
+  display: block;
+  padding: $reflect-select-label-padding;
+
+  .rc-dropdown-label {
+    display: block;
+    font-size: $reflect-select-label-font-size;
+    position: relative;
+  }
+
+  .rc-dropdown-label-text {
+    display: block;
+    margin-right: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rc-icon {
+    left: auto;
+    position: absolute;
+    right: 5px;
+    top: 7px;
   }
 }
 
 .rc-dropdown-menu {
-  width: $reflect-dropdown-width;
   padding: 0;
-  padding-top: $reflect-popover-border-radius * 2;
   padding-bottom: $reflect-popover-border-radius * 2;
+  padding-top: $reflect-popover-border-radius * 2;
+  width: $reflect-dropdown-width;
 
   .rc-dropdown-blank {
-    padding: $reflect-dropdown-padding;
     font-size: $reflect-dropdown-item-font-size;
+    padding: $reflect-dropdown-padding;
   }
 
   .rc-dropdown-item {
     font-size: $reflect-dropdown-item-font-size;
     line-height: $reflect-dropdown-item-line-height;
-
-    a {
-      display: block;
-      padding: $reflect-dropdown-padding;
-      text-decoration: none;
-
-      &:hover {
-        color: $reflect-dropdown-item-hover-color;
-        background: $reflect-dropdown-item-hover-bg;
-        text-decoration: none;
-      }
-    }
   }
 
-  .rc-dropdown-item-selected {
-    a {
-      color: $reflect-dropdown-item-selected-color;
-      background: $reflect-dropdown-item-selected-bg;
-    }
+  .rc-dropdown-item a {
+    display: block;
+    padding: $reflect-dropdown-padding;
+    text-decoration: none;
   }
 
-  .rc-dropdown-item-disabled {
-    a {
-      color: $reflect-dropdown-item-disabled-color;
-      background: $reflect-dropdown-item-disabled-bg;
-      cursor: default;
+  .rc-dropdown-item a:hover {
+    background: $reflect-dropdown-item-hover-bg;
+    color: $reflect-dropdown-item-hover-color;
+    text-decoration: none;
+  }
 
-      &:hover {
-        color: $reflect-dropdown-item-disabled-color;
-        background: $reflect-dropdown-item-disabled-bg;
-      }
-    }
+  .rc-dropdown-item-selected  a {
+    background: $reflect-dropdown-item-selected-bg;
+    color: $reflect-dropdown-item-selected-color;
+  }
+
+  .rc-dropdown-item-disabled a {
+    background: $reflect-dropdown-item-disabled-bg;
+    color: $reflect-dropdown-item-disabled-color;
+    cursor: default;
+  }
+
+  .rc-dropdown-item-disabled a:hover {
+    background: $reflect-dropdown-item-disabled-bg;
+    color: $reflect-dropdown-item-disabled-color;
   }
 
   ul {
@@ -160,23 +156,20 @@
   }
 
   li:last-of-type {
-    border-bottom: none;
+    border-bottom: 0;
+  }
+}
+
+.rc-dropdown-menu-tiny {
+  width: $reflect-dropdown-width-tiny;
+
+  .rc-dropdown-item {
+    font-size: $reflect-dropdown-item-font-size-tiny;
+    line-height: $reflect-dropdown-item-line-height-tiny;
   }
 
-
-  &.rc-dropdown-menu-tiny {
-    width: $reflect-dropdown-width-tiny;
-
-    .rc-dropdown-item {
-      font-size: $reflect-dropdown-item-font-size-tiny;
-      line-height: $reflect-dropdown-item-line-height-tiny;
-    }
-
-    .rc-dropdown-item {
-      a {
-        padding: $reflect-dropdown-padding-tiny;
-      }
-    }
+  .rc-dropdown-item  a {
+    padding: $reflect-dropdown-padding-tiny;
   }
 }
 
@@ -187,23 +180,18 @@
 .rc-dropdown-menu-multiple {
   padding-bottom: 0;
 
-  .rc-dropdown-item {
-    a {
-      position: relative;
-      // 16px is currently the size of the checkmark icon.
-      padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
+  .rc-dropdown-item a {
+    // 16px is currently the size of the checkmark icon.
+    padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
+    position: relative;
+  }
 
-      svg {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        left: $reflect-dropdown-padding;
-
-        * {
-          fill: $reflect-dropdown-item-selected-color;
-        }
-      }
-    }
+  .rc-icon {
+    fill: $reflect-dropdown-item-selected-color;
+    left: $reflect-dropdown-padding;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
   .rc-dropdown-menu-section-list {
