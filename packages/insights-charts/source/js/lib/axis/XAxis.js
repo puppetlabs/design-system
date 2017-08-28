@@ -113,6 +113,7 @@ class XAxis {
     const { categories, dimensions } = this;
     const orientation = options && options.orientation ? options.orientation : 'bottom';
     let axis;
+    let ticks;
 
     switch (orientation) {
       case 'top':
@@ -132,7 +133,9 @@ class XAxis {
       .tickSizeOuter(0)
       .tickFormat(this.getAxisFormatter());
 
-    const ticks = this.getTickValues(categories, this.getAxisFormatter(), dimensions.width);
+    if (orientation === 'bottom' || orientation === 'top') {
+      ticks = this.getTickValues(categories, this.getAxisFormatter(), dimensions.width);
+    }
 
     if (options.ticks) {
       axis.ticks(options.ticks);

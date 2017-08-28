@@ -1,6 +1,7 @@
+/* stylelint-disable scss/dollar-variable-colon-space-after, indentation  */
 $reflect-white:                         #fff !default;
 
-$reflect-gray-base:                     #201F1E !default;
+$reflect-gray-base:                     #201f1e !default;
 $reflect-gray-darker:                   lighten($reflect-gray-base, 19%) !default;
 $reflect-gray-dark:                     lighten($reflect-gray-base, 38%) !default;
 $reflect-gray:                          lighten($reflect-gray-base, 56%) !default;
@@ -9,7 +10,7 @@ $reflect-gray-lighter:                  lighten($reflect-gray-base, 84%) !defaul
 
 $reflect-bg-primary:                    #fff !default;
 
-$reflect-brand-primary:                 #269CFF !default;
+$reflect-brand-primary:                 #269cff !default;
 $reflect-brand-success:                 #5cb85c !default;
 $reflect-brand-info:                    #5bc0de !default;
 $reflect-brand-warning:                 #f0ad4e !default;
@@ -34,8 +35,8 @@ $reflect-border-heavy:                  2px solid $reflect-border-color;
 $reflect-border-active:                 1px solid $reflect-brand-primary !default;
 $reflect-border-hover:                  1px solid $reflect-border-hover-color !default;
 
-$reflect-outer-shadow:                  0 0px 1px rgba(0, 0, 0, .05) !default;
-$reflect-outer-shadow-large:            0 0 6px rgba(0, 0, 0, .2) !default
+$reflect-outer-shadow:                  0 0 1px rgba(0, 0, 0, 0.05) !default;
+$reflect-outer-shadow-large:            0 0 6px rgba(0, 0, 0, 0.2) !default;
 
 $reflect-palette-base:                  $reflect-brand-primary !default;
 
@@ -56,7 +57,7 @@ $reflect-palette:                       (
 
 $reflect-stroke-width-series:           3px !default;
 
-$reflect-transition-time:               .25s !default;
+$reflect-transition-time:               0.25s !default;
 
 //
 // Axis
@@ -118,3 +119,4 @@ $reflect-annotation-fill:               $reflect-gray-dark !default;
 $reflect-charts-data-label-font-size:   $reflect-font-size-tiny !default;
 $reflect-charts-data-label-color:       $reflect-gray-base !default;
 $reflect-charts-data-label-shadow:      $reflect-bg-primary !default;
+/* stylelint-enable */

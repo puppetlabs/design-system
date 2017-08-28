@@ -1,6 +1,6 @@
 .reflect-charts-line-path {
-  stroke-width: $reflect-line-stroke-width;
-  stroke: $reflect-brand-primary;
   fill: none;
   pointer-events: none;
+  stroke: $reflect-brand-primary;
+  stroke-width: $reflect-line-stroke-width;
 }

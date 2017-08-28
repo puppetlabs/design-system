@@ -1,17 +1,17 @@
 .reflect-charts-tooltip {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  min-width: 175px;
-  box-shadow: $reflect-tooltip-shadow;
-  padding: 0;
   background-color: $reflect-tooltip-bg;
   border: $reflect-tooltip-border;
   border-radius: $reflect-tooltip-border-radius;
+  box-shadow: $reflect-tooltip-shadow;
   color: $reflect-tooltip-font-color;
-  z-index: 23;
+  display: none;
+  left: 0;
+  min-width: 175px;
+  padding: 0;
   pointer-events: none;
+  position: absolute;
+  top: 0;
+  z-index: 23;
 }
 
 .reflect-charts-tooltip-item {
@@ -20,8 +20,8 @@
 
 .reflect-charts-tooltip-value {
   display: block;
-  text-align: center;
   font-size: $reflect-tooltip-value-font-size;
+  text-align: center;
 }
 
 .reflect-charts-tooltip-header {
@@ -31,9 +31,9 @@
 }
 
 .reflect-charts-tooltip-content {
-  padding: 14px;
-  overflow-y: auto;
   height: 100%;
+  overflow-y: auto;
+  padding: 14px;
 }
 
 .reflect-charts-tooltip-item-hidden {

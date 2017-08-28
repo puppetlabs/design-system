@@ -1,3 +1,9 @@
+# 0.1.20
+
+* Don't guess the number of tick labels when the x axis is in a vertical orientation
+* Adding SCSS linting for better code quality
+* Use color helpers to ensure we are getting the correct css class name for series
+
 # 0.1.19
 
 * Bug fix to annotations when animations are turned off

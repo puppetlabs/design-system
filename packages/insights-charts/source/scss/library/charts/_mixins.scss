@@ -10,7 +10,7 @@
   }
 }
 
-@mixin reflect-area-color($color, $opacity: .8) {
+@mixin reflect-area-color($color, $opacity: 0.8) {
   .reflect-charts-area-path {
     fill: $color;
     fill-opacity: $opacity;
@@ -22,7 +22,7 @@
   }
 }
 
-@mixin reflect-column-color($color, $opacity: .8) {
+@mixin reflect-column-color($color, $opacity: 0.8) {
   .reflect-charts-column-rect {
     fill: $color;
     fill-opacity: $opacity;
@@ -36,15 +36,15 @@
 
 @mixin reflect-donut-color($color, $opacity: 1) {
   .reflect-charts-donut-arc {
-    stroke: $color;
     fill: $color;
+    stroke: $color;
   }
 }
 
 @mixin reflect-poi-color($color, $opacity: 1) {
   .reflect-charts-poi {
-    stroke: $color;
     fill: $reflect-poi-fill;
+    stroke: $color;
   }
 }
 

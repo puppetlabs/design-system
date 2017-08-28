@@ -92,7 +92,8 @@ class SeriesPoi extends Series {
       .data(this.data, d => (d.seriesIndex));
 
     this.series
-      .attr('class', d => (CSS.getClassName('series', this.selector, `color-${d.seriesIndex}`)))
+      .attr('class', d =>
+        (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
       .selectAll(CSS.getClassSelector('poi'))
         .attr('cx', this.isHorizontal() ? this.getY : this.getX)
         .attr('cy', this.isHorizontal() ? this.getX : this.getY);
@@ -101,7 +102,8 @@ class SeriesPoi extends Series {
 
     this.series = this.series.enter()
       .append('g')
-        .attr('class', d => (CSS.getClassName('series', this.selector, `color-${d.seriesIndex}`)))
+        .attr('class', d =>
+          (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
         .attr('clip-path', `url(#${this.clipPathId})`)
       .selectAll(CSS.getClassSelector('poi'))
         .data(d => (!d.disabled ? d.data : []));

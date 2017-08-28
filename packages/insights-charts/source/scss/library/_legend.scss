@@ -1,44 +1,42 @@
 .reflect-charts-legend-right {
-  max-width: $reflect-legend-max-width;
-
-  position: absolute;
-  top: 0;
-  right: 0;
-
-  padding: $reflect-legend-right-padding;
   bottom: 20px;
+  max-width: $reflect-legend-max-width;
   overflow-y: auto;
+  padding: $reflect-legend-right-padding;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .reflect-charts-legend-bottom {
-  position: absolute;
   bottom: 0;
   left: 0;
-  right: 0;
   padding: $reflect-legend-bottom-padding;
+  position: absolute;
+  right: 0;
 
   .reflect-charts-legend-item {
-    width: auto;
-    overflow: hidden;
     display: block;
     float: left;
     margin-right: 20px;
+    overflow: hidden;
+    width: auto;
   }
 }
 
 .reflect-charts-legend-item {
-  transition: opacity $reflect-transition-time linear;
   font-size: $reflect-legend-font-size;
+  transition: opacity $reflect-transition-time linear;
 }
 
 .reflect-charts-legend-item-disabled {
-  opacity: .22;
+  opacity: 0.22;
 }
 
 .reflect-charts-series-indicator {
+  border-radius: $reflect-series-indicator-border-radius;
   display: inline-block;
   height: $reflect-legend-font-size/1.5;
-  width: $reflect-legend-font-size;
   margin-right: 10px;
-  border-radius: $reflect-series-indicator-border-radius;
+  width: $reflect-legend-font-size;
 }

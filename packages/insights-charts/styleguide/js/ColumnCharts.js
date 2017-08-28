@@ -41,19 +41,12 @@ class ColumnCharts extends React.Component {
         orientation: 'bottom',
       },
       axis: {
-        y: [{
+        y: {
           ticks: 4,
           title: 'Left axis',
-        }, {
-          ticks: 4,
-          orientation: 'right',
-          title: 'Right axis',
-        }],
+        },
         x: {
           title: 'I am a x axis title',
-          labels: {
-            rotated: true,
-          },
         },
       },
       grid: {

@@ -3,15 +3,13 @@
     stroke: $reflect-axis-stroke;
   }
 
-  .tick {
-    line {
-      stroke: $reflect-axis-stroke;
-    }
+  line {
+    stroke: $reflect-axis-stroke;
+  }
 
-    text {
-      fill: $reflect-axis-label-color;
-      font-size: $reflect-axis-label-font-size;
-    }
+  text {
+    fill: $reflect-axis-label-color;
+    font-size: $reflect-axis-label-font-size;
   }
 }
 

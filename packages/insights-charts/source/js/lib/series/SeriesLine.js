@@ -26,7 +26,8 @@ class SeriesLine extends Series {
 
     this.series = this.series.enter()
       .append('g')
-        .attr('class', d => (CSS.getClassName('series', this.selector, `color-${d.seriesIndex}`)))
+        .attr('class', d =>
+          (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
         .attr('clip-path', `url(#${this.clipPathId})`)
       .append('path')
         .attr('class', CSS.getClassName('line-path'))
