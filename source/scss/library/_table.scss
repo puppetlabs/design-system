@@ -1,20 +1,16 @@
 .rc-table {
-  width: 100%;
-  text-align: left;
   border-collapse: separate;
   border-spacing: 0;
   box-shadow: $reflect-table-shadow;
+  text-align: left;
+  width: 100%;
 
-  tr:last-of-type {
-    td {
-      &:first-of-type {
-        border-bottom-left-radius: $reflect-table-border-radius;
-      }
+  tr:last-of-type td:first-of-type {
+    border-bottom-left-radius: $reflect-table-border-radius;
+  }
 
-      &:last-of-type {
-        border-bottom-right-radius: $reflect-table-border-radius;
-      }
-    }
+  tr:last-of-type td:last-of-type {
+    border-bottom-right-radius: $reflect-table-border-radius;
   }
 
   // Hide the sticky header divs
@@ -22,48 +18,47 @@
     display: none;
   }
 
-  th, td {
+  th,
+  td {
+    background: #fff;
     border-bottom: $reflect-table-border;
-    padding: 10px;
     font-size: $reflect-table-font-size;
-    background: white;
+    padding: 10px;
   }
 
   th {
-    @extend .rc-uppercase;
-    font-size: 10px;
-    letter-spacing: 1px;
+    @extend %rc-uppercase;
     background-color: $reflect-table-header-bg;
     border-top: $reflect-table-border;
     color: $reflect-table-header-color;
-
-    &:first-of-type {
-      border-left: $reflect-table-border;
-      border-top-left-radius: $reflect-table-border-radius;
-    }
-
-    &:last-of-type {
-      border-right: $reflect-table-border;
-      border-top-right-radius: $reflect-table-border-radius;
-    }
+    font-size: 10px;
+    letter-spacing: 1px;
   }
 
-  td {
-    &:first-of-type {
-      border-left: $reflect-table-border;
-    }
+  th:first-of-type {
+    border-left: $reflect-table-border;
+    border-top-left-radius: $reflect-table-border-radius;
+  }
 
-    &:last-of-type {
-      border-right: $reflect-table-border;
-    }
+  th:last-of-type {
+    border-right: $reflect-table-border;
+    border-top-right-radius: $reflect-table-border-radius;
+  }
+
+  td:first-of-type {
+    border-left: $reflect-table-border;
+  }
+
+  td:last-of-type {
+    border-right: $reflect-table-border;
   }
 
   .rc-table-column-checkbox {
     width: 30px;
+  }
 
-    input[type="checkbox"] {
-      font-size: 12px;
-    }
+  .rc-table-column-checkbox [type='checkbox'] {
+    font-size: 12px;
   }
 
   .rc-table-header-sortable {
@@ -85,58 +80,27 @@
   border-spacing: 0 10px;
 
   th {
-    padding: 0 20px;
-    border-bottom: none;
     background: none;
+    border-bottom: 0;
+    padding: 0 20px;
   }
 
   td {
-    padding: 20px 20px;
-    border-top: 1px solid #ddd;
     border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
     font-size: 16px;
-
-    &:first-child {
-      border-top-left-radius: $reflect-border-radius;
-      border-bottom-left-radius: $reflect-border-radius;
-      border-left: 1px solid #ddd;
-    }
-
-    &:last-child {
-      border-top-right-radius: $reflect-border-radius;
-      border-bottom-right-radius: $reflect-border-radius;
-      border-right: 1px solid #ddd;
-    }
+    padding: 20px;
   }
-}
 
-.rc-table-sticky-wrapper {
-  position: relative;
-  overflow-x: hidden;
+  td:first-child {
+    border-bottom-left-radius: $reflect-border-radius;
+    border-left: 1px solid #ddd;
+    border-top-left-radius: $reflect-border-radius;
+  }
 
-  .rc-table-sticky-container {
-    height: 500px;
-    overflow-y: auto;
-
-    th {
-      padding-left: 0;
-      padding-right: 0;
-    }
-
-    th > div {
-      display: block;
-      @extend .rc-uppercase;
-      border-bottom: 1px solid #ccc;
-      padding: 10px;
-      font-size: 12px;
-      color: $reflect-gray;
-      font-size: 10px;
-      letter-spacing: 1px;
-      background: $reflect-bg-primary;
-      position: absolute;
-      top: 0;
-      width: 100%;
-      z-index: 1;
-    }
+  td:last-child {
+    border-bottom-right-radius: $reflect-border-radius;
+    border-right: 1px solid #ddd;
+    border-top-right-radius: $reflect-border-radius;
   }
 }

@@ -1,10 +1,10 @@
 .rc-input {
-  padding: $reflect-input-padding;
-  width: 100%;
-  color: $reflect-input-color;
   border: $reflect-input-border;
   border-radius: $reflect-input-border-radius;
+  color: $reflect-input-color;
   outline: none;
+  padding: $reflect-input-padding;
+  width: 100%;
 
   &.rc-input-error {
     border: $reflect-input-border-error;
@@ -22,9 +22,9 @@
   }
 
   &.rc-input-large {
-    padding: $reflect-input-large-padding;
-    height: 60px;
     font-size: $reflect-font-size-large;
+    height: 60px;
+    padding: $reflect-input-large-padding;
   }
 
   &.rc-input-small {
@@ -37,19 +37,7 @@
     padding: $reflect-input-tiny-padding;
   }
 
-  &::-webkit-input-placeholder {
-    color: $reflect-input-placeholder-color;
-  }
-
-  &:-moz-placeholder { /* Firefox 18- */
-    color: $reflect-input-placeholder-color;
-  }
-
-  &::-moz-placeholder {  /* Firefox 19+ */
-    color: $reflect-input-placeholder-color;
-  }
-
-  &:-ms-input-placeholder {
+  &::placeholder {
     color: $reflect-input-placeholder-color;
   }
 }

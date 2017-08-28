@@ -9,41 +9,42 @@
 .rc-datepicker-container {
   display: flex;
   padding: $reflect-datepicker-padding 0;
+}
 
-  .rc-ranges {
-    padding: 0 $reflect-datepicker-padding 0 0;
-    list-style: none;
-    min-width: 150px;
+.rc-datepicker-container .rc-ranges {
+  list-style: none;
+  min-width: 150px;
+  padding: 0 $reflect-datepicker-padding 0 0;
 
-    li {
-      color: $reflect-date-range-color;
-      cursor: pointer;
-      font-size: $reflect-font-size-medium;
-      border: $reflect-date-range-border;
-      border-radius: $reflect-datepicker-radius;
-      padding: $reflect-tiny $reflect-small;
-      margin-bottom: $reflect-tiny;
+  li {
+    border: $reflect-date-range-border;
+    border-radius: $reflect-datepicker-radius;
+    color: $reflect-date-range-color;
+    cursor: pointer;
+    font-size: $reflect-font-size-medium;
+    margin-bottom: $reflect-tiny;
+    padding: $reflect-tiny $reflect-small;
+  }
 
-      &:hover, &.selected {
-        color: #fff;
-        border: $reflect-date-range-hover-border;
-        background: $reflect-date-range-hover-bg;
-      }
+  li:hover,
+  .selected {
+    background: $reflect-date-range-hover-bg;
+    border: $reflect-date-range-hover-border;
+    color: #fff;
+  }
 
-      &.active {
-        color: #fff;
-        border: $reflect-date-range-hover-border;
-        background: $reflect-date-range-hover-bg;
-      }
-    }
+  .active {
+    background: $reflect-date-range-hover-bg;
+    border: $reflect-date-range-hover-border;
+    color: #fff;
   }
 }
 
 .rc-datepicker-button {
-  max-width: 300px;
   box-sizing: border-box;
+  max-width: 300px;
 }
-
+/* stylelint-disable  */
 // $arrow-size: 6px !default;
 // $selection-radius: $reflect-datepicker-radius !default;
 // $selection-margin: 0 !default;
@@ -382,3 +383,4 @@ $ns: rc-datepicker !default;
     z-index: 1;
   }
 }
+/* stylelint-enable  */

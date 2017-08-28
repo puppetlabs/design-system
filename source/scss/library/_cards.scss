@@ -3,79 +3,9 @@
   border: $reflect-card-border;
   border-radius: $reflect-card-border-radius;
   box-shadow: $reflect-outer-shadow;
+  color: $reflect-card-color;
   display: block;
   position: relative;
-  color: $reflect-card-color;
-
-  &:hover {
-    .rc-card-actions-hidden {
-      display: block;
-    }
-  }
-
-  &.rc-card-xs {
-    padding: 2px;
-    background-position: center center;
-    background-size: cover;
-
-    .rc-card-content {
-      padding: 13px 0px;
-      border: 2px solid white;
-
-      .rc-card-title {
-        margin: 0px;
-        text-align: center;
-        visibility: hidden;
-        font-size: 1em;
-      }
-    }
-
-    &:hover {
-      .rc-card-content {
-        background: $reflect-card-bg;
-        .rc-card-title {
-          visibility: visible;
-        }
-      }
-    }
-  }
-
-  &.rc-card-large {
-    padding-top: 100px;;
-
-    .rc-card-title {
-      margin-top: 80px;
-      font-size: 1.3em;
-    }
-  }
-
-  &.rc-card-small {
-    padding-top: 0;
-
-    .rc-card-title {
-      margin-top: 0px;
-      font-size: 1.1em;
-    }
-  }
-
-  &.rc-card-selectable {
-    cursor: pointer;
-
-    &:hover {
-      border: $reflect-card-border-hover;
-      box-shadow: $reflect-card-shadow-hover;
-    }
-  }
-
-  &.rc-card-selected {
-    border: $reflect-card-border-selected;
-    box-shadow: $reflect-card-shadow-selected;
-
-    &:hover {
-      border: $reflect-card-border-selected-hover;
-      box-shadow: $reflect-card-shadow-selected-hover;
-    }
-  }
 
   .rc-card-content {
     background: transparent !important;
@@ -98,24 +28,21 @@
   }
 
   .rc-card-actions {
-    top: 5px;
-    right: 5px;
-    z-index: 24;
-
-    position: absolute;
     float: right;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    z-index: 24;
+  }
 
-    .rc-card-remove {
-      width: 21px;
-      height: 21px;
-
-      background: $reflect-remove-background;
-      border-radius: 50%;
-
-      cursor: pointer;
-      text-align: center;
-      line-height: 20px;
-    }
+  .rc-card-remove {
+    background: $reflect-remove-background;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 21px;
+    line-height: 20px;
+    text-align: center;
+    width: 21px;
   }
 
   .rc-card-actions-hidden {
@@ -127,28 +54,78 @@
     padding: 20px;
   }
 
-  .rc-card-actions {
-    top: 5px;
-    right: 5px;
-    z-index: 24;
-
-    position: absolute;
-    float: right;
-
-    .rc-card-remove {
-      width: 21px;
-      height: 21px;
-
-      background: $reflect-remove-background;
-      border-radius: 50%;
-
-      cursor: pointer;
-      text-align: center;
-      line-height: 20px;
-    }
-  }
-
   .rc-card-actions-hidden {
     display: none;
+  }
+}
+
+.rc-card:hover {
+  .rc-card-actions-hidden {
+    display: block;
+  }
+}
+
+.rc-card-xs {
+  background-position: center center;
+  background-size: cover;
+  padding: 2px;
+
+  .rc-card-content {
+    border: 2px solid #fff;
+    padding: 13px 0;
+  }
+
+  .rc-card-title {
+    font-size: 1em;
+    margin: 0;
+    text-align: center;
+    visibility: hidden;
+  }
+}
+
+.rc-card-xs:hover {
+  .rc-card-content {
+    background: $reflect-card-bg;
+  }
+
+  .rc-card-title {
+    visibility: visible;
+  }
+}
+
+.rc-card-large {
+  padding-top: 100px;
+
+  .rc-card-title {
+    font-size: 1.3em;
+    margin-top: 80px;
+  }
+}
+
+.rc-card-small {
+  padding-top: 0;
+
+  .rc-card-title {
+    font-size: 1.1em;
+    margin-top: 0;
+  }
+}
+
+.rc-card-selectable {
+  cursor: pointer;
+
+  &:hover {
+    border: $reflect-card-border-hover;
+    box-shadow: $reflect-card-shadow-hover;
+  }
+}
+
+.rc-card-selected {
+  border: $reflect-card-border-selected;
+  box-shadow: $reflect-card-shadow-selected;
+
+  &:hover {
+    border: $reflect-card-border-selected-hover;
+    box-shadow: $reflect-card-shadow-selected-hover;
   }
 }

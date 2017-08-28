@@ -1,4 +1,4 @@
-[class^="rc-"]  {
+[class^='rc-'] {
   font-family: $reflect-font-family;
   font-size: $reflect-font-size-base;
 
@@ -7,7 +7,8 @@
   }
 }
 
-.rc-uppercase {
-  font-family: "Montserrat";
+.rc-uppercase,
+%rc-uppercase {
+  font-family: 'Montserrat';
   text-transform: uppercase;
 }
