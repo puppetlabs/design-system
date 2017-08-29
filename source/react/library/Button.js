@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import Icon from './Icon';
+import { TooltipStickyArea } from './tooltips/Tooltip';
 
 const propTypes = {
   className: React.PropTypes.string,
@@ -42,12 +43,31 @@ class Button extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
+  componentDidMount() {
+    this.forceUpdate();
+  }
+
   onClick(e) {
     if (this.props.disabled) {
       e.preventDefault();
     } else if (this.props.onClick) {
       this.props.onClick(e);
     }
+  }
+
+  renderTooltip() {
+    const { message } = this.props;
+    let tooltip;
+
+    if (message && this.button) {
+      tooltip = (
+        <Tooltip target={ this.button } anchor="bottom" tooltip={ message }>
+          { message }
+        </Tooltip>
+      );
+    }
+
+    return tooltip;
   }
 
   render() {
@@ -63,6 +83,8 @@ class Button extends React.Component {
       badge,
       size,
       href,
+      error,
+      message,
       className,
       floating,
       dropdownMenu,
@@ -78,6 +100,7 @@ class Button extends React.Component {
       'rc-button-processing': processing,
       'rc-floating-action-button': floating,
       'rc-button-badged': badge && !disabled,
+      'rc-button-error': error,
       'rc-button-primary': !secondary && !transparent,
       'rc-button-secondary': secondary,
       'rc-button-transparent': transparent,
@@ -91,6 +114,7 @@ class Button extends React.Component {
       href,
       disabled,
       onClick: this.onClick,
+      ref: (b) => { this.button = b },
       className: cssClass,
     };
 
@@ -110,6 +134,14 @@ class Button extends React.Component {
       button = <button { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</button>;
     } else {
       button = <a { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</a>;
+    }
+
+    if (message) {
+      button = (
+        <TooltipStickyArea anchor="bottom" tooltip={ message }>
+          { button }
+        </TooltipStickyArea>
+      )
     }
 
     return button;

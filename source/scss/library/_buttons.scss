@@ -136,6 +136,16 @@ button.rc-button {
       $reflect-button-clear-border-color-hover
     );
 
+    &.rc-button-error {
+      background: $reflect-button-clear-bg;
+      color: $reflect-button-error-bg !important;
+
+      &:hover {
+        background: $reflect-button-clear-bg;
+        color: $reflect-button-error-bg !important;
+      }
+    }
+
     &[disabled] {
       background: $reflect-button-clear-bg;
 
@@ -143,6 +153,19 @@ button.rc-button {
         background: $reflect-button-clear-bg;
       }
     }
+  }
+
+  &.rc-button-error {
+    @include button-colors(
+      $reflect-button-error-bg,
+      $reflect-button-error-bg-hover,
+      $reflect-button-error-color,
+      $reflect-button-error-color-hover,
+      $reflect-button-error-icon-color,
+      $reflect-button-error-icon-color-hover,
+      $reflect-button-error-border-color,
+      $reflect-button-error-border-color-hover
+    );
   }
 
   &.rc-button-auto {
