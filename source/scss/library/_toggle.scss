@@ -22,6 +22,7 @@
   }
 
   .rc-switch-checkbox:checked + .rc-switch-label {
+    background: $reflect-toggle-bg;
     color: $reflect-toggle-on-color;
   }
 }
