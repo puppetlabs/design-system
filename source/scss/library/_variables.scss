@@ -238,6 +238,16 @@ $reflect-button-disabled-icon-color-hover: $reflect-disabled-icon-hover !default
 $reflect-button-disabled-border-color:   $reflect-disabled-border !default;
 $reflect-button-disabled-border-color-hover: $reflect-disabled-border-hover !default;
 
+// Errored Buttons
+$reflect-button-error-bg:                      $reflect-danger-color !default;
+$reflect-button-error-bg-hover:                $reflect-danger-color !default;
+$reflect-button-error-color:                   $reflect-action-text !default;
+$reflect-button-error-color-hover:             $reflect-action-text !default;
+$reflect-button-error-icon-color:              $reflect-action-icon !default;
+$reflect-button-error-icon-color-hover:        $reflect-action-icon-hover !default;
+$reflect-button-error-border-color:            $reflect-danger-color !default;
+$reflect-button-error-border-color-hover:      $reflect-danger-color !default;
+
 // Cards
 // ----------------------------------------------------------------------------
 $reflect-card-padding:                   $reflect-large;

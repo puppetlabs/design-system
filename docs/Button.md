@@ -46,3 +46,15 @@ Disabled button:
 ```
 <Button disabled>I'm a disabled button!</Button>
 ```
+
+Button with an error:
+
+```
+<Button error>Click me</Button>
+```
+
+Button with an error and message:
+
+```
+<Button error message="Something went wrong here...">Click me</Button>
+```
