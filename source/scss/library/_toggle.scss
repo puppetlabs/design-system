@@ -25,4 +25,8 @@
     background: $reflect-toggle-bg;
     color: $reflect-toggle-on-color;
   }
+
+  .rc-switch-checkbox:checked + .rc-switch-label::after {
+    background: $reflect-toggle-on-color;
+  }
 }
