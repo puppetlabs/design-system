@@ -2,13 +2,14 @@ import clone from 'clone';
 import DataSet from '../lib/DataSet';
 
 class Chart {
-  constructor({ elem, type, data, options, dispatchers }) {
+  constructor({ elem, type, data, options, dispatchers, id }) {
     this.elem = elem;
     this.type = type;
     this.options = clone(options);
     this.options.type = type;
     this.data = new DataSet(data, this.options, type);
     this.dispatchers = dispatchers;
+    this.id = id;
 
     if (!this.render) {
       throw new Error('All charts require a render method for rendering the chart');

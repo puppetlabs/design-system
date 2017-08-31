@@ -14,8 +14,8 @@ import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
 
 class ColumnChart extends Chart {
-  constructor({ elem, type, data, options, dispatchers }) {
-    super({ elem, type, data, options, dispatchers });
+  constructor({ elem, type, data, options, dispatchers, id }) {
+    super({ elem, type, data, options, dispatchers, id });
 
     this.yScales = {};
   }
@@ -36,13 +36,12 @@ class ColumnChart extends Chart {
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
 
-    const wrapper = this.container.getWrapper();
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
     const clipPathOptions = options.animations;
     clipPathOptions.direction = 'vertical';
-    this.clipPath = new ClipPath(dimensions, clipPathOptions);
+    this.clipPath = new ClipPath(dimensions, clipPathOptions, this.id);
     this.clipPath.render(svg);
 
     this.xScale = new XScale(categories, options, dimensions);
@@ -63,8 +62,8 @@ class ColumnChart extends Chart {
     this.xScale1 = new XScale(groups, options, x1Dimensions);
     const x1 = this.xScale1.generate();
 
-    this.tooltip = new Tooltip(seriesData, dimensions, options, dispatchers);
-    this.tooltip.render(wrapper);
+    this.tooltip = new Tooltip(seriesData, options, dispatchers, this.id);
+    this.tooltip.render();
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       const data = this.data.getDataByYAxis(yAxisIndex);
@@ -154,7 +153,7 @@ class ColumnChart extends Chart {
     const dimensions = this.container.getDimensions();
 
     this.clipPath.update(dimensions);
-    this.tooltip.update(seriesData, dimensions, options, dispatchers);
+    this.tooltip.update(seriesData, options, dispatchers, this.id);
 
     const x = this.xScale.update(categories, options, dimensions, this.type);
     this.xAxis.update(categories, x, dimensions, options.axis.x);

@@ -79,7 +79,9 @@ class PointsOfInterest {
         dispatchers.call('activatePointOfInterest', this, d.x);
       })
       .on('mouseover', function (d, i) {
-        dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, mouse(this));
+        const dims = mouse(select('body').node());
+
+        dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, dims);
         dispatchers.call('highlightSeries', this, d.seriesIndex);
       })
       .on('mouseout', () => {

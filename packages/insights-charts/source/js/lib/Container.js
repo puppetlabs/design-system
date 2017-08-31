@@ -53,21 +53,24 @@ class Container {
 
   setSVGMargins(dimensions) {
     if (this.type !== 'sparkline' && this.type !== 'donut') {
+      const wrapperDimensions = this.wrapper.node().getBoundingClientRect();
       const options = this.options;
       const orientation = options.axis.x.orientation;
-      const elem = this.elem;
       const categories = this.data.getCategories().map(c => (c.label));
-      const testSVG = select(elem).append('svg');
+      const testSVG = this.wrapper.append('svg');
 
       const xScale = new XScale(categories, options, dimensions);
       const x = xScale.generate();
 
       const xAxis = new XAxis(categories, x, dimensions, options.axis.x);
       const tempX = xAxis.render(testSVG);
-      let additionalLeftPadding;
+      let leftOverflow = 0;
+      let rightOverflow = 0;
+      const topOverflow = 0;
+      const bottomOverflow = 0;
 
       if (tempX) {
-        const tempXDimensions = tempX.node().getBBox();
+        const tempXDimensions = tempX.node().getBoundingClientRect();
 
         if (orientation === 'left' || orientation === 'right') {
           const xAxisWidth = tempXDimensions.width;
@@ -86,9 +89,8 @@ class Container {
             this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
           }
 
-          if (tempXDimensions.x < 0) {
-            additionalLeftPadding = Math.abs(tempXDimensions.x);
-          }
+          leftOverflow = wrapperDimensions.left - tempXDimensions.left;
+          rightOverflow = tempXDimensions.right - wrapperDimensions.right;
         }
       }
 
@@ -129,8 +131,20 @@ class Container {
         }
       });
 
-      if (additionalLeftPadding) {
-        this.dimensions.margins.left += additionalLeftPadding;
+      if (leftOverflow > 0 && leftOverflow > this.dimensions.margins.left) {
+        this.dimensions.margins.left += (leftOverflow - this.dimensions.margins.left);
+      }
+
+      if (rightOverflow > 0 && rightOverflow > this.dimensions.margins.right) {
+        this.dimensions.margins.right += (rightOverflow - this.dimensions.margins.right);
+      }
+
+      if (topOverflow > 0 && topOverflow > this.dimensions.margins.top) {
+        this.dimensions.margins.top += (topOverflow - this.dimensions.margins.top);
+      }
+
+      if (bottomOverflow > 0 && bottomOverflow > this.dimensions.margins.bottom) {
+        this.dimensions.margins.bottom += (bottomOverflow - this.dimensions.margins.bottom);
       }
 
       testSVG.remove();

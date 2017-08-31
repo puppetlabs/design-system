@@ -3,20 +3,17 @@
 import 'd3-transition';
 
 import { CLIP_PATH_PADDING } from '../constants';
-import IDGenerator from '../helpers/IDGenerator';
 
 const HORIZONTAL = 'horizontal';
 const VERTICAL = 'vertical';
 
 class ClipPath {
-  constructor(dimensions, options) {
+  constructor(dimensions, options, id) {
     this.width = dimensions.width;
     this.height = dimensions.height;
     this.options = options;
     this.direction = this.options.direction || HORIZONTAL;
-
-    const idGenerator = new IDGenerator();
-    this.id = idGenerator.getUniqueId();
+    this.id = id;
 
     this.getY = this.getY.bind(this);
     this.getWidth = this.getWidth.bind(this);

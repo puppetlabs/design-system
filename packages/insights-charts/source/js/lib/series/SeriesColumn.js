@@ -1,4 +1,4 @@
-import { event, mouse } from 'd3-selection';
+import { select, event, mouse } from 'd3-selection';
 import CSS from '../../helpers/css';
 import helpers from '../../helpers/charting';
 import Series from './Series';
@@ -105,20 +105,11 @@ class SeriesColumn extends Series {
   }
 
   render(selection) {
-    const { x, dispatchers } = this;
+    const { dispatchers } = this;
 
     if (!this.selection) {
       this.selection = selection;
     }
-
-    const getMouseDimensions = (dims, d) => {
-      // If we're grouping, we need to account for the translate.
-      if (this.isGrouped()) {
-        dims[0] += x(d.x);
-      }
-
-      return dims;
-    };
 
     this.series = selection.selectAll(CSS.getClassSelector(this.selector))
       .data(this.data, d => (d.seriesIndex));
@@ -150,16 +141,16 @@ class SeriesColumn extends Series {
         .attr('style', d => (d.color ? `fill: ${d.color};` : null))
         .attr('height', this.isBar() ? this.getColumnThickness : this.getColumnLength)
         .on('mousemove', function (d, i) {
-          const dims = mouse(this);
+          const dims = mouse(select('body').node());
 
-          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, getMouseDimensions(dims, d));
+          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, dims);
           dispatchers.call('activatePointOfInterest', this, d.x);
         })
         .on('mouseover', function (d, i) {
           const index = d.seriesIndex;
-          const dims = mouse(this);
+          const dims = mouse(select('body').node());
 
-          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, getMouseDimensions(dims, d));
+          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, dims);
           dispatchers.call('highlightSeries', this, index);
         })
         .on('mouseout', () => {

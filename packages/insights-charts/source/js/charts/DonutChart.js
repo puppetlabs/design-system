@@ -4,8 +4,8 @@ import Tooltip from '../lib/Tooltip';
 import Donut from '../lib/Donut';
 
 class DonutChart extends Chart {
-  constructor({ elem, type, data, options, dispatchers }) {
-    super({ elem, type, data, options, dispatchers });
+  constructor({ elem, type, data, options, dispatchers, id }) {
+    super({ elem, type, data, options, dispatchers, id });
   }
 
   render() {
@@ -16,12 +16,11 @@ class DonutChart extends Chart {
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
 
-    const wrapper = this.container.getWrapper();
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    this.tooltip = new Tooltip(seriesData, dimensions, options, dispatchers);
-    this.tooltip.render(wrapper);
+    this.tooltip = new Tooltip(seriesData, options, dispatchers, this.id);
+    this.tooltip.render();
 
     this.donut = new Donut(seriesData, options, dimensions, dispatchers);
     this.donut.render(svg);
@@ -34,7 +33,7 @@ class DonutChart extends Chart {
     this.container.update(this.data, options, dispatchers);
     const dimensions = this.container.getDimensions();
 
-    this.tooltip.update(seriesData, dimensions, options, dispatchers);
+    this.tooltip.update(seriesData, options, dispatchers, this.id);
 
     this.donut.update(seriesData, options, dimensions, dispatchers);
   }

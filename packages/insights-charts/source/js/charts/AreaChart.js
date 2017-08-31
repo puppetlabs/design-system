@@ -17,8 +17,8 @@ import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
 
 class AreaChart extends Chart {
-  constructor({ elem, type, data, options, dispatchers }) {
-    super({ elem, type, data, options, dispatchers });
+  constructor({ elem, type, data, options, dispatchers, id }) {
+    super({ elem, type, data, options, dispatchers, id });
 
     this.yScales = {};
   }
@@ -32,15 +32,15 @@ class AreaChart extends Chart {
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
 
-    const wrapper = this.container.getWrapper();
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    this.clipPath = new ClipPath({ width: 0, height: dimensions.height }, options.animations);
+    this.clipPath =
+      new ClipPath({ width: 0, height: dimensions.height }, options.animations, this.id);
     this.clipPath.render(svg);
 
-    this.tooltip = new Tooltip(seriesData, dimensions, options, dispatchers);
-    this.tooltip.render(wrapper);
+    this.tooltip = new Tooltip(seriesData, options, dispatchers, this.id);
+    this.tooltip.render();
 
     this.xScale = new XScale(categories, options, dimensions);
     const x = this.xScale.generate();
@@ -165,7 +165,7 @@ class AreaChart extends Chart {
     const dimensions = this.container.getDimensions();
 
     this.clipPath.update(dimensions);
-    this.tooltip.update(seriesData, dimensions, options, dispatchers);
+    this.tooltip.update(seriesData, options, dispatchers, this.id);
 
     const x = this.xScale.update(categories, options, dimensions, this.type);
     this.xAxis.update(categories, x, dimensions, options.axis.x);

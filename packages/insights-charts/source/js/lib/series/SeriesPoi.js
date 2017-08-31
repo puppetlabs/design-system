@@ -19,17 +19,32 @@ class SeriesPoi extends Series {
     this.getX = this.getX.bind(this);
     this.getY = this.getY.bind(this);
 
-    dispatchers.on(this.eventName, (category) => {
-      if (category && category._isAMomentObject) {  // eslint-disable-line no-underscore-dangle
-        category = category.toString();
+    dispatchers.on(this.eventName, (activatedX, activatedY) => {
+      if (activatedX && activatedX._isAMomentObject) {  // eslint-disable-line no-underscore-dangle
+        activatedX = activatedX.toString();
       }
+
+      const shouldHighlight = (d) => {
+        const category = typeof d.x === 'object' ? d.x.toString() : d.x;
+        let highlight;
+
+        // If we want to highlight the whole category, then we only need to make sure the
+        // category is the same.
+        if (typeof options.highlightCategory === 'undefined' || options.highlightCategory) {
+          highlight = category === activatedX;
+        } else {
+          // Otherwise, we need to make sure this is the exact point we want to highlight.
+          highlight = category === activatedX && d.y === activatedY;
+        }
+
+        return highlight;
+      };
 
       this.selection.selectAll(CSS.getClassSelector('poi')).each(function (d) {
         const point = select(this);
         const isActive = point.classed(CSS.getClassName('poi-active'));
-        const datum = typeof d.x === 'object' ? d.x.toString() : d.x;
 
-        if (datum === category) {
+        if (shouldHighlight(d)) {
           point.attr('class', CSS.getClassName('poi', 'poi-active'))
             .transition()
             .duration(POI_ANIMATION_DURATION)
@@ -116,10 +131,12 @@ class SeriesPoi extends Series {
         .attr('cy', this.isHorizontal() ? this.getX : this.getY)
         .attr('style', d => (d.color ? `stroke: ${d.color}` : null))
         .on('mousemove', function (d) {
-          dispatchers.call('activatePointOfInterest', this, d.x);
+          dispatchers.call('activatePointOfInterest', this, d.x, d.y);
         })
         .on('mouseover', function (d, i) {
-          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, mouse(this));
+          const dims = mouse(select('body').node());
+
+          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, dims);
           dispatchers.call('highlightSeries', this, d.seriesIndex);
         })
         .on('mouseout', () => {

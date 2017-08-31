@@ -4,14 +4,11 @@ import { TOOLTIP_POINTER_MARGIN, UNHIGHLIGHTED_OPACITY } from '../constants';
 import CSS from '../helpers/css';
 import helpers from '../helpers/charting';
 
-const TOOLTIP_VERTICAL_PADDING = 5;
-const TOOLTIP_CONTAINER_OVERFLOW = 300;
-
 class Tooltip {
-  constructor(seriesData, dimensions, options, dispatchers) {
-    this.seriesData = seriesData;
+  constructor(seriesData, options, dispatchers, id) {
+    this.id = id;
     this.options = options;
-    this.dimensions = dimensions;
+    this.seriesData = seriesData;
     this.dispatchers = dispatchers;
   }
 
@@ -50,7 +47,9 @@ class Tooltip {
     return item;
   }
 
-  render(selection) {
+  render() {
+    const selection = select('body');
+
     const { options, dispatchers } = this;
     let tooltip;
 
@@ -60,7 +59,7 @@ class Tooltip {
 
     if (!options.tooltips || options.tooltips.enabled) {
       tooltip = selection.append('div')
-        .attr('class', CSS.getClassName('tooltip'));
+        .attr('class', CSS.getClassName('tooltip', `tooltip-${this.id}`));
 
       tooltip.append('div')
         .attr('class', CSS.getClassName('tooltip-header'));
@@ -94,7 +93,9 @@ class Tooltip {
   }
 
   renderMultiSeries(categoryIndex, data) {
-    const content = this.selection.selectAll(CSS.getClassSelector('tooltip-content'));
+    const content = this.selection
+      .selectAll(CSS.getClassSelector(`tooltip-${this.id}`))
+      .select(CSS.getClassSelector('tooltip-content'));
 
     const tooltipItems = content.selectAll(CSS.getClassSelector('tooltip-item'))
       .data(data, d => (d.seriesIndex));
@@ -130,7 +131,9 @@ class Tooltip {
   }
 
   renderSingleSeries(categoryIndex, data) {
-    const content = this.selection.selectAll(CSS.getClassSelector('tooltip-content'));
+    const content = this.selection
+      .selectAll(CSS.getClassSelector(`tooltip-${this.id}`))
+      .select(CSS.getClassSelector('tooltip-content'));
 
     const value = content.selectAll(CSS.getClassSelector('tooltip-value'))
       .data(data);
@@ -142,12 +145,14 @@ class Tooltip {
   }
 
   renderTooltip(categoryIndex, seriesIndex, category) {
-    const { seriesData, options } = this;
+    const { seriesData, options, id } = this;
     const multiSeries = seriesData.length > 1;
     const simple = options.tooltips && options.tooltips.type === 'simple';
 
-    this.selection.selectAll(CSS.getClassSelector('tooltip-header'))
-      .text(this.getFormattedHeader(category));
+    this.selection
+      .selectAll(CSS.getClassSelector(`tooltip-${id}`))
+      .select(CSS.getClassSelector('tooltip-header'))
+        .text(this.getFormattedHeader(category));
 
     if (multiSeries) {
       if (simple) {
@@ -165,7 +170,7 @@ class Tooltip {
   }
 
   getTooltipDimensions() {
-    const tooltip = this.selection.select(CSS.getClassSelector('tooltip'));
+    const tooltip = this.selection.select(CSS.getClassSelector(`tooltip-${this.id}`));
     const origDisplay = tooltip.style('display');
 
     // Make sure we display: block to get accurate dimensions
@@ -179,7 +184,6 @@ class Tooltip {
   }
 
   positionTooltip(mouse) {
-    const { dimensions } = this;
     let mouseX = mouse[0];
     let mouseY = mouse[1];
 
@@ -187,40 +191,35 @@ class Tooltip {
       this.tooltipDimensions = this.getTooltipDimensions();
     }
 
-    mouseX = mouseX + dimensions.margins.left + TOOLTIP_POINTER_MARGIN;
-
-    if ((mouseX + TOOLTIP_CONTAINER_OVERFLOW) >= (dimensions.left + dimensions.width)) {
-      mouseX = (mouse[0] - this.tooltipDimensions.width) + TOOLTIP_POINTER_MARGIN;
+    if (!this.bodyDimensions) {
+      this.bodyDimensions = this.selection.node().getBoundingClientRect();
     }
 
-    mouseY += (dimensions.margins.top - (this.tooltipDimensions.height / 2));
+    const { tooltipDimensions, bodyDimensions } = this;
 
-    // Don't let tooltip bleed above the top
-    if (mouseY < TOOLTIP_VERTICAL_PADDING) {
-      mouseY = TOOLTIP_VERTICAL_PADDING;
+    mouseY -= (tooltipDimensions.height / 2);
+
+    if (
+      (bodyDimensions.left + bodyDimensions.width) <
+      (mouseX + tooltipDimensions.width + TOOLTIP_POINTER_MARGIN)
+    ) {
+      mouseX -= (TOOLTIP_POINTER_MARGIN + this.tooltipDimensions.width);
+    } else {
+      mouseX += TOOLTIP_POINTER_MARGIN;
     }
 
-    // Don't let the tooltip bleed below the bottom either
-    if ((mouseY + this.tooltipDimensions.height) > dimensions.height) {
-      mouseY = dimensions.height - this.tooltipDimensions.height - TOOLTIP_VERTICAL_PADDING;
-    }
-
-    // Pin to top if tooltip is taller than chart
-    if (this.tooltipDimensions.height > dimensions.height) {
-      mouseY = 0;
-    }
-
-    this.selection.selectAll(CSS.getClassSelector('tooltip'))
+    this.selection.selectAll(CSS.getClassSelector(`tooltip-${this.id}`))
       .attr('style', () => (`display: block; top: ${mouseY}px; left: ${mouseX}px;`));
   }
 
-  update(seriesData, dimensions, options, dispatchers) {
+  update(seriesData, options, dispatchers, id) {
+    this.bodyDimensions = null;
     this.tooltipDimensions = null;
 
     this.seriesData = seriesData;
-    this.dimensions = dimensions;
     this.options = options;
     this.dispatchers = dispatchers;
+    this.id = id;
   }
 }
 

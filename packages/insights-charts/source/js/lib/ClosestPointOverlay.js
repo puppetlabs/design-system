@@ -1,5 +1,5 @@
 import { bisector } from 'd3-array';
-import { mouse } from 'd3-selection';
+import { select, mouse } from 'd3-selection';
 import CSS from '../helpers/css';
 
 class ClosestPointOverlay {
@@ -26,7 +26,7 @@ class ClosestPointOverlay {
         dispatchers.call('tooltipHide');
       })
       .on('mousemove', function () {
-        const m = mouse(this);
+        const m = mouse(select('body').node());
         const xPos = m[0];
         let mouseCategory;
         let index;

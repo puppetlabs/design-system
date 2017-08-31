@@ -89,7 +89,7 @@ class SeriesDataLabel extends Series {
 
     if (
       (d.y < 0 && !isColumn && !this.isHorizontal()) ||
-      (d.y > 0 && !isColumn && this.isHorizontal()) ||
+      (d.y >= 0 && !isColumn && this.isHorizontal()) ||
       (d.y > 0 && isColumn && !this.isHorizontal()) ||
       (d.y < 0 && isColumn && this.isHorizontal())
     ) {

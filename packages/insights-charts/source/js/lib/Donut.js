@@ -55,13 +55,6 @@ class Donut {
       innerRadius = 0;
     }
 
-    const getMouseDimensions = (dims) => {
-      const x = dims[0] + (width / 2);
-      const y = dims[1] + (height / 2);
-
-      return [x, y];
-    };
-
     const path = arc()
       .outerRadius(radius)
       .innerRadius(innerRadius);
@@ -89,9 +82,9 @@ class Donut {
           CSS.getColorClassName(i),
         ))
         .on('mousemove', function mousemove(d, i) {
-          const dims = mouse(this);
+          const dims = mouse(select('body').node());
 
-          dispatchers.call('tooltipMove', this, i, 0, d.data.x, getMouseDimensions(dims));
+          dispatchers.call('tooltipMove', this, i, 0, d.data.x, dims);
           dispatchers.call('activatePointOfInterest', this, d.data.x);
           dispatchers.call('highlightSeries', this, i);
         })

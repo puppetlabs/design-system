@@ -1,3 +1,10 @@
+# 0.1.21
+
+* Only activate hovered point in multi-series scatter plots
+* Bug fixes for data labels
+* Bug fixes for axis measurement
+* Bug fixes for tooltips
+
 # 0.1.20
 
 * Don't guess the number of tick labels when the x axis is in a vertical orientation

@@ -2,6 +2,8 @@ import { select } from 'd3-selection';
 import clone from 'clone';
 import deepmerge from 'deepmerge';
 import Dispatchers from '../lib/Dispatchers';
+import CSS from '../helpers/css';
+import IDGenerator from '../helpers/IDGenerator';
 
 import AreaChart from './AreaChart';
 import LineChart from './LineChart';
@@ -72,6 +74,10 @@ const defaultOptions = {
   },
 };
 
+// This ensures uniqueness for the entire instance, which is useful when rendering multiple charts
+// on the same page.
+const UniqueIDGenerator = new IDGenerator();
+
 class Chart {
   constructor(elem, { type, data = {}, options = {} }) {
     this.elem = elem;
@@ -79,6 +85,7 @@ class Chart {
     this.type = type;
     this.dimensions = {};
     this.dispatchers = new Dispatchers();
+    this.id = UniqueIDGenerator.getUniqueId();
 
     this.resize = this.resize.bind(this);
 
@@ -104,9 +111,10 @@ class Chart {
     this.beforeRender();
 
     this.chart = new ChartType({
-      data: this.data,
       type,
+      id: this.id,
       elem: this.elem,
+      data: this.data,
       options: this.options,
       dispatchers: this.dispatchers,
     });
@@ -152,7 +160,19 @@ class Chart {
     }
   }
 
+  destroyTooltips() {
+    select(CSS.getClassSelector(`tooltip-${this.id}`)).remove();
+  }
+
+  destroyContainer() {
+    // Remove all the children.
+    select(this.elem).selectAll('*').remove();
+  }
+
   destroy() {
+    this.destroyContainer();
+    this.destroyTooltips();
+
     window.removeEventListener('resize', this.resize);
   }
 

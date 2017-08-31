@@ -10,8 +10,8 @@ import SeriesColumn from '../lib/series/SeriesColumn';
 import CSS from '../helpers/css';
 
 class SparklineChart extends Chart {
-  constructor({ elem, type, data, options, dispatchers }) {
-    super({ elem, type, data, options, dispatchers });
+  constructor({ elem, type, data, options, dispatchers, id }) {
+    super({ elem, type, data, options, dispatchers, id });
 
     this.yScales = {};
   }
@@ -28,7 +28,8 @@ class SparklineChart extends Chart {
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    this.clipPath = new ClipPath({ width: 0, height: dimensions.height }, options.animations);
+    this.clipPath =
+      new ClipPath({ width: 0, height: dimensions.height }, options.animations, this.id);
     this.clipPath.render(svg);
 
     this.xScale = new XScale(categories, options, dimensions);
