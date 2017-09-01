@@ -109,7 +109,7 @@ class StencilGrid extends React.Component {
   }
 
   render() {
-    const components = this.props.view.configuration.components;
+    const components = this.props.view.configuration.components || [];
     const settings = this.props.settings;
     const gridBlocks = validateBlocks(components) ?
       this.getGridBlocks(components) : this.getGridBlocks(staticView);
