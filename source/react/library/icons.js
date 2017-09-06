@@ -485,11 +485,21 @@ const icons = {
     ),
   },
 
-  timeseries: {
+  area: {
     viewBox: '0 0 102 67',
     svg: (
       <g>
         <polyline points="8 35.1904762 37.3184378 13.7619048 63.9715631 30.4285714 93.2900009 9 93.2900009 59 8 59" />
+      </g>
+    ),
+  },
+
+  line: {
+    viewBox: '0 0 72 47',
+    svg: (
+      <g>
+        <rect id="Line" x="0" y="35" width="66" height="5" />
+        <polygon id="Path-1" fillRule="nonzero" points="23.6461538 9 42.3538462 21 65 4 62.0461538 0 42.3538462 15 23.6461538 3 1 20 3.95384615 24" />
       </g>
     ),
   },
