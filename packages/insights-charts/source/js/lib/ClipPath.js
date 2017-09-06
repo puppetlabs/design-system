@@ -2,89 +2,94 @@
 // method. So we have to import the whole thing.
 import 'd3-transition';
 
-import { CLIP_PATH_PADDING } from '../constants';
+import CSS from '../helpers/css';
 
 const HORIZONTAL = 'horizontal';
 const VERTICAL = 'vertical';
 
 class ClipPath {
-  constructor(dimensions, options, id) {
-    this.width = dimensions.width;
-    this.height = dimensions.height;
+  constructor(dimensions, options, id, direction = HORIZONTAL) {
+    this.dimensions = dimensions;
     this.options = options;
-    this.direction = this.options.direction || HORIZONTAL;
     this.id = id;
+    this.direction = direction;
 
-    this.getY = this.getY.bind(this);
-    this.getWidth = this.getWidth.bind(this);
-    this.getHeight = this.getHeight.bind(this);
+    this.getInitialWidth = this.getInitialWidth.bind(this);
+    this.getInitialHeight = this.getInitialHeight.bind(this);
+    this.getFinalWidth = this.getFinalWidth.bind(this);
+    this.getFinalHeight = this.getFinalHeight.bind(this);
   }
 
-  getWidth() {
-    let width = 0;
+  getInitialWidth() {
+    const dimensions = this.dimensions;
 
-    if (this.direction === VERTICAL) {
-      width = this.width + (CLIP_PATH_PADDING * 2);
-    }
-
-    return width;
+    return this.direction === VERTICAL ? dimensions.width : 0;
   }
 
-  getHeight() {
-    let height = 0;
+  getInitialHeight() {
+    const dimensions = this.dimensions;
 
-    if (this.direction === HORIZONTAL) {
-      height = this.height + (CLIP_PATH_PADDING * 2);
-    }
-
-    return height;
+    return this.direction === HORIZONTAL ? dimensions.height : 0;
   }
 
-  getY() {
-    let y = 0;
+  getFinalWidth() {
+    const dimensions = this.dimensions;
 
-    if (this.direction === VERTICAL) {
-      y = this.height;
-    }
+    return dimensions.width;
+  }
 
-    return y;
+  getFinalHeight() {
+    const dimensions = this.dimensions;
+
+    return dimensions.height;
   }
 
   render(elem) {
-    this.clipPath = elem
+    const height = this.dimensions.height;
+
+    const clipPath = elem
       .append('defs')
       .append('clipPath')
-        .attr('id', this.id)
-      .append('rect')
-        .attr('x', -CLIP_PATH_PADDING)
-        .attr('width', this.getWidth)
-        .attr('height', this.getHeight)
-        .attr('y', this.getY);
+        .attr('id', this.id);
+
+    this.clipPath = clipPath.append('rect')
+        .attr('class', CSS.getClassName('clip-path-rect'))
+        .attr('width', this.getInitialWidth)
+        .attr('height', this.getInitialHeight)
+        .attr('y', this.direction === VERTICAL ? height : 0);
 
     return this.clipPath;
   }
 
-  animate(dimensions) {
+  animate(onAnimationEnd = () => {}) {
     const options = this.options;
 
-    if (options.enabled) {
+    if (options.animations && options.animations.enabled) {
       this.clipPath.transition()
-        .duration(options.duration)
-        .attr('width', dimensions.width + (CLIP_PATH_PADDING * 2))
-        .attr('height', dimensions.height + (CLIP_PATH_PADDING * 2))
-        .attr('y', -CLIP_PATH_PADDING);
+        .duration(options.animations.duration)
+        .on('end', onAnimationEnd)
+        .attr('width', this.getFinalWidth)
+        .attr('height', this.getFinalHeight)
+        .attr('y', 0);
     } else {
       this.clipPath
-        .attr('width', dimensions.width + (CLIP_PATH_PADDING * 2))
-        .attr('height', dimensions.height + (CLIP_PATH_PADDING * 2))
-        .attr('y', -CLIP_PATH_PADDING);
+        .attr('width', this.getFinalWidth)
+        .attr('height', this.getFinalHeight)
+        .attr('y', 0);
+
+      onAnimationEnd();
     }
   }
 
-  update(dimensions) {
+  update(dimensions, options, id, direction = HORIZONTAL) {
+    this.dimensions = dimensions;
+    this.options = options;
+    this.id = id;
+    this.direction = direction;
+
     this.clipPath
-      .attr('width', dimensions.width + (CLIP_PATH_PADDING * 2))
-      .attr('height', dimensions.height + (CLIP_PATH_PADDING * 2));
+      .attr('width', this.getFinalWidth)
+      .attr('height', this.getFinalHeight);
   }
 }
 

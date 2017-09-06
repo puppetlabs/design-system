@@ -1,3 +1,8 @@
+# 0.1.22
+
+* Make sure setting min and/or max on an axis behaves as you'd expect.
+* Fix an issue causing inaccurate ClosestPointOverlays
+
 # 0.1.21
 
 * Only activate hovered point in multi-series scatter plots

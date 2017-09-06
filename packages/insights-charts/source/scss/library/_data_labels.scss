@@ -8,10 +8,15 @@
 .reflect-charts-data-label-shadow {
   alignment-baseline: middle;
   fill: $reflect-charts-data-label-shadow;
+  fill-opacity: 0.25;
   font-size: $reflect-charts-data-label-font-size;
-  opacity: 0.25;
   pointer-events: none;
   stroke: $reflect-charts-data-label-shadow;
   stroke-linejoin: round;
+  stroke-opacity: 0.25;
   stroke-width: 3px;
+}
+
+.reflect-charts-data-label-hidden {
+  display: none;
 }

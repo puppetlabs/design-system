@@ -31,15 +31,11 @@ class AreaCharts extends React.Component {
       axis: {
         y: [
           {
+            max: 110,
             ticks: 4,
             orientation: 'left',
             title: 'Left Axis',
             formatter: 'numeric_percentage',
-          },
-          {
-            ticks: 4,
-            orientation: 'right',
-            title: 'Right Axis',
           },
         ],
         x: {

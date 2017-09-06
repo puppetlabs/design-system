@@ -39,9 +39,8 @@ class ColumnChart extends Chart {
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    const clipPathOptions = options.animations;
-    clipPathOptions.direction = 'vertical';
-    this.clipPath = new ClipPath(dimensions, clipPathOptions, this.id);
+    const animationDirection = this.isBar() ? 'horizontal' : 'vertical';
+    this.clipPath = new ClipPath(dimensions, options, this.id, animationDirection);
     this.clipPath.render(svg);
 
     this.xScale = new XScale(categories, options, dimensions);
@@ -137,7 +136,7 @@ class ColumnChart extends Chart {
 
     svg.selectAll(CSS.getClassSelector('series')).raise();
 
-    this.clipPath.animate(dimensions);
+    this.clipPath.animate();
   }
 
   update() {
@@ -152,7 +151,8 @@ class ColumnChart extends Chart {
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    this.clipPath.update(dimensions);
+    const animationDirection = this.isBar() ? 'horizontal' : 'vertical';
+    this.clipPath.update(dimensions, options, this.id, animationDirection);
     this.tooltip.update(seriesData, options, dispatchers, this.id);
 
     const x = this.xScale.update(categories, options, dimensions, this.type);

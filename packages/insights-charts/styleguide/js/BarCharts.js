@@ -38,6 +38,8 @@ class BarCharts extends React.Component {
       },
       axis: {
         y: [{
+          min: -5000,
+          max: 5000,
           ticks: 4,
           title: 'Left axis',
           orientation: 'bottom',

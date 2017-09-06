@@ -36,8 +36,7 @@ class CombinationChart extends Chart {
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    this.clipPath =
-      new ClipPath({ width: 0, height: dimensions.height }, options.animations, this.id);
+    this.clipPath = new ClipPath(dimensions, options, this.id);
     this.clipPath.render(svg);
 
     this.tooltip = new Tooltip(seriesData, options.tooltips, dispatchers, this.id);
@@ -288,7 +287,7 @@ class CombinationChart extends Chart {
 
     svg.selectAll(CSS.getClassSelector('series')).raise();
 
-    this.clipPath.animate(dimensions);
+    this.clipPath.animate();
   }
 
   update() {
@@ -303,7 +302,7 @@ class CombinationChart extends Chart {
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    this.clipPath.update(dimensions);
+    this.clipPath.update(dimensions, options, this.id);
     this.tooltip.update(seriesData, options.tooltips, dispatchers, this.id);
 
     const x = this.xScale.update(categories, options, dimensions);

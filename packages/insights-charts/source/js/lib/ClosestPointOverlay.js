@@ -26,8 +26,12 @@ class ClosestPointOverlay {
         dispatchers.call('tooltipHide');
       })
       .on('mousemove', function () {
-        const m = mouse(select('body').node());
-        const xPos = m[0];
+        // We want to get the mouse position relative to the POIOverlay to determine the closest
+        // category, but we need the mouse position relative to body for the `tooltipMove` event.
+        const globalMouse = mouse(select('body').node());
+        const localMouse = mouse(this);
+
+        const xPos = localMouse[0];
         let mouseCategory;
         let index;
         let categoryIndex;
@@ -80,7 +84,7 @@ class ClosestPointOverlay {
         }
 
         dispatchers.call('activatePointOfInterest', this, category);
-        dispatchers.call('tooltipMove', this, categoryIndex, 0, category, m);
+        dispatchers.call('tooltipMove', this, categoryIndex, 0, category, globalMouse);
       });
   }
 

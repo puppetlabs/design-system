@@ -31,8 +31,7 @@ class ScatterChart extends Chart {
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    this.clipPath =
-      new ClipPath({ width: 0, height: dimensions.height }, { enabled: false }, this.id);
+    this.clipPath = new ClipPath(dimensions, options, this.id);
     this.clipPath.render(svg);
 
     this.tooltip = new Tooltip(seriesData, options, dispatchers, this.id);
@@ -117,7 +116,7 @@ class ScatterChart extends Chart {
 
     svg.selectAll(CSS.getClassSelector('series')).raise();
 
-    this.clipPath.animate(dimensions);
+    this.clipPath.animate();
   }
 
   update() {
@@ -131,7 +130,7 @@ class ScatterChart extends Chart {
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    this.clipPath.update(dimensions);
+    this.clipPath.update(dimensions, options, this.id);
     this.tooltip.update(seriesData, options, dispatchers, this.id);
 
     const x = this.xScale.update(categories, options, dimensions, this.type);

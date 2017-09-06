@@ -30,6 +30,23 @@ class Series {
       const sel = this.selection.selectAll(CSS.getClassSelector(this.selector));
       sel.attr('opacity', null);
     });
+
+    this.getHiddenClass = this.getHiddenClass.bind(this);
+  }
+
+  getHiddenClass(d) {
+    const yMin = this.y.domain()[0];
+    const yMax = this.y.domain()[1];
+    const layout = this.options.layout;
+    let hidden;
+
+    if (layout === 'stacked') {
+      hidden = (d.y + d.y0) < yMin || (d.y + d.y0) > yMax;
+    } else {
+      hidden = d.y < yMin || d.y > yMax;
+    }
+
+    return hidden;
   }
 
   update(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex, x1) {

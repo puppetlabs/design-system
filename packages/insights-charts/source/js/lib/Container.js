@@ -22,10 +22,12 @@ class Container {
   }
 
   getDimensions() {
-    const { top, left, width, height, margins, defaultMargins } = this.dimensions;
+    const { top, right, bottom, left, width, height, margins, defaultMargins } = this.dimensions;
 
     return {
       top,
+      right,
+      bottom,
       left,
       width,
       height,
@@ -43,10 +45,12 @@ class Container {
   }
 
   setWrapperDimensions() {
-    const { top, left, width, height } = this.elem.getBoundingClientRect();
+    const { top, left, right, bottom, width, height } = this.elem.getBoundingClientRect();
 
     this.dimensions.top = top;
+    this.dimensions.right = right;
     this.dimensions.left = left;
+    this.dimensions.bottom = bottom;
     this.dimensions.width = width;
     this.dimensions.height = height;
   }

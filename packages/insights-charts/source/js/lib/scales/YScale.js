@@ -118,7 +118,6 @@ class YScale {
     }
 
     if (minOption === undefined) {
-      // This gives some padding to the scale so that you can still see the minimum value
       minScale = (min > 0 ? 0.3 : 1);
 
       min *= minScale;

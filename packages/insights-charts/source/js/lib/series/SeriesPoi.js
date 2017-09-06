@@ -3,9 +3,7 @@ import { easeLinear } from 'd3-ease';
 import {
   POI_RADIUS,
   POI_RADIUS_ACTIVE,
-  POI_RADIUS_INITIAL,
   POI_ANIMATION_DURATION,
-  POI_ANIMATION_DURATION_INITIAL,
 } from '../../constants';
 import CSS from '../../helpers/css';
 import Series from './Series';
@@ -42,15 +40,16 @@ class SeriesPoi extends Series {
 
       this.selection.selectAll(CSS.getClassSelector('poi')).each(function (d) {
         const point = select(this);
+        const isHidden = point.classed(CSS.getClassName('poi-hidden'));
         const isActive = point.classed(CSS.getClassName('poi-active'));
 
-        if (shouldHighlight(d)) {
+        if (!isHidden && shouldHighlight(d)) {
           point.attr('class', CSS.getClassName('poi', 'poi-active'))
             .transition()
             .duration(POI_ANIMATION_DURATION)
             .ease(easeLinear)
             .attr('r', POI_RADIUS_ACTIVE);
-        } else if (isActive) {
+        } else if (!isHidden && isActive) {
           point.transition()
           .duration(POI_ANIMATION_DURATION)
           .ease(easeLinear)
@@ -111,7 +110,8 @@ class SeriesPoi extends Series {
         (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
       .selectAll(CSS.getClassSelector('poi'))
         .attr('cx', this.isHorizontal() ? this.getY : this.getX)
-        .attr('cy', this.isHorizontal() ? this.getX : this.getY);
+        .attr('cy', this.isHorizontal() ? this.getX : this.getY)
+        .classed(CSS.getClassName('poi-hidden'), this.getHiddenClass);
 
     this.series.exit().remove();
 
@@ -119,17 +119,18 @@ class SeriesPoi extends Series {
       .append('g')
         .attr('class', d =>
           (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
-        .attr('clip-path', `url(#${this.clipPathId})`)
       .selectAll(CSS.getClassSelector('poi'))
         .data(d => (!d.disabled ? d.data : []));
 
     const circle = this.series.enter()
       .append('circle')
         .attr('class', CSS.getClassName('poi'))
-        .attr('r', animationEnabled ? POI_RADIUS_INITIAL : POI_RADIUS)
+        .attr('r', POI_RADIUS)
         .attr('cx', this.isHorizontal() ? this.getY : this.getX)
         .attr('cy', this.isHorizontal() ? this.getX : this.getY)
-        .attr('style', d => (d.color ? `stroke: ${d.color}` : null))
+        .attr('style', d => (d.color ? `stroke: ${d.color};` : null))
+        .classed(CSS.getClassName('poi-hidden'), this.getHiddenClass)
+        .attr('opacity', 0)
         .on('mousemove', function (d) {
           dispatchers.call('activatePointOfInterest', this, d.x, d.y);
         })
@@ -145,18 +146,23 @@ class SeriesPoi extends Series {
           dispatchers.call('unHighlightSeries');
         });
 
+    if (animationEnabled) {
+      const isScatter = this.options.type === 'scatter';
+
+      circle.transition()
+        .delay(isScatter ? 0 : options.animations.duration)
+        .duration(isScatter ? options.animations.duration : options.animations.duration / 4)
+        .attr('opacity', 1);
+    } else {
+      circle.attr('opacity', 1);
+    }
+
     if (dispatchers.enabled('dataPointClick.external')) {
       circle
         .style('cursor', 'pointer')
         .on('click', function (point) {
           dispatchers.call('dataPointClick', this, { event, data: { point } });
         });
-    }
-
-    if (animationEnabled) {
-      circle.transition()
-        .duration(POI_ANIMATION_DURATION_INITIAL)
-        .attr('r', POI_RADIUS);
     }
 
     circle.merge(this.series);

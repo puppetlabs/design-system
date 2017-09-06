@@ -122,17 +122,12 @@ class LineCharts extends React.Component {
         },
       },
       axis: {
-        y: [
-          {
-            ticks: 4,
-            title: 'Profit',
-          },
-          {
-            ticks: 4,
-            orientation: 'right',
-            title: 'Loss',
-          },
-        ],
+        y: {
+          min: -8000,
+          max: 8000,
+          ticks: 4,
+          title: 'Profit',
+        },
       },
       tooltips: { type: 'simple' },
       grid: {

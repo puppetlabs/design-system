@@ -118,14 +118,23 @@ class SeriesDataLabel extends Series {
     return translate;
   }
 
-  getTextAnchor(d) {
-    let anchor = 'middle';
+  getTextAnchor(node, d) {
+    const textRect = node.getBoundingClientRect();
     const isColumn = this.options.type === 'column';
+    let anchor = 'middle';
+    const leftEdge = this.dimensions.left + this.dimensions.margins.left;
+    const rightEdge = this.dimensions.right - this.dimensions.margins.right;
 
-    if (this.isHorizontal()) {
-      if (isColumn && d.y < 0) {
+    if (isColumn && this.isHorizontal()) {
+      if (d.y < 0) {
         anchor = 'start';
-      } else if (isColumn) {
+      } else {
+        anchor = 'end';
+      }
+    } else if (!isColumn) {
+      if (textRect.left <= leftEdge && (textRect.left + textRect.width) >= leftEdge) {
+        anchor = 'start';
+      } else if (textRect.right >= rightEdge && (textRect.right - textRect.width) <= rightEdge) {
         anchor = 'end';
       }
     }
@@ -162,21 +171,25 @@ class SeriesDataLabel extends Series {
         .data(this.data, d => (d.seriesIndex));
 
       this.series.selectAll(CSS.getClassSelector('data-label-shadow'))
-        .attr('text-anchor', this.getTextAnchor)
+        .text(this.getFormattedValue)
         .attr('x', this.isHorizontal() ? this.getY : this.getX)
         .attr('y', this.isHorizontal() ? this.getX : this.getY)
         .attr('transform', this.getTransform)
-        .text(this.getFormattedValue)
+        .attr('text-anchor', function (d) {
+          return self.getTextAnchor(this, d);
+        })
         .attr('style', function (d) {
           return `visibility: ${self.getVisibility(d, this)};`;
         });
 
       this.series.selectAll(CSS.getClassSelector('data-label'))
-        .attr('text-anchor', this.getTextAnchor)
+        .text(this.getFormattedValue)
         .attr('x', this.isHorizontal() ? this.getY : this.getX)
         .attr('y', this.isHorizontal() ? this.getX : this.getY)
         .attr('transform', this.getTransform)
-        .text(this.getFormattedValue)
+        .attr('text-anchor', function (d) {
+          return self.getTextAnchor(this, d);
+        })
         .attr('style', function (d) {
           return `visibility: ${self.getVisibility(d, this)};`;
         });
@@ -186,33 +199,55 @@ class SeriesDataLabel extends Series {
       const container = this.series.enter()
         .append('g')
           .attr('class', d => (CSS.getClassName('series', this.selector, `color-${d.seriesIndex}`)))
-          .attr('clip-path', `url(#${this.clipPathId})`)
         .selectAll(CSS.getClassSelector('data-label'))
           .data(d => (!d.disabled ? d.data : []))
           .enter()
         .append('g');
 
-      container.append('text')
+      const shadows = container.append('text')
+        .text(this.getFormattedValue)
         .attr('class', CSS.getClassName('data-label-shadow'))
-        .attr('text-anchor', this.getTextAnchor)
         .attr('x', this.isHorizontal() ? this.getY : this.getX)
         .attr('y', this.isHorizontal() ? this.getX : this.getY)
         .attr('transform', this.getTransform)
-        .text(this.getFormattedValue)
+        .attr('text-anchor', function (d) {
+          return self.getTextAnchor(this, d);
+        })
         .attr('style', function (d) {
           return `visibility: ${self.getVisibility(d, this)};`;
-        });
+        })
+        .attr('opacity', 0)
+        .classed(CSS.getClassName('data-label-hidden'), this.getHiddenClass);
 
-      container.append('text')
+      const labels = container.append('text')
         .attr('class', CSS.getClassName('data-label'))
-        .attr('text-anchor', this.getTextAnchor)
+        .text(this.getFormattedValue)
         .attr('x', this.isHorizontal() ? this.getY : this.getX)
         .attr('y', this.isHorizontal() ? this.getX : this.getY)
         .attr('transform', this.getTransform)
-        .text(this.getFormattedValue)
+        .attr('text-anchor', function (d) {
+          return self.getTextAnchor(this, d);
+        })
         .attr('style', function (d) {
           return `visibility: ${self.getVisibility(d, this)};`;
-        });
+        })
+        .attr('opacity', 0)
+        .classed(CSS.getClassName('data-label-hidden'), this.getHiddenClass);
+
+      if (options.animations && options.animations.enabled) {
+        shadows.transition()
+          .delay(options.animations.duration)
+          .duration(options.animations.duration / 4)
+          .attr('opacity', 1);
+
+        labels.transition()
+          .delay(options.animations.duration)
+          .duration(options.animations.duration / 4)
+          .attr('opacity', 1);
+      } else {
+        shadows.attr('opacity', 1);
+        labels.attr('opacity', 1);
+      }
     }
 
     return this.series;

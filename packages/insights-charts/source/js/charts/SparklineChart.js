@@ -28,8 +28,7 @@ class SparklineChart extends Chart {
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
 
-    this.clipPath =
-      new ClipPath({ width: 0, height: dimensions.height }, options.animations, this.id);
+    this.clipPath = new ClipPath(dimensions, options, this.id);
     this.clipPath.render(svg);
 
     this.xScale = new XScale(categories, options, dimensions);
@@ -136,7 +135,7 @@ class SparklineChart extends Chart {
 
     selectAll(CSS.getClassSelector('series')).raise();
 
-    this.clipPath.animate(dimensions);
+    this.clipPath.animate();
   }
 
   update() {
@@ -150,7 +149,7 @@ class SparklineChart extends Chart {
 
     const x = this.xScale.update(categories, options, dimensions, this.type);
 
-    this.clipPath.update(dimensions);
+    this.clipPath.update(dimensions, options, this.id);
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       const data = this.data.getDataByYAxis(yAxisIndex);

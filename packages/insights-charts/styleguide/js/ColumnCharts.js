@@ -42,6 +42,7 @@ class ColumnCharts extends React.Component {
       },
       axis: {
         y: {
+          min: -500,
           ticks: 4,
           title: 'Left axis',
         },
