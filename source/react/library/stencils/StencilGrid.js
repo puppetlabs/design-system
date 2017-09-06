@@ -66,12 +66,14 @@ class StencilGrid extends React.Component {
       kpi: 'kpi',
       bar: 'bars',
       bars: 'bars',
+      area: 'area',
+      line: 'line',
       text: 'text',
       donut: 'donut',
+      timeseries: 'area',
       summary: 'summary',
       scatter: 'scatter',
       datagrid: 'datagrid',
-      timeseries: 'timeseries',
       combination: 'combination',
     };
 

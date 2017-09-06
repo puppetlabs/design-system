@@ -4,11 +4,11 @@ const testView = {
   configuration: {
     components: [
       {
-        type: 'summary',
+        type: 'line',
         layout: { w: 12, h: 2, x: 0, y: 0 },
       },
       {
-        type: 'timeseries',
+        type: 'area',
         layout: { w: 6, h: 2, x: 0, y: 2 },
       },
       {
