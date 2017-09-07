@@ -1,8 +1,6 @@
 ```
 <Card>
-  <CardSection position="bottom">
-    <CardTitle title="I'm a happy card!" subtitle="I'm a happy subtitle" />
-  </CardSection>
+  <CardTitle title="I'm a happy card!" subtitle="I'm a happy subtitle" />
 </Card>
 ```
 
@@ -16,10 +14,10 @@ Selectable `Card`:
 Removable `Card`:
 ```
 <Card>
+  <CardTitle title="I'm an h1 inside the card" />
   <CardActions
     onRemove={ () => alert('Card removed!') }
   />
-  <h1>I'm an h1 inside the card</h1>
 </Card>
 ```
 
@@ -38,6 +36,7 @@ Card with two sections inside:
 Card with an action:
 ```
 <Card>
+  <CardTitle title="Card Title" />
   <CardActions>
     <ButtonGroup collapsed>
       <Button size="tiny" secondary>Line</Button>
@@ -45,7 +44,6 @@ Card with an action:
       <Button size="tiny">Area</Button>
     </ButtonGroup>
   </CardActions>
-  Hello world!
 </Card>
 ```
 Card with search

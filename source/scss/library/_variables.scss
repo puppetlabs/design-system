@@ -260,30 +260,22 @@ $reflect-button-error-border-color-hover:      $reflect-danger-color !default;
 
 // Cards
 // ----------------------------------------------------------------------------
-$reflect-card-padding:                   18px 24px !default;
+$reflect-card-padding:                   16px 24px !default;
 $reflect-card-action-padding:            15px !default;
-
-
-$reflect-card-title-padding:             0 !default;
-
-$reflect-card-controls-padding:          0 24px !default;
-$reflect-card-controls-font-size:        $reflect-font-size-small !default;
-$reflect-card-controls-bg:               $reflect-bg-primary !default;
-
-
+$reflect-card-header-padding:            16px 24px 0 !default;
 $reflect-card-color:                     $reflect-font-color-subtle !default;
 $reflect-card-title-size:                $reflect-font-size-large !default;
 $reflect-card-title-color:               $reflect-font-color-base !default;
+$reflect-card-title-margin:              8px !default; 
 $reflect-card-subtitle-size:             $reflect-font-size-small !default;
 $reflect-card-subtitle-color:            $reflect-font-color-subtle !default;
-
+$reflect-card-controls-size:             $reflect-font-size-small !default;
+$reflect-card-controls-color:            $reflect-font-color-subtle !default;
 $reflect-card-bg:                        $reflect-bg-primary !default;
-
 $reflect-card-border:                    $reflect-border !default;
 $reflect-card-border-hover:              $reflect-border-hover !default;
 $reflect-card-border-radius:             $reflect-border-radius !default;
 $reflect-card-shadow-hover:              $reflect-selectable-shadow-hover !default;
-
 $reflect-card-border-selected:           $reflect-border-active !default;
 $reflect-card-border-selected-hover:     $reflect-border-active-hover !default;
 $reflect-card-shadow-selected:           $reflect-selected-shadow !default;

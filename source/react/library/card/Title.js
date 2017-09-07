@@ -8,11 +8,17 @@ const propTypes = {
   titleClassName: React.PropTypes.string,
   /** Secondary title */
   subtitle: React.PropTypes.string,
+  /** Controls to update the contents of the card */
+  controls: React.PropTypes.any,
+  /** Description of the cards contents */
+  description: React.PropTypes.string,
 };
 
 const defaultProps = {
   titleClassName: '',
   subtitle: '',
+  controls: '',
+  description: '',
 };
 
 class CardTitle extends React.Component {
@@ -33,7 +39,29 @@ class CardTitle extends React.Component {
     let jsx = null;
 
     if (subtitle) {
-      jsx = <span key="subtitle" className="rc-card-subtitle">{ subtitle }</span>;
+      jsx = <div className="rc-card-subtitle">{ subtitle }</div>;
+    }
+
+    return jsx;
+  }
+
+  renderControls() {
+    const controls = this.props.controls;
+    let jsx = null;
+
+    if (controls) {
+      jsx = <div className="rc-card-controls">{ controls }</div>;
+    }
+
+    return jsx;
+  }
+
+  renderDescription() {
+    const description = this.props.description;
+    let jsx = null;
+
+    if (description) {
+      jsx = <div className="rc-card-description">{ description }</div>;
     }
 
     return jsx;
@@ -42,10 +70,12 @@ class CardTitle extends React.Component {
   render() {
     const title = this.renderTitle();
     const subtitle = this.renderSubtitle();
+    const controls = this.renderControls();
+    const description = this.renderDescription();
 
     return (
-      <div>
-        { [title, subtitle] }
+      <div className="rc-card-header">
+        { [title, subtitle, controls, description] }
       </div>
     );
   }
