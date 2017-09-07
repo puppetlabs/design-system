@@ -3,11 +3,16 @@ import classnames from 'classnames';
 
 const propTypes = {
   /** Primary title */
-  title: React.PropTypes.string,
+  title: React.PropTypes.string.isRequired,
   /** Class to the title eelement */
   titleClassName: React.PropTypes.string,
   /** Secondary title */
   subtitle: React.PropTypes.string,
+};
+
+const defaultProps = {
+  titleClassName: '',
+  subtitle: '',
 };
 
 class CardTitle extends React.Component {
@@ -47,5 +52,6 @@ class CardTitle extends React.Component {
 }
 
 CardTitle.propTypes = propTypes;
+CardTitle.defaultProps = defaultProps;
 
 export default CardTitle;

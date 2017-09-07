@@ -4,8 +4,6 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 const propTypes = {
-  /** A unique key to identify the item */
-  key: React.PropTypes.string.isRequired,
   children: React.PropTypes.any,
   /** A string to identify the item visually for the user */
   title: React.PropTypes.string,
