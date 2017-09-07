@@ -13,7 +13,6 @@ const propTypes = {
   className: React.PropTypes.string,
   onChange: React.PropTypes.func,
   onSelectChange: React.PropTypes.func,
-  stickyHeaders: React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -230,22 +229,16 @@ class Table extends React.Component {
     const data = this.reOrderColumns(this.props.data);
     const headers = this.getHeaders(data);
     const body = this.getBody(data);
-    const wrapperClass = classnames({ 'rc-table-sticky-wrapper': this.props.stickyHeaders });
-    const containerClass = classnames({ 'rc-table-sticky-container': this.props.stickyHeaders });
     const tableClass = classnames('rc-table', {
       'rc-table-fixed': this.props.fixed,
       'rc-table-striped': this.props.striped,
     }, this.props.className);
 
     return (
-      <div className={ wrapperClass }>
-        <div className={ containerClass }>
-          <table className={ tableClass }>
-            {headers}
-            {body}
-          </table>
-        </div>
-      </div>
+      <table className={ tableClass }>
+        {headers}
+        {body}
+      </table>
     );
   }
 }

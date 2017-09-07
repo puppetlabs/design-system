@@ -1,15 +1,18 @@
 @import './library/variables';
 
 body {
-  padding: 0;
   margin: 0;
-
-  #app {
-    position: relative;
-  }
+  padding: 0;
+  position: relative;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   font-family: $reflect-font-family;
   font-weight: normal;
   margin-top: 0;
@@ -20,29 +23,27 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .sg-sidebar {
+  background: $reflect-brand-primary;
+  bottom: 0;
+  height: 100%;
+  left: 0;
+  padding: 20px;
   position: fixed;
   top: 0;
-  left: 0;
-  bottom: 0;
   width: 200px;
-  padding: 20px;
-  background: $reflect-brand-primary;
-  height: 100%;
 
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
+  }
 
-    li {
-      a {
-        font-family: $reflect-font-family;
-        text-decoration: none;
-        padding: 5px;
-        color: $reflect-bg-primary;
-        display: block;
-      }
-    }
+  li a {
+    color: $reflect-bg-primary;
+    display: block;
+    font-family: $reflect-font-family;
+    padding: 5px;
+    text-decoration: none;
   }
 }
 
@@ -52,14 +53,14 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .sg-section {
-  margin-bottom: 40px;
   border: $reflect-border;
+  margin-bottom: 40px;
 
   .sg-section-title {
-    font-family: $reflect-font-family;
-    font-weight: normal;
     background: $reflect-gray-lighter;
     border-bottom: $reflect-border;
+    font-family: $reflect-font-family;
+    font-weight: normal;
     padding: 10px 20px;
   }
 
@@ -77,44 +78,44 @@ h1, h2, h3, h4, h5, h6, p {
 }
 
 .sg-icon {
-  display: inline-block;
   border: 1px solid $reflect-gray-light;
-  width: 100px;
+  display: inline-block;
   margin-right: 10px;
   text-align: center;
+  width: 100px;
 
   .sg-icon-wrapper {
     padding: 10px 5px;
   }
 
   .sg-icon-title {
+    border-top: 1px solid $reflect-gray-light;
     font-family: $reflect-font-family;
     font-size: $reflect-font-size-small;
-    border-top: 1px solid $reflect-gray-light;
-    padding: 4px;
-    white-space: nowrap;
     overflow: hidden;
+    padding: 4px;
     text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
 .input {
-  width: 40%;
   padding-bottom: 20px;
+  width: 40%;
 }
 
 .sg-progress-bars {
   .rc-button {
+    display: block;
     margin-top: 20px;
     width: 200px;
-    display: block;
   }
 }
 
-.sg-clearfix:after {
-  content: "";
-  display: table;
+.sg-clearfix::after {
   clear: both;
+  content: '';
+  display: table;
 }
 
 .blank-slates-styleguide {

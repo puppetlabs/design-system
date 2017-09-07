@@ -1,3 +1,4 @@
+/* stylelint-disable scss/dollar-variable-colon-space-after, indentation  */
 // ============================================================================
 // BASELINE VARIABLES
 // ============================================================================
@@ -6,10 +7,10 @@
 // ----------------------------------------------------------------------------
 
 // Primary Color
-$reflect-brand-primary:                  #269CFF !default;
+$reflect-brand-primary:                  #269cff !default;
 
 // Grays
-$reflect-gray-base:                      #201F1E !default;
+$reflect-gray-base:                      #201f1e !default;
 $reflect-gray-darker:                    lighten($reflect-gray-base, 19%) !default;
 $reflect-gray-dark:                      lighten($reflect-gray-base, 38%) !default;
 $reflect-gray:                           lighten($reflect-gray-base, 56%) !default;
@@ -137,10 +138,11 @@ $reflect-border-heavy:                   $reflect-border-size*2 $reflect-border-
 
 // Shadows
 // ----------------------------------------------------------------------------
-$reflect-outer-shadow:                   0 1px 2px rgba(0, 0, 0, .02) !default;
-$reflect-outer-shadow-large:             0 0 6px rgba(0, 0, 0, .2) !default;
-$reflect-outer-shadow-huge:              0 0 10px rgba(0, 0, 0, .08) !default;
-$reflect-outer-shadow-giant:             0 0 60px rgba(0, 0, 0, .3) !default;
+
+$reflect-outer-shadow:                   0 1px 2px rgba(0, 0, 0, 0.02) !default;
+$reflect-outer-shadow-large:             0 0 6px rgba(0, 0, 0, 0.2) !default;
+$reflect-outer-shadow-huge:              0 0 10px rgba(0, 0, 0, 0.08) !default;
+$reflect-outer-shadow-giant:             0 0 60px rgba(0, 0, 0, 0.3) !default;
 
 $reflect-selectable-shadow:              0 0 0 1px $reflect-border-color !default;
 $reflect-selectable-shadow-hover:        0 0 0 1px $reflect-border-hover-color !default;
@@ -246,6 +248,16 @@ $reflect-button-disabled-icon-color-hover: $reflect-disabled-icon-hover !default
 $reflect-button-disabled-border-color:   $reflect-disabled-border !default;
 $reflect-button-disabled-border-color-hover: $reflect-disabled-border-hover !default;
 
+// Errored Buttons
+$reflect-button-error-bg:                      $reflect-danger-color !default;
+$reflect-button-error-bg-hover:                $reflect-danger-color !default;
+$reflect-button-error-color:                   $reflect-action-text !default;
+$reflect-button-error-color-hover:             $reflect-action-text !default;
+$reflect-button-error-icon-color:              $reflect-action-icon !default;
+$reflect-button-error-icon-color-hover:        $reflect-action-icon-hover !default;
+$reflect-button-error-border-color:            $reflect-danger-color !default;
+$reflect-button-error-border-color-hover:      $reflect-danger-color !default;
+
 // Cards
 // ----------------------------------------------------------------------------
 $reflect-card-padding:                   18px 24px !default;
@@ -289,14 +301,14 @@ $reflect-datepicker-padding:             $reflect-large !default;
 $reflect-datepicker-radius:              $reflect-border-radius !default;
 
 $reflect-datepicker-border-color:        transparent !default;
-$reflect-datepicker-border-width:        0px !default;
+$reflect-datepicker-border-width:        0 !default;
 
 $reflect-datepicker-font-color:          $reflect-font-color-base !default;
 $reflect-datepicker-disabled-color:      $reflect-disabled-color !default;
 
 $reflect-datepicker-month-bg:            $reflect-bg-subtle !default;
 $reflect-datepicker-month-color:         $reflect-font-color-medium !default;
-$reflect-datepicker-month-font-size:     $reflect-font-size-medium !default
+$reflect-datepicker-month-font-size:     $reflect-font-size-medium !default;
 $reflect-datepicker-month-font-weight:   $reflect-font-weight-heavy !default;
 $reflect-datepicker-month-border:        $reflect-datepicker-border-width solid $reflect-datepicker-border-color !default;
 
@@ -318,7 +330,7 @@ $reflect-datepicker-newrange-bg:         $reflect-datepicker-selected-bg !defaul
 
 $reflect-datepicker-hover-bg:            $reflect-action-hover !default;
 $reflect-datepicker-hover-color:         $reflect-font-color-light !default;
-$reflect-datepicker-hover-border:        0px solid transparent !default;
+$reflect-datepicker-hover-border:        0 solid transparent !default;
 
 // Dropdown
 // ----------------------------------------------------------------------------
@@ -605,9 +617,10 @@ $reflect-toggle-off-color:               $reflect-font-color-base;
 
 // Tooltip
 // ----------------------------------------------------------------------------
-$reflect-tooltip-hint-bg:                rgba($reflect-bg-dark, .75) !default;
+$reflect-tooltip-hint-bg:                rgba($reflect-bg-dark, 0.75) !default;
 $reflect-tooltip-hint-color:             $reflect-gray-light !default;
 $reflect-tooltip-hint-padding:           $reflect-tiny $reflect-small !default;
 $reflect-tooltip-hint-radius:            $reflect-border-radius !default;
 $reflect-tooltip-hint-font-size:         $reflect-font-size-medium !default;
 $reflect-tooltip-hint-elevation:         24 !default;
+/* stylelint-enable */

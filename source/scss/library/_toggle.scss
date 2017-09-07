@@ -1,31 +1,32 @@
 .rc-toggle {
   .rc-toggle-label {
     color: $reflect-toggle-off-color;
-    transition: color 0.3s;
     cursor: pointer;
+  }
 
-    &.rc-toggle-active {
-      color: $reflect-toggle-on-color;
-    }
+  .rc-toggle-label.rc-toggle-active {
+    color: $reflect-toggle-on-color;
   }
 
   .rc-switch {
     margin-left: 10px;
     margin-right: 10px;
+  }
 
-    .rc-switch-label {
-      border: none;
-      background: $reflect-toggle-bg;
+  .rc-switch-label {
+    background: $reflect-toggle-bg;
+  }
 
-      &:after {
-        background: $reflect-toggle-on-color;
-      }
-    }
+  .rc-switch-label::after {
+    background: $reflect-toggle-on-color;
+  }
 
-    .rc-switch-checkbox {
-      &:checked + .rc-switch-label {
-        color: $reflect-toggle-on-color;
-      }
-    }
+  .rc-switch-checkbox:checked + .rc-switch-label {
+    background: $reflect-toggle-bg;
+    color: $reflect-toggle-on-color;
+  }
+
+  .rc-switch-checkbox:checked + .rc-switch-label::after {
+    background: $reflect-toggle-on-color;
   }
 }

@@ -1,84 +1,19 @@
 .rc-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
   background: $reflect-card-bg;
   border: $reflect-card-border;
   border-radius: $reflect-card-border-radius;
   box-shadow: $reflect-outer-shadow;
   color: $reflect-card-color;
-
-  &:hover {
-    .rc-card-actions-hidden {
-      display: block;
-    }
-  }
-
-  &.rc-card-xs {
-    padding: 13px 2px;
-    background-position: center center;
-    background-size: cover;
-    border: 2px solid white;
-
-    .rc-card-title {
-      margin: 0px;
-      text-align: center;
-      visibility: hidden;
-      font-size: 1em;
-    }
-
-    &:hover {
-      background: $reflect-card-bg;
-      .rc-card-title {
-        visibility: visible;
-      }
-    }
-  }
-
-  &.rc-card-large {
-    padding-top: 100px;;
-
-    .rc-card-title {
-      margin-top: 80px;
-      font-size: 1.3em;
-      border-radius: $reflect-card-border-radius $reflect-card-border-radius 0 0;
-    }
-  }
-
-  &.rc-card-small {
-    padding-top: 0;
-
-    .rc-card-title {
-      margin-top: 0px;
-      font-size: 1.1em;
-    }
-  }
-
-  &.rc-card-selectable {
-    cursor: pointer;
-
-    &:hover {
-      border: $reflect-card-border-hover;
-      box-shadow: $reflect-card-shadow-hover;
-    }
-  }
-
-  &.rc-card-selected {
-    border: $reflect-card-border-selected;
-    box-shadow: $reflect-card-shadow-selected;
-
-    &:hover {
-      border: $reflect-card-border-selected-hover;
-      box-shadow: $reflect-card-shadow-selected-hover;
-    }
-  }
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 .rc-card-title {
   color: $reflect-card-title-color;
   font-size: $reflect-card-title-size;
-  padding: $reflect-card-title-padding;
   margin: -5px 0;
+  padding: $reflect-card-title-padding;
   width: calc(100% - 22px);
 }
 
@@ -91,26 +26,24 @@
   padding: $reflect-card-padding;
 
   &:last-of-type {
-    border-bottom: none;
+    border-bottom: 0;
   }
 }
 
 .rc-card-actions {
   position: absolute;
-  top: $reflect-card-action-padding;
   right: $reflect-card-action-padding;
+  top: $reflect-card-action-padding;
   z-index: 24;
 
   .rc-card-remove {
-    width: 21px;
-    height: 21px;
-
     background: $reflect-remove-background;
     border-radius: 50%;
-
     cursor: pointer;
-    text-align: center;
+    height: 21px;
     line-height: 20px;
+    text-align: center;
+    width: 21px;
   }
 }
 
@@ -120,8 +53,8 @@
 
 .rc-card-controls {
   background: $reflect-card-controls-bg;
-  padding: $reflect-card-controls-padding;
   font-size: $reflect-card-controls-font-size;
+  padding: $reflect-card-controls-padding;
 
   .rc-dropdown-label-text {
     font-size: $reflect-card-controls-font-size;
@@ -129,15 +62,80 @@
 }
 
 .rc-card-search {
-  position: absolute;
   display: flex;
-  top: $reflect-card-action-padding - ($reflect-input-small-padding/2);
+  position: absolute;
   right: 50px;
+  top: $reflect-card-action-padding - ($reflect-input-small-padding/2);
   width: 160px;
 
   .rc-icon {
+    margin-right: 5px;
     position: relative;
     top: 5px;
-    margin-right: 5px;
+  }
+}
+
+.rc-card:hover {
+  .rc-card-actions-hidden {
+    display: block;
+  }
+}
+
+.rc-card-xs {
+  background-position: center center;
+  background-size: cover;
+  border: 2px solid #fff;
+  padding: 13px 2px;
+
+  .rc-card-title {
+    font-size: 1em;
+    margin: 0;
+    text-align: center;
+    visibility: hidden;
+  }
+}
+
+.rc-card-xs:hover {
+  background: $reflect-card-bg;
+
+  .rc-card-title {
+    visibility: visible;
+  }
+}
+
+.rc-card-large {
+  padding-top: 100px;
+
+  .rc-card-title {
+    font-size: 1.3em;
+    margin-top: 80px;
+  }
+}
+
+.rc-card-small {
+  padding-top: 0;
+
+  .rc-card-title {
+    font-size: 1.1em;
+    margin-top: 0;
+  }
+}
+
+.rc-card-selectable {
+  cursor: pointer;
+
+  &:hover {
+    border: $reflect-card-border-hover;
+    box-shadow: $reflect-card-shadow-hover;
+  }
+}
+
+.rc-card-selected {
+  border: $reflect-card-border-selected;
+  box-shadow: $reflect-card-shadow-selected;
+
+  &:hover {
+    border: $reflect-card-border-selected-hover;
+    box-shadow: $reflect-card-shadow-selected-hover;
   }
 }

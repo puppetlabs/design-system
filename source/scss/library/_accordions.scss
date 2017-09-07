@@ -1,67 +1,59 @@
-.rc-accordion {
-  .rc-accordion-item-title {
-    .rc-accordion-item-header {
-      display: block;
-      background-color: $reflect-accordion-item-title-bg-color;
-      color: $reflect-accordion-item-title-color;
+.rc-accordion-item-header {
+  background-color: $reflect-accordion-item-title-bg-color;
+  color: $reflect-accordion-item-title-color;
+  display: flex;
+  font-family: $reflect-accordion-item-title-font-family;
+  font-size: $reflect-accordion-item-title-font-size;
+  padding: $reflect-accordion-item-title-padding;
+  text-transform: $reflect-accordion-item-title-case;
 
-      font-size: $reflect-accordion-item-title-font-size;
-      font-family: $reflect-accordion-item-title-font-family;
-
-      padding: $reflect-accordion-item-title-padding;
-      text-transform: $reflect-accordion-item-title-case;
-
-      display: flex;
-
-      .rc-accordion-item-title-text {
-        align-items: center;
-        display: flex;
-        flex-grow: 2;
-        font-size: $reflect-accordion-item-title-font-size;
-      }
-
-      .rc-accordion-item-title-icon {
-        display: flex;
-        align-items: center;
-        height: 10px;
-        width: 10px;
-        margin-top: 5px;
-
-        // NOTE: No flex-grow here because it'll push the icon to the right.
-      }
-    }
-
-    a.rc-accordion-item-header:hover {
-      // Open accordion items are a div intead of an anchor
-      // This allows us to only change the color for accordion items you can click
-      // which would be the anchors
-      color: $reflect-accordion-item-title-hover;
-
-      .rc-icon {
-          fill: $reflect-icon-fill-hover;
-        }
-      }
+  .rc-accordion-item-title-text {
+    align-items: center;
+    color: $reflect-accordion-item-title-color;
+    display: flex;
+    flex-grow: 2;
+    font-size: $reflect-accordion-item-title-font-size;
   }
 
-  .rc-accordion-item {
-    border-bottom: $reflect-accordion-item-title-border;
+  .rc-accordion-item-title-icon {
+    align-items: center;
+    display: flex;
+    height: 10px;
+    margin-top: 5px;
+    width: 10px;
+    // NOTE: No flex-grow here because it'll push the icon to the right.
+  }
+}
 
-    &:last-of-type {
-      border-bottom: none;
-    }
+.rc-accordion-item-header:hover {
+  .rc-accordion-item-title-text {
+    color: $reflect-accordion-item-title-hover;
+  }
 
-    .rc-accordion-item-content {
-      display: none;
-      padding: $reflect-accordion-item-content-padding;
-      .form-field {
-        margin-bottom: 8px;
-      }
-    }
+  .rc-icon {
+    fill: $reflect-icon-fill-hover;
+  }
+}
 
-    &.rc-accordion-item-active {
-      .rc-accordion-item-content {
-        display: block;
-      }
-    }
+.rc-accordion-item {
+  border-bottom: $reflect-accordion-item-title-border;
+
+  &:last-of-type {
+    border-bottom: 0;
+  }
+}
+
+.rc-accordion-item-content {
+  display: none;
+  padding: $reflect-accordion-item-content-padding;
+
+  .form-field {
+    margin-bottom: 8px;
+  }
+}
+
+.rc-accordion-item-active {
+  .rc-accordion-item-content {
+    display: block;
   }
 }

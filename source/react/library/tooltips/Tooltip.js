@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import portal from '../portal';
 
 import TooltipHoverArea from './TooltipHoverArea';
+import TooltipStickyArea from './TooltipStickyArea';
 
 const propTypes = {
   target: React.PropTypes.oneOfType([
@@ -34,6 +35,7 @@ class Tooltip extends React.Component {
 
     this.state = getDefaultState();
 
+    this.onResize = this.onResize.bind(this);
     this.setPosition = this.setPosition.bind(this);
     this.setPositionRight = this.setPositionRight.bind(this);
     this.setPositionBottom = this.setPositionBottom.bind(this);
@@ -41,12 +43,22 @@ class Tooltip extends React.Component {
 
   componentDidMount() {
     this.setPosition();
+
+    window.addEventListener('resize', this.onResize);
   }
 
   componentDidUpdate(newProps) {
     if (newProps.anchor !== this.props.anchor) {
       this.setPosition();
     }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  onResize() {
+    this.setPosition();
   }
 
   setPosition() {
@@ -131,5 +143,5 @@ class Tooltip extends React.Component {
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;
 
-export { TooltipHoverArea };
+export { TooltipHoverArea, TooltipStickyArea };
 export default portal(Tooltip);

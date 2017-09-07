@@ -2,8 +2,8 @@
   background: $reflect-tag-bg;
   border: $reflect-tag-border;
   border-radius: $reflect-tag-border-radius;
-  display: inline-block;
   color: $reflect-tag-color !important;
+  display: inline-block;
   font-size: $reflect-tag-font-size;
   height: $reflect-tag-height;
   line-height: $reflect-tag-line-height;
@@ -11,14 +11,15 @@
   padding: 0 $reflect-tag-padding;
   position: relative;
 
-  a.rc-button {
+  .rc-button {
     display: inline-block;
-    .rc-icon-delete {
-      position: absolute;
-      right: 0;
-      height: $reflect-tag-icon-size;
-      width: $reflect-tag-icon-size;
-    }
+  }
+
+  .rc-button .rc-icon-delete {
+    height: $reflect-tag-icon-size;
+    position: absolute;
+    right: 0;
+    width: $reflect-tag-icon-size;
   }
 
   // .rc-icon-delete {
@@ -28,36 +29,37 @@
   //   cursor: pointer;
   // }
 
-  &.rc-tag-tiny {
-    height: $reflect-tag-tiny-height;
-    line-height: $reflect-tag-tiny-line-height;
-    padding: $reflect-tag-tiny-padding;
-
-    .rc-tag-content {
-      font-size: $reflect-tag-tiny-font-size;
-      letter-spacing: $reflect-tag-tiny-letterspacing;
-      text-transform: $reflect-tag-tiny-case;
-    }
-  }
-
   &.rc-tag-block {
-    width: auto;
     display: block;
     margin-right: 0 !important;
+    width: auto;
   }
 
-  .rc-tag-content, .rc-tooltip-hover-area {
+  .rc-tag-content,
+  .rc-tooltip-hover-area {
     font-size: $reflect-tag-font-size;
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-    width: 100%;
     padding-right: $reflect-tag-icon-size + $reflect-tag-icon-spacing;
     position: relative;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
   }
 }
 
 .rc-tag-selected {
   border: $reflect-tag-border-selected;
   box-shadow: $reflect-tag-shadow-selected;
+}
+
+.rc-tag-tiny {
+  height: $reflect-tag-tiny-height;
+  line-height: $reflect-tag-tiny-line-height;
+  padding: $reflect-tag-tiny-padding;
+
+  .rc-tag-content {
+    font-size: $reflect-tag-tiny-font-size;
+    letter-spacing: $reflect-tag-tiny-letterspacing;
+    text-transform: $reflect-tag-tiny-case;
+  }
 }
