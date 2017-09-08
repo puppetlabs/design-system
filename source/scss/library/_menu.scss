@@ -1,15 +1,19 @@
-@mixin menu-item-colors($bg, $bg-hover, $color, $color-hover, $bg-selected, $color-selected, $bg-disabled, $color-disabled) {
+@mixin menu-item-colors($bg, $bg-hover, $color, $color-hover, $bg-selected, $color-selected, $bg-disabled, $color-disabled, $icon-color) {
+  .rc-menu-item .rc-icon {
+    fill: $icon-color;
+  }
+
   .rc-menu-item a {
     background: $bg;
     color: $color;
+  }
 
-    &:hover {
-      background: $bg-hover;
-      color: $color-hover;
-    }
+  .rc-menu-item a:hover {
+    background: $bg-hover;
+    color: $color-hover;
 
-    svg {
-      fill: $color-selected;
+    .rc-icon {
+      fill: $color-hover;
     }
   }
 
@@ -18,58 +22,68 @@
     color: $color-selected;
   }
 
+  .rc-menu-item-selected .rc-icon {
+    fill: $color-selected;
+  }
+
   .rc-menu-item-disabled  a {
     background: $bg-disabled;
     color: $color-disabled;
+  }
 
-    &:hover {
-      background: $bg-disabled;
-      color: $color-disabled;
-    }
+  .rc-menu-item-disabled  a:hover {
+    background: $bg-disabled;
+    color: $color-disabled;
   }
 }
 
-.rc-menu {
-  @include menu-item-colors(
-    $reflect-menu-item-bg,
-    $reflect-menu-item-bg-hover,
-    $reflect-menu-item-color,
-    $reflect-menu-item-color-hover,
-    $reflect-menu-item-bg-selected,
-    $reflect-menu-item-color-selected,
-    $reflect-menu-item-bg-disabled,
-    $reflect-menu-item-color-disabled
-  );
 
-  .rc-menu-item {
-    font-size: $reflect-menu-item-font-size;
-    line-height: $reflect-menu-item-line-height;
-  }
+@include menu-item-colors(
+  $reflect-menu-item-bg,
+  $reflect-menu-item-bg-hover,
+  $reflect-menu-item-color,
+  $reflect-menu-item-color-hover,
+  $reflect-menu-item-bg-selected,
+  $reflect-menu-item-color-selected,
+  $reflect-menu-item-bg-disabled,
+  $reflect-menu-item-color-disabled,
+  $reflect-menu-item-icon-color
+);
 
-  .rc-menu-item a {
-    display: block;
-    padding: $reflect-menu-item-padding;
-    text-decoration: none;
-  }
-
-  .rc-menu-item a:hover {
-    text-decoration: none;
-  }
-
-  .rc-menu-item-disabled a {
-    cursor: default;
-  }
+.rc-menu-item {
+  font-size: $reflect-menu-item-font-size;
+  font-weight: $reflect-menu-item-font-weight;
+  line-height: $reflect-menu-item-line-height;
 }
 
-.rc-menu-tiny {
-  .rc-menu-item {
-    font-size: $reflect-menu-item-font-size-tiny;
-    line-height: $reflect-menu-item-line-height-tiny;
-  }
+.rc-menu-item a {
+  align-items: center;
+  border-bottom: $reflect-menu-item-border;
+  display: flex;
+  height: $reflect-menu-item-height;
+  padding: $reflect-menu-item-padding;
+  text-decoration: none;
+}
 
-  .rc-menu-item a {
-    padding: $reflect-dropdown-padding-tiny;
-  }
+.rc-menu-item a:hover {
+  text-decoration: none;
+}
+
+.rc-menu-item-with-icon a {
+  // 16px is currently the size of the checkmark icon.
+  padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
+  position: relative;
+}
+
+.rc-menu-item-with-icon .rc-icon {
+  left: $reflect-dropdown-padding;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.rc-menu-item-disabled a {
+  cursor: default;
 }
 
 .rc-menu-section {
@@ -77,6 +91,7 @@
   padding: $reflect-menu-section-padding;
 
   &.rc-menu-section-list {
+    border: 0;
     padding: 0;
   }
 
@@ -86,20 +101,22 @@
 }
 
 .rc-menu-header {
+  align-items: center;
   border-bottom: $reflect-menu-header-border;
   display: flex;
+  height: $reflect-menu-header-height;
   padding: $reflect-menu-header-padding;
+  text-transform: uppercase;
 }
 
 .rc-menu-title {
   align-items: center;
+  color: $reflect-menu-title-color;
   display: flex;
+  font-size: $reflect-menu-title-font-size;
+  font-weight: $reflect-menu-title-font-weight;
+  text-transform: uppercase;
   width: 90%;
-
-  h2 {
-    color: $reflect-menu-title-color;
-    font-size: $reflect-menu-title-font-size;
-  }
 }
 
 .rc-menu-close {
@@ -111,20 +128,5 @@
     float: right;
     height: 8px;
     width: 8px;
-  }
-}
-
-.rc-menu-multiple {
-  .rc-menu-item  a {
-    // 16px is currently the size of the checkmark icon.
-    padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
-    position: relative;
-  }
-
-  .rc-menu-item svg {
-    left: $reflect-dropdown-padding;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
   }
 }

@@ -6,15 +6,17 @@ const propTypes = {
   onClose: React.PropTypes.func,
 };
 
+const defaultProps = {
+  title: '',
+};
+
 class MenuHeader extends React.Component {
   renderTitle() {
     let jsx;
 
     if (this.props.title) {
       return (
-        <div className="rc-menu-title">
-          <h2>{ this.props.title }</h2>
-        </div>
+        <div className="rc-menu-title">{ this.props.title }</div>
       );
     }
 
@@ -54,5 +56,6 @@ class MenuHeader extends React.Component {
 }
 
 MenuHeader.propTypes = propTypes;
+MenuHeader.defaultProps = defaultProps;
 
 export default MenuHeader;

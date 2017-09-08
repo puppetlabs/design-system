@@ -113,9 +113,17 @@
 
 .rc-dropdown-menu {
   padding: 0;
-  padding-bottom: $reflect-popover-border-radius * 2;
-  padding-top: $reflect-popover-border-radius * 2;
   width: $reflect-dropdown-width;
+
+  .rc-menu-item:first-child a {
+    border-top-left-radius: $reflect-popover-border-radius;
+    border-top-right-radius: $reflect-popover-border-radius;
+  }
+
+  .rc-menu-item:last-child a {
+    border-bottom-left-radius: $reflect-popover-border-radius;
+    border-bottom-right-radius: $reflect-popover-border-radius;
+  }
 
   .rc-dropdown-blank {
     font-size: $reflect-dropdown-item-font-size;
@@ -178,28 +186,24 @@
   }
 }
 
-.rc-dropdown-menu-with-header {
-  padding-top: 0;
-}
-
 .rc-dropdown-menu-multiple {
   padding-bottom: 0;
 
-  .rc-dropdown-item a {
-    // 16px is currently the size of the checkmark icon.
-    padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
-    position: relative;
-  }
-
-  .rc-icon {
-    fill: $reflect-dropdown-item-selected-color;
-    left: $reflect-dropdown-padding;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
   .rc-dropdown-menu-section-list {
     padding: 0;
+  }
+}
+
+.rc-dropdown-menu-with-header {
+  .rc-menu-item:first-child a {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.rc-dropdown-menu-multiple {
+  .rc-menu-item:last-child a {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }

@@ -55,3 +55,17 @@ const options = [
   options={ options }
 />
 ```
+
+Dropdown with icons
+```
+const options = [
+  { id: 1, value: 'option 1', icon: "edit" },
+  { id: 2, value: 'option 2', icon: "delete" },
+];
+
+<Dropdown
+  label="I'm a dropdown with icons"
+  selected={ [1] }
+  options={ options }
+/>
+```
