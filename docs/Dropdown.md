@@ -59,8 +59,9 @@ const options = [
 Dropdown with icons
 ```
 const options = [
-  { id: 1, value: 'option 1', icon: "edit" },
-  { id: 2, value: 'option 2', icon: "delete" },
+  { id: 1, value: 'Edit', icon: "pencil" },
+  { id: 2, value: 'Export', icon: "export" },
+  { id: 3, value: 'Delete', icon: "trash" },
 ];
 
 <Dropdown
