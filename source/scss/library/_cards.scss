@@ -58,22 +58,16 @@
   }
 }
 
+.rc-card-actions-secondary {
+  right: $reflect-card-action-padding * 2.5;
+}
+
 .rc-card-actions-hidden {
   display: none;
 }
 
 .rc-card-search {
-  display: flex;
-  position: absolute;
-  right: 50px;
-  top: $reflect-card-action-padding - ($reflect-input-small-padding/2);
-  width: 160px;
-
-  .rc-icon {
-    margin-right: 5px;
-    position: relative;
-    top: 5px;
-  }
+  margin: $reflect-card-search-margin;
 }
 
 .rc-card:hover {

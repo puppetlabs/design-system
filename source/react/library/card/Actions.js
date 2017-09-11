@@ -6,6 +6,8 @@ import DropdownMenu from '../dropdown/DropdownMenu';
 
 const propTypes = {
   children: React.PropTypes.object,
+  secondary: React.PropTypes.bool,
+  menuToggleIcon: React.PropTypes.string,
   menuOptions: React.PropTypes.object,
   onOptionClick: React.PropTypes.func,
   className: React.PropTypes.string,
@@ -13,6 +15,10 @@ const propTypes = {
 };
 
 const defaultProps = {
+  secondary: false,
+  className: '',
+  menuToggleIcon: 'kebab',
+  menuOptions: [],
   onOptionClick: () => {},
 };
 
@@ -50,8 +56,8 @@ class CardActions extends React.Component {
   renderActionMenu() {
     let jsx;
 
-    if (this.props.menuOptions) {
-      const target = <Button transparent icon="kebab" size="tiny" />;
+    if (this.props.menuOptions.length > 0) {
+      const target = <Button transparent icon={ this.props.menuToggleIcon } size="tiny" />;
 
       jsx = (
         <DropdownMenu
@@ -70,7 +76,9 @@ class CardActions extends React.Component {
 
   render() {
     const { children, className: classProp } = this.props;
-    const className = classnames('rc-card-actions', classProp);
+    const className = classnames('rc-card-actions', {
+      'rc-card-actions-secondary': this.props.secondary,
+    }, classProp);
     const remove = this.renderRemove();
     const actionMenu = this.renderActionMenu();
 

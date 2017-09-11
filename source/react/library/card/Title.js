@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import Input from '../Input';
 
 const propTypes = {
   /** Primary title */
@@ -12,6 +13,10 @@ const propTypes = {
   controls: React.PropTypes.any,
   /** Description of the cards contents */
   description: React.PropTypes.string,
+  /** Search box for filtering the contents */
+  search: React.PropTypes.string,
+  /** Callback for the searchbox */
+  onSearch: React.PropTypes.func,
 };
 
 const defaultProps = {
@@ -19,6 +24,8 @@ const defaultProps = {
   subtitle: '',
   controls: '',
   description: '',
+  search: false,
+  onSearch: () => {},
 };
 
 class CardTitle extends React.Component {
@@ -67,15 +74,30 @@ class CardTitle extends React.Component {
     return jsx;
   }
 
+  renderSearchBox() {
+    let jsx = null;
+
+    if (this.props.search) {
+      jsx = (
+        <div className="rc-card-search">
+          <Input type="text" size="small" onChange={ this.props.onSearch } />
+        </div>
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
     const title = this.renderTitle();
     const subtitle = this.renderSubtitle();
     const controls = this.renderControls();
     const description = this.renderDescription();
+    const searchBox = this.renderSearchBox();
 
     return (
       <div className="rc-card-header">
-        { [title, subtitle, controls, description] }
+        { [title, subtitle, controls, description, searchBox] }
       </div>
     );
   }
