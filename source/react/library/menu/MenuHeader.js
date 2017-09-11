@@ -32,7 +32,7 @@ class MenuHeader extends React.Component {
           <Button
             transparent
             icon="close"
-            size="tiny"
+            size="auto"
             onClick={ this.props.onClose }
           />
         </div>
