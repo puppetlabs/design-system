@@ -19,6 +19,10 @@
   margin-bottom: $reflect-card-title-margin;
 }
 
+.rc-card-title + .rc-card-controls {
+  margin-top: 8px;
+}
+
 .rc-card-subtitle {
   color: $reflect-card-subtitle-color;
   font-size: $reflect-card-subtitle-size;

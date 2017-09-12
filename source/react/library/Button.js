@@ -125,7 +125,7 @@ class Button extends React.Component {
     }
 
     if (this.props.icon) {
-      const iconSize = size === 'small' || size === 'tiny' ? '15px' : '20px';
+      const iconSize = size === 'small' || size === 'tiny' ? '16' : '20';
 
       icon = <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />;
     }
