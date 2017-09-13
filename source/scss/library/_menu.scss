@@ -1,4 +1,4 @@
-@mixin menu-item-colors($bg, $bg-hover, $color, $color-hover, $bg-selected, $color-selected, $bg-disabled, $color-disabled, $icon-color) {
+@mixin menu-item-colors($bg, $bg-hover, $color, $color-hover, $border, $border-focus, $border-selected, $bg-selected, $color-selected, $bg-disabled, $color-disabled, $icon-color) {
   .rc-menu-item .rc-icon {
     fill: $icon-color;
   }
@@ -6,11 +6,13 @@
   .rc-menu-item a {
     background: $bg;
     color: $color;
+    border-bottom: $border;
   }
 
   .rc-menu-item a:hover {
     background: $bg-hover;
     color: $color-hover;
+    border-bottom: $border-focus;
 
     .rc-icon {
       fill: $color-hover;
@@ -20,6 +22,7 @@
   .rc-menu-item-selected  a {
     background: $bg-selected;
     color: $color-selected;
+    border-bottom: $border-selected;
   }
 
   .rc-menu-item-selected .rc-icon {
@@ -43,6 +46,9 @@
   $reflect-menu-item-bg-hover,
   $reflect-menu-item-color,
   $reflect-menu-item-color-hover,
+  $reflect-menu-item-border,
+  $reflect-menu-item-border-focus,
+  $reflect-menu-item-border-active,
   $reflect-menu-item-bg-selected,
   $reflect-menu-item-color-selected,
   $reflect-menu-item-bg-disabled,
@@ -58,7 +64,6 @@
 
 .rc-menu-item a {
   align-items: center;
-  border-bottom: $reflect-menu-item-border;
   display: flex;
   height: $reflect-menu-item-height;
   padding: $reflect-menu-item-padding;

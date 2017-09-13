@@ -138,7 +138,7 @@ $reflect-border-heavy:                   $reflect-border-size*2 $reflect-border-
 // Shadows
 // ----------------------------------------------------------------------------
 
-$reflect-outer-shadow:                   0 1px 2px rgba(0, 0, 0, 0.02) !default;
+$reflect-outer-shadow:                   0 1px 2px rgba(0, 0, 0, 0.05) !default;
 $reflect-outer-shadow-large:             0 0 6px rgba(0, 0, 0, 0.2) !default;
 $reflect-outer-shadow-huge:              0 0 10px rgba(0, 0, 0, 0.08) !default;
 $reflect-outer-shadow-giant:             0 0 60px rgba(0, 0, 0, 0.3) !default;
@@ -259,19 +259,27 @@ $reflect-button-error-border-color-hover:      $reflect-danger-color !default;
 
 // Cards
 // ----------------------------------------------------------------------------
-$reflect-card-padding:                   16px 24px !default;
-$reflect-card-action-padding:            15px !default;
-$reflect-card-action-color-active:       $reflect-active-color !default;
-$reflect-card-header-padding:            16px 24px 0 !default;
-$reflect-card-color:                     $reflect-font-color-subtle !default;
+
+// Card General
+$reflect-card-padding:                   16px !default;
+$reflect-card-bg:                        $reflect-bg-primary !default;
+$reflect-card-border:                    $reflect-border !default;
+$reflect-card-shadow:                    $reflect-outer-shadow;
+
+// Card Header
+$reflect-card-header-padding:            12px 16px 16px !default;
 $reflect-card-title-size:                $reflect-font-size-large !default;
 $reflect-card-title-color:               $reflect-font-color-base !default;
-$reflect-card-title-margin:              8px !default;
+$reflect-card-title-margin:              4px !default;
 $reflect-card-subtitle-size:             $reflect-font-size-small !default;
 $reflect-card-subtitle-color:            $reflect-font-color-subtle !default;
 $reflect-card-controls-size:             $reflect-font-size-small !default;
 $reflect-card-controls-color:            $reflect-font-color-subtle !default;
-$reflect-card-bg:                        $reflect-bg-primary !default;
+$reflect-card-search-margin:             16px 0 0 !default;
+
+// Card Color
+$reflect-card-action-color-active:       $reflect-active-color !default;
+$reflect-card-color:                     $reflect-font-color-subtle !default;
 $reflect-card-border:                    $reflect-border !default;
 $reflect-card-border-hover:              $reflect-border-hover !default;
 $reflect-card-border-radius:             $reflect-border-radius !default;
@@ -280,7 +288,7 @@ $reflect-card-border-selected:           $reflect-border-active !default;
 $reflect-card-border-selected-hover:     $reflect-border-active-hover !default;
 $reflect-card-shadow-selected:           $reflect-selected-shadow !default;
 $reflect-card-shadow-selected-hover:     $reflect-selected-shadow-hover !default;
-$reflect-card-search-margin:             16px 0 0 !default;
+
 
 // Datepicker
 // ----------------------------------------------------------------------------
@@ -421,6 +429,8 @@ $reflect-list-item-icon-width:           16px !default;
 // Menu
 // ----------------------------------------------------------------------------
 $reflect-menu-item-border:               $reflect-border !default;
+$reflect-menu-item-border-focus:         $reflect-border-active-hover;
+$reflect-menu-item-border-active:        $reflect-border-active-hover;
 $reflect-menu-item-font-size:            $reflect-font-size-small !default;
 $reflect-menu-item-font-weight:          $reflect-font-weight-heavy !default;
 $reflect-menu-item-font-size-tiny:       $reflect-font-size-medium !default;
@@ -430,21 +440,28 @@ $reflect-menu-item-height:               40px !default;
 $reflect-menu-item-color:                $reflect-gray-dark !default;
 $reflect-menu-item-icon-color:           $reflect-font-color-subtle !default;
 $reflect-menu-item-bg:                   transparent !default;
+$reflect-menu-item-padding:              0 16px !default;
+$reflect-menu-header-border:             $reflect-border !default;
+
+// Menu States
 $reflect-menu-item-color-hover:          $reflect-bg-primary !default;
 $reflect-menu-item-bg-hover:             $reflect-action-hover !default;
+
 $reflect-menu-item-color-selected:       $reflect-bg-primary !default;
 $reflect-menu-item-bg-selected:          $reflect-action-color !default;
+$reflect-menu-item-border-selected:      $reflect-border-active-hover !default;
+
 $reflect-menu-item-color-disabled:       $reflect-bg-primary !default;
 $reflect-menu-item-bg-disabled:          $reflect-gray-light !default;
-$reflect-menu-item-padding:              0 16px !default;
 
-$reflect-menu-header-border:             $reflect-border !default;
+// Menu Titles
 $reflect-menu-header-height:             $reflect-menu-item-height !default;
 $reflect-menu-header-padding:            $reflect-menu-item-padding !default;
 $reflect-menu-title-font-size:           11px !default;
 $reflect-menu-title-font-weight:         $reflect-font-weight-heavy !default;
 $reflect-menu-title-color:               $reflect-font-color-subtle !default;
 
+// Menu Section
 $reflect-menu-section-border:            $reflect-border !default;
 $reflect-menu-section-padding:           $reflect-medium !default;
 

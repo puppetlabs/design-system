@@ -2,7 +2,7 @@
   background: $reflect-card-bg;
   border: $reflect-card-border;
   border-radius: $reflect-card-border-radius;
-  box-shadow: $reflect-outer-shadow;
+  box-shadow: $reflect-card-shadow;
   color: $reflect-card-color;
   display: flex;
   flex-direction: column;
@@ -11,16 +11,26 @@
 
 .rc-card-header {
   padding: $reflect-card-header-padding;
+
+  ~ .rc-card-section,
+  ~ .rc-card-search {
+    padding-top: 0;
+  }
+
+  &:only-child {
+    padding: $reflect-card-padding;
+  }
+
 }
 
 .rc-card-title {
   color: $reflect-card-title-color;
   font-size: $reflect-card-title-size;
-  margin-bottom: $reflect-card-title-margin;
-}
 
-.rc-card-title + .rc-card-controls {
-  margin-top: 8px;
+  + .rc-card-controls,
+  + .rc-card-subtitle {
+    margin-top: $reflect-card-title-margin;
+  }
 }
 
 .rc-card-subtitle {
@@ -40,6 +50,9 @@
 .rc-card-section {
   padding: $reflect-card-padding;
 
+  + .rc-card-section {
+    padding-top: 0;
+  }
   &:last-of-type {
     border-bottom: 0;
   }
@@ -47,8 +60,8 @@
 
 .rc-card-actions {
   position: absolute;
-  right: $reflect-card-action-padding;
-  top: $reflect-card-action-padding;
+  right: $reflect-card-padding;
+  top: $reflect-card-padding;
   z-index: 24;
 
   .rc-card-remove {
@@ -63,7 +76,7 @@
 }
 
 .rc-card-actions-secondary {
-  right: $reflect-card-action-padding * 2.5;
+  right: $reflect-card-padding * 2.5;
 }
 
 .rc-card-actions-hidden {
