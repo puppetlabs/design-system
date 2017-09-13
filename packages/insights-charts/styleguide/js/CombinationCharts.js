@@ -20,7 +20,8 @@ class CombinationCharts extends React.Component {
           data: getRandomData(dataPoints),
         },
         {
-          label: 'Margin',
+          label: 'Really long series name (Margin)',
+          aggregate: 50000,
           type: 'line',
           axis: 1,
           data: getRandomData(dataPoints),

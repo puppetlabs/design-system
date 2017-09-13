@@ -1,3 +1,7 @@
+# 0.1.23
+
+* Remove max-width on legends
+
 # 0.1.22
 
 * Make sure setting min and/or max on an axis behaves as you'd expect.
