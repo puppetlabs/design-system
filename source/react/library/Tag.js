@@ -1,7 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
 import Button from './Button';
-import Icon from './Icon';
 import { TooltipHoverArea } from './tooltips/Tooltip';
 
 const propTypes = {
@@ -91,23 +90,21 @@ class Tag extends React.Component {
       [`rc-tag-${size}`]: size,
     }, this.props.className);
     const content = this.renderContent();
-    let jsx;
+
+    const props = {
+      className,
+    };
 
     if (onClick) {
-      jsx = (
-        <a onClick={ this.onClick } href="" className={ className }>
-          { content }
-        </a>
-      );
-    } else {
-      jsx = (
-        <div className={ className }>
-          { content }
-        </div>
-      );
+      props.role = 'button';
+      props.onClick = this.onClick;
     }
 
-    return jsx;
+    return (
+      <div { ...props }>
+        { content }
+      </div>
+    );
   }
 }
 

@@ -63,3 +63,7 @@
     text-transform: $reflect-tag-tiny-case;
   }
 }
+
+.rc-tag-selectable {
+  cursor: pointer;
+}
