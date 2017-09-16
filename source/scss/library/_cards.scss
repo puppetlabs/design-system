@@ -13,19 +13,41 @@
   padding: $reflect-card-header-padding;
 
   ~ .rc-card-section,
-  ~ .rc-card-search {
+  ~ .rc-card-description {
     padding-top: 0;
   }
 
   &:only-child {
     padding: $reflect-card-padding;
   }
+}
 
+.rc-card-title-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.rc-card-description {
+  font-size: $reflect-card-description-font-size;
+  padding: $reflect-card-description-padding;
+
+  ~ .rc-card-section {
+    padding-top: 0;
+  }
+}
+
+.rc-card-title-area {
+  flex-grow: 1;
+  overflow: hidden;
 }
 
 .rc-card-title {
   color: $reflect-card-title-color;
   font-size: $reflect-card-title-size;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 
   + .rc-card-controls,
   + .rc-card-subtitle {
@@ -53,15 +75,16 @@
   + .rc-card-section {
     padding-top: 0;
   }
+
   &:last-of-type {
     border-bottom: 0;
   }
 }
 
 .rc-card-actions {
-  position: absolute;
-  right: $reflect-card-padding;
-  top: $reflect-card-padding;
+  align-self: flex-end;
+  display: flex;
+  margin-left: 8px;
   z-index: 24;
 
   .rc-card-remove {
@@ -75,22 +98,17 @@
   }
 }
 
-.rc-card-actions-secondary {
-  right: $reflect-card-padding * 2.5;
-}
+.rc-card-action {
+  cursor: pointer;
+  margin-left: 8px;
 
-.rc-card-actions-hidden {
-  display: none;
+  &:first-of-type {
+    margin-left: 0;
+  }
 }
 
 .rc-card-search {
   margin: $reflect-card-search-margin;
-}
-
-.rc-card:hover {
-  .rc-card-actions-hidden {
-    display: block;
-  }
 }
 
 .rc-card-xs {

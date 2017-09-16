@@ -2,18 +2,24 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  size: React.PropTypes.string,
   children: React.PropTypes.any,
+  size: React.PropTypes.string,
   /** Card height in px */
   height: React.PropTypes.string,
   /** Manual active state */
   selected: React.PropTypes.bool,
   /** Class name to apply to container element */
   className: React.PropTypes.string,
-  /** Callback for detecting user remove action */
-  onRemove: React.PropTypes.func,
-  /** Card will be wrapped in anchor tag when passed `onClick` */
+  /**  Function to be called when the user clicks on a card */
   onClick: React.PropTypes.func,
+};
+
+const defaultProps = {
+  size: '',
+  children: [],
+  height: '',
+  selected: false,
+  className: '',
 };
 
 /**
@@ -28,10 +34,28 @@ class Card extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
+  componentDidMount() {
+    console.log('actions: ', this.actions);
+  }
+
   onClick(e) {
     e.preventDefault();
 
     this.props.onClick(e);
+  }
+
+  renderActions() {
+    let jsx;
+
+    if (this.props.actions) {
+      jsx = (
+        <div ref={ (c) => { this.actions = c; } }>
+          { this.props.actions }
+        </div>
+      );
+    }
+
+    return jsx;
   }
 
   render() {
@@ -45,31 +69,26 @@ class Card extends React.Component {
     }, this.props.className);
     const content = this.props.children;
     const styles = {};
-    let jsx;
 
     if (height) {
       styles.height = height;
     }
 
-    if (this.props.onClick) {
-      jsx = (
-        <a
-          onClick={ this.onClick }
-          href=""
-          className={ className }
-          style={ styles }
-        >
-          { content }
-        </a>
-      );
-    } else {
-      jsx = <div className={ className } style={ styles }>{ content }</div>;
+    const props = {
+      style: styles,
+      className,
+    };
+
+    if (onClick) {
+      props.onClick = onClick;
+      props.role = 'button';
     }
 
-    return jsx;
+    return <div { ...props }>{ content }</div>;
   }
 }
 
 Card.propTypes = propTypes;
+Card.defaultProps = defaultProps;
 
 export default Card;

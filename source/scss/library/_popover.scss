@@ -53,7 +53,7 @@
 
 
 // TODO: Cleanup button nesting so you don't need to be so explicit with overrides
-.rc-button.rc-button-transparent.rc-popover-target-open {
+.rc-popover-target-open {
   .rc-icon {
     fill: $reflect-card-action-color-active;
   }
