@@ -108,7 +108,12 @@
 }
 
 .rc-card-search {
-  margin: $reflect-card-search-margin;
+  display: flex;
+
+  .rc-input {
+    margin-left: 8px;
+    margin-top: -4px;
+  }
 }
 
 .rc-card-xs {

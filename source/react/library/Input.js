@@ -18,6 +18,7 @@ const propTypes = {
   simple: React.PropTypes.bool,
   onKeyUp: React.PropTypes.func,
   error: React.PropTypes.string,
+  style: React.PropTypes.object,
   onChange: React.PropTypes.func,
   onClick: React.PropTypes.func,
   onFocus: React.PropTypes.func,
@@ -104,6 +105,7 @@ class Input extends React.Component {
       onFocus: this.onFocus,
       onClick: this.onClick,
       className,
+      style: this.props.style,
     };
 
     if (!this.props.value) {

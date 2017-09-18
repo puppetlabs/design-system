@@ -1,13 +1,13 @@
 import ActionsMenu from './ActionsMenu';
+import ActionsSearch from './ActionsSearch';
 import Card from './Card';
-import Search from './Search';
 import Section from './Section';
 import Header from './Header';
 
 export {
   ActionsMenu,
+  ActionsSearch,
   Card,
-  Search,
   Section,
   Header,
 };
