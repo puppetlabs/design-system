@@ -10,7 +10,7 @@ const defaultProps = {
   onChange: () => {},
 };
 
-class CardSearch extends React.Component {
+class CardActionsSearch extends React.Component {
   constructor(props) {
     super(props);
 
@@ -53,7 +53,7 @@ class CardSearch extends React.Component {
   }
 }
 
-CardSearch.propTypes = propTypes;
-CardSearch.defaultProps = defaultProps;
+CardActionsSearch.propTypes = propTypes;
+CardActionsSearch.defaultProps = defaultProps;
 
-export default CardSearch;
+export default CardActionsSearch;

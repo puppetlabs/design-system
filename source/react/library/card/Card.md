@@ -93,3 +93,22 @@ const actions = [
   <CardHeader title="I am a really really really really really really really really really really really really title" actions={ actions } />
 </Card>
 ```
+
+
+Card with two types of actions, menu and search
+```
+const menuOptions = [
+  { value: 'I\'m a test value!', id: 0 },
+  { value: 'Me too!', id: 1 },
+  { value: 'Me three...', id: 2 },
+];
+
+const actions = [
+  <CardActionsSearch onChange={ (value) => { console.log(value) }  } />,
+  <CardActionsMenu key="menu-1" menuOptions={ menuOptions } />,
+];
+
+<Card>
+  <CardHeader title="I am a title" actions={ actions } />
+</Card>
+```
