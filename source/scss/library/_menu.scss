@@ -5,14 +5,14 @@
 
   .rc-menu-item a {
     background: $bg;
-    color: $color;
     border-bottom: $border;
+    color: $color;
   }
 
   .rc-menu-item a:hover {
     background: $bg-hover;
-    color: $color-hover;
     border-bottom: $border-focus;
+    color: $color-hover;
 
     .rc-icon {
       fill: $color-hover;
@@ -21,8 +21,8 @@
 
   .rc-menu-item-selected  a {
     background: $bg-selected;
-    color: $color-selected;
     border-bottom: $border-selected;
+    color: $color-selected;
   }
 
   .rc-menu-item-selected .rc-icon {
