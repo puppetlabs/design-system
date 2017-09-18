@@ -40,7 +40,7 @@ class CardHeader extends React.Component {
       }
 
       jsx = (
-        <div className="rc-card-title-area">
+        <div key="card-title-area" className="rc-card-title-area">
           { titleJSX }
           { subtitleJSX }
         </div>
