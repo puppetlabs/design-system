@@ -1,4 +1,17 @@
-@mixin menu-item-colors($bg, $bg-hover, $color, $color-hover, $border, $border-focus, $border-selected, $bg-selected, $color-selected, $bg-disabled, $color-disabled, $icon-color) {
+@mixin menu-item-colors(
+  $bg,
+  $bg-hover,
+  $color,
+  $color-hover,
+  $border,
+  $border-focus,
+  $border-selected,
+  $bg-selected,
+  $color-selected,
+  $bg-disabled,
+  $color-disabled,
+  $icon-color
+) {
   .rc-menu-item .rc-icon {
     fill: $icon-color;
   }
@@ -11,7 +24,6 @@
 
   .rc-menu-item a:hover {
     background: $bg-hover;
-    border-bottom: $border-focus;
     color: $color-hover;
 
     .rc-icon {
@@ -21,7 +33,6 @@
 
   .rc-menu-item-selected  a {
     background: $bg-selected;
-    border-bottom: $border-selected;
     color: $color-selected;
   }
 
