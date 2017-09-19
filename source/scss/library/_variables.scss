@@ -447,11 +447,12 @@ $reflect-menu-item-padding:              0 16px !default;
 $reflect-menu-header-border:             $reflect-border !default;
 
 // Menu States
-$reflect-menu-item-color-hover:          $reflect-action-color !default;
-$reflect-menu-item-bg-hover:             $reflect-menu-item-bg !default;
+$reflect-menu-item-color-hover:          $reflect-bg-primary !default;
+$reflect-menu-item-bg-hover:             $reflect-action-hover !default;
 
-$reflect-menu-item-color-selected:       $reflect-action-hover !default;
-$reflect-menu-item-bg-selected:          $reflect-menu-item-bg !default;
+$reflect-menu-item-color-selected:       $reflect-bg-primary !default;
+$reflect-menu-item-bg-selected:          $reflect-action-color !default;
+$reflect-menu-item-border-selected:      $reflect-border-active-hover !default;
 
 $reflect-menu-item-color-disabled:       $reflect-bg-primary !default;
 $reflect-menu-item-bg-disabled:          $reflect-gray-light !default;
