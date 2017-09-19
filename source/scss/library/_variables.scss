@@ -139,7 +139,7 @@ $reflect-border-heavy:                   $reflect-border-size*2 $reflect-border-
 // ----------------------------------------------------------------------------
 
 $reflect-outer-shadow:                   0 1px 2px rgba(0, 0, 0, 0.05) !default;
-$reflect-outer-shadow-large:             0 0 6px rgba(0, 0, 0, 0.2) !default;
+$reflect-outer-shadow-large:             2px 2px 4px rgba(0, 0, 0, 0.05) !default;
 $reflect-outer-shadow-huge:              0 0 10px rgba(0, 0, 0, 0.08) !default;
 $reflect-outer-shadow-giant:             0 0 60px rgba(0, 0, 0, 0.3) !default;
 
@@ -508,7 +508,7 @@ $reflect-date-range-hover-border:        $reflect-datepicker-border-width solid 
 // Popover
 // ----------------------------------------------------------------------------
 $reflect-popover-bg:                     $reflect-bg-primary !default;
-$reflect-popover-border:                 none !default;
+$reflect-popover-border:                 $reflect-border !default;
 $reflect-popover-border-radius:          $reflect-border-radius !default;
 $reflect-popover-close-color:            $reflect-gray-light !default;
 $reflect-popover-shadow:                 $reflect-outer-shadow-large !default;
