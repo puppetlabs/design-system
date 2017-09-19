@@ -11,7 +11,6 @@
 
   .rc-menu-item a:hover {
     background: $bg-hover;
-    border-bottom: $border-focus;
     color: $color-hover;
 
     .rc-icon {
@@ -26,6 +25,15 @@
   }
 
   .rc-menu-item-selected .rc-icon {
+    fill: $color-selected;
+  }
+
+  .rc-menu-item-selected  a:hover {
+    background: darken($bg-selected, 10%);
+    color: $color-selected;
+  }
+
+  .rc-menu-item-selected a:hover .rc-icon {
     fill: $color-selected;
   }
 
