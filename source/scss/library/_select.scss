@@ -248,4 +248,34 @@
     -webkit-transform: rotate(1turn);
   }
 }
+
+.Select-small {
+  font-size: $reflect-font-size-small;
+
+  .Select-item {
+    margin-bottom: 2px;
+  }
+
+  .Select-control {
+    min-height: 0;
+    padding: 7px;
+  }
+
+  // Ugh... eyeballed this.
+  .Select-placeholder {
+    padding: 7px 28px 7px 6px;
+  }
+
+  .Select-clear {
+    padding: 5px 10px !important;
+  }
+
+  .Select-arrow-zone {
+    width: 20px;
+  }
+
+  .Select-arrow {
+    top: 13px;
+  }
+}
 /* stylelint-enable  */

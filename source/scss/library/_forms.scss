@@ -179,11 +179,23 @@
 }
 
 .rc-form {
+  li {
+    margin-bottom: 16px;
+  }
+
+  li:last-of-type {
+    margin-bottom: 0;
+  }
+
   .rc-form-label {
     color: $reflect-form-label-color;
     font-size: $reflect-form-label-font-size;
     margin-bottom: $reflect-form-label-margin-bottom;
     text-transform: $reflect-form-label-case;
+  }
+
+  .rc-form-buttons-right {
+    text-align: right;
   }
 }
 /* stylelint-enable  */
