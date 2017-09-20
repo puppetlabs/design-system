@@ -34,28 +34,10 @@ class Card extends React.Component {
     this.onClick = this.onClick.bind(this);
   }
 
-  componentDidMount() {
-    console.log('actions: ', this.actions);
-  }
-
   onClick(e) {
     e.preventDefault();
 
     this.props.onClick(e);
-  }
-
-  renderActions() {
-    let jsx;
-
-    if (this.props.actions) {
-      jsx = (
-        <div ref={ (c) => { this.actions = c; } }>
-          { this.props.actions }
-        </div>
-      );
-    }
-
-    return jsx;
   }
 
   render() {

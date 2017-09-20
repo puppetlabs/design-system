@@ -104,7 +104,7 @@ const menuOptions = [
 ];
 
 const actions = [
-  <CardActionsSearch onChange={ (value) => { console.log(value) }  } />,
+  <CardActionsSearch onSearch={ (value) => { console.log(value) }  } />,
   <CardActionsMenu key="menu-1" menuOptions={ menuOptions } />,
 ];
 
