@@ -62,3 +62,10 @@
     fill: $reflect-card-action-color-active;
   }
 }
+
+.rc-popover {
+  .rc-menu .rc-menu-section:last-child {
+    border-bottom-left-radius: $reflect-popover-border-radius;
+    border-bottom-right-radius: $reflect-popover-border-radius;
+  }
+}
