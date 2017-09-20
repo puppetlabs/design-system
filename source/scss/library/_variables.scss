@@ -1,4 +1,5 @@
 /* stylelint-disable scss/dollar-variable-colon-space-after, indentation  */
+
 // ============================================================================
 // BASELINE VARIABLES
 // ============================================================================
@@ -10,12 +11,14 @@
 $reflect-brand-primary:                  #269cff !default;
 
 // Grays
-$reflect-gray-base:                      #201f1e !default;
-$reflect-gray-darker:                    lighten($reflect-gray-base, 19%) !default;
-$reflect-gray-dark:                      lighten($reflect-gray-base, 38%) !default;
-$reflect-gray:                           lighten($reflect-gray-base, 56%) !default;
-$reflect-gray-light:                     lighten($reflect-gray-base, 72%) !default;
-$reflect-gray-lighter:                   lighten($reflect-gray-base, 84%) !default;
+$reflect-gray-base:                      #a6bdd2 !default;
+
+$reflect-black:                          #424a52 !default;
+$reflect-gray-darker:                    #6D7A87 !default;
+$reflect-gray-dark:                      #88a2b9 !default;
+$reflect-gray:                           $reflect-gray-base !default;
+$reflect-gray-light:                     #dBdfe3 !default;
+$reflect-gray-lighter:                   #f8f8f9 !default;
 $reflect-white:                          #fff !default;
 
 // Backgrounds
@@ -74,25 +77,31 @@ $reflect-anchor-hover:                   $reflect-action-hover !default;
 
 // Status Colors
 // Danger - Used to provide a warning for irreversible actions and errors
-$reflect-danger-color:                   #d9534f !default;
+$reflect-danger-color:                   #269CFF !default;
 $reflect-danger-hover:                   darken($reflect-danger-color, 10%) !default;
 $reflect-danger-border:                  $reflect-danger-color !default;
 $reflect-danger-border-hover:            darken($reflect-danger-color, 10%) !default;
 
 // Success
-$reflect-success-color:                  #5cb85c !default;
+$reflect-success-color:                  #73D96D !default;
 $reflect-success-hover:                  darken($reflect-success-color, 10%) !default;
 $reflect-success-border:                 $reflect-success-color !default;
 $reflect-success-border-hover:           darken($reflect-success-color, 10%) !default;
 
+//Warning
+$reflect-warning-color:                  #FACA3B !default;
+$reflect-warning-hover:                  darken($reflect-warning-color, 10%) !default;
+$reflect-warning-border:                 $reflect-warning-color !default;
+$reflect-warning-border-hover:           darken($reflect-warning-color, 10%) !default;
+
 // Sizing Defaults
 // ----------------------------------------------------------------------------
-$reflect-size-base:                      10px !default;
-$reflect-mini:                           $reflect-size-base * 0.3 !default;
-$reflect-tiny:                           $reflect-size-base * 0.6 !default;
+$reflect-size-base:                      8px !default;
+$reflect-mini:                           $reflect-size-base * 0.25 !default;
+$reflect-tiny:                           $reflect-size-base * 0.5 !default;
 $reflect-small:                          $reflect-size-base !default;
-$reflect-medium:                         $reflect-size-base * 1.6 !default;
-$reflect-large:                          $reflect-size-base * 2 !default;
+$reflect-medium:                         $reflect-size-base * 2 !default;
+$reflect-large:                          $reflect-size-base * 3 !default;
 $reflect-huge:                           $reflect-size-base * 4 !default;
 $reflect-giant:                          $reflect-size-base * 6 !default;
 
@@ -101,19 +110,20 @@ $reflect-giant:                          $reflect-size-base * 6 !default;
 $reflect-icon-fill:                       $reflect-gray !default;
 $reflect-icon-fill-hover:                 $reflect-gray-dark !default;
 $reflect-icon-light:                      $reflect-white !default;
-$reflect-icon-action:                     $reflect-brand-primary !default;
-$reflect-icon-action-hover:               darken($reflect-icon-action, 10%) !default;
+$reflect-icon-action:                     $reflect-action-color !default;
+$reflect-icon-action-hover:               $reflect-action-hover !default;
 
 // Typography
 // ----------------------------------------------------------------------------
 $reflect-font-family:                   'Open Sans', sans-serif !default;
 
-$reflect-font-size-huge:                 22px !default;
-$reflect-font-size-large:                18px !default;
-$reflect-font-size-base:                 16px !default;
-$reflect-font-size-medium:               14px !default;
+$reflect-font-size-giant:                42px !default;
+$reflect-font-size-huge:                 28px !default;
+$reflect-font-size-large:                21px !default;
+$reflect-font-size-medium:               18px !default;
+$reflect-font-size-base:                 14px !default;
 $reflect-font-size-small:                12px !default;
-$reflect-font-size-tiny:                 10px !default;
+$reflect-font-size-tiny:                 11px !default;
 
 $reflect-font-weight-heavy:              600 !default;
 
@@ -135,6 +145,7 @@ $reflect-border-hover:                   $reflect-border-size $reflect-border-st
 $reflect-border-active:                  $reflect-border-size $reflect-border-style $reflect-action-color !default;
 $reflect-border-active-hover:            $reflect-border-size $reflect-border-style $reflect-action-hover !default;
 $reflect-border-heavy:                   $reflect-border-size*2 $reflect-border-style $reflect-border-color !default;
+
 // Shadows
 // ----------------------------------------------------------------------------
 
@@ -156,7 +167,7 @@ $reflect-selected-shadow-hover:          0 0 0 1px $reflect-action-hover !defaul
 // Accordions
 // ----------------------------------------------------------------------------
 $reflect-accordion-item-title-font-family: 'Montserrat', sans-serif !default;
-$reflect-accordion-item-title-font-size: $reflect-font-size-medium !default;
+$reflect-accordion-item-title-font-size: $reflect-font-size-base !default;
 $reflect-accordion-item-title-color:     $reflect-font-color-medium !default;
 $reflect-accordion-item-title-hover:     $reflect-font-color-base !default;
 $reflect-accordion-item-title-bg-color:  $reflect-bg-subtle !default;
@@ -203,7 +214,7 @@ $reflect-button-small-font-size:         $reflect-font-size-small !default;
 $reflect-button-small-height:            33px !default;
 $reflect-button-small-padding:           $reflect-button-padding / 2 !default;
 
-$reflect-button-large-font-size:         $reflect-font-size-medium !default;
+$reflect-button-large-font-size:         $reflect-font-size-base !default;
 $reflect-button-large-height:            60px !default;
 $reflect-button-large-padding:           $reflect-button-padding * 1.5 !default;
 
@@ -268,13 +279,13 @@ $reflect-card-shadow:                    $reflect-outer-shadow;
 
 // Card Header
 $reflect-card-header-padding:            12px 16px 16px !default;
-$reflect-card-title-size:                $reflect-font-size-large !default;
+$reflect-card-title-size:                $reflect-font-size-medium !default;
 $reflect-card-title-color:               $reflect-font-color-base !default;
 $reflect-card-title-margin:              4px !default;
 $reflect-card-subtitle-size:             $reflect-font-size-small !default;
-$reflect-card-subtitle-color:            $reflect-font-color-subtle !default;
+$reflect-card-subtitle-color:            $reflect-font-color-medium !default;
 $reflect-card-controls-size:             $reflect-font-size-small !default;
-$reflect-card-controls-color:            $reflect-font-color-subtle !default;
+$reflect-card-controls-color:            $reflect-font-color-medium !default;
 $reflect-card-search-margin:             16px 0 0 !default;
 
 $reflect-card-description-padding:       $reflect-card-header-padding !default;
@@ -282,7 +293,7 @@ $reflect-card-description-font-size:     $reflect-font-size-small !default;
 
 // Card Color
 $reflect-card-action-color-active:       $reflect-active-color !default;
-$reflect-card-color:                     $reflect-font-color-subtle !default;
+$reflect-card-color:                     $reflect-font-color-base !default;
 $reflect-card-border:                    $reflect-border !default;
 $reflect-card-border-hover:              $reflect-border-hover !default;
 $reflect-card-border-radius:             $reflect-border-radius !default;
@@ -312,7 +323,7 @@ $reflect-datepicker-disabled-color:      $reflect-disabled-color !default;
 
 $reflect-datepicker-month-bg:            $reflect-bg-subtle !default;
 $reflect-datepicker-month-color:         $reflect-font-color-medium !default;
-$reflect-datepicker-month-font-size:     $reflect-font-size-medium !default;
+$reflect-datepicker-month-font-size:     $reflect-font-size-base !default;
 $reflect-datepicker-month-font-weight:   $reflect-font-weight-heavy !default;
 $reflect-datepicker-month-border:        $reflect-datepicker-border-width solid $reflect-datepicker-border-color !default;
 
@@ -344,7 +355,7 @@ $reflect-dropdown-max-height:            400px !default;
 $reflect-dropdown-width:                 260px !default;
 $reflect-dropdown-width-tiny:            180px !default;
 
-$reflect-dropdown-label-font-size:       $reflect-font-size-medium !default;
+$reflect-dropdown-label-font-size:       $reflect-font-size-base !default;
 $reflect-dropdown-label-font-weight:     $reflect-font-weight-heavy !default;
 $reflect-dropdown-label-color:           $reflect-action-color !default;
 $reflect-dropdown-label-color-error:     $reflect-danger-color !default;
@@ -353,12 +364,12 @@ $reflect-dropdown-label-color-disabled:  $reflect-gray !default;
 $reflect-dropdown-chevron-height:        $reflect-tiny !default;
 $reflect-dropdown-chevron-width:         $reflect-small !default;
 $reflect-dropdown-hint-color:            $reflect-gray !default;
-$reflect-dropdown-hint-font-size:        $reflect-font-size-medium !default;
+$reflect-dropdown-hint-font-size:        $reflect-font-size-base !default;
 $reflect-dropdown-hint-font-size-tiny:   $reflect-font-size-small !default;
 $reflect-dropdown-item-font-size:        $reflect-font-size-base !default;
-$reflect-dropdown-item-font-size-tiny:   $reflect-font-size-medium !default;
+$reflect-dropdown-item-font-size-tiny:   $reflect-font-size-base !default;
 $reflect-dropdown-item-line-height:      $reflect-font-size-base !default;
-$reflect-dropdown-item-line-height-tiny: $reflect-font-size-medium !default;
+$reflect-dropdown-item-line-height-tiny: $reflect-font-size-base !default;
 $reflect-dropdown-item-hover-color:      $reflect-bg-primary !default;
 $reflect-dropdown-item-hover-bg:         $reflect-action-hover !default;
 $reflect-dropdown-item-selected-color:   $reflect-bg-primary !default;
@@ -386,7 +397,7 @@ $reflect-filter-selected-shadow:         $reflect-selected-shadow !default;
 $reflect-filter-border-active:           $reflect-border-active !default;
 
 $reflect-filter-select-padding:          $reflect-tiny !default;
-$reflect-filter-select-height:           $reflect-medium !default;
+$reflect-filter-select-height:           10px !default;
 
 $reflect-filter-split-bg:                $reflect-gray-light !default;
 
@@ -421,7 +432,7 @@ $reflect-list-item-border:               $reflect-border !default;
 $reflect-list-item-border-selected:      $reflect-border-active !default;
 $reflect-list-item-shadow-selected:      $reflect-selected-shadow !default;
 $reflect-list-item-border-radius:        $reflect-border-radius !default;
-$reflect-list-item-font-size:            $reflect-font-size-medium !default;
+$reflect-list-item-font-size:            $reflect-font-size-base !default;
 $reflect-list-item-padding-v:            $reflect-tiny !default;
 $reflect-list-item-padding-h:            $reflect-small !default;
 $reflect-list-item-margin-bottom:        $reflect-small !default;
@@ -436,9 +447,9 @@ $reflect-menu-item-border-focus:         $reflect-border-active-hover;
 $reflect-menu-item-border-active:        $reflect-border-active-hover;
 $reflect-menu-item-font-size:            $reflect-font-size-small !default;
 $reflect-menu-item-font-weight:          $reflect-font-weight-heavy !default;
-$reflect-menu-item-font-size-tiny:       $reflect-font-size-medium !default;
+$reflect-menu-item-font-size-tiny:       $reflect-font-size-tiny !default;
 $reflect-menu-item-line-height:          $reflect-font-size-base !default;
-$reflect-menu-item-line-height-tiny:     $reflect-font-size-medium !default;
+$reflect-menu-item-line-height-tiny:     $reflect-font-size-tiny !default;
 $reflect-menu-item-height:               40px !default;
 $reflect-menu-item-color:                $reflect-gray-dark !default;
 $reflect-menu-item-icon-color:           $reflect-font-color-subtle !default;
@@ -595,7 +606,7 @@ $reflect-tab-panel-padding-vertical:     0 $reflect-large !default;
 
 // Tables
 // ----------------------------------------------------------------------------
-$reflect-table-font-size:                $reflect-font-size-medium !default;
+$reflect-table-font-size:                $reflect-font-size-base !default;
 $reflect-table-border:                   1px solid $reflect-gray-light !default;
 $reflect-table-shadow:                   $reflect-outer-shadow !default;
 $reflect-table-header-bg:                $reflect-gray-lighter !default;
@@ -640,6 +651,6 @@ $reflect-tooltip-hint-bg:                rgba($reflect-bg-dark, 0.75) !default;
 $reflect-tooltip-hint-color:             $reflect-gray-light !default;
 $reflect-tooltip-hint-padding:           $reflect-tiny $reflect-small !default;
 $reflect-tooltip-hint-radius:            $reflect-border-radius !default;
-$reflect-tooltip-hint-font-size:         $reflect-font-size-medium !default;
+$reflect-tooltip-hint-font-size:         $reflect-font-size-base !default;
 $reflect-tooltip-hint-elevation:         24 !default;
 /* stylelint-enable */
