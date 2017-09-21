@@ -125,12 +125,21 @@ $reflect-font-size-base:                 14px !default;
 $reflect-font-size-small:                12px !default;
 $reflect-font-size-tiny:                 11px !default;
 
+$reflect-font-weight-normal:             300 !default;
+$reflect-font-weight-medium:             400 !default;
 $reflect-font-weight-heavy:              600 !default;
 
 $reflect-font-color-base:                $reflect-gray-darker !default;
 $reflect-font-color-medium:              $reflect-gray-dark !default;
 $reflect-font-color-subtle:              $reflect-gray !default;
 $reflect-font-color-light:               $reflect-white !default;
+
+// Text Labels
+$reflect-text-label-size:                $reflect-font-size-tiny !default;
+$reflect-text-label-color:               $reflect-font-color-medium !default;
+$reflect-text-label-letter-spacing:      0.6px !default;
+$reflect-text-label-transform:           uppercase !default;
+$reflect-text-label-weight:              $reflect-font-weight-medium !default;
 
 // Borders
 // ----------------------------------------------------------------------------
@@ -146,9 +155,9 @@ $reflect-border-active:                  $reflect-border-size $reflect-border-st
 $reflect-border-active-hover:            $reflect-border-size $reflect-border-style $reflect-action-hover !default;
 $reflect-border-heavy:                   $reflect-border-size*2 $reflect-border-style $reflect-border-color !default;
 
+
 // Shadows
 // ----------------------------------------------------------------------------
-
 $reflect-outer-shadow:                   0 1px 2px rgba(0, 0, 0, 0.05) !default;
 $reflect-outer-shadow-large:             2px 2px 4px rgba(0, 0, 0, 0.05) !default;
 $reflect-outer-shadow-huge:              0 0 10px rgba(0, 0, 0, 0.08) !default;
@@ -172,7 +181,7 @@ $reflect-accordion-item-title-color:     $reflect-font-color-medium !default;
 $reflect-accordion-item-title-hover:     $reflect-font-color-base !default;
 $reflect-accordion-item-title-bg-color:  $reflect-bg-subtle !default;
 $reflect-accordion-item-title-border:    $reflect-border !default;
-$reflect-accordion-item-title-padding:   9px 16px 11px !default;
+$reflect-accordion-item-title-padding:   9px 16px 11px !default; // Todo: Base on grid
 $reflect-accordion-item-title-case:      auto !default;
 $reflect-accordion-item-content-padding: $reflect-large 16px !default;
 $reflect-accordion-icon-color:           $reflect-icon-fill !default;
@@ -202,20 +211,20 @@ $reflect-button-font-family:             'Montserrat', sans-serif !default;
 $reflect-button-font-weight:             normal !default;
 $reflect-button-text-case:               uppercase !default;
 $reflect-button-font-size:               $reflect-font-size-small !default;
-$reflect-button-height:                  44px !default;
+$reflect-button-height:                  44px !default; // Todo: Base on grid
 $reflect-button-padding:                 20px !default; //left and right padding
 
 // Tiny Buttons
 $reflect-button-tiny-font-size:          $reflect-font-size-tiny !default;
-$reflect-button-tiny-height:             22px !default;
+$reflect-button-tiny-height:             22px !default; // Todo: Base on grid
 $reflect-button-tiny-padding:            $reflect-button-padding / 4 !default;
 
 $reflect-button-small-font-size:         $reflect-font-size-small !default;
-$reflect-button-small-height:            33px !default;
+$reflect-button-small-height:            33px !default; // Todo: Base on grid
 $reflect-button-small-padding:           $reflect-button-padding / 2 !default;
 
 $reflect-button-large-font-size:         $reflect-font-size-base !default;
-$reflect-button-large-height:            60px !default;
+$reflect-button-large-height:            60px !default; // Todo: Base on grid
 $reflect-button-large-padding:           $reflect-button-padding * 1.5 !default;
 
 // Primary Buttons
@@ -272,21 +281,21 @@ $reflect-button-error-border-color-hover:      $reflect-danger-color !default;
 // ----------------------------------------------------------------------------
 
 // Card General
-$reflect-card-padding:                   16px !default;
+$reflect-card-padding:                   16px !default; // Todo: Base on grid
 $reflect-card-bg:                        $reflect-bg-primary !default;
 $reflect-card-border:                    $reflect-border !default;
 $reflect-card-shadow:                    $reflect-outer-shadow;
 
 // Card Header
-$reflect-card-header-padding:            12px 16px 16px !default;
+$reflect-card-header-padding:            12px 16px 16px !default; // Todo: Base on grid
 $reflect-card-title-size:                $reflect-font-size-medium !default;
 $reflect-card-title-color:               $reflect-font-color-base !default;
-$reflect-card-title-margin:              4px !default;
+$reflect-card-title-margin:              4px !default; // Todo: Base on grid
 $reflect-card-subtitle-size:             $reflect-font-size-small !default;
 $reflect-card-subtitle-color:            $reflect-font-color-medium !default;
 $reflect-card-controls-size:             $reflect-font-size-small !default;
 $reflect-card-controls-color:            $reflect-font-color-medium !default;
-$reflect-card-search-margin:             16px 0 0 !default;
+$reflect-card-search-margin:             16px 0 0 !default; // Todo: Base on grid
 
 $reflect-card-description-padding:       $reflect-card-header-padding !default;
 $reflect-card-description-font-size:     $reflect-font-size-small !default;
@@ -380,7 +389,7 @@ $reflect-dropdown-item-disabled-bg:      $reflect-gray-light !default;
 // Forms
 // ----------------------------------------------------------------------------
 $reflect-form-label-font-size:           $reflect-font-size-small !default;
-$reflect-form-label-margin-bottom:       6px !default;
+$reflect-form-label-margin-bottom:       6px !default; // Todo: Base on grid
 $reflect-form-label-case:                none !default;
 $reflect-form-label-color:               $reflect-font-color-subtle !default;
 
@@ -397,7 +406,7 @@ $reflect-filter-selected-shadow:         $reflect-selected-shadow !default;
 $reflect-filter-border-active:           $reflect-border-active !default;
 
 $reflect-filter-select-padding:          $reflect-tiny !default;
-$reflect-filter-select-height:           10px !default;
+$reflect-filter-select-height:           10px !default; // Todo: Base on grid
 
 $reflect-filter-split-bg:                $reflect-gray-light !default;
 
@@ -436,9 +445,9 @@ $reflect-list-item-font-size:            $reflect-font-size-base !default;
 $reflect-list-item-padding-v:            $reflect-tiny !default;
 $reflect-list-item-padding-h:            $reflect-small !default;
 $reflect-list-item-margin-bottom:        $reflect-small !default;
-$reflect-list-item-icon-top:             2px !default;
-$reflect-list-item-icon-height:          33px !default; // should be the height of the list item to center
-$reflect-list-item-icon-width:           16px !default;
+$reflect-list-item-icon-top:             2px !default; // Todo: Base on grid
+$reflect-list-item-icon-height:          33px !default; // Todo: Base on grid
+$reflect-list-item-icon-width:           16px !default; // Todo: Base on grid
 
 // Menu
 // ----------------------------------------------------------------------------
@@ -450,11 +459,11 @@ $reflect-menu-item-font-weight:          $reflect-font-weight-heavy !default;
 $reflect-menu-item-font-size-tiny:       $reflect-font-size-tiny !default;
 $reflect-menu-item-line-height:          $reflect-font-size-base !default;
 $reflect-menu-item-line-height-tiny:     $reflect-font-size-tiny !default;
-$reflect-menu-item-height:               40px !default;
-$reflect-menu-item-color:                $reflect-gray-dark !default;
-$reflect-menu-item-icon-color:           $reflect-font-color-subtle !default;
+$reflect-menu-item-height:               $reflect-size-base * 5 !default;
+$reflect-menu-item-color:                $reflect-font-color-base !default;
+$reflect-menu-item-icon-color:           $reflect-icon-fill !default;
 $reflect-menu-item-bg:                   transparent !default;
-$reflect-menu-item-padding:              0 16px !default;
+$reflect-menu-item-padding:              0 $reflect-medium !default;
 $reflect-menu-header-border:             $reflect-border !default;
 
 // Menu States
@@ -488,7 +497,7 @@ $reflect-modal-overlay-bg:               rgba(255, 255, 255, 0.8) !default;
 $reflect-modal-width:                    1200px !default;
 $reflect-modal-width-small:              400px !default;
 $reflect-modal-width-medium:             580px !default;
-$reflect-modal-title-padding:            40px 80px !default;
+$reflect-modal-title-padding:            40px 80px !default; // Todo: Base on grid
 $reflect-modal-title-border:             $reflect-border !default;
 $reflect-modal-sidebar-bg:               $reflect-bg-subtle !default;
 $reflect-modal-sidebar-width:            300px !default;
@@ -545,7 +554,7 @@ $reflect-select-item-border:             $reflect-action-color !default;
 
 // These are for the beginning of us building our own selects
 $reflect-select-label-font-size:         $reflect-font-size-small !default;
-$reflect-select-label-padding:           6px 7px !default;
+$reflect-select-label-padding:           6px 7px !default; // Todo: Base on grid
 $reflect-select-label-bg:                $reflect-gray-light !default;
 $reflect-select-label-border:            $reflect-border !default;
 $reflect-select-label-border-radius:     $reflect-border-radius !default;
@@ -573,9 +582,9 @@ $reflect-stencil-icon-stroke:            $reflect-stencil-bg !default;
 
 // Switch
 // ----------------------------------------------------------------------------
-$reflect-switch-height:                  21px !default;
-$reflect-switch-width:                   47px !default;
-$reflect-switch-padding:                 5px !default;
+$reflect-switch-height:                  21px !default; // Todo: Base on grid
+$reflect-switch-width:                   47px !default; // Todo: Base on grid
+$reflect-switch-padding:                 5px !default; // Todo: Base on grid
 $reflect-switch-handle-height:           $reflect-switch-height - ($reflect-switch-padding * 2) !default;
 
 $reflect-switch-on-bg:                   $reflect-active-color !default;
@@ -622,7 +631,7 @@ $reflect-tag-border-selected:            $reflect-border-active !default;
 $reflect-tag-color:                      $reflect-font-color-medium !default;
 $reflect-tag-font-size:                  $reflect-button-font-size !default;
 $reflect-tag-font-weight:                $reflect-button-font-weight !default;
-$reflect-tag-height:                     33px !default;
+$reflect-tag-height:                     33px !default; // Todo: Base on grid
 $reflect-tag-line-height:                $reflect-tag-height !default;
 $reflect-tag-margin:                     $reflect-tiny $reflect-tiny 0 !default;
 $reflect-tag-padding:                    $reflect-small !default;
@@ -634,7 +643,7 @@ $reflect-tag-icon-size:                  14px !default;
 
 $reflect-tag-tiny-case:                  uppercase !default;
 $reflect-tag-tiny-font-size:             $reflect-font-size-tiny !default;
-$reflect-tag-tiny-height:                22px !default;
+$reflect-tag-tiny-height:                22px !default; // Todo: Base on grid
 $reflect-tag-tiny-letterspacing:         1px !default;
 $reflect-tag-tiny-line-height:           $reflect-tag-tiny-height !default;
 $reflect-tag-tiny-padding:               0 $reflect-mini !default;
@@ -653,4 +662,5 @@ $reflect-tooltip-hint-padding:           $reflect-tiny $reflect-small !default;
 $reflect-tooltip-hint-radius:            $reflect-border-radius !default;
 $reflect-tooltip-hint-font-size:         $reflect-font-size-base !default;
 $reflect-tooltip-hint-elevation:         24 !default;
+
 /* stylelint-enable */
