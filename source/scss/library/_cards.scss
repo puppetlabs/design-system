@@ -11,6 +11,7 @@
 
 .rc-card-header {
   padding: $reflect-card-header-padding;
+  width: 100%;
 
   ~ .rc-card-section,
   ~ .rc-card-description {
@@ -27,6 +28,7 @@
   flex-direction: row;
   justify-content: flex-end;
   margin-bottom: $reflect-mini;
+
   &:only-child {
     margin-bottom: 0;
   }
@@ -75,8 +77,10 @@
 
 .rc-card-section {
   padding: $reflect-card-padding;
+  width: 100%;
 
-  + .rc-card-section {
+  + .rc-card-section,
+  + .rc-card-header {
     padding-top: 0;
   }
 
