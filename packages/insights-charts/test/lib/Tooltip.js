@@ -33,7 +33,8 @@ describe('Tooltip', () => {
       }];
 
       const dispatchers = { on: dispatchCallback };
-      const options = { enabled: true };
+      const formatter = (v) => v.toUpperCase();
+      const options = { tooltips: { enabled: true, formatter } };
 
       const tooltip = new Tooltip(seriesData, options, dispatchers, 'id');
 
@@ -41,7 +42,7 @@ describe('Tooltip', () => {
 
       const selection = select('.reflect-charts-tooltip');
 
-      expect(selection.select('.reflect-charts-tooltip-header').text()).to.eql('hello');
+      expect(selection.select('.reflect-charts-tooltip-header').text()).to.eql('HELLO');
       expect(selection.select('.reflect-charts-tooltip-value').text()).to.eql('1');
     });
   });

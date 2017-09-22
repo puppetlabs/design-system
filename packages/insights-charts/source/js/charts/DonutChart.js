@@ -37,6 +37,12 @@ class DonutChart extends Chart {
 
     this.donut.update(seriesData, options, dimensions, dispatchers);
   }
+
+  destroy() {
+    if (this.tooltip) {
+      this.tooltip.destroy();
+    }
+  }
 }
 
 export default DonutChart;

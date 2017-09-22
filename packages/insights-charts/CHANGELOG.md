@@ -1,3 +1,9 @@
+# 0.1.24
+
+* Fix resizing bug
+* Fix issue with tooltip positioning
+* Fix issue with tooltip and legend formatting
+
 # 0.1.23
 
 * Remove max-width on legends

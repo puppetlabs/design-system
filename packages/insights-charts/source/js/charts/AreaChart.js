@@ -238,6 +238,12 @@ class AreaChart extends Chart {
 
     svg.selectAll(CSS.getClassSelector('series')).raise();
   }
+
+  destroy() {
+    if (this.tooltip) {
+      this.tooltip.destroy();
+    }
+  }
 }
 
 export default AreaChart;

@@ -15,12 +15,11 @@ class Legend {
     this.getFormattedAggregate = this.getFormattedAggregate.bind(this);
   }
 
-  getFormattedValue(value) {
+  getFormattedLabel(value) {
     const options = this.options;
-    const xOptions = options.axis && options.axis.x ? options.axis.x : {};
-    const optionFormatter = xOptions.values && xOptions.values.formatter;
+    const legendFormatter = options.legend && options.legend.formatter;
 
-    return helpers.getFormattedValue(optionFormatter, value);
+    return helpers.getFormattedValue(legendFormatter, value);
   }
 
   getFormattedAggregate(datum) {
@@ -37,7 +36,7 @@ class Legend {
     if (expanded) {
       values = seriesData[0].data.map((d, i) => {
         const val = {
-          label: this.getFormattedValue(d.x),
+          label: this.getFormattedLabel(d.x),
           axis: d.axis,
           seriesIndex: i,
           color: d.color,
@@ -52,11 +51,18 @@ class Legend {
     } else {
       // We need to set the axis for each series.
       values = seriesData.map((s) => {
-        if (s.data) {
-          s.axis = s.data[0].axis;
+        const series = {
+          data: s.data,
+          color: s.color,
+          aggregate: s.aggregate,
+          label: this.getFormattedLabel(s.label),
+        };
+
+        if (series.data) {
+          series.axis = series.data[0].axis;
         }
 
-        return s;
+        return series;
       });
     }
 

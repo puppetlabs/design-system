@@ -61,13 +61,21 @@ class Container {
       const options = this.options;
       const orientation = options.axis.x.orientation;
       const categories = this.data.getCategories().map(c => (c.label));
-      const testSVG = this.wrapper.append('svg');
+
+      if (this.testSVG) {
+        this.testSVG.remove();
+      }
+
+      this.testSVG = this.wrapper.append('svg')
+        .attr('width', '100%')
+        .attr('height', '100%')
+        .attr('style', 'visibility: hidden;');
 
       const xScale = new XScale(categories, options, dimensions);
       const x = xScale.generate();
 
       const xAxis = new XAxis(categories, x, dimensions, options.axis.x);
-      const tempX = xAxis.render(testSVG);
+      const tempX = xAxis.render(this.testSVG);
       let leftOverflow = 0;
       let rightOverflow = 0;
       const topOverflow = 0;
@@ -107,7 +115,7 @@ class Container {
             const y = yScale.generate();
 
             const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
-            const axis = yAxis.render(testSVG);
+            const axis = yAxis.render(this.testSVG);
 
             // TODO: This is currently assuming there is only 1 left axis and 1 right axis
             // We haven't found a use case for more than 1 axis with the same orientation yet
@@ -151,7 +159,7 @@ class Container {
         this.dimensions.margins.bottom += (bottomOverflow - this.dimensions.margins.bottom);
       }
 
-      testSVG.remove();
+      this.testSVG.remove();
     }
   }
 

@@ -2,7 +2,6 @@ import { select } from 'd3-selection';
 import clone from 'clone';
 import deepmerge from 'deepmerge';
 import Dispatchers from '../lib/Dispatchers';
-import CSS from '../helpers/css';
 import IDGenerator from '../helpers/IDGenerator';
 
 import AreaChart from './AreaChart';
@@ -160,10 +159,6 @@ class Chart {
     }
   }
 
-  destroyTooltips() {
-    select(CSS.getClassSelector(`tooltip-${this.id}`)).remove();
-  }
-
   destroyContainer() {
     // Remove all the children.
     select(this.elem).selectAll('*').remove();
@@ -171,9 +166,12 @@ class Chart {
 
   destroy() {
     this.destroyContainer();
-    this.destroyTooltips();
 
     window.removeEventListener('resize', this.resize);
+
+    if (this.chart && this.chart.destroy) {
+      this.chart.destroy();
+    }
   }
 
   getChart() {

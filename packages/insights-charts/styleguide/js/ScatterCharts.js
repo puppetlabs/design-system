@@ -93,6 +93,7 @@ class ScatterCharts extends React.Component {
   componentWillUnmount() {
     this.scatterChart.destroy();
     this.multiSeriesScatterChart.destroy();
+    this.flippedScatterChart.destroy();
   }
 
   render() {

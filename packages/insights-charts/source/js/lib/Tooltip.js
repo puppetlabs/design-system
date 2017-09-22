@@ -10,6 +10,24 @@ class Tooltip {
     this.options = options;
     this.seriesData = seriesData;
     this.dispatchers = dispatchers;
+
+    this.onScroll = this.onScroll.bind(this);
+
+    window.addEventListener('scroll', this.onScroll);
+  }
+
+  onScroll() {
+    if (this.selection) {
+      const dimensions = this.selection.node().getBoundingClientRect();
+      const { width, left } = dimensions;
+      let { top } = dimensions;
+
+      if (window.scrollY) {
+        top += window.scrollY;
+      }
+
+      this.bodyDimensions = { width, top, left };
+    }
   }
 
   getSeriesValue(d, categoryIndex) {
@@ -26,8 +44,7 @@ class Tooltip {
 
   getFormattedHeader(category) {
     const options = this.options;
-    const xOptions = options.axis && options.axis.x ? options.axis.x : {};
-    const optionFormatter = xOptions.values && xOptions.values.formatter;
+    const optionFormatter = options.tooltips && options.tooltips.formatter;
 
     return helpers.getFormattedValue(optionFormatter, category);
   }
@@ -68,7 +85,10 @@ class Tooltip {
         .attr('class', CSS.getClassName('tooltip-content'));
 
       dispatchers.on('tooltipHide', () => {
-        tooltip.style('display', 'none');
+        tooltip
+          .style('display', 'none')
+          .style('top', null)
+          .style('left', null);
       });
 
       dispatchers.on('tooltipMove', (categoryIndex, seriesIndex, category, mouse) => {
@@ -192,20 +212,24 @@ class Tooltip {
     }
 
     if (!this.bodyDimensions) {
-      this.bodyDimensions = this.selection.node().getBoundingClientRect();
+      const { width, top, left } = this.selection.node().getBoundingClientRect();
+
+      this.bodyDimensions = { width, top, left };
     }
 
     const { tooltipDimensions, bodyDimensions } = this;
 
     mouseY -= (tooltipDimensions.height / 2);
+    mouseY += bodyDimensions.top;
 
     if (
       (bodyDimensions.left + bodyDimensions.width) <
       (mouseX + tooltipDimensions.width + TOOLTIP_POINTER_MARGIN)
     ) {
       mouseX -= (TOOLTIP_POINTER_MARGIN + this.tooltipDimensions.width);
+      mouseX += bodyDimensions.left;
     } else {
-      mouseX += TOOLTIP_POINTER_MARGIN;
+      mouseX += TOOLTIP_POINTER_MARGIN + bodyDimensions.left;
     }
 
     this.selection.selectAll(CSS.getClassSelector(`tooltip-${this.id}`))
@@ -220,6 +244,12 @@ class Tooltip {
     this.options = options;
     this.dispatchers = dispatchers;
     this.id = id;
+  }
+
+  destroy() {
+    this.selection.select(CSS.getClassSelector(`tooltip-${this.id}`)).remove();
+
+    window.removeEventListener('scroll', this.onScroll);
   }
 }
 
