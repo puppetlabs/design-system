@@ -125,14 +125,61 @@ $reflect-font-size-base:                 14px !default;
 $reflect-font-size-small:                12px !default;
 $reflect-font-size-tiny:                 11px !default;
 
-$reflect-font-weight-normal:             300 !default;
-$reflect-font-weight-medium:             400 !default;
-$reflect-font-weight-heavy:              600 !default;
-
 $reflect-font-color-base:                $reflect-gray-darker !default;
 $reflect-font-color-medium:              $reflect-gray-dark !default;
 $reflect-font-color-subtle:              $reflect-gray !default;
 $reflect-font-color-light:               $reflect-white !default;
+
+$reflect-line-height-default:            1.5em !default;
+
+$reflect-font-weight-normal:             300 !default;
+$reflect-font-weight-medium:             400 !default;
+$reflect-font-weight-heavy:              600 !default;
+
+// Content
+$reflect-strong:                         $reflect-font-weight-heavy !default;
+
+// Headings
+$reflect-heading-color:                  $reflect-font-color-base !default;
+$reflect-heading-font-size-base:         $reflect-font-size-base !default;
+$reflect-heading-font-weight:            $reflect-font-weight-medium !default;
+$reflect-heading-line-height:            1.25em !default;
+$reflect-heading-margin:                 0 0 $reflect-medium !default;
+
+$reflect-h1-font-size:                   $reflect-font-size-huge !default;
+$reflect-h2-font-size:                   $reflect-font-size-large !default;
+$reflect-h3-font-size:                   $reflect-font-size-medium !default;
+$reflect-h4-font-size:                   $reflect-font-size-base !default;
+$reflect-h5-font-size:                   $reflect-font-size-small !default;
+$reflect-h6-font-size:                   $reflect-font-size-small !default;
+
+// Paragraphs
+$reflect-p-color:                        $reflect-font-color-base !default;
+$reflect-p-font-size:                    $reflect-font-size-base !default;
+$reflect-p-font-weight:                  $reflect-font-weight-normal !default;
+$reflect-p-line-height:                  $reflect-line-height-default !default;
+$reflect-p-margin:                       0 0 $reflect-medium !default;
+
+$reflect-list-color:                     $reflect-font-color-base !default;
+$reflect-list-font-size:                 $reflect-font-size-base !default;
+$reflect-list-font-weight:               $reflect-font-weight-normal !default;
+$reflect-list-line-height:               $reflect-line-height-default !default;
+$reflect-list-margin:                    $reflect-mini 0 $reflect-small !default;
+$reflect-list-padding:                   0 !default;
+$reflect-list-position:                  inside !default;
+$reflect-list-item-margin:               0 0 $reflect-small $reflect-mini !default;
+$reflect-list-ul-type:                   initial !default;
+$reflect-list-ol-type:                   decimal !default;
+
+// Code
+$reflect-code-bg:                        $reflect-bg-subtle !default;
+$reflect-code-color:                     $reflect-font-color-base !default;
+$reflect-code-font-family:               monospace !default;
+$reflect-code-font-size:                 $reflect-font-size-base !default;
+$reflect-code-font-weight:               $reflect-font-weight-medium !default;
+$reflect-code-line-height:               $reflect-line-height-default !default;
+$reflect-code-margin:                    0 0 $reflect-small !default;
+$reflect-code-padding:                   $reflect-tiny !default;
 
 // Text Labels
 $reflect-text-label-size:                $reflect-font-size-tiny !default;
@@ -154,6 +201,20 @@ $reflect-border-hover:                   $reflect-border-size $reflect-border-st
 $reflect-border-active:                  $reflect-border-size $reflect-border-style $reflect-action-color !default;
 $reflect-border-active-hover:            $reflect-border-size $reflect-border-style $reflect-action-hover !default;
 $reflect-border-heavy:                   $reflect-border-size*2 $reflect-border-style $reflect-border-color !default;
+
+// HR
+$reflect-hr-border:                      $reflect-border !default;
+$reflect-hr-margin:                      $reflect-medium !default;
+
+// Blockquote
+// ----------------------------------------------------------------------------
+$reflect-bq-border:              solid $reflect-tiny $reflect-border-color !default;
+$reflect-bq-color:               $reflect-font-color-base !default;
+$reflect-bq-font-size:           $reflect-font-size-base !default;
+$reflect-bq-font-weight:         $reflect-font-weight-normal !default;
+$reflect-bq-line-height:         $reflect-line-height-default !default;
+$reflect-bq-margin:              0 0 $reflect-medium !default;
+$reflect-bq-padding:             $reflect-tiny $reflect-medium !default;
 
 
 // Shadows

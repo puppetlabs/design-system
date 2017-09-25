@@ -13,7 +13,7 @@
   h4,
   h5,
   h6 {
-    font-weight: $reflect-font-weight-heavy;
+    font-weight: $reflect-heading-font-weight;
     margin: 0;
   }
 
@@ -22,7 +22,7 @@
   }
 
   a {
-    color: $reflect-brand-primary;
+    color: $reflect-action-color;
     text-decoration: none;
   }
 }
