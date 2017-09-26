@@ -1,4 +1,4 @@
-/* stylelint-disable scss/dollar-variable-colon-space-after, indentation  */
+/* stylelint-disable scss/dollar-variable-colon-space-after, scss/dollar-variable-colon-space-before, indentation  */
 
 // ============================================================================
 // BASELINE VARIABLES
@@ -14,10 +14,10 @@ $reflect-brand-primary                       : #269cff !default;
 $reflect-gray-base                           : #a6bdd2 !default;
 
 $reflect-black                               : #424a52 !default;
-$reflect-gray-darker                         : #6D7A87 !default;
+$reflect-gray-darker                         : #6d7a87 !default;
 $reflect-gray-dark                           : #88a2b9 !default;
 $reflect-gray                                : $reflect-gray-base !default;
-$reflect-gray-light                          : #dBdfe3 !default;
+$reflect-gray-light                          : #dbdfe3 !default;
 $reflect-gray-lighter                        : #f8f8f9 !default;
 $reflect-white                               : #fff !default;
 
@@ -77,19 +77,19 @@ $reflect-anchor-hover                        : $reflect-action-hover !default;
 
 // Status Colors
 // Danger - Used to provide a warning for irreversible actions and errors
-$reflect-danger-color                        : #269CFF !default;
+$reflect-danger-color                        : #269cff !default;
 $reflect-danger-hover                        : darken($reflect-danger-color, 10%) !default;
 $reflect-danger-border                       : $reflect-danger-color !default;
 $reflect-danger-border-hover                 : darken($reflect-danger-color, 10%) !default;
 
 // Success
-$reflect-success-color                       : #73D96D !default;
+$reflect-success-color                       : #73d96d !default;
 $reflect-success-hover                       : darken($reflect-success-color, 10%) !default;
 $reflect-success-border                      : $reflect-success-color !default;
 $reflect-success-border-hover                : darken($reflect-success-color, 10%) !default;
 
 //Warning
-$reflect-warning-color                       : #FACA3B !default;
+$reflect-warning-color                       : #faca3b !default;
 $reflect-warning-hover                       : darken($reflect-warning-color, 10%) !default;
 $reflect-warning-border                      : $reflect-warning-color !default;
 $reflect-warning-border-hover                : darken($reflect-warning-color, 10%) !default;
