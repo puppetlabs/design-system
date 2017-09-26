@@ -59,6 +59,7 @@
 .rc-card-title {
   color: $reflect-card-title-color;
   font-size: $reflect-card-title-size;
+  text-transform: $reflect-card-title-case;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
