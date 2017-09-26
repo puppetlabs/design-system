@@ -18,7 +18,7 @@ const CardActionsMenu = (props) => {
   let menu;
 
   if (props.menuOptions.length > 0) {
-    const width = props.menuToggleIcon === 'kebab' ? 4 : 16;
+    const width = props.menuToggleIcon === 'kebab' ? '4' : '16';
 
     const target = (
       <a>
