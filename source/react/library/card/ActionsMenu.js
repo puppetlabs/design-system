@@ -26,7 +26,6 @@ const CardActionsMenu = (props) => {
 
     menu = (
       <DropdownMenu
-        disablePortal
         size="tiny"
         anchor="bottom right"
         target={ target }

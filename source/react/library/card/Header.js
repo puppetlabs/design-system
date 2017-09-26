@@ -76,8 +76,12 @@ class CardHeader extends React.Component {
     const actions = this.renderActions();
     const controls = this.renderControls();
 
+    const className = classnames('rc-card-header', {
+      'rc-card-header-actions-only': !title && !controls,
+    });
+
     return (
-      <div className="rc-card-header">
+      <div className={ className }>
         <div className="rc-card-title-actions">
           { title }
           { actions }

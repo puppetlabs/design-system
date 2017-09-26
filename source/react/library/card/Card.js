@@ -4,7 +4,10 @@ import classnames from 'classnames';
 const propTypes = {
   children: React.PropTypes.any,
   size: React.PropTypes.string,
-  /** Card height in px */
+  style: React.PropTypes.string,
+  /** Card width in px or % */
+  width: React.PropTypes.string,
+  /** Card height in px or % */
   height: React.PropTypes.string,
   /** Manual active state */
   selected: React.PropTypes.bool,
@@ -17,6 +20,7 @@ const propTypes = {
 const defaultProps = {
   size: '',
   children: [],
+  width: '',
   height: '',
   selected: false,
   className: '',
@@ -41,16 +45,21 @@ class Card extends React.Component {
   }
 
   render() {
-    const { size, onClick, height, selected } = this.props;
+    const { style, size, onClick, width, height, selected } = this.props;
     const className = classnames('rc-card', {
       'rc-card-large': size === 'large',
       'rc-card-small': size === 'small',
       'rc-card-xs': size === 'xs',
       'rc-card-selected': selected,
+      [`rc-card-${style}`]: style,
       'rc-card-selectable': onClick,
     }, this.props.className);
     const content = this.props.children;
     const styles = {};
+
+    if (width) {
+      styles.width = width;
+    }
 
     if (height) {
       styles.height = height;

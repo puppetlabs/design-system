@@ -23,6 +23,14 @@
   }
 }
 
+.rc-card-header-actions-only {
+  position: absolute;
+
+  ~ .rc-card-section {
+    padding: $reflect-card-header-padding;
+  }
+}
+
 .rc-card-title-actions {
   display: flex;
   flex-direction: row;
@@ -182,4 +190,10 @@
     border: $reflect-card-border-selected-hover;
     box-shadow: $reflect-card-shadow-selected-hover;
   }
+}
+
+.rc-card-basic {
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
 }
