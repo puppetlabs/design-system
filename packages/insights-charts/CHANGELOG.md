@@ -1,3 +1,7 @@
+# 0.1.25
+
+* Use passed legend formatters to format the series in tooltips
+
 # 0.1.24
 
 * Fix resizing bug

@@ -49,6 +49,15 @@ class Tooltip {
     return helpers.getFormattedValue(optionFormatter, category);
   }
 
+  // For formatting the series, we just piggyback off the legend formatter. TODO: Should these have
+  // their own formatter?
+  getFormattedGroup(group) {
+    const options = this.options;
+    const optionFormatter = options.legend && options.legend.formatter;
+
+    return helpers.getFormattedValue(optionFormatter, group);
+  }
+
   getFormattedItem(datum, group) {
     const options = this.options;
     const yOptions = options.axis && options.axis.y ? options.axis.y[datum.axis] : {};
@@ -56,6 +65,8 @@ class Tooltip {
     let item = '';
 
     if (group) {
+      group = this.getFormattedGroup(group);
+
       item += `${group}: `;
     }
 
