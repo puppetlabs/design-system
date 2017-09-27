@@ -24,13 +24,14 @@ const defaultProps = {
 
 class CardHeader extends React.Component {
   renderTitle() {
-    const { title, subtitle } = this.props;
+    const { title, subtitle, controls } = this.props;
     const className = classnames('rc-card-title', this.props.titleClassName);
     let titleJSX;
     let subtitleJSX;
+    let controlsJSX;
     let jsx = null;
 
-    if (title || subtitle) {
+    if (title || subtitle || controls) {
       if (title) {
         titleJSX = <div key="card-title" className={ className }>{ title }</div>;
       }
@@ -39,10 +40,15 @@ class CardHeader extends React.Component {
         subtitleJSX = <div key="card-subtitle" className="rc-card-subtitle">{ subtitle }</div>;
       }
 
+      if (controls) {
+        controlsJSX = <div key="card-controls" className="rc-card-controls">{ controls }</div>;
+      }
+
       jsx = (
         <div key="card-title-area" className="rc-card-title-area">
           { titleJSX }
           { subtitleJSX }
+          { controlsJSX }
         </div>
       );
     }
@@ -60,21 +66,9 @@ class CardHeader extends React.Component {
     return jsx;
   }
 
-  renderControls() {
-    const controls = this.props.controls;
-    let jsx = null;
-
-    if (controls) {
-      jsx = <div key="card-controls" className="rc-card-controls">{ controls }</div>;
-    }
-
-    return jsx;
-  }
-
   render() {
     const title = this.renderTitle();
     const actions = this.renderActions();
-    const controls = this.renderControls();
 
     return (
       <div className="rc-card-header">
@@ -82,7 +76,6 @@ class CardHeader extends React.Component {
           { title }
           { actions }
         </div>
-        { controls }
       </div>
     );
   }
