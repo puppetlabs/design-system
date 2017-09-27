@@ -20,7 +20,7 @@ $reflect-accordion-icon-color-hover          : $reflect-icon-fill-hover !default
 
 // Blank Slates
 // ----------------------------------------------------------------------------
-$reflect-blank-slate-font-size               : $reflect-font-size-huge !default;
+$reflect-blank-slate-font-size               : $reflect-font-size-medium !default;
 $reflect-blank-slate-font-color              : $reflect-font-color-subtle !default;
 $reflect-blank-slate-font-weight             : normal !default;
 $reflect-blank-slate-bg                      : $reflect-bg-primary !default;
@@ -488,7 +488,7 @@ $reflect-toggle-off-color                    : $reflect-font-color-base;
 
 // Tooltip
 // ----------------------------------------------------------------------------
-$reflect-tooltip-hint-bg                     : rgba($reflect-bg-dark, 0.75) !default;
+$reflect-tooltip-hint-bg                     : rgba($reflect-black, 0.75) !default;
 $reflect-tooltip-hint-color                  : $reflect-gray-light !default;
 $reflect-tooltip-hint-padding                : $reflect-tiny $reflect-small !default;
 $reflect-tooltip-hint-radius                 : $reflect-border-radius !default;

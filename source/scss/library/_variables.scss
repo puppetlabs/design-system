@@ -77,7 +77,7 @@ $reflect-anchor-hover                        : $reflect-action-hover !default;
 
 // Status Colors
 // Danger - Used to provide a warning for irreversible actions and errors
-$reflect-danger-color                        : #269cff !default;
+$reflect-danger-color                        : #d9534f !default;
 $reflect-danger-hover                        : darken($reflect-danger-color, 10%) !default;
 $reflect-danger-border                       : $reflect-danger-color !default;
 $reflect-danger-border-hover                 : darken($reflect-danger-color, 10%) !default;
