@@ -13,12 +13,6 @@
   }
 }
 
-.rc-list-item:last-of-type {
-  .rc-list-item-link {
-    margin-bottom: 0;
-  }
-}
-
 .rc-list-item-selected {
   .rc-list-item-link {
     border: $reflect-list-item-border-selected;
