@@ -55,6 +55,7 @@ class Legend {
           data: s.data,
           color: s.color,
           aggregate: s.aggregate,
+          seriesIndex: s.seriesIndex,
           label: this.getFormattedLabel(s.label),
         };
 
@@ -118,7 +119,6 @@ class Legend {
           .on('mouseout', () => {
             dispatchers.call('unHighlightSeries');
           });
-
 
       if (dispatchers.enabled('legendItemClick.external')) {
         legendItems

@@ -9,6 +9,7 @@ class XAxis {
     this.x = x;
     this.dimensions = dimensions;
     this.options = options;
+    this.axisOptions = options.axis.x;
   }
 
   estimateTickValueWidth(values, formatter) {
@@ -83,7 +84,7 @@ class XAxis {
   }
 
   getAxisFormatter() {
-    const options = this.options;
+    const options = this.axisOptions;
     const optionFormatter = options.labels && options.labels.formatter;
     let formatter = d => (d);
 
@@ -99,7 +100,7 @@ class XAxis {
   }
 
   getLabelsRotatation() {
-    const options = this.options;
+    const options = this.axisOptions;
     let result = false;
 
     if (options.labels && options.labels.rotated) {
@@ -142,7 +143,7 @@ class XAxis {
     } else if (ticks) {
       axis.ticks(ticks.length);
 
-      const scaleType = helpers.detectScaleType(categories, options.type);
+      const scaleType = helpers.detectScaleType(categories, this.options.type);
 
       if (scaleType === 'ordinal' && !this.getLabelsRotatation()) {
         axis.tickValues(ticks);
@@ -154,7 +155,7 @@ class XAxis {
 
   render(elem) {
     const { height, width } = this.dimensions;
-    const options = this.options;
+    const options = this.axisOptions;
     const orientation = options && options.orientation ? options.orientation : 'bottom';
 
     if (elem) {
@@ -254,6 +255,7 @@ class XAxis {
     this.categories = categories;
     this.x = x;
     this.dimensions = dimensions;
+    this.axisOptions = options.axis.x;
     this.options = options;
 
     if (this.axis) {

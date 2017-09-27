@@ -75,7 +75,7 @@ class SparklineChart extends Chart {
 
         if (types.indexOf('line') >= 0) {
           const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData, false));
+          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData));
 
           seriesLine = new SeriesLine(
             lineData,
@@ -185,7 +185,7 @@ class SparklineChart extends Chart {
 
         if (scale.seriesLine) {
           const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData, false));
+          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData));
 
           scale.seriesLine.update(
             lineData,

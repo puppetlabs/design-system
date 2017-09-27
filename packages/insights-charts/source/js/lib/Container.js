@@ -1,6 +1,8 @@
 import clone from 'clone';
+import deepmerge from 'deepmerge';
 import { select } from 'd3-selection';
 import Legend from './Legend';
+import helpers from '../helpers/charting';
 import CSS from '../helpers/css';
 import XScale from './scales/XScale';
 import YScale from './scales/YScale';
@@ -74,7 +76,7 @@ class Container {
       const xScale = new XScale(categories, options, dimensions);
       const x = xScale.generate();
 
-      const xAxis = new XAxis(categories, x, dimensions, options.axis.x);
+      const xAxis = new XAxis(categories, x, dimensions, options);
       const tempX = xAxis.render(this.testSVG);
       let leftOverflow = 0;
       let rightOverflow = 0;
@@ -109,9 +111,11 @@ class Container {
       options.axis.y.forEach((yOptions, yAxisIndex) => {
         if (yOptions.enabled !== false && this.type !== 'donut') {
           const data = this.data.getDataByYAxis(yAxisIndex);
+          const plotOptions =
+            deepmerge(options, helpers.getPlotOptions(this.type, this.options, data));
 
           if (data.length > 0) {
-            const yScale = new YScale(data, yOptions, options.layout, dimensions, options);
+            const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
             const y = yScale.generate();
 
             const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);

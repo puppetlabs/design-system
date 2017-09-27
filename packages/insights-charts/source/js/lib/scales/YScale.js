@@ -129,7 +129,6 @@ class YScale {
 
     y.domain([min, max]);
 
-
     if (options.orientation === 'bottom' || options.orientation === 'top') {
       y.range([0, width]);
     } else {

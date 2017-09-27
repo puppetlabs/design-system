@@ -55,6 +55,31 @@ const helpers = {
     return formatter(value);
   },
 
+  isStackable(type) {
+    let stackable = true;
+
+    if (type === 'line' || type === 'scatter') {
+      stackable = false;
+    }
+
+    return stackable;
+  },
+
+  getPlotOptions(type, options, data) {
+    const stackable = this.isStackable(type);
+    options = options[type] || {};
+    // We want to make sure we're not actually modifying options
+    const addedOptions = { };
+
+    if (data.length <= 1) {
+      addedOptions.layout = 'normal';
+    } else if (data.length > 1 && !options.layout && stackable) {
+      addedOptions.layout = 'stacked';
+    }
+
+    return addedOptions;
+  },
+
   getMaximumPoint(data, options, layout) {
     let maxPoint = { y: 0, y0: 0, x: 0 };
 

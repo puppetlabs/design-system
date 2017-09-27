@@ -1,4 +1,5 @@
 import clone from 'clone';
+import helpers from '../helpers/charting';
 import DataSet from '../lib/DataSet';
 
 class Chart {
@@ -23,16 +24,8 @@ class Chart {
     }
   }
 
-  getPlotOptions(type, data, stackable = true) {
-    const options = this.options[type] || {};
-
-    if (data.length <= 1) {
-      options.layout = 'normal';
-    } else if (data.length > 1 && !options.layout && stackable) {
-      options.layout = 'stacked';
-    }
-
-    return options;
+  getPlotOptions(type, data) {
+    return helpers.getPlotOptions(type, this.options, data);
   }
 }
 

@@ -40,7 +40,7 @@ class ScatterChart extends Chart {
     this.xScale = new XScale(categories, options, dimensions);
     const x = this.xScale.generate();
 
-    this.xAxis = new XAxis(categories, x, dimensions, options.axis.x);
+    this.xAxis = new XAxis(categories, x, dimensions, options);
     this.xAxis.render(svg);
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
@@ -62,7 +62,7 @@ class ScatterChart extends Chart {
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
 
-        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data, false));
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
 
         plotOptions.highlightCategory = false;
 
@@ -134,14 +134,14 @@ class ScatterChart extends Chart {
     this.tooltip.update(seriesData, options, dispatchers, this.id);
 
     const x = this.xScale.update(categories, options, dimensions, this.type);
-    this.xAxis.update(categories, x, dimensions, options.axis.x);
+    this.xAxis.update(categories, x, dimensions, options);
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       const data = this.data.getDataByYAxis(yAxisIndex);
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data, false));
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
 
         plotOptions.highlightCategory = false;
 

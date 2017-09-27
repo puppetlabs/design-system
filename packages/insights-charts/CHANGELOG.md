@@ -1,3 +1,8 @@
+# 0.1.26
+
+* Fix a bug that resulted in not giving the YAxis enough width in specific conditions
+* Fix a bug causing column charts to not use ordinal X scales
+
 # 0.1.25
 
 * Use passed legend formatters to format the series in tooltips

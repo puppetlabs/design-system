@@ -46,7 +46,7 @@ class ColumnChart extends Chart {
     this.xScale = new XScale(categories, options, dimensions);
     const x = this.xScale.generate();
 
-    this.xAxis = new XAxis(categories, x, dimensions, options.axis.x);
+    this.xAxis = new XAxis(categories, x, dimensions, options);
     this.xAxis.render(svg);
 
     let x1Dimension;
@@ -156,7 +156,7 @@ class ColumnChart extends Chart {
     this.tooltip.update(seriesData, options, dispatchers, this.id);
 
     const x = this.xScale.update(categories, options, dimensions, this.type);
-    this.xAxis.update(categories, x, dimensions, options.axis.x);
+    this.xAxis.update(categories, x, dimensions, options);
 
     let x1Dimension;
 

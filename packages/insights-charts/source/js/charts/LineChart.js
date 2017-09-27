@@ -42,7 +42,7 @@ class LineChart extends Chart {
     this.xScale = new XScale(categories, options, dimensions);
     const x = this.xScale.generate();
 
-    this.xAxis = new XAxis(categories, x, dimensions, options.axis.x);
+    this.xAxis = new XAxis(categories, x, dimensions, options);
     this.xAxis.render(svg);
 
     if (!options.tooltips || !options.tooltips.type || options.tooltips.type !== 'simple') {
@@ -69,7 +69,7 @@ class LineChart extends Chart {
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
 
-        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data, false));
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
 
         const seriesLine = new SeriesLine(
           data,
@@ -153,7 +153,7 @@ class LineChart extends Chart {
     this.tooltip.update(seriesData, options, dispatchers, this.id);
 
     const x = this.xScale.update(categories, options, dimensions, this.type);
-    this.xAxis.update(categories, x, dimensions, options.axis.x);
+    this.xAxis.update(categories, x, dimensions, options);
 
     if (this.pointOverlay) {
       this.pointOverlay.update(categories, x, dimensions, dispatchers, options);
@@ -173,7 +173,7 @@ class LineChart extends Chart {
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
-        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data, false));
+        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
 
         scale.seriesLine.update(
           data,
