@@ -53,7 +53,7 @@ class CardHeader extends React.Component {
   renderActions() {
     let jsx;
 
-    if (this.props.actions.length > 0) {
+    if (this.props.actions && this.props.actions.length > 0) {
       jsx = <div key="card-actions" className="rc-card-actions">{ this.props.actions }</div>;
     }
 
@@ -76,12 +76,8 @@ class CardHeader extends React.Component {
     const actions = this.renderActions();
     const controls = this.renderControls();
 
-    const className = classnames('rc-card-header', {
-      'rc-card-header-actions-only': !title && !controls,
-    });
-
     return (
-      <div className={ className }>
+      <div className="rc-card-header">
         <div className="rc-card-title-actions">
           { title }
           { actions }

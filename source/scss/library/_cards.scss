@@ -23,14 +23,6 @@
   }
 }
 
-.rc-card-header-actions-only {
-  position: absolute;
-
-  ~ .rc-card-section {
-    padding: $reflect-card-header-padding;
-  }
-}
-
 .rc-card-title-actions {
   display: flex;
   flex-direction: row;
