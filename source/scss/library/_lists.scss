@@ -1,6 +1,21 @@
+.rc-list {
+  margin: 0;
+  padding: 0;
+}
+
+.rc-list-unordered {
+  list-style: none;
+}
+
 .rc-list-item {
   .rc-tooltip-hover-area {
     display: block;
+  }
+}
+
+.rc-list-item:last-of-type {
+  .rc-list-item-link {
+    margin-bottom: 0;
   }
 }
 
@@ -17,34 +32,31 @@
   border-radius: $reflect-list-item-border-radius;
   color: $reflect-list-item-color;
   cursor: default;
-  display: block;
+  display: flex;
   font-size: $reflect-list-item-font-size;
   margin-bottom: $reflect-list-item-margin-bottom;
   overflow: hidden;
   padding: $reflect-list-item-padding-v $reflect-list-item-padding-h;
-  padding-right: $reflect-list-item-icon-width * 2 + $reflect-list-item-padding-h;
   position: relative;
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 100%;
 
-  .rc-list-item-edit,
-  .rc-list-item-remove {
-    bottom: 0;
-    display: block;
-    height: $reflect-list-item-icon-height;
-    padding: 0;
-    position: absolute;
-    text-align: center;
-    top: 0;
-    width: $reflect-list-item-icon-width;
+  .rc-list-item-text {
+    flex: 1;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
-  .rc-list-item-edit {
-    right: $reflect-list-item-padding-h + $reflect-list-item-icon-width + $reflect-small;
+  .rc-list-item-actions {
+    display: flex;
   }
 
-  .rc-list-item-remove {
-    right: $reflect-list-item-padding-h;
+  .rc-list-item-action {
+    align-items: center;
+    display: flex;
+    margin-left: $reflect-list-item-padding-h;
   }
 }
 
