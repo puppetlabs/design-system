@@ -93,17 +93,17 @@
 
         .Select-control {
           border: $reflect-filter-border;
-          padding: $reflect-filter-padding;
+          padding: $reflect-tiny;
 
           .Select-placeholder {
             line-height: normal;
             color: $reflect-filter-placeholder-color;
-            padding: 6px 28px 6px 6px;
+            padding: $reflect-tiny 28px $reflect-tiny $reflect-tiny;
           }
 
           .Select-value {
             line-height: normal;
-            padding: 6px 28px 6px 6px;
+            padding: $reflect-tiny 28px $reflect-tiny $reflect-tiny;
           }
 
           .Select-input {

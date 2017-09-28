@@ -258,16 +258,16 @@
 
   .Select-control {
     min-height: 0;
-    padding: 7px;
+    padding: $reflect-tiny;
   }
 
   // Ugh... eyeballed this.
   .Select-placeholder {
-    padding: 7px 28px 7px 6px;
+    padding: $reflect-tiny 28px $reflect-tiny $reflect-tiny;
   }
 
   .Select-clear {
-    padding: 5px 10px !important;
+    padding: $reflect-tiny 10px !important;
   }
 
   .Select-arrow-zone {
