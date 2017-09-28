@@ -71,7 +71,7 @@
   color: $reflect-card-controls-color;
   font-size: $reflect-card-controls-size;
 
-  .rc-dropdown-label-text {
+  [class^='rc-'] {
     font-size: $reflect-card-controls-size !important;
   }
 }
