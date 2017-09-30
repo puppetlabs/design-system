@@ -1,3 +1,7 @@
+# 0.1.27
+
+* Updates to the look and feel of charts
+
 # 0.1.26
 
 * Fix a bug that resulted in not giving the YAxis enough width in specific conditions

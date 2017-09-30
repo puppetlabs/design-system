@@ -17,7 +17,7 @@
   .reflect-charts-legend-item {
     display: block;
     float: left;
-    margin-right: 20px;
+    margin-right: $reflect-legend-item-margin;
     overflow: hidden;
     width: auto;
   }
@@ -36,6 +36,6 @@
   border-radius: $reflect-series-indicator-border-radius;
   display: inline-block;
   height: $reflect-legend-font-size/1.5;
-  margin-right: 10px;
+  margin-right: $reflect-legend-indicator-margin;
   width: $reflect-legend-font-size;
 }

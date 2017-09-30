@@ -132,7 +132,7 @@ class Tooltip {
       .data(data, d => (d.seriesIndex));
 
     // if text items already exist then update them
-    const textItems = content.selectAll(CSS.getClassSelector('tooltip-text'));
+    const textItems = content.selectAll(CSS.getClassSelector('tooltip-value'));
     textItems.text(d => (this.getFormattedItem(d.data[categoryIndex], d.label)));
 
     const item = tooltipItems
@@ -154,7 +154,7 @@ class Tooltip {
 
     item
       .append('span')
-      .attr('class', CSS.getClassName('tooltip-text'))
+      .attr('class', CSS.getClassName('tooltip-value'))
       .text(d => (this.getFormattedItem(d.data[categoryIndex], d.label)));
 
     item.exit().remove();
@@ -169,7 +169,7 @@ class Tooltip {
     const value = content.selectAll(CSS.getClassSelector('tooltip-value'))
       .data(data);
 
-    value.enter().append('span')
+    value.enter().append('div')
       .attr('class', CSS.getClassName('tooltip-value'))
     .merge(value)
       .text(d => (this.getFormattedItem(d.data[categoryIndex])));

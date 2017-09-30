@@ -5,6 +5,7 @@
   box-shadow: $reflect-tooltip-shadow;
   color: $reflect-tooltip-font-color;
   display: none;
+  font-size: $reflect-tooltip-font-size;
   left: 0;
   min-width: 175px;
   padding: 0;
@@ -19,21 +20,24 @@
 }
 
 .reflect-charts-tooltip-value {
-  display: block;
   font-size: $reflect-tooltip-value-font-size;
   text-align: center;
 }
 
 .reflect-charts-tooltip-header {
   background: $reflect-tooltip-header-bg;
-  padding: 7px 10px;
-  text-align: center;
+  border-radius: $reflect-tooltip-header-border-radius;
+  color: $reflect-tooltip-header-font-color;
+  font-size: $reflect-tooltip-header-font-size;
+  font-weight: $reflect-tooltip-header-font-weight;
+  padding: $reflect-tooltip-header-padding;
+  text-align: $reflect-tooltip-header-alignment;
 }
 
 .reflect-charts-tooltip-content {
   height: 100%;
   overflow-y: auto;
-  padding: 14px;
+  padding: $reflect-tooltip-padding;
 }
 
 .reflect-charts-tooltip-item-hidden {

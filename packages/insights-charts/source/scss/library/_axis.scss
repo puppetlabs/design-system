@@ -3,17 +3,17 @@
     stroke: $reflect-axis-stroke;
   }
 
-  line {
+  .tick line {
     stroke: $reflect-axis-stroke;
   }
 
-  text {
+  .tick text {
     fill: $reflect-axis-label-color;
     font-size: $reflect-axis-label-font-size;
   }
-}
 
-.reflect-charts-axis-title {
-  fill: $reflect-axis-title-color;
-  font-size: $reflect-axis-title-font-size;
+  .reflect-charts-axis-title {
+    fill: $reflect-axis-title-color;
+    font-size: $reflect-axis-title-font-size;
+  }
 }
