@@ -1,5 +1,5 @@
 import React from 'react';
-import icons from './icons.js';
+import icons from './icons';
 
 const propTypes = {
   viewBox: React.PropTypes.string,

@@ -107,7 +107,6 @@ button.rc-button {
       height: 80%;
       left: 0;
       width: 100%;
-      @include v-center(block, absolute);
     }
   }
 
@@ -229,14 +228,11 @@ button.rc-button {
 
   .rc-icon {
     float: left;
-    // height: 100%;
-    @include v-center(block, relative);
   }
 
   .rc-button-content {
     font-family: $reflect-button-font-family;
     font-size: $reflect-button-font-size;
-    @include v-center(block, relative);
   }
 
   .rc-icon + .rc-button-content {
@@ -255,6 +251,22 @@ button.rc-button {
 
   .rc-button-content {
     padding-top: 1px;
+  }
+}
+
+a.rc-button {
+  .rc-icon {
+    @include v-center(block, relative);
+  }
+
+  .rc-button-content {
+    @include v-center(block, relative);
+  }
+
+  &.rc-button-processing {
+    .rc-icon {
+      @include v-center(block, absolute);
+    }
   }
 }
 

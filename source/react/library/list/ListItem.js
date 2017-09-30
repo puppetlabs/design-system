@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import Button from '../Button';
+import Icon from '../Icon';
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
@@ -67,14 +67,9 @@ class ListItem extends React.PureComponent {
 
     if (this.props.onRemove) {
       jsx = (
-        <Button
-          transparent
-          className="rc-list-item-remove"
-          type="button"
-          size="small"
-          icon="delete"
-          onClick={ this.onRemove }
-        />
+        <a className="rc-list-item-action rc-list-item-remove" onClick={ this.onRemove }>
+          <Icon type="delete" width="16" height="16" />
+        </a>
       );
     }
 
@@ -86,14 +81,9 @@ class ListItem extends React.PureComponent {
 
     if (this.props.onEdit) {
       jsx = (
-        <Button
-          transparent
-          className="rc-list-item-edit"
-          type="button"
-          size="small"
-          icon="edit"
-          onClick={ this.onEdit }
-        />
+        <a className="rc-list-item-action rc-list-item-edit" onClick={ this.onEdit }>
+          <Icon type="edit" width="16" height="16" />
+        </a>
       );
     }
 
@@ -109,12 +99,25 @@ class ListItem extends React.PureComponent {
     const remove = this.renderRemove();
     const content = this.props.children;
 
+    const props = {
+      className: 'rc-list-item-link',
+    };
+
+    if (this.onClick) {
+      props.onClick = this.onClick;
+      props.role = 'button';
+    }
+
     let jsx = (
-      <a href="" className="rc-list-item-link" onClick={ this.onClick }>
-        { content }
-        { edit }
-        { remove }
-      </a>
+      <div { ...props }>
+        <span className="rc-list-item-text">
+          { content }
+        </span>
+        <span className="rc-list-item-actions">
+          { edit }
+          { remove }
+        </span>
+      </div>
     );
 
     if (this.props.tooltip) {

@@ -1,6 +1,13 @@
+import ActionsMenu from './ActionsMenu';
+import ActionsSearch from './ActionsSearch';
 import Card from './Card';
-import Title from './Title';
 import Section from './Section';
-import Actions from './Actions';
+import Header from './Header';
 
-export { Card, Title, Section, Actions };
+export {
+  ActionsMenu,
+  ActionsSearch,
+  Card,
+  Section,
+  Header,
+};

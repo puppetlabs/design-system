@@ -16,24 +16,17 @@ const defaultProps = {
  * @example ../../../../docs/List.md
  */
 class List extends React.PureComponent {
-  getElement() {
-    const { type } = this.props;
-    let elemType;
+  render() {
+    const { type, children } = this.props;
+    let jsx;
 
-    if (type === 'unordered') {
-      elemType = 'ul';
+    if (type === 'ordered') {
+      jsx = <ol className="rc-list rc-list-ordered">{ children }</ol>;
     } else {
-      elemType = 'ol';
+      jsx = <ul className="rc-list rc-list-unordered">{ children }</ul>;
     }
 
-    return elemType;
-  }
-
-  render() {
-    const { children } = this.props;
-    const element = this.getElement();
-
-    return React.createElement(element, { children });
+    return jsx;
   }
 }
 

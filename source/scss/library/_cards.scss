@@ -2,38 +2,99 @@
   background: $reflect-card-bg;
   border: $reflect-card-border;
   border-radius: $reflect-card-border-radius;
-  box-shadow: $reflect-outer-shadow;
+  box-shadow: $reflect-card-shadow;
   color: $reflect-card-color;
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: relative;
+}
 
-  .rc-card-content {
-    background: transparent !important;
+.rc-card-header {
+  padding: $reflect-card-header-padding;
+  width: 100%;
+
+  ~ .rc-card-section,
+  ~ .rc-card-description {
+    padding-top: 0;
+  }
+
+  &:only-child {
     padding: $reflect-card-padding;
   }
+}
 
-  .rc-card-title {
-    color: $reflect-card-title-color;
-    font-size: $reflect-card-title-size;
+.rc-card-title-actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-bottom: $reflect-mini;
+
+  &:only-child {
+    margin-bottom: 0;
+  }
+}
+
+.rc-card-description {
+  font-size: $reflect-card-description-font-size;
+  padding: $reflect-card-description-padding;
+
+  ~ .rc-card-section {
+    padding-top: 0;
+  }
+}
+
+.rc-card-title-area {
+  flex-grow: 1;
+  overflow: hidden;
+}
+
+.rc-card-title {
+  color: $reflect-card-title-color;
+  font-size: $reflect-card-title-size;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-transform: $reflect-card-title-case;
+  white-space: nowrap;
+
+  + .rc-card-controls,
+  + .rc-card-subtitle {
+    margin-top: $reflect-card-title-margin;
+  }
+}
+
+.rc-card-subtitle {
+  color: $reflect-card-subtitle-color;
+  font-size: $reflect-card-subtitle-size;
+}
+
+.rc-card-controls {
+  color: $reflect-card-controls-color;
+  font-size: $reflect-card-controls-size;
+
+  [class^='rc-'] {
+    font-size: $reflect-card-controls-size !important;
+  }
+}
+
+.rc-card-section {
+  padding: $reflect-card-padding;
+  width: 100%;
+
+  + .rc-card-section,
+  + .rc-card-header {
+    padding-top: 0;
   }
 
-  .rc-card-subtitle {
-    color: $reflect-card-subtitle-color;
-    font-size: $reflect-card-subtitle-size;
+  &:last-of-type {
+    border-bottom: 0;
   }
+}
 
-  .rc-card-section {
-    margin: -20px;
-    padding: 20px;
-  }
-
-  .rc-card-actions {
-    float: right;
-    position: absolute;
-    right: 5px;
-    top: 5px;
-    z-index: 24;
-  }
+.rc-card-actions {
+  align-self: flex-start;
+  display: flex;
+  margin-left: 8px;
+  z-index: 24;
 
   .rc-card-remove {
     background: $reflect-remove-background;
@@ -44,36 +105,32 @@
     text-align: center;
     width: 21px;
   }
+}
 
-  .rc-card-actions-hidden {
-    display: none;
-  }
+.rc-card-action {
+  cursor: pointer;
+  margin-left: 8px;
 
-  .rc-card-section {
-    margin: -20px;
-    padding: 20px;
-  }
-
-  .rc-card-actions-hidden {
-    display: none;
+  &:first-of-type {
+    margin-left: 0;
   }
 }
 
-.rc-card:hover {
-  .rc-card-actions-hidden {
-    display: block;
+.rc-card-search {
+  display: flex;
+
+  .rc-input {
+    margin-left: 8px;
+    margin-top: -4px;
+    width: 200px;
   }
 }
 
 .rc-card-xs {
   background-position: center center;
   background-size: cover;
-  padding: 2px;
-
-  .rc-card-content {
-    border: 2px solid #fff;
-    padding: 13px 0;
-  }
+  border: 2px solid #fff;
+  padding: 13px 2px;
 
   .rc-card-title {
     font-size: 1em;
@@ -84,9 +141,7 @@
 }
 
 .rc-card-xs:hover {
-  .rc-card-content {
-    background: $reflect-card-bg;
-  }
+  background: $reflect-card-bg;
 
   .rc-card-title {
     visibility: visible;
@@ -128,4 +183,10 @@
     border: $reflect-card-border-selected-hover;
     box-shadow: $reflect-card-shadow-selected-hover;
   }
+}
+
+.rc-card-basic {
+  background: transparent;
+  border: 1px solid transparent;
+  box-shadow: none;
 }

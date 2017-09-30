@@ -2,23 +2,27 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: React.PropTypes.object,
+  children: React.PropTypes.any,
   className: React.PropTypes.string,
 };
 
-class CardSection extends React.Component {
-  render() {
-    const { children, className: classProp } = this.props;
-    const className = classnames('rc-card-section', classProp);
+const defaultProps = {
+  children: [],
+  className: '',
+};
 
-    return (
-      <div className={ className } >
-        { children }
-      </div>
-    );
-  }
-}
+const CardSection = (props) => {
+  const { children, className: classProp } = props;
+  const className = classnames('rc-card-section', classProp);
+
+  return (
+    <div className={ className } >
+      { children }
+    </div>
+  );
+};
 
 CardSection.propTypes = propTypes;
+CardSection.defaultProps = defaultProps;
 
 export default CardSection;
