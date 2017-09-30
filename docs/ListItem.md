@@ -1,7 +1,7 @@
 ```
-<ul>
+<List>
   <ListItem>I'm a happy list item!</ListItem>
-</ul>
+</List>
 ```
 
 Selected, selectable, editable, and deletable `ListItem`:

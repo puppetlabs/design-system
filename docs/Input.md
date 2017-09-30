@@ -28,3 +28,8 @@ Large `Input`:
 ```
 <Input size="large" placeholder="I'm a large input" />
 ```
+
+Simple `Input`:
+```
+<Input simple placeholder="I'm a simple input" />
+```

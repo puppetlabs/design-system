@@ -127,7 +127,7 @@ class Popover extends React.Component {
       if (!this.props.disablePortal) {
         bottom = elPosition.bottom + window.pageYOffset;
         left = elPosition.left + window.pageXOffset;
-        right = window.innerWidth - (elPosition.right + window.pageXOffset);
+        right = document.body.clientWidth - (elPosition.right + window.pageXOffset);
       } else {
         bottom = elPosition.height;
         left = 0;

@@ -2,18 +2,28 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  size: React.PropTypes.string,
   children: React.PropTypes.any,
-  /** Card height in px */
+  size: React.PropTypes.string,
+  style: React.PropTypes.string,
+  /** Card width in px or % */
+  width: React.PropTypes.string,
+  /** Card height in px or % */
   height: React.PropTypes.string,
   /** Manual active state */
   selected: React.PropTypes.bool,
   /** Class name to apply to container element */
   className: React.PropTypes.string,
-  /** Callback for detecting user remove action */
-  onRemove: React.PropTypes.func,
-  /** Card will be wrapped in anchor tag when passed `onClick` */
+  /**  Function to be called when the user clicks on a card */
   onClick: React.PropTypes.func,
+};
+
+const defaultProps = {
+  size: '',
+  children: [],
+  width: '',
+  height: '',
+  selected: false,
+  className: '',
 };
 
 /**
@@ -34,52 +44,42 @@ class Card extends React.Component {
     this.props.onClick(e);
   }
 
-  renderContent() {
-    const children = this.props.children;
-
-    return (
-      <div className="rc-card-content">
-        { children }
-      </div>
-    );
-  }
-
   render() {
-    const { size, onClick, height, selected } = this.props;
+    const { style, size, onClick, width, height, selected } = this.props;
     const className = classnames('rc-card', {
       'rc-card-large': size === 'large',
       'rc-card-small': size === 'small',
       'rc-card-xs': size === 'xs',
       'rc-card-selected': selected,
+      [`rc-card-${style}`]: style,
       'rc-card-selectable': onClick,
     }, this.props.className);
-    const content = this.renderContent();
+    const content = this.props.children;
     const styles = {};
-    let jsx;
+
+    if (width) {
+      styles.width = width;
+    }
 
     if (height) {
       styles.height = height;
     }
 
-    if (this.props.onClick) {
-      jsx = (
-        <a
-          onClick={ this.onClick }
-          href=""
-          className={ className }
-          style={ styles }
-        >
-          { content }
-        </a>
-      );
-    } else {
-      jsx = <div className={ className } style={ styles }>{ content }</div>;
+    const props = {
+      style: styles,
+      className,
+    };
+
+    if (onClick) {
+      props.onClick = onClick;
+      props.role = 'button';
     }
 
-    return jsx;
+    return <div { ...props }>{ content }</div>;
   }
 }
 
 Card.propTypes = propTypes;
+Card.defaultProps = defaultProps;
 
 export default Card;
