@@ -29,14 +29,14 @@
 
   &.rc-input-small {
     font-size: $reflect-font-size-small;
-    padding: $reflect-input-small-padding;
     line-height: $reflect-medium;
+    padding: $reflect-input-small-padding;
   }
 
   &.rc-input-tiny {
     font-size: $reflect-font-size-tiny;
-    padding: $reflect-input-tiny-padding;
     line-height: $reflect-medium;
+    padding: $reflect-input-tiny-padding;
   }
 
   &::placeholder {
