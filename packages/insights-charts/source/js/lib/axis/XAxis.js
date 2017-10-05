@@ -145,7 +145,7 @@ class XAxis {
 
       const scaleType = helpers.detectScaleType(categories, this.options.type);
 
-      if (scaleType === 'ordinal' && !this.getLabelsRotatation()) {
+      if ((scaleType === 'ordinal' || scaleType === 'time') && !this.getLabelsRotatation()) {
         axis.tickValues(ticks);
       }
     }

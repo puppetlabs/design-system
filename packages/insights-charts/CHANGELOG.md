@@ -1,3 +1,7 @@
+# 0.1.28
+
+* Supply distinct time scale tick values to properly support timezones
+
 # 0.1.27
 
 * Updates to the look and feel of charts
