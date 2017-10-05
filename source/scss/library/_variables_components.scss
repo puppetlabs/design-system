@@ -43,7 +43,7 @@ $reflect-button-font-weight                  : normal !default;
 $reflect-button-text-case                    : uppercase !default;
 $reflect-button-font-size                    : $reflect-font-size-small !default;
 $reflect-button-height                       : 44px !default; // Todo: Base on grid
-$reflect-button-padding                      : 20px !default; //left and right padding
+$reflect-button-padding                      : $reflect-medium !default; //left and right padding
 
 // Tiny Buttons
 $reflect-button-tiny-font-size               : $reflect-font-size-tiny !default;
@@ -51,7 +51,7 @@ $reflect-button-tiny-height                  : 22px !default; // Todo: Base on g
 $reflect-button-tiny-padding                 : $reflect-button-padding / 4 !default;
 
 $reflect-button-small-font-size              : $reflect-font-size-small !default;
-$reflect-button-small-height                 : 33px !default; // Todo: Base on grid
+$reflect-button-small-height                 : $reflect-huge !default; // Todo: Base on grid
 $reflect-button-small-padding                : $reflect-button-padding / 2 !default;
 
 $reflect-button-large-font-size              : $reflect-font-size-base !default;
@@ -198,11 +198,12 @@ $reflect-dropdown-width-tiny                 : 180px !default;
 
 $reflect-dropdown-label-font-size            : $reflect-font-size-base !default;
 $reflect-dropdown-label-font-weight          : $reflect-font-weight-heavy !default;
+$reflect-dropdown-label-line-height          : $reflect-medium !default;
 $reflect-dropdown-label-color                : $reflect-action-color !default;
 $reflect-dropdown-label-color-error          : $reflect-danger-color !default;
 $reflect-dropdown-label-color-disabled       : $reflect-gray !default;
 
-$reflect-dropdown-chevron-height             : $reflect-tiny !default;
+$reflect-dropdown-chevron-height             : $reflect-small !default;
 $reflect-dropdown-chevron-width              : $reflect-small !default;
 $reflect-dropdown-hint-color                 : $reflect-gray !default;
 $reflect-dropdown-hint-font-size             : $reflect-font-size-base !default;
@@ -256,7 +257,7 @@ $reflect-input-disabled-color                : $reflect-font-color-subtle !defau
 
 $reflect-input-large-height                  : $reflect-giant !default;
 $reflect-input-large-padding                 : 0 $reflect-large !default;
-$reflect-input-small-padding                 : $reflect-tiny !default;
+$reflect-input-small-padding                 : $reflect-small !default;
 $reflect-input-tiny-padding                  : $reflect-mini $reflect-tiny !default;
 
 // Loading Indicator
@@ -386,8 +387,8 @@ $reflect-select-item-border                  : $reflect-action-color !default;
 
 // These are for the beginning of us building our own selects
 $reflect-select-label-font-size              : $reflect-font-size-small !default;
-$reflect-select-label-padding                : 6px 7px !default; // Todo: Base on grid
-$reflect-select-label-bg                     : $reflect-gray-light !default;
+$reflect-select-label-padding                : $reflect-small !default;
+$reflect-select-label-bg                     : $reflect-action-color-alt !default;
 $reflect-select-label-border                 : $reflect-border !default;
 $reflect-select-label-border-radius          : $reflect-border-radius !default;
 

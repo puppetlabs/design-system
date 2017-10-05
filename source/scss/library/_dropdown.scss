@@ -71,9 +71,9 @@
 
   .rc-icon {
     height: $reflect-dropdown-chevron-height;
-    left: -2px;
+    left: 0;
     position: relative;
-    top: -1px;
+    top: 0;
     width: $reflect-dropdown-chevron-width;
   }
 }
@@ -87,13 +87,13 @@
 
   .rc-dropdown-label {
     display: block;
-    font-size: $reflect-select-label-font-size;
     position: relative;
   }
 
   .rc-dropdown-label-text {
     display: block;
-    margin-right: 20px;
+    font-size: $reflect-select-label-font-size;
+    margin-right: $reflect-medium;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -101,14 +101,15 @@
   .rc-icon {
     left: auto;
     position: absolute;
-    right: 5px;
-    top: 7px;
+    right: 0;
+    top: 5px;
   }
 }
 
 .rc-dropdown-label-text {
   font-size: $reflect-dropdown-label-font-size;
   font-weight: $reflect-dropdown-label-font-weight;
+  line-height: $reflect-dropdown-label-line-height;
 }
 
 .rc-dropdown-menu {
