@@ -254,7 +254,8 @@ button.rc-button {
   }
 }
 
-a.rc-button {
+a.rc-button,
+button.rc-button {
   .rc-icon {
     @include v-center(block, relative);
   }
