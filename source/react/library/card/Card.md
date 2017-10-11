@@ -27,8 +27,7 @@ Card with two sections inside:
 Card with description & title
 ```
 <Card>
-  <CardHeader title="I am a title" />
-  <CardDescription description="I am a card description" />
+  <CardHeader title="I am a title" description="I am a card description" />
   <CardSection>I am the content of the card</CardSection>
 </Card>
 ```
@@ -110,5 +109,22 @@ const actions = [
 
 <Card>
   <CardHeader title="I am a title" actions={ actions } />
+</Card>
+```
+
+Card with no title, subtitle, or controls, but with actions and description
+```
+const menuOptions = [
+  { value: 'I\'m a test value!', id: 0 },
+  { value: 'Me too!', id: 1 },
+  { value: 'Me three...', id: 2 },
+];
+
+const actions = [
+  <CardActionsMenu key="menu-1" menuOptions={ menuOptions } />,
+];
+
+<Card>
+  <CardHeader description="I am a card description" actions={ actions } />
 </Card>
 ```
