@@ -51,7 +51,8 @@
   white-space: nowrap;
 
   + .rc-card-controls,
-  + .rc-card-subtitle {
+  + .rc-card-subtitle,
+  + .rc-card-description {
     margin-top: $reflect-card-title-margin;
   }
 }
@@ -67,6 +68,10 @@
 
   [class^='rc-'] {
     font-size: $reflect-card-controls-size !important;
+  }
+
+  + .rc-card-description {
+    margin-top: $reflect-card-title-margin;
   }
 }
 
