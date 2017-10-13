@@ -254,8 +254,13 @@ button.rc-button {
   }
 }
 
-a.rc-button,
-button.rc-button {
+button.rc-button-processing {
+  .rc-icon {
+    @include v-center(block, absolute);
+  }
+}
+
+a.rc-button {
   .rc-icon {
     @include v-center(block, relative);
   }
