@@ -24,12 +24,19 @@ const CardActionsMenu = (props) => {
       </a>
     );
 
+    let selected = props.menuOptions.filter(o => o.selected);
+
+    if (selected.length) {
+      selected = selected[0].id;
+    }
+
     menu = (
       <DropdownMenu
         size="tiny"
         anchor="bottom right"
         target={ target }
         options={ props.menuOptions }
+        selected={ selected }
         onChange={ props.onOptionClick }
       />
     );
