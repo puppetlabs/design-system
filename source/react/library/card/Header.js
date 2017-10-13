@@ -11,6 +11,8 @@ const propTypes = {
   subtitle: React.PropTypes.string,
   /** Controls to update the contents of the card */
   controls: React.PropTypes.any,
+  /** Card description */
+  description: React.PropTypes.string,
 };
 
 const defaultProps = {
@@ -24,14 +26,15 @@ const defaultProps = {
 
 class CardHeader extends React.Component {
   renderTitle() {
-    const { title, subtitle, controls } = this.props;
+    const { title, subtitle, controls, description } = this.props;
     const className = classnames('rc-card-title', this.props.titleClassName);
     let titleJSX;
     let subtitleJSX;
     let controlsJSX;
+    let descriptionJSX;
     let jsx = null;
 
-    if (title || subtitle || controls) {
+    if (title || subtitle || controls || description) {
       if (title) {
         titleJSX = <div key="card-title" className={ className }>{ title }</div>;
       }
@@ -44,11 +47,16 @@ class CardHeader extends React.Component {
         controlsJSX = <div key="card-controls" className="rc-card-controls">{ controls }</div>;
       }
 
+      if (description) {
+        descriptionJSX = <div key="card-description" className="rc-card-description">{ description }</div>;
+      }
+
       jsx = (
         <div key="card-title-area" className="rc-card-title-area">
           { titleJSX }
           { subtitleJSX }
           { controlsJSX }
+          { descriptionJSX }
         </div>
       );
     }

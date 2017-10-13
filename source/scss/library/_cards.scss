@@ -13,8 +13,7 @@
   padding: $reflect-card-header-padding;
   width: 100%;
 
-  ~ .rc-card-section,
-  ~ .rc-card-description {
+  ~ .rc-card-section {
     padding-top: 0;
   }
 
@@ -36,11 +35,6 @@
 
 .rc-card-description {
   font-size: $reflect-card-description-font-size;
-  padding: $reflect-card-description-padding;
-
-  ~ .rc-card-section {
-    padding-top: 0;
-  }
 }
 
 .rc-card-title-area {
@@ -57,7 +51,8 @@
   white-space: nowrap;
 
   + .rc-card-controls,
-  + .rc-card-subtitle {
+  + .rc-card-subtitle,
+  + .rc-card-description {
     margin-top: $reflect-card-title-margin;
   }
 }
@@ -73,6 +68,10 @@
 
   [class^='rc-'] {
     font-size: $reflect-card-controls-size !important;
+  }
+
+  + .rc-card-description {
+    margin-top: $reflect-card-title-margin;
   }
 }
 

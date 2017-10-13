@@ -25,7 +25,7 @@ const propTypes = {
 
 const defaultProps = {
   width: 'auto',
-  margin: 10,
+  margin: 8,
   padding: true,
   anchor: 'bottom left',
   allowBubble: false,
