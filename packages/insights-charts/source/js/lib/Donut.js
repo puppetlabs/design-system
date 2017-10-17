@@ -36,6 +36,7 @@ class Donut {
   render(selection) {
     const { options, dimensions, dispatchers } = this;
     const { width, height } = dimensions;
+    let innerRadius;
 
     if (!this.selection) {
       this.selection = selection;
@@ -49,10 +50,13 @@ class Donut {
       .sortValues(null);
 
     const radius = (Math.min(width, height) / 2.4);
-    let innerRadius = radius - (radius / 4);
 
     if (options.layout === 'pie') {
       innerRadius = 0;
+    } else if (options.innerRadius) {
+      innerRadius = radius * (parseInt(options.innerRadius, 10) / 100);
+    } else {
+      innerRadius = radius * 0.75;
     }
 
     const path = arc()

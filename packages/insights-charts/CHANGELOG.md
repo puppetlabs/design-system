@@ -1,3 +1,9 @@
+# 0.1.29
+
+* Account for page scroll in tooltips
+* Allow user to customize donut inner radius
+* Add support for custom classes on tooltip
+
 # 0.1.28
 
 * Supply distinct time scale tick values to properly support timezones

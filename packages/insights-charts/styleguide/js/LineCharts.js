@@ -129,7 +129,10 @@ class LineCharts extends React.Component {
           title: 'Profit',
         },
       },
-      tooltips: { type: 'simple' },
+      tooltips: {
+        type: 'simple',
+        class: 'i-am-a-custom-class',
+      },
       grid: {
         enabled: true,
         horizontal: true,

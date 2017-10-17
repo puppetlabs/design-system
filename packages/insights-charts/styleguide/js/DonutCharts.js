@@ -19,6 +19,9 @@ class DonutCharts extends React.Component {
     this.donutChart = new ReflectChart(this.donut, {
       type: 'donut',
       data,
+      options: {
+        innerRadius: '50%',
+      },
     });
 
     this.donutChart.on('legendItemClick', () => {

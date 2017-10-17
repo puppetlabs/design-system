@@ -17,17 +17,7 @@ class Tooltip {
   }
 
   onScroll() {
-    if (this.selection) {
-      const dimensions = this.selection.node().getBoundingClientRect();
-      const { width, left } = dimensions;
-      let { top } = dimensions;
-
-      if (window.scrollY) {
-        top += window.scrollY;
-      }
-
-      this.bodyDimensions = { width, top, left };
-    }
+    this.setBodyDimensions();
   }
 
   getSeriesValue(d, categoryIndex) {
@@ -75,10 +65,25 @@ class Tooltip {
     return item;
   }
 
+  setBodyDimensions() {
+    if (this.selection) {
+      const dimensions = this.selection.node().getBoundingClientRect();
+      const { width, left } = dimensions;
+      let { top } = dimensions;
+
+      if (window.scrollY) {
+        top += window.scrollY;
+      }
+
+      this.bodyDimensions = { width, top, left };
+    }
+  }
+
   render() {
     const selection = select('body');
 
     const { options, dispatchers } = this;
+    const tooltipClass = options && options.tooltips ? options.tooltips.class : '';
     let tooltip;
 
     if (!this.selection) {
@@ -87,7 +92,7 @@ class Tooltip {
 
     if (!options.tooltips || options.tooltips.enabled) {
       tooltip = selection.append('div')
-        .attr('class', CSS.getClassName('tooltip', `tooltip-${this.id}`));
+        .attr('class', classnames(CSS.getClassName('tooltip', `tooltip-${this.id}`), tooltipClass));
 
       tooltip.append('div')
         .attr('class', CSS.getClassName('tooltip-header'));
@@ -223,9 +228,7 @@ class Tooltip {
     }
 
     if (!this.bodyDimensions) {
-      const { width, top, left } = this.selection.node().getBoundingClientRect();
-
-      this.bodyDimensions = { width, top, left };
+      this.setBodyDimensions();
     }
 
     const { tooltipDimensions, bodyDimensions } = this;
