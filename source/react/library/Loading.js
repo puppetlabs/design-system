@@ -19,6 +19,9 @@ const LoadingIndicator = (props) => {
   let size;
 
   switch (props.size) {
+    case 'tiny':
+      size = '40px';
+      break;
     case 'small':
       size = '50px';
       break;
