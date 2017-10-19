@@ -55,11 +55,16 @@ class Container {
     this.dimensions.bottom = bottom;
     this.dimensions.width = width;
     this.dimensions.height = height;
+
+    // We set the width and height explicitly due to issues in Safari when rendering
+    // within a flex container with 100% values.
+    this.wrapper
+      .style('height', `${height}px`)
+      .style('width', `${width}px`);
   }
 
   setSVGMargins(dimensions) {
     if (this.type !== 'sparkline' && this.type !== 'donut') {
-      const wrapperDimensions = this.wrapper.node().getBoundingClientRect();
       const options = this.options;
       const orientation = options.axis.x.orientation;
       const categories = this.data.getCategories().map(c => (c.label));
@@ -69,8 +74,8 @@ class Container {
       }
 
       this.testSVG = this.wrapper.append('svg')
-        .attr('width', '100%')
-        .attr('height', '100%')
+        .attr('width', `${this.dimensions.width}px`)
+        .attr('height', `${this.dimensions.height}px`)
         .attr('style', 'visibility: hidden;');
 
       const xScale = new XScale(categories, options, dimensions);
@@ -103,8 +108,8 @@ class Container {
             this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
           }
 
-          leftOverflow = wrapperDimensions.left - tempXDimensions.left;
-          rightOverflow = tempXDimensions.right - wrapperDimensions.right;
+          leftOverflow = this.dimensions.left - tempXDimensions.left;
+          rightOverflow = tempXDimensions.right - this.dimensions.right;
         }
       }
 

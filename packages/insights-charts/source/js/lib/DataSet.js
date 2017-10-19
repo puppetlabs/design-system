@@ -34,7 +34,12 @@ class DataSet {
           category.label = moment(category.label);
           break;
         case 'number':
-          category.label = parseInt(category.label, 10);
+          if (helpers.isFloat(category.label)) {
+            category.label = parseFloat(category.label);
+          } else {
+            category.label = parseInt(category.label, 10);
+          }
+
           break;
         default:
           category.label = category.label;

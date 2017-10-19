@@ -1,3 +1,8 @@
+# 0.1.30
+
+* Fix bug in the way we parse strings to numbers
+* Fix bug in safari, particularly when rendering within flex container
+
 # 0.1.29
 
 * Account for page scroll in tooltips

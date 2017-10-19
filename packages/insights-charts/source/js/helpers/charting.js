@@ -1,4 +1,5 @@
 import moment from 'moment';
+import clone from 'clone';
 import formatters from './formatters';
 
 const helpers = {
@@ -67,17 +68,15 @@ const helpers = {
 
   getPlotOptions(type, options, data) {
     const stackable = this.isStackable(type);
-    options = options[type] || {};
-    // We want to make sure we're not actually modifying options
-    const addedOptions = { };
+    const plotOptions = options && options[type] ? clone(options[type]) : {};
 
     if (data.length <= 1) {
-      addedOptions.layout = 'normal';
-    } else if (data.length > 1 && !options.layout && stackable) {
-      addedOptions.layout = 'stacked';
+      plotOptions.layout = 'normal';
+    } else if (data.length > 1 && !plotOptions.layout && stackable) {
+      plotOptions.layout = 'stacked';
     }
 
-    return addedOptions;
+    return plotOptions;
   },
 
   getMaximumPoint(data, options, layout) {
@@ -100,9 +99,53 @@ const helpers = {
     return maxPoint;
   },
 
+  isStringANumber(value) {
+    const rnumber = /^\s*\d+(\.\d*)?\s*$/;
+    let result = false;
+
+    if (typeof value === 'string' && value.match) {
+      result = value.match(rnumber);
+    }
+
+    return result;
+  },
+
+  validatedNumber(value) {
+    let n = NaN;
+
+    if (this.isStringANumber(value)) {
+      n = Number(value);
+    } else if (Number(value) === value) {
+      n = value;
+    }
+
+    return n;
+  },
+
+  isInt(d) {
+    const n = this.validatedNumber(d);
+    let isInt = false;
+
+    if (!isNaN(n)) {
+      isInt = n % 1 === 0;
+    }
+
+    return isInt;
+  },
+
+  isFloat(d) {
+    const n = this.validatedNumber(d);
+    let isFloat = false;
+
+    if (!isNaN(n)) {
+      isFloat = n % 1 !== 0;
+    }
+
+    return isFloat;
+  },
+
   detectCategoryType(categories) {
     const types = {};
-    const rnumber = /^\s*\d+(\.\d*)?\s*$/;
     let highestNumber = 0;
     let highestKey = null;
 
@@ -111,19 +154,17 @@ const helpers = {
         d = d.label;
       }
 
-      if (d && d._isAMomentObject) { // eslint-disable-line no-underscore-dangle
+      if (
+        (d && d._isAMomentObject) || // eslint-disable-line no-underscore-dangle
+        (helpers.isTimestamp(d) && moment(new Date(d)).isValid()) ||
+        d instanceof Date
+      ) {
         if (!types.date) {
           types.date = 0;
         }
 
         types.date += 1;
-      } else if (helpers.isTimestamp(d) && moment(new Date(d)).isValid()) {
-        if (!types.date) {
-          types.date = 0;
-        }
-
-        types.date += 1;
-      } else if (d.match && d.match(rnumber)) {
+      } else if (this.isInt(d) || this.isFloat(d)) {
         if (!types.number) {
           types.number = 0;
         }

@@ -7,7 +7,7 @@ class ColumnCharts extends React.Component {
     const dataPoints = 10;
 
     const data = {
-      categories: ['Geoff super long name', 'Jessica super long name', 'Abigail super long name', 'Jacob super long name', 'Kayla super long name', 'Alex super long name', 'Brad super long name', 'Colby super long name', 'Farrah super long name', 'Sebastian super long name'],
+      categories: ['1.2', '2.5', '4', '2.6', '3.8', '3.1', '4.2', '5', '1.3', '2.7'],
       series: [
         {
           label: 'Profit',
