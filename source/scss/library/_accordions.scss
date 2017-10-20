@@ -1,27 +1,23 @@
 .rc-accordion-item-header {
+  align-items: center;
   background-color: $reflect-accordion-item-title-bg-color;
   color: $reflect-accordion-item-title-color;
   display: flex;
   font-family: $reflect-accordion-item-title-font-family;
   font-size: $reflect-accordion-item-title-font-size;
+  height: $reflect-accordion-item-title-height;
+  justify-content: space-between;
   padding: $reflect-accordion-item-title-padding;
   text-transform: $reflect-accordion-item-title-case;
 
   .rc-accordion-item-title-text {
-    align-items: center;
     color: $reflect-accordion-item-title-color;
-    display: flex;
-    flex-grow: 2;
     font-size: $reflect-accordion-item-title-font-size;
   }
 
   .rc-accordion-item-title-icon {
-    align-items: center;
-    display: flex;
     height: 10px;
-    margin-top: 5px;
     width: 10px;
-    // NOTE: No flex-grow here because it'll push the icon to the right.
   }
 }
 
@@ -48,7 +44,11 @@
   padding: $reflect-accordion-item-content-padding;
 
   .form-field {
-    margin-bottom: 8px;
+    margin-bottom: $reflect-medium;
+  }
+
+  .form-field:last-child {
+    margin-bottom: 0;
   }
 }
 

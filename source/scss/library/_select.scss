@@ -45,7 +45,7 @@
   cursor: text;
 }
 .Select-placeholder {
-  color: $reflect-gray;
+  color: $reflect-font-color-subtle;
   padding: 10px 40px 10px 13px;
   position: absolute;
   top: 0;
@@ -57,7 +57,7 @@
   white-space: nowrap;
 }
 .has-value > .Select-control > .Select-placeholder {
-  color: $reflect-gray-dark;
+  color: $reflect-font-color-base;
 }
 .Select-input > input {
   cursor: default;
