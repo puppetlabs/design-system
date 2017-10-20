@@ -1,6 +1,11 @@
 [class^='rc-'] {
   box-sizing: border-box;
 
+  svg {
+    height: auto;
+    width: auto;
+  }
+
   ul {
     list-style: none;
     margin: 0;
