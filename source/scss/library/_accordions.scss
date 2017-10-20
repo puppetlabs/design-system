@@ -1,12 +1,12 @@
 .rc-accordion-item-header {
+  align-items: center;
   background-color: $reflect-accordion-item-title-bg-color;
   color: $reflect-accordion-item-title-color;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: $reflect-accordion-item-title-height;
   font-family: $reflect-accordion-item-title-font-family;
   font-size: $reflect-accordion-item-title-font-size;
+  height: $reflect-accordion-item-title-height;
+  justify-content: space-between;
   padding: $reflect-accordion-item-title-padding;
   text-transform: $reflect-accordion-item-title-case;
 
