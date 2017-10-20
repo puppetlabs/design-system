@@ -1,4 +1,4 @@
-import { select } from 'd3-selection';
+import { event, select } from 'd3-selection';
 import classnames from 'classnames';
 import { UNHIGHLIGHTED_OPACITY } from '../constants';
 import CSS from '../helpers/css';
@@ -37,6 +37,7 @@ class Legend {
       values = seriesData[0].data.map((d, i) => {
         const val = {
           label: this.getFormattedLabel(d.x),
+          value: d.x,
           axis: d.axis,
           seriesIndex: i,
           color: d.color,
@@ -54,6 +55,7 @@ class Legend {
         const series = {
           data: s.data,
           color: s.color,
+          value: s.label,
           aggregate: s.aggregate,
           seriesIndex: s.seriesIndex,
           label: this.getFormattedLabel(s.label),
@@ -122,8 +124,9 @@ class Legend {
 
       if (dispatchers.enabled('legendItemClick.external')) {
         legendItems
+          .style('cursor', 'pointer')
           .on('click', function (d) {
-            dispatchers.call('legendItemClick', this, d);
+            dispatchers.call('legendItemClick', this, { event, data: d });
           });
       }
 
@@ -134,13 +137,13 @@ class Legend {
 
       dispatchers.on('highlightSeries.legend', (seriesIndex) => {
         legendItems.each(function (d, i) {
-          select(this).attr('style', (i === seriesIndex) ? null : `opacity: ${UNHIGHLIGHTED_OPACITY}`);
+          select(this).style('opacity', (i === seriesIndex) ? null : UNHIGHLIGHTED_OPACITY);
         });
       });
 
       dispatchers.on('unHighlightSeries.legend', () => {
         legendItems.each(function () {
-          select(this).attr('style', null);
+          select(this).style('opacity', null);
         });
       });
 

@@ -1,3 +1,8 @@
+# 0.1.31
+
+* Apply cursors to legend items when they're clickable
+* Send unformatted data and the mouse event with legendItemClick events
+
 # 0.1.30
 
 * Fix bug in the way we parse strings to numbers

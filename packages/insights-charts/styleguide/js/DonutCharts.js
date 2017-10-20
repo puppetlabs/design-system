@@ -24,8 +24,8 @@ class DonutCharts extends React.Component {
       },
     });
 
-    this.donutChart.on('legendItemClick', () => {
-      console.log('you got me!!!');
+    this.donutChart.on('legendItemClick', (payload) => {
+      console.log('you got me!!!', payload);
     });
 
     this.donutChart.on('dataPointClick', ({ event, data }) => {
