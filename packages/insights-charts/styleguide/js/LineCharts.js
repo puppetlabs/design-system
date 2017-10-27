@@ -117,6 +117,9 @@ class LineCharts extends React.Component {
     const options = {
       line: {
         spline: true,
+        pointsOfInterest: {
+          onHover: true,
+        },
         data_labels: {
           enabled: true,
         },
@@ -128,10 +131,6 @@ class LineCharts extends React.Component {
           ticks: 4,
           title: 'Profit',
         },
-      },
-      tooltips: {
-        type: 'simple',
-        class: 'i-am-a-custom-class',
       },
       grid: {
         enabled: true,

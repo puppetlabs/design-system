@@ -22,13 +22,17 @@ class Series {
     this.selector = `${this.selector}-axis-y-${yAxisIndex}`;
 
     dispatchers.on(`highlightSeries.${this.selector}`, (seriesIndex) => {
-      const sel = this.selection.selectAll(CSS.getClassSelector(this.selector));
-      sel.attr('opacity', d => (d.seriesIndex === seriesIndex ? null : UNHIGHLIGHTED_OPACITY));
+      if (this.selection && this.selection.size() > 0) {
+        const sel = this.selection.selectAll(CSS.getClassSelector(this.selector));
+        sel.attr('opacity', d => (d.seriesIndex === seriesIndex ? null : UNHIGHLIGHTED_OPACITY));
+      }
     });
 
     dispatchers.on(`unHighlightSeries.${this.selector}`, () => {
-      const sel = this.selection.selectAll(CSS.getClassSelector(this.selector));
-      sel.attr('opacity', null);
+      if (this.selection && this.selection.size() > 0) {
+        const sel = this.selection.selectAll(CSS.getClassSelector(this.selector));
+        sel.attr('opacity', null);
+      }
     });
 
     this.getHiddenClass = this.getHiddenClass.bind(this);

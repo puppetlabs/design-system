@@ -1,3 +1,7 @@
+# 0.2.0
+
+* Adding a configuration option for disabling the stroke, and only showing the points of interest on hover for areas and lines.
+
 # 0.1.31
 
 * Apply cursors to legend items when they're clickable

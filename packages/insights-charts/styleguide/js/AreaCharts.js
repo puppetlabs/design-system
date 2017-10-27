@@ -24,6 +24,12 @@ class AreaCharts extends React.Component {
 
     const options = {
       area: {
+        line: {
+          enabled: false,
+        },
+        pointsOfInterest: {
+          onHover: true,
+        },
         data_labels: {
           enabled: true,
         },
