@@ -22,6 +22,10 @@ const defaultProps = {
  */
 const Icon = (props) => {
   const { width, type, height } = props;
+  const styles = {
+    width,
+    height,
+  };
   let svg = props.svg;
   let viewBox = props.viewBox;
   let icon = null;
@@ -43,6 +47,7 @@ const Icon = (props) => {
         width={ width }
         height={ height }
         viewBox={ viewBox }
+        style={ styles }
       >
         { svg }
       </svg>
