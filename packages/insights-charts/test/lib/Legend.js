@@ -12,7 +12,8 @@ describe('Legend', () => {
     const options = { legend: { enabled: true } };
     const seriesData = [{ label: 'blah', data: [{ y: 1 }, { y: 2 }] }];
 
-    new Legend(global.chart, seriesData, options, margins, dispatchers).render();
+    const legend = new Legend(seriesData, options, margins, dispatchers);
+    legend.render(global.chart);
 
     expect(global.chart.selectAll('.reflect-charts-legend').size()).to.eql(1);
   });
@@ -30,7 +31,8 @@ describe('Legend', () => {
 
     it('should render aggregates when chart is multiseries', () => {
       const options = { legend: { enabled: true } };
-      new Legend(global.chart, seriesData, options, margins, dispatchers).render();
+      const legend = new Legend(seriesData, options, margins, dispatchers);
+      legend.render(global.chart);
 
       expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('foo: 45');
     });
@@ -38,8 +40,8 @@ describe('Legend', () => {
     it('should allow us to format the series labels', () => {
       const formatter = (v) => v.toUpperCase();
       const options = { legend: { enabled: true, formatter } };
-
-      new Legend(global.chart, seriesData, options, margins, dispatchers).render();
+      const legend = new Legend(seriesData, options, margins, dispatchers);
+      legend.render(global.chart);
 
       expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('FOO: 45');
     });
@@ -51,7 +53,8 @@ describe('Legend', () => {
         axis: { y: [{ values: { formatter } }] },
       };
 
-      new Legend(global.chart, seriesData, options, margins, dispatchers).render();
+      const legend = new Legend(seriesData, options, margins, dispatchers);
+      legend.render(global.chart);
 
       expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('foo: 90');
     });
@@ -65,7 +68,8 @@ describe('Legend', () => {
     it('should list data points as series', () => {
       const options = { legend: { enabled: true, expanded: true } };
 
-      new Legend(global.chart, seriesData, options, margins, dispatchers).render();
+      const legend = new Legend(seriesData, options, margins, dispatchers);
+      legend.render(global.chart);
 
       expect(global.chart.selectAll('.reflect-charts-legend-item').size()).to.eql(2);
       expect(global.chart.select('.reflect-charts-legend-item').text()).to.eql('test1');
@@ -75,7 +79,8 @@ describe('Legend', () => {
       const formatter = (v) => v.toUpperCase();
       const options = { legend: { enabled: true, expanded: true, formatter } };
 
-      new Legend(global.chart, seriesData, options, margins, dispatchers).render();
+      const legend = new Legend(seriesData, options, margins, dispatchers);
+      legend.render(global.chart);
 
       expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('TEST1');
     });
@@ -87,7 +92,8 @@ describe('Legend', () => {
         axis: { y: [{ values: { formatter } }] },
       };
 
-      new Legend(global.chart, seriesData, options, margins, dispatchers).render();
+      const legend = new Legend(seriesData, options, margins, dispatchers);
+      legend.render(global.chart);
 
       expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('test1: 2');
     });

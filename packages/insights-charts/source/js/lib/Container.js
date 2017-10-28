@@ -64,7 +64,9 @@ class Container {
   }
 
   setSVGMargins(dimensions) {
-    if (this.type !== 'sparkline' && this.type !== 'donut') {
+    const margins = this.dimensions.margins;
+
+    if (this.type !== 'sparkline' && this.type !== 'donut' && margins.static !== true) {
       const options = this.options;
       const orientation = options.axis.x.orientation;
       const categories = this.data.getCategories().map(c => (c.label));
@@ -74,9 +76,11 @@ class Container {
       }
 
       this.testSVG = this.wrapper.append('svg')
-        .attr('width', `${this.dimensions.width}px`)
-        .attr('height', `${this.dimensions.height}px`)
-        .attr('style', 'visibility: hidden;');
+        .attr('width', this.dimensions.width)
+        .style('width', `${this.dimensions.width}px`)
+        .attr('height', this.dimensions.height)
+        .style('height', `${this.dimensions.height}px`)
+        .style('visibility', 'hidden');
 
       const xScale = new XScale(categories, options, dimensions);
       const x = xScale.generate();
@@ -176,7 +180,11 @@ class Container {
     const { options } = this;
     let newHeight = height - margins.top - margins.bottom;
 
-    if (legend && (options.legend.orientation === 'top' || options.legend.orientation === 'bottom')) {
+    if (
+        margins.static !== true &&
+        legend &&
+        (options.legend.orientation === 'top' || options.legend.orientation === 'bottom')
+      ) {
       if (legend.height) {
         newHeight -= legend.height;
       }
@@ -189,7 +197,11 @@ class Container {
     const { options } = this;
     let newWidth = width - margins.left - margins.right;
 
-    if (legend && (options.legend.orientation === 'left' || options.legend.orientation === 'right')) {
+    if (
+      margins.static !== true &&
+      legend &&
+      (options.legend.orientation === 'left' || options.legend.orientation === 'right')
+    ) {
       if (legend.width) {
         newWidth -= legend.width;
       }
@@ -235,19 +247,16 @@ class Container {
     if (this.type !== 'sparkline') {
       const { wrapper, data, options, dimensions, dispatchers } = this;
       const legendOptions = clone(options);
-      const margins = clone(dimensions.defaultMargins);
       const seriesData = data.getSeries();
-
-      margins.left = this.dimensions.margins.left;
 
       // Since donut only supports one series... always expand it.
       if (this.type === 'donut') {
         legendOptions.legend.expanded = true;
       }
 
-      const legend = new Legend(wrapper, seriesData, legendOptions, margins, dispatchers);
+      const legend = new Legend(seriesData, legendOptions, dimensions, dispatchers);
 
-      legend.render();
+      legend.render(wrapper);
 
       this.legend = legend;
     }
@@ -260,7 +269,9 @@ class Container {
       .append('svg')
         .attr('class', CSS.getClassName('svg'))
         .attr('width', width + margins.left + margins.right)
+        .style('width', `${width + margins.left + margins.right}px`)
         .attr('height', height + margins.top + margins.bottom)
+        .style('height', `${height + margins.top + margins.bottom}px`)
       .append('g')
         .attr('transform', `translate(${margins.left},${margins.top})`);
 
@@ -292,7 +303,9 @@ class Container {
 
     this.wrapper.select('svg')
       .attr('width', width + margins.left + margins.right)
-      .attr('height', height + margins.top + margins.bottom);
+      .style('width', `${width + margins.left + margins.right}px`)
+      .attr('height', height + margins.top + margins.bottom)
+      .style('height', `${height + margins.top + margins.bottom}px`);
   }
 }
 

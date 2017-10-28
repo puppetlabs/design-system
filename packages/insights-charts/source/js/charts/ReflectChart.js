@@ -24,6 +24,7 @@ const defaultOptions = {
 
   // Settings for the margin between the graph and the element.
   margins: {
+    static: false,
     top: 10,
     right: 20,
     bottom: 0,

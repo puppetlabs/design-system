@@ -1,3 +1,8 @@
+# 0.3.0
+
+* New setting for the application of static margins and max height/width of legends
+* Explicitly set the css height and width of our charts. Resets to initial causes zooming issues
+
 # 0.2.0
 
 * Adding a configuration option for disabling the stroke, and only showing the points of interest on hover for areas and lines.

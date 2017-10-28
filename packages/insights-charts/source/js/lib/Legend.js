@@ -5,11 +5,10 @@ import CSS from '../helpers/css';
 import helpers from '../helpers/charting';
 
 class Legend {
-  constructor(elem, seriesData, options, margins, dispatchers) {
-    this.elem = elem;
+  constructor(seriesData, options, dimensions, dispatchers) {
     this.seriesData = seriesData;
     this.options = options;
-    this.margins = margins;
+    this.dimensions = dimensions;
     this.dispatchers = dispatchers;
 
     this.getFormattedAggregate = this.getFormattedAggregate.bind(this);
@@ -72,36 +71,33 @@ class Legend {
     return values;
   }
 
-  render() {
-    const { elem, seriesData, options, margins, dispatchers } = this;
-    const { enabled, orientation } = options.legend;
+  render(selection) {
+    const { seriesData, options, dimensions, dispatchers } = this;
+    const { enabled, orientation, maxHeight, maxWidth } = options.legend;
+    const margins = dimensions.margins;
     let container;
     let legendItems;
 
     if (enabled) {
-      elem.selectAll(CSS.getClassSelector('legend')).remove();
+      this.selection = selection;
 
-      container = elem
+      selection.selectAll(CSS.getClassSelector('legend')).remove();
+
+      container = selection
         .append('div')
+        .style('max-height', orientation === 'bottom' || orientation === 'top' ? maxHeight : null)
+        .style('max-width', orientation === 'left' || orientation === 'right' ? maxWidth : null)
         .attr('class', classnames(
           CSS.getClassName('legend'),
           CSS.getClassName(`legend-${orientation}`),
         ));
 
-      if (orientation === 'top' && margins.top) {
-        container.style('top', `${margins.top}px`);
-      }
-
       if (orientation === 'bottom' && margins.left) {
         container.style('padding-left', `${margins.left}px`);
       }
 
-      if (margins.bottom) {
-        container.style('bottom', `${margins.bottom}px`);
-      }
-
-      if (margins.right) {
-        container.style('padding-right', `${margins.right}px`);
+      if (orientation === 'right' && margins.top) {
+        container.style('padding-top', `${margins.top}px`);
       }
 
       const data = this.getLegendValues(seriesData, options.legend.expanded);

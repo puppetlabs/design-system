@@ -140,6 +140,14 @@ class LineCharts extends React.Component {
       legend: {
         enabled: true,
         orientation: 'bottom',
+        maxHeight: '50px',
+      },
+      margins: {
+        static: true,
+        top: 20,
+        right: 20,
+        bottom: 60,
+        left: 100,
       },
     };
 
