@@ -1,3 +1,7 @@
+# 0.0.77
+
+* Remove the reset of svg heights/widths to initial and instead explicitly set on each svg
+
 # 0.0.65
 
 * Bar stencils should be the same as bars

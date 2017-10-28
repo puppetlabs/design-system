@@ -34,7 +34,7 @@ const DropdownLabel = (props) => {
       className={ className }
     >
       <span className="rc-dropdown-label">
-        <span className="rc-dropdown-label-text">{ label }</span> <Icon type="chevron-down" />
+        <span className="rc-dropdown-label-text">{ label }</span> <Icon width="8px" height="8px" type="chevron-down" />
       </span>
     </a>
   );

@@ -41,7 +41,7 @@ class Panel extends React.Component {
     if (this.props.onRemove) {
       jsx = (
         <div className="remove-corner" onClick={ this.onRemove }>
-          <a href="" className="rc-panel-remove"><Icon width="11" height="11" type="close" /></a>
+          <a href="" className="rc-panel-remove"><Icon width="11px" height="11px" type="close" /></a>
         </div>
       );
     }
