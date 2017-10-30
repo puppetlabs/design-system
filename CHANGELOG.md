@@ -1,3 +1,8 @@
+# 0.1.0
+
+* Adding a new prob to button that causes it to act like a dropdown 
+* Fixing bug in icon sizing
+
 # 0.0.77
 
 * Remove the reset of svg heights/widths to initial and instead explicitly set on each svg
