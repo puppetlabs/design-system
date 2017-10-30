@@ -20,6 +20,27 @@ Button Sizes:
 <Button size="tiny">Tiny Button</Button>
 ```
 
+Dropdown icon:
+```
+<Button dropdown>Dropdown</Button>
+```
+```
+<Button size="small" dropdown>Small dropdown</Button>
+```
+```
+<Button secondary dropdown>Secondary dropdown</Button>
+```
+```
+<Button dropdown icon="pan">Dropdown with icon</Button>
+```
+```
+<Button dropdown disabled>Disabled</Button>
+```
+```
+<Button dropdown processing disabled>Processing</Button>
+```
+
+
 Processing
 ```
 <Button processing disabled>Processing</Button>
