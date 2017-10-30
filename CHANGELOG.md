@@ -1,6 +1,6 @@
 # 0.1.0
 
-* Adding a new prob to button that causes it to act like a dropdown 
+* Adding a new prop to button that causes it to act like a dropdown 
 * Fixing bug in icon sizing
 
 # 0.0.77
