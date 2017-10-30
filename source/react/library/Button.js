@@ -22,7 +22,7 @@ const propTypes = {
   type: React.PropTypes.string,
   href: React.PropTypes.string,
   round: React.PropTypes.bool,
-  dropdownMenu: React.PropTypes.object,
+  dropdown: React.PropTypes.bool,
   children: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
@@ -87,7 +87,6 @@ class Button extends React.Component {
       message,
       className,
       floating,
-      dropdownMenu,
       round,
     } = this.props;
 
@@ -104,7 +103,6 @@ class Button extends React.Component {
       'rc-button-primary': !secondary && !transparent,
       'rc-button-secondary': secondary,
       'rc-button-transparent': transparent,
-      'rc-button-split': dropdownMenu,
       [`rc-button-${size}`]: size,
       'rc-button-round': round,
     });
@@ -121,19 +119,31 @@ class Button extends React.Component {
     const loader = processing ? <Icon height="100%" width="100%" type="loader" /> : null;
 
     if (children || label) {
-      content = <span className="rc-button-content">{ children || label }</span>;
+      let dropdown;
+
+      if (this.props.dropdown) {
+        const iconSize = size === 'small' || size === 'tiny' ? '10px' : '12px';
+
+        dropdown = (
+          <span className="rc-button-dropdown-icon">
+            <Icon height={ iconSize } width={ iconSize } type="chevron-down" />
+          </span>
+        );
+      }
+
+      content = <span className="rc-button-content">{ children || label }{ dropdown }</span>;
     }
 
     if (this.props.icon) {
-      const iconSize = size === 'small' || size === 'tiny' ? '16' : '20';
+      const iconSize = size === 'small' || size === 'tiny' ? '12px' : '16px';
 
       icon = <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />;
     }
 
     if (type) {
-      button = <button { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</button>;
+      button = <button { ...btnProps }>{ icon } { content }{ loader }</button>;
     } else {
-      button = <a { ...btnProps }>{ icon } { content }{ loader }{ dropdownMenu }</a>;
+      button = <a { ...btnProps }>{ icon } { content }{ loader }</a>;
     }
 
     if (message) {

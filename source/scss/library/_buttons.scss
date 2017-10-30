@@ -102,7 +102,7 @@ button.rc-button {
       visibility: hidden;
     }
 
-    .rc-icon {
+    > .rc-icon {
       float: none;
       height: 80%;
       left: 0;
@@ -167,6 +167,12 @@ button.rc-button {
     );
   }
 
+  .rc-button-dropdown-icon {
+    display: inline-block;
+    padding-left: 10px;
+    vertical-align: middle;
+  }
+
   &.rc-button-auto {
     height: auto;
     line-height: normal;
@@ -226,7 +232,7 @@ button.rc-button {
     cursor: default;
   }
 
-  .rc-icon {
+  > .rc-icon {
     float: left;
   }
 
@@ -235,7 +241,7 @@ button.rc-button {
     font-size: $reflect-button-font-size;
   }
 
-  .rc-icon + .rc-button-content {
+  > .rc-icon + .rc-button-content {
     display: inline-block;
     float: left;
     padding-left: 10px;
@@ -243,7 +249,7 @@ button.rc-button {
 }
 
 button.rc-button {
-  .rc-icon,
+  > .rc-icon,
   .rc-button-content {
     top: initial;
     transform: none; // <button> doesn't play nice with v-center
@@ -255,13 +261,13 @@ button.rc-button {
 }
 
 button.rc-button-processing {
-  .rc-icon {
+  > .rc-icon {
     @include v-center(block, absolute);
   }
 }
 
 a.rc-button {
-  .rc-icon {
+  > .rc-icon {
     @include v-center(block, relative);
   }
 
@@ -270,7 +276,7 @@ a.rc-button {
   }
 
   &.rc-button-processing {
-    .rc-icon {
+    > .rc-icon {
       @include v-center(block, absolute);
     }
   }
@@ -367,6 +373,7 @@ button.rc-floating-action-button {
 
       // stylelint-disable selector-max-compound-selectors
       .rc-icon {
+        float: left;
         padding: 3px;
       }
       // stylelint-enable selector-max-compound-selectors
