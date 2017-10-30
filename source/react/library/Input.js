@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from './Icon';
 import classnames from 'classnames';
 
 const propTypes = {
@@ -112,7 +113,18 @@ class Input extends React.Component {
       props.placeholder = this.props.placeholder;
     }
 
-    return <input ref={ (c) => { this.input = c; } } { ...props } />;
+    let jsx = <input ref={ (c) => { this.input = c; } } { ...props } />;
+
+    if (this.props.icon) {
+      jsx = (
+        <div className="rc-input-icon">
+          <Icon width="16px" height="16px" type="search" />
+          { jsx }
+        </div>
+      );
+    }
+
+    return jsx;
   }
 }
 
