@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../Button';
+import Icon from '../Icon';
 
 const propTypes = {
   title: React.PropTypes.string,
@@ -28,14 +28,9 @@ class MenuHeader extends React.Component {
 
     if (this.props.onClose) {
       jsx = (
-        <div className="rc-menu-close">
-          <Button
-            transparent
-            icon="close"
-            size="auto"
-            onClick={ this.props.onClose }
-          />
-        </div>
+        <a role="button" className="rc-menu-close" onClick={ this.props.onClose }>
+          <Icon type="close" width="8px" height="8px" />
+        </a>
       );
     }
 

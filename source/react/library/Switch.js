@@ -30,8 +30,8 @@ class Switch extends React.Component {
     if (this.props.label) {
       jsx = (
         <label className="rc-switch-label" htmlFor={ this.props.name } >
-          <span className="rc-switch-label-on"><Icon type="checkmark" /></span>
-          <span className="rc-switch-label-off"><Icon type="close" /></span>
+          <span className="rc-switch-label-on"><Icon width="8px" height="8px" type="checkmark" /></span>
+          <span className="rc-switch-label-off"><Icon width="8px" height="8px" type="close" /></span>
         </label>
       );
     } else {
