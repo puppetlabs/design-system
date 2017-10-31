@@ -47,12 +47,12 @@
 .rc-input-icon {
   position: relative;
 
-  svg {
+  .rc-icon {
     bottom: 10px;
     position: absolute;
   }
 
-  input {
+  .rc-input {
     padding-left: 24px;
   }
 }
