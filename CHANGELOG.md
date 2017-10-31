@@ -1,3 +1,9 @@
+# 0.1.1
+
+* Support for dynamic heights in StencilGrid
+* New icons
+* Simple input with icon
+
 # 0.1.0
 
 * Adding a new prop to button that causes it to act like a dropdown 
