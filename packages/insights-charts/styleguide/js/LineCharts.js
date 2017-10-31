@@ -117,14 +117,14 @@ class LineCharts extends React.Component {
     const options = {
       line: {
         spline: true,
-        pointsOfInterest: {
-          onHover: true,
-        },
         data_labels: {
           enabled: true,
         },
       },
       axis: {
+        x: {
+          scaleType: 'ordinalBand',
+        },
         y: {
           min: -8000,
           max: 8000,

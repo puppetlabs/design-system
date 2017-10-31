@@ -191,13 +191,18 @@ const helpers = {
     return highestKey;
   },
 
-  detectScaleType(domain, chartType) {
+  detectScaleType(domain, chartType, scaleType) {
     const types = {};
     const rnumber = /^\s*\d+(\.\d*)?\s*$/;
     let highestNumber = 0;
     let highestKey = null;
 
-    if (chartType === 'column' || chartType === 'bar' || chartType === 'combination') {
+    if (
+      chartType === 'column' ||
+      chartType === 'bar' ||
+      chartType === 'combination' ||
+      scaleType === 'ordinalBand'
+    ) {
       highestKey = 'ordinal';
     } else {
       domain.forEach((d) => {

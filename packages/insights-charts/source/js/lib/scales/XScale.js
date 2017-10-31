@@ -6,9 +6,11 @@ class XScale {
   constructor(categories, options, dimensions) {
     this.categories = categories;
     this.options = options;
-    this.scale = helpers.detectScaleType(categories, options.type);
     this.dimensions = dimensions;
     this.type = options.type;
+
+    const xAxisOptions = options.axis && options.axis.x ? options.axis.x : {};
+    this.scale = helpers.detectScaleType(categories, options.type, xAxisOptions.scaleType);
   }
 
   generate() {
@@ -16,11 +18,17 @@ class XScale {
     const { width, height } = this.dimensions;
     const type = this.type;
     const options = this.options;
+    const xAxisOptions = options.axis && options.axis.x ? options.axis.x : {};
 
     // If the domain is all strings we'll use an ordinal type instead of a
     // linear one.
     if (this.scale === 'ordinal') {
-      if (type === 'column' || type === 'bar' || type === 'combination') {
+      if (
+        type === 'column' ||
+        type === 'bar' ||
+        type === 'combination' ||
+        xAxisOptions.scaleType === 'ordinalBand'
+      ) {
         this.x = scaleBand();
       } else {
         this.x = scalePoint();
@@ -54,6 +62,9 @@ class XScale {
     this.options = options;
     this.dimensions = dimensions;
     this.type = options.type;
+
+    const xAxisOptions = options.axis && options.axis.x ? options.axis.x : {};
+    this.scale = helpers.detectScaleType(categories, options.type, xAxisOptions.scaleType);
 
     return this.generate();
   }

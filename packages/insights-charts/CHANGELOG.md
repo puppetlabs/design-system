@@ -1,3 +1,7 @@
+# 0.4.0
+
+* Allow users to add a scaleType to the x axis to force tick alignment between charts
+
 # 0.3.0
 
 * New setting for the application of static margins and max height/width of legends
