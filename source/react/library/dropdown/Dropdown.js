@@ -5,6 +5,7 @@ import DropdownLabel from './DropdownLabel';
 
 const propTypes = {
   size: React.PropTypes.string,
+  select: React.PropTypes.bool,
   onChange: React.PropTypes.func,
   options: React.PropTypes.array,
   hint: React.PropTypes.string,
@@ -152,6 +153,7 @@ class Dropdown extends React.Component {
         error={ this.props.error }
         tabIndex={ this.props.tabIndex }
         disabled={ this.props.disabled }
+        select={ this.props.select }
         placeholder={ this.props.placeholder }
         label={ label }
       />

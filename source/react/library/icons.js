@@ -318,6 +318,23 @@ const icons = {
     ),
   },
 
+  grid: {
+    viewBox: '0 0 16 16',
+    svg: (
+      <g>
+        <rect x="0" y="0" width="4" height="4"></rect>
+        <rect x="6" y="0" width="4" height="4"></rect>
+        <rect x="12" y="0" width="4" height="4"></rect>
+        <rect x="0" y="6" width="4" height="4"></rect>
+        <rect x="6" y="6" width="4" height="4"></rect>
+        <rect x="12" y="6" width="4" height="4"></rect>
+        <rect x="0" y="12" width="4" height="4"></rect>
+        <rect x="6" y="12" width="4" height="4"></rect>
+        <rect x="12" y="12" width="4" height="4"></rect>
+      </g>
+    ),
+  },
+
   invisible: {
     viewBox: '0 0 29.893 20.991',
     svg: (
@@ -373,6 +390,17 @@ const icons = {
           c0-0.447-0.377-0.859-0.768-1.079c-0.389-0.219-0.935-0.21-1.316,0.021L0.611,8.866C0.243,9.091,0,9.491,0,9.923z M17,5.848V5.842
           C17,5.844,17,5.846,17,5.848z"
         />
+      </g>
+    ),
+  },
+
+  list: {
+    viewBox: '0 0 16 16',
+    svg: (
+      <g>
+        <rect id="Rectangle-5" x="0" y="0" width="16" height="4" rx="2"></rect>
+        <rect id="Rectangle-5" x="0" y="12" width="16" height="4" rx="2"></rect>
+        <rect id="Rectangle-5" x="0" y="6" width="16" height="4" rx="2"></rect>
       </g>
     ),
   },
