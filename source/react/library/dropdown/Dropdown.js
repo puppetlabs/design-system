@@ -9,6 +9,8 @@ const propTypes = {
   onChange: React.PropTypes.func,
   options: React.PropTypes.array,
   hint: React.PropTypes.string,
+  margin: React.PropTypes.number,
+  anchor: React.PropTypes.string,
   placeholder: React.PropTypes.string,
   blank: React.PropTypes.string,
   label: React.PropTypes.string,
@@ -26,6 +28,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  margin: -60,
   disable: false,
 };
 
@@ -166,9 +169,10 @@ class Dropdown extends React.Component {
 
     return (
       <DropdownMenu
+        anchor={ this.props.anchor }
         size={ this.props.size }
         onClose={ this.onClose }
-        margin={ -60 }
+        margin={ this.props.margin }
         blank={ this.props.blank }
         hint={ this.props.hint }
         multiple={ this.props.multiple }
