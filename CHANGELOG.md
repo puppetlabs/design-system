@@ -1,3 +1,7 @@
+# 0.1.2
+
+* Support for specifying margins and anchor in Dropdown component
+
 # 0.1.1
 
 * Support for dynamic heights in StencilGrid
