@@ -1,3 +1,7 @@
+# 0.5.0
+
+* Adding support for skipping the rendering of null values when plotting charts
+
 # 0.4.0
 
 * Allow users to add a scaleType to the x axis to force tick alignment between charts

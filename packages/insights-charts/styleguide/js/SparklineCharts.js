@@ -1,10 +1,17 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
+const propTypes = {
+  sparseness: PropTypes.number.isRequired,
+};
+
 class SparklineCharts extends React.Component {
-  componentDidMount() {
+  updateCharts() {
     const dataPoints = 10;
+    const { sparseness } = this.props;
 
     const data = {
       categories: getRandomCategories(dataPoints),
@@ -12,7 +19,7 @@ class SparklineCharts extends React.Component {
         {
           label: 'Loss',
           type: 'line',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
       ],
     };
@@ -48,10 +55,26 @@ class SparklineCharts extends React.Component {
     this.columnSparkline.render();
   }
 
-  componentWillUnmount() {
+  destroyCharts() {
     this.lineSparkline.destroy();
     this.areaSparkline.destroy();
     this.columnSparkline.destroy();
+  }
+
+  componentDidMount() {
+    this.updateCharts();
+  }
+
+  componentDidUpdate() {
+    this.updateCharts();
+  }
+
+  componentWillUpdate() {
+    this.destroyCharts();
+  }
+
+  componentWillUnmount() {
+    this.destroyCharts();
   }
 
   render() {
@@ -68,4 +91,10 @@ class SparklineCharts extends React.Component {
   }
 }
 
-export default SparklineCharts;
+SparklineCharts.propTypes = propTypes;
+
+const mapStateToProps = state => ({
+  sparseness: state.options.sparseness || 0,
+});
+
+export default connect(mapStateToProps)(SparklineCharts);

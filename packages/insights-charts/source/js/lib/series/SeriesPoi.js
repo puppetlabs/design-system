@@ -103,12 +103,12 @@ class SeriesPoi extends Series {
 
     if (isStacked) {
       if (d.y < 0 && d.y0 > 0) {
-        cyPos = y(d.y);
+        cyPos = y(d.y || y.domain()[0]);
       } else {
-        cyPos = y(d.y0 + d.y);
+        cyPos = y(d.y0 + (d.y || 0));
       }
     } else {
-      cyPos = y(d.y);
+      cyPos = y(d.y || y.domain()[0]);
     }
 
     return cyPos;
@@ -155,10 +155,10 @@ class SeriesPoi extends Series {
           .on('mousemove', function (d) {
             dispatchers.call('activatePointOfInterest', this, d.x, d.y);
           })
-          .on('mouseover', function (d, i) {
+          .on('mouseover', function (d) {
             const dims = mouse(select('body').node());
 
-            dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, dims);
+            dispatchers.call('tooltipMove', this, d.categoryIndex, d.seriesIndex, d.x, dims);
             dispatchers.call('highlightSeries', this, d.seriesIndex);
           })
           .on('mouseout', () => {

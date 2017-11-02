@@ -1,11 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
+const propTypes = {
+  sparseness: PropTypes.number.isRequired,
+};
+
 class AreaCharts extends React.Component {
-  componentDidMount() {
+  updateCharts() {
+    const { sparseness } = this.props;
     const dataPoints = 10;
-    const dataArr = getRandomData(dataPoints);
+    const dataArr = getRandomData(dataPoints, { sparseness });
 
     const data = {
       categories: getRandomCategories(dataPoints),
@@ -17,7 +24,7 @@ class AreaCharts extends React.Component {
         },
         {
           label: 'Loss',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
       ],
     };
@@ -82,21 +89,43 @@ class AreaCharts extends React.Component {
     this.nonStackedAreaChart.render();
   }
 
-  componentWillUnmount() {
+  destroyCharts() {
     this.areaChart.destroy();
     this.nonStackedAreaChart.destroy();
+  }
+
+  componentDidMount() {
+    this.updateCharts();
+  }
+
+  componentDidUpdate() {
+    this.updateCharts();
+  }
+
+  componentWillUpdate() {
+    this.destroyCharts();
+  }
+
+  componentWillUnmount() {
+    this.destroyCharts();
   }
 
   render() {
     return (
       <div>
-        <h1>Multiseries Stacked Area</h1>
+        <h1>Multiseries stacked</h1>
         <div className="sg-chart" ref={ (c) => { this.stacked = c; } } />
-        <h1>Multiseries Non-Stacked Area</h1>
+        <h1>Multiseries non-stacked</h1>
         <div className="sg-chart" ref={ (c) => { this.nonStacked = c; } } />
       </div>
     );
   }
 }
 
-export default AreaCharts;
+AreaCharts.propTypes = propTypes;
+
+const mapStateToProps = state => ({
+  sparseness: state.options.sparseness || 0,
+});
+
+export default connect(mapStateToProps)(AreaCharts);

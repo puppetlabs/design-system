@@ -22,9 +22,10 @@ class DataSet {
   }
 
   getCategories() {
+    const dataSet = this;
     const type = this.getCategoryType();
 
-    return this.data.categories.map((category) => {
+    return this.data.categories.map((category, index) => {
       if (typeof category.label === 'undefined') {
         category = { label: category };
       }
@@ -44,6 +45,18 @@ class DataSet {
         default:
           category.label = category.label;
       }
+
+      category.isTargetable = function () {
+        if (dataSet.seriesData === undefined) {
+          dataSet.getSeries();
+        }
+
+        if (typeof this.targetable === 'undefined') {
+          this.targetable = dataSet.seriesData.some(s => s.data[index].y !== null);
+        }
+
+        return this.targetable;
+      };
 
       return category;
     });
@@ -71,7 +84,7 @@ class DataSet {
       s.data = s.data.map((d, i) => {
         const category = categories[i];
 
-        const datum = (typeof d === 'object' ? d : { x: category.label, y: d });
+        const datum = (typeof d === 'object' && d !== null ? d : { x: category.label, y: d });
 
         datum.seriesIndex = index;
         datum.categoryIndex = i;
@@ -108,10 +121,10 @@ class DataSet {
 
             if (d.y >= 0) {
               d.y0 = columns[yIndex][d.x].y0Positive;
-              columns[yIndex][d.x].y0Positive += d.y;
+              columns[yIndex][d.x].y0Positive += d.y || 0;
             } else if (d.y < 0) {
               d.y0 = columns[yIndex][d.x].y0Negative;
-              columns[yIndex][d.x].y0Negative += d.y;
+              columns[yIndex][d.x].y0Negative += d.y || 0;
             }
           });
         }

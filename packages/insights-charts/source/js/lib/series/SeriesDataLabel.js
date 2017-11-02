@@ -81,10 +81,10 @@ class SeriesDataLabel extends Series {
       if (d.y < 0 && d.y0 > 0) {
         result = y(d.y);
       } else {
-        result = y(d.y0 + d.y);
+        result = y(d.y0 + (d.y || 0));
       }
     } else {
-      result = y(d.y);
+      result = y(d.y || y.domain()[0]);
     }
 
     if (

@@ -88,7 +88,7 @@ class Annotations {
     points.exit().remove();
 
     // If there's no data, let's cancel everything.
-    if (!data.length) {
+    if (!data.some(s => s.data.some(d => d.y !== null))) {
       points.remove();
 
       return;

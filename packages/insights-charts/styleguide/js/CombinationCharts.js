@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
+const propTypes = {
+  sparseness: PropTypes.number.isRequired,
+};
+
 class CombinationCharts extends React.Component {
-  componentDidMount() {
+  updateCharts() {
+    const { sparseness } = this.props;
     const dataPoints = 10;
 
     const data = {
@@ -12,19 +19,19 @@ class CombinationCharts extends React.Component {
         {
           label: 'Profit',
           type: 'column',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Loss',
           type: 'column',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Really long series name (Margin)',
           aggregate: 50000,
           type: 'line',
           axis: 1,
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
       ],
     };
@@ -79,8 +86,24 @@ class CombinationCharts extends React.Component {
     this.combinationChart.render();
   }
 
-  componentWillUnmount() {
+  destroyCharts() {
     this.combinationChart.destroy();
+  }
+
+  componentDidMount() {
+    this.updateCharts();
+  }
+
+  componentDidUpdate() {
+    this.updateCharts();
+  }
+
+  componentWillUpdate() {
+    this.destroyCharts();
+  }
+
+  componentWillUnmount() {
+    this.destroyCharts();
   }
 
   render() {
@@ -93,4 +116,10 @@ class CombinationCharts extends React.Component {
   }
 }
 
-export default CombinationCharts;
+CombinationCharts.propTypes = propTypes;
+
+const mapStateToProps = state => ({
+  sparseness: state.options.sparseness || 0,
+});
+
+export default connect(mapStateToProps)(CombinationCharts);

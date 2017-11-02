@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
+const propTypes = {
+  sparseness: PropTypes.number.isRequired,
+};
+
 class LineCharts extends React.Component {
-  componentDidMount() {
+  updateCharts() {
+    const { sparseness } = this.props;
     const dataPoints = 10;
 
     const multiData = {
@@ -11,95 +18,95 @@ class LineCharts extends React.Component {
       series: [
         {
           label: 'Profit 1',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 2',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 3',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 4',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 5',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 6',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 7',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 8',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 9',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 10',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 11',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 12',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 13',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 14',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 15',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 16',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 17',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 18',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 19',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 20',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 21',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Profit 22',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Loss',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
       ],
     };
@@ -109,7 +116,7 @@ class LineCharts extends React.Component {
       series: [
         {
           label: 'Profit',
-          data: getRandomData(dataPoints, -10000000000, 10000, true),
+          data: getRandomData(dataPoints, { min: -10000000000, modifier: 10000, negatives: true, sparseness }),
         },
       ],
     };
@@ -123,11 +130,11 @@ class LineCharts extends React.Component {
       },
       axis: {
         x: {
-          scaleType: 'ordinalBand',
+          // scaleType: 'ordinalBand',
         },
         y: {
-          min: -8000,
-          max: 8000,
+          // min: -8000,
+          // max: 8000,
           ticks: 4,
           title: 'Profit',
         },
@@ -182,9 +189,25 @@ class LineCharts extends React.Component {
     this.lineChart.render();
   }
 
-  componentWillUnmount() {
+  destroyCharts() {
     this.lineChart.destroy();
     this.multiSeriesLineChart.destroy();
+  }
+
+  componentDidUpdate() {
+    this.updateCharts();
+  }
+
+  componentDidMount() {
+    this.updateCharts();
+  }
+
+  componentWillUpdate() {
+    this.destroyCharts();
+  }
+
+  componentWillUnmount() {
+    this.destroyCharts();
   }
 
   render() {
@@ -199,4 +222,10 @@ class LineCharts extends React.Component {
   }
 }
 
-export default LineCharts;
+LineCharts.propTypes = propTypes;
+
+const mapStateToProps = state => ({
+  sparseness: state.options.sparseness || 0,
+});
+
+export default connect(mapStateToProps)(LineCharts);

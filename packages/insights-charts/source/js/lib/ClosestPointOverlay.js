@@ -1,6 +1,10 @@
-import { bisector } from 'd3-array';
+import { bisector, bisectLeft } from 'd3-array';
 import { select, mouse } from 'd3-selection';
 import CSS from '../helpers/css';
+
+function bisectCategoriesLeft() {
+  return bisector(c => c.label).left;
+}
 
 class ClosestPointOverlay {
   constructor(categories, x, dimensions, dispatchers) {
@@ -10,15 +14,17 @@ class ClosestPointOverlay {
     this.dispatchers = dispatchers;
   }
 
-  bisectCategory() {
-    return bisector(d => (d)).left;
-  }
-
   bindEvents() {
-    const categories = this.categories;
+    const categories = this.categories
+      .map((c, i) => ({ label: c.label, categoryIndex: i, targetable: c.isTargetable() }))
+      .filter(c => c.targetable);
     const x = this.x;
     const dispatchers = this.dispatchers;
-    const self = this;
+
+    // If we have no mouse-targetable categories, just bail out.
+    if (categories.length === 0) {
+      return;
+    }
 
     this.overlay
       .on('mouseout', () => {
@@ -41,30 +47,31 @@ class ClosestPointOverlay {
         // Handle numeric and date scales
         if (x.invert) {
           mouseCategory = x.invert(xPos);
-          index = self.bisectCategory()(categories, mouseCategory);
+          index = bisectCategoriesLeft()(categories, mouseCategory);
 
           lowerIndex = index - 1;
 
           // Handle furthest left, by using the first category.
           if (lowerIndex < 0) lowerIndex = 0;
+          if (index >= categories.length) index = categories.length - 1;
 
           const d0 = categories[lowerIndex];
           const d1 = categories[index];
 
           // work out which category is closest to the mouse
-          if (mouseCategory - d0 > d1 - mouseCategory) {
-            categoryIndex = index;
-            category = d1;
+          if (mouseCategory - d0.label > d1.label - mouseCategory) {
+            categoryIndex = d1.categoryIndex;
+            category = d1.label;
           } else {
-            categoryIndex = lowerIndex;
-            category = d0;
+            categoryIndex = d0.categoryIndex;
+            category = d0.label;
           }
         } else {
           // Handle ordinal scales here. We need an extra step to map the mouse position to
           // the x scale.
-          const values = categories.map(c => (x(c)));
+          const values = categories.map(c => (x(c.label)));
 
-          index = self.bisectCategory()(values, xPos);
+          index = bisectLeft(values, xPos);
 
           lowerIndex = index - 1;
 
@@ -75,12 +82,12 @@ class ClosestPointOverlay {
           const d1 = values[index];
 
           if (xPos - d0 > d1 - xPos) {
-            categoryIndex = index;
+            categoryIndex = categories[index].categoryIndex;
+            category = categories[index].label;
           } else {
-            categoryIndex = lowerIndex;
+            categoryIndex = categories[lowerIndex].categoryIndex;
+            category = categories[lowerIndex].label;
           }
-
-          category = categories[categoryIndex];
         }
 
         dispatchers.call('activatePointOfInterest', this, category);

@@ -29,9 +29,11 @@ p {
   padding-top: 20px;
   position: fixed;
   top: 0;
-  width: 200px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
 
-  ul {
+  ul.sg-sidebar-links {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -56,10 +58,57 @@ p {
   .sg-sidebar-link-active:hover {
     background: darken($reflect-brand-primary, 10%);
   }
+
+  .sg-sidebar-options {
+    margin-top: auto;
+
+    color: $reflect-white;
+    font-family: $reflect-font-family;
+
+    h2 {
+      padding: 0 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: $reflect-font-size-base;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 10px 20px;
+    }
+
+    li {
+      display: flex;
+      flex-direction: row;
+      font-size: $reflect-font-size-base;
+      line-height: 40px;
+
+      > * {
+        padding: 0 5px;
+      }
+
+      > *:first-child {
+        padding-left: 0;
+      }
+
+      > *:last-child {
+        margin-left: auto;
+        padding-right: 0;
+      }
+
+      input[type="text"] {
+        max-width: 75px;
+        font-size: $reflect-font-size-small;
+        height: 40px;
+        line-height: 40px;
+      }
+    }
+  }
 }
 
 .sg-content {
-  margin-left: 200px;
+  margin-left: 250px;
   padding: 20px;
 }
 

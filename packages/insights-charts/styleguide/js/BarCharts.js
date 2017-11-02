@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
+const propTypes = {
+  sparseness: PropTypes.number.isRequired,
+};
+
 class BarCharts extends React.Component {
-  componentDidMount() {
+  updateCharts() {
+    const { sparseness } = this.props;
     const dataPoints = 10;
 
     const data = {
@@ -11,11 +18,11 @@ class BarCharts extends React.Component {
       series: [
         {
           label: 'Profit',
-          data: getRandomData(dataPoints, -10000000000, 10000, true),
+          data: getRandomData(dataPoints, { min: -10000000000, modifier: 10000, negatives: true, sparseness }),
         },
         {
           label: 'Loss',
-          data: getRandomData(dataPoints, -10000000000, 10000, true),
+          data: getRandomData(dataPoints, { min: -10000000000, modifier: 10000, negatives: true, sparseness }),
         },
       ],
     };
@@ -25,7 +32,7 @@ class BarCharts extends React.Component {
       series: [
         {
           label: 'Profit',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
       ],
     };
@@ -38,8 +45,8 @@ class BarCharts extends React.Component {
       },
       axis: {
         y: [{
-          min: -5000,
-          max: 5000,
+          // min: -5000,
+          // max: 5000,
           ticks: 4,
           title: 'Left axis',
           orientation: 'bottom',
@@ -89,10 +96,26 @@ class BarCharts extends React.Component {
     this.stackedColumnChart.render();
   }
 
-  componentWillUnmount() {
+  destroyCharts() {
     this.barChart.destroy();
     this.groupedColumnChart.destroy();
     this.stackedColumnChart.destroy();
+  }
+
+  componentDidMount() {
+    this.updateCharts();
+  }
+
+  componentDidUpdate() {
+    this.updateCharts();
+  }
+
+  componentWillUpdate() {
+    this.destroyCharts();
+  }
+
+  componentWillUnmount() {
+    this.destroyCharts();
   }
 
   render() {
@@ -109,4 +132,10 @@ class BarCharts extends React.Component {
   }
 }
 
-export default BarCharts;
+BarCharts.propTypes = propTypes;
+
+const mapStateToProps = state => ({
+  sparseness: state.options.sparseness || 0,
+});
+
+export default connect(mapStateToProps)(BarCharts);

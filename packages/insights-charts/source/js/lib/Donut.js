@@ -20,7 +20,7 @@ class Donut {
       this.arcs.each(function () {
         const selection = select(this);
 
-        selection.attr('opacity', d => (d.index === index ? null : UNHIGHLIGHTED_OPACITY));
+        selection.attr('opacity', d => (d.data.categoryIndex === index ? null : UNHIGHLIGHTED_OPACITY));
       });
     });
 
@@ -64,13 +64,13 @@ class Donut {
       .innerRadius(innerRadius);
 
     this.arcs = selection.selectAll(CSS.getClassSelector('donut-arc-wrapper'))
-      .data(pie(this.seriesData[0].data.filter(d => !d.disabled)), d => d.data.x);
+      .data(pie(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null)), d => d.data.x);
 
     this.arcs
       .attr('transform', `translate(${(width / 2)},${(height / 2)})`)
-      .attr('class', (_, i) => classnames(
+      .attr('class', d => classnames(
         CSS.getClassName('donut-arc-wrapper'),
-        CSS.getColorClassName(i),
+        CSS.getColorClassName(d.data.categoryIndex),
       ));
 
     this.arcs.selectAll(CSS.getClassSelector('donut-arc'))
@@ -81,16 +81,16 @@ class Donut {
     const newArcs = this.arcs.enter()
       .append('g')
         .attr('transform', `translate(${(width / 2)},${(height / 2)})`)
-        .attr('class', (_, i) => classnames(
+        .attr('class', d => classnames(
           CSS.getClassName('donut-arc-wrapper'),
-          CSS.getColorClassName(i),
+          CSS.getColorClassName(d.data.categoryIndex),
         ))
-        .on('mousemove', function mousemove(d, i) {
+        .on('mousemove', function mousemove(d) {
           const dims = mouse(select('body').node());
 
-          dispatchers.call('tooltipMove', this, i, 0, d.data.x, dims);
+          dispatchers.call('tooltipMove', this, d.data.categoryIndex, 0, d.data.x, dims);
           dispatchers.call('activatePointOfInterest', this, d.data.x);
-          dispatchers.call('highlightSeries', this, i);
+          dispatchers.call('highlightSeries', this, d.data.categoryIndex);
         })
         .on('mouseout', () => {
           dispatchers.call('tooltipHide');

@@ -1,11 +1,17 @@
-export function getRandomData(count, min = 0, modifier = 100, negatives = false) {
+export function getRandomData(count, { min = 0, modifier = 100, negatives = false, sparseness = 0 } = {}) {
   const points = [];
   let i = 0;
 
   while (i < count) {
+    if (sparseness > 0 && Math.floor(Math.random() * 100) < sparseness) {
+      points.push(null);
+      i += 1;
+      continue;
+    }
+
     let randomNumber = Math.floor(Math.random() * modifier);
 
-    if (negatives && i % 2 === 0) {
+    if (negatives && randomNumber % 2 === 0) {
       randomNumber = -randomNumber;
     }
 
@@ -24,7 +30,7 @@ export function getRandomCategories(count, type = 'linear') {
 
   switch (type) {
     case 'ordinal': {
-      const letterIndexes = getRandomData(count, 0, 25);
+      const letterIndexes = getRandomData(count, { min: 0, modifier: 25 });
 
       letterIndexes.forEach((letterIndex) => {
         categories.push(letters.split('')[letterIndex]);
@@ -32,7 +38,7 @@ export function getRandomCategories(count, type = 'linear') {
       break;
     }
     default: {
-      categories = getRandomData(count, 0, 100);
+      categories = getRandomData(count, { min: 0, modifier: 100 });
       categories.sort((a, b) => (a - b));
     }
   }
@@ -73,7 +79,7 @@ class DataGenerator {
     while (i < this.series) {
       data.series.push({
         title: `series ${i + 1}`,
-        data: getRandomData(this.dataConfig.points, this.dataConfig.min),
+        data: getRandomData(this.dataConfig.points, { min: this.dataConfig.min }),
       });
 
       i += 1;

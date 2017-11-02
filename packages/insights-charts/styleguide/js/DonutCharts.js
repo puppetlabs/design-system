@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getRandomData } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
+const propTypes = {
+  sparseness: PropTypes.number.isRequired,
+};
+
 class DonutCharts extends React.Component {
-  componentDidMount() {
+  updateCharts() {
+    const { sparseness } = this.props;
     const dataPoints = 3;
 
     const data = {
@@ -11,7 +18,7 @@ class DonutCharts extends React.Component {
       series: [
         {
           label: 'Productivity',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
       ],
     };
@@ -53,8 +60,25 @@ class DonutCharts extends React.Component {
     this.pieChart.render();
   }
 
-  componentWillUnmount() {
+  destroyCharts() {
     this.donutChart.destroy();
+    this.pieChart.destroy();
+  }
+
+  componentDidMount() {
+    this.updateCharts();
+  }
+
+  componentDidUpdate() {
+    this.updateCharts();
+  }
+
+  componentWillUpdate() {
+    this.destroyCharts();
+  }
+
+  componentWillUnmount() {
+    this.destroyCharts();
   }
 
   render() {
@@ -67,4 +91,10 @@ class DonutCharts extends React.Component {
   }
 }
 
-export default DonutCharts;
+DonutCharts.propTypes = propTypes;
+
+const mapStateToProps = state => ({
+  sparseness: state.options.sparseness || 0,
+});
+
+export default connect(mapStateToProps)(DonutCharts);

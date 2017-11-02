@@ -73,7 +73,7 @@ class SeriesColumn extends Series {
     if (this.isBar() && !this.isStacked()) {
       // pretty sure this is incorrect
       if (d.y < 0) {
-        yPos = y(d.y);
+        yPos = y(d.y || 0);
       } else if (y.domain()[0] > 0) {
         yPos = y(y.domain()[0]);
       } else {
@@ -81,9 +81,9 @@ class SeriesColumn extends Series {
       }
     } else if (this.isBar() && this.isStacked()) {
       if (d.y < 0 && d.y0 < 0) {
-        yPos = y(d.y0 + d.y);
+        yPos = y(d.y0 + (d.y || 0));
       } else if (d.y < 0 && d.y0 >= 0) {
-        yPos = y(d.y);
+        yPos = y(d.y || 0);
       } else if (d.y0 === 0 && d.y > 0) {
         yPos = y(0);
       } else {
@@ -95,10 +95,10 @@ class SeriesColumn extends Series {
       } else if (d.y < 0 && d.y0 >= 0) {
         yPos = y(0);
       } else {
-        yPos = y(d.y0 + d.y);
+        yPos = y(d.y0 + (d.y || 0));
       }
     } else {
-      yPos = d.y < 0 ? y(0) : y(d.y);
+      yPos = d.y < 0 ? y(0) : y(d.y || 0);
     }
 
     return yPos;
@@ -140,17 +140,17 @@ class SeriesColumn extends Series {
         .attr('width', this.isBar() ? this.getColumnLength : this.getColumnThickness)
         .attr('style', d => (d.color ? `fill: ${d.color};` : null))
         .attr('height', this.isBar() ? this.getColumnThickness : this.getColumnLength)
-        .on('mousemove', function (d, i) {
+        .on('mousemove', function (d) {
           const dims = mouse(select('body').node());
 
-          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, dims);
+          dispatchers.call('tooltipMove', this, d.categoryIndex, d.seriesIndex, d.x, dims);
           dispatchers.call('activatePointOfInterest', this, d.x);
         })
-        .on('mouseover', function (d, i) {
+        .on('mouseover', function (d) {
           const index = d.seriesIndex;
           const dims = mouse(select('body').node());
 
-          dispatchers.call('tooltipMove', this, i, d.seriesIndex, d.x, dims);
+          dispatchers.call('tooltipMove', this, d.categoryIndex, d.seriesIndex, d.x, dims);
           dispatchers.call('highlightSeries', this, index);
         })
         .on('mouseout', () => {

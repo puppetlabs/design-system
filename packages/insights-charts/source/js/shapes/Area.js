@@ -34,9 +34,9 @@ const Area = (x, y, data, dimensions, options) => {
 
       if (isStacked) {
         if (d.y < 0 && d.y0 > 0) {
-          yPos = y(d.y);
+          yPos = y(d.y || 0);
         } else {
-          yPos = y(d.y0 + d.y);
+          yPos = y(d.y0 + (d.y || 0));
         }
       } else {
         yPos = y(d.y);
@@ -47,6 +47,10 @@ const Area = (x, y, data, dimensions, options) => {
 
   if (spline) {
     area.curve(curveCatmullRom);
+  }
+
+  if (!isStacked) {
+    data = data.filter(d => d.y !== null);
   }
 
   return area(data);

@@ -138,7 +138,8 @@ class Tooltip {
 
     // if text items already exist then update them
     const textItems = content.selectAll(CSS.getClassSelector('tooltip-value'));
-    textItems.text(d => (this.getFormattedItem(d.data[categoryIndex], d.label)));
+    textItems
+      .text(d => (this.getFormattedItem(d.data[categoryIndex], d.label)));
 
     const item = tooltipItems
       .enter()
@@ -150,7 +151,7 @@ class Tooltip {
           )
         ));
 
-    tooltipItems.classed(CSS.getClassName('tooltip-item-hidden'), d => (!!d.disabled));
+    tooltipItems.classed(CSS.getClassName('tooltip-item-hidden'), d => (!!d.disabled || d.data[categoryIndex].y === null));
 
     item
       .append('span')

@@ -18,7 +18,7 @@ const Line = (x, y, data = [], options = {}) => {
       let result;
 
       if (isStacked) {
-        result = y(d.y0 + d.y);
+        result = y(d.y0 + (d.y || 0));
       } else {
         result = y(d.y);
       }
@@ -28,6 +28,10 @@ const Line = (x, y, data = [], options = {}) => {
 
   if (spline) {
     line.curve(curveCatmullRom);
+  }
+
+  if (!isStacked) {
+    data = data.filter(d => d.y !== null);
   }
 
   return line(data);

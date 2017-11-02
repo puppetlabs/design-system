@@ -1,9 +1,16 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
+const propTypes = {
+  sparseness: PropTypes.number.isRequired,
+};
+
 class ScatterCharts extends React.Component {
-  componentDidMount() {
+  updateCharts() {
+    const { sparseness } = this.props;
     const dataPoints = 10;
 
     const multiData = {
@@ -11,11 +18,11 @@ class ScatterCharts extends React.Component {
       series: [
         {
           label: 'Series 1',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
         {
           label: 'Series 2',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
       ],
     };
@@ -25,7 +32,7 @@ class ScatterCharts extends React.Component {
       series: [
         {
           label: 'Profit',
-          data: getRandomData(dataPoints),
+          data: getRandomData(dataPoints, { sparseness }),
         },
       ],
     };
@@ -90,10 +97,26 @@ class ScatterCharts extends React.Component {
     this.flippedScatterChart.render();
   }
 
-  componentWillUnmount() {
+  destroyCharts() {
     this.scatterChart.destroy();
     this.multiSeriesScatterChart.destroy();
     this.flippedScatterChart.destroy();
+  }
+
+  componentDidMount() {
+    this.updateCharts();
+  }
+
+  componentDidUpdate() {
+    this.updateCharts();
+  }
+
+  componentWillUpdate() {
+    this.destroyCharts();
+  }
+
+  componentWillUnmount() {
+    this.destroyCharts();
   }
 
   render() {
@@ -110,4 +133,10 @@ class ScatterCharts extends React.Component {
   }
 }
 
-export default ScatterCharts;
+ScatterCharts.propTypes = propTypes;
+
+const mapStateToProps = state => ({
+  sparseness: state.options.sparseness || 0,
+});
+
+export default connect(mapStateToProps)(ScatterCharts);

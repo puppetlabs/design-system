@@ -24,7 +24,8 @@ class AreaChart extends Chart {
   }
 
   render() {
-    const categories = this.data.getCategories().map(c => (c.label));
+    const categories = this.data.getCategories();
+    const categoryLabels = categories.map(c => c.label);
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
     const options = clone(this.options);
@@ -41,10 +42,10 @@ class AreaChart extends Chart {
     this.tooltip = new Tooltip(seriesData, options, dispatchers, this.id);
     this.tooltip.render();
 
-    this.xScale = new XScale(categories, options, dimensions);
+    this.xScale = new XScale(categoryLabels, options, dimensions);
     const x = this.xScale.generate();
 
-    this.xAxis = new XAxis(categories, x, dimensions, options);
+    this.xAxis = new XAxis(categoryLabels, x, dimensions, options);
     this.xAxis.render(svg);
 
     if (!options.tooltips || !options.tooltips.type || options.tooltips.type !== 'simple') {
@@ -153,7 +154,8 @@ class AreaChart extends Chart {
   }
 
   update() {
-    const categories = this.data.getCategories().map(c => (c.label));
+    const categories = this.data.getCategories();
+    const categoryLabels = categories.map(c => c.label);
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
     const options = clone(this.options);
@@ -166,8 +168,8 @@ class AreaChart extends Chart {
     this.clipPath.update(dimensions, options, this.id);
     this.tooltip.update(seriesData, options, dispatchers, this.id);
 
-    const x = this.xScale.update(categories, options, dimensions, this.type);
-    this.xAxis.update(categories, x, dimensions, options);
+    const x = this.xScale.update(categoryLabels, options, dimensions, this.type);
+    this.xAxis.update(categoryLabels, x, dimensions, options);
 
     if (this.pointOverlay) {
       this.pointOverlay.update(categories, x, dimensions, dispatchers, options);

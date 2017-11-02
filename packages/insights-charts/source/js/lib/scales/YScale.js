@@ -12,13 +12,13 @@ class YScale {
 
   getMinimum(data) {
     return d3Min(data, s => (
-      d3Min(s.data, d => (d.y))
+      d3Min(s.data.filter(d => d.y !== null), d => d.y)
     ));
   }
 
   getMaximum(data) {
     return d3Max(data, s => (
-      d3Max(s.data, d => (d.y))
+      d3Max(s.data.filter(d => d.y !== null), d => d.y)
     ));
   }
 
@@ -26,7 +26,7 @@ class YScale {
     let min;
 
     min = d3Min(data, s => (
-      d3Min(s.data, d => (d.y + ((d.y0 > 0) ? 0 : d.y0)))
+      d3Min(s.data, d => ((d.y || 0) + ((d.y0 > 0) ? 0 : d.y0)))
     ));
 
     if (min > 0) {
@@ -39,7 +39,7 @@ class YScale {
   getStackedMaximum(data) {
     return d3Max(data, s => (
       d3Max(s.data, d => (
-        d.y + ((d.y0 < 0) ? 0 : d.y0)
+        (d.y || 0) + ((d.y0 < 0) ? 0 : d.y0)
       ))
     ));
   }

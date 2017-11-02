@@ -44,7 +44,9 @@ class Series {
     const layout = this.options.layout;
     let hidden;
 
-    if (layout === 'stacked') {
+    if (d.y === null) {
+      hidden = true;
+    } else if (layout === 'stacked') {
       hidden = (d.y + d.y0) < yMin || (d.y + d.y0) > yMax;
     } else {
       hidden = d.y < yMin || d.y > yMax;
