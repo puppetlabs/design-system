@@ -1,3 +1,7 @@
+# 0.1.3
+
+* Fix an issue causing Icons to be mispositioned within Buttons
+
 # 0.1.2
 
 * Support for specifying margins and anchor in Dropdown component
