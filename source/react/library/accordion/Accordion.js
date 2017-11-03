@@ -1,7 +1,13 @@
 import React, { Children } from 'react';
 import classnames from 'classnames';
 
+import Icon from '../Icon';
+
 const propTypes = {
+  /** Title for the Accordion */
+  title: React.PropTypes.string,
+  /** Function called when Accordion is closed. */
+  onClose: React.PropTypes.func,
   /** Whether to open the first item by default */
   autoOpen: React.PropTypes.bool,
   /** Called with the `key` of the opened `AccordionItem` */
@@ -10,6 +16,11 @@ const propTypes = {
   children: React.PropTypes.any,
   /** Class name to apply to the `Accordion` container wrapper div */
   className: React.PropTypes.string,
+};
+
+const defaultProps = {
+  onClose: () => {},
+  onChange: () => {},
 };
 
 /**
@@ -23,20 +34,58 @@ class Accordion extends React.Component {
     super(props);
 
     this.state = { activeKey: null };
+
+    this.onClose = this.onClose.bind(this);
+    this.onOpenChild = this.onOpenChild.bind(this);
+    this.onCloseChild = this.onCloseChild.bind(this);
   }
 
-  onOpen(key) {
+  onClose(e) {
+    if (e) {
+      e.preventDefault();
+    }
+
+    this.props.onClose();
+  }
+
+  onOpenChild(key) {
     return () => {
       this.setState({ activeKey: key });
 
-      if (this.props.onChange) {
-        this.props.onChange(key);
-      }
+      this.props.onChange(key);
+    };
+  }
+
+  onCloseChild(key) {
+    return () => {
+      this.setState({ activeKey: null })
+
+      this.props.onChange(key);
     };
   }
 
   getKey(child, idx) {
     return child.key || String(idx);
+  }
+
+  renderHeader() {
+    const { title, onClose } = this.props;
+    let jsx;
+
+    if (typeof title !== 'undefined') {
+      jsx = (
+        <div className="rc-accordion-header">
+          <span className="rc-accordion-header-title">{ title }</span>
+          <span className="rc-accordion-header-icon">
+            <a href="" onClick={ this.onClose } >
+              <Icon width="8px" height="8px" type="close" />
+            </a>
+          </span>
+        </div>
+      );
+    }
+
+    return jsx;
   }
 
   renderItems() {
@@ -63,7 +112,8 @@ class Accordion extends React.Component {
         title,
         active,
         children: child.props.children,
-        onOpen: this.onOpen(key).bind(this),
+        onOpen: this.onOpenChild(key),
+        onClose: this.onCloseChild(key),
       };
 
       newChildren.push(React.cloneElement(child, props));
@@ -74,10 +124,12 @@ class Accordion extends React.Component {
 
   render() {
     const className = classnames('rc-accordion', this.props.className);
+    const header = this.renderHeader();
     const items = this.renderItems();
 
     return (
       <div className={ className }>
+        { header }
         { items }
       </div>
     );
@@ -85,5 +137,6 @@ class Accordion extends React.Component {
 }
 
 Accordion.propTypes = propTypes;
+Accordion.defaultProps = defaultProps;
 
 export default Accordion;

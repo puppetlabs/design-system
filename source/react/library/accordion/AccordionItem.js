@@ -16,6 +16,13 @@ const propTypes = {
   className: React.PropTypes.string,
   /** Callback for when the user opens the item */
   onOpen: React.PropTypes.func,
+  /** Callback for when the user closes the item */
+  onClose: React.PropTypes.func,
+};
+
+const defaultProps = {
+  onOpen: () => {},
+  onClose: () => {},
 };
 
 /**
@@ -37,9 +44,7 @@ class AccordionItem extends React.Component {
       nativeEvent.preventDefault();
     }
 
-    if (this.props.onOpen) {
-      this.props.onOpen();
-    }
+    this.props.active ? this.props.onClose() : this.props.onOpen();
   }
 
   renderContent() {
@@ -55,41 +60,26 @@ class AccordionItem extends React.Component {
     const className = classnames('rc-accordion-item-title', {
       'rc-accordion-item-title-active': active,
     });
-    const icon = <Icon width="15px" height="15px" type="plus" />;
-    let titleContent;
-    let iconContent;
-    let content;
+    const icon = (active ? 'minus' : 'plus');
 
-    titleContent = (
+    const titleContent = (
       <span className="rc-accordion-item-title-text">
         { title }
       </span>
     );
 
-    iconContent = (
+    const iconContent = (
       <span className="rc-accordion-item-title-icon">
-        { icon }
+        <Icon width="10px" height="10px" type={ icon } />
       </span>
     );
 
-    if (active) {
-      content = (
-        <div className="rc-accordion-item-header">
-          { titleContent }
-        </div>
-      );
-    } else {
-      content = (
+    return (
+      <div className={ className }>
         <a className="rc-accordion-item-header" href="" onClick={ this.onClick }>
           { titleContent }
           { iconContent }
         </a>
-      );
-    }
-
-    return (
-      <div className={ className }>
-        { content }
       </div>
     );
   }
@@ -111,5 +101,6 @@ class AccordionItem extends React.Component {
 }
 
 AccordionItem.propTypes = propTypes;
+AccordionItem.defaultProps = defaultProps;
 
 export default AccordionItem;
