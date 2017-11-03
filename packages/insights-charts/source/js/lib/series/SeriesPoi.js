@@ -103,12 +103,12 @@ class SeriesPoi extends Series {
 
     if (isStacked) {
       if (d.y < 0 && d.y0 > 0) {
-        cyPos = y(d.y || y.domain()[0]);
+        cyPos = y(d.y === null ? y.domain()[0] : d.y);
       } else {
         cyPos = y(d.y0 + (d.y || 0));
       }
     } else {
-      cyPos = y(d.y || y.domain()[0]);
+      cyPos = y(d.y === null ? y.domain()[0] : d.y);
     }
 
     return cyPos;

@@ -84,7 +84,7 @@ class SeriesDataLabel extends Series {
         result = y(d.y0 + (d.y || 0));
       }
     } else {
-      result = y(d.y || y.domain()[0]);
+      result = y(d.y === null ? y.domain()[0] : d.y);
     }
 
     if (

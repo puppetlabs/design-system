@@ -31,15 +31,15 @@ const helpers = {
     const isStacked = options.layout === 'stacked';
     const isHorizontal = options.axis.x.orientation === 'left' || options.axis.x.orientation === 'right';
     const height = dimensions.height;
-    const yDomainMin = y.domain()[0];
+    const min = y.domain()[0];
     let val = 0;
 
     if (isStacked) {
-      val = yDomainMin < 0 ? Math.abs(y(d.y || 0) - y(0)) : Math.abs(y(d.y0) - y(d.y0 + d.y));
+      val = min < 0 ? Math.abs(y(d.y || 0) - y(0)) : Math.abs(y(d.y0) - y(d.y0 + d.y));
     } else if (isHorizontal) {
-      val = yDomainMin < 0 ? Math.abs(y(d.y || 0) - y(0)) : y(d.y || yDomainMin);
+      val = min < 0 ? Math.abs(y(d.y || 0) - y(0)) : y(d.y === null ? min : d.y);
     } else {
-      val = yDomainMin < 0 ? Math.abs(y(d.y || 0) - y(0)) : height - y(d.y || yDomainMin);
+      val = min < 0 ? Math.abs(y(d.y || 0) - y(0)) : height - y(d.y === null ? min : d.y);
     }
 
     return val;

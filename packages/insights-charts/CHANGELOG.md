@@ -1,3 +1,7 @@
+# 0.6.1
+
+* Fix bug where 0s would get plotted as the ymin rather than 0
+
 # 0.6.0
 
 * Fix bug with the display of points of interests when animations are disabled
