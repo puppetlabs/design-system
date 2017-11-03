@@ -18,6 +18,51 @@ describe('Legend', () => {
     expect(global.chart.selectAll('.reflect-charts-legend').size()).to.eql(1);
   });
 
+  it('should orient to the bottom of the chart when provided', () => {
+    const options = { legend: { enabled: true, orientation: 'bottom' } };
+
+    const legend = new Legend([], options, margins, dispatchers);
+    legend.render(global.chart);
+
+    expect(global.chart.selectAll('.reflect-charts-legend-bottom').size()).to.eql(1);
+  });
+
+  it('should orient to the left of the chart when provided', () => {
+    const options = { legend: { enabled: true, orientation: 'left' } };
+
+    const legend = new Legend([], options, margins, dispatchers);
+    legend.render(global.chart);
+
+    expect(global.chart.selectAll('.reflect-charts-legend-left').size()).to.eql(1);
+  });
+
+  it('should orient to the top of the chart when provided', () => {
+    const options = { legend: { enabled: true, orientation: 'top' } };
+
+    const legend = new Legend([], options, margins, dispatchers);
+    legend.render(global.chart);
+
+    expect(global.chart.selectAll('.reflect-charts-legend-top').size()).to.eql(1);
+  });
+
+  it('should align the contents to the right of the legend when provided', () => {
+    const options = { legend: { enabled: true, alignment: 'right' } };
+
+    const legend = new Legend([], options, margins, dispatchers);
+    legend.render(global.chart);
+
+    expect(global.chart.selectAll('.reflect-charts-legend-align-right').size()).to.eql(1);
+  });
+
+  it('should align the contents to the center of the legend when provided', () => {
+    const options = { legend: { enabled: true, alignment: 'center' } };
+
+    const legend = new Legend([], options, margins, dispatchers);
+    legend.render(global.chart);
+
+    expect(global.chart.selectAll('.reflect-charts-legend-align-center').size()).to.eql(1);
+  });
+
   context('multi-series', () => {
     const seriesData = [{
       label: 'foo',

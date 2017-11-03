@@ -176,7 +176,7 @@ class SeriesPoi extends Series {
           .delay(isScatter ? 0 : options.animations.duration)
           .duration(isScatter ? options.animations.duration : options.animations.duration / 4)
           .attr('opacity', 1);
-      } else if (!this.isOnHover) {
+      } else if (!isOnHover) {
         circle.attr('opacity', 1);
       }
 

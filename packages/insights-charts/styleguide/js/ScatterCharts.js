@@ -38,6 +38,9 @@ class ScatterCharts extends React.Component {
     };
 
     const options = {
+      animations: {
+        enabled: false,
+      },
       axis: {
         x: {},
         y: [

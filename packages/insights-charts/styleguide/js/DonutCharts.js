@@ -28,6 +28,10 @@ class DonutCharts extends React.Component {
       data,
       options: {
         innerRadius: '50%',
+        legend: {
+          orientation: 'top',
+          alignment: 'center',
+        },
       },
     });
 
@@ -43,7 +47,11 @@ class DonutCharts extends React.Component {
     this.donutChart.render();
 
     const options = {
-      legend: { enabled: true, aggregates: true },
+      legend: {
+        enabled: true,
+        alignment: 'right',
+        aggregates: true,
+      },
       layout: 'pie',
     };
 

@@ -63,7 +63,9 @@ $reflect-poi-stroke-width               : $reflect-stroke-width-series !default;
 $reflect-legend-font-size               : $reflect-font-size-base !default;
 $reflect-legend-max-width               : 200px !default;
 $reflect-legend-right-padding           : 0 0 0 $reflect-medium !default;
+$reflect-legend-left-padding            : 0 $reflect-medium 0 0 !default;
 $reflect-legend-bottom-padding          : $reflect-medium 0 0 0 !default;
+$reflect-legend-top-padding             : 0 0 $reflect-medium 0 !default;
 $reflect-legend-item-margin             : $reflect-medium !default;
 $reflect-legend-indicator-margin        : $reflect-small !default;
 

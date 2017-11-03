@@ -2,34 +2,58 @@
   overflow-y: auto;
 }
 
-.reflect-charts-legend-right {
+.reflect-charts-legend-right,
+.reflect-charts-legend-left {
   bottom: 20px;
   overflow-y: auto;
-  padding: $reflect-legend-right-padding;
   position: absolute;
-  right: 0;
   top: 0;
 }
 
-.reflect-charts-legend-bottom {
-  bottom: 0;
+.reflect-charts-legend-right {
+  padding: $reflect-legend-right-padding;
+  right: 0;
+}
+
+.reflect-charts-legend-left {
   left: 0;
-  padding: $reflect-legend-bottom-padding;
+  padding: $reflect-legend-left-padding;
+}
+
+.reflect-charts-legend-bottom,
+.reflect-charts-legend-top {
+  left: 0;
   position: absolute;
   right: 0;
 
   .reflect-charts-legend-item {
-    display: block;
-    float: left;
+    display: inline-block;
     margin-right: $reflect-legend-item-margin;
     overflow: hidden;
     width: auto;
   }
 }
 
-.reflect-charts-legend-item {
-  font-size: $reflect-legend-font-size;
-  transition: opacity $reflect-transition-time linear;
+.reflect-charts-legend-bottom {
+  bottom: 0;
+  padding: $reflect-legend-bottom-padding;
+}
+
+.reflect-charts-legend-top {
+  padding: $reflect-legend-top-padding;
+  top: 0;
+}
+
+.reflect-charts-legend-align-right {
+  text-align: right;
+}
+
+.reflect-charts-legend-align-center {
+  text-align: center;
+
+  :last-child {
+    margin-right: 0;
+  }
 }
 
 .reflect-charts-legend-item-disabled {
@@ -42,4 +66,9 @@
   height: $reflect-legend-font-size/1.5;
   margin-right: $reflect-legend-indicator-margin;
   width: $reflect-legend-font-size;
+}
+
+.reflect-charts-series-indicator-right {
+  margin-left: $reflect-legend-indicator-margin;
+  margin-right: 0;
 }

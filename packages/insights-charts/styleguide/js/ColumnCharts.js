@@ -45,7 +45,8 @@ class ColumnCharts extends React.Component {
       },
       legend: {
         enabled: true,
-        orientation: 'bottom',
+        orientation: 'top',
+        alignment: 'center',
       },
       axis: {
         y: [{
@@ -59,6 +60,8 @@ class ColumnCharts extends React.Component {
         x: {
           title: 'I am a x axis title',
           labels: { rotated: true },
+          paddingInner: 0.1,
+          paddingOuter: 1,
         },
       },
       grid: {

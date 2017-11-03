@@ -29,13 +29,20 @@ class XScale {
         type === 'combination' ||
         xAxisOptions.scaleType === 'ordinalBand'
       ) {
+        const paddingInner = xAxisOptions.paddingInner || 0.05;
+        const paddingOuter = xAxisOptions.paddingOuter || 0.05;
+
         this.x = scaleBand();
+        this.x
+          .paddingInner(paddingInner)
+          .paddingOuter(paddingOuter);
       } else {
         this.x = scalePoint();
+
+        this.x.padding(xAxisOptions.paddingOuter || 0);
       }
 
-      this.x.padding(0.05)
-        .domain(categories);
+      this.x.domain(categories);
     } else {
       if (this.scale === 'time') {
         this.x = scaleTime();

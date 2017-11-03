@@ -1,3 +1,10 @@
+# 0.6.0
+
+* Fix bug with the display of points of interests when animations are disabled
+* Added left and top orientation for the legend
+* Added center and right alignment to the contents of the legend
+* Added setting for updating the inner and outer padding of scaleBands and scalePoints
+
 # 0.5.0
 
 * Adding support for skipping the rendering of null values when plotting charts

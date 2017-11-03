@@ -71,10 +71,17 @@ class Legend {
     return values;
   }
 
+  renderIndicator(elements, alignment) {
+    elements.append('span')
+      .classed(CSS.getClassName('series-indicator'), true)
+      .classed(CSS.getClassName('series-indicator-right'), alignment === 'right')
+      .attr('style', d => (d.color ? `background: ${d.color};` : null));
+  }
+
   render(selection) {
     const { seriesData, options, dimensions, dispatchers } = this;
-    const { enabled, orientation, maxHeight, maxWidth } = options.legend;
-    const margins = dimensions.margins;
+    const { enabled, orientation, alignment, maxHeight, maxWidth } = options.legend;
+    const margins = dimensions.margins || {};
     let container;
     let legendItems;
 
@@ -90,13 +97,18 @@ class Legend {
         .attr('class', classnames(
           CSS.getClassName('legend'),
           CSS.getClassName(`legend-${orientation}`),
+          CSS.getClassName(`legend-align-${alignment}`),
         ));
 
-      if (orientation === 'bottom' && margins.left) {
+      if (
+        (orientation === 'bottom' || orientation === 'top') &&
+        alignment !== 'center' &&
+        margins.left
+      ) {
         container.style('padding-left', `${margins.left}px`);
       }
 
-      if (orientation === 'right' && margins.top) {
+      if ((orientation === 'right' || orientation === 'left') && margins.top) {
         container.style('padding-top', `${margins.top}px`);
       }
 
@@ -143,12 +155,16 @@ class Legend {
         });
       });
 
-      legendItems.append('span')
-        .attr('class', CSS.getClassName('series-indicator'))
-        .attr('style', d => (d.color ? `background: ${d.color};` : null));
+      if (alignment === 'left' || alignment === 'center') {
+        this.renderIndicator(legendItems, alignment);
+      }
 
       legendItems.append('span')
         .text(d => (d.aggregate ? `${d.label}: ${this.getFormattedAggregate(d)}` : d.label));
+
+      if (alignment === 'right') {
+        this.renderIndicator(legendItems, alignment);
+      }
     }
 
     this.container = container;

@@ -234,7 +234,7 @@ class Container {
     this.setSVGWidth(dimensions, legend);
 
 
-    this.renderSVG();
+    this.renderSVG(legend);
   }
 
   renderWrapper(elem) {
@@ -262,8 +262,9 @@ class Container {
     }
   }
 
-  renderSVG() {
+  renderSVG(legend) {
     const { width, height, margins } = this.getDimensions();
+    const { options } = this;
 
     this.svg = this.wrapper
       .append('svg')
@@ -272,6 +273,8 @@ class Container {
         .style('width', `${width + margins.left + margins.right}px`)
         .attr('height', height + margins.top + margins.bottom)
         .style('height', `${height + margins.top + margins.bottom}px`)
+        .style('margin-top', options.legend.orientation === 'top' ? `${legend.height}px` : null)
+        .style('margin-left', options.legend.orientation === 'left' ? `${legend.width}px` : null)
       .append('g')
         .attr('transform', `translate(${margins.left},${margins.top})`);
 
@@ -305,7 +308,9 @@ class Container {
       .attr('width', width + margins.left + margins.right)
       .style('width', `${width + margins.left + margins.right}px`)
       .attr('height', height + margins.top + margins.bottom)
-      .style('height', `${height + margins.top + margins.bottom}px`);
+      .style('height', `${height + margins.top + margins.bottom}px`)
+      .style('margin-top', options.legend.orientation === 'top' ? `${legend.height}px` : null)
+      .style('margin-left', options.legend.orientation === 'left' ? `${legend.width}px` : null);
   }
 }
 

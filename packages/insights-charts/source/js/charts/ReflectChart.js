@@ -59,6 +59,9 @@ const defaultOptions = {
 
     // What side to render the legend on.
     orientation: 'right',
+
+    // What text alignment would you like?
+    alignment: 'left',
   },
 
   // Settings specific to tooltips.
