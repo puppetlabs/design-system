@@ -7,7 +7,7 @@ for (var i = 0; i < numParagraphs; i++) {
 }
 
 <div style={ { height: '400px' } }>
-  <Accordion title="I'm a fun Accordion">
+  <Accordion title="I'm a fun Accordion" autoOpen>
     <AccordionItem key="elem1" title="First element">
       <div>Hello, world! From the first element.</div>
     </AccordionItem>

@@ -1,52 +1,52 @@
 .rc-accordion {
+  height: 100%;
   overflow: hidden;
   position: relative;
-  height: 100%;
 }
 
 .rc-accordion-item-header,
 .rc-accordion-header {
-  @extend .rc-uppercase;
+  @extend %rc-uppercase;
 
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   background-color: $reflect-accordion-item-title-bg-color;
-  color: $reflect-accordion-item-title-color;
+  display: flex;
   font-family: $reflect-accordion-item-title-font-family;
   font-size: $reflect-accordion-item-title-font-size;
-  height: $reflect-accordion-item-title-height;
+  justify-content: space-between;
   padding: $reflect-accordion-item-title-padding;
   text-transform: $reflect-accordion-item-title-case;
+}
 
-  .rc-accordion-item-header-title,
+.rc-accordion-header {
+  height: $reflect-accordion-header-height;
+
   .rc-accordion-header-title {
+    color: $reflect-accordion-header-title-color;
+    font-size: $reflect-accordion-item-title-font-size;
+  }
+}
+
+.rc-accordion-item-header {
+  height: $reflect-accordion-item-title-height;
+
+  .rc-accordion-item-header-title {
     color: $reflect-accordion-item-title-color;
     font-size: $reflect-accordion-item-title-font-size;
   }
 }
 
+// The second group needs to be positioned to the bottom.
 .second-group {
-  position: absolute;
   bottom: 0;
-  right: 0;
   left: 0;
+  position: absolute;
+  right: 0;
 }
 
 .active-group {
   .rc-accordion-item-content {
     overflow-y: auto;
-  }
-}
-
-.rc-accordion-item-header:hover,
-.rc-accordion-header:hover {
-  .rc-accordion-item-header-title {
-    color: $reflect-accordion-item-title-hover;
-  }
-
-  .rc-icon {
-    fill: $reflect-icon-fill-hover;
   }
 }
 
@@ -63,9 +63,9 @@
 }
 
 .rc-accordion-item-content {
+  border-top: $reflect-accordion-item-title-border;
   display: none;
   padding: $reflect-accordion-item-content-padding;
-  border-top: $reflect-accordion-item-title-border;
 
   .form-field {
     margin-bottom: $reflect-medium;

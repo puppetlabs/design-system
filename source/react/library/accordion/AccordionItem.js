@@ -17,13 +17,11 @@ const propTypes = {
   /** Callback for when the user opens the item */
   onOpen: React.PropTypes.func,
   /** Callback for when the user closes the item */
-  onClose: React.PropTypes.func,
   maxHeight: React.PropTypes.number,
 };
 
 const defaultProps = {
   onOpen: () => {},
-  onClose: () => {},
 };
 
 /**
@@ -45,7 +43,7 @@ class AccordionItem extends React.Component {
       nativeEvent.preventDefault();
     }
 
-    this.props.active ? this.props.onClose() : this.props.onOpen();
+    this.props.onOpen();
   }
 
   renderContent() {
@@ -68,7 +66,7 @@ class AccordionItem extends React.Component {
     let jsx = [];
 
     jsx.push(
-      <span className="rc-accordion-item-header-title">
+      <span key="header-title" className="rc-accordion-item-header-title">
         { title }
       </span>,
     );
@@ -81,7 +79,7 @@ class AccordionItem extends React.Component {
       );
     } else {
       jsx.push(
-        <span className="rc-accordion-item-header-icon">
+        <span key="header-icon" className="rc-accordion-item-header-icon">
           <Icon width="10px" height="10px" type={ 'plus' } />
         </span>,
       );
