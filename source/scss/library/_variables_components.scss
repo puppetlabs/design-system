@@ -7,10 +7,10 @@
 // Accordions
 // ----------------------------------------------------------------------------
 $reflect-accordion-item-title-font-family    : 'Montserrat', sans-serif !default;
-$reflect-accordion-item-title-font-size      : $reflect-font-size-base !default;
-$reflect-accordion-item-title-color          : $reflect-font-color-base !default;
-$reflect-accordion-item-title-hover          : $reflect-font-color-base !default;
-$reflect-accordion-item-title-bg-color       : $reflect-bg-subtle !default;
+$reflect-accordion-item-title-font-size      : $reflect-font-size-small !default;
+$reflect-accordion-item-title-color          : $reflect-font-color-medium !default;
+$reflect-accordion-item-title-hover          : $reflect-font-color-medium !default;
+$reflect-accordion-item-title-bg-color       : $reflect-white !default;
 $reflect-accordion-item-title-border         : $reflect-border !default;
 $reflect-accordion-item-title-height         : 40px;
 $reflect-accordion-item-title-padding        : 0 $reflect-medium !default; // Todo: Base on grid

@@ -1,26 +1,47 @@
+.rc-accordion {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+
 .rc-accordion-item-header,
 .rc-accordion-header {
+  @extend .rc-uppercase;
+
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   background-color: $reflect-accordion-item-title-bg-color;
   color: $reflect-accordion-item-title-color;
-  display: flex;
   font-family: $reflect-accordion-item-title-font-family;
   font-size: $reflect-accordion-item-title-font-size;
   height: $reflect-accordion-item-title-height;
-  justify-content: space-between;
   padding: $reflect-accordion-item-title-padding;
   text-transform: $reflect-accordion-item-title-case;
 
-  .rc-accordion-item-title-text,
+  .rc-accordion-item-header-title,
   .rc-accordion-header-title {
     color: $reflect-accordion-item-title-color;
     font-size: $reflect-accordion-item-title-font-size;
   }
 }
 
+.second-group {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.active-group {
+  .rc-accordion-item-content {
+    overflow-y: auto;
+  }
+}
+
 .rc-accordion-item-header:hover,
 .rc-accordion-header:hover {
-  .rc-accordion-item-title-text {
+  .rc-accordion-item-header-title {
     color: $reflect-accordion-item-title-hover;
   }
 
@@ -35,15 +56,16 @@
 
 .rc-accordion-item {
   border-bottom: $reflect-accordion-item-title-border;
+}
 
-  &:last-of-type {
-    border-bottom: 0;
-  }
+.second-group {
+  border-top: $reflect-accordion-item-title-border;
 }
 
 .rc-accordion-item-content {
   display: none;
   padding: $reflect-accordion-item-content-padding;
+  border-top: $reflect-accordion-item-title-border;
 
   .form-field {
     margin-bottom: $reflect-medium;
