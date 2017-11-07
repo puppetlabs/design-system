@@ -1,3 +1,8 @@
+# 0.6.2
+
+* Fix bug in dollar formatting where the value is less than a dollar
+* Add animation toggle to styleguide
+
 # 0.6.1
 
 * Fix bug where 0s would get plotted as the ymin rather than 0

@@ -5,12 +5,13 @@ import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
 const propTypes = {
+  animations: PropTypes.bool.isRequired,
   sparseness: PropTypes.number.isRequired,
 };
 
 class BarCharts extends React.Component {
   updateCharts() {
-    const { sparseness } = this.props;
+    const { animations, sparseness } = this.props;
     const dataPoints = 10;
 
     const data = {
@@ -38,6 +39,9 @@ class BarCharts extends React.Component {
     };
 
     const options = {
+      animations: {
+        enabled: animations,
+      },
       column: {
         data_labels: {
           enabled: true,
@@ -135,7 +139,8 @@ class BarCharts extends React.Component {
 BarCharts.propTypes = propTypes;
 
 const mapStateToProps = state => ({
-  sparseness: state.options.sparseness || 0,
+  animations: state.options.animations,
+  sparseness: state.options.sparseness,
 });
 
 export default connect(mapStateToProps)(BarCharts);

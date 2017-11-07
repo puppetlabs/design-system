@@ -44,7 +44,7 @@ class SparsenessOption extends React.Component {
 SparsenessOption.propTypes = propTypes;
 
 const mapStateToProps = state => ({
-  sparseness: state.options.sparseness || 0,
+  sparseness: state.options.sparseness,
 });
 
 const mapDispatchToProps = dispatch => ({

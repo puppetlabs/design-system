@@ -5,12 +5,13 @@ import { getRandomData } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
 const propTypes = {
+  animations: PropTypes.bool.isRequired,
   sparseness: PropTypes.number.isRequired,
 };
 
 class DonutCharts extends React.Component {
   updateCharts() {
-    const { sparseness } = this.props;
+    const { animations, sparseness } = this.props;
     const dataPoints = 3;
 
     const data = {
@@ -27,6 +28,9 @@ class DonutCharts extends React.Component {
       type: 'donut',
       data,
       options: {
+        animations: {
+          enabled: animations,
+        },
         innerRadius: '50%',
         legend: {
           orientation: 'top',
@@ -47,6 +51,9 @@ class DonutCharts extends React.Component {
     this.donutChart.render();
 
     const options = {
+      animations: {
+        enabled: animations,
+      },
       legend: {
         enabled: true,
         alignment: 'right',
@@ -102,7 +109,8 @@ class DonutCharts extends React.Component {
 DonutCharts.propTypes = propTypes;
 
 const mapStateToProps = state => ({
-  sparseness: state.options.sparseness || 0,
+  animations: state.options.animations,
+  sparseness: state.options.sparseness,
 });
 
 export default connect(mapStateToProps)(DonutCharts);

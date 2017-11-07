@@ -5,13 +5,14 @@ import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
 const propTypes = {
+  animations: PropTypes.bool.isRequired,
   sparseness: PropTypes.number.isRequired,
 };
 
 class SparklineCharts extends React.Component {
   updateCharts() {
     const dataPoints = 10;
-    const { sparseness } = this.props;
+    const { animations, sparseness } = this.props;
 
     const data = {
       categories: getRandomCategories(dataPoints),
@@ -24,7 +25,11 @@ class SparklineCharts extends React.Component {
       ],
     };
 
-    const options = {};
+    const options = {
+      animations: {
+        enabled: animations,
+      },
+    };
 
     this.lineSparkline = new ReflectChart(this.line, {
       type: 'sparkline',
@@ -94,7 +99,8 @@ class SparklineCharts extends React.Component {
 SparklineCharts.propTypes = propTypes;
 
 const mapStateToProps = state => ({
-  sparseness: state.options.sparseness || 0,
+  animations: state.options.animations,
+  sparseness: state.options.sparseness,
 });
 
 export default connect(mapStateToProps)(SparklineCharts);

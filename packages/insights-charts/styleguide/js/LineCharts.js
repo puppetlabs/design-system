@@ -5,12 +5,13 @@ import { getRandomData, getRandomCategories } from './helpers';
 import ReflectChart from '../../source/js/ReflectCharts';
 
 const propTypes = {
+  animations: PropTypes.bool.isRequired,
   sparseness: PropTypes.number.isRequired,
 };
 
 class LineCharts extends React.Component {
   updateCharts() {
-    const { sparseness } = this.props;
+    const { animations, sparseness } = this.props;
     const dataPoints = 10;
 
     const multiData = {
@@ -122,6 +123,9 @@ class LineCharts extends React.Component {
     };
 
     const options = {
+      animations: {
+        enabled: animations,
+      },
       line: {
         spline: true,
         data_labels: {
@@ -225,7 +229,8 @@ class LineCharts extends React.Component {
 LineCharts.propTypes = propTypes;
 
 const mapStateToProps = state => ({
-  sparseness: state.options.sparseness || 0,
+  animations: state.options.animations,
+  sparseness: state.options.sparseness,
 });
 
 export default connect(mapStateToProps)(LineCharts);

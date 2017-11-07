@@ -7,7 +7,13 @@ function stripInsignificantZeros(value) {
 const formatters = {
   decimal: format('.2f'),
   dollars: (value) => {
-    const formatted = format('$s')(value);
+    let formatted;
+
+    if (value >= 1) {
+      formatted = format('$s')(value);
+    } else {
+      formatted = `$${format('.2f')(value)}`;
+    }
 
     return stripInsignificantZeros(formatted);
   },

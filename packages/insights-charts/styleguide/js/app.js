@@ -17,7 +17,7 @@ import '../scss/styleguide.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
   const elem = document.getElementById('app');
-  const store = createStore(reducers);
+  const store = createStore(reducers, { options: { sparseness: 0, animations: true } });
 
   ReactDOM.render(
     <Provider store={ store }>

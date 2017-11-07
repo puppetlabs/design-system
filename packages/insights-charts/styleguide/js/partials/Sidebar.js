@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import SparsenessOption from './SparsenessOption';
+import AnimationsOption from './AnimationsOption';
 
 const Sidebar = ({ pages }) => {
   const lis = pages.map(p => (
@@ -26,6 +27,10 @@ const Sidebar = ({ pages }) => {
           <li>
             <div className="sg-sidebar-option-title">Sparseness</div>
             <div className="sg-sidebar-option-input"><SparsenessOption /></div>
+          </li>
+          <li>
+            <div className="sg-sidebar-option-title">Animations</div>
+            <div className="sg-sidebar-option-input"><AnimationsOption /></div>
           </li>
         </ul>
       </div>

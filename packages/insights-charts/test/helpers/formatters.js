@@ -12,6 +12,10 @@ describe('formatters', () => {
     it('should properly format the value with the $ and at the correct precision', () => {
       expect(formatters.dollars(1000000.0000)).to.eql('$1M');
     });
+
+    it('should properly format small values that are less than a dollar', () => {
+      expect(formatters.dollars(0.05)).to.eql('$0.05');
+    });
   });
 
   describe('numeric', () => {
