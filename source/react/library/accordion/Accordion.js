@@ -33,28 +33,15 @@ class Accordion extends React.Component {
   constructor(props) {
     super(props);
 
+    // We may need to account for the header
+    const activeIndex = (typeof props.title === 'undefined' ? 0 : 1);
+
     this.state = {
-      activeIdx: null,
+      activeIdx: props.autoOpen ? activeIndex : null,
     };
 
     this.onClose = this.onClose.bind(this);
     this.onOpenChild = this.onOpenChild.bind(this);
-    this.onCloseChild = this.onCloseChild.bind(this);
-  }
-
-  componentDidMount() {
-    const wrapper = this.wrapper.getBoundingClientRect();
-    const content = this.content.getBoundingClientRect();
-
-    const activeHeight = wrapper.height - content.height;
-
-    const newState = { activeHeight };
-
-    if (this.props.autoOpen) {
-      newState.activeIdx = 0;
-    }
-
-    this.setState(newState);
   }
 
   onClose(e) {
@@ -73,14 +60,6 @@ class Accordion extends React.Component {
     };
   }
 
-  onCloseChild(key) {
-    return () => {
-      this.setState({ activeIdx: null });
-
-      this.props.onChange(key);
-    };
-  }
-
   getKey(child, idx) {
     return child.key || String(idx);
   }
@@ -90,22 +69,16 @@ class Accordion extends React.Component {
   }
 
   renderHeader() {
-    let jsx;
-
-    if (typeof title !== 'undefined') {
-      jsx = (
-        <div className="rc-accordion-header">
-          <span className="rc-accordion-header-title">{ this.props.title }</span>
-          <span className="rc-accordion-header-icon">
-            <a href="" onClick={ this.onClose } >
-              <Icon width="8px" height="8px" type="close" />
-            </a>
-          </span>
-        </div>
-      );
-    }
-
-    return jsx;
+    return (
+      <div className="rc-accordion-header" key="header">
+        <span className="rc-accordion-header-title">{ this.props.title }</span>
+        <span className="rc-accordion-header-icon">
+          <a href="" onClick={ this.onClose } >
+            <Icon width="8px" height="8px" type="close" />
+          </a>
+        </span>
+      </div>
+    );
   }
 
   renderChild(child, index) {
@@ -114,94 +87,38 @@ class Accordion extends React.Component {
     // We require a key, but in case the user supplies something all wrong we
     // can use the index as a surrogate.
     const key = this.getKey(child, index);
-    const title = child.props.title;
 
     // This element is "active" if the current key is indeed active.
     const active = activeIdx === index;
 
     const props = {
       key,
-      title,
       active,
-      children: child.props.children,
       onOpen: this.onOpenChild(index),
-      onClose: this.onCloseChild(index),
     };
-
-    if (active) {
-      props.maxHeight = this.state.activeHeight;
-    }
 
     return React.cloneElement(child, props);
   }
 
-  renderFirstGroup(children) {
-    const activeIdx = this.state.activeIdx;
-    let group = [];
-
-    if (this.hasActive()) {
-      // If we have an active item, render all the items before it.
-      children.forEach((c, i) => {
-        if (i < activeIdx) {
-          group.push(this.renderChild(c, i));
-        }
-      });
-    } else {
-      // Otherwise, we just render all the children./
-      group = children.map((c, i) => this.renderChild(c, i));
-    }
-
-    return <div key="first-group" className="first-group">{ group }</div>;
-  }
-
-  renderActive(children) {
-    const activeIdx = this.state.activeIdx;
-    let active;
-
-    if (this.hasActive()) {
-      active = this.renderChild(children[activeIdx], activeIdx);
-    }
-
-    return <div key="active-group" className="active-group">{ active }</div>;
-  }
-
-  renderSecondGroup(children) {
-    const activeIdx = this.state.activeIdx;
-    const group = [];
-
-    if (this.hasActive()) {
-      children.forEach((c, i) => {
-        if (i > activeIdx) {
-          group.push(this.renderChild(c, i));
-        }
-      });
-    }
-
-    return <div key="second-group" className="second-group">{ group }</div>;
-  }
-
   renderItems() {
-    const children = Children.toArray(this.props.children);
-    const items = [];
+    let children = Children.toArray(this.props.children);
 
-    items.push(this.renderFirstGroup(children));
-    items.push(this.renderActive(children));
-    items.push(this.renderSecondGroup(children));
+    if (typeof this.props.title !== 'undefined') {
+      children.unshift(this.renderHeader());
+    }
 
-    return items;
+    children = children.map((c, i) => this.renderChild(c, i));
+
+    return <div className="rc-accordion-items">{ children }</div>;
   }
 
   render() {
     const className = classnames('rc-accordion', this.props.className);
-    const header = this.renderHeader();
     const items = this.renderItems();
 
     return (
-      <div ref={ (c) => { this.wrapper = c; } } className={ className }>
-        <div ref={ (c) => { this.content = c; } } >
-          { header }
-          { items }
-        </div>
+      <div className={ className }>
+        { items }
       </div>
     );
   }

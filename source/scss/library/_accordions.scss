@@ -1,7 +1,14 @@
 .rc-accordion {
+  display: flex;
+  flex-direction: column;
   height: 100%;
-  overflow: hidden;
   position: relative;
+}
+
+.rc-accordion-items {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
 .rc-accordion-item-header,
@@ -11,7 +18,6 @@
   align-items: center;
   background-color: $reflect-accordion-item-title-bg-color;
   display: flex;
-  font-family: $reflect-accordion-item-title-font-family;
   font-size: $reflect-accordion-item-title-font-size;
   justify-content: space-between;
   padding: $reflect-accordion-item-title-padding;
@@ -36,48 +42,39 @@
   }
 }
 
-// The second group needs to be positioned to the bottom.
-.second-group {
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-}
-
-.active-group {
-  .rc-accordion-item-content {
-    overflow-y: auto;
-  }
-}
-
 .rc-accordion-header {
   border-bottom: $reflect-accordion-item-title-border;
 }
 
 .rc-accordion-item {
   border-bottom: $reflect-accordion-item-title-border;
-}
-
-.second-group {
-  border-top: $reflect-accordion-item-title-border;
+  display: flex;
+  flex-direction: column;
+  transition: flex-grow $reflect-accordion-animation-speed;
 }
 
 .rc-accordion-item-content {
   border-top: $reflect-accordion-item-title-border;
-  display: none;
-  padding: $reflect-accordion-item-content-padding;
-
-  .form-field {
-    margin-bottom: $reflect-medium;
-  }
-
-  .form-field:last-child {
-    margin-bottom: 0;
-  }
+  display: flex;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: opacity $reflect-accordion-animation-speed;
+  visibility: hidden;
 }
 
 .rc-accordion-item-active {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
   .rc-accordion-item-content {
-    display: block;
+    flex-direction: column;
+    flex-grow: 1;
+    opacity: 1;
+    overflow: auto;
+    padding: $reflect-accordion-item-content-padding;
+    visibility: visible;
   }
 }

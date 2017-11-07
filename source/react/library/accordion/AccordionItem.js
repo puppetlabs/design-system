@@ -16,8 +16,6 @@ const propTypes = {
   className: React.PropTypes.string,
   /** Callback for when the user opens the item */
   onOpen: React.PropTypes.func,
-  /** Callback for when the user closes the item */
-  maxHeight: React.PropTypes.number,
 };
 
 const defaultProps = {
@@ -47,12 +45,8 @@ class AccordionItem extends React.Component {
   }
 
   renderContent() {
-    const style = {
-      maxHeight: this.props.maxHeight,
-    };
-
     return (
-      <div className="rc-accordion-item-content" style={ style }>
+      <div className="rc-accordion-item-content">
         { this.props.children }
       </div>
     );

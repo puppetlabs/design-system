@@ -229,4 +229,8 @@ $reflect-selectable-shadow-hover             : 0 0 0 1px $reflect-border-hover-c
 $reflect-selected-shadow                     : 0 0 0 1px $reflect-action-color !default;
 $reflect-selected-shadow-hover               : 0 0 0 1px $reflect-action-hover !default;
 
+// Animations
+// ----------------------------------------------------------------------------
+$reflect-animation-speed-base                : 0.4s;
+
 /* stylelint-enable */
