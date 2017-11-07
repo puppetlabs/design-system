@@ -1,5 +1,4 @@
 .rc-accordion {
-  display: flex;
   flex-direction: column;
   height: 100%;
   position: relative;
@@ -48,14 +47,12 @@
 
 .rc-accordion-item {
   border-bottom: $reflect-accordion-item-title-border;
-  display: flex;
   flex-direction: column;
   transition: flex-grow $reflect-accordion-animation-speed;
 }
 
 .rc-accordion-item-content {
   border-top: $reflect-accordion-item-title-border;
-  display: flex;
   height: 0;
   opacity: 0;
   overflow: hidden;
