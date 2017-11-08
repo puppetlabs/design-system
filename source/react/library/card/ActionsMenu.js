@@ -20,7 +20,7 @@ const CardActionsMenu = (props) => {
   if (props.menuOptions.length > 0) {
     const target = (
       <a>
-        <Icon type={ props.menuToggleIcon } height="16" width="16" />
+        <Icon type={ props.menuToggleIcon } height="16px" width="16px" />
       </a>
     );
 

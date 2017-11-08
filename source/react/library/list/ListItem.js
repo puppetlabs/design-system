@@ -68,7 +68,7 @@ class ListItem extends React.PureComponent {
     if (this.props.onRemove) {
       jsx = (
         <a className="rc-list-item-action rc-list-item-remove" onClick={ this.onRemove }>
-          <Icon type="delete" width="16" height="16" />
+          <Icon type="delete" width="16px" height="16px" />
         </a>
       );
     }
@@ -82,7 +82,7 @@ class ListItem extends React.PureComponent {
     if (this.props.onEdit) {
       jsx = (
         <a className="rc-list-item-action rc-list-item-edit" onClick={ this.onEdit }>
-          <Icon type="edit" width="16" height="16" />
+          <Icon type="edit" width="16px" height="16px" />
         </a>
       );
     }
