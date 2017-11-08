@@ -27,6 +27,7 @@
 
 .rc-accordion-header-title {
   color: $reflect-accordion-header-title-color;
+  flex-grow: 1;
   font-size: $reflect-accordion-item-title-font-size;
 }
 
