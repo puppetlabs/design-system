@@ -7,6 +7,31 @@
  * MIT License: https://github.com/keystonejs/react-select
 */
 .rc-select {
+  &.open {
+    .rc-input {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  .rc-select-menu {
+    border: $reflect-border-active;
+    border-bottom-left-radius: $reflect-input-border-radius;
+    border-bottom-right-radius: $reflect-input-border-radius;
+    box-shadow: $reflect-selected-shadow;
+  }
+
+  .rc-select-menu-item {
+    padding: $reflect-small;
+    color: $reflect-brand-primary;
+  }
+
+  .rc-select-menu-item:hover {
+    background: $reflect-gray-light;
+  }
+}
+
+.rc-select {
   &.Select {
     position: relative;
   }

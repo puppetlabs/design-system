@@ -3,7 +3,7 @@ import clone from 'clone';
 import classnames from 'classnames';
 import equals from 'deep-equal';
 import Input from './Input';
-import Select from './Select';
+import Select from './select/Select';
 import SplitButton from './SplitButton';
 
 const propTypes = {

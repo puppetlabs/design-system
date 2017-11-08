@@ -1,5 +1,5 @@
 import React from 'react';
-import Select from '../Select';
+import Select from '../select/Select';
 
 const propTypes = {
   data: React.PropTypes.oneOfType([
