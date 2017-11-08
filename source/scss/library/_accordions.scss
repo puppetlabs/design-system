@@ -21,29 +21,26 @@
 }
 
 .rc-accordion-header {
+  border-bottom: $reflect-accordion-item-title-border;
   height: $reflect-accordion-header-height;
+}
 
-  .rc-accordion-header-title {
-    color: $reflect-accordion-header-title-color;
-    font-size: $reflect-accordion-item-title-font-size;
-  }
+.rc-accordion-header-title {
+  color: $reflect-accordion-header-title-color;
+  font-size: $reflect-accordion-item-title-font-size;
 }
 
 .rc-accordion-item-header {
   height: $reflect-accordion-item-title-height;
-
-  .rc-accordion-item-header-title {
-    color: $reflect-accordion-item-title-color;
-    flex-grow: 1;
-    font-size: $reflect-accordion-item-title-font-size;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
 }
 
-.rc-accordion-header {
-  border-bottom: $reflect-accordion-item-title-border;
+.rc-accordion-item-header-title {
+  color: $reflect-accordion-item-title-color;
+  flex-grow: 1;
+  font-size: $reflect-accordion-item-title-font-size;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .rc-accordion-item {
