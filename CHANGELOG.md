@@ -1,3 +1,8 @@
+# 0.1.4
+
+* Add resets to anchor tags
+* Provide numbers with units for proper icon sizing
+
 # 0.1.3
 
 * Fix an issue causing Icons to be mispositioned within Buttons
@@ -14,7 +19,7 @@
 
 # 0.1.0
 
-* Adding a new prop to button that causes it to act like a dropdown 
+* Adding a new prop to button that causes it to act like a dropdown
 * Fixing bug in icon sizing
 
 # 0.0.77
