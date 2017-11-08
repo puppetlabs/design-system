@@ -16,7 +16,6 @@
   background-color: $reflect-accordion-item-title-bg-color;
   display: flex;
   font-size: $reflect-accordion-item-title-font-size;
-  justify-content: space-between;
   padding: $reflect-accordion-item-title-padding;
   text-transform: $reflect-accordion-item-title-case;
 }
@@ -35,7 +34,11 @@
 
   .rc-accordion-item-header-title {
     color: $reflect-accordion-item-title-color;
+    flex-grow: 1;
     font-size: $reflect-accordion-item-title-font-size;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 }
 
@@ -45,7 +48,10 @@
 
 .rc-accordion-item {
   border-bottom: $reflect-accordion-item-title-border;
-  transition: flex-grow $reflect-accordion-animation-speed;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  transition: all $reflect-accordion-animation-speed;
 }
 
 .rc-accordion-item-content {
@@ -59,8 +65,6 @@
 }
 
 .rc-accordion-item-active {
-  display: flex;
-  flex-direction: column;
   flex-grow: 1;
 
   .rc-accordion-item-content {
