@@ -1,3 +1,7 @@
+# 0.6.3
+
+* Fix an issue that occurs when the window is resized before the chart has rendered
+
 # 0.6.2
 
 * Fix bug in dollar formatting where the value is less than a dollar

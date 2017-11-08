@@ -153,7 +153,9 @@ class Chart {
 
   resize() {
     try {
-      this.chart.update();
+      if (this.rendered) {
+        this.chart.update();
+      }
     } catch (e) {
       if (this.dispatchers.enabled('onError.external')) {
         this.dispatchers.call('onError', this, e);
@@ -216,6 +218,8 @@ class Chart {
   }
 
   afterRender() {
+    this.rendered = true;
+
     this.dispatchers.call('afterRender');
   }
 }
