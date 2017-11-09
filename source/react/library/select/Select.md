@@ -5,17 +5,25 @@ const options = [
   'Sig',
 ];
 
-<Select options={ options } placeholder="Select one..." />
+<Select
+  onSelect={o => console.log(o)}
+  options={ options }
+  placeholder="Select one..."
+/>
 ```
 
 Select with `autoOpen` enabled:
 
 ```
 const options = [
-  'Geoff',
-  'Colby',
-  'Sig',
+  { value: 'Geoff' },
+  { value: 'Colby' },
+  { value: 'Sig', selected: true },
 ];
 
-<Select autoOpen options={ options } />
+<Select
+  onSelect={o => console.log(o)}
+  autoOpen
+  options={ options }
+/>
 ```
