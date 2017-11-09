@@ -4,6 +4,7 @@ import Icon from '../Icon';
 import Input from '../Input';
 
 const propTypes = {
+  className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
   autoOpen: React.PropTypes.bool,
   size: React.PropTypes.oneOf(['small', 'tiny']),
@@ -17,34 +18,17 @@ const defaultProps = {
   options: [],
 };
 
-const formatOptions = (options) => {
-  return options.map((o, idx) => {
-    let option = o;
+const formatOptions = options => options.map((o, idx) => {
+  let option = o;
 
-    if (typeof o === 'string') {
-      option = { id: o, value: o };
-    } else if (typeof o.id === 'undefined') {
-      o.id = idx;
-    }
+  if (typeof o === 'string') {
+    option = { id: o, value: o };
+  } else if (typeof o.id === 'undefined') {
+    o.id = idx;
+  }
 
-    return option;
-  });
-};
-
-const getDefaultSelected = (options) => {
-  let selected = { value: '' };
-  let found = false;
-
-  options.forEach((option) => {
-    if (!found && option && option.selected) {
-      selected = option;
-
-      found = true;
-    }
-  });
-
-  return selected;
-};
+  return option;
+});
 
 /**
  * `Select` allows the user to select an item from a list.
@@ -55,7 +39,6 @@ class Select extends React.Component {
 
     this.state = {
       inputValue: undefined,
-      selected: getDefaultSelected(props.options),
       options: formatOptions(props.options),
       open: this.props.autoOpen,
     };
@@ -82,24 +65,36 @@ class Select extends React.Component {
     return (e) => {
       e.preventDefault();
 
-      option.selected = true;
+      const options = this.state.options.map((o) => {
+        if (o.id === option.id) {
+          o.selected = true;
+        } else {
+          o.selected = false;
+        }
 
-      this.props.onSelect(option)
+        return o;
+      });
+
+      this.props.onSelect(option);
       this.setState({
         inputValue: undefined,
-        selected: option,
         open: false,
+        options,
       });
-    }
+    };
   }
 
   getCurrentValue() {
-    let value;
+    let value = '';
 
     if (typeof this.state.inputValue !== 'undefined') {
       value = this.state.inputValue;
     } else {
-      value = this.state.selected.value;
+      this.state.options.forEach((option) => {
+        if (option.selected) {
+          value = option.value;
+        }
+      });
     }
 
     return value;
@@ -111,10 +106,16 @@ class Select extends React.Component {
     });
 
     return (
-      <a href="" className={ className } onMouseDown={ this.onSelect(o) } key={ o.id }>
+      <a
+        href=""
+        onClick={ e => e.preventDefault() }
+        className={ className }
+        onMouseDown={ this.onSelect(o) }
+        key={ o.id }
+      >
         { o.value }
       </a>
-    )
+    );
   }
 
   renderMenu() {
@@ -178,4 +179,4 @@ class Select extends React.Component {
 Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
 
-export default Select
+export default Select;
