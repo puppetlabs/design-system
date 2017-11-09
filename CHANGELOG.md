@@ -1,4 +1,4 @@
-# 0.1.5
+# 0.2.0
 
 * Various updates to our Accordion component
 
