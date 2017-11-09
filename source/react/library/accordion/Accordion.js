@@ -1,7 +1,13 @@
 import React, { Children } from 'react';
 import classnames from 'classnames';
 
+import Icon from '../Icon';
+
 const propTypes = {
+  /** Title for the Accordion */
+  title: React.PropTypes.string,
+  /** Function called when Accordion is closed. */
+  onClose: React.PropTypes.func,
   /** Whether to open the first item by default */
   autoOpen: React.PropTypes.bool,
   /** Called with the `key` of the opened `AccordionItem` */
@@ -10,6 +16,11 @@ const propTypes = {
   children: React.PropTypes.any,
   /** Class name to apply to the `Accordion` container wrapper div */
   className: React.PropTypes.string,
+};
+
+const defaultProps = {
+  onClose: () => {},
+  onChange: () => {},
 };
 
 /**
@@ -22,16 +33,30 @@ class Accordion extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { activeKey: null };
+    // We may need to account for the header
+    const activeIndex = (typeof props.title === 'undefined' ? 0 : 1);
+
+    this.state = {
+      activeIdx: props.autoOpen ? activeIndex : null,
+    };
+
+    this.onClose = this.onClose.bind(this);
+    this.onOpenChild = this.onOpenChild.bind(this);
   }
 
-  onOpen(key) {
-    return () => {
-      this.setState({ activeKey: key });
+  onClose(e) {
+    if (e) {
+      e.preventDefault();
+    }
 
-      if (this.props.onChange) {
-        this.props.onChange(key);
-      }
+    this.props.onClose();
+  }
+
+  onOpenChild(key) {
+    return () => {
+      this.setState({ activeIdx: key });
+
+      this.props.onChange(key);
     };
   }
 
@@ -39,37 +64,52 @@ class Accordion extends React.Component {
     return child.key || String(idx);
   }
 
+  hasActive() {
+    return typeof this.state.activeIdx !== 'undefined' && this.state.activeIdx !== null;
+  }
+
+  renderHeader() {
+    return (
+      <div className="rc-accordion-header" key="header">
+        <span className="rc-accordion-header-title">{ this.props.title }</span>
+        <span className="rc-accordion-header-icon">
+          <a href="" onClick={ this.onClose } >
+            <Icon width="8px" height="8px" type="close" />
+          </a>
+        </span>
+      </div>
+    );
+  }
+
+  renderChild(child, index) {
+    const activeIdx = this.state.activeIdx;
+
+    // We require a key, but in case the user supplies something all wrong we
+    // can use the index as a surrogate.
+    const key = this.getKey(child, index);
+
+    // This element is "active" if the current key is indeed active.
+    const active = activeIdx === index;
+
+    const props = {
+      key,
+      active,
+      onOpen: this.onOpenChild(index),
+    };
+
+    return React.cloneElement(child, props);
+  }
+
   renderItems() {
-    const activeKey = this.state.activeKey;
-    const newChildren = [];
+    let children = Children.toArray(this.props.children);
 
-    Children.forEach(this.props.children, (child, index) => {
-      if (!child) return;
+    if (typeof this.props.title !== 'undefined') {
+      children.unshift(this.renderHeader());
+    }
 
-      // We require a key, but in case the user supplies something all wrong we
-      // can use the index as a surrogate.
-      const key = this.getKey(child, index);
-      const title = child.props.title;
+    children = children.map((c, i) => this.renderChild(c, i));
 
-      // This element is "active" if the current key is indeed active.
-      let active = activeKey === key;
-
-      if (this.props.autoOpen && !activeKey && index === 0) {
-        active = true;
-      }
-
-      const props = {
-        key,
-        title,
-        active,
-        children: child.props.children,
-        onOpen: this.onOpen(key).bind(this),
-      };
-
-      newChildren.push(React.cloneElement(child, props));
-    });
-
-    return newChildren;
+    return <div className="rc-accordion-items">{ children }</div>;
   }
 
   render() {
@@ -85,5 +125,6 @@ class Accordion extends React.Component {
 }
 
 Accordion.propTypes = propTypes;
+Accordion.defaultProps = defaultProps;
 
 export default Accordion;

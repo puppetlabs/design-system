@@ -18,6 +18,10 @@ const propTypes = {
   onOpen: React.PropTypes.func,
 };
 
+const defaultProps = {
+  onOpen: () => {},
+};
+
 /**
  * `AccordionItem`s are containers which are meant to be rendered within an
  * `Accordion`.
@@ -37,9 +41,7 @@ class AccordionItem extends React.Component {
       nativeEvent.preventDefault();
     }
 
-    if (this.props.onOpen) {
-      this.props.onOpen();
-    }
+    this.props.onOpen();
   }
 
   renderContent() {
@@ -52,46 +54,38 @@ class AccordionItem extends React.Component {
 
   renderTitle() {
     const { active, title } = this.props;
-    const className = classnames('rc-accordion-item-title', {
-      'rc-accordion-item-title-active': active,
+    const className = classnames('rc-accordion-item-header', {
+      'rc-accordion-item-header-active': active,
     });
-    const icon = <Icon width="15px" height="15px" type="plus" />;
-    let titleContent;
-    let iconContent;
-    let content;
+    let jsx = [];
 
-    titleContent = (
-      <span className="rc-accordion-item-title-text">
+    jsx.push(
+      <span key="header-title" className="rc-accordion-item-header-title">
         { title }
-      </span>
-    );
-
-    iconContent = (
-      <span className="rc-accordion-item-title-icon">
-        { icon }
-      </span>
+      </span>,
     );
 
     if (active) {
-      content = (
-        <div className="rc-accordion-item-header">
-          { titleContent }
+      jsx = (
+        <div className={ className }>
+          { jsx }
         </div>
       );
     } else {
-      content = (
+      jsx.push(
+        <span key="header-icon" className="rc-accordion-item-header-icon">
+          <Icon width="10px" height="10px" type={ 'plus' } />
+        </span>,
+      );
+
+      jsx = (
         <a className="rc-accordion-item-header" href="" onClick={ this.onClick }>
-          { titleContent }
-          { iconContent }
+          { jsx }
         </a>
       );
     }
 
-    return (
-      <div className={ className }>
-        { content }
-      </div>
-    );
+    return jsx;
   }
 
   render() {
@@ -111,5 +105,6 @@ class AccordionItem extends React.Component {
 }
 
 AccordionItem.propTypes = propTypes;
+AccordionItem.defaultProps = defaultProps;
 
 export default AccordionItem;

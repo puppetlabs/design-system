@@ -1,3 +1,7 @@
+# 0.2.0
+
+* Various updates to our Accordion component
+
 # 0.1.4
 
 * Add resets to anchor tags

@@ -1,15 +1,25 @@
 ```
-<Accordion>
-  <AccordionItem key="elem1" title="First element">
-    <div>Hello, world! From the first element.</div>
-  </AccordionItem>
-  <AccordionItem key="elem2" title="Second element">
-    <div>Hello, world! From the second element.</div>
-  </AccordionItem>
-  <AccordionItem key="elem3" title="Third element">
-    <div>Hello, world! From the third element.</div>
-  </AccordionItem>
-</Accordion>
+const numParagraphs = 20;
+const paragraphs = [];
+
+for (var i = 0; i < numParagraphs; i++) {
+  paragraphs.push(<p>Hello world</p>);
+}
+
+<div style={ { height: '400px' } }>
+  <Accordion title="I'm a fun Accordion" autoOpen>
+    <AccordionItem key="elem1" title="First element">
+      <div>Hello, world! From the first element.</div>
+    </AccordionItem>
+    <AccordionItem key="elem2" title="Second element">
+      <div>Hello, world! From the second element. Here's a bunch of paragraphs.</div>
+      { paragraphs }
+    </AccordionItem>
+    <AccordionItem key="elem3" title="Third element">
+      <div>Hello, world! From the third element.</div>
+    </AccordionItem>
+  </Accordion>
+</div>
 ```
 
 `Accordion` with `autoOpen`, rendering a `Table`:
