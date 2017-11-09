@@ -99,7 +99,7 @@ class Filter extends React.Component {
   }
 
   onOptionSelect(type) {
-    return value => {
+    return ({ value }) => {
       this.onFilterChange(type, value);
     };
   }
@@ -173,15 +173,21 @@ class Filter extends React.Component {
   }
 
   renderFieldSelect(fields) {
+    const options = fields.map((field) => {
+      if (this.state.filter.field === field.value) {
+        field.selected = true;
+      }
+
+      return field;
+    });
+
     return (
       <Select
         name="field-select"
         placeholder="Field"
-        value={ this.state.filter.field }
-        options={ fields }
-        onChange={ this.onOptionSelect('field') }
-        clearable={ false }
-        className="Select-small Select-left"
+        options={ options }
+        onSelect={ this.onOptionSelect('field') }
+        className="rc-select-left"
       />
     );
   }
@@ -190,6 +196,7 @@ class Filter extends React.Component {
     const operators = this.props.operators.map((type, i) => ({
       value: type.symbol,
       label: type.label,
+      selected: type.symbol === this.state.filter.op,
       type: 'operator',
       id: i,
     }));
@@ -198,11 +205,9 @@ class Filter extends React.Component {
       <Select
         name="operator-select"
         placeholder="Operator"
-        value={ this.state.filter.op }
         options={ operators }
-        onChange={ this.onOptionSelect('op') }
-        clearable={ false }
-        className="Select-small Select-right"
+        onSelect={ this.onOptionSelect('op') }
+        className="rc-select-right"
       />
     );
   }

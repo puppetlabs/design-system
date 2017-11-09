@@ -26,6 +26,11 @@
     }
   }
 
+  .rc-input {
+    font-size: $reflect-font-size-small;
+    line-height: $reflect-medium;
+  }
+
   .rc-select-menu {
     width: 100%;
     background: $reflect-white;

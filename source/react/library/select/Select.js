@@ -4,17 +4,18 @@ import Icon from '../Icon';
 import Input from '../Input';
 
 const propTypes = {
-  className: React.PropTypes.string,
-  placeholder: React.PropTypes.string,
   autoOpen: React.PropTypes.bool,
-  size: React.PropTypes.oneOf(['small', 'tiny']),
   onSelect: React.PropTypes.func,
   options: React.PropTypes.array,
+  className: React.PropTypes.string,
+  placeholder: React.PropTypes.string,
+  size: React.PropTypes.oneOf(['small', 'tiny']),
 };
 
 const defaultProps = {
-  autoOpen: false,
   onSelect: () => {},
+  autoOpen: false,
+  size: 'small',
   options: [],
 };
 
@@ -22,13 +23,26 @@ const formatOptions = options => options.map((o, idx) => {
   let option = o;
 
   if (typeof o === 'string') {
-    option = { id: o, value: o };
+    option = { id: o, value: o, label: o };
   } else if (typeof o.id === 'undefined') {
     o.id = idx;
   }
 
   return option;
 });
+
+const shouldComponentUpdate = (currentOptions, newOptions) => {
+  let update = false;
+  newOptions = formatOptions(newOptions);
+
+  newOptions.forEach((option, i) => {
+    if (!update && currentOptions[i].id !== option.id) {
+      update = true;
+    }
+  });
+
+  return update;
+};
 
 /**
  * `Select` allows the user to select an item from a list.
@@ -39,8 +53,8 @@ class Select extends React.Component {
 
     this.state = {
       inputValue: undefined,
-      options: formatOptions(props.options),
       open: this.props.autoOpen,
+      options: formatOptions(props.options),
     };
 
     this.onInputClick = this.onInputClick.bind(this);
@@ -53,8 +67,10 @@ class Select extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    // TODO: conditionally do this
-    this.setState({ options: formatOptions(newProps.options) });
+    if (shouldComponentUpdate(newProps.options, this.state.options)) {
+      // TODO: conditionally do this
+      this.setState({ options: formatOptions(newProps.options) });
+    }
   }
 
   onInputClick() {
@@ -92,7 +108,7 @@ class Select extends React.Component {
     } else {
       this.state.options.forEach((option) => {
         if (option.selected) {
-          value = option.value;
+          value = option.label;
         }
       });
     }
@@ -113,7 +129,7 @@ class Select extends React.Component {
         onMouseDown={ this.onSelect(o) }
         key={ o.id }
       >
-        { o.value }
+        { o.label }
       </a>
     );
   }
