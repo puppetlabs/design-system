@@ -10,8 +10,6 @@
 
 .rc-accordion-item-header,
 .rc-accordion-header {
-  @extend %rc-uppercase;
-
   align-items: center;
   background-color: $reflect-accordion-item-title-bg-color;
   display: flex;
@@ -26,6 +24,7 @@
 }
 
 .rc-accordion-header-title {
+  @extend %rc-uppercase;
   color: $reflect-accordion-header-title-color;
   flex-grow: 1;
   font-size: $reflect-accordion-item-title-font-size;
@@ -36,6 +35,7 @@
 }
 
 .rc-accordion-item-header-title {
+  @extend %rc-uppercase;
   color: $reflect-accordion-item-title-color;
   flex-grow: 1;
   font-size: $reflect-accordion-item-title-font-size;
