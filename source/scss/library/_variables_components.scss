@@ -6,18 +6,22 @@
 
 // Accordions
 // ----------------------------------------------------------------------------
-$reflect-accordion-item-title-font-family    : 'Montserrat', sans-serif !default;
-$reflect-accordion-item-title-font-size      : $reflect-font-size-base !default;
-$reflect-accordion-item-title-color          : $reflect-font-color-base !default;
-$reflect-accordion-item-title-hover          : $reflect-font-color-base !default;
-$reflect-accordion-item-title-bg-color       : $reflect-bg-subtle !default;
+$reflect-accordion-item-title-font-size      : $reflect-font-size-tiny !default;
+$reflect-accordion-item-title-color          : $reflect-font-color-medium !default;
+$reflect-accordion-item-title-hover          : $reflect-font-color-medium !default;
+$reflect-accordion-item-title-bg-color       : $reflect-white !default;
 $reflect-accordion-item-title-border         : $reflect-border !default;
-$reflect-accordion-item-title-height         : 40px;
+$reflect-accordion-item-title-height         : 32px;
 $reflect-accordion-item-title-padding        : 0 $reflect-medium !default; // Todo: Base on grid
 $reflect-accordion-item-title-case           : auto !default;
 $reflect-accordion-item-content-padding      : $reflect-medium !default;
 $reflect-accordion-icon-color                : $reflect-icon-fill !default;
 $reflect-accordion-icon-color-hover          : $reflect-icon-fill-hover !default;
+
+$reflect-accordion-header-title-color        : $reflect-font-color-medium !default;
+$reflect-accordion-header-height             : 42px;
+
+$reflect-accordion-animation-speed           : $reflect-animation-speed-base !default;
 
 // Blank Slates
 // ----------------------------------------------------------------------------

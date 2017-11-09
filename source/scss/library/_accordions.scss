@@ -1,59 +1,76 @@
-.rc-accordion-item-header {
-  align-items: center;
-  background-color: $reflect-accordion-item-title-bg-color;
-  color: $reflect-accordion-item-title-color;
-  display: flex;
-  font-family: $reflect-accordion-item-title-font-family;
-  font-size: $reflect-accordion-item-title-font-size;
-  height: $reflect-accordion-item-title-height;
-  justify-content: space-between;
-  padding: $reflect-accordion-item-title-padding;
-  text-transform: $reflect-accordion-item-title-case;
-
-  .rc-accordion-item-title-text {
-    color: $reflect-accordion-item-title-color;
-    font-size: $reflect-accordion-item-title-font-size;
-  }
-
-  .rc-accordion-item-title-icon {
-    height: 10px;
-    width: 10px;
-  }
+.rc-accordion {
+  height: 100%;
 }
 
-.rc-accordion-item-header:hover {
-  .rc-accordion-item-title-text {
-    color: $reflect-accordion-item-title-hover;
-  }
+.rc-accordion-items {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
 
-  .rc-icon {
-    fill: $reflect-icon-fill-hover;
-  }
+.rc-accordion-item-header,
+.rc-accordion-header {
+  @extend %rc-uppercase;
+
+  align-items: center;
+  background-color: $reflect-accordion-item-title-bg-color;
+  display: flex;
+  font-size: $reflect-accordion-item-title-font-size;
+  padding: $reflect-accordion-item-title-padding;
+  text-transform: $reflect-accordion-item-title-case;
+}
+
+.rc-accordion-header {
+  border-bottom: $reflect-accordion-item-title-border;
+  height: $reflect-accordion-header-height;
+}
+
+.rc-accordion-header-title {
+  color: $reflect-accordion-header-title-color;
+  flex-grow: 1;
+  font-size: $reflect-accordion-item-title-font-size;
+}
+
+.rc-accordion-item-header {
+  height: $reflect-accordion-item-title-height;
+}
+
+.rc-accordion-item-header-title {
+  color: $reflect-accordion-item-title-color;
+  flex-grow: 1;
+  font-size: $reflect-accordion-item-title-font-size;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .rc-accordion-item {
   border-bottom: $reflect-accordion-item-title-border;
-
-  &:last-of-type {
-    border-bottom: 0;
-  }
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  transition: all $reflect-accordion-animation-speed;
 }
 
 .rc-accordion-item-content {
-  display: none;
-  padding: $reflect-accordion-item-content-padding;
-
-  .form-field {
-    margin-bottom: $reflect-medium;
-  }
-
-  .form-field:last-child {
-    margin-bottom: 0;
-  }
+  border-top: $reflect-accordion-item-title-border;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: opacity $reflect-accordion-animation-speed;
+  visibility: hidden;
 }
 
 .rc-accordion-item-active {
+  flex-grow: 1;
+
   .rc-accordion-item-content {
-    display: block;
+    flex-direction: column;
+    flex-grow: 1;
+    opacity: 1;
+    overflow: auto;
+    padding: $reflect-accordion-item-content-padding;
+    visibility: visible;
   }
 }
