@@ -1,29 +1,14 @@
-/* stylelint-disable  */
-/**
- * React Select
- * ============
- * Created by Jed Watson and Joss Mackison for KeystoneJS, http://www.keystonejs.com/
- * https://twitter.com/jedwatson https://twitter.com/jossmackison https://twitter.com/keystonejs
- * MIT License: https://github.com/keystonejs/react-select
-*/
 .rc-select {
+  color: $reflect-select-color;
   position: relative;
-
-  &.open {
-    .rc-input {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
 
   .rc-select-input {
     position: relative;
+  }
 
-    .rc-icon {
-      bottom: 12px;
-      position: absolute;
-      right: 10px;
-    }
+  .rc-icon-chevron-down {
+    position: absolute;
+    right: 10px;
   }
 
   .rc-input {
@@ -32,315 +17,55 @@
   }
 
   .rc-select-menu {
-    z-index: 1;
-    width: 100%;
-    background: $reflect-white;
-    border: $reflect-border-active;
-    border-bottom-left-radius: $reflect-input-border-radius;
-    border-bottom-right-radius: $reflect-input-border-radius;
-    box-shadow: $reflect-selected-shadow;
+    background: $reflect-select-menu-bg;
+    border: $reflect-select-border-active;
+    border-bottom-left-radius: $reflect-select-border-radius;
+    border-bottom-right-radius: $reflect-select-border-radius;
+    box-shadow: $reflect-select-selected-shadow;
     position: absolute;
+    width: 100%;
+    z-index: 1;
   }
 
   .rc-select-menu-item {
+    color: $reflect-select-menu-color;
     display: block;
-    padding: $reflect-small;
-    color: $reflect-brand-primary;
   }
 
   .rc-select-menu-item-selected {
-    background: lighten($reflect-brand-primary, 35%);
+    background: $reflect-select-menu-selected-color;
   }
 
   .rc-select-menu-item:hover {
-    background: $reflect-gray-lighter;
-  }
-
-  &.tiny {
-    .rc-select-input {
-      .rc-icon {
-        bottom: 4px;
-      }
-    }
-
-    .rc-select-menu-item {
-      padding: $reflect-tiny;
-    }
+    background: $reflect-select-menu-hover-color;
+    border-bottom-left-radius: $reflect-select-border-radius;
+    border-bottom-right-radius: $reflect-select-border-radius;
   }
 }
 
-.rc-select {
-  &.Select {
-    position: relative;
-  }
-
-  .Select-control {
-    position: relative;
-    overflow: hidden;
-    box-sizing: border-box;
-    cursor: default;
-    padding: 7px 40px 7px 10px;
-    min-height: 44px;
-    transition: all 200ms ease;
-
-    background-color: $reflect-bg-primary;
-    color: $reflect-gray-darker;
-    border: 1px solid $reflect-border-color;
-    border-radius: $reflect-input-border-radius;
-    outline: none;
-  }
-  .is-disabled > .Select-control {
-    background: $reflect-gray-lighter;
-    color: $reflect-gray;
-  }
-  .is-searchable.is-open > .Select-control {
-    cursor: text;
-  }
-  .is-open > .Select-control {
-    background: $reflect-bg-primary;
-    border-color: $reflect-brand-primary;
-    box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
-  }
-  .is-open > .Select-control > .Select-arrow {
-    border-color: transparent transparent #999999;
-    border-width: 0 5px 5px;
-  }
-  .is-searchable.is-focused:not(.is-open) > .Select-control {
-    cursor: text;
-  }
-  .Select-placeholder {
-    color: $reflect-font-color-subtle;
-    padding: 10px 40px 10px 13px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: -15px;
-    max-width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .has-value > .Select-control > .Select-placeholder {
-    color: $reflect-font-color-base;
-  }
-  .Select-input > input {
-    cursor: default;
-    background: none transparent;
-    box-shadow: none;
-    height: auto;
-    border: 0 none;
-    font-family: inherit;
-    font-size: inherit;
-    margin: 0;
-    padding: 0;
-    outline: none;
-    display: inline-block;
-    -webkit-appearance: none;
-  }
-  .is-focused .Select-input > input {
-    cursor: text;
-  }
-  .Select-control:not(.is-searchable) > .Select-input {
-    outline: none;
-  }
-  .Select-loading {
-    -webkit-animation: Select-animation-spin 400ms infinite linear;
-    -o-animation: Select-animation-spin 400ms infinite linear;
-    animation: Select-animation-spin 400ms infinite linear;
-    width: 16px;
-    height: 16px;
-    box-sizing: border-box;
-    border-radius: 50%;
-    border: 2px solid #cccccc;
-    border-right-color: #333333;
-    display: inline-block;
-    position: relative;
-    margin-top: -8px;
-    position: absolute;
-    right: 30px;
-    top: 50%;
-  }
-  .has-value > .Select-control > .Select-loading {
-    right: 46px;
-  }
-  .Select-clear {
-    color: #999999;
-    cursor: pointer;
-    display: inline-block;
-    font-size: 16px;
-    padding: 6px 10px;
-    position: absolute;
-    right: 17px;
-    top: 0;
-  }
-  .Select-clear:hover {
-    color: #c0392b;
-  }
-  .Select-clear > span {
-    font-size: 1.1em;
-  }
-  .Select-arrow-zone {
-    content: " ";
-    display: block;
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 30px;
-    cursor: pointer;
-  }
-  .Select-arrow {
-    border-color: #999999 transparent transparent;
-    border-style: solid;
-    border-width: 5px 5px 0;
-    content: " ";
-    display: block;
-    height: 0;
-    margin-top: -ceil(2.5px);
-    position: absolute;
-    right: 10px;
-    top: 18px;
-    width: 0;
-    cursor: pointer;
-  }
-  .Select-menu-outer {
-    background-color: $reflect-bg-primary;
-    border: 1px solid $reflect-brand-primary;
-    box-shadow: 0px 0px 0px 1px $reflect-brand-primary;
-    box-sizing: border-box;
-    margin-top: -1px;
-    max-height: 160px;
-    position: absolute;
-    top: 100%;
-    width: 100%;
-    z-index: 23;
-    -webkit-overflow-scrolling: touch;
-  }
-  .Select-menu {
-    max-height: 158px;
-    overflow-y: auto;
-  }
-  .Select-option {
-    box-sizing: border-box;
-    color: #666666;
-    cursor: pointer;
-    display: block;
-    padding: 8px 10px;
-  }
-  .Select-option:last-child {
-  }
-  .Select-option.is-focused {
-    background-color: lighten($reflect-brand-primary, 10%);
-    color: $reflect-bg-primary;
-  }
-  .Select-option.is-disabled {
-    color: #cccccc;
-    cursor: not-allowed;
-  }
-  .Select-noresults {
-    box-sizing: border-box;
-    color: $reflect-gray;
-    cursor: default;
-    display: block;
-    padding: 8px 10px;
-  }
-  .Select.is-multi .Select-control {
-    padding: 2px 52px 2px 3px;
-  }
-  .Select.is-multi .Select-input {
-    vertical-align: middle;
-    border: 1px solid transparent;
-    margin: 2px;
-    padding: 3px 0;
-  }
-  .Select-item {
-    background-color: $reflect-select-item-background;
-    border-radius: $reflect-border-radius;
-    border: 1px solid $reflect-select-item-border;
-    color: $reflect-bg-primary;
-    display: inline-block;
-    font-size: 0.9em;
-    margin-right: 2px;
-  }
-  .Select-item-icon,
-  .Select-item-label {
-    display: inline-block;
-    vertical-align: middle;
-  }
-  .Select-item-label {
-    cursor: default;
-    padding: 3px 5px;
-  }
-  .Select-item-label .Select-item-label__a {
-    color: #0088cc;
-    cursor: pointer;
-  }
-  .Select-item-icon {
-    cursor: pointer;
-    border-right: 1px solid $reflect-select-item-border;
-    padding: 3px 6px;
-  }
-  .Select-item-icon:hover,
-  .Select-item-icon:focus {
-    background-color: $reflect-select-item-background;
-    color: $reflect-gray-dark;
-  }
-  .Select-item-icon:active {
-    background-color: $reflect-select-item-background;
-  }
-  .Select.is-multi.is-disabled .Select-item {
-    background-color: #f2f2f2;
-    border: 1px solid #d9d9d9;
-    color: #888888;
-  }
-  .Select.is-multi.is-disabled .Select-item-icon {
-    cursor: not-allowed;
-    border-right: 1px solid #d9d9d9;
-  }
-  .Select.is-multi.is-disabled .Select-item-icon:hover,
-  .Select.is-multi.is-disabled .Select-item-icon:focus,
-  .Select.is-multi.is-disabled .Select-item-icon:active {
-    background-color: #f2f2f2;
-  }
-  @keyframes Select-animation-spin {
-    to {
-      transform: rotate(1turn);
-    }
-  }
-  @-webkit-keyframes Select-animation-spin {
-    to {
-      -webkit-transform: rotate(1turn);
-    }
-  }
-
-  &.Select-small {
-    font-size: $reflect-font-size-small;
-
-    .Select-item {
-      margin-bottom: 2px;
-    }
-
-    .Select-control {
-      min-height: 0;
-      padding: $reflect-tiny;
-    }
-
-    // Ugh... eyeballed this.
-    .Select-placeholder {
-      padding: $reflect-tiny 28px $reflect-tiny $reflect-tiny;
-    }
-
-    .Select-clear {
-      padding: $reflect-tiny/2 10px !important;
-    }
-
-    .Select-arrow-zone {
-      width: 20px;
-    }
-
-    .Select-arrow {
-      top: 10px;
-    }
+.rc-select.open {
+  .rc-input {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 }
-/* stylelint-enable  */
+
+.rc-select.small {
+  .rc-select-menu-item {
+    padding: $reflect-select-small-menu-padding;
+  }
+
+  .rc-icon-chevron-down {
+    bottom: 12px;
+  }
+}
+
+.rc-select.tiny {
+  .rc-icon-chevron-down {
+    bottom: 6px;
+  }
+
+  .rc-select-menu-item {
+    padding: $reflect-select-tiny-menu-padding;
+  }
+}
