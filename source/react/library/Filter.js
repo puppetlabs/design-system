@@ -193,13 +193,23 @@ class Filter extends React.Component {
   }
 
   renderOperatorSelect() {
-    const operators = this.props.operators.map((type, i) => ({
+    let operators = this.props.operators.map((type, i) => ({
       value: type.symbol,
       label: type.label,
       selected: type.symbol === this.state.filter.op,
       type: 'operator',
       id: i,
     }));
+
+    if (!operators.length) {
+      operators = [{
+        value: this.state.filter.op,
+        label: this.state.filter.op,
+        selected: true,
+        type: 'operator',
+        id: 0,
+      }];
+    }
 
     return (
       <Select
