@@ -13,6 +13,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  placeholder: 'Select...',
   onSelect: () => {},
   autoOpen: false,
   size: 'small',

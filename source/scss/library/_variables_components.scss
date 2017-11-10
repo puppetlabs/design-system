@@ -274,7 +274,7 @@ $reflect-select-selected-shadow              : $reflect-selected-shadow !default
 $reflect-select-menu-bg                      : $reflect-white !default;
 $reflect-select-menu-color                   : $reflect-brand-primary !default;
 $reflect-select-menu-selected-color          : lighten($reflect-brand-primary, 35%) !default;
-$reflect-select-menu-hover-color             : $reflect-gray-lighter !default;
+$reflect-select-menu-hover-bg                : $reflect-gray-lighter !default;
 $reflect-select-small-menu-padding           : $reflect-input-small-padding !default;
 $reflect-select-tiny-menu-padding            : $reflect-input-tiny-padding !default;
 
