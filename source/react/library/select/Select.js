@@ -79,7 +79,9 @@ class Select extends React.Component {
 
   onSelect(option) {
     return (e) => {
-      e.preventDefault();
+      if (e) {
+        e.preventDefault();
+      }
 
       const options = this.state.options.map((o) => {
         if (o.id === option.id) {
@@ -124,7 +126,7 @@ class Select extends React.Component {
     return (
       <a
         href=""
-        onClick={ e => e.preventDefault() }
+        onClick={ e => e && e.preventDefault() }
         className={ className }
         onMouseDown={ this.onSelect(o) }
         key={ o.id }

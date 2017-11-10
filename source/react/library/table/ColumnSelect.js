@@ -13,6 +13,10 @@ const propTypes = {
   disabled: React.PropTypes.bool,
 };
 
+const defaultProps = {
+  options: [],
+};
+
 class ColumnSelect extends React.Component {
 
   constructor(props) {
@@ -32,20 +36,18 @@ class ColumnSelect extends React.Component {
   }
 
   render() {
-    let options = [];
+    const options = this.props.options.map((option) => {
+      if (this.props.data === option.value) {
+        option.selected = true;
+      }
 
-    if (this.props.options) {
-      options = this.props.options;
-    }
+      return option;
+    });
 
     return (
       <Select
-        className="Select-small"
-        clearable={ false }
-        value={ this.props.data }
         options={ options }
-        onChange={ this.onChange }
-        autoSize={ false }
+        onSelect={ this.onChange }
         disabled={ this.props.disabled }
       />
     );
@@ -53,5 +55,6 @@ class ColumnSelect extends React.Component {
 }
 
 ColumnSelect.propTypes = propTypes;
+ColumnSelect.defaultProps = defaultProps;
 
 export default ColumnSelect;

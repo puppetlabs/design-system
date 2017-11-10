@@ -16,9 +16,9 @@ Select with `autoOpen` enabled:
 
 ```
 const options = [
-  { value: 'Geoff' },
-  { value: 'Colby' },
-  { value: 'Sig', selected: true },
+  { value: 'Geoff', label: 'Geoff' },
+  { value: 'Colby', label: 'Colby' },
+  { value: 'Michael', label: 'Sig', selected: true },
 ];
 
 <Select
