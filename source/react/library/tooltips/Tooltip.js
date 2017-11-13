@@ -64,6 +64,7 @@ class Tooltip extends React.Component {
   getScrollbarWidth() {
     const measurer = this.scrollMeasurer;
 
+    console.warn(measurer.offsetWidth - measurer.clientWidth);
     return measurer.offsetWidth - measurer.clientWidth;
   }
 

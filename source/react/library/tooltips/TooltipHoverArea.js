@@ -15,6 +15,10 @@ const propTypes = {
   ]).isRequired,
 };
 
+/**
+ * `TooltipHoverArea` allows you to define a zone that a tooltip will be rendered next to
+ * when the zone has been hovered over.
+ */
 class TooltipHoverArea extends React.Component {
   constructor(props) {
     super(props);
