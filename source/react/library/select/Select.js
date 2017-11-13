@@ -1,7 +1,10 @@
 import React from 'react';
 import classnames from 'classnames';
+
 import Icon from '../Icon';
 import Input from '../Input';
+import Menu from '../menu/Menu';
+import MenuList from '../menu/MenuList';
 
 const propTypes = {
   autoOpen: React.PropTypes.bool,
@@ -58,6 +61,7 @@ class Select extends React.Component {
       options: formatOptions(props.options),
     };
 
+    this.onSelect = this.onSelect.bind(this);
     this.onInputClick = this.onInputClick.bind(this);
   }
 
@@ -79,28 +83,22 @@ class Select extends React.Component {
   }
 
   onSelect(option) {
-    return (e) => {
-      if (e) {
-        e.preventDefault();
+    const options = this.state.options.map((o) => {
+      if (o.id === option.id) {
+        o.selected = true;
+      } else {
+        o.selected = false;
       }
 
-      const options = this.state.options.map((o) => {
-        if (o.id === option.id) {
-          o.selected = true;
-        } else {
-          o.selected = false;
-        }
+      return o;
+    });
 
-        return o;
-      });
-
-      this.props.onSelect(option);
-      this.setState({
-        inputValue: undefined,
-        open: false,
-        options,
-      });
-    };
+    this.props.onSelect(option);
+    this.setState({
+      inputValue: undefined,
+      open: false,
+      options,
+    });
   }
 
   getCurrentValue() {
@@ -137,16 +135,39 @@ class Select extends React.Component {
     );
   }
 
+  renderMenuList() {
+    let selected;
+    const menuItemProps = {
+      onClick: () => {},
+    }
+
+    selected = this.state.options.filter(o => o.selected);
+
+    if (selected && selected.length) {
+      selected = selected[0].id;
+    }
+
+    return (
+      <MenuList
+        selected={ selected }
+        options={ this.state.options }
+        onChange={ this.onSelect }
+        menuItemProps={ menuItemProps }
+      />
+    );
+  }
+
   renderMenu() {
     let jsx;
 
     if (this.state.open) {
-      const options = this.state.options.map(o => this.renderOption(o));
+      const menuList = this.renderMenuList();
+//      const options = this.state.options.map(o => this.renderOption(o));
 
       jsx = (
-        <div className="rc-select-menu">
-          { options }
-        </div>
+        <Menu className="rc-select-menu" size={ this.props.size }>
+          { menuList }
+        </Menu>
       );
     }
 
@@ -161,7 +182,7 @@ class Select extends React.Component {
         onChange={ e => this.setState({ inputValue: e.target.value }) }
         value={ this.getCurrentValue() }
         size={ this.props.size }
-        onBlur={ () => this.setState({ open: false }) }
+//        onBlur={ () => this.setState({ open: false }) }
         ref={ (c) => { this.input = c; } }
         focused={ this.state.open }
         onFocus={ () => this.setState({ open: true }) }

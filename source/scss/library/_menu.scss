@@ -122,6 +122,18 @@
   text-transform: uppercase;
 }
 
+.rc-menu-tiny {
+  .rc-menu-item {
+    font-size: $reflect-menu-item-tiny-font-size;
+    line-height: $reflect-menu-item-tiny-line-height;
+  }
+
+  .rc-menu-item > a {
+    height: $reflect-menu-item-tiny-height;
+    padding: $reflect-menu-item-tiny-padding;
+  }
+}
+
 .rc-menu-title {
   align-items: center;
   color: $reflect-menu-title-color;
