@@ -182,7 +182,7 @@ class Select extends React.Component {
         onChange={ e => this.setState({ inputValue: e.target.value }) }
         value={ this.getCurrentValue() }
         size={ this.props.size }
-//        onBlur={ () => this.setState({ open: false }) }
+        onBlur={ () => this.setState({ open: false }) }
         ref={ (c) => { this.input = c; } }
         focused={ this.state.open }
         onFocus={ () => this.setState({ open: true }) }

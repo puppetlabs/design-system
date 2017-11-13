@@ -20,7 +20,7 @@
 
   .rc-menu-item-selected  a {
     background: $bg-selected;
-    border-bottom: $border-selected;
+    border-bottom: 0;
     color: $color-selected;
   }
 

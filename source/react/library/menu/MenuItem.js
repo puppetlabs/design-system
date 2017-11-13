@@ -65,11 +65,17 @@ class MenuItem extends React.Component {
       'rc-menu-item-disabled': this.props.option.disabled,
     });
 
+    let value = option.value;
+
+    if (typeof option.label !== 'undefined') {
+      value = option.label;
+    }
+
     return (
       <li className={ className }>
         <a href={ option.id } onClick={ this.onClick } onMouseDown={ this.onMouseDown }>
           { icon }
-          { option.value }
+          { value }
         </a>
       </li>
     );

@@ -1,6 +1,6 @@
 import React from 'react';
 import sinon from 'sinon';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 
 import Select from '../../source/react/library/select/Select';
@@ -14,13 +14,13 @@ describe('<Select />', () => {
 
   it('should open on click', () => {
     const options = ['Cats', 'Dogs'];
-    const wrapper = shallow(<Select options={ options } />);
+    const wrapper = mount(<Select options={ options } />);
 
-    expect(wrapper.find('.rc-select-menu-item').length).to.eql(0);
+    expect(wrapper.find('MenuItem').length).to.eql(0);
 
     wrapper.find('Input').simulate('click');
 
-    expect(wrapper.find('.rc-select-menu-item').length).to.eql(options.length);
+    expect(wrapper.find('MenuItem').length).to.eql(options.length);
   });
 
   context('options are objects', () => {
@@ -30,24 +30,24 @@ describe('<Select />', () => {
     ];
 
     it('should render the label', () => {
-      const wrapper = shallow(<Select options={ options } />);
+      const wrapper = mount(<Select options={ options } />);
 
       wrapper.find('Input').simulate('click');
 
-      expect(wrapper.find('.rc-select-menu').childAt(0).text()).to.eql('Sig');
-      expect(wrapper.find('.rc-select-menu').childAt(1).text()).to.eql('Catnasty');
+      expect(wrapper.find('MenuList').childAt(0).text()).to.eql('Sig');
+      expect(wrapper.find('MenuList').childAt(1).text()).to.eql('Catnasty');
     });
 
     it('should emit the full object as a callback to onSelect', () => {
       const onSelect = sinon.spy();
-      const wrapper = shallow(<Select options={ options } onSelect={ onSelect } />);
+      const wrapper = mount(<Select options={ options } onSelect={ onSelect } />);
 
       wrapper.find('Input').simulate('click');
 
       // The menu should be open now
-      expect(wrapper.find('.rc-select-menu-item').length).to.eql(2);
+      expect(wrapper.find('MenuItem').length).to.eql(2);
 
-      wrapper.find('.rc-select-menu').childAt(0).simulate('mouseDown');
+      wrapper.find('MenuItem').first().find('a').simulate('mouseDown');
 
       expect(onSelect.lastCall.args).to.eql([{
         id: 0,
@@ -57,7 +57,7 @@ describe('<Select />', () => {
       }]);
 
       // Now we close the menu
-      expect(wrapper.find('.rc-select-menu-item').length).to.eql(0);
+      expect(wrapper.find('MenuItem').length).to.eql(0);
     });
   });
 
@@ -65,24 +65,24 @@ describe('<Select />', () => {
     const options = ['Michael Phelps', 'Ryan Lochte'];
 
     it('should render the strings as labels', () => {
-      const wrapper = shallow(<Select options={ options } />);
+      const wrapper = mount(<Select options={ options } />);
 
       wrapper.find('Input').simulate('click');
 
-      expect(wrapper.find('.rc-select-menu').childAt(0).text()).to.eql('Michael Phelps');
-      expect(wrapper.find('.rc-select-menu').childAt(1).text()).to.eql('Ryan Lochte');
+      expect(wrapper.find('MenuList').childAt(0).text()).to.eql('Michael Phelps');
+      expect(wrapper.find('MenuList').childAt(1).text()).to.eql('Ryan Lochte');
     });
 
     it('should emit the option as an object as a callback to onSelect', () => {
       const onSelect = sinon.spy();
-      const wrapper = shallow(<Select options={ options } onSelect={ onSelect } />);
+      const wrapper = mount(<Select options={ options } onSelect={ onSelect } />);
 
       wrapper.find('Input').simulate('click');
 
       // The menu should be open now
-      expect(wrapper.find('.rc-select-menu-item').length).to.eql(2);
+      expect(wrapper.find('MenuItem').length).to.eql(2);
 
-      wrapper.find('.rc-select-menu').childAt(0).simulate('mouseDown');
+      wrapper.find('MenuItem').first().find('a').simulate('mouseDown');
 
       expect(onSelect.lastCall.args).to.eql([{
         id: 'Michael Phelps',
@@ -92,7 +92,7 @@ describe('<Select />', () => {
       }]);
 
       // Now we close the menu
-      expect(wrapper.find('.rc-select-menu-item').length).to.eql(0);
+      expect(wrapper.find('MenuItem').length).to.eql(0);
     });
   });
 });
