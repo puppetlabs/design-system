@@ -117,29 +117,11 @@ class Select extends React.Component {
     return value;
   }
 
-  renderOption(o) {
-    const className = classnames('rc-select-menu-item', {
-      'rc-select-menu-item-selected': o.selected,
-    });
-
-    return (
-      <a
-        href=""
-        onClick={ e => e && e.preventDefault() }
-        className={ className }
-        onMouseDown={ this.onSelect(o) }
-        key={ o.id }
-      >
-        { o.label }
-      </a>
-    );
-  }
-
   renderMenuList() {
     let selected;
     const menuItemProps = {
       onClick: () => {},
-    }
+    };
 
     selected = this.state.options.filter(o => o.selected);
 
@@ -162,7 +144,6 @@ class Select extends React.Component {
 
     if (this.state.open) {
       const menuList = this.renderMenuList();
-//      const options = this.state.options.map(o => this.renderOption(o));
 
       jsx = (
         <Menu className="rc-select-menu" size={ this.props.size }>
