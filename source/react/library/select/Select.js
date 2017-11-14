@@ -12,7 +12,7 @@ const propTypes = {
   options: React.PropTypes.array,
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['small', 'tiny']),
+  size: React.PropTypes.oneOf(['small']),
 };
 
 const defaultProps = {
