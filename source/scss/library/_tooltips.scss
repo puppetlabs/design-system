@@ -16,6 +16,13 @@
   position: absolute;
   z-index: $reflect-tooltip-hint-elevation;
 
+  .rc-icon {
+    fill: $reflect-tooltip-hint-color;
+    position: absolute;
+    right: $reflect-tooltip-hint-padding;
+    top: $reflect-tooltip-hint-padding;
+  }
+
   .rc-tooltip-carat {
     border-style: solid;
     border-width: 8px;

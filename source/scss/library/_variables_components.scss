@@ -500,7 +500,7 @@ $reflect-toggle-off-color                    : $reflect-font-color-base;
 // ----------------------------------------------------------------------------
 $reflect-tooltip-hint-bg                     : rgba($reflect-black, 0.75) !default;
 $reflect-tooltip-hint-color                  : $reflect-gray-light !default;
-$reflect-tooltip-hint-padding                : $reflect-tiny $reflect-small !default;
+$reflect-tooltip-hint-padding                : $reflect-small !default;
 $reflect-tooltip-hint-radius                 : $reflect-border-radius !default;
 $reflect-tooltip-hint-font-size              : $reflect-font-size-base !default;
 $reflect-tooltip-hint-elevation              : 24 !default;

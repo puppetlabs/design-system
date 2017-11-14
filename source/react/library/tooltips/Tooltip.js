@@ -4,14 +4,17 @@ import portal from '../portal';
 
 import TooltipHoverArea from './TooltipHoverArea';
 import TooltipStickyArea from './TooltipStickyArea';
+import Icon from '../Icon';
 
 const propTypes = {
+  className: React.PropTypes.string,
+  anchor: React.PropTypes.string,
+  sticky: React.PropTypes.bool,
   target: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.element,
   ]).isRequired,
-  className: React.PropTypes.string,
-  anchor: React.PropTypes.string,
+  onClose: React.PropTypes.func,
   children: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
@@ -25,6 +28,8 @@ const defaultProps = {
 };
 
 const getDefaultState = () => ({
+  onClose: null,
+  sticky: false,
   tooltipPosition: { },
   caratPosition: { },
 });
@@ -134,16 +139,36 @@ class Tooltip extends React.Component {
     return { w, h };
   }
 
+  renderCloseButton() {
+    let jsx;
+
+    if (this.props.sticky && this.props.onClose) {
+      jsx = (
+        <a onClick={ this.props.onClose }>
+          <Icon height="8px" width="8px" type="close" />
+        </a>
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
     const { tooltipPosition, caratPosition } = this.state;
     const { anchor } = this.props;
     const className = classnames('rc-tooltip', `rc-tooltip-position-${anchor}`);
+    const closeButton = this.renderCloseButton();
+
+    if (this.props.width) {
+      tooltipPosition.width = this.props.width;
+    }
 
     return (
       <div className={ className } style={ tooltipPosition } ref={ c => { this.tooltip = c; } }>
         <div className="rc-tooltip-scrollbar-measurer" ref={ c => { this.scrollMeasurer = c; } } />
         <div className="rc-tooltip-carat" style={ caratPosition } />
         { this.props.children }
+        { closeButton }
       </div>
     );
   }
