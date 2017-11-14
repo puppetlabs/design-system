@@ -76,7 +76,6 @@
     "deep-equal": "^1.0.1",
     "moment-timezone": "^0.5.13",
     "react-daterange-picker": "^1.1.0",
-    "react-onclickoutside": "^5.9.0",
-    "react-select": "0.9.1"
+    "react-onclickoutside": "^5.9.0"
   }
 }

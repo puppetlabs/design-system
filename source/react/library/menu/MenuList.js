@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import MenuItem from './MenuItem';
 
 const propTypes = {
+  menuItemProps: React.PropTypes.object,
   options: React.PropTypes.array,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
@@ -14,6 +15,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  menuItemProps: {},
   selected: '',
 };
 
@@ -29,7 +31,7 @@ class MenuList extends React.Component {
   }
 
   render() {
-    const { selected, options, multiple } = this.props;
+    const { selected, options, multiple, menuItemProps } = this.props;
     const className = classnames('rc-menu-list', {
       'rc-menu-multiple': multiple,
     });
@@ -51,7 +53,9 @@ class MenuList extends React.Component {
           selected={ isSelected }
           onClick={ this.onChange }
           multiple={ multiple }
-        />
+          onMouseDown={ this.onChange }
+          { ...menuItemProps }
+        />,
       );
     });
 

@@ -4,6 +4,7 @@ import Icon from '../Icon';
 
 const propTypes = {
   onClick: React.PropTypes.func,
+  onMouseDown: React.PropTypes.func,
   selected: React.PropTypes.bool,
   option: React.PropTypes.object.isRequired,
   multiple: React.PropTypes.bool,
@@ -11,6 +12,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  onMouseDown: () => {},
   onClick: () => {},
   selected: false,
   multiple: false,
@@ -21,7 +23,16 @@ class MenuItem extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onMouseDown = this.onMouseDown.bind(this);
     this.onClick = this.onClick.bind(this);
+  }
+
+  onMouseDown(e) {
+    e.preventDefault();
+
+    if (!this.props.option.disabled) {
+      this.props.onMouseDown(this.props.option, !this.props.selected);
+    }
   }
 
   onClick(e) {
@@ -54,9 +65,18 @@ class MenuItem extends React.Component {
       'rc-menu-item-disabled': this.props.option.disabled,
     });
 
+    let value = option.value;
+
+    if (typeof option.label !== 'undefined') {
+      value = option.label;
+    }
+
     return (
       <li className={ className }>
-        <a href={ option.id } onClick={ this.onClick }>{ icon }{ option.value }</a>
+        <a href={ option.id } onClick={ this.onClick } onMouseDown={ this.onMouseDown }>
+          { icon }
+          { value }
+        </a>
       </li>
     );
   }

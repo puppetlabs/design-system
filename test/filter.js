@@ -1,4 +1,3 @@
-import jsdom from 'mocha-jsdom';
 import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
@@ -7,7 +6,6 @@ import React from 'react';
 import Filter from '../source/react/library/Filter';
 
 describe('<Filter />', () => {
-  jsdom({ skipWindowCheck: true });
   const noop = () => {};
 
   const defaultProps = {
@@ -31,11 +29,15 @@ describe('<Filter />', () => {
         />
       );
 
-      wrapper.find({ name: 'field-select' }).simulate('change', 'mockField1');
+      wrapper.find({ name: 'field-select' }).simulate('select', {
+        value: 'mockField1',
+      });
 
       expect(onChange.callCount).to.eql(0);
 
-      wrapper.find({ name: 'operator-select' }).simulate('change', 'mockOp1');
+      wrapper.find({ name: 'operator-select' }).simulate('select', {
+        value: 'mockOp1',
+      });
 
       expect(onChange.callCount).to.eql(0);
 
@@ -65,11 +67,11 @@ describe('<Filter />', () => {
         />
       );
 
-      wrapper.find({ name: 'field-select' }).simulate('change', 'mockField1');
+      wrapper.find({ name: 'field-select' }).simulate('select', { value: 'mockField1' });
 
       expect(onChange.callCount).to.eql(0);
 
-      wrapper.find({ name: 'operator-select' }).simulate('change', 'null');
+      wrapper.find({ name: 'operator-select' }).simulate('select', { value: 'null' });
 
       expect(onChange.callCount).to.eql(1);
 
@@ -85,8 +87,26 @@ describe('<Filter />', () => {
     it('should render the field, op, and value for the filter', () => {
       const wrapper = shallow(<Filter { ...defaultProps } filter={ filter } />);
 
-      expect(wrapper.find({ name: 'field-select' }).prop('value')).to.eql(filter.field);
-      expect(wrapper.find({ name: 'operator-select' }).prop('value')).to.eql(filter.op);
+      const fieldOptions = wrapper.find({ name: 'field-select' }).prop('options');
+
+      expect(fieldOptions.map(o => o.selected === true).length).to.eql(1);
+
+      fieldOptions.forEach((option) => {
+        if (option.value === filter.field) {
+          expect(option.selected).to.eql(true);
+        }
+      });
+
+      const opOptions = wrapper.find({ name: 'operator-select' }).prop('options');
+
+      expect(opOptions.map(o => o.selected === true).length).to.eql(1);
+
+      opOptions.forEach((option) => {
+        if (option.value === filter.op) {
+          expect(option.selected).to.eql(true);
+        }
+      });
+
       expect(wrapper.find('Input').prop('value')).to.eql(filter.value);
     });
 
@@ -122,7 +142,9 @@ describe('<Filter />', () => {
         />
       );
 
-      wrapper.find({ name: 'operator-select' }).simulate('change', 'notNull');
+      wrapper.find({ name: 'operator-select' }).simulate('select', {
+        value: 'notNull'
+      });
 
       expect(onChange.callCount).to.eql(1);
 
