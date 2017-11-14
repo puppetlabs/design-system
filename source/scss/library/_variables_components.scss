@@ -264,15 +264,19 @@ $reflect-input-large-padding                 : 0 $reflect-large !default;
 $reflect-input-small-padding                 : $reflect-small !default;
 $reflect-input-tiny-padding                  : $reflect-mini $reflect-tiny !default;
 
-// Input
+// Select
 // ----------------------------------------------------------------------------
 $reflect-select-color                        : $reflect-input-color !default;
 $reflect-select-border-active                : $reflect-border-active !default;
 $reflect-select-border-radius                : $reflect-input-border-radius !default;
 $reflect-select-selected-shadow              : $reflect-selected-shadow !default;
-
 $reflect-select-menu-bg                      : $reflect-white !default;
 
+$reflect-select-label-font-size              : $reflect-font-size-small !default;
+$reflect-select-label-padding                : $reflect-small !default;
+$reflect-select-label-bg                     : $reflect-action-color-alt !default;
+$reflect-select-label-border                 : $reflect-border !default;
+$reflect-select-label-border-radius          : $reflect-border-radius !default;
 
 // Loading Indicator
 // ----------------------------------------------------------------------------
@@ -396,18 +400,6 @@ $reflect-progress-animation                  : 400ms !default;
 // Removable Components
 // ----------------------------------------------------------------------------
 $reflect-remove-background                   : $reflect-bg-subtle !default;
-
-// Select
-// ----------------------------------------------------------------------------
-$reflect-select-item-background              : lighten($reflect-action-color, 10%) !default;
-$reflect-select-item-border                  : $reflect-action-color !default;
-
-// These are for the beginning of us building our own selects
-$reflect-select-label-font-size              : $reflect-font-size-small !default;
-$reflect-select-label-padding                : $reflect-small !default;
-$reflect-select-label-bg                     : $reflect-action-color-alt !default;
-$reflect-select-label-border                 : $reflect-border !default;
-$reflect-select-label-border-radius          : $reflect-border-radius !default;
 
 // Slide ins
 // ----------------------------------------------------------------------------

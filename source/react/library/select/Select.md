@@ -27,12 +27,3 @@ const options = [
   options={ options }
 />
 ```
-
-Tiny select:
-
-```
-<Select
-  placeholder="I'm a happy tiny Select!"
-  options={ ['Cats', 'Dogs'] } size="tiny"
-/>
-```
