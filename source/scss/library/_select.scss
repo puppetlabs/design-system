@@ -29,20 +29,20 @@
   }
 }
 
-.rc-select.open {
+.rc-select-open {
   .rc-input {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }
 }
 
-.rc-select.small {
+.rc-select-small {
   .rc-icon-chevron-down {
     bottom: 12px;
   }
 }
 
-.rc-select.tiny {
+.rc-select-tiny {
   .rc-icon-chevron-down {
     bottom: 6px;
   }

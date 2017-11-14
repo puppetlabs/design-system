@@ -202,9 +202,8 @@ class Select extends React.Component {
     const menu = this.renderMenu();
     const input = this.renderInput();
     const className = classnames('rc-select', this.props.className, {
-      open: this.state.open,
-      small: this.props.size === 'small',
-      tiny: this.props.size === 'tiny',
+      'rc-select-open': this.state.open,
+      [`rc-select-${this.props.size}`]: this.props.size,
     });
 
     return (
