@@ -61,6 +61,7 @@ class Select extends React.Component {
       options: formatOptions(props.options),
     };
 
+    this.onBlur = this.onBlur.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this.onInputClick = this.onInputClick.bind(this);
   }
@@ -101,6 +102,13 @@ class Select extends React.Component {
     });
   }
 
+  onBlur(e) {
+    // If the user has clicked on a menu item, we handle that separately in onSelect.
+    if (!e.relatedTarget || e.relatedTarget.className !== 'rc-menu-item-anchor') {
+      this.setState({ open: false });
+    }
+  }
+
   getCurrentValue() {
     let value = '';
 
@@ -119,9 +127,6 @@ class Select extends React.Component {
 
   renderMenuList() {
     let selected;
-    const menuItemProps = {
-      onClick: () => {},
-    };
 
     selected = this.state.options.filter(o => o.selected);
 
@@ -134,7 +139,6 @@ class Select extends React.Component {
         selected={ selected }
         options={ this.state.options }
         onChange={ this.onSelect }
-        menuItemProps={ menuItemProps }
       />
     );
   }
@@ -163,7 +167,7 @@ class Select extends React.Component {
         onChange={ e => this.setState({ inputValue: e.target.value }) }
         value={ this.getCurrentValue() }
         size={ this.props.size }
-        onBlur={ () => this.setState({ open: false }) }
+        onBlur={ this.onBlur }
         ref={ (c) => { this.input = c; } }
         focused={ this.state.open }
         onFocus={ () => this.setState({ open: true }) }
