@@ -1,3 +1,8 @@
+# 0.3.0
+
+* Introduce a Select component, replacing react-select
+* Add Clone and Info icons
+
 # 0.2.0
 
 * Various updates to our Accordion component
