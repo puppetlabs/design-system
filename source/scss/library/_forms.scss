@@ -58,88 +58,25 @@
     .rc-selects-row {
       display: flex;
 
-      .Select-small {
+      .rc-select {
         flex-grow: 1;
-        font-size: 11px;
+      }
 
-        &.is-focused:not(.is-open) {
-          background: $reflect-filter-input-bg;
-          border: none;
-          box-shadow: none;
+      .rc-input {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
 
-          .Select-control {
-            z-index: $reflect-popover-elevation;
-            background: $reflect-filter-input-bg;
-            border-color: $reflect-filter-border-active;
-            box-shadow: $reflect-filter-selected-shadow;
-          }
-        }
+      .rc-select-left {
+        margin-right: 2px;
+      }
 
-        .Select-menu-outer {
-          margin-top: 0;
-          background-color: $reflect-filter-input-bg;
-          border: $reflect-filter-border-active;
-          box-shadow: $reflect-filter-selected-shadow;
+      .rc-select-left .rc-input {
+        border-top-left-radius: $reflect-filter-radius;
+      }
 
-          .Select-option.is-selected {
-            background-color: $reflect-filter-input-bg;
-            color: $reflect-button-disabled-bg;
-          }
-          .Select-option.is-focused {
-            background-color: lighten($reflect-action-color, 10%);
-            color: $reflect-filter-input-bg;
-          }
-        }
-
-        .Select-control {
-          border: $reflect-filter-border;
-          padding: $reflect-tiny;
-
-          .Select-placeholder {
-            line-height: normal;
-            color: $reflect-filter-placeholder-color;
-            padding: $reflect-tiny 28px $reflect-tiny $reflect-tiny;
-          }
-
-          .Select-value {
-            line-height: normal;
-            padding: $reflect-tiny 28px $reflect-tiny $reflect-tiny;
-          }
-
-          .Select-input {
-            height: $reflect-filter-select-height;
-            vertical-align: inherit;
-            padding-left: 0;
-
-            input {
-              line-height: normal;
-              padding: 0;
-            }
-          }
-
-          .Select-arrow-zone {
-            padding-right: 0;
-          }
-        }
-
-        &.is-open > .Select-control {
-          z-index: $reflect-popover-elevation;
-          background: $reflect-filter-input-bg;
-          border: $reflect-filter-border-active;
-          box-shadow: $reflect-filter-selected-shadow;
-        }
-
-        &.Select-left > .Select-control {
-          border-top-right-radius: 0;
-          border-bottom-right-radius: 0;
-          border-bottom-left-radius: 0;
-        }
-
-        &.Select-right > .Select-control {
-          border-top-left-radius: 0;
-          border-bottom-left-radius: 0;
-          border-bottom-right-radius: 0;
-        }
+      .rc-select-right .rc-input {
+        border-top-right-radius: $reflect-filter-radius;
       }
     }
 
@@ -148,6 +85,7 @@
       border-top-left-radius: 0;
       border-top-right-radius: 0;
       border-color: $reflect-filter-border-color;
+
       &:focus {
         box-shadow: $reflect-filter-selected-shadow;
         border: $reflect-filter-border-active;
@@ -157,11 +95,11 @@
 
   &.rc-filter-form-no-value {
     .rc-filter-form-fields .rc-selects-row {
-      .Select-small.Select-left > .Select-control {
+      .rc-select-left > .rc-input {
         border-bottom-left-radius: $reflect-filter-radius;
       }
 
-      .Select-small.Select-right > .Select-control {
+      .rc-select-right> .rc-input {
         border-bottom-right-radius: $reflect-filter-radius;
       }
     }

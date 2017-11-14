@@ -1,6 +1,6 @@
 {
   "name": "@reflect/reflect-components",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "A React component library to assist in the creation of user interfaces.",
   "main": "build/library.js",
   "scripts": {
@@ -76,7 +76,6 @@
     "deep-equal": "^1.0.1",
     "moment-timezone": "^0.5.13",
     "react-daterange-picker": "^1.1.0",
-    "react-onclickoutside": "^5.9.0",
-    "react-select": "0.9.1"
+    "react-onclickoutside": "^5.9.0"
   }
 }

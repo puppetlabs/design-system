@@ -64,18 +64,20 @@ const exampleTableColumns = [{
   order: 2,
   component: ColumnInput,
 }];
-<Accordion autoOpen>
-  <AccordionItem key="elem1" title="With a Button">
-    <Button label="My Button" />
-  </AccordionItem>
-  <AccordionItem key="elem2" title="With a Table">
-     <Table
-       className="rc-table-fixed rc-table-striped"
-       selectable
-       striped
-       data={ exampleTableData }
-       columns={ exampleTableColumns }
-     />
-  </AccordionItem>
-</Accordion>
+<div style={ { height: '400px' } } >
+  <Accordion autoOpen>
+    <AccordionItem key="elem1" title="With a Button">
+      <Button label="My Button" />
+    </AccordionItem>
+    <AccordionItem key="elem2" title="With a Table">
+       <Table
+         className="rc-table-fixed rc-table-striped"
+         selectable
+         striped
+         data={ exampleTableData }
+         columns={ exampleTableColumns }
+       />
+    </AccordionItem>
+  </Accordion>
+</div>
 ```
