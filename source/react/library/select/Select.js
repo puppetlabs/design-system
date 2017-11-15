@@ -113,10 +113,7 @@ class Select extends React.Component {
 
     const relatedTarget = e.relatedTarget || e.explicitOriginalTarget || document.activeElement;
 
-    if (
-      (!relatedTarget || !e.currentTarget.contains(relatedTarget)) &&
-      !this.elem.contains(relatedTarget)
-    ) {
+    if (!relatedTarget || !isNodeInRoot(relatedTarget, this.elem)) {
       this.setState({ open: false });
     }
   }
