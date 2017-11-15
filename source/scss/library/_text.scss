@@ -5,10 +5,10 @@
 }
 
 .rc-input {
+  background: $reflect-input-bg;
   border: $reflect-input-border;
   border-radius: $reflect-input-border-radius;
   color: $reflect-input-color;
-  background: $reflect-input-bg;
   outline: none;
   padding: $reflect-input-padding;
   width: 100%;
