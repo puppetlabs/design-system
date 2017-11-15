@@ -1,21 +1,12 @@
 import React from 'react';
+
+import { isNodeInRoot } from '../helpers/statics';
+
 import portal from './portal';
 import togglable from './togglable';
 import Menu from './menu/Menu';
 import MenuHeader from './menu/MenuHeader';
 import Button from './Button';
-
-function isNodeInRoot(node, root) {
-  while (node) {
-    if (node === root) {
-      return true;
-    }
-
-    node = node.parentNode;
-  }
-
-  return false;
-}
 
 const propTypes = {
   onOutsideClick: React.PropTypes.func,

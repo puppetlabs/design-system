@@ -1,6 +1,8 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import { isNodeInRoot } from '../../helpers/statics';
+
 import Icon from '../Icon';
 import Input from '../Input';
 import Menu from '../menu/Menu';
@@ -104,7 +106,7 @@ class Select extends React.Component {
 
   onBlur(e) {
     // If the user has clicked on a menu item, we handle that separately in onSelect.
-    if (!e.relatedTarget || e.relatedTarget.className !== 'rc-menu-item-anchor') {
+    if (!e.relatedTarget || !isNodeInRoot(e.relatedTarget, this.elem)) {
       this.setState({ open: false });
     }
   }
@@ -192,7 +194,7 @@ class Select extends React.Component {
     });
 
     return (
-      <div className={ className }>
+      <div ref={ (c) => { this.elem = c; } } className={ className }>
         { input }
         { menu }
       </div>
