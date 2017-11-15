@@ -1,3 +1,9 @@
+%focused-input {
+  background: #fff;
+  border: $reflect-border-active;
+  box-shadow: $reflect-selected-shadow;
+}
+
 .rc-input {
   border: $reflect-input-border;
   border-radius: $reflect-input-border-radius;
@@ -11,9 +17,7 @@
   }
 
   &:focus {
-    background: #fff;
-    border: $reflect-border-active;
-    box-shadow: $reflect-selected-shadow;
+    @extend %focused-input;
   }
 
   &[disabled] {
