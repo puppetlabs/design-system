@@ -56,7 +56,7 @@ class TooltipStickyArea extends React.Component {
     const children = React.cloneElement(this.props.children, { ref: (c) => { this.child = c; } });
 
     return (
-      <div className="sticky-wrapper">
+      <div { ...this.props }>
         { tooltip }
         { children }
       </div>

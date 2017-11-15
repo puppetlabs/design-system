@@ -144,9 +144,9 @@ class Tooltip extends React.Component {
 
     if (this.props.sticky && this.props.onClose) {
       jsx = (
-        <a onClick={ this.props.onClose }>
+        <div role="button" className="rc-tooltip-close" onClick={ this.props.onClose }>
           <Icon height="8px" width="8px" type="close" />
-        </a>
+        </div>
       );
     }
 

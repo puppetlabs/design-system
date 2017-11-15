@@ -498,11 +498,13 @@ $reflect-toggle-off-color                    : $reflect-font-color-base;
 
 // Tooltip
 // ----------------------------------------------------------------------------
-$reflect-tooltip-hint-bg                     : rgba($reflect-black, 0.75) !default;
+$reflect-tooltip-hint-bg                     : rgba($reflect-black, 0.9) !default;
 $reflect-tooltip-hint-color                  : $reflect-gray-light !default;
-$reflect-tooltip-hint-padding                : $reflect-small !default;
+$reflect-tooltip-hint-padding                : $reflect-small $reflect-medium !default;
 $reflect-tooltip-hint-radius                 : $reflect-border-radius !default;
-$reflect-tooltip-hint-font-size              : $reflect-font-size-base !default;
+$reflect-tooltip-hint-font-size              : $reflect-font-size-small !default;
 $reflect-tooltip-hint-elevation              : 24 !default;
+
+$reflect-tooltip-hint-close-bg               : $reflect-black !default;
 
 /* stylelint-enable */
