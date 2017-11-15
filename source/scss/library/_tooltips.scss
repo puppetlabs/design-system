@@ -25,6 +25,15 @@
   }
 }
 
+// https://davidwalsh.name/detect-scrollbar-width
+.rc-tooltip-scrollbar-measurer {
+  height: 100px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
+  width: 100px;
+}
+
 .rc-tooltip-position-right {
   .rc-tooltip-carat {
     border-color: transparent $reflect-tooltip-hint-bg transparent transparent;

@@ -14,6 +14,10 @@ const propTypes = {
   ]).isRequired,
 };
 
+/**
+ * `TooltipStickyArea` allows you to define where a static tooltip should
+ * be positioned.
+ */
 class TooltipStickyArea extends React.Component {
   componentDidMount() {
     // Force update so we can access this.child;

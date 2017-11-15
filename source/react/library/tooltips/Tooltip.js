@@ -61,6 +61,12 @@ class Tooltip extends React.Component {
     this.setPosition();
   }
 
+  getScrollbarWidth() {
+    const measurer = this.scrollMeasurer;
+
+    return measurer.offsetWidth - measurer.clientWidth;
+  }
+
   setPosition() {
     const { target, anchor } = this.props;
     const tooltip = this.tooltip;
@@ -98,6 +104,7 @@ class Tooltip extends React.Component {
   setPositionBottom(target) {
     const elPosition = target.getBoundingClientRect();
     const offsetY = window.pageYOffset;
+    const scrollWidth = this.getScrollbarWidth();
     const tooltipWH = this.getTooltipWH();
     const tooltipWidth = tooltipWH.w;
     const tooltipHeight = tooltipWH.h;
@@ -105,7 +112,8 @@ class Tooltip extends React.Component {
     const newState = getDefaultState();
 
     newState.tooltipPosition.top = elPosition.bottom + (tooltipHeight / 2) + offsetY;
-    newState.tooltipPosition.left = (elPosition.left + (elPosition.width / 2)) - (tooltipWidth / 2);
+    newState.tooltipPosition.left =
+      ((elPosition.left + (elPosition.width / 2)) - (tooltipWidth / 2)) + scrollWidth;
 
     newState.caratPosition.left = (tooltipWidth / 2) - CARAT_HEIGHT;
 
@@ -133,6 +141,7 @@ class Tooltip extends React.Component {
 
     return (
       <div className={ className } style={ tooltipPosition } ref={ c => { this.tooltip = c; } }>
+        <div className="rc-tooltip-scrollbar-measurer" ref={ c => { this.scrollMeasurer = c; } } />
         <div className="rc-tooltip-carat" style={ caratPosition } />
         { this.props.children }
       </div>
