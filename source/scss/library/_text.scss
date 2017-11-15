@@ -1,5 +1,5 @@
 %focused-input {
-  background: #fff;
+  background: $reflect-input-focus-bg;
   border: $reflect-border-active;
   box-shadow: $reflect-selected-shadow;
 }
@@ -8,6 +8,7 @@
   border: $reflect-input-border;
   border-radius: $reflect-input-border-radius;
   color: $reflect-input-color;
+  background: $reflect-input-bg;
   outline: none;
   padding: $reflect-input-padding;
   width: 100%;
@@ -62,7 +63,7 @@
 }
 
 .rc-input-simple {
-  background: transparent;
+  background: $reflect-input-simple-bg;
   border-bottom-width: 1px;
   border-left: 0;
   border-radius: 0;
@@ -70,7 +71,7 @@
   border-top: 0;
 
   &:focus {
-    background: transparent;
+    background: $reflect-input-simple-focus-bg;
     border-bottom-width: 1px;
     border-left: 0;
     border-right: 0;
