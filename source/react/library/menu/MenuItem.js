@@ -54,9 +54,18 @@ class MenuItem extends React.Component {
       'rc-menu-item-disabled': this.props.option.disabled,
     });
 
+    let value = option.value;
+
+    if (typeof option.label !== 'undefined') {
+      value = option.label;
+    }
+
     return (
       <li className={ className }>
-        <a href={ option.id } onClick={ this.onClick }>{ icon }{ option.value }</a>
+        <a href={ option.id } className="rc-menu-item-anchor" onClick={ this.onClick }>
+          { icon }
+          { value }
+        </a>
       </li>
     );
   }

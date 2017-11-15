@@ -51,7 +51,7 @@ class MenuList extends React.Component {
           selected={ isSelected }
           onClick={ this.onChange }
           multiple={ multiple }
-        />
+        />,
       );
     });
 

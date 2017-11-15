@@ -33,3 +33,8 @@ Simple `Input`:
 ```
 <Input simple placeholder="I'm a simple input" />
 ```
+
+Simple `Input` with icon:
+```
+<Input simple icon />
+```

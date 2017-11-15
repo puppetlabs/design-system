@@ -112,11 +112,11 @@ class Button extends React.Component {
       href,
       disabled,
       onClick: this.onClick,
-      ref: (b) => { this.button = b },
+      ref: (b) => { this.button = b; },
       className: cssClass,
     };
 
-    const loader = processing ? <Icon height="100%" width="100%" type="loader" /> : null;
+    const loader = processing ? <Icon height="75%" width="100%" type="loader" /> : null;
 
     if (children || label) {
       let dropdown;

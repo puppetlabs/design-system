@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
+  className: React.PropTypes.string,
   children: React.PropTypes.any,
   size: React.PropTypes.string,
 };
@@ -16,8 +17,8 @@ const propTypes = {
 
 class Menu extends React.Component {
   render() {
-    const { size, children } = this.props;
-    const className = classnames('rc-menu', {
+    const { size, children, className: classProp } = this.props;
+    const className = classnames('rc-menu', classProp, {
       [`rc-menu-${size}`]: size,
     });
 

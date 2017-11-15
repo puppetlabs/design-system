@@ -17,7 +17,7 @@ const propTypes = {
 const BlankSlate = props => (
   <div className="rc-blank-slate">
     <div className="rc-blank-slate-icon">
-      <Icon height="50" width="40" type={ props.icon } />
+      <Icon height="50px" width="40px" type={ props.icon } />
     </div>
     <div className="rc-blank-slate-message">
       { props.message }

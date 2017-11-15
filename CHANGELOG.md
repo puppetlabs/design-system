@@ -1,6 +1,34 @@
+# 0.3.0
+
+* Introduce a Select component, replacing react-select
+* Add Clone and Info icons
+
+# 0.2.0
+
+* Various updates to our Accordion component
+
+# 0.1.4
+
+* Add resets to anchor tags
+* Provide numbers with units for proper icon sizing
+
+# 0.1.3
+
+* Fix an issue causing Icons to be mispositioned within Buttons
+
+# 0.1.2
+
+* Support for specifying margins and anchor in Dropdown component
+
+# 0.1.1
+
+* Support for dynamic heights in StencilGrid
+* New icons
+* Simple input with icon
+
 # 0.1.0
 
-* Adding a new prop to button that causes it to act like a dropdown 
+* Adding a new prop to button that causes it to act like a dropdown
 * Fixing bug in icon sizing
 
 # 0.0.77

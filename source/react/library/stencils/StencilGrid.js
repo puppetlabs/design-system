@@ -117,7 +117,7 @@ class StencilGrid extends React.Component {
       this.getGridBlocks(components) : this.getGridBlocks(staticView);
 
     return (
-      <div className="rc-grid-div">
+      <div className="rc-grid-div" style={ { height: settings.height, width: settings.width } } >
         <svg className="rc-stencil-grid" width={ settings.width } height={ settings.height } xmlns="http://www.w3.org/2000/svg">
           { gridBlocks }
         </svg>

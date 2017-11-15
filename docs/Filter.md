@@ -6,7 +6,7 @@ const operators = [
 ];
 
 const fields = [
-  { value: 'Field 1', label: 'Field 2' },
+  { value: 'Field 1', label: 'Field 1' },
   { value: 'Field 2', label: 'Field 2' },
 ];
 
@@ -28,7 +28,7 @@ const operators = [
 ];
 
 const fields = [
-  { value: 'Field 1', label: 'Field 2' },
+  { value: 'Field 1', label: 'Field 1' },
   { value: 'Field 2', label: 'Field 2' },
 ];
 
