@@ -32,6 +32,8 @@
 
 .rc-select-open {
   .rc-input {
+    @extend .rc-input:focus;
+
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     cursor: text;
