@@ -250,6 +250,8 @@ $reflect-filter-split-bg                     : $reflect-gray-light !default;
 // Input
 // ----------------------------------------------------------------------------
 $reflect-input-color                         : $reflect-font-color-base !default;
+$reflect-input-bg                            : $reflect-white !default;
+$reflect-input-focus-bg                      : $reflect-white !default;
 $reflect-input-border                        : $reflect-border !default;
 $reflect-input-border-radius                 : $reflect-border-radius !default;
 $reflect-input-border-error                  : 1px solid $reflect-danger-color !default;
@@ -263,6 +265,9 @@ $reflect-input-large-height                  : $reflect-giant !default;
 $reflect-input-large-padding                 : 0 $reflect-large !default;
 $reflect-input-small-padding                 : $reflect-small !default;
 $reflect-input-tiny-padding                  : $reflect-mini $reflect-tiny !default;
+
+$reflect-input-simple-bg                     : transparent !default;
+$reflect-input-simple-focus-bg               : transparent !default;
 
 // Select
 // ----------------------------------------------------------------------------
