@@ -47,7 +47,7 @@ describe('<Select />', () => {
       // The menu should be open now
       expect(wrapper.find('MenuItem').length).to.eql(2);
 
-      wrapper.find('MenuItem').first().find('a').simulate('mouseDown');
+      wrapper.find('MenuItem').first().find('a').simulate('click');
 
       expect(onSelect.lastCall.args).to.eql([{
         id: 0,
@@ -82,7 +82,7 @@ describe('<Select />', () => {
       // The menu should be open now
       expect(wrapper.find('MenuItem').length).to.eql(2);
 
-      wrapper.find('MenuItem').first().find('a').simulate('mouseDown');
+      wrapper.find('MenuItem').first().find('a').simulate('click');
 
       expect(onSelect.lastCall.args).to.eql([{
         id: 'Michael Phelps',
