@@ -1,3 +1,8 @@
+# 0.3.1
+
+* Bug fixes around positioning tooltips
+* Bug fixes for Select component
+
 # 0.3.0
 
 * Introduce a Select component, replacing react-select
