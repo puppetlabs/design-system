@@ -105,8 +105,18 @@ class Select extends React.Component {
   }
 
   onBlur(e) {
-    // If the user has clicked on a menu item, we handle that separately in onSelect.
-    if (!e.relatedTarget || !isNodeInRoot(e.relatedTarget, this.elem)) {
+    // All of this could have been a lot simpler, but IE stopped supporting event#relatedTarget
+    // for onBlur events in IE9.
+    // I found this solution at https://github.com/facebook/react/issues/2011#issuecomment-76071919
+    // Related: https://github.com/facebook/react/issues/3751
+    // I've tested this in IE11, Chrome, and Firefox(latest) with success.
+
+    const relatedTarget = e.relatedTarget || e.explicitOriginalTarget || document.activeElement;
+
+    if (
+      (!relatedTarget || !e.currentTarget.contains(relatedTarget)) &&
+      !this.elem.contains(relatedTarget)
+    ) {
       this.setState({ open: false });
     }
   }
