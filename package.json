@@ -73,6 +73,7 @@
     "moment": "^2.11.2"
   },
   "dependencies": {
+    "babel-runtime": "^6.26.0",
     "deep-equal": "^1.0.1",
     "moment-timezone": "^0.5.13",
     "react-daterange-picker": "^1.1.0",
