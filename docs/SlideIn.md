@@ -22,6 +22,7 @@ initialState = { isOpen: null };
 
   { state.isOpen &&
     <SlideIn
+      onRemove={ () => alert('closing') }
       position={ state.isOpen }
       title="SlideIn title"
     >

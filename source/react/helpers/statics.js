@@ -1,11 +1,9 @@
 export function isNodeInRoot(node, root) {
-  while (node) {
-    if (node === root) {
-      return true;
-    }
+  let contains = false;
 
-    node = node.parentNode;
+  if (root !== node) {
+    contains = root.contains(node);
   }
 
-  return false;
+  return contains;
 }

@@ -1,7 +1,8 @@
 import React from 'react';
+import onClickOutside from 'react-onclickoutside';
 import classnames from 'classnames';
 
-import { isNodeInRoot } from '../../helpers/statics';
+import { TAB_KEY_CODE } from '../../constants';
 
 import Icon from '../Icon';
 import Input from '../Input';
@@ -63,8 +64,8 @@ class Select extends React.Component {
       options: formatOptions(props.options),
     };
 
-    this.onBlur = this.onBlur.bind(this);
     this.onSelect = this.onSelect.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
     this.onInputClick = this.onInputClick.bind(this);
   }
 
@@ -83,6 +84,17 @@ class Select extends React.Component {
 
   onInputClick() {
     this.setState({ open: true });
+  }
+
+  onKeyDown(e) {
+    switch (e.keyCode) {
+      case TAB_KEY_CODE:
+        this.setState({ open: false });
+
+        break;
+      default:
+        break;
+    }
   }
 
   onSelect(option) {
@@ -104,13 +116,6 @@ class Select extends React.Component {
     });
   }
 
-  onBlur(e) {
-    // If the user has clicked on a menu item, we handle that separately in onSelect.
-    if (!e.relatedTarget || !isNodeInRoot(e.relatedTarget, this.elem)) {
-      this.setState({ open: false });
-    }
-  }
-
   getCurrentValue() {
     let value = '';
 
@@ -125,6 +130,10 @@ class Select extends React.Component {
     }
 
     return value;
+  }
+
+  handleClickOutside() {
+    this.setState({ open: false });
   }
 
   renderMenuList() {
@@ -166,10 +175,10 @@ class Select extends React.Component {
       <Input
         dropdown
         onClick={ this.onInputClick }
+        onKeyDown={ this.onKeyDown }
         onChange={ e => this.setState({ inputValue: e.target.value }) }
         value={ this.getCurrentValue() }
         size={ this.props.size }
-        onBlur={ this.onBlur }
         ref={ (c) => { this.input = c; } }
         focused={ this.state.open }
         onFocus={ () => this.setState({ open: true }) }
@@ -205,4 +214,4 @@ class Select extends React.Component {
 Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
 
-export default Select;
+export default onClickOutside(Select);
