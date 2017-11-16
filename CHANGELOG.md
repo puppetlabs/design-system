@@ -1,3 +1,7 @@
+# 0.3.2
+
+* Better browser support for Select component
+
 # 0.3.1
 
 * Bug fixes around positioning tooltips
