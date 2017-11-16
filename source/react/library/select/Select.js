@@ -1,4 +1,5 @@
 import React from 'react';
+import onClickOutside from 'react-onclickoutside';
 import classnames from 'classnames';
 
 import { isNodeInRoot } from '../../helpers/statics';
@@ -63,7 +64,6 @@ class Select extends React.Component {
       options: formatOptions(props.options),
     };
 
-    this.onBlur = this.onBlur.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this.onInputClick = this.onInputClick.bind(this);
   }
@@ -104,20 +104,6 @@ class Select extends React.Component {
     });
   }
 
-  onBlur(e) {
-    // All of this could have been a lot simpler, but IE stopped supporting event#relatedTarget
-    // for onBlur events in IE9.
-    // I found this solution at https://github.com/facebook/react/issues/2011#issuecomment-76071919
-    // Related: https://github.com/facebook/react/issues/3751
-    // I've tested this in IE11, Chrome, and Firefox(latest) with success.
-
-    const relatedTarget = e.relatedTarget || e.explicitOriginalTarget || document.activeElement;
-
-    if (!relatedTarget || !isNodeInRoot(relatedTarget, this.elem)) {
-      this.setState({ open: false });
-    }
-  }
-
   getCurrentValue() {
     let value = '';
 
@@ -132,6 +118,10 @@ class Select extends React.Component {
     }
 
     return value;
+  }
+
+  handleClickOutside() {
+    this.setState({ open: false });
   }
 
   renderMenuList() {
@@ -176,7 +166,6 @@ class Select extends React.Component {
         onChange={ e => this.setState({ inputValue: e.target.value }) }
         value={ this.getCurrentValue() }
         size={ this.props.size }
-        onBlur={ this.onBlur }
         ref={ (c) => { this.input = c; } }
         focused={ this.state.open }
         onFocus={ () => this.setState({ open: true }) }
@@ -212,4 +201,4 @@ class Select extends React.Component {
 Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
 
-export default Select;
+export default onClickOutside(Select);
