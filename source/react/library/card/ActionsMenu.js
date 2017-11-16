@@ -21,9 +21,14 @@ class CardActionsMenu extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onTooltipClose = this.onTooltipClose.bind(this);
-
     this.state = {};
+
+    this.onTooltipClose = this.onTooltipClose.bind(this);
+    this.onMenuOpen = this.onMenuOpen.bind(this);
+  }
+
+  onMenuOpen() {
+    this.setState({ tooltipOpen: false });
   }
 
   onTooltipClose() {
@@ -65,6 +70,7 @@ class CardActionsMenu extends React.Component {
           target={ target }
           options={ this.props.menuOptions }
           selected={ selected }
+          onOpen={ this.onMenuOpen }
           onChange={ this.props.onOptionClick }
         />
       );
