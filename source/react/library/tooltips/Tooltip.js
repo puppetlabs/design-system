@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import equals from 'deep-equal';
 import portal from '../portal';
 
 import TooltipHoverArea from './TooltipHoverArea';
@@ -52,8 +53,8 @@ class Tooltip extends React.Component {
     window.addEventListener('resize', this.onResize);
   }
 
-  componentDidUpdate(newProps) {
-    if (newProps.anchor !== this.props.anchor) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.anchor !== this.props.anchor) {
       this.setPosition();
     }
   }
@@ -112,11 +113,10 @@ class Tooltip extends React.Component {
     const scrollWidth = this.getScrollbarWidth();
     const tooltipWH = this.getTooltipWH();
     const tooltipWidth = tooltipWH.w;
-    const tooltipHeight = tooltipWH.h;
 
     const newState = getDefaultState();
 
-    newState.tooltipPosition.top = elPosition.bottom + (tooltipHeight / 2) + offsetY;
+    newState.tooltipPosition.top = elPosition.bottom + (CARAT_HEIGHT * 2) + offsetY;
     newState.tooltipPosition.left =
       ((elPosition.left + (elPosition.width / 2)) - (tooltipWidth / 2)) + scrollWidth;
 
@@ -133,7 +133,7 @@ class Tooltip extends React.Component {
       const rect = this.tooltip.getBoundingClientRect();
 
       w = rect.width;
-      h = rect.height;
+      h = rect.height;      
     }
 
     return { w, h };

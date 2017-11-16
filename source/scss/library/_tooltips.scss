@@ -12,6 +12,7 @@
   color: $reflect-tooltip-hint-color;
   display: inline;
   font-size: $reflect-tooltip-hint-font-size;
+  max-width: $reflect-tooltip-hint-max-width;
   padding: $reflect-tooltip-hint-padding;
   position: absolute;
   z-index: $reflect-tooltip-hint-elevation;
