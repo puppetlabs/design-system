@@ -2,6 +2,8 @@ import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 import classnames from 'classnames';
 
+import { TAB_KEY_CODE } from '../../constants';
+
 import Icon from '../Icon';
 import Input from '../Input';
 import Menu from '../menu/Menu';
@@ -86,9 +88,7 @@ class Select extends React.Component {
 
   onKeyDown(e) {
     switch (e.keyCode) {
-      case 9: // tab
-        e.preventDefault();
-
+      case TAB_KEY_CODE:
         this.setState({ open: false });
 
         break;
