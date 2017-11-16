@@ -2,8 +2,6 @@ import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 import classnames from 'classnames';
 
-import { isNodeInRoot } from '../../helpers/statics';
-
 import Icon from '../Icon';
 import Input from '../Input';
 import Menu from '../menu/Menu';
@@ -65,6 +63,7 @@ class Select extends React.Component {
     };
 
     this.onSelect = this.onSelect.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
     this.onInputClick = this.onInputClick.bind(this);
   }
 
@@ -83,6 +82,19 @@ class Select extends React.Component {
 
   onInputClick() {
     this.setState({ open: true });
+  }
+
+  onKeyDown(e) {
+    switch (e.keyCode) {
+      case 9: // tab
+        e.preventDefault();
+
+        this.setState({ open: false });
+
+        break;
+      default:
+        break;
+    }
   }
 
   onSelect(option) {
@@ -163,6 +175,7 @@ class Select extends React.Component {
       <Input
         dropdown
         onClick={ this.onInputClick }
+        onKeyDown={ this.onKeyDown }
         onChange={ e => this.setState({ inputValue: e.target.value }) }
         value={ this.getCurrentValue() }
         size={ this.props.size }

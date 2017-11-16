@@ -20,6 +20,7 @@ const propTypes = {
   onKeyUp: React.PropTypes.func,
   error: React.PropTypes.string,
   style: React.PropTypes.object,
+  onKeyDown: React.PropTypes.func,
   onChange: React.PropTypes.func,
   onClick: React.PropTypes.func,
   onFocus: React.PropTypes.func,
@@ -27,6 +28,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  onKeyDown: () => {},
   simple: false,
 };
 
@@ -94,6 +96,7 @@ class Input extends React.Component {
     });
 
     const props = {
+      onKeyDown: this.props.onKeyDown,
       autoFocus: this.props.autoFocus,
       disabled: this.props.disabled,
       readOnly: this.props.readonly,
