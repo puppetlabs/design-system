@@ -53,7 +53,9 @@ class FormField extends React.Component {
     return (
       <div className={ className }>
         { label }
-        <Child { ...this.props } />
+        <div className="rc-form-field-content">
+          <Child { ...this.props } />
+        </div>
         { description }
       </div>
     );

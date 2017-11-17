@@ -44,6 +44,33 @@
   }
 }
 
+.rc-form-inline {
+  .rc-form-field-label {
+    flex-grow: 0.5;
+    padding-bottom: 0;
+  }
+
+  .rc-form-field-content {
+    display: flex;
+    flex-grow: 3;
+    justify-content: flex-end;
+  }
+
+  .rc-toggle .rc-switch {
+    margin: 0;
+  }
+
+  .rc-form-field {
+    align-items: center;
+    display: flex;
+    width: 100%;
+  }
+
+  .rc-form-field-description {
+    display: none;
+  }
+}
+
 /* stylelint-disable  */
 .rc-filter-form {
   position: relative;

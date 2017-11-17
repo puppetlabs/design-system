@@ -5,6 +5,7 @@ import FormField from './FormField';
 
 const propTypes = {
   className: React.PropTypes.string,
+  inline: React.PropTypes.bool,
   children: React.PropTypes.any,
 };
 
@@ -16,7 +17,9 @@ const defaultProps = {
  * `Form` is a container component for rendering forms.
  */
 const Form = (props) => {
-  const className = classnames('rc-form', props.className);
+  const className = classnames('rc-form', props.className, {
+    'rc-form-inline': props.inline,
+  });
 
   return (
     <div className={ className }>

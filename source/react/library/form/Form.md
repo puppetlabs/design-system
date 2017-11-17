@@ -23,7 +23,7 @@ Form displaying an input with an error:
     control={ Input }
     label="name"
     error="This name is already taken"
-    value="Geoff"
+    value="Jeff"
     description="Please enter your name"
   />
 </Form>
@@ -45,6 +45,29 @@ const options = [
     label="State"
     description="Select a state"
     options={ options }
+  />
+</Form>
+```
+
+## Inline form
+
+```
+<Form inline>
+  <Form.Field
+    control={ Input }
+    label="First name"
+    placeholder="Enter your first name..."
+    description="Please enter your first name"
+  />
+  <Form.Field
+    control={ Input }
+    label="Last name"
+    placeholder="Enter your last name..."
+    description="Please enter your last name"
+  />
+  <Form.Field
+    control={ Toggle }
+    label="Likes cheese"
   />
 </Form>
 ```
