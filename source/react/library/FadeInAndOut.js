@@ -1,7 +1,8 @@
 import React from 'react';
 import { Transition } from 'react-transition-group';
+import { ANIMATION_TIMING } from '../constants';
 
-const duration = 200;
+const duration = ANIMATION_TIMING;
 
 const defaultStyle = {
   transition: `opacity ${duration}ms ease-in-out`,

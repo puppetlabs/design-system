@@ -49,21 +49,20 @@ class TooltipHoverArea extends React.Component {
   }
 
   renderTooltip() {
-    if (!this.elem) {
+    if (!this.child) {
       return null;
     }
 
     return (
-      <Tooltip target={ this.elem } anchor={ this.props.anchor }>
+      <Tooltip target={ this.child } anchor={ this.props.anchor }>
         { this.props.tooltip }
       </Tooltip>
     );
   }
 
   render() {
-    let tooltip = null;
-
-    tooltip = this.renderTooltip();
+    const tooltip = this.renderTooltip();
+    const children = React.cloneElement(this.props.children, { ref: (c) => { this.child = c; } });
 
     return (
       <div
@@ -77,7 +76,7 @@ class TooltipHoverArea extends React.Component {
         <FadeInAndOut in={ this.state.open }>
           { tooltip }
         </FadeInAndOut>
-        { this.props.children }
+        { children }
       </div>
     );
   }
