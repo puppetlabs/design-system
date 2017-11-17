@@ -4,11 +4,13 @@ import Portal from 'react-portal';
 const portal = function portal(Base) {
   const defaultProps = { isOpened: true };
 
-  const component = props => (
-    <Portal isOpened={ props.isOpened }>
-      <Base { ...props } />
-    </Portal>
-  );
+  const component = props => {
+    return (
+      <Portal isOpened={ props.isOpened }>
+        <Base { ...props } />
+      </Portal>
+    );
+  };
 
   component.defaultProps = defaultProps;
 

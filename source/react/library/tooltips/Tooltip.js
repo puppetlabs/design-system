@@ -1,6 +1,5 @@
 import React from 'react';
 import classnames from 'classnames';
-import equals from 'deep-equal';
 import portal from '../portal';
 
 import TooltipHoverArea from './TooltipHoverArea';
@@ -11,6 +10,7 @@ const propTypes = {
   className: React.PropTypes.string,
   anchor: React.PropTypes.string,
   sticky: React.PropTypes.bool,
+  style: React.PropTypes.object,
   target: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.element,
@@ -25,6 +25,7 @@ const propTypes = {
 const CARAT_HEIGHT = 8;
 
 const defaultProps = {
+  style: {},
   anchor: 'right',
 };
 
@@ -113,7 +114,6 @@ class Tooltip extends React.Component {
     const scrollWidth = this.getScrollbarWidth();
     const tooltipWH = this.getTooltipWH();
     const tooltipWidth = tooltipWH.w;
-
     const newState = getDefaultState();
 
     newState.tooltipPosition.top = elPosition.bottom + (CARAT_HEIGHT * 2) + offsetY;
@@ -133,7 +133,7 @@ class Tooltip extends React.Component {
       const rect = this.tooltip.getBoundingClientRect();
 
       w = rect.width;
-      h = rect.height;      
+      h = rect.height;
     }
 
     return { w, h };
@@ -155,16 +155,17 @@ class Tooltip extends React.Component {
 
   render() {
     const { tooltipPosition, caratPosition } = this.state;
-    const { anchor } = this.props;
+    const { anchor, style } = this.props;
     const className = classnames('rc-tooltip', `rc-tooltip-position-${anchor}`);
     const closeButton = this.renderCloseButton();
 
-    if (this.props.width) {
-      tooltipPosition.width = this.props.width;
-    }
+    const styles = {
+      ...tooltipPosition,
+      ...style,
+    };
 
     return (
-      <div className={ className } style={ tooltipPosition } ref={ c => { this.tooltip = c; } }>
+      <div className={ className } style={ styles } ref={ c => { this.tooltip = c; } }>
         <div className="rc-tooltip-scrollbar-measurer" ref={ c => { this.scrollMeasurer = c; } } />
         <div className="rc-tooltip-carat" style={ caratPosition } />
         { this.props.children }
