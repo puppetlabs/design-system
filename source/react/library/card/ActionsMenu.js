@@ -21,7 +21,9 @@ class CardActionsMenu extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {};
+    this.state = {
+      tooltipOpen: !!this.props.message
+    };
 
     this.onTooltipClose = this.onTooltipClose.bind(this);
     this.onMenuOpen = this.onMenuOpen.bind(this);
@@ -51,10 +53,11 @@ class CardActionsMenu extends React.Component {
         selected = selected[0].id;
       }
 
-      if (this.props.message && this.state.tooltipOpen !== false) {
+      if (this.props.message) {
         target = (
           <TooltipStickyArea
             onClose={ this.onTooltipClose }
+            open={ this.state.tooltipOpen }
             anchor="bottom"
             tooltip={ this.props.message }
           >

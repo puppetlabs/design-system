@@ -67,7 +67,8 @@ class TooltipHoverArea extends React.Component {
 
     return (
       <div
-        className="rc-tooltip-hover-area"
+        className="rc-tooltip-area rc-tooltip-area-hover"
+        role={ this.onClick ? 'button' : null }
         onClick={ this.onClick }
         onMouseEnter={ this.onMouseOver }
         onMouseOut={ this.onMouseOut }

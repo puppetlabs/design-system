@@ -1,10 +1,10 @@
 import React from 'react';
 
 import Tooltip from './Tooltip';
+import FadeInAndOut from '../FadeInAndOut';
 
 const propTypes = {
   anchor: React.PropTypes.string,
-  width: React.PropTypes.string,
   onClose: React.PropTypes.func,
   tooltip: React.PropTypes.oneOfType([
     React.PropTypes.string,
@@ -26,39 +26,63 @@ const defaultProps = {
  */
 
 class TooltipStickyArea extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = { open: false };
+
+    this.onClose = this.onClose.bind(this);
+  }
+
   componentDidMount() {
-    // Force update so we can access this.child;
-    this.forceUpdate();
+    this.setState({ open: true });
+  }
+
+  componentWillReceiveProps(props) {
+    if (props.open !== this.state.open) {
+      this.setState({ open: props.open });
+    }
+  }
+
+  onClose() {
+    this.setState({ open: false }, () => {
+      if (this.props.onClose) {
+        this.props.onClose();
+      }
+    });
   }
 
   renderTooltip() {
-    let tooltip;
-
-    if (this.child) {
-      tooltip = (
-        <Tooltip
-          sticky
-          width={ this.props.width }
-          onClose={ this.props.onClose }
-          target={ this.child }
-          anchor="bottom"
-        >
-          { this.props.tooltip }
-        </Tooltip>
-      );
+    if (!this.elem) {
+      return null;
     }
 
-    return tooltip;
+    return (
+      <Tooltip
+        sticky
+        target={ this.elem }
+        anchor="bottom"
+        onClose={ this.onClose }
+      >
+        { this.props.tooltip }
+      </Tooltip>
+    );
   }
 
   render() {
     const tooltip = this.renderTooltip();
-    const children = React.cloneElement(this.props.children, { ref: (c) => { this.child = c; } });
 
     return (
-      <div { ...this.props }>
-        { tooltip }
-        { children }
+      <div
+        className="rc-tooltip-area rc-tooltip-area-sticky"
+        ref={ (c) => { this.elem = c; } }
+        { ...this.props }
+      >
+        <FadeInAndOut in={ this.state.open }>
+          { tooltip }
+        </FadeInAndOut>
+        { this.props.children }
       </div>
     );
   }
