@@ -1,9 +1,16 @@
 ```
 <Form>
-  <Form.Input
-    name="name"
-    placeholder="Enter your name..."
-    description="Please enter your name"
+  <Form.Field
+    control={ Input }
+    label="First name"
+    placeholder="Enter your first name..."
+    description="Please enter your first name"
+  />
+  <Form.Field
+    control={ Input }
+    label="Last name"
+    placeholder="Enter your last name..."
+    description="Please enter your last name"
   />
 </Form>
 ```
@@ -12,11 +19,32 @@ Form displaying an input with an error:
 
 ```
 <Form>
-  <Form.Input
-    name="name"
+  <Form.Field
+    control={ Input }
+    label="name"
     error="This name is already taken"
     value="Geoff"
     description="Please enter your name"
+  />
+</Form>
+```
+
+Form with a `Select`:
+
+```
+const options = [
+  'Oregon',
+  'California',
+  'New York',
+  'Neverland',
+];
+
+<Form>
+  <Form.Field
+    control={ Select }
+    label="State"
+    description="Select a state"
+    options={ options }
   />
 </Form>
 ```

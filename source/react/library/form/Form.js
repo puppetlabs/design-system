@@ -1,34 +1,34 @@
 import React from 'react';
 import classnames from 'classnames';
 
-import FormInput from './FormInput';
+import FormField from './FormField';
 
 const propTypes = {
   className: React.PropTypes.string,
+  children: React.PropTypes.any,
 };
 
 const defaultProps = {
+  className: '',
 };
 
 /**
  * `Form` is a container component for rendering forms.
  */
-class Form extends React.Component {
-  render() {
-    const className = classnames('rc-form', this.props.className);
-    const children = this.props.children;
+const Form = (props) => {
+  const className = classnames('rc-form', props.className);
 
-    return (
-      <div className={ className }>
-        { children }
-      </div>
-    );
-  }
-}
+  return (
+    <div className={ className }>
+      { props.children }
+    </div>
+  );
+};
 
 Form.propTypes = propTypes;
 Form.defaultProps = defaultProps;
 
-Form.Input = FormInput;
+
+Form.Field = FormField;
 
 export default Form;

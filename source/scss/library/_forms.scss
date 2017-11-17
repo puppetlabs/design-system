@@ -1,21 +1,30 @@
-.rc-form-input {
-  .rc-form-input-name {
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: $reflect-form-name-font-size;
-
-    color: $reflect-form-name-color;
-    padding-bottom: $reflect-form-vertical-padding;
+.rc-form {
+  .rc-form-field {
+    margin-bottom: $reflect-form-field-margin;
   }
 
-  .rc-form-input-description {
+  .rc-form-field:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.rc-form-field {
+  .rc-form-field-label {
+    color: $reflect-form-label-color;
+    font-size: $reflect-form-label-font-size;
+    letter-spacing: 1.5px;
+    padding-bottom: $reflect-form-vertical-padding;
+    text-transform: uppercase;
+  }
+
+  .rc-form-field-description {
     color: $reflect-form-description-color;
     font-size: $reflect-form-description-font-size;
     padding-top: $reflect-form-vertical-padding;
   }
 }
 
-.rc-form-input:hover {
+.rc-form-field:hover {
   .rc-input {
     border: $reflect-form-input-hover-border;
   }
@@ -25,12 +34,12 @@
   }
 }
 
-.rc-form-input-error {
-  .rc-form-input-name {
+.rc-form-field-error {
+  .rc-form-field-label {
     color: $reflect-danger-color;
   }
 
-  .rc-form-input-description {
+  .rc-form-field-description {
     color: $reflect-danger-color;
   }
 }
