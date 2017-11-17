@@ -230,6 +230,15 @@ $reflect-form-label-margin-bottom            : 6px !default; // Todo: Base on gr
 $reflect-form-label-case                     : none !default;
 $reflect-form-label-color                    : $reflect-font-color-subtle !default;
 
+$reflect-form-vertical-padding               : $reflect-tiny !default;
+$reflect-form-name-font-weight               : $reflect-font-weight-heavy !default;
+$reflect-form-name-color                     : $reflect-gray-dark !default;
+$reflect-form-name-font-size                 : $reflect-font-size-tiny !default;
+$reflect-form-description-color              : $reflect-gray !default;
+$reflect-form-description-font-size          : $reflect-font-size-small !default;
+$reflect-form-input-hover-color              : $reflect-brand-primary !default;
+$reflect-form-input-hover-border             : 1px solid $reflect-brand-primary !default;
+
 // Filters
 // ----------------------------------------------------------------------------
 $reflect-filter-border-color                 : $reflect-gray-lighter !default;
