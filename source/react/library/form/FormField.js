@@ -3,17 +3,22 @@ import classnames from 'classnames';
 
 import Input from '../Input';
 import Select from '../select/Select';
-import Toggle from '../Toggle';
+import Switch from '../Switch';
 
 const supportedTypes = [
   'input',
   'select',
-  'toggle',
+  'switch',
 ];
 
 const propTypes = {
-  type: React.PropTypes.oneOf(supportedTypes).isRequired,,
-  onChange: React.PropTypes.func.isRequired(),
+  type: React.PropTypes.oneOf(supportedTypes).isRequired,
+  onChange: React.PropTypes.func.isRequired,
+  name: React.PropTypes.string.isRequired,
+  value: React.PropTypes.oneOfType(
+    React.PropTypes.string,
+    React.PropTypes.bool,
+  ),
   error: React.PropTypes.string,
   label: React.PropTypes.string,
   className: React.PropTypes.string,
@@ -36,6 +41,12 @@ class FormField extends React.Component {
     switch (this.props.type) {
       case 'input':
         value = val.target.value;
+        break;
+      case 'switch':
+        value = val.target.checked;
+        break;
+      case 'select':
+        value = value;
         break;
       default:
         break;
@@ -79,11 +90,29 @@ class FormField extends React.Component {
 
     switch (type) {
       case 'select':
+        jsx = (
+          <Select
+            onSelect={ this.onChange }
+            options={ this.props.options }
+          />
+        );
         break;
       case 'input':
-        jsx = <Input onChange={ this.onChange } />;
+        jsx = (
+          <Input
+            onChange={ this.onChange }
+            value={ this.props.value || '' }
+          />
+        );
         break;
-      case 'toggle':
+      case 'switch':
+        jsx = (
+          <Switch
+            name={ this.props.name }
+            onChange={ this.onChange }
+            checked={ !!this.props.value }
+          />
+        );
         break;
       default:
         break;

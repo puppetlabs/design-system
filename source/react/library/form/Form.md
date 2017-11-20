@@ -23,6 +23,7 @@ Form displaying an input with an error:
 <Form>
   <Form.Field
     type="input"
+    name="name"
     label="name"
     error="This name is already taken"
     value="Jeff"
@@ -44,6 +45,7 @@ const options = [
 <Form>
   <Form.Field
     type="select"
+    name="state"
     label="State"
     description="Select a state"
     options={ options }
@@ -54,21 +56,29 @@ const options = [
 ## Inline form
 
 ```
-<Form inline>
+<Form
+  inline
+  submittable
+  onSubmit={ (values) => { alert(`submitted ${JSON.stringify(values)}`) } }
+>
   <Form.Field
     type="input"
+    name="firstName"
     label="First name"
     placeholder="Enter your first name..."
     description="Please enter your first name"
   />
   <Form.Field
     type="input"
+    name="lastName"
     label="Last name"
     placeholder="Enter your last name..."
     description="Please enter your last name"
   />
   <Form.Field
-    type="toggle"
+    name="cheese"
+    value={ false }
+    type="switch"
     label="Likes cheese"
   />
 </Form>

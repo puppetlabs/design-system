@@ -24,6 +24,11 @@
   }
 }
 
+.rc-form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .rc-form-field:hover {
   .rc-input {
     border: $reflect-form-input-hover-border;

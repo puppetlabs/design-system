@@ -56,7 +56,8 @@ class Switch extends React.Component {
           className="rc-switch-checkbox"
           disabled={ this.props.disabled }
           checked={ this.props.checked }
-          type="checkbox" id={ this.props.name }
+          type="checkbox"
+          id={ this.props.name }
           onChange={ this.props.onChange }
         />
         { label }
