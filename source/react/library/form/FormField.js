@@ -60,9 +60,9 @@ class FormField extends React.Component {
 
     if (this.props.label) {
       jsx = (
-        <div className="rc-form-field-label">
+        <label htmlFor={ this.props.name} className="rc-form-field-label">
           { this.props.label }
-        </div>
+        </label>
       );
     }
 
@@ -92,6 +92,7 @@ class FormField extends React.Component {
       case 'select':
         jsx = (
           <Select
+            name={ this.props.name }
             onSelect={ this.onChange }
             options={ this.props.options }
           />
@@ -100,6 +101,7 @@ class FormField extends React.Component {
       case 'input':
         jsx = (
           <Input
+            name={ this.props.name }
             onChange={ this.onChange }
             value={ this.props.value || '' }
           />

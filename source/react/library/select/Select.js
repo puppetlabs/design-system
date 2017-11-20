@@ -15,6 +15,7 @@ const propTypes = {
   options: React.PropTypes.array,
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
+  name: React.PropTypes.string,
   size: React.PropTypes.oneOf(['small']),
 };
 
@@ -174,6 +175,7 @@ class Select extends React.Component {
     const input = (
       <Input
         dropdown
+        name={ this.props.name }
         onClick={ this.onInputClick }
         onKeyDown={ this.onKeyDown }
         onChange={ e => this.setState({ inputValue: e.target.value }) }

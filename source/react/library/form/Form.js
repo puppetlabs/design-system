@@ -107,10 +107,12 @@ class Form extends React.Component {
     });
 
     return (
-      <div className={ className }>
-        { children }
+      <form className={ className }>
+        <fieldset className="rc-form-fields">
+          { children }
+        </fieldset>
         { actions }
-      </div>
+      </form>
     );
   }
 }

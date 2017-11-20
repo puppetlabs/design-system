@@ -8,6 +8,12 @@
   }
 }
 
+.rc-form-fields {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
 .rc-form-field {
   .rc-form-field-label {
     color: $reflect-form-label-color;
@@ -27,6 +33,7 @@
 .rc-form-actions {
   display: flex;
   justify-content: flex-end;
+  margin-top: $reflect-form-field-margin;
 }
 
 .rc-form-field:hover {

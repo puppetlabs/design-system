@@ -104,6 +104,7 @@ class Input extends React.Component {
       disabled: this.props.disabled,
       readOnly: this.props.readonly,
       value: this.props.value,
+      id: this.props.name,
       name: this.props.name,
       onKeyUp: this.props.onKeyUp,
       type: this.props.type,
