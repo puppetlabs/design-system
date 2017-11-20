@@ -10,6 +10,7 @@ const propTypes = {
   padding: React.PropTypes.bool,
   closeButton: React.PropTypes.bool,
   anchor: React.PropTypes.string,
+  onOpen: React.PropTypes.func,
   onClose: React.PropTypes.func,
   target: React.PropTypes.object,
   children: React.PropTypes.any,
@@ -43,6 +44,7 @@ class Popover extends React.Component {
     };
 
     this.onClick = this.onClick.bind(this);
+    this.onOpen = this.onOpen.bind(this);
     this.onClose = this.onClose.bind(this);
     this.close = this.close.bind(this);
     this.onResize = debounce(this.onResize.bind(this), 250);
@@ -103,7 +105,13 @@ class Popover extends React.Component {
     e.preventDefault();
     e.stopPropagation();
 
-    this.setState({ open: !this.state.open });
+    this.setState({ open: !this.state.open }, this.onOpen);
+  }
+
+  onOpen() {
+    if (this.state.open && this.props.onOpen) {
+      this.props.onOpen();
+    }
   }
 
   onClose() {

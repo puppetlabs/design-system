@@ -13,6 +13,7 @@ const propTypes = {
   onApply: React.PropTypes.func,
   target: React.PropTypes.object,
   width: React.PropTypes.string,
+  onOpen: React.PropTypes.func,
   onClose: React.PropTypes.func,
   size: React.PropTypes.string,
   selected: React.PropTypes.oneOfType([
@@ -40,10 +41,17 @@ class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
 
+    this.onOpen = this.onOpen.bind(this);
     this.onClose = this.onClose.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onApply = this.onApply.bind(this);
     this.onClosePopover = this.onClosePopover.bind(this);
+  }
+
+  onOpen() {
+    if (this.props.onOpen) {
+      this.props.onOpen();
+    }
   }
 
   onClose() {
@@ -143,6 +151,7 @@ class DropdownMenu extends React.Component {
         ref={ (c) => { this.popover = c; } }
         className={ className }
         target={ this.props.target }
+        onOpen={ this.onOpen }
         onClose={ this.onClose }
         margin={ this.props.margin }
         size={ this.props.size }
