@@ -54,17 +54,12 @@ class TooltipStickyArea extends React.Component {
   }
 
   renderTooltip() {
-    if (!this.child) {
+    if (!this.elem) {
       return null;
     }
 
     return (
-      <Tooltip
-        sticky
-        target={ this.child }
-        anchor="bottom"
-        onClose={ this.onClose }
-      >
+      <Tooltip sticky target={ this.elem } anchor="bottom" onClose={ this.onClose }>
         { this.props.tooltip }
       </Tooltip>
     );
@@ -72,7 +67,6 @@ class TooltipStickyArea extends React.Component {
 
   render() {
     const tooltip = this.renderTooltip();
-    const children = React.cloneElement(this.props.children, { ref: (c) => { this.child = c; } });
 
     return (
       <div
@@ -83,7 +77,7 @@ class TooltipStickyArea extends React.Component {
         <FadeInAndOut in={ this.state.open }>
           { tooltip }
         </FadeInAndOut>
-        { children }
+        { this.props.children }
       </div>
     );
   }

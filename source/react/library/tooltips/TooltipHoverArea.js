@@ -40,7 +40,7 @@ class TooltipHoverArea extends React.Component {
     }
   }
 
-  onMouseOver(e) {
+  onMouseOver() {
     this.setState({ open: true });
   }
 
@@ -49,12 +49,12 @@ class TooltipHoverArea extends React.Component {
   }
 
   renderTooltip() {
-    if (!this.child) {
+    if (!this.elem) {
       return null;
     }
 
     return (
-      <Tooltip target={ this.child } anchor={ this.props.anchor }>
+      <Tooltip target={ this.elem } anchor={ this.props.anchor }>
         { this.props.tooltip }
       </Tooltip>
     );
@@ -62,7 +62,6 @@ class TooltipHoverArea extends React.Component {
 
   render() {
     const tooltip = this.renderTooltip();
-    const children = React.cloneElement(this.props.children, { ref: (c) => { this.child = c; } });
 
     return (
       <div
@@ -70,13 +69,13 @@ class TooltipHoverArea extends React.Component {
         role={ this.onClick ? 'button' : null }
         onClick={ this.onClick }
         onMouseEnter={ this.onMouseOver }
-        onMouseOut={ this.onMouseOut }
+        onMouseLeave={ this.onMouseOut }
         ref={ (c) => { this.elem = c; } }
       >
         <FadeInAndOut in={ this.state.open }>
           { tooltip }
         </FadeInAndOut>
-        { children }
+        { this.props.children }
       </div>
     );
   }
