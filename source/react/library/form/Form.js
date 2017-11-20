@@ -6,14 +6,18 @@ import FormField from './FormField';
 
 const propTypes = {
   className: React.PropTypes.string,
+  onChange: React.PropTypes.func,
   inline: React.PropTypes.bool,
   children: React.PropTypes.any,
   onSubmit: React.PropTypes.func,
   submittable: React.PropTypes.bool,
+  validator: React.PropTypes.func,
 };
 
 const defaultProps = {
+  onChange: () => {},
   onSubmit: () => {},
+  validator: () => {},
   className: '',
 };
 
@@ -25,7 +29,9 @@ const getValues = (children) => {
   });
 
   return values;
-}
+};
+
+const validate = (validator, values) => validator(values) || {};
 
 /**
  * `Form` is a container component for rendering forms.
@@ -36,7 +42,10 @@ class Form extends React.Component {
 
     const defaultValues = getValues(props.children);
 
-    this.state = defaultValues;
+    this.state = {
+      values: defaultValues,
+      valid: false,
+    };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -48,13 +57,19 @@ class Form extends React.Component {
 
   onChange(name) {
     return (value) => {
-      this.setState({ [name]: value });
+      const newState = Object.assign({}, this.state);
+      newState.values[name] = value;
+      newState.valid = Object.keys(validate(this.props.validator, newState.values)).length === 0;
+
+      this.setState(newState, () => {
+        this.props.onChange(this.state.values, this.state.valid);
+      });
     };
   }
 
   renderChildren() {
     return React.Children.map(this.props.children, child => React.cloneElement(child, {
-      value: this.state[child.props.name],
+      value: this.state.values[child.props.name],
       onChange: this.onChange(child.props.name),
     }));
   }
@@ -64,7 +79,12 @@ class Form extends React.Component {
 
     if (this.props.submittable) {
       jsx.push(
-        <Button key="submit" onClick={ this.onSubmit }>Submit</Button>
+        <Button
+          key="submit"
+          disabled={ !this.state.valid }
+          onClick={ this.onSubmit }
+          label="submit"
+        />,
       );
     }
 

@@ -53,12 +53,33 @@ const options = [
 </Form>
 ```
 
-## Inline form
+## Inline form with validation
+
+You must fill out the various fields for the form to be submittable.
 
 ```
+const validator = (values) => {
+  errors = {};
+
+  if (!values.firstName) {
+    errors.firstName = 'You must supply a first name';
+  }
+
+  if (!values.lastName) {
+    errors.lastName = 'You must supply a last name';
+  }
+
+  if (!values.cheese) {
+    errors.cheese = 'Come on, everyone likes cheese.';
+  }
+
+  return errors;
+};
+
 <Form
   inline
   submittable
+  validator={ validator }
   onSubmit={ (values) => { alert(`submitted ${JSON.stringify(values)}`) } }
 >
   <Form.Field
