@@ -1,13 +1,15 @@
 ```
 <Form>
   <Form.Field
-    control={ Input }
+    type="input"
+    name="firstName"
     label="First name"
     placeholder="Enter your first name..."
     description="Please enter your first name"
   />
   <Form.Field
-    control={ Input }
+    type="input"
+    name="lastName"
     label="Last name"
     placeholder="Enter your last name..."
     description="Please enter your last name"
@@ -20,7 +22,7 @@ Form displaying an input with an error:
 ```
 <Form>
   <Form.Field
-    control={ Input }
+    type="input"
     label="name"
     error="This name is already taken"
     value="Jeff"
@@ -41,7 +43,7 @@ const options = [
 
 <Form>
   <Form.Field
-    control={ Select }
+    type="select"
     label="State"
     description="Select a state"
     options={ options }
@@ -54,19 +56,19 @@ const options = [
 ```
 <Form inline>
   <Form.Field
-    control={ Input }
+    type="input"
     label="First name"
     placeholder="Enter your first name..."
     description="Please enter your first name"
   />
   <Form.Field
-    control={ Input }
+    type="input"
     label="Last name"
     placeholder="Enter your last name..."
     description="Please enter your last name"
   />
   <Form.Field
-    control={ Toggle }
+    type="toggle"
     label="Likes cheese"
   />
 </Form>

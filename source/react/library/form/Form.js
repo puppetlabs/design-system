@@ -16,17 +16,40 @@ const defaultProps = {
 /**
  * `Form` is a container component for rendering forms.
  */
-const Form = (props) => {
-  const className = classnames('rc-form', props.className, {
-    'rc-form-inline': props.inline,
-  });
+class Form extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className={ className }>
-      { props.children }
-    </div>
-  );
-};
+    this.state = {};
+
+    this.onChange = this.onChange.bind(this);
+  }
+
+  onChange(name) {
+    return (value) => {
+      this.setState({ [name]: value });
+    };
+  }
+
+  renderChildren() {
+    return React.Children.map(this.props.children, child => React.cloneElement(child, {
+      onChange: this.onChange(child.props.name),
+    }));
+  }
+
+  render() {
+    const children = this.renderChildren();
+    const className = classnames('rc-form', this.props.className, {
+      'rc-form-inline': this.props.inline,
+    });
+
+    return (
+      <div className={ className }>
+        { children }
+      </div>
+    );
+  }
+}
 
 Form.propTypes = propTypes;
 Form.defaultProps = defaultProps;
