@@ -2,7 +2,7 @@
   position: absolute;
 }
 
-.rc-tooltip-hover-area {
+.rc-tooltip-area {
   display: inline-block;
 }
 
@@ -12,6 +12,7 @@
   color: $reflect-tooltip-hint-color;
   display: inline;
   font-size: $reflect-tooltip-hint-font-size;
+  max-width: $reflect-tooltip-hint-max-width;
   padding: $reflect-tooltip-hint-padding;
   position: absolute;
   z-index: $reflect-tooltip-hint-elevation;
@@ -22,6 +23,34 @@
     height: 0;
     position: absolute;
     width: 0;
+  }
+
+  &:hover .rc-tooltip-close {
+    visibility: visible;
+  }
+}
+
+.rc-tooltip-close {
+  align-items: center;
+  background: $reflect-tooltip-hint-close-bg;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  height: 16px;
+  justify-content: center;
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  visibility: hidden;
+  width: 16px;
+
+  .rc-icon {
+    fill: $reflect-tooltip-hint-color;
+    fill-opacity: 0.5;
+  }
+
+  &:hover .rc-icon {
+    fill-opacity: 1;
   }
 }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Tooltip from './Tooltip';
+import FadeInAndOut from '../FadeInAndOut';
 
 const propTypes = {
   onClick: React.PropTypes.func,
@@ -48,6 +49,10 @@ class TooltipHoverArea extends React.Component {
   }
 
   renderTooltip() {
+    if (!this.elem) {
+      return null;
+    }
+
     return (
       <Tooltip target={ this.elem } anchor={ this.props.anchor }>
         { this.props.tooltip }
@@ -56,24 +61,22 @@ class TooltipHoverArea extends React.Component {
   }
 
   render() {
-    let tooltip = null;
-
-    if (this.state.open) {
-      tooltip = this.renderTooltip();
-    }
+    const tooltip = this.renderTooltip();
 
     return (
-      <span onClick={ this.onClick }>
-        { tooltip }
-        <div
-          className="rc-tooltip-hover-area"
-          onMouseOver={ this.onMouseOver }
-          onMouseOut={ this.onMouseOut }
-          ref={ (c) => { this.elem = c; } }
-        >
-          { this.props.children }
-        </div>
-      </span>
+      <div
+        className="rc-tooltip-area rc-tooltip-area-hover"
+        role={ this.onClick ? 'button' : null }
+        onClick={ this.onClick }
+        onMouseEnter={ this.onMouseOver }
+        onMouseLeave={ this.onMouseOut }
+        ref={ (c) => { this.elem = c; } }
+      >
+        <FadeInAndOut in={ this.state.open }>
+          { tooltip }
+        </FadeInAndOut>
+        { this.props.children }
+      </div>
     );
   }
 }

@@ -4,6 +4,7 @@
     "react"
   ],
   "plugins": [
-    "react-require"
+    "react-require",
+    "transform-object-rest-spread"
   ]
 }

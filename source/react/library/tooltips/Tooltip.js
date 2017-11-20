@@ -4,14 +4,18 @@ import portal from '../portal';
 
 import TooltipHoverArea from './TooltipHoverArea';
 import TooltipStickyArea from './TooltipStickyArea';
+import Icon from '../Icon';
 
 const propTypes = {
+  className: React.PropTypes.string,
+  anchor: React.PropTypes.string,
+  sticky: React.PropTypes.bool,
+  style: React.PropTypes.object,
   target: React.PropTypes.oneOfType([
     React.PropTypes.object,
     React.PropTypes.element,
   ]).isRequired,
-  className: React.PropTypes.string,
-  anchor: React.PropTypes.string,
+  onClose: React.PropTypes.func,
   children: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
@@ -21,10 +25,13 @@ const propTypes = {
 const CARAT_HEIGHT = 8;
 
 const defaultProps = {
+  style: {},
   anchor: 'right',
 };
 
 const getDefaultState = () => ({
+  onClose: null,
+  sticky: false,
   tooltipPosition: { },
   caratPosition: { },
 });
@@ -47,8 +54,8 @@ class Tooltip extends React.Component {
     window.addEventListener('resize', this.onResize);
   }
 
-  componentDidUpdate(newProps) {
-    if (newProps.anchor !== this.props.anchor) {
+  componentDidUpdate(prevProps) {
+    if (prevProps.anchor !== this.props.anchor) {
       this.setPosition();
     }
   }
@@ -107,11 +114,9 @@ class Tooltip extends React.Component {
     const scrollWidth = this.getScrollbarWidth();
     const tooltipWH = this.getTooltipWH();
     const tooltipWidth = tooltipWH.w;
-    const tooltipHeight = tooltipWH.h;
-
     const newState = getDefaultState();
 
-    newState.tooltipPosition.top = elPosition.bottom + (tooltipHeight / 2) + offsetY;
+    newState.tooltipPosition.top = elPosition.bottom + (CARAT_HEIGHT * 2) + offsetY;
     newState.tooltipPosition.left =
       ((elPosition.left + (elPosition.width / 2)) - (tooltipWidth / 2)) + scrollWidth;
 
@@ -134,16 +139,37 @@ class Tooltip extends React.Component {
     return { w, h };
   }
 
+  renderCloseButton() {
+    let jsx;
+
+    if (this.props.sticky && this.props.onClose) {
+      jsx = (
+        <div role="button" className="rc-tooltip-close" onClick={ this.props.onClose }>
+          <Icon height="8px" width="8px" type="close" />
+        </div>
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
     const { tooltipPosition, caratPosition } = this.state;
-    const { anchor } = this.props;
+    const { anchor, style } = this.props;
     const className = classnames('rc-tooltip', `rc-tooltip-position-${anchor}`);
+    const closeButton = this.renderCloseButton();
+
+    const styles = {
+      ...tooltipPosition,
+      ...style,
+    };
 
     return (
-      <div className={ className } style={ tooltipPosition } ref={ c => { this.tooltip = c; } }>
+      <div className={ className } style={ styles } ref={ c => { this.tooltip = c; } }>
         <div className="rc-tooltip-scrollbar-measurer" ref={ c => { this.scrollMeasurer = c; } } />
         <div className="rc-tooltip-carat" style={ caratPosition } />
         { this.props.children }
+        { closeButton }
       </div>
     );
   }

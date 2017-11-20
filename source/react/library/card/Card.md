@@ -112,6 +112,27 @@ const actions = [
 </Card>
 ```
 
+Card with action menu in error state
+```
+const menuOptions = [
+  { value: 'I\'m a test value!', id: 0 },
+  { value: 'Me too!', id: 1 },
+  { value: 'Me three...', id: 2 },
+];
+
+const actions = [
+  <CardActionsMenu
+    key="menu-1"
+    message="There is an error in this card"
+    menuOptions={ menuOptions }
+  />,
+];
+
+<Card>
+  <CardHeader title="I am a title" actions={ actions } />
+</Card>
+```
+
 Card with no title, subtitle, or controls, but with actions and description
 ```
 const menuOptions = [
