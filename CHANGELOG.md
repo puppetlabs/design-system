@@ -1,3 +1,7 @@
+# 0.3.3
+
+* Improved tooltips include the ability to close sticky ones
+
 # 0.3.2
 
 * Better browser support for Select component
