@@ -12,6 +12,7 @@ const propTypes = {
   onSubmit: React.PropTypes.func,
   submittable: React.PropTypes.bool,
   validator: React.PropTypes.func,
+  errors: React.PropTypes.object,
 };
 
 const defaultProps = {
@@ -19,6 +20,7 @@ const defaultProps = {
   onSubmit: () => {},
   validator: () => {},
   className: '',
+  errors: {},
 };
 
 const getValues = (children) => {
@@ -69,6 +71,7 @@ class Form extends React.Component {
 
   renderChildren() {
     return React.Children.map(this.props.children, child => React.cloneElement(child, {
+      error: child.props.error || this.props.errors[child.props.name],
       value: this.state.values[child.props.name],
       onChange: this.onChange(child.props.name),
     }));

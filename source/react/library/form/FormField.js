@@ -143,8 +143,8 @@ class FormField extends React.Component {
     return (
       <div className={ className }>
         <div className="rc-form-field-content">
-        { label }
-        { element }
+          { label }
+          { element }
         </div>
         { description }
       </div>

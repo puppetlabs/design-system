@@ -1,4 +1,10 @@
 ```
+const movieOptions = [
+  'American Treasure',
+  'Ghost Rider',
+  'Kick-Ass',
+];
+
 <Form>
   <Form.Field
     type="input"
@@ -11,6 +17,7 @@
     type="input"
     name="lastName"
     label="Last name"
+    value="Ice cream"
     elementProps={ { placeholder: 'Enter your first name...' } }
     description="Please enter your last name"
   />
@@ -19,6 +26,7 @@
     type="select"
     name="favoriteMovie"
     label="favorite movie"
+    elementProps={ { options: movieOptions } }
     description="What is your favorite movie?"
   />
 </Form>
@@ -27,14 +35,25 @@
 Form displaying an input with an error:
 
 ```
-<Form>
+const errors = {
+  name: 'Name is taken',
+  age: 'You are not old enough!',
+};
+
+<Form errors={ errors }>
   <Form.Field
     type="input"
     name="name"
     label="name"
-    error="This name is already taken"
-    value="Jeff"
+    value="John"
     description="Please enter your name"
+  />
+  <Form.Field
+    inline
+    type="input"
+    name="age"
+    label="age"
+    value={ 5 }
   />
 </Form>
 ```
