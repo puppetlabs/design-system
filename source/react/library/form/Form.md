@@ -4,15 +4,22 @@
     type="input"
     name="firstName"
     label="First name"
-    placeholder="Enter your first name..."
+    elementProps={ { placeholder: 'Enter your first name...' } }
     description="Please enter your first name"
   />
   <Form.Field
     type="input"
     name="lastName"
     label="Last name"
-    placeholder="Enter your last name..."
+    elementProps={ { placeholder: 'Enter your first name...' } }
     description="Please enter your last name"
+  />
+  <Form.Field
+    inline
+    type="select"
+    name="favoriteMovie"
+    label="favorite movie"
+    description="What is your favorite movie?"
   />
 </Form>
 ```
@@ -48,7 +55,7 @@ const options = [
     name="state"
     label="State"
     description="Select a state"
-    options={ options }
+    elementProps={ { options } }
   />
 </Form>
 ```

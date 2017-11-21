@@ -9,9 +9,9 @@
 }
 
 .rc-form-fields {
-  padding: 0;
-  margin: 0;
   border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .rc-form-field {
@@ -56,13 +56,24 @@
   }
 }
 
-.rc-form-inline {
+.rc-form-field-inline {
+  align-items: center;
+  width: 100%;
+}
+
+.rc-form-inline,
+.rc-form-field-inline {
   .rc-form-field-label {
     flex-grow: 0.5;
     padding-bottom: 0;
   }
 
   .rc-form-field-content {
+    align-items: center;
+    display: flex;
+  }
+
+  .rc-form-field-element {
     display: flex;
     flex-grow: 3;
     justify-content: flex-end;
@@ -72,14 +83,9 @@
     margin: 0;
   }
 
-  .rc-form-field {
-    align-items: center;
-    display: flex;
-    width: 100%;
-  }
-
   .rc-form-field-description {
-    display: none;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 

@@ -78,7 +78,6 @@ class Select extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (shouldComponentUpdate(newProps.options, this.state.options)) {
-      // TODO: conditionally do this
       this.setState({ options: formatOptions(newProps.options) });
     }
   }

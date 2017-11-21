@@ -23,6 +23,7 @@ const propTypes = {
   label: React.PropTypes.string,
   className: React.PropTypes.string,
   description: React.PropTypes.string,
+  elementProps: React.PropTypes.object,
 };
 
 const defaultProps = {
@@ -85,6 +86,7 @@ class FormField extends React.Component {
   }
 
   renderElement() {
+    const elementProps = this.props.elementProps;
     const type = this.props.type;
     let jsx = null;
 
@@ -94,7 +96,7 @@ class FormField extends React.Component {
           <Select
             name={ this.props.name }
             onSelect={ this.onChange }
-            options={ this.props.options }
+            { ...elementProps }
           />
         );
         break;
@@ -104,6 +106,7 @@ class FormField extends React.Component {
             name={ this.props.name }
             onChange={ this.onChange }
             value={ this.props.value || '' }
+            { ...elementProps }
           />
         );
         break;
@@ -113,6 +116,7 @@ class FormField extends React.Component {
             name={ this.props.name }
             onChange={ this.onChange }
             checked={ !!this.props.value }
+            { ...elementProps }
           />
         );
         break;
@@ -121,7 +125,7 @@ class FormField extends React.Component {
     }
 
     return (
-      <div className="rc-form-field-content">
+      <div className="rc-form-field-element">
         { jsx }
       </div>
     );
@@ -132,13 +136,16 @@ class FormField extends React.Component {
     const label = this.renderLabel();
     const description = this.renderDescription();
     const className = classnames('rc-form-field', this.props.className, {
+      'rc-form-field-inline': this.props.inline,
       'rc-form-field-error': this.props.error,
     });
 
     return (
       <div className={ className }>
+        <div className="rc-form-field-content">
         { label }
         { element }
+        </div>
         { description }
       </div>
     );
