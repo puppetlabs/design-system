@@ -2,6 +2,8 @@
   display: inline-block;
 }
 
+// https://github.com/stylelint/stylelint/issues/331#issuecomment-127043187
+/* stylelint-disable property-no-vendor-prefix */
 .rc-checkbox {
   -webkit-appearance: none;
   -moz-appearance: none;

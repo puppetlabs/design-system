@@ -44,7 +44,7 @@ class Checkbox extends React.Component {
         <input
           type="checkbox"
           onChange={ this.onChange }
-          defaultChecked={ this.state.checked }
+          checked={ this.state.checked }
           className={ className }
         />
         <Icon
