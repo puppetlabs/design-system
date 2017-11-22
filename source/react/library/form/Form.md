@@ -29,6 +29,14 @@ const movieOptions = [
     elementProps={ { options: movieOptions } }
     description="What is your favorite movie?"
   />
+  <Form.Field
+    inline
+    type="checkbox"
+    name="notARobot"
+    label="Not a robot"
+    description="Are you a human?"
+    value={ true }
+  />
 </Form>
 ```
 

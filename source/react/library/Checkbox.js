@@ -4,12 +4,14 @@ import classnames from 'classnames';
 import Icon from './Icon';
 
 const propTypes = {
-  label: React.PropTypes.string,
+  name: React.PropTypes.string,
   checked: React.PropTypes.bool,
+  onChange: React.PropTypes.func,
 };
 
 const defaultProps = {
   checked: false,
+  onChange: () => {},
 };
 
 /**
@@ -22,7 +24,6 @@ class Checkbox extends React.Component {
   constructor(props) {
     super(props);
 
-
     this.state = {
       checked: props.checked,
     };
@@ -31,7 +32,9 @@ class Checkbox extends React.Component {
   }
 
   onChange() {
-    this.setState({ checked: !this.state.checked });
+    const checked = !this.state.checked;
+
+    this.setState({ checked }, () => this.props.onChange(checked));
   }
 
   render() {
@@ -46,6 +49,8 @@ class Checkbox extends React.Component {
           onChange={ this.onChange }
           checked={ this.state.checked }
           className={ className }
+          value={ this.props.name }
+          id={ this.props.name }
         />
         <Icon
           onClick={ this.onChange }

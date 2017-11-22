@@ -4,21 +4,24 @@ import classnames from 'classnames';
 import Input from '../Input';
 import Select from '../select/Select';
 import Switch from '../Switch';
+import Checkbox from '../Checkbox';
 
 const supportedTypes = [
   'input',
   'select',
   'switch',
+  'checkbox',
 ];
 
 const propTypes = {
   type: React.PropTypes.oneOf(supportedTypes).isRequired,
   onChange: React.PropTypes.func.isRequired,
   name: React.PropTypes.string.isRequired,
-  value: React.PropTypes.oneOfType(
+  value: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.bool,
-  ),
+  ]),
+  inline: React.PropTypes.bool,
   error: React.PropTypes.string,
   label: React.PropTypes.string,
   className: React.PropTypes.string,
@@ -46,9 +49,6 @@ class FormField extends React.Component {
       case 'switch':
         value = val.target.checked;
         break;
-      case 'select':
-        value = value;
-        break;
       default:
         break;
     }
@@ -61,7 +61,7 @@ class FormField extends React.Component {
 
     if (this.props.label) {
       jsx = (
-        <label htmlFor={ this.props.name} className="rc-form-field-label">
+        <label htmlFor={ this.props.name } className="rc-form-field-label">
           { this.props.label }
         </label>
       );
@@ -113,6 +113,16 @@ class FormField extends React.Component {
       case 'switch':
         jsx = (
           <Switch
+            name={ this.props.name }
+            onChange={ this.onChange }
+            checked={ !!this.props.value }
+            { ...elementProps }
+          />
+        );
+        break;
+      case 'checkbox':
+        jsx = (
+          <Checkbox
             name={ this.props.name }
             onChange={ this.onChange }
             checked={ !!this.props.value }
