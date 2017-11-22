@@ -36,6 +36,7 @@ import BlankSlate from './react/library/BlankSlate';
 import Panel from './react/library/Panel';
 import Select from './react/library/select/Select';
 import Form from './react/library/form';
+import Checkbox from './react/library/Checkbox';
 
 export {
   Button,
@@ -76,4 +77,5 @@ export {
   DatePicker,
   Select,
   Form,
+  Checkbox,
 };

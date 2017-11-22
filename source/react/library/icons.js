@@ -76,6 +76,13 @@ const icons = {
     ),
   },
 
+  check: {
+    viewBox: '0 0 16 14',
+    svg: (
+      <polygon id="path-1" points="5.6 9.6 2.4 6.4 0 8.8 5.6 14.4 16 4 13.6 1.6"></polygon>
+    ),
+  },
+
   // Half of the code icon. group: web, filename: code.svg
   'chevron-down': {
     viewBox: '0 0 30 19',
