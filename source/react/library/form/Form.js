@@ -64,7 +64,7 @@ class Form extends React.Component {
       newState.valid = Object.keys(validate(this.props.validator, newState.values)).length === 0;
 
       this.setState(newState, () => {
-        this.props.onChange(this.state.values, this.state.valid);
+        this.props.onChange(name, this.state.values, this.state.valid);
       });
     };
   }

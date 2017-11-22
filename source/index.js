@@ -35,6 +35,7 @@ import Accordion from './react/library/accordion';
 import BlankSlate from './react/library/BlankSlate';
 import Panel from './react/library/Panel';
 import Select from './react/library/select/Select';
+import Form from './react/library/form';
 
 export {
   Button,
@@ -74,4 +75,5 @@ export {
   Panel,
   DatePicker,
   Select,
+  Form,
 };
