@@ -1,6 +1,7 @@
 import { expect } from 'chai';
 import YScale from '../../../source/js/lib/scales/YScale';
 import DataSet from '../../../source/js/lib/DataSet';
+import helpers from '../../../source/js/helpers/charting';
 import DataGenerator from '../../../styleguide/js/helpers';
 
 describe('YScale', () => {
@@ -58,25 +59,26 @@ describe('YScale', () => {
     });
 
     it('should create a domain with the max value of all the series', () => {
-      const yScale = new YScale(seriesData, {}, 'stacked', dimensions);
+      const stackedData = helpers.stackData(seriesData);
+      const yScale = new YScale(stackedData, {}, 'stacked', dimensions);
       const y = yScale.generate();
 
       const stackedMax = {};
 
-      randomData.series.forEach((s) => {
+      stackedData.forEach((s) => {
         s.data.forEach((d, i) => {
           if (stackedMax[i] === undefined) {
             stackedMax[i] = 0;
           }
 
-          stackedMax[i] += d;
+          stackedMax[i] += d.y;
         });
       });
 
       const maxValues = Object.keys(stackedMax).map(key => (stackedMax[key]));
 
       let max = Math.max(...maxValues);
-      max /= .95;
+      max /= 0.95;
 
       expect(y.domain()[1]).to.eql(max);
     });

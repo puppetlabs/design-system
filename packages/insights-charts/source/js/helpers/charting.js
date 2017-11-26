@@ -27,22 +27,84 @@ const helpers = {
     return false;
   },
 
-  getColumnLength(options, dimensions, y, d) {
-    const isStacked = options.layout === 'stacked';
-    const isHorizontal = options.axis.x.orientation === 'left' || options.axis.x.orientation === 'right';
-    const height = dimensions.height;
-    const min = y.domain()[0];
-    let val = 0;
+  stackData(data) {
+    const columns = {};
 
-    if (isStacked) {
-      val = min < 0 ? Math.abs(y(d.y || 0) - y(0)) : Math.abs(y(d.y0) - y(d.y0 + d.y));
-    } else if (isHorizontal) {
-      val = min < 0 ? Math.abs(y(d.y || 0) - y(0)) : y(d.y === null ? min : d.y);
+    return data.map((s) => {
+      const yIndex = s.axis !== undefined ? s.axis : 0;
+
+      if (typeof columns[yIndex] === 'undefined') {
+        columns[yIndex] = {};
+      }
+
+      s.data.map((d) => {
+        if (typeof columns[yIndex][d.x] === 'undefined') {
+          columns[yIndex][d.x] = {
+            y0Positive: d.y0,
+            y0Negative: d.y0,
+          };
+        }
+
+        if (d.y >= 0) {
+          d.y0 = columns[yIndex][d.x].y0Positive;
+          columns[yIndex][d.x].y0Positive += d.y || 0;
+        } else if (d.y < 0) {
+          d.y0 = columns[yIndex][d.x].y0Negative;
+          columns[yIndex][d.x].y0Negative += d.y || 0;
+        }
+
+        return d;
+      });
+
+      return s;
+    });
+  },
+
+  getColumnLength(options, y, d, yAxisIndex = 0) {
+    const isYReversed = options.axis.y[yAxisIndex].reversed;
+    const isStacked = options.layout === 'stacked';
+    const axisMin = isYReversed ? y.domain()[1] : y.domain()[0];
+
+    if (d.y === null) {
+      return 0;
+    }
+    const datumMin = d.y0;
+    const datumMax = d.y;
+
+    const columnMin = datumMin < axisMin ? axisMin : datumMin;
+    const lowValue = y(columnMin);
+    const highValue = isStacked ? y(columnMin + datumMax) : y(datumMax);
+
+    return Math.abs(highValue - lowValue);
+  },
+
+  getYPosition(options, y, d, yAxisIndex = 0) {
+    const orientation = options.axis.x.orientation;
+    const isYReversed = options.axis.y[yAxisIndex].reversed;
+    const isStacked = options.layout === 'stacked';
+    const isRotated = orientation === 'left' || orientation === 'right';
+    const axisMin = isYReversed ? y.domain()[1] : y.domain()[0];
+
+    const datumMin = d.y0;
+    const datumMax = d.y;
+
+    const columnMin = datumMin < axisMin ? axisMin : datumMin;
+
+    let yPos;
+
+    // if the chart is a column chart then the yPos is pixels from the top
+    // if the chart is a bar chart then the yPos is pixels from the left
+    if ((datumMax > 0 && !isRotated) || (datumMax < 0 && isRotated)) {
+      yPos = isStacked ? y(columnMin + datumMax) : y(datumMax);
     } else {
-      val = min < 0 ? Math.abs(y(d.y || 0) - y(0)) : height - y(d.y === null ? min : d.y);
+      yPos = y(columnMin);
     }
 
-    return val;
+    if (isYReversed) {
+      yPos -= this.getColumnLength(options, y, d, yAxisIndex);
+    }
+
+    return yPos;
   },
 
   getFormattedValue(optionFormatter, value) {
@@ -67,7 +129,7 @@ const helpers = {
     return stackable;
   },
 
-  getPlotOptions(type, options, data) {
+  getPlotOptions(type, options, data = []) {
     const stackable = this.isStackable(type);
     const plotOptions = options && options[type] ? clone(options[type]) : {};
 

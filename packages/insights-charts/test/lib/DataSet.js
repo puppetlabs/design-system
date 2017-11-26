@@ -1,5 +1,6 @@
 import { expect } from 'chai';
 import DataSet from '../../source/js/lib/DataSet';
+import helpers from '../../source/js/helpers/charting';
 
 const seriesDataFixture = {
   categories: [
@@ -51,12 +52,14 @@ describe('DataSet', () => {
       const dataset = new DataSet(seriesDataFixture);
       const series = dataset.getSeries();
 
-      series.forEach((s, seriesIndex) => {
+      const data = helpers.stackData(series);
+
+      data.forEach((s, seriesIndex) => {
         const prevIndex = seriesIndex - 1;
         const seriesCount = seriesIndex + 1;
 
         s.data.forEach((d, datumIndex) => {
-          const prevDatum = series[prevIndex] ? series[prevIndex].data[datumIndex] : { y: 0 };
+          const prevDatum = data[prevIndex] ? data[prevIndex].data[datumIndex] : { y: 0 };
           const categoryCount = datumIndex + 1;
 
           expect(d.x).to.equal(`category ${categoryCount}`);

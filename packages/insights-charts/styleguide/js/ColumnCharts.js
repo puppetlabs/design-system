@@ -33,7 +33,7 @@ class ColumnCharts extends React.Component {
       series: [
         {
           label: 'Profit',
-          data: getRandomData(dataPoints, { sparseness }),
+          data: getRandomData(dataPoints, { min: -10000000000, modifier: 10000, negatives: true, sparseness }),
         },
       ],
     };
@@ -56,6 +56,7 @@ class ColumnCharts extends React.Component {
         y: [{
           ticks: 4,
           title: 'Left axis',
+          reversed: true,
         }, {
           ticks: 4,
           orientation: 'right',

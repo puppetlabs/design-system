@@ -54,10 +54,11 @@ class BarCharts extends React.Component {
           ticks: 4,
           title: 'Left axis',
           orientation: 'bottom',
+          reversed: true,
         }],
         x: {
           title: 'I am a x axis title',
-          orientation: 'left',
+          orientation: 'right',
         },
       },
       grid: {

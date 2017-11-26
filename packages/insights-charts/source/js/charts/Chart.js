@@ -8,7 +8,7 @@ class Chart {
     this.type = type;
     this.options = clone(options);
     this.options.type = type;
-    this.data = new DataSet(data, this.options, type);
+    this.data = new DataSet(data);
     this.dispatchers = dispatchers;
     this.id = id;
 

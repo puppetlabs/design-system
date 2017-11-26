@@ -12,6 +12,7 @@ import Tooltip from '../lib/Tooltip';
 import SeriesColumn from '../lib/series/SeriesColumn';
 import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
+import helpers from '../helpers/charting';
 
 class ColumnChart extends Chart {
   constructor({ elem, type, data, options, dispatchers, id }) {
@@ -65,10 +66,16 @@ class ColumnChart extends Chart {
     this.tooltip.render();
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
-      const data = this.data.getDataByYAxis(yAxisIndex);
+      let data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
         const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
+
+        if (plotOptions.layout === 'stacked') {
+          data = helpers.stackData(data);
+        }
+
+
         const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
 
@@ -171,11 +178,16 @@ class ColumnChart extends Chart {
     const x1 = this.xScale1.generate();
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
-      const data = this.data.getDataByYAxis(yAxisIndex);
+      let data = this.data.getDataByYAxis(yAxisIndex);
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
         const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
+
+        if (plotOptions.layout === 'stacked') {
+          data = helpers.stackData(data);
+        }
+
         const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
 
         if (yAxisIndex === 0) {

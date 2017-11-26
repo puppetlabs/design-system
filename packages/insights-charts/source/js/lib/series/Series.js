@@ -39,8 +39,9 @@ class Series {
   }
 
   getHiddenClass(d) {
-    const yMin = this.y.domain()[0];
-    const yMax = this.y.domain()[1];
+    const isReversed = this.options.axis.y[this.yAxisIndex].reversed;
+    const yMin = !isReversed ? this.y.domain()[0] : this.y.domain()[1];
+    const yMax = !isReversed ? this.y.domain()[1] : this.y.domain()[0];
     const layout = this.options.layout;
     let hidden;
 

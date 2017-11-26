@@ -1,3 +1,7 @@
+# 0.7.0
+
+* Now supporting reverse y axis on bar/column charts
+
 # 0.6.3
 
 * Fix an issue that occurs when the window is resized before the chart has rendered

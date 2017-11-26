@@ -38,11 +38,11 @@ class SeriesDataLabel extends Series {
   }
 
   getVisibility(d, node) {
-    const { options, dimensions, y } = this;
+    const { options, y } = this;
     let visibility = 'visible';
 
     if (options.type === 'column') {
-      const barLength = helpers.getColumnLength(options, dimensions, y, d);
+      const barLength = helpers.getColumnLength(options, y, d, this.yAxisIndex);
       const textRect = node.parentNode.getBBox();
       const labelLength = this.isHorizontal() ? textRect.width : textRect.height;
 
@@ -73,29 +73,34 @@ class SeriesDataLabel extends Series {
 
   getY(d) {
     const { y, options } = this;
+    const orientation = options.axis.x.orientation;
+    const isYAxisReversed = options.axis.y[this.yAxisIndex].reversed;
     const isStacked = options.layout === 'stacked';
+    const isRotated = orientation === 'left' || orientation === 'right';
     const isColumn = options.type === 'column';
+
+    const datumMin = d.y0;
+    const datumMax = d.y;
+
     let result;
 
     if (isStacked) {
-      if (d.y < 0 && d.y0 > 0) {
-        result = y(d.y);
-      } else {
-        result = y(d.y0 + (d.y || 0));
-      }
+      result = y(datumMin + datumMax);
     } else {
-      result = y(d.y === null ? y.domain()[0] : d.y);
+      result = y(datumMax);
     }
 
+    const dataLabelMargin = isYAxisReversed ? -DATA_LABEL_MARGIN : DATA_LABEL_MARGIN;
+
     if (
-      (d.y < 0 && !isColumn && !this.isHorizontal()) ||
-      (d.y >= 0 && !isColumn && this.isHorizontal()) ||
-      (d.y > 0 && isColumn && !this.isHorizontal()) ||
-      (d.y < 0 && isColumn && this.isHorizontal())
+      (d.y < 0 && !isColumn && !isRotated) ||
+      (d.y > 0 && !isColumn && isRotated) ||
+      (d.y > 0 && isColumn && !isRotated) ||
+      (d.y < 0 && isColumn && isRotated)
     ) {
-      result += DATA_LABEL_MARGIN;
+      result += dataLabelMargin;
     } else {
-      result -= DATA_LABEL_MARGIN;
+      result -= dataLabelMargin;
     }
 
     return result;
@@ -122,6 +127,7 @@ class SeriesDataLabel extends Series {
     const textRect = node.getBoundingClientRect();
     const isColumn = this.options.type === 'column';
     let anchor = 'middle';
+    const isYAxisReversed = this.options.axis.y[this.yAxisIndex].reversed;
     const leftEdge = this.dimensions.left + this.dimensions.margins.left;
     const rightEdge = this.dimensions.right - this.dimensions.margins.right;
 
@@ -137,6 +143,12 @@ class SeriesDataLabel extends Series {
       } else if (textRect.right >= rightEdge && (textRect.right - textRect.width) <= rightEdge) {
         anchor = 'end';
       }
+    }
+
+    if (isYAxisReversed && anchor === 'start') {
+      anchor = 'end';
+    } else if (isYAxisReversed && anchor === 'end') {
+      anchor = 'start';
     }
 
     return anchor;

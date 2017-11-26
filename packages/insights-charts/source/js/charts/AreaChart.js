@@ -15,6 +15,7 @@ import SeriesLine from '../lib/series/SeriesLine';
 import SeriesPoi from '../lib/series/SeriesPoi';
 import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
+import helpers from '../helpers/charting';
 
 class AreaChart extends Chart {
   constructor({ elem, type, data, options, dispatchers, id }) {
@@ -54,10 +55,14 @@ class AreaChart extends Chart {
     }
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
-      const data = this.data.getDataByYAxis(yAxisIndex);
+      let data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
         const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
+
+        if (plotOptions.layout === 'stacked') {
+          data = helpers.stackData(data);
+        }
 
         const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
@@ -176,11 +181,16 @@ class AreaChart extends Chart {
     }
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
-      const data = this.data.getDataByYAxis(yAxisIndex);
+      let data = this.data.getDataByYAxis(yAxisIndex);
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
         const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
+
+        if (plotOptions.layout === 'stacked') {
+          data = helpers.stackData(data);
+        }
+
         const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
 
         if (yAxisIndex === 0) {

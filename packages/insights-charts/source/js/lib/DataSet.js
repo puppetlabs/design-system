@@ -76,15 +76,14 @@ class DataSet {
 
   getSeries() {
     const categories = this.getCategories();
-    let series;
 
-    series = this.data.series.map((s, index) => {
+    const series = this.data.series.map((s, index) => {
       s.seriesIndex = index;
 
       s.data = s.data.map((d, i) => {
         const category = categories[i];
 
-        const datum = (typeof d === 'object' && d !== null ? d : { x: category.label, y: d });
+        const datum = (typeof d === 'object' && d !== null ? d : { x: category.label, y: d, y0: 0 });
 
         datum.seriesIndex = index;
         datum.categoryIndex = i;
@@ -99,41 +98,6 @@ class DataSet {
 
       return s;
     });
-
-    const setupStack = function (originalSeries) {
-      const columns = {};
-
-      originalSeries.forEach((s) => {
-        if (s.disabled !== true) {
-          const yIndex = s.axis !== undefined ? s.axis : 0;
-
-          if (typeof columns[yIndex] === 'undefined') {
-            columns[yIndex] = {};
-          }
-
-          s.data.forEach((d) => {
-            if (typeof columns[yIndex][d.x] === 'undefined') {
-              columns[yIndex][d.x] = {
-                y0Positive: 0,
-                y0Negative: 0,
-              };
-            }
-
-            if (d.y >= 0) {
-              d.y0 = columns[yIndex][d.x].y0Positive;
-              columns[yIndex][d.x].y0Positive += d.y || 0;
-            } else if (d.y < 0) {
-              d.y0 = columns[yIndex][d.x].y0Negative;
-              columns[yIndex][d.x].y0Negative += d.y || 0;
-            }
-          });
-        }
-      });
-
-      return originalSeries;
-    };
-
-    series = setupStack(series);
 
     this.seriesData = series;
 

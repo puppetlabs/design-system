@@ -15,12 +15,31 @@ import SeriesPoi from '../lib/series/SeriesPoi';
 import SeriesColumn from '../lib/series/SeriesColumn';
 import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
+import helpers from '../helpers/charting';
 
 class CombinationChart extends Chart {
   constructor({ elem, type, data, options, dispatchers, id }) {
     super({ elem, type, data, options, dispatchers, id });
 
     this.yScales = {};
+  }
+
+  getDataByTypes(data, types = []) {
+    const dataByType = {};
+    const plotOptions = {};
+
+    types.forEach((t) => {
+      if (dataByType[t] === undefined) {
+        dataByType[t] = data.filter(d => (d.type === t));
+        plotOptions[t] = this.getPlotOptions(t, dataByType[t]);
+
+        if (plotOptions[t].layout === 'stacked') {
+          dataByType[t] = helpers.stackData(dataByType[t]);
+        }
+      }
+    });
+
+    return dataByType;
   }
 
   render() {
@@ -56,6 +75,7 @@ class CombinationChart extends Chart {
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       const data = this.data.getDataByYAxis(yAxisIndex);
+
       let seriesColumn;
       let seriesColumnDataLabel;
       let seriesLine;
@@ -71,7 +91,9 @@ class CombinationChart extends Chart {
 
       if (data.length > 0) {
         const types = data.map(d => (d.type));
-        const yScale = new YScale(data, yOptions, null, dimensions, options);
+        const dataByType = this.getDataByTypes(data, types);
+
+        const yScale = new YScale(dataByType[types[0]], yOptions, null, dimensions, options);
         const y = yScale.generate();
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
@@ -89,12 +111,11 @@ class CombinationChart extends Chart {
           this.xScale1 = new XScale(groups, options, x1Dimensions);
           x1 = this.xScale1.generate();
 
-          const columnData = data.filter(d => (d.type === 'column'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('column', columnData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('column', dataByType.column));
           plotOptions.type = 'column';
 
           seriesColumn = new SeriesColumn(
-            columnData,
+            dataByType.column,
             dimensions,
             x,
             y,
@@ -108,7 +129,7 @@ class CombinationChart extends Chart {
           seriesColumn.render(svg);
 
           seriesColumnDataLabel = new SeriesDataLabel(
-            columnData,
+            dataByType.column,
             dimensions,
             x,
             y,
@@ -123,11 +144,10 @@ class CombinationChart extends Chart {
         }
 
         if (types.indexOf('scatter') >= 0) {
-          const scatterData = data.filter(d => (d.type === 'scatter'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('scatter', scatterData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('scatter', dataByType.scatter));
 
           seriesScatter = new SeriesPoi(
-            scatterData,
+            dataByType.scatter,
             dimensions,
             x,
             y,
@@ -140,7 +160,7 @@ class CombinationChart extends Chart {
           seriesScatter.render(svg);
 
           seriesScatterDataLabel = new SeriesDataLabel(
-            scatterData,
+            dataByType.scatter,
             dimensions,
             x,
             y,
@@ -154,11 +174,10 @@ class CombinationChart extends Chart {
         }
 
         if (types.indexOf('line') >= 0) {
-          const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('line', dataByType.line));
 
           seriesLine = new SeriesLine(
-            lineData,
+            dataByType.line,
             dimensions,
             x,
             y,
@@ -171,7 +190,7 @@ class CombinationChart extends Chart {
           seriesLine.render(svg);
 
           seriesLinePoi = new SeriesPoi(
-            lineData,
+            dataByType.line,
             dimensions,
             x,
             y,
@@ -184,7 +203,7 @@ class CombinationChart extends Chart {
           seriesLinePoi.render(svg);
 
           seriesLineDataLabel = new SeriesDataLabel(
-            lineData,
+            dataByType.line,
             dimensions,
             x,
             y,
@@ -198,11 +217,10 @@ class CombinationChart extends Chart {
         }
 
         if (types.indexOf('area') >= 0) {
-          const areaData = data.filter(d => (d.type === 'area'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('area', areaData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('area', dataByType.area));
 
           seriesArea = new SeriesArea(
-            areaData,
+            dataByType.area,
             dimensions,
             x,
             y,
@@ -215,7 +233,7 @@ class CombinationChart extends Chart {
           seriesArea.render(svg);
 
           seriesAreaLine = new SeriesLine(
-            areaData,
+            dataByType.area,
             dimensions,
             x,
             y,
@@ -228,7 +246,7 @@ class CombinationChart extends Chart {
           seriesAreaLine.render(svg);
 
           seriesAreaPoi = new SeriesPoi(
-            areaData,
+            dataByType.area,
             dimensions,
             x,
             y,
@@ -241,7 +259,7 @@ class CombinationChart extends Chart {
           seriesAreaPoi.render(svg);
 
           seriesAreaDataLabel = new SeriesPoi(
-            areaData,
+            dataByType.area,
             dimensions,
             x,
             y,
@@ -320,7 +338,16 @@ class CombinationChart extends Chart {
       let x1;
 
       if (scale) {
-        const y = scale.yScale.update(data, yOptions, options.layout, dimensions, options);
+        const types = data.map(d => (d.type));
+        const dataByType = this.getDataByTypes(data, types);
+
+        const y = scale.yScale.update(
+          dataByType[types[0]],
+          yOptions,
+          options.layout,
+          dimensions,
+          options,
+        );
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
@@ -330,17 +357,16 @@ class CombinationChart extends Chart {
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
         if (scale.seriesColumn) {
-          const columnData = data.filter(d => (d.type === 'column'));
           const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
 
           this.xScale1 = new XScale(groups, options, x1Dimensions);
           x1 = this.xScale1.generate();
 
-          const plotOptions = deepmerge(options, this.getPlotOptions('column', columnData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('column', dataByType.column));
           plotOptions.type = 'column';
 
           scale.seriesColumn.update(
-            columnData,
+            dataByType.column,
             dimensions,
             x,
             y,
@@ -352,7 +378,7 @@ class CombinationChart extends Chart {
           );
 
           scale.seriesColumnDataLabel.update(
-            columnData,
+            dataByType.column,
             dimensions,
             x,
             y,
@@ -365,11 +391,10 @@ class CombinationChart extends Chart {
         }
 
         if (scale.seriesScatter) {
-          const scatterData = data.filter(d => (d.type === 'scatter'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('scatter', scatterData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('scatter', dataByType.scatter));
 
           scale.seriesScatter.update(
-            scatterData,
+            dataByType.scatter,
             dimensions,
             x,
             y,
@@ -380,7 +405,7 @@ class CombinationChart extends Chart {
           );
 
           scale.seriesScatterDataLabel.update(
-            scatterData,
+            dataByType.scatter,
             dimensions,
             x,
             y,
@@ -392,11 +417,10 @@ class CombinationChart extends Chart {
         }
 
         if (scale.seriesLine) {
-          const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('line', dataByType.line));
 
           scale.seriesLine.update(
-            lineData,
+            dataByType.line,
             dimensions,
             x,
             y,
@@ -407,7 +431,7 @@ class CombinationChart extends Chart {
           );
 
           scale.seriesLinePoi.update(
-            lineData,
+            dataByType.line,
             dimensions,
             x,
             y,
@@ -418,7 +442,7 @@ class CombinationChart extends Chart {
           );
 
           scale.seriesLineDataLabel.update(
-            lineData,
+            dataByType.line,
             dimensions,
             x,
             y,
@@ -430,11 +454,10 @@ class CombinationChart extends Chart {
         }
 
         if (scale.seriesArea) {
-          const areaData = data.filter(d => (d.type === 'area'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('area', areaData));
+          const plotOptions = deepmerge(options, this.getPlotOptions('area', dataByType.area));
 
           scale.seriesArea.update(
-            areaData,
+            dataByType.area,
             dimensions,
             x,
             y,
@@ -445,7 +468,7 @@ class CombinationChart extends Chart {
           );
 
           scale.seriesAreaLine.update(
-            areaData,
+            dataByType.area,
             dimensions,
             x,
             y,
@@ -456,7 +479,7 @@ class CombinationChart extends Chart {
           );
 
           scale.seriesAreaPoi.update(
-            areaData,
+            dataByType.area,
             dimensions,
             x,
             y,
@@ -467,7 +490,7 @@ class CombinationChart extends Chart {
           );
 
           scale.seriesAreaDataLabel.update(
-            areaData,
+            dataByType.area,
             dimensions,
             x,
             y,
