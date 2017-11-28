@@ -1,3 +1,7 @@
+# 0.3.4
+
+* Fix a bug causing hidden tooltips to sometimes break other elements
+
 # 0.3.3
 
 * Improved tooltips include the ability to close sticky ones
