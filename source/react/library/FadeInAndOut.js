@@ -6,12 +6,19 @@ const duration = ANIMATION_TIMING;
 
 const defaultStyle = {
   transition: `opacity ${duration}ms ease-in-out`,
+  'pointer-events': 'none',
   opacity: 0,
 };
 
 const transitionStyles = {
-  entering: { opacity: 0 },
-  entered: { opacity: 1 },
+  entering: {
+    'pointer-events': 'all',
+    opacity: 0,
+  },
+  entered: {
+    opacity: 1,
+    'pointer-events': 'all',
+  },
   exited: {
     'pointer-events': 'none',
     opacity: 0,
