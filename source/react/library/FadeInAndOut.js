@@ -6,13 +6,14 @@ const duration = ANIMATION_TIMING;
 
 const defaultStyle = {
   transition: `opacity ${duration}ms ease-in-out`,
+  visibility: 'hidden',
   opacity: 0,
 };
 
 const transitionStyles = {
-  entering: { opacity: 0 },
-  entered: { opacity: 1 },
-  exited: { opacity: 0 },
+  entering: { opacity: 0, visibility: 'visible' },
+  entered: { opacity: 1, visibility: 'visible' },
+  exited: { opacity: 0, visibility: 'hidden' },
 };
 
 const FadeInAndOut = (props) => {
