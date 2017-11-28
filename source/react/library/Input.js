@@ -15,7 +15,10 @@ const propTypes = {
   readonly: React.PropTypes.bool,
   type: React.PropTypes.string,
   /** Value string */
-  value: React.PropTypes.string,
+  value: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.number,
+  ]),
   name: React.PropTypes.string,
   size: React.PropTypes.oneOf(['large', 'small', 'tiny']),
   simple: React.PropTypes.bool,

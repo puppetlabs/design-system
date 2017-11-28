@@ -8,16 +8,22 @@ import Checkbox from '../Checkbox';
 
 const supportedTypes = [
   'input',
+  'number',
   'select',
   'switch',
+  'filters',
   'checkbox',
 ];
 
 const propTypes = {
-  type: React.PropTypes.oneOf(supportedTypes).isRequired,
+  type: React.PropTypes.oneOfType([
+    React.PropTypes.oneOf(supportedTypes),
+    React.PropTypes.element,
+  ]).isRequired,
   onChange: React.PropTypes.func.isRequired,
   name: React.PropTypes.string.isRequired,
   value: React.PropTypes.oneOfType([
+    React.PropTypes.number,
     React.PropTypes.string,
     React.PropTypes.bool,
   ]),
@@ -44,6 +50,7 @@ class FormField extends React.Component {
 
     switch (this.props.type) {
       case 'input':
+      case 'number':
         value = val.target.value;
         break;
       case 'switch':
@@ -90,48 +97,71 @@ class FormField extends React.Component {
     const type = this.props.type;
     let jsx = null;
 
-    switch (type) {
-      case 'select':
-        jsx = (
-          <Select
-            name={ this.props.name }
-            onSelect={ this.onChange }
-            { ...elementProps }
-          />
-        );
-        break;
-      case 'input':
-        jsx = (
-          <Input
-            name={ this.props.name }
-            onChange={ this.onChange }
-            value={ this.props.value || '' }
-            { ...elementProps }
-          />
-        );
-        break;
-      case 'switch':
-        jsx = (
-          <Switch
-            name={ this.props.name }
-            onChange={ this.onChange }
-            checked={ !!this.props.value }
-            { ...elementProps }
-          />
-        );
-        break;
-      case 'checkbox':
-        jsx = (
-          <Checkbox
-            name={ this.props.name }
-            onChange={ this.onChange }
-            checked={ !!this.props.value }
-            { ...elementProps }
-          />
-        );
-        break;
-      default:
-        break;
+    if (typeof type.prototype === 'object') {
+      console.log(type.prototype.isReactComponent);
+    }
+
+    if (typeof type.prototype === 'object' && type.prototype.isReactComponent) {
+      jsx = React.createElement(type, Object.assign({
+        name: this.props.name,
+        value: this.props.value,
+        onChange: this.onChange,
+      }, elementProps));
+    } else {
+      switch (type) {
+        case 'select':
+          jsx = (
+            <Select
+              name={ this.props.name }
+              onSelect={ this.onChange }
+              { ...elementProps }
+            />
+          );
+          break;
+        case 'input':
+          jsx = (
+            <Input
+              name={ this.props.name }
+              onChange={ this.onChange }
+              value={ this.props.value || '' }
+              { ...elementProps }
+            />
+          );
+          break;
+        case 'number':
+          jsx = (
+            <Input
+              type="number"
+              name={ this.props.name }
+              onChange={ this.onChange }
+              value={ this.props.value || '' }
+              { ...elementProps }
+            />
+          );
+          break;
+        case 'switch':
+          jsx = (
+            <Switch
+              name={ this.props.name }
+              onChange={ this.onChange }
+              checked={ !!this.props.value }
+              { ...elementProps }
+            />
+          );
+          break;
+        case 'checkbox':
+          jsx = (
+            <Checkbox
+              name={ this.props.name }
+              onChange={ this.onChange }
+              checked={ !!this.props.value }
+              { ...elementProps }
+            />
+          );
+          break;
+        default:
+          break;
+      }
     }
 
     return (
