@@ -237,8 +237,7 @@ $reflect-form-field-margin                   : $reflect-small !default;
 $reflect-form-input-hover-color              : $reflect-brand-primary !default;
 $reflect-form-input-hover-border             : 1px solid $reflect-brand-primary !default;
 
-
-$reflect-form-tiny-label-font-size          : $reflect-font-size-tiny * 0.90 !default;
+$reflect-form-tiny-label-font-size          : $reflect-font-size-tiny * 0.9 !default;
 
 // Filters
 // ----------------------------------------------------------------------------
@@ -260,7 +259,9 @@ $reflect-filter-split-menu-bg                : darken($reflect-filter-split-bg, 
 $reflect-filter-split-menu-bg-hover          : darken($reflect-filter-split-menu-bg, 10%) !default;
 
 $reflect-filters-filter-bg                   : $reflect-brand-primary !default;
+$reflect-filters-filter-bg-hover             : darken($reflect-brand-primary, 10%) !default;
 $reflect-filters-filter-color                : $reflect-white !default;
+$reflect-filters-filter-action-color         : lighten($reflect-brand-primary, 15%) !default;
 $reflect-filters-form-border                 : $reflect-border !default;
 
 // Input
@@ -497,7 +498,7 @@ $reflect-tag-shadow-selected                 : $reflect-selected-shadow !default
 
 $reflect-tag-icon-spacing                    : $reflect-tiny !default;
 $reflect-tag-icon-size                       : 14px !default;
-
+$reflect-tag-icon-fill                       : $reflect-gray-lighter !default;
 
 $reflect-tag-tiny-case                       : uppercase !default;
 $reflect-tag-tiny-font-size                  : $reflect-font-size-tiny !default;

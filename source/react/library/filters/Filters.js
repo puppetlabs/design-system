@@ -1,5 +1,6 @@
 import React from 'react';
 
+import Button from '../Button';
 import Icon from '../Icon';
 import Tag from '../Tag';
 import Form from '../form';
@@ -44,12 +45,17 @@ class Filters extends React.Component {
   }
 
   onRemove() {
-  
+     
   }
 
   renderFilters() {
+    const tagActions = [
+      <Button className="rc-filters-action-duplicate" icon="pencil" size="tiny" transparent />,
+      <Button icon="close" size="tiny" transparent />,
+    ];
+
     return this.props.filters.map(filter => (
-      <Tag className="rc-filters-filter" onRemove={ this.onRemove }>
+      <Tag className="rc-filters-filter" actions={ tagActions }>
         { filter.field } { filter.op } { filter.value }
       </Tag>
     ));

@@ -1,15 +1,36 @@
 .rc-filters {
-  .rc-tag {
-    background: $reflect-filters-filter-bg;
-    color: $reflect-filters-filter-color;
-    margin: 0;
-    width: 100%;
-  }
-
   .rc-form {
     border-bottom: $reflect-filters-form-border;
     border-top: $reflect-filters-form-border;
     margin: 10px 0;
     padding: 10px 0;
   }
+
+  .rc-filters-action-duplicate {
+    display: none;
+  }
 }
+
+.rc-filters-filter {
+  background: $reflect-filters-filter-bg;
+  color: $reflect-filters-filter-color;
+  margin: 0;
+  width: 100%;
+
+  .rc-button .rc-icon {
+    fill: $reflect-filters-filter-action-color !important;
+  }
+
+  .rc-button:hover .rc-icon {
+    fill: $reflect-white !important;
+  }
+}
+
+.rc-filters-filter:hover {
+  background: $reflect-filters-filter-bg-hover;
+
+  .rc-filters-action-duplicate {
+    display: inline-block;
+  }
+}
+

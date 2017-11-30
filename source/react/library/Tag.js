@@ -12,6 +12,7 @@ const propTypes = {
   size: React.PropTypes.string,
   block: React.PropTypes.bool,
   onRemove: React.PropTypes.func,
+  actions: React.PropTypes.array,
   onClick: React.PropTypes.func,
   tooltip: React.PropTypes.bool,
 };
@@ -48,10 +49,13 @@ class Tag extends React.Component {
 
   renderContent() {
     const removeButton = this.renderRemoveButton();
+    const actions = this.renderActions();
     const { children, tooltip } = this.props;
+
     let jsx = (
       <div className="rc-tag-content">
         { children }
+        { actions }
         { removeButton }
       </div>
     );
@@ -62,6 +66,20 @@ class Tag extends React.Component {
           { jsx }
         </TooltipHoverArea>
       );
+    }
+
+    return jsx;
+  }
+
+  renderActions() {
+    let jsx;
+
+    if (this.props.actions) {
+      jsx = (
+        <div className="rc-tag-actions">
+          { this.props.actions }
+        </div>
+      )
     }
 
     return jsx;
