@@ -15,6 +15,10 @@ const defaultProps = {
   onChange: () => {},
 };
 
+const getFilterKey = (filter) => {
+  return [filter.field, filter.op, filter.value, filter.values].join('-');
+};
+
 /**
  * `Filters` allows users to list, edit, and add filters.
  */
@@ -24,7 +28,7 @@ class Filters extends React.Component {
 
     this.state = {
       adding: false,
-      editing: false,
+      editing: null,
     };
 
     this.onAdd = this.onAdd.bind(this);
@@ -44,27 +48,64 @@ class Filters extends React.Component {
     this.setState({ adding: false });
   }
 
-  onRemove() {
-     
+  onEdit(filter) {
+    const key = getFilterKey(filter);
+
+    return () => {
+      this.setState({ editing: key });
+    }
+  }
+
+  onRemove(removed) {
+    return () => {
+      const newFilters = this.props.filters
+        .filter(filter => !(getFilterKey(removed) === getFilterKey(filter)));
+
+      this.props.onChange(newFilters);
+    }
   }
 
   renderFilters() {
-    const tagActions = [
-      <Button className="rc-filters-action-duplicate" icon="pencil" size="tiny" transparent />,
-      <Button icon="close" size="tiny" transparent />,
-    ];
+    const filters = [];
 
-    return this.props.filters.map(filter => (
-      <Tag className="rc-filters-filter" actions={ tagActions }>
-        { filter.field } { filter.op } { filter.value }
-      </Tag>
-    ));
+    this.props.filters.forEach((filter) => {
+      const key = getFilterKey(filter);
+      const tagActions = [
+        <Button
+          className="rc-filters-action-duplicate"
+          icon="pencil"
+          size="tiny"
+          key="edit-filter"
+          transparent
+          onClick={ this.onEdit(filter) }
+        />,
+        <Button
+          icon="close"
+          size="tiny"
+          key="delete-filter"
+          transparent
+          onClick={ this.onRemove(filter) }
+        />,
+      ];
+
+      filters.push(
+        <Tag key={ key } className="rc-filters-filter" actions={ tagActions }>
+          { filter.field } { filter.op } { filter.value }
+        </Tag>,
+      );
+
+      if (key === this.state.editing) {
+        filters.push(this.renderForm(filter));
+      }
+    });
+
+    return filters;
   }
 
   renderAction() {
     let jsx;
 
-    if (!this.state.edding && !this.state.adding) {
+    if (!this.state.editing && !this.state.adding) {
       jsx = (
         <a href="/add-filter" onClick={ this.onAdd } className="rc-filters-action">
           <Icon type="plus" height="12px" width="12px" /> Add filter
@@ -75,27 +116,30 @@ class Filters extends React.Component {
     return jsx;
   }
 
-  renderAddForm() {
+  renderForm(filter) {
     let jsx;
 
-    if (this.state.adding) {
+    if (this.state.adding || this.state.editing) {
       const fields = ['Name', 'Date'];
 
       return (
-        <Form submittable onSubmit={ this.onSubmitFilter } size="tiny" >
+        <Form submittable onSubmit={ this.onSubmitFilter } size="tiny" key="editing-form">
           <Form.Field
+            value={ filter.field }
             type="select"
             name="filterField"
             label="field"
             elementProps={ { options: fields, placeholder: 'Choose a field...' } }
           />
           <Form.Field
+            value={ filter.op }
             type="select"
             name="filterOperator"
             label="operation"
             elementProps={ { options: fields, placeholder: 'Please choose...' } }
           />
           <Form.Field
+            value={ filter.value }
             type="input"
             name="filterValue"
             label="value"
@@ -111,7 +155,11 @@ class Filters extends React.Component {
   render() {
     const filters = this.renderFilters();
     const action = this.renderAction();
-    const form = this.renderAddForm();
+    let form;
+
+    if (this.state.adding) {
+      form = this.renderForm();
+    }
 
     return (
       <div className="rc-filters">

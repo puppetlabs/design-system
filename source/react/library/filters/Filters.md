@@ -6,6 +6,6 @@ let filters = [
 
 <Filters
   filters={ filters }
-  onChange={ (newFilters) => { filters = newFilters } }
+  onChange={ (newFilters) => console.log('new filters', newFilters) }
 />
 ```
