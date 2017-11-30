@@ -1,0 +1,15 @@
+.rc-filters {
+  .rc-tag {
+    background: $reflect-filters-filter-bg;
+    color: $reflect-filters-filter-color;
+    margin: 0;
+    width: 100%;
+  }
+
+  .rc-form {
+    border-bottom: $reflect-filters-form-border;
+    border-top: $reflect-filters-form-border;
+    margin: 10px 0;
+    padding: 10px 0;
+  }
+}

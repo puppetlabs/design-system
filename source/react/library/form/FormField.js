@@ -97,10 +97,6 @@ class FormField extends React.Component {
     const type = this.props.type;
     let jsx = null;
 
-    if (typeof type.prototype === 'object') {
-      console.log(type.prototype.isReactComponent);
-    }
-
     if (typeof type.prototype === 'object' && type.prototype.isReactComponent) {
       jsx = React.createElement(type, Object.assign({
         name: this.props.name,

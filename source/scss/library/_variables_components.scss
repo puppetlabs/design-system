@@ -256,6 +256,10 @@ $reflect-filter-split-bg                     : $reflect-gray-light !default;
 $reflect-filter-split-menu-bg                : darken($reflect-filter-split-bg, 10%) !default;
 $reflect-filter-split-menu-bg-hover          : darken($reflect-filter-split-menu-bg, 10%) !default;
 
+$reflect-filters-filter-bg                   : $reflect-brand-primary !default;
+$reflect-filters-filter-color                : $reflect-white !default;
+$reflect-filters-form-border                 : $reflect-border !default;
+
 // Input
 // ----------------------------------------------------------------------------
 $reflect-input-color                         : $reflect-font-color-base !default;

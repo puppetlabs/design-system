@@ -2,7 +2,7 @@
   background: $reflect-tag-bg;
   border: $reflect-tag-border;
   border-radius: $reflect-tag-border-radius;
-  color: $reflect-tag-color !important;
+  color: $reflect-tag-color;
   display: inline-block;
   font-size: $reflect-tag-font-size;
   height: $reflect-tag-height;
@@ -31,7 +31,7 @@
 
   &.rc-tag-block {
     display: block;
-    margin-right: 0 !important;
+    margin-right: 0;
     width: auto;
   }
 
