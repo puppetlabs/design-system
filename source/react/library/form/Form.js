@@ -13,12 +13,14 @@ const propTypes = {
   submittable: React.PropTypes.bool,
   validator: React.PropTypes.func,
   errors: React.PropTypes.object,
+  size: React.PropTypes.string,
 };
 
 const defaultProps = {
   onChange: () => {},
   onSubmit: () => {},
   validator: () => {},
+  size: 'small',
   className: '',
   errors: {},
 };
@@ -74,6 +76,7 @@ class Form extends React.Component {
       error: child.props.error || this.props.errors[child.props.name],
       value: this.state.values[child.props.name],
       onChange: this.onChange(child.props.name),
+      size: this.props.size,
     }));
   }
 
@@ -84,6 +87,7 @@ class Form extends React.Component {
       jsx.push(
         <Button
           key="submit"
+          size={ this.props.size }
           disabled={ !this.state.valid }
           onClick={ this.onSubmit }
           label="submit"
@@ -105,7 +109,7 @@ class Form extends React.Component {
   render() {
     const children = this.renderChildren();
     const actions = this.renderActions();
-    const className = classnames('rc-form', this.props.className, {
+    const className = classnames('rc-form', this.props.className, `rc-form-${this.props.size}`, {
       'rc-form-inline': this.props.inline,
     });
 

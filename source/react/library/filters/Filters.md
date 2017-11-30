@@ -1,8 +1,11 @@
 ```
-const filters = [
+let filters = [
   { field: 'Name', op: '=', value: 'Steve' },
   { field: 'Day of week', any: ['mon', 'tue'] }
 ];
 
-<Filters filters={ filters } />
+<Filters
+  filters={ filters }
+  onChange={ (newFilters) => { filters = newFilters } }
+/>
 ```

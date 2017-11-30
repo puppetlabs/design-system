@@ -237,6 +237,9 @@ $reflect-form-field-margin                   : $reflect-small !default;
 $reflect-form-input-hover-color              : $reflect-brand-primary !default;
 $reflect-form-input-hover-border             : 1px solid $reflect-brand-primary !default;
 
+
+$reflect-form-tiny-label-font-size          : $reflect-font-size-tiny * 0.90 !default;
+
 // Filters
 // ----------------------------------------------------------------------------
 $reflect-filter-border-color                 : $reflect-gray-lighter !default;

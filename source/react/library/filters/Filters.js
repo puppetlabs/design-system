@@ -76,23 +76,24 @@ class Filters extends React.Component {
       const fields = ['Name', 'Date'];
 
       return (
-        <Form submittable onSubmit={ this.onSubmitFilter }>
+        <Form submittable onSubmit={ this.onSubmitFilter } size="tiny" >
           <Form.Field
             type="select"
             name="filterField"
             label="field"
-            elementProps={ { options: fields } }
+            elementProps={ { options: fields, placeholder: 'Choose a field...' } }
           />
           <Form.Field
             type="select"
             name="filterOperator"
             label="operation"
-            elementProps={ { options: fields } }
+            elementProps={ { options: fields, placeholder: 'Please choose...' } }
           />
           <Form.Field
             type="input"
             name="filterValue"
             label="value"
+            elementProps={ { placeholder: 'e.g. Jim, 15, etc.' } }
           />
         </Form>
       );

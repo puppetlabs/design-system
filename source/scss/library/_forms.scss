@@ -89,6 +89,12 @@
   }
 }
 
+.rc-form-tiny {
+  .rc-form-field-label {
+    font-size: $reflect-form-tiny-label-font-size;
+  }
+}
+
 /* stylelint-disable  */
 .rc-filter-form {
   position: relative;

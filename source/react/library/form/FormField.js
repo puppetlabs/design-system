@@ -28,6 +28,7 @@ const propTypes = {
     React.PropTypes.bool,
   ]),
   inline: React.PropTypes.bool,
+  size: React.PropTypes.string,
   error: React.PropTypes.string,
   label: React.PropTypes.string,
   className: React.PropTypes.string,
@@ -100,6 +101,7 @@ class FormField extends React.Component {
     if (typeof type.prototype === 'object' && type.prototype.isReactComponent) {
       jsx = React.createElement(type, Object.assign({
         name: this.props.name,
+        size: this.props.size,
         value: this.props.value,
         onChange: this.onChange,
       }, elementProps));
@@ -109,6 +111,7 @@ class FormField extends React.Component {
           jsx = (
             <Select
               name={ this.props.name }
+              size={ this.props.size }
               onSelect={ this.onChange }
               { ...elementProps }
             />
@@ -118,6 +121,7 @@ class FormField extends React.Component {
           jsx = (
             <Input
               name={ this.props.name }
+              size={ this.props.size }
               onChange={ this.onChange }
               value={ this.props.value || '' }
               { ...elementProps }
@@ -129,6 +133,7 @@ class FormField extends React.Component {
             <Input
               type="number"
               name={ this.props.name }
+              size={ this.props.size }
               onChange={ this.onChange }
               value={ this.props.value || '' }
               { ...elementProps }
@@ -139,6 +144,7 @@ class FormField extends React.Component {
           jsx = (
             <Switch
               name={ this.props.name }
+              size={ this.props.size }
               onChange={ this.onChange }
               checked={ !!this.props.value }
               { ...elementProps }
@@ -149,6 +155,7 @@ class FormField extends React.Component {
           jsx = (
             <Checkbox
               name={ this.props.name }
+              size={ this.props.size }
               onChange={ this.onChange }
               checked={ !!this.props.value }
               { ...elementProps }
