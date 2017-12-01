@@ -1,6 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 import Button from '../Button';
+import ButtonGroup from '../ButtonGroup';
 
 import FormField from './FormField';
 
@@ -9,7 +10,9 @@ const propTypes = {
   onChange: React.PropTypes.func,
   inline: React.PropTypes.bool,
   children: React.PropTypes.any,
+  onCancel: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
+  cancellable: React.PropTypes.bool,
   submittable: React.PropTypes.bool,
   validator: React.PropTypes.func,
   errors: React.PropTypes.object,
@@ -18,6 +21,7 @@ const propTypes = {
 
 const defaultProps = {
   onChange: () => {},
+  onCancel: () => {},
   onSubmit: () => {},
   validator: () => {},
   size: 'small',
@@ -83,6 +87,18 @@ class Form extends React.Component {
   renderActions() {
     let jsx = [];
 
+    if (this.props.cancellable) {
+      jsx.push(
+        <Button
+          key="cancel"
+          secondary
+          size={ this.props.size }
+          onClick={ this.props.onCancel }
+          label="cancel"
+        />,
+      );
+    }
+
     if (this.props.submittable) {
       jsx.push(
         <Button
@@ -98,7 +114,9 @@ class Form extends React.Component {
     if (jsx.length) {
       jsx = (
         <div className="rc-form-actions">
-          { jsx }
+          <ButtonGroup>
+            { jsx }
+          </ButtonGroup>
         </div>
       );
     }

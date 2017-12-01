@@ -16,7 +16,7 @@ const propTypes = {
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
   name: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['small']),
+  size: React.PropTypes.oneOf(['tiny', 'small']),
 };
 
 const defaultProps = {

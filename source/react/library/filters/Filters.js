@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Button from '../Button';
+import Filter from './Filter';
+
 import Icon from '../Icon';
-import Tag from '../Tag';
 import Form from '../form';
 
 const propTypes = {
@@ -16,7 +16,7 @@ const defaultProps = {
 };
 
 const getFilterKey = (filter) => {
-  return [filter.field, filter.op, filter.value, filter.values].join('-');
+  return [filter.field, filter.op, filter.value, filter.values].join('');
 };
 
 /**
@@ -70,28 +70,14 @@ class Filters extends React.Component {
 
     this.props.filters.forEach((filter) => {
       const key = getFilterKey(filter);
-      const tagActions = [
-        <Button
-          className="rc-filters-action-duplicate"
-          icon="pencil"
-          size="tiny"
-          key="edit-filter"
-          transparent
-          onClick={ this.onEdit(filter) }
-        />,
-        <Button
-          icon="close"
-          size="tiny"
-          key="delete-filter"
-          transparent
-          onClick={ this.onRemove(filter) }
-        />,
-      ];
 
       filters.push(
-        <Tag key={ key } className="rc-filters-filter" actions={ tagActions }>
-          { filter.field } { filter.op } { filter.value }
-        </Tag>,
+        <Filter
+          onEdit={ this.onEdit(filter) }
+          onRemove={ this.onRemove(filter) }
+          filter={ filter }
+          key={ key }
+        />,
       );
 
       if (key === this.state.editing) {
@@ -99,7 +85,11 @@ class Filters extends React.Component {
       }
     });
 
-    return filters;
+    return (
+      <div className="rc-filters-list">
+        { filters }
+      </div>
+    );
   }
 
   renderAction() {
@@ -108,7 +98,7 @@ class Filters extends React.Component {
     if (!this.state.editing && !this.state.adding) {
       jsx = (
         <a href="/add-filter" onClick={ this.onAdd } className="rc-filters-action">
-          <Icon type="plus" height="12px" width="12px" /> Add filter
+          <Icon type="plus" height="8px" width="8px" /> Add filter
         </a>
       );
     }
@@ -116,14 +106,21 @@ class Filters extends React.Component {
     return jsx;
   }
 
-  renderForm(filter) {
+  renderForm(filter = {}) {
     let jsx;
 
     if (this.state.adding || this.state.editing) {
       const fields = ['Name', 'Date'];
 
       return (
-        <Form submittable onSubmit={ this.onSubmitFilter } size="tiny" key="editing-form">
+        <Form
+          submittable
+          cancellable
+          onCancel={ () => { this.setState({ editing: null, adding: false }); } }
+          onSubmit={ this.onSubmitFilter }
+          size="tiny"
+          key={ `${this.state.editing}-form` }
+        >
           <Form.Field
             value={ filter.field }
             type="select"

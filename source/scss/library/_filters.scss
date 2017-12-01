@@ -9,6 +9,29 @@
   .rc-filters-action-duplicate {
     display: none;
   }
+
+  .rc-filters-action {
+    color: $reflect-gray;
+    font-size: $reflect-font-size-small;
+    font-weight: $reflect-font-weight-heavy;
+  }
+
+  .rc-tag {
+    height: 27px;
+    line-height: 27px;
+  }
+}
+
+.rc-filters-action:hover {
+  color: $reflect-brand-primary !important;
+
+  .rc-icon {
+    fill: $reflect-brand-primary;
+  }
+}
+
+.rc-filters-list {
+  margin-bottom: $reflect-tiny;
 }
 
 .rc-filters-filter {
@@ -23,6 +46,20 @@
 
   .rc-button:hover .rc-icon {
     fill: $reflect-white !important;
+  }
+
+  .filter-field-name,
+  .filter-field-op {
+    padding-right: 4px;
+  }
+
+  .filter-field-name,
+  .filter-field-value {
+    font-weight: $reflect-font-weight-heavy;
+  }
+
+  .filter-field-op {
+    font-style: italic;
   }
 }
 

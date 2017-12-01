@@ -9,7 +9,7 @@ const propTypes = {
   /** Selected state */
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
-  size: React.PropTypes.string,
+  size: React.PropTypes.oneOf(['small', 'tiny']),
   block: React.PropTypes.bool,
   onRemove: React.PropTypes.func,
   actions: React.PropTypes.array,
@@ -79,7 +79,7 @@ class Tag extends React.Component {
         <div className="rc-tag-actions">
           { this.props.actions }
         </div>
-      )
+      );
     }
 
     return jsx;
