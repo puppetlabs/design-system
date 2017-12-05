@@ -36,6 +36,7 @@ import BlankSlate from './react/library/BlankSlate';
 import Panel from './react/library/Panel';
 import Select from './react/library/select/Select';
 import Form from './react/library/form';
+import Filters from './react/library/filters';
 import Checkbox from './react/library/Checkbox';
 
 export {
@@ -77,5 +78,6 @@ export {
   DatePicker,
   Select,
   Form,
+  Filters,
   Checkbox,
 };

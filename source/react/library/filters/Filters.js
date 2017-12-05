@@ -2,22 +2,24 @@ import React from 'react';
 
 import Filter from './Filter';
 
+import { filterOperators } from '../../constants';
 import Icon from '../Icon';
 import Form from '../form';
 
 const propTypes = {
+  fields: React.PropTypes.array,
   filters: React.PropTypes.array,
   onChange: React.PropTypes.func,
 };
 
 const defaultProps = {
+  fields: [],
   filters: [],
   onChange: () => {},
 };
 
-const getFilterKey = (filter) => {
-  return [filter.field, filter.op, filter.value, filter.values].join('');
-};
+const getFilterKey = filter =>
+  [filter.field, filter.op, filter.value, filter.values].join('');
 
 /**
  * `Filters` allows users to list, edit, and add filters.
@@ -42,9 +44,22 @@ class Filters extends React.Component {
     this.setState({ adding: true });
   }
 
-  onSubmitFilter(values) {
-    console.log(values);
+  onSubmitFilter({ values }) {
+    const filter = this.formatFilterForm(values);
+    let newFilters = [];
 
+    if (this.state.editing) {
+      const index = this.props.filters
+        .findIndex(f => getFilterKey(f) === this.state.editing);
+
+      newFilters = newFilters.concat(this.props.filters);
+      newFilters[index] = filter;
+    } else {
+      newFilters = this.props.filters
+        .concat(filter);
+    }
+
+    this.props.onChange(newFilters);
     this.setState({ adding: false });
   }
 
@@ -53,7 +68,7 @@ class Filters extends React.Component {
 
     return () => {
       this.setState({ editing: key });
-    }
+    };
   }
 
   onRemove(removed) {
@@ -62,7 +77,21 @@ class Filters extends React.Component {
         .filter(filter => !(getFilterKey(removed) === getFilterKey(filter)));
 
       this.props.onChange(newFilters);
+    };
+  }
+
+  // Convert the form representation into one of our Filter representations.
+  formatFilterForm(form) {
+    const filter = {
+      field: form.filterField.id,
+      value: form.filterValue,
+    };
+
+    if (form.filterOperator) {
+      filter.op = form.filterOperator.id;
     }
+
+    return filter;
   }
 
   renderFilters() {
@@ -108,9 +137,21 @@ class Filters extends React.Component {
 
   renderForm(filter = {}) {
     let jsx;
+    let valueField;
 
     if (this.state.adding || this.state.editing) {
-      const fields = ['Name', 'Date'];
+      const fields = this.props.fields.map(field => ({
+        id: field,
+        label: field,
+        value: field,
+        selected: filter.field === field,
+      }));
+      const operators = filterOperators.map(op => ({
+        id: op.symbol,
+        label: op.label,
+        value: op.symbol,
+        selected: filter.op === op.symbol,
+      }));
 
       return (
         <Form
@@ -133,7 +174,7 @@ class Filters extends React.Component {
             type="select"
             name="filterOperator"
             label="operation"
-            elementProps={ { options: fields, placeholder: 'Please choose...' } }
+            elementProps={ { options: operators, placeholder: 'Please choose...' } }
           />
           <Form.Field
             value={ filter.value }
@@ -169,6 +210,6 @@ class Filters extends React.Component {
 }
 
 Filters.propTypes = propTypes;
-Filters.defaultprops = defaultProps;
+Filters.defaultProps = defaultProps;
 
 export default Filters;

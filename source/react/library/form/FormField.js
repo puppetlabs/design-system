@@ -99,12 +99,14 @@ class FormField extends React.Component {
     let jsx = null;
 
     if (typeof type.prototype === 'object' && type.prototype.isReactComponent) {
+      const props = Object.assign(this.props, elementProps);
+
       jsx = React.createElement(type, Object.assign({
         name: this.props.name,
         size: this.props.size,
         value: this.props.value,
         onChange: this.onChange,
-      }, elementProps));
+      }, props));
     } else {
       switch (type) {
         case 'select':
