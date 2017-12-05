@@ -1,3 +1,7 @@
+# 0.8.0 
+
+* Adding smart labels to the x axis. This means that x axis labels can now wrap and rotate automatically 
+
 # 0.7.0
 
 * Now supporting reverse y axis on bar/column charts

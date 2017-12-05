@@ -18,7 +18,7 @@ class DataSet {
   }
 
   getCategoryType() {
-    return helpers.detectCategoryType(this.data.categories);
+    return helpers.detectScaleType(this.data.categories);
   }
 
   getCategories() {

@@ -15,7 +15,18 @@ class ColumnCharts extends React.Component {
     const dataPoints = 10;
 
     const data = {
-      categories: ['1.2', '2.5', '4', '2.6', '3.8', '3.1', '4.2', '5', '1.3', '2.7'],
+      categories: [
+        'Iamalongvaluewithnospaces1',
+        'Iamalongvaluewithspaces2',
+        'Iamalongvaluewithspaces3',
+        'I am a long value with spaces 4',
+        'I am a long value with spaces 5',
+        'I am a long value with spaces 6',
+        'I am a long value with spaces 7',
+        'I am a long value with spaces 8',
+        'I am a long value with spaces 9',
+        'I am a long value with spaces 10',
+      ],
       series: [
         {
           label: 'Profit',
@@ -28,12 +39,36 @@ class ColumnCharts extends React.Component {
       ],
     };
 
+    const sectors = [
+      'Technology Usage > T-Mobile Cell Phone Customers > Highly Likely',
+      'Technology Usage > AT&T Cell Phone Customers > Highly Likely',
+      'Technology Usage > Sprint Cell Phone Customers > Highly Likely',
+      'Technology Usage > Verizon Cell Phone Customers > Highly Likely',
+    ];
+    const dates = ['2017-01-01', '2017-01-02', '2017-01-03', '2017-01-04', '2017-01-05', '2017-01-06', '2017-01-07', '2017-01-08', '2017-01-09', '2017-01-10'];
+    const teams = [
+      'Philadelphia Eagles',
+      'Dallas Cowboys',
+      'Houston Texans',
+      'Tennessee Titans',
+      'Washington Redskins',
+      'Jacksonville Jaguars',
+      'Los Angeles Rams',
+      'New York Giants',
+      'Indianapolis Colts',
+      'New Orleans Saints',
+      'Chicago Bears',
+      'Minnesota Vikings',
+      'Green Bay Packers',
+    ];
+
+
     const singleSeriesData = {
-      categories: getRandomCategories(dataPoints),
+      categories: dates,
       series: [
         {
           label: 'Profit',
-          data: getRandomData(dataPoints, { min: -10000000000, modifier: 10000, negatives: true, sparseness }),
+          data: getRandomData(10),
         },
       ],
     };
@@ -49,14 +84,14 @@ class ColumnCharts extends React.Component {
       },
       legend: {
         enabled: true,
-        orientation: 'top',
-        alignment: 'center',
+        orientation: 'bottom',
+        alignment: 'left',
       },
       axis: {
         y: [{
           ticks: 4,
           title: 'Left axis',
-          reversed: true,
+          reversed: false,
         }, {
           ticks: 4,
           orientation: 'right',
@@ -64,9 +99,11 @@ class ColumnCharts extends React.Component {
         }],
         x: {
           title: 'I am a x axis title',
-          labels: { rotated: true },
           paddingInner: 0.1,
-          paddingOuter: 1,
+          paddingOuter: 0,
+          labels: {
+            rotated: false,
+          },
         },
       },
       grid: {

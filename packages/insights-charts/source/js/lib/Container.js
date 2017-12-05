@@ -63,7 +63,8 @@ class Container {
       .style('width', `${width}px`);
   }
 
-  setSVGMargins(dimensions) {
+  setSVGMargins() {
+    const dimensions = this.dimensions;
     const margins = this.dimensions.margins;
 
     if (this.type !== 'sparkline' && this.type !== 'donut' && margins.static !== true) {
@@ -75,60 +76,46 @@ class Container {
         this.testSVG.remove();
       }
 
-      this.testSVG = this.wrapper.append('svg')
-        .attr('width', this.dimensions.width)
-        .style('width', `${this.dimensions.width}px`)
-        .attr('height', this.dimensions.height)
-        .style('height', `${this.dimensions.height}px`)
-        .style('visibility', 'hidden');
+      // always start with the defaults and build from there
+      this.dimensions.margins.top = this.dimensions.defaultMargins.top;
+      this.dimensions.margins.right = this.dimensions.defaultMargins.right;
+      this.dimensions.margins.bottom = this.dimensions.defaultMargins.bottom;
+      this.dimensions.margins.left = this.dimensions.defaultMargins.left;
 
-      const xScale = new XScale(categories, options, dimensions);
-      const x = xScale.generate();
+      this.testSVG = this.wrapper
+        .append('svg')
+          .attr('width', this.dimensions.width)
+          .style('width', `${this.dimensions.width}px`)
+          .attr('height', this.dimensions.height)
+          .style('height', `${this.dimensions.height}px`);
 
-      const xAxis = new XAxis(categories, x, dimensions, options);
-      const tempX = xAxis.render(this.testSVG);
-      let leftOverflow = 0;
-      let rightOverflow = 0;
-      const topOverflow = 0;
-      const bottomOverflow = 0;
-
-      if (tempX) {
-        const tempXDimensions = tempX.node().getBoundingClientRect();
-
-        if (orientation === 'left' || orientation === 'right') {
-          const xAxisWidth = tempXDimensions.width;
-
-          if (orientation === 'left') {
-            this.dimensions.margins.left = xAxisWidth + dimensions.defaultMargins.left;
-          } else {
-            this.dimensions.margins.right = xAxisWidth + dimensions.defaultMargins.right;
-          }
-        } else {
-          const xAxisHeight = tempXDimensions.height;
-
-          if (orientation === 'top') {
-            this.dimensions.margins.top = xAxisHeight + dimensions.defaultMargins.top;
-          } else {
-            this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
-          }
-
-          leftOverflow = this.dimensions.left - tempXDimensions.left;
-          rightOverflow = tempXDimensions.right - this.dimensions.right;
-        }
-      }
+      this.testG = this.testSVG.append('g');
 
       options.axis.y.forEach((yOptions, yAxisIndex) => {
         if (yOptions.enabled !== false && this.type !== 'donut') {
-          const data = this.data.getDataByYAxis(yAxisIndex);
-          const plotOptions =
-            deepmerge(options, helpers.getPlotOptions(this.type, this.options, data));
+          let data = this.data.getDataByYAxis(yAxisIndex);
 
           if (data.length > 0) {
+            let type = this.type;
+
+            if (type === 'combination') {
+              type = data[0].type;
+            }
+
+            const plotOptions = deepmerge(
+              options,
+              helpers.getPlotOptions(type, this.options, data),
+            );
+
+            if (plotOptions.layout === 'stacked') {
+              data = helpers.stackData(data);
+            }
+
             const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
             const y = yScale.generate();
 
             const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
-            const axis = yAxis.render(this.testSVG);
+            const axis = yAxis.render(this.testG);
 
             // TODO: This is currently assuming there is only 1 left axis and 1 right axis
             // We haven't found a use case for more than 1 axis with the same orientation yet
@@ -156,58 +143,69 @@ class Container {
         }
       });
 
-      if (leftOverflow > 0 && leftOverflow > this.dimensions.margins.left) {
-        this.dimensions.margins.left += (leftOverflow - this.dimensions.margins.left);
+      this.testG.attr('transform', `translate(${this.dimensions.margins.left}, ${this.dimensions.margins.top})`);
+
+      // The width of the x axis needs to take into account the margins applied by the y axis
+      // Otherwise the smart label wrapping and auto rotation don't work as expected
+      const dims = Object.assign({}, this.dimensions);
+      dims.width = dims.width - dims.margins.left - dims.margins.right;
+
+      const xScale = new XScale(categories, options, dims);
+      const x = xScale.generate();
+
+      const xAxis = new XAxis(categories, x, dims, options);
+      const tempX = xAxis.render(this.testG);
+
+      let rightOverflow = 0;
+      let leftOverflow = 0;
+
+      if (tempX) {
+        const tempXDimensions = tempX.node().getBoundingClientRect();
+
+        if (orientation === 'left' || orientation === 'right') {
+          const xAxisWidth = tempXDimensions.width;
+
+          if (orientation === 'left') {
+            this.dimensions.margins.left = xAxisWidth + dimensions.defaultMargins.left;
+          } else {
+            this.dimensions.margins.right = xAxisWidth + dimensions.defaultMargins.right;
+          }
+        } else {
+          const xAxisHeight = tempXDimensions.height;
+
+          if (orientation === 'top') {
+            this.dimensions.margins.top = xAxisHeight + dimensions.defaultMargins.top;
+          } else {
+            this.dimensions.margins.bottom = xAxisHeight + dimensions.defaultMargins.bottom;
+          }
+
+          leftOverflow = this.dimensions.left - tempXDimensions.left;
+          rightOverflow = tempXDimensions.right - this.dimensions.right;
+        }
       }
 
-      if (rightOverflow > 0 && rightOverflow > this.dimensions.margins.right) {
-        this.dimensions.margins.right += (rightOverflow - this.dimensions.margins.right);
+      if (leftOverflow > 0) {
+        this.dimensions.margins.left += Math.ceil(leftOverflow);
       }
 
-      if (topOverflow > 0 && topOverflow > this.dimensions.margins.top) {
-        this.dimensions.margins.top += (topOverflow - this.dimensions.margins.top);
-      }
-
-      if (bottomOverflow > 0 && bottomOverflow > this.dimensions.margins.bottom) {
-        this.dimensions.margins.bottom += (bottomOverflow - this.dimensions.margins.bottom);
+      if (rightOverflow > 0) {
+        this.dimensions.margins.right += Math.ceil(rightOverflow);
       }
 
       this.testSVG.remove();
     }
   }
 
-  setSVGHeight({ height, margins }, legend) {
-    const { options } = this;
-    let newHeight = height - margins.top - margins.bottom;
+  setSVGHeight() {
+    const margins = this.dimensions.margins;
 
-    if (
-        margins.static !== true &&
-        legend &&
-        (options.legend.orientation === 'top' || options.legend.orientation === 'bottom')
-      ) {
-      if (legend.height) {
-        newHeight -= legend.height;
-      }
-    }
-
-    this.dimensions.height = newHeight;
+    this.dimensions.height = this.dimensions.height - margins.top - margins.bottom;
   }
 
-  setSVGWidth({ width, margins }, legend) {
-    const { options } = this;
-    let newWidth = width - margins.left - margins.right;
+  setSVGWidth() {
+    const margins = this.dimensions.margins;
 
-    if (
-      margins.static !== true &&
-      legend &&
-      (options.legend.orientation === 'left' || options.legend.orientation === 'right')
-    ) {
-      if (legend.width) {
-        newWidth -= legend.width;
-      }
-    }
-
-    this.dimensions.width = newWidth;
+    this.dimensions.width = this.dimensions.width - margins.left - margins.right;
   }
 
   render(elem) {
@@ -218,11 +216,9 @@ class Container {
     this.renderWrapper(this.elem);
     this.setWrapperDimensions();
 
-    const dimensions = this.getDimensions();
-
-    this.setSVGMargins(dimensions);
-
     this.renderLegend();
+
+    this.setSVGMargins();
 
     let legend;
 
@@ -230,9 +226,8 @@ class Container {
       legend = this.legend.container.node().getBoundingClientRect();
     }
 
-    this.setSVGHeight(dimensions, legend);
-    this.setSVGWidth(dimensions, legend);
-
+    this.setSVGHeight();
+    this.setSVGWidth();
 
     this.renderSVG(legend);
   }
@@ -246,8 +241,10 @@ class Container {
   renderLegend() {
     if (this.type !== 'sparkline') {
       const { wrapper, data, options, dimensions, dispatchers } = this;
+      const margins = dimensions.margins;
       const legendOptions = clone(options);
       const seriesData = data.getSeries();
+      let legendRect = {};
 
       // Since donut only supports one series... always expand it.
       if (this.type === 'donut') {
@@ -257,6 +254,26 @@ class Container {
       const legend = new Legend(seriesData, legendOptions, dimensions, dispatchers);
 
       legend.render(wrapper);
+
+      if (legend.container) {
+        legendRect = legend.container.node().getBoundingClientRect();
+      }
+
+      if (
+        margins.static !== true &&
+        legendRect.height &&
+        (options.legend.orientation === 'top' || options.legend.orientation === 'bottom')
+      ) {
+        this.dimensions.height -= legendRect.height;
+      }
+
+      if (
+        margins.static !== true &&
+        legendRect.width &&
+        (options.legend.orientation === 'left' || options.legend.orientation === 'right')
+      ) {
+        dimensions.width -= legendRect.width;
+      }
 
       this.legend = legend;
     }
@@ -289,28 +306,31 @@ class Container {
 
     this.setWrapperDimensions();
 
-    const dimensions = this.getDimensions();
+    this.renderLegend();
 
-    this.setSVGMargins(dimensions);
+    this.setSVGMargins();
 
     let legend;
+
+    this.setSVGHeight();
+    this.setSVGWidth();
+
+    const { width, height, margins } = this.getDimensions();
 
     if (this.legend && this.legend.container) {
       legend = this.legend.container.node().getBoundingClientRect();
     }
 
-    this.setSVGHeight(dimensions, legend);
-    this.setSVGWidth(dimensions, legend);
-
-    const { width, height, margins } = this.getDimensions();
-
-    this.wrapper.select('svg')
-      .attr('width', width + margins.left + margins.right)
-      .style('width', `${width + margins.left + margins.right}px`)
-      .attr('height', height + margins.top + margins.bottom)
-      .style('height', `${height + margins.top + margins.bottom}px`)
-      .style('margin-top', options.legend.orientation === 'top' ? `${legend.height}px` : null)
-      .style('margin-left', options.legend.orientation === 'left' ? `${legend.width}px` : null);
+    this.wrapper
+      .select('svg')
+        .attr('width', width + margins.left + margins.right)
+        .style('width', `${width + margins.left + margins.right}px`)
+        .attr('height', height + margins.top + margins.bottom)
+        .style('height', `${height + margins.top + margins.bottom}px`)
+        .style('margin-top', options.legend.orientation === 'top' ? `${legend.height}px` : null)
+        .style('margin-left', options.legend.orientation === 'left' ? `${legend.width}px` : null)
+      .select('g')
+        .attr('transform', `translate(${margins.left},${margins.top})`);
   }
 }
 

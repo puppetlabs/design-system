@@ -8,9 +8,7 @@ class XScale {
     this.options = options;
     this.dimensions = dimensions;
     this.type = options.type;
-
-    const xAxisOptions = options.axis && options.axis.x ? options.axis.x : {};
-    this.scale = helpers.detectScaleType(categories, options.type, xAxisOptions.scaleType);
+    this.scale = helpers.detectScaleType(categories);
   }
 
   generate() {
@@ -20,31 +18,24 @@ class XScale {
     const options = this.options;
     const xAxisOptions = options.axis && options.axis.x ? options.axis.x : {};
 
-    // If the domain is all strings we'll use an ordinal type instead of a
-    // linear one.
-    if (this.scale === 'ordinal') {
-      if (
-        type === 'column' ||
-        type === 'bar' ||
-        type === 'combination' ||
-        xAxisOptions.scaleType === 'ordinalBand'
-      ) {
-        const paddingInner = xAxisOptions.paddingInner || 0.05;
-        const paddingOuter = xAxisOptions.paddingOuter || 0.05;
+    if (type === 'column' || type === 'combination' || xAxisOptions.scaleType === 'ordinalBand') {
+      const paddingInner = xAxisOptions.paddingInner || 0.05;
+      const paddingOuter = xAxisOptions.paddingOuter || 0.05;
 
-        this.x = scaleBand();
-        this.x
-          .paddingInner(paddingInner)
-          .paddingOuter(paddingOuter);
-      } else {
-        this.x = scalePoint();
+      this.x = scaleBand();
+      this.x
+        .paddingInner(paddingInner)
+        .paddingOuter(paddingOuter);
 
-        this.x.padding(xAxisOptions.paddingOuter || 0);
-      }
+      this.x.domain(categories);
+    } else if (this.scale === 'ordinal') {
+      this.x = scalePoint();
+
+      this.x.padding(xAxisOptions.paddingOuter || 0);
 
       this.x.domain(categories);
     } else {
-      if (this.scale === 'time') {
+      if (this.scale === 'date') {
         this.x = scaleTime();
       } else {
         this.x = scaleLinear();
@@ -69,9 +60,7 @@ class XScale {
     this.options = options;
     this.dimensions = dimensions;
     this.type = options.type;
-
-    const xAxisOptions = options.axis && options.axis.x ? options.axis.x : {};
-    this.scale = helpers.detectScaleType(categories, options.type, xAxisOptions.scaleType);
+    this.scale = helpers.detectScaleType(categories);
 
     return this.generate();
   }

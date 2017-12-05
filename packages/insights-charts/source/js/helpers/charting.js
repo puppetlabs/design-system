@@ -68,7 +68,8 @@ const helpers = {
     if (d.y === null) {
       return 0;
     }
-    const datumMin = d.y0;
+
+    const datumMin = d.y0 || 0;
     const datumMax = d.y;
 
     const columnMin = datumMin < axisMin ? axisMin : datumMin;
@@ -207,7 +208,7 @@ const helpers = {
     return isFloat;
   },
 
-  detectCategoryType(categories) {
+  detectScaleType(categories) {
     const types = {};
     let highestNumber = 0;
     let highestKey = null;
@@ -250,61 +251,6 @@ const helpers = {
         }
       }
     });
-
-    return highestKey;
-  },
-
-  detectScaleType(domain, chartType, scaleType) {
-    const types = {};
-    const rnumber = /^\s*\d+(\.\d*)?\s*$/;
-    let highestNumber = 0;
-    let highestKey = null;
-
-    if (
-      chartType === 'column' ||
-      chartType === 'bar' ||
-      chartType === 'combination' ||
-      scaleType === 'ordinalBand'
-    ) {
-      highestKey = 'ordinal';
-    } else {
-      domain.forEach((d) => {
-        if (d && d._isAMomentObject) { // eslint-disable-line no-underscore-dangle
-          if (!types.time) {
-            types.time = 0;
-          }
-
-          types.time += 1;
-        } else if (helpers.isTimestamp(d) && moment(new Date(d)).isValid()) {
-          if (!types.time) {
-            types.time = 0;
-          }
-
-          types.time += 1;
-        } else if (d.toString().match(rnumber)) {
-          if (!types.linear) {
-            types.linear = 0;
-          }
-
-          types.linear += 1;
-        } else {
-          if (!types.ordinal) {
-            types.ordinal = 0;
-          }
-
-          types.ordinal += 1;
-        }
-      });
-
-      Object.keys(types).forEach((type) => {
-        if (typeof type === 'string') {
-          if (types[type] > highestNumber) {
-            highestNumber = types[type];
-            highestKey = type;
-          }
-        }
-      });
-    }
 
     return highestKey;
   },

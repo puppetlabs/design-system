@@ -89,6 +89,9 @@ class Grid {
         if (orientation === 'left') {
           translate = '0, 0';
           tickSize = -width;
+        } else if (orientation === 'right') {
+          translate = `${width}, 0`;
+          tickSize = width;
         } else {
           translate = `0, ${height}`;
           tickSize = -height;

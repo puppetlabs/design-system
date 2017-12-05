@@ -47,47 +47,47 @@ describe('helpers', () => {
     });
   });
 
-  describe('detectCategoryType', () => {
+  describe('detectScaleType', () => {
     it('should properly detect moment dates as date', () => {
       const categories = [moment()];
 
-      expect(helpers.detectCategoryType(categories)).to.eql('date');
+      expect(helpers.detectScaleType(categories)).to.eql('date');
     });
 
     it('should properly detect date objects as date', () => {
       const categories = [new Date()];
 
-      expect(helpers.detectCategoryType(categories)).to.eql('date');
+      expect(helpers.detectScaleType(categories)).to.eql('date');
     });
 
     it('should properly detect date strings as date', () => {
       const categories = ['2017-01-01'];
 
-      expect(helpers.detectCategoryType(categories)).to.eql('date');
+      expect(helpers.detectScaleType(categories)).to.eql('date');
     });
 
     it('should properly detect integer strings as number', () => {
       const categories = ['1', '2', '3'];
 
-      expect(helpers.detectCategoryType(categories)).to.eql('number');
+      expect(helpers.detectScaleType(categories)).to.eql('number');
     });
 
     it('should properly detect integers as number', () => {
       const categories = [1, 2, 3];
 
-      expect(helpers.detectCategoryType(categories)).to.eql('number');
+      expect(helpers.detectScaleType(categories)).to.eql('number');
     });
 
     it('should properly detect floats as number', () => {
       const categories = [1.1, 2.2, 3.3];
 
-      expect(helpers.detectCategoryType(categories)).to.eql('number');
+      expect(helpers.detectScaleType(categories)).to.eql('number');
     });
 
     it('should properly detect strings as ordinal', () => {
       const categories = ['alex', 'brad', 'colby'];
 
-      expect(helpers.detectCategoryType(categories)).to.eql('ordinal');
+      expect(helpers.detectScaleType(categories)).to.eql('ordinal');
     });
   });
 });

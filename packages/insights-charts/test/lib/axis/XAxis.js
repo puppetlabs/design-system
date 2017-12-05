@@ -8,7 +8,7 @@ describe('XAxis', () => {
   const generator = new DataGenerator();
   const randomData = generator.generate();
   const data = new DataSet(randomData);
-  const categories = data.getCategories();
+  const categories = data.getCategories().map(c => (c.label));
   const dimensions = { height: 100, margins: { top: 10, bottom: 10, left: 10, right: 10 } };
 
   const xScale = new XScale(categories, { axis: { x: { orientation: 'bottom' } } }, dimensions);
@@ -41,6 +41,7 @@ describe('XAxis', () => {
     xAxis.render(global.chart);
 
     const axis = global.chart.selectAll('.reflect-charts-axis-x');
+
     expect(axis.select('.tick').select('text').attr('transform')).to.eql('rotate(-45)');
   });
 

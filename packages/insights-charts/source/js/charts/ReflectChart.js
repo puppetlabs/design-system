@@ -1,6 +1,7 @@
 import { select } from 'd3-selection';
 import clone from 'clone';
 import deepmerge from 'deepmerge';
+import debounce from 'debounce';
 import Dispatchers from '../lib/Dispatchers';
 import IDGenerator from '../helpers/IDGenerator';
 
@@ -122,7 +123,7 @@ class Chart {
       dispatchers: this.dispatchers,
     });
 
-    window.addEventListener('resize', this.resize);
+    window.addEventListener('resize', debounce(this.resize, 100));
   }
 
   on(eventType, callback) {
@@ -153,7 +154,7 @@ class Chart {
 
   resize() {
     try {
-      if (this.rendered) {
+      if (this.rendered && this.chart) {
         this.chart.update();
       }
     } catch (e) {
@@ -177,6 +178,7 @@ class Chart {
 
     if (this.chart && this.chart.destroy) {
       this.chart.destroy();
+      delete this.chart;
     }
   }
 
