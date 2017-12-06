@@ -1,3 +1,8 @@
+Multiline `Input`:
+```
+<Input multiline />
+```
+
 `Input` with value:
 ```
 <Input value="I'm a happy input with a value!" />
