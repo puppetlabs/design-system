@@ -1,3 +1,7 @@
+# 0.3.5
+
+* Input can now be put in multiline mode
+
 # 0.3.4
 
 * Fix a bug causing hidden tooltips to sometimes break other elements

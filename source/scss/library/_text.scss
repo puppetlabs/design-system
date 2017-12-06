@@ -11,6 +11,9 @@
   color: $reflect-input-color;
   outline: none;
   padding: $reflect-input-padding;
+
+  // Really only applies when .rc-input is a textarea
+  resize: vertical;
   width: 100%;
 
   &.rc-input-error {
