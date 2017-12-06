@@ -1,3 +1,7 @@
+# 0.3.6
+
+* Fix a bug where pointer-events weren't being applied to tooltips
+
 # 0.3.5
 
 * Input can now be put in multiline mode
