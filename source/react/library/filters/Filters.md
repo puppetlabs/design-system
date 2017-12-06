@@ -17,3 +17,23 @@ const fields = [
   onChange={ (newFilters) => console.log('new filters', newFilters) }
 />
 ```
+
+A `Filters` control that allows filters to be marked as `removable`.
+
+This is used for letting the user dictate which filters are displayed in the filter bar, and are
+hence removable by the end user.
+
+```
+const filters = [
+  { field: 'Animal type', op: '=', value: 'Big cat' },
+];
+
+const fields = ['Animal type'];
+
+<Filters
+  removableToggle
+  filters={ filters }
+  fields={ fields }
+  onChange={ (newFilters) => console.log('new filters', newFilters) }
+/>
+```

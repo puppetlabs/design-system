@@ -4,6 +4,7 @@ import Icon from '../Icon';
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
+  className: React.PropTypes.string,
   children: React.PropTypes.string,
   onRemove: React.PropTypes.func,
   onEdit: React.PropTypes.func,
@@ -68,7 +69,7 @@ class ListItem extends React.PureComponent {
     if (this.props.onRemove) {
       jsx = (
         <a className="rc-list-item-action rc-list-item-remove" onClick={ this.onRemove }>
-          <Icon type="delete" width="16px" height="16px" />
+          <Icon type="close" width="12px" height="12px" />
         </a>
       );
     }
@@ -82,7 +83,7 @@ class ListItem extends React.PureComponent {
     if (this.props.onEdit) {
       jsx = (
         <a className="rc-list-item-action rc-list-item-edit" onClick={ this.onEdit }>
-          <Icon type="edit" width="16px" height="16px" />
+          <Icon type="pencil" width="12px" height="12px" />
         </a>
       );
     }
@@ -91,7 +92,7 @@ class ListItem extends React.PureComponent {
   }
 
   render() {
-    const className = classnames('rc-list-item', {
+    const className = classnames('rc-list-item', this.props.className, {
       'rc-list-item-clickable': this.props.onClick,
       'rc-list-item-selected': this.props.selected,
     });

@@ -1,25 +1,29 @@
 import React from 'react';
+import clone from 'clone';
 
 import Filter from './Filter';
 
 import { filterOperators } from '../../constants';
 import Icon from '../Icon';
 import Form from '../form';
+import List from '../list/List';
 
 const propTypes = {
   fields: React.PropTypes.array,
   filters: React.PropTypes.array,
   onChange: React.PropTypes.func,
+  removableToggle: React.PropTypes.bool,
 };
 
 const defaultProps = {
   fields: [],
   filters: [],
   onChange: () => {},
+  removableToggle: false,
 };
 
 const getFilterKey = filter =>
-  [filter.field, filter.op, filter.value, filter.values].join('');
+  [filter.field, filter.op, filter.value, filter.values, filter.removable].join('');
 
 /**
  * `Filters` allows users to list, edit, and add filters.
@@ -52,7 +56,7 @@ class Filters extends React.Component {
       const index = this.props.filters
         .findIndex(f => getFilterKey(f) === this.state.editing);
 
-      newFilters = newFilters.concat(this.props.filters);
+      newFilters = clone(this.props.filters);
       newFilters[index] = filter;
     } else {
       newFilters = this.props.filters
@@ -91,6 +95,10 @@ class Filters extends React.Component {
       filter.op = form.filterOperator.id;
     }
 
+    if (this.props.removableToggle && typeof form.filterRemovable !== 'undefined') {
+      filter.removable = form.filterRemovable;
+    }
+
     return filter;
   }
 
@@ -115,9 +123,9 @@ class Filters extends React.Component {
     });
 
     return (
-      <div className="rc-filters-list">
+      <List className="rc-filters-list">
         { filters }
-      </div>
+      </List>
     );
   }
 
@@ -137,7 +145,9 @@ class Filters extends React.Component {
 
   renderForm(filter = {}) {
     let jsx;
-    let valueField;
+    let removableField;
+    let currentOp;
+    let currentField;
 
     if (this.state.adding || this.state.editing) {
       const fields = this.props.fields.map(field => ({
@@ -153,6 +163,44 @@ class Filters extends React.Component {
         selected: filter.op === op.symbol,
       }));
 
+      if (this.props.removableToggle) {
+        removableField = (
+          <Form.Field
+            value={ filter.removable }
+            type="checkbox"
+            name="filterRemovable"
+            label="removable"
+            inline
+          />
+        );
+      }
+
+      if (filter.op) {
+        const operator = filterOperators
+          .filter(op => op.symbol === filter.op)[0];
+
+        if (operator) {
+          currentOp = {
+            id: operator.symbol,
+            label: operator.label,
+            value: operator.symbol,
+          };
+        }
+      }
+
+      if (filter.field) {
+        const field = this.props.fields
+          .filter(f => f === filter.field)[0];
+
+        if (field) {
+          currentField = {
+            id: field,
+            label: field,
+            value: field,
+          };
+        }
+      }
+
       return (
         <Form
           submittable
@@ -163,14 +211,14 @@ class Filters extends React.Component {
           key={ `${this.state.editing}-form` }
         >
           <Form.Field
-            value={ filter.field }
+            value={ currentField }
             type="select"
             name="filterField"
             label="field"
             elementProps={ { options: fields, placeholder: 'Choose a field...' } }
           />
           <Form.Field
-            value={ filter.op }
+            value={ currentOp }
             type="select"
             name="filterOperator"
             label="operation"
@@ -183,6 +231,7 @@ class Filters extends React.Component {
             label="value"
             elementProps={ { placeholder: 'e.g. Jim, 15, etc.' } }
           />
+          { removableField }
         </Form>
       );
     }

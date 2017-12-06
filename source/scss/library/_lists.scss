@@ -32,25 +32,38 @@
   overflow: hidden;
   padding: $reflect-list-item-padding-v $reflect-list-item-padding-h;
   position: relative;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   width: 100%;
+  word-wrap: break-word;
 
   .rc-list-item-text {
     flex: 1;
     overflow-x: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
   .rc-list-item-actions {
+    background: $reflect-list-item-bg;
     display: flex;
+    padding: $reflect-list-item-padding-v * 2;
+    position: absolute;
+    right: $reflect-list-item-padding-h;
+    top: 0;
   }
 
   .rc-list-item-action {
     align-items: center;
+    cursor: pointer;
     display: flex;
     margin-left: $reflect-list-item-padding-h;
+  }
+
+  .rc-list-item-edit {
+    display: none;
+  }
+}
+
+.rc-list-item-link:hover {
+  .rc-list-item-edit {
+    display: flex;
   }
 }
 
