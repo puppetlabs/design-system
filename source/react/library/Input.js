@@ -3,6 +3,8 @@ import Icon from './Icon';
 import classnames from 'classnames';
 
 const propTypes = {
+  multiline: React.PropTypes.bool,
+
   /** Placeholder for when value is unset */
   placeholder: React.PropTypes.string,
   /** Class name applied to input element */
@@ -28,6 +30,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  multiline: false,
   onKeyDown: () => {},
   simple: false,
 };
@@ -116,7 +119,13 @@ class Input extends React.Component {
       props.placeholder = this.props.placeholder;
     }
 
-    let jsx = <input ref={ (c) => { this.input = c; } } { ...props } />;
+    let jsx;
+
+    if (this.props.multiline) {
+      jsx = <textarea ref={ (c) => { this.input = c; } } { ...props } />;
+    } else {
+      jsx = <input ref={ (c) => { this.input = c; } } { ...props } />;
+    }
 
     if (this.props.icon) {
       jsx = (

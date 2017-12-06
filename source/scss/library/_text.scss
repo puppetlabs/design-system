@@ -4,6 +4,10 @@
   box-shadow: $reflect-selected-shadow;
 }
 
+textarea.rc-input {
+  resize: vertical;
+}
+
 .rc-input {
   background: $reflect-input-bg;
   border: $reflect-input-border;
