@@ -78,6 +78,13 @@
   text-decoration: none;
 }
 
+.rc-menu-list-tiny {
+  .rc-menu-item a {
+    height: $reflect-menu-item-tiny-height;
+    padding: $reflect-menu-item-tiny-padding;
+  }
+}
+
 .rc-menu-item a:hover {
   text-decoration: none;
 }

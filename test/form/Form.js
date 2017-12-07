@@ -19,6 +19,6 @@ describe('<Form />', () => {
     );
 
     expect(Object.keys(wrapper.find('.test-child').props()))
-      .to.eql(['className', 'error', 'value', 'onChange']);
+      .to.eql(['className', 'error', 'value', 'onChange', 'size']);
   });
 });

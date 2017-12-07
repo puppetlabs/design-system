@@ -4,7 +4,7 @@ import classnames from 'classnames';
 const propTypes = {
   className: React.PropTypes.string,
   children: React.PropTypes.any,
-  size: React.PropTypes.string,
+  size: React.PropTypes.oneOf(['small', 'tiny']),
 };
 
 /**

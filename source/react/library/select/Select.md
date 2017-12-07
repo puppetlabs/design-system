@@ -27,3 +27,19 @@ const options = [
   options={ options }
 />
 ```
+
+Tiny Select
+
+```
+const options = [
+  { value: 'Geoff', label: 'Geoff' },
+  { value: 'Colby', label: 'Colby' },
+  { value: 'Michael', label: 'Sig', selected: true },
+];
+
+<Select
+  onSelect={o => console.log(o)}
+  size="tiny"
+  options={ options }
+/>
+```

@@ -2,7 +2,6 @@ import React from 'react';
 
 import { filterOperators } from '../../constants';
 
-import Button from '../Button';
 import ListItem from '../list/ListItem';
 
 const propTypes = {

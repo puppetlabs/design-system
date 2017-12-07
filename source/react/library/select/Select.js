@@ -148,6 +148,7 @@ class Select extends React.Component {
     return (
       <MenuList
         selected={ selected }
+        size={ this.props.size }
         options={ this.state.options }
         onChange={ this.onSelect }
       />
