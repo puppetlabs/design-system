@@ -10,11 +10,15 @@ class DataSet {
   }
 
   getGroups() {
-    return this.data.series.filter(d => d.disabled !== true).map(d => d.label);
+    return this.data.series
+      .filter(d => (d.disabled !== true && d.label !== undefined))
+      .map(d => d.label);
   }
 
   getGroupsByType(type) {
-    return this.data.series.filter(d => d.disabled !== true && d.type === type).map(d => d.label);
+    return this.data.series
+      .filter(d => d.disabled !== true && d.type === type && d.label !== undefined)
+      .map(d => d.label);
   }
 
   getCategoryType() {

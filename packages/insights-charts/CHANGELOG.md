@@ -1,3 +1,7 @@
+# 0.8.1 
+
+* Bug fix for non grouped visualizations that lacked a series label
+
 # 0.8.0 
 
 * Adding smart labels to the x axis. This means that x axis labels can now wrap and rotate automatically 
