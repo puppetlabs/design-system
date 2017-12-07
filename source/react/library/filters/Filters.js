@@ -64,7 +64,7 @@ class Filters extends React.Component {
     }
 
     this.props.onChange(newFilters);
-    this.setState({ adding: false });
+    this.setState({ adding: false, editing: null });
   }
 
   onEdit(filter) {
@@ -103,23 +103,17 @@ class Filters extends React.Component {
   }
 
   renderFilters() {
-    const filters = [];
-
-    this.props.filters.forEach((filter) => {
+    const filters = this.props.filters.map((filter) => {
       const key = getFilterKey(filter);
 
-      filters.push(
+      return (
         <Filter
           onEdit={ this.onEdit(filter) }
           onRemove={ this.onRemove(filter) }
           filter={ filter }
           key={ key }
-        />,
+        />
       );
-
-      if (key === this.state.editing) {
-        filters.push(this.renderForm(filter));
-      }
     });
 
     return (
@@ -143,11 +137,17 @@ class Filters extends React.Component {
     return jsx;
   }
 
-  renderForm(filter = {}) {
+  renderForm() {
     let jsx;
+    let filter = {};
     let removableField;
     let currentOp;
     let currentField;
+
+    if (this.state.editing) {
+      filter = this.props.filters
+        .filter(f => getFilterKey(f) === this.state.editing)[0];
+    }
 
     if (this.state.adding || this.state.editing) {
       const fields = this.props.fields.map(field => ({
@@ -240,12 +240,14 @@ class Filters extends React.Component {
   }
 
   render() {
-    const filters = this.renderFilters();
     const action = this.renderAction();
+    let filters;
     let form;
 
-    if (this.state.adding) {
+    if (this.state.adding || this.state.editing) {
       form = this.renderForm();
+    } else {
+      filters = this.renderFilters();
     }
 
     return (

@@ -60,6 +60,7 @@ const Filter = (props) => {
       className="rc-filters-list-item"
       onRemove={ props.onRemove }
       onEdit={ props.onEdit }
+      onClick={ props.onEdit }
     >
       { text }
     </ListItem>
