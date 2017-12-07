@@ -5,7 +5,7 @@ import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
   className: React.PropTypes.string,
-  children: React.PropTypes.string,
+  children: React.PropTypes.any,
   onRemove: React.PropTypes.func,
   onEdit: React.PropTypes.func,
   onClick: React.PropTypes.func,

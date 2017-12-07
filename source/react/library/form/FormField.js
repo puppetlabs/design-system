@@ -20,7 +20,6 @@ const propTypes = {
     React.PropTypes.oneOf(supportedTypes),
     React.PropTypes.element,
   ]).isRequired,
-  onChange: React.PropTypes.func.isRequired,
   name: React.PropTypes.string.isRequired,
   value: React.PropTypes.oneOfType([
     React.PropTypes.number,
@@ -31,12 +30,14 @@ const propTypes = {
   size: React.PropTypes.string,
   error: React.PropTypes.string,
   label: React.PropTypes.string,
+  onChange: React.PropTypes.func,
   className: React.PropTypes.string,
   description: React.PropTypes.string,
   elementProps: React.PropTypes.object,
 };
 
 const defaultProps = {
+  onChange: () => {},
 };
 
 class FormField extends React.Component {

@@ -43,7 +43,9 @@ class Filters extends React.Component {
   }
 
   onAdd(e) {
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
     this.setState({ adding: true });
   }
