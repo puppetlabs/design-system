@@ -21,6 +21,8 @@ const propTypes = {
   className: React.PropTypes.string,
   allowBubble: React.PropTypes.bool,
   disablePortal: React.PropTypes.bool,
+  wrapperClassName: React.PropTypes.string,
+  inheritTargetWidth: React.PropTypes.bool,
   disableOutsideClick: React.PropTypes.bool,
 };
 
@@ -129,6 +131,7 @@ class Popover extends React.Component {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
       let bottom;
+      let width;
       let right;
       let left;
 
@@ -140,6 +143,10 @@ class Popover extends React.Component {
         bottom = elPosition.height;
         left = 0;
         right = 0;
+      }
+
+      if (this.props.inheritTargetWidth) {
+        newState.position.width = elPosition.width;
       }
 
       switch (this.props.anchor) {
@@ -182,7 +189,7 @@ class Popover extends React.Component {
   }
 
   render() {
-    const wrapperClassName = classnames('rc-popover-wrapper', {
+    const wrapperClassName = classnames('rc-popover-wrapper', this.props.wrapperClassName, {
       'rc-popover-wrapper-open': this.state.open,
       'rc-popover-wrapper-relative': this.props.disablePortal,
     });
@@ -208,9 +215,8 @@ class Popover extends React.Component {
       onOutsideClick: this.onOutsideClick,
       onClose: this.close,
       allowBubble: this.props.allowBubble,
-      children: this.props.children,
       menu: this.props.menu,
-    });
+    }, this.props.children);
 
     return (
       <div

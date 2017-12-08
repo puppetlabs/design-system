@@ -8,6 +8,7 @@ import Icon from '../Icon';
 import Input from '../Input';
 import Menu from '../menu/Menu';
 import MenuList from '../menu/MenuList';
+import Popover from '../Popover';
 
 const propTypes = {
   autoOpen: React.PropTypes.bool,
@@ -108,6 +109,7 @@ class Select extends React.Component {
       return o;
     });
 
+    console.log(this.popover, this.popover.close());
     this.props.onSelect(option);
     this.setState({
       inputValue: undefined,
@@ -158,7 +160,7 @@ class Select extends React.Component {
   renderMenu() {
     let jsx;
 
-    if (this.state.open) {
+//    if (this.state.open) {
       const menuList = this.renderMenuList();
 
       jsx = (
@@ -166,7 +168,7 @@ class Select extends React.Component {
           { menuList }
         </Menu>
       );
-    }
+//    }
 
     return jsx;
   }
@@ -199,16 +201,22 @@ class Select extends React.Component {
   render() {
     const menu = this.renderMenu();
     const input = this.renderInput();
-    const className = classnames('rc-select', this.props.className, {
+    const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
       'rc-select-open': this.state.open,
       [`rc-select-${this.props.size}`]: this.props.size,
     });
 
     return (
-      <div ref={ (c) => { this.elem = c; } } className={ className }>
-        { input }
+      <Popover
+        ref={ (c) => { this.popover = c; } }
+        target={ input }
+        className="rc-select-popover"
+        wrapperClassName={ className }
+        inheritTargetWidth
+        margin={ 4 }
+      >
         { menu }
-      </div>
+      </Popover>
     );
   }
 }
