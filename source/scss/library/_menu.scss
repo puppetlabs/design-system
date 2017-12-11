@@ -9,6 +9,10 @@
     color: $color;
   }
 
+  .rc-menu-item:last-of-type a {
+    border-bottom: 0;
+  }
+
   .rc-menu-item a:hover {
     background: $bg-hover;
     color: $color-hover;

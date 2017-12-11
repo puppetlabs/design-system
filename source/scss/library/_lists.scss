@@ -43,6 +43,7 @@
   .rc-list-item-actions {
     background: $reflect-list-item-bg;
     display: flex;
+    height: 100%;
     padding: $reflect-list-item-padding-v * 2;
     position: absolute;
     right: $reflect-list-item-padding-h;
@@ -72,5 +73,20 @@
     background: $reflect-list-item-bg-hover;
     color: $reflect-list-item-color-hover;
     cursor: pointer;
+  }
+}
+
+.rc-list-item-tiny {
+  .rc-list-item-link {
+    padding: $reflect-list-item-tiny-padding-v $reflect-list-item-tiny-padding-h;
+  }
+
+  .rc-list-item-text {
+    font-size: $reflect-list-item-tiny-font-size;
+  }
+
+  .rc-list-item-actions {
+    padding: $reflect-list-item-tiny-padding-v;
+    right: $reflect-list-item-tiny-padding-h;
   }
 }

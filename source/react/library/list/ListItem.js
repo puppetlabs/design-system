@@ -4,6 +4,7 @@ import Icon from '../Icon';
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
+  size: React.PropTypes.oneOf(['small', 'tiny']),
   className: React.PropTypes.string,
   children: React.PropTypes.any,
   onRemove: React.PropTypes.func,
@@ -14,6 +15,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  size: 'small',
   selected: false,
 };
 
@@ -65,11 +67,16 @@ class ListItem extends React.PureComponent {
 
   renderRemove() {
     let jsx;
+    let iconSize = '12px';
+
+    if (this.props.size === 'tiny') {
+      iconSize = '10px';
+    }
 
     if (this.props.onRemove) {
       jsx = (
         <a className="rc-list-item-action rc-list-item-remove" onClick={ this.onRemove }>
-          <Icon type="close" width="12px" height="12px" />
+          <Icon type="close" width={ iconSize } height={ iconSize } />
         </a>
       );
     }
@@ -92,7 +99,8 @@ class ListItem extends React.PureComponent {
   }
 
   render() {
-    const className = classnames('rc-list-item', this.props.className, {
+    const size = this.props.size;
+    const className = classnames('rc-list-item', this.props.className, `rc-list-item-${size}`, {
       'rc-list-item-clickable': this.props.onClick,
       'rc-list-item-selected': this.props.selected,
     });

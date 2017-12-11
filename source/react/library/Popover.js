@@ -163,10 +163,12 @@ class Popover extends React.Component {
     this.setState(newState);
   }
 
-  close() {
-    this.setState({ open: false });
+  open() {
+    this.setState({ open: true }, this.onOpen);
+  }
 
-    this.onClose();
+  close() {
+    this.setState({ open: false }, this.onClose);
   }
 
   renderButton() {

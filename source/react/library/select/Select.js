@@ -73,6 +73,7 @@ class Select extends React.Component {
 
   componentDidMount() {
     if (this.props.autoOpen) {
+      this.popover.open();
       this.input.focus();
     }
   }
@@ -109,7 +110,7 @@ class Select extends React.Component {
       return o;
     });
 
-    console.log(this.popover, this.popover.close());
+    this.popover.close();
     this.props.onSelect(option);
     this.setState({
       inputValue: undefined,
@@ -132,6 +133,12 @@ class Select extends React.Component {
     }
 
     return value;
+  }
+
+  clearInput() {
+    this.setState({ inputValue: '' }, () => {
+      this.input.input.value = '';
+    });
   }
 
   handleClickOutside() {
@@ -158,17 +165,13 @@ class Select extends React.Component {
   }
 
   renderMenu() {
-    let jsx;
+    const menuList = this.renderMenuList();
 
-//    if (this.state.open) {
-      const menuList = this.renderMenuList();
-
-      jsx = (
-        <Menu className="rc-select-menu" size={ this.props.size }>
-          { menuList }
-        </Menu>
-      );
-//    }
+    const jsx = (
+      <Menu className="rc-select-menu" size={ this.props.size }>
+        { menuList }
+      </Menu>
+    );
 
     return jsx;
   }
