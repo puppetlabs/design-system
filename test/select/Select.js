@@ -6,15 +6,17 @@ import { expect } from 'chai';
 import Select from '../../source/react/library/select/Select';
 
 describe('<Select />', () => {
+  const defaultProps = { disablePortal: true };
+
   it('should render without blowing up', () => {
-    const wrapper = shallow(<Select />);
+    const wrapper = shallow(<Select { ...defaultProps } />);
 
     expect(wrapper.length).to.eql(1);
   });
 
   it('should open on click', () => {
     const options = ['Cats', 'Dogs'];
-    const wrapper = mount(<Select options={ options } />);
+    const wrapper = mount(<Select options={ options } { ...defaultProps } />);
 
     expect(wrapper.find('MenuItem').length).to.eql(0);
 
@@ -30,7 +32,7 @@ describe('<Select />', () => {
     ];
 
     it('should render the label', () => {
-      const wrapper = mount(<Select options={ options } />);
+      const wrapper = mount(<Select options={ options } { ...defaultProps } />);
 
       wrapper.find('Input').simulate('click');
 
@@ -40,7 +42,9 @@ describe('<Select />', () => {
 
     it('should emit the full object as a callback to onSelect', () => {
       const onSelect = sinon.spy();
-      const wrapper = mount(<Select options={ options } onSelect={ onSelect } />);
+      const wrapper = mount(
+        <Select options={ options } onSelect={ onSelect } { ...defaultProps } />,
+      );
 
       wrapper.find('Input').simulate('click');
 
@@ -65,7 +69,7 @@ describe('<Select />', () => {
     const options = ['Michael Phelps', 'Ryan Lochte'];
 
     it('should render the strings as labels', () => {
-      const wrapper = mount(<Select options={ options } />);
+      const wrapper = mount(<Select options={ options } { ...defaultProps } />);
 
       wrapper.find('Input').simulate('click');
 
@@ -75,7 +79,9 @@ describe('<Select />', () => {
 
     it('should emit the option as an object as a callback to onSelect', () => {
       const onSelect = sinon.spy();
-      const wrapper = mount(<Select options={ options } onSelect={ onSelect } />);
+      const wrapper = mount(
+        <Select options={ options } onSelect={ onSelect } { ...defaultProps } />,
+      );
 
       wrapper.find('Input').simulate('click');
 

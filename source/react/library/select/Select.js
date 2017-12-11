@@ -17,11 +17,13 @@ const propTypes = {
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
   name: React.PropTypes.string,
+  disablePortal: React.PropTypes.bool,
   size: React.PropTypes.oneOf(['tiny', 'small']),
 };
 
 const defaultProps = {
   placeholder: 'Select...',
+  disablePortal: false,
   onSelect: () => {},
   autoOpen: false,
   size: 'small',
@@ -136,9 +138,13 @@ class Select extends React.Component {
   }
 
   clearInput() {
-    this.setState({ inputValue: '' }, () => {
-      this.input.input.value = '';
+    const options = this.state.options.map((o) => {
+      o.selected = false;
+
+      return o;
     });
+
+    this.setState({ inputValue: '', options });
   }
 
   handleClickOutside() {
@@ -213,6 +219,8 @@ class Select extends React.Component {
       <Popover
         ref={ (c) => { this.popover = c; } }
         target={ input }
+        disablePortal={ this.props.disablePortal }
+        trigger="onMouseDown"
         className="rc-select-popover"
         wrapperClassName={ className }
         inheritTargetWidth
