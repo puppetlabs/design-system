@@ -12,7 +12,7 @@ const propTypes = {
   onClick: React.PropTypes.func,
   selected: React.PropTypes.bool,
   tooltip: React.PropTypes.bool,
-  kebab: React.PropTypes.bool,
+  kebab: React.PropTypes.any,
 };
 
 const defaultProps = {

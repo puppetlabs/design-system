@@ -1,6 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
 
+import Section from './MenuSection';
+import Header from './MenuHeader';
+import Item from './MenuItem';
+import List from './MenuList';
+
 const propTypes = {
   className: React.PropTypes.string,
   children: React.PropTypes.any,
@@ -27,5 +32,10 @@ class Menu extends React.Component {
 }
 
 Menu.propTypes = propTypes;
+
+Menu.Section = Section;
+Menu.Header = Header;
+Menu.Item = Item;
+Menu.List = List;
 
 export default Menu;

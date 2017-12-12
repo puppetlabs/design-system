@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Item from './ListItem';
+
 const propTypes = {
   children: React.PropTypes.any,
   /** either "ordered" or "unordered" */
@@ -32,5 +34,7 @@ class List extends React.PureComponent {
 
 List.propTypes = propTypes;
 List.defaultProps = defaultProps;
+
+List.Item = Item;
 
 export default List;

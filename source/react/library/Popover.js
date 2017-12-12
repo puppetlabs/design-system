@@ -9,7 +9,7 @@ const propTypes = {
   position: React.PropTypes.object,
   padding: React.PropTypes.bool,
   closeButton: React.PropTypes.bool,
-  anchor: React.PropTypes.string,
+  anchor: React.PropTypes.oneOf(['bottom right', 'bottom left']),
   onOpen: React.PropTypes.func,
   onClose: React.PropTypes.func,
   target: React.PropTypes.object,
@@ -131,7 +131,6 @@ class Popover extends React.Component {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
       let bottom;
-      let width;
       let right;
       let left;
 
