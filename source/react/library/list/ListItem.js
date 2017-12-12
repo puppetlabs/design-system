@@ -12,6 +12,7 @@ const propTypes = {
   onClick: React.PropTypes.func,
   selected: React.PropTypes.bool,
   tooltip: React.PropTypes.bool,
+  kebab: React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -98,13 +99,29 @@ class ListItem extends React.PureComponent {
     return jsx;
   }
 
+  renderKebab() {
+    let jsx;
+
+    if (this.props.kebab) {
+      jsx = (
+        <div className="rc-list-item-action rc-list-item-kebab" >
+          { this.props.kebab }
+        </div>
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
     const size = this.props.size;
     const className = classnames('rc-list-item', this.props.className, `rc-list-item-${size}`, {
       'rc-list-item-clickable': this.props.onClick,
       'rc-list-item-selected': this.props.selected,
+      'rc-list-item-kebab': this.props.kebab,
     });
     const edit = this.renderEdit();
+    const kebab = this.renderKebab();
     const remove = this.renderRemove();
     const content = this.props.children;
 
@@ -119,6 +136,7 @@ class ListItem extends React.PureComponent {
 
     let jsx = (
       <div { ...props }>
+        { kebab }
         <span className="rc-list-item-text">
           { content }
         </span>

@@ -57,6 +57,10 @@
     margin-left: $reflect-list-item-padding-h;
   }
 
+  .rc-list-item-kebab {
+    margin-left: 0;
+  }
+
   .rc-list-item-edit {
     display: none;
   }

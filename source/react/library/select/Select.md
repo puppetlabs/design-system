@@ -28,6 +28,12 @@ const options = [
 />
 ```
 
+Disabled Select
+
+```
+<Select disabled />
+```
+
 Tiny Select
 
 ```

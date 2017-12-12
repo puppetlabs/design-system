@@ -4,7 +4,8 @@
 }
 
 .rc-select-popover {
-  padding: 0;
+  max-height: 200px;
+  overflow-y: scroll;
 }
 
 .rc-select {
@@ -36,6 +37,14 @@
     position: absolute;
     width: 100%;
     z-index: 1;
+  }
+}
+
+.rc-select-disabled {
+  cursor: default;
+
+  .rc-input {
+    cursor: default;
   }
 }
 

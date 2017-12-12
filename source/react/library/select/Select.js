@@ -14,6 +14,7 @@ const propTypes = {
   autoOpen: React.PropTypes.bool,
   onSelect: React.PropTypes.func,
   options: React.PropTypes.array,
+  disabled: React.PropTypes.bool,
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
   name: React.PropTypes.string,
@@ -25,6 +26,7 @@ const defaultProps = {
   placeholder: 'Select...',
   disablePortal: false,
   onSelect: () => {},
+  disabled: false,
   autoOpen: false,
   size: 'small',
   options: [],
@@ -47,7 +49,7 @@ const shouldComponentUpdate = (currentOptions, newOptions) => {
   newOptions = formatOptions(newOptions);
 
   newOptions.forEach((option, i) => {
-    if (!update && currentOptions[i].id !== option.id) {
+    if (!update && currentOptions[0] && currentOptions[i].id !== option.id) {
       update = true;
     }
   });
@@ -193,6 +195,7 @@ class Select extends React.Component {
         value={ this.getCurrentValue() }
         size={ this.props.size }
         ref={ (c) => { this.input = c; } }
+        disabled={ this.props.disabled }
         focused={ this.state.open }
         onFocus={ () => this.setState({ open: true }) }
         placeholder={ this.props.placeholder }
@@ -212,23 +215,33 @@ class Select extends React.Component {
     const input = this.renderInput();
     const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
       'rc-select-open': this.state.open,
+      'rc-select-disabled': this.props.disabled,
       [`rc-select-${this.props.size}`]: this.props.size,
     });
-
-    return (
-      <Popover
-        ref={ (c) => { this.popover = c; } }
-        target={ input }
-        disablePortal={ this.props.disablePortal }
-        trigger="onMouseDown"
-        className="rc-select-popover"
-        wrapperClassName={ className }
-        inheritTargetWidth
-        margin={ 4 }
-      >
-        { menu }
-      </Popover>
+    let jsx = (
+      <div className={ className }>
+        { input }
+      </div>
     );
+
+    if (!this.props.disabled) {
+      jsx = (
+        <Popover
+          ref={ (c) => { this.popover = c; } }
+          target={ input }
+          disablePortal={ this.props.disablePortal }
+          className="rc-select-popover"
+          wrapperClassName={ className }
+          inheritTargetWidth
+          margin={ 4 }
+          padding={ false }
+        >
+          { menu }
+        </Popover>
+      );
+    }
+
+    return jsx;
   }
 }
 
