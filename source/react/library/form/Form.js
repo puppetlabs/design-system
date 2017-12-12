@@ -33,7 +33,9 @@ const getValues = (children) => {
   const values = {};
 
   React.Children.forEach(children, (child) => {
-    values[child.props.name] = child.props.value;
+    if (child) {
+      values[child.props.name] = child.props.value;
+    }
   });
 
   return values;
@@ -76,12 +78,20 @@ class Form extends React.Component {
   }
 
   renderChildren() {
-    return React.Children.map(this.props.children, child => React.cloneElement(child, {
-      error: child.props.error || this.props.errors[child.props.name],
-      value: this.state.values[child.props.name],
-      onChange: this.onChange(child.props.name),
-      size: this.props.size,
-    }));
+    const children = [];
+
+    React.Children.forEach(this.props.children, (child) => {
+      if (child) {
+        children.push(React.cloneElement(child, {
+          error: child.props.error || this.props.errors[child.props.name],
+          value: this.state.values[child.props.name],
+          onChange: this.onChange(child.props.name),
+          size: this.props.size,
+        }));
+      }
+    });
+
+    return children;
   }
 
   renderActions() {

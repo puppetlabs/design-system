@@ -14,7 +14,7 @@ describe('<Form />', () => {
   it('should render children with the correct props', () => {
     const wrapper = shallow(
       <Form>
-        <span className="test-child" />
+        <span key="test-child" className="test-child" />
       </Form>,
     );
 
