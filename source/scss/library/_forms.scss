@@ -36,16 +36,6 @@
   margin-top: $reflect-form-field-margin;
 }
 
-.rc-form-field:hover {
-  .rc-input {
-    border: $reflect-form-input-hover-border;
-  }
-
-  .rc-input::placeholder {
-    color: $reflect-form-input-hover-color;
-  }
-}
-
 .rc-form-field-error {
   .rc-form-field-label {
     color: $reflect-danger-color;

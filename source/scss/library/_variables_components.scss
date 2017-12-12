@@ -234,9 +234,6 @@ $reflect-form-description-font-size          : $reflect-font-size-small !default
 
 $reflect-form-field-margin                   : $reflect-small !default;
 
-$reflect-form-input-hover-color              : $reflect-brand-primary !default;
-$reflect-form-input-hover-border             : 1px solid $reflect-brand-primary !default;
-
 $reflect-form-tiny-label-font-size          : $reflect-font-size-tiny * 0.9 !default;
 
 // Filters
@@ -274,6 +271,9 @@ $reflect-input-border-radius                 : $reflect-border-radius !default;
 $reflect-input-border-error                  : 1px solid $reflect-danger-color !default;
 $reflect-input-padding                       : $reflect-small !default;
 $reflect-input-placeholder-color             : $reflect-font-color-subtle !default;
+
+$reflect-input-hover-color                   : $reflect-brand-primary !default;
+$reflect-input-hover-border                  : 1px solid $reflect-brand-primary !default;
 
 $reflect-input-disabled-bg                   : $reflect-bg-subtle !default;
 $reflect-input-disabled-color                : $reflect-font-color-subtle !default;

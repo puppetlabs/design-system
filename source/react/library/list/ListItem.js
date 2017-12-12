@@ -123,6 +123,7 @@ class ListItem extends React.PureComponent {
     const edit = this.renderEdit();
     const kebab = this.renderKebab();
     const remove = this.renderRemove();
+    const actions = this.props.actions;
     const content = this.props.children;
 
     const props = {
@@ -141,6 +142,7 @@ class ListItem extends React.PureComponent {
           { content }
         </span>
         <span className="rc-list-item-actions">
+          { actions }
           { edit }
           { remove }
         </span>

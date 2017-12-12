@@ -24,6 +24,15 @@
     @extend %focused-input;
   }
 
+  &:hover {
+    border: $reflect-input-hover-border;
+  }
+
+  &::placeholder {
+    color: $reflect-input-hover-color;
+  }
+
+
   &[disabled] {
     background: $reflect-input-disabled-bg;
     color: $reflect-input-disabled-color;
