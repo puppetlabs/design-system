@@ -43,7 +43,7 @@ class Container {
   }
 
   getSVG() {
-    return this.svg;
+    return this.g;
   }
 
   setWrapperDimensions() {
@@ -291,8 +291,9 @@ class Container {
         .attr('height', height + margins.top + margins.bottom)
         .style('height', `${height + margins.top + margins.bottom}px`)
         .style('margin-top', options.legend.orientation === 'top' ? `${legend.height}px` : null)
-        .style('margin-left', options.legend.orientation === 'left' ? `${legend.width}px` : null)
-      .append('g')
+        .style('margin-left', options.legend.orientation === 'left' ? `${legend.width}px` : null);
+
+    this.g = this.svg.append('g')
         .attr('transform', `translate(${margins.left},${margins.top})`);
 
     return this;

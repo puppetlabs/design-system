@@ -25,12 +25,13 @@ class SeriesLine extends Series {
       this.series = selection.selectAll(CSS.getClassSelector(this.selector))
         .data(this.data, d => (d.seriesIndex));
 
+      this.series.exit().remove();
+
       this.series
         .selectAll(CSS.getClassSelector('line-path'))
+          .data(this.data, d => (d.seriesIndex))
           .attr('style', d => (d.color ? `stroke: ${d.color};` : null))
           .attr('d', d => (Line(x, y, d.data, options)));
-
-      this.series.exit().remove();
 
       this.series = this.series.enter()
         .append('g')

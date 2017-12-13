@@ -61,6 +61,9 @@ class BarCharts extends React.Component {
           orientation: 'right',
         },
       },
+      zoom: {
+        enabled: true,
+      },
       grid: {
         enabled: true,
         horizontal: true,

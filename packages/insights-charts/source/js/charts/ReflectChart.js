@@ -76,6 +76,10 @@ const defaultOptions = {
     horizontal: true,
     vertical: true,
   },
+
+  zoom: {
+    enabled: true,
+  },
 };
 
 // This ensures uniqueness for the entire instance, which is useful when rendering multiple charts

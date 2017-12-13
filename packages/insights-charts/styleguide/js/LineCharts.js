@@ -133,12 +133,7 @@ class LineCharts extends React.Component {
         },
       },
       axis: {
-        x: {
-          scaleType: 'ordinalBand',
-          labels: {
-            rotated: false,
-          },
-        },
+        x: {},
         y: {
           // min: -8000,
           // max: 8000,

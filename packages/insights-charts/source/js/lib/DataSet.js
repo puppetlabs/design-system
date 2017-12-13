@@ -6,7 +6,13 @@ class DataSet {
   constructor(data) {
     this.data = clone(data);
 
+    this.zoomCategories = [];
+
     this.validateSeries();
+  }
+
+  setZoomCategories(categories = []) {
+    this.zoomCategories = categories;
   }
 
   getGroups() {
@@ -28,50 +34,65 @@ class DataSet {
   getCategories() {
     const dataSet = this;
     const type = this.getCategoryType();
+    const categories = this.data.categories;
+    const zoomCategories = this.zoomCategories || [];
+    const newCategories = [];
 
-    return this.data.categories.map((category, index) => {
-      if (typeof category.label === 'undefined') {
-        category = { label: category };
-      }
+    categories.forEach((category, index) => {
+      if (
+        zoomCategories.length === 0 ||
+        (zoomCategories.length > 0 && index >= zoomCategories[0] && index <= zoomCategories[1])
+      ) {
+        if (typeof category.label === 'undefined') {
+          category = { label: category };
+        }
 
-      switch (type) {
-        case 'date':
-          category.label = moment(category.label);
-          break;
-        case 'number':
-          if (helpers.isFloat(category.label)) {
-            category.label = parseFloat(category.label);
-          } else {
-            category.label = parseInt(category.label, 10);
+        category.categoryIndex = index;
+
+        switch (type) {
+          case 'date':
+            category.label = moment(category.label);
+            break;
+          case 'number':
+            if (helpers.isFloat(category.label)) {
+              category.label = parseFloat(category.label);
+            } else {
+              category.label = parseInt(category.label, 10);
+            }
+
+            break;
+          default:
+            category.label = category.label;
+        }
+
+        category.isTargetable = function () {
+          if (dataSet.seriesData === undefined) {
+            dataSet.getSeries();
           }
 
-          break;
-        default:
-          category.label = category.label;
+          if (typeof this.targetable === 'undefined') {
+            this.targetable = dataSet.seriesData
+              .some((s) => {
+                const dataPoints = s.data.filter(d => d.categoryIndex === category.categoryIndex);
+
+                return dataPoints.some(d => d.y !== null);
+              });
+          }
+
+          return this.targetable;
+        };
+
+        newCategories.push(category);
       }
-
-      category.isTargetable = function () {
-        if (dataSet.seriesData === undefined) {
-          dataSet.getSeries();
-        }
-
-        if (typeof this.targetable === 'undefined') {
-          this.targetable = dataSet.seriesData.some(s => s.data[index].y !== null);
-        }
-
-        return this.targetable;
-      };
-
-      return category;
     });
+
+    return newCategories;
   }
 
   getDataByYAxis(axisIndex) {
     const i = axisIndex;
 
-    if (this.seriesData === undefined) {
-      this.getSeries();
-    }
+    this.getSeries();
 
     return this.seriesData.filter(s => (
       (s.axis === i || (s.axis === undefined && i === 0)) && s.disabled !== true
@@ -80,27 +101,30 @@ class DataSet {
 
   getSeries() {
     const categories = this.getCategories();
+    const series = [];
 
-    const series = this.data.series.map((s, index) => {
-      s.seriesIndex = index;
+    this.data.series.forEach((s, index) => {
+      const newSeries = clone(s);
 
-      s.data = s.data.map((d, i) => {
-        const category = categories[i];
+      newSeries.seriesIndex = index;
+      newSeries.data = [];
 
+      categories.forEach((category) => {
+        const d = s.data[category.categoryIndex];
         const datum = (typeof d === 'object' && d !== null ? d : { x: category.label, y: d, y0: 0 });
 
         datum.seriesIndex = index;
-        datum.categoryIndex = i;
+        datum.categoryIndex = category.categoryIndex;
         datum.seriesLabel = s.label;
         datum.seriesType = s.type;
         datum.axis = s.axis || 0;
         datum.color = s.color || category.color;
         datum.formatter = s.formatter;
 
-        return datum;
+        newSeries.data.push(datum);
       });
 
-      return s;
+      series.push(newSeries);
     });
 
     this.seriesData = series;

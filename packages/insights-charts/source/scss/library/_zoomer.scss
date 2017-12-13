@@ -1,0 +1,31 @@
+.reflect-charts-zoomer-bg {
+  fill: transparent;
+}
+
+.reflect-charts-zoomer-marker {
+  fill: $reflect-zoomer-fill;
+  opacity: $reflect-zoomer-opacity;
+}
+
+.reflect-charts-zoomer-reset {
+  rect {
+    fill: $reflect-zoomer-reset-bg;
+    stroke: $reflect-zoomer-reset-border;
+  }
+
+  text {
+    fill: $reflect-zoomer-reset-color;
+    font-size: $reflect-zoomer-reset-font-size;
+  }
+}
+
+.reflect-charts-zoomer-reset:hover {
+  rect {
+    fill: $reflect-zoomer-reset-bg-hover;
+    stroke: $reflect-zoomer-reset-border-hover;
+  }
+
+  text {
+    fill: $reflect-zoomer-reset-color-hover;
+  }
+}

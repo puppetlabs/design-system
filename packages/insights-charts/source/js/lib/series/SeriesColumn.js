@@ -91,7 +91,10 @@ class SeriesColumn extends Series {
 
     // updating bars that were already in the view
     let rect = series.selectAll(CSS.getClassSelector('column-rect'))
-      .data(d => d.data);
+      .data(d => (d.data), d => (d.categoryIndex));
+
+    // removing bars that no longer exist
+    rect.exit().remove();
 
     // adding new bars and merging the ones that will be updated
     rect = rect.enter()
@@ -125,7 +128,7 @@ class SeriesColumn extends Series {
 
     if (dispatchers.enabled('dataPointClick.external')) {
       rect.style('cursor', 'pointer')
-        .on('click', (point) => {
+        .on('mousedown', (point) => {
           dispatchers.call('dataPointClick', this, { event, data: { point } });
         });
     }

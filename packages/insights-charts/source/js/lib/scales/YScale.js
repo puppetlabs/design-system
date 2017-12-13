@@ -139,7 +139,6 @@ class YScale {
       y.range([height, 0]);
     }
 
-
     return y;
   }
 

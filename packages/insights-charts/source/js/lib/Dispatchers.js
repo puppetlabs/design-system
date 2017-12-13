@@ -15,6 +15,9 @@ class Dispatchers {
       'tooltipMove',
       'tooltipHide',
       'annotationClick',
+      'zoomStart',
+      'zoom',
+      'zoomEnd',
     );
   }
 

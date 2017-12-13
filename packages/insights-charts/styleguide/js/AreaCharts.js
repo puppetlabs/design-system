@@ -45,6 +45,9 @@ class AreaCharts extends React.Component {
           enabled: true,
         },
       },
+      zoom: {
+        enabled: true,
+      },
       axis: {
         y: [
           {

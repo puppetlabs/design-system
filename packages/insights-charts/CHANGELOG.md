@@ -1,3 +1,7 @@
+# 0.9.0 
+
+* Adding zooming to all chart types
+
 # 0.8.1 
 
 * Bug fix for non grouped visualizations that lacked a series label

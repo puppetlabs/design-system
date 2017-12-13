@@ -418,6 +418,10 @@ class XAxis {
 
             if (orientation === 'left' || orientation === 'right') {
               xPos = height / 2;
+
+              if (orientation === 'right') {
+                xPos = -xPos;
+              }
             } else {
               xPos = width / 2;
             }

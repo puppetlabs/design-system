@@ -9,6 +9,7 @@ import ClipPath from '../lib/ClipPath';
 import Grid from '../lib/Grid';
 import ZeroLine from '../lib/ZeroLine';
 import Tooltip from '../lib/Tooltip';
+import Zoomer from '../lib/Zoomer';
 import SeriesColumn from '../lib/series/SeriesColumn';
 import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
@@ -19,6 +20,8 @@ class ColumnChart extends Chart {
     super({ elem, type, data, options, dispatchers, id });
 
     this.yScales = {};
+
+    dispatchers.on('zoom', this.update);
   }
 
   isBar() {
@@ -28,7 +31,8 @@ class ColumnChart extends Chart {
   }
 
   render() {
-    const categories = this.data.getCategories().map(c => (c.label));
+    const categories = this.data.getCategories();
+    const categoryLabels = categories.map(c => (c.label));
     const groups = this.data.getGroups();
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
@@ -44,11 +48,14 @@ class ColumnChart extends Chart {
     this.clipPath = new ClipPath(dimensions, options, this.id, animationDirection);
     this.clipPath.render(svg);
 
-    this.xScale = new XScale(categories, options, dimensions);
+    this.xScale = new XScale(categoryLabels, options, dimensions);
     const x = this.xScale.generate();
 
-    this.xAxis = new XAxis(categories, x, dimensions, options);
+    this.xAxis = new XAxis(categoryLabels, x, dimensions, options);
     this.xAxis.render(svg);
+
+    this.zoomer = new Zoomer(categories, x, dimensions, options, dispatchers);
+    this.zoomer.render(svg);
 
     let x1Dimension;
 
@@ -146,8 +153,13 @@ class ColumnChart extends Chart {
     this.clipPath.animate();
   }
 
-  update() {
-    const categories = this.data.getCategories().map(c => (c.label));
+  update(zoom = {}) {
+    if (zoom.reset || zoom.categories) {
+      this.data.setZoomCategories(zoom.categories);
+    }
+
+    const categories = this.data.getCategories();
+    const categoryLabels = categories.map(c => (c.label));
     const groups = this.data.getGroups();
     const seriesData = this.data.getSeries();
     const dispatchers = this.dispatchers;
@@ -162,8 +174,10 @@ class ColumnChart extends Chart {
     this.clipPath.update(dimensions, options, this.id, animationDirection);
     this.tooltip.update(seriesData, options, dispatchers, this.id);
 
-    const x = this.xScale.update(categories, options, dimensions, this.type);
-    this.xAxis.update(categories, x, dimensions, options);
+    const x = this.xScale.update(categoryLabels, options, dimensions, zoom);
+    this.xAxis.update(categoryLabels, x, dimensions, options);
+
+    this.zoomer.update(categories, x, dimensions, options, dispatchers);
 
     let x1Dimension;
 
@@ -178,7 +192,7 @@ class ColumnChart extends Chart {
     const x1 = this.xScale1.generate();
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
-      let data = this.data.getDataByYAxis(yAxisIndex);
+      let data = this.data.getDataByYAxis(yAxisIndex, categoryLabels);
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {

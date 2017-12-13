@@ -19,6 +19,8 @@ class SeriesDataLabel extends Series {
       x1,
     );
 
+    this.renderCount = 0;
+
     this.getX = this.getX.bind(this);
     this.getY = this.getY.bind(this);
     this.getTransform = this.getTransform.bind(this);
@@ -170,6 +172,8 @@ class SeriesDataLabel extends Series {
   }
 
   render(selection) {
+    this.renderCount += 1;
+
     const self = this;
     const options = this.options;
     const enabled = options.data_labels && options.data_labels.enabled;
@@ -182,57 +186,32 @@ class SeriesDataLabel extends Series {
       this.series = selection.selectAll(CSS.getClassSelector(this.selector))
         .data(this.data, d => (d.seriesIndex));
 
-      this.series.selectAll(CSS.getClassSelector('data-label-shadow'))
-        .text(this.getFormattedValue)
-        .attr('x', this.isHorizontal() ? this.getY : this.getX)
-        .attr('y', this.isHorizontal() ? this.getX : this.getY)
-        .attr('transform', this.getTransform)
-        .attr('text-anchor', function (d) {
-          return self.getTextAnchor(this, d);
-        })
-        .attr('style', function (d) {
-          return `visibility: ${self.getVisibility(d, this)};`;
-        });
-
-      this.series.selectAll(CSS.getClassSelector('data-label'))
-        .text(this.getFormattedValue)
-        .attr('x', this.isHorizontal() ? this.getY : this.getX)
-        .attr('y', this.isHorizontal() ? this.getX : this.getY)
-        .attr('transform', this.getTransform)
-        .attr('text-anchor', function (d) {
-          return self.getTextAnchor(this, d);
-        })
-        .attr('style', function (d) {
-          return `visibility: ${self.getVisibility(d, this)};`;
-        });
-
       this.series.exit().remove();
 
-      const container = this.series.enter()
+      this.series = this.series.enter()
         .append('g')
-          .attr('class', d => (CSS.getClassName('series', this.selector, `color-${d.seriesIndex}`)))
-        .selectAll(CSS.getClassSelector('data-label'))
-          .data(d => (!d.disabled ? d.data : []))
-          .enter()
+        .merge(this.series);
+
+      this.series
+        .attr('class', d => (CSS.getClassName('series', this.selector, `color-${d.seriesIndex}`)));
+
+      this.groups = this.series.selectAll(CSS.getClassSelector('data-label-group'))
+          .data(d => (!d.disabled ? d.data : []), d => (d.categoryIndex));
+
+      this.groups.exit().remove();
+
+      const newGroups = this.groups.enter()
         .append('g');
 
-      const shadows = container.append('text')
-        .text(this.getFormattedValue)
-        .attr('class', CSS.getClassName('data-label-shadow'))
-        .attr('x', this.isHorizontal() ? this.getY : this.getX)
-        .attr('y', this.isHorizontal() ? this.getX : this.getY)
-        .attr('transform', this.getTransform)
-        .attr('text-anchor', function (d) {
-          return self.getTextAnchor(this, d);
-        })
-        .attr('style', function (d) {
-          return `visibility: ${self.getVisibility(d, this)};`;
-        })
-        .attr('opacity', 0)
-        .classed(CSS.getClassName('data-label-hidden'), this.getHiddenClass);
+      newGroups.append('text').attr('class', CSS.getClassName('data-label-shadow'));
+      newGroups.append('text').attr('class', CSS.getClassName('data-label'));
 
-      const labels = container.append('text')
-        .attr('class', CSS.getClassName('data-label'))
+      this.groups = newGroups.merge(this.groups)
+        .attr('class', CSS.getClassName('data-label-group'));
+
+      let shadows = this.groups.selectAll(CSS.getClassSelector('data-label-shadow'));
+
+      shadows = shadows.attr('class', CSS.getClassName('data-label-shadow'))
         .text(this.getFormattedValue)
         .attr('x', this.isHorizontal() ? this.getY : this.getX)
         .attr('y', this.isHorizontal() ? this.getX : this.getY)
@@ -246,7 +225,25 @@ class SeriesDataLabel extends Series {
         .attr('opacity', 0)
         .classed(CSS.getClassName('data-label-hidden'), this.getHiddenClass);
 
-      if (options.animations && options.animations.enabled) {
+      let labels = this.groups.selectAll(CSS.getClassSelector('data-label'));
+
+      labels = labels.attr('class', CSS.getClassName('data-label'))
+        .text(this.getFormattedValue)
+        .attr('x', this.isHorizontal() ? this.getY : this.getX)
+        .attr('y', this.isHorizontal() ? this.getX : this.getY)
+        .attr('transform', this.getTransform)
+        .attr('text-anchor', function (d) {
+          return self.getTextAnchor(this, d);
+        })
+        .attr('style', function (d) {
+          return `visibility: ${self.getVisibility(d, this)};`;
+        })
+        .attr('opacity', 0)
+        .classed(CSS.getClassName('data-label-hidden'), this.getHiddenClass);
+
+      // We only want to animate in the data labels on the first render. Subsequent updates should
+      // simply display them
+      if (this.renderCount === 1 && options.animations && options.animations.enabled) {
         shadows.transition()
           .delay(options.animations.duration)
           .duration(options.animations.duration / 4)

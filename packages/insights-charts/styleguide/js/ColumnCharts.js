@@ -64,11 +64,11 @@ class ColumnCharts extends React.Component {
 
 
     const singleSeriesData = {
-      categories: dates,
+      categories: teams,
       series: [
         {
           label: 'Profit',
-          data: getRandomData(10),
+          data: getRandomData(13),
         },
       ],
     };
@@ -87,6 +87,10 @@ class ColumnCharts extends React.Component {
         orientation: 'bottom',
         alignment: 'left',
       },
+      zoom: {
+        enabled: true,
+        type: 'x',
+      },
       axis: {
         y: [{
           ticks: 4,
@@ -99,11 +103,6 @@ class ColumnCharts extends React.Component {
         }],
         x: {
           title: 'I am a x axis title',
-          paddingInner: 0.1,
-          paddingOuter: 0,
-          labels: {
-            rotated: false,
-          },
         },
       },
       grid: {

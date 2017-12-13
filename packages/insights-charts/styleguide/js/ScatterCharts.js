@@ -56,6 +56,9 @@ class ScatterCharts extends React.Component {
           },
         ],
       },
+      zoom: {
+        enabled: true,
+      },
       tooltips: {
         type: 'simple',
       },

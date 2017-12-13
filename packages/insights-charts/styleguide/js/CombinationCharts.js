@@ -71,6 +71,9 @@ class CombinationCharts extends React.Component {
           title: 'I am a x axis title',
         },
       },
+      zoom: {
+        enabled: true,
+      },
       grid: {
         enabled: true,
         horizontal: true,

@@ -9,6 +9,7 @@ import Grid from '../lib/Grid';
 import ZeroLine from '../lib/ZeroLine';
 import ClosestPointOverlay from '../lib/ClosestPointOverlay';
 import Tooltip from '../lib/Tooltip';
+import Zoomer from '../lib/Zoomer';
 import SeriesLine from '../lib/series/SeriesLine';
 import SeriesPoi from '../lib/series/SeriesPoi';
 import SeriesDataLabel from '../lib/series/SeriesDataLabel';
@@ -19,6 +20,8 @@ class LineChart extends Chart {
     super({ elem, type, data, options, dispatchers, id });
 
     this.yScales = {};
+
+    dispatchers.on('zoom', this.update);
   }
 
   render() {
@@ -45,6 +48,9 @@ class LineChart extends Chart {
 
     this.xAxis = new XAxis(categoryLabels, x, dimensions, options);
     this.xAxis.render(svg);
+
+    this.zoomer = new Zoomer(categories, x, dimensions, options, dispatchers);
+    this.zoomer.render(svg);
 
     if (!options.tooltips || !options.tooltips.type || options.tooltips.type !== 'simple') {
       this.pointOverlay = new ClosestPointOverlay(categories, x, dimensions, dispatchers);
@@ -139,7 +145,11 @@ class LineChart extends Chart {
     this.clipPath.animate();
   }
 
-  update() {
+  update(zoom = {}) {
+    if (zoom.reset || zoom.categories) {
+      this.data.setZoomCategories(zoom.categories);
+    }
+
     const categories = this.data.getCategories();
     const categoryLabels = categories.map(c => c.label);
     const seriesData = this.data.getSeries();
@@ -156,6 +166,8 @@ class LineChart extends Chart {
 
     const x = this.xScale.update(categoryLabels, options, dimensions, this.type);
     this.xAxis.update(categoryLabels, x, dimensions, options);
+
+    this.zoomer.update(categories, x, dimensions, options, dispatchers);
 
     if (this.pointOverlay) {
       this.pointOverlay.update(categories, x, dimensions, dispatchers, options);

@@ -12,6 +12,8 @@ class SeriesPoi extends Series {
   constructor(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex) {
     super(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex, 'series-poi');
 
+    this.renderCount = 0;
+
     if (!this.isDisabled()) {
       const isOnHover = this.isOnHover();
       this.eventName = `activatePointOfInterest.axis-y-${yAxisIndex}`;
@@ -115,6 +117,8 @@ class SeriesPoi extends Series {
   }
 
   render(selection) {
+    this.renderCount += 1;
+
     const { options, dispatchers } = this;
     const animationEnabled = options.animations && options.animations.enabled;
 
@@ -126,26 +130,25 @@ class SeriesPoi extends Series {
       this.series = selection.selectAll(CSS.getClassSelector(this.selector))
         .data(this.data, d => (d.seriesIndex));
 
-      this.series
-        .attr('class', d =>
-          (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
-        .selectAll(CSS.getClassSelector('poi'))
-          .attr('cx', this.isHorizontal() ? this.getY : this.getX)
-          .attr('cy', this.isHorizontal() ? this.getX : this.getY)
-          .classed(CSS.getClassName('poi-hidden'), this.getHiddenClass);
-
       this.series.exit().remove();
 
       this.series = this.series.enter()
         .append('g')
-          .attr('class', d =>
-            (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
-        .selectAll(CSS.getClassSelector('poi'))
-          .data(d => (!d.disabled ? d.data : []));
+        .merge(this.series);
 
-      const circle = this.series.enter()
+      this.series.attr('class', d =>
+          (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`));
+
+      let pois = this.series.selectAll(CSS.getClassSelector('poi'))
+        .data(d => (!d.disabled ? d.data : []), d => (d.categoryIndex));
+
+      pois.exit().remove();
+
+      pois = pois.enter()
         .append('circle')
-          .attr('class', CSS.getClassName('poi'))
+        .merge(pois);
+
+      pois.attr('class', CSS.getClassName('poi'))
           .attr('r', POI_RADIUS)
           .attr('cx', this.isHorizontal() ? this.getY : this.getX)
           .attr('cy', this.isHorizontal() ? this.getX : this.getY)
@@ -169,26 +172,24 @@ class SeriesPoi extends Series {
 
       const isOnHover = this.isOnHover();
 
-      if (animationEnabled && !isOnHover) {
+      if (this.renderCount === 1 && animationEnabled && !isOnHover) {
         const isScatter = this.options.type === 'scatter';
 
-        circle.transition()
+        pois.transition()
           .delay(isScatter ? 0 : options.animations.duration)
           .duration(isScatter ? options.animations.duration : options.animations.duration / 4)
           .attr('opacity', 1);
       } else if (!isOnHover) {
-        circle.attr('opacity', 1);
+        pois.attr('opacity', 1);
       }
 
       if (dispatchers.enabled('dataPointClick.external')) {
-        circle
+        pois
           .style('cursor', 'pointer')
-          .on('click', function (point) {
+          .on('mousedown', function (point) {
             dispatchers.call('dataPointClick', this, { event, data: { point } });
           });
       }
-
-      circle.merge(this.series);
     }
 
     return this.series;

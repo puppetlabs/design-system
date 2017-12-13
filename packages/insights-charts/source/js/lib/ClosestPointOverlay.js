@@ -16,8 +16,13 @@ class ClosestPointOverlay {
 
   bindEvents() {
     const categories = this.categories
-      .map((c, i) => ({ label: c.label, categoryIndex: i, targetable: c.isTargetable() }))
+      .map((c) => {
+        c.targetable = c.isTargetable();
+
+        return c;
+      })
       .filter(c => c.targetable);
+
     const x = this.x;
     const dispatchers = this.dispatchers;
 
@@ -119,6 +124,8 @@ class ClosestPointOverlay {
       .attr('height', dimensions.height);
 
     this.bindEvents();
+
+    return this.overlay;
   }
 }
 

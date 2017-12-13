@@ -109,4 +109,17 @@ $reflect-charts-data-label-color        : $reflect-white !default;
 $reflect-charts-data-label-shadow       : transparentize($reflect-black, 0.3) !default;
 $reflect-charts-data-label-shadow-width : $reflect-tiny !default;
 
+// Zoomer
+// ----------------------------------------------------------------------------
+$reflect-zoomer-fill                    : $reflect-brand-primary !default;
+$reflect-zoomer-opacity                 : 0.15 !default;
+
+$reflect-zoomer-reset-bg                : $reflect-action-color-alt !default;
+$reflect-zoomer-reset-bg-hover          : $reflect-action-hover-alt !default;
+$reflect-zoomer-reset-color             : $reflect-action-text-alt !default;
+$reflect-zoomer-reset-color-hover       : $reflect-action-text-hover-alt !default;
+$reflect-zoomer-reset-border            : $reflect-action-border-alt !default;
+$reflect-zoomer-reset-border-hover      : $reflect-action-border-hover-alt !default;
+$reflect-zoomer-reset-font-size         : $reflect-font-size-small !default;
+
 /* stylelint-enable */

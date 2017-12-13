@@ -9,6 +9,7 @@ import Grid from '../lib/Grid';
 import ZeroLine from '../lib/ZeroLine';
 import ClosestPointOverlay from '../lib/ClosestPointOverlay';
 import Tooltip from '../lib/Tooltip';
+import Zoomer from '../lib/Zoomer';
 import SeriesArea from '../lib/series/SeriesArea';
 import SeriesLine from '../lib/series/SeriesLine';
 import SeriesPoi from '../lib/series/SeriesPoi';
@@ -22,6 +23,8 @@ class CombinationChart extends Chart {
     super({ elem, type, data, options, dispatchers, id });
 
     this.yScales = {};
+
+    dispatchers.on('zoom', this.update);
   }
 
   getDataByTypes(data, types = []) {
@@ -67,6 +70,9 @@ class CombinationChart extends Chart {
 
     this.xAxis = new XAxis(categoryLabels, x, dimensions, options);
     this.xAxis.render(svg);
+
+    this.zoomer = new Zoomer(categories, x, dimensions, options, dispatchers);
+    this.zoomer.render(svg);
 
     if (!options.tooltips || !options.tooltips.type || options.tooltips.type !== 'simple') {
       this.pointOverlay = new ClosestPointOverlay(categories, x, dimensions, dispatchers);
@@ -309,7 +315,11 @@ class CombinationChart extends Chart {
     this.clipPath.animate();
   }
 
-  update() {
+  update(zoom = {}) {
+    if (zoom.reset || zoom.categories) {
+      this.data.setZoomCategories(zoom.categories);
+    }
+
     const categories = this.data.getCategories();
     const categoryLabels = categories.map(c => c.label);
     const groups = this.data.getGroupsByType('column');
@@ -327,6 +337,8 @@ class CombinationChart extends Chart {
 
     const x = this.xScale.update(categoryLabels, options, dimensions);
     this.xAxis.update(categoryLabels, x, dimensions, options);
+
+    this.zoomer.update(categories, x, dimensions, options, dispatchers);
 
     if (this.pointOverlay) {
       this.pointOverlay.update(categories, x, dimensions, dispatchers, options);

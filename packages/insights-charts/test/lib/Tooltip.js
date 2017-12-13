@@ -27,7 +27,7 @@ describe('Tooltip', () => {
       };
 
       const seriesData = [{
-        data: [{ y: 1 }, { y: 2 }],
+        data: [{ y: 1, categoryIndex: 0 }, { y: 2, categoryIndex: 1 }],
         seriesIndex: 0,
         label: 'My series',
       }];

@@ -8,14 +8,13 @@ class XScale {
     this.options = options;
     this.dimensions = dimensions;
     this.type = options.type;
-    this.scale = helpers.detectScaleType(categories);
+    this.scaleType = helpers.detectScaleType(categories);
   }
 
   generate() {
-    const categories = this.categories;
-    const { width, height } = this.dimensions;
+    const { categories, dimensions, options } = this;
+    const { width, height } = dimensions;
     const type = this.type;
-    const options = this.options;
     const xAxisOptions = options.axis && options.axis.x ? options.axis.x : {};
 
     if (type === 'column' || type === 'combination' || xAxisOptions.scaleType === 'ordinalBand') {
@@ -28,14 +27,14 @@ class XScale {
         .paddingOuter(paddingOuter);
 
       this.x.domain(categories);
-    } else if (this.scale === 'ordinal') {
+    } else if (this.scaleType === 'ordinal') {
       this.x = scalePoint();
 
       this.x.padding(xAxisOptions.paddingOuter || 0);
 
       this.x.domain(categories);
     } else {
-      if (this.scale === 'date') {
+      if (this.scaleType === 'date') {
         this.x = scaleTime();
       } else {
         this.x = scaleLinear();
@@ -60,7 +59,7 @@ class XScale {
     this.options = options;
     this.dimensions = dimensions;
     this.type = options.type;
-    this.scale = helpers.detectScaleType(categories);
+    this.scaleType = helpers.detectScaleType(categories);
 
     return this.generate();
   }
