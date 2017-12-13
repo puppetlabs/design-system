@@ -65,6 +65,25 @@ describe('<Select />', () => {
     });
   });
 
+  describe('typeahead', () => {
+    it('should filter as the user types in the input', () => {
+      const options = ['Company', 'Computer', 'Turtles'];
+      const wrapper = mount(<Select options={ options } { ...defaultProps } />);
+
+      wrapper.find('Input').simulate('click');
+
+      // Should be showing all the items by default
+      expect(wrapper.find('MenuItem').length).to.eql(3);
+
+      wrapper.find('Input').simulate('change', {
+        target: { value: 'Comp' },
+      });
+
+      // Only showing the matching items now
+      expect(wrapper.find('MenuItem').length).to.eql(2);
+    });
+  });
+
   describe('options are strings', () => {
     const options = ['Michael Phelps', 'Ryan Lochte'];
 

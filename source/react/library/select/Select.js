@@ -15,6 +15,7 @@ const propTypes = {
   onSelect: React.PropTypes.func,
   options: React.PropTypes.array,
   disabled: React.PropTypes.bool,
+  typeahead: React.PropTypes.bool,
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
   name: React.PropTypes.string,
@@ -27,10 +28,14 @@ const defaultProps = {
   disablePortal: false,
   onSelect: () => {},
   disabled: false,
+  typeahead: true,
   autoOpen: false,
   size: 'small',
   options: [],
 };
+
+const filterOptions = (options, filter) => options
+  .filter(o => !filter || o.label.toLowerCase().indexOf(filter.toLowerCase()) > -1);
 
 const formatOptions = options => options.map((o, idx) => {
   let option = o;
@@ -154,6 +159,7 @@ class Select extends React.Component {
   }
 
   renderMenuList() {
+    let options = this.state.options;
     let selected;
 
     selected = this.state.options.filter(o => o.selected);
@@ -162,11 +168,15 @@ class Select extends React.Component {
       selected = selected[0].id;
     }
 
+    if (this.props.typeahead) {
+      options = filterOptions(this.state.options, this.state.inputValue);
+    }
+
     return (
       <MenuList
         selected={ selected }
         size={ this.props.size }
-        options={ this.state.options }
+        options={ options }
         onChange={ this.onSelect }
       />
     );
