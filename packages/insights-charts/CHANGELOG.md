@@ -1,3 +1,7 @@
+# 0.9.1
+
+* Set a default fill on the zoomer bg so that it isn't black when the CSS isn't present
+
 # 0.9.0 
 
 * Adding zooming to all chart types

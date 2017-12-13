@@ -246,7 +246,8 @@ class Zoomer {
 
       zoomerBg.attr('class', CSS.getClassName('zoomer-bg'))
         .attr('width', dimensions.width)
-        .attr('height', dimensions.height);
+        .attr('height', dimensions.height)
+        .attr('fill', 'transparent');
 
       zoomer = this.selection
           .call(zoomFunction)
