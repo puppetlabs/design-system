@@ -27,7 +27,7 @@ const propTypes = {
   wrapperClassName: React.PropTypes.string,
   inheritTargetWidth: React.PropTypes.bool,
   disableOutsideClick: React.PropTypes.bool,
-  openEvent: React.PropTypes.bool,
+  openEvent: React.PropTypes.string,
 };
 
 const defaultProps = {
