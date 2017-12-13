@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { isNodeInRoot } from '../helpers/statics';
+
 import classnames from 'classnames';
 import debounce from 'debounce';
 import PopoverContent, { PopoverContentWithoutPortal } from './PopoverContent';
@@ -24,12 +27,14 @@ const propTypes = {
   wrapperClassName: React.PropTypes.string,
   inheritTargetWidth: React.PropTypes.bool,
   disableOutsideClick: React.PropTypes.bool,
+  openEvent: React.PropTypes.bool,
 };
 
 const defaultProps = {
   width: 'auto',
   margin: 8,
   padding: true,
+  openEvent: 'onClick',
   anchor: 'bottom left',
   allowBubble: false,
   disableOutsideClick: false,
@@ -95,8 +100,8 @@ class Popover extends React.Component {
     this.setPosition();
   }
 
-  onOutsideClick() {
-    if (!this.props.disableOutsideClick) {
+  onOutsideClick(e) {
+    if (!this.props.disableOutsideClick && !isNodeInRoot(e.target, this.elem)) {
       this.setState({ open: false });
 
       this.onClose();
@@ -180,7 +185,7 @@ class Popover extends React.Component {
       });
 
       jsx = React.cloneElement(target, {
-        onClick: this.onClick,
+        [this.props.openEvent]: this.onClick,
         ref: (c) => { this.button = c; },
         className,
       });

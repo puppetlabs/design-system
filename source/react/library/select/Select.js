@@ -245,6 +245,7 @@ class Select extends React.Component {
           inheritTargetWidth
           margin={ 4 }
           padding={ false }
+          openEvent="onFocus"
         >
           { menu }
         </Popover>
