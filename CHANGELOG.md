@@ -1,3 +1,7 @@
+# 0.3.7
+
+* Fix a CSS issue causing Accordions to not be full height in IE
+
 # 0.3.6
 
 * Fix a bug where pointer-events weren't being applied to tooltips
