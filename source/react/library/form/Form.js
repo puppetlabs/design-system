@@ -81,7 +81,7 @@ class Form extends React.Component {
     const children = [];
 
     React.Children.forEach(this.props.children, (child) => {
-      if (child) {
+      if (child && child.type === FormField) {
         children.push(React.cloneElement(child, {
           error: child.props.error || this.props.errors[child.props.name],
           value: this.state.values[child.props.name],

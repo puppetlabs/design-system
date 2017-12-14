@@ -1,7 +1,7 @@
 import React from 'react';
 import clone from 'clone';
 
-import Filter from './Filter';
+import Filter from './FilterItem';
 
 import { filterOperators } from '../../constants';
 import Icon from '../Icon';

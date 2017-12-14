@@ -49,6 +49,8 @@ class FormField extends React.Component {
   }
 
   onChange(val) {
+    // We should be able to use the onChange value from most elements (Selects, etc) but for some,
+    // we need to modify it here.
     let value = val;
 
     switch (this.props.type) {

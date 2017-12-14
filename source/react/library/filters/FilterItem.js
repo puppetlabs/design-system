@@ -51,7 +51,10 @@ const renderText = (filter) => {
   );
 };
 
-const Filter = (props) => {
+// We can rename this component when we remove the higher level `Filter` component. For now, I
+// think we need to keep it around for parameters.
+
+const FilterItem = (props) => {
   const text = renderText(props.filter);
 
   return (
@@ -66,7 +69,7 @@ const Filter = (props) => {
   );
 };
 
-Filter.propTypes = propTypes;
-Filter.defaultProps = defaultProps;
+FilterItem.propTypes = propTypes;
+FilterItem.defaultProps = defaultProps;
 
-export default Filter;
+export default FilterItem;

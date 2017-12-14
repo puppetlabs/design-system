@@ -12,6 +12,7 @@ const propTypes = {
   onClick: React.PropTypes.func,
   selected: React.PropTypes.bool,
   tooltip: React.PropTypes.bool,
+  actions: React.PropTypes.any,
   kebab: React.PropTypes.any,
 };
 
@@ -66,13 +67,19 @@ class ListItem extends React.PureComponent {
     }
   }
 
-  renderRemove() {
-    let jsx;
+  getIconSize() {
     let iconSize = '12px';
 
     if (this.props.size === 'tiny') {
       iconSize = '10px';
     }
+
+    return iconSize;
+  }
+
+  renderRemove() {
+    const iconSize = this.getIconSize();
+    let jsx;
 
     if (this.props.onRemove) {
       jsx = (
@@ -86,12 +93,13 @@ class ListItem extends React.PureComponent {
   }
 
   renderEdit() {
+    const iconSize = this.getIconSize();
     let jsx;
 
     if (this.props.onEdit) {
       jsx = (
         <a className="rc-list-item-action rc-list-item-edit" onClick={ this.onEdit }>
-          <Icon type="pencil" width="12px" height="12px" />
+          <Icon type="pencil" width={ iconSize } height={ iconSize } />
         </a>
       );
     }
