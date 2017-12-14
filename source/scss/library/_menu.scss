@@ -5,7 +5,6 @@
 
   .rc-menu-item a {
     background: $bg;
-    border-bottom: $border;
     color: $color;
   }
 
@@ -23,7 +22,6 @@
   }
 
   .rc-menu-item-selected  a {
-    background: $bg-selected;
     border-bottom: 0;
     color: $color-selected;
   }
@@ -33,7 +31,7 @@
   }
 
   .rc-menu-item-selected  a:hover {
-    background: darken($bg-selected, 10%);
+    background: $bg-hover;
     color: $color-selected;
   }
 
@@ -99,14 +97,12 @@
 }
 
 .rc-menu-item-with-icon a {
-  // 16px is currently the size of the checkmark icon.
-  padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
   position: relative;
 }
 
 .rc-menu-item-with-icon .rc-icon {
-  left: $reflect-dropdown-padding;
   position: absolute;
+  right: $reflect-dropdown-padding;
   top: 50%;
   transform: translateY(-50%);
 }

@@ -347,9 +347,9 @@ $reflect-menu-item-tiny-line-height          : $reflect-font-size-small !default
 
 // Menu States
 $reflect-menu-item-color-hover               : $reflect-brand-primary !default;
-$reflect-menu-item-bg-hover                  : $reflect-menu-item-bg !default;
+$reflect-menu-item-bg-hover                  : $reflect-gray-lighter !default;
 
-$reflect-menu-item-color-selected            : $reflect-bg-primary !default;
+$reflect-menu-item-color-selected            : $reflect-brand-primary !default;
 $reflect-menu-item-bg-selected               : $reflect-action-color !default;
 $reflect-menu-item-border-selected           : $reflect-border-active-hover !default;
 
