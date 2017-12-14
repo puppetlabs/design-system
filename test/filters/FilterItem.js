@@ -2,7 +2,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import Filter from '../../source/react/library/filters/Filter';
+import FilterItem from '../../source/react/library/filters/FilterItem';
 
 describe('<Filter />', () => {
   const defaultProps = {
@@ -10,7 +10,7 @@ describe('<Filter />', () => {
   };
 
   it('should render without blowing up', () => {
-    const wrapper = shallow(<Filter { ...defaultProps } />);
+    const wrapper = shallow(<FilterItem { ...defaultProps } />);
 
     expect(wrapper.length).to.eql(1);
   });

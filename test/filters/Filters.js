@@ -21,8 +21,8 @@ describe('<Filters />', () => {
       const fields = ['Name'];
       const wrapper = shallow(<Filters filters={ filters } fields={ fields } />);
 
-      expect(wrapper.find('Filter').length).to.eql(1);
-      expect(wrapper.find('Filter').prop('filter')).to.eql(filters[0]);
+      expect(wrapper.find('FilterItem').length).to.eql(1);
+      expect(wrapper.find('FilterItem').prop('filter')).to.eql(filters[0]);
     });
   });
 

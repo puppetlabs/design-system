@@ -14,11 +14,16 @@ describe('<Form />', () => {
   it('should render children with the correct props', () => {
     const wrapper = shallow(
       <Form>
-        <span key="test-child" className="test-child" />
+        <Form.Field
+          key="test-child"
+          type="input"
+          name="test"
+          className="test-child"
+        />
       </Form>,
     );
 
     expect(Object.keys(wrapper.find('.test-child').props()))
-      .to.eql(['className', 'error', 'value', 'onChange', 'size']);
+      .to.eql(['type', 'name', 'className', 'onChange', 'error', 'value', 'size']);
   });
 });
