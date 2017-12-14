@@ -1,4 +1,5 @@
 import React from 'react';
+import clone from 'clone';
 import classnames from 'classnames';
 
 import Input from '../Input';
@@ -100,7 +101,7 @@ class FormField extends React.Component {
     let jsx = null;
 
     if (typeof type.prototype === 'object' && type.prototype.isReactComponent) {
-      const props = Object.assign(this.props, elementProps);
+      const props = Object.assign(clone(this.props), elementProps);
 
       jsx = React.createElement(type, Object.assign({
         name: this.props.name,

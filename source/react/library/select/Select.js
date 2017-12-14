@@ -2,7 +2,10 @@ import React from 'react';
 import onClickOutside from 'react-onclickoutside';
 import classnames from 'classnames';
 
-import { TAB_KEY_CODE } from '../../constants';
+import {
+  TAB_KEY_CODE,
+  ESC_KEY_CODE,
+} from '../../constants';
 
 import Icon from '../Icon';
 import Input from '../Input';
@@ -71,13 +74,11 @@ class Select extends React.Component {
 
     this.state = {
       inputValue: undefined,
-      open: this.props.autoOpen,
       options: formatOptions(props.options),
     };
 
     this.onSelect = this.onSelect.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
-    this.onInputClick = this.onInputClick.bind(this);
   }
 
   componentDidMount() {
@@ -93,14 +94,12 @@ class Select extends React.Component {
     }
   }
 
-  onInputClick() {
-    this.setState({ open: true });
-  }
-
   onKeyDown(e) {
     switch (e.keyCode) {
       case TAB_KEY_CODE:
-        this.setState({ open: false });
+      case ESC_KEY_CODE:
+        this.popover.close();
+        this.input.blur();
 
         break;
       default:
@@ -120,10 +119,10 @@ class Select extends React.Component {
     });
 
     this.popover.close();
+    this.input.blur();
     this.props.onSelect(option);
     this.setState({
       inputValue: undefined,
-      open: false,
       options,
     });
   }
@@ -152,10 +151,6 @@ class Select extends React.Component {
     });
 
     this.setState({ inputValue: '', options });
-  }
-
-  handleClickOutside() {
-    this.setState({ open: false });
   }
 
   renderMenuList() {
@@ -199,15 +194,12 @@ class Select extends React.Component {
       <Input
         dropdown
         name={ this.props.name }
-        onClick={ this.onInputClick }
         onKeyDown={ this.onKeyDown }
         onChange={ e => this.setState({ inputValue: e.target.value }) }
         value={ this.getCurrentValue() }
         size={ this.props.size }
         ref={ (c) => { this.input = c; } }
         disabled={ this.props.disabled }
-        focused={ this.state.open }
-        onFocus={ () => this.setState({ open: true }) }
         placeholder={ this.props.placeholder }
       />
     );
@@ -224,7 +216,6 @@ class Select extends React.Component {
     const menu = this.renderMenu();
     const input = this.renderInput();
     const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
-      'rc-select-open': this.state.open,
       'rc-select-disabled': this.props.disabled,
       [`rc-select-${this.props.size}`]: this.props.size,
     });

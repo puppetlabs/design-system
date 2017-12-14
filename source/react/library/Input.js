@@ -93,6 +93,10 @@ class Input extends React.Component {
     this.input.focus();
   }
 
+  blur() {
+    this.input.blur();
+  }
+
   render() {
     const className = classnames('rc-input', {
       'rc-input-error': this.props.error,
