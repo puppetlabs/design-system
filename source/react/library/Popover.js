@@ -139,14 +139,14 @@ class Popover extends React.Component {
       let right;
       let left;
 
-      if (!this.props.disablePortal) {
-        bottom = elPosition.bottom + window.pageYOffset;
-        left = elPosition.left + window.pageXOffset;
-        right = document.body.clientWidth - (elPosition.right + window.pageXOffset);
-      } else {
+      if (this.props.disablePortal) {
         bottom = elPosition.height;
         left = 0;
         right = 0;
+      } else {
+        bottom = elPosition.bottom + window.pageYOffset;
+        left = elPosition.left + window.pageXOffset;
+        right = document.body.clientWidth - (elPosition.right + window.pageXOffset);
       }
 
       if (this.props.inheritTargetWidth) {
@@ -201,6 +201,7 @@ class Popover extends React.Component {
     });
     const className = classnames('rc-popover', this.props.className, {
       [`rc-popover-${this.props.size}`]: this.props.size,
+      'rc-popover-no-portal': this.props.disablePortal,
       'rc-popover-no-padding': !this.props.padding || this.props.menu,
     });
     const styles = this.state.position;

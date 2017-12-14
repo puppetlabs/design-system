@@ -217,14 +217,22 @@ class Filters extends React.Component {
             type="select"
             name="filterField"
             label="field"
-            elementProps={ { options: fields, placeholder: 'Choose a field...' } }
+            elementProps={ {
+              disablePortal: true,
+              options: fields,
+              placeholder: 'Choose a field...',
+            } }
           />
           <Form.Field
             value={ currentOp }
             type="select"
             name="filterOperator"
             label="operation"
-            elementProps={ { options: operators, placeholder: 'Please choose...' } }
+            elementProps={ {
+              disablePortal: true,
+              options: operators,
+              placeholder: 'Please choose...',
+            } }
           />
           <Form.Field
             value={ filter.value }

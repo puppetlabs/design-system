@@ -1,5 +1,4 @@
 import React from 'react';
-import onClickOutside from 'react-onclickoutside';
 import classnames from 'classnames';
 
 import {
@@ -250,4 +249,4 @@ class Select extends React.Component {
 Select.propTypes = propTypes;
 Select.defaultProps = defaultProps;
 
-export default onClickOutside(Select);
+export default Select;

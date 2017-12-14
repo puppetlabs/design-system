@@ -34,6 +34,23 @@ Disabled Select
 <Select disabled />
 ```
 
+Select with no portal
+
+```
+const options = [
+  'Geoff',
+  'Colby',
+  'Sig',
+];
+
+<Select
+  onSelect={o => console.log(o)}
+  disablePortal
+  options={ options }
+  placeholder="Select one..."
+/>
+```
+
 Tiny Select
 
 ```

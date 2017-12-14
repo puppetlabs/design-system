@@ -30,13 +30,18 @@
 
   .rc-select-menu {
     background: $reflect-select-menu-bg;
-    border: $reflect-select-border-active;
     border-bottom-left-radius: $reflect-select-border-radius;
     border-bottom-right-radius: $reflect-select-border-radius;
     box-shadow: $reflect-select-selected-shadow;
     position: absolute;
     width: 100%;
     z-index: 1;
+  }
+}
+
+.rc-popover-no-portal {
+  .rc-select-menu {
+    position: relative;
   }
 }
 
