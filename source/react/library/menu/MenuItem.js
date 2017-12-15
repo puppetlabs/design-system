@@ -35,7 +35,7 @@ class MenuItem extends React.Component {
     let jsx;
 
     if (this.props.selected) {
-      jsx = <Icon type="checkmark" height="16px" width="16px" />;
+      jsx = <Icon type="check" height="12px" width="12px" />;
     } else if (option.icon) {
       jsx = <Icon type={ option.icon } height="16px" width="16px" />;
     }

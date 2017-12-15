@@ -77,9 +77,9 @@ const icons = {
   },
 
   check: {
-    viewBox: '0 0 16 14',
+    viewBox: '0 0 8 8',
     svg: (
-      <polygon id="path-1" points="5.6 9.6 2.4 6.4 0 8.8 5.6 14.4 16 4 13.6 1.6"></polygon>
+      <polygon points="2.8 4.8 1.2 3.2 0 4.4 2.8 7.2 8 2 6.8 0.8" />
     ),
   },
 
