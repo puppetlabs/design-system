@@ -8,6 +8,11 @@ const propTypes = {
   size: React.PropTypes.string,
 };
 
+const defaultProps = {
+  className: '',
+  size: '',
+};
+
 /**
  * `LoadingIndicator` does what you would think, it indicates a loading state.
  *
@@ -37,5 +42,6 @@ const LoadingIndicator = (props) => {
 };
 
 LoadingIndicator.propTypes = propTypes;
+LoadingIndicator.defaultProps = defaultProps;
 
 export default LoadingIndicator;

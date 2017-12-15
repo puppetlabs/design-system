@@ -1,13 +1,14 @@
 import React from 'react';
 
 const propTypes = {
-  children: React.PropTypes.any,
   /** either "ordered" or "unordered" */
   type: React.PropTypes.string,
+  children: React.PropTypes.any,
 };
 
 const defaultProps = {
   type: 'unordered',
+  children: null,
 };
 
 /**
