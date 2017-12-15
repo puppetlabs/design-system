@@ -20,6 +20,7 @@ const propTypes = {
   typeahead: React.PropTypes.bool,
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
+  multiple: React.PropTypes.bool,
   name: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
   size: React.PropTypes.oneOf(['tiny', 'small']),
@@ -109,8 +110,8 @@ class Select extends React.Component {
   onSelect(option) {
     const options = this.state.options.map((o) => {
       if (o.id === option.id) {
-        o.selected = true;
-      } else {
+        o.selected = !o.selected;
+      } else if (!this.props.multiple) {
         o.selected = false;
       }
 
@@ -129,14 +130,16 @@ class Select extends React.Component {
   getCurrentValue() {
     let value = '';
 
-    if (typeof this.state.inputValue !== 'undefined') {
-      value = this.state.inputValue;
-    } else {
-      this.state.options.forEach((option) => {
-        if (option.selected) {
-          value = option.label;
-        }
-      });
+    if (!this.props.multiple) {
+      if (typeof this.state.inputValue !== 'undefined') {
+        value = this.state.inputValue;
+      } else {
+        this.state.options.forEach((option) => {
+          if (option.selected) {
+            value = option.label;
+          }
+        });
+      }
     }
 
     return value;
@@ -154,13 +157,10 @@ class Select extends React.Component {
 
   renderMenuList() {
     let options = this.state.options;
-    let selected;
 
-    selected = this.state.options.filter(o => o.selected);
-
-    if (selected && selected.length) {
-      selected = selected[0].id;
-    }
+    const selected = this.state.options
+      .filter(o => o.selected)
+      .map(o => o.id);
 
     if (this.props.typeahead) {
       options = filterOptions(this.state.options, this.state.inputValue);
