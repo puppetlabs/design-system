@@ -5,7 +5,7 @@ import { TooltipStickyArea } from './tooltips/Tooltip';
 
 const propTypes = {
   className: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['tiny', 'small', 'large', 'auto']),
+  size: React.PropTypes.oneOf(['tiny', 'small', 'large', 'auto', null]),
   secondary: React.PropTypes.bool,
   transparent: React.PropTypes.bool,
   icon: React.PropTypes.string,
@@ -33,7 +33,7 @@ const propTypes = {
 
 const defaultProps = {
   className: '',
-  size: '',
+  size: null,
   secondary: false,
   transparent: false,
   icon: null,
@@ -144,7 +144,7 @@ class Button extends React.Component {
     }
 
     if (this.props.icon) {
-      const iconSize = 16;
+      const iconSize = '16px';
 
       icon = <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />;
     }
