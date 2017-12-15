@@ -6,11 +6,13 @@ import Icon from './Icon';
 const propTypes = {
   name: React.PropTypes.string,
   checked: React.PropTypes.bool,
+  disabled: React.PropTypes.bool,
   onChange: React.PropTypes.func,
 };
 
 const defaultProps = {
   checked: false,
+  disabled: false,
   onChange: () => {},
 };
 
@@ -24,9 +26,7 @@ class Checkbox extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      checked: props.checked,
-    };
+    this.state = { checked: props.checked };
 
     this.onChange = this.onChange.bind(this);
   }
@@ -40,6 +40,7 @@ class Checkbox extends React.Component {
   render() {
     const className = classnames('rc-checkbox', {
       'rc-checkbox-checked': this.state.checked,
+      'rc-checkbox-disabled': this.props.disabled,
     });
 
     return (
@@ -47,6 +48,7 @@ class Checkbox extends React.Component {
         <input
           type="checkbox"
           onChange={ this.onChange }
+          disabled={ this.props.disabled }
           checked={ this.state.checked }
           className={ className }
           value={ this.props.name }

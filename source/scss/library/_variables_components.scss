@@ -286,6 +286,15 @@ $reflect-input-tiny-padding                  : $reflect-mini $reflect-tiny !defa
 $reflect-input-simple-bg                     : transparent !default;
 $reflect-input-simple-focus-bg               : transparent !default;
 
+$reflect-checkbox-border                     : $reflect-border !default;
+$reflect-checkbox-border-radius              : $reflect-border-radius !default;
+$reflect-checkbox-padding                    : $reflect-small !default;
+$reflect-checkbox-icon-color                 : $reflect-brand-primary !default;
+
+$reflect-checkbox-hover-border-color         : $reflect-brand-primary !default;
+$reflect-checkbox-disabled-icon-color        : $reflect-gray !default;
+$reflect-checkbox-disabled-border-color      : $reflect-border-color !default;
+
 // Select
 // ----------------------------------------------------------------------------
 $reflect-select-color                        : $reflect-input-color !default;

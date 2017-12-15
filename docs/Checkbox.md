@@ -10,3 +10,9 @@
 ```
 <Checkbox checked />
 ```
+
+## Disabled
+
+```
+<Checkbox checked disabled />
+```
