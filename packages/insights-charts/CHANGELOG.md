@@ -1,3 +1,7 @@
+# 0.9.2
+
+* Fix to ensure we can properly unbind the resize callback
+
 # 0.9.1
 
 * Set a default fill on the zoomer bg so that it isn't black when the CSS isn't present

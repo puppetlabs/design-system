@@ -95,7 +95,7 @@ class Chart {
     this.dispatchers = new Dispatchers();
     this.id = UniqueIDGenerator.getUniqueId();
 
-    this.resize = this.resize.bind(this);
+    this.resize = debounce(this.resize.bind(this), 100);
 
     if (select(elem).size() === 0) {
       throw new Error('Unable to get the element provided');
@@ -127,7 +127,7 @@ class Chart {
       dispatchers: this.dispatchers,
     });
 
-    window.addEventListener('resize', debounce(this.resize, 100));
+    window.addEventListener('resize', this.resize);
   }
 
   on(eventType, callback) {
