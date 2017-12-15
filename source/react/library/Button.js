@@ -44,7 +44,7 @@ const defaultProps = {
   block: false,
   onClick: null,
   label: '',
-  type: 'link',
+  type: null,
   href: '',
   round: false,
   message: '',
