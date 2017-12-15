@@ -344,7 +344,7 @@ button.rc-floating-action-button {
   }
 
   .rc-button-menu {
-    background: $reflect-button-bg-hover;
+    background: $reflect-button-menu-bg;
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
     display: block;
@@ -385,6 +385,10 @@ button.rc-floating-action-button {
 
     .rc-button-content {
       display: flex;
+    }
+
+    &:hover {
+      background: $reflect-button-menu-bg-hover;
     }
   }
 

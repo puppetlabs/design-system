@@ -72,6 +72,8 @@ $reflect-button-icon-color                   : $reflect-action-icon !default;
 $reflect-button-icon-color-hover             : $reflect-action-icon-hover !default;
 $reflect-button-border-color                 : $reflect-action-border !default;
 $reflect-button-border-color-hover           : $reflect-action-border-hover !default;
+$reflect-button-menu-bg                      : darken($reflect-button-bg, 10%) !default;
+$reflect-button-menu-bg-hover                : darken($reflect-button-menu-bg, 10%) !default;
 
 // Secondary Buttons
 $reflect-button-secondary-bg                 : $reflect-action-color-alt !default;
@@ -246,6 +248,8 @@ $reflect-filter-select-padding               : $reflect-tiny !default;
 $reflect-filter-select-height                : 10px !default; // Todo: Base on grid
 
 $reflect-filter-split-bg                     : $reflect-gray-light !default;
+$reflect-filter-split-menu-bg                : darken($reflect-filter-split-bg, 10%) !default;
+$reflect-filter-split-menu-bg-hover          : darken($reflect-filter-split-menu-bg, 10%) !default;
 
 // Input
 // ----------------------------------------------------------------------------

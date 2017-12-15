@@ -1,9 +1,11 @@
 import React from 'react';
+import classnames from 'classnames';
 import Button from './Button';
 import Icon from './Icon';
 import DropdownMenu from './dropdown/DropdownMenu';
 
 const propTypes = {
+  className: React.PropTypes.string,
   /** Primary button click handler */
   onClick: React.PropTypes.func.isRequired,
   /** Option click handler */
@@ -51,7 +53,7 @@ class SplitButton extends React.Component {
   }
 
   renderDropdownTarget() {
-    const iconSize = 14;
+    const iconSize = '14px';
 
     const disabledMenu = this.props.disabledMenu;
 
@@ -85,9 +87,10 @@ class SplitButton extends React.Component {
   render() {
     const dropdown = this.renderDropdown();
     const { label, size, disabled, processing } = this.props;
+    const className = classnames('rc-split-button', this.props.className);
 
     return (
-      <div className="rc-split-button">
+      <div className={ className }>
         <Button
           processing={ processing }
           size={ size }

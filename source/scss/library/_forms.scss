@@ -28,11 +28,13 @@
     }
 
     .rc-button-menu {
-      background: $reflect-filter-split-bg;
+      background: $reflect-filter-split-menu-bg;
+
+      &:hover {
+        background: $reflect-filter-split-menu-bg-hover;
+      }
 
       .rc-button-menu-inner {
-        background: $reflect-filter-split-bg;
-
         path {
           fill: $reflect-filter-input-bg;
         }
@@ -40,8 +42,6 @@
 
       &:hover {
         .rc-button-menu-inner {
-          background: $reflect-button-bg-hover;
-
           path {
             fill: $reflect-filter-input-bg;
           }
