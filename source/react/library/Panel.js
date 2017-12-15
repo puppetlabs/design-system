@@ -3,15 +3,18 @@ import classnames from 'classnames';
 import Icon from './Icon';
 
 const propTypes = {
-  children: React.PropTypes.any,
   secondary: React.PropTypes.bool,
   className: React.PropTypes.string,
   /** Callback for detecting user remove action */
   onRemove: React.PropTypes.func,
+  children: React.PropTypes.any,
 };
 
 const defaultProps = {
   secondary: false,
+  className: '',
+  onRemove: null,
+  children: null,
 };
 
 /**
@@ -40,7 +43,12 @@ class Panel extends React.Component {
 
     if (this.props.onRemove) {
       jsx = (
-        <div className="remove-corner" onClick={ this.onRemove }>
+        <div
+          role="button"
+          tabIndex={ 0 }
+          className="remove-corner"
+          onClick={ this.onRemove }
+        >
           <a href="" className="rc-panel-remove"><Icon width="11px" height="11px" type="close" /></a>
         </div>
       );
