@@ -57,7 +57,12 @@ const shouldComponentUpdate = (currentOptions, newOptions) => {
   newOptions = formatOptions(newOptions);
 
   newOptions.forEach((option, i) => {
-    if (!update && currentOptions[0] && currentOptions[i] && currentOptions[i].id !== option.id) {
+    if (
+      !update &&
+      currentOptions[0] &&
+      currentOptions[i] &&
+      (currentOptions[i].id !== option.id || currentOptions[i].selected !== option.selected)
+    ) {
       update = true;
     }
   });
