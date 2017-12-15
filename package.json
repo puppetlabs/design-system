@@ -9,7 +9,7 @@
     "prepublish": "npm run build",
     "watch": "nodemon --watch source -x \"npm run build\"",
     "test": "./node_modules/.bin/nyc --require=./test/jsdom.js --reporter=html ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
-    "js-lint": "./node_modules/.bin/eslint --quiet 'source/**/*.js'",
+    "js-lint": "./node_modules/.bin/eslint --ignore-pattern 'source/react/styleguide/*' --quiet 'source/react/**/*.js'",
     "scss-lint": "./node_modules/.bin/stylelint 'source/scss/**/*.scss'",
     "start": "./node_modules/.bin/styleguidist server",
     "styleguide:build": "./node_modules/.bin/styleguidist build"
