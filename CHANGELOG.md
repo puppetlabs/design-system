@@ -1,3 +1,7 @@
+# 0.3.8 
+
+* Cleaning up the button component and updating the design of the split button to match our new design system
+
 # 0.3.7
 
 * Fix a CSS issue causing Accordions to not be full height in IE
