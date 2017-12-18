@@ -22,6 +22,15 @@ for (var i = 0; i < numParagraphs; i++) {
 </div>
 ```
 
+`Accordion` with Icons:
+
+```
+<Accordion title="My fun accordion" icon="views">
+  <AccordionItem title="bars" icon="bars" />
+  <AccordionItem title="area" icon="area" />
+</Accordion>
+```
+
 `Accordion` with `autoOpen`, rendering a `Table`:
 
 ```

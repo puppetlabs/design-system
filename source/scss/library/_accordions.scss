@@ -19,8 +19,22 @@
 }
 
 .rc-accordion-header {
+  background: $reflect-accordion-header-bg;
   border-bottom: $reflect-accordion-item-title-border;
   height: $reflect-accordion-header-height;
+
+  .rc-icon-close {
+    fill: $reflect-accordion-header-title-color;
+  }
+
+  .rc-accordion-header-icon .rc-icon {
+    fill: $reflect-white;
+  }
+}
+
+.rc-accordion-header-icon {
+  display: inherit;
+  margin-right: 10px;
 }
 
 .rc-accordion-header-title {
@@ -64,6 +78,10 @@
 
 .rc-accordion-item-active {
   flex-grow: 1;
+
+  .rc-accordion-header-icon .rc-icon {
+    fill: $reflect-brand-primary;
+  }
 
   .rc-accordion-item-content {
     flex-direction: column;

@@ -18,8 +18,9 @@ $reflect-accordion-item-content-padding      : $reflect-medium !default;
 $reflect-accordion-icon-color                : $reflect-icon-fill !default;
 $reflect-accordion-icon-color-hover          : $reflect-icon-fill-hover !default;
 
-$reflect-accordion-header-title-color        : $reflect-font-color-medium !default;
+$reflect-accordion-header-title-color        : $reflect-white !default;
 $reflect-accordion-header-height             : 42px;
+$reflect-accordion-header-bg                 : $reflect-gray-darker !default;
 
 $reflect-accordion-animation-speed           : $reflect-animation-speed-base !default;
 
