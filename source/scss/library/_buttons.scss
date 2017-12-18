@@ -9,6 +9,10 @@
   border: 1px solid $border;
   color: $color !important;
 
+  .c-button-menu-inner .rc-icon {
+    fill: $icon-color;
+  }
+
   &[disabled] {
     &:hover {
       border-color: $border;
@@ -25,7 +29,7 @@
     }
 
     .rc-button-menu-inner .rc-icon {
-      fill: $bg-hover;
+      fill: $icon-color;
     }
   }
 
@@ -44,7 +48,15 @@
 
   .rc-button-menu-inner {
     .rc-icon {
-      fill: $bg;
+      fill: $color;
+    }
+  }
+
+  &.rc-button-menu {
+    background: darken($bg, 10%);
+
+    &:hover {
+      background: darken($bg, 20%);
     }
   }
 }
@@ -366,13 +378,12 @@ button.rc-floating-action-button {
     }
 
     .rc-button-menu-inner {
-      background: $reflect-bg-primary;
-      border-radius: $reflect-border-radius;
       display: inline-block;
       padding: 3px;
 
       // stylelint-disable selector-max-compound-selectors
       .rc-icon {
+        fill: $reflect-bg-primary;
         float: left;
         padding: 3px;
       }
@@ -381,6 +392,12 @@ button.rc-floating-action-button {
 
     .rc-button-content {
       display: flex;
+    }
+  }
+
+  &:hover {
+    .rc-icon {
+      fill: $reflect-bg-primary;
     }
   }
 }

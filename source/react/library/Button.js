@@ -5,7 +5,7 @@ import { TooltipStickyArea } from './tooltips/Tooltip';
 
 const propTypes = {
   className: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['tiny', 'small', 'large', 'auto']),
+  size: React.PropTypes.oneOf(['tiny', 'small', 'large', 'auto', null]),
   secondary: React.PropTypes.bool,
   transparent: React.PropTypes.bool,
   icon: React.PropTypes.string,
@@ -22,11 +22,35 @@ const propTypes = {
   type: React.PropTypes.string,
   href: React.PropTypes.string,
   round: React.PropTypes.bool,
+  message: React.PropTypes.string,
   dropdown: React.PropTypes.bool,
+  error: React.PropTypes.string,
   children: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
   ]),
+};
+
+const defaultProps = {
+  className: '',
+  size: null,
+  secondary: false,
+  transparent: false,
+  icon: null,
+  floating: false,
+  disabled: false,
+  processing: false,
+  badge: false,
+  block: false,
+  onClick: null,
+  label: '',
+  type: null,
+  href: null,
+  round: false,
+  message: '',
+  error: '',
+  dropdown: false,
+  children: '',
 };
 
 /**
@@ -53,21 +77,6 @@ class Button extends React.Component {
     } else if (this.props.onClick) {
       this.props.onClick(e);
     }
-  }
-
-  renderTooltip() {
-    const { message } = this.props;
-    let tooltip;
-
-    if (message && this.button) {
-      tooltip = (
-        <Tooltip target={ this.button } anchor="bottom" tooltip={ message }>
-          { message }
-        </Tooltip>
-      );
-    }
-
-    return tooltip;
   }
 
   render() {
@@ -135,7 +144,7 @@ class Button extends React.Component {
     }
 
     if (this.props.icon) {
-      const iconSize = size === 'small' || size === 'tiny' ? '12px' : '16px';
+      const iconSize = '16px';
 
       icon = <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />;
     }
@@ -151,7 +160,7 @@ class Button extends React.Component {
         <TooltipStickyArea anchor="bottom" tooltip={ message }>
           { button }
         </TooltipStickyArea>
-      )
+      );
     }
 
     return button;
@@ -159,5 +168,6 @@ class Button extends React.Component {
 }
 
 Button.propTypes = propTypes;
+Button.defaultProps = defaultProps;
 
 export default Button;
