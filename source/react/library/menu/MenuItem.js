@@ -6,14 +6,12 @@ const propTypes = {
   onClick: React.PropTypes.func,
   selected: React.PropTypes.bool,
   option: React.PropTypes.object.isRequired,
-  multiple: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
 };
 
 const defaultProps = {
   onClick: () => {},
   selected: false,
-  multiple: false,
   disabled: false,
 };
 
@@ -36,8 +34,8 @@ class MenuItem extends React.Component {
     const option = this.props.option;
     let jsx;
 
-    if (this.props.selected && this.props.multiple) {
-      jsx = <Icon type="checkmark" height="16px" width="16px" />;
+    if (this.props.selected) {
+      jsx = <Icon type="check" height="12px" width="12px" />;
     } else if (option.icon) {
       jsx = <Icon type={ option.icon } height="16px" width="16px" />;
     }
@@ -49,7 +47,7 @@ class MenuItem extends React.Component {
     const option = this.props.option;
     const icon = this.renderIcon();
     const className = classnames('rc-menu-item', {
-      'rc-menu-item-with-icon': icon || this.props.multiple,
+      'rc-menu-item-with-icon': icon,
       'rc-menu-item-selected': this.props.selected,
       'rc-menu-item-disabled': this.props.option.disabled,
     });
@@ -63,8 +61,8 @@ class MenuItem extends React.Component {
     return (
       <li className={ className }>
         <a href={ option.id } className="rc-menu-item-anchor" onClick={ this.onClick }>
-          { icon }
           { value }
+          { icon }
         </a>
       </li>
     );

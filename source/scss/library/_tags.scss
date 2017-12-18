@@ -2,7 +2,7 @@
   background: $reflect-tag-bg;
   border: $reflect-tag-border;
   border-radius: $reflect-tag-border-radius;
-  color: $reflect-tag-color !important;
+  color: $reflect-tag-color;
   display: inline-block;
   font-size: $reflect-tag-font-size;
   height: $reflect-tag-height;
@@ -15,6 +15,10 @@
     display: inline-block;
   }
 
+  .rc-icon {
+    fill: $reflect-tag-icon-fill;
+  }
+
   .rc-button .rc-icon-delete {
     height: $reflect-tag-icon-size;
     position: absolute;
@@ -22,28 +26,37 @@
     width: $reflect-tag-icon-size;
   }
 
-  // .rc-icon-delete {
-  //   position: relative;
-  //   top: 2px;
-  //   margin-left: $reflect-tag-icon-spacing;
-  //   cursor: pointer;
-  // }
+  .rc-tag-actions {
+    float: right;
+    height: 100%;
+  }
+
+  .rc-tag-actions .rc-button {
+    height: 100%;
+  }
 
   &.rc-tag-block {
     display: block;
-    margin-right: 0 !important;
+    margin-right: 0;
     width: auto;
   }
 
   .rc-tag-content,
   .rc-tooltip-area {
     font-size: $reflect-tag-font-size;
+    height: 100%;
     overflow: hidden;
-    padding-right: $reflect-tag-icon-size + $reflect-tag-icon-spacing;
     position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 100%;
+  }
+}
+
+.rc-tag-removable {
+  .rc-tag-content,
+  .rc-tooltip-area {
+    padding-right: $reflect-tag-icon-size + $reflect-tag-icon-spacing;
   }
 }
 

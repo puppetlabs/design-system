@@ -225,10 +225,20 @@ $reflect-dropdown-item-disabled-bg           : $reflect-gray-light !default;
 
 // Forms
 // ----------------------------------------------------------------------------
-$reflect-form-label-font-size                : $reflect-font-size-small !default;
-$reflect-form-label-margin-bottom            : 6px !default; // Todo: Base on grid
-$reflect-form-label-case                     : none !default;
-$reflect-form-label-color                    : $reflect-font-color-subtle !default;
+$reflect-form-vertical-padding               : $reflect-tiny !default;
+$reflect-form-label-font-weight              : $reflect-font-weight-heavy !default;
+$reflect-form-label-color                    : $reflect-gray-dark !default;
+$reflect-form-label-font-size                : $reflect-font-size-tiny !default;
+$reflect-form-description-color              : $reflect-gray !default;
+$reflect-form-description-font-size          : $reflect-font-size-small !default;
+
+$reflect-form-section-legend-font-size       : $reflect-font-size-small !default;
+$reflect-form-section-legend-font-weight     : $reflect-font-weight-heavy !default;
+$reflect-form-section-legend-color           : $reflect-gray-darker !default;
+
+$reflect-form-field-margin                   : $reflect-small !default;
+
+$reflect-form-tiny-label-font-size           : $reflect-font-size-tiny * 0.9 !default;
 
 // Filters
 // ----------------------------------------------------------------------------
@@ -246,6 +256,14 @@ $reflect-filter-select-padding               : $reflect-tiny !default;
 $reflect-filter-select-height                : 10px !default; // Todo: Base on grid
 
 $reflect-filter-split-bg                     : $reflect-gray-light !default;
+$reflect-filter-split-menu-bg                : darken($reflect-filter-split-bg, 10%) !default;
+$reflect-filter-split-menu-bg-hover          : darken($reflect-filter-split-menu-bg, 10%) !default;
+
+$reflect-filters-filter-bg                   : $reflect-brand-primary !default;
+$reflect-filters-filter-bg-hover             : darken($reflect-brand-primary, 10%) !default;
+$reflect-filters-filter-color                : $reflect-white !default;
+$reflect-filters-filter-action-color         : lighten($reflect-brand-primary, 15%) !default;
+$reflect-filters-form-border                 : $reflect-border !default;
 
 // Input
 // ----------------------------------------------------------------------------
@@ -258,6 +276,9 @@ $reflect-input-border-error                  : 1px solid $reflect-danger-color !
 $reflect-input-padding                       : $reflect-small !default;
 $reflect-input-placeholder-color             : $reflect-font-color-subtle !default;
 
+$reflect-input-hover-color                   : $reflect-brand-primary !default;
+$reflect-input-hover-border                  : 1px solid $reflect-brand-primary !default;
+
 $reflect-input-disabled-bg                   : $reflect-bg-subtle !default;
 $reflect-input-disabled-color                : $reflect-font-color-subtle !default;
 
@@ -269,10 +290,18 @@ $reflect-input-tiny-padding                  : $reflect-mini $reflect-tiny !defa
 $reflect-input-simple-bg                     : transparent !default;
 $reflect-input-simple-focus-bg               : transparent !default;
 
+$reflect-checkbox-border                     : $reflect-border !default;
+$reflect-checkbox-border-radius              : $reflect-border-radius !default;
+$reflect-checkbox-padding                    : $reflect-small !default;
+$reflect-checkbox-icon-color                 : $reflect-brand-primary !default;
+
+$reflect-checkbox-hover-border-color         : $reflect-brand-primary !default;
+$reflect-checkbox-disabled-icon-color        : $reflect-gray !default;
+$reflect-checkbox-disabled-border-color      : $reflect-border-color !default;
+
 // Select
 // ----------------------------------------------------------------------------
 $reflect-select-color                        : $reflect-input-color !default;
-$reflect-select-border-active                : $reflect-border-active !default;
 $reflect-select-border-radius                : $reflect-input-border-radius !default;
 $reflect-select-selected-shadow              : $reflect-selected-shadow !default;
 $reflect-select-menu-bg                      : $reflect-white !default;
@@ -305,6 +334,10 @@ $reflect-list-item-icon-top                  : 2px !default; // Todo: Base on gr
 $reflect-list-item-icon-height               : 33px !default; // Todo: Base on grid
 $reflect-list-item-icon-width                : 16px !default; // Todo: Base on grid
 
+$reflect-list-item-tiny-font-size            : $reflect-font-size-tiny !default;
+$reflect-list-item-tiny-padding-v            : $reflect-tiny !default;
+$reflect-list-item-tiny-padding-h            : $reflect-tiny !default;
+
 // Menu
 // ----------------------------------------------------------------------------
 $reflect-menu-item-border                    : $reflect-border !default;
@@ -320,11 +353,16 @@ $reflect-menu-item-bg                        : transparent !default;
 $reflect-menu-item-padding                   : 0 $reflect-medium !default;
 $reflect-menu-header-border                  : $reflect-border !default;
 
+$reflect-menu-item-tiny-padding              : 0 $reflect-small !default;
+$reflect-menu-item-tiny-height               : $reflect-size-base * 4 !default;
+$reflect-menu-item-tiny-font-size            : $reflect-font-size-tiny !default;
+$reflect-menu-item-tiny-line-height          : $reflect-font-size-small !default;
+
 // Menu States
 $reflect-menu-item-color-hover               : $reflect-brand-primary !default;
-$reflect-menu-item-bg-hover                  : $reflect-menu-item-bg !default;
+$reflect-menu-item-bg-hover                  : $reflect-gray-lighter !default;
 
-$reflect-menu-item-color-selected            : $reflect-bg-primary !default;
+$reflect-menu-item-color-selected            : $reflect-brand-primary !default;
 $reflect-menu-item-bg-selected               : $reflect-action-color !default;
 $reflect-menu-item-border-selected           : $reflect-border-active-hover !default;
 
@@ -481,7 +519,7 @@ $reflect-tag-shadow-selected                 : $reflect-selected-shadow !default
 
 $reflect-tag-icon-spacing                    : $reflect-tiny !default;
 $reflect-tag-icon-size                       : 14px !default;
-
+$reflect-tag-icon-fill                       : $reflect-gray-lighter !default;
 
 $reflect-tag-tiny-case                       : uppercase !default;
 $reflect-tag-tiny-font-size                  : $reflect-font-size-tiny !default;

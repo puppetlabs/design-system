@@ -1,3 +1,99 @@
+.rc-form {
+  .rc-form-field {
+    margin-bottom: $reflect-form-field-margin;
+  }
+}
+
+.rc-form-fields {
+  margin-bottom: -$reflect-form-field-margin;
+}
+
+.rc-form-fields,
+.rc-form-section {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.rc-form-section-legend {
+  color: $reflect-form-section-legend-color;
+  font-size: $reflect-form-section-legend-font-size;
+  font-weight: $reflect-form-section-legend-font-weight;
+}
+
+.rc-form-field-label,
+.rc-form-section-legend {
+  letter-spacing: 1.5px;
+  margin-bottom: $reflect-form-vertical-padding;
+}
+
+.rc-form-field-label {
+  color: $reflect-form-label-color;
+  font-size: $reflect-form-label-font-size;
+  text-transform: uppercase;
+}
+
+.rc-form-field-description {
+  color: $reflect-form-description-color;
+  font-size: $reflect-form-description-font-size;
+  padding-top: $reflect-form-vertical-padding;
+}
+
+.rc-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: $reflect-form-field-margin;
+}
+
+.rc-form-field-error {
+  .rc-form-field-label {
+    color: $reflect-danger-color;
+  }
+
+  .rc-form-field-description {
+    color: $reflect-danger-color;
+  }
+}
+
+.rc-form-field-inline {
+  align-items: center;
+  width: 100%;
+}
+
+.rc-form-inline,
+.rc-form-field-inline {
+  .rc-form-field-label {
+    flex-grow: 0.5;
+    padding-bottom: 0;
+  }
+
+  .rc-form-field-content {
+    align-items: center;
+    display: flex;
+  }
+
+  .rc-form-field-element {
+    display: flex;
+    flex-grow: 3;
+    justify-content: flex-end;
+  }
+
+  .rc-toggle .rc-switch {
+    margin: 0;
+  }
+
+  .rc-form-field-description {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.rc-form-tiny {
+  .rc-form-field-label {
+    font-size: $reflect-form-tiny-label-font-size;
+  }
+}
+
 /* stylelint-disable  */
 .rc-filter-form {
   position: relative;
@@ -28,11 +124,13 @@
     }
 
     .rc-button-menu {
-      background: $reflect-filter-split-bg;
+      background: $reflect-filter-split-menu-bg;
+
+      &:hover {
+        background: $reflect-filter-split-menu-bg-hover;
+      }
 
       .rc-button-menu-inner {
-        background: $reflect-filter-split-bg;
-
         path {
           fill: $reflect-filter-input-bg;
         }
@@ -40,8 +138,6 @@
 
       &:hover {
         .rc-button-menu-inner {
-          background: $reflect-button-bg-hover;
-
           path {
             fill: $reflect-filter-input-bg;
           }
@@ -113,27 +209,6 @@
     .rc-filter-form-fields {
       border-top-right-radius: 0;
     }
-  }
-}
-
-.rc-form {
-  li {
-    margin-bottom: 16px;
-  }
-
-  li:last-of-type {
-    margin-bottom: 0;
-  }
-
-  .rc-form-label {
-    color: $reflect-form-label-color;
-    font-size: $reflect-form-label-font-size;
-    margin-bottom: $reflect-form-label-margin-bottom;
-    text-transform: $reflect-form-label-case;
-  }
-
-  .rc-form-buttons-right {
-    text-align: right;
   }
 }
 /* stylelint-enable  */

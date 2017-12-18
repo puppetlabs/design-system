@@ -15,7 +15,10 @@ const propTypes = {
   readonly: React.PropTypes.bool,
   type: React.PropTypes.string,
   /** Value string */
-  value: React.PropTypes.string,
+  value: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.number,
+  ]),
   name: React.PropTypes.string,
   size: React.PropTypes.oneOf(['large', 'small', 'tiny']),
   simple: React.PropTypes.bool,
@@ -90,6 +93,10 @@ class Input extends React.Component {
     this.input.focus();
   }
 
+  blur() {
+    this.input.blur();
+  }
+
   render() {
     const className = classnames('rc-input', {
       'rc-input-error': this.props.error,
@@ -104,6 +111,7 @@ class Input extends React.Component {
       disabled: this.props.disabled,
       readOnly: this.props.readonly,
       value: this.props.value,
+      id: this.props.name,
       name: this.props.name,
       onKeyUp: this.props.onKeyUp,
       type: this.props.type,

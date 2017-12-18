@@ -5,8 +5,11 @@
 
   .rc-menu-item a {
     background: $bg;
-    border-bottom: $border;
     color: $color;
+  }
+
+  .rc-menu-item:last-of-type a {
+    border-bottom: 0;
   }
 
   .rc-menu-item a:hover {
@@ -19,7 +22,6 @@
   }
 
   .rc-menu-item-selected  a {
-    background: $bg-selected;
     border-bottom: 0;
     color: $color-selected;
   }
@@ -29,7 +31,7 @@
   }
 
   .rc-menu-item-selected  a:hover {
-    background: darken($bg-selected, 10%);
+    background: $bg-hover;
     color: $color-selected;
   }
 
@@ -78,19 +80,29 @@
   text-decoration: none;
 }
 
+.rc-menu-list-tiny {
+  .rc-menu-item {
+    font-size: $reflect-menu-item-tiny-font-size;
+    line-height: $reflect-menu-item-tiny-line-height;
+  }
+
+  .rc-menu-item a {
+    height: $reflect-menu-item-tiny-height;
+    padding: $reflect-menu-item-tiny-padding;
+  }
+}
+
 .rc-menu-item a:hover {
   text-decoration: none;
 }
 
 .rc-menu-item-with-icon a {
-  // 16px is currently the size of the checkmark icon.
-  padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
   position: relative;
 }
 
 .rc-menu-item-with-icon .rc-icon {
-  left: $reflect-dropdown-padding;
   position: absolute;
+  right: $reflect-dropdown-padding;
   top: 50%;
   transform: translateY(-50%);
 }

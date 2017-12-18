@@ -1,4 +1,7 @@
 import React from 'react';
+
+import { isNodeInRoot } from '../helpers/statics';
+
 import classnames from 'classnames';
 import debounce from 'debounce';
 import PopoverContent, { PopoverContentWithoutPortal } from './PopoverContent';
@@ -9,7 +12,7 @@ const propTypes = {
   position: React.PropTypes.object,
   padding: React.PropTypes.bool,
   closeButton: React.PropTypes.bool,
-  anchor: React.PropTypes.string,
+  anchor: React.PropTypes.oneOf(['bottom right', 'bottom left']),
   onOpen: React.PropTypes.func,
   onClose: React.PropTypes.func,
   target: React.PropTypes.object,
@@ -21,13 +24,17 @@ const propTypes = {
   className: React.PropTypes.string,
   allowBubble: React.PropTypes.bool,
   disablePortal: React.PropTypes.bool,
+  wrapperClassName: React.PropTypes.string,
+  inheritTargetWidth: React.PropTypes.bool,
   disableOutsideClick: React.PropTypes.bool,
+  openEvent: React.PropTypes.string,
 };
 
 const defaultProps = {
   width: 'auto',
   margin: 8,
   padding: true,
+  openEvent: 'onClick',
   anchor: 'bottom left',
   allowBubble: false,
   disableOutsideClick: false,
@@ -93,8 +100,8 @@ class Popover extends React.Component {
     this.setPosition();
   }
 
-  onOutsideClick() {
-    if (!this.props.disableOutsideClick) {
+  onOutsideClick(e) {
+    if (!this.props.disableOutsideClick && !isNodeInRoot(e.target, this.elem)) {
       this.setState({ open: false });
 
       this.onClose();
@@ -132,14 +139,18 @@ class Popover extends React.Component {
       let right;
       let left;
 
-      if (!this.props.disablePortal) {
-        bottom = elPosition.bottom + window.pageYOffset;
-        left = elPosition.left + window.pageXOffset;
-        right = document.body.clientWidth - (elPosition.right + window.pageXOffset);
-      } else {
+      if (this.props.disablePortal) {
         bottom = elPosition.height;
         left = 0;
         right = 0;
+      } else {
+        bottom = elPosition.bottom + window.pageYOffset;
+        left = elPosition.left + window.pageXOffset;
+        right = document.body.clientWidth - (elPosition.right + window.pageXOffset);
+      }
+
+      if (this.props.inheritTargetWidth) {
+        newState.position.width = elPosition.width;
       }
 
       switch (this.props.anchor) {
@@ -156,10 +167,12 @@ class Popover extends React.Component {
     this.setState(newState);
   }
 
-  close() {
-    this.setState({ open: false });
+  open() {
+    this.setState({ open: true }, this.onOpen);
+  }
 
-    this.onClose();
+  close() {
+    this.setState({ open: false }, this.onClose);
   }
 
   renderButton() {
@@ -172,7 +185,7 @@ class Popover extends React.Component {
       });
 
       jsx = React.cloneElement(target, {
-        onClick: this.onClick,
+        [this.props.openEvent]: this.onClick,
         ref: (c) => { this.button = c; },
         className,
       });
@@ -182,12 +195,13 @@ class Popover extends React.Component {
   }
 
   render() {
-    const wrapperClassName = classnames('rc-popover-wrapper', {
+    const wrapperClassName = classnames('rc-popover-wrapper', this.props.wrapperClassName, {
       'rc-popover-wrapper-open': this.state.open,
       'rc-popover-wrapper-relative': this.props.disablePortal,
     });
     const className = classnames('rc-popover', this.props.className, {
       [`rc-popover-${this.props.size}`]: this.props.size,
+      'rc-popover-no-portal': this.props.disablePortal,
       'rc-popover-no-padding': !this.props.padding || this.props.menu,
     });
     const styles = this.state.position;
@@ -208,9 +222,8 @@ class Popover extends React.Component {
       onOutsideClick: this.onOutsideClick,
       onClose: this.close,
       allowBubble: this.props.allowBubble,
-      children: this.props.children,
       menu: this.props.menu,
-    });
+    }, this.props.children);
 
     return (
       <div

@@ -1,3 +1,13 @@
+.rc-select-popover-wrapper {
+  display: block;
+  width: 100%;
+}
+
+.rc-select-popover {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
 .rc-select {
   color: $reflect-select-color;
   cursor: pointer;
@@ -20,7 +30,6 @@
 
   .rc-select-menu {
     background: $reflect-select-menu-bg;
-    border: $reflect-select-border-active;
     border-bottom-left-radius: $reflect-select-border-radius;
     border-bottom-right-radius: $reflect-select-border-radius;
     box-shadow: $reflect-select-selected-shadow;
@@ -30,12 +39,24 @@
   }
 }
 
+.rc-popover-no-portal {
+  .rc-select-menu {
+    position: relative;
+  }
+}
+
+.rc-select-disabled {
+  cursor: default;
+
+  .rc-input {
+    cursor: default;
+  }
+}
+
 .rc-select-open {
   .rc-input {
     @extend %focused-input;
 
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     cursor: text;
   }
 }
@@ -43,5 +64,11 @@
 .rc-select-small {
   .rc-icon-chevron-down {
     bottom: 12px;
+  }
+}
+
+.rc-select-tiny {
+  .rc-icon-chevron-down {
+    bottom: 4px;
   }
 }

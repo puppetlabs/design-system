@@ -11,6 +11,7 @@ const propTypes = {
   ]),
   multiple: React.PropTypes.bool,
   onChange: React.PropTypes.func,
+  size: React.PropTypes.oneOf(['small', 'tiny']),
 };
 
 const defaultProps = {
@@ -29,13 +30,13 @@ class MenuList extends React.Component {
   }
 
   render() {
-    const { selected, options, multiple } = this.props;
+    const { selected, options, multiple, size } = this.props;
     const className = classnames('rc-menu-list', {
+      [`rc-menu-list-${size}`]: size,
       'rc-menu-multiple': multiple,
     });
-    const jsx = [];
 
-    options.forEach((option) => {
+    const jsx = options.map((option) => {
       let isSelected = false;
 
       if (Array.isArray(selected)) {
@@ -44,14 +45,14 @@ class MenuList extends React.Component {
         isSelected = selected === option.id;
       }
 
-      jsx.push(
+      return (
         <MenuItem
           key={ option.id }
           option={ option }
           selected={ isSelected }
           onClick={ this.onChange }
           multiple={ multiple }
-        />,
+        />
       );
     });
 
