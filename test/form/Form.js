@@ -26,4 +26,23 @@ describe('<Form />', () => {
     expect(Object.keys(wrapper.find('.test-child').props()))
       .to.eql(['type', 'name', 'className', 'onChange', 'error', 'value', 'size']);
   });
+
+  describe('form with sections', () => {
+    it('should properly set the values from the fields in the section', () => {
+      const wrapper = shallow(
+        <Form>
+          <Form.Section key="test-section">
+            <Form.Field
+              key="test-field"
+              type="input"
+              name="test"
+              value="myValue"
+            />
+          </Form.Section>
+        </Form>,
+      );
+
+      expect(wrapper.find('FormField').prop('value')).to.eql('myValue');
+    });
+  });
 });

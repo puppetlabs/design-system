@@ -100,6 +100,7 @@ const options = [
     <Form.Field
       type="input"
       name="dimensions"
+      value="my dimension"
       label="dimensions"
     />
     <Form.Field

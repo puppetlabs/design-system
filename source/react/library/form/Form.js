@@ -31,11 +31,15 @@ const defaultProps = {
 };
 
 const getValues = (children) => {
-  const values = {};
+  let values = {};
 
   React.Children.forEach(children, (child) => {
     if (child) {
-      values[child.props.name] = child.props.value;
+      if (child.props.name) {
+        values[child.props.name] = child.props.value;
+      } else if (child.props.children) {
+        values = Object.assign(values, getValues(child.props.children));
+      }
     }
   });
 
@@ -82,6 +86,7 @@ class Form extends React.Component {
     return React.cloneElement(child, {
       error: child.props.error || this.props.errors[child.props.name],
       value: this.state.values[child.props.name],
+      onChange: this.onChange(child.props.name),
       size: this.props.size,
     });
   }
