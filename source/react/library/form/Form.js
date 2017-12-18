@@ -4,6 +4,7 @@ import Button from '../Button';
 import ButtonGroup from '../ButtonGroup';
 
 import FormField from './FormField';
+import FormSection from './FormSection';
 
 const propTypes = {
   className: React.PropTypes.string,
@@ -77,21 +78,32 @@ class Form extends React.Component {
     };
   }
 
-  renderChildren() {
-    const children = [];
+  renderField(child) {
+    return React.cloneElement(child, {
+      error: child.props.error || this.props.errors[child.props.name],
+      value: this.state.values[child.props.name],
+      size: this.props.size,
+    });
+  }
 
-    React.Children.forEach(this.props.children, (child) => {
+  renderSection(child) {
+    return React.cloneElement(child, {
+      children: this.renderChildren(child.props.children),
+    });
+  }
+
+  renderChildren(children) {
+    const jsx = [];
+
+    React.Children.forEach(children, (child) => {
       if (child && child.type === FormField) {
-        children.push(React.cloneElement(child, {
-          error: child.props.error || this.props.errors[child.props.name],
-          value: this.state.values[child.props.name],
-          onChange: this.onChange(child.props.name),
-          size: this.props.size,
-        }));
+        jsx.push(this.renderField(child));
+      } else if (child && child.type === FormSection) {
+        jsx.push(this.renderSection(child));
       }
     });
 
-    return children;
+    return jsx;
   }
 
   renderActions() {
@@ -135,7 +147,7 @@ class Form extends React.Component {
   }
 
   render() {
-    const children = this.renderChildren();
+    const children = this.renderChildren(this.props.children);
     const actions = this.renderActions();
     const className = classnames('rc-form', this.props.className, `rc-form-${this.props.size}`, {
       'rc-form-inline': this.props.inline,
@@ -155,7 +167,7 @@ class Form extends React.Component {
 Form.propTypes = propTypes;
 Form.defaultProps = defaultProps;
 
-
 Form.Field = FormField;
+Form.Section = FormSection;
 
 export default Form;

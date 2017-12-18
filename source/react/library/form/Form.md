@@ -87,6 +87,30 @@ const options = [
 </Form>
 ```
 
+## Form with sections
+
+```
+<Form>
+  <Form.Field
+    type="input"
+    name="title"
+    label="title"
+  />
+  <Form.Section title="X-Axis">
+    <Form.Field
+      type="input"
+      name="dimensions"
+      label="dimensions"
+    />
+    <Form.Field
+      type="input"
+      name="metrics"
+      label="metrics"
+    />
+  </Form.Section>
+</Form>
+```
+
 ## Inline form with validation
 
 You must fill out the various fields for the form to be submittable.
