@@ -142,6 +142,7 @@ class Popover extends React.Component {
     const newState = { position: { } };
 
     if (Object.keys(this.props.position).length > 0) {
+console.log('trying to position', this.props.position);
       newState.position = this.props.position;
     } else if (this.elem) {
       const el = this.elem;
