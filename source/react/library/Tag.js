@@ -20,7 +20,7 @@ const defaultProps = {
   className: '',
   size: '',
   block: false,
-  tooltip: '',
+  tooltip: false,
   onRemove: null,
   onClick: null,
   children: null,
