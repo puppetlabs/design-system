@@ -29,7 +29,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  open: false,
+  open: null,
   menu: false,
   position: {},
   padding: true,
@@ -80,7 +80,7 @@ class Popover extends React.Component {
   componentWillReceiveProps(props) {
     const newState = {};
 
-    if (typeof props.open !== 'undefined' && (props.open !== this.state.open)) {
+    if (props.open !== null && (props.open !== this.state.open)) {
       newState.open = props.open;
     }
 
@@ -115,7 +115,6 @@ class Popover extends React.Component {
   onOutsideClick(e) {
     if (!this.props.disableOutsideClick && !isNodeInRoot(e.target, this.elem)) {
       this.setState({ open: false });
-
       this.onClose();
     }
   }
@@ -142,7 +141,7 @@ class Popover extends React.Component {
   setPosition() {
     const newState = { position: { } };
 
-    if (this.props.position) {
+    if (Object.keys(this.props.position).length > 0) {
       newState.position = this.props.position;
     } else if (this.elem) {
       const el = this.elem;
@@ -224,7 +223,7 @@ class Popover extends React.Component {
     }
 
     const component = this.props.disablePortal ? PopoverContentWithoutPortal : PopoverContent;
-
+console.log('open', this.state.open);
     const popoverContent = React.createElement(component, {
       isOpened: this.state.open,
       className,
