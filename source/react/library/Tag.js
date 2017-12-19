@@ -21,6 +21,7 @@ const defaultProps = {
   className: '',
   size: '',
   block: false,
+  actions: null,
   tooltip: false,
   onRemove: null,
   onClick: null,

@@ -6,18 +6,21 @@ import { TooltipHoverArea } from '../tooltips/Tooltip';
 const propTypes = {
   size: React.PropTypes.oneOf(['small', 'tiny']),
   className: React.PropTypes.string,
-  children: React.PropTypes.any,
+  actions: React.PropTypes.any,
+  kebab: React.PropTypes.any,
   onRemove: React.PropTypes.func,
   onEdit: React.PropTypes.func,
   onClick: React.PropTypes.func,
   selected: React.PropTypes.bool,
   tooltip: React.PropTypes.bool,
-  actions: React.PropTypes.any,
-  kebab: React.PropTypes.any,
+  children: React.PropTypes.any,
 };
 
 const defaultProps = {
   size: 'small',
+  className: '',
+  actions: null,
+  kebab: null,
   selected: false,
   tooltip: '',
   onRemove: null,

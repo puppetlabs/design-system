@@ -32,6 +32,8 @@ const defaultProps = {
   className: '',
   onSelect: () => {},
   disabled: false,
+  multiple: false,
+  name: '',
   typeahead: true,
   autoOpen: false,
   size: 'small',
