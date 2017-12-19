@@ -1,4 +1,5 @@
 import React from 'react';
+import clone from 'clone';
 import classnames from 'classnames';
 import debounce from 'debounce';
 import { isNodeInRoot } from '../helpers/statics';
@@ -60,6 +61,7 @@ class Popover extends React.Component {
     this.state = {
       position: props.position,
       open: props.open,
+      width: props.width,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -162,7 +164,7 @@ console.log('trying to position', this.props.position);
       }
 
       if (this.props.inheritTargetWidth) {
-        newState.position.width = elPosition.width;
+        newState.width = elPosition.width;
       }
 
       switch (this.props.anchor) {
@@ -216,11 +218,11 @@ console.log('trying to position', this.props.position);
       'rc-popover-no-portal': this.props.disablePortal,
       'rc-popover-no-padding': !this.props.padding || this.props.menu,
     });
-    const styles = this.state.position;
+    const styles = clone(this.state.position);
     const button = this.renderButton();
 
-    if (this.props.width !== 'auto') {
-      styles.width = this.props.width;
+    if (this.state.width !== 'auto') {
+      styles.width = this.state.width;
     }
 
     const component = this.props.disablePortal ? PopoverContentWithoutPortal : PopoverContent;

@@ -70,7 +70,7 @@ class Input extends React.Component {
     this.onClick = this.onClick.bind(this);
 
     this.state = {
-      value: this.props.value || '',
+      value: this.props.value,
       disabled: !!this.props.disabled,
     };
   }
@@ -78,7 +78,7 @@ class Input extends React.Component {
   componentWillReceiveProps(nextProps) {
     const nextState = {};
 
-    if ({}.hasOwnProperty.call(nextProps, 'value')) {
+    if (nextProps.value) {
       nextState.value = nextProps.value;
     }
 
