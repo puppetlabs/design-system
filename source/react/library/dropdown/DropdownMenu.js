@@ -30,7 +30,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  anchor: '',
+  anchor: null,
   target: null,
   selected: [],
   options: [],

@@ -22,7 +22,7 @@ const defaultProps = {
   actions: null,
   kebab: null,
   selected: false,
-  tooltip: '',
+  tooltip: false,
   onRemove: null,
   onEdit: null,
   onClick: null,

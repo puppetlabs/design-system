@@ -12,6 +12,14 @@ const propTypes = {
   disabled: React.PropTypes.bool,
 };
 
+const defaultProps = {
+  data: null,
+  column: null,
+  onChange: null,
+  rowData: {},
+  disabled: false,
+};
+
 class ColumnInput extends React.Component {
 
   constructor(props) {
@@ -43,5 +51,6 @@ class ColumnInput extends React.Component {
 }
 
 ColumnInput.propTypes = propTypes;
+ColumnInput.defaultProps = defaultProps;
 
 export default ColumnInput;

@@ -16,9 +16,14 @@ const propTypes = {
 };
 
 const defaultProps = {
+  selectable: false,
+  striped: true,
+  fixed: false,
   data: [],
   columns: [],
-  striped: true,
+  className: '',
+  onChange: null,
+  onSelectChange: null,
 };
 
 function isSortable(value) {
@@ -33,7 +38,7 @@ class Table extends React.Component {
       direction: 'asc',
     };
 
-    this.props.columns.forEach(column => {
+    this.props.columns.forEach((column) => {
       if (column.sort) {
         sort = {
           column: column.column,
@@ -112,18 +117,18 @@ class Table extends React.Component {
 
     if (this.props.selectable) {
       headers.push(
-        <th key="all-selector" className="rc-table-column-checkbox">&nbsp;<div>&nbsp;</div></th>
+        <th key="all-selector" className="rc-table-column-checkbox">&nbsp;<div>&nbsp;</div></th>,
       );
     }
 
     if (data.length > 0) {
-      this.props.columns.forEach(column => {
+      this.props.columns.forEach((column) => {
         headers.push(
           <ColumnHeader
             key={ `${column.column}-header` }
             column={ column }
             onClick={ this.onHeaderClick }
-          />
+          />,
         );
       });
     }
@@ -157,7 +162,21 @@ class Table extends React.Component {
     const rows = [];
 
     if (sort && sort.column) {
-      data = _.sortBy(data, row => row[sort.column].toLowerCase());
+      data = data.sort((a, b) => {
+        const columnA = a[sort.column].toLowerCase();
+        const columnB = b[sort.column].toLowerCase();
+
+        if (columnA < columnB) {
+          return -1;
+        }
+
+        if (columnA > columnB) {
+          return 1;
+        }
+
+        // names must be equal
+        return 0;
+      });
 
       if (sort.direction === 'desc') {
         data = data.reverse();
@@ -165,7 +184,7 @@ class Table extends React.Component {
     }
 
     if (data.length > 0) {
-      data.forEach(datum => {
+      data.forEach((datum) => {
         const columns = [];
 
         if (this.props.selectable) {
@@ -176,18 +195,18 @@ class Table extends React.Component {
                 checked={ datum.meta.selected }
                 rowData={ datum }
               />
-            </td>
+            </td>,
           );
         }
 
-        Object.keys(datum).forEach(column => {
+        Object.keys(datum).forEach((column) => {
           const metaData = this.getMetaData(column);
 
           if (metaData) {
             columns.push(
               <td key={ `${datum.rowKey}-${column}` } className={ metaData.className }>
                 { this.getColumn(datum, column) }
-              </td>
+              </td>,
             );
           }
         });

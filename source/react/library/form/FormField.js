@@ -38,7 +38,15 @@ const propTypes = {
 };
 
 const defaultProps = {
-  onChange: () => {},
+  value: null,
+  inline: false,
+  size: null,
+  error: '',
+  label: '',
+  className: '',
+  description: '',
+  elementProps: {},
+  onChange: null,
 };
 
 class FormField extends React.Component {
@@ -65,7 +73,9 @@ class FormField extends React.Component {
         break;
     }
 
-    this.props.onChange(value);
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
   }
 
   renderLabel() {

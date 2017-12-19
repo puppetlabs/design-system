@@ -7,6 +7,13 @@ const propTypes = {
   rowData: React.PropTypes.object,
 };
 
+const defaultProps = {
+  column: '',
+  checked: false,
+  rowData: {},
+  onChange: null,
+};
+
 class ColumnCheckbox extends React.Component {
 
   constructor(props) {
@@ -39,5 +46,6 @@ class ColumnCheckbox extends React.Component {
 }
 
 ColumnCheckbox.propTypes = propTypes;
+ColumnCheckbox.defaultProps = defaultProps;
 
 export default ColumnCheckbox;

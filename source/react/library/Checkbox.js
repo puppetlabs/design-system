@@ -11,6 +11,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  name: '',
   checked: false,
   disabled: false,
   onChange: () => {},

@@ -30,7 +30,7 @@ const defaultProps = {
   placeholder: 'Select...',
   disablePortal: false,
   className: '',
-  onSelect: () => {},
+  onSelect: null,
   disabled: false,
   multiple: false,
   name: '',
@@ -128,7 +128,11 @@ class Select extends React.Component {
 
     this.popover.close();
     this.input.blur();
-    this.props.onSelect(option);
+
+    if (this.props.onSelect) {
+      this.props.onSelect(option);
+    }
+
     this.setState({
       inputValue: undefined,
       options,
