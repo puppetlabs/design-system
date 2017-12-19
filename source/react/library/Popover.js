@@ -1,9 +1,7 @@
 import React from 'react';
-
-import { isNodeInRoot } from '../helpers/statics';
-
 import classnames from 'classnames';
 import debounce from 'debounce';
+import { isNodeInRoot } from '../helpers/statics';
 import PopoverContent, { PopoverContentWithoutPortal } from './PopoverContent';
 
 const propTypes = {
@@ -31,13 +29,27 @@ const propTypes = {
 };
 
 const defaultProps = {
-  width: 'auto',
-  margin: 8,
+  open: false,
+  menu: false,
+  position: {},
   padding: true,
-  openEvent: 'onClick',
+  closeButton: false,
   anchor: 'bottom left',
+  onOpen: null,
+  onClose: null,
+  target: null,
+  width: 'auto',
+  size: null,
+  hint: '',
+  margin: 8,
+  className: '',
+  openEvent: 'onClick',
   allowBubble: false,
+  disablePortal: false,
+  wrapperClassName: '',
+  inheritTargetWidth: false,
   disableOutsideClick: false,
+  children: null,
 };
 
 class Popover extends React.Component {
@@ -46,8 +58,8 @@ class Popover extends React.Component {
     super(props);
 
     this.state = {
-      position: {},
-      open: props.open || false,
+      position: props.position,
+      open: props.open,
     };
 
     this.onClick = this.onClick.bind(this);

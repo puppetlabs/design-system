@@ -10,7 +10,6 @@ const propTypes = {
   className: React.PropTypes.string,
   onChange: React.PropTypes.func,
   inline: React.PropTypes.bool,
-  children: React.PropTypes.any,
   onCancel: React.PropTypes.func,
   onSubmit: React.PropTypes.func,
   cancellable: React.PropTypes.bool,
@@ -18,16 +17,21 @@ const propTypes = {
   validator: React.PropTypes.func,
   errors: React.PropTypes.object,
   size: React.PropTypes.string,
+  children: React.PropTypes.any,
 };
 
 const defaultProps = {
-  onChange: () => {},
-  onCancel: () => {},
-  onSubmit: () => {},
-  validator: () => {},
-  size: 'small',
   className: '',
+  size: 'small',
+  inline: false,
   errors: {},
+  cancellable: false,
+  submittable: false,
+  onChange: null,
+  onCancel: () => {},
+  onSubmit: null,
+  validator: null,
+  children: null,
 };
 
 const getValues = (children) => {
@@ -46,7 +50,7 @@ const getValues = (children) => {
   return values;
 };
 
-const validate = (validator, values) => validator(values) || {};
+const validate = (validator, values) => (validator ? validator(values) : {});
 
 /**
  * `Form` is a container component for rendering forms.
@@ -63,11 +67,20 @@ class Form extends React.Component {
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.onChange = this.onChange.bind(this);
   }
 
   onSubmit() {
-    this.props.onSubmit(this.state);
+    if (this.props.onSubmit) {
+      this.props.onSubmit(this.state);
+    }
+  }
+
+  onCancel() {
+    if (this.props.onCancel) {
+      this.props.onCancel();
+    }
   }
 
   onChange(name) {
@@ -77,7 +90,9 @@ class Form extends React.Component {
       newState.valid = Object.keys(validate(this.props.validator, newState.values)).length === 0;
 
       this.setState(newState, () => {
-        this.props.onChange(name, this.state.values, this.state.valid);
+        if (this.props.onChange) {
+          this.props.onChange(name, this.state.values, this.state.valid);
+        }
       });
     };
   }
@@ -120,7 +135,7 @@ class Form extends React.Component {
           key="cancel"
           secondary
           size={ this.props.size }
-          onClick={ this.props.onCancel }
+          onClick={ this.onCancel }
           label="cancel"
         />,
       );

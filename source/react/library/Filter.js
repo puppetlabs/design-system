@@ -36,6 +36,7 @@ const defaultProps = {
     op: '',
     value: '',
   },
+  onDuplicate: null,
 };
 
 /**
@@ -107,10 +108,16 @@ class Filter extends React.Component {
   onDropdownSelect(option) {
     switch (option.value) {
       case 'Duplicate':
-        this.props.onDuplicate();
+        if (this.props.onDuplicate) {
+          this.props.onDuplicate();
+        }
+
         break;
       case 'Delete':
-        this.props.onDelete();
+        if (this.props.onDelete) {
+          this.props.onDelete();
+        }
+
         break;
       default:
         // do nothing
@@ -223,7 +230,7 @@ class Filter extends React.Component {
   }
 
   renderValueInput() {
-    const onChange = e => {
+    const onChange = (e) => {
       this.onFilterChange('value', e.target.value);
     };
 

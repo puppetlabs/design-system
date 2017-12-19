@@ -1,6 +1,6 @@
 import React from 'react';
-import Icon from './Icon';
 import classnames from 'classnames';
+import Icon from './Icon';
 
 const propTypes = {
   multiline: React.PropTypes.bool,
@@ -22,10 +22,11 @@ const propTypes = {
   name: React.PropTypes.string,
   size: React.PropTypes.oneOf(['large', 'small', 'tiny']),
   simple: React.PropTypes.bool,
-  onKeyUp: React.PropTypes.func,
   error: React.PropTypes.string,
   style: React.PropTypes.object,
+  icon: React.PropTypes.string,
   onKeyDown: React.PropTypes.func,
+  onKeyUp: React.PropTypes.func,
   onChange: React.PropTypes.func,
   onClick: React.PropTypes.func,
   onFocus: React.PropTypes.func,
@@ -34,8 +35,25 @@ const propTypes = {
 
 const defaultProps = {
   multiline: false,
-  onKeyDown: () => {},
+  placeholder: '',
+  className: '',
+  autoFocus: false,
+  disabled: false,
+  readonly: false,
+  type: null,
+  value: '',
+  name: '',
+  size: null,
   simple: false,
+  error: '',
+  style: null,
+  icon: null,
+  onChange: null,
+  onClick: null,
+  onKeyDown: null,
+  onKeyUp: null,
+  onFocus: null,
+  onBlur: null,
 };
 
 /**

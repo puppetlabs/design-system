@@ -10,16 +10,12 @@ const defaultProps = {
   children: null,
 };
 
-class FormSection extends React.Component {
-  render() {
-    return (
-      <fieldset className="rc-form-section">
-        <legend className="rc-form-section-legend">{ this.props.title }</legend>
-        { this.props.children }
-      </fieldset>
-    );
-  }
-}
+const FormSection = props => (
+  <fieldset className="rc-form-section">
+    <legend className="rc-form-section-legend">{ props.title }</legend>
+    { props.children }
+  </fieldset>
+);
 
 FormSection.propTypes = propTypes;
 FormSection.defaultProps = defaultProps;

@@ -18,6 +18,7 @@ const defaultProps = {
   options: [],
   selected: '',
   multiple: false,
+  size: null,
   onChange: null,
 };
 
