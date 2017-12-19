@@ -18,13 +18,12 @@ Select with `autoOpen` enabled:
 const options = [
   { value: 'Geoff', label: 'Geoff' },
   { value: 'Colby', label: 'Colby', selected: true },
-  { value: 'Michael', label: 'Sig', selected: true },
+  { value: 'Michael', label: 'Sig' },
 ];
 
 <Select
   onSelect={o => console.log(o)}
   autoOpen
-  multiple
   options={ options }
 />
 ```
