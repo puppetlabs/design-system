@@ -64,7 +64,7 @@ class SplitButton extends React.Component {
   }
 
   renderDropdownTarget() {
-    const iconSize = '14px';
+    const iconSize = '10px';
 
     const disabledMenu = this.props.disabledMenu;
 
