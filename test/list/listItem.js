@@ -49,7 +49,7 @@ describe('<ListItem />', () => {
   });
 
   it('should accept a tooltip prop and render a tooltip', () => {
-    const wrapper = shallow(<ListItem tooltip>hi!</ListItem>);
+    const wrapper = shallow(<ListItem tooltip="test">hi!</ListItem>);
 
     expect(wrapper.find('TooltipHoverArea').length).to.eql(1);
   });

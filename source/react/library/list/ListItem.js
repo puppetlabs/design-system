@@ -19,6 +19,11 @@ const propTypes = {
 const defaultProps = {
   size: 'small',
   selected: false,
+  tooltip: '',
+  onRemove: null,
+  onEdit: null,
+  onClick: null,
+  children: null,
 };
 
 /**
@@ -83,7 +88,12 @@ class ListItem extends React.PureComponent {
 
     if (this.props.onRemove) {
       jsx = (
-        <a className="rc-list-item-action rc-list-item-remove" onClick={ this.onRemove }>
+        <a
+          role="button"
+          tabIndex={ 0 }
+          className="rc-list-item-action rc-list-item-remove"
+          onClick={ this.onRemove }
+        >
           <Icon type="close" width={ iconSize } height={ iconSize } />
         </a>
       );
@@ -98,7 +108,12 @@ class ListItem extends React.PureComponent {
 
     if (this.props.onEdit) {
       jsx = (
-        <a className="rc-list-item-action rc-list-item-edit" onClick={ this.onEdit }>
+        <a
+          role="button"
+          tabIndex={ 0 }
+          className="rc-list-item-action rc-list-item-edit"
+          onClick={ this.onEdit }
+        >
           <Icon type="pencil" width={ iconSize } height={ iconSize } />
         </a>
       );

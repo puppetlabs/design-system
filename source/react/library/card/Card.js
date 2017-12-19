@@ -19,11 +19,13 @@ const propTypes = {
 
 const defaultProps = {
   size: '',
-  children: [],
+  style: '',
   width: '',
   height: '',
   selected: false,
   className: '',
+  children: null,
+  onClick: null,
 };
 
 /**
@@ -41,7 +43,9 @@ class Card extends React.Component {
   onClick(e) {
     e.preventDefault();
 
-    this.props.onClick(e);
+    if (this.props.onClick) {
+      this.props.onClick(e);
+    }
   }
 
   render() {

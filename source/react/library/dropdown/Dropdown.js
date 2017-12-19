@@ -17,7 +17,7 @@ const propTypes = {
   multiple: React.PropTypes.bool,
   required: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
-  tabIndex: React.PropTypes.string,
+  tabIndex: React.PropTypes.number,
   error: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
   selected: React.PropTypes.oneOfType([
@@ -28,8 +28,31 @@ const propTypes = {
 };
 
 const defaultProps = {
+  size: '',
+  select: false,
+  options: [],
+  hint: '',
   margin: -60,
-  disable: false,
+  anchor: '',
+  placeholder: '',
+  blank: '',
+  label: '',
+  multiple: false,
+  required: false,
+  disabled: false,
+  tabIndex: 0,
+  error: '',
+  disablePortal: false,
+  selected: null,
+  onChange: null,
+};
+
+const getSelected = function (props) {
+  let selected = props.selected;
+
+  selected = Array.isArray(selected) ? selected : [selected];
+
+  return selected;
 };
 
 /**
@@ -42,7 +65,7 @@ class Dropdown extends React.Component {
   constructor(props) {
     super(props);
 
-    const selected = this.getSelected(props);
+    const selected = getSelected(props);
 
     this.state = { selected, displayed: selected };
 
@@ -55,7 +78,7 @@ class Dropdown extends React.Component {
     const selectedChanged = !equals(this.props.selected, nextProps.selected);
 
     if ({}.hasOwnProperty.call(nextProps, 'selected') && selectedChanged) {
-      const selected = this.getSelected(nextProps);
+      const selected = getSelected(nextProps);
 
       this.setState({ selected, displayed: selected });
     }
@@ -120,14 +143,6 @@ class Dropdown extends React.Component {
 
       return obj;
     });
-  }
-
-  getSelected(props) {
-    let selected = props.selected;
-
-    selected = Array.isArray(selected) ? selected : [selected];
-
-    return selected;
   }
 
   renderToggle() {

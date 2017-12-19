@@ -4,17 +4,27 @@ import Button from './Button';
 import { TooltipHoverArea } from './tooltips/Tooltip';
 
 const propTypes = {
-  /** Items to render inside the Tag */
-  children: React.PropTypes.any,
   /** Selected state */
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
   size: React.PropTypes.oneOf(['small', 'tiny']),
   block: React.PropTypes.bool,
+  tooltip: React.PropTypes.bool,
   onRemove: React.PropTypes.func,
   actions: React.PropTypes.array,
   onClick: React.PropTypes.func,
-  tooltip: React.PropTypes.bool,
+  children: React.PropTypes.any,
+};
+
+const defaultProps = {
+  selected: false,
+  className: '',
+  size: '',
+  block: false,
+  tooltip: false,
+  onRemove: null,
+  onClick: null,
+  children: null,
 };
 
 /**
@@ -126,5 +136,6 @@ class Tag extends React.Component {
 }
 
 Tag.propTypes = propTypes;
+Tag.defaultProps = defaultProps;
 
 export default Tag;

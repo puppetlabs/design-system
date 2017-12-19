@@ -11,6 +11,14 @@ const propTypes = {
   processingConfirmation: React.PropTypes.bool,
 };
 
+const defaultProps = {
+  confirmationMessage: '',
+  processingConfirmation: false,
+  onCancel: null,
+  onConfirm: null,
+  children: null,
+};
+
 /**
  * `ConfirmationModal` renders a confirmation for the user to confirm or cancel an action.
  *
@@ -75,5 +83,6 @@ class ConfirmationModal extends React.Component {
 }
 
 ConfirmationModal.propTypes = propTypes;
+ConfirmationModal.defaultProps = defaultProps;
 
 export default ConfirmationModal;

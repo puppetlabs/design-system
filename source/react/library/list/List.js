@@ -15,10 +15,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-  children: null,
   sortable: false,
   onSort: () => {},
   type: 'unordered',
+  children: null,
 };
 
 const SortableItem = SortableElement(({ value }) => value);

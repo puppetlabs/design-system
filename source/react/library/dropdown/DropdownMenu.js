@@ -30,10 +30,21 @@ const propTypes = {
 };
 
 const defaultProps = {
+  anchor: '',
+  target: null,
   selected: [],
   options: [],
   size: 'small',
   width: 'auto',
+  blank: '',
+  hint: '',
+  multiple: false,
+  margin: null,
+  disablePortal: false,
+  onOpen: null,
+  onClose: null,
+  onApply: null,
+  onChange: null,
 };
 
 class DropdownMenu extends React.Component {
@@ -65,7 +76,9 @@ class DropdownMenu extends React.Component {
   }
 
   onChange(option) {
-    this.props.onChange(option);
+    if (this.props.onChange) {
+      this.props.onChange(option);
+    }
 
     if (this.popover && !this.props.multiple) {
       this.popover.close();

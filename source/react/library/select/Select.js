@@ -29,6 +29,7 @@ const propTypes = {
 const defaultProps = {
   placeholder: 'Select...',
   disablePortal: false,
+  className: '',
   onSelect: () => {},
   disabled: false,
   typeahead: true,
