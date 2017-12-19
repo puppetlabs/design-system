@@ -1,21 +1,35 @@
 import React from 'react';
-import Button from './Button';
-import ButtonGroup from './ButtonGroup';
 import classnames from 'classnames';
 import onClickOutside from 'react-onclickoutside';
+import Button from './Button';
+import ButtonGroup from './ButtonGroup';
 import Menu from './menu/Menu';
 import MenuHeader from './menu/MenuHeader';
 
 const propTypes = {
   title: React.PropTypes.string,
-  onSubmit: React.PropTypes.func,
-  onClose: React.PropTypes.func,
-  onRemove: React.PropTypes.func,
   className: React.PropTypes.string,
   position: React.PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
   removeable: React.PropTypes.bool,
   submitButtonLabel: React.PropTypes.string,
   closeButtonLabel: React.PropTypes.string,
+  onSubmit: React.PropTypes.func,
+  onClose: React.PropTypes.func,
+  onRemove: React.PropTypes.func,
+  children: React.PropTypes.any,
+};
+
+const defaultProps = {
+  title: '',
+  className: '',
+  position: null,
+  removeable: false,
+  submitButtonLabel: '',
+  closeButtonLabel: '',
+  onSubmit: null,
+  onClose: null,
+  onRemove: null,
+  children: null,
 };
 
 /**
@@ -36,36 +50,38 @@ class SlideIn extends React.Component {
   }
 
   renderActions() {
-    let closeAction, submitAction;
+    let closeAction;
+    let submitAction;
+    let jsx = null;
 
     if (this.props.onClose) {
-      let closeText = this.props.closeButtonLabel || "Close";
+      const closeText = this.props.closeButtonLabel || 'Close';
 
       closeAction = (
-        <Button label={closeText} onClick={this.props.onClose} secondary />
+        <Button label={ closeText } onClick={ this.props.onClose } secondary />
       );
     }
 
     if (this.props.onSubmit) {
-      let submitText = this.props.submitButtonLabel || "Submit";
+      const submitText = this.props.submitButtonLabel || 'Submit';
 
       submitAction = (
-        <Button label={submitText} onClick={this.props.onSubmit} />
+        <Button label={ submitText } onClick={ this.props.onSubmit } />
       );
     }
 
-    if (!closeAction && !submitAction) {
-      return;
+    if (closeAction && submitAction) {
+      jsx = (
+        <div className="rc-slidein-actions">
+          <ButtonGroup>
+            { closeAction }
+            { submitAction }
+          </ButtonGroup>
+        </div>
+      );
     }
 
-    return (
-      <div className="rc-slidein-actions">
-        <ButtonGroup>
-          { closeAction }
-          { submitAction }
-        </ButtonGroup>
-      </div>
-    );
+    return jsx;
   }
 
   renderHeader() {
@@ -109,5 +125,6 @@ class SlideIn extends React.Component {
 }
 
 SlideIn.propTypes = propTypes;
+SlideIn.defaultProps = defaultProps;
 
 export default onClickOutside(SlideIn);

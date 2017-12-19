@@ -73,7 +73,7 @@ class Panel extends React.Component {
       </div>
     );
   }
-};
+}
 
 Panel.propTypes = propTypes;
 Panel.defaultProps = defaultProps;
