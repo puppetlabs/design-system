@@ -2,8 +2,13 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: React.PropTypes.any,
   active: React.PropTypes.bool,
+  children: React.PropTypes.any,
+};
+
+const defaultProps = {
+  active: false,
+  children: null,
 };
 
 /**
@@ -24,5 +29,6 @@ const TabPanel = (props) => {
 };
 
 TabPanel.propTypes = propTypes;
+TabPanel.defaultProps = defaultProps;
 
 module.exports = TabPanel;

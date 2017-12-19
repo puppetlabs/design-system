@@ -1,4 +1,4 @@
-export function isNodeInRoot(node, root) {
+const isNodeInRoot = function (node, root) {
   let contains = false;
 
   if (root !== node) {
@@ -6,4 +6,10 @@ export function isNodeInRoot(node, root) {
   }
 
   return contains;
-}
+};
+
+export {
+  isNodeInRoot,
+};
+
+export default isNodeInRoot;

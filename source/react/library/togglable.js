@@ -6,7 +6,7 @@ import React from 'react';
 const togglable = function togglable(Base) {
   const defaultProps = { isOpened: true };
 
-  const component = props => {
+  const component = (props) => {
     let jsx = null;
 
     if (props.isOpened) {

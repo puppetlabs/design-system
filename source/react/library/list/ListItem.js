@@ -4,16 +4,21 @@ import Icon from '../Icon';
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
-  children: React.PropTypes.string,
+  selected: React.PropTypes.bool,
+  tooltip: React.PropTypes.string,
   onRemove: React.PropTypes.func,
   onEdit: React.PropTypes.func,
   onClick: React.PropTypes.func,
-  selected: React.PropTypes.bool,
-  tooltip: React.PropTypes.bool,
+  children: React.PropTypes.string,
 };
 
 const defaultProps = {
   selected: false,
+  tooltip: '',
+  onRemove: null,
+  onEdit: null,
+  onClick: null,
+  children: null,
 };
 
 /**
@@ -67,7 +72,12 @@ class ListItem extends React.PureComponent {
 
     if (this.props.onRemove) {
       jsx = (
-        <a className="rc-list-item-action rc-list-item-remove" onClick={ this.onRemove }>
+        <a
+          role="button"
+          tabIndex={ 0 }
+          className="rc-list-item-action rc-list-item-remove"
+          onClick={ this.onRemove }
+        >
           <Icon type="delete" width="16px" height="16px" />
         </a>
       );
@@ -81,7 +91,12 @@ class ListItem extends React.PureComponent {
 
     if (this.props.onEdit) {
       jsx = (
-        <a className="rc-list-item-action rc-list-item-edit" onClick={ this.onEdit }>
+        <a
+          role="button"
+          tabIndex={ 0 }
+          className="rc-list-item-action rc-list-item-edit"
+          onClick={ this.onEdit }
+        >
           <Icon type="edit" width="16px" height="16px" />
         </a>
       );

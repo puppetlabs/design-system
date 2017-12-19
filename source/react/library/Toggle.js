@@ -13,7 +13,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-  onChange: () => {},
+  name: '',
+  onChange: null,
+  disabled: false,
+  active: '',
 };
 
 /**
@@ -38,13 +41,21 @@ class Toggle extends React.Component {
     const { left, right } = this.props;
     const active = this.state.active === left ? right : left;
 
-    this.setState({ active }, this.props.onChange(active));
+    this.setState({ active }, () => {
+      if (this.props.onChange) {
+        this.props.onChange(active);
+      }
+    });
   }
 
   onLabelClick(active) {
     return () => {
       if (active !== this.state.active && !this.props.disabled) {
-        this.setState({ active }, this.props.onChange(active));
+        this.setState({ active }, () => {
+          if (this.props.onChange) {
+            this.props.onChange(active);
+          }
+        });
       }
     };
   }
@@ -57,6 +68,8 @@ class Toggle extends React.Component {
 
     return (
       <a
+        role="button"
+        tabIndex={ 0 }
         onClick={ this.onLabelClick(label) }
         className={ className }
       >

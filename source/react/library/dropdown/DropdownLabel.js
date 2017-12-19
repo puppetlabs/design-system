@@ -8,8 +8,18 @@ const propTypes = {
   select: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   error: React.PropTypes.string,
-  tabIndex: React.PropTypes.string,
+  tabIndex: React.PropTypes.number,
   onClick: React.PropTypes.func,
+};
+
+const defaultProps = {
+  placeholder: '',
+  label: '',
+  select: false,
+  disabled: false,
+  error: '',
+  tabIndex: 0,
+  onClick: () => {},
 };
 
 const DropdownLabel = (props) => {
@@ -28,6 +38,7 @@ const DropdownLabel = (props) => {
 
   return (
     <a
+      role="button"
       tabIndex={ props.tabIndex }
       disabled={ props.disabled }
       onClick={ props.onClick }
@@ -41,5 +52,6 @@ const DropdownLabel = (props) => {
 };
 
 DropdownLabel.propTypes = propTypes;
+DropdownLabel.defaultProps = defaultProps;
 
 export default DropdownLabel;

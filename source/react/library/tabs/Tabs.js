@@ -3,13 +3,15 @@ import classnames from 'classnames';
 import TabPanel from './TabPanel';
 
 const propTypes = {
-  children: React.PropTypes.any,
   vertical: React.PropTypes.bool,
   activeTab: React.PropTypes.number,
+  children: React.PropTypes.any,
 };
 
 const defaultProps = {
+  vertical: false,
   activeTab: 0,
+  children: null,
 };
 
 /**
@@ -44,9 +46,10 @@ class Tabs extends React.Component {
       const className = classnames('rc-tab', {
         'rc-tab-active': this.state.activeTab === i,
       });
+      const tabKey = `tab-${i}`;
 
       return (
-        <li key={ `tab-${i}` } className={ className }>
+        <li key={ tabKey } className={ className }>
           <a href="/#/tab" onClick={ onClick }>{ panel.props.title }</a>
         </li>
       );
@@ -65,9 +68,10 @@ class Tabs extends React.Component {
     this.props.children.forEach((panel, i) => {
       const props = panel.props;
       const active = this.state.activeTab === i;
+      const tabPanelKey = `tab-panel-${i}`;
 
       if (!panel.props.onClick) {
-        panels.push(<TabPanel key={ `tab-panel-${i}` } { ...props } active={ active } />);
+        panels.push(<TabPanel key={ tabPanelKey } { ...props } active={ active } />);
       }
     });
 
@@ -93,4 +97,4 @@ class Tabs extends React.Component {
 Tabs.propTypes = propTypes;
 Tabs.defaultProps = defaultProps;
 
-module.exports = Tabs;
+export default Tabs;

@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 const propTypes = {
-  children: React.PropTypes.any,
   /** A string to identify the item visually for the user */
   title: React.PropTypes.string,
   /**
@@ -16,10 +15,15 @@ const propTypes = {
   className: React.PropTypes.string,
   /** Callback for when the user opens the item */
   onOpen: React.PropTypes.func,
+  children: React.PropTypes.any,
 };
 
 const defaultProps = {
-  onOpen: () => {},
+  title: '',
+  active: false,
+  className: '',
+  onOpen: null,
+  children: null,
 };
 
 /**
@@ -41,7 +45,9 @@ class AccordionItem extends React.Component {
       nativeEvent.preventDefault();
     }
 
-    this.props.onOpen();
+    if (this.props.onOpen) {
+      this.props.onOpen();
+    }
   }
 
   renderContent() {

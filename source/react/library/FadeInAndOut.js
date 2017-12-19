@@ -25,20 +25,31 @@ const transitionStyles = {
   },
 };
 
-const FadeInAndOut = (props) => {
-  return (
-    <Transition in={ props.in } timeout={ duration }>
-      {(state) => {
-        if (!props.children) {
-          return null;
-        }
-
-        return React.cloneElement(props.children, {
-          style: { ...defaultStyle, ...transitionStyles[state] },
-        });
-      }}
-    </Transition>
-  );
+const propTypes = {
+  in: React.PropTypes.bool,
+  children: React.PropTypes.any,
 };
+
+const defaultProps = {
+  in: false,
+  children: null,
+};
+
+const FadeInAndOut = props => (
+  <Transition in={ props.in } timeout={ duration }>
+    {(state) => {
+      if (!props.children) {
+        return null;
+      }
+
+      return React.cloneElement(props.children, {
+        style: { ...defaultStyle, ...transitionStyles[state] },
+      });
+    }}
+  </Transition>
+);
+
+FadeInAndOut.propTypes = propTypes;
+FadeInAndOut.defaultProps = defaultProps;
 
 export default FadeInAndOut;

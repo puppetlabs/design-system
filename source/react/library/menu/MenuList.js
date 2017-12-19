@@ -14,7 +14,10 @@ const propTypes = {
 };
 
 const defaultProps = {
+  options: [],
   selected: '',
+  multiple: false,
+  onChange: null,
 };
 
 class MenuList extends React.Component {
@@ -25,7 +28,9 @@ class MenuList extends React.Component {
   }
 
   onChange(selected) {
-    this.props.onChange(selected);
+    if (this.props.onChange) {
+      this.props.onChange(selected);
+    }
   }
 
   render() {

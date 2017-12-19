@@ -3,6 +3,10 @@ import classnames from 'classnames';
 
 import Icon from '../Icon';
 
+const getKey = function (child = {}, idx) {
+  return child.key || String(idx);
+};
+
 const propTypes = {
   /** Title for the Accordion */
   title: React.PropTypes.string,
@@ -19,8 +23,12 @@ const propTypes = {
 };
 
 const defaultProps = {
-  onClose: () => {},
-  onChange: () => {},
+  title: '',
+  className: '',
+  autoOpen: false,
+  onClose: null,
+  onChange: null,
+  children: null,
 };
 
 /**
@@ -34,7 +42,7 @@ class Accordion extends React.Component {
     super(props);
 
     // We may need to account for the header
-    const activeIndex = (typeof props.title === 'undefined' ? 0 : 1);
+    const activeIndex = props.title ? 1 : 0;
 
     this.state = {
       activeIdx: props.autoOpen ? activeIndex : null,
@@ -49,19 +57,19 @@ class Accordion extends React.Component {
       e.preventDefault();
     }
 
-    this.props.onClose();
+    if (this.props.onClose) {
+      this.props.onClose();
+    }
   }
 
   onOpenChild(key) {
     return () => {
       this.setState({ activeIdx: key });
 
-      this.props.onChange(key);
+      if (this.props.onChange) {
+        this.props.onChange(key);
+      }
     };
-  }
-
-  getKey(child, idx) {
-    return child.key || String(idx);
   }
 
   hasActive() {
@@ -86,7 +94,7 @@ class Accordion extends React.Component {
 
     // We require a key, but in case the user supplies something all wrong we
     // can use the index as a surrogate.
-    const key = this.getKey(child, index);
+    const key = getKey(child, index);
 
     // This element is "active" if the current key is indeed active.
     const active = activeIdx === index;
@@ -103,7 +111,7 @@ class Accordion extends React.Component {
   renderItems() {
     let children = Children.toArray(this.props.children);
 
-    if (typeof this.props.title !== 'undefined') {
+    if (this.props.title) {
       children.unshift(this.renderHeader());
     }
 
