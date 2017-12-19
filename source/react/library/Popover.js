@@ -223,7 +223,7 @@ class Popover extends React.Component {
     }
 
     const component = this.props.disablePortal ? PopoverContentWithoutPortal : PopoverContent;
-console.log('open', this.state.open);
+
     const popoverContent = React.createElement(component, {
       isOpened: this.state.open,
       className,
