@@ -1,15 +1,9 @@
-/* stylelint-disable selector-no-qualifying-type, max-nesting-depth  */
-@mixin button-square($size) {
-  height: $size;
-  width: $size;
-}
-
 @mixin button-colors($bg, $bg-hover, $color, $color-hover, $icon-color, $icon-hover, $border, $border-hover) {
   background: $bg;
   border: 1px solid $border;
   color: $color !important;
 
-  .c-button-menu-inner .rc-icon {
+  .rc-button-menu-inner .rc-icon {
     fill: $icon-color;
   }
 
@@ -61,8 +55,7 @@
   }
 }
 
-a.rc-button,
-button.rc-button {
+.rc-button {
   border-radius: $reflect-button-border-radius;
   cursor: pointer;
   display: inline-block;
@@ -70,6 +63,7 @@ button.rc-button {
   letter-spacing: 1px;
   outline: none;
   padding: 0 $reflect-button-padding;
+  position: relative;
   text-align: center;
   text-transform: $reflect-button-text-case;
   white-space: nowrap;
@@ -84,56 +78,6 @@ button.rc-button {
     $reflect-button-border-color,
     $reflect-button-border-color-hover
   );
-
-
-  &.rc-button-block {
-    display: block;
-    width: 100%;
-  }
-
-  &.rc-button-badged {
-    position: relative;
-
-    &::after {
-      border: ($reflect-button-badge-size / 3) solid #fff;
-      border-radius: $reflect-circle-radius;
-      box-sizing: content-box;
-      content: ' ';
-      height: $reflect-button-badge-size;
-      position: absolute;
-      right: -($reflect-button-badge-size / 2);
-      top: -($reflect-button-badge-size / 2);
-      width: $reflect-button-badge-size;
-    }
-  }
-
-  &.rc-button-processing {
-    position: relative;
-
-    .rc-button-content {
-      visibility: hidden;
-    }
-
-    > .rc-icon {
-      float: none;
-      height: 80%;
-      left: 0;
-      width: 100%;
-    }
-  }
-
-  &.rc-button-secondary {
-    @include button-colors(
-      $reflect-button-secondary-bg,
-      $reflect-button-secondary-bg-hover,
-      $reflect-button-secondary-color,
-      $reflect-button-secondary-color-hover,
-      $reflect-button-secondary-icon-color,
-      $reflect-button-secondary-icon-color-hover,
-      $reflect-button-secondary-border-color,
-      $reflect-button-secondary-border-color-hover
-    );
-  }
 
   &.rc-button-transparent {
     @include button-colors(
@@ -164,19 +108,6 @@ button.rc-button {
         background: $reflect-button-clear-bg;
       }
     }
-  }
-
-  &.rc-button-error {
-    @include button-colors(
-      $reflect-button-error-bg,
-      $reflect-button-error-bg-hover,
-      $reflect-button-error-color,
-      $reflect-button-error-color-hover,
-      $reflect-button-error-icon-color,
-      $reflect-button-error-icon-color-hover,
-      $reflect-button-error-border-color,
-      $reflect-button-error-border-color-hover
-    );
   }
 
   .rc-button-dropdown-icon {
@@ -260,25 +191,7 @@ button.rc-button {
   }
 }
 
-button.rc-button {
-  > .rc-icon,
-  .rc-button-content {
-    top: initial;
-    transform: none; // <button> doesn't play nice with v-center
-  }
-
-  .rc-button-content {
-    padding-top: 1px;
-  }
-}
-
-button.rc-button-processing {
-  > .rc-icon {
-    @include v-center(block, absolute);
-  }
-}
-
-a.rc-button {
+.rc-button {
   > .rc-icon {
     @include v-center(block, relative);
   }
@@ -294,8 +207,8 @@ a.rc-button {
   }
 }
 
-a.rc-floating-action-button,
-button.rc-floating-action-button {
+
+.rc-floating-action-button {
   border-radius: 60px;
   height: $reflect-floating-action-button-height;
   line-height: $reflect-floating-action-button-height;
@@ -401,4 +314,65 @@ button.rc-floating-action-button {
     }
   }
 }
-/* stylelint-enable selector-no-qualifying-type, max-nesting-depth  */
+
+.rc-button-secondary {
+  @include button-colors(
+    $reflect-button-secondary-bg,
+    $reflect-button-secondary-bg-hover,
+    $reflect-button-secondary-color,
+    $reflect-button-secondary-color-hover,
+    $reflect-button-secondary-icon-color,
+    $reflect-button-secondary-icon-color-hover,
+    $reflect-button-secondary-border-color,
+    $reflect-button-secondary-border-color-hover
+  );
+}
+
+.rc-button-error {
+  @include button-colors(
+    $reflect-button-error-bg,
+    $reflect-button-error-bg-hover,
+    $reflect-button-error-color,
+    $reflect-button-error-color-hover,
+    $reflect-button-error-icon-color,
+    $reflect-button-error-icon-color-hover,
+    $reflect-button-error-border-color,
+    $reflect-button-error-border-color-hover
+  );
+}
+
+.rc-button-block {
+  display: block;
+  width: 100%;
+}
+
+.rc-button-processing {
+  position: relative;
+
+  .rc-button-content {
+    visibility: hidden;
+  }
+
+  > .rc-icon {
+    float: none;
+    height: 80%;
+    left: 0;
+    width: 100%;
+  }
+}
+
+.rc-button-badged {
+  position: relative;
+
+  &::after {
+    border: ($reflect-button-badge-size / 3) solid #fff;
+    border-radius: $reflect-circle-radius;
+    box-sizing: content-box;
+    content: ' ';
+    height: $reflect-button-badge-size;
+    position: absolute;
+    right: -($reflect-button-badge-size / 2);
+    top: -($reflect-button-badge-size / 2);
+    width: $reflect-button-badge-size;
+  }
+}

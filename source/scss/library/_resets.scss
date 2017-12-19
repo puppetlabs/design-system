@@ -1,6 +1,10 @@
 [class^='rc-'] {
   box-sizing: border-box;
 
+  * {
+    box-sizing: border-box;
+  }
+
   ul {
     list-style: none;
     margin: 0;
@@ -28,8 +32,20 @@
     text-decoration: none;
     text-transform: none;
   }
-}
 
-[class^='rc-'] * {
-  box-sizing: border-box;
+  button {
+    background: none;
+    border: 0;
+    color: inherit;
+    cursor: default;
+    font: inherit;
+    line-height: normal;
+    overflow: visible;
+    padding: 0;
+    user-select: none;
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
 }
