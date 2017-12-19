@@ -38,7 +38,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  value: null,
+  value: undefined,
   inline: false,
   size: null,
   error: '',
