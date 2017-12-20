@@ -47,7 +47,7 @@
     background: $reflect-list-item-bg;
     display: flex;
     height: 100%;
-    padding: $reflect-list-item-padding-v * 2;
+    padding: 0 $reflect-list-item-padding-v * 2;
     position: absolute;
     right: $reflect-list-item-padding-h;
     top: 0;
@@ -93,7 +93,7 @@
   }
 
   .rc-list-item-actions {
-    padding: $reflect-list-item-tiny-padding-v;
+    padding: 0 $reflect-list-item-tiny-padding-v;
     right: $reflect-list-item-tiny-padding-h;
   }
 }
