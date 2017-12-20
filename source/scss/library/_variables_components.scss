@@ -99,14 +99,7 @@ $reflect-button-clear-border-color           : transparent !default;
 $reflect-button-clear-border-color-hover     : transparent !default;
 
 // Disabled Buttons
-$reflect-button-disabled-bg                  : $reflect-disabled-color !default;
-$reflect-button-disabled-bg-hover            : $reflect-disabled-color !default;
-$reflect-button-disabled-color               : $reflect-disabled-text !default;
-$reflect-button-disabled-color-hover         : $reflect-disabled-text !default;
-$reflect-button-disabled-icon-color          : $reflect-disabled-icon !default;
-$reflect-button-disabled-icon-color-hover    : $reflect-disabled-icon-hover !default;
-$reflect-button-disabled-border-color        : $reflect-disabled-border !default;
-$reflect-button-disabled-border-color-hover  : $reflect-disabled-border-hover !default;
+$reflect-button-disabled-opacity             : 0.5 !default;
 
 // Errored Buttons
 $reflect-button-error-bg                     : $reflect-danger-color !default;

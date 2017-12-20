@@ -194,18 +194,8 @@
 }
 
 .rc-button[disabled] {
-  @include button-colors(
-    $reflect-button-disabled-bg,
-    $reflect-button-disabled-bg-hover,
-    $reflect-button-disabled-color,
-    $reflect-button-disabled-color-hover,
-    $reflect-button-disabled-icon-color,
-    $reflect-button-disabled-icon-color-hover,
-    $reflect-button-disabled-border-color,
-    $reflect-button-disabled-border-color-hover
-  );
-
   cursor: default;
+  opacity: $reflect-button-disabled-opacity;
 }
 
 .rc-button-block {
