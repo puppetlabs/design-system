@@ -28,7 +28,6 @@ describe('<Form />', () => {
         'type',
         'name',
         'className',
-        'value',
         'inline',
         'size',
         'error',
@@ -36,6 +35,7 @@ describe('<Form />', () => {
         'description',
         'elementProps',
         'onChange',
+        'value',
       ]);
   });
 
