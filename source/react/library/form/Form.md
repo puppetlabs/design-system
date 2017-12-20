@@ -35,6 +35,7 @@ const movieOptions = [
     name="notARobot"
     label="Not a robot"
     description="Are you a human?"
+    tooltip="We only allow real people to sign up. No robots, yet."
     value={ true }
   />
 </Form>
@@ -96,7 +97,7 @@ const options = [
     name="title"
     label="title"
   />
-  <Form.Section title="X-Axis">
+  <Form.Section title="X-Axis" tooltip="Edit the X Axis here">
     <Form.Field
       type="input"
       name="dimensions"

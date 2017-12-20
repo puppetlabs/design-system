@@ -32,6 +32,7 @@ describe('<Form />', () => {
         'size',
         'error',
         'label',
+        'tooltip',
         'description',
         'elementProps',
         'onChange',

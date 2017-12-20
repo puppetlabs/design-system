@@ -2,26 +2,19 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import FormField from '../../source/react/library/form/FormField';
+import FormSection from '../../source/react/library/form/FormSection';
 
-describe('<FormField />', () => {
-  const defaultProps = {
-    type: 'input',
-    onChange: () => {},
-    name: 'testField',
-  };
-
+describe('<FormSection />', () => {
   it('should render without blowing up', () => {
-    const wrapper = shallow(<FormField { ...defaultProps } />);
+    const wrapper = shallow(<FormSection />);
 
     expect(wrapper.length).to.eql(1);
   });
 
   it('should render the label with a tooltip when one is provided', () => {
     const wrapper = shallow(
-      <FormField
-        { ...defaultProps }
-        label="label boii"
+      <FormSection
+        title="label boii"
         tooltip="hello world"
       />,
     );
