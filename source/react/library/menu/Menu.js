@@ -13,12 +13,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-  className: '',
-  size: null,
-  children: null,
-};
-
-const defaultProps = {
   size: 'small',
   children: null,
   className: null,
