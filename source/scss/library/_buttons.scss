@@ -85,7 +85,7 @@
   .rc-button-content {
     font-family: $reflect-button-font-family;
     font-size: $reflect-button-font-size;
-    letter-spacing: 1px;
+    font-weight: $reflect-button-font-weight;
     text-transform: $reflect-button-text-case;
   }
 
@@ -147,6 +147,26 @@
     $reflect-button-secondary-border-color,
     $reflect-button-secondary-border-color-hover
   );
+}
+
+.rc-button-simple {
+  height: auto;
+  padding: 0;
+
+  @include button-colors(
+    $reflect-button-simple-bg, 
+    $reflect-button-simple-bg-hover, 
+    $reflect-button-simple-color, 
+    $reflect-button-simple-color-hover, 
+    $reflect-button-simple-icon-color, 
+    $reflect-button-simple-icon-color-hover, 
+    $reflect-button-simple-border-color, 
+    $reflect-button-simple-border-color-hover
+  );
+}
+
+.rc-button-simple .rc-icon + .rc-button-content {
+  padding-left: 4px;
 }
 
 .rc-button-transparent {

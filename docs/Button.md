@@ -12,7 +12,7 @@ Button sizes:
 <Button size="tiny">Tiny Button</Button>
 ```
 
-Button colors:
+Button styles:
 ```
 <Button>Primary Button</Button>
 ```
@@ -23,7 +23,7 @@ Button colors:
 <Button error>Error Button</Button>
 ```
 ```
-<Button transparent>Transparent Button</Button>
+<Button icon="plus" simple>Simple Button</Button>
 ```
 
 

@@ -6,6 +6,7 @@ import { TooltipStickyArea } from './tooltips/Tooltip';
 const propTypes = {
   className: React.PropTypes.string,
   size: React.PropTypes.oneOf(['tiny', 'small', 'large', 'auto', null]),
+  simple: React.PropTypes.bool,
   secondary: React.PropTypes.bool,
   transparent: React.PropTypes.bool,
   icon: React.PropTypes.string,
@@ -35,6 +36,7 @@ const defaultProps = {
   className: '',
   size: null,
   secondary: false,
+  simple: false,
   transparent: false,
   icon: null,
   floating: false,
@@ -85,6 +87,7 @@ class Button extends React.Component {
       label,
       type,
       secondary,
+      simple,
       transparent,
       disabled,
       processing,
@@ -105,6 +108,7 @@ class Button extends React.Component {
     let dropdown;
 
     const cssClass = classnames(className, 'rc-button', {
+      'rc-button-simple': simple,
       'rc-button-block': block,
       'rc-button-processing': processing,
       'rc-floating-action-button': floating,
@@ -133,7 +137,7 @@ class Button extends React.Component {
     }
 
     if (this.props.icon || floating) {
-      const iconSize = '16px';
+      const iconSize = simple ? '8px' : '16px';
       const iconType = floating ? 'plus' : this.props.icon;
 
       icon = <Icon height={ iconSize } width={ iconSize } type={ iconType } />;
