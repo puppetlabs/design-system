@@ -20,6 +20,7 @@ const propTypes = {
   children: React.PropTypes.any,
   /** Class name to apply to the `Accordion` container wrapper div */
   className: React.PropTypes.string,
+  icon: React.PropTypes.string,
 };
 
 const defaultProps = {
@@ -82,7 +83,7 @@ class Accordion extends React.Component {
         <span className="rc-accordion-header-icon">
           <Icon width="16px" height="16px" type={ this.props.icon } />
         </span>
-      )
+      );
     }
 
     return (
