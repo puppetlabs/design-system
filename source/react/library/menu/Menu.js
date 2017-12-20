@@ -18,6 +18,12 @@ const defaultProps = {
   children: null,
 };
 
+const defaultProps = {
+  size: 'small',
+  children: null,
+  className: null,
+};
+
 /**
  * Menu can be used to present a list of options, form items, and various
  * buttons to the user. It can contain `MenuHeader`, `MenuList`, and

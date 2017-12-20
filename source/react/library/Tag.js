@@ -19,7 +19,7 @@ const propTypes = {
 const defaultProps = {
   selected: false,
   className: '',
-  size: null,
+  size: 'small',
   block: false,
   actions: null,
   tooltip: false,

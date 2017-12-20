@@ -12,7 +12,7 @@ const propTypes = {
   onEdit: React.PropTypes.func,
   onClick: React.PropTypes.func,
   selected: React.PropTypes.bool,
-  tooltip: React.PropTypes.bool,
+  tooltip: React.PropTypes.string,
   children: React.PropTypes.any,
 };
 
