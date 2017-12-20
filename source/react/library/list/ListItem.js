@@ -17,12 +17,12 @@ const propTypes = {
 };
 
 const defaultProps = {
+  tooltip: false,
   size: 'small',
   className: '',
   actions: null,
   kebab: null,
   selected: false,
-  tooltip: false,
   onRemove: null,
   onEdit: null,
   onClick: null,

@@ -16,13 +16,15 @@ const propTypes = {
   /** Callback for when the user opens the item */
   onOpen: React.PropTypes.func,
   children: React.PropTypes.any,
+  icon: React.PropTypes.string,
 };
 
+
 const defaultProps = {
-  title: '',
+  icon: '',
   active: false,
   className: '',
-  onOpen: null,
+  onOpen: () => {},
   children: null,
 };
 
@@ -65,6 +67,14 @@ class AccordionItem extends React.Component {
     });
     let jsx = [];
 
+    if (this.props.icon) {
+      jsx.push(
+        <span key="header-icon" className="rc-accordion-header-icon">
+          <Icon width="16px" height="16px" type={ this.props.icon } />
+        </span>,
+      );
+    }
+
     jsx.push(
       <span key="header-title" className="rc-accordion-item-header-title">
         { title }
@@ -79,8 +89,8 @@ class AccordionItem extends React.Component {
       );
     } else {
       jsx.push(
-        <span key="header-icon" className="rc-accordion-item-header-icon">
-          <Icon width="10px" height="10px" type={ 'plus' } />
+        <span key="header-action" className="rc-accordion-item-header-action">
+          <Icon width="10px" height="10px" type="plus" />
         </span>,
       );
 

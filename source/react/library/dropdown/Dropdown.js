@@ -28,12 +28,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-  size: null,
   select: false,
   options: [],
   hint: '',
   margin: -60,
-  anchor: null,
   placeholder: '',
   blank: '',
   label: '',

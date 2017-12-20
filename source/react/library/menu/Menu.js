@@ -13,9 +13,9 @@ const propTypes = {
 };
 
 const defaultProps = {
-  className: '',
-  size: null,
+  size: 'small',
   children: null,
+  className: null,
 };
 
 /**
