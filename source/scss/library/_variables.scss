@@ -115,7 +115,7 @@ $reflect-icon-action-hover                   : $reflect-action-hover !default;
 
 // Typography
 // ----------------------------------------------------------------------------
-$reflect-font-family                         : 'Open Sans', sans-serif !default;
+$reflect-font-family                         : 'Source Sans Pro', sans-serif !default;
 
 $reflect-font-size-giant                     : 42px !default;
 $reflect-font-size-huge                      : 28px !default;
@@ -132,8 +132,8 @@ $reflect-font-color-light                    : $reflect-white !default;
 
 $reflect-line-height-default                 : 1.5em !default;
 
-$reflect-font-weight-normal                  : 300 !default;
-$reflect-font-weight-medium                  : 400 !default;
+$reflect-font-weight-normal                  : 400 !default;
+$reflect-font-weight-medium                  : 400 !default; // deprecating in a future release
 $reflect-font-weight-heavy                   : 600 !default;
 
 // Content
