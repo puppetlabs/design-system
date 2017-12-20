@@ -63,7 +63,7 @@ class FormField extends React.Component {
     switch (this.props.type) {
       case 'input':
       case 'number':
-        value = val.target.value;
+        value = parseInt(val.target.value, 10);
         break;
       case 'switch':
         value = val.target.checked;
