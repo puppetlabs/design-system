@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import Icon from '../Icon';
+import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
   /** A string to identify the item visually for the user */
@@ -17,6 +18,7 @@ const propTypes = {
   onOpen: React.PropTypes.func,
   children: React.PropTypes.any,
   icon: React.PropTypes.string,
+  tooltip: React.PropTypes.string,
 };
 
 
@@ -98,6 +100,14 @@ class AccordionItem extends React.Component {
         <a className="rc-accordion-item-header" href="" onClick={ this.onClick }>
           { jsx }
         </a>
+      );
+    }
+
+    if (this.props.tooltip) {
+      jsx = (
+        <TooltipHoverArea tooltip={ this.props.tooltip } anchor="bottom">
+          { jsx }
+        </TooltipHoverArea>
       );
     }
 
