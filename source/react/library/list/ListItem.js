@@ -12,11 +12,12 @@ const propTypes = {
   onEdit: React.PropTypes.func,
   onClick: React.PropTypes.func,
   selected: React.PropTypes.bool,
-  tooltip: React.PropTypes.string,
+  tooltip: React.PropTypes.bool,
   children: React.PropTypes.any,
 };
 
 const defaultProps = {
+  tooltip: false,
   size: 'small',
   className: '',
   actions: null,
