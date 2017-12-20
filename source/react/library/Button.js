@@ -102,6 +102,7 @@ class Button extends React.Component {
     let button;
     let content;
     let icon;
+    let dropdown;
 
     const cssClass = classnames(className, 'rc-button', {
       'rc-button-block': block,
@@ -128,31 +129,30 @@ class Button extends React.Component {
     const loader = processing ? <Icon height="75%" width="100%" type="loader" /> : null;
 
     if (children || label) {
-      let dropdown;
-
-      if (this.props.dropdown) {
-        const iconSize = size === 'small' || size === 'tiny' ? '10px' : '12px';
-
-        dropdown = (
-          <span className="rc-button-dropdown-icon">
-            <Icon height={ iconSize } width={ iconSize } type="chevron-down" />
-          </span>
-        );
-      }
-
-      content = <span className="rc-button-content">{ children || label }{ dropdown }</span>;
+      content = <span className="rc-button-content">{ children || label }</span>;
     }
 
-    if (this.props.icon) {
+    if (this.props.icon || floating) {
       const iconSize = '16px';
+      const iconType = floating ? 'plus' : this.props.icon;
 
-      icon = <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />;
+      icon = <Icon height={ iconSize } width={ iconSize } type={ iconType } />;
+    }
+
+    if (this.props.dropdown) {
+      const iconSize = '10px';
+
+      dropdown = (
+        <span className="rc-button-dropdown-icon">
+          <Icon height={ iconSize } width={ iconSize } type="chevron-down" />
+        </span>
+      );
     }
 
     if (type) {
-      button = <button { ...btnProps }>{ icon } { content }{ loader }</button>;
+      button = <button { ...btnProps }>{ icon } { content } { dropdown } { loader }</button>;
     } else {
-      button = <a { ...btnProps }>{ icon } { content }{ loader }</a>;
+      button = <a { ...btnProps }>{ icon } { content } { dropdown } { loader }</a>;
     }
 
     if (message) {
