@@ -70,7 +70,7 @@ class AccordionItem extends React.Component {
     if (this.props.icon) {
       jsx.push(
         <span key="header-icon" className="rc-accordion-header-icon">
-          <Icon width="20px" height="20px" type={ this.props.icon } />
+          <Icon width="16px" height="16px" type={ this.props.icon } />
         </span>,
       );
     }
