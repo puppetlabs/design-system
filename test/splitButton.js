@@ -5,7 +5,7 @@ import React from 'react';
 
 import SplitButton from '../source/react/library/SplitButton';
 
-describe.only('<SplitButton />', () => {
+describe('<SplitButton />', () => {
   jsdom({ skipWindowCheck: true });
 
   const defaultProps = {
