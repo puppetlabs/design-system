@@ -230,6 +230,23 @@
   width: 100%;
 }
 
+.rc-button-square {
+  padding: 0;
+  width: $reflect-button-height;
+}
+
+.rc-button-large.rc-button-square {
+  width: $reflect-button-large-height;
+}
+
+.rc-button-small.rc-button-square {
+  width: $reflect-button-small-height;
+}
+
+.rc-button-tiny.rc-button-square {
+  width: $reflect-button-tiny-height;
+}
+
 .rc-button-processing {
   position: relative;
 

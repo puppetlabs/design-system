@@ -23,6 +23,7 @@ const propTypes = {
   type: React.PropTypes.string,
   href: React.PropTypes.string,
   round: React.PropTypes.bool,
+  square: React.PropTypes.bool,
   dropdown: React.PropTypes.bool,
   error: React.PropTypes.bool,
   message: React.PropTypes.string,
@@ -49,6 +50,7 @@ const defaultProps = {
   type: null,
   href: null,
   round: false,
+  square: false,
   message: '',
   error: false,
   dropdown: false,
@@ -100,6 +102,7 @@ class Button extends React.Component {
       className,
       floating,
       round,
+      square,
     } = this.props;
 
     let button;
@@ -119,6 +122,7 @@ class Button extends React.Component {
       'rc-button-transparent': transparent,
       [`rc-button-${size}`]: size,
       'rc-button-round': round,
+      'rc-button-square': square,
     });
 
     const btnProps = {
