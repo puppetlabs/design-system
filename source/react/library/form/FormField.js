@@ -66,6 +66,8 @@ class FormField extends React.Component {
 
     switch (this.props.type) {
       case 'input':
+        value = val.target.value;
+        break;
       case 'number':
         value = parseInt(val.target.value, 10);
         break;
