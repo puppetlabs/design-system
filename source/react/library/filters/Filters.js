@@ -130,11 +130,10 @@ class Filters extends React.Component {
 
     if (!this.state.editing && !this.state.adding) {
       jsx = (
-        <Button 
+        <Button
           simple
           icon="plus"
           label="Add filter"
-          className="rc-filters-action"
           onClick={ this.onAdd }
         />
       );
