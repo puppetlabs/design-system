@@ -554,4 +554,12 @@ $reflect-tooltip-hint-max-width              : 168px !default;
 
 $reflect-tooltip-hint-close-bg               : $reflect-black !default;
 
+// Slider
+// ----------------------------------------------------------------------------
+$reflect-slider-bg                           : $reflect-gray-light !default;
+$reflect-slider-bg-active                    : $reflect-brand-primary !default;
+$reflect-slider-bar-height                   : $reflect-tiny !default;
+$reflect-slider-handle-size                  : 10px !default;
+$reflect-slider-bar-position                 : ($reflect-slider-handle-size - $reflect-slider-bar-height)/2 !default;
+
 /* stylelint-enable */
