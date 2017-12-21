@@ -162,6 +162,11 @@ class Slider extends React.Component {
         <div ref={ (c) => { this.barActive = c; } } className="rc-slider-bar-active" />
         <div
           ref={ (c) => { this.handle = c; } }
+          tabIndex={ 0 }
+          role="slider"
+          aria-valuemin={ this.props.min }
+          aria-valueMax={ this.props.max }
+          aria-valueNow={ this.state.value }
           onMouseDown={ this.onMouseDown }
           onMouseUp={ this.onMouseUp }
           className="rc-slider-handle"
