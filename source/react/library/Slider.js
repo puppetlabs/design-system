@@ -117,6 +117,10 @@ class Slider extends React.Component {
   }
 
   getSliderLength(sliderRect) {
+    if (!sliderRect) {
+      sliderRect = this.getSliderRect();
+    }
+
     const start = sliderRect.left;
     const end = sliderRect.right;
 
@@ -135,8 +139,12 @@ class Slider extends React.Component {
   }
 
   calculateHandlePosition() {
-    const max = this.props.max;
-    const value = this.state.value;
+    const min = this.props.min;
+
+    // We remove the min from the max and value to ensure we offset for non zero values
+    const max = this.props.max - min;
+    const value = this.state.value - min;
+
     const percentage = value / max;
     const sliderRect = this.getSliderRect();
     const sliderLength = this.getSliderLength(sliderRect);
