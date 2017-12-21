@@ -4,7 +4,7 @@ import clone from 'clone';
 import Filter from './FilterItem';
 
 import { filterOperators } from '../../constants';
-import Icon from '../Icon';
+import Button from '../Button';
 import Form from '../form';
 import List from '../list/List';
 
@@ -130,9 +130,13 @@ class Filters extends React.Component {
 
     if (!this.state.editing && !this.state.adding) {
       jsx = (
-        <a href="/add-filter" onClick={ this.onAdd } className="rc-filters-action">
-          <Icon type="plus" height="8px" width="8px" /> Add filter
-        </a>
+        <Button 
+          simple
+          icon="plus"
+          label="Add filter"
+          className="rc-filters-action"
+          onClick={ this.onAdd }
+        />
       );
     }
 
