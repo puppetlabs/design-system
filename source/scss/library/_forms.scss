@@ -23,7 +23,7 @@
 
 .rc-form-field-label,
 .rc-form-section-legend {
-  letter-spacing: 1.5px;
+  display: flex;
   margin-bottom: $reflect-form-vertical-padding;
 }
 
