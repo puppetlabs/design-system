@@ -34,8 +34,8 @@ $reflect-primary-chart-color                 : $reflect-brand-primary !default;
 // Text is typically on a bg color - by default it is white text & icons on a blue bg
 $reflect-action-color                        : $reflect-brand-primary !default;
 $reflect-action-hover                        : darken($reflect-action-color, 10%) !default;
-$reflect-action-border                       : transparent !default;
-$reflect-action-border-hover                 : transparent !default;
+$reflect-action-border                       : $reflect-action-color !default;
+$reflect-action-border-hover                 : $reflect-action-hover !default;
 $reflect-action-text                         : $reflect-white !default;
 $reflect-action-text-hover                   : $reflect-white !default;
 $reflect-action-icon                         : $reflect-white !default;
