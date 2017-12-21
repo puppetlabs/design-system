@@ -5,7 +5,8 @@ const propTypes = {
   min: React.PropTypes.number,
   max: React.PropTypes.number,
   step: React.PropTypes.number,
-  value: React.PropTypes.number,
+  defaultValue: React.PropTypes.number,
+  onChange: React.PropTypes.func,
 };
 
 const defaultProps = {
@@ -27,7 +28,7 @@ class Slider extends React.Component {
 
     this.state = {
       dragging: false,
-      value: props.value,
+      value: props.defaultValue,
     };
 
     this.onChange = this.onChange.bind(this);
@@ -48,12 +49,6 @@ class Slider extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.value === this.state.value) {
-      this.setState({ value: nextProps.value });
-    }
-  }
-
   componentDidUpdate(prevProps, prevState) {
     if (prevState.value !== this.state.value) {
       const position = this.calculateHandlePosition();
@@ -67,7 +62,9 @@ class Slider extends React.Component {
   }
 
   onChange(value) {
-    console.log(value);
+    if (this.props.onChange) {
+      this.props.onChange(value);
+    }
   }
 
   onMouseDown() {
@@ -77,12 +74,10 @@ class Slider extends React.Component {
   onMouseMove(e) {
     if (this.state.dragging) {
       let mousePos = e.pageX;
+
       const sliderRect = this.getSliderRect();
-      const handleRect = this.getHandleRect();
       const sliderStart = sliderRect.left;
       const sliderEnd = sliderRect.right;
-
-      const endValue = sliderEnd - sliderStart;
 
       if (mousePos < sliderStart) {
         mousePos = sliderStart;
@@ -91,16 +86,16 @@ class Slider extends React.Component {
       }
 
       const handlePos = mousePos - sliderStart;
-      const handleOffset = handleRect.width / 2;
-      const adjustedHandlePos = handlePos - handleOffset;
+      const endPos = sliderEnd - sliderStart;
+      const percentage = handlePos / endPos;
 
-      const percentage = handlePos / endValue;
-      const value = this.props.max * percentage;
+      // get the middle of the difference between the max and min values.
+      // Once we have the middle add the min back on
+      const value = ((this.props.max - this.props.min) * percentage) + this.props.min;
 
-      this.barActive.style.width = `${handlePos}px`;
-      this.handle.style.left = `${adjustedHandlePos}px`;
-
-      this.onChange(value);
+      this.setState({ value }, () => {
+        this.onChange(value);
+      });
     }
   }
 
