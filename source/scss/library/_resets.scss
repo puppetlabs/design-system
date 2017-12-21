@@ -1,3 +1,15 @@
+%button-reset {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: default;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  user-select: none;
+}
+
 [class^='rc-'] {
   box-sizing: border-box;
 
@@ -31,18 +43,6 @@
     letter-spacing: normal;
     text-decoration: none;
     text-transform: none;
-  }
-
-  button {
-    background: none;
-    border: 0;
-    color: inherit;
-    cursor: default;
-    font: inherit;
-    line-height: normal;
-    overflow: visible;
-    padding: 0;
-    user-select: none;
   }
 
   a:hover {

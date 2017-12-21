@@ -63,6 +63,7 @@
 }
 
 .rc-button {
+  @extend %button-reset;
   align-items: center;
   border-radius: $reflect-button-border-radius;
   cursor: pointer;
