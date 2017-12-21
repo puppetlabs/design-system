@@ -1,6 +1,18 @@
 import React from 'react';
 import classnames from 'classnames';
 
+const propTypes = {
+  min: React.PropTypes.number,
+  max: React.PropTypes.number,
+  step: React.PropTypes.number,
+};
+
+const defaultProps = {
+  min: 0,
+  max: 100,
+  step: 1,
+};
+
 /**
  * `Slider` is a component used for selecting a number on a defined scale.
  *
@@ -13,6 +25,7 @@ class Slider extends React.Component {
 
     this.state = {
       dragging: false,
+      value: 0,
     };
 
     this.onChange = this.onChange.bind(this);
@@ -31,8 +44,8 @@ class Slider extends React.Component {
     window.removeEventListener('mouseup', this.onMouseUp);
   }
 
-  onChange() {
-    console.log(this);
+  onChange(value) {
+    console.log(value);
   }
 
   onMouseDown(e) {
@@ -43,8 +56,11 @@ class Slider extends React.Component {
     if (this.state.dragging) {
       let mousePos = e.pageX;
       const sliderRect = this.slider.getBoundingClientRect();
+      const handleRect = this.handle.getBoundingClientRect();
       const sliderStart = sliderRect.left;
       const sliderEnd = sliderRect.right;
+
+      const endValue = sliderEnd - sliderStart;
 
       if (mousePos < sliderStart) {
         mousePos = sliderStart;
@@ -52,10 +68,17 @@ class Slider extends React.Component {
         mousePos = sliderEnd;
       }
 
-      const handlePos = mousePos - sliderStart;
+      const handlePos = Math.round(mousePos - sliderStart);
+      const handleOffset = handleRect.width / 2;
+      const adjustedHandlePos = handlePos - handleOffset;
 
-      this.barActive.style.width = `${handlePos}px`;
-      this.handle.style.left = `${handlePos}px`;
+      const percentage = handlePos / endValue;
+      const value = this.props.max * percentage;
+
+      this.barActive.style.width = `${adjustedHandlePos}px`;
+      this.handle.style.left = `${adjustedHandlePos}px`;
+
+      this.onChange(value);
     }
   }
 
@@ -80,5 +103,8 @@ class Slider extends React.Component {
     );
   }
 }
+
+Slider.propTypes = propTypes;
+Slider.defaultProps = defaultProps;
 
 export default Slider;
