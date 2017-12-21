@@ -42,24 +42,28 @@ $reflect-blank-slate-max-width               : 500px !default;
 $reflect-button-border-radius                : $reflect-border-radius !default;
 $reflect-floating-action-button-height       : $reflect-giant !default;
 $reflect-button-badge-size                   : $reflect-small !default;
-
-// Button Sizes
-$reflect-button-font-family                  : 'Montserrat', sans-serif !default;
-$reflect-button-font-weight                  : normal !default;
+$reflect-button-font-family                  : 'Source Sans Pro', sans-serif !default;
+$reflect-button-font-weight                  : $reflect-font-weight-heavy !default;
 $reflect-button-text-case                    : uppercase !default;
+
+// Default Buttons
 $reflect-button-font-size                    : $reflect-font-size-small !default;
-$reflect-button-height                       : 44px !default; // Todo: Base on grid
-$reflect-button-padding                      : $reflect-medium !default; //left and right padding
+$reflect-button-height                       : $reflect-huge !default;
+$reflect-button-padding                      : $reflect-medium !default;
 
 // Tiny Buttons
 $reflect-button-tiny-font-size               : $reflect-font-size-tiny !default;
 $reflect-button-tiny-height                  : 22px !default; // Todo: Base on grid
 $reflect-button-tiny-padding                 : $reflect-button-padding / 4 !default;
 
-$reflect-button-small-font-size              : $reflect-font-size-small !default;
-$reflect-button-small-height                 : $reflect-huge !default; // Todo: Base on grid
-$reflect-button-small-padding                : $reflect-button-padding / 2 !default;
 
+// Small Buttons
+$reflect-button-small-font-size              : $reflect-font-size-small !default;
+$reflect-button-small-height                 : $reflect-large !default; // Todo: Base on grid
+$reflect-button-small-padding                : $reflect-small !default;
+
+
+// Large
 $reflect-button-large-font-size              : $reflect-font-size-base !default;
 $reflect-button-large-height                 : 60px !default; // Todo: Base on grid
 $reflect-button-large-padding                : $reflect-button-padding * 1.5 !default;
@@ -94,15 +98,18 @@ $reflect-button-clear-icon-color-hover       : $reflect-gray-dark !default;
 $reflect-button-clear-border-color           : transparent !default;
 $reflect-button-clear-border-color-hover     : transparent !default;
 
+// Simple Buttons
+$reflect-button-simple-bg                     : transparent !default;
+$reflect-button-simple-bg-hover               : transparent !default;
+$reflect-button-simple-color                  : $reflect-gray-dark !default;
+$reflect-button-simple-color-hover            : $reflect-action-color !default;
+$reflect-button-simple-icon-color             : $reflect-gray-dark !default;
+$reflect-button-simple-icon-color-hover       : $reflect-action-color !default;
+$reflect-button-simple-border-color           : transparent !default;
+$reflect-button-simple-border-color-hover     : transparent !default;
+
 // Disabled Buttons
-$reflect-button-disabled-bg                  : $reflect-disabled-color !default;
-$reflect-button-disabled-bg-hover            : $reflect-disabled-color !default;
-$reflect-button-disabled-color               : $reflect-disabled-text !default;
-$reflect-button-disabled-color-hover         : $reflect-disabled-text !default;
-$reflect-button-disabled-icon-color          : $reflect-disabled-icon !default;
-$reflect-button-disabled-icon-color-hover    : $reflect-disabled-icon-hover !default;
-$reflect-button-disabled-border-color        : $reflect-disabled-border !default;
-$reflect-button-disabled-border-color-hover  : $reflect-disabled-border-hover !default;
+$reflect-button-disabled-opacity             : 0.5 !default;
 
 // Errored Buttons
 $reflect-button-error-bg                     : $reflect-danger-color !default;

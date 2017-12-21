@@ -31,7 +31,7 @@ describe('<Filters />', () => {
       const wrapper = shallow(<Filters />);
       expect(wrapper.find('Form').length).to.eql(0);
 
-      wrapper.find('.rc-filters-action').simulate('click');
+      wrapper.find('Button').simulate('click');
 
       expect(wrapper.find('Form').length).to.eql(1);
     });

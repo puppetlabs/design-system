@@ -1,15 +1,12 @@
-/* stylelint-disable selector-no-qualifying-type, max-nesting-depth  */
-@mixin button-square($size) {
-  height: $size;
-  width: $size;
-}
-
 @mixin button-colors($bg, $bg-hover, $color, $color-hover, $icon-color, $icon-hover, $border, $border-hover) {
+  $button-color-dark: darken($bg, 10%);
+  $button-color-darker: darken($bg, 20%);
+
   background: $bg;
   border: 1px solid $border;
   color: $color !important;
 
-  .c-button-menu-inner .rc-icon {
+  .rc-button-menu-inner .rc-icon {
     fill: $icon-color;
   }
 
@@ -42,6 +39,10 @@
     border-color: $border;
   }
 
+  &.rc-popover-target-open {
+    background: $button-color-dark;
+  }
+
   .rc-icon {
     fill: $icon-color;
   }
@@ -53,25 +54,25 @@
   }
 
   &.rc-button-menu {
-    background: darken($bg, 10%);
+    background: $button-color-dark;
 
     &:hover {
-      background: darken($bg, 20%);
+      background: $button-color-darker;
     }
   }
 }
 
-a.rc-button,
-button.rc-button {
+.rc-button {
+  @extend %button-reset;
+  align-items: center;
   border-radius: $reflect-button-border-radius;
   cursor: pointer;
-  display: inline-block;
+  display: inline-flex;
   height: $reflect-button-height;
-  letter-spacing: 1px;
+  justify-content: center;
   outline: none;
   padding: 0 $reflect-button-padding;
-  text-align: center;
-  text-transform: $reflect-button-text-case;
+  position: relative;
   white-space: nowrap;
 
   @include button-colors(
@@ -85,227 +86,205 @@ button.rc-button {
     $reflect-button-border-color-hover
   );
 
-
-  &.rc-button-block {
-    display: block;
-    width: 100%;
-  }
-
-  &.rc-button-badged {
-    position: relative;
-
-    &::after {
-      border: ($reflect-button-badge-size / 3) solid #fff;
-      border-radius: $reflect-circle-radius;
-      box-sizing: content-box;
-      content: ' ';
-      height: $reflect-button-badge-size;
-      position: absolute;
-      right: -($reflect-button-badge-size / 2);
-      top: -($reflect-button-badge-size / 2);
-      width: $reflect-button-badge-size;
-    }
-  }
-
-  &.rc-button-processing {
-    position: relative;
-
-    .rc-button-content {
-      visibility: hidden;
-    }
-
-    > .rc-icon {
-      float: none;
-      height: 80%;
-      left: 0;
-      width: 100%;
-    }
-  }
-
-  &.rc-button-secondary {
-    @include button-colors(
-      $reflect-button-secondary-bg,
-      $reflect-button-secondary-bg-hover,
-      $reflect-button-secondary-color,
-      $reflect-button-secondary-color-hover,
-      $reflect-button-secondary-icon-color,
-      $reflect-button-secondary-icon-color-hover,
-      $reflect-button-secondary-border-color,
-      $reflect-button-secondary-border-color-hover
-    );
-  }
-
-  &.rc-button-transparent {
-    @include button-colors(
-      $reflect-button-clear-bg,
-      $reflect-button-clear-bg-hover,
-      $reflect-button-clear-color,
-      $reflect-button-clear-color-hover,
-      $reflect-button-clear-icon-color,
-      $reflect-button-clear-icon-color-hover,
-      $reflect-button-clear-border-color,
-      $reflect-button-clear-border-color-hover
-    );
-
-    &.rc-button-error {
-      background: $reflect-button-clear-bg;
-      color: $reflect-button-error-bg !important;
-
-      &:hover {
-        background: $reflect-button-clear-bg;
-        color: $reflect-button-error-bg !important;
-      }
-    }
-
-    &[disabled] {
-      background: $reflect-button-clear-bg;
-
-      &:hover {
-        background: $reflect-button-clear-bg;
-      }
-    }
-  }
-
-  &.rc-button-error {
-    @include button-colors(
-      $reflect-button-error-bg,
-      $reflect-button-error-bg-hover,
-      $reflect-button-error-color,
-      $reflect-button-error-color-hover,
-      $reflect-button-error-icon-color,
-      $reflect-button-error-icon-color-hover,
-      $reflect-button-error-border-color,
-      $reflect-button-error-border-color-hover
-    );
-  }
-
   .rc-button-dropdown-icon {
-    display: inline-block;
     padding-left: 10px;
-    vertical-align: middle;
-  }
-
-  &.rc-button-auto {
-    height: auto;
-    line-height: normal;
-    padding: 0;
-  }
-
-  &.rc-button-tiny {
-    height: $reflect-button-tiny-height;
-    // line-height: $reflect-button-tiny-line-height;
-    padding: 0 $reflect-button-tiny-padding;
-
-    &.rc-button-round {
-      padding: 0 3px;
-    }
-
-    .rc-button-content {
-      font-size: $reflect-button-tiny-font-size;
-    }
-  }
-
-  &.rc-button-small {
-    height: $reflect-button-small-height;
-    // line-height: $reflect-button-small-line-height;
-    padding: 0 $reflect-button-small-padding;
-
-    .rc-button-content {
-      font-size: $reflect-button-font-size;
-    }
-  }
-
-  &.rc-button-large {
-    height: $reflect-button-large-height;
-    // line-height: $reflect-button-large-line-height;
-    padding: 0 $reflect-button-large-padding;
-
-    .rc-button-content {
-      font-size: $reflect-button-large-font-size;
-    }
-  }
-
-  &.rc-button-round {
-    border-radius: $reflect-circle-radius;
-  }
-
-  &[disabled] {
-    @include button-colors(
-      $reflect-button-disabled-bg,
-      $reflect-button-disabled-bg-hover,
-      $reflect-button-disabled-color,
-      $reflect-button-disabled-color-hover,
-      $reflect-button-disabled-icon-color,
-      $reflect-button-disabled-icon-color-hover,
-      $reflect-button-disabled-border-color,
-      $reflect-button-disabled-border-color-hover
-    );
-
-    cursor: default;
-  }
-
-  > .rc-icon {
-    float: left;
   }
 
   .rc-button-content {
     font-family: $reflect-button-font-family;
     font-size: $reflect-button-font-size;
+    font-weight: $reflect-button-font-weight;
+    text-transform: $reflect-button-text-case;
   }
 
   > .rc-icon + .rc-button-content {
-    display: inline-block;
-    float: left;
-    padding-left: 10px;
+    padding-left: 16px;
   }
 }
 
-button.rc-button {
-  > .rc-icon,
-  .rc-button-content {
-    top: initial;
-    transform: none; // <button> doesn't play nice with v-center
-  }
-
-  .rc-button-content {
-    padding-top: 1px;
-  }
+.rc-button-auto {
+  height: auto;
+  line-height: normal;
+  padding: 0;
 }
 
-button.rc-button-processing {
-  > .rc-icon {
-    @include v-center(block, absolute);
-  }
-}
+.rc-button-tiny {
+  height: $reflect-button-tiny-height;
+  padding: 0 $reflect-button-tiny-padding;
 
-a.rc-button {
-  > .rc-icon {
-    @include v-center(block, relative);
+  &.rc-button-round {
+    padding: 0 3px;
   }
 
   .rc-button-content {
-    @include v-center(block, relative);
-  }
-
-  &.rc-button-processing {
-    > .rc-icon {
-      @include v-center(block, absolute);
-    }
+    font-size: $reflect-button-tiny-font-size;
   }
 }
 
-a.rc-floating-action-button,
-button.rc-floating-action-button {
-  border-radius: 60px;
+.rc-button-small {
+  height: $reflect-button-small-height;
+  padding: 0 $reflect-button-small-padding;
+
+  .rc-button-content {
+    font-size: $reflect-button-font-size;
+  }
+}
+
+.rc-button-large {
+  height: $reflect-button-large-height;
+  // line-height: $reflect-button-large-line-height;
+  padding: 0 $reflect-button-large-padding;
+
+  .rc-button-content {
+    font-size: $reflect-button-large-font-size;
+  }
+}
+
+.rc-button-round {
+  border-radius: $reflect-circle-radius;
+}
+
+.rc-button-secondary {
+  @include button-colors(
+    $reflect-button-secondary-bg,
+    $reflect-button-secondary-bg-hover,
+    $reflect-button-secondary-color,
+    $reflect-button-secondary-color-hover,
+    $reflect-button-secondary-icon-color,
+    $reflect-button-secondary-icon-color-hover,
+    $reflect-button-secondary-border-color,
+    $reflect-button-secondary-border-color-hover
+  );
+}
+
+.rc-button-simple {
+  height: auto;
+  padding: 0;
+
+  @include button-colors(
+    $reflect-button-simple-bg, 
+    $reflect-button-simple-bg-hover, 
+    $reflect-button-simple-color, 
+    $reflect-button-simple-color-hover, 
+    $reflect-button-simple-icon-color, 
+    $reflect-button-simple-icon-color-hover, 
+    $reflect-button-simple-border-color, 
+    $reflect-button-simple-border-color-hover
+  );
+}
+
+.rc-button-simple .rc-icon + .rc-button-content {
+  padding-left: 4px;
+}
+
+.rc-button-transparent {
+  @include button-colors(
+    $reflect-button-clear-bg,
+    $reflect-button-clear-bg-hover,
+    $reflect-button-clear-color,
+    $reflect-button-clear-color-hover,
+    $reflect-button-clear-icon-color,
+    $reflect-button-clear-icon-color-hover,
+    $reflect-button-clear-border-color,
+    $reflect-button-clear-border-color-hover
+  );
+
+  &.rc-button-error {
+    background: $reflect-button-clear-bg;
+    color: $reflect-button-error-bg !important;
+  }
+
+  &.rc-button-error:hover {
+    background: $reflect-button-clear-bg;
+    color: $reflect-button-error-bg !important;
+  }
+
+  &[disabled] {
+    background: $reflect-button-clear-bg;
+  }
+
+  &[disabled]:hover {
+    background: $reflect-button-clear-bg;
+  }
+}
+
+.rc-button-error {
+  @include button-colors(
+    $reflect-button-error-bg,
+    $reflect-button-error-bg-hover,
+    $reflect-button-error-color,
+    $reflect-button-error-color-hover,
+    $reflect-button-error-icon-color,
+    $reflect-button-error-icon-color-hover,
+    $reflect-button-error-border-color,
+    $reflect-button-error-border-color-hover
+  );
+}
+
+.rc-button[disabled] {
+  cursor: default;
+  opacity: $reflect-button-disabled-opacity;
+}
+
+.rc-button-block {
+  display: flex;
+  width: 100%;
+}
+
+.rc-button-square {
+  padding: 0;
+  width: $reflect-button-height;
+}
+
+.rc-button-large.rc-button-square {
+  width: $reflect-button-large-height;
+}
+
+.rc-button-small.rc-button-square {
+  width: $reflect-button-small-height;
+}
+
+.rc-button-tiny.rc-button-square {
+  width: $reflect-button-tiny-height;
+}
+
+.rc-button-processing {
+  position: relative;
+
+  .rc-button-content {
+    visibility: hidden;
+  }
+
+  .rc-icon {
+    height: 80%;
+    left: 0;
+    position: absolute;
+    width: 100%;
+  }
+}
+
+.rc-button-badged {
+  position: relative;
+
+  &::after {
+    border: ($reflect-button-badge-size / 3) solid #fff;
+    border-radius: $reflect-circle-radius;
+    box-sizing: content-box;
+    content: ' ';
+    height: $reflect-button-badge-size;
+    position: absolute;
+    right: -($reflect-button-badge-size / 2);
+    top: -($reflect-button-badge-size / 2);
+    width: $reflect-button-badge-size;
+  }
+}
+
+.rc-floating-action-button {
+  border-radius: $reflect-floating-action-button-height;
   height: $reflect-floating-action-button-height;
-  line-height: $reflect-floating-action-button-height;
+  justify-content: center;
   padding: 0;
   width: $reflect-floating-action-button-height;
-
-  &::before {
-    content: '+';
-    font-size: 36px;
-  }
 }
 
 .rc-button-group {
@@ -339,66 +318,25 @@ button.rc-floating-action-button {
 
 .rc-split-button {
   display: flex;
+}
 
-  .rc-button-main {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-    padding: 0 10px;
+.rc-button-main {
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.rc-button-menu {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  padding: 0;
+  width: $reflect-button-height;
+
+  &.rc-button-small {
+    width: $reflect-button-small-height;
   }
 
-  .rc-button-main.rc-button-tiny .rc-button-content {
-    font-size: $reflect-button-tiny-font-size;
-    padding: 1px;
-  }
-
-  .rc-button-menu {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    display: block;
-    padding: 0 10px;
-
-    &.rc-popover-target-open {
-      background: $reflect-button-bg-hover;
-    }
-
-    &.rc-button-small .rc-button-menu-inner {
-      padding: 1px;
-    }
-
-    &.rc-button-tiny {
-      padding: 0 $reflect-button-tiny-padding;
-
-      .rc-button-content {
-        padding: 0;
-      }
-
-      .rc-button-menu-inner {
-        padding: 0;
-      }
-    }
-
-    .rc-button-menu-inner {
-      display: inline-block;
-      padding: 3px;
-
-      // stylelint-disable selector-max-compound-selectors
-      .rc-icon {
-        fill: $reflect-bg-primary;
-        float: left;
-        padding: 3px;
-      }
-      // stylelint-enable selector-max-compound-selectors
-    }
-
-    .rc-button-content {
-      display: flex;
-    }
-  }
-
-  &:hover {
-    .rc-icon {
-      fill: $reflect-bg-primary;
-    }
+  .rc-button-menu-inner {
+    align-items: center;
+    display: flex;
   }
 }
-/* stylelint-enable selector-no-qualifying-type, max-nesting-depth  */
