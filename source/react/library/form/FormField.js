@@ -2,6 +2,8 @@ import React from 'react';
 import clone from 'clone';
 import classnames from 'classnames';
 
+import { TooltipHoverArea } from '../tooltips/Tooltip';
+
 import Input from '../Input';
 import Select from '../select/Select';
 import Switch from '../Switch';
@@ -32,6 +34,7 @@ const propTypes = {
   error: React.PropTypes.string,
   label: React.PropTypes.string,
   onChange: React.PropTypes.func,
+  tooltip: React.PropTypes.string,
   className: React.PropTypes.string,
   description: React.PropTypes.string,
   elementProps: React.PropTypes.object,
@@ -42,6 +45,7 @@ const defaultProps = {
   size: null,
   error: '',
   label: '',
+  tooltip: null,
   className: '',
   description: '',
   elementProps: {},
@@ -62,6 +66,8 @@ class FormField extends React.Component {
 
     switch (this.props.type) {
       case 'input':
+        value = val.target.value;
+        break;
       case 'number':
         value = parseInt(val.target.value, 10);
         break;
@@ -78,14 +84,23 @@ class FormField extends React.Component {
   }
 
   renderLabel() {
+    const { label, name, tooltip } = this.props;
     let jsx;
 
-    if (this.props.label) {
+    if (label) {
       jsx = (
-        <label htmlFor={ this.props.name } className="rc-form-field-label">
-          { this.props.label }
+        <label htmlFor={ name } className="rc-form-field-label">
+          { label }
         </label>
       );
+
+      if (tooltip) {
+        jsx = (
+          <TooltipHoverArea tooltip={ tooltip } anchor="bottom">
+            { jsx }
+          </TooltipHoverArea>
+        );
+      }
     }
 
     return jsx;
