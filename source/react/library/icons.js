@@ -235,6 +235,13 @@ const icons = {
     ),
   },
 
+  dropdown: {
+    viewBox: '0 0 12 8',
+    svg: (
+      <polygon id="path-1" points="6 7.4 0.6 2 2 0.6 6 4.6 10 0.6 11.4 2" />
+    ),
+  },
+
   clone: {
     viewBox: '0 0 16 16',
     svg: (

@@ -1,4 +1,7 @@
 @mixin button-colors($bg, $bg-hover, $color, $color-hover, $icon-color, $icon-hover, $border, $border-hover) {
+  $button-color-dark: darken($bg, 10%);
+  $button-color-darker: darken($bg, 20%);
+
   background: $bg;
   border: 1px solid $border;
   color: $color !important;
@@ -36,6 +39,10 @@
     border-color: $border;
   }
 
+  &.rc-popover-target-open {
+    background: $button-color-dark;
+  }
+
   .rc-icon {
     fill: $icon-color;
   }
@@ -47,10 +54,10 @@
   }
 
   &.rc-button-menu {
-    background: darken($bg, 10%);
+    background: $button-color-dark;
 
     &:hover {
-      background: darken($bg, 20%);
+      background: $button-color-darker;
     }
   }
 }
@@ -308,10 +315,6 @@
 
   &.rc-button-small {
     width: $reflect-button-small-height;
-  }
-
-  &.rc-popover-target-open {
-    background: $reflect-button-bg-hover;
   }
 
   .rc-button-menu-inner {

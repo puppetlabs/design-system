@@ -5,19 +5,20 @@ import Icon from './Icon';
 import DropdownMenu from './dropdown/DropdownMenu';
 
 const propTypes = {
-  className: React.PropTypes.string,
   options: React.PropTypes.array.isRequired,
   /** Primary button label */
   label: React.PropTypes.string.isRequired,
+  className: React.PropTypes.string,
   processing: React.PropTypes.bool,
+  error: React.PropTypes.bool,
   dropdownWidth: React.PropTypes.string,
   dropdownSize: React.PropTypes.string,
   /** Whether or not to render the Menu in a Portal */
   disablePortal: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   disabledMenu: React.PropTypes.bool,
-  /** Either "small" or "tiny" */
-  size: React.PropTypes.string,
+  menuStatus: React.PropTypes.oneOf(['processing', 'success', 'disabled']),
+  size: React.PropTypes.oneOf(['medium', 'small', 'tiny']),
   /** Primary button click handler */
   onClick: React.PropTypes.func.isRequired,
   /** Option click handler */
@@ -25,16 +26,12 @@ const propTypes = {
 };
 
 const defaultProps = {
-  className: '',
-  label: '',
   processing: false,
+  error: false,
   dropdownWidth: '125px',
-  dropdownSize: '',
   disablePortal: false,
   disabled: false,
   disabledMenu: false,
-  size: '',
-  onClick: null,
 };
 
 /**
@@ -64,14 +61,33 @@ class SplitButton extends React.Component {
   }
 
   renderDropdownTarget() {
-    const iconSize = '10px';
+    const iconSize = '12px';
+    const menuStatus = this.props.menuStatus;
+    const error = this.props.error;
+    let iconType;
 
     const disabledMenu = this.props.disabledMenu;
 
+    switch (menuStatus) {
+      case 'success':
+        iconType = 'checkmark';
+        break;
+      case 'processing':
+        iconType = 'loader';
+        break;
+      default:
+        iconType = 'dropdown';
+    }
+
     return (
-      <Button className="rc-button-menu" size={ this.props.size } disabled={ disabledMenu }>
+      <Button
+        error={ error }
+        className="rc-button-menu"
+        size={ this.props.size }
+        disabled={ disabledMenu }
+      >
         <div className="rc-button-menu-inner">
-          <Icon height={ iconSize } width={ iconSize } type="chevron-down" />
+          <Icon height={ iconSize } width={ iconSize } type={ iconType } />
         </div>
       </Button>
     );
@@ -97,12 +113,13 @@ class SplitButton extends React.Component {
 
   render() {
     const dropdown = this.renderDropdown();
-    const { label, size, disabled, processing } = this.props;
+    const { label, size, disabled, processing, error } = this.props;
     const className = classnames('rc-split-button', this.props.className);
 
     return (
       <div className={ className }>
         <Button
+          error={ error }
           processing={ processing }
           size={ size }
           onClick={ this.onClick }

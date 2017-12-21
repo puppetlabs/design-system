@@ -23,9 +23,9 @@ const propTypes = {
   type: React.PropTypes.string,
   href: React.PropTypes.string,
   round: React.PropTypes.bool,
-  message: React.PropTypes.string,
   dropdown: React.PropTypes.bool,
-  error: React.PropTypes.string,
+  error: React.PropTypes.bool,
+  message: React.PropTypes.string,
   children: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
@@ -50,7 +50,7 @@ const defaultProps = {
   href: null,
   round: false,
   message: '',
-  error: '',
+  error: false,
   dropdown: false,
   children: '',
 };
@@ -74,7 +74,7 @@ class Button extends React.Component {
   }
 
   onClick(e) {
-    if (this.props.disabled) {
+    if (this.props.disabled || this.props.processing) {
       e.preventDefault();
     } else if (this.props.onClick) {
       this.props.onClick(e);
