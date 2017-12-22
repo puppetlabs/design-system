@@ -10,6 +10,7 @@ const propTypes = {
   menu: React.PropTypes.bool,
   position: React.PropTypes.object,
   padding: React.PropTypes.bool,
+  border: React.PropTypes.bool,
   closeButton: React.PropTypes.bool,
   anchor: React.PropTypes.oneOf(['bottom right', 'bottom left']),
   onOpen: React.PropTypes.func,
@@ -34,6 +35,7 @@ const defaultProps = {
   menu: false,
   position: {},
   padding: true,
+  border: true,
   closeButton: false,
   anchor: 'bottom left',
   onOpen: null,
@@ -216,6 +218,7 @@ class Popover extends React.Component {
       [`rc-popover-${this.props.size}`]: this.props.size,
       'rc-popover-no-portal': this.props.disablePortal,
       'rc-popover-no-padding': !this.props.padding || this.props.menu,
+      'rc-popover-no-border': !this.props.border || this.props.menu,
     });
     const styles = clone(this.state.position);
     const button = this.renderButton();

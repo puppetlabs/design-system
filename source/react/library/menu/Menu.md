@@ -5,7 +5,7 @@ const listOptions = [
   { id: 0, value: 'option1' },
   { id: 1, value: 'option2' },
 ];
-<Popover target={ target } padding={ false } >
+<Popover target={ target } padding={ false } border={ false }>
   <Menu>
     <MenuHeader title="I'm a happy menu title!" />
     <MenuList options={ listOptions } />
@@ -16,7 +16,7 @@ const listOptions = [
 `MenuSection`s can be rendered within your menu:
 ```
 const target = <Button>Open menu with sections</Button>;
-<Popover target={ target } padding={ false} >
+<Popover target={ target } padding={ false } border={ false }>
   <Menu>
     <MenuHeader title="I'm a happy menu title!" />
     <MenuSection>
