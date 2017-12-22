@@ -12,7 +12,7 @@ const propTypes = {
 const defaultProps = {
   min: 0,
   max: 100,
-  step: 1,
+  step: null,
   value: 0,
 };
 
@@ -44,14 +44,14 @@ class Slider extends React.Component {
 
   componentDidMount() {
     if (this.state.value) {
-      const position = this.calculateHandlePosition();
+      const position = this.calculateHandlePosition(this.state.value);
       this.setHandlePosition(position);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.value !== this.state.value) {
-      const position = this.calculateHandlePosition();
+      const position = this.calculateHandlePosition(this.state.value);
       this.setHandlePosition(position);
     }
   }
@@ -85,7 +85,19 @@ class Slider extends React.Component {
         mousePos = sliderEnd;
       }
 
-      const handlePos = mousePos - sliderStart;
+      let handlePos = mousePos - sliderStart;
+
+      if (this.props.step) {
+        const stepPoints = this.convertStepToPoints();
+        const stepPositions = stepPoints.map(p => p.position);
+
+        const closestPoint = stepPositions.reduce((prev, next) => (
+          (Math.abs(next - handlePos) < Math.abs(prev - handlePos) ? next : prev)
+        ));
+
+        handlePos = closestPoint;
+      }
+
       const endPos = sliderEnd - sliderStart;
       const percentage = handlePos / endPos;
 
@@ -133,19 +145,33 @@ class Slider extends React.Component {
     this.handle.style.left = `${position - handleOffset}px`;
   }
 
-  calculateHandlePosition() {
+  calculateHandlePosition(value) {
     const min = this.props.min;
 
     // We remove the min from the max and value to ensure we offset for non zero values
-    const max = this.props.max - min;
-    const value = this.state.value - min;
+    const offsetMax = this.props.max - min;
+    const offsetValue = value - min;
 
-    const percentage = value / max;
+    const percentage = offsetValue / offsetMax;
     const sliderRect = this.getSliderRect();
     const sliderLength = this.getSliderLength(sliderRect);
     const position = sliderLength * percentage;
 
     return position;
+  }
+
+  convertStepToPoints() {
+    const { min, max, step } = this.props;
+    const points = [];
+
+    for (let i = min; i <= max; i += step) {
+      points.push({
+        value: i,
+        position: this.calculateHandlePosition(i),
+      });
+    }
+
+    return points;
   }
 
   render() {
