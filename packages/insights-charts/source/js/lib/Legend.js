@@ -160,7 +160,16 @@ class Legend {
       }
 
       legendItems.append('span')
-        .text(d => (d.aggregate ? `${d.label}: ${this.getFormattedAggregate(d)}` : d.label));
+        .attr('class', CSS.getClassName('legend-item-value'))
+        .text(d => d.label);
+
+      const hasAggregate = data.some(d => d.aggregate !== undefined);
+
+      if (hasAggregate) {
+        legendItems.append('span')
+          .attr('class', CSS.getClassName('legend-item-aggregate'))
+          .text(d => (d.aggregate !== undefined ? `: ${this.getFormattedAggregate(d)}` : null));
+      }
 
       if (alignment === 'right') {
         this.renderIndicator(legendItems, alignment);

@@ -8,7 +8,7 @@ describe('Legend', () => {
   const margins = {};
   const dispatchers = { on: () => {}, enabled: () => {} };
 
-  it('should properly render the legend', () => {
+  it('should render the legend without blowing up', () => {
     const options = { legend: { enabled: true } };
     const seriesData = [{ label: 'blah', data: [{ y: 1 }, { y: 2 }] }];
 
@@ -88,7 +88,7 @@ describe('Legend', () => {
       const legend = new Legend(seriesData, options, margins, dispatchers);
       legend.render(global.chart);
 
-      expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('FOO: 45');
+      expect(global.chart.selectAll('.reflect-charts-legend-item-value').text()).to.eql('FOO');
     });
 
     it('should allow us to format aggregate values', () => {
@@ -101,7 +101,7 @@ describe('Legend', () => {
       const legend = new Legend(seriesData, options, margins, dispatchers);
       legend.render(global.chart);
 
-      expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('foo: 90');
+      expect(global.chart.selectAll('.reflect-charts-legend-item-aggregate').text()).to.eql(': 90');
     });
   });
 
@@ -127,7 +127,7 @@ describe('Legend', () => {
       const legend = new Legend(seriesData, options, margins, dispatchers);
       legend.render(global.chart);
 
-      expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('TEST1');
+      expect(global.chart.selectAll('.reflect-charts-legend-item-value').text()).to.eql('TEST1');
     });
 
     it('should allow us to format the aggregate values', () => {
@@ -140,7 +140,7 @@ describe('Legend', () => {
       const legend = new Legend(seriesData, options, margins, dispatchers);
       legend.render(global.chart);
 
-      expect(global.chart.selectAll('.reflect-charts-legend-item').text()).to.eql('test1: 2');
+      expect(global.chart.selectAll('.reflect-charts-legend-item-aggregate').text()).to.eql(': 2');
     });
   });
 });

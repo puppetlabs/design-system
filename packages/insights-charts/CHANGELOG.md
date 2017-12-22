@@ -1,3 +1,7 @@
+# 0.9.3 
+
+* Seperator dom for legend item values and legend item aggregates
+
 # 0.9.2
 
 * Fix to ensure we can properly unbind the resize callback
