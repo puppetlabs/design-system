@@ -12,7 +12,7 @@ const propTypes = {
 const defaultProps = {
   min: 0,
   max: 100,
-  step: null,
+  step: 1,
   value: 0,
 };
 
