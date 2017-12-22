@@ -71,7 +71,6 @@ class Slider extends React.Component {
   }
 
   onClick(e) {
-console.log(e.pageX);
     this.onMouseMove(e, true);
   }
 
