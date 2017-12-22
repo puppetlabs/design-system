@@ -8,6 +8,7 @@ const propTypes = {
   select: React.PropTypes.bool,
   onChange: React.PropTypes.func,
   options: React.PropTypes.array,
+  actions: React.PropTypes.array,
   hint: React.PropTypes.string,
   margin: React.PropTypes.number,
   anchor: React.PropTypes.string,
@@ -25,12 +26,14 @@ const propTypes = {
     React.PropTypes.number,
     React.PropTypes.array,
   ]),
+  onActionClick: React.PropTypes.func,
 };
 
 const defaultProps = {
   size: '',
   select: false,
   options: [],
+  actions: [],
   hint: '',
   margin: -60,
   anchor: '',
@@ -131,6 +134,12 @@ class Dropdown extends React.Component {
     }
   }
 
+  onActionClick(option) {
+    if (this.props.onActionClick) {
+      this.props.onActionClick(option);
+    }
+  }
+
   getOptions() {
     return this.props.options.map((o) => {
       let obj;
@@ -195,9 +204,11 @@ class Dropdown extends React.Component {
         onChange={ this.onChange }
         onApply={ this.onApply }
         options={ options }
+        actions={ this.props.actions }
         selected={ this.state.selected }
         required={ this.props.required }
         disablePortal={ this.props.disablePortal }
+        onActionClick={ this.props.onActionClick }
       />
     );
   }

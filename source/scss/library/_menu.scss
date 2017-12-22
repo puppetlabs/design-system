@@ -144,3 +144,10 @@
     width: 8px;
   }
 }
+
+.rc-menu-first {
+  .rc-menu-item:last-child a {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
