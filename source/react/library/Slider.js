@@ -7,6 +7,7 @@ const propTypes = {
   step: React.PropTypes.number,
   defaultValue: React.PropTypes.number,
   onChange: React.PropTypes.func,
+  input: React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -14,6 +15,7 @@ const defaultProps = {
   max: 100,
   step: null,
   value: 0,
+  input: false,
 };
 
 /**
@@ -31,6 +33,7 @@ class Slider extends React.Component {
       value: props.defaultValue,
     };
 
+    this.onResize = this.onResize.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -40,6 +43,7 @@ class Slider extends React.Component {
   componentWillMount() {
     window.addEventListener('mousemove', this.onMouseMove);
     window.addEventListener('mouseup', this.onMouseUp);
+    window.addEventListener('resize', this.onResize);
   }
 
   componentDidMount() {
@@ -59,6 +63,12 @@ class Slider extends React.Component {
   componentWillUnmount() {
     window.removeEventListener('mousemove', this.onMouseMove);
     window.removeEventListener('mouseup', this.onMouseUp);
+    window.removeEventListener('resize', this.onResize);
+  }
+
+  onResize() {
+    const position = this.calculateHandlePosition(this.state.value);
+    this.setHandlePosition(position);
   }
 
   onChange(value) {
