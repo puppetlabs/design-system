@@ -30,7 +30,13 @@
   display: block;
   height: $reflect-slider-handle-size;
   left: -($reflect-slider-handle-size / 2);
+  outline: none;
   position: absolute;
   top: 0;
   width: $reflect-slider-handle-size;
+}
+
+.rc-slider-handle:hover,
+.rc-slider-handle:focus {
+  transform: scale(1.4);
 }

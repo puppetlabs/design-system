@@ -16,6 +16,13 @@ const defaultProps = {
   value: 0,
 };
 
+const getSliderLength = function (sliderRect) {
+  const start = sliderRect.left;
+  const end = sliderRect.right;
+
+  return end - start;
+};
+
 /**
  * `Slider` is a component used for selecting a number on a defined scale.
  *
@@ -136,17 +143,6 @@ class Slider extends React.Component {
     return this.handle ? this.handle.getBoundingClientRect() : {};
   }
 
-  getSliderLength(sliderRect) {
-    if (!sliderRect) {
-      sliderRect = this.getSliderRect();
-    }
-
-    const start = sliderRect.left;
-    const end = sliderRect.right;
-
-    return end - start;
-  }
-
   setHandlePosition(position, handleRect) {
     if (!handleRect) {
       handleRect = this.getHandleRect();
@@ -167,7 +163,7 @@ class Slider extends React.Component {
 
     const percentage = offsetValue / offsetMax;
     const sliderRect = this.getSliderRect();
-    const sliderLength = this.getSliderLength(sliderRect);
+    const sliderLength = getSliderLength(sliderRect);
     const position = sliderLength * percentage;
 
     return position;
