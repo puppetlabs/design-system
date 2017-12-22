@@ -179,8 +179,13 @@ class Slider extends React.Component {
 
     const handleOffset = handleRect.width / 2;
 
-    this.barActive.style.width = `${position}px`;
-    this.handle.style.left = `${position - handleOffset}px`;
+    if (this.barActive) {
+      this.barActive.style.width = `${position}px`;
+    }
+
+    if (this.handle) {
+      this.handle.style.left = `${position - handleOffset}px`;
+    }
   }
 
   calculateHandlePosition(value) {
@@ -220,10 +225,10 @@ class Slider extends React.Component {
     const className = classnames('rc-slider');
 
     return (
-      <div
+      <div // eslint-disable-line jsx-a11y/no-static-element-interactions
         ref={ (c) => { this.slider = c; } }
-        onKeyDown={ this.onKeyDown }
         className={ className }
+        onKeyDown={ this.onKeyDown }
         onClick={ this.onClick }
       >
         <div className="rc-slider-bar" />
