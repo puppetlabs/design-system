@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { LEFT_KEY_CODE, RIGHT_KEY_CODE } from '../constants';
 
 const propTypes = {
   min: React.PropTypes.number,
@@ -13,7 +14,7 @@ const defaultProps = {
   min: 0,
   max: 100,
   step: 1,
-  value: 0,
+  defaultValue: 0,
 };
 
 const getSliderLength = function (sliderRect) {
@@ -35,7 +36,7 @@ class Slider extends React.Component {
 
     this.state = {
       dragging: false,
-      value: props.defaultValue,
+      value: props.defaultValue < props.min ? props.min : props.defaultValue,
     };
 
     this.onResize = this.onResize.bind(this);
@@ -44,6 +45,7 @@ class Slider extends React.Component {
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
   }
 
   componentWillMount() {
@@ -135,6 +137,33 @@ class Slider extends React.Component {
     this.setState({ dragging: false });
   }
 
+  onKeyUp(e) {
+    const points = this.convertStepToPoints();
+    const currentValue = this.state.value;
+    let newValue = currentValue;
+
+    const currentPoint = points.filter(p => p.value === currentValue)[0];
+
+    switch (e.keyCode) {
+      case LEFT_KEY_CODE:
+        if (currentPoint.index > 0) {
+          newValue = points[currentPoint.index - 1].value;
+        }
+
+        break;
+      case RIGHT_KEY_CODE:
+        if (currentPoint.index < (points.length - 1)) {
+          newValue = points[currentPoint.index + 1].value;
+        }
+
+        break;
+      default:
+        newValue = currentValue;
+    }
+ 
+    this.setState({ value: newValue });
+  }
+
   getSliderRect() {
     return this.slider ? this.slider.getBoundingClientRect() : {};
   }
@@ -172,12 +201,16 @@ class Slider extends React.Component {
   convertStepToPoints() {
     const { min, max, step } = this.props;
     const points = [];
+    let pointIndex = 0;
 
     for (let i = min; i <= max; i += step) {
       points.push({
+        index: pointIndex,
         value: i,
         position: this.calculateHandlePosition(i),
       });
+
+      pointIndex += 1;
     }
 
     return points;
@@ -187,7 +220,12 @@ class Slider extends React.Component {
     const className = classnames('rc-slider');
 
     return (
-      <div ref={ (c) => { this.slider = c; } } className={ className } onClick={ this.onClick }>
+      <div
+        ref={ (c) => { this.slider = c; } }
+        onKeyUp={ this.onKeyUp }
+        className={ className }
+        onClick={ this.onClick }
+      >
         <div className="rc-slider-bar" />
         <div ref={ (c) => { this.barActive = c; } } className="rc-slider-bar-active" />
         <div
