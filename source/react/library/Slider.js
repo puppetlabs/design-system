@@ -32,6 +32,7 @@ class Slider extends React.Component {
     };
 
     this.onResize = this.onResize.bind(this);
+    this.onClick = this.onClick.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
@@ -69,6 +70,11 @@ class Slider extends React.Component {
     this.setHandlePosition(position);
   }
 
+  onClick(e) {
+console.log(e.pageX);
+    this.onMouseMove(e, true);
+  }
+
   onChange(value) {
     if (this.props.onChange) {
       this.props.onChange(value);
@@ -79,8 +85,8 @@ class Slider extends React.Component {
     this.setState({ dragging: true });
   }
 
-  onMouseMove(e) {
-    if (this.state.dragging) {
+  onMouseMove(e, clicked = false) {
+    if (this.state.dragging || clicked) {
       let mousePos = e.pageX;
 
       const sliderRect = this.getSliderRect();
@@ -186,7 +192,7 @@ class Slider extends React.Component {
     const className = classnames('rc-slider');
 
     return (
-      <div ref={ (c) => { this.slider = c; } } className={ className }>
+      <div ref={ (c) => { this.slider = c; } } className={ className } onClick={ this.onClick }>
         <div className="rc-slider-bar" />
         <div ref={ (c) => { this.barActive = c; } } className="rc-slider-bar-active" />
         <div
