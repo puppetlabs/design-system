@@ -7,7 +7,6 @@ const propTypes = {
   step: React.PropTypes.number,
   defaultValue: React.PropTypes.number,
   onChange: React.PropTypes.func,
-  input: React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -15,7 +14,6 @@ const defaultProps = {
   max: 100,
   step: null,
   value: 0,
-  input: false,
 };
 
 /**
