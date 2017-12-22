@@ -10,6 +10,12 @@
     color: $color;
   }
 
+  .rc-menu-item:first-of-type a {
+    border-top: $border;
+    border-top-left-radius: $reflect-border-radius;
+    border-top-right-radius: $reflect-border-radius;
+  }
+
   .rc-menu-item:last-of-type a {
     border-bottom: $border;
     border-bottom-left-radius: $reflect-border-radius;
