@@ -45,7 +45,7 @@ class Slider extends React.Component {
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   componentWillMount() {
@@ -137,7 +137,7 @@ class Slider extends React.Component {
     this.setState({ dragging: false });
   }
 
-  onKeyUp(e) {
+  onKeyDown(e) {
     const points = this.convertStepToPoints();
     const currentValue = this.state.value;
     let newValue = currentValue;
@@ -160,7 +160,7 @@ class Slider extends React.Component {
       default:
         newValue = currentValue;
     }
- 
+
     this.setState({ value: newValue });
   }
 
@@ -222,7 +222,7 @@ class Slider extends React.Component {
     return (
       <div
         ref={ (c) => { this.slider = c; } }
-        onKeyUp={ this.onKeyUp }
+        onKeyDown={ this.onKeyDown }
         className={ className }
         onClick={ this.onClick }
       >
