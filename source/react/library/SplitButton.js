@@ -6,10 +6,6 @@ import DropdownMenu from './dropdown/DropdownMenu';
 
 const propTypes = {
   className: React.PropTypes.string,
-  /** Primary button click handler */
-  onClick: React.PropTypes.func.isRequired,
-  /** Option click handler */
-  onOptionClick: React.PropTypes.func.isRequired,
   options: React.PropTypes.array.isRequired,
   /** Primary button label */
   label: React.PropTypes.string.isRequired,
@@ -22,10 +18,23 @@ const propTypes = {
   disabledMenu: React.PropTypes.bool,
   /** Either "small" or "tiny" */
   size: React.PropTypes.string,
+  /** Primary button click handler */
+  onClick: React.PropTypes.func.isRequired,
+  /** Option click handler */
+  onOptionClick: React.PropTypes.func.isRequired,
 };
 
 const defaultProps = {
+  className: '',
+  label: '',
+  processing: false,
   dropdownWidth: '125px',
+  dropdownSize: '',
+  disablePortal: false,
+  disabled: false,
+  disabledMenu: false,
+  size: '',
+  onClick: null,
 };
 
 /**
@@ -43,7 +52,9 @@ class SplitButton extends React.Component {
   }
 
   onClick() {
-    this.props.onClick();
+    if (this.props.onClick) {
+      this.props.onClick();
+    }
   }
 
   onOptionClick(option) {

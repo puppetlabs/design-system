@@ -6,8 +6,9 @@ import TooltipHoverArea from './TooltipHoverArea';
 import TooltipStickyArea from './TooltipStickyArea';
 import Icon from '../Icon';
 
+const CARAT_HEIGHT = 8;
+
 const propTypes = {
-  className: React.PropTypes.string,
   anchor: React.PropTypes.string,
   sticky: React.PropTypes.bool,
   style: React.PropTypes.object,
@@ -22,11 +23,12 @@ const propTypes = {
   ]),
 };
 
-const CARAT_HEIGHT = 8;
-
 const defaultProps = {
+  sticky: false,
   style: {},
   anchor: 'right',
+  onClose: null,
+  children: null,
 };
 
 const getDefaultState = () => ({
@@ -144,7 +146,12 @@ class Tooltip extends React.Component {
 
     if (this.props.sticky && this.props.onClose) {
       jsx = (
-        <div role="button" className="rc-tooltip-close" onClick={ this.props.onClose }>
+        <div
+          role="button"
+          tabIndex={ 0 }
+          className="rc-tooltip-close"
+          onClick={ this.props.onClose }
+        >
           <Icon height="8px" width="8px" type="close" />
         </div>
       );
@@ -165,8 +172,8 @@ class Tooltip extends React.Component {
     };
 
     return (
-      <div className={ className } style={ styles } ref={ c => { this.tooltip = c; } }>
-        <div className="rc-tooltip-scrollbar-measurer" ref={ c => { this.scrollMeasurer = c; } } />
+      <div className={ className } style={ styles } ref={ (c) => { this.tooltip = c; } }>
+        <div className="rc-tooltip-scrollbar-measurer" ref={ (c) => { this.scrollMeasurer = c; } } />
         <div className="rc-tooltip-carat" style={ caratPosition } />
         { this.props.children }
         { closeButton }

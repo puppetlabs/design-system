@@ -1,12 +1,12 @@
+// moment-timezone monkey patches moment.
+import 'moment-timezone';
+
 import React from 'react';
 import moment from 'moment';
 import classnames from 'classnames';
 import DatePickerWrapper from './DatePickerWrapper';
 import Button from '../Button';
 import Popover from '../Popover';
-
-// moment-timezone monkey patches moment.
-import 'moment-timezone';
 
 const propTypes = {
   onChange: React.PropTypes.func.isRequired,
@@ -22,8 +22,15 @@ const propTypes = {
 };
 
 const defaultProps = {
-  disablePopoverPortal: false,
+  className: '',
   anchor: 'bottom left',
+  buttonClassName: '',
+  dates: null,
+  disabled: false,
+  message: '',
+  timezone: '',
+  ranges: null,
+  disablePopoverPortal: false,
 };
 
 const convertDate = (date, timezone) => {
@@ -32,7 +39,7 @@ const convertDate = (date, timezone) => {
   }
 
   return moment(date);
-}
+};
 
 const parseDate = (date, timezone) => {
   // Not timezone is supplied so we don't want to do anything.
@@ -41,8 +48,7 @@ const parseDate = (date, timezone) => {
   }
 
   return moment.tz(date.format('YYYY-MM-DD'), timezone);
-}
-
+};
 
 /**
  * `Datepicker` allows a user to select a single date range
@@ -55,7 +61,7 @@ class DatePicker extends React.Component {
   constructor(props) {
     super(props);
 
-    const dates = this.props.dates;
+    const { dates, timezone } = this.props;
     let start = null;
     let end = null;
 
@@ -63,8 +69,8 @@ class DatePicker extends React.Component {
       const primaryStart = dates.primary.start;
       const primaryEnd = dates.primary.end;
 
-      start = moment.isMoment(primaryStart) ? primaryStart : convertDate(primaryStart, this.props.timezone);
-      end = moment.isMoment(primaryEnd) ? primaryEnd : convertDate(primaryEnd, this.props.timezone);
+      start = moment.isMoment(primaryStart) ? primaryStart : convertDate(primaryStart, timezone);
+      end = moment.isMoment(primaryEnd) ? primaryEnd : convertDate(primaryEnd, timezone);
     }
 
     this.state = {

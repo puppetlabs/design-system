@@ -2,8 +2,8 @@ import React from 'react';
 import Icon from '../Icon';
 
 const propTypes = {
-  coords: React.PropTypes.object,
-  type: React.PropTypes.string,
+  coords: React.PropTypes.object.isRequired,
+  type: React.PropTypes.string.isRequired,
 };
 
 const GridBlock = (props) => {

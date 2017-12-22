@@ -14,7 +14,7 @@ const defaultProps = {
   message: '',
   menuToggleIcon: 'kebab',
   menuOptions: [],
-  onOptionClick: () => {},
+  onOptionClick: null,
 };
 
 class CardActionsMenu extends React.Component {
@@ -22,7 +22,7 @@ class CardActionsMenu extends React.Component {
     super(props);
 
     this.state = {
-      tooltipOpen: !!this.props.message
+      tooltipOpen: !!this.props.message,
     };
 
     this.onTooltipClose = this.onTooltipClose.bind(this);

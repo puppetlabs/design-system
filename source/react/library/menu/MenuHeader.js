@@ -8,6 +8,7 @@ const propTypes = {
 
 const defaultProps = {
   title: '',
+  onClose: null,
 };
 
 class MenuHeader extends React.Component {
@@ -28,7 +29,12 @@ class MenuHeader extends React.Component {
 
     if (this.props.onClose) {
       jsx = (
-        <a role="button" className="rc-menu-close" onClick={ this.props.onClose }>
+        <a
+          role="button"
+          tabIndex={ 0 }
+          className="rc-menu-close"
+          onClick={ this.props.onClose }
+        >
           <Icon type="close" width="8px" height="8px" />
         </a>
       );

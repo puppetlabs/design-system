@@ -9,6 +9,11 @@ const propTypes = {
   ranges: React.PropTypes.array,
 };
 
+const defaultProps = {
+  range: null,
+  ranges: null,
+};
+
 class DatePickerWrapper extends React.Component {
   constructor(props) {
     super(props);
@@ -93,5 +98,6 @@ class DatePickerWrapper extends React.Component {
 }
 
 DatePickerWrapper.propTypes = propTypes;
+DatePickerWrapper.defaultProps = defaultProps;
 
 export default DatePickerWrapper;

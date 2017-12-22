@@ -8,6 +8,11 @@ const propTypes = {
   message: React.PropTypes.any,
 };
 
+const defaultProps = {
+  icon: null,
+  message: '',
+};
+
 /**
  * `BlankSlate` is used to signify that no objects have been created yet.
  *
@@ -26,5 +31,6 @@ const BlankSlate = props => (
 );
 
 BlankSlate.propTypes = propTypes;
+BlankSlate.defaultProps = defaultProps;
 
 export default BlankSlate;

@@ -9,6 +9,11 @@ const propTypes = {
   collapsed: React.PropTypes.bool,
 };
 
+const defaultProps = {
+  collapsed: false,
+  children: null,
+};
+
 /**
  * `ButtonGroup` allows you to render buttons next to eachother.
  *
@@ -25,5 +30,6 @@ const ButtonGroup = (props) => {
 };
 
 ButtonGroup.propTypes = propTypes;
+ButtonGroup.defaultProps = defaultProps;
 
 export default ButtonGroup;

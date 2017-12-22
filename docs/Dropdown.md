@@ -70,3 +70,22 @@ const options = [
   options={ options }
 />
 ```
+
+Dropdown with actions
+```
+const options = [
+  { id: 1, value: 'Group 1' },
+  { id: 2, value: 'Group 2' },
+  { id: 3, value: 'Group 3'},
+];
+
+const actions = [{ id: 'remove_group', value: 'Remove group', icon: 'delete' }];
+
+<Dropdown
+  label="I'm a dropdown with actions"
+  selected={ [1] }
+  options={ options }
+  actions={ actions }
+  onActionClick={ (option) => { console.log(`${option.id} clicked`) } }
+/>
+```

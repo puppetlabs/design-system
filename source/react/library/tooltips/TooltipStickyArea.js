@@ -5,11 +5,12 @@ import FadeInAndOut from '../FadeInAndOut';
 
 const propTypes = {
   anchor: React.PropTypes.string,
-  onClose: React.PropTypes.func,
+  open: React.PropTypes.bool,
   tooltip: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
   ]).isRequired,
+  onClose: React.PropTypes.func,
   children: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
@@ -17,6 +18,8 @@ const propTypes = {
 };
 
 const defaultProps = {
+  anchor: 'bottom',
+  open: false,
   onClose: null,
 };
 
@@ -30,13 +33,13 @@ class TooltipStickyArea extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { open: false };
+    this.state = { open: props.open };
 
     this.onClose = this.onClose.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ open: true });
+    this.setState({ open: true }); // eslint-disable-line react/no-did-mount-set-state
   }
 
   componentWillReceiveProps(props) {
@@ -59,7 +62,7 @@ class TooltipStickyArea extends React.Component {
     }
 
     return (
-      <Tooltip sticky target={ this.elem } anchor="bottom" onClose={ this.onClose }>
+      <Tooltip sticky target={ this.elem } anchor={ this.props.anchor } onClose={ this.onClose }>
         { this.props.tooltip }
       </Tooltip>
     );

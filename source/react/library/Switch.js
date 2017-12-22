@@ -13,6 +13,8 @@ const propTypes = {
 };
 
 const defaultProps = {
+  className: null,
+  disabled: false,
   checked: false,
   label: true,
 };
@@ -35,7 +37,7 @@ class Switch extends React.Component {
         </label>
       );
     } else {
-      jsx = <label className="rc-switch-label" htmlFor={ this.props.name } />
+      jsx = <label className="rc-switch-label" htmlFor={ this.props.name } />;
     }
 
     return jsx;
@@ -46,8 +48,8 @@ class Switch extends React.Component {
     const label = this.renderLabel();
 
     const className = classnames('rc-switch', {
-      'rc-switch-checked': propsClassName === undefined,
-      [propsClassName]: propsClassName !== undefined,
+      'rc-switch-checked': propsClassName === null,
+      [propsClassName]: propsClassName !== null,
     });
 
     return (
@@ -56,7 +58,8 @@ class Switch extends React.Component {
           className="rc-switch-checkbox"
           disabled={ this.props.disabled }
           checked={ this.props.checked }
-          type="checkbox" id={ this.props.name }
+          type="checkbox"
+          id={ this.props.name }
           onChange={ this.props.onChange }
         />
         { label }
