@@ -84,6 +84,7 @@ class Select extends React.Component {
 
     this.state = {
       inputValue: undefined,
+      open: false,
       options: formatOptions(props.options),
     };
 
@@ -111,7 +112,7 @@ class Select extends React.Component {
     }
 
     this.clearInput();
-    this.close();
+    this.setState({ open: false }, this.close);
   }
 
   onChevronClick(e) {
@@ -126,8 +127,7 @@ class Select extends React.Component {
     switch (e.keyCode) {
       case TAB_KEY_CODE:
       case ESC_KEY_CODE:
-        this.popover.close();
-        this.input.blur();
+        this.setState({ open: false }, this.close);
 
         break;
       default:
@@ -146,8 +146,7 @@ class Select extends React.Component {
       return o;
     });
 
-    this.popover.close();
-    this.input.blur();
+    this.close();
 
     if (this.props.onSelect) {
       this.props.onSelect(option);
@@ -155,6 +154,7 @@ class Select extends React.Component {
 
     this.setState({
       inputValue: undefined,
+      open: false,
       options,
     });
   }
@@ -280,6 +280,9 @@ class Select extends React.Component {
     const actions = this.renderActions();
     const menu = this.renderMenu();
     const input = this.renderInput();
+    const wrapperClassName = classnames('rc-select-wrapper', {
+      'rc-select-wrapper-open': this.state.open === true,
+    });
     const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
       'rc-select-disabled': this.props.disabled,
       [`rc-select-${this.props.size}`]: this.props.size,
@@ -299,6 +302,8 @@ class Select extends React.Component {
           className="rc-select-popover"
           wrapperClassName={ className }
           inheritTargetWidth
+          onOpen={ () => { this.setState({ open: true }); } }
+          onClose={ () => { this.setState({ open: false }); } }
           margin={ 4 }
           allowBubble
           padding={ false }
@@ -310,7 +315,7 @@ class Select extends React.Component {
     }
 
     return (
-      <div className="rc-select-wrapper">
+      <div className={ wrapperClassName }>
         { jsx }
         { actions }
       </div>

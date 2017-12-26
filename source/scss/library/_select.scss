@@ -78,11 +78,15 @@
   }
 }
 
-.rc-select-open {
+.rc-select-wrapper-open {
   .rc-input {
     @extend %focused-input;
 
     cursor: text;
+  }
+
+  .rc-select-actions .rc-icon-chevron-down {
+    fill: $reflect-brand-primary;
   }
 }
 
