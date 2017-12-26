@@ -17,11 +17,6 @@
     position: relative;
   }
 
-  .rc-icon-chevron-down {
-    position: absolute;
-    right: 10px;
-  }
-
   .rc-input {
     cursor: pointer;
     font-size: $reflect-font-size-small;
@@ -36,6 +31,22 @@
     position: absolute;
     width: 100%;
     z-index: 1;
+  }
+}
+
+.rc-select-input-actions {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  right: 10px;
+  top: 0;
+
+  .rc-select-input-action {
+    margin-right: 5px;
+  }
+
+  .rc-select-input-action:last-of-type {
+    margin-right: 0;
   }
 }
 

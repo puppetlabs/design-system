@@ -13,15 +13,16 @@ import MenuList from '../menu/MenuList';
 import Popover from '../Popover';
 
 const propTypes = {
+  name: React.PropTypes.string,
   autoOpen: React.PropTypes.bool,
   onSelect: React.PropTypes.func,
   options: React.PropTypes.array,
   disabled: React.PropTypes.bool,
+  multiple: React.PropTypes.bool,
   typeahead: React.PropTypes.bool,
+  clearable: React.PropTypes.bool,
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
-  multiple: React.PropTypes.bool,
-  name: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
   size: React.PropTypes.oneOf(['tiny', 'small']),
 };
@@ -29,15 +30,16 @@ const propTypes = {
 const defaultProps = {
   placeholder: 'Select...',
   disablePortal: false,
-  className: '',
-  onSelect: null,
+  clearable: false,
+  typeahead: true,
   disabled: false,
   multiple: false,
-  name: '',
-  typeahead: true,
   autoOpen: false,
+  onSelect: null,
+  className: '',
   size: 'small',
   options: [],
+  name: '',
 };
 
 const filterOptions = (options, filter) => options
@@ -85,14 +87,15 @@ class Select extends React.Component {
       options: formatOptions(props.options),
     };
 
+    this.onClear = this.onClear.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
+    this.onChevronClick = this.onChevronClick.bind(this);
   }
 
   componentDidMount() {
     if (this.props.autoOpen) {
-      this.popover.open();
-      this.input.focus();
+      this.open();
     }
   }
 
@@ -100,6 +103,23 @@ class Select extends React.Component {
     if (shouldComponentUpdate(newProps.options, this.state.options)) {
       this.setState({ options: formatOptions(newProps.options) });
     }
+  }
+
+  onClear(e) {
+    if (e) {
+      e.preventDefault();
+    }
+
+    this.clearInput();
+    this.close();
+  }
+
+  onChevronClick(e) {
+    if (e) {
+      e.preventDefault();
+    }
+
+    this.open();
   }
 
   onKeyDown(e) {
@@ -167,6 +187,16 @@ class Select extends React.Component {
     this.setState({ inputValue: '', options });
   }
 
+  open() {
+    this.popover.open();
+    this.input.focus();
+  }
+
+  close() {
+    this.popover.close();
+    this.input.blur();
+  }
+
   renderMenuList() {
     let options = this.state.options;
 
@@ -200,6 +230,30 @@ class Select extends React.Component {
     return jsx;
   }
 
+  renderActions() {
+    const actions = [];
+
+    if (this.props.clearable) {
+      actions.push(
+        <a key="clear" role="button" tabIndex={ 0 } className="rc-select-input-action" onClick={ this.onClear } >
+          <Icon width="10px" height="100%" type="close" />
+        </a>,
+      );
+    }
+
+    actions.push(
+      <a key="open" role="button" tabIndex={ 0 } className="rc-select-input-action" onClick={ this.onChevronClick } >
+        <Icon width="10px" height="100%" type="chevron-down" />
+      </a>,
+    );
+
+    return (
+      <div className="rc-select-input-actions">
+        { actions }
+      </div>
+    );
+  }
+
   renderInput() {
     const input = (
       <Input
@@ -214,11 +268,12 @@ class Select extends React.Component {
         placeholder={ this.props.placeholder }
       />
     );
+    const actions = this.renderActions();
 
     return (
       <div className="rc-select-input">
         { input }
-        <Icon width="10px" height="10px" type="chevron-down" />
+        { actions }
       </div>
     );
   }

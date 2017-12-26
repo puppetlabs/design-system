@@ -28,13 +28,24 @@ const options = [
 />
 ```
 
-Disabled Select
+Clearable Select:
+
+```
+const options = [
+  { value: 'Coffee', label: 'Coffee', selected: true },
+  { value: 'Tea', label: 'Tea' },
+];
+
+<Select options={ options } clearable />
+```
+
+Disabled Select:
 
 ```
 <Select disabled />
 ```
 
-Select with no portal
+Select with no portal:
 
 ```
 const options = [
