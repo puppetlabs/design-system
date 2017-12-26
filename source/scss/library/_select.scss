@@ -34,19 +34,33 @@
   }
 }
 
-.rc-select-input-actions {
+.rc-select-wrapper {
+  position: relative;
+}
+
+.rc-select-actions {
   display: flex;
   height: 100%;
   position: absolute;
   right: 10px;
   top: 0;
 
-  .rc-select-input-action {
+  .rc-select-action {
+    cursor: pointer;
     margin-right: 5px;
+    outline: none;
   }
 
-  .rc-select-input-action:last-of-type {
+  .rc-select-action:last-of-type {
     margin-right: 0;
+  }
+}
+
+.rc-select-action .rc-icon-close {
+  fill: lighten($reflect-danger-color, 20%);
+
+  &:hover {
+    fill: $reflect-danger-color;
   }
 }
 

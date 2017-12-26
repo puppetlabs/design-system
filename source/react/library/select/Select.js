@@ -235,20 +235,20 @@ class Select extends React.Component {
 
     if (this.props.clearable) {
       actions.push(
-        <a key="clear" role="button" tabIndex={ 0 } className="rc-select-input-action" onClick={ this.onClear } >
+        <a key="clear" role="button" tabIndex={ 0 } className="rc-select-action" onClick={ this.onClear } >
           <Icon width="10px" height="100%" type="close" />
         </a>,
       );
     }
 
     actions.push(
-      <a key="open" role="button" tabIndex={ 0 } className="rc-select-input-action" onClick={ this.onChevronClick } >
+      <a key="open" role="button" tabIndex={ 0 } className="rc-select-action" onClick={ this.onChevronClick } >
         <Icon width="10px" height="100%" type="chevron-down" />
       </a>,
     );
 
     return (
-      <div className="rc-select-input-actions">
+      <div className="rc-select-actions">
         { actions }
       </div>
     );
@@ -268,17 +268,16 @@ class Select extends React.Component {
         placeholder={ this.props.placeholder }
       />
     );
-    const actions = this.renderActions();
 
     return (
       <div className="rc-select-input">
         { input }
-        { actions }
       </div>
     );
   }
 
   render() {
+    const actions = this.renderActions();
     const menu = this.renderMenu();
     const input = this.renderInput();
     const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
@@ -301,6 +300,7 @@ class Select extends React.Component {
           wrapperClassName={ className }
           inheritTargetWidth
           margin={ 4 }
+          allowBubble
           padding={ false }
           openEvent="onFocus"
         >
@@ -309,7 +309,12 @@ class Select extends React.Component {
       );
     }
 
-    return jsx;
+    return (
+      <div className="rc-select-wrapper">
+        { jsx }
+        { actions }
+      </div>
+    );
   }
 }
 
