@@ -3,10 +3,11 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 const propTypes = {
-  onClick: React.PropTypes.func,
-  selected: React.PropTypes.bool,
   option: React.PropTypes.object.isRequired,
+  className: React.PropTypes.string,
+  selected: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
+  onClick: React.PropTypes.func,
 };
 
 const defaultProps = {
@@ -46,7 +47,7 @@ class MenuItem extends React.Component {
   render() {
     const option = this.props.option;
     const icon = this.renderIcon();
-    const className = classnames('rc-menu-item', {
+    const className = classnames('rc-menu-item', this.props.className, {
       'rc-menu-item-with-icon': icon,
       'rc-menu-item-selected': this.props.selected,
       'rc-menu-item-disabled': this.props.option.disabled,

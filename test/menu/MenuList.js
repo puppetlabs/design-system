@@ -27,4 +27,11 @@ describe('<MenuList />', () => {
     expect(onChange.calledOnce).to.eql(true);
     expect(onChange.lastCall.args[0]).to.eql(options[0]);
   });
+
+  it('should allow you to specify classNames on your actions', () => {
+    const options = [{ id: 1, value: 'option 1', className: 'my-fun-class' }];
+    const wrapper = shallow(<MenuList options={ options } />);
+
+    expect(wrapper.find('MenuItem').prop('className').indexOf('my-fun-class')).to.eql(0);
+  });
 });

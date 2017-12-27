@@ -140,15 +140,19 @@ class Select extends React.Component {
   }
 
   onSelect(option) {
-    const options = this.state.options.map((o) => {
-      if (o.id === option.id) {
-        o.selected = !o.selected;
-      } else if (!this.props.multiple) {
-        o.selected = false;
-      }
+    const newState = { open: false, inputValue: undefined };
 
-      return o;
-    });
+    if (option.selectable || typeof option.selectable === 'undefined') {
+      newState.options = this.state.options.map((o) => {
+        if (o.id === option.id) {
+          o.selected = !o.selected;
+        } else if (!this.props.multiple) {
+          o.selected = false;
+        }
+
+        return o;
+      });
+    }
 
     this.close();
 
@@ -156,11 +160,7 @@ class Select extends React.Component {
       this.props.onSelect(option);
     }
 
-    this.setState({
-      inputValue: undefined,
-      open: false,
-      options,
-    });
+    this.setState(newState);
   }
 
   getCurrentValue() {
