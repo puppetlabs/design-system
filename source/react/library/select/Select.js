@@ -231,9 +231,10 @@ class Select extends React.Component {
   }
 
   renderActions() {
+    const value = this.getCurrentValue();
     const actions = [];
 
-    if (this.props.clearable) {
+    if (this.props.clearable && value) {
       actions.push(
         <a key="clear" role="button" tabIndex={ 0 } className="rc-select-action" onClick={ this.onClear } >
           <Icon width="10px" height="100%" type="close" />
