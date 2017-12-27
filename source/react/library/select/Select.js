@@ -111,6 +111,10 @@ class Select extends React.Component {
       e.preventDefault();
     }
 
+    if (this.props.onSelect) {
+      this.props.onSelect(null);
+    }
+
     this.clearInput();
     this.setState({ open: false }, this.close);
   }
