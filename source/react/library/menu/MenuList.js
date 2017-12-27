@@ -55,6 +55,7 @@ class MenuList extends React.Component {
         <MenuItem
           key={ option.id }
           option={ option }
+          className={ option.className }
           selected={ isSelected }
           onClick={ this.onChange }
           multiple={ multiple }

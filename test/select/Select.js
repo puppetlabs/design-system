@@ -133,4 +133,25 @@ describe('<Select />', () => {
       expect(wrapper.find('MenuItem').length).to.eql(0);
     });
   });
+
+  it('should allow the options to be marked as not selectable', () => {
+    const options = [
+      { value: 'Tea', label: 'Tea' },
+      { value: 'new', label: 'Add new drink', selectable: false },
+    ];
+    const wrapper = mount(<Select options={ options } { ...defaultProps } />);
+
+    expect(wrapper.find('Input').prop('value')).to.eql('');
+
+    wrapper.find('Input').simulate('focus');
+    wrapper.find('MenuItem').at(0).find('a').simulate('click');
+
+    expect(wrapper.find('Input').prop('value')).to.eql('Tea');
+
+    wrapper.find('Input').simulate('focus');
+    wrapper.find('MenuItem').at(1).find('a').simulate('click');
+
+    // This should remain the same.
+    expect(wrapper.find('Input').prop('value')).to.eql('Tea');
+  });
 });

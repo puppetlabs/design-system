@@ -39,6 +39,25 @@ const options = [
 <Select options={ options } clearable />
 ```
 
+Select with custom actions:
+
+```
+const onSelect = (option) => {
+  console.log(option);
+  if (option.value === 'new') {
+    alert('Adding a new drink');
+  }
+}
+
+const options = [
+  { value: 'Coffee', label: 'Coffee' },
+  { value: 'Tea', label: 'Tea' },
+  { value: 'new', label: 'Add a new drink', selectable: false, className: 'action-button' }
+];
+
+<Select options={ options } onSelect={ onSelect } />
+```
+
 Disabled Select:
 
 ```
