@@ -84,6 +84,19 @@ describe('<Select />', () => {
     });
   });
 
+  describe('clearable select', () => {
+    it('should clear the value of the input', () => {
+      const options = [{ value: 'Tea', label: 'Tea', selected: true }];
+      const wrapper = mount(<Select options={ options } { ...defaultProps } clearable />);
+
+      expect(wrapper.find('Input').prop('value')).to.eql('Tea');
+
+      wrapper.find('.rc-select-action').first().simulate('click');
+
+      expect(wrapper.find('Input').prop('value')).to.eql('');
+    });
+  });
+
   describe('options are strings', () => {
     const options = ['Michael Phelps', 'Ryan Lochte'];
 

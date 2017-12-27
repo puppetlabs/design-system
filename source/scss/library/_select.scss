@@ -17,11 +17,6 @@
     position: relative;
   }
 
-  .rc-icon-chevron-down {
-    position: absolute;
-    right: 10px;
-  }
-
   .rc-input {
     cursor: pointer;
     font-size: $reflect-font-size-small;
@@ -39,6 +34,36 @@
   }
 }
 
+.rc-select-wrapper {
+  position: relative;
+}
+
+.rc-select-actions {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  right: 10px;
+  top: 0;
+
+  .rc-select-action {
+    cursor: pointer;
+    margin-right: 5px;
+    outline: none;
+  }
+
+  .rc-select-action:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.rc-select-action .rc-icon-close {
+  fill: lighten($reflect-danger-color, 20%);
+
+  &:hover {
+    fill: $reflect-danger-color;
+  }
+}
+
 .rc-popover-no-portal {
   .rc-select-menu {
     position: relative;
@@ -53,11 +78,15 @@
   }
 }
 
-.rc-select-open {
+.rc-select-wrapper-open {
   .rc-input {
     @extend %focused-input;
 
     cursor: text;
+  }
+
+  .rc-select-actions .rc-icon-chevron-down {
+    fill: $reflect-brand-primary;
   }
 }
 

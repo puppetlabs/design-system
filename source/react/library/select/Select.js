@@ -13,15 +13,16 @@ import MenuList from '../menu/MenuList';
 import Popover from '../Popover';
 
 const propTypes = {
+  name: React.PropTypes.string,
   autoOpen: React.PropTypes.bool,
   onSelect: React.PropTypes.func,
   options: React.PropTypes.array,
   disabled: React.PropTypes.bool,
+  multiple: React.PropTypes.bool,
   typeahead: React.PropTypes.bool,
+  clearable: React.PropTypes.bool,
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
-  multiple: React.PropTypes.bool,
-  name: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
   size: React.PropTypes.oneOf(['tiny', 'small']),
 };
@@ -29,15 +30,16 @@ const propTypes = {
 const defaultProps = {
   placeholder: 'Select...',
   disablePortal: false,
-  className: '',
-  onSelect: null,
+  clearable: false,
+  typeahead: true,
   disabled: false,
   multiple: false,
-  name: '',
-  typeahead: true,
   autoOpen: false,
+  onSelect: null,
+  className: '',
   size: 'small',
   options: [],
+  name: '',
 };
 
 const filterOptions = (options, filter) => options
@@ -82,17 +84,19 @@ class Select extends React.Component {
 
     this.state = {
       inputValue: undefined,
+      open: false,
       options: formatOptions(props.options),
     };
 
+    this.onClear = this.onClear.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
+    this.onChevronClick = this.onChevronClick.bind(this);
   }
 
   componentDidMount() {
     if (this.props.autoOpen) {
-      this.popover.open();
-      this.input.focus();
+      this.open();
     }
   }
 
@@ -102,12 +106,32 @@ class Select extends React.Component {
     }
   }
 
+  onClear(e) {
+    if (e) {
+      e.preventDefault();
+    }
+
+    if (this.props.onSelect) {
+      this.props.onSelect(null);
+    }
+
+    this.clearInput();
+    this.setState({ open: false }, this.close);
+  }
+
+  onChevronClick(e) {
+    if (e) {
+      e.preventDefault();
+    }
+
+    this.open();
+  }
+
   onKeyDown(e) {
     switch (e.keyCode) {
       case TAB_KEY_CODE:
       case ESC_KEY_CODE:
-        this.popover.close();
-        this.input.blur();
+        this.setState({ open: false }, this.close);
 
         break;
       default:
@@ -126,8 +150,7 @@ class Select extends React.Component {
       return o;
     });
 
-    this.popover.close();
-    this.input.blur();
+    this.close();
 
     if (this.props.onSelect) {
       this.props.onSelect(option);
@@ -135,6 +158,7 @@ class Select extends React.Component {
 
     this.setState({
       inputValue: undefined,
+      open: false,
       options,
     });
   }
@@ -165,6 +189,16 @@ class Select extends React.Component {
     });
 
     this.setState({ inputValue: '', options });
+  }
+
+  open() {
+    this.popover.open();
+    this.input.focus();
+  }
+
+  close() {
+    this.popover.close();
+    this.input.blur();
   }
 
   renderMenuList() {
@@ -200,6 +234,31 @@ class Select extends React.Component {
     return jsx;
   }
 
+  renderActions() {
+    const value = this.getCurrentValue();
+    const actions = [];
+
+    if (this.props.clearable && value) {
+      actions.push(
+        <a key="clear" role="button" tabIndex={ 0 } className="rc-select-action" onClick={ this.onClear } >
+          <Icon width="10px" height="100%" type="close" />
+        </a>,
+      );
+    }
+
+    actions.push(
+      <a key="open" role="button" tabIndex={ 0 } className="rc-select-action" onClick={ this.onChevronClick } >
+        <Icon width="10px" height="100%" type="chevron-down" />
+      </a>,
+    );
+
+    return (
+      <div className="rc-select-actions">
+        { actions }
+      </div>
+    );
+  }
+
   renderInput() {
     const input = (
       <Input
@@ -218,14 +277,17 @@ class Select extends React.Component {
     return (
       <div className="rc-select-input">
         { input }
-        <Icon width="10px" height="10px" type="chevron-down" />
       </div>
     );
   }
 
   render() {
+    const actions = this.renderActions();
     const menu = this.renderMenu();
     const input = this.renderInput();
+    const wrapperClassName = classnames('rc-select-wrapper', {
+      'rc-select-wrapper-open': this.state.open === true,
+    });
     const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
       'rc-select-disabled': this.props.disabled,
       [`rc-select-${this.props.size}`]: this.props.size,
@@ -245,7 +307,10 @@ class Select extends React.Component {
           className="rc-select-popover"
           wrapperClassName={ className }
           inheritTargetWidth
+          onOpen={ () => { this.setState({ open: true }); } }
+          onClose={ () => { this.setState({ open: false }); } }
           margin={ 4 }
+          allowBubble
           padding={ false }
           openEvent="onFocus"
         >
@@ -254,7 +319,12 @@ class Select extends React.Component {
       );
     }
 
-    return jsx;
+    return (
+      <div className={ wrapperClassName }>
+        { jsx }
+        { actions }
+      </div>
+    );
   }
 }
 
