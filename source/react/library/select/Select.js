@@ -24,6 +24,7 @@ const propTypes = {
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
+  popoverClassName: React.PropTypes.string,
   size: React.PropTypes.oneOf(['tiny', 'small']),
 };
 
@@ -288,6 +289,7 @@ class Select extends React.Component {
     const wrapperClassName = classnames('rc-select-wrapper', {
       'rc-select-wrapper-open': this.state.open === true,
     });
+    const popoverClassName = classnames('rc-select-popover', this.props.popoverClassName);
     const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
       'rc-select-disabled': this.props.disabled,
       [`rc-select-${this.props.size}`]: this.props.size,
@@ -304,7 +306,7 @@ class Select extends React.Component {
           ref={ (c) => { this.popover = c; } }
           target={ input }
           disablePortal={ this.props.disablePortal }
-          className="rc-select-popover"
+          className={ popoverClassName }
           wrapperClassName={ className }
           inheritTargetWidth
           onOpen={ () => { this.setState({ open: true }); } }
