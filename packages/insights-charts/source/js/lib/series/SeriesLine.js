@@ -16,36 +16,42 @@ class SeriesLine extends Series {
 
   render(selection) {
     const { x, y, options } = this;
+    const lineOptions = options.line || {};
+    let series;
+
 
     if (!this.isDisabled()) {
       if (!this.selection) {
         this.selection = selection;
       }
 
-      this.series = selection.selectAll(CSS.getClassSelector(this.selector))
+      series = selection.selectAll(CSS.getClassSelector(this.selector))
         .data(this.data, d => (d.seriesIndex));
 
-      this.series.exit().remove();
+      series.exit().remove();
 
-      this.series
-        .selectAll(CSS.getClassSelector('line-path'))
-          .data(this.data, d => (d.seriesIndex))
-          .attr('style', d => (d.color ? `stroke: ${d.color};` : null))
-          .attr('d', d => (Line(x, y, d.data, options)));
+      const newSeries = series.enter()
+        .append('g');
 
-      this.series = this.series.enter()
-        .append('g')
-          .attr('class', d =>
-            (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
-          .attr('clip-path', `url(#${this.clipPathId})`)
-        .append('path')
-          .attr('class', CSS.getClassName('line-path'))
-          .attr('style', d => (d.color ? `stroke: ${d.color};` : null))
-          .attr('d', d => (Line(x, y, d.data, options)))
-          .merge(this.series);
+      newSeries.append('path').classed(CSS.getClassName('line-path'), true);
+
+      series = newSeries.merge(series);
+
+      series.attr('class', d => (
+          `${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`
+        ))
+        .attr('clip-path', `url(#${this.clipPathId})`);
+
+      const lines = series.selectAll(CSS.getClassSelector('line-path'));
+
+      lines
+        .classed(CSS.getClassName('line-path'), true)
+        .attr('d', d => (Line(x, y, d.data, options)))
+        .style('stroke', d => (d.color ? d.color : null))
+        .style('stroke-width', lineOptions.stroke ? lineOptions.stroke.width : null);
     }
 
-    return this.series;
+    return series;
   }
 }
 

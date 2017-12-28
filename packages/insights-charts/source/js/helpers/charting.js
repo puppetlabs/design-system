@@ -61,7 +61,8 @@ const helpers = {
   },
 
   getColumnLength(options, y, d, yAxisIndex = 0) {
-    const isYReversed = options.axis.y[yAxisIndex].reversed;
+    const axisOptions = options.axis || {};
+    const isYReversed = axisOptions.y ? options.axis.y[yAxisIndex].reversed : false;
     const isStacked = options.layout === 'stacked';
     const axisMin = isYReversed ? y.domain()[1] : y.domain()[0];
 
@@ -80,8 +81,9 @@ const helpers = {
   },
 
   getYPosition(options, y, d, yAxisIndex = 0) {
-    const orientation = options.axis.x.orientation;
-    const isYReversed = options.axis.y[yAxisIndex].reversed;
+    const axisOptions = options.axis || {};
+    const orientation = axisOptions.x ? axisOptions.x.orientation : 'bottom';
+    const isYReversed = axisOptions.y ? axisOptions.y[yAxisIndex].reversed : false;
     const isStacked = options.layout === 'stacked';
     const isRotated = orientation === 'left' || orientation === 'right';
     const axisMin = isYReversed ? y.domain()[1] : y.domain()[0];
@@ -128,6 +130,19 @@ const helpers = {
     }
 
     return stackable;
+  },
+
+  getSeriesIndicatorOpacity(datum, options) {
+    const type = options.type;
+    let opacity = null;
+
+    if (type === 'combination') {
+      opacity = options[datum.type] && options[datum.type].opacity;
+    } else if (options[type] && options[type].opacity) {
+      opacity = options[type] && options[type].opacity;
+    }
+
+    return opacity;
   },
 
   getPlotOptions(type, options, data = []) {

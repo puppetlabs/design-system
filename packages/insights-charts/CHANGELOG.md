@@ -1,3 +1,9 @@
+# 0.10.0
+
+* Allow the setting of relevant chart types
+* Allow the setting of stroke width of relevant chart types
+* Improved handling of dense y axis
+
 # 0.9.3 
 
 * Seperator dom for legend item values and legend item aggregates

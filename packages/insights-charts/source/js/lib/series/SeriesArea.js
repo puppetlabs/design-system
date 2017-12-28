@@ -9,32 +9,38 @@ class SeriesArea extends Series {
 
   render(selection) {
     const { x, y, options, dimensions } = this;
+    let series;
 
     if (!this.selection) {
       this.selection = selection;
     }
 
-    this.series = selection.selectAll(CSS.getClassSelector(this.selector))
+    series = selection.selectAll(CSS.getClassSelector(this.selector))
       .data(this.data, d => (d.seriesIndex));
 
-    this.series.selectAll(CSS.getClassSelector('area-path'))
+    series.exit().remove();
+
+    const newSeries = series.enter()
+      .append('g');
+
+    newSeries.append('path').classed(CSS.getClassName('area-path'), true);
+
+    series = newSeries.merge(series);
+
+    series
+      .attr('class', d =>
+          (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
+      .attr('clip-path', `url(#${this.clipPathId})`);
+
+    const areas = series.selectAll(CSS.getClassSelector('area-path'));
+
+    areas
+      .classed(CSS.getClassName('area-path'), true)
       .attr('style', d => (d.color ? `fill: ${d.color};` : null))
+      .style('fill-opacity', options.opacity ? options.opacity : null)
       .attr('d', d => (Area(x, y, d.data, dimensions, options)));
 
-    this.series.exit().remove();
-
-    this.series = this.series.enter()
-      .append('g')
-        .attr('class', d =>
-          (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
-        .attr('clip-path', `url(#${this.clipPathId})`)
-      .append('path')
-        .attr('style', d => (d.color ? `fill: ${d.color};` : null))
-        .attr('class', CSS.getClassName('area-path'))
-        .attr('d', d => (Area(x, y, d.data, dimensions, options)))
-      .merge(this.series);
-
-    return this.series;
+    return series;
   }
 }
 

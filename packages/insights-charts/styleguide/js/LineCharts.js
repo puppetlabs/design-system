@@ -122,6 +122,16 @@ class LineCharts extends React.Component {
       ],
     };
 
+    const denseData = {
+      categories: getRandomCategories(dataPoints),
+      series: [
+        {
+          label: 'Profit',
+          data: [0.2, 0.5, 0.134, 0.45, 0.87, 0.55, 0.23, 0.1, 0.9, -2],
+        },
+      ],
+    };
+
     const options = {
       animations: {
         enabled: animations,
@@ -137,7 +147,6 @@ class LineCharts extends React.Component {
         y: {
           // min: -8000,
           // max: 8000,
-          ticks: 4,
           title: 'Profit',
           orientation: 'left',
         },
@@ -167,7 +176,7 @@ class LineCharts extends React.Component {
 
     this.lineChart = new ReflectChart(this.single, {
       type: 'line',
-      data: singleData,
+      data: denseData,
       options,
     });
 
@@ -208,10 +217,10 @@ class LineCharts extends React.Component {
   render() {
     return (
       <div>
-        <h1>Multi series</h1>
-        <div className="sg-chart" ref={ (c) => { this.multi = c; } } />
         <h1>Single series</h1>
         <div className="sg-chart" ref={ (c) => { this.single = c; } } />
+        <h1>Multi series</h1>
+        <div className="sg-chart" ref={ (c) => { this.multi = c; } } />
       </div>
     );
   }

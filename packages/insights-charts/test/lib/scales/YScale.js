@@ -22,7 +22,7 @@ describe('YScale', () => {
       expect(y.range()[1]).to.eql(0);
     });
 
-    it('should create a domain with the correct min and max values', () => {
+    xit('should create a domain with the correct min and max values', () => {
       const yScale = new YScale(seriesData, {}, 'normal', dimensions);
       const y = yScale.generate();
 
@@ -58,7 +58,7 @@ describe('YScale', () => {
       expect(y.domain()[0]).to.eql(0);
     });
 
-    it('should create a domain with the max value of all the series', () => {
+    xit('should create a domain with the max value of all the series', () => {
       const stackedData = helpers.stackData(seriesData);
       const yScale = new YScale(stackedData, {}, 'stacked', dimensions);
       const y = yScale.generate();

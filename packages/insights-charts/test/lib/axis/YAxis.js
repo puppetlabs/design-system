@@ -9,7 +9,17 @@ describe('YAxis', () => {
   const randomData = generator.generate();
   const data = new DataSet(randomData);
   const seriesData = data.getSeries();
-  const dimensions = { height: 100, margins: { top: 10, bottom: 10, left: 10, right: 10 } };
+
+  const dimensions = {
+    width: 100,
+    height: 100,
+    margins: {
+      top: 10,
+      bottom: 10,
+      left: 10,
+      right: 10,
+    },
+  };
 
   const yScale = new YScale(seriesData, {}, 'normal', dimensions);
   const y = yScale.generate();

@@ -1,8 +1,7 @@
 /* eslint-disable no-new */
-// TODO: We should introduce a generate method instead of using the constructor.
-
 import { expect } from 'chai';
 import Legend from '../../source/js/lib/Legend';
+import CSS from '../../source/js/helpers/css';
 
 describe('Legend', () => {
   const margins = {};
@@ -16,6 +15,18 @@ describe('Legend', () => {
     legend.render(global.chart);
 
     expect(global.chart.selectAll('.reflect-charts-legend').size()).to.eql(1);
+  });
+
+  it('should set the opacity of a legend indicator to the correct value when supplied as an option', () => {
+    const options = { legend: { enabled: true }, type: 'area', area: { opacity: 0.5 } };
+    const seriesData = [{ label: 'blah', data: [{ y: 1 }, { y: 2 }] }];
+
+    const legend = new Legend(seriesData, options, margins, dispatchers);
+    legend.render(global.chart);
+
+    const indicator = global.chart.select(CSS.getClassSelector('series-indicator'));
+
+    expect(indicator.style('opacity')).to.eql('0.5');
   });
 
   it('should orient to the bottom of the chart when provided', () => {
@@ -92,7 +103,7 @@ describe('Legend', () => {
     });
 
     it('should allow us to format aggregate values', () => {
-      const formatter = (v) => v*2;
+      const formatter = (v) => v * 2;
       const options = {
         legend: { enabled: true },
         axis: { y: [{ values: { formatter } }] },
@@ -141,6 +152,20 @@ describe('Legend', () => {
       legend.render(global.chart);
 
       expect(global.chart.selectAll('.reflect-charts-legend-item-aggregate').text()).to.eql(': 2');
+    });
+  });
+
+  context('combination chart', () => {
+    it('should set the opacity of a legend indicator to the correct value when supplied as an option', () => {
+      const options = { legend: { enabled: true }, type: 'combination', area: { opacity: 0.5 } };
+      const seriesData = [{ label: 'blah', type: 'area', data: [{ y: 1 }, { y: 2 }] }];
+
+      const legend = new Legend(seriesData, options, margins, dispatchers);
+      legend.render(global.chart);
+
+      const indicator = global.chart.select(CSS.getClassSelector('series-indicator'));
+
+      expect(indicator.style('opacity')).to.eql('0.5');
     });
   });
 });

@@ -40,6 +40,7 @@ class Legend {
           axis: d.axis,
           seriesIndex: i,
           color: d.color,
+          type: d.seriesType,
         };
 
         if (this.options.legend && this.options.legend.aggregates) {
@@ -58,6 +59,7 @@ class Legend {
           aggregate: s.aggregate,
           seriesIndex: s.seriesIndex,
           label: this.getFormattedLabel(s.label),
+          type: s.type,
         };
 
         if (series.data) {
@@ -72,20 +74,24 @@ class Legend {
   }
 
   renderIndicator(elements, alignment) {
+    const options = this.options;
+
     elements.append('span')
       .classed(CSS.getClassName('series-indicator'), true)
       .classed(CSS.getClassName('series-indicator-right'), alignment === 'right')
-      .attr('style', d => (d.color ? `background: ${d.color};` : null));
+      .style('background', d => (d.color ? d.color : null))
+      .style('opacity', d => (helpers.getSeriesIndicatorOpacity(d, options)));
   }
 
   render(selection) {
     const { seriesData, options, dimensions, dispatchers } = this;
-    const { enabled, orientation, alignment, maxHeight, maxWidth } = options.legend;
+    const legendOptions = options.legend || {};
+    const { enabled, orientation, alignment, maxHeight, maxWidth } = legendOptions;
     const margins = dimensions.margins || {};
     let container;
     let legendItems;
 
-    if (enabled) {
+    if (enabled !== false) {
       this.selection = selection;
 
       selection.selectAll(CSS.getClassSelector('legend')).remove();
@@ -112,7 +118,7 @@ class Legend {
         container.style('padding-top', `${margins.top}px`);
       }
 
-      const data = this.getLegendValues(seriesData, options.legend.expanded);
+      const data = this.getLegendValues(seriesData, legendOptions.expanded);
 
       legendItems = container.selectAll(CSS.getClassName('legend-item'))
         .data(data)
@@ -155,7 +161,7 @@ class Legend {
         });
       });
 
-      if (alignment === 'left' || alignment === 'center') {
+      if (alignment === 'left' || alignment === 'center' || alignment === undefined) {
         this.renderIndicator(legendItems, alignment);
       }
 

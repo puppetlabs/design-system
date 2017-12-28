@@ -5,7 +5,11 @@ function stripInsignificantZeros(value) {
 }
 
 const formatters = {
-  decimal: format('.2f'),
+  decimal: (value) => {
+    const formatted = format('.2f')(value);
+
+    return stripInsignificantZeros(formatted);
+  },
   dollars: (value) => {
     let formatted;
 

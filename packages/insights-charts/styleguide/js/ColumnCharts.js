@@ -81,6 +81,7 @@ class ColumnCharts extends React.Component {
         data_labels: {
           enabled: true,
         },
+        opacity: 0.5,
       },
       legend: {
         enabled: true,

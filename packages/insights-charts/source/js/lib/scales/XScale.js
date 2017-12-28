@@ -43,7 +43,7 @@ class XScale {
       this.x.domain(extent(categories));
     }
 
-    const orientation = options.axis.x.orientation;
+    const orientation = options.axis && options.axis.x ? options.axis.x.orientation : 'bottom';
 
     if (orientation === 'left' || orientation === 'right') {
       this.x.range([0, height]);

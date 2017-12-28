@@ -1,6 +1,7 @@
 import { axisTop, axisRight, axisBottom, axisLeft } from 'd3-axis';
 import CSS from '../../helpers/css';
 import formatters from '../../helpers/formatters';
+import { DEFAULT_Y_TICKS } from '../../constants';
 
 class YAxis {
   constructor(y, dimensions, options, yAxisIndex) {
@@ -17,14 +18,25 @@ class YAxis {
   }
 
   getAxisFormatter() {
-    const options = this.options;
+    const { y, options } = this;
     const optionFormatter = options.labels && options.labels.formatter;
     let formatter;
+    let forceToDecimal = false;
+
+    const yMin = y.domain()[0];
+    const yMax = y.domain()[1];
+    const valueRange = Math.abs(yMax - yMin);
+
+    if (valueRange < DEFAULT_Y_TICKS) {
+      forceToDecimal = true;
+    }
 
     if (optionFormatter && Object.keys(formatters).indexOf(optionFormatter) >= 0) {
       formatter = formatters[optionFormatter];
     } else if (typeof optionFormatter === 'function') {
       formatter = optionFormatter;
+    } else if (forceToDecimal) {
+      formatter = formatters.decimal;
     } else {
       formatter = formatters.numeric;
     }
@@ -52,6 +64,8 @@ class YAxis {
 
     if (options.ticks) {
       axis.ticks(options.ticks);
+    } else {
+      axis.ticks(DEFAULT_Y_TICKS);
     }
 
     return axis.tickSizeOuter(0)

@@ -36,8 +36,12 @@ class AreaCharts extends React.Component {
       },
       area: {
         line: {
-          enabled: false,
+          enabled: true,
+          stroke: {
+            width: 5,
+          },
         },
+        opacity: 0.5,
         pointsOfInterest: {
           onHover: true,
         },

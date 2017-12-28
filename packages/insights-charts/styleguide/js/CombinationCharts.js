@@ -42,6 +42,7 @@ class CombinationCharts extends React.Component {
         enabled: animations,
       },
       column: {
+        opacity: 0.5,
         layout: 'grouped',
         data_labels: {
           enabled: true,

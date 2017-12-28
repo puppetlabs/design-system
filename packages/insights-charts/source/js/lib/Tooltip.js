@@ -144,6 +144,8 @@ class Tooltip {
   }
 
   renderMultiSeries(categoryIndex, data) {
+    const options = this.options;
+
     const content = this.selection
       .selectAll(CSS.getClassSelector(`tooltip-${this.id}`))
       .select(CSS.getClassSelector('tooltip-content'));
@@ -183,7 +185,8 @@ class Tooltip {
 
     seriesIndicators
       .attr('class', CSS.getClassName('series-indicator'))
-      .attr('style', d => (d.color ? `background: ${d.color};` : null));
+      .style('background', d => (d.color ? d.color : null))
+      .style('opacity', d => (helpers.getSeriesIndicatorOpacity(d, options)));
 
     let tooltipValues = content.selectAll(CSS.getClassSelector('tooltip-value'));
 

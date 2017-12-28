@@ -15,7 +15,8 @@ class SeriesColumn extends Series {
   }
 
   isBar() {
-    const orientation = this.options.axis.x.orientation;
+    const options = this.options;
+    const orientation = options.axis && options.axis.x ? options.axis.x.orientation : 'bottom';
 
     return orientation === 'left' || orientation === 'right';
   }
@@ -71,7 +72,7 @@ class SeriesColumn extends Series {
   }
 
   render(selection) {
-    const { dispatchers } = this;
+    const { dispatchers, options } = this;
 
     if (!this.selection) {
       this.selection = selection;
@@ -105,8 +106,9 @@ class SeriesColumn extends Series {
         .attr('x', this.isBar() ? this.getYPosition : this.getXPosition)
         .attr('y', this.isBar() ? this.getXPosition : this.getYPosition)
         .attr('width', this.isBar() ? this.getColumnLength : this.getColumnThickness)
-        .attr('style', d => (d.color ? `fill: ${d.color};` : null))
         .attr('height', this.isBar() ? this.getColumnThickness : this.getColumnLength)
+        .style('fill', d => (d.color ? d.color : null))
+        .style('fill-opacity', options.opacity ? options.opacity : null)
         .on('mousemove', function (d) {
           const dims = mouse(select('body').node());
 

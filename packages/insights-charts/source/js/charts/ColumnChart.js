@@ -82,7 +82,6 @@ class ColumnChart extends Chart {
           data = helpers.stackData(data);
         }
 
-
         const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
         const y = yScale.generate();
 

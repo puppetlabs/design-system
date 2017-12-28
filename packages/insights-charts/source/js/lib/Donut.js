@@ -11,6 +11,8 @@ class Donut {
     this.seriesData = seriesData;
     this.dimensions = dimensions;
     this.dispatchers = dispatchers;
+
+    this.renderCount = 0;
   }
 
   bindDispatchers() {
@@ -38,6 +40,8 @@ class Donut {
     const { width, height } = dimensions;
     let innerRadius;
 
+    this.renderCount += 1;
+
     if (!this.selection) {
       this.selection = selection;
     }
@@ -63,44 +67,45 @@ class Donut {
       .outerRadius(radius)
       .innerRadius(innerRadius);
 
-    this.arcs = selection.selectAll(CSS.getClassSelector('donut-arc-wrapper'))
+    let wrappers = selection.selectAll(CSS.getClassSelector('donut-arc-wrapper'))
       .data(pie(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null)), d => d.data.x);
 
-    this.arcs
+    wrappers.exit().remove();
+
+    const newWrappers = wrappers.enter()
+      .append('g');
+
+    newWrappers.append('path')
+      .attr('class', CSS.getClassName('donut-arc'));
+
+    wrappers = newWrappers.merge(wrappers);
+
+    wrappers
       .attr('transform', `translate(${(width / 2)},${(height / 2)})`)
       .attr('class', d => classnames(
         CSS.getClassName('donut-arc-wrapper'),
         CSS.getColorClassName(d.data.categoryIndex),
-      ));
+      ))
+      .on('mousemove', function mousemove(d) {
+        const dims = mouse(select('body').node());
 
-    this.arcs.selectAll(CSS.getClassSelector('donut-arc'))
-      .attr('d', path);
+        dispatchers.call('tooltipMove', this, d.data.categoryIndex, 0, d.data.x, dims);
+        dispatchers.call('activatePointOfInterest', this, d.data.x);
+        dispatchers.call('highlightSeries', this, d.data.categoryIndex);
+      })
+      .on('mouseout', () => {
+        dispatchers.call('tooltipHide');
+        dispatchers.call('unHighlightSeries');
+      });
 
-    this.arcs.exit().remove();
+    const paths = wrappers.selectAll(CSS.getClassSelector('donut-arc'));
 
-    const newArcs = this.arcs.enter()
-      .append('g')
-        .attr('transform', `translate(${(width / 2)},${(height / 2)})`)
-        .attr('class', d => classnames(
-          CSS.getClassName('donut-arc-wrapper'),
-          CSS.getColorClassName(d.data.categoryIndex),
-        ))
-        .on('mousemove', function mousemove(d) {
-          const dims = mouse(select('body').node());
-
-          dispatchers.call('tooltipMove', this, d.data.categoryIndex, 0, d.data.x, dims);
-          dispatchers.call('activatePointOfInterest', this, d.data.x);
-          dispatchers.call('highlightSeries', this, d.data.categoryIndex);
-        })
-        .on('mouseout', () => {
-          dispatchers.call('tooltipHide');
-          dispatchers.call('unHighlightSeries');
-        });
-
-    const paths = newArcs.append('path')
+    paths
       .attr('class', CSS.getClassName('donut-arc'))
-      .attr('style', d =>
-        (d.data.color ? `fill: ${d.data.color}; stroke: ${d.data.color};` : null));
+      .attr('d', path)
+      .style('fill', d => (d.data.color ? d.data.color : null))
+      .style('stroke', d => (d.data.color ? d.data.color : null))
+      .style('opacity', options.donut ? options.donut.opacity : null);
 
     if (dispatchers.enabled('dataPointClick.external')) {
       paths
@@ -110,11 +115,7 @@ class Donut {
         });
     }
 
-    paths.attr('d', path);
-
-    this.arcs = newArcs.merge(this.arcs);
-
-    if (options.animations.enabled) {
+    if (this.renderCount === 1 && options.animations && options.animations.enabled) {
       paths.transition()
         .duration(options.animations.duration)
         .attrTween('d', (finish) => {
@@ -132,7 +133,9 @@ class Donut {
 
     this.bindDispatchers();
 
-    return this.arcs;
+    this.arcs = wrappers;
+
+    return wrappers;
   }
 
   update(seriesData, options, dimensions, dispatchers) {

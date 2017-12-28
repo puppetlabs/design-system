@@ -139,6 +139,8 @@ class YScale {
       y.range([height, 0]);
     }
 
+    y.nice();
+
     return y;
   }
 

@@ -28,6 +28,9 @@ class DonutCharts extends React.Component {
       type: 'donut',
       data,
       options: {
+        donut: {
+          opacity: 0.5,
+        },
         animations: {
           enabled: animations,
         },
@@ -51,6 +54,9 @@ class DonutCharts extends React.Component {
     this.donutChart.render();
 
     const options = {
+      donut: {
+        opacity: 0.25,
+      },
       animations: {
         enabled: animations,
       },

@@ -3,8 +3,12 @@ import formatters from '../../source/js/helpers/formatters';
 
 describe('formatters', () => {
   describe('decimal', () => {
+    it('should properly format the value and trim insignicant zeros', () => {
+      expect(formatters.decimal(1000000.0000)).to.eql('1000000');
+    });
+
     it('should properly format the value with the correct precision', () => {
-      expect(formatters.decimal(1000000.0000)).to.eql('1000000.00');
+      expect(formatters.decimal(1000000.22)).to.eql('1000000.22');
     });
   });
 

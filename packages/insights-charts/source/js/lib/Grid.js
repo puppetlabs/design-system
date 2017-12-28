@@ -1,5 +1,6 @@
 import { axisLeft, axisBottom } from 'd3-axis';
 import CSS from '../helpers/css';
+import { DEFAULT_Y_TICKS } from '../constants';
 
 class Grid {
   constructor(x, y, dimensions, options) {
@@ -41,6 +42,8 @@ class Grid {
     // y axis is always converted to array and we always use the first y axis for the grid
     if (options.ticks) {
       axis.ticks(options.ticks);
+    } else {
+      axis.ticks(DEFAULT_Y_TICKS);
     }
 
     return axis;
