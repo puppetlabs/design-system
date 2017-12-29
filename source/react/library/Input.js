@@ -47,25 +47,10 @@ class Input extends React.Component {
     this.onChange = this.onChange.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onClick = this.onClick.bind(this);
-
-    this.state = {
-      value: this.props.value || '',
-      disabled: !!this.props.disabled,
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const nextState = {};
-
-    if ({}.hasOwnProperty.call(nextProps, 'value')) {
-      nextState.value = nextProps.value;
-    }
-
-    this.setState(nextState);
   }
 
   onChange(e) {
-    this.setState({ value: e.target.value });
+    // this.setState({ value: e.target.value });
 
     if (this.props.onChange) {
       this.props.onChange(e);
@@ -73,7 +58,7 @@ class Input extends React.Component {
   }
 
   onFocus(e) {
-    this.setState({ value: e.target.value });
+    // this.setState({ value: e.target.value });
 
     if (this.props.onFocus) {
       this.props.onFocus(e);
@@ -103,7 +88,6 @@ class Input extends React.Component {
       autoFocus: this.props.autoFocus,
       disabled: this.props.disabled,
       readOnly: this.props.readonly,
-      value: this.props.value,
       name: this.props.name,
       onKeyUp: this.props.onKeyUp,
       type: this.props.type,
@@ -114,6 +98,10 @@ class Input extends React.Component {
       className,
       style: this.props.style,
     };
+
+    if (this.props.value !== undefined) {
+      props.value = this.props.value;
+    }
 
     if (!this.props.value) {
       props.placeholder = this.props.placeholder;
