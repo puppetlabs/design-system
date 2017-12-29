@@ -50,16 +50,12 @@ class Input extends React.Component {
   }
 
   onChange(e) {
-    // this.setState({ value: e.target.value });
-
     if (this.props.onChange) {
       this.props.onChange(e);
     }
   }
 
   onFocus(e) {
-    // this.setState({ value: e.target.value });
-
     if (this.props.onFocus) {
       this.props.onFocus(e);
     }
@@ -76,11 +72,10 @@ class Input extends React.Component {
   }
 
   render() {
-    const className = classnames('rc-input', {
+    const className = classnames('rc-input', this.props.className, {
       'rc-input-error': this.props.error,
-      [this.props.className]: this.props.className,
-      [`rc-input-${this.props.size}`]: this.props.size,
       'rc-input-simple': this.props.simple,
+      [`rc-input-${this.props.size}`]: this.props.size,
     });
 
     const props = {
