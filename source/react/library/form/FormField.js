@@ -70,6 +70,11 @@ class FormField extends React.Component {
         break;
       case 'number':
         value = parseInt(val.target.value, 10);
+
+        if (Number.isNaN(value)) {
+          value = undefined;
+        }
+
         break;
       case 'switch':
         value = val.target.checked;
