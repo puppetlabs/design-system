@@ -260,14 +260,26 @@ class Select extends React.Component {
     );
   }
 
+  renderSelected() {
+    let selected = null;
+
+    if (this.props.multiple) {
+      selected = 'hello';
+    } else {
+      selected = this.getCurrentValue();
+    }
+
+    return selected;
+  }
+
   renderInput() {
+    const selected = this.renderSelected();
     const input = (
       <Input
         dropdown
         name={ this.props.name }
         onKeyDown={ this.onKeyDown }
         onChange={ e => this.setState({ inputValue: e.target.value }) }
-        value={ this.getCurrentValue() }
         size={ this.props.size }
         ref={ (c) => { this.input = c; } }
         disabled={ this.props.disabled }
@@ -277,6 +289,7 @@ class Select extends React.Component {
 
     return (
       <div className="rc-select-input">
+        { selected }
         { input }
       </div>
     );
@@ -292,6 +305,7 @@ class Select extends React.Component {
     const popoverClassName = classnames('rc-select-popover', this.props.popoverClassName);
     const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
       'rc-select-disabled': this.props.disabled,
+      'rc-select-multiple': this.props.multiple,
       [`rc-select-${this.props.size}`]: this.props.size,
     });
     let jsx = (
@@ -314,7 +328,6 @@ class Select extends React.Component {
           margin={ 4 }
           allowBubble
           padding={ false }
-          openEvent="onFocus"
         >
           { menu }
         </Popover>

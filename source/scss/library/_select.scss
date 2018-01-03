@@ -13,10 +13,6 @@
   cursor: pointer;
   position: relative;
 
-  .rc-select-input {
-    position: relative;
-  }
-
   .rc-input {
     cursor: pointer;
     font-size: $reflect-font-size-small;
@@ -34,8 +30,35 @@
   }
 }
 
+.rc-select-input {
+  @extend %input;
+  position: relative;
+
+  .rc-input,
+  .rc-input.rc-input-small {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+    position: relative;
+    width: auto;
+  }
+
+  .rc-input:hover,
+  .rc-input:focus {
+    border: 0;
+    box-shadow: none;
+  }
+
+}
+
 .rc-select-wrapper {
   position: relative;
+}
+
+.rc-select-wrapper-open {
+  .rc-select-input {
+    @extend %focused-input;
+  }
 }
 
 .rc-select-actions {
@@ -79,7 +102,7 @@
 }
 
 .rc-select-wrapper-open {
-  .rc-input {
+  .rc-select-input {
     @extend %focused-input;
 
     cursor: text;

@@ -4,7 +4,7 @@
   box-shadow: $reflect-selected-shadow;
 }
 
-.rc-input {
+%input {
   background: $reflect-input-bg;
   border: $reflect-input-border;
   border-radius: $reflect-input-border-radius;
@@ -15,6 +15,10 @@
   // Really only applies when .rc-input is a textarea
   resize: vertical;
   width: 100%;
+}
+
+.rc-input {
+  @extend %input;
 
   &.rc-input-error {
     border: $reflect-input-border-error;

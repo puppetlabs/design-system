@@ -12,6 +12,21 @@ const options = [
 />
 ```
 
+Multiselect:
+
+```
+const options = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+];
+
+<Select
+  multiple
+  options={ options }
+/>
+```
+
 Select with `autoOpen` enabled:
 
 ```
