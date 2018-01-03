@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import {
+  BACK_KEY_CODE,
   TAB_KEY_CODE,
   ESC_KEY_CODE,
 } from '../../constants';
@@ -11,6 +12,8 @@ import Input from '../Input';
 import Menu from '../menu/Menu';
 import MenuList from '../menu/MenuList';
 import Popover from '../Popover';
+
+import SelectItem from './SelectItem';
 
 const propTypes = {
   name: React.PropTypes.string,
@@ -120,6 +123,30 @@ class Select extends React.Component {
     this.setState({ open: false }, this.close);
   }
 
+  onBackPress() {
+    if (typeof this.state.inputValue !== 'undefined') {
+      return;
+    }
+
+    const selectedOptions = this.state.options
+      .filter(o => o.selected);
+    let maxSelectedId;
+
+    if (selectedOptions.length) {
+      maxSelectedId = selectedOptions[selectedOptions.length - 1].id;
+    }
+
+    const options = this.state.options.map((option) => {
+      if (option.id === maxSelectedId) {
+        option.selected = false;
+      }
+
+      return option;
+    });
+
+    this.setState({ options });
+  }
+
   onChevronClick(e) {
     if (e) {
       e.preventDefault();
@@ -130,6 +157,9 @@ class Select extends React.Component {
 
   onKeyDown(e) {
     switch (e.keyCode) {
+      case BACK_KEY_CODE:
+        this.onBackPress();
+        break;
       case TAB_KEY_CODE:
       case ESC_KEY_CODE:
         this.setState({ open: false }, this.close);
@@ -164,19 +194,17 @@ class Select extends React.Component {
     this.setState(newState);
   }
 
-  getCurrentValue() {
+  getInputValue() {
     let value = '';
 
-    if (!this.props.multiple) {
-      if (typeof this.state.inputValue !== 'undefined') {
-        value = this.state.inputValue;
-      } else {
-        this.state.options.forEach((option) => {
-          if (option.selected) {
-            value = option.label;
-          }
-        });
-      }
+    if (typeof this.state.inputValue !== 'undefined') {
+      value = this.state.inputValue;
+    } else if (!this.props.multiple) {
+      this.state.options.forEach((option) => {
+        if (option.selected) {
+          value = option.label;
+        }
+      });
     }
 
     return value;
@@ -236,7 +264,7 @@ class Select extends React.Component {
   }
 
   renderActions() {
-    const value = this.getCurrentValue();
+    const value = this.getInputValue();
     const actions = [];
 
     if (this.props.clearable && value) {
@@ -264,9 +292,9 @@ class Select extends React.Component {
     let selected = null;
 
     if (this.props.multiple) {
-      selected = 'hello';
-    } else {
-      selected = this.getCurrentValue();
+      selected = this.state.options
+        .filter(o => o.selected)
+        .map(o => (<SelectItem value={ o.label } />));
     }
 
     return selected;
@@ -280,10 +308,10 @@ class Select extends React.Component {
         name={ this.props.name }
         onKeyDown={ this.onKeyDown }
         onChange={ e => this.setState({ inputValue: e.target.value }) }
+        value={ this.getInputValue() }
         size={ this.props.size }
         ref={ (c) => { this.input = c; } }
         disabled={ this.props.disabled }
-        placeholder={ this.props.placeholder }
       />
     );
 

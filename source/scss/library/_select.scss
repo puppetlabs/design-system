@@ -28,16 +28,34 @@
     width: 100%;
     z-index: 1;
   }
+
+  .rc-select-input {
+    padding: 0;
+  }
+}
+
+.rc-select-item {
+  background: $reflect-brand-primary;
+  border-radius: $reflect-border-radius;
+  color: $reflect-white;
+  display: inline;
+  margin: 4px;
+  margin-right: 0;
+  padding: 4px;
 }
 
 .rc-select-input {
   @extend %input;
+  display: flex;
   position: relative;
 
   .rc-input,
   .rc-input.rc-input-small {
     border: 0;
     box-shadow: none;
+    flex-grow: 1;
+    margin: 0 5px;
+    min-height: 34px;
     padding: 0;
     position: relative;
     width: auto;
