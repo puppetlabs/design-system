@@ -53,12 +53,11 @@ describe('<Select />', () => {
 
       wrapper.find('MenuItem').first().find('a').simulate('click');
 
-      expect(onSelect.lastCall.args).to.eql([{
+      expect(onSelect.lastCall.args[0]).to.eql({
         id: 0,
         value: 'Michael',
         label: 'Sig',
-        selected: true,
-      }]);
+      });
 
       // Now we close the menu
       expect(wrapper.find('MenuItem').length).to.eql(0);
@@ -122,12 +121,11 @@ describe('<Select />', () => {
 
       wrapper.find('MenuItem').first().find('a').simulate('click');
 
-      expect(onSelect.lastCall.args).to.eql([{
+      expect(onSelect.lastCall.args[0]).to.eql({
         id: 'Michael Phelps',
         value: 'Michael Phelps',
         label: 'Michael Phelps',
-        selected: true,
-      }]);
+      });
 
       // Now we close the menu
       expect(wrapper.find('MenuItem').length).to.eql(0);

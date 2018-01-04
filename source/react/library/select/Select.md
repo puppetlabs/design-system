@@ -6,7 +6,7 @@ const options = [
 ];
 
 <Select
-  onSelect={o => console.log(o)}
+  onSelect={(selected, option) => console.log(selected, option)}
   options={ options }
   placeholder="Select one..."
 />
@@ -41,6 +41,7 @@ const options = [
 ];
 
 <Select
+  onSelect={(selected, option) => console.log(selected, option)}
   multiple
   size="tiny"
   options={ options }
@@ -58,7 +59,7 @@ const options = [
 ];
 
 <Select
-  onSelect={o => console.log(o)}
+  onSelect={(selected, option) => console.log(selected, option)}
   autoOpen
   options={ options }
 />
@@ -78,8 +79,8 @@ const options = [
 Select with custom actions:
 
 ```
-const onSelect = (option) => {
-  console.log(option);
+const onSelect = (selected, option) => {
+  console.log(selected, option);
   if (option.value === 'new') {
     alert('Adding a new drink');
   }
@@ -110,7 +111,7 @@ const options = [
 ];
 
 <Select
-  onSelect={o => console.log(o)}
+  onSelect={(selected, option) => console.log(selected, option)}
   disablePortal
   options={ options }
   placeholder="Select one..."
@@ -127,7 +128,7 @@ const options = [
 ];
 
 <Select
-  onSelect={o => console.log(o)}
+  onSelect={(selected, option) => console.log(selected, option)}
   size="tiny"
   options={ options }
 />

@@ -24,6 +24,7 @@ const propTypes = {
   multiple: React.PropTypes.bool,
   typeahead: React.PropTypes.bool,
   clearable: React.PropTypes.bool,
+  valueless: React.PropTypes.bool,
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
@@ -35,6 +36,7 @@ const defaultProps = {
   placeholder: 'Select...',
   disablePortal: false,
   clearable: false,
+  valueless: false,
   typeahead: true,
   disabled: false,
   multiple: false,
@@ -61,38 +63,30 @@ const formatOptions = options => options.map((o, idx) => {
   return option;
 });
 
-const shouldComponentUpdate = (currentOptions, newOptions) => {
-  let update = false;
-  newOptions = formatOptions(newOptions);
-
-  newOptions.forEach((option, i) => {
-    if (
-      !update &&
-      currentOptions[0] &&
-      currentOptions[i] &&
-      (currentOptions[i].id !== option.id || currentOptions[i].selected !== option.selected)
-    ) {
-      update = true;
-    }
-  });
-
-  return update;
-};
-
 /**
- * `Select` allows the user to select an item from a list.
+ * `Select` allows the user to select an item from a list. Selects provide for three use cases:
+ *   * Selecting an option from a list
+ *   * Selecting multiple options from a list
+ *   * TODO: Creating a list of options.
+ *
+ * `Select` is a stateful component but allows the user to modify the state by passing an updated
+ * `options` prop, or listen to changes to the state by passing a callback to the `onSelect` prop.
  */
 class Select extends React.Component {
   constructor(props) {
     super(props);
 
+    const selected = formatOptions(props.options)
+      .filter(o => o.selected);
+
     this.state = {
       inputValue: undefined,
       open: false,
-      options: formatOptions(props.options),
+      selected,
     };
 
     this.onClear = this.onClear.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onChevronClick = this.onChevronClick.bind(this);
@@ -104,9 +98,13 @@ class Select extends React.Component {
     }
   }
 
-  componentWillReceiveProps(newProps) {
-    if (shouldComponentUpdate(newProps.options, this.state.options)) {
-      this.setState({ options: formatOptions(newProps.options) });
+  onChange(selected, option) {
+    if (!this.props.multiple) {
+      selected = selected[0];
+    }
+
+    if (this.props.onSelect) {
+      this.props.onSelect(selected, option);
     }
   }
 
@@ -115,9 +113,7 @@ class Select extends React.Component {
       e.preventDefault();
     }
 
-    if (this.props.onSelect) {
-      this.props.onSelect(null);
-    }
+    this.onChange([]);
 
     this.clearInput();
     this.setState({ open: false }, this.close);
@@ -128,23 +124,12 @@ class Select extends React.Component {
       return;
     }
 
-    const selectedOptions = this.state.options
-      .filter(o => o.selected);
-    let maxSelectedId;
+    const selected = this.state.selected;
+    const removed = selected.pop();
 
-    if (selectedOptions.length) {
-      maxSelectedId = selectedOptions[selectedOptions.length - 1].id;
-    }
+    this.onChange(selected, removed);
 
-    const options = this.state.options.map((option) => {
-      if (option.id === maxSelectedId) {
-        option.selected = false;
-      }
-
-      return option;
-    });
-
-    this.setState({ options });
+    this.setState({ selected });
   }
 
   onChevronClick(e) {
@@ -159,6 +144,7 @@ class Select extends React.Component {
     switch (e.keyCode) {
       case BACK_KEY_CODE:
         this.onBackPress();
+
         break;
       case TAB_KEY_CODE:
       case ESC_KEY_CODE:
@@ -174,22 +160,20 @@ class Select extends React.Component {
     const newState = { open: false, inputValue: undefined };
 
     if (option.selectable || typeof option.selectable === 'undefined') {
-      newState.options = this.state.options.map((o) => {
-        if (o.id === option.id) {
-          o.selected = !o.selected;
-        } else if (!this.props.multiple) {
-          o.selected = false;
-        }
-
-        return o;
-      });
+      if (this.state.selected.indexOf(option) >= 0) {
+        newState.selected = this.state.selected.filter(o => o.id !== option.id);
+      } else if (this.props.multiple) {
+        newState.selected = [...this.state.selected, option];
+      } else {
+        newState.selected = [option];
+      }
     }
 
-    this.close();
-
-    if (this.props.onSelect) {
-      this.props.onSelect(option);
+    if (!this.props.multiple) {
+      this.close();
     }
+
+    this.onChange(newState.selected || this.state.selected, option);
 
     this.setState(newState);
   }
@@ -199,25 +183,19 @@ class Select extends React.Component {
 
     if (typeof this.state.inputValue !== 'undefined') {
       value = this.state.inputValue;
-    } else if (!this.props.multiple) {
-      this.state.options.forEach((option) => {
-        if (option.selected) {
-          value = option.label;
-        }
-      });
+    } else if (this.state.selected.length && !this.props.multiple) {
+      value = this.state.selected[0].label;
     }
 
     return value;
   }
 
+  getOptions() {
+    return formatOptions(this.props.options);
+  }
+
   clearInput() {
-    const options = this.state.options.map((o) => {
-      o.selected = false;
-
-      return o;
-    });
-
-    this.setState({ inputValue: '', options });
+    this.setState({ inputValue: '', selected: [] });
   }
 
   open() {
@@ -231,14 +209,13 @@ class Select extends React.Component {
   }
 
   renderMenuList() {
-    let options = this.state.options;
+    let options = this.getOptions();
 
-    const selected = this.state.options
-      .filter(o => o.selected)
+    const selected = this.state.selected
       .map(o => o.id);
 
     if (this.props.typeahead) {
-      options = filterOptions(this.state.options, this.state.inputValue);
+      options = filterOptions(options, this.state.inputValue);
     }
 
     return (
@@ -292,9 +269,8 @@ class Select extends React.Component {
   renderSelected() {
     let selected = [];
 
-    if (this.props.multiple) {
-      selected = this.state.options
-        .filter(o => o.selected)
+    if (this.props.multiple && !this.props.valueless) {
+      selected = this.state.selected
         .map(o => (<SelectItem value={ o.label } />));
     }
 
