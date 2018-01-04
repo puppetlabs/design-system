@@ -41,6 +41,10 @@
   display: inline;
 }
 
+.rc-select-item-highlighted {
+  box-shadow: $reflect-select-item-highlighted-shadow;
+}
+
 .rc-select-small {
   .rc-select-item {
     font-size: $reflect-select-small-item-font-size;

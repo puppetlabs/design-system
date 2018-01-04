@@ -28,11 +28,13 @@ const propTypes = {
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
+  onPendingDeleteChange: React.PropTypes.func,
   popoverClassName: React.PropTypes.string,
   size: React.PropTypes.oneOf(['tiny', 'small']),
 };
 
 const defaultProps = {
+  onPendingDeleteChange: () => {},
   placeholder: 'Select...',
   disablePortal: false,
   clearable: false,
@@ -46,6 +48,24 @@ const defaultProps = {
   size: 'small',
   options: [],
   name: '',
+};
+
+const shouldComponentUpdate = (currentOptions, newOptions) => {
+  let update = false;
+  newOptions = formatOptions(newOptions);
+
+  newOptions.forEach((option, i) => {
+    if (
+      !update &&
+      currentOptions[0] &&
+      currentOptions[i] &&
+      (currentOptions[i].id !== option.id || currentOptions[i].selected !== option.selected)
+    ) {
+      update = true;
+    }
+  });
+
+  return update;
 };
 
 const filterOptions = (options, filter) => options
@@ -80,6 +100,7 @@ class Select extends React.Component {
       .filter(o => o.selected);
 
     this.state = {
+      pendingBackDelete: false,
       inputValue: undefined,
       open: false,
       selected,
@@ -96,6 +117,13 @@ class Select extends React.Component {
     if (this.props.autoOpen) {
       this.open();
     }
+  }
+
+  componentWillReceiveProps(newProps) {
+    const selected = formatOptions(newProps.options)
+      .filter(o => o.selected);
+
+    this.setState({ selected });
   }
 
   onChange(selected, option) {
@@ -123,13 +151,22 @@ class Select extends React.Component {
     if (typeof this.state.inputValue !== 'undefined') {
       return;
     }
+    const newState = {};
 
-    const selected = this.state.selected;
-    const removed = selected.pop();
+    if (this.state.pendingBackDelete) {
+      const selected = this.state.selected;
+      const removed = selected.pop();
 
-    this.onChange(selected, removed);
+      this.onChange(selected, removed);
 
-    this.setState({ selected });
+      newState.selected = selected;
+      newState.pendingBackDelete = false;
+    } else {
+      newState.pendingBackDelete = true;
+    }
+
+    this.props.onPendingDeleteChange(newState.pendingBackDelete);
+    this.setState(newState);
   }
 
   onChevronClick(e) {
@@ -169,7 +206,7 @@ class Select extends React.Component {
       }
     }
 
-    if (!this.props.multiple) {
+    if (!this.props.multiple || this.props.valueless) {
       this.close();
     }
 
@@ -206,6 +243,9 @@ class Select extends React.Component {
   close() {
     this.popover.close();
     this.input.blur();
+
+    this.setState({ pendingBackDelete: false });
+    this.props.onPendingDeleteChange(false);
   }
 
   renderMenuList() {
@@ -270,8 +310,15 @@ class Select extends React.Component {
     let selected = [];
 
     if (this.props.multiple && !this.props.valueless) {
+      const selectedCount = this.state.selected.length;
+
       selected = this.state.selected
-        .map(o => (<SelectItem value={ o.label } />));
+        .map((option, index) => (
+          <SelectItem
+            highlighted={ this.state.pendingBackDelete && index === selectedCount - 1 }
+            value={ option.label }
+          />
+        ));
     }
 
     return selected;
