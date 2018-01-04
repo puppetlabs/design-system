@@ -14,13 +14,13 @@ describe('<Select />', () => {
     expect(wrapper.length).to.eql(1);
   });
 
-  it('should open on Input focus', () => {
+  it('should open on .rc-select-input click', () => {
     const options = ['Cats', 'Dogs'];
     const wrapper = mount(<Select options={ options } { ...defaultProps } />);
 
     expect(wrapper.find('MenuItem').length).to.eql(0);
 
-    wrapper.find('Input').simulate('focus');
+    wrapper.find('.rc-select-input').simulate('click');
 
     expect(wrapper.find('MenuItem').length).to.eql(options.length);
   });
@@ -34,7 +34,7 @@ describe('<Select />', () => {
     it('should render the label', () => {
       const wrapper = mount(<Select options={ options } { ...defaultProps } />);
 
-      wrapper.find('Input').simulate('focus');
+      wrapper.find('.rc-select-input').simulate('click');
 
       expect(wrapper.find('MenuList').childAt(0).text()).to.eql('Sig');
       expect(wrapper.find('MenuList').childAt(1).text()).to.eql('Catnasty');
@@ -46,7 +46,7 @@ describe('<Select />', () => {
         <Select options={ options } onSelect={ onSelect } { ...defaultProps } />,
       );
 
-      wrapper.find('Input').simulate('focus');
+      wrapper.find('.rc-select-input').simulate('click');
 
       // The menu should be open now
       expect(wrapper.find('MenuItem').length).to.eql(2);
@@ -70,7 +70,7 @@ describe('<Select />', () => {
       const options = ['Company', 'Computer', 'Turtles'];
       const wrapper = mount(<Select options={ options } { ...defaultProps } />);
 
-      wrapper.find('Input').simulate('focus');
+      wrapper.find('.rc-select-input').simulate('click');
 
       // Should be showing all the items by default
       expect(wrapper.find('MenuItem').length).to.eql(3);
@@ -103,7 +103,7 @@ describe('<Select />', () => {
     it('should render the strings as labels', () => {
       const wrapper = mount(<Select options={ options } { ...defaultProps } />);
 
-      wrapper.find('Input').simulate('focus');
+      wrapper.find('.rc-select-input').simulate('click');
 
       expect(wrapper.find('MenuList').childAt(0).text()).to.eql('Michael Phelps');
       expect(wrapper.find('MenuList').childAt(1).text()).to.eql('Ryan Lochte');
@@ -115,7 +115,7 @@ describe('<Select />', () => {
         <Select options={ options } onSelect={ onSelect } { ...defaultProps } />,
       );
 
-      wrapper.find('Input').simulate('focus');
+      wrapper.find('.rc-select-input').simulate('click');
 
       // The menu should be open now
       expect(wrapper.find('MenuItem').length).to.eql(2);
@@ -143,15 +143,19 @@ describe('<Select />', () => {
 
     expect(wrapper.find('Input').prop('value')).to.eql('');
 
-    wrapper.find('Input').simulate('focus');
+    wrapper.find('.rc-select-input').simulate('click');
     wrapper.find('MenuItem').at(0).find('a').simulate('click');
 
     expect(wrapper.find('Input').prop('value')).to.eql('Tea');
 
-    wrapper.find('Input').simulate('focus');
+    wrapper.find('.rc-select-input').simulate('click');
     wrapper.find('MenuItem').at(1).find('a').simulate('click');
 
     // This should remain the same.
     expect(wrapper.find('Input').prop('value')).to.eql('Tea');
+  });
+
+  context('multi select', () => {
+  
   });
 });

@@ -35,30 +35,52 @@
 }
 
 .rc-select-item {
-  background: $reflect-brand-primary;
-  border-radius: $reflect-border-radius;
-  color: $reflect-white;
+  background: $reflect-select-item-bg;
+  border-radius: $reflect-select-item-border-radius;
+  color: $reflect-select-item-color;
   display: inline;
-  margin: 4px;
-  margin-right: 0;
-  padding: 4px;
+}
+
+.rc-select-small {
+  .rc-select-item {
+    font-size: $reflect-select-small-item-font-size;
+    margin: $reflect-select-small-item-margin;
+    padding: $reflect-select-small-item-padding;
+  }
+}
+
+.rc-select-tiny {
+  .rc-select-item {
+    font-size: $reflect-select-tiny-item-font-size;
+    margin: $reflect-select-tiny-item-margin;
+    padding: $reflect-select-tiny-item-padding;
+  }
 }
 
 .rc-select-input {
   @extend %input;
   display: flex;
+  flex-wrap: wrap;
   position: relative;
 
   .rc-input,
-  .rc-input.rc-input-small {
+  .rc-input.rc-input-small,
+  .rc-input.rc-input-tiny {
     border: 0;
     box-shadow: none;
     flex-grow: 1;
     margin: 0 5px;
-    min-height: 34px;
     padding: 0;
     position: relative;
     width: auto;
+  }
+
+  .rc-input.rc-input-small {
+    min-height: 34px;
+  }
+
+  .rc-input.rc-input-tiny {
+    min-height: 22px;
   }
 
   .rc-input:hover,

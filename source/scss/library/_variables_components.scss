@@ -314,6 +314,18 @@ $reflect-select-border-radius                : $reflect-input-border-radius !def
 $reflect-select-selected-shadow              : $reflect-selected-shadow !default;
 $reflect-select-menu-bg                      : $reflect-white !default;
 
+$reflect-select-item-bg                      : $reflect-brand-primary !default;
+$reflect-select-item-color                   : $reflect-white !default;
+$reflect-select-item-border-radius           : $reflect-border-radius !default;
+
+$reflect-select-small-item-font-size         : $reflect-font-size-small !default;
+$reflect-select-small-item-margin            : $reflect-tiny 0 $reflect-tiny $reflect-tiny !default;
+$reflect-select-small-item-padding           : $reflect-tiny !default;
+
+$reflect-select-tiny-item-font-size          : $reflect-font-size-tiny !default;
+$reflect-select-tiny-item-margin             : $reflect-mini 0 $reflect-mini $reflect-mini !default;
+$reflect-select-tiny-item-padding            : $reflect-mini !default;
+
 $reflect-select-label-font-size              : $reflect-font-size-small !default;
 $reflect-select-label-padding                : $reflect-small !default;
 $reflect-select-label-bg                     : $reflect-action-color-alt !default;

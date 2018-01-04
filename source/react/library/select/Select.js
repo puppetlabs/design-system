@@ -264,10 +264,11 @@ class Select extends React.Component {
   }
 
   renderActions() {
+    const selected = this.renderSelected();
     const value = this.getInputValue();
     const actions = [];
 
-    if (this.props.clearable && value) {
+    if (this.props.clearable && (value || selected.length)) {
       actions.push(
         <a key="clear" role="button" tabIndex={ 0 } className="rc-select-action" onClick={ this.onClear } >
           <Icon width="10px" height="100%" type="close" />
@@ -289,7 +290,7 @@ class Select extends React.Component {
   }
 
   renderSelected() {
-    let selected = null;
+    let selected = [];
 
     if (this.props.multiple) {
       selected = this.state.options
@@ -302,9 +303,16 @@ class Select extends React.Component {
 
   renderInput() {
     const selected = this.renderSelected();
+    let placeholder;
+
+    if (!this.props.multiple || !selected.length) {
+      placeholder = this.props.placeholder;
+    }
+
     const input = (
       <Input
         dropdown
+        placeholder={ placeholder }
         name={ this.props.name }
         onKeyDown={ this.onKeyDown }
         onChange={ e => this.setState({ inputValue: e.target.value }) }

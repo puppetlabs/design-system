@@ -19,12 +19,33 @@ const options = [
   'Sunday',
   'Monday',
   'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
 ];
 
 <Select
   multiple
   options={ options }
 />
+```
+
+Tiny Multiselect:
+
+```
+const options = [
+  { value: 'Geoff', label: 'Geoff', selected: true },
+  { value: 'Sig', label: 'Sig' },
+  { value: 'Colby', label: 'Colby' },
+];
+
+<Select
+  multiple
+  size="tiny"
+  options={ options }
+/>
+
 ```
 
 Select with `autoOpen` enabled:
