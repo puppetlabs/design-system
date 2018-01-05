@@ -4,6 +4,7 @@ import Button from '../Button';
 import ButtonGroup from '../ButtonGroup';
 
 import FormField from './FormField';
+import FormFlyout from './FormFlyout';
 import FormSection from './FormSection';
 
 const propTypes = {
@@ -21,17 +22,17 @@ const propTypes = {
 };
 
 const defaultProps = {
+  errors: {},
   className: '',
   size: 'small',
   inline: false,
-  errors: {},
+  onChange: null,
+  onSubmit: null,
+  children: null,
+  validator: null,
+  onCancel: () => {},
   cancellable: false,
   submittable: false,
-  onChange: null,
-  onCancel: () => {},
-  onSubmit: null,
-  validator: null,
-  children: null,
 };
 
 const getValues = (children) => {
@@ -43,6 +44,11 @@ const getValues = (children) => {
         values[child.props.name] = child.props.value;
       } else if (child.props.children) {
         values = Object.assign(values, getValues(child.props.children));
+      }
+
+      // TODO: Figure something else out here. This is incredibly hacky and makes me cry.
+      if (child.props.flyout) {
+        values = Object.assign(values, getValues(child.props.flyout.props.children));
       }
     }
   });
@@ -106,10 +112,27 @@ class Form extends React.Component {
     });
   }
 
+  renderFlyout(flyout) {
+    const props = {};
+
+    if (flyout.props.children) {
+      props.children = this.renderChildren(flyout.props.children);
+    }
+
+    return React.cloneElement(flyout, props);
+  }
+
   renderSection(child) {
-    return React.cloneElement(child, {
+    const props = {
       children: this.renderChildren(child.props.children),
-    });
+    };
+
+    // Only render the flyout fields if they have been provided.
+    if (child.props.flyout) {
+      props.flyout = this.renderFlyout(child.props.flyout);
+    }
+
+    return React.cloneElement(child, props);
   }
 
   renderChildren(children) {
@@ -188,6 +211,7 @@ Form.propTypes = propTypes;
 Form.defaultProps = defaultProps;
 
 Form.Field = FormField;
+Form.Flyout = FormFlyout;
 Form.Section = FormSection;
 
 export default Form;

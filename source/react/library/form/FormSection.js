@@ -6,6 +6,7 @@ const propTypes = {
   title: React.PropTypes.string,
   tooltip: React.PropTypes.string,
   children: React.PropTypes.any,
+  flyout: React.PropTypes.any,
 };
 
 const defaultProps = {
@@ -21,6 +22,7 @@ class FormSection extends React.Component {
     let jsx = (
       <legend className="rc-form-section-legend">
         { title }
+        { this.props.flyout }
       </legend>
     );
 
