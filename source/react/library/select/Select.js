@@ -91,7 +91,7 @@ class Select extends React.Component {
     this.onClear = this.onClear.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
     this.onChevronClick = this.onChevronClick.bind(this);
   }
 
@@ -159,7 +159,7 @@ class Select extends React.Component {
     this.open();
   }
 
-  onKeyDown(e) {
+  onKeyUp(e) {
     switch (e.keyCode) {
       case BACK_KEY_CODE:
         this.onBackPress();
@@ -319,7 +319,7 @@ class Select extends React.Component {
         dropdown
         placeholder={ placeholder }
         name={ this.props.name }
-        onKeyDown={ this.onKeyDown }
+        onKeyUp={ this.onKeyUp }
         onChange={ e => this.setState({ inputValue: e.target.value }) }
         value={ this.getInputValue() }
         size={ this.props.size }
