@@ -50,24 +50,6 @@ const defaultProps = {
   name: '',
 };
 
-const shouldComponentUpdate = (currentOptions, newOptions) => {
-  let update = false;
-  newOptions = formatOptions(newOptions);
-
-  newOptions.forEach((option, i) => {
-    if (
-      !update &&
-      currentOptions[0] &&
-      currentOptions[i] &&
-      (currentOptions[i].id !== option.id || currentOptions[i].selected !== option.selected)
-    ) {
-      update = true;
-    }
-  });
-
-  return update;
-};
-
 const filterOptions = (options, filter) => options
   .filter(o => !filter || o.label.toLowerCase().indexOf(filter.toLowerCase()) > -1);
 

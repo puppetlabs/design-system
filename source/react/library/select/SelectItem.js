@@ -11,19 +11,17 @@ const defaultProps = {
   value: null,
 };
 
-class SelectItem extends React.Component {
-  render() {
-    const className = classnames('rc-select-item', {
-      'rc-select-item-highlighted': this.props.highlighted,
-    });
+const SelectItem = (props) => {
+  const className = classnames('rc-select-item', {
+    'rc-select-item-highlighted': props.highlighted,
+  });
 
-    return (
-      <div className={ className }>
-        <span>{ this.props.value }</span>
-      </div>
-    );
-  }
-}
+  return (
+    <div className={ className }>
+      <span>{ props.value }</span>
+    </div>
+  );
+};
 
 SelectItem.propTypes = propTypes;
 SelectItem.defaultProps = defaultProps;
