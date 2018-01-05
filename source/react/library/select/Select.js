@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import {
+  BACK_KEY_CODE,
   TAB_KEY_CODE,
   ESC_KEY_CODE,
 } from '../../constants';
@@ -12,6 +13,8 @@ import Menu from '../menu/Menu';
 import MenuList from '../menu/MenuList';
 import Popover from '../Popover';
 
+import SelectItem from './SelectItem';
+
 const propTypes = {
   name: React.PropTypes.string,
   autoOpen: React.PropTypes.bool,
@@ -21,17 +24,21 @@ const propTypes = {
   multiple: React.PropTypes.bool,
   typeahead: React.PropTypes.bool,
   clearable: React.PropTypes.bool,
+  valueless: React.PropTypes.bool,
   className: React.PropTypes.string,
   placeholder: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
+  onPendingDeleteChange: React.PropTypes.func,
   popoverClassName: React.PropTypes.string,
   size: React.PropTypes.oneOf(['tiny', 'small']),
 };
 
 const defaultProps = {
+  onPendingDeleteChange: () => {},
   placeholder: 'Select...',
   disablePortal: false,
   clearable: false,
+  valueless: false,
   typeahead: true,
   disabled: false,
   multiple: false,
@@ -58,40 +65,33 @@ const formatOptions = options => options.map((o, idx) => {
   return option;
 });
 
-const shouldComponentUpdate = (currentOptions, newOptions) => {
-  let update = false;
-  newOptions = formatOptions(newOptions);
-
-  newOptions.forEach((option, i) => {
-    if (
-      !update &&
-      currentOptions[0] &&
-      currentOptions[i] &&
-      (currentOptions[i].id !== option.id || currentOptions[i].selected !== option.selected)
-    ) {
-      update = true;
-    }
-  });
-
-  return update;
-};
-
 /**
- * `Select` allows the user to select an item from a list.
+ * `Select` allows the user to select an item from a list. Selects provide for three use cases:
+ *   * Selecting an option from a list
+ *   * Selecting multiple options from a list
+ *   * TODO: Creating a list of options.
+ *
+ * `Select` is a stateful component but allows the user to modify the state by passing an updated
+ * `options` prop, or listen to changes to the state by passing a callback to the `onSelect` prop.
  */
 class Select extends React.Component {
   constructor(props) {
     super(props);
 
+    const selected = formatOptions(props.options)
+      .filter(o => o.selected);
+
     this.state = {
+      pendingBackDelete: false,
       inputValue: undefined,
       open: false,
-      options: formatOptions(props.options),
+      selected,
     };
 
     this.onClear = this.onClear.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
     this.onChevronClick = this.onChevronClick.bind(this);
   }
 
@@ -102,8 +102,19 @@ class Select extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (shouldComponentUpdate(newProps.options, this.state.options)) {
-      this.setState({ options: formatOptions(newProps.options) });
+    const selected = formatOptions(newProps.options)
+      .filter(o => o.selected);
+
+    this.setState({ selected });
+  }
+
+  onChange(selected, option) {
+    if (!this.props.multiple) {
+      selected = selected[0];
+    }
+
+    if (this.props.onSelect) {
+      this.props.onSelect(selected, option);
     }
   }
 
@@ -112,12 +123,32 @@ class Select extends React.Component {
       e.preventDefault();
     }
 
-    if (this.props.onSelect) {
-      this.props.onSelect(null);
-    }
+    this.onChange([]);
 
     this.clearInput();
     this.setState({ open: false }, this.close);
+  }
+
+  onBackPress() {
+    if (typeof this.state.inputValue !== 'undefined') {
+      return;
+    }
+    const newState = {};
+
+    if (this.state.pendingBackDelete) {
+      const selected = this.state.selected;
+      const removed = selected.pop();
+
+      this.onChange(selected, removed);
+
+      newState.selected = selected;
+      newState.pendingBackDelete = false;
+    } else {
+      newState.pendingBackDelete = true;
+    }
+
+    this.props.onPendingDeleteChange(newState.pendingBackDelete);
+    this.setState(newState);
   }
 
   onChevronClick(e) {
@@ -128,8 +159,12 @@ class Select extends React.Component {
     this.open();
   }
 
-  onKeyDown(e) {
+  onKeyUp(e) {
     switch (e.keyCode) {
+      case BACK_KEY_CODE:
+        this.onBackPress();
+
+        break;
       case TAB_KEY_CODE:
       case ESC_KEY_CODE:
         this.setState({ open: false }, this.close);
@@ -144,52 +179,42 @@ class Select extends React.Component {
     const newState = { open: false, inputValue: undefined };
 
     if (option.selectable || typeof option.selectable === 'undefined') {
-      newState.options = this.state.options.map((o) => {
-        if (o.id === option.id) {
-          o.selected = !o.selected;
-        } else if (!this.props.multiple) {
-          o.selected = false;
-        }
-
-        return o;
-      });
+      if (this.state.selected.indexOf(option) >= 0) {
+        newState.selected = this.state.selected.filter(o => o.id !== option.id);
+      } else if (this.props.multiple) {
+        newState.selected = [...this.state.selected, option];
+      } else {
+        newState.selected = [option];
+      }
     }
 
-    this.close();
-
-    if (this.props.onSelect) {
-      this.props.onSelect(option);
+    if (!this.props.multiple || this.props.valueless) {
+      this.close();
     }
+
+    this.onChange(newState.selected || this.state.selected, option);
 
     this.setState(newState);
   }
 
-  getCurrentValue() {
+  getInputValue() {
     let value = '';
 
-    if (!this.props.multiple) {
-      if (typeof this.state.inputValue !== 'undefined') {
-        value = this.state.inputValue;
-      } else {
-        this.state.options.forEach((option) => {
-          if (option.selected) {
-            value = option.label;
-          }
-        });
-      }
+    if (typeof this.state.inputValue !== 'undefined') {
+      value = this.state.inputValue;
+    } else if (this.state.selected.length && !this.props.multiple) {
+      value = this.state.selected[0].label;
     }
 
     return value;
   }
 
+  getOptions() {
+    return formatOptions(this.props.options);
+  }
+
   clearInput() {
-    const options = this.state.options.map((o) => {
-      o.selected = false;
-
-      return o;
-    });
-
-    this.setState({ inputValue: '', options });
+    this.setState({ inputValue: '', selected: [] });
   }
 
   open() {
@@ -200,17 +225,19 @@ class Select extends React.Component {
   close() {
     this.popover.close();
     this.input.blur();
+
+    this.setState({ pendingBackDelete: false });
+    this.props.onPendingDeleteChange(false);
   }
 
   renderMenuList() {
-    let options = this.state.options;
+    let options = this.getOptions();
 
-    const selected = this.state.options
-      .filter(o => o.selected)
+    const selected = this.state.selected
       .map(o => o.id);
 
     if (this.props.typeahead) {
-      options = filterOptions(this.state.options, this.state.inputValue);
+      options = filterOptions(options, this.state.inputValue);
     }
 
     return (
@@ -236,10 +263,11 @@ class Select extends React.Component {
   }
 
   renderActions() {
-    const value = this.getCurrentValue();
+    const selected = this.renderSelected();
+    const value = this.getInputValue();
     const actions = [];
 
-    if (this.props.clearable && value) {
+    if (this.props.clearable && (value || selected.length)) {
       actions.push(
         <a key="clear" role="button" tabIndex={ 0 } className="rc-select-action" onClick={ this.onClear } >
           <Icon width="10px" height="100%" type="close" />
@@ -260,23 +288,49 @@ class Select extends React.Component {
     );
   }
 
+  renderSelected() {
+    let selected = [];
+
+    if (this.props.multiple && !this.props.valueless) {
+      const selectedCount = this.state.selected.length;
+
+      selected = this.state.selected
+        .map((option, index) => (
+          <SelectItem
+            highlighted={ this.state.pendingBackDelete && index === selectedCount - 1 }
+            value={ option.label }
+          />
+        ));
+    }
+
+    return selected;
+  }
+
   renderInput() {
+    const selected = this.renderSelected();
+    let placeholder;
+
+    if (!this.props.multiple || !selected.length) {
+      placeholder = this.props.placeholder;
+    }
+
     const input = (
       <Input
         dropdown
+        placeholder={ placeholder }
         name={ this.props.name }
-        onKeyDown={ this.onKeyDown }
+        onKeyUp={ this.onKeyUp }
         onChange={ e => this.setState({ inputValue: e.target.value }) }
-        value={ this.getCurrentValue() }
+        value={ this.getInputValue() }
         size={ this.props.size }
         ref={ (c) => { this.input = c; } }
         disabled={ this.props.disabled }
-        placeholder={ this.props.placeholder }
       />
     );
 
     return (
       <div className="rc-select-input">
+        { selected }
         { input }
       </div>
     );
@@ -292,6 +346,7 @@ class Select extends React.Component {
     const popoverClassName = classnames('rc-select-popover', this.props.popoverClassName);
     const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
       'rc-select-disabled': this.props.disabled,
+      'rc-select-multiple': this.props.multiple,
       [`rc-select-${this.props.size}`]: this.props.size,
     });
     let jsx = (
@@ -314,7 +369,6 @@ class Select extends React.Component {
           margin={ 4 }
           allowBubble
           padding={ false }
-          openEvent="onFocus"
         >
           { menu }
         </Popover>

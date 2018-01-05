@@ -6,10 +6,47 @@ const options = [
 ];
 
 <Select
-  onSelect={o => console.log(o)}
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
 />
+```
+
+Multiselect:
+
+```
+const options = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
+<Select
+  multiple
+  options={ options }
+/>
+```
+
+Tiny Multiselect:
+
+```
+const options = [
+  { value: 'Geoff', label: 'Geoff', selected: true },
+  { value: 'Sig', label: 'Sig' },
+  { value: 'Colby', label: 'Colby' },
+];
+
+<Select
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  multiple
+  size="tiny"
+  options={ options }
+/>
+
 ```
 
 Select with `autoOpen` enabled:
@@ -22,7 +59,7 @@ const options = [
 ];
 
 <Select
-  onSelect={o => console.log(o)}
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   autoOpen
   options={ options }
 />
@@ -42,9 +79,9 @@ const options = [
 Select with custom actions:
 
 ```
-const onSelect = (option) => {
-  console.log(option);
-  if (option.value === 'new') {
+const onSelect = (selected, modifiedOption) => {
+  console.log(selected, modifiedOption);
+  if (modifiedOption.value === 'new') {
     alert('Adding a new drink');
   }
 }
@@ -74,7 +111,7 @@ const options = [
 ];
 
 <Select
-  onSelect={o => console.log(o)}
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   disablePortal
   options={ options }
   placeholder="Select one..."
@@ -91,7 +128,7 @@ const options = [
 ];
 
 <Select
-  onSelect={o => console.log(o)}
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   size="tiny"
   options={ options }
 />
