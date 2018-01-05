@@ -1,6 +1,6 @@
 import jsdom from 'mocha-jsdom';
 import sinon from 'sinon';
-import { shallow, mount } from 'enzyme';
+import { shallow, mount, render } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
@@ -8,6 +8,18 @@ import Input from '../source/react/library/Input';
 
 describe('<Input />', () => {
   jsdom({ skipWindowCheck: true });
+
+  it('should have an accessible ref available to the input element so that we can get the value from an uncontrolled input', () => {
+    const wrapper = mount(<Input />);
+
+    expect(wrapper.instance().input.nodeName).to.equal('INPUT');
+  });
+
+  it('should have an accessible ref available to the textarea element so that we can get the value from an uncontrolled input', () => {
+    const wrapper = mount(<Input multiline />);
+
+    expect(wrapper.instance().input.nodeName).to.equal('TEXTAREA');
+  });
 
   it('should respond to click events if onClick is provided', () => {
     const onClick = sinon.spy();
