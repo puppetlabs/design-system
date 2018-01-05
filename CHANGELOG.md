@@ -1,3 +1,7 @@
+# 0.4.0
+
+* Adding actions to dropdowns and dropdown menus
+
 # 0.3.8 
 
 * Cleaning up the button component and updating the design of the split button to match our new design system
