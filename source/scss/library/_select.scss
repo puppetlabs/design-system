@@ -92,7 +92,12 @@
     border: 0;
     box-shadow: none;
   }
+}
 
+.rc-select-disabled {
+  .rc-select-input {
+    @extend %disabled-input;
+  }
 }
 
 .rc-select-wrapper {

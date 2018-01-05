@@ -152,8 +152,4 @@ describe('<Select />', () => {
     // This should remain the same.
     expect(wrapper.find('Input').prop('value')).to.eql('Tea');
   });
-
-  context('multi select', () => {
-  
-  });
 });

@@ -4,6 +4,11 @@
   box-shadow: $reflect-selected-shadow;
 }
 
+%disabled-input {
+  background: $reflect-input-disabled-bg;
+  color: $reflect-input-disabled-color;
+}
+
 %input {
   background: $reflect-input-bg;
   border: $reflect-input-border;
@@ -38,8 +43,7 @@
 
 
   &[disabled] {
-    background: $reflect-input-disabled-bg;
-    color: $reflect-input-disabled-color;
+    @extend %disabled-input;
   }
 
   &.rc-input-large {
