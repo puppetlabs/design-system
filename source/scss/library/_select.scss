@@ -41,11 +41,20 @@
   display: inline;
 }
 
+.rc-select-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .rc-select-item-highlighted {
   box-shadow: $reflect-select-item-highlighted-shadow;
 }
 
 .rc-select-small {
+  .rc-select-items {
+    padding: $reflect-select-small-item-margin;
+  }
+
   .rc-select-item {
     font-size: $reflect-select-small-item-font-size;
     margin: $reflect-select-small-item-margin;
@@ -54,6 +63,10 @@
 }
 
 .rc-select-tiny {
+  .rc-select-items {
+    padding: $reflect-select-tiny-item-margin;
+  }
+
   .rc-select-item {
     font-size: $reflect-select-tiny-item-font-size;
     margin: $reflect-select-tiny-item-margin;

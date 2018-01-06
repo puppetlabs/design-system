@@ -121,7 +121,7 @@ const yAxisFlyout = (
       label="metrics"
     />
   </Form.Section>
-  <Form.Section title="Y-Axis" tooltip="Edit the Y Axis here" flyout={ yAxisFlyout }>
+  <Form.Section title="Y-Axis" flyout={ yAxisFlyout }>
     <Form.Field
       type="input"
       name="yAxisMetrics"

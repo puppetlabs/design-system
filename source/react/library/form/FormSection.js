@@ -21,7 +21,7 @@ class FormSection extends React.Component {
 
     let jsx = (
       <legend className="rc-form-section-legend">
-        { title }
+        <span>{ title }</span>
         { this.props.flyout }
       </legend>
     );

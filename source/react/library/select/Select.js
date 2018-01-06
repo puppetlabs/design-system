@@ -303,7 +303,11 @@ class Select extends React.Component {
         ));
     }
 
-    return selected;
+    return (
+      <div className="rc-select-items">
+        { selected }
+      </div>
+    );
   }
 
   renderInput() {
