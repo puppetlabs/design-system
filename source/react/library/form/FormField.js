@@ -153,12 +153,18 @@ class FormField extends React.Component {
           );
           break;
         case 'input':
+          let value = '';
+
+          if (typeof this.props.value === 'string') {
+            value = this.props.value;
+          }
+
           jsx = (
             <Input
               name={ this.props.name }
               size={ this.props.size }
               onChange={ this.onChange }
-              value={ this.props.value || '' }
+              value={ value }
               { ...elementProps }
             />
           );

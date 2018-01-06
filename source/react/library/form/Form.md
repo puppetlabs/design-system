@@ -17,7 +17,7 @@ const movieOptions = [
     type="input"
     name="lastName"
     label="Last name"
-    value="Ice cream"
+    value={ true }
     elementProps={ { placeholder: 'Enter your first name...' } }
     description="Please enter your last name"
   />
