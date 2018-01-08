@@ -102,9 +102,20 @@
 
 .rc-menu-item-with-icon .rc-icon {
   position: absolute;
-  right: $reflect-dropdown-padding;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.rc-menu-item-with-icon-left a {
+  padding-left: $reflect-dropdown-padding * 3;
+
+  .rc-icon {
+    left: $reflect-dropdown-padding;
+  }
+}
+
+.rc-menu-item-with-icon-right .rc-icon {
+  right: $reflect-dropdown-padding;
 }
 
 .rc-menu-item-disabled a {

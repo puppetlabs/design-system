@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 const propTypes = {
+  iconPosition: React.PropTypes.oneOf(['right', 'left']),
   option: React.PropTypes.object.isRequired,
   className: React.PropTypes.string,
   selected: React.PropTypes.bool,
@@ -11,6 +12,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  iconPosition: 'right',
   onClick: () => {},
   selected: false,
   disabled: false,
@@ -51,6 +53,7 @@ class MenuItem extends React.Component {
       'rc-menu-item-with-icon': icon,
       'rc-menu-item-selected': this.props.selected,
       'rc-menu-item-disabled': this.props.option.disabled,
+      [`rc-menu-item-with-icon-${this.props.iconPosition}`]: icon,
     });
 
     let value = option.value;
@@ -62,8 +65,8 @@ class MenuItem extends React.Component {
     return (
       <li className={ className }>
         <a href={ option.id } className="rc-menu-item-anchor" onClick={ this.onClick }>
-          { value }
           { icon }
+          { value }
         </a>
       </li>
     );
