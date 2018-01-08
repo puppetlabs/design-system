@@ -12,20 +12,19 @@ const propTypes = {
 const defaultProps = {
 };
 
-class FormFlyout extends React.Component {
-  renderTarget() {
-    return (
-      <a className="rc-form-section-flyout-target">
-        <Icon height="12px" width="12px" type="gear" />
-      </a>
-    );
-  }
+const renderTarget = () => (
+  <a className="rc-form-section-flyout-target">
+    <Icon height="12px" width="12px" type="gear" />
+  </a>
+);
 
+
+class FormFlyout extends React.Component {
   render() {
     let jsx = null;
 
     if (this.props.children) {
-      const target = this.renderTarget();
+      const target = renderTarget();
 
       jsx = (
         <Popover
