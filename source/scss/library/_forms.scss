@@ -15,6 +15,10 @@
   padding: 0;
 }
 
+.rc-form-section {
+  margin-bottom: 16px;
+}
+
 .rc-form-flyout {
   padding: $reflect-form-field-margin;
 }
@@ -49,7 +53,6 @@
 .rc-form-field-description {
   color: $reflect-form-description-color;
   font-size: $reflect-form-description-font-size;
-  padding-top: $reflect-form-vertical-padding;
 }
 
 .rc-form-actions {
