@@ -1,0 +1,42 @@
+.rc-slider {
+  height: $reflect-slider-handle-size;
+  position: relative;
+}
+
+.rc-slider-bar,
+%rc-slider-bar {
+  background: $reflect-slider-bg;
+  border-radius: $reflect-slider-bar-height;
+  display: block;
+  height: $reflect-slider-bar-height;
+  left: 0;
+  position: absolute;
+  top: $reflect-slider-bar-position;
+  width: 100%;
+}
+
+.rc-slider-bar-active {
+  @extend %rc-slider-bar;
+  background: $reflect-slider-bg-active;
+  width: 0;
+}
+
+.rc-slider-handle {
+  background: $reflect-white;
+  border: 3px solid $reflect-brand-primary;
+  border-radius: $reflect-slider-handle-size;
+  cursor: move; /* fallback if grab cursor is unsupported */
+  cursor: grab;
+  display: block;
+  height: $reflect-slider-handle-size;
+  left: -($reflect-slider-handle-size / 2);
+  outline: none;
+  position: absolute;
+  top: 0;
+  width: $reflect-slider-handle-size;
+}
+
+.rc-slider-handle:hover,
+.rc-slider-handle:focus {
+  transform: scale(1.4);
+}

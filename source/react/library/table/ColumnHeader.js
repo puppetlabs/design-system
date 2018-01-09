@@ -6,6 +6,11 @@ const propTypes = {
   onClick: React.PropTypes.func,
 };
 
+const defaultProps = {
+  column: null,
+  onClick: null,
+};
+
 class ColumnHeader extends React.Component {
 
   constructor(props) {
@@ -37,5 +42,6 @@ class ColumnHeader extends React.Component {
 }
 
 ColumnHeader.propTypes = propTypes;
+ColumnHeader.defaultProps = defaultProps;
 
 export default ColumnHeader;

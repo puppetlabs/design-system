@@ -10,7 +10,6 @@ const propTypes = {
   unbindShortcut: React.PropTypes.func,
   bindShortcut: React.PropTypes.func,
   onClose: React.PropTypes.func,
-  children: React.PropTypes.any,
   margin: React.PropTypes.number,
   /** Height in px */
   height: React.PropTypes.string,
@@ -30,32 +29,28 @@ const propTypes = {
     React.PropTypes.string,
     React.PropTypes.object,
   ]),
+  children: React.PropTypes.any,
 };
 
 const defaultProps = {
+  unbindShortcut: null,
+  bindShortcut: null,
+  onClose: null,
+  margin: 200,
+  height: null,
+  size: null,
+  sidebar: null,
+  actions: null,
+  actionsCTA: '',
   sidebarPosition: 'right',
+  modalClassName: '',
+  overlayClassName: '',
+  children: null,
 };
 
 function setBodyOverflow(value) {
   const body = document.getElementsByTagName('body')[0];
   body.style.overflow = value;
-}
-
-function getDefaultState(props) {
-  const state = {
-    previousContentScroll: 0,
-    height: null,
-    margin: 200,
-  };
-
-  if (props.margin) {
-    state.margin = props.margin;
-  } else if (props.height) {
-    state.margin = null;
-    state.height = props.height;
-  }
-
-  return state;
 }
 
 /**
@@ -72,7 +67,11 @@ class Modal extends React.Component {
     this.onClose = this.onClose.bind(this);
     this.onResize = debounce(this.onResize.bind(this), 250);
 
-    this.state = getDefaultState(props);
+    this.state = {
+      previousContentScroll: 0,
+      margin: props.height ? null : props.margin,
+      height: props.margin ? null : props.height,
+    };
   }
 
   componentDidMount() {

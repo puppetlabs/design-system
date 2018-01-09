@@ -3,12 +3,13 @@ import classnames from 'classnames';
 import MenuItem from './MenuItem';
 
 const propTypes = {
-  options: React.PropTypes.array,
+  size: React.PropTypes.oneOf(['tiny', 'small', 'medium']),
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
     React.PropTypes.number,
   ]),
+  options: React.PropTypes.array,
   multiple: React.PropTypes.bool,
   onChange: React.PropTypes.func,
 };
@@ -17,6 +18,7 @@ const defaultProps = {
   options: [],
   selected: '',
   multiple: false,
+  size: null,
   onChange: null,
 };
 
@@ -34,13 +36,18 @@ class MenuList extends React.Component {
   }
 
   render() {
-    const { selected, options, multiple } = this.props;
+    const {
+      multiple,
+      selected,
+      options,
+      size,
+    } = this.props;
     const className = classnames('rc-menu-list', {
+      [`rc-menu-list-${size}`]: size,
       'rc-menu-multiple': multiple,
     });
-    const jsx = [];
 
-    options.forEach((option) => {
+    const jsx = options.map((option) => {
       let isSelected = false;
 
       if (Array.isArray(selected)) {
@@ -49,14 +56,15 @@ class MenuList extends React.Component {
         isSelected = selected === option.id;
       }
 
-      jsx.push(
+      return (
         <MenuItem
           key={ option.id }
           option={ option }
+          className={ option.className }
           selected={ isSelected }
           onClick={ this.onChange }
           multiple={ multiple }
-        />,
+        />
       );
     });
 

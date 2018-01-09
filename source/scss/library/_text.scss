@@ -4,17 +4,26 @@
   box-shadow: $reflect-selected-shadow;
 }
 
-.rc-input {
+%disabled-input {
+  background: $reflect-input-disabled-bg;
+  color: $reflect-input-disabled-color;
+}
+
+%input {
   background: $reflect-input-bg;
   border: $reflect-input-border;
   border-radius: $reflect-input-border-radius;
   color: $reflect-input-color;
   outline: none;
-  padding: $reflect-input-padding;
-
   // Really only applies when .rc-input is a textarea
-  resize: vertical;
   width: 100%;
+}
+
+.rc-input {
+  @extend %input;
+  font-size: $reflect-font-size-base;
+  height: $reflect-input-height;
+  padding: $reflect-input-padding;
 
   &.rc-input-error {
     border: $reflect-input-border-error;
@@ -24,32 +33,49 @@
     @extend %focused-input;
   }
 
+  &:hover {
+    border: $reflect-input-hover-border;
+  }
+
+  &::placeholder {
+    color: $reflect-input-hover-color;
+  }
+
+
   &[disabled] {
-    background: $reflect-input-disabled-bg;
-    color: $reflect-input-disabled-color;
+    @extend %disabled-input;
   }
 
   &.rc-input-large {
     font-size: $reflect-font-size-large;
-    height: 60px;
+    height: $reflect-input-large-height;
+    line-height: $reflect-line-height-default;
     padding: $reflect-input-large-padding;
   }
 
-  &.rc-input-small {
-    font-size: $reflect-font-size-small;
-    line-height: $reflect-medium;
-    padding: $reflect-input-small-padding;
+  &.rc-input-medium { // Same as default
   }
 
+  &.rc-input-small,
   &.rc-input-tiny {
-    font-size: $reflect-font-size-tiny;
-    line-height: $reflect-medium;
-    padding: $reflect-input-tiny-padding;
+    font-size: $reflect-font-size-small;
+    height: $reflect-input-small-height;
+    padding: $reflect-input-small-padding;
   }
 
   &::placeholder {
     color: $reflect-input-placeholder-color;
   }
+}
+
+.rc-input-multiline,
+.rc-input-medium.rc-input-multiline {
+  height: 64px;
+  resize: vertical;
+}
+
+.rc-input-small.rc-input-multiline {
+  height: 48px;
 }
 
 .rc-input-icon {
@@ -65,22 +91,23 @@
   }
 }
 
-.rc-input-simple {
+.rc-input-simple,
+.rc-input-simple:hover {
   background: $reflect-input-simple-bg;
   border-bottom-width: 1px;
   border-left: 0;
   border-radius: 0;
   border-right: 0;
   border-top: 0;
+}
 
-  &:focus {
-    background: $reflect-input-simple-focus-bg;
-    border-bottom-width: 1px;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    box-shadow: none;
-  }
+.rc-input-simple:focus {
+  background: $reflect-input-simple-focus-bg;
+  border-bottom-width: 1px;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  box-shadow: none;
 }
 
 .rc-input-hidden {

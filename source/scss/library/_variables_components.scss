@@ -18,8 +18,9 @@ $reflect-accordion-item-content-padding      : $reflect-medium !default;
 $reflect-accordion-icon-color                : $reflect-icon-fill !default;
 $reflect-accordion-icon-color-hover          : $reflect-icon-fill-hover !default;
 
-$reflect-accordion-header-title-color        : $reflect-font-color-medium !default;
+$reflect-accordion-header-title-color        : $reflect-white !default;
 $reflect-accordion-header-height             : 42px;
+$reflect-accordion-header-bg                 : $reflect-gray-darker !default;
 
 $reflect-accordion-animation-speed           : $reflect-animation-speed-base !default;
 
@@ -41,24 +42,28 @@ $reflect-blank-slate-max-width               : 500px !default;
 $reflect-button-border-radius                : $reflect-border-radius !default;
 $reflect-floating-action-button-height       : $reflect-giant !default;
 $reflect-button-badge-size                   : $reflect-small !default;
-
-// Button Sizes
-$reflect-button-font-family                  : 'Montserrat', sans-serif !default;
-$reflect-button-font-weight                  : normal !default;
+$reflect-button-font-family                  : 'Source Sans Pro', sans-serif !default;
+$reflect-button-font-weight                  : $reflect-font-weight-heavy !default;
 $reflect-button-text-case                    : uppercase !default;
+
+// Default Buttons
 $reflect-button-font-size                    : $reflect-font-size-small !default;
-$reflect-button-height                       : 44px !default; // Todo: Base on grid
-$reflect-button-padding                      : $reflect-medium !default; //left and right padding
+$reflect-button-height                       : $reflect-huge !default;
+$reflect-button-padding                      : $reflect-medium !default;
 
 // Tiny Buttons
 $reflect-button-tiny-font-size               : $reflect-font-size-tiny !default;
 $reflect-button-tiny-height                  : 22px !default; // Todo: Base on grid
 $reflect-button-tiny-padding                 : $reflect-button-padding / 4 !default;
 
-$reflect-button-small-font-size              : $reflect-font-size-small !default;
-$reflect-button-small-height                 : $reflect-huge !default; // Todo: Base on grid
-$reflect-button-small-padding                : $reflect-button-padding / 2 !default;
 
+// Small Buttons
+$reflect-button-small-font-size              : $reflect-font-size-small !default;
+$reflect-button-small-height                 : $reflect-large !default; // Todo: Base on grid
+$reflect-button-small-padding                : $reflect-small !default;
+
+
+// Large
 $reflect-button-large-font-size              : $reflect-font-size-base !default;
 $reflect-button-large-height                 : 60px !default; // Todo: Base on grid
 $reflect-button-large-padding                : $reflect-button-padding * 1.5 !default;
@@ -93,15 +98,18 @@ $reflect-button-clear-icon-color-hover       : $reflect-gray-dark !default;
 $reflect-button-clear-border-color           : transparent !default;
 $reflect-button-clear-border-color-hover     : transparent !default;
 
+// Simple Buttons
+$reflect-button-simple-bg                     : transparent !default;
+$reflect-button-simple-bg-hover               : transparent !default;
+$reflect-button-simple-color                  : $reflect-gray-dark !default;
+$reflect-button-simple-color-hover            : $reflect-action-color !default;
+$reflect-button-simple-icon-color             : $reflect-gray-dark !default;
+$reflect-button-simple-icon-color-hover       : $reflect-action-color !default;
+$reflect-button-simple-border-color           : transparent !default;
+$reflect-button-simple-border-color-hover     : transparent !default;
+
 // Disabled Buttons
-$reflect-button-disabled-bg                  : $reflect-disabled-color !default;
-$reflect-button-disabled-bg-hover            : $reflect-disabled-color !default;
-$reflect-button-disabled-color               : $reflect-disabled-text !default;
-$reflect-button-disabled-color-hover         : $reflect-disabled-text !default;
-$reflect-button-disabled-icon-color          : $reflect-disabled-icon !default;
-$reflect-button-disabled-icon-color-hover    : $reflect-disabled-icon-hover !default;
-$reflect-button-disabled-border-color        : $reflect-disabled-border !default;
-$reflect-button-disabled-border-color-hover  : $reflect-disabled-border-hover !default;
+$reflect-button-disabled-opacity             : 0.5 !default;
 
 // Errored Buttons
 $reflect-button-error-bg                     : $reflect-danger-color !default;
@@ -134,7 +142,7 @@ $reflect-card-controls-size                  : $reflect-font-size-small !default
 $reflect-card-controls-color                 : $reflect-font-color-medium !default;
 $reflect-card-search-margin                  : $reflect-medium 0 0 !default; // Todo: Base on grid
 
-$reflect-card-description-font-size          : $reflect-font-size-small !default;
+$reflect-card-description-font-size          : $reflect-font-size-tiny !default;
 
 // Card Color
 $reflect-card-action-color-active            : $reflect-active-color !default;
@@ -225,10 +233,21 @@ $reflect-dropdown-item-disabled-bg           : $reflect-gray-light !default;
 
 // Forms
 // ----------------------------------------------------------------------------
-$reflect-form-label-font-size                : $reflect-font-size-small !default;
-$reflect-form-label-margin-bottom            : 6px !default; // Todo: Base on grid
-$reflect-form-label-case                     : none !default;
-$reflect-form-label-color                    : $reflect-font-color-subtle !default;
+$reflect-form-vertical-padding               : $reflect-tiny !default;
+$reflect-form-label-font-weight              : $reflect-font-weight-heavy !default;
+$reflect-form-label-color                    : $reflect-gray-dark !default;
+$reflect-form-label-font-size                : $reflect-font-size-tiny !default;
+$reflect-form-description-color              : $reflect-gray !default;
+$reflect-form-description-font-size          : $reflect-font-size-tiny !default;
+
+$reflect-form-section-legend-font-size       : $reflect-font-size-base !default;
+$reflect-form-section-legend-font-weight     : $reflect-font-weight-heavy !default;
+$reflect-form-section-legend-color           : $reflect-gray-darker !default;
+$reflect-form-section-flyout-icon-color      : $reflect-gray-light !default;
+
+$reflect-form-field-margin                   : $reflect-small !default;
+
+$reflect-form-tiny-label-font-size           : $reflect-font-size-tiny * 0.9 !default;
 
 // Filters
 // ----------------------------------------------------------------------------
@@ -249,6 +268,12 @@ $reflect-filter-split-bg                     : $reflect-gray-light !default;
 $reflect-filter-split-menu-bg                : darken($reflect-filter-split-bg, 10%) !default;
 $reflect-filter-split-menu-bg-hover          : darken($reflect-filter-split-menu-bg, 10%) !default;
 
+$reflect-filters-filter-bg                   : $reflect-brand-primary !default;
+$reflect-filters-filter-bg-hover             : darken($reflect-brand-primary, 10%) !default;
+$reflect-filters-filter-color                : $reflect-white !default;
+$reflect-filters-filter-action-color         : lighten($reflect-brand-primary, 15%) !default;
+$reflect-filters-form-border                 : $reflect-border !default;
+
 // Input
 // ----------------------------------------------------------------------------
 $reflect-input-color                         : $reflect-font-color-base !default;
@@ -257,28 +282,50 @@ $reflect-input-focus-bg                      : $reflect-white !default;
 $reflect-input-border                        : $reflect-border !default;
 $reflect-input-border-radius                 : $reflect-border-radius !default;
 $reflect-input-border-error                  : 1px solid $reflect-danger-color !default;
+$reflect-input-height                        : $reflect-huge !default;
 $reflect-input-padding                       : $reflect-small !default;
 $reflect-input-placeholder-color             : $reflect-font-color-subtle !default;
+
+$reflect-input-hover-color                   : $reflect-brand-primary !default;
+$reflect-input-hover-border                  : 1px solid $reflect-brand-primary !default;
 
 $reflect-input-disabled-bg                   : $reflect-bg-subtle !default;
 $reflect-input-disabled-color                : $reflect-font-color-subtle !default;
 
-$reflect-input-large-height                  : $reflect-giant !default;
-$reflect-input-large-padding                 : 0 $reflect-large !default;
-$reflect-input-small-padding                 : $reflect-small !default;
-$reflect-input-tiny-padding                  : $reflect-mini $reflect-tiny !default;
+$reflect-input-small-height                  : $reflect-size-base * 3 !default; // 24px
+$reflect-input-large-height                  : $reflect-size-base * 8 !default; // 40px
+
+$reflect-input-large-padding                 : $reflect-large !default;
+$reflect-input-small-padding                 : $reflect-tiny !default;
+$reflect-input-tiny-padding                  : $reflect-tiny !default;
 
 $reflect-input-simple-bg                     : transparent !default;
 $reflect-input-simple-focus-bg               : transparent !default;
 
+$reflect-checkbox-border                     : $reflect-border !default;
+$reflect-checkbox-border-radius              : $reflect-border-radius !default;
+$reflect-checkbox-padding                    : $reflect-small !default;
+$reflect-checkbox-icon-color                 : $reflect-brand-primary !default;
+
+$reflect-checkbox-hover-border-color         : $reflect-brand-primary !default;
+$reflect-checkbox-disabled-icon-color        : $reflect-gray !default;
+$reflect-checkbox-disabled-border-color      : $reflect-border-color !default;
+
 // Select
 // ----------------------------------------------------------------------------
 $reflect-select-color                        : $reflect-input-color !default;
-$reflect-select-border-active                : $reflect-border-active !default;
 $reflect-select-border-radius                : $reflect-input-border-radius !default;
 $reflect-select-selected-shadow              : $reflect-selected-shadow !default;
 $reflect-select-menu-bg                      : $reflect-white !default;
 
+$reflect-select-item-bg                      : $reflect-brand-primary !default;
+$reflect-select-item-highlighted-shadow      : $reflect-selected-shadow-hover !default;
+$reflect-select-item-color                   : $reflect-white !default;
+$reflect-select-item-border-radius           : $reflect-circle-radius !default;
+
+// Tiny Inputs to be deprecated - not used
+$reflect-select-tiny-item-margin             : $reflect-mini 0 $reflect-mini $reflect-mini !default;
+$reflect-select-tiny-item-padding            : 0 $reflect-small !default;
 $reflect-select-label-font-size              : $reflect-font-size-small !default;
 $reflect-select-label-padding                : $reflect-small !default;
 $reflect-select-label-bg                     : $reflect-action-color-alt !default;
@@ -302,10 +349,14 @@ $reflect-list-item-border-radius             : $reflect-border-radius !default;
 $reflect-list-item-font-size                 : $reflect-font-size-base !default;
 $reflect-list-item-padding-v                 : $reflect-tiny !default;
 $reflect-list-item-padding-h                 : $reflect-small !default;
-$reflect-list-item-margin-bottom             : $reflect-small !default;
+$reflect-list-item-margin-bottom             : $reflect-mini !default;
 $reflect-list-item-icon-top                  : 2px !default; // Todo: Base on grid
 $reflect-list-item-icon-height               : 33px !default; // Todo: Base on grid
 $reflect-list-item-icon-width                : 16px !default; // Todo: Base on grid
+
+$reflect-list-item-tiny-font-size            : $reflect-font-size-tiny !default;
+$reflect-list-item-tiny-padding-v            : $reflect-tiny !default;
+$reflect-list-item-tiny-padding-h            : $reflect-tiny !default;
 
 // Menu
 // ----------------------------------------------------------------------------
@@ -314,19 +365,19 @@ $reflect-menu-item-border-focus              : $reflect-border-active-hover;
 $reflect-menu-item-border-active             : $reflect-border-active-hover;
 $reflect-menu-item-font-size                 : $reflect-font-size-small !default;
 $reflect-menu-item-font-weight               : $reflect-font-weight-heavy !default;
-$reflect-menu-item-line-height               : $reflect-font-size-base !default;
-$reflect-menu-item-height                    : $reflect-size-base * 5 !default;
+$reflect-menu-item-line-height               : $reflect-medium !default;
+$reflect-menu-item-height                    : $reflect-size-base * 4 !default;
 $reflect-menu-item-color                     : $reflect-font-color-base !default;
 $reflect-menu-item-icon-color                : $reflect-icon-fill !default;
 $reflect-menu-item-bg                        : transparent !default;
-$reflect-menu-item-padding                   : 0 $reflect-medium !default;
+$reflect-menu-item-padding                   : 0 $reflect-small !default;
 $reflect-menu-header-border                  : $reflect-border !default;
 
 // Menu States
 $reflect-menu-item-color-hover               : $reflect-brand-primary !default;
-$reflect-menu-item-bg-hover                  : $reflect-menu-item-bg !default;
+$reflect-menu-item-bg-hover                  : $reflect-gray-lighter !default;
 
-$reflect-menu-item-color-selected            : $reflect-bg-primary !default;
+$reflect-menu-item-color-selected            : $reflect-brand-primary !default;
 $reflect-menu-item-bg-selected               : $reflect-action-color !default;
 $reflect-menu-item-border-selected           : $reflect-border-active-hover !default;
 
@@ -421,8 +472,6 @@ $reflect-slidein-shadow                      : $reflect-outer-shadow-giant !defa
 // ----------------------------------------------------------------------------
 $reflect-stencil-bg                          : $reflect-bg-subtle !default;
 $reflect-stencil-height                      : 170px !default;
-$reflect-stencil-icon                        : $reflect-action-color !default;
-$reflect-stencil-icon-stroke                 : $reflect-stencil-bg !default;
 
 // Switch
 // ----------------------------------------------------------------------------
@@ -483,7 +532,7 @@ $reflect-tag-shadow-selected                 : $reflect-selected-shadow !default
 
 $reflect-tag-icon-spacing                    : $reflect-tiny !default;
 $reflect-tag-icon-size                       : 14px !default;
-
+$reflect-tag-icon-fill                       : $reflect-gray-lighter !default;
 
 $reflect-tag-tiny-case                       : uppercase !default;
 $reflect-tag-tiny-font-size                  : $reflect-font-size-tiny !default;
@@ -509,5 +558,13 @@ $reflect-tooltip-hint-elevation              : 24 !default;
 $reflect-tooltip-hint-max-width              : 168px !default;
 
 $reflect-tooltip-hint-close-bg               : $reflect-black !default;
+
+// Slider
+// ----------------------------------------------------------------------------
+$reflect-slider-bg                           : $reflect-gray-light !default;
+$reflect-slider-bg-active                    : $reflect-brand-primary !default;
+$reflect-slider-bar-height                   : $reflect-tiny !default;
+$reflect-slider-handle-size                  : 10px !default;
+$reflect-slider-bar-position                 : ($reflect-slider-handle-size - $reflect-slider-bar-height)/2 !default;
 
 /* stylelint-enable */

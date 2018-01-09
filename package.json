@@ -1,6 +1,6 @@
 {
   "name": "@reflect/reflect-components",
-  "version": "0.4.0",
+  "version": "1.0.0",
   "description": "A React component library to assist in the creation of user interfaces.",
   "main": "build/library.js",
   "scripts": {
@@ -9,11 +9,11 @@
     "prepublish": "npm run build",
     "watch": "nodemon --watch source -x \"npm run build\"",
     "test": "./node_modules/.bin/nyc --require=./test/jsdom.js --reporter=html ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
-    "js-lint": "./node_modules/.bin/eslint --ignore-pattern 'source/react/styleguide/*' --quiet 'source/react/**/*.js'",
+    "js-lint": "./node_modules/.bin/eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "./node_modules/.bin/stylelint 'source/scss/**/*.scss'",
     "start": "./node_modules/.bin/styleguidist server",
     "styleguide:build": "./node_modules/.bin/styleguidist build"
-},
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/reflect/reflect-components.git"
@@ -59,7 +59,7 @@
     "react-mousetrap": "^0.1.1",
     "react-portal": "3.0.0",
     "react-router": "^3.0.0",
-    "react-styleguidist": "6.0.33",
+    "react-styleguidist": "6.1.0",
     "sass-loader": "^4.0.2",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
@@ -79,6 +79,7 @@
     "moment-timezone": "0.5.13",
     "react-daterange-picker": "^1.1.0",
     "react-onclickoutside": "^6.7.0",
+    "react-sortable-hoc": "^0.6.8",
     "react-transition-group": "^2.2.1"
   }
 }

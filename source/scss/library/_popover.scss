@@ -3,6 +3,7 @@
   border: $reflect-popover-border;
   border-radius: $reflect-popover-border-radius;
   box-shadow: $reflect-popover-shadow;
+  overflow: hidden;
   padding: $reflect-popover-padding;
   position: absolute;
   z-index: $reflect-popover-elevation;

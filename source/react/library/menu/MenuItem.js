@@ -3,17 +3,17 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 const propTypes = {
-  onClick: React.PropTypes.func,
-  selected: React.PropTypes.bool,
   option: React.PropTypes.object.isRequired,
-  multiple: React.PropTypes.bool,
+  className: React.PropTypes.string,
+  selected: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
+  onClick: React.PropTypes.func,
 };
 
 const defaultProps = {
+  iconPosition: 'right',
   onClick: () => {},
   selected: false,
-  multiple: false,
   disabled: false,
 };
 
@@ -32,14 +32,21 @@ class MenuItem extends React.Component {
     }
   }
 
-  renderIcon() {
-    const option = this.props.option;
+  renderCheckmark() {
     let jsx;
 
-    if (this.props.selected && this.props.multiple) {
-      jsx = <Icon type="checkmark" height="16px" width="16px" />;
-    } else if (option.icon) {
-      jsx = <Icon type={ option.icon } height="16px" width="16px" />;
+    if (this.props.selected) {
+      jsx = <Icon type="check" height="12px" width="12px" />;
+    }
+
+    return jsx;
+  }
+
+  renderIcon() {
+    let jsx;
+
+    if (this.props.option.icon) {
+      jsx = <Icon type={ this.props.option.icon } height="16px" width="16px" />;
     }
 
     return jsx;
@@ -47,10 +54,11 @@ class MenuItem extends React.Component {
 
   render() {
     const option = this.props.option;
+    const checkmark = this.renderCheckmark();
     const icon = this.renderIcon();
-    const className = classnames('rc-menu-item', {
-      'rc-menu-item-with-icon': icon || this.props.multiple,
-      'rc-menu-item-selected': this.props.selected,
+    const className = classnames('rc-menu-item', this.props.className, {
+      'rc-menu-item-with-icon': icon,
+      'rc-menu-item-selected': checkmark,
       'rc-menu-item-disabled': this.props.option.disabled,
     });
 
@@ -64,7 +72,10 @@ class MenuItem extends React.Component {
       <li className={ className }>
         <a href={ option.id } className="rc-menu-item-anchor" onClick={ this.onClick }>
           { icon }
-          { value }
+          <span className="rc-menu-item-text">
+            { value }
+          </span>
+          { checkmark }
         </a>
       </li>
     );

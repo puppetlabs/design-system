@@ -43,3 +43,12 @@ Simple `Input` with icon:
 ```
 <Input simple icon />
 ```
+
+Number `Input`:
+```
+<Input
+  type="number"
+  value={ state.numberVal }
+  onChange={ (e) => { setState({ numberVal: parseInt(e.target.value) }) } }
+/>
+```

@@ -20,6 +20,7 @@ const propTypes = {
   children: React.PropTypes.any,
   /** Class name to apply to the `Accordion` container wrapper div */
   className: React.PropTypes.string,
+  icon: React.PropTypes.string,
 };
 
 const defaultProps = {
@@ -34,8 +35,6 @@ const defaultProps = {
 /**
  * `Accordion` renders multiple `AccordionItem`s, keeping track of which one is
  * open.
- *
- * @example ../../../../docs/Accordion.md
  */
 class Accordion extends React.Component {
   constructor(props) {
@@ -77,10 +76,21 @@ class Accordion extends React.Component {
   }
 
   renderHeader() {
+    let icon;
+
+    if (this.props.icon) {
+      icon = (
+        <span className="rc-accordion-header-icon">
+          <Icon width="16px" height="16px" type={ this.props.icon } />
+        </span>
+      );
+    }
+
     return (
       <div className="rc-accordion-header" key="header">
+        { icon }
         <span className="rc-accordion-header-title">{ this.props.title }</span>
-        <span className="rc-accordion-header-icon">
+        <span className="rc-accordion-header-action">
           <a href="" onClick={ this.onClose } >
             <Icon width="8px" height="8px" type="close" />
           </a>

@@ -3,7 +3,8 @@
   padding: 0;
 }
 
-.rc-list-unordered {
+.rc-list-unordered,
+.rc-list-dragging {
   list-style: none;
 }
 
@@ -32,25 +33,45 @@
   overflow: hidden;
   padding: $reflect-list-item-padding-v $reflect-list-item-padding-h;
   position: relative;
-  text-overflow: ellipsis;
-  white-space: nowrap;
   width: 100%;
+  word-wrap: break-word;
 
   .rc-list-item-text {
     flex: 1;
+    margin-bottom: auto;
+    margin-top: auto;
     overflow-x: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
   }
 
   .rc-list-item-actions {
+    background: $reflect-list-item-bg;
     display: flex;
+    height: 100%;
+    padding: 0 $reflect-list-item-padding-v * 2;
+    position: absolute;
+    right: $reflect-list-item-padding-h;
+    top: 0;
   }
 
   .rc-list-item-action {
     align-items: center;
+    cursor: pointer;
     display: flex;
     margin-left: $reflect-list-item-padding-h;
+  }
+
+  .rc-list-item-kebab {
+    margin-left: 0;
+  }
+
+  .rc-list-item-edit {
+    display: none;
+  }
+}
+
+.rc-list-item-link:hover {
+  .rc-list-item-edit {
+    display: flex;
   }
 }
 
@@ -59,5 +80,20 @@
     background: $reflect-list-item-bg-hover;
     color: $reflect-list-item-color-hover;
     cursor: pointer;
+  }
+}
+
+.rc-list-item-tiny {
+  .rc-list-item-link {
+    padding: $reflect-list-item-tiny-padding-v $reflect-list-item-tiny-padding-h;
+  }
+
+  .rc-list-item-text {
+    font-size: $reflect-list-item-tiny-font-size;
+  }
+
+  .rc-list-item-actions {
+    padding: 0 $reflect-list-item-tiny-padding-v;
+    right: $reflect-list-item-tiny-padding-h;
   }
 }

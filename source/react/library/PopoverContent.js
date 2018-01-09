@@ -14,10 +14,22 @@ const propTypes = {
   className: React.PropTypes.string,
   closeButton: React.PropTypes.bool,
   style: React.PropTypes.object,
-  children: React.PropTypes.any,
   hint: React.PropTypes.string,
   allowBubble: React.PropTypes.bool,
   onClose: React.PropTypes.func,
+  children: React.PropTypes.any,
+};
+
+const defaultProps = {
+  onOutsideClick: null,
+  menu: false,
+  className: '',
+  closeButton: false,
+  style: null,
+  hint: '',
+  allowBubble: false,
+  onClose: null,
+  children: null,
 };
 
 class PopoverContent extends React.Component {
@@ -115,6 +127,7 @@ class PopoverContent extends React.Component {
 }
 
 PopoverContent.propTypes = propTypes;
+PopoverContent.defaultProps = defaultProps;
 
 const PopoverContentWithoutPortal = togglable(PopoverContent);
 export { PopoverContentWithoutPortal };
