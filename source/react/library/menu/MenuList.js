@@ -4,7 +4,6 @@ import MenuItem from './MenuItem';
 
 const propTypes = {
   size: React.PropTypes.oneOf(['small', 'tiny']),
-  iconPosition: React.PropTypes.string,
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
@@ -38,7 +37,6 @@ class MenuList extends React.Component {
 
   render() {
     const {
-      iconPosition,
       multiple,
       selected,
       options,
@@ -66,7 +64,6 @@ class MenuList extends React.Component {
           selected={ isSelected }
           onClick={ this.onChange }
           multiple={ multiple }
-          iconPosition={ iconPosition }
         />
       );
     });

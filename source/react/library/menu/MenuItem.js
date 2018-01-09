@@ -3,7 +3,6 @@ import classnames from 'classnames';
 import Icon from '../Icon';
 
 const propTypes = {
-  iconPosition: React.PropTypes.oneOf(['right', 'left']),
   option: React.PropTypes.object.isRequired,
   className: React.PropTypes.string,
   selected: React.PropTypes.bool,
@@ -33,14 +32,21 @@ class MenuItem extends React.Component {
     }
   }
 
-  renderIcon() {
-    const option = this.props.option;
+  renderCheckmark() {
     let jsx;
 
     if (this.props.selected) {
       jsx = <Icon type="check" height="12px" width="12px" />;
-    } else if (option.icon) {
-      jsx = <Icon type={ option.icon } height="16px" width="16px" />;
+    }
+
+    return jsx;
+  }
+
+  renderIcon() {
+    let jsx;
+
+    if (this.props.option.icon) {
+      jsx = <Icon type={ this.props.option.icon } height="16px" width="16px" />;
     }
 
     return jsx;
@@ -48,12 +54,12 @@ class MenuItem extends React.Component {
 
   render() {
     const option = this.props.option;
+    const checkmark = this.renderCheckmark();
     const icon = this.renderIcon();
     const className = classnames('rc-menu-item', this.props.className, {
       'rc-menu-item-with-icon': icon,
-      'rc-menu-item-selected': this.props.selected,
+      'rc-menu-item-selected': checkmark,
       'rc-menu-item-disabled': this.props.option.disabled,
-      [`rc-menu-item-with-icon-${this.props.iconPosition}`]: icon,
     });
 
     let value = option.value;
@@ -65,8 +71,9 @@ class MenuItem extends React.Component {
     return (
       <li className={ className }>
         <a href={ option.id } className="rc-menu-item-anchor" onClick={ this.onClick }>
-          { value }
           { icon }
+          { value }
+          { checkmark }
         </a>
       </li>
     );

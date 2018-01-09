@@ -96,17 +96,20 @@
   text-decoration: none;
 }
 
+.rc-menu-item-with-icon,
+.rc-menu-item-selected {
+  a {
+    position: relative;
+  }
+
+  .rc-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
 .rc-menu-item-with-icon a {
-  position: relative;
-}
-
-.rc-menu-item-with-icon .rc-icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-.rc-menu-item-with-icon-left a {
   padding-left: $reflect-dropdown-padding * 3;
 
   .rc-icon {
@@ -114,7 +117,7 @@
   }
 }
 
-.rc-menu-item-with-icon-right .rc-icon {
+.rc-menu-item-selected .rc-icon {
   right: $reflect-dropdown-padding;
 }
 
