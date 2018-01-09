@@ -56,7 +56,8 @@
   &.rc-input-medium { // Same as default
   }
 
-  &.rc-input-small &.rc-input-tiny {
+  &.rc-input-small,
+  &.rc-input-tiny {
     font-size: $reflect-font-size-small;
     height: $reflect-input-small-height;
     padding: $reflect-input-small-padding;
