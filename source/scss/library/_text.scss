@@ -68,9 +68,14 @@
   }
 }
 
-.rc-input-multiline {
+.rc-input-multiline,
+.rc-input-medium.rc-input-multiline {
   height: 64px;
   resize: vertical;
+}
+
+.rc-input-small.rc-input-multiline {
+  height: 48px;
 }
 
 .rc-input-icon {

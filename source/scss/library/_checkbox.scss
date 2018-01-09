@@ -1,5 +1,6 @@
 .rc-checkbox-container {
   display: inline-block;
+  position: relative;
 }
 
 // https://github.com/stylelint/stylelint/issues/331#issuecomment-127043187
@@ -12,16 +13,21 @@
   border: $reflect-checkbox-border;
   border-radius: $reflect-checkbox-border-radius;
   cursor: pointer;
+  height: $reflect-medium;
   margin: 0;
   outline: none;
-  padding: $reflect-checkbox-padding;
+  padding: 0;
+  width: $reflect-medium;
 }
 
 .rc-checkbox + .rc-icon {
-  margin-bottom: 2px;
-  margin-left: -16px;
   pointer-events: none;
   visibility: hidden;
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  top: -4px;
+  right: -4px;
 }
 
 .rc-checkbox:hover {
