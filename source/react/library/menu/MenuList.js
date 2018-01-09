@@ -3,15 +3,15 @@ import classnames from 'classnames';
 import MenuItem from './MenuItem';
 
 const propTypes = {
-  options: React.PropTypes.array,
+  size: React.PropTypes.oneOf(['small', 'tiny']),
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
     React.PropTypes.number,
   ]),
+  options: React.PropTypes.array,
   multiple: React.PropTypes.bool,
   onChange: React.PropTypes.func,
-  size: React.PropTypes.oneOf(['small', 'tiny']),
 };
 
 const defaultProps = {
@@ -36,7 +36,12 @@ class MenuList extends React.Component {
   }
 
   render() {
-    const { selected, options, multiple, size } = this.props;
+    const {
+      multiple,
+      selected,
+      options,
+      size,
+    } = this.props;
     const className = classnames('rc-menu-list', {
       [`rc-menu-list-${size}`]: size,
       'rc-menu-multiple': multiple,
