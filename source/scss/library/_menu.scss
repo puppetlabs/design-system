@@ -82,6 +82,10 @@
   white-space: nowrap;
 }
 
+.rc-menu-item-selected a {
+  padding-right: 32px;
+}
+
 .rc-menu-item-text {
   overflow: hidden;
   text-overflow: ellipsis;

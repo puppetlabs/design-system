@@ -30,7 +30,7 @@ const propTypes = {
   disablePortal: React.PropTypes.bool,
   onPendingDeleteChange: React.PropTypes.func,
   popoverClassName: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['tiny', 'small']),
+  size: React.PropTypes.oneOf(['small', 'medium']),
 };
 
 const defaultProps = {
@@ -45,7 +45,7 @@ const defaultProps = {
   autoOpen: false,
   onSelect: null,
   className: '',
-  size: 'small',
+  size: 'medium',
   options: [],
   name: '',
 };

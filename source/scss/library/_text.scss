@@ -14,19 +14,16 @@
   border: $reflect-input-border;
   border-radius: $reflect-input-border-radius;
   color: $reflect-input-color;
-  font-size: $reflect-font-size-base;
-  height: $reflect-input-height;
-  line-height: $reflect-medium;
   outline: none;
-  padding: $reflect-input-padding;
-
   // Really only applies when .rc-input is a textarea
-  resize: vertical;
   width: 100%;
 }
 
 .rc-input {
   @extend %input;
+  font-size: $reflect-font-size-base;
+  height: $reflect-input-height;
+  padding: $reflect-input-padding;
 
   &.rc-input-error {
     border: $reflect-input-border-error;
@@ -68,6 +65,11 @@
   &::placeholder {
     color: $reflect-input-placeholder-color;
   }
+}
+
+textarea.rc-input {
+  height: 64px;
+  resize: vertical;
 }
 
 .rc-input-icon {

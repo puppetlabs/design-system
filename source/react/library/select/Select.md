@@ -33,6 +33,7 @@ Multiselect:
 
 ```
 const options = [
+  'T',
   'Sunday',
   'Monday',
   'Tuesday',

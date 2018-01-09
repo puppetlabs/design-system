@@ -363,14 +363,14 @@ $reflect-list-item-tiny-padding-h            : $reflect-tiny !default;
 $reflect-menu-item-border                    : $reflect-border !default;
 $reflect-menu-item-border-focus              : $reflect-border-active-hover;
 $reflect-menu-item-border-active             : $reflect-border-active-hover;
-$reflect-menu-item-font-size                 : $reflect-font-size-base !default;
+$reflect-menu-item-font-size                 : $reflect-font-size-small !default;
 $reflect-menu-item-font-weight               : $reflect-font-weight-heavy !default;
 $reflect-menu-item-line-height               : $reflect-font-size-large !default;
-$reflect-menu-item-height                    : $reflect-size-base * 5 !default;
+$reflect-menu-item-height                    : $reflect-size-base * 4 !default;
 $reflect-menu-item-color                     : $reflect-font-color-base !default;
 $reflect-menu-item-icon-color                : $reflect-icon-fill !default;
 $reflect-menu-item-bg                        : transparent !default;
-$reflect-menu-item-padding                   : 0 $reflect-medium !default;
+$reflect-menu-item-padding                   : 0 $reflect-small !default;
 $reflect-menu-header-border                  : $reflect-border !default;
 
 $reflect-menu-item-tiny-padding              : 0 $reflect-small !default;
