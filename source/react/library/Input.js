@@ -20,7 +20,7 @@ const propTypes = {
     React.PropTypes.number,
   ]),
   name: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['large', 'small', 'tiny']),
+  size: React.PropTypes.oneOf(['large',  'medium', 'small', 'tiny']),
   simple: React.PropTypes.bool,
   error: React.PropTypes.string,
   style: React.PropTypes.object,

@@ -62,7 +62,9 @@ class MenuItem extends React.Component {
     return (
       <li className={ className }>
         <a href={ option.id } className="rc-menu-item-anchor" onClick={ this.onClick }>
-          { value }
+          <span className="rc-menu-item-text">
+            { value }
+          </span>
           { icon }
         </a>
       </li>

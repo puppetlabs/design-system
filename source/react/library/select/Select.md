@@ -1,14 +1,31 @@
 ```
 const options = [
-  'Geoff',
-  'Colby',
-  'Sig',
+  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
+  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
+  'Star Wars: Episode III  Revenge of the Sith',
 ];
 
 <Select
   onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
+/>
+```
+
+Small Select
+
+```
+const options = [
+  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
+  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
+  'Star Wars: Episode III  Revenge of the Sith',
+];
+
+<Select
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  options={ options }
+  placeholder="Select one..."
+  size="small"
 />
 ```
 
@@ -43,7 +60,7 @@ const options = [
 <Select
   onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   multiple
-  size="tiny"
+  size="small"
   options={ options }
 />
 

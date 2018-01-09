@@ -281,6 +281,7 @@ $reflect-input-focus-bg                      : $reflect-white !default;
 $reflect-input-border                        : $reflect-border !default;
 $reflect-input-border-radius                 : $reflect-border-radius !default;
 $reflect-input-border-error                  : 1px solid $reflect-danger-color !default;
+$reflect-input-height                        : $reflect-huge !default;
 $reflect-input-padding                       : $reflect-small !default;
 $reflect-input-placeholder-color             : $reflect-font-color-subtle !default;
 
@@ -290,10 +291,12 @@ $reflect-input-hover-border                  : 1px solid $reflect-brand-primary 
 $reflect-input-disabled-bg                   : $reflect-bg-subtle !default;
 $reflect-input-disabled-color                : $reflect-font-color-subtle !default;
 
-$reflect-input-large-height                  : $reflect-giant !default;
-$reflect-input-large-padding                 : 0 $reflect-large !default;
-$reflect-input-small-padding                 : $reflect-small !default;
-$reflect-input-tiny-padding                  : $reflect-mini $reflect-tiny !default;
+$reflect-input-small-height                  : $reflect-size-base * 3 !default; // 24px
+$reflect-input-large-height                  : $reflect-size-base * 8 !default; // 40px
+
+$reflect-input-large-padding                 : $reflect-large !default;
+$reflect-input-small-padding                 : $reflect-tiny !default;
+$reflect-input-tiny-padding                  : $reflect-tiny !default;
 
 $reflect-input-simple-bg                     : transparent !default;
 $reflect-input-simple-focus-bg               : transparent !default;
@@ -317,15 +320,11 @@ $reflect-select-menu-bg                      : $reflect-white !default;
 $reflect-select-item-bg                      : $reflect-brand-primary !default;
 $reflect-select-item-highlighted-shadow      : $reflect-selected-shadow-hover !default;
 $reflect-select-item-color                   : $reflect-white !default;
-$reflect-select-item-border-radius           : $reflect-border-radius !default;
+$reflect-select-item-border-radius           : $reflect-circle-radius !default;
 
-$reflect-select-small-item-font-size         : $reflect-font-size-small !default;
-$reflect-select-small-item-margin            : $reflect-tiny 0 $reflect-tiny $reflect-tiny !default;
-$reflect-select-small-item-padding           : $reflect-tiny !default;
-
-$reflect-select-tiny-item-font-size          : $reflect-font-size-tiny !default;
+// Tiny Inputs to be deprecated - not used
 $reflect-select-tiny-item-margin             : $reflect-mini 0 $reflect-mini $reflect-mini !default;
-$reflect-select-tiny-item-padding            : $reflect-mini !default;
+$reflect-select-tiny-item-padding            : 0 $reflect-small !default;
 
 $reflect-select-label-font-size              : $reflect-font-size-small !default;
 $reflect-select-label-padding                : $reflect-small !default;
@@ -364,9 +363,9 @@ $reflect-list-item-tiny-padding-h            : $reflect-tiny !default;
 $reflect-menu-item-border                    : $reflect-border !default;
 $reflect-menu-item-border-focus              : $reflect-border-active-hover;
 $reflect-menu-item-border-active             : $reflect-border-active-hover;
-$reflect-menu-item-font-size                 : $reflect-font-size-small !default;
+$reflect-menu-item-font-size                 : $reflect-font-size-base !default;
 $reflect-menu-item-font-weight               : $reflect-font-weight-heavy !default;
-$reflect-menu-item-line-height               : $reflect-font-size-base !default;
+$reflect-menu-item-line-height               : $reflect-font-size-large !default;
 $reflect-menu-item-height                    : $reflect-size-base * 5 !default;
 $reflect-menu-item-color                     : $reflect-font-color-base !default;
 $reflect-menu-item-icon-color                : $reflect-icon-fill !default;
@@ -377,7 +376,7 @@ $reflect-menu-header-border                  : $reflect-border !default;
 $reflect-menu-item-tiny-padding              : 0 $reflect-small !default;
 $reflect-menu-item-tiny-height               : $reflect-size-base * 4 !default;
 $reflect-menu-item-tiny-font-size            : $reflect-font-size-tiny !default;
-$reflect-menu-item-tiny-line-height          : $reflect-font-size-small !default;
+$reflect-menu-item-tiny-line-height          : $reflect-medium !default;
 
 // Menu States
 $reflect-menu-item-color-hover               : $reflect-brand-primary !default;

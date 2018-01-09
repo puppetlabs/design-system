@@ -75,9 +75,16 @@
 .rc-menu-item a {
   align-items: center;
   display: flex;
+  flex: 1;
   height: $reflect-menu-item-height;
   padding: $reflect-menu-item-padding;
   text-decoration: none;
+  white-space: nowrap;
+}
+
+.rc-menu-item-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .rc-menu-list-tiny {
