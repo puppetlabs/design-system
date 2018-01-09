@@ -196,6 +196,11 @@ class Select extends React.Component {
       this.close();
     }
 
+    // Focus the input again so the user can keep typing.
+    if (this.props.multiple) {
+      this.input.focus();
+    }
+
     this.onChange(newState.selected || this.state.selected, option);
 
     this.setState(newState);
