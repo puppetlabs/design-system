@@ -63,8 +63,6 @@ describe('<DatePicker />', () => {
     expect(document.getElementsByClassName('rc-datepicker').length).to.equal(0);
     wrapper.find('.rc-datepicker-button').first().simulate('click');
     expect(document.getElementsByClassName('rc-datepicker').length).to.equal(1);
-    wrapper.find('.rc-datepicker-button').first().simulate('click');
-    expect(document.getElementsByClassName('rc-datepicker').length).to.equal(0);
   });
 
   it('should not render a DatePickerWrapper when a message is provided', () => {
