@@ -13,12 +13,6 @@
   cursor: pointer;
   position: relative;
 
-  .rc-input {
-    cursor: pointer;
-    font-size: $reflect-font-size-small;
-    line-height: $reflect-medium;
-  }
-
   .rc-select-menu {
     background: $reflect-select-menu-bg;
     border-bottom-left-radius: $reflect-select-border-radius;
@@ -28,17 +22,18 @@
     width: 100%;
     z-index: 1;
   }
-
-  .rc-select-input {
-    padding: 0;
-  }
 }
 
 .rc-select-item {
   background: $reflect-select-item-bg;
   border-radius: $reflect-select-item-border-radius;
   color: $reflect-select-item-color;
-  display: inline;
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  margin: 2px 2px 2px 0;
+  padding: 4px 8px;
+  transform: translateX(-4px);
 }
 
 .rc-select-items {
@@ -50,60 +45,62 @@
   box-shadow: $reflect-select-item-highlighted-shadow;
 }
 
-.rc-select-small {
-  .rc-select-items {
-    padding: $reflect-select-small-item-margin;
-  }
-
+.rc-select-medium {
   .rc-select-item {
-    font-size: $reflect-select-small-item-font-size;
-    margin: $reflect-select-small-item-margin;
-    padding: $reflect-select-small-item-padding;
+    font-size: 12px;
+    line-height: 16px;
   }
 }
 
-.rc-select-tiny {
-  .rc-select-items {
-    padding: $reflect-select-tiny-item-margin;
-  }
-
+.rc-select-small {
   .rc-select-item {
-    font-size: $reflect-select-tiny-item-font-size;
-    margin: $reflect-select-tiny-item-margin;
-    padding: $reflect-select-tiny-item-padding;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 1px 1px 0 0;
+    padding: 2px 8px;
   }
 }
 
 .rc-select-input {
   @extend %input;
+  align-items: center;
   display: flex;
   flex-wrap: wrap;
+  flex: 1 0 16px;
+  height: auto;
+  min-height: 32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding: 0 28px 0 8px;
   position: relative;
 
-  .rc-input,
-  .rc-input.rc-input-small,
-  .rc-input.rc-input-tiny {
+  .rc-input {
     border: 0;
     box-shadow: none;
-    flex-grow: 1;
-    margin: 0 5px;
+    flex: 1 0 16px;
+    height: 28px;
+    min-height: initial;
+    margin: 0;
     padding: 0;
     position: relative;
-    width: auto;
-  }
-
-  .rc-input.rc-input-small {
-    min-height: 34px;
-  }
-
-  .rc-input.rc-input-tiny {
-    min-height: 22px;
   }
 
   .rc-input:hover,
   .rc-input:focus {
     border: 0;
     box-shadow: none;
+  }
+}
+
+.rc-select-small .rc-select-input {
+  min-height: 24px;
+
+  .rc-input {
+    font-size: 12px;
+    height: 20px;
+    min-height: initial;
+    line-height: $reflect-medium;
+    padding: 0;
   }
 }
 
@@ -178,11 +175,5 @@
 .rc-select-small {
   .rc-icon-chevron-down {
     bottom: 12px;
-  }
-}
-
-.rc-select-tiny {
-  .rc-icon-chevron-down {
-    bottom: 4px;
   }
 }

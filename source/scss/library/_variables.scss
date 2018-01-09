@@ -195,7 +195,7 @@ $reflect-border-hover-color                  : $reflect-gray !default;
 $reflect-border-size                         : 1px !default;
 $reflect-border-style                        : solid !default;
 $reflect-border-radius                       : 4px !default;
-$reflect-circle-radius                       : 50% !default;
+$reflect-circle-radius                       : 1000px !default;
 $reflect-border                              : $reflect-border-size $reflect-border-style $reflect-border-color !default;
 $reflect-border-hover                        : $reflect-border-size $reflect-border-style $reflect-border-hover-color !default;
 $reflect-border-active                       : $reflect-border-size $reflect-border-style $reflect-action-color !default;
