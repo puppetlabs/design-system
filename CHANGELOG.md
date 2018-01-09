@@ -1,3 +1,17 @@
+# 1.0.0
+
+* Introduce a Checkbox component
+* Introduce a Slider component
+* Introduce a Filters component
+* Introduce a Form component
+* Updates to ListItems
+* Add multiselect capabilities to Select
+* Add typeahead to Select
+* Add clearable option to Select
+* Update Button font and styling
+* Update component type icons
+* Begin on updating size naming conventions to be consistent with design system
+
 # 0.4.1
 
 * Fix a bug preventing inputs from functioning in some cases.
