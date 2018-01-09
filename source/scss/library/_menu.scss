@@ -91,18 +91,6 @@
   text-overflow: ellipsis;
 }
 
-.rc-menu-list-tiny {
-  .rc-menu-item {
-    font-size: $reflect-menu-item-tiny-font-size;
-    line-height: $reflect-menu-item-tiny-line-height;
-  }
-
-  .rc-menu-item a {
-    height: $reflect-menu-item-tiny-height;
-    padding: $reflect-menu-item-tiny-padding;
-  }
-}
-
 .rc-menu-item a:hover {
   text-decoration: none;
 }
