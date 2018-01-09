@@ -88,10 +88,11 @@ class Select extends React.Component {
       selected,
     };
 
+    this.onKeyUp = this.onKeyUp.bind(this);
     this.onClear = this.onClear.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
+    this.onInputChange = this.onInputChange.bind(this);
     this.onChevronClick = this.onChevronClick.bind(this);
   }
 
@@ -197,6 +198,16 @@ class Select extends React.Component {
     this.setState(newState);
   }
 
+  onInputChange(e) {
+    let inputValue = e.target.value;
+
+    if (inputValue === '') {
+      inputValue = undefined;
+    }
+
+    this.setState({ inputValue, pendingBackDelete: false });
+  }
+
   getInputValue() {
     let value = '';
 
@@ -214,7 +225,7 @@ class Select extends React.Component {
   }
 
   clearInput() {
-    this.setState({ inputValue: '', selected: [] });
+    this.setState({ inputValue: undefined, selected: [] });
   }
 
   open() {
@@ -320,7 +331,7 @@ class Select extends React.Component {
         placeholder={ placeholder }
         name={ this.props.name }
         onKeyUp={ this.onKeyUp }
-        onChange={ e => this.setState({ inputValue: e.target.value }) }
+        onChange={ this.onInputChange }
         value={ this.getInputValue() }
         size={ this.props.size }
         ref={ (c) => { this.input = c; } }
