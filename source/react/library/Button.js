@@ -6,6 +6,7 @@ import { TooltipStickyArea } from './tooltips/Tooltip';
 const propTypes = {
   className: React.PropTypes.string,
   size: React.PropTypes.oneOf(['tiny', 'small', 'large', 'auto', null]),
+  simple: React.PropTypes.bool,
   secondary: React.PropTypes.bool,
   transparent: React.PropTypes.bool,
   icon: React.PropTypes.string,
@@ -22,9 +23,10 @@ const propTypes = {
   type: React.PropTypes.string,
   href: React.PropTypes.string,
   round: React.PropTypes.bool,
-  message: React.PropTypes.string,
+  square: React.PropTypes.bool,
   dropdown: React.PropTypes.bool,
-  error: React.PropTypes.string,
+  error: React.PropTypes.bool,
+  message: React.PropTypes.string,
   children: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.element,
@@ -35,6 +37,7 @@ const defaultProps = {
   className: '',
   size: null,
   secondary: false,
+  simple: false,
   transparent: false,
   icon: null,
   floating: false,
@@ -47,8 +50,9 @@ const defaultProps = {
   type: null,
   href: null,
   round: false,
+  square: false,
   message: '',
-  error: '',
+  error: false,
   dropdown: false,
   children: '',
 };
@@ -72,7 +76,7 @@ class Button extends React.Component {
   }
 
   onClick(e) {
-    if (this.props.disabled) {
+    if (this.props.disabled || this.props.processing) {
       e.preventDefault();
     } else if (this.props.onClick) {
       this.props.onClick(e);
@@ -85,6 +89,7 @@ class Button extends React.Component {
       label,
       type,
       secondary,
+      simple,
       transparent,
       disabled,
       processing,
@@ -97,13 +102,16 @@ class Button extends React.Component {
       className,
       floating,
       round,
+      square,
     } = this.props;
 
     let button;
     let content;
     let icon;
+    let dropdown;
 
     const cssClass = classnames(className, 'rc-button', {
+      'rc-button-simple': simple,
       'rc-button-block': block,
       'rc-button-processing': processing,
       'rc-floating-action-button': floating,
@@ -114,6 +122,7 @@ class Button extends React.Component {
       'rc-button-transparent': transparent,
       [`rc-button-${size}`]: size,
       'rc-button-round': round,
+      'rc-button-square': square,
     });
 
     const btnProps = {
@@ -128,31 +137,30 @@ class Button extends React.Component {
     const loader = processing ? <Icon height="75%" width="100%" type="loader" /> : null;
 
     if (children || label) {
-      let dropdown;
-
-      if (this.props.dropdown) {
-        const iconSize = size === 'small' || size === 'tiny' ? '10px' : '12px';
-
-        dropdown = (
-          <span className="rc-button-dropdown-icon">
-            <Icon height={ iconSize } width={ iconSize } type="chevron-down" />
-          </span>
-        );
-      }
-
-      content = <span className="rc-button-content">{ children || label }{ dropdown }</span>;
+      content = <span className="rc-button-content">{ children || label }</span>;
     }
 
-    if (this.props.icon) {
-      const iconSize = '16px';
+    if (this.props.icon || floating) {
+      const iconSize = simple ? '8px' : '16px';
+      const iconType = floating ? 'plus' : this.props.icon;
 
-      icon = <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />;
+      icon = <Icon height={ iconSize } width={ iconSize } type={ iconType } />;
+    }
+
+    if (this.props.dropdown) {
+      const iconSize = '10px';
+
+      dropdown = (
+        <span className="rc-button-dropdown-icon">
+          <Icon height={ iconSize } width={ iconSize } type="chevron-down" />
+        </span>
+      );
     }
 
     if (type) {
-      button = <button { ...btnProps }>{ icon } { content }{ loader }</button>;
+      button = <button { ...btnProps }>{ icon } { content } { dropdown } { loader }</button>;
     } else {
-      button = <a { ...btnProps }>{ icon } { content }{ loader }</a>;
+      button = <a { ...btnProps }>{ icon } { content } { dropdown } { loader }</a>;
     }
 
     if (message) {

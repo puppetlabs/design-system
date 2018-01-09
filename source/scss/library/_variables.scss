@@ -34,8 +34,8 @@ $reflect-primary-chart-color                 : $reflect-brand-primary !default;
 // Text is typically on a bg color - by default it is white text & icons on a blue bg
 $reflect-action-color                        : $reflect-brand-primary !default;
 $reflect-action-hover                        : darken($reflect-action-color, 10%) !default;
-$reflect-action-border                       : transparent !default;
-$reflect-action-border-hover                 : transparent !default;
+$reflect-action-border                       : $reflect-action-color !default;
+$reflect-action-border-hover                 : $reflect-action-hover !default;
 $reflect-action-text                         : $reflect-white !default;
 $reflect-action-text-hover                   : $reflect-white !default;
 $reflect-action-icon                         : $reflect-white !default;
@@ -115,7 +115,7 @@ $reflect-icon-action-hover                   : $reflect-action-hover !default;
 
 // Typography
 // ----------------------------------------------------------------------------
-$reflect-font-family                         : 'Open Sans', sans-serif !default;
+$reflect-font-family                         : 'Source Sans Pro', sans-serif !default;
 
 $reflect-font-size-giant                     : 42px !default;
 $reflect-font-size-huge                      : 28px !default;
@@ -132,8 +132,8 @@ $reflect-font-color-light                    : $reflect-white !default;
 
 $reflect-line-height-default                 : 1.5em !default;
 
-$reflect-font-weight-normal                  : 300 !default;
-$reflect-font-weight-medium                  : 400 !default;
+$reflect-font-weight-normal                  : 400 !default;
+$reflect-font-weight-medium                  : 400 !default; // deprecating in a future release
 $reflect-font-weight-heavy                   : 600 !default;
 
 // Content
@@ -195,7 +195,7 @@ $reflect-border-hover-color                  : $reflect-gray !default;
 $reflect-border-size                         : 1px !default;
 $reflect-border-style                        : solid !default;
 $reflect-border-radius                       : 4px !default;
-$reflect-circle-radius                       : 50% !default;
+$reflect-circle-radius                       : 1000px !default;
 $reflect-border                              : $reflect-border-size $reflect-border-style $reflect-border-color !default;
 $reflect-border-hover                        : $reflect-border-size $reflect-border-style $reflect-border-hover-color !default;
 $reflect-border-active                       : $reflect-border-size $reflect-border-style $reflect-action-color !default;
@@ -231,6 +231,6 @@ $reflect-selected-shadow-hover               : 0 0 0 1px $reflect-action-hover !
 
 // Animations
 // ----------------------------------------------------------------------------
-$reflect-animation-speed-base                : 0.4s;
+$reflect-animation-speed-base                : 0.2s;
 
 /* stylelint-enable */

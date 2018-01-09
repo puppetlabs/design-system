@@ -5,8 +5,11 @@
 
   .rc-menu-item a {
     background: $bg;
-    border-bottom: $border;
     color: $color;
+  }
+
+  .rc-menu-item:last-of-type a {
+    border-bottom: 0;
   }
 
   .rc-menu-item a:hover {
@@ -19,7 +22,6 @@
   }
 
   .rc-menu-item-selected  a {
-    background: $bg-selected;
     border-bottom: 0;
     color: $color-selected;
   }
@@ -29,7 +31,7 @@
   }
 
   .rc-menu-item-selected  a:hover {
-    background: darken($bg-selected, 10%);
+    background: $bg-hover;
     color: $color-selected;
   }
 
@@ -73,26 +75,61 @@
 .rc-menu-item a {
   align-items: center;
   display: flex;
+  flex: 1;
   height: $reflect-menu-item-height;
   padding: $reflect-menu-item-padding;
   text-decoration: none;
+  white-space: nowrap;
+}
+
+.rc-menu-item-selected a {
+  padding-right: 32px;
+}
+
+.rc-menu-item-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rc-menu-list-tiny {
+  .rc-menu-item {
+    font-size: $reflect-menu-item-tiny-font-size;
+    line-height: $reflect-menu-item-tiny-line-height;
+  }
+
+  .rc-menu-item a {
+    height: $reflect-menu-item-tiny-height;
+    padding: $reflect-menu-item-tiny-padding;
+  }
 }
 
 .rc-menu-item a:hover {
   text-decoration: none;
 }
 
-.rc-menu-item-with-icon a {
-  // 16px is currently the size of the checkmark icon.
-  padding-left: $reflect-dropdown-padding + 16px + $reflect-dropdown-padding;
-  position: relative;
+.rc-menu-item-with-icon,
+.rc-menu-item-selected {
+  a {
+    position: relative;
+  }
+
+  .rc-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
 
-.rc-menu-item-with-icon .rc-icon {
-  left: $reflect-dropdown-padding;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+.rc-menu-item-with-icon a {
+  padding-left: $reflect-dropdown-padding * 3;
+
+  .rc-icon {
+    left: $reflect-dropdown-padding;
+  }
+}
+
+.rc-menu-item-selected .rc-icon {
+  right: $reflect-dropdown-padding;
 }
 
 .rc-menu-item-disabled a {

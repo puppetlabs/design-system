@@ -7,10 +7,13 @@ const propTypes = {
     React.PropTypes.string,
     React.PropTypes.number,
   ]),
-  column: React.PropTypes.string,
-  onChange: React.PropTypes.func,
   rowData: React.PropTypes.object,
-  disabled: React.PropTypes.bool,
+};
+
+const defaultProps = {
+  component: null,
+  data: null,
+  rowData: {},
 };
 
 class Column extends React.Component {
@@ -20,7 +23,7 @@ class Column extends React.Component {
     const props = clone(this.props);
     let elem;
 
-    if (rowData.meta && {}.hasOwnProperty.call(rowData.meta, 'disabled')) {
+    if (rowData.meta && rowData.meta.disabled) {
       props.disabled = rowData.meta.disabled;
     }
 
@@ -35,5 +38,6 @@ class Column extends React.Component {
 }
 
 Column.propTypes = propTypes;
+Column.defaultProps = defaultProps;
 
 export default Column;

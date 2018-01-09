@@ -6,6 +6,7 @@
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
     "react/jsx-curly-spacing": [2, "always"],
+    "react/require-default-props": 1,
     "newline-before-return": 2,
     "no-param-reassign": [0, {
       "props": false

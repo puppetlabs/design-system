@@ -1,0 +1,54 @@
+.rc-checkbox-container {
+  display: inline-block;
+  position: relative;
+}
+
+// https://github.com/stylelint/stylelint/issues/331#issuecomment-127043187
+/* stylelint-disable property-no-vendor-prefix */
+.rc-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border: $reflect-checkbox-border;
+  border-radius: $reflect-checkbox-border-radius;
+  cursor: pointer;
+  height: $reflect-medium;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  width: $reflect-medium;
+}
+
+.rc-checkbox + .rc-icon {
+  height: 16px;
+  pointer-events: none;
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  visibility: hidden;
+  width: 16px;
+}
+
+.rc-checkbox:hover {
+  border-color: $reflect-checkbox-hover-border-color;
+
+  &.rc-checkbox-checked {
+    border-color: $reflect-checkbox-disabled-border-color;
+  }
+}
+
+.rc-checkbox-checked + .rc-icon {
+  fill: $reflect-checkbox-icon-color;
+  visibility: visible;
+}
+
+.rc-checkbox-disabled {
+  cursor: default;
+}
+
+.rc-checkbox-disabled + .rc-icon {
+  fill: $reflect-checkbox-disabled-icon-color;
+}
+
+/* stylelint-enable property-no-vendor-prefix */

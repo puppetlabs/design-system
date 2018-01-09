@@ -54,16 +54,17 @@ const validateBlocks = (blocks) => {
   return valid;
 };
 
-const getType = function (type) {
+const getType = (type) => {
   const types = {
     kpi: 'kpi',
-    bar: 'bars',
-    bars: 'bars',
+    bar: 'column',
+    bars: 'column',
     area: 'area',
     line: 'line',
     text: 'text',
     donut: 'donut',
-    timeseries: 'area',
+    pie: 'donut',
+    timeseries: 'timeseries',
     summary: 'summary',
     scatter: 'scatter',
     datagrid: 'datagrid',

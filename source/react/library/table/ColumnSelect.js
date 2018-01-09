@@ -14,7 +14,12 @@ const propTypes = {
 };
 
 const defaultProps = {
+  data: null,
+  onChange: null,
+  column: null,
+  rowData: null,
   options: [],
+  disabled: false,
 };
 
 class ColumnSelect extends React.Component {

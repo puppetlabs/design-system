@@ -7,10 +7,11 @@ const propTypes = {
   /** Selected state */
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
-  size: React.PropTypes.string,
+  size: React.PropTypes.oneOf(['small', 'tiny']),
   block: React.PropTypes.bool,
   tooltip: React.PropTypes.bool,
   onRemove: React.PropTypes.func,
+  actions: React.PropTypes.array,
   onClick: React.PropTypes.func,
   children: React.PropTypes.any,
 };
@@ -18,8 +19,9 @@ const propTypes = {
 const defaultProps = {
   selected: false,
   className: '',
-  size: '',
+  size: 'small',
   block: false,
+  actions: null,
   tooltip: false,
   onRemove: null,
   onClick: null,
@@ -58,10 +60,13 @@ class Tag extends React.Component {
 
   renderContent() {
     const removeButton = this.renderRemoveButton();
+    const actions = this.renderActions();
     const { children, tooltip } = this.props;
+
     let jsx = (
       <div className="rc-tag-content">
         { children }
+        { actions }
         { removeButton }
       </div>
     );
@@ -71,6 +76,20 @@ class Tag extends React.Component {
         <TooltipHoverArea anchor="bottom" tooltip={ jsx }>
           { jsx }
         </TooltipHoverArea>
+      );
+    }
+
+    return jsx;
+  }
+
+  renderActions() {
+    let jsx;
+
+    if (this.props.actions) {
+      jsx = (
+        <div className="rc-tag-actions">
+          { this.props.actions }
+        </div>
       );
     }
 

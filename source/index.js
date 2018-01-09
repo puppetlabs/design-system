@@ -31,11 +31,13 @@ import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 import Table from './react/library/table/Table';
 import ColumnSelect from './react/library/table/ColumnSelect';
 import ColumnInput from './react/library/table/ColumnInput';
-import Accordion from './react/library/accordion/Accordion';
-import AccordionItem from './react/library/accordion/AccordionItem';
+import Accordion from './react/library/accordion';
 import BlankSlate from './react/library/BlankSlate';
 import Panel from './react/library/Panel';
 import Select from './react/library/select/Select';
+import Form from './react/library/form';
+import Filters from './react/library/filters';
+import Checkbox from './react/library/Checkbox';
 
 export {
   Button,
@@ -70,10 +72,12 @@ export {
   ColumnSelect,
   ColumnInput,
   Accordion,
-  AccordionItem,
   SlideIn,
   BlankSlate,
   Panel,
   DatePicker,
   Select,
+  Form,
+  Filters,
+  Checkbox,
 };

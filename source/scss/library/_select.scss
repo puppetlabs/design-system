@@ -1,26 +1,20 @@
+.rc-select-popover-wrapper {
+  display: block;
+  width: 100%;
+}
+
+.rc-select-popover {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
 .rc-select {
   color: $reflect-select-color;
   cursor: pointer;
   position: relative;
 
-  .rc-select-input {
-    position: relative;
-  }
-
-  .rc-icon-chevron-down {
-    position: absolute;
-    right: 10px;
-  }
-
-  .rc-input {
-    cursor: pointer;
-    font-size: $reflect-font-size-small;
-    line-height: $reflect-medium;
-  }
-
   .rc-select-menu {
     background: $reflect-select-menu-bg;
-    border: $reflect-select-border-active;
     border-bottom-left-radius: $reflect-select-border-radius;
     border-bottom-right-radius: $reflect-select-border-radius;
     box-shadow: $reflect-select-selected-shadow;
@@ -30,13 +24,151 @@
   }
 }
 
-.rc-select-open {
+.rc-select-item {
+  align-items: center;
+  background: $reflect-select-item-bg;
+  border-radius: $reflect-select-item-border-radius;
+  color: $reflect-select-item-color;
+  display: flex;
+  flex: 0 0 auto;
+  margin: 2px 2px 2px 0;
+  padding: 4px 8px;
+  transform: translateX(-4px);
+}
+
+.rc-select-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.rc-select-item-highlighted {
+  box-shadow: $reflect-select-item-highlighted-shadow;
+}
+
+.rc-select-medium {
+  .rc-select-item {
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.rc-select-small {
+  .rc-select-item {
+    font-size: 12px;
+    line-height: 16px;
+    margin: 1px 1px 0 0;
+    padding: 2px 8px;
+  }
+}
+
+.rc-select-input {
+  @extend %input;
+  align-items: center;
+  display: flex;
+  flex: 1 0 16px;
+  flex-wrap: wrap;
+  height: auto;
+  min-height: 32px;
+  overflow: hidden;
+  padding: 0 28px 0 8px;
+  position: relative;
+  text-overflow: ellipsis;
+
   .rc-input {
+    border: 0;
+    box-shadow: none;
+    flex: 1 0 16px;
+    height: 28px;
+    margin: 0;
+    min-height: initial;
+    padding: 0;
+    position: relative;
+  }
+
+  .rc-input:hover,
+  .rc-input:focus {
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.rc-select-small .rc-select-input {
+  min-height: 24px;
+
+  .rc-input {
+    font-size: 12px;
+    height: 20px;
+    line-height: $reflect-medium;
+    min-height: initial;
+    padding: 0;
+  }
+}
+
+.rc-select-disabled {
+  .rc-select-input {
+    @extend %disabled-input;
+  }
+}
+
+.rc-select-wrapper {
+  position: relative;
+}
+
+.rc-select-wrapper-open {
+  .rc-select-input {
+    @extend %focused-input;
+  }
+}
+
+.rc-select-actions {
+  display: flex;
+  height: 100%;
+  position: absolute;
+  right: 10px;
+  top: 0;
+
+  .rc-select-action {
+    cursor: pointer;
+    margin-right: 5px;
+    outline: none;
+  }
+
+  .rc-select-action:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.rc-select-action .rc-icon-close {
+  fill: lighten($reflect-danger-color, 20%);
+
+  &:hover {
+    fill: $reflect-danger-color;
+  }
+}
+
+.rc-popover-no-portal {
+  .rc-select-menu {
+    position: relative;
+  }
+}
+
+.rc-select-disabled {
+  cursor: default;
+
+  .rc-input {
+    cursor: default;
+  }
+}
+
+.rc-select-wrapper-open {
+  .rc-select-input {
     @extend %focused-input;
 
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
     cursor: text;
+  }
+
+  .rc-select-actions .rc-icon-chevron-down {
+    fill: $reflect-brand-primary;
   }
 }
 

@@ -1,0 +1,63 @@
+.rc-filters {
+  .rc-form {
+    border-bottom: $reflect-filters-form-border;
+    border-top: $reflect-filters-form-border;
+    margin: 10px 0;
+    padding: 10px 0;
+  }
+
+  .rc-tag {
+    height: 27px;
+    line-height: 27px;
+  }
+}
+
+.rc-filters-action:hover {
+  color: $reflect-brand-primary !important;
+
+  .rc-icon {
+    fill: $reflect-brand-primary;
+  }
+}
+
+.rc-filters-list {
+  margin-bottom: $reflect-tiny;
+}
+
+.rc-filters-list-item {
+  .rc-list-item-link,
+  .rc-list-item-actions {
+    background: $reflect-filters-filter-bg;
+  }
+
+  .rc-list-item-actions .rc-icon {
+    fill: $reflect-filters-filter-action-color;
+  }
+
+  .rc-list-item-link:hover .rc-icon {
+    fill: $reflect-white;
+  }
+
+  .rc-list-item-link:hover,
+  .rc-list-item-link:hover .rc-list-item-actions {
+    background: $reflect-filters-filter-bg-hover;
+  }
+}
+
+.rc-filters-filter {
+  color: $reflect-filters-filter-color;
+
+  .filter-field-name,
+  .filter-field-op {
+    padding-right: 4px;
+  }
+
+  .filter-field-name,
+  .filter-field-value {
+    font-weight: $reflect-font-weight-heavy;
+  }
+
+  .filter-field-op {
+    font-style: italic;
+  }
+}

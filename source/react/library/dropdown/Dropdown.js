@@ -30,13 +30,11 @@ const propTypes = {
 };
 
 const defaultProps = {
-  size: '',
   select: false,
   options: [],
   actions: [],
   hint: '',
   margin: -60,
-  anchor: '',
   placeholder: '',
   blank: '',
   label: '',

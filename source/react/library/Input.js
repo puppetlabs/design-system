@@ -1,6 +1,6 @@
 import React from 'react';
-import Icon from './Icon';
 import classnames from 'classnames';
+import Icon from './Icon';
 
 const propTypes = {
   multiline: React.PropTypes.bool,
@@ -15,14 +15,18 @@ const propTypes = {
   readonly: React.PropTypes.bool,
   type: React.PropTypes.string,
   /** Value string */
-  value: React.PropTypes.string,
+  value: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.number,
+  ]),
   name: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['large', 'small', 'tiny']),
+  size: React.PropTypes.oneOf(['large', 'medium', 'small', 'tiny']),
   simple: React.PropTypes.bool,
-  onKeyUp: React.PropTypes.func,
   error: React.PropTypes.string,
   style: React.PropTypes.object,
+  icon: React.PropTypes.string,
   onKeyDown: React.PropTypes.func,
+  onKeyUp: React.PropTypes.func,
   onChange: React.PropTypes.func,
   onClick: React.PropTypes.func,
   onFocus: React.PropTypes.func,
@@ -31,8 +35,24 @@ const propTypes = {
 
 const defaultProps = {
   multiline: false,
-  onKeyDown: () => {},
+  placeholder: '',
+  className: '',
+  autoFocus: false,
+  disabled: false,
+  readonly: false,
+  type: null,
+  name: '',
+  size: null,
   simple: false,
+  error: '',
+  style: null,
+  icon: null,
+  onChange: null,
+  onClick: null,
+  onKeyDown: null,
+  onKeyUp: null,
+  onFocus: null,
+  onBlur: null,
 };
 
 /**
@@ -71,10 +91,15 @@ class Input extends React.Component {
     this.input.focus();
   }
 
+  blur() {
+    this.input.blur();
+  }
+
   render() {
     const className = classnames('rc-input', this.props.className, {
       'rc-input-error': this.props.error,
       'rc-input-simple': this.props.simple,
+      'rc-input-multiline': this.props.multiline,
       [`rc-input-${this.props.size}`]: this.props.size,
     });
 
@@ -83,6 +108,7 @@ class Input extends React.Component {
       autoFocus: this.props.autoFocus,
       disabled: this.props.disabled,
       readOnly: this.props.readonly,
+      id: this.props.name,
       name: this.props.name,
       onKeyUp: this.props.onKeyUp,
       type: this.props.type,

@@ -4,17 +4,25 @@ import Icon from '../Icon';
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
-  selected: React.PropTypes.bool,
-  tooltip: React.PropTypes.string,
+  size: React.PropTypes.oneOf(['small', 'tiny']),
+  className: React.PropTypes.string,
+  actions: React.PropTypes.any,
+  kebab: React.PropTypes.any,
   onRemove: React.PropTypes.func,
   onEdit: React.PropTypes.func,
   onClick: React.PropTypes.func,
-  children: React.PropTypes.string,
+  selected: React.PropTypes.bool,
+  tooltip: React.PropTypes.bool,
+  children: React.PropTypes.any,
 };
 
 const defaultProps = {
+  tooltip: false,
+  size: 'small',
+  className: '',
+  actions: null,
+  kebab: null,
   selected: false,
-  tooltip: '',
   onRemove: null,
   onEdit: null,
   onClick: null,
@@ -67,7 +75,18 @@ class ListItem extends React.PureComponent {
     }
   }
 
+  getIconSize() {
+    let iconSize = '12px';
+
+    if (this.props.size === 'tiny') {
+      iconSize = '10px';
+    }
+
+    return iconSize;
+  }
+
   renderRemove() {
+    const iconSize = this.getIconSize();
     let jsx;
 
     if (this.props.onRemove) {
@@ -78,7 +97,7 @@ class ListItem extends React.PureComponent {
           className="rc-list-item-action rc-list-item-remove"
           onClick={ this.onRemove }
         >
-          <Icon type="delete" width="16px" height="16px" />
+          <Icon type="close" width={ iconSize } height={ iconSize } />
         </a>
       );
     }
@@ -87,6 +106,7 @@ class ListItem extends React.PureComponent {
   }
 
   renderEdit() {
+    const iconSize = this.getIconSize();
     let jsx;
 
     if (this.props.onEdit) {
@@ -97,7 +117,7 @@ class ListItem extends React.PureComponent {
           className="rc-list-item-action rc-list-item-edit"
           onClick={ this.onEdit }
         >
-          <Icon type="edit" width="16px" height="16px" />
+          <Icon type="pencil" width={ iconSize } height={ iconSize } />
         </a>
       );
     }
@@ -105,13 +125,31 @@ class ListItem extends React.PureComponent {
     return jsx;
   }
 
+  renderKebab() {
+    let jsx;
+
+    if (this.props.kebab) {
+      jsx = (
+        <div className="rc-list-item-action rc-list-item-kebab" >
+          { this.props.kebab }
+        </div>
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
-    const className = classnames('rc-list-item', {
+    const size = this.props.size;
+    const className = classnames('rc-list-item', this.props.className, `rc-list-item-${size}`, {
       'rc-list-item-clickable': this.props.onClick,
       'rc-list-item-selected': this.props.selected,
+      'rc-list-item-kebab': this.props.kebab,
     });
     const edit = this.renderEdit();
+    const kebab = this.renderKebab();
     const remove = this.renderRemove();
+    const actions = this.props.actions;
     const content = this.props.children;
 
     const props = {
@@ -125,10 +163,12 @@ class ListItem extends React.PureComponent {
 
     let jsx = (
       <div { ...props }>
+        { kebab }
         <span className="rc-list-item-text">
           { content }
         </span>
         <span className="rc-list-item-actions">
+          { actions }
           { edit }
           { remove }
         </span>

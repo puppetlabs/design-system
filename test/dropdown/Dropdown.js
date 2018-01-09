@@ -65,7 +65,5 @@ describe('<Dropdown />', () => {
     expect(document.getElementsByClassName('rc-dropdown-menu').length).to.equal(0);
     wrapper.find('.rc-dropdown-toggle').first().simulate('click');
     expect(document.getElementsByClassName('rc-dropdown-menu').length).to.equal(1);
-    wrapper.find('.rc-dropdown-toggle').first().simulate('click');
-    expect(document.getElementsByClassName('rc-dropdown-menu').length).to.equal(0);
   });
 });
