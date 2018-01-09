@@ -99,6 +99,7 @@ class Input extends React.Component {
     const className = classnames('rc-input', this.props.className, {
       'rc-input-error': this.props.error,
       'rc-input-simple': this.props.simple,
+      'rc-input-multiline': this.props.multiline,
       [`rc-input-${this.props.size}`]: this.props.size,
     });
 

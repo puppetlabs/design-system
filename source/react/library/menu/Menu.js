@@ -8,7 +8,7 @@ import List from './MenuList';
 
 const propTypes = {
   className: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['small', 'tiny']),
+  size: React.PropTypes.oneOf(['tiny', 'small', 'medium']),
   children: React.PropTypes.any,
 };
 

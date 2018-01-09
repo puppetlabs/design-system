@@ -48,15 +48,15 @@
 
   &.rc-input-large {
     font-size: $reflect-font-size-large;
-    line-height: $reflect-line-height-default;
     height: $reflect-input-large-height;
+    line-height: $reflect-line-height-default;
     padding: $reflect-input-large-padding;
   }
 
   &.rc-input-medium { // Same as default
   }
 
-  &.rc-input-small, &.rc-input-tiny {
+  &.rc-input-small &.rc-input-tiny {
     font-size: $reflect-font-size-small;
     height: $reflect-input-small-height;
     padding: $reflect-input-small-padding;
@@ -67,7 +67,7 @@
   }
 }
 
-textarea.rc-input {
+.rc-input-multiline {
   height: 64px;
   resize: vertical;
 }

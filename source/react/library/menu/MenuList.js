@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import MenuItem from './MenuItem';
 
 const propTypes = {
-  size: React.PropTypes.oneOf(['small', 'tiny']),
+  size: React.PropTypes.oneOf(['tiny', 'small', 'medium']),
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
