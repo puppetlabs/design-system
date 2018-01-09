@@ -35,11 +35,14 @@ class Filters extends React.Component {
     this.state = {
       adding: false,
       editing: null,
+      filter: {},
     };
 
     this.onAdd = this.onAdd.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.onRemove = this.onRemove.bind(this);
     this.onSubmitFilter = this.onSubmitFilter.bind(this);
+    this.onUpdateFilter = this.onUpdateFilter.bind(this);
   }
 
   onAdd(e) {
@@ -50,8 +53,41 @@ class Filters extends React.Component {
     this.setState({ adding: true });
   }
 
-  onSubmitFilter({ values }) {
-    const filter = this.formatFilterForm(values);
+  onCancel() {
+    this.setState({
+      editing: null,
+      adding: false,
+      filter: {},
+    });
+  }
+
+  onUpdateFilter(field, values) {
+    const value = values[field];
+    const newState = {
+      filter: this.state.filter,
+    };
+
+    switch (field) {
+      case 'filterField':
+        newState.filter.field = value.id;
+        break;
+      case 'filterOperator':
+        newState.filter.op = value.id;
+        break;
+      case 'filterValue':
+        newState.filter.value = value;
+        break;
+      case 'filterRemovable':
+        newState.filter.removable = value;
+        break;
+      default:
+    }
+
+    this.setState(newState);
+  }
+
+  onSubmitFilter() {
+    const filter = this.state.filter;
     let newFilters = [];
 
     if (this.state.editing) {
@@ -66,14 +102,17 @@ class Filters extends React.Component {
     }
 
     this.props.onChange(newFilters);
-    this.setState({ adding: false, editing: null });
+    this.setState({ adding: false, editing: null, filter: {} });
   }
 
   onEdit(filter) {
     const key = getFilterKey(filter);
 
     return () => {
-      this.setState({ editing: key });
+      this.setState({
+        editing: key,
+        filter,
+      });
     };
   }
 
@@ -84,24 +123,6 @@ class Filters extends React.Component {
 
       this.props.onChange(newFilters);
     };
-  }
-
-  // Convert the form representation into one of our Filter representations.
-  formatFilterForm(form) {
-    const filter = {
-      field: form.filterField.id,
-      value: form.filterValue,
-    };
-
-    if (form.filterOperator) {
-      filter.op = form.filterOperator.id;
-    }
-
-    if (this.props.removableToggle && typeof form.filterRemovable !== 'undefined') {
-      filter.removable = form.filterRemovable;
-    }
-
-    return filter;
   }
 
   renderFilters() {
@@ -144,17 +165,10 @@ class Filters extends React.Component {
 
   renderForm() {
     let jsx;
-    let filter = {};
     let removableField;
-    let currentOp;
-    let currentField;
+    const filter = this.state.filter;
 
-    if (this.state.editing) {
-      filter = this.props.filters
-        .filter(f => getFilterKey(f) === this.state.editing)[0];
-    }
-
-    if (this.state.adding || this.state.editing) {
+    if (filter) {
       const fields = this.props.fields.map(field => ({
         id: field,
         label: field,
@@ -180,43 +194,17 @@ class Filters extends React.Component {
         );
       }
 
-      if (filter.op) {
-        const operator = filterOperators
-          .filter(op => op.symbol === filter.op)[0];
-
-        if (operator) {
-          currentOp = {
-            id: operator.symbol,
-            label: operator.label,
-            value: operator.symbol,
-          };
-        }
-      }
-
-      if (filter.field) {
-        const field = this.props.fields
-          .filter(f => f === filter.field)[0];
-
-        if (field) {
-          currentField = {
-            id: field,
-            label: field,
-            value: field,
-          };
-        }
-      }
-
       return (
         <Form
           submittable
           cancellable
-          onCancel={ () => { this.setState({ editing: null, adding: false }); } }
+          onChange={ this.onUpdateFilter }
+          onCancel={ this.onCancel }
           onSubmit={ this.onSubmitFilter }
           size="tiny"
           key={ `${this.state.editing}-form` }
         >
           <Form.Field
-            value={ currentField }
             type="select"
             name="filterField"
             label="field"
@@ -227,7 +215,6 @@ class Filters extends React.Component {
             } }
           />
           <Form.Field
-            value={ currentOp }
             type="select"
             name="filterOperator"
             label="operation"
@@ -238,10 +225,10 @@ class Filters extends React.Component {
             } }
           />
           <Form.Field
-            value={ filter.value }
             type="input"
             name="filterValue"
             label="value"
+            value={ filter.value }
             elementProps={ { placeholder: 'e.g. Jim, 15, etc.' } }
           />
           { removableField }

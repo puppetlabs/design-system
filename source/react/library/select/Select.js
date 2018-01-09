@@ -177,7 +177,7 @@ class Select extends React.Component {
   }
 
   onSelect(option) {
-    const newState = { open: false, inputValue: undefined };
+    const newState = { inputValue: undefined };
 
     if (option.selectable || typeof option.selectable === 'undefined') {
       if (this.state.selected.indexOf(option) >= 0) {
@@ -189,8 +189,16 @@ class Select extends React.Component {
       }
     }
 
+    // We want to leave this open if we're acting like a multiselect.
     if (!this.props.multiple || this.props.valueless) {
+      newState.open = false;
+
       this.close();
+    }
+
+    // Focus the input again so the user can keep typing.
+    if (this.props.multiple) {
+      this.input.focus();
     }
 
     this.onChange(newState.selected || this.state.selected, option);
@@ -314,7 +322,11 @@ class Select extends React.Component {
         ));
     }
 
-    return selected;
+    return (
+      <div className="rc-select-items">
+        { selected }
+      </div>
+    );
   }
 
   renderInput() {

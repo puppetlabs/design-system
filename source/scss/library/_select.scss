@@ -36,6 +36,11 @@
   transform: translateX(-4px);
 }
 
+.rc-select-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .rc-select-item-highlighted {
   box-shadow: $reflect-select-item-highlighted-shadow;
 }

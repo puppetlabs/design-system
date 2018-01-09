@@ -15,10 +15,23 @@
   padding: 0;
 }
 
+.rc-form-flyout {
+  padding: $reflect-form-field-margin;
+}
+
 .rc-form-section-legend {
   color: $reflect-form-section-legend-color;
   font-size: $reflect-form-section-legend-font-size;
   font-weight: $reflect-form-section-legend-font-weight;
+  line-height: $reflect-form-section-legend-font-size;
+}
+
+.rc-form-section-flyout-target {
+  margin-left: $reflect-tiny;
+
+  .rc-icon {
+    fill: $reflect-form-section-flyout-icon-color;
+  }
 }
 
 .rc-form-field-label,

@@ -85,22 +85,23 @@ textarea.rc-input {
   }
 }
 
-.rc-input-simple {
+.rc-input-simple,
+.rc-input-simple:hover {
   background: $reflect-input-simple-bg;
   border-bottom-width: 1px;
   border-left: 0;
   border-radius: 0;
   border-right: 0;
   border-top: 0;
+}
 
-  &:focus {
-    background: $reflect-input-simple-focus-bg;
-    border-bottom-width: 1px;
-    border-left: 0;
-    border-right: 0;
-    border-top: 0;
-    box-shadow: none;
-  }
+.rc-input-simple:focus {
+  background: $reflect-input-simple-focus-bg;
+  border-bottom-width: 1px;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  box-shadow: none;
 }
 
 .rc-input-hidden {
