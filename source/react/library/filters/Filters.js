@@ -201,7 +201,7 @@ class Filters extends React.Component {
           onChange={ this.onUpdateFilter }
           onCancel={ this.onCancel }
           onSubmit={ this.onSubmitFilter }
-          size="tiny"
+          size="small"
           key={ `${this.state.editing}-form` }
         >
           <Form.Field

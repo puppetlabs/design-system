@@ -21,13 +21,13 @@
 }
 
 .rc-checkbox + .rc-icon {
-  pointer-events: none;
-  visibility: hidden;
-  position: absolute;
   height: 16px;
-  width: 16px;
-  top: -4px;
+  pointer-events: none;
+  position: absolute;
   right: -4px;
+  top: -4px;
+  visibility: hidden;
+  width: 16px;
 }
 
 .rc-checkbox:hover {
