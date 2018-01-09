@@ -89,6 +89,9 @@
 .rc-menu-item-text {
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: $reflect-menu-item-font-size;
+  font-weight: $reflect-menu-item-font-weight;
+  line-height: $reflect-menu-item-line-height;
 }
 
 .rc-menu-item a:hover {
