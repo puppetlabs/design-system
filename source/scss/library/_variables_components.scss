@@ -243,6 +243,7 @@ $reflect-form-description-font-size          : $reflect-font-size-small !default
 $reflect-form-section-legend-font-size       : $reflect-font-size-small !default;
 $reflect-form-section-legend-font-weight     : $reflect-font-weight-heavy !default;
 $reflect-form-section-legend-color           : $reflect-gray-darker !default;
+$reflect-form-section-flyout-icon-color      : $reflect-gray-light !default;
 
 $reflect-form-field-margin                   : $reflect-small !default;
 
@@ -320,11 +321,11 @@ $reflect-select-item-color                   : $reflect-white !default;
 $reflect-select-item-border-radius           : $reflect-border-radius !default;
 
 $reflect-select-small-item-font-size         : $reflect-font-size-small !default;
-$reflect-select-small-item-margin            : $reflect-tiny 0 $reflect-tiny $reflect-tiny !default;
+$reflect-select-small-item-margin            : $reflect-mini !default;
 $reflect-select-small-item-padding           : $reflect-tiny !default;
 
 $reflect-select-tiny-item-font-size          : $reflect-font-size-tiny !default;
-$reflect-select-tiny-item-margin             : $reflect-mini 0 $reflect-mini $reflect-mini !default;
+$reflect-select-tiny-item-margin             : $reflect-mini !default;
 $reflect-select-tiny-item-padding            : $reflect-mini !default;
 
 $reflect-select-label-font-size              : $reflect-font-size-small !default;

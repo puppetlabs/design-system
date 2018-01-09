@@ -130,6 +130,7 @@ class FormField extends React.Component {
     const elementProps = this.props.elementProps;
     const type = this.props.type;
     let jsx = null;
+    let value;
 
     if (typeof type.prototype === 'object' && type.prototype.isReactComponent) {
       const props = Object.assign(clone(this.props), elementProps);
@@ -153,12 +154,18 @@ class FormField extends React.Component {
           );
           break;
         case 'input':
+          value = '';
+
+          if (typeof this.props.value === 'string') {
+            value = this.props.value;
+          }
+
           jsx = (
             <Input
               name={ this.props.name }
               size={ this.props.size }
               onChange={ this.onChange }
-              value={ this.props.value || '' }
+              value={ value }
               { ...elementProps }
             />
           );

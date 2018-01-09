@@ -17,7 +17,7 @@ const movieOptions = [
     type="input"
     name="lastName"
     label="Last name"
-    value="Ice cream"
+    value={ true }
     elementProps={ { placeholder: 'Enter your first name...' } }
     description="Please enter your last name"
   />
@@ -91,6 +91,17 @@ const options = [
 ## Form with sections
 
 ```
+const yAxisFlyout = (
+  <Form.Flyout>
+    <Form.Field
+      type="input"
+      name="alias"
+      label="alias"
+      value="My fun alias"
+    />
+  </Form.Flyout>
+);
+
 <Form>
   <Form.Field
     type="input"
@@ -100,13 +111,20 @@ const options = [
   <Form.Section title="X-Axis" tooltip="Edit the X Axis here">
     <Form.Field
       type="input"
-      name="dimensions"
+      name="xAxisDimensions"
       value="my dimension"
       label="dimensions"
     />
     <Form.Field
       type="input"
-      name="metrics"
+      name="xAxisMetrics"
+      label="metrics"
+    />
+  </Form.Section>
+  <Form.Section title="Y-Axis" flyout={ yAxisFlyout }>
+    <Form.Field
+      type="input"
+      name="yAxisMetrics"
       label="metrics"
     />
   </Form.Section>
