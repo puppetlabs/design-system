@@ -10,7 +10,9 @@ import List from '../list/List';
 const propTypes = {
   fields: React.PropTypes.array,
   filters: React.PropTypes.array,
+  addCTA: React.PropTypes.string,
   onChange: React.PropTypes.func,
+  onSwitchView: React.PropTypes.func,
   removableToggle: React.PropTypes.bool,
 };
 
@@ -18,8 +20,13 @@ const defaultProps = {
   fields: [],
   filters: [],
   onChange: () => {},
+  addCTA: 'Add filter',
+  onSwitchView: () => {},
   removableToggle: false,
 };
+
+const LIST_VIEW = 'LIST_VIEW';
+const FORM_VIEW = 'FORM_VIEW';
 
 const getFilterKey = filter =>
   [filter.field, filter.op, filter.value, filter.values, filter.removable].join('');
@@ -48,10 +55,12 @@ class Filters extends React.Component {
       e.preventDefault();
     }
 
+    this.props.onSwitchView(FORM_VIEW);
     this.setState({ adding: true });
   }
 
   onCancel() {
+    this.props.onSwitchView(LIST_VIEW);
     this.setState({
       editing: null,
       adding: false,
@@ -74,6 +83,7 @@ class Filters extends React.Component {
     }
 
     this.props.onChange(newFilters);
+    this.props.onSwitchView(LIST_VIEW);
     this.setState({ adding: false, editing: null, filter: {} });
   }
 
@@ -81,6 +91,8 @@ class Filters extends React.Component {
     const key = getFilterKey(filter);
 
     return () => {
+      this.props.onSwitchView(FORM_VIEW);
+
       this.setState({
         editing: key,
         filter,
@@ -126,7 +138,7 @@ class Filters extends React.Component {
         <Button
           simple
           icon="plus"
-          label="Add filter"
+          label={ this.props.addCTA }
           onClick={ this.onAdd }
         />
       );
