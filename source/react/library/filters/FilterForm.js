@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { filterOperators } from '../../constants';
-import Form from '../Form';
+import Form from '../form';
 
 const propTypes = {
   filter: React.PropTypes.object,
