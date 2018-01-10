@@ -20,6 +20,23 @@ const defaultProps = {
   filter: {},
 };
 
+const isValueless = (op) => {
+  let valueless = false;
+  let ops;
+
+  if (typeof op !== 'undefined') {
+    ops = filterOperators
+      .filter(o => o.symbol === op)
+      .filter(o => typeof o.noValue !== 'undefined');
+
+    if (ops.length === 1) {
+      valueless = ops[0].noValue;
+    }
+  }
+
+  return valueless;
+};
+
 class FilterForm extends React.Component {
   constructor(props) {
     super(props);
@@ -53,6 +70,11 @@ class FilterForm extends React.Component {
         break;
       case 'filterOperator':
         newState.filter.op = value.id;
+
+        if (isValueless(value.id)) {
+          delete newState.filter.value;
+        }
+
         break;
       case 'filterValue':
         newState.filter.value = value;
@@ -107,10 +129,29 @@ class FilterForm extends React.Component {
     return jsx;
   }
 
+  renderValueField() {
+    const valueless = isValueless(this.state.filter.op);
+    let jsx;
+
+    if (!valueless) {
+      jsx = (
+        <Form.Field
+          type="input"
+          name="filterValue"
+          label="value"
+          value={ this.state.filter.value || '' }
+          elementProps={ { placeholder: 'e.g. Jim, 15, etc.' } }
+        />
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
     const removableField = this.renderRemovableField();
+    const valueField = this.renderValueField();
     const operators = this.getOperators();
-    const filter = this.state.filter;
     const fields = this.getFields();
 
     return (
@@ -142,13 +183,7 @@ class FilterForm extends React.Component {
             placeholder: 'Please choose...',
           } }
         />
-        <Form.Field
-          type="input"
-          name="filterValue"
-          label="value"
-          value={ filter.value }
-          elementProps={ { placeholder: 'e.g. Jim, 15, etc.' } }
-        />
+        { valueField }
         { removableField }
       </Form>
     );
