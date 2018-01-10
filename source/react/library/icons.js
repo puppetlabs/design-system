@@ -5,7 +5,7 @@ const defaultViewBox = '0 0 30 30';
 const icons = {
 
   data: {
-    viewbox: '0 0 16 16',
+    viewBox: '0 0 16 16',
     svg: (
       <g>
         <path d="M11 4L1 4.019a1 1 0 0 1 0-2L11 2v2zm4 5H5V7h10a1 1 0 0 1 0 2z"/>
@@ -17,7 +17,7 @@ const icons = {
   },
 
   parameter: {
-    viewbox: '0 0 16 13.71',
+    viewBox: '0 0 16 13.71',
     svg: (
       <g>
         <path d="M4 13H1a1 1 0 0 1 0-2h3v2zM15 3H1a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2zM4 8H1a1 1 0 0 1 0-2h3v2z"/>
