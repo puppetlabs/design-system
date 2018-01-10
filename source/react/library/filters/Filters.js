@@ -2,7 +2,7 @@ import React from 'react';
 import clone from 'clone';
 
 import Filter from './FilterItem';
-import FilterForm from './FilterForm';
+import Form from './FilterForm';
 
 import Button from '../Button';
 import List from '../list/List';
@@ -137,7 +137,7 @@ class Filters extends React.Component {
 
   renderForm() {
     return (
-      <FilterForm
+      <Form
         removable={ this.props.removableToggle }
         fields={ this.props.fields }
         filter={ this.state.filter }
@@ -170,5 +170,7 @@ class Filters extends React.Component {
 
 Filters.propTypes = propTypes;
 Filters.defaultProps = defaultProps;
+
+Filters.Form = Form;
 
 export default Filters;

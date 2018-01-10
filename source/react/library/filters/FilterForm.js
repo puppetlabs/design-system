@@ -12,6 +12,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  onSubmit: () => {},
   onCancel: () => {},
   onUpdate: () => {},
   removable: false,
