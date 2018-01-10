@@ -17,7 +17,7 @@ const icons = {
   },
 
   parameter: {
-    viewbox: '0 0 16 16',
+    viewbox: '0 0 16 13.71',
     svg: (
       <g>
         <path d="M4 13H1a1 1 0 0 1 0-2h3v2zM15 3H1a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2zM4 8H1a1 1 0 0 1 0-2h3v2z"/>
