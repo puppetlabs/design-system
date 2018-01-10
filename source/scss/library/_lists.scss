@@ -83,17 +83,17 @@
   }
 }
 
-.rc-list-item-tiny {
+.rc-list-item-small {
   .rc-list-item-link {
-    padding: $reflect-list-item-tiny-padding-v $reflect-list-item-tiny-padding-h;
+    padding: $reflect-list-item-small-padding-v $reflect-list-item-small-padding-h;
   }
 
   .rc-list-item-text {
-    font-size: $reflect-list-item-tiny-font-size;
+    font-size: $reflect-list-item-small-font-size;
   }
 
   .rc-list-item-actions {
-    padding: 0 $reflect-list-item-tiny-padding-v;
-    right: $reflect-list-item-tiny-padding-h;
+    padding: 0 $reflect-list-item-small-padding-v;
+    right: $reflect-list-item-small-padding-h;
   }
 }

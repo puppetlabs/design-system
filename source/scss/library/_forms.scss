@@ -41,18 +41,20 @@
 .rc-form-field-label,
 .rc-form-section-legend {
   display: flex;
-  margin-bottom: $reflect-form-vertical-padding;
+  margin-bottom: 0 0 $reflect-form-vertical-padding;
 }
 
 .rc-form-field-label {
   color: $reflect-form-label-color;
   font-size: $reflect-form-label-font-size;
+  line-height: $reflect-medium;
   text-transform: uppercase;
 }
 
 .rc-form-field-description {
   color: $reflect-form-description-color;
   font-size: $reflect-form-description-font-size;
+  line-height: $reflect-medium;
 }
 
 .rc-form-actions {
