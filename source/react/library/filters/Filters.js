@@ -2,16 +2,17 @@ import React from 'react';
 import clone from 'clone';
 
 import Filter from './FilterItem';
+import Form from './FilterForm';
 
-import { filterOperators } from '../../constants';
 import Button from '../Button';
-import Form from '../form';
 import List from '../list/List';
 
 const propTypes = {
   fields: React.PropTypes.array,
   filters: React.PropTypes.array,
+  addCTA: React.PropTypes.string,
   onChange: React.PropTypes.func,
+  onSwitchView: React.PropTypes.func,
   removableToggle: React.PropTypes.bool,
 };
 
@@ -19,8 +20,13 @@ const defaultProps = {
   fields: [],
   filters: [],
   onChange: () => {},
+  addCTA: 'Add filter',
+  onSwitchView: () => {},
   removableToggle: false,
 };
+
+const LIST_VIEW = 'LIST_VIEW';
+const FORM_VIEW = 'FORM_VIEW';
 
 const getFilterKey = filter =>
   [filter.field, filter.op, filter.value, filter.values, filter.removable].join('');
@@ -42,7 +48,6 @@ class Filters extends React.Component {
     this.onCancel = this.onCancel.bind(this);
     this.onRemove = this.onRemove.bind(this);
     this.onSubmitFilter = this.onSubmitFilter.bind(this);
-    this.onUpdateFilter = this.onUpdateFilter.bind(this);
   }
 
   onAdd(e) {
@@ -50,10 +55,12 @@ class Filters extends React.Component {
       e.preventDefault();
     }
 
+    this.props.onSwitchView(FORM_VIEW);
     this.setState({ adding: true });
   }
 
   onCancel() {
+    this.props.onSwitchView(LIST_VIEW);
     this.setState({
       editing: null,
       adding: false,
@@ -61,33 +68,7 @@ class Filters extends React.Component {
     });
   }
 
-  onUpdateFilter(field, values) {
-    const value = values[field];
-    const newState = {
-      filter: this.state.filter,
-    };
-
-    switch (field) {
-      case 'filterField':
-        newState.filter.field = value.id;
-        break;
-      case 'filterOperator':
-        newState.filter.op = value.id;
-        break;
-      case 'filterValue':
-        newState.filter.value = value;
-        break;
-      case 'filterRemovable':
-        newState.filter.removable = value;
-        break;
-      default:
-    }
-
-    this.setState(newState);
-  }
-
-  onSubmitFilter() {
-    const filter = this.state.filter;
+  onSubmitFilter(filter) {
     let newFilters = [];
 
     if (this.state.editing) {
@@ -102,6 +83,7 @@ class Filters extends React.Component {
     }
 
     this.props.onChange(newFilters);
+    this.props.onSwitchView(LIST_VIEW);
     this.setState({ adding: false, editing: null, filter: {} });
   }
 
@@ -109,6 +91,8 @@ class Filters extends React.Component {
     const key = getFilterKey(filter);
 
     return () => {
+      this.props.onSwitchView(FORM_VIEW);
+
       this.setState({
         editing: key,
         filter,
@@ -154,7 +138,7 @@ class Filters extends React.Component {
         <Button
           simple
           icon="plus"
-          label="Add filter"
+          label={ this.props.addCTA }
           onClick={ this.onAdd }
         />
       );
@@ -164,79 +148,15 @@ class Filters extends React.Component {
   }
 
   renderForm() {
-    let jsx;
-    let removableField;
-    const filter = this.state.filter;
-
-    if (filter) {
-      const fields = this.props.fields.map(field => ({
-        id: field,
-        label: field,
-        value: field,
-        selected: filter.field === field,
-      }));
-      const operators = filterOperators.map(op => ({
-        id: op.symbol,
-        label: op.label,
-        value: op.symbol,
-        selected: filter.op === op.symbol,
-      }));
-
-      if (this.props.removableToggle) {
-        removableField = (
-          <Form.Field
-            value={ filter.removable }
-            type="checkbox"
-            name="filterRemovable"
-            label="removable"
-            inline
-          />
-        );
-      }
-
-      return (
-        <Form
-          submittable
-          cancellable
-          onChange={ this.onUpdateFilter }
-          onCancel={ this.onCancel }
-          onSubmit={ this.onSubmitFilter }
-          size="small"
-          key={ `${this.state.editing}-form` }
-        >
-          <Form.Field
-            type="select"
-            name="filterField"
-            label="field"
-            elementProps={ {
-              disablePortal: true,
-              options: fields,
-              placeholder: 'Choose a field...',
-            } }
-          />
-          <Form.Field
-            type="select"
-            name="filterOperator"
-            label="operation"
-            elementProps={ {
-              disablePortal: true,
-              options: operators,
-              placeholder: 'Please choose...',
-            } }
-          />
-          <Form.Field
-            type="input"
-            name="filterValue"
-            label="value"
-            value={ filter.value }
-            elementProps={ { placeholder: 'e.g. Jim, 15, etc.' } }
-          />
-          { removableField }
-        </Form>
-      );
-    }
-
-    return jsx;
+    return (
+      <Form
+        removable={ this.props.removableToggle }
+        fields={ this.props.fields }
+        filter={ this.state.filter }
+        onCancel={ this.onCancel }
+        onSubmit={ this.onSubmitFilter }
+      />
+    );
   }
 
   render() {
@@ -262,5 +182,7 @@ class Filters extends React.Component {
 
 Filters.propTypes = propTypes;
 Filters.defaultProps = defaultProps;
+
+Filters.Form = Form;
 
 export default Filters;

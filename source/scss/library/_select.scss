@@ -15,12 +15,8 @@
 
   .rc-select-menu {
     background: $reflect-select-menu-bg;
-    border-bottom-left-radius: $reflect-select-border-radius;
-    border-bottom-right-radius: $reflect-select-border-radius;
-    box-shadow: $reflect-select-selected-shadow;
-    position: absolute;
-    width: 100%;
-    z-index: 1;
+    max-height: 150px;
+    overflow-y: scroll;
   }
 }
 

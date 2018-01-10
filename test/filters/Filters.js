@@ -29,11 +29,11 @@ describe('<Filters />', () => {
   describe('adding a filter', () => {
     it('should render a form after the add button is clicked', () => {
       const wrapper = shallow(<Filters />);
-      expect(wrapper.find('Form').length).to.eql(0);
+      expect(wrapper.find('FilterForm').length).to.eql(0);
 
       wrapper.find('Button').simulate('click');
 
-      expect(wrapper.find('Form').length).to.eql(1);
+      expect(wrapper.find('FilterForm').length).to.eql(1);
     });
   });
 });

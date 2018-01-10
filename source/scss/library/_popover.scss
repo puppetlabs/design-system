@@ -39,6 +39,10 @@
     width: $reflect-popover-large-width;
   }
 
+  &.rc-popover-visible-overflow {
+    overflow: visible;
+  }
+
   &.rc-popover-no-padding {
     padding: 0;
   }

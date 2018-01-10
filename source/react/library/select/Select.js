@@ -366,7 +366,8 @@ class Select extends React.Component {
     const wrapperClassName = classnames('rc-select-wrapper', {
       'rc-select-wrapper-open': this.state.open === true,
     });
-    const popoverClassName = classnames('rc-select-popover', this.props.popoverClassName);
+    const popoverClassName =
+      classnames('rc-select-popover', 'rc-popover-visible-overflow', this.props.popoverClassName);
     const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
       'rc-select-disabled': this.props.disabled,
       'rc-select-multiple': this.props.multiple,
