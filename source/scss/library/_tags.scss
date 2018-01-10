@@ -11,21 +11,6 @@
   padding: 0 $reflect-tag-padding;
   position: relative;
 
-  .rc-button {
-    display: inline-block;
-  }
-
-  .rc-icon {
-    fill: $reflect-tag-icon-fill;
-  }
-
-  .rc-button .rc-icon-delete {
-    height: $reflect-tag-icon-size;
-    position: absolute;
-    right: 0;
-    width: $reflect-tag-icon-size;
-  }
-
   .rc-tag-actions {
     float: right;
     height: 100%;
@@ -50,6 +35,19 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     width: 100%;
+  }
+}
+
+.rc-tag-remove-button {
+  height: $reflect-tag-icon-size;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: $reflect-tag-icon-size;
+
+  .rc-icon {
+    fill: $reflect-tag-icon-fill;
   }
 }
 
