@@ -9,20 +9,19 @@
 }
 
 .rc-loading.loading-page {
-  position: absolute;
-  top: 0;
+  align-items: center;
   bottom: 0;
-  left: 0;
-  right: 0;
   display: flex;
   justify-content: center;
-  align-items: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
 
   svg {
-    width: 100px;
-    height: 100px;
-    display: flex;
     align-self: center;
+    display: flex;
+    height: 100px;
+    width: 100px;
   }
-
 }
