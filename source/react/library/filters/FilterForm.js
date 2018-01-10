@@ -1,5 +1,6 @@
 import React from 'react';
 
+import clone from 'clone';
 import { filterOperators } from '../../constants';
 import Form from '../form';
 
@@ -42,7 +43,7 @@ class FilterForm extends React.Component {
     super(props);
 
     this.state = {
-      filter: props.filter,
+      filter: clone(props.filter),
     };
 
     this.onUpdate = this.onUpdate.bind(this);
@@ -51,10 +52,14 @@ class FilterForm extends React.Component {
   }
 
   onSubmit() {
+    this.setState({ filter: defaultProps.filter });
+
     this.props.onSubmit(this.state.filter);
   }
 
   onCancel() {
+    this.setState({ filter: defaultProps.filter });
+
     this.props.onCancel();
   }
 
