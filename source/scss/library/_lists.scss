@@ -28,13 +28,13 @@
   cursor: default;
   display: flex;
   flex: 1 0 auto;
-  min-height: $reflect-list-item-height;
   margin: 0 0 $reflect-tiny;
+  min-height: $reflect-list-item-height;
   padding: $reflect-list-item-padding;
   position: relative;
+  transition: all 0.2s;
   width: 100%;
   word-wrap: wrap;
-  transition: all 0.2s;
 }
 
 .rc-list-item-text {
@@ -85,12 +85,15 @@
     border: $reflect-list-item-border-hover;
     cursor: pointer;
   }
+
   .rc-list-item-text {
     color: $reflect-list-item-color-hover;
   }
+
   .rc-list-item-actions {
     opacity: 1;
   }
+
   .rc-list-item-edit {
     display: flex;
   }
@@ -101,6 +104,7 @@
     border: $reflect-list-item-border-selected;
     box-shadow: $reflect-list-item-shadow-selected;
   }
+
   &:hover .rc-list-item-link {
     border: $reflect-list-item-border-selected;
   }
@@ -113,6 +117,7 @@
     min-height: $reflect-list-item-small-height;
     padding: $reflect-list-item-small-padding;
   }
+
   .rc-list-item-text {
     font-size: $reflect-list-item-small-font-size;
     line-height: $reflect-list-item-small-lineheight;
