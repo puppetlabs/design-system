@@ -348,7 +348,7 @@ $reflect-list-item-border-selected           : $reflect-action-hover !default;
 $reflect-list-item-shadow-selected           : $reflect-selected-shadow !default;
 $reflect-list-item-border-radius             : 0 !default;
 $reflect-list-item-font-size                 : $reflect-font-size-base !default;
-$reflect-list-item-padding                   : 0 !default;
+$reflect-list-item-padding                   : 0 0 $reflect-small !default;
 $reflect-list-item-lineheight                : $reflect-line-height-default !default;
 $reflect-list-item-height                    : $reflect-size-base * 4 !default;
 $reflect-list-item-margin                    : 0 0 $reflect-small !default;
@@ -356,7 +356,6 @@ $reflect-list-item-margin                    : 0 0 $reflect-small !default;
 $reflect-list-item-small-font-size           : $reflect-font-size-small !default;
 $reflect-list-item-small-lineheight          : $reflect-medium !default;
 $reflect-list-item-small-height              : $reflect-size-base * 3 !default;
-$reflect-list-item-small-padding             : 0 0 $reflect-small !default;
 
 // Menu
 // ----------------------------------------------------------------------------

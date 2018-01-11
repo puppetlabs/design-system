@@ -12,7 +12,7 @@ const icons = {
     ),
   },
 
-  'activity': {
+  activity: {
     viewBox: '0 0 17.94 29.695',
     svg: (
       <g>
@@ -21,7 +21,7 @@ const icons = {
     ),
   },
 
-  'annotate': {
+  annotate: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -30,7 +30,7 @@ const icons = {
     ),
   },
 
-  'area': {
+  area: {
     viewBox: '0 0 16 15',
     svg: (
       <g>
@@ -50,7 +50,7 @@ const icons = {
     ),
   },
 
-  'bar': {
+  bar: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -71,7 +71,7 @@ const icons = {
     ),
   },
 
-  'brush': {
+  brush: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -89,7 +89,7 @@ const icons = {
     ),
   },
 
-  'card': {
+  card: {
     viewBox: '0 0 30.985 30.986',
     svg: (
       <g>
@@ -99,7 +99,7 @@ const icons = {
     ),
   },
 
-  'chart': {
+  chart: {
     viewBox: '0 0 29.94 29.936',
     svg: (
       <g>
@@ -110,7 +110,7 @@ const icons = {
   },
 
   // group: editing, filename: correct.svg
-  'checkmark': {
+  checkmark: {
     viewBox: '0 0 27.002 19.146',
     svg: (
       <g>
@@ -119,7 +119,7 @@ const icons = {
     ),
   },
 
-  'check': {
+  check: {
     viewBox: '0 0 8 8',
     svg: (
       <g>
@@ -168,7 +168,7 @@ const icons = {
   },
 
   // group: media, filename: time.svg
-  'clock': {
+  clock: {
     viewBox: '0 0 30.008 30.007',
     svg: (
       <g>
@@ -179,7 +179,7 @@ const icons = {
   },
 
   // group: editing, filename: delete-2.svg
-  'close': {
+  close: {
     viewBox: '0 0 8 8',
     svg: (
       <g>
@@ -189,7 +189,7 @@ const icons = {
   },
 
   // group: editing, filename: code-2.svg
-  'code': {
+  code: {
     viewBox: '0 0 30.407 25.079',
     svg: (
       <g>
@@ -200,7 +200,7 @@ const icons = {
     ),
   },
 
-  'code_large': {
+  code_large: {
     viewBox: '0 0 24 16',
     svg: (
       <g>
@@ -209,7 +209,7 @@ const icons = {
     ),
   },
 
-  'column': {
+  column: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -221,7 +221,7 @@ const icons = {
     ),
   },
 
-  'combination': {
+  combination: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -232,7 +232,7 @@ const icons = {
     ),
   },
 
-  'connections': {
+  connections: {
     viewBox: '0 0 28.001 30',
     svg: (
       <g>
@@ -250,7 +250,7 @@ const icons = {
     ),
   },
 
-  'csv': {
+  csv: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -259,7 +259,7 @@ const icons = {
     ),
   },
 
-  'data': {
+  data: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -271,7 +271,7 @@ const icons = {
     ),
   },
 
-  'datagrid': {
+  datagrid: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -289,7 +289,7 @@ const icons = {
   },
 
   // group: web, filename: delete.svg
-  'delete': {
+  delete: {
     viewBox: defaultViewBox,
     svg: (
       <g>
@@ -298,7 +298,7 @@ const icons = {
     ),
   },
 
-  'donut': {
+  donut: {
     viewBox: '0 0 14 14',
     svg: (
       <g>
@@ -308,7 +308,7 @@ const icons = {
     ),
   },
 
-  'dropdown': {
+  dropdown: {
     viewBox: '0 0 12 8',
     svg: (
       <g>
@@ -317,7 +317,7 @@ const icons = {
     ),
   },
 
-  'clone': {
+  clone: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -326,7 +326,7 @@ const icons = {
     ),
   },
 
-  'edit': {
+  edit: {
     viewBox: '0 0 25.979 25.979',
     svg: (
       <g>
@@ -340,7 +340,7 @@ const icons = {
     ),
   },
 
-  'excel': {
+  excel: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -349,7 +349,7 @@ const icons = {
     ),
   },
 
-  'exclamation': {
+  exclamation: {
     viewBox: '0 0 29.61 28.53',
     svg: (
       <g>
@@ -360,7 +360,7 @@ const icons = {
     ),
   },
 
-  'expand': {
+  expand: {
     viewBox: '0 0 28.03 28.03',
     svg: (
       <g>
@@ -373,7 +373,7 @@ const icons = {
     ),
   },
 
-  'export': {
+  export: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -382,7 +382,7 @@ const icons = {
     ),
   },
 
-  'fields': {
+  fields: {
     viewBox: '0 0 27 27',
     svg: (
       <g>
@@ -394,7 +394,7 @@ const icons = {
     ),
   },
 
-  'filter': {
+  filter: {
     viewBox: '0 0 16 14',
     svg: (
       <g>
@@ -403,7 +403,7 @@ const icons = {
     ),
   },
 
-  'gear': {
+  gear: {
     viewBox: defaultViewBox,
     svg: (
       <g>
@@ -412,7 +412,7 @@ const icons = {
     ),
   },
 
-  'grid': {
+  grid: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -429,7 +429,7 @@ const icons = {
     ),
   },
 
-  'info': {
+  info: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -438,7 +438,7 @@ const icons = {
     ),
   },
 
-  'invisible': {
+  invisible: {
     viewBox: '0 0 29.893 20.991',
     svg: (
       <g>
@@ -449,7 +449,7 @@ const icons = {
     ),
   },
 
-  'kebab': {
+  kebab: {
     viewBox: '0 0 7 27',
     svg: (
       <g transform="translate(3.500000, 13.500000) rotate(-270.000000) translate(-3.500000, -13.500000) translate(-10.000000, 10.000000)">
@@ -460,7 +460,7 @@ const icons = {
     ),
   },
 
-  'key': {
+  key: {
     viewBox: '0 0 19 32',
     svg: (
       <g>
@@ -469,7 +469,7 @@ const icons = {
     ),
   },
 
-  'kpi': {
+  kpi: {
     viewBox: '0 0 16 15',
     svg: (
       <g>
@@ -479,7 +479,7 @@ const icons = {
     ),
   },
 
-  'left': {
+  left: {
     viewBox: '0 0 26.944 19.884',
     svg: (
       <g>
@@ -488,7 +488,7 @@ const icons = {
     ),
   },
 
-  'list': {
+  list: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -499,7 +499,7 @@ const icons = {
     ),
   },
 
-  'loader': {
+  loader: {
     viewBox: '4 4 32 32',
     svg: (
       <g>
@@ -511,7 +511,7 @@ const icons = {
     ),
   },
 
-  'line': {
+  line: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -531,7 +531,7 @@ const icons = {
     ),
   },
 
-  'monitor': {
+  monitor: {
     viewBox: '0 0 30 28',
     svg: (
       <g>
@@ -541,7 +541,7 @@ const icons = {
   },
 
   // group: editing, filename: delete.svg
-  'minus': {
+  minus: {
     viewBox: '0 0 25 5',
     svg: (
       <g>
@@ -550,7 +550,7 @@ const icons = {
     ),
   },
 
-  'pan': {
+  pan: {
     viewBox: '0 0 30.969 31.999',
     svg: (
       <g>
@@ -563,7 +563,7 @@ const icons = {
     ),
   },
 
-  'paper': {
+  paper: {
     viewBox: '0 0 16 16"',
     svg: (
       <g>
@@ -572,7 +572,7 @@ const icons = {
     ),
   },
 
-  'parameter': {
+  parameter: {
     viewBox: '0 0 16 13.71',
     svg: (
       <g>
@@ -582,7 +582,7 @@ const icons = {
     ),
   },
 
-  'pdf': {
+  pdf: {
     viewBox: '0 0 32 32',
     svg: (
       <g>
@@ -591,7 +591,7 @@ const icons = {
     ),
   },
 
-  'pencil': {
+  pencil: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -600,7 +600,7 @@ const icons = {
     ),
   },
 
-  'pencil_large': {
+  pencil_large: {
     viewBox: '0 0 23 23',
     svg: (
       <g>
@@ -610,7 +610,7 @@ const icons = {
   },
 
   // group: editing, filename: add.svg
-  'plus': {
+  plus: {
     viewBox: '0 0 15 15',
     svg: (
       <g>
@@ -619,7 +619,7 @@ const icons = {
     ),
   },
 
-  'png': {
+  png: {
     viewBox: '0 0 14 16',
     svg: (
       <g>
@@ -628,7 +628,7 @@ const icons = {
     ),
   },
 
-  'projects': {
+  projects: {
     viewBox: '0 0 32 27',
     svg: (
       <g>
@@ -638,7 +638,7 @@ const icons = {
     ),
   },
 
-  'resize': {
+  resize: {
     viewBox: '0 0 8 8',
     svg: (
       <g>
@@ -647,7 +647,7 @@ const icons = {
     ),
   },
 
-  'scatter': {
+  scatter: {
     viewBox: '0 0 16 15',
     svg: (
       <g>
@@ -663,7 +663,7 @@ const icons = {
     ),
   },
 
-  'scope': {
+  scope: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -672,7 +672,7 @@ const icons = {
     ),
   },
 
-  'search': {
+  search: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -681,7 +681,7 @@ const icons = {
     ),
   },
 
-  'settings': {
+  settings: {
     viewBox: '0 0 22.235 31',
     svg: (
       <g>
@@ -691,7 +691,7 @@ const icons = {
     ),
   },
 
-  'share': {
+  share: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -700,7 +700,7 @@ const icons = {
     ),
   },
 
-  'sort': {
+  sort: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -727,7 +727,7 @@ const icons = {
     ),
   },
 
-  'summary': {
+  summary: {
     viewBox: '0 -5 45 50',
     svg: (
       <g>
@@ -743,7 +743,7 @@ const icons = {
     ),
   },
 
-  'text': {
+  text: {
     viewBox: '0 0 16 14',
     svg: (
       <g>
@@ -753,7 +753,7 @@ const icons = {
     ),
   },
 
-  'timeseries': {
+  timeseries: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -768,7 +768,7 @@ const icons = {
     ),
   },
 
-  'trash': {
+  trash: {
     viewBox: '0 0 16 16',
     svg: (
       <g>
@@ -795,7 +795,7 @@ const icons = {
     ),
   },
 
-  'user': {
+  user: {
     viewBox: '0 0 24 30',
     svg: (
       <g>
@@ -804,7 +804,7 @@ const icons = {
     ),
   },
 
-  'users': {
+  users: {
     viewBox: '0 0 31.998 30',
     svg: (
       <g>
@@ -815,7 +815,7 @@ const icons = {
     ),
   },
 
-  'versions_large': {
+  versions_large: {
     viewBox: '0 0 22 16',
     svg: (
       <g>
@@ -824,7 +824,7 @@ const icons = {
     ),
   },
 
-  'views': {
+  views: {
     viewBox: '0 0 29.875 23.795',
     svg: (
       <g>
@@ -834,7 +834,7 @@ const icons = {
     ),
   },
 
-  'visible': {
+  visible: {
     viewBox: '0 0 29.893 15.941',
     svg: (
       <g>

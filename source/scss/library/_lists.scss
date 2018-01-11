@@ -24,7 +24,6 @@
   background: $reflect-list-item-bg;
   border-bottom: $reflect-list-item-border;
   border-radius: $reflect-list-item-border-radius;
-  color: $reflect-list-item-color;
   cursor: default;
   display: flex;
   flex: 1;
@@ -36,6 +35,7 @@
 
 .rc-list-item-text {
   align-self: center;
+  color: $reflect-list-item-color;
   flex: 1 1 auto;
 }
 
@@ -135,7 +135,7 @@
 
 .rc-list-item-medium {
   .rc-list-item-link {
-    margin: 0 0 $reflect-tiny;
+    margin: $reflect-list-item-margin;
     min-height: $reflect-list-item-height;
     padding: $reflect-list-item-padding;
   }
@@ -156,9 +156,9 @@
 
 .rc-list-item-small {
   .rc-list-item-link {
-    margin: 0 0 $reflect-small;
+    margin: $reflect-list-item-margin;
     min-height: $reflect-list-item-small-height;
-    padding: $reflect-list-item-small-padding;
+    padding: $reflect-list-item-padding;
   }
 
   .rc-list-item-text {
@@ -179,3 +179,56 @@
   margin-right: 0;
   transform: translateX(-2px);
 }
+
+
+// Fancy List - for data field list, filter lists, etc.
+// Blue background and border radius
+.rc-list-item-link-fancy {
+  background: $reflect-action-color;
+  border: $reflect-border-size solid $reflect-action-color;
+  border-radius: $reflect-border-radius;
+
+  .rc-list-item-text {
+    color: $reflect-white;
+  }
+
+  // Make all icons white
+  .rc-icon {
+    fill: $reflect-action-icon;
+  }
+}
+
+.rc-list-item-clickable .rc-list-item-link-fancy {
+  &:hover,
+  &:focus {
+    background-color: $reflect-action-hover;
+    border-color: $reflect-action-hover;
+  }
+
+  &:focus {
+    box-shadow: $reflect-selected-shadow-hover;
+  }
+
+  .rc-list-item-text {
+    color: $reflect-white;
+  }
+}
+
+.rc-list-item-highlighted .rc-list-item-fancy {
+  &:hover,
+  &:focus {
+    background: $reflect-action-hover;
+    border-color: $reflect-action-hover;
+    box-shadow: $reflect-selected-shadow-hover;
+  }
+}
+
+.rc-list-item-medium.rc-list-item-link-fancy {
+  padding: 4px 8px;
+}
+
+.rc-list-item-small .rc-list-item-link-fancy {
+  padding: 2px 8px;
+}
+
+

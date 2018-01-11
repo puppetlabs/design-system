@@ -30,18 +30,18 @@ const getOperatorSentenceForm = (op) => {
 const renderText = (filter) => {
   const text = [];
 
-  text.push(<span key="field-name" className="filter-field-name">{ filter.field }</span>);
+  text.push(<span key="field-name" className="rc-filter-field-name">{ filter.field }</span>);
 
   if (filter.op) {
     const operator = getOperatorSentenceForm(filter.op);
 
-    text.push(<span key="field-op" className="filter-field-op">{ operator }</span>);
+    text.push(<span key="field-op" className="rc-filter-field-op">{ operator }</span>);
   }
 
   if (filter.any) {
-    text.push(<span key="filter-value" className="filter-field-value">{ filter.any.join(', ') }</span>);
+    text.push(<span key="filter-value" className="rc-filter-field-value">{ filter.any.join(', ') }</span>);
   } else if (filter.value) {
-    text.push(<span key="filter-value" className="filter-field-value">{ filter.value }</span>);
+    text.push(<span key="filter-value" className="rc-filter-field-value">{ filter.value }</span>);
   }
 
   return (
@@ -63,6 +63,7 @@ const FilterItem = (props) => {
       onRemove={ props.onRemove }
       onEdit={ props.onEdit }
       onClick={ props.onEdit }
+      // fancy
     >
       { text }
     </ListItem>

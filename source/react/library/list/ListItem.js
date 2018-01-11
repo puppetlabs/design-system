@@ -145,6 +145,7 @@ class ListItem extends React.PureComponent {
       'rc-list-item-clickable': this.props.onClick,
       'rc-list-item-selected': this.props.selected,
       'rc-list-item-kebab': this.props.kebab,
+      'rc-list-item-fancy': this.props.fancy,
     });
     const edit = this.renderEdit();
     const kebab = this.renderKebab();
@@ -153,7 +154,9 @@ class ListItem extends React.PureComponent {
     const content = this.props.children;
 
     const props = {
-      className: 'rc-list-item-link',
+      className: classnames('rc-list-item-link', {
+        'rc-list-item-link-fancy': this.props.fancy,
+      }),
     };
 
     if (this.onClick) {
