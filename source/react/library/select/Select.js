@@ -120,7 +120,9 @@ class Select extends React.Component {
     this.onRemove = this.onRemove.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
+    this.onPopoverOpen = this.onPopoverOpen.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+    this.onPopoverClose = this.onPopoverClose.bind(this);
     this.onChevronClick = this.onChevronClick.bind(this);
   }
 
@@ -155,7 +157,7 @@ class Select extends React.Component {
     this.onChange([]);
 
     this.clearInput();
-    this.setState({ open: false }, this.close);
+    this.setState({ open: false, pendingBackDelete: false }, this.close);
   }
 
   onRemove(optionId) {
@@ -199,6 +201,17 @@ class Select extends React.Component {
     this.open();
   }
 
+  onPopoverOpen() {
+    this.setState({ open: true });
+  }
+
+  onPopoverClose() {
+    this.setState({
+      pendingBackDelete: false,
+      open: false,
+    });
+  }
+
   onKeyUp(e) {
     switch (e.keyCode) {
       case BACK_KEY_CODE:
@@ -228,7 +241,11 @@ class Select extends React.Component {
   }
 
   onSelect(option) {
-    const newState = { inputValue: undefined, focusedId: null };
+    const newState = {
+      pendingBackDelete: false,
+      inputValue: undefined,
+      focusedId: null,
+    };
 
     if (option.selectable || typeof option.selectable === 'undefined') {
       if (this.state.selected.map(s => s.id).indexOf(option.id) >= 0) {
@@ -505,8 +522,8 @@ class Select extends React.Component {
           className={ popoverClassName }
           wrapperClassName={ className }
           inheritTargetWidth
-          onOpen={ () => { this.setState({ open: true }); } }
-          onClose={ () => { this.setState({ open: false }); } }
+          onOpen={ this.onPopoverOpen }
+          onClose={ this.onPopoverClose }
           margin={ 4 }
           allowBubble
           padding={ false }
