@@ -147,20 +147,25 @@
 
   .rc-select-action {
     cursor: pointer;
-    margin-right: 5px;
+    margin-right: $reflect-small;
     outline: none;
+    transition: all 0.2s;
   }
 
   .rc-select-action:last-of-type {
     margin-right: 0;
   }
+
+  .rc-select-action:hover {
+    transform: scale(1.2);
+  }
 }
 
 .rc-select-action .rc-icon-close {
-  fill: lighten($reflect-danger-color, 20%);
+  opacity: 0.8;
 
   &:hover {
-    fill: $reflect-danger-color;
+    opacity: 1;
   }
 }
 

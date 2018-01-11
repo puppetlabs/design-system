@@ -62,3 +62,52 @@
     display: table;
   }
 }
+
+@mixin transition($x...) {
+  transition: $x;
+}
+
+@mixin icon-opacity-hover($start-opacity: 0.8, $end-opacity: 1, $transition: opacity 0.2s) {
+  opacity: $start-opacity;
+  transition: $transition;
+
+  &:hover {
+    opacity: $end-opacity;
+  }
+}
+
+@mixin icon-scale-hover($scale: 1.2, $transition: transform 0.2s) {
+  transition: $transition;
+
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+@mixin focus-circle($size: 4px, $color: $reflect-black, $opacity: 0.12) {
+  position: relative;
+
+  &::before {
+    background-color: $color;
+    border-radius: 50%;
+    bottom: $size * -1;
+    content: '';
+    left: $size * -1;
+    opacity: 0;
+    position: absolute;
+    right: $size * -1;
+    top: $size * -1;
+    transform: scale(0.5);
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  &:focus {
+    outline: none;
+    outline: solid 2px transparent;
+  }
+
+  &:focus::before {
+    opacity: $opacity;
+    transform: scale(1);
+  }
+}
