@@ -3,6 +3,7 @@
 * Export `FiltersForm` standalone
 * New icons for Studio
 * Updating sizing for various components
+* Keyboard shortcuts for Selects
 
 # 1.0.0
 
