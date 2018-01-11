@@ -3,10 +3,6 @@ import classnames from 'classnames';
 import Popover from '../Popover';
 import Button from '../Button';
 import Menu from '../menu/Menu';
-import MenuList from '../menu/MenuList';
-import MenuHeader from '../menu/MenuHeader';
-import MenuSection from '../menu/MenuSection';
-import MenuItem from '../menu/MenuItem';
 
 const propTypes = {
   anchor: React.PropTypes.string,
@@ -109,7 +105,7 @@ class DropdownMenu extends React.Component {
 
     if (this.props.hint) {
       jsx = (
-        <MenuHeader title={ this.props.hint } onClose={ this.onClosePopover } />
+        <Menu.Header title={ this.props.hint } onClose={ this.onClosePopover } />
       );
     }
 
@@ -130,7 +126,7 @@ class DropdownMenu extends React.Component {
 
       jsx = (
         <Menu size={ size } className={ className }>
-          <MenuList
+          <Menu.List
             options={ options }
             selected={ selected }
             multiple={ this.props.multiple }
@@ -143,7 +139,7 @@ class DropdownMenu extends React.Component {
     }
 
     if (this.props.blank || this.props.multiple) {
-      jsx = <MenuSection className="rc-menu-section-list">{ jsx }</MenuSection>;
+      jsx = <Menu.Section className="rc-menu-section-list">{ jsx }</Menu.Section>;
     }
 
     return jsx;
@@ -159,7 +155,7 @@ class DropdownMenu extends React.Component {
           <ul className="rc-menu-list">
             {
               actions.map(action => (
-                <MenuItem onClick={ this.onActionClick } option={ action } />
+                <Menu.Item onClick={ this.onActionClick } option={ action } />
               ))
             }
           </ul>
@@ -175,14 +171,14 @@ class DropdownMenu extends React.Component {
 
     if (this.props.multiple) {
       jsx = (
-        <MenuSection>
+        <Menu.Section>
           <Button
             block
             size="small"
             label="Apply"
             onClick={ this.onApply }
           />
-        </MenuSection>
+        </Menu.Section>
       );
     }
 

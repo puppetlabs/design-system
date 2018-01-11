@@ -2,15 +2,17 @@ import React from 'react';
 import classnames from 'classnames';
 
 import {
+  ENTER_KEY_CODE,
+  DOWN_KEY_CODE,
   BACK_KEY_CODE,
   TAB_KEY_CODE,
   ESC_KEY_CODE,
+  UP_KEY_CODE,
 } from '../../constants';
 
 import Icon from '../Icon';
 import Input from '../Input';
-import Menu from '../menu/Menu';
-import MenuList from '../menu/MenuList';
+import Menu from '../menu';
 import Popover from '../Popover';
 
 import SelectItem from './SelectItem';
@@ -50,16 +52,41 @@ const defaultProps = {
   name: '',
 };
 
+
+const getNextIdx = (currentIdx, options) => {
+  let newIdx;
+
+  if (currentIdx + 1 >= options.length) {
+    newIdx = 0;
+  } else {
+    newIdx = currentIdx + 1;
+  }
+
+  return newIdx;
+};
+
+const getLastIdx = (currentIdx, options) => {
+  let newIdx;
+
+  if (currentIdx - 1 < 0) {
+    newIdx = options.length - 1;
+  } else {
+    newIdx = currentIdx - 1;
+  }
+
+  return newIdx;
+};
+
 const filterOptions = (options, filter) => options
   .filter(o => !filter || o.label.toLowerCase().indexOf(filter.toLowerCase()) > -1);
 
-const formatOptions = options => options.map((o, idx) => {
+const formatOptions = options => options.map((o) => {
   let option = o;
 
   if (typeof o === 'string') {
     option = { id: o, value: o, label: o };
   } else if (typeof o.id === 'undefined') {
-    o.id = idx;
+    o.id = o.value;
   }
 
   return option;
@@ -69,7 +96,7 @@ const formatOptions = options => options.map((o, idx) => {
  * `Select` allows the user to select an item from a list. Selects provide for three use cases:
  *   * Selecting an option from a list
  *   * Selecting multiple options from a list
- *   * TODO: Creating a list of options.
+ *   * Creating a list of options.
  *
  * `Select` is a stateful component but allows the user to modify the state by passing an updated
  * `options` prop, or listen to changes to the state by passing a callback to the `onSelect` prop.
@@ -84,12 +111,14 @@ class Select extends React.Component {
     this.state = {
       pendingBackDelete: false,
       inputValue: undefined,
+      focusedId: null,
       open: false,
       selected,
     };
 
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onClear = this.onClear.bind(this);
+    this.onRemove = this.onRemove.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
@@ -128,6 +157,17 @@ class Select extends React.Component {
 
     this.clearInput();
     this.setState({ open: false }, this.close);
+  }
+
+  onRemove(optionId) {
+    const removed = this.state.selected
+      .filter(o => o.id === optionId)[0];
+    const selected = this.state.selected
+      .filter(o => o.id !== optionId);
+
+    this.setState({ selected }, () => {
+      this.onChange(selected, removed);
+    });
   }
 
   onBackPress() {
@@ -171,13 +211,25 @@ class Select extends React.Component {
         this.setState({ open: false }, this.close);
 
         break;
+      case ENTER_KEY_CODE:
+        this.selectFocused();
+
+        break;
+      case UP_KEY_CODE:
+        this.focus('last');
+
+        break;
+      case DOWN_KEY_CODE:
+        this.focus('next');
+
+        break;
       default:
         break;
     }
   }
 
   onSelect(option) {
-    const newState = { inputValue: undefined };
+    const newState = { inputValue: undefined, focusedId: null };
 
     if (option.selectable || typeof option.selectable === 'undefined') {
       if (this.state.selected.indexOf(option) >= 0) {
@@ -209,11 +261,24 @@ class Select extends React.Component {
   onInputChange(e) {
     let inputValue = e.target.value;
 
-    if (inputValue === '') {
+    // Clear the full inputValue out for multiselects to allow user to use backspace to delete
+    // existing items. TODO: Clean this up somehow.
+    if (inputValue === '' && this.props.multiple) {
       inputValue = undefined;
     }
 
-    this.setState({ inputValue, pendingBackDelete: false });
+    const newState = {
+      pendingBackDelete: false,
+      inputValue,
+    };
+
+    const options = this.getOptions(inputValue);
+
+    if (options.length === 1) {
+      newState.focusedId = options[0].id;
+    }
+
+    this.setState(newState);
   }
 
   getInputValue() {
@@ -228,8 +293,61 @@ class Select extends React.Component {
     return value;
   }
 
-  getOptions() {
-    return formatOptions(this.props.options);
+  getOptions(filter) {
+    let options = formatOptions(this.props.options);
+
+    if (this.props.typeahead) {
+      options = filterOptions(options, filter);
+    }
+
+    return options;
+  }
+
+  selectFocused() {
+    const options = this.getOptions(this.state.inputValue);
+    let focused;
+
+    // Select either the focused option, or the first option in the list.
+    if (this.state.focusedId) {
+      focused = options
+        .filter(o => o.id === this.state.focusedId)[0];
+    } else {
+      focused = options[0];
+    }
+
+    this.onSelect(focused);
+  }
+
+  focus(direction) {
+    const options = this.getOptions(this.state.inputValue);
+    const newState = {};
+
+    if (this.state.focusedId) {
+      let newIdx;
+      const current = options
+        .filter(o => o.id === this.state.focusedId)[0];
+      const currentIdx = options.indexOf(current);
+
+      switch (direction) {
+        case 'next':
+          newIdx = getNextIdx(currentIdx, options);
+
+          break;
+        case 'last':
+          newIdx = getLastIdx(currentIdx, options);
+
+          break;
+        default:
+          break;
+      }
+
+
+      newState.focusedId = options[newIdx].id;
+    } else {
+      newState.focusedId = options[0].id;
+    }
+
+    this.setState(newState);
   }
 
   clearInput() {
@@ -250,21 +368,19 @@ class Select extends React.Component {
   }
 
   renderMenuList() {
-    let options = this.getOptions();
+    const options = this.getOptions(this.state.inputValue);
 
     const selected = this.state.selected
       .map(o => o.id);
 
-    if (this.props.typeahead) {
-      options = filterOptions(options, this.state.inputValue);
-    }
-
     return (
-      <MenuList
+      <Menu.List
         selected={ selected }
         size={ this.props.size }
         options={ options }
         onChange={ this.onSelect }
+        onFocus={ this.onFocus }
+        focused={ this.state.focusedId }
       />
     );
   }
@@ -316,6 +432,8 @@ class Select extends React.Component {
       selected = this.state.selected
         .map((option, index) => (
           <SelectItem
+            onRemove={ () => this.onRemove(option.id) }
+            key={ `select-item-${option.id}` }
             highlighted={ this.state.pendingBackDelete && index === selectedCount - 1 }
             value={ option.label }
           />

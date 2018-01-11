@@ -56,18 +56,6 @@
   position: relative;
 }
 
-
-// TODO: Cleanup button nesting so you don't need to be so explicit with overrides
-.rc-popover-target-open {
-  .rc-icon {
-    fill: $reflect-card-action-color-active;
-  }
-
-  &:hover .rc-icon {
-    fill: $reflect-card-action-color-active;
-  }
-}
-
 .rc-popover {
   .rc-menu .rc-menu-section:last-child {
     border-bottom-left-radius: $reflect-popover-border-radius;
