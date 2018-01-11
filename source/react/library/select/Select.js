@@ -52,7 +52,6 @@ const defaultProps = {
   name: '',
 };
 
-
 const getNextIdx = (currentIdx, options) => {
   let newIdx;
 
@@ -232,7 +231,7 @@ class Select extends React.Component {
     const newState = { inputValue: undefined, focusedId: null };
 
     if (option.selectable || typeof option.selectable === 'undefined') {
-      if (this.state.selected.indexOf(option) >= 0) {
+      if (this.state.selected.map(s => s.id).indexOf(option.id) >= 0) {
         newState.selected = this.state.selected.filter(o => o.id !== option.id);
       } else if (this.props.multiple) {
         newState.selected = [...this.state.selected, option];
