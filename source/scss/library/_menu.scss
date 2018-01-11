@@ -113,13 +113,16 @@
 
 .rc-menu-item-with-icon a {
   padding-left: $reflect-dropdown-padding * 3;
+}
 
+.rc-menu-item-with-icon .rc-menu-icon {
   .rc-icon {
     left: $reflect-dropdown-padding;
   }
 }
 
-.rc-menu-item-selected .rc-icon {
+.rc-menu-item-selected .rc-icon-check {
+  left: unset;
   right: $reflect-dropdown-padding;
 }
 

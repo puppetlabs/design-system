@@ -57,7 +57,11 @@ class MenuItem extends React.Component {
     let jsx;
 
     if (this.props.option.icon) {
-      jsx = <Icon type={ this.props.option.icon } height="16px" width="16px" />;
+      jsx = (
+        <div className="rc-menu-icon">
+          <Icon type={ this.props.option.icon } height="16px" width="16px" />
+        </div>
+      );
     }
 
     return jsx;
