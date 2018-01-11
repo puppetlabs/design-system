@@ -37,6 +37,27 @@ class MenuList extends React.Component {
     this.onMouseOut = this.onMouseOut.bind(this);
   }
 
+  componentDidUpdate() {
+    const hasClass = (elem, className) => {
+      if (!elem.className) {
+        return false;
+      }
+
+      const classes = elem.className.split(' ');
+      return classes.findIndex((c) => c === className) >= 0;
+    };
+
+    let menu = this.refs.menu,
+        children = Array.from(menu.children);
+        
+    // TODO: We're tracking state of which element is selected using the DOM here. Maybe we can do this a little more simply by using the internal state?
+    let selected = children.find((c) => hasClass(c, 'rc-menu-item-focused'));
+
+    if (selected) {
+      selected.scrollIntoView();
+    }
+  }
+
   componentWillReceiveProps(newProps) {
     if (newProps.focused !== this.state.focusedId) {
       this.setState({ focusedId: newProps.focused });
@@ -102,6 +123,7 @@ class MenuList extends React.Component {
 
     return (
       <ul
+        ref="menu"
         onMouseLeave={ this.onMouseOut }
         className={ className }
       >
