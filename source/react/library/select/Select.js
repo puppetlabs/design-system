@@ -55,13 +55,13 @@ const defaultProps = {
 const filterOptions = (options, filter) => options
   .filter(o => !filter || o.label.toLowerCase().indexOf(filter.toLowerCase()) > -1);
 
-const formatOptions = options => options.map((o, idx) => {
+const formatOptions = options => options.map((o) => {
   let option = o;
 
   if (typeof o === 'string') {
     option = { id: o, value: o, label: o };
   } else if (typeof o.id === 'undefined') {
-    o.id = idx;
+    o.id = o.value;
   }
 
   return option;
