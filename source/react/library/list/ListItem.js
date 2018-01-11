@@ -14,6 +14,7 @@ const propTypes = {
   selected: React.PropTypes.bool,
   tooltip: React.PropTypes.bool,
   children: React.PropTypes.any,
+  fancy: React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -23,6 +24,7 @@ const defaultProps = {
   actions: null,
   kebab: null,
   selected: false,
+  fancy: false,
   onRemove: null,
   onEdit: null,
   onClick: null,
@@ -114,7 +116,7 @@ class ListItem extends React.PureComponent {
         <a
           role="button"
           tabIndex={ 0 }
-          className="rc-list-item-action rc-list-item-edit"
+          className="rc-list-item-action rc-list-item-edit rc-list-item-hidden"
           onClick={ this.onEdit }
         >
           <Icon type="pencil" width={ iconSize } height={ iconSize } />
@@ -145,6 +147,7 @@ class ListItem extends React.PureComponent {
       'rc-list-item-clickable': this.props.onClick,
       'rc-list-item-selected': this.props.selected,
       'rc-list-item-kebab': this.props.kebab,
+      'rc-list-item-fancy': this.props.fancy,
     });
     const edit = this.renderEdit();
     const kebab = this.renderKebab();
@@ -153,7 +156,9 @@ class ListItem extends React.PureComponent {
     const content = this.props.children;
 
     const props = {
-      className: 'rc-list-item-link',
+      className: classnames('rc-list-item-link', {
+        'rc-list-item-link-fancy': this.props.fancy,
+      }),
     };
 
     if (this.onClick) {

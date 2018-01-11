@@ -343,23 +343,22 @@ $reflect-loading-indicator-fill              : $reflect-icon-fill !default;
 // ----------------------------------------------------------------------------
 $reflect-list-item-bg                        : $reflect-bg-primary !default;
 $reflect-list-item-bg-hover                  : $reflect-bg-primary !default;
-$reflect-list-item-color                     : $reflect-font-color-medium !default;
+$reflect-list-item-color                     : $reflect-font-color-base !default;
 $reflect-list-item-color-hover               : $reflect-font-color-base !default;
 $reflect-list-item-border                    : $reflect-border !default;
-$reflect-list-item-border-hover              : $reflect-border-hover !default;
-$reflect-list-item-border-selected           : $reflect-border-active !default;
+$reflect-list-item-border-hover              : $reflect-action-color !default;
+$reflect-list-item-border-selected           : $reflect-action-hover !default;
 $reflect-list-item-shadow-selected           : $reflect-selected-shadow !default;
-$reflect-list-item-border-radius             : $reflect-border-radius !default;
+$reflect-list-item-border-radius             : 0 !default;
 $reflect-list-item-font-size                 : $reflect-font-size-base !default;
-$reflect-list-item-padding                   : $reflect-tiny $reflect-small !default;
+$reflect-list-item-padding                   : 0 0 $reflect-small !default;
 $reflect-list-item-lineheight                : $reflect-line-height-default !default;
 $reflect-list-item-height                    : $reflect-size-base * 4 !default;
-$reflect-list-item-margin                    : 0 0 $reflect-tiny !default;
+$reflect-list-item-margin                    : 0 0 $reflect-small !default;
 
 $reflect-list-item-small-font-size           : $reflect-font-size-small !default;
-$reflect-list-item-small-lineheight: $reflect-medium !default;
-$reflect-list-item-small-height: $reflect-size-base * 3 !default;
-$reflect-list-item-small-padding: $reflect-mini $reflect-small !default;
+$reflect-list-item-small-lineheight          : $reflect-medium !default;
+$reflect-list-item-small-height              : $reflect-size-base * 3 !default;
 
 // Menu
 // ----------------------------------------------------------------------------
