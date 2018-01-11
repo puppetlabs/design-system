@@ -2,9 +2,12 @@ import React from 'react';
 import classnames from 'classnames';
 
 import {
+  ENTER_KEY_CODE,
+  DOWN_KEY_CODE,
   BACK_KEY_CODE,
   TAB_KEY_CODE,
   ESC_KEY_CODE,
+  UP_KEY_CODE,
 } from '../../constants';
 
 import Icon from '../Icon';
@@ -171,15 +174,15 @@ class Select extends React.Component {
         this.setState({ open: false }, this.close);
 
         break;
-      case 13:
+      case ENTER_KEY_CODE:
         this.selectFocused();
 
         break;
-      case 38:
+      case UP_KEY_CODE:
         this.focusLast();
 
         break;
-      case 40:
+      case DOWN_KEY_CODE:
         this.focusNext();
 
         break;
@@ -326,7 +329,7 @@ class Select extends React.Component {
   }
 
   renderMenuList() {
-    let options = this.getOptions();
+    const options = this.getOptions();
 
     const selected = this.state.selected
       .map(o => o.id);
