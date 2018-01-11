@@ -4,7 +4,7 @@ import Icon from '../Icon';
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
-  size: React.PropTypes.oneOf(['small', 'medium']),
+  size: React.PropTypes.oneOf(['small', 'tiny']),
   className: React.PropTypes.string,
   actions: React.PropTypes.any,
   kebab: React.PropTypes.any,
@@ -78,12 +78,8 @@ class ListItem extends React.PureComponent {
   getIconSize() {
     let iconSize = '12px';
 
-    if (this.props.size === 'small') {
-      iconSize = '12px';
-    }
-
-    if (this.props.size === 'medium') {
-      iconSize = '16px';
+    if (this.props.size === 'tiny') {
+      iconSize = '10px';
     }
 
     return iconSize;
@@ -118,7 +114,7 @@ class ListItem extends React.PureComponent {
         <a
           role="button"
           tabIndex={ 0 }
-          className="rc-list-item-action rc-list-item-edit"
+          className="rc-list-item-action rc-list-item-edit rc-list-item-hidden"
           onClick={ this.onEdit }
         >
           <Icon type="pencil" width={ iconSize } height={ iconSize } />
