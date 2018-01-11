@@ -30,6 +30,7 @@ class FormFlyout extends React.Component {
         <Popover
           menu
           closeButton
+          className="rc-popover-visible-overflow"
           hint={ this.props.hint }
           target={ target }
           anchor="bottom right"

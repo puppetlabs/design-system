@@ -8,11 +8,15 @@ const propTypes = {
   selected: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
   onClick: React.PropTypes.func,
+  onFocus: React.PropTypes.func,
+  focused: React.PropTypes.bool,
 };
 
 const defaultProps = {
   iconPosition: 'right',
+  onFocus: () => {},
   onClick: () => {},
+  focused: false,
   selected: false,
   disabled: false,
 };
@@ -22,6 +26,13 @@ class MenuItem extends React.Component {
     super(props);
 
     this.onClick = this.onClick.bind(this);
+    this.onMouseOver = this.onMouseOver.bind(this);
+  }
+
+  onMouseOver() {
+    if (!this.props.focused) {
+      this.props.onFocus();
+    }
   }
 
   onClick(e) {
@@ -46,7 +57,11 @@ class MenuItem extends React.Component {
     let jsx;
 
     if (this.props.option.icon) {
-      jsx = <Icon type={ this.props.option.icon } height="16px" width="16px" />;
+      jsx = (
+        <div className="rc-menu-icon">
+          <Icon type={ this.props.option.icon } height="16px" width="16px" />
+        </div>
+      );
     }
 
     return jsx;
@@ -59,6 +74,7 @@ class MenuItem extends React.Component {
     const className = classnames('rc-menu-item', this.props.className, {
       'rc-menu-item-with-icon': icon,
       'rc-menu-item-selected': checkmark,
+      'rc-menu-item-focused': this.props.focused,
       'rc-menu-item-disabled': this.props.option.disabled,
     });
 
@@ -69,7 +85,7 @@ class MenuItem extends React.Component {
     }
 
     return (
-      <li className={ className }>
+      <li className={ className } onMouseOver={ this.onMouseOver } >
         <a href={ option.id } className="rc-menu-item-anchor" onClick={ this.onClick }>
           { icon }
           <span className="rc-menu-item-text">

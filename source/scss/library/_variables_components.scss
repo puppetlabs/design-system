@@ -339,24 +339,24 @@ $reflect-loading-indicator-fill              : $reflect-icon-fill !default;
 // List Item
 // ----------------------------------------------------------------------------
 $reflect-list-item-bg                        : $reflect-bg-primary !default;
-$reflect-list-item-bg-hover                  : $reflect-gray-lighter !default;
-$reflect-list-item-color                     : $reflect-gray !default;
-$reflect-list-item-color-hover               : $reflect-gray-dark !default;
+$reflect-list-item-bg-hover                  : $reflect-bg-primary !default;
+$reflect-list-item-color                     : $reflect-font-color-medium !default;
+$reflect-list-item-color-hover               : $reflect-font-color-base !default;
 $reflect-list-item-border                    : $reflect-border !default;
+$reflect-list-item-border-hover              : $reflect-border-hover !default;
 $reflect-list-item-border-selected           : $reflect-border-active !default;
 $reflect-list-item-shadow-selected           : $reflect-selected-shadow !default;
 $reflect-list-item-border-radius             : $reflect-border-radius !default;
 $reflect-list-item-font-size                 : $reflect-font-size-base !default;
-$reflect-list-item-padding-v                 : $reflect-tiny !default;
-$reflect-list-item-padding-h                 : $reflect-small !default;
-$reflect-list-item-margin-bottom             : $reflect-mini !default;
-$reflect-list-item-icon-top                  : 2px !default; // Todo: Base on grid
-$reflect-list-item-icon-height               : 33px !default; // Todo: Base on grid
-$reflect-list-item-icon-width                : 16px !default; // Todo: Base on grid
+$reflect-list-item-padding                   : $reflect-tiny $reflect-small !default;
+$reflect-list-item-lineheight                : $reflect-line-height-default !default;
+$reflect-list-item-height                    : $reflect-size-base * 4 !default;
+$reflect-list-item-margin                    : 0 0 $reflect-tiny !default;
 
-$reflect-list-item-tiny-font-size            : $reflect-font-size-tiny !default;
-$reflect-list-item-tiny-padding-v            : $reflect-tiny !default;
-$reflect-list-item-tiny-padding-h            : $reflect-tiny !default;
+$reflect-list-item-small-font-size           : $reflect-font-size-small !default;
+$reflect-list-item-small-lineheight: $reflect-medium !default;
+$reflect-list-item-small-height: $reflect-size-base * 3 !default;
+$reflect-list-item-small-padding: $reflect-mini $reflect-small !default;
 
 // Menu
 // ----------------------------------------------------------------------------
@@ -531,8 +531,8 @@ $reflect-tag-padding                         : $reflect-small !default;
 $reflect-tag-shadow-selected                 : $reflect-selected-shadow !default;
 
 $reflect-tag-icon-spacing                    : $reflect-tiny !default;
-$reflect-tag-icon-size                       : 14px !default;
-$reflect-tag-icon-fill                       : $reflect-gray-lighter !default;
+$reflect-tag-icon-size                       : 16px !default;
+$reflect-tag-icon-fill                       : $reflect-gray-light !default;
 
 $reflect-tag-tiny-case                       : uppercase !default;
 $reflect-tag-tiny-font-size                  : $reflect-font-size-tiny !default;

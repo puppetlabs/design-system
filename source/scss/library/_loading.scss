@@ -7,3 +7,21 @@
     fill: $reflect-loading-indicator-fill;
   }
 }
+
+.rc-loading.loading-page {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  svg {
+    align-self: center;
+    display: flex;
+    height: 100px;
+    width: 100px;
+  }
+}

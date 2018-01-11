@@ -2,15 +2,17 @@ import React from 'react';
 import classnames from 'classnames';
 
 import {
+  ENTER_KEY_CODE,
+  DOWN_KEY_CODE,
   BACK_KEY_CODE,
   TAB_KEY_CODE,
   ESC_KEY_CODE,
+  UP_KEY_CODE,
 } from '../../constants';
 
 import Icon from '../Icon';
 import Input from '../Input';
-import Menu from '../menu/Menu';
-import MenuList from '../menu/MenuList';
+import Menu from '../menu';
 import Popover from '../Popover';
 
 import SelectItem from './SelectItem';
@@ -50,16 +52,41 @@ const defaultProps = {
   name: '',
 };
 
+
+const getNextIdx = (currentIdx, options) => {
+  let newIdx;
+
+  if (currentIdx + 1 >= options.length) {
+    newIdx = 0;
+  } else {
+    newIdx = currentIdx + 1;
+  }
+
+  return newIdx;
+};
+
+const getLastIdx = (currentIdx, options) => {
+  let newIdx;
+
+  if (currentIdx - 1 < 0) {
+    newIdx = options.length - 1;
+  } else {
+    newIdx = currentIdx - 1;
+  }
+
+  return newIdx;
+};
+
 const filterOptions = (options, filter) => options
   .filter(o => !filter || o.label.toLowerCase().indexOf(filter.toLowerCase()) > -1);
 
-const formatOptions = options => options.map((o, idx) => {
+const formatOptions = options => options.map((o) => {
   let option = o;
 
   if (typeof o === 'string') {
     option = { id: o, value: o, label: o };
   } else if (typeof o.id === 'undefined') {
-    o.id = idx;
+    o.id = o.value;
   }
 
   return option;
@@ -84,6 +111,7 @@ class Select extends React.Component {
     this.state = {
       pendingBackDelete: false,
       inputValue: undefined,
+      focusedId: null,
       open: false,
       selected,
     };
@@ -171,6 +199,18 @@ class Select extends React.Component {
         this.setState({ open: false }, this.close);
 
         break;
+      case ENTER_KEY_CODE:
+        this.selectFocused();
+
+        break;
+      case UP_KEY_CODE:
+        this.focus('last');
+
+        break;
+      case DOWN_KEY_CODE:
+        this.focus('next');
+
+        break;
       default:
         break;
     }
@@ -213,7 +253,18 @@ class Select extends React.Component {
       inputValue = undefined;
     }
 
-    this.setState({ inputValue, pendingBackDelete: false });
+    const newState = {
+      pendingBackDelete: false,
+      inputValue,
+    };
+
+    const options = this.getOptions(inputValue);
+
+    if (options.length === 1) {
+      newState.focusedId = options[0].id;
+    }
+
+    this.setState(newState);
   }
 
   getInputValue() {
@@ -228,8 +279,56 @@ class Select extends React.Component {
     return value;
   }
 
-  getOptions() {
-    return formatOptions(this.props.options);
+  getOptions(filter) {
+    let options = formatOptions(this.props.options);
+
+    if (this.props.typeahead) {
+      options = filterOptions(options, filter);
+    }
+
+    return options;
+  }
+
+  selectFocused() {
+    const options = this.getOptions(this.state.inputValue);
+    const selected = options
+      .filter(o => o.id === this.state.focusedId)[0];
+
+    if (selected) {
+      this.onSelect(selected);
+    }
+  }
+
+  focus(direction) {
+    const options = this.getOptions(this.state.inputValue);
+    const newState = {};
+
+    if (this.state.focusedId) {
+      let newIdx;
+      const current = options
+        .filter(o => o.id === this.state.focusedId)[0];
+      const currentIdx = options.indexOf(current);
+
+      switch (direction) {
+        case 'next':
+          newIdx = getNextIdx(currentIdx, options);
+
+          break;
+        case 'last':
+          newIdx = getLastIdx(currentIdx, options);
+
+          break;
+        default:
+          break;
+      }
+
+
+      newState.focusedId = options[newIdx].id;
+    } else {
+      newState.focusedId = options[0].id;
+    }
+
+    this.setState(newState);
   }
 
   clearInput() {
@@ -250,21 +349,19 @@ class Select extends React.Component {
   }
 
   renderMenuList() {
-    let options = this.getOptions();
+    const options = this.getOptions(this.state.inputValue);
 
     const selected = this.state.selected
       .map(o => o.id);
 
-    if (this.props.typeahead) {
-      options = filterOptions(options, this.state.inputValue);
-    }
-
     return (
-      <MenuList
+      <Menu.List
         selected={ selected }
         size={ this.props.size }
         options={ options }
         onChange={ this.onSelect }
+        onFocus={ this.onFocus }
+        focused={ this.state.focusedId }
       />
     );
   }
@@ -366,7 +463,8 @@ class Select extends React.Component {
     const wrapperClassName = classnames('rc-select-wrapper', {
       'rc-select-wrapper-open': this.state.open === true,
     });
-    const popoverClassName = classnames('rc-select-popover', this.props.popoverClassName);
+    const popoverClassName =
+      classnames('rc-select-popover', 'rc-popover-visible-overflow', this.props.popoverClassName);
     const className = classnames('rc-select', 'rc-select-popover-wrapper', this.props.className, {
       'rc-select-disabled': this.props.disabled,
       'rc-select-multiple': this.props.multiple,

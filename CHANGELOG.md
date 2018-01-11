@@ -1,3 +1,11 @@
+# 1.0.1
+
+* Export `FiltersForm` standalone
+* New icons for Studio
+* Updating sizing for various components
+* Keyboard shortcuts for Selects
+* Remove old `Filter` component
+
 # 1.0.0
 
 * Introduce a Checkbox component

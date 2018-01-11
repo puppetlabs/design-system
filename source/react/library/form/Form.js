@@ -109,6 +109,7 @@ class Form extends React.Component {
       value: this.state.values[child.props.name],
       onChange: this.onChange(child.props.name),
       size: this.props.size,
+      key: child.props.name,
     });
   }
 

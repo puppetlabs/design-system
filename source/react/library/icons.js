@@ -4,6 +4,28 @@ const defaultViewBox = '0 0 30 30';
 
 const icons = {
 
+  data: {
+    viewBox: '0 0 16 16',
+    svg: (
+      <g>
+        <path d="M11 4L1 4.019a1 1 0 0 1 0-2L11 2v2zm4 5H5V7h10a1 1 0 0 1 0 2z" />
+        <path data-color="color-2" d="M15 4.019L13 4V2l2 .019a1 1 0 1 1 0 2z" />
+        <path d="M11 14H1a1 1 0 0 1 0-2h10v2z" />
+        <path data-color="color-2" d="M15 14h-2v-2h2a1 1 0 0 1 0 2zM3 9H1a1 1 0 0 1 0-2h2v2z" />
+      </g>
+    ),
+  },
+
+  parameter: {
+    viewBox: '0 0 16 13.71',
+    svg: (
+      <g>
+        <path d="M4 13H1a1 1 0 0 1 0-2h3v2zM15 3H1a1 1 0 0 1 0-2h14a1 1 0 0 1 0 2zM4 8H1a1 1 0 0 1 0-2h3v2z" />
+        <path data-color="color-2" d="M15.707 13.293l-2.274-2.274A3.947 3.947 0 0 0 14 9c0-2.206-1.794-4-4-4S6 6.794 6 9s1.794 4 4 4c.74 0 1.424-.215 2.019-.567l2.274 2.274 1.414-1.414zM10 11c-1.103 0-2-.897-2-2s.897-2 2-2 2 .897 2 2-.897 2-2 2z" />
+      </g>
+    ),
+  },
+
   activity: {
     viewBox: '0 0 17.94 29.695',
     svg: (
