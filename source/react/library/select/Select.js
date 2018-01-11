@@ -9,8 +9,7 @@ import {
 
 import Icon from '../Icon';
 import Input from '../Input';
-import Menu from '../menu/Menu';
-import MenuList from '../menu/MenuList';
+import Menu from '../menu';
 import Popover from '../Popover';
 
 import SelectItem from './SelectItem';
@@ -84,6 +83,7 @@ class Select extends React.Component {
     this.state = {
       pendingBackDelete: false,
       inputValue: undefined,
+      focusedId: null,
       open: false,
       selected,
     };
@@ -171,6 +171,18 @@ class Select extends React.Component {
         this.setState({ open: false }, this.close);
 
         break;
+      case 13:
+        this.selectFocused();
+
+        break;
+      case 38:
+        this.focusLast();
+
+        break;
+      case 40:
+        this.focusNext();
+
+        break;
       default:
         break;
     }
@@ -229,7 +241,71 @@ class Select extends React.Component {
   }
 
   getOptions() {
-    return formatOptions(this.props.options);
+    let options = formatOptions(this.props.options);
+
+    if (this.props.typeahead) {
+      options = filterOptions(options, this.state.inputValue);
+    }
+
+    return options;
+  }
+
+  selectFocused() {
+    const options = this.getOptions();
+    const selected = options
+      .filter(o => o.id === this.state.focusedId)[0];
+
+    if (selected) {
+      this.onSelect(selected);
+    }
+  }
+
+  focusLast() {
+    const options = this.getOptions();
+    const newState = {};
+
+    if (this.state.focusedId) {
+      let newIdx;
+      const current = options
+        .filter(o => o.id === this.state.focusedId)[0];
+      const currentIdx = options.indexOf(current);
+
+      if (currentIdx - 1 < 0) {
+        newIdx = options.length - 1;
+      } else {
+        newIdx = currentIdx - 1;
+      }
+
+      newState.focusedId = options[newIdx].id;
+    } else {
+      newState.focusedId = options[0].id;
+    }
+
+    this.setState(newState);
+  }
+
+  focusNext() {
+    const options = this.getOptions();
+    const newState = {};
+
+    if (this.state.focusedId) {
+      let newIdx;
+      const current = options
+        .filter(o => o.id === this.state.focusedId)[0];
+      const currentIdx = options.indexOf(current);
+
+      if (currentIdx + 1 >= options.length) {
+        newIdx = 0;
+      } else {
+        newIdx = currentIdx + 1;
+      }
+
+      newState.focusedId = options[newIdx].id;
+    } else {
+      newState.focusedId = options[0].id;
+    }
+
+    this.setState(newState);
   }
 
   clearInput() {
@@ -255,16 +331,14 @@ class Select extends React.Component {
     const selected = this.state.selected
       .map(o => o.id);
 
-    if (this.props.typeahead) {
-      options = filterOptions(options, this.state.inputValue);
-    }
-
     return (
-      <MenuList
+      <Menu.List
         selected={ selected }
         size={ this.props.size }
         options={ options }
         onChange={ this.onSelect }
+        onFocus={ this.onFocus }
+        focused={ this.state.focusedId }
       />
     );
   }

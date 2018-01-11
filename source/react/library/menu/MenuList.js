@@ -12,21 +12,51 @@ const propTypes = {
   options: React.PropTypes.array,
   multiple: React.PropTypes.bool,
   onChange: React.PropTypes.func,
+  onFocus: React.PropTypes.func,
 };
 
 const defaultProps = {
+  onFocus: () => {},
+  multiple: false,
+  onChange: null,
   options: [],
   selected: '',
-  multiple: false,
   size: null,
-  onChange: null,
 };
 
 class MenuList extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      focusedId: null,
+    };
+
+    this.onFocus = this.onFocus.bind(this);
     this.onChange = this.onChange.bind(this);
+    this.onMouseOut = this.onMouseOut.bind(this);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.focused !== this.state.focusedId) {
+      this.setState({ focusedId: newProps.focused });
+    }
+  }
+
+  onMouseOut() {
+    if (this.state.focusedId) {
+      this.setState({ focusedId: null }, () => {
+        this.props.onFocus(null);
+      });
+    }
+  }
+
+  onFocus(focusedId) {
+    return () => {
+      this.setState({ focusedId }, () => {
+        this.props.onFocus(focusedId);
+      });
+    };
   }
 
   onChange(selected) {
@@ -58,6 +88,8 @@ class MenuList extends React.Component {
 
       return (
         <MenuItem
+          focused={ this.state.focusedId === option.id }
+          onFocus={ this.onFocus(option.id) }
           key={ option.id }
           option={ option }
           className={ option.className }
@@ -68,7 +100,14 @@ class MenuList extends React.Component {
       );
     });
 
-    return <ul className={ className }>{ jsx }</ul>;
+    return (
+      <ul
+        onMouseLeave={ this.onMouseOut }
+        className={ className }
+      >
+        { jsx }
+      </ul>
+    );
   }
 }
 

@@ -12,7 +12,7 @@
     border-bottom: 0;
   }
 
-  .rc-menu-item a:hover {
+  .rc-menu-item-focused a {
     background: $bg-hover;
     color: $color-hover;
 
@@ -30,12 +30,12 @@
     fill: $color-selected;
   }
 
-  .rc-menu-item-selected  a:hover {
+  .rc-menu-item-selected  .rc-menu-item-focused a {
     background: $bg-hover;
     color: $color-selected;
   }
 
-  .rc-menu-item-selected a:hover .rc-icon {
+  .rc-menu-item-selected .rc-menu-item-focused .rc-icon {
     fill: $color-selected;
   }
 
@@ -94,7 +94,7 @@
   text-overflow: ellipsis;
 }
 
-.rc-menu-item a:hover {
+.rc-menu-item .rc-menu-item-focused {
   text-decoration: none;
 }
 
