@@ -96,7 +96,7 @@ const formatOptions = options => options.map((o) => {
  * `Select` allows the user to select an item from a list. Selects provide for three use cases:
  *   * Selecting an option from a list
  *   * Selecting multiple options from a list
- *   * TODO: Creating a list of options.
+ *   * Creating a list of options.
  *
  * `Select` is a stateful component but allows the user to modify the state by passing an updated
  * `options` prop, or listen to changes to the state by passing a callback to the `onSelect` prop.
@@ -229,7 +229,7 @@ class Select extends React.Component {
   }
 
   onSelect(option) {
-    const newState = { inputValue: undefined };
+    const newState = { inputValue: undefined, focusedId: null };
 
     if (option.selectable || typeof option.selectable === 'undefined') {
       if (this.state.selected.indexOf(option) >= 0) {
@@ -261,7 +261,9 @@ class Select extends React.Component {
   onInputChange(e) {
     let inputValue = e.target.value;
 
-    if (inputValue === '') {
+    // Clear the full inputValue out for multiselects to allow user to use backspace to delete
+    // existing items. TODO: Clean this up somehow.
+    if (inputValue === '' && this.props.multiple) {
       inputValue = undefined;
     }
 
@@ -303,12 +305,17 @@ class Select extends React.Component {
 
   selectFocused() {
     const options = this.getOptions(this.state.inputValue);
-    const selected = options
-      .filter(o => o.id === this.state.focusedId)[0];
+    let focused;
 
-    if (selected) {
-      this.onSelect(selected);
+    // Select either the focused option, or the first option in the list.
+    if (this.state.focusedId) {
+      focused = options
+        .filter(o => o.id === this.state.focusedId)[0];
+    } else {
+      focused = options[0];
     }
+
+    this.onSelect(focused);
   }
 
   focus(direction) {
