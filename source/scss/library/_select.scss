@@ -23,6 +23,7 @@
 .rc-select-item {
   align-items: center;
   background: $reflect-select-item-bg;
+  border: $reflect-select-item-border;
   border-radius: $reflect-select-item-border-radius;
   color: $reflect-select-item-color;
   display: flex;
@@ -32,17 +33,24 @@
   transform: translateX(-4px);
 }
 
+.rc-select-item:hover {
+  background: $reflect-select-item-highlighted-bg;
+  border: $reflect-select-item-highlighted-border;
+}
+
 .rc-select-item-close {
   cursor: pointer;
   margin-left: $reflect-small;
 
   .rc-icon {
-    fill: $reflect-select-item-close-color;
+    fill: $reflect-select-item-icon-color;
+    opacity: 0.8;
   }
 }
 
 .rc-select-item-close:hover .rc-icon {
-  fill: $reflect-white;
+  fill: $reflect-select-item-icon-color;
+  opacity: 1;
 }
 
 .rc-select-items {
@@ -51,7 +59,8 @@
 }
 
 .rc-select-item-highlighted {
-  box-shadow: $reflect-select-item-highlighted-shadow;
+  background: $reflect-select-item-highlighted-bg;
+  border: $reflect-select-item-highlighted-border;
 }
 
 .rc-select-medium {
@@ -65,7 +74,7 @@
   .rc-select-item {
     font-size: 12px;
     line-height: 16px;
-    margin: 1px 1px 0 0;
+    margin: 1px 2px 1px 0;
     padding: 2px 8px;
   }
 }

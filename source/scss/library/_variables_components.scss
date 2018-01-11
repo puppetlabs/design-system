@@ -318,11 +318,13 @@ $reflect-select-border-radius                : $reflect-input-border-radius !def
 $reflect-select-selected-shadow              : $reflect-selected-shadow !default;
 $reflect-select-menu-bg                      : $reflect-white !default;
 
-$reflect-select-item-bg                      : $reflect-brand-primary !default;
-$reflect-select-item-highlighted-shadow      : $reflect-selected-shadow-hover !default;
+$reflect-select-item-border                  : $reflect-border-active !default;
+$reflect-select-item-bg                      : $reflect-action-color !default;
+$reflect-select-item-highlighted-bg          : $reflect-action-hover !default;
+$reflect-select-item-highlighted-border      : $reflect-border-active-hover !default;
 $reflect-select-item-color                   : $reflect-white !default;
 $reflect-select-item-border-radius           : $reflect-circle-radius !default;
-$reflect-select-item-close-color             : lighten($reflect-brand-primary, 25%) !default;
+$reflect-select-item-icon-color              : $reflect-white !default;
 
 // Tiny Inputs to be deprecated - not used
 $reflect-select-tiny-item-margin             : $reflect-mini 0 $reflect-mini $reflect-mini !default;

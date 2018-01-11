@@ -49,7 +49,7 @@ const options = [
 />
 ```
 
-Tiny Multiselect:
+Small Multiselect:
 
 ```
 const options = [
