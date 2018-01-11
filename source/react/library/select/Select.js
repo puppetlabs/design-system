@@ -253,7 +253,18 @@ class Select extends React.Component {
       inputValue = undefined;
     }
 
-    this.setState({ inputValue, pendingBackDelete: false });
+    const newState = {
+      pendingBackDelete: false,
+      inputValue,
+    };
+
+    const options = this.getOptions(inputValue);
+
+    if (options.length === 1) {
+      newState.focusedId = options[0].id;
+    }
+
+    this.setState(newState);
   }
 
   getInputValue() {
@@ -268,18 +279,18 @@ class Select extends React.Component {
     return value;
   }
 
-  getOptions() {
+  getOptions(filter) {
     let options = formatOptions(this.props.options);
 
     if (this.props.typeahead) {
-      options = filterOptions(options, this.state.inputValue);
+      options = filterOptions(options, filter);
     }
 
     return options;
   }
 
   selectFocused() {
-    const options = this.getOptions();
+    const options = this.getOptions(this.state.inputValue);
     const selected = options
       .filter(o => o.id === this.state.focusedId)[0];
 
@@ -289,7 +300,7 @@ class Select extends React.Component {
   }
 
   focus(direction) {
-    const options = this.getOptions();
+    const options = this.getOptions(this.state.inputValue);
     const newState = {};
 
     if (this.state.focusedId) {
@@ -338,7 +349,7 @@ class Select extends React.Component {
   }
 
   renderMenuList() {
-    const options = this.getOptions();
+    const options = this.getOptions(this.state.inputValue);
 
     const selected = this.state.selected
       .map(o => o.id);
