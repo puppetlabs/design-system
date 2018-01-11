@@ -52,6 +52,31 @@ const defaultProps = {
   name: '',
 };
 
+
+const getNextIdx = (currentIdx, options) => {
+  let newIdx;
+
+  if (currentIdx + 1 >= options.length) {
+    newIdx = 0;
+  } else {
+    newIdx = currentIdx + 1;
+  }
+
+  return newIdx;
+};
+
+const getLastIdx = (currentIdx, options) => {
+  let newIdx;
+
+  if (currentIdx - 1 < 0) {
+    newIdx = options.length - 1;
+  } else {
+    newIdx = currentIdx - 1;
+  }
+
+  return newIdx;
+};
+
 const filterOptions = (options, filter) => options
   .filter(o => !filter || o.label.toLowerCase().indexOf(filter.toLowerCase()) > -1);
 
@@ -179,11 +204,11 @@ class Select extends React.Component {
 
         break;
       case UP_KEY_CODE:
-        this.focusLast();
+        this.focus('last');
 
         break;
       case DOWN_KEY_CODE:
-        this.focusNext();
+        this.focus('next');
 
         break;
       default:
@@ -263,7 +288,7 @@ class Select extends React.Component {
     }
   }
 
-  focusLast() {
+  focus(direction) {
     const options = this.getOptions();
     const newState = {};
 
@@ -273,35 +298,19 @@ class Select extends React.Component {
         .filter(o => o.id === this.state.focusedId)[0];
       const currentIdx = options.indexOf(current);
 
-      if (currentIdx - 1 < 0) {
-        newIdx = options.length - 1;
-      } else {
-        newIdx = currentIdx - 1;
+      switch (direction) {
+        case 'next':
+          newIdx = getNextIdx(currentIdx, options);
+
+          break;
+        case 'last':
+          newIdx = getLastIdx(currentIdx, options);
+
+          break;
+        default:
+          break;
       }
 
-      newState.focusedId = options[newIdx].id;
-    } else {
-      newState.focusedId = options[0].id;
-    }
-
-    this.setState(newState);
-  }
-
-  focusNext() {
-    const options = this.getOptions();
-    const newState = {};
-
-    if (this.state.focusedId) {
-      let newIdx;
-      const current = options
-        .filter(o => o.id === this.state.focusedId)[0];
-      const currentIdx = options.indexOf(current);
-
-      if (currentIdx + 1 >= options.length) {
-        newIdx = 0;
-      } else {
-        newIdx = currentIdx + 1;
-      }
 
       newState.focusedId = options[newIdx].id;
     } else {

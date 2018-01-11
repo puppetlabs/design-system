@@ -54,7 +54,7 @@ describe('<Select />', () => {
       wrapper.find('MenuItem').first().find('a').simulate('click');
 
       expect(onSelect.lastCall.args[0]).to.eql({
-        id: 0,
+        id: 'Michael',
         value: 'Michael',
         label: 'Sig',
       });
