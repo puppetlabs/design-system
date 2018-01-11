@@ -14,6 +14,7 @@ const propTypes = {
   selected: React.PropTypes.bool,
   tooltip: React.PropTypes.bool,
   children: React.PropTypes.any,
+  fancy: React.PropTypes.bool,
 };
 
 const defaultProps = {
@@ -23,6 +24,7 @@ const defaultProps = {
   actions: null,
   kebab: null,
   selected: false,
+  fancy: false,
   onRemove: null,
   onEdit: null,
   onClick: null,
