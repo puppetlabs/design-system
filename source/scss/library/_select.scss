@@ -32,6 +32,19 @@
   transform: translateX(-4px);
 }
 
+.rc-select-item-close {
+  cursor: pointer;
+  margin-left: $reflect-small;
+
+  .rc-icon {
+    fill: $reflect-select-item-close-color;
+  }
+}
+
+.rc-select-item-close:hover .rc-icon {
+  fill: $reflect-white;
+}
+
 .rc-select-items {
   display: flex;
   flex-wrap: wrap;

@@ -118,6 +118,7 @@ class Select extends React.Component {
 
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onClear = this.onClear.bind(this);
+    this.onRemove = this.onRemove.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
@@ -156,6 +157,17 @@ class Select extends React.Component {
 
     this.clearInput();
     this.setState({ open: false }, this.close);
+  }
+
+  onRemove(optionId) {
+    const removed = this.state.selected
+      .filter(o => o.id === optionId)[0];
+    const selected = this.state.selected
+      .filter(o => o.id !== optionId);
+
+    this.setState({ selected }, () => {
+      this.onChange(selected, removed);
+    });
   }
 
   onBackPress() {
@@ -413,6 +425,8 @@ class Select extends React.Component {
       selected = this.state.selected
         .map((option, index) => (
           <SelectItem
+            onRemove={ () => this.onRemove(option.id) }
+            key={ `select-item-${option.id}` }
             highlighted={ this.state.pendingBackDelete && index === selectedCount - 1 }
             value={ option.label }
           />
