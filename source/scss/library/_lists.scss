@@ -164,6 +164,7 @@
   .rc-list-item-text {
     font-size: $reflect-list-item-small-font-size;
     line-height: $reflect-list-item-small-lineheight;
+    transform: translateY(-1px); // finagling the text to appear centered without adjust margins and padding of the whole component
   }
 
   .rc-list-item-action {
@@ -223,12 +224,14 @@
   }
 }
 
-.rc-list-item-medium.rc-list-item-link-fancy {
+.rc-list-item-medium .rc-list-item-link-fancy {
   padding: 4px 8px;
+  margin: 0 0 4px;
 }
 
 .rc-list-item-small .rc-list-item-link-fancy {
   padding: 2px 8px;
+  margin: 0 0 2px;
 }
 
 

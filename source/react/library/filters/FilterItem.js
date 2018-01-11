@@ -63,7 +63,6 @@ const FilterItem = (props) => {
       onRemove={ props.onRemove }
       onEdit={ props.onEdit }
       onClick={ props.onEdit }
-      // fancy
     >
       { text }
     </ListItem>
