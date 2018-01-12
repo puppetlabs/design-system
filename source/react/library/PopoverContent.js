@@ -5,7 +5,6 @@ import { isNodeInRoot } from '../helpers/statics';
 import portal from './portal';
 import togglable from './togglable';
 import Menu from './menu/Menu';
-import MenuHeader from './menu/MenuHeader';
 import Button from './Button';
 
 const propTypes = {
@@ -67,12 +66,17 @@ class PopoverContent extends React.Component {
 
   renderHeader() {
     const { hint, closeButton } = this.props;
+    let onClose;
     let close;
     let jsx;
 
     if (this.props.menu) {
+      if (closeButton) {
+        onClose = this.onClose;
+      }
+
       jsx = (
-        <MenuHeader title={ hint } onClose={ closeButton && this.onClose } />
+        <Menu.Header title={ hint } onClose={ onClose } />
       );
     } else {
       if (closeButton) {
