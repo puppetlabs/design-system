@@ -56,7 +56,8 @@
   padding: 0;
   position: relative;
   @include focus-circle;
-  .rc-icon{
+
+  .rc-icon {
     @include icon-opacity-hover;
     @include icon-scale-hover;
     @include transition(opacity 0.2s, transform 0.2s);
