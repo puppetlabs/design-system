@@ -23,6 +23,12 @@
   border-right: $reflect-popover-border;
 }
 
+.rc-popover-menu .rc-menu-section {
+  .rc-form-section {
+    border: 0;
+  }
+}
+
 .rc-form-section {
   padding-bottom: 16px;
 }
