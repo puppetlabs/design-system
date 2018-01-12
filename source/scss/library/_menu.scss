@@ -5,11 +5,21 @@
 
   .rc-menu-item a {
     background: $bg;
+    border-left: $border;
+    border-right: $border;
     color: $color;
   }
 
+  .rc-menu-item:first-of-type a {
+    border-top: $border;
+    border-top-left-radius: $reflect-border-radius;
+    border-top-right-radius: $reflect-border-radius;
+  }
+
   .rc-menu-item:last-of-type a {
-    border-bottom: 0;
+    border-bottom: $border;
+    border-bottom-left-radius: $reflect-border-radius;
+    border-bottom-right-radius: $reflect-border-radius;
   }
 
   .rc-menu-item-focused a {
@@ -132,6 +142,8 @@
 
 .rc-menu-section {
   border-bottom: $reflect-menu-section-border;
+  border-left: $reflect-menu-section-border;
+  border-right: $reflect-menu-section-border;
   padding: $reflect-menu-section-padding;
 
   &.rc-menu-section-list {
@@ -139,13 +151,14 @@
     padding: 0;
   }
 
-  &:last-of-type {
-    border-bottom: 0;
+  .rc-menu-item a {
+    border: 0;
   }
 }
 
 .rc-menu-header {
   align-items: center;
+  background: $reflect-menu-header-bg;
   border-bottom: $reflect-menu-header-border;
   display: flex;
   height: $reflect-menu-header-height;

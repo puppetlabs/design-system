@@ -12,7 +12,7 @@ describe('<DropdownMenu />', () => {
     const options = [{ id: 1, value: 'option 1' }, { id: 2, value: 'option 2' }];
     const wrapper = shallow(<DropdownMenu hint="I love hints!" options={ options } />);
 
-    expect(wrapper.find('MenuHeader').prop('title')).to.equal('I love hints!');
+    expect(wrapper.find('Popover').prop('hint')).to.equal('I love hints!');
   });
 
   it('should render a blank slate', () => {

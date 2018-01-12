@@ -48,6 +48,10 @@
   &.rc-popover-no-padding {
     padding: 0;
   }
+
+  &.rc-popover-no-border {
+    border: 0;
+  }
 }
 
 .rc-popover-wrapper {
@@ -56,6 +60,21 @@
 
 .rc-popover-wrapper-relative {
   position: relative;
+}
+
+.rc-popover-menu {
+  border-top: 0;
+
+  .rc-menu-item:first-of-type a {
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
+.rc-popover-menu .rc-menu-header {
+  border-top-left-radius: $reflect-popover-border-radius;
+  border-top-right-radius: $reflect-popover-border-radius;
 }
 
 .rc-popover {
