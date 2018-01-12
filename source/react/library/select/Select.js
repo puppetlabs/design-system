@@ -533,6 +533,7 @@ class Select extends React.Component {
           onClose={ this.onPopoverClose }
           margin={ 4 }
           allowBubble
+          border={ false }
           padding={ false }
         >
           { menu }
