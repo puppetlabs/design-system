@@ -507,17 +507,27 @@ class Select extends React.Component {
       'rc-select-multiple': this.props.multiple,
       [`rc-select-${this.props.size}`]: this.props.size,
     });
-    let jsx = (
-      <div className={ className }>
+
+    const content = (
+      <div>
         { input }
+        { actions }
       </div>
     );
+    let jsx;
 
-    if (!this.props.disabled) {
+    // If the Select is disabled, there's no need to render the whole Popover ordeal.
+    if (this.props.disabled) {
+      jsx = (
+        <div className={ className }>
+          { content }
+        </div>
+      );
+    } else {
       jsx = (
         <Popover
           ref={ (c) => { this.popover = c; } }
-          target={ input }
+          target={ content }
           disablePortal={ this.props.disablePortal }
           className={ popoverClassName }
           wrapperClassName={ className }
@@ -536,7 +546,6 @@ class Select extends React.Component {
     return (
       <div className={ wrapperClassName }>
         { jsx }
-        { actions }
       </div>
     );
   }
