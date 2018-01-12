@@ -12,12 +12,12 @@
   color: $reflect-select-color;
   cursor: pointer;
   position: relative;
+}
 
-  .rc-select-menu {
-    background: $reflect-select-menu-bg;
-    max-height: 150px;
-    overflow-y: scroll;
-  }
+.rc-select-menu {
+  background: $reflect-select-menu-bg;
+  max-height: 150px;
+  overflow-y: scroll;
 }
 
 .rc-select-wrapper {
