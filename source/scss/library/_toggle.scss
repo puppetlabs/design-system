@@ -30,3 +30,17 @@
     background: $reflect-toggle-on-color;
   }
 }
+
+.rc-toggle-disabled {
+  .rc-toggle-label {
+    cursor: default;
+  }
+
+  .rc-switch-label {
+    cursor: default;
+  }
+
+  .rc-switch-label::after {
+    opacity: 0.5;
+  }
+}
