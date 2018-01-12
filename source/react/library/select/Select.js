@@ -458,7 +458,7 @@ class Select extends React.Component {
     }
 
     return (
-      <div className="rc-select-items">
+      <div className="rc-select-input">
         { selected }
         { input }
       </div>
@@ -487,11 +487,7 @@ class Select extends React.Component {
       />
     );
 
-    return (
-      <div className="rc-select-input">
-        { input }
-      </div>
-    );
+    return input;
   }
 
   render() {
