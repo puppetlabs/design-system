@@ -1,4 +1,5 @@
 .rc-popover {
+  animation: 0.2s ease-in-out popover;
   background: $reflect-popover-bg;
   border: $reflect-popover-border;
   border-radius: $reflect-popover-border-radius;
@@ -6,6 +7,7 @@
   overflow: hidden;
   padding: $reflect-popover-padding;
   position: absolute;
+  transform-origin: top left;
   z-index: $reflect-popover-elevation;
 
   .rc-popover-header {

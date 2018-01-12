@@ -84,19 +84,19 @@
   }
 }
 
-@mixin focus-circle($size: 4px, $color: $reflect-black, $opacity: 0.12) {
+@mixin focus-circle($color: $reflect-black, $opacity: 0.12) {
   position: relative;
 
   &::before {
     background-color: $color;
     border-radius: 50%;
-    bottom: $size * -1;
+    bottom: 0;
     content: '';
-    left: $size * -1;
+    left: 0;
     opacity: 0;
     position: absolute;
-    right: $size * -1;
-    top: $size * -1;
+    right: 0;
+    top: 0;
     transform: scale(0.5);
     transition: opacity 0.2s, transform 0.2s;
   }
@@ -108,6 +108,8 @@
 
   &:focus::before {
     opacity: $opacity;
-    transform: scale(1);
+    transform: scale(1.5);
   }
 }
+
+
