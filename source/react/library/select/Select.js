@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import classnames from 'classnames';
 
 import {
@@ -99,23 +98,23 @@ const hasClass = (elem, className) => {
   }
 
   const classes = elem.className.split(' ');
-  return classes.findIndex((c) => c === className) >= 0;
+
+  return classes.findIndex(c => c === className) >= 0;
 };
 
-const updateScrollPosition = (elem) => {
-  let parent = elem.parentElement,
-      children = Array.from(elem.children),
-      outerBounds = parent.getBoundingClientRect();
-
-  let selected = children.find((c) => hasClass(c, 'rc-menu-item-focused'));
+const updateScrollPosition = ({ list }) => {
+  const parent = list.parentElement;
+  const children = Array.from(list.children);
+  const outerBounds = parent.getBoundingClientRect();
+  const selected = children.filter(c => hasClass(c, 'rc-menu-item-focused'))[0];
 
   if (selected) {
-    let selectedBounds = selected.getBoundingClientRect();
+    const selectedBounds = selected.getBoundingClientRect();
 
-    let viewportBottom = outerBounds.height + outerBounds.y,
-        viewportTop = outerBounds.y + parent.scrollTop,
-        selectedTop = selectedBounds.y,
-        selectedBottom = selectedTop + selectedBounds.height;
+    const viewportBottom = outerBounds.height + outerBounds.y;
+    const viewportTop = outerBounds.y + parent.scrollTop;
+    const selectedTop = selectedBounds.y;
+    const selectedBottom = selectedTop + selectedBounds.height;
 
     // If the current element is either above the current viewport or below the current viewport
     // then we want to update the scroll position accordingly.
@@ -123,7 +122,7 @@ const updateScrollPosition = (elem) => {
       parent.scrollTop = (selectedTop - outerBounds.y) + selectedBounds.height;
     }
   }
-}
+};
 
 /**
  * `Select` allows the user to select an item from a list. Selects provide for three use cases:
@@ -380,7 +379,7 @@ class Select extends React.Component {
       newState.focusedId = options[0].id;
     }
 
-    this.setState(newState, () => { updateScrollPosition(ReactDOM.findDOMNode(this.refs.menuList))});
+    this.setState(newState, () => { updateScrollPosition(this.menuList); });
   }
 
   clearInput() {
@@ -408,7 +407,7 @@ class Select extends React.Component {
 
     return (
       <Menu.List
-        ref="menuList"
+        ref={ (c) => { this.menuList = c; } }
         selected={ selected }
         size={ this.props.size }
         options={ options }
