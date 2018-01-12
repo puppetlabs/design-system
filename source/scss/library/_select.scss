@@ -79,7 +79,7 @@
 
 .rc-select-item {
   align-items: center;
-  animation: 0.2s linear scale-in-X;
+  animation: 0.2s linear fade-in;
   background: $reflect-select-item-bg;
   border: $reflect-select-item-border;
   border-radius: $reflect-select-item-border-radius;
