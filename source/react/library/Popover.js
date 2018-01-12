@@ -217,6 +217,7 @@ class Popover extends React.Component {
     const className = classnames('rc-popover', this.props.className, {
       [`rc-popover-${this.props.size}`]: this.props.size,
       'rc-popover-no-portal': this.props.disablePortal,
+      'rc-popover-menu': this.props.menu,
       'rc-popover-no-padding': !this.props.padding || this.props.menu,
       'rc-popover-no-border': !this.props.border || this.props.menu,
     });

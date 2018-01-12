@@ -62,6 +62,14 @@
   position: relative;
 }
 
+.rc-popover-menu .rc-menu-item {
+  &:first-of-type a {
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}
+
 .rc-popover {
   .rc-menu .rc-menu-section:last-child {
     border-bottom-left-radius: $reflect-popover-border-radius;
