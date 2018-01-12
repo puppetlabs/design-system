@@ -1,5 +1,5 @@
 
-@keyframes popover {
+@keyframes scale-in-Y {
   0% {
     opacity: 0;
     transform: scaleY(0.9);
@@ -8,5 +8,34 @@
   100% {
     opacity: 100;
     transform: scaleY(1);
+  }
+}
+
+@keyframes scale-in-X {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
