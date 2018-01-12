@@ -1,22 +1,20 @@
 import React from 'react';
 
 const propTypes = {
-    message: React.PropTypes.string,
+  children: React.PropTypes.any,
+  message: React.PropTypes.string,
 };
 
 const defaultProps = {
-    message: '',
+  children: null,
+  message: '',
 };
 
-class MenuActionsMessage extends React.Component {
-    render() {
-        return (
-            <div className="rc-menu-actions-message">
-                { this.props.message || this.props.children }
-            </div>
-        );
-    }
-}
+const MenuActionsMessage = props => (
+  <div className="rc-menu-actions-message">
+    { props.message || props.children }
+  </div>
+);
 
 MenuActionsMessage.propTypes = propTypes;
 MenuActionsMessage.defaultProps = defaultProps;

@@ -3,20 +3,18 @@ import Message from './MenuActionsMessage';
 import Buttons from './MenuActionsButtons';
 
 const propTypes = {
+  children: React.PropTypes.any,
 };
 
 const defaultProps = {
+  children: null,
 };
 
-class MenuActions extends React.Component {
-  render() {
-    return (
-      <div className="rc-menu-actions">
-        { this.props.children }
-      </div>
-    );
-  }
-}
+const MenuActions = props => (
+  <div className="rc-menu-actions">
+    { props.children }
+  </div>
+);
 
 MenuActions.propTypes = propTypes;
 MenuActions.defaultProps = defaultProps;
