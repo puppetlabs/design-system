@@ -189,6 +189,28 @@
   }
 }
 
+.rc-menu-actions {
+  display: flex;
+  padding: $reflect-menu-actions-padding;
+
+  .rc-menu-actions-message {
+    flex-grow: 2;
+  }
+
+  .rc-menu-actions-buttons {
+    flex-grow: 2;
+    justify-content: flex-end;
+
+    .rc-button {
+      @extend .rc-button-simple;
+    }
+  
+    .rc-button + .rc-button {
+      margin-left: 10px;
+    }
+  }
+}
+
 .rc-menu-first {
   .rc-menu-item:last-child a {
     border-bottom-left-radius: 0;
