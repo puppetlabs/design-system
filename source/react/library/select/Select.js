@@ -414,7 +414,7 @@ class Select extends React.Component {
   }
 
   renderActions() {
-    const selected = this.renderSelected();
+    const selected = this.state.selected;
     const value = this.getInputValue();
     const actions = [];
 
@@ -439,7 +439,8 @@ class Select extends React.Component {
     );
   }
 
-  renderSelected() {
+  renderContent() {
+    const input = this.renderInput();
     let selected = [];
 
     if (this.props.multiple && !this.props.valueless) {
@@ -459,12 +460,13 @@ class Select extends React.Component {
     return (
       <div className="rc-select-items">
         { selected }
+        { input }
       </div>
     );
   }
 
   renderInput() {
-    const selected = this.renderSelected();
+    const selected = this.state.selected;
     let placeholder;
 
     if (!this.props.multiple || !selected.length) {
@@ -487,7 +489,6 @@ class Select extends React.Component {
 
     return (
       <div className="rc-select-input">
-        { selected }
         { input }
       </div>
     );
@@ -496,7 +497,7 @@ class Select extends React.Component {
   render() {
     const actions = this.renderActions();
     const menu = this.renderMenu();
-    const input = this.renderInput();
+    const items = this.renderContent();
     const wrapperClassName = classnames('rc-select-wrapper', {
       'rc-select-wrapper-open': this.state.open === true,
     });
@@ -510,7 +511,7 @@ class Select extends React.Component {
 
     const content = (
       <div>
-        { input }
+        { items }
         { actions }
       </div>
     );
