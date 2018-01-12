@@ -186,7 +186,7 @@ class DropdownMenu extends React.Component {
       <Popover
         menu
         hint={ this.props.hint }
-        closeButton={ this.props.hint }
+        closeButton={ !!this.props.hint }
         anchor={ this.props.anchor }
         ref={ (c) => { this.popover = c; } }
         className={ className }
