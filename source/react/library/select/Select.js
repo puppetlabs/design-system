@@ -458,7 +458,7 @@ class Select extends React.Component {
     }
 
     return (
-      <div className="rc-select-input">
+      <div className="rc-select-content">
         { selected }
         { input }
       </div>
@@ -506,7 +506,7 @@ class Select extends React.Component {
     });
 
     const content = (
-      <div>
+      <div className="rc-select-input">
         { items }
         { actions }
       </div>
