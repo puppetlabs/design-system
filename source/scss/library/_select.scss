@@ -35,6 +35,11 @@
   padding: 0 8px;
   position: relative;
   text-overflow: ellipsis;
+
+  &:hover {
+    border-color: $reflect-action-color;
+  }
+
 }
 
 .rc-select-multiple .rc-select-input {
