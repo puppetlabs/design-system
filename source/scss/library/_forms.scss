@@ -15,8 +15,16 @@
   padding: 0;
 }
 
+.rc-popover-menu .rc-form-section {
+  border-bottom: $reflect-popover-border;
+  border-bottom-left-radius: $reflect-popover-border-radius;
+  border-bottom-right-radius: $reflect-popover-border-radius;
+  border-left: $reflect-popover-border;
+  border-right: $reflect-popover-border;
+}
+
 .rc-form-section {
-  margin-bottom: 16px;
+  padding-bottom: 16px;
 }
 
 .rc-form-flyout {

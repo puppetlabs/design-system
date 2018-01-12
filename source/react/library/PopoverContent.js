@@ -25,7 +25,6 @@ const defaultProps = {
   className: '',
   closeButton: false,
   style: null,
-  hint: '',
   allowBubble: false,
   onClose: null,
   children: null,
@@ -75,9 +74,11 @@ class PopoverContent extends React.Component {
         onClose = this.onClose;
       }
 
-      jsx = (
-        <Menu.Header title={ hint } onClose={ onClose } />
-      );
+      if (hint || closeButton) {
+        jsx = (
+          <Menu.Header title={ hint } onClose={ onClose } />
+        );
+      }
     } else {
       if (closeButton) {
         close = (

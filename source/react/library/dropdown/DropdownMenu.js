@@ -36,7 +36,6 @@ const defaultProps = {
   size: 'small',
   width: 'auto',
   blank: '',
-  hint: '',
   multiple: false,
   margin: null,
   disablePortal: false,
@@ -98,18 +97,6 @@ class DropdownMenu extends React.Component {
     }
 
     this.popover.close();
-  }
-
-  renderHint() {
-    let jsx;
-
-    if (this.props.hint) {
-      jsx = (
-        <Menu.Header title={ this.props.hint } onClose={ this.onClosePopover } />
-      );
-    }
-
-    return jsx;
   }
 
   renderMenu() {
@@ -187,7 +174,6 @@ class DropdownMenu extends React.Component {
 
   render() {
     const menu = this.renderMenu();
-    const hint = this.renderHint();
     const actions = this.renderActions();
     const applyButton = this.renderApplyButton();
     const className = classnames('rc-dropdown-menu', {
@@ -198,6 +184,9 @@ class DropdownMenu extends React.Component {
 
     return (
       <Popover
+        menu
+        hint={ this.props.hint }
+        closeButton={ this.props.hint }
         anchor={ this.props.anchor }
         ref={ (c) => { this.popover = c; } }
         className={ className }
@@ -209,7 +198,6 @@ class DropdownMenu extends React.Component {
         width={ this.props.width }
         disablePortal={ this.props.disablePortal }
       >
-        { hint }
         { menu }
         { actions }
         { applyButton }

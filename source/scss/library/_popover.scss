@@ -70,6 +70,11 @@
   }
 }
 
+.rc-popover-menu .rc-menu-header {
+  border-top-left-radius: $reflect-popover-border-radius;
+  border-top-right-radius: $reflect-popover-border-radius;
+}
+
 .rc-popover {
   .rc-menu .rc-menu-section:last-child {
     border-bottom-left-radius: $reflect-popover-border-radius;
