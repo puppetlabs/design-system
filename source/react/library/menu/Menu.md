@@ -56,8 +56,10 @@ const target = <Button>Open menu that with actions</Button>;
     </MenuSection>
     <MenuActions>
       <MenuActions.Buttons>
-        <Button secondary>Action 1</Button>
-        <Button>Action 2</Button>
+        <ButtonGroup>
+          <Button simple secondary>Cancel</Button>
+          <Button simple>Save</Button>
+        </ButtonGroup>
       </MenuActions.Buttons>
     </MenuActions>
   </Menu>

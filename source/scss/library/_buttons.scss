@@ -5,6 +5,7 @@
   background: $bg;
   border: 1px solid $border;
   color: $color !important;
+  transition: all 0.2s;
 
   .rc-button-menu-inner .rc-icon {
     fill: $icon-color;
@@ -162,14 +163,27 @@
   padding: 0;
 
   @include button-colors(
-    $reflect-button-simple-bg, 
-    $reflect-button-simple-bg-hover, 
-    $reflect-button-simple-color, 
-    $reflect-button-simple-color-hover, 
-    $reflect-button-simple-icon-color, 
-    $reflect-button-simple-icon-color-hover, 
-    $reflect-button-simple-border-color, 
+    $reflect-button-simple-bg,
+    $reflect-button-simple-bg-hover,
+    $reflect-button-simple-color,
+    $reflect-button-simple-color-hover,
+    $reflect-button-simple-icon-color,
+    $reflect-button-simple-icon-color-hover,
+    $reflect-button-simple-border-color,
     $reflect-button-simple-border-color-hover
+  );
+}
+
+.rc-button-simple.rc-button-secondary {
+  @include button-colors(
+    $reflect-button-simple-secondary-bg,
+    $reflect-button-simple-secondary-bg-hover,
+    $reflect-button-simple-secondary-color,
+    $reflect-button-simple-secondary-color-hover,
+    $reflect-button-simple-secondary-icon-color,
+    $reflect-button-simple-secondary-icon-color-hover,
+    $reflect-button-simple-secondary-border-color,
+    $reflect-button-simple-secondary-border-color-hover
   );
 }
 

@@ -4,17 +4,27 @@ import Buttons from './MenuActionsButtons';
 
 const propTypes = {
   children: React.PropTypes.any,
+  centered: React.PropTypes.bool,
 };
 
 const defaultProps = {
   children: null,
+  centered: false,
 };
 
-const MenuActions = props => (
-  <div className="rc-menu-actions">
-    { props.children }
-  </div>
-);
+const MenuActions = props => {
+  let className = "rc-menu-actions";
+
+  if (props.centered) {
+    className += " rc-menu-actions-centered";
+  }
+
+  return (
+    <div className={className}>
+      { props.children }
+    </div>
+  );
+};
 
 MenuActions.propTypes = propTypes;
 MenuActions.defaultProps = defaultProps;
