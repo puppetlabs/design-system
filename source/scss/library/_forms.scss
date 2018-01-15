@@ -95,7 +95,8 @@
 .rc-form-inline,
 .rc-form-field-inline {
   .rc-form-field-label {
-    flex-grow: 0.5;
+    flex-grow: 1;
+    margin: 0;
     padding-bottom: 0;
   }
 
@@ -105,9 +106,14 @@
   }
 
   .rc-form-field-element {
+    align-items: center;
     display: flex;
     flex-grow: 3;
     justify-content: flex-end;
+  }
+
+  .rc-checkbox-container {
+    display: flex;
   }
 
   .rc-toggle .rc-switch {

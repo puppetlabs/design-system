@@ -19,8 +19,8 @@ $reflect-accordion-icon-color                : $reflect-icon-fill !default;
 $reflect-accordion-icon-color-hover          : $reflect-icon-fill-hover !default;
 
 $reflect-accordion-header-title-color        : $reflect-font-color-light !default;
-$reflect-accordion-header-height             : 42px;
-$reflect-accordion-header-bg                 : $reflect-gray-darker !default;
+$reflect-accordion-header-height             : 32px;
+$reflect-accordion-header-bg                 : $reflect-black !default;
 
 $reflect-accordion-animation-speed           : $reflect-animation-speed-base !default;
 
@@ -366,7 +366,7 @@ $reflect-menu-item-border                    : $reflect-border !default;
 $reflect-menu-item-border-focus              : $reflect-border-active-hover;
 $reflect-menu-item-border-active             : $reflect-border-active-hover;
 $reflect-menu-item-font-size                 : $reflect-font-size-small !default;
-$reflect-menu-item-font-weight               : $reflect-font-weight-heavy !default;
+$reflect-menu-item-font-weight               : $reflect-font-weight-normal !default;
 $reflect-menu-item-line-height               : $reflect-medium !default;
 $reflect-menu-item-height                    : $reflect-size-base * 4 !default;
 $reflect-menu-item-color                     : $reflect-font-color-base !default;
@@ -391,7 +391,7 @@ $reflect-menu-item-bg-disabled               : $reflect-gray-light !default;
 $reflect-menu-header-height                  : $reflect-menu-item-height !default;
 $reflect-menu-header-padding                 : $reflect-menu-item-padding !default;
 $reflect-menu-title-font-size                : 11px !default;
-$reflect-menu-title-font-weight              : $reflect-font-weight-heavy !default;
+$reflect-menu-title-font-weight              : $reflect-font-weight-normal !default;
 $reflect-menu-title-color                    : $reflect-font-color-light !default;
 
 // Menu Section
