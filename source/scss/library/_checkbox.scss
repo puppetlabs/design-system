@@ -20,6 +20,14 @@
   width: $reflect-medium;
 }
 
+.rc-checkbox::-ms-check {
+  display: none;
+}
+
+.rc-checkbox::-ms-expand {
+  display: none;
+}
+
 .rc-checkbox + .rc-icon {
   height: 16px;
   pointer-events: none;

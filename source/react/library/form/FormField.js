@@ -52,6 +52,9 @@ const defaultProps = {
   onChange: null,
 };
 
+const isReactComponent = c =>
+  (c.prototype === 'object' && c.prototype.isReactComponent) || typeof c === 'function';
+
 class FormField extends React.Component {
   constructor(props) {
     super(props);
@@ -132,7 +135,7 @@ class FormField extends React.Component {
     let jsx = null;
     let value;
 
-    if (typeof type.prototype === 'object' && type.prototype.isReactComponent) {
+    if (isReactComponent(type)) {
       const props = Object.assign(clone(this.props), elementProps);
 
       jsx = React.createElement(type, Object.assign({

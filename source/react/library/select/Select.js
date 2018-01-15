@@ -52,7 +52,6 @@ const defaultProps = {
   name: '',
 };
 
-
 const getNextIdx = (currentIdx, options) => {
   let newIdx;
 
@@ -92,11 +91,43 @@ const formatOptions = options => options.map((o) => {
   return option;
 });
 
+const hasClass = (elem, className) => {
+  if (!elem.className) {
+    return false;
+  }
+
+  const classes = elem.className.split(' ');
+
+  return classes.findIndex(c => c === className) >= 0;
+};
+
+const updateScrollPosition = ({ list }) => {
+  const parent = list.parentElement;
+  const children = Array.from(list.children);
+  const outerBounds = parent.getBoundingClientRect();
+  const selected = children.filter(c => hasClass(c, 'rc-menu-item-focused'))[0];
+
+  if (selected) {
+    const selectedBounds = selected.getBoundingClientRect();
+
+    const viewportBottom = outerBounds.height + outerBounds.y;
+    const viewportTop = outerBounds.y + parent.scrollTop;
+    const selectedTop = selectedBounds.y;
+    const selectedBottom = selectedTop + selectedBounds.height;
+
+    // If the current element is either above the current viewport or below the current viewport
+    // then we want to update the scroll position accordingly.
+    if (selectedBottom < viewportTop || selectedTop > viewportBottom) {
+      parent.scrollTop = (selectedTop - outerBounds.y) + selectedBounds.height;
+    }
+  }
+};
+
 /**
  * `Select` allows the user to select an item from a list. Selects provide for three use cases:
  *   * Selecting an option from a list
  *   * Selecting multiple options from a list
- *   * TODO: Creating a list of options.
+ *   * Creating a list of options.
  *
  * `Select` is a stateful component but allows the user to modify the state by passing an updated
  * `options` prop, or listen to changes to the state by passing a callback to the `onSelect` prop.
@@ -118,9 +149,12 @@ class Select extends React.Component {
 
     this.onKeyUp = this.onKeyUp.bind(this);
     this.onClear = this.onClear.bind(this);
+    this.onRemove = this.onRemove.bind(this);
     this.onChange = this.onChange.bind(this);
     this.onSelect = this.onSelect.bind(this);
+    this.onPopoverOpen = this.onPopoverOpen.bind(this);
     this.onInputChange = this.onInputChange.bind(this);
+    this.onPopoverClose = this.onPopoverClose.bind(this);
     this.onChevronClick = this.onChevronClick.bind(this);
   }
 
@@ -155,7 +189,18 @@ class Select extends React.Component {
     this.onChange([]);
 
     this.clearInput();
-    this.setState({ open: false }, this.close);
+    this.setState({ open: false, pendingBackDelete: false }, this.close);
+  }
+
+  onRemove(optionId) {
+    const removed = this.state.selected
+      .filter(o => o.id === optionId)[0];
+    const selected = this.state.selected
+      .filter(o => o.id !== optionId);
+
+    this.setState({ selected }, () => {
+      this.onChange(selected, removed);
+    });
   }
 
   onBackPress() {
@@ -188,6 +233,17 @@ class Select extends React.Component {
     this.open();
   }
 
+  onPopoverOpen() {
+    this.setState({ open: true });
+  }
+
+  onPopoverClose() {
+    this.setState({
+      pendingBackDelete: false,
+      open: false,
+    });
+  }
+
   onKeyUp(e) {
     switch (e.keyCode) {
       case BACK_KEY_CODE:
@@ -217,10 +273,14 @@ class Select extends React.Component {
   }
 
   onSelect(option) {
-    const newState = { inputValue: undefined };
+    const newState = {
+      pendingBackDelete: false,
+      inputValue: undefined,
+      focusedId: null,
+    };
 
     if (option.selectable || typeof option.selectable === 'undefined') {
-      if (this.state.selected.indexOf(option) >= 0) {
+      if (this.state.selected.map(s => s.id).indexOf(option.id) >= 0) {
         newState.selected = this.state.selected.filter(o => o.id !== option.id);
       } else if (this.props.multiple) {
         newState.selected = [...this.state.selected, option];
@@ -249,7 +309,9 @@ class Select extends React.Component {
   onInputChange(e) {
     let inputValue = e.target.value;
 
-    if (inputValue === '') {
+    // Clear the full inputValue out for multiselects to allow user to use backspace to delete
+    // existing items. TODO: Clean this up somehow.
+    if (inputValue === '' && this.props.multiple) {
       inputValue = undefined;
     }
 
@@ -291,12 +353,17 @@ class Select extends React.Component {
 
   selectFocused() {
     const options = this.getOptions(this.state.inputValue);
-    const selected = options
-      .filter(o => o.id === this.state.focusedId)[0];
+    let focused;
 
-    if (selected) {
-      this.onSelect(selected);
+    // Select either the focused option, or the first option in the list.
+    if (this.state.focusedId) {
+      focused = options
+        .filter(o => o.id === this.state.focusedId)[0];
+    } else {
+      focused = options[0];
     }
+
+    this.onSelect(focused);
   }
 
   focus(direction) {
@@ -328,7 +395,7 @@ class Select extends React.Component {
       newState.focusedId = options[0].id;
     }
 
-    this.setState(newState);
+    this.setState(newState, () => { updateScrollPosition(this.menuList); });
   }
 
   clearInput() {
@@ -356,6 +423,7 @@ class Select extends React.Component {
 
     return (
       <Menu.List
+        ref={ (c) => { this.menuList = c; } }
         selected={ selected }
         size={ this.props.size }
         options={ options }
@@ -379,7 +447,7 @@ class Select extends React.Component {
   }
 
   renderActions() {
-    const selected = this.renderSelected();
+    const selected = this.state.selected;
     const value = this.getInputValue();
     const actions = [];
 
@@ -404,7 +472,8 @@ class Select extends React.Component {
     );
   }
 
-  renderSelected() {
+  renderContent() {
+    const input = this.renderInput();
     let selected = [];
 
     if (this.props.multiple && !this.props.valueless) {
@@ -413,6 +482,8 @@ class Select extends React.Component {
       selected = this.state.selected
         .map((option, index) => (
           <SelectItem
+            onRemove={ () => this.onRemove(option.id) }
+            key={ `select-item-${option.id}` }
             highlighted={ this.state.pendingBackDelete && index === selectedCount - 1 }
             value={ option.label }
           />
@@ -420,14 +491,15 @@ class Select extends React.Component {
     }
 
     return (
-      <div className="rc-select-items">
+      <div className="rc-select-content">
         { selected }
+        { input }
       </div>
     );
   }
 
   renderInput() {
-    const selected = this.renderSelected();
+    const selected = this.state.selected;
     let placeholder;
 
     if (!this.props.multiple || !selected.length) {
@@ -448,18 +520,13 @@ class Select extends React.Component {
       />
     );
 
-    return (
-      <div className="rc-select-input">
-        { selected }
-        { input }
-      </div>
-    );
+    return input;
   }
 
   render() {
     const actions = this.renderActions();
     const menu = this.renderMenu();
-    const input = this.renderInput();
+    const items = this.renderContent();
     const wrapperClassName = classnames('rc-select-wrapper', {
       'rc-select-wrapper-open': this.state.open === true,
     });
@@ -470,25 +537,36 @@ class Select extends React.Component {
       'rc-select-multiple': this.props.multiple,
       [`rc-select-${this.props.size}`]: this.props.size,
     });
-    let jsx = (
-      <div className={ className }>
-        { input }
+
+    const content = (
+      <div className="rc-select-input">
+        { items }
+        { actions }
       </div>
     );
+    let jsx;
 
-    if (!this.props.disabled) {
+    // If the Select is disabled, there's no need to render the whole Popover ordeal.
+    if (this.props.disabled) {
+      jsx = (
+        <div className={ className }>
+          { content }
+        </div>
+      );
+    } else {
       jsx = (
         <Popover
           ref={ (c) => { this.popover = c; } }
-          target={ input }
+          target={ content }
           disablePortal={ this.props.disablePortal }
           className={ popoverClassName }
           wrapperClassName={ className }
           inheritTargetWidth
-          onOpen={ () => { this.setState({ open: true }); } }
-          onClose={ () => { this.setState({ open: false }); } }
+          onOpen={ this.onPopoverOpen }
+          onClose={ this.onPopoverClose }
           margin={ 4 }
           allowBubble
+          border={ false }
           padding={ false }
         >
           { menu }
@@ -499,7 +577,6 @@ class Select extends React.Component {
     return (
       <div className={ wrapperClassName }>
         { jsx }
-        { actions }
       </div>
     );
   }

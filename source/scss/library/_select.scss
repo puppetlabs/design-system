@@ -12,33 +12,123 @@
   color: $reflect-select-color;
   cursor: pointer;
   position: relative;
+}
 
-  .rc-select-menu {
-    background: $reflect-select-menu-bg;
-    max-height: 150px;
-    overflow-y: scroll;
+.rc-select-menu {
+  background: $reflect-select-menu-bg;
+  max-height: 150px;
+  overflow-y: scroll;
+}
+
+.rc-select-wrapper {
+  position: relative;
+}
+
+.rc-select-input {
+  @extend %input;
+  align-items: center;
+  display: flex;
+
+  height: 1px; // https://github.com/philipwalton/flexbugs/issues/231
+  min-height: 32px;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0 8px;
+  position: relative;
+  text-overflow: ellipsis;
+
+  &:hover {
+    border-color: $reflect-action-color;
   }
+
+}
+
+.rc-select-multiple .rc-select-input {
+  padding: 0 8px 0 4px;
+}
+
+.rc-select-input .rc-input {
+  border: 0;
+  box-shadow: none;
+  flex: 1 0 16px;
+  height: 28px;
+  margin: 0;
+  min-height: initial;
+  padding: 0;
+  position: relative;
+
+  &:hover,
+  &:focus {
+    border: 0;
+    box-shadow: none;
+  }
+}
+
+.rc-select-content {
+  align-items: center;
+  display: flex;
+  flex: 1 0 0%; // https://github.com/philipwalton/flexbugs#flexbug-4
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.rc-select-actions {
+  display: flex;
+  flex: 0 1 auto;
+  margin-left: 8px;
 }
 
 .rc-select-item {
   align-items: center;
+  animation: 0.2s linear fade-in;
   background: $reflect-select-item-bg;
+  border: $reflect-select-item-border;
   border-radius: $reflect-select-item-border-radius;
   color: $reflect-select-item-color;
   display: flex;
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   margin: 2px 2px 2px 0;
+  max-width: 100%;
   padding: 4px 8px;
-  transform: translateX(-4px);
+  transition: all 0.2s;
+
+  span {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
-.rc-select-items {
-  display: flex;
-  flex-wrap: wrap;
+.rc-select-item:hover {
+  background: $reflect-select-item-highlighted-bg;
+  border: $reflect-select-item-highlighted-border;
+}
+
+.rc-select-item-close {
+  cursor: pointer;
+  display: inline-block;
+  margin-left: $reflect-small;
+
+  &:focus {
+    outline: none transparent;
+  }
+
+  .rc-icon {
+    fill: $reflect-select-item-icon-color;
+    opacity: 0.8;
+  }
+}
+
+.rc-select-item-close:hover .rc-icon {
+  fill: $reflect-select-item-icon-color;
+  opacity: 1;
 }
 
 .rc-select-item-highlighted {
-  box-shadow: $reflect-select-item-highlighted-shadow;
+  background: $reflect-select-item-highlighted-bg;
+  border: $reflect-select-item-highlighted-border;
+  transform: translateX(2px);
 }
 
 .rc-select-medium {
@@ -51,42 +141,13 @@
 .rc-select-small {
   .rc-select-item {
     font-size: 12px;
+    height: 20px;
     line-height: 16px;
-    margin: 1px 1px 0 0;
+    margin: 1px 2px 1px 0;
     padding: 2px 8px;
   }
 }
 
-.rc-select-input {
-  @extend %input;
-  align-items: center;
-  display: flex;
-  flex: 1 0 16px;
-  flex-wrap: wrap;
-  height: auto;
-  min-height: 32px;
-  overflow: hidden;
-  padding: 0 28px 0 8px;
-  position: relative;
-  text-overflow: ellipsis;
-
-  .rc-input {
-    border: 0;
-    box-shadow: none;
-    flex: 1 0 16px;
-    height: 28px;
-    margin: 0;
-    min-height: initial;
-    padding: 0;
-    position: relative;
-  }
-
-  .rc-input:hover,
-  .rc-input:focus {
-    border: 0;
-    box-shadow: none;
-  }
-}
 
 .rc-select-small .rc-select-input {
   min-height: 24px;
@@ -106,10 +167,6 @@
   }
 }
 
-.rc-select-wrapper {
-  position: relative;
-}
-
 .rc-select-wrapper-open {
   .rc-select-input {
     @extend %focused-input;
@@ -117,28 +174,27 @@
 }
 
 .rc-select-actions {
-  display: flex;
-  height: 100%;
-  position: absolute;
-  right: 10px;
-  top: 0;
-
   .rc-select-action {
     cursor: pointer;
-    margin-right: 5px;
+    margin-right: $reflect-small;
     outline: none;
+    transition: all 0.2s;
   }
 
   .rc-select-action:last-of-type {
     margin-right: 0;
   }
+
+  .rc-select-action:hover {
+    transform: scale(1.2);
+  }
 }
 
 .rc-select-action .rc-icon-close {
-  fill: lighten($reflect-danger-color, 20%);
+  opacity: 0.8;
 
   &:hover {
-    fill: $reflect-danger-color;
+    opacity: 1;
   }
 }
 

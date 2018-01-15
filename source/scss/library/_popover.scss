@@ -1,4 +1,5 @@
 .rc-popover {
+  animation: 0.2s ease-in-out scale-in-Y;
   background: $reflect-popover-bg;
   border: $reflect-popover-border;
   border-radius: $reflect-popover-border-radius;
@@ -6,6 +7,7 @@
   overflow: hidden;
   padding: $reflect-popover-padding;
   position: absolute;
+  transform-origin: top left;
   z-index: $reflect-popover-elevation;
 
   .rc-popover-header {
@@ -46,6 +48,10 @@
   &.rc-popover-no-padding {
     padding: 0;
   }
+
+  &.rc-popover-no-border {
+    border: 0;
+  }
 }
 
 .rc-popover-wrapper {
@@ -56,15 +62,38 @@
   position: relative;
 }
 
+.rc-popover-menu {
+  border-top: 0;
+}
 
-// TODO: Cleanup button nesting so you don't need to be so explicit with overrides
-.rc-popover-target-open {
-  .rc-icon {
-    fill: $reflect-card-action-color-active;
+.rc-dropdown-menu-with-header {
+  .rc-menu-item:first-of-type a {
+    border-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
+}
 
-  &:hover .rc-icon {
-    fill: $reflect-card-action-color-active;
+.rc-popover-menu .rc-menu-header {
+  border-top-left-radius: $reflect-popover-border-radius;
+  border-top-right-radius: $reflect-popover-border-radius;
+  padding: 0 $reflect-medium;
+}
+
+.rc-popover-menu .rc-menu-close {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 32px;
+
+  .rc-icon {
+    fill: $reflect-white;
+    @include icon-opacity-hover;
   }
 }
 
