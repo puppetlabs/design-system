@@ -27,3 +27,41 @@ const target = <Button>Open menu with sections</Button>;
   </Menu>
 </Popover>
 ```
+
+`MenuActions`s can be used to provide context-specific actions and informations to users.
+```
+const target = <Button>Open menu that with action messages</Button>;
+<Popover target={ target } padding={ false } border={ false }>
+  <Menu>
+    <MenuHeader title="I'm a happy menu title!" />
+    <MenuSection>
+      I'm a happy section!
+    </MenuSection>
+    <MenuActions>
+      <MenuActions.Message>
+        Stop--hammer time!
+      </MenuActions.Message>
+    </MenuActions>
+  </Menu>
+</Popover>
+```
+
+```
+const target = <Button>Open menu that with actions</Button>;
+<Popover target={ target } padding={ false } border={ false }>
+  <Menu>
+    <MenuHeader title="I'm a happy menu title!" />
+    <MenuSection>
+      I'm a happy section!
+    </MenuSection>
+    <MenuActions>
+      <MenuActions.Buttons>
+        <ButtonGroup>
+          <Button simple secondary>Cancel</Button>
+          <Button simple>Save</Button>
+        </ButtonGroup>
+      </MenuActions.Buttons>
+    </MenuActions>
+  </Menu>
+</Popover>
+```

@@ -101,12 +101,22 @@ $reflect-button-clear-border-color-hover     : transparent !default;
 // Simple Buttons
 $reflect-button-simple-bg                     : transparent !default;
 $reflect-button-simple-bg-hover               : transparent !default;
-$reflect-button-simple-color                  : $reflect-gray-dark !default;
-$reflect-button-simple-color-hover            : $reflect-action-color !default;
-$reflect-button-simple-icon-color             : $reflect-gray-dark !default;
-$reflect-button-simple-icon-color-hover       : $reflect-action-color !default;
+$reflect-button-simple-color                  : $reflect-action-color !default;
+$reflect-button-simple-color-hover            : $reflect-action-hover !default;
+$reflect-button-simple-icon-color             : $reflect-action-color !default;
+$reflect-button-simple-icon-color-hover       : $reflect-action-hover !default;
 $reflect-button-simple-border-color           : transparent !default;
 $reflect-button-simple-border-color-hover     : transparent !default;
+
+$reflect-button-simple-secondary-bg           : transparent !default;
+$reflect-button-simple-secondary-bg-hover     : transparent !default;
+$reflect-button-simple-secondary-color        : $reflect-gray-dark !default;
+$reflect-button-simple-secondary-color-hover  : $reflect-action-color !default;
+$reflect-button-simple-secondary-icon-color   : $reflect-icon-fill !default;
+$reflect-button-simple-secondary-icon-color-hover: $reflect-action-color !default;
+$reflect-button-simple-secondary-border-color           : transparent !default;
+$reflect-button-simple-secondary-border-color-hover     : transparent !default;
+
 
 // Disabled Buttons
 $reflect-button-disabled-opacity             : 0.5 !default;
@@ -397,6 +407,12 @@ $reflect-menu-title-color                    : $reflect-font-color-light !defaul
 // Menu Section
 $reflect-menu-section-border                 : $reflect-border !default;
 $reflect-menu-section-padding                : $reflect-medium !default;
+
+// Menu actions
+$reflect-menu-actions-bg                     : $reflect-bg-subtle !default;
+$reflect-menu-actions-padding                : $reflect-small $reflect-medium !default;
+$reflect-menu-actions-msg-font-size          : $reflect-font-size-small !default;
+$reflect-menu-actions-color                  : $reflect-font-color-subtle !default;
 
 // Modal
 // ----------------------------------------------------------------------------
