@@ -1,7 +1,8 @@
 import React from 'react';
+import classnames from 'classnames';
+
 import Message from './MenuActionsMessage';
 import Buttons from './MenuActionsButtons';
-import classnames from 'classnames';
 
 const propTypes = {
   children: React.PropTypes.any,
@@ -17,7 +18,7 @@ const MenuActions = (props) => {
   const className = classnames('rc-menu-actions', {
     'rc-menu-actions-centered': props.centered,
   });
-  
+
   return (
     <div className={ className }>
       { props.children }
