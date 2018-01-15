@@ -12,15 +12,15 @@ const defaultProps = {
   centered: false,
 };
 
-const MenuActions = props => {
-  let className = "rc-menu-actions";
+const MenuActions = (props) => {
+  let className = 'rc-menu-actions';
 
   if (props.centered) {
-    className += " rc-menu-actions-centered";
+    className += ' rc-menu-actions-centered';
   }
 
   return (
-    <div className={className}>
+    <div className={ className }>
       { props.children }
     </div>
   );
