@@ -149,8 +149,10 @@
   &.rc-menu-section-list {
     padding: 0;
   }
+}
 
-  .rc-menu-item a {
+.rc-menu-section > .rc-menu-item {
+  a {
     border: 0;
   }
 }
@@ -163,6 +165,14 @@
   height: $reflect-menu-header-height;
   padding: $reflect-menu-header-padding;
   text-transform: uppercase;
+}
+
+.rc-menu-header + .rc-menu-list {
+  .rc-menu-item:first-of-type a {
+    border-top: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
 }
 
 .rc-menu-title {
