@@ -144,12 +144,14 @@
 }
 
 .rc-list-item-action.rc-list-item-kebab {
-  align-self: center;
+  align-self: flex-start;
   display: flex;
-  height: 12px;
+  height: 16px;
   margin-left: -8px !important;
   margin-right: 0;
-  width: 12px;
+  min-width: 16px;
+  transform: translate(0,1px);
+  width: 16px;
 
   &:hover .rc-icon {
     cursor: move;
@@ -216,4 +218,11 @@
   padding: 2px 4px 2px 8px;
 }
 
-
+// Drag and Drop
+.rc-list-item.rc-list-dragging .rc-list-item-link {
+  background: $reflect-action-hover;
+  border-color: $reflect-action-hover;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transform: scale(1.05);
+}
