@@ -144,10 +144,17 @@
 }
 
 .rc-list-item-action.rc-list-item-kebab {
-  margin-left: 0 !important;
+  align-self: center;
+  display: flex;
+  height: 12px;
+  margin-left: -8px !important;
   margin-right: 0;
-  min-width: 16px;
-  transform: translateX(-2px);
+  width: 12px;
+
+  &:hover .rc-icon {
+    cursor: move;
+    transform: none;
+  }
 }
 
 

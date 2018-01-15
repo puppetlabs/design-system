@@ -308,6 +308,15 @@ const icons = {
     ),
   },
 
+  'drag-handles-12': {
+    viewBox: '0 0 12 12',
+    svg: (
+      <g>
+        <path d="M3,2 L5,2 L5,4 L3,4 L3,2 Z M7,2 L9,2 L9,4 L7,4 L7,2 Z M3,5 L5,5 L5,7 L3,7 L3,5 Z M7,5 L9,5 L9,7 L7,7 L7,5 Z M3,8 L5,8 L5,10 L3,10 L3,8 Z M7,8 L9,8 L9,10 L7,10 L7,8 Z" />
+      </g>
+    ),
+  },
+
   dropdown: {
     viewBox: '0 0 12 8',
     svg: (
