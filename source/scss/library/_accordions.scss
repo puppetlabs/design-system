@@ -20,15 +20,28 @@
 
 .rc-accordion-header {
   background: $reflect-accordion-header-bg;
-  border-bottom: $reflect-accordion-item-title-border;
+  border-bottom: $reflect-accordion-item-border;
   height: $reflect-accordion-header-height;
-
-  .rc-icon-close {
-    fill: $reflect-accordion-header-title-color;
-  }
 
   .rc-accordion-header-icon .rc-icon {
     fill: $reflect-white;
+  }
+}
+
+.rc-accordion-header-action {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 32px;
+
+  .rc-icon {
+    fill: $reflect-white;
+    @include icon-opacity-hover;
   }
 }
 
@@ -59,7 +72,9 @@
 }
 
 .rc-accordion-item {
-  border-bottom: $reflect-accordion-item-title-border;
+  border-bottom: $reflect-accordion-item-border;
+  border-left: $reflect-accordion-item-border;
+  border-right: $reflect-accordion-item-border;
   display: flex;
   flex-direction: column;
   flex-grow: 0;
@@ -67,7 +82,7 @@
 }
 
 .rc-accordion-item-content {
-  border-top: $reflect-accordion-item-title-border;
+  border-top: $reflect-accordion-item-border;
   height: 0;
   opacity: 0;
   overflow: hidden;

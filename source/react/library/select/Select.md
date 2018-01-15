@@ -49,12 +49,12 @@ const options = [
 />
 ```
 
-Tiny Multiselect:
+Small Multiselect:
 
 ```
 const options = [
-  { value: 'Geoff', label: 'Geoff', selected: true },
-  { value: 'Sig', label: 'Sig' },
+  { value: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onSelect prop.', label: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onSelect prop.', selected: true },
+  { value: 'Sig', label: 'Sig', selected: true },
   { value: 'Colby', label: 'Colby' },
 ];
 

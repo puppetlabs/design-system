@@ -20,44 +20,41 @@
   }
 }
 
-.rc-filters-list {
-  margin-bottom: $reflect-tiny;
+// Filter definitions within List Items
+.rc-list-item-medium {
+  .rc-filter-filter,
+  .rc-filter-field-name,
+  .rc-filter-field-op,
+  .rc-filter-field-value {
+    font-size: $reflect-font-size-base;
+  }
 }
 
-.rc-filters-list-item {
-  .rc-list-item-link,
-  .rc-list-item-actions {
-    background: $reflect-filters-filter-bg;
-  }
-
-  .rc-list-item-actions .rc-icon {
-    fill: $reflect-filters-filter-action-color;
-  }
-
-  .rc-list-item-link:hover .rc-icon {
-    fill: $reflect-white;
-  }
-
-  .rc-list-item-link:hover,
-  .rc-list-item-link:hover .rc-list-item-actions {
-    background: $reflect-filters-filter-bg-hover;
+.rc-list-item-small {
+  .rc-filter-filter,
+  .rc-filter-field-name,
+  .rc-filter-field-op,
+  .rc-filter-field-value {
+    font-size: $reflect-font-size-small;
   }
 }
 
 .rc-filters-filter {
-  color: $reflect-filters-filter-color;
-
-  .filter-field-name,
-  .filter-field-op {
+  .rc-filter-field-name,
+  .rc-filter-field-op {
     padding-right: 4px;
   }
 
-  .filter-field-name,
-  .filter-field-value {
+  .rc-filter-field-op {
+    opacity: 0.8;
+  }
+
+  .rc-filter-field-name,
+  .rc-filter-field-value {
     font-weight: $reflect-font-weight-heavy;
   }
 
-  .filter-field-op {
+  .rc-filter-field-op {
     font-style: italic;
   }
 }

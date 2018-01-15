@@ -10,17 +10,17 @@ $reflect-accordion-item-title-font-size      : $reflect-font-size-tiny !default;
 $reflect-accordion-item-title-color          : $reflect-font-color-medium !default;
 $reflect-accordion-item-title-hover          : $reflect-font-color-medium !default;
 $reflect-accordion-item-title-bg-color       : $reflect-white !default;
-$reflect-accordion-item-title-border         : $reflect-border !default;
 $reflect-accordion-item-title-height         : 32px;
 $reflect-accordion-item-title-padding        : 0 $reflect-medium !default; // Todo: Base on grid
 $reflect-accordion-item-title-case           : auto !default;
 $reflect-accordion-item-content-padding      : $reflect-medium !default;
+$reflect-accordion-item-border               : $reflect-border !default;
 $reflect-accordion-icon-color                : $reflect-icon-fill !default;
 $reflect-accordion-icon-color-hover          : $reflect-icon-fill-hover !default;
 
-$reflect-accordion-header-title-color        : $reflect-white !default;
-$reflect-accordion-header-height             : 42px;
-$reflect-accordion-header-bg                 : $reflect-gray-darker !default;
+$reflect-accordion-header-title-color        : $reflect-font-color-light !default;
+$reflect-accordion-header-height             : 32px;
+$reflect-accordion-header-bg                 : $reflect-black !default;
 
 $reflect-accordion-animation-speed           : $reflect-animation-speed-base !default;
 
@@ -101,12 +101,22 @@ $reflect-button-clear-border-color-hover     : transparent !default;
 // Simple Buttons
 $reflect-button-simple-bg                     : transparent !default;
 $reflect-button-simple-bg-hover               : transparent !default;
-$reflect-button-simple-color                  : $reflect-gray-dark !default;
-$reflect-button-simple-color-hover            : $reflect-action-color !default;
-$reflect-button-simple-icon-color             : $reflect-gray-dark !default;
-$reflect-button-simple-icon-color-hover       : $reflect-action-color !default;
+$reflect-button-simple-color                  : $reflect-action-color !default;
+$reflect-button-simple-color-hover            : $reflect-action-hover !default;
+$reflect-button-simple-icon-color             : $reflect-action-color !default;
+$reflect-button-simple-icon-color-hover       : $reflect-action-hover !default;
 $reflect-button-simple-border-color           : transparent !default;
 $reflect-button-simple-border-color-hover     : transparent !default;
+
+$reflect-button-simple-secondary-bg           : transparent !default;
+$reflect-button-simple-secondary-bg-hover     : transparent !default;
+$reflect-button-simple-secondary-color        : $reflect-gray-dark !default;
+$reflect-button-simple-secondary-color-hover  : $reflect-action-color !default;
+$reflect-button-simple-secondary-icon-color   : $reflect-icon-fill !default;
+$reflect-button-simple-secondary-icon-color-hover: $reflect-action-color !default;
+$reflect-button-simple-secondary-border-color           : transparent !default;
+$reflect-button-simple-secondary-border-color-hover     : transparent !default;
+
 
 // Disabled Buttons
 $reflect-button-disabled-opacity             : 0.5 !default;
@@ -142,7 +152,7 @@ $reflect-card-controls-size                  : $reflect-font-size-small !default
 $reflect-card-controls-color                 : $reflect-font-color-medium !default;
 $reflect-card-search-margin                  : $reflect-medium 0 0 !default; // Todo: Base on grid
 
-$reflect-card-description-font-size          : $reflect-font-size-tiny !default;
+$reflect-card-description-font-size          : $reflect-font-size-small !default;
 
 // Card Color
 $reflect-card-action-color-active            : $reflect-active-color !default;
@@ -295,7 +305,7 @@ $reflect-input-disabled-color                : $reflect-font-color-subtle !defau
 $reflect-input-small-height                  : $reflect-size-base * 3 !default; // 24px
 $reflect-input-large-height                  : $reflect-size-base * 8 !default; // 40px
 
-$reflect-input-large-padding                 : $reflect-large !default;
+$reflect-input-large-padding                 : $reflect-medium !default;
 $reflect-input-small-padding                 : $reflect-tiny !default;
 $reflect-input-tiny-padding                  : $reflect-tiny !default;
 
@@ -318,10 +328,13 @@ $reflect-select-border-radius                : $reflect-input-border-radius !def
 $reflect-select-selected-shadow              : $reflect-selected-shadow !default;
 $reflect-select-menu-bg                      : $reflect-white !default;
 
-$reflect-select-item-bg                      : $reflect-brand-primary !default;
-$reflect-select-item-highlighted-shadow      : $reflect-selected-shadow-hover !default;
+$reflect-select-item-border                  : $reflect-border-active !default;
+$reflect-select-item-bg                      : $reflect-action-color !default;
+$reflect-select-item-highlighted-bg          : $reflect-action-hover !default;
+$reflect-select-item-highlighted-border      : $reflect-border-active-hover !default;
 $reflect-select-item-color                   : $reflect-white !default;
 $reflect-select-item-border-radius           : $reflect-circle-radius !default;
+$reflect-select-item-icon-color              : $reflect-white !default;
 
 // Tiny Inputs to be deprecated - not used
 $reflect-select-tiny-item-margin             : $reflect-mini 0 $reflect-mini $reflect-mini !default;
@@ -340,23 +353,22 @@ $reflect-loading-indicator-fill              : $reflect-icon-fill !default;
 // ----------------------------------------------------------------------------
 $reflect-list-item-bg                        : $reflect-bg-primary !default;
 $reflect-list-item-bg-hover                  : $reflect-bg-primary !default;
-$reflect-list-item-color                     : $reflect-font-color-medium !default;
+$reflect-list-item-color                     : $reflect-font-color-base !default;
 $reflect-list-item-color-hover               : $reflect-font-color-base !default;
 $reflect-list-item-border                    : $reflect-border !default;
-$reflect-list-item-border-hover              : $reflect-border-hover !default;
-$reflect-list-item-border-selected           : $reflect-border-active !default;
+$reflect-list-item-border-hover              : $reflect-action-color !default;
+$reflect-list-item-border-selected           : $reflect-action-hover !default;
 $reflect-list-item-shadow-selected           : $reflect-selected-shadow !default;
-$reflect-list-item-border-radius             : $reflect-border-radius !default;
+$reflect-list-item-border-radius             : 0 !default;
 $reflect-list-item-font-size                 : $reflect-font-size-base !default;
-$reflect-list-item-padding                   : $reflect-tiny $reflect-small !default;
+$reflect-list-item-padding                   : 0 0 $reflect-small !default;
 $reflect-list-item-lineheight                : $reflect-line-height-default !default;
 $reflect-list-item-height                    : $reflect-size-base * 4 !default;
-$reflect-list-item-margin                    : 0 0 $reflect-tiny !default;
+$reflect-list-item-margin                    : 0 0 $reflect-small !default;
 
 $reflect-list-item-small-font-size           : $reflect-font-size-small !default;
-$reflect-list-item-small-lineheight: $reflect-medium !default;
-$reflect-list-item-small-height: $reflect-size-base * 3 !default;
-$reflect-list-item-small-padding: $reflect-mini $reflect-small !default;
+$reflect-list-item-small-lineheight          : $reflect-medium !default;
+$reflect-list-item-small-height              : $reflect-size-base * 3 !default;
 
 // Menu
 // ----------------------------------------------------------------------------
@@ -364,7 +376,7 @@ $reflect-menu-item-border                    : $reflect-border !default;
 $reflect-menu-item-border-focus              : $reflect-border-active-hover;
 $reflect-menu-item-border-active             : $reflect-border-active-hover;
 $reflect-menu-item-font-size                 : $reflect-font-size-small !default;
-$reflect-menu-item-font-weight               : $reflect-font-weight-heavy !default;
+$reflect-menu-item-font-weight               : $reflect-font-weight-normal !default;
 $reflect-menu-item-line-height               : $reflect-medium !default;
 $reflect-menu-item-height                    : $reflect-size-base * 4 !default;
 $reflect-menu-item-color                     : $reflect-font-color-base !default;
@@ -372,6 +384,7 @@ $reflect-menu-item-icon-color                : $reflect-icon-fill !default;
 $reflect-menu-item-bg                        : transparent !default;
 $reflect-menu-item-padding                   : 0 $reflect-small !default;
 $reflect-menu-header-border                  : $reflect-border !default;
+$reflect-menu-header-bg                      : $reflect-black !default;
 
 // Menu States
 $reflect-menu-item-color-hover               : $reflect-brand-primary !default;
@@ -388,12 +401,18 @@ $reflect-menu-item-bg-disabled               : $reflect-gray-light !default;
 $reflect-menu-header-height                  : $reflect-menu-item-height !default;
 $reflect-menu-header-padding                 : $reflect-menu-item-padding !default;
 $reflect-menu-title-font-size                : 11px !default;
-$reflect-menu-title-font-weight              : $reflect-font-weight-heavy !default;
-$reflect-menu-title-color                    : $reflect-font-color-subtle !default;
+$reflect-menu-title-font-weight              : $reflect-font-weight-normal !default;
+$reflect-menu-title-color                    : $reflect-font-color-light !default;
 
 // Menu Section
 $reflect-menu-section-border                 : $reflect-border !default;
 $reflect-menu-section-padding                : $reflect-medium !default;
+
+// Menu actions
+$reflect-menu-actions-bg                     : $reflect-bg-subtle !default;
+$reflect-menu-actions-padding                : $reflect-small $reflect-medium !default;
+$reflect-menu-actions-msg-font-size          : $reflect-font-size-small !default;
+$reflect-menu-actions-color                  : $reflect-font-color-subtle !default;
 
 // Modal
 // ----------------------------------------------------------------------------

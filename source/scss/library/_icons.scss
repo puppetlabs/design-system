@@ -1,7 +1,10 @@
 .rc-icon {
   fill: $reflect-icon-fill;
+  transition: all 0.2s;
 
   &:hover {
     fill: $reflect-icon-fill-hover;
   }
 }
+
+

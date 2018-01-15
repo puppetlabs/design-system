@@ -102,6 +102,7 @@ class MenuList extends React.Component {
 
     return (
       <ul
+        ref={ (c) => { this.list = c; } }
         onMouseLeave={ this.onMouseOut }
         className={ className }
       >

@@ -17,3 +17,15 @@ Selected, selectable, editable, and deletable `ListItem`:
   </ListItem>
 </List>
 ```
+
+Fancy `ListItem`:
+```
+<List>
+  <ListItem key="fancy" fancy onEdit={ () => {} } onRemove={ () => {} }>
+    You fancy huh
+  </ListItem>
+  <ListItem key="so-fancy" fancy onRemove={ () => {} }>
+    So fancy
+  </ListItem>
+</List>
+```
