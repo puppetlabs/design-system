@@ -194,11 +194,15 @@
 }
 
 .rc-saving {
-  position: relative;
   background: $reflect-gray;
   height: 8px;
   overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
   width: 100%;
+
   &::after {
     animation: 1.5s infinite ease-in-out indeterminate-bar;
     background: $reflect-action-hover;
