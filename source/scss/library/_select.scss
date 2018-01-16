@@ -197,6 +197,7 @@
   .rc-select-action {
     cursor: pointer;
     margin-right: $reflect-small;
+    min-width: 12px;
     outline: none;
     transition: all 0.2s;
   }
@@ -208,6 +209,11 @@
   .rc-select-action:hover {
     transform: scale(1.2);
   }
+}
+
+.rc-select-action .rc-icon-chevron-down {
+  height: 12px;
+  width: 12px;
 }
 
 .rc-select-action .rc-icon-close {
@@ -247,5 +253,7 @@
 .rc-select-small {
   .rc-icon-chevron-down {
     bottom: 12px;
+    height: 8px !important;
+    width: 8px !important;
   }
 }

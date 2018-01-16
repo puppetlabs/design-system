@@ -244,7 +244,6 @@ $reflect-dropdown-item-disabled-bg           : $reflect-gray-light !default;
 
 // Forms
 // ----------------------------------------------------------------------------
-$reflect-form-vertical-padding               : $reflect-tiny !default;
 $reflect-form-label-font-weight              : $reflect-font-weight-heavy !default;
 $reflect-form-label-color                    : $reflect-gray-dark !default;
 $reflect-form-label-font-size                : $reflect-font-size-tiny !default;
@@ -257,6 +256,7 @@ $reflect-form-section-legend-color           : $reflect-gray-darker !default;
 $reflect-form-section-flyout-icon-color      : $reflect-gray-light !default;
 
 $reflect-form-field-margin                   : $reflect-small !default;
+$reflect-form-vertical-padding               : $reflect-tiny !default;
 
 $reflect-form-tiny-label-font-size           : $reflect-font-size-tiny * 0.9 !default;
 
