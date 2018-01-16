@@ -7,13 +7,24 @@
   max-height: 200px;
 
   .rc-select-menu-options {
-    border: 0;
-    overflow-y: scroll;
+    border: $reflect-border;
+    overflow-y: auto;
     padding: 0;
   }
 
-  .rc-menu-actions {
-    padding: 16px;
+  .rc-select-menu-options {
+    border-radius: $reflect-border-radius;
+  }
+
+  .rc-select-menu-options + .rc-menu-actions {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .rc-menu-item a,
+  .rc-menu-item:first-of-type a,
+  .rc-menu-item:last-of-type a {
+    border-width: 0;
   }
 }
 
@@ -39,7 +50,7 @@
   align-items: center;
   display: flex;
 
-  height: 1px; // https://github.com/philipwalton/flexbugs/issues/231
+  // height: 1px; // https://github.com/philipwalton/flexbugs/issues/231
   min-height: 32px;
   min-width: 0;
   overflow: hidden;
@@ -117,7 +128,7 @@
 
 .rc-select-item-close {
   cursor: pointer;
-  display: inline-block;
+  display: flex;
   margin-left: $reflect-small;
 
   &:focus {
