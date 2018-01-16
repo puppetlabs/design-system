@@ -41,6 +41,17 @@ const icons = {
     ),
   },
 
+  'area-gray': {
+    viewBox: '0 0 16 15',
+    svg: (
+      <g>
+        <polygon points="0 13 16 13 16 15 0 15" />
+        <polygon points="10 0 16 11 4 11" />
+        <polygon points="4.5 3 9 11 0 11" />
+      </g>
+    ),
+  },
+
   'area-small': {
     vieBox: '0 0 16 16',
     svg: (
