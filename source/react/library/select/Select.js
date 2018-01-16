@@ -108,9 +108,10 @@ const hasClass = (elem, className) => {
 const updateScrollPosition = ({ list }) => {
   const parent = list.parentElement;
   const children = Array.from(list.children);
-  const selected = children.find(c => hasClass(c, 'rc-menu-item-focused'));
+  const selectedChildren = children.filter(c => hasClass(c, 'rc-menu-item-focused'));
 
-  if (selected) {
+  if (selectedChildren.length) {
+    const selected = selectedChildren[0];
     const selectedIndex = children.indexOf(selected);
     const siblings = children.slice(0, selectedIndex);
 
