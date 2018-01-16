@@ -31,6 +31,8 @@ const propTypes = {
   placeholder: React.PropTypes.string,
   disablePortal: React.PropTypes.bool,
   onPendingDeleteChange: React.PropTypes.func,
+  onNewOption: React.PropTypes.func,
+  newOptionLabel: React.PropTypes.string,
   popoverClassName: React.PropTypes.string,
   size: React.PropTypes.oneOf(['small', 'medium']),
 };
@@ -50,6 +52,7 @@ const defaultProps = {
   size: 'medium',
   options: [],
   name: '',
+  newOptionLabel: 'Add new',
 };
 
 const getNextIdx = (currentIdx, options) => {
@@ -108,17 +111,16 @@ const updateScrollPosition = ({ list }) => {
   const selected = children.filter(c => hasClass(c, 'rc-menu-item-focused'))[0];
 
   if (selected) {
-    const selectedBounds = selected.getBoundingClientRect();
+    const selectedIndex = children.indexOf(selected);
+    const siblings = children.slice(0, selectedIndex);
 
-    const viewportBottom = outerBounds.height + outerBounds.y;
-    const viewportTop = outerBounds.y + parent.scrollTop;
-    const selectedTop = selectedBounds.y;
-    const selectedBottom = selectedTop + selectedBounds.height;
+    if (siblings.length) {
+      const heights = siblings.map((e) => e.getBoundingClientRect().height);
+      const top = heights.reduce((c, t) => c + t);
 
-    // If the current element is either above the current viewport or below the current viewport
-    // then we want to update the scroll position accordingly.
-    if (selectedBottom < viewportTop || selectedTop > viewportBottom) {
-      parent.scrollTop = (selectedTop - outerBounds.y) + selectedBounds.height;
+      parent.scrollTop = top;
+    } else {
+      parent.scrollTop = 0;
     }
   }
 };
@@ -434,12 +436,31 @@ class Select extends React.Component {
     );
   }
 
+  renderNewOptionControls() {
+    if (!this.props.onNewOption) {
+      return;
+    }
+
+    return (
+      <Menu.Actions centered>
+        <Menu.Actions.Buttons>
+          <Button primary simple onClick={ this.props.onNewOption } icon="plus">
+            { this.props.newOptionLabel }
+          </Button>
+        </Menu.Actions.Buttons>          
+      </Menu.Actions>
+    )
+  }
+
   renderMenu() {
     const menuList = this.renderMenuList();
 
     const jsx = (
       <Menu className="rc-select-menu" size={ this.props.size }>
-        { menuList }
+        <Menu.Section className="rc-select-menu-options">
+          { menuList }
+        </Menu.Section>
+        { this.renderNewOptionControls() }
       </Menu>
     );
 
@@ -525,7 +546,6 @@ class Select extends React.Component {
 
   render() {
     const actions = this.renderActions();
-    const menu = this.renderMenu();
     const items = this.renderContent();
     const wrapperClassName = classnames('rc-select-wrapper', {
       'rc-select-wrapper-open': this.state.open === true,
@@ -554,6 +574,8 @@ class Select extends React.Component {
         </div>
       );
     } else {
+      const menu = this.renderMenu();
+
       jsx = (
         <Popover
           ref={ (c) => { this.popover = c; } }

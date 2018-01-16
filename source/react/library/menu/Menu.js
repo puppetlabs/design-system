@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import Section from './MenuSection';
+import Actions from './MenuActions';
 import Header from './MenuHeader';
 import Item from './MenuItem';
 import List from './MenuList';
@@ -40,5 +41,6 @@ Menu.Section = Section;
 Menu.Header = Header;
 Menu.Item = Item;
 Menu.List = List;
+Menu.Actions = Actions;
 
 export default Menu;

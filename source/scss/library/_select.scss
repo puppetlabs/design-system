@@ -5,7 +5,16 @@
 
 .rc-select-popover {
   max-height: 200px;
-  overflow-y: scroll;
+
+  .rc-select-menu-options {
+    overflow-y: scroll;
+    padding: 0;
+    border: 0;
+  }
+
+  .rc-menu-actions {
+    padding: 16px;
+  }
 }
 
 .rc-select {
@@ -17,7 +26,9 @@
 .rc-select-menu {
   background: $reflect-select-menu-bg;
   max-height: 150px;
-  overflow-y: scroll;
+
+  display: flex;
+  flex-direction: column;
 }
 
 .rc-select-wrapper {
