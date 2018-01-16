@@ -99,18 +99,18 @@ Select with custom actions:
 ```
 const onSelect = (selected, modifiedOption) => {
   console.log(selected, modifiedOption);
-  if (modifiedOption.value === 'new') {
-    alert('Adding a new drink');
-  }
+}
+
+const onNewOption = () => {
+  alert('Adding a new drink');
 }
 
 const options = [
   { value: 'Coffee', label: 'Coffee' },
   { value: 'Tea', label: 'Tea' },
-  { value: 'new', label: 'Add a new drink', selectable: false, className: 'action-button' }
 ];
 
-<Select options={ options } onSelect={ onSelect } />
+<Select options={ options } onSelect={ onSelect } onNewOption={ onNewOption } newOptionLabel="Add a New Drink" />
 ```
 
 Large `<Select/>` with custom actions:
