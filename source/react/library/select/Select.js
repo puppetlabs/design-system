@@ -454,14 +454,14 @@ class Select extends React.Component {
     if (this.props.clearable && (value || selected.length)) {
       actions.push(
         <a key="clear" role="button" tabIndex={ 0 } className="rc-select-action" onClick={ this.onClear } >
-          <Icon width="10px" height="100%" type="close" />
+          <Icon width="10px" height="10px" type="close" />
         </a>,
       );
     }
 
     actions.push(
       <a key="open" role="button" tabIndex={ 0 } className="rc-select-action" onClick={ this.onChevronClick } >
-        <Icon width="10px" height="100%" type="chevron-down" />
+        <Icon width="10px" height="10px" type="chevron-down" />
       </a>,
     );
 
