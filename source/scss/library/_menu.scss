@@ -168,10 +168,12 @@
 }
 
 .rc-menu-header + .rc-menu-list {
-  .rc-menu-item:first-of-type a {
+  // TODO: This captures about exactly what we want... We can't currently apply a has-border class
+  // or anything to the parent. What to do?
+  .rc-menu-item:first-of-type a { /* stylelint-disable-line selector-max-compound-selectors */
     border-top: 0;
-    border-top-right-radius: 0;
     border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 }
 

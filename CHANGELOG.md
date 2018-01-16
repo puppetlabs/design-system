@@ -1,3 +1,12 @@
+# 1.1.0
+
+* Support for actions in menus
+* Icon cleanup
+* Scroll with keyboard shortcuts in Select
+* Select styling
+* List styling
+* Allow us to specify borders on popover children instead of the popover itself
+
 # 1.0.1
 
 * Export `FiltersForm` standalone
