@@ -14,6 +14,7 @@ import Icon from '../Icon';
 import Input from '../Input';
 import Menu from '../menu';
 import Popover from '../Popover';
+import Button from '../Button';
 
 import SelectItem from './SelectItem';
 
@@ -107,15 +108,14 @@ const hasClass = (elem, className) => {
 const updateScrollPosition = ({ list }) => {
   const parent = list.parentElement;
   const children = Array.from(list.children);
-  const outerBounds = parent.getBoundingClientRect();
-  const selected = children.filter(c => hasClass(c, 'rc-menu-item-focused'))[0];
+  const selected = children.find(c => hasClass(c, 'rc-menu-item-focused'));
 
   if (selected) {
     const selectedIndex = children.indexOf(selected);
     const siblings = children.slice(0, selectedIndex);
 
     if (siblings.length) {
-      const heights = siblings.map((e) => e.getBoundingClientRect().height);
+      const heights = siblings.map(e => e.getBoundingClientRect().height);
       const top = heights.reduce((c, t) => c + t);
 
       parent.scrollTop = top;
@@ -437,19 +437,21 @@ class Select extends React.Component {
   }
 
   renderNewOptionControls() {
-    if (!this.props.onNewOption) {
-      return;
+    let jsx;
+
+    if (this.props.onNewOption) {
+      jsx = (
+        <Menu.Actions centered>
+          <Menu.Actions.Buttons>
+            <Button primary simple onClick={ this.props.onNewOption } icon="plus">
+              { this.props.newOptionLabel }
+            </Button>
+          </Menu.Actions.Buttons>
+        </Menu.Actions>
+      );
     }
 
-    return (
-      <Menu.Actions centered>
-        <Menu.Actions.Buttons>
-          <Button primary simple onClick={ this.props.onNewOption } icon="plus">
-            { this.props.newOptionLabel }
-          </Button>
-        </Menu.Actions.Buttons>          
-      </Menu.Actions>
-    )
+    return jsx;
   }
 
   renderMenu() {
