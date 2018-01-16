@@ -7,9 +7,9 @@
   max-height: 200px;
 
   .rc-select-menu-options {
+    border: 0;
     overflow-y: scroll;
     padding: 0;
-    border: 0;
   }
 
   .rc-menu-actions {
@@ -25,10 +25,9 @@
 
 .rc-select-menu {
   background: $reflect-select-menu-bg;
-  max-height: 150px;
-
   display: flex;
   flex-direction: column;
+  max-height: 150px;
 }
 
 .rc-select-wrapper {
