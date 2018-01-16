@@ -459,7 +459,7 @@ class Select extends React.Component {
     const menuList = this.renderMenuList();
     const actions = this.renderNewOptionControls();
     const className = classnames('rc-select-menu-options', {
-      'rc-no-bottom-radius': actions
+      'rc-no-bottom-radius': actions,
     });
 
     const jsx = (
