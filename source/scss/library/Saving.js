@@ -1,11 +1,7 @@
 import React from 'react';
 
-class saving extends React.Component {
-  render() {
-    return (
-      <div className="rc-saving"></div>
-    );
-  }
-}
+const Saving = () => (
+  <div className="rc-saving" />
+);
 
 export default Saving;
