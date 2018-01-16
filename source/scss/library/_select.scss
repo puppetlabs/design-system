@@ -5,7 +5,27 @@
 
 .rc-select-popover {
   max-height: 200px;
-  overflow-y: scroll;
+
+  .rc-select-menu-options {
+    border: $reflect-border;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  .rc-select-menu-options {
+    border-radius: $reflect-border-radius;
+  }
+
+  .rc-select-menu-options + .rc-menu-actions {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  .rc-menu-item a,
+  .rc-menu-item:first-of-type a,
+  .rc-menu-item:last-of-type a {
+    border-width: 0;
+  }
 }
 
 .rc-select {
@@ -16,8 +36,9 @@
 
 .rc-select-menu {
   background: $reflect-select-menu-bg;
+  display: flex;
+  flex-direction: column;
   max-height: 150px;
-  overflow-y: scroll;
 }
 
 .rc-select-wrapper {
@@ -28,7 +49,7 @@
   @extend %input;
   align-items: center;
   display: flex;
-
+  // height: 1px; // https://github.com/philipwalton/flexbugs/issues/231
   min-height: 32px;
   min-width: 0;
   overflow: hidden;
@@ -106,7 +127,7 @@
 
 .rc-select-item-close {
   cursor: pointer;
-  display: inline-block;
+  display: flex;
   margin-left: $reflect-small;
 
   &:focus {

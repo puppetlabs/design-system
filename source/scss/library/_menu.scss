@@ -122,12 +122,13 @@
 }
 
 .rc-menu-item-with-icon a {
-  padding-left: $reflect-dropdown-padding * 3;
+  padding-left: $reflect-dropdown-padding-small * 4;
+  padding-right: $reflect-dropdown-padding-small * 2;
 }
 
 .rc-menu-item-with-icon .rc-menu-icon {
   .rc-icon {
-    left: $reflect-dropdown-padding;
+    left: $reflect-dropdown-padding-small;
   }
 }
 
