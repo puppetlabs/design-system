@@ -502,7 +502,7 @@ class Select extends React.Component {
     const selected = this.state.selected;
     let placeholder;
 
-    if (!this.props.multiple || !selected.length) {
+    if (!this.props.multiple || !selected.length || this.props.valueless) {
       placeholder = this.props.placeholder;
     }
 
