@@ -160,7 +160,6 @@
   animation-name: slide-in-right;
 }
 
-
 // Animation Durations & Options
 .rc-animated-short {
   animation-duration: 200ms;
@@ -176,3 +175,45 @@
   animation-iteration-count: infinite;
 }
 
+// Progress Indicators
+@keyframes indeterminate-bar {
+  0% {
+    left: 0%;
+    right: 100%;
+  }
+
+  50% {
+    left: -100%;
+    right: 0%;
+  }
+
+  100% {
+    left: 100%;
+    right: 0%;
+  }
+}
+
+.rc-saving {
+  background: $reflect-gray;
+  height: 4px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 4px;
+  width: 100%;
+  z-index: 24;
+
+  &::after {
+    animation: 1.5s infinite ease-in-out indeterminate-bar;
+    background: $reflect-action-hover;
+    bottom: 0;
+    content: '';
+    height: 8px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    will-change: left, right;
+  }
+}
