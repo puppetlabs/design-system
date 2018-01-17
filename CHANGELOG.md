@@ -1,3 +1,9 @@
+# 1.2.0
+
+* Animations for Popovers and other elements
+* Updating Popover positioning
+* Significant cleanup and improvements to spacing in Forms
+
 # 1.1.0
 
 * Support for actions in menus
