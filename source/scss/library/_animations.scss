@@ -1,5 +1,5 @@
 
-@keyframes scale-in-y {
+@keyframes rc-scale-in-y {
   0% {
     opacity: 0;
     transform: scaleY(0.9);
@@ -11,7 +11,7 @@
   }
 }
 
-@keyframes scale-in-x {
+@keyframes rc-scale-in-x {
   0% {
     opacity: 0;
     transform: scaleX(0.9);
@@ -23,7 +23,7 @@
   }
 }
 
-@keyframes slide-in-left {
+@keyframes rc-slide-in-left {
   from {
     transform: translate3d(-100%, 0, 0);
     visibility: visible;
@@ -35,7 +35,7 @@
 }
 
 
-@keyframes slide-in-right {
+@keyframes rc-slide-in-right {
   from {
     transform: translate3d(100%, 0, 0);
     visibility: visible;
@@ -46,7 +46,7 @@
   }
 }
 
-@keyframes slide-out-left {
+@keyframes rc-slide-out-left {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -57,11 +57,7 @@
   }
 }
 
-.slide-out-left {
-  animation-name: slide-out-left;
-}
-
-@keyframes slide-out-right {
+@keyframes rc-slide-out-right {
   from {
     transform: translate3d(0, 0, 0);
   }
@@ -72,11 +68,7 @@
   }
 }
 
-.slide-out-right {
-  animation-name: slide-out-right;
-}
-
-@keyframes zoom-in {
+@keyframes rc-zoom-in {
   from {
     opacity: 0;
     transform: scale3d(0.3, 0.3, 0.3);
@@ -85,9 +77,17 @@
   50% {
     opacity: 1;
   }
+
+  75% {
+    transform: scale3d(1.1, 1.1, 1.1);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
 }
 
-@keyframes zoom-out {
+@keyframes rc-zoom-out {
   from {
     opacity: 1;
   }
@@ -102,7 +102,7 @@
   }
 }
 
-@keyframes fade-in {
+@keyframes rc-fade-in {
   0% {
     opacity: 0;
   }
@@ -112,13 +112,33 @@
   }
 }
 
-@keyframes fade-out {
+@keyframes rc-fade-out {
   0% {
     opacity: 1;
   }
 
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes rc-grow-in {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rc-shrink-out {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
   }
 }
 
@@ -127,39 +147,54 @@
 
 // Fades
 .rc-fade-in {
-  animation-name: fade-out;
+  animation-name: rc-fade-in;
 }
 
 .rc-fade-out {
-  animation-name: fade-out;
+  animation-name: rc-fade-out;
 }
 
 // Scale & Zoom
+.rc-grow-in {
+  animation-name: rc-grow-in;
+}
+
+.rc-shrink-out {
+  animation-name: rc-shrink-out;
+}
+
 .rc-scale-in-y {
-  animation-name: scale-in-y;
+  animation-name: rc-scale-in-y;
 }
 
 .rc-scale-in-x {
-  animation-name: scale-in-x;
+  animation-name: rc-scale-in-x;
 }
 
 .rc-zoom-in {
-  animation-name: zoom-in;
+  animation-name: rc-zoom-in;
 }
 
-.zoom-out {
-  animation-name: zoom-out;
+.rc-zoom-out {
+  animation-name: rc-zoom-out;
 }
 
 // Slides
-.slide-in-left {
-  animation-name: slide-in-left;
+.rc-slide-in-left {
+  animation-name: rc-slide-in-left;
 }
 
-.slide-in-right {
-  animation-name: slide-in-right;
+.rc-slide-in-right {
+  animation-name: rc-slide-in-right;
 }
 
+.rc-slide-out-right {
+  animation-name: rc-slide-out-right;
+}
+
+.rc-slide-out-left {
+  animation-name: rc-slide-out-left;
+}
 
 // Animation Durations & Options
 .rc-animated-short {
@@ -176,3 +211,45 @@
   animation-iteration-count: infinite;
 }
 
+// Progress Indicators
+@keyframes indeterminate-bar {
+  0% {
+    left: 0%;
+    right: 100%;
+  }
+
+  50% {
+    left: -100%;
+    right: 0%;
+  }
+
+  100% {
+    left: 100%;
+    right: 0%;
+  }
+}
+
+.rc-saving {
+  background: $reflect-active-color-hover;
+  height: 4px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 4px;
+  width: 100%;
+  z-index: 24;
+
+  &::after {
+    animation: 1.5s infinite ease-in-out indeterminate-bar;
+    background: $reflect-active-color;
+    bottom: 0;
+    content: '';
+    height: 8px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    will-change: left, right;
+  }
+}

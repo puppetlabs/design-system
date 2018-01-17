@@ -145,7 +145,7 @@ class FilterForm extends React.Component {
           name="filterValue"
           label="value"
           value={ this.state.filter.value || '' }
-          elementProps={ { placeholder: 'e.g. Jim, 15, etc.' } }
+          elementProps={ { placeholder: 'A string (e.g. Jim) or a number (1500)' } }
         />
       );
     }
@@ -185,7 +185,7 @@ class FilterForm extends React.Component {
           elementProps={ {
             disablePortal: true,
             options: operators,
-            placeholder: 'Please choose...',
+            placeholder: 'Choose an operation...',
           } }
         />
         { valueField }

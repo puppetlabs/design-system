@@ -7,6 +7,10 @@
 %disabled-input {
   background: $reflect-input-disabled-bg;
   color: $reflect-input-disabled-color;
+
+  &:hover {
+    border-color: $reflect-border-color;
+  }
 }
 
 %input {
@@ -38,7 +42,7 @@
   }
 
   &::placeholder {
-    color: $reflect-input-hover-color;
+    color: $reflect-input-placeholder-color;
   }
 
 
@@ -62,16 +66,13 @@
     height: $reflect-input-small-height;
     padding: $reflect-input-small-padding;
   }
-
-  &::placeholder {
-    color: $reflect-input-placeholder-color;
-  }
 }
 
 .rc-input-multiline,
 .rc-input-medium.rc-input-multiline {
   height: 64px;
   resize: vertical;
+  vertical-align: top;
 }
 
 .rc-input-small.rc-input-multiline {

@@ -1,5 +1,5 @@
 .rc-popover {
-  animation: 0.2s ease-in-out scale-in-Y;
+  animation: 0.1s ease-in-out rc-fade-in;
   background: $reflect-popover-bg;
   border: $reflect-popover-border;
   border-radius: $reflect-popover-border-radius;
@@ -54,6 +54,14 @@
   }
 }
 
+.rc-popover-carat {
+  border-style: solid;
+  border-width: 8px;
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+
 .rc-popover-wrapper {
   display: inline-block;
 }
@@ -77,7 +85,6 @@
 .rc-popover-menu .rc-menu-header {
   border-top-left-radius: $reflect-popover-border-radius;
   border-top-right-radius: $reflect-popover-border-radius;
-  padding: 0 $reflect-medium;
 }
 
 .rc-popover-menu .rc-menu-close {

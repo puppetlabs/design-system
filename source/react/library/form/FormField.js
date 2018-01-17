@@ -91,20 +91,30 @@ class FormField extends React.Component {
     }
   }
 
+  getTypeName() {
+    let name;
+
+    if (typeof this.props.type === 'string') {
+      name = this.props.type;
+    }
+
+    return name;
+  }
+
   renderLabel() {
     const { label, name, tooltip } = this.props;
     let jsx;
 
     if (label) {
       jsx = (
-        <label htmlFor={ name } className="rc-form-field-label">
+        <label htmlFor={ name } className="rc-form-field-label" key="field-label">
           { label }
         </label>
       );
 
       if (tooltip) {
         jsx = (
-          <TooltipHoverArea tooltip={ tooltip } anchor="bottom">
+          <TooltipHoverArea tooltip={ tooltip } anchor="bottom" key="field-label-tooltip">
             { jsx }
           </TooltipHoverArea>
         );
@@ -213,26 +223,43 @@ class FormField extends React.Component {
     }
 
     return (
-      <div className="rc-form-field-element">
+      <div className="rc-form-field-element" key="field-element">
         { jsx }
       </div>
     );
   }
 
-  render() {
+  renderContent() {
     const element = this.renderElement();
     const label = this.renderLabel();
+    const typeName = this.getTypeName();
+    const jsx = [];
+
+    if (typeName === 'checkbox') {
+      jsx.push(element);
+      jsx.push(label);
+    } else {
+      jsx.push(label);
+      jsx.push(element);
+    }
+
+    return jsx;
+  }
+
+  render() {
     const description = this.renderDescription();
+    const typeName = this.getTypeName();
+    const content = this.renderContent();
     const className = classnames('rc-form-field', this.props.className, {
       'rc-form-field-inline': this.props.inline,
+      [`rc-form-field-${typeName}`]: typeName,
       'rc-form-field-error': this.props.error,
     });
 
     return (
       <div className={ className }>
         <div className="rc-form-field-content">
-          { label }
-          { element }
+          { content }
         </div>
         { description }
       </div>

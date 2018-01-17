@@ -33,7 +33,8 @@ class FormFlyout extends React.Component {
           className="rc-popover-visible-overflow"
           hint={ this.props.hint }
           target={ target }
-          anchor="bottom right"
+          anchor="top right"
+          margin={ 10 }
           width={ this.props.width }
         >
           <fieldset className="rc-form-section rc-form-flyout">
