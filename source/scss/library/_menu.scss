@@ -179,6 +179,17 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
+  .rc-menu-item a { /* stylelint-disable-line selector-max-compound-selectors */
+    padding: 0 $reflect-menu-header-padding;
+  }
+}
+
+// More evidence here that we could refactor menus and dropdowns
+.rc-menu-header + .rc-menu-section-list {
+  .rc-menu-item a { /* stylelint-disable-line selector-max-compound-selectors */
+    padding: 0 $reflect-menu-header-padding;
+  }
 }
 
 .rc-menu-title {
