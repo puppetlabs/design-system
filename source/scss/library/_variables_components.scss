@@ -503,14 +503,17 @@ $reflect-switch-padding                      : 5px !default; // Todo: Base on gr
 $reflect-switch-handle-height                : $reflect-switch-height - ($reflect-switch-padding * 2) !default;
 
 $reflect-switch-on-bg                        : $reflect-active-color !default;
+$reflect-switch-on-bg-hover                  : $reflect-active-color-hover !default;
 $reflect-switch-on-text                      : $reflect-action-text !default;
 $reflect-switch-on-icon-fill                 : $reflect-action-icon !default;
-$reflect-switch-on-icon-size                 : 13px !default;
+$reflect-switch-on-icon-size                 : 12px !default;
 
 $reflect-switch-off-bg                       : $reflect-inactive-color !default;
+$reflect-switch-off-bg-hover                 : $reflect-inactive-color-hover !default;
 $reflect-switch-off-text                     : $reflect-action-text-alt !default;
 $reflect-switch-off-icon-fill                : $reflect-action-icon-alt;
-$reflect-switch-off-icon-size                : $reflect-small !default;
+$reflect-switch-off-icon-fill-hover          : $reflect-action-icon-hover-alt;
+$reflect-switch-off-icon-size                : 12px !default;
 
 // Tab variables/options
 // ----------------------------------------------------------------------------

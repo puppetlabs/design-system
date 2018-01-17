@@ -28,8 +28,12 @@
   outline: 0;
   padding: 0;
   position: relative;
-  transition: all 0.4s ease;
+  transition: all 0.2s;
   width: $reflect-switch-width;
+
+  &:hover {
+    background: $reflect-switch-off-bg-hover;
+  }
 
   .rc-icon {
     position: absolute;
@@ -38,7 +42,7 @@
   }
 
   &::after {
-    background: $reflect-action-icon-alt;
+    background: $reflect-switch-off-icon-fill;
     border-radius: $reflect-switch-handle-height;
     content: '';
     display: block;
@@ -48,6 +52,10 @@
     top: $reflect-switch-padding;
     transition: all 0.2s ease;
     width: $reflect-switch-handle-height;
+  }
+
+  &:hover::after {
+    background: $reflect-switch-off-icon-fill-hover;
   }
 
   .rc-switch-label-off {
@@ -61,6 +69,10 @@
     height: $reflect-switch-off-icon-size;
     right: $reflect-switch-padding * 1.4;
     width: $reflect-switch-off-icon-size;
+  }
+
+  &:hover .rc-switch-label-off .rc-icon {
+    fill: $reflect-switch-off-icon-fill-hover;
   }
 
   .rc-switch-label-on {
@@ -99,6 +111,10 @@
     color: $reflect-switch-on-text;
   }
 
+  &:checked + .rc-switch-label:hover {
+    background: $reflect-switch-on-bg-hover;
+  }
+
   &:checked + .rc-switch-label .rc-switch-label-off {
     @include hide-text;
   }
@@ -109,7 +125,6 @@
 
   &:checked + .rc-switch-label::after {
     background: $reflect-switch-on-icon-fill;
-    left: auto;
-    right: $reflect-switch-padding;
+    left: calc(100% - (#{$reflect-switch-padding} + #{$reflect-switch-handle-height});
   }
 }
