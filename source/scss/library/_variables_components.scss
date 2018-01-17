@@ -149,10 +149,10 @@ $reflect-card-title-margin                   : 4px !default; // Todo: Base on gr
 $reflect-card-subtitle-size                  : $reflect-font-size-small !default;
 $reflect-card-subtitle-color                 : $reflect-font-color-medium !default;
 $reflect-card-controls-size                  : $reflect-font-size-small !default;
-$reflect-card-controls-color                 : $reflect-font-color-medium !default;
+$reflect-card-controls-color                 : $reflect-font-color-base !default;
 $reflect-card-search-margin                  : $reflect-medium 0 0 !default; // Todo: Base on grid
 
-$reflect-card-description-font-size          : $reflect-font-size-small !default;
+$reflect-card-description-font-size          : $reflect-font-size-base !default;
 
 // Card Color
 $reflect-card-action-color-active            : $reflect-active-color !default;
@@ -244,10 +244,11 @@ $reflect-dropdown-item-disabled-bg           : $reflect-gray-light !default;
 
 // Forms
 // ----------------------------------------------------------------------------
-$reflect-form-vertical-padding               : $reflect-tiny !default;
 $reflect-form-label-font-weight              : $reflect-font-weight-heavy !default;
-$reflect-form-label-color                    : $reflect-gray-dark !default;
+$reflect-form-label-color                    : $reflect-font-color-medium !default;
+$reflect-form-label-color-dark               : $reflect-font-color-base !default;
 $reflect-form-label-font-size                : $reflect-font-size-tiny !default;
+$reflect-form-label-font-size-large          : $reflect-font-size-small !default;
 $reflect-form-description-color              : $reflect-gray !default;
 $reflect-form-description-font-size          : $reflect-font-size-tiny !default;
 
@@ -257,6 +258,7 @@ $reflect-form-section-legend-color           : $reflect-gray-darker !default;
 $reflect-form-section-flyout-icon-color      : $reflect-gray-light !default;
 
 $reflect-form-field-margin                   : $reflect-small !default;
+$reflect-form-vertical-padding               : $reflect-tiny !default;
 
 $reflect-form-tiny-label-font-size           : $reflect-font-size-tiny * 0.9 !default;
 
@@ -501,14 +503,17 @@ $reflect-switch-padding                      : 5px !default; // Todo: Base on gr
 $reflect-switch-handle-height                : $reflect-switch-height - ($reflect-switch-padding * 2) !default;
 
 $reflect-switch-on-bg                        : $reflect-active-color !default;
+$reflect-switch-on-bg-hover                  : $reflect-active-color-hover !default;
 $reflect-switch-on-text                      : $reflect-action-text !default;
 $reflect-switch-on-icon-fill                 : $reflect-action-icon !default;
-$reflect-switch-on-icon-size                 : 13px !default;
+$reflect-switch-on-icon-size                 : 12px !default;
 
 $reflect-switch-off-bg                       : $reflect-inactive-color !default;
+$reflect-switch-off-bg-hover                 : $reflect-inactive-color-hover !default;
 $reflect-switch-off-text                     : $reflect-action-text-alt !default;
 $reflect-switch-off-icon-fill                : $reflect-action-icon-alt;
-$reflect-switch-off-icon-size                : $reflect-small !default;
+$reflect-switch-off-icon-fill-hover          : $reflect-action-icon-hover-alt;
+$reflect-switch-off-icon-size                : 12px !default;
 
 // Tab variables/options
 // ----------------------------------------------------------------------------

@@ -489,7 +489,7 @@ class Select extends React.Component {
 
     actions.push(
       <a key="open" role="button" tabIndex={ 0 } className="rc-select-action" onClick={ this.onChevronClick } >
-        <Icon width="10px" height="10px" type="chevron-down" />
+        <Icon width="12px" height="12px" type="chevron-down" />
       </a>,
     );
 

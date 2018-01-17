@@ -29,13 +29,15 @@
 }
 
 .rc-checkbox + .rc-icon {
+  animation: 200ms 1 ease-in rc-zoom-in;
+  display: none;
   height: 16px;
   pointer-events: none;
   position: absolute;
-  right: -4px;
-  top: -2px;
-  visibility: hidden;
+  right: -2px;
+  top: -1px;
   width: 16px;
+
 }
 
 .rc-checkbox:hover {
@@ -48,7 +50,7 @@
 
 .rc-checkbox-checked + .rc-icon {
   fill: $reflect-checkbox-icon-color;
-  visibility: visible;
+  display: block;
 }
 
 .rc-checkbox-disabled {

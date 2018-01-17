@@ -1,9 +1,6 @@
 .rc-filters {
   .rc-form {
-    border-bottom: $reflect-filters-form-border;
-    border-top: $reflect-filters-form-border;
-    margin: 10px 0;
-    padding: 10px 0;
+    animation: 0.4s 1 rc-fade-in;
   }
 
   .rc-tag {

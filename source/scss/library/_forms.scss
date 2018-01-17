@@ -1,16 +1,32 @@
-.rc-form {
-  .rc-form-field {
-    margin-bottom: $reflect-form-field-margin;
-  }
+.rc-form-field {
+  padding-bottom: $reflect-form-vertical-padding * 2;
 }
 
-.rc-form-fields {
-  margin-bottom: -$reflect-form-field-margin;
+.rc-form-field:last-child {
+  padding-bottom: 0;
+
+  .rc-form-field-description {
+    padding-bottom: 0;
+  }
 }
 
 .rc-form-fields,
 .rc-form-section {
   border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.rc-form-section {
+  padding-bottom: $reflect-form-vertical-padding * 4;
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
+
+
+.rc-form-field-content {
+  display: block;
   margin: 0;
   padding: 0;
 }
@@ -29,19 +45,27 @@
   }
 }
 
-.rc-form-section {
-  padding-bottom: 16px;
-}
-
 .rc-form-flyout {
   padding: $reflect-form-field-margin;
 }
 
 .rc-form-section-legend {
   color: $reflect-form-section-legend-color;
+  display: block;
   font-size: $reflect-form-section-legend-font-size;
   font-weight: $reflect-form-section-legend-font-weight;
-  line-height: $reflect-form-section-legend-font-size;
+  margin: 0;
+  padding-bottom: $reflect-form-vertical-padding;
+
+  span {
+    display: block;
+    height: 21px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .rc-form-section-flyout-target {
@@ -52,24 +76,53 @@
   }
 }
 
-.rc-form-field-label,
-.rc-form-section-legend {
-  display: flex;
-  margin-bottom: 0 0 $reflect-form-vertical-padding;
-}
-
 .rc-form-field-label {
   color: $reflect-form-label-color;
+  display: block;
   font-size: $reflect-form-label-font-size;
   font-weight: $reflect-font-weight-medium;
   line-height: $reflect-medium;
+  margin: 0;
+  padding-bottom: $reflect-form-vertical-padding;
   text-transform: uppercase;
+}
+
+// Spacing interactions for different form fields
+.rc-form-section-legend + .rc-form-field-checkbox,
+.rc-form-field-checkbox + .rc-form-field {
+  padding-top: $reflect-form-vertical-padding;
+}
+
+// We want to position inline checkbox
+.rc-form-field-inline.rc-form-field-checkbox {
+  .rc-form-field-element {
+    flex-grow: 0;
+    margin-right: $reflect-form-field-margin;
+  }
+
+  .rc-form-field-label {
+    color: $reflect-form-label-color-dark;
+    display: block;
+    flex-grow: 0;
+    font-size: $reflect-form-label-font-size-large;
+    text-transform: lowercase;
+  }
+
+  .rc-form-field-label::first-letter {
+    text-transform: capitalize;
+  }
+
+  .rc-form-field-description {
+    justify-content: flex-start;
+  }
 }
 
 .rc-form-field-description {
   color: $reflect-form-description-color;
   font-size: $reflect-form-description-font-size;
   line-height: $reflect-medium;
+  margin: 0;
+  padding: 2px 0 0;
 }
 
 .rc-form-actions {
@@ -96,6 +149,7 @@
 .rc-form-inline,
 .rc-form-field-inline {
   .rc-form-field-label {
+    display: flex;
     flex-grow: 1;
     margin: 0;
     padding-bottom: 0;
@@ -250,4 +304,5 @@
     }
   }
 }
+
 /* stylelint-enable  */
