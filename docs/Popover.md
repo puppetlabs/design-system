@@ -20,9 +20,9 @@ const target = <Button label="Bottom right popover" />;
 Top left popover
 ```
 const Button = require('../source/react/library/Button.js').default;
-const target = <Button label="Top left popover" />;
+const target = <Button label="Left top popover" />;
 
-<Popover target={ target } anchor="top left">
+<Popover target={ target } anchor="left top">
   I am a popover
 </Popover>
 ```
@@ -30,9 +30,9 @@ const target = <Button label="Top left popover" />;
 Top right popover
 ```
 const Button = require('../source/react/library/Button.js').default;
-const target = <Button label="Top right popover" />;
+const target = <Button label="Right top popover" />;
 
-<Popover target={ target } anchor="top right">
+<Popover target={ target } anchor="right top">
   I am a popover
 </Popover>
 ```

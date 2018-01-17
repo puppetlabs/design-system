@@ -12,7 +12,7 @@ const propTypes = {
   padding: React.PropTypes.bool,
   border: React.PropTypes.bool,
   closeButton: React.PropTypes.bool,
-  anchor: React.PropTypes.oneOf(['bottom right', 'bottom left']),
+  anchor: React.PropTypes.oneOf(['bottom right', 'bottom left', 'left top', 'right top']),
   onOpen: React.PropTypes.func,
   onClose: React.PropTypes.func,
   target: React.PropTypes.object,
@@ -231,13 +231,17 @@ class Popover extends React.Component {
       'rc-popover-wrapper-open': this.state.open,
       'rc-popover-wrapper-relative': this.props.disablePortal,
     });
+
+    const anchorForClass = this.props.anchor.replace(' ', '-');
     const className = classnames('rc-popover', this.props.className, {
       [`rc-popover-${this.props.size}`]: this.props.size,
       'rc-popover-no-portal': this.props.disablePortal,
       'rc-popover-menu': this.props.menu,
       'rc-popover-no-padding': !this.props.padding || this.props.menu,
       'rc-popover-no-border': !this.props.border || this.props.menu,
+      [`rc-popover-${anchorForClass}`]: anchorForClass,
     });
+
     const styles = clone(this.state.position);
     const button = this.renderButton();
 
