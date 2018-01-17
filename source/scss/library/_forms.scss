@@ -19,7 +19,7 @@
 
 .rc-form-section {
   padding-bottom: $reflect-form-vertical-padding * 4;
-  
+
   &:last-child {
     padding-bottom: $reflect-form-vertical-padding * 2;
   }
@@ -129,7 +129,7 @@
 .rc-form-actions {
   display: flex;
   justify-content: flex-end;
-  margin-top: $reflect-form-field-margin;
+  padding-top: $reflect-form-field-margin;
 }
 
 .rc-form-field-error {

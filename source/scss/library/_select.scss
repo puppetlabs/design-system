@@ -52,18 +52,22 @@
   min-height: 32px;
   min-width: 0;
   overflow: hidden;
-  padding: 0 8px;
+  padding: 0 16px 0 8px;
   position: relative;
   text-overflow: ellipsis;
+  // transition: all 0.2s;
 
   &:hover {
     border-color: $reflect-action-color;
   }
 
+  &:hover .rc-select-action .rc-icon-chevron-down {
+    fill: $reflect-action-color;
+  }
 }
 
 .rc-select-multiple .rc-select-input {
-  padding: 0 4px 0 8px;
+  padding: 0 8px;
 }
 
 .rc-select-input .rc-input {
@@ -92,8 +96,10 @@
 }
 
 .rc-select-actions {
+  align-items: center;
   display: flex;
   flex: 0 1 auto;
+  height: 20px;
   margin-left: 8px;
 }
 
@@ -109,6 +115,7 @@
   margin: 2px 2px 2px 0;
   max-width: 100%;
   padding: 4px 8px;
+  transform: translateX(-4px);
   transition: all 0.2s;
 
   span {
@@ -147,7 +154,6 @@
 .rc-select-item-highlighted {
   background: $reflect-select-item-highlighted-bg;
   border: $reflect-select-item-highlighted-border;
-  transform: translateX(2px);
 }
 
 .rc-select-medium {
@@ -170,6 +176,7 @@
 
 .rc-select-small .rc-select-input {
   min-height: 24px;
+  padding: 0 8px;
 
   .rc-input {
     font-size: 12px;
@@ -184,6 +191,10 @@
   .rc-select-input {
     @extend %disabled-input;
   }
+
+  &:hover .rc-select-input .rc-icon-chevron-down {
+    fill: $reflect-icon-fill;
+  }
 }
 
 .rc-select-wrapper-open {
@@ -194,7 +205,10 @@
 
 .rc-select-actions {
   .rc-select-action {
+    align-items: center;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
     margin-right: $reflect-small;
     min-width: 12px;
     outline: none;
@@ -251,7 +265,6 @@
 
 .rc-select-small {
   .rc-icon-chevron-down {
-    bottom: 12px;
     height: 8px !important;
     width: 8px !important;
   }
