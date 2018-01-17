@@ -151,6 +151,7 @@ class Popover extends React.Component {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
       let bottom;
+      let top;
       let right;
       let left;
 
@@ -162,6 +163,7 @@ class Popover extends React.Component {
         bottom = elPosition.bottom + window.pageYOffset;
         left = elPosition.left + window.pageXOffset;
         right = document.body.clientWidth - (elPosition.right + window.pageXOffset);
+        top = elPosition.top + window.pageYOffset;
       }
 
       if (this.props.inheritTargetWidth) {
@@ -172,6 +174,14 @@ class Popover extends React.Component {
         case 'bottom right':
           newState.position.top = bottom + this.props.margin;
           newState.position.right = right;
+          break;
+        case 'top right':
+          newState.position.top = top - this.props.margin;
+          newState.position.right = right + this.props.margin;
+          break;
+        case 'top left':
+          newState.position.top = top - this.props.margin;
+          newState.position.left = left + this.props.margin;
           break;
         case 'bottom left': default:
           newState.position.top = bottom + this.props.margin;
