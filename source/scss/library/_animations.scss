@@ -230,7 +230,7 @@
 }
 
 .rc-saving {
-  background: $reflect-gray;
+  background: $reflect-active-color-hover;
   height: 4px;
   left: 0;
   overflow: hidden;
@@ -242,7 +242,7 @@
 
   &::after {
     animation: 1.5s infinite ease-in-out indeterminate-bar;
-    background: $reflect-action-hover;
+    background: $reflect-active-color;
     bottom: 0;
     content: '';
     height: 8px;

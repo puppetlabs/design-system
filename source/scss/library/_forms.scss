@@ -20,7 +20,7 @@
 .rc-form-section {
   padding-bottom: $reflect-form-vertical-padding * 4;
   &:last-child {
-    padding-bottom: 0;
+    padding-bottom: $reflect-form-vertical-padding * 2;
   }
 }
 
@@ -92,7 +92,7 @@
   font-size: $reflect-form-description-font-size;
   line-height: $reflect-medium;
   margin: 0;
-  padding: 2px 0 0;
+  padding: 4px 0;
 }
 
 .rc-form-actions {

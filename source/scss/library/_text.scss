@@ -42,7 +42,7 @@
   }
 
   &::placeholder {
-    color: $reflect-input-hover-color;
+    color: $reflect-input-placeholder-color;
   }
 
 
@@ -65,10 +65,6 @@
     font-size: $reflect-font-size-small;
     height: $reflect-input-small-height;
     padding: $reflect-input-small-padding;
-  }
-
-  &::placeholder {
-    color: $reflect-input-placeholder-color;
   }
 }
 

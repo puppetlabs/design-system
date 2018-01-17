@@ -247,7 +247,7 @@ $reflect-dropdown-item-disabled-bg           : $reflect-gray-light !default;
 $reflect-form-label-font-weight              : $reflect-font-weight-heavy !default;
 $reflect-form-label-color                    : $reflect-gray-dark !default;
 $reflect-form-label-font-size                : $reflect-font-size-tiny !default;
-$reflect-form-description-color              : $reflect-gray !default;
+$reflect-form-description-color              : $reflect-font-color-medium !default;
 $reflect-form-description-font-size          : $reflect-font-size-tiny !default;
 
 $reflect-form-section-legend-font-size       : $reflect-font-size-base !default;
@@ -295,7 +295,7 @@ $reflect-input-border-radius                 : $reflect-border-radius !default;
 $reflect-input-border-error                  : 1px solid $reflect-danger-color !default;
 $reflect-input-height                        : $reflect-huge !default;
 $reflect-input-padding                       : $reflect-tiny $reflect-small !default;
-$reflect-input-placeholder-color             : $reflect-font-color-subtle !default;
+$reflect-input-placeholder-color             : $reflect-font-color-medium !default;
 
 $reflect-input-hover-color                   : $reflect-brand-primary !default;
 $reflect-input-hover-border                  : 1px solid $reflect-brand-primary !default;
