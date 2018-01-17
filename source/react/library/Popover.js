@@ -12,7 +12,7 @@ const propTypes = {
   padding: React.PropTypes.bool,
   border: React.PropTypes.bool,
   closeButton: React.PropTypes.bool,
-  anchor: React.PropTypes.oneOf(['bottom right', 'bottom left']),
+  anchor: React.PropTypes.oneOf(['bottom right', 'bottom left', 'left top', 'right top']),
   onOpen: React.PropTypes.func,
   onClose: React.PropTypes.func,
   target: React.PropTypes.object,
@@ -54,6 +54,12 @@ const defaultProps = {
   disableOutsideClick: false,
   children: null,
 };
+
+/**
+ * `Popover` is a generalized component we use for rendering menus over other content.
+ *
+ * @example ../../../docs/Popover.md
+ */
 
 class Popover extends React.Component {
 
@@ -144,6 +150,7 @@ class Popover extends React.Component {
 
   setPosition() {
     const newState = { position: { } };
+    const bodyWidth = document.body.clientWidth;
 
     if (Object.keys(this.props.position).length > 0) {
       newState.position = this.props.position;
@@ -151,6 +158,7 @@ class Popover extends React.Component {
       const el = this.elem;
       const elPosition = el.getBoundingClientRect();
       let bottom;
+      let top;
       let right;
       let left;
 
@@ -161,7 +169,8 @@ class Popover extends React.Component {
       } else {
         bottom = elPosition.bottom + window.pageYOffset;
         left = elPosition.left + window.pageXOffset;
-        right = document.body.clientWidth - (elPosition.right + window.pageXOffset);
+        right = bodyWidth - (elPosition.right + window.pageXOffset);
+        top = elPosition.top + window.pageYOffset;
       }
 
       if (this.props.inheritTargetWidth) {
@@ -172,6 +181,14 @@ class Popover extends React.Component {
         case 'bottom right':
           newState.position.top = bottom + this.props.margin;
           newState.position.right = right;
+          break;
+        case 'right top':
+          newState.position.top = top;
+          newState.position.left = left + elPosition.width + this.props.margin;
+          break;
+        case 'left top':
+          newState.position.top = top;
+          newState.position.right = (bodyWidth - left) + this.props.margin;
           break;
         case 'bottom left': default:
           newState.position.top = bottom + this.props.margin;
@@ -214,13 +231,17 @@ class Popover extends React.Component {
       'rc-popover-wrapper-open': this.state.open,
       'rc-popover-wrapper-relative': this.props.disablePortal,
     });
+
+    const anchorForClass = this.props.anchor.replace(' ', '-');
     const className = classnames('rc-popover', this.props.className, {
       [`rc-popover-${this.props.size}`]: this.props.size,
       'rc-popover-no-portal': this.props.disablePortal,
       'rc-popover-menu': this.props.menu,
       'rc-popover-no-padding': !this.props.padding || this.props.menu,
       'rc-popover-no-border': !this.props.border || this.props.menu,
+      [`rc-popover-${anchorForClass}`]: anchorForClass,
     });
+
     const styles = clone(this.state.position);
     const button = this.renderButton();
 

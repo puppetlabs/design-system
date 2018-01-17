@@ -54,6 +54,14 @@
   }
 }
 
+.rc-popover-carat {
+  border-style: solid;
+  border-width: 8px;
+  height: 0;
+  position: absolute;
+  width: 0;
+}
+
 .rc-popover-wrapper {
   display: inline-block;
 }
