@@ -77,6 +77,14 @@
   50% {
     opacity: 1;
   }
+
+  75% {
+    transform: scale3d(1.1,1.1,1.1);
+  }
+
+  100% {
+    transform: scale3d(1,1,1);
+  }
 }
 
 @keyframes rc-zoom-out {

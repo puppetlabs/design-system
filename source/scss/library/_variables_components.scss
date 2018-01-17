@@ -149,10 +149,10 @@ $reflect-card-title-margin                   : 4px !default; // Todo: Base on gr
 $reflect-card-subtitle-size                  : $reflect-font-size-small !default;
 $reflect-card-subtitle-color                 : $reflect-font-color-medium !default;
 $reflect-card-controls-size                  : $reflect-font-size-small !default;
-$reflect-card-controls-color                 : $reflect-font-color-medium !default;
+$reflect-card-controls-color                 : $reflect-font-color-base !default;
 $reflect-card-search-margin                  : $reflect-medium 0 0 !default; // Todo: Base on grid
 
-$reflect-card-description-font-size          : $reflect-font-size-small !default;
+$reflect-card-description-font-size          : $reflect-font-size-base !default;
 
 // Card Color
 $reflect-card-action-color-active            : $reflect-active-color !default;
