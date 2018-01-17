@@ -58,8 +58,8 @@ class Checkbox extends React.Component {
         <Icon
           onClick={ this.onChange }
           type="check"
-          width="18px"
-          height="18px"
+          width="16px"
+          height="16px"
         />
       </div>
     );
