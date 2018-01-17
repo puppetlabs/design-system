@@ -83,6 +83,30 @@
   text-transform: uppercase;
 }
 
+// We want to position inline checkbox
+.rc-form-field-inline.rc-form-field-checkbox {
+  .rc-form-field-element {
+    flex-grow: 0;
+    margin-right: $reflect-form-field-margin;
+  }
+
+  .rc-form-field-label {
+    color: $reflect-form-label-color-dark;
+    display: block;
+    flex-grow: 0;
+    font-size: $reflect-form-label-font-size-large;
+    text-transform: lowercase;
+  }
+
+  .rc-form-field-label::first-letter {
+    text-transform: capitalize;
+  }
+
+  .rc-form-field-description {
+    justify-content: flex-start;
+  }
+}
+
 .rc-form-field-description {
   color: $reflect-form-description-color;
   font-size: $reflect-form-description-font-size;
