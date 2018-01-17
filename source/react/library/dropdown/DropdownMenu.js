@@ -21,7 +21,7 @@ const propTypes = {
   blank: React.PropTypes.string,
   hint: React.PropTypes.string,
   options: React.PropTypes.array,
-  actions: React.PropTypes.array,
+  actions: React.PropTypes.any,
   multiple: React.PropTypes.bool,
   margin: React.PropTypes.number,
   disablePortal: React.PropTypes.bool,
@@ -32,7 +32,6 @@ const defaultProps = {
   target: null,
   selected: [],
   options: [],
-  actions: [],
   size: 'small',
   width: 'auto',
   blank: '',
@@ -106,10 +105,9 @@ class DropdownMenu extends React.Component {
     if (options.length > 0) {
       let className;
 
-      if (actions.length) {
+      if (actions) {
         className = 'rc-menu-first';
       }
-
 
       jsx = (
         <Menu size={ size } className={ className }>
@@ -119,6 +117,7 @@ class DropdownMenu extends React.Component {
             multiple={ this.props.multiple }
             onChange={ this.onChange }
           />
+          { actions }
         </Menu>
       );
     } else if (this.props.blank) {
@@ -127,27 +126,6 @@ class DropdownMenu extends React.Component {
 
     if (this.props.blank || this.props.multiple) {
       jsx = <Menu.Section className="rc-menu-section-list">{ jsx }</Menu.Section>;
-    }
-
-    return jsx;
-  }
-
-  renderActions() {
-    const { size, actions } = this.props;
-    let jsx;
-
-    if (actions.length > 0) {
-      jsx = (
-        <Menu size={ size } className="rc-menu-actions">
-          <ul className="rc-menu-list">
-            {
-              actions.map(action => (
-                <Menu.Item onClick={ this.onActionClick } option={ action } />
-              ))
-            }
-          </ul>
-        </Menu>
-      );
     }
 
     return jsx;
@@ -174,7 +152,6 @@ class DropdownMenu extends React.Component {
 
   render() {
     const menu = this.renderMenu();
-    const actions = this.renderActions();
     const applyButton = this.renderApplyButton();
     const className = classnames('rc-dropdown-menu', {
       [`rc-dropdown-menu-${this.props.size}`]: this.props.size,
@@ -199,7 +176,6 @@ class DropdownMenu extends React.Component {
         disablePortal={ this.props.disablePortal }
       >
         { menu }
-        { actions }
         { applyButton }
       </Popover>
     );
