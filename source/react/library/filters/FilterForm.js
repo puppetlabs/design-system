@@ -145,7 +145,7 @@ class FilterForm extends React.Component {
           name="filterValue"
           label="value"
           value={ this.state.filter.value || '' }
-          elementProps={ { placeholder: 'A single string (e.g. Jim) or a number (1500)' } }
+          elementProps={ { placeholder: 'A string (e.g. Jim) or a number (1500)' } }
         />
       );
     }
