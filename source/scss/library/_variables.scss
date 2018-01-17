@@ -47,10 +47,10 @@ $reflect-action-color-alt                    : $reflect-gray-lighter !default;
 $reflect-action-hover-alt                    : $reflect-gray-light !default;
 $reflect-action-border-alt                   : $reflect-gray !default;
 $reflect-action-border-hover-alt             : $reflect-gray-dark !default;
-$reflect-action-text-alt                     : $reflect-gray !default;
-$reflect-action-text-hover-alt               : $reflect-gray-dark !default;
-$reflect-action-icon-alt                     : $reflect-gray !default;
-$reflect-action-icon-hover-alt               : $reflect-gray-dark !default;
+$reflect-action-text-alt                     : $reflect-gray-dark !default;
+$reflect-action-text-hover-alt               : $reflect-gray-darker !default;
+$reflect-action-icon-alt                     : $reflect-gray-dark !default;
+$reflect-action-icon-hover-alt               : $reflect-gray-darker !default;
 
 // Disabled Colors
 $reflect-disabled-opacity                    : 0.25 !default;
@@ -67,8 +67,8 @@ $reflect-disabled-icon-hover                 : $reflect-gray !default;
 // Toggles, Checkboxes, etc.
 $reflect-active-color                        : $reflect-action-color !default;
 $reflect-active-color-hover                  : $reflect-action-hover !default;
-$reflect-inactive-color                      : $reflect-action-color-alt !default;
-$reflect-inactive-color-hover                : $reflect-action-hover-alt !default;
+$reflect-inactive-color                      : $reflect-gray-light !default;
+$reflect-inactive-color-hover                : $reflect-gray !default;
 
 // Link Colors
 // For stand alone links, not buttons
