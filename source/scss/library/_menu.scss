@@ -186,7 +186,7 @@
 }
 
 // More evidence here that we could refactor menus and dropdowns
-.rc-menu-header + .rc-menu-section-list {
+.rc-menu-header + div {
   .rc-menu-item a { /* stylelint-disable-line selector-max-compound-selectors */
     padding: 0 $reflect-menu-header-padding;
   }
