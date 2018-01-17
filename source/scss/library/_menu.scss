@@ -22,6 +22,7 @@
     border-bottom-right-radius: $reflect-border-radius;
   }
 
+  .rc-menu-item:hover a,
   .rc-menu-item-focused a {
     background: $bg-hover;
     color: $color-hover;
@@ -80,6 +81,7 @@
   font-size: $reflect-menu-item-font-size;
   font-weight: $reflect-menu-item-font-weight;
   line-height: $reflect-menu-item-line-height;
+  transition: all 0.2s;
 }
 
 .rc-menu-item a {
@@ -122,12 +124,13 @@
 }
 
 .rc-menu-item-with-icon a {
-  padding-left: $reflect-dropdown-padding * 3;
+  padding-left: $reflect-dropdown-padding-small * 4;
+  padding-right: $reflect-dropdown-padding-small * 2;
 }
 
 .rc-menu-item-with-icon .rc-menu-icon {
   .rc-icon {
-    left: $reflect-dropdown-padding;
+    left: $reflect-dropdown-padding-small;
   }
 }
 
@@ -147,6 +150,7 @@
   padding: $reflect-menu-section-padding;
 
   &.rc-menu-section-list {
+    border: 0;
     padding: 0;
   }
 }
@@ -174,6 +178,17 @@
     border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
+  }
+
+  .rc-menu-item a { /* stylelint-disable-line selector-max-compound-selectors */
+    padding: 0 $reflect-menu-header-padding;
+  }
+}
+
+// More evidence here that we could refactor menus and dropdowns
+.rc-menu-header + div {
+  .rc-menu-item a { /* stylelint-disable-line selector-max-compound-selectors */
+    padding: 0 $reflect-menu-header-padding;
   }
 }
 

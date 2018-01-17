@@ -37,6 +37,7 @@ import Select from './react/library/select/Select';
 import Form from './react/library/form';
 import Filters from './react/library/filters';
 import Checkbox from './react/library/Checkbox';
+import Saving from './react/library/Saving';
 
 export {
   Button,
@@ -78,4 +79,5 @@ export {
   Form,
   Filters,
   Checkbox,
+  Saving,
 };

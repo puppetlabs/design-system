@@ -154,11 +154,15 @@
   width: 16px;
 
   &:hover .rc-icon {
-    cursor: move;
     transform: none;
   }
 }
 
+.rc-list-item.rc-list-item-kebab,
+.rc-list-item.rc-list-item-kebab .rc-list-item-link,
+.rc-list-item-kebab {
+  cursor: move;
+}
 
 // Fancy List - for data field list, filter lists, etc.
 // Blue background and border radius

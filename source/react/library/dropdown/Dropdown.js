@@ -8,7 +8,7 @@ const propTypes = {
   select: React.PropTypes.bool,
   onChange: React.PropTypes.func,
   options: React.PropTypes.array,
-  actions: React.PropTypes.array,
+  actions: React.PropTypes.any,
   hint: React.PropTypes.string,
   margin: React.PropTypes.number,
   anchor: React.PropTypes.string,
@@ -32,7 +32,6 @@ const propTypes = {
 const defaultProps = {
   select: false,
   options: [],
-  actions: [],
   hint: '',
   margin: -60,
   placeholder: '',
