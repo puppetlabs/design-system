@@ -129,7 +129,7 @@
 .rc-form-actions {
   display: flex;
   justify-content: flex-end;
-  padding-top: $reflect-form-field-margin;
+  padding-top: $reflect-form-field-margin * 2;
 }
 
 .rc-form-field-error {
