@@ -179,16 +179,21 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
-
-  .rc-menu-item a { /* stylelint-disable-line selector-max-compound-selectors */
-    padding: 0 $reflect-menu-header-padding;
-  }
 }
 
 // More evidence here that we could refactor menus and dropdowns
-.rc-menu-header + div {
-  .rc-menu-item a { /* stylelint-disable-line selector-max-compound-selectors */
+.rc-menu-header + div,
+.rc-menu-header + .rc-menu-list {
+  .rc-menu-item:not(.rc-menu-item-with-icon) a { /* stylelint-disable-line selector-max-compound-selectors */
     padding: 0 $reflect-menu-header-padding;
+  }
+
+  .rc-menu-item-with-icon a { /* stylelint-disable-line selector-max-compound-selectors */
+    padding-left: 40px;
+  }
+
+  .rc-menu-item-with-icon .rc-icon { /* stylelint-disable-line selector-max-compound-selectors */
+    left: 16px;
   }
 }
 
