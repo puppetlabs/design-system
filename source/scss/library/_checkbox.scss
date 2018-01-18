@@ -21,11 +21,9 @@
 }
 
 .rc-checkbox::-ms-check {
-  display: none;
-}
-
-.rc-checkbox::-ms-expand {
-  display: none;
+  border: $reflect-checkbox-border;
+  border-radius: $reflect-checkbox-border-radius;
+  color: $reflect-bg-primary;
 }
 
 .rc-checkbox + .rc-icon {

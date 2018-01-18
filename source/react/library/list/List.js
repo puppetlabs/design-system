@@ -35,8 +35,6 @@ const SortableList = SortableContainer(({ items }) => {
 
 /**
  * `List` is a container for rendering `ListItem`s.
- *
- * @example ../../../../docs/List.md
  */
 class List extends React.Component {
   constructor(props) {

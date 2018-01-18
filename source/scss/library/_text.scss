@@ -68,6 +68,10 @@
   }
 }
 
+.rc-input::-ms-clear {
+  display: none;
+}
+
 .rc-input-multiline,
 .rc-input-medium.rc-input-multiline {
   height: 64px;
