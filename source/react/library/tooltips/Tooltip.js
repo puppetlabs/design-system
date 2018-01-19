@@ -1,7 +1,9 @@
 import React from 'react';
 import classnames from 'classnames';
-import portal from '../portal';
 
+
+import { bindParentScroll, unbindParentScroll } from '../../helpers/statics';
+import portal from '../portal';
 import TooltipHoverArea from './TooltipHoverArea';
 import TooltipStickyArea from './TooltipStickyArea';
 import Icon from '../Icon';
@@ -54,6 +56,10 @@ class Tooltip extends React.Component {
     this.setPosition();
 
     window.addEventListener('resize', this.onResize);
+
+    if (this.props.target) {
+      bindParentScroll(this.props.target, this.setPosition);
+    }
   }
 
   componentDidUpdate(prevProps) {
@@ -64,6 +70,10 @@ class Tooltip extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
+
+    if (this.props.target) {
+      unbindParentScroll(this.props.target, this.setPosition);
+    }
   }
 
   onResize() {
