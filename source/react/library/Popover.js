@@ -127,7 +127,7 @@ class Popover extends React.Component {
     window.removeEventListener('resize', this.onResize);
 
     if (this.elem) {
-      bindParentScroll(this.elem, this.setPosition);
+      unbindParentScroll(this.elem, this.setPosition);
     }
   }
 
