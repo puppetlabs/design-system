@@ -1,3 +1,7 @@
+# 1.2.1
+
+* Fix an issue in IE causing Checkboxes to not have borders
+
 # 1.2.0
 
 * Animations for Popovers and other elements

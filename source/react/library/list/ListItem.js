@@ -33,8 +33,6 @@ const defaultProps = {
 
 /**
  * `ListItem` renders an item in a list.
- *
- * @example ../../../../docs/ListItem.md
  */
 class ListItem extends React.PureComponent {
   constructor(props) {
