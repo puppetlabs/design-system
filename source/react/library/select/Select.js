@@ -1,5 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
+import 'core-js/fn/array/from';
+import 'core-js/fn/array/find-index';
 
 import {
   ENTER_KEY_CODE,
