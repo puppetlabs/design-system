@@ -54,6 +54,18 @@ class Tooltip extends React.Component {
     this.setPosition();
 
     window.addEventListener('resize', this.onResize);
+
+    const target = this.props.target;
+
+    if (target) {
+      let parent = target.parentElement;
+
+      while (parent) {
+        parent.onscroll = this.setPosition;
+
+        parent = parent.parentElement;
+      }
+    }
   }
 
   componentDidUpdate(prevProps) {
