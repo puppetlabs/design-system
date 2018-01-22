@@ -12,6 +12,7 @@
 .rc-accordion-header {
   align-items: center;
   background-color: $reflect-accordion-item-title-bg-color;
+  border-radius: $reflect-border-radius $reflect-border-radius 0 0;
   display: flex;
   font-size: $reflect-accordion-item-title-font-size;
   padding: $reflect-accordion-item-title-padding;
@@ -20,7 +21,7 @@
 
 .rc-accordion-header {
   background: $reflect-accordion-header-bg;
-  border-bottom: $reflect-accordion-item-border;
+  border: $reflect-accordion-item-border;
   height: $reflect-accordion-header-height;
 
   .rc-accordion-header-icon .rc-icon {
