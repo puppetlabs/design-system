@@ -14,12 +14,6 @@ const defaultProps = {
   width: '30px',
 };
 
-/**
- * `Icon` renders either an icon svg when given a `type`, or any svg with given
- * an `svg`.
- *
- * @example ../../../docs/Icon.md
- */
 const Icon = (props) => {
   const { width, type, height } = props;
   const styles = {

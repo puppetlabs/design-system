@@ -1,7 +1,7 @@
 import React, { Children } from 'react';
 import classnames from 'classnames';
 
-import Icon from '../Icon';
+import Icon from '../icon/Icon';
 
 const getKey = function (child = {}, idx) {
   return child.key || String(idx);
