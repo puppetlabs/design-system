@@ -6,7 +6,7 @@ import { bindParentScroll, unbindParentScroll } from '../../helpers/statics';
 import portal from '../portal';
 import TooltipHoverArea from './TooltipHoverArea';
 import TooltipStickyArea from './TooltipStickyArea';
-import Icon from '../Icon';
+import Icon from '../icon/Icon';
 
 const CARAT_HEIGHT = 8;
 

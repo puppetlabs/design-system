@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Popover from '../Popover';
-import Icon from '../Icon';
+import Icon from '../icon/Icon';
 
 const propTypes = {
   hint: React.PropTypes.string,

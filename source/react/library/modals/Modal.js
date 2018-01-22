@@ -3,7 +3,7 @@ import classname from 'classnames';
 import debounce from 'debounce';
 import { mouseTrap } from 'react-mousetrap';
 import portal from '../portal';
-import Icon from '../Icon';
+import Icon from '../icon/Icon';
 import ButtonGroup from '../ButtonGroup';
 
 const propTypes = {

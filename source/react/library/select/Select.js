@@ -12,7 +12,7 @@ import {
   UP_KEY_CODE,
 } from '../../constants';
 
-import Icon from '../Icon';
+import Icon from '../icon/Icon';
 import Input from '../Input';
 import Menu from '../menu';
 import Popover from '../Popover';

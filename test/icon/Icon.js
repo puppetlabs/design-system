@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import Icon from '../source/react/library/Icon';
+import Icon from '../../source/react/library/icon/Icon';
 
 describe('<Icon />', () => {
   jsdom({ skipWindowCheck: true });

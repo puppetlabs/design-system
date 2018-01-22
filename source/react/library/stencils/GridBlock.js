@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from '../Icon';
+import Icon from '../icon/Icon';
 
 const propTypes = {
   coords: React.PropTypes.object.isRequired,

@@ -705,7 +705,7 @@ const icons = {
     viewBox: '0 0 16 16',
     svg: (
       <g>
-       <path d="M2 4L1 3V0h4v3L4 4v3h2v1H5v1l1 1v3a3 3 0 0 1-6 0v-3l1-1V8H0V7h2V4zm12 3v7a2 2 0 1 1-4 0V7a4 4 0 1 1 6-5h-4l-1 2 1 2h4l-2 1zm-2 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+        <path d="M2 4L1 3V0h4v3L4 4v3h2v1H5v1l1 1v3a3 3 0 0 1-6 0v-3l1-1V8H0V7h2V4zm12 3v7a2 2 0 1 1-4 0V7a4 4 0 1 1 6-5h-4l-1 2 1 2h4l-2 1zm-2 8a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
       </g>
     ),
   },
@@ -765,9 +765,9 @@ const icons = {
   tag: {
     viewBox: '0 0 16 16',
     svg: (
-    <g>
-      <path d="M16 7L9 0H2L0 2v7l7 7h2l7-7V7zM4 5L3 4l1-1 1 1-1 1z" id="a"/>
-    </g>
+      <g>
+        <path d="M16 7L9 0H2L0 2v7l7 7h2l7-7V7zM4 5L3 4l1-1 1 1-1 1z" />
+      </g>
     ),
   },
 

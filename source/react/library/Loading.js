@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import Icon from './Icon';
+import Icon from './icon/Icon';
 
 const propTypes = {
   className: React.PropTypes.string,

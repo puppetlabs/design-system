@@ -1,6 +1,6 @@
 import React from 'react';
 import { ENTER_KEY_CODE } from '../../constants';
-import Icon from '../Icon';
+import Icon from '../icon/Icon';
 import Input from '../Input';
 
 const propTypes = {
