@@ -38,6 +38,7 @@ import Form from './react/library/form';
 import Filters from './react/library/filters';
 import Checkbox from './react/library/Checkbox';
 import Saving from './react/library/Saving';
+import Content from './react/library/content/Content';
 
 export {
   Button,
@@ -80,4 +81,5 @@ export {
   Filters,
   Checkbox,
   Saving,
+  Content,
 };
