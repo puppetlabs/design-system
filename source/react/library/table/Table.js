@@ -30,6 +30,12 @@ function isSortable(value) {
   return typeof value === 'string';
 }
 
+/**
+ * `Table` is a component for rendering tabular data.
+ *
+ * @example ../../../../docs/Table.md
+ */
+
 class Table extends React.Component {
   constructor(props) {
     super(props);
@@ -226,19 +232,10 @@ class Table extends React.Component {
 
     return data.map((datum) => {
       const sortedRow = { meta: datum.meta };
-      const rowKey = [];
-
-      // This is a hack specific to the data modeling wizard table.
-      // column name and table name are all we need to identify the row. we don't want to include
-      // any other columns, as they are changable by the user.
-      rowKey.push(datum[sortedMetaData[0].column]);
-      rowKey.push(datum[sortedMetaData[1].column]);
 
       sortedMetaData.forEach((metaObj) => {
         sortedRow[metaObj.column] = datum[metaObj.column];
       });
-
-      sortedRow.rowKey = rowKey.join(':');
 
       return sortedRow;
     });
