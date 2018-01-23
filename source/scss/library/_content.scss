@@ -1,0 +1,26 @@
+.rc-content {
+  ul {
+    margin: $reflect-list-margin;
+  }
+
+  ul:last-child {
+    margin-bottom: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: $reflect-heading-margin;
+  }
+
+  p {
+    margin: $reflect-p-margin;
+  }
+
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
