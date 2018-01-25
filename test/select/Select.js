@@ -40,6 +40,67 @@ describe('<Select />', () => {
       expect(wrapper.find('MenuList').childAt(1).text()).to.eql('Catnasty');
     });
 
+    it('should disable the selected option if the select is not clearable', () => {
+      const optionsWithSelected = [
+        { value: 'Coffee', selected: true },
+        { value: 'Tea' },
+      ];
+      const onSelect = sinon.spy();
+      const wrapper = mount(
+        <Select
+          onSelect={ onSelect }
+          options={ optionsWithSelected }
+          { ...defaultProps }
+        />,
+      );
+
+      wrapper.find('.rc-select-input').simulate('click');
+
+      wrapper.find('.rc-menu-item-selected').find('a').simulate('click');
+
+      expect(onSelect.lastCall.args).to.eql([
+        optionsWithSelected[0], // first arg is the current item
+        optionsWithSelected[0],  // second arg is the item that was selected...
+      ]);
+    });
+
+    it('should allow selected objects to be selected and deselected by clicking on them', () => {
+      const onSelect = sinon.spy();
+      const wrapper = mount(
+        <Select
+          clearable
+          onSelect={ onSelect }
+          options={ options }
+          { ...defaultProps }
+        />,
+      );
+
+      wrapper.find('.rc-select-input').simulate('click');
+
+      expect(wrapper.find('.rc-menu-item-selected').length).to.eql(0);
+
+      wrapper.find('.rc-menu-item').first().find('a').simulate('click');
+      wrapper.find('.rc-select-input').simulate('click');
+
+      expect(onSelect.lastCall.args).to.eql([
+        options[0], // first arg is the current item
+        options[0],  // second arg is the item that was selected...
+      ]);
+
+      expect(wrapper.find('.rc-menu-item-selected').length).to.eql(1);
+
+      // Now we'll deselect that item
+      wrapper.find('.rc-menu-item').first().find('a').simulate('click');
+      wrapper.find('.rc-select-input').simulate('click');
+
+      expect(onSelect.lastCall.args).to.eql([
+        undefined,
+        options[0],
+      ]);
+
+      expect(wrapper.find('.rc-menu-item-selected').length).to.eql(0);
+    });
+
     it('should emit the full object as a callback to onSelect', () => {
       const onSelect = sinon.spy();
       const wrapper = mount(
