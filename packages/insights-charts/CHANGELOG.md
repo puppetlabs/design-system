@@ -1,3 +1,7 @@
+# 0.10.1 
+
+* Improvement to the x axis which deduplicates linear and time scale labels
+
 # 0.10.0
 
 * Allow the setting of relevant chart types

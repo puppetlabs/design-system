@@ -22,6 +22,7 @@ class XAxis {
     this.improperlyTruncated = false;
     this.labelsRotated = false;
 
+    this.dedupe = this.dedupe.bind(this);
     this.wrap = this.wrap.bind(this);
     this.rotate = this.rotate.bind(this);
     this.remove = this.remove.bind(this);
@@ -92,6 +93,26 @@ class XAxis {
     }
 
     return axis;
+  }
+
+  dedupe(selection) {
+    let lastLabelText = '';
+
+    if (this.scaleType !== 'date' && this.scaleType !== 'linear') {
+      return;
+    }
+
+    selection.each((data, index, items) => {
+      const tick = select(items[index]);
+      const labelText = tick.text();
+
+      // the label is being repeated then remove it
+      if (labelText === lastLabelText) {
+        tick.remove();
+      }
+
+      lastLabelText = labelText;
+    });
   }
 
   wrap(selection) {
@@ -386,6 +407,7 @@ class XAxis {
 
       if (orientation === 'top' || orientation === 'bottom') {
         this.axis.selectAll('.tick')
+          .call(this.dedupe)
           .call(this.wrap)
           .call(this.rotate)
           .call(this.remove);

@@ -122,6 +122,16 @@ class LineCharts extends React.Component {
       ],
     };
 
+    const timeData = {
+      categories: ['2018-01-01', '2018-01-02', '2018-01-03', '2018-01-04'],
+      series: [
+        {
+          label: 'Profit',
+          data: [0.2, 0.5, 0.134, 0.45, ],
+        },
+      ],
+    };
+
     const denseData = {
       categories: getRandomCategories(dataPoints),
       series: [
@@ -176,7 +186,7 @@ class LineCharts extends React.Component {
 
     this.lineChart = new ReflectChart(this.single, {
       type: 'line',
-      data: denseData,
+      data: timeData,
       options,
     });
 

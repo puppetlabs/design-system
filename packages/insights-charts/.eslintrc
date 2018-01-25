@@ -1,11 +1,7 @@
 {
   "parser": "babel-eslint",
   "extends": "airbnb",
-  "plugins": [
-    "mocha"
-  ],
   "rules": {
-    "mocha/no-exclusive-tests": "error",
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 0,
