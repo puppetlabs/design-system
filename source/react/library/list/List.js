@@ -1,4 +1,5 @@
 import React from 'react';
+import 'core-js/fn/array/from';
 import {
   SortableContainer,
   SortableElement,

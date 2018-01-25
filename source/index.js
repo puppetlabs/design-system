@@ -3,7 +3,7 @@ import SplitButton from './react/library/SplitButton';
 import ButtonGroup from './react/library/ButtonGroup';
 import * as Card from './react/library/card';
 import StencilGrid from './react/library/stencils/StencilGrid';
-import Icon from './react/library/Icon';
+import Icon from './react/library/icon/Icon';
 import Tag from './react/library/Tag';
 import Popover from './react/library/Popover';
 import Dropdown from './react/library/dropdown/Dropdown';
@@ -38,6 +38,7 @@ import Form from './react/library/form';
 import Filters from './react/library/filters';
 import Checkbox from './react/library/Checkbox';
 import Saving from './react/library/Saving';
+import Content from './react/library/content/Content';
 
 export {
   Button,
@@ -80,4 +81,5 @@ export {
   Filters,
   Checkbox,
   Saving,
+  Content,
 };

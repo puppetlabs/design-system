@@ -1,5 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
+import 'core-js/fn/array/from';
+import 'core-js/fn/array/find-index';
 
 import {
   ENTER_KEY_CODE,
@@ -10,7 +12,7 @@ import {
   UP_KEY_CODE,
 } from '../../constants';
 
-import Icon from '../Icon';
+import Icon from '../icon/Icon';
 import Input from '../Input';
 import Menu from '../menu';
 import Popover from '../Popover';
@@ -283,7 +285,7 @@ class Select extends React.Component {
     };
 
     if (option.selectable || typeof option.selectable === 'undefined') {
-      if (this.state.selected.map(s => s.id).indexOf(option.id) >= 0) {
+      if (this.state.selected.map(s => s.id).indexOf(option.id) >= 0 && this.props.clearable) {
         newState.selected = this.state.selected.filter(o => o.id !== option.id);
       } else if (this.props.multiple) {
         newState.selected = [...this.state.selected, option];

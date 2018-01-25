@@ -27,6 +27,7 @@
   @extend %input;
   font-size: $reflect-font-size-base;
   height: $reflect-input-height;
+  line-height: 1;
   padding: $reflect-input-padding;
 
   &.rc-input-error {

@@ -2,7 +2,12 @@ import React from 'react';
 import clone from 'clone';
 import classnames from 'classnames';
 import debounce from 'debounce';
-import { isNodeInRoot } from '../helpers/statics';
+
+import {
+  isNodeInRoot,
+  bindParentScroll,
+  unbindParentScroll,
+} from '../helpers/statics';
 import PopoverContent, { PopoverContentWithoutPortal } from './PopoverContent';
 
 const propTypes = {
@@ -85,6 +90,10 @@ class Popover extends React.Component {
     this.setPosition();
 
     window.addEventListener('resize', this.onResize);
+
+    if (this.elem) {
+      bindParentScroll(this.elem, this.setPosition);
+    }
   }
 
   componentWillReceiveProps(props) {
@@ -116,6 +125,10 @@ class Popover extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
+
+    if (this.elem) {
+      unbindParentScroll(this.elem, this.setPosition);
+    }
   }
 
   onResize() {
