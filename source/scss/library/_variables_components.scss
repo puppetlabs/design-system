@@ -8,7 +8,7 @@
 // ----------------------------------------------------------------------------
 $reflect-accordion-item-title-font-size      : $reflect-font-size-tiny !default;
 $reflect-accordion-item-title-color          : $reflect-font-color-medium !default;
-$reflect-accordion-item-title-hover          : $reflect-font-color-medium !default;
+$reflect-accordion-item-title-hover          : $reflect-font-color-base !default;
 $reflect-accordion-item-title-bg-color       : $reflect-white !default;
 $reflect-accordion-item-title-height         : 32px;
 $reflect-accordion-item-title-padding        : 0 $reflect-medium !default; // Todo: Base on grid
@@ -18,9 +18,9 @@ $reflect-accordion-item-border               : $reflect-border !default;
 $reflect-accordion-icon-color                : $reflect-icon-fill !default;
 $reflect-accordion-icon-color-hover          : $reflect-icon-fill-hover !default;
 
-$reflect-accordion-header-title-color        : $reflect-font-color-light !default;
+$reflect-accordion-header-title-color        : $reflect-font-color-medium !default;
 $reflect-accordion-header-height             : 32px;
-$reflect-accordion-header-bg                 : $reflect-black !default;
+$reflect-accordion-header-bg                 : $reflect-white !default;
 
 $reflect-accordion-animation-speed           : $reflect-animation-speed-base !default;
 
@@ -386,8 +386,6 @@ $reflect-menu-item-color                     : $reflect-font-color-base !default
 $reflect-menu-item-icon-color                : $reflect-icon-fill !default;
 $reflect-menu-item-bg                        : transparent !default;
 $reflect-menu-item-padding                   : 0 $reflect-small !default;
-$reflect-menu-header-border                  : $reflect-border !default;
-$reflect-menu-header-bg                      : $reflect-black !default;
 
 // Menu States
 $reflect-menu-item-color-hover               : $reflect-brand-primary !default;
@@ -401,11 +399,13 @@ $reflect-menu-item-color-disabled            : $reflect-bg-primary !default;
 $reflect-menu-item-bg-disabled               : $reflect-gray-light !default;
 
 // Menu Titles
-$reflect-menu-header-height                  : $reflect-menu-item-height !default;
-$reflect-menu-header-padding                 : $reflect-medium !default;
+$reflect-menu-header-bg                      : $reflect-white !default;
+$reflect-menu-header-border                  : $reflect-border !default;
+$reflect-menu-title-color                    : $reflect-font-color-medium !default;
 $reflect-menu-title-font-size                : 11px !default;
 $reflect-menu-title-font-weight              : $reflect-font-weight-normal !default;
-$reflect-menu-title-color                    : $reflect-font-color-light !default;
+$reflect-menu-header-height                  : $reflect-menu-item-height !default;
+$reflect-menu-header-padding                 : $reflect-medium !default;
 
 // Menu Section
 $reflect-menu-section-border                 : $reflect-border !default;

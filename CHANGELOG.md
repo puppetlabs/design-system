@@ -1,3 +1,7 @@
+# 1.2.2
+
+* Design tweeks to the accordion and menu headers
+
 # 1.2.1
 
 * Fix an issue in IE causing Checkboxes to not have borders
