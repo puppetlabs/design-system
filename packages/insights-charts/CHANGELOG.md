@@ -1,3 +1,7 @@
+# 0.10.2 
+
+* Bug fix for Edge versions <= 14
+
 # 0.10.1 
 
 * Improvement to the x axis which deduplicates linear and time scale labels
