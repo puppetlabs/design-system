@@ -60,6 +60,14 @@
 
 .rc-accordion-item-header {
   height: $reflect-accordion-item-title-height;
+
+  &:not(.rc-accordion-item-header-active):hover .rc-accordion-item-header-title {
+    color: $reflect-accordion-item-title-hover;
+  }
+
+  &:not(.rc-accordion-item-header-active):hover .rc-accordion-header-icon .rc-icon {
+    fill: $reflect-icon-fill-hover;
+  }
 }
 
 .rc-accordion-item-header-title {
