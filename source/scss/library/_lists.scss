@@ -147,7 +147,7 @@
   align-self: flex-start;
   display: flex;
   height: 16px;
-  margin-left: -4px !important;
+  margin-left: -$reflect-tiny;
   margin-right: 4px;
   min-width: 16px;
   transform: translate(0, 1px);

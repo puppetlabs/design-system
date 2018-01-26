@@ -75,7 +75,7 @@
 
 .rc-input-multiline,
 .rc-input-medium.rc-input-multiline {
-  height: 72px;
+  height: $reflect-size-base * 9;
   resize: vertical;
   vertical-align: top;
 }
