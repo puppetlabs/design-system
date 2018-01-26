@@ -285,7 +285,7 @@ class Select extends React.Component {
     };
 
     if (option.selectable || typeof option.selectable === 'undefined') {
-      if (this.state.selected.map(s => s.id).indexOf(option.id) >= 0) {
+      if (this.state.selected.map(s => s.id).indexOf(option.id) >= 0 && this.props.clearable) {
         newState.selected = this.state.selected.filter(o => o.id !== option.id);
       } else if (this.props.multiple) {
         newState.selected = [...this.state.selected, option];

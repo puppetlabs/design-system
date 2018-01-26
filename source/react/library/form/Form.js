@@ -15,6 +15,7 @@ const propTypes = {
   onSubmit: React.PropTypes.func,
   cancellable: React.PropTypes.bool,
   submittable: React.PropTypes.bool,
+  submitLabel: React.PropTypes.string,
   validator: React.PropTypes.func,
   errors: React.PropTypes.object,
   size: React.PropTypes.string,
@@ -33,6 +34,7 @@ const defaultProps = {
   onCancel: () => {},
   cancellable: false,
   submittable: false,
+  submitLabel: 'Submit',
 };
 
 const getValues = (children) => {
@@ -172,7 +174,7 @@ class Form extends React.Component {
           size={ this.props.size }
           disabled={ !this.state.valid }
           onClick={ this.onSubmit }
-          label="submit"
+          label={ this.props.submitLabel }
         />,
       );
     }
