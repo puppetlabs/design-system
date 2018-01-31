@@ -64,6 +64,49 @@ describe('<Select />', () => {
       ]);
     });
 
+    it('should select a single option when passed a selected prop that is a string', () => {
+      const options = [
+        { value: 'Michael', label: 'Sig' },
+        { value: 'Geoff', label: 'Catnasty' },
+      ];
+
+      const wrapper = mount(
+        <Select
+          options={ options }
+          { ...defaultProps }
+          selected="Michael"
+        />,
+      );
+
+      expect(wrapper.find('Input').prop('value')).to.equal('Sig');
+    });
+
+    it('should select multiple options when passed a selected prop that is an arrray', () => {
+      const options = [
+        { value: 'Michael', label: 'Sig' },
+        { value: 'Geoff', label: 'Catnasty' },
+        { value: 'Colby', label: 'Colbs' },
+      ];
+
+      const wrapper = mount(
+        <Select
+          multiple
+          options={ options }
+          { ...defaultProps }
+          selected={ ['Michael', 'Geoff'] }
+        />,
+      );
+
+      const values = [];
+
+      wrapper.find('SelectItem').forEach((Item) => {
+        values.push(Item.prop('value'));
+      });
+
+      expect(values.length).to.equal(2);
+      expect(values.join(', ')).to.equal('Sig, Catnasty');
+    });
+
     it('should allow selected objects to be selected and deselected by clicking on them', () => {
       const onSelect = sinon.spy();
       const wrapper = mount(
