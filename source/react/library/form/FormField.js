@@ -157,32 +157,13 @@ class FormField extends React.Component {
     } else {
       switch (type) {
         case 'select':
-          let props = elementProps;
-          value = this.props.value;
-          let selected;
-
-          if (value) {
-            if (Object.keys(value) && value.value) {
-              value = value.value;
-            }
-
-            selected = Array.isArray(value) ? value : [value];
-          }
-
-          if (props.options && selected) {
-            props = clone(props);
-
-            props.options.forEach((option) => {
-              option.selected = selected.indexOf(option.value) >= 0;
-            });
-          }
-
           jsx = (
             <Select
               name={ this.props.name }
               size={ this.props.size }
               onSelect={ this.onChange }
-              { ...props }
+              selected={ this.props.value }
+              { ...elementProps }
             />
           );
 

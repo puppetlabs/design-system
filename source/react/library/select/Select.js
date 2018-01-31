@@ -38,6 +38,10 @@ const propTypes = {
   newOptionLabel: React.PropTypes.string,
   popoverClassName: React.PropTypes.string,
   size: React.PropTypes.oneOf(['small', 'medium']),
+  selected: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.array,
+  ]),
 };
 
 const defaultProps = {
@@ -56,6 +60,7 @@ const defaultProps = {
   options: [],
   name: '',
   newOptionLabel: 'Add new',
+  selected: null,
 };
 
 const getNextIdx = (currentIdx, options) => {
@@ -96,6 +101,23 @@ const formatOptions = options => options.map((o) => {
 
   return option;
 });
+
+const selectOptions = (selected, options) => {
+  // If a selected prop is set then override any selected key values on the options provided
+  if (selected) {
+    let selectedArray = Array.isArray(selected) ? selected : [selected];
+
+    selectedArray = selectedArray.map(s => (s.value ? s.value : s));
+
+    options = options.map((option) => {
+      option.selected = selectedArray.indexOf(option.value) >= 0;
+
+      return option;
+    });
+  }
+
+  return options.filter(o => o.selected);
+};
 
 const hasClass = (elem, className) => {
   if (!elem.className) {
@@ -141,8 +163,8 @@ class Select extends React.Component {
   constructor(props) {
     super(props);
 
-    const selected = formatOptions(props.options)
-      .filter(o => o.selected);
+    const formattedOptions = formatOptions(props.options);
+    const selected = selectOptions(props.selected, formattedOptions);
 
     this.state = {
       pendingBackDelete: false,
@@ -170,8 +192,8 @@ class Select extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const selected = formatOptions(newProps.options)
-      .filter(o => o.selected);
+    const formattedOptions = formatOptions(newProps.options);
+    const selected = selectOptions(newProps.selected, formattedOptions);
 
     this.setState({ selected });
   }

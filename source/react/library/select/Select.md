@@ -1,8 +1,8 @@
 ```
 const options = [
-  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode III  Revenge of the Sith',
+  'Option 1',
+  'Option 2',
+  'Option 3',
 ];
 
 <Select
@@ -11,6 +11,24 @@ const options = [
   placeholder="Select one..."
 />
 ```
+
+Select with selected prop as a string
+
+```
+const options = [
+  'Option 1',
+  'Option 2',
+  'Option 3',
+];
+
+<Select
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  options={ options }
+  placeholder="Select one..."
+  selected="Option 1"
+/>
+```
+
 
 Small Select
 
@@ -33,19 +51,35 @@ Multiselect:
 
 ```
 const options = [
-  'T',
-  'Sunday',
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
+  'Option 1',
+  'Option 2',
+  'Option 3',
 ];
 
 <Select
   multiple
   options={ options }
+/>
+```
+
+Multiselect with selected options
+
+```
+const options = [
+  'Option 1',
+  'Option 2',
+  'Option 3',
+];
+
+<Select
+  multiple
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  options={ options }
+  placeholder="Select one..."
+  selected={ [
+    'Option 1', 
+    'Option 2',
+  ] }
 />
 ```
 
