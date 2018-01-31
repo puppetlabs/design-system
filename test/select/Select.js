@@ -27,8 +27,8 @@ describe('<Select />', () => {
 
   context('options are objects', () => {
     const options = [
-      { value: 'Michael', label: 'Sig' },
-      { value: 'Geoff', label: 'Catnasty' },
+      { id: 'Michael', value: 'Michael', label: 'Sig' },
+      { id: 'Geoff', value: 'Geoff', label: 'Catnasty' },
     ];
 
     it('should render the label', () => {
@@ -42,8 +42,8 @@ describe('<Select />', () => {
 
     it('should disable the selected option if the select is not clearable', () => {
       const optionsWithSelected = [
-        { value: 'Coffee', selected: true },
-        { value: 'Tea' },
+        { id: 'Coffee', value: 'Coffee', selected: true },
+        { id: 'Tea', value: 'Tea' },
       ];
       const onSelect = sinon.spy();
       const wrapper = mount(
