@@ -1,4 +1,5 @@
 import React from 'react';
+import clone from 'clone';
 import classnames from 'classnames';
 import 'core-js/fn/array/from';
 import 'core-js/fn/array/find-index';
@@ -90,17 +91,23 @@ const getLastIdx = (currentIdx, options) => {
 const filterOptions = (options, filter) => options
   .filter(o => !filter || o.label.toLowerCase().indexOf(filter.toLowerCase()) > -1);
 
-const formatOptions = options => options.map((o) => {
-  let option = o;
+const formatOptions = (options) => {
+  // we should never modify props due to object reference issues so we make a clone of the options
+  // prop that gets passed in
+  const clonedOptions = clone(options);
 
-  if (typeof o === 'string') {
-    option = { id: o, value: o, label: o };
-  } else if (typeof o.id === 'undefined') {
-    o.id = o.value;
-  }
+  return clonedOptions.map((o) => {
+    let option = o;
 
-  return option;
-});
+    if (typeof o === 'string') {
+      option = { id: o, value: o, label: o };
+    } else if (typeof o.id === 'undefined') {
+      o.id = o.value;
+    }
+
+    return option;
+  });
+};
 
 const selectOptions = (selected, options) => {
   // If a selected prop is set then override any selected key values on the options provided
