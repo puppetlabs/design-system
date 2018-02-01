@@ -162,9 +162,11 @@ class FormField extends React.Component {
               name={ this.props.name }
               size={ this.props.size }
               onSelect={ this.onChange }
+              selected={ this.props.value }
               { ...elementProps }
             />
           );
+
           break;
         case 'input':
           value = '';

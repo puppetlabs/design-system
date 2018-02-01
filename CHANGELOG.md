@@ -1,3 +1,7 @@
+# 1.2.5
+
+* Update the select component that allows us to pass a selected string or array
+
 # 1.2.2
 
 * Design tweeks to the accordion and menu headers
