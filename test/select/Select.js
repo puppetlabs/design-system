@@ -27,8 +27,8 @@ describe('<Select />', () => {
 
   context('options are objects', () => {
     const options = [
-      { value: 'Michael', label: 'Sig' },
-      { value: 'Geoff', label: 'Catnasty' },
+      { id: 'Michael', value: 'Michael', label: 'Sig' },
+      { id: 'Geoff', value: 'Geoff', label: 'Catnasty' },
     ];
 
     it('should render the label', () => {
@@ -42,8 +42,8 @@ describe('<Select />', () => {
 
     it('should disable the selected option if the select is not clearable', () => {
       const optionsWithSelected = [
-        { value: 'Coffee', selected: true },
-        { value: 'Tea' },
+        { id: 'Coffee', value: 'Coffee', selected: true },
+        { id: 'Tea', value: 'Tea' },
       ];
       const onSelect = sinon.spy();
       const wrapper = mount(
@@ -62,6 +62,49 @@ describe('<Select />', () => {
         optionsWithSelected[0], // first arg is the current item
         optionsWithSelected[0],  // second arg is the item that was selected...
       ]);
+    });
+
+    it('should select a single option when passed a selected prop that is a string', () => {
+      const options = [
+        { value: 'Michael', label: 'Sig' },
+        { value: 'Geoff', label: 'Catnasty' },
+      ];
+
+      const wrapper = mount(
+        <Select
+          options={ options }
+          { ...defaultProps }
+          selected="Michael"
+        />,
+      );
+
+      expect(wrapper.find('Input').prop('value')).to.equal('Sig');
+    });
+
+    it('should select multiple options when passed a selected prop that is an arrray', () => {
+      const options = [
+        { value: 'Michael', label: 'Sig' },
+        { value: 'Geoff', label: 'Catnasty' },
+        { value: 'Colby', label: 'Colbs' },
+      ];
+
+      const wrapper = mount(
+        <Select
+          multiple
+          options={ options }
+          { ...defaultProps }
+          selected={ ['Michael', 'Geoff'] }
+        />,
+      );
+
+      const values = [];
+
+      wrapper.find('SelectItem').forEach((Item) => {
+        values.push(Item.prop('value'));
+      });
+
+      expect(values.length).to.equal(2);
+      expect(values.join(', ')).to.equal('Sig, Catnasty');
     });
 
     it('should allow selected objects to be selected and deselected by clicking on them', () => {
