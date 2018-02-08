@@ -1,3 +1,7 @@
+# 1.2.6
+
+* Fix an issue causing Dropdown selected states to not be applied
+
 # 1.2.5
 
 * Update the select component that allows us to pass a selected string or array

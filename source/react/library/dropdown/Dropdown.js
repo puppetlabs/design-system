@@ -187,6 +187,8 @@ class Dropdown extends React.Component {
   renderDropdownMenu() {
     const options = this.getOptions();
     const button = this.renderToggle();
+    const selected = this.state.selected
+      .map(s => s.id);
 
     return (
       <DropdownMenu
@@ -202,7 +204,7 @@ class Dropdown extends React.Component {
         onApply={ this.onApply }
         options={ options }
         actions={ this.props.actions }
-        selected={ this.state.selected }
+        selected={ selected }
         required={ this.props.required }
         disablePortal={ this.props.disablePortal }
         onActionClick={ this.props.onActionClick }
