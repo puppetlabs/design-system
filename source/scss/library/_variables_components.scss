@@ -480,7 +480,6 @@ $reflect-remove-background                   : $reflect-bg-subtle !default;
 // ----------------------------------------------------------------------------
 $reflect-slidein-bg                          : $reflect-bg-primary !default;
 $reflect-slidein-border                      : $reflect-border !default;
-$reflect-slidein-radius                      : $reflect-border-radius !default;
 $reflect-slidein-color                       : $reflect-font-color-base !default;
 $reflect-slidein-padding                     : $reflect-small !default;
 $reflect-slidein-horizontal-width            : 330px !default;
@@ -559,12 +558,10 @@ $reflect-tag-icon-spacing                    : $reflect-tiny !default;
 $reflect-tag-icon-size                       : 16px !default;
 $reflect-tag-icon-fill                       : $reflect-gray-light !default;
 
-$reflect-tag-tiny-case                       : uppercase !default;
 $reflect-tag-tiny-font-size                  : $reflect-font-size-tiny !default;
 $reflect-tag-tiny-height                     : 22px !default; // Todo: Base on grid
-$reflect-tag-tiny-letterspacing              : 1px !default;
 $reflect-tag-tiny-line-height                : $reflect-tag-tiny-height !default;
-$reflect-tag-tiny-padding                    : 0 $reflect-mini !default;
+$reflect-tag-tiny-padding                    : 0 $reflect-small !default;
 
 // Toggle
 // ----------------------------------------------------------------------------

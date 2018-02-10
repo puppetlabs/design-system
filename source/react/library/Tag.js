@@ -1,12 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
-import Button from './Button';
+import Icon from './Icon';
 import { TooltipHoverArea } from './tooltips/Tooltip';
 
 const propTypes = {
   /** Selected state */
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
+  round: React.PropTypes.bool,
   size: React.PropTypes.oneOf(['small', 'tiny']),
   block: React.PropTypes.bool,
   tooltip: React.PropTypes.bool,
@@ -18,6 +19,7 @@ const propTypes = {
 
 const defaultProps = {
   selected: false,
+  round: false,
   className: '',
   size: 'small',
   block: false,
@@ -59,7 +61,6 @@ class Tag extends React.Component {
   }
 
   renderContent() {
-    const removeButton = this.renderRemoveButton();
     const actions = this.renderActions();
     const { children, tooltip } = this.props;
 
@@ -67,7 +68,6 @@ class Tag extends React.Component {
       <div className="rc-tag-content">
         { children }
         { actions }
-        { removeButton }
       </div>
     );
 
@@ -100,14 +100,17 @@ class Tag extends React.Component {
     let jsx;
 
     if (this.props.onRemove) {
+      const { size } = this.props;
+      let iconSize = '12px';
+
+      if (size === 'tiny') {
+        iconSize = '8px';
+      }
+
       jsx = (
-        <Button
-          className="rc-tag-remove-button"
-          icon="delete"
-          transparent
-          size="auto"
-          onClick={ this.onRemove }
-        />
+        <a role="button" tabIndex="0" className="rc-tag-remove-button" onClick={ this.onRemove }>
+          <Icon type="close" width={ iconSize } height={ iconSize } />
+        </a>
       );
     }
 
@@ -115,15 +118,19 @@ class Tag extends React.Component {
   }
 
   render() {
-    const { onRemove, onClick, selected, size, block } = this.props;
+    const { onRemove, onClick, selected, size, block, round } = this.props;
+
     const className = classnames('rc-tag', {
       'rc-tag-selected': selected,
       'rc-tag-selectable': onClick,
       'rc-tag-removable': onRemove,
       'rc-tag-block': block,
+      'rc-tag-round': round,
       [`rc-tag-${size}`]: size,
     }, this.props.className);
+
     const content = this.renderContent();
+    const removeButton = this.renderRemoveButton();
 
     const props = {
       className,
@@ -137,6 +144,7 @@ class Tag extends React.Component {
     return (
       <div { ...props }>
         { content }
+        { removeButton }
       </div>
     );
   }
