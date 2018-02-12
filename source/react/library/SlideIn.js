@@ -86,17 +86,22 @@ class SlideIn extends React.Component {
 
   renderHeader() {
     let onClose;
+    let jsx;
 
-    if (this.props.removeable && this.props.onRemove) {
-      onClose = this.props.onRemove;
+    if (this.props.title) {
+      if (this.props.removeable && this.props.onRemove) {
+        onClose = this.props.onRemove;
+      }
+
+      jsx = (
+        <MenuHeader
+          title={ this.props.title }
+          onClose={ onClose }
+        />
+      );
     }
 
-    return (
-      <MenuHeader
-        title={ this.props.title }
-        onClose={ onClose }
-      />
-    );
+    return jsx;
   }
 
   render() {
