@@ -1,3 +1,7 @@
+# 1.2.7
+
+* Small updates to tag and slidein designs
+
 # 1.2.6
 
 * Fix an issue causing Dropdown selected states to not be applied

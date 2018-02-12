@@ -1,12 +1,12 @@
 .rc-tag {
+  align-items: center;
   background: $reflect-tag-bg;
   border: $reflect-tag-border;
   border-radius: $reflect-tag-border-radius;
   color: $reflect-tag-color;
-  display: inline-block;
+  display: inline-flex;
   font-size: $reflect-tag-font-size;
   height: $reflect-tag-height;
-  line-height: $reflect-tag-line-height;
   margin: 0 $reflect-tag-margin;
   padding: 0 $reflect-tag-padding;
   position: relative;
@@ -21,30 +21,25 @@
   }
 
   &.rc-tag-block {
-    display: block;
+    display: flex;
     margin-right: 0;
-    width: auto;
+    width: 100%;
   }
 
   .rc-tag-content,
   .rc-tooltip-area {
+    flex-grow: 1;
     font-size: $reflect-tag-font-size;
-    height: 100%;
     overflow: hidden;
-    position: relative;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 100%;
   }
 }
 
 .rc-tag-remove-button {
-  height: $reflect-tag-icon-size;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: $reflect-tag-icon-size;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
 
   .rc-icon {
     fill: $reflect-tag-icon-fill;
@@ -54,7 +49,7 @@
 .rc-tag-removable {
   .rc-tag-content,
   .rc-tooltip-area {
-    padding-right: $reflect-tag-icon-size + $reflect-tag-icon-spacing;
+    padding-right: 8px;
   }
 }
 
@@ -65,16 +60,17 @@
 
 .rc-tag-tiny {
   height: $reflect-tag-tiny-height;
-  line-height: $reflect-tag-tiny-line-height;
   padding: $reflect-tag-tiny-padding;
 
   .rc-tag-content {
     font-size: $reflect-tag-tiny-font-size;
-    letter-spacing: $reflect-tag-tiny-letterspacing;
-    text-transform: $reflect-tag-tiny-case;
   }
 }
 
 .rc-tag-selectable {
   cursor: pointer;
+}
+
+.rc-tag-round {
+  border-radius: 1000px;
 }
