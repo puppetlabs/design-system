@@ -1,3 +1,7 @@
+# 1.2.8
+
+* Bug fix for how we handle selected items in dropdowns
+
 # 1.2.7
 
 * Small updates to tag and slidein designs
