@@ -19,6 +19,7 @@ const propTypes = {
   validator: React.PropTypes.func,
   errors: React.PropTypes.object,
   size: React.PropTypes.string,
+  submitting: React.PropTypes.bool,
   children: React.PropTypes.any,
 };
 
@@ -33,6 +34,7 @@ const defaultProps = {
   validator: null,
   onCancel: () => {},
   cancellable: false,
+  submitting: false,
   submittable: false,
   submitLabel: 'Submit',
 };
@@ -71,7 +73,7 @@ class Form extends React.Component {
 
     this.state = {
       values: defaultValues,
-      valid: false,
+      valid: true,
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -80,8 +82,14 @@ class Form extends React.Component {
   }
 
   onSubmit() {
+    const valid = Object.keys(validate(this.props.validator, this.state.values)).length === 0;
+
     if (this.props.onSubmit) {
-      this.props.onSubmit(this.state);
+      this.setState({ valid }, () => {
+        if (valid) {
+          this.props.onSubmit(this.state);
+        }
+      });
     }
   }
 
@@ -94,12 +102,14 @@ class Form extends React.Component {
   onChange(name) {
     return (value) => {
       const newState = Object.assign({}, this.state);
+
       newState.values[name] = value;
+
       newState.valid = Object.keys(validate(this.props.validator, newState.values)).length === 0;
 
       this.setState(newState, () => {
         if (this.props.onChange) {
-          this.props.onChange(name, this.state.values, this.state.valid);
+          this.props.onChange(name, this.state.values, newState.valid);
         }
       });
     };
@@ -171,6 +181,7 @@ class Form extends React.Component {
       jsx.push(
         <Button
           key="submit"
+          processing={ this.props.submitting }
           size={ this.props.size }
           disabled={ !this.state.valid }
           onClick={ this.onSubmit }
