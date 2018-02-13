@@ -1,3 +1,7 @@
+# 1.2.9
+
+* Improvements to form validation
+
 # 1.2.8
 
 * Bug fix for how we handle selected items in dropdowns
