@@ -73,7 +73,7 @@ class Form extends React.Component {
 
     this.state = {
       values: defaultValues,
-      valid: false,
+      valid: true,
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -82,8 +82,14 @@ class Form extends React.Component {
   }
 
   onSubmit() {
+    const valid = Object.keys(validate(this.props.validator, this.state.values)).length === 0;
+
     if (this.props.onSubmit) {
-      this.props.onSubmit(this.state);
+      this.setState({ valid }, () => {
+        if (valid) {
+          this.props.onSubmit(this.state);
+        }
+      });
     }
   }
 
@@ -98,11 +104,12 @@ class Form extends React.Component {
       const newState = Object.assign({}, this.state);
 
       newState.values[name] = value;
+
       newState.valid = Object.keys(validate(this.props.validator, newState.values)).length === 0;
 
       this.setState(newState, () => {
         if (this.props.onChange) {
-          this.props.onChange(name, this.state.values, this.state.valid);
+          this.props.onChange(name, this.state.values, newState.valid);
         }
       });
     };
