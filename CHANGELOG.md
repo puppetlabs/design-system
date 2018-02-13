@@ -1,3 +1,7 @@
+# 1.2.10
+
+* Bug fix in how we handle on change validation
+
 # 1.2.9
 
 * Improvements to form validation

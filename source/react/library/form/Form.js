@@ -105,7 +105,11 @@ class Form extends React.Component {
 
       newState.values[name] = value;
 
-      newState.valid = Object.keys(validate(this.props.validator, newState.values)).length === 0;
+      // we only want to validate on change if the form has been deemed invalid and the user
+      // is attempting to fix the mistakes
+      if (!this.state.valid) {
+        newState.valid = Object.keys(validate(this.props.validator, newState.values)).length === 0;
+      }
 
       this.setState(newState, () => {
         if (this.props.onChange) {
