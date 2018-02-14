@@ -1,3 +1,7 @@
+# 1.2.11
+
+* Add new Icon for reflect-app
+
 # 1.2.10
 
 * Bug fix in how we handle on change validation
