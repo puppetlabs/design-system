@@ -1,3 +1,7 @@
+# 1.2.12
+
+* Disable autocomplete for Select inputs
+
 # 1.2.11
 
 * Add new Icon for reflect-app
