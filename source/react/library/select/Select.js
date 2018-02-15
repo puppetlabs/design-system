@@ -568,7 +568,7 @@ class Select extends React.Component {
     const input = (
       <Input
         dropdown
-        autocomplete={ false }
+        autoComplete={ false }
         placeholder={ placeholder }
         name={ this.props.name }
         onKeyUp={ this.onKeyUp }
