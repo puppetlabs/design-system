@@ -35,6 +35,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  autocomplete: true,
   multiline: false,
   placeholder: '',
   className: '',
@@ -105,7 +106,6 @@ class Input extends React.Component {
     });
 
     const props = {
-      autocomplete: this.props.autocomplete,
       onKeyDown: this.props.onKeyDown,
       autoFocus: this.props.autoFocus,
       disabled: this.props.disabled,
@@ -121,6 +121,10 @@ class Input extends React.Component {
       className,
       style: this.props.style,
     };
+
+    if (!this.props.autocomplete) {
+      props.autocomplete = 'off';
+    }
 
     if (this.props.value !== undefined) {
       props.value = this.props.value;
