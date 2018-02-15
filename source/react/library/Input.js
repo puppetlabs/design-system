@@ -9,6 +9,7 @@ const propTypes = {
   placeholder: React.PropTypes.string,
   /** Class name applied to input element */
   className: React.PropTypes.string,
+  autoComplete: React.PropTypes.bool,
   autoFocus: React.PropTypes.bool,
   /** Disallow user input */
   disabled: React.PropTypes.bool,
@@ -34,6 +35,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  autoComplete: true,
   multiline: false,
   placeholder: '',
   className: '',
@@ -119,6 +121,10 @@ class Input extends React.Component {
       className,
       style: this.props.style,
     };
+
+    if (!this.props.autoComplete) {
+      props.autoComplete = 'off';
+    }
 
     if (this.props.value !== undefined) {
       props.value = this.props.value;
