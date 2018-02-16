@@ -3,6 +3,6 @@ const component = () => {
   element.innerHTML = 'Hello webpack';
 
   return element;
-}
+};
 
 document.body.appendChild(component());

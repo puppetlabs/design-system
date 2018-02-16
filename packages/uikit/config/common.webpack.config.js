@@ -7,12 +7,12 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(['dist'], { root: path.resolve(__dirname, '..') }),
     new HtmlWebpackPlugin({
-      title: 'Example App'
-    })
+      title: 'Example App',
+    }),
   ],
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '..', 'dist'),
-    publicPath: '/'
-  }
-}
+    publicPath: '/',
+  },
+};
