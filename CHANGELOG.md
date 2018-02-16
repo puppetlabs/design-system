@@ -1,3 +1,7 @@
+# 1.2.13
+
+* Default background color on accordions
+
 # 1.2.12
 
 * Disable autocomplete for Select inputs
