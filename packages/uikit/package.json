@@ -5,6 +5,7 @@
   "author": "Noah Muldavin <nmuldavin@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "webpack": "^3.11.0"
+    "webpack": "^4.0.0-beta.1",
+    "webpack-cli": "^2.0.6"
   }
 }
