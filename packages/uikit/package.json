@@ -4,8 +4,18 @@
   "main": "index.js",
   "author": "Noah Muldavin <nmuldavin@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node src/server/index.js",
+    "build": "webpack --config=config/production.webpack.config.js"
+  },
   "devDependencies": {
+    "clean-webpack-plugin": "^0.1.18",
+    "html-webpack-plugin": "Graham42/html-webpack-plugin#feat/webpack-4",
     "webpack": "^4.0.0-beta.1",
-    "webpack-cli": "^2.0.6"
+    "webpack-cli": "^2.0.6",
+    "webpack-dev-middleware": "^2.0.5"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
   }
 }
