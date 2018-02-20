@@ -19,9 +19,9 @@ module.exports = {
     }),
   ],
   output: {
-    filename: 'bundle.js',
+    filename: '[name].[hash].bundle.js',
     path: paths.dist(),
-    publicPath: '/',
+    publicPath: '',
   },
   module: {
     rules: [
@@ -29,21 +29,6 @@ module.exports = {
         test: /\.(js|jsx)$/,
         use: 'babel-loader',
         exclude: /node_modules/,
-      },
-      {
-        test: /\.css$/,
-        use: [
-          'style-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true,
-              importLoaders: 1,
-              localIdentName: '[local]--[hash:base64:5]',
-            },
-          },
-          'postcss-loader',
-        ],
       },
     ],
   },
