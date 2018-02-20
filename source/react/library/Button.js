@@ -147,7 +147,7 @@ class Button extends React.Component {
       icon = <Icon height={ iconSize } width={ iconSize } type={ iconType } />;
     }
 
-    if (this.props.dropdown) {
+    if (this.props.dropdown && !this.props.processing) {
       const iconSize = '10px';
 
       dropdown = (
