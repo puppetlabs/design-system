@@ -1,3 +1,7 @@
+# 1.2.14
+
+* Properly hide dropdown icon when button is processing
+
 # 1.2.13
 
 * Default background color on accordions
