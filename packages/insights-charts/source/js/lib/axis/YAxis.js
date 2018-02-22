@@ -18,27 +18,16 @@ class YAxis {
   }
 
   getAxisFormatter() {
-    const { y, options } = this;
+    const { options } = this;
     const optionFormatter = options.labels && options.labels.formatter;
     let formatter;
-    let forceToDecimal = false;
-
-    const yMin = y.domain()[0];
-    const yMax = y.domain()[1];
-    const valueRange = Math.abs(yMax - yMin);
-
-    if (valueRange < DEFAULT_Y_TICKS) {
-      forceToDecimal = true;
-    }
 
     if (optionFormatter && Object.keys(formatters).indexOf(optionFormatter) >= 0) {
       formatter = formatters[optionFormatter];
     } else if (typeof optionFormatter === 'function') {
       formatter = optionFormatter;
-    } else if (forceToDecimal) {
-      formatter = formatters.decimal;
     } else {
-      formatter = formatters.numeric;
+      formatter = formatters.default;
     }
 
     return formatter;

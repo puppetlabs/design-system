@@ -123,11 +123,11 @@ class LineCharts extends React.Component {
     };
 
     const timeData = {
-      categories: ['2018-01-01', '2018-01-02', '2018-01-03', '2018-01-04'],
+      categories: ['View Engagement', 'Project Performance', 'Project Engagement'],
       series: [
         {
           label: 'Profit',
-          data: [0.2, 0.5, 0.134, 0.45, ],
+          data: [1.31, 1.29, 1.04],
         },
       ],
     };
@@ -155,9 +155,6 @@ class LineCharts extends React.Component {
       axis: {
         x: {},
         y: {
-          // min: -8000,
-          // max: 8000,
-          title: 'Profit',
           orientation: 'left',
         },
       },

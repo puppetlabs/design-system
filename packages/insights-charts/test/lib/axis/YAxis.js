@@ -1,13 +1,12 @@
 import { expect } from 'chai';
+import { select } from 'd3-selection';
 import YScale from '../../../source/js/lib/scales/YScale';
 import YAxis from '../../../source/js/lib/axis/YAxis';
 import DataSet from '../../../source/js/lib/DataSet';
-import DataGenerator from '../../../styleguide/js/helpers';
 
 describe('YAxis', () => {
-  const generator = new DataGenerator();
-  const randomData = generator.generate();
-  const data = new DataSet(randomData);
+  const simpleData = { categories: [0, 1, 2, 3, 4, 5], series: [{ title: 'series 1', data: [0, 1, 2, 3, 4, 5] }] };
+  const data = new DataSet(simpleData);
   const seriesData = data.getSeries();
 
   const dimensions = {
@@ -51,6 +50,59 @@ describe('YAxis', () => {
     yAxis.render(global.chart);
 
     expect(global.chart.select('.reflect-charts-axis-y').attr('transform')).to.eql(`translate(${dimensions.width}, 0)`);
+  });
+
+  it('should render an axis with the integer formatting on integer datasets', () => {
+    const yAxis = new YAxis(y, dimensions, {});
+    yAxis.render(global.chart);
+
+    expect(global.chart.select('.reflect-charts-axis-y').selectAll('.tick').size()).to.eql(6);
+  });
+
+  it('should render an axis with decimal formatting on decimal datasets', () => {
+    const decimalData = { categories: [0, 1, 2, 3, 4, 5], series: [{ title: 'series 1', data: [0, 0.5, 0.1, 1.5, 2, 2.5] }] };
+    const decimalDataSet = new DataSet(decimalData);
+    const newData = decimalDataSet.getSeries();
+    const newYScale = new YScale(newData, {}, 'normal', dimensions);
+    const newY = newYScale.generate();
+
+    const yAxis = new YAxis(newY, dimensions, {});
+    yAxis.render(global.chart);
+
+    let correctTicks = 1;
+
+    global.chart.select('.reflect-charts-axis-y').selectAll('.tick').each((tick, i) => {
+      if (tick === decimalData.series[0].data[i]) {
+        correctTicks += 1;
+      }
+    });
+
+    expect(correctTicks).to.eql(decimalData.series[0].data.length);
+  });
+
+  it('should render an axis with summary formatting on large datasets', () => {
+    const decimalData = { categories: [0, 1, 2, 3, 4, 5], series: [{ title: 'series 1', data: [0, 1000000, 2000000, 3000000, 4000000, 5000000] }] };
+    const decimalDataSet = new DataSet(decimalData);
+    const newData = decimalDataSet.getSeries();
+    const newYScale = new YScale(newData, {}, 'normal', dimensions);
+    const newY = newYScale.generate();
+
+    const yAxis = new YAxis(newY, dimensions, {});
+    yAxis.render(global.chart);
+
+    let correctTicks = 0;
+
+    global.chart.select('.reflect-charts-axis-y').selectAll('.tick').each((tick, i, ticks) => {
+      const tickText = select(ticks[i]).text();
+
+      if (i === 0 && tickText === '0') {
+        correctTicks += 1;
+      } else if (tickText === `${i}M`) {
+        correctTicks += 1;
+      }
+    });
+
+    expect(correctTicks).to.eql(decimalData.series[0].data.length);
   });
 
   describe('when disabled', () => {

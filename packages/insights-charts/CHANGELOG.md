@@ -1,3 +1,7 @@
+# 0.10.3
+
+* Improving our default y axis label formatter to cover more use cases
+
 # 0.10.2 
 
 * Bug fix for Edge versions <= 14

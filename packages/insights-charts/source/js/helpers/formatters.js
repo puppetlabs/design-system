@@ -5,8 +5,21 @@ function stripInsignificantZeros(value) {
 }
 
 const formatters = {
-  decimal: (value) => {
-    const formatted = format('.2f')(value);
+  default: (value) => {
+    let formatted = format('.2f')(value);
+
+    if (formatted >= 1000 || formatted <= -1000) {
+      formatted = format('s')(formatted);
+
+      // D3 uses the correct metric prefix symbol show here:
+      // https://en.wikipedia.org/wiki/Metric_prefix#List_of_SI_prefixes
+      // However, i assert that end users don't understand these symbols
+      // in the default context. Instead i believe they would expect to see
+      // shorthand for billions.
+      if (formatted.match(/G$/)) {
+        formatted = formatted.replace('G', 'B');
+      }
+    }
 
     return stripInsignificantZeros(formatted);
   },
@@ -21,13 +34,6 @@ const formatters = {
 
     return stripInsignificantZeros(formatted);
   },
-  numeric: (value) => {
-    let formatted = format('d')(value);
-    formatted = format('s')(formatted);
-
-
-    return stripInsignificantZeros(formatted);
-  },
   numeric_percentage: (value) => {
     const formatted = format('.2f')(value);
     const stripped = stripInsignificantZeros(formatted);
@@ -39,11 +45,6 @@ const formatters = {
     const stripped = stripInsignificantZeros(formatted);
 
     return `${stripped}%`;
-  },
-  summary: (value) => {
-    const formatted = format('s')(value);
-
-    return stripInsignificantZeros(formatted);
   },
 };
 
