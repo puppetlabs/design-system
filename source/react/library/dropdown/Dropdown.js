@@ -57,8 +57,6 @@ const getSelected = function (props) {
 
 /**
  * `Dropdpown` displays a list of items.
- *
- * @example ../../../../docs/Dropdown.md
  */
 
 class Dropdown extends React.Component {

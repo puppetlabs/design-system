@@ -5,7 +5,7 @@ import { expect } from 'chai';
 import React from 'react';
 
 import { BareModal as Modal } from '../../source/react/library/modals/Modal';
-import Button from '../../source/react/library/Button';
+import Button from '../../source/react/library/buttons/Button';
 
 describe('<Modal />', () => {
   jsdom({ skipWindowCheck: true });

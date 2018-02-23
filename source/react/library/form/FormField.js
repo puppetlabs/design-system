@@ -4,10 +4,10 @@ import classnames from 'classnames';
 
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
-import Input from '../Input';
+import Input from '../input/Input';
 import Select from '../select/Select';
-import Switch from '../Switch';
-import Checkbox from '../Checkbox';
+import Switch from '../switch/Switch';
+import Checkbox from '../checkbox/Checkbox';
 
 const supportedTypes = [
   'input',

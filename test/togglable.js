@@ -4,7 +4,7 @@ import { expect } from 'chai';
 import React from 'react';
 
 import togglable from '../source/react/library/togglable';
-import Button from '../source/react/library/Button';
+import Button from '../source/react/library/buttons/Button';
 
 describe('Button wrapped with togglable', () => {
   jsdom({ skipWindowCheck: true });

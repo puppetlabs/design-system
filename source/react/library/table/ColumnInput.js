@@ -1,5 +1,5 @@
 import React from 'react';
-import Input from '../Input';
+import Input from '../input/Input';
 
 const propTypes = {
   data: React.PropTypes.oneOfType([

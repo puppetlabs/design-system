@@ -5,7 +5,7 @@ import 'core-js/fn/array/find-index';
 import Filter from './FilterItem';
 import Form from './FilterForm';
 
-import Button from '../Button';
+import Button from '../buttons/Button';
 import List from '../list/List';
 
 const propTypes = {

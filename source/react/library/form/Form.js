@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import Button from '../Button';
-import ButtonGroup from '../ButtonGroup';
+import Button from '../buttons/Button';
+import ButtonGroup from '../buttons/ButtonGroup';
 
 import FormField from './FormField';
 import FormFlyout from './FormFlyout';

@@ -33,8 +33,6 @@ const defaultProps = {
 /**
  * `AccordionItem`s are containers which are meant to be rendered within an
  * `Accordion`.
- *
- * @example ../../../../docs/AccordionItem.md
  */
 class AccordionItem extends React.Component {
   constructor(props) {
