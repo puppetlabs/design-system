@@ -19,7 +19,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name].[hash].bundle.js',
+    filename: '[name].[hash].js',
     path: paths.dist(),
     publicPath: '',
   },

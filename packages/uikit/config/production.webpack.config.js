@@ -6,7 +6,7 @@ const merge = require('webpack-merge');
 module.exports = merge(commonConfig, {
   plugins: [
     new UglifyJsPlugin(),
-    new ExtractTextPlugin('[name].[contentHash].bundle.css'),
+    new ExtractTextPlugin('[name].[contentHash].css'),
   ],
   module: {
     rules: [
@@ -21,6 +21,7 @@ module.exports = merge(commonConfig, {
                 modules: true,
                 importLoaders: 1,
                 localIdentName: '[hash:base64:5]',
+                minimize: true,
               },
             },
             'postcss-loader',
