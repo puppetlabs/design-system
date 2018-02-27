@@ -29,8 +29,8 @@ npm test
 1. Open the [styleguide](http://localhost:6060) at http://localhost:6060.
 
 The Reflect Components styleguide allows us to see and test components in an
-isolated context. It's built using [React Styleguidist](https://github.com/styleguidist/react-styleguidist)
-and the contents are sourced from the `docs/` directory in this repo.
+isolated context. It's built using [React Styleguidist](https://github.com/styleguidist/react-styleguidist).
+Examples for each component live next to their respective source.
 
 
 **To build the library as a module and watch for changes:**

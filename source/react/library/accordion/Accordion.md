@@ -34,6 +34,9 @@ for (var i = 0; i < numParagraphs; i++) {
 `Accordion` with `autoOpen`, rendering a `Table`:
 
 ```
+const ColumnSelect = require('../table/ColumnSelect.js').default;
+const ColumnInput = require('../table/ColumnInput.js').default;
+
 const exampleTableData = [{
   text: 'Happy striped table text',
   select: 'Happy Select',

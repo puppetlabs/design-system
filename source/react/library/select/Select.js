@@ -14,10 +14,10 @@ import {
 } from '../../constants';
 
 import Icon from '../icon/Icon';
-import Input from '../Input';
+import Input from '../input/Input';
 import Menu from '../menu';
-import Popover from '../Popover';
-import Button from '../Button';
+import Popover from '../popover/Popover';
+import Button from '../buttons/Button';
 
 import SelectItem from './SelectItem';
 

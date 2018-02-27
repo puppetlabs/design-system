@@ -32,8 +32,6 @@ function isSortable(value) {
 
 /**
  * `Table` is a component for rendering tabular data.
- *
- * @example ../../../../docs/Table.md
  */
 
 class Table extends React.Component {
