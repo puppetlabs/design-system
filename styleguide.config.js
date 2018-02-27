@@ -8,24 +8,6 @@ module.exports = {
     name: '#269CFF',
   },
   components: 'source/react/library/**/*.js',
-  sections: [
-    {
-      name: 'Dropdown',
-      components: 'source/react/library/dropdown/*.js',
-    },
-    {
-      name: 'Form',
-      components: 'source/react/library/form/*.js',
-    },
-    {
-      name: 'Menu',
-      components: 'source/react/library/menu/*.js',
-    },
-    {
-      name: 'All',
-      components: 'source/react/library/**/*.js',
-    },
-  ],
   ignore: [
     '**/table/Column.js',
     '**/table/ColumnInput.js',
