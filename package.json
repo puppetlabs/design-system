@@ -12,7 +12,6 @@
     "js-lint": "./node_modules/.bin/eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "./node_modules/.bin/stylelint 'source/scss/**/*.scss'",
     "start": "./node_modules/.bin/styleguidist server",
-    "styleguide:build": "./node_modules/.bin/styleguidist build"
   },
   "repository": {
     "type": "git",
