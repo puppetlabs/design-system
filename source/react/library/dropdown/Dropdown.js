@@ -42,21 +42,23 @@ const defaultProps = {
   disabled: false,
   tabIndex: 0,
   error: '',
+  selected: [],
   disablePortal: false,
-  selected: null,
   onChange: null,
 };
 
-const getSelected = function (props) {
+const getSelected = (props) => {
   let selected = props.selected;
 
-  selected = Array.isArray(selected) ? selected : [selected];
+  if (!Array.isArray(selected) && typeof selected !== 'undefined') {
+    selected = [selected];
+  }
 
   return selected;
 };
 
 /**
- * `Dropdpown` displays a list of items.
+ * `Dropdpown` displays a list of items which are selectable by the user.
  */
 
 class Dropdown extends React.Component {

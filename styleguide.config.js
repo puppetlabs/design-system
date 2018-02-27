@@ -2,12 +2,37 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  title: 'Reflect Components style guide',
+  title: 'Reflect Components',
   theme: {
     link: '#269CFF',
     name: '#269CFF',
   },
   components: 'source/react/library/**/*.js',
+  sections: [
+    {
+      name: 'Dropdown',
+      components: 'source/react/library/dropdown/*.js',
+    },
+    {
+      name: 'Form',
+      components: 'source/react/library/form/*.js',
+    },
+    {
+      name: 'Menu',
+      components: 'source/react/library/menu/*.js',
+    },
+    {
+      name: 'All',
+      components: 'source/react/library/**/*.js',
+    },
+  ],
+  ignore: [
+    '**/table/Column.js',
+    '**/table/ColumnInput.js',
+    '**/table/ColumnSelect.js',
+    '**/table/ColumnHeader.js',
+    '**/table/ColumnCheckbox.js',
+  ],
   require: [
     path.join(__dirname, 'source/scss/library/ui.scss'),
   ],

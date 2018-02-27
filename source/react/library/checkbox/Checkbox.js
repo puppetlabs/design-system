@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Icon from '../icon/Icon';
 
 const propTypes = {
+  /** Name of the input */
   name: React.PropTypes.string,
   checked: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
@@ -18,7 +19,7 @@ const defaultProps = {
 };
 
 /**
- * `Checkbox` allows users to check and uncheck items.
+ * `Checkbox` is a controlled component that allows users to check and uncheck items.
  */
 
 class Checkbox extends React.Component {

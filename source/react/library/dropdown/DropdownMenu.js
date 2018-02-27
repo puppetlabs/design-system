@@ -13,18 +13,23 @@ const propTypes = {
   onOpen: React.PropTypes.func,
   onClose: React.PropTypes.func,
   size: React.PropTypes.string,
+  /** Signify which options are currently selected */
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
     React.PropTypes.number,
   ]),
   blank: React.PropTypes.string,
+  /** A prompt for the user once the DropdownMenu has been opened */
   hint: React.PropTypes.string,
   options: React.PropTypes.array,
   actions: React.PropTypes.any,
+  /** Whether or not the user can select multiple menu options */
   multiple: React.PropTypes.bool,
   margin: React.PropTypes.number,
+  /** Allows the Dropdown to be rendered inline rather than within a Portal */
   disablePortal: React.PropTypes.bool,
+  /** Callback that is fired whenever one of the provided actions is clicked */
   onActionClick: React.PropTypes.func,
 };
 
@@ -43,6 +48,10 @@ const defaultProps = {
   onApply: null,
   onChange: null,
 };
+
+/**
+ * `DropdownMenu` renders a Dropdown containing a Menu and a list of options.
+ */
 
 class DropdownMenu extends React.Component {
 

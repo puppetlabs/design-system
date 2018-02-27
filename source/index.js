@@ -1,19 +1,25 @@
+// Menu
+import Menu from './react/library/menu/Menu';
+import MenuList from './react/library/menu/MenuList';
+import MenuHeader from './react/library/menu/MenuHeader';
+import MenuSection from './react/library/menu/MenuSection';
+
+// Buttons
 import Button from './react/library/buttons/Button';
 import SplitButton from './react/library/buttons/SplitButton';
 import ButtonGroup from './react/library/buttons/ButtonGroup';
+
+// Dropdown
+import Dropdown from './react/library/dropdown/Dropdown';
+import DropdownMenu from './react/library/dropdown/DropdownMenu';
+import DropdownLabel from './react/library/dropdown/DropdownLabel';
+
 import * as Card from './react/library/card';
 import StencilGrid from './react/library/stencils/StencilGrid';
 import Icon from './react/library/icon/Icon';
 import Tag from './react/library/tag/Tag';
 import Popover from './react/library/popover/Popover';
-import Dropdown from './react/library/dropdown/Dropdown';
-import DropdownLabel from './react/library/dropdown/DropdownLabel';
 import Input from './react/library/input/Input';
-import DropdownMenu from './react/library/dropdown/DropdownMenu';
-import Menu from './react/library/menu/Menu';
-import MenuHeader from './react/library/menu/MenuHeader';
-import MenuSection from './react/library/menu/MenuSection';
-import MenuList from './react/library/menu/MenuList';
 import Switch from './react/library/switch/Switch';
 import Loading from './react/library/loading/Loading';
 import List from './react/library/list/List';

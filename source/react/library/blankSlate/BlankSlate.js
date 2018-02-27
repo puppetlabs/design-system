@@ -14,7 +14,7 @@ const defaultProps = {
 };
 
 /**
- * `BlankSlate` is used to signify that no objects have been created yet.
+ * `BlankSlate` is used in list views to signify that no objects have been created yet.
  */
 
 const BlankSlate = props => (

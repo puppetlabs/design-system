@@ -17,10 +17,11 @@ const propTypes = {
   /** Callback for when the user opens the item */
   onOpen: React.PropTypes.func,
   children: React.PropTypes.any,
+  /** Icon to render next to the title */
   icon: React.PropTypes.string,
+  /** Tooltip to display on hover */
   tooltip: React.PropTypes.string,
 };
-
 
 const defaultProps = {
   icon: '',
