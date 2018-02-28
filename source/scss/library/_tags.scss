@@ -41,10 +41,8 @@
   color: $reflect-white;
   margin-bottom: 0;
 
-  .rc-tag-remove-button {
-    .rc-icon {
-      fill: $reflect-white;
-    }
+  .rc-tag-remove-button .rc-icon {
+    fill: $reflect-white;
   }
 }
 
