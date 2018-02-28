@@ -34,6 +34,10 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  .rc-icon {
+    fill: $reflect-tag-icon-fill;
+  }
 }
 
 .rc-tag-primary {
@@ -41,7 +45,7 @@
   color: $reflect-white;
   margin-bottom: 0;
 
-  .rc-tag-remove-button .rc-icon {
+  .rc-icon {
     fill: $reflect-white;
   }
 }
@@ -50,10 +54,6 @@
   align-items: center;
   cursor: pointer;
   display: flex;
-
-  .rc-icon {
-    fill: $reflect-tag-icon-fill;
-  }
 }
 
 .rc-tag-removable {
