@@ -545,6 +545,7 @@ class Select extends React.Component {
             key={ `select-item-${option.id}` }
             highlighted={ this.state.pendingBackDelete && index === selectedCount - 1 }
             value={ option.label }
+            size={ this.props.size }
           />
         ));
     }
