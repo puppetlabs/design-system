@@ -38,7 +38,7 @@ const propTypes = {
   onNewOption: React.PropTypes.func,
   newOptionLabel: React.PropTypes.string,
   popoverClassName: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['small', 'medium']),
+  size: React.PropTypes.oneOf(['tiny', 'small', 'medium']),
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,

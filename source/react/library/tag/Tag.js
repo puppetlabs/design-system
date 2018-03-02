@@ -108,7 +108,7 @@ class Tag extends React.Component {
       }
 
       jsx = (
-        <a role="button" tabIndex="0" className="rc-tag-remove-button" onClick={ this.onRemove }>
+        <a role="button" tabIndex="0" className="rc-tag-button rc-tag-remove-button" onClick={ this.onRemove }>
           <Icon type="close" width={ iconSize } height={ iconSize } />
         </a>
       );

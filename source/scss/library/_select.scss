@@ -98,18 +98,21 @@
     transform: translateX(-4px);
   }
 
-  .rc-tag:hover {
+  .rc-tag-tiny {
+    height: 20px;
+  }
+
+  .rc-tag-medium {
+    height: 28px;
+  }
+
+  .rc-tag-highlighted {
     background: $reflect-select-item-highlighted-bg;
-   }
+  }
 
-   .rc-tag:hover .rc-icon {
-     fill: $reflect-select-item-icon-color;
-     opacity: 1;
-   }
-
-   .rc-tag-highlighted {
-     background: $reflect-select-item-highlighted-bg;
-   }
+  .rc-tag-highlighted .rc-tag-button .rc-icon {
+    opacity: 1;
+  }
 }
 
 .rc-select-actions {

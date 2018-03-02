@@ -35,12 +35,12 @@
     white-space: nowrap;
   }
 
-  .rc-tag-remove-button .rc-icon {
+  .rc-tag-button .rc-icon {
     fill: $reflect-tag-icon-fill;
     opacity: 0.8;
   }
 
-  .rc-tag-remove-button:hover .rc-icon {
+  .rc-tag-button:hover .rc-icon {
     fill: $reflect-tag-icon-fill;
     opacity: 1;
   }
