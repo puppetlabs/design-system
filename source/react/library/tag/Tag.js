@@ -9,7 +9,7 @@ const propTypes = {
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
   round: React.PropTypes.bool,
-  size: React.PropTypes.oneOf(['small', 'tiny']),
+  size: React.PropTypes.oneOf(['small', 'medium']),
   block: React.PropTypes.bool,
   tooltip: React.PropTypes.bool,
   onRemove: React.PropTypes.func,
