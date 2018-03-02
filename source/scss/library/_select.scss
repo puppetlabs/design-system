@@ -93,6 +93,10 @@
   flex: 1 0 0%; // https://github.com/philipwalton/flexbugs#flexbug-4
   flex-wrap: wrap;
   min-width: 0;
+
+  .rc-tag {
+    transform: translateX(-4px);
+  }
 }
 
 .rc-select-actions {
