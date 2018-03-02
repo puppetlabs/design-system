@@ -97,6 +97,19 @@
   .rc-tag {
     transform: translateX(-4px);
   }
+
+  .rc-tag:hover {
+    background: $reflect-select-item-highlighted-bg;
+   }
+
+   .rc-tag:hover .rc-icon {
+     fill: $reflect-select-item-icon-color;
+     opacity: 1;
+   }
+
+   .rc-tag-highlighted {
+     background: $reflect-select-item-highlighted-bg;
+   }
 }
 
 .rc-select-actions {

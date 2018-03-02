@@ -1,8 +1,10 @@
 import React from 'react';
+import classnames from 'classnames';
 
 import Tag from '../tag/Tag';
 
 const propTypes = {
+  highlighted: React.PropTypes.bool,
   onRemove: React.PropTypes.func,
   value: React.PropTypes.string,
   size: React.PropTypes.oneOf(['small', 'medium']),
@@ -30,9 +32,13 @@ class SelectItem extends React.Component {
 
   render() {
     const size = this.props.size === 'small' ? 'tiny' : this.props.size;
+    const className = classnames({
+      'rc-tag-highlighted': this.props.highlighted,
+    });
 
     return (
       <Tag
+        className={ className }
         size={ size }
         round
         primary
