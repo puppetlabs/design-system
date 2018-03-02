@@ -49,7 +49,7 @@
 .rc-tag-primary {
   background: $reflect-brand-primary;
   color: $reflect-white;
-  margin-bottom: 0;
+  border-color: $reflect-bg-subtle;
 
   .rc-tag-remove-button .rc-icon {
     fill: $reflect-white;
