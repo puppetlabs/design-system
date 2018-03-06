@@ -21,7 +21,7 @@ const bindParentScroll = (element, onScroll) => {
 const isNodeInRoot = (node, root) => {
   let contains = false;
 
-  if (root !== node) {
+  if (root && root !== node) {
     contains = root.contains(node);
   }
 
