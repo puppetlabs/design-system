@@ -117,7 +117,7 @@ class Popover extends React.Component {
       this.state.open !== nextState.open ||
       (nextState.position.top !== position.top || nextState.position.left !== position.left)
     ) {
-      this.setPosition();
+      this.setPosition(nextState);
     }
   }
 
@@ -159,9 +159,14 @@ class Popover extends React.Component {
     }
   }
 
-  setPosition() {
+  setPosition(state = this.state) {
     const newState = { position: { } };
     const bodyWidth = document.body.clientWidth;
+
+    // If the popopver isn't open then early out as positioning doesn't matter
+    if (!state.open) {
+      return;
+    }
 
     if (Object.keys(this.props.position).length > 0) {
       newState.position = this.props.position;
