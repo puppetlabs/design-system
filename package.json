@@ -11,15 +11,14 @@
     "test": "./node_modules/.bin/nyc --require=./test/jsdom.js --reporter=html ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
     "js-lint": "./node_modules/.bin/eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "./node_modules/.bin/stylelint 'source/scss/**/*.scss'",
-    "start": "./node_modules/.bin/styleguidist server",
-    "styleguide:build": "./node_modules/.bin/styleguidist build"
+    "start": "./node_modules/.bin/styleguidist server"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/reflect/reflect-components.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/reflect/reflect-components/issues"
   },

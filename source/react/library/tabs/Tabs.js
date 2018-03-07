@@ -16,8 +16,6 @@ const defaultProps = {
 
 /**
  * Tabs conditionally render components together.
- *
- * @example ../../../../docs/Tabs.md
  */
 class Tabs extends React.Component {
   constructor(props) {

@@ -13,8 +13,6 @@ const defaultProps = {
 
 /**
  * `TabPanel` groups components together within `Tabs`.
- *
- * @example ../../../../docs/TabPanel.md
  */
 const TabPanel = (props) => {
   const className = classnames('rc-tab-panel', {

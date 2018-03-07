@@ -1,3 +1,9 @@
+# 1.2.15
+
+* Performance improvements for popovers
+* Bug fix for how we handle popovers
+* Select-item/Tag refactoring to unify app styles
+
 # 1.2.14
 
 * Properly hide dropdown icon when button is processing

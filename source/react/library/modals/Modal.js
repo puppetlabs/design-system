@@ -4,7 +4,7 @@ import debounce from 'debounce';
 import { mouseTrap } from 'react-mousetrap';
 import portal from '../portal';
 import Icon from '../icon/Icon';
-import ButtonGroup from '../ButtonGroup';
+import ButtonGroup from '../buttons/ButtonGroup';
 
 const propTypes = {
   unbindShortcut: React.PropTypes.func,
@@ -56,8 +56,6 @@ function setBodyOverflow(value) {
 /**
  * `Modal` renders content above the page. They can contain sidebars, either on the left or the
  * right, and come in various sizes. Actions can be rendered within the modal.
- *
- * @example ../../../../docs/Modal.md
  */
 
 class Modal extends React.Component {

@@ -82,8 +82,6 @@ const getType = (type) => {
 
 /**
  * `StencilGrid` is used to display a stencil of one of a Reflect view.
- *
- * @example ../../../../docs/StencilGrid.md
  */
 
 class StencilGrid extends React.Component {

@@ -11,19 +11,19 @@ module.exports = {
     libraryTarget: 'commonjs2',
   },
   externals: {
-    "react": {
-      "commonjs": "react",
-      "commonjs2": "react",
-      "amd": "react",
+    react: {
+      commonjs: 'react',
+      commonjs2: 'react',
+      amd: 'react',
       // React dep should be available as window.React, not window.react
-      "root": "React"
+      root: 'React',
     },
-    "react-dom": {
-      "commonjs": "react-dom",
-      "commonjs2": "react-dom",
-      "amd": "react-dom",
-      "root": "ReactDOM"
-    }
+    'react-dom': {
+      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
+      amd: 'react-dom',
+      root: 'ReactDOM',
+    },
   },
   module: {
     loaders: [{
@@ -39,6 +39,6 @@ module.exports = {
     }],
   },
   plugins: [
-    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+    new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
   ],
 };

@@ -4,10 +4,10 @@ import classnames from 'classnames';
 
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
-import Input from '../Input';
+import Input from '../input/Input';
 import Select from '../select/Select';
-import Switch from '../Switch';
-import Checkbox from '../Checkbox';
+import Switch from '../switch/Switch';
+import Checkbox from '../checkbox/Checkbox';
 
 const supportedTypes = [
   'input',
@@ -19,10 +19,12 @@ const supportedTypes = [
 ];
 
 const propTypes = {
+  /** The type of input to render */
   type: React.PropTypes.oneOfType([
     React.PropTypes.oneOf(supportedTypes),
     React.PropTypes.element,
   ]).isRequired,
+  /** A unique identifier for this field */
   name: React.PropTypes.string.isRequired,
   value: React.PropTypes.oneOfType([
     React.PropTypes.number,
@@ -32,11 +34,16 @@ const propTypes = {
   inline: React.PropTypes.bool,
   size: React.PropTypes.string,
   error: React.PropTypes.string,
+  /** A human-friendly identifier for this field */
   label: React.PropTypes.string,
+  /** This will be used by the parent `Form` to track updates. */
   onChange: React.PropTypes.func,
+  /** A tooltip to display when the field is hovered */
   tooltip: React.PropTypes.string,
   className: React.PropTypes.string,
+  /** Expanded explainer for the field */
   description: React.PropTypes.string,
+  /** Additional props to pass to the underlying form element */
   elementProps: React.PropTypes.object,
 };
 
@@ -54,6 +61,10 @@ const defaultProps = {
 
 const isReactComponent = c =>
   (c.prototype === 'object' && c.prototype.isReactComponent) || typeof c === 'function';
+
+/**
+ * `FormField`s are meant to be rendered as children either within a `Form` or a `FormSection`.
+ */
 
 class FormField extends React.Component {
   constructor(props) {

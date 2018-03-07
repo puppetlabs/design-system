@@ -20,6 +20,7 @@ const propTypes = {
   children: React.PropTypes.any,
   /** Class name to apply to the `Accordion` container wrapper div */
   className: React.PropTypes.string,
+  /** Icon to render next to the title in the header */
   icon: React.PropTypes.string,
 };
 
@@ -33,8 +34,8 @@ const defaultProps = {
 };
 
 /**
- * `Accordion` renders multiple `AccordionItem`s, keeping track of which one is
- * open.
+ * `Accordion` is designed to be a container for forms and menus. It renders multiple
+ * `AccordionItem`s, keeping track of which one is open in state.
  */
 class Accordion extends React.Component {
   constructor(props) {

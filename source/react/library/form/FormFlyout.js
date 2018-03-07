@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Popover from '../Popover';
+import Popover from '../popover/Popover';
 import Icon from '../icon/Icon';
 
 const propTypes = {

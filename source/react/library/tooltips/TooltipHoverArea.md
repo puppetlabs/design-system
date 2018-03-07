@@ -1,5 +1,5 @@
 ```
-const Button = require('../Button.js').default;
+const Button = require('../buttons/Button.js').default;
 
 <TooltipHoverArea tooltip="I'm a happy tooltip!" anchor="bottom" >
   <Button label="I'm a happy button!" />
@@ -9,7 +9,7 @@ const Button = require('../Button.js').default;
 A `TooltipHoverArea` in a scrolling container:
 
 ```
-const Button = require('../Button.js').default;
+const Button = require('../buttons/Button.js').default;
 
 const parentStyle = {
   maxHeight: '200px',

@@ -1,7 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
 
-
 import { bindParentScroll, unbindParentScroll } from '../../helpers/statics';
 import portal from '../portal';
 import TooltipHoverArea from './TooltipHoverArea';

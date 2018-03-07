@@ -3,7 +3,9 @@ import classnames from 'classnames';
 import Icon from '../icon/Icon';
 
 const propTypes = {
+  /** Text to render in place of a current label */
   placeholder: React.PropTypes.string,
+  /** Human readable identifier for the current selected option */
   label: React.PropTypes.string,
   select: React.PropTypes.bool,
   disabled: React.PropTypes.bool,
@@ -21,6 +23,11 @@ const defaultProps = {
   tabIndex: 0,
   onClick: () => {},
 };
+
+/**
+ * `DropdownLabel` allows users to open `Dropdown`s, and displays either a prompt or the currently
+ * selected `Dropdown` item.
+ */
 
 const DropdownLabel = (props) => {
   let label = props.label;

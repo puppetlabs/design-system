@@ -1,6 +1,6 @@
 import React from 'react';
 import Modal from './Modal';
-import Button from '../Button';
+import Button from '../buttons/Button';
 
 const propTypes = {
   onCancel: React.PropTypes.func,
@@ -21,8 +21,6 @@ const defaultProps = {
 
 /**
  * `ConfirmationModal` renders a confirmation for the user to confirm or cancel an action.
- *
- * @example ../../../../docs/ConfirmationModal.md
  */
 
 class ConfirmationModal extends React.Component {

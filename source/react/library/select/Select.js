@@ -14,10 +14,10 @@ import {
 } from '../../constants';
 
 import Icon from '../icon/Icon';
-import Input from '../Input';
+import Input from '../input/Input';
 import Menu from '../menu';
-import Popover from '../Popover';
-import Button from '../Button';
+import Popover from '../popover/Popover';
+import Button from '../buttons/Button';
 
 import SelectItem from './SelectItem';
 
@@ -38,7 +38,7 @@ const propTypes = {
   onNewOption: React.PropTypes.func,
   newOptionLabel: React.PropTypes.string,
   popoverClassName: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['small', 'medium']),
+  size: React.PropTypes.oneOf(['tiny', 'small', 'medium']),
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
@@ -545,6 +545,7 @@ class Select extends React.Component {
             key={ `select-item-${option.id}` }
             highlighted={ this.state.pendingBackDelete && index === selectedCount - 1 }
             value={ option.label }
+            size={ this.props.size }
           />
         ));
     }

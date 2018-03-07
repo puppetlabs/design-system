@@ -5,8 +5,8 @@ import React from 'react';
 import moment from 'moment';
 import classnames from 'classnames';
 import DatePickerWrapper from './DatePickerWrapper';
-import Button from '../Button';
-import Popover from '../Popover';
+import Button from '../buttons/Button';
+import Popover from '../popover/Popover';
 
 const propTypes = {
   onChange: React.PropTypes.func.isRequired,
@@ -52,8 +52,6 @@ const parseDate = (date, timezone) => {
 
 /**
  * `Datepicker` allows a user to select a single date range
- *
- * @example ../../../../docs/DatePicker.md
  */
 
 class DatePicker extends React.Component {

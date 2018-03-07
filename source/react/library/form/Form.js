@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
-import Button from '../Button';
-import ButtonGroup from '../ButtonGroup';
+import Button from '../buttons/Button';
+import ButtonGroup from '../buttons/ButtonGroup';
 
 import FormField from './FormField';
 import FormFlyout from './FormFlyout';
@@ -15,8 +15,10 @@ const propTypes = {
   onSubmit: React.PropTypes.func,
   cancellable: React.PropTypes.bool,
   submittable: React.PropTypes.bool,
+  //* Text to display as the Submit button */
   submitLabel: React.PropTypes.string,
   validator: React.PropTypes.func,
+  //* Errors to render the form with. Keys are field names, and values are the form errors */
   errors: React.PropTypes.object,
   size: React.PropTypes.string,
   submitting: React.PropTypes.bool,
