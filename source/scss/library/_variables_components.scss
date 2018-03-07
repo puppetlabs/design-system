@@ -544,14 +544,14 @@ $reflect-table-border-radius                 : $reflect-border-radius !default;
 // ----------------------------------------------------------------------------
 $reflect-tag-bg                              : $reflect-bg-subtle !default;
 $reflect-tag-border-radius                   : $reflect-border-radius !default;
-$reflect-tag-border                          : 1px solid $reflect-tag-bg !default;
+$reflect-tag-border                          : 1px solid $reflect-white !default;
 $reflect-tag-border-selected                 : $reflect-border-active !default;
 $reflect-tag-color                           : $reflect-font-color-medium !default;
 $reflect-tag-font-size                       : $reflect-button-font-size !default;
 $reflect-tag-font-weight                     : $reflect-button-font-weight !default;
 $reflect-tag-height                          : 33px !default; // Todo: Base on grid
 $reflect-tag-line-height                     : $reflect-tag-height !default;
-$reflect-tag-margin                          : $reflect-tiny $reflect-tiny 0 !default;
+$reflect-tag-margin                          : $reflect-mini !default;
 $reflect-tag-padding                         : $reflect-small !default;
 $reflect-tag-shadow-selected                 : $reflect-selected-shadow !default;
 

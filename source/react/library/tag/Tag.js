@@ -5,10 +5,11 @@ import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
   /** Selected state */
+  primary: React.PropTypes.bool,
   selected: React.PropTypes.bool,
   className: React.PropTypes.string,
   round: React.PropTypes.bool,
-  size: React.PropTypes.oneOf(['small', 'tiny']),
+  size: React.PropTypes.oneOf(['small', 'medium']),
   block: React.PropTypes.bool,
   tooltip: React.PropTypes.bool,
   onRemove: React.PropTypes.func,
@@ -18,6 +19,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  primary: false,
   selected: false,
   round: false,
   className: '',
@@ -106,7 +108,7 @@ class Tag extends React.Component {
       }
 
       jsx = (
-        <a role="button" tabIndex="0" className="rc-tag-remove-button" onClick={ this.onRemove }>
+        <a role="button" tabIndex="0" className="rc-tag-button rc-tag-remove-button" onClick={ this.onRemove }>
           <Icon type="close" width={ iconSize } height={ iconSize } />
         </a>
       );
@@ -116,9 +118,10 @@ class Tag extends React.Component {
   }
 
   render() {
-    const { onRemove, onClick, selected, size, block, round } = this.props;
+    const { onRemove, onClick, primary, selected, size, block, round } = this.props;
 
     const className = classnames('rc-tag', {
+      'rc-tag-primary': primary,
       'rc-tag-selected': selected,
       'rc-tag-selectable': onClick,
       'rc-tag-removable': onRemove,

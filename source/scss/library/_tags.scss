@@ -34,16 +34,36 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  .rc-tag-button .rc-icon {
+    fill: $reflect-tag-icon-fill;
+    opacity: 0.8;
+  }
+
+  .rc-tag-button:hover .rc-icon {
+    fill: $reflect-tag-icon-fill;
+    opacity: 1;
+  }
+}
+
+.rc-tag-primary {
+  background: $reflect-brand-primary;
+  border-color: $reflect-bg-subtle;
+  color: $reflect-white;
+
+  .rc-tag-remove-button .rc-icon {
+    fill: $reflect-white;
+  }
+
+  .rc-tag-remove-button:hover .rc-icon {
+    fill: $reflect-white;
+  }
 }
 
 .rc-tag-remove-button {
   align-items: center;
   cursor: pointer;
   display: flex;
-
-  .rc-icon {
-    fill: $reflect-tag-icon-fill;
-  }
 }
 
 .rc-tag-removable {

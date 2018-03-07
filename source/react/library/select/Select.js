@@ -38,7 +38,7 @@ const propTypes = {
   onNewOption: React.PropTypes.func,
   newOptionLabel: React.PropTypes.string,
   popoverClassName: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['small', 'medium']),
+  size: React.PropTypes.oneOf(['tiny', 'small', 'medium']),
   selected: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.array,
@@ -545,6 +545,7 @@ class Select extends React.Component {
             key={ `select-item-${option.id}` }
             highlighted={ this.state.pendingBackDelete && index === selectedCount - 1 }
             value={ option.label }
+            size={ this.props.size }
           />
         ));
     }

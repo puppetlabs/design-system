@@ -77,7 +77,7 @@ const options = [
   options={ options }
   placeholder="Select one..."
   selected={ [
-    'Option 1', 
+    'Option 1',
     'Option 2',
   ] }
 />

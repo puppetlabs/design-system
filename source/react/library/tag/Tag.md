@@ -17,29 +17,35 @@
     onRemove={ () => { console.log('Tag removed!') } }
     removable>Loki</Tag>
   <Tag
+    round
     onClick={ () => { console.log('Tag clicked!'); } }
     onRemove={ () => { console.log('Tag removed!') } }
-    removable>Odin</Tag>
+    removable>We're</Tag>
   <Tag
+    round
     onClick={ () => { console.log('Tag clicked!'); } }
     onRemove={ () => { console.log('Tag removed!') } }
-    removable>Yggdrasil</Tag>
+    removable>rounded</Tag>
   <Tag
+    round
     onClick={ () => { console.log('Tag clicked!'); } }
     onRemove={ () => { console.log('Tag removed!') } }
-    removable>Valhalla</Tag>
+    removable>tags</Tag>
   <Tag
+    primary
     onClick={ () => { console.log('Tag clicked!'); } }
     onRemove={ () => { console.log('Tag removed!') } }
-    removable>Valkyry</Tag>
+    removable>We're</Tag>
   <Tag
+    primary
     onClick={ () => { console.log('Tag clicked!'); } }
     onRemove={ () => { console.log('Tag removed!') } }
-    removable>Frigg</Tag>
+    removable>primary</Tag>
   <Tag
+    primary
     onClick={ () => { console.log('Tag clicked!'); } }
     onRemove={ () => { console.log('Tag removed!') } }
-    removable>Freyja</Tag>
+    removable>tags</Tag>
 </div>
 ```
 
