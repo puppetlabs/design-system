@@ -56,7 +56,7 @@ class DataSet {
           case 'number':
             if (helpers.isFloat(category.label)) {
               category.label = parseFloat(category.label);
-            } else {
+            } else if (helpers.isInt(category.label)) {
               category.label = parseInt(category.label, 10);
             }
 

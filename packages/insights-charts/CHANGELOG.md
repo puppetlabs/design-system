@@ -1,3 +1,7 @@
+# 0.10.4
+
+* If an x axis label is a string amongst ints/float leave it a string
+
 # 0.10.3
 
 * Improving our default y axis label formatter to cover more use cases

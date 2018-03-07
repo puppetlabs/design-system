@@ -62,13 +62,24 @@ class ColumnCharts extends React.Component {
       'Green Bay Packers',
     ];
 
+    const buckets = [
+      '3', 
+      '4', 
+      '5',
+      '6',
+      '7',
+      '8',
+      '9',
+      '10+',
+    ];
+
 
     const singleSeriesData = {
-      categories: teams,
+      categories: buckets,
       series: [
         {
           label: 'Profit',
-          data: getRandomData(13),
+          data: getRandomData(8),
         },
       ],
     };
