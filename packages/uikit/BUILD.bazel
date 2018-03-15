@@ -1,0 +1,14 @@
+package(default_visibility = ["//visibility:public"])
+
+filegroup(name="node_modules", srcs=glob(["node_modules/**/*"]))
+filegroup(name="server_sources", srcs=glob(["src/server/**/*"]))
+filegroup(name="client_sources", srcs=glob(["src/client/**/*"]))
+
+load("@build_bazel_rules_nodejs//:defs.bzl", "nodejs_binary")
+
+nodejs_binary(
+    name = "server",
+    data = [":server_sources", ":node_modules"],
+    entry_point = "react_boilerplate/src/server/index.js",
+    node_modules="@//:node_modules"
+)
