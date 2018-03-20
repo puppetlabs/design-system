@@ -8,14 +8,14 @@
   }
 
   .rc-blank-slate-lead {
-    font-size: $reflect-blank-slate-lead-font-size;
     color: $reflect-blank-slate-lead-color;
+    font-size: $reflect-blank-slate-lead-font-size;
     margin-bottom: $reflect-blank-slate-margin-base;
   }
 
   .rc-blank-slate-content {
-    font-size: $reflect-blank-slate-content-font-size;
     color: $reflect-blank-slate-content-color;
+    font-size: $reflect-blank-slate-content-font-size;
   }
 
   .rc-blank-slate-body {
@@ -23,17 +23,17 @@
   }
 
   .rc-blank-slate-note a {
-    text-decoration: underline;
-    font-size: $reflect-blank-slate-note-font-size;
     color: $reflect-blank-slate-note-color;
+    font-size: $reflect-blank-slate-note-font-size;
+    text-decoration: underline;
   }
 
   .rc-blank-slate-note a:visited,
   .rc-blank-slate-note a:hover,
   .rc-blank-slate-note a:active {
-    text-decoration: underline;
-    font-size: $reflect-blank-slate-note-font-size;
     color: $reflect-blank-slate-note-color;
+    font-size: $reflect-blank-slate-note-font-size;
+    text-decoration: underline;
   }
 
   .bold {
@@ -41,7 +41,7 @@
   }
 
   .accent {
-    color: #815EFF;
+    color: #815eff;
   }
 }
 
@@ -64,8 +64,8 @@
 
 .rc-blank-slate-image img {
   height: 200px;
-  width: auto;
   margin-bottom: 30px;
+  width: auto;
 }
 
 .rc-blank-slate-message {
