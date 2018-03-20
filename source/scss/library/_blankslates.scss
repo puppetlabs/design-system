@@ -1,6 +1,36 @@
 .rc-blank-slate {
   margin-top: 40px;
   text-align: center;
+
+  .rc-blank-slate-title {
+    font-size: $reflect-blank-slate-title-font-size;
+    margin-bottom: $reflect-blank-slate-margin-base;
+  }
+
+  .rc-blank-slate-lead {
+    font-size: $reflect-blank-slate-lead-font-size;
+    color: $reflect-blank-slate-lead-color;
+    margin-bottom: $reflect-blank-slate-margin-base;
+  }
+
+  .rc-blank-slate-content {
+    font-size: $reflect-blank-slate-content-font-size;
+    color: $reflect-blank-slate-content-color;
+    margin-bottom: $reflect-blank-slate-margin-medium;
+  }
+
+  .bold {
+    font-weight: $reflect-font-weight-heavy;
+  }
+
+  .accent {
+    color: #815EFF;
+  }
+
+  small a {
+    text-decoration: underline;
+    color: $reflect-blank-slate-small-color;
+  }
 }
 
 .rc-blank-slate-icon {
@@ -18,6 +48,12 @@
   .rc-icon {
     fill: $reflect-blank-slate-icon-color;
   }
+}
+
+.rc-blank-slate-image img {
+  height: 200px;
+  width: auto;
+  margin-bottom: 30px;
 }
 
 .rc-blank-slate-message {
