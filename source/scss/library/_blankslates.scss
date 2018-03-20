@@ -16,7 +16,24 @@
   .rc-blank-slate-content {
     font-size: $reflect-blank-slate-content-font-size;
     color: $reflect-blank-slate-content-color;
+  }
+
+  .rc-blank-slate-body {
     margin-bottom: $reflect-blank-slate-margin-medium;
+  }
+
+  .rc-blank-slate-note a {
+    text-decoration: underline;
+    font-size: $reflect-blank-slate-note-font-size;
+    color: $reflect-blank-slate-note-color;
+  }
+
+  .rc-blank-slate-note a:visited,
+  .rc-blank-slate-note a:hover,
+  .rc-blank-slate-note a:active {
+    text-decoration: underline;
+    font-size: $reflect-blank-slate-note-font-size;
+    color: $reflect-blank-slate-note-color;
   }
 
   .bold {
@@ -25,18 +42,6 @@
 
   .accent {
     color: #815EFF;
-  }
-
-  small a {
-    text-decoration: underline;
-    color: $reflect-blank-slate-small-color;
-  }
-
-  small a:visited,
-  small a:hover,
-  small a:active {
-    text-decoration: underline;
-    color: $reflect-blank-slate-small-color;
   }
 }
 
