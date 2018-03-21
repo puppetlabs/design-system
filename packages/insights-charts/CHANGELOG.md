@@ -1,3 +1,7 @@
+# 0.10.5
+
+* Fix for bug that caused tooltips to not display after clicking on a chart
+
 # 0.10.4
 
 * If an x axis label is a string amongst ints/float leave it a string

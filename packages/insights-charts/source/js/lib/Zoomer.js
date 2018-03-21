@@ -233,9 +233,9 @@ class Zoomer {
             if ((lastCategory - firstCategory) + 1 !== categories.length) {
               dispatchers.call('zoom', this, zoomObj);
             }
-
-            dispatchers.call('zoomEnd', this);
           }
+
+          dispatchers.call('zoomEnd', this);
         });
 
       let zoomerBg = this.selection.select(CSS.getClassSelector('zoomer-bg'));
