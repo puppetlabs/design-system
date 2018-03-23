@@ -22,9 +22,11 @@
     margin-bottom: $reflect-blank-slate-margin-medium;
   }
 
+  .rc-blank-slate-note {
+    font-size: $reflect-blank-slate-note-font-size;
+  }
   .rc-blank-slate-note a {
     color: $reflect-blank-slate-note-color;
-    font-size: $reflect-blank-slate-note-font-size;
     text-decoration: underline;
   }
 
@@ -32,7 +34,6 @@
   .rc-blank-slate-note a:hover,
   .rc-blank-slate-note a:active {
     color: $reflect-blank-slate-note-color;
-    font-size: $reflect-blank-slate-note-font-size;
     text-decoration: underline;
   }
 

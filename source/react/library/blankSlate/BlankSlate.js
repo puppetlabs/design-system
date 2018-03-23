@@ -1,5 +1,6 @@
 import React from 'react';
 import Icon from '../icon/Icon';
+import Button from '../buttons/Button';
 
 const propTypes = {
   /** Visual aide for the user */
@@ -8,13 +9,23 @@ const propTypes = {
   alt: React.PropTypes.string,
   /** Textual aide for the user */
   message: React.PropTypes.any,
+  title: React.PropTypes.any,
+  lead: React.PropTypes.any,
+  content: React.PropTypes.any,
+  note: React.PropTypes.any,
+  onClick: React.PropTypes.func,
 };
 
 const defaultProps = {
   icon: null,
-  image: null,
-  alt: null,
-  message: '',
+  image: '',
+  alt: '',
+  message: null,
+  title: '',
+  lead: '',
+  content: '',
+  note: '',
+  onClick: null,
 };
 
 /**
@@ -22,28 +33,71 @@ const defaultProps = {
  */
 
 const BlankSlate = (props) => {
-  let icon;
+  let visual;
+  let body;
+  let button;
 
+  if (props.onClick) {
+    const onClick = () => {
+      props.onClick();
+    };
+
+    button = (
+      <Button
+        label="Enable stats"
+        onClick={ onClick }
+      />
+    );
+  }
+
+  // Icon prop is dated
   if (props.icon) {
-    icon = (
+    visual = (
       <div className="rc-blank-slate-icon">
         <Icon height="50px" width="40px" type={ props.icon } />
       </div>
     );
   } else if (props.image) {
-    icon = (
+    visual = (
       <div className="rc-blank-slate-image">
         <img src={ props.image } alt={ props.alt } />
       </div>
     );
   }
 
-  return (
-    <div className="rc-blank-slate">
-      { icon }
+  // Message prop is dated
+  if (props.message) {
+    body = (
       <div className="rc-blank-slate-message">
         { props.message }
       </div>
+    );
+  } else {
+    body = (
+      <div className="rc-blank-slate-message">
+        <div className="rc-blank-slate-body">
+          <h1 className="rc-blank-slate-title">
+            { props.title }
+          </h1>
+          <p className="rc-blank-slate-lead">
+            { props.lead }
+          </p>
+          <p className="rc-blank-slate-content">
+            { props.content }
+          </p>
+        </div>
+        <p className="rc-blank-slate-note">
+          { props.note }
+        </p>
+      </div>
+    );
+  }
+
+  return (
+    <div className="rc-blank-slate">
+      { visual }
+      { body }
+      { button }
     </div>
   );
 };
