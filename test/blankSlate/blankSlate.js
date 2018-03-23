@@ -29,6 +29,12 @@ describe('<BlankSlate />', () => {
     expect(wrapper.length).to.eql(1);
   });
 
+  it('should not render a button if no onClick provided', () => {
+    const wrapper = mount(<BlankSlate { ...defaultProps } />);
+
+    expect(wrapper.find('.rc-button').length).to.equal(0);
+  });
+
   it('should render a button and respond to click events for button if onClick provided', () => {
     const onClick = sinon.spy();
     const wrapper = mount(<BlankSlate { ...defaultProps } onClick={ onClick } />);
