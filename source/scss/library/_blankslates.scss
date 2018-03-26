@@ -1,6 +1,50 @@
 .rc-blank-slate {
   margin-top: 40px;
   text-align: center;
+
+  .rc-blank-slate-title {
+    font-size: $reflect-blank-slate-title-font-size;
+    margin-bottom: $reflect-blank-slate-margin-base;
+  }
+
+  .rc-blank-slate-lead {
+    color: $reflect-blank-slate-lead-color;
+    font-size: $reflect-blank-slate-lead-font-size;
+    margin-bottom: $reflect-blank-slate-margin-base;
+  }
+
+  .rc-blank-slate-content {
+    color: $reflect-blank-slate-content-color;
+    font-size: $reflect-blank-slate-content-font-size;
+  }
+
+  .rc-blank-slate-body {
+    margin-bottom: $reflect-blank-slate-margin-medium;
+  }
+
+  .rc-blank-slate-note {
+    font-size: $reflect-blank-slate-note-font-size;
+  }
+
+  .rc-blank-slate-note a {
+    color: $reflect-blank-slate-note-color;
+    text-decoration: underline;
+  }
+
+  .rc-blank-slate-note a:visited,
+  .rc-blank-slate-note a:hover,
+  .rc-blank-slate-note a:active {
+    color: $reflect-blank-slate-note-color;
+    text-decoration: underline;
+  }
+
+  .bold {
+    font-weight: $reflect-font-weight-heavy;
+  }
+
+  .accent {
+    color: #815eff;
+  }
 }
 
 .rc-blank-slate-icon {
@@ -18,6 +62,12 @@
   .rc-icon {
     fill: $reflect-blank-slate-icon-color;
   }
+}
+
+.rc-blank-slate-image img {
+  height: $reflect-blank-slate-image-size;
+  margin-bottom: 30px;
+  width: auto;
 }
 
 .rc-blank-slate-message {

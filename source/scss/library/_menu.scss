@@ -220,6 +220,10 @@
   }
 }
 
+.rc-menu-close:focus {
+  outline: none;
+}
+
 .rc-menu-actions-buttons {
   display: flex;
   flex: 1 1 auto;

@@ -30,12 +30,22 @@ $reflect-accordion-animation-speed           : $reflect-animation-speed-base !de
 $reflect-blank-slate-font-size               : $reflect-font-size-medium !default;
 $reflect-blank-slate-font-color              : $reflect-font-color-subtle !default;
 $reflect-blank-slate-font-weight             : normal !default;
-$reflect-blank-slate-bg                      : $reflect-bg-primary !default;
+$reflect-blank-slate-title-font-size         : $reflect-font-size-huge !default;
+$reflect-blank-slate-lead-font-size          : $reflect-font-size-medium !default;
+$reflect-blank-slate-lead-color              : $reflect-gray-darker !default;
+$reflect-blank-slate-content-font-size       : $reflect-font-size-base !default;
+$reflect-blank-slate-content-color           : $reflect-gray-darker !default;
+$reflect-blank-slate-note-font-size          : $reflect-font-size-small !default;
+$reflect-blank-slate-note-color              : $reflect-gray-base !default;
 $reflect-blank-slate-icon-color              : $reflect-action-color !default;
+$reflect-blank-slate-bg                      : $reflect-bg-primary !default;
 $reflect-blank-slate-shadow                  : $reflect-outer-shadow-huge !default;
 $reflect-blank-slate-radius                  : $reflect-circle-radius !default;
-$reflect-blank-slate-size                    : 100px !default;
-$reflect-blank-slate-max-width               : 500px !default;
+$reflect-blank-slate-margin-base             : 16px;
+$reflect-blank-slate-margin-medium           : 24px;
+$reflect-blank-slate-size                    : 100px;
+$reflect-blank-slate-image-size              : 200px;
+$reflect-blank-slate-max-width               : 600px;
 
 // Buttons
 // ----------------------------------------------------------------------------
