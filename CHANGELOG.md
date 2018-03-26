@@ -1,3 +1,7 @@
+# 1.2.16
+
+* Updates to the `BlankSlate` component to be more versatile
+
 # 1.2.15
 
 * Performance improvements for popovers
