@@ -12,6 +12,10 @@ const paths = map(p => path.resolve.bind(null, __dirname, '..', p), {
 
 module.exports = {
   entry: './src/client/index.jsx',
+  stats: {
+    modules: false,
+    children: false,
+  },
   plugins: [
     new CleanWebpackPlugin(['dist'], { root: paths.root() }),
     new HtmlWebpackPlugin({
