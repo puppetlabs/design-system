@@ -31,11 +31,11 @@ class Checkbox extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  // componentWillReceiveProps() {
-  //   if (this.state.checked !== this.props.checked) {
-  //     this.setState({ checked: this.props.checked });
-  //   }
-  // }
+  componentWillReceiveProps(newProps) {
+    if (this.state.checked !== newProps.checked) {
+      this.setState({ checked: newProps.checked });
+    }
+  }
 
   onChange() {
     const checked = !this.state.checked;
