@@ -64,12 +64,6 @@
   .rc-table-header-sortable {
     cursor: pointer;
   }
-
-  .rc-button-secondary[disabled]:hover {
-    background: $reflect-button-secondary-bg;
-    border-color: $reflect-button-secondary-border-color;
-    color: $reflect-button-secondary-color !important;
-  }
 }
 
 .rc-table-fixed {
