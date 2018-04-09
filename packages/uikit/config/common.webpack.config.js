@@ -1,14 +1,6 @@
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const { map } = require('ramda');
-
-const paths = map(p => path.resolve.bind(null, __dirname, '..', p), {
-  root: '',
-  client: 'src/client',
-  server: 'src/server',
-  dist: 'dist',
-});
+const paths = require('./paths');
 
 module.exports = {
   entry: './src/client/index.jsx',
