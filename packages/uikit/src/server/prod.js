@@ -9,5 +9,5 @@ const app = require('.');
 
 app
   .use(express.static(paths.dist()))
-  .get('*', (req, res) => res.send('index.html'))
+  .get('*', (req, res) => res.sendFile(paths.dist('index.html')))
   .listen(3000, () => console.log('App listening at port 3000'));
