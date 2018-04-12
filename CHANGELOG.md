@@ -1,3 +1,7 @@
+# 1.2.17
+
+* Bug fix for showing hover-state list item action buttons
+
 # 1.2.16
 
 * Updates to the `BlankSlate` component to be more versatile
