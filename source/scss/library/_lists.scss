@@ -82,7 +82,9 @@
   .rc-list-item-text {
     color: $reflect-list-item-color-hover;
   }
+}
 
+.rc-list-item:hover {
   .rc-list-item-hidden {
     opacity: 1;
     transform: translateY(0);
