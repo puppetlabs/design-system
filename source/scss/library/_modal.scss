@@ -115,3 +115,8 @@
 .rc-modal-medium {
   width: $reflect-modal-width-medium;
 }
+
+.rc-modal-title {
+  padding-bottom: 8px;
+  font-size: $reflect-modal-title-font-size;
+}
