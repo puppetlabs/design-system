@@ -1,3 +1,9 @@
+# 1.2.18
+
+* Ensure Selects preserve multi-selected state when applicable
+* Update Confirmation Modal to accept a title
+* Allow Checkboxes to set state with received props
+
 # 1.2.17
 
 * Bug fix for showing hover-state list item action buttons
