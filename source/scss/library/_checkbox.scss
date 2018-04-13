@@ -55,6 +55,10 @@
   cursor: default;
 }
 
+.rc-checkbox-disabled:hover {
+  border-color: $reflect-checkbox-disabled-border-color;
+}
+
 .rc-checkbox-disabled + .rc-icon {
   fill: $reflect-checkbox-disabled-icon-color;
 }

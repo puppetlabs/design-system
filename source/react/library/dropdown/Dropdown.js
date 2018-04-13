@@ -76,8 +76,9 @@ class Dropdown extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const selectedChanged = !equals(this.props.selected, nextProps.selected);
+    const hasMultiple = nextProps.selected.length > 1;
 
-    if ({}.hasOwnProperty.call(nextProps, 'selected') && selectedChanged) {
+    if ({}.hasOwnProperty.call(nextProps, 'selected') && (selectedChanged || hasMultiple)) {
       const selected = getSelected(nextProps);
 
       this.setState({ selected, displayed: selected });

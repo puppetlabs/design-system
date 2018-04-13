@@ -6,13 +6,18 @@ const propTypes = {
   onCancel: React.PropTypes.func,
   onConfirm: React.PropTypes.func,
   children: React.PropTypes.any,
-  confirmationMessage: React.PropTypes.string,
+  confirmationMessage: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.element,
+  ]),
+  title: React.PropTypes.string,
   /** Indicate that we've seen the confirmation, and are performing the action. */
   processingConfirmation: React.PropTypes.bool,
 };
 
 const defaultProps = {
   confirmationMessage: '',
+  title: '',
   processingConfirmation: false,
   onCancel: null,
   onConfirm: null,
@@ -73,7 +78,8 @@ class ConfirmationModal extends React.Component {
 
     return (
       <Modal actions={ actions } size="small" margin="auto">
-        <h3>{ this.props.confirmationMessage }</h3>
+        <h2 className="rc-modal-title">{ this.props.title }</h2>
+        <span className="rc-modal-message">{ this.props.confirmationMessage }</span>
         { this.props.children }
       </Modal>
     );
