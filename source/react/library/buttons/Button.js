@@ -1,35 +1,36 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 import { TooltipStickyArea } from '../tooltips/Tooltip';
 
 const propTypes = {
-  className: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['tiny', 'small', 'large', 'auto', null]),
-  simple: React.PropTypes.bool,
-  secondary: React.PropTypes.bool,
-  transparent: React.PropTypes.bool,
-  icon: React.PropTypes.string,
-  floating: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  processing: React.PropTypes.bool,
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['tiny', 'small', 'large', 'auto', null]),
+  simple: PropTypes.bool,
+  secondary: PropTypes.bool,
+  transparent: PropTypes.bool,
+  icon: PropTypes.string,
+  floating: PropTypes.bool,
+  disabled: PropTypes.bool,
+  processing: PropTypes.bool,
   /** Badge can signify an that the button is "applied" */
-  badge: React.PropTypes.bool,
-  block: React.PropTypes.bool,
+  badge: PropTypes.bool,
+  block: PropTypes.bool,
   /** onClick is called with the click event */
-  onClick: React.PropTypes.func,
+  onClick: PropTypes.func,
   /** label can be used in place of children */
-  label: React.PropTypes.string,
-  type: React.PropTypes.string,
-  href: React.PropTypes.string,
-  round: React.PropTypes.bool,
-  square: React.PropTypes.bool,
-  dropdown: React.PropTypes.bool,
-  error: React.PropTypes.bool,
-  message: React.PropTypes.string,
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.element,
+  label: PropTypes.string,
+  type: PropTypes.string,
+  href: PropTypes.string,
+  round: PropTypes.bool,
+  square: PropTypes.bool,
+  dropdown: PropTypes.bool,
+  error: PropTypes.bool,
+  message: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
   ]),
 };
 

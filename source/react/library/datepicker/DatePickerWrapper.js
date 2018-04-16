@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import DateRangePicker from 'react-daterange-picker';
 import moment from 'moment';
 
 const propTypes = {
-  onChange: React.PropTypes.func.isRequired,
-  range: React.PropTypes.object,
-  ranges: React.PropTypes.array,
+  onChange: PropTypes.func.isRequired,
+  range: PropTypes.object,
+  ranges: PropTypes.array,
 };
 
 const defaultProps = {

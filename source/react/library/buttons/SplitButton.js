@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Button from './Button';
@@ -5,24 +6,24 @@ import Icon from '../icon/Icon';
 import DropdownMenu from '../dropdown/DropdownMenu';
 
 const propTypes = {
-  options: React.PropTypes.array.isRequired,
+  options: PropTypes.array.isRequired,
   /** Primary button label */
-  label: React.PropTypes.string.isRequired,
-  className: React.PropTypes.string,
-  processing: React.PropTypes.bool,
-  error: React.PropTypes.bool,
-  dropdownWidth: React.PropTypes.string,
-  dropdownSize: React.PropTypes.string,
+  label: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  processing: PropTypes.bool,
+  error: PropTypes.bool,
+  dropdownWidth: PropTypes.string,
+  dropdownSize: PropTypes.string,
   /** Whether or not to render the Menu in a Portal */
-  disablePortal: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  disabledMenu: React.PropTypes.bool,
-  menuStatus: React.PropTypes.oneOf(['processing', 'success', 'disabled']),
-  size: React.PropTypes.oneOf(['medium', 'small', 'tiny']),
+  disablePortal: PropTypes.bool,
+  disabled: PropTypes.bool,
+  disabledMenu: PropTypes.bool,
+  menuStatus: PropTypes.oneOf(['processing', 'success', 'disabled']),
+  size: PropTypes.oneOf(['medium', 'small', 'tiny']),
   /** Primary button click handler */
-  onClick: React.PropTypes.func.isRequired,
+  onClick: PropTypes.func.isRequired,
   /** Option click handler */
-  onOptionClick: React.PropTypes.func.isRequired,
+  onOptionClick: PropTypes.func.isRequired,
 };
 
 const defaultProps = {

@@ -1,18 +1,19 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Modal from './Modal';
 import Button from '../buttons/Button';
 
 const propTypes = {
-  onCancel: React.PropTypes.func,
-  onConfirm: React.PropTypes.func,
-  children: React.PropTypes.any,
-  confirmationMessage: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.element,
+  onCancel: PropTypes.func,
+  onConfirm: PropTypes.func,
+  children: PropTypes.any,
+  confirmationMessage: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
   ]),
-  title: React.PropTypes.string,
+  title: PropTypes.string,
   /** Indicate that we've seen the confirmation, and are performing the action. */
-  processingConfirmation: React.PropTypes.bool,
+  processingConfirmation: PropTypes.bool,
 };
 
 const defaultProps = {

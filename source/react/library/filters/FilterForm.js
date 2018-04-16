@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import clone from 'clone';
@@ -5,11 +6,11 @@ import { filterOperators } from '../../constants';
 import Form from '../form';
 
 const propTypes = {
-  filter: React.PropTypes.object,
-  removable: React.PropTypes.bool,
-  onSubmit: React.PropTypes.func,
-  onCancel: React.PropTypes.func,
-  fields: React.PropTypes.array,
+  filter: PropTypes.object,
+  removable: PropTypes.bool,
+  onSubmit: PropTypes.func,
+  onCancel: PropTypes.func,
+  fields: PropTypes.array,
 };
 
 const defaultProps = {

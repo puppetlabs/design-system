@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import clone from 'clone';
 import classnames from 'classnames';
@@ -11,28 +12,28 @@ import {
 import PopoverContent, { PopoverContentWithoutPortal } from './PopoverContent';
 
 const propTypes = {
-  open: React.PropTypes.bool,
-  menu: React.PropTypes.bool,
-  position: React.PropTypes.object,
-  padding: React.PropTypes.bool,
-  border: React.PropTypes.bool,
-  closeButton: React.PropTypes.bool,
-  anchor: React.PropTypes.oneOf(['bottom right', 'bottom left', 'left top', 'right top']),
-  onOpen: React.PropTypes.func,
-  onClose: React.PropTypes.func,
-  target: React.PropTypes.object,
-  children: React.PropTypes.any,
-  width: React.PropTypes.string,
-  size: React.PropTypes.string,
-  hint: React.PropTypes.string,
-  margin: React.PropTypes.number,
-  className: React.PropTypes.string,
-  allowBubble: React.PropTypes.bool,
-  disablePortal: React.PropTypes.bool,
-  wrapperClassName: React.PropTypes.string,
-  inheritTargetWidth: React.PropTypes.bool,
-  disableOutsideClick: React.PropTypes.bool,
-  openEvent: React.PropTypes.string,
+  open: PropTypes.bool,
+  menu: PropTypes.bool,
+  position: PropTypes.object,
+  padding: PropTypes.bool,
+  border: PropTypes.bool,
+  closeButton: PropTypes.bool,
+  anchor: PropTypes.oneOf(['bottom right', 'bottom left', 'left top', 'right top']),
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
+  target: PropTypes.object,
+  children: PropTypes.any,
+  width: PropTypes.string,
+  size: PropTypes.string,
+  hint: PropTypes.string,
+  margin: PropTypes.number,
+  className: PropTypes.string,
+  allowBubble: PropTypes.bool,
+  disablePortal: PropTypes.bool,
+  wrapperClassName: PropTypes.string,
+  inheritTargetWidth: PropTypes.bool,
+  disableOutsideClick: PropTypes.bool,
+  openEvent: PropTypes.string,
 };
 
 const defaultProps = {

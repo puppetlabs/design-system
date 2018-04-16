@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import clone from 'clone';
 import classnames from 'classnames';
@@ -20,31 +21,31 @@ const supportedTypes = [
 
 const propTypes = {
   /** The type of input to render */
-  type: React.PropTypes.oneOfType([
-    React.PropTypes.oneOf(supportedTypes),
-    React.PropTypes.element,
+  type: PropTypes.oneOfType([
+    PropTypes.oneOf(supportedTypes),
+    PropTypes.element,
   ]).isRequired,
   /** A unique identifier for this field */
-  name: React.PropTypes.string.isRequired,
-  value: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string,
-    React.PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+    PropTypes.bool,
   ]),
-  inline: React.PropTypes.bool,
-  size: React.PropTypes.string,
-  error: React.PropTypes.string,
+  inline: PropTypes.bool,
+  size: PropTypes.string,
+  error: PropTypes.string,
   /** A human-friendly identifier for this field */
-  label: React.PropTypes.string,
+  label: PropTypes.string,
   /** This will be used by the parent `Form` to track updates. */
-  onChange: React.PropTypes.func,
+  onChange: PropTypes.func,
   /** A tooltip to display when the field is hovered */
-  tooltip: React.PropTypes.string,
-  className: React.PropTypes.string,
+  tooltip: PropTypes.string,
+  className: PropTypes.string,
   /** Expanded explainer for the field */
-  description: React.PropTypes.string,
+  description: PropTypes.string,
   /** Additional props to pass to the underlying form element */
-  elementProps: React.PropTypes.object,
+  elementProps: PropTypes.object,
 };
 
 const defaultProps = {

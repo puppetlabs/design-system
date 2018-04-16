@@ -1,9 +1,10 @@
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  column: React.PropTypes.object,
-  onClick: React.PropTypes.func,
+  column: PropTypes.object,
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {

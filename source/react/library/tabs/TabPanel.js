@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  active: React.PropTypes.bool,
-  children: React.PropTypes.any,
+  active: PropTypes.bool,
+  children: PropTypes.any,
 };
 
 const defaultProps = {

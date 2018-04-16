@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  column: React.PropTypes.string,
-  checked: React.PropTypes.bool,
-  onChange: React.PropTypes.func,
-  rowData: React.PropTypes.object,
+  column: PropTypes.string,
+  checked: PropTypes.bool,
+  onChange: PropTypes.func,
+  rowData: PropTypes.object,
 };
 
 const defaultProps = {

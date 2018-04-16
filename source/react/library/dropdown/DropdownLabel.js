@@ -1,17 +1,18 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 
 const propTypes = {
   /** Text to render in place of a current label */
-  placeholder: React.PropTypes.string,
+  placeholder: PropTypes.string,
   /** Human readable identifier for the current selected option */
-  label: React.PropTypes.string,
-  select: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  error: React.PropTypes.string,
-  tabIndex: React.PropTypes.number,
-  onClick: React.PropTypes.func,
+  label: PropTypes.string,
+  select: PropTypes.bool,
+  disabled: PropTypes.bool,
+  error: PropTypes.string,
+  tabIndex: PropTypes.number,
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {

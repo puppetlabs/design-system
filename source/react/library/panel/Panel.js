@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  secondary: React.PropTypes.bool,
-  className: React.PropTypes.string,
+  secondary: PropTypes.bool,
+  className: PropTypes.string,
   /** Callback for detecting user remove action */
-  onRemove: React.PropTypes.func,
-  children: React.PropTypes.any,
+  onRemove: PropTypes.func,
+  children: PropTypes.any,
 };
 
 const defaultProps = {

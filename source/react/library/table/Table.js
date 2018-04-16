@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Column from './Column';
@@ -5,14 +6,14 @@ import ColumnHeader from './ColumnHeader';
 import ColumnCheckbox from './ColumnCheckbox';
 
 const propTypes = {
-  selectable: React.PropTypes.bool,
-  striped: React.PropTypes.bool,
-  fixed: React.PropTypes.bool,
-  data: React.PropTypes.array,
-  columns: React.PropTypes.array,
-  className: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  onSelectChange: React.PropTypes.func,
+  selectable: PropTypes.bool,
+  striped: PropTypes.bool,
+  fixed: PropTypes.bool,
+  data: PropTypes.array,
+  columns: PropTypes.array,
+  className: PropTypes.string,
+  onChange: PropTypes.func,
+  onSelectChange: PropTypes.func,
 };
 
 const defaultProps = {

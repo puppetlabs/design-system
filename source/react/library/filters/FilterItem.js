@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { filterOperators } from '../../constants';
@@ -5,9 +6,9 @@ import { filterOperators } from '../../constants';
 import ListItem from '../list/ListItem';
 
 const propTypes = {
-  filter: React.PropTypes.object.isRequired,
-  onEdit: React.PropTypes.func,
-  onRemove: React.PropTypes.func,
+  filter: PropTypes.object.isRequired,
+  onEdit: PropTypes.func,
+  onRemove: PropTypes.func,
 };
 
 const defaultProps = {

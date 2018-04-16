@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  children: React.PropTypes.any,
-  message: React.PropTypes.string,
+  children: PropTypes.any,
+  message: PropTypes.string,
 };
 
 const defaultProps = {

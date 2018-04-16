@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classname from 'classnames';
 import debounce from 'debounce';
@@ -7,29 +8,29 @@ import Icon from '../icon/Icon';
 import ButtonGroup from '../buttons/ButtonGroup';
 
 const propTypes = {
-  unbindShortcut: React.PropTypes.func,
-  bindShortcut: React.PropTypes.func,
-  onClose: React.PropTypes.func,
-  margin: React.PropTypes.number,
+  unbindShortcut: PropTypes.func,
+  bindShortcut: PropTypes.func,
+  onClose: PropTypes.func,
+  margin: PropTypes.number,
   /** Height in px */
-  height: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['small', 'medium']),
+  height: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'medium']),
   /** Content to render within sidebar */
-  sidebar: React.PropTypes.any,
-  sidebarPosition: React.PropTypes.oneOf(['left', 'right']),
+  sidebar: PropTypes.any,
+  sidebarPosition: PropTypes.oneOf(['left', 'right']),
   /** Actions to render */
-  actions: React.PropTypes.any,
+  actions: PropTypes.any,
   /** Supporting text to render next to actions */
-  actionsCTA: React.PropTypes.string,
-  modalClassName: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.object,
+  actionsCTA: PropTypes.string,
+  modalClassName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
   ]),
-  overlayClassName: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.object,
+  overlayClassName: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.object,
   ]),
-  children: React.PropTypes.any,
+  children: PropTypes.any,
 };
 
 const defaultProps = {

@@ -1,15 +1,16 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
 import Switch from '../switch/Switch';
 
 const propTypes = {
-  left: React.PropTypes.string.isRequired,
-  right: React.PropTypes.string.isRequired,
-  name: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  disabled: React.PropTypes.bool,
-  active: React.PropTypes.string,
+  left: PropTypes.string.isRequired,
+  right: PropTypes.string.isRequired,
+  name: PropTypes.string,
+  onChange: PropTypes.func,
+  disabled: PropTypes.bool,
+  active: PropTypes.string,
 };
 
 const defaultProps = {

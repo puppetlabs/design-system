@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.element,
-    React.PropTypes.array,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.array,
   ]),
-  collapsed: React.PropTypes.bool,
+  collapsed: PropTypes.bool,
 };
 
 const defaultProps = {
