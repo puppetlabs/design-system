@@ -77,4 +77,15 @@
   font-weight: $reflect-blank-slate-font-weight;
   margin: auto;
   max-width: $reflect-blank-slate-max-width;
+
+  .rc-button-simple .rc-button-content {
+    font-size: $reflect-blank-slate-font-size;
+    font-weight: $reflect-blank-slate-font-weight;
+    text-transform: none;
+  }
+
+  .rc-button.rc-button-simple:hover,
+  .rc-button-simple .rc-button-content:hover {
+    color: $reflect-action-color !important;
+  }
 }
