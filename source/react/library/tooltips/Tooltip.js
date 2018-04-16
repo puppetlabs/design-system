@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
@@ -10,17 +11,17 @@ import Icon from '../icon/Icon';
 const CARAT_HEIGHT = 8;
 
 const propTypes = {
-  anchor: React.PropTypes.string,
-  sticky: React.PropTypes.bool,
-  style: React.PropTypes.object,
-  target: React.PropTypes.oneOfType([
-    React.PropTypes.object,
-    React.PropTypes.element,
+  anchor: PropTypes.string,
+  sticky: PropTypes.bool,
+  style: PropTypes.object,
+  target: PropTypes.oneOfType([
+    PropTypes.object,
+    PropTypes.element,
   ]).isRequired,
-  onClose: React.PropTypes.func,
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.element,
+  onClose: PropTypes.func,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
   ]),
 };
 

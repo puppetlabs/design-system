@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
-  title: React.PropTypes.string,
-  tooltip: React.PropTypes.string,
-  children: React.PropTypes.any,
-  flyout: React.PropTypes.any,
+  title: PropTypes.string,
+  tooltip: PropTypes.string,
+  children: PropTypes.any,
+  flyout: PropTypes.any,
 };
 
 const defaultProps = {

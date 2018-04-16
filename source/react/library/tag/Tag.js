@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
@@ -5,17 +6,17 @@ import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
   /** Selected state */
-  primary: React.PropTypes.bool,
-  selected: React.PropTypes.bool,
-  className: React.PropTypes.string,
-  round: React.PropTypes.bool,
-  size: React.PropTypes.oneOf(['small', 'medium']),
-  block: React.PropTypes.bool,
-  tooltip: React.PropTypes.bool,
-  onRemove: React.PropTypes.func,
-  actions: React.PropTypes.array,
-  onClick: React.PropTypes.func,
-  children: React.PropTypes.any,
+  primary: PropTypes.bool,
+  selected: PropTypes.bool,
+  className: PropTypes.string,
+  round: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium']),
+  block: PropTypes.bool,
+  tooltip: PropTypes.bool,
+  onRemove: PropTypes.func,
+  actions: PropTypes.array,
+  onClick: PropTypes.func,
+  children: PropTypes.any,
 };
 
 const defaultProps = {

@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  steps: React.PropTypes.number,
-  active: React.PropTypes.number,
-  width: React.PropTypes.number,
+  steps: PropTypes.number,
+  active: PropTypes.number,
+  width: PropTypes.number,
 };
 
 const defaultProps = {

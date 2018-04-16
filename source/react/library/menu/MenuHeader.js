@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  title: React.PropTypes.string,
-  onClose: React.PropTypes.func,
+  title: PropTypes.string,
+  onClose: PropTypes.func,
 };
 
 const defaultProps = {

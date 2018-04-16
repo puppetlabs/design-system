@@ -1,16 +1,17 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Select from '../select/Select';
 
 const propTypes = {
-  data: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
+  data: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
   ]),
-  onChange: React.PropTypes.func,
-  column: React.PropTypes.string,
-  rowData: React.PropTypes.object,
-  options: React.PropTypes.array,
-  disabled: React.PropTypes.bool,
+  onChange: PropTypes.func,
+  column: PropTypes.string,
+  rowData: PropTypes.object,
+  options: PropTypes.array,
+  disabled: PropTypes.bool,
 };
 
 const defaultProps = {

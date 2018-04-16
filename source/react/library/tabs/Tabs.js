@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import TabPanel from './TabPanel';
 
 const propTypes = {
-  vertical: React.PropTypes.bool,
-  activeTab: React.PropTypes.number,
-  children: React.PropTypes.any,
+  vertical: PropTypes.bool,
+  activeTab: PropTypes.number,
+  children: PropTypes.any,
 };
 
 const defaultProps = {

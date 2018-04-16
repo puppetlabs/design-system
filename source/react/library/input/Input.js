@@ -1,37 +1,38 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  multiline: React.PropTypes.bool,
+  multiline: PropTypes.bool,
 
   /** Placeholder for when value is unset */
-  placeholder: React.PropTypes.string,
+  placeholder: PropTypes.string,
   /** Class name applied to input element */
-  className: React.PropTypes.string,
-  autoComplete: React.PropTypes.bool,
-  autoFocus: React.PropTypes.bool,
+  className: PropTypes.string,
+  autoComplete: PropTypes.bool,
+  autoFocus: PropTypes.bool,
   /** Disallow user input */
-  disabled: React.PropTypes.bool,
-  readonly: React.PropTypes.bool,
-  type: React.PropTypes.string,
+  disabled: PropTypes.bool,
+  readonly: PropTypes.bool,
+  type: PropTypes.string,
   /** Value string */
-  value: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
   ]),
-  name: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['large', 'medium', 'small', 'tiny']),
-  simple: React.PropTypes.bool,
-  error: React.PropTypes.string,
-  style: React.PropTypes.object,
-  icon: React.PropTypes.string,
-  onKeyDown: React.PropTypes.func,
-  onKeyUp: React.PropTypes.func,
-  onChange: React.PropTypes.func,
-  onClick: React.PropTypes.func,
-  onFocus: React.PropTypes.func,
-  onBlur: React.PropTypes.func,
+  name: PropTypes.string,
+  size: PropTypes.oneOf(['large', 'medium', 'small', 'tiny']),
+  simple: PropTypes.bool,
+  error: PropTypes.string,
+  style: PropTypes.object,
+  icon: PropTypes.string,
+  onKeyDown: PropTypes.func,
+  onKeyUp: PropTypes.func,
+  onChange: PropTypes.func,
+  onClick: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
 };
 
 const defaultProps = {

@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: React.PropTypes.any.isRequired,
-  subtle: React.PropTypes.bool,
-  className: React.PropTypes.string,
+  children: PropTypes.any.isRequired,
+  subtle: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 const defaultProps = {

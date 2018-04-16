@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Button from '../buttons/Button';
@@ -8,21 +9,21 @@ import FormFlyout from './FormFlyout';
 import FormSection from './FormSection';
 
 const propTypes = {
-  className: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  inline: React.PropTypes.bool,
-  onCancel: React.PropTypes.func,
-  onSubmit: React.PropTypes.func,
-  cancellable: React.PropTypes.bool,
-  submittable: React.PropTypes.bool,
+  className: PropTypes.string,
+  onChange: PropTypes.func,
+  inline: PropTypes.bool,
+  onCancel: PropTypes.func,
+  onSubmit: PropTypes.func,
+  cancellable: PropTypes.bool,
+  submittable: PropTypes.bool,
   //* Text to display as the Submit button */
-  submitLabel: React.PropTypes.string,
-  validator: React.PropTypes.func,
+  submitLabel: PropTypes.string,
+  validator: PropTypes.func,
   //* Errors to render the form with. Keys are field names, and values are the form errors */
-  errors: React.PropTypes.object,
-  size: React.PropTypes.string,
-  submitting: React.PropTypes.bool,
-  children: React.PropTypes.any,
+  errors: PropTypes.object,
+  size: PropTypes.string,
+  submitting: PropTypes.bool,
+  children: PropTypes.any,
 };
 
 const defaultProps = {

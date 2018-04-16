@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { ENTER_KEY_CODE } from '../../constants';
 import Icon from '../icon/Icon';
 import Input from '../input/Input';
 
 const propTypes = {
-  onSearch: React.PropTypes.func,
+  onSearch: PropTypes.func,
 };
 
 const defaultProps = {

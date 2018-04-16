@@ -1,5 +1,7 @@
-// moment-timezone monkey patches moment.
 import 'moment-timezone';
+
+// moment-timezone monkey patches moment.
+import PropTypes from 'prop-types';
 
 import React from 'react';
 import moment from 'moment';
@@ -9,16 +11,16 @@ import Button from '../buttons/Button';
 import Popover from '../popover/Popover';
 
 const propTypes = {
-  onChange: React.PropTypes.func.isRequired,
-  anchor: React.PropTypes.string,
-  className: React.PropTypes.string,
-  buttonClassName: React.PropTypes.string,
-  dates: React.PropTypes.object,
-  disabled: React.PropTypes.bool,
-  message: React.PropTypes.string,
-  timezone: React.PropTypes.string,
-  ranges: React.PropTypes.array,
-  disablePopoverPortal: React.PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  anchor: PropTypes.string,
+  className: PropTypes.string,
+  buttonClassName: PropTypes.string,
+  dates: PropTypes.object,
+  disabled: PropTypes.bool,
+  message: PropTypes.string,
+  timezone: PropTypes.string,
+  ranges: PropTypes.array,
+  disablePopoverPortal: PropTypes.bool,
 };
 
 const defaultProps = {

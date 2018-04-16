@@ -1,15 +1,16 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  onChange: React.PropTypes.func.isRequired,
-  name: React.PropTypes.string.isRequired,
-  className: React.PropTypes.string,
-  disabled: React.PropTypes.bool,
-  checked: React.PropTypes.bool,
-  label: React.PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  checked: PropTypes.bool,
+  label: PropTypes.bool,
 };
 
 const defaultProps = {

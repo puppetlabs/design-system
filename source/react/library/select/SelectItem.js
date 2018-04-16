@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
 import Tag from '../tag/Tag';
 
 const propTypes = {
-  highlighted: React.PropTypes.bool,
-  onRemove: React.PropTypes.func,
-  value: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['small', 'medium']),
+  highlighted: PropTypes.bool,
+  onRemove: PropTypes.func,
+  value: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'medium']),
 };
 
 const defaultProps = {

@@ -1,15 +1,16 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  option: React.PropTypes.object.isRequired,
-  className: React.PropTypes.string,
-  selected: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  onClick: React.PropTypes.func,
-  onFocus: React.PropTypes.func,
-  focused: React.PropTypes.bool,
+  option: PropTypes.object.isRequired,
+  className: PropTypes.string,
+  selected: PropTypes.bool,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  onFocus: PropTypes.func,
+  focused: PropTypes.bool,
 };
 
 const defaultProps = {

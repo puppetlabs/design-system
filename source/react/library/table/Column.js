@@ -1,13 +1,14 @@
 import clone from 'clone';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  component: React.PropTypes.func,
-  data: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
+  component: PropTypes.func,
+  data: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
   ]),
-  rowData: React.PropTypes.object,
+  rowData: PropTypes.object,
 };
 
 const defaultProps = {

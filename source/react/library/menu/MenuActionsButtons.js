@@ -1,7 +1,8 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  children: React.PropTypes.any,
+  children: PropTypes.any,
 };
 
 const defaultProps = {

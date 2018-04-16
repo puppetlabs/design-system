@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Popover from '../popover/Popover';
@@ -5,32 +6,32 @@ import Button from '../buttons/Button';
 import Menu from '../menu/Menu';
 
 const propTypes = {
-  anchor: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  onApply: React.PropTypes.func,
-  target: React.PropTypes.object,
-  width: React.PropTypes.string,
-  onOpen: React.PropTypes.func,
-  onClose: React.PropTypes.func,
-  size: React.PropTypes.string,
+  anchor: PropTypes.string,
+  onChange: PropTypes.func,
+  onApply: PropTypes.func,
+  target: PropTypes.object,
+  width: PropTypes.string,
+  onOpen: PropTypes.func,
+  onClose: PropTypes.func,
+  size: PropTypes.string,
   /** Signify which options are currently selected */
-  selected: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.array,
-    React.PropTypes.number,
+  selected: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.number,
   ]),
-  blank: React.PropTypes.string,
+  blank: PropTypes.string,
   /** A prompt for the user once the DropdownMenu has been opened */
-  hint: React.PropTypes.string,
-  options: React.PropTypes.array,
-  actions: React.PropTypes.any,
+  hint: PropTypes.string,
+  options: PropTypes.array,
+  actions: PropTypes.any,
   /** Whether or not the user can select multiple menu options */
-  multiple: React.PropTypes.bool,
-  margin: React.PropTypes.number,
+  multiple: PropTypes.bool,
+  margin: PropTypes.number,
   /** Allows the Dropdown to be rendered inline rather than within a Portal */
-  disablePortal: React.PropTypes.bool,
+  disablePortal: PropTypes.bool,
   /** Callback that is fired whenever one of the provided actions is clicked */
-  onActionClick: React.PropTypes.func,
+  onActionClick: PropTypes.func,
 };
 
 const defaultProps = {

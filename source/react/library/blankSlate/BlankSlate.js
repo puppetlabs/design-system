@@ -1,19 +1,20 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from '../icon/Icon';
 import Button from '../buttons/Button';
 
 const propTypes = {
   /** Visual aide for the user */
-  icon: React.PropTypes.string,
-  image: React.PropTypes.string,
-  alt: React.PropTypes.string,
+  icon: PropTypes.string,
+  image: PropTypes.string,
+  alt: PropTypes.string,
   /** Textual aide for the user */
-  message: React.PropTypes.any,
-  title: React.PropTypes.any,
-  lead: React.PropTypes.any,
-  content: React.PropTypes.any,
-  note: React.PropTypes.any,
-  onClick: React.PropTypes.func,
+  message: PropTypes.any,
+  title: PropTypes.any,
+  lead: PropTypes.any,
+  content: PropTypes.any,
+  note: PropTypes.any,
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {
