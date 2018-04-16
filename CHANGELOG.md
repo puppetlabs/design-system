@@ -1,3 +1,7 @@
+# 1.2.19
+
+* Internal dependency upgrades
+
 # 1.2.18
 
 * Ensure Selects preserve multi-selected state when applicable
