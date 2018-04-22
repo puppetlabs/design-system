@@ -5,8 +5,8 @@
   "author": "Noah Muldavin <nmuldavin@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node src/server/dev.js",
-    "serve": "node src/server/prod.js",
+    "start": "node --experimental-modules src/server/dev.mjs",
+    "serve": "node --experimental-modules src/server/prod.mjs",
     "build": "webpack --config=config/production.webpack.config.js",
     "format": "eslint --fix src config && prettier --write --list-different '{src,config}/**/*.{js,jsx,css}'",
     "lint": "eslint src config --ext .js --ext .jsx"
