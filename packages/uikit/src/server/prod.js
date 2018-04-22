@@ -7,7 +7,8 @@ const express = require('express');
 const paths = require('../../config/paths');
 const app = require('.');
 
+const port = process.env.PORT || 3000;
+
 app
   .use(express.static(paths.dist()))
-  .get('*', (req, res) => res.sendFile(paths.dist('index.html')))
-  .listen(3000, () => console.log('App listening at port 3000'));
+  .listen(port, () => console.log(`Server listening at port ${port}`));

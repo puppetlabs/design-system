@@ -8,8 +8,9 @@ const webpack = require('webpack');
 const webpackConfig = require('../../config/development.webpack.config.js');
 const app = require('.');
 
+const port = process.env.PORT || 3000;
 const compiler = webpack(webpackConfig);
 
 app
   .use(middleware(compiler, { publicPath: webpackConfig.output.publicPath }))
-  .listen(3000, () => console.log('App listening at port 3000'));
+  .listen(port, () => console.log(`Server listening at port ${port}`));
