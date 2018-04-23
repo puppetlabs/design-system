@@ -15,7 +15,7 @@ module.exports = {
     }),
   ],
   output: {
-    filename: '[name].[hash].js',
+    filename: 'bundles/[name].[hash].js',
     path: paths.dist(),
     publicPath: '/',
   },
@@ -25,6 +25,13 @@ module.exports = {
         test: /\.(js|jsx|mjs)$/,
         use: 'babel-loader',
         exclude: /node_modules/,
+      },
+      {
+        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.css$/],
+        loader: 'file-loader',
+        options: {
+          name: 'assets/[name].[hash].[ext]',
+        },
       },
     ],
   },

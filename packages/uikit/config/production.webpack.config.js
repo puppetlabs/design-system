@@ -6,7 +6,7 @@ module.exports = merge(commonConfig, {
   mode: 'production',
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].[hash].css',
+      filename: 'bundles/[name].[hash].css',
       chunkFilename: '[id].[hash].css',
     }),
   ],
