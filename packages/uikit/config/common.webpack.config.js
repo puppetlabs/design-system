@@ -4,7 +4,7 @@ const webpack = require('webpack');
 const paths = require('./paths');
 
 module.exports = {
-  entry: './src/client/index.jsx',
+  entry: paths.client('index.jsx'),
   stats: {
     modules: false,
     children: false,
@@ -36,5 +36,8 @@ module.exports = {
         },
       },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.mjs', '.jsx'],
   },
 };

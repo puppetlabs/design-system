@@ -5,11 +5,11 @@
   "author": "Noah Muldavin <nmuldavin@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node --experimental-modules src/server/dev.mjs",
-    "serve": "node --experimental-modules src/server/prod.mjs",
+    "start": "node --experimental-modules styleguide/server/dev.mjs",
+    "serve": "node --experimental-modules styleguide/server/prod.mjs",
     "build": " export $(cat config/.env.production | xargs) && webpack --config=config/production.webpack.config.js",
-    "format": "eslint --fix src config && prettier --write --list-different '{src,config}/**/*.{js,jsx,css}'",
-    "lint": "eslint src config --ext .js --ext .jsx"
+    "format": "eslint --fix src styleguide config && prettier --write --list-different '{src,styleguide,config}/**/*.{js,jsx,css}'",
+    "lint": "eslint src styleguide config --ext .js --ext .jsx"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",
@@ -21,7 +21,9 @@
     "babel-loader": "8.0.0-beta.2",
     "caniuse-lite": "^1.0.30000830",
     "clean-webpack-plugin": "^0.1.18",
+    "connect-history-api-fallback": "^1.5.0",
     "css-loader": "^0.28.9",
+    "dotenv": "^5.0.1",
     "eslint": "^4.17.0",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -30,6 +32,7 @@
     "eslint-plugin-jsx-a11y": "^6.0.3",
     "eslint-plugin-prettier": "^2.6.0",
     "eslint-plugin-react": "^7.6.1",
+    "express": "^4.16.2",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.4.0",
@@ -38,6 +41,7 @@
     "postcss-loader": "^2.1.0",
     "prettier": "^1.10.2",
     "ramda": "^0.25.0",
+    "react-dom": "^16.2.0",
     "style-loader": "^0.21.0",
     "webpack": "^4.6.0",
     "webpack-cli": "^2.0.15",
@@ -45,10 +49,6 @@
     "webpack-merge": "^4.1.1"
   },
   "dependencies": {
-    "connect-history-api-fallback": "^1.5.0",
-    "dotenv": "^5.0.1",
-    "express": "^4.16.2",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react": "^16.2.0"
   }
 }
