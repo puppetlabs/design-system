@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const webpack = require('webpack');
 const paths = require('./paths');
 
 module.exports = {
@@ -13,6 +14,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: paths.client('index.html'),
     }),
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'PORT']),
   ],
   output: {
     filename: 'bundles/[name].[hash].js',

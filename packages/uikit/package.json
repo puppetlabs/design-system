@@ -7,12 +7,13 @@
   "scripts": {
     "start": "node --experimental-modules src/server/dev.mjs",
     "serve": "node --experimental-modules src/server/prod.mjs",
-    "build": "webpack --config=config/production.webpack.config.js",
+    "build": " export $(cat config/.env.production | xargs) && webpack --config=config/production.webpack.config.js",
     "format": "eslint --fix src config && prettier --write --list-different '{src,config}/**/*.{js,jsx,css}'",
     "lint": "eslint src config --ext .js --ext .jsx"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.40",
+    "@babel/polyfill": "^7.0.0-beta.46",
     "@babel/preset-env": "^7.0.0-beta.40",
     "@babel/preset-react": "^7.0.0-beta.40",
     "@babel/preset-stage-3": "^7.0.0-beta.40",
