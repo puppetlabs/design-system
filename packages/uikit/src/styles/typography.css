@@ -1,3 +1,4 @@
+@import './colors.css';
 /*
   Pull in necessary fonts
 */
@@ -5,50 +6,37 @@
 @import './fonts/Inconsolata/index.css';
 @import './fonts/OpenSans/index.css';
 
-.numbers-h1 {
-
-}
-
-.heading-1 {
-
-}
-
-.heading-2 {
-
-}
-
-.heading-3 {
-
-}
-
-.heading-4 {
-
+.body {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ui-3);
 }
 
 .action-primary {
-
+  font-family: Calibre;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--ui-1);
 }
 
 .action-primary-disabled {
-
+  font-family: Calibre;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--ui-6);
 }
 
 .action-secondary {
-
+  font-family: Calibre;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--ui-1);
 }
 
 .action-secondary-disabled {
-
-}
-
-.body-bold {
-
-}
-
-.body-white {
-
-}
-
-.numbers-h2 {
-
+  font-family: Calibre;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--ui-6);
 }

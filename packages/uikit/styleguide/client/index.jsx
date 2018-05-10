@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import Button from '../../src/components/Button';
+import typography from '../../src/styles/typography.css';
 import '../../src/styles/globals.css';
-import '../../src/styles/typography.css';
 
 const App = () => (
-  <div>
+  <div className={typography.body}>
     <div>Puppet Styleguide</div>
     <Button />
   </div>
