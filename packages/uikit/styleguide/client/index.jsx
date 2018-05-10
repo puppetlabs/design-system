@@ -7,7 +7,13 @@ import '../../src/styles/globals.css';
 const App = () => (
   <div className={typography.body}>
     <div>Puppet Styleguide</div>
-    <Button />
+    <Button style={{ margin: 10 }}>Action</Button>
+    <Button disabled style={{ margin: 10 }}>
+      Action
+    </Button>
+    <Button secondary style={{ margin: 10 }}>
+      Action
+    </Button>
   </div>
 );
 

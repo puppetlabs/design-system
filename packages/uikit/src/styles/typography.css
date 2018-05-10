@@ -15,28 +15,24 @@
 
 .action-primary {
   font-family: Calibre;
+  font-size: 16px;
   font-weight: 600;
   line-height: normal;
   color: var(--ui-1);
 }
 
-.action-primary-disabled {
-  font-family: Calibre;
-  font-weight: 600;
-  line-height: normal;
+.action-primary:disabled {
   color: var(--ui-6);
 }
 
 .action-secondary {
   font-family: Calibre;
+  font-size: 16px;
   font-weight: 500;
   line-height: normal;
   color: var(--ui-1);
 }
 
-.action-secondary-disabled {
-  font-family: Calibre;
-  font-weight: 500;
-  line-height: normal;
+.action-secondary:disabled {
   color: var(--ui-6);
 }
