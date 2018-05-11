@@ -2,9 +2,6 @@
 @import '../../styles/variables.css';
 
 .button {
-  /* TODO: discuss use of css-modules composes vs other methods of extension */
-  composes: action-primary from '../../styles/typography.css';
-
   height: var(--input-height);
   cursor: pointer;
   border-radius: var(--border-radius);
@@ -106,8 +103,4 @@
     background-color: var(--ui-9);
     box-shadow: inset 0 -2px 0 0 var(--ui-8);
   }
-}
-
-.secondary, .tertiary {
-  composes: action-secondary from '../../styles/typography.css';
 }

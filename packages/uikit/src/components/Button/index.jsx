@@ -1,15 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import unboundClassNames from 'classnames/bind';
+import classNames from 'classnames';
+import typography from '../../styles/typography.css';
 import styles from './Button.css';
-
-console.log(styles);
-
-const classNames = unboundClassNames.bind(styles);
 
 const Button = ({ children, secondary, tertiary, className, ...props }) => (
   <button
-    className={classNames('button', { secondary, tertiary }, className)}
+    className={classNames(
+      styles.button,
+      typography.actionPrimary,
+      {
+        [styles.secondary]: secondary,
+        [styles.tertiary]: tertiary,
+        [typography.actionPrimary]: secondary || tertiary,
+      },
+      className,
+    )}
     {...props}
   >
     {children}
