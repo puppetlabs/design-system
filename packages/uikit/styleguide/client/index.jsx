@@ -14,7 +14,13 @@ const App = () => (
     <Button secondary style={{ margin: 10 }}>
       Action
     </Button>
+    <Button secondary disabled style={{ margin: 10 }}>
+      Action
+    </Button>
     <Button tertiary style={{ margin: 10 }}>
+      Action
+    </Button>
+    <Button tertiary disabled style={{ margin: 10 }}>
       Action
     </Button>
   </div>

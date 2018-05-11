@@ -35,12 +35,6 @@
     box-shadow: inset 0 -2px 0 0 var(--button-yellow-1);
   }
 
-  &:disabled {
-    cursor: default;
-    background-color: var(--ui-9);
-    box-shadow: inset 0 -2px 0 0 var(--ui-8);
-  }
-
   &:focus {
     box-shadow: 0 0 2px 1px var(--link-hover),
       inset 0 -2px 0 0 var(--button-yellow-2);
@@ -100,5 +94,16 @@
       box-shadow: 0 0 2px 1px var(--link-hover), inset 0 -2px 0 0 var(--ui-6),
         inset 0 0 0 2px var(--ui-5);
     }
+  }
+
+  /**
+   * All disabled buttons have the same style, but we need to override the default for each
+   */
+  &:disabled,
+  &.secondary:disabled,
+  &.tertiary:disabled {
+    cursor: default;
+    background-color: var(--ui-9);
+    box-shadow: inset 0 -2px 0 0 var(--ui-8);
   }
 }
