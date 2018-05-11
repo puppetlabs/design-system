@@ -9,7 +9,7 @@
   cursor: pointer;
   border-radius: var(--border-radius);
   padding: 0 16px 2px 16px;
-  min-width: 100px;
+  min-width: 80px;
   display: inline-block;
 
   /*
