@@ -1,14 +1,15 @@
 @import '../../styles/colors.css';
+@import '../../styles/variables.css';
 
 .button {
   /* TODO: discuss use of css-modules composes vs other methods of extension */
   composes: action-primary from '../../styles/typography.css';
 
   /* This height is the height of all single-line inputs. TODO: Move to a global variable */
-  height: 32px;
+  height: var(--input-height);
   cursor: pointer;
-  border-radius: 3px;
-  padding: 0 16px;
+  border-radius: var(--border-radius);
+  padding: 0 16px 2px 16px;
   min-width: 100px;
   display: inline-block;
 

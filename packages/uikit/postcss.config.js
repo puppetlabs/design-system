@@ -1,6 +1,10 @@
 const parseVariables = require('./parseVariables');
 
-const variables = parseVariables('src/styles/colors.css');
+const variables = Object.assign(
+  {},
+  parseVariables('src/styles/colors.css'),
+  parseVariables('src/styles/variables.css'),
+);
 
 module.exports = {
   plugins: {
