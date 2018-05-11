@@ -22,6 +22,7 @@ module.exports = merge(commonConfig, {
               modules: true,
               importLoaders: 1,
               localIdentName: '[hash:base64:5]',
+              camelCase: true,
             },
           },
           'postcss-loader',

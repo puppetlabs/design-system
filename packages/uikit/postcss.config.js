@@ -1,6 +1,18 @@
+const parseVariables = require('./parseVariables');
+
+const variables = {
+  ...parseVariables('src/styles/colors.css'),
+  ...parseVariables('src/styles/variables.css'),
+};
+
 module.exports = {
   plugins: {
-    'postcss-import': {},
-    'postcss-cssnext': {},
+    'postcss-cssnext': {
+      features: {
+        customProperties: {
+          variables,
+        },
+      },
+    },
   },
 };

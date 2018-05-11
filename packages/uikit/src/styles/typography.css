@@ -1,0 +1,37 @@
+@import './colors.css';
+/*
+  Pull in necessary fonts
+*/
+@import './fonts/Calibre/index.css';
+@import './fonts/OpenSans/index.css';
+
+.body {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ui-3);
+}
+
+.action-primary {
+  font-family: Calibre;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--ui-1);
+}
+
+.action-primary:disabled {
+  color: var(--ui-6);
+}
+
+.action-secondary {
+  font-family: Calibre;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--ui-1);
+}
+
+.action-secondary:disabled {
+  color: var(--ui-6);
+}
