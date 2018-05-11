@@ -3,7 +3,6 @@
   Pull in necessary fonts
 */
 @import './fonts/Calibre/index.css';
-@import './fonts/Inconsolata/index.css';
 @import './fonts/OpenSans/index.css';
 
 .body {
