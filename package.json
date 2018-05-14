@@ -7,7 +7,7 @@
     "prebuild": "./node_modules/.bin/rimraf build",
     "build": "NODE_ENV=production webpack",
     "prepublish": "npm run build",
-    "complexity": "./node_modules/.bin/es6-plato -r -d complexity source/react",
+    "complexity": "./node_modules/.bin/es6-plato -r -d complexity source/react && open ./complexity/index.html",
     "watch": "nodemon --watch source -x \"npm run build\"",
     "test": "./node_modules/.bin/nyc --require=./test/jsdom.js --reporter=html ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
     "js-lint": "./node_modules/.bin/eslint --quiet 'source/react/**/*.js'",
