@@ -2,18 +2,20 @@ import { string, func } from 'prop-types';
 import React from 'react';
 import { path, compose } from 'ramda';
 
-const getValue = path(['target', 'value']);
+const isChecked = path(['target', 'checked']);
 
-const text = (label, fallback) => {
+const parseValue = value => value === 'true';
+
+const boolean = (label, fallback) => {
   const Knob = ({ value, updateValue }) => (
     <label htmlFor={label} style={{ display: 'block' }}>
       {label}
       <input
-        type="text"
+        type="checkbox"
         id={label}
         name={label}
-        value={value}
-        onChange={compose(updateValue, getValue)}
+        checked={parseValue(value)}
+        onChange={compose(updateValue, isChecked)}
       />
     </label>
   );
@@ -26,8 +28,8 @@ const text = (label, fallback) => {
   return {
     fallback,
     Knob,
-    parseValue: v => v,
+    parseValue,
   };
 };
 
-export default text;
+export default boolean;

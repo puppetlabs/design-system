@@ -5,7 +5,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 import Knobs from '../../components/Knobs';
-import { getMissingParams, updateSearch } from './methods';
+import { getMissingParams, updateSearch, parseValues } from './methods';
 import styles from './StyleguideContainer.css';
 
 const withStyleguide = ({ knobs }) => Component => {
@@ -25,7 +25,7 @@ const withStyleguide = ({ knobs }) => Component => {
     return (
       <div className={styles.contentOuter}>
         <div className={styles.content}>
-          <Component {...params} {...passThroughProps} />
+          <Component {...parseValues(params, knobs)} {...passThroughProps} />
         </div>
         <div className={styles.controls}>
           <Knobs knobs={knobs} />

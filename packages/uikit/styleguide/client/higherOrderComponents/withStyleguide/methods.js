@@ -1,5 +1,5 @@
 import { stringify } from 'query-string';
-import { compose, map, merge, prop } from 'ramda';
+import { compose, map, mapObjIndexed, merge, prop, uncurryN } from 'ramda';
 
 import differenceByKey from '../../../../src/methods/differenceByKey';
 
@@ -19,3 +19,17 @@ export const getMissingParams = compose(map(prop('fallback')), differenceByKey);
  * @type {[type]}
  */
 export const updateSearch = compose(stringify, merge);
+
+/**
+ * Iterates through the values of a knob definition object, applying the parseValue method
+ * of each to the corresponding key of the parsed Url parameters
+ * @param {Object}  params  Parsed url query parameters
+ * @param {Object}  Knobs   Knob definition object, each having a 'fallback' default parameter
+ * @type {Object} Object containing parsed url parameters
+ */
+export const parseValues = uncurryN(2, params =>
+  compose(
+    mapObjIndexed((parseValue, key) => parseValue(prop(key, params))),
+    map(prop('parseValue')),
+  ),
+);
