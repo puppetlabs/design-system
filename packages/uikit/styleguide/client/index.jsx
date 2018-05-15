@@ -1,29 +1,16 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Button from '../../src/components/Button';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import typography from '../../src/styles/typography.css';
+import ButtonStyleguide from '../../src/components/Button/styleguide';
 import '../../src/styles/globals.css';
 
 const App = () => (
-  <div className={typography.body}>
-    <div>Puppet Styleguide</div>
-    <Button style={{ margin: 10 }}>Action</Button>
-    <Button disabled style={{ margin: 10 }}>
-      Action
-    </Button>
-    <Button secondary style={{ margin: 10 }}>
-      Action
-    </Button>
-    <Button secondary disabled style={{ margin: 10 }}>
-      Action
-    </Button>
-    <Button tertiary style={{ margin: 10 }}>
-      Action
-    </Button>
-    <Button tertiary disabled style={{ margin: 10 }}>
-      Action
-    </Button>
-  </div>
+  <Router>
+    <div className={typography.body}>
+      <Route exact path="/button" component={ButtonStyleguide} />
+    </div>
+  </Router>
 );
 
 render(<App />, document.getElementById('root'));
