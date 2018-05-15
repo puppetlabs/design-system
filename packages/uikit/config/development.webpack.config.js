@@ -3,6 +3,7 @@ const merge = require('webpack-merge');
 
 module.exports = merge(commonConfig, {
   mode: 'development',
+  devtool: 'cheap-module-source-map',
   module: {
     rules: [
       {
