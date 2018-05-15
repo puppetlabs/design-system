@@ -1,0 +1,12 @@
+.side-nav {
+  width: 200px;
+  flex: none;
+  border-right: 1px solid var(--ui-1);
+}
+
+.active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: black;
+}

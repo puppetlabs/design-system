@@ -1,16 +1,17 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import typography from '../../src/styles/typography.css';
+
+import App from './components/App';
 import ButtonStyleguide from '../../src/components/Button/styleguide';
+
 import '../../src/styles/globals.css';
 
-const App = () => (
-  <Router>
-    <div className={typography.body}>
-      <Route exact path="/button" component={ButtonStyleguide} />
-    </div>
-  </Router>
-);
+const components = [
+  {
+    path: 'button',
+    name: 'Button',
+    Component: ButtonStyleguide,
+  },
+];
 
-render(<App />, document.getElementById('root'));
+render(<App components={components} />, document.getElementById('root'));

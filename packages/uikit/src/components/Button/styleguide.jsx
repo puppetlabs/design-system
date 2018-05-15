@@ -1,5 +1,4 @@
-import { func, string } from 'prop-types';
-import { compose, path } from 'ramda';
+import { string } from 'prop-types';
 import React from 'react';
 
 import Button from '.';
