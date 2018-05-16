@@ -1,3 +1,3 @@
-import withStyleguide from './withStyleguide';
+import withControls from './withControls';
 
-export { withStyleguide }; // eslint-disable-line
+export { withControls }; // eslint-disable-line
