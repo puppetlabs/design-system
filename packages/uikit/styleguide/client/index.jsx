@@ -6,6 +6,10 @@ import ButtonStyleguide from '../../src/components/Button/styleguide';
 
 import '../../src/styles/globals.css';
 
+if (module.hot) {
+  module.hot.accept();
+}
+
 const components = [
   {
     path: 'button',

@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { arrayOf, shape, string, element } from 'prop-types';
 import { map } from 'ramda';
 import React from 'react';
+import { hot } from 'react-hot-loader';
 import { BrowserRouter as Router, Switch } from 'react-router-dom';
 
 import ComponentRoute from './ComponentRoute';
@@ -34,4 +35,4 @@ App.defaultProps = {
   components: [],
 };
 
-export default App;
+export default hot(module)(App);

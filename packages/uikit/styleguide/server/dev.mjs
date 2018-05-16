@@ -1,5 +1,6 @@
 import dotenv from 'dotenv';
-import middleware from 'webpack-dev-middleware';
+import devMiddleware from 'webpack-dev-middleware';
+import hotMiddleware from 'webpack-hot-middleware';
 import path from 'path';
 import webpack from 'webpack';
 
@@ -20,9 +21,10 @@ const compiler = webpack(webpackConfig);
 
 app
   .use(
-    middleware(compiler, {
+    devMiddleware(compiler, {
       publicPath: webpackConfig.output.publicPath,
       stats: webpackConfig.stats,
     }),
   )
+  .use(hotMiddleware(compiler, { reload: true }))
   .listen(port, () => console.log(`Server listening at port ${port}`));
