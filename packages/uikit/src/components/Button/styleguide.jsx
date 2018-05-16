@@ -4,19 +4,24 @@ import React from 'react';
 import Button from '.';
 import styles from './styleguide.css';
 import { withStyleguide } from '../../../styleguide/client/higherOrderComponents';
-import { boolean, text } from '../../../styleguide/client/knobs';
+import { boolean, select, text } from '../../../styleguide/client/knobs';
+
+const typeOptions = [
+  { text: 'Primary', value: 'primary' },
+  { text: 'Secondary', value: 'secondary' },
+  { text: 'Tertiary', value: 'tertiary' },
+];
 
 const knobs = {
   content: text('Content', 'Action'),
-  secondary: boolean('Secondary', false),
-  tertiary: boolean('Tertiary', false),
+  type: select('Type', typeOptions, 'primary'),
   disabled: boolean('Disabled', false),
 };
 
-const ButtonStyleguide = ({ content, secondary, tertiary, disabled }) => (
+const ButtonStyleguide = ({ content, type, disabled }) => (
   <Button
-    secondary={secondary}
-    tertiary={tertiary}
+    secondary={type === 'secondary'}
+    tertiary={type === 'tertiary'}
     disabled={disabled}
     className={styles.button}
   >
@@ -27,15 +32,13 @@ const ButtonStyleguide = ({ content, secondary, tertiary, disabled }) => (
 ButtonStyleguide.propTypes = {
   content: string,
   disabled: bool,
-  secondary: bool,
-  tertiary: bool,
+  type: string,
 };
 
 ButtonStyleguide.defaultProps = {
   content: '',
   disabled: false,
-  secondary: false,
-  tertiary: false,
+  type: 'primary',
 };
 
 export default withStyleguide({ knobs })(ButtonStyleguide);
