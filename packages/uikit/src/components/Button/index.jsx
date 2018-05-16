@@ -12,7 +12,7 @@ const Button = ({ children, secondary, tertiary, className, ...props }) => (
       {
         [styles.secondary]: secondary,
         [styles.tertiary]: tertiary,
-        [typography.actionPrimary]: secondary || tertiary,
+        [typography.actionSecondary]: secondary || tertiary,
       },
       className,
     )}
