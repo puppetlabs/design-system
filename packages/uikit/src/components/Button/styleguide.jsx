@@ -3,7 +3,7 @@ import React from 'react';
 
 import Button from '.';
 import styles from './styleguide.css';
-import { withStyleguide } from '../../../styleguide/client/higherOrderComponents';
+import { withControls } from '../../../styleguide/client/higherOrderComponents';
 import { boolean, select, text } from '../../../styleguide/client/knobs';
 
 const typeOptions = [
@@ -41,4 +41,4 @@ ButtonStyleguide.defaultProps = {
   type: 'primary',
 };
 
-export default withStyleguide({ knobs })(ButtonStyleguide);
+export default withControls({ knobs })(ButtonStyleguide);

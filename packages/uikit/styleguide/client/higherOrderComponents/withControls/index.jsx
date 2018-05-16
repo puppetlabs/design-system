@@ -6,9 +6,9 @@ import { Redirect } from 'react-router-dom';
 
 import Knobs from '../../components/Knobs';
 import { getMissingParams, updateSearch, parseValues } from './methods';
-import styles from './StyleguideContainer.css';
+import styles from './controls.css';
 
-const withStyleguide = ({ knobs }) => Component => {
+const withControls = ({ knobs }) => Component => {
   const WrappedComponent = ({ location, ...passThroughProps }) => {
     const { pathname, search } = location;
     const params = parse(search);
@@ -44,4 +44,4 @@ const withStyleguide = ({ knobs }) => Component => {
   return WrappedComponent;
 };
 
-export default withStyleguide;
+export default withControls;
