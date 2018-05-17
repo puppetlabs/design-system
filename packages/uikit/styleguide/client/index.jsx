@@ -3,8 +3,7 @@ import { render } from 'react-dom';
 
 import App from './components/App';
 import ButtonStyleguide from '../../src/components/Button/styleguide';
-
-import '../../src/styles/globals.css';
+import './index.css';
 
 if (module.hot) {
   module.hot.accept();
