@@ -1,0 +1,23 @@
+@import '../../../../../src/styles/colors.css';
+
+.ui1 {
+width: 64px;
+height: 64px;
+background-color: var(--ui-1);
+border-radius:32px;
+margin:auto;
+}
+.colors ul {
+  padding-left: 0;
+}
+
+.colors ul li {
+  list-style-type: none;
+  text-align: center;
+  width: 80px;
+}
+
+.colors ul li p {
+  padding: 0;
+  margin: 2px;
+}
