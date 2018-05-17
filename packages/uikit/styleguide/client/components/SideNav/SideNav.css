@@ -8,14 +8,14 @@
   padding: 24px;
 }
 
-.side-nav>ul {
+.side-nav > ul {
   padding-left: 15px;
 }
 
-.side-nav>ul>li {
+.side-nav > ul > li {
   list-style-type: none;
   font-weight: 700;
-  font-size: .8125rem;
+  font-size: 0.8125rem;
   padding: 12px 0;
   border-bottom: 1px solid var(--ui-8);
   width: 140px;

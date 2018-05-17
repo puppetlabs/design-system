@@ -1,11 +1,14 @@
 @import '../../../../../src/styles/colors.css';
 
+.circle {
+  width: 64px;
+  height: 64px;
+  border-radius: 32px;
+  margin: auto;
+}
+
 .ui1 {
-width: 64px;
-height: 64px;
-background-color: var(--ui-1);
-border-radius:32px;
-margin:auto;
+  background-color: var(--ui-1);
 }
 .colors ul {
   padding-left: 0;
