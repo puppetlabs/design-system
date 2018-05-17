@@ -1,29 +1,21 @@
 import React from 'react';
 import { render } from 'react-dom';
-import Button from '../../src/components/Button';
-import typography from '../../src/styles/typography.css';
+
+import App from './components/App';
+import ButtonStyleguide from '../../src/components/Button/styleguide';
+
 import '../../src/styles/globals.css';
 
-const App = () => (
-  <div className={typography.body}>
-    <div>Puppet Styleguide</div>
-    <Button style={{ margin: 10 }}>Action</Button>
-    <Button disabled style={{ margin: 10 }}>
-      Action
-    </Button>
-    <Button secondary style={{ margin: 10 }}>
-      Action
-    </Button>
-    <Button secondary disabled style={{ margin: 10 }}>
-      Action
-    </Button>
-    <Button tertiary style={{ margin: 10 }}>
-      Action
-    </Button>
-    <Button tertiary disabled style={{ margin: 10 }}>
-      Action
-    </Button>
-  </div>
-);
+if (module.hot) {
+  module.hot.accept();
+}
 
-render(<App />, document.getElementById('root'));
+const components = [
+  {
+    path: 'button',
+    name: 'Button',
+    Component: ButtonStyleguide,
+  },
+];
+
+render(<App components={components} />, document.getElementById('root'));

@@ -1,0 +1,14 @@
+.content-outer {
+  height: 100vh;
+  display: flex;
+}
+
+.controls {
+  width: 250px;
+  flex: none;
+  border-left: 1px solid var(--ui-1);
+}
+
+.content {
+  flex: 1 1 auto;
+}

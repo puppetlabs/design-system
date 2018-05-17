@@ -12,7 +12,7 @@ const Button = ({ children, secondary, tertiary, className, ...props }) => (
       {
         [styles.secondary]: secondary,
         [styles.tertiary]: tertiary,
-        [typography.actionPrimary]: secondary || tertiary,
+        [typography.actionSecondary]: secondary || tertiary,
       },
       className,
     )}
@@ -26,11 +26,11 @@ Button.propTypes = {
   children: PropTypes.node,
   secondary: PropTypes.bool,
   tertiary: PropTypes.bool,
-  className: PropTypes.oneOfType(
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
     PropTypes.object,
-  ),
+  ]),
 };
 
 Button.defaultProps = {
