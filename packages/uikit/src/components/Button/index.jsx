@@ -26,11 +26,11 @@ Button.propTypes = {
   children: PropTypes.node,
   secondary: PropTypes.bool,
   tertiary: PropTypes.bool,
-  className: PropTypes.oneOfType(
+  className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
     PropTypes.object,
-  ),
+  ]),
 };
 
 Button.defaultProps = {
