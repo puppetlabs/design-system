@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { arrayOf, shape, string, element } from 'prop-types';
+import { arrayOf, func, shape, string } from 'prop-types';
 import { map } from 'ramda';
 import React from 'react';
 import { hot } from 'react-hot-loader';
@@ -30,7 +30,7 @@ App.propTypes = {
     shape({
       name: string,
       path: string,
-      Component: element,
+      Component: func,
     }),
   ),
 };

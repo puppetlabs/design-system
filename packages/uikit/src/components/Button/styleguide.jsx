@@ -19,14 +19,17 @@ const knobs = {
 };
 
 const ButtonStyleguide = ({ content, type, disabled }) => (
-  <Button
-    secondary={type === 'secondary'}
-    tertiary={type === 'tertiary'}
-    disabled={disabled}
-    className={styles.button}
-  >
-    {content}
-  </Button>
+  <div>
+    <h1>Button</h1>
+    <Button
+      secondary={type === 'secondary'}
+      tertiary={type === 'tertiary'}
+      disabled={disabled}
+      className={styles.button}
+    >
+      {content}
+    </Button>
+  </div>
 );
 
 ButtonStyleguide.propTypes = {

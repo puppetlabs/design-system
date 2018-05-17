@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 import styles from './SideNav.css';
 
 const ComponentLink = ({ path, name }) => (
-  <li>
+  <li key={path}>
     <NavLink to={`/components/${path}`} activeClassName={styles.active}>
       {name}
     </NavLink>

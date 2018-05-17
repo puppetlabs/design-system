@@ -1,5 +1,5 @@
 import { parse, stringify } from 'query-string';
-import { arrayOf, element, func, shape, string } from 'prop-types';
+import { any, func, objectOf, shape, string } from 'prop-types';
 import { __, assoc, compose, map, mapObjIndexed, prop, values } from 'ramda';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
@@ -38,10 +38,10 @@ Knobs.propTypes = {
   history: shape({
     replace: func,
   }).isRequired,
-  knobs: arrayOf(
+  knobs: objectOf(
     shape({
-      fallback: string,
-      Knob: element,
+      fallback: any,
+      Knob: func,
     }),
   ),
 };

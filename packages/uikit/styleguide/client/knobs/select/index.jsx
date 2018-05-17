@@ -4,7 +4,11 @@ import { map, path, compose } from 'ramda';
 
 const getValue = path(['target', 'value']);
 
-const SelectOption = ({ text, value }) => <option value={value}>{text}</option>;
+const SelectOption = ({ text, value }) => (
+  <option key={value} value={value}>
+    {text}
+  </option>
+);
 
 SelectOption.propTypes = {
   text: string.isRequired,
