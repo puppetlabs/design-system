@@ -1,7 +1,38 @@
+@import '../../../../src/styles/colors.css';
+
 .side-nav {
-  width: 250px;
   flex: none;
-  border-right: 1px solid var(--ui-1);
+  width: 218px;
+  border-right: 1px solid var(--ui-8);
+  background-color: var(--ui-10);
+  padding: 24px;
+}
+
+.side-nav > ul {
+  padding-left: 15px;
+}
+
+.side-nav > ul > li {
+  list-style-type: none;
+  font-weight: 700;
+  font-size: 0.8125rem;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ui-8);
+  width: 140px;
+}
+
+.side-nav ul li ul {
+  padding-left: 0;
+}
+
+.side-nav ul li ul li {
+  font-weight: 400;
+  list-style-type: none;
+}
+
+.side-nav a:-webkit-any-link {
+  text-decoration: none;
+  color: var(--ui-4);
 }
 
 .active {

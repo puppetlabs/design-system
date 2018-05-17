@@ -6,6 +6,7 @@ import { hot } from 'react-hot-loader';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ComponentRoute from './ComponentRoute';
+import Colors from '../foundations/Colors';
 import Landing from '../Landing';
 import SideNav from '../SideNav';
 import styles from './App.css';
@@ -18,6 +19,7 @@ const App = ({ components }) => (
       <div className={styles.content}>
         <Switch>
           {map(ComponentRoute, components)}
+          <Route component={Colors} path="/foundations/colors" />
           <Route component={Landing} />
         </Switch>
       </div>
