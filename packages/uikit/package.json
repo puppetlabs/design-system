@@ -1,9 +1,9 @@
 {
-  "name": "react-boilerplate",
-  "version": "1.0.0",
+  "name": "uikit",
+  "version": "0.1.0",
   "main": "index.js",
-  "author": "Noah Muldavin <nmuldavin@gmail.com>",
-  "license": "MIT",
+  "author": "Puppet, Inc.",
+  "license": "UNLICENSED",
   "scripts": {
     "start": "node --experimental-modules styleguide/server/dev.mjs",
     "serve": "node --experimental-modules styleguide/server/prod.mjs",
