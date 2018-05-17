@@ -13,7 +13,7 @@ import webpackConfig from '../../config/development.webpack.config';
  */
 const { __dirname } = expose;
 dotenv.config({
-  path: path.resolve(__dirname, '../../config/.env.production'),
+  path: path.resolve(__dirname, '../../config/.env.development'),
 });
 
 const port = process.env.PORT || 3000;
