@@ -17,7 +17,7 @@ const Colors = () => (
     <div className={styles.colors}>
       <ul>
         <li>
-          <div className={(styles.circle, styles.ui1)}>&nbsp;</div>
+          <div className={styles.ui1}>&nbsp;</div>
           <p>UI_1</p>
           <p>#000e1c</p>
         </li>

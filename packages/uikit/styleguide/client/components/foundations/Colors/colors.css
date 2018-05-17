@@ -1,13 +1,10 @@
 @import '../../../../../src/styles/colors.css';
 
-.circle {
+.ui1 {
   width: 64px;
   height: 64px;
   border-radius: 32px;
   margin: auto;
-}
-
-.ui1 {
   background-color: var(--ui-1);
 }
 .colors ul {
