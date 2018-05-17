@@ -5,6 +5,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 
 import Knobs from '../../components/Knobs';
+import StyleguideContent from '../../components/StyleguideContent';
 import { getMissingParams, updateSearch, parseValues } from './methods';
 import styles from './controls.css';
 
@@ -22,16 +23,14 @@ const withControls = ({ knobs }) => Component => {
       );
     }
 
-    return (
-      <div className={styles.contentOuter}>
-        <div className={styles.content}>
-          <Component {...parseValues(params, knobs)} {...passThroughProps} />
-        </div>
-        <div className={styles.controls}>
-          <Knobs knobs={knobs} />
-        </div>
-      </div>
-    );
+    return [
+      <StyleguideContent key="a">
+        <Component {...parseValues(params, knobs)} {...passThroughProps} />
+      </StyleguideContent>,
+      <div className={styles.controls} key="b">
+        <Knobs knobs={knobs} />
+      </div>,
+    ];
   };
 
   WrappedComponent.propTypes = {

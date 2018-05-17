@@ -8,7 +8,7 @@ const parseValue = value => value === 'true';
 
 const boolean = (label, fallback) => {
   const Knob = ({ value, updateValue }) => (
-    <label htmlFor={label} style={{ display: 'block' }}>
+    <label htmlFor={label}>
       {label}
       <input
         type="checkbox"

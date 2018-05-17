@@ -1,14 +1,11 @@
 .content-outer {
   height: 100vh;
   display: flex;
+  flex-direction: column;
 }
 
 .controls {
-  width: 250px;
+  height: 100px;
   flex: none;
-  border-left: 1px solid var(--ui-1);
-}
-
-.content {
-  flex: 1 1 auto;
+  border-top: 1px solid var(--ui-1);
 }

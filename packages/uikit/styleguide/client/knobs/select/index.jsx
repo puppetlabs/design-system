@@ -17,7 +17,7 @@ SelectOption.propTypes = {
 
 const select = (label, options, fallback) => {
   const Knob = ({ value, updateValue }) => (
-    <label htmlFor={label} style={{ display: 'block' }}>
+    <label htmlFor={label}>
       {label}
       <select
         id={label}
