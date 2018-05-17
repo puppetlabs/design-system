@@ -3,12 +3,15 @@
 
 .button {
   box-sizing: border-box;
-  height: var(--input-height);
   cursor: pointer;
   border-radius: var(--border-radius);
-  padding: 0 16px 2px 16px;
-  min-width: 80px;
+  margin: 0;
+  padding: 6px 16px;
+  min-width: 100px;
   display: inline-block;
+  color: #ffffff;
+  font-family: Calibre, Helvetica, Arial, sans-serif;
+  font-weight: 500;
 
   /*
    * Border is implemented using box-shadow rather than actual border or outline so that
@@ -20,27 +23,18 @@
   /*
    * Primary style is default
    */
-  background-color: var(--button-yellow-1);
-  box-shadow: inset 0 -2px 0 0 var(--button-yellow-2);
+  background-color: #3980ff;
 
   &:hover {
-    background-color: var(--button-yellow-3);
-    box-shadow: inset 0 -2px 0 0 var(--button-yellow-1);
+    background-color: #59a1f7;
   }
 
   &:active {
-    background-color: var(--button-yellow-2);
-    box-shadow: inset 0 -2px 0 0 var(--button-yellow-1);
+    background-color: #416bc5;
   }
 
   &:focus {
-    box-shadow: 0 0 2px 1px var(--link-hover),
-      inset 0 -2px 0 0 var(--button-yellow-2);
-  }
-
-  &:active:focus {
-    box-shadow: 0 0 2px 1px var(--link-hover),
-      inset 0 -2px 0 0 var(--button-yellow-1);
+    box-shadow: inset 0 0 0 2px #96b6fb !important;
   }
 
   &.secondary {
