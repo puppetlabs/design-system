@@ -6,7 +6,7 @@ const getValue = path(['target', 'value']);
 
 const text = (label, fallback) => {
   const Knob = ({ value, updateValue }) => (
-    <label htmlFor={label} style={{ display: 'block' }}>
+    <label htmlFor={label}>
       {label}
       <input
         type="text"

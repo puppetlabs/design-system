@@ -3,6 +3,8 @@
 }
 
 .content {
-  flex: 1 1 auto;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
