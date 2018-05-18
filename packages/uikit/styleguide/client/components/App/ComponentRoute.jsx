@@ -3,7 +3,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 const ComponentRoute = ({ name, path, Component }) => (
-  <Route key={name} path={`/components/${path}`} component={Component} />
+  <Route key={name} path={path} component={Component} />
 );
 
 ComponentRoute.propTypes = {

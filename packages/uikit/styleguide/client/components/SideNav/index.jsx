@@ -3,7 +3,7 @@ import { map } from 'ramda';
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import ComponentLink from './ComponentLink';
+import SideNavLink from './SideNavLink';
 import styles from './SideNav.css';
 import path from './logo.png';
 
@@ -19,14 +19,19 @@ const SideNav = ({ components }) => (
       <li>
         Foundations
         <ul>
-          <li>
-            <Link to="/foundations/colors">Colors</Link>
-          </li>
+          <SideNavLink path="/foundations/colors" name="Colors" />
+          <SideNavLink path="/foundations/typography" name="Typography" />
+          <SideNavLink path="/foundations/icons" name="Icons and logos" />
+          <SideNavLink path="/foundations/grid" name="Grid system" />
+          <SideNavLink
+            path="/foundations/spacing"
+            name="Spacing and padding"
+          />
         </ul>
       </li>
       <li>
         Components
-        <ul>{map(ComponentLink, components)}</ul>
+        <ul>{map(SideNavLink, components)}</ul>
       </li>
       <li>Guidelines</li>
       <li>Navigation</li>
