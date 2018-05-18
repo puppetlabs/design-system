@@ -1,7 +1,28 @@
 import React from 'react';
-import classNames from 'classnames';
+import colors from '!raw-loader!../../../../../src/styles/colors.css'; // eslint-disable-line
 import StyleguideContent from '../../StyleguideContent';
 import styles from './colors.css';
+
+const parseVariables = data => {
+  const re = /--(.*): (.*);/g;
+  let loop = true;
+  const variables = {};
+
+  while (loop) {
+    const match = re.exec(data);
+    if (match) {
+      const key = match[1];
+      const value = match[2];
+      variables[key] = value;
+    } else {
+      loop = false;
+    }
+  }
+
+  return variables;
+};
+
+const colorVariables = parseVariables(colors);
 
 const Colors = () => (
   <StyleguideContent>
@@ -17,15 +38,20 @@ const Colors = () => (
         helps users who are colorblind or have low vision to better interact
         with our products, and improves usability and readability for all users.
       </p>
-      <div className={styles.colors}>
-        <ul>
-          <li>
-            <div className={classNames(styles.circle, styles.ui1)}>&nbsp;</div>
-            <p>UI_1</p>
-            <p>#000e1c</p>
+      <ul className={styles.colors}>
+        {Object.keys(colorVariables).map(name => (
+          <li key={name}>
+            <div
+              className={styles.swatch}
+              style={{ backgroundColor: colorVariables[name] }}
+            >
+              &nbsp;
+            </div>
+            <p>{name}</p>
+            <p>{colorVariables[name]}</p>
           </li>
-        </ul>
-      </div>
+        ))}
+      </ul>
     </div>
   </StyleguideContent>
 );
