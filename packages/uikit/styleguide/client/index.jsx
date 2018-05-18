@@ -11,7 +11,7 @@ if (module.hot) {
 
 const components = [
   {
-    path: 'button',
+    path: '/components/button',
     name: 'Button',
     Component: ButtonStyleguide,
   },
