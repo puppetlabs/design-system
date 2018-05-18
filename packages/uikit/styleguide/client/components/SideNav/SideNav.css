@@ -1,38 +1,37 @@
 @import '../../../../src/styles/colors.css';
 
 .side-nav {
-  flex: none;
   width: 218px;
   border-right: 1px solid var(--ui-8);
   background-color: var(--ui-10);
   padding: 24px;
-}
 
-.side-nav > ul {
-  padding-left: 15px;
-}
+  & a {
+    text-decoration: none;
+    color: initial;
+  }
 
-.side-nav > ul > li {
-  list-style-type: none;
-  font-weight: 700;
-  font-size: 0.8125rem;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--ui-8);
-  width: 140px;
-}
+  & > ul {
+    padding-left: 15px;
+    list-style-type: none;
 
-.side-nav ul li ul {
-  padding-left: 0;
-}
+    & > li {
+      font-weight: 700;
+      font-size: 0.8125rem;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--ui-8);
+      width: 140px;
 
-.side-nav ul li ul li {
-  font-weight: 400;
-  list-style-type: none;
-}
+      & > ul {
+        padding-left: 0;
 
-.side-nav a:-webkit-any-link {
-  text-decoration: none;
-  color: var(--ui-4);
+        & > li {
+          font-weight: 400;
+          list-style-type: none;
+        }
+      }
+    }
+  }
 }
 
 .active {
