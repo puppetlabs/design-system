@@ -1,4 +1,5 @@
 import React from 'react';
+import classNames from 'classnames';
 import StyleguideContent from '../../StyleguideContent';
 import styles from './colors.css';
 
@@ -19,7 +20,7 @@ const Colors = () => (
       <div className={styles.colors}>
         <ul>
           <li>
-            <div className={styles.ui1}>&nbsp;</div>
+            <div className={classNames(styles.circle, styles.ui1)}>&nbsp;</div>
             <p>UI_1</p>
             <p>#000e1c</p>
           </li>
