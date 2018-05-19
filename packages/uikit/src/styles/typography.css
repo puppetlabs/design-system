@@ -54,62 +54,89 @@
   color: var(--ui-3);
 }
 
-.action-primary {
+.action-primary,
+.action-primary-disabled {
   font-family: Calibre;
   font-size: 16px;
   font-weight: 600;
   line-height: normal;
+}
+
+.action-primary {
   color: var(--ui-1);
 }
 
-.action-primary:disabled {
+.action-primary:disabled,
+.action-primary-disabled {
   color: var(--ui-6);
 }
 
-.action-secondary {
+.action-secondary,
+.action-secondary-disabled {
   font-family: Calibre;
   font-size: 16px;
   font-weight: 500;
   line-height: normal;
+}
+
+.action-secondary {
   color: var(--ui-1);
 }
 
-.action-secondary:disabled {
+.action-secondary:disabled,
+.action-secondary-disabled {
   color: var(--ui-6);
 }
 
 /* MAIN CONTENT — OPEN SANS */
 .body,
-.body-bold {
+.body-bold,
+.body-link {
   font-family: 'Open Sans';
   font-size: 14px;
   line-height: 20px;
 }
 
-.body {
-  font-weight:400;
+.body-small,
+.body-bold-small,
+.body-link-small {
+  font-family: 'Open Sans';
+  font-size: 12px;
+  line-height: 18px;
+}
+
+.body,
+.body-small {
+  font-weight: 400;
   color: var(--ui-3);
 }
 
-.body a,
-.body-small a {
-  color: var(--link-default);
-}
-
-.body a:hover,
-.body-small a:hover {
-  color: var(--link-hover);
-}
-
 .body-bold,
-.body-small-bold {
+.body-bold-small {
   font-weight: 700;
   color: var(--ui-3);
 }
 
-.body-small,
-.body-small-bold {
-  font-family: 'Open Sans';
-  font-size: 12px;
-  line-height: 18px;
+.body-link,
+.body-link-small {
+  color: var(--link-default);
+  text-decoration: underline;
+}
+
+.body-link:hover,
+.body-link-hover,
+.body-link-small:hover,
+.body-link-small-hover {
+  color: var(--link-hover);
+}
+
+.body-link:disabled,
+.body-link-disabled,
+.body-link[aria-disabled="true"],
+.body-link-small:disabled,
+.body-link-small-disabled,
+.body-link-small[aria-disabled="true"] {
+  color: var(--ui-8);
+  display: inline-block;  /* For IE11/ MS Edge bug */
+  pointer-events: none;
 }

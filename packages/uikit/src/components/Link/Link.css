@@ -1,0 +1,9 @@
+@import '../../styles/colors.css';
+
+.link {
+  box-sizing: border-box;
+  border: none;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
