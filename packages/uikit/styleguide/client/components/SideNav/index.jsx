@@ -23,10 +23,7 @@ const SideNav = ({ components }) => (
           <SideNavLink path="/foundations/typography" name="Typography" />
           <SideNavLink path="/foundations/icons" name="Icons and logos" />
           <SideNavLink path="/foundations/grid" name="Grid system" />
-          <SideNavLink
-            path="/foundations/spacing"
-            name="Spacing and padding"
-          />
+          <SideNavLink path="/foundations/spacing" name="Spacing and padding" />
         </ul>
       </li>
       <li>

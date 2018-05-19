@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import ComponentRoute from './ComponentRoute';
 import Colors from '../foundations/Colors';
+import Typography from '../foundations/Typography';
 import Landing from '../Landing';
 import SideNav from '../SideNav';
 import styles from './App.css';
@@ -20,6 +21,7 @@ const App = ({ components }) => (
         <Switch>
           {map(ComponentRoute, components)}
           <Route component={Colors} path="/foundations/colors" />
+          <Route component={Typography} path="/foundations/typography" />
           <Route component={Landing} />
         </Switch>
       </div>

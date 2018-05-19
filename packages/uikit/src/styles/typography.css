@@ -5,9 +5,51 @@
 @import './fonts/Calibre/index.css';
 @import './fonts/OpenSans/index.css';
 
-.body {
-  font-family: 'Open Sans';
+/* HEADINGS AND ACTIONS — CALIBRE */
+.heading1 {
+  font-family: Calibre;
+  font-size: 40px;
+  font-weight: 600;
+  line-height: normal;
+  color: var(--ui-3);
+}
+
+.heading2 {
+  font-family: Calibre;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--ui-3);
+}
+
+.heading3 {
+  font-family: Calibre;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--ui-3);
+}
+
+.heading4 {
+  font-family: Calibre;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  color: var(--ui-3);
+}
+
+.numbers-h1 {
+  font-family: Calibre;
+  font-size: 80px;
+  font-weight: 300;
+  line-height: normal;
+  color: var(--ui-3);
+}
+
+.numbers-h2 {
+  font-family: Calibre;
   font-size: 14px;
+  font-weight: 400;
   line-height: 20px;
   color: var(--ui-3);
 }
@@ -34,4 +76,40 @@
 
 .action-secondary:disabled {
   color: var(--ui-6);
+}
+
+/* MAIN CONTENT — OPEN SANS */
+.body,
+.body-bold {
+  font-family: 'Open Sans';
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.body {
+  font-weight:400;
+  color: var(--ui-3);
+}
+
+.body a,
+.body-small a {
+  color: var(--link-default);
+}
+
+.body a:hover,
+.body-small a:hover {
+  color: var(--link-hover);
+}
+
+.body-bold,
+.body-small-bold {
+  font-weight: 700;
+  color: var(--ui-3);
+}
+
+.body-small,
+.body-small-bold {
+  font-family: 'Open Sans';
+  font-size: 12px;
+  line-height: 18px;
 }
