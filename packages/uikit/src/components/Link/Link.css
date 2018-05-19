@@ -1,5 +1,6 @@
-@import '../../styles/colors.css';
-
+/**
+ * These styles are mainly to override default button styles
+ */
 .link {
   box-sizing: border-box;
   border: none;

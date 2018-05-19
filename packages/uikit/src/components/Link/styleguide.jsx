@@ -18,10 +18,15 @@ const knobs = {
   disabled: boolean('Disabled', false),
 };
 
-const LinkStyleguide = ({ content, to, button, disabled }) => (
+const LinkStyleguide = ({ content, to, type, button, disabled }) => (
   <div>
     <h1>Link</h1>
-    <Link to={to} button={button} disabled={disabled}>
+    <Link
+      to={to}
+      button={button}
+      secondary={type === 'secondary'}
+      disabled={disabled}
+    >
       {content}
     </Link>
   </div>
@@ -30,6 +35,7 @@ const LinkStyleguide = ({ content, to, button, disabled }) => (
 LinkStyleguide.propTypes = {
   content: string,
   to: string,
+  type: string,
   button: bool,
   disabled: bool,
 };
@@ -37,6 +43,7 @@ LinkStyleguide.propTypes = {
 LinkStyleguide.defaultProps = {
   content: '',
   to: '',
+  type: '',
   button: false,
   disabled: false,
 };

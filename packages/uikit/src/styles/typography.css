@@ -91,7 +91,8 @@
 /* MAIN CONTENT — OPEN SANS */
 .body,
 .body-bold,
-.body-link {
+.body-link,
+.body-link-secondary {
   font-family: 'Open Sans';
   font-size: 14px;
   line-height: 20px;
@@ -99,7 +100,8 @@
 
 .body-small,
 .body-bold-small,
-.body-link-small {
+.body-link-small,
+.body-link-secondary-small {
   font-family: 'Open Sans';
   font-size: 12px;
   line-height: 18px;
@@ -118,25 +120,40 @@
 }
 
 .body-link,
-.body-link-small {
+.body-link-small,
+.body-link-secondary,
+.boy-link-seconary-small {
+  font-weight: 400;
   color: var(--link-default);
+  outline: none;
+  border-radius: 3px;
+
+  &:hover {
+    color: var(--link-hover);
+  }
+
+  &:active {
+    color: var(--link-default);
+  }
+
+  &:focus {
+    box-shadow: 0 0 2px 1px var(--link-hover);
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    color: var(--ui-8);
+    display: inline-block; /* For IE11/ MS Edge bug */
+    pointer-events: none;
+  }
+}
+
+.body-link,
+.body-link-small {
   text-decoration: underline;
 }
 
-.body-link:hover,
-.body-link-hover,
-.body-link-small:hover,
-.body-link-small-hover {
-  color: var(--link-hover);
-}
-
-.body-link:disabled,
-.body-link-disabled,
-.body-link[aria-disabled="true"],
-.body-link-small:disabled,
-.body-link-small-disabled,
-.body-link-small[aria-disabled="true"] {
-  color: var(--ui-8);
-  display: inline-block;  /* For IE11/ MS Edge bug */
-  pointer-events: none;
+.body-link-secondary,
+.body-link-secondary-small {
+  text-decoration: none;
 }

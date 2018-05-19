@@ -7,18 +7,29 @@ import isExternal from './isExternal';
 import typography from '../../styles/typography.css';
 import styles from './Link.css';
 
+const getTypography = (small, secondary) => {
+  if (small) {
+    return secondary
+      ? typography.bodyLinkSecondarySmall
+      : typography.bodyLinkSmall;
+  }
+
+  return secondary ? typography.bodyLinkSecondary : typography.bodyLink;
+};
+
 const Link = ({
   children,
   button,
   to,
   small,
+  secondary,
   disabled,
   className,
   ...other
 }) => {
   const fullClass = classNames(
     styles.link,
-    small ? typography.bodyLinkSmall : typography.bodyLink,
+    getTypography(small, secondary),
     className,
   );
 
@@ -55,6 +66,7 @@ Link.propTypes = {
   button: bool,
   to: string,
   small: bool,
+  secondary: bool,
   disabled: bool,
   className: oneOfType([string, array, object]),
 };
@@ -64,6 +76,7 @@ Link.defaultProps = {
   button: false,
   to: '',
   small: false,
+  secondary: false,
   disabled: false,
   className: '',
 };
