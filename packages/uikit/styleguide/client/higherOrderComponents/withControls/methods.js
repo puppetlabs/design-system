@@ -1,7 +1,7 @@
 import { stringify } from 'query-string';
 import { compose, map, mapObjIndexed, merge, prop, uncurryN } from 'ramda';
 
-import differenceByKey from '../../../../src/methods/differenceByKey';
+import differenceByKey from '../../methods/differenceByKey';
 
 /**
  * Compares a set of parsed url parameters and a Knob definition object. Returns
