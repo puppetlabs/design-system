@@ -1,4 +1,4 @@
-import is from 'ramda/es/is';
+import is from 'ramda/src/is';
 
 const re = /^https?:\/\//;
 

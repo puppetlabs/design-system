@@ -33,7 +33,7 @@ module.exports = {
       'error',
       {
         components: ['Link'],
-        specialLink: ['to'],
+        specialLink: ['to', 'button'],
       },
     ],
   },

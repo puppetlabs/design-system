@@ -4,18 +4,8 @@ import { node, bool, oneOfType, string, array, object } from 'prop-types';
 import { Link as ReactRouterLink } from 'react-router-dom';
 
 import isExternal from './isExternal';
-import typography from '../../styles/typography.css';
 import styles from './Link.css';
-
-const getTypography = (small, secondary) => {
-  if (small) {
-    return secondary
-      ? typography.bodyLinkSecondarySmall
-      : typography.bodyLinkSmall;
-  }
-
-  return secondary ? typography.bodyLinkSecondary : typography.bodyLink;
-};
+import getTypography from './getTypography';
 
 const Link = ({
   children,
