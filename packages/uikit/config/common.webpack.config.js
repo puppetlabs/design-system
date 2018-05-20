@@ -10,7 +10,7 @@ module.exports = {
     children: false,
   },
   plugins: [
-    new CleanWebpackPlugin(['dist'], { root: paths.root() }),
+    new CleanWebpackPlugin(['styleguide-dist'], { root: paths.root() }),
     new HtmlWebpackPlugin({
       template: paths.client('index.html'),
     }),
@@ -18,7 +18,7 @@ module.exports = {
   ],
   output: {
     filename: 'bundles/[name].[hash].js',
-    path: paths.dist(),
+    path: paths.styleguideDist(),
     publicPath: '/',
   },
   module: {
