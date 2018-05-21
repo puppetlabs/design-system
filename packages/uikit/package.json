@@ -5,7 +5,7 @@
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "webpack --config=config/bundle.webpack.config.js",
+    "build": "NODE_ENV=production webpack --config=config/bundle.webpack.config.js",
     "build:styleguide": "(export $(cat config/.env.production | xargs) && webpack --config=config/production.webpack.config.js)",
     "prepare": "echo 'Building uikit' && npm run build",
     "format": "eslint --fix src styleguide config && prettier --write --list-different '{src,styleguide,config}/**/*.{js,jsx,css}'",
