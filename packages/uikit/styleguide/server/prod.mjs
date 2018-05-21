@@ -17,5 +17,5 @@ dotenv.config({
 const port = process.env.PORT || 3000;
 
 app
-  .use(express.static(paths.dist()))
+  .use(express.static(paths.styleguideDist()))
   .listen(port, () => console.log(`Server listening at port ${port}`));
