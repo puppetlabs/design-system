@@ -33,7 +33,7 @@ module.exports = {
     library: 'uikit',
     libraryTarget: 'umd',
     path: paths.dist(),
-    publicPath: '/',
+    publicPath: './',
   },
   externals: nodeModules,
   module: {
