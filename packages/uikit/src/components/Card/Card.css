@@ -2,22 +2,18 @@
 @import '../../styles/variables.css';
 
 .card {
+  display:inline-block;
   border: 1px solid var(--ui-6);
   box-shadow: 0 2px 0 0 var(--ui-6);
-  -webkit-box-shadow: 0 2px 0 0 var(--ui-6);
   border-radius: var(--small-border-radius);
   background-color: var(--white);
   padding: 12px;
-  -webkit-transition: -webkit-box-shadow .1s ease,-webkit-transform .1s ease;
-  transition: -webkit-box-shadow .1s ease,-webkit-transform .1s ease;
+  position:relative;
   transition: box-shadow .1s ease,transform .1s ease;
-  transition: box-shadow .1s ease,transform .1s ease,-webkit-box-shadow .1s ease,-webkit-transform .1s ease;
 }
 
 .card.link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 0 0 var(--ui-5);
-  -webkit-box-shadow: 0 4px 0 0 var(--ui-5);
   box-shadow: 0 4px 0 0 var(--ui-5);
   cursor: pointer;
 }
