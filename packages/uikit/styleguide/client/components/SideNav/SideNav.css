@@ -36,12 +36,17 @@
           font-weight: 400;
           list-style-type: none;
 
-          & a {
+          & > a {
             display: block;
             margin: 0 -16px;
             padding: 4px 16px;
             border-radius: var(--border-radius);
             color: var(--ui-3);
+
+            &:hover {
+              color: inherit;
+              background-color: var(--ui-8);
+            }
           }
         }
       }
