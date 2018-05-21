@@ -7,5 +7,6 @@
 .controls {
   height: 100px;
   flex: none;
-  border-top: 1px solid var(--ui-1);
+  border-top: 1px solid var(--ui-8);
+  padding: 20px;
 }

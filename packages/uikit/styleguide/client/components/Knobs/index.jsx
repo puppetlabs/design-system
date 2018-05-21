@@ -3,6 +3,7 @@ import { any, func, objectOf, shape, string } from 'prop-types';
 import { __, assoc, compose, map, mapObjIndexed, prop, values } from 'ramda';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import styles from './knobs.css';
 
 const Knobs = ({ location, history, knobs }) => {
   const { pathname, search } = location;
@@ -27,7 +28,14 @@ const Knobs = ({ location, history, knobs }) => {
     map(prop('Knob')),
   );
 
-  return <form>{renderKnobs(knobs)}</form>;
+  return (
+    <div className={styles.knobs}>
+      <form>
+        <div className={styles.heading3}>Knobs</div>
+        {renderKnobs(knobs)}
+      </form>
+    </div>
+  );
 };
 
 Knobs.propTypes = {
