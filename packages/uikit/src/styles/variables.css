@@ -1,4 +1,5 @@
 :root {
   --input-height: 32px;
-  --border-radius: 3px;
+  --small-border-radius: 2px;
+  --medium-border-radius: 3px;
 }

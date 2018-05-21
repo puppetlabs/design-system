@@ -5,6 +5,7 @@ import App from './components/App';
 import ButtonStyleguide from '../../src/components/Button/styleguide';
 import LinkStyleguide from '../../src/components/Link/styleguide';
 import HeaderStyleguide from '../../src/components/Header/styleguide';
+import CardStyleguide from '../../src/components/Card/styleguide';
 import './index.css';
 
 if (module.hot) {
@@ -26,6 +27,11 @@ const components = [
     path: '/components/Header',
     name: 'Header',
     Component: HeaderStyleguide,
+  },
+  {
+    path: '/components/card',
+    name: 'Card',
+    Component: CardStyleguide,
   },
 ];
 
