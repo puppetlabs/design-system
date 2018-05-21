@@ -122,11 +122,11 @@
 .body-link,
 .body-link-small,
 .body-link-secondary,
-.boy-link-seconary-small {
+.body-link-secondary-small {
   font-weight: 400;
   color: var(--link-default);
   outline: none;
-  border-radius: var(--border-radius);
+  border-radius: var(--medium-border-radius);
 
   &:hover {
     color: var(--link-hover);
