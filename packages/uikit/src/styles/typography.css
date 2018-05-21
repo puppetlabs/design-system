@@ -126,7 +126,7 @@
   font-weight: 400;
   color: var(--link-default);
   outline: none;
-  border-radius: 3px;
+  border-radius: var(--border-radius);
 
   &:hover {
     color: var(--link-hover);
