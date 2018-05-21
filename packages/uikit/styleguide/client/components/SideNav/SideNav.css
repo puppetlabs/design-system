@@ -40,7 +40,7 @@
             display: block;
             margin: 0 -16px;
             padding: 4px 16px;
-            border-radius: var(--border-radius);
+            border-radius: var(--medium-border-radius);
             color: var(--ui-3);
 
             &:hover {
