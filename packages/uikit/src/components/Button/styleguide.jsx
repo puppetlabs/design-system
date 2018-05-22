@@ -10,6 +10,7 @@ const typeOptions = [
   { text: 'Primary', value: 'primary' },
   { text: 'Secondary', value: 'secondary' },
   { text: 'Tertiary', value: 'tertiary' },
+  { text: 'Link', value: 'link' },
 ];
 
 const knobs = {
@@ -24,6 +25,7 @@ const ButtonStyleguide = ({ content, type, disabled }) => (
     <Button
       secondary={type === 'secondary'}
       tertiary={type === 'tertiary'}
+      link={type === 'link'}
       disabled={disabled}
       className={styles.button}
     >

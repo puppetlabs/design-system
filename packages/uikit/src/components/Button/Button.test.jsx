@@ -2,6 +2,7 @@ import { shallow } from 'enzyme';
 import React from 'react';
 
 import Button from '.';
+import typography from '../../styles/typography.css';
 
 test('Renders the child content inside a button', () => {
   shallow(<Button>Hi</Button>)
@@ -24,4 +25,15 @@ test('Passes through additional props to the inner button element', () => {
   shallow(<Button {...extraProps} />)
     .find('button')
     .should.have.props(extraProps);
+});
+
+test('Applies the correct typography', () => {
+  shallow(<Button />).should.have.className(typography.actionPrimary);
+  shallow(<Button secondary />).should.have.className(
+    typography.actionSecondary,
+  );
+  shallow(<Button tertiary />).should.have.className(
+    typography.actionSecondary,
+  );
+  shallow(<Button link />).should.have.className(typography.bodyLink);
 });

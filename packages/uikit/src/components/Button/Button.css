@@ -94,8 +94,27 @@
     }
   }
 
+  &.link {
+    box-shadow: none;
+    background-color: var(--white);
+
+    &:active {
+      box-shadow: none;
+    }
+
+    &:focus {
+      box-shadow: 0 0 2px 1px var(--link-hover);
+    }
+
+    &:disabled {
+      cursor: default;
+      background-color: var(--white);
+      box-shadow: none;
+    }
+  }
+
   /**
-   * All disabled buttons have the same style, but we need to override the default for each
+   * All disabled buttons execpt the link button have the same style, but we need to override the default for each
    */
   &:disabled,
   &.secondary:disabled,

@@ -4,15 +4,24 @@ import classNames from 'classnames';
 import typography from '../../styles/typography.css';
 import styles from './Button.css';
 
-const Button = ({ children, secondary, tertiary, className, ...props }) => (
+const Button = ({
+  children,
+  secondary,
+  link,
+  tertiary,
+  className,
+  ...props
+}) => (
   <button
     className={classNames(
       styles.button,
-      typography.actionPrimary,
       {
         [styles.secondary]: secondary,
         [styles.tertiary]: tertiary,
+        [styles.link]: link,
+        [typography.actionPrimary]: !(secondary || tertiary || link),
         [typography.actionSecondary]: secondary || tertiary,
+        [typography.bodyLink]: link,
       },
       className,
     )}
@@ -26,6 +35,7 @@ Button.propTypes = {
   children: PropTypes.node,
   secondary: PropTypes.bool,
   tertiary: PropTypes.bool,
+  link: PropTypes.bool,
   className: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.array,
@@ -37,6 +47,7 @@ Button.defaultProps = {
   children: '',
   secondary: false,
   tertiary: false,
+  link: false,
   className: '',
 };
 
