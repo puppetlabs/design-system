@@ -3,10 +3,9 @@
 
 .button {
   box-sizing: border-box;
-  height: var(--input-height);
   cursor: pointer;
   border-radius: var(--medium-border-radius);
-  padding: 0 16px 2px 16px;
+  padding: 5px 16px 7px;
   min-width: 80px;
   display: inline-block;
 
