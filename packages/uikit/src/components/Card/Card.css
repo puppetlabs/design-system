@@ -2,6 +2,7 @@
 @import '../../styles/variables.css';
 
 .card {
+  box-sizing: border-box;
   display: inline-block;
   background-color: var(--white);
   padding: 12px;
@@ -15,10 +16,14 @@
    */
   box-shadow: 0 2px 0 0 var(--ui-6);
 
-  &.link:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 0 0 var(--ui-5);
+
+  &.link {
     cursor: pointer;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 0 0 var(--ui-5);
+    }
   }
 
   &.secondary {
