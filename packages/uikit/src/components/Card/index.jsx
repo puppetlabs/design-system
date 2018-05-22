@@ -3,14 +3,16 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import styles from './Card.css';
 
-const Card = ({ link, className, ...props }) => {
+const Card = ({ secondary, link, className, ...props }) => {
   const Component = link ? 'a' : 'div';
 
   return (
     <Component
       className={classNames(
         styles.card,
+        styles.primary,
         {
+          [styles.secondary]: secondary,
           [styles.link]: link,
         },
         className,
@@ -21,6 +23,7 @@ const Card = ({ link, className, ...props }) => {
 };
 
 Card.propTypes = {
+  secondary: PropTypes.bool,
   link: PropTypes.bool,
   className: PropTypes.oneOfType([
     PropTypes.string,
@@ -30,6 +33,7 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
+  secondary: false,
   link: false,
   className: '',
 };
