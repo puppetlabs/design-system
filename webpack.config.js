@@ -1,7 +1,10 @@
 const webpack = require('webpack');
 const path = require('path');
 
+const env = process.env.NODE_ENV || 'development';
+
 module.exports = {
+  mode: env,
   entry: {
     library: './source/index.js',
   },
@@ -13,28 +16,29 @@ module.exports = {
   externals: {
     react: {
       commonjs: 'react',
-      commonjs2: 'react',
-      amd: 'react',
-      // React dep should be available as window.React, not window.react
-      root: 'React',
     },
     'react-dom': {
       commonjs: 'react-dom',
-      commonjs2: 'react-dom',
-      amd: 'react-dom',
-      root: 'ReactDOM',
+    },
+    moment: {
+      commonjs: 'moment',
+    },
+    'moment-timezone': {
+      commonjs: 'moment-timezone',
     },
   },
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: require.resolve('babel-loader'),
-      query: {
-        presets: [
-          require.resolve('babel-preset-es2015'),
-          require.resolve('babel-preset-react'),
-        ],
+      use: {
+        loader: 'babel-loader',
+        options: {
+          presets: [
+            'es2015',
+            'react',
+          ],
+        },
       },
     }],
   },
