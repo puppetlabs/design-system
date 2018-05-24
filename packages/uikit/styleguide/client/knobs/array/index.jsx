@@ -1,4 +1,4 @@
-import { string, func } from 'prop-types';
+import { arrayOf, string, func } from 'prop-types';
 import React from 'react';
 import { path, compose, split, is } from 'ramda';
 
@@ -19,7 +19,7 @@ const text = (label, fallback, separator = ',') => {
   );
 
   Knob.propTypes = {
-    value: string.isRequired,
+    value: arrayOf(string).isRequired,
     updateValue: func.isRequired,
   };
 

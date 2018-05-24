@@ -1,5 +1,5 @@
 import { map } from 'ramda';
-import { string, bool, arrayOf, oneOfType } from 'prop-types';
+import { string, bool, array as arrayType } from 'prop-types';
 import React from 'react';
 import { withControls } from '../../../styleguide/client/higherOrderComponents';
 import { boolean, text, array, select } from '../../../styleguide/client/knobs';
@@ -29,6 +29,7 @@ const InputStyleguide = ({
   <div>
     <Header>Input</Header>
     <Input
+      id="styleguide-input-id"
       inline={inline}
       type={type}
       label={label}
@@ -45,8 +46,8 @@ InputStyleguide.propTypes = {
   inline: bool,
   label: string,
   disabled: bool,
-  placeholder: bool,
-  errors: oneOfType([bool, arrayOf(string)]),
+  placeholder: string,
+  errors: arrayType,
 };
 
 InputStyleguide.defaultProps = {
