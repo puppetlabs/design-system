@@ -6,31 +6,34 @@ import StyleguideContent from '../../StyleguideContent';
 const Typography = () => (
   <StyleguideContent>
     <div>
-      <h1>Typography</h1>
+      <div className={typography.heading1}>Typography</div>
       <p>
-        Text is the primary way users interact with our content to accomplish
-        work, so it’s important to use good typographic principles to establish
-        a clear hierarchy and maximize legibility. To best accommodate all
-        users, our standards specify AA web accessibility, including the minimum
-        contrast ratios that the WCAG 2.0 specifies for text and background
-        color combinations (excluding disabled states.) This helps users who are
-        colorblind or have low vision to better interact with our products, and
-        improves usability and readability for all users.
+        Typography is a foundational element of good product design, when
+        applied appropriately. Our products use a combination of three type
+        families, their various weights, and a range of type sizes to
+        communicate clearly to our users.
       </p>
-      <h3>Font families and licensing</h3>
+      <div className={typography.heading3}>Families</div>
       <p>
-        The Puppet brand utilizes three individual font families. Calibre is
-        used strictly for headlines and titles. Open Sans is used for all other
-        UI text elements excluding code samples, which use Inconsolata.
+        Our products use the following three families:
+        <br />
+        <span className={typography.bodyBold}>Calibre</span> Used for headlines,
+        titles, navigation, visualizations, and other primary elements.
+        <br />
+        <span className={typography.bodyBold}>Open Sans</span> Used for body
+        copy and general UI elements and content.
+        <br />
+        <span className={typography.bodyBold}>Inconsolata</span> Used to denote
+        code samples only.
       </p>
-      <h3>Line height</h3>
-      <p>
-        In enterprise applications, the need for longform text is rare. More
-        often, application design involves many small bits of text that all
-        represent the user’s data. This text is spaced intentionally to maintain
-        distinction between different types and rows of data.
-      </p>
+      <div className={typography.heading3}>Type styles and usage</div>
       <div className={styles.typeExamples}>
+        <div className={typography.heading4}>Style</div>
+        <div className={typography.heading4}>Family</div>
+        <div className={typography.heading4}>Weight</div>
+        <div className={typography.heading4}>Size/Line-height</div>
+        <div className={typography.heading4}>Color</div>
+
         <div className={typography.heading1}>Heading 1</div>
         <div>Calibre</div>
         <div>600 Semibold</div>
@@ -43,13 +46,13 @@ const Typography = () => (
         <div>30px/36px</div>
         <div>UI-3</div>
 
-        <div className={typography.heading3}>H3 support subheader</div>
+        <div className={typography.heading3}>Heading 3</div>
         <div>Calibre</div>
         <div>500 Medium</div>
         <div>20px/24px</div>
         <div>UI-3</div>
 
-        <div className={typography.heading4}>H4 lorem ipsum</div>
+        <div className={typography.heading4}>Heading 4</div>
         <div>Calibre</div>
         <div>500 Medium</div>
         <div>18px/22px</div>

@@ -4,6 +4,7 @@ import React from 'react';
 import Header from '.';
 import { withControls } from '../../../styleguide/client/higherOrderComponents';
 import { boolean, select, text } from '../../../styleguide/client/knobs';
+import typography from '../../styles/typography.css';
 
 const typeOptions = [
   { text: 'h1', value: 'h1' },
@@ -20,6 +21,11 @@ const knobs = {
 
 const HeaderStyleguide = ({ content, as, numbers }) => (
   <div>
+    <div className={typography.heading1}>Header</div>
+    <p>
+      Our products utilize four different levels of header to communicate
+      subject at a variety of hierarchical levels.
+    </p>
     <Header as={as} numbers={numbers}>
       {content}
     </Header>

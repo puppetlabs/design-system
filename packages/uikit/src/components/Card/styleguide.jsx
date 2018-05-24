@@ -19,7 +19,7 @@ const CardStyleguide = ({ link, type }) => (
   <div>
     <h1>Card</h1>
     <Card secondary={type === 'secondary'} link={link}>
-      Blah blah
+      Lorem ipsum
     </Card>
   </div>
 );
