@@ -2,6 +2,6 @@
 
 .type-examples {
   display: grid;
-  grid: 50px / 1.8fr .5fr .5fr .5fr .5fr;
+  grid: 50px / 1.8fr 0.5fr 0.5fr 0.5fr 0.5fr;
   align-items: center;
 }

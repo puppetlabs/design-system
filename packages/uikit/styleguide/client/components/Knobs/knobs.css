@@ -1,4 +1,6 @@
-.knobs label, .knobs select, .knobs input {
+.knobs label,
+.knobs select,
+.knobs input {
   font-family: 'OpenSans';
   font-size: 13px;
   font-weight: 400;
@@ -19,6 +21,6 @@
   padding: 6px;
 }
 
-.knobs label:nth-child(n+3) {
-  margin-left:16px;
+.knobs label:nth-child(n + 3) {
+  margin-left: 16px;
 }

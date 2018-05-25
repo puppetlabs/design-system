@@ -33,13 +33,11 @@
   }
 
   &:focus {
-    box-shadow: 0 0 2px 1px var(--link-hover),
-      inset 0 -2px 0 0 var(--action-2);
+    box-shadow: 0 0 2px 1px var(--link-hover), inset 0 -2px 0 0 var(--action-2);
   }
 
   &:active:focus {
-    box-shadow: 0 0 2px 1px var(--link-hover),
-      inset 0 -2px 0 0 var(--action-1);
+    box-shadow: 0 0 2px 1px var(--link-hover), inset 0 -2px 0 0 var(--action-1);
   }
 
   &.secondary {
@@ -59,14 +57,12 @@
 
     &:focus {
       box-shadow: 0 0 2px 1px var(--link-hover),
-        inset 0 -2px 0 0 var(--action-2),
-        inset 0 0 0 2px var(--action-1);
+        inset 0 -2px 0 0 var(--action-2), inset 0 0 0 2px var(--action-1);
     }
 
     &:active:focus {
       box-shadow: 0 0 2px 1px var(--link-hover),
-        inset 0 -2px 0 0 var(--action-1),
-        inset 0 0 0 2px var(--action-2);
+        inset 0 -2px 0 0 var(--action-1), inset 0 0 0 2px var(--action-2);
     }
   }
 
