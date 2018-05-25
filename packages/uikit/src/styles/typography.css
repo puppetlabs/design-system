@@ -8,18 +8,18 @@
 /* HEADINGS AND ACTIONS — CALIBRE */
 .heading1 {
   font-family: Calibre;
-  font-size: 40px;
+  font-size: 32px;
   font-weight: 600;
   line-height: normal;
-  color: var(--ui-3);
+  color: var(--neutral-30);
 }
 
 .heading2 {
   font-family: Calibre;
-  font-size: 30px;
+  font-size: 24px;
   font-weight: 400;
   line-height: normal;
-  color: var(--ui-3);
+  color: var(--neutral-30);
 }
 
 .heading3 {
@@ -27,7 +27,7 @@
   font-size: 20px;
   font-weight: 500;
   line-height: normal;
-  color: var(--ui-3);
+  color: var(--neutral-30);
 }
 
 .heading4 {
@@ -35,7 +35,7 @@
   font-size: 18px;
   font-weight: 500;
   line-height: normal;
-  color: var(--ui-3);
+  color: var(--neutral-30);
 }
 
 .numbers-h1 {
@@ -43,15 +43,23 @@
   font-size: 80px;
   font-weight: 300;
   line-height: normal;
-  color: var(--ui-3);
+  color: var(--neutral-30);
 }
 
 .numbers-h2 {
   font-family: Calibre;
+  font-size: 30px;
+  font-weight: 400;
+  line-height: normal;
+  color: var(--neutral-30);
+}
+
+.numbers-h3 {
+  font-family: Calibre;
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
-  color: var(--ui-3);
+  color: var(--neutral-30);
 }
 
 .action-primary,
@@ -63,12 +71,12 @@
 }
 
 .action-primary {
-  color: var(--ui-1);
+  color: var(--neutral-11);
 }
 
 .action-primary:disabled,
 .action-primary-disabled {
-  color: var(--ui-6);
+  color: var(--neutral-75);
 }
 
 .action-secondary,
@@ -81,12 +89,12 @@
 }
 
 .action-secondary {
-  color: var(--ui-1);
+  color: var(--neutral-11);
 }
 
 .action-secondary:disabled,
 .action-secondary-disabled {
-  color: var(--ui-6);
+  color: var(--neutral-75);
 }
 
 /* MAIN CONTENT — OPEN SANS */
@@ -111,13 +119,13 @@
 .body,
 .body-small {
   font-weight: 400;
-  color: var(--ui-3);
+  color: var(--neutral-30);
 }
 
 .body-bold,
 .body-bold-small {
   font-weight: 700;
-  color: var(--ui-3);
+  color: var(--neutral-30);
 }
 
 .body-link,
@@ -125,25 +133,25 @@
 .body-link-secondary,
 .body-link-secondary-small {
   font-weight: 400;
-  color: var(--link-default);
+  color: var(--link-medium);
   outline: none;
   border-radius: var(--medium-border-radius);
 
   &:hover {
-    color: var(--link-hover);
+    color: var(--link-light);
   }
 
   &:active {
-    color: var(--link-default);
+    color: var(--link-medium);
   }
 
   &:focus {
-    box-shadow: 0 0 2px 1px var(--link-hover);
+    box-shadow: 0 0 2px 1px var(--link-light);
   }
 
   &:disabled,
   &[aria-disabled='true'] {
-    color: var(--ui-8);
+    color: var(--neutral-92);
     display: inline-block; /* For IE11/ MS Edge bug */
     pointer-events: none;
   }

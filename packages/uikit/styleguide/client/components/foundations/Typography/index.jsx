@@ -13,7 +13,7 @@ const Typography = () => (
         families, their various weights, and a range of type sizes to
         communicate clearly to our users.
       </p>
-      <div className={typography.heading3}>Families</div>
+      <div className={typography.heading2}>Families</div>
       <p>
         Our products use the following three families:
         <br />
@@ -37,13 +37,13 @@ const Typography = () => (
         <div className={typography.heading1}>Heading 1</div>
         <div>Calibre</div>
         <div>600 Semibold</div>
-        <div>40px/48px</div>
+        <div>32px/38px</div>
         <div>UI-3</div>
 
         <div className={typography.heading2}>Heading 2</div>
         <div>Calibre</div>
         <div>400 Regular</div>
-        <div>30px/36px</div>
+        <div>24px/29px</div>
         <div>UI-3</div>
 
         <div className={typography.heading3}>Heading 3</div>
@@ -65,6 +65,12 @@ const Typography = () => (
         <div>UI-3</div>
 
         <div className={typography.numbersH2}>Numbers H2</div>
+        <div>Calibre</div>
+        <div>400 Regular</div>
+        <div>30px/36px</div>
+        <div>UI-3</div>
+
+        <div className={typography.numbersH3}>Numbers H3</div>
         <div>Calibre</div>
         <div>400 Regular</div>
         <div>14px/20px</div>

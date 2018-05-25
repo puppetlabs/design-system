@@ -3,8 +3,8 @@
 
 .side-nav {
   width: 240px;
-  border-right: 1px solid var(--ui-8);
-  background-color: var(--ui-10);
+  border-right: 1px solid var(--neutral-92);
+  background-color: var(--neutral-98);
   padding: 32px;
 
   & a {
@@ -21,11 +21,11 @@
       padding: 16px;
       font-weight: 700;
       font-size: 0.8125rem;
-      border-bottom: 1px solid var(--ui-8);
+      border-bottom: 1px solid var(--neutral-92);
 
       & > a:link,
       & > a:visited {
-        color: var(--ui-3);
+        color: var(--neutral-30);
       }
 
       & > ul {
@@ -41,11 +41,11 @@
             margin: 0 -16px;
             padding: 4px 16px;
             border-radius: var(--medium-border-radius);
-            color: var(--ui-3);
+            color: var(--neutral-30);
 
             &:hover {
               color: inherit;
-              background-color: var(--ui-8);
+              background-color: var(--neutral-92);
             }
           }
         }
@@ -58,6 +58,6 @@
   pointer-events: none;
   cursor: default;
   text-decoration: none;
-  color: var(--white) !important;
-  background-color: var(--ui-6);
+  color: var(--neutral-100) !important;
+  background-color: var(--neutral-75);
 }

@@ -19,91 +19,98 @@
   /*
    * Primary style is default
    */
-  background-color: var(--action-1);
-  box-shadow: inset 0 -2px 0 0 var(--action-2);
+  background-color: var(--action-medium);
+  box-shadow: inset 0 -2px 0 0 var(--action-dark);
 
   &:hover {
-    background-color: var(--action-3);
-    box-shadow: inset 0 -2px 0 0 var(--action-1);
+    background-color: var(--action-light);
+    box-shadow: inset 0 -2px 0 0 var(--action-medium);
   }
 
   &:active {
-    background-color: var(--action-2);
-    box-shadow: inset 0 -2px 0 0 var(--action-1);
+    background-color: var(--action-dark);
+    box-shadow: inset 0 -2px 0 0 var(--action-medium);
   }
 
   &:focus {
-    box-shadow: 0 0 2px 1px var(--link-hover), inset 0 -2px 0 0 var(--action-2);
+    box-shadow: 0 0 2px 1px var(--link-light),
+      inset 0 -2px 0 0 var(--action-dark);
   }
 
   &:active:focus {
-    box-shadow: 0 0 2px 1px var(--link-hover), inset 0 -2px 0 0 var(--action-1);
+    box-shadow: 0 0 2px 1px var(--link-light),
+      inset 0 -2px 0 0 var(--action-medium);
   }
 
   &.secondary {
-    background-color: var(--white);
-    box-shadow: inset 0 -2px 0 0 var(--action-2),
-      inset 0 0 0 2px var(--action-1);
+    background-color: var(--neutral-100);
+    box-shadow: inset 0 -2px 0 0 var(--action-dark),
+      inset 0 0 0 2px var(--action-medium);
 
     &:hover {
-      box-shadow: inset 0 -2px 0 0 var(--action-1),
-        inset 0 0 0 2px var(--action-3);
+      box-shadow: inset 0 -2px 0 0 var(--action-medium),
+        inset 0 0 0 2px var(--action-light);
     }
 
     &:active {
-      box-shadow: inset 0 -2px 0 0 var(--action-1),
-        inset 0 0 0 2px var(--action-2);
+      box-shadow: inset 0 -2px 0 0 var(--action-medium),
+        inset 0 0 0 2px var(--action-dark);
     }
 
     &:focus {
-      box-shadow: 0 0 2px 1px var(--link-hover),
-        inset 0 -2px 0 0 var(--action-2), inset 0 0 0 2px var(--action-1);
+      box-shadow: 0 0 2px 1px var(--link-light),
+        inset 0 -2px 0 0 var(--action-dark),
+        inset 0 0 0 2px var(--action-medium);
     }
 
     &:active:focus {
-      box-shadow: 0 0 2px 1px var(--link-hover),
-        inset 0 -2px 0 0 var(--action-1), inset 0 0 0 2px var(--action-2);
+      box-shadow: 0 0 2px 1px var(--link-light),
+        inset 0 -2px 0 0 var(--action-medium),
+        inset 0 0 0 2px var(--action-dark);
     }
   }
 
   &.tertiary {
-    background-color: var(--white);
-    box-shadow: inset 0 -2px 0 0 var(--ui-5), inset 0 0 0 2px var(--ui-6);
+    background-color: var(--neutral-100);
+    box-shadow: inset 0 -2px 0 0 var(--neutral-60),
+      inset 0 0 0 2px var(--neutral-75);
 
     &:hover {
-      box-shadow: inset 0 -2px 0 0 var(--ui-6), inset 0 0 0 2px var(--ui-7);
+      box-shadow: inset 0 -2px 0 0 var(--neutral-75),
+        inset 0 0 0 2px var(--neutral-88);
     }
 
     &:active {
-      box-shadow: inset 0 -2px 0 0 var(--ui-6), inset 0 0 0 2px var(--ui-5);
+      box-shadow: inset 0 -2px 0 0 var(--neutral-75),
+        inset 0 0 0 2px var(--neutral-60);
     }
 
     &:focus {
-      box-shadow: 0 0 2px 1px var(--link-hover), inset 0 -2px 0 0 var(--ui-5),
-        inset 0 0 0 2px var(--ui-6);
+      box-shadow: 0 0 2px 1px var(--link-light),
+        inset 0 -2px 0 0 var(--neutral-60), inset 0 0 0 2px var(--neutral-75);
     }
 
     &:active:focus {
-      box-shadow: 0 0 2px 1px var(--link-hover), inset 0 -2px 0 0 var(--ui-6),
-        inset 0 0 0 2px var(--ui-5);
+      box-shadow: 0 0 2px 1px var(--link-light),
+        inset 0 -2px 0 0 var(--neutral-75), inset 0 0 0 2px var(--neutral-60);
     }
   }
 
   &.link {
     box-shadow: none;
-    background-color: var(--white);
+    background-color: var(--neutral-100);
 
     &:active {
       box-shadow: none;
     }
 
     &:focus {
-      box-shadow: 0 0 2px 1px var(--link-hover);
+      box-shadow: 0 0 2px 1px var(--link-light);
     }
 
     &:disabled {
       cursor: default;
-      background-color: var(--white);
+      background-color: var(--neutral-100);
       box-shadow: none;
     }
   }
@@ -115,7 +122,7 @@
   &.secondary:disabled,
   &.tertiary:disabled {
     cursor: default;
-    background-color: var(--ui-9);
-    box-shadow: inset 0 -2px 0 0 var(--ui-8);
+    background-color: var(--neutral-96);
+    box-shadow: inset 0 -2px 0 0 var(--neutral-92);
   }
 }
