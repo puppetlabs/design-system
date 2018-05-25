@@ -5,16 +5,27 @@
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "NODE_ENV=production webpack --config=config/bundle.webpack.config.js",
-    "build:styleguide": "(export $(cat config/.env.production | xargs) && webpack --config=config/production.webpack.config.js)",
+    "build":
+      "NODE_ENV=production webpack --config=config/bundle.webpack.config.js",
+    "build:styleguide":
+      "(export $(cat config/.env.production | xargs) && webpack --config=config/production.webpack.config.js)",
+    "precommit": "lint-staged",
     "prepare": "echo 'Building uikit' && npm run build",
-    "format": "eslint --fix src styleguide config && prettier --write --list-different '{src,styleguide,config}/**/*.{js,jsx,css}'",
+    "format":
+      "eslint --fix src styleguide config && prettier --write --list-different '{src,styleguide,config}/**/*.{js,jsx,mjs,graphql,json,css,md}'",
     "lint": "eslint src styleguide config --ext .js --ext .jsx",
     "start": "node --experimental-modules styleguide/server/dev.mjs",
     "serve": "node --experimental-modules styleguide/server/prod.mjs",
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch"
+  },
+  "lint-staged": {
+    "*.{js, jsx, mjs}": ["eslint --fix"],
+    "*.{js,jsx,mjs,graphql,json,css,md}": [
+      "prettier --single-quote --trailing-comma=all --write",
+      "git add"
+    ]
   },
   "devDependencies": {
     "@babel/core": "7.0.0-beta.46",
@@ -47,8 +58,10 @@
     "express": "^4.16.2",
     "file-loader": "^1.1.11",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^0.14.3",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^22.4.3",
+    "lint-staged": "^7.1.2",
     "mini-css-extract-plugin": "^0.4.0",
     "postcss-cssnext": "^3.1.0",
     "postcss-loader": "^2.1.0",
