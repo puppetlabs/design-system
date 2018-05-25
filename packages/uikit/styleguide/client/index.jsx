@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 
 import App from './components/App';
 import ButtonStyleguide from '../../src/components/Button/styleguide';
+import InputStyleguide from '../../src/components/Input/styleguide';
 import LinkStyleguide from '../../src/components/Link/styleguide';
 import HeaderStyleguide from '../../src/components/Header/styleguide';
 import CardStyleguide from '../../src/components/Card/styleguide';
@@ -32,6 +33,11 @@ const components = [
     path: '/components/card',
     name: 'Card',
     Component: CardStyleguide,
+  },
+  {
+    path: '/components/Input',
+    name: 'Input',
+    Component: InputStyleguide,
   },
 ];
 
