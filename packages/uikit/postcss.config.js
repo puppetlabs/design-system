@@ -1,4 +1,4 @@
-const parseVariables = require('./parseVariables');
+const parseVariables = require('./scripts/parseVariables');
 
 const variables = {
   ...parseVariables('src/styles/colors.css'),
