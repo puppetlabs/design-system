@@ -12,6 +12,7 @@ module.exports = {
       features: {
         'custom-properties': {
           variables,
+          preserve: process.env.NODE_ENV !== 'production',
         },
       },
     },
