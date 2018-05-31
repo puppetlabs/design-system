@@ -10,7 +10,10 @@ import differenceByKey from '../../methods/differenceByKey';
  * @param {Object}  params  Parsed url query parameters
  * @type {Object} Object containing the missing parameters and the fallback values
  */
-export const getMissingParams = compose(map(prop('fallback')), differenceByKey);
+export const getMissingParams = compose(
+  map(prop('fallback')),
+  differenceByKey,
+);
 
 /**
  * Returns a stringified query string containing params updated by provided values
@@ -18,7 +21,10 @@ export const getMissingParams = compose(map(prop('fallback')), differenceByKey);
  * @param {Object}  updates  Object with key-vals to update in query params
  * @type {[type]}
  */
-export const updateSearch = compose(stringify, merge);
+export const updateSearch = compose(
+  stringify,
+  merge,
+);
 
 /**
  * Iterates through the values of a knob definition object, applying the parseValue method

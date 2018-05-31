@@ -13,7 +13,10 @@ const text = (label, fallback) => {
         id={label}
         name={label}
         value={value}
-        onChange={compose(updateValue, getValue)}
+        onChange={compose(
+          updateValue,
+          getValue,
+        )}
       />
     </label>
   );
