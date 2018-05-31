@@ -1,0 +1,63 @@
+@import '../../../../src/styles/colors.css';
+@import '../../../../src/styles/variables.css';
+
+.side-nav {
+  width: 240px;
+  border-right: 1px solid var(--ui-8);
+  background-color: var(--ui-10);
+  padding: 32px;
+
+  & a {
+    text-decoration: none;
+  }
+
+  & > ul {
+    margin: 16px 0 0;
+    padding: 0;
+    list-style-type: none;
+
+    & > li {
+      margin: 0;
+      padding: 16px;
+      font-weight: 700;
+      font-size: 0.8125rem;
+      border-bottom: 1px solid var(--ui-8);
+
+      & > a:link,
+      & > a:visited {
+        color: var(--ui-3);
+      }
+
+      & > ul {
+        margin: 8px 0;
+        padding: 0;
+
+        & > li {
+          font-weight: 400;
+          list-style-type: none;
+
+          & > a {
+            display: block;
+            margin: 0 -16px;
+            padding: 4px 16px;
+            border-radius: var(--medium-border-radius);
+            color: var(--ui-3);
+
+            &:hover {
+              color: inherit;
+              background-color: var(--ui-8);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.active {
+  pointer-events: none;
+  cursor: default;
+  text-decoration: none;
+  color: var(--white) !important;
+  background-color: var(--ui-6);
+}

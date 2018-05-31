@@ -1,0 +1,7 @@
+@import '../../../../../src/styles/colors.css';
+
+.type-examples {
+  display: grid;
+  grid: 50px / 1.8fr 0.5fr 0.5fr 0.5fr 0.5fr;
+  align-items: center;
+}

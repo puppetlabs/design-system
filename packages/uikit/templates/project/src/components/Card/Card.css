@@ -1,0 +1,37 @@
+@import '../../styles/colors.css';
+@import '../../styles/variables.css';
+
+.card {
+  box-sizing: border-box;
+  display: inline-block;
+  background-color: var(--white);
+  padding: 12px;
+  position: relative;
+  border-radius: var(--small-border-radius);
+  border: 1px solid var(--ui-6);
+  transition: box-shadow 0.1s ease, transform 0.1s ease;
+
+  /*
+   * Primary style is default
+   */
+  box-shadow: 0 2px 0 0 var(--ui-6);
+
+  &.link {
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 0 0 var(--ui-5);
+    }
+  }
+
+  &.secondary {
+    box-shadow: none;
+
+    &.link:hover {
+      border: 1px solid var(--ui-5);
+      box-shadow: none;
+      transform: none;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@font-face {
+  font-family: Calibre;
+  font-weight: 400;
+  font-style: normal;
+  src: url(./fonts/CalibreWeb-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: Calibre;
+  font-weight: 400;
+  font-style: italic;
+  src: url(./fonts/CalibreWeb-RegularItalic.woff2) format('woff2');
+}
+@font-face {
+  font-family: Calibre;
+  font-weight: 500;
+  font-style: normal;
+  src: url(./fonts/CalibreWeb-Medium.woff2) format('woff2');
+}
+@font-face {
+  font-family: Calibre;
+  font-weight: 500;
+  font-style: italic;
+  src: url(./fonts/CalibreWeb-MediumItalic.woff2) format('woff2');
+}
+@font-face {
+  font-family: Calibre;
+  font-weight: 600;
+  font-style: normal;
+  src: url(./fonts/CalibreWeb-Semibold.woff2) format('woff2');
+}
+@font-face {
+  font-family: Calibre;
+  font-weight: 600;
+  font-style: italic;
+  src: url(./fonts/CalibreWeb-SemiboldItalic.woff2) format('woff2');
+}

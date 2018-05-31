@@ -1,0 +1,3 @@
+#!/bin/bash
+
+(export $(cat config/.env.production | xargs) && webpack --config=config/production.webpack.config.js)

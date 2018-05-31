@@ -1,0 +1,12 @@
+.content-outer {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.controls {
+  height: 100px;
+  flex: none;
+  border-top: 1px solid var(--ui-8);
+  padding: 20px;
+}
