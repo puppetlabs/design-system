@@ -7,9 +7,10 @@ const variables = {
 
 module.exports = {
   plugins: {
-    'postcss-cssnext': {
+    'postcss-preset-env': {
+      stage: 0,
       features: {
-        customProperties: {
+        'custom-properties': {
           variables,
         },
       },
