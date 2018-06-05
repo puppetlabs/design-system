@@ -37,7 +37,7 @@ const Colors = () => (
       <div className={typography.heading3}>Brand palette</div>
       <p>
         The brand palette is limited to applications of Puppet&apos;s primary
-        brand color, gold. This particular color should only be used in the
+        brand color, amber. This particular color should only be used in the
         context of Puppet logos, when applicable, and not used in any other
         aspect of the product.
       </p>

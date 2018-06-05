@@ -3,21 +3,21 @@
   outline: none;
   padding: 7px 10px 5px;
   border-radius: var(--medium-border-radius);
-  border: 1px solid var(--ui-6);
+  border: 1px solid var(--neutral-75);
 
   &::placeholder {
-    color: var(--ui-6);
+    color: var(--neutral-75);
   }
 
   &:focus {
-    box-shadow: 0 0 2px 1px var(--link-hover);
+    box-shadow: 0 0 2px 1px var(--link-light);
   }
 
   &.error:disabled,
   &:disabled {
-    background-color: var(--ui-10);
-    border: 1px solid var(--ui-7);
-    color: var(--ui-8);
+    background-color: var(--neutral-98);
+    border: 1px solid var(--neutral-88);
+    color: var(--neutral-92);
   }
 
   &.error {

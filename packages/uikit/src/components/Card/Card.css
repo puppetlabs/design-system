@@ -2,34 +2,30 @@
 @import '../../styles/variables.css';
 
 .card {
-  box-sizing: border-box;
   display: inline-block;
-  background-color: var(--white);
+  background-color: var(--neutral-100);
   padding: 12px;
   position: relative;
   border-radius: var(--small-border-radius);
-  border: 1px solid var(--ui-6);
+  border: 1px solid var(--neutral-75);
   transition: box-shadow 0.1s ease, transform 0.1s ease;
 
   /*
    * Primary style is default
    */
-  box-shadow: 0 2px 0 0 var(--ui-6);
+  box-shadow: 0 2px 0 0 var(--neutral-75);
 
-  &.link {
+  &.link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 0 0 var(--neutral-60);
     cursor: pointer;
-
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 0 0 var(--ui-5);
-    }
   }
 
   &.secondary {
     box-shadow: none;
 
     &.link:hover {
-      border: 1px solid var(--ui-5);
+      border: 1px solid var(--neutral-60);
       box-shadow: none;
       transform: none;
     }
