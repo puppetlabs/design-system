@@ -15,10 +15,7 @@ const boolean = (label, fallback) => {
         id={label}
         name={label}
         checked={parseValue(value)}
-        onChange={compose(
-          updateValue,
-          isChecked,
-        )}
+        onChange={compose(updateValue, isChecked)}
       />
     </label>
   );

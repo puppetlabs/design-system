@@ -23,10 +23,7 @@ const select = (label, options, fallback) => {
         id={label}
         name={label}
         value={value}
-        onChange={compose(
-          updateValue,
-          getValue,
-        )}
+        onChange={compose(updateValue, getValue)}
       >
         {map(SelectOption, options)}
       </select>
