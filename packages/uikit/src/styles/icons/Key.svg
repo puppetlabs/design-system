@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <path d="M10.1371,5.9494 C11.5701,7.3824 11.5701,9.7044 10.1371,11.1374 C8.7041,12.5704 6.3821,12.5704 4.9501,11.1374 C3.5171,9.7044 3.5171,7.3824 4.9501,5.9494 C6.3821,4.5164 8.7041,4.5164 10.1371,5.9494 Z" id="circle"></path>
+  <polyline id="shank" points="10.1371 11.1374 18.0141 19.0144 20.4231 16.6054"></polyline>
+  <path d="M15.1762,16.176 L17.1682,14.184" id="bit"></path>
+</svg>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <polyline id="dog-ear" points="18.9778 7.4831001 14.7688 7.4831001 14.7688 3.2751001"></polyline>
+  <polygon id="page" points="18.9778 7.4831001 18.9778 20.6081001 4.8748 20.6081001 4.8748 3.2751001 14.7688 3.2751001"></polygon>
+  <path d="M8.3284,16.2331001 L15.5234,16.2331001" id="line-3"></path>
+  <path d="M8.3284,11.8581001 L15.5234,11.8581001" id="line-2"></path>
+  <path d="M8.3284,7.4831001 L11.2064,7.4831001" id="line-1"></path>
+</svg>
