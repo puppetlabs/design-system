@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <polygon id="left" points="3.2750001 14.6358 8.4560001 14.6358 8.4560001 9.45479999 3.2750001 9.45479999"></polygon>
+  <polygon id="bottom" points="15.5800001 22.5148 20.7610001 22.5148 20.7610001 17.3338 15.5800001 17.3338"></polygon>
+  <polygon id="middle" points="15.5800001 14.6358 20.7610001 14.6358 20.7610001 9.45479999 15.5800001 9.45479999"></polygon>
+  <path d="M8.5639001,12.0451 L15.4719001,12.0451" id="horizontal"></path>
+  <polyline id="bottom-connector" points="15.4721001 19.9245 12.0181001 19.9245 12.0181001 12.0455"></polyline>
+  <polygon id="top" points="15.5800001 6.75579999 20.7610001 6.75579999 20.7610001 1.57479999 15.5800001 1.57479999"></polygon>
+  <polyline id="top-connector" points="15.4721001 4.16519999 12.0181001 4.16519999 12.0181001 12.0452"></polyline>
+</svg>

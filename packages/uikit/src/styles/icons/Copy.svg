@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <polyline id="left-dog-ear" points="4.4752999 6.88349995 8.6832999 6.88349995 8.6832999 2.67549995"></polyline>
+  <polyline id="left-page" points="15.1236999 7.27989995 15.1236999 2.67489995 8.6836999 2.67489995 4.4756999 6.88389995 4.4756999 16.4899 8.7916999 16.4899"></polyline>
+  <polyline id="right-dog-ear" points="8.7916999 11.4884 13.0006999 11.4884 13.0006999 7.28039995"></polyline>
+  <polygon id="right-page" points="8.7916999 11.4884 8.7916999 21.0944 19.4406999 21.0944 19.4406999 7.28039995 13.0006999 7.28039995"></polygon>
+</svg>
