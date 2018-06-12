@@ -20,22 +20,26 @@ module.exports = {
   ],
   webpackConfig: {
     module: {
-      loaders: [{
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        loaders: ExtractTextPlugin.extract('css-loader!sass-loader'),
-      },
-      {
-        test: /\.js$/,
-        exclude: /node_modules\/(?!buble)/,
-        loader: require.resolve('babel-loader'),
-        query: {
-          presets: [
-            require.resolve('babel-preset-es2015'),
-            require.resolve('babel-preset-react'),
-          ],
+      rules: [
+        {
+          test: /\.scss$/,
+          exclude: /node_modules/,
+          use: ExtractTextPlugin.extract(['css-loader', 'sass-loader']),
         },
-      }],
+        {
+          test: /\.js$/,
+          exclude: /node_modules\/(?!buble)/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                'es2015',
+                'react',
+              ],
+            },
+          },
+        },
+      ],
     },
     plugins: [
       new ExtractTextPlugin({ filename: 'styleguide.css', allChunks: true }),
