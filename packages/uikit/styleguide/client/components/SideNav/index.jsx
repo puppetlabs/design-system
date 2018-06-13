@@ -10,7 +10,7 @@ import path from './logo.png';
 const SideNav = ({ components }) => (
   <div className={styles.sideNav}>
     <Link to="/">
-      <img src={path} alt="styleguide logo" width="160" height="43" />
+      <img src={path} alt="styleguide logo" width="155" height="43" />
     </Link>
     <ul>
       <li>
