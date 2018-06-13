@@ -1,0 +1,10 @@
+@import '../../styles/colors.css';
+
+.icon {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+  stroke-width: 1;
+  stroke: var(--neutral-30);
+  fill: none;
+}
