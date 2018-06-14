@@ -4,7 +4,15 @@
   width: 24px;
   height: 24px;
   display: inline-block;
-  stroke-width: 1;
+  stroke-width: 1.75;
   stroke: var(--neutral-30);
   fill: none;
+}
+
+a .icon {
+  stroke: var(--link-medium);
+}
+
+a:hover .icon {
+  stroke: var(--link-light);
 }
