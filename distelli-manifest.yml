@@ -4,7 +4,6 @@ insights/insights-ui-components:
     - nvm alias default v8.11.3
     - nvm use default
     - touch $HOME/.npmrc
-    - echo "@reflect:registry=https://registry.npmjs.org/" > $HOME/.npmrc
     - echo "//registry.npmjs.org/:_authToken=$NPM_REGISTRY_AUTH" > $HOME/.npmrc
     - make setup
   Build:
