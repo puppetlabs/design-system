@@ -1,0 +1,12 @@
+insights/insights-ui-components:
+  PreBuild:
+    - nvm install v8.11.3
+    - nvm alias default v8.11.3
+    - nvm use default
+    - touch $HOME/.npmrc
+    - echo "//registry.npmjs.org/:_authToken=$NPM_REGISTRY_AUTH" > $HOME/.npmrc
+    - make setup
+  Build:
+    - npm run js-lint
+    - npm run scss-lint
+    - npm run test
