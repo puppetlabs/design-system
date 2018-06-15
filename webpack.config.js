@@ -15,16 +15,16 @@ module.exports = {
   },
   externals: {
     react: {
-      commonjs: 'react',
+      commonjs2: 'react',
     },
     'react-dom': {
-      commonjs: 'react-dom',
+      commonjs2: 'react-dom',
     },
     moment: {
-      commonjs: 'moment',
+      commonjs2: 'moment',
     },
     'moment-timezone': {
-      commonjs: 'moment-timezone',
+      commonjs2: 'moment-timezone',
     },
   },
   module: {
