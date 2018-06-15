@@ -4,7 +4,7 @@
   "description": "A React component library to assist in the creation of user interfaces.",
   "main": "build/library.js",
   "publishConfig": {
-    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm/"
+    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   },
   "scripts": {
     "prebuild": "./node_modules/.bin/rimraf build",
