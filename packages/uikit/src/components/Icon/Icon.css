@@ -8,11 +8,3 @@
   stroke: var(--neutral-30);
   fill: none;
 }
-
-a .icon {
-  stroke: var(--link-medium);
-}
-
-a:hover .icon {
-  stroke: var(--link-light);
-}

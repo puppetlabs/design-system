@@ -7,6 +7,7 @@ import InputStyleguide from '../../src/components/Input/styleguide';
 import LinkStyleguide from '../../src/components/Link/styleguide';
 import HeaderStyleguide from '../../src/components/Header/styleguide';
 import CardStyleguide from '../../src/components/Card/styleguide';
+import LogoStyleguide from '../../src/components/Logo/styleguide';
 import './index.css';
 
 if (module.hot) {
@@ -14,6 +15,11 @@ if (module.hot) {
 }
 
 const components = [
+  {
+    path: '/components/logo',
+    name: 'Logo',
+    Component: LogoStyleguide,
+  },
   {
     path: '/components/button',
     name: 'Button',

@@ -14,6 +14,6 @@
   fill: var(--neutral-11);
 }
 
-.wordmark-reversed {
+.reversed > .wordmark {
   fill: var(--neutral-100);
 }
