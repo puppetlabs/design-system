@@ -6,9 +6,59 @@
 
 // Colors
 // ----------------------------------------------------------------------------
+// Colors from the Puppet styleguide
+// ----------------------------------------------------------------------------
+$puppet-amber                                : #ffae1a !default;
+
+$neutral-11                                  : #000e1c !default;
+$neutral-18                                  : #00172e !default;
+$neutral-30                                  : #293b4d !default;
+$neutral-44                                  : #495e70 !default;
+$neutral-60                                  : #718699 !default;
+$neutral-75                                  : #a1b0bf !default;
+$neutral-88                                  : #ced7e0 !default;
+$neutral-92                                  : #dde5eb !default;
+$neutral-96                                  : #f0f3f5 !default;
+$neutral-98                                  : #f7f9fa !default;
+$neutral-100                                 : #ffffff !default;
+
+$action-dark                                 : #ffb833 !default;
+$action-medium                               : #ffc966 !default;
+$action-light                                : #ffe2ad !default;
+
+$link-medium                                 : #007bc7 !default;
+$link-light                                  : #0092ed !default;
+
+$viz-blue-80                                 : #296acc !default;
+$viz-blue-61                                 : #5d98f0 !default;
+$viz-blue-48                                 : #85b6ff !default;
+$viz-blue-28                                 : #b8d4ff !default;
+$viz-blue-13                                 : #deebff !default;
+
+$viz-aqua-100                                : #00baba !default;
+$viz-aqua-44                                 : #77d4d4 !default;
+$viz-aqua-26                                 : #a8e3e3 !default;
+$viz-aqua-14                                 : #d3f5f5 !default;
+$viz-aqua-7                                  : #e8fafa !default;
+
+$viz-salmon-56                               : #ff7070 !default;
+$viz-salmon-40                               : #ff9999 !default;
+$viz-salmon-26                               : #ffbdbd !default;
+$viz-salmon-15                               : #ffd9d9 !default;
+$viz-salmon-7                                : #ffeded !default;
+
+$viz-tangerine-65                            : #ff9159 !default;
+$viz-tangerine-50                            : #ffaa80 !default;
+$viz-tangerine-32                            : #ffc9ad !default;
+$viz-tangerine-17                            : #ffe2d4 !default;
+$viz-tangerine-8                             : #fff2eb !default;
+
+$positive-1                                  : #0da371 !default;
+$warning-1                                   : #ffd503 !default;
+$negative-1                                  : #e62600 !default;
 
 // Primary Color
-$reflect-brand-primary                       : #269cff !default;
+$reflect-brand-primary                       : $puppet-amber !default;
 
 // Grays
 $reflect-gray-base                           : #a6bdd2 !default;
@@ -32,8 +82,8 @@ $reflect-primary-chart-color                 : $reflect-brand-primary !default;
 // Action Colors
 // Colors used for primary buttons and other action elements
 // Text is typically on a bg color - by default it is white text & icons on a blue bg
-$reflect-action-color                        : $reflect-brand-primary !default;
-$reflect-action-hover                        : darken($reflect-action-color, 10%) !default;
+$reflect-action-color                        : $action-dark !default;
+$reflect-action-hover                        : $action-light !default;
 $reflect-action-border                       : $reflect-action-color !default;
 $reflect-action-border-hover                 : $reflect-action-hover !default;
 $reflect-action-text                         : $reflect-white !default;
@@ -72,24 +122,24 @@ $reflect-inactive-color-hover                : $reflect-gray !default;
 
 // Link Colors
 // For stand alone links, not buttons
-$reflect-anchor-color                        : $reflect-action-color !default;
-$reflect-anchor-hover                        : $reflect-action-hover !default;
+$reflect-anchor-color                        : $link-medium !default;
+$reflect-anchor-hover                        : $link-light !default;
 
 // Status Colors
 // Danger - Used to provide a warning for irreversible actions and errors
-$reflect-danger-color                        : #d9534f !default;
+$reflect-danger-color                        : $negative-1 !default;
 $reflect-danger-hover                        : darken($reflect-danger-color, 10%) !default;
 $reflect-danger-border                       : $reflect-danger-color !default;
 $reflect-danger-border-hover                 : darken($reflect-danger-color, 10%) !default;
 
 // Success
-$reflect-success-color                       : #73d96d !default;
+$reflect-success-color                       : $positive-1 !default;
 $reflect-success-hover                       : darken($reflect-success-color, 10%) !default;
 $reflect-success-border                      : $reflect-success-color !default;
 $reflect-success-border-hover                : darken($reflect-success-color, 10%) !default;
 
 //Warning
-$reflect-warning-color                       : #faca3b !default;
+$reflect-warning-color                       : $warning-1 !default;
 $reflect-warning-hover                       : darken($reflect-warning-color, 10%) !default;
 $reflect-warning-border                      : $reflect-warning-color !default;
 $reflect-warning-border-hover                : darken($reflect-warning-color, 10%) !default;

@@ -506,6 +506,10 @@ $reflect-slidein-shadow                      : $reflect-outer-shadow-giant !defa
 $reflect-stencil-bg                          : $reflect-bg-subtle !default;
 $reflect-stencil-height                      : 170px !default;
 
+// Icons
+// ----------------------------------------------------------------------------
+$reflect-icon-secondary-fill                 : $reflect-brand-primary !default;
+
 // Switch
 // ----------------------------------------------------------------------------
 $reflect-switch-height                       : 21px !default; // Todo: Base on grid
