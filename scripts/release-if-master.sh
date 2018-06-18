@@ -8,7 +8,7 @@ COMMIT=$(git rev-parse HEAD)
 TAG=$(git tag --points-at ${COMMIT})
 SORT=/usr/bin/sort
 TARGET_BRANCH="master"
-BUILDING_BRANCH=$CIRCLE_BRANCH
+BUILDING_BRANCH=$DISTELLI_RELBRANCH
 
 # If we see gsort out there we'll use that instead of the default sort tool.
 if [[ -e `which gsort` ]];
