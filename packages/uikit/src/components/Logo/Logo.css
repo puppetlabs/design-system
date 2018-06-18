@@ -1,0 +1,19 @@
+@import '../../styles/colors.css';
+
+.logo {
+  width: 180px;
+  height: 48px;
+  display: inline-block;
+}
+
+.bug {
+  fill: var(--puppet-amber);
+}
+
+.wordmark {
+  fill: var(--neutral-11);
+}
+
+.reversed > .wordmark {
+  fill: var(--neutral-100);
+}
