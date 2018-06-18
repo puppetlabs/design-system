@@ -58,9 +58,6 @@ echo "Releasing version ${CURRENT_VERSION}"
 NEW_PACKAGE_VERSION=`echo ${CURRENT_VERSION} | egrep -o '([0-9]+\.[0-9]+\.[0-9]+)'`
 sed -i -e "s/\"version\": \"${PACKAGE_VERSION}\"/\"version\": \"${NEW_PACKAGE_VERSION}\"/g" ./package.json
 
-# This is also a hack for fucking CircleCI
-sudo pip install awscli
-
 # Okay, let's do the release now!
 git tag ${CURRENT_VERSION}
 git push --tags
