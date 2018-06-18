@@ -1,5 +1,8 @@
 insights/insights-ui-components:
   PreBuild:
+    - sudo add-apt-repository ppa:git-core/ppa
+    - sudo apt-get update
+    - sudo apt-get install git
     - nvm install v8.11.3
     - nvm alias default v8.11.3
     - nvm use default

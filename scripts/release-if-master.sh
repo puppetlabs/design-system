@@ -67,5 +67,5 @@ LATEST_VERSION=`git tag | grep '^v[0-9]' | ${SORT} -V | tail -n 1`
 
 if [[ $LATEST_VERSION == $CURRENT_VERSION ]];
 then
-  make release_npm
+  make release_npm || exit 1
 fi
