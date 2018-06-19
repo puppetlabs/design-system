@@ -26,7 +26,7 @@ for (var i = 0; i < numParagraphs; i++) {
 
 ```
 <Accordion title="My fun accordion" icon="views">
-  <AccordionItem title="bars" icon="bars" tooltip="Bars is a component type" />
+  <AccordionItem title="bar" icon="bar" tooltip="Bar is a component type" />
   <AccordionItem title="area" icon="area" />
 </Accordion>
 ```
