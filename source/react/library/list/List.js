@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import 'core-js/fn/array/from';
 import {
@@ -8,11 +9,11 @@ import {
 import Item from './ListItem';
 
 const propTypes = {
-  sortable: React.PropTypes.bool,
-  children: React.PropTypes.any,
+  sortable: PropTypes.bool,
+  children: PropTypes.any,
   /** either "ordered" or "unordered" */
-  type: React.PropTypes.string,
-  onSort: React.PropTypes.func,
+  type: PropTypes.string,
+  onSort: PropTypes.func,
 };
 
 const defaultProps = {

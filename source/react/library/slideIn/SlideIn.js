@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import onClickOutside from 'react-onclickoutside';
@@ -7,16 +8,16 @@ import Menu from '../menu/Menu';
 import MenuHeader from '../menu/MenuHeader';
 
 const propTypes = {
-  title: React.PropTypes.string,
-  className: React.PropTypes.string,
-  position: React.PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
-  removeable: React.PropTypes.bool,
-  submitButtonLabel: React.PropTypes.string,
-  closeButtonLabel: React.PropTypes.string,
-  onSubmit: React.PropTypes.func,
-  onClose: React.PropTypes.func,
-  onRemove: React.PropTypes.func,
-  children: React.PropTypes.any,
+  title: PropTypes.string,
+  className: PropTypes.string,
+  position: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  removeable: PropTypes.bool,
+  submitButtonLabel: PropTypes.string,
+  closeButtonLabel: PropTypes.string,
+  onSubmit: PropTypes.func,
+  onClose: PropTypes.func,
+  onRemove: PropTypes.func,
+  children: PropTypes.any,
 };
 
 const defaultProps = {

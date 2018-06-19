@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Icon from '../icon/Icon';
 import DropdownMenu from '../dropdown/DropdownMenu';
 import { TooltipStickyArea } from '../tooltips/Tooltip';
 
 const propTypes = {
-  message: React.PropTypes.string,
-  menuToggleIcon: React.PropTypes.string,
-  menuOptions: React.PropTypes.array,
-  onOptionClick: React.PropTypes.func,
+  message: PropTypes.string,
+  menuToggleIcon: PropTypes.string,
+  menuOptions: PropTypes.array,
+  onOptionClick: PropTypes.func,
 };
 
 const defaultProps = {

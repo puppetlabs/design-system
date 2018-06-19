@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Transition } from 'react-transition-group';
 import { ANIMATION_TIMING } from '../constants';
@@ -26,8 +27,8 @@ const transitionStyles = {
 };
 
 const propTypes = {
-  in: React.PropTypes.bool,
-  children: React.PropTypes.any,
+  in: PropTypes.bool,
+  children: PropTypes.any,
 };
 
 const defaultProps = {

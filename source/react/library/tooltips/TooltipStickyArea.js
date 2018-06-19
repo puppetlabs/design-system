@@ -1,19 +1,20 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import Tooltip from './Tooltip';
 import FadeInAndOut from '../FadeInAndOut';
 
 const propTypes = {
-  anchor: React.PropTypes.string,
-  open: React.PropTypes.bool,
-  tooltip: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.element,
+  anchor: PropTypes.string,
+  open: PropTypes.bool,
+  tooltip: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
   ]).isRequired,
-  onClose: React.PropTypes.func,
-  children: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.element,
+  onClose: PropTypes.func,
+  children: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.element,
   ]).isRequired,
 };
 

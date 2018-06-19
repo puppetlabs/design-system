@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Children } from 'react';
 import classnames from 'classnames';
 
@@ -9,19 +10,19 @@ const getKey = function (child = {}, idx) {
 
 const propTypes = {
   /** Title for the Accordion */
-  title: React.PropTypes.string,
+  title: PropTypes.string,
   /** Function called when Accordion is closed. */
-  onClose: React.PropTypes.func,
+  onClose: PropTypes.func,
   /** Whether to open the first item by default */
-  autoOpen: React.PropTypes.bool,
+  autoOpen: PropTypes.bool,
   /** Called with the `key` of the opened `AccordionItem` */
-  onChange: React.PropTypes.func,
+  onChange: PropTypes.func,
   /** `AccordionItem`s to render */
-  children: React.PropTypes.any,
+  children: PropTypes.any,
   /** Class name to apply to the `Accordion` container wrapper div */
-  className: React.PropTypes.string,
+  className: PropTypes.string,
   /** Icon to render next to the title in the header */
-  icon: React.PropTypes.string,
+  icon: PropTypes.string,
 };
 
 const defaultProps = {

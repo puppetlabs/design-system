@@ -1,3 +1,17 @@
+# 1.3.1
+
+* Publishing to artifactory via Continous Deployment
+
+# 1.3.0 
+
+* Renamed to @puppet/insights-ui-components and deployed to artifactory
+* Upgraded to webpack 4
+* Preparing for react 16 upgrade by pulling in the prop types dependency
+
+# 1.2.19
+
+* Internal dependency upgrades
+
 # 1.2.18
 
 * Ensure Selects preserve multi-selected state when applicable

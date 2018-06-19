@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import clone from 'clone';
 import 'core-js/fn/array/find-index';
@@ -9,12 +10,12 @@ import Button from '../buttons/Button';
 import List from '../list/List';
 
 const propTypes = {
-  fields: React.PropTypes.array,
-  filters: React.PropTypes.array,
-  addCTA: React.PropTypes.string,
-  onChange: React.PropTypes.func,
-  onSwitchView: React.PropTypes.func,
-  removableToggle: React.PropTypes.bool,
+  fields: PropTypes.array,
+  filters: PropTypes.array,
+  addCTA: PropTypes.string,
+  onChange: PropTypes.func,
+  onSwitchView: PropTypes.func,
+  removableToggle: PropTypes.bool,
 };
 
 const defaultProps = {

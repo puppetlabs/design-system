@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import { LEFT_KEY_CODE, RIGHT_KEY_CODE } from '../../constants';
 
 const propTypes = {
-  min: React.PropTypes.number,
-  max: React.PropTypes.number,
-  step: React.PropTypes.number,
-  defaultValue: React.PropTypes.number,
-  onChange: React.PropTypes.func,
+  min: PropTypes.number,
+  max: PropTypes.number,
+  step: PropTypes.number,
+  defaultValue: PropTypes.number,
+  onChange: PropTypes.func,
 };
 
 const defaultProps = {

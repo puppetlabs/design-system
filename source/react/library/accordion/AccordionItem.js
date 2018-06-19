@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
@@ -6,21 +7,21 @@ import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
   /** A string to identify the item visually for the user */
-  title: React.PropTypes.string,
+  title: PropTypes.string,
   /**
     Whether or not the children are displayed. Usually controlled by the parent
     `Accordion`
   */
-  active: React.PropTypes.bool,
+  active: PropTypes.bool,
   /** Class name to apply to container */
-  className: React.PropTypes.string,
+  className: PropTypes.string,
   /** Callback for when the user opens the item */
-  onOpen: React.PropTypes.func,
-  children: React.PropTypes.any,
+  onOpen: PropTypes.func,
+  children: PropTypes.any,
   /** Icon to render next to the title */
-  icon: React.PropTypes.string,
+  icon: PropTypes.string,
   /** Tooltip to display on hover */
-  tooltip: React.PropTypes.string,
+  tooltip: PropTypes.string,
 };
 
 const defaultProps = {

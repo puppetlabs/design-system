@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
@@ -5,10 +6,10 @@ import Icon from '../icon/Icon';
 
 const propTypes = {
   /** Name of the input */
-  name: React.PropTypes.string,
-  checked: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  onChange: React.PropTypes.func,
+  name: PropTypes.string,
+  checked: PropTypes.bool,
+  disabled: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 const defaultProps = {

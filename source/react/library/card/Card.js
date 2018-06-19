@@ -1,20 +1,21 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: React.PropTypes.any,
-  size: React.PropTypes.string,
-  style: React.PropTypes.string,
+  children: PropTypes.any,
+  size: PropTypes.string,
+  style: PropTypes.string,
   /** Card width in px or % */
-  width: React.PropTypes.string,
+  width: PropTypes.string,
   /** Card height in px or % */
-  height: React.PropTypes.string,
+  height: PropTypes.string,
   /** Manual active state */
-  selected: React.PropTypes.bool,
+  selected: PropTypes.bool,
   /** Class name to apply to container element */
-  className: React.PropTypes.string,
+  className: PropTypes.string,
   /**  Function to be called when the user clicks on a card */
-  onClick: React.PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {

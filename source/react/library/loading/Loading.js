@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  className: React.PropTypes.string,
+  className: PropTypes.string,
   /** Currently only `small` is supported */
-  size: React.PropTypes.string,
+  size: PropTypes.string,
 };
 
 const defaultProps = {

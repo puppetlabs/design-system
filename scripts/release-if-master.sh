@@ -8,7 +8,7 @@ COMMIT=$(git rev-parse HEAD)
 TAG=$(git tag --points-at ${COMMIT})
 SORT=/usr/bin/sort
 TARGET_BRANCH="master"
-BUILDING_BRANCH=$CIRCLE_BRANCH
+BUILDING_BRANCH=$DISTELLI_RELBRANCH
 
 # If we see gsort out there we'll use that instead of the default sort tool.
 if [[ -e `which gsort` ]];
@@ -58,9 +58,6 @@ echo "Releasing version ${CURRENT_VERSION}"
 NEW_PACKAGE_VERSION=`echo ${CURRENT_VERSION} | egrep -o '([0-9]+\.[0-9]+\.[0-9]+)'`
 sed -i -e "s/\"version\": \"${PACKAGE_VERSION}\"/\"version\": \"${NEW_PACKAGE_VERSION}\"/g" ./package.json
 
-# This is also a hack for fucking CircleCI
-sudo pip install awscli
-
 # Okay, let's do the release now!
 git tag ${CURRENT_VERSION}
 git push --tags
@@ -70,5 +67,5 @@ LATEST_VERSION=`git tag | grep '^v[0-9]' | ${SORT} -V | tail -n 1`
 
 if [[ $LATEST_VERSION == $CURRENT_VERSION ]];
 then
-  make release_npm
+  make release_npm || exit 1
 fi

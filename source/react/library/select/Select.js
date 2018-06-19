@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import clone from 'clone';
 import classnames from 'classnames';
@@ -22,26 +23,26 @@ import Button from '../buttons/Button';
 import SelectItem from './SelectItem';
 
 const propTypes = {
-  name: React.PropTypes.string,
-  autoOpen: React.PropTypes.bool,
-  onSelect: React.PropTypes.func,
-  options: React.PropTypes.array,
-  disabled: React.PropTypes.bool,
-  multiple: React.PropTypes.bool,
-  typeahead: React.PropTypes.bool,
-  clearable: React.PropTypes.bool,
-  valueless: React.PropTypes.bool,
-  className: React.PropTypes.string,
-  placeholder: React.PropTypes.string,
-  disablePortal: React.PropTypes.bool,
-  onPendingDeleteChange: React.PropTypes.func,
-  onNewOption: React.PropTypes.func,
-  newOptionLabel: React.PropTypes.string,
-  popoverClassName: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['tiny', 'small', 'medium']),
-  selected: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.array,
+  name: PropTypes.string,
+  autoOpen: PropTypes.bool,
+  onSelect: PropTypes.func,
+  options: PropTypes.array,
+  disabled: PropTypes.bool,
+  multiple: PropTypes.bool,
+  typeahead: PropTypes.bool,
+  clearable: PropTypes.bool,
+  valueless: PropTypes.bool,
+  className: PropTypes.string,
+  placeholder: PropTypes.string,
+  disablePortal: PropTypes.bool,
+  onPendingDeleteChange: PropTypes.func,
+  onNewOption: PropTypes.func,
+  newOptionLabel: PropTypes.string,
+  popoverClassName: PropTypes.string,
+  size: PropTypes.oneOf(['tiny', 'small', 'medium']),
+  selected: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
   ]),
 };
 

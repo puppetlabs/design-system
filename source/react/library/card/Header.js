@@ -1,18 +1,19 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  actions: React.PropTypes.array,
+  actions: PropTypes.array,
   /** Primary title */
-  title: React.PropTypes.string,
+  title: PropTypes.string,
   /** Class to the title eelement */
-  titleClassName: React.PropTypes.string,
+  titleClassName: PropTypes.string,
   /** Secondary title */
-  subtitle: React.PropTypes.string,
+  subtitle: PropTypes.string,
   /** Controls to update the contents of the card */
-  controls: React.PropTypes.any,
+  controls: PropTypes.any,
   /** Card description */
-  description: React.PropTypes.string,
+  description: PropTypes.string,
 };
 
 const defaultProps = {

@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import Popover from '../popover/Popover';
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  hint: React.PropTypes.string,
-  children: React.PropTypes.any,
-  width: React.PropTypes.oneOfType([React.PropTypes.string, React.PropTypes.number]),
+  hint: PropTypes.string,
+  children: PropTypes.any,
+  width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 const defaultProps = {

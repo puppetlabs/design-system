@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
@@ -5,8 +6,8 @@ import Message from './MenuActionsMessage';
 import Buttons from './MenuActionsButtons';
 
 const propTypes = {
-  children: React.PropTypes.any,
-  centered: React.PropTypes.bool,
+  children: PropTypes.any,
+  centered: PropTypes.bool,
 };
 
 const defaultProps = {

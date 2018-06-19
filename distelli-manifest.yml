@@ -1,0 +1,19 @@
+insights/insights-ui-components:
+  PreBuild:
+    - sudo add-apt-repository ppa:git-core/ppa
+    - sudo apt-get update
+    - sudo apt-get install git
+    - nvm install v8.11.3
+    - nvm alias default v8.11.3
+    - nvm use default
+    - touch $HOME/.npmrc
+    - echo "//registry.npmjs.org/:_authToken=$NPM_REGISTRY_AUTH" > $HOME/.npmrc
+    - echo "@puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/" > $HOME/.npmrc
+    - echo "//artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/:_authToken=$ARTIFACTORY_REGISTRY_AUTH" > $HOME/.npmrc
+    - make setup
+  Build:
+    - npm run js-lint
+    - npm run scss-lint
+    - npm run test
+  AfterBuildSuccess:
+    - ./scripts/release-if-master.sh

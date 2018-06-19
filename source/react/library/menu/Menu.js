@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 
@@ -8,9 +9,9 @@ import Item from './MenuItem';
 import List from './MenuList';
 
 const propTypes = {
-  className: React.PropTypes.string,
-  size: React.PropTypes.oneOf(['tiny', 'small', 'medium']),
-  children: React.PropTypes.any,
+  className: PropTypes.string,
+  size: PropTypes.oneOf(['tiny', 'small', 'medium']),
+  children: PropTypes.any,
 };
 
 const defaultProps = {

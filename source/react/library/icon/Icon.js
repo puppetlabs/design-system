@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import icons from './icons';
 
 const propTypes = {
-  viewBox: React.PropTypes.string,
-  height: React.PropTypes.string,
-  width: React.PropTypes.string,
-  type: React.PropTypes.string,
-  svg: React.PropTypes.element,
+  viewBox: PropTypes.string,
+  height: PropTypes.string,
+  width: PropTypes.string,
+  type: PropTypes.string,
+  svg: PropTypes.element,
 };
 
 const defaultProps = {

@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import Portal from 'react-portal';
 
 const propTypes = {
-  isOpened: React.PropTypes.bool,
+  isOpened: PropTypes.bool,
 };
 
 const defaultProps = {

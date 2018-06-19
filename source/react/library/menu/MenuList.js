@@ -1,18 +1,19 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import MenuItem from './MenuItem';
 
 const propTypes = {
-  size: React.PropTypes.oneOf(['tiny', 'small', 'medium']),
-  selected: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.array,
-    React.PropTypes.number,
+  size: PropTypes.oneOf(['tiny', 'small', 'medium']),
+  selected: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.array,
+    PropTypes.number,
   ]),
-  options: React.PropTypes.array,
-  multiple: React.PropTypes.bool,
-  onChange: React.PropTypes.func,
-  onFocus: React.PropTypes.func,
+  options: PropTypes.array,
+  multiple: PropTypes.bool,
+  onChange: PropTypes.func,
+  onFocus: PropTypes.func,
 };
 
 const defaultProps = {

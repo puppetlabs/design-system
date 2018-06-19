@@ -1,32 +1,33 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import equals from 'deep-equal';
 import DropdownMenu from './DropdownMenu';
 import DropdownLabel from './DropdownLabel';
 
 const propTypes = {
-  size: React.PropTypes.string,
-  select: React.PropTypes.bool,
-  onChange: React.PropTypes.func,
-  options: React.PropTypes.array,
-  actions: React.PropTypes.any,
-  hint: React.PropTypes.string,
-  margin: React.PropTypes.number,
-  anchor: React.PropTypes.string,
-  placeholder: React.PropTypes.string,
-  blank: React.PropTypes.string,
-  label: React.PropTypes.string,
-  multiple: React.PropTypes.bool,
-  required: React.PropTypes.bool,
-  disabled: React.PropTypes.bool,
-  tabIndex: React.PropTypes.number,
-  error: React.PropTypes.string,
-  disablePortal: React.PropTypes.bool,
-  selected: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.number,
-    React.PropTypes.array,
+  size: PropTypes.string,
+  select: PropTypes.bool,
+  onChange: PropTypes.func,
+  options: PropTypes.array,
+  actions: PropTypes.any,
+  hint: PropTypes.string,
+  margin: PropTypes.number,
+  anchor: PropTypes.string,
+  placeholder: PropTypes.string,
+  blank: PropTypes.string,
+  label: PropTypes.string,
+  multiple: PropTypes.bool,
+  required: PropTypes.bool,
+  disabled: PropTypes.bool,
+  tabIndex: PropTypes.number,
+  error: PropTypes.string,
+  disablePortal: PropTypes.bool,
+  selected: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.array,
   ]),
-  onActionClick: React.PropTypes.func,
+  onActionClick: PropTypes.func,
 };
 
 const defaultProps = {

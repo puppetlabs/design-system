@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 import { isNodeInRoot } from '../../helpers/statics';
@@ -8,15 +9,15 @@ import Menu from '../menu/Menu';
 import Button from '../buttons/Button';
 
 const propTypes = {
-  onOutsideClick: React.PropTypes.func,
-  menu: React.PropTypes.bool,
-  className: React.PropTypes.string,
-  closeButton: React.PropTypes.bool,
-  style: React.PropTypes.object,
-  hint: React.PropTypes.string,
-  allowBubble: React.PropTypes.bool,
-  onClose: React.PropTypes.func,
-  children: React.PropTypes.any,
+  onOutsideClick: PropTypes.func,
+  menu: PropTypes.bool,
+  className: PropTypes.string,
+  closeButton: PropTypes.bool,
+  style: PropTypes.object,
+  hint: PropTypes.string,
+  allowBubble: PropTypes.bool,
+  onClose: PropTypes.func,
+  children: PropTypes.any,
 };
 
 const defaultProps = {

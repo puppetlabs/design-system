@@ -1,10 +1,11 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import GridBlock from './GridBlock';
 
 const propTypes = {
   /** A view configuration from the Reflect API */
-  view: React.PropTypes.object.isRequired,
-  settings: React.PropTypes.object,
+  view: PropTypes.object.isRequired,
+  settings: PropTypes.object,
 };
 
 const defaultProps = {
