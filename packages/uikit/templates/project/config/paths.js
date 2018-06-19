@@ -5,9 +5,8 @@ const paths = map(p => path.resolve.bind(null, __dirname, '..', p), {
   root: '',
   src: 'src',
   dist: 'dist',
-  client: 'styleguide/client',
-  server: 'styleguide/server',
-  styleguideDist: 'styleguide-dist',
+  client: 'src/client',
+  server: 'src/server',
 });
 
 module.exports = paths;
