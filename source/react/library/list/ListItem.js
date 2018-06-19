@@ -5,7 +5,7 @@ import Icon from '../icon/Icon';
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
 const propTypes = {
-  size: PropTypes.oneOf(['small', 'tiny']),
+  size: PropTypes.oneOf(['tiny', 'small', 'medium']),
   className: PropTypes.string,
   actions: PropTypes.any,
   kebab: PropTypes.any,

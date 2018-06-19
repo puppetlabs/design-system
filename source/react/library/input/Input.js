@@ -26,7 +26,7 @@ const propTypes = {
   simple: PropTypes.bool,
   error: PropTypes.string,
   style: PropTypes.object,
-  icon: PropTypes.string,
+  icon: PropTypes.bool,
   onKeyDown: PropTypes.func,
   onKeyUp: PropTypes.func,
   onChange: PropTypes.func,
