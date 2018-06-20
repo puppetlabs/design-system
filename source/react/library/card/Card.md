@@ -39,7 +39,7 @@ const menuOptions = [
   { value: 'Me three...', id: 2 },
 ];
 
-const actions = [<CardActionsMenu menuOptions={ menuOptions } />];
+const actions = [<CardActionsMenu key="menu-1" menuOptions={ menuOptions } />];
 <Card>
   <CardHeader title="I am a title" actions={ actions } />
 </Card>
@@ -52,7 +52,7 @@ const menuOptions = [
   { value: 'Me three...', id: 2 },
 ];
 
-const actions = [<CardActionsMenu menuOptions={ menuOptions } />];
+const actions = [<CardActionsMenu key="menu-1" menuOptions={ menuOptions } />];
 <Card>
   <CardHeader actions={ actions } />
 </Card>
@@ -103,8 +103,8 @@ const menuOptions = [
 ];
 
 const actions = [
-  <CardActionsSearch onSearch={ (value) => { console.log(value) }  } />,
-  <CardActionsMenu key="menu-1" menuOptions={ menuOptions } />,
+  <CardActionsSearch key="menu-1" onSearch={ (value) => { console.log(value) }  } />,
+  <CardActionsMenu key="menu-2" menuOptions={ menuOptions } />,
 ];
 
 <Card>
