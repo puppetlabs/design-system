@@ -6,7 +6,7 @@ const Renderer = () => {
 
   for (var i = 0; i < names.length; i++) {
     components.push(
-      <div><Icon type={ names[i] } height="12" /> { names[i] }</div>
+      <div key={ names[i] }><Icon type={ names[i] } height="12px" /> { names[i] }</div>
     );
   }
 

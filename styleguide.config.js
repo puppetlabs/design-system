@@ -9,6 +9,12 @@ module.exports = {
   },
   components: 'source/react/library/**/*.js',
   ignore: [
+    '**/portal.js',
+    '**/togglable.js',
+    '**/Saving.js',
+    '**/FadeInAndOut.js',
+    '**/**/index.js',
+    '**/icon/icons.js',
     '**/table/Column.js',
     '**/table/ColumnInput.js',
     '**/table/ColumnSelect.js',

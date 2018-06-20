@@ -33,6 +33,8 @@ const defaultProps = {
   disablePortal: false,
   disabled: false,
   disabledMenu: false,
+  onClick: () => {},
+  onOptionClick: () => {},
 };
 
 /**

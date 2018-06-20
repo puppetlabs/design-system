@@ -104,11 +104,12 @@ const yAxisFlyout = (
 
 <Form>
   <Form.Field
+    key="form-section-1"
     type="input"
     name="title"
     label="title"
   />
-  <Form.Section title="X-Axis" tooltip="Edit the X Axis here">
+  <Form.Section title="X-Axis" tooltip="Edit the X Axis here" key="form-section-2">
     <Form.Field
       type="input"
       name="xAxisDimensions"
@@ -121,7 +122,7 @@ const yAxisFlyout = (
       label="metrics"
     />
   </Form.Section>
-  <Form.Section title="Y-Axis" flyout={ yAxisFlyout }>
+  <Form.Section title="Y-Axis" flyout={ yAxisFlyout } key="form-section-3">
     <Form.Field
       type="input"
       name="yAxisMetrics"
