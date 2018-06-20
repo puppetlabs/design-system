@@ -24,6 +24,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  onChange: () => {},
   className: '',
   anchor: 'bottom left',
   buttonClassName: '',

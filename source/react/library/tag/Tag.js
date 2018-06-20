@@ -10,7 +10,7 @@ const propTypes = {
   selected: PropTypes.bool,
   className: PropTypes.string,
   round: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'medium']),
+  size: PropTypes.oneOf(['tiny', 'small', 'medium']),
   block: PropTypes.bool,
   tooltip: PropTypes.bool,
   onRemove: PropTypes.func,

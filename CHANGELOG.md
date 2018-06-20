@@ -1,3 +1,9 @@
+# 1.3.2
+
+* Remove the default minification in webpack 4 for this module
+* Fix react warnings found in styleguide
+
+
 # 1.3.1
 
 * Publishing to artifactory via Continous Deployment
