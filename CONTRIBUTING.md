@@ -2,16 +2,15 @@
 
 Thanks for your interest in contributing! This document outlines how to submit a
 bug or request an enhancement, set up your development environment, open a pull
-request, and deploy a new version.
+request, deploying new versions, and reviewing code.
 
 ## Filing a bug or enhancement
 
 We currently use Github Issues for tracking bugs and enhancements for this
 project.
 
-You're encouraged to open an issue before you begin developing your enhancement
-or bug fix. This helps us avoid duplicated work, and often serves as a chance
-for others to weigh-in.
+You're encouraged to open an issue before you begin developing. This helps us
+avoid duplicated work and often serves as a chance for others to weigh in.
 
 ## Setting up your development environment
 
@@ -47,6 +46,9 @@ component.
 We use Mocha, Chai, and Enzyme for testing this project. We use ESLint for
 linting our javascript, which has a configuration based of [Airbnb's](https://www.npmjs.com/package/eslint-config-airbnb).
 Additionally, we lint our SCSS using StyleLint.
+
+We've written up some of our best practices we use while testing our React
+projects [here](https://reflect.io/blog/js-testing-mocha-chai-enzyme/).
 
 To run tests:
 
@@ -87,6 +89,7 @@ branch up to Github, you're ready to open a pull request.
   existing code, add tests, or any other requests.
 - Once your pull request has been approved, it's on you to merge it in to the
   development branch.
+- Lastly, please delete your branch after merging.
 
 If you have any questions about this process, please reach out to the
 maintainers. Again, thank you for the contribution!
@@ -122,5 +125,20 @@ that process:
 4. Assign the maintainers. (See "Opening a pull request" above)
 5. Upon approval please merge the pull request. It's your responsibility to test
   the new version once it's been deployed and check for regressions.
+
+## Reviewing pull requests
+
+Here's some things to look for when reviewing pull requests:
+
+- Is the code readable? Does it make sense? Can you decipher the intent?
+- Are there an appropriate amount of tests? Can you decipher the intent of the
+  tests?
+- Is the code style in line with the rest of the file? The project? The team?
+- Are there inline comments where necessary?
+
+Good reviewers are respectful and try to understand the intent of the
+contributor.
+
+TODO: Expand on these notes.
 
 Thanks!

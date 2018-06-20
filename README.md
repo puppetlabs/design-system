@@ -33,3 +33,8 @@ reviews.
 Insights UI Components is maintained by [Geoff Woodburn](https://robby.puppetlabs.net/profile/geoff.woodburn)
 and [Colby Aley](https://robby.puppetlabs.net/profile/colby.aley). Feel free to
 contact us with any questions.
+
+## FAQ
+
+Q: Which browser versions do we support?
+A: Down to IE11.
