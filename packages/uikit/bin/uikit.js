@@ -10,7 +10,7 @@ require('yargs') //eslint-disable-line
       yargs.positional('template', {
         type: 'string',
         describe: 'The specified template',
-        choices: ['project'],
+        choices: ['project', 'component'],
       });
 
       yargs.positional('name', {

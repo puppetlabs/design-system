@@ -3,6 +3,8 @@ const klawSync = require('klaw-sync');
 const path = require('path');
 const HandleBars = require('handlebars');
 
+const getNameVariants = require('./getNameVariants');
+
 const generate = ({ template, name }) => {
   const templatePath = path.resolve(__dirname, '../templates', template);
   const dest = path.resolve(process.cwd(), name);
@@ -16,8 +18,9 @@ const generate = ({ template, name }) => {
     let newPath = path.join(dest, path.relative(templatePath, file.path));
 
     if (extension === '.handlebars') {
-      output = HandleBars.compile(data)({ myVariable: 'hi' });
-      newPath = newPath.replace('.handlebars', '');
+      const model = { name: getNameVariants(name) };
+      output = HandleBars.compile(data)(model);
+      newPath = HandleBars.compile(newPath.replace('.handlebars', ''))(model);
     } else {
       output = data;
     }
