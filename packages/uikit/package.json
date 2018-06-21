@@ -4,11 +4,13 @@
   "main": "dist/uikit.js",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
+  "bin": {
+    "uikit": "./bin/uikit.js"
+  },
   "scripts": {
     "build": "./scripts/build",
     "build:styleguide": "./scripts/build-styleguide",
     "precommit": "lint-staged",
-    "prepare": "echo 'Building uikit' && npm run build",
     "format": "./scripts/format",
     "lint": "./scripts/lint",
     "start": "node --experimental-modules styleguide/server/dev.mjs",
@@ -82,9 +84,13 @@
   },
   "dependencies": {
     "classnames": "^2.2.5",
+    "fs-extra": "^6.0.1",
+    "handlebars": "^4.0.11",
+    "klaw-sync": "^4.0.0",
     "postcss-preset-env": "^5.1.0",
     "prop-types": "^15.6.1",
     "ramda": "^0.25.0",
-    "react": "^16.4.0"
+    "react": "^16.4.0",
+    "yargs": "^11.0.0"
   }
 }
