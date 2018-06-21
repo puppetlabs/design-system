@@ -36,7 +36,7 @@ component.
 **To build the library as a module and watch for changes:**
 
 1. If you haven't already done so, run `npm link` in this directory.
-2. Run `npm run watch` to will build the module, and rebuild on any change.
+2. Run `npm run watch` to build the module and rebuild on any change.
 3. For any project in which UI Components is a dependency, you can UI Components
   to see your changes reflected in the parent. In the parent project, run `npm link @puppet/insights-ui-components`.
   Make sure you're using the same version of Node.js in both projects.
@@ -83,8 +83,6 @@ If the answer to these is "yes", you're ready to go! Once you've pushed your
 branch up to Github, you're ready to open a pull request.
 
 - Open your Pull Request against the development branch.
-- Request a review from both Geoff Woodburn ([@woodburndesigns](https://github.com/woodburndesigns))
-  and Colby Aley ([@cp](https://github.com/cp)).
 - You may be asked to make stylistic changes to align your contribution with
   existing code, add tests, or any other requests.
 - Once your pull request has been approved, it's on you to merge it in to the

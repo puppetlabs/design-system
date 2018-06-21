@@ -14,7 +14,7 @@ reviews.
 
 UI Components is distributed on [Artifactory](https://confluence.puppetlabs.com/display/SRE/Artifactory+Basics).
 
-Once you've set up your npm configuration to include Aerifactory as a registry,
+Once you've set up your npm configuration to include Artifactory as a registry,
 you can install UI components with the following command:
 
 `npm install @puppet/insights-ui-components`
@@ -24,15 +24,9 @@ on the corporate WiFI or VPN.
 
 ## Contributing
 
-Please see our [CONTRIBUTING.md](CONFGIBUTING.md) for details on
+Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on
 setting up your development environment, opening a Pull Request, and requesting
 reviews.
-
-## Maintainers
-
-Insights UI Components is maintained by [Geoff Woodburn](https://robby.puppetlabs.net/profile/geoff.woodburn)
-and [Colby Aley](https://robby.puppetlabs.net/profile/colby.aley). Feel free to
-contact us with any questions.
 
 ## FAQ
 
