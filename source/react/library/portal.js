@@ -1,26 +1,50 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Portal from 'react-portal';
+import ReactDOM from 'react-dom';
+import { APP_BASE } from '../constants';
 
 const propTypes = {
   isOpened: PropTypes.bool,
+  content: PropTypes.element,
 };
 
 const defaultProps = {
   isOpened: true,
+  content: null,
 };
 
-const portal = function portal(Base) {
-  const component = props => (
-    <Portal isOpened={ props.isOpened }>
-      <Base { ...props } />
-    </Portal>
-  );
+class Portal extends React.Component {
+  constructor(props) {
+    super(props);
 
-  component.propTypes = propTypes;
-  component.defaultProps = defaultProps;
+    this.rootSelector = APP_BASE;
+    this.container = document.createElement('div');
 
-  return component;
-};
+    // This ensures that components that pre-render aren't appended to the DOM till acted on
+    // while components that render after an action is taken are appended immediately
+    if (props.isOpened) {
+      this.rootSelector.appendChild(this.container);
+    }
+  }
 
-export default portal;
+  componentWillReceiveProps(newProps) {
+    if (newProps.isOpened && !this.props.isOpened) {
+      this.rootSelector.appendChild(this.container);
+    } else if (!newProps.isOpened && this.props.isOpened) {
+      this.rootSelector.removeChild(this.container);
+    }
+  }
+
+  componentWillUnmount() {
+    this.rootSelector.removeChild(this.container);
+  }
+
+  render() {
+    return ReactDOM.createPortal(this.props.content, this.container);
+  }
+}
+
+Portal.propTypes = propTypes;
+Portal.defaultProps = defaultProps;
+
+export default Portal;

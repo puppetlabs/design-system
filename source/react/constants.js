@@ -7,6 +7,7 @@ export const LEFT_KEY_CODE = 37;
 export const RIGHT_KEY_CODE = 39;
 export const UP_KEY_CODE = 38;
 export const DOWN_KEY_CODE = 40;
+export const APP_BASE = document.body;
 
 export const SIDEBAR_SUBSECTION_TRUNC_LENGTH = 3;
 

@@ -3,7 +3,7 @@ import React from 'react';
 
 import { isNodeInRoot } from '../../helpers/statics';
 
-import portal from '../portal';
+import portable from '../portable';
 import togglable from '../togglable';
 import Menu from '../menu/Menu';
 import Button from '../buttons/Button';
@@ -54,9 +54,10 @@ class PopoverContent extends React.Component {
     if (!isNodeInRoot(e.target, this.elem) && this.props.onOutsideClick) {
       this.props.onOutsideClick(e);
 
-      if (!this.props.allowBubble) {
-        e.stopPropagation();
-      }
+      // When allowBubble is false, this prevents click events on page
+      // if (!this.props.allowBubble) {
+      //   e.stopPropagation();
+      // }
     }
   }
 
@@ -139,4 +140,5 @@ PopoverContent.defaultProps = defaultProps;
 
 const PopoverContentWithoutPortal = togglable(PopoverContent);
 export { PopoverContentWithoutPortal };
-export default portal(PopoverContent);
+
+export default portable(PopoverContent);
