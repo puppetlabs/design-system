@@ -2,17 +2,17 @@
 
 ## Installation
 
-`yarn`
+`npm install`
 
 ## Actions
 
-- `yarn start`: Start the dev server. Will be served on `localhost:3456`
-- `yarn build`: Build a production bundle of code
-- `yarn serve`: Serve the production bundles
-- `yarn test`: Run all tests with jest
-- `yarn test:watch`: Run tests in watch mode
-- `yarn test:coverage`: Run tests with coverage reporting
-- `yarn format`: Run auto code formatting
+- `npm start`: Start the dev server. Will be served on `localhost:3456`
+- `npm run build`: Build a production bundle of code
+- `npm run serve`: Serve the production bundles
+- `npm test`: Run all tests with jest
+- `npm run test:watch`: Run tests in watch mode
+- `npm run test:coverage`: Run tests with coverage reporting
+- `npm run format`: Run auto code formatting
 
 ## Contributing
 
