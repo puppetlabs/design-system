@@ -41,12 +41,13 @@
     "babel-preset-react-hmre": "^1.1.1",
     "chai": "^3.5.0",
     "chai-enzyme": "1.0.0-beta.0",
+    "cheerio": "^1.0.0-rc.2",
     "classnames": "^2.2.5",
     "css-loader": "0.28.11",
     "debounce": "1.1.0",
-    "es6-plato": "^1.0.18",
     "enzyme": "3.0.0",
     "enzyme-adapter-react-16": "^1.1.1",
+    "es6-plato": "^1.0.18",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.1.0",
     "eslint-plugin-import": "2.7.0",
@@ -77,7 +78,7 @@
     "webpack-dev-server": "3.1.4"
   },
   "peerDependencies": {
-    "react": "16.3.0",
+    "react": "16.4.0",
     "react-dom": "16.3.0",
     "moment": "^2.22.2",
     "moment-timezone": "0.5.13"
