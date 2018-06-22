@@ -19,6 +19,7 @@ const propTypes = {
   allowBubble: PropTypes.bool,
   onClose: PropTypes.func,
   children: PropTypes.any,
+  isOpened: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -31,6 +32,7 @@ const defaultProps = {
   allowBubble: false,
   onClose: null,
   children: null,
+  isOpened: false,
 };
 
 class PopoverContent extends React.Component {
@@ -54,10 +56,9 @@ class PopoverContent extends React.Component {
     if (!isNodeInRoot(e.target, this.elem) && this.props.onOutsideClick) {
       this.props.onOutsideClick(e);
 
-      // When allowBubble is false, this prevents click events on page
-      // if (!this.props.allowBubble) {
-      //   e.stopPropagation();
-      // }
+      if (!this.props.allowBubble && this.props.isOpened) {
+        e.stopPropagation();
+      }
     }
   }
 

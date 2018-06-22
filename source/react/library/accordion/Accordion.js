@@ -114,7 +114,7 @@ class Accordion extends React.Component {
       onOpen: this.onOpenChild(index),
     };
 
-    return React.cloneElement(child, ...props);
+    return React.cloneElement(child, props);
   }
 
   renderItems() {
