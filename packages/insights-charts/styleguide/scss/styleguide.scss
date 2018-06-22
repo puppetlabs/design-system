@@ -1,3 +1,5 @@
+@import 'node_modules/@puppet/insights-ui-components/source/scss/library/ui';
+@import 'node_modules/@puppet/insights-editor/source/scss/editor';
 @import '../../source/scss/all';
 
 body {
@@ -21,17 +23,20 @@ p {
   box-sizing: border-box;
 }
 
-.sg-sidebar {
-  background: $reflect-brand-primary;
+.sg-sidebar, .rui-editor {
   bottom: 0;
   height: 100%;
-  left: 0;
-  padding-top: 20px;
   position: fixed;
   top: 0;
   width: 250px;
   display: flex;
   flex-direction: column;
+}
+
+.sg-sidebar {
+  left: 0;
+  padding-top: 20px;
+  background: $reflect-brand-primary;
 
   ul.sg-sidebar-links {
     list-style: none;
@@ -60,55 +65,23 @@ p {
   }
 
   .sg-sidebar-options {
-    margin-top: auto;
-
-    color: $reflect-white;
     font-family: $reflect-font-family;
+    height: 100%;
+    margin-top: auto;
+  }
+}
 
-    h2 {
-      padding: 0 20px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: $reflect-font-size-base;
-    }
+.sg-editor {
+  right: 0;
 
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 10px 20px;
-    }
-
-    li {
-      display: flex;
-      flex-direction: row;
-      font-size: $reflect-font-size-base;
-      line-height: 40px;
-
-      > * {
-        padding: 0 5px;
-      }
-
-      > *:first-child {
-        padding-left: 0;
-      }
-
-      > *:last-child {
-        margin-left: auto;
-        padding-right: 0;
-      }
-
-      input[type="text"] {
-        max-width: 75px;
-        font-size: $reflect-font-size-small;
-        height: 40px;
-        line-height: 40px;
-      }
-    }
+  .rc-accordion-item:last-of-type {
+    border-bottom: 0;
   }
 }
 
 .sg-content {
   margin-left: 250px;
+  margin-right: 250px;
   padding: 20px;
 }
 

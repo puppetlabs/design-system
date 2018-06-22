@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Sidebar from './partials/Sidebar';
+import Editor from './partials/Editor';
 
 const propTypes = {
   children: PropTypes.any.isRequired,
+  route: PropTypes.object.isRequired,
 };
 
 const Styleguide = props => (
@@ -12,6 +14,7 @@ const Styleguide = props => (
     <div className="sg-content">
       { props.children }
     </div>
+    <Editor />
   </div>
 );
 

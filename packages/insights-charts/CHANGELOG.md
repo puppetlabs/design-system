@@ -1,3 +1,7 @@
+# 0.10.6
+
+* Internal updates
+
 # 0.10.5
 
 * Fix for bug that caused tooltips to not display after clicking on a chart

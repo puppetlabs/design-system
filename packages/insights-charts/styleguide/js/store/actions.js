@@ -1,5 +1,6 @@
-export const setOption = (name, value) => ({
-  type: 'SET_OPTION',
-  name,
-  value,
+export const setOptions = options => ({
+  type: 'SET_OPTIONS',
+  payload: {
+    options,
+  },
 });

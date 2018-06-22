@@ -1,7 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router';
-import SparsenessOption from './SparsenessOption';
-import AnimationsOption from './AnimationsOption';
+
+const propTypes = {
+  pages: React.PropTypes.array,
+};
+
+const defaultProps = {
+  pages: [],
+};
 
 const Sidebar = ({ pages }) => {
   const lis = pages.map(p => (
@@ -21,21 +27,11 @@ const Sidebar = ({ pages }) => {
       <ul className="sg-sidebar-links">
         { lis }
       </ul>
-      <div className="sg-sidebar-options">
-        <h2>Options</h2>
-        <ul>
-          <li>
-            <div className="sg-sidebar-option-title">Sparseness</div>
-            <div className="sg-sidebar-option-input"><SparsenessOption /></div>
-          </li>
-          <li>
-            <div className="sg-sidebar-option-title">Animations</div>
-            <div className="sg-sidebar-option-input"><AnimationsOption /></div>
-          </li>
-        </ul>
-      </div>
     </div>
   );
-}
+};
+
+Sidebar.propTypes = propTypes;
+Sidebar.defaultProps = defaultProps;
 
 export default Sidebar;
