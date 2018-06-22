@@ -30,6 +30,7 @@ const defaultProps = {
  * selected `Dropdown` item.
  */
 
+// eslint-disable-next-line react/prefer-stateless-function
 class DropdownLabel extends React.Component {
   render() {
     let label = this.props.label;
