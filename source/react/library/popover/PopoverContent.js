@@ -3,7 +3,7 @@ import React from 'react';
 
 import { isNodeInRoot } from '../../helpers/statics';
 
-import portable from '../portable';
+import portalable from '../portalable';
 import togglable from '../togglable';
 import Menu from '../menu/Menu';
 import Button from '../buttons/Button';
@@ -141,4 +141,4 @@ PopoverContent.defaultProps = defaultProps;
 const PopoverContentWithoutPortal = togglable(PopoverContent);
 export { PopoverContentWithoutPortal };
 
-export default portable(PopoverContent);
+export default portalable(PopoverContent);

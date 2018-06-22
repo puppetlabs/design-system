@@ -9,7 +9,7 @@ module.exports = {
   },
   components: 'source/react/library/**/*.js',
   ignore: [
-    '**/portable.js',
+    '**/portalable.js',
     '**/Portal.js',
     '**/togglable.js',
     '**/Saving.js',

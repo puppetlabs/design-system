@@ -1,7 +1,9 @@
 import React from 'react';
 import Portal from './Portal';
 
-const portable = function portable(Base) {
+// This HOC wraps passed content in a native react portal.
+
+const portalable = function portalable(Base) {
   const component = props => (
     <Portal content={ <Base { ...props } /> } { ...props } />
   );
@@ -9,4 +11,4 @@ const portable = function portable(Base) {
   return component;
 };
 
-export default portable;
+export default portalable;
