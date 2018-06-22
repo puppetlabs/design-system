@@ -13,6 +13,11 @@ const defaultProps = {
   content: null,
 };
 
+// This HOC wraps passed content in a native react portal.
+const portal = Base => props => (
+  <Portal content={ <Base { ...props } /> } { ...props } />
+);
+
 class Portal extends React.Component {
   constructor(props) {
     super(props);
@@ -47,4 +52,4 @@ class Portal extends React.Component {
 Portal.propTypes = propTypes;
 Portal.defaultProps = defaultProps;
 
-export default Portal;
+export default portal;

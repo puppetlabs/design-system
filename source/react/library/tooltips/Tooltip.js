@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { bindParentScroll, unbindParentScroll } from '../../helpers/statics';
-import portalable from '../portalable';
+import portal from '../portal';
 import TooltipHoverArea from './TooltipHoverArea';
 import TooltipStickyArea from './TooltipStickyArea';
 import Icon from '../icon/Icon';
@@ -196,4 +196,4 @@ Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;
 
 export { TooltipHoverArea, TooltipStickyArea };
-export default portalable(Tooltip);
+export default portal(Tooltip);
