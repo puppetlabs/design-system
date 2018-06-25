@@ -38,7 +38,7 @@
   }
 
   a {
-    color: $reflect-action-color;
+    color: $reflect-anchor-color;
     font-weight: normal;
     letter-spacing: normal;
     text-decoration: none;
@@ -46,6 +46,7 @@
   }
 
   a:hover {
+    color: $reflect-anchor-hover;
     text-decoration: none;
   }
 }
