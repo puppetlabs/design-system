@@ -98,7 +98,7 @@ maintainers. Again, thank you for the contribution!
 New versions of UI Components are built and published to Artifactory using
 [Puppet Pipelines](http://pipelines.puppet.com/). This happens whenever a commit
 is pushed to the master branch. Ideally, the only commits to master happen via a
-merge from development. That process is outlines below.
+merge from development. That process is outlined below.
 
 ### Bumping the minor or major version
 
@@ -137,7 +137,5 @@ Here's some things to look for when reviewing pull requests:
 
 Good reviewers are respectful and try to understand the intent of the
 contributor.
-
-TODO: Expand on these notes.
 
 Thanks!
