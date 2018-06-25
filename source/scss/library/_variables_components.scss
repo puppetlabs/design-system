@@ -609,4 +609,8 @@ $puppet-slider-bar-height                   : $puppet-tiny !default;
 $puppet-slider-handle-size                  : 10px !default;
 $puppet-slider-bar-position                 : ($puppet-slider-handle-size - $puppet-slider-bar-height)/2 !default;
 
+// Header
+$reflect-header-bg                           : #000e1c !default;
+$reflect-header-color                        : $reflect-white !default;
+
 /* stylelint-enable */
