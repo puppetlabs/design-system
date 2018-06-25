@@ -6,7 +6,8 @@
 
 // Colors
 // ----------------------------------------------------------------------------
-// Colors from the Puppet styleguide
+// Colors from the Puppet styleguide. As we continue we should integrate these
+// more tightly into our styles.
 // ----------------------------------------------------------------------------
 $puppet-amber                                : #ffae1a !default;
 
@@ -57,6 +58,8 @@ $positive-1                                  : #0da371 !default;
 $warning-1                                   : #ffd503 !default;
 $negative-1                                  : #e62600 !default;
 
+// End Puppet Styleguide colors
+
 // Primary Color
 $reflect-brand-primary                       : $puppet-amber !default;
 
@@ -82,8 +85,8 @@ $reflect-primary-chart-color                 : $reflect-brand-primary !default;
 // Action Colors
 // Colors used for primary buttons and other action elements
 // Text is typically on a bg color - by default it is white text & icons on a blue bg
-$reflect-action-color                        : $action-dark !default;
-$reflect-action-hover                        : $action-light !default;
+$reflect-action-color                        : $action-medium !default;
+$reflect-action-hover                        : $action-dark !default;
 $reflect-action-border                       : $reflect-action-color !default;
 $reflect-action-border-hover                 : $reflect-action-hover !default;
 $reflect-action-text                         : $reflect-white !default;
