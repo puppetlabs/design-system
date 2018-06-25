@@ -1,8 +1,12 @@
+# 1.3.3
+
+* First pass using Puppet styling
+* Add CONTRIBUTING.md
+
 # 1.3.2
 
 * Remove the default minification in webpack 4 for this module
 * Fix react warnings found in styleguide
-
 
 # 1.3.1
 
