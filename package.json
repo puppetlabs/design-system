@@ -26,8 +26,8 @@
   "bugs": {
     "url": "https://github.com/reflect/reflect-components/issues"
   },
-  "engines" : {
-    "node" : ">=8.11.3"
+  "engines": {
+    "node": ">=8.11.3"
   },
   "homepage": "https://github.com/reflect/reflect-components#readme",
   "devDependencies": {
