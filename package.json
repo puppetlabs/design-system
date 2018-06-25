@@ -3,7 +3,6 @@
   "version": "1.3.0",
   "description": "A React component library to assist in the creation of user interfaces.",
   "main": "build/library.js",
-  "version": "v8.11.3",
   "publishConfig": {
     "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   },
@@ -26,6 +25,9 @@
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/reflect/reflect-components/issues"
+  },
+  "engines" : {
+    "node" : ">=8.11.3"
   },
   "homepage": "https://github.com/reflect/reflect-components#readme",
   "devDependencies": {
