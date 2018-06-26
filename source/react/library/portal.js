@@ -19,6 +19,7 @@ const portal = (Base) => {
 
       this.rootSelector = APP_BASE;
       this.container = document.createElement('div');
+      this.container.className = 'rc-portal';
 
       // This ensures that components that pre-render aren't appended to the DOM till acted on
       // while components that render after an action is taken are appended immediately
