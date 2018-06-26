@@ -63,8 +63,7 @@
     "nodemon": "^1.10.2",
     "nyc": "^10.2.0",
     "react": "16.4.0",
-    "react-dom": "16.3.0",
-    "react-portal": "4.1.2",
+    "react-dom": "16.4.0",
     "react-addons-test-utils": "15.3.2",
     "react-router": "^3.0.0",
     "react-styleguidist": "7.0.14",
@@ -79,7 +78,7 @@
   },
   "peerDependencies": {
     "react": "16.4.0",
-    "react-dom": "16.3.0",
+    "react-dom": "16.4.0",
     "moment": "^2.22.2",
     "moment-timezone": "0.5.13"
   },
