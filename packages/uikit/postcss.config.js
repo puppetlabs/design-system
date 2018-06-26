@@ -1,4 +1,4 @@
-const parseVariables = require('./parseVariables');
+const parseVariables = require('./utils/parseVariables');
 
 const variables = {
   ...parseVariables('src/styles/colors.css'),
@@ -7,10 +7,12 @@ const variables = {
 
 module.exports = {
   plugins: {
-    'postcss-cssnext': {
+    'postcss-preset-env': {
+      stage: 0,
       features: {
-        customProperties: {
+        'custom-properties': {
           variables,
+          preserve: process.env.NODE_ENV !== 'production',
         },
       },
     },

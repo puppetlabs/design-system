@@ -29,7 +29,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.css$/],
+        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.css$/, /\.scss$/],
         loader: 'file-loader',
         options: {
           name: 'assets/[name].[hash].[ext]',
@@ -39,5 +39,6 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.mjs', '.jsx'],
+    symlinks: false,
   },
 };

@@ -13,7 +13,11 @@ const text = (label, fallback, separator = ',') => {
         id={label}
         name={label}
         value={value}
-        onChange={compose(updateValue, split(separator), getValue)}
+        onChange={compose(
+          updateValue,
+          split(separator),
+          getValue,
+        )}
       />
     </label>
   );
