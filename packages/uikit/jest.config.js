@@ -5,5 +5,5 @@ module.exports = {
     '\\.css$': 'identity-obj-proxy',
   },
   setupTestFrameworkScriptFile: '<rootDir>/jest/setupTests.js',
-  testPathIgnorePatterns: ['<rootDir>/node_modules/'],
+  testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/templates'],
 };
