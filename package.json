@@ -82,6 +82,7 @@
     "moment-timezone": "0.5.13"
   },
   "dependencies": {
+    "blueimp-md5": "^2.10.0",
     "deep-equal": "^1.0.1",
     "react-daterange-picker": "^1.1.0",
     "react-onclickoutside": "^6.7.0",

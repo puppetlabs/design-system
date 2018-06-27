@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Gravatar from '../gravatar/Gravatar';
 import Button from '../buttons/Button';
+import logos from './logos';
 
 const propTypes = {
   avatarEmail: PropTypes.string,
@@ -16,21 +18,21 @@ const renderNav = nav => nav.map(n => (
   <Button size="tiny" key={ n.href } transparent icon={ n.icon } />
 ));
 
-const renderAvatar = () => (
-  <img
+const renderAvatar = email => (
+  <Gravatar
     className="rc-header-avatar"
-    src="https://www.gravatar.com/avatar/identicon?s=512&d=identicon"
+    email={ email }
   />
 );
 
 const Header = (props) => {
-  const avatar = renderAvatar();
+  const avatar = renderAvatar(props.avatarEmail);
   const nav = renderNav(props.nav);
 
   return (
     <div className="rc-header">
       <div className="rc-header-left">
-        Puppet Insights
+        { logos.insights }
       </div>
       <div className="rc-header-right">
         { nav }

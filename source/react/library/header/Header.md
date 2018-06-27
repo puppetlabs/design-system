@@ -4,5 +4,5 @@ const nav = [
   { href: '/support', icon: 'donut' },
 ];
 
-<Header nav={ nav } />
+<Header nav={ nav } avatarEmail="colby.aley@puppet.com" />
 ```
