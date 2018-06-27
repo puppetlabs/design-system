@@ -10,6 +10,7 @@ const propTypes = {
 
 const Gravatar = ({ email, className }) => (
   <img
+    alt={ email }
     className={ className }
     src={ `http://www.gravatar.com/avatar/${md5(email)}` }
   />

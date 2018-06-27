@@ -611,8 +611,10 @@ $puppet-slider-bar-position                 : ($puppet-slider-handle-size - $pup
 
 // Header
 $reflect-header-bg                           : #000e1c !default;
+$reflect-header-menu-bg                      : lighten($reflect-header-bg, 10%) !default;
 $reflect-header-color                        : $reflect-white !default;
 $reflect-header-logo-fill                    : $reflect-brand-primary !default;
 $reflect-header-avatar-size                  : 32px !default;
+$reflect-header-menu-item-button-bg-hover    : lighten($reflect-header-menu-bg, 10%) !default;
 
 /* stylelint-enable */

@@ -1,13 +1,19 @@
 ```
 const nav = [
-  { key: 'settings', icon: 'gear' },
-  { key: 'tokens', icon: 'key' },
+  { key: 'settings', label: 'Settings', icon: 'gear' },
+  { key: 'tokens', label: 'Tokens', icon: 'key'},
 ];
+
+const profile = {
+  email: 'colby.aley@puppet.com',
+  label: 'Account settings',
+  icon: 'user'
+};
 
 <Header
   nav={ nav }
-  onNavClick={console.log}
-  avatarEmail="colby.aley@puppet.com"
+  profile={ profile }
+  onNavClick={ console.log }
   product="insights"
 />
 ```

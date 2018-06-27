@@ -286,4 +286,9 @@ $puppet-selected-shadow-hover               : 0 0 0 1px $puppet-action-hover !de
 // ----------------------------------------------------------------------------
 $puppet-animation-speed-base                : 0.2s;
 
+// Responsive breakpoints
+// ----------------------------------------------------------------------------
+$reflect-breakpoint-small                    : 700px !default;
+$reflect-breakpoint-medium                   : 1088px !default;
+
 /* stylelint-enable */

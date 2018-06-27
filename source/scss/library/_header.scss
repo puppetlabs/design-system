@@ -30,3 +30,59 @@
 .rc-header-logo-primary-fill {
   fill: $reflect-header-logo-fill;
 }
+
+.rc-header-container {
+  position: relative;
+}
+
+.rc-header-menu {
+  background: $reflect-header-menu-bg;
+  color: $reflect-header-color;
+  display: none;
+  position: absolute;
+  width: 100%;
+}
+
+.rc-header-menu-control {
+  display: none;
+}
+
+.rc-header-menu-item-button {
+  padding: 18px;
+  width: 100%;
+
+  &:hover {
+    background: $reflect-header-menu-item-button-bg-hover;
+  }
+}
+
+@media only screen and (max-width: $reflect-breakpoint-medium) {
+  .rc-header-menu-control {
+    display: flex;
+  }
+
+  .rc-header-avatar {
+    display: none;
+  }
+
+  .rc-header-items {
+    display: none;
+  }
+
+  .rc-header-menu .rc-header-items {
+    display: block;
+  }
+
+  .rc-header-menu {
+    display: block;
+    right: 0;
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: $reflect-breakpoint-small) {
+  .rc-header-menu {
+    display: block;
+    width: 100%;
+  }
+}
