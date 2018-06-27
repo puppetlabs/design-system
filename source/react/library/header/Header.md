@@ -1,8 +1,13 @@
 ```
 const nav = [
-  { href: '/settings', icon: 'user' },
-  { href: '/support', icon: 'donut' },
+  { key: 'settings', icon: 'gear' },
+  { key: 'tokens', icon: 'key' },
 ];
 
-<Header nav={ nav } avatarEmail="colby.aley@puppet.com" />
+<Header
+  nav={ nav }
+  onNavClick={console.log}
+  avatarEmail="colby.aley@puppet.com"
+  product="insights"
+/>
 ```

@@ -7,15 +7,24 @@ import logos from './logos';
 
 const propTypes = {
   avatarEmail: PropTypes.string,
+  product: PropTypes.oneOf(['insights']),
+  onNavClick: PropTypes.func,
   nav: PropTypes.array,
 };
 
 const defaultProps = {
   nav: [],
+  onNavClick: () => {},
 };
 
-const renderNav = nav => nav.map(n => (
-  <Button size="tiny" key={ n.href } transparent icon={ n.icon } />
+const renderNav = ({ nav, onNavClick }) => nav.map(n => (
+  <Button
+    size="tiny"
+    onClick={ () => onNavClick(n.key) }
+    key={ n.key }
+    icon={ n.icon }
+    transparent
+  />
 ));
 
 const renderAvatar = email => (
@@ -27,12 +36,12 @@ const renderAvatar = email => (
 
 const Header = (props) => {
   const avatar = renderAvatar(props.avatarEmail);
-  const nav = renderNav(props.nav);
+  const nav = renderNav(props);
 
   return (
     <div className="rc-header">
       <div className="rc-header-left">
-        { logos.insights }
+        { logos[props.product] }
       </div>
       <div className="rc-header-right">
         { nav }
