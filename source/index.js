@@ -45,6 +45,7 @@ import Filters from './react/library/filters';
 import Checkbox from './react/library/checkbox/Checkbox';
 import Saving from './react/library/Saving';
 import Content from './react/library/content/Content';
+import Header from './react/library/header';
 
 export {
   Button,
@@ -88,4 +89,5 @@ export {
   Checkbox,
   Saving,
   Content,
+  Header,
 };

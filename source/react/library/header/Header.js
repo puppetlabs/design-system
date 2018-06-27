@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Gravatar from '../gravatar/Gravatar';
+import Gravatar from '../gravatar';
 import Button from '../buttons/Button';
 import logos from './logos';
 
