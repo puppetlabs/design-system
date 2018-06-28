@@ -5,7 +5,7 @@ const nav = [
 ];
 
 const profile = {
-  email: 'colby.aley@puppet.com',
+  img: 'http://www.gravatar.com/avatar/3eb56a28de0c4ba1494c7da4a60bb2d0',
   label: 'Account settings',
   icon: 'user'
 };

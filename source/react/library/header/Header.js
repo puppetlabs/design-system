@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Gravatar from '../gravatar';
 import Button from '../buttons/Button';
 import logos from './logos';
 import Icon from '../icon/Icon';
@@ -9,7 +8,7 @@ import Icon from '../icon/Icon';
 const propTypes = {
   product: PropTypes.oneOf(['insights']).isRequired,
   profile: PropTypes.shape({
-    email: PropTypes.string,
+    img: PropTypes.string,
     label: PropTypes.string,
     icon: PropTypes.string,
   }),
@@ -98,11 +97,12 @@ class Header extends React.Component {
         label: this.props.profile.label,
         icon: this.props.profile.icon,
       });
-    } else {
+    } else if (this.props.profile.img) {
       jsx = (
-        <Gravatar
+        <img
+          alt="Avatar"
           className="rc-header-avatar"
-          email={ this.props.profile.email }
+          src={ this.props.profile.img }
         />
       );
     }
