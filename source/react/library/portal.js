@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { APP_BASE } from '../constants';
 
 const propTypes = {
   isOpened: PropTypes.bool,
@@ -17,7 +16,7 @@ const portal = (Base) => {
     constructor(props) {
       super(props);
 
-      this.rootSelector = APP_BASE;
+      this.rootSelector = document.body;
       this.container = document.createElement('div');
       this.container.className = 'rc-portal';
 
