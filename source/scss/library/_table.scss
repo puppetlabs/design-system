@@ -1,16 +1,16 @@
 .rc-table {
   border-collapse: separate;
   border-spacing: 0;
-  box-shadow: $reflect-table-shadow;
+  box-shadow: $puppet-table-shadow;
   text-align: left;
   width: 100%;
 
   tr:last-of-type td:first-of-type {
-    border-bottom-left-radius: $reflect-table-border-radius;
+    border-bottom-left-radius: $puppet-table-border-radius;
   }
 
   tr:last-of-type td:last-of-type {
-    border-bottom-right-radius: $reflect-table-border-radius;
+    border-bottom-right-radius: $puppet-table-border-radius;
   }
 
   // Hide the sticky header divs
@@ -21,36 +21,36 @@
   th,
   td {
     background: #fff;
-    border-bottom: $reflect-table-border;
-    font-size: $reflect-table-font-size;
+    border-bottom: $puppet-table-border;
+    font-size: $puppet-table-font-size;
     padding: 10px;
   }
 
   th {
     @extend %rc-uppercase;
-    background-color: $reflect-table-header-bg;
-    border-top: $reflect-table-border;
-    color: $reflect-table-header-color;
+    background-color: $puppet-table-header-bg;
+    border-top: $puppet-table-border;
+    color: $puppet-table-header-color;
     font-size: 10px;
     letter-spacing: 1px;
   }
 
   th:first-of-type {
-    border-left: $reflect-table-border;
-    border-top-left-radius: $reflect-table-border-radius;
+    border-left: $puppet-table-border;
+    border-top-left-radius: $puppet-table-border-radius;
   }
 
   th:last-of-type {
-    border-right: $reflect-table-border;
-    border-top-right-radius: $reflect-table-border-radius;
+    border-right: $puppet-table-border;
+    border-top-right-radius: $puppet-table-border-radius;
   }
 
   td:first-of-type {
-    border-left: $reflect-table-border;
+    border-left: $puppet-table-border;
   }
 
   td:last-of-type {
-    border-right: $reflect-table-border;
+    border-right: $puppet-table-border;
   }
 
   .rc-table-column-checkbox {
@@ -93,14 +93,14 @@
   }
 
   td:first-child {
-    border-bottom-left-radius: $reflect-border-radius;
+    border-bottom-left-radius: $puppet-border-radius;
     border-left: 1px solid #ddd;
-    border-top-left-radius: $reflect-border-radius;
+    border-top-left-radius: $puppet-border-radius;
   }
 
   td:last-child {
-    border-bottom-right-radius: $reflect-border-radius;
+    border-bottom-right-radius: $puppet-border-radius;
     border-right: 1px solid #ddd;
-    border-top-right-radius: $reflect-border-radius;
+    border-top-right-radius: $puppet-border-radius;
   }
 }

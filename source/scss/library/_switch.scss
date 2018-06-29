@@ -17,22 +17,22 @@
 }
 
 .rc-switch-label {
-  background: $reflect-switch-off-bg;
+  background: $puppet-switch-off-bg;
   border-radius: 21px;
   box-sizing: content-box;
-  color: $reflect-switch-off-text;
+  color: $puppet-switch-off-text;
   cursor: pointer;
   display: block;
-  height: $reflect-switch-height;
+  height: $puppet-switch-height;
   margin: 0;
   outline: 0;
   padding: 0;
   position: relative;
   transition: all 0.2s;
-  width: $reflect-switch-width;
+  width: $puppet-switch-width;
 
   &:hover {
-    background: $reflect-switch-off-bg-hover;
+    background: $puppet-switch-off-bg-hover;
   }
 
   .rc-icon {
@@ -42,20 +42,20 @@
   }
 
   &::after {
-    background: $reflect-switch-off-icon-fill;
-    border-radius: $reflect-switch-handle-height;
+    background: $puppet-switch-off-icon-fill;
+    border-radius: $puppet-switch-handle-height;
     content: '';
     display: block;
-    height: $reflect-switch-handle-height;
-    left: $reflect-switch-padding;
+    height: $puppet-switch-handle-height;
+    left: $puppet-switch-padding;
     position: absolute;
-    top: $reflect-switch-padding;
+    top: $puppet-switch-padding;
     transition: all 0.2s ease;
-    width: $reflect-switch-handle-height;
+    width: $puppet-switch-handle-height;
   }
 
   &:hover::after {
-    background: $reflect-switch-off-icon-fill-hover;
+    background: $puppet-switch-off-icon-fill-hover;
   }
 
   .rc-switch-label-off {
@@ -65,14 +65,14 @@
   }
 
   .rc-switch-label-off .rc-icon {
-    fill: $reflect-switch-off-icon-fill;
-    height: $reflect-switch-off-icon-size;
-    right: $reflect-switch-padding * 1.4;
-    width: $reflect-switch-off-icon-size;
+    fill: $puppet-switch-off-icon-fill;
+    height: $puppet-switch-off-icon-size;
+    right: $puppet-switch-padding * 1.4;
+    width: $puppet-switch-off-icon-size;
   }
 
   &:hover .rc-switch-label-off .rc-icon {
-    fill: $reflect-switch-off-icon-fill-hover;
+    fill: $puppet-switch-off-icon-fill-hover;
   }
 
   .rc-switch-label-on {
@@ -82,17 +82,17 @@
   }
 
   .rc-switch-label-on .rc-icon {
-    fill: $reflect-switch-on-icon-fill;
-    height: $reflect-switch-on-icon-size;
-    left: $reflect-switch-padding * 1.4;
-    width: $reflect-switch-on-icon-size;
+    fill: $puppet-switch-on-icon-fill;
+    height: $puppet-switch-on-icon-size;
+    left: $puppet-switch-padding * 1.4;
+    width: $puppet-switch-on-icon-size;
   }
 }
 
 [class*='rc-switch-label-'] {
   display: inline-block;
-  height: $reflect-switch-height;
-  line-height: $reflect-switch-height;
+  height: $puppet-switch-height;
+  line-height: $puppet-switch-height;
   position: absolute;
 }
 
@@ -107,12 +107,12 @@
   width: 1px;
 
   &:checked + .rc-switch-label {
-    background: $reflect-switch-on-bg;
-    color: $reflect-switch-on-text;
+    background: $puppet-switch-on-bg;
+    color: $puppet-switch-on-text;
   }
 
   &:checked + .rc-switch-label:hover {
-    background: $reflect-switch-on-bg-hover;
+    background: $puppet-switch-on-bg-hover;
   }
 
   &:checked + .rc-switch-label .rc-switch-label-off {
@@ -124,7 +124,7 @@
   }
 
   &:checked + .rc-switch-label::after {
-    background: $reflect-switch-on-icon-fill;
-    left: calc(100% - (#{$reflect-switch-padding} + #{$reflect-switch-handle-height}));
+    background: $puppet-switch-on-icon-fill;
+    left: calc(100% - (#{$puppet-switch-padding} + #{$puppet-switch-handle-height}));
   }
 }

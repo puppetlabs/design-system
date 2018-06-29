@@ -1,11 +1,11 @@
 .rc-toggle {
   .rc-toggle-label {
-    color: $reflect-toggle-off-color;
+    color: $puppet-toggle-off-color;
     cursor: pointer;
   }
 
   .rc-toggle-label.rc-toggle-active {
-    color: $reflect-toggle-on-color;
+    color: $puppet-toggle-on-color;
   }
 
   .rc-switch {
@@ -14,20 +14,20 @@
   }
 
   .rc-switch-label {
-    background: $reflect-toggle-bg;
+    background: $puppet-toggle-bg;
   }
 
   .rc-switch-label::after {
-    background: $reflect-toggle-on-color;
+    background: $puppet-toggle-on-color;
   }
 
   .rc-switch-checkbox:checked + .rc-switch-label {
-    background: $reflect-toggle-bg;
-    color: $reflect-toggle-on-color;
+    background: $puppet-toggle-bg;
+    color: $puppet-toggle-on-color;
   }
 
   .rc-switch-checkbox:checked + .rc-switch-label::after {
-    background: $reflect-toggle-on-color;
+    background: $puppet-toggle-on-color;
   }
 }
 

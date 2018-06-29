@@ -1,5 +1,5 @@
 .rc-accordion {
-  background: $reflect-accordion-bg;
+  background: $puppet-accordion-bg;
   height: 100%;
 }
 
@@ -12,21 +12,21 @@
 .rc-accordion-item-header,
 .rc-accordion-header {
   align-items: center;
-  background-color: $reflect-accordion-item-title-bg-color;
-  border-radius: $reflect-border-radius $reflect-border-radius 0 0;
+  background-color: $puppet-accordion-item-title-bg-color;
+  border-radius: $puppet-border-radius $puppet-border-radius 0 0;
   display: flex;
-  font-size: $reflect-accordion-item-title-font-size;
-  padding: $reflect-accordion-item-title-padding;
-  text-transform: $reflect-accordion-item-title-case;
+  font-size: $puppet-accordion-item-title-font-size;
+  padding: $puppet-accordion-item-title-padding;
+  text-transform: $puppet-accordion-item-title-case;
 }
 
 .rc-accordion-header {
-  background: $reflect-accordion-header-bg;
-  border: $reflect-accordion-item-border;
-  height: $reflect-accordion-header-height;
+  background: $puppet-accordion-header-bg;
+  border: $puppet-accordion-item-border;
+  height: $puppet-accordion-header-height;
 
   .rc-accordion-header-icon .rc-icon {
-    fill: $reflect-white;
+    fill: $puppet-white;
   }
 }
 
@@ -42,7 +42,7 @@
   width: 32px;
 
   .rc-icon {
-    fill: $reflect-icon-fill;
+    fill: $puppet-icon-fill;
     @include icon-opacity-hover;
   }
 }
@@ -54,29 +54,29 @@
 
 .rc-accordion-header-title {
   @extend %rc-uppercase;
-  color: $reflect-accordion-header-title-color;
+  color: $puppet-accordion-header-title-color;
   flex-grow: 1;
-  font-size: $reflect-accordion-item-title-font-size;
+  font-size: $puppet-accordion-item-title-font-size;
   transition: all 0.2s;
 }
 
 .rc-accordion-item-header {
-  height: $reflect-accordion-item-title-height;
+  height: $puppet-accordion-item-title-height;
 
   &:hover .rc-accordion-item-header-title {
-    color: $reflect-accordion-item-title-hover;
+    color: $puppet-accordion-item-title-hover;
   }
 
   &:hover .rc-accordion-header-icon .rc-icon {
-    fill: $reflect-icon-fill-hover;
+    fill: $puppet-icon-fill-hover;
   }
 }
 
 .rc-accordion-item-header-title {
   @extend %rc-uppercase;
-  color: $reflect-accordion-item-title-color;
+  color: $puppet-accordion-item-title-color;
   flex-grow: 1;
-  font-size: $reflect-accordion-item-title-font-size;
+  font-size: $puppet-accordion-item-title-font-size;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: all 0.2s;
@@ -84,22 +84,22 @@
 }
 
 .rc-accordion-item {
-  border-bottom: $reflect-accordion-item-border;
-  border-left: $reflect-accordion-item-border;
-  border-right: $reflect-accordion-item-border;
+  border-bottom: $puppet-accordion-item-border;
+  border-left: $puppet-accordion-item-border;
+  border-right: $puppet-accordion-item-border;
   display: flex;
   flex-direction: column;
   flex-grow: 0;
-  transition: all $reflect-accordion-animation-speed;
+  transition: all $puppet-accordion-animation-speed;
 }
 
 .rc-accordion-item-content {
-  border-top: $reflect-accordion-item-border;
+  border-top: $puppet-accordion-item-border;
   height: 0;
   opacity: 0;
   overflow: hidden;
   padding: 0;
-  transition: opacity $reflect-accordion-animation-speed;
+  transition: opacity $puppet-accordion-animation-speed;
   visibility: hidden;
 }
 
@@ -108,11 +108,11 @@
 
   .rc-accordion-header-icon .rc-icon,
   &:hover .rc-accordion-header-icon .rc-icon {
-    fill: $reflect-icon-action;
+    fill: $puppet-icon-action;
   }
 
   &:hover .rc-accordion-item-header .rc-accordion-item-header-title {
-    color: $reflect-accordion-item-title-color;
+    color: $puppet-accordion-item-title-color;
   }
 
   .rc-accordion-item-content {
@@ -120,7 +120,7 @@
     flex-grow: 1;
     opacity: 1;
     overflow: auto;
-    padding: $reflect-accordion-item-content-padding;
+    padding: $puppet-accordion-item-content-padding;
     visibility: visible;
   }
 }
