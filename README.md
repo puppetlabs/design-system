@@ -1,6 +1,6 @@
-# Insights UI Components
+# Puppet React Components
 
-Insights UI components is a collection of general purpose, reusable React
+Puppet React Components is a collection of general purpose, reusable React
 components, and their associated styles. Components here are primairly used by
 the Puppet Insights team, but are designed to be consumed by other teams and
 products.
@@ -14,10 +14,9 @@ reviews.
 
 UI Components is distributed on [Artifactory](https://confluence.puppetlabs.com/display/SRE/Artifactory+Basics).
 
-Once you've set up your npm configuration to include Artifactory as a registry,
-you can install UI components with the following command:
+You can install UI components with the following command:
 
-`npm install @puppet/insights-ui-components`
+`npm install @puppet/react-components`
 
 If you run into issues while installing, please double check that you're either
 on the corporate WiFI or VPN.

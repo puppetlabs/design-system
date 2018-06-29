@@ -1,4 +1,4 @@
-# Contributing to Insights UI Components
+# Contributing to Puppet React Components
 
 Thanks for your interest in contributing! This document outlines how to submit a
 bug or request an enhancement, set up your development environment, open a pull
