@@ -39,7 +39,7 @@ component.
 2. Run `npm run watch` to build the module and rebuild on any change.
 3. For any project in which UI Components is a dependency, you can link UI
   Components to see your changes reflected in the parent. In the parent project,
-  run `npm link @puppet/insights-ui-components`. Make sure you're using the same
+  run `npm link @puppet/react-components`. Make sure you're using the same
   version of Node.js in both projects.
 
 ## Testing and linting
