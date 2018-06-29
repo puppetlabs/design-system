@@ -1,5 +1,5 @@
 .rc-form-field {
-  padding-bottom: $reflect-form-vertical-padding * 2;
+  padding-bottom: $puppet-form-vertical-padding * 2;
 }
 
 .rc-form-field:last-child {
@@ -18,10 +18,10 @@
 }
 
 .rc-form-section {
-  padding-bottom: $reflect-form-vertical-padding * 4;
+  padding-bottom: $puppet-form-vertical-padding * 4;
 
   &:last-child {
-    padding-bottom: $reflect-form-vertical-padding * 2;
+    padding-bottom: $puppet-form-vertical-padding * 2;
   }
 }
 
@@ -33,11 +33,11 @@
 }
 
 .rc-popover-menu .rc-form-section {
-  border-bottom: $reflect-popover-border;
-  border-bottom-left-radius: $reflect-popover-border-radius;
-  border-bottom-right-radius: $reflect-popover-border-radius;
-  border-left: $reflect-popover-border;
-  border-right: $reflect-popover-border;
+  border-bottom: $puppet-popover-border;
+  border-bottom-left-radius: $puppet-popover-border-radius;
+  border-bottom-right-radius: $puppet-popover-border-radius;
+  border-left: $puppet-popover-border;
+  border-right: $puppet-popover-border;
 }
 
 .rc-popover-menu .rc-menu-section {
@@ -47,16 +47,16 @@
 }
 
 .rc-form-flyout {
-  padding: $reflect-form-field-margin;
+  padding: $puppet-form-field-margin;
 }
 
 .rc-form-section-legend {
-  color: $reflect-form-section-legend-color;
+  color: $puppet-form-section-legend-color;
   display: block;
-  font-size: $reflect-form-section-legend-font-size;
-  font-weight: $reflect-form-section-legend-font-weight;
+  font-size: $puppet-form-section-legend-font-size;
+  font-weight: $puppet-form-section-legend-font-weight;
   margin: 0;
-  padding-bottom: $reflect-form-vertical-padding;
+  padding-bottom: $puppet-form-vertical-padding;
 
   span {
     display: block;
@@ -70,42 +70,42 @@
 }
 
 .rc-form-section-flyout-target {
-  margin-left: $reflect-tiny;
+  margin-left: $puppet-tiny;
 
   .rc-icon {
-    fill: $reflect-form-section-flyout-icon-color;
+    fill: $puppet-form-section-flyout-icon-color;
   }
 }
 
 .rc-form-field-label {
-  color: $reflect-form-label-color;
+  color: $puppet-form-label-color;
   display: block;
-  font-size: $reflect-form-label-font-size;
-  font-weight: $reflect-font-weight-medium;
-  line-height: $reflect-medium;
+  font-size: $puppet-form-label-font-size;
+  font-weight: $puppet-font-weight-medium;
+  line-height: $puppet-medium;
   margin: 0;
-  padding-bottom: $reflect-form-vertical-padding;
+  padding-bottom: $puppet-form-vertical-padding;
   text-transform: uppercase;
 }
 
 // Spacing interactions for different form fields
 .rc-form-section-legend + .rc-form-field-checkbox,
 .rc-form-field-checkbox + .rc-form-field {
-  padding-top: $reflect-form-vertical-padding;
+  padding-top: $puppet-form-vertical-padding;
 }
 
 // We want to position inline checkbox
 .rc-form-field-inline.rc-form-field-checkbox {
   .rc-form-field-element {
     flex-grow: 0;
-    margin-right: $reflect-form-field-margin;
+    margin-right: $puppet-form-field-margin;
   }
 
   .rc-form-field-label {
-    color: $reflect-form-label-color-dark;
+    color: $puppet-form-label-color-dark;
     display: block;
     flex-grow: 0;
-    font-size: $reflect-form-label-font-size-large;
+    font-size: $puppet-form-label-font-size-large;
     text-transform: lowercase;
   }
 
@@ -119,9 +119,9 @@
 }
 
 .rc-form-field-description {
-  color: $reflect-form-description-color;
-  font-size: $reflect-form-description-font-size;
-  line-height: $reflect-medium;
+  color: $puppet-form-description-color;
+  font-size: $puppet-form-description-font-size;
+  line-height: $puppet-medium;
   margin: 0;
   padding: 4px 0;
 }
@@ -129,16 +129,16 @@
 .rc-form-actions {
   display: flex;
   justify-content: flex-end;
-  padding-top: $reflect-form-field-margin * 2;
+  padding-top: $puppet-form-field-margin * 2;
 }
 
 .rc-form-field-error {
   .rc-form-field-label {
-    color: $reflect-danger-color;
+    color: $puppet-danger-color;
   }
 
   .rc-form-field-description {
-    color: $reflect-danger-color;
+    color: $puppet-danger-color;
   }
 }
 
@@ -184,7 +184,7 @@
 
 .rc-form-tiny {
   .rc-form-field-label {
-    font-size: $reflect-form-tiny-label-font-size;
+    font-size: $puppet-form-tiny-label-font-size;
   }
 }
 
@@ -193,9 +193,9 @@
   position: relative;
 
   .rc-split-button {
-    background: $reflect-filter-split-bg;
-    border-top-left-radius: $reflect-filter-radius;
-    border-top-right-radius: $reflect-filter-radius;
+    background: $puppet-filter-split-bg;
+    border-top-left-radius: $puppet-filter-radius;
+    border-top-right-radius: $puppet-filter-radius;
     position: absolute;
     right: 0;
     // We probably shouldn't hardcode this...
@@ -203,37 +203,37 @@
     visibility: hidden;
 
     .rc-button-main {
-      background: $reflect-filter-split-bg;
+      background: $puppet-filter-split-bg;
 
       .rc-button-content {
-        color: $reflect-button-bg;
+        color: $puppet-button-bg;
         float: right;
       }
 
       &:hover {
         .rc-button-content {
-          color: $reflect-button-bg-hover;
+          color: $puppet-button-bg-hover;
         }
       }
     }
 
     .rc-button-menu {
-      background: $reflect-filter-split-menu-bg;
+      background: $puppet-filter-split-menu-bg;
 
       &:hover {
-        background: $reflect-filter-split-menu-bg-hover;
+        background: $puppet-filter-split-menu-bg-hover;
       }
 
       .rc-button-menu-inner {
         path {
-          fill: $reflect-filter-input-bg;
+          fill: $puppet-filter-input-bg;
         }
       }
 
       &:hover {
         .rc-button-menu-inner {
           path {
-            fill: $reflect-filter-input-bg;
+            fill: $puppet-filter-input-bg;
           }
         }
       }
@@ -241,9 +241,9 @@
   }
 
   .rc-filter-form-fields {
-    background: $reflect-filter-bg;
-    border-radius: $reflect-filter-radius;
-    padding: $reflect-filter-padding;
+    background: $puppet-filter-bg;
+    border-radius: $puppet-filter-radius;
+    padding: $puppet-filter-padding;
 
     .rc-selects-row {
       display: flex;
@@ -262,11 +262,11 @@
       }
 
       .rc-select-left .rc-input {
-        border-top-left-radius: $reflect-filter-radius;
+        border-top-left-radius: $puppet-filter-radius;
       }
 
       .rc-select-right .rc-input {
-        border-top-right-radius: $reflect-filter-radius;
+        border-top-right-radius: $puppet-filter-radius;
       }
     }
 
@@ -274,11 +274,11 @@
       margin-top: 1px;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-      border-color: $reflect-filter-border-color;
+      border-color: $puppet-filter-border-color;
 
       &:focus {
-        box-shadow: $reflect-filter-selected-shadow;
-        border: $reflect-filter-border-active;
+        box-shadow: $puppet-filter-selected-shadow;
+        border: $puppet-filter-border-active;
       }
     }
   }
@@ -286,11 +286,11 @@
   &.rc-filter-form-no-value {
     .rc-filter-form-fields .rc-selects-row {
       .rc-select-left > .rc-input {
-        border-bottom-left-radius: $reflect-filter-radius;
+        border-bottom-left-radius: $puppet-filter-radius;
       }
 
       .rc-select-right> .rc-input {
-        border-bottom-right-radius: $reflect-filter-radius;
+        border-bottom-right-radius: $puppet-filter-radius;
       }
     }
   }

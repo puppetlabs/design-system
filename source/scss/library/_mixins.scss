@@ -8,8 +8,8 @@
   }
 
   .remove-corner {
-    background: $reflect-remove-background;
-    border-radius: $reflect-circle-radius;
+    background: $puppet-remove-background;
+    border-radius: $puppet-circle-radius;
     cursor: pointer;
     display: none;
     float: right;
@@ -22,9 +22,9 @@
 
     .rc-#{$component}-remove::before {
       align-items: center;
-      background: $reflect-remove-background;
+      background: $puppet-remove-background;
       border: 0;
-      border-radius: $reflect-circle-radius;
+      border-radius: $puppet-circle-radius;
       bottom: 0;
       display: flex;
       justify-content: center;
@@ -35,7 +35,7 @@
     }
 
     &:hover .rc-#{$component}-remove .rc-icon {
-      fill: $reflect-danger-color;
+      fill: $puppet-danger-color;
     }
 
     .rc-#{$component}-remove {
@@ -84,7 +84,7 @@
   }
 }
 
-@mixin focus-circle($color: $reflect-black, $opacity: 0.12) {
+@mixin focus-circle($color: $puppet-black, $opacity: 0.12) {
   position: relative;
 
   &::before {

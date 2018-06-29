@@ -10,10 +10,10 @@
 }
 
 .rc-filters-action:hover {
-  color: $reflect-brand-primary !important;
+  color: $puppet-brand-primary !important;
 
   .rc-icon {
-    fill: $reflect-brand-primary;
+    fill: $puppet-brand-primary;
   }
 }
 
@@ -23,7 +23,7 @@
   .rc-filter-field-name,
   .rc-filter-field-op,
   .rc-filter-field-value {
-    font-size: $reflect-font-size-base;
+    font-size: $puppet-font-size-base;
   }
 }
 
@@ -32,7 +32,7 @@
   .rc-filter-field-name,
   .rc-filter-field-op,
   .rc-filter-field-value {
-    font-size: $reflect-font-size-small;
+    font-size: $puppet-font-size-small;
   }
 }
 
@@ -48,7 +48,7 @@
 
   .rc-filter-field-name,
   .rc-filter-field-value {
-    font-weight: $reflect-font-weight-heavy;
+    font-weight: $puppet-font-weight-heavy;
   }
 
   .rc-filter-field-op {

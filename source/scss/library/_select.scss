@@ -7,13 +7,13 @@
   max-height: 200px;
 
   .rc-select-menu-options {
-    border: $reflect-border;
+    border: $puppet-border;
     overflow-y: auto;
     padding: 0;
   }
 
   .rc-select-menu-options {
-    border-radius: $reflect-border-radius;
+    border-radius: $puppet-border-radius;
   }
 
   .rc-select-menu-options + .rc-menu-actions {
@@ -29,13 +29,13 @@
 }
 
 .rc-select {
-  color: $reflect-select-color;
+  color: $puppet-select-color;
   cursor: pointer;
   position: relative;
 }
 
 .rc-select-menu {
-  background: $reflect-select-menu-bg;
+  background: $puppet-select-menu-bg;
   display: flex;
   flex-direction: column;
   max-height: 150px;
@@ -58,11 +58,11 @@
   // transition: all 0.2s;
 
   &:hover {
-    border-color: $reflect-action-color;
+    border-color: $puppet-action-color;
   }
 
   &:hover .rc-select-action .rc-icon-chevron-down {
-    fill: $reflect-action-color;
+    fill: $puppet-action-color;
   }
 }
 
@@ -107,7 +107,7 @@
   }
 
   .rc-tag-highlighted {
-    background: $reflect-select-item-highlighted-bg;
+    background: $puppet-select-item-highlighted-bg;
   }
 
   .rc-tag-highlighted .rc-icon {
@@ -130,7 +130,7 @@
   .rc-input {
     font-size: 12px;
     height: 20px;
-    line-height: $reflect-medium;
+    line-height: $puppet-medium;
     min-height: initial;
     padding: 0;
   }
@@ -142,7 +142,7 @@
   }
 
   &:hover .rc-select-input .rc-icon-chevron-down {
-    fill: $reflect-icon-fill;
+    fill: $puppet-icon-fill;
   }
 }
 
@@ -158,7 +158,7 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    margin-right: $reflect-small;
+    margin-right: $puppet-small;
     min-width: 12px;
     outline: none;
     transition: all 0.2s;
@@ -208,7 +208,7 @@
   }
 
   .rc-select-actions .rc-icon-chevron-down {
-    fill: $reflect-brand-primary;
+    fill: $puppet-brand-primary;
   }
 }
 

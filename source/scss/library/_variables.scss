@@ -61,229 +61,229 @@ $negative-1                                  : #e62600 !default;
 // End Puppet Styleguide colors
 
 // Primary Color
-$reflect-brand-primary                       : $puppet-amber !default;
+$puppet-brand-primary                       : $puppet-amber !default;
 
 // Grays
-$reflect-gray-base                           : #a6bdd2 !default;
+$puppet-gray-base                           : #a6bdd2 !default;
 
-$reflect-black                               : #424a52 !default;
-$reflect-gray-darker                         : #6d7a87 !default;
-$reflect-gray-dark                           : #88a2b9 !default;
-$reflect-gray                                : $reflect-gray-base !default;
-$reflect-gray-light                          : #dbdfe3 !default;
-$reflect-gray-lighter                        : #f8f8f9 !default;
-$reflect-white                               : #fff !default;
+$puppet-black                               : #424a52 !default;
+$puppet-gray-darker                         : #6d7a87 !default;
+$puppet-gray-dark                           : #88a2b9 !default;
+$puppet-gray                                : $puppet-gray-base !default;
+$puppet-gray-light                          : #dbdfe3 !default;
+$puppet-gray-lighter                        : #f8f8f9 !default;
+$puppet-white                               : #fff !default;
 
 // Backgrounds
-$reflect-bg-primary                          : $reflect-white !default;
-$reflect-bg-subtle                           : $reflect-gray-lighter !default;
-$reflect-bg-dark                             : $reflect-gray-base !default;
+$puppet-bg-primary                          : $puppet-white !default;
+$puppet-bg-subtle                           : $puppet-gray-lighter !default;
+$puppet-bg-dark                             : $puppet-gray-base !default;
 
 // Charts
-$reflect-primary-chart-color                 : $reflect-brand-primary !default;
+$puppet-primary-chart-color                 : $puppet-brand-primary !default;
 
 // Action Colors
 // Colors used for primary buttons and other action elements
 // Text is typically on a bg color - by default it is white text & icons on a blue bg
-$reflect-action-color                        : $action-medium !default;
-$reflect-action-hover                        : $action-dark !default;
-$reflect-action-border                       : $reflect-action-color !default;
-$reflect-action-border-hover                 : $reflect-action-hover !default;
-$reflect-action-text                         : $reflect-white !default;
-$reflect-action-text-hover                   : $reflect-white !default;
-$reflect-action-icon                         : $reflect-white !default;
-$reflect-action-icon-hover                   : $reflect-white !default;
+$puppet-action-color                        : $action-medium !default;
+$puppet-action-hover                        : $action-dark !default;
+$puppet-action-border                       : $puppet-action-color !default;
+$puppet-action-border-hover                 : $puppet-action-hover !default;
+$puppet-action-text                         : $puppet-white !default;
+$puppet-action-text-hover                   : $puppet-white !default;
+$puppet-action-icon                         : $puppet-white !default;
+$puppet-action-icon-hover                   : $puppet-white !default;
 
 // Secondary Action Colors
 // A more subdued alternative to the primary action
-$reflect-action-color-alt                    : $reflect-gray-lighter !default;
-$reflect-action-hover-alt                    : $reflect-gray-light !default;
-$reflect-action-border-alt                   : $reflect-gray !default;
-$reflect-action-border-hover-alt             : $reflect-gray-dark !default;
-$reflect-action-text-alt                     : $reflect-gray-dark !default;
-$reflect-action-text-hover-alt               : $reflect-gray-darker !default;
-$reflect-action-icon-alt                     : $reflect-gray-dark !default;
-$reflect-action-icon-hover-alt               : $reflect-gray-darker !default;
+$puppet-action-color-alt                    : $puppet-gray-lighter !default;
+$puppet-action-hover-alt                    : $puppet-gray-light !default;
+$puppet-action-border-alt                   : $puppet-gray !default;
+$puppet-action-border-hover-alt             : $puppet-gray-dark !default;
+$puppet-action-text-alt                     : $puppet-gray-dark !default;
+$puppet-action-text-hover-alt               : $puppet-gray-darker !default;
+$puppet-action-icon-alt                     : $puppet-gray-dark !default;
+$puppet-action-icon-hover-alt               : $puppet-gray-darker !default;
 
 // Disabled Colors
-$reflect-disabled-opacity                    : 0.25 !default;
-$reflect-disabled-color                      : lighten($reflect-gray, 10%) !default;
-$reflect-disabled-hover                      : $reflect-disabled-color !default;
-$reflect-disabled-border                     : transparent !default;
-$reflect-disabled-border-hover               : transparent !default;
-$reflect-disabled-text                       : $reflect-gray !default;
-$reflect-disabled-text-hover                 : $reflect-gray !default;
-$reflect-disabled-icon                       : $reflect-gray !default;
-$reflect-disabled-icon-hover                 : $reflect-gray !default;
+$puppet-disabled-opacity                    : 0.25 !default;
+$puppet-disabled-color                      : lighten($puppet-gray, 10%) !default;
+$puppet-disabled-hover                      : $puppet-disabled-color !default;
+$puppet-disabled-border                     : transparent !default;
+$puppet-disabled-border-hover               : transparent !default;
+$puppet-disabled-text                       : $puppet-gray !default;
+$puppet-disabled-text-hover                 : $puppet-gray !default;
+$puppet-disabled-icon                       : $puppet-gray !default;
+$puppet-disabled-icon-hover                 : $puppet-gray !default;
 
 // Default Active & Inactive Colors
 // Toggles, Checkboxes, etc.
-$reflect-active-color                        : $reflect-action-color !default;
-$reflect-active-color-hover                  : $reflect-action-hover !default;
-$reflect-inactive-color                      : $reflect-gray-light !default;
-$reflect-inactive-color-hover                : $reflect-gray !default;
+$puppet-active-color                        : $puppet-action-color !default;
+$puppet-active-color-hover                  : $puppet-action-hover !default;
+$puppet-inactive-color                      : $puppet-gray-light !default;
+$puppet-inactive-color-hover                : $puppet-gray !default;
 
 // Link Colors
 // For stand alone links, not buttons
-$reflect-anchor-color                        : $link-medium !default;
-$reflect-anchor-hover                        : $link-light !default;
+$puppet-anchor-color                        : $link-medium !default;
+$puppet-anchor-hover                        : $link-light !default;
 
 // Status Colors
 // Danger - Used to provide a warning for irreversible actions and errors
-$reflect-danger-color                        : $negative-1 !default;
-$reflect-danger-hover                        : darken($reflect-danger-color, 10%) !default;
-$reflect-danger-border                       : $reflect-danger-color !default;
-$reflect-danger-border-hover                 : darken($reflect-danger-color, 10%) !default;
+$puppet-danger-color                        : $negative-1 !default;
+$puppet-danger-hover                        : darken($puppet-danger-color, 10%) !default;
+$puppet-danger-border                       : $puppet-danger-color !default;
+$puppet-danger-border-hover                 : darken($puppet-danger-color, 10%) !default;
 
 // Success
-$reflect-success-color                       : $positive-1 !default;
-$reflect-success-hover                       : darken($reflect-success-color, 10%) !default;
-$reflect-success-border                      : $reflect-success-color !default;
-$reflect-success-border-hover                : darken($reflect-success-color, 10%) !default;
+$puppet-success-color                       : $positive-1 !default;
+$puppet-success-hover                       : darken($puppet-success-color, 10%) !default;
+$puppet-success-border                      : $puppet-success-color !default;
+$puppet-success-border-hover                : darken($puppet-success-color, 10%) !default;
 
 //Warning
-$reflect-warning-color                       : $warning-1 !default;
-$reflect-warning-hover                       : darken($reflect-warning-color, 10%) !default;
-$reflect-warning-border                      : $reflect-warning-color !default;
-$reflect-warning-border-hover                : darken($reflect-warning-color, 10%) !default;
+$puppet-warning-color                       : $warning-1 !default;
+$puppet-warning-hover                       : darken($puppet-warning-color, 10%) !default;
+$puppet-warning-border                      : $puppet-warning-color !default;
+$puppet-warning-border-hover                : darken($puppet-warning-color, 10%) !default;
 
 // Sizing Defaults
 // ----------------------------------------------------------------------------
-$reflect-size-base                           : 8px !default;
-$reflect-mini                                : $reflect-size-base * 0.25 !default;
-$reflect-tiny                                : $reflect-size-base * 0.5 !default;
-$reflect-small                               : $reflect-size-base !default;
-$reflect-medium                              : $reflect-size-base * 2 !default;
-$reflect-large                               : $reflect-size-base * 3 !default;
-$reflect-huge                                : $reflect-size-base * 4 !default;
-$reflect-giant                               : $reflect-size-base * 6 !default;
+$puppet-size-base                           : 8px !default;
+$puppet-mini                                : $puppet-size-base * 0.25 !default;
+$puppet-tiny                                : $puppet-size-base * 0.5 !default;
+$puppet-small                               : $puppet-size-base !default;
+$puppet-medium                              : $puppet-size-base * 2 !default;
+$puppet-large                               : $puppet-size-base * 3 !default;
+$puppet-huge                                : $puppet-size-base * 4 !default;
+$puppet-giant                               : $puppet-size-base * 6 !default;
 
 // Icons
 // ----------------------------------------------------------------------------
-$reflect-icon-fill                           : $reflect-gray !default;
-$reflect-icon-fill-hover                     : $reflect-gray-dark !default;
-$reflect-icon-light                          : $reflect-white !default;
-$reflect-icon-action                         : $reflect-action-color !default;
-$reflect-icon-action-hover                   : $reflect-action-hover !default;
+$puppet-icon-fill                           : $puppet-gray !default;
+$puppet-icon-fill-hover                     : $puppet-gray-dark !default;
+$puppet-icon-light                          : $puppet-white !default;
+$puppet-icon-action                         : $puppet-action-color !default;
+$puppet-icon-action-hover                   : $puppet-action-hover !default;
 
 // Typography
 // ----------------------------------------------------------------------------
-$reflect-font-family                         : 'Source Sans Pro', sans-serif !default;
+$puppet-font-family                         : 'Source Sans Pro', sans-serif !default;
 
-$reflect-font-size-giant                     : 42px !default;
-$reflect-font-size-huge                      : 28px !default;
-$reflect-font-size-large                     : 21px !default;
-$reflect-font-size-medium                    : 18px !default;
-$reflect-font-size-base                      : 14px !default;
-$reflect-font-size-small                     : 12px !default;
-$reflect-font-size-tiny                      : 11px !default;
+$puppet-font-size-giant                     : 42px !default;
+$puppet-font-size-huge                      : 28px !default;
+$puppet-font-size-large                     : 21px !default;
+$puppet-font-size-medium                    : 18px !default;
+$puppet-font-size-base                      : 14px !default;
+$puppet-font-size-small                     : 12px !default;
+$puppet-font-size-tiny                      : 11px !default;
 
-$reflect-font-color-base                     : $reflect-gray-darker !default;
-$reflect-font-color-medium                   : $reflect-gray-dark !default;
-$reflect-font-color-subtle                   : $reflect-gray !default;
-$reflect-font-color-light                    : $reflect-white !default;
+$puppet-font-color-base                     : $puppet-gray-darker !default;
+$puppet-font-color-medium                   : $puppet-gray-dark !default;
+$puppet-font-color-subtle                   : $puppet-gray !default;
+$puppet-font-color-light                    : $puppet-white !default;
 
-$reflect-line-height-default                 : 1.5em !default;
+$puppet-line-height-default                 : 1.5em !default;
 
-$reflect-font-weight-normal                  : 400 !default;
-$reflect-font-weight-medium                  : 400 !default; // deprecating in a future release
-$reflect-font-weight-heavy                   : 600 !default;
+$puppet-font-weight-normal                  : 400 !default;
+$puppet-font-weight-medium                  : 400 !default; // deprecating in a future release
+$puppet-font-weight-heavy                   : 600 !default;
 
 // Content
-$reflect-strong                              : $reflect-font-weight-heavy !default;
+$puppet-strong                              : $puppet-font-weight-heavy !default;
 
 // Headings
-$reflect-heading-color                       : $reflect-font-color-base !default;
-$reflect-heading-font-size-base              : $reflect-font-size-base !default;
-$reflect-heading-font-weight                 : $reflect-font-weight-medium !default;
-$reflect-heading-line-height                 : 1.25em !default;
-$reflect-heading-margin                      : 0 0 $reflect-medium !default;
+$puppet-heading-color                       : $puppet-font-color-base !default;
+$puppet-heading-font-size-base              : $puppet-font-size-base !default;
+$puppet-heading-font-weight                 : $puppet-font-weight-medium !default;
+$puppet-heading-line-height                 : 1.25em !default;
+$puppet-heading-margin                      : 0 0 $puppet-medium !default;
 
-$reflect-h1-font-size                        : $reflect-font-size-huge !default;
-$reflect-h2-font-size                        : $reflect-font-size-large !default;
-$reflect-h3-font-size                        : $reflect-font-size-medium !default;
-$reflect-h4-font-size                        : $reflect-font-size-base !default;
-$reflect-h5-font-size                        : $reflect-font-size-small !default;
-$reflect-h6-font-size                        : $reflect-font-size-small !default;
+$puppet-h1-font-size                        : $puppet-font-size-huge !default;
+$puppet-h2-font-size                        : $puppet-font-size-large !default;
+$puppet-h3-font-size                        : $puppet-font-size-medium !default;
+$puppet-h4-font-size                        : $puppet-font-size-base !default;
+$puppet-h5-font-size                        : $puppet-font-size-small !default;
+$puppet-h6-font-size                        : $puppet-font-size-small !default;
 
 // Paragraphs
-$reflect-p-color                             : $reflect-font-color-base !default;
-$reflect-p-font-size                         : $reflect-font-size-base !default;
-$reflect-p-font-weight                       : $reflect-font-weight-normal !default;
-$reflect-p-line-height                       : $reflect-line-height-default !default;
-$reflect-p-margin                            : 0 0 $reflect-medium !default;
+$puppet-p-color                             : $puppet-font-color-base !default;
+$puppet-p-font-size                         : $puppet-font-size-base !default;
+$puppet-p-font-weight                       : $puppet-font-weight-normal !default;
+$puppet-p-line-height                       : $puppet-line-height-default !default;
+$puppet-p-margin                            : 0 0 $puppet-medium !default;
 
-$reflect-list-color                          : $reflect-font-color-base !default;
-$reflect-list-font-size                      : $reflect-font-size-base !default;
-$reflect-list-font-weight                    : $reflect-font-weight-normal !default;
-$reflect-list-line-height                    : $reflect-line-height-default !default;
-$reflect-list-margin                         : $reflect-mini 0 $reflect-small !default;
-$reflect-list-padding                        : 0 !default;
-$reflect-list-position                       : inside !default;
-$reflect-list-item-margin                    : 0 0 $reflect-small !default;
-$reflect-list-ul-type                        : initial !default;
-$reflect-list-ol-type                        : decimal !default;
+$puppet-list-color                          : $puppet-font-color-base !default;
+$puppet-list-font-size                      : $puppet-font-size-base !default;
+$puppet-list-font-weight                    : $puppet-font-weight-normal !default;
+$puppet-list-line-height                    : $puppet-line-height-default !default;
+$puppet-list-margin                         : $puppet-mini 0 $puppet-small !default;
+$puppet-list-padding                        : 0 !default;
+$puppet-list-position                       : inside !default;
+$puppet-list-item-margin                    : 0 0 $puppet-small !default;
+$puppet-list-ul-type                        : initial !default;
+$puppet-list-ol-type                        : decimal !default;
 
 // Code
-$reflect-code-bg                             : $reflect-bg-subtle !default;
-$reflect-code-color                          : $reflect-font-color-base !default;
-$reflect-code-font-family                    : monospace !default;
-$reflect-code-font-size                      : $reflect-font-size-base !default;
-$reflect-code-font-weight                    : $reflect-font-weight-medium !default;
-$reflect-code-line-height                    : $reflect-line-height-default !default;
-$reflect-code-margin                         : 0 0 $reflect-small !default;
-$reflect-code-padding                        : $reflect-tiny !default;
+$puppet-code-bg                             : $puppet-bg-subtle !default;
+$puppet-code-color                          : $puppet-font-color-base !default;
+$puppet-code-font-family                    : monospace !default;
+$puppet-code-font-size                      : $puppet-font-size-base !default;
+$puppet-code-font-weight                    : $puppet-font-weight-medium !default;
+$puppet-code-line-height                    : $puppet-line-height-default !default;
+$puppet-code-margin                         : 0 0 $puppet-small !default;
+$puppet-code-padding                        : $puppet-tiny !default;
 
 // Text Labels
-$reflect-text-label-size                     : $reflect-font-size-tiny !default;
-$reflect-text-label-color                    : $reflect-font-color-medium !default;
-$reflect-text-label-letter-spacing           : 0.6px !default;
-$reflect-text-label-transform                : uppercase !default;
-$reflect-text-label-weight                   : $reflect-font-weight-medium !default;
+$puppet-text-label-size                     : $puppet-font-size-tiny !default;
+$puppet-text-label-color                    : $puppet-font-color-medium !default;
+$puppet-text-label-letter-spacing           : 0.6px !default;
+$puppet-text-label-transform                : uppercase !default;
+$puppet-text-label-weight                   : $puppet-font-weight-medium !default;
 
 // Borders
 // ----------------------------------------------------------------------------
-$reflect-border-color                        : $reflect-gray-light !default;
-$reflect-border-hover-color                  : $reflect-gray !default;
-$reflect-border-size                         : 1px !default;
-$reflect-border-style                        : solid !default;
-$reflect-border-radius                       : 4px !default;
-$reflect-circle-radius                       : 1000px !default;
-$reflect-border                              : $reflect-border-size $reflect-border-style $reflect-border-color !default;
-$reflect-border-hover                        : $reflect-border-size $reflect-border-style $reflect-border-hover-color !default;
-$reflect-border-active                       : $reflect-border-size $reflect-border-style $reflect-action-color !default;
-$reflect-border-active-hover                 : $reflect-border-size $reflect-border-style $reflect-action-hover !default;
-$reflect-border-heavy                        : $reflect-border-size*2 $reflect-border-style $reflect-border-color !default;
+$puppet-border-color                        : $puppet-gray-light !default;
+$puppet-border-hover-color                  : $puppet-gray !default;
+$puppet-border-size                         : 1px !default;
+$puppet-border-style                        : solid !default;
+$puppet-border-radius                       : 4px !default;
+$puppet-circle-radius                       : 1000px !default;
+$puppet-border                              : $puppet-border-size $puppet-border-style $puppet-border-color !default;
+$puppet-border-hover                        : $puppet-border-size $puppet-border-style $puppet-border-hover-color !default;
+$puppet-border-active                       : $puppet-border-size $puppet-border-style $puppet-action-color !default;
+$puppet-border-active-hover                 : $puppet-border-size $puppet-border-style $puppet-action-hover !default;
+$puppet-border-heavy                        : $puppet-border-size*2 $puppet-border-style $puppet-border-color !default;
 
 // HR
-$reflect-hr-border                           : $reflect-border !default;
-$reflect-hr-margin                           : $reflect-medium !default;
+$puppet-hr-border                           : $puppet-border !default;
+$puppet-hr-margin                           : $puppet-medium !default;
 
 // Blockquote
 // ----------------------------------------------------------------------------
-$reflect-bq-border                           : solid $reflect-tiny $reflect-border-color !default;
-$reflect-bq-color                            : $reflect-font-color-base !default;
-$reflect-bq-font-size                        : $reflect-font-size-base !default;
-$reflect-bq-font-weight                      : $reflect-font-weight-normal !default;
-$reflect-bq-line-height                      : $reflect-line-height-default !default;
-$reflect-bq-margin                           : 0 0 $reflect-medium !default;
-$reflect-bq-padding                          : $reflect-tiny $reflect-medium !default;
+$puppet-bq-border                           : solid $puppet-tiny $puppet-border-color !default;
+$puppet-bq-color                            : $puppet-font-color-base !default;
+$puppet-bq-font-size                        : $puppet-font-size-base !default;
+$puppet-bq-font-weight                      : $puppet-font-weight-normal !default;
+$puppet-bq-line-height                      : $puppet-line-height-default !default;
+$puppet-bq-margin                           : 0 0 $puppet-medium !default;
+$puppet-bq-padding                          : $puppet-tiny $puppet-medium !default;
 
 
 // Shadows
 // ----------------------------------------------------------------------------
-$reflect-outer-shadow                        : 0 1px 2px rgba(0, 0, 0, 0.05) !default;
-$reflect-outer-shadow-large                  : 2px 2px 4px rgba(0, 0, 0, 0.05) !default;
-$reflect-outer-shadow-huge                   : 0 0 10px rgba(0, 0, 0, 0.08) !default;
-$reflect-outer-shadow-giant                  : 0 0 60px rgba(0, 0, 0, 0.3) !default;
+$puppet-outer-shadow                        : 0 1px 2px rgba(0, 0, 0, 0.05) !default;
+$puppet-outer-shadow-large                  : 2px 2px 4px rgba(0, 0, 0, 0.05) !default;
+$puppet-outer-shadow-huge                   : 0 0 10px rgba(0, 0, 0, 0.08) !default;
+$puppet-outer-shadow-giant                  : 0 0 60px rgba(0, 0, 0, 0.3) !default;
 
-$reflect-selectable-shadow                   : 0 0 0 1px $reflect-border-color !default;
-$reflect-selectable-shadow-hover             : 0 0 0 1px $reflect-border-hover-color !default;
-$reflect-selected-shadow                     : 0 0 0 1px $reflect-action-color !default;
-$reflect-selected-shadow-hover               : 0 0 0 1px $reflect-action-hover !default;
+$puppet-selectable-shadow                   : 0 0 0 1px $puppet-border-color !default;
+$puppet-selectable-shadow-hover             : 0 0 0 1px $puppet-border-hover-color !default;
+$puppet-selected-shadow                     : 0 0 0 1px $puppet-action-color !default;
+$puppet-selected-shadow-hover               : 0 0 0 1px $puppet-action-hover !default;
 
 // Animations
 // ----------------------------------------------------------------------------
-$reflect-animation-speed-base                : 0.2s;
+$puppet-animation-speed-base                : 0.2s;
 
 /* stylelint-enable */
