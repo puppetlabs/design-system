@@ -1,3 +1,7 @@
+# 1.3.4
+
+* Rename library to @puppet/react-components
+
 # 1.3.3
 
 * First pass using Puppet styling
