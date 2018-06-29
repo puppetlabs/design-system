@@ -1,6 +1,7 @@
 # 2.0.0
 
 * Rename library to @puppet/react-components
+* Replace scss variable prefix with $puppet-
 
 # 1.3.3
 
