@@ -1,4 +1,4 @@
-# Contributing to Insights UI Components
+# Contributing to Puppet React Components
 
 Thanks for your interest in contributing! This document outlines how to submit a
 bug or request an enhancement, set up your development environment, open a pull
@@ -86,9 +86,8 @@ branch up to Github, you're ready to open a pull request.
 - Open your Pull Request against the development branch.
 - You may be asked to make stylistic changes to align your contribution with
   existing code, add tests, or any other requests.
-- Once your pull request has been approved, it's on you to merge it in to the
-  development branch.
-- Lastly, please delete your branch after merging.
+- The reviewer will merge your pull request and delete your branch once it has
+  been approved. You're more than welcome to merge as well.
 
 If you have any questions about this process, please reach out to the
 maintainers. Again, thank you for the contribution!
@@ -122,8 +121,9 @@ that process:
   a summary of the changes. Sometimes this may require looking through the
   commit message or even contacting their authors.
 4. Assign the maintainers. (See "Opening a pull request" above)
-5. Upon approval please merge the pull request. It's your responsibility to test
-  the new version once it's been deployed and check for regressions.
+5. Upon approval your pull request will be merged by the reviewer. The reviewer
+  is responsible for making sure the deployment goes out smoothly, and for
+  rolling back otherwise.
 
 ## Reviewing pull requests
 

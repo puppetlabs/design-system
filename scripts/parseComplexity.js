@@ -15,7 +15,7 @@ csvStream.pipe(writableStream);
 report.reports.forEach((r) => {
   csvStream.write({
     Complexity: r.complexity.aggregate.complexity.cyclomatic,
-    Product: 'reflect-components',
+    Product: 'react-components',
     File: r.info.file,
   });
 });

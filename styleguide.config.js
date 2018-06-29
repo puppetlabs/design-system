@@ -2,7 +2,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  title: 'Reflect Components',
+  title: 'Puppet React Components',
   theme: {
     link: '#269CFF',
     name: '#269CFF',
