@@ -10,20 +10,20 @@
   -moz-appearance: none;
   appearance: none;
 
-  border: $reflect-checkbox-border;
-  border-radius: $reflect-checkbox-border-radius;
+  border: $puppet-checkbox-border;
+  border-radius: $puppet-checkbox-border-radius;
   cursor: pointer;
-  height: $reflect-medium;
+  height: $puppet-medium;
   margin: 0;
   outline: none;
   padding: 0;
-  width: $reflect-medium;
+  width: $puppet-medium;
 }
 
 .rc-checkbox::-ms-check {
-  border: $reflect-checkbox-border;
-  border-radius: $reflect-checkbox-border-radius;
-  color: $reflect-bg-primary;
+  border: $puppet-checkbox-border;
+  border-radius: $puppet-checkbox-border-radius;
+  color: $puppet-bg-primary;
 }
 
 .rc-checkbox + .rc-icon {
@@ -39,16 +39,16 @@
 }
 
 .rc-checkbox:hover {
-  border-color: $reflect-checkbox-hover-border-color;
+  border-color: $puppet-checkbox-hover-border-color;
 
   &.rc-checkbox-checked {
-    border-color: $reflect-checkbox-disabled-border-color;
+    border-color: $puppet-checkbox-disabled-border-color;
   }
 }
 
 .rc-checkbox-checked + .rc-icon {
   display: block;
-  fill: $reflect-checkbox-icon-color;
+  fill: $puppet-checkbox-icon-color;
 }
 
 .rc-checkbox-disabled {
@@ -56,11 +56,11 @@
 }
 
 .rc-checkbox-disabled:hover {
-  border-color: $reflect-checkbox-disabled-border-color;
+  border-color: $puppet-checkbox-disabled-border-color;
 }
 
 .rc-checkbox-disabled + .rc-icon {
-  fill: $reflect-checkbox-disabled-icon-color;
+  fill: $puppet-checkbox-disabled-icon-color;
 }
 
 /* stylelint-enable property-no-vendor-prefix */

@@ -21,9 +21,9 @@
 }
 
 .rc-list-item-link {
-  background: $reflect-list-item-bg;
-  border-bottom: $reflect-list-item-border;
-  border-radius: $reflect-list-item-border-radius;
+  background: $puppet-list-item-bg;
+  border-bottom: $puppet-list-item-border;
+  border-radius: $puppet-list-item-border-radius;
   cursor: default;
   display: flex;
   flex: 1;
@@ -35,7 +35,7 @@
 
 .rc-list-item-text {
   align-self: center;
-  color: $reflect-list-item-color;
+  color: $puppet-list-item-color;
   flex: 1 1 auto;
 }
 
@@ -75,12 +75,12 @@
 
 .rc-list-item-clickable:hover {
   .rc-list-item-link {
-    border-color: $reflect-list-item-border-hover;
+    border-color: $puppet-list-item-border-hover;
     cursor: pointer;
   }
 
   .rc-list-item-text {
-    color: $reflect-list-item-color-hover;
+    color: $puppet-list-item-color-hover;
   }
 }
 
@@ -94,26 +94,26 @@
 
 .rc-list-item-selected {
   .rc-list-item-link {
-    background: rgba($reflect-action-color, 0.05);
-    border-color: $reflect-list-item-border-selected;
-    // box-shadow: $reflect-list-item-shadow-selected;
+    background: rgba($puppet-action-color, 0.05);
+    border-color: $puppet-list-item-border-selected;
+    // box-shadow: $puppet-list-item-shadow-selected;
   }
 
   &:hover .rc-list-item-link {
-    border-color: $reflect-list-item-border-selected;
+    border-color: $puppet-list-item-border-selected;
   }
 }
 
 .rc-list-item-medium {
   .rc-list-item-link {
-    margin: $reflect-list-item-margin;
-    min-height: $reflect-list-item-height;
-    padding: $reflect-list-item-padding;
+    margin: $puppet-list-item-margin;
+    min-height: $puppet-list-item-height;
+    padding: $puppet-list-item-padding;
   }
 
   .rc-list-item-text {
-    font-size: $reflect-list-item-font-size;
-    line-height: $reflect-list-item-lineheight;
+    font-size: $puppet-list-item-font-size;
+    line-height: $puppet-list-item-lineheight;
   }
 
   .rc-list-item-action {
@@ -127,14 +127,14 @@
 
 .rc-list-item-small {
   .rc-list-item-link {
-    margin: $reflect-list-item-margin;
-    min-height: $reflect-list-item-small-height;
-    padding: $reflect-list-item-padding;
+    margin: $puppet-list-item-margin;
+    min-height: $puppet-list-item-small-height;
+    padding: $puppet-list-item-padding;
   }
 
   .rc-list-item-text {
-    font-size: $reflect-list-item-small-font-size;
-    line-height: $reflect-list-item-small-lineheight;
+    font-size: $puppet-list-item-small-font-size;
+    line-height: $puppet-list-item-small-lineheight;
   }
 
   .rc-list-item-action {
@@ -149,7 +149,7 @@
   align-self: flex-start;
   display: flex;
   height: 16px;
-  margin-left: -$reflect-tiny;
+  margin-left: -$puppet-tiny;
   margin-right: 4px;
   min-width: 16px;
   transform: translate(0, 1px);
@@ -169,48 +169,48 @@
 // Fancy List - for data field list, filter lists, etc.
 // Blue background and border radius
 .rc-list-item-link-fancy {
-  background: $reflect-action-color;
-  border: $reflect-border-size solid $reflect-action-color;
-  border-radius: $reflect-border-radius;
+  background: $puppet-action-color;
+  border: $puppet-border-size solid $puppet-action-color;
+  border-radius: $puppet-border-radius;
 
   .rc-list-item-text {
-    color: $reflect-white;
+    color: $puppet-white;
   }
 
   // Make all icons white
   .rc-icon {
-    fill: $reflect-action-icon;
+    fill: $puppet-action-icon;
   }
 }
 
 .rc-list-item-link-fancy .rc-list-item-action {
   &:hover .rc-icon {
-    fill: $reflect-white;
+    fill: $puppet-white;
   }
 }
 
 .rc-list-item-clickable .rc-list-item-link-fancy {
   &:hover,
   &:focus {
-    background-color: $reflect-action-hover;
-    border-color: $reflect-action-hover;
+    background-color: $puppet-action-hover;
+    border-color: $puppet-action-hover;
   }
 
   &:focus {
-    box-shadow: $reflect-selected-shadow-hover;
+    box-shadow: $puppet-selected-shadow-hover;
   }
 
   .rc-list-item-text {
-    color: $reflect-white;
+    color: $puppet-white;
   }
 }
 
 .rc-list-item-highlighted .rc-list-item-fancy {
   &:hover,
   &:focus {
-    background: $reflect-action-hover;
-    border-color: $reflect-action-hover;
-    box-shadow: $reflect-selected-shadow-hover;
+    background: $puppet-action-hover;
+    border-color: $puppet-action-hover;
+    box-shadow: $puppet-selected-shadow-hover;
   }
 }
 
@@ -226,8 +226,8 @@
 
 // Drag and Drop
 .rc-list-item.rc-list-dragging .rc-list-item-link {
-  background: $reflect-action-hover;
-  border-color: $reflect-action-hover;
+  background: $puppet-action-hover;
+  border-color: $puppet-action-hover;
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   pointer-events: none;
   transform: scale(1.05);

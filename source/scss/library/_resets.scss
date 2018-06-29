@@ -29,7 +29,7 @@
   h4,
   h5,
   h6 {
-    font-weight: $reflect-heading-font-weight;
+    font-weight: $puppet-heading-font-weight;
     margin: 0;
   }
 
@@ -38,7 +38,7 @@
   }
 
   a {
-    color: $reflect-anchor-color;
+    color: $puppet-anchor-color;
     font-weight: normal;
     letter-spacing: normal;
     text-decoration: none;
@@ -46,7 +46,7 @@
   }
 
   a:hover {
-    color: $reflect-anchor-hover;
+    color: $puppet-anchor-hover;
     text-decoration: none;
   }
 }

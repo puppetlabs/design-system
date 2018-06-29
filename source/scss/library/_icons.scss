@@ -1,12 +1,12 @@
 .rc-icon {
-  fill: $reflect-icon-fill;
+  fill: $puppet-icon-fill;
   transition: all 0.2s;
 
   &:hover {
-    fill: $reflect-icon-fill-hover;
+    fill: $puppet-icon-fill-hover;
   }
 }
 
 .rc-icon-primary-fill {
-  fill: $reflect-icon-primary-fill;
+  fill: $puppet-icon-primary-fill;
 }

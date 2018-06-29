@@ -1,23 +1,23 @@
 %focused-input {
-  background: $reflect-input-focus-bg;
-  border: $reflect-border-active;
-  box-shadow: $reflect-selected-shadow;
+  background: $puppet-input-focus-bg;
+  border: $puppet-border-active;
+  box-shadow: $puppet-selected-shadow;
 }
 
 %disabled-input {
-  background: $reflect-input-disabled-bg;
-  color: $reflect-input-disabled-color;
+  background: $puppet-input-disabled-bg;
+  color: $puppet-input-disabled-color;
 
   &:hover {
-    border-color: $reflect-border-color;
+    border-color: $puppet-border-color;
   }
 }
 
 %input {
-  background: $reflect-input-bg;
-  border: $reflect-input-border;
-  border-radius: $reflect-input-border-radius;
-  color: $reflect-input-color;
+  background: $puppet-input-bg;
+  border: $puppet-input-border;
+  border-radius: $puppet-input-border-radius;
+  color: $puppet-input-color;
   outline: none;
   // Really only applies when .rc-input is a textarea
   width: 100%;
@@ -25,13 +25,13 @@
 
 .rc-input {
   @extend %input;
-  font-size: $reflect-font-size-base;
-  height: $reflect-input-height;
+  font-size: $puppet-font-size-base;
+  height: $puppet-input-height;
   line-height: 1;
-  padding: $reflect-input-padding;
+  padding: $puppet-input-padding;
 
   &.rc-input-error {
-    border: $reflect-input-border-error;
+    border: $puppet-input-border-error;
   }
 
   &:focus {
@@ -39,11 +39,11 @@
   }
 
   &:hover {
-    border: $reflect-input-hover-border;
+    border: $puppet-input-hover-border;
   }
 
   &::placeholder {
-    color: $reflect-input-placeholder-color;
+    color: $puppet-input-placeholder-color;
   }
 
 
@@ -52,10 +52,10 @@
   }
 
   &.rc-input-large {
-    font-size: $reflect-font-size-large;
-    height: $reflect-input-large-height;
-    line-height: $reflect-line-height-default;
-    padding: $reflect-input-large-padding;
+    font-size: $puppet-font-size-large;
+    height: $puppet-input-large-height;
+    line-height: $puppet-line-height-default;
+    padding: $puppet-input-large-padding;
   }
 
   &.rc-input-medium { // Same as default
@@ -63,9 +63,9 @@
 
   &.rc-input-small,
   &.rc-input-tiny {
-    font-size: $reflect-font-size-small;
-    height: $reflect-input-small-height;
-    padding: $reflect-input-small-padding;
+    font-size: $puppet-font-size-small;
+    height: $puppet-input-small-height;
+    padding: $puppet-input-small-padding;
   }
 }
 
@@ -75,7 +75,7 @@
 
 .rc-input-multiline,
 .rc-input-medium.rc-input-multiline {
-  height: $reflect-size-base * 9;
+  height: $puppet-size-base * 9;
   resize: vertical;
   vertical-align: top;
 }
@@ -99,7 +99,7 @@
 
 .rc-input-simple,
 .rc-input-simple:hover {
-  background: $reflect-input-simple-bg;
+  background: $puppet-input-simple-bg;
   border-bottom-width: 1px;
   border-left: 0;
   border-radius: 0;
@@ -108,7 +108,7 @@
 }
 
 .rc-input-simple:focus {
-  background: $reflect-input-simple-focus-bg;
+  background: $puppet-input-simple-focus-bg;
   border-bottom-width: 1px;
   border-left: 0;
   border-right: 0;
