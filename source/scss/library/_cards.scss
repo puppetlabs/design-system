@@ -1,16 +1,16 @@
 .rc-card {
-  background: $reflect-card-bg;
-  border: $reflect-card-border;
-  border-radius: $reflect-card-border-radius;
-  box-shadow: $reflect-card-shadow;
-  color: $reflect-card-color;
+  background: $puppet-card-bg;
+  border: $puppet-card-border;
+  border-radius: $puppet-card-border-radius;
+  box-shadow: $puppet-card-shadow;
+  color: $puppet-card-color;
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
 .rc-card-header {
-  padding: $reflect-card-header-padding;
+  padding: $puppet-card-header-padding;
   width: 100%;
 
   ~ .rc-card-section {
@@ -18,7 +18,7 @@
   }
 
   &:only-child {
-    padding: $reflect-card-padding;
+    padding: $puppet-card-padding;
   }
 }
 
@@ -26,7 +26,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
-  margin-bottom: $reflect-mini;
+  margin-bottom: $puppet-mini;
 
   &:only-child {
     margin-bottom: 0;
@@ -34,7 +34,7 @@
 }
 
 .rc-card-description {
-  font-size: $reflect-card-description-font-size;
+  font-size: $puppet-card-description-font-size;
 }
 
 .rc-card-title-area {
@@ -43,40 +43,40 @@
 }
 
 .rc-card-title {
-  color: $reflect-card-title-color;
-  font-size: $reflect-card-title-size;
+  color: $puppet-card-title-color;
+  font-size: $puppet-card-title-size;
   overflow: hidden;
   text-overflow: ellipsis;
-  text-transform: $reflect-card-title-case;
+  text-transform: $puppet-card-title-case;
   white-space: nowrap;
 
   + .rc-card-controls,
   + .rc-card-subtitle,
   + .rc-card-description {
-    margin-top: $reflect-card-title-margin;
+    margin-top: $puppet-card-title-margin;
   }
 }
 
 .rc-card-subtitle {
-  color: $reflect-card-subtitle-color;
-  font-size: $reflect-card-subtitle-size;
+  color: $puppet-card-subtitle-color;
+  font-size: $puppet-card-subtitle-size;
 }
 
 .rc-card-controls {
-  color: $reflect-card-controls-color;
-  font-size: $reflect-card-controls-size;
+  color: $puppet-card-controls-color;
+  font-size: $puppet-card-controls-size;
 
   [class^='rc-'] {
-    font-size: $reflect-card-controls-size !important;
+    font-size: $puppet-card-controls-size !important;
   }
 
   + .rc-card-description {
-    margin-top: $reflect-card-title-margin;
+    margin-top: $puppet-card-title-margin;
   }
 }
 
 .rc-card-section {
-  padding: $reflect-card-padding;
+  padding: $puppet-card-padding;
   width: 100%;
 
   + .rc-card-section,
@@ -96,7 +96,7 @@
   z-index: 24;
 
   .rc-card-remove {
-    background: $reflect-remove-background;
+    background: $puppet-remove-background;
     border-radius: 50%;
     cursor: pointer;
     height: 21px;
@@ -109,11 +109,11 @@
 // TODO: Cleanup button nesting so you don't need to be so explicit with overrides
 .rc-card-actions .rc-popover-target-open {
   .rc-icon {
-    fill: $reflect-card-action-color-active;
+    fill: $puppet-card-action-color-active;
   }
 
   &:hover .rc-icon {
-    fill: $reflect-card-action-color-active;
+    fill: $puppet-card-action-color-active;
   }
 }
 
@@ -151,7 +151,7 @@
 }
 
 .rc-card-xs:hover {
-  background: $reflect-card-bg;
+  background: $puppet-card-bg;
 
   .rc-card-title {
     visibility: visible;
@@ -180,18 +180,18 @@
   cursor: pointer;
 
   &:hover {
-    border: $reflect-card-border-hover;
-    box-shadow: $reflect-card-shadow-hover;
+    border: $puppet-card-border-hover;
+    box-shadow: $puppet-card-shadow-hover;
   }
 }
 
 .rc-card-selected {
-  border: $reflect-card-border-selected;
-  box-shadow: $reflect-card-shadow-selected;
+  border: $puppet-card-border-selected;
+  box-shadow: $puppet-card-shadow-selected;
 
   &:hover {
-    border: $reflect-card-border-selected-hover;
-    box-shadow: $reflect-card-shadow-selected-hover;
+    border: $puppet-card-border-selected-hover;
+    box-shadow: $puppet-card-shadow-selected-hover;
   }
 }
 

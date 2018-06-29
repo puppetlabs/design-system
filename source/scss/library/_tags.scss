@@ -1,14 +1,14 @@
 .rc-tag {
   align-items: center;
-  background: $reflect-tag-bg;
-  border: $reflect-tag-border;
-  border-radius: $reflect-tag-border-radius;
-  color: $reflect-tag-color;
+  background: $puppet-tag-bg;
+  border: $puppet-tag-border;
+  border-radius: $puppet-tag-border-radius;
+  color: $puppet-tag-color;
   display: inline-flex;
-  font-size: $reflect-tag-font-size;
-  height: $reflect-tag-height;
-  margin: 0 $reflect-tag-margin;
-  padding: 0 $reflect-tag-padding;
+  font-size: $puppet-tag-font-size;
+  height: $puppet-tag-height;
+  margin: 0 $puppet-tag-margin;
+  padding: 0 $puppet-tag-padding;
   position: relative;
 
   .rc-tag-actions {
@@ -29,34 +29,34 @@
   .rc-tag-content,
   .rc-tooltip-area {
     flex-grow: 1;
-    font-size: $reflect-tag-font-size;
+    font-size: $puppet-tag-font-size;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 
   .rc-tag-button .rc-icon {
-    fill: $reflect-tag-icon-fill;
+    fill: $puppet-tag-icon-fill;
     opacity: 0.8;
   }
 
   .rc-tag-button:hover .rc-icon {
-    fill: $reflect-tag-icon-fill;
+    fill: $puppet-tag-icon-fill;
     opacity: 1;
   }
 }
 
 .rc-tag-primary {
-  background: $reflect-brand-primary;
-  border-color: $reflect-bg-subtle;
-  color: $reflect-white;
+  background: $puppet-brand-primary;
+  border-color: $puppet-bg-subtle;
+  color: $puppet-white;
 
   .rc-tag-remove-button .rc-icon {
-    fill: $reflect-white;
+    fill: $puppet-white;
   }
 
   .rc-tag-remove-button:hover .rc-icon {
-    fill: $reflect-white;
+    fill: $puppet-white;
   }
 }
 
@@ -74,16 +74,16 @@
 }
 
 .rc-tag-selected {
-  border: $reflect-tag-border-selected;
-  box-shadow: $reflect-tag-shadow-selected;
+  border: $puppet-tag-border-selected;
+  box-shadow: $puppet-tag-shadow-selected;
 }
 
 .rc-tag-tiny {
-  height: $reflect-tag-tiny-height;
-  padding: $reflect-tag-tiny-padding;
+  height: $puppet-tag-tiny-height;
+  padding: $puppet-tag-tiny-padding;
 
   .rc-tag-content {
-    font-size: $reflect-tag-tiny-font-size;
+    font-size: $puppet-tag-tiny-font-size;
   }
 }
 

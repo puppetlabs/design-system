@@ -4,20 +4,20 @@
   }
 
   .rc-tab a {
-    background: $reflect-tab-bg;
-    border-bottom: $reflect-tab-border;
-    color: $reflect-tab-color;
+    background: $puppet-tab-bg;
+    border-bottom: $puppet-tab-border;
+    color: $puppet-tab-color;
     display: block;
-    font-family: $reflect-tab-font-family;
-    font-size: $reflect-tab-font-size;
-    font-weight: $reflect-tab-font-weight;
-    padding: $reflect-tab-padding;
-    text-transform: $reflect-tab-case;
+    font-family: $puppet-tab-font-family;
+    font-size: $puppet-tab-font-size;
+    font-weight: $puppet-tab-font-weight;
+    padding: $puppet-tab-padding;
+    text-transform: $puppet-tab-case;
   }
 
   .rc-tab.rc-tab-active a {
-    border-bottom: $reflect-tab-border-active;
-    color: $reflect-tab-color-active;
+    border-bottom: $puppet-tab-border-active;
+    color: $puppet-tab-color-active;
   }
 
   .rc-tab:last-child {
@@ -26,7 +26,7 @@
 
   .rc-tab-panel {
     display: none;
-    padding: $reflect-tab-panel-padding;
+    padding: $puppet-tab-panel-padding;
   }
 
   .rc-tab-panel.rc-tab-panel-active {
@@ -37,7 +37,7 @@
 .rc-tabs-vertical {
   ul {
     float: left;
-    width: $reflect-tab-width-vertical;
+    width: $puppet-tab-width-vertical;
   }
 
   .rc-tab {
@@ -46,16 +46,16 @@
 
   .rc-tab a {
     border-bottom: 0;
-    border-right: $reflect-tab-border;
+    border-right: $puppet-tab-border;
   }
 
   .rc-tab.rc-tab-active a {
     border-bottom: 0;
-    border-right: $reflect-tab-border-active;
+    border-right: $puppet-tab-border-active;
   }
 
   .rc-tab-panel {
-    margin-left: $reflect-tab-width-vertical;
-    padding: $reflect-tab-panel-padding-vertical;
+    margin-left: $puppet-tab-width-vertical;
+    padding: $puppet-tab-panel-padding-vertical;
   }
 }
