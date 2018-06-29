@@ -1,15 +1,15 @@
 .rc-modal-overlay {
-  background: $puppet-modal-overlay-bg;
+  background: $reflect-modal-overlay-bg;
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: $puppet-modal-elevation;
+  z-index: $reflect-modal-elevation;
 }
 
 .rc-modal-close {
-  color: $puppet-gray;
+  color: $reflect-gray;
   cursor: pointer;
   height: 100%;
   left: 0;
@@ -20,27 +20,27 @@
   width: 100%;
 
   &:hover {
-    color: $puppet-gray-dark;
+    color: $reflect-gray-dark;
   }
 }
 
 .rc-modal {
-  background: $puppet-modal-bg;
-  border-radius: $puppet-modal-border-radius;
+  background: $reflect-modal-bg;
+  border-radius: $reflect-modal-border-radius;
   box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
-  color: $puppet-modal-color;
+  color: $reflect-modal-color;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
   top: 64px;
-  width: $puppet-modal-width;
+  width: $reflect-modal-width;
 }
 
 .rc-modal-content {
-  background: $puppet-modal-bg;
-  border-radius: $puppet-modal-border-radius;
+  background: $reflect-modal-bg;
+  border-radius: $reflect-modal-border-radius;
   overflow-y: auto;
-  padding: $puppet-modal-padding;
+  padding: $reflect-modal-padding;
   transform: translateZ(0);
 }
 
@@ -48,30 +48,30 @@
   background-color: transparent;
   float: right;
   height: 1px; // this will get dynamically set via the react component.
-  padding: $puppet-modal-sidebar-padding;
-  width: $puppet-modal-sidebar-width;
+  padding: $reflect-modal-sidebar-padding;
+  width: $reflect-modal-sidebar-width;
 }
 
 .rc-modal-actions {
-  background: $puppet-modal-bg;
-  border-top: $puppet-modal-actions-border;
+  background: $reflect-modal-bg;
+  border-top: $reflect-modal-actions-border;
   overflow: hidden;
-  padding: $puppet-modal-actions-padding;
+  padding: $reflect-modal-actions-padding;
   text-align: right;
 }
 
 .rc-modal-actions-cta {
   float: left;
   margin: 0;
-  padding: $puppet-modal-actions-cta-padding;
+  padding: $reflect-modal-actions-cta-padding;
 }
 
 .rc-modal-with-sidebar {
-  background: $puppet-modal-sidebar-bg;
+  background: $reflect-modal-sidebar-bg;
 
   .rc-modal-content,
   .rc-modal-actions {
-    margin-right: $puppet-modal-sidebar-width;
+    margin-right: $reflect-modal-sidebar-width;
   }
 }
 
@@ -82,14 +82,14 @@
 
   .rc-modal-content,
   .rc-modal-actions {
-    margin-left: $puppet-modal-sidebar-width;
+    margin-left: $reflect-modal-sidebar-width;
     margin-right: 0;
   }
 
   .rc-modal-content {
     border-bottom-left-radius: 0;
     border-top-left-radius: 0;
-    border-top-right-radius: $puppet-modal-border-radius;
+    border-top-right-radius: $reflect-modal-border-radius;
   }
 }
 
@@ -101,7 +101,7 @@
 }
 
 .rc-modal-small {
-  width: $puppet-modal-width-small;
+  width: $reflect-modal-width-small;
 
   .rc-modal-content {
     padding: 20px;
@@ -113,10 +113,10 @@
 }
 
 .rc-modal-medium {
-  width: $puppet-modal-width-medium;
+  width: $reflect-modal-width-medium;
 }
 
 .rc-modal-title {
-  font-size: $puppet-modal-title-font-size;
+  font-size: $reflect-modal-title-font-size;
   padding-bottom: 8px;
 }

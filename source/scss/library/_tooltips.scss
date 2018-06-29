@@ -7,15 +7,15 @@
 }
 
 .rc-tooltip {
-  background: $puppet-tooltip-hint-bg;
-  border-radius: $puppet-tooltip-hint-radius;
-  color: $puppet-tooltip-hint-color;
+  background: $reflect-tooltip-hint-bg;
+  border-radius: $reflect-tooltip-hint-radius;
+  color: $reflect-tooltip-hint-color;
   display: inline;
-  font-size: $puppet-tooltip-hint-font-size;
-  max-width: $puppet-tooltip-hint-max-width;
-  padding: $puppet-tooltip-hint-padding;
+  font-size: $reflect-tooltip-hint-font-size;
+  max-width: $reflect-tooltip-hint-max-width;
+  padding: $reflect-tooltip-hint-padding;
   position: absolute;
-  z-index: $puppet-tooltip-hint-elevation;
+  z-index: $reflect-tooltip-hint-elevation;
 
   .rc-tooltip-carat {
     border-style: solid;
@@ -32,7 +32,7 @@
 
 .rc-tooltip-close {
   align-items: center;
-  background: $puppet-tooltip-hint-close-bg;
+  background: $reflect-tooltip-hint-close-bg;
   border-radius: 100px;
   cursor: pointer;
   display: flex;
@@ -45,7 +45,7 @@
   width: 16px;
 
   .rc-icon {
-    fill: $puppet-tooltip-hint-color;
+    fill: $reflect-tooltip-hint-color;
     fill-opacity: 0.5;
   }
 
@@ -66,21 +66,21 @@
 
 .rc-tooltip-position-right {
   .rc-tooltip-carat {
-    border-color: transparent $puppet-tooltip-hint-bg transparent transparent;
+    border-color: transparent $reflect-tooltip-hint-bg transparent transparent;
     left: -16px;
   }
 }
 
 .rc-tooltip-position-bottom {
   .rc-tooltip-carat {
-    border-color: transparent transparent $puppet-tooltip-hint-bg transparent;
+    border-color: transparent transparent $reflect-tooltip-hint-bg transparent;
     top: -16px;
   }
 }
 
 .rc-tooltip-position-left {
   .rc-tooltip-carat {
-    border-color: transparent transparent transparent $puppet-tooltip-hint-bg;
+    border-color: transparent transparent transparent $reflect-tooltip-hint-bg;
     right: -16px;
   }
 }

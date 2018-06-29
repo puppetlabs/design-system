@@ -1,14 +1,14 @@
 .rc-progress-line {
-  stroke: $puppet-progress-color;
+  stroke: $reflect-progress-color;
 }
 
 .rc-progress-step {
-  stroke: $puppet-progress-color;
+  stroke: $reflect-progress-color;
 }
 
 .rc-progress-step-active {
-  fill: $puppet-progress-color;
-  transition: transform $puppet-progress-animation;
+  fill: $reflect-progress-color;
+  transition: transform $reflect-progress-animation;
 
   &.rc-progress-step-active-shadow {
     fill: #000;

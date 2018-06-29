@@ -50,9 +50,9 @@
 
 .rc-dropdown-toggle {
   @include dropdown-label-colors(
-    $puppet-dropdown-label-color,
-    $puppet-dropdown-label-color-disabled,
-    $puppet-dropdown-label-color-error
+    $reflect-dropdown-label-color,
+    $reflect-dropdown-label-color-disabled,
+    $reflect-dropdown-label-color-error
   );
 
   &[disabled] {
@@ -65,25 +65,25 @@
   }
 
   .rc-dropdown-label-text {
-    font-size: $puppet-dropdown-label-font-size;
-    font-weight: $puppet-dropdown-label-font-weight;
+    font-size: $reflect-dropdown-label-font-size;
+    font-weight: $reflect-dropdown-label-font-weight;
   }
 
   .rc-icon {
-    height: $puppet-dropdown-chevron-height;
+    height: $reflect-dropdown-chevron-height;
     left: 0;
     position: relative;
     top: 0;
-    width: $puppet-dropdown-chevron-width;
+    width: $reflect-dropdown-chevron-width;
   }
 }
 
 .rc-dropdown-toggle-select {
-  background: $puppet-select-label-bg;
-  border: $puppet-select-label-border;
-  border-radius: $puppet-select-label-border-radius;
+  background: $reflect-select-label-bg;
+  border: $reflect-select-label-border;
+  border-radius: $reflect-select-label-border-radius;
   display: block;
-  padding: $puppet-select-label-padding;
+  padding: $reflect-select-label-padding;
 
   .rc-dropdown-label {
     display: block;
@@ -92,8 +92,8 @@
 
   .rc-dropdown-label-text {
     display: block;
-    font-size: $puppet-select-label-font-size;
-    margin-right: $puppet-medium;
+    font-size: $reflect-select-label-font-size;
+    margin-right: $reflect-medium;
     overflow: hidden;
     text-overflow: ellipsis;
   }
@@ -107,65 +107,65 @@
 }
 
 .rc-dropdown-label-text {
-  font-size: $puppet-dropdown-label-font-size;
-  font-weight: $puppet-dropdown-label-font-weight;
-  line-height: $puppet-dropdown-label-line-height;
+  font-size: $reflect-dropdown-label-font-size;
+  font-weight: $reflect-dropdown-label-font-weight;
+  line-height: $reflect-dropdown-label-line-height;
 }
 
 .rc-dropdown-menu {
   padding: 0;
-  width: $puppet-dropdown-width;
+  width: $reflect-dropdown-width;
 
   .rc-menu-item:first-child a {
-    border-top-left-radius: $puppet-popover-border-radius;
-    border-top-right-radius: $puppet-popover-border-radius;
+    border-top-left-radius: $reflect-popover-border-radius;
+    border-top-right-radius: $reflect-popover-border-radius;
   }
 
   .rc-menu-item:last-child a {
-    border-bottom-left-radius: $puppet-popover-border-radius;
-    border-bottom-right-radius: $puppet-popover-border-radius;
+    border-bottom-left-radius: $reflect-popover-border-radius;
+    border-bottom-right-radius: $reflect-popover-border-radius;
   }
 
   .rc-dropdown-blank {
-    font-size: $puppet-dropdown-item-font-size;
-    padding: $puppet-dropdown-padding;
+    font-size: $reflect-dropdown-item-font-size;
+    padding: $reflect-dropdown-padding;
   }
 
   .rc-dropdown-item {
-    font-size: $puppet-dropdown-item-font-size;
-    line-height: $puppet-dropdown-item-line-height;
+    font-size: $reflect-dropdown-item-font-size;
+    line-height: $reflect-dropdown-item-line-height;
   }
 
   .rc-dropdown-item a {
     display: block;
-    padding: $puppet-dropdown-padding;
+    padding: $reflect-dropdown-padding;
     text-decoration: none;
   }
 
   .rc-dropdown-item a:hover {
-    background: $puppet-dropdown-item-hover-bg;
-    color: $puppet-dropdown-item-hover-color;
+    background: $reflect-dropdown-item-hover-bg;
+    color: $reflect-dropdown-item-hover-color;
     text-decoration: none;
   }
 
   .rc-dropdown-item-selected  a {
-    background: $puppet-dropdown-item-selected-bg;
-    color: $puppet-dropdown-item-selected-color;
+    background: $reflect-dropdown-item-selected-bg;
+    color: $reflect-dropdown-item-selected-color;
   }
 
   .rc-dropdown-item-disabled a {
-    background: $puppet-dropdown-item-disabled-bg;
-    color: $puppet-dropdown-item-disabled-color;
+    background: $reflect-dropdown-item-disabled-bg;
+    color: $reflect-dropdown-item-disabled-color;
     cursor: default;
   }
 
   .rc-dropdown-item-disabled a:hover {
-    background: $puppet-dropdown-item-disabled-bg;
-    color: $puppet-dropdown-item-disabled-color;
+    background: $reflect-dropdown-item-disabled-bg;
+    color: $reflect-dropdown-item-disabled-color;
   }
 
   ul {
-    max-height: $puppet-dropdown-max-height;
+    max-height: $reflect-dropdown-max-height;
     overflow: auto;
   }
 
@@ -175,15 +175,15 @@
 }
 
 .rc-dropdown-menu-tiny {
-  width: $puppet-dropdown-width-tiny;
+  width: $reflect-dropdown-width-tiny;
 
   .rc-dropdown-item {
-    font-size: $puppet-dropdown-item-font-size-tiny;
-    line-height: $puppet-dropdown-item-line-height-tiny;
+    font-size: $reflect-dropdown-item-font-size-tiny;
+    line-height: $reflect-dropdown-item-line-height-tiny;
   }
 
   .rc-dropdown-item  a {
-    padding: $puppet-dropdown-padding-tiny;
+    padding: $reflect-dropdown-padding-tiny;
   }
 }
 

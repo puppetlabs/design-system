@@ -1,13 +1,13 @@
 .rc-panel {
-  background: $puppet-panel-bg;
-  border: $puppet-panel-border;
-  border-radius: $puppet-panel-border-radius;
-  box-shadow: $puppet-panel-outer-shadow;
-  padding: $puppet-panel-padding;
+  background: $reflect-panel-bg;
+  border: $reflect-panel-border;
+  border-radius: $reflect-panel-border-radius;
+  box-shadow: $reflect-panel-outer-shadow;
+  padding: $reflect-panel-padding;
 
   @include with-remove('panel');
 
   &.rc-panel-secondary {
-    background: $puppet-panel-bg-secondary;
+    background: $reflect-panel-bg-secondary;
   }
 }

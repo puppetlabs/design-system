@@ -12,14 +12,14 @@
 
   .rc-menu-item:first-of-type a {
     border-top: $border;
-    border-top-left-radius: $puppet-border-radius;
-    border-top-right-radius: $puppet-border-radius;
+    border-top-left-radius: $reflect-border-radius;
+    border-top-right-radius: $reflect-border-radius;
   }
 
   .rc-menu-item:last-of-type a {
     border-bottom: $border;
-    border-bottom-left-radius: $puppet-border-radius;
-    border-bottom-right-radius: $puppet-border-radius;
+    border-bottom-left-radius: $reflect-border-radius;
+    border-bottom-right-radius: $reflect-border-radius;
   }
 
   .rc-menu-item:hover a,
@@ -63,24 +63,24 @@
 
 
 @include menu-item-colors(
-  $puppet-menu-item-bg,
-  $puppet-menu-item-bg-hover,
-  $puppet-menu-item-color,
-  $puppet-menu-item-color-hover,
-  $puppet-menu-item-border,
-  $puppet-menu-item-border-focus,
-  $puppet-menu-item-border-active,
-  $puppet-menu-item-bg-selected,
-  $puppet-menu-item-color-selected,
-  $puppet-menu-item-bg-disabled,
-  $puppet-menu-item-color-disabled,
-  $puppet-menu-item-icon-color
+  $reflect-menu-item-bg,
+  $reflect-menu-item-bg-hover,
+  $reflect-menu-item-color,
+  $reflect-menu-item-color-hover,
+  $reflect-menu-item-border,
+  $reflect-menu-item-border-focus,
+  $reflect-menu-item-border-active,
+  $reflect-menu-item-bg-selected,
+  $reflect-menu-item-color-selected,
+  $reflect-menu-item-bg-disabled,
+  $reflect-menu-item-color-disabled,
+  $reflect-menu-item-icon-color
 );
 
 .rc-menu-item {
-  font-size: $puppet-menu-item-font-size;
-  font-weight: $puppet-menu-item-font-weight;
-  line-height: $puppet-menu-item-line-height;
+  font-size: $reflect-menu-item-font-size;
+  font-weight: $reflect-menu-item-font-weight;
+  line-height: $reflect-menu-item-line-height;
   transition: all 0.2s;
 }
 
@@ -88,8 +88,8 @@
   align-items: center;
   display: flex;
   flex: 1;
-  height: $puppet-menu-item-height;
-  padding: $puppet-menu-item-padding;
+  height: $reflect-menu-item-height;
+  padding: $reflect-menu-item-padding;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -99,9 +99,9 @@
 }
 
 .rc-menu-item-text {
-  font-size: $puppet-menu-item-font-size;
-  font-weight: $puppet-menu-item-font-weight;
-  line-height: $puppet-menu-item-line-height;
+  font-size: $reflect-menu-item-font-size;
+  font-weight: $reflect-menu-item-font-weight;
+  line-height: $reflect-menu-item-line-height;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -124,19 +124,19 @@
 }
 
 .rc-menu-item-with-icon a {
-  padding-left: $puppet-dropdown-padding-small * 4;
-  padding-right: $puppet-dropdown-padding-small * 2;
+  padding-left: $reflect-dropdown-padding-small * 4;
+  padding-right: $reflect-dropdown-padding-small * 2;
 }
 
 .rc-menu-item-with-icon .rc-menu-icon {
   .rc-icon {
-    left: $puppet-dropdown-padding-small;
+    left: $reflect-dropdown-padding-small;
   }
 }
 
 .rc-menu-item-selected .rc-icon-check {
   left: unset;
-  right: $puppet-dropdown-padding;
+  right: $reflect-dropdown-padding;
 }
 
 .rc-menu-item-disabled a {
@@ -144,10 +144,10 @@
 }
 
 .rc-menu-section {
-  border-bottom: $puppet-menu-section-border;
-  border-left: $puppet-menu-section-border;
-  border-right: $puppet-menu-section-border;
-  padding: $puppet-menu-section-padding;
+  border-bottom: $reflect-menu-section-border;
+  border-left: $reflect-menu-section-border;
+  border-right: $reflect-menu-section-border;
+  padding: $reflect-menu-section-padding;
 
   &.rc-menu-section-list {
     border: 0;
@@ -163,11 +163,11 @@
 
 .rc-menu-header {
   align-items: center;
-  background: $puppet-menu-header-bg;
-  border: $puppet-menu-header-border;
+  background: $reflect-menu-header-bg;
+  border: $reflect-menu-header-border;
   display: flex;
-  height: $puppet-menu-header-height;
-  padding: $puppet-menu-header-padding;
+  height: $reflect-menu-header-height;
+  padding: $reflect-menu-header-padding;
   text-transform: uppercase;
 }
 
@@ -185,7 +185,7 @@
 .rc-menu-header + div,
 .rc-menu-header + .rc-menu-list {
   .rc-menu-item:not(.rc-menu-item-with-icon) a { /* stylelint-disable-line selector-max-compound-selectors */
-    padding: 0 $puppet-menu-header-padding;
+    padding: 0 $reflect-menu-header-padding;
   }
 
   .rc-menu-item-with-icon a { /* stylelint-disable-line selector-max-compound-selectors */
@@ -199,10 +199,10 @@
 
 .rc-menu-title {
   align-items: center;
-  color: $puppet-menu-title-color;
+  color: $reflect-menu-title-color;
   display: flex;
-  font-size: $puppet-menu-title-font-size;
-  font-weight: $puppet-menu-title-font-weight;
+  font-size: $reflect-menu-title-font-size;
+  font-weight: $reflect-menu-title-font-weight;
   text-transform: uppercase;
   width: 90%;
 }
@@ -232,12 +232,12 @@
 
 .rc-menu-actions {
   align-items: center;
-  background: $puppet-menu-actions-bg;
-  border-bottom: $puppet-menu-section-border;
-  border-left: $puppet-menu-section-border;
-  border-right: $puppet-menu-section-border;
+  background: $reflect-menu-actions-bg;
+  border-bottom: $reflect-menu-section-border;
+  border-left: $reflect-menu-section-border;
+  border-right: $reflect-menu-section-border;
   display: flex;
-  padding: $puppet-menu-actions-padding;
+  padding: $reflect-menu-actions-padding;
 
   &.rc-menu-actions-centered .rc-menu-actions-buttons {
     justify-content: center;
@@ -245,10 +245,10 @@
 }
 
 .rc-menu-actions-message {
-  color: $puppet-menu-actions-color;
+  color: $reflect-menu-actions-color;
   display: flex;
   flex: 1 1 auto;
-  font-size: $puppet-menu-actions-msg-font-size;
+  font-size: $reflect-menu-actions-msg-font-size;
   justify-content: flex-start;
 }
 

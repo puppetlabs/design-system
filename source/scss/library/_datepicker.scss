@@ -3,39 +3,39 @@
 }
 
 .rc-datepicker-button {
-  border: 1px solid $puppet-datepicker-button-border-color !important;
+  border: 1px solid $reflect-datepicker-button-border-color !important;
 }
 
 .rc-datepicker-container {
   display: flex;
-  padding: $puppet-datepicker-padding 0;
+  padding: $reflect-datepicker-padding 0;
 }
 
 .rc-datepicker-container .rc-ranges {
   list-style: none;
   min-width: 150px;
-  padding: 0 $puppet-datepicker-padding 0 0;
+  padding: 0 $reflect-datepicker-padding 0 0;
 
   li {
-    border: $puppet-date-range-border;
-    border-radius: $puppet-datepicker-radius;
-    color: $puppet-date-range-color;
+    border: $reflect-date-range-border;
+    border-radius: $reflect-datepicker-radius;
+    color: $reflect-date-range-color;
     cursor: pointer;
-    font-size: $puppet-font-size-base;
-    margin-bottom: $puppet-tiny;
-    padding: $puppet-tiny $puppet-small;
+    font-size: $reflect-font-size-base;
+    margin-bottom: $reflect-tiny;
+    padding: $reflect-tiny $reflect-small;
   }
 
   li:hover,
   .selected {
-    background: $puppet-date-range-hover-bg;
-    border: $puppet-date-range-hover-border;
+    background: $reflect-date-range-hover-bg;
+    border: $reflect-date-range-hover-border;
     color: #fff;
   }
 
   .active {
-    background: $puppet-date-range-hover-bg;
-    border: $puppet-date-range-hover-border;
+    background: $reflect-date-range-hover-bg;
+    border: $reflect-date-range-hover-border;
     color: #fff;
   }
 }
@@ -46,7 +46,7 @@
 }
 /* stylelint-disable  */
 // $arrow-size: 6px !default;
-// $selection-radius: $puppet-datepicker-radius !default;
+// $selection-radius: $reflect-datepicker-radius !default;
 // $selection-margin: 0 !default;
 $ns: rc-datepicker !default;
 
@@ -58,16 +58,16 @@ $ns: rc-datepicker !default;
   &__Legend {
     background: red;
     color: #52575e;
-    font-size: $puppet-font-size-medium;
-    line-height: $puppet-medium;
+    font-size: $reflect-font-size-medium;
+    line-height: $reflect-medium;
     list-style-type: none;
-    margin: $puppet-large 0;
+    margin: $reflect-large 0;
     padding: 0;
   }
 
   &__LegendItem {
     display: inline-block;
-    margin: 0 $puppet-large;
+    margin: 0 $reflect-large;
   }
 
   &__LegendItemColor {
@@ -80,7 +80,7 @@ $ns: rc-datepicker !default;
     border: 1px solid rgba(#000, .25);
 
     &--selection {
-      background-color: $puppet-datepicker-selected-bg;
+      background-color: $reflect-datepicker-selected-bg;
     }
   }
 
@@ -110,42 +110,42 @@ $ns: rc-datepicker !default;
   }
 
   &__PaginationArrowIcon {
-    border-bottom: $puppet-arrow-size solid transparent;
-    border-top: $puppet-arrow-size solid transparent;
+    border-bottom: $reflect-arrow-size solid transparent;
+    border-top: $reflect-arrow-size solid transparent;
     height: 0;
     position: absolute;
-    top: $puppet-small;
+    top: $reflect-small;
     width: 0;
 
     &--is-disabled {
-      opacity: $puppet-disabled-opacity;
+      opacity: $reflect-disabled-opacity;
     }
 
     &--previous {
-      border-left: $puppet-arrow-size solid transparent;
-      border-right: $puppet-arrow-size solid $puppet-datepicker-icon;
+      border-left: $reflect-arrow-size solid transparent;
+      border-right: $reflect-arrow-size solid $reflect-datepicker-icon;
       right: 0;
 
       &:hover {
-        border-right-color: $puppet-datepicker-icon-hover;
+        border-right-color: $reflect-datepicker-icon-hover;
       }
     }
 
     &--next {
-      border-left: $puppet-arrow-size solid $puppet-datepicker-icon;
-      border-right: $puppet-arrow-size solid transparent;
+      border-left: $reflect-arrow-size solid $reflect-datepicker-icon;
+      border-right: $reflect-arrow-size solid transparent;
       left: 0;
 
       &:hover {
-        border-left-color: $puppet-datepicker-icon-hover;
+        border-left-color: $reflect-datepicker-icon-hover;
       }
     }
   }
 
   &__Month {
-    color: $puppet-datepicker-month-color;
+    color: $reflect-datepicker-month-color;
     display: inline-block;
-    padding: 0 $puppet-datepicker-padding;
+    padding: 0 $reflect-datepicker-padding;
     position: relative;
     user-select: none;
     width: 275px;
@@ -156,10 +156,10 @@ $ns: rc-datepicker !default;
   }
 
   &__MonthHeader {
-    border-bottom: $puppet-datepicker-month-border;
-    color: $puppet-datepicker-month-color;
-    font-size: $puppet-datepicker-month-font-size;
-    font-weight: $puppet-datepicker-month-font-weight;
+    border-bottom: $reflect-datepicker-month-border;
+    color: $reflect-datepicker-month-color;
+    font-size: $reflect-datepicker-month-font-size;
+    font-weight: $reflect-datepicker-month-font-weight;
     height: 35px;
     line-height: 35px;
     position: relative;
@@ -174,7 +174,7 @@ $ns: rc-datepicker !default;
 
   &__MonthHeaderSelect {
   // Not used?
-    background: $puppet-datepicker-month-bg;
+    background: $reflect-datepicker-month-bg;
     border: 0;
     cursor: pointer;
     display: inline-block;
@@ -189,7 +189,7 @@ $ns: rc-datepicker !default;
   }
 
   &__MonthDates {
-    border-bottom: $puppet-datepicker-month-border;
+    border-bottom: $reflect-datepicker-month-border;
     border-collapse: collapse;
     margin: 0;
     width: 100%;
@@ -197,24 +197,24 @@ $ns: rc-datepicker !default;
 
   &__WeekdayHeading,
   &__Date {
-    font-size: $puppet-font-size-small;
+    font-size: $reflect-font-size-small;
     line-height: 1;
-    padding: $puppet-small 0;
+    padding: $reflect-small 0;
     text-align: center;
     width: 14.285714285714286%;
   }
 
   &__WeekdayHeading {
-    border-bottom: $puppet-datepicker-weekday-border;
-    color: $puppet-datepicker-weekday-color;
-    font-weight: $puppet-datepicker-weekday-font-weight;
-    text-transform: $puppet-datepicker-weekday-text;
-    font-size: $puppet-datepicker-weekday-font-size;
-    letter-spacing: $puppet-datepicker-weekday-letter-spacing;
+    border-bottom: $reflect-datepicker-weekday-border;
+    color: $reflect-datepicker-weekday-color;
+    font-weight: $reflect-datepicker-weekday-font-weight;
+    text-transform: $reflect-datepicker-weekday-text;
+    font-size: $reflect-datepicker-weekday-font-size;
+    letter-spacing: $reflect-datepicker-weekday-letter-spacing;
 
     abbr[title] {
       border-bottom-width: 0;
-      color: $puppet-datepicker-weekday-color;
+      color: $reflect-datepicker-weekday-color;
       cursor: pointer;
       font-size: inherit;
       text-decoration: none;
@@ -222,36 +222,36 @@ $ns: rc-datepicker !default;
   }
 
   &__Date {
-    color: $puppet-datepicker-font-color;
-    border: $puppet-datepicker-border-width solid $puppet-datepicker-border-color;
-    border-right-width: $puppet-datepicker-border-width;
+    color: $reflect-datepicker-font-color;
+    border: $reflect-datepicker-border-width solid $reflect-datepicker-border-color;
+    border-right-width: $reflect-datepicker-border-width;
     cursor: pointer;
     overflow: hidden;
     position: relative;
 
     &:first-child {
-      border-left-width: $puppet-datepicker-border-width;
+      border-left-width: $reflect-datepicker-border-width;
     }
 
     &--weekend {
-      background-color: $puppet-datepicker-bg;
+      background-color: $reflect-datepicker-bg;
     }
 
     &--otherMonth {
-      opacity: $puppet-datepicker-othermonth-opacity;
+      opacity: $reflect-datepicker-othermonth-opacity;
     }
 
     &--is-disabled {
-      color: $puppet-datepicker-disabled-color;
+      color: $reflect-datepicker-disabled-color;
       cursor: default;
     }
 
     &--is-selected {
-      color: $puppet-datepicker-selected-color;
+      color: $reflect-datepicker-selected-color;
     }
 
     &--is-highlighted {
-      color: $puppet-datepicker-hover-color;
+      color: $reflect-datepicker-hover-color;
     }
   }
 
@@ -272,32 +272,32 @@ $ns: rc-datepicker !default;
   }
 
   &__CalendarSelection {
-    background-color: $puppet-datepicker-selected-bg;
-    border: $puppet-datepicker-selected-border;
-    bottom: $puppet-datepicker-selection-margin;
+    background-color: $reflect-datepicker-selected-bg;
+    border: $reflect-datepicker-selected-border;
+    bottom: $reflect-datepicker-selection-margin;
     left: 0;
     position: absolute;
     right: 0;
-    top: $puppet-datepicker-selection-margin;
+    top: $reflect-datepicker-selection-margin;
 
     &--inOtherMonth {
       opacity: .5;
     }
 
     &--start {
-      background-color: $puppet-datepicker-selected-edges-bg;
-      border-bottom-left-radius: $puppet-datepicker-selected-edges-radius;
+      background-color: $reflect-datepicker-selected-edges-bg;
+      border-bottom-left-radius: $reflect-datepicker-selected-edges-radius;
       border-right-width: 0;
-      border-top-left-radius: $puppet-datepicker-selected-edges-radius;
-      left: $puppet-datepicker-selection-margin;
+      border-top-left-radius: $reflect-datepicker-selected-edges-radius;
+      left: $reflect-datepicker-selection-margin;
     }
 
     &--end {
-      background-color: $puppet-datepicker-selected-edges-bg;
-      border-bottom-right-radius: $puppet-datepicker-selected-edges-radius;
+      background-color: $reflect-datepicker-selected-edges-bg;
+      border-bottom-right-radius: $reflect-datepicker-selected-edges-radius;
       border-left-width: 0;
-      border-top-right-radius: $puppet-datepicker-selected-edges-radius;
-      right: $puppet-datepicker-selection-margin;
+      border-top-right-radius: $reflect-datepicker-selected-edges-radius;
+      right: $reflect-datepicker-selection-margin;
     }
 
     &--segment {
@@ -306,13 +306,13 @@ $ns: rc-datepicker !default;
     }
 
     &--single {
-      border-radius: $puppet-datepicker-selected-edges-radius;
-      left: $puppet-datepicker-selection-margin;
-      right: $puppet-datepicker-selection-margin;
+      border-radius: $reflect-datepicker-selected-edges-radius;
+      left: $reflect-datepicker-selection-margin;
+      right: $reflect-datepicker-selection-margin;
     }
 
     &--is-pending {
-      background-color: $puppet-datepicker-newrange-bg;
+      background-color: $reflect-datepicker-newrange-bg;
       border-width: 0;
     }
   }
@@ -329,17 +329,17 @@ $ns: rc-datepicker !default;
     // }
 
     &--start {
-      border-bottom-left-radius: $puppet-datepicker-selected-edges-radius;
+      border-bottom-left-radius: $reflect-datepicker-selected-edges-radius;
       border-right-width: 0;
-      border-top-left-radius: $puppet-datepicker-selected-edges-radius;
-      left: $puppet-datepicker-selection-margin;
+      border-top-left-radius: $reflect-datepicker-selected-edges-radius;
+      left: $reflect-datepicker-selection-margin;
     }
 
     &--end {
-      border-bottom-right-radius: $puppet-datepicker-selected-edges-radius;
+      border-bottom-right-radius: $reflect-datepicker-selected-edges-radius;
       border-left-width: 0;
-      border-top-right-radius: $puppet-datepicker-selected-edges-radius;
-      right: $puppet-datepicker-selection-margin;
+      border-top-right-radius: $reflect-datepicker-selected-edges-radius;
+      right: $reflect-datepicker-selection-margin;
     }
 
     &--segment {
@@ -348,9 +348,9 @@ $ns: rc-datepicker !default;
     }
 
     &--single {
-      background-color: $puppet-datepicker-hover-bg;
-      border: $puppet-datepicker-hover-border;
-      border-radius: $puppet-datepicker-selected-edges-radius;
+      background-color: $reflect-datepicker-hover-bg;
+      border: $reflect-datepicker-hover-border;
+      border-radius: $reflect-datepicker-selected-edges-radius;
       // left: 0;
       // right: 0;
       // top: 0;

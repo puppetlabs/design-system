@@ -1,6 +1,6 @@
 .rc-content {
   ul {
-    margin: $puppet-list-margin;
+    margin: $reflect-list-margin;
   }
 
   ul:last-child {
@@ -13,11 +13,11 @@
   h4,
   h5,
   h6 {
-    margin: $puppet-heading-margin;
+    margin: $reflect-heading-margin;
   }
 
   p {
-    margin: $puppet-p-margin;
+    margin: $reflect-p-margin;
   }
 
   p:last-child {

@@ -3,43 +3,43 @@
   text-align: center;
 
   .rc-blank-slate-title {
-    font-size: $puppet-blank-slate-title-font-size;
-    margin-bottom: $puppet-blank-slate-margin-base;
+    font-size: $reflect-blank-slate-title-font-size;
+    margin-bottom: $reflect-blank-slate-margin-base;
   }
 
   .rc-blank-slate-lead {
-    color: $puppet-blank-slate-lead-color;
-    font-size: $puppet-blank-slate-lead-font-size;
-    margin-bottom: $puppet-blank-slate-margin-base;
+    color: $reflect-blank-slate-lead-color;
+    font-size: $reflect-blank-slate-lead-font-size;
+    margin-bottom: $reflect-blank-slate-margin-base;
   }
 
   .rc-blank-slate-content {
-    color: $puppet-blank-slate-content-color;
-    font-size: $puppet-blank-slate-content-font-size;
+    color: $reflect-blank-slate-content-color;
+    font-size: $reflect-blank-slate-content-font-size;
   }
 
   .rc-blank-slate-body {
-    margin-bottom: $puppet-blank-slate-margin-medium;
+    margin-bottom: $reflect-blank-slate-margin-medium;
   }
 
   .rc-blank-slate-note {
-    font-size: $puppet-blank-slate-note-font-size;
+    font-size: $reflect-blank-slate-note-font-size;
   }
 
   .rc-blank-slate-note a {
-    color: $puppet-blank-slate-note-color;
+    color: $reflect-blank-slate-note-color;
     text-decoration: underline;
   }
 
   .rc-blank-slate-note a:visited,
   .rc-blank-slate-note a:hover,
   .rc-blank-slate-note a:active {
-    color: $puppet-blank-slate-note-color;
+    color: $reflect-blank-slate-note-color;
     text-decoration: underline;
   }
 
   .bold {
-    font-weight: $puppet-font-weight-heavy;
+    font-weight: $reflect-font-weight-heavy;
   }
 
   .accent {
@@ -50,42 +50,42 @@
 .rc-blank-slate-icon {
   align-items: center;
   align-self: center;
-  background: $puppet-blank-slate-bg;
-  border-radius: $puppet-blank-slate-radius;
-  box-shadow: $puppet-blank-slate-shadow;
+  background: $reflect-blank-slate-bg;
+  border-radius: $reflect-blank-slate-radius;
+  box-shadow: $reflect-blank-slate-shadow;
   display: inline-flex;
-  height: $puppet-blank-slate-size;
+  height: $reflect-blank-slate-size;
   justify-content: center;
   margin-bottom: 30px;
-  width: $puppet-blank-slate-size;
+  width: $reflect-blank-slate-size;
 
   .rc-icon {
-    fill: $puppet-blank-slate-icon-color;
+    fill: $reflect-blank-slate-icon-color;
   }
 }
 
 .rc-blank-slate-image img {
-  height: $puppet-blank-slate-image-size;
+  height: $reflect-blank-slate-image-size;
   margin-bottom: 30px;
   width: auto;
 }
 
 .rc-blank-slate-message {
-  color: $puppet-blank-slate-font-color;
+  color: $reflect-blank-slate-font-color;
   display: block;
-  font-size: $puppet-blank-slate-font-size;
-  font-weight: $puppet-blank-slate-font-weight;
+  font-size: $reflect-blank-slate-font-size;
+  font-weight: $reflect-blank-slate-font-weight;
   margin: auto;
-  max-width: $puppet-blank-slate-max-width;
+  max-width: $reflect-blank-slate-max-width;
 
   .rc-button-simple .rc-button-content {
-    font-size: $puppet-blank-slate-font-size;
-    font-weight: $puppet-blank-slate-font-weight;
+    font-size: $reflect-blank-slate-font-size;
+    font-weight: $reflect-blank-slate-font-weight;
     text-transform: none;
   }
 
   .rc-button.rc-button-simple:hover,
   .rc-button-simple .rc-button-content:hover {
-    color: $puppet-action-color !important;
+    color: $reflect-action-color !important;
   }
 }

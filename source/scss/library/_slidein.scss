@@ -1,21 +1,21 @@
 .rc-slidein {
-  background-color: $puppet-slidein-bg;
-  border: $puppet-slidein-border;
-  color: $puppet-slidein-color;
+  background-color: $reflect-slidein-bg;
+  border: $reflect-slidein-border;
+  color: $reflect-slidein-color;
   position: fixed;
   z-index: 24;
 }
 
 .rc-slidein-bottom {
   bottom: 0;
-  height: $puppet-slidein-vertical-height;
+  height: $reflect-slidein-vertical-height;
   left: 0;
   right: 0;
   width: 100%;
 }
 
 .rc-slidein-top {
-  height: $puppet-slidein-vertical-height;
+  height: $reflect-slidein-vertical-height;
   left: 0;
   right: 0;
   top: 0;
@@ -27,7 +27,7 @@
   height: 100%;
   left: 0;
   top: 0;
-  width: $puppet-slidein-horizontal-width;
+  width: $reflect-slidein-horizontal-width;
 }
 
 .rc-slidein-right {
@@ -35,14 +35,14 @@
   height: 100%;
   right: 0;
   top: 0;
-  width: $puppet-slidein-horizontal-width;
+  width: $reflect-slidein-horizontal-width;
 }
 
 .rc-slidein-actions {
-  border-top: $puppet-slidein-actions-border;
+  border-top: $reflect-slidein-actions-border;
   bottom: 0;
   left: 0;
-  padding: $puppet-slidein-actions-padding;
+  padding: $reflect-slidein-actions-padding;
   position: absolute;
   right: 0;
   text-align: right;

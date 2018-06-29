@@ -1,24 +1,24 @@
 .rc-popover {
   animation: 0.1s ease-in-out rc-fade-in;
-  background: $puppet-popover-bg;
-  border: $puppet-popover-border;
-  border-radius: $puppet-popover-border-radius;
-  box-shadow: $puppet-popover-shadow;
+  background: $reflect-popover-bg;
+  border: $reflect-popover-border;
+  border-radius: $reflect-popover-border-radius;
+  box-shadow: $reflect-popover-shadow;
   overflow: hidden;
-  padding: $puppet-popover-padding;
+  padding: $reflect-popover-padding;
   position: absolute;
   transform-origin: top left;
-  z-index: $puppet-popover-elevation;
+  z-index: $reflect-popover-elevation;
 
   .rc-popover-header {
-    margin-bottom: $puppet-popover-padding;
+    margin-bottom: $reflect-popover-padding;
     position: relative;
   }
 
   .rc-popover-hint {
-    color: $puppet-dropdown-hint-color;
+    color: $reflect-dropdown-hint-color;
     display: block;
-    font-size: $puppet-dropdown-hint-font-size;
+    font-size: $reflect-dropdown-hint-font-size;
     margin-right: 33px;
     padding: 0;
   }
@@ -30,15 +30,15 @@
   }
 
   &.rc-popover-small {
-    width: $puppet-popover-small-width;
+    width: $reflect-popover-small-width;
   }
 
   &.rc-popover-medium {
-    width: $puppet-popover-medium-width;
+    width: $reflect-popover-medium-width;
   }
 
   &.rc-popover-large {
-    width: $puppet-popover-large-width;
+    width: $reflect-popover-large-width;
   }
 
   &.rc-popover-visible-overflow {
@@ -83,8 +83,8 @@
 }
 
 .rc-popover-menu .rc-menu-header {
-  border-top-left-radius: $puppet-popover-border-radius;
-  border-top-right-radius: $puppet-popover-border-radius;
+  border-top-left-radius: $reflect-popover-border-radius;
+  border-top-right-radius: $reflect-popover-border-radius;
 }
 
 .rc-popover-menu .rc-menu-close {
@@ -99,14 +99,14 @@
   width: 32px;
 
   .rc-icon {
-    fill: $puppet-icon-fill;
+    fill: $reflect-icon-fill;
     @include icon-opacity-hover;
   }
 }
 
 .rc-popover {
   .rc-menu .rc-menu-section:last-child {
-    border-bottom-left-radius: $puppet-popover-border-radius;
-    border-bottom-right-radius: $puppet-popover-border-radius;
+    border-bottom-left-radius: $reflect-popover-border-radius;
+    border-bottom-right-radius: $reflect-popover-border-radius;
   }
 }

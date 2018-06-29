@@ -66,25 +66,25 @@
 .rc-button {
   @extend %button-reset;
   align-items: center;
-  border-radius: $puppet-button-border-radius;
+  border-radius: $reflect-button-border-radius;
   cursor: pointer;
   display: inline-flex;
-  height: $puppet-button-height;
+  height: $reflect-button-height;
   justify-content: center;
   outline: none;
-  padding: 0 $puppet-button-padding;
+  padding: 0 $reflect-button-padding;
   position: relative;
   white-space: nowrap;
 
   @include button-colors(
-    $puppet-button-bg,
-    $puppet-button-bg-hover,
-    $puppet-button-color,
-    $puppet-button-color-hover,
-    $puppet-button-icon-color,
-    $puppet-button-icon-color-hover,
-    $puppet-button-border-color,
-    $puppet-button-border-color-hover
+    $reflect-button-bg,
+    $reflect-button-bg-hover,
+    $reflect-button-color,
+    $reflect-button-color-hover,
+    $reflect-button-icon-color,
+    $reflect-button-icon-color-hover,
+    $reflect-button-border-color,
+    $reflect-button-border-color-hover
   );
 
   .rc-button-dropdown-icon {
@@ -92,10 +92,10 @@
   }
 
   .rc-button-content {
-    font-family: $puppet-button-font-family;
-    font-size: $puppet-button-font-size;
-    font-weight: $puppet-button-font-weight;
-    text-transform: $puppet-button-text-case;
+    font-family: $reflect-button-font-family;
+    font-size: $reflect-button-font-size;
+    font-weight: $reflect-button-font-weight;
+    text-transform: $reflect-button-text-case;
   }
 
   > .rc-icon + .rc-button-content {
@@ -110,51 +110,51 @@
 }
 
 .rc-button-tiny {
-  height: $puppet-button-tiny-height;
-  padding: 0 $puppet-button-tiny-padding;
+  height: $reflect-button-tiny-height;
+  padding: 0 $reflect-button-tiny-padding;
 
   &.rc-button-round {
     padding: 0 3px;
   }
 
   .rc-button-content {
-    font-size: $puppet-button-tiny-font-size;
+    font-size: $reflect-button-tiny-font-size;
   }
 }
 
 .rc-button-small {
-  height: $puppet-button-small-height;
-  padding: 0 $puppet-button-small-padding;
+  height: $reflect-button-small-height;
+  padding: 0 $reflect-button-small-padding;
 
   .rc-button-content {
-    font-size: $puppet-button-font-size;
+    font-size: $reflect-button-font-size;
   }
 }
 
 .rc-button-large {
-  height: $puppet-button-large-height;
-  // line-height: $puppet-button-large-line-height;
-  padding: 0 $puppet-button-large-padding;
+  height: $reflect-button-large-height;
+  // line-height: $reflect-button-large-line-height;
+  padding: 0 $reflect-button-large-padding;
 
   .rc-button-content {
-    font-size: $puppet-button-large-font-size;
+    font-size: $reflect-button-large-font-size;
   }
 }
 
 .rc-button-round {
-  border-radius: $puppet-circle-radius;
+  border-radius: $reflect-circle-radius;
 }
 
 .rc-button-secondary {
   @include button-colors(
-    $puppet-button-secondary-bg,
-    $puppet-button-secondary-bg-hover,
-    $puppet-button-secondary-color,
-    $puppet-button-secondary-color-hover,
-    $puppet-button-secondary-icon-color,
-    $puppet-button-secondary-icon-color-hover,
-    $puppet-button-secondary-border-color,
-    $puppet-button-secondary-border-color-hover
+    $reflect-button-secondary-bg,
+    $reflect-button-secondary-bg-hover,
+    $reflect-button-secondary-color,
+    $reflect-button-secondary-color-hover,
+    $reflect-button-secondary-icon-color,
+    $reflect-button-secondary-icon-color-hover,
+    $reflect-button-secondary-border-color,
+    $reflect-button-secondary-border-color-hover
   );
 }
 
@@ -163,27 +163,27 @@
   padding: 0;
 
   @include button-colors(
-    $puppet-button-simple-bg,
-    $puppet-button-simple-bg-hover,
-    $puppet-button-simple-color,
-    $puppet-button-simple-color-hover,
-    $puppet-button-simple-icon-color,
-    $puppet-button-simple-icon-color-hover,
-    $puppet-button-simple-border-color,
-    $puppet-button-simple-border-color-hover
+    $reflect-button-simple-bg,
+    $reflect-button-simple-bg-hover,
+    $reflect-button-simple-color,
+    $reflect-button-simple-color-hover,
+    $reflect-button-simple-icon-color,
+    $reflect-button-simple-icon-color-hover,
+    $reflect-button-simple-border-color,
+    $reflect-button-simple-border-color-hover
   );
 }
 
 .rc-button-simple.rc-button-secondary {
   @include button-colors(
-    $puppet-button-simple-secondary-bg,
-    $puppet-button-simple-secondary-bg-hover,
-    $puppet-button-simple-secondary-color,
-    $puppet-button-simple-secondary-color-hover,
-    $puppet-button-simple-secondary-icon-color,
-    $puppet-button-simple-secondary-icon-color-hover,
-    $puppet-button-simple-secondary-border-color,
-    $puppet-button-simple-secondary-border-color-hover
+    $reflect-button-simple-secondary-bg,
+    $reflect-button-simple-secondary-bg-hover,
+    $reflect-button-simple-secondary-color,
+    $reflect-button-simple-secondary-color-hover,
+    $reflect-button-simple-secondary-icon-color,
+    $reflect-button-simple-secondary-icon-color-hover,
+    $reflect-button-simple-secondary-border-color,
+    $reflect-button-simple-secondary-border-color-hover
   );
 }
 
@@ -193,51 +193,51 @@
 
 .rc-button-transparent {
   @include button-colors(
-    $puppet-button-clear-bg,
-    $puppet-button-clear-bg-hover,
-    $puppet-button-clear-color,
-    $puppet-button-clear-color-hover,
-    $puppet-button-clear-icon-color,
-    $puppet-button-clear-icon-color-hover,
-    $puppet-button-clear-border-color,
-    $puppet-button-clear-border-color-hover
+    $reflect-button-clear-bg,
+    $reflect-button-clear-bg-hover,
+    $reflect-button-clear-color,
+    $reflect-button-clear-color-hover,
+    $reflect-button-clear-icon-color,
+    $reflect-button-clear-icon-color-hover,
+    $reflect-button-clear-border-color,
+    $reflect-button-clear-border-color-hover
   );
 
   &.rc-button-error {
-    background: $puppet-button-clear-bg;
-    color: $puppet-button-error-bg !important;
+    background: $reflect-button-clear-bg;
+    color: $reflect-button-error-bg !important;
   }
 
   &.rc-button-error:hover {
-    background: $puppet-button-clear-bg;
-    color: $puppet-button-error-bg !important;
+    background: $reflect-button-clear-bg;
+    color: $reflect-button-error-bg !important;
   }
 
   &[disabled] {
-    background: $puppet-button-clear-bg;
+    background: $reflect-button-clear-bg;
   }
 
   &[disabled]:hover {
-    background: $puppet-button-clear-bg;
+    background: $reflect-button-clear-bg;
   }
 }
 
 .rc-button-error {
   @include button-colors(
-    $puppet-button-error-bg,
-    $puppet-button-error-bg-hover,
-    $puppet-button-error-color,
-    $puppet-button-error-color-hover,
-    $puppet-button-error-icon-color,
-    $puppet-button-error-icon-color-hover,
-    $puppet-button-error-border-color,
-    $puppet-button-error-border-color-hover
+    $reflect-button-error-bg,
+    $reflect-button-error-bg-hover,
+    $reflect-button-error-color,
+    $reflect-button-error-color-hover,
+    $reflect-button-error-icon-color,
+    $reflect-button-error-icon-color-hover,
+    $reflect-button-error-border-color,
+    $reflect-button-error-border-color-hover
   );
 }
 
 .rc-button[disabled] {
   cursor: default;
-  opacity: $puppet-button-disabled-opacity;
+  opacity: $reflect-button-disabled-opacity;
 }
 
 .rc-button-block {
@@ -247,19 +247,19 @@
 
 .rc-button-square {
   padding: 0;
-  width: $puppet-button-height;
+  width: $reflect-button-height;
 }
 
 .rc-button-large.rc-button-square {
-  width: $puppet-button-large-height;
+  width: $reflect-button-large-height;
 }
 
 .rc-button-small.rc-button-square {
-  width: $puppet-button-small-height;
+  width: $reflect-button-small-height;
 }
 
 .rc-button-tiny.rc-button-square {
-  width: $puppet-button-tiny-height;
+  width: $reflect-button-tiny-height;
 }
 
 .rc-button-processing {
@@ -281,24 +281,24 @@
   position: relative;
 
   &::after {
-    border: ($puppet-button-badge-size / 3) solid #fff;
-    border-radius: $puppet-circle-radius;
+    border: ($reflect-button-badge-size / 3) solid #fff;
+    border-radius: $reflect-circle-radius;
     box-sizing: content-box;
     content: ' ';
-    height: $puppet-button-badge-size;
+    height: $reflect-button-badge-size;
     position: absolute;
-    right: -($puppet-button-badge-size / 2);
-    top: -($puppet-button-badge-size / 2);
-    width: $puppet-button-badge-size;
+    right: -($reflect-button-badge-size / 2);
+    top: -($reflect-button-badge-size / 2);
+    width: $reflect-button-badge-size;
   }
 }
 
 .rc-floating-action-button {
-  border-radius: $puppet-floating-action-button-height;
-  height: $puppet-floating-action-button-height;
+  border-radius: $reflect-floating-action-button-height;
+  height: $reflect-floating-action-button-height;
   justify-content: center;
   padding: 0;
-  width: $puppet-floating-action-button-height;
+  width: $reflect-floating-action-button-height;
 }
 
 .rc-button-group {
@@ -318,15 +318,15 @@
   }
 
   :first-child {
-    border-bottom-left-radius: $puppet-border-radius !important;
+    border-bottom-left-radius: $reflect-border-radius !important;
     border-right: 0 !important;
-    border-top-left-radius: $puppet-border-radius !important;
+    border-top-left-radius: $reflect-border-radius !important;
   }
 
   :last-child {
-    border-bottom-right-radius: $puppet-border-radius !important;
+    border-bottom-right-radius: $reflect-border-radius !important;
     border-left: 0 !important;
-    border-top-right-radius: $puppet-border-radius !important;
+    border-top-right-radius: $reflect-border-radius !important;
   }
 }
 
@@ -343,10 +343,10 @@
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
   padding: 0;
-  width: $puppet-button-height;
+  width: $reflect-button-height;
 
   &.rc-button-small {
-    width: $puppet-button-small-height;
+    width: $reflect-button-small-height;
   }
 
   .rc-button-menu-inner {
