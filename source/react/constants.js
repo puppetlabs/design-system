@@ -20,3 +20,10 @@ export const filterOperators = [
   { symbol: 'null', label: 'Is null', noValue: true, sentence: 'is null' },
   { symbol: 'notNull', label: 'Is not null', noValue: true, sentence: 'is not null' },
 ];
+
+export const iconSizes = {
+  tiny: '8px',
+  small: '12px',
+  base: '16px',
+  large: '24px',
+};
