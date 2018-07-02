@@ -5,12 +5,12 @@ import React from 'react';
 
 import portal from '../source/react/library/portal';
 import Card from '../source/react/library/card/Card';
-import { APP_BASE } from '../source/react/constants';
 
 describe('Card wrapped with portal', () => {
   jsdom({ skipWindowCheck: true });
 
   const renderer = portal(Card);
+  const APP_BASE = document.body;
 
   const clearDOM = () => {
     while (APP_BASE.hasChildNodes()) {

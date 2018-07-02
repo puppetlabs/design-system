@@ -2,16 +2,16 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-const propTypes = {
-  isOpened: PropTypes.bool,
-};
-
-const defaultProps = {
-  isOpened: true,
-};
-
 // This HOC wraps passed content in a native react portal.
 const portal = (Base) => {
+  const propTypes = {
+    isOpened: PropTypes.bool,
+  };
+
+  const defaultProps = {
+    isOpened: true,
+  };
+
   class Portal extends React.Component {
     constructor(props) {
       super(props);

@@ -46,7 +46,7 @@
     "css-loader": "0.28.11",
     "debounce": "1.1.0",
     "enzyme": "3.0.0",
-    "enzyme-adapter-react-16": "^1.1.1",
+    "enzyme-adapter-react-16": "1.1.1",
     "es6-plato": "^1.0.18",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.1.0",
@@ -59,6 +59,7 @@
     "mocha": "3.5.3",
     "mocha-jsdom": "2.0.0",
     "moment-timezone": "0.5.13",
+    "moment-range": "3.0.0",
     "node-sass": "4.9.0",
     "nodemon": "^1.10.2",
     "nyc": "10.3.2",
@@ -85,7 +86,7 @@
   "dependencies": {
     "deep-equal": "^1.0.1",
     "moment-timezone": "0.5.13",
-    "react-daterange-picker": "^1.2.0",
+    "react-daterange-picker": "2.0.1",
     "react-onclickoutside": "^6.7.0",
     "react-sortable-hoc": "^0.6.8",
     "react-transition-group": "^2.2.1"
