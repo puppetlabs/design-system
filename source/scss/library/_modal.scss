@@ -26,14 +26,27 @@
 
 .rc-modal {
   background: $puppet-modal-bg;
+  border: $puppet-modal-border;
   border-radius: $puppet-modal-border-radius;
-  box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 8px 8px 12px 0 rgba(66, 74, 82, 0.12);
   color: $puppet-modal-color;
   margin: 0 auto;
   overflow: hidden;
   position: relative;
   top: 64px;
   width: $puppet-modal-width;
+}
+
+.rc-modal-close-button {
+  cursor: pointer;
+  display: inline-block;
+  position: absolute;
+  right: $puppet-modal-close-right;
+  top: $puppet-modal-close-top;
+
+  .rc-icon {
+    display: block;
+  }
 }
 
 .rc-modal-content {

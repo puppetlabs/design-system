@@ -432,6 +432,7 @@ $puppet-menu-actions-color                  : $puppet-font-color-subtle !default
 // ----------------------------------------------------------------------------
 $puppet-modal-bg                            : $puppet-bg-primary !default;
 $puppet-modal-color                         : $puppet-font-color-base !default;
+$puppet-modal-border                        : 1px solid $puppet-gray-light !default;
 $puppet-modal-border-radius                 : $puppet-small !default;
 $puppet-modal-overlay-bg                    : rgba(255, 255, 255, 0.8) !default;
 $puppet-modal-width                         : 1200px !default;
@@ -447,8 +448,10 @@ $puppet-modal-actions-border                : $puppet-border !default;
 $puppet-modal-actions-padding               : 20px 30px !default;
 $puppet-modal-actions-cta-padding           : $puppet-small 0 $puppet-small 0 !default;
 $puppet-modal-elevation                     : 24 !default;
-$puppet-modal-padding                       : $puppet-huge !default;
+$puppet-modal-padding                       : $puppet-medium $puppet-large !default;
 $puppet-modal-shadow                        : $puppet-outer-shadow-giant !default;
+$puppet-modal-close-top                     : $puppet-medium !default;
+$puppet-modal-close-right                   : $puppet-large !default;
 
 // Panel
 // ----------------------------------------------------------------------------

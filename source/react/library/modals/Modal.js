@@ -246,9 +246,7 @@ class Modal extends React.Component {
 
     if (this.props.onClose) {
       jsx = (
-        <a href="/#/close" onClick={ this.onClose } className="rc-modal-close">
-          <Icon type="delete" />
-        </a>
+        <a href="/#/close" onClick={ this.onClose } className="rc-modal-close" />
       );
     }
 
@@ -288,8 +286,17 @@ class Modal extends React.Component {
     return jsx;
   }
 
+  renderCloseButton() {
+    return (
+      <a className="rc-modal-close-button" role="button" tabIndex={ 0 } onClick={ this.onClose }>
+        <Icon size="tiny" type="close" />
+      </a>
+    );
+  }
+
   render() {
     const closeLink = this.renderCloseLink();
+    const closeButton = this.renderCloseButton();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
     const { children, size, sidebarPosition } = this.props;
@@ -309,6 +316,7 @@ class Modal extends React.Component {
             { children }
           </div>
           { actions }
+          { closeButton }
         </div>
       </div>
     );
