@@ -5,7 +5,7 @@ import icons from './icons';
 
 const propTypes = {
   viewBox: PropTypes.string,
-  size: PropTypes.string,
+  size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
   height: PropTypes.string,
   width: PropTypes.string,
   type: PropTypes.string,
