@@ -276,11 +276,17 @@ class Modal extends React.Component {
   }
 
   renderCloseButton() {
-    return (
-      <a className="rc-modal-close-button" role="button" tabIndex={ 0 } onClick={ this.onClose }>
-        <Icon size="tiny" type="close" />
-      </a>
-    );
+    let jsx;
+
+    if (this.props.onClose) {
+      jsx = (
+        <a className="rc-modal-close-button" role="button" tabIndex={ 0 } onClick={ this.onClose }>
+          <Icon size="tiny" type="close" />
+        </a>
+      );
+    }
+
+    return jsx;
   }
 
   render() {
