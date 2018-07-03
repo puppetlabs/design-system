@@ -6,11 +6,11 @@ import Icon from '../icon/Icon';
 const propTypes = {
   title: PropTypes.any,
   style: PropTypes.string,
-  /** The focussed sidebar section */
+  /** The section in active state */
   selected: PropTypes.string,
-  /** Is selected? */
+  /** isSelected? -- easy prop for setting default */
   active: PropTypes.bool,
-  /** Class name to apply to section element */
+  /** Class name(s) to apply to section element */
   className: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
   onSectionClick: PropTypes.func,
@@ -54,7 +54,7 @@ class SidebarSection extends React.Component {
     let icon;
     if (this.props.icon) {
       icon = (
-        <span className="rc-accordion-header-icon">
+        <span className="rc-sidebar-section-icon">
           <Icon width="16px" height="16px" type={ this.props.icon } />
         </span>
       );

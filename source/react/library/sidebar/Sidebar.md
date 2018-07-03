@@ -1,8 +1,9 @@
 Sidebar with clickable sections:
 ```
 <Sidebar>
-  <SidebarSection icon="home" title="Home" active />
+  <SidebarSection icon="connections" title="Home" active />
   <SidebarSection icon="connections" title="Connections" />
-  <SidebarSection icon="dataModel" title="Data Model" />
+  <SidebarSection icon="connections" title="Reports" />
+  <SidebarSection icon="connections" title="Data Model" />
 </Sidebar>
 ```

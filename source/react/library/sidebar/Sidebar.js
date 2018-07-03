@@ -10,7 +10,7 @@ const propTypes = {
 
 const defaultProps = {
   children: null,
-  width: '',
+  width: '240px',
 };
 
 /**
@@ -46,10 +46,16 @@ class Sidebar extends React.Component {
   }
 
   render() {
+    const width = this.props.width;
     const sections = this.getSections();
+    const styles = {};
+
+    if (width) {
+      styles.width = width;
+    }
 
     const props = {
-      width: this.props.width,
+      style: styles,
     };
 
     return (

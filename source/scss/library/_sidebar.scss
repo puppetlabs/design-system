@@ -3,22 +3,43 @@
   border: $puppet-card-border;
   border-radius: $puppet-card-border-radius;
   box-shadow: $puppet-card-shadow;
-  color: $puppet-card-color;
   display: flex;
   flex-direction: column;
   position: relative;
+  font-weight: normal;
+  color: #293B4D;
+  font-family: "Open Sans", Arial, sans-serif;
+  padding-left: 32px;
+  padding-right: 16px;
+  padding-top: 32px;
 }
 
 .rc-sidebar-section-selected {
-  color: red;
+  .rc-icon {
+    background-color: #007BC7;
+  }
 }
 
 .rc-sidebar-section-selectable {
   cursor: pointer;
+}
 
-  &:hover {
-    border: $puppet-card-border-hover;
-    box-shadow: $puppet-card-shadow-hover;
+.rc-sidebar-section-selectable:hover {
+  color: #007BC7;
+}
+
+.rc-sidebar-section .rc-icon {
+  margin-right: 24px;
+}
+
+.rc-sidebar-section {
+  font-size: 16px;
+  padding-top: 12px;
+  padding-bottom: 24px;
+
+
+  &:last-of-type {
+    border-bottom: 0;
   }
 }
 //
@@ -88,14 +109,7 @@
 //   }
 // }
 //
-.rc-sidebar-section {
-  padding: $puppet-card-padding;
-  width: 100%;
 
-  &:last-of-type {
-    border-bottom: 0;
-  }
-}
 //
 // .rc-card-actions {
 //   align-self: flex-start;
