@@ -1,42 +1,123 @@
 .rc-sidebar {
-  background: $puppet-card-bg;
-  border: $puppet-card-border;
-  border-radius: $puppet-card-border-radius;
-  box-shadow: $puppet-card-shadow;
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  font-weight: normal;
-  color: #293B4D;
-  font-family: "Open Sans", Arial, sans-serif;
+  background: #F7F9FA;
+  font-weight: 400;
   padding-left: 32px;
-  padding-right: 16px;
-  padding-top: 32px;
+  padding-right: 32px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.rc-sidebar-section-header {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.rc-sidebar-section-link {
+  outline: none;
+  display: block;
+  height: 100%;
+}
+
+.rc-sidebar-section-title {
+  color: #2C3033;
+  font-size: 16px;
+	line-height: 24px;
+}
+
+ul.rc-sidebar-subsections {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.rc-sidebar-subsection {
+  // Negative margin to extend border top
+  // With padding compensation for content
+  margin-left: -32px;
+  margin-right: -32px;
+  padding-left: 32px;
+  padding-right: 32px;
+  border-top: 1px solid #CED7E0;
+  padding-bottom: 16px;
+}
+
+.rc-sidebar-subsection:last-of-type {
+  border-bottom: 1px solid #CED7E0;
+}
+
+a.rc-sidebar-subsection-link {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  outline: none;
+  padding-bottom: 6px;
+  padding-top: 6px;
+  color: #5C6770;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+}
+
+a.rc-sidebar-subsection-link:hover,
+a.rc-sidebar-subsection-link:focus {
+  color: #000E1C;
+}
+
+.rc-sidebar-subsection-option-selected {
+  a.rc-sidebar-subsection-link {
+    // Negative margin to extend border top
+    // With padding compensation for content
+    margin-left: -8px;
+    margin-right: -8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    background-color: rgba(210, 214, 217, 0.5);
+    border-radius: 4px;
+  }
+}
+
+.rc-sidebar-subsection-header {
+  padding-top: 16px;
+  padding-bottom: 8px;
+}
+
+.rc-sidebar-subsection-title {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 600;
+  color: #000E1C;;
+  line-height: 17px;
+  font-size: 12px;
 }
 
 .rc-sidebar-section-selected {
   .rc-icon {
-    background-color: #007BC7;
+    background-color: #0D6AD7;
+  }
+  .rc-sidebar-section-title {
+    color: #0D6AD7;
   }
 }
 
-.rc-sidebar-section-selectable {
+.rc-sidebar-section-header {
   cursor: pointer;
 }
 
-.rc-sidebar-section-selectable:hover {
-  color: #007BC7;
+.rc-sidebar-section-link:hover,
+.rc-sidebar-section-link:focus {
+  .rc-sidebar-section-title {
+    color: #4a92e8;
+  }
+  // do something to the icon too
 }
 
 .rc-sidebar-section .rc-icon {
+  display: flex;
   margin-right: 24px;
 }
 
 .rc-sidebar-section {
   font-size: 16px;
-  padding-top: 12px;
-  padding-bottom: 24px;
-
 
   &:last-of-type {
     border-bottom: 0;

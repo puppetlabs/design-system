@@ -1,9 +1,9 @@
-import ActionsMenu from './ActionsMenu';
-import SidebarItem from './SidebarItem';
-import Section from './Section';
+import Sidebar from './Sidebar';
+import SidebarSection from './SidebarSection';
+import SidebarSubsection from './SidebarSubsection';
 
 export {
-  ActionsMenu,
-  SidebarItem,
-  Section,
+  Sidebar,
+  SidebarSection,
+  SidebarSubsection,
 };

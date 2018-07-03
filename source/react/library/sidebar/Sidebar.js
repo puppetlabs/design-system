@@ -9,7 +9,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  children: null,
+  children: [],
   width: '240px',
 };
 
@@ -27,9 +27,7 @@ class Sidebar extends React.Component {
     this.onSectionClick = this.onSectionClick.bind(this);
   }
 
-  onSectionClick(e, title) {
-    e.preventDefault();
-
+  onSectionClick(title) {
     this.setState({ selected: title });
   }
 
