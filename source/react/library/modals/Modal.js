@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classname from 'classnames';
 import debounce from 'debounce';
-import { mouseTrap } from 'react-mousetrap';
+import onClickOutside from 'react-onclickoutside';
 import portal from '../portal';
 import Icon from '../icon/Icon';
 import ButtonGroup from '../buttons/ButtonGroup';
@@ -45,6 +45,7 @@ const defaultProps = {
   actionsCTA: '',
   sidebarPosition: 'right',
   modalClassName: '',
+  overlay: false,
   overlayClassName: '',
   children: null,
 };
@@ -200,7 +201,7 @@ class Modal extends React.Component {
 
         this.content.style.height = `${newHeight}px`;
       }
-    } else if (propMargin || modalHeight > windowHeight) {
+    } else if (propMargin && (modalHeight > (windowHeight - propMargin))) {
       const heightDecrease = (modalHeight - windowHeight) + windowPadding;
       this.content.style.height = `${contentHeight - heightDecrease}px`;
     }
@@ -239,18 +240,6 @@ class Modal extends React.Component {
       this.sidebar.style.height = '';
       this.sidebar.style.overflowY = '';
     }
-  }
-
-  renderCloseLink() {
-    let jsx;
-
-    if (this.props.onClose) {
-      jsx = (
-        <a href="/#/close" onClick={ this.onClose } className="rc-modal-close" />
-      );
-    }
-
-    return jsx;
   }
 
   renderSidebar() {
@@ -295,7 +284,6 @@ class Modal extends React.Component {
   }
 
   render() {
-    const closeLink = this.renderCloseLink();
     const closeButton = this.renderCloseButton();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
@@ -308,8 +296,7 @@ class Modal extends React.Component {
     const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
 
     return (
-      <div className={ overlayClassName } >
-        { closeLink }
+      <div role="presentation" className={ overlayClassName } onClick={ this.onClose } >
         <div ref={ (c) => { this.modal = c; } } className={ modalClassName }>
           { sidebar }
           <div ref={ (c) => { this.content = c; } } className="rc-modal-content">
@@ -327,4 +314,4 @@ Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 
 export { Modal as BareModal };
-export default mouseTrap(portal(Modal));
+export default onClickOutside(portal(Modal));
