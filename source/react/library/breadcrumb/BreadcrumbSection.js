@@ -24,7 +24,9 @@ class BreadcrumbSection extends React.Component {
   onClick(e) {
     const { onClick, link, route } = this.props;
 
-    e.preventDefault();
+    if (e) {
+      e.preventDefault();
+    }
 
     if (onClick && link) {
       onClick(route);
