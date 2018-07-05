@@ -13,6 +13,8 @@ const propTypes = {
   onSubsectionClick: PropTypes.func,
   /** List of subsections options */
   options: PropTypes.array,
+  /** Is subsection in active section */
+  active: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -21,6 +23,7 @@ const defaultProps = {
   className: '',
   onSubsectionClick: () => {},
   options: [],
+  active: false,
 };
 
 class SidebarSubsection extends React.Component {
@@ -29,6 +32,8 @@ class SidebarSubsection extends React.Component {
 
     this.onClick = this.onClick.bind(this);
   }
+
+  // Need to loop through for default selection component did mount and fire off method with option title
 
   onClick(e) {
     e.preventDefault();
@@ -40,9 +45,10 @@ class SidebarSubsection extends React.Component {
 
   getSubsectionOptions() {
     return this.props.options.map((option, idx) => {
-      const selected = this.props.selected ? option.title === this.props.selected : option.active;
+      const { selected, active } = this.props;
+      const isActive = selected ? option.title === selected : active && option.default;
       const className = classnames('rc-sidebar-subsection-option', {
-        'rc-sidebar-subsection-option-selected': selected,
+        'rc-sidebar-subsection-option-selected': isActive,
       });
 
       const props = {

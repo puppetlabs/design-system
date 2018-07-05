@@ -28,8 +28,16 @@ const defaultProps = {
   className: '',
   onSectionClick: () => {},
   icon: null,
-  accordion: false,
   open: false,
+};
+
+const isActive = (props) => {
+  const { selected, title } = props;
+
+  let active = props.active;
+  active = selected ? title === selected : active;
+
+  return active;
 };
 
 class SidebarSection extends React.Component {
@@ -37,20 +45,33 @@ class SidebarSection extends React.Component {
     super(props);
 
     this.state = {
-      selected: null,
-      open: this.props.open,
+      selectedSubOption: null,
+      open: props.open,
+      active: isActive(props),
     };
 
     this.onClick = this.onClick.bind(this);
     this.onSubsectionClick = this.onSubsectionClick.bind(this);
   }
 
+  componentWillReceiveProps(newProps) {
+    const active = isActive(newProps);
+
+    if (active !== this.state.active) {
+      this.setState({ active });
+    }
+
+    if (!active) {
+      this.setState({ selectedSubOption: null });
+    }
+  }
+
   onClick(e) {
     e.preventDefault();
 
-    this.state = {
+    this.setState({
       open: !this.state.open,
-    };
+    });
 
     if (this.props.onSectionClick) {
       this.props.onSectionClick(this.props.title);
@@ -58,16 +79,19 @@ class SidebarSection extends React.Component {
   }
 
   onSubsectionClick(title) {
-    this.setState({ selected: title });
+    this.setState({ selectedSubOption: title });
     this.props.onSectionClick(this.props.title);
   }
 
   getSubsections() {
     return this.props.children.map((subsection, idx) => {
+      const { active, selectedSubOption } = this.state;
+
       const props = {
         key: getKey(subsection, idx),
         onSubsectionClick: this.onSubsectionClick,
-        selected: this.state.selected,
+        selected: selectedSubOption,
+        active,
       };
 
       return React.cloneElement(subsection, props);
@@ -75,10 +99,9 @@ class SidebarSection extends React.Component {
   }
 
   render() {
-    const { active, title, onSectionClick } = this.props;
-    const selected = this.props.selected ? title === this.props.selected : active;
+    const { title, onSectionClick } = this.props;
     const className = classnames('rc-sidebar-section', {
-      'rc-sidebar-section-selected': selected,
+      'rc-sidebar-section-selected': this.state.active,
       'rc-sidebar-section-selectable': onSectionClick,
       'rc-sidebar-section-closed': !this.state.open,
     }, this.props.className);

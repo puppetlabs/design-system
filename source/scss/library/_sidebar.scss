@@ -96,9 +96,13 @@ a.rc-sidebar-subsection-link:focus {
   font-size: 12px;
 }
 
+.rc-sidebar-section .rc-icon-fill {
+  fill: #3D444D;
+}
+
 .rc-sidebar-section-selected {
-  .rc-icon {
-    background-color: #0D6AD7;
+  .rc-icon-fill {
+    fill: #0D6AD7;
   }
   .rc-sidebar-section-title {
     color: #0D6AD7;
@@ -111,10 +115,12 @@ a.rc-sidebar-subsection-link:focus {
 
 .rc-sidebar-section-link:hover,
 .rc-sidebar-section-link:focus {
+  .rc-icon-fill {
+    fill: #4a92e8;
+  }
   .rc-sidebar-section-title {
     color: #4a92e8;
   }
-  // do something to the icon too
 }
 
 .rc-sidebar-section .rc-icon {
