@@ -1,7 +1,7 @@
 .rc-header {
   align-items: center;
-  background: $reflect-header-bg;
-  color: $reflect-header-color;
+  background: $puppet-header-bg;
+  color: $puppet-header-color;
   display: flex;
   padding: 18px;
   width: 100%;
@@ -11,7 +11,7 @@
   border-radius: 100%;
   margin-left: 10px;
   margin-right: 10px;
-  width: $reflect-header-avatar-size;
+  width: $puppet-header-avatar-size;
 }
 
 .rc-header-left {
@@ -28,7 +28,7 @@
 }
 
 .rc-header-logo-primary-fill {
-  fill: $reflect-header-logo-fill;
+  fill: $puppet-header-logo-fill;
 }
 
 .rc-header-container {
@@ -36,8 +36,8 @@
 }
 
 .rc-header-menu {
-  background: $reflect-header-menu-bg;
-  color: $reflect-header-color;
+  background: $puppet-header-menu-bg;
+  color: $puppet-header-color;
   display: none;
   position: absolute;
   width: 100%;
@@ -52,11 +52,11 @@
   width: 100%;
 
   &:hover {
-    background: $reflect-header-menu-item-button-bg-hover;
+    background: $puppet-header-menu-item-button-bg-hover;
   }
 }
 
-@media only screen and (max-width: $reflect-breakpoint-medium) {
+@media only screen and (max-width: $puppet-breakpoint-medium) {
   .rc-header-menu-control {
     display: flex;
   }
@@ -80,7 +80,7 @@
   }
 }
 
-@media only screen and (max-width: $reflect-breakpoint-small) {
+@media only screen and (max-width: $puppet-breakpoint-small) {
   .rc-header-menu {
     display: block;
     width: 100%;
