@@ -40,7 +40,7 @@ const isActive = (props) => {
   return active;
 };
 
-class SidebarSection extends React.Component {
+class Section extends React.Component {
   constructor(props) {
     super(props);
 
@@ -60,18 +60,14 @@ class SidebarSection extends React.Component {
     if (active !== this.state.active) {
       this.setState({ active });
     }
-
-    if (!active) {
-      this.setState({ selectedSubOption: null });
-    }
   }
 
   onClick(e) {
     e.preventDefault();
 
-    this.setState({
-      open: !this.state.open,
-    });
+    if (!(this.state.open && !this.state.active)) {
+      this.setState({ open: !this.state.open });
+    }
 
     if (this.props.onSectionClick) {
       this.props.onSectionClick(this.props.title);
@@ -84,14 +80,14 @@ class SidebarSection extends React.Component {
   }
 
   getSubsections() {
-    return this.props.children.map((subsection, idx) => {
+    return React.Children.map(this.props.children, (subsection, idx) => {
       const { active, selectedSubOption } = this.state;
+      const selected = active ? selectedSubOption : null;
 
       const props = {
         key: getKey(subsection, idx),
         onSubsectionClick: this.onSubsectionClick,
-        selected: selectedSubOption,
-        active,
+        selected,
       };
 
       return React.cloneElement(subsection, props);
@@ -142,7 +138,7 @@ class SidebarSection extends React.Component {
   }
 }
 
-SidebarSection.propTypes = propTypes;
-SidebarSection.defaultProps = defaultProps;
+Section.propTypes = propTypes;
+Section.defaultProps = defaultProps;
 
-export default SidebarSection;
+export default Section;

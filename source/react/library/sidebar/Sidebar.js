@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import { getKey } from '../../helpers/statics';
+import Section from './Section';
+import Subsection from './Subsection';
 
 const propTypes = {
   children: PropTypes.any,
@@ -66,5 +68,8 @@ class Sidebar extends React.Component {
 
 Sidebar.propTypes = propTypes;
 Sidebar.defaultProps = defaultProps;
+
+Sidebar.Section = Section;
+Sidebar.Subsection = Subsection;
 
 export default Sidebar;

@@ -1,10 +1,10 @@
 Sidebar with clickable sections:
 ```
 <Sidebar>
-  <SidebarSection title="Home" icon="home" active />
-  <SidebarSection title="Reports" icon="reports" />
-  <SidebarSection title="Connections" icon="connect" />
-  <SidebarSection title="Data Model" icon="model" />
+  <Section title="Home" icon="home" active />
+  <Section title="Reports" icon="reports" />
+  <Section title="Connections" icon="connect" />
+  <Section title="Data Model" icon="model" />
 </Sidebar>
 ```
 
@@ -31,12 +31,12 @@ const customReports = [
 ];
 
 <Sidebar>
-  <SidebarSection title="Home" icon="home" />
-  <SidebarSection title="Reports" icon="reports" active open>
-    <SidebarSubsection title="Insights Reports" options={ cannedReports } />
-    <SidebarSubsection title="My Reports" options={ customReports } />
-  </SidebarSection>
-  <SidebarSection title="Connections" icon="connect" />
-  <SidebarSection title="Data Model" icon="model" />
+  <Section title="Home" icon="home" />
+  <Section title="Reports" icon="reports" active open>
+    <Subsection title="Insights Reports" options={ cannedReports } />
+    <Subsection title="My Reports" options={ customReports } />
+  </Section>
+  <Section title="Connections" icon="connect" />
+  <Section title="Data Model" icon="model" />
 </Sidebar>
 ```

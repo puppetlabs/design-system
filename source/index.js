@@ -15,7 +15,7 @@ import DropdownMenu from './react/library/dropdown/DropdownMenu';
 import DropdownLabel from './react/library/dropdown/DropdownLabel';
 
 import * as Card from './react/library/card';
-import * as Sidebar from './react/library/sidebar';
+import Sidebar from './react/library/sidebar/Sidebar';
 import StencilGrid from './react/library/stencils/StencilGrid';
 import Icon from './react/library/icon/Icon';
 import Tag from './react/library/tag/Tag';
