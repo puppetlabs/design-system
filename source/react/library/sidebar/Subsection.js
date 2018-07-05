@@ -39,11 +39,11 @@ class Subsection extends React.Component {
     });
   }
 
-  onClick(e) {
+  onClick(e, title) {
     e.preventDefault();
 
     if (this.props.onSubsectionClick) {
-      this.props.onSubsectionClick(e.target.title);
+      this.props.onSubsectionClick(title);
     }
   }
 
@@ -61,8 +61,10 @@ class Subsection extends React.Component {
 
       return (
         <li { ...props }>
-          <a className="rc-sidebar-subsection-link" role="button" tabIndex={ 0 } onClick={ this.onClick } title={ option.title } >
-            { option.title }
+          <a className="rc-sidebar-subsection-link" role="button" tabIndex={ 0 } onClick={ e => this.onClick(e, option.title) }>
+            <div className="rc-sidebar-subsection-option-header">
+              <span className="rc-sidebar-subsection-option-title">{ option.title }</span>
+            </div>
           </a>
         </li>
       );

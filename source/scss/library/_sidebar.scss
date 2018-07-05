@@ -1,13 +1,13 @@
 .rc-sidebar {
   background: #F7F9FA;
   font-weight: 400;
-  padding-left: 32px;
-  padding-right: 32px;
   padding-top: 16px;
   padding-bottom: 16px;
 }
 
 .rc-sidebar-section-header {
+  padding-left: 32px;
+  padding-right: 32px;
   padding-top: 12px;
   padding-bottom: 12px;
   display: flex;
@@ -32,12 +32,6 @@ ul.rc-sidebar-subsections {
 }
 
 .rc-sidebar-subsection {
-  // Negative margin to extend border top
-  // With padding compensation for content
-  margin-left: -32px;
-  margin-right: -32px;
-  padding-left: 32px;
-  padding-right: 32px;
   border-top: 1px solid #CED7E0;
   padding-bottom: 16px;
 }
@@ -51,6 +45,30 @@ a.rc-sidebar-subsection-link {
   display: block;
   height: 100%;
   outline: none;
+}
+
+.rc-sidebar-subsection-link:hover,
+.rc-sidebar-subsection-link:focus {
+  .rc-sidebar-subsection-option-title {
+    color: #000E1C;
+  }
+}
+
+.rc-sidebar-subsection-header {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.rc-sidebar-subsection-option-header {
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.rc-sidebar-subsection-option-title {
+  display: block;
+  width: 100%;
+  padding-left: 8px;
+  padding-right: 8px;
   padding-bottom: 6px;
   padding-top: 6px;
   color: #5C6770;
@@ -59,19 +77,9 @@ a.rc-sidebar-subsection-link {
   font-weight: 600;
 }
 
-a.rc-sidebar-subsection-link:hover,
-a.rc-sidebar-subsection-link:focus {
-  color: #000E1C;
-}
-
 .rc-sidebar-subsection-option-selected {
-  a.rc-sidebar-subsection-link {
-    // Negative margin to extend border top
-    // With padding compensation for content
-    margin-left: -8px;
-    margin-right: -8px;
-    padding-left: 8px;
-    padding-right: 8px;
+  .rc-sidebar-subsection-option-title {
+    color: #000E1C;
     background-color: rgba(210, 214, 217, 0.5);
     border-radius: 4px;
   }
@@ -109,7 +117,7 @@ a.rc-sidebar-subsection-link:focus {
   }
 }
 
-.rc-sidebar-section-header {
+.rc-sidebar-section-link {
   cursor: pointer;
 }
 

@@ -34,7 +34,7 @@ class Sidebar extends React.Component {
   }
 
   getSections() {
-    return this.props.children.map((section, idx) => {
+    return React.Children.map(this.props.children, (section, idx) => {
       const props = {
         key: getKey(section, idx),
         onSectionClick: this.onSectionClick,

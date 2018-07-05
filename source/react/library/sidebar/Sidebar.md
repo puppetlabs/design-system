@@ -8,7 +8,7 @@ Sidebar with clickable sections:
 </Sidebar>
 ```
 
-Sidebar with toggleable subsections.
+Sidebar with toggleable subsections:
 ```
 const cannedReports = [
   { title: 'Automation Footprint' },
