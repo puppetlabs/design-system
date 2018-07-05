@@ -16,8 +16,8 @@ const propTypes = {
   /** Transcends Sidebar to correctly set active states */
   onSectionClick: PropTypes.func,
   icon: PropTypes.string,
-  /** Optional accordian flag for subsection reveal */
-  accordion: PropTypes.bool,
+  /** If subsections exist, is section open or closed? */
+  open: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -29,6 +29,7 @@ const defaultProps = {
   onSectionClick: () => {},
   icon: null,
   accordion: false,
+  open: false,
 };
 
 class SidebarSection extends React.Component {
@@ -37,6 +38,7 @@ class SidebarSection extends React.Component {
 
     this.state = {
       selected: null,
+      open: this.props.open,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -45,6 +47,10 @@ class SidebarSection extends React.Component {
 
   onClick(e) {
     e.preventDefault();
+
+    this.state = {
+      open: !this.state.open,
+    };
 
     if (this.props.onSectionClick) {
       this.props.onSectionClick(this.props.title);
@@ -74,6 +80,7 @@ class SidebarSection extends React.Component {
     const className = classnames('rc-sidebar-section', {
       'rc-sidebar-section-selected': selected,
       'rc-sidebar-section-selectable': onSectionClick,
+      'rc-sidebar-section-closed': !this.state.open,
     }, this.props.className);
 
     let subsections = this.getSubsections();

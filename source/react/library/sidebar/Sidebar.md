@@ -1,14 +1,14 @@
 Sidebar with clickable sections:
 ```
 <Sidebar>
-  <SidebarSection icon="connections" title="Home" active />
-  <SidebarSection icon="connections" title="Reports" />
-  <SidebarSection icon="connections" title="Connections" />
-  <SidebarSection icon="connections" title="Data Model" />
+  <SidebarSection title="Home" icon="connections" active />
+  <SidebarSection title="Reports" icon="connections" />
+  <SidebarSection title="Connections" icon="connections" />
+  <SidebarSection title="Data Model" icon="connections" />
 </Sidebar>
 ```
 
-Sidebar with subsections and accordion enabled:
+Sidebar with togglable subsections.
 ```
 const cannedReports = [
   { title: 'Automation Footprint' },
@@ -30,12 +30,12 @@ const customReports = [
 ];
 
 <Sidebar>
-  <SidebarSection icon="connections" title="Home" active />
-  <SidebarSection icon="connections" title="Reports">
+  <SidebarSection title="Home" icon="connections" active />
+  <SidebarSection title="Reports" icon="connections" open>
     <SidebarSubsection title="Insights Reports" options={ cannedReports } />
     <SidebarSubsection title="My Reports" options={ customReports } />
   </SidebarSection>
-  <SidebarSection icon="connections" title="Connections" />
-  <SidebarSection icon="connections" title="Data Model" />
+  <SidebarSection title="Connections" icon="connections" />
+  <SidebarSection title="Data Model" icon="connections" />
 </Sidebar>
 ```

@@ -82,6 +82,12 @@ a.rc-sidebar-subsection-link:focus {
   padding-bottom: 8px;
 }
 
+.rc-sidebar-section-closed {
+  .rc-sidebar-subsections {
+    display: none;
+  }
+}
+
 .rc-sidebar-subsection-title {
   font-family: "Open Sans", Arial, sans-serif;
   font-weight: 600;
