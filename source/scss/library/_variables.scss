@@ -77,7 +77,7 @@ $puppet-white                               : #fff !default;
 // Backgrounds
 $puppet-bg-primary                          : $puppet-white !default;
 $puppet-bg-subtle                           : $puppet-gray-lighter !default;
-$puppet-bg-dark                             : $puppet-gray-base !default;
+$puppet-bg-dark                             : $puppet-gray-darker !default;
 
 // Charts
 $puppet-primary-chart-color                 : $puppet-brand-primary !default;
@@ -254,6 +254,14 @@ $puppet-border-hover                        : $puppet-border-size $puppet-border
 $puppet-border-active                       : $puppet-border-size $puppet-border-style $puppet-action-color !default;
 $puppet-border-active-hover                 : $puppet-border-size $puppet-border-style $puppet-action-hover !default;
 $puppet-border-heavy                        : $puppet-border-size*2 $puppet-border-style $puppet-border-color !default;
+
+// Dark border
+$puppet-border-color-dark                   : $puppet-gray-dark !default;
+$puppet-border-hover-color-dark             : $puppet-gray-darker !default;
+$puppet-border-dark                         : $puppet-border-size $puppet-border-style $puppet-border-color-dark !default;
+$puppet-border-hover-dark                   : $puppet-border-size $puppet-border-style $puppet-border-hover-color-dark !default;
+$puppet-border-active-hover-dark            : $puppet-border-size $puppet-border-style $puppet-action-hover !default;
+$puppet-border-active-dark                  : $puppet-border-size $puppet-border-style $puppet-action-color !default;
 
 // HR
 $puppet-hr-border                           : $puppet-border !default;

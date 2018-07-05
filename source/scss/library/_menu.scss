@@ -61,6 +61,31 @@
   }
 }
 
+.rc-menu-dark {
+  .rc-menu-header {
+    background: $puppet-menu-header-bg-dark;
+    border: $puppet-menu-header-border-dark;
+  }
+
+  .rc-menu-title {
+    color: $puppet-menu-title-color-dark;
+  }
+
+  @include menu-item-colors(
+    $puppet-menu-item-bg,
+    $puppet-menu-item-bg-hover-dark,
+    $puppet-menu-item-color-dark,
+    $puppet-menu-item-color-hover,
+    $puppet-menu-item-border-dark,
+    $puppet-menu-item-border-focus-dark,
+    $puppet-menu-item-border-active-dark,
+    $puppet-menu-item-bg-selected,
+    $puppet-menu-item-color-selected,
+    $puppet-menu-item-bg-disabled,
+    $puppet-menu-item-color-disabled,
+    $puppet-menu-item-icon-color
+  );
+}
 
 @include menu-item-colors(
   $puppet-menu-item-bg,
