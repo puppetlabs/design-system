@@ -1,3 +1,8 @@
+# 2.1.0
+
+* Adding sizes to icons
+* Updating the look and feel of modals
+
 # 2.0.0
 
 * Rename library to @puppet/react-components
