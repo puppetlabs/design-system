@@ -3,6 +3,7 @@ import React from 'react';
 import { getKey } from '../../helpers/statics';
 import Section from './Section';
 import Subsection from './Subsection';
+import SubsectionOption from './SubsectionOption';
 
 const propTypes = {
   children: PropTypes.any,
@@ -71,5 +72,6 @@ Sidebar.defaultProps = defaultProps;
 
 Sidebar.Section = Section;
 Sidebar.Subsection = Subsection;
+Sidebar.SubsectionOption = SubsectionOption;
 
 export default Sidebar;

@@ -26,15 +26,23 @@ const customReports = [
   { title: 'Bump2' },
   { title: 'Bump3' },
   { title: 'Bump4' },
-  { title: 'Bump5' },
-  { title: 'Bump6' },
 ];
+
+const getOptions = (options) => {
+  return options.map((option) => {
+    return <SubsectionOption title={ option.title } default={ option.default }/>
+  });
+}
 
 <Sidebar>
   <Section title="Home" icon="home" />
   <Section title="Reports" icon="reports" active open>
-    <Subsection title="Insights Reports" options={ cannedReports } />
-    <Subsection title="My Reports" options={ customReports } />
+    <Subsection title="Insights Reports">
+      { getOptions(cannedReports) }
+    </Subsection>
+    <Subsection title="My Reports">
+      { getOptions(customReports) }
+    </Subsection>
   </Section>
   <Section title="Connections" icon="connect" />
   <Section title="Data Model" icon="model" />

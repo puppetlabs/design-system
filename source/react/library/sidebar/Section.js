@@ -8,8 +8,9 @@ const propTypes = {
   children: PropTypes.any,
   title: PropTypes.any,
   /** The title of the active section */
+  // eslint-disable-next-line react/no-unused-prop-types
   selected: PropTypes.string,
-  /** Easy prop for setting default active section */
+  /** Easy prop for setting active section */
   active: PropTypes.bool,
   /** Class name(s) to apply to section element */
   className: PropTypes.string,
