@@ -610,6 +610,7 @@ $puppet-slider-handle-size                  : 10px !default;
 $puppet-slider-bar-position                 : ($puppet-slider-handle-size - $puppet-slider-bar-height)/2 !default;
 
 // Header
+$puppet-header-height                       : 60px !default;
 $puppet-header-bg                           : #000e1c !default;
 $puppet-header-menu-bg                      : lighten($puppet-header-bg, 10%) !default;
 $puppet-header-color                        : $puppet-white !default;

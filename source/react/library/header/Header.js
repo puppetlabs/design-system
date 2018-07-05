@@ -21,7 +21,7 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
 
-    this.openMenu = this.openMenu.bind(this);
+    this.onMenuToggle = this.onMenuToggle.bind(this);
     this.onNavClick = this.onNavClick.bind(this);
     this.onMenuItemClick = this.onMenuItemClick.bind(this);
 
@@ -38,7 +38,7 @@ class Header extends React.Component {
     this.onNavClick(option.key);
   }
 
-  openMenu() {
+  onMenuToggle() {
     this.setState({ menuOpen: !this.state.menuOpen });
   }
 
@@ -64,17 +64,23 @@ class Header extends React.Component {
     const icon = this.state.menuOpen ? 'close' : 'list';
 
     return (
-      <a tabIndex={ 0 } role="button" className="rc-header-menu-control" onClick={ this.openMenu }>
+      <a tabIndex={ 0 } role="button" className="rc-header-menu-control" onClick={ this.onMenuToggle }>
         <Icon width="14px" height="14px" type={ icon } />
       </a>
     );
   }
 
   renderMenu() {
+    const options = this.props.nav.map(o => ({
+      id: o.key,
+      ...o,
+    }));
+
     return (
-      <div className="rc-header-menu">
-        <Menu.List options={ this.props.nav } onChange={ this.onMenuItemClick } />
-      </div>
+      <Menu className="rc-header-menu" size="medium">
+        <Menu.Header title="Account" onClose={ this.onMenuToggle } />
+        <Menu.List options={ options } onChange={ this.onMenuItemClick } />
+      </Menu>
     );
   }
 
@@ -90,6 +96,7 @@ class Header extends React.Component {
 
     return (
       <div className="rc-header-container">
+        { menu }
         <div className="rc-header">
           <div className="rc-header-left">
             { logo }
@@ -99,7 +106,6 @@ class Header extends React.Component {
             { menuControl }
           </div>
         </div>
-        { menu }
       </div>
     );
   }

@@ -3,6 +3,7 @@
   background: $puppet-header-bg;
   color: $puppet-header-color;
   display: flex;
+  height: $puppet-header-height;
   padding: 18px;
   width: 100%;
 }
@@ -41,6 +42,12 @@
   display: none;
   position: absolute;
   width: 100%;
+}
+
+.rc-header-menu .rc-menu-header {
+  background: $puppet-header-menu-bg;
+  border: 0;
+  height: $puppet-header-height;
 }
 
 .rc-header-menu-control {
