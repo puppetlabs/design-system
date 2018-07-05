@@ -395,12 +395,12 @@ $puppet-menu-item-border-active-dark        : $puppet-border-active-hover-dark;
 $puppet-menu-item-font-size                 : $puppet-font-size-small !default;
 $puppet-menu-item-font-weight               : $puppet-font-weight-normal !default;
 $puppet-menu-item-line-height               : $puppet-medium !default;
-$puppet-menu-item-height                    : $puppet-size-base * 4 !default;
+$puppet-menu-item-height                    : $puppet-size-base * 3 !default;
 $puppet-menu-item-color                     : $puppet-font-color-base !default;
 $puppet-menu-item-color-dark                : $puppet-white !default;
 $puppet-menu-item-icon-color                : $puppet-icon-fill !default;
 $puppet-menu-item-bg                        : transparent !default;
-$puppet-menu-item-padding                   : 0 $puppet-small !default;
+$puppet-menu-item-padding                   : $puppet-small !default;
 
 // Menu States
 $puppet-menu-item-color-hover               : $puppet-brand-primary !default;
@@ -504,7 +504,7 @@ $puppet-remove-background                   : $puppet-bg-subtle !default;
 // Slide ins
 // ----------------------------------------------------------------------------
 $puppet-slidein-bg                          : $puppet-bg-primary !default;
-$puppet-slidein-border                      : $puppet-bg-dark !default;
+$puppet-slidein-border                      : $puppet-border !default;
 $puppet-slidein-color                       : $puppet-font-color-base !default;
 $puppet-slidein-padding                     : $puppet-small !default;
 $puppet-slidein-horizontal-width            : 330px !default;

@@ -4,27 +4,33 @@
   }
 
   .rc-menu-item a {
-    background: $bg;
-    border-left: $border;
-    border-right: $border;
     color: $color;
   }
 
-  .rc-menu-item:first-of-type a {
+  .rc-menu-item {
+    border-left: $border;
+    border-right: $border;
+    padding: $puppet-menu-item-padding;
+    padding-bottom: 0;
+  }
+
+  .rc-menu-item:first-of-type {
     border-top: $border;
     border-top-left-radius: $puppet-border-radius;
     border-top-right-radius: $puppet-border-radius;
   }
 
-  .rc-menu-item:last-of-type a {
+  .rc-menu-item:last-of-type {
     border-bottom: $border;
     border-bottom-left-radius: $puppet-border-radius;
     border-bottom-right-radius: $puppet-border-radius;
+    padding-bottom: $puppet-menu-item-padding;
   }
 
   .rc-menu-item:hover a,
   .rc-menu-item-focused a {
     background: $bg-hover;
+    border-radius: $puppet-border-radius;
     color: $color-hover;
 
     .rc-icon {
@@ -181,9 +187,7 @@
 }
 
 .rc-menu-section > .rc-menu-item {
-  a {
-    border: 0;
-  }
+  border: 0;
 }
 
 .rc-menu-header {
@@ -197,9 +201,7 @@
 }
 
 .rc-menu-header + .rc-menu-list {
-  // TODO: This captures about exactly what we want... We can't currently apply a has-border class
-  // or anything to the parent. What to do?
-  .rc-menu-item:first-of-type a { /* stylelint-disable-line selector-max-compound-selectors */
+  .rc-menu-item:first-of-type {
     border-top: 0;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
@@ -210,7 +212,7 @@
 .rc-menu-header + div,
 .rc-menu-header + .rc-menu-list {
   .rc-menu-item:not(.rc-menu-item-with-icon) a { /* stylelint-disable-line selector-max-compound-selectors */
-    padding: 0 $puppet-menu-header-padding;
+    padding: 0 ($puppet-menu-header-padding - $puppet-menu-item-padding);
   }
 
   .rc-menu-item-with-icon a { /* stylelint-disable-line selector-max-compound-selectors */
