@@ -72,7 +72,7 @@ class Header extends React.Component {
 
     return (
       <a tabIndex={ 0 } role="button" className="rc-header-menu-control" onClick={ this.onMenuToggle }>
-        <Icon type={ icon } />
+        <Icon size="medium" type={ icon } />
       </a>
     );
   }
@@ -84,7 +84,7 @@ class Header extends React.Component {
     }));
 
     return (
-      <Menu className="rc-header-menu" size="medium">
+      <Menu dark className="rc-header-menu" size="medium">
         <Menu.Header title="Account" onClose={ this.onMenuToggle } />
         <Menu.List options={ options } onChange={ this.onMenuItemClick } />
       </Menu>
