@@ -23,10 +23,6 @@ $neutral-96                                  : #f0f3f5 !default;
 $neutral-98                                  : #f7f9fa !default;
 $neutral-100                                 : #fff !default;
 
-$action-dark                                 : #ffb833 !default;
-$action-medium                               : #ffc966 !default;
-$action-light                                : #ffe2ad !default;
-
 $link-medium                                 : #007bc7 !default;
 $link-light                                  : #0092ed !default;
 
@@ -64,20 +60,20 @@ $negative-1                                  : #e62600 !default;
 $puppet-brand-primary                       : $puppet-amber !default;
 
 // Grays
-$puppet-gray-base                           : #a6bdd2 !default;
+$puppet-gray-base                           : #818e99 !default;
 
-$puppet-black                               : #424a52 !default;
-$puppet-gray-darker                         : #6d7a87 !default;
-$puppet-gray-dark                           : #88a2b9 !default;
+$puppet-black                               : #000e1c !default;
+$puppet-gray-darker                         : #3d444d !default;
+$puppet-gray-dark                           : #5c6770 !default;
 $puppet-gray                                : $puppet-gray-base !default;
-$puppet-gray-light                          : #dbdfe3 !default;
-$puppet-gray-lighter                        : #f8f8f9 !default;
+$puppet-gray-light                          : #d2d6d9 !default;
+$puppet-gray-lighter                        : #f0f3f5 !default;
 $puppet-white                               : #fff !default;
 
 // Backgrounds
 $puppet-bg-primary                          : $puppet-white !default;
 $puppet-bg-subtle                           : $puppet-gray-lighter !default;
-$puppet-bg-dark                             : $puppet-gray-base !default;
+$puppet-bg-dark                             : $puppet-gray-darker !default;
 
 // Charts
 $puppet-primary-chart-color                 : $puppet-brand-primary !default;
@@ -85,8 +81,8 @@ $puppet-primary-chart-color                 : $puppet-brand-primary !default;
 // Action Colors
 // Colors used for primary buttons and other action elements
 // Text is typically on a bg color - by default it is white text & icons on a blue bg
-$puppet-action-color                        : $action-medium !default;
-$puppet-action-hover                        : $action-dark !default;
+$puppet-action-color                        : #0d6ad7 !default;
+$puppet-action-hover                        : #328af2 !default;
 $puppet-action-border                       : $puppet-action-color !default;
 $puppet-action-border-hover                 : $puppet-action-hover !default;
 $puppet-action-text                         : $puppet-white !default;
@@ -254,6 +250,14 @@ $puppet-border-hover                        : $puppet-border-size $puppet-border
 $puppet-border-active                       : $puppet-border-size $puppet-border-style $puppet-action-color !default;
 $puppet-border-active-hover                 : $puppet-border-size $puppet-border-style $puppet-action-hover !default;
 $puppet-border-heavy                        : $puppet-border-size*2 $puppet-border-style $puppet-border-color !default;
+
+// Dark border
+$puppet-border-color-dark                   : $puppet-black !default;
+$puppet-border-hover-color-dark             : $puppet-gray-darker !default;
+$puppet-border-dark                         : $puppet-border-size $puppet-border-style $puppet-border-color-dark !default;
+$puppet-border-hover-dark                   : $puppet-border-size $puppet-border-style $puppet-border-hover-color-dark !default;
+$puppet-border-active-hover-dark            : $puppet-border-size $puppet-border-style $puppet-action-hover !default;
+$puppet-border-active-dark                  : $puppet-border-size $puppet-border-style $puppet-action-color !default;
 
 // HR
 $puppet-hr-border                           : $puppet-border !default;
