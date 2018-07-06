@@ -9,9 +9,9 @@ import SubsectionItem from './SubsectionItem';
 
 const propTypes = {
   children: PropTypes.any,
-  /** Easy prop for enabling icon only sidebar */
+  /** Easy prop for enabling control to toggle icon only sidebar */
   toggleable: PropTypes.bool,
-  /** Is sidebar minimized? */
+  /** Is sidebar minimizedd? */
   minimized: PropTypes.bool,
 };
 
@@ -33,11 +33,11 @@ class Sidebar extends React.Component {
       minimized: props.minimized,
     };
 
-    this.onClick = this.onClick.bind(this);
+    this.onSectionClick = this.onSectionClick.bind(this);
     this.onToggle = this.onToggle.bind(this);
   }
 
-  onClick(title) {
+  onSectionClick(title) {
     this.setState({ selected: title });
   }
 
@@ -49,7 +49,7 @@ class Sidebar extends React.Component {
     return React.Children.map(this.props.children, (section, idx) => {
       const props = {
         key: getKey(section, idx),
-        onClick: this.onClick,
+        onSectionClick: this.onSectionClick,
         selected: this.state.selected,
       };
 

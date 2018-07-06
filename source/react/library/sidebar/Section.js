@@ -15,6 +15,7 @@ const propTypes = {
   /** Class name(s) to apply to section element */
   className: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
+  onSectionClick: PropTypes.func,
   onClick: PropTypes.func,
   icon: PropTypes.string,
   /** If subsections exist, is section open or closed? */
@@ -27,7 +28,8 @@ const defaultProps = {
   selected: null,
   active: false,
   className: '',
-  onClick: () => {},
+  onSectionClick: () => {},
+  onClick: null,
   icon: null,
   open: false,
 };
@@ -46,13 +48,13 @@ class Section extends React.Component {
     super(props);
 
     this.state = {
-      selectedSubOption: null,
+      selectedSubItem: null,
       open: props.open,
       active: isActive(props),
     };
 
     this.onClick = this.onClick.bind(this);
-    this.onSubsectionClick = this.onSubsectionClick.bind(this);
+    this.onSubItemClick = this.onSubItemClick.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -66,30 +68,34 @@ class Section extends React.Component {
   onClick(e) {
     e.preventDefault();
 
+    const { open, active } = this.state;
     // Set open state based on condition:
     // You cannot minimize a non-active section
-    if (!(this.state.open && !this.state.active)) {
-      this.setState({ open: !this.state.open });
+    if (!(open && !active)) {
+      this.setState({ open: !open });
     }
 
-    if (this.props.onClick) {
-      this.props.onClick(this.props.title);
+    const { onSectionClick, onClick, title } = this.props;
+    onSectionClick(title);
+
+    if (onClick) {
+      onClick();
     }
   }
 
-  onSubsectionClick(title) {
-    this.setState({ selectedSubOption: title });
-    this.props.onClick(this.props.title);
+  onSubItemClick(title) {
+    this.setState({ selectedSubItem: title });
+    this.props.onSectionClick(this.props.title);
   }
 
   getSubsections() {
     return React.Children.map(this.props.children, (subsection, idx) => {
-      const { active, selectedSubOption } = this.state;
-      const selected = active ? selectedSubOption : null;
+      const { active, selectedSubItem } = this.state;
+      const selected = active ? selectedSubItem : null;
 
       const props = {
         key: getKey(subsection, idx),
-        onClick: this.onSubsectionClick,
+        onSubItemClick: this.onSubItemClick,
         selected,
       };
 
@@ -117,7 +123,6 @@ class Section extends React.Component {
   }
 
   render() {
-    console.log(this.props.onClick)
     const { title, onClick } = this.props;
     const className = classnames('rc-sidebar-section', {
       'rc-sidebar-section-selected': this.state.active,

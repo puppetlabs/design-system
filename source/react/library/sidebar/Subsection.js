@@ -1,27 +1,28 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import Button from '../buttons/Button';
 import { getKey } from '../../helpers/statics';
 
 const propTypes = {
   children: PropTypes.any,
   title: PropTypes.any,
-  /** The title of the active option */
+  /** The title of the active item */
   selected: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
-  onClick: PropTypes.func,
+  onSubItemClick: PropTypes.func,
   /** Boolean to truncate lists w/expand button */
   truncate: PropTypes.bool,
-  /** Transcends Sidebar to correctly list options */
-  onViewMore: PropTypes.func,
+  /** Optional method that fires when clicking "Add New" */
+  onAddItem: PropTypes.func,
 };
 
 const defaultProps = {
   children: [],
   title: '',
   selected: null,
-  onClick: () => {},
+  onSubItemClick: () => {},
   truncate: false,
-  onViewMore: () => {},
+  onAddItem: null,
 };
 
 class Subsection extends React.Component {
@@ -32,14 +33,12 @@ class Subsection extends React.Component {
       truncate: props.truncate,
     };
 
-    this.onClick = this.onClick.bind(this);
+    this.onSubItemClick = this.onSubItemClick.bind(this);
     this.onViewMore = this.onViewMore.bind(this);
   }
 
-  onClick(title) {
-    if (this.props.onClick) {
-      this.props.onClick(title);
-    }
+  onSubItemClick(item) {
+    this.props.onSubItemClick(item);
   }
 
   onViewMore(e) {
@@ -48,29 +47,40 @@ class Subsection extends React.Component {
     this.setState({ truncate: false });
   }
 
-  getOptions() {
-    let options = React.Children.map(this.props.children, (option, idx) => {
+  getItems() {
+    let items = React.Children.map(this.props.children, (item, idx) => {
       const props = {
-        key: getKey(option, idx),
-        onClick: this.onClick,
+        key: getKey(item, idx),
+        onSubItemClick: this.onSubItemClick,
         selected: this.props.selected,
       };
 
-      return React.cloneElement(option, props);
+      return React.cloneElement(item, props);
     });
 
     if (this.state.truncate) {
-      const jsx = <a className="rc-sidebar-view-more-link" role="button" tabIndex={ 0 } onClick={ this.onViewMore }>View All...</a>;
+      const jsx = <a className="rc-sidebar-view-more-link" role="button" tabIndex={ 0 } onClick={ this.onViewMore } key="view-more-link">View All...</a>;
 
-      options = options.slice(0, 3);
-      options.push(jsx);
+      items = items.slice(0, 3);
+      items.push(jsx);
     }
 
-    return options;
+    return items;
+  }
+
+  getAddItemBtn() {
+    let jsx;
+
+    if (this.props.onAddItem) {
+      jsx = <Button className="rc-sidebar-add-item-btn" onClick={ this.props.onAddItem } floating />;
+    }
+
+    return jsx;
   }
 
   render() {
-    const options = this.getOptions();
+    const items = this.getItems();
+    const addItemBtn = this.getAddItemBtn();
 
     return (
       <div className="rc-sidebar-subsection">
@@ -78,10 +88,10 @@ class Subsection extends React.Component {
           <span className="rc-sidebar-subsection-title">
             { this.props.title }
           </span>
-          { /* add in optional button */ }
+          { addItemBtn }
         </div>
         <div className="rc-sidebar-subsection-items">
-          { options }
+          { items }
         </div>
       </div>
     );

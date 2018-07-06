@@ -5,16 +5,18 @@ import classnames from 'classnames';
 const propTypes = {
   title: PropTypes.any,
   /** Transcends Sidebar to correctly set active states */
+  onSubItemClick: PropTypes.func,
   onClick: PropTypes.func,
-  /** Easy prop for setting default selected option */
+  /** Easy prop for setting default selected item */
   default: PropTypes.bool,
-  /** The title of the active option */
+  /** The title of the active item */
   selected: PropTypes.string,
 };
 
 const defaultProps = {
   title: '',
-  onClick: () => {},
+  onSubItemClick: () => {},
+  onClick: null,
   default: false,
   selected: null,
 };
@@ -27,17 +29,20 @@ class SubsectionItem extends React.Component {
   }
 
   componentWillMount() {
-    // Load default option
+    // Load default item
     if (this.props.default) {
-      this.props.onClick(this.props.title);
+      this.props.onSubItemClick(this.props.title);
     }
   }
 
-  onClick(e, title) {
+  onClick(e) {
     e.preventDefault();
 
-    if (this.props.onClick) {
-      this.props.onClick(title);
+    const { onSubItemClick, onClick, title } = this.props;
+    onSubItemClick(title);
+
+    if (onClick) {
+      onClick();
     }
   }
 
@@ -49,7 +54,7 @@ class SubsectionItem extends React.Component {
 
     return (
       <li className={ className }>
-        <a className="rc-sidebar-subsection-link" role="button" tabIndex={ 0 } onClick={ e => this.onClick(e, this.props.title) }>
+        <a className="rc-sidebar-subsection-link" role="button" tabIndex={ 0 } onClick={ this.onClick }>
           <div className="rc-sidebar-subsection-item-header">
             <span className="rc-sidebar-subsection-item-title">{ this.props.title }</span>
           </div>
