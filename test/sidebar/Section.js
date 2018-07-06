@@ -1,4 +1,3 @@
-import jsdom from 'mocha-jsdom';
 import sinon from 'sinon';
 import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
@@ -7,8 +6,6 @@ import React from 'react';
 import Section from '../../source/react/library/sidebar/Section';
 
 describe('<Section />', () => {
-  jsdom({ skipWindowCheck: true });
-
   const getProps = (newProps = {}) => {
     const defaultProps = {
       title: 'foo',
