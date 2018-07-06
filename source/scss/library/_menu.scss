@@ -81,7 +81,7 @@
     $puppet-menu-item-bg,
     $puppet-menu-item-bg-hover-dark,
     $puppet-menu-item-color-dark,
-    $puppet-menu-item-color-hover,
+    $puppet-menu-item-color-hover-dark,
     $puppet-menu-item-border-dark,
     $puppet-menu-item-border-focus-dark,
     $puppet-menu-item-border-active-dark,
@@ -186,7 +186,7 @@
   }
 }
 
-.rc-menu-section > .rc-menu-item {
+.rc-menu-section .rc-menu-item {
   border: 0;
 }
 

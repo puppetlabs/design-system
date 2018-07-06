@@ -403,7 +403,8 @@ $puppet-menu-item-bg                        : transparent !default;
 $puppet-menu-item-padding                   : $puppet-small !default;
 
 // Menu States
-$puppet-menu-item-color-hover               : $puppet-brand-primary !default;
+$puppet-menu-item-color-hover               : $puppet-action-color !default;
+$puppet-menu-item-color-hover-dark          : $puppet-white !default;
 $puppet-menu-item-bg-hover                  : $puppet-gray-lighter !default;
 $puppet-menu-item-bg-hover-dark             : $puppet-gray-dark !default;
 
