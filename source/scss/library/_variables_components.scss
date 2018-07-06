@@ -387,11 +387,11 @@ $puppet-list-item-small-height              : $puppet-size-base * 3 !default;
 // Menu
 // ----------------------------------------------------------------------------
 $puppet-menu-item-border                    : $puppet-border !default;
-$puppet-menu-item-border-focus              : $puppet-border-active-hover;
-$puppet-menu-item-border-active             : $puppet-border-active-hover;
+$puppet-menu-item-border-focus              : $puppet-border-active-hover !default;
+$puppet-menu-item-border-active             : $puppet-border-active-hover !default;
 $puppet-menu-item-border-dark               : $puppet-border-dark !default;
-$puppet-menu-item-border-focus-dark         : $puppet-border-active-hover-dark;
-$puppet-menu-item-border-active-dark        : $puppet-border-active-hover-dark;
+$puppet-menu-item-border-focus-dark         : $puppet-border-active-hover-dark !default;
+$puppet-menu-item-border-active-dark        : $puppet-border-active-hover-dark !default;
 $puppet-menu-item-font-size                 : $puppet-font-size-small !default;
 $puppet-menu-item-font-weight               : $puppet-font-weight-normal !default;
 $puppet-menu-item-line-height               : $puppet-medium !default;

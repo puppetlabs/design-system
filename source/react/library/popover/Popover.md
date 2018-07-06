@@ -37,10 +37,10 @@ const target = <Button label="Right top popover" />;
 </Popover>
 ```
 
-Inverted popover
+Dark popover
 ```
 const Button = require('../buttons/Button.js').default;
-const target = <Button label="darkpopover" />;
+const target = <Button label="dark popover" />;
 
 <Popover dark target={ target }>
   I am a dark popover
