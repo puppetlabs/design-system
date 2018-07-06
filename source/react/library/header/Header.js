@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Button from '../buttons/Button';
-import logos from './logos';
 import Menu from '../menu';
 import Icon from '../icon/Icon';
 
 const propTypes = {
   onNavClick: PropTypes.func,
-  product: PropTypes.oneOf(['insights']).isRequired,
+  logo: PropTypes.element,
   nav: PropTypes.array,
 };
 
@@ -87,7 +86,6 @@ class Header extends React.Component {
   render() {
     let menu;
     const nav = this.renderNav();
-    const logo = logos[this.props.product];
     const menuControl = this.renderMenuControl();
 
     if (this.state.menuOpen) {
@@ -99,7 +97,7 @@ class Header extends React.Component {
         { menu }
         <div className="rc-header">
           <div className="rc-header-left">
-            { logo }
+            { this.props.logo }
           </div>
           <div className="rc-header-right">
             { nav }
