@@ -8,43 +8,69 @@ const propTypes = {
   /** The title of the active option */
   selected: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
-  onSubsectionClick: PropTypes.func,
+  onClick: PropTypes.func,
+  /** Boolean to truncate lists w/expand button */
+  truncate: PropTypes.bool,
+  /** Transcends Sidebar to correctly list options */
+  onViewMore: PropTypes.func,
 };
 
 const defaultProps = {
   children: [],
   title: '',
   selected: null,
-  onSubsectionClick: () => {},
+  onClick: () => {},
+  truncate: false,
+  onViewMore: () => {},
 };
 
 class Subsection extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onSubsectionClick = this.onSubsectionClick.bind(this);
+    this.state = {
+      truncate: props.truncate,
+    };
+
+    this.onClick = this.onClick.bind(this);
+    this.onViewMore = this.onViewMore.bind(this);
   }
 
-  onSubsectionClick(title) {
-    if (this.props.onSubsectionClick) {
-      this.props.onSubsectionClick(title);
+  onClick(title) {
+    if (this.props.onClick) {
+      this.props.onClick(title);
     }
   }
 
-  getSubsectionOptions() {
-    return React.Children.map(this.props.children, (option, idx) => {
+  onViewMore(e) {
+    e.preventDefault();
+
+    this.setState({ truncate: false });
+  }
+
+  getOptions() {
+    let options = React.Children.map(this.props.children, (option, idx) => {
       const props = {
         key: getKey(option, idx),
-        onSubsectionClick: this.onSubsectionClick,
+        onClick: this.onClick,
         selected: this.props.selected,
       };
 
       return React.cloneElement(option, props);
     });
+
+    if (this.state.truncate) {
+      const jsx = <a className="rc-sidebar-view-more-link" role="button" tabIndex={ 0 } onClick={ this.onViewMore }>View All...</a>;
+
+      options = options.slice(0, 3);
+      options.push(jsx);
+    }
+
+    return options;
   }
 
   render() {
-    const options = this.getSubsectionOptions();
+    const options = this.getOptions();
 
     return (
       <div className="rc-sidebar-subsection">
@@ -54,7 +80,7 @@ class Subsection extends React.Component {
           </span>
           { /* add in optional button */ }
         </div>
-        <div className="rc-sidebar-subsection-options">
+        <div className="rc-sidebar-subsection-items">
           { options }
         </div>
       </div>

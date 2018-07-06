@@ -5,7 +5,7 @@ import classnames from 'classnames';
 const propTypes = {
   title: PropTypes.any,
   /** Transcends Sidebar to correctly set active states */
-  onSubsectionClick: PropTypes.func,
+  onClick: PropTypes.func,
   /** Easy prop for setting default selected option */
   default: PropTypes.bool,
   /** The title of the active option */
@@ -14,12 +14,12 @@ const propTypes = {
 
 const defaultProps = {
   title: '',
-  onSubsectionClick: () => {},
+  onClick: () => {},
   default: false,
   selected: null,
 };
 
-class SubsectionOption extends React.Component {
+class SubsectionItem extends React.Component {
   constructor(props) {
     super(props);
 
@@ -29,29 +29,29 @@ class SubsectionOption extends React.Component {
   componentWillMount() {
     // Load default option
     if (this.props.default) {
-      this.props.onSubsectionClick(this.props.title);
+      this.props.onClick(this.props.title);
     }
   }
 
   onClick(e, title) {
     e.preventDefault();
 
-    if (this.props.onSubsectionClick) {
-      this.props.onSubsectionClick(title);
+    if (this.props.onClick) {
+      this.props.onClick(title);
     }
   }
 
   render() {
     const active = this.props.title === this.props.selected;
-    const className = classnames('rc-sidebar-subsection-option', {
-      'rc-sidebar-subsection-option-selected': active,
+    const className = classnames('rc-sidebar-subsection-item', {
+      'rc-sidebar-subsection-item-selected': active,
     });
 
     return (
       <li className={ className }>
         <a className="rc-sidebar-subsection-link" role="button" tabIndex={ 0 } onClick={ e => this.onClick(e, this.props.title) }>
-          <div className="rc-sidebar-subsection-option-header">
-            <span className="rc-sidebar-subsection-option-title">{ this.props.title }</span>
+          <div className="rc-sidebar-subsection-item-header">
+            <span className="rc-sidebar-subsection-item-title">{ this.props.title }</span>
           </div>
         </a>
       </li>
@@ -59,7 +59,7 @@ class SubsectionOption extends React.Component {
   }
 }
 
-SubsectionOption.propTypes = propTypes;
-SubsectionOption.defaultProps = defaultProps;
+SubsectionItem.propTypes = propTypes;
+SubsectionItem.defaultProps = defaultProps;
 
-export default SubsectionOption;
+export default SubsectionItem;

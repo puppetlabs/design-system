@@ -1,19 +1,24 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classnames from 'classnames';
 import { getKey } from '../../helpers/statics';
+import Button from '../buttons/Button';
 import Section from './Section';
 import Subsection from './Subsection';
-import SubsectionOption from './SubsectionOption';
+import SubsectionItem from './SubsectionItem';
 
 const propTypes = {
   children: PropTypes.any,
-  /** Sidebar section width in px or % */
-  width: PropTypes.string,
+  /** Easy prop for enabling icon only sidebar */
+  toggleable: PropTypes.bool,
+  /** Is sidebar minimized? */
+  minimized: PropTypes.bool,
 };
 
 const defaultProps = {
   children: [],
-  width: '240px',
+  toggleable: false,
+  minimized: false,
 };
 
 /**
@@ -25,20 +30,26 @@ class Sidebar extends React.Component {
 
     this.state = {
       selected: null,
+      minimized: props.minimized,
     };
 
-    this.onSectionClick = this.onSectionClick.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.onToggle = this.onToggle.bind(this);
   }
 
-  onSectionClick(title) {
+  onClick(title) {
     this.setState({ selected: title });
+  }
+
+  onToggle() {
+    this.setState({ minimized: !this.state.minimized });
   }
 
   getSections() {
     return React.Children.map(this.props.children, (section, idx) => {
       const props = {
         key: getKey(section, idx),
-        onSectionClick: this.onSectionClick,
+        onClick: this.onClick,
         selected: this.state.selected,
       };
 
@@ -46,22 +57,39 @@ class Sidebar extends React.Component {
     });
   }
 
-  render() {
-    const width = this.props.width;
-    const sections = this.getSections();
-    const styles = {};
+  getToggle() {
+    let icon = 'chevron-left';
 
-    if (width) {
-      styles.width = width;
+    if (this.state.minimized) {
+      icon = 'chevron-right';
+    }
+
+    return (
+      <div className="rc-sidebar-toggle">
+        <Button className="rc-sidebar-toggle-btn" onClick={ this.onToggle } size="tiny" icon={ icon } />
+      </div>
+    );
+  }
+
+  render() {
+    const sections = this.getSections();
+    const className = classnames('rc-sidebar', {
+      'rc-sidebar-minimized': this.state.minimized,
+    });
+
+    let toggle;
+    if (this.props.toggleable) {
+      toggle = this.getToggle();
     }
 
     const props = {
-      style: styles,
+      className,
     };
 
     return (
-      <div { ...props } className="rc-sidebar">
+      <div { ...props }>
         { sections }
+        { toggle }
       </div>
     );
   }
@@ -72,6 +100,6 @@ Sidebar.defaultProps = defaultProps;
 
 Sidebar.Section = Section;
 Sidebar.Subsection = Subsection;
-Sidebar.SubsectionOption = SubsectionOption;
+Sidebar.SubsectionItem = SubsectionItem;
 
 export default Sidebar;

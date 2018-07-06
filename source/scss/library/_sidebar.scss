@@ -1,8 +1,10 @@
 .rc-sidebar {
+  width: 240px;
   background: #F7F9FA;
   font-weight: 400;
   padding-top: 16px;
   padding-bottom: 16px;
+  overflow:auto;
 }
 
 .rc-sidebar-section-header {
@@ -49,7 +51,7 @@ a.rc-sidebar-subsection-link {
 
 .rc-sidebar-subsection-link:hover,
 .rc-sidebar-subsection-link:focus {
-  .rc-sidebar-subsection-option-title {
+  .rc-sidebar-subsection-item-title {
     color: #000E1C;
   }
 }
@@ -59,12 +61,12 @@ a.rc-sidebar-subsection-link {
   padding-right: 32px;
 }
 
-.rc-sidebar-subsection-option-header {
+.rc-sidebar-subsection-item-header {
   padding-left: 24px;
   padding-right: 24px;
 }
 
-.rc-sidebar-subsection-option-title {
+.rc-sidebar-subsection-item-title {
   display: block;
   width: 100%;
   padding-left: 8px;
@@ -77,8 +79,8 @@ a.rc-sidebar-subsection-link {
   font-weight: 600;
 }
 
-.rc-sidebar-subsection-option-selected {
-  .rc-sidebar-subsection-option-title {
+.rc-sidebar-subsection-item-selected {
+  .rc-sidebar-subsection-item-title {
     color: #000E1C;
     background-color: rgba(210, 214, 217, 0.5);
     border-radius: 4px;
@@ -94,6 +96,26 @@ a.rc-sidebar-subsection-link {
   .rc-sidebar-subsections {
     display: none;
   }
+}
+
+a.rc-sidebar-view-more-link {
+  cursor: pointer;
+  outline: none;
+  display: block;
+  width: 100%;
+  padding-left: 32px;
+  padding-right: 32px;
+  padding-bottom: 6px;
+  padding-top: 6px;
+  color: #0D6AD7;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+}
+
+a.rc-sidebar-view-more-link:hover,
+a.rc-sidebar-view-more-link:focus {
+  color: #4a92e0;
 }
 
 .rc-sidebar-subsection-title {
@@ -124,16 +146,45 @@ a.rc-sidebar-subsection-link {
 .rc-sidebar-section-link:hover,
 .rc-sidebar-section-link:focus {
   .rc-icon-fill {
-    fill: #4a92e8;
+    fill: #4a92e0;
   }
   .rc-sidebar-section-title {
-    color: #4a92e8;
+    color: #4a92e0;
   }
 }
 
-.rc-sidebar-section .rc-icon {
+.rc-sidebar-minimized {
+  width: 88px;
+
+  .rc-sidebar-section-title,
+  .rc-sidebar-section-caret,
+  .rc-sidebar-subsections {
+    display: none;
+  }
+
+  .rc-sidebar-toggle {
+    float: none;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.rc-sidebar-toggle {
+  float: right;
+  position: relative;
+  margin-right: 12px;
+  margin-top: 6px;
+}
+
+.rc-sidebar-section-icon {
   display: flex;
   margin-right: 24px;
+}
+
+.rc-sidebar-section-caret {
+  display: flex;
+  margin-left: 8px;
 }
 
 .rc-sidebar-section {

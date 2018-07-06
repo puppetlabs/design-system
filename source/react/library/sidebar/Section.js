@@ -15,7 +15,7 @@ const propTypes = {
   /** Class name(s) to apply to section element */
   className: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
-  onSectionClick: PropTypes.func,
+  onClick: PropTypes.func,
   icon: PropTypes.string,
   /** If subsections exist, is section open or closed? */
   open: PropTypes.bool,
@@ -27,7 +27,7 @@ const defaultProps = {
   selected: null,
   active: false,
   className: '',
-  onSectionClick: () => {},
+  onClick: () => {},
   icon: null,
   open: false,
 };
@@ -66,18 +66,20 @@ class Section extends React.Component {
   onClick(e) {
     e.preventDefault();
 
+    // Set open state based on condition:
+    // You cannot minimize a non-active section
     if (!(this.state.open && !this.state.active)) {
       this.setState({ open: !this.state.open });
     }
 
-    if (this.props.onSectionClick) {
-      this.props.onSectionClick(this.props.title);
+    if (this.props.onClick) {
+      this.props.onClick(this.props.title);
     }
   }
 
   onSubsectionClick(title) {
     this.setState({ selectedSubOption: title });
-    this.props.onSectionClick(this.props.title);
+    this.props.onClick(this.props.title);
   }
 
   getSubsections() {
@@ -87,7 +89,7 @@ class Section extends React.Component {
 
       const props = {
         key: getKey(subsection, idx),
-        onSubsectionClick: this.onSubsectionClick,
+        onClick: this.onSubsectionClick,
         selected,
       };
 
@@ -95,21 +97,44 @@ class Section extends React.Component {
     });
   }
 
+  getCaret() {
+    const { active, open } = this.state;
+    if (open && !active) {
+      return null;
+    }
+
+    let type = 'sort-down';
+
+    if (open && active) {
+      type = 'sort-up';
+    }
+
+    return (
+      <span className="rc-sidebar-section-caret">
+        <Icon width="8px" height="8px" type={ type } />
+      </span>
+    );
+  }
+
   render() {
-    const { title, onSectionClick } = this.props;
+    console.log(this.props.onClick)
+    const { title, onClick } = this.props;
     const className = classnames('rc-sidebar-section', {
       'rc-sidebar-section-selected': this.state.active,
-      'rc-sidebar-section-selectable': onSectionClick,
+      'rc-sidebar-section-selectable': onClick,
       'rc-sidebar-section-closed': !this.state.open,
     }, this.props.className);
 
     let subsections = this.getSubsections();
+    let caret;
     if (subsections.length) {
       subsections = (
         <ul className="rc-sidebar-subsections">
           { subsections }
         </ul>
       );
+
+      caret = this.getCaret();
     }
 
     let icon;
@@ -121,6 +146,7 @@ class Section extends React.Component {
       );
     }
 
+
     const props = {
       className,
     };
@@ -131,6 +157,7 @@ class Section extends React.Component {
           <div className="rc-sidebar-section-header">
             { icon }
             <span className="rc-sidebar-section-title">{ title }</span>
+            { caret }
           </div>
         </a>
         { subsections }

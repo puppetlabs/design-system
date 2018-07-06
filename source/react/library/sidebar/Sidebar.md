@@ -1,10 +1,10 @@
 Sidebar with clickable sections:
 ```
 <Sidebar>
-  <Section title="Home" icon="home" active />
-  <Section title="Reports" icon="reports" />
-  <Section title="Connections" icon="connect" />
-  <Section title="Data Model" icon="model" />
+  <Section onClick={ () => { console.log('here') } } title="Home" icon="home" active />
+  <Section onClick={ () => { console.log('here') } } title="Reports" icon="reports" />
+  <Section onClick={ () => { console.log('here') } } title="Connections" icon="connect" />
+  <Section onClick={ () => { console.log('here') } } title="Data Model" icon="model" />
 </Sidebar>
 ```
 
@@ -17,7 +17,6 @@ const cannedReports = [
   { title: 'Security Audit' },
 ];
 
-/** Note default attribute on option */
 const customReports = [
   { title: 'DevOps Team Overview', default: true },
   { title: "Product Launch Q3 '18" },
@@ -30,17 +29,17 @@ const customReports = [
 
 const getOptions = (options) => {
   return options.map((option) => {
-    return <SubsectionOption title={ option.title } default={ option.default }/>
+    return <SubsectionItem title={ option.title } default={ option.default }/>
   });
 }
 
-<Sidebar>
+<Sidebar toggleable>
   <Section title="Home" icon="home" />
   <Section title="Reports" icon="reports" active open>
     <Subsection title="Insights Reports">
       { getOptions(cannedReports) }
     </Subsection>
-    <Subsection title="My Reports">
+    <Subsection title="My Reports" truncate>
       { getOptions(customReports) }
     </Subsection>
   </Section>
