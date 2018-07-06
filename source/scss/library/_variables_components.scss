@@ -621,10 +621,9 @@ $puppet-slider-bar-position                 : ($puppet-slider-handle-size - $pup
 
 // Header
 $puppet-header-height                       : 60px !default;
-$puppet-header-bg                           : #000e1c !default;
-$puppet-header-menu-bg                      : lighten($puppet-header-bg, 10%) !default;
+$puppet-header-bg                           : $puppet-black !default;
+$puppet-header-menu-bg                      : $puppet-gray-darker !default;
 $puppet-header-color                        : $puppet-white !default;
-$puppet-header-avatar-size                  : 32px !default;
 $puppet-header-menu-item-button-bg-hover    : lighten($puppet-header-menu-bg, 10%) !default;
 
 /* stylelint-enable */

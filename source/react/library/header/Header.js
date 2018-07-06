@@ -6,6 +6,7 @@ import Menu from '../menu';
 import Icon from '../icon/Icon';
 
 const propTypes = {
+  onLogoClick: PropTypes.func,
   onNavClick: PropTypes.func,
   logo: PropTypes.element,
   nav: PropTypes.array,
@@ -20,8 +21,9 @@ class Header extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onMenuToggle = this.onMenuToggle.bind(this);
     this.onNavClick = this.onNavClick.bind(this);
+    this.onLogoClick = this.onLogoClick.bind(this);
+    this.onMenuToggle = this.onMenuToggle.bind(this);
     this.onMenuItemClick = this.onMenuItemClick.bind(this);
 
     this.state = { menuOpen: false };
@@ -39,6 +41,12 @@ class Header extends React.Component {
 
   onMenuToggle() {
     this.setState({ menuOpen: !this.state.menuOpen });
+  }
+
+  onLogoClick() {
+    this.setState({ menuOpen: false });
+
+    this.props.onLogoClick();
   }
 
   renderNav() {
@@ -64,7 +72,7 @@ class Header extends React.Component {
 
     return (
       <a tabIndex={ 0 } role="button" className="rc-header-menu-control" onClick={ this.onMenuToggle }>
-        <Icon width="14px" height="14px" type={ icon } />
+        <Icon type={ icon } />
       </a>
     );
   }
@@ -83,10 +91,33 @@ class Header extends React.Component {
     );
   }
 
+  renderLogo() {
+    let jsx = this.props.logo;
+
+    if (jsx && this.props.onLogoClick) {
+      jsx = (
+        <a role="button" tabIndex={ 0 } onClick={ this.onLogoClick }>
+          { jsx }
+        </a>
+      );
+    }
+
+    if (jsx) {
+      jsx = (
+        <div className="rc-header-logo">
+          { jsx }
+        </div>
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
     let menu;
     const nav = this.renderNav();
     const menuControl = this.renderMenuControl();
+    const logo = this.renderLogo();
 
     if (this.state.menuOpen) {
       menu = this.renderMenu();
@@ -97,7 +128,7 @@ class Header extends React.Component {
         { menu }
         <div className="rc-header">
           <div className="rc-header-left">
-            { this.props.logo }
+            { logo }
           </div>
           <div className="rc-header-right">
             { nav }

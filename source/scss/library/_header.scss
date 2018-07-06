@@ -8,16 +8,17 @@
   width: 100%;
 }
 
-.rc-header-avatar {
-  border-radius: 100%;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: $puppet-header-avatar-size;
-}
-
 .rc-header-left {
   display: flex;
   width: 50%;
+}
+
+.rc-header-logo a {
+  cursor: pointer;
+
+  &:focus {
+    outline: none;
+  }
 }
 
 .rc-header-right {
@@ -62,10 +63,6 @@
 @media only screen and (max-width: $puppet-breakpoint-medium) {
   .rc-header-menu-control {
     display: flex;
-  }
-
-  .rc-header-avatar {
-    display: none;
   }
 
   .rc-header-items {
