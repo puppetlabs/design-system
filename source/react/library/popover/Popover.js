@@ -16,6 +16,7 @@ const propTypes = {
   menu: PropTypes.bool,
   position: PropTypes.object,
   padding: PropTypes.bool,
+  dark: PropTypes.bool,
   border: PropTypes.bool,
   closeButton: PropTypes.bool,
   anchor: PropTypes.oneOf(['bottom right', 'bottom left', 'left top', 'right top']),
@@ -254,6 +255,7 @@ class Popover extends React.Component {
       [`rc-popover-${this.props.size}`]: this.props.size,
       'rc-popover-no-portal': this.props.disablePortal,
       'rc-popover-menu': this.props.menu,
+      'rc-popover-dark': this.props.dark,
       'rc-popover-no-padding': !this.props.padding || this.props.menu,
       'rc-popover-no-border': !this.props.border || this.props.menu,
       [`rc-popover-${anchorForClass}`]: anchorForClass,
@@ -277,6 +279,7 @@ class Popover extends React.Component {
       onOutsideClick: this.onOutsideClick,
       onClose: this.close,
       allowBubble: this.props.allowBubble,
+      dark: this.props.dark,
       menu: this.props.menu,
     }, this.props.children);
 

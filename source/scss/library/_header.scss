@@ -1,0 +1,91 @@
+.rc-header {
+  align-items: center;
+  background: $puppet-header-bg;
+  color: $puppet-header-color;
+  display: flex;
+  height: $puppet-header-height;
+  padding: 18px;
+  width: 100%;
+}
+
+.rc-header-left {
+  width: 50%;
+}
+
+.rc-header-logo {
+  display: flex;
+}
+
+.rc-header-logo a {
+  cursor: pointer;
+  display: flex;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.rc-header-right {
+  align-items: center;
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+  width: 50%;
+}
+
+.rc-header-container {
+  position: relative;
+}
+
+.rc-header-menu {
+  background: $puppet-header-menu-bg;
+  display: none;
+  position: absolute;
+  width: 100%;
+}
+
+.rc-header-menu .rc-menu-header {
+  background: $puppet-header-menu-bg;
+  border: 0;
+  height: $puppet-header-height;
+}
+
+.rc-header-menu-control {
+  display: none;
+}
+
+.rc-header-menu-item-button {
+  padding: 18px;
+  width: 100%;
+
+  &:hover {
+    background: $puppet-header-menu-item-button-bg-hover;
+  }
+}
+
+@media only screen and (max-width: $puppet-breakpoint-medium) {
+  .rc-header-menu-control {
+    display: flex;
+  }
+
+  .rc-header-items {
+    display: none;
+  }
+
+  .rc-header-menu .rc-header-items {
+    display: block;
+  }
+
+  .rc-header-menu {
+    display: block;
+    right: 0;
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: $puppet-breakpoint-small) {
+  .rc-header-menu {
+    display: block;
+    width: 100%;
+  }
+}

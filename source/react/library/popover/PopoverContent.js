@@ -10,6 +10,7 @@ import Button from '../buttons/Button';
 
 const propTypes = {
   onOutsideClick: PropTypes.func,
+  dark: PropTypes.bool,
   menu: PropTypes.bool,
   className: PropTypes.string,
   closeButton: PropTypes.bool,
@@ -22,6 +23,7 @@ const propTypes = {
 
 const defaultProps = {
   onOutsideClick: null,
+  dark: false,
   menu: false,
   className: '',
   closeButton: false,
@@ -107,13 +109,13 @@ class PopoverContent extends React.Component {
   }
 
   render() {
-    const { children, menu, className, style } = this.props;
+    const { children, menu, dark, className, style } = this.props;
     const header = this.renderHeader();
     let content;
 
     if (menu) {
       content = (
-        <Menu>{ header }{ children }</Menu>
+        <Menu dark={ dark }>{ header }{ children }</Menu>
       );
     } else {
       content = (

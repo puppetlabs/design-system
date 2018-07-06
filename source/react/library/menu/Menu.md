@@ -10,6 +10,18 @@ const listOptions = [
 </Popover>
 ```
 
+A dark `Menu` in a dark `Popover`:
+```
+const target = <Button>Open dark menu</Button>;
+const listOptions = [
+  { id: 0, value: 'option1' },
+  { id: 1, value: 'option2' },
+];
+<Popover dark menu hint="Happy menu title" target={ target } padding={ false } border={ false } width="200px">
+  <MenuList dark options={ listOptions } />
+</Popover>
+```
+
 `MenuSection`s can be rendered within your menu:
 ```
 const target = <Button>Open menu with sections</Button>;

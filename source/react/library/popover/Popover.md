@@ -36,3 +36,13 @@ const target = <Button label="Right top popover" />;
   I am a popover
 </Popover>
 ```
+
+Dark popover
+```
+const Button = require('../buttons/Button.js').default;
+const target = <Button label="dark popover" />;
+
+<Popover dark target={ target }>
+  I am a dark popover
+</Popover>
+```
