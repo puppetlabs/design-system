@@ -9,12 +9,16 @@
 }
 
 .rc-header-left {
-  display: flex;
   width: 50%;
+}
+
+.rc-header-logo {
+  display: flex;
 }
 
 .rc-header-logo a {
   cursor: pointer;
+  display: flex;
 
   &:focus {
     outline: none;
