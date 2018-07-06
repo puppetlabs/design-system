@@ -10,14 +10,14 @@ import SubsectionItem from './SubsectionItem';
 const propTypes = {
   children: PropTypes.any,
   /** Easy prop for enabling control to toggle icon only sidebar */
-  toggleable: PropTypes.bool,
+  togglable: PropTypes.bool,
   /** Is sidebar minimizedd? */
   minimized: PropTypes.bool,
 };
 
 const defaultProps = {
   children: [],
-  toggleable: false,
+  togglable: false,
   minimized: false,
 };
 
@@ -78,7 +78,7 @@ class Sidebar extends React.Component {
     });
 
     let toggle;
-    if (this.props.toggleable) {
+    if (this.props.togglable) {
       toggle = this.getToggle();
     }
 

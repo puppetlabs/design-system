@@ -8,7 +8,7 @@ Sidebar with clickable sections:
 </Sidebar>
 ```
 
-Sidebar with toggleable subsections:
+Sidebar with togglable subsections:
 ```
 const cannedReports = [
   { title: 'Automation Footprint' },
@@ -33,7 +33,7 @@ const getOptions = (options) => {
   });
 }
 
-<Sidebar toggleable>
+<Sidebar togglable>
   <Section title="Home" icon="home" />
   <Section title="Reports" icon="reports" active open>
     <Subsection title="Insights Reports">
