@@ -7,8 +7,8 @@ const propTypes = {
   /** Transcends Sidebar to correctly set active states */
   onSubItemClick: PropTypes.func,
   onClick: PropTypes.func,
-  /** Easy prop for setting default selected item */
-  default: PropTypes.bool,
+  /** Easy prop for setting active item */
+  active: PropTypes.bool,
   /** The title of the active item */
   selected: PropTypes.string,
 };
@@ -17,7 +17,7 @@ const defaultProps = {
   title: '',
   onSubItemClick: () => {},
   onClick: null,
-  default: false,
+  active: false,
   selected: null,
 };
 
@@ -29,8 +29,8 @@ class SubsectionItem extends React.Component {
   }
 
   componentWillMount() {
-    // Load default item
-    if (this.props.default) {
+    // Load default active item
+    if (this.props.active) {
       this.props.onSubItemClick(this.props.title);
     }
   }

@@ -18,7 +18,7 @@ const cannedReports = [
 ];
 
 const customReports = [
-  { title: 'DevOps Team Overview', default: true },
+  { title: 'DevOps Team Overview', active: true },
   { title: "Product Launch Q3 '18" },
   { title: 'Staging Report' },
   { title: 'Bump1' },
@@ -29,7 +29,7 @@ const customReports = [
 
 const getOptions = (options) => {
   return options.map((option) => {
-    return <SubsectionItem title={ option.title } default={ option.default } onClick={ () => {} } />
+    return <SubsectionItem title={ option.title } active={ option.active } onClick={ () => {} } />
   });
 }
 
