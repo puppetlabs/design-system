@@ -7,25 +7,19 @@ import Subsection from '../../source/react/library/sidebar/Subsection';
 import SubsectionItem from '../../source/react/library/sidebar/SubsectionItem';
 
 describe('<Subsection />', () => {
-  const getProps = (newProps = {}) => {
-    const defaultProps = {
-      title: 'foo',
-    };
-
-    return Object.assign(defaultProps, newProps);
+  const defaultProps = {
+    title: 'foo',
   };
 
   it('should render without blowing up', () => {
-    const props = getProps();
-    const wrapper = shallow(<Subsection { ...props } />);
+    const wrapper = shallow(<Subsection { ...defaultProps } />);
 
     expect(wrapper.length).to.eql(1);
   });
 
   it('should respond to click events if onAddItem provided', () => {
     const onAddItem = sinon.spy();
-    const props = getProps({ onAddItem });
-    const wrapper = mount(<Subsection { ...props } />);
+    const wrapper = mount(<Subsection { ...defaultProps } onAddItem={ onAddItem } />);
 
     wrapper.find('Button').simulate('click');
 
@@ -57,10 +51,8 @@ describe('<Subsection />', () => {
   });
 
   it('should truncate the list of children if prop is provided', () => {
-    const newProp = { truncate: true };
-    const props = getProps(newProp);
     const wrapper = shallow(
-      <Subsection { ...props }>
+      <Subsection { ...defaultProps } truncate>
         <span className="test-child">hello!</span>
         <span className="test-child">hello!</span>
         <span className="test-child">hello!</span>
@@ -73,10 +65,8 @@ describe('<Subsection />', () => {
   });
 
   it('should provide a view all link if list is truncated', () => {
-    const newProp = { truncate: true };
-    const props = getProps(newProp);
     const wrapper = shallow(
-      <Subsection { ...props }>
+      <Subsection { ...defaultProps } truncate>
         <span className="test-child">hello!</span>
         <span className="test-child">hello!</span>
         <span className="test-child">hello!</span>
@@ -91,10 +81,8 @@ describe('<Subsection />', () => {
   // Using SubsectionItem component here b/c click simulation requires mounting
   // and span can't receive non-standard props from Subsection
   it('should expand list if view all link is clicked', () => {
-    const newProp = { truncate: true };
-    const props = getProps(newProp);
     const wrapper = mount(
-      <Subsection { ...props }>
+      <Subsection { ...defaultProps } truncate>
         <SubsectionItem />
         <SubsectionItem />
         <SubsectionItem />

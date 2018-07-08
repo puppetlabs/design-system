@@ -117,7 +117,7 @@ class Section extends React.Component {
 
     return (
       <span className="rc-sidebar-section-caret">
-        <Icon width="8px" height="8px" type={ type } />
+        <Icon size="tiny" type={ type } />
       </span>
     );
   }
@@ -151,13 +151,8 @@ class Section extends React.Component {
       );
     }
 
-
-    const props = {
-      className,
-    };
-
     return (
-      <div className="rc-sidebar-section" { ...props }>
+      <div className={ className }>
         <a className="rc-sidebar-section-link" role="button" tabIndex={ 0 } onClick={ this.onClick }>
           <div className="rc-sidebar-section-header">
             { icon }

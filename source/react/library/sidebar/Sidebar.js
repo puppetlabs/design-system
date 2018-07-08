@@ -82,12 +82,8 @@ class Sidebar extends React.Component {
       toggle = this.getToggle();
     }
 
-    const props = {
-      className,
-    };
-
     return (
-      <div { ...props }>
+      <div className={ className }>
         { sections }
         { toggle }
       </div>
