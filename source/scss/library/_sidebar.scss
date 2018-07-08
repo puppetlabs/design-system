@@ -1,15 +1,14 @@
 // Sidebar
 .rc-sidebar {
-  background: #f7f9fa;
-  font-weight: 400;
+  background: $puppet-sidebar-bg;
   overflow: auto;
-  padding-bottom: 16px;
-  padding-top: 16px;
-  width: 240px;
+  padding-bottom: $puppet-sidebar-padding;
+  padding-top: $puppet-sidebar-padding;
+  width: $puppet-sidebar-width;
 }
 
 .rc-sidebar-minimized {
-  width: 88px;
+  width: $puppet-sidebar-minimized-width;
 
   .rc-sidebar-section-title,
   .rc-sidebar-section-caret,
@@ -33,35 +32,18 @@
 }
 
 .rc-sidebar-toggle-btn {
-  height: 16px;
-  width: 16px;
+  height: $puppet-sidebar-btn-size;
+  width: $puppet-sidebar-btn-size;
 
   .rc-icon {
-    height: 8px !important;
-    width: 8px !important;
+    height: $puppet-sidebar-btn-icon-size;
+    width: $puppet-sidebar-btn-icon-size;
   }
-}
-
-.rc-sidebar-view-more-link {
-  cursor: pointer;
-  display: block;
-  font-size: 14px;
-  line-height: 21px;
-  outline: none;
-  padding-bottom: 6px;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-top: 6px;
-  width: 100%;
 }
 
 // Section
-.rc-sidebar-section {
-  font-size: 16px;
-
-  &:last-of-type {
-    border-bottom: 0;
-  }
+.rc-sidebar-section:last-of-type {
+  border-bottom: 0;
 }
 
 .rc-sidebar-section-closed {
@@ -72,21 +54,21 @@
 
 .rc-sidebar-section-selected {
   .rc-sidebar-section-icon .rc-icon-fill {
-    fill: #0d6ad7;
+    fill: $puppet-sidebar-section-title-action-color;
   }
 
   .rc-sidebar-section-title {
-    color: #0d6ad7;
+    color: $puppet-sidebar-section-title-action-color;
   }
 }
 
 .rc-sidebar-section-header {
   align-items: center;
   display: flex;
-  padding-bottom: 12px;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-top: 12px;
+  padding-bottom: $puppet-sidebar-section-header-vertical-padding;
+  padding-left: $puppet-sidebar-section-header-horizontal-padding;
+  padding-right: $puppet-sidebar-section-header-horizontal-padding;
+  padding-top: $puppet-sidebar-section-header-vertical-padding;
 }
 
 .rc-sidebar-section-link {
@@ -99,26 +81,26 @@
 .rc-sidebar-section-link:hover,
 .rc-sidebar-section-link:focus {
   .rc-sidebar-section-icon .rc-icon-fill {
-    fill: #4a92e0;
+    fill: $puppet-sidebar-section-title-hover-color;
   }
 
   .rc-sidebar-section-title {
-    color: #4a92e0;
+    color: $puppet-sidebar-section-title-hover-color;
   }
 }
 
 .rc-sidebar-section-title {
-  color: #2c3033;
-  font-size: 16px;
-  line-height: 24px;
+  color: $puppet-sidebar-section-title-color;
+  font-size: $puppet-sidebar-section-title-font-size;
+  line-height: $puppet-sidebar-section-title-line-height;
 }
 
 .rc-sidebar-section-icon {
   display: flex;
-  margin-right: 24px;
+  margin-right: $puppet-sidebar-section-icon-margin;
 
   .rc-icon-fill {
-    fill: #3d444d;
+    fill: $puppet-sidebar-section-title-color;
   }
 }
 
@@ -129,17 +111,17 @@
 
 // Subsections
 .rc-sidebar-subsections {
-  padding-bottom: 12px !important;
-  padding-top: 12px !important;
+  padding-bottom: $puppet-sidebar-subsections-vertical-padding;
+  padding-top: $puppet-sidebar-subsections-vertical-padding;
 }
 
 .rc-sidebar-subsection {
-  border-top: 1px solid #ced7e0;
-  padding-bottom: 16px;
+  border-top: $puppet-sidebar-section-border;
+  padding-bottom: $puppet-sidebar-subsection-vertical-padding;
 }
 
 .rc-sidebar-subsection:last-of-type {
-  border-bottom: 1px solid #ced7e0;
+  border-bottom: $puppet-sidebar-section-border;
 }
 
 .rc-sidebar-subsection-link {
@@ -152,7 +134,7 @@
 .rc-sidebar-subsection-link:hover,
 .rc-sidebar-subsection-link:focus {
   .rc-sidebar-subsection-item-title {
-    color: #000e1c;
+    color: $puppet-sidebar-subsection-item-action-color;
   }
 }
 
@@ -160,53 +142,66 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding-bottom: 8px;
-  padding-left: 32px;
-  padding-right: 32px;
-  padding-top: 16px;
+  padding-bottom: $puppet-sidebar-subsection-header-padding-bottom;
+  padding-left: $puppet-sidebar-section-header-horizontal-padding;
+  padding-right: $puppet-sidebar-section-header-horizontal-padding;
+  padding-top: $puppet-sidebar-subsection-header-padding-top;
 }
 
 .rc-sidebar-subsection-title {
-  color: #000e1c;
-  font-family: 'Open Sans', Arial, sans-serif;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 17px;
+  color: $puppet-sidebar-subsection-title-color;
+  font-family: $puppet-sidebar-subsection-title-font;
+  font-size: $puppet-sidebar-subsection-title-font-size;
+  font-weight: $puppet-sidebar-subsection-title-font-weight;
+  line-height: $puppet-sidebar-subsection-title-line-height;
 }
 
 .rc-sidebar-subsection-add-item-btn {
   display: flex;
-  height: 16px;
-  width: 16px;
+  height: $puppet-sidebar-btn-size;
+  width: $puppet-sidebar-btn-size;
 
   .rc-icon {
-    height: 8px !important;
-    width: 8px !important;
+    height: $puppet-sidebar-btn-icon-size;
+    width: $puppet-sidebar-btn-icon-size;
   }
+}
+
+.rc-sidebar-subsection-view-more-link {
+  cursor: pointer;
+  display: block;
+  font-size: $puppet-sidebar-section-view-more-font-size;
+  line-height: $puppet-sidebar-section-view-more-line-height;
+  outline: none;
+  padding-bottom: $puppet-sidebar-section-view-more-vertical-padding;
+  padding-left: $puppet-sidebar-section-header-horizontal-padding;
+  padding-right: $puppet-sidebar-section-header-horizontal-padding;
+  padding-top: $puppet-sidebar-section-view-more-vertical-padding;
+  width: 100%;
 }
 
 // SubsectionItem
 .rc-sidebar-subsection-item-selected {
   .rc-sidebar-subsection-item-title {
-    background-color: rgba(210, 214, 217, 0.5);
-    border-radius: 4px;
-    color: #000e1c;
+    background-color: $puppet-sidebar-subsection-item-action-bg;
+    border-radius: $puppet-sidebar-subsection-item-border-radius;
+    color: $puppet-sidebar-subsection-item-action-color;
   }
 }
 
 .rc-sidebar-subsection-item-header {
-  padding-left: 24px;
-  padding-right: 24px;
+  padding-left: $puppet-sidebar-subsection-item-header-padding;
+  padding-right: $puppet-sidebar-subsection-item-header-padding;
 }
 
 .rc-sidebar-subsection-item-title {
-  color: #5c6770;
+  color: $puppet-sidebar-subsection-item-color;
   display: block;
-  font-size: 14px;
-  line-height: 21px;
-  padding-bottom: 6px;
-  padding-left: 8px;
-  padding-right: 8px;
-  padding-top: 6px;
+  font-size: $puppet-sidebar-subsection-item-font-size;
+  line-height: $puppet-sidebar-subsection-item-line-height;
+  padding-bottom: $puppet-sidebar-subsection-item-vertical-padding;
+  padding-left: $puppet-sidebar-subsection-item-horizontal-padding;
+  padding-right: $puppet-sidebar-subsection-item-horizontal-padding;
+  padding-top: $puppet-sidebar-subsection-item-vertical-padding;
   width: 100%;
 }

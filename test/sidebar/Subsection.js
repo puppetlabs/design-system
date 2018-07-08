@@ -85,7 +85,7 @@ describe('<Subsection />', () => {
       </Subsection>,
     );
 
-    expect(wrapper.find('.rc-sidebar-view-more-link').length).to.eql(1);
+    expect(wrapper.find('.rc-sidebar-subsection-view-more-link').length).to.eql(1);
   });
 
   // Using SubsectionItem component here b/c click simulation requires mounting
@@ -103,9 +103,9 @@ describe('<Subsection />', () => {
       </Subsection>,
     );
 
-    wrapper.find('.rc-sidebar-view-more-link').simulate('click');
+    wrapper.find('.rc-sidebar-subsection-view-more-link').simulate('click');
 
-    expect(wrapper.find('.rc-sidebar-view-more-link').length).to.eql(0);
+    expect(wrapper.find('.rc-sidebar-subsection-view-more-link').length).to.eql(0);
     expect(wrapper.find('SubsectionItem').length).to.eql(5);
   });
 });

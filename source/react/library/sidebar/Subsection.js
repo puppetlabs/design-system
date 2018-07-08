@@ -59,7 +59,7 @@ class Subsection extends React.Component {
     });
 
     if (this.state.truncate) {
-      const jsx = <a className="rc-sidebar-view-more-link" role="button" tabIndex={ 0 } onClick={ this.onViewMore } key="view-more-link">View All...</a>;
+      const jsx = <a className="rc-sidebar-subsection-view-more-link" role="button" tabIndex={ 0 } onClick={ this.onViewMore } key="view-more-link">View All...</a>;
 
       items = items.slice(0, 3);
       items.push(jsx);

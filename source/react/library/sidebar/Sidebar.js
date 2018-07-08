@@ -9,9 +9,9 @@ import SubsectionItem from './SubsectionItem';
 
 const propTypes = {
   children: PropTypes.any,
-  /** Easy prop for enabling control to toggle icon only sidebar */
+  /** Easy prop to enable toggle between sidebar sizes */
   togglable: PropTypes.bool,
-  /** Is sidebar minimizedd? */
+  /** Is sidebar at the smaller size? */
   minimized: PropTypes.bool,
 };
 
