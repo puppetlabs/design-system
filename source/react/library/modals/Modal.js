@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classname from 'classnames';
 import debounce from 'debounce';
-import onClickOutside from 'react-onclickoutside';
 import portal from '../portal';
 import Icon from '../icon/Icon';
 import ButtonGroup from '../buttons/ButtonGroup';
@@ -45,7 +44,6 @@ const defaultProps = {
   actionsCTA: '',
   sidebarPosition: 'right',
   modalClassName: '',
-  overlay: false,
   overlayClassName: '',
   children: null,
 };
@@ -70,7 +68,7 @@ class Modal extends React.Component {
     this.state = {
       previousContentScroll: 0,
       margin: props.height ? null : props.margin,
-      height: props.margin ? null : props.height,
+      height: props.height,
     };
   }
 
@@ -275,6 +273,18 @@ class Modal extends React.Component {
     return jsx;
   }
 
+  renderCloseLink() {
+    let jsx;
+
+    if (this.props.onClose) {
+      jsx = (
+        <div role="presentation" onClick={ this.onClose } className="rc-modal-close" />
+      );
+    }
+
+    return jsx;
+  }
+
   renderCloseButton() {
     let jsx;
 
@@ -290,6 +300,9 @@ class Modal extends React.Component {
   }
 
   render() {
+    // TODO: Once we are on React 16 we should be able to remove this closeLink and add the onClick
+    // directly to the wrapper. Right now ReactDOM has a hard time with this pattern.
+    const closeLink = this.renderCloseLink();
     const closeButton = this.renderCloseButton();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
@@ -302,12 +315,11 @@ class Modal extends React.Component {
     const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
 
     return (
-      <div role="presentation" className={ overlayClassName } onClick={ this.onClose }>
+      <div className={ overlayClassName }>
+        { closeLink }
         <div
           ref={ (c) => { this.modal = c; } }
           className={ modalClassName }
-          role="presentation"
-          onClick={ e => e.stopPropagation() }
         >
           { sidebar }
           <div ref={ (c) => { this.content = c; } } className="rc-modal-content">
@@ -325,4 +337,4 @@ Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 
 export { Modal as BareModal };
-export default onClickOutside(portal(Modal));
+export default portal(Modal);
