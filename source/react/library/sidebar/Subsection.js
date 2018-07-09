@@ -58,7 +58,7 @@ class Subsection extends React.Component {
       return React.cloneElement(item, props);
     });
 
-    if (this.state.truncate) {
+    if (items && items.length > 3 && this.state.truncate) {
       const jsx = <a className="rc-sidebar-subsection-view-more-link" role="button" tabIndex={ 0 } onClick={ this.onViewMore } key="view-more-link">View All...</a>;
 
       items = items.slice(0, 3);
