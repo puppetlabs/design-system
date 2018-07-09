@@ -130,9 +130,9 @@ class Section extends React.Component {
       'rc-sidebar-section-closed': !this.state.open,
     }, this.props.className);
 
-    let subsections = this.getSubsections();
     let caret;
-    if (subsections.length) {
+    let subsections = this.getSubsections();
+    if (subsections) {
       subsections = (
         <ul className="rc-sidebar-subsections">
           { subsections }
