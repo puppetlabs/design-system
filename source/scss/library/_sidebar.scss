@@ -1,0 +1,207 @@
+// Sidebar
+.rc-sidebar {
+  background: $puppet-sidebar-bg;
+  overflow: auto;
+  padding-bottom: $puppet-sidebar-padding;
+  padding-top: $puppet-sidebar-padding;
+  width: $puppet-sidebar-width;
+}
+
+.rc-sidebar-minimized {
+  width: $puppet-sidebar-minimized-width;
+
+  .rc-sidebar-section-title,
+  .rc-sidebar-section-caret,
+  .rc-sidebar-subsections {
+    display: none;
+  }
+
+  .rc-sidebar-toggle {
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+}
+
+.rc-sidebar-toggle {
+  float: right;
+  margin-right: 32px;
+  margin-top: 6px;
+  position: relative;
+}
+
+.rc-sidebar-toggle-btn {
+  height: $puppet-sidebar-btn-size;
+  width: $puppet-sidebar-btn-size;
+
+  .rc-icon {
+    height: $puppet-sidebar-btn-icon-size;
+    width: $puppet-sidebar-btn-icon-size;
+  }
+}
+
+// Section
+.rc-sidebar-section:last-of-type {
+  border-bottom: 0;
+}
+
+.rc-sidebar-section-closed {
+  .rc-sidebar-subsections {
+    display: none;
+  }
+}
+
+.rc-sidebar-section-selected {
+  .rc-sidebar-section-icon .rc-icon-fill {
+    fill: $puppet-sidebar-section-title-action-color;
+  }
+
+  .rc-sidebar-section-title {
+    color: $puppet-sidebar-section-title-action-color;
+  }
+}
+
+.rc-sidebar-section-header {
+  align-items: center;
+  display: flex;
+  padding-bottom: $puppet-sidebar-section-header-vertical-padding;
+  padding-left: $puppet-sidebar-section-header-horizontal-padding;
+  padding-right: $puppet-sidebar-section-header-horizontal-padding;
+  padding-top: $puppet-sidebar-section-header-vertical-padding;
+}
+
+.rc-sidebar-section-link {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  outline: none;
+}
+
+.rc-sidebar-section-link:hover,
+.rc-sidebar-section-link:focus {
+  .rc-sidebar-section-icon .rc-icon-fill {
+    fill: $puppet-sidebar-section-title-hover-color;
+  }
+
+  .rc-sidebar-section-title {
+    color: $puppet-sidebar-section-title-hover-color;
+  }
+}
+
+.rc-sidebar-section-title {
+  color: $puppet-sidebar-section-title-color;
+  font-size: $puppet-sidebar-section-title-font-size;
+  line-height: $puppet-sidebar-section-title-line-height;
+}
+
+.rc-sidebar-section-icon {
+  display: flex;
+  margin-right: $puppet-sidebar-section-icon-margin;
+
+  .rc-icon-fill {
+    fill: $puppet-sidebar-section-title-color;
+  }
+}
+
+.rc-sidebar-section-caret {
+  display: flex;
+  margin-left: 8px;
+}
+
+// Subsections
+.rc-sidebar-subsections {
+  padding-bottom: $puppet-sidebar-subsections-vertical-padding;
+  padding-top: $puppet-sidebar-subsections-vertical-padding;
+}
+
+.rc-sidebar-subsection {
+  border-top: $puppet-sidebar-section-border;
+  padding-bottom: $puppet-sidebar-subsection-vertical-padding;
+}
+
+.rc-sidebar-subsection:last-of-type {
+  border-bottom: $puppet-sidebar-section-border;
+}
+
+.rc-sidebar-subsection-link {
+  cursor: pointer;
+  display: block;
+  height: 100%;
+  outline: none;
+}
+
+.rc-sidebar-subsection-link:hover,
+.rc-sidebar-subsection-link:focus {
+  .rc-sidebar-subsection-item-title {
+    color: $puppet-sidebar-subsection-item-action-color;
+  }
+}
+
+.rc-sidebar-subsection-header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: $puppet-sidebar-subsection-header-padding-bottom;
+  padding-left: $puppet-sidebar-section-header-horizontal-padding;
+  padding-right: $puppet-sidebar-section-header-horizontal-padding;
+  padding-top: $puppet-sidebar-subsection-header-padding-top;
+}
+
+.rc-sidebar-subsection-title {
+  color: $puppet-sidebar-subsection-title-color;
+  font-family: $puppet-sidebar-subsection-title-font;
+  font-size: $puppet-sidebar-subsection-title-font-size;
+  font-weight: $puppet-sidebar-subsection-title-font-weight;
+  line-height: $puppet-sidebar-subsection-title-line-height;
+}
+
+.rc-sidebar-subsection-add-item-btn {
+  display: flex;
+  height: $puppet-sidebar-btn-size;
+  width: $puppet-sidebar-btn-size;
+
+  .rc-icon {
+    height: $puppet-sidebar-btn-icon-size;
+    width: $puppet-sidebar-btn-icon-size;
+  }
+}
+
+.rc-sidebar-subsection-view-more-link {
+  cursor: pointer;
+  display: block;
+  font-size: $puppet-sidebar-section-view-more-font-size;
+  line-height: $puppet-sidebar-section-view-more-line-height;
+  outline: none;
+  padding-bottom: $puppet-sidebar-section-view-more-vertical-padding;
+  padding-left: $puppet-sidebar-section-header-horizontal-padding;
+  padding-right: $puppet-sidebar-section-header-horizontal-padding;
+  padding-top: $puppet-sidebar-section-view-more-vertical-padding;
+  width: 100%;
+}
+
+// SubsectionItem
+.rc-sidebar-subsection-item-selected {
+  .rc-sidebar-subsection-item-title {
+    background-color: $puppet-sidebar-subsection-item-action-bg;
+    border-radius: $puppet-sidebar-subsection-item-border-radius;
+    color: $puppet-sidebar-subsection-item-action-color;
+  }
+}
+
+.rc-sidebar-subsection-item-header {
+  padding-left: $puppet-sidebar-subsection-item-header-padding;
+  padding-right: $puppet-sidebar-subsection-item-header-padding;
+}
+
+.rc-sidebar-subsection-item-title {
+  color: $puppet-sidebar-subsection-item-color;
+  display: block;
+  font-size: $puppet-sidebar-subsection-item-font-size;
+  line-height: $puppet-sidebar-subsection-item-line-height;
+  padding-bottom: $puppet-sidebar-subsection-item-vertical-padding;
+  padding-left: $puppet-sidebar-subsection-item-horizontal-padding;
+  padding-right: $puppet-sidebar-subsection-item-horizontal-padding;
+  padding-top: $puppet-sidebar-subsection-item-vertical-padding;
+  width: 100%;
+}
