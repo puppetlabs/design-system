@@ -302,8 +302,13 @@ class Modal extends React.Component {
     const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
 
     return (
-      <div role="presentation" className={ overlayClassName } onClick={ this.onClose } >
-        <div ref={ (c) => { this.modal = c; } } className={ modalClassName }>
+      <div role="presentation" className={ overlayClassName } onClick={ this.onClose }>
+        <div
+          ref={ (c) => { this.modal = c; } }
+          className={ modalClassName }
+          role="presentation"
+          onClick={ e => e.stopPropagation() }
+        >
           { sidebar }
           <div ref={ (c) => { this.content = c; } } className="rc-modal-content">
             { children }
