@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -35,7 +34,7 @@ class BreadcrumbSection extends React.Component {
 
   render() {
     const { children, link, route } = this.props;
-    const className = classnames('rc-breadcrumb-section');
+    const className = 'rc-breadcrumb-section';
     let jsx;
 
     if (link) {

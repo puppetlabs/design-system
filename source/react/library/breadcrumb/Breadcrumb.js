@@ -1,19 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BreadcrumbSection from './BreadcrumbSection';
-import BreadcrumbSeparator from './BreadcrumbSeparator';
+import BreadcrumbSection from './Section';
+import BreadcrumbSeparator from './Separator';
 
 const propTypes = {
   children: PropTypes.any,
 };
 
-class Breadcrumb extends React.Component {
-  render() {
-    const { children } = this.props;
-
-    return <div className="rc-breadcrumb">{ children }</div>;
-  }
-}
+const Breadcrumb = props => (
+  <div className="rc-breadcrumb">{ props.children }</div>
+);
 
 Breadcrumb.propTypes = propTypes;
 

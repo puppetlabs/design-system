@@ -11,17 +11,11 @@ const defaultProps = {
 };
 
 
-class BreadcrumbSeparator extends React.Component {
-  render() {
-    const { icon } = this.props;
-
-    return (
-      <div className="rc-breadcrumb-separator">
-        <Icon size="tiny" type={ icon } />
-      </div>
-    );
-  }
-}
+const BreadcrumbSeparator = props => (
+  <div className="rc-breadcrumb-separator">
+    <Icon size="tiny" type={ props.icon } />
+  </div>
+);
 
 BreadcrumbSeparator.propTypes = propTypes;
 BreadcrumbSeparator.defaultProps = defaultProps;
