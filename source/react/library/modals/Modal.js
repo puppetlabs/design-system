@@ -278,7 +278,7 @@ class Modal extends React.Component {
 
     if (this.props.onClose) {
       jsx = (
-        <a href="/#/close" onClick={ this.onClose } className="rc-modal-close" />
+        <div role="presentation" onClick={ this.onClose } className="rc-modal-close" />
       );
     }
 
@@ -300,6 +300,8 @@ class Modal extends React.Component {
   }
 
   render() {
+    // TODO: Once we are on React 16 we should be able to remove this closeLink and add the onClick
+    // directly to the wrapper. Right now ReactDOM has a hard time with this pattern.
     const closeLink = this.renderCloseLink();
     const closeButton = this.renderCloseButton();
     const sidebar = this.renderSidebar();
