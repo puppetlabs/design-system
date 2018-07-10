@@ -37,13 +37,13 @@ describe('<Section />', () => {
   it('should not have an icon by default', () => {
     const wrapper = shallow(<Section { ...defaultProps } />);
 
-    expect(wrapper.find('Icon').length).to.eql(0);
+    expect(wrapper.find('.rc-sidebar-section-icon Icon').length).to.eql(0);
   });
 
   it('should have an icon if prop provided', () => {
     const wrapper = shallow(<Section { ...defaultProps } icon="home" />);
 
-    expect(wrapper.find('Icon').length).to.eql(1);
+    expect(wrapper.find('.rc-sidebar-section-icon Icon').length).to.eql(1);
   });
 
   it('should respond to click events if onClick provided', () => {
@@ -95,5 +95,17 @@ describe('<Section />', () => {
     );
 
     expect(wrapper.find('.test-child').length).to.eql(1);
+  });
+
+
+  it('should handle null children', () => {
+    const child = null;
+    const wrapper = shallow(
+      <Section>
+        { child }
+      </Section>,
+    );
+
+    expect(wrapper.length).to.eql(1);
   });
 });
