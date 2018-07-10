@@ -96,4 +96,16 @@ describe('<Section />', () => {
 
     expect(wrapper.find('.test-child').length).to.eql(1);
   });
+
+
+  it('should handle null children', () => {
+    const child = null;
+    const wrapper = shallow(
+      <Section>
+        { child }
+      </Section>,
+    );
+
+    expect(wrapper.length).to.eql(1);
+  });
 });

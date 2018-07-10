@@ -135,7 +135,7 @@ class Section extends React.Component {
 
     let caret;
     let subsections = this.getSubsections();
-    if (subsections) {
+    if (subsections && subsections.length) {
       subsections = (
         <ul className="rc-sidebar-subsections">
           { subsections }
