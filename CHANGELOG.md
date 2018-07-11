@@ -2,6 +2,9 @@
 
 * Adding sizes to icons
 * Updating the look and feel of modals
+* Add Breadcrumbs component
+* Add Sidebar component
+* Add Header component
 
 # 2.0.0
 
