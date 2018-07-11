@@ -50,7 +50,7 @@ Dropdown icon:
 
 Processing
 ```
-<Button status="processing">Processing</Button>
+<Button processing>Processing</Button>
 ```
 
 Disabled button:

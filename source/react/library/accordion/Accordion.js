@@ -3,10 +3,7 @@ import React, { Children } from 'react';
 import classnames from 'classnames';
 
 import Icon from '../icon/Icon';
-
-const getKey = function (child = {}, idx) {
-  return child.key || String(idx);
-};
+import { getKey } from '../../helpers/statics';
 
 const propTypes = {
   /** Title for the Accordion */

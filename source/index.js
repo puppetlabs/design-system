@@ -15,6 +15,7 @@ import DropdownMenu from './react/library/dropdown/DropdownMenu';
 import DropdownLabel from './react/library/dropdown/DropdownLabel';
 
 import * as Card from './react/library/card';
+import Sidebar from './react/library/sidebar/Sidebar';
 import StencilGrid from './react/library/stencils/StencilGrid';
 import Icon from './react/library/icon/Icon';
 import Tag from './react/library/tag/Tag';
@@ -45,6 +46,7 @@ import Filters from './react/library/filters';
 import Checkbox from './react/library/checkbox/Checkbox';
 import Saving from './react/library/Saving';
 import Content from './react/library/content/Content';
+import Header from './react/library/header';
 
 export {
   Button,
@@ -88,4 +90,6 @@ export {
   Checkbox,
   Saving,
   Content,
+  Header,
+  Sidebar,
 };

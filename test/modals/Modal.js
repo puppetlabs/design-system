@@ -23,7 +23,7 @@ describe('<Modal />', () => {
     const onClose = sinon.spy();
     const modal = shallow(<Modal onClose={ onClose } />);
 
-    expect(modal.find('.rc-modal-close').length).to.equal(1);
+    expect(modal.find('.rc-modal-close-button').length).to.equal(1);
   });
 
   it('should not render a close link if onClose is not provided', () => {
@@ -41,7 +41,7 @@ describe('<Modal />', () => {
   it('should contain a valid content text', () => {
     const modal = shallow(<Modal>{ content }</Modal>);
 
-    expect(modal.text()).to.equal(content);
+    expect(modal.find('.rc-modal-content').text()).to.equal(content);
   });
 
   it('should contain a button if actions are provided', () => {

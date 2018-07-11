@@ -28,10 +28,13 @@ const isNodeInRoot = (node, root) => {
   return contains;
 };
 
+const getKey = (child = {}, idx) => child.key || String(idx);
+
 export {
   unbindParentScroll,
   bindParentScroll,
   isNodeInRoot,
+  getKey,
 };
 
 export default isNodeInRoot;

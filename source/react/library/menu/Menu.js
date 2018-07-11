@@ -11,6 +11,7 @@ import List from './MenuList';
 const propTypes = {
   className: PropTypes.string,
   size: PropTypes.oneOf(['tiny', 'small', 'medium']),
+  dark: PropTypes.bool,
   children: PropTypes.any,
 };
 
@@ -27,8 +28,9 @@ const defaultProps = {
  */
 
 const Menu = (props) => {
-  const { size, children, className: classProp } = props;
+  const { size, children, className: classProp, dark } = props;
   const className = classnames('rc-menu', classProp, {
+    'rc-menu-dark': dark,
     [`rc-menu-${size}`]: size,
   });
 

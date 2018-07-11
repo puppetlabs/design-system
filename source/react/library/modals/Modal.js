@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classname from 'classnames';
 import debounce from 'debounce';
-import { mouseTrap } from 'react-mousetrap';
 import portal from '../portal';
 import Icon from '../icon/Icon';
 import ButtonGroup from '../buttons/ButtonGroup';
@@ -69,7 +68,7 @@ class Modal extends React.Component {
     this.state = {
       previousContentScroll: 0,
       margin: props.height ? null : props.margin,
-      height: props.margin ? null : props.height,
+      height: props.height,
     };
   }
 
@@ -200,7 +199,7 @@ class Modal extends React.Component {
 
         this.content.style.height = `${newHeight}px`;
       }
-    } else if (propMargin || modalHeight > windowHeight) {
+    } else if (propMargin && (modalHeight > (windowHeight - propMargin))) {
       const heightDecrease = (modalHeight - windowHeight) + windowPadding;
       this.content.style.height = `${contentHeight - heightDecrease}px`;
     }
@@ -241,20 +240,6 @@ class Modal extends React.Component {
     }
   }
 
-  renderCloseLink() {
-    let jsx;
-
-    if (this.props.onClose) {
-      jsx = (
-        <a href="/#/close" onClick={ this.onClose } className="rc-modal-close">
-          <Icon type="delete" />
-        </a>
-      );
-    }
-
-    return jsx;
-  }
-
   renderSidebar() {
     let jsx;
 
@@ -288,8 +273,37 @@ class Modal extends React.Component {
     return jsx;
   }
 
+  renderCloseLink() {
+    let jsx;
+
+    if (this.props.onClose) {
+      jsx = (
+        <div role="presentation" onClick={ this.onClose } className="rc-modal-close" />
+      );
+    }
+
+    return jsx;
+  }
+
+  renderCloseButton() {
+    let jsx;
+
+    if (this.props.onClose) {
+      jsx = (
+        <a className="rc-modal-close-button" role="button" tabIndex={ 0 } onClick={ this.onClose }>
+          <Icon size="tiny" type="close" />
+        </a>
+      );
+    }
+
+    return jsx;
+  }
+
   render() {
+    // TODO: Once we are on React 16 we should be able to remove this closeLink and add the onClick
+    // directly to the wrapper. Right now ReactDOM has a hard time with this pattern.
     const closeLink = this.renderCloseLink();
+    const closeButton = this.renderCloseButton();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
     const { children, size, sidebarPosition } = this.props;
@@ -301,14 +315,18 @@ class Modal extends React.Component {
     const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
 
     return (
-      <div className={ overlayClassName } >
+      <div className={ overlayClassName }>
         { closeLink }
-        <div ref={ (c) => { this.modal = c; } } className={ modalClassName }>
+        <div
+          ref={ (c) => { this.modal = c; } }
+          className={ modalClassName }
+        >
           { sidebar }
           <div ref={ (c) => { this.content = c; } } className="rc-modal-content">
             { children }
           </div>
           { actions }
+          { closeButton }
         </div>
       </div>
     );
@@ -319,4 +337,4 @@ Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
 
 export { Modal as BareModal };
-export default mouseTrap(portal(Modal));
+export default portal(Modal);
