@@ -118,9 +118,9 @@ class DatePicker extends React.Component {
     } else if (start && end) {
       buttonBody = (
         <div>
-          <span className="date">{ start.format('MMM D, YYYY') }</span>
+          <span className="date">{ start.format('ll') }</span>
           <span> to </span>
-          <span className="date">{ end.format('MMM D, YYYY') }</span>
+          <span className="date">{ end.format('ll') }</span>
         </div>
       );
     }
