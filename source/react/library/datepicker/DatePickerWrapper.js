@@ -8,11 +8,17 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
   range: PropTypes.object,
   ranges: PropTypes.array,
+  strings: PropTypes.shape({
+    customRange: PropTypes.string,
+  }),
 };
 
 const defaultProps = {
   range: null,
   ranges: null,
+  strings: {
+    customRange: 'Custom range',
+  },
 };
 
 class DatePickerWrapper extends React.Component {
@@ -37,6 +43,8 @@ class DatePickerWrapper extends React.Component {
   }
 
   getRanges() {
+    const { strings } = this.props;
+
     if (!this.props.ranges || this.props.ranges.length === 0) return null;
 
     const ranges = [];
@@ -60,7 +68,7 @@ class DatePickerWrapper extends React.Component {
       ranges.push(<li { ...props }>{range.count} {pluralize(range.unit, range.count)}</li>);
     });
 
-    ranges.push(<li key="custom" className={ classnames({ selected: custom }) }>Custom range</li>);
+    ranges.push(<li key="custom" className={ classnames({ selected: custom }) }>{strings.customRange}</li>);
 
     return (
       <ul className="rc-ranges">
