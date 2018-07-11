@@ -50,9 +50,6 @@ class DatePickerWrapper extends React.Component {
     const ranges = [];
     let custom = true;
 
-    // Um, we can do better than this...
-    const pluralize = (thing, count) => (count > 1 ? `${thing}s` : thing);
-
     this.props.ranges.forEach((range, key) => {
       const start = moment().startOf('day').subtract(range.count, range.unit);
       const onClick = this.setRange.bind(this, start);
@@ -65,7 +62,7 @@ class DatePickerWrapper extends React.Component {
 
       const props = { key, onClick, className };
 
-      ranges.push(<li { ...props }>{range.count} {pluralize(range.unit, range.count)}</li>);
+      ranges.push(<li { ...props }>{moment.duration(range.count, range.unit).humanize()}</li>);
     });
 
     ranges.push(<li key="custom" className={ classnames({ selected: custom }) }>{localeStrings.customRange}</li>);
