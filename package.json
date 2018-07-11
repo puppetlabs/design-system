@@ -79,7 +79,7 @@
   "peerDependencies": {
     "react": "15.3.2",
     "react-dom": "15.3.2",
-    "moment": "^2.11.2",
+    "moment": "^2.22.2",
     "moment-timezone": "0.5.13"
   },
   "dependencies": {
