@@ -22,6 +22,7 @@ module.exports = {
     '**/table/ColumnCheckbox.js',
   ],
   require: [
+    path.join(__dirname, 'styleguideSetup.js'),
     path.join(__dirname, 'source/scss/library/ui.scss'),
   ],
   webpackConfig: {
