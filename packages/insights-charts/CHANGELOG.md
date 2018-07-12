@@ -1,3 +1,9 @@
+# 0.10.7
+
+* Updating readme
+* Adding codeowners and contribution doc
+* Adding local npmrc file
+
 # 0.10.6
 
 * Internal updates
