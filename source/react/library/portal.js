@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { isNodeInRoot } from '../helpers/statics';
 
 // This HOC wraps passed content in a native react portal.
 const portal = (Base) => {
@@ -36,7 +37,9 @@ const portal = (Base) => {
     }
 
     componentWillUnmount() {
-      this.rootSelector.removeChild(this.container);
+      if (isNodeInRoot(this.container, this.rootSelector)) {
+        this.rootSelector.removeChild(this.container);
+      }
     }
 
     render() {
