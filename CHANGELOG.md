@@ -1,3 +1,7 @@
+# 2.1.1
+
+* Internal updates to support internationalization
+
 # 2.1.0
 
 * Adding sizes to icons
