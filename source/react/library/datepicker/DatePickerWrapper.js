@@ -8,12 +8,32 @@ const propTypes = {
   onChange: PropTypes.func.isRequired,
   range: PropTypes.object,
   ranges: PropTypes.array,
+  localeStrings: PropTypes.shape({
+    customRange: PropTypes.string,
+  }),
 };
 
 const defaultProps = {
   range: null,
   ranges: null,
+  localeStrings: {
+    customRange: 'Custom range',
+  },
 };
+
+/**
+ * NOTE: moment.duration().humanize() is the only built-in localized method for
+ * time durations, but it is very imperfect. For example, there is no option to say
+ * '1 day' instead of 'a day', and moment.duration(1, 'week').humanize() will result in
+ * '7 days' rather than what you probably wanted. The solution is to pull in
+ * [moment-duration-format](https://github.com/jsmreese/moment-duration-format) which allows
+ * more complete localized duration formats. This would require any consuming project to extend
+ * all locales (other than english) with [moment.updateLocale()](https://github.com/jsmreese/moment-duration-format#extending-moments-locale-object).
+ * It seems prudent to assess the need for this change.
+ * TODO: If there is wide-spread usage of custom date ranges in puppet insights and
+ * other consuming projects, maybe make this change.
+ */
+const formatRange = range => moment.duration(range.count, range.unit).humanize();
 
 class DatePickerWrapper extends React.Component {
   constructor(props) {
@@ -37,13 +57,12 @@ class DatePickerWrapper extends React.Component {
   }
 
   getRanges() {
+    const { localeStrings } = this.props;
+
     if (!this.props.ranges || this.props.ranges.length === 0) return null;
 
     const ranges = [];
     let custom = true;
-
-    // Um, we can do better than this...
-    const pluralize = (thing, count) => (count > 1 ? `${thing}s` : thing);
 
     this.props.ranges.forEach((range, key) => {
       const start = moment().startOf('day').subtract(range.count, range.unit);
@@ -57,10 +76,10 @@ class DatePickerWrapper extends React.Component {
 
       const props = { key, onClick, className };
 
-      ranges.push(<li { ...props }>{range.count} {pluralize(range.unit, range.count)}</li>);
+      ranges.push(<li { ...props }>{formatRange(range)}</li>);
     });
 
-    ranges.push(<li key="custom" className={ classnames({ selected: custom }) }>Custom range</li>);
+    ranges.push(<li key="custom" className={ classnames({ selected: custom }) }>{localeStrings.customRange}</li>);
 
     return (
       <ul className="rc-ranges">
