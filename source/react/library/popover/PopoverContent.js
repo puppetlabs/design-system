@@ -19,6 +19,7 @@ const propTypes = {
   allowBubble: PropTypes.bool,
   onClose: PropTypes.func,
   children: PropTypes.any,
+  isOpened: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -31,6 +32,7 @@ const defaultProps = {
   allowBubble: false,
   onClose: null,
   children: null,
+  isOpened: false,
 };
 
 class PopoverContent extends React.Component {
@@ -51,7 +53,7 @@ class PopoverContent extends React.Component {
   }
 
   onOutsideClick(e) {
-    if (!isNodeInRoot(e.target, this.elem) && this.props.onOutsideClick) {
+    if (!isNodeInRoot(e.target, this.elem) && this.props.onOutsideClick && this.props.isOpened) {
       this.props.onOutsideClick(e);
 
       if (!this.props.allowBubble) {
@@ -139,4 +141,5 @@ PopoverContent.defaultProps = defaultProps;
 
 const PopoverContentWithoutPortal = togglable(PopoverContent);
 export { PopoverContentWithoutPortal };
+
 export default portal(PopoverContent);

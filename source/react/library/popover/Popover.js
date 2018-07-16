@@ -96,22 +96,6 @@ class Popover extends React.Component {
     }
   }
 
-  componentWillReceiveProps(props) {
-    const newState = {};
-
-    if (props.open !== null && (props.open !== this.state.open)) {
-      newState.open = props.open;
-    }
-
-    if (props.position) {
-      newState.position = props.position;
-    }
-
-    if (newState) {
-      this.setState(newState);
-    }
-  }
-
   componentWillUpdate(nextProps, nextState) {
     const position = this.state.position;
 

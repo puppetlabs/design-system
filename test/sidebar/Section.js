@@ -70,21 +70,21 @@ describe('<Section />', () => {
   it('should open if onClick is triggered and it is closed and inactive (default)', () => {
     const wrapper = mount(<Section { ...defaultProps } />);
 
-    expect(wrapper.hasClass('rc-sidebar-section-closed')).to.eql(true);
+    expect(wrapper.find('.rc-sidebar-section-closed').length).to.eql(1);
 
     wrapper.find('a').simulate('click');
 
-    expect(wrapper.hasClass('rc-sidebar-section-closed')).to.eql(false);
+    expect(wrapper.find('.rc-sidebar-section-closed').length).to.eql(0);
   });
 
   it('should close if onClick is triggered and it is open and active', () => {
     const wrapper = mount(<Section { ...defaultProps } open active />);
 
-    expect(wrapper.hasClass('rc-sidebar-section-closed')).to.eql(false);
+    expect(wrapper.find('.rc-sidebar-section-closed').length).to.eql(0);
 
     wrapper.find('a').simulate('click');
 
-    expect(wrapper.hasClass('rc-sidebar-section-closed')).to.eql(true);
+    expect(wrapper.find('.rc-sidebar-section-closed').length).to.eql(1);
   });
 
   it('should properly render provided children', () => {

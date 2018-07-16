@@ -29,6 +29,7 @@ const defaultProps = {
   onClose: null,
   onChange: null,
   children: null,
+  icon: '',
 };
 
 /**
@@ -39,11 +40,8 @@ class Accordion extends React.Component {
   constructor(props) {
     super(props);
 
-    // We may need to account for the header
-    const activeIndex = props.title ? 1 : 0;
-
     this.state = {
-      activeIdx: props.autoOpen ? activeIndex : null,
+      activeIdx: props.autoOpen ? 0 : null,
     };
 
     this.onClose = this.onClose.bind(this);
@@ -120,11 +118,11 @@ class Accordion extends React.Component {
   renderItems() {
     let children = Children.toArray(this.props.children);
 
+    children = children.map((c, i) => this.renderChild(c, i));
+
     if (this.props.title) {
       children.unshift(this.renderHeader());
     }
-
-    children = children.map((c, i) => this.renderChild(c, i));
 
     return <div className="rc-accordion-items">{ children }</div>;
   }

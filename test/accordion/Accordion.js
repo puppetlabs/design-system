@@ -32,24 +32,6 @@ describe('<Accordion />', () => {
   describe('using autoOpen to open the first item', () => {
     const defaultProps = { autoOpen: true };
 
-    it('should ignore the header when the header is present', () => {
-      const title = 'I\'m a happy header';
-      const wrapper = shallow(
-        <Accordion { ...defaultProps } title={ title }>
-          <span>hi1</span>
-          <span>hi2</span>
-        </Accordion>,
-      );
-
-      expect(wrapper.find('.rc-accordion-items').childAt(1).text()).to.eql('hi1');
-
-      // Header isn't active
-      expect(wrapper.find('.rc-accordion-items').childAt(0).prop('active')).to.eql(false);
-
-      // But the first item is
-      expect(wrapper.find('.rc-accordion-items').childAt(1).prop('active')).to.eql(true);
-    });
-
     it('should mark the first item as active', () => {
       const wrapper = shallow(
         <Accordion { ...defaultProps }>
