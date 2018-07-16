@@ -1,3 +1,7 @@
+# 3.0.0
+
+* Upgraded to React 16
+
 # 2.1.1
 
 * Internal updates to support internationalization
