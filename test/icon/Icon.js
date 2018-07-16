@@ -27,6 +27,6 @@ describe('<Icon />', () => {
     const props = { type: 'unedfinedType' };
     const wrapper = shallow(<Icon { ...props } />);
 
-    expect(wrapper.node).to.eql(null);
+    expect(wrapper.getElement(0)).to.eql(null);
   });
 });

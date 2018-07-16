@@ -77,7 +77,7 @@ const exampleTableColumns = [{
   component: ColumnInput,
 }];
 <div style={ { height: '400px' } } >
-  <Accordion autoOpen>
+  <Accordion title='This accordion has autoOpen on' autoOpen>
     <AccordionItem key="elem1" title="With a Button">
       <Button label="My Button" />
     </AccordionItem>

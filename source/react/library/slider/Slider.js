@@ -237,8 +237,8 @@ class Slider extends React.Component {
           tabIndex={ 0 }
           role="slider"
           aria-valuemin={ this.props.min }
-          aria-valueMax={ this.props.max }
-          aria-valueNow={ this.state.value }
+          aria-valuemax={ this.props.max }
+          aria-valuenow={ this.state.value }
           onMouseDown={ this.onMouseDown }
           onMouseUp={ this.onMouseUp }
           className="rc-slider-handle"

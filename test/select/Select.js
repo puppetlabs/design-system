@@ -36,8 +36,8 @@ describe('<Select />', () => {
 
       wrapper.find('.rc-select-input').simulate('click');
 
-      expect(wrapper.find('MenuList').childAt(0).text()).to.eql('Sig');
-      expect(wrapper.find('MenuList').childAt(1).text()).to.eql('Catnasty');
+      expect(wrapper.find('MenuList').find('MenuItem').first().text()).to.eql('Sig');
+      expect(wrapper.find('MenuList').find('MenuItem').last().text()).to.eql('Catnasty');
     });
 
     it('should disable the selected option if the select is not clearable', () => {
@@ -208,8 +208,8 @@ describe('<Select />', () => {
 
       wrapper.find('.rc-select-input').simulate('click');
 
-      expect(wrapper.find('MenuList').childAt(0).text()).to.eql('Michael Phelps');
-      expect(wrapper.find('MenuList').childAt(1).text()).to.eql('Ryan Lochte');
+      expect(wrapper.find('MenuList').find('MenuItem').first().text()).to.eql('Michael Phelps');
+      expect(wrapper.find('MenuList').find('MenuItem').last().text()).to.eql('Ryan Lochte');
     });
 
     it('should emit the option as an object as a callback to onSelect', () => {
