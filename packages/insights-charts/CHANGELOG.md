@@ -1,3 +1,8 @@
+# 0.10.8
+
+* Upgrade to react 16 for local development
+* Add localized number formatting
+
 # 0.10.7
 
 * Updating readme

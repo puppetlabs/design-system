@@ -1,11 +1,7 @@
-import { JSDOM } from 'jsdom';
-import { select } from 'd3-selection';
+import Enzyme from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
 
-const doc = new JSDOM('<body><svg id="chart"></svg></body>');
-
-global.window = doc.window;
-global.document = doc.window.document;
-global.chart = select('#chart');
+Enzyme.configure({ adapter: new Adapter(), disableLifecycleMethods: true });
 
 afterEach(() => {
   global.chart.node().innerHTML = '';

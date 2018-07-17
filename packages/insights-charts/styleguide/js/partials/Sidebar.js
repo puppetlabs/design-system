@@ -1,8 +1,9 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router';
 
 const propTypes = {
-  pages: React.PropTypes.array,
+  pages: PropTypes.array,
 };
 
 const defaultProps = {
