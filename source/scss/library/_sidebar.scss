@@ -5,10 +5,16 @@
   padding-bottom: $puppet-sidebar-padding;
   padding-top: $puppet-sidebar-padding;
   width: $puppet-sidebar-width;
+  min-width: $puppet-sidebar-width;
+  z-index: 12;
+  position: fixed;
+  height: 100%;
 }
 
 .rc-sidebar-minimized {
   width: $puppet-sidebar-minimized-width;
+  min-width: $puppet-sidebar-minimized-width;
+  margin-right: 0;
 
   .rc-sidebar-section-title,
   .rc-sidebar-section-caret,
