@@ -1,19 +1,19 @@
 // Sidebar
 .rc-sidebar {
   background: $puppet-sidebar-bg;
+  height: 100%;
+  min-width: $puppet-sidebar-width;
   overflow: auto;
   padding-bottom: $puppet-sidebar-padding;
   padding-top: $puppet-sidebar-padding;
   width: $puppet-sidebar-width;
-  min-width: $puppet-sidebar-width;
   z-index: 12;
-  height: 100%;
 }
 
 .rc-sidebar-minimized {
-  width: $puppet-sidebar-minimized-width;
-  min-width: $puppet-sidebar-minimized-width;
   margin-right: 0;
+  min-width: $puppet-sidebar-minimized-width;
+  width: $puppet-sidebar-minimized-width;
 
   .rc-sidebar-section-title,
   .rc-sidebar-section-caret,
