@@ -5,9 +5,11 @@
   padding-bottom: $puppet-sidebar-padding;
   padding-top: $puppet-sidebar-padding;
   width: $puppet-sidebar-width;
+  z-index: 12;
 }
 
 .rc-sidebar-minimized {
+  margin-right: 0;
   width: $puppet-sidebar-minimized-width;
 
   .rc-sidebar-section-title,
@@ -17,7 +19,6 @@
   }
 
   .rc-sidebar-toggle {
-    float: none;
     margin-left: auto;
     margin-right: auto;
     text-align: center;
@@ -25,10 +26,10 @@
 }
 
 .rc-sidebar-toggle {
-  float: right;
   margin-right: 32px;
   margin-top: 6px;
   position: relative;
+  text-align: right;
 }
 
 .rc-sidebar-toggle-btn {

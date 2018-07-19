@@ -1,3 +1,7 @@
+# 3.0.1
+
+* Improve Header and Sidebar styles for responsive layouts
+
 # 3.0.0
 
 * Upgraded to React 16
@@ -33,7 +37,7 @@
 
 * Publishing to artifactory via Continous Deployment
 
-# 1.3.0 
+# 1.3.0
 
 * Renamed to @puppet/insights-ui-components and deployed to artifactory
 * Upgraded to webpack 4
