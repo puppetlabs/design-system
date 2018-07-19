@@ -1,8 +1,6 @@
 // Sidebar
 .rc-sidebar {
   background: $puppet-sidebar-bg;
-  display: flex;
-  flex-direction: column;
   overflow: auto;
   padding-bottom: $puppet-sidebar-padding;
   padding-top: $puppet-sidebar-padding;
