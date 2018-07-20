@@ -1,3 +1,7 @@
+# 3.0.2
+
+* Upgrade babel, use babel-preset-env for latest transpiling
+
 # 3.0.1
 
 * Improve Header and Sidebar styles for responsive layouts
