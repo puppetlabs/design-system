@@ -1,11 +1,14 @@
 {
   "name": "@puppet/uikit",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "main": "dist/uikit.js",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "bin": {
     "uikit": "./bin/uikit.js"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   },
   "scripts": {
     "build": "./scripts/build",
