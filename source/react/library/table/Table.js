@@ -76,8 +76,8 @@ class Table extends React.Component {
     const data = this.props.data;
 
     // This is to make sure we don't try to sort rows by non string types
-    Object.keys(data).forEach((key) => {
-      if (sortable && !isSortable(data[key][column.column])) {
+    Object.values(data).forEach((value) => {
+      if (sortable && !isSortable(value[column.column])) {
         sortable = false;
       }
     });
