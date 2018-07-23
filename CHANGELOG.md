@@ -1,6 +1,7 @@
 # 3.0.2
 
 * Upgrade babel, use babel-preset-env for latest transpiling
+* Update look and feel of the header and sidebar component
 
 # 3.0.1
 
