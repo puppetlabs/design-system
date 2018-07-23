@@ -53,7 +53,7 @@ class Header extends React.Component {
     const navItems = this.props.nav.map(item => (
       <Button
         key={ item.key }
-        size="tiny"
+        size="auto"
         onClick={ () => this.onNavClick(item.key) }
         icon={ item.icon }
         transparent
