@@ -103,7 +103,7 @@
 .rc-sidebar-section-title {
   color: $puppet-sidebar-section-title-color;
   font-size: $puppet-sidebar-section-title-font-size;
-  font-weight: 600;
+  font-weight: $puppet-sidebar-item-font-weight;
   line-height: $puppet-sidebar-section-title-line-height;
 }
 
@@ -145,7 +145,7 @@
   color: $puppet-sidebar-subsection-title-color;
   font-family: $puppet-sidebar-subsection-title-font;
   font-size: $puppet-sidebar-subsection-title-font-size;
-  font-weight: $puppet-sidebar-subsection-title-font-weight;
+  font-weight: $puppet-sidebar-item-font-weight;
   line-height: $puppet-sidebar-subsection-title-line-height;
 }
 
@@ -177,10 +177,8 @@
 .rc-sidebar-subsection-item-selected {
   .rc-sidebar-subsection-item-title {
     border-left: $puppet-sidebar-subsection-item-border-active;
-    // background-color: $puppet-sidebar-subsection-item-action-bg;
-    // border-radius: $puppet-sidebar-subsection-item-border-radius;
     color: $puppet-sidebar-subsection-item-action-color;
-    font-weight: 600;
+    font-weight: $puppet-sidebar-item-font-weight;
   }
 }
 

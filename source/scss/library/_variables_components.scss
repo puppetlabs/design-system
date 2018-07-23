@@ -189,6 +189,7 @@ $puppet-sidebar-btn-size                              : 40px !default;
 $puppet-sidebar-btn-icon-size                         : 10px !important;
 
 $puppet-sidebar-item-height                           : 40px !default;
+$puppet-sidebar-item-font-weight                      : $puppet-font-weight-heavy !default;
 
 // Sidebar Section
 $puppet-sidebar-section-title-color                   : $puppet-black !default;
@@ -204,7 +205,6 @@ $puppet-sidebar-section-header-vertical-padding       : $puppet-small !default;
 $puppet-sidebar-subsection-title-color                : $puppet-black !default;
 $puppet-sidebar-subsection-title-font                 : $puppet-secondary-font-family !default;
 $puppet-sidebar-subsection-title-font-size            : $puppet-font-size-small !default;
-$puppet-sidebar-subsection-title-font-weight          : $puppet-font-weight-heavy !default;
 $puppet-sidebar-subsection-title-line-height          : $puppet-font-size-medium !default;
 $puppet-sidebar-section-view-more-font-size           : $puppet-font-size-base !default;
 $puppet-sidebar-section-view-more-line-height         : $puppet-font-size-large !default;
