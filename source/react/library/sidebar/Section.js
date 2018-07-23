@@ -106,25 +106,6 @@ class Section extends React.Component {
     });
   }
 
-  getCaret() {
-    const { active, open } = this.state;
-    if (open && !active) {
-      return null;
-    }
-
-    let type = 'sort-down';
-
-    if (open && active) {
-      type = 'sort-up';
-    }
-
-    return (
-      <span className="rc-sidebar-section-caret">
-        <Icon size="tiny" type={ type } />
-      </span>
-    );
-  }
-
   render() {
     const { title, onClick } = this.props;
     const className = classnames('rc-sidebar-section', {
@@ -133,7 +114,6 @@ class Section extends React.Component {
       'rc-sidebar-section-closed': !this.state.open,
     }, this.props.className);
 
-    let caret;
     let subsections = this.getSubsections();
     if (subsections && subsections.length) {
       subsections = (
@@ -141,8 +121,6 @@ class Section extends React.Component {
           { subsections }
         </ul>
       );
-
-      caret = this.getCaret();
     }
 
     let icon;
@@ -160,7 +138,6 @@ class Section extends React.Component {
           <div className="rc-sidebar-section-header">
             { icon }
             <span className="rc-sidebar-section-title">{ title }</span>
-            { caret }
           </div>
         </a>
         { subsections }

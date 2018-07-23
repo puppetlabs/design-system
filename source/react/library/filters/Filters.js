@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import clone from 'clone';
-import 'core-js/fn/array/find-index';
 
 import Filter from './FilterItem';
 import Form from './FilterForm';

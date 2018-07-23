@@ -36,15 +36,7 @@ module.exports = {
         {
           test: /\.js$/,
           exclude: /node_modules\/(?!buble)/,
-          use: {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                'es2015',
-                'react',
-              ],
-            },
-          },
+          use: 'babel-loader',
         },
       ],
     },
