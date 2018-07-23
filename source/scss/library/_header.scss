@@ -4,7 +4,7 @@
   color: $puppet-header-color;
   display: flex;
   height: $puppet-header-height;
-  padding: 18px;
+  padding: $puppet-header-padding;
   width: 100%;
 }
 
@@ -62,6 +62,10 @@
   &:hover {
     background: $puppet-header-menu-item-button-bg-hover;
   }
+}
+
+.rc-header-items .rc-button {
+  margin-left: 24px;
 }
 
 @media only screen and (max-width: $puppet-breakpoint-medium) {

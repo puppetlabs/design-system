@@ -66,7 +66,13 @@ class Sidebar extends React.Component {
 
     return (
       <div className="rc-sidebar-toggle">
-        <Button className="rc-sidebar-toggle-btn" onClick={ this.onToggle } size="tiny" icon={ icon } />
+        <Button
+          className="rc-sidebar-toggle-btn"
+          onClick={ this.onToggle }
+          block
+          transparent
+          icon={ icon }
+        />
       </div>
     );
   }

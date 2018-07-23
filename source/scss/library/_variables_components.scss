@@ -183,27 +183,28 @@ $puppet-card-shadow-selected-hover          : $puppet-selected-shadow-hover !def
 // Sidebar General
 $puppet-sidebar-bg                                    : $puppet-bg-subtle !default;
 $puppet-sidebar-width                                 : 240px !default;
-$puppet-sidebar-minimized-width                       : 88px !default;
-$puppet-sidebar-padding                               : $puppet-medium !default;
-$puppet-sidebar-btn-size                              : $puppet-medium !default;
-$puppet-sidebar-btn-icon-size                         : $puppet-small !important;
+$puppet-sidebar-minimized-width                       : 72px !default;
+$puppet-sidebar-padding                               : $puppet-small !default;
+$puppet-sidebar-btn-size                              : 40px !default;
+$puppet-sidebar-btn-icon-size                         : 10px !important;
+
+$puppet-sidebar-item-height                           : 40px !default;
+$puppet-sidebar-item-font-weight                      : $puppet-font-weight-heavy !default;
 
 // Sidebar Section
-$puppet-sidebar-section-border                        : $puppet-border !default;
-$puppet-sidebar-section-title-color                   : $puppet-gray-darker !default;
-$puppet-sidebar-section-title-font-size               : 16px !default;
+$puppet-sidebar-section-title-color                   : $puppet-black !default;
+$puppet-sidebar-section-title-font-size               : 14px !default;
 $puppet-sidebar-section-title-line-height             : $puppet-large !default;
 $puppet-sidebar-section-title-action-color            : $puppet-action-color !default;
 $puppet-sidebar-section-title-hover-color             : $puppet-action-border-hover !default;
 $puppet-sidebar-section-icon-margin                   : $puppet-large !default;
-$puppet-sidebar-section-header-horizontal-padding     : $puppet-huge !default;
-$puppet-sidebar-section-header-vertical-padding       : 12px !default;
+$puppet-sidebar-section-header-horizontal-padding     : $puppet-medium !default;
+$puppet-sidebar-section-header-vertical-padding       : $puppet-small !default;
 
 // Sidebar Subsection
 $puppet-sidebar-subsection-title-color                : $puppet-black !default;
 $puppet-sidebar-subsection-title-font                 : $puppet-secondary-font-family !default;
 $puppet-sidebar-subsection-title-font-size            : $puppet-font-size-small !default;
-$puppet-sidebar-subsection-title-font-weight          : $puppet-font-weight-heavy !default;
 $puppet-sidebar-subsection-title-line-height          : $puppet-font-size-medium !default;
 $puppet-sidebar-section-view-more-font-size           : $puppet-font-size-base !default;
 $puppet-sidebar-section-view-more-line-height         : $puppet-font-size-large !default;
@@ -215,14 +216,14 @@ $puppet-sidebar-subsection-header-padding-bottom      : $puppet-size-base !defau
 
 // Sidebar Subsection Item
 $puppet-sidebar-subsection-item-color                 : $puppet-gray-dark !default;
-$puppet-sidebar-subsection-item-font-size             : $puppet-font-size-base !default;
-$puppet-sidebar-subsection-item-line-height           : $puppet-font-size-large !default;
+$puppet-sidebar-subsection-item-border                : 2px solid $puppet-gray-light !default;
+$puppet-sidebar-subsection-item-border-active         : 2px solid $puppet-action-color !default;
+$puppet-sidebar-subsection-item-font-size             : $puppet-font-size-small !default;
 $puppet-sidebar-subsection-item-action-color          : $puppet-black !default;
 $puppet-sidebar-subsection-item-action-bg             : rgba($puppet-gray-light, 0.5) !default;
 $puppet-sidebar-subsection-item-border-radius         : $puppet-border-radius !default;
-$puppet-sidebar-subsection-item-header-padding        : $puppet-large !default;
+$puppet-sidebar-subsection-item-header-padding        : $puppet-medium !default;
 $puppet-sidebar-subsection-item-horizontal-padding    : $puppet-size-base !default;
-$puppet-sidebar-subsection-item-vertical-padding      : 6px !default;
 
 
 // Datepicker
@@ -667,10 +668,11 @@ $puppet-slider-handle-size                  : 10px !default;
 $puppet-slider-bar-position                 : ($puppet-slider-handle-size - $puppet-slider-bar-height)/2 !default;
 
 // Header
-$puppet-header-height                       : 60px !default;
+$puppet-header-height                       : 72px !default;
 $puppet-header-bg                           : $puppet-black !default;
 $puppet-header-menu-bg                      : $puppet-gray-darker !default;
 $puppet-header-color                        : $puppet-white !default;
+$puppet-header-padding                      : 0 $puppet-large !default;
 $puppet-header-menu-item-button-bg-hover    : lighten($puppet-header-menu-bg, 10%) !default;
 
 // Breadcrumb

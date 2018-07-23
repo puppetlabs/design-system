@@ -73,7 +73,14 @@ class Subsection extends React.Component {
     let jsx;
 
     if (this.props.onAddItem) {
-      jsx = <Button className="rc-sidebar-subsection-add-item-btn" onClick={ this.props.onAddItem } floating />;
+      jsx = (
+        <Button
+          floating
+          size="tiny"
+          className="rc-sidebar-subsection-add-item-btn"
+          onClick={ this.props.onAddItem }
+        />
+      );
     }
 
     return jsx;
