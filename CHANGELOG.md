@@ -1,6 +1,8 @@
 # 3.0.2
 
 * Upgrade babel, use babel-preset-env for latest transpiling
+* Add browserslist
+* Use babel-preset-env for automatic polyfills
 * Update look and feel of the header and sidebar component
 
 # 3.0.1
