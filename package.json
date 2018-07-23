@@ -45,6 +45,7 @@
     "chai-enzyme": "1.0.0-beta.0",
     "cheerio": "^1.0.0-rc.2",
     "classnames": "^2.2.5",
+    "core-js": "^2.5.7",
     "css-loader": "0.28.11",
     "debounce": "1.1.0",
     "enzyme": "3.0.0",

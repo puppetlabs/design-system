@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import clone from 'clone';
 import classnames from 'classnames';
-import 'core-js/fn/array/from';
-import 'core-js/fn/array/find-index';
 
 import {
   ENTER_KEY_CODE,
