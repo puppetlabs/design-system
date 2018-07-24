@@ -675,6 +675,11 @@ $puppet-header-color                        : $puppet-white !default;
 $puppet-header-padding                      : 0 $puppet-large !default;
 $puppet-header-menu-item-button-bg-hover    : lighten($puppet-header-menu-bg, 10%) !default;
 
+// Pagenav
+$puppet-pagenav-height                       : 65px !default;
+$puppet-pagenav-padding                      : 16px !default;
+$puppet-pagenav-color                        : $puppet-gray-darker !default;
+
 // Breadcrumb
 // ----------------------------------------------------------------------------
 $puppet-breadcrumb-spacing                  : $puppet-medium;
