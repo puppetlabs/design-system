@@ -21,6 +21,14 @@
   vertical-align: top;
 }
 
+.rc-grid-collapsed > .rc-grid-row > .rc-grid-column:first-of-type {
+  padding-left: 0;
+}
+
+.rc-grid-collapsed > .rc-grid-row > .rc-grid-column:last-of-type {
+  padding-right: 0;
+}
+
 $columns: (
   two: 2,
   three: 3,

@@ -7,14 +7,17 @@ import Column from './Column';
 const propTypes = {
   children: PropTypes.any,
   columns: PropTypes.number,
+  collapsed: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 const defaultProps = {
   columns: 3,
+  collapsed: false,
 };
 
 const Grid = (props) => {
-  const { columns, children } = props;
+  const { columns, children, collapsed, className } = props;
   const mapColumnsToText = {
     1: 'one',
     2: 'two',
@@ -31,12 +34,13 @@ const Grid = (props) => {
   };
   const columnText = mapColumnsToText[columns];
 
-  const className = classnames('rc-grid', {
+  const classNames = classnames('rc-grid', className, {
     [`rc-grid-${columnText}-columns`]: columnText,
+    'rc-grid-collapsed': collapsed,
   });
 
   return (
-    <div className={ className }>{ children }</div>
+    <div className={ classNames }>{ children }</div>
   );
 };
 
