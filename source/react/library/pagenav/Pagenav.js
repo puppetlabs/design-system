@@ -5,11 +5,15 @@ import classnames from 'classnames';
 const propTypes = {
   onSectionClick: PropTypes.func,
   pageSections: PropTypes.array,
+  activeSection: PropTypes.string,
+  fixed: PropTypes.bool,
 };
 
 const defaultProps = {
   pageSections: [],
   onSectionClick: () => {},
+  activeSection: null,
+  fixed: false,
 };
 
 class Pagenav extends React.Component {
@@ -17,33 +21,30 @@ class Pagenav extends React.Component {
     super(props);
 
     this.onClick = this.onClick.bind(this);
-    this.onSectionClick = this.onSectionClick.bind(this);
 
-    this.state = { menuOpen: false };
+    this.state = { activeSection: props.activeSection };
   }
 
-  onClick() {
+  onClick(e) {
+    const activeSection = e.target.getAttribute('value');
+    this.setState({ activeSection });
+
     if (this.props.onSectionClick) {
       this.props.onSectionClick();
     }
   }
 
-  onSectionClick(key) {
-    this.setState({ menuOpen: false });
-
-    this.props.onSectionClick(key);
-  }
-
   getPagenavLeft() {
     const pageSections = this.props.pageSections;
+    const activeSection = this.state.activeSection;
 
     const sections = pageSections.map((section) => {
       const className = classnames('rc-pagenav-link', {
-        'rc-pagenav-link-active': section.active,
+        'rc-pagenav-link-active': activeSection ? activeSection === section.label : section.active,
       });
 
       return (
-        <a className={ className } role="button" tabIndex={ 0 } onClick={ this.onClick }>
+        <a value={ section.label } key={ section.label } className={ className } role="button" tabIndex={ 0 } onClick={ this.onClick }>
           { section.label }
         </a>
       );
@@ -69,8 +70,12 @@ class Pagenav extends React.Component {
     const pagenavLeft = this.getPagenavLeft();
     const pagenavRight = this.getPagenavRight();
 
+    const className = classnames('rc-pagenav', {
+      'rc-pagenav-fixed': this.props.fixed,
+    });
+
     return (
-      <div className="rc-pagenav">
+      <div className={ className }>
         { pagenavLeft }
         { pagenavRight }
       </div>

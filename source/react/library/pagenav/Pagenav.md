@@ -1,8 +1,8 @@
 ```
 const sections = [
-  { label: 'Insights Scores', key: 'insights-scores', active: true },
-  { label: 'Pipelines & Bottlenecks', key: 'pipelines-bottlenecks' },
-  { label: 'Teams & Projects', key: 'teams-projects' },
+  { label: 'Insights Scores', active: true },
+  { label: 'Pipelines & Bottlenecks' },
+  { label: 'Teams & Projects' },
 ];
 
 <Pagenav

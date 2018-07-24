@@ -1,8 +1,11 @@
 .rc-pagenav {
-  display: flex;
+  border-bottom: 1px solid $puppet-gray-light;
   height: $puppet-pagenav-height;
-  padding: $puppet-pagenav-padding;
   width: 100%;
+}
+
+.rc-pagenav-fixed {
+  position: fixed;
 }
 
 .rc-pagenav-left,
@@ -12,15 +15,23 @@
 
 .rc-pagenav-link {
   color: $puppet-pagenav-color !important;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $puppet-pagenav-font-size;
+  font-weight: $puppet-pagenav-font-weight !important;
+  height: 100%;
+  outline: none;
+  padding: $puppet-pagenav-padding;
 }
 
 .rc-pagenav-link-active {
   border-bottom: 1px solid $puppet-action-color;
+  color: $puppet-pagenav-action-color !important;
 }
-// .rc-header-right {
-//   align-items: center;
-//   display: flex;
-//   justify-content: flex-end;
-//   text-align: right;
-//   width: 50%;
-// }
+
+.rc-header-right {
+  // align-items: center;
+  // display: flex;
+  // justify-content: flex-end;
+  // text-align: right;
+}
