@@ -677,6 +677,9 @@ $puppet-header-menu-item-button-bg-hover    : lighten($puppet-header-menu-bg, 10
 
 // Breadcrumb
 // ----------------------------------------------------------------------------
-$puppet-breadcrumb-spacing                  : $puppet-medium;
+$puppet-breadcrumb-spacing                  : $puppet-medium !default;
+
+// Grid
+$puppet-grid-gutter                         : $puppet-large !default;
 
 /* stylelint-enable */

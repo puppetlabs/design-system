@@ -1,0 +1,44 @@
+.rc-grid {
+  align-items: stretch;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 0;
+};
+
+.rc-grid-row {
+  align-items: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  padding: $puppet-grid-gutter 0;
+  position: relative;
+  width: 100%;
+}
+
+.rc-grid-column {
+  padding: 0 $puppet-grid-gutter;
+  position: relative;
+  vertical-align: top;
+}
+
+$columns: (
+  two: 2,
+  three: 3,
+  four: 4,
+  five: 5,
+  six: 6,
+  seven: 7, 
+  eight: 8,
+  nine: 9,
+  ten: 10,
+  eleven: 11,
+  twelve: 12,
+);
+
+@each $text, $number in $columns {
+  // This code allows you to define the number of columns on the grid OR the row
+  .rc-grid.rc-grid-#{$text}-columns > .rc-grid-row > .rc-grid-column,
+  .rc-grid > .rc-grid-row.rc-grid-#{$text}-columns > .rc-grid-column {
+    width: (100 / $number) * 1%;
+  }
+}
