@@ -21,11 +21,35 @@
   vertical-align: top;
 }
 
-.rc-grid-collapsed > .rc-grid-row > .rc-grid-column:first-of-type {
+// Grid - Collapse outer
+
+.rc-grid-collapse-outer > .rc-grid-row > .rc-grid-column:first-of-type {
   padding-left: 0;
 }
 
-.rc-grid-collapsed > .rc-grid-row > .rc-grid-column:last-of-type {
+.rc-grid-collapse-outer > .rc-grid-row > .rc-grid-column:last-of-type {
+  padding-right: 0;
+}
+
+// Grid - Collapse inner
+
+.rc-grid-collapse-inner > .rc-grid-row > .rc-grid-column {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.rc-grid-collapse-inner > .rc-grid-row > .rc-grid-column:first-of-type {
+  padding-left: $puppet-grid-gutter;
+}
+
+.rc-grid-collapse-inner > .rc-grid-row > .rc-grid-column:last-of-type {
+  padding-right: $puppet-grid-gutter;
+}
+
+// Grid - Collapse all
+
+.rc-grid-collapse-all > .rc-grid-row > .rc-grid-column {
+  padding-left: 0;
   padding-right: 0;
 }
 
