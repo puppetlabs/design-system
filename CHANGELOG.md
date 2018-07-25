@@ -1,3 +1,7 @@
+# 3.0.3
+
+* Position accordion header action icon with flex rather than absolute positioning
+
 # 3.0.2
 
 * Upgrade babel, use babel-preset-env for latest transpiling
