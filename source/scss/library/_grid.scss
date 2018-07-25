@@ -90,7 +90,7 @@ $columns: (
 }
 
 .rc-grid-divided-vertically > .rc-grid-row:last-of-type {
-  border-bottom: none;
+  border-bottom: 0;
 }
 
 // Grid - Divided horizontally
@@ -100,5 +100,5 @@ $columns: (
 }
 
 .rc-grid-divided-horizontally > .rc-grid-row > .rc-grid-column:last-of-type {
-  border-right: none;
+  border-right: 0;
 }
