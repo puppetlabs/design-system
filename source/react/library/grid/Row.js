@@ -3,11 +3,21 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   children: PropTypes.any,
+  height: PropTypes.number,
 };
 
-const Row = props => (
-  <div className="rc-grid-row">{ props.children }</div>
-);
+const Row = (props) => {
+  const { height } = props;
+  const style = {};
+
+  if (props.height) {
+    style.height = `${height}px`;
+  }
+
+  return (
+    <div className="rc-grid-row" style={ style }>{ props.children }</div>
+  );
+};
 
 Row.propTypes = propTypes;
 
