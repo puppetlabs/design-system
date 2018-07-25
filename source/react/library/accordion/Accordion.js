@@ -85,8 +85,10 @@ class Accordion extends React.Component {
 
     return (
       <div className="rc-accordion-header" key="header">
-        { icon }
-        <span className="rc-accordion-header-title">{ this.props.title }</span>
+        <div className="rc-accordion-header-main">
+          { icon }
+          <span className="rc-accordion-header-title">{ this.props.title }</span>
+        </div>
         <span className="rc-accordion-header-action">
           <a href="" onClick={ this.onClose } >
             <Icon width="8px" height="8px" type="close" />
