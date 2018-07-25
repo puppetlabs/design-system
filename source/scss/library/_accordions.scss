@@ -16,7 +16,6 @@
   border-radius: $puppet-border-radius $puppet-border-radius 0 0;
   display: flex;
   font-size: $puppet-accordion-item-title-font-size;
-  padding: $puppet-accordion-item-title-padding;
   text-transform: $puppet-accordion-item-title-case;
 }
 
@@ -30,15 +29,19 @@
   }
 }
 
+.rc-accordion-header-main {
+  display: flex;
+  flex: 1;
+  padding: $puppet-accordion-item-title-padding;
+}
+
 .rc-accordion-header-action {
   align-items: center;
   cursor: pointer;
   display: flex;
+  flex: none;
   height: 32px;
   justify-content: center;
-  position: absolute;
-  right: 0;
-  top: 0;
   width: 32px;
 
   .rc-icon {
@@ -62,6 +65,7 @@
 
 .rc-accordion-item-header {
   height: $puppet-accordion-item-title-height;
+  padding: $puppet-accordion-item-title-padding;
 
   &:hover .rc-accordion-item-header-title {
     color: $puppet-accordion-item-title-hover;
