@@ -41,3 +41,14 @@ Grid - Collapsed all
   </Grid.Row>
 </Grid>
 ```
+
+Grid - Column count on column
+```js
+<Grid>
+  <Grid.Row>
+    <Grid.Column columns={ 2 }><div style={ { background: 'gray', height: '100px' } }>Content</div></Grid.Column>
+    <Grid.Column columns={ 4 }><div style={ { background: 'gray', height: '100px' } }>Content</div></Grid.Column>
+    <Grid.Column columns={ 6 }><div style={ { background: 'gray', height: '100px' } }>Content</div></Grid.Column>
+  </Grid.Row>
+</Grid>
+```
