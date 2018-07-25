@@ -10,20 +10,21 @@ const propTypes = {
   columns: PropTypes.number,
   collapse: PropTypes.oneOfType(['outer', 'inner', 'all']),
   className: PropTypes.string,
+  divided: PropTypes.oneOfType(['vertically', 'horizontally']),
 };
 
 const defaultProps = {
-  columns: null,
   collapse: false,
 };
 
 const Grid = (props) => {
-  const { columns, children, collapse, className } = props;
+  const { columns, children, collapse, className, divided } = props;
   const columnText = mapColumnsToText[columns];
 
   const classNames = classnames('rc-grid', className, {
     [`rc-grid-${columnText}-columns`]: columnText,
     [`rc-grid-collapse-${collapse}`]: collapse,
+    [`rc-grid-divided-${divided}`]: divided,
   });
 
   return (

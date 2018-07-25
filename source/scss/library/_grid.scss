@@ -82,3 +82,23 @@ $columns: (
   padding-left: 0;
   padding-right: 0;
 }
+
+// Grid - Divided vertically
+
+.rc-grid-divided-vertically > .rc-grid-row {
+  border-bottom: $puppet-grid-divider-border;
+}
+
+.rc-grid-divided-vertically > .rc-grid-row:last-of-type {
+  border-bottom: none;
+}
+
+// Grid - Divided horizontally
+
+.rc-grid-divided-horizontally > .rc-grid-row > .rc-grid-column {
+  border-right: $puppet-grid-divider-border;
+}
+
+.rc-grid-divided-horizontally > .rc-grid-row > .rc-grid-column:last-of-type {
+  border-right: none;
+}
