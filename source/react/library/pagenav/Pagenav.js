@@ -27,6 +27,12 @@ class Pagenav extends React.Component {
     this.state = { activeSection: props.activeSection };
   }
 
+  componentWillReceiveProps(newProps) {
+    if (this.props.activeSection !== newProps.activeSection) {
+      this.setState({ activeSection: newProps.activeSection });
+    }
+  }
+
   onClick(e) {
     const activeSection = e.target.getAttribute('value');
     this.setState({ activeSection });
