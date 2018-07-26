@@ -31,7 +31,7 @@ class Pagenav extends React.Component {
     const activeSection = e.target.getAttribute('value');
     this.setState({ activeSection });
 
-    if (document) {
+    if (document && document.getElementById(activeSection)) {
       document.getElementById(activeSection).scrollIntoView();
     }
 
