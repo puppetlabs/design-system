@@ -677,7 +677,8 @@ $puppet-header-menu-item-button-bg-hover    : lighten($puppet-header-menu-bg, 10
 
 // Pagenav
 $puppet-pagenav-height                       : 70px !default;
-$puppet-pagenav-padding                      : $puppet-large 12px !default;
+$puppet-pagenav-section-padding              : 0 12px !default;
+$puppet-pagenav-action-margin                : 0 0 0 $puppet-size-base !default;
 $puppet-pagenav-color                        : $puppet-gray-dark !default;
 $puppet-pagenav-font-weight                  : 600 !default;
 $puppet-pagenav-font-size                    : $puppet-font-size-small !default;
