@@ -1,7 +1,7 @@
 .rc-pagenav {
   border-bottom: 1px solid $puppet-gray-light;
+  display: flex;
   height: $puppet-pagenav-height;
-  width: 100%;
 }
 
 .rc-pagenav-fixed {

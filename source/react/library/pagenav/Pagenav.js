@@ -5,12 +5,14 @@ import classnames from 'classnames';
 const propTypes = {
   onSectionClick: PropTypes.func,
   pageSections: PropTypes.array,
+  actions: PropTypes.array,
   activeSection: PropTypes.string,
   fixed: PropTypes.bool,
 };
 
 const defaultProps = {
   pageSections: [],
+  actions: [],
   onSectionClick: () => {},
   activeSection: null,
   fixed: false,
@@ -29,6 +31,10 @@ class Pagenav extends React.Component {
     const activeSection = e.target.getAttribute('value');
     this.setState({ activeSection });
 
+    if (document) {
+      document.getElementById(activeSection).scrollIntoView();
+    }
+
     if (this.props.onSectionClick) {
       this.props.onSectionClick();
     }
@@ -40,11 +46,11 @@ class Pagenav extends React.Component {
 
     const sections = pageSections.map((section) => {
       const className = classnames('rc-pagenav-link', {
-        'rc-pagenav-link-active': activeSection ? activeSection === section.label : section.active,
+        'rc-pagenav-link-active': activeSection ? activeSection === section.id : section.active,
       });
 
       return (
-        <a value={ section.label } key={ section.label } className={ className } role="button" tabIndex={ 0 } onClick={ this.onClick }>
+        <a value={ section.id } key={ section.label } className={ className } role="button" tabIndex={ 0 } onClick={ this.onClick }>
           { section.label }
         </a>
       );
@@ -58,12 +64,13 @@ class Pagenav extends React.Component {
   }
 
   getPagenavRight() {
+    const actions = this.props.actions;
 
-    // return (
-    //   <div className="rc-pagenav-right">
-    //     ...
-    //   </div>
-    // );
+    return (
+      <div className="rc-pagenav-right">
+        { actions }
+      </div>
+    );
   }
 
   render() {
