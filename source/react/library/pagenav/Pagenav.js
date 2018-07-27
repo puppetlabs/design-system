@@ -41,9 +41,7 @@ class Pagenav extends React.Component {
       document.getElementById(activeSection).scrollIntoView();
     }
 
-    if (this.props.onSectionClick) {
-      this.props.onSectionClick();
-    }
+    this.props.onSectionClick();
   }
 
   getPagenavLeft() {
