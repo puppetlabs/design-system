@@ -1,3 +1,10 @@
+# 3.1.0
+
+* Adding a Grid component
+* Adding a Pagenav component
+* Adding to the list of code owners
+* Cleaning up Panels
+
 # 3.0.3
 
 * Position accordion header action icon with flex rather than absolute positioning

@@ -47,7 +47,9 @@ import Checkbox from './react/library/checkbox/Checkbox';
 import Saving from './react/library/Saving';
 import Content from './react/library/content/Content';
 import Header from './react/library/header';
+import Pagenav from './react/library/pagenav';
 import Portal from './react/library/portal';
+import Grid from './react/library/grid';
 
 export {
   Button,
@@ -92,6 +94,8 @@ export {
   Saving,
   Content,
   Header,
+  Pagenav,
   Sidebar,
   Portal,
+  Grid,
 };

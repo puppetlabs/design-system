@@ -57,16 +57,16 @@ class Panel extends React.Component {
   }
 
   render() {
-    const { children, secondary, onRemove } = this.props;
-    const className = classnames('rc-panel', {
+    const { children, secondary, onRemove, className } = this.props;
+    const classNames = classnames('rc-panel', className, {
       'rc-panel-secondary': secondary,
       'rc-panel-removable': onRemove,
-    }, this.props.className);
+    });
 
     const removeButton = this.renderRemoveButton();
 
     return (
-      <div className={ className }>
+      <div className={ classNames }>
         { removeButton }
         { children }
       </div>
