@@ -705,11 +705,24 @@ $puppet-grid-divider-border: 1px solid $puppet-gray-light;
 $puppet-heading-font-family                 : $puppet-font-family;
 $puppet-heading-subtle-color                : $puppet-gray-base;
 $puppet-heading-medium-color                : $puppet-gray-dark;
-$puppet-heading-h1-font-size                : 32px;
-$puppet-heading-h2-font-size                : 24px;
-$puppet-heading-h3-font-size                : 16px;
-$puppet-heading-h4-font-size                : 16px;
-$puppet-heading-h5-font-size                : 16px;
-$puppet-heading-h6-font-size                : 16px;
+
+$puppet-heading-h1-font-size                : 40px;
+$puppet-heading-h1-line-height              : 48px;
+
+$puppet-heading-h2-font-size                : 32px;
+$puppet-heading-h2-line-height              : 36px;
+
+$puppet-heading-h3-font-size                : 24px;
+$puppet-heading-h3-line-height              : 28px;
+
+$puppet-heading-h4-font-size                : 18px;
+$puppet-heading-h4-line-height              : 24px;
+
+$puppet-heading-h5-font-size                : 14px;
+$puppet-heading-h5-line-height              : 22px;
+
+$puppet-heading-h6-font-size                : 12px;
+$puppet-heading-h6-line-height              : 18px;
+
 
 /* stylelint-enable */
