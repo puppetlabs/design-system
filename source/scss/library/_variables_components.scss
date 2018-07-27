@@ -675,6 +675,15 @@ $puppet-header-color                        : $puppet-white !default;
 $puppet-header-padding                      : 0 $puppet-large !default;
 $puppet-header-menu-item-button-bg-hover    : lighten($puppet-header-menu-bg, 10%) !default;
 
+// Pagenav
+$puppet-pagenav-height                       : 64px !default;
+$puppet-pagenav-section-padding              : 0 12px !default;
+$puppet-pagenav-action-margin                : 0 0 0 $puppet-size-base !default;
+$puppet-pagenav-color                        : $puppet-gray-dark !default;
+$puppet-pagenav-font-weight                  : $puppet-font-weight-heavy !default;
+$puppet-pagenav-font-size                    : $puppet-font-size-small !default;
+$puppet-pagenav-action-color                 : $puppet-gray-darker !default;
+
 // Breadcrumb
 // ----------------------------------------------------------------------------
 $puppet-breadcrumb-spacing                  : $puppet-medium !default;
