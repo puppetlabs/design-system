@@ -30,7 +30,7 @@ $columns: (
   four: 4,
   five: 5,
   six: 6,
-  seven: 7, 
+  seven: 7,
   eight: 8,
   nine: 9,
   ten: 10,
@@ -101,4 +101,23 @@ $columns: (
 
 .rc-grid-divided-horizontally > .rc-grid-row > .rc-grid-column:last-of-type {
   border-right: 0;
+}
+
+// Row - Collapse Top
+
+.rc-grid-row-collapse-top {
+  padding-top: 0;
+}
+
+// Row - Collapse Bottom
+
+.rc-grid-row-collapse-bottom {
+  padding-bottom: 0;
+}
+
+// Row - Collapse All
+
+.rc-grid-row-collapse-all {
+  padding-bottom: 0;
+  padding-top: 0;
 }
