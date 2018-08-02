@@ -8,7 +8,7 @@ import { mapColumnsToText } from '../../helpers/statics';
 const propTypes = {
   children: PropTypes.any,
   columns: PropTypes.number,
-  collapse: PropTypes.oneOfType(['outer', 'inner', 'all']),
+  collapse: PropTypes.oneOfType(['outer', 'inner', 'all', 'all-slim-inner']),
   className: PropTypes.string,
   divided: PropTypes.oneOfType(['vertically', 'horizontally']),
 };

@@ -637,7 +637,7 @@ $puppet-tag-icon-size                       : 16px !default;
 $puppet-tag-icon-fill                       : $puppet-gray-light !default;
 
 $puppet-tag-tiny-font-size                  : $puppet-font-size-tiny !default;
-$puppet-tag-tiny-height                     : 22px !default; // Todo: Base on grid
+$puppet-tag-tiny-height                     : 16px !default; // Todo: Base on grid
 $puppet-tag-tiny-line-height                : $puppet-tag-tiny-height !default;
 $puppet-tag-tiny-padding                    : 0 $puppet-small !default;
 
@@ -689,7 +689,7 @@ $puppet-pagenav-action-color                 : $puppet-gray-darker !default;
 $puppet-breadcrumb-spacing                  : $puppet-medium !default;
 
 // Grid
-$puppet-grid-gutter                         : $puppet-medium !default;
+$puppet-grid-gutter                         : $puppet-size-base !default;
 $puppet-grid-divider-border                 : 1px solid $puppet-gray-light;
 
 /* stylelint-enable */

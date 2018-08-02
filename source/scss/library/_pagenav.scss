@@ -27,13 +27,13 @@
 }
 
 .rc-pagenav-link-active {
-  border-bottom: 1px solid $puppet-action-color;
+  border-bottom: 2px solid $puppet-action-color;
   color: $puppet-pagenav-action-color !important;
 }
 
 .rc-pagenav-right {
   text-align: right;
-  
+
   > * {
     margin: $puppet-pagenav-action-margin;
   }

@@ -1,3 +1,9 @@
+# 3.1.1
+
+* More styling options for Grid component
+* Content component can now take a className prop
+* Update tiny Tag size
+
 # 3.1.0
 
 * Adding a Grid component
