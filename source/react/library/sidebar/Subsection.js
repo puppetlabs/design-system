@@ -7,23 +7,31 @@ import { SIDEBAR_SUBSECTION_TRUNC_LENGTH } from '../../constants';
 const propTypes = {
   children: PropTypes.any,
   title: PropTypes.any,
+  /** Whether or not the current subsection is selected */
+  selected: PropTypes.bool,
   /** The title of the active item */
-  selected: PropTypes.string,
+  selectedItem: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
   onSubItemClick: PropTypes.func,
   /** Boolean to truncate lists w/expand button */
   truncate: PropTypes.bool,
   /** Optional method that fires when clicking "Add New" */
   onAddItem: PropTypes.func,
+  /** CTA to use for the add item button */
+  addItemCTA: PropTypes.string,
+  /** Callback for when section is clicked */
+  onSubsectionClick: PropTypes.func,
 };
 
 const defaultProps = {
   children: [],
   title: '',
-  selected: null,
+  selected: false,
+  selectedItem: null,
   onSubItemClick: () => {},
   truncate: false,
   onAddItem: null,
+  addItemCTA: 'Add item',
 };
 
 class Subsection extends React.Component {
@@ -49,17 +57,21 @@ class Subsection extends React.Component {
   }
 
   getItems() {
-    let items = React.Children.map(this.props.children, (item, idx) => {
-      const props = {
-        key: getKey(item, idx),
-        onSubItemClick: this.onSubItemClick,
-        selected: this.props.selected,
-      };
+    let items = [];
 
-      return React.cloneElement(item, props);
-    });
+    if (this.props.selected) {
+      items = React.Children.map(this.props.children, (item, idx) => {
+        const props = {
+          key: getKey(item, idx),
+          onSubItemClick: this.onSubItemClick,
+          selected: this.props.selectedItem,
+        };
 
-    if (items && items.length > SIDEBAR_SUBSECTION_TRUNC_LENGTH && this.state.truncate) {
+        return React.cloneElement(item, props);
+      });
+    }
+
+    if (items.length > SIDEBAR_SUBSECTION_TRUNC_LENGTH && this.state.truncate) {
       const jsx = <a className="rc-sidebar-subsection-view-more-link" role="button" tabIndex={ 0 } onClick={ this.onViewMore } key="view-more-link">View All...</a>;
 
       items = items.slice(0, SIDEBAR_SUBSECTION_TRUNC_LENGTH);
@@ -75,11 +87,13 @@ class Subsection extends React.Component {
     if (this.props.onAddItem) {
       jsx = (
         <Button
-          floating
           size="tiny"
+          secondary
           className="rc-sidebar-subsection-add-item-btn"
           onClick={ this.props.onAddItem }
-        />
+        >
+          { this.props.addItemCTA }
+        </Button>
       );
     }
 
@@ -92,14 +106,19 @@ class Subsection extends React.Component {
 
     return (
       <div className="rc-sidebar-subsection">
-        <div className="rc-sidebar-subsection-header">
+        <a
+          role="button"
+          tabIndex={ 0 }
+          className="rc-sidebar-subsection-header-link"
+          onClick={ () => this.props.onSubsectionClick(this.props.title) }
+        >
           <span className="rc-sidebar-subsection-title">
             { this.props.title }
           </span>
-          { addItemBtn }
-        </div>
+        </a>
         <div className="rc-sidebar-subsection-items">
           { items }
+          { addItemBtn }
         </div>
       </div>
     );

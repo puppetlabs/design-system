@@ -49,12 +49,14 @@ class Section extends React.Component {
 
     this.state = {
       selectedSubItem: null,
+      selectedSubsection: null,
       open: props.open,
       active: isActive(props),
     };
 
     this.onClick = this.onClick.bind(this);
     this.onSubItemClick = this.onSubItemClick.bind(this);
+    this.onSubsectionClick = this.onSubsectionClick.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -94,12 +96,26 @@ class Section extends React.Component {
     this.props.onSectionClick(this.props.title);
   }
 
+  onSubsectionClick(title) {
+    this.setState({ selectedSubsection: title });
+  }
+
   renderSubsections() {
+    const isActiveSubsection = (subsection, idx) => {
+      if (this.state.active && !this.state.selectedSubsection && idx === 0) {
+        return true;
+      }
+
+      return subsection.props.title && subsection.props.title === this.state.selectedSubsection;
+    };
+
     return React.Children.map(this.props.children, (subsection, idx) => {
       const props = {
         key: getKey(subsection, idx),
         onSubItemClick: this.onSubItemClick,
-        selected: this.state.selectedSubItem,
+        onSubsectionClick: this.onSubsectionClick,
+        selected: isActiveSubsection(subsection, idx),
+        selectedItem: this.state.selectedSubItem,
       };
 
       return React.cloneElement(subsection, props);
