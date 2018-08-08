@@ -94,7 +94,7 @@ class Section extends React.Component {
     this.props.onSectionClick(this.props.title);
   }
 
-  getSubsections() {
+  renderSubsections() {
     return React.Children.map(this.props.children, (subsection, idx) => {
       const props = {
         key: getKey(subsection, idx),
@@ -114,7 +114,11 @@ class Section extends React.Component {
       'rc-sidebar-section-closed': !this.state.open,
     }, this.props.className);
 
-    let subsections = this.getSubsections();
+    let subsections = [];
+    if (this.state.active) {
+      subsections = this.renderSubsections();
+    }
+
     if (subsections && subsections.length) {
       subsections = (
         <ul className="rc-sidebar-subsections">
