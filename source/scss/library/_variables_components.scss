@@ -621,9 +621,9 @@ $puppet-table-border-radius                 : $puppet-border-radius !default;
 // ----------------------------------------------------------------------------
 $puppet-tag-bg                              : $puppet-bg-subtle !default;
 $puppet-tag-border-radius                   : $puppet-border-radius !default;
-$puppet-tag-border                          : 1px solid $puppet-white !default;
+$puppet-tag-border                          : 1px solid $puppet-bg-subtle !default;
 $puppet-tag-border-selected                 : $puppet-border-active !default;
-$puppet-tag-color                           : $puppet-font-color-medium !default;
+$puppet-tag-color                           : $puppet-gray-base !default;
 $puppet-tag-font-size                       : $puppet-button-font-size !default;
 $puppet-tag-font-weight                     : $puppet-button-font-weight !default;
 $puppet-tag-height                          : 33px !default; // Todo: Base on grid
@@ -632,6 +632,9 @@ $puppet-tag-margin                          : $puppet-mini !default;
 $puppet-tag-padding                         : $puppet-small !default;
 $puppet-tag-shadow-selected                 : $puppet-selected-shadow !default;
 
+$puppet-tag-bg-bold                         : #dfe4e8 !default;
+$puppet-tag-color-bold                      : #40484d !default;
+
 $puppet-tag-icon-spacing                    : $puppet-tiny !default;
 $puppet-tag-icon-size                       : 16px !default;
 $puppet-tag-icon-fill                       : $puppet-gray-light !default;
@@ -639,7 +642,7 @@ $puppet-tag-icon-fill                       : $puppet-gray-light !default;
 $puppet-tag-tiny-font-size                  : $puppet-font-size-tiny !default;
 $puppet-tag-tiny-height                     : 16px !default; // Todo: Base on grid
 $puppet-tag-tiny-line-height                : $puppet-tag-tiny-height !default;
-$puppet-tag-tiny-padding                    : 0 $puppet-small !default;
+$puppet-tag-tiny-padding                    : 0 $puppet-tiny !default;
 
 // Toggle
 // ----------------------------------------------------------------------------

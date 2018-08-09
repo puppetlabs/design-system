@@ -7,6 +7,8 @@ import { TooltipHoverArea } from '../tooltips/Tooltip';
 const propTypes = {
   /** Selected state */
   primary: PropTypes.bool,
+  secondary: PropTypes.bool,
+  bold: PropTypes.bool,
   selected: PropTypes.bool,
   className: PropTypes.string,
   round: PropTypes.bool,
@@ -21,6 +23,7 @@ const propTypes = {
 
 const defaultProps = {
   primary: false,
+  secondary: false,
   selected: false,
   round: false,
   className: '',
@@ -119,10 +122,22 @@ class Tag extends React.Component {
   }
 
   render() {
-    const { onRemove, onClick, primary, selected, size, block, round } = this.props;
+    const {
+      onRemove,
+      onClick,
+      primary,
+      secondary,
+      bold,
+      selected,
+      size,
+      block,
+      round,
+    } = this.props;
 
     const className = classnames('rc-tag', {
       'rc-tag-primary': primary,
+      'rc-tag-secondary': secondary,
+      'rc-tag-bold': bold,
       'rc-tag-selected': selected,
       'rc-tag-selectable': onClick,
       'rc-tag-removable': onRemove,

@@ -6,6 +6,7 @@
   color: $puppet-tag-color;
   display: inline-flex;
   font-size: $puppet-tag-font-size;
+  font-weight: $puppet-tag-font-weight;
   height: $puppet-tag-height;
   margin: 0 $puppet-tag-margin;
   padding: 0 $puppet-tag-padding;
@@ -58,6 +59,26 @@
   .rc-tag-remove-button:hover .rc-icon {
     fill: $puppet-white;
   }
+}
+
+.rc-tag-secondary {
+  background: $puppet-brand-secondary;
+  border-color: $puppet-brand-secondary;
+  color: $puppet-white;
+
+  .rc-tag-remove-button .rc-icon {
+    fill: $puppet-white;
+  }
+
+  .rc-tag-remove-button:hover .rc-icon {
+    fill: $puppet-white;
+  }
+}
+
+.rc-tag-bold {
+  background: $puppet-tag-bg-bold;
+  border-color: $puppet-tag-bg-bold;
+  color: $puppet-tag-color-bold;
 }
 
 .rc-tag-remove-button {
