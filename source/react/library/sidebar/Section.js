@@ -69,22 +69,32 @@ class Section extends React.Component {
 
   onClick(e) {
     e.preventDefault();
+    const newState = {};
 
-    const { open, active, selectedSubItem } = this.state;
+    const { open, active, selectedSubItem, selectedSubsection } = this.state;
     // Set open state based on condition:
     // You cannot minimize a non-active section
     if (!(open && !active)) {
-      this.setState({ open: !open });
+      newState.open = !open;
     }
 
     // When toggling between sections, let's reset state
     // for active subitems in inactive sections
     if (!active && selectedSubItem) {
-      this.setState({ selectedSubItem: null });
+      newState.selectedSubItem = null;
+    }
+
+    // Same with subsections
+    if (!active && selectedSubsection) {
+      newState.selectedSubsection = null;
     }
 
     const { onSectionClick, onClick, title } = this.props;
     onSectionClick(title);
+
+    if (Object.keys(newState).length) {
+      this.setState(newState);
+    }
 
     if (onClick) {
       onClick();
@@ -96,13 +106,8 @@ class Section extends React.Component {
     this.props.onSectionClick(this.props.title);
   }
 
-  onSubsectionClick(subsection) {
-    return (title) => {
-      this.setState({ selectedSubsection: title });
-
-      // TODO: HACK figure out how tombine these, or do this in a semi-sane way/
-      subsection.props.onSubsectionClick();
-    };
+  onSubsectionClick(title) {
+    this.setState({ selectedSubsection: title });
   }
 
   renderSubsections() {
@@ -118,7 +123,7 @@ class Section extends React.Component {
       const props = {
         key: getKey(subsection, idx),
         onSubItemClick: this.onSubItemClick,
-        onSubsectionClick: this.onSubsectionClick(subsection),
+        onSubsectionClick: this.onSubsectionClick,
         selected: isActiveSubsection(subsection, idx),
         selectedItem: this.state.selectedSubItem,
       };

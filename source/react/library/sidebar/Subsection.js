@@ -21,10 +21,12 @@ const propTypes = {
   addItemCTA: PropTypes.string,
   /** Callback for when section is clicked */
   onSubsectionClick: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {
   children: [],
+  onClick: () => {},
   title: '',
   selected: false,
   selectedItem: null,
@@ -50,6 +52,7 @@ class Subsection extends React.Component {
 
   onClick() {
     this.props.onSubsectionClick(this.props.title);
+    this.props.onClick();
   }
 
   onSubItemClick(item) {
