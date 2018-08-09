@@ -5,7 +5,7 @@ import React from 'react';
 
 import Pagenav from '../../source/react/library/pagenav/Pagenav';
 
-describe.only('<Pagenav />', () => {
+describe('<Pagenav />', () => {
   const sections = [
     { label: 'Insights Scores', active: true },
     { label: 'Pipelines & Bottlenecks' },
