@@ -32,6 +32,7 @@ const defaultProps = {
   truncate: false,
   onAddItem: null,
   addItemCTA: 'Add item',
+  onSubsectionClick: () => {},
 };
 
 class Subsection extends React.Component {
@@ -44,6 +45,11 @@ class Subsection extends React.Component {
 
     this.onSubItemClick = this.onSubItemClick.bind(this);
     this.onViewMore = this.onViewMore.bind(this);
+    this.onClick = this.onClick.bind(this);
+  }
+
+  onClick() {
+    this.props.onSubsectionClick(this.props.title);
   }
 
   onSubItemClick(item) {
@@ -110,7 +116,7 @@ class Subsection extends React.Component {
           role="button"
           tabIndex={ 0 }
           className="rc-sidebar-subsection-header-link"
-          onClick={ () => this.props.onSubsectionClick(this.props.title) }
+          onClick={ this.onClick }
         >
           <span className="rc-sidebar-subsection-title">
             { this.props.title }

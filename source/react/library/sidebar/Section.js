@@ -96,8 +96,13 @@ class Section extends React.Component {
     this.props.onSectionClick(this.props.title);
   }
 
-  onSubsectionClick(title) {
-    this.setState({ selectedSubsection: title });
+  onSubsectionClick(subsection) {
+    return (title) => {
+      this.setState({ selectedSubsection: title });
+
+      // TODO: HACK figure out how tombine these, or do this in a semi-sane way/
+      subsection.props.onSubsectionClick();
+    };
   }
 
   renderSubsections() {
@@ -113,7 +118,7 @@ class Section extends React.Component {
       const props = {
         key: getKey(subsection, idx),
         onSubItemClick: this.onSubItemClick,
-        onSubsectionClick: this.onSubsectionClick,
+        onSubsectionClick: this.onSubsectionClick(subsection),
         selected: isActiveSubsection(subsection, idx),
         selectedItem: this.state.selectedSubItem,
       };
