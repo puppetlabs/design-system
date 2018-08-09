@@ -79,6 +79,11 @@
   background: $puppet-tag-bg-bold;
   border-color: $puppet-tag-bg-bold;
   color: $puppet-tag-color-bold;
+
+  .rc-tag-button .rc-icon,
+  .rc-tag-button:hover .rc-icon {
+    fill: $puppet-tag-color-bold;
+  }
 }
 
 .rc-tag-remove-button {
