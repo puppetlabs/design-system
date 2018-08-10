@@ -139,10 +139,11 @@ class Button extends React.Component {
       content = <span className="rc-button-content">{ children || label }</span>;
     }
 
-    if (this.props.icon) {
+    if (this.props.icon || floating) {
       const iconSize = simple ? '8px' : '16px';
+      const iconType = (!this.props.icon && floating) ? 'plus' : this.props.icon;
 
-      icon = <Icon height={ iconSize } width={ iconSize } type={ this.props.icon } />;
+      icon = <Icon height={ iconSize } width={ iconSize } type={ iconType } />;
     }
 
     if (this.props.dropdown && !this.props.processing) {
