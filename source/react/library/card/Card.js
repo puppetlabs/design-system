@@ -16,6 +16,8 @@ const propTypes = {
   className: PropTypes.string,
   /**  Function to be called when the user clicks on a card */
   onClick: PropTypes.func,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
 };
 
 const defaultProps = {
@@ -27,6 +29,8 @@ const defaultProps = {
   className: '',
   children: null,
   onClick: null,
+  onMouseEnter: null,
+  onMouseLeave: null,
 };
 
 /**
@@ -50,7 +54,17 @@ class Card extends React.Component {
   }
 
   render() {
-    const { style, size, onClick, width, height, selected } = this.props;
+    const {
+      style,
+      size,
+      onClick,
+      width,
+      height,
+      selected,
+      onMouseEnter,
+      onMouseLeave,
+    } = this.props;
+
     const className = classnames('rc-card', {
       'rc-card-large': size === 'large',
       'rc-card-small': size === 'small',
@@ -59,6 +73,7 @@ class Card extends React.Component {
       [`rc-card-${style}`]: style,
       'rc-card-selectable': onClick,
     }, this.props.className);
+
     const content = this.props.children;
     const styles = {};
 
@@ -78,6 +93,14 @@ class Card extends React.Component {
     if (onClick) {
       props.onClick = onClick;
       props.role = 'button';
+    }
+
+    if (onMouseEnter) {
+      props.onMouseEnter = onMouseEnter;
+    }
+
+    if (onMouseLeave) {
+      props.onMouseLeave = onMouseLeave;
     }
 
     return <div { ...props }>{ content }</div>;

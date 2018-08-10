@@ -60,7 +60,7 @@
     "fast-csv": "^2.4.1",
     "jsdom": "11.1.0",
     "mocha": "3.5.3",
-    "mocha-jsdom": "2.0.0",
+    "mocha-jsdom": "1.2.0",
     "moment-range": "3.0.0",
     "moment-timezone": "0.5.13",
     "node-sass": "4.9.0",
