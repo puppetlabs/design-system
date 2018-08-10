@@ -9,6 +9,7 @@ import AreaChart from './AreaChart';
 import LineChart from './LineChart';
 import ColumnChart from './ColumnChart';
 import DonutChart from './DonutChart';
+import GaugeChart from './GaugeChart';
 import ScatterChart from './ScatterChart';
 import CombinationChart from './CombinationChart';
 import SparklineChart from './SparklineChart';
@@ -211,6 +212,9 @@ class Chart {
         break;
       case 'donut':
         chart = DonutChart;
+        break;
+      case 'gauge':
+        chart = GaugeChart;
         break;
       case 'scatter':
         chart = ScatterChart;

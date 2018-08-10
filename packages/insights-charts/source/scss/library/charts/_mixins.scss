@@ -41,6 +41,25 @@
   }
 }
 
+@mixin reflect-gauge-color($color, $background: darken($color, 20%), $font-color: black) {
+  .reflect-charts-gauge-arc {
+    fill: $background;
+    stroke: $background;
+  }
+  
+  .reflect-charts-gauge-arc-value {
+    fill: $color;
+  }
+
+  .reflect-charts-gauge-kpi {
+    fill: $font-color;
+  }
+
+  .reflect-charts-gauge-delta {
+    fill: $font-color;
+  }
+}
+
 @mixin reflect-poi-color($color, $opacity: 1) {
   .reflect-charts-poi {
     fill: $reflect-poi-fill;
@@ -53,31 +72,37 @@
     background: $color;
   }
 }
-
+/* stylelint-disable max-nesting-depth  */
 @mixin reflect-colors($type, $palette: $reflect-palette) {
   $limit: length($palette);
   $i: 0;
 
-  @while $i < $limit {
-    $color: map-get($palette, $i);
+  @if $type == gauge {
+    $color: map-get($palette, 0);
+    @include reflect-gauge-color($color);
+  } @else {
+    @while $i < $limit {
+      $color: map-get($palette, $i);
 
-    .reflect-charts-color-#{$i} {
-      transition: opacity $reflect-transition-time linear;
-      @include reflect-poi-color($color);
-      @include reflect-indicator-color($color);
+      .reflect-charts-color-#{$i} {
+        transition: opacity $reflect-transition-time linear;
+        @include reflect-poi-color($color);
+        @include reflect-indicator-color($color);
 
-      @if $type == line {
-        @include reflect-line-color($color);
-      } @else if $type == area {
-        @include reflect-line-color($color);
-        @include reflect-area-color($color);
-      } @else if $type == column {
-        @include reflect-column-color($color);
-      } @else if $type == donut {
-        @include reflect-donut-color($color);
+        @if $type == line {
+          @include reflect-line-color($color);
+        } @else if $type == area {
+          @include reflect-line-color($color);
+          @include reflect-area-color($color);
+        } @else if $type == column {
+          @include reflect-column-color($color);
+        } @else if $type == donut {
+          @include reflect-donut-color($color);
+        }
       }
-    }
 
-    $i: $i + 1;
+      $i: $i + 1;
+    }
   }
 }
+/* stylelint-endable max-nesting-depth  */

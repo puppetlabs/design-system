@@ -67,7 +67,12 @@ class Container {
     const dimensions = this.dimensions;
     const margins = this.dimensions.margins;
 
-    if (this.type !== 'sparkline' && this.type !== 'donut' && margins.static !== true) {
+    if (
+      this.type !== 'sparkline' &&
+      this.type !== 'donut' &&
+      this.type !== 'gauge' &&
+      margins.static !== true
+    ) {
       const options = this.options;
       const orientation = options.axis.x.orientation;
       const categories = this.data.getCategories().map(c => (c.label));
@@ -198,14 +203,24 @@ class Container {
 
   setSVGHeight() {
     const margins = this.dimensions.margins;
+    let outerMargins = 0;
 
-    this.dimensions.height = this.dimensions.height - margins.top - margins.bottom;
+    if (this.type !== 'gauge') {
+      outerMargins = margins.top + margins.bottom;
+    }
+
+    this.dimensions.height = this.dimensions.height - outerMargins;
   }
 
   setSVGWidth() {
     const margins = this.dimensions.margins;
+    let outerMargins = 0;
 
-    this.dimensions.width = this.dimensions.width - margins.left - margins.right;
+    if (this.type !== 'gauge') {
+      outerMargins = margins.left + margins.right;
+    }
+
+    this.dimensions.width = this.dimensions.width - outerMargins;
   }
 
   render(elem) {
@@ -239,7 +254,7 @@ class Container {
   }
 
   renderLegend() {
-    if (this.type !== 'sparkline') {
+    if (this.type !== 'sparkline' && this.type !== 'gauge') {
       const { wrapper, data, options, dimensions, dispatchers } = this;
       const margins = dimensions.margins;
       const legendOptions = clone(options);
@@ -290,11 +305,15 @@ class Container {
         .style('width', `${width + margins.left + margins.right}px`)
         .attr('height', height + margins.top + margins.bottom)
         .style('height', `${height + margins.top + margins.bottom}px`)
-        .style('margin-top', options.legend.orientation === 'top' ? `${legend.height}px` : null)
-        .style('margin-left', options.legend.orientation === 'left' ? `${legend.width}px` : null);
+        .style('margin-top', options.legend.orientation === 'top' && legend ? `${legend.height}px` : null)
+        .style('margin-left', options.legend.orientation === 'left' && legend ? `${legend.width}px` : null);
+
+    // TODO: we need to figure out a better way to position the gauge chart. This is only intended
+    // as a quick fix
+    const translation = this.type !== 'gauge' ? `${margins.left},${margins.top}` : '0, 0';
 
     this.g = this.svg.append('g')
-        .attr('transform', `translate(${margins.left},${margins.top})`);
+        .attr('transform', `translate(${translation})`);
 
     return this;
   }
@@ -328,8 +347,8 @@ class Container {
         .style('width', `${width + margins.left + margins.right}px`)
         .attr('height', height + margins.top + margins.bottom)
         .style('height', `${height + margins.top + margins.bottom}px`)
-        .style('margin-top', options.legend.orientation === 'top' ? `${legend.height}px` : null)
-        .style('margin-left', options.legend.orientation === 'left' ? `${legend.width}px` : null)
+        .style('margin-top', options.legend.orientation === 'top' && legend ? `${legend.height}px` : null)
+        .style('margin-left', options.legend.orientation === 'left' && legend ? `${legend.width}px` : null)
       .select('g')
         .attr('transform', `translate(${margins.left},${margins.top})`);
   }

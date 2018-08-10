@@ -10,6 +10,7 @@ import ColumnCharts from './ColumnCharts';
 import BarCharts from './BarCharts';
 import AreaCharts from './AreaCharts';
 import DonutCharts from './DonutCharts';
+import GaugeCharts from './GaugeCharts';
 import ScatterCharts from './ScatterCharts';
 import CombinationCharts from './CombinationCharts';
 import SparklineCharts from './SparklineCharts';
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <Route name="Column charts" path="column-charts" components={ ColumnCharts } />
           <Route name="Bar charts" path="bar-charts" components={ BarCharts } />
           <Route name="Donut charts" path="donut-charts" components={ DonutCharts } />
+          <Route name="Gauge charts" path="gauge-charts" components={ GaugeCharts } />
           <Route name="Scatter charts" path="scatter-charts" components={ ScatterCharts } />
           <Route
             name="Combination charts"

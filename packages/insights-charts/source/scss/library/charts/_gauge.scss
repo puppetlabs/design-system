@@ -1,0 +1,15 @@
+.reflect-charts-gauge {
+  @include reflect-colors(gauge);
+
+  .reflect-charts-gauge-kpi {
+    alignment-baseline: baseline;
+    font-weight: 600;
+    text-anchor: middle;
+  }
+
+  .reflect-charts-gauge-delta {
+    alignment-baseline: middle;
+    text-anchor: middle;
+  }
+}
+

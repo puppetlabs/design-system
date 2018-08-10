@@ -1,3 +1,7 @@
+# 0.11.0
+
+* Adding a basic gauge chart
+
 # 0.10.8
 
 * Upgrade to react 16 for local development
