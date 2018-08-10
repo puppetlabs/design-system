@@ -1,3 +1,9 @@
+# 3.1.2
+
+* Add secondary and bold props to Tag and revise default styles
+* Add mouseenter and mouseleave props to Card
+* Add clipboard icon
+
 # 3.1.1
 
 * More styling options for Grid component
