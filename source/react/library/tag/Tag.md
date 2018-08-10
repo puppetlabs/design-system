@@ -9,13 +9,10 @@
     onRemove={ () => { console.log('Tag removed!') } }
     removable>Another tag</Tag>
   <Tag
+    bold
     onClick={ () => { console.log('Tag clicked!'); } }
     onRemove={ () => { console.log('Tag removed!') } }
-    removable>Thor</Tag>
-  <Tag
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable>Loki</Tag>
+    removable>I'm a bold tag</Tag>
   <Tag
     round
     onClick={ () => { console.log('Tag clicked!'); } }
@@ -46,6 +43,11 @@
     onClick={ () => { console.log('Tag clicked!'); } }
     onRemove={ () => { console.log('Tag removed!') } }
     removable>tags</Tag>
+  <Tag
+    secondary
+    onClick={ () => { console.log('Tag clicked!'); } }
+    onRemove={ () => { console.log('Tag removed!') } }
+    removable>Secondary tag</Tag>
 </div>
 ```
 
