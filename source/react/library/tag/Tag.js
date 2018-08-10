@@ -104,16 +104,9 @@ class Tag extends React.Component {
     let jsx;
 
     if (this.props.onRemove) {
-      const { size } = this.props;
-      let iconSize = '12px';
-
-      if (size === 'tiny') {
-        iconSize = '8px';
-      }
-
       jsx = (
         <a role="button" tabIndex="0" className="rc-tag-button rc-tag-remove-button" onClick={ this.onRemove }>
-          <Icon type="close" width={ iconSize } height={ iconSize } />
+          <Icon type="close" size="tiny" />
         </a>
       );
     }
