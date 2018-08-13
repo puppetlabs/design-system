@@ -1,3 +1,7 @@
+# 3.1.4
+
+* Fix to borders on Menus
+
 # 3.1.3
 
 * Visual and functional updates to sidebar component
