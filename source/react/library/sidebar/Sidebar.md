@@ -39,7 +39,7 @@ const getOptions = (options) => {
     <Subsection title="Insights Reports">
       { getOptions(cannedReports) }
     </Subsection>
-    <Subsection title="My Reports" truncate onAddItem={ () => {} }>
+    <Subsection title="My Reports" truncate addItemCTA="Create report" onAddItem={ () => {} }>
       { getOptions(customReports) }
     </Subsection>
   </Section>

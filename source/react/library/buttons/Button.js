@@ -141,7 +141,7 @@ class Button extends React.Component {
 
     if (this.props.icon || floating) {
       const iconSize = simple ? '8px' : '16px';
-      const iconType = floating ? 'plus' : this.props.icon;
+      const iconType = (!this.props.icon && floating) ? 'plus' : this.props.icon;
 
       icon = <Icon height={ iconSize } width={ iconSize } type={ iconType } />;
     }
