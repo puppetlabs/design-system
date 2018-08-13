@@ -248,9 +248,12 @@ class Container {
   }
 
   renderWrapper(elem) {
+    const palette = this.options.palette;
+
     this.wrapper = select(elem)
       .append('div')
-        .attr('class', CSS.getClassName('wrapper', this.type));
+        .classed(CSS.getClassName('wrapper', this.type), true)
+        .classed(CSS.getClassName(`${palette}-palette`), palette);
   }
 
   renderLegend() {

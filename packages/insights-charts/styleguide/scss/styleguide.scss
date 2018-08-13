@@ -14,7 +14,7 @@ h4,
 h5,
 h6,
 p {
-  font-family: $reflect-font-family;
+  font-family: $puppet-font-family;
   font-weight: normal;
   margin-top: 0;
 }
@@ -36,7 +36,7 @@ p {
 .sg-sidebar {
   left: 0;
   padding-top: 20px;
-  background: $reflect-brand-primary;
+  background: $puppet-brand-primary;
 
   ul.sg-sidebar-links {
     list-style: none;
@@ -45,27 +45,27 @@ p {
   }
 
   .sg-sidebar-link {
-    color: $reflect-white;
+    color: $puppet-white;
     display: block;
-    font-family: $reflect-font-family;
+    font-family: $puppet-font-family;
     padding: 10px 20px;
     text-decoration: none;
   }
 
   .sg-sidebar-link:hover {
-    background: darken($reflect-brand-primary, 5%);
+    background: darken($puppet-brand-primary, 5%);
   }
 
   .sg-sidebar-link-active {
-    background: darken($reflect-brand-primary, 10%);
+    background: darken($puppet-brand-primary, 10%);
   }
 
   .sg-sidebar-link-active:hover {
-    background: darken($reflect-brand-primary, 10%);
+    background: darken($puppet-brand-primary, 10%);
   }
 
   .sg-sidebar-options {
-    font-family: $reflect-font-family;
+    font-family: $puppet-font-family;
     height: 100%;
     margin-top: auto;
   }
@@ -86,13 +86,13 @@ p {
 }
 
 .sg-section {
-  border: $reflect-border;
+  border: $puppet-border;
   margin-bottom: 40px;
 
   .sg-section-title {
-    background: $reflect-gray-lighter;
-    border-bottom: $reflect-border;
-    font-family: $reflect-font-family;
+    background: $puppet-gray-lighter;
+    border-bottom: $puppet-border;
+    font-family: $puppet-font-family;
     font-weight: normal;
     padding: 10px 20px;
   }

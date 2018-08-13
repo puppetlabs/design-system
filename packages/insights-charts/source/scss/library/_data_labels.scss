@@ -1,18 +1,18 @@
 .reflect-charts-data-label {
   alignment-baseline: middle;
-  fill: $reflect-charts-data-label-color;
-  font-size: $reflect-charts-data-label-font-size;
+  fill: $puppet-charts-data-label-color;
+  font-size: $puppet-charts-data-label-font-size;
   pointer-events: none;
 }
 
 .reflect-charts-data-label-shadow {
   alignment-baseline: middle;
-  fill: $reflect-charts-data-label-shadow;
-  font-size: $reflect-charts-data-label-font-size;
+  fill: $puppet-charts-data-label-shadow;
+  font-size: $puppet-charts-data-label-font-size;
   pointer-events: none;
-  stroke: $reflect-charts-data-label-shadow;
+  stroke: $puppet-charts-data-label-shadow;
   stroke-linejoin: round;
-  stroke-width: $reflect-charts-data-label-shadow-width;
+  stroke-width: $puppet-charts-data-label-shadow-width;
 }
 
 .reflect-charts-data-label-hidden {

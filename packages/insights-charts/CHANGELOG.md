@@ -1,3 +1,8 @@
+# 0.12.0
+
+* Adding a positive and negative palette
+* Updating the theming variables and default palette
+
 # 0.11.0
 
 * Adding a basic gauge chart

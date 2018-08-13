@@ -1,1 +1,9 @@
 @include reflect-colors(column);
+
+.reflect-charts-positive-palette {
+  @include reflect-colors(column, $puppet-positive-palette);
+}
+
+.reflect-charts-negative-palette {
+  @include reflect-colors(column, $puppet-negative-palette);
+}

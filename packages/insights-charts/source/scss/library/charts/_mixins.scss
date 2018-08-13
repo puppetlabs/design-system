@@ -62,7 +62,7 @@
 
 @mixin reflect-poi-color($color, $opacity: 1) {
   .reflect-charts-poi {
-    fill: $reflect-poi-fill;
+    fill: $puppet-poi-fill;
     stroke: $color;
   }
 }
@@ -73,7 +73,7 @@
   }
 }
 /* stylelint-disable max-nesting-depth  */
-@mixin reflect-colors($type, $palette: $reflect-palette) {
+@mixin reflect-colors($type, $palette: $puppet-palette) {
   $limit: length($palette);
   $i: 0;
 
@@ -85,7 +85,7 @@
       $color: map-get($palette, $i);
 
       .reflect-charts-color-#{$i} {
-        transition: opacity $reflect-transition-time linear;
+        transition: opacity $puppet-transition-time linear;
         @include reflect-poi-color($color);
         @include reflect-indicator-color($color);
 

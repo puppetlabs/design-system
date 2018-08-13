@@ -6,120 +6,152 @@
 
 // Palette
 // ----------------------------------------------------------------------------
-$reflect-palette-base                   : $reflect-brand-primary !default;
-$reflect-palette:                       (
-                                          0: $reflect-palette-base,
-                                          1: adjust-hue($reflect-palette-base, 18 * 1),
-                                          2: adjust-hue($reflect-palette-base, 18 * 2),
-                                          3: adjust-hue($reflect-palette-base, 18 * 3),
-                                          4: adjust-hue($reflect-palette-base, 18 * 4),
-                                          5: adjust-hue($reflect-palette-base, 18 * 5),
-                                          6: adjust-hue($reflect-palette-base, 18 * 6),
-                                          7: adjust-hue($reflect-palette-base, 18 * 7),
-                                          8: adjust-hue($reflect-palette-base, 18 * 8),
-                                          9: adjust-hue($reflect-palette-base, 18 * 9),
-                                          10: adjust-hue($reflect-palette-base, 18 * 10),
-                                          11: adjust-hue($reflect-palette-base, 18 * 11)
-                                        ) !default;
+$puppet-palette-base                   : $puppet-brand-primary !default;
+$puppet-palette                        : (
+                                        0: #186ccc, 
+                                        1: #11d1c4,
+                                        2: #a263ff,
+                                        3: #ffae1a,
+                                        4: #f1e747,
+                                        5: #60ddf8,
+                                        6: #f2a9f2,
+                                        7: #d454a2,
+                                        8: #6f4070,
+                                        9: #e8654d,
+                                        10: #30998b,
+                                        11: #bdde60
+                                      ) !default;
 
 // General Use
 // ----------------------------------------------------------------------------
-$reflect-stroke-width-series            : 3px !default;
-$reflect-transition-time                : 0.1s !default;
-$reflect-line-height-base               : 1.5;
+$puppet-stroke-width-series            : 3px !default;
+$puppet-transition-time                : 0.1s !default;
+$puppet-line-height-base               : 1.5;
 
 // Axis
 // ----------------------------------------------------------------------------
-$reflect-axis-stroke                    : $reflect-border-color !default;
-$reflect-axis-label-color               : $reflect-font-color-base !default;
-$reflect-axis-label-font-size           : $reflect-font-size-tiny !default;
-$reflect-axis-title-color               : $reflect-font-color-base !default;
-$reflect-axis-title-font-size           : $reflect-font-size-small !default;
+$puppet-axis-stroke                    : $puppet-border-color !default;
+$puppet-axis-label-color               : $puppet-font-color-base !default;
+$puppet-axis-label-font-size           : $puppet-font-size-tiny !default;
+$puppet-axis-title-color               : $puppet-font-color-base !default;
+$puppet-axis-title-font-size           : $puppet-font-size-small !default;
 
 
 // Grid
 // ----------------------------------------------------------------------------
-$reflect-grid-stroke                    : lighten($reflect-border-color, 2%) !default;
+$puppet-grid-stroke                    : lighten($puppet-border-color, 2%) !default;
 
 
 // Zero Line
 // ----------------------------------------------------------------------------
-$reflect-zero-line-stroke               : $reflect-border-color !default;
+$puppet-zero-line-stroke               : $puppet-border-color !default;
 
 
 // Line
 // ----------------------------------------------------------------------------
-$reflect-line-stroke-width              : $reflect-stroke-width-series !default;
+$puppet-line-stroke-width              : $puppet-stroke-width-series !default;
 
 
 // Point of interest
 // ----------------------------------------------------------------------------
-$reflect-poi-fill                       : $reflect-bg-primary !default;
-$reflect-poi-stroke-width               : $reflect-stroke-width-series !default;
+$puppet-poi-fill                       : $puppet-bg-primary !default;
+$puppet-poi-stroke-width               : $puppet-stroke-width-series !default;
 
 
 // Legend
 // ----------------------------------------------------------------------------
-$reflect-legend-font-size               : $reflect-font-size-base !default;
-$reflect-legend-max-width               : 200px !default;
-$reflect-legend-right-padding           : 0 0 0 $reflect-medium !default;
-$reflect-legend-left-padding            : 0 $reflect-medium 0 0 !default;
-$reflect-legend-bottom-padding          : $reflect-medium 0 0 0 !default;
-$reflect-legend-top-padding             : 0 0 $reflect-medium 0 !default;
-$reflect-legend-item-margin             : $reflect-medium !default;
-$reflect-legend-indicator-margin        : $reflect-small !default;
+$puppet-legend-font-size               : $puppet-font-size-base !default;
+$puppet-legend-max-width               : 200px !default;
+$puppet-legend-right-padding           : 0 0 0 $puppet-medium !default;
+$puppet-legend-left-padding            : 0 $puppet-medium 0 0 !default;
+$puppet-legend-bottom-padding          : $puppet-medium 0 0 0 !default;
+$puppet-legend-top-padding             : 0 0 $puppet-medium 0 !default;
+$puppet-legend-item-margin             : $puppet-medium !default;
+$puppet-legend-indicator-margin        : $puppet-small !default;
 
 // Series Indicator
-$reflect-series-indicator-border-radius : 2px !default;
+$puppet-series-indicator-border-radius : 2px !default;
 
 
 // Tooltips
 // ----------------------------------------------------------------------------
 // Tooltip Base
-$reflect-tooltip-bg                     : $reflect-bg-primary !default;
-$reflect-tooltip-shadow                 : $reflect-outer-shadow-large !default;
-$reflect-tooltip-border                 : $reflect-border !default;
-$reflect-tooltip-border-radius          : $reflect-border-radius !default;
+$puppet-tooltip-bg                     : $puppet-bg-primary !default;
+$puppet-tooltip-shadow                 : $puppet-outer-shadow-large !default;
+$puppet-tooltip-border                 : $puppet-border !default;
+$puppet-tooltip-border-radius          : $puppet-border-radius !default;
 
 // Tooltip Header
-$reflect-tooltip-header-bg              : $reflect-bg-subtle !default;
-$reflect-tooltip-header-border-radius   : $reflect-tooltip-border-radius $reflect-tooltip-border-radius 0 0 !default;
-$reflect-tooltip-header-padding         : $reflect-small $reflect-medium !default;
-$reflect-tooltip-header-alignment       : center !default;
-$reflect-tooltip-header-font-color      : $reflect-font-color-base !default;
-$reflect-tooltip-header-font-size       : $reflect-font-size-base !default;
-$reflect-tooltip-header-font-weight     : $reflect-font-weight-heavy !default;
+$puppet-tooltip-header-bg              : $puppet-bg-subtle !default;
+$puppet-tooltip-header-border-radius   : $puppet-tooltip-border-radius $puppet-tooltip-border-radius 0 0 !default;
+$puppet-tooltip-header-padding         : $puppet-small $puppet-medium !default;
+$puppet-tooltip-header-alignment       : center !default;
+$puppet-tooltip-header-font-color      : $puppet-font-color-base !default;
+$puppet-tooltip-header-font-size       : $puppet-font-size-base !default;
+$puppet-tooltip-header-font-weight     : $puppet-font-weight-heavy !default;
 
 // Tooltip Content
-$reflect-tooltip-font-color             : $reflect-font-color-base !default;
-$reflect-tooltip-font-size              : $reflect-font-size-base !default;
-$reflect-tooltip-padding                : $reflect-medium !default;
-$reflect-tooltip-value-font-size        : $reflect-font-size-base !default;
+$puppet-tooltip-font-color             : $puppet-font-color-base !default;
+$puppet-tooltip-font-size              : $puppet-font-size-base !default;
+$puppet-tooltip-padding                : $puppet-medium !default;
+$puppet-tooltip-value-font-size        : $puppet-font-size-base !default;
 
 
 // Annotations
 // ----------------------------------------------------------------------------
-$reflect-annotation-fill                : $reflect-gray-dark !default;
+$puppet-annotation-fill                : $puppet-gray-dark !default;
 
 
 // Data Labels
 // ----------------------------------------------------------------------------
-$reflect-charts-data-label-font-size    : $reflect-font-size-tiny !default;
-$reflect-charts-data-label-color        : $reflect-white !default;
-$reflect-charts-data-label-shadow       : transparentize($reflect-black, 0.3) !default;
-$reflect-charts-data-label-shadow-width : $reflect-tiny !default;
+$puppet-charts-data-label-font-size    : $puppet-font-size-tiny !default;
+$puppet-charts-data-label-color        : $puppet-white !default;
+$puppet-charts-data-label-shadow       : transparentize($puppet-black, 0.3) !default;
+$puppet-charts-data-label-shadow-width : $puppet-tiny !default;
 
 // Zoomer
 // ----------------------------------------------------------------------------
-$reflect-zoomer-fill                    : $reflect-brand-primary !default;
-$reflect-zoomer-opacity                 : 0.15 !default;
+$puppet-zoomer-fill                    : $puppet-brand-primary !default;
+$puppet-zoomer-opacity                 : 0.15 !default;
 
-$reflect-zoomer-reset-bg                : $reflect-action-color-alt !default;
-$reflect-zoomer-reset-bg-hover          : $reflect-action-hover-alt !default;
-$reflect-zoomer-reset-color             : $reflect-action-text-alt !default;
-$reflect-zoomer-reset-color-hover       : $reflect-action-text-hover-alt !default;
-$reflect-zoomer-reset-border            : $reflect-action-border-alt !default;
-$reflect-zoomer-reset-border-hover      : $reflect-action-border-hover-alt !default;
-$reflect-zoomer-reset-font-size         : $reflect-font-size-small !default;
+$puppet-zoomer-reset-bg                : $puppet-action-color-alt !default;
+$puppet-zoomer-reset-bg-hover          : $puppet-action-hover-alt !default;
+$puppet-zoomer-reset-color             : $puppet-action-text-alt !default;
+$puppet-zoomer-reset-color-hover       : $puppet-action-text-hover-alt !default;
+$puppet-zoomer-reset-border            : $puppet-action-border-alt !default;
+$puppet-zoomer-reset-border-hover      : $puppet-action-border-hover-alt !default;
+$puppet-zoomer-reset-font-size         : $puppet-font-size-small !default;
+
+$puppet-positive-color                 : #07a345 !default;
+$puppet-positive-palette               : (
+                                          0: $puppet-positive-color,
+                                          1: lighten($puppet-positive-color, 3%),
+                                          2: lighten($puppet-positive-color, 6%),
+                                          3: lighten($puppet-positive-color, 9%),
+                                          4: lighten($puppet-positive-color, 12%),
+                                          5: lighten($puppet-positive-color, 15%),
+                                          6: lighten($puppet-positive-color, 18%),
+                                          7: lighten($puppet-positive-color, 21%),
+                                          8: lighten($puppet-positive-color, 24%),
+                                          9: lighten($puppet-positive-color, 27%),
+                                          10: lighten($puppet-positive-color, 30%),
+                                          11: lighten($puppet-positive-color, 33%),
+                                        );
+
+$puppet-negative-color                 : #cc1818 !default;
+$puppet-negative-palette               : (
+                                          0: $puppet-negative-color,
+                                          1: lighten($puppet-negative-color, 3%),
+                                          2: lighten($puppet-negative-color, 6%),
+                                          3: lighten($puppet-negative-color, 9%),
+                                          4: lighten($puppet-negative-color, 12%),
+                                          5: lighten($puppet-negative-color, 15%),
+                                          6: lighten($puppet-negative-color, 18%),
+                                          7: lighten($puppet-negative-color, 21%),
+                                          8: lighten($puppet-negative-color, 24%),
+                                          9: lighten($puppet-negative-color, 27%),
+                                          10: lighten($puppet-negative-color, 30%),
+                                          11: lighten($puppet-negative-color, 33%),
+                                        )
 
 /* stylelint-enable */

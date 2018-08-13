@@ -1,6 +1,6 @@
 {
   "name": "@puppet/insights-charts",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "description": "Highly customizable charting library built on top of D3",
   "main": "build/library.js",
   "scripts": {

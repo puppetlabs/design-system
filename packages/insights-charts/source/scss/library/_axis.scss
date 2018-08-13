@@ -1,20 +1,20 @@
 .reflect-charts-axis {
   .domain {
-    stroke: $reflect-axis-stroke;
+    stroke: $puppet-axis-stroke;
   }
 
   .tick line {
-    stroke: $reflect-axis-stroke;
+    stroke: $puppet-axis-stroke;
   }
 
   .tick text {
-    fill: $reflect-axis-label-color;
-    font-size: $reflect-axis-label-font-size;
+    fill: $puppet-axis-label-color;
+    font-size: $puppet-axis-label-font-size;
     line-height: 1.2;
   }
 
   .reflect-charts-axis-title {
-    fill: $reflect-axis-title-color;
-    font-size: $reflect-axis-title-font-size;
+    fill: $puppet-axis-title-color;
+    font-size: $puppet-axis-title-font-size;
   }
 }

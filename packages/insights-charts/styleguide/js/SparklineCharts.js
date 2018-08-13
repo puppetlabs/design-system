@@ -26,6 +26,7 @@ class SparklineCharts extends React.Component {
     };
 
     const options = {
+      palette: 'negative',
       animations: {
         enabled: animations,
       },

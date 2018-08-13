@@ -1,5 +1,13 @@
 @include reflect-colors(area);
 
+.reflect-charts-positive-palette {
+  @include reflect-colors(area, $puppet-positive-palette);
+}
+
+.reflect-charts-negative-palette {
+  @include reflect-colors(area, $puppet-negative-palette);
+}
+
 .reflect-charts-area-path {
   pointer-events: none;
 }

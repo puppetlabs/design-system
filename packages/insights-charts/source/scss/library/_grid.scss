@@ -1,13 +1,13 @@
 .reflect-charts-grid {
   .domain {
-    stroke: $reflect-grid-stroke;
+    stroke: $puppet-grid-stroke;
   }
 
   line {
-    stroke: $reflect-grid-stroke;
+    stroke: $puppet-grid-stroke;
   }
 }
 
 .reflect-charts-zero-line .domain {
-  stroke: $reflect-zero-line-stroke;
+  stroke: $puppet-zero-line-stroke;
 }

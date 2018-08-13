@@ -3,29 +3,29 @@
 }
 
 .reflect-charts-zoomer-marker {
-  fill: $reflect-zoomer-fill;
-  opacity: $reflect-zoomer-opacity;
+  fill: $puppet-zoomer-fill;
+  opacity: $puppet-zoomer-opacity;
 }
 
 .reflect-charts-zoomer-reset {
   rect {
-    fill: $reflect-zoomer-reset-bg;
-    stroke: $reflect-zoomer-reset-border;
+    fill: $puppet-zoomer-reset-bg;
+    stroke: $puppet-zoomer-reset-border;
   }
 
   text {
-    fill: $reflect-zoomer-reset-color;
-    font-size: $reflect-zoomer-reset-font-size;
+    fill: $puppet-zoomer-reset-color;
+    font-size: $puppet-zoomer-reset-font-size;
   }
 }
 
 .reflect-charts-zoomer-reset:hover {
   rect {
-    fill: $reflect-zoomer-reset-bg-hover;
-    stroke: $reflect-zoomer-reset-border-hover;
+    fill: $puppet-zoomer-reset-bg-hover;
+    stroke: $puppet-zoomer-reset-border-hover;
   }
 
   text {
-    fill: $reflect-zoomer-reset-color-hover;
+    fill: $puppet-zoomer-reset-color-hover;
   }
 }

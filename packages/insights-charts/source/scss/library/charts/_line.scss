@@ -1,1 +1,9 @@
 @include reflect-colors(line);
+
+.reflect-charts-positive-palette {
+  @include reflect-colors(line, $puppet-positive-palette);
+}
+
+.reflect-charts-negative-palette {
+  @include reflect-colors(line, $puppet-negative-palette);
+}

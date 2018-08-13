@@ -1,11 +1,11 @@
 .reflect-charts-tooltip {
-  background-color: $reflect-tooltip-bg;
-  border: $reflect-tooltip-border;
-  border-radius: $reflect-tooltip-border-radius;
-  box-shadow: $reflect-tooltip-shadow;
-  color: $reflect-tooltip-font-color;
+  background-color: $puppet-tooltip-bg;
+  border: $puppet-tooltip-border;
+  border-radius: $puppet-tooltip-border-radius;
+  box-shadow: $puppet-tooltip-shadow;
+  color: $puppet-tooltip-font-color;
   display: none;
-  font-size: $reflect-tooltip-font-size;
+  font-size: $puppet-tooltip-font-size;
   left: 0;
   min-width: 175px;
   padding: 0;
@@ -20,24 +20,24 @@
 }
 
 .reflect-charts-tooltip-value {
-  font-size: $reflect-tooltip-value-font-size;
+  font-size: $puppet-tooltip-value-font-size;
   text-align: center;
 }
 
 .reflect-charts-tooltip-header {
-  background: $reflect-tooltip-header-bg;
-  border-radius: $reflect-tooltip-header-border-radius;
-  color: $reflect-tooltip-header-font-color;
-  font-size: $reflect-tooltip-header-font-size;
-  font-weight: $reflect-tooltip-header-font-weight;
-  padding: $reflect-tooltip-header-padding;
-  text-align: $reflect-tooltip-header-alignment;
+  background: $puppet-tooltip-header-bg;
+  border-radius: $puppet-tooltip-header-border-radius;
+  color: $puppet-tooltip-header-font-color;
+  font-size: $puppet-tooltip-header-font-size;
+  font-weight: $puppet-tooltip-header-font-weight;
+  padding: $puppet-tooltip-header-padding;
+  text-align: $puppet-tooltip-header-alignment;
 }
 
 .reflect-charts-tooltip-content {
   height: 100%;
   overflow-y: auto;
-  padding: $reflect-tooltip-padding;
+  padding: $puppet-tooltip-padding;
 }
 
 .reflect-charts-tooltip-item-hidden {
