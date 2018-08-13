@@ -1,3 +1,8 @@
+# 3.1.3
+
+* Visual and functional updates to sidebar component
+* Floating action buttons can have icons other than the plus
+
 # 3.1.2
 
 * Add secondary and bold props to Tag and revise default styles
