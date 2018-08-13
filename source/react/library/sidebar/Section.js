@@ -49,12 +49,14 @@ class Section extends React.Component {
 
     this.state = {
       selectedSubItem: null,
+      selectedSubsection: null,
       open: props.open,
       active: isActive(props),
     };
 
     this.onClick = this.onClick.bind(this);
     this.onSubItemClick = this.onSubItemClick.bind(this);
+    this.onSubsectionClick = this.onSubsectionClick.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -67,22 +69,32 @@ class Section extends React.Component {
 
   onClick(e) {
     e.preventDefault();
+    const newState = {};
 
-    const { open, active, selectedSubItem } = this.state;
+    const { open, active, selectedSubItem, selectedSubsection } = this.state;
     // Set open state based on condition:
     // You cannot minimize a non-active section
     if (!(open && !active)) {
-      this.setState({ open: !open });
+      newState.open = !open;
     }
 
     // When toggling between sections, let's reset state
     // for active subitems in inactive sections
     if (!active && selectedSubItem) {
-      this.setState({ selectedSubItem: null });
+      newState.selectedSubItem = null;
+    }
+
+    // Same with subsections
+    if (!active && selectedSubsection) {
+      newState.selectedSubsection = null;
     }
 
     const { onSectionClick, onClick, title } = this.props;
     onSectionClick(title);
+
+    if (Object.keys(newState).length) {
+      this.setState(newState);
+    }
 
     if (onClick) {
       onClick();
@@ -94,12 +106,26 @@ class Section extends React.Component {
     this.props.onSectionClick(this.props.title);
   }
 
-  getSubsections() {
+  onSubsectionClick(title) {
+    this.setState({ selectedSubsection: title });
+  }
+
+  renderSubsections() {
+    const isActiveSubsection = (subsection, idx) => {
+      if (this.state.active && !this.state.selectedSubsection && idx === 0) {
+        return true;
+      }
+
+      return subsection.props.title && subsection.props.title === this.state.selectedSubsection;
+    };
+
     return React.Children.map(this.props.children, (subsection, idx) => {
       const props = {
         key: getKey(subsection, idx),
         onSubItemClick: this.onSubItemClick,
-        selected: this.state.selectedSubItem,
+        onSubsectionClick: this.onSubsectionClick,
+        selected: isActiveSubsection(subsection, idx),
+        selectedItem: this.state.selectedSubItem,
       };
 
       return React.cloneElement(subsection, props);
@@ -114,7 +140,11 @@ class Section extends React.Component {
       'rc-sidebar-section-closed': !this.state.open,
     }, this.props.className);
 
-    let subsections = this.getSubsections();
+    let subsections = [];
+    if (this.state.active) {
+      subsections = this.renderSubsections();
+    }
+
     if (subsections && subsections.length) {
       subsections = (
         <ul className="rc-sidebar-subsections">

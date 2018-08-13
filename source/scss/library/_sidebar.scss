@@ -68,7 +68,7 @@
 }
 
 .rc-sidebar-section-header,
-.rc-sidebar-subsection-header,
+.rc-sidebar-subsection-header-link,
 .rc-sidebar-subsection-item-header {
   height: 40px;
 }
@@ -92,9 +92,10 @@
 
 .rc-sidebar-section-link:hover,
 .rc-sidebar-section-link:focus,
-.rc-sidebar-subsection-link:hover {
+.rc-sidebar-subsection-link:hover,
+.rc-sidebar-subsection-header-link:hover {
   background: $puppet-sidebar-subsection-item-action-bg;
-  
+
   .rc-sidebar-section-icon .rc-icon-fill {
     fill: $puppet-sidebar-section-title-hover-color;
   }
@@ -133,10 +134,13 @@
   }
 }
 
-.rc-sidebar-subsection-header {
+.rc-sidebar-subsection-header-link {
   align-items: center;
+  border-radius: $puppet-sidebar-subsection-item-border-radius;
+  cursor: pointer;
   display: flex;
   justify-content: space-between;
+  outline: none;
   padding-left: $puppet-sidebar-section-header-horizontal-padding;
   padding-right: $puppet-sidebar-section-header-horizontal-padding;
 }
@@ -150,14 +154,13 @@
 }
 
 .rc-sidebar-subsection-add-item-btn {
-  display: flex;
-  height: 24px;
-  width: 24px;
+  margin-bottom: 5px;
+  margin-left: $puppet-sidebar-section-header-horizontal-padding;
+  margin-right: $puppet-sidebar-section-header-horizontal-padding;
+  margin-top: 5px;
 
-  .rc-icon {
-    height: $puppet-sidebar-btn-icon-size;
-    width: $puppet-sidebar-btn-icon-size;
-  }
+  padding-left: $puppet-sidebar-section-header-horizontal-padding;
+  padding-right: $puppet-sidebar-section-header-horizontal-padding;
 }
 
 .rc-sidebar-subsection-view-more-link {

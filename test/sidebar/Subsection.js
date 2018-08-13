@@ -9,6 +9,7 @@ import SubsectionItem from '../../source/react/library/sidebar/SubsectionItem';
 describe('<Subsection />', () => {
   const defaultProps = {
     title: 'foo',
+    selected: true,
   };
 
   it('should render without blowing up', () => {
@@ -28,7 +29,7 @@ describe('<Subsection />', () => {
 
   it('should properly render provided children', () => {
     const wrapper = shallow(
-      <Subsection>
+      <Subsection { ...defaultProps } >
         <span className="test-child">hello!</span>
       </Subsection>,
     );
@@ -38,7 +39,7 @@ describe('<Subsection />', () => {
 
   it('should display all children by default', () => {
     const wrapper = shallow(
-      <Subsection>
+      <Subsection { ...defaultProps } >
         <span className="test-child">hello!</span>
         <span className="test-child">hello!</span>
         <span className="test-child">hello!</span>
@@ -48,6 +49,16 @@ describe('<Subsection />', () => {
     );
 
     expect(wrapper.find('.test-child').length).to.eql(5);
+  });
+
+  it('should not render children when not selected', () => {
+    const wrapper = shallow(
+      <Subsection { ...defaultProps } selected={ false }>
+        <span className="test-child">hello!</span>
+      </Subsection>,
+    );
+
+    expect(wrapper.find('.test-child').length).to.eql(0);
   });
 
   it('should truncate the list of children if prop is provided', () => {

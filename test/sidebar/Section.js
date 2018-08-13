@@ -87,16 +87,15 @@ describe('<Section />', () => {
     expect(wrapper.find('.rc-sidebar-section-closed').length).to.eql(1);
   });
 
-  it('should properly render provided children', () => {
+  it('should properly render provided children when active', () => {
     const wrapper = shallow(
-      <Section>
+      <Section active>
         <span className="test-child">hello!</span>
       </Section>,
     );
 
     expect(wrapper.find('.test-child').length).to.eql(1);
   });
-
 
   it('should handle null children', () => {
     const child = null;
