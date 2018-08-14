@@ -1,4 +1,5 @@
 ```js
+<Heading as="h1" hero>Hero</Heading>
 <Heading as="h1">Heading 1</Heading>
 <Heading as="h2">Heading 2</Heading>
 <Heading as="h3">Heading 3</Heading>
@@ -9,6 +10,7 @@
 
 Heading - Style medium
 ```js
+<Heading as="h1" style="medium" hero>Hero</Heading>
 <Heading as="h1" style="medium">Heading 1</Heading>
 <Heading as="h2" style="medium">Heading 2</Heading>
 <Heading as="h3" style="medium">Heading 3</Heading>
@@ -19,6 +21,7 @@ Heading - Style medium
 
 Heading - Style subtle
 ```js
+<Heading as="h1" style="subtle" hero>Hero</Heading>
 <Heading as="h1" style="subtle">Heading 1</Heading>
 <Heading as="h2" style="subtle">Heading 2</Heading>
 <Heading as="h3" style="subtle">Heading 3</Heading>
