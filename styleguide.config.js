@@ -38,6 +38,10 @@ module.exports = {
           exclude: /node_modules\/(?!buble)/,
           use: 'babel-loader',
         },
+        {
+          test: /\.(eot|svg|ttf|woff|woff2|png|jpg)$/,
+          use: 'file-loader',
+        },
       ],
     },
     plugins: [
