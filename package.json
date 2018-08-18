@@ -7,21 +7,21 @@
     "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   },
   "scripts": {
-    "prebuild": "./node_modules/.bin/rimraf build",
+    "prebuild": "rimraf build",
     "build": "NODE_ENV=production webpack",
     "prepublish": "npm run build",
-    "complexity": "./node_modules/.bin/es6-plato -r -d complexity source/react && open ./complexity/index.html",
+    "complexity": "es6-plato -r -d complexity source/react && open ./complexity/index.html",
     "watch": "nodemon --watch source -x \"npm run build\"",
-    "test": "./node_modules/.bin/nyc --require=./test/jsdom.js --reporter=html ./node_modules/.bin/mocha --compilers js:@babel/register --recursive",
-    "js-lint": "./node_modules/.bin/eslint --quiet 'source/react/**/*.js'",
-    "scss-lint": "./node_modules/.bin/stylelint 'source/scss/**/*.scss'",
-    "start": "./node_modules/.bin/styleguidist server"
+    "test": "nyc --require=./test/jsdom.js --reporter=html mocha --compilers js:@babel/register --recursive",
+    "js-lint": "eslint --quiet 'source/react/**/*.js'",
+    "scss-lint": "stylelint 'source/scss/**/*.scss'",
+    "start": "styleguidist server"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/puppetlabs/react-components.git"
   },
-  "author": "",
+  "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/puppetlabs/react-components/issues"
