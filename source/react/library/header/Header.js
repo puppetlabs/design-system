@@ -52,27 +52,28 @@ class Header extends React.Component {
   renderNav() {
     const navItems = this.props.nav.map(item => (
       <Button
-        key={ item.key }
+        key={item.key}
         size="auto"
-        onClick={ () => this.onNavClick(item.key) }
-        icon={ item.icon }
+        onClick={() => this.onNavClick(item.key)}
+        icon={item.icon}
         transparent
       />
     ));
 
-    return (
-      <div className="rc-header-items">
-        { navItems }
-      </div>
-    );
+    return <div className="rc-header-items">{navItems}</div>;
   }
 
   renderMenuControl() {
     const icon = this.state.menuOpen ? 'close' : 'list';
 
     return (
-      <a tabIndex={ 0 } role="button" className="rc-header-menu-control" onClick={ this.onMenuToggle }>
-        <Icon size="medium" type={ icon } />
+      <a
+        tabIndex={0}
+        role="button"
+        className="rc-header-menu-control"
+        onClick={this.onMenuToggle}
+      >
+        <Icon size="medium" type={icon} />
       </a>
     );
   }
@@ -85,8 +86,8 @@ class Header extends React.Component {
 
     return (
       <Menu dark className="rc-header-menu" size="medium">
-        <Menu.Header title="Account" onClose={ this.onMenuToggle } />
-        <Menu.List options={ options } onChange={ this.onMenuItemClick } />
+        <Menu.Header title="Account" onClose={this.onMenuToggle} />
+        <Menu.List options={options} onChange={this.onMenuItemClick} />
       </Menu>
     );
   }
@@ -96,18 +97,14 @@ class Header extends React.Component {
 
     if (jsx && this.props.onLogoClick) {
       jsx = (
-        <a role="button" tabIndex={ 0 } onClick={ this.onLogoClick }>
-          { jsx }
+        <a role="button" tabIndex={0} onClick={this.onLogoClick}>
+          {jsx}
         </a>
       );
     }
 
     if (jsx) {
-      jsx = (
-        <div className="rc-header-logo">
-          { jsx }
-        </div>
-      );
+      jsx = <div className="rc-header-logo">{jsx}</div>;
     }
 
     return jsx;
@@ -125,14 +122,12 @@ class Header extends React.Component {
 
     return (
       <div className="rc-header-container">
-        { menu }
+        {menu}
         <div className="rc-header">
-          <div className="rc-header-left">
-            { logo }
-          </div>
+          <div className="rc-header-left">{logo}</div>
           <div className="rc-header-right">
-            { nav }
-            { menuControl }
+            {nav}
+            {menuControl}
           </div>
         </div>
       </div>

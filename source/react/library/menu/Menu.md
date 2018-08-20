@@ -1,4 +1,5 @@
 Menus are great for rendering within popovers.
+
 ```
 const target = <Button>Open menu with list</Button>;
 const listOptions = [
@@ -11,6 +12,7 @@ const listOptions = [
 ```
 
 A dark `Menu` in a dark `Popover`:
+
 ```
 const target = <Button>Open dark menu</Button>;
 const listOptions = [
@@ -23,6 +25,7 @@ const listOptions = [
 ```
 
 `MenuSection`s can be rendered within your menu:
+
 ```
 const target = <Button>Open menu with sections</Button>;
 <Popover target={ target } padding={ false } border={ false }>
@@ -39,6 +42,7 @@ const target = <Button>Open menu with sections</Button>;
 ```
 
 `MenuActions`s can be used to provide context-specific actions and informations to users.
+
 ```
 const target = <Button>Open menu that with action messages</Button>;
 <Popover target={ target } padding={ false } border={ false }>

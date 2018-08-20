@@ -5,7 +5,8 @@ const { JSDOM } = require('jsdom');
 // because...reasons.
 //
 // NOTE: This is done in ES5 because we don't have Babel available by the time we get started.
-const baseMarkup = '<!DOCTYPE html><html><head><title></title></head><body></body></html>';
+const baseMarkup =
+  '<!DOCTYPE html><html><head><title></title></head><body></body></html>';
 const jsdom = new JSDOM(baseMarkup);
 
 global.window = jsdom.window;
@@ -14,10 +15,13 @@ global.document = jsdom.window.document;
 function copyProps(src, target) {
   const props = Object.getOwnPropertyNames(src)
     .filter(prop => typeof target[prop] === 'undefined')
-    .reduce((result, prop) => ({
-      ...result,
-      [prop]: Object.getOwnPropertyDescriptor(src, prop),
-    }), {});
+    .reduce(
+      (result, prop) => ({
+        ...result,
+        [prop]: Object.getOwnPropertyDescriptor(src, prop),
+      }),
+      {},
+    );
   Object.defineProperties(target, props);
 }
 

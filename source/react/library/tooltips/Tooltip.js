@@ -14,15 +14,9 @@ const propTypes = {
   anchor: PropTypes.string,
   sticky: PropTypes.bool,
   style: PropTypes.object,
-  target: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.element,
-  ]).isRequired,
+  target: PropTypes.oneOfType([PropTypes.object, PropTypes.element]).isRequired,
   onClose: PropTypes.func,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 const defaultProps = {
@@ -36,8 +30,8 @@ const defaultProps = {
 const getDefaultState = () => ({
   onClose: null,
   sticky: false,
-  tooltipPosition: { },
-  caratPosition: { },
+  tooltipPosition: {},
+  caratPosition: {},
 });
 
 class Tooltip extends React.Component {
@@ -111,11 +105,12 @@ class Tooltip extends React.Component {
 
     const newState = getDefaultState();
 
-    const elPositionMiddle = (elPosition.top + (elPosition.height / 2));
-    newState.tooltipPosition.top = (elPositionMiddle - (tooltipHeight / 2)) + offsetY;
-    newState.tooltipPosition.left = elPosition.right + (CARAT_HEIGHT * 2);
+    const elPositionMiddle = elPosition.top + elPosition.height / 2;
+    newState.tooltipPosition.top =
+      elPositionMiddle - tooltipHeight / 2 + offsetY;
+    newState.tooltipPosition.left = elPosition.right + CARAT_HEIGHT * 2;
 
-    newState.caratPosition.top = (tooltipHeight / 2) - CARAT_HEIGHT;
+    newState.caratPosition.top = tooltipHeight / 2 - CARAT_HEIGHT;
 
     this.setState(newState);
   }
@@ -128,11 +123,12 @@ class Tooltip extends React.Component {
     const tooltipWidth = tooltipWH.w;
     const newState = getDefaultState();
 
-    newState.tooltipPosition.top = elPosition.bottom + (CARAT_HEIGHT * 2) + offsetY;
+    newState.tooltipPosition.top =
+      elPosition.bottom + CARAT_HEIGHT * 2 + offsetY;
     newState.tooltipPosition.left =
-      ((elPosition.left + (elPosition.width / 2)) - (tooltipWidth / 2)) + scrollWidth;
+      elPosition.left + elPosition.width / 2 - tooltipWidth / 2 + scrollWidth;
 
-    newState.caratPosition.left = (tooltipWidth / 2) - CARAT_HEIGHT;
+    newState.caratPosition.left = tooltipWidth / 2 - CARAT_HEIGHT;
 
     this.setState(newState);
   }
@@ -158,9 +154,9 @@ class Tooltip extends React.Component {
       jsx = (
         <div
           role="button"
-          tabIndex={ 0 }
+          tabIndex={0}
           className="rc-tooltip-close"
-          onClick={ this.props.onClose }
+          onClick={this.props.onClose}
         >
           <Icon height="8px" width="8px" type="close" />
         </div>
@@ -182,11 +178,22 @@ class Tooltip extends React.Component {
     };
 
     return (
-      <div className={ className } style={ styles } ref={ (c) => { this.tooltip = c; } }>
-        <div className="rc-tooltip-scrollbar-measurer" ref={ (c) => { this.scrollMeasurer = c; } } />
-        <div className="rc-tooltip-carat" style={ caratPosition } />
-        { this.props.children }
-        { closeButton }
+      <div
+        className={className}
+        style={styles}
+        ref={c => {
+          this.tooltip = c;
+        }}
+      >
+        <div
+          className="rc-tooltip-scrollbar-measurer"
+          ref={c => {
+            this.scrollMeasurer = c;
+          }}
+        />
+        <div className="rc-tooltip-carat" style={caratPosition} />
+        {this.props.children}
+        {closeButton}
       </div>
     );
   }

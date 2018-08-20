@@ -29,7 +29,6 @@ const options = [
 />
 ```
 
-
 Small Select
 
 ```
@@ -98,7 +97,6 @@ const options = [
   size="small"
   options={ options }
 />
-
 ```
 
 Select with `autoOpen` enabled:

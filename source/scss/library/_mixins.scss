@@ -67,7 +67,11 @@
   transition: $x;
 }
 
-@mixin icon-opacity-hover($start-opacity: 0.8, $end-opacity: 1, $transition: opacity 0.2s) {
+@mixin icon-opacity-hover(
+  $start-opacity: 0.8,
+  $end-opacity: 1,
+  $transition: opacity 0.2s
+) {
   opacity: $start-opacity;
   transition: $transition;
 
@@ -111,5 +115,3 @@
     transform: scale(1.5);
   }
 }
-
-

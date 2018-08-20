@@ -6,6 +6,7 @@
 ```
 
 Selectable `Card`:
+
 ```
 <Card onClick={() => {}}>
   <CardHeader title="I'm selectable!" subtitle="I am a selectable subtitle!" />
@@ -13,6 +14,7 @@ Selectable `Card`:
 ```
 
 Card with two sections inside:
+
 ```
 <Card>
   <CardSection>
@@ -25,13 +27,16 @@ Card with two sections inside:
 ```
 
 Card with description & title
+
 ```
 <Card>
   <CardHeader title="I am a title" description="I am a card description" />
   <CardSection>I am the content of the card</CardSection>
 </Card>
 ```
+
 Card with action dropdown
+
 ```
 const menuOptions = [
   { value: 'I\'m a test value!', id: 0 },
@@ -44,7 +49,9 @@ const actions = [<CardActionsMenu key="menu-1" menuOptions={ menuOptions } />];
   <CardHeader title="I am a title" actions={ actions } />
 </Card>
 ```
+
 Card with action dropdown and no title
+
 ```
 const menuOptions = [
   { value: 'I\'m a test value!', id: 0 },
@@ -57,7 +64,9 @@ const actions = [<CardActionsMenu key="menu-1" menuOptions={ menuOptions } />];
   <CardHeader actions={ actions } />
 </Card>
 ```
+
 Card with two action dropdowns
+
 ```
 const menuOptions = [
   { value: 'I\'m a test value!', id: 0 },
@@ -76,6 +85,7 @@ const actions = [
 ```
 
 Card with two action dropdowns and a really long title
+
 ```
 const menuOptions = [
   { value: 'I\'m a test value!', id: 0 },
@@ -93,8 +103,8 @@ const actions = [
 </Card>
 ```
 
-
 Card with two types of actions, menu and search
+
 ```
 const menuOptions = [
   { value: 'I\'m a test value!', id: 0 },
@@ -113,6 +123,7 @@ const actions = [
 ```
 
 Card with action menu in error state
+
 ```
 const menuOptions = [
   { value: 'I\'m a test value!', id: 0 },
@@ -134,6 +145,7 @@ const actions = [
 ```
 
 Card with no title, subtitle, or controls, but with actions and description
+
 ```
 const menuOptions = [
   { value: 'I\'m a test value!', id: 0 },

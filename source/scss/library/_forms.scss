@@ -25,7 +25,6 @@
   }
 }
 
-
 .rc-form-field-content {
   display: block;
   margin: 0;
@@ -289,7 +288,7 @@
         border-bottom-left-radius: $puppet-filter-radius;
       }
 
-      .rc-select-right> .rc-input {
+      .rc-select-right > .rc-input {
         border-bottom-right-radius: $puppet-filter-radius;
       }
     }

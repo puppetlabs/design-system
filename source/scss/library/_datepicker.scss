@@ -77,13 +77,12 @@ $ns: rc-datepicker !default;
     margin-right: 6px;
     vertical-align: text-bottom;
     width: 14px;
-    border: 1px solid rgba(#000, .25);
+    border: 1px solid rgba(#000, 0.25);
 
     &--selection {
       background-color: $puppet-datepicker-selected-bg;
     }
   }
-
 
   &__PaginationArrow {
     border: 0;
@@ -171,9 +170,8 @@ $ns: rc-datepicker !default;
     position: relative;
   }
 
-
   &__MonthHeaderSelect {
-  // Not used?
+    // Not used?
     background: $puppet-datepicker-month-bg;
     border: 0;
     cursor: pointer;
@@ -223,7 +221,8 @@ $ns: rc-datepicker !default;
 
   &__Date {
     color: $puppet-datepicker-font-color;
-    border: $puppet-datepicker-border-width solid $puppet-datepicker-border-color;
+    border: $puppet-datepicker-border-width solid
+      $puppet-datepicker-border-color;
     border-right-width: $puppet-datepicker-border-width;
     cursor: pointer;
     overflow: hidden;
@@ -281,7 +280,7 @@ $ns: rc-datepicker !default;
     top: $puppet-datepicker-selection-margin;
 
     &--inOtherMonth {
-      opacity: .5;
+      opacity: 0.5;
     }
 
     &--start {

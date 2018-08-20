@@ -37,8 +37,8 @@ const defaultProps = {
 };
 
 const FadeInAndOut = props => (
-  <Transition in={ props.in } timeout={ duration }>
-    {(state) => {
+  <Transition in={props.in} timeout={duration}>
+    {state => {
       if (!props.children) {
         return null;
       }

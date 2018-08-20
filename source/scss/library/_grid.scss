@@ -6,7 +6,7 @@ $default-column-count: 12;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 0;
-};
+}
 
 .rc-grid-row {
   align-items: stretch;
@@ -90,7 +90,9 @@ $columns: (
   padding-right: $puppet-grid-gutter/2;
 }
 
-.rc-grid-collapse-all-slim-inner > .rc-grid-row > .rc-grid-column:first-of-type {
+.rc-grid-collapse-all-slim-inner
+  > .rc-grid-row
+  > .rc-grid-column:first-of-type {
   padding-left: 0;
 }
 

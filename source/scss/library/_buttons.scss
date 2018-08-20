@@ -1,4 +1,13 @@
-@mixin button-colors($bg, $bg-hover, $color, $color-hover, $icon-color, $icon-hover, $border, $border-hover) {
+@mixin button-colors(
+  $bg,
+  $bg-hover,
+  $color,
+  $color-hover,
+  $icon-color,
+  $icon-hover,
+  $border,
+  $border-hover
+) {
   $button-color-dark: darken($bg, 10%);
   $button-color-darker: darken($bg, 20%);
 

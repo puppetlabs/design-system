@@ -1,4 +1,5 @@
 Sidebar with clickable sections:
+
 ```
 <Sidebar>
   <Section onClick={ () => {} } title="Home" icon="home" active />
@@ -9,6 +10,7 @@ Sidebar with clickable sections:
 ```
 
 Sidebar with togglable subsections:
+
 ```
 const cannedReports = [
   { title: 'Automation Footprint' },

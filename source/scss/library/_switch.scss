@@ -125,6 +125,8 @@
 
   &:checked + .rc-switch-label::after {
     background: $puppet-switch-on-icon-fill;
-    left: calc(100% - (#{$puppet-switch-padding} + #{$puppet-switch-handle-height}));
+    left: calc(
+      100% - (#{$puppet-switch-padding} + #{$puppet-switch-handle-height})
+    );
   }
 }

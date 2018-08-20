@@ -10,6 +10,7 @@ const dates = {
 ```
 
 DatePicker with ranges
+
 ```
 const dates = {
   primary: {
@@ -32,6 +33,7 @@ const ranges = [
 ```
 
 DatePicker with message
+
 ```
 <DatePicker message="This is not configured properly" />
 ```
