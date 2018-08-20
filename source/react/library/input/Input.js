@@ -17,10 +17,7 @@ const propTypes = {
   readonly: PropTypes.bool,
   type: PropTypes.string,
   /** Value string */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
   size: PropTypes.oneOf(['large', 'medium', 'small', 'tiny']),
   simple: PropTypes.bool,
@@ -136,16 +133,30 @@ class Input extends React.Component {
     let jsx;
 
     if (this.props.multiline) {
-      jsx = <textarea ref={ (c) => { this.input = c; } } { ...props } />;
+      jsx = (
+        <textarea
+          ref={c => {
+            this.input = c;
+          }}
+          {...props}
+        />
+      );
     } else {
-      jsx = <input ref={ (c) => { this.input = c; } } { ...props } />;
+      jsx = (
+        <input
+          ref={c => {
+            this.input = c;
+          }}
+          {...props}
+        />
+      );
     }
 
     if (this.props.icon) {
       jsx = (
         <div className="rc-input-icon">
           <Icon width="16px" height="16px" type="search" />
-          { jsx }
+          {jsx}
         </div>
       );
     }

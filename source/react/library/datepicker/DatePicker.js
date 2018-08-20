@@ -58,7 +58,6 @@ const parseDate = (date, timezone) => {
  */
 
 class DatePicker extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -70,8 +69,12 @@ class DatePicker extends React.Component {
       const primaryStart = dates.primary.start;
       const primaryEnd = dates.primary.end;
 
-      start = moment.isMoment(primaryStart) ? primaryStart : convertDate(primaryStart, timezone);
-      end = moment.isMoment(primaryEnd) ? primaryEnd : convertDate(primaryEnd, timezone);
+      start = moment.isMoment(primaryStart)
+        ? primaryStart
+        : convertDate(primaryStart, timezone);
+      end = moment.isMoment(primaryEnd)
+        ? primaryEnd
+        : convertDate(primaryEnd, timezone);
     }
 
     this.state = {
@@ -118,14 +121,14 @@ class DatePicker extends React.Component {
     } else if (start && end) {
       buttonBody = (
         <div>
-          <span className="date">{ start.format('ll') }</span>
+          <span className="date">{start.format('ll')}</span>
           <span> to </span>
-          <span className="date">{ end.format('ll') }</span>
+          <span className="date">{end.format('ll')}</span>
         </div>
       );
     }
 
-    return (<Button { ...props } >{ buttonBody }</Button>);
+    return <Button {...props}>{buttonBody}</Button>;
   }
 
   getWrapper(start, end) {
@@ -143,13 +146,15 @@ class DatePicker extends React.Component {
     } else {
       jsx = (
         <Popover
-          disablePortal={ this.props.disablePopoverPortal }
-          ref={ (c) => { this.popover = c; } }
-          padding={ false }
-          target={ button }
-          anchor={ anchor }
+          disablePortal={this.props.disablePopoverPortal}
+          ref={c => {
+            this.popover = c;
+          }}
+          padding={false}
+          target={button}
+          anchor={anchor}
         >
-          <DatePickerWrapper { ...props } />
+          <DatePickerWrapper {...props} />
         </Popover>
       );
     }
@@ -171,11 +176,7 @@ class DatePicker extends React.Component {
     const wrapper = this.getWrapper(this.state.start, this.state.end);
     const className = classnames('rc-datepicker-wrapper', this.props.className);
 
-    return (
-      <div className={ className }>
-        { wrapper }
-      </div>
-    );
+    return <div className={className}>{wrapper}</div>;
   }
 }
 

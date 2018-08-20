@@ -15,16 +15,12 @@ const defaultProps = {
 /**
  * `TabPanel` groups components together within `Tabs`.
  */
-const TabPanel = (props) => {
+const TabPanel = props => {
   const className = classnames('rc-tab-panel', {
     'rc-tab-panel-active': props.active,
   });
 
-  return (
-    <div className={ className }>
-      { props.children }
-    </div>
-  );
+  return <div className={className}>{props.children}</div>;
 };
 
 TabPanel.propTypes = propTypes;

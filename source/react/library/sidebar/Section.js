@@ -34,7 +34,7 @@ const defaultProps = {
   open: false,
 };
 
-const isActive = (props) => {
+const isActive = props => {
   const { selected, title } = props;
 
   let active = props.active;
@@ -116,7 +116,10 @@ class Section extends React.Component {
         return true;
       }
 
-      return subsection.props.title && subsection.props.title === this.state.selectedSubsection;
+      return (
+        subsection.props.title &&
+        subsection.props.title === this.state.selectedSubsection
+      );
     };
 
     return React.Children.map(this.props.children, (subsection, idx) => {
@@ -134,11 +137,15 @@ class Section extends React.Component {
 
   render() {
     const { title, onClick } = this.props;
-    const className = classnames('rc-sidebar-section', {
-      'rc-sidebar-section-selected': this.state.active,
-      'rc-sidebar-section-selectable': onClick,
-      'rc-sidebar-section-closed': !this.state.open,
-    }, this.props.className);
+    const className = classnames(
+      'rc-sidebar-section',
+      {
+        'rc-sidebar-section-selected': this.state.active,
+        'rc-sidebar-section-selectable': onClick,
+        'rc-sidebar-section-closed': !this.state.open,
+      },
+      this.props.className,
+    );
 
     let subsections = [];
     if (this.state.active) {
@@ -146,31 +153,32 @@ class Section extends React.Component {
     }
 
     if (subsections && subsections.length) {
-      subsections = (
-        <ul className="rc-sidebar-subsections">
-          { subsections }
-        </ul>
-      );
+      subsections = <ul className="rc-sidebar-subsections">{subsections}</ul>;
     }
 
     let icon;
     if (this.props.icon) {
       icon = (
         <span className="rc-sidebar-section-icon">
-          <Icon width="24px" height="24px" type={ this.props.icon } />
+          <Icon width="24px" height="24px" type={this.props.icon} />
         </span>
       );
     }
 
     return (
-      <div className={ className }>
-        <a className="rc-sidebar-section-link" role="button" tabIndex={ 0 } onClick={ this.onClick }>
+      <div className={className}>
+        <a
+          className="rc-sidebar-section-link"
+          role="button"
+          tabIndex={0}
+          onClick={this.onClick}
+        >
           <div className="rc-sidebar-section-header">
-            { icon }
-            <span className="rc-sidebar-section-title">{ title }</span>
+            {icon}
+            <span className="rc-sidebar-section-title">{title}</span>
           </div>
         </a>
-        { subsections }
+        {subsections}
       </div>
     );
   }

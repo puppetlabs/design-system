@@ -44,7 +44,7 @@ class CardActionsMenu extends React.Component {
     if (this.props.menuOptions.length > 0) {
       let target = (
         <a>
-          <Icon type={ this.props.menuToggleIcon } height="16px" width="16px" />
+          <Icon type={this.props.menuToggleIcon} height="16px" width="16px" />
         </a>
       );
 
@@ -57,12 +57,12 @@ class CardActionsMenu extends React.Component {
       if (this.props.message) {
         target = (
           <TooltipStickyArea
-            onClose={ this.onTooltipClose }
-            open={ this.state.tooltipOpen }
+            onClose={this.onTooltipClose}
+            open={this.state.tooltipOpen}
             anchor="bottom"
-            tooltip={ this.props.message }
+            tooltip={this.props.message}
           >
-            { target }
+            {target}
           </TooltipStickyArea>
         );
       }
@@ -71,20 +71,16 @@ class CardActionsMenu extends React.Component {
         <DropdownMenu
           size="tiny"
           anchor="bottom right"
-          target={ target }
-          options={ this.props.menuOptions }
-          selected={ selected }
-          onOpen={ this.onMenuOpen }
-          onChange={ this.props.onOptionClick }
+          target={target}
+          options={this.props.menuOptions}
+          selected={selected}
+          onOpen={this.onMenuOpen}
+          onChange={this.props.onOptionClick}
         />
       );
     }
 
-    return (
-      <div className="rc-card-action" >
-        { menu }
-      </div>
-    );
+    return <div className="rc-card-action">{menu}</div>;
   }
 }
 

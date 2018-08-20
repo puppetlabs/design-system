@@ -13,13 +13,15 @@ describe('<Filters />', () => {
 
   describe('rendering existing filters', () => {
     it('should render a simple filter', () => {
-      const filters = [{
-        field: 'Name',
-        op: '=',
-        value: 'Steve',
-      }];
+      const filters = [
+        {
+          field: 'Name',
+          op: '=',
+          value: 'Steve',
+        },
+      ];
       const fields = ['Name'];
-      const wrapper = shallow(<Filters filters={ filters } fields={ fields } />);
+      const wrapper = shallow(<Filters filters={filters} fields={fields} />);
 
       expect(wrapper.find('FilterItem').length).to.eql(1);
       expect(wrapper.find('FilterItem').prop('filter')).to.eql(filters[0]);

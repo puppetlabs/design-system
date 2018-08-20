@@ -33,7 +33,8 @@ const defaultProps = {
  * TODO: If there is wide-spread usage of custom date ranges in puppet insights and
  * other consuming projects, maybe make this change.
  */
-const formatRange = range => moment.duration(range.count, range.unit).humanize();
+const formatRange = range =>
+  moment.duration(range.count, range.unit).humanize();
 
 class DatePickerWrapper extends React.Component {
   constructor(props) {
@@ -65,7 +66,9 @@ class DatePickerWrapper extends React.Component {
     let custom = true;
 
     this.props.ranges.forEach((range, key) => {
-      const start = moment().startOf('day').subtract(range.count, range.unit);
+      const start = moment()
+        .startOf('day')
+        .subtract(range.count, range.unit);
       const onClick = this.setRange.bind(this, start);
       const selected = this.isSelected(range);
       const className = classnames({ selected });
@@ -76,26 +79,30 @@ class DatePickerWrapper extends React.Component {
 
       const props = { key, onClick, className };
 
-      ranges.push(<li { ...props }>{formatRange(range)}</li>);
+      ranges.push(<li {...props}>{formatRange(range)}</li>);
     });
 
-    ranges.push(<li key="custom" className={ classnames({ selected: custom }) }>{localeStrings.customRange}</li>);
-
-    return (
-      <ul className="rc-ranges">
-        {ranges}
-      </ul>
+    ranges.push(
+      <li key="custom" className={classnames({ selected: custom })}>
+        {localeStrings.customRange}
+      </li>,
     );
+
+    return <ul className="rc-ranges">{ranges}</ul>;
   }
 
   isSelected(range) {
     const currentStart = this.props.range.start;
     const currentEnd = this.props.range.end;
-    const rangeStart = moment().startOf('day').subtract(range.count, range.unit);
+    const rangeStart = moment()
+      .startOf('day')
+      .subtract(range.count, range.unit);
     const rangeEnd = moment().startOf('day');
 
-    return (currentStart.diff(rangeStart, 'days') === 0) &&
-      (currentEnd.diff(rangeEnd, 'days') === 0);
+    return (
+      currentStart.diff(rangeStart, 'days') === 0 &&
+      currentEnd.diff(rangeEnd, 'days') === 0
+    );
   }
 
   render() {
@@ -104,11 +111,11 @@ class DatePickerWrapper extends React.Component {
     return (
       <div className="rc-datepicker-container">
         <DateRangePicker
-          numberOfCalendars={ 2 }
-          selectionType={ 'range' }
+          numberOfCalendars={2}
+          selectionType="range"
           bemBlock="rc-datepicker"
-          onSelect={ this.props.onChange }
-          value={ this.props.range }
+          onSelect={this.props.onChange}
+          value={this.props.range}
           singleDateRange
         />
         {ranges}

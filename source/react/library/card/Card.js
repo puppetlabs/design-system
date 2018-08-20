@@ -38,7 +38,6 @@ const defaultProps = {
  * alternative to a `List`.
  */
 class Card extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -65,14 +64,18 @@ class Card extends React.Component {
       onMouseLeave,
     } = this.props;
 
-    const className = classnames('rc-card', {
-      'rc-card-large': size === 'large',
-      'rc-card-small': size === 'small',
-      'rc-card-xs': size === 'xs',
-      'rc-card-selected': selected,
-      [`rc-card-${style}`]: style,
-      'rc-card-selectable': onClick,
-    }, this.props.className);
+    const className = classnames(
+      'rc-card',
+      {
+        'rc-card-large': size === 'large',
+        'rc-card-small': size === 'small',
+        'rc-card-xs': size === 'xs',
+        'rc-card-selected': selected,
+        [`rc-card-${style}`]: style,
+        'rc-card-selectable': onClick,
+      },
+      this.props.className,
+    );
 
     const content = this.props.children;
     const styles = {};
@@ -103,7 +106,7 @@ class Card extends React.Component {
       props.onMouseLeave = onMouseLeave;
     }
 
-    return <div { ...props }>{ content }</div>;
+    return <div {...props}>{content}</div>;
   }
 }
 

@@ -10,9 +10,7 @@ const defaultProps = {
 };
 
 const MenuActionsButtons = props => (
-  <div className="rc-menu-actions-buttons">
-    { props.children }
-  </div>
+  <div className="rc-menu-actions-buttons">{props.children}</div>
 );
 
 MenuActionsButtons.propTypes = propTypes;

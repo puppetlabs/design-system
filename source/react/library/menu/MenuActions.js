@@ -15,16 +15,12 @@ const defaultProps = {
   centered: false,
 };
 
-const MenuActions = (props) => {
+const MenuActions = props => {
   const className = classnames('rc-menu-actions', {
     'rc-menu-actions-centered': props.centered,
   });
 
-  return (
-    <div className={ className }>
-      { props.children }
-    </div>
-  );
+  return <div className={className}>{props.children}</div>;
 };
 
 MenuActions.propTypes = propTypes;

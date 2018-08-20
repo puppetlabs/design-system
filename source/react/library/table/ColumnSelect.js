@@ -3,10 +3,7 @@ import React from 'react';
 import Select from '../select/Select';
 
 const propTypes = {
-  data: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
   column: PropTypes.string,
   rowData: PropTypes.object,
@@ -24,7 +21,6 @@ const defaultProps = {
 };
 
 class ColumnSelect extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -42,7 +38,7 @@ class ColumnSelect extends React.Component {
   }
 
   render() {
-    const options = this.props.options.map((option) => {
+    const options = this.props.options.map(option => {
       if (this.props.data === option.value) {
         option.selected = true;
       }
@@ -52,9 +48,9 @@ class ColumnSelect extends React.Component {
 
     return (
       <Select
-        options={ options }
-        onSelect={ this.onChange }
-        disabled={ this.props.disabled }
+        options={options}
+        onSelect={this.onChange}
+        disabled={this.props.disabled}
       />
     );
   }

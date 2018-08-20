@@ -9,14 +9,14 @@ describe('<Select />', () => {
   const defaultProps = { disablePortal: true };
 
   it('should render without blowing up', () => {
-    const wrapper = shallow(<Select { ...defaultProps } />);
+    const wrapper = shallow(<Select {...defaultProps} />);
 
     expect(wrapper.length).to.eql(1);
   });
 
   it('should open on .rc-select-input click', () => {
     const options = ['Cats', 'Dogs'];
-    const wrapper = mount(<Select options={ options } { ...defaultProps } />);
+    const wrapper = mount(<Select options={options} {...defaultProps} />);
 
     expect(wrapper.find('MenuItem').length).to.eql(0);
 
@@ -32,12 +32,24 @@ describe('<Select />', () => {
     ];
 
     it('should render the label', () => {
-      const wrapper = mount(<Select options={ options } { ...defaultProps } />);
+      const wrapper = mount(<Select options={options} {...defaultProps} />);
 
       wrapper.find('.rc-select-input').simulate('click');
 
-      expect(wrapper.find('MenuList').find('MenuItem').first().text()).to.eql('Sig');
-      expect(wrapper.find('MenuList').find('MenuItem').last().text()).to.eql('Catnasty');
+      expect(
+        wrapper
+          .find('MenuList')
+          .find('MenuItem')
+          .first()
+          .text(),
+      ).to.eql('Sig');
+      expect(
+        wrapper
+          .find('MenuList')
+          .find('MenuItem')
+          .last()
+          .text(),
+      ).to.eql('Catnasty');
     });
 
     it('should disable the selected option if the select is not clearable', () => {
@@ -48,19 +60,22 @@ describe('<Select />', () => {
       const onSelect = sinon.spy();
       const wrapper = mount(
         <Select
-          onSelect={ onSelect }
-          options={ optionsWithSelected }
-          { ...defaultProps }
+          onSelect={onSelect}
+          options={optionsWithSelected}
+          {...defaultProps}
         />,
       );
 
       wrapper.find('.rc-select-input').simulate('click');
 
-      wrapper.find('.rc-menu-item-selected').find('a').simulate('click');
+      wrapper
+        .find('.rc-menu-item-selected')
+        .find('a')
+        .simulate('click');
 
       expect(onSelect.lastCall.args).to.eql([
         optionsWithSelected[0], // first arg is the current item
-        optionsWithSelected[0],  // second arg is the item that was selected...
+        optionsWithSelected[0], // second arg is the item that was selected...
       ]);
     });
 
@@ -71,11 +86,7 @@ describe('<Select />', () => {
       ];
 
       const wrapper = mount(
-        <Select
-          options={ options }
-          { ...defaultProps }
-          selected="Michael"
-        />,
+        <Select options={options} {...defaultProps} selected="Michael" />,
       );
 
       expect(wrapper.find('Input').prop('value')).to.equal('Sig');
@@ -91,15 +102,15 @@ describe('<Select />', () => {
       const wrapper = mount(
         <Select
           multiple
-          options={ options }
-          { ...defaultProps }
-          selected={ ['Michael', 'Geoff'] }
+          options={options}
+          {...defaultProps}
+          selected={['Michael', 'Geoff']}
         />,
       );
 
       const values = [];
 
-      wrapper.find('SelectItem').forEach((Item) => {
+      wrapper.find('SelectItem').forEach(Item => {
         values.push(Item.prop('value'));
       });
 
@@ -112,9 +123,9 @@ describe('<Select />', () => {
       const wrapper = mount(
         <Select
           clearable
-          onSelect={ onSelect }
-          options={ options }
-          { ...defaultProps }
+          onSelect={onSelect}
+          options={options}
+          {...defaultProps}
         />,
       );
 
@@ -122,24 +133,29 @@ describe('<Select />', () => {
 
       expect(wrapper.find('.rc-menu-item-selected').length).to.eql(0);
 
-      wrapper.find('.rc-menu-item').first().find('a').simulate('click');
+      wrapper
+        .find('.rc-menu-item')
+        .first()
+        .find('a')
+        .simulate('click');
       wrapper.find('.rc-select-input').simulate('click');
 
       expect(onSelect.lastCall.args).to.eql([
         options[0], // first arg is the current item
-        options[0],  // second arg is the item that was selected...
+        options[0], // second arg is the item that was selected...
       ]);
 
       expect(wrapper.find('.rc-menu-item-selected').length).to.eql(1);
 
       // Now we'll deselect that item
-      wrapper.find('.rc-menu-item').first().find('a').simulate('click');
+      wrapper
+        .find('.rc-menu-item')
+        .first()
+        .find('a')
+        .simulate('click');
       wrapper.find('.rc-select-input').simulate('click');
 
-      expect(onSelect.lastCall.args).to.eql([
-        undefined,
-        options[0],
-      ]);
+      expect(onSelect.lastCall.args).to.eql([undefined, options[0]]);
 
       expect(wrapper.find('.rc-menu-item-selected').length).to.eql(0);
     });
@@ -147,7 +163,7 @@ describe('<Select />', () => {
     it('should emit the full object as a callback to onSelect', () => {
       const onSelect = sinon.spy();
       const wrapper = mount(
-        <Select options={ options } onSelect={ onSelect } { ...defaultProps } />,
+        <Select options={options} onSelect={onSelect} {...defaultProps} />,
       );
 
       wrapper.find('.rc-select-input').simulate('click');
@@ -155,7 +171,11 @@ describe('<Select />', () => {
       // The menu should be open now
       expect(wrapper.find('MenuItem').length).to.eql(2);
 
-      wrapper.find('MenuItem').first().find('a').simulate('click');
+      wrapper
+        .find('MenuItem')
+        .first()
+        .find('a')
+        .simulate('click');
 
       expect(onSelect.lastCall.args[0]).to.eql({
         id: 'Michael',
@@ -171,7 +191,7 @@ describe('<Select />', () => {
   describe('typeahead', () => {
     it('should filter as the user types in the input', () => {
       const options = ['Company', 'Computer', 'Turtles'];
-      const wrapper = mount(<Select options={ options } { ...defaultProps } />);
+      const wrapper = mount(<Select options={options} {...defaultProps} />);
 
       wrapper.find('.rc-select-input').simulate('click');
 
@@ -190,11 +210,16 @@ describe('<Select />', () => {
   describe('clearable select', () => {
     it('should clear the value of the input', () => {
       const options = [{ value: 'Tea', label: 'Tea', selected: true }];
-      const wrapper = mount(<Select options={ options } { ...defaultProps } clearable />);
+      const wrapper = mount(
+        <Select options={options} {...defaultProps} clearable />,
+      );
 
       expect(wrapper.find('Input').prop('value')).to.eql('Tea');
 
-      wrapper.find('.rc-select-action').first().simulate('click');
+      wrapper
+        .find('.rc-select-action')
+        .first()
+        .simulate('click');
 
       expect(wrapper.find('Input').prop('value')).to.eql('');
     });
@@ -204,18 +229,30 @@ describe('<Select />', () => {
     const options = ['Michael Phelps', 'Ryan Lochte'];
 
     it('should render the strings as labels', () => {
-      const wrapper = mount(<Select options={ options } { ...defaultProps } />);
+      const wrapper = mount(<Select options={options} {...defaultProps} />);
 
       wrapper.find('.rc-select-input').simulate('click');
 
-      expect(wrapper.find('MenuList').find('MenuItem').first().text()).to.eql('Michael Phelps');
-      expect(wrapper.find('MenuList').find('MenuItem').last().text()).to.eql('Ryan Lochte');
+      expect(
+        wrapper
+          .find('MenuList')
+          .find('MenuItem')
+          .first()
+          .text(),
+      ).to.eql('Michael Phelps');
+      expect(
+        wrapper
+          .find('MenuList')
+          .find('MenuItem')
+          .last()
+          .text(),
+      ).to.eql('Ryan Lochte');
     });
 
     it('should emit the option as an object as a callback to onSelect', () => {
       const onSelect = sinon.spy();
       const wrapper = mount(
-        <Select options={ options } onSelect={ onSelect } { ...defaultProps } />,
+        <Select options={options} onSelect={onSelect} {...defaultProps} />,
       );
 
       wrapper.find('.rc-select-input').simulate('click');
@@ -223,7 +260,11 @@ describe('<Select />', () => {
       // The menu should be open now
       expect(wrapper.find('MenuItem').length).to.eql(2);
 
-      wrapper.find('MenuItem').first().find('a').simulate('click');
+      wrapper
+        .find('MenuItem')
+        .first()
+        .find('a')
+        .simulate('click');
 
       expect(onSelect.lastCall.args[0]).to.eql({
         id: 'Michael Phelps',
@@ -241,17 +282,25 @@ describe('<Select />', () => {
       { value: 'Tea', label: 'Tea' },
       { value: 'new', label: 'Add new drink', selectable: false },
     ];
-    const wrapper = mount(<Select options={ options } { ...defaultProps } />);
+    const wrapper = mount(<Select options={options} {...defaultProps} />);
 
     expect(wrapper.find('Input').prop('value')).to.eql('');
 
     wrapper.find('.rc-select-input').simulate('click');
-    wrapper.find('MenuItem').at(0).find('a').simulate('click');
+    wrapper
+      .find('MenuItem')
+      .at(0)
+      .find('a')
+      .simulate('click');
 
     expect(wrapper.find('Input').prop('value')).to.eql('Tea');
 
     wrapper.find('.rc-select-input').simulate('click');
-    wrapper.find('MenuItem').at(1).find('a').simulate('click');
+    wrapper
+      .find('MenuItem')
+      .at(1)
+      .find('a')
+      .simulate('click');
 
     // This should remain the same.
     expect(wrapper.find('Input').prop('value')).to.eql('Tea');

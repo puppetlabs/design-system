@@ -12,7 +12,6 @@ const defaultProps = {
   link: false,
 };
 
-
 class BreadcrumbSection extends React.Component {
   constructor(props) {
     super(props);
@@ -39,16 +38,12 @@ class BreadcrumbSection extends React.Component {
 
     if (link) {
       jsx = (
-        <a
-          href={ route }
-          className={ className }
-          onClick={ this.onClick }
-        >
-          { children }
+        <a href={route} className={className} onClick={this.onClick}>
+          {children}
         </a>
       );
     } else {
-      jsx = <div className={ className }>{ children }</div>;
+      jsx = <div className={className}>{children}</div>;
     }
 
     return jsx;

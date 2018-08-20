@@ -62,7 +62,7 @@ class MenuItem extends React.Component {
     if (this.props.option.icon) {
       jsx = (
         <div className="rc-menu-icon">
-          <Icon type={ this.props.option.icon } height="16px" width="16px" />
+          <Icon type={this.props.option.icon} height="16px" width="16px" />
         </div>
       );
     }
@@ -88,13 +88,15 @@ class MenuItem extends React.Component {
     }
 
     return (
-      <li className={ className } onMouseOver={ this.onMouseOver } >
-        <a href={ option.id } className="rc-menu-item-anchor" onClick={ this.onClick }>
-          { icon }
-          <span className="rc-menu-item-text">
-            { value }
-          </span>
-          { checkmark }
+      <li className={className} onMouseOver={this.onMouseOver}>
+        <a
+          href={option.id}
+          className="rc-menu-item-anchor"
+          onClick={this.onClick}
+        >
+          {icon}
+          <span className="rc-menu-item-text">{value}</span>
+          {checkmark}
         </a>
       </li>
     );

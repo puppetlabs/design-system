@@ -21,14 +21,8 @@ const propTypes = {
   actions: PropTypes.any,
   /** Supporting text to render next to actions */
   actionsCTA: PropTypes.string,
-  modalClassName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
-  overlayClassName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
+  modalClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  overlayClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   children: PropTypes.any,
 };
 
@@ -176,7 +170,7 @@ class Modal extends React.Component {
     const propMargin = this.state.margin;
     const windowHeight = window.innerHeight;
     // window padding is the amount of space we always want around the modal;
-    const windowPadding = propMargin || (64 * 2);
+    const windowPadding = propMargin || 64 * 2;
     const modalHeight = this.getModalHeight();
     const contentHeight = this.getContentHeight();
 
@@ -199,8 +193,8 @@ class Modal extends React.Component {
 
         this.content.style.height = `${newHeight}px`;
       }
-    } else if (propMargin && (modalHeight > (windowHeight - propMargin))) {
-      const heightDecrease = (modalHeight - windowHeight) + windowPadding;
+    } else if (propMargin && modalHeight > windowHeight - propMargin) {
+      const heightDecrease = modalHeight - windowHeight + windowPadding;
       this.content.style.height = `${contentHeight - heightDecrease}px`;
     }
   }
@@ -246,10 +240,12 @@ class Modal extends React.Component {
     if (this.props.sidebar) {
       jsx = (
         <div
-          ref={ (c) => { this.sidebar = c; } }
+          ref={c => {
+            this.sidebar = c;
+          }}
           className="rc-modal-sidebar"
         >
-          { this.props.sidebar }
+          {this.props.sidebar}
         </div>
       );
     }
@@ -264,10 +260,15 @@ class Modal extends React.Component {
 
     if (actions) {
       if (actionsCTA) {
-        cta = <span className="rc-modal-actions-cta">{ actionsCTA }</span>;
+        cta = <span className="rc-modal-actions-cta">{actionsCTA}</span>;
       }
 
-      jsx = (<div className="rc-modal-actions">{ cta }<ButtonGroup>{ actions }</ButtonGroup></div>);
+      jsx = (
+        <div className="rc-modal-actions">
+          {cta}
+          <ButtonGroup>{actions}</ButtonGroup>
+        </div>
+      );
     }
 
     return jsx;
@@ -278,7 +279,11 @@ class Modal extends React.Component {
 
     if (this.props.onClose) {
       jsx = (
-        <div role="presentation" onClick={ this.onClose } className="rc-modal-close" />
+        <div
+          role="presentation"
+          onClick={this.onClose}
+          className="rc-modal-close"
+        />
       );
     }
 
@@ -290,7 +295,12 @@ class Modal extends React.Component {
 
     if (this.props.onClose) {
       jsx = (
-        <a className="rc-modal-close-button" role="button" tabIndex={ 0 } onClick={ this.onClose }>
+        <a
+          className="rc-modal-close-button"
+          role="button"
+          tabIndex={0}
+          onClick={this.onClose}
+        >
           <Icon size="tiny" type="close" />
         </a>
       );
@@ -307,26 +317,40 @@ class Modal extends React.Component {
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
     const { children, size, sidebarPosition } = this.props;
-    const modalClassName = classname('rc-modal', {
-      'rc-modal-with-sidebar': sidebar,
-      [`rc-modal-with-sidebar-${sidebarPosition}`]: sidebar,
-      [`rc-modal-${size}`]: size,
-    }, this.props.modalClassName);
-    const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
+    const modalClassName = classname(
+      'rc-modal',
+      {
+        'rc-modal-with-sidebar': sidebar,
+        [`rc-modal-with-sidebar-${sidebarPosition}`]: sidebar,
+        [`rc-modal-${size}`]: size,
+      },
+      this.props.modalClassName,
+    );
+    const overlayClassName = classname(
+      'rc-modal-overlay',
+      this.props.overlayClassName,
+    );
 
     return (
-      <div className={ overlayClassName }>
-        { closeLink }
+      <div className={overlayClassName}>
+        {closeLink}
         <div
-          ref={ (c) => { this.modal = c; } }
-          className={ modalClassName }
+          ref={c => {
+            this.modal = c;
+          }}
+          className={modalClassName}
         >
-          { sidebar }
-          <div ref={ (c) => { this.content = c; } } className="rc-modal-content">
-            { children }
+          {sidebar}
+          <div
+            ref={c => {
+              this.content = c;
+            }}
+            className="rc-modal-content"
+          >
+            {children}
           </div>
-          { actions }
-          { closeButton }
+          {actions}
+          {closeButton}
         </div>
       </div>
     );

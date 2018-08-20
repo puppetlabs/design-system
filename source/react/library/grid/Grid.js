@@ -17,7 +17,7 @@ const defaultProps = {
   collapse: false,
 };
 
-const Grid = (props) => {
+const Grid = props => {
   const { columns, children, collapse, className, divided } = props;
   const columnText = mapColumnsToText[columns];
 
@@ -27,9 +27,7 @@ const Grid = (props) => {
     [`rc-grid-divided-${divided}`]: divided,
   });
 
-  return (
-    <div className={ classNames }>{ children }</div>
-  );
+  return <div className={classNames}>{children}</div>;
 };
 
 Grid.propTypes = propTypes;

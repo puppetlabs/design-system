@@ -17,9 +17,7 @@ class MenuHeader extends React.Component {
     let jsx;
 
     if (this.props.title) {
-      return (
-        <div className="rc-menu-title">{ this.props.title }</div>
-      );
+      return <div className="rc-menu-title">{this.props.title}</div>;
     }
 
     return jsx;
@@ -32,9 +30,9 @@ class MenuHeader extends React.Component {
       jsx = (
         <a
           role="button"
-          tabIndex={ 0 }
+          tabIndex={0}
           className="rc-menu-close"
-          onClick={ this.props.onClose }
+          onClick={this.props.onClose}
         >
           <Icon type="close" width="8px" height="8px" />
         </a>
@@ -50,8 +48,8 @@ class MenuHeader extends React.Component {
 
     return (
       <div className="rc-menu-header">
-        { title }
-        { close }
+        {title}
+        {close}
       </div>
     );
   }

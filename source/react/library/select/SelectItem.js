@@ -39,13 +39,13 @@ class SelectItem extends React.Component {
 
     return (
       <Tag
-        className={ className }
-        size={ size }
+        className={className}
+        size={size}
         round
         primary
-        onRemove={ this.onRemove }
+        onRemove={this.onRemove}
       >
-        { this.props.value }
+        {this.props.value}
       </Tag>
     );
   }

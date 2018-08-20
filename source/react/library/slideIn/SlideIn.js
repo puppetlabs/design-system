@@ -57,7 +57,7 @@ class SlideIn extends React.Component {
       const closeText = this.props.closeButtonLabel || 'Close';
 
       closeAction = (
-        <Button label={ closeText } onClick={ this.props.onClose } secondary />
+        <Button label={closeText} onClick={this.props.onClose} secondary />
       );
     }
 
@@ -65,7 +65,7 @@ class SlideIn extends React.Component {
       const submitText = this.props.submitButtonLabel || 'Submit';
 
       submitAction = (
-        <Button label={ submitText } onClick={ this.props.onSubmit } />
+        <Button label={submitText} onClick={this.props.onSubmit} />
       );
     }
 
@@ -73,8 +73,8 @@ class SlideIn extends React.Component {
       jsx = (
         <div className="rc-slidein-actions">
           <ButtonGroup>
-            { closeAction }
-            { submitAction }
+            {closeAction}
+            {submitAction}
           </ButtonGroup>
         </div>
       );
@@ -92,12 +92,7 @@ class SlideIn extends React.Component {
         onClose = this.props.onRemove;
       }
 
-      jsx = (
-        <MenuHeader
-          title={ this.props.title }
-          onClose={ onClose }
-        />
-      );
+      jsx = <MenuHeader title={this.props.title} onClose={onClose} />;
     }
 
     return jsx;
@@ -109,19 +104,21 @@ class SlideIn extends React.Component {
     const header = this.renderHeader();
     const content = this.renderContent();
 
-    const className = classnames('rc-slidein', {
-      [`rc-slidein-${position}`]: position,
-      'rc-slidein-has-actions': actions,
-    }, classProp);
+    const className = classnames(
+      'rc-slidein',
+      {
+        [`rc-slidein-${position}`]: position,
+        'rc-slidein-has-actions': actions,
+      },
+      classProp,
+    );
 
     return (
-      <div className={ className }>
+      <div className={className}>
         <Menu>
-          { header }
-          <div className="rc-slidein-content">
-            { content }
-          </div>
-          { actions }
+          {header}
+          <div className="rc-slidein-content">{content}</div>
+          {actions}
         </Menu>
       </div>
     );

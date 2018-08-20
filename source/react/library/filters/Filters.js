@@ -51,7 +51,9 @@ const LIST_VIEW = 'LIST_VIEW';
 const FORM_VIEW = 'FORM_VIEW';
 
 const getFilterKey = filter =>
-  [filter.field, filter.op, filter.value, filter.values, filter.removable].join('');
+  [filter.field, filter.op, filter.value, filter.values, filter.removable].join(
+    '',
+  );
 
 /**
  * `Filters` allows users to list, edit, and add filters.
@@ -94,14 +96,14 @@ class Filters extends React.Component {
     let newFilters = [];
 
     if (this.state.editing) {
-      const index = this.props.filters
-        .findIndex(f => getFilterKey(f) === this.state.editing);
+      const index = this.props.filters.findIndex(
+        f => getFilterKey(f) === this.state.editing,
+      );
 
       newFilters = clone(this.props.filters);
       newFilters[index] = filter;
     } else {
-      newFilters = this.props.filters
-        .concat(filter);
+      newFilters = this.props.filters.concat(filter);
     }
 
     this.props.onChange(newFilters);
@@ -124,8 +126,9 @@ class Filters extends React.Component {
 
   onRemove(removed) {
     return () => {
-      const newFilters = this.props.filters
-        .filter(filter => !(getFilterKey(removed) === getFilterKey(filter)));
+      const newFilters = this.props.filters.filter(
+        filter => !(getFilterKey(removed) === getFilterKey(filter)),
+      );
 
       this.props.onChange(newFilters);
     };
@@ -133,25 +136,21 @@ class Filters extends React.Component {
 
   renderFilters() {
     const { operators } = this.props;
-    const filters = this.props.filters.map((filter) => {
+    const filters = this.props.filters.map(filter => {
       const key = getFilterKey(filter);
 
       return (
         <Filter
-          onEdit={ this.onEdit(filter) }
-          onRemove={ this.onRemove(filter) }
-          filter={ filter }
-          key={ key }
-          operators={ operators }
+          onEdit={this.onEdit(filter)}
+          onRemove={this.onRemove(filter)}
+          filter={filter}
+          key={key}
+          operators={operators}
         />
       );
     });
 
-    return (
-      <List className="rc-filters-list">
-        { filters }
-      </List>
-    );
+    return <List className="rc-filters-list">{filters}</List>;
   }
 
   renderAction() {
@@ -159,14 +158,7 @@ class Filters extends React.Component {
     let jsx;
 
     if (!this.state.editing && !this.state.adding) {
-      jsx = (
-        <Button
-          simple
-          icon="plus"
-          label={ ctaLabel }
-          onClick={ this.onAdd }
-        />
-      );
+      jsx = <Button simple icon="plus" label={ctaLabel} onClick={this.onAdd} />;
     }
 
     return jsx;
@@ -175,13 +167,13 @@ class Filters extends React.Component {
   renderForm() {
     return (
       <Form
-        removable={ this.props.removableToggle }
-        fields={ this.props.fields }
-        filter={ this.state.filter }
-        operators={ this.props.operators }
-        onCancel={ this.onCancel }
-        onSubmit={ this.onSubmitFilter }
-        strings={ this.props.strings }
+        removable={this.props.removableToggle}
+        fields={this.props.fields}
+        filter={this.state.filter}
+        operators={this.props.operators}
+        onCancel={this.onCancel}
+        onSubmit={this.onSubmitFilter}
+        strings={this.props.strings}
       />
     );
   }
@@ -199,9 +191,9 @@ class Filters extends React.Component {
 
     return (
       <div className="rc-filters">
-        { filters }
-        { action }
-        { form }
+        {filters}
+        {action}
+        {form}
       </div>
     );
   }

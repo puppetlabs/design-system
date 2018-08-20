@@ -45,10 +45,10 @@ const defaultProps = {
   submitLabel: 'Submit',
 };
 
-const getValues = (children) => {
+const getValues = children => {
   let values = {};
 
-  React.Children.forEach(children, (child) => {
+  React.Children.forEach(children, child => {
     if (child) {
       if (child.props.name) {
         values[child.props.name] = child.props.value;
@@ -58,7 +58,10 @@ const getValues = (children) => {
 
       // TODO: Figure something else out here. This is incredibly hacky and makes me cry.
       if (child.props.flyout) {
-        values = Object.assign(values, getValues(child.props.flyout.props.children));
+        values = Object.assign(
+          values,
+          getValues(child.props.flyout.props.children),
+        );
       }
     }
   });
@@ -90,7 +93,9 @@ class Form extends React.Component {
 
   onSubmit() {
     const validatorErrors = validate(this.props.validator, this.state.values);
-    const valid = Object.keys(validate(this.props.validator, this.state.values)).length === 0;
+    const valid =
+      Object.keys(validate(this.props.validator, this.state.values)).length ===
+      0;
 
     if (this.props.onSubmit) {
       this.setState({ valid, validatorErrors }, () => {
@@ -108,7 +113,7 @@ class Form extends React.Component {
   }
 
   onChange(name) {
-    return (value) => {
+    return value => {
       const newState = Object.assign({}, this.state);
 
       newState.values[name] = value;
@@ -168,7 +173,7 @@ class Form extends React.Component {
   renderChildren(children) {
     const jsx = [];
 
-    React.Children.forEach(children, (child) => {
+    React.Children.forEach(children, child => {
       if (child && child.type === FormField) {
         jsx.push(this.renderField(child));
       } else if (child && child.type === FormSection) {
@@ -187,9 +192,9 @@ class Form extends React.Component {
         <Button
           key="cancel"
           secondary
-          size={ this.props.size }
-          onClick={ this.onCancel }
-          label={ this.props.cancelLabel }
+          size={this.props.size}
+          onClick={this.onCancel}
+          label={this.props.cancelLabel}
         />,
       );
     }
@@ -198,11 +203,11 @@ class Form extends React.Component {
       jsx.push(
         <Button
           key="submit"
-          processing={ this.props.submitting }
-          size={ this.props.size }
-          disabled={ !this.state.valid }
-          onClick={ this.onSubmit }
-          label={ this.props.submitLabel }
+          processing={this.props.submitting}
+          size={this.props.size}
+          disabled={!this.state.valid}
+          onClick={this.onSubmit}
+          label={this.props.submitLabel}
         />,
       );
     }
@@ -210,9 +215,7 @@ class Form extends React.Component {
     if (jsx.length) {
       jsx = (
         <div className="rc-form-actions">
-          <ButtonGroup>
-            { jsx }
-          </ButtonGroup>
+          <ButtonGroup>{jsx}</ButtonGroup>
         </div>
       );
     }
@@ -223,16 +226,19 @@ class Form extends React.Component {
   render() {
     const children = this.renderChildren(this.props.children);
     const actions = this.renderActions();
-    const className = classnames('rc-form', this.props.className, `rc-form-${this.props.size}`, {
-      'rc-form-inline': this.props.inline,
-    });
+    const className = classnames(
+      'rc-form',
+      this.props.className,
+      `rc-form-${this.props.size}`,
+      {
+        'rc-form-inline': this.props.inline,
+      },
+    );
 
     return (
-      <form className={ className }>
-        <fieldset className="rc-form-fields">
-          { children }
-        </fieldset>
-        { actions }
+      <form className={className}>
+        <fieldset className="rc-form-fields">{children}</fieldset>
+        {actions}
       </form>
     );
   }

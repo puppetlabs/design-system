@@ -48,33 +48,34 @@ class Pagenav extends React.Component {
     const pageSections = this.props.pageSections;
     const activeSection = this.state.activeSection;
 
-    const sections = pageSections.map((section) => {
+    const sections = pageSections.map(section => {
       const className = classnames('rc-pagenav-link', {
-        'rc-pagenav-link-active': activeSection ? activeSection === section.id : section.active,
+        'rc-pagenav-link-active': activeSection
+          ? activeSection === section.id
+          : section.active,
       });
 
       return (
-        <a value={ section.id } key={ section.label } className={ className } role="button" tabIndex={ 0 } onClick={ this.onClick }>
-          { section.label }
+        <a
+          value={section.id}
+          key={section.label}
+          className={className}
+          role="button"
+          tabIndex={0}
+          onClick={this.onClick}
+        >
+          {section.label}
         </a>
       );
     });
 
-    return (
-      <div className="rc-pagenav-left">
-        { sections }
-      </div>
-    );
+    return <div className="rc-pagenav-left">{sections}</div>;
   }
 
   getPagenavRight() {
     const actions = this.props.actions;
 
-    return (
-      <div className="rc-pagenav-right">
-        { actions }
-      </div>
-    );
+    return <div className="rc-pagenav-right">{actions}</div>;
   }
 
   render() {
@@ -86,9 +87,9 @@ class Pagenav extends React.Component {
     });
 
     return (
-      <div className={ className }>
-        { pagenavLeft }
-        { pagenavRight }
+      <div className={className}>
+        {pagenavLeft}
+        {pagenavRight}
       </div>
     );
   }

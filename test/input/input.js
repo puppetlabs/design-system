@@ -23,7 +23,7 @@ describe('<Input />', () => {
 
   it('should respond to click events if onClick is provided', () => {
     const onClick = sinon.spy();
-    const wrapper = mount(<Input onClick={ onClick } />);
+    const wrapper = mount(<Input onClick={onClick} />);
 
     wrapper.simulate('click');
 
@@ -32,7 +32,7 @@ describe('<Input />', () => {
 
   it('should respond to change if onChange is provided', () => {
     const onChange = sinon.spy();
-    const wrapper = mount(<Input onChange={ onChange } />);
+    const wrapper = mount(<Input onChange={onChange} />);
 
     wrapper.simulate('change');
 
@@ -41,7 +41,7 @@ describe('<Input />', () => {
 
   it('should respond to focus if onFocus is provided', () => {
     const onFocus = sinon.spy();
-    const wrapper = mount(<Input onFocus={ onFocus } />);
+    const wrapper = mount(<Input onFocus={onFocus} />);
 
     wrapper.simulate('focus');
 
@@ -50,7 +50,7 @@ describe('<Input />', () => {
 
   it('should have className corresponding to size if size is provided', () => {
     const props = { size: 'large' };
-    const wrapper = shallow(<Input { ...props } />);
+    const wrapper = shallow(<Input {...props} />);
 
     expect(wrapper.hasClass('rc-input-large')).to.equal(true);
   });

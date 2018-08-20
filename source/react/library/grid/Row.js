@@ -12,7 +12,7 @@ const defaultProps = {
   collapse: false,
 };
 
-const Row = (props) => {
+const Row = props => {
   const { height, collapse } = props;
   const style = {};
 
@@ -25,7 +25,9 @@ const Row = (props) => {
   });
 
   return (
-    <div className={ classNames } style={ style }>{ props.children }</div>
+    <div className={classNames} style={style}>
+      {props.children}
+    </div>
   );
 };
 

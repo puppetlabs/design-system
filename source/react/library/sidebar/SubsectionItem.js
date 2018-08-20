@@ -53,10 +53,17 @@ class SubsectionItem extends React.Component {
     });
 
     return (
-      <li className={ className }>
-        <a className="rc-sidebar-subsection-link" role="button" tabIndex={ 0 } onClick={ this.onClick }>
+      <li className={className}>
+        <a
+          className="rc-sidebar-subsection-link"
+          role="button"
+          tabIndex={0}
+          onClick={this.onClick}
+        >
           <div className="rc-sidebar-subsection-item-header">
-            <span className="rc-sidebar-subsection-item-title">{ this.props.title }</span>
+            <span className="rc-sidebar-subsection-item-title">
+              {this.props.title}
+            </span>
           </div>
         </a>
       </li>

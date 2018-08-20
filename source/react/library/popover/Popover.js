@@ -19,7 +19,12 @@ const propTypes = {
   dark: PropTypes.bool,
   border: PropTypes.bool,
   closeButton: PropTypes.bool,
-  anchor: PropTypes.oneOf(['bottom right', 'bottom left', 'left top', 'right top']),
+  anchor: PropTypes.oneOf([
+    'bottom right',
+    'bottom left',
+    'left top',
+    'right top',
+  ]),
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
   target: PropTypes.object,
@@ -67,7 +72,6 @@ const defaultProps = {
  */
 
 class Popover extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -101,7 +105,8 @@ class Popover extends React.Component {
 
     if (
       this.state.open !== nextState.open ||
-      (nextState.position.top !== position.top || nextState.position.left !== position.left)
+      (nextState.position.top !== position.top ||
+        nextState.position.left !== position.left)
     ) {
       this.setPosition(nextState);
     }
@@ -146,7 +151,7 @@ class Popover extends React.Component {
   }
 
   setPosition(state = this.state) {
-    const newState = { position: { } };
+    const newState = { position: {} };
     const bodyWidth = document.body.clientWidth;
 
     // If the popopver isn't open then early out as positioning doesn't matter
@@ -190,9 +195,10 @@ class Popover extends React.Component {
           break;
         case 'left top':
           newState.position.top = top;
-          newState.position.right = (bodyWidth - left) + this.props.margin;
+          newState.position.right = bodyWidth - left + this.props.margin;
           break;
-        case 'bottom left': default:
+        case 'bottom left':
+        default:
           newState.position.top = bottom + this.props.margin;
           newState.position.left = left;
       }
@@ -220,7 +226,9 @@ class Popover extends React.Component {
 
       jsx = React.cloneElement(target, {
         [this.props.openEvent]: this.onClick,
-        ref: (c) => { this.button = c; },
+        ref: c => {
+          this.button = c;
+        },
         className,
       });
     }
@@ -229,10 +237,14 @@ class Popover extends React.Component {
   }
 
   render() {
-    const wrapperClassName = classnames('rc-popover-wrapper', this.props.wrapperClassName, {
-      'rc-popover-wrapper-open': this.state.open,
-      'rc-popover-wrapper-relative': this.props.disablePortal,
-    });
+    const wrapperClassName = classnames(
+      'rc-popover-wrapper',
+      this.props.wrapperClassName,
+      {
+        'rc-popover-wrapper-open': this.state.open,
+        'rc-popover-wrapper-relative': this.props.disablePortal,
+      },
+    );
 
     const anchorForClass = this.props.anchor.replace(' ', '-');
     const className = classnames('rc-popover', this.props.className, {
@@ -252,28 +264,36 @@ class Popover extends React.Component {
       styles.width = this.state.width;
     }
 
-    const component = this.props.disablePortal ? PopoverContentWithoutPortal : PopoverContent;
+    const component = this.props.disablePortal
+      ? PopoverContentWithoutPortal
+      : PopoverContent;
 
-    const popoverContent = React.createElement(component, {
-      isOpened: this.state.open,
-      className,
-      hint: this.props.hint,
-      style: styles,
-      closeButton: this.props.closeButton,
-      onOutsideClick: this.onOutsideClick,
-      onClose: this.close,
-      allowBubble: this.props.allowBubble,
-      dark: this.props.dark,
-      menu: this.props.menu,
-    }, this.props.children);
+    const popoverContent = React.createElement(
+      component,
+      {
+        isOpened: this.state.open,
+        className,
+        hint: this.props.hint,
+        style: styles,
+        closeButton: this.props.closeButton,
+        onOutsideClick: this.onOutsideClick,
+        onClose: this.close,
+        allowBubble: this.props.allowBubble,
+        dark: this.props.dark,
+        menu: this.props.menu,
+      },
+      this.props.children,
+    );
 
     return (
       <div
-        className={ wrapperClassName }
-        ref={ (c) => { this.elem = c; } }
+        className={wrapperClassName}
+        ref={c => {
+          this.elem = c;
+        }}
       >
-        { button }
-        { popoverContent }
+        {button}
+        {popoverContent}
       </div>
     );
   }

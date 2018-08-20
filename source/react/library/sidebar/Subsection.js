@@ -81,7 +81,17 @@ class Subsection extends React.Component {
     }
 
     if (items.length > SIDEBAR_SUBSECTION_TRUNC_LENGTH && this.state.truncate) {
-      const jsx = <a className="rc-sidebar-subsection-view-more-link" role="button" tabIndex={ 0 } onClick={ this.onViewMore } key="view-more-link">View All...</a>;
+      const jsx = (
+        <a
+          className="rc-sidebar-subsection-view-more-link"
+          role="button"
+          tabIndex={0}
+          onClick={this.onViewMore}
+          key="view-more-link"
+        >
+          View All...
+        </a>
+      );
 
       items = items.slice(0, SIDEBAR_SUBSECTION_TRUNC_LENGTH);
       items.push(jsx);
@@ -99,9 +109,9 @@ class Subsection extends React.Component {
           size="tiny"
           secondary
           className="rc-sidebar-subsection-add-item-btn"
-          onClick={ this.props.onAddItem }
+          onClick={this.props.onAddItem}
         >
-          { this.props.addItemCTA }
+          {this.props.addItemCTA}
         </Button>
       );
     }
@@ -117,17 +127,17 @@ class Subsection extends React.Component {
       <div className="rc-sidebar-subsection">
         <a
           role="button"
-          tabIndex={ 0 }
+          tabIndex={0}
           className="rc-sidebar-subsection-header-link"
-          onClick={ this.onClick }
+          onClick={this.onClick}
         >
           <span className="rc-sidebar-subsection-title">
-            { this.props.title }
+            {this.props.title}
           </span>
         </a>
         <div className="rc-sidebar-subsection-items">
-          { items }
-          { addItemBtn }
+          {items}
+          {addItemBtn}
         </div>
       </div>
     );

@@ -94,11 +94,11 @@ class ListItem extends React.PureComponent {
       jsx = (
         <a
           role="button"
-          tabIndex={ 0 }
+          tabIndex={0}
           className="rc-list-item-action rc-list-item-remove"
-          onClick={ this.onRemove }
+          onClick={this.onRemove}
         >
-          <Icon type="close" width={ iconSize } height={ iconSize } />
+          <Icon type="close" width={iconSize} height={iconSize} />
         </a>
       );
     }
@@ -114,11 +114,11 @@ class ListItem extends React.PureComponent {
       jsx = (
         <a
           role="button"
-          tabIndex={ 0 }
+          tabIndex={0}
           className="rc-list-item-action rc-list-item-edit rc-list-item-hidden"
-          onClick={ this.onEdit }
+          onClick={this.onEdit}
         >
-          <Icon type="pencil" width={ iconSize } height={ iconSize } />
+          <Icon type="pencil" width={iconSize} height={iconSize} />
         </a>
       );
     }
@@ -131,8 +131,8 @@ class ListItem extends React.PureComponent {
 
     if (this.props.kebab) {
       jsx = (
-        <div className="rc-list-item-action rc-list-item-kebab" >
-          { this.props.kebab }
+        <div className="rc-list-item-action rc-list-item-kebab">
+          {this.props.kebab}
         </div>
       );
     }
@@ -142,12 +142,17 @@ class ListItem extends React.PureComponent {
 
   render() {
     const size = this.props.size;
-    const className = classnames('rc-list-item', this.props.className, `rc-list-item-${size}`, {
-      'rc-list-item-clickable': this.props.onClick,
-      'rc-list-item-selected': this.props.selected,
-      'rc-list-item-kebab': this.props.kebab,
-      'rc-list-item-fancy': this.props.fancy,
-    });
+    const className = classnames(
+      'rc-list-item',
+      this.props.className,
+      `rc-list-item-${size}`,
+      {
+        'rc-list-item-clickable': this.props.onClick,
+        'rc-list-item-selected': this.props.selected,
+        'rc-list-item-kebab': this.props.kebab,
+        'rc-list-item-fancy': this.props.fancy,
+      },
+    );
     const edit = this.renderEdit();
     const kebab = this.renderKebab();
     const remove = this.renderRemove();
@@ -166,32 +171,26 @@ class ListItem extends React.PureComponent {
     }
 
     let jsx = (
-      <div { ...props }>
-        { kebab }
-        <span className="rc-list-item-text">
-          { content }
-        </span>
+      <div {...props}>
+        {kebab}
+        <span className="rc-list-item-text">{content}</span>
         <span className="rc-list-item-actions">
-          { actions }
-          { edit }
-          { remove }
+          {actions}
+          {edit}
+          {remove}
         </span>
       </div>
     );
 
     if (this.props.tooltip) {
       jsx = (
-        <TooltipHoverArea anchor="bottom" tooltip={ content }>
-          { jsx }
+        <TooltipHoverArea anchor="bottom" tooltip={content}>
+          {jsx}
         </TooltipHoverArea>
       );
     }
 
-    return (
-      <li className={ className }>
-        { jsx }
-      </li>
-    );
+    return <li className={className}>{jsx}</li>;
   }
 }
 

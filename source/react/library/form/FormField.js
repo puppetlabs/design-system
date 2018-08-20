@@ -61,7 +61,8 @@ const defaultProps = {
 };
 
 const isReactComponent = c =>
-  (c.prototype === 'object' && c.prototype.isReactComponent) || typeof c === 'function';
+  (c.prototype === 'object' && c.prototype.isReactComponent) ||
+  typeof c === 'function';
 
 /**
  * `FormField`s are meant to be rendered as children either within a `Form` or a `FormSection`.
@@ -119,15 +120,19 @@ class FormField extends React.Component {
 
     if (label) {
       jsx = (
-        <label htmlFor={ name } className="rc-form-field-label" key="field-label">
-          { label }
+        <label htmlFor={name} className="rc-form-field-label" key="field-label">
+          {label}
         </label>
       );
 
       if (tooltip) {
         jsx = (
-          <TooltipHoverArea tooltip={ tooltip } anchor="bottom" key="field-label-tooltip">
-            { jsx }
+          <TooltipHoverArea
+            tooltip={tooltip}
+            anchor="bottom"
+            key="field-label-tooltip"
+          >
+            {jsx}
           </TooltipHoverArea>
         );
       }
@@ -141,11 +146,7 @@ class FormField extends React.Component {
     let jsx;
 
     if (message) {
-      jsx = (
-        <div className="rc-form-field-description">
-          { message }
-        </div>
-      );
+      jsx = <div className="rc-form-field-description">{message}</div>;
     }
 
     return jsx;
@@ -160,22 +161,28 @@ class FormField extends React.Component {
     if (isReactComponent(type)) {
       const props = Object.assign(clone(this.props), elementProps);
 
-      jsx = React.createElement(type, Object.assign({
-        name: this.props.name,
-        size: this.props.size,
-        value: this.props.value,
-        onChange: this.onChange,
-      }, props));
+      jsx = React.createElement(
+        type,
+        Object.assign(
+          {
+            name: this.props.name,
+            size: this.props.size,
+            value: this.props.value,
+            onChange: this.onChange,
+          },
+          props,
+        ),
+      );
     } else {
       switch (type) {
         case 'select':
           jsx = (
             <Select
-              name={ this.props.name }
-              size={ this.props.size }
-              onSelect={ this.onChange }
-              selected={ this.props.value }
-              { ...elementProps }
+              name={this.props.name}
+              size={this.props.size}
+              onSelect={this.onChange}
+              selected={this.props.value}
+              {...elementProps}
             />
           );
 
@@ -189,11 +196,11 @@ class FormField extends React.Component {
 
           jsx = (
             <Input
-              name={ this.props.name }
-              size={ this.props.size }
-              onChange={ this.onChange }
-              value={ value }
-              { ...elementProps }
+              name={this.props.name}
+              size={this.props.size}
+              onChange={this.onChange}
+              value={value}
+              {...elementProps}
             />
           );
           break;
@@ -201,33 +208,33 @@ class FormField extends React.Component {
           jsx = (
             <Input
               type="number"
-              name={ this.props.name }
-              size={ this.props.size }
-              onChange={ this.onChange }
-              value={ this.props.value || '' }
-              { ...elementProps }
+              name={this.props.name}
+              size={this.props.size}
+              onChange={this.onChange}
+              value={this.props.value || ''}
+              {...elementProps}
             />
           );
           break;
         case 'switch':
           jsx = (
             <Switch
-              name={ this.props.name }
-              size={ this.props.size }
-              onChange={ this.onChange }
-              checked={ !!this.props.value }
-              { ...elementProps }
+              name={this.props.name}
+              size={this.props.size}
+              onChange={this.onChange}
+              checked={!!this.props.value}
+              {...elementProps}
             />
           );
           break;
         case 'checkbox':
           jsx = (
             <Checkbox
-              name={ this.props.name }
-              size={ this.props.size }
-              onChange={ this.onChange }
-              checked={ !!this.props.value }
-              { ...elementProps }
+              name={this.props.name}
+              size={this.props.size}
+              onChange={this.onChange}
+              checked={!!this.props.value}
+              {...elementProps}
             />
           );
           break;
@@ -238,7 +245,7 @@ class FormField extends React.Component {
 
     return (
       <div className="rc-form-field-element" key="field-element">
-        { jsx }
+        {jsx}
       </div>
     );
   }
@@ -271,11 +278,9 @@ class FormField extends React.Component {
     });
 
     return (
-      <div className={ className }>
-        <div className="rc-form-field-content">
-          { content }
-        </div>
-        { description }
+      <div className={className}>
+        <div className="rc-form-field-content">{content}</div>
+        {description}
       </div>
     );
   }

@@ -82,13 +82,13 @@ class SplitButton extends React.Component {
 
     return (
       <Button
-        error={ error }
+        error={error}
         className="rc-button-menu"
-        size={ this.props.size }
-        disabled={ disabledMenu }
+        size={this.props.size}
+        disabled={disabledMenu}
       >
         <div className="rc-button-menu-inner">
-          <Icon height={ iconSize } width={ iconSize } type={ iconType } />
+          <Icon height={iconSize} width={iconSize} type={iconType} />
         </div>
       </Button>
     );
@@ -96,18 +96,24 @@ class SplitButton extends React.Component {
 
   renderDropdown() {
     const target = this.renderDropdownTarget();
-    const { size, options, dropdownWidth, disablePortal, dropdownSize } = this.props;
+    const {
+      size,
+      options,
+      dropdownWidth,
+      disablePortal,
+      dropdownSize,
+    } = this.props;
 
     return (
       <DropdownMenu
         anchor="bottom right"
-        size={ dropdownSize || size }
-        width={ dropdownWidth }
-        margin={ 5 }
-        onChange={ this.onOptionClick }
-        target={ target }
-        options={ options }
-        disablePortal={ disablePortal }
+        size={dropdownSize || size}
+        width={dropdownWidth}
+        margin={5}
+        onChange={this.onOptionClick}
+        target={target}
+        options={options}
+        disablePortal={disablePortal}
       />
     );
   }
@@ -118,17 +124,17 @@ class SplitButton extends React.Component {
     const className = classnames('rc-split-button', this.props.className);
 
     return (
-      <div className={ className }>
+      <div className={className}>
         <Button
-          error={ error }
-          processing={ processing }
-          size={ size }
-          onClick={ this.onClick }
-          label={ label }
-          disabled={ disabled }
+          error={error}
+          processing={processing}
+          size={size}
+          onClick={this.onClick}
+          label={label}
+          disabled={disabled}
           className="rc-button-main"
         />
-        { dropdown }
+        {dropdown}
       </div>
     );
   }

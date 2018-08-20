@@ -35,12 +35,12 @@ const staticView = [
   },
 ];
 
-const validateBlocks = (blocks) => {
+const validateBlocks = blocks => {
   let valid = true;
   let x;
   let y;
 
-  blocks.forEach((block) => {
+  blocks.forEach(block => {
     const layout = typeof block.layout === 'undefined';
     if (!layout) {
       x = typeof block.layout.x === 'undefined';
@@ -55,7 +55,7 @@ const validateBlocks = (blocks) => {
   return valid;
 };
 
-const getType = (type) => {
+const getType = type => {
   const types = {
     kpi: 'kpi',
     bar: 'column',
@@ -86,15 +86,14 @@ const getType = (type) => {
  */
 
 class StencilGrid extends React.Component {
-
   getCoords({ x, y, w, h }) {
     const settings = this.props.settings;
 
     return {
-      x: ((settings.width / settings.cols) * x) + (settings.margin / 2),
-      y: (settings.rowHeight * y) + (settings.margin * (y + 0.5)),
-      h: (settings.rowHeight * h) + (settings.margin * (h - 1)),
-      w: ((settings.width / settings.cols) * w) - settings.margin,
+      x: (settings.width / settings.cols) * x + settings.margin / 2,
+      y: settings.rowHeight * y + settings.margin * (y + 0.5),
+      h: settings.rowHeight * h + settings.margin * (h - 1),
+      w: (settings.width / settings.cols) * w - settings.margin,
     };
   }
 
@@ -106,7 +105,7 @@ class StencilGrid extends React.Component {
       const type = getType(block.type);
       const key = `grid-block-${i}`;
 
-      gridBlocks.push(<GridBlock key={ key } coords={ coords } type={ type } />);
+      gridBlocks.push(<GridBlock key={key} coords={coords} type={type} />);
     });
 
     return gridBlocks;
@@ -115,13 +114,22 @@ class StencilGrid extends React.Component {
   render() {
     const components = this.props.view.configuration.components || [];
     const settings = this.props.settings;
-    const gridBlocks = validateBlocks(components) ?
-      this.getGridBlocks(components) : this.getGridBlocks(staticView);
+    const gridBlocks = validateBlocks(components)
+      ? this.getGridBlocks(components)
+      : this.getGridBlocks(staticView);
 
     return (
-      <div className="rc-grid-div" style={ { height: settings.height, width: settings.width } } >
-        <svg className="rc-stencil-grid" width={ settings.width } height={ settings.height } xmlns="http://www.w3.org/2000/svg">
-          { gridBlocks }
+      <div
+        className="rc-grid-div"
+        style={{ height: settings.height, width: settings.width }}
+      >
+        <svg
+          className="rc-stencil-grid"
+          width={settings.width}
+          height={settings.height}
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          {gridBlocks}
         </svg>
       </div>
     );

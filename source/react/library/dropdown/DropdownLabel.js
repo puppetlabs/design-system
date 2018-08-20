@@ -49,13 +49,14 @@ class DropdownLabel extends React.Component {
     return (
       <a
         role="button"
-        tabIndex={ this.props.tabIndex }
-        disabled={ this.props.disabled }
-        onClick={ this.props.onClick }
-        className={ className }
+        tabIndex={this.props.tabIndex}
+        disabled={this.props.disabled}
+        onClick={this.props.onClick}
+        className={className}
       >
         <span className="rc-dropdown-label">
-          <span className="rc-dropdown-label-text">{ label }</span> <Icon width="8px" height="8px" type="chevron-down" />
+          <span className="rc-dropdown-label-text">{label}</span>{' '}
+          <Icon width="8px" height="8px" type="chevron-down" />
         </span>
       </a>
     );

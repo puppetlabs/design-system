@@ -24,20 +24,20 @@ describe('<BlankSlate />', () => {
   });
 
   it('should render the new layout without blowing up', () => {
-    const wrapper = shallow(<BlankSlate { ...defaultProps } />);
+    const wrapper = shallow(<BlankSlate {...defaultProps} />);
 
     expect(wrapper.length).to.eql(1);
   });
 
   it('should not render a button if no onClick provided', () => {
-    const wrapper = shallow(<BlankSlate { ...defaultProps } />);
+    const wrapper = shallow(<BlankSlate {...defaultProps} />);
 
     expect(wrapper.find('Button').length).to.equal(0);
   });
 
   it('should render a button and respond to click events for button if onClick provided', () => {
     const onClick = sinon.spy();
-    const wrapper = mount(<BlankSlate { ...defaultProps } onClick={ onClick } />);
+    const wrapper = mount(<BlankSlate {...defaultProps} onClick={onClick} />);
 
     wrapper.find('Button').simulate('click');
 

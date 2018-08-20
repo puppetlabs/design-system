@@ -54,19 +54,14 @@ class Checkbox extends React.Component {
       <div className="rc-checkbox-container">
         <input
           type="checkbox"
-          onChange={ this.onChange }
-          disabled={ this.props.disabled }
-          checked={ this.state.checked }
-          className={ className }
-          value={ this.props.name }
-          id={ this.props.name }
+          onChange={this.onChange}
+          disabled={this.props.disabled}
+          checked={this.state.checked}
+          className={className}
+          value={this.props.name}
+          id={this.props.name}
         />
-        <Icon
-          onClick={ this.onChange }
-          type="check"
-          width="16px"
-          height="16px"
-        />
+        <Icon onClick={this.onChange} type="check" width="16px" height="16px" />
       </div>
     );
   }

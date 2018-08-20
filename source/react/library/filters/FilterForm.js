@@ -143,10 +143,10 @@ class FilterForm extends React.Component {
     if (this.props.removable) {
       jsx = (
         <Form.Field
-          value={ filter.removable }
+          value={filter.removable}
           type="checkbox"
           name="filterRemovable"
-          label={ label }
+          label={label}
           inline
         />
       );
@@ -158,7 +158,9 @@ class FilterForm extends React.Component {
   renderValueField() {
     const valueless = isValueless(this.state.filter.op, this.props.operators);
     const label = this.props.strings.filterValue || 'value';
-    const placeHolderLabel = this.props.strings.filterValuePlaceholder || 'A string (e.g. Jim) or a number (1500)';
+    const placeHolderLabel =
+      this.props.strings.filterValuePlaceholder ||
+      'A string (e.g. Jim) or a number (1500)';
     let jsx;
 
     if (!valueless) {
@@ -166,9 +168,9 @@ class FilterForm extends React.Component {
         <Form.Field
           type="input"
           name="filterValue"
-          label={ label }
-          value={ this.state.filter.value || '' }
-          elementProps={ { placeholder: placeHolderLabel } }
+          label={label}
+          value={this.state.filter.value || ''}
+          elementProps={{ placeholder: placeHolderLabel }}
         />
       );
     }
@@ -184,9 +186,11 @@ class FilterForm extends React.Component {
 
     const strings = this.props.strings;
     const filterFieldLabel = strings.filterField || 'field';
-    const filterFieldPlaceholderLabel = strings.filterFieldPlaceholder || 'Choose a field...';
+    const filterFieldPlaceholderLabel =
+      strings.filterFieldPlaceholder || 'Choose a field...';
     const filterOperatorLabel = strings.filterOperator || 'operation';
-    const filterOperatorPlaceholderLabel = strings.filterOperatorPlaceholder || 'Choose an operation...';
+    const filterOperatorPlaceholderLabel =
+      strings.filterOperatorPlaceholder || 'Choose an operation...';
     const filterCancelLabel = strings.filterCancel;
     const filterSubmitLabel = strings.filterSubmit;
 
@@ -194,35 +198,35 @@ class FilterForm extends React.Component {
       <Form
         submittable
         cancellable
-        onChange={ this.onUpdate }
-        onCancel={ this.onCancel }
-        onSubmit={ this.onSubmit }
+        onChange={this.onUpdate}
+        onCancel={this.onCancel}
+        onSubmit={this.onSubmit}
         size="small"
-        cancelLabel={ filterCancelLabel }
-        submitLabel={ filterSubmitLabel }
+        cancelLabel={filterCancelLabel}
+        submitLabel={filterSubmitLabel}
       >
         <Form.Field
           type="select"
           name="filterField"
-          label={ filterFieldLabel }
-          elementProps={ {
+          label={filterFieldLabel}
+          elementProps={{
             disablePortal: true,
             options: fields,
             placeholder: filterFieldPlaceholderLabel,
-          } }
+          }}
         />
         <Form.Field
           type="select"
           name="filterOperator"
-          label={ filterOperatorLabel }
-          elementProps={ {
+          label={filterOperatorLabel}
+          elementProps={{
             disablePortal: true,
             options: operators,
             placeholder: filterOperatorPlaceholderLabel,
-          } }
+          }}
         />
-        { valueField }
-        { removableField }
+        {valueField}
+        {removableField}
       </Form>
     );
   }

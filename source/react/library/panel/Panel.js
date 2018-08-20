@@ -22,7 +22,6 @@ const defaultProps = {
  * `Panel` groups components together.
  */
 class Panel extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -44,11 +43,13 @@ class Panel extends React.Component {
       jsx = (
         <div
           role="button"
-          tabIndex={ 0 }
+          tabIndex={0}
           className="remove-corner"
-          onClick={ this.onRemove }
+          onClick={this.onRemove}
         >
-          <a href="" className="rc-panel-remove"><Icon width="11px" height="11px" type="close" /></a>
+          <a href="" className="rc-panel-remove">
+            <Icon width="11px" height="11px" type="close" />
+          </a>
         </div>
       );
     }
@@ -66,9 +67,9 @@ class Panel extends React.Component {
     const removeButton = this.renderRemoveButton();
 
     return (
-      <div className={ classNames }>
-        { removeButton }
-        { children }
+      <div className={classNames}>
+        {removeButton}
+        {children}
       </div>
     );
   }

@@ -3,10 +3,7 @@ import React from 'react';
 import Input from '../input/Input';
 
 const propTypes = {
-  data: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   column: PropTypes.string,
   onChange: PropTypes.func,
   rowData: PropTypes.object,
@@ -22,7 +19,6 @@ const defaultProps = {
 };
 
 class ColumnInput extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -43,9 +39,9 @@ class ColumnInput extends React.Component {
       <Input
         type="text"
         size="small"
-        value={ this.props.data }
-        onChange={ this.onChange }
-        disabled={ this.props.disabled }
+        value={this.props.data}
+        onChange={this.onChange}
+        disabled={this.props.disabled}
       />
     );
   }

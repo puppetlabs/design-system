@@ -13,16 +13,12 @@ const defaultProps = {
   className: '',
 };
 
-const MenuSection = (props) => {
+const MenuSection = props => {
   const className = classnames('rc-menu-section', props.className, {
     'rc-bg-subtle': props.subtle,
   });
 
-  return (
-    <div className={ className }>
-      { props.children }
-    </div>
-  );
+  return <div className={className}>{props.children}</div>;
 };
 
 MenuSection.propTypes = propTypes;

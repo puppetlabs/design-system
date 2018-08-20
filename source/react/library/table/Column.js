@@ -4,10 +4,7 @@ import React from 'react';
 
 const propTypes = {
   component: PropTypes.func,
-  data: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   rowData: PropTypes.object,
 };
 
@@ -18,7 +15,6 @@ const defaultProps = {
 };
 
 class Column extends React.Component {
-
   render() {
     const { data, component, rowData } = this.props;
     const props = clone(this.props);
@@ -31,7 +27,7 @@ class Column extends React.Component {
     if (component) {
       elem = React.createElement(component, props);
     } else {
-      elem = <span title={ data }>{ data }</span>;
+      elem = <span title={data}>{data}</span>;
     }
 
     return elem;

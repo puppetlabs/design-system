@@ -33,7 +33,7 @@ const defaultProps = {
  * `BlankSlate` is used in list views to signify that no objects have been created yet.
  */
 
-const BlankSlate = (props) => {
+const BlankSlate = props => {
   let visual;
   let body;
   let button;
@@ -43,62 +43,45 @@ const BlankSlate = (props) => {
       props.onClick();
     };
 
-    button = (
-      <Button
-        label="Enable stats"
-        onClick={ onClick }
-      />
-    );
+    button = <Button label="Enable stats" onClick={onClick} />;
   }
 
   // Icon prop is dated
   if (props.icon) {
     visual = (
       <div className="rc-blank-slate-icon">
-        <Icon height="50px" width="40px" type={ props.icon } />
+        <Icon height="50px" width="40px" type={props.icon} />
       </div>
     );
   } else if (props.image) {
     visual = (
       <div className="rc-blank-slate-image">
-        <img src={ props.image } alt={ props.alt } />
+        <img src={props.image} alt={props.alt} />
       </div>
     );
   }
 
   // Message prop is dated
   if (props.message) {
-    body = (
-      <div className="rc-blank-slate-message">
-        { props.message }
-      </div>
-    );
+    body = <div className="rc-blank-slate-message">{props.message}</div>;
   } else {
     body = (
       <div className="rc-blank-slate-message">
         <div className="rc-blank-slate-body">
-          <h1 className="rc-blank-slate-title">
-            { props.title }
-          </h1>
-          <p className="rc-blank-slate-lead">
-            { props.lead }
-          </p>
-          <p className="rc-blank-slate-content">
-            { props.content }
-          </p>
+          <h1 className="rc-blank-slate-title">{props.title}</h1>
+          <p className="rc-blank-slate-lead">{props.lead}</p>
+          <p className="rc-blank-slate-content">{props.content}</p>
         </div>
-        <p className="rc-blank-slate-note">
-          { props.note }
-        </p>
+        <p className="rc-blank-slate-note">{props.note}</p>
       </div>
     );
   }
 
   return (
     <div className="rc-blank-slate">
-      { visual }
-      { body }
-      { button }
+      {visual}
+      {body}
+      {button}
     </div>
   );
 };

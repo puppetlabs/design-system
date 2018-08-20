@@ -17,7 +17,7 @@ const defaultProps = {
   width: '30px',
 };
 
-const Icon = (props) => {
+const Icon = props => {
   const { width, type, height, size } = props;
   const styles = { width, height };
 
@@ -58,13 +58,13 @@ const Icon = (props) => {
 
     icon = (
       <svg
-        className={ className }
-        width={ width }
-        height={ height }
-        viewBox={ viewBox }
-        style={ styles }
+        className={className}
+        width={width}
+        height={height}
+        viewBox={viewBox}
+        style={styles}
       >
-        { svg }
+        {svg}
       </svg>
     );
   }

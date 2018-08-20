@@ -48,7 +48,7 @@ const defaultProps = {
   onChange: null,
 };
 
-const getSelected = (props) => {
+const getSelected = props => {
   let selected = props.selected;
 
   if (!Array.isArray(selected) && typeof selected !== 'undefined') {
@@ -79,7 +79,10 @@ class Dropdown extends React.Component {
     const selectedChanged = !equals(this.props.selected, nextProps.selected);
     const hasMultiple = nextProps.selected.length > 1;
 
-    if ({}.hasOwnProperty.call(nextProps, 'selected') && (selectedChanged || hasMultiple)) {
+    if (
+      {}.hasOwnProperty.call(nextProps, 'selected') &&
+      (selectedChanged || hasMultiple)
+    ) {
       const selected = getSelected(nextProps);
 
       this.setState({ selected, displayed: selected });
@@ -91,7 +94,7 @@ class Dropdown extends React.Component {
     const options = this.getOptions();
     let nextSelected = [];
 
-    options.forEach((o) => {
+    options.forEach(o => {
       const id = o.id;
       const wasSelected = prevSelected.indexOf(id) >= 0;
 
@@ -140,7 +143,7 @@ class Dropdown extends React.Component {
   }
 
   getOptions() {
-    return this.props.options.map((o) => {
+    return this.props.options.map(o => {
       let obj;
 
       if (typeof o === 'string') {
@@ -155,7 +158,9 @@ class Dropdown extends React.Component {
 
   renderToggle() {
     const options = this.getOptions();
-    const selected = options.filter(e => this.state.displayed.indexOf(e.id) >= 0);
+    const selected = options.filter(
+      e => this.state.displayed.indexOf(e.id) >= 0,
+    );
     const values = selected.map(s => s.value);
     let label;
 
@@ -176,12 +181,12 @@ class Dropdown extends React.Component {
 
     return (
       <DropdownLabel
-        error={ this.props.error }
-        tabIndex={ this.props.tabIndex }
-        disabled={ this.props.disabled }
-        select={ this.props.select }
-        placeholder={ this.props.placeholder }
-        label={ label }
+        error={this.props.error}
+        tabIndex={this.props.tabIndex}
+        disabled={this.props.disabled}
+        select={this.props.select}
+        placeholder={this.props.placeholder}
+        label={label}
       />
     );
   }
@@ -189,27 +194,28 @@ class Dropdown extends React.Component {
   renderDropdownMenu() {
     const options = this.getOptions();
     const button = this.renderToggle();
-    const selected = this.state.selected
-      .map(s => (typeof s === 'string' ? s : s.id));
+    const selected = this.state.selected.map(
+      s => (typeof s === 'string' ? s : s.id),
+    );
 
     return (
       <DropdownMenu
-        anchor={ this.props.anchor }
-        size={ this.props.size }
-        onClose={ this.onClose }
-        margin={ this.props.margin }
-        blank={ this.props.blank }
-        hint={ this.props.hint }
-        multiple={ this.props.multiple }
-        target={ button }
-        onChange={ this.onChange }
-        onApply={ this.onApply }
-        options={ options }
-        actions={ this.props.actions }
-        selected={ selected }
-        required={ this.props.required }
-        disablePortal={ this.props.disablePortal }
-        onActionClick={ this.props.onActionClick }
+        anchor={this.props.anchor}
+        size={this.props.size}
+        onClose={this.onClose}
+        margin={this.props.margin}
+        blank={this.props.blank}
+        hint={this.props.hint}
+        multiple={this.props.multiple}
+        target={button}
+        onChange={this.onChange}
+        onApply={this.onApply}
+        options={options}
+        actions={this.props.actions}
+        selected={selected}
+        required={this.props.required}
+        disablePortal={this.props.disablePortal}
+        onActionClick={this.props.onActionClick}
       />
     );
   }
@@ -217,11 +223,7 @@ class Dropdown extends React.Component {
   render() {
     const dropdownMenu = this.renderDropdownMenu();
 
-    return (
-      <span className="rc-dropdown">
-        { dropdownMenu }
-      </span>
-    );
+    return <span className="rc-dropdown">{dropdownMenu}</span>;
   }
 }
 

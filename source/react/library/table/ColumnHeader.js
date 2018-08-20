@@ -13,7 +13,6 @@ const defaultProps = {
 };
 
 class ColumnHeader extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -31,13 +30,19 @@ class ColumnHeader extends React.Component {
   render() {
     const title = this.props.column.displayName || this.props.column.column;
     const metaData = this.props.column;
-    const className = classnames('rc-table-header rc-table-header-sortable', metaData.className);
+    const className = classnames(
+      'rc-table-header rc-table-header-sortable',
+      metaData.className,
+    );
 
     // The inner divs seen below are currently used for sticky headers.
     // Eventually i think we moved to div based tables to reduce these
     // types of hacks. For now please don't remove.
     return (
-      <th onClick={ this.onClick } className={ className }>{ title }<div>{ title }</div></th>
+      <th onClick={this.onClick} className={className}>
+        {title}
+        <div>{title}</div>
+      </th>
     );
   }
 }

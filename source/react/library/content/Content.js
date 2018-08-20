@@ -14,14 +14,10 @@ const propTypes = {
  * `Content` is a container component for rendering other React components.
  */
 
-const Content = (props) => {
+const Content = props => {
   const classNames = classnames('rc-content', props.className);
 
-  return (
-    <div className={ classNames }>
-      { props.children }
-    </div>
-  );
+  return <div className={classNames}>{props.children}</div>;
 };
 
 Content.propTypes = propTypes;

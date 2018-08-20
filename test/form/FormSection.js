@@ -13,13 +13,12 @@ describe('<FormSection />', () => {
 
   it('should render the label with a tooltip when one is provided', () => {
     const wrapper = shallow(
-      <FormSection
-        title="label boii"
-        tooltip="hello world"
-      />,
+      <FormSection title="label boii" tooltip="hello world" />,
     );
 
     expect(wrapper.find('TooltipHoverArea').length).to.eql(1);
-    expect(wrapper.find('TooltipHoverArea').prop('tooltip')).to.eql('hello world');
+    expect(wrapper.find('TooltipHoverArea').prop('tooltip')).to.eql(
+      'hello world',
+    );
   });
 });

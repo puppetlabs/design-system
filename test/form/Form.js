@@ -23,21 +23,20 @@ describe('<Form />', () => {
       </Form>,
     );
 
-    expect(Object.keys(wrapper.find('.test-child').props()))
-      .to.eql([
-        'type',
-        'name',
-        'className',
-        'inline',
-        'size',
-        'error',
-        'label',
-        'tooltip',
-        'description',
-        'elementProps',
-        'onChange',
-        'value',
-      ]);
+    expect(Object.keys(wrapper.find('.test-child').props())).to.eql([
+      'type',
+      'name',
+      'className',
+      'inline',
+      'size',
+      'error',
+      'label',
+      'tooltip',
+      'description',
+      'elementProps',
+      'onChange',
+      'value',
+    ]);
   });
 
   describe('form with sections', () => {

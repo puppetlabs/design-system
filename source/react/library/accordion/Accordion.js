@@ -69,7 +69,10 @@ class Accordion extends React.Component {
   }
 
   hasActive() {
-    return typeof this.state.activeIdx !== 'undefined' && this.state.activeIdx !== null;
+    return (
+      typeof this.state.activeIdx !== 'undefined' &&
+      this.state.activeIdx !== null
+    );
   }
 
   renderHeader() {
@@ -78,7 +81,7 @@ class Accordion extends React.Component {
     if (this.props.icon) {
       icon = (
         <span className="rc-accordion-header-icon">
-          <Icon width="16px" height="16px" type={ this.props.icon } />
+          <Icon width="16px" height="16px" type={this.props.icon} />
         </span>
       );
     }
@@ -86,11 +89,11 @@ class Accordion extends React.Component {
     return (
       <div className="rc-accordion-header" key="header">
         <div className="rc-accordion-header-main">
-          { icon }
-          <span className="rc-accordion-header-title">{ this.props.title }</span>
+          {icon}
+          <span className="rc-accordion-header-title">{this.props.title}</span>
         </div>
         <span className="rc-accordion-header-action">
-          <a href="" onClick={ this.onClose } >
+          <a href="" onClick={this.onClose}>
             <Icon width="8px" height="8px" type="close" />
           </a>
         </span>
@@ -126,18 +129,14 @@ class Accordion extends React.Component {
       children.unshift(this.renderHeader());
     }
 
-    return <div className="rc-accordion-items">{ children }</div>;
+    return <div className="rc-accordion-items">{children}</div>;
   }
 
   render() {
     const className = classnames('rc-accordion', this.props.className);
     const items = this.renderItems();
 
-    return (
-      <div className={ className }>
-        { items }
-      </div>
-    );
+    return <div className={className}>{items}</div>;
   }
 }
 

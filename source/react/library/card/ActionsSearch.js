@@ -53,11 +53,11 @@ class CardActionsSearch extends React.Component {
       jsx = (
         <Input
           autoFocus
-          onBlur={ this.onSearchBlur }
-          onKeyUp={ this.onSearchKeyUp }
+          onBlur={this.onSearchBlur}
+          onKeyUp={this.onSearchKeyUp}
           size="tiny"
           placeholder="Type and hit enter to search"
-          onChange={ this.onChange }
+          onChange={this.onChange}
         />
       );
     }
@@ -70,10 +70,10 @@ class CardActionsSearch extends React.Component {
 
     return (
       <div className="rc-card-action rc-card-search">
-        <a tabIndex="0" role="button" onClick={ this.toggleSearch }>
+        <a tabIndex="0" role="button" onClick={this.toggleSearch}>
           <Icon type="search" height="16px" width="16px" />
         </a>
-        { input }
+        {input}
       </div>
     );
   }

@@ -8,7 +8,7 @@ const propTypes = {
 };
 
 const Breadcrumb = props => (
-  <div className="rc-breadcrumb">{ props.children }</div>
+  <div className="rc-breadcrumb">{props.children}</div>
 );
 
 Breadcrumb.propTypes = propTypes;

@@ -7,7 +7,7 @@ import React from 'react';
 import ColumnSelect from '../../source/react/library/table/ColumnSelect';
 
 const defaultProps = {
-  data: 'Hello, I\'m a happy input',
+  data: "Hello, I'm a happy input",
   onChange: sinon.spy(),
   disabled: false,
 };
@@ -16,7 +16,7 @@ describe('<ColumnSelect />', () => {
   jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
-    const wrapper = shallow(<ColumnSelect { ...defaultProps } />);
+    const wrapper = shallow(<ColumnSelect {...defaultProps} />);
 
     expect(wrapper.length).to.eql(1);
   });

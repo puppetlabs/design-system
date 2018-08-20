@@ -68,11 +68,11 @@ class Toggle extends React.Component {
     return (
       <a
         role="button"
-        tabIndex={ 0 }
-        onClick={ this.onLabelClick(label) }
-        className={ className }
+        tabIndex={0}
+        onClick={this.onLabelClick(label)}
+        className={className}
       >
-        { label }
+        {label}
       </a>
     );
   }
@@ -89,17 +89,17 @@ class Toggle extends React.Component {
     const switchName = name || left + right;
 
     return (
-      <div className={ className }>
-        { leftLabel }
+      <div className={className}>
+        {leftLabel}
         <Switch
-          label={ false }
-          disabled={ disabled }
-          onChange={ this.onChange }
+          label={false}
+          disabled={disabled}
+          onChange={this.onChange}
           className="rc-switch-toggle"
-          checked={ this.state.active === right }
-          name={ switchName }
+          checked={this.state.active === right}
+          name={switchName}
         />
-        { rightLabel }
+        {rightLabel}
       </div>
     );
   }

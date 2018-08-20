@@ -30,13 +30,17 @@ class Switch extends React.Component {
 
     if (this.props.label) {
       jsx = (
-        <label className="rc-switch-label" htmlFor={ this.props.name } >
-          <span className="rc-switch-label-on"><Icon width="12px" height="12px" type="checkmark" /></span>
-          <span className="rc-switch-label-off"><Icon width="12px" height="12px" type="close" /></span>
+        <label className="rc-switch-label" htmlFor={this.props.name}>
+          <span className="rc-switch-label-on">
+            <Icon width="12px" height="12px" type="checkmark" />
+          </span>
+          <span className="rc-switch-label-off">
+            <Icon width="12px" height="12px" type="close" />
+          </span>
         </label>
       );
     } else {
-      jsx = <label className="rc-switch-label" htmlFor={ this.props.name } />;
+      jsx = <label className="rc-switch-label" htmlFor={this.props.name} />;
     }
 
     return jsx;
@@ -52,16 +56,16 @@ class Switch extends React.Component {
     });
 
     return (
-      <div className={ className }>
+      <div className={className}>
         <input
           className="rc-switch-checkbox"
-          disabled={ this.props.disabled }
-          checked={ this.props.checked }
+          disabled={this.props.disabled}
+          checked={this.props.checked}
           type="checkbox"
-          id={ this.props.name }
-          onChange={ this.props.onChange }
+          id={this.props.name}
+          onChange={this.props.onChange}
         />
-        { label }
+        {label}
       </div>
     );
   }

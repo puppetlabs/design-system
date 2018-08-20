@@ -55,7 +55,6 @@ const defaultProps = {
  */
 
 class DropdownMenu extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -120,22 +119,22 @@ class DropdownMenu extends React.Component {
       }
 
       jsx = (
-        <Menu size={ size } className={ className }>
+        <Menu size={size} className={className}>
           <Menu.List
-            options={ options }
-            selected={ selected }
-            multiple={ this.props.multiple }
-            onChange={ this.onChange }
+            options={options}
+            selected={selected}
+            multiple={this.props.multiple}
+            onChange={this.onChange}
           />
-          { actions }
+          {actions}
         </Menu>
       );
     } else if (this.props.blank) {
-      jsx = <p className="rc-dropdown-blank">{ this.props.blank }</p>;
+      jsx = <p className="rc-dropdown-blank">{this.props.blank}</p>;
     }
 
     if (this.props.blank || this.props.multiple) {
-      jsx = <Menu.Section className="rc-menu-section-list">{ jsx }</Menu.Section>;
+      jsx = <Menu.Section className="rc-menu-section-list">{jsx}</Menu.Section>;
     }
 
     return jsx;
@@ -147,12 +146,7 @@ class DropdownMenu extends React.Component {
     if (this.props.multiple) {
       jsx = (
         <Menu.Section>
-          <Button
-            block
-            size="small"
-            label="Apply"
-            onClick={ this.onApply }
-          />
+          <Button block size="small" label="Apply" onClick={this.onApply} />
         </Menu.Section>
       );
     }
@@ -172,21 +166,23 @@ class DropdownMenu extends React.Component {
     return (
       <Popover
         menu
-        hint={ this.props.hint }
-        closeButton={ !!this.props.hint }
-        anchor={ this.props.anchor }
-        ref={ (c) => { this.popover = c; } }
-        className={ className }
-        target={ this.props.target }
-        onOpen={ this.onOpen }
-        onClose={ this.onClose }
-        margin={ this.props.margin }
-        size={ this.props.size }
-        width={ this.props.width }
-        disablePortal={ this.props.disablePortal }
+        hint={this.props.hint}
+        closeButton={!!this.props.hint}
+        anchor={this.props.anchor}
+        ref={c => {
+          this.popover = c;
+        }}
+        className={className}
+        target={this.props.target}
+        onOpen={this.onOpen}
+        onClose={this.onClose}
+        margin={this.props.margin}
+        size={this.props.size}
+        width={this.props.width}
+        disablePortal={this.props.disablePortal}
       >
-        { menu }
-        { applyButton }
+        {menu}
+        {applyButton}
       </Popover>
     );
   }

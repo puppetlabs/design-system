@@ -27,14 +27,14 @@ const defaultProps = {
  * `MenuSection` components.
  */
 
-const Menu = (props) => {
+const Menu = props => {
   const { size, children, className: classProp, dark } = props;
   const className = classnames('rc-menu', classProp, {
     'rc-menu-dark': dark,
     [`rc-menu-${size}`]: size,
   });
 
-  return <div className={ className }>{ children }</div>;
+  return <div className={className}>{children}</div>;
 };
 
 Menu.propTypes = propTypes;

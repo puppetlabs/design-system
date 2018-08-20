@@ -9,7 +9,11 @@ describe('<ButtonGroup />', () => {
   jsdom({ skipWindowCheck: true });
 
   it('should wrap children in a div', () => {
-    const wrapper = shallow(<ButtonGroup><span>hi</span></ButtonGroup>);
+    const wrapper = shallow(
+      <ButtonGroup>
+        <span>hi</span>
+      </ButtonGroup>,
+    );
 
     expect(wrapper.find('.rc-button-group')).to.have.length(1);
   });

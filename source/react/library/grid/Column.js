@@ -8,7 +8,7 @@ const propTypes = {
   columns: PropTypes.number,
 };
 
-const Column = (props) => {
+const Column = props => {
   const { columns } = props;
   const columnText = mapColumnsToText[columns];
 
@@ -16,9 +16,7 @@ const Column = (props) => {
     [`rc-grid-column-${columnText}-columns`]: columnText,
   });
 
-  return (
-    <div className={ classNames }>{ props.children }</div>
-  );
+  return <div className={classNames}>{props.children}</div>;
 };
 
 Column.propTypes = propTypes;

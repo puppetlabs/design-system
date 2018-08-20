@@ -13,7 +13,7 @@ const defaultProps = {
 
 const MenuActionsMessage = props => (
   <div className="rc-menu-actions-message">
-    { props.message || props.children }
+    {props.message || props.children}
   </div>
 );
 

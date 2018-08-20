@@ -70,15 +70,15 @@ class Tag extends React.Component {
 
     let jsx = (
       <div className="rc-tag-content">
-        { children }
-        { actions }
+        {children}
+        {actions}
       </div>
     );
 
     if (tooltip) {
       jsx = (
-        <TooltipHoverArea anchor="bottom" tooltip={ jsx }>
-          { jsx }
+        <TooltipHoverArea anchor="bottom" tooltip={jsx}>
+          {jsx}
         </TooltipHoverArea>
       );
     }
@@ -90,11 +90,7 @@ class Tag extends React.Component {
     let jsx;
 
     if (this.props.actions) {
-      jsx = (
-        <div className="rc-tag-actions">
-          { this.props.actions }
-        </div>
-      );
+      jsx = <div className="rc-tag-actions">{this.props.actions}</div>;
     }
 
     return jsx;
@@ -105,7 +101,12 @@ class Tag extends React.Component {
 
     if (this.props.onRemove) {
       jsx = (
-        <a role="button" tabIndex="0" className="rc-tag-button rc-tag-remove-button" onClick={ this.onRemove }>
+        <a
+          role="button"
+          tabIndex="0"
+          className="rc-tag-button rc-tag-remove-button"
+          onClick={this.onRemove}
+        >
           <Icon type="close" size="tiny" />
         </a>
       );
@@ -127,17 +128,21 @@ class Tag extends React.Component {
       round,
     } = this.props;
 
-    const className = classnames('rc-tag', {
-      'rc-tag-primary': primary,
-      'rc-tag-secondary': secondary,
-      'rc-tag-bold': bold,
-      'rc-tag-selected': selected,
-      'rc-tag-selectable': onClick,
-      'rc-tag-removable': onRemove,
-      'rc-tag-block': block,
-      'rc-tag-round': round,
-      [`rc-tag-${size}`]: size,
-    }, this.props.className);
+    const className = classnames(
+      'rc-tag',
+      {
+        'rc-tag-primary': primary,
+        'rc-tag-secondary': secondary,
+        'rc-tag-bold': bold,
+        'rc-tag-selected': selected,
+        'rc-tag-selectable': onClick,
+        'rc-tag-removable': onRemove,
+        'rc-tag-block': block,
+        'rc-tag-round': round,
+        [`rc-tag-${size}`]: size,
+      },
+      this.props.className,
+    );
 
     const content = this.renderContent();
     const removeButton = this.renderRemoveButton();
@@ -152,9 +157,9 @@ class Tag extends React.Component {
     }
 
     return (
-      <div { ...props }>
-        { content }
-        { removeButton }
+      <div {...props}>
+        {content}
+        {removeButton}
       </div>
     );
   }

@@ -10,15 +10,13 @@ const propTypes = {
   width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
-const defaultProps = {
-};
+const defaultProps = {};
 
 const renderTarget = () => (
   <a className="rc-form-section-flyout-target">
     <Icon height="12px" width="12px" type="gear" />
   </a>
 );
-
 
 class FormFlyout extends React.Component {
   render() {
@@ -32,14 +30,14 @@ class FormFlyout extends React.Component {
           menu
           closeButton
           className="rc-popover-visible-overflow"
-          hint={ this.props.hint }
-          target={ target }
+          hint={this.props.hint}
+          target={target}
           anchor="right top"
-          margin={ 10 }
-          width={ this.props.width }
+          margin={10}
+          width={this.props.width}
         >
           <fieldset className="rc-form-section rc-form-flyout">
-            { this.props.children}
+            {this.props.children}
           </fieldset>
         </Popover>
       );

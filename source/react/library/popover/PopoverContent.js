@@ -36,7 +36,6 @@ const defaultProps = {
 };
 
 class PopoverContent extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -53,7 +52,11 @@ class PopoverContent extends React.Component {
   }
 
   onOutsideClick(e) {
-    if (!isNodeInRoot(e.target, this.elem) && this.props.onOutsideClick && this.props.isOpened) {
+    if (
+      !isNodeInRoot(e.target, this.elem) &&
+      this.props.onOutsideClick &&
+      this.props.isOpened
+    ) {
       this.props.onOutsideClick(e);
 
       if (!this.props.allowBubble) {
@@ -80,9 +83,7 @@ class PopoverContent extends React.Component {
       }
 
       if (hint || closeButton) {
-        jsx = (
-          <Menu.Header title={ hint } onClose={ onClose } />
-        );
+        jsx = <Menu.Header title={hint} onClose={onClose} />;
       }
     } else {
       if (closeButton) {
@@ -92,7 +93,7 @@ class PopoverContent extends React.Component {
             size="small"
             className="rc-popover-close"
             icon="delete"
-            onClick={ this.onClose }
+            onClick={this.onClose}
           />
         );
       }
@@ -100,8 +101,8 @@ class PopoverContent extends React.Component {
       if (hint || closeButton) {
         jsx = (
           <div className="rc-popover-header">
-            <small className="rc-popover-hint">{ hint }</small>
-            { close }
+            <small className="rc-popover-hint">{hint}</small>
+            {close}
           </div>
         );
       }
@@ -117,20 +118,29 @@ class PopoverContent extends React.Component {
 
     if (menu) {
       content = (
-        <Menu dark={ dark }>{ header }{ children }</Menu>
+        <Menu dark={dark}>
+          {header}
+          {children}
+        </Menu>
       );
     } else {
       content = (
         <div>
-          { header }
-          { children }
+          {header}
+          {children}
         </div>
       );
     }
 
     return (
-      <div ref={ (c) => { this.elem = c; } } className={ className } style={ style }>
-        { content }
+      <div
+        ref={c => {
+          this.elem = c;
+        }}
+        className={className}
+        style={style}
+      >
+        {content}
       </div>
     );
   }

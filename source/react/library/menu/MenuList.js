@@ -67,18 +67,13 @@ class MenuList extends React.Component {
   }
 
   render() {
-    const {
-      multiple,
-      selected,
-      options,
-      size,
-    } = this.props;
+    const { multiple, selected, options, size } = this.props;
     const className = classnames('rc-menu-list', {
       [`rc-menu-list-${size}`]: size,
       'rc-menu-multiple': multiple,
     });
 
-    const jsx = options.map((option) => {
+    const jsx = options.map(option => {
       let isSelected = false;
 
       if (Array.isArray(selected)) {
@@ -89,25 +84,27 @@ class MenuList extends React.Component {
 
       return (
         <MenuItem
-          focused={ this.state.focusedId === option.id }
-          onFocus={ this.onFocus(option.id) }
-          key={ option.id }
-          option={ option }
-          className={ option.className }
-          selected={ isSelected }
-          onClick={ this.onChange }
-          multiple={ multiple }
+          focused={this.state.focusedId === option.id}
+          onFocus={this.onFocus(option.id)}
+          key={option.id}
+          option={option}
+          className={option.className}
+          selected={isSelected}
+          onClick={this.onChange}
+          multiple={multiple}
         />
       );
     });
 
     return (
       <ul
-        ref={ (c) => { this.list = c; } }
-        onMouseLeave={ this.onMouseOut }
-        className={ className }
+        ref={c => {
+          this.list = c;
+        }}
+        onMouseLeave={this.onMouseOut}
+        className={className}
       >
-        { jsx }
+        {jsx}
       </ul>
     );
   }

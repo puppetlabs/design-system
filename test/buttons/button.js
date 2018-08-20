@@ -17,15 +17,15 @@ describe('<Button />', () => {
 
   it('should not respond to click events when disabled', () => {
     const onClick = sinon.spy();
-    const wrapper = shallow(<Button disabled onClick={ onClick } />);
-    wrapper.simulate('click', { preventDefault: () => { } });
+    const wrapper = shallow(<Button disabled onClick={onClick} />);
+    wrapper.simulate('click', { preventDefault: () => {} });
 
     expect(onClick.called).to.equal(false);
   });
 
   it('should respond to click events', () => {
     const onClick = sinon.spy();
-    const wrapper = shallow(<Button onClick={ onClick } />);
+    const wrapper = shallow(<Button onClick={onClick} />);
     wrapper.simulate('click');
 
     expect(onClick.called).to.equal(true);

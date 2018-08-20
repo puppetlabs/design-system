@@ -66,22 +66,24 @@ class ConfirmationModal extends React.Component {
         key="cancel-button"
         label="cancel"
         size="small"
-        onClick={ this.onCancel }
+        onClick={this.onCancel}
       />,
       <Button
         key="submit-button"
         label="confirm"
         size="small"
-        onClick={ this.onConfirm }
-        processing={ this.props.processingConfirmation }
+        onClick={this.onConfirm}
+        processing={this.props.processingConfirmation}
       />,
     ];
 
     return (
-      <Modal actions={ actions } size="small" margin="auto">
-        <h2 className="rc-modal-title">{ this.props.title }</h2>
-        <span className="rc-modal-message">{ this.props.confirmationMessage }</span>
-        { this.props.children }
+      <Modal actions={actions} size="small" margin="auto">
+        <h2 className="rc-modal-title">{this.props.title}</h2>
+        <span className="rc-modal-message">
+          {this.props.confirmationMessage}
+        </span>
+        {this.props.children}
       </Modal>
     );
   }

@@ -56,9 +56,7 @@ class AccordionItem extends React.Component {
 
   renderContent() {
     return (
-      <div className="rc-accordion-item-content">
-        { this.props.children }
-      </div>
+      <div className="rc-accordion-item-content">{this.props.children}</div>
     );
   }
 
@@ -72,23 +70,19 @@ class AccordionItem extends React.Component {
     if (this.props.icon) {
       jsx.push(
         <span key="header-icon" className="rc-accordion-header-icon">
-          <Icon width="16px" height="16px" type={ this.props.icon } />
+          <Icon width="16px" height="16px" type={this.props.icon} />
         </span>,
       );
     }
 
     jsx.push(
       <span key="header-title" className="rc-accordion-item-header-title">
-        { title }
+        {title}
       </span>,
     );
 
     if (active) {
-      jsx = (
-        <div className={ className }>
-          { jsx }
-        </div>
-      );
+      jsx = <div className={className}>{jsx}</div>;
     } else {
       jsx.push(
         <span key="header-action" className="rc-accordion-item-header-action">
@@ -97,16 +91,16 @@ class AccordionItem extends React.Component {
       );
 
       jsx = (
-        <a className="rc-accordion-item-header" href="" onClick={ this.onClick }>
-          { jsx }
+        <a className="rc-accordion-item-header" href="" onClick={this.onClick}>
+          {jsx}
         </a>
       );
     }
 
     if (this.props.tooltip) {
       jsx = (
-        <TooltipHoverArea tooltip={ this.props.tooltip } anchor="bottom">
-          { jsx }
+        <TooltipHoverArea tooltip={this.props.tooltip} anchor="bottom">
+          {jsx}
         </TooltipHoverArea>
       );
     }
@@ -115,16 +109,20 @@ class AccordionItem extends React.Component {
   }
 
   render() {
-    const className = classnames('rc-accordion-item', {
-      'rc-accordion-item-active': this.props.active,
-    }, this.props.className);
+    const className = classnames(
+      'rc-accordion-item',
+      {
+        'rc-accordion-item-active': this.props.active,
+      },
+      this.props.className,
+    );
     const title = this.renderTitle();
     const content = this.renderContent();
 
     return (
-      <div className={ className }>
-        { title }
-        { content }
+      <div className={className}>
+        {title}
+        {content}
       </div>
     );
   }

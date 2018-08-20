@@ -7,15 +7,11 @@ import FadeInAndOut from '../FadeInAndOut';
 const propTypes = {
   anchor: PropTypes.string,
   open: PropTypes.bool,
-  tooltip: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]).isRequired,
+  tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   onClose: PropTypes.func,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
 };
 
 const defaultProps = {
@@ -30,7 +26,6 @@ const defaultProps = {
  */
 
 class TooltipStickyArea extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -63,8 +58,13 @@ class TooltipStickyArea extends React.Component {
     }
 
     return (
-      <Tooltip sticky target={ this.elem } anchor={ this.props.anchor } onClose={ this.onClose }>
-        { this.props.tooltip }
+      <Tooltip
+        sticky
+        target={this.elem}
+        anchor={this.props.anchor}
+        onClose={this.onClose}
+      >
+        {this.props.tooltip}
       </Tooltip>
     );
   }
@@ -75,13 +75,13 @@ class TooltipStickyArea extends React.Component {
     return (
       <div
         className="rc-tooltip-area rc-tooltip-area-sticky"
-        ref={ (c) => { this.elem = c; } }
-        { ...this.props }
+        ref={c => {
+          this.elem = c;
+        }}
+        {...this.props}
       >
-        <FadeInAndOut in={ this.state.open }>
-          { tooltip }
-        </FadeInAndOut>
-        { this.props.children }
+        <FadeInAndOut in={this.state.open}>{tooltip}</FadeInAndOut>
+        {this.props.children}
       </div>
     );
   }

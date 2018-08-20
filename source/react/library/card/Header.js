@@ -37,27 +37,43 @@ class CardHeader extends React.Component {
 
     if (title || subtitle || controls || description) {
       if (title) {
-        titleJSX = <div key="card-title" className={ className }>{ title }</div>;
+        titleJSX = (
+          <div key="card-title" className={className}>
+            {title}
+          </div>
+        );
       }
 
       if (subtitle) {
-        subtitleJSX = <div key="card-subtitle" className="rc-card-subtitle">{ subtitle }</div>;
+        subtitleJSX = (
+          <div key="card-subtitle" className="rc-card-subtitle">
+            {subtitle}
+          </div>
+        );
       }
 
       if (controls) {
-        controlsJSX = <div key="card-controls" className="rc-card-controls">{ controls }</div>;
+        controlsJSX = (
+          <div key="card-controls" className="rc-card-controls">
+            {controls}
+          </div>
+        );
       }
 
       if (description) {
-        descriptionJSX = <div key="card-description" className="rc-card-description">{ description }</div>;
+        descriptionJSX = (
+          <div key="card-description" className="rc-card-description">
+            {description}
+          </div>
+        );
       }
 
       jsx = (
         <div key="card-title-area" className="rc-card-title-area">
-          { titleJSX }
-          { subtitleJSX }
-          { controlsJSX }
-          { descriptionJSX }
+          {titleJSX}
+          {subtitleJSX}
+          {controlsJSX}
+          {descriptionJSX}
         </div>
       );
     }
@@ -69,7 +85,11 @@ class CardHeader extends React.Component {
     let jsx;
 
     if (this.props.actions && this.props.actions.length > 0) {
-      jsx = <div key="card-actions" className="rc-card-actions">{ this.props.actions }</div>;
+      jsx = (
+        <div key="card-actions" className="rc-card-actions">
+          {this.props.actions}
+        </div>
+      );
     }
 
     return jsx;
@@ -82,8 +102,8 @@ class CardHeader extends React.Component {
     return (
       <div className="rc-card-header">
         <div className="rc-card-title-actions">
-          { title }
-          { actions }
+          {title}
+          {actions}
         </div>
       </div>
     );

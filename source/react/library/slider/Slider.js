@@ -18,7 +18,7 @@ const defaultProps = {
   defaultValue: 0,
 };
 
-const getSliderLength = function (sliderRect) {
+const getSliderLength = function(sliderRect) {
   const start = sliderRect.left;
   const end = sliderRect.right;
 
@@ -112,9 +112,12 @@ class Slider extends React.Component {
         const stepPoints = this.convertStepToPoints();
         const stepPositions = stepPoints.map(p => p.position);
 
-        const closestPoint = stepPositions.reduce((prev, next) => (
-          (Math.abs(next - handlePos) < Math.abs(prev - handlePos) ? next : prev)
-        ));
+        const closestPoint = stepPositions.reduce(
+          (prev, next) =>
+            Math.abs(next - handlePos) < Math.abs(prev - handlePos)
+              ? next
+              : prev,
+        );
 
         handlePos = closestPoint;
       }
@@ -124,7 +127,8 @@ class Slider extends React.Component {
 
       // get the middle of the difference between the max and min values.
       // Once we have the middle add the min back on
-      const value = ((this.props.max - this.props.min) * percentage) + this.props.min;
+      const value =
+        (this.props.max - this.props.min) * percentage + this.props.min;
 
       this.setState({ value }, () => {
         this.onChange(value);
@@ -151,7 +155,7 @@ class Slider extends React.Component {
 
         break;
       case RIGHT_KEY_CODE:
-        if (currentPoint.index < (points.length - 1)) {
+        if (currentPoint.index < points.length - 1) {
           newValue = points[currentPoint.index + 1].value;
         }
 
@@ -225,22 +229,31 @@ class Slider extends React.Component {
 
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
-        ref={ (c) => { this.slider = c; } }
-        className={ className }
-        onKeyDown={ this.onKeyDown }
-        onClick={ this.onClick }
+        ref={c => {
+          this.slider = c;
+        }}
+        className={className}
+        onKeyDown={this.onKeyDown}
+        onClick={this.onClick}
       >
         <div className="rc-slider-bar" />
-        <div ref={ (c) => { this.barActive = c; } } className="rc-slider-bar-active" />
         <div
-          ref={ (c) => { this.handle = c; } }
-          tabIndex={ 0 }
+          ref={c => {
+            this.barActive = c;
+          }}
+          className="rc-slider-bar-active"
+        />
+        <div
+          ref={c => {
+            this.handle = c;
+          }}
+          tabIndex={0}
           role="slider"
-          aria-valuemin={ this.props.min }
-          aria-valuemax={ this.props.max }
-          aria-valuenow={ this.state.value }
-          onMouseDown={ this.onMouseDown }
-          onMouseUp={ this.onMouseUp }
+          aria-valuemin={this.props.min}
+          aria-valuemax={this.props.max}
+          aria-valuenow={this.state.value}
+          onMouseDown={this.onMouseDown}
+          onMouseUp={this.onMouseUp}
           className="rc-slider-handle"
         />
       </div>

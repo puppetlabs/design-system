@@ -22,15 +22,15 @@ class FormSection extends React.Component {
 
     let jsx = (
       <legend className="rc-form-section-legend">
-        <span>{ title }</span>
-        { this.props.flyout }
+        <span>{title}</span>
+        {this.props.flyout}
       </legend>
     );
 
     if (tooltip) {
       jsx = (
-        <TooltipHoverArea tooltip={ tooltip } anchor="bottom">
-          { jsx }
+        <TooltipHoverArea tooltip={tooltip} anchor="bottom">
+          {jsx}
         </TooltipHoverArea>
       );
     }
@@ -43,8 +43,8 @@ class FormSection extends React.Component {
 
     return (
       <fieldset className="rc-form-section">
-        { legend }
-        { this.props.children }
+        {legend}
+        {this.props.children}
       </fieldset>
     );
   }

@@ -16,7 +16,6 @@ const defaultProps = {
 };
 
 class ColumnCheckbox extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -39,8 +38,8 @@ class ColumnCheckbox extends React.Component {
     return (
       <input
         type="checkbox"
-        defaultChecked={ this.props.checked }
-        onChange={ this.onChange }
+        defaultChecked={this.props.checked}
+        onChange={this.onChange}
       />
     );
   }

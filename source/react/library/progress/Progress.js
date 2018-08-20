@@ -31,26 +31,22 @@ class Progress extends React.Component {
     const lines = [];
 
     for (let n = 0; n < steps - 1; n += 1) {
-      const lineWidth = (width / (steps - 1)) - circleWidth;
+      const lineWidth = width / (steps - 1) - circleWidth;
 
       const props = {
         y1: 15,
-        x1: (circleWidth * (n + 1)) + (lineWidth * n),
-        x2: ((circleWidth + lineWidth) * (n + 1)) + (circleWidth / 3),
+        x1: circleWidth * (n + 1) + lineWidth * n,
+        x2: (circleWidth + lineWidth) * (n + 1) + circleWidth / 3,
         y2: 15,
         strokeWidth: 3,
         className: 'rc-progress-line',
         key: n,
       };
 
-      lines.push(<line { ...props } />);
+      lines.push(<line {...props} />);
     }
 
-    return (
-      <g className="rc-progress-lines">
-        { lines }
-      </g>
-    );
+    return <g className="rc-progress-lines">{lines}</g>;
   }
 
   renderActive() {
@@ -58,7 +54,7 @@ class Progress extends React.Component {
     const { stepSize } = this.state;
     // Calculate how far on the x axis we should position this, based on the number of steps,
     // their size, and the width of the bar.
-    const cx = ((width / (steps - 1)) * active) + (stepSize * 2);
+    const cx = (width / (steps - 1)) * active + stepSize * 2;
     const mainProps = {
       cx: 0,
       cy: 15,
@@ -76,7 +72,8 @@ class Progress extends React.Component {
       r: 15,
       fill: '#000',
       fillOpacity: 0.1,
-      className: 'rc-progress-step rc-progress-step-active rc-progress-step-active-shadow',
+      className:
+        'rc-progress-step rc-progress-step-active rc-progress-step-active-shadow',
       style: {
         transform: `translateX(${cx}px)`,
       },
@@ -85,8 +82,8 @@ class Progress extends React.Component {
 
     return (
       <g key="active">
-        <circle { ...mainProps } />
-        <circle { ...shadowProps } />
+        <circle {...mainProps} />
+        <circle {...shadowProps} />
       </g>
     );
   }
@@ -95,7 +92,7 @@ class Progress extends React.Component {
     const { steps, width } = this.props;
     const { stepSize } = this.state;
     const props = {
-      cx: ((width / (steps - 1)) * idx) + (stepSize * 2),
+      cx: (width / (steps - 1)) * idx + stepSize * 2,
       cy: 15,
       r: 8, // TODO: Remove these hardcoded values
       fill: 'none',
@@ -104,7 +101,7 @@ class Progress extends React.Component {
       key: idx,
     };
 
-    return <circle { ...props } />;
+    return <circle {...props} />;
   }
 
   renderSteps() {
@@ -118,11 +115,7 @@ class Progress extends React.Component {
     // Once we've rendered every step, let's also render the active step.
     circles.push(this.renderActive());
 
-    return (
-      <g className="rc-progress-steps">
-        { circles }
-      </g>
-    );
+    return <g className="rc-progress-steps">{circles}</g>;
   }
 
   render() {
@@ -130,13 +123,13 @@ class Progress extends React.Component {
     const steps = this.renderSteps();
     const { width } = this.props;
     const { stepSize } = this.state;
-    const svgWidth = width + (stepSize * 4);
-    const svgHeight = (stepSize * 3);
+    const svgWidth = width + stepSize * 4;
+    const svgHeight = stepSize * 3;
 
     return (
-      <svg width={ svgWidth } height={ svgHeight } className="rc-progress">
-        { line }
-        { steps }
+      <svg width={svgWidth} height={svgHeight} className="rc-progress">
+        {line}
+        {steps}
       </svg>
     );
   }
