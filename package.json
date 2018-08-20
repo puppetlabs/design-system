@@ -15,7 +15,8 @@
     "test": "nyc --require=./test/jsdom.js --reporter=html mocha --compilers js:@babel/register --recursive",
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
-    "start": "styleguidist server"
+    "start": "styleguidist server",
+    "format": "eslint --fix '**/*.{js,jsx}'; prettier --write '**/*.{js,jsx,json,css,scss,md}'; stylelint --fix '**/*.{css,scss}'"
   },
   "repository": {
     "type": "git",
