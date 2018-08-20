@@ -1,11 +1,11 @@
 .rc-panel {
+
+  @include with-remove('panel');
   background: $puppet-panel-bg;
   border: $puppet-panel-border;
   border-radius: $puppet-panel-border-radius;
   box-shadow: $puppet-panel-outer-shadow;
   padding: $puppet-panel-padding;
-
-  @include with-remove('panel');
 
   &.rc-panel-secondary {
     background: $puppet-panel-bg-secondary;

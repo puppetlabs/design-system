@@ -270,14 +270,14 @@
     }
 
     .rc-input {
-      margin-top: 1px;
+      border-color: $puppet-filter-border-color;
       border-top-left-radius: 0;
       border-top-right-radius: 0;
-      border-color: $puppet-filter-border-color;
+      margin-top: 1px;
 
       &:focus {
-        box-shadow: $puppet-filter-selected-shadow;
         border: $puppet-filter-border-active;
+        box-shadow: $puppet-filter-selected-shadow;
       }
     }
   }

@@ -81,14 +81,6 @@
 }
 
 .rc-menu-dark {
-  .rc-menu-header {
-    background: $puppet-menu-header-bg-dark;
-    border: $puppet-menu-header-border-dark;
-  }
-
-  .rc-menu-title {
-    color: $puppet-menu-title-color-dark;
-  }
 
   @include menu-item-colors(
     $puppet-menu-item-bg,
@@ -104,6 +96,15 @@
     $puppet-menu-item-color-disabled,
     $puppet-menu-item-icon-color
   );
+
+  .rc-menu-header {
+    background: $puppet-menu-header-bg-dark;
+    border: $puppet-menu-header-border-dark;
+  }
+
+  .rc-menu-title {
+    color: $puppet-menu-title-color-dark;
+  }
 }
 
 @include menu-item-colors(

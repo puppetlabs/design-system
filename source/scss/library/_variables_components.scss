@@ -681,8 +681,8 @@ $puppet-slider-bg-active: $puppet-brand-primary !default;
 $puppet-slider-bar-height: $puppet-tiny !default;
 $puppet-slider-handle-size: 10px !default;
 $puppet-slider-bar-position: (
-    $puppet-slider-handle-size - $puppet-slider-bar-height
-  )/2 !default;
+  $puppet-slider-handle-size - $puppet-slider-bar-height
+)/2 !default;
 
 // Header
 $puppet-header-height: 72px !default;

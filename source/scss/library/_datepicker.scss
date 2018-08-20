@@ -71,13 +71,13 @@ $ns: rc-datepicker !default;
   }
 
   &__LegendItemColor {
+    border: 1px solid rgba(#000, 0.25);
     border-radius: 50%;
     display: inline-block;
     height: 14px;
     margin-right: 6px;
     vertical-align: text-bottom;
     width: 14px;
-    border: 1px solid rgba(#000, 0.25);
 
     &--selection {
       background-color: $puppet-datepicker-selected-bg;
@@ -100,11 +100,11 @@ $ns: rc-datepicker !default;
     z-index: 1;
 
     &--previous {
-      left: 0px;
+      left: 0;
     }
 
     &--next {
-      right: 0px;
+      right: 0;
     }
   }
 
@@ -205,10 +205,10 @@ $ns: rc-datepicker !default;
   &__WeekdayHeading {
     border-bottom: $puppet-datepicker-weekday-border;
     color: $puppet-datepicker-weekday-color;
-    font-weight: $puppet-datepicker-weekday-font-weight;
-    text-transform: $puppet-datepicker-weekday-text;
     font-size: $puppet-datepicker-weekday-font-size;
+    font-weight: $puppet-datepicker-weekday-font-weight;
     letter-spacing: $puppet-datepicker-weekday-letter-spacing;
+    text-transform: $puppet-datepicker-weekday-text;
 
     abbr[title] {
       border-bottom-width: 0;
@@ -220,10 +220,10 @@ $ns: rc-datepicker !default;
   }
 
   &__Date {
-    color: $puppet-datepicker-font-color;
     border: $puppet-datepicker-border-width solid
       $puppet-datepicker-border-color;
     border-right-width: $puppet-datepicker-border-width;
+    color: $puppet-datepicker-font-color;
     cursor: pointer;
     overflow: hidden;
     position: relative;
@@ -317,11 +317,11 @@ $ns: rc-datepicker !default;
   }
 
   &__CalendarHighlight {
+    bottom: 0;
+    left: 0;
     position: absolute;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    top: 0px;
+    right: 0;
+    top: 0;
 
     // &--inOtherMonth {
     //   opacity: .5;

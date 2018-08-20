@@ -74,16 +74,6 @@
 
 .rc-button {
   @extend %button-reset;
-  align-items: center;
-  border-radius: $puppet-button-border-radius;
-  cursor: pointer;
-  display: inline-flex;
-  height: $puppet-button-height;
-  justify-content: center;
-  outline: none;
-  padding: 0 $puppet-button-padding;
-  position: relative;
-  white-space: nowrap;
 
   @include button-colors(
     $puppet-button-bg,
@@ -95,6 +85,16 @@
     $puppet-button-border-color,
     $puppet-button-border-color-hover
   );
+  align-items: center;
+  border-radius: $puppet-button-border-radius;
+  cursor: pointer;
+  display: inline-flex;
+  height: $puppet-button-height;
+  justify-content: center;
+  outline: none;
+  padding: 0 $puppet-button-padding;
+  position: relative;
+  white-space: nowrap;
 
   .rc-button-dropdown-icon {
     padding-left: 10px;
@@ -168,8 +168,6 @@
 }
 
 .rc-button-simple {
-  height: auto;
-  padding: 0;
 
   @include button-colors(
     $puppet-button-simple-bg,
@@ -181,6 +179,8 @@
     $puppet-button-simple-border-color,
     $puppet-button-simple-border-color-hover
   );
+  height: auto;
+  padding: 0;
 }
 
 .rc-button-simple.rc-button-secondary {
