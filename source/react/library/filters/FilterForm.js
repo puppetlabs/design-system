@@ -11,6 +11,7 @@ const propTypes = {
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
   fields: PropTypes.array,
+  operators: PropTypes.object,
 };
 
 const defaultProps = {
@@ -20,14 +21,15 @@ const defaultProps = {
   removable: false,
   fields: [],
   filter: {},
+  operators: filterOperators,
 };
 
-const isValueless = (op) => {
+const isValueless = (op, operators) => {
   let valueless = false;
   let ops;
 
   if (typeof op !== 'undefined') {
-    ops = filterOperators
+    ops = operators
       .filter(o => o.symbol === op)
       .filter(o => typeof o.noValue !== 'undefined');
 
@@ -77,7 +79,7 @@ class FilterForm extends React.Component {
       case 'filterOperator':
         newState.filter.op = value.id;
 
-        if (isValueless(value.id)) {
+        if (isValueless(value.id, this.props.operators)) {
           delete newState.filter.value;
         }
 
@@ -107,8 +109,9 @@ class FilterForm extends React.Component {
 
   getOperators() {
     const filter = this.state.filter;
+    const { operators } = this.props;
 
-    return filterOperators.map(op => ({
+    return operators.map(op => ({
       id: op.symbol,
       label: op.label,
       value: op.symbol,
@@ -136,7 +139,7 @@ class FilterForm extends React.Component {
   }
 
   renderValueField() {
-    const valueless = isValueless(this.state.filter.op);
+    const valueless = isValueless(this.state.filter.op, this.props.operators);
     let jsx;
 
     if (!valueless) {

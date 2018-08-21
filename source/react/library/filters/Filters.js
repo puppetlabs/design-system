@@ -15,6 +15,7 @@ const propTypes = {
   onChange: PropTypes.func,
   onSwitchView: PropTypes.func,
   removableToggle: PropTypes.bool,
+  operators: PropTypes.object,
 };
 
 const defaultProps = {
@@ -24,6 +25,7 @@ const defaultProps = {
   addCTA: 'Add filter',
   onSwitchView: () => {},
   removableToggle: false,
+  operators: null,
 };
 
 const LIST_VIEW = 'LIST_VIEW';
@@ -111,6 +113,7 @@ class Filters extends React.Component {
   }
 
   renderFilters() {
+    const { operators } = this.props;
     const filters = this.props.filters.map((filter) => {
       const key = getFilterKey(filter);
 
@@ -120,6 +123,7 @@ class Filters extends React.Component {
           onRemove={ this.onRemove(filter) }
           filter={ filter }
           key={ key }
+          operators={ operators }
         />
       );
     });
@@ -154,6 +158,7 @@ class Filters extends React.Component {
         removable={ this.props.removableToggle }
         fields={ this.props.fields }
         filter={ this.state.filter }
+        operators={ this.props.operators }
         onCancel={ this.onCancel }
         onSubmit={ this.onSubmitFilter }
       />
