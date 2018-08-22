@@ -9,7 +9,7 @@ const propTypes = {
   filter: PropTypes.object.isRequired,
   onEdit: PropTypes.func,
   onRemove: PropTypes.func,
-  operators: PropTypes.object,
+  operators: PropTypes.array,
 };
 
 const defaultProps = {

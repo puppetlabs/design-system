@@ -15,7 +15,7 @@ const propTypes = {
   onChange: PropTypes.func,
   onSwitchView: PropTypes.func,
   removableToggle: PropTypes.bool,
-  operators: PropTypes.object,
+  operators: PropTypes.array,
 };
 
 const defaultProps = {

@@ -11,7 +11,7 @@ const propTypes = {
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
   fields: PropTypes.array,
-  operators: PropTypes.object,
+  operators: PropTypes.array,
 };
 
 const defaultProps = {
