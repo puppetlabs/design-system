@@ -30,4 +30,4 @@ const TabPanel = (props) => {
 TabPanel.propTypes = propTypes;
 TabPanel.defaultProps = defaultProps;
 
-module.exports = TabPanel;
+export default TabPanel;
