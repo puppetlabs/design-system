@@ -18,6 +18,7 @@ const propTypes = {
   submittable: PropTypes.bool,
   //* Text to display as the Submit button */
   submitLabel: PropTypes.string,
+  cancelLabel: PropTypes.string,
   validator: PropTypes.func,
   //* Errors to render the form with. Keys are field names, and values are the form errors */
   errors: PropTypes.object,
@@ -36,6 +37,7 @@ const defaultProps = {
   children: null,
   validator: null,
   onCancel: () => {},
+  cancelLabel: 'Cancel',
   cancellable: false,
   submitting: false,
   submittable: false,
@@ -77,6 +79,7 @@ class Form extends React.Component {
     this.state = {
       values: defaultValues,
       valid: true,
+      validatorErrors: {},
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -85,10 +88,11 @@ class Form extends React.Component {
   }
 
   onSubmit() {
+    const validatorErrors = validate(this.props.validator, this.state.values);
     const valid = Object.keys(validate(this.props.validator, this.state.values)).length === 0;
 
     if (this.props.onSubmit) {
-      this.setState({ valid }, () => {
+      this.setState({ valid, validatorErrors }, () => {
         if (valid) {
           this.props.onSubmit(this.state);
         }
@@ -111,7 +115,9 @@ class Form extends React.Component {
       // we only want to validate on change if the form has been deemed invalid and the user
       // is attempting to fix the mistakes
       if (!this.state.valid) {
-        newState.valid = Object.keys(validate(this.props.validator, newState.values)).length === 0;
+        const validatorErrors = validate(this.props.validator, newState.values);
+        newState.validatorErrors = validatorErrors;
+        newState.valid = Object.keys(validatorErrors).length === 0;
       }
 
       this.setState(newState, () => {
@@ -124,7 +130,10 @@ class Form extends React.Component {
 
   renderField(child) {
     return React.cloneElement(child, {
-      error: child.props.error || this.props.errors[child.props.name],
+      error:
+        child.props.error ||
+        this.state.validatorErrors[child.props.name] ||
+        this.props.errors[child.props.name],
       value: this.state.values[child.props.name],
       onChange: this.onChange(child.props.name),
       size: this.props.size,
@@ -179,7 +188,7 @@ class Form extends React.Component {
           secondary
           size={ this.props.size }
           onClick={ this.onCancel }
-          label="cancel"
+          label={ this.props.cancelLabel }
         />,
       );
     }
