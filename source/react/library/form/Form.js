@@ -15,6 +15,8 @@ const propTypes = {
   onCancel: PropTypes.func,
   onSubmit: PropTypes.func,
   cancellable: PropTypes.bool,
+  //* Text to display as the Cancel button */
+  cancelLabel: PropTypes.string,
   submittable: PropTypes.bool,
   //* Text to display as the Submit button */
   submitLabel: PropTypes.string,
@@ -39,6 +41,7 @@ const defaultProps = {
   onCancel: () => {},
   cancelLabel: 'Cancel',
   cancellable: false,
+  cancelLabel: 'Cancel',
   submitting: false,
   submittable: false,
   submitLabel: 'Submit',
