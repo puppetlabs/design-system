@@ -16,6 +16,7 @@ const propTypes = {
   onSwitchView: PropTypes.func,
   removableToggle: PropTypes.bool,
   operators: PropTypes.array,
+  labels: PropTypes.object,
 };
 
 const defaultProps = {
@@ -26,6 +27,7 @@ const defaultProps = {
   onSwitchView: () => {},
   removableToggle: false,
   operators: null,
+  labels: {},
 };
 
 const LIST_VIEW = 'LIST_VIEW';
@@ -136,6 +138,7 @@ class Filters extends React.Component {
   }
 
   renderAction() {
+    const ctaLabel = this.props.labels.addCTA || this.props.addCTA;
     let jsx;
 
     if (!this.state.editing && !this.state.adding) {
@@ -143,7 +146,7 @@ class Filters extends React.Component {
         <Button
           simple
           icon="plus"
-          label={ this.props.addCTA }
+          label={ ctaLabel }
           onClick={ this.onAdd }
         />
       );
@@ -161,6 +164,7 @@ class Filters extends React.Component {
         operators={ this.props.operators }
         onCancel={ this.onCancel }
         onSubmit={ this.onSubmitFilter }
+        labels={ this.props.labels }
       />
     );
   }
