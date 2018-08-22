@@ -1,3 +1,9 @@
+# 3.2.0
+
+* Form component now accepts cancelLabel prop for internationalization
+* Bug fix: stop event propagation from menu item click
+* Form component now keeps track of client validation errors in addition to those passed in
+
 # 3.1.4
 
 * Fix to borders on Menus

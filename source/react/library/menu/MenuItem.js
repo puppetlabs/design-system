@@ -15,6 +15,7 @@ const propTypes = {
 
 const defaultProps = {
   iconPosition: 'right',
+  className: '',
   onFocus: () => {},
   onClick: () => {},
   focused: false,
@@ -38,6 +39,7 @@ class MenuItem extends React.Component {
 
   onClick(e) {
     e.preventDefault();
+    e.stopPropagation();
 
     if (!this.props.option.disabled) {
       this.props.onClick(this.props.option, !this.props.selected);
