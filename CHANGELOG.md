@@ -1,3 +1,7 @@
+# 3.2.1
+
+* Remove stray module.exports for babel 7 compatibility
+
 # 3.2.0
 
 * Form component now accepts cancelLabel prop for internationalization
