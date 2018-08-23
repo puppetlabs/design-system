@@ -2,14 +2,17 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   link: PropTypes.bool,
   onClick: PropTypes.func,
   route: PropTypes.string,
 };
 
 const defaultProps = {
+  children: undefined,
   link: false,
+  onClick: () => {},
+  route: '',
 };
 
 class BreadcrumbSection extends React.Component {
