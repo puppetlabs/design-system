@@ -7,6 +7,7 @@ import portal from '../portal';
 import TooltipHoverArea from './TooltipHoverArea';
 import TooltipStickyArea from './TooltipStickyArea';
 import Icon from '../icon/Icon';
+import { ENTER_KEY_CODE } from '../../constants';
 
 const CARAT_HEIGHT = 8;
 
@@ -41,37 +42,51 @@ class Tooltip extends React.Component {
     this.state = getDefaultState();
 
     this.onResize = this.onResize.bind(this);
+    this.onHandleKeyDown = this.onHandleKeyDown.bind(this);
     this.setPosition = this.setPosition.bind(this);
     this.setPositionRight = this.setPositionRight.bind(this);
     this.setPositionBottom = this.setPositionBottom.bind(this);
   }
 
   componentDidMount() {
+    const { target } = this.props;
+
     this.setPosition();
 
     window.addEventListener('resize', this.onResize);
 
-    if (this.props.target) {
-      bindParentScroll(this.props.target, this.setPosition);
+    if (target) {
+      bindParentScroll(target, this.setPosition);
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.anchor !== this.props.anchor) {
+    const { anchor } = this.props;
+
+    if (prevProps.anchor !== anchor) {
       this.setPosition();
     }
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
+    const { target } = this.props;
 
-    if (this.props.target) {
-      unbindParentScroll(this.props.target, this.setPosition);
+    if (target) {
+      unbindParentScroll(target, this.setPosition);
     }
   }
 
   onResize() {
     this.setPosition();
+  }
+
+  onHandleKeyDown(e) {
+    const { onClose } = this.props;
+
+    if (e.keyCode === ENTER_KEY_CODE && onClose) {
+      onClose();
+    }
   }
 
   getScrollbarWidth() {
@@ -82,7 +97,7 @@ class Tooltip extends React.Component {
 
   setPosition() {
     const { target, anchor } = this.props;
-    const tooltip = this.tooltip;
+    const { tooltip } = this;
 
     if (target && tooltip) {
       switch (anchor) {
@@ -149,14 +164,16 @@ class Tooltip extends React.Component {
 
   renderCloseButton() {
     let jsx;
+    const { sticky, onClose } = this.props;
 
-    if (this.props.sticky && this.props.onClose) {
+    if (sticky && onClose) {
       jsx = (
         <div
           role="button"
           tabIndex={0}
           className="rc-tooltip-close"
-          onClick={this.props.onClose}
+          onClick={onClose}
+          onKeyDown={this.onHandleKeyDown}
         >
           <Icon height="8px" width="8px" type="close" />
         </div>
@@ -168,14 +185,11 @@ class Tooltip extends React.Component {
 
   render() {
     const { tooltipPosition, caratPosition } = this.state;
-    const { anchor, style } = this.props;
+    const { anchor, style, children } = this.props;
     const className = classnames('rc-tooltip', `rc-tooltip-position-${anchor}`);
     const closeButton = this.renderCloseButton();
 
-    const styles = {
-      ...tooltipPosition,
-      ...style,
-    };
+    const styles = { ...tooltipPosition, ...style };
 
     return (
       <div
@@ -192,7 +206,7 @@ class Tooltip extends React.Component {
           }}
         />
         <div className="rc-tooltip-carat" style={caratPosition} />
-        {this.props.children}
+        {children}
         {closeButton}
       </div>
     );
