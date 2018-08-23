@@ -8,9 +8,11 @@
     "ecmaVersion": 2017,
     "sourceType": "module"
   },
+  "parser": "babel-eslint",
   "plugins": ["prettier"],
   "extends": ["airbnb", "prettier", "prettier/react"],
   "rules": {
-    "prettier/prettier": "error"
+    "prettier/prettier": "error",
+    "react/jsx-filename-extension": [1, { "extensions": [".js"] }]
   }
 }
