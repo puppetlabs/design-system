@@ -6,11 +6,15 @@ import { filterOperators } from '../../constants';
 import ListItem from '../list/ListItem';
 
 const propTypes = {
-  filter: PropTypes.object.isRequired,
+  filter: PropTypes.shape({
+    field: PropTypes.string,
+    op: PropTypes.string,
+    value: PropTypes.string,
+  }).isRequired,
   onEdit: PropTypes.func,
   onRemove: PropTypes.func,
   /** Defaults to the standard set as defined in constants. */
-  operators: PropTypes.array,
+  operators: PropTypes.arrayOf(PropTypes.object),
 };
 
 const defaultProps = {
@@ -70,15 +74,15 @@ const renderText = (filter, operators) => {
 // We can rename this component when we remove the higher level `Filter` component. For now, I
 // think we need to keep it around for parameters.
 
-const FilterItem = props => {
-  const text = renderText(props.filter, props.operators);
+const FilterItem = ({ filter, operators, onRemove, onEdit }) => {
+  const text = renderText(filter, operators);
 
   return (
     <ListItem
       className="rc-filters-list-item"
-      onRemove={props.onRemove}
-      onEdit={props.onEdit}
-      onClick={props.onEdit}
+      onRemove={onRemove}
+      onEdit={onEdit}
+      onClick={onEdit}
     >
       {text}
     </ListItem>
