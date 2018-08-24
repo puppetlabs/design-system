@@ -28,7 +28,7 @@ const transitionStyles = {
 
 const propTypes = {
   in: PropTypes.bool,
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -36,19 +36,23 @@ const defaultProps = {
   children: null,
 };
 
-const FadeInAndOut = props => (
-  <Transition in={props.in} timeout={duration}>
-    {state => {
-      if (!props.children) {
-        return null;
-      }
+const FadeInAndOut = props => {
+  const { in: inProp } = props;
 
-      return React.cloneElement(props.children, {
-        style: { ...defaultStyle, ...transitionStyles[state] },
-      });
-    }}
-  </Transition>
-);
+  return (
+    <Transition in={inProp} timeout={duration}>
+      {state => {
+        if (!props.children) {
+          return null;
+        }
+
+        return React.cloneElement(props.children, {
+          style: { ...defaultStyle, ...transitionStyles[state] },
+        });
+      }}
+    </Transition>
+  );
+};
 
 FadeInAndOut.propTypes = propTypes;
 FadeInAndOut.defaultProps = defaultProps;

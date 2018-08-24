@@ -29,9 +29,11 @@ const portal = Base => {
     }
 
     componentWillReceiveProps(newProps) {
-      if (newProps.isOpened && !this.props.isOpened) {
+      const { isOpened } = this.props;
+
+      if (newProps.isOpened && !isOpened) {
         this.rootSelector.appendChild(this.container);
-      } else if (!newProps.isOpened && this.props.isOpened) {
+      } else if (!newProps.isOpened && isOpened) {
         this.rootSelector.removeChild(this.container);
       }
     }
