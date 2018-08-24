@@ -17,7 +17,7 @@ const propTypes = {
   onSubmit: PropTypes.func,
   onClose: PropTypes.func,
   onRemove: PropTypes.func,
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -39,34 +39,40 @@ const defaultProps = {
 
 class SlideIn extends React.Component {
   handleClickOutside() {
-    if (this.props.onRemove) {
-      this.props.onRemove();
+    const { onRemove } = this.props;
+
+    if (onRemove) {
+      onRemove();
     }
   }
 
   renderContent() {
-    return this.props.children;
+    const { children } = this.props;
+
+    return children;
   }
 
   renderActions() {
+    const {
+      onClose,
+      closeButtonLabel,
+      onSubmit,
+      submitButtonLabel,
+    } = this.props;
     let closeAction;
     let submitAction;
     let jsx = null;
 
-    if (this.props.onClose) {
-      const closeText = this.props.closeButtonLabel || 'Close';
+    if (onClose) {
+      const closeText = closeButtonLabel || 'Close';
 
-      closeAction = (
-        <Button label={closeText} onClick={this.props.onClose} secondary />
-      );
+      closeAction = <Button label={closeText} onClick={onClose} secondary />;
     }
 
-    if (this.props.onSubmit) {
-      const submitText = this.props.submitButtonLabel || 'Submit';
+    if (onSubmit) {
+      const submitText = submitButtonLabel || 'Submit';
 
-      submitAction = (
-        <Button label={submitText} onClick={this.props.onSubmit} />
-      );
+      submitAction = <Button label={submitText} onClick={onSubmit} />;
     }
 
     if (closeAction && submitAction) {
@@ -84,15 +90,16 @@ class SlideIn extends React.Component {
   }
 
   renderHeader() {
+    const { title, removeable, onRemove } = this.props;
     let onClose;
     let jsx;
 
-    if (this.props.title) {
-      if (this.props.removeable && this.props.onRemove) {
-        onClose = this.props.onRemove;
+    if (title) {
+      if (removeable && onRemove) {
+        onClose = onRemove;
       }
 
-      jsx = <MenuHeader title={this.props.title} onClose={onClose} />;
+      jsx = <MenuHeader title={title} onClose={onClose} />;
     }
 
     return jsx;
