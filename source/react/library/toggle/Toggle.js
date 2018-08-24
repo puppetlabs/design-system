@@ -95,6 +95,7 @@ class Toggle extends React.Component {
 
   render() {
     const { left, right, name, disabled } = this.props;
+    const { active } = this.state;
     const leftLabel = this.renderLabel(left);
     const rightLabel = this.renderLabel(right);
     const className = classnames('rc-toggle', {
@@ -112,7 +113,7 @@ class Toggle extends React.Component {
           disabled={disabled}
           onChange={this.onChange}
           className="rc-switch-toggle"
-          checked={this.state.active === right}
+          checked={active === right}
           name={switchName}
         />
         {rightLabel}
