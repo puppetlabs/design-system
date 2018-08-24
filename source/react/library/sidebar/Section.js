@@ -3,10 +3,11 @@ import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 import { getKey } from '../../helpers/statics';
+import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
-  children: PropTypes.any,
-  title: PropTypes.any,
+  children: PropTypes.node,
+  title: PropTypes.string,
   /** The title of the active section */
   // eslint-disable-next-line react/no-unused-prop-types
   selected: PropTypes.string,
@@ -35,9 +36,9 @@ const defaultProps = {
 };
 
 const isActive = props => {
-  const { selected, title } = props;
+  const { selected, title, active: activeProp } = props;
 
-  let active = props.active;
+  let active = activeProp;
   active = selected ? title === selected : active;
 
   return active;
@@ -55,15 +56,23 @@ class Section extends React.Component {
     };
 
     this.onClick = this.onClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
     this.onSubItemClick = this.onSubItemClick.bind(this);
     this.onSubsectionClick = this.onSubsectionClick.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
     const active = isActive(newProps);
+    const { active: activeState } = this.state;
 
-    if (active !== this.state.active) {
+    if (active !== activeState) {
       this.setState({ active });
+    }
+  }
+
+  onKeyDown(e) {
+    if (e.keyCode === ENTER_KEY_CODE) {
+      this.onClick(e);
     }
   }
 
@@ -102,8 +111,9 @@ class Section extends React.Component {
   }
 
   onSubItemClick(title) {
+    const { title: titleProp, onSectionClick } = this.props;
     this.setState({ selectedSubItem: title });
-    this.props.onSectionClick(this.props.title);
+    onSectionClick(titleProp);
   }
 
   onSubsectionClick(title) {
@@ -111,24 +121,26 @@ class Section extends React.Component {
   }
 
   renderSubsections() {
+    const { active, selectedSubsection, selectedSubItem } = this.state;
+    const { children } = this.props;
+
     const isActiveSubsection = (subsection, idx) => {
-      if (this.state.active && !this.state.selectedSubsection && idx === 0) {
+      if (active && !selectedSubsection && idx === 0) {
         return true;
       }
 
       return (
-        subsection.props.title &&
-        subsection.props.title === this.state.selectedSubsection
+        subsection.props.title && subsection.props.title === selectedSubsection
       );
     };
 
-    return React.Children.map(this.props.children, (subsection, idx) => {
+    return React.Children.map(children, (subsection, idx) => {
       const props = {
         key: getKey(subsection, idx),
         onSubItemClick: this.onSubItemClick,
         onSubsectionClick: this.onSubsectionClick,
         selected: isActiveSubsection(subsection, idx),
-        selectedItem: this.state.selectedSubItem,
+        selectedItem: selectedSubItem,
       };
 
       return React.cloneElement(subsection, props);
@@ -136,19 +148,20 @@ class Section extends React.Component {
   }
 
   render() {
-    const { title, onClick } = this.props;
-    const className = classnames(
+    const { active, open } = this.state;
+    const { title, onClick, icon: iconProp, className } = this.props;
+    const classNames = classnames(
       'rc-sidebar-section',
       {
-        'rc-sidebar-section-selected': this.state.active,
+        'rc-sidebar-section-selected': active,
         'rc-sidebar-section-selectable': onClick,
-        'rc-sidebar-section-closed': !this.state.open,
+        'rc-sidebar-section-closed': !open,
       },
-      this.props.className,
+      className,
     );
 
     let subsections = [];
-    if (this.state.active) {
+    if (active) {
       subsections = this.renderSubsections();
     }
 
@@ -157,21 +170,23 @@ class Section extends React.Component {
     }
 
     let icon;
-    if (this.props.icon) {
+    if (iconProp) {
       icon = (
         <span className="rc-sidebar-section-icon">
-          <Icon width="24px" height="24px" type={this.props.icon} />
+          <Icon width="24px" height="24px" type={iconProp} />
         </span>
       );
     }
 
     return (
-      <div className={className}>
+      /* eslint-disable jsx-a11y/anchor-is-valid */
+      <div className={classNames}>
         <a
           className="rc-sidebar-section-link"
           role="button"
           tabIndex={0}
           onClick={this.onClick}
+          onKeyDown={this.onKeyDown}
         >
           <div className="rc-sidebar-section-header">
             {icon}
@@ -180,6 +195,7 @@ class Section extends React.Component {
         </a>
         {subsections}
       </div>
+      /* eslint-enable jsx-a11y/anchor-is-valid */
     );
   }
 }

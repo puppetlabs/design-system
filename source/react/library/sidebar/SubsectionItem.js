@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
+import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
-  title: PropTypes.any,
+  title: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
   onSubItemClick: PropTypes.func,
   onClick: PropTypes.func,
@@ -26,12 +27,21 @@ class SubsectionItem extends React.Component {
     super(props);
 
     this.onClick = this.onClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   componentWillMount() {
+    const { active, onSubItemClick, title } = this.props;
+
     // Load default active item
-    if (this.props.active) {
-      this.props.onSubItemClick(this.props.title);
+    if (active) {
+      onSubItemClick(title);
+    }
+  }
+
+  onKeyDown(e) {
+    if (e.keyCode === ENTER_KEY_CODE) {
+      this.onClick(e);
     }
   }
 
@@ -47,26 +57,28 @@ class SubsectionItem extends React.Component {
   }
 
   render() {
-    const active = this.props.title === this.props.selected;
+    const { title, selected } = this.props;
+    const active = title === selected;
     const className = classnames('rc-sidebar-subsection-item', {
       'rc-sidebar-subsection-item-selected': active,
     });
 
     return (
+      /* eslint-disable jsx-a11y/anchor-is-valid */
       <li className={className}>
         <a
           className="rc-sidebar-subsection-link"
           role="button"
           tabIndex={0}
           onClick={this.onClick}
+          onKeyDown={this.onKeyDown}
         >
           <div className="rc-sidebar-subsection-item-header">
-            <span className="rc-sidebar-subsection-item-title">
-              {this.props.title}
-            </span>
+            <span className="rc-sidebar-subsection-item-title">{title}</span>
           </div>
         </a>
       </li>
+      /* eslint-enable jsx-a11y/anchor-is-valid */
     );
   }
 }

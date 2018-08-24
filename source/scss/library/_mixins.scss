@@ -8,12 +8,14 @@
   }
 
   .remove-corner {
+    align-items: center;
     background: $puppet-remove-background;
     border-radius: $puppet-circle-radius;
     cursor: pointer;
     display: none;
     float: right;
     height: 21px;
+    justify-content: center;
     position: absolute;
     right: 5px;
     top: 5px;
