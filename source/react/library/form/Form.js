@@ -22,10 +22,10 @@ const propTypes = {
   submitLabel: PropTypes.string,
   validator: PropTypes.func,
   //* Errors to render the form with. Keys are field names, and values are the form errors */
-  errors: PropTypes.object,
+  errors: PropTypes.shape({}),
   size: PropTypes.string,
   submitting: PropTypes.bool,
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -92,27 +92,31 @@ class Form extends React.Component {
   }
 
   onSubmit() {
-    const validatorErrors = validate(this.props.validator, this.state.values);
-    const valid =
-      Object.keys(validate(this.props.validator, this.state.values)).length ===
-      0;
+    const { validator, onSubmit } = this.props;
+    const { values } = this.state;
+    const validatorErrors = validate(validator, values);
+    const valid = Object.keys(validate(validator, values)).length === 0;
 
-    if (this.props.onSubmit) {
+    if (onSubmit) {
       this.setState({ valid, validatorErrors }, () => {
         if (valid) {
-          this.props.onSubmit(this.state);
+          onSubmit(this.state);
         }
       });
     }
   }
 
   onCancel() {
-    if (this.props.onCancel) {
-      this.props.onCancel();
+    const { onCancel } = this.props;
+
+    if (onCancel) {
+      onCancel();
     }
   }
 
   onChange(name) {
+    const { validator, onChange } = this.props;
+    const { valid, values } = this.state;
     return value => {
       const newState = Object.assign({}, this.state);
 
@@ -120,29 +124,32 @@ class Form extends React.Component {
 
       // we only want to validate on change if the form has been deemed invalid and the user
       // is attempting to fix the mistakes
-      if (!this.state.valid) {
-        const validatorErrors = validate(this.props.validator, newState.values);
+      if (!valid) {
+        const validatorErrors = validate(validator, newState.values);
         newState.validatorErrors = validatorErrors;
         newState.valid = Object.keys(validatorErrors).length === 0;
       }
 
       this.setState(newState, () => {
-        if (this.props.onChange) {
-          this.props.onChange(name, this.state.values, newState.valid);
+        if (onChange) {
+          onChange(name, values, newState.valid);
         }
       });
     };
   }
 
   renderField(child) {
+    const { errors, size } = this.props;
+    const { validatorErrors, values } = this.state;
+
     return React.cloneElement(child, {
       error:
         child.props.error ||
-        this.state.validatorErrors[child.props.name] ||
-        this.props.errors[child.props.name],
-      value: this.state.values[child.props.name],
+        validatorErrors[child.props.name] ||
+        errors[child.props.name],
+      value: values[child.props.name],
       onChange: this.onChange(child.props.name),
-      size: this.props.size,
+      size,
       key: child.props.name,
     });
   }
@@ -185,29 +192,38 @@ class Form extends React.Component {
   }
 
   renderActions() {
+    const {
+      cancellable,
+      submittable,
+      submitting,
+      size,
+      cancelLabel,
+      submitLabel,
+    } = this.props;
+    const { valid } = this.state;
     let jsx = [];
 
-    if (this.props.cancellable) {
+    if (cancellable) {
       jsx.push(
         <Button
           key="cancel"
           secondary
-          size={this.props.size}
+          size={size}
           onClick={this.onCancel}
-          label={this.props.cancelLabel}
+          label={cancelLabel}
         />,
       );
     }
 
-    if (this.props.submittable) {
+    if (submittable) {
       jsx.push(
         <Button
           key="submit"
-          processing={this.props.submitting}
-          size={this.props.size}
-          disabled={!this.state.valid}
+          processing={submitting}
+          size={size}
+          disabled={!valid}
           onClick={this.onSubmit}
-          label={this.props.submitLabel}
+          label={submitLabel}
         />,
       );
     }
@@ -224,19 +240,16 @@ class Form extends React.Component {
   }
 
   render() {
-    const children = this.renderChildren(this.props.children);
+    const { children: childrenProp, className, size, inline } = this.props;
+    const children = this.renderChildren(childrenProp);
     const actions = this.renderActions();
-    const className = classnames(
-      'rc-form',
-      this.props.className,
-      `rc-form-${this.props.size}`,
-      {
-        'rc-form-inline': this.props.inline,
-      },
-    );
+    const classNames = classnames('rc-form', className, {
+      [`rc-form-${size}`]: size,
+      'rc-form-inline': inline,
+    });
 
     return (
-      <form className={className}>
+      <form className={classNames}>
         <fieldset className="rc-form-fields">{children}</fieldset>
         {actions}
       </form>

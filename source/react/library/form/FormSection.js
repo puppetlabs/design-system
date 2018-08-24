@@ -6,24 +6,25 @@ import { TooltipHoverArea } from '../tooltips/Tooltip';
 const propTypes = {
   title: PropTypes.string,
   tooltip: PropTypes.string,
-  children: PropTypes.any,
-  flyout: PropTypes.any,
+  children: PropTypes.node,
+  flyout: PropTypes.element,
 };
 
 const defaultProps = {
   title: null,
   tooltip: null,
   children: null,
+  flyout: null,
 };
 
 class FormSection extends React.Component {
   renderLegend() {
-    const { title, tooltip } = this.props;
+    const { title, tooltip, flyout } = this.props;
 
     let jsx = (
       <legend className="rc-form-section-legend">
         <span>{title}</span>
-        {this.props.flyout}
+        {flyout}
       </legend>
     );
 
@@ -39,12 +40,13 @@ class FormSection extends React.Component {
   }
 
   render() {
+    const { children } = this.props;
     const legend = this.renderLegend();
 
     return (
       <fieldset className="rc-form-section">
         {legend}
-        {this.props.children}
+        {children}
       </fieldset>
     );
   }
