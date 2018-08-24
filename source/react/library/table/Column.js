@@ -5,7 +5,7 @@ import React from 'react';
 const propTypes = {
   component: PropTypes.func,
   data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  rowData: PropTypes.object,
+  rowData: PropTypes.shape({}),
 };
 
 const defaultProps = {

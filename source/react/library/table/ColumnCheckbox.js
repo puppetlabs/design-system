@@ -5,7 +5,7 @@ const propTypes = {
   column: PropTypes.string,
   checked: PropTypes.bool,
   onChange: PropTypes.func,
-  rowData: PropTypes.object,
+  rowData: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -23,22 +23,25 @@ class ColumnCheckbox extends React.Component {
   }
 
   onChange(e) {
-    const newRowData = this.props.rowData;
+    const { rowData, column, onChange } = this.props;
+    const newRowData = rowData;
 
-    if (this.props.column) {
-      newRowData[this.props.column] = e.target.checked;
+    if (column) {
+      newRowData[column] = e.target.checked;
     }
 
-    if (this.props.onChange) {
-      this.props.onChange(newRowData, e.target.checked);
+    if (onChange) {
+      onChange(newRowData, e.target.checked);
     }
   }
 
   render() {
+    const { checked } = this.props;
+
     return (
       <input
         type="checkbox"
-        defaultChecked={this.props.checked}
+        defaultChecked={checked}
         onChange={this.onChange}
       />
     );

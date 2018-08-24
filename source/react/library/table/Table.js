@@ -9,8 +9,8 @@ const propTypes = {
   selectable: PropTypes.bool,
   striped: PropTypes.bool,
   fixed: PropTypes.bool,
-  data: PropTypes.array,
-  columns: PropTypes.array,
+  data: PropTypes.arrayOf(PropTypes.shape({})),
+  columns: PropTypes.arrayOf(PropTypes.shape({})),
   className: PropTypes.string,
   onChange: PropTypes.func,
   onSelectChange: PropTypes.func,
@@ -39,11 +39,13 @@ class Table extends React.Component {
   constructor(props) {
     super(props);
 
+    const { columns } = this.props;
+
     let sort = {
       direction: 'asc',
     };
 
-    this.props.columns.forEach(column => {
+    columns.forEach(column => {
       if (column.sort) {
         sort = {
           column: column.column,
@@ -60,20 +62,25 @@ class Table extends React.Component {
   }
 
   onChange(rowData, checked) {
-    if (this.props.onChange) {
-      this.props.onChange(rowData, checked);
+    const onChange = this.props;
+
+    if (onChange) {
+      onChange(rowData, checked);
     }
   }
 
   onSelectChange(rowData, checked) {
-    if (this.props.onSelectChange) {
-      this.props.onSelectChange(rowData, checked);
+    const { onSelectChange } = this.props;
+
+    if (onSelectChange) {
+      onSelectChange(rowData, checked);
     }
   }
 
   onHeaderClick(column) {
     let sortable = true;
-    const data = this.props.data;
+    const { data } = this.props;
+    const { sort } = this.state;
 
     // This is to make sure we don't try to sort rows by non string types
     Object.values(data).forEach(value => {
@@ -86,7 +93,6 @@ class Table extends React.Component {
       return;
     }
 
-    const sort = this.state.sort;
     const sameColumn = sort.column === column.column;
     let direction = 'asc';
 
@@ -105,7 +111,7 @@ class Table extends React.Component {
   }
 
   getMetaData(column) {
-    const columns = this.props.columns;
+    const { columns } = this.props;
     let rowData;
 
     columns.forEach(obj => {
@@ -119,8 +125,9 @@ class Table extends React.Component {
 
   getHeaders(data) {
     const headers = [];
+    const { selectable, columns } = this.props;
 
-    if (this.props.selectable) {
+    if (selectable) {
       headers.push(
         <th key="all-selector" className="rc-table-column-checkbox">
           &nbsp;
@@ -130,7 +137,7 @@ class Table extends React.Component {
     }
 
     if (data.length > 0) {
-      this.props.columns.forEach(column => {
+      columns.forEach(column => {
         headers.push(
           <ColumnHeader
             key={`${column.column}-header`}
@@ -164,11 +171,13 @@ class Table extends React.Component {
   }
 
   getBody(data) {
-    const sort = this.state.sort;
+    const { sort } = this.state;
+    const { selectable } = this.props;
     const rows = [];
+    let revisedData = data;
 
     if (sort && sort.column) {
-      data = data.sort((a, b) => {
+      revisedData = revisedData.sort((a, b) => {
         const columnA = a[sort.column].toLowerCase();
         const columnB = b[sort.column].toLowerCase();
 
@@ -185,15 +194,15 @@ class Table extends React.Component {
       });
 
       if (sort.direction === 'desc') {
-        data = data.reverse();
+        revisedData = revisedData.reverse();
       }
     }
 
-    if (data.length > 0) {
-      data.forEach(datum => {
+    if (revisedData.length > 0) {
+      revisedData.forEach(datum => {
         const columns = [];
 
-        if (this.props.selectable) {
+        if (selectable) {
           columns.push(
             <td
               key={`${datum.rowKey}-selector`}
@@ -237,7 +246,7 @@ class Table extends React.Component {
   }
 
   reOrderColumns(data) {
-    const metaData = this.props.columns;
+    const { columns: metaData } = this.props;
     const sortedMetaData = metaData.sort((a, b) => a.order - b.order);
 
     return data.map(datum => {
@@ -261,17 +270,14 @@ class Table extends React.Component {
   }
 
   render() {
-    const data = this.reOrderColumns(this.props.data);
+    const { data: dataProp, fixed, striped, className } = this.props;
+    const data = this.reOrderColumns(dataProp);
     const headers = this.getHeaders(data);
     const body = this.getBody(data);
-    const tableClass = classnames(
-      'rc-table',
-      {
-        'rc-table-fixed': this.props.fixed,
-        'rc-table-striped': this.props.striped,
-      },
-      this.props.className,
-    );
+    const tableClass = classnames(className, 'rc-table', {
+      'rc-table-fixed': fixed,
+      'rc-table-striped': striped,
+    });
 
     return (
       <table className={tableClass}>

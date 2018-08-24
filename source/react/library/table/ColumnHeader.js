@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  column: PropTypes.object,
+  column: PropTypes.shape({}),
   onClick: PropTypes.func,
 };
 
@@ -20,16 +20,18 @@ class ColumnHeader extends React.Component {
   }
 
   onClick(e) {
+    const { onClick, column } = this.props;
     e.preventDefault();
 
-    if (this.props.onClick) {
-      this.props.onClick(this.props.column);
+    if (onClick) {
+      onClick(column);
     }
   }
 
   render() {
-    const title = this.props.column.displayName || this.props.column.column;
-    const metaData = this.props.column;
+    const { column } = this.props;
+    const title = column.displayName || column.column;
+    const metaData = column;
     const className = classnames(
       'rc-table-header rc-table-header-sortable',
       metaData.className,

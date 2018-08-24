@@ -6,7 +6,7 @@ const propTypes = {
   data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   column: PropTypes.string,
   onChange: PropTypes.func,
-  rowData: PropTypes.object,
+  rowData: PropTypes.shape({}),
   disabled: PropTypes.bool,
 };
 
@@ -26,22 +26,25 @@ class ColumnInput extends React.Component {
   }
 
   onChange(e) {
-    const newRowData = this.props.rowData;
-    newRowData[this.props.column] = e.target.value;
+    const { rowData, column, onChange } = this.props;
+    const newRowData = rowData;
+    newRowData[column] = e.target.value;
 
-    if (this.props.onChange) {
-      this.props.onChange(newRowData);
+    if (onChange) {
+      onChange(newRowData);
     }
   }
 
   render() {
+    const { data, disabled } = this.props;
+
     return (
       <Input
         type="text"
         size="small"
-        value={this.props.data}
+        value={data}
         onChange={this.onChange}
-        disabled={this.props.disabled}
+        disabled={disabled}
       />
     );
   }
