@@ -6,7 +6,7 @@ import Grid from '../../source/react/library/grid';
 
 describe('<Grid />', () => {
   it('should render without blowing up', () => {
-    const wrapper = shallow(<Grid />);
+    const wrapper = shallow(<Grid>children</Grid>);
 
     expect(wrapper.length).to.eql(1);
   });
@@ -14,7 +14,7 @@ describe('<Grid />', () => {
 
 describe('<Grid.Row />', () => {
   it('should render without blowing up', () => {
-    const wrapper = shallow(<Grid.Row />);
+    const wrapper = shallow(<Grid.Row>children</Grid.Row>);
 
     expect(wrapper.length).to.eql(1);
   });
@@ -22,7 +22,7 @@ describe('<Grid.Row />', () => {
 
 describe('<Grid.Column />', () => {
   it('should render without blowing up', () => {
-    const wrapper = shallow(<Grid.Column />);
+    const wrapper = shallow(<Grid.Column>children</Grid.Column>);
 
     expect(wrapper.length).to.eql(1);
   });
