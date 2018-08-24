@@ -14,7 +14,7 @@ const CARAT_HEIGHT = 8;
 const propTypes = {
   anchor: PropTypes.string,
   sticky: PropTypes.bool,
-  style: PropTypes.object,
+  style: PropTypes.shape({}),
   target: PropTypes.oneOfType([PropTypes.object, PropTypes.element]).isRequired,
   onClose: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
