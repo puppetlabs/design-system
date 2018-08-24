@@ -27,7 +27,8 @@ class Progress extends React.Component {
 
   renderLines() {
     const { width, steps } = this.props;
-    const circleWidth = this.state.stepSize * 3;
+    const { stepSize } = this.state;
+    const circleWidth = stepSize * 3;
     const lines = [];
 
     for (let n = 0; n < steps - 1; n += 1) {
@@ -105,7 +106,7 @@ class Progress extends React.Component {
   }
 
   renderSteps() {
-    const steps = this.props.steps;
+    const { steps } = this.props;
     const circles = [];
 
     for (let n = 0; n < steps; n += 1) {
