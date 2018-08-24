@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
+import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
   onSectionClick: PropTypes.func,
-  pageSections: PropTypes.array,
-  actions: PropTypes.array,
+  pageSections: PropTypes.arrayOf(
+    PropTypes.shape({
+      label: PropTypes.string,
+      active: PropTypes.bool,
+    }),
+  ),
+  actions: PropTypes.arrayOf(PropTypes.element),
   activeSection: PropTypes.string,
   fixed: PropTypes.bool,
 };
@@ -23,17 +29,22 @@ class Pagenav extends React.Component {
     super(props);
 
     this.onClick = this.onClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
 
     this.state = { activeSection: props.activeSection };
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.props.activeSection !== newProps.activeSection) {
+    const { activeSection } = this.props;
+
+    if (activeSection !== newProps.activeSection) {
       this.setState({ activeSection: newProps.activeSection });
     }
   }
 
   onClick(e) {
+    const { onSectionClick } = this.props;
+
     const activeSection = e.target.getAttribute('value');
     this.setState({ activeSection });
 
@@ -41,12 +52,18 @@ class Pagenav extends React.Component {
       document.getElementById(activeSection).scrollIntoView();
     }
 
-    this.props.onSectionClick();
+    onSectionClick();
+  }
+
+  onKeyDown(e) {
+    if (e.keyCode === ENTER_KEY_CODE) {
+      this.onClick(e);
+    }
   }
 
   getPagenavLeft() {
-    const pageSections = this.props.pageSections;
-    const activeSection = this.state.activeSection;
+    const { pageSections } = this.props;
+    const { activeSection } = this.state;
 
     const sections = pageSections.map(section => {
       const className = classnames('rc-pagenav-link', {
@@ -54,8 +71,8 @@ class Pagenav extends React.Component {
           ? activeSection === section.id
           : section.active,
       });
-
       return (
+        /* eslint-disable-next-line jsx-a11y/anchor-is-valid */
         <a
           value={section.id}
           key={section.label}
@@ -63,6 +80,7 @@ class Pagenav extends React.Component {
           role="button"
           tabIndex={0}
           onClick={this.onClick}
+          onKeyDown={this.onKeyDown}
         >
           {section.label}
         </a>
@@ -73,7 +91,7 @@ class Pagenav extends React.Component {
   }
 
   getPagenavRight() {
-    const actions = this.props.actions;
+    const { actions } = this.props;
 
     return <div className="rc-pagenav-right">{actions}</div>;
   }
@@ -81,9 +99,10 @@ class Pagenav extends React.Component {
   render() {
     const pagenavLeft = this.getPagenavLeft();
     const pagenavRight = this.getPagenavRight();
+    const { fixed } = this.props;
 
     const className = classnames('rc-pagenav', {
-      'rc-pagenav-fixed': this.props.fixed,
+      'rc-pagenav-fixed': fixed,
     });
 
     return (
