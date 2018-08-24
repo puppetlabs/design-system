@@ -8,8 +8,8 @@ const propTypes = {
   size: PropTypes.string,
   select: PropTypes.bool,
   onChange: PropTypes.func,
-  options: PropTypes.array,
-  actions: PropTypes.any,
+  options: PropTypes.arrayOf(PropTypes.object),
+  actions: PropTypes.node,
   hint: PropTypes.string,
   margin: PropTypes.number,
   anchor: PropTypes.string,
@@ -31,6 +31,9 @@ const propTypes = {
 };
 
 const defaultProps = {
+  anchor: 'bottom left',
+  actions: null,
+  size: 'small',
   select: false,
   options: [],
   hint: '',
@@ -46,13 +49,12 @@ const defaultProps = {
   selected: [],
   disablePortal: false,
   onChange: null,
+  onActionClick: null,
 };
 
-const getSelected = props => {
-  let selected = props.selected;
-
+const getSelected = ({ selected }) => {
   if (!Array.isArray(selected) && typeof selected !== 'undefined') {
-    selected = [selected];
+    return [selected];
   }
 
   return selected;
@@ -76,29 +78,29 @@ class Dropdown extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const selectedChanged = !equals(this.props.selected, nextProps.selected);
+    const { selected } = this.props;
+    const selectedChanged = !equals(selected, nextProps.selected);
     const hasMultiple = nextProps.selected.length > 1;
 
     if (
       {}.hasOwnProperty.call(nextProps, 'selected') &&
       (selectedChanged || hasMultiple)
     ) {
-      const selected = getSelected(nextProps);
-
-      this.setState({ selected, displayed: selected });
+      this.setState({ selected: getSelected(nextProps), displayed: selected });
     }
   }
 
   onChange(option) {
-    const prevSelected = this.state.selected;
+    const { selected: prevSelected } = this.state;
+    const { multiple, required, onChange } = this.props;
     const options = this.getOptions();
     let nextSelected = [];
 
     options.forEach(o => {
-      const id = o.id;
+      const { id } = o;
       const wasSelected = prevSelected.indexOf(id) >= 0;
 
-      if (id !== option.id && this.props.multiple && wasSelected) {
+      if (id !== option.id && multiple && wasSelected) {
         nextSelected.push(id);
       }
 
@@ -107,43 +109,49 @@ class Dropdown extends React.Component {
       }
     });
 
-    if (this.props.required && nextSelected.length === 0) {
+    if (required && nextSelected.length === 0) {
       nextSelected = prevSelected;
     }
 
     this.setState({ selected: nextSelected }, () => {
-      if (!this.props.multiple) {
+      if (!multiple) {
         this.setState({ displayed: nextSelected });
 
-        if (this.props.onChange) {
-          this.props.onChange(nextSelected);
+        if (onChange) {
+          onChange(nextSelected);
         }
       }
     });
   }
 
   onClose() {
-    this.setState({ displayed: this.state.selected });
+    const { selected } = this.state;
+    const { multiple, onChange } = this.props;
+    this.setState({ displayed: selected });
 
-    if (this.props.multiple && this.props.onChange) {
-      this.props.onChange(this.state.selected);
+    if (multiple && onChange) {
+      onChange(selected);
     }
   }
 
   onApply() {
-    if (this.props.onChange) {
-      this.props.onChange(this.state.selected);
+    const { onChange } = this.props;
+    const { selected } = this.state;
+    if (onChange) {
+      onChange(selected);
     }
   }
 
   onActionClick(option) {
-    if (this.props.onActionClick) {
-      this.props.onActionClick(option);
+    const { onActionClick } = this.props;
+    if (onActionClick) {
+      onActionClick(option);
     }
   }
 
   getOptions() {
-    return this.props.options.map(o => {
+    const { options } = this.props;
+    return options.map(o => {
       let obj;
 
       if (typeof o === 'string') {
@@ -157,15 +165,22 @@ class Dropdown extends React.Component {
   }
 
   renderToggle() {
+    const { displayed } = this.state;
+    const {
+      label: propsLabel,
+      error,
+      tabIndex,
+      disabled,
+      select,
+      placeholder,
+    } = this.props;
     const options = this.getOptions();
-    const selected = options.filter(
-      e => this.state.displayed.indexOf(e.id) >= 0,
-    );
+    const selected = options.filter(e => displayed.indexOf(e.id) >= 0);
     const values = selected.map(s => s.value);
     let label;
 
-    if (this.props.label) {
-      label = this.props.label;
+    if (propsLabel) {
+      label = propsLabel;
     } else {
       if (values.length > 1) {
         const lastIndex = values.length - 1;
@@ -181,41 +196,52 @@ class Dropdown extends React.Component {
 
     return (
       <DropdownLabel
-        error={this.props.error}
-        tabIndex={this.props.tabIndex}
-        disabled={this.props.disabled}
-        select={this.props.select}
-        placeholder={this.props.placeholder}
+        error={error}
+        tabIndex={tabIndex}
+        disabled={disabled}
+        select={select}
+        placeholder={placeholder}
         label={label}
       />
     );
   }
 
   renderDropdownMenu() {
+    const { selected: selectedState } = this.state;
+    const {
+      anchor,
+      size,
+      margin,
+      blank,
+      hint,
+      multiple,
+      actions,
+      required,
+      disablePortal,
+      onActionClick,
+    } = this.props;
     const options = this.getOptions();
     const button = this.renderToggle();
-    const selected = this.state.selected.map(
-      s => (typeof s === 'string' ? s : s.id),
-    );
+    const selected = selectedState.map(s => (typeof s === 'string' ? s : s.id));
 
     return (
       <DropdownMenu
-        anchor={this.props.anchor}
-        size={this.props.size}
+        anchor={anchor}
+        size={size}
         onClose={this.onClose}
-        margin={this.props.margin}
-        blank={this.props.blank}
-        hint={this.props.hint}
-        multiple={this.props.multiple}
+        margin={margin}
+        blank={blank}
+        hint={hint}
+        multiple={multiple}
         target={button}
         onChange={this.onChange}
         onApply={this.onApply}
         options={options}
-        actions={this.props.actions}
+        actions={actions}
         selected={selected}
-        required={this.props.required}
-        disablePortal={this.props.disablePortal}
-        onActionClick={this.props.onActionClick}
+        required={required}
+        disablePortal={disablePortal}
+        onActionClick={onActionClick}
       />
     );
   }

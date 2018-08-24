@@ -15,16 +15,15 @@ const propTypes = {
   anchor: PropTypes.string,
   className: PropTypes.string,
   buttonClassName: PropTypes.string,
-  dates: PropTypes.object,
+  dates: PropTypes.shape({}),
   disabled: PropTypes.bool,
   message: PropTypes.string,
   timezone: PropTypes.string,
-  ranges: PropTypes.array,
+  ranges: PropTypes.arrayOf(PropTypes.object),
   disablePopoverPortal: PropTypes.bool,
 };
 
 const defaultProps = {
-  onChange: () => {},
   className: '',
   anchor: 'bottom left',
   buttonClassName: '',
@@ -95,24 +94,26 @@ class DatePicker extends React.Component {
   }
 
   onChange(dates) {
+    const { onChange, timezone } = this.props;
     // Convert the dates coming out of the picker in to the requested timezone
     // if the timezone info has been configured on the datepicker.
-    dates.start = parseDate(dates.start, this.props.timezone);
-    dates.end = parseDate(dates.end, this.props.timezone);
-
-    this.props.onChange(dates);
+    onChange({
+      ...dates,
+      start: parseDate(dates.start, timezone),
+      end: parseDate(dates.end, timezone),
+    });
 
     this.popover.close();
   }
 
   getButton(start, end) {
-    const message = this.props.message;
+    const { message, buttonClassName, disabled } = this.props;
     const props = {
       transparent: true,
       className: classnames('rc-datepicker-button', {
-        [this.props.buttonClassName]: this.props.buttonClassName,
+        [buttonClassName]: buttonClassName,
       }),
-      disabled: !!(this.props.disabled || this.props.message),
+      disabled: !!(disabled || message),
     };
     let buttonBody;
 
@@ -132,21 +133,21 @@ class DatePicker extends React.Component {
   }
 
   getWrapper(start, end) {
+    const { anchor, ranges, message, disablePopoverPortal } = this.props;
     const button = this.getButton(start, end);
-    const anchor = this.props.anchor;
     const props = {
       range: moment.range(start, end),
-      ranges: this.props.ranges,
+      ranges,
       onChange: this.onChange,
     };
     let jsx;
 
-    if (this.props.message) {
+    if (message) {
       jsx = button;
     } else {
       jsx = (
         <Popover
-          disablePortal={this.props.disablePopoverPortal}
+          disablePortal={disablePopoverPortal}
           ref={c => {
             this.popover = c;
           }}
@@ -163,20 +164,21 @@ class DatePicker extends React.Component {
   }
 
   getConfigurationMessage() {
-    let message;
-
-    if (this.props.message) {
-      message = this.props.message;
-    }
-
-    return message;
+    // TODO: what is this method doing?
+    //
+    const { message } = this.props;
+    return message || undefined;
   }
 
   render() {
-    const wrapper = this.getWrapper(this.state.start, this.state.end);
-    const className = classnames('rc-datepicker-wrapper', this.props.className);
+    const { start, end, className } = this.state;
+    const wrapper = this.getWrapper(start, end);
 
-    return <div className={className}>{wrapper}</div>;
+    return (
+      <div className={classnames('rc-datepicker-wrapper', className)}>
+        {wrapper}
+      </div>
+    );
   }
 }
 

@@ -7,7 +7,7 @@ import { TooltipStickyArea } from '../tooltips/Tooltip';
 const propTypes = {
   message: PropTypes.string,
   menuToggleIcon: PropTypes.string,
-  menuOptions: PropTypes.array,
+  menuOptions: PropTypes.arrayOf(PropTypes.object),
   onOptionClick: PropTypes.func,
 };
 
@@ -23,7 +23,7 @@ class CardActionsMenu extends React.Component {
     super(props);
 
     this.state = {
-      tooltipOpen: !!this.props.message,
+      tooltipOpen: !!props.message,
     };
 
     this.onTooltipClose = this.onTooltipClose.bind(this);
@@ -39,28 +39,33 @@ class CardActionsMenu extends React.Component {
   }
 
   render() {
+    const { tooltipOpen } = this.state;
+    const { menuOptions, menuToggleIcon, message, onOptionClick } = this.props;
     let menu;
 
-    if (this.props.menuOptions.length > 0) {
+    if (menuOptions.length > 0) {
+      // TODO: This should render a button element or an anchor if its for navigation
+      /* eslint-disable jsx-a11y/click-events-have-key-events */
+      /* eslint-disable jsx-a11y/anchor-is-valid */
       let target = (
         <a>
-          <Icon type={this.props.menuToggleIcon} height="16px" width="16px" />
+          <Icon type={menuToggleIcon} height="16px" width="16px" />
         </a>
       );
 
-      let selected = this.props.menuOptions.filter(o => o.selected);
+      let selected = menuOptions.filter(o => o.selected);
 
       if (selected.length) {
         selected = selected[0].id;
       }
 
-      if (this.props.message) {
+      if (message) {
         target = (
           <TooltipStickyArea
             onClose={this.onTooltipClose}
-            open={this.state.tooltipOpen}
+            open={tooltipOpen}
             anchor="bottom"
-            tooltip={this.props.message}
+            tooltip={message}
           >
             {target}
           </TooltipStickyArea>
@@ -72,10 +77,10 @@ class CardActionsMenu extends React.Component {
           size="tiny"
           anchor="bottom right"
           target={target}
-          options={this.props.menuOptions}
+          options={menuOptions}
           selected={selected}
           onOpen={this.onMenuOpen}
-          onChange={this.props.onOptionClick}
+          onChange={onOptionClick}
         />
       );
     }

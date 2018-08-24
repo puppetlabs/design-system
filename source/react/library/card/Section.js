@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   className: PropTypes.string,
 };
 

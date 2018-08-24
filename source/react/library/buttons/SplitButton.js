@@ -6,7 +6,7 @@ import Icon from '../icon/Icon';
 import DropdownMenu from '../dropdown/DropdownMenu';
 
 const propTypes = {
-  options: PropTypes.array.isRequired,
+  options: PropTypes.arrayOf(PropTypes.object).isRequired,
   /** Primary button label */
   label: PropTypes.string.isRequired,
   className: PropTypes.string,
@@ -33,8 +33,10 @@ const defaultProps = {
   disablePortal: false,
   disabled: false,
   disabledMenu: false,
-  onClick: () => {},
-  onOptionClick: () => {},
+  className: '',
+  dropdownSize: 'small',
+  menuStatus: null,
+  size: null,
 };
 
 /**
@@ -50,24 +52,24 @@ class SplitButton extends React.Component {
   }
 
   onClick() {
-    if (this.props.onClick) {
-      this.props.onClick();
+    const { onClick } = this.props;
+    if (onClick) {
+      onClick();
     }
   }
 
   onOptionClick(option) {
-    if (this.props.onOptionClick && typeof option !== 'undefined') {
-      this.props.onOptionClick(option);
+    const { onOptionClick } = this.props;
+    if (onOptionClick && typeof option !== 'undefined') {
+      onOptionClick(option);
     }
   }
 
   renderDropdownTarget() {
+    const { menuStatus, disabledMenu, error, size } = this.props;
     const iconSize = '12px';
-    const menuStatus = this.props.menuStatus;
-    const error = this.props.error;
-    let iconType;
 
-    const disabledMenu = this.props.disabledMenu;
+    let iconType;
 
     switch (menuStatus) {
       case 'success':
@@ -84,7 +86,7 @@ class SplitButton extends React.Component {
       <Button
         error={error}
         className="rc-button-menu"
-        size={this.props.size}
+        size={size}
         disabled={disabledMenu}
       >
         <div className="rc-button-menu-inner">
@@ -120,11 +122,10 @@ class SplitButton extends React.Component {
 
   render() {
     const dropdown = this.renderDropdown();
-    const { label, size, disabled, processing, error } = this.props;
-    const className = classnames('rc-split-button', this.props.className);
+    const { label, size, disabled, processing, error, className } = this.props;
 
     return (
-      <div className={className}>
+      <div className={classnames('rc-split-button', className)}>
         <Button
           error={error}
           processing={processing}

@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  actions: PropTypes.array,
+  actions: PropTypes.node,
   /** Primary title */
   title: PropTypes.string,
   /** Class to the title eelement */
@@ -11,7 +11,7 @@ const propTypes = {
   /** Secondary title */
   subtitle: PropTypes.string,
   /** Controls to update the contents of the card */
-  controls: PropTypes.any,
+  controls: PropTypes.node,
   /** Card description */
   description: PropTypes.string,
 };
@@ -27,8 +27,14 @@ const defaultProps = {
 
 class CardHeader extends React.Component {
   renderTitle() {
-    const { title, subtitle, controls, description } = this.props;
-    const className = classnames('rc-card-title', this.props.titleClassName);
+    const {
+      title,
+      subtitle,
+      controls,
+      description,
+      titleClassName,
+    } = this.props;
+    const className = classnames('rc-card-title', titleClassName);
     let titleJSX;
     let subtitleJSX;
     let controlsJSX;
@@ -82,12 +88,13 @@ class CardHeader extends React.Component {
   }
 
   renderActions() {
+    const { actions } = this.props;
     let jsx;
 
-    if (this.props.actions && this.props.actions.length > 0) {
+    if (actions && actions.length > 0) {
       jsx = (
         <div key="card-actions" className="rc-card-actions">
-          {this.props.actions}
+          {actions}
         </div>
       );
     }

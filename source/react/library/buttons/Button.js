@@ -72,10 +72,11 @@ class Button extends React.Component {
   }
 
   onClick(e) {
-    if (this.props.disabled || this.props.processing) {
+    const { disabled, processing, onClick } = this.props;
+    if (disabled || processing) {
       e.preventDefault();
-    } else if (this.props.onClick) {
-      this.props.onClick(e);
+    } else if (onClick) {
+      onClick(e);
     }
   }
 
@@ -99,6 +100,7 @@ class Button extends React.Component {
       floating,
       round,
       square,
+      icon: propIcon,
     } = this.props;
 
     let button;
@@ -140,14 +142,14 @@ class Button extends React.Component {
       content = <span className="rc-button-content">{children || label}</span>;
     }
 
-    if (this.props.icon || floating) {
+    if (propIcon || floating) {
       const iconSize = simple ? '8px' : '16px';
-      const iconType = !this.props.icon && floating ? 'plus' : this.props.icon;
+      const iconType = !propIcon && floating ? 'plus' : propIcon;
 
       icon = <Icon height={iconSize} width={iconSize} type={iconType} />;
     }
 
-    if (this.props.dropdown && !this.props.processing) {
+    if (dropdown && !processing) {
       const iconSize = '10px';
 
       dropdown = (
@@ -159,7 +161,7 @@ class Button extends React.Component {
 
     if (type) {
       button = (
-        <button {...btnProps}>
+        <button type="button" {...btnProps}>
           {icon} {content} {dropdown} {loader}
         </button>
       );
