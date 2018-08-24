@@ -3,6 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 import Switch from '../switch/Switch';
+import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
   left: PropTypes.string.isRequired,
@@ -33,26 +34,38 @@ class Toggle extends React.Component {
     this.state = { active };
 
     this.onChange = this.onChange.bind(this);
-    this.onLabelClick = this.onLabelClick.bind(this);
+    this.onClickLabel = this.onClickLabel.bind(this);
+    this.onKeyDownLabel = this.onKeyDownLabel.bind(this);
   }
 
   onChange() {
-    const { left, right } = this.props;
-    const active = this.state.active === left ? right : left;
+    const { left, right, onChange } = this.props;
+    const { active: activeState } = this.state;
+    const active = activeState === left ? right : left;
 
     this.setState({ active }, () => {
-      if (this.props.onChange) {
-        this.props.onChange(active);
+      if (onChange) {
+        onChange(active);
       }
     });
   }
 
-  onLabelClick(active) {
+  onKeyDownLabel(active) {
+    return e => {
+      if (e.keyCode === ENTER_KEY_CODE) {
+        this.onClickLabel(active);
+      }
+    };
+  }
+
+  onClickLabel(active) {
+    const { disabled, onChange } = this.props;
+    const { active: activeState } = this.state;
     return () => {
-      if (active !== this.state.active && !this.props.disabled) {
+      if (active !== activeState && !disabled) {
         this.setState({ active }, () => {
-          if (this.props.onChange) {
-            this.props.onChange(active);
+          if (onChange) {
+            onChange(active);
           }
         });
       }
@@ -60,16 +73,19 @@ class Toggle extends React.Component {
   }
 
   renderLabel(label) {
-    const active = this.state.active === label;
+    const { active: activeState } = this.state;
+    const active = activeState === label;
     const className = classnames('rc-toggle-label', {
       'rc-toggle-active': active,
     });
 
     return (
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
       <a
         role="button"
         tabIndex={0}
-        onClick={this.onLabelClick(label)}
+        onClick={this.onClickLabel(label)}
+        onKeyDown={this.onKeyDownLabel(label)}
         className={className}
       >
         {label}
