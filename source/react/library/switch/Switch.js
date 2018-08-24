@@ -26,11 +26,13 @@ const defaultProps = {
 
 class Switch extends React.Component {
   renderLabel() {
+    const { label, name } = this.props;
     let jsx;
 
-    if (this.props.label) {
+    /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
+    if (label) {
       jsx = (
-        <label className="rc-switch-label" htmlFor={this.props.name}>
+        <label className="rc-switch-label" htmlFor={name}>
           <span className="rc-switch-label-on">
             <Icon width="12px" height="12px" type="checkmark" />
           </span>
@@ -40,30 +42,30 @@ class Switch extends React.Component {
         </label>
       );
     } else {
-      jsx = <label className="rc-switch-label" htmlFor={this.props.name} />;
+      jsx = <label className="rc-switch-label" htmlFor={name} />;
     }
+    /* eslint-enable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
 
     return jsx;
   }
 
   render() {
-    const propsClassName = this.props.className;
+    const { className, disabled, checked, name, onChange } = this.props;
     const label = this.renderLabel();
 
-    const className = classnames('rc-switch', {
-      'rc-switch-checked': propsClassName === null,
-      [propsClassName]: propsClassName !== null,
+    const classNames = classnames('rc-switch', className, {
+      'rc-switch-checked': className === null,
     });
 
     return (
-      <div className={className}>
+      <div className={classNames}>
         <input
           className="rc-switch-checkbox"
-          disabled={this.props.disabled}
-          checked={this.props.checked}
+          disabled={disabled}
+          checked={checked}
           type="checkbox"
-          id={this.props.name}
-          onChange={this.props.onChange}
+          id={name}
+          onChange={onChange}
         />
         {label}
       </div>
