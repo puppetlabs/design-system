@@ -3,6 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 import { TooltipHoverArea } from '../tooltips/Tooltip';
+import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
   /** Selected state */
@@ -16,9 +17,9 @@ const propTypes = {
   block: PropTypes.bool,
   tooltip: PropTypes.bool,
   onRemove: PropTypes.func,
-  actions: PropTypes.array,
+  actions: PropTypes.arrayOf(PropTypes.element),
   onClick: PropTypes.func,
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -34,6 +35,7 @@ const defaultProps = {
   onRemove: null,
   onClick: null,
   children: null,
+  bold: false,
 };
 
 /**
@@ -45,22 +47,31 @@ class Tag extends React.Component {
 
     this.onClick = this.onClick.bind(this);
     this.onRemove = this.onRemove.bind(this);
+    this.onKeyDownRemove = this.onKeyDownRemove.bind(this);
   }
 
   onClick(e) {
     e.preventDefault();
+    const { onClick, selected, children } = this.props;
 
-    if (this.props.onClick) {
-      const value = !this.props.selected ? this.props.children : null;
-      this.props.onClick(value);
+    if (onClick) {
+      const value = !selected ? children : null;
+      onClick(value);
+    }
+  }
+
+  onKeyDownRemove(e) {
+    if (e.keyCode === ENTER_KEY_CODE) {
+      this.onRemove(e);
     }
   }
 
   onRemove(e) {
+    const { onRemove } = this.props;
     e.preventDefault();
 
-    if (this.props.onRemove) {
-      this.props.onRemove(e);
+    if (onRemove) {
+      onRemove(e);
     }
   }
 
@@ -87,25 +98,29 @@ class Tag extends React.Component {
   }
 
   renderActions() {
+    const { actions } = this.props;
     let jsx;
 
-    if (this.props.actions) {
-      jsx = <div className="rc-tag-actions">{this.props.actions}</div>;
+    if (actions) {
+      jsx = <div className="rc-tag-actions">{actions}</div>;
     }
 
     return jsx;
   }
 
   renderRemoveButton() {
+    const { onRemove } = this.props;
     let jsx;
 
-    if (this.props.onRemove) {
+    if (onRemove) {
       jsx = (
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
         <a
           role="button"
           tabIndex="0"
           className="rc-tag-button rc-tag-remove-button"
           onClick={this.onRemove}
+          onKeyDown={this.onKeyDownRemove}
         >
           <Icon type="close" size="tiny" />
         </a>
@@ -126,29 +141,26 @@ class Tag extends React.Component {
       size,
       block,
       round,
+      className,
     } = this.props;
 
-    const className = classnames(
-      'rc-tag',
-      {
-        'rc-tag-primary': primary,
-        'rc-tag-secondary': secondary,
-        'rc-tag-bold': bold,
-        'rc-tag-selected': selected,
-        'rc-tag-selectable': onClick,
-        'rc-tag-removable': onRemove,
-        'rc-tag-block': block,
-        'rc-tag-round': round,
-        [`rc-tag-${size}`]: size,
-      },
-      this.props.className,
-    );
+    const classNames = classnames('rc-tag', className, {
+      'rc-tag-primary': primary,
+      'rc-tag-secondary': secondary,
+      'rc-tag-bold': bold,
+      'rc-tag-selected': selected,
+      'rc-tag-selectable': onClick,
+      'rc-tag-removable': onRemove,
+      'rc-tag-block': block,
+      'rc-tag-round': round,
+      [`rc-tag-${size}`]: size,
+    });
 
     const content = this.renderContent();
     const removeButton = this.renderRemoveButton();
 
     const props = {
-      className,
+      className: classNames,
     };
 
     if (onClick) {
