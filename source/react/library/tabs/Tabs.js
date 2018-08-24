@@ -6,7 +6,7 @@ import TabPanel from './TabPanel';
 const propTypes = {
   vertical: PropTypes.bool,
   activeTab: PropTypes.number,
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -38,14 +38,15 @@ class Tabs extends React.Component {
   }
 
   renderTabs() {
-    const children = this.props.children;
+    const { children } = this.props;
+    const { activeTab } = this.state;
     const tabPanels = !Array.isArray(children) ? [children] : children;
     const tabs = tabPanels.map((panel, i) => {
       const onClick = panel.props.onClick
         ? panel.props.onClick
         : this.onChange(i);
       const className = classnames('rc-tab', {
-        'rc-tab-active': this.state.activeTab === i,
+        'rc-tab-active': activeTab === i,
       });
       const tabKey = `tab-${i}`;
 
@@ -63,10 +64,12 @@ class Tabs extends React.Component {
 
   renderPanels() {
     const panels = [];
+    const { children } = this.props;
+    const { activeTab } = this.state;
 
-    this.props.children.forEach((panel, i) => {
-      const props = panel.props;
-      const active = this.state.activeTab === i;
+    children.forEach((panel, i) => {
+      const { props } = panel;
+      const active = activeTab === i;
       const tabPanelKey = `tab-panel-${i}`;
 
       if (!panel.props.onClick) {
@@ -78,10 +81,11 @@ class Tabs extends React.Component {
   }
 
   render() {
+    const { vertical } = this.props;
     const tabs = this.renderTabs();
     const panels = this.renderPanels();
     const className = classnames('rc-tabs', {
-      'rc-tabs-vertical': this.props.vertical,
+      'rc-tabs-vertical': vertical,
     });
 
     return (
