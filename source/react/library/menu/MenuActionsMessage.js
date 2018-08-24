@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   message: PropTypes.string,
 };
 
@@ -11,10 +11,8 @@ const defaultProps = {
   message: '',
 };
 
-const MenuActionsMessage = props => (
-  <div className="rc-menu-actions-message">
-    {props.message || props.children}
-  </div>
+const MenuActionsMessage = ({ message, children }) => (
+  <div className="rc-menu-actions-message">{message || children}</div>
 );
 
 MenuActionsMessage.propTypes = propTypes;

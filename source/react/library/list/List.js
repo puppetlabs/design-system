@@ -6,7 +6,7 @@ import Item from './ListItem';
 
 const propTypes = {
   sortable: PropTypes.bool,
-  children: PropTypes.any,
+  children: PropTypes.node,
   /** either "ordered" or "unordered" */
   type: PropTypes.string,
   onSort: PropTypes.func,
@@ -40,12 +40,13 @@ class List extends React.Component {
   }
 
   onSortEnd({ oldIndex, newIndex }) {
-    this.props.onSort(oldIndex, newIndex);
+    const { onSort } = this.props;
+    onSort(oldIndex, newIndex);
   }
 
   render() {
-    const { type, sortable } = this.props;
-    let children = React.Children.toArray(this.props.children);
+    const { type, sortable, children: propsChildren } = this.props;
+    let children = React.Children.toArray(propsChildren);
     let jsx;
 
     if (sortable) {

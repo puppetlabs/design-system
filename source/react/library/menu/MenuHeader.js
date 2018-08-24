@@ -14,30 +14,36 @@ const defaultProps = {
 
 class MenuHeader extends React.Component {
   renderTitle() {
+    const { title } = this.props;
     let jsx;
 
-    if (this.props.title) {
-      return <div className="rc-menu-title">{this.props.title}</div>;
+    if (title) {
+      return <div className="rc-menu-title">{title}</div>;
     }
 
     return jsx;
   }
 
   renderClose() {
+    const { onClose } = this.props;
     let jsx;
 
-    if (this.props.onClose) {
+    // TODO: This should render a button element or an anchor if its for navigation
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/anchor-is-valid */
+    if (onClose) {
       jsx = (
         <a
           role="button"
           tabIndex={0}
           className="rc-menu-close"
-          onClick={this.props.onClose}
+          onClick={onClose}
         >
           <Icon type="close" width="8px" height="8px" />
         </a>
       );
     }
+    /* eslint-enable */
 
     return jsx;
   }

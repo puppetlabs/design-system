@@ -9,12 +9,18 @@ const propTypes = {
   onLogoClick: PropTypes.func,
   onNavClick: PropTypes.func,
   logo: PropTypes.element,
-  nav: PropTypes.array,
+  nav: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.any,
+    }),
+  ),
 };
 
 const defaultProps = {
   nav: [],
   onNavClick: () => {},
+  logo: undefined,
+  onLogoClick: undefined,
 };
 
 class Header extends React.Component {
@@ -30,9 +36,10 @@ class Header extends React.Component {
   }
 
   onNavClick(key) {
+    const { onNavClick } = this.props;
     this.setState({ menuOpen: false });
 
-    this.props.onNavClick(key);
+    onNavClick(key);
   }
 
   onMenuItemClick(option) {
@@ -40,17 +47,21 @@ class Header extends React.Component {
   }
 
   onMenuToggle() {
-    this.setState({ menuOpen: !this.state.menuOpen });
+    this.setState(state => ({ menuOpen: !state.menuOpen }));
   }
 
   onLogoClick() {
+    const { onLogoClick } = this.props;
     this.setState({ menuOpen: false });
 
-    this.props.onLogoClick();
+    if (onLogoClick) {
+      onLogoClick();
+    }
   }
 
   renderNav() {
-    const navItems = this.props.nav.map(item => (
+    const { nav } = this.props;
+    const navItems = nav.map(item => (
       <Button
         key={item.key}
         size="auto"
@@ -64,8 +75,12 @@ class Header extends React.Component {
   }
 
   renderMenuControl() {
-    const icon = this.state.menuOpen ? 'close' : 'list';
+    const { menuOpen } = this.state;
+    const icon = menuOpen ? 'close' : 'list';
 
+    // TODO: This should render a button element or an anchor if its for navigation
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/anchor-is-valid */
     return (
       <a
         tabIndex={0}
@@ -76,10 +91,12 @@ class Header extends React.Component {
         <Icon size="medium" type={icon} />
       </a>
     );
+    /* eslint-enable */
   }
 
   renderMenu() {
-    const options = this.props.nav.map(o => ({
+    const { nav } = this.props;
+    const options = nav.map(o => ({
       id: o.key,
       ...o,
     }));
@@ -93,15 +110,20 @@ class Header extends React.Component {
   }
 
   renderLogo() {
-    let jsx = this.props.logo;
+    const { logo, onLogoClick } = this.props;
+    let jsx = logo;
 
-    if (jsx && this.props.onLogoClick) {
+    // TODO: This should render a button element or an anchor if its for navigation
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/anchor-is-valid */
+    if (jsx && onLogoClick) {
       jsx = (
         <a role="button" tabIndex={0} onClick={this.onLogoClick}>
           {jsx}
         </a>
       );
     }
+    /* eslint-enable */
 
     if (jsx) {
       jsx = <div className="rc-header-logo">{jsx}</div>;
@@ -111,12 +133,13 @@ class Header extends React.Component {
   }
 
   render() {
+    const { menuOpen } = this.state;
     let menu;
     const nav = this.renderNav();
     const menuControl = this.renderMenuControl();
     const logo = this.renderLogo();
 
-    if (this.state.menuOpen) {
+    if (menuOpen) {
       menu = this.renderMenu();
     }
 

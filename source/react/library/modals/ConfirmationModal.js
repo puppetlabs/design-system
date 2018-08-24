@@ -6,7 +6,7 @@ import Button from '../buttons/Button';
 const propTypes = {
   onCancel: PropTypes.func,
   onConfirm: PropTypes.func,
-  children: PropTypes.any,
+  children: PropTypes.node,
   confirmationMessage: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
@@ -39,18 +39,20 @@ class ConfirmationModal extends React.Component {
   }
 
   onCancel(e) {
+    const { onCancel } = this.props;
     e.preventDefault();
 
-    if (this.props.onCancel) {
-      this.props.onCancel();
+    if (onCancel) {
+      onCancel();
     }
   }
 
   onConfirm(e) {
+    const { onConfirm } = this.props;
     e.preventDefault();
 
-    if (this.props.onConfirm) {
-      this.props.onConfirm();
+    if (onConfirm) {
+      onConfirm();
     }
   }
 
@@ -61,6 +63,13 @@ class ConfirmationModal extends React.Component {
   }
 
   render() {
+    const {
+      processingConfirmation,
+      title,
+      confirmationMessage,
+      children,
+    } = this.props;
+
     const actions = [
       <Button
         key="cancel-button"
@@ -73,17 +82,15 @@ class ConfirmationModal extends React.Component {
         label="confirm"
         size="small"
         onClick={this.onConfirm}
-        processing={this.props.processingConfirmation}
+        processing={processingConfirmation}
       />,
     ];
 
     return (
       <Modal actions={actions} size="small" margin="auto">
-        <h2 className="rc-modal-title">{this.props.title}</h2>
-        <span className="rc-modal-message">
-          {this.props.confirmationMessage}
-        </span>
-        {this.props.children}
+        <h2 className="rc-modal-title">{title}</h2>
+        <span className="rc-modal-message">{confirmationMessage}</span>
+        {children}
       </Modal>
     );
   }

@@ -6,7 +6,7 @@ import Message from './MenuActionsMessage';
 import Buttons from './MenuActionsButtons';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   centered: PropTypes.bool,
 };
 
@@ -15,12 +15,12 @@ const defaultProps = {
   centered: false,
 };
 
-const MenuActions = props => {
+const MenuActions = ({ centered, children }) => {
   const className = classnames('rc-menu-actions', {
-    'rc-menu-actions-centered': props.centered,
+    'rc-menu-actions-centered': centered,
   });
 
-  return <div className={className}>{props.children}</div>;
+  return <div className={className}>{children}</div>;
 };
 
 MenuActions.propTypes = propTypes;

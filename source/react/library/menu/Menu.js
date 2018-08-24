@@ -12,13 +12,14 @@ const propTypes = {
   className: PropTypes.string,
   size: PropTypes.oneOf(['tiny', 'small', 'medium']),
   dark: PropTypes.bool,
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
   size: 'small',
   children: null,
   className: null,
+  dark: false,
 };
 
 /**
