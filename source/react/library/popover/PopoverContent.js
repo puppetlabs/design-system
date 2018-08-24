@@ -14,15 +14,16 @@ const propTypes = {
   menu: PropTypes.bool,
   className: PropTypes.string,
   closeButton: PropTypes.bool,
-  style: PropTypes.object,
+  style: PropTypes.shapeof({}),
   hint: PropTypes.string,
   allowBubble: PropTypes.bool,
   onClose: PropTypes.func,
-  children: PropTypes.any,
+  children: PropTypes.node,
   isOpened: PropTypes.bool,
 };
 
 const defaultProps = {
+  hint: '',
   onOutsideClick: null,
   dark: false,
   menu: false,
@@ -52,38 +53,38 @@ class PopoverContent extends React.Component {
   }
 
   onOutsideClick(e) {
-    if (
-      !isNodeInRoot(e.target, this.elem) &&
-      this.props.onOutsideClick &&
-      this.props.isOpened
-    ) {
-      this.props.onOutsideClick(e);
+    const { onOutsideClick, isOpened, allowBubble } = this.props;
 
-      if (!this.props.allowBubble) {
+    if (!isNodeInRoot(e.target, this.elem) && onOutsideClick && isOpened) {
+      onOutsideClick(e);
+
+      if (!allowBubble) {
         e.stopPropagation();
       }
     }
   }
 
   onClose() {
-    if (this.props.onClose) {
-      this.props.onClose();
+    const { onClose } = this.props;
+
+    if (onClose) {
+      onClose();
     }
   }
 
   renderHeader() {
-    const { hint, closeButton } = this.props;
-    let onClose;
+    const { hint, closeButton, menu } = this.props;
     let close;
     let jsx;
 
-    if (this.props.menu) {
-      if (closeButton) {
-        onClose = this.onClose;
-      }
-
+    if (menu) {
       if (hint || closeButton) {
-        jsx = <Menu.Header title={hint} onClose={onClose} />;
+        jsx = (
+          <Menu.Header
+            title={hint}
+            onClose={closeButton ? this.onClose : null}
+          />
+        );
       }
     } else {
       if (closeButton) {
