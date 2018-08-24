@@ -14,7 +14,7 @@ const propTypes = {
   menu: PropTypes.bool,
   className: PropTypes.string,
   closeButton: PropTypes.bool,
-  style: PropTypes.shapeof({}),
+  style: PropTypes.shape({}),
   hint: PropTypes.string,
   allowBubble: PropTypes.bool,
   onClose: PropTypes.func,

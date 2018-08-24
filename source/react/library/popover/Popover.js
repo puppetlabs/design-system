@@ -14,7 +14,7 @@ import PopoverContent, { PopoverContentWithoutPortal } from './PopoverContent';
 const propTypes = {
   open: PropTypes.bool,
   menu: PropTypes.bool,
-  position: PropTypes.shapeOf({}),
+  position: PropTypes.shape({}),
   padding: PropTypes.bool,
   dark: PropTypes.bool,
   border: PropTypes.bool,
