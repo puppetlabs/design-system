@@ -3,12 +3,13 @@ import React from 'react';
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  coords: PropTypes.object.isRequired,
+  coords: PropTypes.shape({}).isRequired,
   type: PropTypes.string.isRequired,
 };
 
 const GridBlock = props => {
-  const { x, y, w, h } = props.coords;
+  const { coords, type } = props;
+  const { x, y, w, h } = coords;
 
   return (
     <svg x={x} y={y} width={w} height={h}>
@@ -22,15 +23,11 @@ const GridBlock = props => {
         height={h}
       />
       <svg
-        className={`rc-grid-block-${props.type} rc-grid-block-icon-container`}
+        className={`rc-grid-block-${type} rc-grid-block-icon-container`}
         x="25%"
         y="25%"
       >
-        <Icon
-          type={props.type}
-          height={`${0.5 * h}px`}
-          width={`${0.5 * w}px`}
-        />
+        <Icon type={type} height={`${0.5 * h}px`} width={`${0.5 * w}px`} />
       </svg>
     </svg>
   );

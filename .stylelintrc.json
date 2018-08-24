@@ -1,5 +1,6 @@
 {
   "extends": "stylelint-config-sass-guidelines",
+  "ignoreFiles": ["**/*.js"],
   "rules": {
     "max-nesting-depth": [
       1,

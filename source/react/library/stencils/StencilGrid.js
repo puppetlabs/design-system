@@ -4,8 +4,14 @@ import GridBlock from './GridBlock';
 
 const propTypes = {
   /** A view configuration from the Reflect API */
-  view: PropTypes.object.isRequired,
-  settings: PropTypes.object,
+  view: PropTypes.shape({}).isRequired,
+  settings: PropTypes.shape({
+    cols: PropTypes.number,
+    width: PropTypes.number,
+    margin: PropTypes.number,
+    height: PropTypes.number,
+    rowHeight: PropTypes.number,
+  }),
 };
 
 const defaultProps = {
@@ -71,14 +77,15 @@ const getType = type => {
     datagrid: 'datagrid',
     combination: 'combination',
   };
+  let vizType;
 
-  type = types[type];
+  vizType = types[type];
 
-  if (!type) {
-    type = DEFAULT_TYPE;
+  if (!vizType) {
+    vizType = DEFAULT_TYPE;
   }
 
-  return type;
+  return vizType;
 };
 
 /**
@@ -87,7 +94,7 @@ const getType = type => {
 
 class StencilGrid extends React.Component {
   getCoords({ x, y, w, h }) {
-    const settings = this.props.settings;
+    const { settings } = this.props;
 
     return {
       x: (settings.width / settings.cols) * x + settings.margin / 2,
@@ -112,17 +119,17 @@ class StencilGrid extends React.Component {
   }
 
   render() {
-    const components = this.props.view.configuration.components || [];
-    const settings = this.props.settings;
+    const { view, settings: settingsProp } = this.props;
+    const components = view.configuration.components || [];
+    const settings = settingsProp;
+    const { height, width } = settings;
+    const styles = { height, width };
     const gridBlocks = validateBlocks(components)
       ? this.getGridBlocks(components)
       : this.getGridBlocks(staticView);
 
     return (
-      <div
-        className="rc-grid-div"
-        style={{ height: settings.height, width: settings.width }}
-      >
+      <div className="rc-grid-div" style={styles}>
         <svg
           className="rc-stencil-grid"
           width={settings.width}
