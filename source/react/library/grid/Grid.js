@@ -6,7 +6,7 @@ import Column from './Column';
 import { mapColumnsToText } from '../../helpers/statics';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node.isRequired,
   columns: PropTypes.number,
   collapse: PropTypes.oneOfType(['outer', 'inner', 'all', 'all-slim-inner']),
   className: PropTypes.string,
@@ -15,6 +15,9 @@ const propTypes = {
 
 const defaultProps = {
   collapse: false,
+  columns: null,
+  className: '',
+  divided: null,
 };
 
 const Grid = props => {
