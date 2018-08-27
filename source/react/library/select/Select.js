@@ -112,7 +112,7 @@ const formatOptions = options => {
 };
 
 const selectOptions = (selected, options) => {
-  let newOptions = [];
+  let newOptions = options;
 
   // If a selected prop is set then override any selected key values on the options provided
   if (selected) {
