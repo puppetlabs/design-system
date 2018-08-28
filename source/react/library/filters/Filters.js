@@ -51,6 +51,10 @@ const propTypes = {
   }),
 };
 
+const defaultStrings = {
+  ...Form.defaultProps.strings,
+};
+
 const defaultProps = {
   fields: [],
   filters: [],
@@ -59,7 +63,7 @@ const defaultProps = {
   onSwitchView: () => {},
   removableToggle: false,
   operators: filterOperators,
-  strings: {},
+  strings: defaultStrings,
 };
 
 const LIST_VIEW = 'LIST_VIEW';

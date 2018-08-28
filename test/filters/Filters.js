@@ -42,14 +42,14 @@ describe('<Filters />', () => {
   describe('overriding overridable things', () => {
     it('should be able to override labels', () => {
       const filterStrings = {
+        ...Filters.defaultProps.strings,
         addCTA: 'addCTA custom label',
       };
-      const wrapper = shallow(
-        <Filters
-          strings={ filterStrings }
-        />);
+      const wrapper = shallow(<Filters strings={filterStrings} />);
 
-      expect(wrapper.find('Button[icon="plus"]').prop('label')).to.eql('addCTA custom label');
+      expect(wrapper.find('Button[icon="plus"]').prop('label')).to.eql(
+        'addCTA custom label',
+      );
       wrapper.find('Button[secondary=false]').simulate('click');
       expect(wrapper.find('FilterForm').length).to.eql(1);
     });
