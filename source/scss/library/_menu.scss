@@ -224,18 +224,15 @@
 // More evidence here that we could refactor menus and dropdowns
 .rc-menu-header + div,
 .rc-menu-header + .rc-menu-list {
-  .rc-menu-item:not(.rc-menu-item-with-icon) a {
-    /* stylelint-disable-line selector-max-compound-selectors */
+  .rc-menu-item:not(.rc-menu-item-with-icon) a {/* stylelint-disable-line selector-max-compound-selectors */
     padding: 0 ($puppet-menu-header-padding - $puppet-menu-item-padding);
   }
 
-  .rc-menu-item-with-icon a {
-    /* stylelint-disable-line selector-max-compound-selectors */
+  .rc-menu-item-with-icon a {/* stylelint-disable-line selector-max-compound-selectors */
     padding-left: 40px;
   }
 
-  .rc-menu-item-with-icon .rc-icon {
-    /* stylelint-disable-line selector-max-compound-selectors */
+  .rc-menu-item-with-icon .rc-icon {/* stylelint-disable-line selector-max-compound-selectors */
     left: 16px;
   }
 }

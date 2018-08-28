@@ -217,10 +217,7 @@ $puppet-sidebar-subsection-item-border: 2px solid $puppet-gray-light !default;
 $puppet-sidebar-subsection-item-border-active: 2px solid $puppet-action-color !default;
 $puppet-sidebar-subsection-item-font-size: $puppet-font-size-small !default;
 $puppet-sidebar-subsection-item-action-color: $puppet-black !default;
-$puppet-sidebar-subsection-item-action-bg: rgba(
-  $puppet-gray-light,
-  0.5
-) !default;
+$puppet-sidebar-subsection-item-action-bg: rgba($puppet-gray-light, 0.5) !default;
 $puppet-sidebar-subsection-item-border-radius: $puppet-border-radius !default;
 $puppet-sidebar-subsection-item-header-padding: $puppet-medium !default;
 $puppet-sidebar-subsection-item-horizontal-padding: $puppet-size-base !default;
@@ -341,18 +338,12 @@ $puppet-filter-select-height: 10px !default; // Todo: Base on grid
 
 $puppet-filter-split-bg: $puppet-gray-light !default;
 $puppet-filter-split-menu-bg: darken($puppet-filter-split-bg, 10%) !default;
-$puppet-filter-split-menu-bg-hover: darken(
-  $puppet-filter-split-menu-bg,
-  10%
-) !default;
+$puppet-filter-split-menu-bg-hover: darken($puppet-filter-split-menu-bg, 10%) !default;
 
 $puppet-filters-filter-bg: $puppet-brand-primary !default;
 $puppet-filters-filter-bg-hover: darken($puppet-brand-primary, 10%) !default;
 $puppet-filters-filter-color: $puppet-white !default;
-$puppet-filters-filter-action-color: lighten(
-  $puppet-brand-primary,
-  15%
-) !default;
+$puppet-filters-filter-action-color: lighten($puppet-brand-primary, 15%) !default;
 $puppet-filters-form-border: $puppet-border !default;
 
 // Input
@@ -690,10 +681,7 @@ $puppet-header-bg: $puppet-black !default;
 $puppet-header-menu-bg: $puppet-gray-darker !default;
 $puppet-header-color: $puppet-white !default;
 $puppet-header-padding: 0 $puppet-large !default;
-$puppet-header-menu-item-button-bg-hover: lighten(
-  $puppet-header-menu-bg,
-  10%
-) !default;
+$puppet-header-menu-item-button-bg-hover: lighten($puppet-header-menu-bg, 10%) !default;
 
 // Pagenav
 $puppet-pagenav-height: 64px !default;
