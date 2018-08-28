@@ -11,7 +11,21 @@ const propTypes = {
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
   fields: PropTypes.array,
+  /** Defaults to the standard set as defined in constants. */
   operators: PropTypes.array,
+  /**
+    You can override the following -
+
+    ** filterField: 'Custom label for field dropdown'
+    ** filterOperator: 'Custom label for operator dropdown'
+    ** filterValue: 'Custom label for value input'
+    ** filterRemovable: 'Custom remove label'
+    ** filterCancel: 'Custom label for cancel button'
+    ** filterSubmit: 'Custom label for submit button'
+    ** filterFieldPlaceholder: 'Custom label used as placholder in the field input'
+    ** filterOperatorPlaceholder: 'Custom label used as placholder in the operator input'
+
+  */
   strings: PropTypes.object,
 };
 

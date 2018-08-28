@@ -8,6 +8,8 @@ import Form from './FilterForm';
 import Button from '../buttons/Button';
 import List from '../list/List';
 
+import { filterOperators } from '../../constants';
+
 const propTypes = {
   fields: PropTypes.array,
   filters: PropTypes.array,
@@ -15,7 +17,22 @@ const propTypes = {
   onChange: PropTypes.func,
   onSwitchView: PropTypes.func,
   removableToggle: PropTypes.bool,
+  /** Defaults to the standard set as defined in constants. */
   operators: PropTypes.array,
+  /**
+    You can override the following -
+
+    ** filterField: 'Custom label for field dropdown'
+    ** filterOperator: 'Custom label for operator dropdown'
+    ** filterValue: 'Custom label for value input'
+    ** filterRemovable: 'Custom remove label'
+    ** filterCancel: 'Custom label for cancel button'
+    ** filterSubmit: 'Custom label for submit button'
+    ** filterFieldPlaceholder: 'Custom label used as placholder in the field input'
+    ** filterOperatorPlaceholder: 'Custom label used as placholder in the operator input'
+    ** addCTA: 'Custom label for add button'
+
+  */
   strings: PropTypes.object,
 };
 
@@ -26,7 +43,7 @@ const defaultProps = {
   addCTA: 'Add filter',
   onSwitchView: () => {},
   removableToggle: false,
-  operators: null,
+  operators: filterOperators,
   strings: {},
 };
 
