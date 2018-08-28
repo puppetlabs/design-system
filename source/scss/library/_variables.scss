@@ -117,9 +117,10 @@ $puppet-gray-light                          : #ccd4d9 !default;
 $puppet-gray-lighter                        : #f7fafc !default;
 
 // Backgrounds
-$puppet-bg-primary                          : $puppet-white !default;
-$puppet-bg-subtle                           : $puppet-gray-lighter !default;
-$puppet-bg-dark                             : $puppet-gray-darker !default;
+$puppet-bg-light                            : $puppet-white !default;
+$puppet-bg-subtle                           : $puppet-n50 !default;
+$puppet-bg-medium                           : $puppet-n100 !default;
+$puppet-bg-dark                             : $puppet-n900 !default;
 
 // Charts
 $puppet-primary-chart-color                 : $puppet-brand-primary !default;
@@ -151,10 +152,10 @@ $puppet-action-icon-hover-alt               : $puppet-gray-darker !default;
 $puppet-disabled-opacity                    : 0.64 !default;
 $puppet-disabled-border                     : transparent !default;
 $puppet-disabled-border-hover               : transparent !default;
-$puppet-disabled-text                       : $puppet-n600 !default;
-$puppet-disabled-text-hover                 : $puppet-n600 !default;
-$puppet-disabled-icon                       : $puppet-n600 !default;
-$puppet-disabled-icon-hover                 : $puppet-n600 !default;
+$puppet-disabled-text                       : $puppet-n400 !default;
+$puppet-disabled-text-hover                 : $puppet-n400 !default;
+$puppet-disabled-icon                       : $puppet-n400 !default;
+$puppet-disabled-icon-hover                 : $puppet-n400 !default;
 
 // Default Active & Inactive Colors
 // Toggles, Checkboxes, etc.
