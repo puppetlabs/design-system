@@ -137,7 +137,7 @@ class FilterForm extends React.Component {
 
   renderRemovableField() {
     const filter = this.state.filter;
-    const label =  this.props.strings.filterRemovable || 'removable';
+    const label = this.props.strings.filterRemovable || 'removable';
     let jsx;
 
     if (this.props.removable) {
@@ -157,8 +157,8 @@ class FilterForm extends React.Component {
 
   renderValueField() {
     const valueless = isValueless(this.state.filter.op, this.props.operators);
-    const label =  this.props.strings.filterValue || 'value';
-    const placeHolderLabel =  this.props.strings.filterValuePlaceholder || 'A string (e.g. Jim) or a number (1500)';
+    const label = this.props.strings.filterValue || 'value';
+    const placeHolderLabel = this.props.strings.filterValuePlaceholder || 'A string (e.g. Jim) or a number (1500)';
     let jsx;
 
     if (!valueless) {
@@ -183,10 +183,10 @@ class FilterForm extends React.Component {
     const fields = this.getFields();
 
     const strings = this.props.strings;
-    const filterFieldLabel =  strings.filterField || 'field';
-    const filterFieldPlaceholderLabel =  strings.filterFieldPlaceholder || 'Choose a field...';
-    const filterOperatorLabel =  strings.filterOperator || 'operation';
-    const filterOperatorPlaceholderLabel =  strings.filterOperatorPlaceholder || 'Choose an operation...';
+    const filterFieldLabel = strings.filterField || 'field';
+    const filterFieldPlaceholderLabel = strings.filterFieldPlaceholder || 'Choose a field...';
+    const filterOperatorLabel = strings.filterOperator || 'operation';
+    const filterOperatorPlaceholderLabel = strings.filterOperatorPlaceholder || 'Choose an operation...';
     const filterCancelLabel = strings.filterCancel;
     const filterSubmitLabel = strings.filterSubmit;
 

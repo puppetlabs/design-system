@@ -20,7 +20,6 @@ const propTypes = {
   submittable: PropTypes.bool,
   //* Text to display as the Submit button */
   submitLabel: PropTypes.string,
-  cancelLabel: PropTypes.string,
   validator: PropTypes.func,
   //* Errors to render the form with. Keys are field names, and values are the form errors */
   errors: PropTypes.object,
@@ -39,7 +38,6 @@ const defaultProps = {
   children: null,
   validator: null,
   onCancel: () => {},
-  cancelLabel: 'Cancel',
   cancellable: false,
   cancelLabel: 'Cancel',
   submitting: false,
