@@ -8,6 +8,8 @@ import Form from './FilterForm';
 import Button from '../buttons/Button';
 import List from '../list/List';
 
+import { filterOperators } from '../../constants';
+
 const propTypes = {
   fields: PropTypes.array,
   filters: PropTypes.array,
@@ -15,6 +17,23 @@ const propTypes = {
   onChange: PropTypes.func,
   onSwitchView: PropTypes.func,
   removableToggle: PropTypes.bool,
+  /** Defaults to the standard set as defined in constants. */
+  operators: PropTypes.array,
+  /**
+    You can override the following -
+
+    ** filterField: 'Custom label for field dropdown'
+    ** filterOperator: 'Custom label for operator dropdown'
+    ** filterValue: 'Custom label for value input'
+    ** filterRemovable: 'Custom remove label'
+    ** filterCancel: 'Custom label for cancel button'
+    ** filterSubmit: 'Custom label for submit button'
+    ** filterFieldPlaceholder: 'Custom label used as placholder in the field input'
+    ** filterOperatorPlaceholder: 'Custom label used as placholder in the operator input'
+    ** addCTA: 'Custom label for add button'
+
+  */
+  strings: PropTypes.object,
 };
 
 const defaultProps = {
@@ -24,6 +43,8 @@ const defaultProps = {
   addCTA: 'Add filter',
   onSwitchView: () => {},
   removableToggle: false,
+  operators: filterOperators,
+  strings: {},
 };
 
 const LIST_VIEW = 'LIST_VIEW';
@@ -111,6 +132,7 @@ class Filters extends React.Component {
   }
 
   renderFilters() {
+    const { operators } = this.props;
     const filters = this.props.filters.map((filter) => {
       const key = getFilterKey(filter);
 
@@ -120,6 +142,7 @@ class Filters extends React.Component {
           onRemove={ this.onRemove(filter) }
           filter={ filter }
           key={ key }
+          operators={ operators }
         />
       );
     });
@@ -132,6 +155,7 @@ class Filters extends React.Component {
   }
 
   renderAction() {
+    const ctaLabel = this.props.strings.addCTA || this.props.addCTA;
     let jsx;
 
     if (!this.state.editing && !this.state.adding) {
@@ -139,7 +163,7 @@ class Filters extends React.Component {
         <Button
           simple
           icon="plus"
-          label={ this.props.addCTA }
+          label={ ctaLabel }
           onClick={ this.onAdd }
         />
       );
@@ -154,8 +178,10 @@ class Filters extends React.Component {
         removable={ this.props.removableToggle }
         fields={ this.props.fields }
         filter={ this.state.filter }
+        operators={ this.props.operators }
         onCancel={ this.onCancel }
         onSubmit={ this.onSubmitFilter }
+        strings={ this.props.strings }
       />
     );
   }

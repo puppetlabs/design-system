@@ -9,17 +9,20 @@ const propTypes = {
   filter: PropTypes.object.isRequired,
   onEdit: PropTypes.func,
   onRemove: PropTypes.func,
+  /** Defaults to the standard set as defined in constants. */
+  operators: PropTypes.array,
 };
 
 const defaultProps = {
   onEdit: () => {},
   onRemove: () => {},
+  operators: filterOperators,
 };
 
-const getOperatorSentenceForm = (op) => {
+const getOperatorSentenceForm = (op, operators) => {
   let sentenceForm = op;
 
-  filterOperators.forEach((operator) => {
+  operators.forEach((operator) => {
     if (operator.symbol === op) {
       sentenceForm = operator.sentence;
     }
@@ -28,13 +31,13 @@ const getOperatorSentenceForm = (op) => {
   return sentenceForm;
 };
 
-const renderText = (filter) => {
+const renderText = (filter, operators) => {
   const text = [];
 
   text.push(<span key="field-name" className="rc-filter-field-name">{ filter.field }</span>);
 
   if (filter.op) {
-    const operator = getOperatorSentenceForm(filter.op);
+    const operator = getOperatorSentenceForm(filter.op, operators);
 
     text.push(<span key="field-op" className="rc-filter-field-op">{ operator }</span>);
   }
@@ -56,7 +59,7 @@ const renderText = (filter) => {
 // think we need to keep it around for parameters.
 
 const FilterItem = (props) => {
-  const text = renderText(props.filter);
+  const text = renderText(props.filter, props.operators);
 
   return (
     <ListItem
