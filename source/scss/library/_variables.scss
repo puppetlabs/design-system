@@ -10,55 +10,103 @@
 // more tightly into our styles.
 // ----------------------------------------------------------------------------
 $puppet-amber                                : #ffae1a !default;
+$puppet-teal                                 : #11d1c4 !default;
+$puppet-purple                               : #a263ff !default;
+$puppet-red                                  : #f2654b !default;
 
-$neutral-11                                  : #000e1c !default;
-$neutral-18                                  : #00172e !default;
-$neutral-30                                  : #293b4d !default;
-$neutral-44                                  : #495e70 !default;
-$neutral-60                                  : #718699 !default;
-$neutral-75                                  : #a1b0bf !default;
-$neutral-88                                  : #ced7e0 !default;
-$neutral-92                                  : #dde5eb !default;
-$neutral-96                                  : #f0f3f5 !default;
-$neutral-98                                  : #f7f9fa !default;
-$neutral-100                                 : #fff !default;
+$n900                                        : #122029 !default;
+$n800                                        : #40484d !default;
+$n700                                        : #5e6f79 !default;
+$n600                                        : #818f99 !default;
+$n500                                        : #b0b9bf !default;
+$n400                                        : #ccd4d9 !default;
+$n300                                        : #e4e9ed !default;
+$n200                                        : #edf0f2 !default;
+$n100                                        : #f2f5f7 !default;
+$n50                                         : #f5f8fa !default;
 
-$link-medium                                 : #007bc7 !default;
-$link-light                                  : #0092ed !default;
 
-$viz-blue-80                                 : #296acc !default;
-$viz-blue-61                                 : #5d98f0 !default;
-$viz-blue-48                                 : #85b6ff !default;
-$viz-blue-28                                 : #b8d4ff !default;
-$viz-blue-13                                 : #deebff !default;
+$black                                       : #04080a !default;
+$n900                                        : #122029 !default;
+$n800                                        : #40484d !default;
+$n700                                        : #5d6f7a !default;
+$n600                                        : #818f99 !default;
+$n500                                        : #b0b9bf !default;
+$n400                                        : #ccd4d9 !default;
+$n300                                        : #e4e9ed !default;
+$n200                                        : #edf0f2 !default;
+$n100                                        : #f2f5f7 !default;
+$n50                                         : #f5f8fa !default;
+$white                                       : #ffffff !default;
 
-$viz-aqua-100                                : #00baba !default;
-$viz-aqua-44                                 : #77d4d4 !default;
-$viz-aqua-26                                 : #a8e3e3 !default;
-$viz-aqua-14                                 : #d3f5f5 !default;
-$viz-aqua-7                                  : #e8fafa !default;
+$b900                                        : #021e3d !default;
+$b800                                        : #032852 !default;
+$b700                                        : #053c7a !default;
+$b600                                        : #0750a3 !default;
+$b500                                        : #186ccc !default;
+$b400                                        : #318cf5 !default;
+$b300                                        : #58a1f5 !default;
+$b200                                        : #99c9ff !default;
+$b100                                        : #d6e9ff !default;
+$b50                                         : #f5f9ff !default;
 
-$viz-salmon-56                               : #ff7070 !default;
-$viz-salmon-40                               : #f99 !default;
-$viz-salmon-26                               : #ffbdbd !default;
-$viz-salmon-15                               : #ffd9d9 !default;
-$viz-salmon-7                                : #ffeded !default;
+$r900                                        : #3d0b02 !default;
+$r800                                        : #520f03 !default;
+$r700                                        : #7a1705 !default;
+$r600                                        : #a31e07 !default;
+$r500                                        : #cc3318 !default;
+$r400                                        : #f54e31 !default;
+$r300                                        : #f57058 !default;
+$r200                                        : #ffa899 !default;
+$r100                                        : #ffdcd6 !default;
+$r50                                         : #fff6f5 !default;
 
-$viz-tangerine-65                            : #ff9159 !default;
-$viz-tangerine-50                            : #ffaa80 !default;
-$viz-tangerine-32                            : #ffc9ad !default;
-$viz-tangerine-17                            : #ffe2d4 !default;
-$viz-tangerine-8                             : #fff2eb !default;
+// Yellow
+$y900                                        : #3d2802 !default;
+$y800                                        : #523603 !default;
+$y700                                        : #7a5105 !default;
+$y600                                        : #a16b06 !default;
+$y500                                        : #cc8d18 !default;
+$y400                                        : #f5b031 !default;
+$y300                                        : #f5be58 !default;
+$y200                                        : #ffdb99 !default;
+$y100                                        : #fff1d6 !default;
+$y50                                         : #fffbf5 !default;
 
-$positive-1                                  : #0da371 !default;
-$warning-1                                   : #ffd503 !default;
-$negative-1                                  : #e62600 !default;
+// Green
+$g900                                        : #023d1a !default;
+$g800                                        : #035223 !default;
+$g700                                        : #057a34 !default;
+$g600                                        : #07a345 !default;
+$g500                                        : #18cc60 !default;
+$g400                                        : #2de075 !default;
+$g300                                        : #93f5ba !default;
+$g200                                        : #adffce !default;
+$g100                                        : #d6ffe7 !default;
+$g50                                         : #f5fff9 !default;
+
+// Teals
+$t900                                         : #1a023d !default;
+$t800                                         : #03524c !default;
+$t700                                         : #057a73 !default;
+$t600                                         : #07a399 !default;
+$t500                                         : #18ccc0 !default;
+$t400                                         : #45f5e9 !default;
+$t300                                         : #93f5ee !default;
+$t200                                         : #adfffa !default;
+$t100                                         : #d6fffc !default;
+$t50                                          : #f5fffe !default;
+
+// Stop Light Colors
+$positive-1                                   : #0da371 !default;
+$warning-1                                    : #ffd503 !default;
+$negative-1                                   : #e62600 !default;
 
 // End Puppet Styleguide colors
 
 // Primary Color
 $puppet-brand-primary                       : $puppet-amber !default;
-$puppet-brand-secondary                     : #0751a9 !default;
+$puppet-brand-secondary                     : $puppet-teal !default;
 
 // Grays
 $puppet-gray-base                           : #818f99 !default;
@@ -122,8 +170,8 @@ $puppet-inactive-color-hover                : $puppet-gray !default;
 
 // Link Colors
 // For stand alone links, not buttons
-$puppet-anchor-color                        : $link-medium !default;
-$puppet-anchor-hover                        : $link-light !default;
+$puppet-anchor-color                        : $b500 !default;
+$puppet-anchor-hover                        : $b400 !default;
 
 // Status Colors
 // Danger - Used to provide a warning for irreversible actions and errors
