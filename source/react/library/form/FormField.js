@@ -27,6 +27,13 @@ const propTypes = {
   ]).isRequired,
   /** A unique identifier for this field */
   name: PropTypes.string.isRequired,
+  /* 
+   * CAUTION due to the onchange event fired in the form component having a default value
+   * assigned here can cause a world of hurt. Since a form field can be many different types, 
+   * including a Select, Input, or even a custom built component we don't know why type of default
+   * value is required. Disabling the rule below allows the parent to pass us what it needs.
+  */
+  // eslint-disable-next-line react/require-default-props
   value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
@@ -45,7 +52,7 @@ const propTypes = {
   /** Expanded explainer for the field */
   description: PropTypes.string,
   /** Additional props to pass to the underlying form element */
-  elementProps: PropTypes.object,
+  elementProps: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -61,7 +68,8 @@ const defaultProps = {
 };
 
 const isReactComponent = c =>
-  (c.prototype === 'object' && c.prototype.isReactComponent) || typeof c === 'function';
+  (c.prototype === 'object' && c.prototype.isReactComponent) ||
+  typeof c === 'function';
 
 /**
  * `FormField`s are meant to be rendered as children either within a `Form` or a `FormSection`.
@@ -75,14 +83,19 @@ class FormField extends React.Component {
   }
 
   onChange(val) {
+    const { type, onChange } = this.props;
     // We should be able to use the onChange value from most elements (Selects, etc) but for some,
     // we need to modify it here.
     let value = val;
 
-    switch (this.props.type) {
-      case 'input':
-        value = val.target.value;
+    switch (type) {
+      case 'input': {
+        const { target } = val;
+        const { value: targetValue } = target;
+
+        value = targetValue;
         break;
+      }
       case 'number':
         value = parseInt(val.target.value, 10);
 
@@ -98,16 +111,17 @@ class FormField extends React.Component {
         break;
     }
 
-    if (this.props.onChange) {
-      this.props.onChange(value);
+    if (onChange) {
+      onChange(value);
     }
   }
 
   getTypeName() {
+    const { type } = this.props;
     let name;
 
-    if (typeof this.props.type === 'string') {
-      name = this.props.type;
+    if (typeof type === 'string') {
+      name = type;
     }
 
     return name;
@@ -119,15 +133,20 @@ class FormField extends React.Component {
 
     if (label) {
       jsx = (
-        <label htmlFor={ name } className="rc-form-field-label" key="field-label">
-          { label }
+        // eslint-disable-next-line jsx-a11y/label-has-for
+        <label htmlFor={name} className="rc-form-field-label" key="field-label">
+          {label}
         </label>
       );
 
       if (tooltip) {
         jsx = (
-          <TooltipHoverArea tooltip={ tooltip } anchor="bottom" key="field-label-tooltip">
-            { jsx }
+          <TooltipHoverArea
+            tooltip={tooltip}
+            anchor="bottom"
+            key="field-label-tooltip"
+          >
+            {jsx}
           </TooltipHoverArea>
         );
       }
@@ -137,45 +156,47 @@ class FormField extends React.Component {
   }
 
   renderDescription() {
-    const message = this.props.error || this.props.description;
+    const { error, description } = this.props;
+    const message = error || description;
     let jsx;
 
     if (message) {
-      jsx = (
-        <div className="rc-form-field-description">
-          { message }
-        </div>
-      );
+      jsx = <div className="rc-form-field-description">{message}</div>;
     }
 
     return jsx;
   }
 
   renderElement() {
-    const elementProps = this.props.elementProps;
-    const type = this.props.type;
+    const { elementProps, type, name, size, value: valueProp } = this.props;
     let jsx = null;
     let value;
 
     if (isReactComponent(type)) {
       const props = Object.assign(clone(this.props), elementProps);
 
-      jsx = React.createElement(type, Object.assign({
-        name: this.props.name,
-        size: this.props.size,
-        value: this.props.value,
-        onChange: this.onChange,
-      }, props));
+      jsx = React.createElement(
+        type,
+        Object.assign(
+          {
+            name,
+            size,
+            value: valueProp,
+            onChange: this.onChange,
+          },
+          props,
+        ),
+      );
     } else {
       switch (type) {
         case 'select':
           jsx = (
             <Select
-              name={ this.props.name }
-              size={ this.props.size }
-              onSelect={ this.onChange }
-              selected={ this.props.value }
-              { ...elementProps }
+              name={name}
+              size={size}
+              onSelect={this.onChange}
+              selected={valueProp}
+              {...elementProps}
             />
           );
 
@@ -183,17 +204,17 @@ class FormField extends React.Component {
         case 'input':
           value = '';
 
-          if (typeof this.props.value === 'string') {
-            value = this.props.value;
+          if (typeof valueProp === 'string') {
+            value = valueProp;
           }
 
           jsx = (
             <Input
-              name={ this.props.name }
-              size={ this.props.size }
-              onChange={ this.onChange }
-              value={ value }
-              { ...elementProps }
+              name={name}
+              size={size}
+              onChange={this.onChange}
+              value={value}
+              {...elementProps}
             />
           );
           break;
@@ -201,33 +222,33 @@ class FormField extends React.Component {
           jsx = (
             <Input
               type="number"
-              name={ this.props.name }
-              size={ this.props.size }
-              onChange={ this.onChange }
-              value={ this.props.value || '' }
-              { ...elementProps }
+              name={name}
+              size={size}
+              onChange={this.onChange}
+              value={valueProp || ''}
+              {...elementProps}
             />
           );
           break;
         case 'switch':
           jsx = (
             <Switch
-              name={ this.props.name }
-              size={ this.props.size }
-              onChange={ this.onChange }
-              checked={ !!this.props.value }
-              { ...elementProps }
+              name={name}
+              size={size}
+              onChange={this.onChange}
+              checked={!!valueProp}
+              {...elementProps}
             />
           );
           break;
         case 'checkbox':
           jsx = (
             <Checkbox
-              name={ this.props.name }
-              size={ this.props.size }
-              onChange={ this.onChange }
-              checked={ !!this.props.value }
-              { ...elementProps }
+              name={name}
+              size={size}
+              onChange={this.onChange}
+              checked={!!valueProp}
+              {...elementProps}
             />
           );
           break;
@@ -238,7 +259,7 @@ class FormField extends React.Component {
 
     return (
       <div className="rc-form-field-element" key="field-element">
-        { jsx }
+        {jsx}
       </div>
     );
   }
@@ -261,21 +282,20 @@ class FormField extends React.Component {
   }
 
   render() {
+    const { className, inline, error } = this.props;
     const description = this.renderDescription();
     const typeName = this.getTypeName();
     const content = this.renderContent();
-    const className = classnames('rc-form-field', this.props.className, {
-      'rc-form-field-inline': this.props.inline,
+    const classNames = classnames('rc-form-field', className, {
+      'rc-form-field-inline': inline,
       [`rc-form-field-${typeName}`]: typeName,
-      'rc-form-field-error': this.props.error,
+      'rc-form-field-error': error,
     });
 
     return (
-      <div className={ className }>
-        <div className="rc-form-field-content">
-          { content }
-        </div>
-        { description }
+      <div className={classNames}>
+        <div className="rc-form-field-content">{content}</div>
+        {description}
       </div>
     );
   }

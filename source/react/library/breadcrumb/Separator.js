@@ -10,10 +10,9 @@ const defaultProps = {
   icon: 'chevron-right',
 };
 
-
-const BreadcrumbSeparator = props => (
+const BreadcrumbSeparator = ({ icon }) => (
   <div className="rc-breadcrumb-separator">
-    <Icon size="tiny" type={ props.icon } />
+    <Icon size="tiny" type={icon} />
   </div>
 );
 

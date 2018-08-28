@@ -11,7 +11,7 @@ describe('<Card />', () => {
 
   it('should respond to click events if onClick provided', () => {
     const onClick = sinon.spy();
-    const wrapper = mount(<Card onClick={ onClick } />);
+    const wrapper = mount(<Card onClick={onClick} />);
 
     wrapper.simulate('click');
 
@@ -34,7 +34,7 @@ describe('<Card />', () => {
     const wrapper = shallow(
       <Card>
         <span className="test-child">hello!</span>
-      </Card>
+      </Card>,
     );
 
     expect(wrapper.find('.test-child').length).to.eql(1);

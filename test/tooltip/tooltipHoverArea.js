@@ -14,14 +14,14 @@ describe('<TooltipHoverArea />', () => {
   };
 
   it('should just render wrapper around children by default', () => {
-    const wrapper = shallow(<TooltipHoverArea { ...defaultProps } />);
+    const wrapper = shallow(<TooltipHoverArea {...defaultProps} />);
 
     expect(wrapper.find('.target')).to.have.length(1);
     expect(wrapper.find('.tooltip')).to.have.length(0);
   });
 
   xit('should render tooltip when open', () => {
-    const wrapper = mount(<TooltipHoverArea { ...defaultProps } />);
+    const wrapper = mount(<TooltipHoverArea {...defaultProps} />);
     wrapper.setState({ open: true });
 
     expect(wrapper.find('.target')).to.have.length(1);

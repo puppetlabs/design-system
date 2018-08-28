@@ -15,14 +15,14 @@ describe('<Progress />', () => {
   });
 
   it('should render the correct number of steps', () => {
-    const wrapper = shallow(<Progress steps={ 3 } />);
+    const wrapper = shallow(<Progress steps={3} />);
 
     // 3 steps + an active step and active step shadow.
     expect(wrapper.find('.rc-progress-step')).to.have.length(5);
   });
 
   it('should render the correct number of lines', () => {
-    const wrapper = shallow(<Progress steps={ 8 } />);
+    const wrapper = shallow(<Progress steps={8} />);
 
     // Should render enough lines to connect the steps.
     expect(wrapper.find('.rc-progress-line')).to.have.length(7);

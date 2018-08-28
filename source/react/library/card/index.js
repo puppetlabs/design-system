@@ -4,10 +4,4 @@ import Card from './Card';
 import Section from './Section';
 import Header from './Header';
 
-export {
-  ActionsMenu,
-  ActionsSearch,
-  Card,
-  Section,
-  Header,
-};
+export { ActionsMenu, ActionsSearch, Card, Section, Header };

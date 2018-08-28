@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import { isNodeInRoot } from '../helpers/statics';
 
 // This HOC wraps passed content in a native react portal.
-const portal = (Base) => {
+const portal = Base => {
   const propTypes = {
     isOpened: PropTypes.bool,
   };
@@ -29,9 +29,11 @@ const portal = (Base) => {
     }
 
     componentWillReceiveProps(newProps) {
-      if (newProps.isOpened && !this.props.isOpened) {
+      const { isOpened } = this.props;
+
+      if (newProps.isOpened && !isOpened) {
         this.rootSelector.appendChild(this.container);
-      } else if (!newProps.isOpened && this.props.isOpened) {
+      } else if (!newProps.isOpened && isOpened) {
         this.rootSelector.removeChild(this.container);
       }
     }
@@ -43,7 +45,7 @@ const portal = (Base) => {
     }
 
     render() {
-      const base = <Base { ...this.props } />;
+      const base = <Base {...this.props} />;
 
       return ReactDOM.createPortal(base, this.container);
     }

@@ -11,8 +11,8 @@ const options = [
 />
 ```
 
-
 Tiny dropdown
+
 ```
 const options = [
   { id: 1, value: 'option 1' },
@@ -28,6 +28,7 @@ const options = [
 ```
 
 Multiple dropdown
+
 ```
 const options = [
   { id: 1, value: 'option 1' },
@@ -42,7 +43,9 @@ const options = [
   options={ options }
 />
 ```
+
 Dropdown without header
+
 ```
 const options = [
   { id: 1, value: 'option 1' },
@@ -57,6 +60,7 @@ const options = [
 ```
 
 Dropdown with icons
+
 ```
 const options = [
   { id: 1, value: 'Edit', icon: "pencil" },
@@ -70,4 +74,3 @@ const options = [
   options={ options }
 />
 ```
-

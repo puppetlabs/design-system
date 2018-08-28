@@ -30,6 +30,7 @@ and content is sourced from a Markdown file living next to each respective
 component.
 
 **To start the styleguide for local development:**
+
 1. Run `npm start`.
 2. Open the [styleguide](http://localhost:6060) at http://localhost:6060.
 
@@ -38,9 +39,9 @@ component.
 1. If you haven't already done so, run `npm link` in this directory.
 2. Run `npm run watch` to build the module and rebuild on any change.
 3. For any project in which UI Components is a dependency, you can link UI
-  Components to see your changes reflected in the parent. In the parent project,
-  run `npm link @puppet/react-components`. Make sure you're using the same
-  version of Node.js in both projects.
+   Components to see your changes reflected in the parent. In the parent project,
+   run `npm link @puppet/react-components`. Make sure you're using the same
+   version of Node.js in both projects.
 
 ## Testing and linting
 
@@ -116,14 +117,14 @@ that process:
 
 1. Open a Pull Request from development to master.
 2. Title it with `Development (vx.x.x)` indicating that it's a PR from
-  Development, and which version will be released.
+   Development, and which version will be released.
 3. Take a look at the "Files changed", then update the CHANGELOG.md file with
-  a summary of the changes. Sometimes this may require looking through the
-  commit message or even contacting their authors.
+   a summary of the changes. Sometimes this may require looking through the
+   commit message or even contacting their authors.
 4. Assign the maintainers. (See "Opening a pull request" above)
 5. Upon approval your pull request will be merged by the reviewer. The reviewer
-  is responsible for making sure the deployment goes out smoothly, and for
-  rolling back otherwise.
+   is responsible for making sure the deployment goes out smoothly, and for
+   rolling back otherwise.
 
 ## Reviewing pull requests
 

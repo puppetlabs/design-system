@@ -17,15 +17,12 @@ const propTypes = {
   readonly: PropTypes.bool,
   type: PropTypes.string,
   /** Value string */
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
   size: PropTypes.oneOf(['large', 'medium', 'small', 'tiny']),
   simple: PropTypes.bool,
   error: PropTypes.string,
-  style: PropTypes.object,
+  style: PropTypes.shape({}),
   icon: PropTypes.bool,
   onKeyDown: PropTypes.func,
   onKeyUp: PropTypes.func,
@@ -56,6 +53,7 @@ const defaultProps = {
   onKeyUp: null,
   onFocus: null,
   onBlur: null,
+  value: '',
 };
 
 /**
@@ -71,20 +69,23 @@ class Input extends React.Component {
   }
 
   onChange(e) {
-    if (this.props.onChange) {
-      this.props.onChange(e);
+    const { onChange } = this.props;
+    if (onChange) {
+      onChange(e);
     }
   }
 
   onFocus(e) {
-    if (this.props.onFocus) {
-      this.props.onFocus(e);
+    const { onFocus } = this.props;
+    if (onFocus) {
+      onFocus(e);
     }
   }
 
   onClick(e) {
-    if (this.props.onClick) {
-      this.props.onClick(e);
+    const { onClick } = this.props;
+    if (onClick) {
+      onClick(e);
     }
   }
 
@@ -97,55 +98,91 @@ class Input extends React.Component {
   }
 
   render() {
-    const className = classnames('rc-input', this.props.className, {
-      'rc-input-error': this.props.error,
-      'rc-input-simple': this.props.simple,
-      'rc-input-multiline': this.props.multiline,
-      [`rc-input-${this.props.size}`]: this.props.size,
-    });
+    const {
+      className,
+      error,
+      simple,
+      multiline,
+      size,
+      onKeyDown,
+      autoFocus,
+      disabled,
+      readonly,
+      name,
+      onKeyUp,
+      type,
+      onBlur,
+      onChange,
+      onFocus,
+      onClick,
+      style,
+      autoComplete,
+      value,
+      placeholder,
+      icon,
+    } = this.props;
 
     const props = {
-      onKeyDown: this.props.onKeyDown,
-      autoFocus: this.props.autoFocus,
-      disabled: this.props.disabled,
-      readOnly: this.props.readonly,
-      id: this.props.name,
-      name: this.props.name,
-      onKeyUp: this.props.onKeyUp,
-      type: this.props.type,
-      onBlur: this.props.onBlur,
-      onChange: this.onChange,
-      onFocus: this.onFocus,
-      onClick: this.onClick,
-      className,
-      style: this.props.style,
+      onKeyDown,
+      autoFocus,
+      disabled,
+      readOnly: readonly,
+      id: name,
+      name,
+      onKeyUp,
+      type,
+      onBlur,
+      onChange,
+      onFocus,
+      onClick,
+      className: classnames('rc-input', className, {
+        'rc-input-error': error,
+        'rc-input-simple': simple,
+        'rc-input-multiline': multiline,
+        [`rc-input-${size}`]: size,
+      }),
+      style,
     };
 
-    if (!this.props.autoComplete) {
+    if (!autoComplete) {
       props.autoComplete = 'off';
     }
 
-    if (this.props.value !== undefined) {
-      props.value = this.props.value;
+    if (value !== undefined) {
+      props.value = value;
     }
 
-    if (!this.props.value) {
-      props.placeholder = this.props.placeholder;
+    if (!value) {
+      props.placeholder = placeholder;
     }
 
     let jsx;
 
-    if (this.props.multiline) {
-      jsx = <textarea ref={ (c) => { this.input = c; } } { ...props } />;
+    if (multiline) {
+      jsx = (
+        <textarea
+          ref={c => {
+            this.input = c;
+          }}
+          {...props}
+        />
+      );
     } else {
-      jsx = <input ref={ (c) => { this.input = c; } } { ...props } />;
+      jsx = (
+        <input
+          ref={c => {
+            this.input = c;
+          }}
+          {...props}
+        />
+      );
     }
 
-    if (this.props.icon) {
+    if (icon) {
       jsx = (
         <div className="rc-input-icon">
           <Icon width="16px" height="16px" type="search" />
-          { jsx }
+          {jsx}
         </div>
       );
     }

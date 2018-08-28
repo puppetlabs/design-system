@@ -10,7 +10,7 @@ const propTypes = {
     PropTypes.array,
     PropTypes.number,
   ]),
-  options: PropTypes.array,
+  options: PropTypes.arrayOf(PropTypes.object),
   multiple: PropTypes.bool,
   onChange: PropTypes.func,
   onFocus: PropTypes.func,
@@ -39,46 +39,47 @@ class MenuList extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.focused !== this.state.focusedId) {
+    const { focusedId } = this.state;
+    if (newProps.focused !== focusedId) {
       this.setState({ focusedId: newProps.focused });
     }
   }
 
   onMouseOut() {
-    if (this.state.focusedId) {
+    const { focusedId } = this.state;
+    const { onFocus } = this.props;
+    if (focusedId) {
       this.setState({ focusedId: null }, () => {
-        this.props.onFocus(null);
+        onFocus(null);
       });
     }
   }
 
   onFocus(focusedId) {
+    const { onFocus } = this.props;
     return () => {
       this.setState({ focusedId }, () => {
-        this.props.onFocus(focusedId);
+        onFocus(focusedId);
       });
     };
   }
 
   onChange(selected) {
-    if (this.props.onChange) {
-      this.props.onChange(selected);
+    const { onChange } = this.props;
+    if (onChange) {
+      onChange(selected);
     }
   }
 
   render() {
-    const {
-      multiple,
-      selected,
-      options,
-      size,
-    } = this.props;
+    const { focusedId } = this.state;
+    const { multiple, selected, options, size } = this.props;
     const className = classnames('rc-menu-list', {
       [`rc-menu-list-${size}`]: size,
       'rc-menu-multiple': multiple,
     });
 
-    const jsx = options.map((option) => {
+    const jsx = options.map(option => {
       let isSelected = false;
 
       if (Array.isArray(selected)) {
@@ -89,25 +90,27 @@ class MenuList extends React.Component {
 
       return (
         <MenuItem
-          focused={ this.state.focusedId === option.id }
-          onFocus={ this.onFocus(option.id) }
-          key={ option.id }
-          option={ option }
-          className={ option.className }
-          selected={ isSelected }
-          onClick={ this.onChange }
-          multiple={ multiple }
+          focused={focusedId === option.id}
+          onFocus={this.onFocus(option.id)}
+          key={option.id}
+          option={option}
+          className={option.className}
+          selected={isSelected}
+          onClick={this.onChange}
+          multiple={multiple}
         />
       );
     });
 
     return (
       <ul
-        ref={ (c) => { this.list = c; } }
-        onMouseLeave={ this.onMouseOut }
-        className={ className }
+        ref={c => {
+          this.list = c;
+        }}
+        onMouseLeave={this.onMouseOut}
+        className={className}
       >
-        { jsx }
+        {jsx}
       </ul>
     );
   }

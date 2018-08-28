@@ -18,7 +18,7 @@ describe('<Column />', () => {
   jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
-    const wrapper = shallow(<Column { ...defaultProps } />);
+    const wrapper = shallow(<Column {...defaultProps} />);
 
     expect(wrapper.length).to.eql(1);
   });

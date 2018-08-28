@@ -13,18 +13,20 @@ describe('<Tooltip />', () => {
   };
 
   xit('should render when given a target', () => {
-    const wrapper = shallow(<Tooltip { ...defaultProps } />);
+    const wrapper = shallow(<Tooltip {...defaultProps} />);
 
     expect(wrapper.find('.rc-tooltip')).to.have.length(1);
-    expect(wrapper.find('.rc-tooltip').hasClass('rc-tooltip-position-right')).to.eql(true);
+    expect(
+      wrapper.find('.rc-tooltip').hasClass('rc-tooltip-position-right'),
+    ).to.eql(true);
     expect(wrapper.find('.rc-tooltip-carat')).to.have.length(1);
   });
 
   xit('should render childern within tooltip', () => {
     const wrapper = shallow(
-      <Tooltip { ...defaultProps }>
+      <Tooltip {...defaultProps}>
         <span className="child" />
-      </Tooltip>
+      </Tooltip>,
     );
 
     expect(wrapper.find('.child')).to.have.length(1);

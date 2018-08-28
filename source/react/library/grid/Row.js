@@ -3,20 +3,21 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node.isRequired,
   height: PropTypes.number,
   collapse: PropTypes.oneOfType(['top', 'bottom', 'all']),
 };
 
 const defaultProps = {
   collapse: false,
+  height: null,
 };
 
-const Row = (props) => {
-  const { height, collapse } = props;
+const Row = props => {
+  const { height, collapse, children } = props;
   const style = {};
 
-  if (props.height) {
+  if (height) {
     style.height = `${height}px`;
   }
 
@@ -25,7 +26,9 @@ const Row = (props) => {
   });
 
   return (
-    <div className={ classNames } style={ style }>{ props.children }</div>
+    <div className={classNames} style={style}>
+      {children}
+    </div>
   );
 };
 

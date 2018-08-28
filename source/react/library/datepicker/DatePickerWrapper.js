@@ -6,8 +6,8 @@ import moment from 'moment';
 
 const propTypes = {
   onChange: PropTypes.func.isRequired,
-  range: PropTypes.object,
-  ranges: PropTypes.array,
+  range: PropTypes.shape({}),
+  ranges: PropTypes.arrayOf(PropTypes.object),
   localeStrings: PropTypes.shape({
     customRange: PropTypes.string,
   }),
@@ -33,7 +33,8 @@ const defaultProps = {
  * TODO: If there is wide-spread usage of custom date ranges in puppet insights and
  * other consuming projects, maybe make this change.
  */
-const formatRange = range => moment.duration(range.count, range.unit).humanize();
+const formatRange = range =>
+  moment.duration(range.count, range.unit).humanize();
 
 class DatePickerWrapper extends React.Component {
   constructor(props) {
@@ -43,6 +44,7 @@ class DatePickerWrapper extends React.Component {
   }
 
   setRange(range) {
+    const { onChange } = this.props;
     const dates = {};
 
     if (range.start && range.end) {
@@ -53,19 +55,21 @@ class DatePickerWrapper extends React.Component {
       dates.end = moment().endOf('day');
     }
 
-    this.props.onChange(dates);
+    onChange(dates);
   }
 
   getRanges() {
-    const { localeStrings } = this.props;
+    const { localeStrings, ranges } = this.props;
 
-    if (!this.props.ranges || this.props.ranges.length === 0) return null;
+    if (!ranges || ranges.length === 0) return null;
 
-    const ranges = [];
+    const rangesJSX = [];
     let custom = true;
 
-    this.props.ranges.forEach((range, key) => {
-      const start = moment().startOf('day').subtract(range.count, range.unit);
+    ranges.forEach((range, key) => {
+      const start = moment()
+        .startOf('day')
+        .subtract(range.count, range.unit);
       const onClick = this.setRange.bind(this, start);
       const selected = this.isSelected(range);
       const className = classnames({ selected });
@@ -76,39 +80,45 @@ class DatePickerWrapper extends React.Component {
 
       const props = { key, onClick, className };
 
-      ranges.push(<li { ...props }>{formatRange(range)}</li>);
+      rangesJSX.push(<li {...props}>{formatRange(range)}</li>);
     });
 
-    ranges.push(<li key="custom" className={ classnames({ selected: custom }) }>{localeStrings.customRange}</li>);
-
-    return (
-      <ul className="rc-ranges">
-        {ranges}
-      </ul>
+    rangesJSX.push(
+      <li key="custom" className={classnames({ selected: custom })}>
+        {localeStrings.customRange}
+      </li>,
     );
+
+    return <ul className="rc-ranges">{rangesJSX}</ul>;
   }
 
   isSelected(range) {
-    const currentStart = this.props.range.start;
-    const currentEnd = this.props.range.end;
-    const rangeStart = moment().startOf('day').subtract(range.count, range.unit);
+    const { range: currentRange } = this.props;
+    const currentStart = currentRange.start;
+    const currentEnd = currentRange.end;
+    const rangeStart = moment()
+      .startOf('day')
+      .subtract(range.count, range.unit);
     const rangeEnd = moment().startOf('day');
 
-    return (currentStart.diff(rangeStart, 'days') === 0) &&
-      (currentEnd.diff(rangeEnd, 'days') === 0);
+    return (
+      currentStart.diff(rangeStart, 'days') === 0 &&
+      currentEnd.diff(rangeEnd, 'days') === 0
+    );
   }
 
   render() {
+    const { onChange, range } = this.props;
     const ranges = this.getRanges();
 
     return (
       <div className="rc-datepicker-container">
         <DateRangePicker
-          numberOfCalendars={ 2 }
-          selectionType={ 'range' }
+          numberOfCalendars={2}
+          selectionType="range"
           bemBlock="rc-datepicker"
-          onSelect={ this.props.onChange }
-          value={ this.props.range }
+          onSelect={onChange}
+          value={range}
           singleDateRange
         />
         {ranges}

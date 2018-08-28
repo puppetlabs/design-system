@@ -14,15 +14,16 @@ const propTypes = {
   menu: PropTypes.bool,
   className: PropTypes.string,
   closeButton: PropTypes.bool,
-  style: PropTypes.object,
+  style: PropTypes.shape({}),
   hint: PropTypes.string,
   allowBubble: PropTypes.bool,
   onClose: PropTypes.func,
-  children: PropTypes.any,
+  children: PropTypes.node,
   isOpened: PropTypes.bool,
 };
 
 const defaultProps = {
+  hint: '',
   onOutsideClick: null,
   dark: false,
   menu: false,
@@ -36,7 +37,6 @@ const defaultProps = {
 };
 
 class PopoverContent extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -53,35 +53,37 @@ class PopoverContent extends React.Component {
   }
 
   onOutsideClick(e) {
-    if (!isNodeInRoot(e.target, this.elem) && this.props.onOutsideClick && this.props.isOpened) {
-      this.props.onOutsideClick(e);
+    const { onOutsideClick, isOpened, allowBubble } = this.props;
 
-      if (!this.props.allowBubble) {
+    if (!isNodeInRoot(e.target, this.elem) && onOutsideClick && isOpened) {
+      onOutsideClick(e);
+
+      if (!allowBubble) {
         e.stopPropagation();
       }
     }
   }
 
   onClose() {
-    if (this.props.onClose) {
-      this.props.onClose();
+    const { onClose } = this.props;
+
+    if (onClose) {
+      onClose();
     }
   }
 
   renderHeader() {
-    const { hint, closeButton } = this.props;
-    let onClose;
+    const { hint, closeButton, menu } = this.props;
     let close;
     let jsx;
 
-    if (this.props.menu) {
-      if (closeButton) {
-        onClose = this.onClose;
-      }
-
+    if (menu) {
       if (hint || closeButton) {
         jsx = (
-          <Menu.Header title={ hint } onClose={ onClose } />
+          <Menu.Header
+            title={hint}
+            onClose={closeButton ? this.onClose : null}
+          />
         );
       }
     } else {
@@ -92,7 +94,7 @@ class PopoverContent extends React.Component {
             size="small"
             className="rc-popover-close"
             icon="delete"
-            onClick={ this.onClose }
+            onClick={this.onClose}
           />
         );
       }
@@ -100,8 +102,8 @@ class PopoverContent extends React.Component {
       if (hint || closeButton) {
         jsx = (
           <div className="rc-popover-header">
-            <small className="rc-popover-hint">{ hint }</small>
-            { close }
+            <small className="rc-popover-hint">{hint}</small>
+            {close}
           </div>
         );
       }
@@ -117,20 +119,29 @@ class PopoverContent extends React.Component {
 
     if (menu) {
       content = (
-        <Menu dark={ dark }>{ header }{ children }</Menu>
+        <Menu dark={dark}>
+          {header}
+          {children}
+        </Menu>
       );
     } else {
       content = (
         <div>
-          { header }
-          { children }
+          {header}
+          {children}
         </div>
       );
     }
 
     return (
-      <div ref={ (c) => { this.elem = c; } } className={ className } style={ style }>
-        { content }
+      <div
+        ref={c => {
+          this.elem = c;
+        }}
+        className={className}
+        style={style}
+      >
+        {content}
       </div>
     );
   }

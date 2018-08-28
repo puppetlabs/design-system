@@ -7,22 +7,17 @@ import portal from '../portal';
 import TooltipHoverArea from './TooltipHoverArea';
 import TooltipStickyArea from './TooltipStickyArea';
 import Icon from '../icon/Icon';
+import { ENTER_KEY_CODE } from '../../constants';
 
 const CARAT_HEIGHT = 8;
 
 const propTypes = {
   anchor: PropTypes.string,
   sticky: PropTypes.bool,
-  style: PropTypes.object,
-  target: PropTypes.oneOfType([
-    PropTypes.object,
-    PropTypes.element,
-  ]).isRequired,
+  style: PropTypes.shape({}),
+  target: PropTypes.oneOfType([PropTypes.object, PropTypes.element]).isRequired,
   onClose: PropTypes.func,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 const defaultProps = {
@@ -36,8 +31,8 @@ const defaultProps = {
 const getDefaultState = () => ({
   onClose: null,
   sticky: false,
-  tooltipPosition: { },
-  caratPosition: { },
+  tooltipPosition: {},
+  caratPosition: {},
 });
 
 class Tooltip extends React.Component {
@@ -47,37 +42,51 @@ class Tooltip extends React.Component {
     this.state = getDefaultState();
 
     this.onResize = this.onResize.bind(this);
+    this.onHandleKeyDown = this.onHandleKeyDown.bind(this);
     this.setPosition = this.setPosition.bind(this);
     this.setPositionRight = this.setPositionRight.bind(this);
     this.setPositionBottom = this.setPositionBottom.bind(this);
   }
 
   componentDidMount() {
+    const { target } = this.props;
+
     this.setPosition();
 
     window.addEventListener('resize', this.onResize);
 
-    if (this.props.target) {
-      bindParentScroll(this.props.target, this.setPosition);
+    if (target) {
+      bindParentScroll(target, this.setPosition);
     }
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.anchor !== this.props.anchor) {
+    const { anchor } = this.props;
+
+    if (prevProps.anchor !== anchor) {
       this.setPosition();
     }
   }
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onResize);
+    const { target } = this.props;
 
-    if (this.props.target) {
-      unbindParentScroll(this.props.target, this.setPosition);
+    if (target) {
+      unbindParentScroll(target, this.setPosition);
     }
   }
 
   onResize() {
     this.setPosition();
+  }
+
+  onHandleKeyDown(e) {
+    const { onClose } = this.props;
+
+    if (e.keyCode === ENTER_KEY_CODE && onClose) {
+      onClose();
+    }
   }
 
   getScrollbarWidth() {
@@ -88,7 +97,7 @@ class Tooltip extends React.Component {
 
   setPosition() {
     const { target, anchor } = this.props;
-    const tooltip = this.tooltip;
+    const { tooltip } = this;
 
     if (target && tooltip) {
       switch (anchor) {
@@ -111,11 +120,12 @@ class Tooltip extends React.Component {
 
     const newState = getDefaultState();
 
-    const elPositionMiddle = (elPosition.top + (elPosition.height / 2));
-    newState.tooltipPosition.top = (elPositionMiddle - (tooltipHeight / 2)) + offsetY;
-    newState.tooltipPosition.left = elPosition.right + (CARAT_HEIGHT * 2);
+    const elPositionMiddle = elPosition.top + elPosition.height / 2;
+    newState.tooltipPosition.top =
+      elPositionMiddle - tooltipHeight / 2 + offsetY;
+    newState.tooltipPosition.left = elPosition.right + CARAT_HEIGHT * 2;
 
-    newState.caratPosition.top = (tooltipHeight / 2) - CARAT_HEIGHT;
+    newState.caratPosition.top = tooltipHeight / 2 - CARAT_HEIGHT;
 
     this.setState(newState);
   }
@@ -128,11 +138,12 @@ class Tooltip extends React.Component {
     const tooltipWidth = tooltipWH.w;
     const newState = getDefaultState();
 
-    newState.tooltipPosition.top = elPosition.bottom + (CARAT_HEIGHT * 2) + offsetY;
+    newState.tooltipPosition.top =
+      elPosition.bottom + CARAT_HEIGHT * 2 + offsetY;
     newState.tooltipPosition.left =
-      ((elPosition.left + (elPosition.width / 2)) - (tooltipWidth / 2)) + scrollWidth;
+      elPosition.left + elPosition.width / 2 - tooltipWidth / 2 + scrollWidth;
 
-    newState.caratPosition.left = (tooltipWidth / 2) - CARAT_HEIGHT;
+    newState.caratPosition.left = tooltipWidth / 2 - CARAT_HEIGHT;
 
     this.setState(newState);
   }
@@ -153,14 +164,16 @@ class Tooltip extends React.Component {
 
   renderCloseButton() {
     let jsx;
+    const { sticky, onClose } = this.props;
 
-    if (this.props.sticky && this.props.onClose) {
+    if (sticky && onClose) {
       jsx = (
         <div
           role="button"
-          tabIndex={ 0 }
+          tabIndex={0}
           className="rc-tooltip-close"
-          onClick={ this.props.onClose }
+          onClick={onClose}
+          onKeyDown={this.onHandleKeyDown}
         >
           <Icon height="8px" width="8px" type="close" />
         </div>
@@ -172,21 +185,29 @@ class Tooltip extends React.Component {
 
   render() {
     const { tooltipPosition, caratPosition } = this.state;
-    const { anchor, style } = this.props;
+    const { anchor, style, children } = this.props;
     const className = classnames('rc-tooltip', `rc-tooltip-position-${anchor}`);
     const closeButton = this.renderCloseButton();
 
-    const styles = {
-      ...tooltipPosition,
-      ...style,
-    };
+    const styles = { ...tooltipPosition, ...style };
 
     return (
-      <div className={ className } style={ styles } ref={ (c) => { this.tooltip = c; } }>
-        <div className="rc-tooltip-scrollbar-measurer" ref={ (c) => { this.scrollMeasurer = c; } } />
-        <div className="rc-tooltip-carat" style={ caratPosition } />
-        { this.props.children }
-        { closeButton }
+      <div
+        className={className}
+        style={styles}
+        ref={c => {
+          this.tooltip = c;
+        }}
+      >
+        <div
+          className="rc-tooltip-scrollbar-measurer"
+          ref={c => {
+            this.scrollMeasurer = c;
+          }}
+        />
+        <div className="rc-tooltip-carat" style={caratPosition} />
+        {children}
+        {closeButton}
       </div>
     );
   }

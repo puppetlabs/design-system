@@ -22,10 +22,10 @@ const propTypes = {
   submitLabel: PropTypes.string,
   validator: PropTypes.func,
   //* Errors to render the form with. Keys are field names, and values are the form errors */
-  errors: PropTypes.object,
+  errors: PropTypes.shape({}),
   size: PropTypes.string,
   submitting: PropTypes.bool,
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -45,10 +45,10 @@ const defaultProps = {
   submitLabel: 'Submit',
 };
 
-const getValues = (children) => {
+const getValues = children => {
   let values = {};
 
-  React.Children.forEach(children, (child) => {
+  React.Children.forEach(children, child => {
     if (child) {
       if (child.props.name) {
         values[child.props.name] = child.props.value;
@@ -58,7 +58,10 @@ const getValues = (children) => {
 
       // TODO: Figure something else out here. This is incredibly hacky and makes me cry.
       if (child.props.flyout) {
-        values = Object.assign(values, getValues(child.props.flyout.props.children));
+        values = Object.assign(
+          values,
+          getValues(child.props.flyout.props.children),
+        );
       }
     }
   });
@@ -89,55 +92,64 @@ class Form extends React.Component {
   }
 
   onSubmit() {
-    const validatorErrors = validate(this.props.validator, this.state.values);
-    const valid = Object.keys(validate(this.props.validator, this.state.values)).length === 0;
+    const { validator, onSubmit } = this.props;
+    const { values } = this.state;
+    const validatorErrors = validate(validator, values);
+    const valid = Object.keys(validate(validator, values)).length === 0;
 
-    if (this.props.onSubmit) {
+    if (onSubmit) {
       this.setState({ valid, validatorErrors }, () => {
         if (valid) {
-          this.props.onSubmit(this.state);
+          onSubmit(this.state);
         }
       });
     }
   }
 
   onCancel() {
-    if (this.props.onCancel) {
-      this.props.onCancel();
+    const { onCancel } = this.props;
+
+    if (onCancel) {
+      onCancel();
     }
   }
 
   onChange(name) {
-    return (value) => {
+    const { validator, onChange } = this.props;
+    const { valid, values } = this.state;
+    return value => {
       const newState = Object.assign({}, this.state);
 
       newState.values[name] = value;
 
       // we only want to validate on change if the form has been deemed invalid and the user
       // is attempting to fix the mistakes
-      if (!this.state.valid) {
-        const validatorErrors = validate(this.props.validator, newState.values);
+      if (!valid) {
+        const validatorErrors = validate(validator, newState.values);
         newState.validatorErrors = validatorErrors;
         newState.valid = Object.keys(validatorErrors).length === 0;
       }
 
       this.setState(newState, () => {
-        if (this.props.onChange) {
-          this.props.onChange(name, this.state.values, newState.valid);
+        if (onChange) {
+          onChange(name, values, newState.valid);
         }
       });
     };
   }
 
   renderField(child) {
+    const { errors, size } = this.props;
+    const { validatorErrors, values } = this.state;
+
     return React.cloneElement(child, {
       error:
         child.props.error ||
-        this.state.validatorErrors[child.props.name] ||
-        this.props.errors[child.props.name],
-      value: this.state.values[child.props.name],
+        validatorErrors[child.props.name] ||
+        errors[child.props.name],
+      value: values[child.props.name],
       onChange: this.onChange(child.props.name),
-      size: this.props.size,
+      size,
       key: child.props.name,
     });
   }
@@ -168,7 +180,7 @@ class Form extends React.Component {
   renderChildren(children) {
     const jsx = [];
 
-    React.Children.forEach(children, (child) => {
+    React.Children.forEach(children, child => {
       if (child && child.type === FormField) {
         jsx.push(this.renderField(child));
       } else if (child && child.type === FormSection) {
@@ -180,29 +192,38 @@ class Form extends React.Component {
   }
 
   renderActions() {
+    const {
+      cancellable,
+      submittable,
+      submitting,
+      size,
+      cancelLabel,
+      submitLabel,
+    } = this.props;
+    const { valid } = this.state;
     let jsx = [];
 
-    if (this.props.cancellable) {
+    if (cancellable) {
       jsx.push(
         <Button
           key="cancel"
           secondary
-          size={ this.props.size }
-          onClick={ this.onCancel }
-          label={ this.props.cancelLabel }
+          size={size}
+          onClick={this.onCancel}
+          label={cancelLabel}
         />,
       );
     }
 
-    if (this.props.submittable) {
+    if (submittable) {
       jsx.push(
         <Button
           key="submit"
-          processing={ this.props.submitting }
-          size={ this.props.size }
-          disabled={ !this.state.valid }
-          onClick={ this.onSubmit }
-          label={ this.props.submitLabel }
+          processing={submitting}
+          size={size}
+          disabled={!valid}
+          onClick={this.onSubmit}
+          label={submitLabel}
         />,
       );
     }
@@ -210,9 +231,7 @@ class Form extends React.Component {
     if (jsx.length) {
       jsx = (
         <div className="rc-form-actions">
-          <ButtonGroup>
-            { jsx }
-          </ButtonGroup>
+          <ButtonGroup>{jsx}</ButtonGroup>
         </div>
       );
     }
@@ -221,18 +240,18 @@ class Form extends React.Component {
   }
 
   render() {
-    const children = this.renderChildren(this.props.children);
+    const { children: childrenProp, className, size, inline } = this.props;
+    const children = this.renderChildren(childrenProp);
     const actions = this.renderActions();
-    const className = classnames('rc-form', this.props.className, `rc-form-${this.props.size}`, {
-      'rc-form-inline': this.props.inline,
+    const classNames = classnames('rc-form', className, {
+      [`rc-form-${size}`]: size,
+      'rc-form-inline': inline,
     });
 
     return (
-      <form className={ className }>
-        <fieldset className="rc-form-fields">
-          { children }
-        </fieldset>
-        { actions }
+      <form className={classNames}>
+        <fieldset className="rc-form-fields">{children}</fieldset>
+        {actions}
       </form>
     );
   }

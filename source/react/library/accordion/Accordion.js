@@ -15,7 +15,7 @@ const propTypes = {
   /** Called with the `key` of the opened `AccordionItem` */
   onChange: PropTypes.func,
   /** `AccordionItem`s to render */
-  children: PropTypes.any,
+  children: PropTypes.node,
   /** Class name to apply to the `Accordion` container wrapper div */
   className: PropTypes.string,
   /** Icon to render next to the title in the header */
@@ -49,48 +49,53 @@ class Accordion extends React.Component {
   }
 
   onClose(e) {
+    const { onClose } = this.props;
+
     if (e) {
       e.preventDefault();
     }
 
-    if (this.props.onClose) {
-      this.props.onClose();
+    if (onClose) {
+      onClose();
     }
   }
 
   onOpenChild(key) {
+    const { onChange } = this.props;
+
     return () => {
       this.setState({ activeIdx: key });
 
-      if (this.props.onChange) {
-        this.props.onChange(key);
+      if (onChange) {
+        onChange(key);
       }
     };
   }
 
   hasActive() {
-    return typeof this.state.activeIdx !== 'undefined' && this.state.activeIdx !== null;
+    const { activeIdx } = this.state;
+
+    return typeof activeIdx !== 'undefined' && activeIdx !== null;
   }
 
   renderHeader() {
-    let icon;
-
-    if (this.props.icon) {
-      icon = (
-        <span className="rc-accordion-header-icon">
-          <Icon width="16px" height="16px" type={ this.props.icon } />
-        </span>
-      );
-    }
+    const { icon, title } = this.props;
 
     return (
       <div className="rc-accordion-header" key="header">
         <div className="rc-accordion-header-main">
-          { icon }
-          <span className="rc-accordion-header-title">{ this.props.title }</span>
+          {!icon ? (
+            undefined
+          ) : (
+            <span className="rc-accordion-header-icon">
+              <Icon width="16px" height="16px" type={icon} />
+            </span>
+          )}
+          <span className="rc-accordion-header-title">{title}</span>
         </div>
         <span className="rc-accordion-header-action">
-          <a href="" onClick={ this.onClose } >
+          {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+          <a href="" onClick={this.onClose}>
             <Icon width="8px" height="8px" type="close" />
           </a>
         </span>
@@ -99,7 +104,7 @@ class Accordion extends React.Component {
   }
 
   renderChild(child, index) {
-    const activeIdx = this.state.activeIdx;
+    const { activeIdx } = this.state;
 
     // We require a key, but in case the user supplies something all wrong we
     // can use the index as a surrogate.
@@ -118,26 +123,24 @@ class Accordion extends React.Component {
   }
 
   renderItems() {
-    let children = Children.toArray(this.props.children);
+    const { children, title } = this.props;
+    const childrenArray = Children.toArray(children).map((c, i) =>
+      this.renderChild(c, i),
+    );
 
-    children = children.map((c, i) => this.renderChild(c, i));
-
-    if (this.props.title) {
-      children.unshift(this.renderHeader());
+    if (title) {
+      childrenArray.unshift(this.renderHeader());
     }
 
-    return <div className="rc-accordion-items">{ children }</div>;
+    return <div className="rc-accordion-items">{childrenArray}</div>;
   }
 
   render() {
-    const className = classnames('rc-accordion', this.props.className);
+    const { className } = this.props;
+    const classNames = classnames('rc-accordion', className);
     const items = this.renderItems();
 
-    return (
-      <div className={ className }>
-        { items }
-      </div>
-    );
+    return <div className={classNames}>{items}</div>;
   }
 }
 

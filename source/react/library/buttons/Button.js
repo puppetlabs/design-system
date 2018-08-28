@@ -28,10 +28,7 @@ const propTypes = {
   dropdown: PropTypes.bool,
   error: PropTypes.bool,
   message: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 const defaultProps = {
@@ -75,10 +72,11 @@ class Button extends React.Component {
   }
 
   onClick(e) {
-    if (this.props.disabled || this.props.processing) {
+    const { disabled, processing, onClick } = this.props;
+    if (disabled || processing) {
       e.preventDefault();
-    } else if (this.props.onClick) {
-      this.props.onClick(e);
+    } else if (onClick) {
+      onClick(e);
     }
   }
 
@@ -102,6 +100,7 @@ class Button extends React.Component {
       floating,
       round,
       square,
+      icon: propIcon,
     } = this.props;
 
     let button;
@@ -129,43 +128,55 @@ class Button extends React.Component {
       href,
       disabled,
       onClick: this.onClick,
-      ref: (b) => { this.button = b; },
+      ref: b => {
+        this.button = b;
+      },
       className: cssClass,
     };
 
-    const loader = processing ? <Icon height="75%" width="100%" type="loader" /> : null;
+    const loader = processing ? (
+      <Icon height="75%" width="100%" type="loader" />
+    ) : null;
 
     if (children || label) {
-      content = <span className="rc-button-content">{ children || label }</span>;
+      content = <span className="rc-button-content">{children || label}</span>;
     }
 
-    if (this.props.icon || floating) {
+    if (propIcon || floating) {
       const iconSize = simple ? '8px' : '16px';
-      const iconType = (!this.props.icon && floating) ? 'plus' : this.props.icon;
+      const iconType = !propIcon && floating ? 'plus' : propIcon;
 
-      icon = <Icon height={ iconSize } width={ iconSize } type={ iconType } />;
+      icon = <Icon height={iconSize} width={iconSize} type={iconType} />;
     }
 
-    if (this.props.dropdown && !this.props.processing) {
+    if (dropdown && !processing) {
       const iconSize = '10px';
 
       dropdown = (
         <span className="rc-button-dropdown-icon">
-          <Icon height={ iconSize } width={ iconSize } type="chevron-down" />
+          <Icon height={iconSize} width={iconSize} type="chevron-down" />
         </span>
       );
     }
 
     if (type) {
-      button = <button { ...btnProps }>{ icon } { content } { dropdown } { loader }</button>;
+      button = (
+        <button type="button" {...btnProps}>
+          {icon} {content} {dropdown} {loader}
+        </button>
+      );
     } else {
-      button = <a { ...btnProps }>{ icon } { content } { dropdown } { loader }</a>;
+      button = (
+        <a {...btnProps}>
+          {icon} {content} {dropdown} {loader}
+        </a>
+      );
     }
 
     if (message) {
       button = (
-        <TooltipStickyArea anchor="bottom" tooltip={ message }>
-          { button }
+        <TooltipStickyArea anchor="bottom" tooltip={message}>
+          {button}
         </TooltipStickyArea>
       );
     }

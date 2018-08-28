@@ -27,25 +27,27 @@ class SelectItem extends React.Component {
 
   onRemove(e) {
     e.stopPropagation();
+    const { onRemove } = this.props;
 
-    this.props.onRemove();
+    onRemove();
   }
 
   render() {
-    const size = this.props.size === 'small' ? 'tiny' : this.props.size;
+    const { size: sizeProp, highlighted, value } = this.props;
+    const size = sizeProp === 'small' ? 'tiny' : sizeProp;
     const className = classnames({
-      'rc-tag-highlighted': this.props.highlighted,
+      'rc-tag-highlighted': highlighted,
     });
 
     return (
       <Tag
-        className={ className }
-        size={ size }
+        className={className}
+        size={size}
         round
         primary
-        onRemove={ this.onRemove }
+        onRemove={this.onRemove}
       >
-        { this.props.value }
+        {value}
       </Tag>
     );
   }

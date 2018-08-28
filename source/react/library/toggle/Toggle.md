@@ -14,6 +14,7 @@
 ```
 
 Disabled toggle:
+
 ```
 <Toggle
   left="disabled"

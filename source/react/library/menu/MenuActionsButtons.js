@@ -2,17 +2,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
   children: null,
 };
 
-const MenuActionsButtons = props => (
-  <div className="rc-menu-actions-buttons">
-    { props.children }
-  </div>
+const MenuActionsButtons = ({ children }) => (
+  <div className="rc-menu-actions-buttons">{children}</div>
 );
 
 MenuActionsButtons.propTypes = propTypes;

@@ -1,8 +1,12 @@
 {
   "extends": "stylelint-config-sass-guidelines",
+  "ignoreFiles": ["**/*.js"],
   "rules": {
-    "max-nesting-depth": [1, {
-      "ignore": ["blockless-at-rules"]
-    }]
+    "max-nesting-depth": [
+      1,
+      {
+        "ignore": ["blockless-at-rules"]
+      }
+    ]
   }
 }

@@ -95,8 +95,8 @@
   width: 32px;
 
   .rc-icon {
-    fill: $puppet-icon-fill;
     @include icon-opacity-hover;
+    fill: $puppet-icon-fill;
   }
 }
 

@@ -18,11 +18,10 @@ const defaultProps = {
  * `LoadingIndicator` does what you would think, it indicates a loading state.
  */
 
-const LoadingIndicator = (props) => {
-  const className = classnames('rc-loading', props.className);
+const LoadingIndicator = ({ className, size: propSize }) => {
   let size;
 
-  switch (props.size) {
+  switch (propSize) {
     case 'tiny':
       size = '40px';
       break;
@@ -34,8 +33,8 @@ const LoadingIndicator = (props) => {
   }
 
   return (
-    <div className={ className }>
-      <Icon type="loader" height={ size } width={ size } />
+    <div className={classnames('rc-loading', className)}>
+      <Icon type="loader" height={size} width={size} />
     </div>
   );
 };

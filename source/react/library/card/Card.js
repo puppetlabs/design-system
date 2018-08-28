@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   size: PropTypes.string,
   style: PropTypes.string,
   /** Card width in px or % */
@@ -38,7 +38,6 @@ const defaultProps = {
  * alternative to a `List`.
  */
 class Card extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -46,10 +45,11 @@ class Card extends React.Component {
   }
 
   onClick(e) {
+    const { onClick } = this.props;
     e.preventDefault();
 
-    if (this.props.onClick) {
-      this.props.onClick(e);
+    if (onClick) {
+      onClick(e);
     }
   }
 
@@ -63,18 +63,10 @@ class Card extends React.Component {
       selected,
       onMouseEnter,
       onMouseLeave,
+      className,
+      children,
     } = this.props;
 
-    const className = classnames('rc-card', {
-      'rc-card-large': size === 'large',
-      'rc-card-small': size === 'small',
-      'rc-card-xs': size === 'xs',
-      'rc-card-selected': selected,
-      [`rc-card-${style}`]: style,
-      'rc-card-selectable': onClick,
-    }, this.props.className);
-
-    const content = this.props.children;
     const styles = {};
 
     if (width) {
@@ -87,7 +79,18 @@ class Card extends React.Component {
 
     const props = {
       style: styles,
-      className,
+      className: classnames(
+        'rc-card',
+        {
+          'rc-card-large': size === 'large',
+          'rc-card-small': size === 'small',
+          'rc-card-xs': size === 'xs',
+          'rc-card-selected': selected,
+          [`rc-card-${style}`]: style,
+          'rc-card-selectable': onClick,
+        },
+        className,
+      ),
     };
 
     if (onClick) {
@@ -103,7 +106,7 @@ class Card extends React.Component {
       props.onMouseLeave = onMouseLeave;
     }
 
-    return <div { ...props }>{ content }</div>;
+    return <div {...props}>{children}</div>;
   }
 }
 

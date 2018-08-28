@@ -59,9 +59,9 @@
   }
 
   .rc-switch-label-off {
+    @include show-text;
     left: 0;
     right: 0;
-    @include show-text;
   }
 
   .rc-switch-label-off .rc-icon {
@@ -76,9 +76,9 @@
   }
 
   .rc-switch-label-on {
+    @include hide-text;
     left: 0;
     right: 0;
-    @include hide-text;
   }
 
   .rc-switch-label-on .rc-icon {

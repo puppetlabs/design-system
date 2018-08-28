@@ -16,9 +16,10 @@ const defaultProps = {
   max: 100,
   step: 1,
   defaultValue: 0,
+  onChange: null,
 };
 
-const getSliderLength = function (sliderRect) {
+const getSliderLength = function(sliderRect) {
   const start = sliderRect.left;
   const end = sliderRect.right;
 
@@ -54,15 +55,19 @@ class Slider extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.value) {
-      const position = this.calculateHandlePosition(this.state.value);
+    const { value } = this.state;
+
+    if (value) {
+      const position = this.calculateHandlePosition(value);
       this.setHandlePosition(position);
     }
   }
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.value !== this.state.value) {
-      const position = this.calculateHandlePosition(this.state.value);
+    const { value } = this.state;
+
+    if (prevState.value !== value) {
+      const position = this.calculateHandlePosition(value);
       this.setHandlePosition(position);
     }
   }
@@ -74,7 +79,8 @@ class Slider extends React.Component {
   }
 
   onResize() {
-    const position = this.calculateHandlePosition(this.state.value);
+    const { value } = this.state;
+    const position = this.calculateHandlePosition(value);
     this.setHandlePosition(position);
   }
 
@@ -83,8 +89,10 @@ class Slider extends React.Component {
   }
 
   onChange(value) {
-    if (this.props.onChange) {
-      this.props.onChange(value);
+    const { onChange } = this.props;
+
+    if (onChange) {
+      onChange(value);
     }
   }
 
@@ -93,7 +101,10 @@ class Slider extends React.Component {
   }
 
   onMouseMove(e, clicked = false) {
-    if (this.state.dragging || clicked) {
+    const { dragging } = this.state;
+    const { step, max, min } = this.props;
+
+    if (dragging || clicked) {
       let mousePos = e.pageX;
 
       const sliderRect = this.getSliderRect();
@@ -108,13 +119,16 @@ class Slider extends React.Component {
 
       let handlePos = mousePos - sliderStart;
 
-      if (this.props.step) {
+      if (step) {
         const stepPoints = this.convertStepToPoints();
         const stepPositions = stepPoints.map(p => p.position);
 
-        const closestPoint = stepPositions.reduce((prev, next) => (
-          (Math.abs(next - handlePos) < Math.abs(prev - handlePos) ? next : prev)
-        ));
+        const closestPoint = stepPositions.reduce(
+          (prev, next) =>
+            Math.abs(next - handlePos) < Math.abs(prev - handlePos)
+              ? next
+              : prev,
+        );
 
         handlePos = closestPoint;
       }
@@ -124,7 +138,7 @@ class Slider extends React.Component {
 
       // get the middle of the difference between the max and min values.
       // Once we have the middle add the min back on
-      const value = ((this.props.max - this.props.min) * percentage) + this.props.min;
+      const value = (max - min) * percentage + min;
 
       this.setState({ value }, () => {
         this.onChange(value);
@@ -137,8 +151,9 @@ class Slider extends React.Component {
   }
 
   onKeyDown(e) {
+    const { value } = this.state;
     const points = this.convertStepToPoints();
-    const currentValue = this.state.value;
+    const currentValue = value;
     let newValue = currentValue;
 
     const currentPoint = points.filter(p => p.value === currentValue)[0];
@@ -151,7 +166,7 @@ class Slider extends React.Component {
 
         break;
       case RIGHT_KEY_CODE:
-        if (currentPoint.index < (points.length - 1)) {
+        if (currentPoint.index < points.length - 1) {
           newValue = points[currentPoint.index + 1].value;
         }
 
@@ -172,11 +187,13 @@ class Slider extends React.Component {
   }
 
   setHandlePosition(position, handleRect) {
-    if (!handleRect) {
-      handleRect = this.getHandleRect();
+    let rect = handleRect;
+
+    if (!rect) {
+      rect = this.getHandleRect();
     }
 
-    const handleOffset = handleRect.width / 2;
+    const handleOffset = rect.width / 2;
 
     if (this.barActive) {
       this.barActive.style.width = `${position}px`;
@@ -188,10 +205,10 @@ class Slider extends React.Component {
   }
 
   calculateHandlePosition(value) {
-    const min = this.props.min;
+    const { min, max } = this.props;
 
     // We remove the min from the max and value to ensure we offset for non zero values
-    const offsetMax = this.props.max - min;
+    const offsetMax = max - min;
     const offsetValue = value - min;
 
     const percentage = offsetValue / offsetMax;
@@ -221,26 +238,37 @@ class Slider extends React.Component {
   }
 
   render() {
+    const { min, max } = this.props;
+    const { value } = this.state;
     const className = classnames('rc-slider');
 
     return (
       <div // eslint-disable-line jsx-a11y/no-static-element-interactions
-        ref={ (c) => { this.slider = c; } }
-        className={ className }
-        onKeyDown={ this.onKeyDown }
-        onClick={ this.onClick }
+        ref={c => {
+          this.slider = c;
+        }}
+        className={className}
+        onKeyDown={this.onKeyDown}
+        onClick={this.onClick}
       >
         <div className="rc-slider-bar" />
-        <div ref={ (c) => { this.barActive = c; } } className="rc-slider-bar-active" />
         <div
-          ref={ (c) => { this.handle = c; } }
-          tabIndex={ 0 }
+          ref={c => {
+            this.barActive = c;
+          }}
+          className="rc-slider-bar-active"
+        />
+        <div
+          ref={c => {
+            this.handle = c;
+          }}
+          tabIndex={0}
           role="slider"
-          aria-valuemin={ this.props.min }
-          aria-valuemax={ this.props.max }
-          aria-valuenow={ this.state.value }
-          onMouseDown={ this.onMouseDown }
-          onMouseUp={ this.onMouseUp }
+          aria-valuemin={min}
+          aria-valuemax={max}
+          aria-valuenow={value}
+          onMouseDown={this.onMouseDown}
+          onMouseUp={this.onMouseUp}
           className="rc-slider-handle"
         />
       </div>
