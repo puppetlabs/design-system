@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Children } from 'react';
 import classnames from 'classnames';
+import Heading from '../heading';
 
 import Icon from '../icon/Icon';
 import { getKey } from '../../helpers/statics';
@@ -87,7 +88,7 @@ class Accordion extends React.Component {
       <div className="rc-accordion-header" key="header">
         <div className="rc-accordion-header-main">
           { icon }
-          <span className="rc-accordion-header-title">{ this.props.title }</span>
+          <Heading as="h6" color="medium" allCaps>{ this.props.title }</Heading>
         </div>
         <span className="rc-accordion-header-action">
           <a href="" onClick={ this.onClose } >
