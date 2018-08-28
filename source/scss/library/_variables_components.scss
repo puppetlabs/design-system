@@ -36,7 +36,7 @@ $puppet-blank-slate-lead-color              : $puppet-gray-darker !default;
 $puppet-blank-slate-content-font-size       : $puppet-font-size-base !default;
 $puppet-blank-slate-content-color           : $puppet-gray-darker !default;
 $puppet-blank-slate-note-font-size          : $puppet-font-size-small !default;
-$puppet-blank-slate-note-color              : $puppet-gray-base !default;
+$puppet-blank-slate-note-color              : $puppet-n600 !default;
 $puppet-blank-slate-icon-color              : $puppet-action-color !default;
 $puppet-blank-slate-bg                      : $puppet-bg-primary !default;
 $puppet-blank-slate-shadow                  : $puppet-outer-shadow-huge !default;
@@ -102,9 +102,9 @@ $puppet-button-secondary-border-color-hover : $puppet-action-border-hover-alt !d
 // Transparent Buttons
 $puppet-button-clear-bg                     : transparent !default;
 $puppet-button-clear-bg-hover               : transparent !default;
-$puppet-button-clear-color                  : $puppet-gray !default;
+$puppet-button-clear-color                  : $puppet-n600 !default;
 $puppet-button-clear-color-hover            : $puppet-gray-dark !default;
-$puppet-button-clear-icon-color             : $puppet-gray !default;
+$puppet-button-clear-icon-color             : $puppet-n600 !default;
 $puppet-button-clear-icon-color-hover       : $puppet-gray-dark !default;
 $puppet-button-clear-border-color           : transparent !default;
 $puppet-button-clear-border-color-hover     : transparent !default;
@@ -241,7 +241,6 @@ $puppet-datepicker-border-color             : transparent !default;
 $puppet-datepicker-border-width             : 0 !default;
 
 $puppet-datepicker-font-color               : $puppet-font-color-base !default;
-$puppet-datepicker-disabled-color           : $puppet-disabled-color !default;
 
 $puppet-datepicker-month-bg                 : $puppet-bg-subtle !default;
 $puppet-datepicker-month-color              : $puppet-font-color-medium !default;
@@ -283,11 +282,11 @@ $puppet-dropdown-label-font-weight          : $puppet-font-weight-heavy !default
 $puppet-dropdown-label-line-height          : $puppet-medium !default;
 $puppet-dropdown-label-color                : $puppet-action-color !default;
 $puppet-dropdown-label-color-error          : $puppet-danger-color !default;
-$puppet-dropdown-label-color-disabled       : $puppet-gray !default;
+$puppet-dropdown-label-color-disabled       : $puppet-n600 !default;
 
 $puppet-dropdown-chevron-height             : $puppet-small !default;
 $puppet-dropdown-chevron-width              : $puppet-small !default;
-$puppet-dropdown-hint-color                 : $puppet-gray !default;
+$puppet-dropdown-hint-color                 : $puppet-n600 !default;
 $puppet-dropdown-hint-font-size             : $puppet-font-size-base !default;
 $puppet-dropdown-hint-font-size-tiny        : $puppet-font-size-small !default;
 $puppet-dropdown-item-font-size             : $puppet-font-size-base !default;
@@ -380,7 +379,7 @@ $puppet-checkbox-padding                    : $puppet-small !default;
 $puppet-checkbox-icon-color                 : $puppet-brand-primary !default;
 
 $puppet-checkbox-hover-border-color         : $puppet-brand-primary !default;
-$puppet-checkbox-disabled-icon-color        : $puppet-gray !default;
+$puppet-checkbox-disabled-icon-color        : $puppet-n600 !default;
 $puppet-checkbox-disabled-border-color      : $puppet-border-color !default;
 
 // Select
@@ -614,7 +613,7 @@ $puppet-table-font-size                     : $puppet-font-size-base !default;
 $puppet-table-border                        : 1px solid $puppet-gray-light !default;
 $puppet-table-shadow                        : $puppet-outer-shadow !default;
 $puppet-table-header-bg                     : $puppet-gray-lighter !default;
-$puppet-table-header-color                  : $puppet-gray !default;
+$puppet-table-header-color                  : $puppet-n600 !default;
 $puppet-table-border-radius                 : $puppet-border-radius !default;
 
 // Tags
@@ -623,7 +622,7 @@ $puppet-tag-bg                              : $puppet-bg-subtle !default;
 $puppet-tag-border-radius                   : $puppet-border-radius !default;
 $puppet-tag-border                          : 1px solid $puppet-bg-subtle !default;
 $puppet-tag-border-selected                 : $puppet-border-active !default;
-$puppet-tag-color                           : $puppet-gray-base !default;
+$puppet-tag-color                           : $puppet-n600 !default;
 $puppet-tag-font-size                       : $puppet-button-font-size !default;
 $puppet-tag-font-weight                     : $puppet-button-font-weight !default;
 $puppet-tag-height                          : $puppet-large !default; // Todo: Base on grid
