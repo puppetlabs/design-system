@@ -27,6 +27,13 @@ const propTypes = {
   ]).isRequired,
   /** A unique identifier for this field */
   name: PropTypes.string.isRequired,
+  /* 
+   * CAUTION due to the onchange event fired in the form component having a default value
+   * assigned here can cause a world of hurt. Since a form field can be many different types, 
+   * including a Select, Input, or even a custom built component we don't know why type of default
+   * value is required. Disabling the rule below allows the parent to pass us what it needs.
+  */
+  // eslint-disable-next-line react/require-default-props
   value: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.string,
@@ -58,7 +65,6 @@ const defaultProps = {
   description: '',
   elementProps: {},
   onChange: null,
-  value: '',
 };
 
 const isReactComponent = c =>
