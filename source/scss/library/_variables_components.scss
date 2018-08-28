@@ -38,7 +38,7 @@ $puppet-blank-slate-content-color           : $puppet-gray-darker !default;
 $puppet-blank-slate-note-font-size          : $puppet-font-size-small !default;
 $puppet-blank-slate-note-color              : $puppet-n600 !default;
 $puppet-blank-slate-icon-color              : $puppet-action-color !default;
-$puppet-blank-slate-bg                      : $puppet-bg-primary !default;
+$puppet-blank-slate-bg                      : $puppet-bg-light !default;
 $puppet-blank-slate-shadow                  : $puppet-outer-shadow-huge !default;
 $puppet-blank-slate-radius                  : $puppet-circle-radius !default;
 $puppet-blank-slate-margin-base             : 16px;
@@ -147,7 +147,7 @@ $puppet-button-error-border-color-hover     : $puppet-danger-color !default;
 
 // Card General
 $puppet-card-padding                        : $puppet-medium !default; // Todo: Base on grid
-$puppet-card-bg                             : $puppet-bg-primary !default;
+$puppet-card-bg                             : $puppet-bg-light !default;
 $puppet-card-border                         : $puppet-border !default;
 $puppet-card-shadow                         : $puppet-outer-shadow !default;
 
@@ -229,7 +229,7 @@ $puppet-sidebar-subsection-item-horizontal-padding    : $puppet-size-base !defau
 // Datepicker
 // ----------------------------------------------------------------------------
 $puppet-arrow-size                          : $puppet-tiny !default;
-$puppet-datepicker-bg                       : $puppet-bg-primary !default;
+$puppet-datepicker-bg                       : $puppet-bg-light !default;
 $puppet-datepicker-button-border-color      : $puppet-button-secondary-border-color !default;
 $puppet-datepicker-icon                     : $puppet-icon-fill !default;
 $puppet-datepicker-icon-hover               : $puppet-action-hover !default;
@@ -293,11 +293,11 @@ $puppet-dropdown-item-font-size             : $puppet-font-size-base !default;
 $puppet-dropdown-item-font-size-tiny        : $puppet-font-size-base !default;
 $puppet-dropdown-item-line-height           : $puppet-font-size-base !default;
 $puppet-dropdown-item-line-height-tiny      : $puppet-font-size-base !default;
-$puppet-dropdown-item-hover-color           : $puppet-bg-primary !default;
+$puppet-dropdown-item-hover-color           : $puppet-bg-light !default;
 $puppet-dropdown-item-hover-bg              : $puppet-action-hover !default;
-$puppet-dropdown-item-selected-color        : $puppet-bg-primary !default;
+$puppet-dropdown-item-selected-color        : $puppet-bg-light !default;
 $puppet-dropdown-item-selected-bg           : $puppet-action-color !default;
-$puppet-dropdown-item-disabled-color        : $puppet-bg-primary !default;
+$puppet-dropdown-item-disabled-color        : $puppet-bg-light !default;
 $puppet-dropdown-item-disabled-bg           : $puppet-gray-light !default;
 
 // Forms
@@ -328,7 +328,7 @@ $puppet-filter-bg                           : $puppet-gray-lighter !default;
 $puppet-filter-radius                       : $puppet-border-radius !default;
 $puppet-filter-padding                      : $puppet-mini !default;
 $puppet-filter-placeholder-color            : $puppet-font-color-subtle !default;
-$puppet-filter-input-bg                     : $puppet-bg-primary !default;
+$puppet-filter-input-bg                     : $puppet-bg-light !default;
 $puppet-filter-selected-shadow              : $puppet-selected-shadow !default;
 $puppet-filter-border-active                : $puppet-border-active !default;
 
@@ -412,8 +412,8 @@ $puppet-loading-indicator-fill              : $puppet-icon-fill !default;
 
 // List Item
 // ----------------------------------------------------------------------------
-$puppet-list-item-bg                        : $puppet-bg-primary !default;
-$puppet-list-item-bg-hover                  : $puppet-bg-primary !default;
+$puppet-list-item-bg                        : $puppet-bg-light !default;
+$puppet-list-item-bg-hover                  : $puppet-bg-light !default;
 $puppet-list-item-color                     : $puppet-font-color-base !default;
 $puppet-list-item-color-hover               : $puppet-font-color-base !default;
 $puppet-list-item-border                    : $puppet-border !default;
@@ -459,11 +459,11 @@ $puppet-menu-item-color-selected            : $puppet-brand-primary !default;
 $puppet-menu-item-bg-selected               : $puppet-action-color !default;
 $puppet-menu-item-border-selected           : $puppet-border-active-hover !default;
 
-$puppet-menu-item-color-disabled            : $puppet-bg-primary !default;
+$puppet-menu-item-color-disabled            : $puppet-bg-light !default;
 $puppet-menu-item-bg-disabled               : $puppet-gray-light !default;
 
 // Menu Titles
-$puppet-menu-header-bg                      : $puppet-bg-primary !default;
+$puppet-menu-header-bg                      : $puppet-bg-light !default;
 $puppet-menu-header-bg-dark                 : $puppet-bg-dark !default;
 $puppet-menu-header-border                  : $puppet-border !default;
 $puppet-menu-header-border-dark             : $puppet-border-dark !default;
@@ -486,7 +486,7 @@ $puppet-menu-actions-color                  : $puppet-font-color-subtle !default
 
 // Modal
 // ----------------------------------------------------------------------------
-$puppet-modal-bg                            : $puppet-bg-primary !default;
+$puppet-modal-bg                            : $puppet-bg-light !default;
 $puppet-modal-color                         : $puppet-font-color-base !default;
 $puppet-modal-border                        : 1px solid $puppet-gray-light !default;
 $puppet-modal-border-radius                 : $puppet-small !default;
@@ -512,7 +512,7 @@ $puppet-modal-actions-cta-padding           : $puppet-small 0 $puppet-small 0 !d
 
 // Panel
 // ----------------------------------------------------------------------------
-$puppet-panel-bg                            : $puppet-bg-primary !default;
+$puppet-panel-bg                            : $puppet-bg-light !default;
 $puppet-panel-bg-secondary                  : $puppet-gray-lighter !default;
 $puppet-panel-padding                       : $puppet-medium !default;
 $puppet-panel-border                        : $puppet-border !default;
@@ -528,7 +528,7 @@ $puppet-date-range-hover-border             : $puppet-datepicker-border-width so
 
 // Popover
 // ----------------------------------------------------------------------------
-$puppet-popover-bg                          : $puppet-bg-primary !default;
+$puppet-popover-bg                          : $puppet-bg-light !default;
 $puppet-popover-bg-dark                     : $puppet-bg-dark !default;
 $puppet-popover-border                      : $puppet-border !default;
 $puppet-popover-border-radius               : $puppet-border-radius !default;
@@ -551,7 +551,7 @@ $puppet-remove-background                   : $puppet-bg-subtle !default;
 
 // Slide ins
 // ----------------------------------------------------------------------------
-$puppet-slidein-bg                          : $puppet-bg-primary !default;
+$puppet-slidein-bg                          : $puppet-bg-light !default;
 $puppet-slidein-border                      : $puppet-border !default;
 $puppet-slidein-color                       : $puppet-font-color-base !default;
 $puppet-slidein-padding                     : $puppet-small !default;
@@ -601,7 +601,7 @@ $puppet-tab-color                           : $puppet-font-color-subtle !default
 $puppet-tab-color-active                    : $puppet-active-color !default;
 $puppet-tab-border                          : 2px solid $puppet-inactive-color !default;
 $puppet-tab-border-active                   : 2px solid $puppet-active-color !default;
-$puppet-tab-bg                              : $puppet-bg-primary !default;
+$puppet-tab-bg                              : $puppet-bg-light !default;
 $puppet-tab-padding                         : $puppet-small $puppet-large !default;
 $puppet-tab-width-vertical                  : 140px !default;
 $puppet-tab-panel-padding                   : $puppet-large 0 !default;
