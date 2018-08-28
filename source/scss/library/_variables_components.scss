@@ -7,13 +7,12 @@
 // Accordions
 // ----------------------------------------------------------------------------
 $puppet-accordion-bg                        : $puppet-white !default;
-$puppet-accordion-item-title-font-size      : $puppet-font-size-tiny !default;
 $puppet-accordion-item-title-color          : $puppet-font-color-medium !default;
-$puppet-accordion-item-title-hover          : $puppet-font-color-base !default;
 $puppet-accordion-item-title-bg-color       : $puppet-white !default;
 $puppet-accordion-item-title-height         : 32px;
-$puppet-accordion-item-title-padding        : 0 $puppet-medium !default; // Todo: Base on grid
 $puppet-accordion-item-title-case           : auto !default;
+$puppet-accordion-item-title-hover          : $puppet-font-color-base !default;
+$puppet-accordion-item-title-padding        : 0 $puppet-medium !default; // Todo: Base on grid
 $puppet-accordion-item-content-padding      : $puppet-medium !default;
 $puppet-accordion-item-border               : $puppet-border !default;
 $puppet-accordion-icon-color                : $puppet-icon-fill !default;
@@ -695,7 +694,7 @@ $puppet-breadcrumb-spacing                  : $puppet-medium !default;
 $puppet-grid-gutter                         : $puppet-size-base !default;
 $puppet-grid-divider-border                 : 1px solid $puppet-gray-light;
 
-// Heading 
+// Heading
 // ----------------------------------------------------------------------------
 $puppet-heading-font-family                 : $puppet-font-family;
 $puppet-heading-subtle-color                : $puppet-gray-base;
@@ -706,7 +705,6 @@ $puppet-heading-hero-font-size              : 48px !default;
 $puppet-heading-hero-line-height            : 56px !default;
 $puppet-heading-hero-font-family            : $puppet-font-family-heading !default;
 $puppet-heading-hero-font-weight            : $puppet-font-weight-heavy !default;
-
 
 
 $puppet-heading-h1-font-size                : 40px !default;
@@ -738,6 +736,11 @@ $puppet-heading-h6-font-size                : 12px !default;
 $puppet-heading-h6-line-height              : 18px !default;
 $puppet-heading-h6-font-family              : $puppet-font-family !default;
 $puppet-heading-h6-font-weight              : $puppet-font-weight-heavy !default;
+
+$puppet-heading-small-title-font-size       : 11px !default;
+$puppet-heading-small-title-line-height     : 16px !default;
+$puppet-heading-small-title-font-family     : $puppet-font-family-heading !default;
+$puppet-heading-small-title-font-weight     : $puppet-font-weight-heavy !default;
 
 
 /* stylelint-enable */

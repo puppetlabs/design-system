@@ -7,6 +7,8 @@ const propTypes = {
   as: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']),
   className: PropTypes.string,
   color: PropTypes.oneOf(['subtle', 'medium']),
+  allCaps: PropTypes.bool,
+  smallTitle: PropTypes.bool,
   hero: PropTypes.bool,
 };
 
@@ -16,9 +18,11 @@ const defaultProps = {
 };
 
 const Heading = (props) => {
-  const { children, as, className, color, hero, ...others } = props;
+  const { children, as, className, color, hero, allCaps, smallTitle, ...others } = props;
   const classNames = classnames('rc-heading', {
     'rc-heading-hero': hero,
+    'rc-heading-caps': allCaps,
+    'rc-heading-small-title': smallTitle,
     [`rc-heading-${as}`]: as && !hero ? as : false,
     [`rc-heading-${color}`]: color,
   }, className);

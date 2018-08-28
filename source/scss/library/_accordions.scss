@@ -15,7 +15,6 @@
   background-color: $puppet-accordion-item-title-bg-color;
   border-radius: $puppet-border-radius $puppet-border-radius 0 0;
   display: flex;
-  font-size: $puppet-accordion-item-title-font-size;
   text-transform: $puppet-accordion-item-title-case;
 }
 
@@ -59,7 +58,6 @@
   @extend %rc-uppercase;
   color: $puppet-accordion-header-title-color;
   flex-grow: 1;
-  font-size: $puppet-accordion-item-title-font-size;
   transition: all 0.2s;
 }
 
@@ -80,7 +78,6 @@
   @extend %rc-uppercase;
   color: $puppet-accordion-item-title-color;
   flex-grow: 1;
-  font-size: $puppet-accordion-item-title-font-size;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: all 0.2s;
