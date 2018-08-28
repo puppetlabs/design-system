@@ -58,4 +58,20 @@ describe('<Form />', () => {
       expect(wrapper.find('FormField').prop('value')).to.eql('myValue');
     });
   });
+
+  describe('form with custom labels', () => {
+    it('should allow button labels to be overriden', () => {
+      const wrapper = shallow(
+        <Form
+          submittable
+          cancellable
+          submitLabel="my submit label"
+          cancelLabel="my cancel label"
+        />,
+      );
+
+      expect(wrapper.find('Button[secondary=true]').prop('label')).to.eql('my cancel label');
+      expect(wrapper.find('Button[secondary=false]').prop('label')).to.eql('my submit label');
+    });
+  });
 });

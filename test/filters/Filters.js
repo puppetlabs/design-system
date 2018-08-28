@@ -36,4 +36,20 @@ describe('<Filters />', () => {
       expect(wrapper.find('FilterForm').length).to.eql(1);
     });
   });
+
+  describe('overriding overridable things', () => {
+    it('should be able to override labels', () => {
+      const filterStrings = {
+        addCTA: 'addCTA custom label',
+      };
+      const wrapper = shallow(
+        <Filters
+          strings={ filterStrings }
+        />);
+
+      expect(wrapper.find('Button[icon="plus"]').prop('label')).to.eql('addCTA custom label');
+      wrapper.find('Button[secondary=false]').simulate('click');
+      expect(wrapper.find('FilterForm').length).to.eql(1);
+    });
+  });
 });
