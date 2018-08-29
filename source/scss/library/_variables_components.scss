@@ -199,9 +199,8 @@ $puppet-sidebar-section-header-horizontal-padding: $puppet-medium !default;
 $puppet-sidebar-section-header-vertical-padding: $puppet-small !default;
 
 // Sidebar Subsection
-<<<<<<< HEAD
 $puppet-sidebar-subsection-title-color: $puppet-black !default;
-$puppet-sidebar-subsection-title-font: $puppet-secondary-font-family !default;
+$puppet-sidebar-subsection-title-font: $puppet-font-family !default;
 $puppet-sidebar-subsection-title-font-size: $puppet-font-size-small !default;
 $puppet-sidebar-subsection-title-line-height: $puppet-font-size-medium !default;
 $puppet-sidebar-section-view-more-font-size: $puppet-font-size-base !default;
@@ -211,19 +210,6 @@ $puppet-sidebar-subsections-vertical-padding: 12px !important;
 $puppet-sidebar-subsection-vertical-padding: $puppet-medium !important;
 $puppet-sidebar-subsection-header-padding-top: $puppet-medium !default;
 $puppet-sidebar-subsection-header-padding-bottom: $puppet-size-base !default;
-=======
-$puppet-sidebar-subsection-title-color                : $puppet-black !default;
-$puppet-sidebar-subsection-title-font                 : $puppet-font-family !default;
-$puppet-sidebar-subsection-title-font-size            : $puppet-font-size-small !default;
-$puppet-sidebar-subsection-title-line-height          : $puppet-font-size-medium !default;
-$puppet-sidebar-section-view-more-font-size           : $puppet-font-size-base !default;
-$puppet-sidebar-section-view-more-line-height         : $puppet-font-size-large !default;
-$puppet-sidebar-section-view-more-vertical-padding    : 6px !default;
-$puppet-sidebar-subsections-vertical-padding          : 12px !important;
-$puppet-sidebar-subsection-vertical-padding           : $puppet-medium !important;
-$puppet-sidebar-subsection-header-padding-top         : $puppet-medium !default;
-$puppet-sidebar-subsection-header-padding-bottom      : $puppet-size-base !default;
->>>>>>> Improvements to the heading component to match the designs
 
 // Sidebar Subsection Item
 $puppet-sidebar-subsection-item-color: $puppet-gray-dark !default;
