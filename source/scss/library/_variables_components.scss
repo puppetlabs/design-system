@@ -384,16 +384,10 @@ $puppet-checkbox-disabled-border-color      : $puppet-border-color !default;
 // ----------------------------------------------------------------------------
 $puppet-select-color                        : $puppet-input-color !default;
 $puppet-select-border-radius                : $puppet-input-border-radius !default;
-$puppet-select-selected-shadow              : $puppet-selected-shadow !default;
 $puppet-select-menu-bg                      : $puppet-white !default;
 
-$puppet-select-item-border                  : $puppet-border-active !default;
-$puppet-select-item-bg                      : $puppet-action-color !default;
 $puppet-select-item-highlighted-bg          : $puppet-action-hover !default;
-$puppet-select-item-highlighted-border      : $puppet-border-active-hover !default;
-$puppet-select-item-color                   : $puppet-white !default;
-$puppet-select-item-border-radius           : $puppet-circle-radius !default;
-$puppet-select-item-icon-color              : $puppet-white !default;
+
 
 // Tiny Inputs to be deprecated - not used
 $puppet-select-tiny-item-margin             : $puppet-mini 0 $puppet-mini $puppet-mini !default;
@@ -637,6 +631,23 @@ $puppet-tag-shadow-selected                 : $puppet-selected-shadow !default;
 $puppet-tag-bg-bold                         : #dfe4e8 !default;
 $puppet-tag-color-bold                      : #40484d !default;
 
+$puppet-tag-removable-bg                    : $puppet-action-color !default;
+$puppet-tag-removable-bg-hover              : $puppet-action-hover !default;
+$puppet-tag-removable-bg-highlighted        : $puppet-action-hover !default;
+
+$puppet-tag-removable-border                : 1px solid transparent !default;
+$puppet-tag-removable-border-hover          : 1px solid transparent !default;
+$puppet-tag-removable-border-highlighted    : 1px solid $puppet-action-color !default;
+
+$puppet-tag-removable-icon                  : transparentize($puppet-white, 0.2) !default;
+$puppet-tag-removable-icon-hover            : $puppet-white !default;
+$puppet-tag-removable-icon-highlighted      : $puppet-white !default;
+
+$puppet-tag-removable-color                 : $puppet-white !default;
+$puppet-tag-removable-color-hover           : $puppet-white !default;
+$puppet-tag-removable-color-highlighted     : $puppet-white !default;
+
+
 $puppet-tag-icon-spacing                    : $puppet-tiny !default;
 $puppet-tag-icon-size                       : $puppet-small !default;
 $puppet-tag-icon-fill                       : $puppet-n400 !default;
@@ -645,6 +656,8 @@ $puppet-tag-tiny-font-size                  : $puppet-font-size-tiny !default;
 $puppet-tag-tiny-height                     : $puppet-medium !default; // Todo: Base on grid
 $puppet-tag-tiny-line-height                : $puppet-tag-tiny-height !default;
 $puppet-tag-tiny-padding                    : 0 $puppet-tiny !default;
+
+
 
 // Toggle
 // ----------------------------------------------------------------------------

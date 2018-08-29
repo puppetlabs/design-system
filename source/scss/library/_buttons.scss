@@ -76,6 +76,10 @@
   position: relative;
   white-space: nowrap;
 
+  &:hover {
+    text-decoration: none !important;
+  }
+
   @include button-colors(
     $puppet-button-bg,
     $puppet-button-bg-hover,
