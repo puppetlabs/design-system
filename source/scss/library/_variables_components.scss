@@ -440,12 +440,17 @@ $puppet-menu-item-border-active-dark        : $puppet-border-active-hover-dark !
 $puppet-menu-item-font-size                 : $puppet-font-size-small !default;
 $puppet-menu-item-font-weight               : $puppet-font-weight-normal !default;
 $puppet-menu-item-line-height               : $puppet-medium !default;
-$puppet-menu-item-height                    : $puppet-size-base * 3 !default;
+$puppet-menu-item-height                    : $puppet-huge !default;
 $puppet-menu-item-color                     : $puppet-font-color-base !default;
 $puppet-menu-item-color-dark                : $puppet-white !default;
 $puppet-menu-item-icon-color                : $puppet-icon-fill !default;
 $puppet-menu-item-bg                        : transparent !default;
+
+// Padding is used for the internal padding of the anchors
 $puppet-menu-item-padding                   : $puppet-small !default;
+
+// Spacing is used for the padding of the container
+$puppet-menu-item-spacing                   : $puppet-tiny !default;
 
 // Menu States
 $puppet-menu-item-color-hover               : $puppet-action-color !default;

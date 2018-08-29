@@ -10,7 +10,7 @@
   .rc-menu-item {
     border-left: $border;
     border-right: $border;
-    padding: $puppet-menu-item-padding;
+    padding: $puppet-menu-item-spacing/2 $puppet-menu-item-spacing;
     padding-bottom: 0;
   }
 
@@ -18,13 +18,14 @@
     border-top: $border;
     border-top-left-radius: $puppet-border-radius;
     border-top-right-radius: $puppet-border-radius;
+    padding-top: $puppet-menu-item-spacing;
   }
 
   .rc-menu-item:last-of-type {
     border-bottom: $border;
     border-bottom-left-radius: $puppet-border-radius;
     border-bottom-right-radius: $puppet-border-radius;
-    padding-bottom: $puppet-menu-item-padding;
+    padding-bottom: $puppet-menu-item-spacing;
   }
 
   .rc-menu-item:hover a,
