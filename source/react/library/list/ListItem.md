@@ -13,7 +13,67 @@ Selected, selectable, editable, and deletable `ListItem`:
     onEdit={ () => { console.log('I was edited!'); } }
     onClick={ () => { console.log('I was clicked!'); } }
   >
-    I'm a happy list item!
+    I'm already selected
+  </ListItem>
+  <ListItem
+    onRemove={ () => { console.log('I was removed!'); } }
+    onEdit={ () => { console.log('I was edited!'); } }
+    onClick={ () => { console.log('I was clicked!'); } }
+  >
+    I'm not selected by default
+  </ListItem>
+  <ListItem
+    onRemove={ () => { console.log('I was removed!'); } }
+    onEdit={ () => { console.log('I was edited!'); } }
+    onClick={ () => { console.log('I was clicked!'); } }
+  >
+    Nor am I
+  </ListItem>
+  <ListItem
+    onRemove={ () => { console.log('I was removed!'); } }
+    onEdit={ () => { console.log('I was edited!'); } }
+    onClick={ () => { console.log('I was clicked!'); } }
+  >
+    Me neither
+  </ListItem>
+</List>
+```
+
+Medium sized selectable ListItem:
+```
+<List>
+  <ListItem
+    selected
+    size="medium"
+    onRemove={ () => { console.log('I was removed!'); } }
+    onEdit={ () => { console.log('I was edited!'); } }
+    onClick={ () => { console.log('I was clicked!'); } }
+  >
+    I'm already selected
+  </ListItem>
+  <ListItem
+    size="medium"
+    onRemove={ () => { console.log('I was removed!'); } }
+    onEdit={ () => { console.log('I was edited!'); } }
+    onClick={ () => { console.log('I was clicked!'); } }
+  >
+    I'm not selected by default
+  </ListItem>
+  <ListItem
+    size="medium"
+    onRemove={ () => { console.log('I was removed!'); } }
+    onEdit={ () => { console.log('I was edited!'); } }
+    onClick={ () => { console.log('I was clicked!'); } }
+  >
+    Nor am I
+  </ListItem>
+  <ListItem
+    size="medium"
+    onRemove={ () => { console.log('I was removed!'); } }
+    onEdit={ () => { console.log('I was edited!'); } }
+    onClick={ () => { console.log('I was clicked!'); } }
+  >
+    Me neither
   </ListItem>
 </List>
 ```

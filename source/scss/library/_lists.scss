@@ -94,7 +94,7 @@
 
 .rc-list-item-selected {
   .rc-list-item-link {
-    background: rgba($puppet-action-color, 0.05);
+    background: $puppet-list-item-selected-bg;
     border-color: $puppet-list-item-border-selected;
     // box-shadow: $puppet-list-item-shadow-selected;
   }

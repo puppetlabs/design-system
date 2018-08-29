@@ -413,10 +413,11 @@ $puppet-list-item-border-selected           : $puppet-action-hover !default;
 $puppet-list-item-shadow-selected           : $puppet-selected-shadow !default;
 $puppet-list-item-border-radius             : 0 !default;
 $puppet-list-item-font-size                 : $puppet-font-size-base !default;
-$puppet-list-item-padding                   : 0 0 $puppet-small !default;
+$puppet-list-item-padding                   : $puppet-small !default;
 $puppet-list-item-lineheight                : $puppet-line-height-default !default;
 $puppet-list-item-height                    : $puppet-size-base * 4 !default;
-$puppet-list-item-margin                    : 0 0 $puppet-small !default;
+$puppet-list-item-margin                    : 0 !default;
+$puppet-list-item-selected-bg               : $puppet-bg-subtle !default;
 
 $puppet-list-item-small-font-size           : $puppet-font-size-small !default;
 $puppet-list-item-small-lineheight          : $puppet-medium !default;
