@@ -1,3 +1,8 @@
+# 3.3.0
+
+* Adding props to the filter component to allow custom operators and to improve i18n capabilities
+* Update linting dependencies and adding prettier
+
 # 3.2.1
 
 * Remove stray module.exports for babel 7 compatibility
