@@ -277,7 +277,7 @@ $puppet-text-label-weight                   : $puppet-font-weight-medium !defaul
 
 // Borders
 // ----------------------------------------------------------------------------
-$puppet-border-color                        : $puppet-n400 !default;
+$puppet-border-color                        : $puppet-n500 !default;
 $puppet-border-hover-color                  : $puppet-n600 !default;
 $puppet-border-size                         : 1px !default;
 $puppet-border-style                        : solid !default;
@@ -298,7 +298,7 @@ $puppet-border-active-hover-dark            : $puppet-border-size $puppet-border
 $puppet-border-active-dark                  : $puppet-border-size $puppet-border-style $puppet-action-color !default;
 
 // HR
-$puppet-hr-border                           : $puppet-border !default;
+$puppet-hr-border                           : $puppet-n400 !default;
 $puppet-hr-margin                           : $puppet-medium !default;
 
 // Blockquote

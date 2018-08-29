@@ -355,8 +355,7 @@ $puppet-input-height                        : $puppet-huge !default;
 $puppet-input-padding                       : $puppet-tiny $puppet-small !default;
 $puppet-input-placeholder-color             : $puppet-font-color-medium !default;
 
-$puppet-input-hover-color                   : $puppet-brand-primary !default;
-$puppet-input-hover-border                  : 1px solid $puppet-brand-primary !default;
+$puppet-input-hover-border                  : $puppet-border-hover !default;
 
 $puppet-input-disabled-bg                   : $puppet-bg-subtle !default;
 $puppet-input-disabled-color                : $puppet-font-color-subtle !default;

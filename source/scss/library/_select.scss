@@ -58,7 +58,7 @@
   // transition: all 0.2s;
 
   &:hover {
-    border-color: $puppet-action-color;
+    border: $puppet-input-hover-border;
   }
 
   &:hover .rc-select-action .rc-icon-chevron-down {
@@ -82,7 +82,7 @@
 
   &:hover,
   &:focus {
-    border: 0;
+    border: 0 !important;
     box-shadow: none;
   }
 }

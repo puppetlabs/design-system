@@ -1,7 +1,10 @@
 %focused-input {
   background: $puppet-input-focus-bg;
   border: $puppet-border-active;
-  box-shadow: $puppet-selected-shadow;
+  // box-shadow: $puppet-selected-shadow;
+  &:hover {
+    border: $puppet-border-active;
+  }
 }
 
 %disabled-input {
@@ -69,6 +72,10 @@
   }
 }
 
+.rc-form-field-error .rc-input {
+  border: $puppet-input-border-error;
+}
+
 .rc-input::-ms-clear {
   display: none;
 }
@@ -99,7 +106,6 @@
 
 .rc-input-simple,
 .rc-input-simple:hover {
-  background: $puppet-input-simple-bg;
   border-bottom-width: 1px;
   border-left: 0;
   border-radius: 0;
@@ -108,12 +114,11 @@
 }
 
 .rc-input-simple:focus {
-  background: $puppet-input-simple-focus-bg;
   border-bottom-width: 1px;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  box-shadow: none;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-top: 0 !important;
+  box-shadow: none !important;
 }
 
 .rc-input-hidden {
