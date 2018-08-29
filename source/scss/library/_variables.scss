@@ -92,19 +92,16 @@ $puppet-t50                                 : #f5fffe !default;
 // ----------------------------------------------------------------------------
 
 // Stop Light Colors
-// =================
 $puppet-positive-1                          : #0da371 !default;
 $puppet-warning-1                           : #ffd503 !default;
 $puppet-negative-1                          : #e62600 !default;
 
 // Primary Color
-// =============
 $puppet-brand-primary                       : $puppet-amber !default;
 $puppet-brand-secondary                     : $puppet-teal !default;
 
 
 // Backgrounds
-// ===========
 $puppet-bg-light                            : $puppet-white !default;
 $puppet-bg-subtle                           : $puppet-n50 !default;
 $puppet-bg-medium                           : $puppet-n100 !default;
@@ -117,8 +114,9 @@ $puppet-primary-chart-color                 : $puppet-brand-primary !default;
 // Action Colors
 // Colors used for primary buttons and other action elements
 // Text is typically on a bg color - by default it is white text & icons on a blue bg
-$puppet-action-color                        : #0d6ad7 !default;
-$puppet-action-hover                        : #328af2 !default;
+$puppet-action-color                        : $puppet-b500 !default;
+$puppet-action-hover                        : $puppet-b400 !default;
+$puppet-action-active                       : $puppet-b600 !default;
 $puppet-action-border                       : $puppet-action-color !default;
 $puppet-action-border-hover                 : $puppet-action-hover !default;
 $puppet-action-text                         : $puppet-white !default;
@@ -139,6 +137,7 @@ $puppet-action-icon-hover-alt               : $puppet-n900 !default;
 
 // Disabled Colors
 $puppet-disabled-opacity                    : 0.64 !default;
+// TODO remove disabled colors - should be based on opacity only
 $puppet-disabled-border                     : transparent !default;
 $puppet-disabled-border-hover               : transparent !default;
 $puppet-disabled-text                       : $puppet-n400 !default;
@@ -201,6 +200,7 @@ $puppet-icon-action-hover                   : $puppet-action-hover !default;
 // ----------------------------------------------------------------------------
 $puppet-font-family                         : 'Opens Sans', sans-serif !default;
 $puppet-font-family-heading                 : 'Calibre', sans-serif !default;
+$puppet-font-family-button                  : 'Calibre', sans-serif !default;
 $puppet-font-family-code                    : 'Consolas', monospace !default;
 
 $puppet-font-size-giant                     : 42px !default;

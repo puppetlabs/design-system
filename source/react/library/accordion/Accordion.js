@@ -75,6 +75,7 @@ class Accordion extends React.Component {
 
   renderHeader() {
     let icon;
+    const title = this.props.title;
 
     if (this.props.icon) {
       icon = (
@@ -88,7 +89,7 @@ class Accordion extends React.Component {
       <div className="rc-accordion-header" key="header">
         <div className="rc-accordion-header-main">
           { icon }
-          <Heading as="h6" color="medium" allCaps>{ this.props.title }</Heading>
+          <Heading as="h6" color="subtle" smallTitle>{ title }</Heading>
         </div>
         <span className="rc-accordion-header-action">
           <a href="" onClick={ this.onClose } >

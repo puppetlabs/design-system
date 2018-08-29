@@ -7,19 +7,18 @@
 // Accordions
 // ----------------------------------------------------------------------------
 $puppet-accordion-bg                        : $puppet-white !default;
-$puppet-accordion-item-title-color          : $puppet-font-color-medium !default;
 $puppet-accordion-item-title-bg-color       : $puppet-white !default;
-$puppet-accordion-item-title-height         : 32px;
-$puppet-accordion-item-title-case           : auto !default;
+$puppet-accordion-item-title-color          : $puppet-font-color-medium !default;
 $puppet-accordion-item-title-hover          : $puppet-font-color-base !default;
+$puppet-accordion-item-title-height         : $puppet-huge;
 $puppet-accordion-item-title-padding        : 0 $puppet-medium !default; // Todo: Base on grid
-$puppet-accordion-item-content-padding      : $puppet-medium !default;
 $puppet-accordion-item-border               : $puppet-border !default;
 $puppet-accordion-icon-color                : $puppet-icon-fill !default;
 $puppet-accordion-icon-color-hover          : $puppet-icon-fill-hover !default;
+$puppet-accordion-item-content-padding      : $puppet-medium !default;
 
 $puppet-accordion-header-title-color        : $puppet-font-color-medium !default;
-$puppet-accordion-header-height             : 32px;
+$puppet-accordion-header-height             : $puppet-huge;
 $puppet-accordion-header-bg                 : $puppet-white !default;
 
 $puppet-accordion-animation-speed           : $puppet-animation-speed-base !default;
@@ -31,17 +30,17 @@ $puppet-blank-slate-font-color              : $puppet-font-color-subtle !default
 $puppet-blank-slate-font-weight             : normal !default;
 $puppet-blank-slate-title-font-size         : $puppet-font-size-huge !default;
 $puppet-blank-slate-lead-font-size          : $puppet-font-size-medium !default;
-$puppet-blank-slate-lead-color              : $puppet-gray-darker !default;
+$puppet-blank-slate-lead-color              : $puppet-n900 !default;
 $puppet-blank-slate-content-font-size       : $puppet-font-size-base !default;
-$puppet-blank-slate-content-color           : $puppet-gray-darker !default;
+$puppet-blank-slate-content-color           : $puppet-n900 !default;
 $puppet-blank-slate-note-font-size          : $puppet-font-size-small !default;
 $puppet-blank-slate-note-color              : $puppet-n600 !default;
 $puppet-blank-slate-icon-color              : $puppet-action-color !default;
 $puppet-blank-slate-bg                      : $puppet-bg-light !default;
 $puppet-blank-slate-shadow                  : $puppet-outer-shadow-huge !default;
 $puppet-blank-slate-radius                  : $puppet-circle-radius !default;
-$puppet-blank-slate-margin-base             : 16px;
-$puppet-blank-slate-margin-medium           : 24px;
+$puppet-blank-slate-margin-base             : $puppet-medium;
+$puppet-blank-slate-margin-medium           : $puppet-large;
 $puppet-blank-slate-size                    : 100px;
 $puppet-blank-slate-image-size              : 200px;
 $puppet-blank-slate-max-width               : 600px;
@@ -52,7 +51,7 @@ $puppet-blank-slate-max-width               : 600px;
 $puppet-button-border-radius                : $puppet-border-radius !default;
 $puppet-floating-action-button-height       : $puppet-giant !default;
 $puppet-button-badge-size                   : $puppet-small !default;
-$puppet-button-font-family                  : 'Calibre', sans-serif !default;
+$puppet-button-font-family                  : $puppet-font-family-button !default;
 $puppet-button-font-weight                  : $puppet-font-weight-heavy !default;
 $puppet-button-text-case                    : uppercase !default;
 
@@ -102,9 +101,9 @@ $puppet-button-secondary-border-color-hover : $puppet-action-border-hover-alt !d
 $puppet-button-clear-bg                     : transparent !default;
 $puppet-button-clear-bg-hover               : transparent !default;
 $puppet-button-clear-color                  : $puppet-n600 !default;
-$puppet-button-clear-color-hover            : $puppet-gray-dark !default;
+$puppet-button-clear-color-hover            : $puppet-n700 !default;
 $puppet-button-clear-icon-color             : $puppet-n600 !default;
-$puppet-button-clear-icon-color-hover       : $puppet-gray-dark !default;
+$puppet-button-clear-icon-color-hover       : $puppet-n700 !default;
 $puppet-button-clear-border-color           : transparent !default;
 $puppet-button-clear-border-color-hover     : transparent !default;
 
@@ -120,7 +119,7 @@ $puppet-button-simple-border-color-hover     : transparent !default;
 
 $puppet-button-simple-secondary-bg           : transparent !default;
 $puppet-button-simple-secondary-bg-hover     : transparent !default;
-$puppet-button-simple-secondary-color        : $puppet-gray-dark !default;
+$puppet-button-simple-secondary-color        : $puppet-n700 !default;
 $puppet-button-simple-secondary-color-hover  : $puppet-action-color !default;
 $puppet-button-simple-secondary-icon-color   : $puppet-icon-fill !default;
 $puppet-button-simple-secondary-icon-color-hover: $puppet-action-color !default;
@@ -214,12 +213,12 @@ $puppet-sidebar-subsection-header-padding-top         : $puppet-medium !default;
 $puppet-sidebar-subsection-header-padding-bottom      : $puppet-size-base !default;
 
 // Sidebar Subsection Item
-$puppet-sidebar-subsection-item-color                 : $puppet-gray-dark !default;
-$puppet-sidebar-subsection-item-border                : 2px solid $puppet-gray-light !default;
+$puppet-sidebar-subsection-item-color                 : $puppet-n700 !default;
+$puppet-sidebar-subsection-item-border                : 2px solid $puppet-n400 !default;
 $puppet-sidebar-subsection-item-border-active         : 2px solid $puppet-action-color !default;
 $puppet-sidebar-subsection-item-font-size             : $puppet-font-size-small !default;
 $puppet-sidebar-subsection-item-action-color          : $puppet-black !default;
-$puppet-sidebar-subsection-item-action-bg             : rgba($puppet-gray-light, 0.5) !default;
+$puppet-sidebar-subsection-item-action-bg             : rgba($puppet-n400, 0.5) !default;
 $puppet-sidebar-subsection-item-border-radius         : $puppet-border-radius !default;
 $puppet-sidebar-subsection-item-header-padding        : $puppet-medium !default;
 $puppet-sidebar-subsection-item-horizontal-padding    : $puppet-size-base !default;
@@ -297,7 +296,7 @@ $puppet-dropdown-item-hover-bg              : $puppet-action-hover !default;
 $puppet-dropdown-item-selected-color        : $puppet-bg-light !default;
 $puppet-dropdown-item-selected-bg           : $puppet-action-color !default;
 $puppet-dropdown-item-disabled-color        : $puppet-bg-light !default;
-$puppet-dropdown-item-disabled-bg           : $puppet-gray-light !default;
+$puppet-dropdown-item-disabled-bg           : $puppet-n400 !default;
 
 // Forms
 // ----------------------------------------------------------------------------
@@ -311,8 +310,8 @@ $puppet-form-description-font-size          : $puppet-font-size-tiny !default;
 
 $puppet-form-section-legend-font-size       : $puppet-font-size-base !default;
 $puppet-form-section-legend-font-weight     : $puppet-font-weight-heavy !default;
-$puppet-form-section-legend-color           : $puppet-gray-darker !default;
-$puppet-form-section-flyout-icon-color      : $puppet-gray-light !default;
+$puppet-form-section-legend-color           : $puppet-n900 !default;
+$puppet-form-section-flyout-icon-color      : $puppet-n400 !default;
 
 $puppet-form-field-margin                   : $puppet-small !default;
 $puppet-form-vertical-padding               : $puppet-tiny !default;
@@ -321,9 +320,9 @@ $puppet-form-tiny-label-font-size           : $puppet-font-size-tiny * 0.9 !defa
 
 // Filters
 // ----------------------------------------------------------------------------
-$puppet-filter-border-color                 : $puppet-gray-lighter !default;
+$puppet-filter-border-color                 : $puppet-n50 !default;
 $puppet-filter-border                       : $puppet-border-size $puppet-border-style $puppet-filter-border-color !default;
-$puppet-filter-bg                           : $puppet-gray-lighter !default;
+$puppet-filter-bg                           : $puppet-n50 !default;
 $puppet-filter-radius                       : $puppet-border-radius !default;
 $puppet-filter-padding                      : $puppet-mini !default;
 $puppet-filter-placeholder-color            : $puppet-font-color-subtle !default;
@@ -334,7 +333,7 @@ $puppet-filter-border-active                : $puppet-border-active !default;
 $puppet-filter-select-padding               : $puppet-tiny !default;
 $puppet-filter-select-height                : 10px !default; // Todo: Base on grid
 
-$puppet-filter-split-bg                     : $puppet-gray-light !default;
+$puppet-filter-split-bg                     : $puppet-n400 !default;
 $puppet-filter-split-menu-bg                : darken($puppet-filter-split-bg, 10%) !default;
 $puppet-filter-split-menu-bg-hover          : darken($puppet-filter-split-menu-bg, 10%) !default;
 
@@ -451,15 +450,15 @@ $puppet-menu-item-padding                   : $puppet-small !default;
 // Menu States
 $puppet-menu-item-color-hover               : $puppet-action-color !default;
 $puppet-menu-item-color-hover-dark          : $puppet-white !default;
-$puppet-menu-item-bg-hover                  : $puppet-gray-lighter !default;
-$puppet-menu-item-bg-hover-dark             : $puppet-gray-dark !default;
+$puppet-menu-item-bg-hover                  : $puppet-n50 !default;
+$puppet-menu-item-bg-hover-dark             : $puppet-n700 !default;
 
 $puppet-menu-item-color-selected            : $puppet-brand-primary !default;
 $puppet-menu-item-bg-selected               : $puppet-action-color !default;
 $puppet-menu-item-border-selected           : $puppet-border-active-hover !default;
 
 $puppet-menu-item-color-disabled            : $puppet-bg-light !default;
-$puppet-menu-item-bg-disabled               : $puppet-gray-light !default;
+$puppet-menu-item-bg-disabled               : $puppet-n400 !default;
 
 // Menu Titles
 $puppet-menu-header-bg                      : $puppet-bg-light !default;
@@ -487,7 +486,7 @@ $puppet-menu-actions-color                  : $puppet-font-color-subtle !default
 // ----------------------------------------------------------------------------
 $puppet-modal-bg                            : $puppet-bg-light !default;
 $puppet-modal-color                         : $puppet-font-color-base !default;
-$puppet-modal-border                        : 1px solid $puppet-gray-light !default;
+$puppet-modal-border                        : 1px solid $puppet-n400 !default;
 $puppet-modal-border-radius                 : $puppet-small !default;
 $puppet-modal-overlay-bg                    : transparent !default;
 $puppet-modal-elevation                     : 24 !default;
@@ -512,7 +511,7 @@ $puppet-modal-actions-cta-padding           : $puppet-small 0 $puppet-small 0 !d
 // Panel
 // ----------------------------------------------------------------------------
 $puppet-panel-bg                            : $puppet-bg-light !default;
-$puppet-panel-bg-secondary                  : $puppet-gray-lighter !default;
+$puppet-panel-bg-secondary                  : $puppet-n50 !default;
 $puppet-panel-padding                       : $puppet-medium !default;
 $puppet-panel-border                        : $puppet-border !default;
 $puppet-panel-border-radius                 : $puppet-border-radius !default;
@@ -531,7 +530,7 @@ $puppet-popover-bg                          : $puppet-bg-light !default;
 $puppet-popover-bg-dark                     : $puppet-bg-dark !default;
 $puppet-popover-border                      : $puppet-border !default;
 $puppet-popover-border-radius               : $puppet-border-radius !default;
-$puppet-popover-close-color                 : $puppet-gray-light !default;
+$puppet-popover-close-color                 : $puppet-n400 !default;
 $puppet-popover-shadow                      : $puppet-outer-shadow-large !default;
 $puppet-popover-padding                     : $puppet-medium !default;
 $puppet-popover-small-width                 : 260px !default;
@@ -609,9 +608,9 @@ $puppet-tab-panel-padding-vertical          : 0 $puppet-large !default;
 // Tables
 // ----------------------------------------------------------------------------
 $puppet-table-font-size                     : $puppet-font-size-base !default;
-$puppet-table-border                        : 1px solid $puppet-gray-light !default;
+$puppet-table-border                        : 1px solid $puppet-n400 !default;
 $puppet-table-shadow                        : $puppet-outer-shadow !default;
-$puppet-table-header-bg                     : $puppet-gray-lighter !default;
+$puppet-table-header-bg                     : $puppet-n50 !default;
 $puppet-table-header-color                  : $puppet-n600 !default;
 $puppet-table-border-radius                 : $puppet-border-radius !default;
 
@@ -635,7 +634,7 @@ $puppet-tag-color-bold                      : #40484d !default;
 
 $puppet-tag-icon-spacing                    : $puppet-tiny !default;
 $puppet-tag-icon-size                       : $puppet-small !default;
-$puppet-tag-icon-fill                       : $puppet-gray-light !default;
+$puppet-tag-icon-fill                       : $puppet-n400 !default;
 
 $puppet-tag-tiny-font-size                  : $puppet-font-size-tiny !default;
 $puppet-tag-tiny-height                     : $puppet-medium !default; // Todo: Base on grid
@@ -651,7 +650,7 @@ $puppet-toggle-off-color                    : $puppet-font-color-base !default;
 // Tooltip
 // ----------------------------------------------------------------------------
 $puppet-tooltip-hint-bg                     : rgba($puppet-black, 0.9) !default;
-$puppet-tooltip-hint-color                  : $puppet-gray-light !default;
+$puppet-tooltip-hint-color                  : $puppet-n400 !default;
 $puppet-tooltip-hint-padding                : $puppet-tiny $puppet-small !default;
 $puppet-tooltip-hint-radius                 : $puppet-border-radius !default;
 $puppet-tooltip-hint-font-size              : $puppet-font-size-small !default;
@@ -662,7 +661,7 @@ $puppet-tooltip-hint-close-bg               : $puppet-black !default;
 
 // Slider
 // ----------------------------------------------------------------------------
-$puppet-slider-bg                           : $puppet-gray-light !default;
+$puppet-slider-bg                           : $puppet-n400 !default;
 $puppet-slider-bg-active                    : $puppet-brand-primary !default;
 $puppet-slider-bar-height                   : $puppet-tiny !default;
 $puppet-slider-handle-size                  : 10px !default;
@@ -671,7 +670,7 @@ $puppet-slider-bar-position                 : ($puppet-slider-handle-size - $pup
 // Header
 $puppet-header-height                       : 72px !default;
 $puppet-header-bg                           : $puppet-black !default;
-$puppet-header-menu-bg                      : $puppet-gray-darker !default;
+$puppet-header-menu-bg                      : $puppet-n900 !default;
 $puppet-header-color                        : $puppet-white !default;
 $puppet-header-padding                      : 0 $puppet-large !default;
 $puppet-header-menu-item-button-bg-hover    : lighten($puppet-header-menu-bg, 10%) !default;
@@ -680,10 +679,10 @@ $puppet-header-menu-item-button-bg-hover    : lighten($puppet-header-menu-bg, 10
 $puppet-pagenav-height                       : 64px !default;
 $puppet-pagenav-section-padding              : 0 12px !default;
 $puppet-pagenav-action-margin                : 0 0 0 $puppet-size-base !default;
-$puppet-pagenav-color                        : $puppet-gray-dark !default;
+$puppet-pagenav-color                        : $puppet-n700 !default;
 $puppet-pagenav-font-weight                  : $puppet-font-weight-heavy !default;
 $puppet-pagenav-font-size                    : $puppet-font-size-small !default;
-$puppet-pagenav-action-color                 : $puppet-gray-darker !default;
+$puppet-pagenav-action-color                 : $puppet-n900 !default;
 
 // Breadcrumb
 // ----------------------------------------------------------------------------
@@ -691,14 +690,15 @@ $puppet-breadcrumb-spacing                  : $puppet-medium !default;
 
 // Grid
 $puppet-grid-gutter                         : $puppet-size-base !default;
-$puppet-grid-divider-border                 : 1px solid $puppet-gray-light;
+$puppet-grid-divider-border                 : 1px solid $puppet-n400;;
 
 // Heading
 // ----------------------------------------------------------------------------
 $puppet-heading-font-family                 : $puppet-font-family;
-$puppet-heading-subtle-color                : $puppet-gray-base;
-$puppet-heading-medium-color                : $puppet-gray-dark;
-$puppet-heading-color                       : $puppet-gray-darker !default;
+
+$puppet-heading-color                       : $puppet-font-color-base !default;
+$puppet-heading-medium-color                : $puppet-font-color-medium !default;
+$puppet-heading-subtle-color                : $puppet-font-color-subtle !default;
 
 $puppet-heading-hero-font-size              : 48px !default;
 $puppet-heading-hero-line-height            : 56px !default;
