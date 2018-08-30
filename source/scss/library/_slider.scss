@@ -5,7 +5,7 @@
 
 .rc-slider-bar,
 %rc-slider-bar {
-  background: $puppet-slider-bg;
+  background: $puppet-slider-bar;
   border-radius: $puppet-slider-bar-height;
   display: block;
   height: $puppet-slider-bar-height;
@@ -17,13 +17,13 @@
 
 .rc-slider-bar-active {
   @extend %rc-slider-bar;
-  background: $puppet-slider-bg-active;
+  background: $puppet-slider-bar-active;
   width: 0;
 }
 
 .rc-slider-handle {
   background: $puppet-white;
-  border: 3px solid $puppet-brand-primary;
+  border: $puppet-slider-handle-border solid;
   border-radius: $puppet-slider-handle-size;
   cursor: move; /* fallback if grab cursor is unsupported */
   cursor: grab;
@@ -34,9 +34,8 @@
   position: absolute;
   top: 0;
   width: $puppet-slider-handle-size;
-}
 
-.rc-slider-handle:hover,
-.rc-slider-handle:focus {
-  transform: scale(1.4);
+  @include modifiers($puppet-slider-handle, 'border-color', $prefix: ':');
+  @include icon-scale-hover($scale:1.5);
+
 }

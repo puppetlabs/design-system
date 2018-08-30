@@ -703,11 +703,18 @@ $puppet-tooltip-hint-close-bg               : $puppet-black !default;
 
 // Slider
 // ----------------------------------------------------------------------------
-$puppet-slider-bg                           : $puppet-n400 !default;
-$puppet-slider-bg-active                    : $puppet-brand-primary !default;
+$puppet-slider-bar                          : $puppet-n400 !default;
+$puppet-slider-bar-active                   : $puppet-b500 !default;
 $puppet-slider-bar-height                   : $puppet-tiny !default;
 $puppet-slider-handle-size                  : 10px !default;
+$puppet-slider-handle-border                : $puppet-tiny !default;
 $puppet-slider-bar-position                 : ($puppet-slider-handle-size - $puppet-slider-bar-height)/2 !default;
+$puppet-slider-handle: (
+  base: $puppet-action-color,
+  hover: $puppet-action-hover,
+  active: $puppet-action-color
+);
+
 
 // Header
 $puppet-header-height                       : 72px !default;

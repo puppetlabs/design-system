@@ -82,6 +82,9 @@
   &:hover {
     transform: scale($scale);
   }
+  &:focus {
+    transform: scale($scale);
+  }
 }
 
 @mixin focus-circle($color: $puppet-black, $opacity: 0.12) {
@@ -112,4 +115,17 @@
   }
 }
 
-
+// Great mixing for working with maps
+// https://frontstuff.io/generate-all-your-utility-classes-with-sass-maps
+@mixin modifiers($map, $attribute, $prefix: '-', $separator: '-', $base: 'base') {
+  @each $key, $value in $map {
+    &#{if($key != $base, #{$prefix}#{$key}, '')} {
+      @if type-of($value) == 'map' {
+        @include modifiers($value, $attribute, $separator);
+      }
+      @else {
+        #{$attribute}: $value;
+      }
+    }
+  }
+}
