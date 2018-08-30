@@ -148,7 +148,7 @@ class Input extends React.Component {
       props.autoComplete = 'off';
     }
 
-    if (value !== undefined) {
+    if (value.length > 0) {
       props.value = value;
     }
 
