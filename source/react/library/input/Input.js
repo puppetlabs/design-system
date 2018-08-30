@@ -17,6 +17,7 @@ const propTypes = {
   readonly: PropTypes.bool,
   type: PropTypes.string,
   /** Value string */
+  // eslint-disable-next-line react/require-default-props
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   name: PropTypes.string,
   size: PropTypes.oneOf(['large', 'medium', 'small', 'tiny']),
@@ -53,7 +54,6 @@ const defaultProps = {
   onKeyUp: null,
   onFocus: null,
   onBlur: null,
-  value: '',
 };
 
 /**
@@ -148,7 +148,7 @@ class Input extends React.Component {
       props.autoComplete = 'off';
     }
 
-    if (value.length > 0) {
+    if (value !== undefined) {
       props.value = value;
     }
 
