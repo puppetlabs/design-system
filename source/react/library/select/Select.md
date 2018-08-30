@@ -102,6 +102,7 @@ const options = [
 ```
 
 Select with `autoOpen` enabled:
+SIG - Temporarily removed to prevent autoscroll
 
 ```
 const options = [
@@ -112,7 +113,7 @@ const options = [
 
 <Select
   onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  autoOpen
+
   options={ options }
 />
 ```

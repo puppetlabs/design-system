@@ -1,29 +1,26 @@
 Button sizes:
 ```
-<Button size="large">Large Button</Button>
-```
-```    
-<Button>Default Button</Button>
-```
-```
-<Button size="small">Small Button</Button>
-```
-```
-<Button size="tiny">Tiny Button</Button>
+<ButtonGroup>
+  <Button size="large">Large Button</Button>
+
+  <Button>Default Button</Button>
+
+  <Button size="small">Small Button</Button>
+
+  <Button size="tiny">Tiny Button</Button>
+</ButtonGroup>
 ```
 
 Button styles:
 ```
-<Button>Primary Button</Button>
-```
-```    
-<Button secondary>Secondary Button</Button>
-```
-```
-<Button error>Error Button</Button>
-```
-```
-<Button icon="plus" simple>Simple Button</Button>
+<ButtonGroup>
+  <Button>Primary Button</Button>
+  <Button secondary>Secondary Button</Button>
+  <Button transparent>Transparent Button</Button>
+  <Button icon="plus" simple>Simple Button</Button>
+  <Button icon="plus" simple secondary>Secondary Simple Button</Button>
+  <Button error>Error Button</Button>
+</ButtonGroup>
 ```
 
 

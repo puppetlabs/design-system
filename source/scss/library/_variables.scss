@@ -112,28 +112,40 @@ $puppet-bg-dark                             : $puppet-n900 !default;
 $puppet-primary-chart-color                 : $puppet-brand-primary !default;
 
 // Action Colors
-// Colors used for primary buttons and other action elements
-// Text is typically on a bg color - by default it is white text & icons on a blue bg
+// Colors used for primary buttons, links, etc.
 $puppet-action-color                        : $puppet-b500 !default;
 $puppet-action-hover                        : $puppet-b400 !default;
 $puppet-action-active                       : $puppet-b600 !default;
-$puppet-action-border                       : $puppet-action-color !default;
-$puppet-action-border-hover                 : $puppet-action-hover !default;
-$puppet-action-text                         : $puppet-white !default;
-$puppet-action-text-hover                   : $puppet-white !default;
-$puppet-action-icon                         : $puppet-white !default;
-$puppet-action-icon-hover                   : $puppet-white !default;
+
+$puppet-action-border                       : $puppet-b500 !default;
+$puppet-action-border-hover                 : $puppet-b400 !default;
+$puppet-action-border-active                : $puppet-b600 !default;
+
+$puppet-action-text                         : $puppet-b500 !default;
+$puppet-action-text-hover                   : $puppet-b400 !default;
+$puppet-action-text-active                  : $puppet-b600 !default;
+
+$puppet-action-icon                         : $puppet-b500 !default;
+$puppet-action-icon-hover                   : $puppet-b400 !default;
+$puppet-action-icon-active                  : $puppet-b600 !default;
 
 // Secondary Action Colors
 // A more subdued alternative to the primary action
-$puppet-action-color-alt                    : $puppet-n500 !default;
-$puppet-action-hover-alt                    : $puppet-n400 !default;
+$puppet-action-color-alt                    : $puppet-n200 !default;
+$puppet-action-hover-alt                    : $puppet-n100 !default;
+$puppet-action-active-alt                   : $puppet-n300 !default;
+
 $puppet-action-border-alt                   : $puppet-n600 !default;
 $puppet-action-border-hover-alt             : $puppet-n700 !default;
+$puppet-action-border-active-alt            : $puppet-n800 !default;
+
 $puppet-action-text-alt                     : $puppet-n700 !default;
-$puppet-action-text-hover-alt               : $puppet-n900 !default;
-$puppet-action-icon-alt                     : $puppet-n700 !default;
-$puppet-action-icon-hover-alt               : $puppet-n900 !default;
+$puppet-action-text-hover-alt               : $puppet-n600 !default;
+$puppet-action-text-active-alt              : $puppet-n800 !default;
+
+$puppet-action-icon-alt                     : $puppet-n600 !default;
+$puppet-action-icon-hover-alt               : $puppet-n700 !default;
+$puppet-action-icon-active-alt              : $puppet-b500 !default;
 
 // Disabled Colors
 $puppet-disabled-opacity                    : 0.64 !default;
@@ -199,8 +211,8 @@ $puppet-icon-action-hover                   : $puppet-action-hover !default;
 // Typography
 // ----------------------------------------------------------------------------
 $puppet-font-family                         : 'Opens Sans', sans-serif !default;
-$puppet-font-family-heading                 : 'Calibre', sans-serif !default;
-$puppet-font-family-button                  : 'Calibre', sans-serif !default;
+$puppet-font-family-heading                 : 'Calibre', serif !default;
+$puppet-font-family-button                  : 'Calibre', serif !default;
 $puppet-font-family-code                    : 'Consolas', monospace !default;
 
 $puppet-font-size-giant                     : 42px !default;

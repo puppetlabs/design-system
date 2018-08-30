@@ -53,10 +53,10 @@ $puppet-floating-action-button-height       : $puppet-giant !default;
 $puppet-button-badge-size                   : $puppet-small !default;
 $puppet-button-font-family                  : $puppet-font-family-button !default;
 $puppet-button-font-weight                  : $puppet-font-weight-heavy !default;
-$puppet-button-text-case                    : uppercase !default;
+$puppet-button-text-transform               : none !default;
 
 // Default Buttons
-$puppet-button-font-size                    : $puppet-font-size-small !default;
+$puppet-button-font-size                    : $puppet-font-size-base !default;
 $puppet-button-height                       : $puppet-huge !default;
 $puppet-button-padding                      : $puppet-medium !default;
 
@@ -80,51 +80,71 @@ $puppet-button-large-padding                : $puppet-button-padding * 1.5 !defa
 // Primary Buttons
 $puppet-button-bg                           : $puppet-action-color !default;
 $puppet-button-bg-hover                     : $puppet-action-hover !default;
-$puppet-button-color                        : $puppet-action-text !default;
-$puppet-button-color-hover                  : $puppet-action-text-hover !default;
-$puppet-button-icon-color                   : $puppet-action-icon !default;
-$puppet-button-icon-color-hover             : $puppet-action-icon-hover !default;
-$puppet-button-border-color                 : $puppet-action-border !default;
-$puppet-button-border-color-hover           : $puppet-action-border-hover !default;
+$puppet-button-bg-active                    : $puppet-action-active !default;
+$puppet-button-color                        : $puppet-white !default;
+$puppet-button-color-hover                  : $puppet-white !default;
+$puppet-button-color-active                  : $puppet-white !default;
+$puppet-button-icon-color                   : $puppet-white !default;
+$puppet-button-icon-color-hover             : $puppet-white !default;
+$puppet-button-icon-color-active             : $puppet-white !default;
+$puppet-button-border-color                 : transparent !default;
+$puppet-button-border-color-hover           : transparent !default;
+$puppet-button-border-color-active           : transparent !default;
 
 // Secondary Buttons
 $puppet-button-secondary-bg                 : $puppet-action-color-alt !default;
 $puppet-button-secondary-bg-hover           : $puppet-action-hover-alt !default;
+$puppet-button-secondary-bg-active          : $puppet-action-active-alt !default;
 $puppet-button-secondary-color              : $puppet-action-text-alt !default;
-$puppet-button-secondary-color-hover        : $puppet-action-text-hover-alt !default;
+$puppet-button-secondary-color-hover        : $puppet-action-text-alt !default;
+$puppet-button-secondary-color-active       : $puppet-action-text-alt !default;
 $puppet-button-secondary-icon-color         : $puppet-action-icon-alt !default;
-$puppet-button-secondary-icon-color-hover   : $puppet-action-icon-hover-alt !default;
-$puppet-button-secondary-border-color       : $puppet-action-border-alt !default;
-$puppet-button-secondary-border-color-hover : $puppet-action-border-hover-alt !default;
+$puppet-button-secondary-icon-color-hover   : $puppet-action-icon-alt !default;
+$puppet-button-secondary-icon-color-active  : $puppet-action-icon-alt !default;
+$puppet-button-secondary-border-color       : transparent !default;
+$puppet-button-secondary-border-color-hover : transparent !default;
+$puppet-button-secondary-border-color-active: transparent !default;
 
 // Transparent Buttons
 $puppet-button-clear-bg                     : transparent !default;
-$puppet-button-clear-bg-hover               : transparent !default;
-$puppet-button-clear-color                  : $puppet-n600 !default;
-$puppet-button-clear-color-hover            : $puppet-n700 !default;
+$puppet-button-clear-bg-hover               : $puppet-n100 !default;
+$puppet-button-clear-bg-active              : $puppet-n200 !default;
+$puppet-button-clear-color                  : $puppet-action-text !default;
+$puppet-button-clear-color-hover            : $puppet-action-text !default;
+$puppet-button-clear-color-active           : $puppet-action-text-active !default;
 $puppet-button-clear-icon-color             : $puppet-n600 !default;
 $puppet-button-clear-icon-color-hover       : $puppet-n700 !default;
+$puppet-button-clear-icon-color-active      : $puppet-n700 !default;
 $puppet-button-clear-border-color           : transparent !default;
 $puppet-button-clear-border-color-hover     : transparent !default;
+$puppet-button-clear-border-color-active    : transparent !default;
 
 // Simple Buttons
 $puppet-button-simple-bg                     : transparent !default;
 $puppet-button-simple-bg-hover               : transparent !default;
+$puppet-button-simple-bg-active              : transparent !default;
 $puppet-button-simple-color                  : $puppet-action-color !default;
 $puppet-button-simple-color-hover            : $puppet-action-hover !default;
+$puppet-button-simple-color-active           : $puppet-action-active !default;
 $puppet-button-simple-icon-color             : $puppet-action-color !default;
 $puppet-button-simple-icon-color-hover       : $puppet-action-hover !default;
+$puppet-button-simple-icon-color-active      : $puppet-action-active !default;
 $puppet-button-simple-border-color           : transparent !default;
 $puppet-button-simple-border-color-hover     : transparent !default;
+$puppet-button-simple-border-color-active    : transparent !default;
 
 $puppet-button-simple-secondary-bg           : transparent !default;
 $puppet-button-simple-secondary-bg-hover     : transparent !default;
+$puppet-button-simple-secondary-bg-active    : transparent !default;
 $puppet-button-simple-secondary-color        : $puppet-n700 !default;
 $puppet-button-simple-secondary-color-hover  : $puppet-action-color !default;
+$puppet-button-simple-secondary-color-active : $puppet-action-color !default;
 $puppet-button-simple-secondary-icon-color   : $puppet-icon-fill !default;
 $puppet-button-simple-secondary-icon-color-hover: $puppet-action-color !default;
-$puppet-button-simple-secondary-border-color           : transparent !default;
-$puppet-button-simple-secondary-border-color-hover     : transparent !default;
+$puppet-button-simple-secondary-icon-color-active: $puppet-action-color !default;
+$puppet-button-simple-secondary-border-color : transparent !default;
+$puppet-button-simple-secondary-border-color-hover: transparent !default;
+$puppet-button-simple-secondary-border-color-active: transparent !default;
 
 
 // Disabled Buttons
@@ -132,13 +152,17 @@ $puppet-button-disabled-opacity             : 0.5 !default;
 
 // Errored Buttons
 $puppet-button-error-bg                     : $puppet-danger-color !default;
-$puppet-button-error-bg-hover               : $puppet-danger-color !default;
-$puppet-button-error-color                  : $puppet-action-text !default;
-$puppet-button-error-color-hover            : $puppet-action-text !default;
+$puppet-button-error-bg-hover               : $puppet-r400 !default;
+$puppet-button-error-bg-active              : $puppet-r600 !default;
+$puppet-button-error-color                  : $puppet-white !default;
+$puppet-button-error-color-hover            : $puppet-white !default;
+$puppet-button-error-color-active           : $puppet-white !default;
 $puppet-button-error-icon-color             : $puppet-action-icon !default;
 $puppet-button-error-icon-color-hover       : $puppet-action-icon-hover !default;
-$puppet-button-error-border-color           : $puppet-danger-color !default;
-$puppet-button-error-border-color-hover     : $puppet-danger-color !default;
+$puppet-button-error-icon-color-active      : $puppet-action-icon-hover !default;
+$puppet-button-error-border-color           : transparent !default;
+$puppet-button-error-border-color-hover     : transparent !default;
+$puppet-button-error-border-color-active    : transparent !default;
 
 // Cards
 // ----------------------------------------------------------------------------
