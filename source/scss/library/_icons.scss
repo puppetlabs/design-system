@@ -7,6 +7,34 @@
   }
 }
 
+
+// TWO-TONE ICONS
+// Generates classes for two-tone icons
+// Classes are placed inside of svgs in icons.js ಠ_ಠ
+
+// TODO update icons.js with color arguments for two tone icons
+
+$rc-icon-tone-colors: (
+  primary: $puppet-brand-primary,
+  blue: $puppet-b500,
+  neutral: $puppet-n700
+);
+
+@mixin icon-tones($attribute: 'fill', $prefix: '-') {
+  @each $color, $hex in $rc-icon-tone-colors {
+    &#{$prefix}#{$color} {
+      .rc-icon-tone-fill {
+        #{$attribute}: $hex;
+      }
+    }
+  }
+}
+
+.rc-icon-tone {
+  @include icon-tones;
+}
+
+
 .rc-icon-primary-fill {
   fill: $puppet-icon-primary-fill;
 }
