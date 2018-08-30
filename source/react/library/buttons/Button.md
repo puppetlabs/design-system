@@ -1,4 +1,5 @@
 Button sizes:
+
 ```
 <ButtonGroup>
   <Button size="large">Large Button</Button>
@@ -12,6 +13,7 @@ Button sizes:
 ```
 
 Button styles:
+
 ```
 <ButtonGroup>
   <Button>Primary Button</Button>
@@ -23,29 +25,32 @@ Button styles:
 </ButtonGroup>
 ```
 
-
-
 Floating action button:
+
 ```
 <Button floating={ true } />
 ```
 
 Dropdown icon:
+
 ```
 <Button dropdown>Dropdown</Button>
 ```
+
 ```
 <Button size="small" dropdown>Small dropdown</Button>
 ```
+
 ```
 <Button secondary dropdown>Secondary dropdown</Button>
 ```
+
 ```
 <Button dropdown disabled>Disabled</Button>
 ```
 
-
 Processing
+
 ```
 <Button processing>Processing</Button>
 ```

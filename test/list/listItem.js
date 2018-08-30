@@ -11,7 +11,7 @@ describe('<ListItem />', () => {
 
   it('should respond to click events if onClick provided', () => {
     const onClick = sinon.spy();
-    const wrapper = shallow(<ListItem onClick={ onClick } />);
+    const wrapper = shallow(<ListItem onClick={onClick} />);
 
     wrapper.find('.rc-list-item-link').simulate('click');
 
@@ -20,7 +20,7 @@ describe('<ListItem />', () => {
 
   it('should respond to remove link if onRemove provided', () => {
     const onRemove = sinon.spy();
-    const wrapper = shallow(<ListItem onRemove={ onRemove } />);
+    const wrapper = shallow(<ListItem onRemove={onRemove} />);
 
     wrapper.find('.rc-list-item-remove').simulate('click');
 
@@ -29,7 +29,7 @@ describe('<ListItem />', () => {
 
   it('should respond to edit link if onEdit provided', () => {
     const onEdit = sinon.spy();
-    const wrapper = shallow(<ListItem onEdit={ onEdit } />);
+    const wrapper = shallow(<ListItem onEdit={onEdit} />);
 
     wrapper.find('.rc-list-item-edit').simulate('click');
 

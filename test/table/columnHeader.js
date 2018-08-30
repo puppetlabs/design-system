@@ -14,11 +14,9 @@ describe('<ColumnHeader />', () => {
   jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
-    const wrapper = shallow(<ColumnHeader
-      key={ key }
-      column={ column }
-      onClick={ onClick }
-    />);
+    const wrapper = shallow(
+      <ColumnHeader key={key} column={column} onClick={onClick} />,
+    );
 
     expect(wrapper.length).to.eql(1);
   });
@@ -26,13 +24,11 @@ describe('<ColumnHeader />', () => {
   it('should repond to click events with onClick prop', () => {
     const onClickSpy = sinon.spy();
 
-    const wrapper = shallow(<ColumnHeader
-      key={ key }
-      column={ column }
-      onClick={ onClickSpy }
-    />);
+    const wrapper = shallow(
+      <ColumnHeader key={key} column={column} onClick={onClickSpy} />,
+    );
 
-    wrapper.simulate('click', { preventDefault: () => { } });
+    wrapper.simulate('click', { preventDefault: () => {} });
 
     expect(onClickSpy.calledOnce).to.eql(true);
   });

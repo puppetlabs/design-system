@@ -1,11 +1,9 @@
 ```js
-const target = (
-  <a>Click me!</a>
-);
+const target = <a>Click me!</a>;
 
 <DropdownMenu
-  target={ target }
+  target={target}
   hint="I'm a happy DropdownMenu!"
-  options={ [{ id: 1, value: 'Chicken soup' }] }
-/>
+  options={[{ id: 1, value: 'Chicken soup' }]}
+/>;
 ```

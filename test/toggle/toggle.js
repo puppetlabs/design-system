@@ -16,31 +16,31 @@ describe('<Toggle />', () => {
   };
 
   it('should have className "rc-toggle-active" on left option by default', () => {
-    const wrapper = shallow(<Toggle { ...defaultProps } />);
+    const wrapper = shallow(<Toggle {...defaultProps} />);
 
     expect(wrapper.find('.rc-toggle-active').text()).to.eql('option 1');
   });
 
   it('should have className "rc-toggle-checked" on active option', () => {
-    const wrapper = shallow(<Toggle { ...defaultProps } active="option 2" />);
+    const wrapper = shallow(<Toggle {...defaultProps} active="option 2" />);
 
     expect(wrapper.find('.rc-toggle-active').text()).to.eql('option 2');
   });
 
   it('should allow you to specify a name for the Switch', () => {
-    const wrapper = shallow(<Toggle { ...defaultProps } name="Slim Shady" />);
+    const wrapper = shallow(<Toggle {...defaultProps} name="Slim Shady" />);
 
     expect(wrapper.find('Switch').prop('name')).to.eql('Slim Shady');
   });
 
-  it('should set a unique name on Switch when you don\'t provide one', () => {
-    const wrapper = shallow(<Toggle { ...defaultProps } />);
+  it("should set a unique name on Switch when you don't provide one", () => {
+    const wrapper = shallow(<Toggle {...defaultProps} />);
 
     expect(wrapper.find('Switch').prop('name')).to.eql('option 1option 2');
   });
 
   it('should trigger provided onChange function from props when input is changed', () => {
-    const wrapper = mount(<Toggle { ...defaultProps } />);
+    const wrapper = mount(<Toggle {...defaultProps} />);
 
     const input = wrapper.find('.rc-switch-checkbox');
 
@@ -51,7 +51,7 @@ describe('<Toggle />', () => {
 
   describe('when disabled', () => {
     it('should disable the toggle', () => {
-      const wrapper = shallow(<Toggle { ...defaultProps } disabled />);
+      const wrapper = shallow(<Toggle {...defaultProps} disabled />);
 
       expect(wrapper.find('Switch').prop('disabled')).to.eql(true);
     });

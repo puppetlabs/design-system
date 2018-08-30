@@ -10,6 +10,7 @@
 ```
 
 Vertical `Tabs`:
+
 ```
 <Tabs vertical>
   <TabPanel title="Tab 1">

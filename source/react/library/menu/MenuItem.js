@@ -4,23 +4,24 @@ import classnames from 'classnames';
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  option: PropTypes.object.isRequired,
+  option: PropTypes.shape({
+    disabled: PropTypes.bool,
+    icon: PropTypes.string,
+    label: PropTypes.node,
+  }).isRequired,
   className: PropTypes.string,
   selected: PropTypes.bool,
-  disabled: PropTypes.bool,
   onClick: PropTypes.func,
   onFocus: PropTypes.func,
   focused: PropTypes.bool,
 };
 
 const defaultProps = {
-  iconPosition: 'right',
   className: '',
   onFocus: () => {},
   onClick: () => {},
   focused: false,
   selected: false,
-  disabled: false,
 };
 
 class MenuItem extends React.Component {
@@ -32,24 +33,27 @@ class MenuItem extends React.Component {
   }
 
   onMouseOver() {
-    if (!this.props.focused) {
-      this.props.onFocus();
+    const { focused, onFocus } = this.props;
+    if (!focused) {
+      onFocus();
     }
   }
 
   onClick(e) {
+    const { option, onClick, selected } = this.props;
     e.preventDefault();
     e.stopPropagation();
 
-    if (!this.props.option.disabled) {
-      this.props.onClick(this.props.option, !this.props.selected);
+    if (!option.disabled) {
+      onClick(option, !selected);
     }
   }
 
   renderCheckmark() {
+    const { selected } = this.props;
     let jsx;
 
-    if (this.props.selected) {
+    if (selected) {
       jsx = <Icon type="check" height="12px" width="12px" />;
     }
 
@@ -57,12 +61,13 @@ class MenuItem extends React.Component {
   }
 
   renderIcon() {
+    const { option } = this.props;
     let jsx;
 
-    if (this.props.option.icon) {
+    if (option.icon) {
       jsx = (
         <div className="rc-menu-icon">
-          <Icon type={ this.props.option.icon } height="16px" width="16px" />
+          <Icon type={option.icon} height="16px" width="16px" />
         </div>
       );
     }
@@ -71,30 +76,36 @@ class MenuItem extends React.Component {
   }
 
   render() {
-    const option = this.props.option;
+    const { className: propsClassName, focused, option, onFocus } = this.props;
     const checkmark = this.renderCheckmark();
     const icon = this.renderIcon();
-    const className = classnames('rc-menu-item', this.props.className, {
+    const className = classnames('rc-menu-item', propsClassName, {
       'rc-menu-item-with-icon': icon,
       'rc-menu-item-selected': checkmark,
-      'rc-menu-item-focused': this.props.focused,
-      'rc-menu-item-disabled': this.props.option.disabled,
+      'rc-menu-item-focused': focused,
+      'rc-menu-item-disabled': option.disabled,
     });
 
-    let value = option.value;
+    let { value } = option;
 
     if (typeof option.label !== 'undefined') {
       value = option.label;
     }
 
     return (
-      <li className={ className } onMouseOver={ this.onMouseOver } >
-        <a href={ option.id } className="rc-menu-item-anchor" onClick={ this.onClick }>
-          { icon }
-          <span className="rc-menu-item-text">
-            { value }
-          </span>
-          { checkmark }
+      <li
+        className={className}
+        onMouseOver={this.onMouseOver}
+        onFocus={onFocus}
+      >
+        <a
+          href={option.id}
+          className="rc-menu-item-anchor"
+          onClick={this.onClick}
+        >
+          {icon}
+          <span className="rc-menu-item-text">{value}</span>
+          {checkmark}
         </a>
       </li>
     );

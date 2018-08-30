@@ -49,7 +49,6 @@
     color: $puppet-input-placeholder-color;
   }
 
-
   &[disabled] {
     @extend %disabled-input;
   }
@@ -61,7 +60,8 @@
     padding: $puppet-input-large-padding;
   }
 
-  &.rc-input-medium { // Same as default
+  &.rc-input-medium {
+    // Same as default
   }
 
   &.rc-input-small,

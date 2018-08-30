@@ -49,13 +49,13 @@
 }
 
 .rc-list-item-action {
+  @include focus-circle;
   align-items: center;
   cursor: pointer;
   display: flex;
   justify-content: center;
   padding: 0;
   position: relative;
-  @include focus-circle;
 
   .rc-icon {
     @include icon-opacity-hover;

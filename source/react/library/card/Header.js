@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  actions: PropTypes.array,
+  actions: PropTypes.node,
   /** Primary title */
   title: PropTypes.string,
   /** Class to the title eelement */
@@ -11,7 +11,7 @@ const propTypes = {
   /** Secondary title */
   subtitle: PropTypes.string,
   /** Controls to update the contents of the card */
-  controls: PropTypes.any,
+  controls: PropTypes.node,
   /** Card description */
   description: PropTypes.string,
 };
@@ -27,8 +27,14 @@ const defaultProps = {
 
 class CardHeader extends React.Component {
   renderTitle() {
-    const { title, subtitle, controls, description } = this.props;
-    const className = classnames('rc-card-title', this.props.titleClassName);
+    const {
+      title,
+      subtitle,
+      controls,
+      description,
+      titleClassName,
+    } = this.props;
+    const className = classnames('rc-card-title', titleClassName);
     let titleJSX;
     let subtitleJSX;
     let controlsJSX;
@@ -37,27 +43,43 @@ class CardHeader extends React.Component {
 
     if (title || subtitle || controls || description) {
       if (title) {
-        titleJSX = <div key="card-title" className={ className }>{ title }</div>;
+        titleJSX = (
+          <div key="card-title" className={className}>
+            {title}
+          </div>
+        );
       }
 
       if (subtitle) {
-        subtitleJSX = <div key="card-subtitle" className="rc-card-subtitle">{ subtitle }</div>;
+        subtitleJSX = (
+          <div key="card-subtitle" className="rc-card-subtitle">
+            {subtitle}
+          </div>
+        );
       }
 
       if (controls) {
-        controlsJSX = <div key="card-controls" className="rc-card-controls">{ controls }</div>;
+        controlsJSX = (
+          <div key="card-controls" className="rc-card-controls">
+            {controls}
+          </div>
+        );
       }
 
       if (description) {
-        descriptionJSX = <div key="card-description" className="rc-card-description">{ description }</div>;
+        descriptionJSX = (
+          <div key="card-description" className="rc-card-description">
+            {description}
+          </div>
+        );
       }
 
       jsx = (
         <div key="card-title-area" className="rc-card-title-area">
-          { titleJSX }
-          { subtitleJSX }
-          { controlsJSX }
-          { descriptionJSX }
+          {titleJSX}
+          {subtitleJSX}
+          {controlsJSX}
+          {descriptionJSX}
         </div>
       );
     }
@@ -66,10 +88,15 @@ class CardHeader extends React.Component {
   }
 
   renderActions() {
+    const { actions } = this.props;
     let jsx;
 
-    if (this.props.actions && this.props.actions.length > 0) {
-      jsx = <div key="card-actions" className="rc-card-actions">{ this.props.actions }</div>;
+    if (actions && actions.length > 0) {
+      jsx = (
+        <div key="card-actions" className="rc-card-actions">
+          {actions}
+        </div>
+      );
     }
 
     return jsx;
@@ -82,8 +109,8 @@ class CardHeader extends React.Component {
     return (
       <div className="rc-card-header">
         <div className="rc-card-title-actions">
-          { title }
-          { actions }
+          {title}
+          {actions}
         </div>
       </div>
     );

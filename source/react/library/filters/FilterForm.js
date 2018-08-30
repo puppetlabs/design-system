@@ -6,28 +6,67 @@ import { filterOperators } from '../../constants';
 import Form from '../form';
 
 const propTypes = {
-  filter: PropTypes.object,
+  filter: PropTypes.shape({
+    field: PropTypes.string,
+    op: PropTypes.string,
+    value: PropTypes.string,
+  }),
   removable: PropTypes.bool,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
-  fields: PropTypes.array,
+  fields: PropTypes.arrayOf(PropTypes.string),
+  /** Defaults to the standard set as defined in constants. */
+  operators: PropTypes.arrayOf(PropTypes.object),
+  strings: PropTypes.shape({
+    /* Custom remove label */
+    filterRemovable: PropTypes.string.isRequired,
+    /* Custom label for value input */
+    filterValue: PropTypes.string.isRequired,
+    /* Custom placeholder for value input */
+    filterValuePlaceholder: PropTypes.string.isRequired,
+    /* Custom label for field dropdown */
+    filterField: PropTypes.string.isRequired,
+    /* Custom label used as placholder in the field input */
+    filterFieldPlaceholder: PropTypes.string.isRequired,
+    /* Custom label for operator dropdown */
+    filterOperator: PropTypes.string.isRequired,
+    /* Custom label used as placholder in the operator input */
+    filterOperatorPlaceholder: PropTypes.string.isRequired,
+    /* Custom label for cancel button */
+    filterCancel: PropTypes.string.isRequired,
+    /* Custom label for submit button */
+    filterSubmit: PropTypes.string.isRequired,
+  }),
+};
+
+const defaultStrings = {
+  filterRemovable: 'removable',
+  filterValue: 'value',
+  filterValuePlaceholder: 'A string (e.g. Jim) or a number (1500)',
+  filterField: 'field',
+  filterFieldPlaceholder: 'Choose a field...',
+  filterOperator: 'operation',
+  filterOperatorPlaceholder: 'Choose an operation...',
+  filterCancel: 'Cancel',
+  filterSubmit: 'Submit',
 };
 
 const defaultProps = {
   onSubmit: () => {},
   onCancel: () => {},
-  onUpdate: () => {},
   removable: false,
   fields: [],
   filter: {},
+  operators: filterOperators,
+  strings: defaultStrings,
 };
 
-const isValueless = (op) => {
+const isValueless = (op, operators) => {
   let valueless = false;
   let ops;
 
   if (typeof op !== 'undefined') {
-    ops = filterOperators
+    ops = operators
       .filter(o => o.symbol === op)
       .filter(o => typeof o.noValue !== 'undefined');
 
@@ -53,21 +92,28 @@ class FilterForm extends React.Component {
   }
 
   onSubmit() {
+    const { onSubmit } = this.props;
+    const { filter } = this.state;
+
     this.setState({ filter: defaultProps.filter });
 
-    this.props.onSubmit(this.state.filter);
+    onSubmit(filter);
   }
 
   onCancel() {
+    const { onCancel } = this.props;
+
     this.setState({ filter: defaultProps.filter });
 
-    this.props.onCancel();
+    onCancel();
   }
 
   onUpdate(field, values) {
+    const { filter } = this.state;
+    const { operators } = this.props;
     const value = values[field];
     const newState = {
-      filter: this.state.filter,
+      filter,
     };
 
     switch (field) {
@@ -77,7 +123,7 @@ class FilterForm extends React.Component {
       case 'filterOperator':
         newState.filter.op = value.id;
 
-        if (isValueless(value.id)) {
+        if (isValueless(value.id, operators)) {
           delete newState.filter.value;
         }
 
@@ -95,9 +141,10 @@ class FilterForm extends React.Component {
   }
 
   getFields() {
-    const filter = this.state.filter;
+    const { fields } = this.props;
+    const { filter } = this.state;
 
-    return this.props.fields.map(field => ({
+    return fields.map(field => ({
       id: field,
       label: field,
       value: field,
@@ -106,9 +153,10 @@ class FilterForm extends React.Component {
   }
 
   getOperators() {
-    const filter = this.state.filter;
+    const { filter } = this.state;
+    const { operators } = this.props;
 
-    return filterOperators.map(op => ({
+    return operators.map(op => ({
       id: op.symbol,
       label: op.label,
       value: op.symbol,
@@ -117,16 +165,18 @@ class FilterForm extends React.Component {
   }
 
   renderRemovableField() {
-    const filter = this.state.filter;
+    const { filter } = this.state;
+    const { removable, strings } = this.props;
+
     let jsx;
 
-    if (this.props.removable) {
+    if (removable) {
       jsx = (
         <Form.Field
-          value={ filter.removable }
+          value={filter.removable}
           type="checkbox"
           name="filterRemovable"
-          label="removable"
+          label={strings.filterRemovable}
           inline
         />
       );
@@ -136,7 +186,13 @@ class FilterForm extends React.Component {
   }
 
   renderValueField() {
-    const valueless = isValueless(this.state.filter.op);
+    const {
+      filter: { op, value = '' },
+    } = this.state;
+
+    const { operators, strings } = this.props;
+    const valueless = isValueless(op, operators);
+
     let jsx;
 
     if (!valueless) {
@@ -144,9 +200,9 @@ class FilterForm extends React.Component {
         <Form.Field
           type="input"
           name="filterValue"
-          label="value"
-          value={ this.state.filter.value || '' }
-          elementProps={ { placeholder: 'A string (e.g. Jim) or a number (1500)' } }
+          label={strings.filterValue}
+          value={value}
+          elementProps={{ placeholder: strings.filterValuePlaceholder }}
         />
       );
     }
@@ -160,37 +216,41 @@ class FilterForm extends React.Component {
     const operators = this.getOperators();
     const fields = this.getFields();
 
+    const { strings } = this.props;
+
     return (
       <Form
         submittable
         cancellable
-        onChange={ this.onUpdate }
-        onCancel={ this.onCancel }
-        onSubmit={ this.onSubmit }
+        onChange={this.onUpdate}
+        onCancel={this.onCancel}
+        onSubmit={this.onSubmit}
         size="small"
+        cancelLabel={strings.filterCancel}
+        submitLabel={strings.filterSubmit}
       >
         <Form.Field
           type="select"
           name="filterField"
-          label="field"
-          elementProps={ {
+          label={strings.filterField}
+          elementProps={{
             disablePortal: true,
             options: fields,
-            placeholder: 'Choose a field...',
-          } }
+            placeholder: strings.filterFieldPlaceholder,
+          }}
         />
         <Form.Field
           type="select"
           name="filterOperator"
-          label="operation"
-          elementProps={ {
+          label={strings.filterOperator}
+          elementProps={{
             disablePortal: true,
             options: operators,
-            placeholder: 'Choose an operation...',
-          } }
+            placeholder: strings.filterOperatorPlaceholder,
+          }}
         />
-        { valueField }
-        { removableField }
+        {valueField}
+        {removableField}
       </Form>
     );
   }

@@ -5,6 +5,7 @@
 ```
 
 Secondary `Panel`:
+
 ```
 <Panel secondary>
   I am a happy secondary panel.
@@ -12,6 +13,7 @@ Secondary `Panel`:
 ```
 
 Removable `Panel`:
+
 ```
 <Panel onRemove={ () => alert('Panel removed!') }>
   I am the Frito Bandito.
@@ -19,6 +21,7 @@ Removable `Panel`:
 ```
 
 `Panel` with `Content`:
+
 ```
 <Panel>
   <Content>

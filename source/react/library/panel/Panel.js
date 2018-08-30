@@ -2,13 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
+import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
   secondary: PropTypes.bool,
   className: PropTypes.string,
   /** Callback for detecting user remove action */
   onRemove: PropTypes.func,
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -22,33 +23,44 @@ const defaultProps = {
  * `Panel` groups components together.
  */
 class Panel extends React.Component {
-
   constructor(props) {
     super(props);
 
     this.onRemove = this.onRemove.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   onRemove(e) {
+    const { onRemove } = this.props;
     e.preventDefault();
 
-    if (this.props.onRemove) {
-      this.props.onRemove(e);
+    if (onRemove) {
+      onRemove(e);
+    }
+  }
+
+  onKeyDown(e) {
+    const { onRemove } = this.props;
+
+    if (e.keyCode === ENTER_KEY_CODE) {
+      onRemove(e);
     }
   }
 
   renderRemoveButton() {
+    const { onRemove } = this.props;
     let jsx;
 
-    if (this.props.onRemove) {
+    if (onRemove) {
       jsx = (
         <div
           role="button"
-          tabIndex={ 0 }
-          className="remove-corner"
-          onClick={ this.onRemove }
+          tabIndex={0}
+          className="remove-corner rc-panel-remove"
+          onClick={this.onRemove}
+          onKeyDown={this.onKeyDown}
         >
-          <a href="" className="rc-panel-remove"><Icon width="11px" height="11px" type="close" /></a>
+          <Icon size="small" type="close" />
         </div>
       );
     }
@@ -66,9 +78,9 @@ class Panel extends React.Component {
     const removeButton = this.renderRemoveButton();
 
     return (
-      <div className={ classNames }>
-        { removeButton }
-        { children }
+      <div className={classNames}>
+        {removeButton}
+        {children}
       </div>
     );
   }

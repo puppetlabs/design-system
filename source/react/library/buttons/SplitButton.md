@@ -11,6 +11,7 @@ const splitButtonOptions = [
 ```
 
 `SplitButton` with processing menu:
+
 ```
 const splitButtonOptions = [
   { value: 'I\'m a test value!', id: 0 },
@@ -25,6 +26,7 @@ const splitButtonOptions = [
 ```
 
 `SplitButton` with success menu:
+
 ```
 const splitButtonOptions = [
   { value: 'I\'m a test value!', id: 0 },
@@ -39,6 +41,7 @@ const splitButtonOptions = [
 ```
 
 `SplitButton` with error:
+
 ```
 const splitButtonOptions = [
   { value: 'I\'m a test value!', id: 0 },
@@ -52,8 +55,8 @@ const splitButtonOptions = [
 />
 ```
 
-
 Small `SplitButton`:
+
 ```
 const splitButtonOptions = [
   { value: 'I\'m a test value!', id: 0 },

@@ -2,11 +2,14 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../buttons/Button';
 import { getKey } from '../../helpers/statics';
-import { SIDEBAR_SUBSECTION_TRUNC_LENGTH } from '../../constants';
+import {
+  SIDEBAR_SUBSECTION_TRUNC_LENGTH,
+  ENTER_KEY_CODE,
+} from '../../constants';
 
 const propTypes = {
-  children: PropTypes.any,
-  title: PropTypes.any,
+  children: PropTypes.node,
+  title: PropTypes.string,
   /** Whether or not the current subsection is selected */
   selected: PropTypes.bool,
   /** The title of the active item */
@@ -48,15 +51,32 @@ class Subsection extends React.Component {
     this.onSubItemClick = this.onSubItemClick.bind(this);
     this.onViewMore = this.onViewMore.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onKeyDownViewMore = this.onKeyDownViewMore.bind(this);
+  }
+
+  onKeyDown(e) {
+    if (e.keyCode === ENTER_KEY_CODE) {
+      this.onClick();
+    }
   }
 
   onClick() {
-    this.props.onSubsectionClick(this.props.title);
-    this.props.onClick();
+    const { title, onSubsectionClick, onClick } = this.props;
+    onSubsectionClick(title);
+    onClick();
+  }
+
+  onKeyDownViewMore(e) {
+    if (e.keyCode === ENTER_KEY_CODE) {
+      this.onViewMore(e);
+    }
   }
 
   onSubItemClick(item) {
-    this.props.onSubItemClick(item);
+    const { onSubItemClick } = this.props;
+
+    onSubItemClick(item);
   }
 
   onViewMore(e) {
@@ -66,22 +86,36 @@ class Subsection extends React.Component {
   }
 
   getItems() {
+    const { selected, children, selectedItem } = this.props;
+    const { truncate } = this.state;
     let items = [];
 
-    if (this.props.selected) {
-      items = React.Children.map(this.props.children, (item, idx) => {
+    if (selected) {
+      items = React.Children.map(children, (item, idx) => {
         const props = {
           key: getKey(item, idx),
           onSubItemClick: this.onSubItemClick,
-          selected: this.props.selectedItem,
+          selected: selectedItem,
         };
 
         return React.cloneElement(item, props);
       });
     }
 
-    if (items.length > SIDEBAR_SUBSECTION_TRUNC_LENGTH && this.state.truncate) {
-      const jsx = <a className="rc-sidebar-subsection-view-more-link" role="button" tabIndex={ 0 } onClick={ this.onViewMore } key="view-more-link">View All...</a>;
+    if (items.length > SIDEBAR_SUBSECTION_TRUNC_LENGTH && truncate) {
+      const jsx = (
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
+        <a
+          className="rc-sidebar-subsection-view-more-link"
+          role="button"
+          tabIndex={0}
+          onClick={this.onViewMore}
+          onKeyDown={this.onKeyDownViewMore}
+          key="view-more-link"
+        >
+          View All...
+        </a>
+      );
 
       items = items.slice(0, SIDEBAR_SUBSECTION_TRUNC_LENGTH);
       items.push(jsx);
@@ -91,17 +125,18 @@ class Subsection extends React.Component {
   }
 
   getAddItemBtn() {
+    const { onAddItem, addItemCTA } = this.props;
     let jsx;
 
-    if (this.props.onAddItem) {
+    if (onAddItem) {
       jsx = (
         <Button
           size="tiny"
           secondary
           className="rc-sidebar-subsection-add-item-btn"
-          onClick={ this.props.onAddItem }
+          onClick={onAddItem}
         >
-          { this.props.addItemCTA }
+          {addItemCTA}
         </Button>
       );
     }
@@ -112,24 +147,26 @@ class Subsection extends React.Component {
   render() {
     const items = this.getItems();
     const addItemBtn = this.getAddItemBtn();
+    const { title } = this.props;
 
     return (
+      /* eslint-disable jsx-a11y/anchor-is-valid */
       <div className="rc-sidebar-subsection">
         <a
           role="button"
-          tabIndex={ 0 }
+          tabIndex={0}
           className="rc-sidebar-subsection-header-link"
-          onClick={ this.onClick }
+          onClick={this.onClick}
+          onKeyDown={this.onKeyDown}
         >
-          <span className="rc-sidebar-subsection-title">
-            { this.props.title }
-          </span>
+          <span className="rc-sidebar-subsection-title">{title}</span>
         </a>
         <div className="rc-sidebar-subsection-items">
-          { items }
-          { addItemBtn }
+          {items}
+          {addItemBtn}
         </div>
       </div>
+      /* eslint-enable jsx-a11y/anchor-is-valid */
     );
   }
 }

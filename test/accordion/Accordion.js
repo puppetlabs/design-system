@@ -12,8 +12,8 @@ describe('<Accordion />', () => {
   });
 
   it('should optionally render a header', () => {
-    const title = 'I\'m a fun Accordion';
-    const wrapper = shallow(<Accordion title={ title } />);
+    const title = "I'm a fun Accordion";
+    const wrapper = shallow(<Accordion title={title} />);
 
     expect(wrapper.find('.rc-accordion-header').length).to.eql(1);
   });
@@ -34,14 +34,24 @@ describe('<Accordion />', () => {
 
     it('should mark the first item as active', () => {
       const wrapper = shallow(
-        <Accordion { ...defaultProps }>
+        <Accordion {...defaultProps}>
           <span>hi1</span>
           <span>hi2</span>
         </Accordion>,
       );
 
-      expect(wrapper.find('.rc-accordion-items').childAt(0).text()).to.eql('hi1');
-      expect(wrapper.find('.rc-accordion-items').childAt(0).prop('active')).to.eql(true);
+      expect(
+        wrapper
+          .find('.rc-accordion-items')
+          .childAt(0)
+          .text(),
+      ).to.eql('hi1');
+      expect(
+        wrapper
+          .find('.rc-accordion-items')
+          .childAt(0)
+          .prop('active'),
+      ).to.eql(true);
     });
   });
 });

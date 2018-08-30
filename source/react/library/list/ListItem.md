@@ -5,6 +5,7 @@
 ```
 
 Selected, selectable, editable, and deletable `ListItem`:
+
 ```
 <List>
   <ListItem
@@ -79,6 +80,7 @@ Medium sized selectable ListItem:
 ```
 
 Fancy `ListItem`:
+
 ```
 <List>
   <ListItem key="fancy" fancy onEdit={ () => {} } onRemove={ () => {} }>

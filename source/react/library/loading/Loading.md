@@ -3,6 +3,7 @@
 ```
 
 Small
+
 ```
 <LoadingIndicator size="small" />
 ```

@@ -3,10 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.array,
-  ]),
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
   collapsed: PropTypes.bool,
 };
 
@@ -18,14 +15,12 @@ const defaultProps = {
 /**
  * `ButtonGroup` allows you to render buttons next to eachother.
  */
-const ButtonGroup = (props) => {
+const ButtonGroup = ({ collapsed, children }) => {
   const classname = classnames('rc-button-group', {
-    'rc-button-group-collapsed': props.collapsed,
+    'rc-button-group-collapsed': collapsed,
   });
 
-  return (
-    <div className={ classname }>{ props.children }</div>
-  );
+  return <div className={classname}>{children}</div>;
 };
 
 ButtonGroup.propTypes = propTypes;

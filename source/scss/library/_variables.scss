@@ -191,14 +191,14 @@ $puppet-warning-border-hover                : darken($puppet-warning-color, 10%)
 
 // Sizing Defaults
 // ----------------------------------------------------------------------------
-$puppet-size-base                           : 8px !default;
-$puppet-mini                                : $puppet-size-base * 0.25 !default;
-$puppet-tiny                                : $puppet-size-base * 0.5 !default;
-$puppet-small                               : $puppet-size-base !default;
-$puppet-medium                              : $puppet-size-base * 2 !default;
-$puppet-large                               : $puppet-size-base * 3 !default;
-$puppet-huge                                : $puppet-size-base * 4 !default;
-$puppet-giant                               : $puppet-size-base * 6 !default;
+$puppet-size-base: 8px !default;
+$puppet-mini: $puppet-size-base * 0.25 !default;
+$puppet-tiny: $puppet-size-base * 0.5 !default;
+$puppet-small: $puppet-size-base !default;
+$puppet-medium: $puppet-size-base * 2 !default;
+$puppet-large: $puppet-size-base * 3 !default;
+$puppet-huge: $puppet-size-base * 4 !default;
+$puppet-giant: $puppet-size-base * 6 !default;
 
 // Icons
 // ----------------------------------------------------------------------------
@@ -215,13 +215,13 @@ $puppet-font-family-heading                 : 'Calibre', serif !default;
 $puppet-font-family-button                  : 'Calibre', serif !default;
 $puppet-font-family-code                    : 'Consolas', monospace !default;
 
-$puppet-font-size-giant                     : 42px !default;
-$puppet-font-size-huge                      : 28px !default;
-$puppet-font-size-large                     : 21px !default;
-$puppet-font-size-medium                    : 18px !default;
-$puppet-font-size-base                      : 14px !default;
-$puppet-font-size-small                     : 12px !default;
-$puppet-font-size-tiny                      : 11px !default;
+$puppet-font-size-giant: 42px !default;
+$puppet-font-size-huge: 28px !default;
+$puppet-font-size-large: 21px !default;
+$puppet-font-size-medium: 18px !default;
+$puppet-font-size-base: 14px !default;
+$puppet-font-size-small: 12px !default;
+$puppet-font-size-tiny: 11px !default;
 
 $puppet-font-color-dark                     : $puppet-black;
 $puppet-font-color-base                     : $puppet-n900 !default;
@@ -229,63 +229,63 @@ $puppet-font-color-medium                   : $puppet-n700 !default;
 $puppet-font-color-subtle                   : $puppet-n600 !default;
 $puppet-font-color-light                    : $puppet-white !default;
 
-$puppet-line-height-default                 : 1.5em !default;
+$puppet-line-height-default: 1.5em !default;
 
-$puppet-font-weight-normal                  : 400 !default;
-$puppet-font-weight-medium                  : 400 !default; // deprecating in a future release
-$puppet-font-weight-heavy                   : 600 !default;
+$puppet-font-weight-normal: 400 !default;
+$puppet-font-weight-medium: 400 !default; // deprecating in a future release
+$puppet-font-weight-heavy: 600 !default;
 
 // Content
-$puppet-strong                              : $puppet-font-weight-heavy !default;
+$puppet-strong: $puppet-font-weight-heavy !default;
 
 // Headings
-$puppet-heading-color                       : $puppet-font-color-base !default;
-$puppet-heading-font-size-base              : $puppet-font-size-base !default;
-$puppet-heading-font-weight                 : $puppet-font-weight-medium !default;
-$puppet-heading-line-height                 : 1.25em !default;
-$puppet-heading-margin                      : 0 0 $puppet-medium !default;
+$puppet-heading-color: $puppet-font-color-base !default;
+$puppet-heading-font-size-base: $puppet-font-size-base !default;
+$puppet-heading-font-weight: $puppet-font-weight-medium !default;
+$puppet-heading-line-height: 1.25em !default;
+$puppet-heading-margin: 0 0 $puppet-medium !default;
 
-$puppet-h1-font-size                        : $puppet-font-size-huge !default;
-$puppet-h2-font-size                        : $puppet-font-size-large !default;
-$puppet-h3-font-size                        : $puppet-font-size-medium !default;
-$puppet-h4-font-size                        : $puppet-font-size-base !default;
-$puppet-h5-font-size                        : $puppet-font-size-small !default;
-$puppet-h6-font-size                        : $puppet-font-size-small !default;
+$puppet-h1-font-size: $puppet-font-size-huge !default;
+$puppet-h2-font-size: $puppet-font-size-large !default;
+$puppet-h3-font-size: $puppet-font-size-medium !default;
+$puppet-h4-font-size: $puppet-font-size-base !default;
+$puppet-h5-font-size: $puppet-font-size-small !default;
+$puppet-h6-font-size: $puppet-font-size-small !default;
 
 // Paragraphs
-$puppet-p-color                             : $puppet-font-color-base !default;
-$puppet-p-font-size                         : $puppet-font-size-base !default;
-$puppet-p-font-weight                       : $puppet-font-weight-normal !default;
-$puppet-p-line-height                       : $puppet-line-height-default !default;
-$puppet-p-margin                            : 0 0 $puppet-medium !default;
+$puppet-p-color: $puppet-font-color-base !default;
+$puppet-p-font-size: $puppet-font-size-base !default;
+$puppet-p-font-weight: $puppet-font-weight-normal !default;
+$puppet-p-line-height: $puppet-line-height-default !default;
+$puppet-p-margin: 0 0 $puppet-medium !default;
 
-$puppet-list-color                          : $puppet-font-color-base !default;
-$puppet-list-font-size                      : $puppet-font-size-base !default;
-$puppet-list-font-weight                    : $puppet-font-weight-normal !default;
-$puppet-list-line-height                    : $puppet-line-height-default !default;
-$puppet-list-margin                         : $puppet-mini 0 $puppet-small !default;
-$puppet-list-padding                        : 0 !default;
-$puppet-list-position                       : inside !default;
-$puppet-list-item-margin                    : 0 0 $puppet-small !default;
-$puppet-list-ul-type                        : initial !default;
-$puppet-list-ol-type                        : decimal !default;
+$puppet-list-color: $puppet-font-color-base !default;
+$puppet-list-font-size: $puppet-font-size-base !default;
+$puppet-list-font-weight: $puppet-font-weight-normal !default;
+$puppet-list-line-height: $puppet-line-height-default !default;
+$puppet-list-margin: $puppet-mini 0 $puppet-small !default;
+$puppet-list-padding: 0 !default;
+$puppet-list-position: inside !default;
+$puppet-list-item-margin: 0 0 $puppet-small !default;
+$puppet-list-ul-type: initial !default;
+$puppet-list-ol-type: decimal !default;
 
 // Code
-$puppet-code-bg                             : $puppet-bg-subtle !default;
-$puppet-code-color                          : $puppet-font-color-base !default;
-$puppet-code-font-family                    : monospace !default;
-$puppet-code-font-size                      : $puppet-font-size-base !default;
-$puppet-code-font-weight                    : $puppet-font-weight-medium !default;
-$puppet-code-line-height                    : $puppet-line-height-default !default;
-$puppet-code-margin                         : 0 0 $puppet-small !default;
-$puppet-code-padding                        : $puppet-tiny !default;
+$puppet-code-bg: $puppet-bg-subtle !default;
+$puppet-code-color: $puppet-font-color-base !default;
+$puppet-code-font-family: monospace !default;
+$puppet-code-font-size: $puppet-font-size-base !default;
+$puppet-code-font-weight: $puppet-font-weight-medium !default;
+$puppet-code-line-height: $puppet-line-height-default !default;
+$puppet-code-margin: 0 0 $puppet-small !default;
+$puppet-code-padding: $puppet-tiny !default;
 
 // Text Labels
-$puppet-text-label-size                     : $puppet-font-size-tiny !default;
-$puppet-text-label-color                    : $puppet-font-color-medium !default;
-$puppet-text-label-letter-spacing           : 0.6px !default;
-$puppet-text-label-transform                : uppercase !default;
-$puppet-text-label-weight                   : $puppet-font-weight-medium !default;
+$puppet-text-label-size: $puppet-font-size-tiny !default;
+$puppet-text-label-color: $puppet-font-color-medium !default;
+$puppet-text-label-letter-spacing: 0.6px !default;
+$puppet-text-label-transform: uppercase !default;
+$puppet-text-label-weight: $puppet-font-weight-medium !default;
 
 // Borders
 // ----------------------------------------------------------------------------
@@ -315,34 +315,33 @@ $puppet-hr-margin                           : $puppet-medium !default;
 
 // Blockquote
 // ----------------------------------------------------------------------------
-$puppet-bq-border                           : solid $puppet-tiny $puppet-border-color !default;
-$puppet-bq-color                            : $puppet-font-color-base !default;
-$puppet-bq-font-size                        : $puppet-font-size-base !default;
-$puppet-bq-font-weight                      : $puppet-font-weight-normal !default;
-$puppet-bq-line-height                      : $puppet-line-height-default !default;
-$puppet-bq-margin                           : 0 0 $puppet-medium !default;
-$puppet-bq-padding                          : $puppet-tiny $puppet-medium !default;
-
+$puppet-bq-border: solid $puppet-tiny $puppet-border-color !default;
+$puppet-bq-color: $puppet-font-color-base !default;
+$puppet-bq-font-size: $puppet-font-size-base !default;
+$puppet-bq-font-weight: $puppet-font-weight-normal !default;
+$puppet-bq-line-height: $puppet-line-height-default !default;
+$puppet-bq-margin: 0 0 $puppet-medium !default;
+$puppet-bq-padding: $puppet-tiny $puppet-medium !default;
 
 // Shadows
 // ----------------------------------------------------------------------------
-$puppet-outer-shadow                        : 0 1px 2px rgba(0, 0, 0, 0.05) !default;
-$puppet-outer-shadow-large                  : 2px 2px 4px rgba(0, 0, 0, 0.05) !default;
-$puppet-outer-shadow-huge                   : 0 0 10px rgba(0, 0, 0, 0.08) !default;
-$puppet-outer-shadow-giant                  : 0 0 60px rgba(0, 0, 0, 0.3) !default;
+$puppet-outer-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !default;
+$puppet-outer-shadow-large: 2px 2px 4px rgba(0, 0, 0, 0.05) !default;
+$puppet-outer-shadow-huge: 0 0 10px rgba(0, 0, 0, 0.08) !default;
+$puppet-outer-shadow-giant: 0 0 60px rgba(0, 0, 0, 0.3) !default;
 
-$puppet-selectable-shadow                   : 0 0 0 1px $puppet-border-color !default;
-$puppet-selectable-shadow-hover             : 0 0 0 1px $puppet-border-hover-color !default;
-$puppet-selected-shadow                     : 0 0 0 1px $puppet-action-color !default;
-$puppet-selected-shadow-hover               : 0 0 0 1px $puppet-action-hover !default;
+$puppet-selectable-shadow: 0 0 0 1px $puppet-border-color !default;
+$puppet-selectable-shadow-hover: 0 0 0 1px $puppet-border-hover-color !default;
+$puppet-selected-shadow: 0 0 0 1px $puppet-action-color !default;
+$puppet-selected-shadow-hover: 0 0 0 1px $puppet-action-hover !default;
 
 // Animations
 // ----------------------------------------------------------------------------
-$puppet-animation-speed-base                : 0.2s;
+$puppet-animation-speed-base: 0.2s;
 
 // Responsive breakpoints
 // ----------------------------------------------------------------------------
-$puppet-breakpoint-small                    : 700px !default;
-$puppet-breakpoint-medium                   : 1088px !default;
+$puppet-breakpoint-small: 700px !default;
+$puppet-breakpoint-medium: 1088px !default;
 
 /* stylelint-enable */

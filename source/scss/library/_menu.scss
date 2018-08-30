@@ -1,4 +1,17 @@
-@mixin menu-item-colors($bg, $bg-hover, $color, $color-hover, $border, $border-focus, $border-selected, $bg-selected, $color-selected, $bg-disabled, $color-disabled, $icon-color) {
+@mixin menu-item-colors(
+  $bg,
+  $bg-hover,
+  $color,
+  $color-hover,
+  $border,
+  $border-focus,
+  $border-selected,
+  $bg-selected,
+  $color-selected,
+  $bg-disabled,
+  $color-disabled,
+  $icon-color
+) {
   .rc-menu-item .rc-icon {
     fill: $icon-color;
   }
@@ -39,7 +52,7 @@
     }
   }
 
-  .rc-menu-item-selected  a {
+  .rc-menu-item-selected a {
     border-bottom: 0;
     color: $color-selected;
   }
@@ -48,7 +61,7 @@
     fill: $color-selected;
   }
 
-  .rc-menu-item-selected  .rc-menu-item-focused a {
+  .rc-menu-item-selected .rc-menu-item-focused a {
     background: $bg-hover;
     color: $color-selected;
   }
@@ -57,26 +70,18 @@
     fill: $color-selected;
   }
 
-  .rc-menu-item-disabled  a {
+  .rc-menu-item-disabled a {
     background: $bg-disabled;
     color: $color-disabled;
   }
 
-  .rc-menu-item-disabled  a:hover {
+  .rc-menu-item-disabled a:hover {
     background: $bg-disabled;
     color: $color-disabled;
   }
 }
 
 .rc-menu-dark {
-  .rc-menu-header {
-    background: $puppet-menu-header-bg-dark;
-    border: $puppet-menu-header-border-dark;
-  }
-
-  .rc-menu-title {
-    color: $puppet-menu-title-color-dark;
-  }
 
   @include menu-item-colors(
     $puppet-menu-item-bg,
@@ -92,6 +97,15 @@
     $puppet-menu-item-color-disabled,
     $puppet-menu-item-icon-color
   );
+
+  .rc-menu-header {
+    background: $puppet-menu-header-bg-dark;
+    border: $puppet-menu-header-border-dark;
+  }
+
+  .rc-menu-title {
+    color: $puppet-menu-title-color-dark;
+  }
 }
 
 @include menu-item-colors(
@@ -211,15 +225,15 @@
 // More evidence here that we could refactor menus and dropdowns
 .rc-menu-header + div,
 .rc-menu-header + .rc-menu-list {
-  .rc-menu-item:not(.rc-menu-item-with-icon) a { /* stylelint-disable-line selector-max-compound-selectors */
+  .rc-menu-item:not(.rc-menu-item-with-icon) a {/* stylelint-disable-line selector-max-compound-selectors */
     padding: 0 ($puppet-menu-header-padding - $puppet-menu-item-padding);
   }
 
-  .rc-menu-item-with-icon a { /* stylelint-disable-line selector-max-compound-selectors */
+  .rc-menu-item-with-icon a {/* stylelint-disable-line selector-max-compound-selectors */
     padding-left: 40px;
   }
 
-  .rc-menu-item-with-icon .rc-icon { /* stylelint-disable-line selector-max-compound-selectors */
+  .rc-menu-item-with-icon .rc-icon {/* stylelint-disable-line selector-max-compound-selectors */
     left: 16px;
   }
 }

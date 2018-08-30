@@ -11,7 +11,7 @@ describe('<Header />', () => {
   const defaultProps = { product: 'insights' };
 
   it('should render without blowing up', () => {
-    shallow(<Header { ...defaultProps } />);
+    shallow(<Header {...defaultProps} />);
   });
 
   it('should render buttons for the provided nav items', () => {
@@ -20,7 +20,7 @@ describe('<Header />', () => {
       { key: 'tokens', icon: 'key' },
     ];
 
-    const wrapper = shallow(<Header { ...defaultProps } nav={ nav } />);
+    const wrapper = shallow(<Header {...defaultProps} nav={nav} />);
 
     expect(wrapper.find('Button').length).to.eql(2);
   });
@@ -29,7 +29,7 @@ describe('<Header />', () => {
     const nav = [{ key: 'settings', icon: 'gear' }];
     const onNavClick = sinon.spy();
     const wrapper = shallow(
-      <Header { ...defaultProps } nav={ nav } onNavClick={ onNavClick } />,
+      <Header {...defaultProps} nav={nav} onNavClick={onNavClick} />,
     );
 
     wrapper.find('Button').simulate('click');
@@ -40,23 +40,31 @@ describe('<Header />', () => {
 
   describe('rendering controls for smaller screens', () => {
     it('should render a control for toggling the menu', () => {
-      const wrapper = shallow(<Header { ...defaultProps } />);
+      const wrapper = shallow(<Header {...defaultProps} />);
 
       expect(wrapper.find('.rc-header-menu-control').length).to.eql(1);
     });
 
     it('should allow the menu to be toggled', () => {
-      const wrapper = shallow(<Header { ...defaultProps } />);
+      const wrapper = shallow(<Header {...defaultProps} />);
 
       // Hamburger menu by default
-      expect(wrapper.find('.rc-header-menu-control').find('Icon').prop('type'))
-        .to.eql('list');
+      expect(
+        wrapper
+          .find('.rc-header-menu-control')
+          .find('Icon')
+          .prop('type'),
+      ).to.eql('list');
 
       wrapper.find('.rc-header-menu-control').simulate('click');
 
       // Now it allows the menu to be closed.
-      expect(wrapper.find('.rc-header-menu-control').find('Icon').prop('type'))
-        .to.eql('close');
+      expect(
+        wrapper
+          .find('.rc-header-menu-control')
+          .find('Icon')
+          .prop('type'),
+      ).to.eql('close');
     });
   });
 });

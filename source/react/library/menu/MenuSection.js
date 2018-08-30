@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  children: PropTypes.any.isRequired,
+  children: PropTypes.node.isRequired,
   subtle: PropTypes.bool,
   className: PropTypes.string,
 };
@@ -13,17 +13,15 @@ const defaultProps = {
   className: '',
 };
 
-const MenuSection = (props) => {
-  const className = classnames('rc-menu-section', props.className, {
-    'rc-bg-subtle': props.subtle,
-  });
-
-  return (
-    <div className={ className }>
-      { props.children }
-    </div>
-  );
-};
+const MenuSection = ({ className, subtle, children }) => (
+  <div
+    className={classnames('rc-menu-section', className, {
+      'rc-bg-subtle': subtle,
+    })}
+  >
+    {children}
+  </div>
+);
 
 MenuSection.propTypes = propTypes;
 MenuSection.defaultProps = defaultProps;

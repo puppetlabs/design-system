@@ -5,6 +5,7 @@
 ```
 
 Secondary `Panel`:
+
 ```
 <TabPanel secondary>
   I am a happy secondary tab panel.

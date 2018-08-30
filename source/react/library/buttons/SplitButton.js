@@ -6,7 +6,7 @@ import Icon from '../icon/Icon';
 import DropdownMenu from '../dropdown/DropdownMenu';
 
 const propTypes = {
-  options: PropTypes.array.isRequired,
+  options: PropTypes.arrayOf(PropTypes.object).isRequired,
   /** Primary button label */
   label: PropTypes.string.isRequired,
   className: PropTypes.string,
@@ -33,8 +33,10 @@ const defaultProps = {
   disablePortal: false,
   disabled: false,
   disabledMenu: false,
-  onClick: () => {},
-  onOptionClick: () => {},
+  className: '',
+  dropdownSize: 'small',
+  menuStatus: null,
+  size: null,
 };
 
 /**
@@ -50,24 +52,24 @@ class SplitButton extends React.Component {
   }
 
   onClick() {
-    if (this.props.onClick) {
-      this.props.onClick();
+    const { onClick } = this.props;
+    if (onClick) {
+      onClick();
     }
   }
 
   onOptionClick(option) {
-    if (this.props.onOptionClick && typeof option !== 'undefined') {
-      this.props.onOptionClick(option);
+    const { onOptionClick } = this.props;
+    if (onOptionClick && typeof option !== 'undefined') {
+      onOptionClick(option);
     }
   }
 
   renderDropdownTarget() {
+    const { menuStatus, disabledMenu, error, size } = this.props;
     const iconSize = '12px';
-    const menuStatus = this.props.menuStatus;
-    const error = this.props.error;
-    let iconType;
 
-    const disabledMenu = this.props.disabledMenu;
+    let iconType;
 
     switch (menuStatus) {
       case 'success':
@@ -82,13 +84,13 @@ class SplitButton extends React.Component {
 
     return (
       <Button
-        error={ error }
+        error={error}
         className="rc-button-menu"
-        size={ this.props.size }
-        disabled={ disabledMenu }
+        size={size}
+        disabled={disabledMenu}
       >
         <div className="rc-button-menu-inner">
-          <Icon height={ iconSize } width={ iconSize } type={ iconType } />
+          <Icon height={iconSize} width={iconSize} type={iconType} />
         </div>
       </Button>
     );
@@ -96,39 +98,44 @@ class SplitButton extends React.Component {
 
   renderDropdown() {
     const target = this.renderDropdownTarget();
-    const { size, options, dropdownWidth, disablePortal, dropdownSize } = this.props;
+    const {
+      size,
+      options,
+      dropdownWidth,
+      disablePortal,
+      dropdownSize,
+    } = this.props;
 
     return (
       <DropdownMenu
         anchor="bottom right"
-        size={ dropdownSize || size }
-        width={ dropdownWidth }
-        margin={ 5 }
-        onChange={ this.onOptionClick }
-        target={ target }
-        options={ options }
-        disablePortal={ disablePortal }
+        size={dropdownSize || size}
+        width={dropdownWidth}
+        margin={5}
+        onChange={this.onOptionClick}
+        target={target}
+        options={options}
+        disablePortal={disablePortal}
       />
     );
   }
 
   render() {
     const dropdown = this.renderDropdown();
-    const { label, size, disabled, processing, error } = this.props;
-    const className = classnames('rc-split-button', this.props.className);
+    const { label, size, disabled, processing, error, className } = this.props;
 
     return (
-      <div className={ className }>
+      <div className={classnames('rc-split-button', className)}>
         <Button
-          error={ error }
-          processing={ processing }
-          size={ size }
-          onClick={ this.onClick }
-          label={ label }
-          disabled={ disabled }
+          error={error}
+          processing={processing}
+          size={size}
+          onClick={this.onClick}
+          label={label}
+          disabled={disabled}
           className="rc-button-main"
         />
-        { dropdown }
+        {dropdown}
       </div>
     );
   }

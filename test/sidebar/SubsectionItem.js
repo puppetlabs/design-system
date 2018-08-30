@@ -11,26 +11,36 @@ describe('<SubsectionItem />', () => {
   };
 
   it('should render without blowing up', () => {
-    const wrapper = shallow(<SubsectionItem { ...defaultProps } />);
+    const wrapper = shallow(<SubsectionItem {...defaultProps} />);
 
     expect(wrapper.length).to.eql(1);
   });
 
   it('should not be active if title prop !== selected prop', () => {
-    const wrapper = shallow(<SubsectionItem { ...defaultProps } selected="bar" />);
+    const wrapper = shallow(
+      <SubsectionItem {...defaultProps} selected="bar" />,
+    );
 
-    expect(wrapper.hasClass('rc-sidebar-subsection-item-selected')).to.eql(false);
+    expect(wrapper.hasClass('rc-sidebar-subsection-item-selected')).to.eql(
+      false,
+    );
   });
 
   it('should be active if title prop === selected prop', () => {
-    const wrapper = shallow(<SubsectionItem { ...defaultProps } selected="foo" />);
+    const wrapper = shallow(
+      <SubsectionItem {...defaultProps} selected="foo" />,
+    );
 
-    expect(wrapper.hasClass('rc-sidebar-subsection-item-selected')).to.eql(true);
+    expect(wrapper.hasClass('rc-sidebar-subsection-item-selected')).to.eql(
+      true,
+    );
   });
 
   it('should respond to click events if onClick provided', () => {
     const onClick = sinon.spy();
-    const wrapper = mount(<SubsectionItem { ...defaultProps } onClick={ onClick } />);
+    const wrapper = mount(
+      <SubsectionItem {...defaultProps} onClick={onClick} />,
+    );
 
     wrapper.find('a').simulate('click');
 

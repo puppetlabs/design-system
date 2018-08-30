@@ -3,14 +3,11 @@ import React from 'react';
 import Select from '../select/Select';
 
 const propTypes = {
-  data: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number,
-  ]),
+  data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
   column: PropTypes.string,
-  rowData: PropTypes.object,
-  options: PropTypes.array,
+  rowData: PropTypes.shape({}),
+  options: PropTypes.arrayOf(PropTypes.string, PropTypes.shape({})),
   disabled: PropTypes.bool,
 };
 
@@ -24,7 +21,6 @@ const defaultProps = {
 };
 
 class ColumnSelect extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -32,18 +28,22 @@ class ColumnSelect extends React.Component {
   }
 
   onChange(id) {
-    const newRowData = this.props.rowData;
+    const { rowData, column, onChange } = this.props;
+    const newRowData = rowData;
 
-    newRowData[this.props.column] = id;
+    newRowData[column] = id;
 
-    if (this.props.onChange) {
-      this.props.onChange(newRowData);
+    if (onChange) {
+      onChange(newRowData);
     }
   }
 
   render() {
-    const options = this.props.options.map((option) => {
-      if (this.props.data === option.value) {
+    const { options: optionsProp, data, disabled } = this.props;
+    const options = optionsProp.map(o => {
+      const option = o;
+
+      if (data === option.value) {
         option.selected = true;
       }
 
@@ -51,11 +51,7 @@ class ColumnSelect extends React.Component {
     });
 
     return (
-      <Select
-        options={ options }
-        onSelect={ this.onChange }
-        disabled={ this.props.disabled }
-      />
+      <Select options={options} onSelect={this.onChange} disabled={disabled} />
     );
   }
 }

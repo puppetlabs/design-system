@@ -2,7 +2,6 @@
 
 ```
 <Checkbox />
-
 ```
 
 ## Checked

@@ -33,40 +33,46 @@ class Checkbox extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (this.state.checked !== newProps.checked) {
+    const { checked } = this.state;
+
+    if (checked !== newProps.checked) {
       this.setState({ checked: newProps.checked });
     }
   }
 
   onChange() {
-    const checked = !this.state.checked;
+    const { onChange } = this.props;
 
-    this.setState({ checked }, () => this.props.onChange(checked));
+    this.setState(
+      state => ({ ...state, checked: !state.checked }),
+      () => {
+        const { checked } = this.state;
+        onChange(checked);
+      },
+    );
   }
 
   render() {
+    const { checked } = this.state;
+    const { disabled, name } = this.props;
+
     const className = classnames('rc-checkbox', {
-      'rc-checkbox-checked': this.state.checked,
-      'rc-checkbox-disabled': this.props.disabled,
+      'rc-checkbox-checked': checked,
+      'rc-checkbox-disabled': disabled,
     });
 
     return (
       <div className="rc-checkbox-container">
         <input
           type="checkbox"
-          onChange={ this.onChange }
-          disabled={ this.props.disabled }
-          checked={ this.state.checked }
-          className={ className }
-          value={ this.props.name }
-          id={ this.props.name }
+          onChange={this.onChange}
+          disabled={disabled}
+          checked={checked}
+          className={className}
+          value={name}
+          id={name}
         />
-        <Icon
-          onClick={ this.onChange }
-          type="check"
-          width="16px"
-          height="16px"
-        />
+        <Icon onClick={this.onChange} type="check" width="16px" height="16px" />
       </div>
     );
   }
