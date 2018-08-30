@@ -11,17 +11,23 @@ const propTypes = {
 };
 
 const defaultProps = {
-  children: '',
   as: 'h1',
+  className: '',
+  color: null,
+  hero: false,
 };
 
-const Heading = (props) => {
+const Heading = props => {
   const { children, as, className, color, hero, ...others } = props;
-  const classNames = classnames('rc-heading', {
-    'rc-heading-hero': hero,
-    [`rc-heading-${as}`]: as && !hero ? as : false,
-    [`rc-heading-${color}`]: color,
-  }, className);
+  const classNames = classnames(
+    'rc-heading',
+    {
+      'rc-heading-hero': hero,
+      [`rc-heading-${as}`]: as && !hero ? as : false,
+      [`rc-heading-${color}`]: color,
+    },
+    className,
+  );
 
   /**
    * JSX requires element names to be capitalized if they are referenced as variables
@@ -29,10 +35,7 @@ const Heading = (props) => {
   const Component = as;
 
   return (
-    <Component
-      className={ classNames }
-      { ...others }
-    >
+    <Component className={classNames} {...others}>
       {children}
     </Component>
   );
