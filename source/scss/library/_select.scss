@@ -56,11 +56,11 @@
   // transition: all 0.2s;
 
   &:hover {
-    border: $puppet-input-hover-border;
+    border: $puppet-input-border-hover;
   }
 
   &:hover .rc-select-action .rc-icon-chevron-down {
-    fill: $puppet-action-color;
+    fill: $puppet-action-base;
   }
 }
 
@@ -140,7 +140,7 @@
   }
 
   &:hover .rc-select-input .rc-icon-chevron-down {
-    fill: $puppet-icon-fill;
+    fill: $puppet-icon-fill-base;
   }
 }
 
@@ -164,10 +164,6 @@
 
   .rc-select-action:last-of-type {
     margin-right: 0;
-  }
-
-  .rc-select-action:hover {
-    transform: scale(1.2);
   }
 }
 
@@ -206,7 +202,7 @@
   }
 
   .rc-select-actions .rc-icon-chevron-down {
-    fill: $puppet-action-color;
+    fill: $puppet-action-base;
   }
 }
 

@@ -96,7 +96,7 @@
 
   .rc-icon {
     @include icon-opacity-hover;
-    fill: $puppet-icon-fill;
+    fill: $puppet-icon-fill-base;
   }
 }
 

@@ -228,7 +228,7 @@
 }
 
 .rc-saving {
-  background: $puppet-active-color-hover;
+  background: $puppet-action-hover;
   height: 4px;
   left: 0;
   overflow: hidden;
@@ -240,7 +240,7 @@
 
   &::after {
     animation: 1.5s infinite ease-in-out indeterminate-bar;
-    background: $puppet-active-color;
+    background: $puppet-action-active;
     bottom: 0;
     content: '';
     height: 8px;

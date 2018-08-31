@@ -10,10 +10,10 @@
 }
 
 .rc-filters-action:hover {
-  color: $puppet-action-color !important;
+  color: $puppet-action-base !important;
 
   .rc-icon {
-    fill: $puppet-action-color;
+    fill: $puppet-action-base;
   }
 }
 

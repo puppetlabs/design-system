@@ -40,7 +40,7 @@
 
   .rc-icon {
     @include icon-opacity-hover;
-    fill: $puppet-icon-fill;
+    fill: $puppet-icon-fill-base;
   }
 }
 
@@ -65,12 +65,12 @@
   }
 
   &:hover .rc-accordion-item-header-title {
-    color: $puppet-action-color;
+    color: $puppet-action-base;
   }
 
   &:hover .rc-accordion-header-icon .rc-icon,
   &:hover .rc-accordion-item-header-action .rc-icon {
-    fill: $puppet-icon-action;
+    fill: $puppet-icon-fill-action-base;
   }
 }
 
