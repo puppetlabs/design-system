@@ -406,7 +406,6 @@ $puppet-checkbox-disabled-border-color      : $puppet-border-color !default;
 $puppet-select-color                        : $puppet-input-color !default;
 $puppet-select-border-radius                : $puppet-input-border-radius !default;
 $puppet-select-menu-bg                      : $puppet-white !default;
-
 $puppet-select-item-highlighted-bg          : $puppet-action-hover !default;
 
 
@@ -474,9 +473,9 @@ $puppet-menu-item-color-hover-dark          : $puppet-white !default;
 $puppet-menu-item-bg-hover                  : $puppet-n50 !default;
 $puppet-menu-item-bg-hover-dark             : $puppet-n700 !default;
 
-$puppet-menu-item-color-selected: $puppet-brand-primary !default;
-$puppet-menu-item-bg-selected: $puppet-action-color !default;
-$puppet-menu-item-border-selected: $puppet-border-active-hover !default;
+$puppet-menu-item-color-selected            : $puppet-action-color !default;
+$puppet-menu-item-bg-selected               : $puppet-action-color !default;
+$puppet-menu-item-border-selected           : $puppet-border-active-hover !default;
 
 $puppet-menu-item-color-disabled            : $puppet-bg-light !default;
 $puppet-menu-item-bg-disabled               : $puppet-n400 !default;

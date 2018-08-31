@@ -129,6 +129,7 @@
       @if type-of($value) == 'map' {
         @include modifiers($value, $attribute, $separator);
       }
+
       @else {
         #{$attribute}: $value;
       }

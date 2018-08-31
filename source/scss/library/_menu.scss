@@ -265,11 +265,6 @@
   outline: none;
 }
 
-.rc-menu-actions-buttons {
-  display: flex;
-  flex: 1 1 auto;
-  justify-content: flex-end;
-}
 
 .rc-menu-actions {
   align-items: center;
@@ -277,13 +272,19 @@
   border-bottom: $puppet-menu-section-border;
   border-left: $puppet-menu-section-border;
   border-right: $puppet-menu-section-border;
-  display: flex;
   padding: $puppet-menu-actions-padding;
 
   &.rc-menu-actions-centered .rc-menu-actions-buttons {
     justify-content: center;
   }
 }
+
+.rc-menu-actions-buttons {
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: flex-end;
+}
+
 
 .rc-menu-actions-message {
   color: $puppet-menu-actions-color;
