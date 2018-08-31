@@ -73,7 +73,8 @@ class TooltipStickyArea extends React.Component {
 
   render() {
     const tooltip = this.renderTooltip();
-    const { open, children } = this.state;
+    const { open } = this.state;
+    const { children } = this.props;
 
     return (
       <div
