@@ -8,7 +8,7 @@ import Subsection from './Subsection';
 import SubsectionItem from './SubsectionItem';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   /** Easy prop to enable toggle between sidebar sizes */
   togglable: PropTypes.bool,
   /** Is sidebar at the smaller size? */
@@ -42,15 +42,20 @@ class Sidebar extends React.Component {
   }
 
   onToggle() {
-    this.setState({ minimized: !this.state.minimized });
+    const { minimized } = this.state;
+
+    this.setState({ minimized: !minimized });
   }
 
   getSections() {
-    return React.Children.map(this.props.children, (section, idx) => {
+    const { children } = this.props;
+    const { selected } = this.state;
+
+    return React.Children.map(children, (section, idx) => {
       const props = {
         key: getKey(section, idx),
         onSectionClick: this.onSectionClick,
-        selected: this.state.selected,
+        selected,
       };
 
       return React.cloneElement(section, props);
@@ -58,9 +63,10 @@ class Sidebar extends React.Component {
   }
 
   getToggle() {
+    const { minimized } = this.state;
     let icon = 'chevron-left';
 
-    if (this.state.minimized) {
+    if (minimized) {
       icon = 'chevron-right';
     }
 
@@ -68,30 +74,32 @@ class Sidebar extends React.Component {
       <div className="rc-sidebar-toggle">
         <Button
           className="rc-sidebar-toggle-btn"
-          onClick={ this.onToggle }
+          onClick={this.onToggle}
           block
           transparent
-          icon={ icon }
+          icon={icon}
         />
       </div>
     );
   }
 
   render() {
+    const { togglable } = this.props;
+    const { minimized } = this.state;
     const sections = this.getSections();
     const className = classnames('rc-sidebar', {
-      'rc-sidebar-minimized': this.state.minimized,
+      'rc-sidebar-minimized': minimized,
     });
 
     let toggle;
-    if (this.props.togglable) {
+    if (togglable) {
       toggle = this.getToggle();
     }
 
     return (
-      <div className={ className }>
-        { sections }
-        { toggle }
+      <div className={className}>
+        {sections}
+        {toggle}
       </div>
     );
   }

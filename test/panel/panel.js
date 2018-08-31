@@ -11,7 +11,7 @@ describe('<Panel />', () => {
 
   it('should respond to remove link if onRemove provided', () => {
     const onRemove = sinon.spy();
-    const wrapper = mount(<Panel onRemove={ onRemove } />);
+    const wrapper = mount(<Panel onRemove={onRemove} />);
 
     wrapper.find('.rc-panel-remove').simulate('click');
 

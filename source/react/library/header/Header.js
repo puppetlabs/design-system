@@ -9,12 +9,18 @@ const propTypes = {
   onLogoClick: PropTypes.func,
   onNavClick: PropTypes.func,
   logo: PropTypes.element,
-  nav: PropTypes.array,
+  nav: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.any,
+    }),
+  ),
 };
 
 const defaultProps = {
   nav: [],
   onNavClick: () => {},
+  logo: undefined,
+  onLogoClick: undefined,
 };
 
 class Header extends React.Component {
@@ -30,9 +36,10 @@ class Header extends React.Component {
   }
 
   onNavClick(key) {
+    const { onNavClick } = this.props;
     this.setState({ menuOpen: false });
 
-    this.props.onNavClick(key);
+    onNavClick(key);
   }
 
   onMenuItemClick(option) {
@@ -40,99 +47,110 @@ class Header extends React.Component {
   }
 
   onMenuToggle() {
-    this.setState({ menuOpen: !this.state.menuOpen });
+    this.setState(state => ({ menuOpen: !state.menuOpen }));
   }
 
   onLogoClick() {
+    const { onLogoClick } = this.props;
     this.setState({ menuOpen: false });
 
-    this.props.onLogoClick();
+    if (onLogoClick) {
+      onLogoClick();
+    }
   }
 
   renderNav() {
-    const navItems = this.props.nav.map(item => (
+    const { nav } = this.props;
+    const navItems = nav.map(item => (
       <Button
-        key={ item.key }
+        key={item.key}
         size="auto"
-        onClick={ () => this.onNavClick(item.key) }
-        icon={ item.icon }
+        onClick={() => this.onNavClick(item.key)}
+        icon={item.icon}
         transparent
       />
     ));
 
-    return (
-      <div className="rc-header-items">
-        { navItems }
-      </div>
-    );
+    return <div className="rc-header-items">{navItems}</div>;
   }
 
   renderMenuControl() {
-    const icon = this.state.menuOpen ? 'close' : 'list';
+    const { menuOpen } = this.state;
+    const icon = menuOpen ? 'close' : 'list';
 
+    // TODO: This should render a button element or an anchor if its for navigation
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/anchor-is-valid */
     return (
-      <a tabIndex={ 0 } role="button" className="rc-header-menu-control" onClick={ this.onMenuToggle }>
-        <Icon size="medium" type={ icon } />
+      <a
+        tabIndex={0}
+        role="button"
+        className="rc-header-menu-control"
+        onClick={this.onMenuToggle}
+      >
+        <Icon size="medium" type={icon} />
       </a>
     );
+    /* eslint-enable */
   }
 
   renderMenu() {
-    const options = this.props.nav.map(o => ({
+    const { nav } = this.props;
+    const options = nav.map(o => ({
       id: o.key,
       ...o,
     }));
 
     return (
       <Menu dark className="rc-header-menu" size="medium">
-        <Menu.Header title="Account" onClose={ this.onMenuToggle } />
-        <Menu.List options={ options } onChange={ this.onMenuItemClick } />
+        <Menu.Header title="Account" onClose={this.onMenuToggle} />
+        <Menu.List options={options} onChange={this.onMenuItemClick} />
       </Menu>
     );
   }
 
   renderLogo() {
-    let jsx = this.props.logo;
+    const { logo, onLogoClick } = this.props;
+    let jsx = logo;
 
-    if (jsx && this.props.onLogoClick) {
+    // TODO: This should render a button element or an anchor if its for navigation
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/anchor-is-valid */
+    if (jsx && onLogoClick) {
       jsx = (
-        <a role="button" tabIndex={ 0 } onClick={ this.onLogoClick }>
-          { jsx }
+        <a role="button" tabIndex={0} onClick={this.onLogoClick}>
+          {jsx}
         </a>
       );
     }
+    /* eslint-enable */
 
     if (jsx) {
-      jsx = (
-        <div className="rc-header-logo">
-          { jsx }
-        </div>
-      );
+      jsx = <div className="rc-header-logo">{jsx}</div>;
     }
 
     return jsx;
   }
 
   render() {
+    const { menuOpen } = this.state;
     let menu;
     const nav = this.renderNav();
     const menuControl = this.renderMenuControl();
     const logo = this.renderLogo();
 
-    if (this.state.menuOpen) {
+    if (menuOpen) {
       menu = this.renderMenu();
     }
 
     return (
       <div className="rc-header-container">
-        { menu }
+        {menu}
         <div className="rc-header">
-          <div className="rc-header-left">
-            { logo }
-          </div>
+          <div className="rc-header-left">{logo}</div>
           <div className="rc-header-right">
-            { nav }
-            { menuControl }
+            {nav}
+            {menuControl}
           </div>
         </div>
       </div>

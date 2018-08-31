@@ -48,6 +48,7 @@ initialState = { isOpen: null };
 ```
 
 Modals can have sidebars:
+
 ```
 initialState = { isOpen: null };
 <div>

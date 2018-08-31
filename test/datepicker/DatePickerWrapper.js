@@ -18,14 +18,16 @@ describe('<DatePickerWrapper />', () => {
   ];
 
   it('should render without blowing up', () => {
-    const wrapper = shallow(<DatePickerWrapper onChange={ noop } range={ range } />);
+    const wrapper = shallow(
+      <DatePickerWrapper onChange={noop} range={range} />,
+    );
 
     expect(wrapper.length).to.equal(1);
   });
 
   it('should render the appropriate number of ranges when provided', () => {
     const wrapper = shallow(
-      <DatePickerWrapper onChange={ noop } range={ range } ranges={ ranges } />
+      <DatePickerWrapper onChange={noop} range={range} ranges={ranges} />,
     );
 
     // the 4th range is custom
@@ -35,10 +37,13 @@ describe('<DatePickerWrapper />', () => {
   it('should fire the change event when the first range is clicked', () => {
     const onChange = sinon.spy();
     const wrapper = shallow(
-      <DatePickerWrapper onChange={ onChange } range={ range } ranges={ ranges } />
+      <DatePickerWrapper onChange={onChange} range={range} ranges={ranges} />,
     );
 
-    wrapper.find('.rc-ranges li').first().simulate('click');
+    wrapper
+      .find('.rc-ranges li')
+      .first()
+      .simulate('click');
     expect(onChange.called).to.equal(true);
   });
 });

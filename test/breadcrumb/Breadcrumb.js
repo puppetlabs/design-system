@@ -22,7 +22,7 @@ describe('<Breadcrumb.Section />', () => {
 
   it('should not fire the onClick event when a section without a link is clicked', () => {
     const onClick = sinon.spy();
-    const wrapper = shallow(<Breadcrumb.Section onClick={ onClick } />);
+    const wrapper = shallow(<Breadcrumb.Section onClick={onClick} />);
     wrapper.onClick = onClick;
     wrapper.simulate('click');
 
@@ -31,7 +31,9 @@ describe('<Breadcrumb.Section />', () => {
 
   it('should fire the onClick event when a section with a link is clicked', () => {
     const onClick = sinon.spy();
-    const wrapper = shallow(<Breadcrumb.Section onClick={ onClick } link route="test" />);
+    const wrapper = shallow(
+      <Breadcrumb.Section onClick={onClick} link route="test" />,
+    );
     wrapper.onClick = onClick;
     wrapper.simulate('click');
 

@@ -33,29 +33,42 @@ const defaultProps = {
 // eslint-disable-next-line react/prefer-stateless-function
 class DropdownLabel extends React.Component {
   render() {
-    let label = this.props.label;
+    const {
+      label: propsLabel,
+      placeholder,
+      select,
+      error,
+      tabIndex,
+      disabled,
+      onClick,
+    } = this.props;
+    let label = propsLabel;
 
-    if (this.props.placeholder && !label) {
-      label = this.props.placeholder;
+    if (placeholder && !label) {
+      label = placeholder;
     } else if (!label) {
       label = 'Select One';
     }
 
     const className = classnames('rc-dropdown-toggle', {
-      'rc-dropdown-toggle-select': this.props.select,
-      'rc-dropdown-toggle-error': this.props.error,
+      'rc-dropdown-toggle-select': select,
+      'rc-dropdown-toggle-error': error,
     });
 
+    // TODO: This should render a button element or an anchor if its for navigation
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/anchor-is-valid */
     return (
       <a
         role="button"
-        tabIndex={ this.props.tabIndex }
-        disabled={ this.props.disabled }
-        onClick={ this.props.onClick }
-        className={ className }
+        tabIndex={tabIndex}
+        disabled={disabled}
+        onClick={onClick}
+        className={className}
       >
         <span className="rc-dropdown-label">
-          <span className="rc-dropdown-label-text">{ label }</span> <Icon width="8px" height="8px" type="chevron-down" />
+          <span className="rc-dropdown-label-text">{label}</span>{' '}
+          <Icon width="8px" height="8px" type="chevron-down" />
         </span>
       </a>
     );

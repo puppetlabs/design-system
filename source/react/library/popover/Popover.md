@@ -8,6 +8,7 @@ const target = <Button label="Default Popover" />;
 ```
 
 Bottom right popover
+
 ```
 const Button = require('../buttons/Button.js').default;
 const target = <Button label="Bottom right popover" />;
@@ -18,6 +19,7 @@ const target = <Button label="Bottom right popover" />;
 ```
 
 Top left popover
+
 ```
 const Button = require('../buttons/Button.js').default;
 const target = <Button label="Left top popover" />;
@@ -28,6 +30,7 @@ const target = <Button label="Left top popover" />;
 ```
 
 Top right popover
+
 ```
 const Button = require('../buttons/Button.js').default;
 const target = <Button label="Right top popover" />;
@@ -38,6 +41,7 @@ const target = <Button label="Right top popover" />;
 ```
 
 Dark popover
+
 ```
 const Button = require('../buttons/Button.js').default;
 const target = <Button label="dark popover" />;

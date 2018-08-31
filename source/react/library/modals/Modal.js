@@ -15,21 +15,15 @@ const propTypes = {
   height: PropTypes.string,
   size: PropTypes.oneOf(['small', 'medium']),
   /** Content to render within sidebar */
-  sidebar: PropTypes.any,
+  sidebar: PropTypes.node,
   sidebarPosition: PropTypes.oneOf(['left', 'right']),
   /** Actions to render */
-  actions: PropTypes.any,
+  actions: PropTypes.node,
   /** Supporting text to render next to actions */
   actionsCTA: PropTypes.string,
-  modalClassName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
-  overlayClassName: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.object,
-  ]),
-  children: PropTypes.any,
+  modalClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  overlayClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -73,10 +67,11 @@ class Modal extends React.Component {
   }
 
   componentDidMount() {
+    const { onClose, bindShortcut } = this.props;
     window.addEventListener('resize', this.onResize);
 
-    if (this.props.onClose && this.props.bindShortcut) {
-      this.props.bindShortcut('esc', this.onClose);
+    if (onClose && bindShortcut) {
+      bindShortcut('esc', this.onClose);
     }
 
     setBodyOverflow('hidden');
@@ -94,10 +89,11 @@ class Modal extends React.Component {
   }
 
   componentWillUnmount() {
+    const { onClose, unbindShortcut } = this.props;
     window.removeEventListener('resize', this.onResize);
 
-    if (this.props.onClose && this.props.unbindShortcut) {
-      this.props.unbindShortcut('esc');
+    if (onClose && unbindShortcut) {
+      unbindShortcut('esc');
     }
 
     setBodyOverflow('');
@@ -108,43 +104,40 @@ class Modal extends React.Component {
   }
 
   onClose(e) {
+    const { onClose } = this.props;
     e.preventDefault();
 
-    if (this.props.onClose) {
-      this.props.onClose();
+    if (onClose) {
+      onClose();
     }
   }
 
   getModalHeight() {
-    let height = 0;
-
     if (this.modal) {
-      const modal = this.modal;
+      const { modal } = this;
       const modalRect = modal.getBoundingClientRect();
 
-      height = modalRect.height;
+      return modalRect.height;
     }
 
-    return height;
+    return 0;
   }
 
   getContentHeight() {
-    let height = 0;
-
     if (this.content) {
-      const content = this.content;
+      const { content } = this;
       const contentRect = content.getBoundingClientRect();
-      height = contentRect.height;
+      return contentRect.height;
     }
 
-    return height;
+    return 0;
   }
 
   getContentScroll() {
     let scroll = 0;
 
     if (this.content) {
-      const content = this.content;
+      const { content } = this;
       scroll = content.scrollTop;
     }
 
@@ -152,15 +145,14 @@ class Modal extends React.Component {
   }
 
   getSidebarHeight() {
-    let height = 0;
+    const { sidebar } = this.props;
 
-    if (this.props.sidebar && this.sidebar) {
-      const sidebar = this.sidebar;
-      const sidebarRect = sidebar.getBoundingClientRect();
-      height = sidebarRect.height;
+    if (sidebar && this.sidebar) {
+      const sidebarRect = this.sidebar.getBoundingClientRect();
+      return sidebarRect.height;
     }
 
-    return height;
+    return 0;
   }
 
   setPosition() {
@@ -172,11 +164,12 @@ class Modal extends React.Component {
   }
 
   setContentHeight() {
-    let propHeight = this.state.height;
-    const propMargin = this.state.margin;
+    const { height, margin } = this.state;
+    let propHeight = height;
+    const propMargin = margin;
     const windowHeight = window.innerHeight;
     // window padding is the amount of space we always want around the modal;
-    const windowPadding = propMargin || (64 * 2);
+    const windowPadding = propMargin || 64 * 2;
     const modalHeight = this.getModalHeight();
     const contentHeight = this.getContentHeight();
 
@@ -199,8 +192,8 @@ class Modal extends React.Component {
 
         this.content.style.height = `${newHeight}px`;
       }
-    } else if (propMargin && (modalHeight > (windowHeight - propMargin))) {
-      const heightDecrease = (modalHeight - windowHeight) + windowPadding;
+    } else if (propMargin && modalHeight > windowHeight - propMargin) {
+      const heightDecrease = modalHeight - windowHeight + windowPadding;
       this.content.style.height = `${contentHeight - heightDecrease}px`;
     }
   }
@@ -212,7 +205,8 @@ class Modal extends React.Component {
   }
 
   setSidebarHeight() {
-    if (this.props.sidebar) {
+    const { sidebar } = this.props;
+    if (sidebar) {
       const modalHeight = this.getModalHeight();
       const newHeight = modalHeight;
 
@@ -241,15 +235,18 @@ class Modal extends React.Component {
   }
 
   renderSidebar() {
+    const { sidebar } = this.props;
     let jsx;
 
-    if (this.props.sidebar) {
+    if (sidebar) {
       jsx = (
         <div
-          ref={ (c) => { this.sidebar = c; } }
+          ref={c => {
+            this.sidebar = c;
+          }}
           className="rc-modal-sidebar"
         >
-          { this.props.sidebar }
+          {sidebar}
         </div>
       );
     }
@@ -264,21 +261,31 @@ class Modal extends React.Component {
 
     if (actions) {
       if (actionsCTA) {
-        cta = <span className="rc-modal-actions-cta">{ actionsCTA }</span>;
+        cta = <span className="rc-modal-actions-cta">{actionsCTA}</span>;
       }
 
-      jsx = (<div className="rc-modal-actions">{ cta }<ButtonGroup>{ actions }</ButtonGroup></div>);
+      jsx = (
+        <div className="rc-modal-actions">
+          {cta}
+          <ButtonGroup>{actions}</ButtonGroup>
+        </div>
+      );
     }
 
     return jsx;
   }
 
   renderCloseLink() {
+    const { onClose } = this.props;
     let jsx;
 
-    if (this.props.onClose) {
+    if (onClose) {
       jsx = (
-        <div role="presentation" onClick={ this.onClose } className="rc-modal-close" />
+        <div
+          role="presentation"
+          onClick={this.onClose}
+          className="rc-modal-close"
+        />
       );
     }
 
@@ -286,15 +293,25 @@ class Modal extends React.Component {
   }
 
   renderCloseButton() {
+    const { onClose } = this.props;
     let jsx;
 
-    if (this.props.onClose) {
+    // TODO: This should render a button element or an anchor if its for navigation
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/anchor-is-valid */
+    if (onClose) {
       jsx = (
-        <a className="rc-modal-close-button" role="button" tabIndex={ 0 } onClick={ this.onClose }>
+        <a
+          className="rc-modal-close-button"
+          role="button"
+          tabIndex={0}
+          onClick={this.onClose}
+        >
           <Icon size="tiny" type="close" />
         </a>
       );
     }
+    /* eslint-enable */
 
     return jsx;
   }
@@ -306,27 +323,47 @@ class Modal extends React.Component {
     const closeButton = this.renderCloseButton();
     const sidebar = this.renderSidebar();
     const actions = this.renderActions();
-    const { children, size, sidebarPosition } = this.props;
-    const modalClassName = classname('rc-modal', {
-      'rc-modal-with-sidebar': sidebar,
-      [`rc-modal-with-sidebar-${sidebarPosition}`]: sidebar,
-      [`rc-modal-${size}`]: size,
-    }, this.props.modalClassName);
-    const overlayClassName = classname('rc-modal-overlay', this.props.overlayClassName);
+    const {
+      children,
+      size,
+      sidebarPosition,
+      modalClassName: modalClassNameProps,
+      overlayClassName: overlayClassNameProps,
+    } = this.props;
+    const modalClassName = classname(
+      'rc-modal',
+      {
+        'rc-modal-with-sidebar': sidebar,
+        [`rc-modal-with-sidebar-${sidebarPosition}`]: sidebar,
+        [`rc-modal-${size}`]: size,
+      },
+      modalClassNameProps,
+    );
+    const overlayClassName = classname(
+      'rc-modal-overlay',
+      overlayClassNameProps,
+    );
 
     return (
-      <div className={ overlayClassName }>
-        { closeLink }
+      <div className={overlayClassName}>
+        {closeLink}
         <div
-          ref={ (c) => { this.modal = c; } }
-          className={ modalClassName }
+          ref={c => {
+            this.modal = c;
+          }}
+          className={modalClassName}
         >
-          { sidebar }
-          <div ref={ (c) => { this.content = c; } } className="rc-modal-content">
-            { children }
+          {sidebar}
+          <div
+            ref={c => {
+              this.content = c;
+            }}
+            className="rc-modal-content"
+          >
+            {children}
           </div>
-          { actions }
-          { closeButton }
+          {actions}
+          {closeButton}
         </div>
       </div>
     );

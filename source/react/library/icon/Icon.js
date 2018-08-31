@@ -17,20 +17,29 @@ const defaultProps = {
   width: '30px',
 };
 
-const Icon = (props) => {
-  const { width, type, height, size } = props;
+const Icon = props => {
+  const {
+    width,
+    type,
+    height,
+    size,
+    svg: propsSvg,
+    viewBox: propsViewBox,
+  } = props;
   const styles = { width, height };
 
-  let svg = props.svg;
-  let viewBox = props.viewBox;
+  let svg = propsSvg;
+  let viewBox = propsViewBox;
   let icon = null;
 
   if (!svg && icons[type]) {
-    svg = icons[type].svg;
+    const { svg: altnerateSvg } = icons[type];
+    svg = altnerateSvg;
   }
 
   if (!viewBox && icons[type]) {
-    viewBox = icons[type].viewBox;
+    const { viewBox: altnerateViewBox } = icons[type];
+    viewBox = altnerateViewBox;
   }
 
   if (size) {
@@ -58,13 +67,13 @@ const Icon = (props) => {
 
     icon = (
       <svg
-        className={ className }
-        width={ width }
-        height={ height }
-        viewBox={ viewBox }
-        style={ styles }
+        className={className}
+        width={width}
+        height={height}
+        viewBox={viewBox}
+        style={styles}
       >
-        { svg }
+        {svg}
       </svg>
     );
   }

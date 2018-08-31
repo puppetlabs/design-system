@@ -7,14 +7,14 @@ import { TooltipHoverArea } from '../tooltips/Tooltip';
 const propTypes = {
   size: PropTypes.oneOf(['tiny', 'small', 'medium']),
   className: PropTypes.string,
-  actions: PropTypes.any,
-  kebab: PropTypes.any,
+  actions: PropTypes.node,
+  kebab: PropTypes.node,
   onRemove: PropTypes.func,
   onEdit: PropTypes.func,
   onClick: PropTypes.func,
   selected: PropTypes.bool,
   tooltip: PropTypes.bool,
-  children: PropTypes.any,
+  children: PropTypes.node,
   fancy: PropTypes.bool,
 };
 
@@ -45,41 +45,46 @@ class ListItem extends React.PureComponent {
   }
 
   onClick(e) {
+    const { onClick, selected } = this.props;
+
     if (e) {
       e.preventDefault();
     }
 
-    if (this.props.onClick) {
-      this.props.onClick(!this.props.selected);
+    if (onClick) {
+      onClick(!selected);
     }
   }
 
   onRemove(e) {
+    const { onRemove } = this.props;
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
 
-    if (this.props.onRemove) {
-      this.props.onRemove();
+    if (onRemove) {
+      onRemove();
     }
   }
 
   onEdit(e) {
+    const { onEdit } = this.props;
     if (e) {
       e.preventDefault();
       e.stopPropagation();
     }
 
-    if (this.props.onEdit) {
-      this.props.onEdit();
+    if (onEdit) {
+      onEdit();
     }
   }
 
   getIconSize() {
+    const { size } = this.props;
     let iconSize = '12px';
 
-    if (this.props.size === 'tiny') {
+    if (size === 'tiny') {
       iconSize = '10px';
     }
 
@@ -87,53 +92,62 @@ class ListItem extends React.PureComponent {
   }
 
   renderRemove() {
+    const { onRemove } = this.props;
     const iconSize = this.getIconSize();
     let jsx;
 
-    if (this.props.onRemove) {
+    // TODO: This should render a button element or an anchor if its for navigation
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/anchor-is-valid */
+    if (onRemove) {
       jsx = (
         <a
           role="button"
-          tabIndex={ 0 }
+          tabIndex={0}
           className="rc-list-item-action rc-list-item-remove"
-          onClick={ this.onRemove }
+          onClick={this.onRemove}
         >
-          <Icon type="close" width={ iconSize } height={ iconSize } />
+          <Icon type="close" width={iconSize} height={iconSize} />
         </a>
       );
     }
+    /* eslint-enable */
 
     return jsx;
   }
 
   renderEdit() {
+    const { onEdit } = this.props;
     const iconSize = this.getIconSize();
     let jsx;
 
-    if (this.props.onEdit) {
+    // TODO: This should render a button element or an anchor if its for navigation
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/anchor-is-valid */
+    if (onEdit) {
       jsx = (
         <a
           role="button"
-          tabIndex={ 0 }
+          tabIndex={0}
           className="rc-list-item-action rc-list-item-edit rc-list-item-hidden"
-          onClick={ this.onEdit }
+          onClick={this.onEdit}
         >
-          <Icon type="pencil" width={ iconSize } height={ iconSize } />
+          <Icon type="pencil" width={iconSize} height={iconSize} />
         </a>
       );
     }
+    /* eslint-enable */
 
     return jsx;
   }
 
   renderKebab() {
+    const { kebab } = this.props;
     let jsx;
 
-    if (this.props.kebab) {
+    if (kebab) {
       jsx = (
-        <div className="rc-list-item-action rc-list-item-kebab" >
-          { this.props.kebab }
-        </div>
+        <div className="rc-list-item-action rc-list-item-kebab">{kebab}</div>
       );
     }
 
@@ -141,22 +155,37 @@ class ListItem extends React.PureComponent {
   }
 
   render() {
-    const size = this.props.size;
-    const className = classnames('rc-list-item', this.props.className, `rc-list-item-${size}`, {
-      'rc-list-item-clickable': this.props.onClick,
-      'rc-list-item-selected': this.props.selected,
-      'rc-list-item-kebab': this.props.kebab,
-      'rc-list-item-fancy': this.props.fancy,
-    });
+    const {
+      size,
+      className,
+      onClick,
+      selected,
+      kebab,
+      fancy,
+      actions,
+      children,
+      tooltip,
+    } = this.props;
+
+    const newClassName = classnames(
+      'rc-list-item',
+      className,
+      `rc-list-item-${size}`,
+      {
+        'rc-list-item-clickable': onClick,
+        'rc-list-item-selected': selected,
+        'rc-list-item-kebab': kebab,
+        'rc-list-item-fancy': fancy,
+      },
+    );
+
     const edit = this.renderEdit();
-    const kebab = this.renderKebab();
     const remove = this.renderRemove();
-    const actions = this.props.actions;
-    const content = this.props.children;
+    const content = children;
 
     const props = {
       className: classnames('rc-list-item-link', {
-        'rc-list-item-link-fancy': this.props.fancy,
+        'rc-list-item-link-fancy': fancy,
       }),
     };
 
@@ -166,32 +195,26 @@ class ListItem extends React.PureComponent {
     }
 
     let jsx = (
-      <div { ...props }>
-        { kebab }
-        <span className="rc-list-item-text">
-          { content }
-        </span>
+      <div {...props}>
+        {this.renderKebab()}
+        <span className="rc-list-item-text">{content}</span>
         <span className="rc-list-item-actions">
-          { actions }
-          { edit }
-          { remove }
+          {actions}
+          {edit}
+          {remove}
         </span>
       </div>
     );
 
-    if (this.props.tooltip) {
+    if (tooltip) {
       jsx = (
-        <TooltipHoverArea anchor="bottom" tooltip={ content }>
-          { jsx }
+        <TooltipHoverArea anchor="bottom" tooltip={content}>
+          {jsx}
         </TooltipHoverArea>
       );
     }
 
-    return (
-      <li className={ className }>
-        { jsx }
-      </li>
-    );
+    return <li className={newClassName}>{jsx}</li>;
   }
 }
 

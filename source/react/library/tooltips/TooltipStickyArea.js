@@ -7,15 +7,11 @@ import FadeInAndOut from '../FadeInAndOut';
 const propTypes = {
   anchor: PropTypes.string,
   open: PropTypes.bool,
-  tooltip: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]).isRequired,
+  tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
   onClose: PropTypes.func,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]).isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
 };
 
 const defaultProps = {
@@ -30,7 +26,6 @@ const defaultProps = {
  */
 
 class TooltipStickyArea extends React.Component {
-
   constructor(props) {
     super(props);
 
@@ -44,15 +39,20 @@ class TooltipStickyArea extends React.Component {
   }
 
   componentWillReceiveProps(props) {
-    if (props.open !== this.state.open) {
-      this.setState({ open: props.open });
+    const { open: openState } = this.state;
+    const { open: openProp } = props;
+
+    if (openProp !== openState) {
+      this.setState({ open: openProp });
     }
   }
 
   onClose() {
+    const { onClose } = this.props;
+
     this.setState({ open: false }, () => {
-      if (this.props.onClose) {
-        this.props.onClose();
+      if (onClose) {
+        onClose();
       }
     });
   }
@@ -62,26 +62,30 @@ class TooltipStickyArea extends React.Component {
       return null;
     }
 
+    const { anchor, tooltip } = this.props;
+
     return (
-      <Tooltip sticky target={ this.elem } anchor={ this.props.anchor } onClose={ this.onClose }>
-        { this.props.tooltip }
+      <Tooltip sticky target={this.elem} anchor={anchor} onClose={this.onClose}>
+        {tooltip}
       </Tooltip>
     );
   }
 
   render() {
     const tooltip = this.renderTooltip();
+    const { open } = this.state;
+    const { children } = this.props;
 
     return (
       <div
         className="rc-tooltip-area rc-tooltip-area-sticky"
-        ref={ (c) => { this.elem = c; } }
-        { ...this.props }
+        ref={c => {
+          this.elem = c;
+        }}
+        {...this.props}
       >
-        <FadeInAndOut in={ this.state.open }>
-          { tooltip }
-        </FadeInAndOut>
-        { this.props.children }
+        <FadeInAndOut in={open}>{tooltip}</FadeInAndOut>
+        {children}
       </div>
     );
   }

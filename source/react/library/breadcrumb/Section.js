@@ -2,16 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
   link: PropTypes.bool,
   onClick: PropTypes.func,
   route: PropTypes.string,
 };
 
 const defaultProps = {
+  children: undefined,
   link: false,
+  onClick: () => {},
+  route: '',
 };
-
 
 class BreadcrumbSection extends React.Component {
   constructor(props) {
@@ -39,16 +41,12 @@ class BreadcrumbSection extends React.Component {
 
     if (link) {
       jsx = (
-        <a
-          href={ route }
-          className={ className }
-          onClick={ this.onClick }
-        >
-          { children }
+        <a href={route} className={className} onClick={this.onClick}>
+          {children}
         </a>
       );
     } else {
-      jsx = <div className={ className }>{ children }</div>;
+      jsx = <div className={className}>{children}</div>;
     }
 
     return jsx;

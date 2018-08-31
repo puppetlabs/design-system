@@ -7,20 +7,15 @@ import FadeInAndOut from '../FadeInAndOut';
 const propTypes = {
   anchor: PropTypes.string,
   onClick: PropTypes.func,
-  tooltip: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]).isRequired,
-  children: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.element,
-  ]).isRequired,
+  tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
+    .isRequired,
 };
 
 const defaultProps = {
   anchor: null,
   onClick: null,
-  children: null,
 };
 
 /**
@@ -39,11 +34,13 @@ class TooltipHoverArea extends React.Component {
   }
 
   onClick(e) {
-    if (this.props.onClick) {
+    const { onClick } = this.props;
+
+    if (onClick) {
       // If something is going to happen on click, let's just close the tooltip.
       this.setState({ open: false });
 
-      this.props.onClick(e);
+      onClick(e);
     }
   }
 
@@ -56,19 +53,23 @@ class TooltipHoverArea extends React.Component {
   }
 
   renderTooltip() {
+    const { anchor, tooltip } = this.props;
+
     if (!this.elem) {
       return null;
     }
 
     return (
-      <Tooltip target={ this.elem } anchor={ this.props.anchor }>
-        { this.props.tooltip }
+      <Tooltip target={this.elem} anchor={anchor}>
+        {tooltip}
       </Tooltip>
     );
   }
 
   render() {
     const tooltip = this.renderTooltip();
+    const { open } = this.state;
+    const { children } = this.props;
 
     const props = {
       role: this.onClick ? 'button' : null,
@@ -77,16 +78,16 @@ class TooltipHoverArea extends React.Component {
 
     return (
       <div
-        { ...props }
+        {...props}
         className="rc-tooltip-area rc-tooltip-area-hover"
-        onMouseEnter={ this.onMouseOver }
-        onMouseLeave={ this.onMouseOut }
-        ref={ (c) => { this.elem = c; } }
+        onMouseEnter={this.onMouseOver}
+        onMouseLeave={this.onMouseOut}
+        ref={c => {
+          this.elem = c;
+        }}
       >
-        <FadeInAndOut in={ this.state.open }>
-          { tooltip }
-        </FadeInAndOut>
-        { this.props.children }
+        <FadeInAndOut in={open}>{tooltip}</FadeInAndOut>
+        {children}
       </div>
     );
   }

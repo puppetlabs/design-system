@@ -9,7 +9,11 @@ describe('<Content />', () => {
   jsdom({ skipWindowCheck: true });
 
   it('should render with a content class', () => {
-    const wrapper = shallow(<Content><p>Hello!</p></Content>);
+    const wrapper = shallow(
+      <Content>
+        <p>Hello!</p>
+      </Content>,
+    );
 
     expect(wrapper).to.have.className('rc-content');
   });

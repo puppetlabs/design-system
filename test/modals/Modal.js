@@ -21,7 +21,7 @@ describe('<Modal />', () => {
 
   it('should render a close link if onClose is provided', () => {
     const onClose = sinon.spy();
-    const modal = shallow(<Modal onClose={ onClose } />);
+    const modal = shallow(<Modal onClose={onClose} />);
 
     expect(modal.find('.rc-modal-close-button').length).to.equal(1);
   });
@@ -33,28 +33,32 @@ describe('<Modal />', () => {
   });
 
   it('should contain a valid sidebar text', () => {
-    const modal = shallow(<Modal sidebar={ sidebar } />);
+    const modal = shallow(<Modal sidebar={sidebar} />);
 
     expect(modal.find('.rc-modal-sidebar').text()).to.equal(sidebar);
   });
 
   it('should contain a valid content text', () => {
-    const modal = shallow(<Modal>{ content }</Modal>);
+    const modal = shallow(<Modal>{content}</Modal>);
 
     expect(modal.find('.rc-modal-content').text()).to.equal(content);
   });
 
   it('should contain a button if actions are provided', () => {
     const actions = [<Button key="submit-button" label="submit" />];
-    const modal = shallow(<Modal actions={ actions } />);
+    const modal = shallow(<Modal actions={actions} />);
 
     expect(modal.find('Button').prop('label')).to.equal('submit');
   });
 
   it('should contain an actionsCTA if one is provided', () => {
     const actions = [<Button key="submit-button" label="submit" />];
-    const modal = shallow(<Modal actionsCTA="happy actions cta" actions={ actions } />);
+    const modal = shallow(
+      <Modal actionsCTA="happy actions cta" actions={actions} />,
+    );
 
-    expect(modal.find('.rc-modal-actions-cta').text()).to.eql('happy actions cta');
+    expect(modal.find('.rc-modal-actions-cta').text()).to.eql(
+      'happy actions cta',
+    );
   });
 });

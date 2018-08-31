@@ -4,14 +4,19 @@ import BreadcrumbSection from './Section';
 import BreadcrumbSeparator from './Separator';
 
 const propTypes = {
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
-const Breadcrumb = props => (
-  <div className="rc-breadcrumb">{ props.children }</div>
+const defaultProps = {
+  children: undefined,
+};
+
+const Breadcrumb = ({ children }) => (
+  <div className="rc-breadcrumb">{children}</div>
 );
 
 Breadcrumb.propTypes = propTypes;
+Breadcrumb.defaultProps = defaultProps;
 
 Breadcrumb.Section = BreadcrumbSection;
 Breadcrumb.Separator = BreadcrumbSeparator;

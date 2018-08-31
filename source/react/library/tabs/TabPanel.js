@@ -4,7 +4,7 @@ import classnames from 'classnames';
 
 const propTypes = {
   active: PropTypes.bool,
-  children: PropTypes.any,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -15,16 +15,13 @@ const defaultProps = {
 /**
  * `TabPanel` groups components together within `Tabs`.
  */
-const TabPanel = (props) => {
+const TabPanel = props => {
+  const { active, children } = props;
   const className = classnames('rc-tab-panel', {
-    'rc-tab-panel-active': props.active,
+    'rc-tab-panel-active': active,
   });
 
-  return (
-    <div className={ className }>
-      { props.children }
-    </div>
-  );
+  return <div className={className}>{children}</div>;
 };
 
 TabPanel.propTypes = propTypes;

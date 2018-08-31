@@ -16,5 +16,7 @@ chai.use(chaiEnzyme());
 // as errors, we use sinon.js to stub it into throwing these warning as errors
 // instead.
 before(() => {
-  sinon.stub(console, 'error', (warning) => { throw new Error(warning); });
+  sinon.stub(console, 'error', warning => {
+    throw new Error(warning);
+  });
 });

@@ -13,13 +13,15 @@ describe('<Filters />', () => {
 
   describe('rendering existing filters', () => {
     it('should render a simple filter', () => {
-      const filters = [{
-        field: 'Name',
-        op: '=',
-        value: 'Steve',
-      }];
+      const filters = [
+        {
+          field: 'Name',
+          op: '=',
+          value: 'Steve',
+        },
+      ];
       const fields = ['Name'];
-      const wrapper = shallow(<Filters filters={ filters } fields={ fields } />);
+      const wrapper = shallow(<Filters filters={filters} fields={fields} />);
 
       expect(wrapper.find('FilterItem').length).to.eql(1);
       expect(wrapper.find('FilterItem').prop('filter')).to.eql(filters[0]);
@@ -33,6 +35,22 @@ describe('<Filters />', () => {
 
       wrapper.find('Button').simulate('click');
 
+      expect(wrapper.find('FilterForm').length).to.eql(1);
+    });
+  });
+
+  describe('overriding overridable things', () => {
+    it('should be able to override labels', () => {
+      const filterStrings = {
+        ...Filters.defaultProps.strings,
+        addCTA: 'addCTA custom label',
+      };
+      const wrapper = shallow(<Filters strings={filterStrings} />);
+
+      expect(wrapper.find('Button[icon="plus"]').prop('label')).to.eql(
+        'addCTA custom label',
+      );
+      wrapper.find('Button[secondary=false]').simulate('click');
       expect(wrapper.find('FilterForm').length).to.eql(1);
     });
   });

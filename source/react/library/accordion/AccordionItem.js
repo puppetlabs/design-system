@@ -17,7 +17,7 @@ const propTypes = {
   className: PropTypes.string,
   /** Callback for when the user opens the item */
   onOpen: PropTypes.func,
-  children: PropTypes.any,
+  children: PropTypes.node,
   /** Icon to render next to the title */
   icon: PropTypes.string,
   /** Tooltip to display on hover */
@@ -25,11 +25,13 @@ const propTypes = {
 };
 
 const defaultProps = {
+  title: '',
   icon: '',
   active: false,
   className: '',
   onOpen: () => {},
   children: null,
+  tooltip: undefined,
 };
 
 /**
@@ -44,51 +46,46 @@ class AccordionItem extends React.Component {
   }
 
   onClick(e) {
+    const { onOpen } = this.props;
+
     if (e.nativeEvent) {
-      const nativeEvent = e.nativeEvent;
-      nativeEvent.preventDefault();
+      e.nativeEvent.preventDefault();
     }
 
-    if (this.props.onOpen) {
-      this.props.onOpen();
+    if (onOpen) {
+      onOpen();
     }
   }
 
   renderContent() {
-    return (
-      <div className="rc-accordion-item-content">
-        { this.props.children }
-      </div>
-    );
+    const { children } = this.props;
+
+    return <div className="rc-accordion-item-content">{children}</div>;
   }
 
   renderTitle() {
-    const { active, title } = this.props;
+    const { active, title, icon, tooltip } = this.props;
     const className = classnames('rc-accordion-item-header', {
       'rc-accordion-item-header-active': active,
     });
     let jsx = [];
 
-    if (this.props.icon) {
+    if (icon) {
       jsx.push(
         <span key="header-icon" className="rc-accordion-header-icon">
-          <Icon width="16px" height="16px" type={ this.props.icon } />
+          <Icon width="16px" height="16px" type={icon} />
         </span>,
       );
     }
 
     jsx.push(
       <span key="header-title" className="rc-accordion-item-header-title">
-        { title }
+        {title}
       </span>,
     );
 
     if (active) {
-      jsx = (
-        <div className={ className }>
-          { jsx }
-        </div>
-      );
+      jsx = <div className={className}>{jsx}</div>;
     } else {
       jsx.push(
         <span key="header-action" className="rc-accordion-item-header-action">
@@ -97,16 +94,17 @@ class AccordionItem extends React.Component {
       );
 
       jsx = (
-        <a className="rc-accordion-item-header" href="" onClick={ this.onClick }>
-          { jsx }
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
+        <a className="rc-accordion-item-header" href="" onClick={this.onClick}>
+          {jsx}
         </a>
       );
     }
 
-    if (this.props.tooltip) {
+    if (tooltip) {
       jsx = (
-        <TooltipHoverArea tooltip={ this.props.tooltip } anchor="bottom">
-          { jsx }
+        <TooltipHoverArea tooltip={tooltip} anchor="bottom">
+          {jsx}
         </TooltipHoverArea>
       );
     }
@@ -115,16 +113,21 @@ class AccordionItem extends React.Component {
   }
 
   render() {
-    const className = classnames('rc-accordion-item', {
-      'rc-accordion-item-active': this.props.active,
-    }, this.props.className);
+    const { className, active } = this.props;
+    const classNames = classnames(
+      'rc-accordion-item',
+      {
+        'rc-accordion-item-active': active,
+      },
+      className,
+    );
     const title = this.renderTitle();
     const content = this.renderContent();
 
     return (
-      <div className={ className }>
-        { title }
-        { content }
+      <div className={classNames}>
+        {title}
+        {content}
       </div>
     );
   }

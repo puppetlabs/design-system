@@ -52,6 +52,7 @@
 ```
 
 Clickable, removable tag:
+
 ```
 <Tag
   onClick={ () => { console.log('Tag clicked!'); } }
@@ -64,16 +65,19 @@ Clickable, removable tag:
 ```
 
 Tag with a tooltip:
+
 ```
 <Tag block tooltip>I'm a happy tag with a tooltip!</Tag>
 ```
 
 Selected Tag:
+
 ```
 <Tag block selected>I'm a happy selected Tag!</Tag>
 ```
 
 Tag sizes:
+
 ```
 <Tag block size="tiny">I'm a tiny tag!</Tag>
 ```

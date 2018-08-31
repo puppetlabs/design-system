@@ -26,38 +26,46 @@ class CardActionsSearch extends React.Component {
   }
 
   onSearchBlur(e) {
-    const value = e.target.value;
+    const {
+      target: { value },
+    } = e;
+    const { onSearch } = this.props;
 
     // If they clear then click out, remove the search.
     if (value === '') {
-      this.props.onSearch(null);
+      onSearch(null);
     }
   }
 
   onSearchKeyUp(e) {
+    const { onSearch } = this.props;
     if (e.keyCode === ENTER_KEY_CODE) {
-      const value = e.target.value;
+      const {
+        target: { value },
+      } = e;
 
-      this.props.onSearch(value);
+      onSearch(value);
     }
   }
 
   toggleSearch() {
-    this.setState({ searching: !this.state.searching });
+    const { searching } = this.state;
+    this.setState({ searching: !searching });
   }
 
   renderInput() {
+    const { searching } = this.state;
     let jsx;
 
-    if (this.state.searching) {
+    if (searching) {
       jsx = (
         <Input
           autoFocus
-          onBlur={ this.onSearchBlur }
-          onKeyUp={ this.onSearchKeyUp }
+          onBlur={this.onSearchBlur}
+          onKeyUp={this.onSearchKeyUp}
           size="tiny"
           placeholder="Type and hit enter to search"
-          onChange={ this.onChange }
+          onChange={this.onChange}
         />
       );
     }
@@ -68,12 +76,15 @@ class CardActionsSearch extends React.Component {
   render() {
     const input = this.renderInput();
 
+    // TODO: This should render a button element or an anchor if its for navigation
+    /* eslint-disable jsx-a11y/click-events-have-key-events */
+    /* eslint-disable jsx-a11y/anchor-is-valid */
     return (
       <div className="rc-card-action rc-card-search">
-        <a tabIndex="0" role="button" onClick={ this.toggleSearch }>
+        <a tabIndex="0" role="button" onClick={this.toggleSearch}>
           <Icon type="search" height="16px" width="16px" />
         </a>
-        { input }
+        {input}
       </div>
     );
   }
