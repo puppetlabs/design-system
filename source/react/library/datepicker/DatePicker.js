@@ -109,7 +109,7 @@ class DatePicker extends React.Component {
   getButton(start, end) {
     const { message, buttonClassName, disabled } = this.props;
     const props = {
-      transparent: true,
+      secondary: true,
       className: classnames('rc-datepicker-button', {
         [buttonClassName]: buttonClassName,
       }),
