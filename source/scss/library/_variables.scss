@@ -13,6 +13,10 @@ $puppet-teal                                 : #11d1c4 !default;
 $puppet-purple                               : #a263ff !default;
 $puppet-red                                  : #f2654b !default;
 
+// Primary Color
+$puppet-brand-primary                        : $puppet-amber !default;
+$puppet-brand-secondary                      : $puppet-teal !default;
+
 // Neutrals
 $puppet-black                                : #04080a !default;
 $puppet-n900                                 : #122029 !default;
@@ -88,71 +92,15 @@ $puppet-t200                                 : #adfffa !default;
 $puppet-t100                                 : #d6fffc !default;
 $puppet-t50                                  : #f5fffe !default;
 
-// UI Colors
+// Status Colors
 // ----------------------------------------------------------------------------
 
 // Stop Light Colors
-$puppet-positive-1                           : #0da371 !default;
-$puppet-warning-1                            : #ffd503 !default;
-$puppet-negative-1                           : #e62600 !default;
+// TODO Extend with bg and text varitations - bold and subtle
+$puppet-positive-1                           : $puppet-r400 !default;
+$puppet-warning-1                            : $puppet-g600 !default;
+$puppet-negative-1                           : $puppet-y600 !default;
 
-// Primary Color
-$puppet-brand-primary                        : $puppet-amber !default;
-$puppet-brand-secondary                      : $puppet-teal !default;
-
-
-// Backgrounds
-$puppet-bg-light                             : $puppet-white !default;
-$puppet-bg-subtle                            : $puppet-n50 !default;
-$puppet-bg-medium                            : $puppet-n100 !default;
-$puppet-bg-dark                              : $puppet-n900 !default;
-
-// Chart Colors
-// ----------------------------------------------------------------------------
-$puppet-primary-chart-color                  : $puppet-brand-primary !default;
-
-// Action Colors
-// Colors used for primary buttons, links, etc.
-$puppet-action-base                          : $puppet-b500 !default;
-$puppet-action-hover                         : $puppet-b400 !default;
-$puppet-action-active                        : $puppet-b600 !default;
-
-// Neutral Action Colors
-$puppet-action-neutral                       : $puppet-n600 !default;
-$puppet-action-hover-neutral                 : $puppet-n500 !default;
-$puppet-action-active-neutral                : $puppet-n700 !default;
-
-// Subtle Action Colors
-// Secondary button, etc.
-$puppet-action-subtle                        : $puppet-n200 !default;
-$puppet-action-hover-subtle                  : $puppet-n100 !default;
-$puppet-action-active-subtle                 : $puppet-n300 !default;
-
-// Disabled Colors
-// ----------------------------------------------------------------------------
-$puppet-disabled-opacity                     : 0.64 !default;
-// TODO remove disabled colors - should be based on opacity only
-$puppet-disabled-border                      : transparent !default;
-$puppet-disabled-border-hover                : transparent !default;
-$puppet-disabled-text                        : $puppet-n400 !default;
-$puppet-disabled-text-hover                  : $puppet-n400 !default;
-$puppet-disabled-icon                        : $puppet-n400 !default;
-$puppet-disabled-icon-hover                  : $puppet-n400 !default;
-
-// Default Active & Inactive Colors
-// ----------------------------------------------------------------------------
-// Toggles, Checkboxes, etc.
-$puppet-active-color-hover                   : $puppet-action-hover !default;
-$puppet-inactive-color                       : $puppet-n400 !default;
-$puppet-inactive-color-hover                 : $puppet-n600 !default;
-
-// Link Colors
-// For stand alone links, not buttons
-$puppet-anchor-color                         : $puppet-b500 !default;
-$puppet-anchor-hover                         : $puppet-b400 !default;
-$puppet-anchor-active                        : $puppet-b600 !default;
-
-// Status aka Stop Light
 // Danger - Used to provide a warning for irreversible actions and errors
 $puppet-danger-color                         : $puppet-negative-1 !default;
 $puppet-danger-hover                         : darken($puppet-danger-color, 10%) !default;
@@ -171,8 +119,58 @@ $puppet-warning-hover                        : darken($puppet-warning-color, 10%
 $puppet-warning-border                       : $puppet-warning-color !default;
 $puppet-warning-border-hover                 : darken($puppet-warning-color, 10%) !default;
 
+
+// Backgrounds
+// ----------------------------------------------------------------------------
+$puppet-bg-light                             : $puppet-white !default;
+$puppet-bg-subtle                            : $puppet-n50 !default;
+$puppet-bg-medium                            : $puppet-n100 !default;
+$puppet-bg-dark                              : $puppet-n900 !default;
+
+// Chart Colors
+// ----------------------------------------------------------------------------
+$puppet-primary-chart-color                  : $puppet-brand-primary !default;
+
+// Action Colors
+// Colors used for primary buttons, links, etc.
+// ----------------------------------------------------------------------------
+$puppet-action-base                          : $puppet-b500 !default;
+$puppet-action-hover                         : $puppet-b400 !default;
+$puppet-action-active                        : $puppet-b600 !default;
+
+// Neutral Action Colors
+// Gray alternative to the action color
+$puppet-action-neutral                       : $puppet-n600 !default;
+$puppet-action-hover-neutral                 : $puppet-n500 !default;
+$puppet-action-active-neutral                : $puppet-n700 !default;
+
+// Subtle Action Colors
+// Background for switches, secondary button, etc.
+$puppet-action-subtle                        : $puppet-n200 !default;
+$puppet-action-hover-subtle                  : $puppet-n100 !default;
+$puppet-action-active-subtle                 : $puppet-n300 !default;
+
+// Disabled Colors
+// ----------------------------------------------------------------------------
+$puppet-disabled-opacity                     : 0.64 !default;
+// TODO remove disabled colors - should be based on opacity only
+$puppet-disabled-border                      : transparent !default;
+$puppet-disabled-border-hover                : transparent !default;
+$puppet-disabled-text                        : $puppet-n400 !default;
+$puppet-disabled-text-hover                  : $puppet-n400 !default;
+$puppet-disabled-icon                        : $puppet-n400 !default;
+$puppet-disabled-icon-hover                  : $puppet-n400 !default;
+
+// Link Colors
+// ----------------------------------------------------------------------------
+// For stand alone anchors, not buttons
+$puppet-anchor-color                         : $puppet-b500 !default;
+$puppet-anchor-hover                         : $puppet-b400 !default;
+$puppet-anchor-active                        : $puppet-b600 !default;
+
 // Disabled States
 // Objects should use opacity to indicate their disabled state
+// ----------------------------------------------------------------------------
 $puppet-disabled-opacity                     : 0.64;
 
 
@@ -204,6 +202,7 @@ $puppet-icon-fill-action-active              : $puppet-action-active !default;
 $puppet-font-family                          : 'Opens Sans', sans-serif !default;
 $puppet-font-family-heading                  : 'Calibre', serif !default;
 $puppet-font-family-button                   : 'Calibre', serif !default;
+// TODO Bring in Puppet Monospace font
 $puppet-font-family-code                     : 'Consolas', monospace !default;
 
 $puppet-font-size-giant                      : 42px !default;
@@ -264,6 +263,7 @@ $puppet-list-ol-type                         : decimal !default;
 // Code
 $puppet-code-bg                              : $puppet-bg-subtle !default;
 $puppet-code-color                           : $puppet-font-color-base !default;
+// TODO Bring in Puppet Monospace font
 $puppet-code-font-family                     : monospace !default;
 $puppet-code-font-size                       : $puppet-font-size-base !default;
 $puppet-code-font-weight                     : $puppet-font-weight-medium !default;
