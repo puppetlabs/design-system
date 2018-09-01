@@ -13,19 +13,36 @@ const propTypes = {
 };
 
 const defaultProps = {
-  children: '',
   as: 'h1',
+  className: 'rc-heading',
+  color: 'medium',
+  allCaps: false,
+  smallTitle: false,
+  hero: false,
 };
 
-const Heading = (props) => {
-  const { children, as, className, color, hero, allCaps, smallTitle, ...others } = props;
-  const classNames = classnames('rc-heading', {
-    'rc-heading-hero': hero,
-    'rc-heading-caps': allCaps,
-    'rc-heading-small-title': smallTitle,
-    [`rc-heading-${as}`]: as && !hero ? as : false,
-    [`rc-heading-${color}`]: color,
-  }, className);
+const Heading = props => {
+  const {
+    children,
+    as,
+    className,
+    color,
+    hero,
+    allCaps,
+    smallTitle,
+    ...others
+  } = props;
+  const classNames = classnames(
+    'rc-heading',
+    {
+      'rc-heading-hero': hero,
+      'rc-heading-caps': allCaps,
+      'rc-heading-small-title': smallTitle,
+      [`rc-heading-${as}`]: as && !hero ? as : false,
+      [`rc-heading-${color}`]: color,
+    },
+    className,
+  );
 
   /**
    * JSX requires element names to be capitalized if they are referenced as variables
@@ -33,10 +50,7 @@ const Heading = (props) => {
   const Component = as;
 
   return (
-    <Component
-      className={ classNames }
-      { ...others }
-    >
+    <Component className={classNames} {...others}>
       {children}
     </Component>
   );

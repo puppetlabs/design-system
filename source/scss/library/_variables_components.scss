@@ -109,7 +109,7 @@ $puppet-button-clear-bg-hover                      : $puppet-n100 !default;
 $puppet-button-clear-bg-active                     : $puppet-n200 !default;
 $puppet-button-clear-color                         : $puppet-action-base !default;
 $puppet-button-clear-color-hover                   : $puppet-action-base !default;
-$puppet-button-clear-color-active                  : $puppet-action-active!default;
+$puppet-button-clear-color-active                  : $puppet-action-active !default;
 $puppet-button-clear-icon-color                    : $puppet-n600 !default;
 $puppet-button-clear-icon-color-hover              : $puppet-n700 !default;
 $puppet-button-clear-icon-color-active             : $puppet-n700 !default;
@@ -186,7 +186,7 @@ $puppet-card-search-margin                         : $puppet-medium 0 0 !default
 $puppet-card-description-font-size                 : $puppet-font-size-base !default;
 
 // Card Color
-$puppet-card-action-color-active                   : $puppet-action-base!default;
+$puppet-card-action-color-active                   : $puppet-action-base !default;
 $puppet-card-color                                 : $puppet-font-color-base !default;
 $puppet-card-border                                : $puppet-border !default;
 $puppet-card-border-hover                          : $puppet-border-hover !default;
@@ -621,7 +621,7 @@ $puppet-tab-font-size                              : $puppet-font-size-small !de
 $puppet-tab-font-weight                            : normal !default;
 $puppet-tab-case                                   : uppercase !default;
 $puppet-tab-color                                  : $puppet-font-color-subtle !default;
-$puppet-tab-color-active                           : $puppet-action-base!default;
+$puppet-tab-color-active                           : $puppet-action-base !default;
 $puppet-tab-border                                 : 2px solid $puppet-border-color-subtle !default;
 $puppet-tab-border-active                          : 2px solid $puppet-border-color-action-base !default;
 $puppet-tab-bg                                     : $puppet-bg-light !default;
@@ -688,7 +688,7 @@ $puppet-tag-tiny-padding                           : 0 $puppet-tiny !default;
 // Toggle
 // ----------------------------------------------------------------------------
 $puppet-toggle-bg                                  : $puppet-action-subtle !default;
-$puppet-toggle-on-color                            : $puppet-action-base!default;
+$puppet-toggle-on-color                            : $puppet-action-base !default;
 $puppet-toggle-off-color                           : $puppet-font-color-base !default;
 
 // Tooltip
@@ -711,10 +711,10 @@ $puppet-slider-bar-height                          : $puppet-tiny !default;
 $puppet-slider-handle-size                         : 10px !default;
 $puppet-slider-handle-border                       : $puppet-tiny !default;
 $puppet-slider-bar-position                        : ($puppet-slider-handle-size - $puppet-slider-bar-height)/2 !default;
-$puppet-slider-handle                              : (
-  base                                             : $puppet-action-base,
-  hover                                            : $puppet-action-hover,
-  active                                           : $puppet-action-base
+$puppet-slider-handle: (
+  base: $puppet-action-base,
+  hover: $puppet-action-hover,
+  active: $puppet-action-base
 );
 
 

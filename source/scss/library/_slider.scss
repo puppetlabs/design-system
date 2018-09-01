@@ -22,6 +22,8 @@
 }
 
 .rc-slider-handle {
+  @include modifiers($puppet-slider-handle, 'border-color', $prefix: ':');
+  @include icon-scale-hover($scale:1.5);
   background: $puppet-white;
   border: $puppet-slider-handle-border solid;
   border-radius: $puppet-slider-handle-size;
@@ -34,8 +36,4 @@
   position: absolute;
   top: 0;
   width: $puppet-slider-handle-size;
-
-  @include modifiers($puppet-slider-handle, 'border-color', $prefix: ':');
-  @include icon-scale-hover($scale:1.5);
-
 }

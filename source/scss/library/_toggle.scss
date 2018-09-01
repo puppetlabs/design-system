@@ -40,8 +40,8 @@
 }
 
 .rc-toggle-disabled {
-  opacity: $puppet-disabled-opacity;
   cursor: default;
+  opacity: $puppet-disabled-opacity;
 
   .rc-toggle-label {
     cursor: default;

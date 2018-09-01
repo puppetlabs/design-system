@@ -21,6 +21,7 @@
     background: $bg-hover;
     border: 1px solid $border-hover;
     color: $color-hover !important;
+    text-decoration: none !important;
 
     .rc-icon {
       fill: $icon-hover;
@@ -80,10 +81,6 @@
 .rc-button {
   @extend %button-reset;
 
-  &:hover {
-    text-decoration: none !important;
-  }
-
   @include button-colors(
     $puppet-button-bg,
     $puppet-button-bg-hover,
@@ -98,6 +95,7 @@
     $puppet-button-border-color-hover,
     $puppet-button-border-color-active
   );
+
   align-items: center;
   border-radius: $puppet-button-border-radius;
   cursor: pointer;

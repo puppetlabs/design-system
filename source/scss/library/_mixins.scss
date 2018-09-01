@@ -88,6 +88,7 @@
   &:hover {
     transform: scale($scale);
   }
+
   &:focus {
     transform: scale($scale);
   }
@@ -128,8 +129,7 @@
     &#{if($key != $base, #{$prefix}#{$key}, '')} {
       @if type-of($value) == 'map' {
         @include modifiers($value, $attribute, $separator);
-      }
-
+      }  
       @else {
         #{$attribute}: $value;
       }
