@@ -122,6 +122,7 @@
   }
 }
 
+/* stylelint-disable */
 // Great mixing for working with maps
 // https://frontstuff.io/generate-all-your-utility-classes-with-sass-maps
 @mixin modifiers($map, $attribute, $prefix: '-', $separator: '-', $base: 'base') {
@@ -129,10 +130,11 @@
     &#{if($key != $base, #{$prefix}#{$key}, '')} {
       @if type-of($value) == 'map' {
         @include modifiers($value, $attribute, $separator);
-      }  
+      }
       @else {
         #{$attribute}: $value;
       }
     }
   }
 }
+/* stylelint-enable */

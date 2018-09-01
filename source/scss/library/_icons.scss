@@ -20,6 +20,7 @@ $rc-icon-tone-colors: (
   neutral: $puppet-n700
 );
 
+/* stylelint-disable */
 @mixin icon-tones($attribute: 'fill', $prefix: '-') {
   @each $color, $hex in $rc-icon-tone-colors {
     &#{$prefix}#{$color} {
@@ -29,6 +30,7 @@ $rc-icon-tone-colors: (
     }
   }
 }
+/* stylelint-enable */
 
 .rc-icon-tone {
   @include icon-tones;
