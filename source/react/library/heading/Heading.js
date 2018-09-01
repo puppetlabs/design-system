@@ -15,7 +15,7 @@ const propTypes = {
 const defaultProps = {
   as: 'h1',
   className: 'rc-heading',
-  color: '',
+  color: null,
   allCaps: false,
   smallTitle: false,
   hero: false,
