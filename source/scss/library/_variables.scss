@@ -97,9 +97,9 @@ $puppet-t50                                  : #f5fffe !default;
 
 // Stop Light Colors
 // TODO Extend with bg and text varitations - bold and subtle
-$puppet-positive-1                           : $puppet-r400 !default;
-$puppet-warning-1                            : $puppet-g600 !default;
-$puppet-negative-1                           : $puppet-y600 !default;
+$puppet-positive-1                           : $puppet-g600 !default;
+$puppet-warning-1                            : $puppet-y600 !default;
+$puppet-negative-1                           : $puppet-r400 !default;
 
 // Danger - Used to provide a warning for irreversible actions and errors
 $puppet-danger-color                         : $puppet-negative-1 !default;
