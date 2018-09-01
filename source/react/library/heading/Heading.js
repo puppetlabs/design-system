@@ -14,10 +14,10 @@ const propTypes = {
 
 const defaultProps = {
   as: 'h1',
-  className: 'rc-heading',
-  color: null,
+  className: '',
   allCaps: false,
   smallTitle: false,
+  color: null,
   hero: false,
 };
 
