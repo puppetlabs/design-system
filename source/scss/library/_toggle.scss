@@ -8,6 +8,10 @@
     color: $puppet-toggle-on-color;
   }
 
+  .rc-toggle-label.rc-toggle-active:hover {
+    cursor: default;
+  }
+
   .rc-switch {
     margin-left: 10px;
     margin-right: 10px;
@@ -26,19 +30,44 @@
     color: $puppet-toggle-on-color;
   }
 
+  .rc-switch-checkbox:checked + .rc-switch-label:hover {
+    cursor: default;
+  }
+
   .rc-switch-checkbox:checked + .rc-switch-label::after {
     background: $puppet-toggle-on-color;
   }
 }
 
 .rc-toggle-disabled {
+  cursor: default;
+  opacity: $puppet-disabled-opacity;
+
   .rc-toggle-label {
     cursor: default;
+  }
+
+  .rc-toggle-label:hover {
+    color: $puppet-toggle-off-color;
+  }
+
+  .rc-toggle-label.rc-toggle-active:hover {
+    color: $puppet-toggle-on-color;
   }
 
   .rc-switch-label {
     cursor: default;
   }
+
+  .rc-switch-label {
+    color: $puppet-toggle-off-color;
+  }
+
+  .rc-switch-checkbox:checked + .rc-switch-label:hover {
+    color: $puppet-toggle-on-color;
+  }
+
+
 
   .rc-switch-label::after {
     opacity: 0.5;

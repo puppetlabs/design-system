@@ -11,6 +11,10 @@
   color: $puppet-heading-subtle-color;
 }
 
+.rc-heading-caps {
+  text-transform: uppercase;
+}
+
 .rc-heading-hero {
   font-family: $puppet-heading-hero-font-family;
   font-size: $puppet-heading-hero-font-size;
@@ -58,4 +62,12 @@
   font-size: $puppet-heading-h6-font-size;
   font-weight: $puppet-heading-h6-font-weight;
   line-height: $puppet-heading-h6-line-height;
+}
+
+.rc-heading-small-title {
+  font-family: $puppet-heading-small-title-font-family;
+  font-size: $puppet-heading-small-title-font-size;
+  font-weight: $puppet-heading-small-title-font-weight;
+  line-height: $puppet-heading-small-title-line-height;
+  text-transform: uppercase;;
 }

@@ -15,18 +15,12 @@
   background-color: $puppet-accordion-item-title-bg-color;
   border-radius: $puppet-border-radius $puppet-border-radius 0 0;
   display: flex;
-  font-size: $puppet-accordion-item-title-font-size;
-  text-transform: $puppet-accordion-item-title-case;
 }
 
 .rc-accordion-header {
   background: $puppet-accordion-header-bg;
   border: $puppet-accordion-item-border;
   height: $puppet-accordion-header-height;
-
-  .rc-accordion-header-icon .rc-icon {
-    fill: $puppet-white;
-  }
 }
 
 .rc-accordion-header-main {
@@ -46,7 +40,7 @@
 
   .rc-icon {
     @include icon-opacity-hover;
-    fill: $puppet-icon-fill;
+    fill: $puppet-icon-fill-base;
   }
 }
 
@@ -59,7 +53,6 @@
   @extend %rc-uppercase;
   color: $puppet-accordion-header-title-color;
   flex-grow: 1;
-  font-size: $puppet-accordion-item-title-font-size;
   transition: all 0.2s;
 }
 
@@ -67,20 +60,22 @@
   height: $puppet-accordion-item-title-height;
   padding: $puppet-accordion-item-title-padding;
 
-  &:hover .rc-accordion-item-header-title {
-    color: $puppet-accordion-item-title-hover;
+  &:hover {
+    text-decoration: none !important;
   }
 
-  &:hover .rc-accordion-header-icon .rc-icon {
-    fill: $puppet-icon-fill-hover;
+  &:hover .rc-accordion-item-header-title {
+    color: $puppet-action-base;
+  }
+
+  &:hover .rc-accordion-header-icon .rc-icon,
+  &:hover .rc-accordion-item-header-action .rc-icon {
+    fill: $puppet-icon-fill-action-base;
   }
 }
 
 .rc-accordion-item-header-title {
-  @extend %rc-uppercase;
-  color: $puppet-accordion-item-title-color;
   flex-grow: 1;
-  font-size: $puppet-accordion-item-title-font-size;
   overflow: hidden;
   text-overflow: ellipsis;
   transition: all 0.2s;
@@ -112,11 +107,12 @@
 
   .rc-accordion-header-icon .rc-icon,
   &:hover .rc-accordion-header-icon .rc-icon {
-    fill: $puppet-icon-action;
+    fill: $puppet-icon-fill-hover;
   }
 
+  .rc-accordion-item-header .rc-accordion-item-header-title,
   &:hover .rc-accordion-item-header .rc-accordion-item-header-title {
-    color: $puppet-accordion-item-title-color;
+    color: $puppet-font-color-dark;
   }
 
   .rc-accordion-item-content {

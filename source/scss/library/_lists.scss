@@ -94,7 +94,7 @@
 
 .rc-list-item-selected {
   .rc-list-item-link {
-    background: rgba($puppet-action-color, 0.05);
+    background: $puppet-list-item-selected-bg;
     border-color: $puppet-list-item-border-selected;
     // box-shadow: $puppet-list-item-shadow-selected;
   }
@@ -169,8 +169,8 @@
 // Fancy List - for data field list, filter lists, etc.
 // Blue background and border radius
 .rc-list-item-link-fancy {
-  background: $puppet-action-color;
-  border: $puppet-border-size solid $puppet-action-color;
+  background: $puppet-action-base;
+  border: $puppet-border-size-base solid $puppet-action-base;
   border-radius: $puppet-border-radius;
 
   .rc-list-item-text {
@@ -179,7 +179,7 @@
 
   // Make all icons white
   .rc-icon {
-    fill: $puppet-action-icon;
+    fill: $puppet-action-base;
   }
 }
 

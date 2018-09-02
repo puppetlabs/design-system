@@ -1,3 +1,5 @@
+### Basic Select
+
 ```
 const options = [
   'Option 1',
@@ -12,7 +14,7 @@ const options = [
 />
 ```
 
-Select with selected prop as a string
+#### Selected prop as a string
 
 ```
 const options = [
@@ -29,7 +31,27 @@ const options = [
 />
 ```
 
-Small Select
+---
+
+### Sizes
+
+#### Default Size
+
+```
+const options = [
+  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
+  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
+  'Star Wars: Episode III  Revenge of the Sith',
+];
+
+<Select
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  options={ options }
+  placeholder="Select one..."
+/>
+```
+
+#### Small
 
 ```
 const options = [
@@ -46,76 +68,28 @@ const options = [
 />
 ```
 
-Multiselect:
+#### Large
 
 ```
 const options = [
-  'Option 1',
-  'Option 2',
-  'Option 3',
+  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
+  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
+  'Star Wars: Episode III  Revenge of the Sith',
 ];
 
 <Select
-  multiple
-  options={ options }
-/>
-```
-
-Multiselect with selected options
-
-```
-const options = [
-  'Option 1',
-  'Option 2',
-  'Option 3',
-];
-
-<Select
-  multiple
   onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
-  selected={ [
-    'Option 1',
-    'Option 2',
-  ] }
+  size="large"
 />
 ```
 
-Small Multiselect:
+---
 
-```
-const options = [
-  { value: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onSelect prop.', label: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onSelect prop.', selected: true },
-  { value: 'Sig', label: 'Sig', selected: true },
-  { value: 'Colby', label: 'Colby' },
-];
-
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  multiple
-  size="small"
-  options={ options }
-/>
-```
-
-Select with `autoOpen` enabled:
-
-```
-const options = [
-  { value: 'Geoff', label: 'Geoff' },
-  { value: 'Colby', label: 'Colby', selected: true },
-  { value: 'Michael', label: 'Sig' },
-];
-
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  autoOpen
-  options={ options }
-/>
-```
-
-Clearable Select:
+### Optional
+#### Clearable Select
+When set to clearable, all options can be removed by clicking the dismiss icon.
 
 ```
 const options = [
@@ -126,26 +100,7 @@ const options = [
 <Select options={ options } clearable />
 ```
 
-Select with custom actions:
-
-```
-const onSelect = (selected, modifiedOption) => {
-  console.log(selected, modifiedOption);
-}
-
-const onNewOption = () => {
-  alert('Adding a new drink');
-}
-
-const options = [
-  { value: 'Coffee', label: 'Coffee' },
-  { value: 'Tea', label: 'Tea' },
-];
-
-<Select options={ options } onSelect={ onSelect } onNewOption={ onNewOption } newOptionLabel="Add a New Drink" />
-```
-
-Large `<Select/>` with custom actions:
+#### Custom Actions
 
 ```
 const onSelect = (selected, modifiedOption) => {
@@ -174,13 +129,16 @@ const options = [
   { value: 'Great Tequila', label: 'Great Tequila' },
   { value: 'Great Tequila with Rocks', label: 'Great Tequila with Rocks' },
   { value: 'Great Tequila with Water', label: 'Great Tequila with Water' },
-  { value: 'Great Tequila with Actual Rocks', label: 'Great Tequila with Actual Rocks' },
+  { value: 'Great Tequila with Actual Rocks', label: 'Great Tequila with Actual Rocks' }
 ];
 
 <Select options={ options } onSelect={ onSelect } onNewOption={ onNewOption } newOptionLabel="Add a New Drink" />
 ```
 
-Disabled Select:
+---
+
+### States
+#### Disabled
 
 ```
 <Select disabled />
@@ -202,19 +160,76 @@ const options = [
   placeholder="Select one..."
 />
 ```
+---
 
-Tiny Select
+## Multiselect
+
+Multiselects allow the user to select multiple options at once.
 
 ```
 const options = [
-  { value: 'Geoff', label: 'Geoff' },
+  'Option 1',
+  'Option 2',
+  'Option 3',
+];
+
+<Select
+  multiple
+  options={ options }
+/>
+```
+
+#### Multiselect with pre-selected options
+
+```
+const options = [
+  'Option 1',
+  'Option 2',
+  'Option 3',
+];
+
+<Select
+  multiple
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  options={ options }
+  placeholder="Select one..."
+  selected={ [
+    'Option 1',
+    'Option 2',
+  ] }
+/>
+```
+
+#### Small Multiselect
+
+```
+const options = [
+  { value: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onSelect prop.', label: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onSelect prop.', selected: true },
+  { value: 'Sig', label: 'Sig', selected: true },
   { value: 'Colby', label: 'Colby' },
-  { value: 'Michael', label: 'Sig', selected: true },
 ];
 
 <Select
   onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  size="tiny"
+  multiple
+  size="small"
+  options={ options }
+/>
+```
+
+#### autoOpen Enabled
+_SIG - Temporarily removed to prevent autoscroll_
+
+```
+const options = [
+  { value: 'Geoff', label: 'Geoff' },
+  { value: 'Colby', label: 'Colby', selected: true },
+  { value: 'Michael', label: 'Sig' },
+];
+
+<Select
+  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+
   options={ options }
 />
 ```

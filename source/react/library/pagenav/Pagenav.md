@@ -7,13 +7,11 @@ const sections = [
 
 const actions = [
   <Button
-    size="small"
     onClick={ () => {} }
     label="Export"
     secondary
   />,
   <Button
-    size="small"
     onClick={ () => {} }
     label="Share"
   />,

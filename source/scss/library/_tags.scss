@@ -47,32 +47,51 @@
   }
 }
 
+
+.rc-tag-removable {
+  background: $puppet-tag-removable-bg;
+  border: $puppet-tag-removable-border;
+  color: $puppet-tag-removable-color;
+
+  .rc-tag-remove-button .rc-icon {
+    fill: $puppet-tag-removable-icon;
+  }
+}
+
+.rc-tag-removable:hover {
+  background: $puppet-tag-removable-bg-hover;
+  border: $puppet-tag-removable-border-hover;
+  color: $puppet-tag-removable-color-hover;
+
+  .rc-tag-remove-button .rc-icon {
+    fill: $puppet-tag-removable-icon-hover;
+  }
+}
+
+.rc-tag-removable.rc-tag-highlighted {
+  background: $puppet-tag-removable-bg-highlighted;
+  border: $puppet-tag-removable-border-highlighted;
+  color: $puppet-tag-removable-color-highlighted;
+
+  .rc-tag-remove-button .rc-icon {
+    fill: $puppet-tag-removable-icon-highlighted;
+  }
+}
+
+.rc-tag-remove-button:hover .rc-icon {
+  fill: $puppet-white;
+}
+
 .rc-tag-primary {
   background: $puppet-brand-primary;
   border-color: $puppet-bg-subtle;
   color: $puppet-white;
-
-  .rc-tag-remove-button .rc-icon {
-    fill: $puppet-white;
-  }
-
-  .rc-tag-remove-button:hover .rc-icon {
-    fill: $puppet-white;
-  }
 }
 
 .rc-tag-secondary {
   background: $puppet-brand-secondary;
   border-color: $puppet-brand-secondary;
   color: $puppet-white;
-
-  .rc-tag-remove-button .rc-icon {
-    fill: $puppet-white;
-  }
-
-  .rc-tag-remove-button:hover .rc-icon {
-    fill: $puppet-white;
-  }
 }
 
 // TODO: Create mixin for applying colors

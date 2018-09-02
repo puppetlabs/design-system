@@ -37,6 +37,11 @@
 
   a:hover {
     color: $puppet-anchor-hover;
-    text-decoration: none;
+    // text-decoration: underline;
+  }
+
+  a:active {
+    color: $puppet-action-active;
+    // text-decoration: underline;
   }
 }

@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
+import Heading from '../heading';
 
 import Icon from '../icon/Icon';
 import { TooltipHoverArea } from '../tooltips/Tooltip';
@@ -79,9 +80,15 @@ class AccordionItem extends React.Component {
     }
 
     jsx.push(
-      <span key="header-title" className="rc-accordion-item-header-title">
+      <Heading
+        as="h6"
+        color="medium"
+        key="header-title"
+        smallTitle
+        className="rc-accordion-item-header-title"
+      >
         {title}
-      </span>,
+      </Heading>,
     );
 
     if (active) {
