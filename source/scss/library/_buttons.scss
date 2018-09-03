@@ -1,6 +1,6 @@
 @mixin button-colors($bg, $bg-hover, $bg-active, $color, $color-hover, $color-active, $icon-color, $icon-hover, $icon-active, $border, $border-hover, $border-active) {
-  $button-color-dark: darken($bg, 10%);
-  $button-color-darker: darken($bg, 20%);
+  $button-color-split: darken($bg, 10%);
+  $button-color-split-hover: lighten($button-color-split, 5%);
 
   background: $bg;
   border: 1px solid $border;
@@ -56,7 +56,7 @@
   }
 
   &.rc-popover-target-open {
-    background: $button-color-dark;
+    background: $button-color-split;
   }
 
   .rc-icon {
@@ -70,10 +70,10 @@
   }
 
   &.rc-button-menu {
-    background: $button-color-dark;
+    background: $button-color-split;
 
     &:hover {
-      background: $button-color-darker;
+      background: $button-color-split-hover;
     }
   }
 }

@@ -92,32 +92,61 @@ $puppet-t200                                 : #adfffa !default;
 $puppet-t100                                 : #d6fffc !default;
 $puppet-t50                                  : #f5fffe !default;
 
-// Status Colors
+
+// Stop Light / Status Colors
 // ----------------------------------------------------------------------------
 
-// Stop Light Colors
-// TODO Extend with bg and text varitations - bold and subtle
-$puppet-positive-1                           : $puppet-g600 !default;
-$puppet-warning-1                            : $puppet-y600 !default;
-$puppet-negative-1                           : $puppet-r400 !default;
+// Negative/Danger - Used to provide a warning for irreversible actions and errors
+$puppet-neg-bg-base                          : $puppet-r500 !default;
+$puppet-neg-bg-hover                         : $puppet-r400 !default;
+$puppet-neg-bg-active                        : $puppet-r600 !default;
 
-// Danger - Used to provide a warning for irreversible actions and errors
-$puppet-danger-color                         : $puppet-negative-1 !default;
-$puppet-danger-hover                         : darken($puppet-danger-color, 10%) !default;
-$puppet-danger-border                        : $puppet-danger-color !default;
-$puppet-danger-border-hover                  : darken($puppet-danger-color, 10%) !default;
+$puppet-neg-border-base                      : $puppet-r500 !default;
+$puppet-neg-border-hover                     : $puppet-r400 !default;
+$puppet-neg-border-active                    : $puppet-r600 !default;
 
-// Success
-$puppet-success-color                        : $puppet-positive-1 !default;
-$puppet-success-hover                        : darken($puppet-success-color, 10%) !default;
-$puppet-success-border                       : $puppet-success-color !default;
-$puppet-success-border-hover                 : darken($puppet-success-color, 10%) !default;
+$puppet-neg-color-base                       : $puppet-r600 !default;
+$puppet-neg-color-hover                      : $puppet-r500 !default;
+$puppet-neg-color-active                     : $puppet-r700 !default;
 
-//Warning
-$puppet-warning-color                        : $puppet-warning-1 !default;
-$puppet-warning-hover                        : darken($puppet-warning-color, 10%) !default;
-$puppet-warning-border                       : $puppet-warning-color !default;
-$puppet-warning-border-hover                 : darken($puppet-warning-color, 10%) !default;
+$puppet-neg-bg-subtle-base                   : $puppet-r100 !default;
+$puppet-neg-bg-subtle-hover                  : $puppet-r50 !default;
+$puppet-neg-bg-subtle-active                 : $puppet-r200 !default;
+
+
+// Positive Colors for success
+$puppet-pos-bg-base                          : $puppet-g500 !default;
+$puppet-pos-bg-hover                         : $puppet-g400 !default;
+$puppet-pos-bg-active                        : $puppet-g600 !default;
+
+$puppet-pos-border-base                      : $puppet-g500 !default;
+$puppet-pos-border-hover                     : $puppet-g400 !default;
+$puppet-pos-border-active                    : $puppet-g600 !default;
+
+$puppet-pos-color-base                       : $puppet-g700 !default;
+$puppet-pos-color-hover                      : $puppet-g600 !default;
+$puppet-pos-color-active                     : $puppet-g800 !default;
+
+$puppet-pos-bg-subtle-base                   : $puppet-g100 !default;
+$puppet-pos-bg-subtle-hover                  : $puppet-g50 !default;
+$puppet-pos-bg-subtle-active                 : $puppet-g200 !default;
+
+// Warning Colors
+$puppet-warn-bg-base                         : $puppet-y500 !default;
+$puppet-warn-bg-hover                        : $puppet-y400 !default;
+$puppet-warn-bg-active                       : $puppet-y600 !default;
+
+$puppet-warn-border-base                     : $puppet-y500 !default;
+$puppet-warn-border-hover                    : $puppet-y400 !default;
+$puppet-warn-border-active                   : $puppet-y600 !default;
+
+$puppet-warn-color-base                      : $puppet-y600 !default;
+$puppet-warn-color-hover                     : $puppet-y500 !default;
+$puppet-warn-color-active                    : $puppet-y700 !default;
+
+$puppet-warn-bg-subtle-base                  : $puppet-y100 !default;
+$puppet-warn-bg-subtle-hover                 : $puppet-y50 !default;
+$puppet-warn-bg-subtle-active                : $puppet-y200 !default;
 
 
 // Backgrounds
@@ -127,9 +156,11 @@ $puppet-bg-subtle                            : $puppet-n50 !default;
 $puppet-bg-medium                            : $puppet-n100 !default;
 $puppet-bg-dark                              : $puppet-n900 !default;
 
+
 // Chart Colors
 // ----------------------------------------------------------------------------
 $puppet-primary-chart-color                  : $puppet-brand-primary !default;
+
 
 // Action Colors
 // Colors used for primary buttons, links, etc.

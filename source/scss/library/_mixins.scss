@@ -37,7 +37,7 @@
     }
 
     &:hover .rc-#{$component}-remove .rc-icon {
-      fill: $puppet-danger-color;
+      fill: $puppet-neg-bg-base;
     }
 
     .rc-#{$component}-remove {
