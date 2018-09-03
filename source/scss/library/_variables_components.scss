@@ -149,9 +149,9 @@ $puppet-button-simple-secondary-border-color-active: transparent !default;
 $puppet-button-disabled-opacity                    : 0.5 !default;
 
 // Errored Buttons
-$puppet-button-error-bg                            : $puppet-danger-color !default;
-$puppet-button-error-bg-hover                      : $puppet-r400 !default;
-$puppet-button-error-bg-active                     : $puppet-r600 !default;
+$puppet-button-error-bg                            : $puppet-neg-bg-base !default;
+$puppet-button-error-bg-hover                      : $puppet-neg-bg-hover !default;
+$puppet-button-error-bg-active                     : $puppet-neg-bg-active !default;
 $puppet-button-error-color                         : $puppet-white !default;
 $puppet-button-error-color-hover                   : $puppet-white !default;
 $puppet-button-error-color-active                  : $puppet-white !default;
@@ -301,7 +301,7 @@ $puppet-dropdown-label-font-size                   : $puppet-font-size-base !def
 $puppet-dropdown-label-font-weight                 : $puppet-font-weight-heavy !default;
 $puppet-dropdown-label-line-height                 : $puppet-medium !default;
 $puppet-dropdown-label-color                       : $puppet-action-base !default;
-$puppet-dropdown-label-color-error                 : $puppet-danger-color !default;
+$puppet-dropdown-label-color-error                 : $puppet-neg-color-base !default;
 $puppet-dropdown-label-color-disabled              : $puppet-n600 !default;
 
 $puppet-dropdown-chevron-height                    : $puppet-small !default;
@@ -342,9 +342,9 @@ $puppet-form-tiny-label-font-size                  : $puppet-font-size-tiny * 0.
 
 // Filters
 // ----------------------------------------------------------------------------
-$puppet-filter-border-color                        : $puppet-n50 !default;
+$puppet-filter-border-color                        : $puppet-border-hr !default;
 $puppet-filter-border                              : $puppet-border-size-base $puppet-border-style $puppet-filter-border-color !default;
-$puppet-filter-bg                                  : $puppet-n50 !default;
+$puppet-filter-bg                                  : $puppet-neg-bg-subtle-base !default;
 $puppet-filter-radius                              : $puppet-border-radius !default;
 $puppet-filter-padding                             : $puppet-mini !default;
 $puppet-filter-placeholder-color                   : $puppet-font-color-subtle !default;
@@ -357,12 +357,12 @@ $puppet-filter-select-height                       : 10px !default; // Todo: Bas
 
 $puppet-filter-split-bg                            : $puppet-n400 !default;
 $puppet-filter-split-menu-bg                       : darken($puppet-filter-split-bg, 10%) !default;
-$puppet-filter-split-menu-bg-hover                 : darken($puppet-filter-split-menu-bg, 10%) !default;
+$puppet-filter-split-menu-bg-hover                 : lighten($puppet-filter-split-menu-bg, 5%) !default;
 
-$puppet-filters-filter-bg                          : $puppet-brand-primary !default;
-$puppet-filters-filter-bg-hover                    : darken($puppet-brand-primary, 10%) !default;
+$puppet-filters-filter-bg                          : $puppet-action-base !default;
+$puppet-filters-filter-bg-hover                    : $puppet-action-hover !default;
 $puppet-filters-filter-color                       : $puppet-white !default;
-$puppet-filters-filter-action-color                : lighten($puppet-brand-primary, 15%) !default;
+$puppet-filters-filter-action-color                : lighten($puppet-filters-filter-bg, 15%) !default;
 $puppet-filters-form-border                        : $puppet-border !default;
 
 // Input
@@ -378,7 +378,7 @@ $puppet-input-border                               : $puppet-border !default;
 $puppet-input-border-hover                         : $puppet-border-hover !default;
 $puppet-input-border-focus                         : $puppet-border-action !default;
 $puppet-input-border-radius                        : $puppet-border-radius !default;
-$puppet-input-border-error                         : 1px solid $puppet-danger-color !default;
+$puppet-input-border-error                         : 1px solid $puppet-neg-border-base !default;
 
 $puppet-input-height                               : $puppet-huge !default;
 $puppet-input-padding                              : $puppet-tiny $puppet-small !default;

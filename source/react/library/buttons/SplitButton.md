@@ -6,7 +6,7 @@ const splitButtonOptions = [
 ];
 <SplitButton
   options={ splitButtonOptions }
-  label="I'm a split button!"
+  label="Split Button"
 />
 ```
 
@@ -21,7 +21,7 @@ const splitButtonOptions = [
 <SplitButton
   menuStatus="processing"
   options={ splitButtonOptions }
-  label="processing split button!"
+  label="Processing"
 />
 ```
 
@@ -36,7 +36,7 @@ const splitButtonOptions = [
 <SplitButton
   menuStatus="success"
   options={ splitButtonOptions }
-  label="success split button!"
+  label="Success"
 />
 ```
 
@@ -51,7 +51,7 @@ const splitButtonOptions = [
 <SplitButton
   error
   options={ splitButtonOptions }
-  label="split button with error"
+  label="Error"
 />
 ```
 
@@ -66,6 +66,6 @@ const splitButtonOptions = [
 <SplitButton
   size="small"
   options={ splitButtonOptions }
-  label="I'm a split button!"
+  label="Small Split Button"
 />
 ```
