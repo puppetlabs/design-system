@@ -1,10 +1,9 @@
 [class^='rc-'] {
+  color: $puppet-font-color-base;
   font-family: $puppet-font-family;
   font-size: $puppet-font-size-base;
-
-  small {
-    font-size: $puppet-font-size-small;
-  }
+  font-weight: $puppet-font-weight-normal;
+  line-height: 20px;
 }
 
 .rc-uppercase,
