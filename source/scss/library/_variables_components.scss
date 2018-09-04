@@ -730,10 +730,15 @@ $puppet-header-menu-item-button-bg-hover           : lighten($puppet-header-menu
 $puppet-pagenav-height                             : 64px !default;
 $puppet-pagenav-section-padding                    : 0 12px !default;
 $puppet-pagenav-action-margin                      : 0 0 0 $puppet-size-base !default;
-$puppet-pagenav-color                              : $puppet-n700 !default;
+$puppet-pagenav-border                             : $puppet-border !default;
+$puppet-pagenav-border-hover                       : $puppet-border-hover !default;
+$puppet-pagenav-border-active                      : $puppet-border-action !default;
+$puppet-pagenav-border-width-active                : $puppet-mini !default;
+$puppet-pagenav-color                              : $puppet-font-color-medium !default;
+$puppet-pagenav-color-hover                        : $puppet-font-color-base !default;
+$puppet-pagenav-color-active                       : $puppet-font-color-base !default;
 $puppet-pagenav-font-weight                        : $puppet-font-weight-heavy !default;
 $puppet-pagenav-font-size                          : $puppet-font-size-small !default;
-$puppet-pagenav-action-color                       : $puppet-n900 !default;
 
 // Breadcrumb
 // ----------------------------------------------------------------------------
