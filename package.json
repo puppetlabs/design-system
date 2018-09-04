@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-components",
-  "version": "3.3.0",
+  "version": "4.0.0",
   "description": "Collection of reusable React components",
   "main": "build/library.js",
   "publishConfig": {
@@ -16,7 +16,7 @@
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
     "start": "styleguidist server",
-    "format": "eslint --fix '**/*.{js,jsx}'; prettier --write '**/*.{js,jsx,json,css,scss,md}'; stylelint --fix '**/*.{css,scss}'"
+    "format": "eslint --fix '**/*.{js,jsx}'; prettier --write '**/*.{js,jsx,json,md}'"
   },
   "repository": {
     "type": "git",
@@ -59,6 +59,7 @@
     "eslint-plugin-react": "7.11.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "fast-csv": "^2.4.1",
+    "file-loader": "^1.1.11",
     "jsdom": "11.1.0",
     "mocha": "3.5.3",
     "mocha-jsdom": "1.2.0",

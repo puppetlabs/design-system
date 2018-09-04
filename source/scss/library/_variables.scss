@@ -1,307 +1,384 @@
-/* stylelint-disable scss/dollar-variable-colon-space-after, scss/dollar-variable-colon-space-before, indentation  */
+/* stylelint-disable scss/dollar-variable-colon-space-after, scss/dollar-variable-colon-space-before, indentation */
 
 // ============================================================================
 // BASELINE VARIABLES
 // ============================================================================
 
-// Colors
+// Color Palette
 // ----------------------------------------------------------------------------
-// Colors from the Puppet styleguide. As we continue we should integrate these
-// more tightly into our styles.
-// ----------------------------------------------------------------------------
-$puppet-amber: #ffae1a !default;
 
-$neutral-11: #000e1c !default;
-$neutral-18: #00172e !default;
-$neutral-30: #293b4d !default;
-$neutral-44: #495e70 !default;
-$neutral-60: #718699 !default;
-$neutral-75: #a1b0bf !default;
-$neutral-88: #ced7e0 !default;
-$neutral-92: #dde5eb !default;
-$neutral-96: #f0f3f5 !default;
-$neutral-98: #f7f9fa !default;
-$neutral-100: #fff !default;
-
-$link-medium: #007bc7 !default;
-$link-light: #0092ed !default;
-
-$viz-blue-80: #296acc !default;
-$viz-blue-61: #5d98f0 !default;
-$viz-blue-48: #85b6ff !default;
-$viz-blue-28: #b8d4ff !default;
-$viz-blue-13: #deebff !default;
-
-$viz-aqua-100: #00baba !default;
-$viz-aqua-44: #77d4d4 !default;
-$viz-aqua-26: #a8e3e3 !default;
-$viz-aqua-14: #d3f5f5 !default;
-$viz-aqua-7: #e8fafa !default;
-
-$viz-salmon-56: #ff7070 !default;
-$viz-salmon-40: #f99 !default;
-$viz-salmon-26: #ffbdbd !default;
-$viz-salmon-15: #ffd9d9 !default;
-$viz-salmon-7: #ffeded !default;
-
-$viz-tangerine-65: #ff9159 !default;
-$viz-tangerine-50: #ffaa80 !default;
-$viz-tangerine-32: #ffc9ad !default;
-$viz-tangerine-17: #ffe2d4 !default;
-$viz-tangerine-8: #fff2eb !default;
-
-$positive-1: #0da371 !default;
-$warning-1: #ffd503 !default;
-$negative-1: #e62600 !default;
-
-// End Puppet Styleguide colors
+// Branding
+$puppet-amber                                : #ffae1a !default;
+$puppet-teal                                 : #11d1c4 !default;
+$puppet-purple                               : #a263ff !default;
+$puppet-red                                  : #f2654b !default;
 
 // Primary Color
-$puppet-brand-primary: $puppet-amber !default;
-$puppet-brand-secondary: #0751a9 !default;
+$puppet-brand-primary                        : $puppet-amber !default;
+$puppet-brand-secondary                      : $puppet-teal !default;
 
-// Grays
-$puppet-gray-base: #818f99 !default;
+// Neutrals
+$puppet-black                                : #04080a !default;
+$puppet-n900                                 : #122029 !default;
+$puppet-n800                                 : #40484d !default;
+$puppet-n700                                 : #5d6f7a !default;
+$puppet-n600                                 : #818f99 !default;
+$puppet-n500                                 : #b0b9bf !default;
+$puppet-n400                                 : #ccd4d9 !default;
+$puppet-n300                                 : #e4e9ed !default;
+$puppet-n200                                 : #edf0f2 !default;
+$puppet-n100                                 : #f2f5f7 !default;
+$puppet-n50                                  : #f5f8fa !default;
+$puppet-white                                : #fff !default;
 
-$puppet-black: #000e1c !default;
-$puppet-gray-darker: #122029 !default;
-$puppet-gray-dark: #5c6770 !default;
-$puppet-gray: $puppet-gray-base !default;
-$puppet-gray-light: #ccd4d9 !default;
-$puppet-gray-lighter: #f7fafc !default;
-$puppet-white: #fff !default;
+
+// Blues
+$puppet-b900                                 : #021e3d !default;
+$puppet-b800                                 : #032852 !default;
+$puppet-b700                                 : #053c7a !default;
+$puppet-b600                                 : #0750a3 !default;
+$puppet-b500                                 : #186ccc !default;
+$puppet-b400                                 : #318cf5 !default;
+$puppet-b300                                 : #58a1f5 !default;
+$puppet-b200                                 : #99c9ff !default;
+$puppet-b100                                 : #d6e9ff !default;
+$puppet-b50                                  : #f5f9ff !default;
+
+// Reds
+$puppet-r900                                 : #3d0b02 !default;
+$puppet-r800                                 : #520f03 !default;
+$puppet-r700                                 : #7a1705 !default;
+$puppet-r600                                 : #a31e07 !default;
+$puppet-r500                                 : #cc3318 !default;
+$puppet-r400                                 : #f54e31 !default;
+$puppet-r300                                 : #f57058 !default;
+$puppet-r200                                 : #ffa899 !default;
+$puppet-r100                                 : #ffdcd6 !default;
+$puppet-r50                                  : #fff6f5 !default;
+
+// Yellows
+$puppet-y900                                 : #3d2802 !default;
+$puppet-y800                                 : #523603 !default;
+$puppet-y700                                 : #7a5105 !default;
+$puppet-y600                                 : #a16b06 !default;
+$puppet-y500                                 : #cc8d18 !default;
+$puppet-y400                                 : #f5b031 !default;
+$puppet-y300                                 : #f5be58 !default;
+$puppet-y200                                 : #ffdb99 !default;
+$puppet-y100                                 : #fff1d6 !default;
+$puppet-y50                                  : #fffbf5 !default;
+
+// Greens
+$puppet-g900                                 : #023d1a !default;
+$puppet-g800                                 : #035223 !default;
+$puppet-g700                                 : #057a34 !default;
+$puppet-g600                                 : #07a345 !default;
+$puppet-g500                                 : #18cc60 !default;
+$puppet-g400                                 : #2de075 !default;
+$puppet-g300                                 : #93f5ba !default;
+$puppet-g200                                 : #adffce !default;
+$puppet-g100                                 : #d6ffe7 !default;
+$puppet-g50                                  : #f5fff9 !default;
+
+// Teals
+$puppet-t900                                 : #1a023d !default;
+$puppet-t800                                 : #03524c !default;
+$puppet-t700                                 : #057a73 !default;
+$puppet-t600                                 : #07a399 !default;
+$puppet-t500                                 : #18ccc0 !default;
+$puppet-t400                                 : #45f5e9 !default;
+$puppet-t300                                 : #93f5ee !default;
+$puppet-t200                                 : #adfffa !default;
+$puppet-t100                                 : #d6fffc !default;
+$puppet-t50                                  : #f5fffe !default;
+
+
+// Stop Light / Status Colors
+// ----------------------------------------------------------------------------
+
+// Negative/Danger - Used to provide a warning for irreversible actions and errors
+$puppet-neg-bg-base                          : $puppet-r500 !default;
+$puppet-neg-bg-hover                         : $puppet-r400 !default;
+$puppet-neg-bg-active                        : $puppet-r600 !default;
+
+$puppet-neg-border-base                      : $puppet-r500 !default;
+$puppet-neg-border-hover                     : $puppet-r400 !default;
+$puppet-neg-border-active                    : $puppet-r600 !default;
+
+$puppet-neg-color-base                       : $puppet-r600 !default;
+$puppet-neg-color-hover                      : $puppet-r500 !default;
+$puppet-neg-color-active                     : $puppet-r700 !default;
+
+$puppet-neg-bg-subtle-base                   : $puppet-r100 !default;
+$puppet-neg-bg-subtle-hover                  : $puppet-r50 !default;
+$puppet-neg-bg-subtle-active                 : $puppet-r200 !default;
+
+
+// Positive Colors for success
+$puppet-pos-bg-base                          : $puppet-g500 !default;
+$puppet-pos-bg-hover                         : $puppet-g400 !default;
+$puppet-pos-bg-active                        : $puppet-g600 !default;
+
+$puppet-pos-border-base                      : $puppet-g500 !default;
+$puppet-pos-border-hover                     : $puppet-g400 !default;
+$puppet-pos-border-active                    : $puppet-g600 !default;
+
+$puppet-pos-color-base                       : $puppet-g700 !default;
+$puppet-pos-color-hover                      : $puppet-g600 !default;
+$puppet-pos-color-active                     : $puppet-g800 !default;
+
+$puppet-pos-bg-subtle-base                   : $puppet-g100 !default;
+$puppet-pos-bg-subtle-hover                  : $puppet-g50 !default;
+$puppet-pos-bg-subtle-active                 : $puppet-g200 !default;
+
+// Warning Colors
+$puppet-warn-bg-base                         : $puppet-y500 !default;
+$puppet-warn-bg-hover                        : $puppet-y400 !default;
+$puppet-warn-bg-active                       : $puppet-y600 !default;
+
+$puppet-warn-border-base                     : $puppet-y500 !default;
+$puppet-warn-border-hover                    : $puppet-y400 !default;
+$puppet-warn-border-active                   : $puppet-y600 !default;
+
+$puppet-warn-color-base                      : $puppet-y600 !default;
+$puppet-warn-color-hover                     : $puppet-y500 !default;
+$puppet-warn-color-active                    : $puppet-y700 !default;
+
+$puppet-warn-bg-subtle-base                  : $puppet-y100 !default;
+$puppet-warn-bg-subtle-hover                 : $puppet-y50 !default;
+$puppet-warn-bg-subtle-active                : $puppet-y200 !default;
+
 
 // Backgrounds
-$puppet-bg-primary: $puppet-white !default;
-$puppet-bg-subtle: $puppet-gray-lighter !default;
-$puppet-bg-dark: $puppet-gray-darker !default;
+// ----------------------------------------------------------------------------
+$puppet-bg-light                             : $puppet-white !default;
+$puppet-bg-subtle                            : $puppet-n50 !default;
+$puppet-bg-medium                            : $puppet-n100 !default;
+$puppet-bg-dark                              : $puppet-n900 !default;
 
-// Charts
-$puppet-primary-chart-color: $puppet-brand-primary !default;
+
+// Chart Colors
+// ----------------------------------------------------------------------------
+$puppet-primary-chart-color                  : $puppet-brand-primary !default;
+
 
 // Action Colors
-// Colors used for primary buttons and other action elements
-// Text is typically on a bg color - by default it is white text & icons on a blue bg
-$puppet-action-color: #0d6ad7 !default;
-$puppet-action-hover: #328af2 !default;
-$puppet-action-border: $puppet-action-color !default;
-$puppet-action-border-hover: $puppet-action-hover !default;
-$puppet-action-text: $puppet-white !default;
-$puppet-action-text-hover: $puppet-white !default;
-$puppet-action-icon: $puppet-white !default;
-$puppet-action-icon-hover: $puppet-white !default;
+// Colors used for primary buttons, links, etc.
+// ----------------------------------------------------------------------------
+$puppet-action-base                          : $puppet-b500 !default;
+$puppet-action-hover                         : $puppet-b400 !default;
+$puppet-action-active                        : $puppet-b600 !default;
 
-// Secondary Action Colors
-// A more subdued alternative to the primary action
-$puppet-action-color-alt: $puppet-gray-lighter !default;
-$puppet-action-hover-alt: $puppet-gray-light !default;
-$puppet-action-border-alt: $puppet-gray !default;
-$puppet-action-border-hover-alt: $puppet-gray-dark !default;
-$puppet-action-text-alt: $puppet-gray-dark !default;
-$puppet-action-text-hover-alt: $puppet-gray-darker !default;
-$puppet-action-icon-alt: $puppet-gray-dark !default;
-$puppet-action-icon-hover-alt: $puppet-gray-darker !default;
+// Neutral Action Colors
+// Gray alternative to the action color
+$puppet-action-neutral                       : $puppet-n600 !default;
+$puppet-action-hover-neutral                 : $puppet-n500 !default;
+$puppet-action-active-neutral                : $puppet-n700 !default;
+
+// Subtle Action Colors
+// Background for switches, secondary button, etc.
+$puppet-action-subtle                        : $puppet-n200 !default;
+$puppet-action-hover-subtle                  : $puppet-n100 !default;
+$puppet-action-active-subtle                 : $puppet-n300 !default;
 
 // Disabled Colors
-$puppet-disabled-opacity: 0.25 !default;
-$puppet-disabled-color: lighten($puppet-gray, 10%) !default;
-$puppet-disabled-hover: $puppet-disabled-color !default;
-$puppet-disabled-border: transparent !default;
-$puppet-disabled-border-hover: transparent !default;
-$puppet-disabled-text: $puppet-gray !default;
-$puppet-disabled-text-hover: $puppet-gray !default;
-$puppet-disabled-icon: $puppet-gray !default;
-$puppet-disabled-icon-hover: $puppet-gray !default;
-
-// Default Active & Inactive Colors
-// Toggles, Checkboxes, etc.
-$puppet-active-color: $puppet-action-color !default;
-$puppet-active-color-hover: $puppet-action-hover !default;
-$puppet-inactive-color: $puppet-gray-light !default;
-$puppet-inactive-color-hover: $puppet-gray !default;
+// ----------------------------------------------------------------------------
+$puppet-disabled-opacity                     : 0.64 !default;
+// TODO remove disabled colors - should be based on opacity only
+$puppet-disabled-border                      : transparent !default;
+$puppet-disabled-border-hover                : transparent !default;
+$puppet-disabled-text                        : $puppet-n400 !default;
+$puppet-disabled-text-hover                  : $puppet-n400 !default;
+$puppet-disabled-icon                        : $puppet-n400 !default;
+$puppet-disabled-icon-hover                  : $puppet-n400 !default;
 
 // Link Colors
-// For stand alone links, not buttons
-$puppet-anchor-color: $link-medium !default;
-$puppet-anchor-hover: $link-light !default;
+// ----------------------------------------------------------------------------
+// For stand alone anchors, not buttons
+$puppet-anchor-color                         : $puppet-b500 !default;
+$puppet-anchor-hover                         : $puppet-b400 !default;
+$puppet-anchor-active                        : $puppet-b600 !default;
 
-// Status Colors
-// Danger - Used to provide a warning for irreversible actions and errors
-$puppet-danger-color: $negative-1 !default;
-$puppet-danger-hover: darken($puppet-danger-color, 10%) !default;
-$puppet-danger-border: $puppet-danger-color !default;
-$puppet-danger-border-hover: darken($puppet-danger-color, 10%) !default;
+// Disabled States
+// Objects should use opacity to indicate their disabled state
+// ----------------------------------------------------------------------------
+$puppet-disabled-opacity                     : 0.64;
 
-// Success
-$puppet-success-color: $positive-1 !default;
-$puppet-success-hover: darken($puppet-success-color, 10%) !default;
-$puppet-success-border: $puppet-success-color !default;
-$puppet-success-border-hover: darken($puppet-success-color, 10%) !default;
-
-//Warning
-$puppet-warning-color: $warning-1 !default;
-$puppet-warning-hover: darken($puppet-warning-color, 10%) !default;
-$puppet-warning-border: $puppet-warning-color !default;
-$puppet-warning-border-hover: darken($puppet-warning-color, 10%) !default;
 
 // Sizing Defaults
 // ----------------------------------------------------------------------------
-$puppet-size-base: 8px !default;
-$puppet-mini: $puppet-size-base * 0.25 !default;
-$puppet-tiny: $puppet-size-base * 0.5 !default;
-$puppet-small: $puppet-size-base !default;
-$puppet-medium: $puppet-size-base * 2 !default;
-$puppet-large: $puppet-size-base * 3 !default;
-$puppet-huge: $puppet-size-base * 4 !default;
-$puppet-giant: $puppet-size-base * 6 !default;
+$puppet-size-base                            : 8px !default;
+$puppet-mini                                 : $puppet-size-base * 0.25 !default;
+$puppet-tiny                                 : $puppet-size-base * 0.5 !default;
+$puppet-small                                : $puppet-size-base !default;
+$puppet-medium                               : $puppet-size-base * 2 !default;
+$puppet-large                                : $puppet-size-base * 3 !default;
+$puppet-huge                                 : $puppet-size-base * 4 !default;
+$puppet-giant                                : $puppet-size-base * 6 !default;
+
 
 // Icons
 // ----------------------------------------------------------------------------
-$puppet-icon-fill: $puppet-gray !default;
-$puppet-icon-fill-hover: $puppet-gray-dark !default;
-$puppet-icon-light: $puppet-white !default;
-$puppet-icon-action: $puppet-action-color !default;
-$puppet-icon-action-hover: $puppet-action-hover !default;
+$puppet-icon-fill-base                       : $puppet-n600 !default;
+$puppet-icon-fill-hover                      : $puppet-n500 !default;
+$puppet-icon-fill-active                     : $puppet-n700 !default;
+$puppet-icon-fill-light                      : $puppet-white !default;
+$puppet-icon-fill-action-base                : $puppet-action-base !default;
+$puppet-icon-fill-action-hover               : $puppet-action-hover !default;
+$puppet-icon-fill-action-active              : $puppet-action-active !default;
+
 
 // Typography
 // ----------------------------------------------------------------------------
-$puppet-font-family: 'Source Sans Pro', sans-serif !default;
-$puppet-secondary-font-family: 'Open Sans', sans-serif !default;
+$puppet-font-family                          : 'Opens Sans', sans-serif !default;
+$puppet-font-family-heading                  : 'Calibre', serif !default;
+$puppet-font-family-button                   : 'Calibre', serif !default;
+// TODO Bring in Puppet Monospace font
+$puppet-font-family-code                     : 'Consolas', monospace !default;
 
-$puppet-font-size-giant: 42px !default;
-$puppet-font-size-huge: 28px !default;
-$puppet-font-size-large: 21px !default;
-$puppet-font-size-medium: 18px !default;
-$puppet-font-size-base: 14px !default;
-$puppet-font-size-small: 12px !default;
-$puppet-font-size-tiny: 11px !default;
+$puppet-font-size-giant                      : 42px !default;
+$puppet-font-size-huge                       : 28px !default;
+$puppet-font-size-large                      : 21px !default;
+$puppet-font-size-medium                     : 18px !default;
+$puppet-font-size-base                       : 14px !default;
+$puppet-font-size-small                      : 12px !default;
+$puppet-font-size-tiny                       : 11px !default;
 
-$puppet-font-color-base: $puppet-gray-darker !default;
-$puppet-font-color-medium: $puppet-gray-dark !default;
-$puppet-font-color-subtle: $puppet-gray !default;
-$puppet-font-color-light: $puppet-white !default;
+$puppet-font-color-dark                      : $puppet-black;
+$puppet-font-color-base                      : $puppet-n900 !default;
+$puppet-font-color-medium                    : $puppet-n700 !default;
+$puppet-font-color-subtle                    : $puppet-n600 !default;
+$puppet-font-color-light                     : $puppet-white !default;
 
-$puppet-line-height-default: 1.5em !default;
+$puppet-line-height-default                  : 1.5em !default;
 
-$puppet-font-weight-normal: 400 !default;
-$puppet-font-weight-medium: 400 !default; // deprecating in a future release
-$puppet-font-weight-heavy: 600 !default;
+$puppet-font-weight-normal                   : 400 !default;
+$puppet-font-weight-medium                   : 400 !default; // deprecating in a future release
+$puppet-font-weight-heavy                    : 600 !default;
 
 // Content
-$puppet-strong: $puppet-font-weight-heavy !default;
+$puppet-strong                               : $puppet-font-weight-heavy !default;
 
 // Headings
-$puppet-heading-color: $puppet-font-color-base !default;
-$puppet-heading-font-size-base: $puppet-font-size-base !default;
-$puppet-heading-font-weight: $puppet-font-weight-medium !default;
-$puppet-heading-line-height: 1.25em !default;
-$puppet-heading-margin: 0 0 $puppet-medium !default;
+$puppet-heading-color                        : $puppet-font-color-base !default;
+$puppet-heading-font-size-base               : $puppet-font-size-base !default;
+$puppet-heading-font-weight                  : $puppet-font-weight-medium !default;
+$puppet-heading-line-height                  : 1.25em !default;
+$puppet-heading-margin                       : 0 0 $puppet-medium !default;
 
-$puppet-h1-font-size: $puppet-font-size-huge !default;
-$puppet-h2-font-size: $puppet-font-size-large !default;
-$puppet-h3-font-size: $puppet-font-size-medium !default;
-$puppet-h4-font-size: $puppet-font-size-base !default;
-$puppet-h5-font-size: $puppet-font-size-small !default;
-$puppet-h6-font-size: $puppet-font-size-small !default;
+$puppet-h1-font-size                         : $puppet-font-size-huge !default;
+$puppet-h2-font-size                         : $puppet-font-size-large !default;
+$puppet-h3-font-size                         : $puppet-font-size-medium !default;
+$puppet-h4-font-size                         : $puppet-font-size-base !default;
+$puppet-h5-font-size                         : $puppet-font-size-small !default;
+$puppet-h6-font-size                         : $puppet-font-size-small !default;
 
 // Paragraphs
-$puppet-p-color: $puppet-font-color-base !default;
-$puppet-p-font-size: $puppet-font-size-base !default;
-$puppet-p-font-weight: $puppet-font-weight-normal !default;
-$puppet-p-line-height: $puppet-line-height-default !default;
-$puppet-p-margin: 0 0 $puppet-medium !default;
+$puppet-p-color                              : $puppet-font-color-base !default;
+$puppet-p-font-size                          : $puppet-font-size-base !default;
+$puppet-p-font-weight                        : $puppet-font-weight-normal !default;
+$puppet-p-line-height                        : $puppet-line-height-default !default;
+$puppet-p-margin                             : 0 0 $puppet-medium !default;
 
-$puppet-list-color: $puppet-font-color-base !default;
-$puppet-list-font-size: $puppet-font-size-base !default;
-$puppet-list-font-weight: $puppet-font-weight-normal !default;
-$puppet-list-line-height: $puppet-line-height-default !default;
-$puppet-list-margin: $puppet-mini 0 $puppet-small !default;
-$puppet-list-padding: 0 !default;
-$puppet-list-position: inside !default;
-$puppet-list-item-margin: 0 0 $puppet-small !default;
-$puppet-list-ul-type: initial !default;
-$puppet-list-ol-type: decimal !default;
+$puppet-list-color                           : $puppet-font-color-base !default;
+$puppet-list-font-size                       : $puppet-font-size-base !default;
+$puppet-list-font-weight                     : $puppet-font-weight-normal !default;
+$puppet-list-line-height                     : $puppet-line-height-default !default;
+$puppet-list-margin                          : $puppet-mini 0 $puppet-small !default;
+$puppet-list-padding                         : 0 !default;
+$puppet-list-position                        : inside !default;
+$puppet-list-item-margin                     : 0 0 $puppet-small !default;
+$puppet-list-ul-type                         : initial !default;
+$puppet-list-ol-type                         : decimal !default;
 
 // Code
-$puppet-code-bg: $puppet-bg-subtle !default;
-$puppet-code-color: $puppet-font-color-base !default;
-$puppet-code-font-family: monospace !default;
-$puppet-code-font-size: $puppet-font-size-base !default;
-$puppet-code-font-weight: $puppet-font-weight-medium !default;
-$puppet-code-line-height: $puppet-line-height-default !default;
-$puppet-code-margin: 0 0 $puppet-small !default;
-$puppet-code-padding: $puppet-tiny !default;
+$puppet-code-bg                              : $puppet-bg-subtle !default;
+$puppet-code-color                           : $puppet-font-color-base !default;
+// TODO Bring in Puppet Monospace font
+$puppet-code-font-family                     : monospace !default;
+$puppet-code-font-size                       : $puppet-font-size-base !default;
+$puppet-code-font-weight                     : $puppet-font-weight-medium !default;
+$puppet-code-line-height                     : $puppet-line-height-default !default;
+$puppet-code-margin                          : 0 0 $puppet-small !default;
+$puppet-code-padding                         : $puppet-tiny !default;
 
 // Text Labels
-$puppet-text-label-size: $puppet-font-size-tiny !default;
-$puppet-text-label-color: $puppet-font-color-medium !default;
-$puppet-text-label-letter-spacing: 0.6px !default;
-$puppet-text-label-transform: uppercase !default;
-$puppet-text-label-weight: $puppet-font-weight-medium !default;
+$puppet-text-label-size                      : $puppet-font-size-tiny !default;
+$puppet-text-label-color                     : $puppet-font-color-medium !default;
+$puppet-text-label-letter-spacing            : 0.6px !default;
+$puppet-text-label-transform                 : uppercase !default;
+$puppet-text-label-weight                    : $puppet-font-weight-medium !default;
 
 // Borders
 // ----------------------------------------------------------------------------
-$puppet-border-color: $puppet-gray-light !default;
-$puppet-border-hover-color: $puppet-gray !default;
-$puppet-border-size: 1px !default;
-$puppet-border-style: solid !default;
-$puppet-border-radius: 4px !default;
-$puppet-circle-radius: 1000px !default;
-$puppet-border: $puppet-border-size $puppet-border-style $puppet-border-color !default;
-$puppet-border-hover: $puppet-border-size $puppet-border-style
-  $puppet-border-hover-color !default;
-$puppet-border-active: $puppet-border-size $puppet-border-style
-  $puppet-action-color !default;
-$puppet-border-active-hover: $puppet-border-size $puppet-border-style
-  $puppet-action-hover !default;
-$puppet-border-heavy: $puppet-border-size * 2 $puppet-border-style
-  $puppet-border-color !default;
+$puppet-border-color-base                    : $puppet-n500 !default;
+$puppet-border-color-subtle                  : $puppet-n400 !default;
+$puppet-border-color-bold                    : $puppet-n700 !default;
+$puppet-border-color-hover                   : $puppet-n600 !default;
+$puppet-border-color-action-base             : $puppet-action-base !default;
+$puppet-border-color-action-hover            : $puppet-action-hover !default;
+$puppet-border-color-action-active           : $puppet-action-active !default;
+
+
+// Size & Styles
+$puppet-border-size-base                     : 1px !default;
+$puppet-border-size-bold                     : 2px !default;
+$puppet-border-style                         : solid !default;
+
+// Radius
+$puppet-border-radius                        : 4px !default;
+$puppet-border-radius-small                  : 2px !default;
+$puppet-circle-radius                        : 1000px !default;
+
+// Constructed Borders
+$puppet-border                               : $puppet-border-size-base $puppet-border-style $puppet-border-color-base !default;
+$puppet-border-hover                         : $puppet-border-size-base $puppet-border-style $puppet-border-color-hover !default;
+$puppet-border-action                        : $puppet-border-size-base $puppet-border-style $puppet-border-color-action-base !default;
+$puppet-border-action-hover                  : $puppet-border-size-base $puppet-border-style $puppet-border-color-action-hover !default;
+$puppet-border-action-active                 : $puppet-border-size-base $puppet-border-style $puppet-border-color-action-active !default;
+$puppet-border-subtle                        : $puppet-border-size-base $puppet-border-style $puppet-border-color-subtle !default;
 
 // Dark border
-$puppet-border-color-dark: $puppet-black !default;
-$puppet-border-hover-color-dark: $puppet-gray-darker !default;
-$puppet-border-dark: $puppet-border-size $puppet-border-style
-  $puppet-border-color-dark !default;
-$puppet-border-hover-dark: $puppet-border-size $puppet-border-style
-  $puppet-border-hover-color-dark !default;
-$puppet-border-active-hover-dark: $puppet-border-size $puppet-border-style
-  $puppet-action-hover !default;
-$puppet-border-active-dark: $puppet-border-size $puppet-border-style
-  $puppet-action-color !default;
+$puppet-border-color-dark                    : $puppet-black !default;
+$puppet-border-color-hover-dark              : $puppet-n900 !default;
+$puppet-border-dark                          : $puppet-border-size-base $puppet-border-style $puppet-border-color-dark !default;
+$puppet-border-hover-dark                    : $puppet-border-size-base $puppet-border-style $puppet-border-color-hover-dark !default;
+$puppet-border-active-hover-dark             : $puppet-border-size-base $puppet-border-style $puppet-action-hover !default;
+$puppet-border-active-dark                   : $puppet-border-size-base $puppet-border-style $puppet-action-base !default;
 
 // HR
-$puppet-hr-border: $puppet-border !default;
-$puppet-hr-margin: $puppet-medium !default;
+$puppet-border-hr                            : $puppet-border-subtle !default;
+$puppet-border-hr-margin                     : $puppet-medium !default;
 
 // Blockquote
 // ----------------------------------------------------------------------------
-$puppet-bq-border: solid $puppet-tiny $puppet-border-color !default;
-$puppet-bq-color: $puppet-font-color-base !default;
-$puppet-bq-font-size: $puppet-font-size-base !default;
-$puppet-bq-font-weight: $puppet-font-weight-normal !default;
-$puppet-bq-line-height: $puppet-line-height-default !default;
-$puppet-bq-margin: 0 0 $puppet-medium !default;
-$puppet-bq-padding: $puppet-tiny $puppet-medium !default;
+$puppet-bq-border                            : solid $puppet-tiny $puppet-border-color-base !default;
+$puppet-bq-color                             : $puppet-font-color-base !default;
+$puppet-bq-font-size                         : $puppet-font-size-base !default;
+$puppet-bq-font-weight                       : $puppet-font-weight-normal !default;
+$puppet-bq-line-height                       : $puppet-line-height-default !default;
+$puppet-bq-margin                            : 0 0 $puppet-medium !default;
+$puppet-bq-padding                           : $puppet-tiny $puppet-medium !default;
 
 // Shadows
 // ----------------------------------------------------------------------------
-$puppet-outer-shadow: 0 1px 2px rgba(0, 0, 0, 0.05) !default;
-$puppet-outer-shadow-large: 2px 2px 4px rgba(0, 0, 0, 0.05) !default;
-$puppet-outer-shadow-huge: 0 0 10px rgba(0, 0, 0, 0.08) !default;
-$puppet-outer-shadow-giant: 0 0 60px rgba(0, 0, 0, 0.3) !default;
+$puppet-outer-shadow                         : 0 1px 2px rgba(0, 0, 0, 0.05) !default;
+$puppet-outer-shadow-large                   : 2px 2px 4px rgba(0, 0, 0, 0.05) !default;
+$puppet-outer-shadow-huge                    : 0 0 10px rgba(0, 0, 0, 0.08) !default;
+$puppet-outer-shadow-giant                   : 0 0 60px rgba(0, 0, 0, 0.3) !default;
 
-$puppet-selectable-shadow: 0 0 0 1px $puppet-border-color !default;
-$puppet-selectable-shadow-hover: 0 0 0 1px $puppet-border-hover-color !default;
-$puppet-selected-shadow: 0 0 0 1px $puppet-action-color !default;
-$puppet-selected-shadow-hover: 0 0 0 1px $puppet-action-hover !default;
+$puppet-selectable-shadow                    : 0 0 0 1px $puppet-border-color-base !default;
+$puppet-selectable-shadow-hover              : 0 0 0 1px $puppet-border-color-hover !default;
+$puppet-selected-shadow                      : 0 0 0 1px $puppet-action-base !default;
+$puppet-selected-shadow-hover                : 0 0 0 1px $puppet-action-hover !default;
 
 // Animations
 // ----------------------------------------------------------------------------
-$puppet-animation-speed-base: 0.2s;
+$puppet-animation-speed-base                 : 0.2s;
 
 // Responsive breakpoints
 // ----------------------------------------------------------------------------
-$puppet-breakpoint-small: 700px !default;
-$puppet-breakpoint-medium: 1088px !default;
+$puppet-breakpoint-small                     : 700px !default;
+$puppet-breakpoint-medium                    : 1088px !default;
 
 /* stylelint-enable */

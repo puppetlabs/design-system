@@ -1,0 +1,73 @@
+.rc-heading {
+  color: $puppet-heading-color;
+  margin: 0;
+}
+
+.rc-heading-medium {
+  color: $puppet-heading-medium-color;
+}
+
+.rc-heading-subtle {
+  color: $puppet-heading-subtle-color;
+}
+
+.rc-heading-caps {
+  text-transform: uppercase;
+}
+
+.rc-heading-hero {
+  font-family: $puppet-heading-hero-font-family;
+  font-size: $puppet-heading-hero-font-size;
+  font-weight: $puppet-heading-hero-font-weight;
+  line-height: $puppet-heading-hero-line-height;
+}
+
+.rc-heading-h1 {
+  font-family: $puppet-heading-h1-font-family;
+  font-size: $puppet-heading-h1-font-size;
+  font-weight: $puppet-heading-h1-font-weight;
+  line-height: $puppet-heading-h1-line-height;
+}
+
+.rc-heading-h2 {
+  font-family: $puppet-heading-h2-font-family;
+  font-size: $puppet-heading-h2-font-size;
+  font-weight: $puppet-heading-h2-font-weight;
+  line-height: $puppet-heading-h2-line-height;
+}
+
+.rc-heading-h3 {
+  font-family: $puppet-heading-h3-font-family;
+  font-size: $puppet-heading-h3-font-size;
+  font-weight: $puppet-heading-h3-font-weight;
+  line-height: $puppet-heading-h3-line-height;
+}
+
+.rc-heading-h4 {
+  font-family: $puppet-heading-h4-font-family;
+  font-size: $puppet-heading-h4-font-size;
+  font-weight: $puppet-heading-h4-font-weight;
+  line-height: $puppet-heading-h4-line-height;
+}
+
+.rc-heading-h5 {
+  font-family: $puppet-heading-h5-font-family;
+  font-size: $puppet-heading-h5-font-size;
+  font-weight: $puppet-heading-h5-font-weight;
+  line-height: $puppet-heading-h5-line-height;
+}
+
+.rc-heading-h6 {
+  font-family: $puppet-heading-h6-font-family;
+  font-size: $puppet-heading-h6-font-size;
+  font-weight: $puppet-heading-h6-font-weight;
+  line-height: $puppet-heading-h6-line-height;
+}
+
+.rc-heading-small-title {
+  font-family: $puppet-heading-small-title-font-family;
+  font-size: $puppet-heading-small-title-font-size;
+  font-weight: $puppet-heading-small-title-font-weight;
+  line-height: $puppet-heading-small-title-line-height;
+  text-transform: uppercase;;
+}

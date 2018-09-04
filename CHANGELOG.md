@@ -1,3 +1,10 @@
+# 4.0.0
+
+* New heading component
+* Updated color palette
+* New font stack include Calibre and Open Sans
+* Updated CSS to better match the design system
+
 # 3.3.0
 
 * Adding props to the filter component to allow custom operators and to improve i18n capabilities

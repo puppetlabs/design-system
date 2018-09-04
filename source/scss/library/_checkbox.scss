@@ -23,7 +23,7 @@
 .rc-checkbox::-ms-check {
   border: $puppet-checkbox-border;
   border-radius: $puppet-checkbox-border-radius;
-  color: $puppet-bg-primary;
+  color: $puppet-bg-light;
 }
 
 .rc-checkbox + .rc-icon {
@@ -38,28 +38,25 @@
 }
 
 .rc-checkbox:hover {
-  border-color: $puppet-checkbox-hover-border-color;
+  border: $puppet-checkbox-border-hover;
 
   &.rc-checkbox-checked {
-    border-color: $puppet-checkbox-disabled-border-color;
+    border: $puppet-checkbox-border;
   }
 }
 
 .rc-checkbox-checked + .rc-icon {
   display: block;
-  fill: $puppet-checkbox-icon-color;
+  fill: $puppet-checkbox-icon-fill;
 }
 
 .rc-checkbox-disabled {
   cursor: default;
-}
+  opacity: $puppet-disabled-opacity;
 
-.rc-checkbox-disabled:hover {
-  border-color: $puppet-checkbox-disabled-border-color;
-}
-
-.rc-checkbox-disabled + .rc-icon {
-  fill: $puppet-checkbox-disabled-icon-color;
+  + .rc-icon {
+    opacity: $puppet-disabled-opacity;
+  }
 }
 
 /* stylelint-enable property-no-vendor-prefix */

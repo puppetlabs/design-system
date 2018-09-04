@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Children } from 'react';
 import classnames from 'classnames';
+import Heading from '../heading';
 
 import Icon from '../icon/Icon';
 import { getKey } from '../../helpers/statics';
@@ -80,18 +81,23 @@ class Accordion extends React.Component {
 
   renderHeader() {
     const { icon, title } = this.props;
+    let iconJSX;
+
+    if (icon) {
+      iconJSX = (
+        <span className="rc-accordion-header-icon">
+          <Icon width="16px" height="16px" type={icon} />
+        </span>
+      );
+    }
 
     return (
       <div className="rc-accordion-header" key="header">
         <div className="rc-accordion-header-main">
-          {!icon ? (
-            undefined
-          ) : (
-            <span className="rc-accordion-header-icon">
-              <Icon width="16px" height="16px" type={icon} />
-            </span>
-          )}
-          <span className="rc-accordion-header-title">{title}</span>
+          {iconJSX}
+          <Heading as="h6" color="subtle" smallTitle>
+            {title}
+          </Heading>
         </div>
         <span className="rc-accordion-header-action">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}

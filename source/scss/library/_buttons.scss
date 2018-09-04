@@ -1,15 +1,6 @@
-@mixin button-colors(
-  $bg,
-  $bg-hover,
-  $color,
-  $color-hover,
-  $icon-color,
-  $icon-hover,
-  $border,
-  $border-hover
-) {
-  $button-color-dark: darken($bg, 10%);
-  $button-color-darker: darken($bg, 20%);
+@mixin button-colors($bg, $bg-hover, $bg-active, $color, $color-hover, $color-active, $icon-color, $icon-hover, $icon-active, $border, $border-hover, $border-active) {
+  $button-color-split: darken($bg, 10%);
+  $button-color-split-hover: lighten($button-color-split, 5%);
 
   background: $bg;
   border: 1px solid $border;
@@ -30,9 +21,24 @@
     background: $bg-hover;
     border: 1px solid $border-hover;
     color: $color-hover !important;
+    text-decoration: none !important;
 
     .rc-icon {
       fill: $icon-hover;
+    }
+
+    .rc-button-menu-inner .rc-icon {
+      fill: $icon-color;
+    }
+  }
+
+  &:active {
+    background: $bg-active;
+    border: 1px solid $border-active;
+    color: $color-active !important;
+
+    .rc-icon {
+      fill: $icon-active;
     }
 
     .rc-button-menu-inner .rc-icon {
@@ -50,7 +56,7 @@
   }
 
   &.rc-popover-target-open {
-    background: $button-color-dark;
+    background: $button-color-split;
   }
 
   .rc-icon {
@@ -64,10 +70,10 @@
   }
 
   &.rc-button-menu {
-    background: $button-color-dark;
+    background: $button-color-split;
 
     &:hover {
-      background: $button-color-darker;
+      background: $button-color-split-hover;
     }
   }
 }
@@ -78,13 +84,18 @@
   @include button-colors(
     $puppet-button-bg,
     $puppet-button-bg-hover,
+    $puppet-button-bg-active,
     $puppet-button-color,
     $puppet-button-color-hover,
+    $puppet-button-color-active,
     $puppet-button-icon-color,
     $puppet-button-icon-color-hover,
+    $puppet-button-icon-color-active,
     $puppet-button-border-color,
-    $puppet-button-border-color-hover
+    $puppet-button-border-color-hover,
+    $puppet-button-border-color-active
   );
+
   align-items: center;
   border-radius: $puppet-button-border-radius;
   cursor: pointer;
@@ -104,7 +115,7 @@
     font-family: $puppet-button-font-family;
     font-size: $puppet-button-font-size;
     font-weight: $puppet-button-font-weight;
-    text-transform: $puppet-button-text-case;
+    text-transform: $puppet-button-text-transform;
   }
 
   > .rc-icon + .rc-button-content {
@@ -158,12 +169,16 @@
   @include button-colors(
     $puppet-button-secondary-bg,
     $puppet-button-secondary-bg-hover,
+    $puppet-button-secondary-bg-active,
     $puppet-button-secondary-color,
     $puppet-button-secondary-color-hover,
+    $puppet-button-secondary-color-active,
     $puppet-button-secondary-icon-color,
     $puppet-button-secondary-icon-color-hover,
+    $puppet-button-secondary-icon-color-active,
     $puppet-button-secondary-border-color,
-    $puppet-button-secondary-border-color-hover
+    $puppet-button-secondary-border-color-hover,
+    $puppet-button-secondary-border-color-active
   );
 }
 
@@ -172,12 +187,16 @@
   @include button-colors(
     $puppet-button-simple-bg,
     $puppet-button-simple-bg-hover,
+    $puppet-button-simple-bg-active,
     $puppet-button-simple-color,
     $puppet-button-simple-color-hover,
+    $puppet-button-simple-color-active,
     $puppet-button-simple-icon-color,
     $puppet-button-simple-icon-color-hover,
+    $puppet-button-simple-icon-color-active,
     $puppet-button-simple-border-color,
-    $puppet-button-simple-border-color-hover
+    $puppet-button-simple-border-color-hover,
+    $puppet-button-simple-border-color-active
   );
   height: auto;
   padding: 0;
@@ -187,12 +206,16 @@
   @include button-colors(
     $puppet-button-simple-secondary-bg,
     $puppet-button-simple-secondary-bg-hover,
+    $puppet-button-simple-secondary-bg-active,
     $puppet-button-simple-secondary-color,
     $puppet-button-simple-secondary-color-hover,
+    $puppet-button-simple-secondary-color-active,
     $puppet-button-simple-secondary-icon-color,
     $puppet-button-simple-secondary-icon-color-hover,
+    $puppet-button-simple-secondary-icon-color-active,
     $puppet-button-simple-secondary-border-color,
-    $puppet-button-simple-secondary-border-color-hover
+    $puppet-button-simple-secondary-border-color-hover,
+    $puppet-button-simple-secondary-border-color-active
   );
 }
 
@@ -204,12 +227,16 @@
   @include button-colors(
     $puppet-button-clear-bg,
     $puppet-button-clear-bg-hover,
+    $puppet-button-clear-bg-active,
     $puppet-button-clear-color,
     $puppet-button-clear-color-hover,
+    $puppet-button-clear-color-active,
     $puppet-button-clear-icon-color,
     $puppet-button-clear-icon-color-hover,
+    $puppet-button-clear-icon-color-active,
     $puppet-button-clear-border-color,
-    $puppet-button-clear-border-color-hover
+    $puppet-button-clear-border-color-hover,
+    $puppet-button-clear-border-color-active
   );
 
   &.rc-button-error {
@@ -235,12 +262,16 @@
   @include button-colors(
     $puppet-button-error-bg,
     $puppet-button-error-bg-hover,
+    $puppet-button-error-bg-active,
     $puppet-button-error-color,
     $puppet-button-error-color-hover,
+    $puppet-button-error-color-active,
     $puppet-button-error-icon-color,
     $puppet-button-error-icon-color-hover,
+    $puppet-button-error-icon-color-active,
     $puppet-button-error-border-color,
-    $puppet-button-error-border-color-hover
+    $puppet-button-error-border-color-hover,
+    $puppet-button-error-border-color-active
   );
 }
 
