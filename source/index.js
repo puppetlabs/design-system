@@ -51,6 +51,7 @@ import Pagenav from './react/library/pagenav';
 import Portal from './react/library/portal';
 import Grid from './react/library/grid';
 import Heading from './react/library/heading';
+import Text from './react/library/text';
 
 export {
   Button,
@@ -100,4 +101,5 @@ export {
   Portal,
   Grid,
   Heading,
+  Text,
 };
