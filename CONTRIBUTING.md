@@ -70,6 +70,13 @@ To lint Scss:
 npm run scss-lint
 ```
 
+## Rebasing vs merging
+
+When you are the sole contributor on a branch it is prefered that you rebase the parent branch to keep
+a clean git history. However, when working on a branch with multiple people its recommended that you 
+always merge the parent into the child. This prevents the other engineers from having to blow out their
+local branch and reduces the risk of losing commits.
+
 ## Opening a pull request
 
 You've built a new feature, fixed a bug, or maybe you fixed a typo in this
