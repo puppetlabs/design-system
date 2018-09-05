@@ -96,7 +96,8 @@ class Subsection extends React.Component {
     if (truncate) {
       const jsx = (
         <SubsectionItem
-          key="view-all-link"
+          className="rc-sidebar-view-more-item"
+          key="view-more-link"
           selected={selectedItem}
           onClick={this.onViewMore}
           onKeyDown={this.onKeyDownViewMore}
