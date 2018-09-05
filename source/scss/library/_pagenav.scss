@@ -1,18 +1,25 @@
 .rc-pagenav {
   border-bottom: $puppet-border;
   display: flex;
+  flex: none;
   height: $puppet-pagenav-height;
-  line-height: $puppet-pagenav-height;
 }
 
 .rc-pagenav-fixed {
   position: fixed;
 }
 
-.rc-pagenav-left,
+.rc-pagenav-left {
+  flex: 1;
+}
+
 .rc-pagenav-right {
-  line-height: inherit;
-  width: 50%;
+  align-items: center;
+  display: flex;
+
+  > * {
+    margin: $puppet-pagenav-action-margin;
+  }
 }
 
 .rc-pagenav-link {
@@ -21,20 +28,12 @@
   display: inline-block;
   font-size: $puppet-pagenav-font-size;
   font-weight: $puppet-pagenav-font-weight !important;
-  height: 100%;
-  outline: none;
+  height: $puppet-pagenav-height;
+  line-height: $puppet-pagenav-height;
   padding: $puppet-pagenav-section-padding;
 }
 
 .rc-pagenav-link-active {
   border-bottom: 2px solid $puppet-action-base;
   color: $puppet-pagenav-action-color !important;
-}
-
-.rc-pagenav-right {
-  text-align: right;
-
-  > * {
-    margin: $puppet-pagenav-action-margin;
-  }
 }

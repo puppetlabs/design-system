@@ -1,130 +1,29 @@
-%focused-input {
-  background: $puppet-input-bg-focus;
-  border: $puppet-input-border-focus;
-  // box-shadow: $puppet-selected-shadow;
-  &:hover {
-    border: $puppet-input-border-focus;
-  }
+.rc-text {
+  color: $puppet-font-color-base;
+  font-family: $puppet-text-base-font-family;
+  font-size: $puppet-text-base-font-size;
+  font-weight: $puppet-text-base-font-weight;
+  line-height: $puppet-text-base-line-height;
 }
 
-%disabled-input {
-  background: $puppet-input-bg;
-  color: $puppet-input-color;
-  opacity: $puppet-disabled-opacity;
-
-  &:hover {
-    background: $puppet-input-bg;
-    border: $puppet-input-border;
-    color: $puppet-input-color;
-  }
+.rc-text-small {
+  font-family: $puppet-text-small-font-family;
+  font-size: $puppet-text-small-font-size;
+  font-weight: $puppet-text-small-font-weight;
+  line-height: $puppet-text-small-line-height;
 }
 
-%input {
-  background: $puppet-input-bg;
-  border: $puppet-input-border;
-  border-radius: $puppet-input-border-radius;
-  color: $puppet-input-color;
-  outline: none;
-  // Really only applies when .rc-input is a textarea
-  width: 100%;
+.rc-text-tiny {
+  font-family: $puppet-text-tiny-font-family;
+  font-size: $puppet-text-tiny-font-size;
+  font-weight: $puppet-text-tiny-font-weight;
+  line-height: $puppet-text-tiny-line-height;
 }
 
-.rc-input {
-  @extend %input;
-  font-size: $puppet-font-size-base;
-  height: $puppet-input-height;
-  line-height: 1;
-  padding: $puppet-input-padding;
-
-  &.rc-input-error {
-    border: $puppet-input-border-error;
-  }
-
-  &:focus {
-    @extend %focused-input;
-  }
-
-  &:hover {
-    background: $puppet-input-bg-hover;
-    border: $puppet-input-border-hover;
-  }
-
-  &::placeholder {
-    color: $puppet-input-color-placeholder;
-  }
-
-  &[disabled] {
-    @extend %disabled-input;
-  }
-
-  &.rc-input-large {
-    font-size: $puppet-font-size-large;
-    height: $puppet-input-large-height;
-    line-height: $puppet-line-height-default;
-    padding: $puppet-input-large-padding;
-  }
-
-  &.rc-input-medium {
-    // Same as default
-  }
-
-  &.rc-input-small,
-  &.rc-input-tiny {
-    font-size: $puppet-font-size-small;
-    height: $puppet-input-small-height;
-    padding: $puppet-input-small-padding;
-  }
+.rc-text-medium {
+  color: $puppet-font-color-medium;
 }
 
-.rc-form-field-error .rc-input {
-  border: $puppet-input-border-error;
-}
-
-.rc-input::-ms-clear {
-  display: none;
-}
-
-.rc-input-multiline,
-.rc-input-medium.rc-input-multiline {
-  height: $puppet-size-base * 9;
-  resize: vertical;
-  vertical-align: top;
-}
-
-.rc-input-small.rc-input-multiline {
-  height: 56px;
-}
-
-.rc-input-icon {
-  position: relative;
-
-  .rc-icon {
-    bottom: 10px;
-    position: absolute;
-  }
-
-  .rc-input {
-    padding-left: 24px;
-  }
-}
-
-.rc-input-simple,
-.rc-input-simple:hover {
-  border-bottom-width: 1px;
-  border-left: 0;
-  border-radius: 0;
-  border-right: 0;
-  border-top: 0;
-}
-
-.rc-input-simple:focus {
-  border-bottom-width: 1px;
-  border-left: 0 !important;
-  border-right: 0 !important;
-  border-top: 0 !important;
-  box-shadow: none !important;
-}
-
-.rc-input-hidden {
-  display: none;
+.rc-text-subtle {
+  color: $puppet-font-color-subtle;
 }
