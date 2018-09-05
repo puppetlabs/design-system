@@ -90,10 +90,13 @@ class Section extends React.Component {
   componentWillReceiveProps(newProps) {
     const active = isActive(newProps);
     const { active: activeState } = this.state;
+    const newState = { open: newProps.open };
 
     if (active !== activeState) {
-      this.setState({ active });
+      newState.active = active;
     }
+
+    this.setState(newState);
   }
 
   onKeyDown(e) {
