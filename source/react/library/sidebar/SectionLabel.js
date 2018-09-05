@@ -9,16 +9,16 @@ const defaultProps = {
   title: '',
 };
 
-class SectionLabel extends React.Component {
-  render() {
-    return (
-      <div>
-        <span className="rc-sidebar-divider" />
-        <span className="rc-sidebar-label">{this.props.title}</span>
-      </div>
-    );
-  }
-}
+const SectionLabel = props => {
+  const { title } = props;
+
+  return (
+    <div>
+      <span className="rc-sidebar-divider" />
+      <span className="rc-sidebar-label">{title}</span>
+    </div>
+  );
+};
 
 SectionLabel.propTypes = propTypes;
 SectionLabel.defaultProps = defaultProps;
