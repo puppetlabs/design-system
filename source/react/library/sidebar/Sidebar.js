@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { getKey } from '../../helpers/statics';
 import Button from '../buttons/Button';
 import Section from './Section';
+import SectionLabel from './SectionLabel';
 import Subsection from './Subsection';
 import SubsectionItem from './SubsectionItem';
 // import SectionLabel from './SectionLabel';
@@ -111,6 +112,7 @@ Sidebar.propTypes = propTypes;
 Sidebar.defaultProps = defaultProps;
 
 Sidebar.Section = Section;
+Sidebar.SectionLabel = SectionLabel;
 Sidebar.Subsection = Subsection;
 Sidebar.SubsectionItem = SubsectionItem;
 
