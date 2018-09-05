@@ -11,6 +11,8 @@
   z-index: 12;
 }
 
+
+// Minimized Sidebar Styles
 .rc-sidebar-minimized {
   margin-right: 0;
   width: $puppet-sidebar-minimized-width;
@@ -19,11 +21,16 @@
   .rc-sidebar-level-2,
   .rc-sidebar-label {
     height: 0;
-    margin: 0;
+    margin: 0 !important;
     opacity: 0;
     overflow: hidden;
-    padding: 0;
+    padding: 0 !important;
     visibility: hidden;
+  }
+
+  // Temp Fix for height judder issue
+  .rc-sidebar-level-2 {
+    display: none;
   }
 
   .rc-sidebar-divider {
@@ -46,6 +53,7 @@
   }
 }
 
+// Toggle for Collapse & Expand of the sidebar
 .rc-sidebar-toggle {
   align-items: center;
   background: $puppet-sidebar-bg;
