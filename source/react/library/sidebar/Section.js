@@ -92,7 +92,7 @@ class Section extends React.Component {
     const { active: activeState } = this.state;
     const newState = { open: newProps.open };
 
-    if (active !== activeState) {
+    if ((active !== activeState) && !this.state.open) {
       newState.active = active;
     }
 
