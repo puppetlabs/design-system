@@ -155,8 +155,22 @@
 // Selected Item
 .rc-sidebar-item-selected > .rc-sidebar-item-link,
 .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link {
-
   background: $puppet-sidebar-item-bg-active;
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-item-color-active;
+  }
+
+  .rc-icon-fill {
+    fill: $puppet-sidebar-item-icon-fill-active;
+  }
+}
+
+// Open Item
+// Selected Item
+.rc-sidebar-item-selected.rc-sidebar-item-open > .rc-sidebar-item-link,
+.rc-sidebar-item-selected.rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
+  background: $puppet-sidebar-item-bg;
 
   .rc-sidebar-item-title {
     color: $puppet-sidebar-item-color-active;
@@ -171,7 +185,6 @@
 // Level 2
 // Currently no need for special styles for Level 2  Items
 .rc-sidebar-level-2 {
-  border-left: $puppet-sidebar-level-2-border-left;
   height: auto;
   margin: $puppet-sidebar-level-2-margin !important;
   opacity: 1;
@@ -180,8 +193,8 @@
 }
 
 .rc-sidebar-level-2 .rc-sidebar-item-link {
-  margin: $puppet-sidebar-level-2-link-margin;
-  padding: $puppet-sidebar-level-2-link-padding;
+  margin: $puppet-sidebar-level-2-item-margin;
+  padding: $puppet-sidebar-level-2-item-padding;
 }
 
 .rc-sidebar-level-2 .rc-sidebar-item-title {
