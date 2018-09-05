@@ -52,7 +52,7 @@ const getOptions = (options) => {
   <Section onClick={ () => {} } title="Business Value" icon="value" />
   <Section onClick={ () => {} } title="Pipeline" icon="pipeline" />
   <SectionLabel title="custom reports" />
-  <Section title="My Reports" icon="reports" active open>
+  <Section title="My Reports" icon="reports" open>
     <Subsection title="My Reports" truncate>
       { getOptions(customReports) }
     </Subsection>

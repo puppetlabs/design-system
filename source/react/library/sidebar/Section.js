@@ -44,12 +44,38 @@ const isActive = props => {
   return active;
 };
 
+const getSelectedSubItem = props => {
+  const { children } = props;
+  let selectedSubItem;
+
+  if (children) {
+    const childrenArray = React.Children.toArray(props.children);
+
+    childrenArray.forEach(child => {
+      const grandchildArray = React.Children.toArray(child.props.children);
+
+      if (grandchildArray) {
+        const activeGrandchildren = grandchildArray.filter(grandchild => {
+          return grandchild.props.active === true;
+        });
+
+        if (activeGrandchildren.length > 0) {
+          selectedSubItem = activeGrandchildren[0].props.title;
+        }
+      }
+    });
+  }
+
+  return selectedSubItem;
+};
+
 class Section extends React.Component {
   constructor(props) {
     super(props);
+    const selectedSubItem = getSelectedSubItem(props);
 
     this.state = {
-      selectedSubItem: null,
+      selectedSubItem,
       selectedSubsection: null,
       open: props.open,
       active: isActive(props),
@@ -121,11 +147,11 @@ class Section extends React.Component {
   }
 
   renderSubsections() {
-    const { active, selectedSubsection, selectedSubItem } = this.state;
+    const { open, selectedSubsection, selectedSubItem } = this.state;
     const { children } = this.props;
 
     const isActiveSubsection = (subsection, idx) => {
-      if (active && !selectedSubsection && idx === 0) {
+      if (open && !selectedSubsection && idx === 0) {
         return true;
       }
 
@@ -148,12 +174,12 @@ class Section extends React.Component {
   }
 
   render() {
-    const { active, open } = this.state;
+    const { active, open, selectedSubItem } = this.state;
     const { title, onClick, icon: iconProp, className } = this.props;
     const classNames = classnames(
       'rc-sidebar-item',
       {
-        'rc-sidebar-item-selected': active,
+        'rc-sidebar-item-selected': active && !selectedSubItem,
         'rc-sidebar-item-selectable': onClick,
         'rc-sidebar-item-closed': !open,
       },
@@ -161,7 +187,8 @@ class Section extends React.Component {
     );
 
     let subsections = [];
-    if (active) {
+
+    if (open) {
       subsections = this.renderSubsections();
     }
 
