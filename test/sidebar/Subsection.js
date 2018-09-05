@@ -1,10 +1,8 @@
-import sinon from 'sinon';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
 import Subsection from '../../source/react/library/sidebar/Subsection';
-import SubsectionItem from '../../source/react/library/sidebar/SubsectionItem';
 
 describe('<Subsection />', () => {
   const defaultProps = {
@@ -16,17 +14,6 @@ describe('<Subsection />', () => {
     const wrapper = shallow(<Subsection {...defaultProps} />);
 
     expect(wrapper.length).to.eql(1);
-  });
-
-  it('should respond to click events if onAddItem provided', () => {
-    const onAddItem = sinon.spy();
-    const wrapper = mount(
-      <Subsection {...defaultProps} onAddItem={onAddItem} />,
-    );
-
-    wrapper.find('Button').simulate('click');
-
-    expect(onAddItem.called).to.equal(true);
   });
 
   it('should properly render provided children', () => {
@@ -88,29 +75,6 @@ describe('<Subsection />', () => {
       </Subsection>,
     );
 
-    expect(wrapper.find('.rc-sidebar-subsection-view-more-link').length).to.eql(
-      1,
-    );
-  });
-
-  // Using SubsectionItem component here b/c click simulation requires mounting
-  // and span can't receive non-standard props from Subsection
-  it('should expand list if view all link is clicked', () => {
-    const wrapper = mount(
-      <Subsection {...defaultProps} truncate>
-        <SubsectionItem />
-        <SubsectionItem />
-        <SubsectionItem />
-        <SubsectionItem />
-        <SubsectionItem />
-      </Subsection>,
-    );
-
-    wrapper.find('.rc-sidebar-subsection-view-more-link').simulate('click');
-
-    expect(wrapper.find('.rc-sidebar-subsection-view-more-link').length).to.eql(
-      0,
-    );
-    expect(wrapper.find('SubsectionItem').length).to.eql(5);
+    expect(wrapper.find('.rc-sidebar-view-more-item').length).to.eql(1);
   });
 });

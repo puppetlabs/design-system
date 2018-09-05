@@ -1,204 +1,226 @@
 // Sidebar
 .rc-sidebar {
   background: $puppet-sidebar-bg;
+  border-right: $puppet-border-subtle;
+  font: $puppet-sidebar-font;
+  margin-bottom: $puppet-sidebar-toggle-height;
   overflow: auto;
   padding: $puppet-sidebar-padding;
-  position: relative;
+  transition: width 0.2s ease-in-out;
   width: $puppet-sidebar-width;
   z-index: 12;
 }
 
+
+// Minimized Sidebar Styles
 .rc-sidebar-minimized {
   margin-right: 0;
   width: $puppet-sidebar-minimized-width;
 
-  .rc-sidebar-section-title,
-  .rc-sidebar-subsections {
+  .rc-sidebar-item-title,
+  .rc-sidebar-level-2,
+  .rc-sidebar-label {
+    height: 0;
+    margin: 0 !important;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 !important;
+    visibility: hidden;
+  }
+
+  // Temp Fix for height judder issue
+  .rc-sidebar-level-2 {
     display: none;
+  }
+
+  .rc-sidebar-divider {
+    margin: $puppet-sidebar-divider-margin-closed;
   }
 
   .rc-sidebar-toggle {
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    transition: width 0.2s ease-in-out;
+    width: $puppet-sidebar-minimized-width;
+  }
+
+  // We want open level-1 items to be highlighted
+  // when the sidebar is minimized since the level-2
+  // indicators aren't visible
+  .rc-sidebar-item-open > .rc-sidebar-item-link,
+  .rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
+    background: $puppet-sidebar-item-bg-active;
   }
 }
 
+// Toggle for Collapse & Expand of the sidebar
 .rc-sidebar-toggle {
   align-items: center;
   background: $puppet-sidebar-bg;
+  border-right: $puppet-border-subtle;
   bottom: 0;
   display: flex;
-  height: 56px;
+  height: $puppet-sidebar-toggle-height;
   left: 0;
   padding: 8px;
   position: absolute;
   text-align: center;
-  width: 100%;
+  transition: width 0.2s ease-in-out;
+  width: $puppet-sidebar-width;
 }
 
 .rc-sidebar-toggle-btn {
-  height: $puppet-sidebar-btn-size;
-
   .rc-icon {
-    height: $puppet-sidebar-btn-icon-size;
-    width: $puppet-sidebar-btn-icon-size;
-  }
-
-  &:hover {
-    background: $puppet-n400;;
+    height: $puppet-sidebar-toggle-icon-size;
+    width: $puppet-sidebar-toggle-icon-size;
   }
 }
 
-// Section
-.rc-sidebar-section:last-of-type {
+// Sidebar Levels
+.rc-sidebar-level-1:last-of-type {
   border-bottom: 0;
 }
 
-.rc-sidebar-section-closed {
-  .rc-sidebar-subsections {
-    display: none;
+.rc-sidebar-item-closed {
+  .rc-sidebar-level-2 {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
-.rc-sidebar-section-selected {
-  .rc-sidebar-section-icon .rc-icon-fill {
-    fill: $puppet-sidebar-section-title-action-color;
-  }
+// Sidebar Dividers
+.rc-sidebar-divider {
+  border: 0;
+  border-top: $puppet-sidebar-divider;
+  display: block;
+  margin: $puppet-sidebar-divider-margin-open;
+  transition: margin 0.2s ease-in-out;
 }
 
-.rc-sidebar-section-header,
-.rc-sidebar-subsection-header-link,
-.rc-sidebar-subsection-item-header {
-  height: 40px;
+// Sidebar Labels
+.rc-sidebar-label {
+  color: $puppet-sidebar-item-color;
+  display: block;
+  font-family: $puppet-sidebar-label-font;
+  font-size: $puppet-sidebar-label-font-size;
+  height: auto;
+  line-height: $puppet-sidebar-label-line-height;
+  margin: $puppet-sidebar-label-margin;
+  opacity: 1;
+  padding: $puppet-sidebar-label-padding;
+  text-transform: $puppet-sidebar-label-text-transform;
+  transition: opacity 0.2s ease-in-out;
+  visibility: visible;
 }
 
-.rc-sidebar-section-header {
-  align-items: center;
-  display: flex;
-  padding-bottom: $puppet-sidebar-section-header-vertical-padding;
-  padding-left: $puppet-sidebar-section-header-horizontal-padding;
-  padding-right: $puppet-sidebar-section-header-horizontal-padding;
-  padding-top: $puppet-sidebar-section-header-vertical-padding;
+
+// Sidebar Items
+.rc-sidebar-item-content {
+  height: $puppet-sidebar-item-height;
 }
 
-.rc-sidebar-section-link {
-  border-radius: $puppet-sidebar-subsection-item-border-radius;
+.rc-sidebar-item-link {
+  border-radius: $puppet-sidebar-item-border-radius;
   cursor: pointer;
   display: block;
   height: 100%;
+  margin: $puppet-sidebar-item-margin;
   outline: none;
+  padding: $puppet-sidebar-item-padding;
+  transition: all 0.2s ease-in-out;
 }
 
-.rc-sidebar-section-link:hover,
-.rc-sidebar-section-link:focus,
-.rc-sidebar-subsection-link:hover,
-.rc-sidebar-subsection-header-link:hover {
-  background: $puppet-sidebar-subsection-item-action-bg;
+.rc-sidebar-item-link:hover {
+  background: $puppet-sidebar-item-bg-hover;
 
-  .rc-sidebar-section-icon .rc-icon-fill {
-    fill: $puppet-sidebar-section-title-hover-color;
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-item-color-hover;
   }
-}
-
-.rc-sidebar-section-title {
-  color: $puppet-sidebar-section-title-color;
-  font-size: $puppet-sidebar-section-title-font-size;
-  font-weight: $puppet-sidebar-item-font-weight;
-  line-height: $puppet-sidebar-section-title-line-height;
-}
-
-.rc-sidebar-section-icon {
-  display: flex;
-  margin-right: $puppet-sidebar-section-icon-margin;
 
   .rc-icon-fill {
-    fill: $puppet-sidebar-section-title-color;
+    fill: $puppet-sidebar-item-icon-fill-hover;
   }
 }
 
-// Subsections
-
-.rc-sidebar-subsection-link {
-  border-radius: $puppet-sidebar-subsection-item-border-radius;
-  cursor: pointer;
-  display: block;
-  height: 40px;
-  outline: none;
-}
-
-.rc-sidebar-subsection-link:hover,
-.rc-sidebar-subsection-link:focus {
-  .rc-sidebar-subsection-item-title {
-    color: $puppet-sidebar-subsection-item-action-color;
-  }
-}
-
-.rc-sidebar-subsection-header-link {
+.rc-sidebar-item-content {
   align-items: center;
-  border-radius: $puppet-sidebar-subsection-item-border-radius;
-  cursor: pointer;
   display: flex;
-  justify-content: space-between;
-  outline: none;
-  padding-left: $puppet-sidebar-section-header-horizontal-padding;
-  padding-right: $puppet-sidebar-section-header-horizontal-padding;
+  flex-direction: row;
 }
 
-.rc-sidebar-subsection-title {
-  color: $puppet-sidebar-subsection-title-color;
-  font-family: $puppet-sidebar-subsection-title-font;
-  font-size: $puppet-sidebar-subsection-title-font-size;
+.rc-sidebar-item-title {
+  color: $puppet-sidebar-item-color;
+  font-family: $puppet-sidebar-font;
+  font-size: $puppet-sidebar-item-font-size;
   font-weight: $puppet-sidebar-item-font-weight;
-  line-height: $puppet-sidebar-subsection-title-line-height;
+  height: auto;
+  line-height: $puppet-sidebar-item-line-height;
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out 0.1s;
+  visibility: visible;
 }
 
-.rc-sidebar-subsection-add-item-btn {
-  margin-bottom: 5px;
-  margin-left: $puppet-sidebar-section-header-horizontal-padding;
-  margin-right: $puppet-sidebar-section-header-horizontal-padding;
-  margin-top: 5px;
+.rc-sidebar-item-icon {
+  display: flex;
+  margin-right: $puppet-sidebar-item-icon-margin;
 
-  padding-left: $puppet-sidebar-section-header-horizontal-padding;
-  padding-right: $puppet-sidebar-section-header-horizontal-padding;
-}
-
-.rc-sidebar-subsection-view-more-link {
-  cursor: pointer;
-  display: block;
-  font-size: $puppet-sidebar-section-view-more-font-size;
-  line-height: $puppet-sidebar-section-view-more-line-height;
-  outline: none;
-  padding-bottom: $puppet-sidebar-section-view-more-vertical-padding;
-  padding-left: $puppet-sidebar-section-header-horizontal-padding;
-  padding-right: $puppet-sidebar-section-header-horizontal-padding;
-  padding-top: $puppet-sidebar-section-view-more-vertical-padding;
-  width: 100%;
-}
-
-// SubsectionItem
-.rc-sidebar-subsection-item-selected {
-  .rc-sidebar-subsection-item-title {
-    border-left: $puppet-sidebar-subsection-item-border-active;
-    color: $puppet-sidebar-subsection-item-action-color;
-    font-weight: $puppet-sidebar-item-font-weight;
+  .rc-icon-fill {
+    fill: $puppet-sidebar-item-icon-fill;
   }
 }
 
-.rc-sidebar-subsection-item-header {
-  align-items: center;
-  display: flex;
-  padding-left: $puppet-sidebar-subsection-item-header-padding;
-  padding-right: $puppet-sidebar-subsection-item-header-padding;
+// Selected Item
+.rc-sidebar-item-selected > .rc-sidebar-item-link,
+.rc-sidebar-item-selected:hover  > .rc-sidebar-item-link {
+  background: $puppet-sidebar-item-bg-active;
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-item-color-active;
+  }
+
+  .rc-icon-fill {
+    fill: $puppet-sidebar-item-icon-fill-active;
+  }
 }
 
-.rc-sidebar-subsection-item-title {
-  border-left: $puppet-sidebar-subsection-item-border;
-  color: $puppet-sidebar-subsection-item-color;
-  font-size: $puppet-sidebar-subsection-item-font-size;
-  height: $puppet-sidebar-item-height;
-  line-height: $puppet-sidebar-item-height;
-  padding-left: $puppet-sidebar-subsection-item-horizontal-padding;
-  padding-right: $puppet-sidebar-subsection-item-horizontal-padding;
-  width: 100%;
+// Open Item
+// Selected Item
+.rc-sidebar-item-open > .rc-sidebar-item-link,
+.rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
+  background: $puppet-sidebar-item-bg;
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-item-color-active;
+  }
+
+  .rc-icon-fill {
+    fill: $puppet-sidebar-item-icon-fill-active;
+  }
+}
+
+
+// Level 2
+// Currently no need for special styles for Level 2  Items
+.rc-sidebar-level-2 {
+  height: auto;
+  margin: $puppet-sidebar-level-2-margin !important;
+  opacity: 1;
+  padding: $puppet-sidebar-level-2-padding !important;
+  visibility: visible;
+}
+
+.rc-sidebar-level-2 .rc-sidebar-item-link {
+  margin: $puppet-sidebar-level-2-item-margin;
+  padding: $puppet-sidebar-level-2-item-padding;
+}
+
+.rc-sidebar-level-2 .rc-sidebar-item-title {
+  font-size: 14px;
+}
+
+.rc-sidebar-view-more-item {
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-item-color-hover;
+  }
 }

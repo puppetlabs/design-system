@@ -44,12 +44,44 @@ const isActive = props => {
   return active;
 };
 
+const getSelectedSubItem = props => {
+  const { children } = props;
+  let selectedSubItem;
+
+  if (children) {
+    const childrenArray = React.Children.toArray(props.children);
+
+    childrenArray.forEach(child => {
+      const grandchildArray = React.Children.toArray(child.props.children);
+
+      if (grandchildArray) {
+        const activeGrandchildren = grandchildArray.filter(grandchild => {
+          let found = null;
+
+          if (grandchild.props) {
+            found = grandchild.props.active === true;
+          }
+
+          return found;
+        });
+
+        if (activeGrandchildren.length > 0) {
+          selectedSubItem = activeGrandchildren[0].props.title;
+        }
+      }
+    });
+  }
+
+  return selectedSubItem;
+};
+
 class Section extends React.Component {
   constructor(props) {
     super(props);
+    const selectedSubItem = getSelectedSubItem(props);
 
     this.state = {
-      selectedSubItem: null,
+      selectedSubItem,
       selectedSubsection: null,
       open: props.open,
       active: isActive(props),
@@ -63,11 +95,14 @@ class Section extends React.Component {
 
   componentWillReceiveProps(newProps) {
     const active = isActive(newProps);
-    const { active: activeState } = this.state;
+    const { active: activeState, open } = this.state;
+    const newState = { open: newProps.open };
 
-    if (active !== activeState) {
-      this.setState({ active });
+    if (active !== activeState && !open) {
+      newState.active = active;
     }
+
+    this.setState(newState);
   }
 
   onKeyDown(e) {
@@ -84,6 +119,14 @@ class Section extends React.Component {
     // Set open state based on condition:
     // You cannot minimize a non-active section
     if (!(open && !active)) {
+      newState.open = !open;
+    }
+
+    if (open && active) {
+      // You cannot minimize an active section
+      newState.open = open;
+    } else if (open) {
+      // Minimize if open
       newState.open = !open;
     }
 
@@ -112,7 +155,7 @@ class Section extends React.Component {
 
   onSubItemClick(title) {
     const { title: titleProp, onSectionClick } = this.props;
-    this.setState({ selectedSubItem: title });
+    this.setState({ selectedSubItem: title, active: true });
     onSectionClick(titleProp);
   }
 
@@ -121,11 +164,11 @@ class Section extends React.Component {
   }
 
   renderSubsections() {
-    const { active, selectedSubsection, selectedSubItem } = this.state;
+    const { open, selectedSubsection, selectedSubItem } = this.state;
     const { children } = this.props;
 
     const isActiveSubsection = (subsection, idx) => {
-      if (active && !selectedSubsection && idx === 0) {
+      if (open && !selectedSubsection && idx === 0) {
         return true;
       }
 
@@ -148,53 +191,55 @@ class Section extends React.Component {
   }
 
   render() {
-    const { active, open } = this.state;
+    const { active, open, selectedSubItem } = this.state;
     const { title, onClick, icon: iconProp, className } = this.props;
     const classNames = classnames(
-      'rc-sidebar-section',
+      'rc-sidebar-item',
       {
-        'rc-sidebar-section-selected': active,
-        'rc-sidebar-section-selectable': onClick,
-        'rc-sidebar-section-closed': !open,
+        'rc-sidebar-item-selected': active && !selectedSubItem,
+        'rc-sidebar-item-selectable': onClick,
+        'rc-sidebar-item-closed': !open,
+        'rc-sidebar-item-open': open,
       },
       className,
     );
 
     let subsections = [];
-    if (active) {
+
+    if (open) {
       subsections = this.renderSubsections();
     }
 
     if (subsections && subsections.length) {
-      subsections = <ul className="rc-sidebar-subsections">{subsections}</ul>;
+      subsections = <div className="rc-sidebar-items">{subsections}</div>;
     }
 
     let icon;
     if (iconProp) {
       icon = (
-        <span className="rc-sidebar-section-icon">
-          <Icon width="24px" height="24px" type={iconProp} />
+        <span className="rc-sidebar-item-icon">
+          <Icon width="16px" height="16px" type={iconProp} />
         </span>
       );
     }
 
     return (
       /* eslint-disable jsx-a11y/anchor-is-valid */
-      <div className={classNames}>
+      <li className={classNames}>
         <a
-          className="rc-sidebar-section-link"
+          className="rc-sidebar-item-link"
           role="button"
           tabIndex={0}
           onClick={this.onClick}
           onKeyDown={this.onKeyDown}
         >
-          <div className="rc-sidebar-section-header">
+          <div className="rc-sidebar-item-content">
             {icon}
-            <span className="rc-sidebar-section-title">{title}</span>
+            <span className="rc-sidebar-item-title">{title}</span>
           </div>
         </a>
         {subsections}
-      </div>
+      </li>
       /* eslint-enable jsx-a11y/anchor-is-valid */
     );
   }

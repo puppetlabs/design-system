@@ -233,6 +233,7 @@ $puppet-icon-fill-action-active              : $puppet-action-active !default;
 $puppet-font-family                          : 'Open Sans', sans-serif !default;
 $puppet-font-family-heading                  : 'Calibre', serif !default;
 $puppet-font-family-button                   : 'Calibre', serif !default;
+$puppet-font-family-label                    : 'Calibre', serif !default;
 // TODO Bring in Puppet Monospace font
 $puppet-font-family-code                     : 'Consolas', monospace !default;
 
@@ -312,7 +313,7 @@ $puppet-text-label-weight                    : $puppet-font-weight-medium !defau
 // Borders
 // ----------------------------------------------------------------------------
 $puppet-border-color-base                    : $puppet-n500 !default;
-$puppet-border-color-subtle                  : $puppet-n400 !default;
+$puppet-border-color-subtle                  : $puppet-n300 !default;
 $puppet-border-color-bold                    : $puppet-n700 !default;
 $puppet-border-color-hover                   : $puppet-n600 !default;
 $puppet-border-color-action-base             : $puppet-action-base !default;

@@ -21,9 +21,7 @@ describe('<SubsectionItem />', () => {
       <SubsectionItem {...defaultProps} selected="bar" />,
     );
 
-    expect(wrapper.hasClass('rc-sidebar-subsection-item-selected')).to.eql(
-      false,
-    );
+    expect(wrapper.hasClass('rc-sidebar-item-selected')).to.eql(false);
   });
 
   it('should be active if title prop === selected prop', () => {
@@ -31,9 +29,7 @@ describe('<SubsectionItem />', () => {
       <SubsectionItem {...defaultProps} selected="foo" />,
     );
 
-    expect(wrapper.hasClass('rc-sidebar-subsection-item-selected')).to.eql(
-      true,
-    );
+    expect(wrapper.hasClass('rc-sidebar-item-selected')).to.eql(true);
   });
 
   it('should respond to click events if onClick provided', () => {

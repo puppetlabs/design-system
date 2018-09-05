@@ -64,9 +64,66 @@
   }
 }
 
+
+// Main Icon Nav
+// ----------------------------------------------------------------------------
 .rc-header-items .rc-button {
-  margin-left: 24px;
+  margin-left: $puppet-header-nav-icon-margin;
 }
+
+.rc-header-items .rc-button {
+  position: relative;
+
+  &::before {
+    background: $puppet-header-nav-icon-bg-base;
+    border-radius: $puppet-circle-radius;
+    content: '';
+    display: block;
+    height: 40px;
+    left: -12px;
+    opacity: 0;
+    position: absolute;
+    top: -12px;
+    transform: scale(0.7);
+    transition: all 0.2s ease-in-out;
+    width: 40px;
+    z-index: 0;
+  }
+
+  .rc-icon {
+    fill: $puppet-header-nav-icon-fill-base;
+    z-index: 1;
+  }
+
+  &:hover,
+  &:active,
+  &.rc-button-selected {
+    background: transparent;
+  }
+
+  &:hover .rc-icon {
+    fill: $puppet-header-nav-icon-fill-hover;
+  }
+
+  &:hover::before {
+    background: $puppet-header-nav-icon-bg-hover;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &:active .rc-icon,
+  &.rc-button-selected {
+    fill: $puppet-header-nav-icon-fill-active;
+  }
+
+  &:active::before,
+  &.rc-button-selected::before {
+    background: $puppet-header-nav-icon-bg-active;
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 
 @media only screen and (max-width: $puppet-breakpoint-medium) {
   .rc-header-menu-control {
