@@ -208,7 +208,8 @@ $puppet-sidebar-width                              : 216px !default;
 $puppet-sidebar-minimized-width                    : 65px !default;
 
 $puppet-sidebar-divider                            : $puppet-border-subtle !default;
-$puppet-sidebar-divider-margin                     : 16px 0 16px;
+$puppet-sidebar-divider-margin-open                : 16px 0 24px !default;
+$puppet-sidebar-divider-margin-closed              : 16px 0 !default;
 $puppet-sidebar-toggle-icon-size                   : 12px !important;
 
 $puppet-sidebar-item-bg                            : $puppet-bg-light !default;
@@ -225,7 +226,7 @@ $puppet-sidebar-item-font-size                     : 16px !default;
 $puppet-sidebar-item-font-weight                   : $puppet-font-weight-medium !default;
 $puppet-sidebar-item-height                        : 32px !default;
 $puppet-sidebar-item-line-height                   : $puppet-sidebar-item-height !default;
-$puppet-sidebar-item-margin                        : 2px 16px !default;
+$puppet-sidebar-item-margin                        : $puppet-mini $puppet-medium !default;
 $puppet-sidebar-item-padding                       : 0 8px !default;
 
 $puppet-sidebar-item-icon-fill                     : $puppet-n700 !default;
@@ -237,17 +238,24 @@ $puppet-sidebar-item-icon-margin                   : 12px !default;
 // Sidebar Sections
 
 // Labels
-$puppet-sidebar-label-font                 : $puppet-font-family-label !default;
-$puppet-sidebar-label-font-size            : $puppet-font-size-tiny !default;
-$puppet-sidebar-label-line-height          : $puppet-small !default;
-$puppet-sidebar-label-margin               : 0 0 8px !default;
-$puppet-sidebar-label-padding              : 0 24px 0 !default;
-$puppet-sidebar-label-text-transform       : uppercase !default;
+$puppet-sidebar-label-font                         : $puppet-font-family-label !default;
+$puppet-sidebar-label-font-size                    : $puppet-font-size-tiny !default;
+$puppet-sidebar-label-line-height                  : $puppet-small !default;
+$puppet-sidebar-label-margin                       : 0 0 $puppet-small !default;
+$puppet-sidebar-label-padding                      : 0 $puppet-large 0 !default;
+$puppet-sidebar-label-text-transform               : uppercase !default;
 
 // Top Level
 
 
 // Second Level
+$puppet-sidebar-level-2-border-left                : $puppet-border-subtle !default;
+$puppet-sidebar-level-2-font-size                  : 14px !default;
+$puppet-sidebar-level-2-margin                     : 8px 16px !default;
+$puppet-sidebar-level-2-padding                    : 0 0 0 8px !default;
+$puppet-sidebar-level-2-link-margin                : 2px 0 !default;
+$puppet-sidebar-level-2-link-padding               : 0 16px !default;
+
 
 
 // Datepicker

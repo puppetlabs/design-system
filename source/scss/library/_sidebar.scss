@@ -19,9 +19,15 @@
   .rc-sidebar-level-2,
   .rc-sidebar-label {
     height: 0;
+    margin: 0;
     opacity: 0;
     overflow: hidden;
+    padding: 0;
     visibility: hidden;
+  }
+
+  .rc-sidebar-divider {
+    margin: $puppet-sidebar-divider-margin-closed;
   }
 
   .rc-sidebar-toggle {
@@ -69,7 +75,8 @@
   border: 0;
   border-top: $puppet-sidebar-divider;
   display: block;
-  margin: $puppet-sidebar-divider-margin;
+  margin: $puppet-sidebar-divider-margin-open;
+  transition: margin 0.2s ease-in-out;
 }
 
 // Sidebar Labels
@@ -164,9 +171,17 @@
 // Level 2
 // Currently no need for special styles for Level 2  Items
 .rc-sidebar-level-2 {
+  border-left: $puppet-sidebar-level-2-border-left;
   height: auto;
+  margin: $puppet-sidebar-level-2-margin !important;
   opacity: 1;
+  padding: $puppet-sidebar-level-2-padding !important;
   visibility: visible;
+}
+
+.rc-sidebar-level-2 .rc-sidebar-item-link {
+  margin: $puppet-sidebar-level-2-link-margin;
+  padding: $puppet-sidebar-level-2-link-padding;
 }
 
 .rc-sidebar-level-2 .rc-sidebar-item-title {
