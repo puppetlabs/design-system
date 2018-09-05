@@ -167,9 +167,8 @@
 }
 
 // Open Item
-// Selected Item
-.rc-sidebar-item-selected.rc-sidebar-item-open > .rc-sidebar-item-link,
-.rc-sidebar-item-selected.rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
+.rc-sidebar-item-open > .rc-sidebar-item-link,
+.rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
   background: $puppet-sidebar-item-bg;
 
   .rc-sidebar-item-title {
