@@ -96,8 +96,11 @@ class Subsection extends React.Component {
     if (truncate) {
       const jsx = (
         <SubsectionItem
+          key="view-all-link"
+          selected={selectedItem}
           onClick={this.onViewMore}
           onKeyDown={this.onKeyDownViewMore}
+          onSubItemClick={this.onSubItemClick}
           title="View all reports..."
         />
       );
