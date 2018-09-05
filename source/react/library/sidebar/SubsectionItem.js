@@ -59,22 +59,22 @@ class SubsectionItem extends React.Component {
   render() {
     const { title, selected } = this.props;
     const active = title === selected;
-    const className = classnames('rc-sidebar-subsection-item', {
-      'rc-sidebar-subsection-item-selected': active,
+    const className = classnames('rc-sidebar-item', {
+      'rc-sidebar-item-selected': active,
     });
 
     return (
       /* eslint-disable jsx-a11y/anchor-is-valid */
       <li className={className}>
         <a
-          className="rc-sidebar-subsection-link"
+          className="rc-sidebar-item-link"
           role="button"
           tabIndex={0}
           onClick={this.onClick}
           onKeyDown={this.onKeyDown}
         >
-          <div className="rc-sidebar-subsection-item-header">
-            <span className="rc-sidebar-subsection-item-title">{title}</span>
+          <div className="rc-sidebar-item-content">
+            <span className="rc-sidebar-item-title">{title}</span>
           </div>
         </a>
       </li>

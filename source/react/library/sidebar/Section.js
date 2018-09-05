@@ -151,11 +151,11 @@ class Section extends React.Component {
     const { active, open } = this.state;
     const { title, onClick, icon: iconProp, className } = this.props;
     const classNames = classnames(
-      'rc-sidebar-section',
+      'rc-sidebar-item',
       {
-        'rc-sidebar-section-selected': active,
-        'rc-sidebar-section-selectable': onClick,
-        'rc-sidebar-section-closed': !open,
+        'rc-sidebar-item-selected': active,
+        'rc-sidebar-item-selectable': onClick,
+        'rc-sidebar-item-closed': !open,
       },
       className,
     );
@@ -166,35 +166,35 @@ class Section extends React.Component {
     }
 
     if (subsections && subsections.length) {
-      subsections = <ul className="rc-sidebar-subsections">{subsections}</ul>;
+      subsections = <div className="rc-sidebar-items">{subsections}</div>;
     }
 
     let icon;
     if (iconProp) {
       icon = (
-        <span className="rc-sidebar-section-icon">
-          <Icon width="24px" height="24px" type={iconProp} />
+        <span className="rc-sidebar-item-icon">
+          <Icon width="16px" height="16px" type={iconProp} />
         </span>
       );
     }
 
     return (
       /* eslint-disable jsx-a11y/anchor-is-valid */
-      <div className={classNames}>
+      <li className={classNames}>
         <a
-          className="rc-sidebar-section-link"
+          className="rc-sidebar-item-link"
           role="button"
           tabIndex={0}
           onClick={this.onClick}
           onKeyDown={this.onKeyDown}
         >
-          <div className="rc-sidebar-section-header">
+          <div className="rc-sidebar-item-content">
             {icon}
-            <span className="rc-sidebar-section-title">{title}</span>
+            <span className="rc-sidebar-item-title">{title}</span>
           </div>
         </a>
         {subsections}
-      </div>
+      </li>
       /* eslint-enable jsx-a11y/anchor-is-valid */
     );
   }

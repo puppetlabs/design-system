@@ -6,6 +6,7 @@ import Button from '../buttons/Button';
 import Section from './Section';
 import Subsection from './Subsection';
 import SubsectionItem from './SubsectionItem';
+// import SectionLabel from './SectionLabel';
 
 const propTypes = {
   children: PropTypes.node,
@@ -87,6 +88,7 @@ class Sidebar extends React.Component {
     const { togglable } = this.props;
     const { minimized } = this.state;
     const sections = this.getSections();
+
     const className = classnames('rc-sidebar', {
       'rc-sidebar-minimized': minimized,
     });
@@ -98,7 +100,7 @@ class Sidebar extends React.Component {
 
     return (
       <div className={className}>
-        {sections}
+        <ul className="rc-sidebar-level-1">{sections}</ul>
         {toggle}
       </div>
     );

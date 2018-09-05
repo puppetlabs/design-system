@@ -201,49 +201,53 @@ $puppet-card-shadow-selected-hover                 : $puppet-selected-shadow-hov
 // ----------------------------------------------------------------------------
 
 // Sidebar General
-$puppet-sidebar-bg                                 : $puppet-bg-subtle !default;
-$puppet-sidebar-width                              : 240px !default;
-$puppet-sidebar-minimized-width                    : 72px !default;
-$puppet-sidebar-padding                            : $puppet-small !default;
-$puppet-sidebar-btn-size                           : 40px !default;
-$puppet-sidebar-btn-icon-size                      : 10px !important;
+$puppet-sidebar-bg                                 : $puppet-bg-light !default;
+$puppet-sidebar-font                               : $puppet-font-family-heading !default;
+$puppet-sidebar-padding                            : $puppet-medium 0 !default;
+$puppet-sidebar-width                              : 216px !default;
+$puppet-sidebar-minimized-width                    : 65px !default;
 
-$puppet-sidebar-item-height                        : 40px !default;
-$puppet-sidebar-item-font-weight                   : $puppet-font-weight-heavy !default;
+$puppet-sidebar-divider                            : $puppet-border-subtle !default;
+$puppet-sidebar-divider-margin                     : 16px 0 16px;
+$puppet-sidebar-toggle-icon-size                   : 12px !important;
 
-// Sidebar Section
-$puppet-sidebar-section-title-color                : $puppet-black !default;
-$puppet-sidebar-section-title-font-size            : 14px !default;
-$puppet-sidebar-section-title-line-height          : $puppet-large !default;
-$puppet-sidebar-section-title-action-color         : $puppet-action-base !default;
-$puppet-sidebar-section-title-hover-color          : $puppet-action-hover !default;
-$puppet-sidebar-section-icon-margin                : $puppet-large !default;
-$puppet-sidebar-section-header-horizontal-padding  : $puppet-medium !default;
-$puppet-sidebar-section-header-vertical-padding    : $puppet-small !default;
+$puppet-sidebar-item-bg                            : $puppet-bg-light !default;
+$puppet-sidebar-item-bg-hover                      : $puppet-bg-subtle !default;
+$puppet-sidebar-item-bg-active                     : $puppet-bg-subtle !default;
 
-// Sidebar Subsection
-$puppet-sidebar-subsection-title-color             : $puppet-black !default;
-$puppet-sidebar-subsection-title-font              : $puppet-font-family !default;
-$puppet-sidebar-subsection-title-font-size         : $puppet-font-size-small !default;
-$puppet-sidebar-subsection-title-line-height       : $puppet-font-size-medium !default;
-$puppet-sidebar-section-view-more-font-size        : $puppet-font-size-base !default;
-$puppet-sidebar-section-view-more-line-height      : $puppet-font-size-large !default;
-$puppet-sidebar-section-view-more-vertical-padding : 6px !default;
-$puppet-sidebar-subsections-vertical-padding       : 12px !important;
-$puppet-sidebar-subsection-vertical-padding        : $puppet-medium !important;
-$puppet-sidebar-subsection-header-padding-top      : $puppet-medium !default;
-$puppet-sidebar-subsection-header-padding-bottom   : $puppet-size-base !default;
+$puppet-sidebar-item-border-radius                 : $puppet-border-radius !default;
 
-// Sidebar Subsection Item
-$puppet-sidebar-subsection-item-color              : $puppet-n700 !default;
-$puppet-sidebar-subsection-item-border             : 2px solid $puppet-n400 !default;
-$puppet-sidebar-subsection-item-border-active      : 2px solid $puppet-action-base !default;
-$puppet-sidebar-subsection-item-font-size          : $puppet-font-size-small !default;
-$puppet-sidebar-subsection-item-action-color       : $puppet-black !default;
-$puppet-sidebar-subsection-item-action-bg          : rgba($puppet-n400, 0.5) !default;
-$puppet-sidebar-subsection-item-border-radius      : $puppet-border-radius !default;
-$puppet-sidebar-subsection-item-header-padding     : $puppet-medium !default;
-$puppet-sidebar-subsection-item-horizontal-padding : $puppet-size-base !default;
+$puppet-sidebar-item-color                         : $puppet-font-color-medium !default;
+$puppet-sidebar-item-color-hover                   : $puppet-action-base !default;
+$puppet-sidebar-item-color-active                  : $puppet-action-base !default;
+
+$puppet-sidebar-item-font-size                     : 16px !default;
+$puppet-sidebar-item-font-weight                   : $puppet-font-weight-medium !default;
+$puppet-sidebar-item-height                        : 32px !default;
+$puppet-sidebar-item-line-height                   : $puppet-sidebar-item-height !default;
+$puppet-sidebar-item-margin                        : 2px 16px !default;
+$puppet-sidebar-item-padding                       : 0 8px !default;
+
+$puppet-sidebar-item-icon-fill                     : $puppet-n700 !default;
+$puppet-sidebar-item-icon-fill-hover               : $puppet-action-base !default;
+$puppet-sidebar-item-icon-fill-active              : $puppet-action-base !default;
+$puppet-sidebar-item-icon-margin                   : 12px !default;
+
+
+// Sidebar Sections
+
+// Labels
+$puppet-sidebar-label-font                 : $puppet-font-family-label !default;
+$puppet-sidebar-label-font-size            : $puppet-font-size-tiny !default;
+$puppet-sidebar-label-line-height          : $puppet-small !default;
+$puppet-sidebar-label-margin               : 0 0 8px !default;
+$puppet-sidebar-label-padding              : 0 24px 0 !default;
+$puppet-sidebar-label-text-transform       : uppercase !default;
+
+// Top Level
+
+
+// Second Level
 
 
 // Datepicker

@@ -106,14 +106,16 @@ class Subsection extends React.Component {
       const jsx = (
         // eslint-disable-next-line jsx-a11y/anchor-is-valid
         <a
-          className="rc-sidebar-subsection-view-more-link"
+          className="rc-sidebar-item-link rc-sidebar-view-more-link"
           role="button"
           tabIndex={0}
           onClick={this.onViewMore}
           onKeyDown={this.onKeyDownViewMore}
           key="view-more-link"
         >
-          View All...
+          <div className="rc-sidebar-item-content">
+            <span className="rc-sidebar-item-title">View all reports...</span>
+          </div>
         </a>
       );
 
@@ -124,48 +126,12 @@ class Subsection extends React.Component {
     return items;
   }
 
-  getAddItemBtn() {
-    const { onAddItem, addItemCTA } = this.props;
-    let jsx;
-
-    if (onAddItem) {
-      jsx = (
-        <Button
-          size="tiny"
-          secondary
-          className="rc-sidebar-subsection-add-item-btn"
-          onClick={onAddItem}
-        >
-          {addItemCTA}
-        </Button>
-      );
-    }
-
-    return jsx;
-  }
-
   render() {
     const items = this.getItems();
-    const addItemBtn = this.getAddItemBtn();
-    const { title } = this.props;
 
     return (
       /* eslint-disable jsx-a11y/anchor-is-valid */
-      <div className="rc-sidebar-subsection">
-        <a
-          role="button"
-          tabIndex={0}
-          className="rc-sidebar-subsection-header-link"
-          onClick={this.onClick}
-          onKeyDown={this.onKeyDown}
-        >
-          <span className="rc-sidebar-subsection-title">{title}</span>
-        </a>
-        <div className="rc-sidebar-subsection-items">
-          {items}
-          {addItemBtn}
-        </div>
-      </div>
+      <ul className="rc-sidebar-level-2">{items}</ul>
       /* eslint-enable jsx-a11y/anchor-is-valid */
     );
   }

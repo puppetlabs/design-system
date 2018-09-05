@@ -1,11 +1,19 @@
 Sidebar with clickable sections:
 
 ```
-<Sidebar>
+<Sidebar togglable>
   <Section onClick={ () => {} } title="Home" icon="home" active />
-  <Section onClick={ () => {} } title="Reports" icon="reports" />
-  <Section onClick={ () => {} } title="Connections" icon="connect" />
-  <Section onClick={ () => {} } title="Data Model" icon="model" />
+  <SectionLabel title="reports" />
+  <Section onClick={ () => {} } title="Speed & Frequency" icon="speed" />
+  <Section onClick={ () => {} } title="Reliability" icon="reliability" />
+  <Section onClick={ () => {} } title="Security" icon="security" />
+  <Section onClick={ () => {} } title="Business Value" icon="value" />
+  <Section onClick={ () => {} } title="Pipeline" icon="pipeline" />
+  <SectionLabel title="custom reports" />
+  <Section onClick={ () => {} } title="My Reports" icon="reports" />
+  <SectionLabel title="config" />
+  <Section onClick={ () => {} } title="Connections" icon="connections" />
+  <Section onClick={ () => {} } title="Data Model" icon="data-fields" />
 </Sidebar>
 ```
 
@@ -37,15 +45,19 @@ const getOptions = (options) => {
 
 <Sidebar togglable>
   <Section title="Home" icon="home" />
-  <Section title="Reports" icon="reports" active open>
-    <Subsection title="Insights Reports">
-      { getOptions(cannedReports) }
-    </Subsection>
-    <Subsection title="My Reports" truncate addItemCTA="Create report" onAddItem={ () => {} }>
+  <SectionLabel title="reports" />
+  <Section onClick={ () => {} } title="Speed & Frequency" icon="speed" />
+  <Section onClick={ () => {} } title="Reliability" icon="reliability" />
+  <Section onClick={ () => {} } title="Security" icon="security" />
+  <Section onClick={ () => {} } title="Business Value" icon="value" />
+  <Section onClick={ () => {} } title="Pipeline" icon="pipeline" />
+  <SectionLabel title="custom reports" />
+  <Section title="My Reports" icon="reports" active open>
+    <Subsection title="My Reports" truncate>
       { getOptions(customReports) }
     </Subsection>
   </Section>
-  <Section title="Connections" icon="connect" />
-  <Section title="Data Model" icon="model" />
+  <Section title="Connections" icon="connections" />
+  <Section title="Data Model" icon="data-fields" />
 </Sidebar>
 ```
