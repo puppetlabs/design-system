@@ -55,9 +55,15 @@ const getSelectedSubItem = props => {
       const grandchildArray = React.Children.toArray(child.props.children);
 
       if (grandchildArray) {
-        const activeGrandchildren = grandchildArray.filter(
-          grandchild => grandchild.props.active === true,
-        );
+        const activeGrandchildren = grandchildArray.filter(grandchild => {
+          let found = null;
+
+          if (grandchild.props) {
+            found = grandchild.props.active === true;
+          }
+
+          return found;
+        });
 
         if (activeGrandchildren.length > 0) {
           selectedSubItem = activeGrandchildren[0].props.title;
