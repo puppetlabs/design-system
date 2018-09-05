@@ -116,11 +116,6 @@ class Section extends React.Component {
       newState.open = !open;
     }
 
-    // Minimize if open
-    if (open) {
-      newState.open = !open;
-    }
-
     // When toggling between sections, let's reset state
     // for active subitems in inactive sections
     if (!active && selectedSubItem) {

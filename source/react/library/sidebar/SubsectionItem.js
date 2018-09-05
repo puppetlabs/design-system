@@ -61,9 +61,8 @@ class SubsectionItem extends React.Component {
   render() {
     const { title, selected, className: classProp } = this.props;
     const active = title === selected;
-    const className = classnames('rc-sidebar-item', {
+    const className = classnames('rc-sidebar-item', classProp, {
       'rc-sidebar-item-selected': active,
-      classProp,
     });
 
     return (
