@@ -1,3 +1,9 @@
+# 4.1.0
+* Add Text component encapsulating body Typography
+* Update pagenav styling implementation
+* Remove some global typography scss
+* Fix font name spelling mistake
+
 # 4.0.0
 
 * New heading component
