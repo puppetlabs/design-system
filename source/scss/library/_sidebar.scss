@@ -37,13 +37,13 @@
     width: $puppet-sidebar-minimized-width;
   }
 
-  // We want open level-1 items to be highlighted
-  // when the sidebar is minimized since the level-2
-  // indicators aren't visible
-  .rc-sidebar-item-open > .rc-sidebar-item-link,
-  .rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
-    background: $puppet-sidebar-item-bg-active;
-  }
+  // // We want open level-1 items to be highlighted
+  // // when the sidebar is minimized since the level-2
+  // // indicators aren't visible
+  // .rc-sidebar-item-open > .rc-sidebar-item-link,
+  // .rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
+  //   background: $puppet-sidebar-item-bg-active;
+  // }
 }
 
 .rc-sidebar-toggle {
@@ -123,8 +123,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.rc-sidebar-item-link:hover,
-.rc-sidebar-item-link:focus {
+.rc-sidebar-item-link:hover {
   background: $puppet-sidebar-item-bg-hover;
 
   .rc-sidebar-item-title {
@@ -179,8 +178,8 @@
 
 // Open Item
 // Selected Item
-.rc-sidebar-item-selected.rc-sidebar-item-open > .rc-sidebar-item-link,
-.rc-sidebar-item-selected.rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
+.rc-sidebar-item-open > .rc-sidebar-item-link,
+.rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
   background: $puppet-sidebar-item-bg;
 
   .rc-sidebar-item-title {

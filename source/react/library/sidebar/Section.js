@@ -116,6 +116,11 @@ class Section extends React.Component {
       newState.open = !open;
     }
 
+    // Minimize if open
+    if (open) {
+      newState.open = !open;
+    }
+
     // When toggling between sections, let's reset state
     // for active subitems in inactive sections
     if (!active && selectedSubItem) {
@@ -185,6 +190,7 @@ class Section extends React.Component {
         'rc-sidebar-item-selected': active && !selectedSubItem,
         'rc-sidebar-item-selectable': onClick,
         'rc-sidebar-item-closed': !open,
+        'rc-sidebar-item-open': open,
       },
       className,
     );
