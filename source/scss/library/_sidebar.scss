@@ -3,9 +3,9 @@
   background: $puppet-sidebar-bg;
   border-right: $puppet-border-subtle;
   font: $puppet-sidebar-font;
+  margin-bottom: $puppet-sidebar-toggle-height;
   overflow: auto;
   padding: $puppet-sidebar-padding;
-  position: relative;
   transition: width 0.2s ease-in-out;
   width: $puppet-sidebar-width;
   z-index: 12;
@@ -33,21 +33,24 @@
   .rc-sidebar-toggle {
     margin-left: auto;
     margin-right: auto;
-    text-align: center;
+    transition: width 0.2s ease-in-out;
+    width: $puppet-sidebar-minimized-width;
   }
 }
 
 .rc-sidebar-toggle {
   align-items: center;
   background: $puppet-sidebar-bg;
+  border-right: $puppet-border-subtle;
   bottom: 0;
   display: flex;
-  height: 56px;
+  height: $puppet-sidebar-toggle-height;
   left: 0;
   padding: 8px;
   position: absolute;
   text-align: center;
-  width: 100%;
+  transition: width 0.2s ease-in-out;
+  width: $puppet-sidebar-width;
 }
 
 .rc-sidebar-toggle-btn {
@@ -155,8 +158,22 @@
 // Selected Item
 .rc-sidebar-item-selected > .rc-sidebar-item-link,
 .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link {
-
   background: $puppet-sidebar-item-bg-active;
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-item-color-active;
+  }
+
+  .rc-icon-fill {
+    fill: $puppet-sidebar-item-icon-fill-active;
+  }
+}
+
+// Open Item
+// Selected Item
+.rc-sidebar-item-selected.rc-sidebar-item-open > .rc-sidebar-item-link,
+.rc-sidebar-item-selected.rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
+  background: $puppet-sidebar-item-bg;
 
   .rc-sidebar-item-title {
     color: $puppet-sidebar-item-color-active;
@@ -171,7 +188,6 @@
 // Level 2
 // Currently no need for special styles for Level 2  Items
 .rc-sidebar-level-2 {
-  border-left: $puppet-sidebar-level-2-border-left;
   height: auto;
   margin: $puppet-sidebar-level-2-margin !important;
   opacity: 1;
@@ -180,8 +196,8 @@
 }
 
 .rc-sidebar-level-2 .rc-sidebar-item-link {
-  margin: $puppet-sidebar-level-2-link-margin;
-  padding: $puppet-sidebar-level-2-link-padding;
+  margin: $puppet-sidebar-level-2-item-margin;
+  padding: $puppet-sidebar-level-2-item-padding;
 }
 
 .rc-sidebar-level-2 .rc-sidebar-item-title {

@@ -25,6 +25,7 @@ const propTypes = {
   /** Callback for when section is clicked */
   onSubsectionClick: PropTypes.func,
   onClick: PropTypes.func,
+  onViewMore: PropTypes.func,
 };
 
 const defaultProps = {
@@ -38,15 +39,12 @@ const defaultProps = {
   onAddItem: null,
   addItemCTA: 'Add item',
   onSubsectionClick: () => {},
+  onViewMore: () => {},
 };
 
 class Subsection extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      truncate: props.truncate,
-    };
 
     this.onSubItemClick = this.onSubItemClick.bind(this);
     this.onViewMore = this.onViewMore.bind(this);
@@ -80,14 +78,14 @@ class Subsection extends React.Component {
   }
 
   onViewMore(e) {
+    const { onViewMore } = this.props;
     e.preventDefault();
 
-    this.setState({ truncate: false });
+    onViewMore();
   }
 
   getItems() {
-    const { selected, children, selectedItem } = this.props;
-    const { truncate } = this.state;
+    const { selected, children, selectedItem, truncate } = this.props;
     let items = [];
 
     if (selected) {
@@ -102,7 +100,7 @@ class Subsection extends React.Component {
       });
     }
 
-    if (items.length > SIDEBAR_SUBSECTION_TRUNC_LENGTH && truncate) {
+    if (truncate) {
       const jsx = (
         // eslint-disable-next-line jsx-a11y/anchor-is-valid
         <a
