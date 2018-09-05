@@ -1,5 +1,5 @@
 .rc-pagenav {
-  border-bottom: $puppet-border;
+  border-bottom: $puppet-pagenav-border;
   display: flex;
   flex: none;
   height: $puppet-pagenav-height;
@@ -31,9 +31,22 @@
   height: $puppet-pagenav-height;
   line-height: $puppet-pagenav-height;
   padding: $puppet-pagenav-section-padding;
+
+  &:hover {
+    border-bottom: $puppet-pagenav-border-hover;
+    color: $puppet-pagenav-color-hover !important;
+  }
 }
 
 .rc-pagenav-link-active {
-  border-bottom: 2px solid $puppet-action-base;
-  color: $puppet-pagenav-action-color !important;
+  border-bottom: $puppet-pagenav-border-active;
+  border-bottom-width: $puppet-pagenav-border-width-active;
+  color: $puppet-pagenav-color-active !important;
+
+  &:hover {
+    border-bottom: $puppet-pagenav-border-active;
+    border-bottom-width: $puppet-pagenav-border-width-active;
+    color: $puppet-pagenav-color-active !important;
+    cursor: default;
+  }
 }

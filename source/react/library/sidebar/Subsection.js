@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '../buttons/Button';
 import { getKey } from '../../helpers/statics';
 import {
   SIDEBAR_SUBSECTION_TRUNC_LENGTH,
   ENTER_KEY_CODE,
 } from '../../constants';
+import SubsectionItem from './SubsectionItem';
 
 const propTypes = {
   children: PropTypes.node,
@@ -18,13 +18,10 @@ const propTypes = {
   onSubItemClick: PropTypes.func,
   /** Boolean to truncate lists w/expand button */
   truncate: PropTypes.bool,
-  /** Optional method that fires when clicking "Add New" */
-  onAddItem: PropTypes.func,
-  /** CTA to use for the add item button */
-  addItemCTA: PropTypes.string,
   /** Callback for when section is clicked */
   onSubsectionClick: PropTypes.func,
   onClick: PropTypes.func,
+  onViewMore: PropTypes.func,
 };
 
 const defaultProps = {
@@ -35,18 +32,13 @@ const defaultProps = {
   selectedItem: null,
   onSubItemClick: () => {},
   truncate: false,
-  onAddItem: null,
-  addItemCTA: 'Add item',
   onSubsectionClick: () => {},
+  onViewMore: () => {},
 };
 
 class Subsection extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      truncate: props.truncate,
-    };
 
     this.onSubItemClick = this.onSubItemClick.bind(this);
     this.onViewMore = this.onViewMore.bind(this);
@@ -79,15 +71,14 @@ class Subsection extends React.Component {
     onSubItemClick(item);
   }
 
-  onViewMore(e) {
-    e.preventDefault();
+  onViewMore() {
+    const { onViewMore } = this.props;
 
-    this.setState({ truncate: false });
+    onViewMore();
   }
 
   getItems() {
-    const { selected, children, selectedItem } = this.props;
-    const { truncate } = this.state;
+    const { selected, children, selectedItem, truncate } = this.props;
     let items = [];
 
     if (selected) {
@@ -102,19 +93,17 @@ class Subsection extends React.Component {
       });
     }
 
-    if (items.length > SIDEBAR_SUBSECTION_TRUNC_LENGTH && truncate) {
+    if (truncate) {
       const jsx = (
-        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-        <a
-          className="rc-sidebar-subsection-view-more-link"
-          role="button"
-          tabIndex={0}
+        <SubsectionItem
+          className="rc-sidebar-view-more-item"
+          key="view-more-link"
+          selected={selectedItem}
           onClick={this.onViewMore}
           onKeyDown={this.onKeyDownViewMore}
-          key="view-more-link"
-        >
-          View All...
-        </a>
+          onSubItemClick={this.onSubItemClick}
+          title="View all reports..."
+        />
       );
 
       items = items.slice(0, SIDEBAR_SUBSECTION_TRUNC_LENGTH);
@@ -124,48 +113,12 @@ class Subsection extends React.Component {
     return items;
   }
 
-  getAddItemBtn() {
-    const { onAddItem, addItemCTA } = this.props;
-    let jsx;
-
-    if (onAddItem) {
-      jsx = (
-        <Button
-          size="tiny"
-          secondary
-          className="rc-sidebar-subsection-add-item-btn"
-          onClick={onAddItem}
-        >
-          {addItemCTA}
-        </Button>
-      );
-    }
-
-    return jsx;
-  }
-
   render() {
     const items = this.getItems();
-    const addItemBtn = this.getAddItemBtn();
-    const { title } = this.props;
 
     return (
       /* eslint-disable jsx-a11y/anchor-is-valid */
-      <div className="rc-sidebar-subsection">
-        <a
-          role="button"
-          tabIndex={0}
-          className="rc-sidebar-subsection-header-link"
-          onClick={this.onClick}
-          onKeyDown={this.onKeyDown}
-        >
-          <span className="rc-sidebar-subsection-title">{title}</span>
-        </a>
-        <div className="rc-sidebar-subsection-items">
-          {items}
-          {addItemBtn}
-        </div>
-      </div>
+      <ul className="rc-sidebar-level-2">{items}</ul>
       /* eslint-enable jsx-a11y/anchor-is-valid */
     );
   }
