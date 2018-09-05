@@ -12,6 +12,7 @@ const propTypes = {
   active: PropTypes.bool,
   /** The title of the active item */
   selected: PropTypes.string,
+  className: PropTypes.string,
 };
 
 const defaultProps = {
@@ -20,6 +21,7 @@ const defaultProps = {
   onClick: null,
   active: false,
   selected: null,
+  className: '',
 };
 
 class SubsectionItem extends React.Component {
@@ -57,9 +59,9 @@ class SubsectionItem extends React.Component {
   }
 
   render() {
-    const { title, selected } = this.props;
+    const { title, selected, className: classProp } = this.props;
     const active = title === selected;
-    const className = classnames('rc-sidebar-item', {
+    const className = classnames('rc-sidebar-item', classProp, {
       'rc-sidebar-item-selected': active,
     });
 

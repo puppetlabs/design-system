@@ -185,6 +185,7 @@ class Section extends React.Component {
         'rc-sidebar-item-selected': active && !selectedSubItem,
         'rc-sidebar-item-selectable': onClick,
         'rc-sidebar-item-closed': !open,
+        'rc-sidebar-item-open': open,
       },
       className,
     );

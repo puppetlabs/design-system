@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Button from '../buttons/Button';
 import { getKey } from '../../helpers/statics';
 import {
   SIDEBAR_SUBSECTION_TRUNC_LENGTH,
   ENTER_KEY_CODE,
 } from '../../constants';
+import SubsectionItem from './SubsectionItem';
 
 const propTypes = {
   children: PropTypes.node,
@@ -18,10 +18,6 @@ const propTypes = {
   onSubItemClick: PropTypes.func,
   /** Boolean to truncate lists w/expand button */
   truncate: PropTypes.bool,
-  /** Optional method that fires when clicking "Add New" */
-  onAddItem: PropTypes.func,
-  /** CTA to use for the add item button */
-  addItemCTA: PropTypes.string,
   /** Callback for when section is clicked */
   onSubsectionClick: PropTypes.func,
   onClick: PropTypes.func,
@@ -36,8 +32,6 @@ const defaultProps = {
   selectedItem: null,
   onSubItemClick: () => {},
   truncate: false,
-  onAddItem: null,
-  addItemCTA: 'Add item',
   onSubsectionClick: () => {},
   onViewMore: () => {},
 };
@@ -77,9 +71,8 @@ class Subsection extends React.Component {
     onSubItemClick(item);
   }
 
-  onViewMore(e) {
+  onViewMore() {
     const { onViewMore } = this.props;
-    e.preventDefault();
 
     onViewMore();
   }
@@ -102,19 +95,15 @@ class Subsection extends React.Component {
 
     if (truncate) {
       const jsx = (
-        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-        <a
-          className="rc-sidebar-item-link rc-sidebar-view-more-link"
-          role="button"
-          tabIndex={0}
+        <SubsectionItem
+          className="rc-sidebar-view-more-item"
+          key="view-more-link"
+          selected={selectedItem}
           onClick={this.onViewMore}
           onKeyDown={this.onKeyDownViewMore}
-          key="view-more-link"
-        >
-          <div className="rc-sidebar-item-content">
-            <span className="rc-sidebar-item-title">View all reports...</span>
-          </div>
-        </a>
+          onSubItemClick={this.onSubItemClick}
+          title="View all reports..."
+        />
       );
 
       items = items.slice(0, SIDEBAR_SUBSECTION_TRUNC_LENGTH);
