@@ -1,3 +1,7 @@
+# 4.1.1
+* Improve the sidebar, fewer levels of nesting, crisper design
+* Better hover states for pagenav
+
 # 4.1.0
 * Add Text component encapsulating body Typography
 * Update pagenav styling implementation
