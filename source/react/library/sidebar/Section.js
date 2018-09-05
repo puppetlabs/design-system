@@ -55,9 +55,9 @@ const getSelectedSubItem = props => {
       const grandchildArray = React.Children.toArray(child.props.children);
 
       if (grandchildArray) {
-        const activeGrandchildren = grandchildArray.filter(grandchild => {
-          return grandchild.props.active === true;
-        });
+        const activeGrandchildren = grandchildArray.filter(
+          grandchild => grandchild.props.active === true,
+        );
 
         if (activeGrandchildren.length > 0) {
           selectedSubItem = activeGrandchildren[0].props.title;
@@ -89,10 +89,10 @@ class Section extends React.Component {
 
   componentWillReceiveProps(newProps) {
     const active = isActive(newProps);
-    const { active: activeState } = this.state;
+    const { active: activeState, open } = this.state;
     const newState = { open: newProps.open };
 
-    if ((active !== activeState) && !this.state.open) {
+    if (active !== activeState && !open) {
       newState.active = active;
     }
 
@@ -116,11 +116,11 @@ class Section extends React.Component {
       newState.open = !open;
     }
 
-    // You cannot minimize an active section
     if (open && active) {
+      // You cannot minimize an active section
       newState.open = open;
-    // Minimize if open
     } else if (open) {
+      // Minimize if open
       newState.open = !open;
     }
 
