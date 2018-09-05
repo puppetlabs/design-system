@@ -203,15 +203,15 @@ $puppet-card-shadow-selected-hover                 : $puppet-selected-shadow-hov
 // Sidebar General
 $puppet-sidebar-bg                                 : $puppet-bg-light !default;
 $puppet-sidebar-font                               : $puppet-font-family-heading !default;
-$puppet-sidebar-padding                            : $puppet-medium 0 !default;
+$puppet-sidebar-padding                            : 14px 0 !default; // Compensates for item margin
 $puppet-sidebar-width                              : 216px !default;
 $puppet-sidebar-minimized-width                    : 65px !default;
 
 $puppet-sidebar-toggle-height                      : 56px !default;
 
 $puppet-sidebar-divider                            : $puppet-border-subtle !default;
-$puppet-sidebar-divider-margin-open                : 16px 0 24px !default;
-$puppet-sidebar-divider-margin-closed              : 16px 0 !default;
+$puppet-sidebar-divider-margin-open                : 15px 0 16px !default; // 15 compensates for border
+$puppet-sidebar-divider-margin-closed              : 15px 0 16px !default;
 $puppet-sidebar-toggle-icon-size                   : 12px !important;
 
 $puppet-sidebar-item-bg                            : $puppet-bg-light !default;
