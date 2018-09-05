@@ -35,6 +35,14 @@
     margin-right: auto;
     text-align: center;
   }
+
+  // We want open level-1 items to be highlighted
+  // when the sidebar is collapsed since the level-2
+  // indicators aren't visible
+  .rc-sidebar-item-open > .rc-sidebar-item-link,
+  .rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
+    background: $puppet-sidebar-item-bg-active;
+  }
 }
 
 .rc-sidebar-toggle {

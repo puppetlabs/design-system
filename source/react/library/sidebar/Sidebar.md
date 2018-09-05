@@ -57,6 +57,7 @@ const getOptions = (options) => {
       { getOptions(customReports) }
     </Subsection>
   </Section>
+  <SectionLabel title="config" />
   <Section title="Connections" icon="connections" />
   <Section title="Data Model" icon="data-fields" />
 </Sidebar>
