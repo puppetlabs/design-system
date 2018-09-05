@@ -116,6 +116,14 @@ class Section extends React.Component {
       newState.open = !open;
     }
 
+    // You cannot minimize an active section
+    if (open && active) {
+      newState.open = open;
+    // Minimize if open
+    } else if (open) {
+      newState.open = !open;
+    }
+
     // When toggling between sections, let's reset state
     // for active subitems in inactive sections
     if (!active && selectedSubItem) {
@@ -141,7 +149,7 @@ class Section extends React.Component {
 
   onSubItemClick(title) {
     const { title: titleProp, onSectionClick } = this.props;
-    this.setState({ selectedSubItem: title });
+    this.setState({ selectedSubItem: title, active: true });
     onSectionClick(titleProp);
   }
 
