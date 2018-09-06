@@ -24,7 +24,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  children: [],
+  children: null,
   title: '',
   selected: null,
   active: false,
@@ -116,17 +116,13 @@ class Section extends React.Component {
     const newState = {};
 
     const { open, active, selectedSubItem, selectedSubsection } = this.state;
-    // Set open state based on condition:
-    // You cannot minimize a non-active section
-    if (!(open && !active)) {
-      newState.open = !open;
-    }
+    const { children } = this.props;
 
     if (open && active) {
       // You cannot minimize an active section
       newState.open = open;
-    } else if (open) {
-      // Minimize if open
+    } else if (children) {
+      // Otherwise, toggle open state if has children
       newState.open = !open;
     }
 
@@ -191,14 +187,13 @@ class Section extends React.Component {
   }
 
   render() {
-    const { active, open, selectedSubItem } = this.state;
+    const { active, open } = this.state;
     const { title, onClick, icon: iconProp, className } = this.props;
     const classNames = classnames(
       'rc-sidebar-item',
       {
-        'rc-sidebar-item-selected': active && !selectedSubItem,
+        'rc-sidebar-item-selected': active,
         'rc-sidebar-item-selectable': onClick,
-        'rc-sidebar-item-closed': !open,
         'rc-sidebar-item-open': open,
       },
       className,

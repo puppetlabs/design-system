@@ -40,7 +40,13 @@ class Sidebar extends React.Component {
   }
 
   onSectionClick(title) {
+    console.log('herererererere')
+
     this.setState({ selected: title });
+
+    if (isAccordion) {
+      this.setState({ minimized: false });
+    }
   }
 
   onToggle() {
