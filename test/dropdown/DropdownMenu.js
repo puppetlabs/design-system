@@ -65,10 +65,10 @@ describe('<DropdownMenu />', () => {
     expect(wrapper.find('MenuList').prop('options').length).to.eql(2);
   });
 
-  it('should allow for width to be synchronized', () => {
-    const options = [{ id: 1, value: 'synchronized' }];
+  it('should allow for width to be inheritd', () => {
+    const options = [{ id: 1, value: 'inheritd' }];
     const wrapper = shallow(
-      <DropdownMenu synchronizeWidth options={options} width="100px" />,
+      <DropdownMenu inheritWidth options={options} width="100px" />,
     );
 
     expect(wrapper.find('Popover').prop('inheritTargetWidth')).to.eql(true);

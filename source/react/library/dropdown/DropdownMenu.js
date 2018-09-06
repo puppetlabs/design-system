@@ -33,7 +33,7 @@ const propTypes = {
   /** Callback that is fired whenever one of the provided actions is clicked */
   onActionClick: PropTypes.func,
   /** Maintains width between the button and the dropdown menu */
-  synchronizeWidth: PropTypes.bool,
+  inheritWidth: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -49,7 +49,7 @@ const defaultProps = {
   hint: '',
   margin: null,
   disablePortal: false,
-  synchronizeWidth: false,
+  inheritWidth: false,
   onOpen: null,
   onClose: null,
   onApply: null,
@@ -176,7 +176,7 @@ class DropdownMenu extends React.Component {
       target,
       margin,
       disablePortal,
-      synchronizeWidth,
+      inheritWidth,
       width: widthProp,
     } = this.props;
     const menu = this.renderMenu();
@@ -189,7 +189,7 @@ class DropdownMenu extends React.Component {
 
     let width;
 
-    if (!synchronizeWidth) {
+    if (!inheritWidth) {
       width = widthProp;
     }
 
@@ -203,7 +203,7 @@ class DropdownMenu extends React.Component {
           this.popover = c;
         }}
         width={width}
-        inheritTargetWidth={synchronizeWidth}
+        inheritTargetWidth={inheritWidth}
         className={className}
         target={target}
         onOpen={this.onOpen}

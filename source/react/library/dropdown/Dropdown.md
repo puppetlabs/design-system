@@ -75,7 +75,7 @@ const options = [
 />
 ```
 
-Dropdown with synchronized width
+Dropdown with inheritd width
 
 ```
 const options = [
@@ -85,7 +85,7 @@ const options = [
 
 <Dropdown
   label="Same width as the options"
-  synchronizeWidth
+  inheritWidth
   hint="Aren't I cool"
   options={ options }
 />
