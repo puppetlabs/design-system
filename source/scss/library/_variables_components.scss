@@ -12,7 +12,7 @@ $puppet-accordion-item-title-color                 : $puppet-font-color-medium !
 $puppet-accordion-item-title-hover                 : $puppet-font-color-base !default;
 $puppet-accordion-item-title-height                : $puppet-huge;
 $puppet-accordion-item-title-padding               : 0 $puppet-medium !default; // Todo: Base on grid
-$puppet-accordion-item-border                      : $puppet-border !default;
+$puppet-accordion-item-border                      : $puppet-border-subtle !default;
 $puppet-accordion-icon-color                       : $puppet-icon-fill-base !default;
 $puppet-accordion-icon-color-hover                 : $puppet-icon-fill-hover !default;
 $puppet-accordion-item-content-padding             : $puppet-medium !default;
@@ -738,7 +738,7 @@ $puppet-header-height                              : 72px !default;
 $puppet-header-bg                                  : $puppet-black !default;
 $puppet-header-menu-bg                             : $puppet-n900 !default;
 $puppet-header-color                               : $puppet-white !default;
-$puppet-header-padding                             : 0 $puppet-large !default;
+$puppet-header-padding                             : 0 40px 0 24px !default;
 $puppet-header-menu-item-button-bg-hover           : lighten($puppet-header-menu-bg, 10%) !default;
 
 $puppet-header-nav-icon-fill-base                  : $puppet-n200 !default;
@@ -753,9 +753,10 @@ $puppet-header-nav-icon-margin                     : 24px !default;
 // Pagenav
 // ----------------------------------------------------------------------------
 $puppet-pagenav-height                             : 64px !default;
+$puppet-pagenav-bg                                 : $puppet-bg-light !default;
 $puppet-pagenav-section-padding                    : 0 12px !default;
 $puppet-pagenav-action-margin                      : 0 0 0 $puppet-size-base !default;
-$puppet-pagenav-border                             : $puppet-border !default;
+$puppet-pagenav-border                             : $puppet-border-subtle !default;
 $puppet-pagenav-border-hover                       : $puppet-border-hover !default;
 $puppet-pagenav-border-active                      : $puppet-border-action !default;
 $puppet-pagenav-border-width-active                : $puppet-mini !default;
