@@ -9,17 +9,12 @@ import SubsectionItem from './SubsectionItem';
 
 const propTypes = {
   children: PropTypes.node,
-  title: PropTypes.string,
-  /** Whether or not the current subsection is selected */
-  selected: PropTypes.bool,
   /** The title of the active item */
   selectedItem: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
   onSubItemClick: PropTypes.func,
-  /** Boolean to truncate lists w/expand button */
+  /** Boolean to truncate lists w/view more button */
   truncate: PropTypes.bool,
-  /** Callback for when section is clicked */
-  onSubsectionClick: PropTypes.func,
   onClick: PropTypes.func,
   onViewMore: PropTypes.func,
 };
@@ -27,12 +22,9 @@ const propTypes = {
 const defaultProps = {
   children: [],
   onClick: () => {},
-  title: '',
-  selected: false,
   selectedItem: null,
   onSubItemClick: () => {},
   truncate: false,
-  onSubsectionClick: () => {},
   onViewMore: () => {},
 };
 
@@ -54,8 +46,7 @@ class Subsection extends React.Component {
   }
 
   onClick() {
-    const { title, onSubsectionClick, onClick } = this.props;
-    onSubsectionClick(title);
+    const { onClick } = this.props;
     onClick();
   }
 
@@ -78,20 +69,17 @@ class Subsection extends React.Component {
   }
 
   getItems() {
-    const { selected, children, selectedItem, truncate } = this.props;
-    let items = [];
+    const { children, selectedItem, truncate } = this.props;
 
-    if (selected) {
-      items = React.Children.map(children, (item, idx) => {
-        const props = {
-          key: getKey(item, idx),
-          onSubItemClick: this.onSubItemClick,
-          selected: selectedItem,
-        };
+    let items = React.Children.map(children, (item, idx) => {
+      const props = {
+        key: getKey(item, idx),
+        onSubItemClick: this.onSubItemClick,
+        selected: selectedItem,
+      };
 
-        return React.cloneElement(item, props);
-      });
-    }
+      return React.cloneElement(item, props);
+    });
 
     if (truncate) {
       const jsx = (
@@ -116,11 +104,7 @@ class Subsection extends React.Component {
   render() {
     const items = this.getItems();
 
-    return (
-      /* eslint-disable jsx-a11y/anchor-is-valid */
-      <ul className="rc-sidebar-level-2">{items}</ul>
-      /* eslint-enable jsx-a11y/anchor-is-valid */
-    );
+    return <ul className="rc-sidebar-level-2">{items}</ul>;
   }
 }
 

@@ -7,7 +7,6 @@ import Section from './Section';
 import SectionLabel from './SectionLabel';
 import Subsection from './Subsection';
 import SubsectionItem from './SubsectionItem';
-// import SectionLabel from './SectionLabel';
 
 const propTypes = {
   children: PropTypes.node,
@@ -31,7 +30,6 @@ class Sidebar extends React.Component {
     super(props);
 
     this.state = {
-      selected: null,
       minimized: props.minimized,
     };
 
@@ -39,10 +37,8 @@ class Sidebar extends React.Component {
     this.onToggle = this.onToggle.bind(this);
   }
 
-  onSectionClick(title) {
-    console.log('herererererere')
-
-    this.setState({ selected: title });
+  onSectionClick(title, isAccordion) {
+    console.log('onSectionClick fired')
 
     if (isAccordion) {
       this.setState({ minimized: false });
@@ -57,13 +53,11 @@ class Sidebar extends React.Component {
 
   getSections() {
     const { children } = this.props;
-    const { selected } = this.state;
 
     return React.Children.map(children, (section, idx) => {
       const props = {
         key: getKey(section, idx),
         onSectionClick: this.onSectionClick,
-        selected,
       };
 
       return React.cloneElement(section, props);

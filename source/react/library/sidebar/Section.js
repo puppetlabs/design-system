@@ -8,11 +8,6 @@ import { ENTER_KEY_CODE } from '../../constants';
 const propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
-  /** The title of the active section */
-  // eslint-disable-next-line react/no-unused-prop-types
-  selected: PropTypes.string,
-  /** Easy prop for setting active section */
-  active: PropTypes.bool,
   /** Class name(s) to apply to section element */
   className: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
@@ -26,8 +21,6 @@ const propTypes = {
 const defaultProps = {
   children: null,
   title: '',
-  selected: null,
-  active: false,
   className: '',
   onSectionClick: () => {},
   onClick: null,
@@ -35,15 +28,7 @@ const defaultProps = {
   open: false,
 };
 
-const isActive = props => {
-  const { selected, title, active: activeProp } = props;
-
-  let active = activeProp;
-  active = selected ? title === selected : active;
-
-  return active;
-};
-
+// TODO: clean this up / potentially remove an dreplace with method on subsection item
 const getSelectedSubItem = props => {
   const { children } = props;
   let selectedSubItem;
@@ -82,25 +67,17 @@ class Section extends React.Component {
 
     this.state = {
       selectedSubItem,
-      selectedSubsection: null,
       open: props.open,
-      active: isActive(props),
+      active: false,
     };
 
     this.onClick = this.onClick.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onSubItemClick = this.onSubItemClick.bind(this);
-    this.onSubsectionClick = this.onSubsectionClick.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
-    const active = isActive(newProps);
-    const { active: activeState, open } = this.state;
-    const newState = { open: newProps.open };
-
-    if (active !== activeState && !open) {
-      newState.active = active;
-    }
+    const newState = { open: newProps.open, active: newProps.active };
 
     this.setState(newState);
   }
@@ -115,7 +92,7 @@ class Section extends React.Component {
     e.preventDefault();
     const newState = {};
 
-    const { open, active, selectedSubItem, selectedSubsection } = this.state;
+    const { open, active, selectedSubItem } = this.state;
     const { children } = this.props;
 
     if (open && active) {
@@ -132,11 +109,6 @@ class Section extends React.Component {
       newState.selectedSubItem = null;
     }
 
-    // Same with subsections
-    if (!active && selectedSubsection) {
-      newState.selectedSubsection = null;
-    }
-
     const { onSectionClick, onClick, title } = this.props;
     onSectionClick(title);
 
@@ -150,35 +122,18 @@ class Section extends React.Component {
   }
 
   onSubItemClick(title) {
-    const { title: titleProp, onSectionClick } = this.props;
+    console.log('onSubItemClick fired')
     this.setState({ selectedSubItem: title, active: true });
-    onSectionClick(titleProp);
-  }
-
-  onSubsectionClick(title) {
-    this.setState({ selectedSubsection: title });
   }
 
   renderSubsections() {
-    const { open, selectedSubsection, selectedSubItem } = this.state;
+    const { selectedSubItem } = this.state;
     const { children } = this.props;
-
-    const isActiveSubsection = (subsection, idx) => {
-      if (open && !selectedSubsection && idx === 0) {
-        return true;
-      }
-
-      return (
-        subsection.props.title && subsection.props.title === selectedSubsection
-      );
-    };
 
     return React.Children.map(children, (subsection, idx) => {
       const props = {
         key: getKey(subsection, idx),
         onSubItemClick: this.onSubItemClick,
-        onSubsectionClick: this.onSubsectionClick,
-        selected: isActiveSubsection(subsection, idx),
         selectedItem: selectedSubItem,
       };
 
