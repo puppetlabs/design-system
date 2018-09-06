@@ -22,7 +22,7 @@ const propTypes = {
   ]),
   blank: PropTypes.string,
   /** A prompt for the user once the DropdownMenu has been opened */
-  hint: PropTypes.string,
+  title: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.object),
   actions: PropTypes.node,
   /** Whether or not the user can select multiple menu options */
@@ -44,7 +44,7 @@ const defaultProps = {
   width: 'auto',
   blank: '',
   multiple: false,
-  hint: '',
+  title: '',
   margin: null,
   disablePortal: false,
   onOpen: null,
@@ -168,7 +168,7 @@ class DropdownMenu extends React.Component {
     const {
       size,
       multiple,
-      hint,
+      title,
       anchor,
       target,
       margin,
@@ -180,14 +180,14 @@ class DropdownMenu extends React.Component {
     const className = classnames('rc-dropdown-menu', {
       [`rc-dropdown-menu-${size}`]: size,
       'rc-dropdown-menu-multiple': multiple,
-      'rc-dropdown-menu-with-header': hint,
+      'rc-dropdown-menu-with-header': title,
     });
 
     return (
       <Popover
         menu
-        hint={hint}
-        closeButton={!!hint}
+        title={title}
+        closeButton={!!title}
         anchor={anchor}
         ref={c => {
           this.popover = c;

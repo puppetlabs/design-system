@@ -112,85 +112,85 @@
   line-height: $puppet-dropdown-label-line-height;
 }
 
-.rc-dropdown-menu {
-  padding: 0;
-  width: $puppet-dropdown-width;
-
-  .rc-menu-item:first-child a {
-    border-top-left-radius: $puppet-popover-border-radius;
-    border-top-right-radius: $puppet-popover-border-radius;
-  }
-
-  .rc-menu-item:last-child a {
-    border-bottom-left-radius: $puppet-popover-border-radius;
-    border-bottom-right-radius: $puppet-popover-border-radius;
-  }
-
-  .rc-dropdown-blank {
-    font-size: $puppet-dropdown-item-font-size;
-    padding: $puppet-dropdown-padding;
-  }
-
-  .rc-dropdown-item {
-    font-size: $puppet-dropdown-item-font-size;
-    line-height: $puppet-dropdown-item-line-height;
-  }
-
-  .rc-dropdown-item a {
-    display: block;
-    padding: $puppet-dropdown-padding;
-    text-decoration: none;
-  }
-
-  .rc-dropdown-item a:hover {
-    background: $puppet-dropdown-item-hover-bg;
-    color: $puppet-dropdown-item-hover-color;
-    text-decoration: none;
-  }
-
-  .rc-dropdown-item-selected a {
-    background: $puppet-dropdown-item-selected-bg;
-    color: $puppet-dropdown-item-selected-color;
-  }
-
-  .rc-dropdown-item-disabled a {
-    background: $puppet-dropdown-item-disabled-bg;
-    color: $puppet-dropdown-item-disabled-color;
-    cursor: default;
-  }
-
-  .rc-dropdown-item-disabled a:hover {
-    background: $puppet-dropdown-item-disabled-bg;
-    color: $puppet-dropdown-item-disabled-color;
-  }
-
-  ul {
-    max-height: $puppet-dropdown-max-height;
-    overflow: auto;
-  }
-}
-
-.rc-dropdown-menu-tiny {
-  width: $puppet-dropdown-width-tiny;
-
-  .rc-dropdown-item {
-    font-size: $puppet-dropdown-item-font-size-tiny;
-    line-height: $puppet-dropdown-item-line-height-tiny;
-  }
-
-  .rc-dropdown-item a {
-    padding: $puppet-dropdown-padding-tiny;
-  }
-}
-
-.rc-dropdown-menu-multiple {
-  padding-bottom: 0;
-
-  .rc-dropdown-menu-section-list {
-    padding: 0;
-  }
-}
-
+// .rc-dropdown-menu {
+//   padding: 0;
+//   width: $puppet-dropdown-width;
+//
+//   .rc-menu-item:first-child a {
+//     border-top-left-radius: $puppet-popover-border-radius;
+//     border-top-right-radius: $puppet-popover-border-radius;
+//   }
+//
+//   .rc-menu-item:last-child a {
+//     border-bottom-left-radius: $puppet-popover-border-radius;
+//     border-bottom-right-radius: $puppet-popover-border-radius;
+//   }
+//
+//   .rc-dropdown-blank {
+//     font-size: $puppet-dropdown-item-font-size;
+//     padding: $puppet-dropdown-padding;
+//   }
+//
+//   .rc-dropdown-item {
+//     font-size: $puppet-dropdown-item-font-size;
+//     line-height: $puppet-dropdown-item-line-height;
+//   }
+//
+//   .rc-dropdown-item a {
+//     display: block;
+//     padding: $puppet-dropdown-padding;
+//     text-decoration: none;
+//   }
+//
+//   .rc-dropdown-item a:hover {
+//     background: $puppet-dropdown-item-hover-bg;
+//     color: $puppet-dropdown-item-hover-color;
+//     text-decoration: none;
+//   }
+//
+//   .rc-dropdown-item-selected a {
+//     background: $puppet-dropdown-item-selected-bg;
+//     color: $puppet-dropdown-item-selected-color;
+//   }
+//
+//   .rc-dropdown-item-disabled a {
+//     background: $puppet-dropdown-item-disabled-bg;
+//     color: $puppet-dropdown-item-disabled-color;
+//     cursor: default;
+//   }
+//
+//   .rc-dropdown-item-disabled a:hover {
+//     background: $puppet-dropdown-item-disabled-bg;
+//     color: $puppet-dropdown-item-disabled-color;
+//   }
+//
+//   ul {
+//     max-height: $puppet-dropdown-max-height;
+//     overflow: auto;
+//   }
+// }
+//
+// .rc-dropdown-menu-tiny {
+//   width: $puppet-dropdown-width-tiny;
+//
+//   .rc-dropdown-item {
+//     font-size: $puppet-dropdown-item-font-size-tiny;
+//     line-height: $puppet-dropdown-item-line-height-tiny;
+//   }
+//
+//   .rc-dropdown-item a {
+//     padding: $puppet-dropdown-padding-tiny;
+//   }
+// }
+//
+// .rc-dropdown-menu-multiple {
+//   padding-bottom: 0;
+//
+//   .rc-dropdown-menu-section-list {
+//     padding: 0;
+//   }
+// }
+//
 .rc-dropdown-menu-with-header {
   .rc-menu-item:first-child,
   .rc-menu-item:first-child a {
@@ -199,10 +199,10 @@
     border-top-right-radius: 0;
   }
 }
-
-.rc-dropdown-menu-multiple {
-  .rc-menu-item:last-child a {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-}
+//
+// .rc-dropdown-menu-multiple {
+//   .rc-menu-item:last-child a {
+//     border-bottom-left-radius: 0;
+//     border-bottom-right-radius: 0;
+//   }
+// }

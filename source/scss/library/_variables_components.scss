@@ -306,33 +306,37 @@ $puppet-datepicker-hover-border                    : 0 solid transparent !defaul
 // ----------------------------------------------------------------------------
 $puppet-dropdown-padding                           : $puppet-medium !default;
 $puppet-dropdown-padding-small                     : $puppet-small !default;
-$puppet-dropdown-padding-tiny                      : $puppet-small !default;
-$puppet-dropdown-max-height                        : 400px !default;
-$puppet-dropdown-width                             : 260px !default;
-$puppet-dropdown-width-tiny                        : 120px !default;
-
+// $puppet-dropdown-padding-tiny                      : $puppet-small !default;
+// $puppet-dropdown-max-height                        : 400px !default;
+// $puppet-dropdown-width                             : 260px !default;
+// $puppet-dropdown-width-tiny                        : 120px !default;
+//
 $puppet-dropdown-label-font-size                   : $puppet-font-size-base !default;
 $puppet-dropdown-label-font-weight                 : $puppet-font-weight-heavy !default;
 $puppet-dropdown-label-line-height                 : $puppet-medium !default;
 $puppet-dropdown-label-color                       : $puppet-action-base !default;
 $puppet-dropdown-label-color-error                 : $puppet-neg-color-base !default;
 $puppet-dropdown-label-color-disabled              : $puppet-n600 !default;
-
+//
 $puppet-dropdown-chevron-height                    : $puppet-small !default;
 $puppet-dropdown-chevron-width                     : $puppet-small !default;
-$puppet-dropdown-hint-color                        : $puppet-n600 !default;
+
+// Hint is the title for the header on some menus
+$puppet-dropdown-hint-color                        : $puppet-font-color-medium !default;
 $puppet-dropdown-hint-font-size                    : $puppet-font-size-base !default;
-$puppet-dropdown-hint-font-size-tiny               : $puppet-font-size-small !default;
-$puppet-dropdown-item-font-size                    : $puppet-font-size-base !default;
-$puppet-dropdown-item-font-size-tiny               : $puppet-font-size-base !default;
-$puppet-dropdown-item-line-height                  : $puppet-font-size-base !default;
-$puppet-dropdown-item-line-height-tiny             : $puppet-font-size-base !default;
-$puppet-dropdown-item-hover-color                  : $puppet-bg-light !default;
-$puppet-dropdown-item-hover-bg                     : $puppet-action-hover !default;
-$puppet-dropdown-item-selected-color               : $puppet-bg-light !default;
-$puppet-dropdown-item-selected-bg                  : $puppet-action-base !default;
-$puppet-dropdown-item-disabled-color               : $puppet-bg-light !default;
-$puppet-dropdown-item-disabled-bg                  : $puppet-n400 !default;
+// $puppet-dropdown-item-font-size                    : $puppet-font-size-base !default;
+// $puppet-dropdown-item-line-height                  : $puppet-font-size-base !default;
+// $puppet-dropdown-item-hover-color                  : $puppet-bg-light !default;
+// $puppet-dropdown-item-hover-bg                     : $puppet-action-hover !default;
+// $puppet-dropdown-item-selected-color               : $puppet-bg-light !default;
+// $puppet-dropdown-item-selected-bg                  : $puppet-action-base !default;
+// $puppet-dropdown-item-disabled-color               : $puppet-bg-light !default;
+// $puppet-dropdown-item-disabled-bg                  : $puppet-n400 !default;
+
+// $puppet-dropdown-hint-font-size-tiny               : $puppet-font-size-small !default;
+// $puppet-dropdown-item-font-size-tiny               : $puppet-font-size-base !default;
+// $puppet-dropdown-item-line-height-tiny             : $puppet-font-size-base !default;
+
 
 // Forms
 // ----------------------------------------------------------------------------

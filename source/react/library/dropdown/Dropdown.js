@@ -10,7 +10,7 @@ const propTypes = {
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.object),
   actions: PropTypes.node,
-  hint: PropTypes.string,
+  title: PropTypes.string,
   margin: PropTypes.number,
   anchor: PropTypes.string,
   placeholder: PropTypes.string,
@@ -36,8 +36,8 @@ const defaultProps = {
   size: 'small',
   select: false,
   options: [],
-  hint: '',
-  margin: -60,
+  title: '',
+  margin: 8,
   placeholder: '',
   blank: '',
   label: '',
@@ -214,7 +214,7 @@ class Dropdown extends React.Component {
       size,
       margin,
       blank,
-      hint,
+      title,
       multiple,
       actions,
       required,
@@ -232,7 +232,7 @@ class Dropdown extends React.Component {
         onClose={this.onClose}
         margin={margin}
         blank={blank}
-        hint={hint}
+        title={title}
         multiple={multiple}
         target={button}
         onChange={this.onChange}

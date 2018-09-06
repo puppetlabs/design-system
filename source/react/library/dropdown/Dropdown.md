@@ -1,3 +1,5 @@
+#### Dropdown Link
+
 ```
 const options = [
   { id: 1, value: 'option 1' },
@@ -8,10 +10,39 @@ const options = [
   label="I'm a dropdown"
   hint="I'm a hint"
   options={ options }
+  margin={ 5 }
 />
 ```
 
-Tiny dropdown
+#### Dropdown Button
+
+```
+const label="Do you know what time it is?";
+const hint="It's burger time";
+const options = [
+  { id: 1, value: "Buns"},
+  { id: 2, value: "Pickles"},
+  { id: 3, value: "Ketchup"},
+  { id: 4, value: "Cheese"},
+  { id: 5, value: "Put the patty"},
+  { id: 6, value: "In between"},
+  { id: 7, value: "It's burgers!"},
+  { id: 8, value: "What? What?"},
+  { id: 9, value: "Woooo!"},
+];
+
+<Dropdown
+  select
+  label={ label }
+  size=""
+  hint={ hint }
+  options={ options }
+/>
+```
+
+<!-- TODO there are currently no size variations  -->
+<!-- Tiny dropdown -->
+
 
 ```
 const options = [
@@ -21,11 +52,12 @@ const options = [
 
 <Dropdown
   label="I'm a tiny dropdown"
-  size="tiny"
+  size="small"
   hint="I'm a hint"
   options={ options }
 />
 ```
+
 
 Multiple dropdown
 
