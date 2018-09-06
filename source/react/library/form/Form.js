@@ -220,10 +220,10 @@ class Form extends React.Component {
       jsx.push(
         <Button
           key="submit"
+          type="submit"
           processing={submitting}
           size={size}
           disabled={!valid}
-          onClick={this.onSubmit}
           label={submitLabel}
         />,
       );
