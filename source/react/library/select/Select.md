@@ -88,7 +88,9 @@ const options = [
 ---
 
 ### Optional
+
 #### Clearable Select
+
 When set to clearable, all options can be removed by clicking the dismiss icon.
 
 ```
@@ -138,6 +140,7 @@ const options = [
 ---
 
 ### States
+
 #### Disabled
 
 ```
@@ -160,6 +163,7 @@ const options = [
   placeholder="Select one..."
 />
 ```
+
 ---
 
 ## Multiselect
@@ -218,6 +222,7 @@ const options = [
 ```
 
 #### autoOpen Enabled
+
 _SIG - Temporarily removed to prevent autoscroll_
 
 ```
