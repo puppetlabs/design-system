@@ -22,7 +22,7 @@ const propTypes = {
   ]),
   blank: PropTypes.string,
   /** A prompt for the user once the DropdownMenu has been opened */
-  title: PropTypes.string,
+  poop: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.object),
   actions: PropTypes.node,
   /** Whether or not the user can select multiple menu options */
@@ -44,7 +44,7 @@ const defaultProps = {
   width: 'auto',
   blank: '',
   multiple: false,
-  title: '',
+  poop: '',
   margin: null,
   disablePortal: false,
   onOpen: null,
@@ -156,7 +156,7 @@ class DropdownMenu extends React.Component {
     if (multiple) {
       jsx = (
         <Menu.Section>
-          <Button block size="small" label="Apply" onClick={this.onApply} />
+          <Button block label="Apply" onClick={this.onApply} />
         </Menu.Section>
       );
     }
@@ -168,7 +168,7 @@ class DropdownMenu extends React.Component {
     const {
       size,
       multiple,
-      title,
+      poop,
       anchor,
       target,
       margin,
@@ -180,14 +180,14 @@ class DropdownMenu extends React.Component {
     const className = classnames('rc-dropdown-menu', {
       [`rc-dropdown-menu-${size}`]: size,
       'rc-dropdown-menu-multiple': multiple,
-      'rc-dropdown-menu-with-header': title,
+      'rc-dropdown-menu-with-header': poop,
     });
 
     return (
       <Popover
         menu
-        title={title}
-        closeButton={!!title}
+        poop={poop}
+        closeButton={!!poop}
         anchor={anchor}
         ref={c => {
           this.popover = c;
