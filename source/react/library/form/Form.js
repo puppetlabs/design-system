@@ -91,7 +91,8 @@ class Form extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  onSubmit() {
+  onSubmit(e) {
+    e.preventDefault();
     const { validator, onSubmit } = this.props;
     const { values } = this.state;
     const validatorErrors = validate(validator, values);
@@ -219,10 +220,10 @@ class Form extends React.Component {
       jsx.push(
         <Button
           key="submit"
+          type="submit"
           processing={submitting}
           size={size}
           disabled={!valid}
-          onClick={this.onSubmit}
           label={submitLabel}
         />,
       );
@@ -249,7 +250,7 @@ class Form extends React.Component {
     });
 
     return (
-      <form className={classNames}>
+      <form className={classNames} onSubmit={this.onSubmit}>
         <fieldset className="rc-form-fields">{children}</fieldset>
         {actions}
       </form>
