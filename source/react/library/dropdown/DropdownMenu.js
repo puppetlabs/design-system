@@ -32,6 +32,8 @@ const propTypes = {
   disablePortal: PropTypes.bool,
   /** Callback that is fired whenever one of the provided actions is clicked */
   onActionClick: PropTypes.func,
+  /** Maintains width between the button and the dropdown menu */
+  synchronizeWidth: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -47,6 +49,7 @@ const defaultProps = {
   hint: '',
   margin: null,
   disablePortal: false,
+  synchronizeWidth: false,
   onOpen: null,
   onClose: null,
   onApply: null,
@@ -172,8 +175,9 @@ class DropdownMenu extends React.Component {
       anchor,
       target,
       margin,
-      width,
       disablePortal,
+      synchronizeWidth,
+      width: widthProp,
     } = this.props;
     const menu = this.renderMenu();
     const applyButton = this.renderApplyButton();
@@ -182,6 +186,12 @@ class DropdownMenu extends React.Component {
       'rc-dropdown-menu-multiple': multiple,
       'rc-dropdown-menu-with-header': hint,
     });
+
+    let width;
+
+    if (!synchronizeWidth) {
+      width = widthProp;
+    }
 
     return (
       <Popover
@@ -192,13 +202,14 @@ class DropdownMenu extends React.Component {
         ref={c => {
           this.popover = c;
         }}
+        width={width}
+        inheritTargetWidth={synchronizeWidth}
         className={className}
         target={target}
         onOpen={this.onOpen}
         onClose={this.onClose}
         margin={margin}
         size={size}
-        width={width}
         disablePortal={disablePortal}
       >
         {menu}

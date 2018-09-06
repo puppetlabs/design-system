@@ -41,6 +41,7 @@ Selected, selectable, editable, and deletable `ListItem`:
 ```
 
 Medium sized selectable ListItem:
+
 ```
 <List>
   <ListItem

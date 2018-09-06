@@ -74,3 +74,19 @@ const options = [
   options={ options }
 />
 ```
+
+Dropdown with synchronized width
+
+```
+const options = [
+  { id: 1, value: 'same width' },
+  { id: 2, value: 'as button' },
+];
+
+<Dropdown
+  label="Same width as the options"
+  synchronizeWidth
+  hint="Aren't I cool"
+  options={ options }
+/>
+```

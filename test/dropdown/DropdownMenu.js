@@ -64,4 +64,14 @@ describe('<DropdownMenu />', () => {
     const wrapper = shallow(<DropdownMenu options={options} />);
     expect(wrapper.find('MenuList').prop('options').length).to.eql(2);
   });
+
+  it('should allow for width to be synchronized', () => {
+    const options = [{ id: 1, value: 'synchronized' }];
+    const wrapper = shallow(
+      <DropdownMenu synchronizeWidth options={options} width="100px" />,
+    );
+
+    expect(wrapper.find('Popover').prop('inheritTargetWidth')).to.eql(true);
+    expect(wrapper.find('Popover').prop('width')).to.not.eql('100px');
+  });
 });
