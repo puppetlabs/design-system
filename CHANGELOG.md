@@ -1,34 +1,40 @@
+# 4.1.2
+
+- More visual updates to match the design system
+
 # 4.1.1
-* Improve the sidebar, fewer levels of nesting, crisper design
-* Better hover states for pagenav
+
+- Improve the sidebar, fewer levels of nesting, crisper design
+- Better hover states for pagenav
 
 # 4.1.0
-* Add Text component encapsulating body Typography
-* Update pagenav styling implementation
-* Remove some global typography scss
-* Fix font name spelling mistake
+
+- Add Text component encapsulating body Typography
+- Update pagenav styling implementation
+- Remove some global typography scss
+- Fix font name spelling mistake
 
 # 4.0.0
 
-* New heading component
-* Updated color palette
-* New font stack include Calibre and Open Sans
-* Updated CSS to better match the design system
+- New heading component
+- Updated color palette
+- New font stack include Calibre and Open Sans
+- Updated CSS to better match the design system
 
 # 3.3.0
 
-* Adding props to the filter component to allow custom operators and to improve i18n capabilities
-* Update linting dependencies and adding prettier
+- Adding props to the filter component to allow custom operators and to improve i18n capabilities
+- Update linting dependencies and adding prettier
 
 # 3.2.1
 
-* Remove stray module.exports for babel 7 compatibility
+- Remove stray module.exports for babel 7 compatibility
 
 # 3.2.0
 
-* Form component now accepts cancelLabel prop for internationalization
-* Bug fix: stop event propagation from menu item click
-* Form component now keeps track of client validation errors in addition to those passed in
+- Form component now accepts cancelLabel prop for internationalization
+- Bug fix: stop event propagation from menu item click
+- Form component now keeps track of client validation errors in addition to those passed in
 
 # 3.1.4
 
