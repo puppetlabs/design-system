@@ -16,7 +16,7 @@
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
     "start": "styleguidist server",
-    "format": "eslint --fix '**/*.{js,jsx}'; prettier --write '**/*.{js,jsx,json,md}'"
+    "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'"
   },
   "repository": {
     "type": "git",
