@@ -1,6 +1,6 @@
-$ 4.1.3
-* Prevent default form submission
-* Add support for syncrhonizing width of dropdown menu and target
+# 4.1.3
+- Prevent default form submission
+- Add support for syncrhonizing width of dropdown menu and target1
 
 # 4.1.2
 
