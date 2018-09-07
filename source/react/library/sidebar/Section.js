@@ -10,6 +10,8 @@ const propTypes = {
   title: PropTypes.string,
   /** Easy prop for setting active section */
   active: PropTypes.bool,
+  /** Name of active section */
+  activeSection: PropTypes.string,
   /** Class name(s) to apply to section element */
   className: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
@@ -25,9 +27,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-  children: [],
+  children: null,
   title: '',
   active: false,
+  activeSection: null,
   className: '',
   onSectionClick: () => {},
   onClick: null,
@@ -44,7 +47,7 @@ class Section extends React.Component {
     this.state = {
       selectedSubItem: null,
       open: props.open,
-      active: props.active,
+      active: props.active ? props.active : props.activeSection === props.title,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -55,9 +58,14 @@ class Section extends React.Component {
   componentWillReceiveProps(newProps) {
     const newState = { active: newProps.active };
 
-    // Reset active subitems if accordion is now closed
-    if (!newProps.open) {
-      newState.selectedSubItem = false;
+    // If new active section name is passed down, update
+    if (newProps.activeSection) {
+      newState.active = newProps.activeSection === newProps.title;
+    }
+
+    // Reset active subitems if accordion is now closed or inactive
+    if (!newProps.open || !newState.active) {
+      newState.selectedSubItem = null;
     }
 
     this.setState(newState);
@@ -71,13 +79,12 @@ class Section extends React.Component {
 
   onClick(e) {
     e.preventDefault();
+    const { children, title, onSectionClick, onClick, minimized } = this.props;
+    const { open, selectedSubItem } = this.state;
     const newState = {};
 
-    const { open, selectedSubItem } = this.state;
-    const { children, onSectionClick, onClick, minimized } = this.props;
-
     const isAccordion = !!children;
-    onSectionClick(isAccordion);
+    onSectionClick(title, isAccordion);
 
     if (selectedSubItem) {
       // You cannot minimize an active section
@@ -102,6 +109,10 @@ class Section extends React.Component {
   }
 
   onSubItemClick(title) {
+    const { onSectionClick, title: sectionTitle } = this.props;
+
+    onSectionClick(sectionTitle);
+
     this.setState({
       selectedSubItem: title,
       active: true,
@@ -125,7 +136,7 @@ class Section extends React.Component {
 
   render() {
     const { active, open, selectedSubItem } = this.state;
-    const { title, icon: iconProp, className } = this.props;
+    const { title, icon: iconProp, className, children } = this.props;
     const classNames = classnames(
       'rc-sidebar-item',
       {
@@ -137,7 +148,7 @@ class Section extends React.Component {
 
     let subsections = [];
 
-    if (open) {
+    if (open && children) {
       subsections = this.renderSubsections();
     }
 

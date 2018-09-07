@@ -33,16 +33,23 @@ class Sidebar extends React.Component {
 
     this.state = {
       minimized: props.minimized,
+      activeSection: null,
     };
 
     this.onSectionClick = this.onSectionClick.bind(this);
     this.onToggle = this.onToggle.bind(this);
   }
 
-  onSectionClick(isAccordion) {
+  onSectionClick(title, isAccordion) {
+    const newState = {};
+
     if (isAccordion) {
-      this.setState({ minimized: false });
+      newState.minimized = false;
+    } else {
+      newState.activeSection = title;
     }
+
+    this.setState(newState);
   }
 
   onToggle() {
@@ -56,13 +63,14 @@ class Sidebar extends React.Component {
 
   getSections() {
     const { children } = this.props;
-    const { minimized } = this.state;
+    const { minimized, activeSection } = this.state;
 
     return React.Children.map(children, (section, idx) => {
       const props = {
         key: getKey(section, idx),
         onSectionClick: this.onSectionClick,
         minimized,
+        activeSection,
       };
 
       return React.cloneElement(section, props);
