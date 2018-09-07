@@ -141,7 +141,7 @@ class Section extends React.Component {
       'rc-sidebar-item',
       {
         'rc-sidebar-item-selected': active || selectedSubItem,
-        'rc-sidebar-item-open': open && selectedSubItem,
+        'rc-sidebar-item-active-accordion': open && selectedSubItem,
       },
       className,
     );

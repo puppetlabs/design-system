@@ -171,8 +171,8 @@
 
 // Open Item
 // Selected Item
-.rc-sidebar-item-open > .rc-sidebar-item-link,
-.rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
+.rc-sidebar-item-active-accordion > .rc-sidebar-item-link,
+.rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link {
   background: $puppet-sidebar-item-bg;
 
   .rc-sidebar-item-title {
@@ -180,16 +180,16 @@
   }
 }
 
-.rc-sidebar-item-open .rc-icon-fill,
-.rc-sidebar-item-open:hover .rc-icon-fill {
+.rc-sidebar-item-active-accordion .rc-icon-fill,
+.rc-sidebar-item-active-accordion:hover .rc-icon-fill {
   fill: $puppet-sidebar-item-icon-fill-active;
 }
 
 // We want open level-1 items to be highlighted
 // when the sidebar is minimized since the level-2
 // indicators aren't visible
-.rc-sidebar-minimized .rc-sidebar-item-open,
-.rc-sidebar-minimized .rc-sidebar-item-open:hover {
+.rc-sidebar-minimized .rc-sidebar-item-active-accordion,
+.rc-sidebar-minimized .rc-sidebar-item-active-accordion:hover {
   .rc-icon-fill {
     fill: $puppet-sidebar-item-icon-fill;
   }
