@@ -6,11 +6,11 @@ import DropdownLabel from './DropdownLabel';
 
 const propTypes = {
   size: PropTypes.string,
-  select: PropTypes.bool,
+  button: PropTypes.bool,
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.object),
   actions: PropTypes.node,
-  poop: PropTypes.string,
+  title: PropTypes.string,
   margin: PropTypes.number,
   anchor: PropTypes.string,
   placeholder: PropTypes.string,
@@ -34,9 +34,9 @@ const defaultProps = {
   anchor: 'bottom left',
   actions: null,
   size: 'small',
-  select: false,
+  button: false,
   options: [],
-  poop: '',
+  title: '',
   margin: 8,
   placeholder: '',
   blank: '',
@@ -172,7 +172,7 @@ class Dropdown extends React.Component {
       error,
       tabIndex,
       disabled,
-      select,
+      button,
       placeholder,
     } = this.props;
     const options = this.getOptions();
@@ -200,7 +200,7 @@ class Dropdown extends React.Component {
         error={error}
         tabIndex={tabIndex}
         disabled={disabled}
-        select={select}
+        button={button}
         placeholder={placeholder}
         label={label}
       />
@@ -214,7 +214,7 @@ class Dropdown extends React.Component {
       size,
       margin,
       blank,
-      poop,
+      title,
       multiple,
       actions,
       required,
@@ -232,7 +232,7 @@ class Dropdown extends React.Component {
         onClose={this.onClose}
         margin={margin}
         blank={blank}
-        poop={poop}
+        title={title}
         multiple={multiple}
         target={button}
         onChange={this.onChange}

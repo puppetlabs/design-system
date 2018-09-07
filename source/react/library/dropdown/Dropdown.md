@@ -8,7 +8,7 @@ const options = [
 
 <Dropdown
   label="I'm a dropdown"
-  poop="I'm a poop"
+  title="I'm a title"
   options={ options }
   margin={ 5 }
 />
@@ -18,7 +18,7 @@ const options = [
 
 ```
 const label="Do you know what time it is?";
-const poop="It's burger time";
+const title="It's burger time";
 const options = [
   { id: 1, value: "Buns"},
   { id: 2, value: "Pickles"},
@@ -32,10 +32,10 @@ const options = [
 ];
 
 <Dropdown
-  select
+  button
   label={ label }
   size=""
-  poop={ poop }
+  title={ title }
   options={ options }
 />
 ```
@@ -53,7 +53,7 @@ const options = [
 <Dropdown
   label="I'm a tiny dropdown"
   size="small"
-  poop="I'm a poop"
+  title="I'm a title"
   options={ options }
 />
 ```
@@ -70,7 +70,7 @@ const options = [
 <Dropdown
   multiple
   label="I'm a multi-dropdown"
-  poop="I'm a poop"
+  title="I'm a title"
   selected={ [1] }
   options={ options }
 />

@@ -8,7 +8,7 @@ const propTypes = {
   placeholder: PropTypes.string,
   /** Human readable identifier for the current selected option */
   label: PropTypes.string,
-  select: PropTypes.bool,
+  button: PropTypes.bool,
   disabled: PropTypes.bool,
   error: PropTypes.string,
   tabIndex: PropTypes.number,
@@ -18,7 +18,7 @@ const propTypes = {
 const defaultProps = {
   placeholder: '',
   label: '',
-  select: false,
+  button: false,
   disabled: false,
   error: '',
   tabIndex: 0,
@@ -36,7 +36,7 @@ class DropdownLabel extends React.Component {
     const {
       label: propsLabel,
       placeholder,
-      select,
+      button,
       error,
       tabIndex,
       disabled,
@@ -50,9 +50,10 @@ class DropdownLabel extends React.Component {
       label = 'Select One';
     }
 
-    const className = classnames('rc-dropdown-toggle', {
-      'rc-dropdown-toggle-select': select,
-      'rc-dropdown-toggle-error': error,
+    const className = classnames('rc-button', {
+      'rc-button-transparent': transparent,
+      'rc-button-secondary': button,
+      'rc-button-error': error,
     });
 
     // TODO: This should render a button element or an anchor if its for navigation
@@ -67,7 +68,7 @@ class DropdownLabel extends React.Component {
         className={className}
       >
         <span className="rc-dropdown-label">
-          <span className="rc-dropdown-label-text">{label}</span>{' '}
+          <span className="rc-button-content">{label}</span>{' '}
           <Icon width="8px" height="8px" type="chevron-down" />
         </span>
       </a>
