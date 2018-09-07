@@ -8,7 +8,9 @@ const propTypes = {
   placeholder: PropTypes.string,
   /** Human readable identifier for the current selected option */
   label: PropTypes.string,
-  button: PropTypes.bool,
+  primary: PropTypes.bool,
+  secondary: PropTypes.bool,
+  transparent: PropTypes.bool,
   disabled: PropTypes.bool,
   error: PropTypes.string,
   tabIndex: PropTypes.number,
@@ -18,7 +20,9 @@ const propTypes = {
 const defaultProps = {
   placeholder: '',
   label: '',
-  button: false,
+  primary: false,
+  secondary: false,
+  transparent: true,
   disabled: false,
   error: '',
   tabIndex: 0,
@@ -36,7 +40,9 @@ class DropdownLabel extends React.Component {
     const {
       label: propsLabel,
       placeholder,
-      button,
+      primary,
+      secondary,
+      transparent,
       error,
       tabIndex,
       disabled,
@@ -51,8 +57,9 @@ class DropdownLabel extends React.Component {
     }
 
     const className = classnames('rc-button', {
-      'rc-button-transparent': transparent,
-      'rc-button-secondary': button,
+      'rc-button-transparent': transparent && !primary && !secondary,
+      'rc-button-secondary': secondary,
+      'rc-button-primary': primary,
       'rc-button-error': error,
     });
 

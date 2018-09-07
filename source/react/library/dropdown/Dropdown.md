@@ -32,7 +32,7 @@ const options = [
 ];
 
 <Dropdown
-  button
+  secondary
   label={ label }
   size=""
   title={ title }
