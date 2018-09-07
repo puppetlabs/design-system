@@ -226,10 +226,11 @@ $puppet-sidebar-item-color-active                  : $puppet-action-base !defaul
 
 $puppet-sidebar-item-font-size                     : 16px !default;
 $puppet-sidebar-item-font-weight                   : $puppet-font-weight-medium !default;
-$puppet-sidebar-item-height                        : 32px !default;
-$puppet-sidebar-item-line-height                   : $puppet-sidebar-item-height !default;
+$puppet-sidebar-item-height-toggled                : 32px !default;
+$puppet-sidebar-item-line-height                   : 24px !default;
 $puppet-sidebar-item-margin                        : 2px 16px !default;
 $puppet-sidebar-item-padding                       : 0 8px !default;
+$puppet-sidebar-item-title-padding                 : 4px 0 !default;
 
 $puppet-sidebar-item-icon-fill                     : $puppet-n700 !default;
 $puppet-sidebar-item-icon-fill-hover               : $puppet-action-base !default;

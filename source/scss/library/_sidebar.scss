@@ -43,6 +43,10 @@
     transition: width 0.2s ease-in-out;
     width: $puppet-sidebar-minimized-width;
   }
+
+  .rc-sidebar-item-content {
+    height: $puppet-sidebar-item-height-toggled;
+  }
 }
 
 // Toggle for Collapse & Expand of the sidebar
@@ -98,12 +102,6 @@
   visibility: visible;
 }
 
-
-// Sidebar Items
-.rc-sidebar-item-content {
-  height: $puppet-sidebar-item-height;
-}
-
 .rc-sidebar-item-link {
   border-radius: $puppet-sidebar-item-border-radius;
   cursor: pointer;
@@ -141,6 +139,7 @@
   height: auto;
   line-height: $puppet-sidebar-item-line-height;
   opacity: 1;
+  padding: $puppet-sidebar-item-title-padding;
   transition: opacity 0.2s ease-in-out 0.1s;
   visibility: visible;
 }
