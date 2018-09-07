@@ -13,12 +13,15 @@ const propTypes = {
   togglable: PropTypes.bool,
   /** Is sidebar at the smaller size? */
   minimized: PropTypes.bool,
+  /** Helpful for forcing a resize event to update svg drawings */
+  onToggle: PropTypes.func,
 };
 
 const defaultProps = {
   children: [],
   togglable: false,
   minimized: false,
+  onToggle: () => {},
 };
 
 /**
@@ -44,6 +47,9 @@ class Sidebar extends React.Component {
 
   onToggle() {
     const { minimized } = this.state;
+    const { onToggle } = this.props;
+
+    onToggle();
 
     this.setState({ minimized: !minimized });
   }
