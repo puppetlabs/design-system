@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import { getKey } from '../../helpers/statics';
 import Button from '../buttons/Button';
 import Section from './Section';
-import SectionLabel from './SectionLabel';
 import Subsection from './Subsection';
 import SubsectionItem from './SubsectionItem';
 
@@ -37,9 +36,7 @@ class Sidebar extends React.Component {
     this.onToggle = this.onToggle.bind(this);
   }
 
-  onSectionClick(title, isAccordion) {
-    console.log('onSectionClick fired')
-
+  onSectionClick(isAccordion) {
     if (isAccordion) {
       this.setState({ minimized: false });
     }
@@ -53,11 +50,13 @@ class Sidebar extends React.Component {
 
   getSections() {
     const { children } = this.props;
+    const { minimized } = this.state;
 
     return React.Children.map(children, (section, idx) => {
       const props = {
         key: getKey(section, idx),
         onSectionClick: this.onSectionClick,
+        minimized,
       };
 
       return React.cloneElement(section, props);
@@ -112,7 +111,6 @@ Sidebar.propTypes = propTypes;
 Sidebar.defaultProps = defaultProps;
 
 Sidebar.Section = Section;
-Sidebar.SectionLabel = SectionLabel;
 Sidebar.Subsection = Subsection;
 Sidebar.SubsectionItem = SubsectionItem;
 

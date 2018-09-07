@@ -3,16 +3,13 @@ Sidebar with clickable sections:
 ```
 <Sidebar togglable>
   <Section onClick={ () => {} } title="Home" icon="home" active />
-  <SectionLabel title="reports" />
-  <Section onClick={ () => {} } title="Speed & Frequency" icon="speed" />
+  <Section onClick={ () => {} } title="Speed & Frequency" icon="speed" label="reports"/>
   <Section onClick={ () => {} } title="Reliability" icon="reliability" />
   <Section onClick={ () => {} } title="Security" icon="security" />
   <Section onClick={ () => {} } title="Business Value" icon="value" />
   <Section onClick={ () => {} } title="Pipeline" icon="pipeline" />
-  <SectionLabel title="custom reports" />
-  <Section onClick={ () => {} } title="My Reports" icon="reports" />
-  <SectionLabel title="config" />
-  <Section onClick={ () => {} } title="Connections" icon="connections" />
+  <Section onClick={ () => {} } title="My Reports" icon="reports" label="custom reports" />
+  <Section onClick={ () => {} } title="Connections" icon="connections" label="config" />
   <Section onClick={ () => {} } title="Data Model" icon="data-fields" />
 </Sidebar>
 ```

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 import { getKey } from '../../helpers/statics';
@@ -18,6 +18,10 @@ const propTypes = {
   icon: PropTypes.string,
   /** If subsections exist, is section open or closed? */
   open: PropTypes.bool,
+  /** Render section label */
+  label: PropTypes.node,
+  /** Is the sidebar minimized? */
+  minimized: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -29,6 +33,8 @@ const defaultProps = {
   onClick: null,
   icon: null,
   open: false,
+  label: null,
+  minimized: false,
 };
 
 class Section extends React.Component {
@@ -47,7 +53,7 @@ class Section extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const newState = { open: newProps.open, active: newProps.active };
+    const newState = { active: newProps.active };
 
     // Reset active subitems if accordion is now closed
     if (!newProps.open) {
@@ -68,18 +74,23 @@ class Section extends React.Component {
     const newState = {};
 
     const { open, selectedSubItem } = this.state;
-    const { children } = this.props;
+    const { children, onSectionClick, onClick, minimized } = this.props;
 
-    if (selectedSubItem && open) {
+    const isAccordion = !!children;
+    onSectionClick(isAccordion);
+
+    if (selectedSubItem) {
       // You cannot minimize an active section
       newState.open = open;
-    } else if (children) {
+    } else if (isAccordion) {
       // Otherwise, toggle open state if has children
       newState.open = !open;
     }
 
-    const { onSectionClick, onClick, title } = this.props;
-    onSectionClick(title);
+    // If clicking on a toggled accordion, always force open
+    if (minimized && isAccordion) {
+      newState.open = true;
+    }
 
     if (Object.keys(newState).length) {
       this.setState(newState);
@@ -143,23 +154,36 @@ class Section extends React.Component {
       );
     }
 
+    let { label } = this.props;
+    if (label) {
+      label = (
+        <div>
+          <span className="rc-sidebar-divider" />
+          <span className="rc-sidebar-label">{label}</span>
+        </div>
+      );
+    }
+
     return (
       /* eslint-disable jsx-a11y/anchor-is-valid */
-      <li className={classNames}>
-        <a
-          className="rc-sidebar-item-link"
-          role="button"
-          tabIndex={0}
-          onClick={this.onClick}
-          onKeyDown={this.onKeyDown}
-        >
-          <div className="rc-sidebar-item-content">
-            {icon}
-            <span className="rc-sidebar-item-title">{title}</span>
-          </div>
-        </a>
-        {subsections}
-      </li>
+      <Fragment>
+        {label}
+        <li className={classNames}>
+          <a
+            className="rc-sidebar-item-link"
+            role="button"
+            tabIndex={0}
+            onClick={this.onClick}
+            onKeyDown={this.onKeyDown}
+          >
+            <div className="rc-sidebar-item-content">
+              {icon}
+              <span className="rc-sidebar-item-title">{title}</span>
+            </div>
+          </a>
+          {subsections}
+        </li>
+      </Fragment>
       /* eslint-enable jsx-a11y/anchor-is-valid */
     );
   }
