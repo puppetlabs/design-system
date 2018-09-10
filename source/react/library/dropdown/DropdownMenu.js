@@ -3,6 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 import Popover from '../popover/Popover';
 import Button from '../buttons/Button';
+import ButtonGroup from '../buttons/ButtonGroup';
 import Menu from '../menu/Menu';
 
 const propTypes = {
@@ -150,8 +151,8 @@ class DropdownMenu extends React.Component {
 
     if (multiple) {
       jsx = (
-        <Menu.Actions>
-          <Button block primary label="Apply" onClick={this.onApply} />
+        <Menu.Actions centered>
+          <Button block simple label="Apply" onClick={this.onApply} />
         </Menu.Actions>
       );
     }

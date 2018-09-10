@@ -172,10 +172,6 @@
   white-space: nowrap;
 }
 
-.rc-menu-item-selected a {
-  padding-right: 32px;
-}
-
 .rc-menu-item-text {
   font-size: $puppet-menu-item-font-size;
   font-weight: $puppet-menu-item-font-weight;
@@ -188,6 +184,7 @@
   text-decoration: none;
 }
 
+// TODO Make flex
 .rc-menu-item-with-icon,
 .rc-menu-item-selected {
   a {
@@ -201,6 +198,22 @@
   }
 }
 
+// TODO Remake this so that all selectable menu items always have this padding
+// This will prevent accidental menu resizing when the selected icon is
+// toggles off and on
+// Need to use variables
+.rc-menu-multiple .rc-menu-item a,
+.rc-menu-item-selected a {
+  padding-right: 32px;
+}
+
+.rc-menu-item-selected .rc-icon-check {
+  left: unset;
+  right: 8px;
+}
+
+// TODO This seems very fragile
+// Should be named for menu, not dropdown
 .rc-menu-item-with-icon a {
   padding-left: $puppet-dropdown-padding-small * 4;
   padding-right: $puppet-dropdown-padding-small * 2;
@@ -210,11 +223,6 @@
   .rc-icon {
     left: $puppet-dropdown-padding-small;
   }
-}
-
-.rc-menu-item-selected .rc-icon-check {
-  left: unset;
-  right: $puppet-dropdown-padding;
 }
 
 .rc-menu-item-disabled a {
@@ -232,6 +240,8 @@
     border: 0;
   }
 }
+
+
 
 
 .rc-menu-section-title {
