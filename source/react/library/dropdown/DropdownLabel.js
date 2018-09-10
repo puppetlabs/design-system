@@ -18,6 +18,8 @@ const propTypes = {
   error: PropTypes.string,
   tabIndex: PropTypes.number,
   onClick: PropTypes.func,
+  /* Sets the size of the anchor/button */
+  size: PropTypes.oneOf(['tiny', 'small', 'large', 'auto', null]),
 };
 
 const defaultProps = {
@@ -30,6 +32,7 @@ const defaultProps = {
   error: '',
   tabIndex: 0,
   onClick: () => {},
+  size: null,
 };
 
 /**
@@ -50,6 +53,7 @@ class DropdownLabel extends React.Component {
       tabIndex,
       disabled,
       onClick,
+      size,
     } = this.props;
     let label = propsLabel;
 
@@ -64,6 +68,7 @@ class DropdownLabel extends React.Component {
       'rc-button-secondary': secondary,
       'rc-button-primary': primary,
       'rc-button-error': error,
+      [`rc-button-${size}`]: size,
     });
 
     // TODO: This should render a button element or an anchor if its for navigation

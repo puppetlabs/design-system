@@ -9,7 +9,6 @@ const options = [
 
 <Dropdown
   label="I'm a dropdown"
-  title="I'm a very long title"
   options={ options }
   margin={ 5 }
   inheritWidth
@@ -44,8 +43,6 @@ const options = [
 
 #### Sizes
 
-##### Tiny dropdown
-
 ```
 const options = [
   { id: 1, value: 'option 1' },
@@ -55,7 +52,6 @@ const options = [
 <Dropdown
   label="I'm a tiny dropdown"
   size="tiny"
-  title="I'm a title"
   options={ options }
   secondary
 />
@@ -69,7 +65,6 @@ const options = [
 <Dropdown
   label="I'm a small dropdown"
   size="small"
-  title="I'm a title"
   options={ options }
   secondary
 />
@@ -83,7 +78,6 @@ const options = [
 <Dropdown
   label="I'm an auto dropdown"
   size="auto"
-  title="I'm a title"
   options={ options }
   secondary
 />
@@ -97,7 +91,6 @@ const options = [
 <Dropdown
   label="I'm a large dropdown"
   size="large"
-  title="I'm a title"
   options={ options }
   secondary
 />
@@ -107,20 +100,19 @@ const options = [
 
 ```
 const options = [
-  { id: 1, value: 'option 1' },
-  { id: 2, value: 'option 2' },
+  { id: 1, value: 'This is the first option' },
+  { id: 2, value: 'This option is the second' },
 ];
 
 <Dropdown
   multiple
   label="I'm a multi-dropdown"
-  title="I'm a title"
   selected={ [1] }
   options={ options }
 />
 ```
 
-#### Dropdown without header
+#### Dropdown with header
 
 ```
 const options = [
@@ -129,9 +121,10 @@ const options = [
 ];
 
 <Dropdown
-  label="I'm a dropdown without a header"
+  label="I have a header in my menu"
   selected={ [1] }
   options={ options }
+  title="Title Example"
 />
 ```
 
@@ -162,7 +155,7 @@ const options = [
 ];
 
 <Dropdown
-  label="Same width as the options"
+  label="The dropdown menu will inherit my width"
   inheritWidth
   hint="Aren't I cool"
   options={ options }

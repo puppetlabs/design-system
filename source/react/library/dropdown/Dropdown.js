@@ -175,6 +175,7 @@ class Dropdown extends React.Component {
     const { displayed } = this.state;
     const {
       label: propsLabel,
+      size,
       error,
       tabIndex,
       disabled,
@@ -205,6 +206,7 @@ class Dropdown extends React.Component {
 
     return (
       <DropdownLabel
+        size={size}
         error={error}
         tabIndex={tabIndex}
         disabled={disabled}
