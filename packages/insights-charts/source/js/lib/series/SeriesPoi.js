@@ -78,7 +78,7 @@ class SeriesPoi extends Series {
     const options = this.options || {};
     const poiOptions = options.pointsOfInterest || {};
 
-    return poiOptions.onHover;
+    return poiOptions.onHover !== false;
   }
 
   isHorizontal() {

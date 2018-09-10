@@ -1,3 +1,7 @@
+# 0.12.1
+
+* Default to showing points on hover for area charts
+
 # 0.12.0
 
 * Adding a positive and negative palette
@@ -34,11 +38,11 @@
 
 * Improving our default y axis label formatter to cover more use cases
 
-# 0.10.2 
+# 0.10.2
 
 * Bug fix for Edge versions <= 14
 
-# 0.10.1 
+# 0.10.1
 
 * Improvement to the x axis which deduplicates linear and time scale labels
 
@@ -48,7 +52,7 @@
 * Allow the setting of stroke width of relevant chart types
 * Improved handling of dense y axis
 
-# 0.9.3 
+# 0.9.3
 
 * Seperator dom for legend item values and legend item aggregates
 
@@ -60,17 +64,17 @@
 
 * Set a default fill on the zoomer bg so that it isn't black when the CSS isn't present
 
-# 0.9.0 
+# 0.9.0
 
 * Adding zooming to all chart types
 
-# 0.8.1 
+# 0.8.1
 
 * Bug fix for non grouped visualizations that lacked a series label
 
-# 0.8.0 
+# 0.8.0
 
-* Adding smart labels to the x axis. This means that x axis labels can now wrap and rotate automatically 
+* Adding smart labels to the x axis. This means that x axis labels can now wrap and rotate automatically
 
 # 0.7.0
 
