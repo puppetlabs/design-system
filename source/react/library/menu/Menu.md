@@ -1,3 +1,6 @@
+#### Deprecated
+##### Note that size has been deprecated from menus and is no longer a valid prop.
+
 #### Basic Menu
 
 `MenuList` are rendered within popovers.

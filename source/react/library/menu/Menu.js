@@ -27,7 +27,7 @@ const defaultProps = {
  */
 
 const Menu = props => {
-  const { size, children, className: classProp, dark } = props;
+  const { children, className: classProp, dark } = props;
   const className = classnames('rc-menu', classProp, {
     'rc-menu-dark': dark,
   });
