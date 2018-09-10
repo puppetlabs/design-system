@@ -2,13 +2,14 @@
 
 ```
 const options = [
-  { id: 1, value: 'option 1' },
-  { id: 2, value: 'option 2' },
+  { id: 1, value: 'Edit', icon: "pencil" },
+  { id: 2, value: 'Export', icon: "export"  },
+  { id: 3, value: 'Delete', icon: "trash"  },
 ];
 
 <Dropdown
   label="I'm a dropdown"
-  title="I'm a title"
+  title="I'm a very long title"
   options={ options }
   margin={ 5 }
 />
@@ -34,15 +35,15 @@ const options = [
 <Dropdown
   secondary
   label={ label }
-  size=""
+  inheritWidth
   title={ title }
   options={ options }
 />
 ```
 
 <!-- TODO there are currently no size variations  -->
-<!-- Tiny dropdown -->
 
+#### Tiny dropdown
 
 ```
 const options = [
@@ -52,7 +53,7 @@ const options = [
 
 <Dropdown
   label="I'm a tiny dropdown"
-  size="small"
+  size="tiny"
   title="I'm a title"
   options={ options }
 />

@@ -10,13 +10,11 @@ import List from './MenuList';
 
 const propTypes = {
   className: PropTypes.string,
-  size: PropTypes.oneOf(['tiny', 'small', 'medium']),
   dark: PropTypes.bool,
   children: PropTypes.node,
 };
 
 const defaultProps = {
-  size: 'small',
   children: null,
   className: null,
   dark: false,
@@ -32,7 +30,6 @@ const Menu = props => {
   const { size, children, className: classProp, dark } = props;
   const className = classnames('rc-menu', classProp, {
     'rc-menu-dark': dark,
-    [`rc-menu-${size}`]: size,
   });
 
   return <div className={className}>{children}</div>;

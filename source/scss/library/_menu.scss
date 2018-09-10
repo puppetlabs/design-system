@@ -1,137 +1,169 @@
-@mixin menu-item-colors(
+@mixin menu-colors(
+  $bg-menu,
   $bg,
   $bg-hover,
+  $bg-active,
+  $border,
   $color,
   $color-hover,
-  $border,
-  $border-focus,
-  $border-selected,
-  $bg-selected,
-  $color-selected,
-  $bg-disabled,
-  $color-disabled,
-  $icon-color
+  $color-active,
+  $icon-fill,
+  $icon-fill-hover,
+  $icon-fill-active,
+  $title-color,
+  $section-title-color,
 ) {
+
+  background: $bg-menu;
+  border: $border;
+  border-radius: $puppet-menu-border-radius;
+
   .rc-menu-item .rc-icon {
-    fill: $icon-color;
+    fill: $icon-fill;
+    transition: fill 0.2s ease-in-out;
   }
 
   .rc-menu-item a {
+    background: $bg;
     color: $color;
-  }
-
-  .rc-menu-item {
-    border-left: $border;
-    border-right: $border;
-    padding: $puppet-menu-item-spacing/2 $puppet-menu-item-spacing;
-    padding-bottom: 0;
-  }
-
-  .rc-menu-item:first-of-type {
-    border-top: $border;
-    border-top-left-radius: $puppet-border-radius;
-    border-top-right-radius: $puppet-border-radius;
-    padding-top: $puppet-menu-item-spacing;
-  }
-
-  .rc-menu-item:last-of-type {
-    border-bottom: $border;
-    border-bottom-left-radius: $puppet-border-radius;
-    border-bottom-right-radius: $puppet-border-radius;
-    padding-bottom: $puppet-menu-item-spacing;
+    transition: background-color 0.2s ease-in-out;
   }
 
   .rc-menu-item:hover a,
-  .rc-menu-item-focused a {
+  .rc-menu-item-focused a,
+  .rc-menu-item-selected:hover a,
+  .rc-menu-item-focused.rc-menu-item-selected a {
     background: $bg-hover;
-    border-radius: $puppet-border-radius;
     color: $color-hover;
 
     .rc-icon {
-      fill: $color-hover;
+      fill: $icon-fill-hover;
     }
   }
 
   .rc-menu-item-selected a {
-    border-bottom: 0;
-    color: $color-selected;
+    background: $bg-active;
+    color: $color-active;
   }
 
   .rc-menu-item-selected .rc-icon {
-    fill: $color-selected;
-  }
-
-  .rc-menu-item-selected .rc-menu-item-focused a {
-    background: $bg-hover;
-    color: $color-selected;
-  }
-
-  .rc-menu-item-selected .rc-menu-item-focused .rc-icon {
-    fill: $color-selected;
+    fill: $icon-fill-active;
   }
 
   .rc-menu-item-disabled a {
-    background: $bg-disabled;
-    color: $color-disabled;
+    opacity: $puppet-disabled-opacity;
   }
 
-  .rc-menu-item-disabled a:hover {
-    background: $bg-disabled;
-    color: $color-disabled;
+  .rc-menu-item-disabled:hover a,
+  .rc-menu-item-disabled.rc-menu-item-focused a {
+    background: $bg;
+    color: $color-hover;
   }
-}
 
-.rc-menu-dark {
+  .rc-menu-item-disabled.rc-menu-item-selected:hover a {
+    background: $bg;
+    color: $color-active;
+  }
 
-  @include menu-item-colors(
-    $puppet-menu-item-bg,
-    $puppet-menu-item-bg-hover-dark,
-    $puppet-menu-item-color-dark,
-    $puppet-menu-item-color-hover-dark,
-    $puppet-menu-item-border-dark,
-    $puppet-menu-item-border-focus-dark,
-    $puppet-menu-item-border-active-dark,
-    $puppet-menu-item-bg-selected,
-    $puppet-menu-item-color-selected,
-    $puppet-menu-item-bg-disabled,
-    $puppet-menu-item-color-disabled,
-    $puppet-menu-item-icon-color
-  );
 
   .rc-menu-header {
-    background: $puppet-menu-header-bg-dark;
-    border: $puppet-menu-header-border-dark;
+    border-bottom: $border;
   }
 
   .rc-menu-title {
-    color: $puppet-menu-title-color-dark;
+    color: $title-color;
+  }
+
+  .rc-menu-section {
+    border-bottom: $border;
+  }
+
+  .rc-menu-section-title {
+    color: $section-title-color;
+  }
+}
+// End mixin menu item colors
+
+.rc-menu {
+  @include menu-colors(
+    $puppet-menu-bg,
+    $puppet-menu-item-bg,
+    $puppet-menu-item-bg-hover,
+    $puppet-menu-item-bg-active,
+    $puppet-menu-border,
+    $puppet-menu-item-color,
+    $puppet-menu-item-color-hover,
+    $puppet-menu-item-color-active,
+    $puppet-menu-item-icon-fill,
+    $puppet-menu-item-icon-fill-hover,
+    $puppet-menu-item-icon-fill-active,
+    $puppet-menu-title-color,
+    $puppet-menu-section-title-color,
+  );
+}
+
+// Menu Construction
+.rc-menu {
+  .rc-menu-sections {
+    max-height: 200px;
+    overflow: scroll;
+  }
+
+  .rc-menu-header {
+    align-items: center;
+    border-radius: $puppet-menu-border-radius $puppet-menu-border-radius 0 0;
+    display: flex;
+    height: $puppet-menu-header-height;
+    padding: $puppet-menu-header-padding;
+  }
+
+  .rc-menu-title {
+    flex: 1 1 0%;
+    font-family: $puppet-menu-title-font-family;
+    font-size: $puppet-menu-title-font-size;
+    font-weight: $puppet-menu-title-font-weight;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
   }
 }
 
-@include menu-item-colors(
-  $puppet-menu-item-bg,
-  $puppet-menu-item-bg-hover,
-  $puppet-menu-item-color,
-  $puppet-menu-item-color-hover,
-  $puppet-menu-item-border,
-  $puppet-menu-item-border-focus,
-  $puppet-menu-item-border-active,
-  $puppet-menu-item-bg-selected,
-  $puppet-menu-item-color-selected,
-  $puppet-menu-item-bg-disabled,
-  $puppet-menu-item-color-disabled,
-  $puppet-menu-item-icon-color
-);
+// Close Icon in Menu Header
+.rc-menu-header .rc-menu-close {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  // flex: 0 0 auto;
+  height: 24px;
+  justify-content: center;
+  margin: 0 -8px 0 4px;
+  width: 24px;
+
+  .rc-icon {
+    flex: 0 0 auto;
+    height: 8px;
+    width: 8px;
+  }
+}
+
+.rc-menu-close:focus {
+  outline: none;
+}
+
+
 
 .rc-menu-item {
   font-size: $puppet-menu-item-font-size;
   font-weight: $puppet-menu-item-font-weight;
   line-height: $puppet-menu-item-line-height;
+  margin: $puppet-menu-item-margin;
   transition: all 0.2s;
 }
 
 .rc-menu-item a {
   align-items: center;
+  border-radius: $puppet-menu-item-border-radius;
   display: flex;
   flex: 1;
   height: $puppet-menu-item-height;
@@ -189,90 +221,33 @@
   cursor: default;
 }
 
+
+// Menu Sections
 .rc-menu-section {
-  border-bottom: $puppet-menu-section-border;
-  border-left: $puppet-menu-section-border;
-  border-right: $puppet-menu-section-border;
-  padding: $puppet-menu-section-padding;
+  &:last-of-type {
+    border-bottom: 0;
+  }
 
-  &.rc-menu-section-list {
-    padding: 0;
+  .rc-menu-list {
+    border: 0;
   }
 }
 
-.rc-menu-section .rc-menu-item {
-  border: 0;
+
+.rc-menu-section-title {
+  display: block;
+  font-family: $puppet-menu-section-title-font-family;
+  font-size: $puppet-menu-section-title-font-size;
+  font-weight: $puppet-menu-section-title-font-weight;
+  padding: $puppet-menu-section-title-padding;
+  text-transform: $puppet-menu-section-title-text-transform;
 }
 
-.rc-menu-header {
-  align-items: center;
-  background: $puppet-menu-header-bg;
-  border: $puppet-menu-header-border;
-  display: flex;
-  height: $puppet-menu-header-height;
-  padding: $puppet-menu-header-padding;
-  text-transform: uppercase;
-}
-
-.rc-menu-header + .rc-menu-list {
-  .rc-menu-item:first-of-type {
-    border-top: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-  }
-}
-
-// More evidence here that we could refactor menus and dropdowns
-.rc-menu-header + div,
-.rc-menu-header + .rc-menu-list {
-  .rc-menu-item:not(.rc-menu-item-with-icon) a {/* stylelint-disable-line selector-max-compound-selectors */
-    padding: 0 ($puppet-menu-header-padding - $puppet-menu-item-padding);
-  }
-
-  .rc-menu-item-with-icon a {/* stylelint-disable-line selector-max-compound-selectors */
-    padding-left: 40px;
-  }
-
-  .rc-menu-item-with-icon .rc-icon {/* stylelint-disable-line selector-max-compound-selectors */
-    left: 16px;
-  }
-}
-
-.rc-menu-title {
-  align-items: center;
-  color: $puppet-menu-title-color;
-  display: flex;
-  font-family: $puppet-menu-title-font-family;
-  font-size: $puppet-menu-title-font-size;
-  font-weight: $puppet-menu-title-font-weight;
-  text-transform: uppercase;
-  width: 90%;
-}
-
-.rc-menu-close {
-  cursor: pointer;
-  display: flex;
-  flex-grow: 2;
-  justify-content: flex-end;
-
-  .rc-icon {
-    float: right;
-    height: 8px;
-    width: 8px;
-  }
-}
-
-.rc-menu-close:focus {
-  outline: none;
-}
-
-
+// Menu Actions
 .rc-menu-actions {
   align-items: center;
   background: $puppet-menu-actions-bg;
-  border-bottom: $puppet-menu-section-border;
-  border-left: $puppet-menu-section-border;
-  border-right: $puppet-menu-section-border;
+  border-radius: 0 0 $puppet-menu-border-radius $puppet-menu-border-radius;
   padding: $puppet-menu-actions-padding;
 
   &.rc-menu-actions-centered .rc-menu-actions-buttons {
@@ -285,7 +260,6 @@
   flex: 1 1 auto;
   justify-content: flex-end;
 }
-
 
 .rc-menu-actions-message {
   color: $puppet-menu-actions-color;
@@ -305,5 +279,28 @@
   .rc-menu-item:last-child a {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+  }
+}
+
+// Dark Menu
+.rc-menu-dark {
+  @include menu-colors(
+    $puppet-menu-bg-dark,
+    $puppet-menu-item-bg-dark,
+    $puppet-menu-item-bg-hover-dark,
+    $puppet-menu-item-bg-active-dark,
+    $puppet-menu-border-dark,
+    $puppet-menu-item-color-dark,
+    $puppet-menu-item-color-hover-dark,
+    $puppet-menu-item-color-active-dark,
+    $puppet-menu-item-icon-fill-dark,
+    $puppet-menu-item-icon-fill-hover-dark,
+    $puppet-menu-item-icon-fill-active-dark,
+    $puppet-menu-title-color-dark,
+    $puppet-menu-section-title-color-dark,
+  );
+
+  .rc-menu-actions {
+    background: $puppet-menu-actions-bg-dark;
   }
 }

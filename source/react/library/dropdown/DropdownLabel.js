@@ -8,10 +8,13 @@ const propTypes = {
   placeholder: PropTypes.string,
   /** Human readable identifier for the current selected option */
   label: PropTypes.string,
+  /* Inherit button styles - default is transparent */
+  transparent: PropTypes.bool,
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
-  transparent: PropTypes.bool,
+  /* Disabled state */
   disabled: PropTypes.bool,
+  /* Error state */
   error: PropTypes.string,
   tabIndex: PropTypes.number,
   onClick: PropTypes.func,
