@@ -12,6 +12,7 @@ const options = [
   title="I'm a very long title"
   options={ options }
   margin={ 5 }
+  inheritWidth
 />
 ```
 
@@ -41,9 +42,9 @@ const options = [
 />
 ```
 
-<!-- TODO there are currently no size variations  -->
+#### Sizes
 
-#### Tiny dropdown
+##### Tiny dropdown
 
 ```
 const options = [
@@ -56,11 +57,53 @@ const options = [
   size="tiny"
   title="I'm a title"
   options={ options }
+  secondary
+/>
+```
+```
+const options = [
+  { id: 1, value: 'option 1' },
+  { id: 2, value: 'option 2' },
+];
+
+<Dropdown
+  label="I'm a small dropdown"
+  size="small"
+  title="I'm a title"
+  options={ options }
+  secondary
+/>
+```
+```
+const options = [
+  { id: 1, value: 'option 1' },
+  { id: 2, value: 'option 2' },
+];
+
+<Dropdown
+  label="I'm an auto dropdown"
+  size="auto"
+  title="I'm a title"
+  options={ options }
+  secondary
+/>
+```
+```
+const options = [
+  { id: 1, value: 'option 1' },
+  { id: 2, value: 'option 2' },
+];
+
+<Dropdown
+  label="I'm a large dropdown"
+  size="large"
+  title="I'm a title"
+  options={ options }
+  secondary
 />
 ```
 
-
-Multiple dropdown
+#### Multiple dropdown
 
 ```
 const options = [
@@ -77,7 +120,7 @@ const options = [
 />
 ```
 
-Dropdown without header
+#### Dropdown without header
 
 ```
 const options = [
@@ -92,7 +135,7 @@ const options = [
 />
 ```
 
-Dropdown with icons
+#### Dropdown with icons
 
 ```
 const options = [
@@ -108,7 +151,9 @@ const options = [
 />
 ```
 
-Dropdown with inheritd width
+#### Dropdown with inherited width
+By default Dropdowns are the width of their widest content.
+When set to `inheritWidth` the menu is as wide as its target button.
 
 ```
 const options = [
