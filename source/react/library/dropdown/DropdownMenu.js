@@ -3,7 +3,6 @@ import React from 'react';
 import classnames from 'classnames';
 import Popover from '../popover/Popover';
 import Button from '../buttons/Button';
-import ButtonGroup from '../buttons/ButtonGroup';
 import Menu from '../menu/Menu';
 
 const propTypes = {
