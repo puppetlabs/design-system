@@ -1,6 +1,7 @@
 # 4.1.3
 - Prevent default form submission
-- Add support for syncrhonizing width of dropdown menu and target1
+- Add support for synchronizing width of dropdown menu and target
+- Tighten active states and reduce code following major sidebar revisions
 
 # 4.1.2
 
