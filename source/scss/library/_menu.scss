@@ -232,6 +232,15 @@
 
 // Menu Sections
 .rc-menu-section {
+  &.rc-menu-section-padding {
+    // Optional padding for a section that doesn't have a menuList in it
+    padding: $puppet-menu-section-padding;
+  }
+
+  &.rc-menu-section-padding .rc-menu-section-title {
+    padding: 0 0 4px;
+  }
+
   &:last-of-type {
     border-bottom: 0;
   }

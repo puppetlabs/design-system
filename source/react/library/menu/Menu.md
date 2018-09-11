@@ -70,6 +70,28 @@ const hiveListOptions = [
 </Popover>
 ```
 
+#### Other Content in a MenuSection
+`MenuSection` can be given extra `padding` for content that isn't a `MenuList`
+
+```
+const target = <Button>Open menu with sections</Button>;
+
+<Popover target={ target } padding={ false } border={ false } inheritTargetWidth>
+  <Menu>
+    <MenuHeader title="Edit Integration" />
+    <MenuSection padding>
+      <strong>Refresh metadata</strong>
+      <p class="menu-description">Refresh the metadata if you have recently made changes to your database schema. <a href="#">Read more</a></p>
+    </MenuSection>
+    <MenuSection padding subtle>
+      <strong>Subtle Section</strong>
+      <p class="menu-description">Sections can also be given a subtle bg.</p>
+    </MenuSection>
+  </Menu>
+</Popover>
+```
+
+
 #### Actions and Action Messages
 `MenuActions` can be used to provide context-specific actions and informations to users.
 
