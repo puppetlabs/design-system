@@ -33,7 +33,7 @@
 .rc-select-menu {
   display: flex;
   flex-direction: column;
-  max-height: 240px;
+  max-height: $puppet-select-menu-max-height;
 }
 
 .rc-select-wrapper {

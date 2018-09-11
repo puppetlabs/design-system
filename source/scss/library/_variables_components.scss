@@ -408,8 +408,9 @@ $puppet-select-color                               : $puppet-input-color !defaul
 $puppet-select-border-radius                       : $puppet-input-border-radius !default;
 $puppet-select-item-highlighted-bg                 : $puppet-action-hover !default;
 
+$puppet-select-menu-max-height                     : 240px !default;
 
-// Tiny Inputs to be deprecated - not used
+// TODO Tiny Inputs to be deprecated - not used
 $puppet-select-tiny-item-margin                    : $puppet-mini 0 $puppet-mini $puppet-mini !default;
 $puppet-select-tiny-item-padding                   : 0 $puppet-small !default;
 $puppet-select-label-font-size                     : $puppet-font-size-small !default;
