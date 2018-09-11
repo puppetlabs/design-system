@@ -11,12 +11,6 @@
     overflow-y: auto;
   }
 
-  // TODO can probably kill this
-  .rc-select-menu-options + .rc-menu-actions {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
   .rc-menu-item a,
   .rc-menu-item:first-of-type a,
   .rc-menu-item:last-of-type a {
