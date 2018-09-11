@@ -40,16 +40,6 @@ describe('<Subsection />', () => {
     expect(wrapper.find('.test-child').length).to.eql(5);
   });
 
-  it('should not render children when not selected', () => {
-    const wrapper = shallow(
-      <Subsection {...defaultProps} selected={false}>
-        <span className="test-child">hello!</span>
-      </Subsection>,
-    );
-
-    expect(wrapper.find('.test-child').length).to.eql(0);
-  });
-
   it('should truncate the list of children if prop is provided', () => {
     const wrapper = shallow(
       <Subsection {...defaultProps} truncate>
