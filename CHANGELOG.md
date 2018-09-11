@@ -1,3 +1,8 @@
+# 4.1.3
+- Prevent default form submission
+- Add support for synchronizing width of dropdown menu and target
+- Tighten active states and reduce code following major sidebar revisions
+
 # 4.1.2
 
 - More visual updates to match the design system

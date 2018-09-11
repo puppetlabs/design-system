@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 import { getKey } from '../../helpers/statics';
@@ -8,11 +8,10 @@ import { ENTER_KEY_CODE } from '../../constants';
 const propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
-  /** The title of the active section */
-  // eslint-disable-next-line react/no-unused-prop-types
-  selected: PropTypes.string,
   /** Easy prop for setting active section */
   active: PropTypes.bool,
+  /** Name of active section */
+  activeSection: PropTypes.string,
   /** Class name(s) to apply to section element */
   className: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
@@ -21,85 +20,52 @@ const propTypes = {
   icon: PropTypes.string,
   /** If subsections exist, is section open or closed? */
   open: PropTypes.bool,
+  /** Render section label */
+  label: PropTypes.node,
+  /** Is the sidebar minimized? */
+  minimized: PropTypes.bool,
 };
 
 const defaultProps = {
-  children: [],
+  children: null,
   title: '',
-  selected: null,
   active: false,
+  activeSection: null,
   className: '',
   onSectionClick: () => {},
   onClick: null,
   icon: null,
   open: false,
-};
-
-const isActive = props => {
-  const { selected, title, active: activeProp } = props;
-
-  let active = activeProp;
-  active = selected ? title === selected : active;
-
-  return active;
-};
-
-const getSelectedSubItem = props => {
-  const { children } = props;
-  let selectedSubItem;
-
-  if (children) {
-    const childrenArray = React.Children.toArray(props.children);
-
-    childrenArray.forEach(child => {
-      const grandchildArray = React.Children.toArray(child.props.children);
-
-      if (grandchildArray) {
-        const activeGrandchildren = grandchildArray.filter(grandchild => {
-          let found = null;
-
-          if (grandchild.props) {
-            found = grandchild.props.active === true;
-          }
-
-          return found;
-        });
-
-        if (activeGrandchildren.length > 0) {
-          selectedSubItem = activeGrandchildren[0].props.title;
-        }
-      }
-    });
-  }
-
-  return selectedSubItem;
+  label: null,
+  minimized: false,
 };
 
 class Section extends React.Component {
   constructor(props) {
     super(props);
-    const selectedSubItem = getSelectedSubItem(props);
 
     this.state = {
-      selectedSubItem,
-      selectedSubsection: null,
+      selectedSubItem: null,
       open: props.open,
-      active: isActive(props),
+      active: props.active ? props.active : props.activeSection === props.title,
     };
 
     this.onClick = this.onClick.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onSubItemClick = this.onSubItemClick.bind(this);
-    this.onSubsectionClick = this.onSubsectionClick.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
-    const active = isActive(newProps);
-    const { active: activeState, open } = this.state;
-    const newState = { open: newProps.open };
+    const newState = { active: newProps.active };
 
-    if (active !== activeState && !open) {
-      newState.active = active;
+    // If new active section name is passed down, update
+    if (newProps.activeSection) {
+      newState.active = newProps.activeSection === newProps.title;
+    }
+
+    // Reset active subitems if accordion is now closed or inactive
+    if (!newProps.open || !newState.active) {
+      newState.selectedSubItem = null;
     }
 
     this.setState(newState);
@@ -113,36 +79,25 @@ class Section extends React.Component {
 
   onClick(e) {
     e.preventDefault();
+    const { children, title, onSectionClick, onClick, minimized } = this.props;
+    const { open, selectedSubItem } = this.state;
     const newState = {};
 
-    const { open, active, selectedSubItem, selectedSubsection } = this.state;
-    // Set open state based on condition:
-    // You cannot minimize a non-active section
-    if (!(open && !active)) {
-      newState.open = !open;
-    }
+    const isAccordion = !!children;
+    onSectionClick(title, isAccordion);
 
-    if (open && active) {
+    if (selectedSubItem) {
       // You cannot minimize an active section
       newState.open = open;
-    } else if (open) {
-      // Minimize if open
+    } else if (isAccordion) {
+      // Otherwise, toggle open state if has children
       newState.open = !open;
     }
 
-    // When toggling between sections, let's reset state
-    // for active subitems in inactive sections
-    if (!active && selectedSubItem) {
-      newState.selectedSubItem = null;
+    // If clicking on a toggled accordion, always force open
+    if (minimized && isAccordion) {
+      newState.open = true;
     }
-
-    // Same with subsections
-    if (!active && selectedSubsection) {
-      newState.selectedSubsection = null;
-    }
-
-    const { onSectionClick, onClick, title } = this.props;
-    onSectionClick(title);
 
     if (Object.keys(newState).length) {
       this.setState(newState);
@@ -154,35 +109,24 @@ class Section extends React.Component {
   }
 
   onSubItemClick(title) {
-    const { title: titleProp, onSectionClick } = this.props;
-    this.setState({ selectedSubItem: title, active: true });
-    onSectionClick(titleProp);
-  }
+    const { onSectionClick, title: sectionTitle } = this.props;
 
-  onSubsectionClick(title) {
-    this.setState({ selectedSubsection: title });
+    onSectionClick(sectionTitle);
+
+    this.setState({
+      selectedSubItem: title,
+      active: true,
+    });
   }
 
   renderSubsections() {
-    const { open, selectedSubsection, selectedSubItem } = this.state;
+    const { selectedSubItem } = this.state;
     const { children } = this.props;
-
-    const isActiveSubsection = (subsection, idx) => {
-      if (open && !selectedSubsection && idx === 0) {
-        return true;
-      }
-
-      return (
-        subsection.props.title && subsection.props.title === selectedSubsection
-      );
-    };
 
     return React.Children.map(children, (subsection, idx) => {
       const props = {
         key: getKey(subsection, idx),
         onSubItemClick: this.onSubItemClick,
-        onSubsectionClick: this.onSubsectionClick,
-        selected: isActiveSubsection(subsection, idx),
         selectedItem: selectedSubItem,
       };
 
@@ -192,21 +136,19 @@ class Section extends React.Component {
 
   render() {
     const { active, open, selectedSubItem } = this.state;
-    const { title, onClick, icon: iconProp, className } = this.props;
+    const { title, icon: iconProp, className, children } = this.props;
     const classNames = classnames(
       'rc-sidebar-item',
       {
-        'rc-sidebar-item-selected': active && !selectedSubItem,
-        'rc-sidebar-item-selectable': onClick,
-        'rc-sidebar-item-closed': !open,
-        'rc-sidebar-item-open': open,
+        'rc-sidebar-item-selected': active || selectedSubItem,
+        'rc-sidebar-item-active-accordion': open && selectedSubItem,
       },
       className,
     );
 
     let subsections = [];
 
-    if (open) {
+    if (open && children) {
       subsections = this.renderSubsections();
     }
 
@@ -223,23 +165,36 @@ class Section extends React.Component {
       );
     }
 
+    let { label } = this.props;
+    if (label) {
+      label = (
+        <div>
+          <span className="rc-sidebar-divider" />
+          <span className="rc-sidebar-label">{label}</span>
+        </div>
+      );
+    }
+
     return (
       /* eslint-disable jsx-a11y/anchor-is-valid */
-      <li className={classNames}>
-        <a
-          className="rc-sidebar-item-link"
-          role="button"
-          tabIndex={0}
-          onClick={this.onClick}
-          onKeyDown={this.onKeyDown}
-        >
-          <div className="rc-sidebar-item-content">
-            {icon}
-            <span className="rc-sidebar-item-title">{title}</span>
-          </div>
-        </a>
-        {subsections}
-      </li>
+      <Fragment>
+        {label}
+        <li className={classNames}>
+          <a
+            className="rc-sidebar-item-link"
+            role="button"
+            tabIndex={0}
+            onClick={this.onClick}
+            onKeyDown={this.onKeyDown}
+          >
+            <div className="rc-sidebar-item-content">
+              {icon}
+              <span className="rc-sidebar-item-title">{title}</span>
+            </div>
+          </a>
+          {subsections}
+        </li>
+      </Fragment>
       /* eslint-enable jsx-a11y/anchor-is-valid */
     );
   }

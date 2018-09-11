@@ -9,6 +9,7 @@
 ```
 
 Heading - color medium
+
 ```js
 <Heading as="h1" color="medium" hero>Hero</Heading>
 <Heading as="h1" color="medium">Heading 1</Heading>
@@ -20,6 +21,7 @@ Heading - color medium
 ```
 
 Heading - color subtle
+
 ```js
 <Heading as="h1" color="subtle" hero>Hero</Heading>
 <Heading as="h1" color="subtle">Heading 1</Heading>

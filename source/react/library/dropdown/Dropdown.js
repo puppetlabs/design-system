@@ -22,6 +22,7 @@ const propTypes = {
   tabIndex: PropTypes.number,
   error: PropTypes.string,
   disablePortal: PropTypes.bool,
+  inheritWidth: PropTypes.bool,
   selected: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.number,
@@ -44,6 +45,7 @@ const defaultProps = {
   multiple: false,
   required: false,
   disabled: false,
+  inheritWidth: false,
   tabIndex: 0,
   error: '',
   selected: [],
@@ -220,6 +222,7 @@ class Dropdown extends React.Component {
       required,
       disablePortal,
       onActionClick,
+      inheritWidth,
     } = this.props;
     const options = this.getOptions();
     const button = this.renderToggle();
@@ -235,6 +238,7 @@ class Dropdown extends React.Component {
         hint={hint}
         multiple={multiple}
         target={button}
+        inheritWidth={inheritWidth}
         onChange={this.onChange}
         onApply={this.onApply}
         options={options}
