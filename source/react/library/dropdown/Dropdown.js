@@ -36,7 +36,7 @@ const propTypes = {
 const defaultProps = {
   anchor: 'bottom left',
   actions: null,
-  size: 'small',
+  size: '',
   primary: false,
   secondary: false,
   transparent: true,
