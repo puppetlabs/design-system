@@ -9,6 +9,7 @@ const propTypes = {
   primary: PropTypes.bool,
   secondary: PropTypes.bool,
   transparent: PropTypes.bool,
+  simple: PropTypes.bool,
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.object),
   actions: PropTypes.node,
@@ -40,6 +41,7 @@ const defaultProps = {
   primary: false,
   secondary: false,
   transparent: true,
+  simple: false,
   options: [],
   title: '',
   margin: 8,
@@ -183,6 +185,7 @@ class Dropdown extends React.Component {
       secondary,
       transparent,
       placeholder,
+      simple,
     } = this.props;
     const options = this.getOptions();
     const selected = options.filter(e => displayed.indexOf(e.id) >= 0);
@@ -213,6 +216,7 @@ class Dropdown extends React.Component {
         primary={primary}
         secondary={secondary}
         transparent={transparent}
+        simple={simple}
         placeholder={placeholder}
         label={label}
       />
