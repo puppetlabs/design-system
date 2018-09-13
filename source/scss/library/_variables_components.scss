@@ -753,8 +753,8 @@ $puppet-header-nav-icon-margin                     : 24px !default;
 // Pagenav
 // ----------------------------------------------------------------------------
 $puppet-pagenav-height                             : 64px !default;
-$puppet-pagenav-bg                                 : $puppet-bg-light !default;
-$puppet-pagenav-section-padding                    : 0 12px !default;
+$puppet-pagenav-bg                                 : transparent !default;
+$puppet-pagenav-section-padding                    : 0 16px !default;
 $puppet-pagenav-action-margin                      : 0 0 0 $puppet-size-base !default;
 $puppet-pagenav-border                             : $puppet-border-subtle !default;
 $puppet-pagenav-border-hover                       : $puppet-border-hover !default;
