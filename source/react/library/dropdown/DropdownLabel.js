@@ -8,21 +8,33 @@ const propTypes = {
   placeholder: PropTypes.string,
   /** Human readable identifier for the current selected option */
   label: PropTypes.string,
-  select: PropTypes.bool,
+  /* Inherit button styles - default is transparent */
+  transparent: PropTypes.bool,
+  primary: PropTypes.bool,
+  secondary: PropTypes.bool,
+  simple: PropTypes.bool,
+  /* Disabled state */
   disabled: PropTypes.bool,
+  /* Error state */
   error: PropTypes.string,
   tabIndex: PropTypes.number,
   onClick: PropTypes.func,
+  /* Sets the size of the anchor/button */
+  size: PropTypes.oneOf(['tiny', 'small', 'large', 'auto', null]),
 };
 
 const defaultProps = {
   placeholder: '',
   label: '',
-  select: false,
+  primary: false,
+  secondary: false,
+  transparent: true,
+  simple: false,
   disabled: false,
   error: '',
   tabIndex: 0,
   onClick: () => {},
+  size: null,
 };
 
 /**
@@ -36,11 +48,15 @@ class DropdownLabel extends React.Component {
     const {
       label: propsLabel,
       placeholder,
-      select,
+      primary,
+      secondary,
+      transparent,
+      simple,
       error,
       tabIndex,
       disabled,
       onClick,
+      size,
     } = this.props;
     let label = propsLabel;
 
@@ -50,9 +66,13 @@ class DropdownLabel extends React.Component {
       label = 'Select One';
     }
 
-    const className = classnames('rc-dropdown-toggle', {
-      'rc-dropdown-toggle-select': select,
-      'rc-dropdown-toggle-error': error,
+    const className = classnames('rc-button', {
+      'rc-button-transparent': transparent && !primary && !secondary && !simple,
+      'rc-button-secondary': secondary,
+      'rc-button-primary': primary,
+      'rc-button-simple': simple,
+      'rc-button-error': error,
+      [`rc-button-${size}`]: size,
     });
 
     // TODO: This should render a button element or an anchor if its for navigation
@@ -67,7 +87,7 @@ class DropdownLabel extends React.Component {
         className={className}
       >
         <span className="rc-dropdown-label">
-          <span className="rc-dropdown-label-text">{label}</span>{' '}
+          <span className="rc-button-content">{label}</span>{' '}
           <Icon width="8px" height="8px" type="chevron-down" />
         </span>
       </a>

@@ -66,10 +66,6 @@
   color: $puppet-card-controls-color;
   font-size: $puppet-card-controls-size;
 
-  [class^='rc-'] {
-    font-size: $puppet-card-controls-size !important;
-  }
-
   + .rc-card-description {
     margin-top: $puppet-card-title-margin;
   }

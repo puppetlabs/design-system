@@ -7,16 +7,8 @@
   max-height: 200px;
 
   .rc-select-menu-options {
-    border: $puppet-border;
-    border-radius: $puppet-border-radius;
     flex: 1 1 auto;
     overflow-y: auto;
-    padding: 0;
-  }
-
-  .rc-select-menu-options + .rc-menu-actions {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
   }
 
   .rc-menu-item a,
@@ -33,10 +25,9 @@
 }
 
 .rc-select-menu {
-  background: $puppet-select-menu-bg;
   display: flex;
   flex-direction: column;
-  max-height: 160px;
+  max-height: $puppet-select-menu-max-height;
 }
 
 .rc-select-wrapper {
