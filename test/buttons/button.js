@@ -5,9 +5,28 @@ import { expect } from 'chai';
 import React from 'react';
 
 import Button from '../../source/react/library/buttons/Button';
+import { Card } from '../../source/react/library/card';
 
 describe('<Button />', () => {
   jsdom({ skipWindowCheck: true });
+
+  it('should render a <button> tag by default', () => {
+    const wrapper = shallow(<Button />);
+
+    expect(wrapper.find('button[type="button"]')).to.have.lengthOf(1);
+  });
+
+  it('should render the element passed in the `as` prop', () => {
+    const wrapper = shallow(<Button as="a" href="http://puppet.com" />);
+
+    expect(wrapper.find('a[href="http://puppet.com"]')).to.have.lengthOf(1);
+  });
+
+  it('should render the component pass in the `as` prop', () => {
+    const wrapper = shallow(<Button as={Card} />);
+
+    expect(wrapper.type()).to.equal(Card);
+  });
 
   it('should have disabled attr when passed disabled prop', () => {
     const wrapper = shallow(<Button disabled />);

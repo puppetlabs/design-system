@@ -29,6 +29,7 @@ const propTypes = {
   error: PropTypes.bool,
   message: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
 const defaultProps = {
@@ -53,25 +54,35 @@ const defaultProps = {
   error: false,
   dropdown: false,
   children: '',
+  as: 'button',
 };
 
 /**
- * `Button` is a generalized component we use for rendering buttons. They can be used in different
- * contexts, such as within a `SplitButton` or `ButtonGroup`.
+ * `Button` is a generalized component for rendering buttons. They can be used
+ * in different contexts, such as within a `SplitButton` or `ButtonGroup`. By
+ * default, it renders a `<button type="button">` element, but `type="submit"`
+ * can be passed to trigger the containing form's submit handler, and the `as` prop
+ * can be used to render a different element or component, such as with an `a`
+ * element or React Router's `Link` component:
+ * ```jsx
+ * <Button as="a" href="http://puppet.com">Puppet</Button>
+ * ```
+ * ```jsx
+ * <Button as={Link} to="/home">Home</Button>
+ * ```
  */
-
 class Button extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onClick = this.onClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
     this.forceUpdate();
   }
 
-  onClick(e) {
+  handleClick(e) {
     const { disabled, processing, onClick } = this.props;
     if (disabled || processing) {
       e.preventDefault();
@@ -101,6 +112,8 @@ class Button extends React.Component {
       round,
       square,
       icon: propIcon,
+      as: Component,
+      ...otherProps
     } = this.props;
 
     let button;
@@ -124,10 +137,12 @@ class Button extends React.Component {
     });
 
     const btnProps = {
-      type,
+      // Default `type` to "button" (instead of "submit") unless `as` is specified
+      type: !type && Component === 'button' ? 'button' : type,
       href,
       disabled,
-      onClick: this.onClick,
+      'aria-disabled': Component === 'button' ? null : disabled,
+      tabIndex: disabled ? -1 : null,
       ref: b => {
         this.button = b;
       },
@@ -159,19 +174,11 @@ class Button extends React.Component {
       );
     }
 
-    if (type) {
-      button = (
-        <button type="button" {...btnProps}>
-          {icon} {content} {dropdown} {loader}
-        </button>
-      );
-    } else {
-      button = (
-        <a {...btnProps}>
-          {icon} {content} {dropdown} {loader}
-        </a>
-      );
-    }
+    button = (
+      <Component {...btnProps} {...otherProps} onClick={this.handleClick}>
+        {icon} {content} {dropdown} {loader}
+      </Component>
+    );
 
     if (message) {
       button = (
