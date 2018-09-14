@@ -6,7 +6,7 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   subtle: PropTypes.bool,
   className: PropTypes.string,
-  title: PropTypes.node.string,
+  title: PropTypes.string,
   padding: PropTypes.bool,
 };
 
