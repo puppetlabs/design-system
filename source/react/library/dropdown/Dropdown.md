@@ -1,17 +1,47 @@
+#### Dropdown Link
+
 ```
 const options = [
-  { id: 1, value: 'option 1' },
-  { id: 2, value: 'option 2' },
+  { id: 1, value: 'Edit', icon: "pencil" },
+  { id: 2, value: 'Export', icon: "export"  },
+  { id: 3, value: 'Delete', icon: "trash"  },
 ];
 
 <Dropdown
   label="I'm a dropdown"
-  hint="I'm a hint"
+  options={ options }
+  margin={ 5 }
+  inheritWidth
+/>
+```
+
+#### Dropdown Button
+
+```
+const label="Do you know what time it is?";
+const title="It's burger time";
+const options = [
+  { id: 1, value: "Buns"},
+  { id: 2, value: "Pickles"},
+  { id: 3, value: "Ketchup"},
+  { id: 4, value: "Cheese"},
+  { id: 5, value: "Put the patty"},
+  { id: 6, value: "In between"},
+  { id: 7, value: "It's burgers!"},
+  { id: 8, value: "What? What?"},
+  { id: 9, value: "Woooo!"},
+];
+
+<Dropdown
+  secondary
+  label={ label }
+  inheritWidth
+  title={ title }
   options={ options }
 />
 ```
 
-Tiny dropdown
+#### Sizes
 
 ```
 const options = [
@@ -22,29 +52,67 @@ const options = [
 <Dropdown
   label="I'm a tiny dropdown"
   size="tiny"
-  hint="I'm a hint"
   options={ options }
+  secondary
 />
 ```
-
-Multiple dropdown
-
 ```
 const options = [
   { id: 1, value: 'option 1' },
   { id: 2, value: 'option 2' },
+];
+
+<Dropdown
+  label="I'm a small dropdown"
+  size="small"
+  options={ options }
+  secondary
+/>
+```
+```
+const options = [
+  { id: 1, value: 'option 1' },
+  { id: 2, value: 'option 2' },
+];
+
+<Dropdown
+  label="I'm an auto dropdown"
+  size="auto"
+  options={ options }
+  secondary
+/>
+```
+```
+const options = [
+  { id: 1, value: 'option 1' },
+  { id: 2, value: 'option 2' },
+];
+
+<Dropdown
+  label="I'm a large dropdown"
+  size="large"
+  options={ options }
+  secondary
+/>
+```
+
+#### Multiple dropdown
+
+```
+const options = [
+  { id: 1, value: 'This is the first option' },
+  { id: 2, value: 'This option is the second' },
 ];
 
 <Dropdown
   multiple
   label="I'm a multi-dropdown"
-  hint="I'm a hint"
   selected={ [1] }
   options={ options }
 />
 ```
 
-Dropdown without header
+#### Dropdown with header
 
 ```
 const options = [
@@ -53,13 +121,14 @@ const options = [
 ];
 
 <Dropdown
-  label="I'm a dropdown without a header"
+  label="I have a header in my menu"
   selected={ [1] }
   options={ options }
+  title="Title Example"
 />
 ```
 
-Dropdown with icons
+#### Dropdown with icons
 
 ```
 const options = [
@@ -75,7 +144,9 @@ const options = [
 />
 ```
 
-Dropdown with inheritd width
+#### Dropdown with inherited width
+By default Dropdowns are the width of their widest content.
+When set to `inheritWidth` the menu is as wide as its target button.
 
 ```
 const options = [
@@ -84,7 +155,7 @@ const options = [
 ];
 
 <Dropdown
-  label="Same width as the options"
+  label="The dropdown menu will inherit my width"
   inheritWidth
   hint="Aren't I cool"
   options={ options }
