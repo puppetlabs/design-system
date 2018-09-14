@@ -278,6 +278,9 @@
 .rc-button[disabled] {
   cursor: default;
   opacity: $puppet-button-disabled-opacity;
+  outline: none;
+  pointer-events: none;
+
 }
 
 .rc-button-block {
