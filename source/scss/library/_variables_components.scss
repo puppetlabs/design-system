@@ -523,6 +523,7 @@ $puppet-modal-color                                : $puppet-font-color-base !de
 $puppet-modal-border                               : 1px solid $puppet-n400 !default;
 $puppet-modal-border-radius                        : $puppet-tiny !default;
 $puppet-modal-overlay-bg                           : transparent !default;
+$puppet-modal-overlay-translucent-bg               : rgba(4, 8, 10, 0.16) !default;
 $puppet-modal-elevation                            : 24 !default;
 $puppet-modal-padding                              : $puppet-huge !default;
 $puppet-modal-shadow                               : $puppet-outer-shadow-giant !default;
