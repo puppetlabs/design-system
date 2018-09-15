@@ -24,6 +24,7 @@ const propTypes = {
   modalClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   overlayClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   children: PropTypes.node,
+  actionsPosition: PropTypes.oneOf(['left', 'right']),
 };
 
 const defaultProps = {
@@ -40,6 +41,7 @@ const defaultProps = {
   modalClassName: '',
   overlayClassName: '',
   children: null,
+  actionsPosition: 'right',
 };
 
 function setBodyOverflow(value) {
@@ -255,7 +257,7 @@ class Modal extends React.Component {
   }
 
   renderActions() {
-    const { actions, actionsCTA } = this.props;
+    const { actions, actionsCTA, actionsPosition } = this.props;
     let jsx;
     let cta = null;
 
@@ -264,8 +266,12 @@ class Modal extends React.Component {
         cta = <span className="rc-modal-actions-cta">{actionsCTA}</span>;
       }
 
+      const classNames = classname('rc-modal-actions', {
+        [`rc-modal-actions-${actionsPosition}`]: actionsPosition,
+      });
+
       jsx = (
-        <div className="rc-modal-actions">
+        <div className={classNames}>
           {cta}
           <ButtonGroup>{actions}</ButtonGroup>
         </div>

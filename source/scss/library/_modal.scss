@@ -70,7 +70,14 @@
   border-top: $puppet-modal-actions-border;
   overflow: hidden;
   padding: $puppet-modal-actions-padding;
+}
+
+.rc-modal-actions-right {
   text-align: right;
+}
+
+.rc-modal-actions-left {
+  text-align: left;
 }
 
 .rc-modal-actions-cta {
