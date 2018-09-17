@@ -75,14 +75,14 @@ class Button extends React.Component {
   constructor(props) {
     super(props);
 
-    this.handleClick = this.handleClick.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   componentDidMount() {
     this.forceUpdate();
   }
 
-  handleClick(e) {
+  onClick(e) {
     const { disabled, processing, onClick } = this.props;
     if (disabled || processing) {
       e.preventDefault();
@@ -176,7 +176,7 @@ class Button extends React.Component {
     }
 
     button = (
-      <Component {...btnProps} {...otherProps} onClick={this.handleClick}>
+      <Component {...btnProps} {...otherProps} onClick={this.onClick}>
         {icon} {content} {dropdown} {loader}
       </Component>
     );
