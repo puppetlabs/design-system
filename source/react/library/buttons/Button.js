@@ -142,7 +142,7 @@ class Button extends React.Component {
       type: !type && Component === 'button' ? 'button' : type,
       href,
       disabled,
-      'aria-disabled': Component === 'button' ? null : disabled,
+      'aria-disabled': Component === 'button' || !disabled ? null : disabled,
       tabIndex: disabled ? -1 : null,
       ref: b => {
         this.button = b;

@@ -34,6 +34,12 @@ describe('<Button />', () => {
     expect(wrapper).to.have.attr('disabled');
   });
 
+  it('should have aria-disabled attr when passed disabled prop and special as prop', () => {
+    const wrapper = shallow(<Button as="a" disabled />);
+
+    expect(wrapper).to.have.attr('aria-disabled');
+  });
+
   it('should not respond to click events when disabled', () => {
     const onClick = sinon.spy();
     const wrapper = shallow(<Button disabled onClick={onClick} />);
