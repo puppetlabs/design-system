@@ -85,10 +85,13 @@
 
 .rc-modal-actions-left {
   text-align: left;
+
+  .rc-modal-actions-cta {
+    margin-left: 8px;
+  }
 }
 
 .rc-modal-actions-cta {
-  float: left;
   margin: 0;
   padding: $puppet-modal-actions-cta-padding;
 }

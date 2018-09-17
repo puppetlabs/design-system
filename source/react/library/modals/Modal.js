@@ -6,6 +6,7 @@ import portal from '../portal';
 import Icon from '../icon/Icon';
 import ButtonGroup from '../buttons/ButtonGroup';
 import Heading from '../heading';
+import Content from '../content';
 
 const propTypes = {
   unbindShortcut: PropTypes.func,
@@ -44,7 +45,7 @@ const defaultProps = {
   modalClassName: '',
   overlayClassName: '',
   children: null,
-  actionsPosition: 'right',
+  actionsPosition: 'left',
   background: 'transparent',
   title: '',
 };
@@ -277,8 +278,9 @@ class Modal extends React.Component {
 
       jsx = (
         <div className={classNames}>
-          {cta}
+          {actionsPosition === 'right' ? cta : null}
           <ButtonGroup>{actions}</ButtonGroup>
+          {actionsPosition === 'left' ? cta : null}
         </div>
       );
     }
@@ -318,7 +320,7 @@ class Modal extends React.Component {
           tabIndex={0}
           onClick={this.onClose}
         >
-          <Icon size="tiny" type="close" />
+          <Icon size="medium" type="close-16px" />
         </a>
       );
     }
@@ -387,8 +389,10 @@ class Modal extends React.Component {
             }}
             className="rc-modal-content"
           >
-            {title}
-            {children}
+            <Content>
+              {title}
+              {children}
+            </Content>
           </div>
           {actions}
           {closeButton}
