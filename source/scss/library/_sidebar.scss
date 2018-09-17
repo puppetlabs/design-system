@@ -45,6 +45,13 @@
     width: $puppet-sidebar-minimized-width;
   }
 
+  .rc-sidebar-toggle-btn {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+    width: $puppet-sidebar-item-height-toggled;
+  }
+
   .rc-sidebar-item-content {
     height: $puppet-sidebar-item-height-toggled;
   }
@@ -67,6 +74,8 @@
 }
 
 .rc-sidebar-toggle-btn {
+  height: $puppet-sidebar-item-height-toggled;
+
   .rc-icon {
     height: $puppet-sidebar-toggle-icon-size;
     width: $puppet-sidebar-toggle-icon-size;

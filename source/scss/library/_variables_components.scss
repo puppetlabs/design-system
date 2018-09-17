@@ -204,10 +204,10 @@ $puppet-card-shadow-selected-hover                 : $puppet-selected-shadow-hov
 $puppet-sidebar-bg                                 : $puppet-bg-light !default;
 $puppet-sidebar-font                               : $puppet-font-family-heading !default;
 $puppet-sidebar-padding                            : 14px 0 !default; // Compensates for item margin
-$puppet-sidebar-width                              : 216px !default;
-$puppet-sidebar-minimized-width                    : 65px !default;
+$puppet-sidebar-width                              : 224px !default;
+$puppet-sidebar-minimized-width                    : 73px !default;
 
-$puppet-sidebar-toggle-height                      : 56px !default;
+$puppet-sidebar-toggle-height                      : 48px !default;
 
 $puppet-sidebar-divider                            : $puppet-border-subtle !default;
 $puppet-sidebar-divider-margin-open                : 15px 0 16px !default; // 15 compensates for border
@@ -226,10 +226,10 @@ $puppet-sidebar-item-color-active                  : $puppet-action-base !defaul
 
 $puppet-sidebar-item-font-size                     : 16px !default;
 $puppet-sidebar-item-font-weight                   : $puppet-font-weight-medium !default;
-$puppet-sidebar-item-height-toggled                : 32px !default;
-$puppet-sidebar-item-line-height                   : 24px !default;
+$puppet-sidebar-item-height-toggled                : 40px !default;
+$puppet-sidebar-item-line-height                   : 32px !default;
 $puppet-sidebar-item-margin                        : 2px 16px !default;
-$puppet-sidebar-item-padding                       : 0 8px !default;
+$puppet-sidebar-item-padding                       : 0 12px !default;
 $puppet-sidebar-item-title-padding                 : 4px 0 !default;
 
 $puppet-sidebar-item-icon-fill                     : $puppet-n700 !default;
