@@ -116,7 +116,7 @@ class Container {
               data = helpers.stackData(data);
             }
 
-            const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
+            const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options, 'container');
             const y = yScale.generate();
 
             const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
@@ -208,6 +208,7 @@ class Container {
     if (this.type !== 'gauge') {
       outerMargins = margins.top + margins.bottom;
     }
+
 
     this.dimensions.height = this.dimensions.height - outerMargins;
   }

@@ -71,6 +71,11 @@ class Tooltip {
 
     item += helpers.getFormattedValue(optionFormatter, datum.y);
 
+    if (datum.z !== undefined) {
+      // TODO: Allow for passing z datum formatters
+      item += ` (${helpers.getFormattedValue(null, datum.z)})`;
+    }
+
     return item;
   }
 

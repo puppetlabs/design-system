@@ -7,10 +7,11 @@ import {
 } from '../../constants';
 import CSS from '../../helpers/css';
 import Series from './Series';
+import helpers from '../../helpers/charting';
 
 class SeriesPoi extends Series {
-  constructor(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex) {
-    super(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex, 'series-poi');
+  constructor(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex, z) {
+    super(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex, 'series-poi', z);
 
     this.renderCount = 0;
 
@@ -20,6 +21,7 @@ class SeriesPoi extends Series {
 
       this.getX = this.getX.bind(this);
       this.getY = this.getY.bind(this);
+      this.getRadius = this.getRadius.bind(this);
 
       dispatchers.on(this.eventName, (activatedX, activatedY) => {
         if (activatedX && activatedX._isAMomentObject) { // eslint-disable-line no-underscore-dangle
@@ -45,16 +47,17 @@ class SeriesPoi extends Series {
         this.selection.selectAll(CSS.getClassSelector('poi')).each(function (d) {
           const point = select(this);
           const isHidden = point.classed(CSS.getClassName('poi-hidden'));
+          const isBubble = d.seriesType === 'bubble';
           const isActive = point.classed(CSS.getClassName('poi-active'));
 
-          if (!isHidden && shouldHighlight(d)) {
+          if (!isHidden && !isBubble && shouldHighlight(d)) {
             point.attr('class', CSS.getClassName('poi', 'poi-active'))
               .attr('opacity', 1)
               .transition()
               .duration(POI_ANIMATION_DURATION)
               .ease(easeLinear)
               .attr('r', POI_RADIUS_ACTIVE);
-          } else if (!isHidden && isActive) {
+          } else if (!isHidden && !isBubble && isActive) {
             point
               .transition()
               .duration(POI_ANIMATION_DURATION)
@@ -100,10 +103,11 @@ class SeriesPoi extends Series {
   getY(d) {
     const { y, options } = this;
     const isStacked = options.layout === 'stacked';
+    const isBubble = options.type === 'bubble';
 
     let cyPos;
 
-    if (isStacked) {
+    if (isStacked && !isBubble) {
       if (d.y < 0 && d.y0 > 0) {
         cyPos = y(d.y === null ? y.domain()[0] : d.y);
       } else {
@@ -116,6 +120,17 @@ class SeriesPoi extends Series {
     return cyPos;
   }
 
+  getRadius(d) {
+    const { z, dimensions } = this;
+    let radius = POI_RADIUS;
+
+    if (z) {
+      radius = helpers.getBubbleRadius(d.z, z, dimensions.width, dimensions.height);
+    }
+
+    return radius;
+  }
+
   render(selection) {
     this.renderCount += 1;
 
@@ -126,6 +141,12 @@ class SeriesPoi extends Series {
       if (!this.selection) {
         this.selection = selection;
       }
+
+      this.data.forEach((series) => {
+        if (series.type === 'bubble') {
+          series.data.sort((a, b) => (b.z - a.z));
+        }
+      });
 
       this.series = selection.selectAll(CSS.getClassSelector(this.selector))
         .data(this.data, d => (d.seriesIndex));
@@ -149,16 +170,16 @@ class SeriesPoi extends Series {
         .merge(pois);
 
       pois.attr('class', CSS.getClassName('poi'))
-          .attr('r', POI_RADIUS)
+          .attr('r', d => this.getRadius(d))
           .attr('cx', this.isHorizontal() ? this.getY : this.getX)
           .attr('cy', this.isHorizontal() ? this.getX : this.getY)
           .attr('style', d => (d.color ? `stroke: ${d.color};` : null))
           .classed(CSS.getClassName('poi-hidden'), this.getHiddenClass)
           .attr('opacity', 0)
-          .on('mousemove', function (d) {
+          .on('mousemove', (d) => {
             dispatchers.call('activatePointOfInterest', this, d.x, d.y);
           })
-          .on('mouseover', function (d) {
+          .on('mouseover', (d) => {
             const dims = mouse(select('body').node());
 
             dispatchers.call('tooltipMove', this, d.categoryIndex, d.seriesIndex, d.x, dims);

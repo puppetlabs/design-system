@@ -111,8 +111,10 @@ class DataSet {
 
       categories.forEach((category) => {
         const d = s.data[category.categoryIndex];
-        const datum = (typeof d === 'object' && d !== null ? d : { x: category.label, y: d, y0: 0 });
+        const datum = (typeof d === 'object' && d !== null ? d : { y: d });
 
+        datum.x = datum.x ? datum.x : category.label;
+        datum.y0 = datum.y0 ? datum.y0 : 0;
         datum.seriesIndex = index;
         datum.categoryIndex = category.categoryIndex;
         datum.seriesLabel = s.label;

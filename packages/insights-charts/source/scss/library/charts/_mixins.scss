@@ -46,7 +46,7 @@
     fill: $background;
     stroke: $background;
   }
-  
+
   .reflect-charts-gauge-arc-value {
     fill: $color;
   }
@@ -64,6 +64,14 @@
   .reflect-charts-poi {
     fill: $puppet-poi-fill;
     stroke: $color;
+  }
+}
+
+@mixin reflect-bubble-poi-color($color, $opacity: 0.8) {
+  .reflect-charts-poi {
+    fill: $color;
+    fill-opacity: $opacity;
+    stroke: none;
   }
 }
 
@@ -86,7 +94,13 @@
 
       .reflect-charts-color-#{$i} {
         transition: opacity $puppet-transition-time linear;
-        @include reflect-poi-color($color);
+
+        @if $type == bubble {
+          @include reflect-bubble-poi-color($color);
+        } @else {
+          @include reflect-poi-color($color);
+        }
+
         @include reflect-indicator-color($color);
 
         @if $type == line {

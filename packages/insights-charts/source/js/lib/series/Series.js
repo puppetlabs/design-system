@@ -43,11 +43,12 @@ class Series {
     const yMin = !isReversed ? this.y.domain()[0] : this.y.domain()[1];
     const yMax = !isReversed ? this.y.domain()[1] : this.y.domain()[0];
     const layout = this.options.layout;
+    const isBubble = this.options.type === 'bubble';
     let hidden;
 
     if (d.y === null) {
       hidden = true;
-    } else if (layout === 'stacked') {
+    } else if (layout === 'stacked' && !isBubble) {
       hidden = (d.y + d.y0) < yMin || (d.y + d.y0) > yMax;
     } else {
       hidden = d.y < yMin || d.y > yMax;

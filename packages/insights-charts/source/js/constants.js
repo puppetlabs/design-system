@@ -1,4 +1,5 @@
 export const POI_RADIUS = 1.5;
+export const POI_SCALING_FACTOR = 200;
 export const POI_RADIUS_ACTIVE = POI_RADIUS * 3;
 export const POI_RADIUS_INITIAL = POI_RADIUS / 3;
 export const TOTAL_SERIES_COLOR = 11;

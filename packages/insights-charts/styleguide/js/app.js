@@ -14,6 +14,7 @@ import GaugeCharts from './GaugeCharts';
 import ScatterCharts from './ScatterCharts';
 import CombinationCharts from './CombinationCharts';
 import SparklineCharts from './SparklineCharts';
+import BubbleCharts from './BubbleCharts';
 import '../scss/styleguide.scss';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <Route name="Donut charts" path="donut-charts" components={ DonutCharts } />
           <Route name="Gauge charts" path="gauge-charts" components={ GaugeCharts } />
           <Route name="Scatter charts" path="scatter-charts" components={ ScatterCharts } />
+          <Route name="Bubble charts" path="bubble-charts" components={ BubbleCharts } />
           <Route
             name="Combination charts"
             path="combination-charts"

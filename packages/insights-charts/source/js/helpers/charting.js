@@ -1,6 +1,9 @@
 import moment from 'moment';
 import clone from 'clone';
+import { min as d3Min, max as d3Max } from 'd3-array';
 import formatters from './formatters';
+import { POI_RADIUS, POI_SCALING_FACTOR } from '../constants';
+import ZScale from '../lib/scales/ZScale';
 
 const helpers = {
 
@@ -176,6 +179,85 @@ const helpers = {
     });
 
     return maxPoint;
+  },
+
+  getBubbleRadius(datum, z, width, height) {
+    const defaultRadius = POI_RADIUS;
+    const relativeAxisLength = Math.min(width, height);
+    let bubbleRadius = Math.abs(datum) * relativeAxisLength;
+
+    if (bubbleRadius < defaultRadius) {
+      bubbleRadius = defaultRadius;
+    }
+
+    return z(datum === null ? defaultRadius : bubbleRadius);
+  },
+
+  getMaxBubbleRadius(data) {
+    let numberOfPoints = 0;
+
+    data.forEach((series) => {
+      numberOfPoints += series.data.length;
+    });
+
+    return POI_SCALING_FACTOR / Math.sqrt(numberOfPoints);
+  },
+
+  getAdjustedLimit(props) {
+    const { data, s, axis, limitType, dimensions, options } = props;
+    const isYAxis = axis === 'y';
+    const isXAxis = axis === 'x';
+
+    const max = d3Max(s.data.filter(d => d[axis] !== null), d => d[axis]);
+    let min = d3Min(s.data.filter(d => d[axis] !== null), d => d[axis]);
+
+    // We do this to account for using .nice on y-axis
+    if (isYAxis) {
+      min = min > 0 ? 0 : min;
+    }
+
+    const zScale = new ZScale(data, dimensions);
+    const z = zScale.generate();
+
+    const radius = d => helpers.getBubbleRadius(d.z, z, dimensions.width, dimensions.height);
+
+    let axisLengths = [dimensions.height, dimensions.width];
+    if (isYAxis && (options.orientation === 'bottom' || options.orientation === 'top')) {
+      axisLengths = axisLengths.reverse();
+    } else if (isXAxis && (options.orientation === 'right' || options.orientation === 'left')) {
+      axisLengths = axisLengths.reverse();
+    }
+
+    const relativeAxisLength = isYAxis ? axisLengths[0] : axisLengths[1];
+    // Inner padding
+    const buffer = Math.abs(max - min) * 0.2;
+
+    let adjustedSeries;
+    let point;
+
+    if (limitType === 'max') {
+      adjustedSeries = s.data.map((d) => {
+        let adjusted = d[axis] + ((radius(d) / (relativeAxisLength / (max - min))));
+
+        adjusted += buffer;
+
+        return adjusted;
+      });
+
+      point = d3Max(adjustedSeries);
+    } else if (limitType === 'min') {
+      adjustedSeries = s.data.map((d) => {
+        let adjusted = d[axis] - (Math.abs(((radius(d) / (relativeAxisLength / (max - min))))));
+
+        adjusted -= buffer;
+
+        return adjusted;
+      });
+
+      point = d3Min(adjustedSeries);
+    }
+
+    return point;
   },
 
   isStringANumber(value) {

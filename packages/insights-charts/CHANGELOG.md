@@ -1,3 +1,7 @@
+# 0.13.0
+
+* Introduce bubble chart
+
 # 0.12.1
 
 * Default to showing points on hover for area charts

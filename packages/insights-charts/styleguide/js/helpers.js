@@ -1,5 +1,5 @@
-export function getRandomData(count, { min = 0, modifier = 100, negatives = false, sparseness = 0 } = {}) {
-  const points = [];
+export function getRandomData(count, { min = 0, modifier = 100, negatives = false, sparseness = 0, z = false } = {}) {
+  let points = [];
   let i = 0;
 
   while (i < count) {
@@ -17,6 +17,27 @@ export function getRandomData(count, { min = 0, modifier = 100, negatives = fals
 
     if (points.indexOf(randomNumber) === -1 && randomNumber > min) {
       points.push(randomNumber);
+      i += 1;
+    }
+  }
+
+  // Generate an additional metric to extend the series, ie: bubbles
+  if (z) {
+    points = points.map(point => ({ y: point, z: (point * Math.floor(Math.random() * 10)) }));
+  }
+
+  return points;
+}
+
+export function getRandomDates(count) {
+  const points = [];
+  let i = 0;
+
+  while (i < count) {
+    const randomNumber = new Date(+(new Date()) - Math.floor(Math.random() * 10000000000));
+
+    if (points.indexOf(randomNumber) === -1) {
+      points.push(randomNumber.toLocaleDateString());
       i += 1;
     }
   }

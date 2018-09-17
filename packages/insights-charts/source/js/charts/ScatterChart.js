@@ -1,6 +1,6 @@
 import deepmerge from 'deepmerge';
 import Chart from './Chart';
-import { XScale, YScale } from '../lib/scales';
+import { XScale, YScale, ZScale } from '../lib/scales';
 import { XAxis, YAxis } from '../lib/axis';
 import Annotations from '../lib/Annotations';
 import Container from '../lib/Container';
@@ -42,7 +42,7 @@ class ScatterChart extends Chart {
     this.tooltip = new Tooltip(seriesData, options, dispatchers, this.id);
     this.tooltip.render();
 
-    this.xScale = new XScale(categoryLabels, options, dimensions);
+    this.xScale = new XScale(categoryLabels, options, dimensions, seriesData);
     const x = this.xScale.generate();
 
     this.xAxis = new XAxis(categoryLabels, x, dimensions, options);
@@ -84,6 +84,12 @@ class ScatterChart extends Chart {
           dispatchers,
           yAxisIndex,
         );
+
+        if (options && options.type === 'bubble') {
+          this.zScale = new ZScale(data, dimensions);
+          const z = this.zScale.generate();
+          seriesPoi.z = z;
+        }
 
         seriesPoi.render(svg);
 
@@ -168,6 +174,11 @@ class ScatterChart extends Chart {
         }
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
+
+        if (options && options.type === 'bubble') {
+          const z = this.zScale.update(data, dimensions);
+          scale.seriesPoi.z = z;
+        }
 
         scale.seriesPoi.update(
           data,

@@ -80,19 +80,23 @@ class SeriesDataLabel extends Series {
     const isStacked = options.layout === 'stacked';
     const isRotated = orientation === 'left' || orientation === 'right';
     const isColumn = options.type === 'column';
+    const isBubble = options.type === 'bubble';
 
     const datumMin = d.y0;
     const datumMax = d.y;
 
     let result;
 
-    if (isStacked) {
+    if (isStacked && !isBubble) {
       result = y(datumMin + datumMax);
     } else {
       result = y(datumMax);
     }
 
-    const dataLabelMargin = isYAxisReversed ? -DATA_LABEL_MARGIN : DATA_LABEL_MARGIN;
+    let dataLabelMargin = 0;
+    if (!isBubble) {
+      dataLabelMargin = isYAxisReversed ? -DATA_LABEL_MARGIN : DATA_LABEL_MARGIN;
+    }
 
     if (
       (d.y < 0 && !isColumn && !isRotated) ||
@@ -128,6 +132,7 @@ class SeriesDataLabel extends Series {
   getTextAnchor(node, d) {
     const textRect = node.getBoundingClientRect();
     const isColumn = this.options.type === 'column';
+    const isBubble = this.options.type === 'bubble';
     let anchor = 'middle';
     const isYAxisReversed = this.options.axis.y[this.yAxisIndex].reversed;
     const leftEdge = this.dimensions.left + this.dimensions.margins.left;
@@ -139,7 +144,7 @@ class SeriesDataLabel extends Series {
       } else {
         anchor = 'end';
       }
-    } else if (!isColumn) {
+    } else if (!isColumn && !isBubble) {
       if (textRect.left <= leftEdge && (textRect.left + textRect.width) >= leftEdge) {
         anchor = 'start';
       } else if (textRect.right >= rightEdge && (textRect.right - textRect.width) <= rightEdge) {

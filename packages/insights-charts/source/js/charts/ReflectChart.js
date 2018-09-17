@@ -219,6 +219,9 @@ class Chart {
       case 'scatter':
         chart = ScatterChart;
         break;
+      case 'bubble':
+        chart = ScatterChart;
+        break;
       case 'combination':
         chart = CombinationChart;
         break;
