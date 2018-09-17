@@ -68,6 +68,33 @@ const common = {
 };
 ```
 
+### Create React App
+
+If you are using CRA with [react-app-rewired](https://github.com/timarney/react-app-rewired) (after following their [instructions](https://github.com/timarney/react-app-rewired/blob/master/README.md#how-to-rewire-your-create-react-app-project) for switching from react-scripts to react-app-rewired in package.json), you can use this included rewire instead (after adding `resolve-url-loader` to devDependencies):
+
+```js
+// config-overrides.js
+const rewireResolveUrlLoader = require('@puppet/react-components/config/rewire-resolve-url-loader.js');
+module.exports = function override(config, env) {
+  config = rewireResolveUrlLoader(config, env);
+  return config;
+};
+```
+
+#### Contributing with CRA
+
+If you want to `npm link` or `yarn link` react-components in a CRA app, you may need to disable CRA's `ModuleScopePlugin` because `resolve-url-loader` will output an absolute path to the react-components. This can be accomplished with an included rewire:
+
+```js
+// config-overrides.js
+const rewireRemoveModuleScopePlugin = require('@puppet/react-components/config/rewire-remove-module-scope-plugin.js');
+module.exports = function override(config, env) {
+  config = rewireRemoveModuleScopePlugin(config, env);
+  return config;
+};
+```
+
+
 ## Contributing
 
 Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on
