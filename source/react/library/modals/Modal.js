@@ -5,6 +5,7 @@ import debounce from 'debounce';
 import portal from '../portal';
 import Icon from '../icon/Icon';
 import ButtonGroup from '../buttons/ButtonGroup';
+import Heading from '../heading';
 
 const propTypes = {
   unbindShortcut: PropTypes.func,
@@ -26,6 +27,7 @@ const propTypes = {
   children: PropTypes.node,
   actionsPosition: PropTypes.oneOf(['left', 'right']),
   background: PropTypes.oneOf(['transparent', 'translucent']),
+  title: PropTypes.string,
 };
 
 const defaultProps = {
@@ -44,6 +46,7 @@ const defaultProps = {
   children: null,
   actionsPosition: 'right',
   background: 'transparent',
+  title: '',
 };
 
 function setBodyOverflow(value) {
@@ -324,9 +327,21 @@ class Modal extends React.Component {
     return jsx;
   }
 
+  renderTitle() {
+    const { title } = this.props;
+    let jsx;
+
+    if (title) {
+      jsx = <Heading as="h3">{title}</Heading>;
+    }
+
+    return jsx;
+  }
+
   render() {
     // TODO: Once we are on React 16 we should be able to remove this closeLink and add the onClick
     // directly to the wrapper. Right now ReactDOM has a hard time with this pattern.
+    const title = this.renderTitle();
     const closeLink = this.renderCloseLink();
     const closeButton = this.renderCloseButton();
     const sidebar = this.renderSidebar();
@@ -372,6 +387,7 @@ class Modal extends React.Component {
             }}
             className="rc-modal-content"
           >
+            {title}
             {children}
           </div>
           {actions}
