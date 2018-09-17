@@ -13,7 +13,6 @@ const propTypes = {
   width: PropTypes.string,
   onOpen: PropTypes.func,
   onClose: PropTypes.func,
-  size: PropTypes.string,
   /** Signify which options are currently selected */
   selected: PropTypes.oneOfType([
     PropTypes.string,
@@ -22,7 +21,7 @@ const propTypes = {
   ]),
   blank: PropTypes.string,
   /** A prompt for the user once the DropdownMenu has been opened */
-  hint: PropTypes.string,
+  title: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.object),
   actions: PropTypes.node,
   /** Whether or not the user can select multiple menu options */
@@ -42,11 +41,10 @@ const defaultProps = {
   target: null,
   selected: [],
   options: [],
-  size: 'small',
   width: 'auto',
   blank: '',
   multiple: false,
-  hint: '',
+  title: '',
   margin: null,
   disablePortal: false,
   inheritWidth: false,
@@ -120,18 +118,12 @@ class DropdownMenu extends React.Component {
   }
 
   renderMenu() {
-    const { size, options, actions, selected, multiple, blank } = this.props;
+    const { options, actions, selected, multiple, blank } = this.props;
     let jsx;
 
     if (options.length > 0) {
-      let className;
-
-      if (actions) {
-        className = 'rc-menu-first';
-      }
-
       jsx = (
-        <Menu size={size} className={className}>
+        <div>
           <Menu.List
             options={options}
             selected={selected}
@@ -139,7 +131,7 @@ class DropdownMenu extends React.Component {
             onChange={this.onChange}
           />
           {actions}
-        </Menu>
+        </div>
       );
     } else if (blank) {
       jsx = <p className="rc-dropdown-blank">{blank}</p>;
@@ -158,9 +150,9 @@ class DropdownMenu extends React.Component {
 
     if (multiple) {
       jsx = (
-        <Menu.Section>
-          <Button block size="small" label="Apply" onClick={this.onApply} />
-        </Menu.Section>
+        <Menu.Actions centered>
+          <Button block simple label="Apply" onClick={this.onApply} />
+        </Menu.Actions>
       );
     }
 
@@ -169,9 +161,8 @@ class DropdownMenu extends React.Component {
 
   render() {
     const {
-      size,
       multiple,
-      hint,
+      title,
       anchor,
       target,
       margin,
@@ -182,9 +173,8 @@ class DropdownMenu extends React.Component {
     const menu = this.renderMenu();
     const applyButton = this.renderApplyButton();
     const className = classnames('rc-dropdown-menu', {
-      [`rc-dropdown-menu-${size}`]: size,
       'rc-dropdown-menu-multiple': multiple,
-      'rc-dropdown-menu-with-header': hint,
+      'rc-dropdown-menu-with-header': title,
     });
 
     let width;
@@ -196,8 +186,8 @@ class DropdownMenu extends React.Component {
     return (
       <Popover
         menu
-        hint={hint}
-        closeButton={!!hint}
+        title={title}
+        closeButton={!!title}
         anchor={anchor}
         ref={c => {
           this.popover = c;
@@ -209,7 +199,6 @@ class DropdownMenu extends React.Component {
         onOpen={this.onOpen}
         onClose={this.onClose}
         margin={margin}
-        size={size}
         disablePortal={disablePortal}
       >
         {menu}

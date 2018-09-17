@@ -40,26 +40,21 @@
 }
 
 .rc-list-item-actions {
-  // align-items: center;
   display: flex;
-  // flex: 0 0 20px;
-  // margin-left: auto;
   justify-content: flex-end;
   transition: opacity 0.2s;
 }
 
 .rc-list-item-action {
-  @include focus-circle;
   align-items: center;
   cursor: pointer;
-  display: flex;
+  display: block;
   justify-content: center;
   padding: 0;
   position: relative;
 
-  .rc-icon {
+  &:hover .rc-icon {
     @include icon-opacity-hover;
-    @include icon-scale-hover;
     @include transition(opacity 0.2s, transform 0.2s);
   }
 }
@@ -147,17 +142,12 @@
 
 .rc-list-item-action.rc-list-item-kebab {
   align-self: flex-start;
-  display: flex;
   height: 16px;
   margin-left: -$puppet-tiny;
   margin-right: 4px;
   min-width: 16px;
   transform: translate(0, 1px);
   width: 16px;
-
-  &:hover .rc-icon {
-    transform: none;
-  }
 }
 
 .rc-list-item.rc-list-item-kebab,
@@ -179,7 +169,8 @@
 
   // Make all icons white
   .rc-icon {
-    fill: $puppet-action-base;
+    fill: $puppet-white;
+    opacity: 0.8;
   }
 }
 

@@ -15,7 +15,7 @@ const propTypes = {
   className: PropTypes.string,
   closeButton: PropTypes.bool,
   style: PropTypes.shape({}),
-  hint: PropTypes.string,
+  title: PropTypes.string,
   allowBubble: PropTypes.bool,
   onClose: PropTypes.func,
   children: PropTypes.node,
@@ -23,7 +23,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  hint: '',
+  title: '',
   onOutsideClick: null,
   dark: false,
   menu: false,
@@ -73,15 +73,15 @@ class PopoverContent extends React.Component {
   }
 
   renderHeader() {
-    const { hint, closeButton, menu } = this.props;
+    const { title, closeButton, menu } = this.props;
     let close;
     let jsx;
 
     if (menu) {
-      if (hint || closeButton) {
+      if (title || closeButton) {
         jsx = (
           <Menu.Header
-            title={hint}
+            title={title}
             onClose={closeButton ? this.onClose : null}
           />
         );
@@ -99,10 +99,10 @@ class PopoverContent extends React.Component {
         );
       }
 
-      if (hint || closeButton) {
+      if (title || closeButton) {
         jsx = (
           <div className="rc-popover-header">
-            <small className="rc-popover-hint">{hint}</small>
+            <small className="rc-popover-hint">{title}</small>
             {close}
           </div>
         );

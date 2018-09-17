@@ -6,11 +6,14 @@ import DropdownLabel from './DropdownLabel';
 
 const propTypes = {
   size: PropTypes.string,
-  select: PropTypes.bool,
+  primary: PropTypes.bool,
+  secondary: PropTypes.bool,
+  transparent: PropTypes.bool,
+  simple: PropTypes.bool,
   onChange: PropTypes.func,
   options: PropTypes.arrayOf(PropTypes.object),
   actions: PropTypes.node,
-  hint: PropTypes.string,
+  title: PropTypes.string,
   margin: PropTypes.number,
   anchor: PropTypes.string,
   placeholder: PropTypes.string,
@@ -34,11 +37,14 @@ const propTypes = {
 const defaultProps = {
   anchor: 'bottom left',
   actions: null,
-  size: 'small',
-  select: false,
+  size: null,
+  primary: false,
+  secondary: false,
+  transparent: true,
+  simple: false,
   options: [],
-  hint: '',
-  margin: -60,
+  title: '',
+  margin: 8,
   placeholder: '',
   blank: '',
   label: '',
@@ -171,11 +177,15 @@ class Dropdown extends React.Component {
     const { displayed } = this.state;
     const {
       label: propsLabel,
+      size,
       error,
       tabIndex,
       disabled,
-      select,
+      primary,
+      secondary,
+      transparent,
       placeholder,
+      simple,
     } = this.props;
     const options = this.getOptions();
     const selected = options.filter(e => displayed.indexOf(e.id) >= 0);
@@ -199,10 +209,14 @@ class Dropdown extends React.Component {
 
     return (
       <DropdownLabel
+        size={size}
         error={error}
         tabIndex={tabIndex}
         disabled={disabled}
-        select={select}
+        primary={primary}
+        secondary={secondary}
+        transparent={transparent}
+        simple={simple}
         placeholder={placeholder}
         label={label}
       />
@@ -216,7 +230,7 @@ class Dropdown extends React.Component {
       size,
       margin,
       blank,
-      hint,
+      title,
       multiple,
       actions,
       required,
@@ -235,7 +249,7 @@ class Dropdown extends React.Component {
         onClose={this.onClose}
         margin={margin}
         blank={blank}
-        hint={hint}
+        title={title}
         multiple={multiple}
         target={button}
         inheritWidth={inheritWidth}

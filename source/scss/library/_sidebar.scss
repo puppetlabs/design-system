@@ -3,6 +3,7 @@
   background: $puppet-sidebar-bg;
   border-right: $puppet-border-subtle;
   font: $puppet-sidebar-font;
+  height: inherit;
   margin-bottom: $puppet-sidebar-toggle-height;
   overflow: auto;
   padding: $puppet-sidebar-padding;
@@ -44,12 +45,8 @@
     width: $puppet-sidebar-minimized-width;
   }
 
-  // We want open level-1 items to be highlighted
-  // when the sidebar is minimized since the level-2
-  // indicators aren't visible
-  .rc-sidebar-item-open > .rc-sidebar-item-link,
-  .rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
-    background: $puppet-sidebar-item-bg-active;
+  .rc-sidebar-item-content {
+    height: $puppet-sidebar-item-height-toggled;
   }
 }
 
@@ -81,14 +78,6 @@
   border-bottom: 0;
 }
 
-.rc-sidebar-item-closed {
-  .rc-sidebar-level-2 {
-    height: 0;
-    opacity: 0;
-    visibility: hidden;
-  }
-}
-
 // Sidebar Dividers
 .rc-sidebar-divider {
   border: 0;
@@ -112,12 +101,6 @@
   text-transform: $puppet-sidebar-label-text-transform;
   transition: opacity 0.2s ease-in-out;
   visibility: visible;
-}
-
-
-// Sidebar Items
-.rc-sidebar-item-content {
-  height: $puppet-sidebar-item-height;
 }
 
 .rc-sidebar-item-link {
@@ -157,6 +140,7 @@
   height: auto;
   line-height: $puppet-sidebar-item-line-height;
   opacity: 1;
+  padding: $puppet-sidebar-item-title-padding;
   transition: opacity 0.2s ease-in-out 0.1s;
   visibility: visible;
 }
@@ -178,27 +162,50 @@
   .rc-sidebar-item-title {
     color: $puppet-sidebar-item-color-active;
   }
+}
 
-  .rc-icon-fill {
-    fill: $puppet-sidebar-item-icon-fill-active;
-  }
+.rc-sidebar-item-selected .rc-icon-fill,
+.rc-sidebar-item-selected:hover .rc-icon-fill {
+  fill: $puppet-sidebar-item-icon-fill-active;
 }
 
 // Open Item
 // Selected Item
-.rc-sidebar-item-open > .rc-sidebar-item-link,
-.rc-sidebar-item-open:hover  > .rc-sidebar-item-link {
+.rc-sidebar-item-active-accordion > .rc-sidebar-item-link,
+.rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link {
   background: $puppet-sidebar-item-bg;
 
   .rc-sidebar-item-title {
     color: $puppet-sidebar-item-color-active;
   }
-
-  .rc-icon-fill {
-    fill: $puppet-sidebar-item-icon-fill-active;
-  }
 }
 
+.rc-sidebar-item-active-accordion .rc-icon-fill,
+.rc-sidebar-item-active-accordion:hover .rc-icon-fill {
+  fill: $puppet-sidebar-item-icon-fill-active;
+}
+
+// We want open level-1 items to be highlighted
+// when the sidebar is minimized since the level-2
+// indicators aren't visible
+.rc-sidebar-minimized .rc-sidebar-item-active-accordion,
+.rc-sidebar-minimized .rc-sidebar-item-active-accordion:hover {
+  .rc-icon-fill {
+    fill: $puppet-sidebar-item-icon-fill;
+  }
+
+  .rc-sidebar-item-link {
+    background: $puppet-sidebar-item-bg;
+  }
+
+  &.rc-sidebar-item-selected .rc-icon-fill {
+    fill: $puppet-sidebar-item-icon-fill-hover;
+  }
+
+  &.rc-sidebar-item-selected .rc-sidebar-item-link {
+    background: $puppet-sidebar-item-bg-active;
+  }
+}
 
 // Level 2
 // Currently no need for special styles for Level 2  Items

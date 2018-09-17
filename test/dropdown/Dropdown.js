@@ -32,13 +32,13 @@ describe('<Dropdown />', () => {
   it('should render the correct label based off one selection', () => {
     const wrapper = mount(<Dropdown selected={1} options={options} />);
 
-    expect(wrapper.find('.rc-dropdown-label-text').text()).to.equal('option 1');
+    expect(wrapper.find('.rc-button-content').text()).to.equal('option 1');
   });
 
   it('should render the correct label based off two selections', () => {
     const wrapper = mount(<Dropdown selected={[1, 2]} options={options} />);
 
-    expect(wrapper.find('.rc-dropdown-label-text').text()).to.equal(
+    expect(wrapper.find('.rc-button-content').text()).to.equal(
       'option 1 and option 2',
     );
   });
@@ -58,7 +58,7 @@ describe('<Dropdown />', () => {
   it('should render the correct label based off three selections', () => {
     const wrapper = mount(<Dropdown selected={[1, 2, 3]} options={options} />);
 
-    expect(wrapper.find('.rc-dropdown-label-text').text()).to.equal(
+    expect(wrapper.find('.rc-button-content').text()).to.equal(
       'option 1, option 2, and option 3',
     );
   });
@@ -68,9 +68,7 @@ describe('<Dropdown />', () => {
       <Dropdown label="I'm a label" selected={[1, 2, 3]} options={options} />,
     );
 
-    expect(wrapper.find('.rc-dropdown-label-text').text()).to.equal(
-      "I'm a label",
-    );
+    expect(wrapper.find('.rc-button-content').text()).to.equal("I'm a label");
   });
 
   it('should toggle a dropdown menu when clicking on the label', () => {
@@ -80,7 +78,7 @@ describe('<Dropdown />', () => {
       0,
     );
     wrapper
-      .find('.rc-dropdown-toggle')
+      .find('.rc-button')
       .first()
       .simulate('click');
     expect(document.getElementsByClassName('rc-dropdown-menu').length).to.equal(

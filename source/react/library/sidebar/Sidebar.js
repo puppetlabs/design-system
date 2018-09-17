@@ -4,10 +4,8 @@ import classnames from 'classnames';
 import { getKey } from '../../helpers/statics';
 import Button from '../buttons/Button';
 import Section from './Section';
-import SectionLabel from './SectionLabel';
 import Subsection from './Subsection';
 import SubsectionItem from './SubsectionItem';
-// import SectionLabel from './SectionLabel';
 
 const propTypes = {
   children: PropTypes.node,
@@ -15,12 +13,15 @@ const propTypes = {
   togglable: PropTypes.bool,
   /** Is sidebar at the smaller size? */
   minimized: PropTypes.bool,
+  /** Helpful for forcing a resize event to update svg drawings */
+  onToggle: PropTypes.func,
 };
 
 const defaultProps = {
   children: [],
   togglable: false,
   minimized: false,
+  onToggle: () => {},
 };
 
 /**
@@ -31,33 +32,45 @@ class Sidebar extends React.Component {
     super(props);
 
     this.state = {
-      selected: null,
       minimized: props.minimized,
+      activeSection: null,
     };
 
     this.onSectionClick = this.onSectionClick.bind(this);
     this.onToggle = this.onToggle.bind(this);
   }
 
-  onSectionClick(title) {
-    this.setState({ selected: title });
+  onSectionClick(title, isAccordion) {
+    const newState = {};
+
+    if (isAccordion) {
+      newState.minimized = false;
+    } else {
+      newState.activeSection = title;
+    }
+
+    this.setState(newState);
   }
 
   onToggle() {
     const { minimized } = this.state;
+    const { onToggle } = this.props;
+
+    onToggle();
 
     this.setState({ minimized: !minimized });
   }
 
   getSections() {
     const { children } = this.props;
-    const { selected } = this.state;
+    const { minimized, activeSection } = this.state;
 
     return React.Children.map(children, (section, idx) => {
       const props = {
         key: getKey(section, idx),
         onSectionClick: this.onSectionClick,
-        selected,
+        minimized,
+        activeSection,
       };
 
       return React.cloneElement(section, props);
@@ -112,7 +125,6 @@ Sidebar.propTypes = propTypes;
 Sidebar.defaultProps = defaultProps;
 
 Sidebar.Section = Section;
-Sidebar.SectionLabel = SectionLabel;
 Sidebar.Subsection = Subsection;
 Sidebar.SubsectionItem = SubsectionItem;
 

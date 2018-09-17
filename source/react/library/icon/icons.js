@@ -931,7 +931,7 @@ const icons = {
 
   // group: editing, filename: add.svg
   plus: {
-    viewBox: '0 0 15 15',
+    viewBox: '0 0 16 16',
     svg: (
       <g>
         <polygon points="6 9 0 9 0 6 6 6 6 0 9 0 9 6 15 6 15 9 9 9 9 15 6 15" />

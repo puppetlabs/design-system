@@ -1,5 +1,5 @@
 import jsdom from 'mocha-jsdom';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
@@ -13,11 +13,11 @@ describe('<DropdownMenu />', () => {
       { id: 1, value: 'option 1' },
       { id: 2, value: 'option 2' },
     ];
-    const wrapper = shallow(
-      <DropdownMenu hint="I love hints!" options={options} />,
+    const wrapper = mount(
+      <DropdownMenu title="I love hints!" options={options} />,
     );
 
-    expect(wrapper.find('Popover').prop('hint')).to.equal('I love hints!');
+    expect(wrapper.find('.rc-menu-title').text()).to.equal('I love hints!');
   });
 
   it('should render a blank slate', () => {

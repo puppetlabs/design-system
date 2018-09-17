@@ -343,10 +343,10 @@
 
 .rc-button-group {
   .rc-button {
-    margin-right: 5px;
+    margin-right: 6px;
   }
 
-  .rc-button:last-of-type {
+  .rc-button:last-child {
     margin-right: 0;
   }
 }
