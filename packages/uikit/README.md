@@ -2,10 +2,6 @@
 
 A toolkit for all aspects of ui development at Puppet
 
-## Background
-
-This repo started as a side project intended to form the basis of a ui toolkit and component library. With the recent addition of the insights team and their existing component library, we've decided to stop development on the component library but ramp up on the peripheral aspects of the uikit. At some point in the future perhaps we will merge these two endeavors.
-
 ## Installation
 
 ### Global via Artifactory
