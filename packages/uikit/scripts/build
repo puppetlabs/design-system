@@ -1,3 +1,0 @@
-#!/bin/bash
-
-NODE_ENV=production webpack --config=config/bundle.webpack.config.js

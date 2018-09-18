@@ -3,7 +3,7 @@ const klawSync = require('klaw-sync');
 const path = require('path');
 const HandleBars = require('handlebars');
 
-const getNameVariants = require('./getNameVariants');
+const getNameVariants = require('./getNameVariants/getNameVariants');
 
 const generate = ({ template, name }) => {
   const templatePath = path.resolve(__dirname, '../templates', template);

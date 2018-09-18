@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <polyline id="chevron" points="15.6418 10.4157 11.9778 14.0787 8.3148 10.4157"></polyline>
-  <path d="M11.9778,14.0788 L11.9778,5.4998" id="vertical"></path>
-  <polyline id="box" points="17.0813 14.0158 17.0813 17.7318 6.8753 17.7318 6.8753 14.0158"></polyline>
-</svg>

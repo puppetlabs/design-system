@@ -50,16 +50,3 @@ To create a new generator template:
   - `name.dash`: Dashcased name (e.g. `my-component`)
 
 In addition, the filename itself of `.handlebars` files will be compiled as a handlebars template. This is useful if you want to generate named files such as `MyComponent.jsx`.
-
-## Styleguide
-
-This repo also includes code for a Puppet Styleguide to convey design principles and provide sandbox environments for ui components. This project is not currently being actively developed, but it may be picked up again after our component library hardens.
-
-- `npm start`: Start the styleguide dev server. Will be served on `localhost:3456`
-- `npm run build`: Build a production bundle of uikit code
-- `npm run build:storybook`: Build a production bundle for the styleguide app
-- `npm run serve`: Serve the production styleguide bundles
-- `npm test`: Run all tests with jest
-- `npm run test:watch`: Run tests in watch mode
-- `npm run test:coverage`: Run tests with coverage reporting
-- `npm run format`: Run auto code formatting

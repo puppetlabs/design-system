@@ -2,11 +2,10 @@ const path = require('path');
 
 module.exports = {
   env: {
-    browser: true,
+    node: true,
     jest: true,
   },
-  parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  extends: ['airbnb', 'prettier'],
   plugins: ['prettier', 'chai-friendly'],
   globals: {
     log: false,
