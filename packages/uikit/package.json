@@ -32,7 +32,7 @@
     "chai": "^4.1.2",
     "cheerio": "^1.0.0-rc.2",
     "eslint": "^5.6.0",
-    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-config-prettier": "^3.0.1",
     "eslint-plugin-chai-friendly": "^0.4.1",
     "eslint-plugin-import": "^2.14.0",

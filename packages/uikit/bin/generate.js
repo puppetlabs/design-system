@@ -5,10 +5,20 @@ const HandleBars = require('handlebars');
 
 const getNameVariants = require('./getNameVariants/getNameVariants');
 
+const postGenerateScripts = {
+  project({ dest }) {
+    const scripts = klawSync(`${dest}/scripts`);
+
+    scripts.forEach(({ path: filePath }) => fs.chmodSync(filePath, 0o755));
+  },
+  component() {},
+};
+
 const generate = ({ template, name }) => {
   const templatePath = path.resolve(__dirname, '../templates', template);
   const dest = path.resolve(process.cwd(), name);
   const files = klawSync(templatePath);
+  const model = { name: getNameVariants(name) };
 
   files.filter(({ stats }) => !stats.isDirectory()).forEach(file => {
     const extension = path.extname(file.path);
@@ -18,7 +28,6 @@ const generate = ({ template, name }) => {
     let newPath = path.join(dest, path.relative(templatePath, file.path));
 
     if (extension === '.handlebars') {
-      const model = { name: getNameVariants(name) };
       output = HandleBars.compile(data)(model);
       newPath = HandleBars.compile(newPath.replace('.handlebars', ''))(model);
     } else {
@@ -27,6 +36,10 @@ const generate = ({ template, name }) => {
 
     fs.outputFileSync(newPath, output, 'utf8');
   });
+
+  postGenerateScripts[template]({ dest });
+
+  console.log(`Generated ${template} "${name}" in ${dest}`);
 };
 
 module.exports = generate;

@@ -5,12 +5,13 @@ module.exports = {
     node: true,
     jest: true,
   },
-  extends: ['airbnb', 'prettier'],
+  extends: ['airbnb-base', 'prettier'],
   plugins: ['prettier', 'chai-friendly'],
   globals: {
     log: false,
   },
   rules: {
+    'no-console': 0,
     'prettier/prettier': [
       'error',
       {
@@ -26,13 +27,6 @@ module.exports = {
         devDependencies: true,
         optionalDependencies: true,
         peerDependencies: true,
-      },
-    ],
-    'jsx-a11y/anchor-is-valid': [
-      'error',
-      {
-        components: ['Link'],
-        specialLink: ['to', 'button'],
       },
     ],
   },
