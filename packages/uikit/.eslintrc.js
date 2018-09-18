@@ -2,16 +2,16 @@ const path = require('path');
 
 module.exports = {
   env: {
-    browser: true,
+    node: true,
     jest: true,
   },
-  parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  extends: ['airbnb-base', 'prettier'],
   plugins: ['prettier', 'chai-friendly'],
   globals: {
     log: false,
   },
   rules: {
+    'no-console': 0,
     'prettier/prettier': [
       'error',
       {
@@ -27,13 +27,6 @@ module.exports = {
         devDependencies: true,
         optionalDependencies: true,
         peerDependencies: true,
-      },
-    ],
-    'jsx-a11y/anchor-is-valid': [
-      'error',
-      {
-        components: ['Link'],
-        specialLink: ['to', 'button'],
       },
     ],
   },

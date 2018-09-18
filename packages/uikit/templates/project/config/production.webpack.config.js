@@ -1,6 +1,6 @@
-const commonConfig = require('./common.webpack.config.js');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
+const commonConfig = require('./common.webpack.config.js');
 
 module.exports = merge(commonConfig, {
   mode: 'production',
@@ -21,14 +21,15 @@ module.exports = merge(commonConfig, {
             loader: 'css-loader',
             options: {
               modules: true,
-              importLoaders: 1,
+              importLoaders: 2,
               localIdentName: '[hash:base64:5]',
               camelCase: true,
               minimize: true,
             },
           },
           'postcss-loader',
-          'sass-loader',
+          'resolve-url-loader',
+          { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
       {
@@ -38,10 +39,11 @@ module.exports = merge(commonConfig, {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { importLoaders: 1, minimize: true },
+            options: { importLoaders: 2, minimize: true },
           },
           'postcss-loader',
-          'sass-loader',
+          'resolve-url-loader',
+          { loader: 'sass-loader', options: { sourceMap: true } },
         ],
       },
     ],

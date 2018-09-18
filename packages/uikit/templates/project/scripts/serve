@@ -1,0 +1,3 @@
+#!/bin/sh
+
+(export $(cat config/.env.production | xargs) && node --experimental-modules src/server/prod.mjs)

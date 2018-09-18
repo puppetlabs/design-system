@@ -1,9 +1,0 @@
-@import '../../styles/colors.css';
-
-.container {
-  padding: 20px;
-}
-
-.reversed {
-  background-color: var(--neutral-18);
-}
