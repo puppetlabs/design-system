@@ -540,7 +540,7 @@ $puppet-modal-sidebar-bg                           : $puppet-bg-subtle !default;
 $puppet-modal-sidebar-width                        : 300px !default;
 $puppet-modal-sidebar-padding                      : $puppet-modal-padding !default;
 $puppet-modal-actions-border                       : none !default;
-$puppet-modal-actions-padding                      : 0 $puppet-modal-padding $puppet-modal-padding !default;
+$puppet-modal-actions-padding                      : $puppet-modal-padding !default;
 $puppet-modal-actions-cta-padding                  : $puppet-small 0 $puppet-small 0 !default;
 
 // Panel
