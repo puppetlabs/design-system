@@ -14,6 +14,17 @@ const propTypes = {
   title: PropTypes.string,
   /** Indicate that we've seen the confirmation, and are performing the action. */
   processingConfirmation: PropTypes.bool,
+  strings: PropTypes.shape({
+    cancel: PropTypes.string,
+    confirm: PropTypes.string,
+  }),
+};
+
+const defaultStrings = {
+  /* Custom label for cancel button */
+  cancel: 'Cancel',
+  /* Custom label for confirm button */
+  confirm: 'Confirm',
 };
 
 const defaultProps = {
@@ -23,6 +34,7 @@ const defaultProps = {
   onCancel: null,
   onConfirm: null,
   children: null,
+  strings: defaultStrings,
 };
 
 /**
@@ -68,19 +80,20 @@ class ConfirmationModal extends React.Component {
       title,
       confirmationMessage,
       children,
+      strings,
     } = this.props;
 
     const actions = [
       <Button
         key="submit-button"
-        label="Confirm"
+        label={strings.confirm}
         onClick={this.onConfirm}
         processing={processingConfirmation}
       />,
       <Button
         secondary
         key="cancel-button"
-        label="Cancel"
+        label={strings.cancel}
         onClick={this.onCancel}
       />,
     ];
