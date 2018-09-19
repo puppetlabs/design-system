@@ -12,7 +12,7 @@ import { filterOperators } from '../../constants';
 
 const propTypes = {
   fields: PropTypes.arrayOf(
-    PropTypes.oneOfType(PropTypes.string, PropTypes.shape({})),
+    PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
   ),
   filters: PropTypes.arrayOf(
     PropTypes.shape({
