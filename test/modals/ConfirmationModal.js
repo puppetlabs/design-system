@@ -6,7 +6,7 @@ import React from 'react';
 
 import ConfirmationModal from '../../source/react/library/modals/ConfirmationModal';
 
-describe.only('<ConfirmationModal />', () => {
+describe('<ConfirmationModal />', () => {
   jsdom({ skipWindowCheck: true });
 
   it('should render a modal', () => {

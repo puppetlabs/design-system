@@ -38,10 +38,19 @@ describe('<Modal />', () => {
     expect(modal.find('.rc-modal-sidebar').text()).to.equal(sidebar);
   });
 
+  it('should contain a valid title', () => {
+    const modal = shallow(<Modal title="title">{content}</Modal>);
+    expect(modal.find('Heading').prop('children')).to.equal('title');
+  });
+
   it('should contain a valid content text', () => {
     const modal = shallow(<Modal>{content}</Modal>);
-
-    expect(modal.find('.rc-modal-content').text()).to.equal(content);
+    expect(
+      modal
+        .find('Content')
+        .childAt(0)
+        .text(),
+    ).to.equal(content);
   });
 
   it('should contain a button if actions are provided', () => {
