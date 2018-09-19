@@ -99,7 +99,7 @@ class ConfirmationModal extends React.Component {
     ];
 
     return (
-      <Modal actions={actions} size="small" margin="auto" title={title}>
+      <Modal actions={actions} size="small" title={title}>
         <span className="rc-modal-message">{confirmationMessage}</span>
         {children}
       </Modal>
