@@ -131,8 +131,12 @@
 
 .rc-form-actions {
   display: flex;
-  justify-content: flex-start;
+  justify-content: flex-end;
   padding-top: $puppet-form-field-margin * 2;
+}
+
+.rc-form-actions-left {
+  justify-content: flex-start;
 }
 
 .rc-form-field-error {

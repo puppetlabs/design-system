@@ -45,13 +45,13 @@ describe('<ConfirmationModal />', () => {
         .find('Button')
         .at(0)
         .prop('label'),
-    ).to.equal('Yup');
+    ).to.equal('Nope');
 
     expect(
       wrapper
         .find('Button')
         .at(1)
         .prop('label'),
-    ).to.equal('Nope');
+    ).to.equal('Yup');
   });
 });
