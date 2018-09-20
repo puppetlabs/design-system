@@ -18,6 +18,7 @@ const propTypes = {
     cancel: PropTypes.string,
     confirm: PropTypes.string,
   }),
+  actionsPosition: PropTypes.oneOf(['left', 'right']),
 };
 
 const defaultStrings = {
@@ -34,6 +35,7 @@ const defaultProps = {
   onCancel: null,
   onConfirm: null,
   children: null,
+  actionsPosition: 'right',
   strings: defaultStrings,
 };
 
@@ -76,6 +78,7 @@ class ConfirmationModal extends React.Component {
 
   render() {
     const {
+      actionsPosition,
       processingConfirmation,
       title,
       confirmationMessage,
@@ -83,23 +86,39 @@ class ConfirmationModal extends React.Component {
       strings,
     } = this.props;
 
-    const actions = [
+    let actions;
+
+    const submitButton = (
       <Button
         key="submit-button"
         label={strings.confirm}
         onClick={this.onConfirm}
         processing={processingConfirmation}
-      />,
+      />
+    );
+
+    const cancelButton = (
       <Button
         secondary
         key="cancel-button"
         label={strings.cancel}
         onClick={this.onCancel}
-      />,
-    ];
+      />
+    );
+
+    if (actionsPosition === 'left') {
+      actions = [submitButton, cancelButton];
+    } else {
+      actions = [cancelButton, submitButton];
+    }
 
     return (
-      <Modal actions={actions} size="small" title={title}>
+      <Modal
+        actionsPosition={actionsPosition}
+        actions={actions}
+        size="small"
+        title={title}
+      >
         <span className="rc-modal-message">{confirmationMessage}</span>
         {children}
       </Modal>

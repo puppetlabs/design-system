@@ -45,7 +45,7 @@ const defaultProps = {
   modalClassName: '',
   overlayClassName: '',
   children: null,
-  actionsPosition: 'left',
+  actionsPosition: 'right',
   background: 'transparent',
   title: '',
 };

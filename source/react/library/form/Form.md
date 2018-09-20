@@ -183,3 +183,49 @@ const validator = (values) => {
   />
 </Form>
 ```
+
+## Form with actions
+
+Default actions are on the right
+
+```
+<Form submittable cancellable>
+  <Form.Field
+    type="input"
+    name="firstName"
+    label="First name"
+    elementProps={ { placeholder: 'Enter your first name...' } }
+    description="Please enter your first name"
+  />
+  <Form.Field
+    type="input"
+    name="lastName"
+    label="Last name"
+    value={ true }
+    elementProps={ { placeholder: 'Enter your first name...' } }
+    description="Please enter your last name"
+  />
+</Form>
+```
+
+Actions to the left with actionsPosition
+
+```
+<Form submittable cancellable actionsPosition="left">
+  <Form.Field
+    type="input"
+    name="firstName"
+    label="First name"
+    elementProps={ { placeholder: 'Enter your first name...' } }
+    description="Please enter your first name"
+  />
+  <Form.Field
+    type="input"
+    name="lastName"
+    label="Last name"
+    value={ true }
+    elementProps={ { placeholder: 'Enter your first name...' } }
+    description="Please enter your last name"
+  />
+</Form>
+```
