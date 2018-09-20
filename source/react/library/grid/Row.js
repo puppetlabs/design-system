@@ -5,7 +5,7 @@ import classnames from 'classnames';
 const propTypes = {
   children: PropTypes.node.isRequired,
   height: PropTypes.number,
-  collapse: PropTypes.oneOf(['top', 'bottom', 'all']),
+  collapse: PropTypes.oneOf([false, 'top', 'bottom', 'all']),
 };
 
 const defaultProps = {
