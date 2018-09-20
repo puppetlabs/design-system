@@ -14,10 +14,9 @@ initialState = { isOpen: null };
 
   { state.isOpen === 'main' &&
     <Modal
+      title="I'm a happy modal!"
       onClose={ () => { setState({ isOpen: null }) }}
     >
-      <h1>I'm a happy modal!</h1>
-
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit ante non mauris tristique, id iaculis orci varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper fringilla congue. Donec sed risus id augue aliquet laoreet a tempus nunc. Donec ultricies leo ac urna elementum, ac egestas quam viverra. Suspendisse erat eros, tempus eget condimentum ut, consectetur sed risus. In pretium dignissim nulla sit amet rhoncus. Nam sodales sem sapien, ac pretium mauris congue vitae.</p>
 
       <p>Aenean vehicula imperdiet quam, sit amet fringilla ligula. Nam orci arcu, ultricies nec feugiat vel, dignissim sit amet tellus. Nulla ut lobortis urna. Aenean augue ante, vehicula in fermentum sit amet, rhoncus sed ipsum. Donec aliquam velit a nunc mattis interdum. Proin congue urna non efficitur aliquam. Proin molestie condimentum accumsan. Suspendisse mattis volutpat augue a venenatis. Donec quis nulla a quam aliquam faucibus in non augue. Nam sodales nisi ac nibh posuere facilisis. Suspendisse pharetra nibh tincidunt, efficitur purus et, blandit ex. Pellentesque commodo mauris malesuada elit dignissim commodo. Suspendisse vehicula non neque ac vestibulum. Nunc non leo a arcu hendrerit condimentum. Duis auctor ligula non enim varius, vitae rutrum purus ultrices.</p>
@@ -32,6 +31,7 @@ initialState = { isOpen: null };
 
   { state.isOpen === 'actions' &&
     <Modal
+      title="I'm a happy modal with actions!"
       actionsCTA="Select an action"
       actions={ [
         <Button key="button-1" label="Click me!" onClick={ () => { setState({ isOpen: null }) } } />,
@@ -39,7 +39,6 @@ initialState = { isOpen: null };
       ]}
       onClose={ () => { setState({ isOpen: null }) }}
     >
-      <h1>I'm a happy modal with actions!</h1>
       <span>I'm some happy content within the modal!</span>
     </Modal>
   }

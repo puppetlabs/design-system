@@ -204,18 +204,6 @@ class Form extends React.Component {
     const { valid } = this.state;
     let jsx = [];
 
-    if (cancellable) {
-      jsx.push(
-        <Button
-          key="cancel"
-          secondary
-          size={size}
-          onClick={this.onCancel}
-          label={cancelLabel}
-        />,
-      );
-    }
-
     if (submittable) {
       jsx.push(
         <Button
@@ -225,6 +213,18 @@ class Form extends React.Component {
           size={size}
           disabled={!valid}
           label={submitLabel}
+        />,
+      );
+    }
+
+    if (cancellable) {
+      jsx.push(
+        <Button
+          key="cancel"
+          secondary
+          size={size}
+          onClick={this.onCancel}
+          label={cancelLabel}
         />,
       );
     }
