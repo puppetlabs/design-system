@@ -79,8 +79,10 @@
 .rc-form-field-label {
   color: $puppet-form-label-color;
   display: block;
+  font-family: $puppet-form-font-family;
   font-size: $puppet-form-label-font-size;
-  font-weight: $puppet-font-weight-medium;
+  font-weight: $puppet-font-weight-heavy;
+  letter-spacing: $puppet-form-letter-spacing;
   line-height: $puppet-medium;
   margin: 0;
   padding-bottom: $puppet-form-vertical-padding;
@@ -120,6 +122,8 @@
 .rc-form-field-description {
   color: $puppet-form-description-color;
   font-size: $puppet-form-description-font-size;
+  font-weight: $puppet-form-font-weight;
+  letter-spacing: $puppet-form-letter-spacing;
   line-height: $puppet-medium;
   margin: 0;
   padding: 4px 0;
@@ -129,6 +133,10 @@
   display: flex;
   justify-content: flex-end;
   padding-top: $puppet-form-field-margin * 2;
+}
+
+.rc-form-actions-left {
+  justify-content: flex-start;
 }
 
 .rc-form-field-error {

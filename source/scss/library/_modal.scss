@@ -1,11 +1,18 @@
 .rc-modal-overlay {
-  background: $puppet-modal-overlay-bg;
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: $puppet-modal-elevation;
+}
+
+.rc-modal-overlay-transparent {
+  background: $puppet-modal-overlay-bg;
+}
+
+.rc-modal-overlay-translucent {
+  background: $puppet-modal-overlay-translucent-bg;
 }
 
 .rc-modal-close {
@@ -70,11 +77,21 @@
   border-top: $puppet-modal-actions-border;
   overflow: hidden;
   padding: $puppet-modal-actions-padding;
+}
+
+.rc-modal-actions-right {
   text-align: right;
 }
 
+.rc-modal-actions-left {
+  text-align: left;
+
+  .rc-modal-actions-cta {
+    margin-left: 8px;
+  }
+}
+
 .rc-modal-actions-cta {
-  float: left;
   margin: 0;
   padding: $puppet-modal-actions-cta-padding;
 }

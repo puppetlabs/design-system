@@ -5,6 +5,8 @@ import debounce from 'debounce';
 import portal from '../portal';
 import Icon from '../icon/Icon';
 import ButtonGroup from '../buttons/ButtonGroup';
+import Heading from '../heading';
+import Content from '../content';
 
 const propTypes = {
   unbindShortcut: PropTypes.func,
@@ -24,6 +26,9 @@ const propTypes = {
   modalClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   overlayClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   children: PropTypes.node,
+  actionsPosition: PropTypes.oneOf(['left', 'right']),
+  background: PropTypes.oneOf(['transparent', 'translucent']),
+  title: PropTypes.string,
 };
 
 const defaultProps = {
@@ -40,6 +45,9 @@ const defaultProps = {
   modalClassName: '',
   overlayClassName: '',
   children: null,
+  actionsPosition: 'right',
+  background: 'transparent',
+  title: '',
 };
 
 function setBodyOverflow(value) {
@@ -255,7 +263,7 @@ class Modal extends React.Component {
   }
 
   renderActions() {
-    const { actions, actionsCTA } = this.props;
+    const { actions, actionsCTA, actionsPosition } = this.props;
     let jsx;
     let cta = null;
 
@@ -264,10 +272,15 @@ class Modal extends React.Component {
         cta = <span className="rc-modal-actions-cta">{actionsCTA}</span>;
       }
 
+      const classNames = classname('rc-modal-actions', {
+        [`rc-modal-actions-${actionsPosition}`]: actionsPosition,
+      });
+
       jsx = (
-        <div className="rc-modal-actions">
-          {cta}
+        <div className={classNames}>
+          {actionsPosition === 'right' ? cta : null}
           <ButtonGroup>{actions}</ButtonGroup>
+          {actionsPosition === 'left' ? cta : null}
         </div>
       );
     }
@@ -307,7 +320,7 @@ class Modal extends React.Component {
           tabIndex={0}
           onClick={this.onClose}
         >
-          <Icon size="tiny" type="close" />
+          <Icon size="medium" type="close-16px" />
         </a>
       );
     }
@@ -316,9 +329,21 @@ class Modal extends React.Component {
     return jsx;
   }
 
+  renderTitle() {
+    const { title } = this.props;
+    let jsx;
+
+    if (title) {
+      jsx = <Heading as="h3">{title}</Heading>;
+    }
+
+    return jsx;
+  }
+
   render() {
     // TODO: Once we are on React 16 we should be able to remove this closeLink and add the onClick
     // directly to the wrapper. Right now ReactDOM has a hard time with this pattern.
+    const title = this.renderTitle();
     const closeLink = this.renderCloseLink();
     const closeButton = this.renderCloseButton();
     const sidebar = this.renderSidebar();
@@ -327,6 +352,7 @@ class Modal extends React.Component {
       children,
       size,
       sidebarPosition,
+      background,
       modalClassName: modalClassNameProps,
       overlayClassName: overlayClassNameProps,
     } = this.props;
@@ -341,6 +367,9 @@ class Modal extends React.Component {
     );
     const overlayClassName = classname(
       'rc-modal-overlay',
+      {
+        [`rc-modal-overlay-${background}`]: background,
+      },
       overlayClassNameProps,
     );
 
@@ -360,7 +389,10 @@ class Modal extends React.Component {
             }}
             className="rc-modal-content"
           >
-            {children}
+            <Content>
+              {title}
+              {children}
+            </Content>
           </div>
           {actions}
           {closeButton}

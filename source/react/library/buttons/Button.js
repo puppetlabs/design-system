@@ -29,6 +29,7 @@ const propTypes = {
   error: PropTypes.bool,
   message: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
 };
 
 const defaultProps = {
@@ -53,13 +54,23 @@ const defaultProps = {
   error: false,
   dropdown: false,
   children: '',
+  as: 'button',
 };
 
 /**
- * `Button` is a generalized component we use for rendering buttons. They can be used in different
- * contexts, such as within a `SplitButton` or `ButtonGroup`.
+ * `Button` is a generalized component for rendering buttons. They can be used
+ * in different contexts, such as within a `SplitButton` or `ButtonGroup`. By
+ * default, it renders a `<button type="button">` element, but `type="submit"`
+ * can be passed to trigger the containing form's submit handler, and the `as` prop
+ * can be used to render a different element or component, such as with an `a`
+ * element or React Router's `Link` component:
+ * ```jsx
+ * <Button as="a" href="http://puppet.com">Puppet</Button>
+ * ```
+ * ```jsx
+ * <Button as={Link} to="/home">Home</Button>
+ * ```
  */
-
 class Button extends React.Component {
   constructor(props) {
     super(props);
@@ -100,7 +111,10 @@ class Button extends React.Component {
       floating,
       round,
       square,
+      dropdown: hasDropdown,
       icon: propIcon,
+      as: Component,
+      ...otherProps
     } = this.props;
 
     let button;
@@ -124,10 +138,12 @@ class Button extends React.Component {
     });
 
     const btnProps = {
-      type,
+      // Default `type` to "button" (instead of "submit") unless `as` is specified
+      type: !type && Component === 'button' ? 'button' : type,
       href,
       disabled,
-      onClick: this.onClick,
+      'aria-disabled': Component === 'button' || !disabled ? null : disabled,
+      tabIndex: disabled ? -1 : null,
       ref: b => {
         this.button = b;
       },
@@ -149,7 +165,7 @@ class Button extends React.Component {
       icon = <Icon height={iconSize} width={iconSize} type={iconType} />;
     }
 
-    if (dropdown && !processing) {
+    if (hasDropdown && !processing) {
       const iconSize = '10px';
 
       dropdown = (
@@ -159,19 +175,11 @@ class Button extends React.Component {
       );
     }
 
-    if (type) {
-      button = (
-        <button type="button" {...btnProps}>
-          {icon} {content} {dropdown} {loader}
-        </button>
-      );
-    } else {
-      button = (
-        <a {...btnProps}>
-          {icon} {content} {dropdown} {loader}
-        </a>
-      );
-    }
+    button = (
+      <Component {...btnProps} {...otherProps} onClick={this.onClick}>
+        {icon} {content} {dropdown} {loader}
+      </Component>
+    );
 
     if (message) {
       button = (
