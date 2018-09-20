@@ -6,7 +6,7 @@
 
 // Accordions
 // ----------------------------------------------------------------------------
-$puppet-accordion-bg                               : $puppet-white !default;
+$puppet-accordion-bg                               : $puppet-bg-subtle !default;
 $puppet-accordion-item-title-bg-color              : $puppet-white !default;
 $puppet-accordion-item-title-color                 : $puppet-font-color-medium !default;
 $puppet-accordion-item-title-hover                 : $puppet-font-color-base !default;
@@ -18,7 +18,8 @@ $puppet-accordion-icon-color-hover                 : $puppet-icon-fill-hover !de
 $puppet-accordion-item-content-padding             : $puppet-medium !default;
 
 $puppet-accordion-header-title-color               : $puppet-font-color-medium !default;
-$puppet-accordion-header-height                    : $puppet-huge;
+$puppet-accordion-header-title-color-active        : $puppet-action-base !default;
+$puppet-accordion-header-height                    : $puppet-huge !default;
 $puppet-accordion-header-bg                        : $puppet-white !default;
 
 $puppet-accordion-animation-speed                  : $puppet-animation-speed-base !default;
