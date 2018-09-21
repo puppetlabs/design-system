@@ -97,7 +97,6 @@
     "debounce": "^1.1.0",
     "deep-equal": "^1.0.1",
     "react-daterange-picker": "2.0.1",
-    "react-notification": "^6.8.4",
     "react-onclickoutside": "^6.7.0",
     "react-sortable-hoc": "^0.6.8",
     "react-transition-group": "^2.2.1"

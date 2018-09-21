@@ -1,0 +1,50 @@
+@mixin rc-alert-colors($type, $color) {
+  &.rc-alert-#{$type} {
+    background-color: lighten($color, 50%);
+    border: 1px solid $color;
+    color: $color;
+
+    .rc-alert-type-icon {
+      fill: $color;
+    }
+
+    .rc-alert-message {
+      color: $color;
+    }
+  }
+}
+
+
+.rc-alert {
+  @include rc-alert-colors('error', $puppet-neg-bg-base);
+  @include rc-alert-colors('success', $puppet-pos-bg-base);
+  @include rc-alert-colors('warning', $puppet-warn-bg-base);
+  @include rc-alert-colors('info', $puppet-action-base);
+  
+  border-radius: $puppet-border-radius;
+  cursor: default;
+  display: flex;
+  left: 50%;
+  margin-left: -197px;
+  padding: 10px 16px;
+  position: fixed;
+  top: 8px;
+  width: 394px;
+  z-index: 25;
+}
+
+.rc-alert-static {
+  margin-left: 0;
+  position: static;
+  width: 100%;
+  z-index: auto;
+}
+
+.rc-alert-type-icon {
+  margin-right: 8px;
+  margin-top: 1px;
+}
+
+.rc-alert-message {
+  flex-grow: 1;
+}
