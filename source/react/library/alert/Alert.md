@@ -15,19 +15,19 @@ const initialState = { isGrowlActive: false };
 ## Alert types
 
 ```
-  <Alert growl={ false } isActive={ true } message="Hello world" />
+  <Alert growl={ false } isActive={ true } message="Success! Things seem to have gone well afterall." />
 ```
 
 Error
 
 ```
-<Alert growl={ false } isActive={ true } type="error" message="Hello world" />
+<Alert growl={ false } isActive={ true } type="error" message="Error! Things have gone bad. I blame Sig." />
 ```
 
 Warning
 
 ```
-<Alert growl={ false } isActive={ true } type="warning" message="Hello world" />
+<Alert growl={ false } isActive={ true } type="warning" message="This may affect access for other users" />
 ```
 
 Info

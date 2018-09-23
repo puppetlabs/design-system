@@ -22,6 +22,7 @@
   @include rc-alert-colors('info', $puppet-action-base);
   
   border-radius: $puppet-border-radius;
+  box-shadow: 8px 8px 16px 0 rgba(0, 14, 28, 0.32);
   cursor: default;
   display: flex;
   left: 50%;
@@ -47,4 +48,11 @@
 
 .rc-alert-message {
   flex-grow: 1;
+}
+
+.rc-alert-close {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 18px;
 }
