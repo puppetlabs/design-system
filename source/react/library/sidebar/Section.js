@@ -152,8 +152,15 @@ class Section extends React.Component {
       subsections = this.renderSubsections();
     }
 
+    let karet;
     if (subsections && subsections.length) {
       subsections = <div className="rc-sidebar-items">{subsections}</div>;
+
+      karet = (
+        <span className="rc-sidebar-item-karet">
+          <Icon width="8px" height="8px" type="dropdown" />
+        </span>
+      );
     }
 
     let icon;
@@ -190,6 +197,7 @@ class Section extends React.Component {
             <div className="rc-sidebar-item-content">
               {icon}
               <span className="rc-sidebar-item-title">{title}</span>
+              {karet}
             </div>
           </a>
           {subsections}

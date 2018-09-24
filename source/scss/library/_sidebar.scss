@@ -20,7 +20,8 @@
 
   .rc-sidebar-item-title,
   .rc-sidebar-level-2,
-  .rc-sidebar-label {
+  .rc-sidebar-label,
+  .rc-sidebar-item-karet {
     height: 0;
     margin: 0 !important;
     opacity: 0;
@@ -70,6 +71,12 @@
   .rc-icon {
     height: $puppet-sidebar-toggle-icon-size;
     width: $puppet-sidebar-toggle-icon-size;
+  }
+}
+
+.rc-sidebar-toggle-btn:hover {
+  .rc-icon {
+    fill: $puppet-sidebar-item-icon-fill-hover;
   }
 }
 
@@ -152,6 +159,10 @@
   .rc-icon-fill {
     fill: $puppet-sidebar-item-icon-fill;
   }
+}
+
+.rc-sidebar-item-karet {
+  margin-left: $puppet-sidebar-item-karet-margin;
 }
 
 // Selected Item
