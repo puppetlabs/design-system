@@ -13,6 +13,7 @@ const propTypes = {
   closeable: PropTypes.bool,
   growl: PropTypes.bool,
   onClose: PropTypes.func,
+  dismissAfter: PropTypes.number,
 };
 
 const defaultProps = {
@@ -21,17 +22,28 @@ const defaultProps = {
   type: 'success',
   growl: true,
   onClose: () => {},
+  dismissAfter: 5000,
 };
 
 class Alert extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onClick = this.onClick.bind(this);
+    this.onClose = this.onClose.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
   }
 
-  onClick() {
+  componentDidMount() {
+    const { dismissAfter } = this.props;
+
+    if (dismissAfter) {
+      setTimeout(() => {
+        this.onClose();
+      }, dismissAfter);
+    }
+  }
+
+  onClose() {
     const { onClose } = this.props;
 
     onClose();
@@ -39,7 +51,7 @@ class Alert extends React.Component {
 
   onKeyDown(e) {
     if (e.keyCode === ENTER_KEY_CODE) {
-      this.onClick();
+      this.onClose();
     }
   }
 
@@ -76,7 +88,7 @@ class Alert extends React.Component {
           className="rc-alert-close"
           role="button"
           tabIndex={0}
-          onClick={this.onClick}
+          onClick={this.onClose}
           onKeyDown={this.onKeyDown}
         >
           <Icon type="close" size="tiny" />
