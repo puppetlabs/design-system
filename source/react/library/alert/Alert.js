@@ -34,12 +34,18 @@ class Alert extends React.Component {
   }
 
   componentDidMount() {
-    const { dismissAfter } = this.props;
+    const { isActive } = this.props;
 
-    if (dismissAfter) {
-      setTimeout(() => {
-        this.onClose();
-      }, dismissAfter);
+    if (isActive) {
+      this.handleDismiss(this.props);
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { isActive } = this.props;
+
+    if (!isActive && nextProps.isActive) {
+      this.handleDismiss(nextProps);
     }
   }
 
@@ -52,6 +58,16 @@ class Alert extends React.Component {
   onKeyDown(e) {
     if (e.keyCode === ENTER_KEY_CODE) {
       this.onClose();
+    }
+  }
+
+  handleDismiss(props) {
+    const { dismissAfter } = props;
+
+    if (dismissAfter) {
+      setTimeout(() => {
+        this.onClose();
+      }, dismissAfter);
     }
   }
 
