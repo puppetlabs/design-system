@@ -200,6 +200,22 @@ $puppet-card-shadow-selected-hover                 : $puppet-selected-shadow-hov
 // Sidebar
 // ----------------------------------------------------------------------------
 
+// Dark Sidebar
+$puppet-sidebar-dark-bg                            : $puppet-n900 !default;
+$puppet-sidebar-dark-logo-bg                       : $puppet-black !default;
+$puppet-sidebar-dark-divider                       : $puppet-border-dark !default;
+$puppet-sidebar-dark-item-bg                       : $puppet-n850 !default;
+$puppet-sidebar-dark-item-bg-hover                 : $puppet-n900 !default;
+$puppet-sidebar-dark-item-bg-active                : $puppet-n850 !default;
+$puppet-sidebar-dark-item-icon-fill                : $puppet-n600 !default;
+$puppet-sidebar-dark-item-icon-fill-hover          : $puppet-brand-primary !default;
+$puppet-sidebar-dark-item-icon-fill-active         : $puppet-brand-primary !default;
+$puppet-sidebar-dark-item-icon-margin              : 12px !default;
+$puppet-sidebar-dark-item-color                    : $puppet-n500 !default;
+$puppet-sidebar-dark-item-color-hover              : $puppet-brand-primary !default;
+$puppet-sidebar-dark-item-color-active             : $puppet-brand-primary !default;
+
+
 // Sidebar General
 $puppet-sidebar-bg                                 : $puppet-bg-light !default;
 $puppet-sidebar-font                               : $puppet-font-family-heading !default;
@@ -207,7 +223,13 @@ $puppet-sidebar-padding                            : 14px 0 !default; // Compens
 $puppet-sidebar-width                              : 224px !default;
 $puppet-sidebar-minimized-width                    : 73px !default;
 
-$puppet-sidebar-toggle-height                      : 48px !default;
+$puppet-sidebar-toggle-height                      : 56px !default;
+
+$puppet-sidebar-logo-bg                            : $puppet-n50 !default;
+$puppet-sidebar-logo-height                        : 72px !default;
+$puppet-sidebar-logo-padding                       : 16px !default;
+$puppet-sidebar-minimized-logo-padding             : 16px 16px 16px 20px !default;
+$puppet-sidebar-logo-margin                        : -14px 0 16px !default; // based on $puppet-sidebar-padding
 
 $puppet-sidebar-divider                            : $puppet-border-subtle !default;
 $puppet-sidebar-divider-margin-open                : 15px 0 16px !default; // 15 compensates for border

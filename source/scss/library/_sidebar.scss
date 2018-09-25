@@ -1,8 +1,112 @@
+//Dark Sidebar
+.rc-sidebar.rc-sidebar-dark {
+  background: $puppet-sidebar-dark-bg;
+  border-right: $puppet-border-dark;
+
+  .rc-sidebar-logo {
+    background: $puppet-sidebar-dark-logo-bg;
+  }
+
+  .rc-sidebar-toggle {
+    background: $puppet-sidebar-dark-bg;
+    border-right: $puppet-border-dark;
+  }
+
+  .rc-sidebar-toggle-btn:hover,
+  .rc-sidebar-toggle-btn:active,
+  .rc-sidebar-toggle-btn:focus {
+    background: $puppet-sidebar-dark-item-bg-active;
+
+    svg {
+      fill: $puppet-sidebar-dark-item-icon-fill-hover;
+    }
+  }
+
+  .rc-sidebar-divider {
+    border-top: solid 1px $puppet-n850;
+  }
+
+  .rc-sidebar-label {
+    color: $puppet-sidebar-dark-item-color;
+  }
+
+  .rc-sidebar-item-link:hover {
+    background: $puppet-sidebar-dark-item-bg-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color;
+  }
+
+  .rc-sidebar-item-icon .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill;
+  }
+
+  .rc-sidebar-item-selected > .rc-sidebar-item-link,
+  .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link {
+    background: $puppet-sidebar-dark-item-bg-active;
+  }
+
+  .rc-sidebar-item-selected > .rc-sidebar-item-link .rc-sidebar-item-title,
+  .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-active;
+  }
+
+  .rc-sidebar-item-selected .rc-icon-fill,
+  .rc-sidebar-item-selected:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-active;
+  }
+
+  // Open Item
+  // Selected Item
+  .rc-sidebar-item-active-accordion > .rc-sidebar-item-link,
+  .rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link {
+    background: $puppet-sidebar-dark-item-bg;
+  }
+
+  .rc-sidebar-item-active-accordion > .rc-sidebar-item-link .rc-sidebar-item-title,
+  .rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-active;
+  }
+
+  .rc-sidebar-item-active-accordion .rc-icon-fill,
+  .rc-sidebar-item-active-accordion:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-active;
+  }
+
+  .rc-sidebar-minimized .rc-sidebar-item-active-accordion,
+  .rc-sidebar-minimized .rc-sidebar-item-active-accordion:hover {
+    .rc-icon-fill {
+      fill: $puppet-sidebar-dark-item-icon-fill;
+    }
+
+    .rc-sidebar-item-link {
+      background: $puppet-sidebar-dark-item-bg;
+    }
+
+    &.rc-sidebar-item-selected .rc-icon-fill {
+      fill: $puppet-sidebar-dark-item-icon-fill-hover;
+    }
+
+    &.rc-sidebar-item-selected .rc-sidebar-item-link {
+      background: $puppet-sidebar-dark-item-bg-active;
+    }
+  }
+}
+
 // Sidebar
 .rc-sidebar {
   background: $puppet-sidebar-bg;
   border-right: $puppet-border-subtle;
-  font: $puppet-sidebar-font;
+  font-family: $puppet-sidebar-font;
   height: inherit;
   margin-bottom: $puppet-sidebar-toggle-height;
   overflow: auto;
@@ -12,6 +116,29 @@
   z-index: 12;
 }
 
+
+.rc-sidebar-logo {
+  background: $puppet-sidebar-logo-bg;
+  height: $puppet-sidebar-logo-height;
+  margin: $puppet-sidebar-logo-margin;
+  padding: $puppet-sidebar-logo-padding;
+  transition: all 0.2s ease-in-out;
+
+  .rc-logo-text {
+    opacity: 100;
+    transition: all 0.2s ease-in-out;
+    visibility: visible;
+  }
+}
+
+.rc-sidebar-minimized .rc-sidebar-logo {
+  padding: $puppet-sidebar-minimized-logo-padding;
+
+  .rc-logo-text {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
 
 // Minimized Sidebar Styles
 .rc-sidebar-minimized {
@@ -35,6 +162,7 @@
   }
 
   .rc-sidebar-divider {
+    border-top: $puppet-sidebar-divider;
     margin: $puppet-sidebar-divider-margin-closed;
   }
 
@@ -66,6 +194,7 @@
   display: flex;
   height: $puppet-sidebar-toggle-height;
   left: 0;
+  overflow: hidden;
   padding: 8px;
   position: absolute;
   text-align: center;
@@ -90,6 +219,7 @@
 // Sidebar Dividers
 .rc-sidebar-divider {
   border: 0;
+  border-color: transparent;
   border-top: $puppet-sidebar-divider;
   display: block;
   margin: $puppet-sidebar-divider-margin-open;
