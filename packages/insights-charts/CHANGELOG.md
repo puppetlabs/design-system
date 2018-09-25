@@ -1,3 +1,7 @@
+# 0.13.1
+
+* Always show poi points for scatter / bubble charts
+
 # 0.13.0
 
 * Introduce bubble chart

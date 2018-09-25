@@ -73,6 +73,10 @@ class ScatterChart extends Chart {
         const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
 
         plotOptions.highlightCategory = false;
+        plotOptions.pointsOfInterest = {
+          ...plotOptions.pointsOfInterest,
+          onHover: false,
+        };
 
         const seriesPoi = new SeriesPoi(
           data,
