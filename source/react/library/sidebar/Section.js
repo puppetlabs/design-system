@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
+import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 import { getKey } from '../../helpers/statics';
 import { ENTER_KEY_CODE } from '../../constants';
 
@@ -136,7 +137,15 @@ class Section extends React.Component {
 
   render() {
     const { active, open, selectedSubItem } = this.state;
-    const { title, icon: iconProp, className, children } = this.props;
+
+    const {
+      title,
+      icon: iconProp,
+      className,
+      children,
+      minimized,
+    } = this.props;
+
     const classNames = classnames(
       'rc-sidebar-item',
       {
@@ -152,8 +161,15 @@ class Section extends React.Component {
       subsections = this.renderSubsections();
     }
 
+    let karet;
     if (subsections && subsections.length) {
       subsections = <div className="rc-sidebar-items">{subsections}</div>;
+
+      karet = (
+        <span className="rc-sidebar-item-karet">
+          <Icon width="8px" height="8px" type="dropdown" />
+        </span>
+      );
     }
 
     let icon;
@@ -162,6 +178,14 @@ class Section extends React.Component {
         <span className="rc-sidebar-item-icon">
           <Icon width="16px" height="16px" type={iconProp} />
         </span>
+      );
+    }
+
+    if (minimized) {
+      icon = (
+        <TooltipHoverArea tooltip={title} anchor="right">
+          {icon}
+        </TooltipHoverArea>
       );
     }
 
@@ -175,27 +199,32 @@ class Section extends React.Component {
       );
     }
 
-    return (
+    const link = (
       /* eslint-disable jsx-a11y/anchor-is-valid */
+      <a
+        className="rc-sidebar-item-link"
+        role="button"
+        tabIndex={0}
+        onClick={this.onClick}
+        onKeyDown={this.onKeyDown}
+      >
+        <div className="rc-sidebar-item-content">
+          {icon}
+          <span className="rc-sidebar-item-title">{title}</span>
+          {karet}
+        </div>
+      </a>
+      /* eslint-enable jsx-a11y/anchor-is-valid */
+    );
+
+    return (
       <Fragment>
         {label}
         <li className={classNames}>
-          <a
-            className="rc-sidebar-item-link"
-            role="button"
-            tabIndex={0}
-            onClick={this.onClick}
-            onKeyDown={this.onKeyDown}
-          >
-            <div className="rc-sidebar-item-content">
-              {icon}
-              <span className="rc-sidebar-item-title">{title}</span>
-            </div>
-          </a>
+          {link}
           {subsections}
         </li>
       </Fragment>
-      /* eslint-enable jsx-a11y/anchor-is-valid */
     );
   }
 }

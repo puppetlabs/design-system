@@ -1,6 +1,8 @@
 .rc-loading {
-  line-height: 1;
-  text-align: center;
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
   width: 100%;
 
   path {

@@ -111,7 +111,7 @@ class Button extends React.Component {
       floating,
       round,
       square,
-      dropdown: hasDropdown,
+      dropdown: dropdownProp,
       icon: propIcon,
       as: Component,
       ...otherProps
@@ -165,7 +165,7 @@ class Button extends React.Component {
       icon = <Icon height={iconSize} width={iconSize} type={iconType} />;
     }
 
-    if (hasDropdown && !processing) {
+    if (dropdownProp && !processing) {
       const iconSize = '10px';
 
       dropdown = (
