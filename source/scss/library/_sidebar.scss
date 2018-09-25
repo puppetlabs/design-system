@@ -100,6 +100,19 @@
       background: $puppet-sidebar-dark-item-bg-active;
     }
   }
+
+  // Links such as "View all reports"
+  .rc-sidebar-item-link:hover {
+    background: $puppet-sidebar-dark-item-bg-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
 }
 
 // Sidebar
