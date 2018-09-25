@@ -112,7 +112,7 @@
 
   .rc-accordion-item-header .rc-accordion-item-header-title,
   &:hover .rc-accordion-item-header .rc-accordion-item-header-title {
-    color: $puppet-font-color-dark;
+    color: $puppet-accordion-header-title-color-active;
   }
 
   .rc-accordion-item-content {

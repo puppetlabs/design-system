@@ -6,7 +6,7 @@
 
 // Accordions
 // ----------------------------------------------------------------------------
-$puppet-accordion-bg                               : $puppet-white !default;
+$puppet-accordion-bg                               : $puppet-bg-subtle !default;
 $puppet-accordion-item-title-bg-color              : $puppet-white !default;
 $puppet-accordion-item-title-color                 : $puppet-font-color-medium !default;
 $puppet-accordion-item-title-hover                 : $puppet-font-color-base !default;
@@ -18,7 +18,8 @@ $puppet-accordion-icon-color-hover                 : $puppet-icon-fill-hover !de
 $puppet-accordion-item-content-padding             : $puppet-medium !default;
 
 $puppet-accordion-header-title-color               : $puppet-font-color-medium !default;
-$puppet-accordion-header-height                    : $puppet-huge;
+$puppet-accordion-header-title-color-active        : $puppet-action-base !default;
+$puppet-accordion-header-height                    : $puppet-huge !default;
 $puppet-accordion-header-bg                        : $puppet-white !default;
 
 $puppet-accordion-animation-speed                  : $puppet-animation-speed-base !default;
@@ -760,7 +761,7 @@ $puppet-pagenav-border-hover                       : $puppet-border-hover !defau
 $puppet-pagenav-border-active                      : $puppet-border-action !default;
 $puppet-pagenav-border-width-active                : $puppet-mini !default;
 $puppet-pagenav-color                              : $puppet-font-color-medium !default;
-$puppet-pagenav-color-hover                        : $puppet-font-color-base !default;
+$puppet-pagenav-color-hover                        : $puppet-action-base !default;
 $puppet-pagenav-color-active                       : $puppet-font-color-base !default;
 $puppet-pagenav-font-weight                        : $puppet-font-weight-heavy !default;
 $puppet-pagenav-font-size                          : $puppet-font-size-small !default;
@@ -839,4 +840,11 @@ $puppet-text-tiny-font-size                        : $puppet-font-size-tiny !def
 $puppet-text-tiny-line-height                      : 16px !default;
 $puppet-text-tiny-font-family                      : $puppet-font-family !default;
 $puppet-text-tiny-font-weight                      : $puppet-font-weight-heavy !default;
+
+// Alert
+// ----------------------------------------------------------------------------
+$puppet-alert-width                                : 394px !default;
+$puppet-alert-padding                              : 10px 16px !default;
+$puppet-alert-shadow                               : 8px 8px 16px 0 rgba(0, 14, 28, 0.32) !default;
+$puppet-alert-border-radius                        : $puppet-border-radius !default;
 /* stylelint-enable */

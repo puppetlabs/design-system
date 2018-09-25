@@ -52,6 +52,7 @@ import Portal from './react/library/portal';
 import Grid from './react/library/grid';
 import Heading from './react/library/heading';
 import Text from './react/library/text';
+import Alert from './react/library/alert';
 
 export {
   Button,
@@ -102,4 +103,5 @@ export {
   Grid,
   Heading,
   Text,
+  Alert,
 };
