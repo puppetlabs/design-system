@@ -29,7 +29,7 @@ const cannedReports = [
 const customReports = [
   { title: 'DevOps Team Overview', active: true },
   { title: "Product Launch Q3 '18" },
-  { title: 'Staging Report' },
+  { title: 'This is a long name for a report' },
   { title: 'Bump1' },
   { title: 'Bump2' },
   { title: 'Bump3' },
