@@ -59,7 +59,7 @@
 
   .rc-sidebar-divider {
     border-top: $puppet-sidebar-divider;
-    margin: $puppet-sidebar-divider-margin-closed;
+    margin: $puppet-sidebar-closed-divider-margin;
   }
 
   .rc-sidebar-toggle {
@@ -114,11 +114,10 @@
 
 // Sidebar Dividers
 .rc-sidebar-divider {
-  border: 0;
-  border-color: transparent;
   border-top: $puppet-sidebar-divider;
+  border-top-color: transparent;
   display: block;
-  margin: $puppet-sidebar-divider-margin-open;
+  margin: $puppet-sidebar-open-divider-margin;
   transition: margin 0.2s ease-in-out;
 }
 
@@ -297,10 +296,6 @@
     fill: $puppet-sidebar-dark-item-icon-fill-hover;
   }
 
-  .rc-sidebar-divider {
-    border-top: solid 1px $puppet-n850;
-  }
-
   .rc-sidebar-label {
     color: $puppet-sidebar-dark-label-color;
   }
@@ -378,6 +373,10 @@
 }
 
 // Minimized Dark Theme
+.rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-divider {
+  border-top: solid 1px $puppet-n850;
+}
+
 .rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-item-active-accordion,
 .rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-item-active-accordion:hover {
   .rc-icon-fill {

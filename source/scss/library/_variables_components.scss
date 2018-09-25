@@ -233,8 +233,8 @@ $puppet-sidebar-minimized-logo-padding             : 16px 16px 16px 20px !defaul
 $puppet-sidebar-logo-margin                        : -14px 0 16px !default; // based on $puppet-sidebar-padding
 
 $puppet-sidebar-divider                            : $puppet-border-subtle !default;
-$puppet-sidebar-divider-margin-open                : 15px 0 16px !default; // 15 compensates for border
-$puppet-sidebar-divider-margin-closed              : 15px 0 16px !default;
+$puppet-sidebar-open-divider-margin                : 15px 0 16px !default; // 15 compensates for border
+$puppet-sidebar-closed-divider-margin              : 16px 0 !default;
 $puppet-sidebar-toggle-icon-size                   : 12px !important;
 
 $puppet-sidebar-item-bg                            : $puppet-bg-light !default;
