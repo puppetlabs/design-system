@@ -1,12 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 import { ENTER_KEY_CODE } from '../../constants';
-
-// TODO: Improve on this for internationlaization & fragility
-const truncateWithEllipses = (text, max) =>
-  text.substr(0, max - 1) + (text.length > max ? '...' : '');
 
 const propTypes = {
   title: PropTypes.string,
@@ -18,7 +13,6 @@ const propTypes = {
   /** The title of the active item */
   selected: PropTypes.string,
   className: PropTypes.string,
-  truncate: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -28,7 +22,6 @@ const defaultProps = {
   active: false,
   selected: null,
   className: '',
-  truncate: true,
 };
 
 class SubsectionItem extends React.Component {
@@ -66,29 +59,28 @@ class SubsectionItem extends React.Component {
   }
 
   render() {
-    const { title, selected, className: classProp, truncate } = this.props;
+    const { title, selected, className: classProp } = this.props;
     const active = title === selected;
     const className = classnames('rc-sidebar-item', classProp, {
       'rc-sidebar-item-selected': active,
     });
-    const truncatedTitle = truncate ? truncateWithEllipses(title, 17) : title;
 
     return (
       /* eslint-disable jsx-a11y/anchor-is-valid */
       <li className={className}>
-        <TooltipHoverArea tooltip={title} anchor="right">
-          <a
-            className="rc-sidebar-item-link"
-            role="button"
-            tabIndex={0}
-            onClick={this.onClick}
-            onKeyDown={this.onKeyDown}
-          >
-            <div className="rc-sidebar-item-content">
-              <span className="rc-sidebar-item-title">{truncatedTitle}</span>
-            </div>
-          </a>
-        </TooltipHoverArea>
+        <a
+          className="rc-sidebar-item-link"
+          role="button"
+          tabIndex={0}
+          onClick={this.onClick}
+          onKeyDown={this.onKeyDown}
+        >
+          <div className="rc-sidebar-item-content">
+            <span title={title} className="rc-sidebar-item-title">
+              {title}
+            </span>
+          </div>
+        </a>
       </li>
       /* eslint-enable jsx-a11y/anchor-is-valid */
     );

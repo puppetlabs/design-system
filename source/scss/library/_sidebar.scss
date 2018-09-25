@@ -146,12 +146,16 @@
 
 .rc-sidebar-item-title {
   color: $puppet-sidebar-item-color;
+  display: block;
   font-family: $puppet-sidebar-font;
   font-size: $puppet-sidebar-item-font-size;
   font-weight: $puppet-sidebar-item-font-weight;
   height: auto;
   line-height: $puppet-sidebar-item-line-height;
+  overflow: hidden;
   padding: $puppet-sidebar-item-title-padding;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .rc-sidebar-item-icon {
