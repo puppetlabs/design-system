@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
+import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 import { ENTER_KEY_CODE } from '../../constants';
 
 // TODO: Improve on this for internationlaization & fragility
@@ -75,17 +76,19 @@ class SubsectionItem extends React.Component {
     return (
       /* eslint-disable jsx-a11y/anchor-is-valid */
       <li className={className}>
-        <a
-          className="rc-sidebar-item-link"
-          role="button"
-          tabIndex={0}
-          onClick={this.onClick}
-          onKeyDown={this.onKeyDown}
-        >
-          <div className="rc-sidebar-item-content">
-            <span className="rc-sidebar-item-title">{truncatedTitle}</span>
-          </div>
-        </a>
+        <TooltipHoverArea tooltip={title} anchor="right">
+          <a
+            className="rc-sidebar-item-link"
+            role="button"
+            tabIndex={0}
+            onClick={this.onClick}
+            onKeyDown={this.onKeyDown}
+          >
+            <div className="rc-sidebar-item-content">
+              <span className="rc-sidebar-item-title">{truncatedTitle}</span>
+            </div>
+          </a>
+        </TooltipHoverArea>
       </li>
       /* eslint-enable jsx-a11y/anchor-is-valid */
     );

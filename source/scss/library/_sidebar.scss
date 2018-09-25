@@ -12,6 +12,10 @@
   z-index: 12;
 }
 
+.rc-tooltip-area {
+  display: block;
+}
+
 .rc-sidebar-item-title,
 .rc-sidebar-level-2,
 .rc-sidebar-label,
@@ -26,10 +30,6 @@
 .rc-sidebar-minimized {
   margin-right: 0;
   width: $puppet-sidebar-minimized-width;
-
-  .rc-tooltip-area {
-    display: block;
-  }
 
   .rc-sidebar-item-title,
   .rc-sidebar-level-2,
