@@ -72,3 +72,9 @@ Button with an error and message:
 ```
 <Button error message="Something went wrong here...">Click me</Button>
 ```
+
+A different component rendered as a button, which is useful for `a` elements or `Link` components (from React Router):
+
+```
+<Button as="a" href="http://puppet.com">Link to puppet.com</Button>
+```

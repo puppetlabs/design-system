@@ -1,3 +1,11 @@
+# 4.2.0
+
+* Update modal styles, in particular confirmation modal styles
+* Internationalize modal strings
+* Improve accessibility of buttons
+* Fix oneOfType warnings
+* Support both left and right actions placements for forms/modals
+
 # 4.1.4
 
 - Updates to dropdown styling

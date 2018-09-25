@@ -102,9 +102,9 @@
   display: inline-flex;
   height: $puppet-button-height;
   justify-content: center;
-  outline: none;
   padding: 0 $puppet-button-padding;
   position: relative;
+  text-decoration: none;
   white-space: nowrap;
 
   .rc-button-dropdown-icon {
@@ -278,6 +278,9 @@
 .rc-button[disabled] {
   cursor: default;
   opacity: $puppet-button-disabled-opacity;
+  outline: none;
+  pointer-events: none;
+
 }
 
 .rc-button-block {
@@ -342,6 +345,8 @@
 }
 
 .rc-button-group {
+  display: inline-block;
+
   .rc-button {
     margin-right: 6px;
   }

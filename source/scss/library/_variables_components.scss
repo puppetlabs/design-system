@@ -347,8 +347,10 @@ $puppet-dropdown-hint-font-size                    : $puppet-font-size-base !def
 
 // Forms
 // ----------------------------------------------------------------------------
-$puppet-form-label-font-weight                     : $puppet-font-weight-heavy !default;
-$puppet-form-label-color                           : $puppet-font-color-medium !default;
+$puppet-form-font-weight                           : $puppet-font-weight-heavy !default;
+$puppet-form-letter-spacing                        : $puppet-heading-letter-spacing !default;
+$puppet-form-font-family                           : $puppet-font-family-heading !default;
+$puppet-form-label-color                           : $puppet-n800 !default;
 $puppet-form-label-color-dark                      : $puppet-font-color-base !default;
 $puppet-form-label-font-size                       : $puppet-font-size-tiny !default;
 $puppet-form-label-font-size-large                 : $puppet-font-size-small !default;
@@ -543,13 +545,14 @@ $puppet-menu-actions-bg-dark                       : $puppet-black !default;
 $puppet-modal-bg                                   : $puppet-bg-light !default;
 $puppet-modal-color                                : $puppet-font-color-base !default;
 $puppet-modal-border                               : 1px solid $puppet-n400 !default;
-$puppet-modal-border-radius                        : $puppet-small !default;
+$puppet-modal-border-radius                        : $puppet-tiny !default;
 $puppet-modal-overlay-bg                           : transparent !default;
+$puppet-modal-overlay-translucent-bg               : rgba(4, 8, 10, 0.16) !default;
 $puppet-modal-elevation                            : 24 !default;
-$puppet-modal-padding                              : $puppet-medium $puppet-large !default;
+$puppet-modal-padding                              : $puppet-large !default;
 $puppet-modal-shadow                               : $puppet-outer-shadow-giant !default;
 $puppet-modal-close-top                            : $puppet-medium !default;
-$puppet-modal-close-right                          : $puppet-large !default;
+$puppet-modal-close-right                          : $puppet-medium !default;
 $puppet-modal-width-small                          : 400px !default;
 $puppet-modal-width                                : 480px !default;
 $puppet-modal-width-medium                         : 580px !default;

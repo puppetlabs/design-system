@@ -4,10 +4,7 @@ import classnames from 'classnames';
 
 const propTypes = {
   className: PropTypes.string,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element,
-  ]),
+  children: PropTypes.node,
 };
 
 const defaultProps = {

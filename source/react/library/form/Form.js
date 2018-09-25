@@ -25,6 +25,7 @@ const propTypes = {
   errors: PropTypes.shape({}),
   size: PropTypes.string,
   submitting: PropTypes.bool,
+  actionsPosition: PropTypes.oneOf(['left', 'right']),
   children: PropTypes.node,
 };
 
@@ -43,6 +44,7 @@ const defaultProps = {
   submitting: false,
   submittable: false,
   submitLabel: 'Submit',
+  actionsPosition: 'right',
 };
 
 const getValues = children => {
@@ -194,6 +196,7 @@ class Form extends React.Component {
 
   renderActions() {
     const {
+      actionsPosition,
       cancellable,
       submittable,
       submitting,
@@ -202,22 +205,14 @@ class Form extends React.Component {
       submitLabel,
     } = this.props;
     const { valid } = this.state;
-    let jsx = [];
+    let actions;
+    let jsx;
 
-    if (cancellable) {
-      jsx.push(
-        <Button
-          key="cancel"
-          secondary
-          size={size}
-          onClick={this.onCancel}
-          label={cancelLabel}
-        />,
-      );
-    }
+    let submitButton;
+    let cancelButton;
 
     if (submittable) {
-      jsx.push(
+      submitButton = (
         <Button
           key="submit"
           type="submit"
@@ -225,14 +220,36 @@ class Form extends React.Component {
           size={size}
           disabled={!valid}
           label={submitLabel}
-        />,
+        />
       );
     }
 
-    if (jsx.length) {
+    if (cancellable) {
+      cancelButton = (
+        <Button
+          key="cancel"
+          secondary
+          size={size}
+          onClick={this.onCancel}
+          label={cancelLabel}
+        />
+      );
+    }
+
+    if (actionsPosition === 'left') {
+      actions = [submitButton, cancelButton];
+    } else {
+      actions = [cancelButton, submitButton];
+    }
+
+    const classNames = classnames('rc-form-actions', {
+      'rc-form-actions-left': actionsPosition === 'left',
+    });
+
+    if (actions.length) {
       jsx = (
-        <div className="rc-form-actions">
-          <ButtonGroup>{jsx}</ButtonGroup>
+        <div className={classNames}>
+          <ButtonGroup>{actions}</ButtonGroup>
         </div>
       );
     }
