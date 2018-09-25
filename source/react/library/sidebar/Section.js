@@ -181,6 +181,14 @@ class Section extends React.Component {
       );
     }
 
+    if (minimized) {
+      icon = (
+        <TooltipHoverArea tooltip={title} anchor="right">
+          {icon}
+        </TooltipHoverArea>
+      );
+    }
+
     let { label } = this.props;
     if (label) {
       label = (
@@ -209,20 +217,11 @@ class Section extends React.Component {
       /* eslint-enable jsx-a11y/anchor-is-valid */
     );
 
-    let navItem = link;
-    if (minimized) {
-      navItem = (
-        <TooltipHoverArea tooltip={title} anchor="right">
-          {link}
-        </TooltipHoverArea>
-      );
-    }
-
     return (
       <Fragment>
         {label}
         <li className={classNames}>
-          {navItem}
+          {link}
           {subsections}
         </li>
       </Fragment>

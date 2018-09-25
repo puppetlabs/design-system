@@ -12,6 +12,16 @@
   z-index: 12;
 }
 
+.rc-sidebar-item-title,
+.rc-sidebar-level-2,
+.rc-sidebar-label,
+.rc-sidebar-item-karet {
+  opacity: 1;
+  transition: visibility 0s linear 0.2s, opacity 0.3s linear, height 0.2s linear;
+  visibility: visible;
+  white-space: nowrap;
+}
+
 
 // Minimized Sidebar Styles
 .rc-sidebar-minimized {
@@ -31,12 +41,8 @@
     opacity: 0;
     overflow: hidden;
     padding: 0 !important;
+    transition-delay: 0s;
     visibility: hidden;
-  }
-
-  // Temp Fix for height judder issue
-  .rc-sidebar-level-2 {
-    display: none;
   }
 
   .rc-sidebar-divider {
@@ -107,11 +113,8 @@
   height: auto;
   line-height: $puppet-sidebar-label-line-height;
   margin: $puppet-sidebar-label-margin;
-  opacity: 1;
   padding: $puppet-sidebar-label-padding;
   text-transform: $puppet-sidebar-label-text-transform;
-  transition: opacity 0.2s ease-in-out;
-  visibility: visible;
 }
 
 .rc-sidebar-item-link {
@@ -122,7 +125,6 @@
   margin: $puppet-sidebar-item-margin;
   outline: none;
   padding: $puppet-sidebar-item-padding;
-  transition: all 0.2s ease-in-out;
 }
 
 .rc-sidebar-item-link:hover {
@@ -150,10 +152,7 @@
   font-weight: $puppet-sidebar-item-font-weight;
   height: auto;
   line-height: $puppet-sidebar-item-line-height;
-  opacity: 1;
   padding: $puppet-sidebar-item-title-padding;
-  transition: opacity 0.2s ease-in-out 0.1s;
-  visibility: visible;
 }
 
 .rc-sidebar-item-icon {
@@ -227,9 +226,7 @@
 .rc-sidebar-level-2 {
   height: auto;
   margin: $puppet-sidebar-level-2-margin !important;
-  opacity: 1;
   padding: $puppet-sidebar-level-2-padding !important;
-  visibility: visible;
 }
 
 .rc-sidebar-level-2 .rc-sidebar-item-link {
