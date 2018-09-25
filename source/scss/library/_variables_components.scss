@@ -211,9 +211,10 @@ $puppet-sidebar-dark-item-icon-fill                : $puppet-n600 !default;
 $puppet-sidebar-dark-item-icon-fill-hover          : $puppet-brand-primary !default;
 $puppet-sidebar-dark-item-icon-fill-active         : $puppet-brand-primary !default;
 $puppet-sidebar-dark-item-icon-margin              : 12px !default;
-$puppet-sidebar-dark-item-color                    : $puppet-n500 !default;
+$puppet-sidebar-dark-item-color                    : $puppet-n400 !default;
 $puppet-sidebar-dark-item-color-hover              : $puppet-brand-primary !default;
 $puppet-sidebar-dark-item-color-active             : $puppet-brand-primary !default;
+$puppet-sidebar-dark-label-color                   : $puppet-n500 !default;
 
 
 // Sidebar General
@@ -263,6 +264,7 @@ $puppet-sidebar-item-icon-margin                   : 12px !default;
 // Sidebar Sections
 
 // Labels
+$puppet-sidebar-label-color                        : $puppet-font-color-medium !default;
 $puppet-sidebar-label-font                         : $puppet-font-family-label !default;
 $puppet-sidebar-label-font-size                    : $puppet-font-size-tiny !default;
 $puppet-sidebar-label-line-height                  : $puppet-small !default;

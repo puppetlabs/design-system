@@ -124,7 +124,7 @@
 
 // Sidebar Labels
 .rc-sidebar-label {
-  color: $puppet-sidebar-item-color;
+  color: $puppet-sidebar-label-color;
   display: block;
   font-family: $puppet-sidebar-label-font;
   font-size: $puppet-sidebar-label-font-size;
@@ -302,7 +302,7 @@
   }
 
   .rc-sidebar-label {
-    color: $puppet-sidebar-dark-item-color;
+    color: $puppet-sidebar-dark-label-color;
   }
 
   .rc-sidebar-item-link:hover {
