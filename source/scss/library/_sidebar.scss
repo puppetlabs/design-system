@@ -267,6 +267,7 @@
   }
 }
 
+
 // SIDEBAR THEMES
 // ==============
 
@@ -329,10 +330,13 @@
     background: $puppet-sidebar-dark-item-bg-active;
   }
 
+  /* stylelint-disable */
+  // TODO We can probably reduce complexity so that we don't need such specific targeting
   .rc-sidebar-item-selected > .rc-sidebar-item-link .rc-sidebar-item-title,
   .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link .rc-sidebar-item-title {
     color: $puppet-sidebar-dark-item-color-active;
   }
+  /* stylelint-enable */
 
   .rc-sidebar-item-selected .rc-icon-fill,
   .rc-sidebar-item-selected:hover .rc-icon-fill {
@@ -346,10 +350,13 @@
     background: $puppet-sidebar-dark-item-bg;
   }
 
+  /* stylelint-disable */
+  // TODO We can probably reduce complexity so that we don't need such specific targeting
   .rc-sidebar-item-active-accordion > .rc-sidebar-item-link .rc-sidebar-item-title,
   .rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link .rc-sidebar-item-title {
     color: $puppet-sidebar-dark-item-color-active;
   }
+  /* stylelint-enable */
 
   .rc-sidebar-item-active-accordion .rc-icon-fill,
   .rc-sidebar-item-active-accordion:hover .rc-icon-fill {
