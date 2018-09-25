@@ -1,120 +1,3 @@
-//Dark Sidebar
-.rc-sidebar.rc-sidebar-dark {
-  background: $puppet-sidebar-dark-bg;
-  border-right: $puppet-border-dark;
-
-  .rc-sidebar-logo {
-    background: $puppet-sidebar-dark-logo-bg;
-  }
-
-  .rc-sidebar-toggle {
-    background: $puppet-sidebar-dark-bg;
-    border-right: $puppet-border-dark;
-  }
-
-  .rc-sidebar-toggle-btn:hover,
-  .rc-sidebar-toggle-btn:active,
-  .rc-sidebar-toggle-btn:focus {
-    background: $puppet-sidebar-dark-item-bg-active;
-
-    svg {
-      fill: $puppet-sidebar-dark-item-icon-fill-hover;
-    }
-  }
-
-  .rc-sidebar-divider {
-    border-top: solid 1px $puppet-n850;
-  }
-
-  .rc-sidebar-label {
-    color: $puppet-sidebar-dark-item-color;
-  }
-
-  .rc-sidebar-item-link:hover {
-    background: $puppet-sidebar-dark-item-bg-hover;
-  }
-
-  .rc-sidebar-item-link:hover .rc-sidebar-item-title {
-    color: $puppet-sidebar-dark-item-color-hover;
-  }
-
-  .rc-sidebar-item-link:hover .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill-hover;
-  }
-
-  .rc-sidebar-item-title {
-    color: $puppet-sidebar-dark-item-color;
-  }
-
-  .rc-sidebar-item-icon .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill;
-  }
-
-  .rc-sidebar-item-selected > .rc-sidebar-item-link,
-  .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link {
-    background: $puppet-sidebar-dark-item-bg-active;
-  }
-
-  .rc-sidebar-item-selected > .rc-sidebar-item-link .rc-sidebar-item-title,
-  .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link .rc-sidebar-item-title {
-    color: $puppet-sidebar-dark-item-color-active;
-  }
-
-  .rc-sidebar-item-selected .rc-icon-fill,
-  .rc-sidebar-item-selected:hover .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill-active;
-  }
-
-  // Open Item
-  // Selected Item
-  .rc-sidebar-item-active-accordion > .rc-sidebar-item-link,
-  .rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link {
-    background: $puppet-sidebar-dark-item-bg;
-  }
-
-  .rc-sidebar-item-active-accordion > .rc-sidebar-item-link .rc-sidebar-item-title,
-  .rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link .rc-sidebar-item-title {
-    color: $puppet-sidebar-dark-item-color-active;
-  }
-
-  .rc-sidebar-item-active-accordion .rc-icon-fill,
-  .rc-sidebar-item-active-accordion:hover .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill-active;
-  }
-
-  .rc-sidebar-minimized .rc-sidebar-item-active-accordion,
-  .rc-sidebar-minimized .rc-sidebar-item-active-accordion:hover {
-    .rc-icon-fill {
-      fill: $puppet-sidebar-dark-item-icon-fill;
-    }
-
-    .rc-sidebar-item-link {
-      background: $puppet-sidebar-dark-item-bg;
-    }
-
-    &.rc-sidebar-item-selected .rc-icon-fill {
-      fill: $puppet-sidebar-dark-item-icon-fill-hover;
-    }
-
-    &.rc-sidebar-item-selected .rc-sidebar-item-link {
-      background: $puppet-sidebar-dark-item-bg-active;
-    }
-  }
-
-  // Links such as "View all reports"
-  .rc-sidebar-item-link:hover {
-    background: $puppet-sidebar-dark-item-bg-hover;
-  }
-
-  .rc-sidebar-item-link:hover .rc-sidebar-item-title {
-    color: $puppet-sidebar-dark-item-color-hover;
-  }
-
-  .rc-sidebar-item-link:hover .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill-hover;
-  }
-}
-
 // Sidebar
 .rc-sidebar {
   background: $puppet-sidebar-bg;
@@ -381,5 +264,128 @@
 .rc-sidebar-view-more-item {
   .rc-sidebar-item-title {
     color: $puppet-sidebar-item-color-hover;
+  }
+}
+
+// SIDEBAR THEMES
+// ==============
+
+//Dark Sidebar
+.rc-sidebar.rc-sidebar-dark {
+  background: $puppet-sidebar-dark-bg;
+  border-right: $puppet-border-dark;
+
+  .rc-sidebar-logo {
+    background: $puppet-sidebar-dark-logo-bg;
+  }
+
+  .rc-sidebar-toggle {
+    background: $puppet-sidebar-dark-bg;
+    border-right: $puppet-border-dark;
+  }
+
+  .rc-sidebar-toggle-btn:hover,
+  .rc-sidebar-toggle-btn:active,
+  .rc-sidebar-toggle-btn:focus {
+    background: $puppet-sidebar-dark-item-bg-active;
+  }
+
+  .rc-sidebar-toggle-btn:hover svg,
+  .rc-sidebar-toggle-btn:active svg,
+  .rc-sidebar-toggle-btn:focus svg {
+    fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
+
+  .rc-sidebar-divider {
+    border-top: solid 1px $puppet-n850;
+  }
+
+  .rc-sidebar-label {
+    color: $puppet-sidebar-dark-item-color;
+  }
+
+  .rc-sidebar-item-link:hover {
+    background: $puppet-sidebar-dark-item-bg-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color;
+  }
+
+  .rc-sidebar-item-icon .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill;
+  }
+
+  .rc-sidebar-item-selected > .rc-sidebar-item-link,
+  .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link {
+    background: $puppet-sidebar-dark-item-bg-active;
+  }
+
+  .rc-sidebar-item-selected > .rc-sidebar-item-link .rc-sidebar-item-title,
+  .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-active;
+  }
+
+  .rc-sidebar-item-selected .rc-icon-fill,
+  .rc-sidebar-item-selected:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-active;
+  }
+
+  // Open Item
+  // Selected Item
+  .rc-sidebar-item-active-accordion > .rc-sidebar-item-link,
+  .rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link {
+    background: $puppet-sidebar-dark-item-bg;
+  }
+
+  .rc-sidebar-item-active-accordion > .rc-sidebar-item-link .rc-sidebar-item-title,
+  .rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-active;
+  }
+
+  .rc-sidebar-item-active-accordion .rc-icon-fill,
+  .rc-sidebar-item-active-accordion:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-active;
+  }
+
+  // Links such as "View all reports"
+  .rc-sidebar-item-link:hover {
+    background: $puppet-sidebar-dark-item-bg-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
+}
+
+// Minimized Dark Theme
+.rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-item-active-accordion,
+.rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-item-active-accordion:hover {
+  .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill;
+  }
+
+  .rc-sidebar-item-link {
+    background: $puppet-sidebar-dark-item-bg;
+  }
+
+  &.rc-sidebar-item-selected .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
+
+  &.rc-sidebar-item-selected .rc-sidebar-item-link {
+    background: $puppet-sidebar-dark-item-bg-active;
   }
 }
