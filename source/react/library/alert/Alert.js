@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import React from 'react';
-import Button from '../buttons/Button';
 import Text from '../text';
 import Icon from '../icon';
 import { ENTER_KEY_CODE } from '../../constants';
@@ -13,7 +12,7 @@ const propTypes = {
   closeable: PropTypes.bool,
   growl: PropTypes.bool,
   onClose: PropTypes.func,
-  dismissAfter: PropTypes.number,
+  dismissAfter: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
 };
 
 const defaultProps = {
