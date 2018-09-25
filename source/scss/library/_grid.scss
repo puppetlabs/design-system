@@ -83,23 +83,6 @@ $columns: (
   padding-right: 0;
 }
 
-// Grid - Collapse outside & inner padding halfed
-
-.rc-grid-collapse-all-slim-inner > .rc-grid-row > .rc-grid-column {
-  padding-left: $puppet-grid-gutter/2;
-  padding-right: $puppet-grid-gutter/2;
-}
-
-.rc-grid-collapse-all-slim-inner
-> .rc-grid-row
-> .rc-grid-column:first-of-type {
-  padding-left: 0;
-}
-
-.rc-grid-collapse-all-slim-inner > .rc-grid-row > .rc-grid-column:last-of-type {
-  padding-right: 0;
-}
-
 // Grid - Divided vertically
 
 .rc-grid-divided-vertically > .rc-grid-row {
