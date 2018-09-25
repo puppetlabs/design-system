@@ -21,16 +21,16 @@
   @include rc-alert-colors('warning', $puppet-warn-bg-base);
   @include rc-alert-colors('info', $puppet-action-base);
   
-  border-radius: $puppet-border-radius;
-  box-shadow: 8px 8px 16px 0 rgba(0, 14, 28, 0.32);
+  border-radius: $puppet-alert-border-radius;
+  box-shadow: $puppet-alert-shadow;
   cursor: default;
   display: flex;
   left: 50%;
-  margin-left: -197px;
-  padding: 10px 16px;
+  margin-left: -$puppet-alert-width / 2;
+  padding: $puppet-alert-padding;
   position: fixed;
   top: 8px;
-  width: 394px;
+  width: $puppet-alert-width;
   z-index: 25;
 }
 
