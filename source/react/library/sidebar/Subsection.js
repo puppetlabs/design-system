@@ -91,6 +91,7 @@ class Subsection extends React.Component {
           onKeyDown={this.onKeyDownViewMore}
           onSubItemClick={this.onSubItemClick}
           title="View all reports..."
+          truncate={false}
         />
       );
 
