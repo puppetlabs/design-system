@@ -19,8 +19,10 @@ $puppet-brand-secondary                      : $puppet-teal !default;
 
 // Neutrals
 $puppet-black                                : #04080a !default;
-$puppet-n900                                 : #122029 !default;
-$puppet-n800                                 : #40484d !default;
+$puppet-n950                                 : #111314 !default;
+$puppet-n900                                 : #222629 !default;
+$puppet-n850                                 : #33393d !default;
+$puppet-n800                                 : #454c52 !default;
 $puppet-n700                                 : #5d6f7a !default;
 $puppet-n600                                 : #818f99 !default;
 $puppet-n500                                 : #b0b9bf !default;
@@ -49,7 +51,7 @@ $puppet-r900                                 : #3d0b02 !default;
 $puppet-r800                                 : #520f03 !default;
 $puppet-r700                                 : #7a1705 !default;
 $puppet-r600                                 : #a31e07 !default;
-$puppet-r500                                 : #cc3318 !default;
+$puppet-r500                                 : #c43118 !default;
 $puppet-r400                                 : #f54e31 !default;
 $puppet-r300                                 : #f57058 !default;
 $puppet-r200                                 : #ffa899 !default;
@@ -313,7 +315,7 @@ $puppet-text-label-weight                    : $puppet-font-weight-medium !defau
 
 // Borders
 // ----------------------------------------------------------------------------
-$puppet-border-color-base                    : $puppet-n500 !default;
+$puppet-border-color-base                    : $puppet-n400 !default;
 $puppet-border-color-subtle                  : $puppet-n300 !default;
 $puppet-border-color-bold                    : $puppet-n700 !default;
 $puppet-border-color-hover                   : $puppet-n600 !default;
