@@ -11,12 +11,14 @@
 }
 
 .rc-pagenav-left {
-  flex: 1;
+  flex: 1 0 auto;
 }
 
 .rc-pagenav-right {
   align-items: center;
   display: flex;
+  flex: 1 0 auto;
+  justify-content: flex-end;
 
   > * {
     margin: $puppet-pagenav-action-margin;

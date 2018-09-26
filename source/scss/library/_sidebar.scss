@@ -2,7 +2,7 @@
 .rc-sidebar {
   background: $puppet-sidebar-bg;
   border-right: $puppet-border-subtle;
-  font: $puppet-sidebar-font;
+  font-family: $puppet-sidebar-font;
   height: inherit;
   margin-bottom: $puppet-sidebar-toggle-height;
   overflow: auto;
@@ -26,6 +26,30 @@
   white-space: nowrap;
 }
 
+.rc-sidebar-logo {
+  background: $puppet-sidebar-logo-bg;
+  height: $puppet-sidebar-logo-height;
+  margin: $puppet-sidebar-logo-margin;
+  overflow: hidden;
+  padding: $puppet-sidebar-logo-padding;
+  transition: all 0.2s ease-in-out;
+
+  .rc-logo-text {
+    opacity: 100;
+    transition: all 0.2s ease-in-out;
+    visibility: visible;
+  }
+}
+
+.rc-sidebar-minimized .rc-sidebar-logo {
+  padding: $puppet-sidebar-minimized-logo-padding;
+
+  .rc-logo-text {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
 // Minimized Sidebar Styles
 .rc-sidebar-minimized {
   margin-right: 0;
@@ -45,7 +69,8 @@
   }
 
   .rc-sidebar-divider {
-    margin: $puppet-sidebar-divider-margin-closed;
+    border-top: $puppet-sidebar-divider;
+    margin: $puppet-sidebar-closed-divider-margin;
   }
 
   .rc-sidebar-toggle {
@@ -53,6 +78,13 @@
     margin-right: auto;
     transition: width 0.2s ease-in-out;
     width: $puppet-sidebar-minimized-width;
+  }
+
+  .rc-sidebar-toggle-btn {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+    width: $puppet-sidebar-item-height-toggled;
   }
 
   .rc-sidebar-item-content {
@@ -69,6 +101,7 @@
   display: flex;
   height: $puppet-sidebar-toggle-height;
   left: 0;
+  overflow: hidden;
   padding: 8px;
   position: absolute;
   text-align: center;
@@ -77,6 +110,8 @@
 }
 
 .rc-sidebar-toggle-btn {
+  height: $puppet-sidebar-item-height-toggled;
+
   .rc-icon {
     height: $puppet-sidebar-toggle-icon-size;
     width: $puppet-sidebar-toggle-icon-size;
@@ -96,16 +131,16 @@
 
 // Sidebar Dividers
 .rc-sidebar-divider {
-  border: 0;
   border-top: $puppet-sidebar-divider;
+  border-top-color: transparent;
   display: block;
-  margin: $puppet-sidebar-divider-margin-open;
+  margin: $puppet-sidebar-open-divider-margin;
   transition: margin 0.2s ease-in-out;
 }
 
 // Sidebar Labels
 .rc-sidebar-label {
-  color: $puppet-sidebar-item-color;
+  color: $puppet-sidebar-label-color;
   display: block;
   font-family: $puppet-sidebar-label-font;
   font-size: $puppet-sidebar-label-font-size;
@@ -244,5 +279,135 @@
 .rc-sidebar-view-more-item {
   .rc-sidebar-item-title {
     color: $puppet-sidebar-item-color-hover;
+  }
+}
+
+
+// SIDEBAR THEMES
+// ==============
+
+//Dark Sidebar
+.rc-sidebar.rc-sidebar-dark {
+  background: $puppet-sidebar-dark-bg;
+  border-right: $puppet-border-dark;
+
+  .rc-sidebar-logo {
+    background: $puppet-sidebar-dark-logo-bg;
+  }
+
+  .rc-sidebar-toggle {
+    background: $puppet-sidebar-dark-bg;
+    border-right: $puppet-border-dark;
+  }
+
+  .rc-sidebar-toggle-btn:hover,
+  .rc-sidebar-toggle-btn:active,
+  .rc-sidebar-toggle-btn:focus {
+    background: $puppet-sidebar-dark-item-bg-active;
+  }
+
+  .rc-sidebar-toggle-btn:hover svg,
+  .rc-sidebar-toggle-btn:active svg,
+  .rc-sidebar-toggle-btn:focus svg {
+    fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
+
+  .rc-sidebar-label {
+    color: $puppet-sidebar-dark-label-color;
+  }
+
+  .rc-sidebar-item-link:hover {
+    background: $puppet-sidebar-dark-item-bg-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color;
+  }
+
+  .rc-sidebar-item-icon .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill;
+  }
+
+  .rc-sidebar-item-selected > .rc-sidebar-item-link,
+  .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link {
+    background: $puppet-sidebar-dark-item-bg-active;
+  }
+
+  /* stylelint-disable */
+  // TODO We can probably reduce complexity so that we don't need such specific targeting
+  .rc-sidebar-item-selected > .rc-sidebar-item-link .rc-sidebar-item-title,
+  .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-active;
+  }
+  /* stylelint-enable */
+
+  .rc-sidebar-item-selected .rc-icon-fill,
+  .rc-sidebar-item-selected:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-active;
+  }
+
+  // Open Item
+  // Selected Item
+  .rc-sidebar-item-active-accordion > .rc-sidebar-item-link,
+  .rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link {
+    background: $puppet-sidebar-dark-item-bg;
+  }
+
+  /* stylelint-disable */
+  // TODO We can probably reduce complexity so that we don't need such specific targeting
+  .rc-sidebar-item-active-accordion > .rc-sidebar-item-link .rc-sidebar-item-title,
+  .rc-sidebar-item-active-accordion:hover  > .rc-sidebar-item-link .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-active;
+  }
+  /* stylelint-enable */
+
+  .rc-sidebar-item-active-accordion .rc-icon-fill,
+  .rc-sidebar-item-active-accordion:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-active;
+  }
+
+  // Links such as "View all reports"
+  .rc-sidebar-item-link:hover {
+    background: $puppet-sidebar-dark-item-bg-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-sidebar-item-title {
+    color: $puppet-sidebar-dark-item-color-hover;
+  }
+
+  .rc-sidebar-item-link:hover .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
+}
+
+// Minimized Dark Theme
+.rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-divider {
+  border-top: solid 1px $puppet-n850;
+}
+
+.rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-item-active-accordion,
+.rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-item-active-accordion:hover {
+  .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill;
+  }
+
+  .rc-sidebar-item-link {
+    background: $puppet-sidebar-dark-item-bg;
+  }
+
+  &.rc-sidebar-item-selected .rc-icon-fill {
+    fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
+
+  &.rc-sidebar-item-selected .rc-sidebar-item-link {
+    background: $puppet-sidebar-dark-item-bg-active;
   }
 }
