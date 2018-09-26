@@ -1,3 +1,7 @@
+# 4.4.0
+
+- Updates to sidebar to include logo and dark theme
+
 # 4.3.0
 
 - Added a new alert component
