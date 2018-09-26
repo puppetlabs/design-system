@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classnames from 'classnames';
 import { iconSizes } from '../../constants';
 import icons from './icons';
 
@@ -10,15 +11,18 @@ const propTypes = {
   width: PropTypes.string,
   type: PropTypes.string,
   svg: PropTypes.element,
+  className: PropTypes.string,
 };
 
 const defaultProps = {
   height: '30px',
   width: '30px',
+  className: '',
 };
 
 const Icon = props => {
   const {
+    className,
     width,
     type,
     height,
@@ -63,11 +67,11 @@ const Icon = props => {
   }
 
   if (svg) {
-    const className = `rc-icon rc-icon-${type}`;
+    const classNames = classnames('rc-icon', `rc-icon-${type}`, className);
 
     icon = (
       <svg
-        className={className}
+        className={classNames}
         width={width}
         height={height}
         viewBox={viewBox}

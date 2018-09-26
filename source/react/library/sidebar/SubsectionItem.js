@@ -76,7 +76,9 @@ class SubsectionItem extends React.Component {
           onKeyDown={this.onKeyDown}
         >
           <div className="rc-sidebar-item-content">
-            <span className="rc-sidebar-item-title">{title}</span>
+            <span title={title} className="rc-sidebar-item-title">
+              {title}
+            </span>
           </div>
         </a>
       </li>

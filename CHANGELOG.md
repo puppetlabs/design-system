@@ -1,10 +1,16 @@
+# 4.3.0
+
+- Added a new alert component
+- Cleaning up the sidebar animations and UX
+- Various small design updates
+
 # 4.2.0
 
-* Update modal styles, in particular confirmation modal styles
-* Internationalize modal strings
-* Improve accessibility of buttons
-* Fix oneOfType warnings
-* Support both left and right actions placements for forms/modals
+- Update modal styles, in particular confirmation modal styles
+- Internationalize modal strings
+- Improve accessibility of buttons
+- Fix oneOfType warnings
+- Support both left and right actions placements for forms/modals
 
 # 4.1.4
 
