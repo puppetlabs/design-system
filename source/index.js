@@ -53,6 +53,7 @@ import Grid from './react/library/grid';
 import Heading from './react/library/heading';
 import Text from './react/library/text';
 import Alert from './react/library/alert';
+import Badge from './react/library/badge';
 
 export {
   Button,
@@ -104,4 +105,5 @@ export {
   Heading,
   Text,
   Alert,
+  Badge,
 };
