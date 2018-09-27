@@ -1,3 +1,9 @@
+# 4.5.0
+
+- New icons: rocket, diamond, target, build, deploy
+- Allow GridColumn to take a className
+- Remove obsolete Grid collapse style
+
 # 4.4.0
 
 - Updates to sidebar to include logo and dark theme
