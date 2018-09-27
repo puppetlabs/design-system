@@ -1,3 +1,6 @@
+# 4.6.0
+- Add badge component
+
 # 4.5.0
 
 - New icons: rocket, diamond, target, build, deploy
