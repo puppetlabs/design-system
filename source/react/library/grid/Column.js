@@ -6,17 +6,19 @@ import { mapColumnsToText } from '../../helpers/statics';
 const propTypes = {
   children: PropTypes.node.isRequired,
   columns: PropTypes.number,
+  className: PropTypes.string,
 };
 
 const defaultProps = {
   columns: null,
+  className: '',
 };
 
 const Column = props => {
-  const { columns, children } = props;
+  const { columns, children, className } = props;
   const columnText = mapColumnsToText[columns];
 
-  const classNames = classnames('rc-grid-column', {
+  const classNames = classnames('rc-grid-column', className, {
     [`rc-grid-column-${columnText}-columns`]: columnText,
   });
 
