@@ -802,7 +802,7 @@ $puppet-breadcrumb-spacing                         : $puppet-medium !default;
 
 // Grid
 $puppet-grid-gutter                                : $puppet-size-base !default;
-$puppet-grid-divider-border                        : 1px solid $puppet-n400;;
+$puppet-grid-divider-border                        : $puppet-border-subtle;
 
 
 // Heading
