@@ -1,28 +1,28 @@
 ### Bold badges (default)
 
 ```
-<Badge danger>Danger</Badge>
-<Badge info>Info</Badge>
+<Badge color="danger">Danger</Badge>
+<Badge color="info">Info</Badge>
 <Badge>Neutral (default)</Badge>
-<Badge success>Success</Badge>
-<Badge warning>Warning</Badge>
+<Badge color="success">Success</Badge>
+<Badge color="warning">Warning</Badge>
 ```
 
 ### Subtle badges
 
 ```
-<Badge subtle danger>Danger</Badge>
-<Badge subtle info>Info</Badge>
-<Badge subtle>Neutral (default)</Badge>
-<Badge subtle success>Success</Badge>
-<Badge subtle warning>Warning</Badge>
+<Badge type="subtle" color="danger">Danger</Badge>
+<Badge type="subtle" color="info">Info</Badge>
+<Badge type="subtle">Neutral (default)</Badge>
+<Badge type="subtle" color="success">Success</Badge>
+<Badge type="subtle" color="warning">Warning</Badge>
 ```
 
 ### Number pills
 ```
-<Badge pill danger>12</Badge>
-<Badge pill info>24</Badge>
-<Badge pill>36</Badge>
-<Badge pill success>48</Badge>
-<Badge pill warning>60</Badge>
+<Badge type="pill" color="danger">12</Badge>
+<Badge type="pill" color="info">24</Badge>
+<Badge type="pill">36</Badge>
+<Badge type="pill" color="success">48</Badge>
+<Badge type="pill" color="warning">60</Badge>
 ```

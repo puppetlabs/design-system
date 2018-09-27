@@ -30,15 +30,6 @@ const isNodeInRoot = (node, root) => {
 
 const getKey = (child = {}, idx) => child.key || String(idx);
 
-/**
- * Used to map a set of mutually exclusive boolean props to a single string option
- * Being able to write <Badge bold danger /> is super nice for the user, but
- * being able to code with type="bold" and color="danger" is super nice for the
- * code. This function allows us to have both
- */
-const selectFirstTrue = (options, fallback) =>
-  Object.keys(options).find(key => options[key]) || fallback;
-
 const mapColumnsToText = {
   1: 'one',
   2: 'two',
@@ -60,7 +51,6 @@ export {
   isNodeInRoot,
   getKey,
   mapColumnsToText,
-  selectFirstTrue,
 };
 
 export default isNodeInRoot;
