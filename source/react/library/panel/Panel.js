@@ -10,6 +10,7 @@ const propTypes = {
   /** Callback for detecting user remove action */
   onRemove: PropTypes.func,
   children: PropTypes.node,
+  type: PropTypes.oneOf(['flat', 'raised', 'active', null]),
 };
 
 const defaultProps = {
@@ -17,6 +18,7 @@ const defaultProps = {
   className: '',
   onRemove: null,
   children: null,
+  type: null,
 };
 
 /**
@@ -69,10 +71,11 @@ class Panel extends React.Component {
   }
 
   render() {
-    const { children, secondary, onRemove, className } = this.props;
+    const { children, secondary, type, onRemove, className } = this.props;
     const classNames = classnames('rc-panel', className, {
       'rc-panel-secondary': secondary,
       'rc-panel-removable': onRemove,
+      [`rc-panel-${type}`]: type,
     });
 
     const removeButton = this.renderRemoveButton();
