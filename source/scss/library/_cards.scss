@@ -7,6 +7,9 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: border, box-shadow, background-color, border-radius, top, left, bottom, right;
+  transition-duration: $puppet-animation-speed-base;
+  transition-timing-function: ease-in-out;
 }
 
 .rc-card-header {
@@ -173,11 +176,12 @@
 }
 
 .rc-card-selectable {
+  box-shadow: $puppet-card-selectable-shadow;
   cursor: pointer;
 
   &:hover {
     border: $puppet-card-border-hover;
-    box-shadow: $puppet-card-shadow-hover;
+    box-shadow: $puppet-card-selectable-shadow-hover;
   }
 }
 

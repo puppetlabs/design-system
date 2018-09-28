@@ -21,7 +21,6 @@
 
   &.rc-panel-active {
     border: $puppet-border-action;
-    border-width: $puppet-border-size-bold;
-    box-shadow: $puppet-elev-150-shadow;
+    box-shadow: $puppet-selected-shadow;
   }
 }

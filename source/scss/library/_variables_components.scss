@@ -170,7 +170,6 @@ $puppet-button-error-border-color-active           : transparent !default;
 $puppet-card-padding                               : $puppet-medium !default;
 $puppet-card-bg                                    : $puppet-bg-light !default;
 $puppet-card-border                                : $puppet-border !default;
-$puppet-card-shadow                                : $puppet-outer-shadow !default;
 
 // Card Header
 $puppet-card-header-padding                        : $puppet-medium !default;
@@ -189,12 +188,20 @@ $puppet-card-description-font-size                 : $puppet-font-size-base !def
 // Card Color
 $puppet-card-action-color-active                   : $puppet-action-base !default;
 $puppet-card-color                                 : $puppet-font-color-base !default;
+
+// Card Borders
 $puppet-card-border                                : $puppet-border !default;
-$puppet-card-border-hover                          : $puppet-border-hover !default;
+$puppet-card-border-hover                          : $puppet-border-action !default;
 $puppet-card-border-radius                         : $puppet-border-radius !default;
-$puppet-card-shadow-hover                          : $puppet-selectable-shadow-hover !default;
 $puppet-card-border-selected                       : $puppet-border-action !default;
 $puppet-card-border-selected-hover                 : $puppet-border-action-hover !default;
+
+// Card Shadows
+// TODO: All cards currently have shadows. Need to have flat variation by default with no shadow.
+// Note that card shadows include an action color to fake a 2px border.
+$puppet-card-shadow                                : $puppet-elev-50-shadow !default;
+$puppet-card-selectable-shadow                     : $puppet-selectable-shadow !default;
+$puppet-card-selectable-shadow-hover               : $puppet-selectable-shadow-hover !default;
 $puppet-card-shadow-selected                       : $puppet-selected-shadow !default;
 $puppet-card-shadow-selected-hover                 : $puppet-selected-shadow-hover !default;
 
