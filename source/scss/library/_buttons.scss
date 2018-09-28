@@ -23,6 +23,7 @@
   &:focus {
     background: $bg-hover;
     border: 1px solid $border-hover;
+    box-shadow: 0 1px 0 darken($bg-hover, 10%);
     color: $color-hover !important;
     outline-offset: 1px;
     text-decoration: none !important;
@@ -49,6 +50,7 @@
   &:active {
     background: $bg-active;
     border: 1px solid $border-active;
+    box-shadow: 0 1px 0 darken($bg-active, 10%);
     color: $color-active !important;
 
     .rc-icon {

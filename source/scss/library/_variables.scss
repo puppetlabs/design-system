@@ -180,7 +180,7 @@ $puppet-action-active-neutral                : $puppet-n700 !default;
 // Subtle Action Colors
 // Background for switches, secondary button, etc.
 $puppet-action-subtle                        : $puppet-n300 !default;
-$puppet-action-hover-subtle                  : darken($puppet-n200, 10%) !default;
+$puppet-action-hover-subtle                  : darken($puppet-n200, 1%) !default;
 $puppet-action-active-subtle                 : $puppet-n400 !default;
 
 // Disabled Colors
