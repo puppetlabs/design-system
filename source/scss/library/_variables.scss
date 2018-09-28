@@ -179,9 +179,9 @@ $puppet-action-active-neutral                : $puppet-n700 !default;
 
 // Subtle Action Colors
 // Background for switches, secondary button, etc.
-$puppet-action-subtle                        : $puppet-n200 !default;
-$puppet-action-hover-subtle                  : $puppet-n100 !default;
-$puppet-action-active-subtle                 : $puppet-n300 !default;
+$puppet-action-subtle                        : $puppet-n300 !default;
+$puppet-action-hover-subtle                  : darken($puppet-n200, 1%) !default;
+$puppet-action-active-subtle                 : $puppet-n400 !default;
 
 // Disabled Colors
 // ----------------------------------------------------------------------------
@@ -256,7 +256,7 @@ $puppet-font-color-light                     : $puppet-white !default;
 $puppet-line-height-default                  : 1.5em !default;
 
 $puppet-font-weight-normal                   : 400 !default;
-$puppet-font-weight-medium                   : 400 !default; // deprecating in a future release
+$puppet-font-weight-medium                   : 500 !default;
 $puppet-font-weight-heavy                    : 600 !default;
 
 // Content
@@ -267,7 +267,8 @@ $puppet-heading-color                        : $puppet-font-color-base !default;
 $puppet-heading-font-size-base               : $puppet-font-size-base !default;
 $puppet-heading-font-weight                  : $puppet-font-weight-medium !default;
 $puppet-heading-line-height                  : 1.25em !default;
-$puppet-heading-margin                       : 0 0 $puppet-medium !default;
+$puppet-heading-margin                       : 0 0 12px !default;
+$puppet-heading-margin-small                 : 0 0 12px !default;
 $puppet-heading-letter-spacing               : 0.4px !default;
 
 $puppet-h1-font-size                         : $puppet-font-size-huge !default;
@@ -366,15 +367,25 @@ $puppet-bq-padding                           : $puppet-tiny $puppet-medium !defa
 
 // Shadows
 // ----------------------------------------------------------------------------
+
+// New shadow elevations
+$puppet-elev-50-shadow: 1px 1px 2px rgba($puppet-black, 0.08) !default;
+$puppet-elev-100-shadow: 1px 1px 2px rgba($puppet-black, 0.16) !default;
+$puppet-elev-150-shadow: 2px 2px 4px rgba($puppet-black, 0.16) !default;
+$puppet-elev-200-shadow: 2px 2px 8px rgba($puppet-black, 0.16) !default;
+$puppet-elev-400-shadow: 8px 8px 16px rgba($puppet-black, 0.16) !default;
+$puppet-elev-800-shadow: 8px 8px 32px rgba($puppet-black, 0.16) !default;
+
 $puppet-outer-shadow                         : 0 1px 2px rgba(0, 0, 0, 0.05) !default;
 $puppet-outer-shadow-large                   : 2px 2px 4px rgba(0, 0, 0, 0.05) !default;
 $puppet-outer-shadow-huge                    : 0 0 10px rgba(0, 0, 0, 0.08) !default;
 $puppet-outer-shadow-giant                   : 0 0 60px rgba(0, 0, 0, 0.3) !default;
 
-$puppet-selectable-shadow                    : 0 0 0 1px $puppet-border-color-base !default;
-$puppet-selectable-shadow-hover              : 0 0 0 1px $puppet-border-color-hover !default;
-$puppet-selected-shadow                      : 0 0 0 1px $puppet-action-base !default;
-$puppet-selected-shadow-hover                : 0 0 0 1px $puppet-action-hover !default;
+// Transparentize is used so there is a smooth opacity transition and no pop-in
+$puppet-selectable-shadow                    : 0 0 0 1px transparentize($puppet-action-base, 1), $puppet-elev-50-shadow !default;
+$puppet-selectable-shadow-hover              : 0 0 0 1px transparentize($puppet-action-base, 0), $puppet-elev-100-shadow !default;
+$puppet-selected-shadow                      : 0 0 0 1px $puppet-action-base, $puppet-elev-150-shadow !default;
+$puppet-selected-shadow-hover                : 0 0 0 1px $puppet-action-hover, $puppet-elev-150-shadow !default;
 
 // Animations
 // ----------------------------------------------------------------------------

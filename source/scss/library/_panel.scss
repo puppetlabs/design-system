@@ -10,4 +10,17 @@
   &.rc-panel-secondary {
     background: $puppet-panel-bg-secondary;
   }
+
+  &.rc-panel-flat {
+    box-shadow: none;
+  }
+
+  &.rc-panel-raised {
+    box-shadow: $puppet-elev-100-shadow;
+  }
+
+  &.rc-panel-active {
+    border: $puppet-border-action;
+    box-shadow: $puppet-selected-shadow;
+  }
 }

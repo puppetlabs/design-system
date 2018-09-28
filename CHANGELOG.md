@@ -1,7 +1,14 @@
+# 4.7.1
+
+- Updates to the design
+- New type prop for panels
+
 # 4.7.0
+
 - Add Link component
 
 # 4.6.0
+
 - Add badge component
 
 # 4.5.0

@@ -50,10 +50,10 @@ $puppet-blank-slate-max-width                      : 600px;
 // ----------------------------------------------------------------------------
 // Button variables/options
 $puppet-button-border-radius                       : $puppet-border-radius !default;
-$puppet-floating-action-button-height              : $puppet-giant !default;
+$puppet-floating-action-button-height              : 40px !default;
 $puppet-button-badge-size                          : $puppet-small !default;
 $puppet-button-font-family                         : $puppet-font-family-button !default;
-$puppet-button-font-weight                         : $puppet-font-weight-heavy !default;
+$puppet-button-font-weight                         : $puppet-font-weight-medium !default;
 $puppet-button-text-transform                      : none !default;
 
 // Default Buttons
@@ -170,7 +170,6 @@ $puppet-button-error-border-color-active           : transparent !default;
 $puppet-card-padding                               : $puppet-medium !default;
 $puppet-card-bg                                    : $puppet-bg-light !default;
 $puppet-card-border                                : $puppet-border !default;
-$puppet-card-shadow                                : $puppet-outer-shadow !default;
 
 // Card Header
 $puppet-card-header-padding                        : $puppet-medium !default;
@@ -189,12 +188,20 @@ $puppet-card-description-font-size                 : $puppet-font-size-base !def
 // Card Color
 $puppet-card-action-color-active                   : $puppet-action-base !default;
 $puppet-card-color                                 : $puppet-font-color-base !default;
+
+// Card Borders
 $puppet-card-border                                : $puppet-border !default;
-$puppet-card-border-hover                          : $puppet-border-hover !default;
+$puppet-card-border-hover                          : $puppet-border-action !default;
 $puppet-card-border-radius                         : $puppet-border-radius !default;
-$puppet-card-shadow-hover                          : $puppet-selectable-shadow-hover !default;
 $puppet-card-border-selected                       : $puppet-border-action !default;
 $puppet-card-border-selected-hover                 : $puppet-border-action-hover !default;
+
+// Card Shadows
+// TODO: All cards currently have shadows. Need to have flat variation by default with no shadow.
+// Note that card shadows include an action color to fake a 2px border.
+$puppet-card-shadow                                : $puppet-elev-50-shadow !default;
+$puppet-card-selectable-shadow                     : $puppet-selectable-shadow !default;
+$puppet-card-selectable-shadow-hover               : $puppet-selectable-shadow-hover !default;
 $puppet-card-shadow-selected                       : $puppet-selected-shadow !default;
 $puppet-card-shadow-selected-hover                 : $puppet-selected-shadow-hover !default;
 
@@ -249,7 +256,7 @@ $puppet-sidebar-item-color-hover                   : $puppet-action-base !defaul
 $puppet-sidebar-item-color-active                  : $puppet-action-base !default;
 
 $puppet-sidebar-item-font-size                     : 16px !default;
-$puppet-sidebar-item-font-weight                   : $puppet-font-weight-medium !default;
+$puppet-sidebar-item-font-weight                   : $puppet-font-weight-normal !default;
 $puppet-sidebar-item-height-toggled                : 40px !default;
 $puppet-sidebar-item-line-height                   : 32px !default;
 $puppet-sidebar-item-margin                        : 2px 16px !default;
@@ -577,7 +584,9 @@ $puppet-panel-bg-secondary                         : $puppet-n50 !default;
 $puppet-panel-padding                              : $puppet-medium !default;
 $puppet-panel-border                               : $puppet-border !default;
 $puppet-panel-border-radius                        : $puppet-border-radius !default;
-$puppet-panel-outer-shadow                         : $puppet-outer-shadow !default;
+$puppet-panel-outer-shadow                         : $puppet-elev-50-shadow !default;
+
+
 
 // Preset ranges
 // ----------------------------------------------------------------------------
@@ -778,7 +787,7 @@ $puppet-header-nav-icon-margin                     : 24px !default;
 
 // Pagenav
 // ----------------------------------------------------------------------------
-$puppet-pagenav-height                             : 64px !default;
+$puppet-pagenav-height                             : 72px !default;
 $puppet-pagenav-bg                                 : transparent !default;
 $puppet-pagenav-section-padding                    : 0 8px !default;
 $puppet-pagenav-action-margin                      : 0 0 0 $puppet-size-base !default;
@@ -800,7 +809,7 @@ $puppet-breadcrumb-spacing                         : $puppet-medium !default;
 
 // Grid
 $puppet-grid-gutter                                : $puppet-size-base !default;
-$puppet-grid-divider-border                        : 1px solid $puppet-n400;;
+$puppet-grid-divider-border                        : $puppet-border-subtle;
 
 
 // Heading
@@ -814,38 +823,38 @@ $puppet-heading-subtle-color                       : $puppet-font-color-subtle !
 $puppet-heading-hero-font-size                     : 48px !default;
 $puppet-heading-hero-line-height                   : 56px !default;
 $puppet-heading-hero-font-family                   : $puppet-font-family-heading !default;
-$puppet-heading-hero-font-weight                   : $puppet-font-weight-heavy !default;
+$puppet-heading-hero-font-weight                   : $puppet-font-weight-medium !default;
 
 
 $puppet-heading-h1-font-size                       : 40px !default;
 $puppet-heading-h1-line-height                     : 48px !default;
 $puppet-heading-h1-font-family                     : $puppet-font-family-heading !default;
-$puppet-heading-h1-font-weight                     : $puppet-font-weight-heavy !default;
+$puppet-heading-h1-font-weight                     : $puppet-font-weight-medium !default;
 
 $puppet-heading-h2-font-size                       : 32px !default;
 $puppet-heading-h2-line-height                     : 40px !default;
 $puppet-heading-h2-font-family                     : $puppet-font-family-heading !default;
-$puppet-heading-h2-font-weight                     : $puppet-font-weight-heavy !default;
+$puppet-heading-h2-font-weight                     : $puppet-font-weight-medium !default;
 
 $puppet-heading-h3-font-size                       : 24px !default;
 $puppet-heading-h3-line-height                     : 32px !default;
 $puppet-heading-h3-font-family                     : $puppet-font-family-heading !default;
-$puppet-heading-h3-font-weight                     : $puppet-font-weight-heavy !default;
+$puppet-heading-h3-font-weight                     : $puppet-font-weight-medium !default;
 
 $puppet-heading-h4-font-size                       : 18px !default;
 $puppet-heading-h4-line-height                     : 24px !default;
 $puppet-heading-h4-font-family                     : $puppet-font-family-heading !default;
-$puppet-heading-h4-font-weight                     : $puppet-font-weight-heavy !default;
+$puppet-heading-h4-font-weight                     : $puppet-font-weight-medium !default;
 
 $puppet-heading-h5-font-size                       : 14px !default;
 $puppet-heading-h5-line-height                     : 20px !default;
 $puppet-heading-h5-font-family                     : $puppet-font-family !default;
-$puppet-heading-h5-font-weight                     : $puppet-font-weight-heavy !default;
+$puppet-heading-h5-font-weight                     : $puppet-font-weight-medium !default;
 
 $puppet-heading-h6-font-size                       : 12px !default;
 $puppet-heading-h6-line-height                     : 18px !default;
 $puppet-heading-h6-font-family                     : $puppet-font-family !default;
-$puppet-heading-h6-font-weight                     : $puppet-font-weight-heavy !default;
+$puppet-heading-h6-font-weight                     : $puppet-font-weight-medium !default;
 
 $puppet-heading-small-title-font-size              : 11px !default;
 $puppet-heading-small-title-line-height            : 16px !default;

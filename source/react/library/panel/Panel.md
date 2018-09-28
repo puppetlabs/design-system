@@ -12,6 +12,30 @@ Secondary `Panel`:
 </Panel>
 ```
 
+Flat `Panel`:
+
+```
+<Panel type="flat">
+  I am a happy flat panel.
+</Panel>
+```
+
+Raised `Panel`:
+
+```
+<Panel type="raised">
+  I am a happy raised panel.
+</Panel>
+```
+
+Active `Panel`:
+
+```
+<Panel type="active">
+  I am a happy active panel.
+</Panel>
+```
+
 Removable `Panel`:
 
 ```
