@@ -1,0 +1,73 @@
+.rc-badge {
+  border-radius: $puppet-border-radius-small;
+  display: inline-block;
+  font-family: $puppet-font-family-label;
+  font-size: $puppet-font-size-tiny;
+  font-weight: $puppet-font-weight-heavy;
+  line-height: $puppet-medium;
+  margin: 0 $puppet-mini;
+  padding: 0 4px;
+  text-align: center;
+}
+
+.rc-badge-pill,
+.rc-badge-bold {
+  &.rc-badge-danger {
+    background-color: $puppet-neg-bg-base;
+    color: $puppet-white;
+  }
+
+  &.rc-badge-info {
+    background-color: $puppet-b600;
+    color: $puppet-white;
+  }
+
+  &.rc-badge-neutral {
+    background-color: $puppet-n300;
+    color: $puppet-font-color-base;
+  }
+
+  &.rc-badge-success {
+    background-color: $puppet-pos-color-base;
+    color: $puppet-white;
+  }
+
+
+  &.rc-badge-warning {
+    background-color: $puppet-warn-color-base;
+    color: $puppet-white;
+  }
+}
+
+.rc-badge-pill {
+  border-radius: $puppet-circle-radius;
+  padding: 0 8px;
+}
+
+.rc-badge-subtle {
+  &.rc-badge-danger {
+    background-color: $puppet-r100;
+    color: $puppet-r600;
+  }
+
+  &.rc-badge-info {
+    background-color: $puppet-b100;
+    color: $puppet-b500;
+  }
+
+  &.rc-badge-neutral {
+    background-color: $puppet-n100;
+    color: $puppet-n700;
+  }
+
+
+  &.rc-badge-success {
+    background-color: $puppet-g100;
+    color: $puppet-g700;
+  }
+
+  &.rc-badge-warning {
+    background-color: $puppet-y100;
+    color: $puppet-y800;
+  }
+}
