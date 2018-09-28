@@ -1,3 +1,6 @@
+# 4.7.0
+- Add Link component
+
 # 4.6.0
 - Add badge component
 
