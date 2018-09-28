@@ -1,0 +1,18 @@
+.rc-link {
+  background: none;
+  border: 0;
+  color: $puppet-anchor-color;
+  cursor: pointer;
+  display: inline;
+  outline: none;
+  padding: 0;
+  text-decoration: none;
+
+  &:hover {
+    color: $puppet-anchor-hover;
+  }
+
+  &:active {
+    color: $puppet-action-active;
+  }
+}
