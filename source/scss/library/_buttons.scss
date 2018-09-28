@@ -4,11 +4,13 @@
 
   background: $bg;
   border: 1px solid $border;
+  box-shadow: 0 1px 0 darken($bg, 10%);
   color: $color !important;
-  transition: all 0.2s;
+  transition: all 0.2s ease-in-out, outline-offset 0s;
 
   .rc-button-menu-inner .rc-icon {
     fill: $icon-color;
+    transition: fill 0.2s ease-in-out;
   }
 
   &[disabled] {
@@ -17,10 +19,12 @@
     }
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     background: $bg-hover;
     border: 1px solid $border-hover;
     color: $color-hover !important;
+    outline-offset: 1px;
     text-decoration: none !important;
 
     .rc-icon {
@@ -29,6 +33,16 @@
 
     .rc-button-menu-inner .rc-icon {
       fill: $icon-color;
+    }
+  }
+
+  @if (lightness($bg-active) > 5) {
+    &:focus {
+      outline: none;
+    }
+  } @else {
+    &:focus {
+      outline: dotted 1px $puppet-action-base;
     }
   }
 
@@ -338,10 +352,15 @@
 
 .rc-floating-action-button {
   border-radius: $puppet-floating-action-button-height;
+  box-shadow: none;
   height: $puppet-floating-action-button-height;
   justify-content: center;
   padding: 0;
   width: $puppet-floating-action-button-height;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .rc-button-group {
