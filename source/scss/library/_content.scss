@@ -10,10 +10,13 @@
   h1,
   h2,
   h3,
-  h4,
+  h4 {
+    margin: $puppet-heading-margin;
+  }
+
   h5,
   h6 {
-    margin: $puppet-heading-margin;
+    margin: $puppet-heading-margin-small;
   }
 
   p {

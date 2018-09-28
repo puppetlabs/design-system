@@ -171,6 +171,14 @@
   .rc-icon-fill {
     fill: $puppet-sidebar-item-icon-fill-hover;
   }
+
+  .rc-icon-fill-2 {
+    fill: lighten($puppet-sidebar-item-icon-fill-hover, 12%);
+  }
+
+  .rc-icon-fill-3 {
+    fill: darken($puppet-sidebar-item-icon-fill-hover, 12%);
+  }
 }
 
 .rc-sidebar-item-content {
@@ -219,6 +227,16 @@
 .rc-sidebar-item-selected .rc-icon-fill,
 .rc-sidebar-item-selected:hover .rc-icon-fill {
   fill: $puppet-sidebar-item-icon-fill-active;
+}
+
+.rc-sidebar-item-selected .rc-icon-fill-2,
+.rc-sidebar-item-selected:hover .rc-icon-fill-2 {
+  fill: lighten($puppet-sidebar-item-icon-fill-active, 12%);
+}
+
+.rc-sidebar-item-selected .rc-icon-fill-3,
+.rc-sidebar-item-selected:hover .rc-icon-fill-3 {
+  fill: darken($puppet-sidebar-item-icon-fill-active, 12%);
 }
 
 // Open Item
@@ -328,6 +346,14 @@
     fill: $puppet-sidebar-dark-item-icon-fill-hover;
   }
 
+  .rc-sidebar-item-link:hover .rc-icon-fill-2 {
+    fill: lighten($puppet-sidebar-dark-item-icon-fill-hover, 16%);
+  }
+
+  .rc-sidebar-item-link:hover .rc-icon-fill-3 {
+    fill: darken($puppet-sidebar-dark-item-icon-fill-hover, 16%);
+  }
+
   .rc-sidebar-item-title {
     color: $puppet-sidebar-dark-item-color;
   }
@@ -352,6 +378,16 @@
   .rc-sidebar-item-selected .rc-icon-fill,
   .rc-sidebar-item-selected:hover .rc-icon-fill {
     fill: $puppet-sidebar-dark-item-icon-fill-active;
+  }
+
+  .rc-sidebar-item-selected .rc-icon-fill-2,
+  .rc-sidebar-item-selected:hover .rc-icon-fill-2 {
+    fill: lighten($puppet-sidebar-dark-item-icon-fill-active, 16%);
+  }
+
+  .rc-sidebar-item-selected .rc-icon-fill-3,
+  .rc-sidebar-item-selected:hover .rc-icon-fill-3 {
+    fill: darken($puppet-sidebar-dark-item-icon-fill-active, 16%);
   }
 
   // Open Item
@@ -405,6 +441,14 @@
 
   &.rc-sidebar-item-selected .rc-icon-fill {
     fill: $puppet-sidebar-dark-item-icon-fill-hover;
+  }
+
+  &.rc-sidebar-item-selected .rc-icon-fill-2 {
+    fill: lighten($puppet-sidebar-dark-item-icon-fill-hover, 10%);
+  }
+
+  &.rc-sidebar-item-selected .rc-icon-fill-3 {
+    fill: lighten($puppet-sidebar-dark-item-icon-fill-hover, 20%);
   }
 
   &.rc-sidebar-item-selected .rc-sidebar-item-link {
