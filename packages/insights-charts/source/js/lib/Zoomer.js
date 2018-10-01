@@ -80,6 +80,12 @@ class Zoomer {
   }
 
   render(selection) {
+    return null;
+
+    // TODO: Zooming has the ability to break drilldowns. We need to fix this feature before going
+    // live again.
+
+    /* eslint-disable no-unreachable */
     const self = this;
     const { dimensions, options } = this;
     const margins = dimensions.margins;
@@ -255,6 +261,7 @@ class Zoomer {
     }
 
     return zoomer;
+    /* eslint-enable no-unreachable */
   }
 
   update(categories, x, dimensions, options, dispatchers) {

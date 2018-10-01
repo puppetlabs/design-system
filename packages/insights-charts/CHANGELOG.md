@@ -1,3 +1,7 @@
+# 0.13.2 
+
+* Disabling the zoomer until it can properly handle drilldownss
+
 # 0.13.1
 
 * Always show poi points for scatter / bubble charts
