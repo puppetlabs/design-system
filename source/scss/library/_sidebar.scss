@@ -119,6 +119,9 @@
 }
 
 .rc-sidebar-toggle-btn:hover {
+  border: 0;
+  box-shadow: none;
+
   .rc-icon {
     fill: $puppet-sidebar-item-icon-fill-hover;
   }
