@@ -1,3 +1,44 @@
+// TODO move new function to whereever we store functions
+@function rc-color($color, $tone: 'base') {
+  @return map-get(map-get($colors, $color), $tone);
+}
+
+// Tint is the art term for mixing with white
+// Not the same as lighten
+@function rc-tint($color, $percentage) {
+  @return mix($color, white $percentage);
+}
+
+// Shade is the art term for mixing with black
+// Not the same as darken
+@function rc-shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+
+
+// Color Examples
+// background-color: rc-color(brand);
+// background-color: rc-color(neutral, 500 );
+// background-color: rc-color(sequential, 5);
+// background-color: rc-color(brand, purple);
+
+
+// Color Palettes for badges
+// TODO extend globally
+$rc-colors: (
+  /* Sequential color palette */
+  sequential: (
+    0: #ece571,
+    1: #9dd986,
+    2: #62c692,
+    3: #34af9e,
+    4: #089099,
+    5: #03586c,
+    6: #053c75
+  )
+);
+
 .rc-badge {
   border-radius: $puppet-border-radius-small;
   display: inline-block;
@@ -71,3 +112,24 @@
     color: $puppet-y800;
   }
 }
+
+// SEQUENTIAL COLOR BADGES
+/* stylelint-disable */
+@each $color-key, $color-value in $rc-colors {
+  @each $tone-key, $tone-value in $color-value {
+
+    // Currently limiting scope to just the sequential palette
+    @if $color-key == sequential {
+      .rc-badge-subtle.rc-badge-#{$color-key}-#{$tone-key} {
+        background-color: tint($tone-value, 80) !important;
+        color: shade($tone-value, 50) !important;
+      }
+
+      .rc-badge-bold.rc-badge-#{$color-key}-#{$tone-key} {
+        background-color: $tone-value !important;
+        color: white !important;
+      }
+    }
+  }
+}
+/* stylelint-enable */
