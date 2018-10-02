@@ -13,7 +13,7 @@ const propTypes = {
 
 const defaultProps = {
   type: 'bold',
-  level: 'null',
+  level: null,
   color: 'neutral',
   palette: null,
   className: '',
