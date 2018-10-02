@@ -6,7 +6,7 @@
 
 // Accordions
 // ----------------------------------------------------------------------------
-$puppet-accordion-bg                               : $puppet-bg-subtle !default;
+$puppet-accordion-bg                               : $puppet-bg-light !default;
 $puppet-accordion-item-title-bg-color              : $puppet-white !default;
 $puppet-accordion-item-title-color                 : $puppet-font-color-medium !default;
 $puppet-accordion-item-title-hover                 : $puppet-font-color-base !default;
@@ -849,12 +849,12 @@ $puppet-heading-h4-font-weight                     : $puppet-font-weight-medium 
 $puppet-heading-h5-font-size                       : 14px !default;
 $puppet-heading-h5-line-height                     : 20px !default;
 $puppet-heading-h5-font-family                     : $puppet-font-family !default;
-$puppet-heading-h5-font-weight                     : $puppet-font-weight-medium !default;
+$puppet-heading-h5-font-weight                     : $puppet-font-weight-heavy !default;
 
 $puppet-heading-h6-font-size                       : 12px !default;
 $puppet-heading-h6-line-height                     : 18px !default;
 $puppet-heading-h6-font-family                     : $puppet-font-family !default;
-$puppet-heading-h6-font-weight                     : $puppet-font-weight-medium !default;
+$puppet-heading-h6-font-weight                     : $puppet-font-weight-heavy !default;
 
 $puppet-heading-small-title-font-size              : 11px !default;
 $puppet-heading-small-title-line-height            : 16px !default;

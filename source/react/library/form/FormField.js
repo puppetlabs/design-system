@@ -12,6 +12,11 @@ import Checkbox from '../checkbox/Checkbox';
 
 const supportedTypes = [
   'input',
+  'text',
+  'email',
+  'password',
+  'search',
+  'url',
   'number',
   'select',
   'switch',
@@ -27,9 +32,9 @@ const propTypes = {
   ]).isRequired,
   /** A unique identifier for this field */
   name: PropTypes.string.isRequired,
-  /* 
+  /*
    * CAUTION due to the onchange event fired in the form component having a default value
-   * assigned here can cause a world of hurt. Since a form field can be many different types, 
+   * assigned here can cause a world of hurt. Since a form field can be many different types,
    * including a Select, Input, or even a custom built component we don't know why type of default
    * value is required. Disabling the rule below allows the parent to pass us what it needs.
   */
@@ -89,7 +94,12 @@ class FormField extends React.Component {
     let value = val;
 
     switch (type) {
-      case 'input': {
+      case 'input':
+      case 'text':
+      case 'email':
+      case 'password':
+      case 'url':
+      case 'search': {
         const { target } = val;
         const { value: targetValue } = target;
 
@@ -202,6 +212,11 @@ class FormField extends React.Component {
 
           break;
         case 'input':
+        case 'text':
+        case 'email':
+        case 'password':
+        case 'url':
+        case 'search':
           value = '';
 
           if (typeof valueProp === 'string') {
@@ -211,6 +226,7 @@ class FormField extends React.Component {
           jsx = (
             <Input
               name={name}
+              type={type === 'input' ? undefined : type}
               size={size}
               onChange={this.onChange}
               value={value}

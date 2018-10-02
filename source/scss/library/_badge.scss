@@ -1,3 +1,18 @@
+$badge-colors: (
+  // TODO reformat current badges for a bold and subtle palettes
+  // TODO move map to variables-components file
+  /* Sequential chart color palette */
+  sequential: (
+    0: #ece571,
+    1: #9dd986,
+    2: #62c692,
+    3: #34af9e,
+    4: #089099,
+    5: #03586c,
+    6: #053c75
+  )
+);
+
 .rc-badge {
   border-radius: $puppet-border-radius-small;
   display: inline-block;
@@ -71,3 +86,24 @@
     color: $puppet-y800;
   }
 }
+
+// SEQUENTIAL COLOR BADGES
+/* stylelint-disable */
+@each $color-key, $color-value in $badge-colors {
+  @each $tone-key, $tone-value in $color-value {
+
+    // Currently limiting scope to just the sequential palette
+    @if $color-key == sequential {
+      .rc-badge-subtle.rc-badge-#{$color-key}-#{$tone-key} {
+        background-color: tint($tone-value, 80) !important;
+        color: shade($tone-value, 50) !important;
+      }
+
+      .rc-badge-bold.rc-badge-#{$color-key}-#{$tone-key} {
+        background-color: $tone-value !important;
+        color: white !important;
+      }
+    }
+  }
+}
+/* stylelint-enable */
