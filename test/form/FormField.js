@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import React from 'react';
 
 import FormField from '../../source/react/library/form/FormField';
+import Input from '../../source/react/library/input/Input';
 
 describe('<FormField />', () => {
   const defaultProps = {
@@ -26,5 +27,13 @@ describe('<FormField />', () => {
     expect(wrapper.find('TooltipHoverArea').prop('tooltip')).to.eql(
       'hello world',
     );
+  });
+
+  it('Should render an input element for all supported standard input types', () => {
+    ['text', 'password', 'search', 'url'].forEach(type => {
+      expect(
+        shallow(<FormField {...defaultProps} type={type} />),
+      ).to.have.descendants(Input);
+    });
   });
 });

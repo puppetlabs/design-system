@@ -22,6 +22,14 @@ const movieOptions = [
     description="Please enter your last name"
   />
   <Form.Field
+    type="password"
+    name="password"
+    label="Password"
+    value={ true }
+    elementProps={ { placeholder: 'Enter your password...' } }
+    description="Please enter your password"
+  />
+  <Form.Field
     inline
     type="select"
     name="favoriteMovie"
