@@ -119,6 +119,9 @@
 }
 
 .rc-sidebar-toggle-btn:hover {
+  border: 0;
+  box-shadow: none;
+
   .rc-icon {
     fill: $puppet-sidebar-item-icon-fill-hover;
   }
@@ -322,6 +325,8 @@
   .rc-sidebar-toggle-btn:active,
   .rc-sidebar-toggle-btn:focus {
     background: $puppet-sidebar-dark-item-bg-active;
+    border: 0;
+    box-shadow: none;
   }
 
   .rc-sidebar-toggle-btn:hover svg,
