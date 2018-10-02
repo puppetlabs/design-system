@@ -17,6 +17,7 @@ import Input from '../input/Input';
 import Menu from '../menu';
 import Popover from '../popover/Popover';
 import Button from '../buttons/Button';
+import Text from '../text/Text';
 
 import SelectItem from './SelectItem';
 
@@ -38,6 +39,7 @@ const propTypes = {
   onPendingDeleteChange: PropTypes.func,
   onNewOption: PropTypes.func,
   newOptionLabel: PropTypes.string,
+  noResultsLabel: PropTypes.string,
   popoverClassName: PropTypes.string,
   size: PropTypes.oneOf(['tiny', 'small', 'medium']),
   selected: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
@@ -59,6 +61,7 @@ const defaultProps = {
   options: [],
   name: '',
   newOptionLabel: 'Add new',
+  noResultsLabel: 'No results found',
   selected: null,
   popoverClassName: '',
   onNewOption: null,
@@ -533,8 +536,15 @@ class Select extends React.Component {
   }
 
   renderMenu() {
-    const { size } = this.props;
-    const menuList = this.renderMenuList();
+    const { size, noResultsLabel } = this.props;
+    let menuList = this.renderMenuList();
+    if (!menuList.props.options.length) {
+      menuList = (
+        <Text color="subtle" className="rc-menu-item">
+          {noResultsLabel}
+        </Text>
+      );
+    }
     const actions = this.renderNewOptionControls();
     const className = classnames('rc-select-menu-options', {
       'rc-no-bottom-radius': actions,
