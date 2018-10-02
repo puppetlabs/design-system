@@ -1,3 +1,10 @@
+# 4.7.2
+
+- Fixed regressions introduced by new button shadows and previous accordion updates.
+- New props for badge component - palette and level.
+- New profile and impact icons.
+- Support various input types in the Form.Field component
+
 # 4.7.1
 
 - Updates to the design
