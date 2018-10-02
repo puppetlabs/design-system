@@ -1,0 +1,65 @@
+// Tint is the art term for mixing with white
+// Not the same as lighten
+@function rc-tint($color, $percentage) {
+  @return mix($color, white $percentage);
+}
+
+// Shade is the art term for mixing with black
+// Not the same as darken
+@function rc-shade($color, $percentage) {
+  @return mix(black, $color, $percentage);
+}
+
+// EXPERIMENT FOR COLOR MAPS
+
+// TODO move new function to whereever we store functions
+@function rc-color($color, $tone: 'base') {
+  @return map-get(map-get($rc-colors, $color), $tone);
+}
+
+// Using @rc-color
+// ============================================
+
+// Below examples are not in place yet
+// TODO make maps for our colors
+
+// Format
+// $colors: (
+//   $color-key: $color-value (optional) (
+//     $tone-key: $tone-value,
+//     $tone-key: $tone-value,
+//     $tone-key: $tone-value,
+//     $tone-key: $tone-value,
+//   )
+// );
+
+// Example
+// $rc-colors: (
+//   $brand: (
+//     base: #ffae1a,
+//     teal: #11d1c4,
+//     purple: #a263ff,
+//     red: #f2654b,
+//   ),
+//   $neutral: (
+//     black: #04080a;
+//     n950: #111314;
+//     n900: #222629;
+//     n850: #33393d;
+//     n800: #454c52;
+//     n700: #5d6f7a;
+//     n600: #818f99;
+//     n500: #b0b9bf;
+//     n400: #ccd4d9;
+//     n300: #e4e9ed;
+//     n200: #edf0f2;
+//     n100: #f2f5f7;
+//     n50: #f5f8fa;
+//     white: #fff;
+//   )
+// );
+
+// $brand-primary: rc-color(brand) !default;
+// background-color: rc-color(brand);
+// background-color: rc-color(neutral, 500 );
+// background-color: rc-color(brand, purple);
