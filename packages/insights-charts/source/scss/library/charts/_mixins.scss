@@ -43,8 +43,7 @@
 
 @mixin reflect-gauge-color($color, $background: darken($color, 20%), $font-color: black) {
   .reflect-charts-gauge-arc {
-    fill: $background;
-    stroke: $background;
+    fill: #e4e9ed;
   }
 
   .reflect-charts-gauge-arc-value {
@@ -57,6 +56,11 @@
 
   .reflect-charts-gauge-delta {
     fill: $font-color;
+  }
+
+  .reflect-charts-gauge-leading-indicator {
+    fill: $color;
+    stroke: darken($color, 20%);
   }
 }
 

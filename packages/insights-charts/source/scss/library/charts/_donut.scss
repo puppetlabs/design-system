@@ -1,3 +1,8 @@
 .reflect-charts-donut {
   @include reflect-colors(donut);
+
+  .reflect-charts-donut-arc-empty {
+    fill: $puppet-empty-color;
+    stroke: $puppet-empty-color;
+  }
 }

@@ -5,6 +5,11 @@ import { arc, pie as d3Pie } from 'd3-shape';
 import { UNHIGHLIGHTED_OPACITY } from '../constants';
 import CSS from '../helpers/css';
 
+const isEmpty = seriesData =>
+  seriesData[0].data
+    .map(cat => cat.y)
+    .every(val => val === 0);
+
 class Donut {
   constructor(seriesData, options, dimensions, dispatchers) {
     this.options = options;
@@ -38,6 +43,7 @@ class Donut {
   render(selection) {
     const { options, dimensions, dispatchers } = this;
     const { width, height } = dimensions;
+    const empty = isEmpty(this.seriesData);
     let innerRadius;
 
     this.renderCount += 1;
@@ -67,8 +73,16 @@ class Donut {
       .outerRadius(radius)
       .innerRadius(innerRadius);
 
-    let wrappers = selection.selectAll(CSS.getClassSelector('donut-arc-wrapper'))
-      .data(pie(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null)), d => d.data.x);
+    let wrappers;
+
+    if (empty) {
+      const emptyData = [{ y: 1 }];
+      wrappers = selection.selectAll(CSS.getClassSelector('donut-arc-wrapper'))
+        .data(pie(emptyData), d => d.data.x);
+    } else {
+      wrappers = selection.selectAll(CSS.getClassSelector('donut-arc-wrapper'))
+        .data(pie(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null)), d => d.data.x);
+    }
 
     wrappers.exit().remove();
 
@@ -85,29 +99,45 @@ class Donut {
       .attr('class', d => classnames(
         CSS.getClassName('donut-arc-wrapper'),
         CSS.getColorClassName(d.data.categoryIndex),
-      ))
-      .on('mousemove', function mousemove(d) {
-        const dims = mouse(select('body').node());
+      ));
 
-        dispatchers.call('tooltipMove', this, d.data.categoryIndex, 0, d.data.x, dims);
-        dispatchers.call('activatePointOfInterest', this, d.data.x);
-        dispatchers.call('highlightSeries', this, d.data.categoryIndex);
-      })
-      .on('mouseout', () => {
-        dispatchers.call('tooltipHide');
-        dispatchers.call('unHighlightSeries');
-      });
+    if (!empty) {
+      wrappers
+        .on('mousemove', function mousemove(d) {
+          const dims = mouse(select('body').node());
+
+          dispatchers.call('tooltipMove', this, d.data.categoryIndex, 0, d.data.x, dims);
+          dispatchers.call('activatePointOfInterest', this, d.data.x);
+          dispatchers.call('highlightSeries', this, d.data.categoryIndex);
+        })
+        .on('mouseout', () => {
+          dispatchers.call('tooltipHide');
+          dispatchers.call('unHighlightSeries');
+        });
+    }
 
     const paths = wrappers.selectAll(CSS.getClassSelector('donut-arc'));
 
-    paths
-      .attr('class', CSS.getClassName('donut-arc'))
-      .attr('d', path)
-      .style('fill', d => (d.data.color ? d.data.color : null))
-      .style('stroke', d => (d.data.color ? d.data.color : null))
-      .style('opacity', options.donut ? options.donut.opacity : null);
+    paths.attr('d', path);
 
-    if (dispatchers.enabled('dataPointClick.external')) {
+
+    if (empty) {
+      paths
+        .style('opacity', 1)
+        .attr('class', classnames(
+          CSS.getClassName('donut-arc'),
+          CSS.getClassName('donut-arc-empty'),
+        ));
+    } else {
+      // We want to use the default opacity if the donut is empty
+      paths
+        .attr('class', CSS.getClassName('donut-arc'))
+        .style('opacity', options.donut ? options.donut.opacity : null)
+        .style('fill', d => (d.data.color ? d.data.color : null))
+        .style('stroke', d => (d.data.color ? d.data.color : null));
+    }
+
+    if (dispatchers.enabled('dataPointClick.external') && !empty) {
       paths
         .style('cursor', 'pointer')
         .on('click', function (d) {

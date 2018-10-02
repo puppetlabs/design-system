@@ -3,12 +3,14 @@
 
   .reflect-charts-gauge-kpi {
     alignment-baseline: baseline;
+    font-family: 'Calibre', 'Open Sans', sans-serif;
     font-weight: 600;
     text-anchor: middle;
   }
 
   .reflect-charts-gauge-delta {
     alignment-baseline: middle;
+    font-weight: bold;
     text-anchor: middle;
   }
 }

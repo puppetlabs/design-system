@@ -1,4 +1,9 @@
-# 0.13.2 
+# 0.13.3
+
+* Fix empty state for donuts
+* Update the look of gauges
+
+# 0.13.2
 
 * Disabling the zoomer until it can properly handle drilldownss
 

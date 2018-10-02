@@ -19,7 +19,7 @@ class GaugeCharts extends React.Component {
       series: [
         {
           label: 'Velocity',
-          data: [25],
+          data: [10],
         },
       ],
     };
@@ -30,7 +30,7 @@ class GaugeCharts extends React.Component {
       options: {
         gauge: {
           minValue: 0,
-          maxValue: 200,
+          maxValue: 100,
           delta: {
             direction: 'up',
             value: '+10 pts',
