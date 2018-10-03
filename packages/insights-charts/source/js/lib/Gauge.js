@@ -2,6 +2,7 @@ import { arc } from 'd3-shape';
 import CSS from '../helpers/css';
 
 const degreesToRadians = degrees => (degrees * (Math.PI / 180));
+const centerTransform = (width, height) => (`translate(${(width / 2)},${(height / 2)})`);
 
 class Gauge {
   constructor(seriesData, options, dimensions, dispatchers) {
@@ -93,7 +94,7 @@ class Gauge {
     wrapper
       .classed(CSS.getClassName('gauge-arc'), true)
       .attr('d', outerArc)
-      .attr('transform', `translate(${(width / 2)},${(height / 2)})`);
+      .attr('transform', centerTransform(width, height));
 
     let value = selection.selectAll(CSS.getClassSelector('gauge-arc-value'))
       .data(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null));
@@ -117,7 +118,7 @@ class Gauge {
 
     leadingIndicator = newLeadingIndicator.merge(leadingIndicator);
 
-    const indicatorStrokeWidth = indicatorRadius / 3;
+    const indicatorStrokeWidth = indicatorRadius / 1.95;
 
     leadingIndicator
       .attr('class', CSS.getClassName('gauge-leading-indicator'))
@@ -125,7 +126,7 @@ class Gauge {
       .attr('r', indicatorRadius - (indicatorStrokeWidth / 2))
       .attr('cx', d => (endAngleArc.centroid(d)[0]))
       .attr('cy', d => (endAngleArc.centroid(d)[1]))
-      .attr('transform', `translate(${(width / 2)},${(height / 2)})`);
+      .attr('transform', centerTransform(width, height));
 
     let kpi = selection.selectAll(CSS.getClassSelector('gauge-kpi'))
       .data(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null));
@@ -139,23 +140,31 @@ class Gauge {
     const kpiFontSize = innerRadius / 1.175;
 
     kpi.classed(CSS.getClassName('gauge-kpi'), true)
-      .attr('transform', `translate(${(width / 2)},${(height / 2)})`)
+      .attr('transform', centerTransform(width, height))
       .style('font-size', `${kpiFontSize}px`)
       .text(d => (d.y));
 
-    let delta = selection.selectAll(CSS.getClassSelector('gauge-delta'))
-      .data([options.gauge.delta.value]);
+    if (options.gauge && options.gauge.delta) {
+      let delta = selection.selectAll(CSS.getClassSelector('gauge-delta'))
+        .data([options.gauge.delta.value]);
 
-    delta.exit().remove();
+      delta.exit().remove();
 
-    const newDelta = delta.enter().append('text');
+      const newDelta = delta.enter().append('text');
 
-    delta = newDelta.merge(delta);
+      delta = newDelta.merge(delta);
 
-    delta.classed(CSS.getClassName('gauge-delta'), true)
-      .attr('transform', `translate(${(width / 2)},${(height / 2) + (kpiFontSize / 2)})`)
-      .style('font-size', `${kpiFontSize / 4}px`)
-      .text(d => (d));
+      const deltaFontSize = kpiFontSize / 4;
+      const direction = options.gauge.delta.direction;
+      const deltaClass = CSS.getClassName('gauge-delta');
+      const directionClass = direction ? CSS.getClassName(`gauge-delta-${direction}`) : '';
+
+      delta
+        .attr('class', `${deltaClass} ${directionClass}`)
+        .attr('transform', `translate(${(width / 2)},${(height / 2) + (kpiFontSize / 1.6)})`)
+        .style('font-size', `${deltaFontSize}px`)
+        .text(d => (d));
+    }
 
     return wrapper;
   }

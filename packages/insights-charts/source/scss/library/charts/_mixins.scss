@@ -54,13 +54,9 @@
     fill: $font-color;
   }
 
-  .reflect-charts-gauge-delta {
-    fill: $font-color;
-  }
-
   .reflect-charts-gauge-leading-indicator {
     fill: $color;
-    stroke: darken($color, 20%);
+    stroke: darken($color, 10%);
   }
 }
 

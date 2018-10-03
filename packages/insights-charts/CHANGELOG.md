@@ -1,3 +1,7 @@
+# 0.13.4
+
+* Small design updates to the gauge
+
 # 0.13.3
 
 * Fix empty state for donuts
