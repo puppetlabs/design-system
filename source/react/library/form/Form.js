@@ -122,7 +122,7 @@ class Form extends React.Component {
   }
 
   onChange(name) {
-    const { validator, onChange } = this.props;
+    const { onChange } = this.props;
     const { valid, values } = this.state;
     return value => {
       const newState = Object.assign({}, this.state);
