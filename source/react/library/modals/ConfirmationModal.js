@@ -19,6 +19,7 @@ const propTypes = {
     confirm: PropTypes.string,
   }),
   actionsPosition: PropTypes.oneOf(['left', 'right']),
+  background: PropTypes.oneOf(['transparent', 'translucent']),
 };
 
 const defaultStrings = {
@@ -37,6 +38,7 @@ const defaultProps = {
   children: null,
   actionsPosition: 'right',
   strings: defaultStrings,
+  background: 'transparent',
 };
 
 /**
@@ -84,6 +86,7 @@ class ConfirmationModal extends React.Component {
       confirmationMessage,
       children,
       strings,
+      background,
     } = this.props;
 
     let actions;
@@ -118,6 +121,7 @@ class ConfirmationModal extends React.Component {
         actions={actions}
         size="small"
         title={title}
+        background={background}
       >
         <span className="rc-modal-message">{confirmationMessage}</span>
         {children}
