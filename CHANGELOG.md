@@ -1,5 +1,8 @@
 # 4.8.0
 - Form component now accepts "requiredFields" prop for automatic validation
+- ConfirmationModal and Modal can take a background prop
+- Invalid inputs for Select will reveal "No results found"
+- Invalid inputs for Select (excluding multi-Selects) will be reset when exited
 
 # 4.7.2
 
