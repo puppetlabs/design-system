@@ -1,3 +1,6 @@
+# 4.8.0
+- Form component now accepts "requiredFields" prop for automatic validation
+
 # 4.7.2
 
 - Fixed regressions introduced by new button shadows and previous accordion updates.
