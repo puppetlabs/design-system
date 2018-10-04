@@ -6,7 +6,7 @@ const generate = require('./generate');
  * Allowed template options for the generator script.
  * If you want to add a template please add here
  */
-const TEMPLATE_OPTIONS = ['project', 'component'];
+const TEMPLATE_OPTIONS = ['project', 'component', 'method'];
 
 require('yargs') //eslint-disable-line
   .command(
