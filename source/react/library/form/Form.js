@@ -21,6 +21,8 @@ const propTypes = {
   //* Text to display as the Submit button */
   submitLabel: PropTypes.string,
   validator: PropTypes.func,
+  requiredFields: PropTypes.arrayOf(PropTypes.string),
+  requiredFieldMessage: PropTypes.string,
   //* Errors to render the form with. Keys are field names, and values are the form errors */
   errors: PropTypes.shape({}),
   size: PropTypes.string,
@@ -38,6 +40,8 @@ const defaultProps = {
   onSubmit: null,
   children: null,
   validator: null,
+  requiredFields: null,
+  requiredFieldMessage: 'Required field',
   onCancel: () => {},
   cancellable: false,
   cancelLabel: 'Cancel',
@@ -46,6 +50,8 @@ const defaultProps = {
   submitLabel: 'Submit',
   actionsPosition: 'right',
 };
+
+const isEmpty = str => !str || str.match(/^\s*$/);
 
 const getValues = children => {
   let values = {};
@@ -71,8 +77,6 @@ const getValues = children => {
   return values;
 };
 
-const validate = (validator, values) => (validator ? validator(values) : {});
-
 /**
  * `Form` is a container component for rendering forms.
  */
@@ -95,10 +99,10 @@ class Form extends React.Component {
 
   onSubmit(e) {
     e.preventDefault();
-    const { validator, onSubmit } = this.props;
+    const { onSubmit } = this.props;
     const { values } = this.state;
-    const validatorErrors = validate(validator, values);
-    const valid = Object.keys(validate(validator, values)).length === 0;
+    const validatorErrors = this.validate(values);
+    const valid = Object.keys(validatorErrors).length === 0;
 
     if (onSubmit) {
       this.setState({ valid, validatorErrors }, () => {
@@ -118,7 +122,7 @@ class Form extends React.Component {
   }
 
   onChange(name) {
-    const { validator, onChange } = this.props;
+    const { onChange } = this.props;
     const { valid, values } = this.state;
     return value => {
       const newState = Object.assign({}, this.state);
@@ -128,7 +132,7 @@ class Form extends React.Component {
       // we only want to validate on change if the form has been deemed invalid and the user
       // is attempting to fix the mistakes
       if (!valid) {
-        const validatorErrors = validate(validator, newState.values);
+        const validatorErrors = this.validate(newState.values);
         newState.validatorErrors = validatorErrors;
         newState.valid = Object.keys(validatorErrors).length === 0;
       }
@@ -139,6 +143,26 @@ class Form extends React.Component {
         }
       });
     };
+  }
+
+  validate(values) {
+    const { validator, requiredFields, requiredFieldMessage } = this.props;
+
+    const errors = {};
+
+    if (requiredFields) {
+      requiredFields.forEach(field => {
+        if (isEmpty(values[field])) {
+          errors[field] = requiredFieldMessage;
+        }
+      });
+    }
+
+    if (validator) {
+      return Object.assign(errors, validator(values));
+    }
+
+    return errors;
   }
 
   renderField(child) {
