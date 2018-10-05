@@ -10,6 +10,9 @@ module.exports = merge(commonConfig, {
   plugins: [
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.EnvironmentPlugin({
+      NODE_ENV: 'development',
+    }),
   ],
   module: {
     rules: [

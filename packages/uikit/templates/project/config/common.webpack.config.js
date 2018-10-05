@@ -1,6 +1,6 @@
+const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const webpack = require('webpack');
 const paths = require('./paths');
 
 module.exports = {
@@ -14,12 +14,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: paths.client('index.html'),
     }),
-    new webpack.EnvironmentPlugin(['NODE_ENV', 'PORT']),
   ],
   output: {
     filename: 'bundles/[name].[hash].js',
     path: paths.dist(),
-    publicPath: '/',
+    publicPath: process.env.ROUTER_BASENAME || '',
   },
   module: {
     rules: [
@@ -29,7 +28,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        exclude: [/\.(js|jsx|mjs)$/, /\.html$/, /\.json$/, /\.css$/, /\.scss$/],
+        exclude: [/\.(js|jsx|mjs|html|json|scss)$/],
         loader: 'file-loader',
         options: {
           name: 'assets/[name].[hash].[ext]',
@@ -38,6 +37,7 @@ module.exports = {
     ],
   },
   resolve: {
+    modules: [path.resolve(__dirname, '../src/client'), 'node_modules'],
     extensions: ['.js', '.mjs', '.jsx'],
     symlinks: false,
   },
