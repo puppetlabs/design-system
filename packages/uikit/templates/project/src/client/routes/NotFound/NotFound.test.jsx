@@ -4,5 +4,9 @@ import { shallow } from 'enzyme';
 import NotFound from './NotFound';
 
 test('renders without crashing', () => {
-  shallow(<NotFound />);
+  const requiredProps = {
+    t: s => s,
+  };
+
+  shallow(<NotFound {...requiredProps} />);
 });

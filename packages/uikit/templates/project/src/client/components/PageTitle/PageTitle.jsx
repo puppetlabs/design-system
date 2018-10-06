@@ -1,12 +1,12 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { string } from 'prop-types';
 import { Heading, Text } from '@puppet/react-components';
 
 import styles from './PageTitle.module.scss';
 
 const propTypes = {
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string,
+  title: string.isRequired,
+  subtitle: string,
 };
 
 const defaultProps = {

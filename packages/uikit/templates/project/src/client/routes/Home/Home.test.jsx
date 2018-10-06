@@ -4,5 +4,9 @@ import { shallow } from 'enzyme';
 import Home from './Home';
 
 test('renders without crashing', () => {
-  shallow(<Home />);
+  const requiredProps = {
+    t: s => s,
+  };
+
+  shallow(<Home {...requiredProps} />);
 });

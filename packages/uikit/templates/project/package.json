@@ -29,6 +29,7 @@
     "cheerio": "^1.0.0-rc.2",
     "clean-webpack-plugin": "^0.1.19",
     "connect-history-api-fallback": "^1.5.0",
+    "copy-webpack-plugin": "^4.5.2",
     "core-js": "^2.5.7",
     "css-loader": "^1.0.0",
     "enzyme": "^3.6.0",
@@ -71,13 +72,12 @@
   "dependencies": {
     "@puppet/react-components": "^4.2.0",
     "classnames": "^2.2.6",
+    "i18next": "^11.9.0",
+    "i18next-xhr-backend": "^1.5.1",
     "moment": "^2.22.2",
     "moment-timezone": "^0.5.21",
     "prop-types": "^15.6.2",
     "react": "^16.5.1",
-    "react-redux": "^5.0.7",
-    "redux": "^4.0.0",
-    "redux-devtools-extension": "^2.13.5",
-    "redux-thunk": "^2.3.0"
+    "react-i18next": "^8.0.7"
   }
 }

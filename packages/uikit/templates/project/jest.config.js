@@ -7,4 +7,5 @@ module.exports = {
   moduleDirectories: ['node_modules', 'src/client'],
   setupTestFrameworkScriptFile: '<rootDir>/jest/setupTests.js',
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
+  coveragePathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/jest/'],
 };

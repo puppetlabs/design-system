@@ -1,11 +1,18 @@
 import React, { Fragment } from 'react';
+import { func } from 'prop-types';
 
 import PageTitle from 'components/PageTitle';
 
-const Home = () => (
+const propTypes = {
+  t: func.isRequired,
+};
+
+const Home = ({ t }) => (
   <Fragment>
-    <PageTitle title="Puppet starter ui" />
+    <PageTitle title={t('title')} />
   </Fragment>
 );
+
+Home.propTypes = propTypes;
 
 export default Home;

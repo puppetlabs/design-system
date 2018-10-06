@@ -1,9 +1,11 @@
 const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
+const paths = require('./paths');
 const commonConfig = require('./common.webpack.config.js');
 
 module.exports = merge(commonConfig, {
+  entry: [paths.client('index.jsx')],
   mode: 'production',
   devtool: 'source-map',
   plugins: [
