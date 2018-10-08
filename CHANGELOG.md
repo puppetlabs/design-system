@@ -1,3 +1,6 @@
+# 4.8.1
+- Trivial: replace sidebar bottom margin with bottom padding for firefox bug fix
+
 # 4.8.0
 - Form component now accepts "requiredFields" prop for automatic validation
 - ConfirmationModal and Modal can take a background prop
