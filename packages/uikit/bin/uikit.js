@@ -23,6 +23,13 @@ require('yargs') //eslint-disable-line
         type: 'string',
         describe: 'The name of the generated item',
       });
+
+      yargs.option('directory', {
+        alias: 'd',
+        type: 'string',
+        default: '',
+        describe: 'The root directory in which to generate the template',
+      });
     },
     generate,
   )
