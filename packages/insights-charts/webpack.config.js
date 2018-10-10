@@ -1,6 +1,7 @@
 const path = require('path');
 
 module.exports = {
+  mode: 'none',
   entry: {
     library: './source/js/ReflectCharts.js',
   },
@@ -22,11 +23,6 @@ module.exports = {
       ],
       use: {
         loader: 'babel-loader',
-        options: {
-          presets: [
-            [ 'es2015', { modules: false } ],
-          ],
-        },
       },
     }],
   },

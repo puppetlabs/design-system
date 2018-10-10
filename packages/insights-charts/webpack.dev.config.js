@@ -2,6 +2,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = {
+  mode: 'none',
   devServer: {
     publicPath: '/build/',
     historyApiFallback: true,
@@ -36,12 +37,6 @@ const config = {
         ],
         use: {
           loader: 'babel-loader',
-          options: {
-            presets: [
-              'es2015',
-              'react',
-            ],
-          },
         },
       },
     ],

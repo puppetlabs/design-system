@@ -4,15 +4,16 @@
   "description": "Highly customizable charting library built on top of D3",
   "main": "build/library.js",
   "scripts": {
-    "prebuild": "./node_modules/.bin/rimraf build",
+    "analyze": "webpack --config webpack.analyze.config.js",
+    "prebuild": "rimraf build",
     "build": "NODE_ENV=production webpack",
     "prepublish": "npm run build",
-    "complexity": "./node_modules/.bin/es6-plato -r -d complexity source/js && open ./complexity/index.html",
+    "complexity": "es6-plato -r -d complexity source/js && open ./complexity/index.html",
     "watch": "nodemon --watch source -x \"npm run build\"",
-    "test": "./node_modules/.bin/nyc --require=./test/jsdom.js --reporter=html ./node_modules/.bin/mocha --compilers js:babel-core/register --recursive",
-    "js-lint": "./node_modules/.bin/eslint --quiet 'source/js/**/*.js'",
-    "scss-lint": "./node_modules/.bin/stylelint 'source/scss/**/*.scss'",
-    "start": "./node_modules/.bin/webpack-dev-server --config webpack.dev.config.js"
+    "test": "nyc --require=./test/jsdom.js --reporter=html ./node_modules/.bin/mocha --compilers js:@babel/register --recursive",
+    "js-lint": "eslint --quiet 'source/js/**/*.js'",
+    "scss-lint": "stylelint 'source/scss/**/*.scss'",
+    "start": "webpack-dev-server --config webpack.dev.config.js"
   },
   "repository": {
     "type": "git",
@@ -44,25 +45,27 @@
     "deepmerge": "1.3.2"
   },
   "devDependencies": {
+    "@babel/core": "7.1.2",
+    "@babel/polyfill": "7.0.0",
+    "@babel/preset-env": "7.1.0",
+    "@babel/preset-react": "7.0.0",
+    "@babel/register": "7.0.0",
     "@puppet/insights-editor": "1.0.0",
     "@puppet/react-components": "3.0.0",
-    "babel-core": "6.23.1",
     "babel-eslint": "8.2.3",
-    "babel-loader": "6.3.2",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-preset-es2015": "6.22.0",
-    "babel-preset-react": "6.23.0",
+    "babel-loader": "8.0.4",
     "chai": "^3.5.0",
+    "core-js": "^2.5.7",
+    "css-loader": "^0.27.1",
     "enzyme": "3.0.0",
     "enzyme-adapter-react-16": "^1.1.1",
-    "css-loader": "^0.27.1",
     "es6-plato": "^1.0.18",
     "eslint": "3.19.0",
     "eslint-config-airbnb": "15.1.0",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-jsx-a11y": "5.1.1",
     "eslint-plugin-react": "7.1.0",
-    "extract-text-webpack-plugin": "^2.1.0",
+    "extract-text-webpack-plugin": "4.0.0-beta.0",
     "fast-csv": "^2.4.1",
     "jsdom": "11.1.0",
     "mocha": "^3.3.0",
@@ -82,12 +85,9 @@
     "style-loader": "^0.13.2",
     "stylelint": "8.0.0",
     "stylelint-config-sass-guidelines": "3.1.0",
-    "webpack": "2.2.1",
-    "webpack-dev-server": "2.4.1"
-  },
-  "peerDependencies": {
-    "react": "16.4.0",
-    "react-dom": "16.4.0",
-    "moment": "^2.22.2"
+    "webpack": "4.8.3",
+    "webpack-bundle-analyzer": "^3.0.2",
+    "webpack-cli": "2.1.3",
+    "webpack-dev-server": "3.1.4"
   }
 }

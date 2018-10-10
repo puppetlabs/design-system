@@ -1,3 +1,7 @@
+# 0.13.5
+
+* Upgrading to webpack 4
+
 # 0.13.4
 
 * Small design updates to the gauge
