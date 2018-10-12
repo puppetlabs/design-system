@@ -317,13 +317,13 @@ class Select extends React.Component {
 
       // If no option is selected, clear input
       // If an option was selected, but the input is now invalid, revert to last selected
-      if (!selected.length) {
+      if (!selected.length || hasInvalidInput) {
+        const option = selected.length ? selected[0] : {};
         this.clearInput();
-      } else if (hasInvalidInput) {
-        const option = selected[0];
 
-        this.clearInput();
-        this.onSelect(option);
+        if (hasInvalidInput) {
+          this.onSelect(option);
+        }
       }
     }
 
