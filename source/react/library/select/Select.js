@@ -308,17 +308,23 @@ class Select extends React.Component {
   }
 
   onPopoverClose() {
-    const { selected, inputValue, multiple } = this.state;
+    const { selected, inputValue } = this.state;
+    const { multiple } = this.props;
 
     // TODO: multi-select input validation
-    const hasInvalidInput =
-      !multiple && inputValue && inputValue !== selected[0];
+    if (!multiple) {
+      const hasInvalidInput = inputValue && inputValue !== selected[0];
 
-    // If no option is selected, clear input -or-
-    // If an option is selected, but the input is now invalid, revert input
-    if (!selected.length || hasInvalidInput) {
-      this.clearInput();
-      this.onChange(selected);
+      // If no option is selected, clear input
+      // If an option was selected, but the input is now invalid, revert to last selected
+      if (!selected.length || hasInvalidInput) {
+        const option = selected.length ? selected[0] : {};
+        this.clearInput();
+
+        if (hasInvalidInput) {
+          this.onSelect(option);
+        }
+      }
     }
 
     this.setState({

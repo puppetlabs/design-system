@@ -155,7 +155,7 @@ describe('<Select />', () => {
         .simulate('click');
       wrapper.find('.rc-select-input').simulate('click');
 
-      expect(onSelect.lastCall.args).to.eql([undefined, undefined]);
+      expect(onSelect.lastCall.args).to.eql([undefined, options[0]]);
 
       expect(wrapper.find('.rc-menu-item-selected').length).to.eql(0);
     });

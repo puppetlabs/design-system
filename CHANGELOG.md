@@ -1,7 +1,15 @@
+# 4.8.2
+
+- Fixing regression in select component
+- Commiting design file as a test
+- Including webpack bundle analyzer
+
 # 4.8.1
+
 - Trivial: replace sidebar bottom margin with bottom padding for firefox bug fix
 
 # 4.8.0
+
 - Form component now accepts "requiredFields" prop for automatic validation
 - ConfirmationModal and Modal can take a background prop
 - Invalid inputs for Select will reveal "No results found"
