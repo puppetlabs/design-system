@@ -37,4 +37,11 @@ module.exports = {
       },
     ],
   },
+  settings: {
+  'import/resolver': {
+    node: {
+      paths: [path.resolve(__dirname, 'src/client')],
+    },
+  },
+},
 };

@@ -12,4 +12,11 @@ chai.should();
 window.URLSearchParams = URLSearchParams;
 window.expect = expect;
 
+/**
+ * Console errors are errors (in particular this will catch propType errors)
+ */
+global.console.error = e => {
+  throw new Error(e);
+};
+
 configure({ adapter: new Adapter() });

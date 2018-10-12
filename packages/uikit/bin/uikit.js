@@ -6,7 +6,7 @@ const generate = require('./generate');
  * Allowed template options for the generator script.
  * If you want to add a template please add here
  */
-const TEMPLATE_OPTIONS = ['project', 'component'];
+const TEMPLATE_OPTIONS = ['project', 'component', 'method'];
 
 require('yargs') //eslint-disable-line
   .command(
@@ -22,6 +22,13 @@ require('yargs') //eslint-disable-line
       yargs.positional('name', {
         type: 'string',
         describe: 'The name of the generated item',
+      });
+
+      yargs.option('directory', {
+        alias: 'd',
+        type: 'string',
+        default: '',
+        describe: 'The root directory in which to generate the template',
       });
     },
     generate,

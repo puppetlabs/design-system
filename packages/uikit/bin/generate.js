@@ -5,18 +5,20 @@ const HandleBars = require('handlebars');
 
 const getNameVariants = require('./getNameVariants/getNameVariants');
 
-const postGenerateScripts = {
+const postGenerateActions = {
+  /**
+   * Need to chmod +x generated scripts
+   */
   project({ dest }) {
     const scripts = klawSync(`${dest}/scripts`);
 
     scripts.forEach(({ path: filePath }) => fs.chmodSync(filePath, 0o755));
   },
-  component() {},
 };
 
-const generate = ({ template, name }) => {
+const generate = ({ template, name, directory }) => {
   const templatePath = path.resolve(__dirname, '../templates', template);
-  const dest = path.resolve(process.cwd(), name);
+  const dest = path.resolve(process.cwd(), directory, name);
   const files = klawSync(templatePath);
   const model = { name: getNameVariants(name) };
 
@@ -37,7 +39,11 @@ const generate = ({ template, name }) => {
     fs.outputFileSync(newPath, output, 'utf8');
   });
 
-  postGenerateScripts[template]({ dest });
+  const postGenerateAction = postGenerateActions[template];
+
+  if (postGenerateAction) {
+    postGenerateAction({ dest });
+  }
 
   console.log(`Generated ${template} "${name}" in ${dest}`);
 };
