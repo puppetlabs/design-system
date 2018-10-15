@@ -27,9 +27,17 @@ Any script run with `uikit <command>` will access the most recent code in your r
 The uikit includes a script for generating arbitrary boilerplate through template files. Available templates:
 
 - **Project**: `uikit generate project my-project`
-  Generates a puppet react project in the current directory.
+  Generates a puppet react project.
 - **Component**: `uikit generate component MyComponent`
-  Generates component boilerplate, including a test and scss file in the current directory.
+  Generates component boilerplate, including a test and scss file.
+- **Method**: `uikit generate method myMethod`
+  Generates utility method boilerplate
+
+By default the script will generate the template in the current working directory. Optionally you may specify a path to another directory with the `--directory` (`-d`) option:
+
+```
+uikit generate <template> <name> -d <path to directory>
+```
 
 ### Adding a generator
 
