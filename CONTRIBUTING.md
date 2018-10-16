@@ -6,10 +6,10 @@ request, deploying new versions, and reviewing code.
 
 ## Filing a bug or enhancement
 
-We currently use Github Issues for tracking bugs and enhancements for this
-project.
+We currently track bugs and enhancements in the "Puppet Design System" Jira
+project: <https://tickets.puppetlabs.com/browse/PDS>
 
-You're encouraged to open an issue before you begin developing. This helps us
+You're encouraged to open a ticket before you begin developing. This helps us
 avoid duplicated work and often serves as a chance for others to weigh in.
 
 ## Setting up your development environment
