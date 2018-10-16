@@ -5,6 +5,15 @@ const HandleBars = require('handlebars');
 
 const getNameVariants = require('./getNameVariants/getNameVariants');
 
+/**
+ * The preGenerate hook can be used if files need to be overlaid afterwards
+ */
+const preGenerateActions = {
+};
+
+/**
+ * The postGenerate hook will run after the template files have been created
+ */
 const postGenerateActions = {
   /**
    * Need to chmod +x generated scripts
@@ -21,6 +30,12 @@ const generate = ({ template, name, directory }) => {
   const dest = path.resolve(process.cwd(), directory, name);
   const files = klawSync(templatePath);
   const model = { name: getNameVariants(name) };
+  const preGenerateAction = preGenerateActions[template];
+  const postGenerateAction = postGenerateActions[template];
+
+  if (preGenerateAction) {
+    preGenerateAction({ dest });
+  }
 
   files.filter(({ stats }) => !stats.isDirectory()).forEach(file => {
     const extension = path.extname(file.path);
@@ -38,8 +53,6 @@ const generate = ({ template, name, directory }) => {
 
     fs.outputFileSync(newPath, output, 'utf8');
   });
-
-  const postGenerateAction = postGenerateActions[template];
 
   if (postGenerateAction) {
     postGenerateAction({ dest });
