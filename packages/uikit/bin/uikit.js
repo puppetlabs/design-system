@@ -9,10 +9,11 @@ const generate = require('./generate');
 const TEMPLATE_OPTIONS = ['project', 'component', 'method'];
 
 require('yargs') //eslint-disable-line
-  .command(
-    'generate [template] [name]',
-    'Generate the specified template in the given root directory',
-    yargs => {
+  .command({
+    command: 'generate <template> <name>',
+    aliases: ['g'],
+    desc: 'Generate the specified template in the given root directory',
+    builder: yargs => {
       yargs.positional('template', {
         type: 'string',
         describe: 'The specified template',
@@ -31,6 +32,7 @@ require('yargs') //eslint-disable-line
         describe: 'The root directory in which to generate the template',
       });
     },
-    generate,
-  )
+    handler: generate,
+  })
+  .alias('g', 'generate')
   .help().argv;
