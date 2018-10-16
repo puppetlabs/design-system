@@ -10,7 +10,7 @@ const TEMPLATE_OPTIONS = ['project', 'component', 'method'];
 
 require('yargs') //eslint-disable-line
   .command(
-    'generate [template] [name]',
+    'generate <template> <name>',
     'Generate the specified template in the given root directory',
     yargs => {
       yargs.positional('template', {
