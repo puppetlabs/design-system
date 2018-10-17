@@ -30,6 +30,8 @@ const propTypes = {
     PropTypes.oneOf(supportedTypes),
     PropTypes.element,
   ]).isRequired,
+  required: PropTypes.bool,
+  requiredFieldMessage: PropTypes.string,
   /** A unique identifier for this field */
   name: PropTypes.string.isRequired,
   /*
@@ -62,6 +64,8 @@ const propTypes = {
 
 const defaultProps = {
   inline: false,
+  required: false,
+  requiredFieldMessage: 'Required field',
   size: null,
   error: '',
   label: '',
@@ -178,7 +182,14 @@ class FormField extends React.Component {
   }
 
   renderElement() {
-    const { elementProps, type, name, size, value: valueProp } = this.props;
+    const {
+      elementProps,
+      type,
+      name,
+      size,
+      value: valueProp,
+      required,
+    } = this.props;
     let jsx = null;
     let value;
 
@@ -226,6 +237,7 @@ class FormField extends React.Component {
           jsx = (
             <Input
               name={name}
+              required={required}
               type={type === 'input' ? undefined : type}
               size={size}
               onChange={this.onChange}
@@ -238,6 +250,7 @@ class FormField extends React.Component {
           jsx = (
             <Input
               type="number"
+              required={required}
               name={name}
               size={size}
               onChange={this.onChange}
@@ -264,6 +277,7 @@ class FormField extends React.Component {
               size={size}
               onChange={this.onChange}
               checked={!!valueProp}
+              required={required}
               {...elementProps}
             />
           );

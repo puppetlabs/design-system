@@ -30,6 +30,9 @@ const isNodeInRoot = (node, root) => {
 
 const getKey = (child = {}, idx) => child.key || String(idx);
 
+const shallowDiff = (objA, objB) =>
+  Object.entries(objA).some(([key, value]) => objB[key] !== value);
+
 const mapColumnsToText = {
   1: 'one',
   2: 'two',
@@ -51,6 +54,7 @@ export {
   isNodeInRoot,
   getKey,
   mapColumnsToText,
+  shallowDiff,
 };
 
 export default isNodeInRoot;

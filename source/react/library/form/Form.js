@@ -3,6 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 import Button from '../buttons/Button';
 import ButtonGroup from '../buttons/ButtonGroup';
+import { shallowDiff } from '../../helpers/statics';
 
 import FormField from './FormField';
 import FormFlyout from './FormFlyout';
@@ -21,8 +22,6 @@ const propTypes = {
   //* Text to display as the Submit button */
   submitLabel: PropTypes.string,
   validator: PropTypes.func,
-  requiredFields: PropTypes.arrayOf(PropTypes.string),
-  requiredFieldMessage: PropTypes.string,
   //* Errors to render the form with. Keys are field names, and values are the form errors */
   errors: PropTypes.shape({}),
   size: PropTypes.string,
@@ -40,8 +39,6 @@ const defaultProps = {
   onSubmit: null,
   children: null,
   validator: null,
-  requiredFields: null,
-  requiredFieldMessage: 'Required field',
   onCancel: () => {},
   cancellable: false,
   cancelLabel: 'Cancel',
@@ -77,6 +74,14 @@ const getValues = children => {
   return values;
 };
 
+const getRequiredFields = children =>
+  React.Children.toArray(children)
+    .filter(({ props: { required } }) => required)
+    .map(({ props: { name, requiredFieldMessage } }) => ({
+      name,
+      requiredFieldMessage,
+    }));
+
 /**
  * `Form` is a container component for rendering forms.
  */
@@ -84,10 +89,14 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
 
-    const defaultValues = getValues(props.children);
+    /**
+     * Noting initial form values so that we can determine when the values have changed
+     */
+    this.initialValues = getValues(props.children);
+    this.changed = false;
 
     this.state = {
-      values: defaultValues,
+      values: { ...this.initialValues },
       valid: true,
       validatorErrors: {},
     };
@@ -124,6 +133,14 @@ class Form extends React.Component {
   onChange(name) {
     const { onChange } = this.props;
     const { valid, values } = this.state;
+
+    /**
+     * If form is unchanged from initial values, test if that is still true
+     */
+    if (!this.changed && shallowDiff(values, this.initialValues)) {
+      this.changed = true;
+    }
+
     return value => {
       const newState = Object.assign({}, this.state);
 
@@ -146,20 +163,25 @@ class Form extends React.Component {
   }
 
   validate(values) {
-    const { validator, requiredFields, requiredFieldMessage } = this.props;
+    const { validator, children } = this.props;
+
+    const requiredFields = getRequiredFields(children);
 
     const errors = {};
 
-    if (requiredFields) {
-      requiredFields.forEach(field => {
-        if (isEmpty(values[field])) {
-          errors[field] = requiredFieldMessage;
+    if (requiredFields.length) {
+      requiredFields.forEach(({ name, requiredFieldMessage }) => {
+        if (isEmpty(values[name])) {
+          errors[name] = requiredFieldMessage;
         }
       });
     }
 
     if (validator) {
-      return Object.assign(errors, validator(values));
+      return {
+        ...validator(values),
+        ...errors,
+      };
     }
 
     return errors;
@@ -242,7 +264,7 @@ class Form extends React.Component {
           type="submit"
           processing={submitting}
           size={size}
-          disabled={!valid}
+          disabled={!valid || !this.changed}
           label={submitLabel}
         />
       );

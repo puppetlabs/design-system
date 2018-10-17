@@ -16,6 +16,7 @@ const propTypes = {
   disabled: PropTypes.bool,
   readonly: PropTypes.bool,
   type: PropTypes.string,
+  required: PropTypes.bool,
   /** Value string */
   // eslint-disable-next-line react/require-default-props
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
@@ -41,6 +42,7 @@ const defaultProps = {
   autoFocus: false,
   disabled: false,
   readonly: false,
+  required: false,
   type: null,
   name: '',
   size: null,
@@ -120,6 +122,7 @@ class Input extends React.Component {
       value,
       placeholder,
       icon,
+      required,
     } = this.props;
 
     const props = {
@@ -142,6 +145,7 @@ class Input extends React.Component {
         [`rc-input-${size}`]: size,
       }),
       style,
+      'aria-required': required,
     };
 
     if (!autoComplete) {

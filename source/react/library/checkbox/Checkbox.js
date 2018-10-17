@@ -10,6 +10,7 @@ const propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
+  required: PropTypes.func,
 };
 
 const defaultProps = {
@@ -17,6 +18,7 @@ const defaultProps = {
   checked: false,
   disabled: false,
   onChange: () => {},
+  required: PropTypes.func,
 };
 
 /**
@@ -54,12 +56,13 @@ class Checkbox extends React.Component {
 
   render() {
     const { checked } = this.state;
-    const { disabled, name } = this.props;
+    const { disabled, name, required } = this.props;
 
     const className = classnames('rc-checkbox', {
       'rc-checkbox-checked': checked,
       'rc-checkbox-disabled': disabled,
     });
+    /* eslint-disable jsx-a11y/role-supports-aria-props */
 
     return (
       <div className="rc-checkbox-container">
@@ -69,12 +72,14 @@ class Checkbox extends React.Component {
           disabled={disabled}
           checked={checked}
           className={className}
+          aria-required={required}
           value={name}
           id={name}
         />
         <Icon onClick={this.onChange} type="check" width="16px" height="16px" />
       </div>
     );
+    /* eslint-enable */
   }
 }
 
