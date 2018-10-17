@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import Button from '../buttons/Button';
-import ButtonGroup from '../buttons/ButtonGroup';
 import { shallowDiff } from '../../helpers/statics';
 
 import FormField from './FormField';
@@ -26,7 +25,7 @@ const propTypes = {
   errors: PropTypes.shape({}),
   size: PropTypes.string,
   submitting: PropTypes.bool,
-  actionsPosition: PropTypes.oneOf(['left', 'right']),
+  actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
   children: PropTypes.node,
 };
 
@@ -266,6 +265,7 @@ class Form extends React.Component {
           size={size}
           disabled={!valid || !this.changed}
           label={submitLabel}
+          block={actionsPosition === 'block'}
         />
       );
     }
@@ -278,26 +278,34 @@ class Form extends React.Component {
           size={size}
           onClick={this.onCancel}
           label={cancelLabel}
+          block={actionsPosition === 'block'}
         />
       );
     }
 
-    if (actionsPosition === 'left') {
-      actions = [submitButton, cancelButton];
+    if (actionsPosition === 'right') {
+      actions = (
+        <Fragment>
+          {cancelButton}
+          {submitButton}
+        </Fragment>
+      );
     } else {
-      actions = [cancelButton, submitButton];
+      actions = (
+        <Fragment>
+          {submitButton}
+          {cancelButton}
+        </Fragment>
+      );
     }
 
-    const classNames = classnames('rc-form-actions', {
-      'rc-form-actions-left': actionsPosition === 'left',
-    });
+    const classNames = classnames(
+      'rc-form-actions',
+      `rc-form-actions-${actionsPosition}`,
+    );
 
-    if (actions.length) {
-      jsx = (
-        <div className={classNames}>
-          <ButtonGroup>{actions}</ButtonGroup>
-        </div>
-      );
+    if (actions) {
+      jsx = <div className={classNames}>{actions}</div>;
     }
 
     return jsx;
