@@ -85,4 +85,12 @@ describe('<Dropdown />', () => {
       1,
     );
   });
+
+  it('multiple selection with numerical ids', () => {
+    const wrapper = mount(
+      <Dropdown multiple selected={[1, 2]} options={options} />,
+    );
+
+    expect(wrapper.find('DropdownMenu').prop('selected')).to.eql([1, 2]);
+  });
 });
