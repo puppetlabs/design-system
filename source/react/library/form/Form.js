@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import classnames from 'classnames';
+import Alert from '../alert';
 import Button from '../buttons/Button';
 import { shallowDiff } from '../../helpers/statics';
 
@@ -21,8 +22,11 @@ const propTypes = {
   //* Text to display as the Submit button */
   submitLabel: PropTypes.string,
   validator: PropTypes.func,
-  //* Errors to render the form with. Keys are field names, and values are the form errors */
+  /* Errors to render the form fields with. Keys are field names, and values are the field errors
+   * TODO: Deprecate this prop. Field-specific errors should be passed in through the relevant FormField */
   errors: PropTypes.shape({}),
+  /* This is a single error field for the entire form */
+  error: PropTypes.string,
   size: PropTypes.string,
   submitting: PropTypes.bool,
   actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
@@ -38,6 +42,7 @@ const defaultProps = {
   onSubmit: null,
   children: null,
   validator: null,
+  error: '',
   onCancel: () => {},
   cancellable: false,
   cancelLabel: 'Cancel',
@@ -187,14 +192,15 @@ class Form extends React.Component {
   }
 
   renderField(child) {
-    const { errors, size } = this.props;
+    const { error, errors, size } = this.props;
     const { validatorErrors, values } = this.state;
 
     return React.cloneElement(child, {
       error:
         child.props.error ||
+        errors[child.props.name] ||
         validatorErrors[child.props.name] ||
-        errors[child.props.name],
+        !!error,
       value: values[child.props.name],
       onChange: this.onChange(child.props.name),
       size,
@@ -311,10 +317,30 @@ class Form extends React.Component {
     return jsx;
   }
 
+  renderFormError() {
+    const { error } = this.props;
+
+    if (error) {
+      return (
+        <Alert
+          isActive
+          growl={false}
+          closeable={false}
+          type="error"
+          message={error}
+          className="rc-form-error"
+        />
+      );
+    }
+
+    return null;
+  }
+
   render() {
     const { children: childrenProp, className, size, inline } = this.props;
     const children = this.renderChildren(childrenProp);
     const actions = this.renderActions();
+    const error = this.renderFormError();
     const classNames = classnames('rc-form', className, {
       [`rc-form-${size}`]: size,
       'rc-form-inline': inline,
@@ -323,6 +349,7 @@ class Form extends React.Component {
     return (
       <form className={classNames} onSubmit={this.onSubmit}>
         <fieldset className="rc-form-fields">{children}</fieldset>
+        {error}
         {actions}
       </form>
     );
