@@ -48,7 +48,7 @@ const propTypes = {
   ]),
   inline: PropTypes.bool,
   size: PropTypes.string,
-  error: PropTypes.string,
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** A human-friendly identifier for this field */
   label: PropTypes.string,
   /** This will be used by the parent `Form` to track updates. */
