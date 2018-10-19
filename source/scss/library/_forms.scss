@@ -139,6 +139,10 @@
   justify-content: flex-start;
 }
 
+.rc-form-error {
+  margin-top: $puppet-form-field-margin * 2;
+}
+
 .rc-form-field-error {
   .rc-form-field-label {
     color: $puppet-neg-color-base;

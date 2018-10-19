@@ -13,6 +13,7 @@ const propTypes = {
   growl: PropTypes.bool,
   onClose: PropTypes.func,
   dismissAfter: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+  className: PropTypes.string,
 };
 
 const defaultProps = {
@@ -22,6 +23,7 @@ const defaultProps = {
   growl: true,
   onClose: () => {},
   dismissAfter: 5000,
+  className: '',
 };
 
 class Alert extends React.Component {
@@ -71,11 +73,24 @@ class Alert extends React.Component {
   }
 
   render() {
-    const { message, isActive, type, closeable, growl } = this.props;
-    const classNames = classnames('rc-alert', {
-      [`rc-alert-${type}`]: type,
-      'rc-alert-static': !growl,
-    });
+    const {
+      message,
+      isActive,
+      type,
+      closeable,
+      growl,
+      className,
+      dismissAfter,
+      ...rest
+    } = this.props;
+    const classNames = classnames(
+      'rc-alert',
+      {
+        [`rc-alert-${type}`]: type,
+        'rc-alert-static': !growl,
+      },
+      className,
+    );
     let closeButton;
     let typeIcon;
 
@@ -112,7 +127,7 @@ class Alert extends React.Component {
     }
 
     return (
-      <div className={classNames}>
+      <div className={classNames} {...rest}>
         <Icon className="rc-alert-type-icon" type={typeIcon} size="medium" />
         <Text className="rc-alert-message" size="small">
           {message}

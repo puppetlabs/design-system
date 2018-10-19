@@ -28,6 +28,8 @@ describe('<Form />', () => {
       'name',
       'className',
       'inline',
+      'required',
+      'requiredFieldMessage',
       'size',
       'error',
       'label',

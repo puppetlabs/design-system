@@ -56,7 +56,7 @@ class Switch extends React.Component {
     const classNames = classnames('rc-switch', className, {
       'rc-switch-checked': className === null,
     });
-
+    /* eslint-disable jsx-a11y/role-supports-aria-props */
     return (
       <div className={classNames}>
         <input
@@ -70,6 +70,7 @@ class Switch extends React.Component {
         {label}
       </div>
     );
+    /* eslint-enable */
   }
 }
 

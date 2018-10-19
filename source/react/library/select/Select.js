@@ -29,6 +29,7 @@ const propTypes = {
     PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
   ),
   disabled: PropTypes.bool,
+  required: PropTypes.bool,
   multiple: PropTypes.bool,
   typeahead: PropTypes.bool,
   clearable: PropTypes.bool,
@@ -53,6 +54,7 @@ const defaultProps = {
   valueless: false,
   typeahead: true,
   disabled: false,
+  required: false,
   multiple: false,
   autoOpen: false,
   onSelect: null,
@@ -654,6 +656,7 @@ class Select extends React.Component {
       size,
       disabled,
       name,
+      required,
     } = this.props;
     const { selected } = this.state;
     let placeholder;
@@ -672,6 +675,7 @@ class Select extends React.Component {
         onChange={this.onInputChange}
         value={this.getInputValue()}
         size={size}
+        aria-required={required}
         ref={c => {
           this.input = c;
         }}
