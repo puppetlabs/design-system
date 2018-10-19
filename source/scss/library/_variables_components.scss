@@ -863,17 +863,17 @@ $puppet-heading-small-title-font-family            : $puppet-font-family-heading
 $puppet-heading-small-title-font-weight            : $puppet-font-weight-heavy !default;
 
 $puppet-text-base-font-size                        : $puppet-font-size-base !default;
-$puppet-text-base-line-height                      : 20px !default;
+$puppet-text-base-line-height                      : $puppet-line-height-default !default;
 $puppet-text-base-font-family                      : $puppet-font-family !default;
 $puppet-text-base-font-weight                      : $puppet-font-weight-normal !default;
 
-$puppet-text-small-font-size                        : $puppet-font-size-small !default;
-$puppet-text-small-line-height                      : 18px !default;
-$puppet-text-small-font-family                      : $puppet-font-family !default;
-$puppet-text-small-font-weight                      : $puppet-font-weight-normal !default;
+$puppet-text-small-font-size                       : $puppet-font-size-small !default;
+$puppet-text-small-line-height                     : $puppet-line-height-default !default;
+$puppet-text-small-font-family                     : $puppet-font-family !default;
+$puppet-text-small-font-weight                     : $puppet-font-weight-normal !default;
 
 $puppet-text-tiny-font-size                        : $puppet-font-size-tiny !default;
-$puppet-text-tiny-line-height                      : 16px !default;
+$puppet-text-tiny-line-height                      : $puppet-line-height-default !default;
 $puppet-text-tiny-font-family                      : $puppet-font-family !default;
 $puppet-text-tiny-font-weight                      : $puppet-font-weight-heavy !default;
 
