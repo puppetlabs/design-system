@@ -240,7 +240,9 @@ class Dropdown extends React.Component {
     } = this.props;
     const options = this.getOptions();
     const button = this.renderToggle();
-    const selected = selectedState.map(s => (typeof s === 'string' ? s : s.id));
+    const selected = selectedState.map(
+      s => (typeof s === 'string' || typeof s === 'number' ? s : s.id),
+    );
 
     return (
       <DropdownMenu
