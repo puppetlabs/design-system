@@ -822,43 +822,43 @@ $puppet-heading-medium-color                       : $puppet-font-color-medium !
 $puppet-heading-subtle-color                       : $puppet-font-color-subtle !default;
 
 $puppet-heading-hero-font-size                     : 48px !default;
-$puppet-heading-hero-line-height                   : 56px !default;
+$puppet-heading-hero-line-height                   : calc(56/48) !default;
 $puppet-heading-hero-font-family                   : $puppet-font-family-heading !default;
 $puppet-heading-hero-font-weight                   : $puppet-font-weight-medium !default;
 
 
 $puppet-heading-h1-font-size                       : 40px !default;
-$puppet-heading-h1-line-height                     : 48px !default;
+$puppet-heading-h1-line-height                     : calc(48/40) !default;
 $puppet-heading-h1-font-family                     : $puppet-font-family-heading !default;
 $puppet-heading-h1-font-weight                     : $puppet-font-weight-medium !default;
 
 $puppet-heading-h2-font-size                       : 32px !default;
-$puppet-heading-h2-line-height                     : 40px !default;
+$puppet-heading-h2-line-height                     : calc(40/32) !default;
 $puppet-heading-h2-font-family                     : $puppet-font-family-heading !default;
 $puppet-heading-h2-font-weight                     : $puppet-font-weight-medium !default;
 
 $puppet-heading-h3-font-size                       : 24px !default;
-$puppet-heading-h3-line-height                     : 32px !default;
+$puppet-heading-h3-line-height                     : calc(32/24) !default;
 $puppet-heading-h3-font-family                     : $puppet-font-family-heading !default;
 $puppet-heading-h3-font-weight                     : $puppet-font-weight-medium !default;
 
 $puppet-heading-h4-font-size                       : 18px !default;
-$puppet-heading-h4-line-height                     : 24px !default;
+$puppet-heading-h4-line-height                     : calc(24/18) !default;
 $puppet-heading-h4-font-family                     : $puppet-font-family-heading !default;
 $puppet-heading-h4-font-weight                     : $puppet-font-weight-medium !default;
 
 $puppet-heading-h5-font-size                       : 14px !default;
-$puppet-heading-h5-line-height                     : 20px !default;
+$puppet-heading-h5-line-height                     : calc(20/14) !default;
 $puppet-heading-h5-font-family                     : $puppet-font-family !default;
 $puppet-heading-h5-font-weight                     : $puppet-font-weight-heavy !default;
 
 $puppet-heading-h6-font-size                       : 12px !default;
-$puppet-heading-h6-line-height                     : 18px !default;
+$puppet-heading-h6-line-height                     : calc(18/12) !default;
 $puppet-heading-h6-font-family                     : $puppet-font-family !default;
 $puppet-heading-h6-font-weight                     : $puppet-font-weight-heavy !default;
 
 $puppet-heading-small-title-font-size              : 11px !default;
-$puppet-heading-small-title-line-height            : 16px !default;
+$puppet-heading-small-title-line-height            : calc(16/11) !default;
 $puppet-heading-small-title-font-family            : $puppet-font-family-heading !default;
 $puppet-heading-small-title-font-weight            : $puppet-font-weight-heavy !default;
 
