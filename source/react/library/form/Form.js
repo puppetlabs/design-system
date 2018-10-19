@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { Fragment } from 'react';
 import classnames from 'classnames';
+import Alert from '../alert';
 import Button from '../buttons/Button';
-import ButtonGroup from '../buttons/ButtonGroup';
+import { shallowDiff } from '../../helpers/statics';
 
 import FormField from './FormField';
 import FormFlyout from './FormFlyout';
@@ -21,13 +22,14 @@ const propTypes = {
   //* Text to display as the Submit button */
   submitLabel: PropTypes.string,
   validator: PropTypes.func,
-  requiredFields: PropTypes.arrayOf(PropTypes.string),
-  requiredFieldMessage: PropTypes.string,
-  //* Errors to render the form with. Keys are field names, and values are the form errors */
+  /* Errors to render the form fields with. Keys are field names, and values are the field errors
+   * TODO: Deprecate this prop. Field-specific errors should be passed in through the relevant FormField */
   errors: PropTypes.shape({}),
+  /* This is a single error field for the entire form */
+  error: PropTypes.string,
   size: PropTypes.string,
   submitting: PropTypes.bool,
-  actionsPosition: PropTypes.oneOf(['left', 'right']),
+  actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
   children: PropTypes.node,
 };
 
@@ -40,8 +42,7 @@ const defaultProps = {
   onSubmit: null,
   children: null,
   validator: null,
-  requiredFields: null,
-  requiredFieldMessage: 'Required field',
+  error: '',
   onCancel: () => {},
   cancellable: false,
   cancelLabel: 'Cancel',
@@ -77,6 +78,14 @@ const getValues = children => {
   return values;
 };
 
+const getRequiredFields = children =>
+  React.Children.toArray(children)
+    .filter(({ props: { required } }) => required)
+    .map(({ props: { name, requiredFieldMessage } }) => ({
+      name,
+      requiredFieldMessage,
+    }));
+
 /**
  * `Form` is a container component for rendering forms.
  */
@@ -84,10 +93,14 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
 
-    const defaultValues = getValues(props.children);
+    /**
+     * Noting initial form values so that we can determine when the values have changed
+     */
+    this.initialValues = getValues(props.children);
+    this.changed = false;
 
     this.state = {
-      values: defaultValues,
+      values: { ...this.initialValues },
       valid: true,
       validatorErrors: {},
     };
@@ -124,6 +137,14 @@ class Form extends React.Component {
   onChange(name) {
     const { onChange } = this.props;
     const { valid, values } = this.state;
+
+    /**
+     * If form is unchanged from initial values, test if that is still true
+     */
+    if (!this.changed && shallowDiff(values, this.initialValues)) {
+      this.changed = true;
+    }
+
     return value => {
       const newState = Object.assign({}, this.state);
 
@@ -146,34 +167,40 @@ class Form extends React.Component {
   }
 
   validate(values) {
-    const { validator, requiredFields, requiredFieldMessage } = this.props;
+    const { validator, children } = this.props;
+
+    const requiredFields = getRequiredFields(children);
 
     const errors = {};
 
-    if (requiredFields) {
-      requiredFields.forEach(field => {
-        if (isEmpty(values[field])) {
-          errors[field] = requiredFieldMessage;
+    if (requiredFields.length) {
+      requiredFields.forEach(({ name, requiredFieldMessage }) => {
+        if (isEmpty(values[name])) {
+          errors[name] = requiredFieldMessage;
         }
       });
     }
 
     if (validator) {
-      return Object.assign(errors, validator(values));
+      return {
+        ...validator(values),
+        ...errors,
+      };
     }
 
     return errors;
   }
 
   renderField(child) {
-    const { errors, size } = this.props;
+    const { error, errors, size } = this.props;
     const { validatorErrors, values } = this.state;
 
     return React.cloneElement(child, {
       error:
         child.props.error ||
+        errors[child.props.name] ||
         validatorErrors[child.props.name] ||
-        errors[child.props.name],
+        !!error,
       value: values[child.props.name],
       onChange: this.onChange(child.props.name),
       size,
@@ -242,8 +269,9 @@ class Form extends React.Component {
           type="submit"
           processing={submitting}
           size={size}
-          disabled={!valid}
+          disabled={!valid || !this.changed}
           label={submitLabel}
+          block={actionsPosition === 'block'}
         />
       );
     }
@@ -256,35 +284,63 @@ class Form extends React.Component {
           size={size}
           onClick={this.onCancel}
           label={cancelLabel}
+          block={actionsPosition === 'block'}
         />
       );
     }
 
-    if (actionsPosition === 'left') {
-      actions = [submitButton, cancelButton];
+    if (actionsPosition === 'right') {
+      actions = (
+        <Fragment>
+          {cancelButton}
+          {submitButton}
+        </Fragment>
+      );
     } else {
-      actions = [cancelButton, submitButton];
-    }
-
-    const classNames = classnames('rc-form-actions', {
-      'rc-form-actions-left': actionsPosition === 'left',
-    });
-
-    if (actions.length) {
-      jsx = (
-        <div className={classNames}>
-          <ButtonGroup>{actions}</ButtonGroup>
-        </div>
+      actions = (
+        <Fragment>
+          {submitButton}
+          {cancelButton}
+        </Fragment>
       );
     }
 
+    const classNames = classnames(
+      'rc-form-actions',
+      `rc-form-actions-${actionsPosition}`,
+    );
+
+    if (actions) {
+      jsx = <div className={classNames}>{actions}</div>;
+    }
+
     return jsx;
+  }
+
+  renderFormError() {
+    const { error } = this.props;
+
+    if (error) {
+      return (
+        <Alert
+          isActive
+          growl={false}
+          closeable={false}
+          type="error"
+          message={error}
+          className="rc-form-error"
+        />
+      );
+    }
+
+    return null;
   }
 
   render() {
     const { children: childrenProp, className, size, inline } = this.props;
     const children = this.renderChildren(childrenProp);
     const actions = this.renderActions();
+    const error = this.renderFormError();
     const classNames = classnames('rc-form', className, {
       [`rc-form-${size}`]: size,
       'rc-form-inline': inline,
@@ -293,6 +349,7 @@ class Form extends React.Component {
     return (
       <form className={classNames} onSubmit={this.onSubmit}>
         <fieldset className="rc-form-fields">{children}</fieldset>
+        {error}
         {actions}
       </form>
     );

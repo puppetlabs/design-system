@@ -1,18 +1,18 @@
 # Puppet React Components
 
-Puppet React Components is a collection of general purpose, reusable React
-components, and their associated styles. Components here are primairly used by
-the Puppet Insights team, but are designed to be consumed by other teams and
-products.
+Puppet React Components is a collection of general-purpose reusable React
+components and their associated styles. Components here are currently in
+widest use by the Puppet Insights team but are designed to be consumed by other
+teams and products.
 
 We welcome contributions and have put together a process for contributing.
-Please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) for details on
-setting up your development environment, opening a Pull Request, and requesting
-reviews.
+Please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) for details on filing a
+[PDS](https://tickets.puppetlabs.com/browse/PDS) ticket, setting up your
+development environment, opening a Pull Request, and requesting reviews.
 
 ## Installation
 
-UI Components is distributed on [Artifactory](https://confluence.puppetlabs.com/display/SRE/Artifactory+Basics).
+This library is distributed as an npm package on [Artifactory](https://confluence.puppetlabs.com/display/SRE/Artifactory+Basics).
 
 You can install UI components with the following command:
 

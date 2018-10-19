@@ -1,3 +1,9 @@
+# 4.9.0
+- Moves requiredFields from top level on `Form` to individual `FormFields`
+- Form now accepts `block` as an option for `actionsPosition`
+- Form component now automatically disables submit button until the user has changed at least one form field
+- Fixed bug allowing number ids to be passed in as `selected` prop in dropdown
+
 # 4.8.2
 
 - Fixing regression in select component
