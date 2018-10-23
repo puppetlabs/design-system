@@ -1,4 +1,10 @@
+# 4.10.0
+
+- Update to default line height
+- Adding the ability to supply a label for the button in blank slates
+
 # 4.9.0
+
 - Moves requiredFields from top level on `Form` to individual `FormFields`
 - Form now accepts `block` as an option for `actionsPosition`
 - Form component now automatically disables submit button until the user has changed at least one form field
