@@ -15,6 +15,7 @@ const propTypes = {
   content: PropTypes.node,
   note: PropTypes.node,
   onClick: PropTypes.func,
+  buttonLabel: PropTypes.string,
 };
 
 const defaultProps = {
@@ -27,6 +28,7 @@ const defaultProps = {
   content: '',
   note: '',
   onClick: null,
+  buttonLabel: 'Enable',
 };
 
 /**
@@ -43,6 +45,7 @@ const BlankSlate = ({
   lead,
   content,
   note,
+  buttonLabel,
 }) => {
   let visual;
   let body;
@@ -51,7 +54,7 @@ const BlankSlate = ({
   if (onClick) {
     button = (
       <Button
-        label="Enable stats"
+        label={buttonLabel}
         onClick={() => {
           onClick();
         }}
