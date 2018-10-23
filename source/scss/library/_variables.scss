@@ -253,7 +253,7 @@ $puppet-font-color-medium                    : $puppet-n700 !default;
 $puppet-font-color-subtle                    : $puppet-n600 !default;
 $puppet-font-color-light                     : $puppet-white !default;
 
-$puppet-line-height-default                  : 1.5em !default;
+$puppet-line-height-default                  : calc(20/14) !default;
 
 $puppet-font-weight-normal                   : 400 !default;
 $puppet-font-weight-medium                   : 500 !default;
