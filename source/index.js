@@ -4,6 +4,9 @@ import MenuList from './react/library/menu/MenuList';
 import MenuHeader from './react/library/menu/MenuHeader';
 import MenuSection from './react/library/menu/MenuSection';
 
+// Breadcrumbs
+import Breadcrumb from './react/library/breadcrumb';
+
 // Buttons
 import Button from './react/library/buttons/Button';
 import SplitButton from './react/library/buttons/SplitButton';
@@ -57,6 +60,7 @@ import Badge from './react/library/badge';
 import Link from './react/library/link';
 
 export {
+  Breadcrumb,
   Button,
   ButtonGroup,
   SplitButton,
