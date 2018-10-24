@@ -1,3 +1,7 @@
+# 4.10.1
+
+- Export Breadcrumb component
+
 # 4.10.0
 
 - Update to default line height
