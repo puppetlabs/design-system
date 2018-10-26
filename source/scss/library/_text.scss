@@ -27,3 +27,15 @@
 .rc-text-subtle {
   color: $puppet-font-color-subtle;
 }
+
+.rc-text-danger {
+  color: $puppet-neg-color-base;
+}
+
+.rc-text-warning {
+  color: $puppet-warn-color-base;
+}
+
+.rc-text-success {
+  color: $puppet-pos-color-base;
+}
