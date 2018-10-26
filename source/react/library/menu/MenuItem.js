@@ -18,8 +18,8 @@ const propTypes = {
 
 const defaultProps = {
   className: '',
-  onFocus: () => {},
-  onClick: () => {},
+  onFocus: null,
+  onClick: null,
   focused: false,
   selected: false,
 };
@@ -41,11 +41,13 @@ class MenuItem extends React.Component {
 
   onClick(e) {
     const { option, onClick, selected } = this.props;
-    e.preventDefault();
-    e.stopPropagation();
+    if (onClick) {
+      e.preventDefault();
+      e.stopPropagation();
 
-    if (!option.disabled) {
-      onClick(option, !selected);
+      if (!option.disabled) {
+        onClick(option, !selected);
+      }
     }
   }
 
@@ -99,7 +101,7 @@ class MenuItem extends React.Component {
         onFocus={onFocus}
       >
         <a
-          href={option.id}
+          href={option.href || option.id}
           className="rc-menu-item-anchor"
           onClick={this.onClick}
         >
