@@ -133,6 +133,10 @@
   display: flex;
   justify-content: flex-end;
   padding-top: $puppet-form-field-margin * 2;
+
+  .rc-form-action:not(:last-child) {
+    margin-right: 4px;
+  }
 }
 
 .rc-form-actions-left {
