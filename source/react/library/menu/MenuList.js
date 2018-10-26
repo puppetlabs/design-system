@@ -73,7 +73,7 @@ class MenuList extends React.Component {
 
   render() {
     const { focusedId } = this.state;
-    const { multiple, selected, options, size } = this.props;
+    const { multiple, selected, options, size, onChange } = this.props;
     const className = classnames('rc-menu-list', {
       [`rc-menu-list-${size}`]: size,
       'rc-menu-multiple': multiple,
@@ -96,7 +96,7 @@ class MenuList extends React.Component {
           option={option}
           className={option.className}
           selected={isSelected}
-          onClick={this.onChange}
+          onClick={onChange && this.onChange}
           multiple={multiple}
         />
       );

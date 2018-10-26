@@ -7,7 +7,7 @@ const propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   className: PropTypes.string,
   size: PropTypes.oneOf(['small', 'tiny']),
-  color: PropTypes.oneOf(['subtle', 'medium']),
+  color: PropTypes.oneOf(['subtle', 'medium', 'danger', 'warning', 'success']),
 };
 
 const defaultProps = {

@@ -1,3 +1,9 @@
+# 4.11.0
+- Allow MenuItem consumer to provide href
+- Add purple palette
+- Add 'allowUnchangedSubmit' option to Form component
+- Add stoplight colors to Text component
+
 # 4.10.1
 
 - Export Breadcrumb component

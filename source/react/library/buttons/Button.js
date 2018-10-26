@@ -6,7 +6,7 @@ import { TooltipStickyArea } from '../tooltips/Tooltip';
 
 const propTypes = {
   className: PropTypes.string,
-  size: PropTypes.oneOf(['tiny', 'small', 'large', 'auto', null]),
+  size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'auto', null]),
   simple: PropTypes.bool,
   secondary: PropTypes.bool,
   transparent: PropTypes.bool,

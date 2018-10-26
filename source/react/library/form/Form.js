@@ -21,6 +21,8 @@ const propTypes = {
   submittable: PropTypes.bool,
   //* Text to display as the Submit button */
   submitLabel: PropTypes.string,
+  /* Allow form submission even if the user has not changed the form yet */
+  allowUnchangedSubmit: PropTypes.bool,
   validator: PropTypes.func,
   /* Errors to render the form fields with. Keys are field names, and values are the field errors
    * TODO: Deprecate this prop. Field-specific errors should be passed in through the relevant FormField */
@@ -43,6 +45,7 @@ const defaultProps = {
   children: null,
   validator: null,
   error: '',
+  allowUnchangedSubmit: false,
   onCancel: () => {},
   cancellable: false,
   cancelLabel: 'Cancel',
@@ -93,11 +96,15 @@ class Form extends React.Component {
   constructor(props) {
     super(props);
 
+    const { allowUnchangedSubmit } = props;
+
     /**
      * Noting initial form values so that we can determine when the values have changed
      */
     this.initialValues = getValues(props.children);
-    this.changed = false;
+
+    // Boolean to block form submission until the user has changed something
+    this.allowSubmission = allowUnchangedSubmit;
 
     this.state = {
       values: { ...this.initialValues },
@@ -141,8 +148,8 @@ class Form extends React.Component {
     /**
      * If form is unchanged from initial values, test if that is still true
      */
-    if (!this.changed && shallowDiff(values, this.initialValues)) {
-      this.changed = true;
+    if (!this.allowSubmission && shallowDiff(values, this.initialValues)) {
+      this.allowSubmission = true;
     }
 
     return value => {
@@ -266,10 +273,11 @@ class Form extends React.Component {
       submitButton = (
         <Button
           key="submit"
+          className="rc-form-action"
           type="submit"
           processing={submitting}
           size={size}
-          disabled={!valid || !this.changed}
+          disabled={!valid || !this.allowSubmission}
           label={submitLabel}
           block={actionsPosition === 'block'}
         />
@@ -280,6 +288,7 @@ class Form extends React.Component {
       cancelButton = (
         <Button
           key="cancel"
+          className="rc-form-action"
           secondary
           size={size}
           onClick={this.onCancel}
