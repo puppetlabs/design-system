@@ -7,6 +7,8 @@ import { ENTER_KEY_CODE } from '../../constants';
 const propTypes = {
   secondary: PropTypes.bool,
   className: PropTypes.string,
+  clickable: PropTypes.bool,
+  onClick: PropTypes.func,
   /** Callback for detecting user remove action */
   onRemove: PropTypes.func,
   children: PropTypes.node,
@@ -15,7 +17,9 @@ const propTypes = {
 
 const defaultProps = {
   secondary: false,
+  clickable: false,
   className: '',
+  onClick: () => {},
   onRemove: null,
   children: null,
   type: null,
@@ -71,8 +75,18 @@ class Panel extends React.Component {
   }
 
   render() {
-    const { children, secondary, type, onRemove, className } = this.props;
+    const {
+      children,
+      secondary,
+      type,
+      onRemove,
+      className,
+      clickable,
+      onClick,
+    } = this.props;
+    const extraProps = {};
     const classNames = classnames('rc-panel', className, {
+      'rc-panel-clickable': clickable,
       'rc-panel-secondary': secondary,
       'rc-panel-removable': onRemove,
       [`rc-panel-${type}`]: type,
@@ -80,8 +94,13 @@ class Panel extends React.Component {
 
     const removeButton = this.renderRemoveButton();
 
+    if (clickable) {
+      extraProps.onClick = onClick;
+      extraProps.role = 'button';
+    }
+
     return (
-      <div className={classNames}>
+      <div className={classNames} {...extraProps}>
         {removeButton}
         {children}
       </div>
