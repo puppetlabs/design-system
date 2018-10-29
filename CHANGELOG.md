@@ -1,4 +1,9 @@
+# 4.12.0
+
+- Updating panels so that they are clickable
+
 # 4.11.0
+
 - Allow MenuItem consumer to provide href
 - Add purple palette
 - Add 'allowUnchangedSubmit' option to Form component
