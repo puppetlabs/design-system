@@ -12,13 +12,13 @@ $default-column-count: 12;
   align-items: stretch;
   display: flex;
   flex-wrap: wrap;
-  padding: $puppet-grid-gutter 0;
+  padding: $puppet-grid-gutter-vertical 0;
   position: relative;
   width: 100%;
 }
 
 .rc-grid-column {
-  padding: 0 $puppet-grid-gutter;
+  padding: 0 $puppet-grid-gutter-horizontal;
   position: relative;
   vertical-align: top;
 }
