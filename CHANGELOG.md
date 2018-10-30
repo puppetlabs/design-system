@@ -1,3 +1,8 @@
+# 4.12.1
+
+- Add `className` prop to `Grid.Row`
+- Add styleguide HTML
+
 # 4.12.0
 
 - Updating panels so that they are clickable

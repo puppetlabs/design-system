@@ -6,24 +6,30 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   height: PropTypes.number,
   collapse: PropTypes.oneOf([false, 'top', 'bottom', 'all']),
+  className: PropTypes.string,
 };
 
 const defaultProps = {
   collapse: false,
   height: null,
+  className: '',
 };
 
 const Row = props => {
-  const { height, collapse, children } = props;
+  const { height, collapse, children, className } = props;
   const style = {};
 
   if (height) {
     style.height = `${height}px`;
   }
 
-  const classNames = classnames('rc-grid-row', {
-    [`rc-grid-row-collapse-${collapse}`]: collapse,
-  });
+  const classNames = classnames(
+    'rc-grid-row',
+    {
+      [`rc-grid-row-collapse-${collapse}`]: collapse,
+    },
+    className,
+  );
 
   return (
     <div className={classNames} style={style}>
