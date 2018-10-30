@@ -23,9 +23,13 @@ const Row = props => {
     style.height = `${height}px`;
   }
 
-  const classNames = classnames('rc-grid-row', className, {
-    [`rc-grid-row-collapse-${collapse}`]: collapse,
-  });
+  const classNames = classnames(
+    'rc-grid-row',
+    {
+      [`rc-grid-row-collapse-${collapse}`]: collapse,
+    },
+    className,
+  );
 
   return (
     <div className={classNames} style={style}>
