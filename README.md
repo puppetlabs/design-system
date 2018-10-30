@@ -94,12 +94,17 @@ module.exports = function override(config, env) {
 };
 ```
 
-
 ## Contributing
 
 Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on
 setting up your development environment, opening a Pull Request, and requesting
 reviews.
+
+## Styleguide
+
+The Puppet Styleguide is published to http://styleguide.puppetlabs.net
+
+The React components in this repo are intended to correspond to Sketch symbols in the UI library ([design/puppet-ui-library.sketch](design/puppet-ui-library.sketch)) and implementations should follow the Puppet Styleguide ([design/puppet-styleguide.sketch](design/puppet-styleguide.sketch)). An HTML version of the Styleguide is located at [design/styleguide/index.html](design/styleguide/index.html), whose PNGs can be updated by running `./design/update-styleguide.sh`.
 
 ## FAQ
 
