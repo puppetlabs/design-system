@@ -59,12 +59,11 @@ $puppet-button-text-transform                      : none !default;
 // Default Buttons
 $puppet-button-font-size                           : $puppet-font-size-base !default;
 $puppet-button-height                              : $puppet-huge !default;
-$puppet-button-padding                             : $puppet-medium !default;
 
 // Tiny Buttons
 $puppet-button-tiny-font-size                      : $puppet-font-size-tiny !default;
 $puppet-button-tiny-height                         : 22px !default; // Todo: Base on grid
-$puppet-button-tiny-padding                        : $puppet-button-padding / 4 !default;
+$puppet-button-tiny-padding                        : $puppet-small / 2 !default;
 
 // Small Buttons
 $puppet-button-small-font-size                     : $puppet-font-size-small !default;
@@ -74,7 +73,7 @@ $puppet-button-small-padding                       : $puppet-small !default;
 // Large
 $puppet-button-large-font-size                     : $puppet-font-size-base !default;
 $puppet-button-large-height                        : 60px !default; // Todo: Base on grid
-$puppet-button-large-padding                       : $puppet-button-padding * 1.5 !default;
+$puppet-button-large-padding                       : $puppet-large !default;
 
 // Primary Buttons
 $puppet-button-bg                                  : $puppet-action-base !default;

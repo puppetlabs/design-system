@@ -135,7 +135,7 @@
     $puppet-button-height
     - 2
     - $puppet-button-font-size * $puppet-line-height-default
-  ) / 2) $puppet-button-padding;
+  ) / 2) ($puppet-button-height / 2);
   position: relative;
   text-decoration: none;
 
