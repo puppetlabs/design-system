@@ -1,4 +1,17 @@
-@mixin button-colors($bg, $bg-hover, $bg-active, $color, $color-hover, $color-active, $icon-color, $icon-hover, $icon-active, $border, $border-hover, $border-active) {
+@mixin button-colors(
+  $bg,
+  $bg-hover,
+  $bg-active,
+  $color,
+  $color-hover,
+  $color-active,
+  $icon-color,
+  $icon-hover,
+  $icon-active,
+  $border,
+  $border-hover,
+  $border-active
+) {
   $button-color-split: darken($bg, 10%);
   $button-color-split-hover: lighten($button-color-split, 5%);
 
@@ -116,12 +129,15 @@
   border-radius: $puppet-button-border-radius;
   cursor: pointer;
   display: inline-flex;
-  height: $puppet-button-height;
   justify-content: center;
-  padding: 0 $puppet-button-padding;
+  line-height: $puppet-line-height-default;
+  padding: max(0, (
+    $puppet-button-height
+    - 2
+    - $puppet-button-font-size * $puppet-line-height-default
+  ) / 2) $puppet-button-padding;
   position: relative;
   text-decoration: none;
-  white-space: nowrap;
 
   .rc-button-dropdown-icon {
     padding-left: 10px;
@@ -199,7 +215,6 @@
 }
 
 .rc-button-simple {
-
   @include button-colors(
     $puppet-button-simple-bg,
     $puppet-button-simple-bg-hover,
@@ -296,7 +311,6 @@
   opacity: $puppet-button-disabled-opacity;
   outline: none;
   pointer-events: none;
-
 }
 
 .rc-button-block {
