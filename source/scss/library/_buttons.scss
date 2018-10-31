@@ -129,6 +129,7 @@
   border-radius: $puppet-button-border-radius;
   cursor: pointer;
   display: inline-flex;
+  min-height: $puppet-button-height;
   justify-content: center;
   line-height: $puppet-line-height-default;
   padding: max(0, (
@@ -156,7 +157,7 @@
 }
 
 .rc-button-tiny {
-  height: $puppet-button-tiny-height;
+  min-height: $puppet-button-tiny-height;
   padding: 0 $puppet-button-tiny-padding;
 
   &.rc-button-round {
@@ -169,7 +170,7 @@
 }
 
 .rc-button-small {
-  height: $puppet-button-small-height;
+  min-height: $puppet-button-small-height;
   padding: 0 $puppet-button-small-padding;
 
   .rc-button-content {
@@ -178,7 +179,7 @@
 }
 
 .rc-button-large {
-  height: $puppet-button-large-height;
+  min-height: $puppet-button-large-height;
   // line-height: $puppet-button-large-line-height;
   padding: 0 $puppet-button-large-padding;
 
@@ -224,6 +225,7 @@
     $puppet-button-simple-border-color-active
   );
   height: auto;
+  min-height: auto;
   padding: 0;
 }
 
@@ -364,6 +366,7 @@
   border-radius: $puppet-floating-action-button-height;
   box-shadow: none;
   height: $puppet-floating-action-button-height;
+  min-height: auto;
   justify-content: center;
   padding: 0;
   width: $puppet-floating-action-button-height;
