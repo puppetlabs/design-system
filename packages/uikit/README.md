@@ -4,9 +4,19 @@ A toolkit for all aspects of ui development at Puppet
 
 ## Installation
 
+### Prerequisites
+
+Install a recent version of Node.js (including npm), typically the latest LTS version, e.g. `brew install node@8`.
+
+Set up npm to use [Artifactory](https://artifactory.delivery.puppetlabs.net) for packages with a scope of `@puppet` like uikit:
+
+```
+npm config set @puppet:registry https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/
+```
+
 ### Global via Artifactory
 
-The uikit is published internally via Artifactory. We recommend installing globally so that you have global access to the scripts:
+Install uikit globally to make the `uikit` command available in your shell.
 
 ```
 npm i -g @puppet/uikit
@@ -38,6 +48,12 @@ By default the script will generate the template in the current working director
 ```
 uikit generate <template> <name> -d <path to directory>
 ```
+
+## Contributing
+
+### Filing issues
+
+uikit and [react-components](https://github.com/puppetlabs/react-components) use the Product Design System project in Jira for tracking tickets: <https://tickets.puppetlabs.com/browse/PDS>
 
 ### Adding a generator
 
