@@ -129,9 +129,9 @@
   border-radius: $puppet-button-border-radius;
   cursor: pointer;
   display: inline-flex;
-  min-height: $puppet-button-height;
   justify-content: center;
   line-height: $puppet-line-height-default;
+  min-height: $puppet-button-height;
   padding: max(0, (
     $puppet-button-height
     - 2
@@ -158,7 +158,11 @@
 
 .rc-button-tiny {
   min-height: $puppet-button-tiny-height;
-  padding: 0 $puppet-button-tiny-padding;
+  padding: max(0, (
+    $puppet-button-tiny-height
+    - 2
+    - $puppet-button-tiny-font-size * $puppet-line-height-default
+  ) / 2) ($puppet-button-tiny-height / 5.5);
 
   &.rc-button-round {
     padding: 0 3px;
@@ -171,17 +175,24 @@
 
 .rc-button-small {
   min-height: $puppet-button-small-height;
-  padding: 0 $puppet-button-small-padding;
+  padding: max(0, (
+    $puppet-button-small-height
+    - 2
+    - $puppet-button-small-font-size * $puppet-line-height-default
+  ) / 2) ($puppet-button-small-height / 3);
 
   .rc-button-content {
-    font-size: $puppet-button-font-size;
+    font-size: $puppet-button-small-font-size;
   }
 }
 
 .rc-button-large {
   min-height: $puppet-button-large-height;
-  // line-height: $puppet-button-large-line-height;
-  padding: 0 $puppet-button-large-padding;
+  padding: max(0, (
+    $puppet-button-large-height
+    - 2
+    - $puppet-button-large-font-size * $puppet-line-height-default
+  ) / 2) ($puppet-button-large-height / 2.5);
 
   .rc-button-content {
     font-size: $puppet-button-large-font-size;
@@ -366,8 +377,8 @@
   border-radius: $puppet-floating-action-button-height;
   box-shadow: none;
   height: $puppet-floating-action-button-height;
-  min-height: auto;
   justify-content: center;
+  min-height: auto;
   padding: 0;
   width: $puppet-floating-action-button-height;
 
