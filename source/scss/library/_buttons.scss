@@ -342,6 +342,10 @@
   width: $puppet-button-tiny-height;
 }
 
+.rc-button-nowrap {
+  white-space: nowrap;
+}
+
 .rc-button-processing {
   position: relative;
 
