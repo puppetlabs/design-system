@@ -23,6 +23,10 @@
   &:last-child {
     padding-bottom: $puppet-form-vertical-padding * 2;
   }
+  
+  :not(#{&}) + & {
+    padding-top: $puppet-form-vertical-padding * 2;
+  }
 }
 
 .rc-form-field-content {
@@ -55,7 +59,7 @@
   font-size: $puppet-form-section-legend-font-size;
   font-weight: $puppet-form-section-legend-font-weight;
   margin: 0;
-  padding-bottom: $puppet-form-vertical-padding;
+  padding: 0 0 $puppet-form-vertical-padding;
 
   span {
     display: block;
