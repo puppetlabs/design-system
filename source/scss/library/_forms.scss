@@ -23,10 +23,10 @@
   &:last-child {
     padding-bottom: $puppet-form-vertical-padding * 2;
   }
-  
-  :not(#{&}) + & {
-    margin-top: $puppet-form-vertical-padding * 2;
-  }
+}
+// Add margin-top to sections after non-sections (e.g. non-nested fields)
+:not(.rc-form-section) + .rc-form-section {
+  margin-top: $puppet-form-vertical-padding * 2;
 }
 
 .rc-form-field-content {
