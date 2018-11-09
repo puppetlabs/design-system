@@ -1,3 +1,11 @@
+# 4.13.0
+
+- Update `Button` styles to accommodate multi-line text
+- Add "nowrap" prop to `Button` for previous behavior
+- Add "flat" `Card` type for styles without shadow
+- Add Sass variables for vertical and horizontal `Grid` gutter
+- Adjust `Form` padding for better spacing of fieldset sections
+
 # 4.12.1
 
 - Add `className` prop to `Grid.Row`
