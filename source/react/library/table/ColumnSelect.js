@@ -6,8 +6,10 @@ const propTypes = {
   data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
   column: PropTypes.string,
-  rowData: PropTypes.shape({}),
-  options: PropTypes.arrayOf(PropTypes.string, PropTypes.shape({})),
+  rowData: PropTypes.object,
+  options: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  ),
   disabled: PropTypes.bool,
 };
 
