@@ -24,6 +24,10 @@
     padding-bottom: $puppet-form-vertical-padding * 2;
   }
 }
+// Add margin-top to sections after non-sections (e.g. non-nested fields)
+:not(.rc-form-section) + .rc-form-section {
+  margin-top: $puppet-form-vertical-padding * 2;
+}
 
 .rc-form-field-content {
   display: block;
@@ -55,7 +59,7 @@
   font-size: $puppet-form-section-legend-font-size;
   font-weight: $puppet-form-section-legend-font-weight;
   margin: 0;
-  padding-bottom: $puppet-form-vertical-padding;
+  padding: 0 0 $puppet-form-vertical-padding;
 
   span {
     display: block;
@@ -132,7 +136,10 @@
 .rc-form-actions {
   display: flex;
   justify-content: flex-end;
-  padding-top: $puppet-form-field-margin * 2;
+
+  &:not(:empty) {
+    padding-top: $puppet-form-field-margin * 2;
+  }
 
   .rc-form-action:not(:last-child) {
     margin-right: 4px;
