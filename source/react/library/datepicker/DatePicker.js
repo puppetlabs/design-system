@@ -115,6 +115,7 @@ class DatePicker extends React.Component {
         [buttonClassName]: buttonClassName,
       }),
       disabled: !!(disabled || message),
+      nowrap: true,
     };
     let buttonBody;
 

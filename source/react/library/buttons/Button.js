@@ -25,6 +25,7 @@ const propTypes = {
   href: PropTypes.string,
   round: PropTypes.bool,
   square: PropTypes.bool,
+  nowrap: PropTypes.bool,
   dropdown: PropTypes.bool,
   error: PropTypes.bool,
   message: PropTypes.string,
@@ -50,6 +51,7 @@ const defaultProps = {
   href: null,
   round: false,
   square: false,
+  nowrap: false,
   message: '',
   error: false,
   dropdown: false,
@@ -111,6 +113,7 @@ class Button extends React.Component {
       floating,
       round,
       square,
+      nowrap,
       dropdown: dropdownProp,
       icon: propIcon,
       as: Component,
@@ -135,6 +138,7 @@ class Button extends React.Component {
       [`rc-button-${size}`]: size,
       'rc-button-round': round,
       'rc-button-square': square,
+      'rc-button-nowrap': nowrap,
     });
 
     const btnProps = {
