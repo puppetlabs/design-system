@@ -1,50 +1,50 @@
 ```
 <List>
-  <ListItem>I'm a happy list item!</ListItem>
+  <List.Item>I'm a happy list item!</List.Item>
 </List>
 ```
 
-Selected, selectable, editable, and deletable `ListItem`:
+Selected, selectable, editable, and deletable `List.Item`:
 
 ```
 <List>
-  <ListItem
+  <List.Item
     selected
     onRemove={ () => { console.log('I was removed!'); } }
     onEdit={ () => { console.log('I was edited!'); } }
     onClick={ () => { console.log('I was clicked!'); } }
   >
     I'm already selected
-  </ListItem>
-  <ListItem
+  </List.Item>
+  <List.Item
     onRemove={ () => { console.log('I was removed!'); } }
     onEdit={ () => { console.log('I was edited!'); } }
     onClick={ () => { console.log('I was clicked!'); } }
   >
     I'm not selected by default
-  </ListItem>
-  <ListItem
+  </List.Item>
+  <List.Item
     onRemove={ () => { console.log('I was removed!'); } }
     onEdit={ () => { console.log('I was edited!'); } }
     onClick={ () => { console.log('I was clicked!'); } }
   >
     Nor am I
-  </ListItem>
-  <ListItem
+  </List.Item>
+  <List.Item
     onRemove={ () => { console.log('I was removed!'); } }
     onEdit={ () => { console.log('I was edited!'); } }
     onClick={ () => { console.log('I was clicked!'); } }
   >
     Me neither
-  </ListItem>
+  </List.Item>
 </List>
 ```
 
-Medium sized selectable ListItem:
+Medium sized selectable List.Item:
 
 ```
 <List>
-  <ListItem
+  <List.Item
     selected
     size="medium"
     onRemove={ () => { console.log('I was removed!'); } }
@@ -52,43 +52,43 @@ Medium sized selectable ListItem:
     onClick={ () => { console.log('I was clicked!'); } }
   >
     I'm already selected
-  </ListItem>
-  <ListItem
+  </List.Item>
+  <List.Item
     size="medium"
     onRemove={ () => { console.log('I was removed!'); } }
     onEdit={ () => { console.log('I was edited!'); } }
     onClick={ () => { console.log('I was clicked!'); } }
   >
     I'm not selected by default
-  </ListItem>
-  <ListItem
+  </List.Item>
+  <List.Item
     size="medium"
     onRemove={ () => { console.log('I was removed!'); } }
     onEdit={ () => { console.log('I was edited!'); } }
     onClick={ () => { console.log('I was clicked!'); } }
   >
     Nor am I
-  </ListItem>
-  <ListItem
+  </List.Item>
+  <List.Item
     size="medium"
     onRemove={ () => { console.log('I was removed!'); } }
     onEdit={ () => { console.log('I was edited!'); } }
     onClick={ () => { console.log('I was clicked!'); } }
   >
     Me neither
-  </ListItem>
+  </List.Item>
 </List>
 ```
 
-Fancy `ListItem`:
+Fancy `List.Item`:
 
 ```
 <List>
-  <ListItem key="fancy" fancy onEdit={ () => {} } onRemove={ () => {} }>
+  <List.Item key="fancy" fancy onEdit={ () => {} } onRemove={ () => {} }>
     You fancy huh
-  </ListItem>
-  <ListItem key="so-fancy" fancy onRemove={ () => {} }>
+  </List.Item>
+  <List.Item key="so-fancy" fancy onRemove={ () => {} }>
     So fancy
-  </ListItem>
+  </List.Item>
 </List>
 ```
