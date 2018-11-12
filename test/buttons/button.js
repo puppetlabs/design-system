@@ -5,7 +5,7 @@ import { expect } from 'chai';
 import React from 'react';
 
 import Button from '../../source/react/library/buttons/Button';
-import { Card } from '../../source/react/library/card';
+import Card from '../../source/react/library/card';
 
 describe('<Button />', () => {
   jsdom({ skipWindowCheck: true });
