@@ -58,18 +58,22 @@ $puppet-button-text-transform                      : none !default;
 
 // Default Buttons
 $puppet-button-font-size                           : $puppet-font-size-base !default;
+$puppet-button-line-height                         : 1.5 !default;
 $puppet-button-height                              : $puppet-huge !default;
 
 // Tiny Buttons
 $puppet-button-tiny-font-size                      : $puppet-font-size-tiny !default;
+$puppet-button-tiny-line-height                    : 1.5 !default;
 $puppet-button-tiny-height                         : 22px !default; // Todo: Base on grid
 
 // Small Buttons
 $puppet-button-small-font-size                     : $puppet-font-size-base !default;
+$puppet-button-small-line-height                   : 1.5 !default;
 $puppet-button-small-height                        : $puppet-large !default; // Todo: Base on grid
 
 // Large
 $puppet-button-large-font-size                     : $puppet-font-size-base !default;
+$puppet-button-large-line-height                   : 1.5 !default;
 $puppet-button-large-height                        : 60px !default; // Todo: Base on grid
 
 // Primary Buttons

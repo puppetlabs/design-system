@@ -130,12 +130,11 @@
   cursor: pointer;
   display: inline-flex;
   justify-content: center;
-  line-height: $puppet-line-height-default;
   min-height: $puppet-button-height;
   padding: max(0, (
     $puppet-button-height
     - 2
-    - $puppet-button-font-size * $puppet-line-height-default
+    - $puppet-button-font-size * $puppet-button-line-height
   ) / 2) ($puppet-button-height / 2);
   position: relative;
   text-decoration: none;
@@ -148,6 +147,7 @@
     font-family: $puppet-button-font-family;
     font-size: $puppet-button-font-size;
     font-weight: $puppet-button-font-weight;
+    line-height: $puppet-button-line-height;
     text-transform: $puppet-button-text-transform;
   }
 
@@ -161,7 +161,7 @@
   padding: max(0, (
     $puppet-button-tiny-height
     - 2
-    - $puppet-button-tiny-font-size * $puppet-line-height-default
+    - $puppet-button-tiny-font-size * $puppet-button-tiny-line-height
   ) / 2) ($puppet-button-tiny-height / 5.5);
 
   &.rc-button-round {
@@ -170,6 +170,7 @@
 
   .rc-button-content {
     font-size: $puppet-button-tiny-font-size;
+    line-height: $puppet-button-tiny-line-height;
   }
 }
 
@@ -178,11 +179,12 @@
   padding: max(0, (
     $puppet-button-small-height
     - 2
-    - $puppet-button-small-font-size * $puppet-line-height-default
+    - $puppet-button-small-font-size * $puppet-button-small-line-height
   ) / 2) ($puppet-button-small-height / 3);
 
   .rc-button-content {
     font-size: $puppet-button-small-font-size;
+    line-height: $puppet-button-small-line-height;
   }
 }
 
@@ -191,11 +193,12 @@
   padding: max(0, (
     $puppet-button-large-height
     - 2
-    - $puppet-button-large-font-size * $puppet-line-height-default
+    - $puppet-button-large-font-size * $puppet-button-large-line-height
   ) / 2) ($puppet-button-large-height / 2.5);
 
   .rc-button-content {
     font-size: $puppet-button-large-font-size;
+    line-height: $puppet-button-large-line-height;
   }
 }
 
