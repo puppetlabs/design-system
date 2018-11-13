@@ -98,6 +98,7 @@
     "clone": "^2.1.2",
     "debounce": "^1.1.0",
     "deep-equal": "^1.0.1",
+    "hoist-non-react-statics": "^3.1.0",
     "react-daterange-picker": "2.0.1",
     "react-onclickoutside": "^6.7.0",
     "react-sortable-hoc": "^0.6.8",

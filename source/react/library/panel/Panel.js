@@ -3,6 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
 import { ENTER_KEY_CODE } from '../../constants';
+import deprecate from '../../helpers/deprecate';
 
 const propTypes = {
   secondary: PropTypes.bool,
@@ -111,4 +112,7 @@ class Panel extends React.Component {
 Panel.propTypes = propTypes;
 Panel.defaultProps = defaultProps;
 
-export default Panel;
+export default deprecate({
+  removalVersion: '5.0.0',
+  upgradeInstructions: 'Please replace all uses with the <Card /> component',
+})(Panel);
