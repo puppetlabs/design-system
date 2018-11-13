@@ -7,7 +7,9 @@ const propTypes = {
   onChange: PropTypes.func,
   column: PropTypes.string,
   rowData: PropTypes.shape({}),
-  options: PropTypes.arrayOf(PropTypes.string, PropTypes.shape({})),
+  options: PropTypes.arrayOf(
+    PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
+  ),
   disabled: PropTypes.bool,
 };
 
