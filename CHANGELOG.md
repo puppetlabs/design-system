@@ -5,6 +5,7 @@
 - Add "flat" `Card` type for styles without shadow
 - Add Sass variables for vertical and horizontal `Grid` gutter
 - Adjust `Form` padding for better spacing of fieldset sections
+- Standardizing how we export cards and fixing the styleguide
 
 # 4.12.1
 
