@@ -1,6 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
+import Header from './Header';
+import Section from './Section';
+import ActionsMenu from './ActionsMenu';
+import ActionsSearch from './ActionsSearch';
 
 const propTypes = {
   children: PropTypes.node,
@@ -112,5 +116,11 @@ class Card extends React.Component {
 
 Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
+
+Card.Card = Card; // This line is needed for backwards compatability. TODO: Deprecate in future releases
+Card.Header = Header;
+Card.Section = Section;
+Card.ActionsMenu = ActionsMenu;
+Card.ActionsSearch = ActionsSearch;
 
 export default Card;

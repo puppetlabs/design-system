@@ -1,4 +1,17 @@
-@mixin button-colors($bg, $bg-hover, $bg-active, $color, $color-hover, $color-active, $icon-color, $icon-hover, $icon-active, $border, $border-hover, $border-active) {
+@mixin button-colors(
+  $bg,
+  $bg-hover,
+  $bg-active,
+  $color,
+  $color-hover,
+  $color-active,
+  $icon-color,
+  $icon-hover,
+  $icon-active,
+  $border,
+  $border-hover,
+  $border-active
+) {
   $button-color-split: darken($bg, 10%);
   $button-color-split-hover: lighten($button-color-split, 5%);
 
@@ -116,12 +129,15 @@
   border-radius: $puppet-button-border-radius;
   cursor: pointer;
   display: inline-flex;
-  height: $puppet-button-height;
   justify-content: center;
-  padding: 0 $puppet-button-padding;
+  min-height: $puppet-button-height;
+  padding: max(0, (
+    $puppet-button-height
+    - 2
+    - $puppet-button-font-size * $puppet-button-line-height
+  ) / 2) ($puppet-button-height / 2);
   position: relative;
   text-decoration: none;
-  white-space: nowrap;
 
   .rc-button-dropdown-icon {
     padding-left: 10px;
@@ -131,6 +147,7 @@
     font-family: $puppet-button-font-family;
     font-size: $puppet-button-font-size;
     font-weight: $puppet-button-font-weight;
+    line-height: $puppet-button-line-height;
     text-transform: $puppet-button-text-transform;
   }
 
@@ -139,15 +156,13 @@
   }
 }
 
-.rc-button-auto {
-  height: auto;
-  line-height: normal;
-  padding: 0;
-}
-
 .rc-button-tiny {
-  height: $puppet-button-tiny-height;
-  padding: 0 $puppet-button-tiny-padding;
+  min-height: $puppet-button-tiny-height;
+  padding: max(0, (
+    $puppet-button-tiny-height
+    - 2
+    - $puppet-button-tiny-font-size * $puppet-button-tiny-line-height
+  ) / 2) ($puppet-button-tiny-height / 5.5);
 
   &.rc-button-round {
     padding: 0 3px;
@@ -155,25 +170,35 @@
 
   .rc-button-content {
     font-size: $puppet-button-tiny-font-size;
+    line-height: $puppet-button-tiny-line-height;
   }
 }
 
 .rc-button-small {
-  height: $puppet-button-small-height;
-  padding: 0 $puppet-button-small-padding;
+  min-height: $puppet-button-small-height;
+  padding: max(0, (
+    $puppet-button-small-height
+    - 2
+    - $puppet-button-small-font-size * $puppet-button-small-line-height
+  ) / 2) ($puppet-button-small-height / 3);
 
   .rc-button-content {
-    font-size: $puppet-button-font-size;
+    font-size: $puppet-button-small-font-size;
+    line-height: $puppet-button-small-line-height;
   }
 }
 
 .rc-button-large {
-  height: $puppet-button-large-height;
-  // line-height: $puppet-button-large-line-height;
-  padding: 0 $puppet-button-large-padding;
+  min-height: $puppet-button-large-height;
+  padding: max(0, (
+    $puppet-button-large-height
+    - 2
+    - $puppet-button-large-font-size * $puppet-button-large-line-height
+  ) / 2) ($puppet-button-large-height / 2.5);
 
   .rc-button-content {
     font-size: $puppet-button-large-font-size;
+    line-height: $puppet-button-large-line-height;
   }
 }
 
@@ -199,7 +224,6 @@
 }
 
 .rc-button-simple {
-
   @include button-colors(
     $puppet-button-simple-bg,
     $puppet-button-simple-bg-hover,
@@ -215,6 +239,7 @@
     $puppet-button-simple-border-color-active
   );
   height: auto;
+  min-height: auto;
   padding: 0;
 }
 
@@ -296,7 +321,6 @@
   opacity: $puppet-button-disabled-opacity;
   outline: none;
   pointer-events: none;
-
 }
 
 .rc-button-block {
@@ -319,6 +343,10 @@
 
 .rc-button-tiny.rc-button-square {
   width: $puppet-button-tiny-height;
+}
+
+.rc-button-nowrap {
+  white-space: nowrap;
 }
 
 .rc-button-processing {
@@ -357,6 +385,7 @@
   box-shadow: none;
   height: $puppet-floating-action-button-height;
   justify-content: center;
+  min-height: auto;
   padding: 0;
   width: $puppet-floating-action-button-height;
 
