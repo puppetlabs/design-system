@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Heading from '../heading';
 
 import Icon from '../icon/Icon';
+import AccordionItem from './AccordionItem';
 import { getKey } from '../../helpers/statics';
 
 const propTypes = {
@@ -152,5 +153,7 @@ class Accordion extends React.Component {
 
 Accordion.propTypes = propTypes;
 Accordion.defaultProps = defaultProps;
+
+Accordion.Item = AccordionItem;
 
 export default Accordion;
