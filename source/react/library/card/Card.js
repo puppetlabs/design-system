@@ -1,123 +1,67 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import {
+  renderableElement,
+  elementElevation,
+} from '../../helpers/commonPropTypes';
+
 import Header from './Header';
 import Section from './Section';
 import ActionsMenu from './ActionsMenu';
 import ActionsSearch from './ActionsSearch';
 
 const propTypes = {
-  children: PropTypes.node,
-  size: PropTypes.string,
-  style: PropTypes.string,
-  /** Card width in px or % */
-  width: PropTypes.string,
-  /** Card height in px or % */
-  height: PropTypes.string,
-  /** Manual active state */
+  as: renderableElement,
+  type: PropTypes.oneOf(['primary', 'secondary']),
+  elevation: elementElevation,
+  selectable: PropTypes.bool,
   selected: PropTypes.bool,
-  /** Class name to apply to container element */
   className: PropTypes.string,
-  /**  Function to be called when the user clicks on a card */
-  onClick: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
-  size: '',
-  style: '',
-  width: '',
-  height: '',
+  as: 'div',
+  type: 'primary',
+  elevation: 0,
+  selectable: false,
   selected: false,
   className: '',
   children: null,
-  onClick: null,
-  onMouseEnter: null,
-  onMouseLeave: null,
 };
 
-/**
- * `Card` displays information about an object, usually as a more visual
- * alternative to a `List`.
- */
-class Card extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick(e) {
-    const { onClick } = this.props;
-    e.preventDefault();
-
-    if (onClick) {
-      onClick(e);
-    }
-  }
-
-  render() {
-    const {
-      style,
-      size,
-      onClick,
-      width,
-      height,
-      selected,
-      onMouseEnter,
-      onMouseLeave,
+const Card = ({
+  as: Element,
+  type,
+  elevation,
+  selectable,
+  selected,
+  className,
+  children,
+  ...rest
+}) => (
+  <Element
+    className={classNames(
+      'rc-card',
+      `rc-card-${type}`,
+      `rc-card-elevation-${elevation}`,
+      {
+        'rc-card-selectable': selectable,
+        'rc-card-selected': selected,
+      },
       className,
-      children,
-    } = this.props;
-
-    const styles = {};
-
-    if (width) {
-      styles.width = width;
-    }
-
-    if (height) {
-      styles.height = height;
-    }
-
-    const props = {
-      style: styles,
-      className: classnames(
-        'rc-card',
-        {
-          'rc-card-large': size === 'large',
-          'rc-card-small': size === 'small',
-          'rc-card-xs': size === 'xs',
-          'rc-card-selected': selected,
-          [`rc-card-${style}`]: style,
-          'rc-card-selectable': onClick,
-        },
-        className,
-      ),
-    };
-
-    if (onClick) {
-      props.onClick = onClick;
-      props.role = 'button';
-    }
-
-    if (onMouseEnter) {
-      props.onMouseEnter = onMouseEnter;
-    }
-
-    if (onMouseLeave) {
-      props.onMouseLeave = onMouseLeave;
-    }
-
-    return <div {...props}>{children}</div>;
-  }
-}
+    )}
+    aria-selected={selected}
+    {...rest}
+  >
+    {children}
+  </Element>
+);
 
 Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
 
-Card.Card = Card; // This line is needed for backwards compatability. TODO: Deprecate in future releases
 Card.Header = Header;
 Card.Section = Section;
 Card.ActionsMenu = ActionsMenu;

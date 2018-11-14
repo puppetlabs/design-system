@@ -1,38 +1,38 @@
 ```
-<Card.Card>
+<Card>
   <Card.Header title="I'm a happy card!" subtitle="I'm a happy subtitle" />
   <Card.Section>I am a section for card content</Card.Section>
-</Card.Card>
+</Card>
 ```
 
 Selectable `Card`:
 
 ```
-<Card.Card onClick={() => {}}>
+<Card onClick={() => {}}>
   <Card.Header title="I'm selectable!" subtitle="I am a selectable subtitle!" />
-</Card.Card>
+</Card>
 ```
 
 Card with two sections inside:
 
 ```
-<Card.Card>
+<Card>
   <Card.Section>
     I am a card section
   </Card.Section>
   <Card.Section>
     I am a also card section
   </Card.Section>
-</Card.Card>
+</Card>
 ```
 
 Card with description & title
 
 ```
-<Card.Card>
+<Card>
   <Card.Header title="I am a title" description="I am a card description" />
   <Card.Section>I am the content of the card</Card.Section>
-</Card.Card>
+</Card>
 ```
 
 Card with action dropdown
@@ -45,9 +45,9 @@ const menuOptions = [
 ];
 
 const actions = [<Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />];
-<Card.Card>
+<Card>
   <Card.Header title="I am a title" actions={ actions } />
-</Card.Card>
+</Card>
 ```
 
 Card with action dropdown and no title
@@ -60,9 +60,9 @@ const menuOptions = [
 ];
 
 const actions = [<Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />];
-<Card.Card>
+<Card>
   <Card.Header actions={ actions } />
-</Card.Card>
+</Card>
 ```
 
 Card with two action dropdowns
@@ -79,9 +79,9 @@ const actions = [
   <Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />,
 ];
 
-<Card.Card>
+<Card>
   <Card.Header title="I am a title" actions={ actions } />
-</Card.Card>
+</Card>
 ```
 
 Card with two action dropdowns and a really long title
@@ -98,9 +98,9 @@ const actions = [
   <Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />,
 ];
 
-<Card.Card>
+<Card>
   <Card.Header title="I am a really really really really really really really really really really really really long title" actions={ actions } />
-</Card.Card>
+</Card>
 ```
 
 Card with two types of actions, menu and search
@@ -117,9 +117,9 @@ const actions = [
   <Card.ActionsMenu key="menu-2" menuOptions={ menuOptions } />,
 ];
 
-<Card.Card>
+<Card>
   <Card.Header title="I am a title" actions={ actions } />
-</Card.Card>
+</Card>
 ```
 
 Card with action menu in error state
@@ -139,9 +139,9 @@ const actions = [
   />,
 ];
 
-<Card.Card>
+<Card>
   <Card.Header title="I am a title" actions={ actions } />
-</Card.Card>
+</Card>
 ```
 
 Card with no title, subtitle, or controls, but with actions and description
@@ -157,7 +157,7 @@ const actions = [
   <Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />,
 ];
 
-<Card.Card>
+<Card>
   <Card.Header description="I am a card description" actions={ actions } />
-</Card.Card>
+</Card>
 ```

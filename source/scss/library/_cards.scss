@@ -1,15 +1,65 @@
 .rc-card {
-  background: $puppet-card-bg;
-  border: $puppet-card-border;
   border-radius: $puppet-card-border-radius;
-  box-shadow: $puppet-card-shadow;
-  color: $puppet-card-color;
   display: flex;
   flex-direction: column;
   position: relative;
   transition: border, box-shadow, background-color, border-radius, top, left, bottom, right;
   transition-duration: $puppet-animation-speed-base;
   transition-timing-function: ease-in-out;
+}
+
+.rc-card-primary {
+  background-color: $puppet-card-primary-bg;
+  border: $puppet-card-primary-border;
+}
+
+.rc-card-secondary {
+  background-color: $puppet-card-secondary-bg;
+  border: $puppet-card-secondary-border;
+}
+
+.rc-card-selectable {
+  cursor: pointer;
+
+  &:hover {
+    border: $puppet-card-border-hover;
+  }
+}
+
+.rc-card-selected {
+  border: $puppet-card-border-selected;
+
+  &:hover {
+    border: $puppet-card-border-selected-hover;
+  }
+}
+
+.rc-card-elevation-0 {
+  box-shadow: none;
+}
+
+.rc-card-elevation-50 {
+  box-shadow: $puppet-elev-50-shadow;
+}
+
+.rc-card-elevation-100 {
+  box-shadow: $puppet-elev-100-shadow;
+}
+
+.rc-card-elevation-150 {
+  box-shadow: $puppet-elev-150-shadow;
+}
+
+.rc-card-elevation-200 {
+  box-shadow: $puppet-elev-200-shadow;
+}
+
+.rc-card-elevation-400 {
+  box-shadow: $puppet-elev-400-shadow;
+}
+
+.rc-card-elevation-800 {
+  box-shadow: $puppet-elev-800-shadow;
 }
 
 .rc-card-header {
@@ -133,74 +183,4 @@
     margin-top: -4px;
     width: 200px;
   }
-}
-
-.rc-card-xs {
-  background-position: center center;
-  background-size: cover;
-  border: 2px solid #fff;
-  padding: 13px 2px;
-
-  .rc-card-title {
-    font-size: 1em;
-    margin: 0;
-    text-align: center;
-    visibility: hidden;
-  }
-}
-
-.rc-card-xs:hover {
-  background: $puppet-card-bg;
-
-  .rc-card-title {
-    visibility: visible;
-  }
-}
-
-.rc-card-large {
-  padding-top: 100px;
-
-  .rc-card-title {
-    font-size: 1.3em;
-    margin-top: 80px;
-  }
-}
-
-.rc-card-small {
-  padding-top: 0;
-
-  .rc-card-title {
-    font-size: 1.1em;
-    margin-top: 0;
-  }
-}
-
-.rc-card-selectable {
-  box-shadow: $puppet-card-selectable-shadow;
-  cursor: pointer;
-
-  &:hover {
-    border: $puppet-card-border-hover;
-    box-shadow: $puppet-card-selectable-shadow-hover;
-  }
-}
-
-.rc-card-selected {
-  border: $puppet-card-border-selected;
-  box-shadow: $puppet-card-shadow-selected;
-
-  &:hover {
-    border: $puppet-card-border-selected-hover;
-    box-shadow: $puppet-card-shadow-selected-hover;
-  }
-}
-
-.rc-card-basic {
-  background: transparent;
-  border: 1px solid transparent;
-  box-shadow: none;
-}
-
-.rc-card-flat {
-  box-shadow: none;
 }
