@@ -12,12 +12,19 @@ import ActionsMenu from './ActionsMenu';
 import ActionsSearch from './ActionsSearch';
 
 const propTypes = {
+  /** Html element or react component to render */
   as: renderableElement,
+  /** Main visual variant */
   type: PropTypes.oneOf(['primary', 'secondary']),
+  /** Card 'elevation' visually indicated with box-shadow */
   elevation: elementElevation,
+  /** Turns on selectability including hover styling */
   selectable: PropTypes.bool,
+  /** Is this card currently selected */
   selected: PropTypes.bool,
+  /** Optional additional className */
   className: PropTypes.string,
+  /** Component children */
   children: PropTypes.node,
 };
 
