@@ -2,6 +2,7 @@
   border-radius: $puppet-card-border-radius;
   display: flex;
   flex-direction: column;
+  padding: $puppet-card-padding;
   position: relative;
   transition: border, box-shadow, background-color, border-radius, top, left, bottom, right;
   transition-duration: $puppet-animation-speed-base;
@@ -63,15 +64,10 @@
 }
 
 .rc-card-header {
-  padding: $puppet-card-header-padding;
   width: 100%;
 
   ~ .rc-card-section {
-    padding-top: 0;
-  }
-
-  &:only-child {
-    padding: $puppet-card-padding;
+    padding-top: $puppet-card-padding;
   }
 }
 
@@ -125,16 +121,15 @@
 }
 
 .rc-card-section {
-  padding: $puppet-card-padding;
   width: 100%;
 
   + .rc-card-section,
   + .rc-card-header {
-    padding-top: 0;
+    padding-bottom: $puppet-card-padding;
   }
 
   &:last-of-type {
-    border-bottom: 0;
+    padding-bottom: 0;
   }
 }
 
