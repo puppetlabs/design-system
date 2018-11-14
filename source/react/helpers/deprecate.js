@@ -8,18 +8,11 @@ const getDisplayName = comp => comp.displayName || comp.name || 'Component';
  * of a given component when rendered in development
  *
  * @example
- *  deprecate({
- *    removalVersion: "5.0.0",
- *    upgradeInstructions: "Please replace with the <Card /> component."
- *  })(Panel);
+ *  deprecate('The Panel component is deprecated and will be removed in version 5.0.0. Please replace with <Card />')(Panel);
  *
- * @param  {String} removalVersion      [description]
- * @param  {String} upgradeInstructions [description]
+ * @param  {String} message Deprecation message
  */
-const deprecate = ({
-  removalVersion,
-  upgradeInstructions,
-}) => WrappedComponent => {
+const deprecate = message => WrappedComponent => {
   /**
    * Don't wrap if not in development
    */
@@ -32,9 +25,7 @@ const deprecate = ({
   class DeprecatedComponent extends Component {
     componentDidMount() {
       // eslint-disable-next-line
-      console.warn(
-        `${displayName} is deprecated and will be removed in react-components version ${removalVersion}. ${upgradeInstructions}`,
-      );
+      console.warn(message);
     }
 
     render() {

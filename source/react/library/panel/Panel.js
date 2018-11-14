@@ -112,7 +112,6 @@ class Panel extends React.Component {
 Panel.propTypes = propTypes;
 Panel.defaultProps = defaultProps;
 
-export default deprecate({
-  removalVersion: '5.0.0',
-  upgradeInstructions: 'Please replace all uses with the <Card /> component',
-})(Panel);
+export default deprecate(
+  'The Panel component is deprecated and will be removed in version 5.0.0. Please replace with <Card />',
+)(Panel);
