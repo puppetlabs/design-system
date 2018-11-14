@@ -46,6 +46,7 @@ const Card = ({
   selected,
   className,
   children,
+  isOpened, // Need to figure out what's actually going on here with portal
   ...rest
 }) => (
   <Element
