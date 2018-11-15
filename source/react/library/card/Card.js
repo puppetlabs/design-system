@@ -5,14 +5,11 @@ import Header from './Header';
 import Section from './Section';
 import ActionsMenu from './ActionsMenu';
 import ActionsSearch from './ActionsSearch';
-import { deprecated } from '../../helpers/customPropTypes';
-
-const sizeDeprecationMessage = 'Use of prop "size" is deprecated';
 
 const propTypes = {
   children: PropTypes.node,
   // eslint-disable-next-line
-  size: deprecated(sizeDeprecationMessage)(PropTypes.string),
+  size: PropTypes.string,
   style: PropTypes.string,
   /** Card width in px or % */
   width: PropTypes.string,
@@ -29,6 +26,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  size: '',
   style: '',
   width: '',
   height: '',
