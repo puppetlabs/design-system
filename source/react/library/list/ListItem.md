@@ -4,7 +4,7 @@
 </List>
 ```
 
-Selected, selectable, editable, and deletable `List.Item`:
+Selected, selectable, editable, and deletable `ListItem`:
 
 ```
 <List>
@@ -40,7 +40,7 @@ Selected, selectable, editable, and deletable `List.Item`:
 </List>
 ```
 
-Medium sized selectable List.Item:
+Medium sized selectable ListItem:
 
 ```
 <List>
@@ -80,7 +80,7 @@ Medium sized selectable List.Item:
 </List>
 ```
 
-Fancy `List.Item`:
+Fancy `ListItem`:
 
 ```
 <List>
