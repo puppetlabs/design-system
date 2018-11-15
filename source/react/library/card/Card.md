@@ -18,11 +18,11 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
     <Heading as="h3">Raised</Heading>
     <Text>Elevation 100</Text>
   </Card>
-  <Card elevation={50} selectable style={cardExampleStyle}>
+  <Card selectable style={cardExampleStyle}>
     <Heading as="h3">Selectable</Heading>
     <Text>Elevation 50</Text>
   </Card>
-  <Card elevation={50} selectable selected style={cardExampleStyle}>
+  <Card selectable selected style={cardExampleStyle}>
     <Heading as="h3">Selected</Heading>
     <Text>Elevation 50</Text>
   </Card>
@@ -45,11 +45,11 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
     <Heading as="h3">Raised</Heading>
     <Text>Elevation 100</Text>
   </Card>
-  <Card type="secondary" elevation={50} selectable style={cardExampleStyle}>
+  <Card type="secondary" selectable style={cardExampleStyle}>
     <Heading as="h3">Selectable</Heading>
     <Text>Elevation 50</Text>
   </Card>
-  <Card type="secondary" elevation={50} selectable selected style={cardExampleStyle}>
+  <Card type="secondary" selectable selected style={cardExampleStyle}>
     <Heading as="h3">Selected</Heading>
     <Text>Elevation 50</Text>
   </Card>
