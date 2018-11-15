@@ -20,18 +20,22 @@
 }
 
 .rc-card-selectable {
+  box-shadow: $puppet-card-selectable-shadow;
   cursor: pointer;
 
   &:hover {
-    border: $puppet-card-border-hover;
+    border: $puppet-card-selectable-border-hover;
+    box-shadow: $puppet-card-selectable-shadow-hover;
   }
 }
 
 .rc-card-selected {
   border: $puppet-card-border-selected;
+  box-shadow: $puppet-card-selected-shadow;
 
   &:hover {
     border: $puppet-card-border-selected-hover;
+    box-shadow: $puppet-card-selected-shadow-hover;
   }
 }
 
@@ -66,7 +70,8 @@
 .rc-card-header {
   width: 100%;
 
-  ~ .rc-card-section {
+  + .rc-card-section,
+  + .rc-card-header {
     padding-top: $puppet-card-padding;
   }
 }
@@ -125,11 +130,7 @@
 
   + .rc-card-section,
   + .rc-card-header {
-    padding-bottom: $puppet-card-padding;
-  }
-
-  &:last-of-type {
-    padding-bottom: 0;
+    padding-top: $puppet-card-padding;
   }
 }
 

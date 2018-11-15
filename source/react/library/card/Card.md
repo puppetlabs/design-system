@@ -20,11 +20,11 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
   </Card>
   <Card elevation={50} selectable style={cardExampleStyle}>
     <Heading as="h3">Selectable</Heading>
-    <Text>Elevation 0 - 100</Text>
+    <Text>Elevation 50</Text>
   </Card>
   <Card elevation={50} selectable selected style={cardExampleStyle}>
     <Heading as="h3">Selected</Heading>
-    <Text>Elevation 0 - 100</Text>
+    <Text>Elevation 50</Text>
   </Card>
 </div>
 ```
@@ -47,11 +47,11 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
   </Card>
   <Card type="secondary" elevation={50} selectable style={cardExampleStyle}>
     <Heading as="h3">Selectable</Heading>
-    <Text>Elevation 0 - 100</Text>
+    <Text>Elevation 50</Text>
   </Card>
   <Card type="secondary" elevation={50} selectable selected style={cardExampleStyle}>
     <Heading as="h3">Selected</Heading>
-    <Text>Elevation 0 - 100</Text>
+    <Text>Elevation 50</Text>
   </Card>
 </div>
 ```

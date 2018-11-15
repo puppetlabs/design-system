@@ -175,12 +175,15 @@ $puppet-card-primary-border                        : $puppet-border !default;
 // Secondary
 $puppet-card-secondary-bg                          : $puppet-n200 !default;
 $puppet-card-secondary-border                      : $puppet-border !default;
-// Active states
-$puppet-card-border-hover                          : $puppet-border-action !default;
-$puppet-card-border-selected-hover                 : $puppet-border-action-hover !default;
+// Selectable
+$puppet-card-selectable-border-hover               : $puppet-border-action !default;
+$puppet-card-selectable-shadow                     : $puppet-selectable-shadow !default;
+$puppet-card-selectable-shadow-hover               : $puppet-selectable-shadow-hover !default;
 // Selected
 $puppet-card-border-selected                       : $puppet-border-action !default;
 $puppet-card-border-selected-hover                 : $puppet-border-action-hover !default;
+$puppet-card-selected-shadow                       : $puppet-selected-shadow !default;
+$puppet-card-selected-shadow-hover                 : $puppet-selected-shadow-hover !default;
 
 // Card subcomponents. NOTE: these variables should be considered unstable
 $puppet-card-title-size                            : $puppet-font-size-medium !default;
