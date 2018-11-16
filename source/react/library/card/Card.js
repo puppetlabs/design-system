@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import {
   renderableElement,
   elementElevation,
-} from '../../helpers/commonPropTypes';
+} from '../../helpers/customPropTypes';
 
 import Header from './Header';
 import Section from './Section';
