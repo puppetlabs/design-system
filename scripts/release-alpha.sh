@@ -6,7 +6,7 @@
 #
 COMMIT=$(git rev-parse HEAD)
 TAG=$(git tag --points-at ${COMMIT})
-TARGET_BRANCH="5.0-release"
+TARGET_BRANCH="5.0-development"
 BUILDING_BRANCH=$DISTELLI_RELBRANCH
 
 # Abandon ship if we're on the wrong branch.
