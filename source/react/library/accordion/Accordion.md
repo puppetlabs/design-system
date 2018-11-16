@@ -8,16 +8,16 @@ for (var i = 0; i < numParagraphs; i++) {
 
 <div style={ { height: '400px' } }>
   <Accordion title="I'm a fun Accordion" autoOpen>
-    <AccordionItem key="elem1" title="First element">
+    <Accordion.Item key="elem1" title="First element">
       <div>Hello, world! From the first element.</div>
-    </AccordionItem>
-    <AccordionItem key="elem2" title="Second element">
+    </Accordion.Item>
+    <Accordion.Item key="elem2" title="Second element">
       <div>Hello, world! From the second element. Here's a bunch of paragraphs.</div>
       { paragraphs }
-    </AccordionItem>
-    <AccordionItem key="elem3" title="Third element">
+    </Accordion.Item>
+    <Accordion.Item key="elem3" title="Third element">
       <div>Hello, world! From the third element.</div>
-    </AccordionItem>
+    </Accordion.Item>
   </Accordion>
 </div>
 ```
@@ -26,8 +26,8 @@ for (var i = 0; i < numParagraphs; i++) {
 
 ```
 <Accordion title="Accordion Title with Icon" icon="chart">
-  <AccordionItem title="First Accordion Item" icon="chart" tooltip="Bar is a component type" />
-  <AccordionItem title="Second Accordion Item" icon="chart" />
+  <Accordion.Item title="First Accordion Item" icon="chart" tooltip="Bar is a component type" />
+  <Accordion.Item title="Second Accordion Item" icon="chart" />
 </Accordion>
 ```
 
@@ -78,10 +78,10 @@ const exampleTableColumns = [{
 }];
 <div style={ { height: '400px' } } >
   <Accordion title='This accordion has autoOpen on' autoOpen>
-    <AccordionItem key="elem1" title="With a Button">
+    <Accordion.Item key="elem1" title="With a Button">
       <Button label="My Button" />
-    </AccordionItem>
-    <AccordionItem key="elem2" title="With a Table">
+    </Accordion.Item>
+    <Accordion.Item key="elem2" title="With a Table">
        <Table
          className="rc-table-fixed rc-table-striped"
          selectable
@@ -89,7 +89,7 @@ const exampleTableColumns = [{
          data={ exampleTableData }
          columns={ exampleTableColumns }
        />
-    </AccordionItem>
+    </Accordion.Item>
   </Accordion>
 </div>
 ```

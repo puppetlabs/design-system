@@ -1,3 +1,10 @@
+# 4.14.0
+- Forms now accept children other than FormField and FormSection
+- Updated styleguidist docs for Accordion and List to accurately reflect use of subcomponents
+- Add deprecation HOC
+- Add deprecated propType helper
+- Change internal className for Loading component
+
 # 4.13.0
 
 - Update `Button` styles to accommodate multi-line text
