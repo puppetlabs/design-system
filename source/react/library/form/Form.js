@@ -61,7 +61,7 @@ const getValues = children => {
   let values = {};
 
   React.Children.forEach(children, child => {
-    if (child) {
+    if (child && (child.type === FormField || child.type === FormSection)) {
       if (child.props.name) {
         values[child.props.name] = child.props.value;
       } else if (child.props.children) {
@@ -246,6 +246,8 @@ class Form extends React.Component {
         jsx.push(this.renderField(child));
       } else if (child && child.type === FormSection) {
         jsx.push(this.renderSection(child));
+      } else {
+        jsx.push(child);
       }
     });
 
