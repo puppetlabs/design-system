@@ -15,10 +15,10 @@ const defaultProps = {
 };
 
 /**
- * `LoadingIndicator` does what you would think, it indicates a loading state.
+ * `Loading` does what you would think, it indicates a loading state.
  */
 
-const LoadingIndicator = ({ className, size: propSize }) => {
+const Loading = ({ className, size: propSize }) => {
   let size;
 
   switch (propSize) {
@@ -39,7 +39,7 @@ const LoadingIndicator = ({ className, size: propSize }) => {
   );
 };
 
-LoadingIndicator.propTypes = propTypes;
-LoadingIndicator.defaultProps = defaultProps;
+Loading.propTypes = propTypes;
+Loading.defaultProps = defaultProps;
 
-export default LoadingIndicator;
+export default Loading;
