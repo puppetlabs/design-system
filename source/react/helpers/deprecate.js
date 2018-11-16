@@ -24,8 +24,9 @@ const deprecate = message => WrappedComponent => {
 
   class DeprecatedComponent extends Component {
     componentDidMount() {
-      // eslint-disable-next-line
+      /* eslint-disable no-console */
       console.warn(message);
+      /* eslint-enable */
     }
 
     render() {

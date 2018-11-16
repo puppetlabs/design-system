@@ -13,7 +13,7 @@
  * since default props are assigned before propType checking
  * @param  {String} message Deprecation message
  */
-// eslint-disable-next-line
+/* eslint-disable import/prefer-default-export */
 export const deprecated = message => typeChecker => {
   if (process.env.NODE_ENV !== 'development') {
     return typeChecker;
@@ -21,10 +21,12 @@ export const deprecated = message => typeChecker => {
 
   return (props, key, componentName, location, propFullName) => {
     if (Object.hasOwnProperty.call(props, key)) {
-      // eslint-disable-next-line
+      /* eslint-disable no-console */
       console.warn(message);
+      /* eslint-enable */
     }
 
     return typeChecker(props, key, componentName, location, propFullName);
   };
 };
+/* eslint-enable */

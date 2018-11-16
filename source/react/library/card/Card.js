@@ -8,7 +8,6 @@ import ActionsSearch from './ActionsSearch';
 
 const propTypes = {
   children: PropTypes.node,
-  // eslint-disable-next-line
   size: PropTypes.string,
   style: PropTypes.string,
   /** Card width in px or % */
