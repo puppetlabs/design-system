@@ -17,4 +17,4 @@ insights/react-components:
     - npm run test
   AfterBuildSuccess:
     - ./scripts/release-if-master.sh
-    - ./script/release-alpha.sh
+    - ./scripts/release-alpha.sh
