@@ -24,7 +24,7 @@ then
 fi
 
 # Get current version from package.json
-PACKAGE_VERSION=`cat package.json  | grep version | awk '{print $2}' | egrep -o '([0-9]+\.[0-9]+\.[0-9]+)'`
+PACKAGE_VERSION=`cat package.json  | grep version | awk '{print $2}' | awk -F'"' '$0=$2'`
 
 echo "Releasing version ${PACKAGE_VERSION}"
 
