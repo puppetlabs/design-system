@@ -34,10 +34,6 @@
     color: $puppet-toggle-on-color;
   }
 
-  .rc-switch-checkbox:checked + .rc-switch-label:hover {
-    cursor: default;
-  }
-
   .rc-switch-checkbox:checked + .rc-switch-label::after {
     background: $puppet-toggle-on-color;
   }
