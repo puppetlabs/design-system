@@ -1,4 +1,10 @@
+# 4.14.1
+
+- Form now accepts disabled prop, that disables all fields and buttons
+- Adding an applyLabel prop to the dropdown menu for i18n support
+
 # 4.14.0
+
 - Forms now accept children other than FormField and FormSection
 - Updated styleguidist docs for Accordion and List to accurately reflect use of subcomponents
 - Add deprecation HOC
