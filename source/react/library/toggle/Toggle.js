@@ -12,6 +12,7 @@ const propTypes = {
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   active: PropTypes.string,
+  className: PropTypes.string,
 };
 
 const defaultProps = {
@@ -19,6 +20,7 @@ const defaultProps = {
   onChange: null,
   disabled: false,
   active: '',
+  className: '',
 };
 
 /**
@@ -94,17 +96,21 @@ class Toggle extends React.Component {
   }
 
   render() {
-    const { left, right, name, disabled } = this.props;
+    const { left, right, name, disabled, className } = this.props;
     const { active } = this.state;
-    const className = classnames('rc-toggle', {
-      'rc-toggle-disabled': disabled,
-    });
+    const classNames = classnames(
+      'rc-toggle',
+      {
+        'rc-toggle-disabled': disabled,
+      },
+      className,
+    );
 
     // We have to make this unique.
     const switchName = name || left + right;
 
     return (
-      <div className={className}>
+      <div className={classNames}>
         {left && this.renderLabel(left)}
         <Switch
           label={false}
