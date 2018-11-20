@@ -74,4 +74,26 @@ describe('<DropdownMenu />', () => {
     expect(wrapper.find('Popover').prop('inheritTargetWidth')).to.eql(true);
     expect(wrapper.find('Popover').prop('width')).to.not.eql('100px');
   });
+
+  it('render applyLabel and fallback apply label text', () => {
+    const defaultApplyLabel = 'Apply';
+    const newApplyLabel = 'New apply label';
+    const options = [
+      { id: 1, value: 'option 1' },
+      { id: 2, value: 'option 2' },
+    ];
+    const wrapperNoApplyLabel = shallow(
+      <DropdownMenu multiple options={options} />,
+    );
+    expect(wrapperNoApplyLabel.find('Popover Button').prop('label')).to.equal(
+      defaultApplyLabel,
+    );
+
+    const wrapperApplyLabel = shallow(
+      <DropdownMenu multiple options={options} applyLabel="New apply label" />,
+    );
+    expect(wrapperApplyLabel.find('Popover Button').prop('label')).to.equal(
+      newApplyLabel,
+    );
+  });
 });

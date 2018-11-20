@@ -22,6 +22,7 @@ const propTypes = {
   blank: PropTypes.string,
   /** A prompt for the user once the DropdownMenu has been opened */
   title: PropTypes.string,
+  applyLabel: PropTypes.string,
   options: PropTypes.arrayOf(PropTypes.object),
   actions: PropTypes.node,
   /** Whether or not the user can select multiple menu options */
@@ -45,6 +46,7 @@ const defaultProps = {
   blank: '',
   multiple: false,
   title: '',
+  applyLabel: 'Apply',
   margin: null,
   disablePortal: false,
   inheritWidth: false,
@@ -145,13 +147,13 @@ class DropdownMenu extends React.Component {
   }
 
   renderApplyButton() {
-    const { multiple } = this.props;
+    const { multiple, applyLabel } = this.props;
     let jsx;
 
     if (multiple) {
       jsx = (
         <Menu.Actions centered>
-          <Button block simple label="Apply" onClick={this.onApply} />
+          <Button block simple label={applyLabel} onClick={this.onApply} />
         </Menu.Actions>
       );
     }

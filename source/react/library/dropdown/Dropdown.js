@@ -14,6 +14,7 @@ const propTypes = {
   options: PropTypes.arrayOf(PropTypes.object),
   actions: PropTypes.node,
   title: PropTypes.string,
+  applyLabel: PropTypes.string,
   margin: PropTypes.number,
   anchor: PropTypes.string,
   placeholder: PropTypes.string,
@@ -44,6 +45,7 @@ const defaultProps = {
   simple: false,
   options: [],
   title: '',
+  applyLabel: '',
   margin: 8,
   placeholder: '',
   blank: '',
@@ -231,6 +233,7 @@ class Dropdown extends React.Component {
       margin,
       blank,
       title,
+      applyLabel,
       multiple,
       actions,
       required,
@@ -252,6 +255,7 @@ class Dropdown extends React.Component {
         margin={margin}
         blank={blank}
         title={title}
+        applyLabel={applyLabel}
         multiple={multiple}
         target={button}
         inheritWidth={inheritWidth}
