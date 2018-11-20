@@ -17,6 +17,10 @@
     margin-right: 10px;
   }
 
+  .rc-switch:first-child {
+    margin-left: 0;
+  }
+
   .rc-switch-label {
     background: $puppet-toggle-bg;
   }
