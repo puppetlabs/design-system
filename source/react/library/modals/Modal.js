@@ -27,7 +27,6 @@ const propTypes = {
   overlayClassName: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   children: PropTypes.node,
   actionsPosition: PropTypes.oneOf(['left', 'right']),
-  background: PropTypes.oneOf(['transparent', 'translucent']),
   title: PropTypes.string,
 };
 
@@ -46,7 +45,6 @@ const defaultProps = {
   overlayClassName: '',
   children: null,
   actionsPosition: 'right',
-  background: 'transparent',
   title: '',
 };
 
@@ -352,7 +350,6 @@ class Modal extends React.Component {
       children,
       size,
       sidebarPosition,
-      background,
       modalClassName: modalClassNameProps,
       overlayClassName: overlayClassNameProps,
     } = this.props;
@@ -367,9 +364,6 @@ class Modal extends React.Component {
     );
     const overlayClassName = classname(
       'rc-modal-overlay',
-      {
-        [`rc-modal-overlay-${background}`]: background,
-      },
       overlayClassNameProps,
     );
 
