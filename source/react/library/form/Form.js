@@ -11,6 +11,7 @@ import FormSection from './FormSection';
 
 const propTypes = {
   className: PropTypes.string,
+  disabled: PropTypes.bool,
   onChange: PropTypes.func,
   inline: PropTypes.bool,
   onCancel: PropTypes.func,
@@ -38,6 +39,7 @@ const propTypes = {
 const defaultProps = {
   errors: {},
   className: '',
+  disabled: false,
   size: 'small',
   inline: false,
   onChange: null,
@@ -258,6 +260,7 @@ class Form extends React.Component {
     const {
       actionsPosition,
       cancellable,
+      disabled,
       submittable,
       submitting,
       size,
@@ -279,7 +282,7 @@ class Form extends React.Component {
           type="submit"
           processing={submitting}
           size={size}
-          disabled={!valid || !this.allowSubmission}
+          disabled={disabled || !valid || !this.allowSubmission}
           label={submitLabel}
           block={actionsPosition === 'block'}
         />
@@ -293,6 +296,7 @@ class Form extends React.Component {
           className="rc-form-action"
           secondary
           size={size}
+          disabled={disabled}
           onClick={this.onCancel}
           label={cancelLabel}
           block={actionsPosition === 'block'}
@@ -348,7 +352,13 @@ class Form extends React.Component {
   }
 
   render() {
-    const { children: childrenProp, className, size, inline } = this.props;
+    const {
+      children: childrenProp,
+      className,
+      disabled,
+      inline,
+      size,
+    } = this.props;
     const children = this.renderChildren(childrenProp);
     const actions = this.renderActions();
     const error = this.renderFormError();
@@ -359,7 +369,9 @@ class Form extends React.Component {
 
     return (
       <form className={classNames} onSubmit={this.onSubmit}>
-        <fieldset className="rc-form-fields">{children}</fieldset>
+        <fieldset className="rc-form-fields" disabled={disabled}>
+          {children}
+        </fieldset>
         {error}
         {actions}
       </form>
