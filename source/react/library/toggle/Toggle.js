@@ -6,7 +6,7 @@ import Switch from '../switch/Switch';
 import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
-  left: PropTypes.string.isRequired,
+  left: PropTypes.string,
   right: PropTypes.string.isRequired,
   name: PropTypes.string,
   onChange: PropTypes.func,
@@ -16,6 +16,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  left: '',
   name: '',
   onChange: null,
   disabled: false,
