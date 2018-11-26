@@ -1,18 +1,11 @@
 .rc-modal-overlay {
+  background: $puppet-modal-overlay-bg;
   height: 100%;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: $puppet-modal-elevation;
-}
-
-.rc-modal-overlay-transparent {
-  background: $puppet-modal-overlay-bg;
-}
-
-.rc-modal-overlay-translucent {
-  background: $puppet-modal-overlay-translucent-bg;
 }
 
 .rc-modal-close {
