@@ -233,6 +233,7 @@ class FilterForm extends React.Component {
         cancelLabel={strings.filterCancel}
         submitLabel={strings.filterSubmit}
         actionsPosition={actionsPosition}
+        allowUnchangedSubmit
       >
         <Form.Field
           type="select"
