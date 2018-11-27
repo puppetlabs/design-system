@@ -1,9 +1,9 @@
 ```
-<LoadingIndicator />
+<Loading />
 ```
 
 Small
 
 ```
-<LoadingIndicator size="small" />
+<Loading size="small" />
 ```
