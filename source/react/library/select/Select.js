@@ -698,24 +698,23 @@ class Select extends React.Component {
     } = this.props;
     const actions = this.renderActions();
     const items = this.renderContent();
-    const wrapperClassName = classnames('rc-select-wrapper', {
-      'rc-select-wrapper-open': open === true,
-    });
+    const wrapperClassNames = classnames(
+      'rc-select-wrapper',
+      {
+        'rc-select-wrapper-open': open === true,
+      },
+      className,
+    );
     const popoverClassNames = classnames(
       'rc-select-popover',
       'rc-popover-visible-overflow',
       popoverClassName,
     );
-    const classNames = classnames(
-      'rc-select',
-      'rc-select-popover-wrapper',
-      className,
-      {
-        'rc-select-disabled': disabled,
-        'rc-select-multiple': multiple,
-        [`rc-select-${size}`]: size,
-      },
-    );
+    const classNames = classnames('rc-select', 'rc-select-popover-wrapper', {
+      'rc-select-disabled': disabled,
+      'rc-select-multiple': multiple,
+      [`rc-select-${size}`]: size,
+    });
 
     const content = (
       <div className="rc-select-input">
@@ -753,7 +752,7 @@ class Select extends React.Component {
       );
     }
 
-    return <div className={wrapperClassName}>{jsx}</div>;
+    return <div className={wrapperClassNames}>{jsx}</div>;
   }
 }
 
