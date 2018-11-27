@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
@@ -9,6 +9,14 @@ describe('<FilterForm />', () => {
     const wrapper = shallow(<FilterForm />);
 
     expect(wrapper.length).to.eql(1);
+  });
+
+  it('should render an enabled submit button by default', () => {
+    const wrapper = mount(<FilterForm />);
+    const button = wrapper.find('Button').at(1);
+
+    expect(button.prop('disabled')).to.eql(false);
+    expect(button.prop('label')).to.eql('Submit');
   });
 
   describe('overriding overridable things', () => {
