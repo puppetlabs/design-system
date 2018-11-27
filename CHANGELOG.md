@@ -4,6 +4,7 @@
 - Adding two tone icons
 - Fix Loaders in the styleguide
 - Small updates to toggle component
+- Always uppercase badge text
 
 # 4.14.1
 
