@@ -6,19 +6,22 @@ import Switch from '../switch/Switch';
 import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
-  left: PropTypes.string.isRequired,
+  left: PropTypes.string,
   right: PropTypes.string.isRequired,
   name: PropTypes.string,
   onChange: PropTypes.func,
   disabled: PropTypes.bool,
   active: PropTypes.string,
+  className: PropTypes.string,
 };
 
 const defaultProps = {
+  left: '',
   name: '',
   onChange: null,
   disabled: false,
   active: '',
+  className: '',
 };
 
 /**
@@ -94,20 +97,22 @@ class Toggle extends React.Component {
   }
 
   render() {
-    const { left, right, name, disabled } = this.props;
+    const { left, right, name, disabled, className } = this.props;
     const { active } = this.state;
-    const leftLabel = this.renderLabel(left);
-    const rightLabel = this.renderLabel(right);
-    const className = classnames('rc-toggle', {
-      'rc-toggle-disabled': disabled,
-    });
+    const classNames = classnames(
+      'rc-toggle',
+      {
+        'rc-toggle-disabled': disabled,
+      },
+      className,
+    );
 
     // We have to make this unique.
     const switchName = name || left + right;
 
     return (
-      <div className={className}>
-        {leftLabel}
+      <div className={classNames}>
+        {left && this.renderLabel(left)}
         <Switch
           label={false}
           disabled={disabled}
@@ -116,7 +121,7 @@ class Toggle extends React.Component {
           checked={active === right}
           name={switchName}
         />
-        {rightLabel}
+        {right && this.renderLabel(right)}
       </div>
     );
   }
