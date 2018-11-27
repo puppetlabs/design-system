@@ -23,6 +23,7 @@ $badge-colors: (
   margin: 0 $puppet-mini;
   padding: 0 4px;
   text-align: center;
+  text-transform: uppercase;
 }
 
 .rc-badge-pill,
@@ -88,7 +89,6 @@ $badge-colors: (
 }
 
 // SEQUENTIAL COLOR BADGES
-/* stylelint-disable */
 @each $color-key, $color-value in $badge-colors {
   @each $tone-key, $tone-value in $color-value {
 
@@ -101,9 +101,8 @@ $badge-colors: (
 
       .rc-badge-bold.rc-badge-#{$color-key}-#{$tone-key} {
         background-color: $tone-value !important;
-        color: white !important;
+        color: $puppet-white !important;
       }
     }
   }
 }
-/* stylelint-enable */
