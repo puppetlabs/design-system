@@ -120,6 +120,10 @@ class Button extends React.Component {
       ...otherProps
     } = this.props;
 
+    // Deleting this as otherProps gets splatted onto dom elements which don't recognize isOpened as
+    // a valid attribute
+    delete otherProps.isOpened;
+
     let button;
     let content;
     let icon;

@@ -17,6 +17,10 @@
     margin-right: 10px;
   }
 
+  .rc-switch:first-child {
+    margin-left: 0;
+  }
+
   .rc-switch-label {
     background: $puppet-toggle-bg;
   }
@@ -28,10 +32,6 @@
   .rc-switch-checkbox:checked + .rc-switch-label {
     background: $puppet-toggle-bg;
     color: $puppet-toggle-on-color;
-  }
-
-  .rc-switch-checkbox:checked + .rc-switch-label:hover {
-    cursor: default;
   }
 
   .rc-switch-checkbox:checked + .rc-switch-label::after {
