@@ -1,4 +1,18 @@
+# 4.15.0
+
+- Fix regression to filter form submit button and selects
+- Adding two tone icons
+- Fix Loaders in the styleguide
+- Small updates to toggle component
+- Always uppercase badge text
+
+# 4.14.1
+
+- Form now accepts disabled prop, that disables all fields and buttons
+- Adding an applyLabel prop to the dropdown menu for i18n support
+
 # 4.14.0
+
 - Forms now accept children other than FormField and FormSection
 - Updated styleguidist docs for Accordion and List to accurately reflect use of subcomponents
 - Add deprecation HOC

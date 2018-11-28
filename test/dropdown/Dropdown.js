@@ -93,4 +93,15 @@ describe('<Dropdown />', () => {
 
     expect(wrapper.find('DropdownMenu').prop('selected')).to.eql([1, 2]);
   });
+
+  it('apply label text', () => {
+    const applyLabel = 'New Apply Label';
+    const wrapper = shallow(
+      <Dropdown selected={1} options={options} applyLabel={applyLabel} />,
+    );
+
+    expect(wrapper.find('DropdownMenu').prop('applyLabel')).to.equal(
+      applyLabel,
+    );
+  });
 });
