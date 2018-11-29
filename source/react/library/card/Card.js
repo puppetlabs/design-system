@@ -26,6 +26,8 @@ const propTypes = {
   className: PropTypes.string,
   /** Component children */
   children: PropTypes.node,
+  /** Click handler. Additionally, other event handlers and and props are propagated to the inner element for use as needed */
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {
@@ -36,6 +38,7 @@ const defaultProps = {
   selected: false,
   className: '',
   children: null,
+  onClick() {},
 };
 
 const Card = ({

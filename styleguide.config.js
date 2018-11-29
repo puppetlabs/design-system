@@ -52,4 +52,5 @@ module.exports = {
       new ExtractTextPlugin({ filename: 'styleguide.css', allChunks: true }),
     ],
   },
+  sortProps: props => props,
 };
