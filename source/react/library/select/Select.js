@@ -667,16 +667,15 @@ class Select extends React.Component {
 
     const input = (
       <Input
-        dropdown
-        autoComplete={false}
+        autoComplete="off"
         placeholder={placeholder}
         name={name}
         onKeyUp={this.onKeyUp}
         onChange={this.onInputChange}
         value={this.getInputValue()}
         size={size}
-        aria-required={required}
-        ref={c => {
+        required={required}
+        inputRef={c => {
           this.input = c;
         }}
         disabled={disabled}

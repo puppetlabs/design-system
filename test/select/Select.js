@@ -198,7 +198,7 @@ describe('<Select />', () => {
       // Should be showing all the items by default
       expect(wrapper.find('MenuItem').length).to.eql(3);
 
-      wrapper.find('Input').simulate('change', {
+      wrapper.find('input').simulate('change', {
         target: { value: 'Comp' },
       });
 
