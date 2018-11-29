@@ -168,11 +168,24 @@ $puppet-button-error-border-color-active           : transparent !default;
 
 // Card General
 $puppet-card-padding                               : $puppet-medium !default;
-$puppet-card-bg                                    : $puppet-bg-light !default;
-$puppet-card-border                                : $puppet-border !default;
+$puppet-card-border-radius                         : $puppet-border-radius !default;
+// Primary
+$puppet-card-primary-bg                            : $puppet-white !default;
+$puppet-card-primary-border                        : $puppet-border !default;
+// Secondary
+$puppet-card-secondary-bg                          : $puppet-n200 !default;
+$puppet-card-secondary-border                      : $puppet-border !default;
+// Selectable
+$puppet-card-selectable-border-hover               : $puppet-border-action !default;
+$puppet-card-selectable-shadow                     : $puppet-selectable-shadow !default;
+$puppet-card-selectable-shadow-hover               : $puppet-selectable-shadow-hover !default;
+// Selected
+$puppet-card-border-selected                       : $puppet-border-action !default;
+$puppet-card-border-selected-hover                 : $puppet-border-action-hover !default;
+$puppet-card-selected-shadow                       : $puppet-selected-shadow !default;
+$puppet-card-selected-shadow-hover                 : $puppet-selected-shadow-hover !default;
 
-// Card Header
-$puppet-card-header-padding                        : $puppet-medium !default;
+// Card subcomponents. NOTE: these variables should be considered unstable
 $puppet-card-title-size                            : $puppet-font-size-medium !default;
 $puppet-card-title-case                            : none !default;
 $puppet-card-title-color                           : $puppet-font-color-base !default;
@@ -182,31 +195,8 @@ $puppet-card-subtitle-color                        : $puppet-font-color-medium !
 $puppet-card-controls-size                         : $puppet-font-size-small !default;
 $puppet-card-controls-color                        : $puppet-font-color-base !default;
 $puppet-card-search-margin                         : $puppet-medium 0 0 !default;
-
 $puppet-card-description-font-size                 : $puppet-font-size-base !default;
-
-// Card Color
 $puppet-card-action-color-active                   : $puppet-action-base !default;
-$puppet-card-color                                 : $puppet-font-color-base !default;
-
-// Card Borders
-$puppet-card-border                                : $puppet-border !default;
-$puppet-card-border-hover                          : $puppet-border-action !default;
-$puppet-card-border-radius                         : $puppet-border-radius !default;
-$puppet-card-border-selected                       : $puppet-border-action !default;
-$puppet-card-border-selected-hover                 : $puppet-border-action-hover !default;
-
-// Card Shadows
-// TODO: All cards currently have shadows. Need to have flat variation by default with no shadow.
-// Note that card shadows include an action color to fake a 2px border.
-$puppet-card-shadow                                : $puppet-elev-50-shadow !default;
-$puppet-card-selectable-shadow                     : $puppet-selectable-shadow !default;
-$puppet-card-selectable-shadow-hover               : $puppet-selectable-shadow-hover !default;
-$puppet-card-shadow-selected                       : $puppet-selected-shadow !default;
-$puppet-card-shadow-selected-hover                 : $puppet-selected-shadow-hover !default;
-
-// Sidebar
-// ----------------------------------------------------------------------------
 
 // Dark Sidebar
 $puppet-sidebar-dark-bg                            : $puppet-n900 !default;
@@ -576,17 +566,6 @@ $puppet-modal-sidebar-padding                      : $puppet-modal-padding !defa
 $puppet-modal-actions-border                       : none !default;
 $puppet-modal-actions-padding                      : $puppet-modal-padding !default;
 $puppet-modal-actions-cta-padding                  : $puppet-small 0 $puppet-small 0 !default;
-
-// Panel
-// ----------------------------------------------------------------------------
-$puppet-panel-bg                                   : $puppet-bg-light !default;
-$puppet-panel-bg-secondary                         : $puppet-n50 !default;
-$puppet-panel-padding                              : $puppet-medium !default;
-$puppet-panel-border                               : $puppet-border !default;
-$puppet-panel-border-radius                        : $puppet-border-radius !default;
-$puppet-panel-outer-shadow                         : $puppet-elev-50-shadow !default;
-
-
 
 // Preset ranges
 // ----------------------------------------------------------------------------

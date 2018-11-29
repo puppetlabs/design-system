@@ -4,12 +4,12 @@ import { expect } from 'chai';
 import React from 'react';
 
 import portal from '../source/react/library/portal';
-import Card from '../source/react/library/card/Card';
+import { BareModal } from '../source/react/library/modals/Modal';
 
-describe('Card wrapped with portal', () => {
+describe('BareModal wrapped with portal', () => {
   jsdom({ skipWindowCheck: true });
 
-  const renderer = portal(Card);
+  const renderer = portal(BareModal);
   const APP_BASE = document.body;
 
   const clearDOM = () => {
@@ -23,7 +23,7 @@ describe('Card wrapped with portal', () => {
     const elem = React.createElement(renderer);
     const wrapper = mount(elem);
 
-    expect(wrapper.find('Card').length).to.eql(1);
+    expect(wrapper.find(BareModal).length).to.eql(1);
     expect(APP_BASE.getElementsByClassName('rc-portal').length).to.eql(1);
   });
 
@@ -32,7 +32,7 @@ describe('Card wrapped with portal', () => {
     const elem = React.createElement(renderer, { isOpened: false });
     const wrapper = mount(elem);
 
-    expect(wrapper.find('Card').length).to.eql(1);
+    expect(wrapper.find(BareModal).length).to.eql(1);
     expect(APP_BASE.getElementsByClassName('rc-portal').length).to.eql(0);
   });
 

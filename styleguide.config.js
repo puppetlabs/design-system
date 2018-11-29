@@ -20,6 +20,10 @@ module.exports = {
     '**/table/ColumnSelect.js',
     '**/table/ColumnHeader.js',
     '**/table/ColumnCheckbox.js',
+    '**/card/ActionsMenu.js',
+    '**/card/ActionsSearch.js',
+    '**/card/Header.js',
+    '**/card/Section.js',
   ],
   require: [
     path.join(__dirname, 'styleguideSetup.js'),
@@ -48,4 +52,5 @@ module.exports = {
       new ExtractTextPlugin({ filename: 'styleguide.css', allChunks: true }),
     ],
   },
+  sortProps: props => props,
 };
