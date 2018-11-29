@@ -1,3 +1,14 @@
+# 5.0.0-alpha.1
+- * **breaking change**: Completely remove `Panel` component
+- Adds `elevation` prop controlling box-shadow elevation
+- **breaking change** Removes `style` prop, so that `style` can be used to pass the card inline-styles
+- Adds `secondary` card (controlled by new `type` prop)
+- Adds `as` prop for dynamic element rendering
+- **breaking change** Adds `selectable` prop. Previously, a card was considered selectable if it was passed an `onClick` handler. This separates the handler from the boolean rendering logic.
+- **breaking change** removes `width` and `height` props. Users can now specify explicit widths and heights via inline styles: `<Card style={{ width: 40, height: 60 }} />`
+- Pass through all extra props to the inner element
+- Substantially update Card documentation in styleguidist
+
 # 4.15.0
 
 - Fix regression to filter form submit button and selects
