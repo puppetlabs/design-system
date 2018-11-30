@@ -1,3 +1,6 @@
+# 4.15.1
+- Fix child component type checking in Form
+
 # 4.15.0
 
 - Fix regression to filter form submit button and selects
