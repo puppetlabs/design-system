@@ -14,20 +14,32 @@ export const SUPPORTED_TYPES = [
   'password',
   'url',
   'search',
+  'number',
   'multiline',
 ];
 
 const propTypes = {
+  /** Input name */
   name: PropTypes.string.isRequired,
+  /** Input type, inluding most standard native input types and 'multiline' which will render a 'textarea' */
   type: PropTypes.oneOf(SUPPORTED_TYPES),
+  /** Form elements come in two standard sizes */
   size: formSize,
+  /** Alternate visual variation */
   simple: PropTypes.bool,
+  /** Form error, causing element to render red when present */
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  /** Optional icon rendered before input area */
   icon: PropTypes.string,
+  /** Optional icon rendered after input area */
   trailingIcon: PropTypes.string,
+  /** Optional additional className */
   className: PropTypes.string,
+  /** Optional inline styles */
   style: PropTypes.shape({}),
+  /** Ref method passed to the inner input element */
   inputRef: PropTypes.func,
+  /** Change handler. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
   onChange: PropTypes.func,
 };
 
