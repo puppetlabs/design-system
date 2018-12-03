@@ -7,7 +7,7 @@ import Input from '../../source/react/library/input/Input';
 
 describe('<FormField />', () => {
   const defaultProps = {
-    type: 'input',
+    type: 'text',
     onChange: () => {},
     name: 'testField',
   };

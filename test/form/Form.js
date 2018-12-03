@@ -16,7 +16,7 @@ describe('<Form />', () => {
       <Form>
         <Form.Field
           key="test-child"
-          type="input"
+          type="text"
           name="test"
           className="test-child"
         />
@@ -48,7 +48,7 @@ describe('<Form />', () => {
           <Form.Section key="test-section">
             <Form.Field
               key="test-field"
-              type="input"
+              type="text"
               name="test"
               value="myValue"
             />

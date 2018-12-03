@@ -207,7 +207,7 @@ class FilterForm extends React.Component {
     if (!valueless) {
       jsx = (
         <Form.Field
-          type="input"
+          type="text"
           name="filterValue"
           label={strings.filterValue}
           value={value}
