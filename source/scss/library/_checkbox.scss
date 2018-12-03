@@ -37,6 +37,10 @@
   width: 16px;
 }
 
+.rc-checkbox-error {
+  border: $puppet-checkbox-border-error;
+}
+
 .rc-checkbox:hover {
   border: $puppet-checkbox-border-hover;
 

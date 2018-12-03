@@ -11,6 +11,8 @@ const propTypes = {
   checked: PropTypes.bool,
   /** Is the input disabled */
   disabled: PropTypes.bool,
+  /** Form error, causing element to render red when present */
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Is the input required */
   inputRef: PropTypes.func,
   /** Change handler. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
@@ -20,6 +22,7 @@ const propTypes = {
 const defaultProps = {
   checked: false,
   disabled: false,
+  error: false,
   onChange() {},
   inputRef() {},
 };
@@ -27,14 +30,23 @@ const defaultProps = {
 /**
  * The Checkbox is a lightly styled wrapper around an html checkbox input.
  */
-const Checkbox = ({ name, className, style, inputRef, ...otherProps }) => (
+const Checkbox = ({
+  name,
+  error,
+  className,
+  style,
+  inputRef,
+  ...otherProps
+}) => (
   <div className={classNames('rc-checkbox-container', className)} style={style}>
     <input
       type="checkbox"
       id={name}
       name={name}
       ref={inputRef}
-      className="rc-checkbox"
+      className={classNames('rc-checkbox', {
+        'rc-checkbox-error': error,
+      })}
       {...otherProps}
     />
     <Icon type="check" width="16px" height="16px" />
