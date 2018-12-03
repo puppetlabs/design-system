@@ -27,6 +27,8 @@ const propTypes = {
   size: formSize,
   /** Alternate visual variation */
   simple: PropTypes.bool,
+  /** Is the input disabled */
+  disabled: PropTypes.bool,
   /** Form error, causing element to render red when present */
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Optional icon rendered before input area */
@@ -47,6 +49,7 @@ const defaultProps = {
   type: 'text',
   size: 'medium',
   simple: false,
+  disabled: false,
   error: false,
   icon: null,
   trailingIcon: null,
