@@ -40,17 +40,17 @@
 .rc-checkbox:hover {
   border: $puppet-checkbox-border-hover;
 
-  &.rc-checkbox-checked {
+  &.rc-checkbox:checked {
     border: $puppet-checkbox-border;
   }
 }
 
-.rc-checkbox-checked + .rc-icon {
+.rc-checkbox:checked + .rc-icon {
   display: block;
   fill: $puppet-checkbox-icon-fill;
 }
 
-.rc-checkbox-disabled {
+.rc-checkbox:disabled {
   cursor: default;
   opacity: $puppet-disabled-opacity;
 
