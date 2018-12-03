@@ -5,19 +5,15 @@ import classnames from 'classnames';
 
 import { TooltipHoverArea } from '../tooltips/Tooltip';
 
-import Input from '../input/Input';
+import Input, {
+  SUPPORTED_TYPES as INPUT_SUPPORTED_TYPES,
+} from '../input/Input';
 import Select from '../select/Select';
 import Switch from '../switch/Switch';
 import Checkbox from '../checkbox/Checkbox';
 
 const supportedTypes = [
-  'input',
-  'text',
-  'email',
-  'password',
-  'search',
-  'url',
-  'number',
+  ...INPUT_SUPPORTED_TYPES,
   'select',
   'switch',
   'filters',
@@ -98,7 +94,6 @@ class FormField extends React.Component {
     let value = val;
 
     switch (type) {
-      case 'input':
       case 'text':
       case 'email':
       case 'password':
