@@ -1,78 +1,67 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  onChange: PropTypes.func.isRequired,
+  /** Name of the input */
   name: PropTypes.string.isRequired,
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
+  /** Is the input checked */
   checked: PropTypes.bool,
-  label: PropTypes.bool,
+  /** Is the input disabled */
+  disabled: PropTypes.bool,
+  /** Form error, causing element to render red when present */
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  /** Is the input required */
+  inputRef: PropTypes.func,
+  /** Change handler. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
+  onChange: PropTypes.func,
 };
 
 const defaultProps = {
-  className: null,
-  disabled: false,
   checked: false,
-  label: true,
+  disabled: false,
+  error: false,
+  onChange() {},
+  inputRef() {},
 };
 
-/**
- * `Switch` allows the user to enable or disable something.
- */
-
-class Switch extends React.Component {
-  renderLabel() {
-    const { label, name } = this.props;
-    let jsx;
-
-    /* eslint-disable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
-    if (label) {
-      jsx = (
-        <label className="rc-switch-label" htmlFor={name}>
-          <span className="rc-switch-label-on">
-            <Icon width="12px" height="12px" type="checkmark" />
-          </span>
-          <span className="rc-switch-label-off">
-            <Icon width="12px" height="12px" type="close" />
-          </span>
-        </label>
-      );
-    } else {
-      jsx = <label className="rc-switch-label" htmlFor={name} />;
-    }
-    /* eslint-enable jsx-a11y/label-has-associated-control, jsx-a11y/label-has-for */
-
-    return jsx;
-  }
-
-  render() {
-    const { className, disabled, checked, name, onChange } = this.props;
-    const label = this.renderLabel();
-
-    const classNames = classnames('rc-switch', className, {
-      'rc-switch-checked': className === null,
-    });
-    /* eslint-disable jsx-a11y/role-supports-aria-props */
-    return (
-      <div className={classNames}>
-        <input
-          className="rc-switch-checkbox"
-          disabled={disabled}
-          checked={checked}
-          type="checkbox"
-          id={name}
-          onChange={onChange}
-        />
-        {label}
-      </div>
-    );
-    /* eslint-enable */
-  }
-}
+const Switch = ({
+  name,
+  error,
+  checked,
+  className,
+  style,
+  inputRef,
+  ...otherProps
+}) => (
+  <div
+    className={classNames(
+      'rc-switch-container',
+      { 'rc-switch-error': error },
+      className,
+    )}
+    style={style}
+  >
+    <input
+      type="checkbox"
+      name={name}
+      id={name}
+      ref={inputRef}
+      className="rc-switch-checkbox"
+      {...otherProps}
+    />
+    <div className="rc-switch-label">
+      <span className="rc-switch-label-on">
+        <Icon width="12px" height="12px" type="checkmark" />
+      </span>
+      <span className="rc-switch-label-off">
+        <Icon width="12px" height="12px" type="close" />
+      </span>
+    </div>
+  </div>
+);
 
 Switch.propTypes = propTypes;
 Switch.defaultProps = defaultProps;

@@ -20,12 +20,6 @@
   width: $puppet-medium;
 }
 
-.rc-checkbox::-ms-check {
-  border: $puppet-checkbox-border;
-  border-radius: $puppet-checkbox-border-radius;
-  color: $puppet-bg-light;
-}
-
 .rc-checkbox + .rc-icon {
   animation: 200ms 1 ease-in rc-zoom-in;
   display: none;
