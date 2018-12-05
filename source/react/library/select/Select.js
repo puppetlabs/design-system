@@ -6,23 +6,25 @@ import classnames from 'classnames';
 import {
   ENTER_KEY_CODE,
   DOWN_KEY_CODE,
-  BACK_KEY_CODE,
   TAB_KEY_CODE,
   ESC_KEY_CODE,
   UP_KEY_CODE,
 } from '../../constants';
+import { formSize } from '../../helpers/customPropTypes';
 
 import Icon from '../icon/Icon';
 import Input from '../input/Input';
 import Menu from '../menu';
 import Popover from '../popover/Popover';
-import Button from '../buttons/Button';
 import Text from '../text/Text';
 
 import SelectItem from './SelectItem';
 
 const propTypes = {
-  name: PropTypes.string,
+  /** Input name */
+  name: PropTypes.string.isRequired,
+  /** Form elements come in two standard sizes */
+  size: formSize,
   autoOpen: PropTypes.bool,
   onSelect: PropTypes.func,
   options: PropTypes.arrayOf(
@@ -33,25 +35,18 @@ const propTypes = {
   multiple: PropTypes.bool,
   typeahead: PropTypes.bool,
   clearable: PropTypes.bool,
-  valueless: PropTypes.bool,
   className: PropTypes.string,
   placeholder: PropTypes.string,
   disablePortal: PropTypes.bool,
-  onPendingDeleteChange: PropTypes.func,
-  onNewOption: PropTypes.func,
-  newOptionLabel: PropTypes.string,
   noResultsLabel: PropTypes.string,
   popoverClassName: PropTypes.string,
-  size: PropTypes.oneOf(['tiny', 'small', 'medium']),
   selected: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
 };
 
 const defaultProps = {
-  onPendingDeleteChange: () => {},
-  placeholder: 'Select...',
+  placeholder: '',
   disablePortal: false,
   clearable: false,
-  valueless: false,
   typeahead: true,
   disabled: false,
   required: false,
@@ -61,12 +56,9 @@ const defaultProps = {
   className: '',
   size: 'medium',
   options: [],
-  name: '',
-  newOptionLabel: 'Add new',
   noResultsLabel: 'No results found',
   selected: null,
   popoverClassName: '',
-  onNewOption: null,
 };
 
 const getNextIdx = (currentIdx, options) => {
@@ -268,35 +260,6 @@ class Select extends React.Component {
     });
   }
 
-  onBackPress() {
-    const {
-      inputValue,
-      pendingBackDelete,
-      selected: selectedState,
-    } = this.state;
-    const { onPendingDeleteChange } = this.props;
-
-    if (typeof inputValue !== 'undefined') {
-      return;
-    }
-    const newState = {};
-
-    if (pendingBackDelete) {
-      const selected = selectedState;
-      const removed = selected.pop();
-
-      this.onChange(selected, removed);
-
-      newState.selected = selected;
-      newState.pendingBackDelete = false;
-    } else {
-      newState.pendingBackDelete = true;
-    }
-
-    onPendingDeleteChange(newState.pendingBackDelete);
-    this.setState(newState);
-  }
-
   onChevronClick(e) {
     if (e) {
       e.preventDefault();
@@ -330,17 +293,12 @@ class Select extends React.Component {
     }
 
     this.setState({
-      pendingBackDelete: false,
       open: false,
     });
   }
 
   onKeyUp(e) {
     switch (e.keyCode) {
-      case BACK_KEY_CODE:
-        this.onBackPress();
-
-        break;
       case TAB_KEY_CODE:
       case ESC_KEY_CODE:
         this.setState({ open: false }, this.close);
@@ -365,13 +323,12 @@ class Select extends React.Component {
 
   onSelect(option) {
     const newState = {
-      pendingBackDelete: false,
       inputValue: undefined,
       focusedId: null,
     };
 
     const { selected } = this.state;
-    const { clearable, multiple, valueless } = this.props;
+    const { clearable, multiple } = this.props;
 
     if (option.selectable || typeof option.selectable === 'undefined') {
       if (selected.map(s => s.id).indexOf(option.id) >= 0 && clearable) {
@@ -384,7 +341,7 @@ class Select extends React.Component {
     }
 
     // We want to leave this open if we're acting like a multiselect.
-    if (!multiple || valueless) {
+    if (!multiple) {
       newState.open = false;
 
       this.close();
@@ -507,12 +464,10 @@ class Select extends React.Component {
   }
 
   close() {
-    const { onPendingDeleteChange } = this.props;
     this.popover.close();
     this.input.blur();
 
     this.setState({ pendingBackDelete: false });
-    onPendingDeleteChange(false);
   }
 
   renderMenuList() {
@@ -537,25 +492,6 @@ class Select extends React.Component {
     );
   }
 
-  renderNewOptionControls() {
-    let jsx;
-    const { onNewOption, newOptionLabel } = this.props;
-
-    if (onNewOption) {
-      jsx = (
-        <Menu.Actions centered>
-          <Menu.Actions.Buttons>
-            <Button primary simple onClick={onNewOption} icon="plus">
-              {newOptionLabel}
-            </Button>
-          </Menu.Actions.Buttons>
-        </Menu.Actions>
-      );
-    }
-
-    return jsx;
-  }
-
   renderMenu() {
     const { size, noResultsLabel } = this.props;
     let menuList = this.renderMenuList();
@@ -566,15 +502,12 @@ class Select extends React.Component {
         </Text>
       );
     }
-    const actions = this.renderNewOptionControls();
-    const className = classnames('rc-select-menu-options', {
-      'rc-no-bottom-radius': actions,
-    });
 
     const jsx = (
       <Menu className="rc-select-menu" size={size}>
-        <Menu.Section className={className}>{menuList}</Menu.Section>
-        {actions}
+        <Menu.Section className="rc-select-menu-options">
+          {menuList}
+        </Menu.Section>
       </Menu>
     );
 
@@ -621,12 +554,12 @@ class Select extends React.Component {
   }
 
   renderContent() {
-    const { multiple, valueless, size } = this.props;
+    const { multiple, size } = this.props;
     const { selected: selectedState, pendingBackDelete } = this.state;
     const input = this.renderInput();
     let selected = [];
 
-    if (multiple && !valueless) {
+    if (multiple) {
       const selectedCount = selectedState.length;
 
       selected = selectedState.map((option, index) => (
@@ -651,7 +584,6 @@ class Select extends React.Component {
   renderInput() {
     const {
       multiple,
-      valueless,
       placeholder: placeholderProp,
       size,
       disabled,
@@ -661,7 +593,7 @@ class Select extends React.Component {
     const { selected } = this.state;
     let placeholder;
 
-    if (!multiple || !selected.length || valueless) {
+    if (!multiple || !selected.length) {
       placeholder = placeholderProp;
     }
 

@@ -15,8 +15,8 @@ import Checkbox from '../checkbox/Checkbox';
 const supportedTypes = [
   ...INPUT_SUPPORTED_TYPES,
   'checkbox',
-  'select',
   'switch',
+  'select',
   'filters',
 ];
 
