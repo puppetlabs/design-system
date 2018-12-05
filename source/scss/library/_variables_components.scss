@@ -714,9 +714,10 @@ $puppet-tag-removable-border                       : 1px solid transparent !defa
 $puppet-tag-removable-border-hover                 : 1px solid transparent !default;
 $puppet-tag-removable-border-highlighted           : $puppet-border-action !default;
 
-$puppet-tag-removable-icon                         : transparentize($puppet-white, 0.2) !default;
-$puppet-tag-removable-icon-hover                   : $puppet-white !default;
-$puppet-tag-removable-icon-highlighted             : $puppet-white !default;
+$puppet-tag-removable-icon                         : transparentize($puppet-n800, 0.2) !default;
+$puppet-tag-removable-icon-hover                   : $puppet-n800 !default;
+$puppet-tag-removable-secondary-icon               : transparentize($puppet-white, 0.2) !default;
+$puppet-tag-removable-secondary-icon-hover         : $puppet-white !default;
 
 $puppet-tag-removable-color                        : $puppet-white !default;
 $puppet-tag-removable-color-hover                  : $puppet-white !default;

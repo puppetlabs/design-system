@@ -1,67 +1,46 @@
 ```
 <div>
   <Tag
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable>I'm a happpy tag!</Tag>
+    removable>I'm a default tag</Tag>
   <Tag
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable>Another tag</Tag>
+    round
+    removable>I'm a round tag</Tag>
   <Tag
     bold
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
     removable>I'm a bold tag</Tag>
   <Tag
-    round
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable>We're</Tag>
-  <Tag
-    round
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable>rounded</Tag>
-  <Tag
-    round
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable>tags</Tag>
-  <Tag
     primary
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable>We're</Tag>
-  <Tag
-    primary
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable>primary</Tag>
-  <Tag
-    primary
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable>tags</Tag>
+    removable>I'm a primary tag</Tag>
   <Tag
     secondary
-    onClick={ () => { console.log('Tag clicked!'); } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable>Secondary tag</Tag>
+    removable>I'm a secondary tag</Tag>
 </div>
 ```
 
 Clickable, removable tag:
 
 ```
-<Tag
-  onClick={ () => { console.log('Tag clicked!'); } }
-  onRemove={ () => { console.log('Tag removed!') } }
-  removable
-  block
->
-  I'm a happy removable tag!
-</Tag>
+<div>
+  <Tag
+    onClick={ () => { console.log('Tag clicked!') } }
+    removable
+  >
+    I'm a clickable tag!
+  </Tag>
+  <Tag
+    onRemove={ () => { console.log('Tag removed!') } }
+    removable
+  >
+    I'm a removable tag!
+  </Tag>
+  <Tag
+    onClick={ () => { console.log('Tag clicked!') } }
+    onRemove={ () => { console.log('Tag removed!') } }
+    removable
+  >
+    I'm a clickable & removable tag!
+  </Tag>
+</div>
 ```
 
 Tag with a tooltip:
