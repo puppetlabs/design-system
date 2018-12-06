@@ -1,4 +1,6 @@
-# 4.15.1
+# 4.16.0
+
+- Add ability for consumers of `Table` to specify how row key props are generated
 - Fix child component type checking in Form
 
 # 4.15.0
