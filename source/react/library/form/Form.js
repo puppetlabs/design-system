@@ -59,11 +59,26 @@ const defaultProps = {
 
 const isEmpty = str => !str || str.match(/^\s*$/);
 
+/**
+ * When using react-hot-loader, all components are actually proxied to another
+ * type. This makes the strict equality check on the Type fail, but luckily they
+ * extend the class in their proxy, so we can check against the prototype.
+ *
+ * @see https://github.com/gaearon/react-hot-loader/issues/304
+ */
+const componentHasType = (component, Type) =>
+  component &&
+  component.type &&
+  (component.type === Type || component.type.prototype instanceof Type);
+
 const getValues = children => {
   let values = {};
 
   React.Children.forEach(children, child => {
-    if (child && (child.type === FormField || child.type === FormSection)) {
+    if (
+      componentHasType(child, FormField) ||
+      componentHasType(child, FormSection)
+    ) {
       if (child.props.name) {
         values[child.props.name] = child.props.value;
       } else if (child.props.children) {
@@ -244,9 +259,9 @@ class Form extends React.Component {
     const jsx = [];
 
     React.Children.forEach(children, child => {
-      if (child && child.type === FormField) {
+      if (componentHasType(child, FormField)) {
         jsx.push(this.renderField(child));
-      } else if (child && child.type === FormSection) {
+      } else if (componentHasType(child, FormSection)) {
         jsx.push(this.renderSection(child));
       } else {
         jsx.push(child);

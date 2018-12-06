@@ -1,3 +1,8 @@
+# 4.16.0
+
+- Add ability for consumers of `Table` to specify how row key props are generated
+- Fix child component type checking in Form
+
 # 4.15.0
 
 - Fix regression to filter form submit button and selects

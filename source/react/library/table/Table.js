@@ -14,7 +14,26 @@ const propTypes = {
   className: PropTypes.string,
   onChange: PropTypes.func,
   onSelectChange: PropTypes.func,
+  getRowKey: PropTypes.func,
 };
+
+// This is included for backward compatibility with the initial implementation
+// of <Table>. You should always specify your own getRowKey function if
+// possible.
+//
+// Original justification is as follows:
+//
+// This is a hack specific to the data modeling wizard table. column name and
+// table name are all we need to identify the row. we don't want to include any
+// other columns, as they are changable by the user.
+//
+// NB: The slice(1, 3) pulls the first two sorted elements (the first key in the
+// object is always `meta`).
+const defaultGetRowKey = datum =>
+  Object.getOwnPropertyNames(datum)
+    .slice(1, 3)
+    .map(k => datum[k])
+    .join(':');
 
 const defaultProps = {
   selectable: false,
@@ -25,6 +44,7 @@ const defaultProps = {
   className: '',
   onChange: null,
   onSelectChange: null,
+  getRowKey: defaultGetRowKey,
 };
 
 function isSortable(value) {
@@ -245,33 +265,26 @@ class Table extends React.Component {
     return <tbody>{rows}</tbody>;
   }
 
-  reOrderColumns(data) {
-    const { columns: metaData } = this.props;
+  sortedData() {
+    const { data, columns: metaData, getRowKey } = this.props;
     const sortedMetaData = metaData.sort((a, b) => a.order - b.order);
 
     return data.map(datum => {
       const sortedRow = { meta: datum.meta };
-      const rowKey = [];
-
-      // This is a hack specific to the data modeling wizard table.
-      // column name and table name are all we need to identify the row. we don't want to include
-      // any other columns, as they are changable by the user.
-      rowKey.push(datum[sortedMetaData[0].column]);
-      rowKey.push(datum[sortedMetaData[1].column]);
 
       sortedMetaData.forEach(metaObj => {
         sortedRow[metaObj.column] = datum[metaObj.column];
       });
 
-      sortedRow.rowKey = rowKey.join(':');
+      sortedRow.rowKey = getRowKey(sortedRow);
 
       return sortedRow;
     });
   }
 
   render() {
-    const { data: dataProp, fixed, striped, className } = this.props;
-    const data = this.reOrderColumns(dataProp);
+    const { fixed, striped, className } = this.props;
+    const data = this.sortedData();
     const headers = this.getHeaders(data);
     const body = this.getBody(data);
     const tableClass = classnames(className, 'rc-table', {
