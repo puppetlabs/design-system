@@ -44,7 +44,7 @@ const propTypes = {
 const defaultStrings = {
   filterRemovable: 'removable',
   filterValue: 'value',
-  filterValuePlaceholder: 'A string (e.g. Jim) or a number (1500)',
+  filterValuePlaceholder: 'A word, phrase, or number',
   filterField: 'field',
   filterFieldPlaceholder: 'Choose a field...',
   filterOperator: 'operation',
