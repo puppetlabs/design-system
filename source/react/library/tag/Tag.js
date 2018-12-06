@@ -69,6 +69,7 @@ class Tag extends React.Component {
   onRemove(e) {
     const { onRemove } = this.props;
     e.preventDefault();
+    e.stopPropagation();
 
     if (onRemove) {
       onRemove(e);
