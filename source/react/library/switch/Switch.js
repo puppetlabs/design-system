@@ -7,20 +7,20 @@ import Icon from '../icon/Icon';
 const propTypes = {
   /** Name of the input */
   name: PropTypes.string.isRequired,
-  /** Is the input checked */
-  checked: PropTypes.bool,
+  /** Is the input checked? */
+  value: PropTypes.bool,
   /** Is the input disabled */
   disabled: PropTypes.bool,
   /** Form error, causing element to render red when present */
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Is the input required */
   inputRef: PropTypes.func,
-  /** Change handler. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
+  /** Change handler. Passed in order: new value, original event. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
   onChange: PropTypes.func,
 };
 
 const defaultProps = {
-  checked: false,
+  value: false,
   disabled: false,
   error: false,
   onChange() {},
@@ -30,10 +30,11 @@ const defaultProps = {
 const Switch = ({
   name,
   error,
-  checked,
+  value,
   className,
   style,
   inputRef,
+  onChange,
   ...otherProps
 }) => (
   <div
@@ -48,8 +49,10 @@ const Switch = ({
       type="checkbox"
       name={name}
       id={name}
+      checked={value}
       ref={inputRef}
       className="rc-switch-checkbox"
+      onChange={e => onChange(e.target.checked, e)}
       {...otherProps}
     />
     <div className="rc-switch-label">

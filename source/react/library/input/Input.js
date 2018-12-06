@@ -23,6 +23,10 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   /** Input type, inluding most standard native input types and 'multiline' which will render a 'textarea' */
   type: PropTypes.oneOf(SUPPORTED_TYPES),
+  /** Current value of the input */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** Optional field placeholder */
+  placeholder: PropTypes.string,
   /** Form elements come in two standard sizes */
   size: formSize,
   /** Alternate visual variation */
@@ -41,13 +45,15 @@ const propTypes = {
   style: PropTypes.shape({}),
   /** Ref method passed to the inner input element */
   inputRef: PropTypes.func,
-  /** Change handler. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
+  /** Change handler. Passed in order: new value, original event. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
   onChange: PropTypes.func,
 };
 
 const defaultProps = {
   type: 'text',
   size: 'medium',
+  value: undefined,
+  placeholder: '',
   simple: false,
   disabled: false,
   error: false,
@@ -57,6 +63,18 @@ const defaultProps = {
   className: '',
   inputRef() {},
   onChange() {},
+};
+
+/**
+ * Different value parsing for different input types.
+ */
+const parseValue = (value, type) => {
+  switch (type) {
+    case 'number':
+      return parseFloat(value);
+    default:
+      return value;
+  }
 };
 
 const Input = ({
@@ -70,6 +88,7 @@ const Input = ({
   className,
   style,
   inputRef,
+  onChange,
   ...otherProps
 }) => {
   const isMultiline = type === 'multiline';
@@ -105,6 +124,7 @@ const Input = ({
           [`rc-input-${size}`]: size,
         })}
         ref={inputRef}
+        onChange={e => onChange(parseValue(e.target.value), e)}
         {...otherProps}
       />
     </div>

@@ -17,7 +17,6 @@ const supportedTypes = [
   'checkbox',
   'switch',
   'select',
-  'filters',
 ];
 
 const propTypes = {
@@ -26,22 +25,15 @@ const propTypes = {
     PropTypes.oneOf(supportedTypes),
     PropTypes.element,
   ]).isRequired,
+  /* Depending on the field, value can be any type
+   *
+   */
+  // eslint-disable-next-line react/forbid-prop-types
+  value: PropTypes.any,
   required: PropTypes.bool,
   requiredFieldMessage: PropTypes.string,
   /** A unique identifier for this field */
   name: PropTypes.string.isRequired,
-  /*
-   * CAUTION due to the onchange event fired in the form component having a default value
-   * assigned here can cause a world of hurt. Since a form field can be many different types,
-   * including a Select, Input, or even a custom built component we don't know why type of default
-   * value is required. Disabling the rule below allows the parent to pass us what it needs.
-  */
-  // eslint-disable-next-line react/require-default-props
-  value: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-    PropTypes.bool,
-  ]),
   inline: PropTypes.bool,
   size: PropTypes.string,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -59,6 +51,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  value: undefined,
   inline: false,
   required: false,
   requiredFieldMessage: 'Required field',
@@ -69,7 +62,7 @@ const defaultProps = {
   className: '',
   description: '',
   elementProps: {},
-  onChange: null,
+  onChange() {},
 };
 
 const isReactComponent = c =>
@@ -81,50 +74,6 @@ const isReactComponent = c =>
  */
 
 class FormField extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  onChange(val) {
-    const { type, onChange } = this.props;
-    // We should be able to use the onChange value from most elements (Selects, etc) but for some,
-    // we need to modify it here.
-    let value = val;
-
-    switch (type) {
-      case 'text':
-      case 'email':
-      case 'password':
-      case 'url':
-      case 'search': {
-        const { target } = val;
-        const { value: targetValue } = target;
-
-        value = targetValue;
-        break;
-      }
-      case 'number':
-        value = parseInt(val.target.value, 10);
-
-        if (Number.isNaN(value)) {
-          value = undefined;
-        }
-
-        break;
-      case 'switch':
-        value = val.target.checked;
-        break;
-      default:
-        break;
-    }
-
-    if (onChange) {
-      onChange(value);
-    }
-  }
-
   getTypeName() {
     const { type } = this.props;
     let name;
@@ -282,11 +231,7 @@ class FormField extends React.Component {
       }
     }
 
-    return (
-      <div className="rc-form-field-element" key="field-element">
-        {jsx}
-      </div>
-    );
+    return <div className="rc-form-field-element">{jsx}</div>;
   }
 
   renderContent() {

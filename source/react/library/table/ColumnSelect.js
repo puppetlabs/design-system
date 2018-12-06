@@ -41,19 +41,15 @@ class ColumnSelect extends React.Component {
   }
 
   render() {
-    const { options: optionsProp, data, disabled } = this.props;
-    const options = optionsProp.map(o => {
-      const option = o;
-
-      if (data === option.value) {
-        option.selected = true;
-      }
-
-      return option;
-    });
+    const { options, data, disabled } = this.props;
 
     return (
-      <Select options={options} onSelect={this.onChange} disabled={disabled} />
+      <Select
+        options={options}
+        value={data}
+        onChange={this.onChange}
+        disabled={disabled}
+      />
     );
   }
 }

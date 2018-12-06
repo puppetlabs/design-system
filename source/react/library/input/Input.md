@@ -43,7 +43,7 @@ Just as with native inputs, the Input component should typically be used as a "c
 <Input
   value={state.value}
   placeholder="This value is tracked by react state"
-  onChange={e => setState({ value: e.target.value })}
+  onChange={value => setState({ value })}
 />
 ```
 

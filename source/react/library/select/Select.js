@@ -25,8 +25,9 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   /** Form elements come in two standard sizes */
   size: formSize,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
   autoOpen: PropTypes.bool,
-  onSelect: PropTypes.func,
+  onChange: PropTypes.func,
   options: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
   ),
@@ -40,11 +41,11 @@ const propTypes = {
   disablePortal: PropTypes.bool,
   noResultsLabel: PropTypes.string,
   popoverClassName: PropTypes.string,
-  selected: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
 };
 
 const defaultProps = {
   placeholder: '',
+  value: null,
   disablePortal: false,
   clearable: false,
   typeahead: true,
@@ -52,12 +53,11 @@ const defaultProps = {
   required: false,
   multiple: false,
   autoOpen: false,
-  onSelect: null,
+  onChange() {},
   className: '',
   size: 'medium',
   options: [],
   noResultsLabel: 'No results found',
-  selected: null,
   popoverClassName: '',
 };
 
@@ -108,12 +108,12 @@ const formatOptions = options => {
   });
 };
 
-const selectOptions = (selected, options) => {
+const selectOptions = (value, options) => {
   let newOptions = options;
 
-  // If a selected prop is set then override any selected key values on the options provided
-  if (selected) {
-    let selectedArray = Array.isArray(selected) ? selected : [selected];
+  // If a value prop is set then override any selected key values on the options provided
+  if (value) {
+    let selectedArray = Array.isArray(value) ? value : [value];
 
     selectedArray = selectedArray.map(s => (s.value ? s.value : s));
 
@@ -176,10 +176,9 @@ class Select extends React.Component {
     super(props);
 
     const formattedOptions = formatOptions(props.options);
-    const selected = selectOptions(props.selected, formattedOptions);
+    const selected = selectOptions(props.value, formattedOptions);
 
     this.state = {
-      pendingBackDelete: false,
       inputValue: undefined,
       focusedId: null,
       open: false,
@@ -209,7 +208,7 @@ class Select extends React.Component {
 
   componentWillReceiveProps(newProps) {
     const formattedOptions = formatOptions(newProps.options);
-    const selected = selectOptions(newProps.selected, formattedOptions);
+    const selected = selectOptions(newProps.value, formattedOptions);
 
     this.setState({ selected });
   }
@@ -226,17 +225,15 @@ class Select extends React.Component {
     }
   }
 
-  onChange(selected, option) {
-    const { multiple, onSelect } = this.props;
-    let selection = selected;
+  onChange(selected) {
+    const { multiple, onChange } = this.props;
+    let selection = selected.map(s => s.value);
 
     if (!multiple) {
       [selection] = selected;
     }
 
-    if (onSelect) {
-      onSelect(selection, option);
-    }
+    onChange(selection);
   }
 
   onClear(e) {
@@ -247,7 +244,7 @@ class Select extends React.Component {
     this.onChange([]);
 
     this.clearInput();
-    this.setState({ open: false, pendingBackDelete: false }, this.close);
+    this.setState({ open: false }, this.close);
   }
 
   onRemove(optionId) {
@@ -352,7 +349,7 @@ class Select extends React.Component {
       this.input.focus();
     }
 
-    this.onChange(newState.selected || selected, option);
+    this.onChange(newState.selected || selected);
 
     this.setState(newState);
   }
@@ -368,7 +365,6 @@ class Select extends React.Component {
     }
 
     const newState = {
-      pendingBackDelete: false,
       inputValue,
     };
 
@@ -466,8 +462,6 @@ class Select extends React.Component {
   close() {
     this.popover.close();
     this.input.blur();
-
-    this.setState({ pendingBackDelete: false });
   }
 
   renderMenuList() {
@@ -555,7 +549,7 @@ class Select extends React.Component {
 
   renderContent() {
     const { multiple, size } = this.props;
-    const { selected: selectedState, pendingBackDelete } = this.state;
+    const { selected: selectedState } = this.state;
     const input = this.renderInput();
     let selected = [];
 
@@ -566,7 +560,7 @@ class Select extends React.Component {
         <SelectItem
           onRemove={() => this.onRemove(option.id)}
           key={`select-item-${option.id}`}
-          highlighted={pendingBackDelete && index === selectedCount - 1}
+          highlighted={index === selectedCount - 1}
           value={option.label}
           size={size}
         />
