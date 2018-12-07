@@ -35,6 +35,7 @@ const Switch = ({
   style,
   inputRef,
   onChange,
+  type,
   ...otherProps
 }) => (
   <div

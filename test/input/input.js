@@ -66,7 +66,7 @@ describe('<Input />', () => {
 
   it('propagates all additional props to input element', () => {
     const extraProps = {
-      onChange() {},
+      onFocus() {},
       onInput() {},
     };
 

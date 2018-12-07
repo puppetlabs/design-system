@@ -23,7 +23,7 @@ describe('<Form />', () => {
       </Form>,
     );
 
-    expect(Object.keys(wrapper.find('.test-child').props())).to.eql([
+    expect(wrapper.find('.test-child')).to.have.props([
       'type',
       'name',
       'className',
@@ -35,7 +35,6 @@ describe('<Form />', () => {
       'label',
       'tooltip',
       'description',
-      'elementProps',
       'onChange',
       'value',
     ]);

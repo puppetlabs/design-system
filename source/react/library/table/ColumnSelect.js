@@ -3,6 +3,7 @@ import React from 'react';
 import Select from '../select/Select';
 
 const propTypes = {
+  name: PropTypes.string.isRequired,
   data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
   column: PropTypes.string,
@@ -41,10 +42,11 @@ class ColumnSelect extends React.Component {
   }
 
   render() {
-    const { options, data, disabled } = this.props;
+    const { name, options, data, disabled } = this.props;
 
     return (
       <Select
+        name={name}
         options={options}
         value={data}
         onChange={this.onChange}

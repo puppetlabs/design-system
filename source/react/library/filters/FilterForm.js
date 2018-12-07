@@ -127,12 +127,12 @@ class FilterForm extends React.Component {
 
     switch (field) {
       case 'filterField':
-        newState.filter.field = value.id;
+        newState.filter.field = value;
         break;
       case 'filterOperator':
-        newState.filter.op = value.id;
+        newState.filter.op = value;
 
-        if (isValueless(value.id, operators)) {
+        if (isValueless(value, operators)) {
           delete newState.filter.value;
         }
 
@@ -211,7 +211,7 @@ class FilterForm extends React.Component {
           name="filterValue"
           label={strings.filterValue}
           value={value}
-          elementProps={{ placeholder: strings.filterValuePlaceholder }}
+          placeholder={strings.filterValuePlaceholder}
         />
       );
     }
@@ -248,21 +248,17 @@ class FilterForm extends React.Component {
           type="select"
           name="filterField"
           label={strings.filterField}
-          elementProps={{
-            disablePortal: true,
-            options: fields,
-            placeholder: strings.filterFieldPlaceholder,
-          }}
+          disablePortal
+          options={fields}
+          placeholder={strings.filterFieldPlaceholder}
         />
         <Form.Field
           type="select"
           name="filterOperator"
           label={strings.filterOperator}
-          elementProps={{
-            disablePortal: true,
-            options: operators,
-            placeholder: strings.filterOperatorPlaceholder,
-          }}
+          disablePortal
+          options={operators}
+          placeholder={strings.filterOperatorPlaceholder}
         />
         {valueField}
         {removableField}

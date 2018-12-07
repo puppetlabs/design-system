@@ -225,15 +225,15 @@ class Select extends React.Component {
     }
   }
 
-  onChange(selected) {
+  onChange(selected, changed) {
     const { multiple, onChange } = this.props;
     let selection = selected.map(s => s.value);
 
     if (!multiple) {
-      [selection] = selected;
+      [selection] = selection;
     }
 
-    onChange(selection);
+    onChange(selection, changed);
   }
 
   onClear(e) {
@@ -349,13 +349,13 @@ class Select extends React.Component {
       this.input.focus();
     }
 
-    this.onChange(newState.selected || selected);
+    this.onChange(newState.selected || selected, option);
 
     this.setState(newState);
   }
 
-  onInputChange(e) {
-    let inputValue = e.target.value;
+  onInputChange(value) {
+    let inputValue = value;
     const { multiple } = this.props;
 
     // Clear the full inputValue out for multiselects to allow user to use backspace to delete

@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import clone from 'clone';
 import classnames from 'classnames';
 
 import { TooltipHoverArea } from '../tooltips/Tooltip';
@@ -25,15 +24,13 @@ const propTypes = {
     PropTypes.oneOf(supportedTypes),
     PropTypes.element,
   ]).isRequired,
-  /* Depending on the field, value can be any type
-   *
-   */
+  /** A unique identifier for this field */
+  name: PropTypes.string.isRequired,
+  /* Depending on the field, value can be any type */
   // eslint-disable-next-line react/forbid-prop-types
   value: PropTypes.any,
   required: PropTypes.bool,
   requiredFieldMessage: PropTypes.string,
-  /** A unique identifier for this field */
-  name: PropTypes.string.isRequired,
   inline: PropTypes.bool,
   size: PropTypes.string,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -46,8 +43,6 @@ const propTypes = {
   className: PropTypes.string,
   /** Expanded explainer for the field */
   description: PropTypes.string,
-  /** Additional props to pass to the underlying form element */
-  elementProps: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -61,7 +56,6 @@ const defaultProps = {
   tooltip: null,
   className: '',
   description: '',
-  elementProps: {},
   onChange() {},
 };
 
@@ -69,6 +63,22 @@ const isReactComponent = c =>
   (c.prototype === 'object' && c.prototype.isReactComponent) ||
   typeof c === 'function';
 
+const mapTypeToElement = type => {
+  if (isReactComponent(type)) {
+    return type;
+  }
+
+  switch (type) {
+    case 'checkbox':
+      return Checkbox;
+    case 'switch':
+      return Switch;
+    case 'select':
+      return Select;
+    default:
+      return Input;
+  }
+};
 /**
  * `FormField`s are meant to be rendered as children either within a `Form` or a `FormSection`.
  */
@@ -127,111 +137,22 @@ class FormField extends React.Component {
 
   renderElement() {
     const {
-      elementProps,
+      inline,
+      label,
+      tooltip,
+      requiredFieldMessage,
+      description,
       type,
-      name,
-      size,
-      value: valueProp,
-      required,
+      ...otherProps
     } = this.props;
-    let jsx = null;
-    let value;
 
-    if (isReactComponent(type)) {
-      const props = Object.assign(clone(this.props), elementProps);
+    const Element = mapTypeToElement(type);
 
-      jsx = React.createElement(
-        type,
-        Object.assign(
-          {
-            name,
-            size,
-            value: valueProp,
-            onChange: this.onChange,
-          },
-          props,
-        ),
-      );
-    } else {
-      switch (type) {
-        case 'select':
-          jsx = (
-            <Select
-              name={name}
-              size={size}
-              onSelect={this.onChange}
-              selected={valueProp}
-              {...elementProps}
-            />
-          );
-
-          break;
-        case 'input':
-        case 'text':
-        case 'email':
-        case 'password':
-        case 'url':
-        case 'search':
-          value = '';
-
-          if (typeof valueProp === 'string') {
-            value = valueProp;
-          }
-
-          jsx = (
-            <Input
-              name={name}
-              required={required}
-              type={type === 'input' ? undefined : type}
-              size={size}
-              onChange={this.onChange}
-              value={value}
-              {...elementProps}
-            />
-          );
-          break;
-        case 'number':
-          jsx = (
-            <Input
-              type="number"
-              required={required}
-              name={name}
-              size={size}
-              onChange={this.onChange}
-              value={valueProp || ''}
-              {...elementProps}
-            />
-          );
-          break;
-        case 'switch':
-          jsx = (
-            <Switch
-              name={name}
-              size={size}
-              onChange={this.onChange}
-              checked={!!valueProp}
-              {...elementProps}
-            />
-          );
-          break;
-        case 'checkbox':
-          jsx = (
-            <Checkbox
-              name={name}
-              size={size}
-              onChange={this.onChange}
-              checked={!!valueProp}
-              required={required}
-              {...elementProps}
-            />
-          );
-          break;
-        default:
-          break;
-      }
-    }
-
-    return <div className="rc-form-field-element">{jsx}</div>;
+    return (
+      <div className="rc-form-field-element" key="field-element">
+        <Element type={type} {...otherProps} />
+      </div>
+    );
   }
 
   renderContent() {

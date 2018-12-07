@@ -7,26 +7,27 @@ const movieOptions = [
 
 <Form>
   <Form.Field
-    type="input"
+    type="text"
     name="firstName"
     label="First name"
-    elementProps={ { placeholder: 'Enter your first name...' } }
+    value=""
+    placeholder="Enter your first name..."
     description="Please enter your first name"
   />
   <Form.Field
-    type="input"
+    type="text"
     name="lastName"
     label="Last name"
-    value={ true }
-    elementProps={ { placeholder: 'Enter your first name...' } }
+    value=""
+    placeholder="Enter your first name..."
     description="Please enter your last name"
   />
   <Form.Field
     type="password"
     name="password"
     label="Password"
-    value={ true }
-    elementProps={ { placeholder: 'Enter your password...' } }
+    value=""
+    placeholder="Enter your password..."
     description="Please enter your password"
   />
   <Form.Field
@@ -34,7 +35,8 @@ const movieOptions = [
     type="select"
     name="favoriteMovie"
     label="favorite movie"
-    elementProps={ { options: movieOptions } }
+    options={movieOptions}
+    value=""
     description="What is your favorite movie?"
   />
   <Form.Field
@@ -42,9 +44,9 @@ const movieOptions = [
     type="checkbox"
     name="notARobot"
     label="Not a robot"
+    value={true}
     description="Are you a human?"
     tooltip="We only allow real people to sign up. No robots, yet."
-    value={ true }
   />
 </Form>
 ```
@@ -59,7 +61,7 @@ const errors = {
 
 <Form errors={ errors }>
   <Form.Field
-    type="input"
+    type="text"
     name="name"
     label="name"
     value="John"
@@ -67,7 +69,7 @@ const errors = {
   />
   <Form.Field
     inline
-    type="input"
+    type="number"
     name="age"
     label="age"
     value={ 5 }
@@ -91,7 +93,8 @@ const options = [
     name="state"
     label="State"
     description="Select a state"
-    elementProps={ { options } }
+    options={options}
+    value=""
   />
 </Form>
 ```
@@ -102,7 +105,7 @@ const options = [
 const yAxisFlyout = (
   <Form.Flyout>
     <Form.Field
-      type="input"
+      type="text"
       name="alias"
       label="alias"
       value="My fun alias"
@@ -113,26 +116,29 @@ const yAxisFlyout = (
 <Form>
   <Form.Field
     key="form-section-1"
-    type="input"
+    type="text"
     name="title"
     label="title"
+    value=""
   />
   <Form.Section title="X-Axis" tooltip="Edit the X Axis here" key="form-section-2">
     <Form.Field
-      type="input"
+      type="text"
       name="xAxisDimensions"
       value="my dimension"
       label="dimensions"
+      value=""
     />
     <Form.Field
-      type="input"
+      type="text"
       name="xAxisMetrics"
       label="metrics"
+      value=""
     />
   </Form.Section>
   <Form.Section title="Y-Axis" flyout={ yAxisFlyout } key="form-section-3">
     <Form.Field
-      type="input"
+      type="text"
       name="yAxisMetrics"
       label="metrics"
     />
@@ -170,18 +176,20 @@ const validator = (values) => {
   onSubmit={ (values) => { alert(`submitted ${JSON.stringify(values)}`) } }
 >
   <Form.Field
-    type="input"
+    type="text"
     name="firstName"
     label="First name"
     placeholder="Enter your first name..."
     description="Please enter your first name"
+    value=""
   />
   <Form.Field
-    type="input"
+    type="text"
     name="lastName"
     label="Last name"
     placeholder="Enter your last name..."
     description="Please enter your last name"
+    value=""
   />
   <Form.Field
     name="cheese"
@@ -199,18 +207,18 @@ Default actions are on the right
 ```
 <Form submittable cancellable>
   <Form.Field
-    type="input"
+    type="text"
     name="firstName"
     label="First name"
-    elementProps={ { placeholder: 'Enter your first name...' } }
+    placeholder="Enter your first name..."
     description="Please enter your first name"
   />
   <Form.Field
-    type="input"
+    type="text"
     name="lastName"
     label="Last name"
-    value={ true }
-    elementProps={ { placeholder: 'Enter your first name...' } }
+    value=""
+    placeholder="Enter your first name..."
     description="Please enter your last name"
   />
 </Form>
@@ -221,18 +229,18 @@ Actions to the left with actionsPosition
 ```
 <Form submittable cancellable actionsPosition="left">
   <Form.Field
-    type="input"
+    type="text"
     name="firstName"
     label="First name"
-    elementProps={ { placeholder: 'Enter your first name...' } }
+    options="Enter your first name..."
     description="Please enter your first name"
   />
   <Form.Field
-    type="input"
+    type="text"
     name="lastName"
     label="Last name"
-    value={ true }
-    elementProps={ { placeholder: 'Enter your first name...' } }
+    value=""
+    options="Enter your first name..."
     description="Please enter your last name"
   />
 </Form>

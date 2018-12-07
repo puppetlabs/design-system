@@ -38,6 +38,7 @@ const Checkbox = ({
   style,
   inputRef,
   onChange,
+  type,
   ...otherProps
 }) => (
   <div className={classNames('rc-checkbox-container', className)} style={style}>
