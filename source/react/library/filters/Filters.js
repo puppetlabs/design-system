@@ -53,6 +53,7 @@ const propTypes = {
 
 const defaultStrings = {
   ...Form.defaultProps.strings,
+  filterSubmit: 'Add',
 };
 
 const defaultProps = {
@@ -181,11 +182,11 @@ class Filters extends React.Component {
 
   renderAction() {
     const { editing, adding } = this.state;
-    const { strings, addCTA } = this.props;
+    const { strings, addCTA, filters } = this.props;
     const ctaLabel = strings.addCTA || addCTA;
     let jsx;
 
-    if (!editing && !adding) {
+    if (!editing && !adding && filters.length) {
       jsx = <Button simple icon="plus" label={ctaLabel} onClick={this.onAdd} />;
     }
 
@@ -193,11 +194,17 @@ class Filters extends React.Component {
   }
 
   renderForm() {
-    const { removableToggle, fields, operators, strings } = this.props;
+    const { removableToggle, fields, operators, strings, filters } = this.props;
     const { filter } = this.state;
+    let cancellable = true;
+
+    if (!filters.length) {
+      cancellable = false;
+    }
 
     return (
       <Form
+        cancellable={cancellable}
         removable={removableToggle}
         fields={fields}
         filter={filter}
@@ -211,11 +218,12 @@ class Filters extends React.Component {
 
   render() {
     const { adding, editing } = this.state;
+    const { filters: rawFilters } = this.props;
     const action = this.renderAction();
     let filters;
     let form;
 
-    if (adding || editing) {
+    if (adding || editing || !rawFilters.length) {
       form = this.renderForm();
     } else {
       filters = this.renderFilters();

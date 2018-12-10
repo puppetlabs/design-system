@@ -14,6 +14,7 @@ const propTypes = {
   removable: PropTypes.bool,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
+  cancellable: PropTypes.bool,
   fields: PropTypes.arrayOf(PropTypes.string),
   /** Defaults to the standard set as defined in constants. */
   operators: PropTypes.arrayOf(PropTypes.object),
@@ -63,6 +64,7 @@ const defaultProps = {
   actionsPosition: 'right',
   operators: filterOperators,
   strings: defaultStrings,
+  cancellable: true,
 };
 
 const isValueless = (op, operators) => {
@@ -220,14 +222,13 @@ class FilterForm extends React.Component {
     const operators = this.getOperators();
     const fields = this.getFields();
 
-    const { strings, size, actionsPosition } = this.props;
+    const { strings, size, actionsPosition, cancellable } = this.props;
 
     return (
       <Form
         submittable
-        cancellable
+        cancellable={cancellable}
         onChange={this.onUpdate}
-        onCancel={this.onCancel}
         onSubmit={this.onSubmit}
         size={size}
         cancelLabel={strings.filterCancel}
