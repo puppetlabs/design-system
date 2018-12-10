@@ -8,6 +8,7 @@ import Input from '../../source/react/library/input/Input';
 describe('<FormField />', () => {
   const defaultProps = {
     type: 'text',
+    label: 'testLabel',
     onChange: () => {},
     name: 'testField',
   };
@@ -16,17 +17,6 @@ describe('<FormField />', () => {
     const wrapper = shallow(<FormField {...defaultProps} />);
 
     expect(wrapper.length).to.eql(1);
-  });
-
-  it('should render the label with a tooltip when one is provided', () => {
-    const wrapper = shallow(
-      <FormField {...defaultProps} label="label boii" tooltip="hello world" />,
-    );
-
-    expect(wrapper.find('TooltipHoverArea').length).to.eql(1);
-    expect(wrapper.find('TooltipHoverArea').prop('tooltip')).to.eql(
-      'hello world',
-    );
   });
 
   it('Should render an input element for all supported standard input types', () => {

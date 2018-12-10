@@ -3,6 +3,7 @@ import React from 'react';
 import classNames from 'classnames';
 
 import Icon from '../icon/Icon';
+import Text from '../text/Text';
 
 const propTypes = {
   /** Name of the input */
@@ -36,35 +37,41 @@ const Switch = ({
   inputRef,
   onChange,
   type,
+  label,
   ...otherProps
 }) => (
-  <div
-    className={classNames(
-      'rc-switch-container',
-      { 'rc-switch-error': error },
-      className,
-    )}
+  <Text
+    as="label"
+    htmlFor={name}
+    className={classNames('rc-switch-input', className)}
     style={style}
   >
-    <input
-      type="checkbox"
-      name={name}
-      id={name}
-      checked={value}
-      ref={inputRef}
-      className="rc-switch-checkbox"
-      onChange={e => onChange(e.target.checked, e)}
-      {...otherProps}
-    />
-    <div className="rc-switch-label">
-      <span className="rc-switch-label-on">
-        <Icon width="12px" height="12px" type="checkmark" />
-      </span>
-      <span className="rc-switch-label-off">
-        <Icon width="12px" height="12px" type="close" />
-      </span>
+    <div
+      className={classNames('rc-switch-container', {
+        'rc-switch-error': error,
+      })}
+    >
+      <input
+        type="checkbox"
+        name={name}
+        id={name}
+        checked={value}
+        ref={inputRef}
+        className="rc-switch-checkbox"
+        onChange={e => onChange(e.target.checked, e)}
+        {...otherProps}
+      />
+      <div className="rc-switch-label">
+        <span className="rc-switch-label-on">
+          <Icon width="12px" height="12px" type="checkmark" />
+        </span>
+        <span className="rc-switch-label-off">
+          <Icon width="12px" height="12px" type="close" />
+        </span>
+      </div>
     </div>
-  </div>
+    {label}
+  </Text>
 );
 
 Switch.propTypes = propTypes;

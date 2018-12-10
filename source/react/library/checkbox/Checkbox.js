@@ -3,10 +3,13 @@ import React from 'react';
 import classNames from 'classnames';
 
 import Icon from '../icon/Icon';
+import Text from '../text/Text';
 
 const propTypes = {
   /** Name of the input */
   name: PropTypes.string.isRequired,
+  /** Human friendly label */
+  label: PropTypes.string.isRequired,
   /** Is the input checked? */
   value: PropTypes.bool,
   /** Is the input disabled */
@@ -33,29 +36,40 @@ const defaultProps = {
 const Checkbox = ({
   name,
   value,
+  label,
   error,
   className,
   style,
   inputRef,
   onChange,
+  size,
   type,
   ...otherProps
 }) => (
-  <div className={classNames('rc-checkbox-container', className)} style={style}>
-    <input
-      type="checkbox"
-      id={name}
-      name={name}
-      checked={value}
-      ref={inputRef}
-      className={classNames('rc-checkbox', {
-        'rc-checkbox-error': error,
-      })}
-      onChange={e => onChange(e.target.checked, e)}
-      {...otherProps}
-    />
-    <Icon type="check" width="16px" height="16px" />
-  </div>
+  <Text
+    as="label"
+    size="small"
+    htmlFor={name}
+    className={classNames('rc-checkbox-input', className)}
+    style={style}
+  >
+    <div className="rc-checkbox-container">
+      <input
+        type="checkbox"
+        id={name}
+        name={name}
+        checked={value}
+        ref={inputRef}
+        className={classNames('rc-checkbox', {
+          'rc-checkbox-error': error,
+        })}
+        onChange={e => onChange(e.target.checked, e)}
+        {...otherProps}
+      />
+      <Icon type="check" width="16px" height="16px" />
+    </div>
+    {label}
+  </Text>
 );
 
 Checkbox.propTypes = propTypes;

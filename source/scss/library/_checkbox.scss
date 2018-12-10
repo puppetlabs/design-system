@@ -1,5 +1,12 @@
+.rc-checkbox-input {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
 .rc-checkbox-container {
-  display: inline-block;
+  height: 16px;
+  margin-right: 10px;
   position: relative;
 }
 
@@ -24,9 +31,9 @@
   animation: 200ms 1 ease-in rc-zoom-in;
   display: none;
   height: 16px;
+  left: 2px;
   pointer-events: none;
   position: absolute;
-  right: -2px;
   top: -1px;
   width: 16px;
 }

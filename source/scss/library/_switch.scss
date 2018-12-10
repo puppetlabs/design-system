@@ -1,5 +1,13 @@
+.rc-switch-input {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
 .rc-switch-container {
   display: inline-block;
+  height: 21px;
+  margin-right: 10px;
   position: relative;
 }
 

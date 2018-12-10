@@ -6,14 +6,14 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   className: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'tiny']),
+  size: PropTypes.oneOf(['medium', 'small', 'tiny']),
   color: PropTypes.oneOf(['subtle', 'medium', 'danger', 'warning', 'success']),
 };
 
 const defaultProps = {
   as: 'div',
   className: '',
-  size: null,
+  size: 'medium',
   color: null,
 };
 
@@ -25,7 +25,7 @@ const Text = ({ as, size, color, children, className, ...other }) => {
       className={classNames(
         'rc-text',
         {
-          [`rc-text-${size}`]: size,
+          [`rc-text-size-${size}`]: size,
           [`rc-text-${color}`]: color,
         },
         className,

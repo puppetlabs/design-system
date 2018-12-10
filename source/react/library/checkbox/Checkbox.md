@@ -4,12 +4,12 @@ Design specification: [http://styleguide.puppetlabs.net/Containers.html](http://
 
 ### Basic use
 ```
-const exampleStyle = { marginRight: 10 };
+const exampleStyle = { marginRight: 10, marginBottom: 2 };
 
 <div>
-  <Checkbox style={exampleStyle}/>
-  <Checkbox style={exampleStyle} checked />
-  <Checkbox style={exampleStyle} checked disabled />
+  <Checkbox name="checkbox-ex-unchecked" label="Unchecked" style={exampleStyle}/>
+  <Checkbox name="checkbox-ex-checked" label="Checked" style={exampleStyle} checked />
+  <Checkbox name="checkbox-ex-disabled" label="Disabled" style={exampleStyle} checked disabled />
 </div>
 ```
 
@@ -17,7 +17,9 @@ const exampleStyle = { marginRight: 10 };
 
 ```
 <Checkbox
-  checked={state.checked}
-  onChange={e => setState({ checked: e.target.checked })}
+  name="checkbox-ex-event-handling"
+  label="Checkbox label is also clickable"
+  value={state.checked}
+  onChange={checked => setState({ checked })}
 />
 ```
