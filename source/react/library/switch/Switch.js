@@ -8,6 +8,8 @@ import Text from '../text/Text';
 const propTypes = {
   /** Name of the input */
   name: PropTypes.string.isRequired,
+  /** Name of the input */
+  label: PropTypes.string.isRequired,
   /** Is the input checked? */
   value: PropTypes.bool,
   /** Is the input disabled */
