@@ -10,17 +10,19 @@
 
   .reflect-charts-gauge-delta {
     alignment-baseline: middle;
+    // TODO: Replace with $puppet-n700 once we have react-components variables here
+    fill: #5d6f7a;
     font-weight: bold;
     text-anchor: middle;
   }
 
   .reflect-charts-gauge-delta-up {
-    // TODO: replace $puppet-g700 once we have react-components variables here
+    // TODO: replace with $puppet-g700 once we have react-components variables here
     fill: #057a34;
   }
 
   .reflect-charts-gauge-delta-down {
-    // TODO: replace $puppet-r500 once we have react-components variables here
+    // TODO: replace with $puppet-r500 once we have react-components variables here
     fill: #c43118;
   }
 }

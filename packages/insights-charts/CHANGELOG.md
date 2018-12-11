@@ -1,3 +1,7 @@
+# 0.13.6
+
+* Update gauge comparison colors
+
 # 0.13.5
 
 * Upgrading to webpack 4
