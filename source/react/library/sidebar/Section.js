@@ -2,13 +2,17 @@ import PropTypes from 'prop-types';
 import React, { Fragment } from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
+import Badge from '../badge/Badge';
 import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 import { getKey } from '../../helpers/statics';
 import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
   children: PropTypes.node,
+  /** Section title that renders as the link text */
   title: PropTypes.string,
+  /** Section label that renders above section title */
+  label: PropTypes.node,
   /** Easy prop for setting active section */
   active: PropTypes.bool,
   /** Name of active section */
@@ -19,10 +23,8 @@ const propTypes = {
   onSectionClick: PropTypes.func,
   onClick: PropTypes.func,
   icon: PropTypes.string,
-  /** If subsections exist, is section open or closed? */
+  /** If subsection exist, is section open or closed? */
   open: PropTypes.bool,
-  /** Render section label */
-  label: PropTypes.node,
   /** Is the sidebar minimized? */
   minimized: PropTypes.bool,
 };
@@ -81,21 +83,18 @@ class Section extends React.Component {
   onClick(e) {
     e.preventDefault();
     const { children, title, onSectionClick, onClick, minimized } = this.props;
-    const { open, selectedSubItem } = this.state;
+    const { open } = this.state;
     const newState = {};
 
     const isAccordion = !!children;
     onSectionClick(title, isAccordion);
 
-    if (selectedSubItem) {
-      // You cannot minimize an active section
-      newState.open = open;
-    } else if (isAccordion) {
-      // Otherwise, toggle open state if has children
+    // If section has children, enable toggle
+    if (isAccordion) {
       newState.open = !open;
     }
 
-    // If clicking on a toggled accordion, always force open
+    // If sidebar is minimized and user clicks an accordion section, always force section to open
     if (minimized && isAccordion) {
       newState.open = true;
     }
@@ -120,13 +119,22 @@ class Section extends React.Component {
     });
   }
 
-  renderSubsections() {
+  getSubsectionLength() {
+    const { children } = this.props;
+    const { children: subsection } = children.props;
+
+    return React.Children.toArray(subsection).length;
+  }
+
+  renderSubsection() {
     const { selectedSubItem } = this.state;
     const { children } = this.props;
 
     return React.Children.map(children, (subsection, idx) => {
+      const key = getKey(subsection, idx);
+
       const props = {
-        key: getKey(subsection, idx),
+        key,
         onSubItemClick: this.onSubItemClick,
         selectedItem: selectedSubItem,
       };
@@ -137,12 +145,11 @@ class Section extends React.Component {
 
   render() {
     const { active, open, selectedSubItem } = this.state;
-
     const {
       title,
       icon: iconProp,
-      className,
       children,
+      className,
       minimized,
     } = this.props;
 
@@ -155,23 +162,33 @@ class Section extends React.Component {
       className,
     );
 
-    let subsections = [];
-
-    if (open && children) {
-      subsections = this.renderSubsections();
-    }
-
-    if (subsections && subsections.length) {
-      subsections = <div className="rc-sidebar-items">{subsections}</div>;
-    }
-
     let karet;
+    let badge;
+    let subsection;
+    let subsectionLength;
+
     if (children) {
+      subsectionLength = this.getSubsectionLength();
+
       karet = (
         <span className="rc-sidebar-item-karet">
           <Icon width="8px" height="8px" type="dropdown" />
         </span>
       );
+
+      badge = (
+        <span className="rc-sidebar-item-badge">
+          <Badge type="pill" color="neutral">
+            {subsectionLength}
+          </Badge>
+        </span>
+      );
+    }
+
+    if (open && subsectionLength) {
+      subsection = this.renderSubsection();
+
+      subsection = <div className="rc-sidebar-items">{subsection}</div>;
     }
 
     let icon;
@@ -213,6 +230,7 @@ class Section extends React.Component {
         <div className="rc-sidebar-item-content">
           {icon}
           <span className="rc-sidebar-item-title">{title}</span>
+          {badge}
           {karet}
         </div>
       </a>
@@ -224,7 +242,7 @@ class Section extends React.Component {
         {label}
         <li className={classNames}>
           {link}
-          {subsections}
+          {subsection}
         </li>
       </Fragment>
     );

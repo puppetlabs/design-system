@@ -216,6 +216,10 @@
   margin-left: $puppet-sidebar-item-karet-margin;
 }
 
+.rc-sidebar-item-badge {
+  margin-left: $puppet-sidebar-item-karet-margin;
+}
+
 // Selected Item
 .rc-sidebar-item-selected > .rc-sidebar-item-link,
 .rc-sidebar-item-selected:hover  > .rc-sidebar-item-link {
@@ -297,8 +301,17 @@
 }
 
 .rc-sidebar-view-more-item {
+  position: relative;
+
   .rc-sidebar-item-title {
     color: $puppet-sidebar-item-color-hover;
+  }
+
+  .rc-sidebar-item-title::before {
+    color: $puppet-sidebar-dark-item-icon-fill-active;
+    content: '»';
+    left: -12px;
+    position: absolute;
   }
 }
 
