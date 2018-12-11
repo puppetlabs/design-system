@@ -161,10 +161,12 @@ class Section extends React.Component {
       subsections = this.renderSubsections();
     }
 
-    let karet;
     if (subsections && subsections.length) {
       subsections = <div className="rc-sidebar-items">{subsections}</div>;
+    }
 
+    let karet;
+    if (children) {
       karet = (
         <span className="rc-sidebar-item-karet">
           <Icon width="8px" height="8px" type="dropdown" />
