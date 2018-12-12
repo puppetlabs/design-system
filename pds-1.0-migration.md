@@ -23,11 +23,11 @@ The goal of our component update process is to align the design primary source (
       * Do the design specifications cover all states? (focus, active, error, etc)
       * Do the design specifications cover all variants and uses of the component in current code?
 
-    **Result** A ticket in JIRA specifiying the design updates needed in order to finalize the code.
+    **Result** A ticket in JIRA specifying the design updates needed in order to finalize the code.
 2. [] Component API is finalized and consistent with design specifications
   * Audit current code.
   * Identify prop options that can be removed.
-  * In limited and worthwhile cases, use your judgement to idenfity opportunities to clarify component APIs to make the intended use more clear.
+  * In limited and worthwhile cases, use your judgement to identify opportunities to clarify component APIs to make the intended use more clear.
 4. [] Component API is consistent with common patterns (below) and relevant patterns established in other components
   * This will need to evolve as we get further along. We should be specifying common props such as size and color in a consistent manner. Use your judgement
 5. [] Easy accessibility updates are made
