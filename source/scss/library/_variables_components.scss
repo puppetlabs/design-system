@@ -220,16 +220,15 @@ $puppet-sidebar-toggle-height                      : 56px !default;
 
 $puppet-sidebar-bg                                 : $puppet-bg-light !default;
 $puppet-sidebar-font                               : $puppet-font-family-heading !default;
-$puppet-sidebar-padding                            : 14px 0 $puppet-sidebar-toggle-height !default; // Compensates for item margin
 $puppet-sidebar-width                              : 240px !default;
 $puppet-sidebar-minimized-width                    : 73px !default;
 
+$puppet-sidebar-level-1-padding                    : 16px 0 !default;
 
 $puppet-sidebar-logo-bg                            : $puppet-n50 !default;
 $puppet-sidebar-logo-height                        : 72px !default;
 $puppet-sidebar-logo-padding                       : 16px !default;
 $puppet-sidebar-minimized-logo-padding             : 16px 16px 16px 20px !default;
-$puppet-sidebar-logo-margin                        : -14px 0 16px !default; // based on $puppet-sidebar-padding
 
 $puppet-sidebar-divider                            : $puppet-border-subtle !default;
 $puppet-sidebar-open-divider-margin                : 15px 0 16px !default; // 15 compensates for border
