@@ -1,6 +1,6 @@
 # PDS 1.0 Component update process
 
-The goal of our component update process is to align the design primary source (the [styleguide](http://styleguide.puppetlabs.com) and accompanying sketch symbols) with the code and accompanying documentation in order to build a complete and self-consistent design system.
+The goal of our component update process is to align the design primary source (the sketch [styleguide](design/puppet-styleguide.sketch) and accompanying symbols) with the code and accompanying documentation in order to build a complete and self-consistent design system.
 
 ## General principles
 
@@ -12,7 +12,7 @@ The goal of our component update process is to align the design primary source (
 ## Component update checklist
 
 1. [] Design specifications are finalized and complete
-  * Review [styleguide.puppetlabs.com](http://styleguide.puppetlabs.com) for design guidelines on the component in question. Look for badges claiming `needs specification` or `needs design` to indicate acknowledged design deficiencies.
+  * Review [the styleguide](design/puppet-styleguide.sketch) for design guidelines on the component in question. Look for badges claiming `needs specification` or `needs design` to indicate acknowledged design deficiencies.
   * Use [the dependency helpers](https://github.com/puppetlabs/react-component-dependents) to audit current use of the component in question. Keep in mind that the scripts often give a partial answer, you will need to dig in deeper in certain places.
   * Sit down with a designer and get answers to the following questions:
 
@@ -50,7 +50,7 @@ The goal of our component update process is to align the design primary source (
  * Top-level components should accept `className` and `style` props that are propagated down to the appropriate inner element so that the component can be positioned appropriately.
  * Prefer enumerated string props over mutually exclusive boolean props. For example, prefer `<Button type="secondary" />` over `<Button secondary />`.
  * Callback props should be prefixed with `on`. For example, prefer `onClick` over `handleClick`. This makes our components consistent with native elements.
- * Callback props should be used purely as callbacks, and should not determine other behavior. For example, the `Card` component uses a `selectable` prop to turn on hover states and other conditionanl styling, and a separate `onSelect` handler for user events:
+ * Callback props should be used purely as callbacks, and should not determine other behavior. For example, the `Card` component uses a `selectable` prop to turn on hover states and other conditional styling, and a separate `onSelect` handler for user events:
 
      ```
      <Card selectable onSelect={...} />
