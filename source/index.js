@@ -32,7 +32,6 @@ import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import Tabs from './react/library/tabs/Tabs';
 import TabPanel from './react/library/tabs/TabPanel';
 import Progress from './react/library/progress/Progress';
-import SlideIn from './react/library/slideIn/SlideIn';
 import DatePicker from './react/library/datepicker/DatePicker';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 import Table from './react/library/table/Table';
@@ -86,7 +85,6 @@ export {
   ColumnSelect,
   ColumnInput,
   Accordion,
-  SlideIn,
   BlankSlate,
   DatePicker,
   Select,
