@@ -11,6 +11,7 @@ describe('<Switch />', () => {
 
   const defaultProps = {
     name: 'id',
+    label: 'label',
     checked: true,
     onChange: sinon.spy(),
   };

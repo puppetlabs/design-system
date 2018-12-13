@@ -101,7 +101,7 @@ describe('<Select />', () => {
 
       const wrapper = mount(
         <Select
-          multiple
+          type="multiselect"
           options={options}
           {...defaultProps}
           value={['Michael', 'Geoff']}

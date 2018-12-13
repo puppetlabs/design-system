@@ -23,38 +23,61 @@ import SelectItem from './SelectItem';
 const propTypes = {
   /** Input name */
   name: PropTypes.string.isRequired,
+  /** Select type. 'select' is the default single-select, where 'multiselect' allows multiple options */
+  type: PropTypes.oneOf(['select', 'multiselect']),
   /** Form elements come in two standard sizes */
   size: formSize,
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.array]),
+  /** Current value of the input. Should be a string for 'select' type and an array for 'multiline' */
+  value: (props, ...rest) => {
+    if (props.type === 'select') {
+      return PropTypes.string(props, ...rest);
+    }
+
+    return PropTypes.arrayOf(PropTypes.string)(props, ...rest);
+  },
+  /** If true the select will automatically open on mount */
   autoOpen: PropTypes.bool,
+  /** Change handler. Passed the new value */
   onChange: PropTypes.func,
+  /** Array of select options. TODO: standardize this API */
   options: PropTypes.arrayOf(
     PropTypes.oneOfType([PropTypes.string, PropTypes.shape({})]),
   ),
+  /** Is the input disabled? */
   disabled: PropTypes.bool,
+  /** Is the input required? */
   required: PropTypes.bool,
-  multiple: PropTypes.bool,
+  /** If true, the user is free to type in the input box, automatically filtering results. TODO: determine if this is still default true */
   typeahead: PropTypes.bool,
+  /** If true an 'x' icon button will render next to the input for clearing */
   clearable: PropTypes.bool,
-  className: PropTypes.string,
+  /** Input placeholder */
   placeholder: PropTypes.string,
+  /** Disables default 'portal' usage, rendering menu in normal dom structure */
   disablePortal: PropTypes.bool,
+  /** Custom user-provided className */
+  className: PropTypes.string,
+  /** Custom user-provided inline styles */
+  style: PropTypes.shape({}),
+  /** Text to render when no options are present */
   noResultsLabel: PropTypes.string,
+  /** Custom user styles for popover. TODO: Maybe remove this prop */
   popoverClassName: PropTypes.string,
 };
 
 const defaultProps = {
   placeholder: '',
   value: null,
+  type: 'select',
   disablePortal: false,
   clearable: false,
   typeahead: true,
   disabled: false,
   required: false,
-  multiple: false,
   autoOpen: false,
   onChange() {},
   className: '',
+  style: {},
   size: 'medium',
   options: [],
   noResultsLabel: 'No results found',
@@ -226,10 +249,10 @@ class Select extends React.Component {
   }
 
   onChange(selected, changed) {
-    const { multiple, onChange } = this.props;
+    const { type, onChange } = this.props;
     let selection = selected.map(s => s.value);
 
-    if (!multiple) {
+    if (type === 'select') {
       [selection] = selection;
     }
 
@@ -271,10 +294,10 @@ class Select extends React.Component {
 
   onPopoverClose() {
     const { selected, inputValue } = this.state;
-    const { multiple } = this.props;
+    const { type } = this.props;
 
     // TODO: multi-select input validation
-    if (!multiple) {
+    if (type === 'select') {
       const hasInvalidInput = inputValue && inputValue !== selected[0];
 
       // If no option is selected, clear input
@@ -325,12 +348,12 @@ class Select extends React.Component {
     };
 
     const { selected } = this.state;
-    const { clearable, multiple } = this.props;
+    const { clearable, type } = this.props;
 
     if (option.selectable || typeof option.selectable === 'undefined') {
       if (selected.map(s => s.id).indexOf(option.id) >= 0 && clearable) {
         newState.selected = selected.filter(o => o.id !== option.id);
-      } else if (multiple) {
+      } else if (type === 'multiselect') {
         newState.selected = [...selected, option];
       } else {
         newState.selected = [option];
@@ -338,14 +361,14 @@ class Select extends React.Component {
     }
 
     // We want to leave this open if we're acting like a multiselect.
-    if (!multiple) {
+    if (type === 'select') {
       newState.open = false;
 
       this.close();
     }
 
     // Focus the input again so the user can keep typing.
-    if (multiple) {
+    if (type === 'multiselect') {
       this.input.focus();
     }
 
@@ -356,11 +379,11 @@ class Select extends React.Component {
 
   onInputChange(value) {
     let inputValue = value;
-    const { multiple } = this.props;
+    const { type } = this.props;
 
     // Clear the full inputValue out for multiselects to allow user to use backspace to delete
     // existing items. TODO: Clean this up somehow.
-    if (inputValue === '' && multiple) {
+    if (inputValue === '' && type === 'multiselect') {
       inputValue = undefined;
     }
 
@@ -380,11 +403,11 @@ class Select extends React.Component {
   getInputValue() {
     let value = '';
     const { inputValue, selected } = this.state;
-    const { multiple } = this.props;
+    const { type } = this.props;
 
     if (typeof inputValue !== 'undefined') {
       value = inputValue;
-    } else if (selected.length && !multiple) {
+    } else if (selected.length && type === 'select') {
       value = selected[0].label;
     }
 
@@ -548,12 +571,12 @@ class Select extends React.Component {
   }
 
   renderContent() {
-    const { multiple, size } = this.props;
+    const { type, size } = this.props;
     const { selected: selectedState } = this.state;
     const input = this.renderInput();
     let selected = [];
 
-    if (multiple) {
+    if (type === 'multiselect') {
       const selectedCount = selectedState.length;
 
       selected = selectedState.map((option, index) => (
@@ -577,7 +600,7 @@ class Select extends React.Component {
 
   renderInput() {
     const {
-      multiple,
+      type,
       placeholder: placeholderProp,
       size,
       disabled,
@@ -587,7 +610,7 @@ class Select extends React.Component {
     const { selected } = this.state;
     let placeholder;
 
-    if (!multiple || !selected.length) {
+    if (type === 'select' || !selected.length) {
       placeholder = placeholderProp;
     }
 
@@ -617,9 +640,10 @@ class Select extends React.Component {
       popoverClassName,
       className,
       disabled,
-      multiple,
+      type,
       size,
       disablePortal,
+      style,
     } = this.props;
     const actions = this.renderActions();
     const items = this.renderContent();
@@ -637,7 +661,7 @@ class Select extends React.Component {
     );
     const classNames = classnames('rc-select', 'rc-select-popover-wrapper', {
       'rc-select-disabled': disabled,
-      'rc-select-multiple': multiple,
+      'rc-select-multiple': type === 'multiselect',
       [`rc-select-${size}`]: size,
     });
 
@@ -677,7 +701,11 @@ class Select extends React.Component {
       );
     }
 
-    return <div className={wrapperClassNames}>{jsx}</div>;
+    return (
+      <div className={wrapperClassNames} style={style}>
+        {jsx}
+      </div>
+    );
   }
 }
 
