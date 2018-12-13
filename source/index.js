@@ -19,7 +19,6 @@ import DropdownLabel from './react/library/dropdown/DropdownLabel';
 
 import Card from './react/library/card';
 import Sidebar from './react/library/sidebar/Sidebar';
-import StencilGrid from './react/library/stencils/StencilGrid';
 import Icon from './react/library/icon/Icon';
 import Tag from './react/library/tag/Tag';
 import Popover from './react/library/popover/Popover';
@@ -62,7 +61,6 @@ export {
   ButtonGroup,
   SplitButton,
   Card,
-  StencilGrid,
   Icon,
   Tag,
   Popover,
