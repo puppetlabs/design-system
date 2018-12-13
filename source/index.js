@@ -31,7 +31,6 @@ import ListItem from './react/library/list/ListItem';
 import Modal from './react/library/modals/Modal';
 import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import Tabs from './react/library/tabs/Tabs';
-import Toggle from './react/library/toggle/Toggle';
 import TabPanel from './react/library/tabs/TabPanel';
 import Progress from './react/library/progress/Progress';
 import SlideIn from './react/library/slideIn/SlideIn';
@@ -83,7 +82,6 @@ export {
   ConfirmationModal,
   Tabs,
   TabPanel,
-  Toggle,
   Progress,
   TooltipHoverArea,
   Table,
