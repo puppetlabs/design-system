@@ -245,9 +245,9 @@ $puppet-icon-fill-action-active              : $puppet-action-active !default;
 // Typography
 // ----------------------------------------------------------------------------
 $puppet-font-family                          : 'Open Sans', sans-serif !default;
-$puppet-font-family-heading                  : 'Calibre', serif !default;
-$puppet-font-family-button                   : 'Calibre', serif !default;
-$puppet-font-family-label                    : 'Calibre', serif !default;
+$puppet-font-family-heading                  : 'Calibre', sans-serif !default;
+$puppet-font-family-button                   : 'Calibre', sans-serif !default;
+$puppet-font-family-label                    : 'Calibre', sans-serif !default;
 // TODO Bring in Puppet Monospace font
 $puppet-font-family-code                     : 'Consolas', monospace !default;
 
