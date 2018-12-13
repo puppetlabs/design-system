@@ -10,21 +10,43 @@ Please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) for details on filing a
 [PDS](https://tickets.puppetlabs.com/browse/PDS) ticket, setting up your
 development environment, opening a Pull Request, and requesting reviews.
 
+## Styleguide
+
+The Puppet Styleguide is published to http://styleguide.puppetlabs.net
+
+The React components in this repo are intended to correspond to Sketch symbols in the UI library ([design/puppet-ui-library.sketch](design/puppet-ui-library.sketch)) and implementations should follow the Puppet Styleguide ([design/puppet-styleguide.sketch](design/puppet-styleguide.sketch)). (The HTML version of the Styleguide is located at [design/styleguide/index.html](design/styleguide/index.html), whose PNGs can be updated by running `./design/update-styleguide.sh`).
+
+## Component documentation
+
+Components are documented using React Styleguidist, which provides API docs alongside live editable (in-browser) React components. To view these, clone this repository, install dependencies, and run the Styleguidist server:
+
+- `git clone git@github.com:puppetlabs/react-components.git && cd react-components`
+- `npm install`
+- `npm start`
+- Open http://localhost:6060.
+
 ## Installation
 
-This library is distributed as an npm package on [Artifactory](https://confluence.puppetlabs.com/display/SRE/Artifactory+Basics).
+This library is distributed as an npm package on [Artifactory](https://confluence.puppetlabs.com/display/SRE/Artifactory+Basics). As such, you should point to the Artifactory registry for `@puppet` scoped packages by adding and committing the following to an `.npmrc` file in your project.
 
-You can install UI components with the following command:
+```sh
+echo "@puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/" >> .npmrc
+```
 
-`npm install @puppet/react-components`
+You can then install `react-components` in your project with the following command:
+
+```sh
+npm install @puppet/react-components
+```
 
 If you run into issues while installing, please double check that you're either
-on the corporate WiFI or VPN.
+on the corporate WiFi or VPN.
 
-## Consuming React Components
+## Setup
 
-React Components now utilizes Calibre and Open Sans. In order for Calibre to load you will need
-to process the react-components scss with Webpack. This has currently been tested with webpack 4 using css-loader, sass-loader, file-loader, resolve-url-loader, and mini-css-extract-plugin. The following is an example configuration for a consuming application:
+### Webpack (without Create React App)
+
+React Components utilizes Calibre and Open Sans. In order for Calibre to load, you will need to process the react-components scss with Webpack. This has currently been tested with webpack 4 using css-loader, sass-loader, file-loader, resolve-url-loader, and mini-css-extract-plugin. The following is an example configuration for a consuming application:
 
 ```javascript
 const common = {
@@ -99,12 +121,6 @@ module.exports = function override(config, env) {
 Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on
 setting up your development environment, opening a Pull Request, and requesting
 reviews.
-
-## Styleguide
-
-The Puppet Styleguide is published to http://styleguide.puppetlabs.net
-
-The React components in this repo are intended to correspond to Sketch symbols in the UI library ([design/puppet-ui-library.sketch](design/puppet-ui-library.sketch)) and implementations should follow the Puppet Styleguide ([design/puppet-styleguide.sketch](design/puppet-styleguide.sketch)). An HTML version of the Styleguide is located at [design/styleguide/index.html](design/styleguide/index.html), whose PNGs can be updated by running `./design/update-styleguide.sh`.
 
 ## FAQ
 
