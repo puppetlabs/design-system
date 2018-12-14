@@ -43,7 +43,6 @@ import Filters from './react/library/filters';
 import Checkbox from './react/library/checkbox/Checkbox';
 import Content from './react/library/content/Content';
 import Header from './react/library/header';
-import Pagenav from './react/library/pagenav';
 import Portal from './react/library/portal';
 import Grid from './react/library/grid';
 import Heading from './react/library/heading';
@@ -89,7 +88,6 @@ export {
   Checkbox,
   Content,
   Header,
-  Pagenav,
   Sidebar,
   Portal,
   Grid,
