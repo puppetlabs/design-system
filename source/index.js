@@ -37,7 +37,6 @@ import Table from './react/library/table/Table';
 import ColumnSelect from './react/library/table/ColumnSelect';
 import ColumnInput from './react/library/table/ColumnInput';
 import Accordion from './react/library/accordion';
-import BlankSlate from './react/library/blankSlate/BlankSlate';
 import Select from './react/library/select/Select';
 import Form from './react/library/form';
 import Filters from './react/library/filters';
@@ -83,7 +82,6 @@ export {
   ColumnSelect,
   ColumnInput,
   Accordion,
-  BlankSlate,
   DatePicker,
   Select,
   Form,
