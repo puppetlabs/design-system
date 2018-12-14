@@ -31,7 +31,6 @@ import Modal from './react/library/modals/Modal';
 import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import Tabs from './react/library/tabs/Tabs';
 import TabPanel from './react/library/tabs/TabPanel';
-import Progress from './react/library/progress/Progress';
 import DatePicker from './react/library/datepicker/DatePicker';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 import Table from './react/library/table/Table';
@@ -79,7 +78,6 @@ export {
   ConfirmationModal,
   Tabs,
   TabPanel,
-  Progress,
   TooltipHoverArea,
   Table,
   ColumnSelect,
