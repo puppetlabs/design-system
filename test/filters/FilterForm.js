@@ -11,12 +11,21 @@ describe('<FilterForm />', () => {
     expect(wrapper.length).to.eql(1);
   });
 
-  it('should render an enabled submit button by default', () => {
+  it('should render an enabled "add" button by default', () => {
     const wrapper = mount(<FilterForm />);
     const button = wrapper.find('Button').at(1);
 
     expect(button.prop('disabled')).to.eql(false);
-    expect(button.prop('label')).to.eql('Submit');
+    expect(button.prop('label')).to.eql('Add');
+  });
+
+  it('should render an "update" cta if filter prop is passed in', () => {
+    const filter = { 0: 'foo', 1: 'bar' };
+    const wrapper = mount(<FilterForm filter={filter} />);
+    const button = wrapper.find('Button').at(1);
+
+    expect(button.prop('disabled')).to.eql(false);
+    expect(button.prop('label')).to.eql('Update');
   });
 
   describe('overriding overridable things', () => {
