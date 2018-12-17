@@ -45,7 +45,7 @@ const defaultProps = {
   simple: false,
   options: [],
   title: '',
-  applyLabel: '',
+  applyLabel: 'Apply',
   margin: 8,
   placeholder: '',
   blank: '',
