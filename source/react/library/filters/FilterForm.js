@@ -37,8 +37,10 @@ const propTypes = {
     filterOperatorPlaceholder: PropTypes.string.isRequired,
     /* Custom label for cancel button */
     filterCancel: PropTypes.string.isRequired,
-    /* Custom label for submit button */
-    filterSubmit: PropTypes.string.isRequired,
+    /* Custom label for submit button when adding */
+    filterAdd: PropTypes.string.isRequired,
+    /* Custom label for submit button when updating */
+    filterUpdate: PropTypes.string.isRequired,
   }),
 };
 
@@ -51,7 +53,8 @@ const defaultStrings = {
   filterOperator: 'operation',
   filterOperatorPlaceholder: 'Choose an operation...',
   filterCancel: 'Cancel',
-  filterSubmit: 'Submit',
+  filterAdd: 'Add',
+  filterUpdate: 'Update',
 };
 
 const defaultProps = {
@@ -223,16 +226,22 @@ class FilterForm extends React.Component {
     const fields = this.getFields();
 
     const { strings, size, actionsPosition, cancellable } = this.props;
+    const { filter } = this.state;
+
+    const submitLabel = Object.keys(filter).length
+      ? strings.filterUpdate
+      : strings.filterAdd;
 
     return (
       <Form
         submittable
         cancellable={cancellable}
         onChange={this.onUpdate}
+        onCancel={this.onCancel}
         onSubmit={this.onSubmit}
         size={size}
         cancelLabel={strings.filterCancel}
-        submitLabel={strings.filterSubmit}
+        submitLabel={submitLabel}
         actionsPosition={actionsPosition}
         allowUnchangedSubmit
       >

@@ -53,7 +53,6 @@ const propTypes = {
 
 const defaultStrings = {
   ...Form.defaultProps.strings,
-  filterSubmit: 'Add',
 };
 
 const defaultProps = {

@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Heading from '../heading';
+import Badge from '../badge';
 
 import Icon from '../icon/Icon';
 import { TooltipHoverArea } from '../tooltips/Tooltip';
@@ -23,6 +24,8 @@ const propTypes = {
   icon: PropTypes.string,
   /** Tooltip to display on hover */
   tooltip: PropTypes.string,
+  /** Render and populate badge next to title */
+  badgeValue: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
 };
 
 const defaultProps = {
@@ -33,6 +36,7 @@ const defaultProps = {
   onOpen: () => {},
   children: null,
   tooltip: undefined,
+  badgeValue: null,
 };
 
 /**
@@ -65,7 +69,7 @@ class AccordionItem extends React.Component {
   }
 
   renderTitle() {
-    const { active, title, icon, tooltip } = this.props;
+    const { active, title, icon, tooltip, badgeValue } = this.props;
     const className = classnames('rc-accordion-item-header', {
       'rc-accordion-item-header-active': active,
     });
@@ -79,6 +83,17 @@ class AccordionItem extends React.Component {
       );
     }
 
+    let badge;
+    if (badgeValue !== null) {
+      badge = (
+        <span key="header-badge" className="rc-accordion-header-badge">
+          <Badge type="pill" color="neutral">
+            {badgeValue}
+          </Badge>
+        </span>
+      );
+    }
+
     jsx.push(
       <Heading
         as="h6"
@@ -88,6 +103,7 @@ class AccordionItem extends React.Component {
         className="rc-accordion-item-header-title"
       >
         {title}
+        {badge}
       </Heading>,
     );
 
