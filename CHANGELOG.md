@@ -1,5 +1,15 @@
+# 5.0.0-alpha.2
+
+- Fix for the management of children using react-hot-loader
+- Updated readme
+- Allow non string/number columns in tables
+- Updates to sketch library
+- Guide for updating components to 5.0
+- Deprecating the Saving, Toggle, Stencil, Slidein, Progress, BlankSlate, and Pagenav components
+
 # 5.0.0-alpha.1
-- * **breaking change**: Completely remove `Panel` component
+
+- - **breaking change**: Completely remove `Panel` component
 - Adds `elevation` prop controlling box-shadow elevation
 - **breaking change** Removes `style` prop, so that `style` can be used to pass the card inline-styles
 - Adds `secondary` card (controlled by new `type` prop)
