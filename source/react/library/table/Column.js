@@ -4,7 +4,8 @@ import React from 'react';
 
 const propTypes = {
   component: PropTypes.func,
-  data: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  // eslint-disable-next-line react/forbid-prop-types
+  data: PropTypes.any,
   rowData: PropTypes.shape({}),
 };
 
