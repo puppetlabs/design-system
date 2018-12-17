@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
+  slug: PropTypes.string,
   title: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
   onSubItemClick: PropTypes.func,
@@ -16,6 +17,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  slug: '',
   title: '',
   onSubItemClick: () => {},
   onClick: null,
@@ -50,8 +52,8 @@ class SubsectionItem extends React.Component {
   onClick(e) {
     e.preventDefault();
 
-    const { onSubItemClick, onClick, title } = this.props;
-    onSubItemClick(title);
+    const { onSubItemClick, onClick, slug } = this.props;
+    onSubItemClick(slug);
 
     if (onClick) {
       onClick();
@@ -59,8 +61,8 @@ class SubsectionItem extends React.Component {
   }
 
   render() {
-    const { title, selected, className: classProp } = this.props;
-    const active = title === selected;
+    const { title, slug, selected, className: classProp } = this.props;
+    const active = slug === selected;
     const className = classnames('rc-sidebar-item', classProp, {
       'rc-sidebar-item-selected': active,
     });

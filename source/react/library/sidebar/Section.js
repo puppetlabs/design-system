@@ -17,6 +17,8 @@ const propTypes = {
   active: PropTypes.bool,
   /** Name of active section */
   activeSection: PropTypes.string,
+  /** Name of active subsection item */
+  activeSubItem: PropTypes.string,
   /** Class name(s) to apply to section element */
   className: PropTypes.string,
   /** Transcends Sidebar to correctly set active states */
@@ -34,6 +36,7 @@ const defaultProps = {
   title: '',
   active: false,
   activeSection: null,
+  activeSubItem: null,
   className: '',
   onSectionClick: () => {},
   onClick: null,
@@ -48,9 +51,9 @@ class Section extends React.Component {
     super(props);
 
     this.state = {
-      selectedSubItem: null,
       open: props.open,
       active: props.active ? props.active : props.activeSection === props.title,
+      selectedSubItem: props.activeSubItem,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -61,13 +64,16 @@ class Section extends React.Component {
   componentWillReceiveProps(newProps) {
     const newState = { active: newProps.active };
 
-    // If new active section name is passed down, update
+    // If a new active section name is passed down, check to see if it's a match
     if (newProps.activeSection) {
       newState.active = newProps.activeSection === newProps.title;
     }
 
-    // Reset active subitems if accordion is now closed or inactive
-    if (!newProps.open || !newState.active) {
+    // If an active subitem is passed down, set it
+    if (newProps.activeSubItem) {
+      newState.selectedSubItem = newProps.activeSubItem;
+    } else if (!newProps.open || !newState.active) {
+      // Reset active subitem if section is now closed or inactive
       newState.selectedSubItem = null;
     }
 
@@ -108,13 +114,13 @@ class Section extends React.Component {
     }
   }
 
-  onSubItemClick(title) {
-    const { onSectionClick, title: sectionTitle } = this.props;
+  onSubItemClick(slug) {
+    const { onSectionClick, title } = this.props;
 
-    onSectionClick(sectionTitle);
+    onSectionClick(title);
 
     this.setState({
-      selectedSubItem: title,
+      selectedSubItem: slug,
       active: true,
     });
   }
