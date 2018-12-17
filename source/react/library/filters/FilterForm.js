@@ -225,8 +225,7 @@ class FilterForm extends React.Component {
     const operators = this.getOperators();
     const fields = this.getFields();
 
-    const { strings, size, actionsPosition, cancellable } = this.props;
-    const { filter } = this.state;
+    const { strings, size, actionsPosition, cancellable, filter } = this.props;
 
     const submitLabel = Object.keys(filter).length
       ? strings.filterUpdate
