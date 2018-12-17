@@ -134,10 +134,7 @@ class Popover extends React.Component {
     }
   }
 
-  onClick(e) {
-    e.preventDefault();
-    e.stopPropagation();
-
+  onClick() {
     this.setState({ open: true }, this.onOpen);
   }
 
