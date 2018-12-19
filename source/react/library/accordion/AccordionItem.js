@@ -25,7 +25,7 @@ const propTypes = {
   /** Tooltip to display on hover */
   tooltip: PropTypes.string,
   /** Render and populate badge next to title */
-  badgeValue: PropTypes.oneOf([PropTypes.string, PropTypes.number]),
+  badgeValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 const defaultProps = {

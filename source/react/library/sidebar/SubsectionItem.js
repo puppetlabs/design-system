@@ -35,11 +35,11 @@ class SubsectionItem extends React.Component {
   }
 
   componentWillMount() {
-    const { active, onSubItemClick, title } = this.props;
+    const { active, onSubItemClick, slug } = this.props;
 
     // Load default active item
     if (active) {
-      onSubItemClick(title);
+      onSubItemClick(slug);
     }
   }
 

@@ -316,8 +316,9 @@
 
   .rc-sidebar-item-title::before {
     color: $puppet-sidebar-dark-item-icon-fill-active;
-    content: '»';
-    left: -12px;
+    content: '›';
+    font-size: 16px;
+    left: 0;
     position: absolute;
   }
 }
