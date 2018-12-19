@@ -511,7 +511,7 @@ $puppet-menu-title-font-weight                     : $puppet-font-weight-heavy !
 // Menu Sections
 $puppet-menu-section-border                        : $puppet-border-subtle !default;
 $puppet-menu-section-title-color                   : $puppet-font-color-medium !default;
-$puppet-menu-section-title-font-family             : 'Calibre', serif !default;
+$puppet-menu-section-title-font-family             : $puppet-font-family-heading !default;
 $puppet-menu-section-title-font-size               : 11px !default;
 $puppet-menu-section-title-font-weight             : 600 !default;
 $puppet-menu-section-title-padding                 : 8px 12px 0 !default;
