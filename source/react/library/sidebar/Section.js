@@ -29,6 +29,8 @@ const propTypes = {
   open: PropTypes.bool,
   /** Is the sidebar minimized? */
   minimized: PropTypes.bool,
+  /** Should we display a badge with count of subitems? */
+  count: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -44,6 +46,7 @@ const defaultProps = {
   open: false,
   label: null,
   minimized: false,
+  count: false,
 };
 
 class Section extends React.Component {
@@ -157,6 +160,7 @@ class Section extends React.Component {
       children,
       className,
       minimized,
+      count,
     } = this.props;
 
     const classNames = classnames(
@@ -182,13 +186,15 @@ class Section extends React.Component {
         </span>
       );
 
-      badge = (
-        <span className="rc-sidebar-item-badge">
-          <Badge type="pill" color="neutral">
-            {subsectionLength}
-          </Badge>
-        </span>
-      );
+      if (count) {
+        badge = (
+          <span className="rc-sidebar-item-badge">
+            <Badge type="pill" color="neutral">
+              {subsectionLength}
+            </Badge>
+          </span>
+        );
+      }
     }
 
     if (open && subsectionLength) {
