@@ -8,11 +8,11 @@ Design specification: [http://styleguide.puppetlabs.net/Containers.html](http://
 const exampleStyle = { marginBottom: 10 };
 
 <div>
-  <Input style={exampleStyle} type="text" placeholder="Standard text input (or alternates 'email', 'url', 'search')"/>
-  <Input style={exampleStyle} type="password" placeholder="Password input"/>
-  <Input style={exampleStyle} type="number" placeholder="Number input"/>
-  <Input style={exampleStyle} type="text" placeholder="Disabled input" disabled />
-  <Input style={exampleStyle} type="multiline" placeholder="Multiline input" />
+  <Input style={exampleStyle} name="input-ex1" type="text" placeholder="Standard text input (or alternates 'email', 'url', 'search')"/>
+  <Input style={exampleStyle} name="input-ex2" type="password" placeholder="Password input"/>
+  <Input style={exampleStyle} name="input-ex3" type="number" placeholder="Number input"/>
+  <Input style={exampleStyle} name="input-ex4" type="text" placeholder="Disabled input" disabled />
+  <Input style={exampleStyle} name="input-ex5" type="multiline" placeholder="Multiline input" />
 </div>
 ```
 
@@ -25,12 +25,12 @@ const exampleStyle = { marginBottom: 10 };
 
 <div style={{ display: 'flex' }}>
   <div style={{ width: '50%', margin: 5 }}>
-    <Input style={exampleStyle} placeholder="Standard"/>
-    <Input style={exampleStyle} size="small" placeholder="Small"/>
+    <Input name="input-ex6" style={exampleStyle} placeholder="Standard"/>
+    <Input name="input-ex7" style={exampleStyle} size="small" placeholder="Small"/>
   </div>
   <div style={{ width: '50%', margin: 5 }}>
-    <Input style={exampleStyle} simple placeholder="Simple"/>
-    <Input style={exampleStyle} simple size="small" placeholder="Small simple"/>
+    <Input name="input-ex8" style={exampleStyle} simple placeholder="Simple"/>
+    <Input name="input-ex9" style={exampleStyle} simple size="small" placeholder="Small simple"/>
   </div>
 </div>
 ```
@@ -41,6 +41,7 @@ Just as with native inputs, the Input component should typically be used as a "c
 
 ```
 <Input
+  name="input-ex10"
   value={state.value}
   placeholder="This value is tracked by react state"
   onChange={value => setState({ value })}
@@ -55,8 +56,8 @@ Optional leading and trailing icons may be added where needed
 const exampleStyle = { marginBottom: 10 };
 
 <div>
-  <Input style={exampleStyle} icon="search" placeholder="Search for stuff"/>
-  <Input style={exampleStyle} icon="key" placeholder="Whatever this thing is, it's probably super secure!"/>
-  <Input style={exampleStyle} trailingIcon="visible" placeholder="We will eventually use this for a masked input"/>
+  <Input name="input-ex11" style={exampleStyle} icon="search" placeholder="Search for stuff"/>
+  <Input name="input-ex12" style={exampleStyle} icon="key" placeholder="Whatever this thing is, it's probably super secure!"/>
+  <Input name="input-ex13" style={exampleStyle} trailingIcon="visible" placeholder="We will eventually use this for a masked input"/>
 </div>
 ```

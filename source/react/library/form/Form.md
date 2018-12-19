@@ -25,6 +25,7 @@ initialState = {
     label="First name"
     placeholder="Enter your first name..."
     description="Please enter your first name"
+    validator={field => field.length % 2 === 0}
   />
   <Form.Field
     type="text"

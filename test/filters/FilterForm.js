@@ -39,15 +39,15 @@ describe('<FilterForm />', () => {
       };
       const wrapper = shallow(<FilterForm strings={filterStrings} />);
 
-      expect(
-        wrapper.find('FormField[name="filterField"]').prop('label'),
-      ).to.eql('filterField custom label');
-      expect(
-        wrapper.find('FormField[name="filterOperator"]').prop('label'),
-      ).to.eql('filterOperator custom label');
-      expect(
-        wrapper.find('FormField[name="filterValue"]').prop('label'),
-      ).to.eql('filterValue custom label');
+      expect(wrapper.find('FormField[name="field"]').prop('label')).to.eql(
+        'filterField custom label',
+      );
+      expect(wrapper.find('FormField[name="op"]').prop('label')).to.eql(
+        'filterOperator custom label',
+      );
+      expect(wrapper.find('FormField[name="value"]').prop('label')).to.eql(
+        'filterValue custom label',
+      );
     });
   });
 });

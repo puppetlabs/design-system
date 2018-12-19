@@ -118,35 +118,15 @@ class FilterForm extends React.Component {
   }
 
   onUpdate(field, values) {
-    const { filter } = this.state;
     const { operators } = this.props;
     const value = values[field];
-    const newState = {
-      filter,
-    };
+    const filter = { ...values };
 
-    switch (field) {
-      case 'filterField':
-        newState.filter.field = value;
-        break;
-      case 'filterOperator':
-        newState.filter.op = value;
-
-        if (isValueless(value, operators)) {
-          delete newState.filter.value;
-        }
-
-        break;
-      case 'filterValue':
-        newState.filter.value = value;
-        break;
-      case 'filterRemovable':
-        newState.filter.removable = value;
-        break;
-      default:
+    if (isValueless(value, operators)) {
+      delete filter.value;
     }
 
-    this.setState(newState);
+    this.setState({ filter });
   }
 
   getFields() {
@@ -174,7 +154,6 @@ class FilterForm extends React.Component {
   }
 
   renderRemovableField() {
-    const { filter } = this.state;
     const { removable, strings } = this.props;
 
     let jsx;
@@ -182,9 +161,8 @@ class FilterForm extends React.Component {
     if (removable) {
       jsx = (
         <Form.Field
-          value={filter.removable}
           type="checkbox"
-          name="filterRemovable"
+          name="removable"
           label={strings.filterRemovable}
           inline
         />
@@ -196,7 +174,7 @@ class FilterForm extends React.Component {
 
   renderValueField() {
     const {
-      filter: { op, value = '' },
+      filter: { op },
     } = this.state;
 
     const { operators, strings } = this.props;
@@ -208,9 +186,8 @@ class FilterForm extends React.Component {
       jsx = (
         <Form.Field
           type="text"
-          name="filterValue"
+          name="value"
           label={strings.filterValue}
-          value={value}
           placeholder={strings.filterValuePlaceholder}
         />
       );
@@ -220,6 +197,7 @@ class FilterForm extends React.Component {
   }
 
   render() {
+    const { filter } = this.state;
     const removableField = this.renderRemovableField();
     const valueField = this.renderValueField();
     const operators = this.getOperators();
@@ -242,11 +220,11 @@ class FilterForm extends React.Component {
         cancelLabel={strings.filterCancel}
         submitLabel={submitLabel}
         actionsPosition={actionsPosition}
-        allowUnchangedSubmit
+        values={filter}
       >
         <Form.Field
           type="select"
-          name="filterField"
+          name="field"
           label={strings.filterField}
           disablePortal
           options={fields}
@@ -254,7 +232,7 @@ class FilterForm extends React.Component {
         />
         <Form.Field
           type="select"
-          name="filterOperator"
+          name="op"
           label={strings.filterOperator}
           disablePortal
           options={operators}

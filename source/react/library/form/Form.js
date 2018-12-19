@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Alert from '../alert';
 import Button from '../buttons/Button';
-import { componentHasType, mapObj, omit } from '../../helpers/statics';
+import {
+  componentHasType,
+  mapObj,
+  omit,
+  shallowDiff,
+} from '../../helpers/statics';
 import { formSize } from '../../helpers/customPropTypes';
 
 import FormField from './FormField';
@@ -59,15 +64,17 @@ const isEmpty = str => !str || str.match(/^\s*$/);
 const collectFieldProps = children => {
   const fields = {};
 
-  React.Children.toArray(children).forEach(child => {
-    if (child.props.children) {
-      Object.assign(fields, collectFieldProps(child.props.children));
-    }
+  React.Children.toArray(children)
+    .filter(child => child && child.props)
+    .forEach(child => {
+      if (child.props.children) {
+        Object.assign(fields, collectFieldProps(child.props.children));
+      }
 
-    if (componentHasType(child, FormField)) {
-      fields[child.props.name] = child.props;
-    }
-  });
+      if (componentHasType(child, FormField)) {
+        fields[child.props.name] = child.props;
+      }
+    });
 
   return fields;
 };
@@ -79,21 +86,25 @@ class Form extends Component {
   constructor(props) {
     super(props);
 
-    const { values, initialValues } = props;
-
-    this.isValid = true;
-
-    if (values) {
-      this.isControlled = true;
-    }
-
-    this.state = {
-      validate: false,
-      values: values || initialValues,
-    };
+    this.state = {};
 
     this.updateFieldProps = this.updateFieldProps.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (
+      !state.initialValues ||
+      shallowDiff(state.initialValues, props.initialValues)
+    ) {
+      return {
+        validate: false,
+        initialValues: props.initialValues,
+        values: props.initialValues,
+      };
+    }
+
+    return null;
   }
 
   onChange(name, value) {
@@ -105,7 +116,7 @@ class Form extends Component {
       [name]: value,
     };
 
-    if (this.isControlled) {
+    if (this.isControlled()) {
       onChange(name, newValues);
     } else {
       this.setState({ values: newValues });
@@ -114,17 +125,26 @@ class Form extends Component {
 
   async onSubmit(e) {
     e.preventDefault();
+    const { children: userProvidedChildren } = this.props;
     const { onSubmit } = this.props;
 
     /**
-     * Set validate true, then await a full render cycle so that
-     * validation will run again with validators switched on.
+     * Await state update, so that validate: true setting doesn't get overridden by
+     * getDerivedStateFromProps
      */
-    await new Promise(resolve => {
-      this.setState({ validate: true }, resolve);
-    });
+    await new Promise(resolve => this.setState({ validate: true }, resolve));
 
-    if (this.isValid) {
+    /**
+     * Collect child props to run validation again, this time with custom
+     * validators always on
+     */
+    const fieldProps = mapObj(collectFieldProps(userProvidedChildren), props =>
+      this.updateFieldProps(props, true),
+    );
+
+    const isValid = isFormValid(fieldProps);
+
+    if (isValid) {
       const values = this.getValues();
       onSubmit(values);
     }
@@ -134,33 +154,30 @@ class Form extends Component {
     const { values: stateValues } = this.state;
     const { values: propValues } = this.props;
 
-    if (this.isControlled) {
-      return propValues;
-    }
-
-    return stateValues;
+    return propValues || stateValues;
   }
 
+  isControlled() {
+    const { values } = this.props;
+
+    return !!values;
+  }
+
+  /**
+   * Meant to be called from the outside through a ref, if the user ever needs
+   * to reset validation on a controlled component
+   */
   reset() {
-    const { values, initialValues } = this.props;
-
-    this.isValid = true;
-
-    if (values) {
-      this.isControlled = true;
-    }
-
     this.setState({
       validate: false,
-      values: values || initialValues,
     });
   }
 
   /**
-   * Picks props from child concerned with validation and uses them to
-   * produce a final 'error' prop that is passed to the child field for final rendering
+   * Updates user provdided props to child Form.Field components with validation
+   * and other context from the parent Form component
    */
-  updateFieldProps(userProvidedFieldProps) {
+  updateFieldProps(userProvidedFieldProps, validate) {
     const {
       name,
       error: userProvidedError,
@@ -169,7 +186,6 @@ class Form extends Component {
       validator,
     } = userProvidedFieldProps;
 
-    const { validate } = this.state;
     const { disabled } = this.props;
     const values = this.getValues();
     const value = values[name];
@@ -226,25 +242,27 @@ class Form extends Component {
   }
 
   renderChildren(children, fieldProps) {
-    return React.Children.map(children, child => {
-      /**
-       * If the child is a field, do special field rendering
-       */
-      if (componentHasType(child, FormField)) {
-        return this.renderField(child, fieldProps[child.props.name]);
-      }
+    return React.Children.toArray(children)
+      .filter(child => child && child.props)
+      .map(child => {
+        /**
+         * If the child is a field, do special field rendering
+         */
+        if (componentHasType(child, FormField)) {
+          return this.renderField(child, fieldProps[child.props.name]);
+        }
 
-      /**
-       * If the child has children, recurse. This will cover Form.Section and any wrapper divs
-       */
-      if (child.props.children) {
-        return React.cloneElement(child, {
-          children: this.renderChildren(children, fieldProps),
-        });
-      }
+        /**
+         * If the child has children, recurse. This will cover Form.Section and any wrapper divs
+         */
+        if (child.props.children) {
+          return React.cloneElement(child, {
+            children: this.renderChildren(children, fieldProps),
+          });
+        }
 
-      return child;
-    });
+        return child;
+      });
   }
 
   renderSubmitButton(isValid) {
@@ -354,6 +372,7 @@ class Form extends Component {
 
   render() {
     const { onSubmit } = this;
+    const { validate } = this.state;
     const {
       onCancel,
       children: userProvidedChildren,
@@ -361,19 +380,14 @@ class Form extends Component {
       style,
     } = this.props;
 
-    const fieldProps = mapObj(
-      collectFieldProps(userProvidedChildren),
-      this.updateFieldProps,
+    const fieldProps = mapObj(collectFieldProps(userProvidedChildren), props =>
+      this.updateFieldProps(props, validate),
     );
 
-    /**
-     * Mark 'valid' boolean on the instance so it can be used by the onSubmit handler
-     * when called
-     */
-    this.isValid = isFormValid(fieldProps);
+    const isValid = isFormValid(fieldProps);
 
     const children = this.renderChildren(userProvidedChildren, fieldProps);
-    const actions = this.renderActions(this.isValid);
+    const actions = this.renderActions(isValid);
     const error = this.renderFormError();
 
     return (
