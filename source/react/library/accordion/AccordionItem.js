@@ -86,11 +86,14 @@ class AccordionItem extends React.Component {
     let badge;
     if (badgeValue !== null) {
       badge = (
-        <span key="header-badge" className="rc-accordion-header-badge">
-          <Badge type="pill" color="neutral">
-            {badgeValue}
-          </Badge>
-        </span>
+        <Badge
+          type="pill"
+          color="neutral"
+          className="rc-accordion-header-badge"
+          key="header-badge"
+        >
+          {badgeValue}
+        </Badge>
       );
     }
 
