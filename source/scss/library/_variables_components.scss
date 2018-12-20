@@ -690,11 +690,11 @@ $puppet-table-border-radius                        : $puppet-border-radius !defa
 
 // Tags
 // ----------------------------------------------------------------------------
-$puppet-tag-bg                                     : $puppet-bg-subtle !default;
+$puppet-tag-bg                                     : $puppet-action-base !default;
 $puppet-tag-border-radius                          : $puppet-border-radius !default;
 $puppet-tag-border                                 : 1px solid $puppet-bg-subtle !default;
 $puppet-tag-border-selected                        : $puppet-border-action !default;
-$puppet-tag-color                                  : $puppet-n600 !default;
+$puppet-tag-color                                  : $puppet-white !default;
 $puppet-tag-font-size                              : $puppet-button-font-size !default;
 $puppet-tag-font-weight                            : $puppet-button-font-weight !default;
 $puppet-tag-height                                 : $puppet-large !default; // Todo: Base on grid

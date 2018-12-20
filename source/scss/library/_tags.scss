@@ -106,21 +106,7 @@
   box-shadow: $puppet-tag-shadow-selected;
 }
 
-// Use a dark colored x for light tags
 .rc-tag-removable {
-  .rc-tag-remove-button .rc-icon {
-    fill: $puppet-tag-removable-icon;
-  }
-
-  .rc-tag-remove-button:hover .rc-icon {
-    fill: $puppet-tag-removable-icon-hover;
-  }
-}
-
-// Use a light colored x for dark tags
-.rc-tag-removable.rc-tag-primary,
-.rc-tag-removable.rc-tag-secondary,
-.rc-tag-removable.rc-tag-selectable {
   .rc-tag-remove-button .rc-icon {
     fill: $puppet-tag-removable-secondary-icon;
   }
