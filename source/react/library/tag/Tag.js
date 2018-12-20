@@ -51,12 +51,11 @@ class Tag extends React.Component {
   }
 
   onClick(e) {
+    const { onClick } = this.props;
     e.preventDefault();
-    const { onClick, selected, children } = this.props;
 
     if (onClick) {
-      const value = !selected ? children : null;
-      onClick(value);
+      onClick(e);
     }
   }
 
@@ -69,6 +68,7 @@ class Tag extends React.Component {
   onRemove(e) {
     const { onRemove } = this.props;
     e.preventDefault();
+    e.stopPropagation();
 
     if (onRemove) {
       onRemove(e);

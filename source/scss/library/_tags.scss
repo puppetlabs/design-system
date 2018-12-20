@@ -35,51 +35,6 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-
-  .rc-tag-button .rc-icon {
-    fill: $puppet-tag-icon-fill;
-    opacity: 0.8;
-  }
-
-  .rc-tag-button:hover .rc-icon {
-    fill: $puppet-tag-icon-fill;
-    opacity: 1;
-  }
-}
-
-
-.rc-tag-removable {
-  background: $puppet-tag-removable-bg;
-  border: $puppet-tag-removable-border;
-  color: $puppet-tag-removable-color;
-
-  .rc-tag-remove-button .rc-icon {
-    fill: $puppet-tag-removable-icon;
-  }
-}
-
-.rc-tag-removable:hover {
-  background: $puppet-tag-removable-bg-hover;
-  border: $puppet-tag-removable-border-hover;
-  color: $puppet-tag-removable-color-hover;
-
-  .rc-tag-remove-button .rc-icon {
-    fill: $puppet-tag-removable-icon-hover;
-  }
-}
-
-.rc-tag-removable.rc-tag-highlighted {
-  background: $puppet-tag-removable-bg-highlighted;
-  border: $puppet-tag-removable-border-highlighted;
-  color: $puppet-tag-removable-color-highlighted;
-
-  .rc-tag-remove-button .rc-icon {
-    fill: $puppet-tag-removable-icon-highlighted;
-  }
-}
-
-.rc-tag-remove-button:hover .rc-icon {
-  fill: $puppet-white;
 }
 
 .rc-tag-primary {
@@ -99,11 +54,19 @@
   background: $puppet-tag-bg-bold;
   border-color: $puppet-tag-bg-bold;
   color: $puppet-tag-color-bold;
+}
 
-  .rc-tag-button .rc-icon,
-  .rc-tag-button:hover .rc-icon {
-    fill: $puppet-tag-color-bold;
+.rc-tag-tiny {
+  height: $puppet-tag-tiny-height;
+  padding: $puppet-tag-tiny-padding;
+
+  .rc-tag-content {
+    font-size: $puppet-tag-tiny-font-size;
   }
+}
+
+.rc-tag-round {
+  border-radius: 1000px;
 }
 
 .rc-tag-remove-button {
@@ -119,24 +82,36 @@
   }
 }
 
+.rc-tag-selectable {
+  background: $puppet-tag-removable-bg;
+  border: $puppet-tag-removable-border;
+  color: $puppet-tag-removable-color;
+  cursor: pointer;
+}
+
+.rc-tag-selectable:hover {
+  background: $puppet-tag-removable-bg-hover;
+  border: $puppet-tag-removable-border-hover;
+  color: $puppet-tag-removable-color-hover;
+}
+
+.rc-tag-selectable.rc-tag-highlighted {
+  background: $puppet-tag-removable-bg-highlighted;
+  border: $puppet-tag-removable-border-highlighted;
+  color: $puppet-tag-removable-color-highlighted;
+}
+
 .rc-tag-selected {
   border: $puppet-tag-border-selected;
   box-shadow: $puppet-tag-shadow-selected;
 }
 
-.rc-tag-tiny {
-  height: $puppet-tag-tiny-height;
-  padding: $puppet-tag-tiny-padding;
-
-  .rc-tag-content {
-    font-size: $puppet-tag-tiny-font-size;
+.rc-tag-removable {
+  .rc-tag-remove-button .rc-icon {
+    fill: $puppet-tag-removable-secondary-icon;
   }
-}
 
-.rc-tag-selectable {
-  cursor: pointer;
-}
-
-.rc-tag-round {
-  border-radius: 1000px;
+  .rc-tag-remove-button:hover .rc-icon {
+    fill: $puppet-tag-removable-secondary-icon-hover;
+  }
 }
