@@ -56,10 +56,10 @@ class Subsection extends React.Component {
     }
   }
 
-  onSubItemClick(item) {
+  onSubItemClick(slug) {
     const { onSubItemClick } = this.props;
 
-    onSubItemClick(item);
+    onSubItemClick(slug);
   }
 
   onViewMore() {
@@ -72,8 +72,11 @@ class Subsection extends React.Component {
     const { children, selectedItem, truncate } = this.props;
 
     let items = React.Children.map(children, (item, idx) => {
+      const slug = getKey(item, idx);
+
       const props = {
-        key: getKey(item, idx),
+        key: slug,
+        slug,
         onSubItemClick: this.onSubItemClick,
         selected: selectedItem,
       };
@@ -86,6 +89,7 @@ class Subsection extends React.Component {
         <SubsectionItem
           className="rc-sidebar-view-more-item"
           key="view-more-link"
+          slug="view-more-link"
           selected={selectedItem}
           onClick={this.onViewMore}
           onKeyDown={this.onKeyDownViewMore}

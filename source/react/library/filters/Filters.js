@@ -44,8 +44,10 @@ const propTypes = {
     filterOperatorPlaceholder: PropTypes.string.isRequired,
     /* Custom label for cancel button */
     filterCancel: PropTypes.string.isRequired,
-    /* Custom label for submit button */
-    filterSubmit: PropTypes.string.isRequired,
+    /* Custom label for submit button when adding */
+    filterAdd: PropTypes.string.isRequired,
+    /* Custom label for submit button when updating */
+    filterUpdate: PropTypes.string.isRequired,
     /* Custom label for add button */
     addCTA: PropTypes.string,
   }),
@@ -193,11 +195,17 @@ class Filters extends React.Component {
   }
 
   renderForm() {
-    const { removableToggle, fields, operators, strings } = this.props;
+    const { removableToggle, fields, operators, strings, filters } = this.props;
     const { filter } = this.state;
+    let cancellable = true;
+
+    if (!filters.length) {
+      cancellable = false;
+    }
 
     return (
       <Form
+        cancellable={cancellable}
         removable={removableToggle}
         fields={fields}
         filter={filter}

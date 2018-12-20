@@ -1,123 +1,77 @@
-import PropTypes from 'prop-types';
 import React from 'react';
-import classnames from 'classnames';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import {
+  renderableElement,
+  elementElevation,
+} from '../../helpers/customPropTypes';
+
 import Header from './Header';
 import Section from './Section';
 import ActionsMenu from './ActionsMenu';
 import ActionsSearch from './ActionsSearch';
 
 const propTypes = {
-  children: PropTypes.node,
-  size: PropTypes.string,
-  style: PropTypes.string,
-  /** Card width in px or % */
-  width: PropTypes.string,
-  /** Card height in px or % */
-  height: PropTypes.string,
-  /** Manual active state */
+  /** Html element or react component to render */
+  as: renderableElement,
+  /** Main visual variant */
+  type: PropTypes.oneOf(['primary', 'secondary']),
+  /** Card 'elevation' visually indicated with box-shadow */
+  elevation: elementElevation,
+  /** Turns on selectability including hover styling */
+  selectable: PropTypes.bool,
+  /** Is this card currently selected */
   selected: PropTypes.bool,
-  /** Class name to apply to container element */
+  /** Optional additional className */
   className: PropTypes.string,
-  /**  Function to be called when the user clicks on a card */
+  /** Component children */
+  children: PropTypes.node,
+  /** Click handler. Additionally, other event handlers and and props are propagated to the inner element for use as needed */
   onClick: PropTypes.func,
-  onMouseEnter: PropTypes.func,
-  onMouseLeave: PropTypes.func,
 };
 
 const defaultProps = {
-  size: '',
-  style: '',
-  width: '',
-  height: '',
+  as: 'div',
+  type: 'primary',
+  elevation: 0,
+  selectable: false,
   selected: false,
   className: '',
   children: null,
-  onClick: null,
-  onMouseEnter: null,
-  onMouseLeave: null,
+  onClick() {},
 };
 
-/**
- * `Card` displays information about an object, usually as a more visual
- * alternative to a `List`.
- */
-class Card extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick(e) {
-    const { onClick } = this.props;
-    e.preventDefault();
-
-    if (onClick) {
-      onClick(e);
-    }
-  }
-
-  render() {
-    const {
-      style,
-      size,
-      onClick,
-      width,
-      height,
-      selected,
-      onMouseEnter,
-      onMouseLeave,
+const Card = ({
+  as: Element,
+  type,
+  elevation,
+  selectable,
+  selected,
+  className,
+  children,
+  ...rest
+}) => (
+  <Element
+    className={classNames(
+      'rc-card',
+      `rc-card-${type}`,
+      `rc-card-elevation-${elevation}`,
+      {
+        'rc-card-selectable': selectable,
+        'rc-card-selected': selected,
+      },
       className,
-      children,
-    } = this.props;
-
-    const styles = {};
-
-    if (width) {
-      styles.width = width;
-    }
-
-    if (height) {
-      styles.height = height;
-    }
-
-    const props = {
-      style: styles,
-      className: classnames(
-        'rc-card',
-        {
-          'rc-card-large': size === 'large',
-          'rc-card-small': size === 'small',
-          'rc-card-xs': size === 'xs',
-          'rc-card-selected': selected,
-          [`rc-card-${style}`]: style,
-          'rc-card-selectable': onClick,
-        },
-        className,
-      ),
-    };
-
-    if (onClick) {
-      props.onClick = onClick;
-      props.role = 'button';
-    }
-
-    if (onMouseEnter) {
-      props.onMouseEnter = onMouseEnter;
-    }
-
-    if (onMouseLeave) {
-      props.onMouseLeave = onMouseLeave;
-    }
-
-    return <div {...props}>{children}</div>;
-  }
-}
+    )}
+    aria-selected={selected}
+    {...rest}
+  >
+    {children}
+  </Element>
+);
 
 Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
 
-Card.Card = Card; // This line is needed for backwards compatability. TODO: Deprecate in future releases
 Card.Header = Header;
 Card.Section = Section;
 Card.ActionsMenu = ActionsMenu;

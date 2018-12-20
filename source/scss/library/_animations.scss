@@ -226,28 +226,3 @@
     right: 0%;
   }
 }
-
-.rc-saving {
-  background: $puppet-action-hover;
-  height: 4px;
-  left: 0;
-  overflow: hidden;
-  position: absolute;
-  right: 0;
-  top: 4px;
-  width: 100%;
-  z-index: 24;
-
-  &::after {
-    animation: 1.5s infinite ease-in-out indeterminate-bar;
-    background: $puppet-action-active;
-    bottom: 0;
-    content: '';
-    height: 8px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 0;
-    will-change: left, right;
-  }
-}
