@@ -5,6 +5,14 @@ import React from 'react';
 import Filters from '../../source/react/library/filters/Filters';
 
 describe('<Filters />', () => {
+  const filters = [
+    {
+      field: 'Name',
+      op: '=',
+      value: 'Steve',
+    },
+  ];
+
   it('should render without blowing up', () => {
     const wrapper = shallow(<Filters />);
 
@@ -13,13 +21,6 @@ describe('<Filters />', () => {
 
   describe('rendering existing filters', () => {
     it('should render a simple filter', () => {
-      const filters = [
-        {
-          field: 'Name',
-          op: '=',
-          value: 'Steve',
-        },
-      ];
       const fields = ['Name'];
       const wrapper = shallow(<Filters filters={filters} fields={fields} />);
 
@@ -30,7 +31,7 @@ describe('<Filters />', () => {
 
   describe('adding a filter', () => {
     it('should render a form after the add button is clicked', () => {
-      const wrapper = shallow(<Filters />);
+      const wrapper = shallow(<Filters filters={filters} />);
       expect(wrapper.find('FilterForm').length).to.eql(0);
 
       wrapper.find('Button').simulate('click');
@@ -45,7 +46,9 @@ describe('<Filters />', () => {
         ...Filters.defaultProps.strings,
         addCTA: 'addCTA custom label',
       };
-      const wrapper = shallow(<Filters strings={filterStrings} />);
+      const wrapper = shallow(
+        <Filters filters={filters} strings={filterStrings} />,
+      );
 
       expect(wrapper.find('Button[icon="plus"]').prop('label')).to.eql(
         'addCTA custom label',
