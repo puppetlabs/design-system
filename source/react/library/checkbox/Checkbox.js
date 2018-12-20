@@ -10,7 +10,7 @@ const propTypes = {
   checked: PropTypes.bool,
   disabled: PropTypes.bool,
   onChange: PropTypes.func,
-  required: PropTypes.func,
+  required: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -18,7 +18,7 @@ const defaultProps = {
   checked: false,
   disabled: false,
   onChange: () => {},
-  required: PropTypes.func,
+  required: false,
 };
 
 /**
