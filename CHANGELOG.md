@@ -1,5 +1,7 @@
-# 5.0.0-alpha.3
+# 5.0.0-alpha.4
+- Bug fix: correct propTypes on Checkbox required prop
 
+# 5.0.0-alpha.3
 Sidebar component:
 - Add badge for number of custom reports
 - Fix the logo to the top of page and contain scroll to main content
