@@ -20,14 +20,14 @@ describe('<Filters />', () => {
   });
 
   it('should render a form if no filters exist', () => {
-    const wrapper = shallow(<Filters {...defaultProps} />);
+    const wrapper = shallow(<Filters />);
 
     expect(wrapper.find('FilterForm').length).to.eql(1);
     expect(wrapper.find('FilterItem').length).to.eql(0);
   });
 
   it('should not not pass cancellable prop to Filter Form if no filters exist', () => {
-    const wrapper = shallow(<Filters {...defaultProps} />);
+    const wrapper = shallow(<Filters />);
 
     expect(wrapper.find('FilterForm').prop('cancellable')).to.eql(false);
   });
@@ -45,7 +45,7 @@ describe('<Filters />', () => {
   describe('adding a filter', () => {
     it('should render a form after the add button is clicked', () => {
       const wrapper = shallow(<Filters filters={filters} />);
-                              
+
       expect(wrapper.find('FilterForm').length).to.eql(0);
 
       wrapper.find('Button').simulate('click');
