@@ -9,6 +9,34 @@
   transition-timing-function: ease-in-out;
 }
 
+.rc-card-elevation-0 {
+  box-shadow: none;
+}
+
+.rc-card-elevation-50 {
+  box-shadow: $puppet-elev-50-shadow;
+}
+
+.rc-card-elevation-100 {
+  box-shadow: $puppet-elev-100-shadow;
+}
+
+.rc-card-elevation-150 {
+  box-shadow: $puppet-elev-150-shadow;
+}
+
+.rc-card-elevation-200 {
+  box-shadow: $puppet-elev-200-shadow;
+}
+
+.rc-card-elevation-400 {
+  box-shadow: $puppet-elev-400-shadow;
+}
+
+.rc-card-elevation-800 {
+  box-shadow: $puppet-elev-800-shadow;
+}
+
 .rc-card-primary {
   background-color: $puppet-card-primary-bg;
   border: $puppet-card-primary-border;
@@ -37,34 +65,6 @@
     border: $puppet-card-border-selected-hover;
     box-shadow: $puppet-card-selected-shadow-hover;
   }
-}
-
-.rc-card-elevation-0 {
-  box-shadow: none;
-}
-
-.rc-card-elevation-50 {
-  box-shadow: $puppet-elev-50-shadow;
-}
-
-.rc-card-elevation-100 {
-  box-shadow: $puppet-elev-100-shadow;
-}
-
-.rc-card-elevation-150 {
-  box-shadow: $puppet-elev-150-shadow;
-}
-
-.rc-card-elevation-200 {
-  box-shadow: $puppet-elev-200-shadow;
-}
-
-.rc-card-elevation-400 {
-  box-shadow: $puppet-elev-400-shadow;
-}
-
-.rc-card-elevation-800 {
-  box-shadow: $puppet-elev-800-shadow;
 }
 
 .rc-card-header {

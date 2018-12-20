@@ -8,6 +8,7 @@ import SubsectionItem from '../../source/react/library/sidebar/SubsectionItem';
 describe('<SubsectionItem />', () => {
   const defaultProps = {
     title: 'foo',
+    slug: 'foo-bar',
   };
 
   it('should render without blowing up', () => {
@@ -16,17 +17,17 @@ describe('<SubsectionItem />', () => {
     expect(wrapper.length).to.eql(1);
   });
 
-  it('should not be active if title prop !== selected prop', () => {
+  it('should not be active if slug prop !== selected prop', () => {
     const wrapper = shallow(
-      <SubsectionItem {...defaultProps} selected="bar" />,
+      <SubsectionItem {...defaultProps} selected="foo" />,
     );
 
     expect(wrapper.hasClass('rc-sidebar-item-selected')).to.eql(false);
   });
 
-  it('should be active if title prop === selected prop', () => {
+  it('should be active if slug prop === selected prop', () => {
     const wrapper = shallow(
-      <SubsectionItem {...defaultProps} selected="foo" />,
+      <SubsectionItem {...defaultProps} selected="foo-bar" />,
     );
 
     expect(wrapper.hasClass('rc-sidebar-item-selected')).to.eql(true);
