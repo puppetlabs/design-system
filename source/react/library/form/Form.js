@@ -61,6 +61,10 @@ const defaultProps = {
 
 const isEmpty = str => !str || str.match(/^\s*$/);
 
+/**
+ * Collects the user provided props for all FormFields into
+ * an object, with props indexed by name
+ */
 const collectFieldProps = children => {
   const fields = {};
 
@@ -81,6 +85,35 @@ const collectFieldProps = children => {
 
 const isFormValid = fieldProps =>
   !Object.values(fieldProps).some(props => props.error);
+
+const renderField = (child, updatedFieldProps) =>
+  React.createElement(child.type, {
+    key: updatedFieldProps.name,
+    ...updatedFieldProps,
+  });
+
+const renderChildren = (children, updatedFieldPropMap) =>
+  React.Children.toArray(children)
+    .filter(child => child && child.props)
+    .map(child => {
+      /**
+       * If the child is a field, do special field rendering
+       */
+      if (componentHasType(child, FormField)) {
+        return renderField(child, updatedFieldPropMap[child.props.name]);
+      }
+
+      /**
+       * If the child has children, recurse. This will cover Form.Section and any wrapper divs
+       */
+      if (child.props.children) {
+        return React.cloneElement(child, {
+          children: renderChildren(child.props.children, updatedFieldPropMap),
+        });
+      }
+
+      return child;
+    });
 
 class Form extends Component {
   constructor(props) {
@@ -186,7 +219,7 @@ class Form extends Component {
       validator,
     } = userProvidedFieldProps;
 
-    const { disabled } = this.props;
+    const { size, inline, disabled } = this.props;
     const values = this.getValues();
     const value = values[name];
 
@@ -201,68 +234,24 @@ class Form extends Component {
     }
 
     /**
-     * The following fields must be removed before being passed down to
-     * the child for final rendering because the values are provided or otherwise
-     * modified by the parent Form component
+     * These fields are removed because they are only used by the parent
+     * Form element to set the final error value (above), not by the consuming
+     * Form.Field
      */
     const fieldProps = omit(
-      [
-        'error',
-        'requiredFieldMessage',
-        'validator',
-        'size',
-        'inline',
-        'value',
-        'onChange',
-        'disabled',
-      ],
+      ['requiredFieldMessage', 'validator'],
       userProvidedFieldProps,
     );
 
     return {
+      ...fieldProps,
       error,
       disabled: disabled || userProvidedFieldProps.disabled,
-      ...fieldProps,
-    };
-  }
-
-  renderField(child, childProps) {
-    const { size, inline } = this.props;
-    const values = this.getValues();
-    const { name } = child.props;
-
-    return React.createElement(child.type, {
-      key: name,
       size,
       inline,
       value: values[name],
-      onChange: value => this.onChange(name, value),
-      ...childProps,
-    });
-  }
-
-  renderChildren(children, fieldProps) {
-    return React.Children.toArray(children)
-      .filter(child => child && child.props)
-      .map(child => {
-        /**
-         * If the child is a field, do special field rendering
-         */
-        if (componentHasType(child, FormField)) {
-          return this.renderField(child, fieldProps[child.props.name]);
-        }
-
-        /**
-         * If the child has children, recurse. This will cover Form.Section and any wrapper divs
-         */
-        if (child.props.children) {
-          return React.cloneElement(child, {
-            children: this.renderChildren(children, fieldProps),
-          });
-        }
-
-        return child;
-      });
+      onChange: val => this.onChange(name, val),
+    };
   }
 
   renderSubmitButton(isValid) {
@@ -380,13 +369,17 @@ class Form extends Component {
       style,
     } = this.props;
 
-    const fieldProps = mapObj(collectFieldProps(userProvidedChildren), props =>
-      this.updateFieldProps(props, validate),
+    /**
+     * Map of field name to updated props
+     */
+    const updatedFieldPropMap = mapObj(
+      collectFieldProps(userProvidedChildren),
+      props => this.updateFieldProps(props, validate),
     );
 
-    const isValid = isFormValid(fieldProps);
+    const isValid = isFormValid(updatedFieldPropMap);
 
-    const children = this.renderChildren(userProvidedChildren, fieldProps);
+    const children = renderChildren(userProvidedChildren, updatedFieldPropMap);
     const actions = this.renderActions(isValid);
     const error = this.renderFormError();
 

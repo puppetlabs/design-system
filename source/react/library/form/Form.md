@@ -19,21 +19,23 @@ initialState = {
   initialValues={state}
   onSubmit={values => setState(values)}
 >
-  <Form.Field
-    type="text"
-    name="firstName"
-    label="First name"
-    placeholder="Enter your first name..."
-    description="Please enter your first name"
-    validator={field => field.length % 2 === 0}
-  />
-  <Form.Field
-    type="text"
-    name="lastName"
-    label="Last name"
-    placeholder="Enter your first name..."
-    description="Please enter your last name"
-  />
+  <Form.Section>
+    <Form.Field
+      type="text"
+      name="firstName"
+      label="First name"
+      placeholder="Enter your first name..."
+      description="Please enter your first name"
+      validator={field => field.length % 2 === 0 ? false : 'this is bad'}
+    />
+    <Form.Field
+      type="text"
+      name="lastName"
+      label="Last name"
+      placeholder="Enter your first name..."
+      description="Please enter your last name"
+    />
+  </Form.Section>
   <Form.Field
     type="password"
     name="password"
