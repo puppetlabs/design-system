@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import { formSize } from '../../helpers/customPropTypes';
-
+import { renderableElement, formSize } from '../../helpers/customPropTypes';
+import { omit } from '../../helpers/statics';
 import Input, {
   SUPPORTED_TYPES as INPUT_SUPPORTED_TYPES,
 } from '../input/Input';
@@ -15,13 +15,14 @@ const supportedTypes = [
   'checkbox',
   'switch',
   'select',
+  'multiselect',
 ];
 
 const propTypes = {
   /** The type of input to render. Can be either a string corresponding to a supported input type or a custom React component satisfying the input interface */
   type: PropTypes.oneOfType([
     PropTypes.oneOf(supportedTypes),
-    PropTypes.element,
+    renderableElement,
   ]).isRequired,
   /** A unique identifier for this field */
   name: PropTypes.string.isRequired,
@@ -40,6 +41,8 @@ const propTypes = {
   required: PropTypes.bool,
   /* The error message to display if the field is required but not present at validation */
   requiredFieldMessage: PropTypes.string,
+  /* An optional validation function. Will be passed in order: the current field value, and the entire form value */
+  validator: PropTypes.func,
   /* Alternate inline display format */
   inline: PropTypes.bool,
   /** This will be used by the parent `Form` to track updates. */
@@ -58,11 +61,27 @@ const defaultProps = {
   description: '',
   required: false,
   requiredFieldMessage: 'Required field',
+  validator() {},
   inline: false,
   onChange() {},
   className: '',
   style: {},
 };
+
+/**
+ * The form input interface is the propTypes above, minus the ones that get stripped off
+ */
+export const formInputInterface = omit(
+  [
+    'requiredFieldMessage',
+    'validator',
+    'inline',
+    'className',
+    'description',
+    'style',
+  ],
+  propTypes,
+);
 
 const isReactComponent = c =>
   (c.prototype === 'object' && c.prototype.isReactComponent) ||
@@ -79,6 +98,7 @@ const mapTypeToElement = type => {
     case 'switch':
       return Switch;
     case 'select':
+    case 'multiselect':
       return Select;
     default:
       return Input;
@@ -112,17 +132,23 @@ class FormField extends React.Component {
   }
 
   renderElement() {
-    const {
-      inline,
-      requiredFieldMessage,
-      description,
-      type,
-      ...otherProps
-    } = this.props;
+    const { type } = this.props;
+
+    const elementProps = omit(
+      [
+        'inline',
+        'description',
+        'className',
+        'style',
+        'requiredFieldMessage',
+        'validator',
+      ],
+      this.props,
+    );
 
     const Element = mapTypeToElement(type);
 
-    return <Element type={type} {...otherProps} />;
+    return <Element {...elementProps} />;
   }
 
   render() {
@@ -133,11 +159,15 @@ class FormField extends React.Component {
 
     return (
       <div
-        className={classNames('rc-form-field', className, {
-          'rc-form-field-inline': inline,
-          [`rc-form-field-${typeName}`]: typeName,
-          'rc-form-field-error': error,
-        })}
+        className={classNames(
+          'rc-form-field',
+          {
+            'rc-form-field-inline': inline,
+            [`rc-form-field-${typeName}`]: typeName,
+            'rc-form-field-error': error,
+          },
+          className,
+        )}
         style={style}
       >
         <div className="rc-form-field-content">
