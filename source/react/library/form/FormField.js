@@ -84,7 +84,7 @@ export const formInputInterface = omit(
 );
 
 const isReactComponent = c =>
-  (c.prototype === 'object' && c.prototype.isReactComponent) ||
+  (c && c.prototype === 'object' && c.prototype.isReactComponent) ||
   typeof c === 'function';
 
 const mapTypeToElement = type => {

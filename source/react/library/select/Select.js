@@ -348,7 +348,7 @@ class Select extends React.Component {
     };
 
     const { selected } = this.state;
-    const { clearable, type } = this.props;
+    const { clearable, type, valueless } = this.props;
 
     if (option.selectable || typeof option.selectable === 'undefined') {
       if (selected.map(s => s.id).indexOf(option.id) >= 0 && clearable) {
@@ -361,7 +361,7 @@ class Select extends React.Component {
     }
 
     // We want to leave this open if we're acting like a multiselect.
-    if (type === 'select') {
+    if (type === 'select' || valueless) {
       newState.open = false;
 
       this.close();
@@ -571,12 +571,12 @@ class Select extends React.Component {
   }
 
   renderContent() {
-    const { type, size } = this.props;
+    const { type, size, valueless } = this.props;
     const { selected: selectedState } = this.state;
     const input = this.renderInput();
     let selected = [];
 
-    if (type === 'multiselect') {
+    if (type === 'multiselect' && !valueless) {
       const selectedCount = selectedState.length;
 
       selected = selectedState.map((option, index) => (
@@ -606,11 +606,12 @@ class Select extends React.Component {
       disabled,
       name,
       required,
+      valueless,
     } = this.props;
     const { selected } = this.state;
     let placeholder;
 
-    if (type === 'select' || !selected.length) {
+    if (type === 'select' || !selected.length || valueless) {
       placeholder = placeholderProp;
     }
 
