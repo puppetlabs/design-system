@@ -149,11 +149,11 @@ class Form extends Component {
       [name]: value,
     };
 
-    if (this.isControlled()) {
-      onChange(name, newValues);
-    } else {
+    if (!this.isControlled()) {
       this.setState({ values: newValues });
     }
+
+    onChange(name, newValues);
   }
 
   async onSubmit(e) {

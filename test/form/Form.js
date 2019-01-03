@@ -121,7 +121,7 @@ describe('<Form />', () => {
       expect(wrapper.state().values).to.eql({ a: 'AA', b: 'B' });
     });
 
-    it('should not fire onChange callback when inputs change', () => {
+    it('should fire onChange callback when inputs change', () => {
       const initialValues = {
         a: 'A',
         b: 'B',
@@ -142,7 +142,7 @@ describe('<Form />', () => {
         .simulate('change', { target: { value: 'AA' } });
 
       // eslint-disable-next-line
-      expect(onChange).to.not.have.been.called;
+      expect(onChange).to.have.been.called;
     });
   });
 
