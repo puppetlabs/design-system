@@ -1,3 +1,7 @@
+# 0.13.7
+
+* Set a reasonable default for legend height and width when none is provided
+
 # 0.13.6
 
 * Update gauge comparison colors

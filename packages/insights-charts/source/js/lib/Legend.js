@@ -86,13 +86,22 @@ class Legend {
   render(selection) {
     const { seriesData, options, dimensions, dispatchers } = this;
     const legendOptions = options.legend || {};
-    const { enabled, orientation, alignment, maxHeight, maxWidth } = legendOptions;
+    const { enabled, orientation, alignment } = legendOptions;
+    let { maxHeight, maxWidth } = legendOptions;
     const margins = dimensions.margins || {};
     let container;
     let legendItems;
 
     if (enabled !== false) {
       this.selection = selection;
+
+      if (!maxHeight && (orientation === 'bottom' || orientation === 'top')) {
+        maxHeight = `${dimensions.height / 2}px`;
+      }
+
+      if (!maxWidth && (orientation === 'left' || orientation === 'right')) {
+        maxWidth = `${dimensions.width / 2}px`;
+      }
 
       selection.selectAll(CSS.getClassSelector('legend')).remove();
 
