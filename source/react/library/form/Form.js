@@ -15,26 +15,41 @@ import FormField from './FormField';
 import FormSection from './FormSection';
 
 const propTypes = {
+  /** Initial form field values. Should be an object with keys corresponding to the contained form field name */
   initialValues: PropTypes.shape({}),
+  /** Current form field values when used in *controlled* mode. **should not be used concurrently with initialValues** */
   values: PropTypes.shape({}),
-  submittable: PropTypes.bool,
-  submitLabel: PropTypes.string,
-  onSubmit: PropTypes.func,
-  cancellable: PropTypes.bool,
-  cancelLabel: PropTypes.string,
-  onCancel: PropTypes.func,
-
+  /** onChange event handler for the whole form. Will be passed in order: the name of the field that changed, and the full set of new form values */
   onChange: PropTypes.func,
+  /** Is the form currently submitting? The submit button will render a loading indicator if true */
   submitting: PropTypes.bool,
+  /** Is the form submittable? If true a submit button will render */
+  submittable: PropTypes.bool,
+  /** Optional override for the submit button label */
+  submitLabel: PropTypes.string,
+  /** Submit event handler. Will be passed the most recent form values */
+  onSubmit: PropTypes.func,
+  /** Is the form cancellable? If true a cancel button will render */
+  cancellable: PropTypes.bool,
+  /** Optional override for the cancel button label */
+  cancelLabel: PropTypes.string,
+  /** Cancel event handler */
+  onCancel: PropTypes.func,
+  /** Form come in two sizes. The value passed in here will be propagated down to all contained form fields */
   size: formSize,
+  /** Boolean to render form fields inline. The value passed in here will be propagated down to all contained form fields */
   inline: PropTypes.bool,
+  /** Positioning of the action buttons  */
   actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
-  //* Text to display as the Submit button */
+  /** Is the form disabled? Will disable all fields and actions */
   disabled: PropTypes.bool,
-  /* This is a single error field for the entire form */
+  /** A single error message, to be rendered in a banner, above the entire form */
   error: PropTypes.string,
+  /** All relevant form fields and form sections must be passed in as children */
   children: PropTypes.node,
+  /** Optional additional className */
   className: PropTypes.string,
+  /** Optional additional inline style */
   style: PropTypes.shape({}),
 };
 
