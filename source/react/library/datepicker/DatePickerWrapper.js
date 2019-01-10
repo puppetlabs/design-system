@@ -43,7 +43,7 @@ class DatePickerWrapper extends React.Component {
     this.setRange = this.setRange.bind(this);
   }
 
-  setRange(range) {
+  setRange(range, rangeOption) {
     const { onChange } = this.props;
     const dates = {};
 
@@ -55,7 +55,7 @@ class DatePickerWrapper extends React.Component {
       dates.end = moment().endOf('day');
     }
 
-    onChange(dates);
+    onChange(dates, null, rangeOption);
   }
 
   getRanges() {
@@ -70,7 +70,7 @@ class DatePickerWrapper extends React.Component {
       const start = moment()
         .startOf('day')
         .subtract(range.count, range.unit);
-      const onClick = this.setRange.bind(this, start);
+      const onClick = this.setRange.bind(this, start, range);
       const selected = this.isSelected(range);
       const className = classnames({ selected });
 

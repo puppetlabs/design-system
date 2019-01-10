@@ -93,15 +93,18 @@ class DatePicker extends React.Component {
     }
   }
 
-  onChange(dates) {
+  onChange(dates, rawData, rangeOption) {
     const { onChange, timezone } = this.props;
     // Convert the dates coming out of the picker in to the requested timezone
     // if the timezone info has been configured on the datepicker.
-    onChange({
-      ...dates,
-      start: parseDate(dates.start, timezone),
-      end: parseDate(dates.end, timezone),
-    });
+    onChange(
+      {
+        ...dates,
+        start: parseDate(dates.start, timezone),
+        end: parseDate(dates.end, timezone),
+      },
+      rangeOption,
+    );
 
     this.popover.close();
   }
