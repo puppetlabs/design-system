@@ -55,7 +55,7 @@ class DatePickerWrapper extends React.Component {
       dates.end = moment().endOf('day');
     }
 
-    onChange(dates, null, rangeOption);
+    onChange(dates, rangeOption);
   }
 
   getRanges() {
@@ -117,7 +117,7 @@ class DatePickerWrapper extends React.Component {
           numberOfCalendars={2}
           selectionType="range"
           bemBlock="rc-datepicker"
-          onSelect={onChange}
+          onSelect={dates => onChange(dates)}
           value={range}
           singleDateRange
         />
