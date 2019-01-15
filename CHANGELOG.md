@@ -1,3 +1,6 @@
+# 5.0.0-alpha.5
+- Include the clicked date range option as a param in Datepicker callback
+
 # 5.0.0-alpha.4
 - Bug fix: correct propTypes on Checkbox required prop
 
