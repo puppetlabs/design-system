@@ -96,6 +96,7 @@ class Section extends React.Component {
     const newState = {};
 
     const isAccordion = !!children;
+
     onSectionClick(title, isAccordion);
 
     // If section has children, enable toggle
@@ -197,7 +198,7 @@ class Section extends React.Component {
       }
     }
 
-    if (open && subsectionLength) {
+    if (open) {
       subsection = this.renderSubsection();
 
       subsection = <div className="rc-sidebar-items">{subsection}</div>;
