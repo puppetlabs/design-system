@@ -9,6 +9,7 @@ import SubsectionItem from './SubsectionItem';
 
 const propTypes = {
   children: PropTypes.node,
+  className: PropTypes.string,
   /** Easy prop to enable toggle between sidebar sizes */
   togglable: PropTypes.bool,
   /** Is sidebar at the smaller size? */
@@ -24,6 +25,7 @@ const propTypes = {
 
 const defaultProps = {
   children: [],
+  className: '',
   togglable: false,
   minimized: false,
   onToggle: () => {},
@@ -140,12 +142,12 @@ class Sidebar extends React.Component {
   }
 
   render() {
-    const { togglable, theme } = this.props;
+    const { togglable, theme, className } = this.props;
     const { minimized } = this.state;
     const sections = this.getSections();
     const logo = this.renderLogo();
 
-    const className = classnames('rc-sidebar', {
+    const classNames = classnames('rc-sidebar', className, {
       'rc-sidebar-minimized': minimized,
       [`rc-sidebar-${theme}`]: theme,
     });
@@ -156,7 +158,7 @@ class Sidebar extends React.Component {
     }
 
     return (
-      <div className={className}>
+      <div className={classNames}>
         {logo}
         <ul className="rc-sidebar-level-1">{sections}</ul>
         {toggle}
