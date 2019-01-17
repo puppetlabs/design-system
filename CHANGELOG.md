@@ -1,11 +1,20 @@
+# 5.0.0-alpha.6
+
+- Add the ability to pass a classname to sidebar
+- Adding a two tone optoin to the code icon
+
 # 5.0.0-alpha.5
+
 - Include the clicked date range option as a param in Datepicker callback
 
 # 5.0.0-alpha.4
+
 - Bug fix: correct propTypes on Checkbox required prop
 
 # 5.0.0-alpha.3
+
 Sidebar component:
+
 - Add badge for number of custom reports
 - Fix the logo to the top of page and contain scroll to main content
 - Always enable open/close on sections with sub items
@@ -17,21 +26,26 @@ Sidebar component:
 - Fix bug whereby navigating from “view all reports…” page loses active state
 
 Filters component:
+
 - Filters component should show form, not “Add” button, if no filters exist
 - Filters component should not render cancel button if no filters exist
 
 Accordion component:
+
 - Let accordion render a badge next to section title
 
 Tag Component
+
 - Update base styles
 - Bester silo nested click events
 - Improve markdown in styleguide
 
 Timeseries
+
 - Remove icon
 
 Fix regressions in three areas:
+
 - Datagrid search (broken)
 - Series limits and Groups limits (broken)
 - Active/hover states for component cards (got lost in styleguide updates)
