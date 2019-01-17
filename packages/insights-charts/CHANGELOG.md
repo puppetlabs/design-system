@@ -1,3 +1,7 @@
+# 0.13.8
+
+* Bug fix to set a default series type of line on all sparklines
+
 # 0.13.7
 
 * Set a reasonable default for legend height and width when none is provided

@@ -35,14 +35,23 @@ class SparklineChart extends Chart {
     const x = this.xScale.generate();
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
-      const data = this.data.getDataByYAxis(yAxisIndex);
+      let data = this.data.getDataByYAxis(yAxisIndex);
       let seriesColumn;
       let seriesLine;
       let seriesArea;
       let seriesAreaLine;
 
+      // If there is no type defined on the series then default each series to a line
+      data = data.map((d) => {
+        if (!d.type) {
+          d.type = 'line';
+        }
+
+        return d;
+      });
+
       if (data.length > 0) {
-        const types = data.map(d => (d.type));
+        const types = data.filter(d => d.type).map(d => (d.type));
         const yScale = new YScale(data, yOptions, options.layout, dimensions);
         const y = yScale.generate();
 

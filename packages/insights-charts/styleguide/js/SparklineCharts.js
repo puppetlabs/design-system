@@ -14,12 +14,12 @@ class SparklineCharts extends React.Component {
     const dataPoints = 10;
     const { animations, sparseness } = this.props;
 
+    // by default the series should be a line
     const data = {
       categories: getRandomCategories(dataPoints),
       series: [
         {
           label: 'Loss',
-          type: 'line',
           data: getRandomData(dataPoints, { sparseness }),
         },
       ],
