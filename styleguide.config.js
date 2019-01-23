@@ -31,6 +31,7 @@ module.exports = {
   ],
   require: [
     path.join(__dirname, 'styleguideSetup.js'),
+    path.join(__dirname, 'source/scss/styleguide.scss'),
     path.join(__dirname, 'source/scss/library/ui.scss'),
   ],
   webpackConfig: {
