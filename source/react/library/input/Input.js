@@ -53,7 +53,7 @@ const propTypes = {
 const defaultProps = {
   type: 'text',
   size: 'medium',
-  value: undefined,
+  value: '',
   placeholder: '',
   simple: false,
   disabled: false,

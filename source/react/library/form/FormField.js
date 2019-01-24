@@ -55,7 +55,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  value: '',
+  value: undefined,
   size: 'medium',
   error: '',
   description: '',
