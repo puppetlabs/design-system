@@ -37,13 +37,13 @@ const Icon = props => {
   let icon = null;
 
   if (!svg && icons[type]) {
-    const { svg: altnerateSvg } = icons[type];
-    svg = altnerateSvg;
+    const { svg: alternateSvg } = icons[type];
+    svg = alternateSvg;
   }
 
   if (!viewBox && icons[type]) {
-    const { viewBox: altnerateViewBox } = icons[type];
-    viewBox = altnerateViewBox;
+    const { viewBox: alternateViewBox } = icons[type];
+    viewBox = alternateViewBox;
   }
 
   if (size) {

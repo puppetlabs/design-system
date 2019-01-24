@@ -1,3 +1,10 @@
+# 4.16.1
+
+- Add `secondary` boolean prop to SplitButton to use the secondary background color
+- Update Sketchfiles
+- Set default apply apply label
+
+
 # 4.16.0
 
 - Add ability for consumers of `Table` to specify how row key props are generated
