@@ -10,13 +10,13 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   /** Human friendly label */
   label: PropTypes.string.isRequired,
-  /** Is the input checked? */
+  /** Boolean input value determining if the checkbox is checked or not */
   value: PropTypes.bool,
   /** Is the input disabled */
   disabled: PropTypes.bool,
   /** Form error, causing element to render red when present */
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  /** Is the input required */
+  /** Ref method passed to the inner input element */
   inputRef: PropTypes.func,
   /** Change handler. Passed in order: new value, original event. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
   onChange: PropTypes.func,
