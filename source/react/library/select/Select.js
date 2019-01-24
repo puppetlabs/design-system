@@ -51,6 +51,8 @@ const propTypes = {
   typeahead: PropTypes.bool,
   /** If true an 'x' icon button will render next to the input for clearing */
   clearable: PropTypes.bool,
+  /** Optional override to hide value display, for certain cases when the values are displayed elsewhere */
+  valueless: PropTypes.bool,
   /** Input placeholder */
   placeholder: PropTypes.string,
   /** Disables default 'portal' usage, rendering menu in normal dom structure */
@@ -71,6 +73,7 @@ const defaultProps = {
   type: 'select',
   disablePortal: false,
   clearable: false,
+  valueless: false,
   typeahead: true,
   disabled: false,
   required: false,
