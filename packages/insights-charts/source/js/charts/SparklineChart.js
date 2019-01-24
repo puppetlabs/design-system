@@ -9,6 +9,16 @@ import SeriesLine from '../lib/series/SeriesLine';
 import SeriesColumn from '../lib/series/SeriesColumn';
 import CSS from '../helpers/css';
 
+const normalizeData = data => (
+  data.map((d) => {
+    if (!d.type) {
+      d.type = 'line';
+    }
+
+    return d;
+  })
+);
+
 class SparklineChart extends Chart {
   constructor({ elem, type, data, options, dispatchers, id }) {
     super({ elem, type, data, options, dispatchers, id });
@@ -36,19 +46,14 @@ class SparklineChart extends Chart {
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
       let data = this.data.getDataByYAxis(yAxisIndex);
+
+      // If there is no type defined on the series then default each series to a line
+      data = normalizeData(data);
+
       let seriesColumn;
       let seriesLine;
       let seriesArea;
       let seriesAreaLine;
-
-      // If there is no type defined on the series then default each series to a line
-      data = data.map((d) => {
-        if (!d.type) {
-          d.type = 'line';
-        }
-
-        return d;
-      });
 
       if (data.length > 0) {
         const types = data.filter(d => d.type).map(d => (d.type));
@@ -161,7 +166,11 @@ class SparklineChart extends Chart {
     this.clipPath.update(dimensions, options, this.id);
 
     options.axis.y.forEach((yOptions, yAxisIndex) => {
-      const data = this.data.getDataByYAxis(yAxisIndex);
+      let data = this.data.getDataByYAxis(yAxisIndex);
+
+      // If there is no type defined on the series then default each series to a line
+      data = normalizeData(data);
+
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {

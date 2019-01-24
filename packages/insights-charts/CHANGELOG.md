@@ -1,3 +1,8 @@
+# 0.13.9
+
+* Bug fix for sparkline not rendering on update
+* Bug fix for vertically centering sparklines within a div
+
 # 0.13.8
 
 * Bug fix to set a default series type of line on all sparklines

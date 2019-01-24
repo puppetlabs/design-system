@@ -8,6 +8,7 @@ import XScale from './scales/XScale';
 import YScale from './scales/YScale';
 import XAxis from './axis/XAxis';
 import YAxis from './axis/YAxis';
+import { CHARTS_WITH_NO_MARGINS } from '../constants';
 
 class Container {
   constructor(data, options, dispatchers) {
@@ -67,12 +68,9 @@ class Container {
     const dimensions = this.dimensions;
     const margins = this.dimensions.margins;
 
-    if (
-      this.type !== 'sparkline' &&
-      this.type !== 'donut' &&
-      this.type !== 'gauge' &&
-      margins.static !== true
-    ) {
+    // If the chart allows for margins (currently donuts, sparklines and gauges do not)
+    // and the margins are NOT set to static, then run the following calculations.
+    if (CHARTS_WITH_NO_MARGINS.indexOf(this.type) === -1 && margins.static !== true) {
       const options = this.options;
       const orientation = options.axis.x.orientation;
       const categories = this.data.getCategories().map(c => (c.label));
@@ -298,26 +296,37 @@ class Container {
     }
   }
 
+  getHorizontalMargin(margins) {
+    return CHARTS_WITH_NO_MARGINS.indexOf(this.type) === -1 ? margins.left + margins.right : 0;
+  }
+
+  getVerticalMargin(margins) {
+    return CHARTS_WITH_NO_MARGINS.indexOf(this.type) === -1 ? margins.top + margins.bottom : 0;
+  }
+
+  getTranslation(margins) {
+    return CHARTS_WITH_NO_MARGINS.indexOf(this.type) === -1 ? `${margins.left},${margins.top}` : '0, 0';
+  }
+
   renderSVG(legend) {
     const { width, height, margins } = this.getDimensions();
     const { options } = this;
 
+    const horizontalMargins = this.getHorizontalMargin(margins);
+    const verticalMargins = this.getVerticalMargin(margins);
+    const translation = this.getTranslation(margins);
+
     this.svg = this.wrapper
       .append('svg')
         .attr('class', CSS.getClassName('svg'))
-        .attr('width', width + margins.left + margins.right)
-        .style('width', `${width + margins.left + margins.right}px`)
-        .attr('height', height + margins.top + margins.bottom)
-        .style('height', `${height + margins.top + margins.bottom}px`)
+        .attr('width', width + horizontalMargins)
+        .style('width', `${width + horizontalMargins}px`)
+        .attr('height', height + verticalMargins)
+        .style('height', `${height + verticalMargins}px`)
         .style('margin-top', options.legend.orientation === 'top' && legend ? `${legend.height}px` : null)
         .style('margin-left', options.legend.orientation === 'left' && legend ? `${legend.width}px` : null);
 
-    // TODO: we need to figure out a better way to position the gauge chart. This is only intended
-    // as a quick fix
-    const translation = this.type !== 'gauge' ? `${margins.left},${margins.top}` : '0, 0';
-
-    this.g = this.svg.append('g')
-        .attr('transform', `translate(${translation})`);
+    this.g = this.svg.append('g').attr('transform', `translate(${translation})`);
 
     return this;
   }
@@ -345,16 +354,22 @@ class Container {
       legend = this.legend.container.node().getBoundingClientRect();
     }
 
+    const horizontalMargins = this.getHorizontalMargin(margins);
+    const verticalMargins = this.getVerticalMargin(margins);
+    const translation = this.getTranslation(margins);
+
     this.wrapper
       .select('svg')
-        .attr('width', width + margins.left + margins.right)
-        .style('width', `${width + margins.left + margins.right}px`)
-        .attr('height', height + margins.top + margins.bottom)
-        .style('height', `${height + margins.top + margins.bottom}px`)
+        .attr('width', width + horizontalMargins)
+        .style('width', `${width + horizontalMargins}px`)
+        .attr('height', height + verticalMargins)
+        .style('height', `${height + verticalMargins}px`)
         .style('margin-top', options.legend.orientation === 'top' && legend ? `${legend.height}px` : null)
-        .style('margin-left', options.legend.orientation === 'left' && legend ? `${legend.width}px` : null)
-      .select('g')
-        .attr('transform', `translate(${margins.left},${margins.top})`);
+        .style('margin-left', options.legend.orientation === 'left' && legend ? `${legend.width}px` : null);
+
+    this.g.attr('transform', `translate(${translation})`);
+
+    return this;
   }
 }
 
