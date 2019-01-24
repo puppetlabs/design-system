@@ -1,6 +1,9 @@
 # 4.16.1
 
 - Add `secondary` boolean prop to SplitButton to use the secondary background color
+- Update Sketchfiles
+- Set default apply apply label
+
 
 # 4.16.0
 
