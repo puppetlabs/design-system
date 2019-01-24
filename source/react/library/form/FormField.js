@@ -152,10 +152,14 @@ class FormField extends React.Component {
   }
 
   render() {
-    const { name, label, className, inline, error, style } = this.props;
+    const { type, name, label, className, inline, error, style } = this.props;
     const description = this.renderDescription();
     const typeName = this.getTypeName();
     const element = this.renderElement();
+
+    if (type === 'hidden') {
+      return element;
+    }
 
     return (
       <div

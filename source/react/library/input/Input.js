@@ -16,6 +16,7 @@ export const SUPPORTED_TYPES = [
   'search',
   'number',
   'multiline',
+  'hidden',
 ];
 
 const propTypes = {
