@@ -134,12 +134,6 @@ class Form extends React.Component {
     this.onChange = this.onChange.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    this.initialValues = getValues(newProps.children);
-
-    this.setState({ values: { ...this.initialValues } });
-  }
-
   onSubmit(e) {
     e.preventDefault();
     const { onSubmit } = this.props;
