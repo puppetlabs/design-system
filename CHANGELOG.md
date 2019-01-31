@@ -1,3 +1,8 @@
+# 5.0.0-alpha.7
+
+- Always reveal view all reports link for My Reports
+- Add color palettes to styleguidist
+
 # 5.0.0-alpha.6
 
 - Add the ability to pass a classname to sidebar
