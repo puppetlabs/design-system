@@ -1,3 +1,60 @@
+# 5.0.0-alpha.8
+
+- Update Form.Field component:
+  - **breaking change** `size` prop is now restricted to `medium` and `small`
+  - **breaking change** remove `tooltip` prop option
+  - **breaking change** remove `elementProps` prop, replace by spreading all additional props to inner input element.
+  - Create standardized FormField interface
+  - Clean up internal code substantially based on standardized input interface
+  - Create extensive documentation for the use and intent of `Form.Field`
+- Update Input component:
+  - **breaking change** Restrict to `medium` and `small` sizes
+  - Remove unnecessary internal event handling
+  - Pass `className` and inline `style` to top level wrapper div
+  - Spread all props down to internal input
+  - **breaking change**: Remove `.focus()` and `.blur` methods in favor of an `inputRef` prop that allows users direct access to the inner dom element.
+  - **breaking change** Remove `multiline` boolean prop in favor of `<Input type="multiline" />`. This clarifies the API and will make the component easier to use via `Form.Field`.
+  - Fix visual bugs in icon inputs
+  - **breaking change** replace boolean `icon` prop with string `icon` prop so that an arbitrary icon can be used inside the input field.
+  - Add `trailingIcon` prop, for a trailing icon
+  - **Breaking change** onChange handler now reports back the new input value, parsed based on input type, rather than the original event. This change is to standardize the Form.Field interface.
+  - **breaking change** deprecate boolean `autoComplete` prop in favor of the ability to pass `autoComplete = 'off'` to the inner element via spread-props.
+  - Clean up internal implementation significantly.
+  - Update input documentation
+- Update checkbox component:
+  - Remove unnecessary internal state management
+  - Spread all props to internal element
+  - Introduce label element to input, styled appropriately and positioned to the right of the element
+  - Accessibility fix: Use native disabled and required tags on inner input element.
+  - Update checkbox documentation
+  - **breaking change** name and label are now required props
+  - **breaking change** checkbox now takes its value from `value` prop rather than `checked` prop. This is to align with FormField interface
+- Update Switch component:
+  - Spread all props to internal element
+  - Accessibility fix: Don't use `label` element for internal rendering
+  - Update documentation
+  - Remove unnecessary internal state management
+  - Spread all props to internal element
+  - Introduce label element to input, styled appropriately and positioned to the right of the element
+  - Accessibility fix: Use native disabled and required tags on inner input element.
+  - Update checkbox documentation
+  - **breaking change** name and label are now required props
+  - **breaking change** checkbox now takes its value from `value` prop rather than `checked` prop. This is to align with FormField interface
+  - **breaking change** `onChange` callback now reports new value, rather than original event. This is to align with the FormField interface.
+- Update `Select` component:
+  - **breaking change** `name` prop is now required
+  - **breaking change** replace `onSelect` prop with `onChange` prop. This is to standardize FormField interface, the methods function identically.
+  - **breaking change** replace `selected` prop with `value` prop. This is to standardize FormField interface.
+  - **breaking change** Select now only accepts `medium` and `small` as size options.
+  - ** breaking change** Remove new option functionality including unused `onPendingDeleteChange`, `onNewOption`, and `newOptionLabel` props.
+  - **breaking change** remove unused `valueless prop
+- **breaking change**: Remove `Toggle` component
+- Misc changes to account for form field changes:
+  - Update Card.ActionsSearch to use formsize small
+  - Internal updates in FilterForm to account for FormField differences
+  - Remove unnecessary option parsing from `ColumnSelect` component (Select does its own selection parsing)
+  - Tweak `Text` component so that `medium` size is default rather than `null`. This aligns with how size is used in `FormFields` and produces no breaking chnages because the default is still the same.
+
 # 5.0.0-alpha.7
 
 - Always reveal view all reports link for My Reports
@@ -81,7 +138,6 @@ Fix regressions in three areas:
 - Add `secondary` boolean prop to SplitButton to use the secondary background color
 - Update Sketchfiles
 - Set default apply apply label
-
 
 # 4.16.0
 
