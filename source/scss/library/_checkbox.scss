@@ -1,5 +1,12 @@
+.rc-checkbox-input {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
 .rc-checkbox-container {
-  display: inline-block;
+  height: 16px;
+  margin-right: 10px;
   position: relative;
 }
 
@@ -20,37 +27,35 @@
   width: $puppet-medium;
 }
 
-.rc-checkbox::-ms-check {
-  border: $puppet-checkbox-border;
-  border-radius: $puppet-checkbox-border-radius;
-  color: $puppet-bg-light;
-}
-
 .rc-checkbox + .rc-icon {
   animation: 200ms 1 ease-in rc-zoom-in;
   display: none;
   height: 16px;
+  left: 2px;
   pointer-events: none;
   position: absolute;
-  right: -2px;
   top: -1px;
   width: 16px;
+}
+
+.rc-checkbox-error {
+  border: $puppet-checkbox-border-error;
 }
 
 .rc-checkbox:hover {
   border: $puppet-checkbox-border-hover;
 
-  &.rc-checkbox-checked {
+  &.rc-checkbox:checked {
     border: $puppet-checkbox-border;
   }
 }
 
-.rc-checkbox-checked + .rc-icon {
+.rc-checkbox:checked + .rc-icon {
   display: block;
   fill: $puppet-checkbox-icon-fill;
 }
 
-.rc-checkbox-disabled {
+.rc-checkbox:disabled {
   cursor: default;
   opacity: $puppet-disabled-opacity;
 

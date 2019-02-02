@@ -7,6 +7,7 @@ import React from 'react';
 import ColumnSelect from '../../source/react/library/table/ColumnSelect';
 
 const defaultProps = {
+  name: 'name',
   data: "Hello, I'm a happy input",
   onChange: sinon.spy(),
   disabled: false,

@@ -1,350 +1,358 @@
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 import Alert from '../alert';
 import Button from '../buttons/Button';
-import { shallowDiff } from '../../helpers/statics';
+import {
+  componentHasType,
+  mapObj,
+  omit,
+  shallowDiff,
+} from '../../helpers/statics';
+import { formSize } from '../../helpers/customPropTypes';
 
 import FormField from './FormField';
-import FormFlyout from './FormFlyout';
 import FormSection from './FormSection';
 
 const propTypes = {
-  className: PropTypes.string,
-  disabled: PropTypes.bool,
+  /** Initial form field values. Should be an object with keys corresponding to the contained form field name */
+  initialValues: PropTypes.shape({}),
+  /** Current form field values when used in *controlled* mode. **should not be used concurrently with initialValues** */
+  values: PropTypes.shape({}),
+  /** onChange event handler for the whole form. Will be passed in order: the name of the field that changed, and the full set of new form values */
   onChange: PropTypes.func,
-  inline: PropTypes.bool,
-  onCancel: PropTypes.func,
-  onSubmit: PropTypes.func,
-  cancellable: PropTypes.bool,
-  //* Text to display as the Cancel button */
-  cancelLabel: PropTypes.string,
-  submittable: PropTypes.bool,
-  //* Text to display as the Submit button */
-  submitLabel: PropTypes.string,
-  /* Allow form submission even if the user has not changed the form yet */
-  allowUnchangedSubmit: PropTypes.bool,
-  validator: PropTypes.func,
-  /* Errors to render the form fields with. Keys are field names, and values are the field errors
-   * TODO: Deprecate this prop. Field-specific errors should be passed in through the relevant FormField */
-  errors: PropTypes.shape({}),
-  /* This is a single error field for the entire form */
-  error: PropTypes.string,
-  size: PropTypes.string,
+  /** Is the form currently submitting? The submit button will render a loading indicator if true */
   submitting: PropTypes.bool,
+  /** Is the form submittable? If true a submit button will render */
+  submittable: PropTypes.bool,
+  /** Optional override for the submit button label */
+  submitLabel: PropTypes.string,
+  /** Submit event handler. Will be passed the most recent form values */
+  onSubmit: PropTypes.func,
+  /** Is the form cancellable? If true a cancel button will render */
+  cancellable: PropTypes.bool,
+  /** Optional override for the cancel button label */
+  cancelLabel: PropTypes.string,
+  /** Cancel event handler */
+  onCancel: PropTypes.func,
+  /** Form come in two sizes. The value passed in here will be propagated down to all contained form fields */
+  size: formSize,
+  /** Boolean to render form fields inline. The value passed in here will be propagated down to all contained form fields */
+  inline: PropTypes.bool,
+  /** Positioning of the action buttons  */
   actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
+  /** Is the form disabled? Will disable all fields and actions */
+  disabled: PropTypes.bool,
+  /** A single error message, to be rendered in a banner, above the entire form */
+  error: PropTypes.string,
+  /** All relevant form fields and form sections must be passed in as children */
   children: PropTypes.node,
+  /** Optional additional className */
+  className: PropTypes.string,
+  /** Optional additional inline style */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  errors: {},
-  className: '',
-  disabled: false,
-  size: 'small',
-  inline: false,
-  onChange: null,
-  onSubmit: null,
-  children: null,
-  validator: null,
-  error: '',
-  allowUnchangedSubmit: false,
-  onCancel: () => {},
-  cancellable: false,
-  cancelLabel: 'Cancel',
-  submitting: false,
+  initialValues: {},
+  values: undefined,
   submittable: false,
   submitLabel: 'Submit',
+  onSubmit() {},
+  cancellable: false,
+  cancelLabel: 'Cancel',
+  onCancel() {},
+  onChange() {},
+  submitting: false,
+  size: 'medium',
+  inline: false,
   actionsPosition: 'right',
+  disabled: false,
+  error: '',
+  children: null,
+  className: '',
+  style: {},
 };
 
 const isEmpty = str => !str || str.match(/^\s*$/);
 
 /**
- * When using react-hot-loader, all components are actually proxied to another
- * type. This makes the strict equality check on the Type fail, but luckily they
- * extend the class in their proxy, so we can check against the prototype.
- *
- * @see https://github.com/gaearon/react-hot-loader/issues/304
+ * Collects the user provided props for all FormFields into
+ * an object, with props indexed by name
  */
-const componentHasType = (component, Type) =>
-  component &&
-  component.type &&
-  (component.type === Type || component.type.prototype instanceof Type);
+const collectFieldProps = children => {
+  const fields = {};
 
-const getValues = children => {
-  let values = {};
-
-  React.Children.forEach(children, child => {
-    if (
-      componentHasType(child, FormField) ||
-      componentHasType(child, FormSection)
-    ) {
-      if (child.props.name) {
-        values[child.props.name] = child.props.value;
-      } else if (child.props.children) {
-        values = Object.assign(values, getValues(child.props.children));
+  React.Children.toArray(children)
+    .filter(child => child && child.props)
+    .forEach(child => {
+      if (child.props.children) {
+        Object.assign(fields, collectFieldProps(child.props.children));
       }
 
-      // TODO: Figure something else out here. This is incredibly hacky and makes me cry.
-      if (child.props.flyout) {
-        values = Object.assign(
-          values,
-          getValues(child.props.flyout.props.children),
-        );
+      if (componentHasType(child, FormField)) {
+        fields[child.props.name] = child.props;
       }
-    }
-  });
+    });
 
-  return values;
+  return fields;
 };
 
-const getRequiredFields = children =>
-  React.Children.toArray(children)
-    .filter(({ props: { required } }) => required)
-    .map(({ props: { name, requiredFieldMessage } }) => ({
-      name,
-      requiredFieldMessage,
-    }));
+const isFormValid = fieldProps =>
+  !Object.values(fieldProps).some(props => props.error);
 
-/**
- * `Form` is a container component for rendering forms.
- */
-class Form extends React.Component {
+const renderField = (child, updatedFieldProps) =>
+  React.createElement(child.type, {
+    key: updatedFieldProps.name,
+    ...updatedFieldProps,
+  });
+
+const renderChildren = (children, updatedFieldPropMap) =>
+  React.Children.toArray(children)
+    .filter(child => child && child.props)
+    .map(child => {
+      /**
+       * If the child is a field, do special field rendering
+       */
+      if (componentHasType(child, FormField)) {
+        return renderField(child, updatedFieldPropMap[child.props.name]);
+      }
+
+      /**
+       * If the child has children, recurse. This will cover Form.Section and any wrapper divs
+       */
+      if (child.props.children) {
+        return React.cloneElement(child, {
+          children: renderChildren(child.props.children, updatedFieldPropMap),
+        });
+      }
+
+      return child;
+    });
+
+class Form extends Component {
   constructor(props) {
     super(props);
 
-    const { allowUnchangedSubmit } = props;
+    this.state = {};
 
-    /**
-     * Noting initial form values so that we can determine when the values have changed
-     */
-    this.initialValues = getValues(props.children);
-
-    // Boolean to block form submission until the user has changed something
-    this.allowSubmission = allowUnchangedSubmit;
-
-    this.state = {
-      values: { ...this.initialValues },
-      valid: true,
-      validatorErrors: {},
-    };
-
+    this.updateFieldProps = this.updateFieldProps.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
-    this.onCancel = this.onCancel.bind(this);
-    this.onChange = this.onChange.bind(this);
   }
 
-  onSubmit(e) {
-    e.preventDefault();
-    const { onSubmit } = this.props;
-    const { values } = this.state;
-    const validatorErrors = this.validate(values);
-    const valid = Object.keys(validatorErrors).length === 0;
-
-    if (onSubmit) {
-      this.setState({ valid, validatorErrors }, () => {
-        if (valid) {
-          onSubmit(this.state);
-        }
-      });
-    }
-  }
-
-  onCancel() {
-    const { onCancel } = this.props;
-
-    if (onCancel) {
-      onCancel();
-    }
-  }
-
-  onChange(name) {
-    const { onChange } = this.props;
-    const { valid, values } = this.state;
-
-    /**
-     * If form is unchanged from initial values, test if that is still true
-     */
-    if (!this.allowSubmission && shallowDiff(values, this.initialValues)) {
-      this.allowSubmission = true;
-    }
-
-    return value => {
-      const newState = Object.assign({}, this.state);
-
-      newState.values[name] = value;
-
-      // we only want to validate on change if the form has been deemed invalid and the user
-      // is attempting to fix the mistakes
-      if (!valid) {
-        const validatorErrors = this.validate(newState.values);
-        newState.validatorErrors = validatorErrors;
-        newState.valid = Object.keys(validatorErrors).length === 0;
-      }
-
-      this.setState(newState, () => {
-        if (onChange) {
-          onChange(name, values, newState.valid);
-        }
-      });
-    };
-  }
-
-  validate(values) {
-    const { validator, children } = this.props;
-
-    const requiredFields = getRequiredFields(children);
-
-    const errors = {};
-
-    if (requiredFields.length) {
-      requiredFields.forEach(({ name, requiredFieldMessage }) => {
-        if (isEmpty(values[name])) {
-          errors[name] = requiredFieldMessage;
-        }
-      });
-    }
-
-    if (validator) {
+  static getDerivedStateFromProps(props, state) {
+    if (
+      !state.initialValues ||
+      shallowDiff(state.initialValues, props.initialValues)
+    ) {
       return {
-        ...validator(values),
-        ...errors,
+        validate: false,
+        initialValues: props.initialValues,
+        values: props.initialValues,
       };
     }
 
-    return errors;
+    return null;
   }
 
-  renderField(child) {
-    const { error, errors, size } = this.props;
-    const { validatorErrors, values } = this.state;
+  onChange(name, value) {
+    const { onChange } = this.props;
+    const values = this.getValues();
 
-    return React.cloneElement(child, {
-      error:
-        child.props.error ||
-        errors[child.props.name] ||
-        validatorErrors[child.props.name] ||
-        !!error,
-      value: values[child.props.name],
-      onChange: this.onChange(child.props.name),
-      size,
-      key: child.props.name,
-    });
-  }
-
-  renderFlyout(flyout) {
-    const props = {};
-
-    if (flyout.props.children) {
-      props.children = this.renderChildren(flyout.props.children);
-    }
-
-    return React.cloneElement(flyout, props);
-  }
-
-  renderSection(child) {
-    const props = {
-      children: this.renderChildren(child.props.children),
+    const newValues = {
+      ...values,
+      [name]: value,
     };
 
-    // Only render the flyout fields if they have been provided.
-    if (child.props.flyout) {
-      props.flyout = this.renderFlyout(child.props.flyout);
+    if (!this.isControlled()) {
+      this.setState({ values: newValues });
     }
 
-    return React.cloneElement(child, props);
+    onChange(name, newValues);
   }
 
-  renderChildren(children) {
-    const jsx = [];
+  async onSubmit(e) {
+    e.preventDefault();
+    const { children: userProvidedChildren } = this.props;
+    const { onSubmit } = this.props;
 
-    React.Children.forEach(children, child => {
-      if (componentHasType(child, FormField)) {
-        jsx.push(this.renderField(child));
-      } else if (componentHasType(child, FormSection)) {
-        jsx.push(this.renderSection(child));
-      } else {
-        jsx.push(child);
-      }
+    /**
+     * Await state update, so that validate: true setting doesn't get overridden by
+     * getDerivedStateFromProps
+     */
+    await new Promise(resolve => this.setState({ validate: true }, resolve));
+
+    /**
+     * Collect child props to run validation again, this time with custom
+     * validators always on
+     */
+    const fieldProps = mapObj(collectFieldProps(userProvidedChildren), props =>
+      this.updateFieldProps(props, true),
+    );
+
+    const isValid = isFormValid(fieldProps);
+
+    if (isValid) {
+      const values = this.getValues();
+      onSubmit(values);
+    }
+  }
+
+  getValues() {
+    const { values: stateValues } = this.state;
+    const { values: propValues } = this.props;
+
+    return propValues || stateValues;
+  }
+
+  isControlled() {
+    const { values } = this.props;
+
+    return !!values;
+  }
+
+  /**
+   * Meant to be called from the outside through a ref, if the user ever needs
+   * to reset validation on a controlled component
+   */
+  reset() {
+    this.setState({
+      validate: false,
     });
-
-    return jsx;
   }
 
-  renderActions() {
+  /**
+   * Updates user provdided props to child Form.Field components with validation
+   * and other context from the parent Form component
+   */
+  updateFieldProps(userProvidedFieldProps, validate) {
     const {
-      actionsPosition,
-      cancellable,
-      disabled,
+      name,
+      error: userProvidedError,
+      required,
+      requiredFieldMessage,
+      validator,
+    } = userProvidedFieldProps;
+
+    const { size, inline, disabled } = this.props;
+    const values = this.getValues();
+    const value = values[name];
+
+    let error = userProvidedError;
+
+    if (validate && !error) {
+      if (required && isEmpty(value)) {
+        error = requiredFieldMessage;
+      } else if (validator) {
+        error = validator(value, values);
+      }
+    }
+
+    /**
+     * These fields are removed because they are only used by the parent
+     * Form element to set the final error value (above), not by the consuming
+     * Form.Field
+     */
+    const fieldProps = omit(
+      ['requiredFieldMessage', 'validator'],
+      userProvidedFieldProps,
+    );
+
+    return {
+      ...fieldProps,
+      error,
+      disabled: disabled || userProvidedFieldProps.disabled,
+      size,
+      inline,
+      value: values[name],
+      onChange: val => this.onChange(name, val),
+    };
+  }
+
+  renderSubmitButton(isValid) {
+    const {
       submittable,
       submitting,
       size,
-      cancelLabel,
+      disabled,
       submitLabel,
+      actionsPosition,
     } = this.props;
-    const { valid } = this.state;
-    let actions;
-    let jsx;
-
-    let submitButton;
-    let cancelButton;
-
     if (submittable) {
-      submitButton = (
+      return (
         <Button
           key="submit"
           className="rc-form-action"
           type="submit"
           processing={submitting}
           size={size}
-          disabled={disabled || !valid || !this.allowSubmission}
+          disabled={disabled || !isValid}
           label={submitLabel}
           block={actionsPosition === 'block'}
         />
       );
     }
 
+    return null;
+  }
+
+  renderCancelButton() {
+    const {
+      cancellable,
+      size,
+      disabled,
+      onCancel,
+      cancelLabel,
+      actionsPosition,
+    } = this.props;
     if (cancellable) {
-      cancelButton = (
+      return (
         <Button
           key="cancel"
           className="rc-form-action"
           secondary
           size={size}
           disabled={disabled}
-          onClick={this.onCancel}
+          onClick={onCancel}
           label={cancelLabel}
           block={actionsPosition === 'block'}
         />
       );
     }
 
-    if (actionsPosition === 'right') {
-      actions = (
-        <Fragment>
-          {cancelButton}
-          {submitButton}
-        </Fragment>
-      );
-    } else {
-      actions = (
-        <Fragment>
-          {submitButton}
-          {cancelButton}
-        </Fragment>
-      );
+    return null;
+  }
+
+  renderActions(isValid) {
+    const { cancellable, submittable, actionsPosition } = this.props;
+
+    if (!(submittable || cancellable)) {
+      return null;
     }
 
-    const classNames = classnames(
+    const submitButton = this.renderSubmitButton(isValid);
+    const cancelButton = this.renderCancelButton();
+
+    const className = classNames(
       'rc-form-actions',
       `rc-form-actions-${actionsPosition}`,
     );
 
-    if (actions) {
-      jsx = <div className={classNames}>{actions}</div>;
+    if (actionsPosition === 'right') {
+      return (
+        <div className={className}>
+          {cancelButton}
+          {submitButton}
+        </div>
+      );
     }
 
-    return jsx;
+    return (
+      <div className={className}>
+        {submitButton}
+        {cancelButton}
+      </div>
+    );
   }
 
   renderFormError() {
@@ -367,28 +375,39 @@ class Form extends React.Component {
   }
 
   render() {
+    const { onSubmit } = this;
+    const { validate } = this.state;
     const {
-      children: childrenProp,
+      onCancel,
+      children: userProvidedChildren,
       className,
-      disabled,
-      inline,
-      size,
+      style,
     } = this.props;
-    const children = this.renderChildren(childrenProp);
-    const actions = this.renderActions();
+
+    /**
+     * Map of field name to updated props
+     */
+    const updatedFieldPropMap = mapObj(
+      collectFieldProps(userProvidedChildren),
+      props => this.updateFieldProps(props, validate),
+    );
+
+    const isValid = isFormValid(updatedFieldPropMap);
+
+    const children = renderChildren(userProvidedChildren, updatedFieldPropMap);
+    const actions = this.renderActions(isValid);
     const error = this.renderFormError();
-    const classNames = classnames('rc-form', className, {
-      [`rc-form-${size}`]: size,
-      'rc-form-inline': inline,
-    });
 
     return (
-      <form className={classNames} onSubmit={this.onSubmit}>
-        <fieldset className="rc-form-fields" disabled={disabled}>
-          {children}
-        </fieldset>
-        {error}
+      <form
+        className={classNames('rc-form', className)}
+        style={style}
+        onSubmit={onSubmit}
+        onCancel={onCancel}
+      >
+        {children}
         {actions}
+        {error}
       </form>
     );
   }
@@ -398,7 +417,6 @@ Form.propTypes = propTypes;
 Form.defaultProps = defaultProps;
 
 Form.Field = FormField;
-Form.Flyout = FormFlyout;
 Form.Section = FormSection;
 
 export default Form;

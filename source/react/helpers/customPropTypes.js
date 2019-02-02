@@ -24,6 +24,11 @@ export const elementElevation = PropTypes.oneOf([
 ]);
 
 /**
+ * Design system common form sizes
+ */
+export const formSize = PropTypes.oneOf(['medium', 'small']);
+
+/**
  * PropType wrapper that displays a deprecation message long with normal
  * propType checking.
  *

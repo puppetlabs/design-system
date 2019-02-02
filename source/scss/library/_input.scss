@@ -57,35 +57,14 @@
     @extend %disabled-input;
   }
 
-  &.rc-input-large {
-    font-size: $puppet-font-size-large;
-    height: $puppet-input-large-height;
-    line-height: $puppet-line-height-default;
-    padding: $puppet-input-large-padding;
-  }
-
-  &.rc-input-medium {
-    // Same as default
-  }
-
-  &.rc-input-small,
-  &.rc-input-tiny {
+  &.rc-input-small {
     font-size: $puppet-font-size-small;
     height: $puppet-input-small-height;
     padding: $puppet-input-small-padding;
   }
 }
 
-.rc-form-field-error .rc-input {
-  border: $puppet-input-border-error;
-}
-
-.rc-input::-ms-clear {
-  display: none;
-}
-
-.rc-input-multiline,
-.rc-input-medium.rc-input-multiline {
+.rc-input-multiline {
   height: $puppet-size-base * 9;
   resize: vertical;
   vertical-align: top;
@@ -95,16 +74,29 @@
   height: 56px;
 }
 
-.rc-input-icon {
+.rc-input-container {
   position: relative;
 
-  .rc-icon {
-    bottom: 10px;
+  .rc-input-icon {
     position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  .rc-input {
-    padding-left: 24px;
+  .rc-input-icon.leading {
+    left: $puppet-small;
+  }
+
+  .rc-input-icon.trailing {
+    right: $puppet-small;
+  }
+
+  .rc-input-icon.leading ~ .rc-input {
+    padding-left: 32px;
+  }
+
+  .rc-input-icon.trailing ~ .rc-input {
+    padding-right: 32px;
   }
 }
 
@@ -125,8 +117,4 @@
   border-right: 0 !important;
   border-top: 0 !important;
   box-shadow: none !important;
-}
-
-.rc-input-hidden {
-  display: none;
 }

@@ -40,6 +40,7 @@ class ColumnInput extends React.Component {
 
     return (
       <Input
+        name="column-input"
         type="text"
         size="small"
         value={data}

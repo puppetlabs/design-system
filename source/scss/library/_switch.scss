@@ -1,33 +1,69 @@
-@mixin hide-text {
-  .rc-icon {
+.rc-switch-input {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.rc-switch-container {
+  display: inline-block;
+  height: 21px;
+  margin-right: 10px;
+  position: relative;
+}
+
+// https://github.com/stylelint/stylelint/issues/331#issuecomment-127043187
+/* stylelint-disable property-no-vendor-prefix */
+.rc-switch-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: $puppet-circle-radius;
+  cursor: pointer;
+  height: $puppet-switch-height;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  width: $puppet-switch-width;
+
+  &:checked + .rc-switch-label {
+    background: $puppet-switch-on-bg;
+    color: $puppet-switch-on-text;
+  }
+
+  &:checked + .rc-switch-label:hover {
+    background: $puppet-switch-on-bg-hover;
+  }
+
+  &:checked + .rc-switch-label .rc-switch-label-off {
     display: none;
   }
-}
 
-@mixin show-text {
-  .rc-icon {
+  &:checked + .rc-switch-label .rc-switch-label-on {
     display: block;
   }
-}
 
-.rc-switch {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle;
+  &:checked + .rc-switch-label::after {
+    background: $puppet-switch-on-icon-fill;
+    left: calc(100% - (#{$puppet-switch-padding} + #{$puppet-switch-handle-height}));
+  }
 }
 
 .rc-switch-label {
   background: $puppet-switch-off-bg;
-  border-radius: 21px;
+  border-radius: $puppet-circle-radius;
   box-sizing: content-box;
   color: $puppet-switch-off-text;
   cursor: pointer;
   display: block;
   height: $puppet-switch-height;
+  left: 0;
   margin: 0;
   outline: 0;
   padding: 0;
-  position: relative;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
   transition: all 0.2s;
   width: $puppet-switch-width;
 
@@ -59,7 +95,7 @@
   }
 
   .rc-switch-label-off {
-    @include show-text;
+    display: block;
     left: 0;
     right: 0;
   }
@@ -76,7 +112,7 @@
   }
 
   .rc-switch-label-on {
-    @include hide-text;
+    display: none;
     left: 0;
     right: 0;
   }
@@ -96,35 +132,8 @@
   position: absolute;
 }
 
-.rc-switch-checkbox {
-  border: 0;
-  clip: rect(0, 0, 0, 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-
-  &:checked + .rc-switch-label {
-    background: $puppet-switch-on-bg;
-    color: $puppet-switch-on-text;
-  }
-
-  &:checked + .rc-switch-label:hover {
-    background: $puppet-switch-on-bg-hover;
-  }
-
-  &:checked + .rc-switch-label .rc-switch-label-off {
-    @include hide-text;
-  }
-
-  &:checked + .rc-switch-label .rc-switch-label-on {
-    @include show-text;
-  }
-
-  &:checked + .rc-switch-label::after {
-    background: $puppet-switch-on-icon-fill;
-    left: calc(100% - (#{$puppet-switch-padding} + #{$puppet-switch-handle-height}));
-  }
+.rc-switch-error {
+  // we need error state
 }
+
+/* stylelint-enable property-no-vendor-prefix */

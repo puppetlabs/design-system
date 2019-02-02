@@ -63,7 +63,7 @@ class CardActionsSearch extends React.Component {
           autoFocus
           onBlur={this.onSearchBlur}
           onKeyUp={this.onSearchKeyUp}
-          size="tiny"
+          size="small"
           placeholder="Type and hit enter to search"
           onChange={this.onChange}
         />

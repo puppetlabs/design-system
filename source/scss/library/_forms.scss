@@ -10,7 +10,6 @@
   }
 }
 
-.rc-form-fields,
 .rc-form-section {
   border: 0;
   margin: 0;
@@ -97,36 +96,6 @@
   text-transform: uppercase;
 }
 
-// Spacing interactions for different form fields
-.rc-form-section-legend + .rc-form-field-checkbox,
-.rc-form-field-checkbox + .rc-form-field {
-  padding-top: $puppet-form-vertical-padding;
-}
-
-// We want to position inline checkbox
-.rc-form-field-inline.rc-form-field-checkbox {
-  .rc-form-field-element {
-    flex-grow: 0;
-    margin-right: $puppet-form-field-margin;
-  }
-
-  .rc-form-field-label {
-    color: $puppet-form-label-color-dark;
-    display: block;
-    flex-grow: 0;
-    font-size: $puppet-form-label-font-size-large;
-    text-transform: lowercase;
-  }
-
-  .rc-form-field-label::first-letter {
-    text-transform: capitalize;
-  }
-
-  .rc-form-field-description {
-    justify-content: flex-start;
-  }
-}
-
 .rc-form-field-description {
   color: $puppet-form-description-color;
   font-size: $puppet-form-description-font-size;
@@ -184,17 +153,6 @@
 
   .rc-form-field-content {
     align-items: center;
-    display: flex;
-  }
-
-  .rc-form-field-element {
-    align-items: center;
-    display: flex;
-    flex-grow: 3;
-    justify-content: flex-end;
-  }
-
-  .rc-checkbox-container {
     display: flex;
   }
 
@@ -329,6 +287,16 @@
     .rc-filter-form-fields {
       border-top-right-radius: 0;
     }
+  }
+}
+
+// Specific field style overrides. These should be minimal
+
+.rc-form-field-checkbox,
+.rc-form-field-switch {
+  // Hide labels: these fields will use the label internally in a custom style
+  .rc-form-field-label {
+    display: none;
   }
 }
 

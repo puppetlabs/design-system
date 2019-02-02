@@ -6,7 +6,7 @@ import { expect } from 'chai';
 import Select from '../../source/react/library/select/Select';
 
 describe('<Select />', () => {
-  const defaultProps = { disablePortal: true };
+  const defaultProps = { name: 'selectySelect', disablePortal: true };
 
   it('should render without blowing up', () => {
     const wrapper = shallow(<Select {...defaultProps} />);
@@ -57,10 +57,10 @@ describe('<Select />', () => {
         { id: 'Coffee', value: 'Coffee', selected: true },
         { id: 'Tea', value: 'Tea' },
       ];
-      const onSelect = sinon.spy();
+      const onChange = sinon.spy();
       const wrapper = mount(
         <Select
-          onSelect={onSelect}
+          onChange={onChange}
           options={optionsWithSelected}
           {...defaultProps}
         />,
@@ -73,8 +73,8 @@ describe('<Select />', () => {
         .find('a')
         .simulate('click');
 
-      expect(onSelect.lastCall.args).to.eql([
-        optionsWithSelected[0], // first arg is the current item
+      expect(onChange.lastCall.args).to.eql([
+        optionsWithSelected[0].value, // first arg is the current item
         optionsWithSelected[0], // second arg is the item that was selected...
       ]);
     });
@@ -86,7 +86,7 @@ describe('<Select />', () => {
       ];
 
       const wrapper = mount(
-        <Select options={options} {...defaultProps} selected="Michael" />,
+        <Select options={options} {...defaultProps} value="Michael" />,
       );
 
       expect(wrapper.find('Input').prop('value')).to.equal('Sig');
@@ -101,10 +101,10 @@ describe('<Select />', () => {
 
       const wrapper = mount(
         <Select
-          multiple
+          type="multiselect"
           options={options}
           {...defaultProps}
-          selected={['Michael', 'Geoff']}
+          value={['Michael', 'Geoff']}
         />,
       );
 
@@ -119,11 +119,11 @@ describe('<Select />', () => {
     });
 
     it('should allow selected objects to be selected and deselected by clicking on them', () => {
-      const onSelect = sinon.spy();
+      const onChange = sinon.spy();
       const wrapper = mount(
         <Select
           clearable
-          onSelect={onSelect}
+          onChange={onChange}
           options={options}
           {...defaultProps}
         />,
@@ -140,8 +140,8 @@ describe('<Select />', () => {
         .simulate('click');
       wrapper.find('.rc-select-input').simulate('click');
 
-      expect(onSelect.lastCall.args).to.eql([
-        options[0], // first arg is the current item
+      expect(onChange.lastCall.args).to.eql([
+        options[0].value, // first arg is the current item
         options[0], // second arg is the item that was selected...
       ]);
 
@@ -155,15 +155,15 @@ describe('<Select />', () => {
         .simulate('click');
       wrapper.find('.rc-select-input').simulate('click');
 
-      expect(onSelect.lastCall.args).to.eql([undefined, options[0]]);
+      expect(onChange.lastCall.args).to.eql([undefined, options[0]]);
 
       expect(wrapper.find('.rc-menu-item-selected').length).to.eql(0);
     });
 
-    it('should emit the full object as a callback to onSelect', () => {
-      const onSelect = sinon.spy();
+    it('should emit the newly selected value onChange', () => {
+      const onChange = sinon.spy();
       const wrapper = mount(
-        <Select options={options} onSelect={onSelect} {...defaultProps} />,
+        <Select options={options} onChange={onChange} {...defaultProps} />,
       );
 
       wrapper.find('.rc-select-input').simulate('click');
@@ -177,11 +177,7 @@ describe('<Select />', () => {
         .find('a')
         .simulate('click');
 
-      expect(onSelect.lastCall.args[0]).to.eql({
-        id: 'Michael',
-        value: 'Michael',
-        label: 'Sig',
-      });
+      expect(onChange.lastCall.args[0]).to.eql('Michael');
 
       // Now we close the menu
       expect(wrapper.find('MenuItem').length).to.eql(0);
@@ -198,9 +194,9 @@ describe('<Select />', () => {
       // Should be showing all the items by default
       expect(wrapper.find('MenuItem').length).to.eql(3);
 
-      wrapper.find('Input').simulate('change', {
-        target: { value: 'Comp' },
-      });
+      const input = wrapper.find('input');
+      input.instance().value = 'Comp';
+      input.simulate('change');
 
       // Only showing the matching items now
       expect(wrapper.find('MenuItem').length).to.eql(2);
@@ -249,10 +245,10 @@ describe('<Select />', () => {
       ).to.eql('Ryan Lochte');
     });
 
-    it('should emit the option as an object as a callback to onSelect', () => {
-      const onSelect = sinon.spy();
+    it('should emit the new value as a callback onChange', () => {
+      const onChange = sinon.spy();
       const wrapper = mount(
-        <Select options={options} onSelect={onSelect} {...defaultProps} />,
+        <Select options={options} onChange={onChange} {...defaultProps} />,
       );
 
       wrapper.find('.rc-select-input').simulate('click');
@@ -266,11 +262,7 @@ describe('<Select />', () => {
         .find('a')
         .simulate('click');
 
-      expect(onSelect.lastCall.args[0]).to.eql({
-        id: 'Michael Phelps',
-        value: 'Michael Phelps',
-        label: 'Michael Phelps',
-      });
+      expect(onChange.lastCall.args[0]).to.eql('Michael Phelps');
 
       // Now we close the menu
       expect(wrapper.find('MenuItem').length).to.eql(0);

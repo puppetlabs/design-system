@@ -8,7 +8,7 @@ const options = [
 ];
 
 <Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
 />
@@ -24,10 +24,10 @@ const options = [
 ];
 
 <Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
-  selected="Option 1"
+  value="Option 1"
 />
 ```
 
@@ -45,7 +45,7 @@ const options = [
 ];
 
 <Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
 />
@@ -61,27 +61,10 @@ const options = [
 ];
 
 <Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
   size="small"
-/>
-```
-
-#### Large
-
-```
-const options = [
-  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode III  Revenge of the Sith',
-];
-
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-  size="large"
 />
 ```
 
@@ -105,7 +88,7 @@ const options = [
 #### Custom Actions
 
 ```
-const onSelect = (selected, modifiedOption) => {
+const onChange = (selected, modifiedOption) => {
   console.log(selected, modifiedOption);
 }
 
@@ -134,7 +117,7 @@ const options = [
   { value: 'Great Tequila with Actual Rocks', label: 'Great Tequila with Actual Rocks' }
 ];
 
-<Select options={ options } onSelect={ onSelect } onNewOption={ onNewOption } newOptionLabel="Add a New Drink" />
+<Select options={ options } onChange={ onChange } onNewOption={ onNewOption } newOptionLabel="Add a New Drink" />
 ```
 
 ---
@@ -157,7 +140,7 @@ const options = [
 ];
 
 <Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   disablePortal
   options={ options }
   placeholder="Select one..."
@@ -194,10 +177,10 @@ const options = [
 
 <Select
   multiple
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
-  selected={ [
+  value={ [
     'Option 1',
     'Option 2',
   ] }
@@ -208,13 +191,13 @@ const options = [
 
 ```
 const options = [
-  { value: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onSelect prop.', label: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onSelect prop.', selected: true },
+  { value: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onChange prop.', label: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onChange prop.', selected: true },
   { value: 'Sig', label: 'Sig', selected: true },
   { value: 'Colby', label: 'Colby' },
 ];
 
 <Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   multiple
   size="small"
   options={ options }
@@ -233,7 +216,7 @@ const options = [
 ];
 
 <Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
 
   options={ options }
 />

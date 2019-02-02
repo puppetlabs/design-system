@@ -1,87 +1,76 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classnames from 'classnames';
+import classNames from 'classnames';
 
 import Icon from '../icon/Icon';
+import Text from '../text/Text';
 
 const propTypes = {
   /** Name of the input */
-  name: PropTypes.string,
-  checked: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  /** Human friendly label */
+  label: PropTypes.string.isRequired,
+  /** Boolean input value determining if the checkbox is checked or not */
+  value: PropTypes.bool,
+  /** Is the input disabled */
   disabled: PropTypes.bool,
+  /** Form error, causing element to render red when present */
+  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  /** Ref method passed to the inner input element */
+  inputRef: PropTypes.func,
+  /** Change handler. Passed in order: new value, original event. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
   onChange: PropTypes.func,
-  required: PropTypes.bool,
 };
 
 const defaultProps = {
-  name: '',
-  checked: false,
+  value: false,
   disabled: false,
-  onChange: () => {},
-  required: false,
+  error: false,
+  onChange() {},
+  inputRef() {},
 };
 
 /**
- * `Checkbox` is a controlled component that allows users to check and uncheck items.
+ * The Checkbox is a lightly styled wrapper around an html checkbox input.
  */
-
-class Checkbox extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = { checked: props.checked };
-
-    this.onChange = this.onChange.bind(this);
-  }
-
-  componentWillReceiveProps(newProps) {
-    const { checked } = this.state;
-
-    if (checked !== newProps.checked) {
-      this.setState({ checked: newProps.checked });
-    }
-  }
-
-  onChange() {
-    const { onChange } = this.props;
-
-    this.setState(
-      state => ({ ...state, checked: !state.checked }),
-      () => {
-        const { checked } = this.state;
-        onChange(checked);
-      },
-    );
-  }
-
-  render() {
-    const { checked } = this.state;
-    const { disabled, name, required } = this.props;
-
-    const className = classnames('rc-checkbox', {
-      'rc-checkbox-checked': checked,
-      'rc-checkbox-disabled': disabled,
-    });
-    /* eslint-disable jsx-a11y/role-supports-aria-props */
-
-    return (
-      <div className="rc-checkbox-container">
-        <input
-          type="checkbox"
-          onChange={this.onChange}
-          disabled={disabled}
-          checked={checked}
-          className={className}
-          aria-required={required}
-          value={name}
-          id={name}
-        />
-        <Icon onClick={this.onChange} type="check" width="16px" height="16px" />
-      </div>
-    );
-    /* eslint-enable */
-  }
-}
+const Checkbox = ({
+  name,
+  value,
+  label,
+  error,
+  className,
+  style,
+  inputRef,
+  onChange,
+  size,
+  type,
+  ...otherProps
+}) => (
+  <Text
+    as="label"
+    size="small"
+    htmlFor={name}
+    className={classNames('rc-checkbox-input', className)}
+    style={style}
+  >
+    <div className="rc-checkbox-container">
+      <input
+        type="checkbox"
+        id={name}
+        name={name}
+        checked={value}
+        ref={inputRef}
+        className={classNames('rc-checkbox', {
+          'rc-checkbox-error': error,
+        })}
+        onChange={e => onChange(e.target.checked, e)}
+        {...otherProps}
+      />
+      <Icon type="check" width="16px" height="16px" />
+    </div>
+    {label}
+  </Text>
+);
 
 Checkbox.propTypes = propTypes;
 Checkbox.defaultProps = defaultProps;

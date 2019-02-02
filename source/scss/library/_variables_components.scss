@@ -413,11 +413,6 @@ $puppet-input-padding                              : $puppet-tiny $puppet-small 
 $puppet-input-small-height                         : $puppet-size-base * 3 !default; // 24px
 $puppet-input-small-padding                        : $puppet-tiny !default;
 
-$puppet-input-large-height                         : $puppet-size-base * 8 !default; // 40px
-$puppet-input-large-padding                        : $puppet-medium !default;
-
-$puppet-input-tiny-padding                         : $puppet-tiny !default;
-
 $puppet-input-simple-bg                            : transparent !default;
 $puppet-input-simple-focus-bg                      : transparent !default;
 
@@ -428,6 +423,7 @@ $puppet-checkbox-border-hover                      : $puppet-border-hover !defau
 $puppet-checkbox-border-radius                     : $puppet-border-radius-small !default;
 $puppet-checkbox-icon-fill                         : $puppet-action-base !default;
 $puppet-checkbox-padding                           : $puppet-small !default;
+$puppet-checkbox-border-error                      : 1px solid $puppet-neg-border-base !default;
 
 // Selects
 // ----------------------------------------------------------------------------
