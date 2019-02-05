@@ -74,7 +74,7 @@ const defaultProps = {
   style: {},
 };
 
-const isEmpty = str => !str || str.match(/^\s*$/);
+const isEmpty = str => !str || (typeof str === 'string' && str.match(/^\s*$/));
 
 /**
  * Collects the user provided props for all FormFields into
