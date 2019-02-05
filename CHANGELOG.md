@@ -1,3 +1,7 @@
+# 5.0.0-alpha.9
+
+- Fix bug that prevented validating checkbox form fields in forms
+
 # 5.0.0-alpha.8
 
 - Update Form.Field component:
