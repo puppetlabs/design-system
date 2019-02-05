@@ -29,20 +29,8 @@ class Tooltip {
     this.setBodyDimensions();
   }
 
-  getSeriesValue(d, categoryIndex) {
-    let value;
-
-    if (typeof d.value !== 'undefined') {
-      value = d.value;
-    } else {
-      return d.data[categoryIndex].y;
-    }
-
-    return value;
-  }
-
   getFormattedHeader(category) {
-    const options = this.options;
+    const { options } = this;
     const optionFormatter = options.tooltips && options.tooltips.formatter;
 
     return helpers.getFormattedValue(optionFormatter, category);
@@ -51,22 +39,23 @@ class Tooltip {
   // For formatting the series, we just piggyback off the legend formatter. TODO: Should these have
   // their own formatter?
   getFormattedGroup(group) {
-    const options = this.options;
+    const { options } = this;
     const optionFormatter = options.legend && options.legend.formatter;
 
     return helpers.getFormattedValue(optionFormatter, group);
   }
 
   getFormattedItem(datum, group) {
-    const options = this.options;
-    const yOptions = options.axis && options.axis.y ? options.axis.y[datum.axis] : {};
+    const { options } = this;
+    const yOptions =
+      options.axis && options.axis.y ? options.axis.y[datum.axis] : {};
     const optionFormatter = yOptions.values && yOptions.values.formatter;
     let item = '';
 
     if (group) {
-      group = this.getFormattedGroup(group);
+      const formattedGroup = this.getFormattedGroup(group);
 
-      item += `${group}: `;
+      item += `${formattedGroup}: `;
     }
 
     item += helpers.getFormattedValue(optionFormatter, datum.y);
@@ -97,7 +86,8 @@ class Tooltip {
     const selection = select('body');
 
     const { options, dispatchers } = this;
-    const tooltipClass = options && options.tooltips ? options.tooltips.class : '';
+    const tooltipClass =
+      options && options.tooltips ? options.tooltips.class : '';
     let tooltip;
 
     if (!this.selection) {
@@ -105,14 +95,19 @@ class Tooltip {
     }
 
     if (!options.tooltips || options.tooltips.enabled) {
-      tooltip = selection.append('div')
-        .attr('class', classnames(CSS.getClassName('tooltip', `tooltip-${this.id}`), tooltipClass));
+      tooltip = selection
+        .append('div')
+        .attr(
+          'class',
+          classnames(
+            CSS.getClassName('tooltip', `tooltip-${this.id}`),
+            tooltipClass,
+          ),
+        );
 
-      tooltip.append('div')
-        .attr('class', CSS.getClassName('tooltip-header'));
+      tooltip.append('div').attr('class', CSS.getClassName('tooltip-header'));
 
-      tooltip.append('div')
-        .attr('class', CSS.getClassName('tooltip-content'));
+      tooltip.append('div').attr('class', CSS.getClassName('tooltip-content'));
 
       dispatchers.on('tooltipHide', () => {
         tooltip
@@ -121,26 +116,38 @@ class Tooltip {
           .style('left', null);
       });
 
-      dispatchers.on('tooltipMove', (categoryIndex, seriesIndex, category, mouse) => {
-        if (!this.isZooming) {
-          this.renderTooltip(categoryIndex, seriesIndex, category);
-          this.positionTooltip(mouse);
-        }
-      });
+      dispatchers.on(
+        'tooltipMove',
+        (categoryIndex, seriesIndex, category, mouse) => {
+          if (!this.isZooming) {
+            this.renderTooltip(categoryIndex, seriesIndex, category);
+            this.positionTooltip(mouse);
+          }
+        },
+      );
 
-      dispatchers.on('highlightSeries.tooltip', (seriesIndex) => {
+      dispatchers.on('highlightSeries.tooltip', seriesIndex => {
         if (!this.isZooming) {
-          selection.selectAll(CSS.getClassSelector('tooltip-item')).each(function (d) {
-            select(this).attr('style', (d.seriesIndex === seriesIndex) ? null : `opacity: ${UNHIGHLIGHTED_OPACITY};`);
-          });
+          selection
+            .selectAll(CSS.getClassSelector('tooltip-item'))
+            .each(function(d) {
+              select(this).attr(
+                'style',
+                d.seriesIndex === seriesIndex
+                  ? null
+                  : `opacity: ${UNHIGHLIGHTED_OPACITY};`,
+              );
+            });
         }
       });
 
       dispatchers.on('unHighlightSeries.tooltip', () => {
         if (!this.isZooming) {
-          selection.selectAll(CSS.getClassSelector('tooltip-item')).each(function () {
-            select(this).attr('style', null);
-          });
+          selection
+            .selectAll(CSS.getClassSelector('tooltip-item'))
+            .each(function() {
+              select(this).attr('style', null);
+            });
         }
       });
     }
@@ -149,20 +156,19 @@ class Tooltip {
   }
 
   renderMultiSeries(categoryIndex, data) {
-    const options = this.options;
+    const { options } = this;
 
     const content = this.selection
       .selectAll(CSS.getClassSelector(`tooltip-${this.id}`))
       .select(CSS.getClassSelector('tooltip-content'));
 
-    let tooltipItems = content.selectAll(CSS.getClassSelector('tooltip-item'))
-      .data(data, d => (d.seriesIndex));
+    let tooltipItems = content
+      .selectAll(CSS.getClassSelector('tooltip-item'))
+      .data(data, d => d.seriesIndex);
 
     tooltipItems.exit().remove();
 
-    const newTooltipItems = tooltipItems
-      .enter()
-      .append('div');
+    const newTooltipItems = tooltipItems.enter().append('div');
 
     const newSeriesIndicators = newTooltipItems.append('span');
     const newTooltipValues = newTooltipItems.append('span');
@@ -170,19 +176,23 @@ class Tooltip {
     tooltipItems = newTooltipItems.merge(tooltipItems);
 
     tooltipItems
-      .attr('class', d => (
+      .attr('class', d =>
         classnames(
           CSS.getClassName('tooltip-item'),
           CSS.getColorClassName(d.seriesIndex),
-        )
-      ))
-      .classed(CSS.getClassName('tooltip-item-hidden'), (d) => {
-        const datum = d.data.filter(obj => (obj.categoryIndex === categoryIndex))[0];
+        ),
+      )
+      .classed(CSS.getClassName('tooltip-item-hidden'), d => {
+        const datum = d.data.filter(
+          obj => obj.categoryIndex === categoryIndex,
+        )[0];
 
         return !!d.disabled || datum.y === null;
       });
 
-    let seriesIndicators = content.selectAll(CSS.getClassSelector('series-indicator'));
+    let seriesIndicators = content.selectAll(
+      CSS.getClassSelector('series-indicator'),
+    );
 
     seriesIndicators.exit().remove();
 
@@ -191,21 +201,23 @@ class Tooltip {
     seriesIndicators
       .attr('class', CSS.getClassName('series-indicator'))
       .style('background', d => (d.color ? d.color : null))
-      .style('opacity', d => (helpers.getSeriesIndicatorOpacity(d, options)));
+      .style('opacity', d => helpers.getSeriesIndicatorOpacity(d, options));
 
-    let tooltipValues = content.selectAll(CSS.getClassSelector('tooltip-value'));
+    let tooltipValues = content.selectAll(
+      CSS.getClassSelector('tooltip-value'),
+    );
 
     tooltipValues.exit().remove();
 
     tooltipValues = newTooltipValues.merge(tooltipValues);
 
-    tooltipValues
-      .attr('class', CSS.getClassName('tooltip-value'))
-      .text((d) => {
-        const datum = d.data.filter(obj => (obj.categoryIndex === categoryIndex))[0];
+    tooltipValues.attr('class', CSS.getClassName('tooltip-value')).text(d => {
+      const datum = d.data.filter(
+        obj => obj.categoryIndex === categoryIndex,
+      )[0];
 
-        return this.getFormattedItem(datum, d.label);
-      });
+      return this.getFormattedItem(datum, d.label);
+    });
   }
 
   renderSingleSeries(categoryIndex, data) {
@@ -213,21 +225,24 @@ class Tooltip {
       .selectAll(CSS.getClassSelector(`tooltip-${this.id}`))
       .select(CSS.getClassSelector('tooltip-content'));
 
-    let value = content.selectAll(CSS.getClassSelector('tooltip-value'))
+    let value = content
+      .selectAll(CSS.getClassSelector('tooltip-value'))
       .data(data);
 
     value.exit().remove();
 
-    value = value.enter()
+    value = value
+      .enter()
       .append('div')
       .merge(value);
 
-    value.attr('class', CSS.getClassName('tooltip-value'))
-      .text((d) => {
-        const datum = d.data.filter(obj => (obj.categoryIndex === categoryIndex))[0];
+    value.attr('class', CSS.getClassName('tooltip-value')).text(d => {
+      const datum = d.data.filter(
+        obj => obj.categoryIndex === categoryIndex,
+      )[0];
 
-        return this.getFormattedItem(datum);
-      });
+      return this.getFormattedItem(datum);
+    });
   }
 
   renderTooltip(categoryIndex, seriesIndex, category) {
@@ -238,25 +253,27 @@ class Tooltip {
     this.selection
       .selectAll(CSS.getClassSelector(`tooltip-${id}`))
       .select(CSS.getClassSelector('tooltip-header'))
-        .text(this.getFormattedHeader(category));
+      .text(this.getFormattedHeader(category));
 
     if (multiSeries) {
       if (simple) {
-        const series = seriesData.filter(s => (s.seriesIndex === seriesIndex));
+        const series = seriesData.filter(s => s.seriesIndex === seriesIndex);
 
         this.renderMultiSeries(categoryIndex, series);
       } else {
         this.renderMultiSeries(categoryIndex, seriesData);
       }
     } else {
-      const series = seriesData.filter(s => (s.seriesIndex === seriesIndex));
+      const series = seriesData.filter(s => s.seriesIndex === seriesIndex);
 
       this.renderSingleSeries(categoryIndex, series);
     }
   }
 
   getTooltipDimensions() {
-    const tooltip = this.selection.select(CSS.getClassSelector(`tooltip-${this.id}`));
+    const tooltip = this.selection.select(
+      CSS.getClassSelector(`tooltip-${this.id}`),
+    );
     const origDisplay = tooltip.style('display');
 
     // Make sure we display: block to get accurate dimensions
@@ -283,21 +300,25 @@ class Tooltip {
 
     const { tooltipDimensions, bodyDimensions } = this;
 
-    mouseY -= (tooltipDimensions.height / 2);
+    mouseY -= tooltipDimensions.height / 2;
     mouseY += bodyDimensions.top;
 
     if (
-      (bodyDimensions.left + bodyDimensions.width) <
-      (mouseX + tooltipDimensions.width + TOOLTIP_POINTER_MARGIN)
+      bodyDimensions.left + bodyDimensions.width <
+      mouseX + tooltipDimensions.width + TOOLTIP_POINTER_MARGIN
     ) {
-      mouseX -= (TOOLTIP_POINTER_MARGIN + this.tooltipDimensions.width);
+      mouseX -= TOOLTIP_POINTER_MARGIN + this.tooltipDimensions.width;
       mouseX += bodyDimensions.left;
     } else {
       mouseX += TOOLTIP_POINTER_MARGIN + bodyDimensions.left;
     }
 
-    this.selection.selectAll(CSS.getClassSelector(`tooltip-${this.id}`))
-      .attr('style', () => (`display: block; top: ${mouseY}px; left: ${mouseX}px;`));
+    this.selection
+      .selectAll(CSS.getClassSelector(`tooltip-${this.id}`))
+      .attr(
+        'style',
+        () => `display: block; top: ${mouseY}px; left: ${mouseX}px;`,
+      );
   }
 
   update(seriesData, options, dispatchers, id) {

@@ -1,7 +1,8 @@
 import { format } from 'd3-format';
 import getLocale from './getLocale';
 
-const stripInsignificantZeros = value => value.replace(/(?:(?:\.0+)|(\.\d*?)0+)(?=[a-zA-Z]?$)/, '$1');
+const stripInsignificantZeros = value =>
+  value.replace(/(?:(?:\.0+)|(\.\d*?)0+)(?=[a-zA-Z]?$)/, '$1');
 
 /**
  * Threshold checker for a 'long' number that should be formatted with shortened
@@ -23,13 +24,10 @@ const localeFormat = (number, options, locale) => {
     maximumFractionDigits: 2,
   };
 
-  const formatter = new Intl.NumberFormat(
-    locale || getLocale(),
-    {
-      ...defaultOptions,
-      ...options,
-    },
-  );
+  const formatter = new Intl.NumberFormat(locale || getLocale(), {
+    ...defaultOptions,
+    ...options,
+  });
 
   return formatter.format(number);
 };
@@ -37,7 +35,7 @@ const localeFormat = (number, options, locale) => {
 /**
  * Formats a number with an SI prefix. Not localized
  */
-const siFormat = (number) => {
+const siFormat = number => {
   let formatted = format('s')(number);
 
   // D3 uses the correct metric prefix symbol show here:
@@ -58,7 +56,7 @@ const siFormat = (number) => {
  * large numbers un-internationalized.
  * TODO: Internationalize d3.format('s') or investigate a different rounded format
  */
-const number = (value) => {
+const number = value => {
   if (isLong(value)) {
     return siFormat(value);
   }
@@ -70,10 +68,10 @@ const number = (value) => {
  * General method for currency formatting. Eventually this could be used with ingights-embed
  * so that the user could specify an amount and the currency code
  */
-const currency = (value, currencyCode) => localeFormat(value, { style: 'currency', currency: currencyCode });
+const currency = (value, currencyCode) =>
+  localeFormat(value, { style: 'currency', currency: currencyCode });
 
-
-const dollars = (value) => {
+const dollars = value => {
   if (isLong(value)) {
     return `$${siFormat(value)}`;
   }

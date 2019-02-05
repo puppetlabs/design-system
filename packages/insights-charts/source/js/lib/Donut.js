@@ -6,9 +6,7 @@ import { UNHIGHLIGHTED_OPACITY } from '../constants';
 import CSS from '../helpers/css';
 
 const isEmpty = seriesData =>
-  seriesData[0].data
-    .map(cat => cat.y)
-    .every(val => val === 0);
+  seriesData[0].data.map(cat => cat.y).every(val => val === 0);
 
 class Donut {
   constructor(seriesData, options, dimensions, dispatchers) {
@@ -23,16 +21,18 @@ class Donut {
   bindDispatchers() {
     const { dispatchers } = this;
 
-    dispatchers.on('highlightSeries', (index) => {
-      this.arcs.each(function () {
+    dispatchers.on('highlightSeries', index => {
+      this.arcs.each(function() {
         const selection = select(this);
+        const getOpacity = d =>
+          d.data.categoryIndex === index ? null : UNHIGHLIGHTED_OPACITY;
 
-        selection.attr('opacity', d => (d.data.categoryIndex === index ? null : UNHIGHLIGHTED_OPACITY));
+        selection.attr('opacity', getOpacity);
       });
     });
 
     dispatchers.on('unHighlightSeries', () => {
-      this.arcs.each(function () {
+      this.arcs.each(function() {
         const selection = select(this);
 
         selection.attr('opacity', null);
@@ -59,7 +59,7 @@ class Donut {
       // if we do decide we'd like to sort it, we'll need to sort the legend too.
       .sortValues(null);
 
-    const radius = (Math.min(width, height) / 2.4);
+    const radius = Math.min(width, height) / 2.4;
 
     if (options.layout === 'pie') {
       innerRadius = 0;
@@ -77,36 +77,48 @@ class Donut {
 
     if (empty) {
       const emptyData = [{ y: 1 }];
-      wrappers = selection.selectAll(CSS.getClassSelector('donut-arc-wrapper'))
+      wrappers = selection
+        .selectAll(CSS.getClassSelector('donut-arc-wrapper'))
         .data(pie(emptyData), d => d.data.x);
     } else {
-      wrappers = selection.selectAll(CSS.getClassSelector('donut-arc-wrapper'))
-        .data(pie(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null)), d => d.data.x);
+      wrappers = selection
+        .selectAll(CSS.getClassSelector('donut-arc-wrapper'))
+        .data(
+          pie(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null)),
+          d => d.data.x,
+        );
     }
 
     wrappers.exit().remove();
 
-    const newWrappers = wrappers.enter()
-      .append('g');
+    const newWrappers = wrappers.enter().append('g');
 
-    newWrappers.append('path')
-      .attr('class', CSS.getClassName('donut-arc'));
+    newWrappers.append('path').attr('class', CSS.getClassName('donut-arc'));
 
     wrappers = newWrappers.merge(wrappers);
 
     wrappers
-      .attr('transform', `translate(${(width / 2)},${(height / 2)})`)
-      .attr('class', d => classnames(
-        CSS.getClassName('donut-arc-wrapper'),
-        CSS.getColorClassName(d.data.categoryIndex),
-      ));
+      .attr('transform', `translate(${width / 2},${height / 2})`)
+      .attr('class', d =>
+        classnames(
+          CSS.getClassName('donut-arc-wrapper'),
+          CSS.getColorClassName(d.data.categoryIndex),
+        ),
+      );
 
     if (!empty) {
       wrappers
         .on('mousemove', function mousemove(d) {
           const dims = mouse(select('body').node());
 
-          dispatchers.call('tooltipMove', this, d.data.categoryIndex, 0, d.data.x, dims);
+          dispatchers.call(
+            'tooltipMove',
+            this,
+            d.data.categoryIndex,
+            0,
+            d.data.x,
+            dims,
+          );
           dispatchers.call('activatePointOfInterest', this, d.data.x);
           dispatchers.call('highlightSeries', this, d.data.categoryIndex);
         })
@@ -120,14 +132,16 @@ class Donut {
 
     paths.attr('d', path);
 
-
     if (empty) {
       paths
         .style('opacity', 1)
-        .attr('class', classnames(
-          CSS.getClassName('donut-arc'),
-          CSS.getClassName('donut-arc-empty'),
-        ));
+        .attr(
+          'class',
+          classnames(
+            CSS.getClassName('donut-arc'),
+            CSS.getClassName('donut-arc-empty'),
+          ),
+        );
     } else {
       // We want to use the default opacity if the donut is empty
       paths
@@ -138,25 +152,31 @@ class Donut {
     }
 
     if (dispatchers.enabled('dataPointClick.external') && !empty) {
-      paths
-        .style('cursor', 'pointer')
-        .on('click', function (d) {
-          dispatchers.call('dataPointClick', this, { event, data: { point: d.data } });
+      paths.style('cursor', 'pointer').on('click', function(d) {
+        dispatchers.call('dataPointClick', this, {
+          event,
+          data: { point: d.data },
         });
+      });
     }
 
-    if (this.renderCount === 1 && options.animations && options.animations.enabled) {
-      paths.transition()
+    if (
+      this.renderCount === 1 &&
+      options.animations &&
+      options.animations.enabled
+    ) {
+      paths
+        .transition()
         .duration(options.animations.duration)
-        .attrTween('d', (finish) => {
+        .attrTween('d', finish => {
           const start = { startAngle: 0, endAngle: 0 };
 
           const interpolater = interpolate(start, finish);
 
-          return (d) => {
-            finish = interpolater(d);
+          return d => {
+            const interpolated = interpolater(d);
 
-            return path(finish);
+            return path(interpolated);
           };
         });
     }

@@ -4,8 +4,29 @@ import helpers from '../../helpers/charting';
 import Series from './Series';
 
 class SeriesColumn extends Series {
-  constructor(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex, x1) {
-    super(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex, 'series-column', x1);
+  constructor(
+    data,
+    dimensions,
+    x,
+    y,
+    clipPathId,
+    options,
+    dispatchers,
+    yAxisIndex,
+    x1,
+  ) {
+    super(
+      data,
+      dimensions,
+      x,
+      y,
+      clipPathId,
+      options,
+      dispatchers,
+      yAxisIndex,
+      'series-column',
+      x1,
+    );
 
     this.getTransform = this.getTransform.bind(this);
     this.getColumnThickness = this.getColumnThickness.bind(this);
@@ -15,8 +36,9 @@ class SeriesColumn extends Series {
   }
 
   isBar() {
-    const options = this.options;
-    const orientation = options.axis && options.axis.x ? options.axis.x.orientation : 'bottom';
+    const { options } = this;
+    const orientation =
+      options.axis && options.axis.x ? options.axis.x.orientation : 'bottom';
 
     return orientation === 'left' || orientation === 'right';
   }
@@ -30,7 +52,7 @@ class SeriesColumn extends Series {
   }
 
   getTransform(d) {
-    const x = this.x;
+    const { x } = this;
     let result;
 
     if (this.isGrouped() && !this.isBar()) {
@@ -78,61 +100,90 @@ class SeriesColumn extends Series {
       this.selection = selection;
     }
 
-    let series = selection.selectAll(CSS.getClassSelector(this.selector))
-      .data(this.data, d => (d.seriesIndex));
+    let series = selection
+      .selectAll(CSS.getClassSelector(this.selector))
+      .data(this.data, d => d.seriesIndex);
 
     series.exit().remove();
 
-    series = series.enter()
+    series = series
+      .enter()
       .append('g')
       .merge(series)
-        .attr('class', d =>
-          (`${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(d.seriesIndex)}`))
-        .attr('clip-path', `url(#${this.clipPathId})`);
+      .attr(
+        'class',
+        d =>
+          `${CSS.getClassName('series', this.selector)} ${CSS.getColorClassName(
+            d.seriesIndex,
+          )}`,
+      )
+      .attr('clip-path', `url(#${this.clipPathId})`);
 
     // updating bars that were already in the view
-    let rect = series.selectAll(CSS.getClassSelector('column-rect'))
-      .data(d => (d.data), d => (d.categoryIndex));
+    let rect = series
+      .selectAll(CSS.getClassSelector('column-rect'))
+      .data(d => d.data, d => d.categoryIndex);
 
     // removing bars that no longer exist
     rect.exit().remove();
 
     // adding new bars and merging the ones that will be updated
-    rect = rect.enter()
-        .append('svg:rect')
-        .merge(rect);
+    rect = rect
+      .enter()
+      .append('svg:rect')
+      .merge(rect);
 
-    rect.attr('transform', this.getTransform)
-        .attr('x', this.isBar() ? this.getYPosition : this.getXPosition)
-        .attr('y', this.isBar() ? this.getXPosition : this.getYPosition)
-        .attr('width', this.isBar() ? this.getColumnLength : this.getColumnThickness)
-        .attr('height', this.isBar() ? this.getColumnThickness : this.getColumnLength)
-        .style('fill', d => (d.color ? d.color : null))
-        .style('fill-opacity', options.opacity ? options.opacity : null)
-        .on('mousemove', function (d) {
-          const dims = mouse(select('body').node());
+    rect
+      .attr('transform', this.getTransform)
+      .attr('x', this.isBar() ? this.getYPosition : this.getXPosition)
+      .attr('y', this.isBar() ? this.getXPosition : this.getYPosition)
+      .attr(
+        'width',
+        this.isBar() ? this.getColumnLength : this.getColumnThickness,
+      )
+      .attr(
+        'height',
+        this.isBar() ? this.getColumnThickness : this.getColumnLength,
+      )
+      .style('fill', d => (d.color ? d.color : null))
+      .style('fill-opacity', options.opacity ? options.opacity : null)
+      .on('mousemove', function(d) {
+        const dims = mouse(select('body').node());
 
-          dispatchers.call('tooltipMove', this, d.categoryIndex, d.seriesIndex, d.x, dims);
-          dispatchers.call('activatePointOfInterest', this, d.x);
-        })
-        .on('mouseover', function (d) {
-          const index = d.seriesIndex;
-          const dims = mouse(select('body').node());
+        dispatchers.call(
+          'tooltipMove',
+          this,
+          d.categoryIndex,
+          d.seriesIndex,
+          d.x,
+          dims,
+        );
+        dispatchers.call('activatePointOfInterest', this, d.x);
+      })
+      .on('mouseover', function(d) {
+        const index = d.seriesIndex;
+        const dims = mouse(select('body').node());
 
-          dispatchers.call('tooltipMove', this, d.categoryIndex, d.seriesIndex, d.x, dims);
-          dispatchers.call('highlightSeries', this, index);
-        })
-        .on('mouseout', () => {
-          dispatchers.call('tooltipHide');
-          dispatchers.call('unHighlightSeries');
-        })
-        .attr('class', CSS.getClassName('column-rect'));
+        dispatchers.call(
+          'tooltipMove',
+          this,
+          d.categoryIndex,
+          d.seriesIndex,
+          d.x,
+          dims,
+        );
+        dispatchers.call('highlightSeries', this, index);
+      })
+      .on('mouseout', () => {
+        dispatchers.call('tooltipHide');
+        dispatchers.call('unHighlightSeries');
+      })
+      .attr('class', CSS.getClassName('column-rect'));
 
     if (dispatchers.enabled('dataPointClick.external')) {
-      rect.style('cursor', 'pointer')
-        .on('mousedown', (point) => {
-          dispatchers.call('dataPointClick', this, { event, data: { point } });
-        });
+      rect.style('cursor', 'pointer').on('mousedown', point => {
+        dispatchers.call('dataPointClick', this, { event, data: { point } });
+      });
     }
 
     return series;

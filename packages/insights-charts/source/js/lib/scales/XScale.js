@@ -1,6 +1,7 @@
 import { scalePoint, scaleBand, scaleTime, scaleLinear } from 'd3-scale';
 import { extent, min as d3Min, max as d3Max } from 'd3-array';
 import helpers from '../../helpers/charting';
+import { VIZ_TYPES } from '../../constants';
 
 class XScale {
   constructor(categories, options, dimensions, data) {
@@ -13,8 +14,8 @@ class XScale {
   }
 
   getMinimum(data) {
-    return d3Min(data, (s) => {
-      const isBubble = s.type === 'bubble';
+    return d3Min(data, s => {
+      const isBubble = s.type === VIZ_TYPES.BUBBLE;
       let min;
 
       const props = {
@@ -35,8 +36,8 @@ class XScale {
   }
 
   getMaximum(data) {
-    return d3Max(data, (s) => {
-      const isBubble = s.type === 'bubble';
+    return d3Max(data, s => {
+      const isBubble = s.type === VIZ_TYPES.BUBBLE;
       let max;
 
       const props = {
@@ -59,17 +60,19 @@ class XScale {
   generate() {
     const { categories, dimensions, options, data } = this;
     const { width, height } = dimensions;
-    const type = this.type;
+    const { type } = this;
     const xAxisOptions = options.axis && options.axis.x ? options.axis.x : {};
 
-    if (type === 'column' || type === 'combination' || xAxisOptions.scaleType === 'ordinalBand') {
+    if (
+      type === VIZ_TYPES.COLUMN ||
+      type === VIZ_TYPES.COMBINATION ||
+      xAxisOptions.scaleType === 'ordinalBand'
+    ) {
       const paddingInner = xAxisOptions.paddingInner || 0.05;
       const paddingOuter = xAxisOptions.paddingOuter || 0.05;
 
       this.x = scaleBand();
-      this.x
-        .paddingInner(paddingInner)
-        .paddingOuter(paddingOuter);
+      this.x.paddingInner(paddingInner).paddingOuter(paddingOuter);
 
       this.x.domain(categories);
     } else if (this.scaleType === 'ordinal') {
@@ -99,7 +102,8 @@ class XScale {
       this.x.domain(domain);
     }
 
-    const orientation = options.axis && options.axis.x ? options.axis.x.orientation : 'bottom';
+    const orientation =
+      options.axis && options.axis.x ? options.axis.x.orientation : 'bottom';
 
     if (orientation === 'left' || orientation === 'right') {
       this.x.range([0, height]);

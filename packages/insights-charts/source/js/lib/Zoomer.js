@@ -35,14 +35,14 @@ function getCategoryIndexFromMouse(m, categories, x, horizontal = false) {
 
     // work out which category is closest to the mouse
     if (mouseCategory - d0.label > d1.label - mouseCategory) {
-      categoryIndex = d1.categoryIndex;
+      ({ categoryIndex } = d1);
     } else {
-      categoryIndex = d0.categoryIndex;
+      ({ categoryIndex } = d0);
     }
   } else {
     // Handle ordinal scales here. We need an extra step to map the mouse position to
     // the x scale.
-    const values = categories.map(c => (x(c.label)));
+    const values = categories.map(c => x(c.label));
 
     index = bisectLeft(values, xPos);
 
@@ -88,10 +88,13 @@ class Zoomer {
     /* eslint-disable no-unreachable */
     const self = this;
     const { dimensions, options } = this;
-    const margins = dimensions.margins;
+    const { margins } = dimensions;
     const enabled = options.zoom && options.zoom.enabled;
     const resetZoomOffsets = {
-      x: (margins.left + dimensions.width) - (ZOOM_RESET_BUTTON_WIDTH + ZOOM_RESET_BUTTON_MARGIN),
+      x:
+        margins.left +
+        dimensions.width -
+        (ZOOM_RESET_BUTTON_WIDTH + ZOOM_RESET_BUTTON_MARGIN),
       y: margins.top + ZOOM_RESET_BUTTON_MARGIN,
     };
     let isHorizontal = false;
@@ -101,7 +104,9 @@ class Zoomer {
       options &&
       options.axis &&
       options.axis.x &&
-      (options.axis.x.orientation === 'left' || options.axis.x.orientation === 'right')) {
+      (options.axis.x.orientation === 'left' ||
+        options.axis.x.orientation === 'right')
+    ) {
       isHorizontal = true;
     }
 
@@ -116,7 +121,8 @@ class Zoomer {
 
         // if a reset zoom button already exists don't generate another one
         if (reset.size() === 0) {
-          this.resetZoom = svg.append('g')
+          this.resetZoom = svg
+            .append('g')
             .attr('style', 'pointer-events: all; cursor: pointer;')
             .attr('class', CSS.getClassName('zoomer-reset'))
             .on('click', () => {
@@ -125,7 +131,8 @@ class Zoomer {
               self.dispatchers.call('zoom', this, { reset: true });
             });
 
-          this.resetZoom.append('rect')
+          this.resetZoom
+            .append('rect')
             .attr('width', ZOOM_RESET_BUTTON_WIDTH)
             .attr('height', ZOOM_RESET_BUTTON_HEIGHT)
             .attr('x', 0)
@@ -133,7 +140,8 @@ class Zoomer {
             .attr('rx', 3)
             .attr('ry', 3);
 
-          this.resetZoom.append('text')
+          this.resetZoom
+            .append('text')
             .attr('style', 'pointer-events: none;')
             .attr('x', 14)
             .attr('y', 14)
@@ -142,33 +150,42 @@ class Zoomer {
           this.resetZoom = reset;
         }
 
-        this.resetZoom.attr('transform', `translate(${resetZoomOffsets.x},${resetZoomOffsets.y})`);
+        this.resetZoom.attr(
+          'transform',
+          `translate(${resetZoomOffsets.x},${resetZoomOffsets.y})`,
+        );
       }
 
       const zoomFunction = zoom()
-        .on('start', function () {
+        .on('start', function() {
           const { categories, x, dispatchers } = self;
           const m = mouse(this);
           const mousePos = isHorizontal ? m[1] : m[0];
 
-          self.zoomMarker = self.selection.append('rect')
+          self.zoomMarker = self.selection
+            .append('rect')
             .attr('class', CSS.getClassName('zoomer-marker'));
 
           if (isHorizontal) {
-            self.zoomMarker.attr('y', mousePos)
-              .attr('width', dimensions.width);
+            self.zoomMarker.attr('y', mousePos).attr('width', dimensions.width);
           } else {
-            self.zoomMarker.attr('x', mousePos)
+            self.zoomMarker
+              .attr('x', mousePos)
               .attr('height', dimensions.height);
           }
 
           self.startEvent = event;
           self.startPosition = mousePos;
-          self.startingIndex = getCategoryIndexFromMouse(m, categories, x, isHorizontal);
+          self.startingIndex = getCategoryIndexFromMouse(
+            m,
+            categories,
+            x,
+            isHorizontal,
+          );
 
           dispatchers.call('zoomStart', this);
         })
-        .on('zoom', function () {
+        .on('zoom', function() {
           const m = mouse(this);
           const mousePos = isHorizontal ? m[1] : m[0];
           let x;
@@ -185,9 +202,7 @@ class Zoomer {
               height = mousePos - y;
             }
 
-            self.zoomMarker
-              .attr('y', y)
-              .attr('height', Math.abs(height));
+            self.zoomMarker.attr('y', y).attr('height', Math.abs(height));
           } else {
             if (mousePos < self.startPosition) {
               x = mousePos;
@@ -197,12 +212,10 @@ class Zoomer {
               width = mousePos - x;
             }
 
-            self.zoomMarker
-              .attr('x', x)
-              .attr('width', Math.abs(width));
+            self.zoomMarker.attr('x', x).attr('width', Math.abs(width));
           }
         })
-        .on('end', function () {
+        .on('end', function() {
           const { dispatchers, categories, x } = self;
           const m = mouse(this);
           let firstCategory;
@@ -214,7 +227,12 @@ class Zoomer {
           if (self.startEvent.transform.x !== self.endEvent.transform.x) {
             self.zoomed = true;
 
-            self.endingIndex = getCategoryIndexFromMouse(m, categories, x, isHorizontal);
+            self.endingIndex = getCategoryIndexFromMouse(
+              m,
+              categories,
+              x,
+              isHorizontal,
+            );
 
             if (self.endingIndex < self.startingIndex) {
               firstCategory = self.endingIndex;
@@ -224,9 +242,9 @@ class Zoomer {
               lastCategory = self.endingIndex;
             }
 
-            const zoomedCategories = categories.filter((c, i) => (
-              i >= firstCategory && i <= lastCategory
-            ));
+            const zoomedCategories = categories.filter(
+              (c, i) => i >= firstCategory && i <= lastCategory,
+            );
 
             const zoomObj = {};
 
@@ -236,7 +254,7 @@ class Zoomer {
 
             // zoomed categories are the same as the total number of categories then don't
             // zoom in
-            if ((lastCategory - firstCategory) + 1 !== categories.length) {
+            if (lastCategory - firstCategory + 1 !== categories.length) {
               dispatchers.call('zoom', this, zoomObj);
             }
           }
@@ -250,14 +268,13 @@ class Zoomer {
         zoomerBg = this.selection.append('rect');
       }
 
-      zoomerBg.attr('class', CSS.getClassName('zoomer-bg'))
+      zoomerBg
+        .attr('class', CSS.getClassName('zoomer-bg'))
         .attr('width', dimensions.width)
         .attr('height', dimensions.height)
         .attr('fill', 'transparent');
 
-      zoomer = this.selection
-          .call(zoomFunction)
-          .on('wheel.zoom', null);
+      zoomer = this.selection.call(zoomFunction).on('wheel.zoom', null);
     }
 
     return zoomer;

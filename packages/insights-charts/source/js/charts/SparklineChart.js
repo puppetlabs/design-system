@@ -8,36 +8,61 @@ import SeriesArea from '../lib/series/SeriesArea';
 import SeriesLine from '../lib/series/SeriesLine';
 import SeriesColumn from '../lib/series/SeriesColumn';
 import CSS from '../helpers/css';
+import { VIZ_TYPES } from '../constants';
 
-const normalizeData = data => (
-  data.map((d) => {
-    if (!d.type) {
-      d.type = 'line';
+const chartOptions = {
+  margins: {
+    static: true,
+    top: 2,
+    right: 0,
+    bottom: 2,
+    left: 0,
+  },
+  axis: {
+    x: {
+      enabled: false,
+    },
+    y: {
+      enabled: false,
+    },
+  },
+  legend: {
+    enabled: false,
+  },
+  clip_path: {
+    include_margins: true,
+  },
+};
+
+const normalizeData = data =>
+  data.map(d => {
+    const revisedD = d;
+
+    if (!revisedD.type) {
+      revisedD.type = VIZ_TYPES.LINE;
     }
 
-    return d;
-  })
-);
+    return revisedD;
+  });
 
 class SparklineChart extends Chart {
-  constructor({ elem, type, data, options, dispatchers, id }) {
-    super({ elem, type, data, options, dispatchers, id });
+  constructor(props) {
+    const revisedProps = props;
+    revisedProps.options = deepmerge(chartOptions, props.options || {});
 
-    this.yScales = {};
+    super(revisedProps);
   }
 
   render() {
-    const categories = this.data.getCategories().map(c => (c.label));
+    const categories = this.data.getCategories().map(c => c.label);
     const groups = this.data.getGroups();
-    const dispatchers = this.dispatchers;
-    const options = this.options;
+    const { dispatchers, options } = this;
 
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
 
     const svg = this.container.getSVG();
     const dimensions = this.container.getDimensions();
-
     this.clipPath = new ClipPath(dimensions, options, this.id);
     this.clipPath.render(svg);
 
@@ -56,21 +81,32 @@ class SparklineChart extends Chart {
       let seriesAreaLine;
 
       if (data.length > 0) {
-        const types = data.filter(d => d.type).map(d => (d.type));
+        const types = data.filter(d => d.type).map(d => d.type);
         const yScale = new YScale(data, yOptions, options.layout, dimensions);
         const y = yScale.generate();
 
-        if (types.indexOf('column') >= 0) {
-          const columnOptions = deepmerge(options, { type: 'column' });
-          const xScaleColumn = new XScale(categories, columnOptions, dimensions);
+        if (types.indexOf(VIZ_TYPES.COLUMN) >= 0) {
+          const columnOptions = deepmerge(options, {
+            type: VIZ_TYPES.COLUMN,
+          });
+          const xScaleColumn = new XScale(
+            categories,
+            columnOptions,
+            dimensions,
+          );
           const xColumn = xScaleColumn.generate();
 
-          const x1Dimensions = Object.assign({}, dimensions, { width: xColumn.bandwidth() });
+          const x1Dimensions = Object.assign({}, dimensions, {
+            width: xColumn.bandwidth(),
+          });
           this.xScale1 = new XScale(groups, options, x1Dimensions, this.type);
           const x1 = this.xScale1.generate();
 
-          const columnData = data.filter(d => (d.type === 'column'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('column', columnData));
+          const columnData = data.filter(d => d.type === VIZ_TYPES.COLUMN);
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.COLUMN, columnData),
+          );
 
           seriesColumn = new SeriesColumn(
             columnData,
@@ -87,9 +123,12 @@ class SparklineChart extends Chart {
           seriesColumn.render(svg);
         }
 
-        if (types.indexOf('line') >= 0) {
-          const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData));
+        if (types.indexOf(VIZ_TYPES.LINE) >= 0) {
+          const lineData = data.filter(d => d.type === VIZ_TYPES.LINE);
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.LINE, lineData),
+          );
 
           seriesLine = new SeriesLine(
             lineData,
@@ -105,10 +144,12 @@ class SparklineChart extends Chart {
           seriesLine.render(svg);
         }
 
-
-        if (types.indexOf('area') >= 0) {
-          const areaData = data.filter(d => (d.type === 'area'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('area', areaData));
+        if (types.indexOf(VIZ_TYPES.AREA) >= 0) {
+          const areaData = data.filter(d => d.type === VIZ_TYPES.AREA);
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.AREA, areaData),
+          );
 
           seriesArea = new SeriesArea(
             areaData,
@@ -153,10 +194,9 @@ class SparklineChart extends Chart {
   }
 
   update() {
-    const categories = this.data.getCategories().map(c => (c.label));
+    const categories = this.data.getCategories().map(c => c.label);
     const groups = this.data.getGroups();
-    const dispatchers = this.dispatchers;
-    const options = this.options;
+    const { dispatchers, options } = this;
 
     this.container.update(this.data, options, dispatchers);
     const dimensions = this.container.getDimensions();
@@ -174,19 +214,35 @@ class SparklineChart extends Chart {
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const y = scale.yScale.update(data, yOptions, options.layout, dimensions);
+        const y = scale.yScale.update(
+          data,
+          yOptions,
+          options.layout,
+          dimensions,
+        );
 
         if (scale.seriesColumn) {
-          const columnData = data.filter(d => (d.type === 'column'));
-          const columnOptions = deepmerge(options, { type: 'column' });
-          const xScaleColumn = new XScale(categories, columnOptions, dimensions);
+          const columnData = data.filter(d => d.type === VIZ_TYPES.COLUMN);
+          const columnOptions = deepmerge(options, {
+            type: VIZ_TYPES.COLUMN,
+          });
+          const xScaleColumn = new XScale(
+            categories,
+            columnOptions,
+            dimensions,
+          );
           const xColumn = xScaleColumn.generate();
 
-          const x1Dimensions = Object.assign({}, dimensions, { width: xColumn.bandwidth() });
+          const x1Dimensions = Object.assign({}, dimensions, {
+            width: xColumn.bandwidth(),
+          });
           this.xScale1 = new XScale(groups, options, x1Dimensions);
           const x1 = this.xScale1.generate();
 
-          const plotOptions = deepmerge(options, this.getPlotOptions('column', columnData));
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.COLUMN, columnData),
+          );
 
           scale.seriesColumn.update(
             columnData,
@@ -202,8 +258,11 @@ class SparklineChart extends Chart {
         }
 
         if (scale.seriesLine) {
-          const lineData = data.filter(d => (d.type === 'line'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('line', lineData));
+          const lineData = data.filter(d => d.type === VIZ_TYPES.LINE);
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.LINE, lineData),
+          );
 
           scale.seriesLine.update(
             lineData,
@@ -218,8 +277,11 @@ class SparklineChart extends Chart {
         }
 
         if (scale.seriesArea) {
-          const areaData = data.filter(d => (d.type === 'area'));
-          const plotOptions = deepmerge(options, this.getPlotOptions('area', areaData));
+          const areaData = data.filter(d => d.type === VIZ_TYPES.AREA);
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.AREA, areaData),
+          );
 
           scale.seriesArea.update(
             areaData,

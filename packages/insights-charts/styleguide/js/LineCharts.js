@@ -10,12 +10,39 @@ const propTypes = {
 };
 
 class LineCharts extends React.Component {
+  componentDidMount() {
+    this.updateCharts();
+  }
+
+  componentWillUpdate() {
+    this.destroyCharts();
+  }
+
+  componentDidUpdate() {
+    this.updateCharts();
+  }
+
+  componentWillUnmount() {
+    this.destroyCharts();
+  }
+
   updateCharts() {
     const { animations, sparseness } = this.props;
     const dataPoints = 10;
 
     const multiData = {
-      categories: ['2017-01-01', '2017-01-02', '2017-01-03', '2017-01-04', '2017-01-05', '2017-01-06', '2017-01-07', '2017-01-08', '2017-01-09', '2017-01-10'],
+      categories: [
+        '2017-01-01',
+        '2017-01-02',
+        '2017-01-03',
+        '2017-01-04',
+        '2017-01-05',
+        '2017-01-06',
+        '2017-01-07',
+        '2017-01-08',
+        '2017-01-09',
+        '2017-01-10',
+      ],
       series: [
         {
           label: 'Profit 1',
@@ -117,13 +144,22 @@ class LineCharts extends React.Component {
       series: [
         {
           label: 'Profit',
-          data: getRandomData(dataPoints, { min: -10000000000, modifier: 10000, negatives: true, sparseness }),
+          data: getRandomData(dataPoints, {
+            min: -10000000000,
+            modifier: 10000,
+            negatives: true,
+            sparseness,
+          }),
         },
       ],
     };
 
     const timeData = {
-      categories: ['View Engagement', 'Project Performance', 'Project Engagement'],
+      categories: [
+        'View Engagement',
+        'Project Performance',
+        'Project Engagement',
+      ],
       series: [
         {
           label: 'Profit',
@@ -150,12 +186,6 @@ class LineCharts extends React.Component {
         spline: true,
         data_labels: {
           enabled: true,
-        },
-      },
-      axis: {
-        x: {},
-        y: {
-          orientation: 'left',
         },
       },
       grid: {
@@ -205,29 +235,23 @@ class LineCharts extends React.Component {
     this.multiSeriesLineChart.destroy();
   }
 
-  componentDidUpdate() {
-    this.updateCharts();
-  }
-
-  componentDidMount() {
-    this.updateCharts();
-  }
-
-  componentWillUpdate() {
-    this.destroyCharts();
-  }
-
-  componentWillUnmount() {
-    this.destroyCharts();
-  }
-
   render() {
     return (
       <div>
         <h1>Single series</h1>
-        <div className="sg-chart" ref={ (c) => { this.single = c; } } />
+        <div
+          className="sg-chart"
+          ref={c => {
+            this.single = c;
+          }}
+        />
         <h1>Multi series</h1>
-        <div className="sg-chart" ref={ (c) => { this.multi = c; } } />
+        <div
+          className="sg-chart"
+          ref={c => {
+            this.multi = c;
+          }}
+        />
       </div>
     );
   }

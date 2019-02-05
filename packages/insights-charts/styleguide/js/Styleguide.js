@@ -4,19 +4,21 @@ import Sidebar from './partials/Sidebar';
 import Editor from './partials/Editor';
 
 const propTypes = {
-  children: PropTypes.any.isRequired,
-  route: PropTypes.object.isRequired,
+  children: PropTypes.node.isRequired,
+  route: PropTypes.shape({}).isRequired,
 };
 
-const Styleguide = props => (
-  <div>
-    <Sidebar pages={ props.route.childRoutes } />
-    <div className="sg-content">
-      { props.children }
+const Styleguide = props => {
+  const { route, children } = props;
+
+  return (
+    <div>
+      <Sidebar pages={route.childRoutes} />
+      <div className="sg-content">{children}</div>
+      <Editor />
     </div>
-    <Editor />
-  </div>
-);
+  );
+};
 
 Styleguide.propTypes = propTypes;
 

@@ -20,7 +20,10 @@ class ZeroLine {
       let zeroLineAxis;
       let translate;
 
-      if (options.axis.x.orientation === 'left' || options.axis.x.orientation === 'right') {
+      if (
+        options.axis.x.orientation === 'left' ||
+        options.axis.x.orientation === 'right'
+      ) {
         zeroLineAxis = axisLeft(x);
         translate = `${y(0)},0`;
       } else {
@@ -28,14 +31,12 @@ class ZeroLine {
         translate = `0,${y(0)}`;
       }
 
-      zeroLineAxis
-        .tickValues([])
-        .tickSizeOuter(0);
+      zeroLineAxis.tickValues([]).tickSizeOuter(0);
 
       this.zeroLine = this.selection
         .append('g')
-          .attr('class', CSS.getClassName('zero-line'))
-          .attr('transform', `translate(${translate})`)
+        .attr('class', CSS.getClassName('zero-line'))
+        .attr('transform', `translate(${translate})`)
         .call(zeroLineAxis);
     }
 

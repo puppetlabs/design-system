@@ -1,17 +1,41 @@
+import deepmerge from 'deepmerge';
 import Chart from './Chart';
 import Container from '../lib/Container';
 import Gauge from '../lib/Gauge';
 
+const chartOptions = {
+  margins: {
+    static: true,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
+  axis: {
+    x: {
+      enabled: false,
+    },
+    y: {
+      enabled: false,
+    },
+  },
+  legend: {
+    enabled: false,
+  },
+};
+
 class GaugeChart extends Chart {
-  constructor({ elem, type, data, options, dispatchers, id }) {
-    super({ elem, type, data, options, dispatchers, id });
+  constructor(props) {
+    const revisedProps = props;
+    revisedProps.options = deepmerge(chartOptions, props.options || {});
+
+    super(revisedProps);
   }
 
   render() {
     const seriesData = this.data.getSeries();
 
-    const dispatchers = this.dispatchers;
-    const options = this.options;
+    const { dispatchers, options } = this;
 
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);

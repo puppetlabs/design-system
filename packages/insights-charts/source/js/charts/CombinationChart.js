@@ -17,23 +17,22 @@ import SeriesColumn from '../lib/series/SeriesColumn';
 import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
 import helpers from '../helpers/charting';
+import { VIZ_TYPES } from '../constants';
 
 class CombinationChart extends Chart {
-  constructor({ elem, type, data, options, dispatchers, id }) {
-    super({ elem, type, data, options, dispatchers, id });
+  constructor(props) {
+    super(props);
 
-    this.yScales = {};
-
-    dispatchers.on('zoom', this.update);
+    props.dispatchers.on('zoom', this.update);
   }
 
   getDataByTypes(data, types = []) {
     const dataByType = {};
     const plotOptions = {};
 
-    types.forEach((t) => {
+    types.forEach(t => {
       if (dataByType[t] === undefined) {
-        dataByType[t] = data.filter(d => (d.type === t));
+        dataByType[t] = data.filter(d => d.type === t);
         plotOptions[t] = this.getPlotOptions(t, dataByType[t]);
 
         if (plotOptions[t].layout === 'stacked') {
@@ -49,9 +48,9 @@ class CombinationChart extends Chart {
     const categories = this.data.getCategories();
     const categoryLabels = categories.map(c => c.label);
     const seriesData = this.data.getSeries();
-    const groups = this.data.getGroupsByType('column');
-    const dispatchers = this.dispatchers;
-    const options = this.options;
+    const groups = this.data.getGroupsByType(VIZ_TYPES.COLUMN);
+    const { dispatchers } = this;
+    const { options } = this;
 
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
@@ -62,7 +61,12 @@ class CombinationChart extends Chart {
     this.clipPath = new ClipPath(dimensions, options, this.id);
     this.clipPath.render(svg);
 
-    this.tooltip = new Tooltip(seriesData, options.tooltips, dispatchers, this.id);
+    this.tooltip = new Tooltip(
+      seriesData,
+      options.tooltips,
+      dispatchers,
+      this.id,
+    );
     this.tooltip.render();
 
     this.xScale = new XScale(categoryLabels, options, dimensions);
@@ -74,8 +78,17 @@ class CombinationChart extends Chart {
     this.zoomer = new Zoomer(categories, x, dimensions, options, dispatchers);
     this.zoomer.render(svg);
 
-    if (!options.tooltips || !options.tooltips.type || options.tooltips.type !== 'simple') {
-      this.pointOverlay = new ClosestPointOverlay(categories, x, dimensions, dispatchers);
+    if (
+      !options.tooltips ||
+      !options.tooltips.type ||
+      options.tooltips.type !== 'simple'
+    ) {
+      this.pointOverlay = new ClosestPointOverlay(
+        categories,
+        x,
+        dimensions,
+        dispatchers,
+      );
       this.pointOverlay.render(svg);
     }
 
@@ -96,10 +109,16 @@ class CombinationChart extends Chart {
       let x1;
 
       if (data.length > 0) {
-        const types = data.map(d => (d.type));
+        const types = data.map(d => d.type);
         const dataByType = this.getDataByTypes(data, types);
 
-        const yScale = new YScale(dataByType[types[0]], yOptions, null, dimensions, options);
+        const yScale = new YScale(
+          dataByType[types[0]],
+          yOptions,
+          null,
+          dimensions,
+          options,
+        );
         const y = yScale.generate();
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
@@ -112,13 +131,18 @@ class CombinationChart extends Chart {
           this.zeroLine.render(svg);
         }
 
-        if (types.indexOf('column') >= 0) {
-          const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
+        if (types.indexOf(VIZ_TYPES.COLUMN) >= 0) {
+          const x1Dimensions = Object.assign({}, dimensions, {
+            width: x.bandwidth(),
+          });
           this.xScale1 = new XScale(groups, options, x1Dimensions);
           x1 = this.xScale1.generate();
 
-          const plotOptions = deepmerge(options, this.getPlotOptions('column', dataByType.column));
-          plotOptions.type = 'column';
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.COLUMN, dataByType.column),
+          );
+          plotOptions.type = VIZ_TYPES.COLUMN;
 
           seriesColumn = new SeriesColumn(
             dataByType.column,
@@ -149,8 +173,11 @@ class CombinationChart extends Chart {
           seriesColumnDataLabel.render(svg);
         }
 
-        if (types.indexOf('scatter') >= 0) {
-          const plotOptions = deepmerge(options, this.getPlotOptions('scatter', dataByType.scatter));
+        if (types.indexOf(VIZ_TYPES.SCATTER) >= 0) {
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.SCATTER, dataByType.scatter),
+          );
 
           seriesScatter = new SeriesPoi(
             dataByType.scatter,
@@ -179,8 +206,11 @@ class CombinationChart extends Chart {
           seriesScatterDataLabel.render(svg);
         }
 
-        if (types.indexOf('line') >= 0) {
-          const plotOptions = deepmerge(options, this.getPlotOptions('line', dataByType.line));
+        if (types.indexOf(VIZ_TYPES.LINE) >= 0) {
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.LINE, dataByType.line),
+          );
 
           seriesLine = new SeriesLine(
             dataByType.line,
@@ -222,8 +252,11 @@ class CombinationChart extends Chart {
           seriesLineDataLabel.render(svg);
         }
 
-        if (types.indexOf('area') >= 0) {
-          const plotOptions = deepmerge(options, this.getPlotOptions('area', dataByType.area));
+        if (types.indexOf(VIZ_TYPES.AREA) >= 0) {
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.AREA, dataByType.area),
+          );
 
           seriesArea = new SeriesArea(
             dataByType.area,
@@ -283,7 +316,7 @@ class CombinationChart extends Chart {
           x,
           y,
           options,
-          'combination',
+          VIZ_TYPES.COMBINATION,
           dispatchers,
           yAxisIndex,
           x1,
@@ -322,10 +355,10 @@ class CombinationChart extends Chart {
 
     const categories = this.data.getCategories();
     const categoryLabels = categories.map(c => c.label);
-    const groups = this.data.getGroupsByType('column');
+    const groups = this.data.getGroupsByType(VIZ_TYPES.COLUMN);
     const seriesData = this.data.getSeries();
-    const dispatchers = this.dispatchers;
-    const options = this.options;
+    const { dispatchers } = this;
+    const { options } = this;
 
     this.container.update(this.data, options, dispatchers);
 
@@ -350,7 +383,7 @@ class CombinationChart extends Chart {
       let x1;
 
       if (scale) {
-        const types = data.map(d => (d.type));
+        const types = data.map(d => d.type);
         const dataByType = this.getDataByTypes(data, types);
 
         const y = scale.yScale.update(
@@ -369,13 +402,18 @@ class CombinationChart extends Chart {
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
         if (scale.seriesColumn) {
-          const x1Dimensions = Object.assign({}, dimensions, { width: x.bandwidth() });
+          const x1Dimensions = Object.assign({}, dimensions, {
+            width: x.bandwidth(),
+          });
 
           this.xScale1 = new XScale(groups, options, x1Dimensions);
           x1 = this.xScale1.generate();
 
-          const plotOptions = deepmerge(options, this.getPlotOptions('column', dataByType.column));
-          plotOptions.type = 'column';
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.COLUMN, dataByType.column),
+          );
+          plotOptions.type = VIZ_TYPES.COLUMN;
 
           scale.seriesColumn.update(
             dataByType.column,
@@ -403,7 +441,10 @@ class CombinationChart extends Chart {
         }
 
         if (scale.seriesScatter) {
-          const plotOptions = deepmerge(options, this.getPlotOptions('scatter', dataByType.scatter));
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.SCATTER, dataByType.scatter),
+          );
 
           scale.seriesScatter.update(
             dataByType.scatter,
@@ -429,7 +470,10 @@ class CombinationChart extends Chart {
         }
 
         if (scale.seriesLine) {
-          const plotOptions = deepmerge(options, this.getPlotOptions('line', dataByType.line));
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.LINE, dataByType.line),
+          );
 
           scale.seriesLine.update(
             dataByType.line,
@@ -466,7 +510,10 @@ class CombinationChart extends Chart {
         }
 
         if (scale.seriesArea) {
-          const plotOptions = deepmerge(options, this.getPlotOptions('area', dataByType.area));
+          const plotOptions = deepmerge(
+            options,
+            this.getPlotOptions(VIZ_TYPES.AREA, dataByType.area),
+          );
 
           scale.seriesArea.update(
             dataByType.area,
@@ -518,7 +565,7 @@ class CombinationChart extends Chart {
           x,
           y,
           options,
-          'combination',
+          VIZ_TYPES.COMBINATION,
           dispatchers,
           yAxisIndex,
           x1,
@@ -527,12 +574,6 @@ class CombinationChart extends Chart {
     });
 
     svg.selectAll(CSS.getClassSelector('series')).raise();
-  }
-
-  destroy() {
-    if (this.tooltip) {
-      this.tooltip.destroy();
-    }
   }
 }
 

@@ -80,9 +80,11 @@ class CombinationCharts extends React.Component {
         horizontal: true,
         vertical: true,
       },
-      annotations: [{
-        highestPoint: true,
-      }],
+      annotations: [
+        {
+          highestPoint: true,
+        },
+      ],
     };
 
     this.combinationChart = new ReflectChart(this.basic, {
@@ -118,7 +120,12 @@ class CombinationCharts extends React.Component {
     return (
       <div>
         <h1>Combination (Column, Line & Scatter)</h1>
-        <div className="sg-chart" ref={ (c) => { this.basic = c; } } />
+        <div
+          className="sg-chart"
+          ref={c => {
+            this.basic = c;
+          }}
+        />
       </div>
     );
   }

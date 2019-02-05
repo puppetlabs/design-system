@@ -16,26 +16,24 @@ import CSS from '../helpers/css';
 import helpers from '../helpers/charting';
 
 class ColumnChart extends Chart {
-  constructor({ elem, type, data, options, dispatchers, id }) {
-    super({ elem, type, data, options, dispatchers, id });
+  constructor(props) {
+    super(props);
 
-    this.yScales = {};
-
-    dispatchers.on('zoom', this.update);
+    props.dispatchers.on('zoom', this.update);
   }
 
   isBar() {
-    const orientation = this.options.axis.x.orientation;
+    const { orientation } = this.options.axis.x;
 
     return orientation === 'left' || orientation === 'right';
   }
 
   render() {
     const categories = this.data.getCategories();
-    const categoryLabels = categories.map(c => (c.label));
+    const categoryLabels = categories.map(c => c.label);
     const groups = this.data.getGroups();
     const seriesData = this.data.getSeries();
-    const dispatchers = this.dispatchers;
+    const { dispatchers } = this;
     const options = clone(this.options);
 
     this.container = new Container(this.data, options, dispatchers);
@@ -45,7 +43,12 @@ class ColumnChart extends Chart {
     const dimensions = this.container.getDimensions();
 
     const animationDirection = this.isBar() ? 'horizontal' : 'vertical';
-    this.clipPath = new ClipPath(dimensions, options, this.id, animationDirection);
+    this.clipPath = new ClipPath(
+      dimensions,
+      options,
+      this.id,
+      animationDirection,
+    );
     this.clipPath.render(svg);
 
     this.xScale = new XScale(categoryLabels, options, dimensions);
@@ -76,13 +79,22 @@ class ColumnChart extends Chart {
       let data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
+        const plotOptions = deepmerge(
+          options,
+          this.getPlotOptions(this.type, data),
+        );
 
         if (plotOptions.layout === 'stacked') {
           data = helpers.stackData(data);
         }
 
-        const yScale = new YScale(data, yOptions, plotOptions.layout, dimensions, options);
+        const yScale = new YScale(
+          data,
+          yOptions,
+          plotOptions.layout,
+          dimensions,
+          options,
+        );
         const y = yScale.generate();
 
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
@@ -158,10 +170,10 @@ class ColumnChart extends Chart {
     }
 
     const categories = this.data.getCategories();
-    const categoryLabels = categories.map(c => (c.label));
+    const categoryLabels = categories.map(c => c.label);
     const groups = this.data.getGroups();
     const seriesData = this.data.getSeries();
-    const dispatchers = this.dispatchers;
+    const { dispatchers } = this;
     const options = clone(this.options);
 
     this.container.update(this.data, options, dispatchers);
@@ -195,13 +207,22 @@ class ColumnChart extends Chart {
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
+        const plotOptions = deepmerge(
+          options,
+          this.getPlotOptions(this.type, data),
+        );
 
         if (plotOptions.layout === 'stacked') {
           data = helpers.stackData(data);
         }
 
-        const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
+        const y = scale.yScale.update(
+          data,
+          yOptions,
+          plotOptions.layout,
+          dimensions,
+          options,
+        );
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
@@ -248,12 +269,6 @@ class ColumnChart extends Chart {
     });
 
     svg.selectAll(CSS.getClassSelector('series')).raise();
-  }
-
-  destroy() {
-    if (this.tooltip) {
-      this.tooltip.destroy();
-    }
   }
 }
 

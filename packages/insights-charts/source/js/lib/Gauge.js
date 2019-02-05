@@ -1,8 +1,9 @@
 import { arc } from 'd3-shape';
 import CSS from '../helpers/css';
 
-const degreesToRadians = degrees => (degrees * (Math.PI / 180));
-const centerTransform = (width, height) => (`translate(${(width / 2)},${(height / 2)})`);
+const degreesToRadians = degrees => degrees * (Math.PI / 180);
+const centerTransform = (width, height) =>
+  `translate(${width / 2},${height / 2})`;
 
 class Gauge {
   constructor(seriesData, options, dimensions, dispatchers) {
@@ -81,8 +82,8 @@ class Gauge {
     const endAngleArc = arc()
       .outerRadius(radius)
       .innerRadius(innerRadius)
-      .startAngle(d => (calculateEndAngle(d, indicatorRadius)))
-      .endAngle(d => (calculateEndAngle(d, indicatorRadius)))
+      .startAngle(d => calculateEndAngle(d, indicatorRadius))
+      .endAngle(d => calculateEndAngle(d, indicatorRadius))
       .cornerRadius(100);
 
     let wrapper = selection.selectAll(CSS.getClassSelector('gauge-arc'));
@@ -96,7 +97,8 @@ class Gauge {
       .attr('d', outerArc)
       .attr('transform', centerTransform(width, height));
 
-    let value = selection.selectAll(CSS.getClassSelector('gauge-arc-value'))
+    let value = selection
+      .selectAll(CSS.getClassSelector('gauge-arc-value'))
       .data(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null));
 
     value.exit().remove();
@@ -105,11 +107,13 @@ class Gauge {
 
     value = newValue.merge(value);
 
-    value.classed(CSS.getClassName('gauge-arc-value'), true)
+    value
+      .classed(CSS.getClassName('gauge-arc-value'), true)
       .attr('d', innerArc)
-      .attr('transform', `translate(${(width / 2)},${(height / 2)})`);
+      .attr('transform', `translate(${width / 2},${height / 2})`);
 
-    let leadingIndicator = selection.selectAll(CSS.getClassSelector('gauge-leading-indicator'))
+    let leadingIndicator = selection
+      .selectAll(CSS.getClassSelector('gauge-leading-indicator'))
       .data(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null));
 
     leadingIndicator.exit().remove();
@@ -123,12 +127,13 @@ class Gauge {
     leadingIndicator
       .attr('class', CSS.getClassName('gauge-leading-indicator'))
       .attr('stroke-width', indicatorStrokeWidth)
-      .attr('r', indicatorRadius - (indicatorStrokeWidth / 2))
-      .attr('cx', d => (endAngleArc.centroid(d)[0]))
-      .attr('cy', d => (endAngleArc.centroid(d)[1]))
+      .attr('r', indicatorRadius - indicatorStrokeWidth / 2)
+      .attr('cx', d => endAngleArc.centroid(d)[0])
+      .attr('cy', d => endAngleArc.centroid(d)[1])
       .attr('transform', centerTransform(width, height));
 
-    let kpi = selection.selectAll(CSS.getClassSelector('gauge-kpi'))
+    let kpi = selection
+      .selectAll(CSS.getClassSelector('gauge-kpi'))
       .data(this.seriesData[0].data.filter(d => !d.disabled && d.y !== null));
 
     kpi.exit().remove();
@@ -139,13 +144,15 @@ class Gauge {
 
     const kpiFontSize = innerRadius / 1.175;
 
-    kpi.classed(CSS.getClassName('gauge-kpi'), true)
+    kpi
+      .classed(CSS.getClassName('gauge-kpi'), true)
       .attr('transform', centerTransform(width, height))
       .style('font-size', `${kpiFontSize}px`)
-      .text(d => (d.y));
+      .text(d => d.y);
 
     if (options.gauge && options.gauge.delta) {
-      let delta = selection.selectAll(CSS.getClassSelector('gauge-delta'))
+      let delta = selection
+        .selectAll(CSS.getClassSelector('gauge-delta'))
         .data([options.gauge.delta.value]);
 
       delta.exit().remove();
@@ -155,15 +162,20 @@ class Gauge {
       delta = newDelta.merge(delta);
 
       const deltaFontSize = kpiFontSize / 4;
-      const direction = options.gauge.delta.direction;
+      const { direction } = options.gauge.delta;
       const deltaClass = CSS.getClassName('gauge-delta');
-      const directionClass = direction ? CSS.getClassName(`gauge-delta-${direction}`) : '';
+      const directionClass = direction
+        ? CSS.getClassName(`gauge-delta-${direction}`)
+        : '';
 
       delta
         .attr('class', `${deltaClass} ${directionClass}`)
-        .attr('transform', `translate(${(width / 2)},${(height / 2) + (kpiFontSize / 1.6)})`)
+        .attr(
+          'transform',
+          `translate(${width / 2},${height / 2 + kpiFontSize / 1.6})`,
+        )
         .style('font-size', `${deltaFontSize}px`)
-        .text(d => (d));
+        .text(d => d);
     }
 
     return wrapper;

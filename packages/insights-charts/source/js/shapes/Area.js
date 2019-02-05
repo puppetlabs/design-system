@@ -2,10 +2,11 @@ import { curveCatmullRom, area as d3Area } from 'd3-shape';
 
 const Area = (x, y, data, dimensions, options) => {
   const isStacked = options.layout === 'stacked';
-  const spline = options.spline;
+  const { spline } = options;
+  let revisedData = data;
 
   const area = d3Area()
-    .x((d) => {
+    .x(d => {
       let result = x(d.x);
 
       if (x.bandwidth) {
@@ -14,7 +15,7 @@ const Area = (x, y, data, dimensions, options) => {
 
       return result;
     })
-    .y0((d) => {
+    .y0(d => {
       let yPos;
 
       if (isStacked) {
@@ -29,7 +30,7 @@ const Area = (x, y, data, dimensions, options) => {
 
       return yPos;
     })
-    .y1((d) => {
+    .y1(d => {
       let yPos;
 
       if (isStacked) {
@@ -50,10 +51,10 @@ const Area = (x, y, data, dimensions, options) => {
   }
 
   if (!isStacked) {
-    data = data.filter(d => d.y !== null);
+    revisedData = data.filter(d => d.y !== null);
   }
 
-  return area(data);
+  return area(revisedData);
 };
 
 export default Area;

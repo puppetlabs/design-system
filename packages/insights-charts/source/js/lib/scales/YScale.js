@@ -1,9 +1,34 @@
 import { scaleLinear } from 'd3-scale';
 import { min as d3Min, max as d3Max } from 'd3-array';
 import helpers from '../../helpers/charting';
+import { VIZ_TYPES } from '../../constants';
+
+const getStackedMinimum = data => {
+  let min;
+
+  min = d3Min(data, s =>
+    d3Min(s.data, d => (d.y || 0) + (d.y0 > 0 ? 0 : d.y0)),
+  );
+
+  if (min > 0) {
+    min = 0;
+  }
+
+  return min;
+};
+
+const getStackedMaximum = data =>
+  d3Max(data, s => d3Max(s.data, d => (d.y || 0) + (d.y0 < 0 ? 0 : d.y0)));
 
 class YScale {
-  constructor(data, options = {}, layout, dimensions = {}, allOptions = {}, type = 'chart') {
+  constructor(
+    data,
+    options = {},
+    layout,
+    dimensions = {},
+    allOptions = {},
+    type = 'chart',
+  ) {
     this.data = data;
     this.options = options;
     this.layout = layout;
@@ -13,8 +38,8 @@ class YScale {
   }
 
   getMinimum(data) {
-    return d3Min(data, (s) => {
-      const isBubble = s.type === 'bubble';
+    return d3Min(data, s => {
+      const isBubble = s.type === VIZ_TYPES.BUBBLE;
       const isChart = this.type === 'chart';
       let min;
 
@@ -38,8 +63,8 @@ class YScale {
   }
 
   getMaximum(data) {
-    return d3Max(data, (s) => {
-      const isBubble = s.type === 'bubble';
+    return d3Max(data, s => {
+      const isBubble = s.type === VIZ_TYPES.BUBBLE;
       const isChart = this.type === 'chart';
       let max;
 
@@ -62,28 +87,6 @@ class YScale {
     });
   }
 
-  getStackedMinimum(data) {
-    let min;
-
-    min = d3Min(data, s => (
-      d3Min(s.data, d => ((d.y || 0) + ((d.y0 > 0) ? 0 : d.y0)))
-    ));
-
-    if (min > 0) {
-      min = 0;
-    }
-
-    return min;
-  }
-
-  getStackedMaximum(data) {
-    return d3Max(data, s => (
-      d3Max(s.data, d => (
-        (d.y || 0) + ((d.y0 < 0) ? 0 : d.y0)
-      ))
-    ));
-  }
-
   generate() {
     const { data, options, dimensions } = this;
     const { width, height } = dimensions;
@@ -94,23 +97,23 @@ class YScale {
 
     let isBubble;
     if (Array.isArray(data)) {
-      data.forEach((series) => {
-        if (series.type === 'bubble') {
+      data.forEach(series => {
+        if (series.type === VIZ_TYPES.BUBBLE) {
           isBubble = true;
         }
       });
     } else if (data.type) {
-      isBubble = data.type === 'bubble';
+      isBubble = data.type === VIZ_TYPES.BUBBLE;
     }
 
     const types = {};
-    let layout = this.layout;
+    let { layout } = this;
     let max;
     let min;
     let minScale;
 
     if (multiSeries) {
-      this.data.forEach((d) => {
+      this.data.forEach(d => {
         if (!types[d.type]) {
           types[d.type] = [];
         }
@@ -122,22 +125,26 @@ class YScale {
 
       if (typeKeys.length > 1) {
         layout = 'mixed';
-      } else if (typeKeys.length === 1 && this.allOptions && this.allOptions[typeKeys[0]]) {
-        layout = this.allOptions[typeKeys[0]].layout;
+      } else if (
+        typeKeys.length === 1 &&
+        this.allOptions &&
+        this.allOptions[typeKeys[0]]
+      ) {
+        ({ layout } = this.allOptions[typeKeys[0]]);
       }
     }
 
     if (maxOption) {
       max = maxOption;
     } else if (layout === 'stacked' && !isBubble && multiSeries) {
-      max = this.getStackedMaximum(this.data);
+      max = getStackedMaximum(this.data);
     } else if (layout === 'mixed') {
       const chartOptions = this.allOptions || {};
       const maxArray = [];
 
-      Object.keys(types).forEach((type) => {
+      Object.keys(types).forEach(type => {
         if (chartOptions[type] && chartOptions[type].layout === 'stacked') {
-          maxArray.push(this.getStackedMaximum(types[type]));
+          maxArray.push(getStackedMaximum(types[type]));
         } else {
           maxArray.push(this.getMaximum(types[type]));
         }
@@ -151,14 +158,14 @@ class YScale {
     if (minOption !== undefined) {
       min = minOption;
     } else if (layout === 'stacked' && !isBubble) {
-      min = this.getStackedMinimum(this.data);
+      min = getStackedMinimum(this.data);
     } else if (layout === 'mixed') {
       const chartOptions = this.allOptions || {};
       const minArray = [];
 
-      Object.keys(types).forEach((type) => {
+      Object.keys(types).forEach(type => {
         if (chartOptions[type] && chartOptions[type].layout === 'stacked') {
-          minArray.push(this.getStackedMinimum(types[type]));
+          minArray.push(getStackedMinimum(types[type]));
         } else {
           minArray.push(this.getMinimum(types[type]));
         }
@@ -170,13 +177,9 @@ class YScale {
     }
 
     if (minOption === undefined) {
-      minScale = (min > 0 ? 0.3 : 1);
+      minScale = min > 0 ? 0.3 : 1;
 
       min *= minScale;
-    }
-
-    if (maxOption === undefined) {
-      max /= 0.95;
     }
 
     if (options.reversed) {

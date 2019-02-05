@@ -22,7 +22,10 @@ class YAxis {
     const optionFormatter = options.labels && options.labels.formatter;
     let formatter;
 
-    if (optionFormatter && Object.keys(formatters).indexOf(optionFormatter) >= 0) {
+    if (
+      optionFormatter &&
+      Object.keys(formatters).indexOf(optionFormatter) >= 0
+    ) {
       formatter = formatters[optionFormatter];
     } else if (typeof optionFormatter === 'function') {
       formatter = optionFormatter;
@@ -34,7 +37,7 @@ class YAxis {
   }
 
   getAxisFunction(y, options) {
-    const orientation = options.orientation;
+    const { orientation } = options;
     let axis;
 
     switch (orientation) {
@@ -57,12 +60,11 @@ class YAxis {
       axis.ticks(DEFAULT_Y_TICKS);
     }
 
-    return axis.tickSizeOuter(0)
-      .tickFormat(this.getAxisFormatter());
+    return axis.tickSizeOuter(0).tickFormat(this.getAxisFormatter());
   }
 
   render(elem) {
-    const options = this.options;
+    const { options } = this;
     const orientation = options.orientation || 'left';
     const { height, width } = this.dimensions;
 
@@ -88,13 +90,18 @@ class YAxis {
           translate = '0, 0';
       }
 
-      this.axis = this.elem.append('g')
-        .attr('class', CSS.getClassName('axis', 'axis-y', `axis-y-${this.yAxisIndex}`))
+      this.axis = this.elem
+        .append('g')
+        .attr(
+          'class',
+          CSS.getClassName('axis', 'axis-y', `axis-y-${this.yAxisIndex}`),
+        )
         .attr('transform', `translate(${translate})`)
         .call(axis);
 
       if (options.title) {
-        this.axis.append('text')
+        this.axis
+          .append('text')
           .attr('y', 0)
           .attr('x', () => {
             let xPos;
@@ -115,7 +122,10 @@ class YAxis {
             let result;
 
             try {
-              const yAxis = this.elem.select(CSS.getClassSelector(`axis-y-${this.yAxisIndex}`)).node().getBBox();
+              const yAxis = this.elem
+                .select(CSS.getClassSelector(`axis-y-${this.yAxisIndex}`))
+                .node()
+                .getBBox();
 
               if (orientation === 'left' || orientation === 'right') {
                 result = -yAxis.width - 15;

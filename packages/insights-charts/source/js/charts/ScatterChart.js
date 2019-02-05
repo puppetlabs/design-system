@@ -12,23 +12,22 @@ import Zoomer from '../lib/Zoomer';
 import SeriesPoi from '../lib/series/SeriesPoi';
 import SeriesDataLabel from '../lib/series/SeriesDataLabel';
 import CSS from '../helpers/css';
+import { VIZ_TYPES } from '../constants';
 
 class ScatterChart extends Chart {
-  constructor({ elem, type, data, options, dispatchers, id }) {
-    super({ elem, type, data, options, dispatchers, id });
+  constructor(props) {
+    super(props);
 
-    this.yScales = {};
-
-    dispatchers.on('zoom', this.update);
+    props.dispatchers.on('zoom', this.update);
   }
 
   render() {
     const categories = this.data.getCategories();
-    const categoryLabels = categories.map(c => (c.label));
+    const categoryLabels = categories.map(c => c.label);
 
     const seriesData = this.data.getSeries();
-    const dispatchers = this.dispatchers;
-    const options = this.options;
+    const { dispatchers } = this;
+    const { options } = this;
 
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
@@ -55,7 +54,13 @@ class ScatterChart extends Chart {
       const data = this.data.getDataByYAxis(yAxisIndex);
 
       if (data.length > 0) {
-        const yScale = new YScale(data, yOptions, options.layout, dimensions, options);
+        const yScale = new YScale(
+          data,
+          yOptions,
+          options.layout,
+          dimensions,
+          options,
+        );
         const y = yScale.generate();
 
         // only use the first series for the grid
@@ -70,7 +75,10 @@ class ScatterChart extends Chart {
         const yAxis = new YAxis(y, dimensions, yOptions, yAxisIndex);
         yAxis.render(svg);
 
-        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
+        const plotOptions = deepmerge(
+          options,
+          this.getPlotOptions(this.type, data),
+        );
 
         plotOptions.highlightCategory = false;
         plotOptions.pointsOfInterest = {
@@ -89,7 +97,7 @@ class ScatterChart extends Chart {
           yAxisIndex,
         );
 
-        if (options && options.type === 'bubble') {
+        if (options && options.type === VIZ_TYPES.BUBBLE) {
           this.zScale = new ZScale(data, dimensions);
           const z = this.zScale.generate();
           seriesPoi.z = z;
@@ -143,10 +151,10 @@ class ScatterChart extends Chart {
     }
 
     const categories = this.data.getCategories();
-    const categoryLabels = categories.map(c => (c.label));
+    const categoryLabels = categories.map(c => c.label);
     const seriesData = this.data.getSeries();
-    const dispatchers = this.dispatchers;
-    const options = this.options;
+    const { dispatchers } = this;
+    const { options } = this;
 
     this.container.update(this.data, options, dispatchers);
 
@@ -156,7 +164,12 @@ class ScatterChart extends Chart {
     this.clipPath.update(dimensions, options, this.id);
     this.tooltip.update(seriesData, options, dispatchers, this.id);
 
-    const x = this.xScale.update(categoryLabels, options, dimensions, this.type);
+    const x = this.xScale.update(
+      categoryLabels,
+      options,
+      dimensions,
+      this.type,
+    );
     this.xAxis.update(categoryLabels, x, dimensions, options);
 
     this.zoomer.update(categories, x, dimensions, options, dispatchers);
@@ -166,11 +179,20 @@ class ScatterChart extends Chart {
       const scale = this.yScales[yAxisIndex];
 
       if (scale) {
-        const plotOptions = deepmerge(options, this.getPlotOptions(this.type, data));
+        const plotOptions = deepmerge(
+          options,
+          this.getPlotOptions(this.type, data),
+        );
 
         plotOptions.highlightCategory = false;
 
-        const y = scale.yScale.update(data, yOptions, plotOptions.layout, dimensions, options);
+        const y = scale.yScale.update(
+          data,
+          yOptions,
+          plotOptions.layout,
+          dimensions,
+          options,
+        );
 
         if (yAxisIndex === 0) {
           this.grid.update(x, y, dimensions, options);
@@ -179,7 +201,7 @@ class ScatterChart extends Chart {
 
         scale.yAxis.update(y, dimensions, yOptions, yAxisIndex);
 
-        if (options && options.type === 'bubble') {
+        if (options && options.type === VIZ_TYPES.BUBBLE) {
           const z = this.zScale.update(data, dimensions);
           scale.seriesPoi.z = z;
         }
@@ -206,17 +228,19 @@ class ScatterChart extends Chart {
           yAxisIndex,
         );
 
-        scale.annotations.update(data, x, y, options, plotOptions.layout, dispatchers, yAxisIndex);
+        scale.annotations.update(
+          data,
+          x,
+          y,
+          options,
+          plotOptions.layout,
+          dispatchers,
+          yAxisIndex,
+        );
       }
     });
 
     svg.selectAll(CSS.getClassSelector('series')).raise();
-  }
-
-  destroy() {
-    if (this.tooltip) {
-      this.tooltip.destroy();
-    }
   }
 }
 

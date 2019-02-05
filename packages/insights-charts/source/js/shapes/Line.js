@@ -2,10 +2,11 @@ import { curveCatmullRom, line as d3Line } from 'd3-shape';
 
 const Line = (x, y, data = [], options = {}) => {
   const isStacked = options.layout === 'stacked';
-  const spline = options.spline;
+  const { spline } = options;
+  let revisedData = data;
 
   const line = d3Line()
-    .x((d) => {
+    .x(d => {
       let result = x(d.x);
 
       if (x.bandwidth) {
@@ -14,7 +15,7 @@ const Line = (x, y, data = [], options = {}) => {
 
       return result;
     })
-    .y((d) => {
+    .y(d => {
       let result;
 
       if (isStacked) {
@@ -31,10 +32,10 @@ const Line = (x, y, data = [], options = {}) => {
   }
 
   if (!isStacked) {
-    data = data.filter(d => d.y !== null);
+    revisedData = data.filter(d => d.y !== null);
   }
 
-  return line(data);
+  return line(revisedData);
 };
 
 export default Line;

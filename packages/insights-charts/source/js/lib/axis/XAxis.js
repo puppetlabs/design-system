@@ -31,14 +31,17 @@ class XAxis {
   getAxisFormatter() {
     const options = this.axisOptions;
     const optionFormatter = options.labels && options.labels.formatter;
-    let formatter = d => (d);
+    let formatter = d => d;
 
-    if (optionFormatter && Object.keys(formatters).indexOf(optionFormatter) >= 0) {
+    if (
+      optionFormatter &&
+      Object.keys(formatters).indexOf(optionFormatter) >= 0
+    ) {
       formatter = formatters[optionFormatter];
     } else if (typeof optionFormatter === 'function') {
       formatter = optionFormatter;
     } else if (this.scaleType === 'date' && !optionFormatter) {
-      formatter = d => (moment(d).format('l'));
+      formatter = d => moment(d).format('l');
     }
 
     return formatter;
@@ -67,7 +70,8 @@ class XAxis {
   }
 
   getAxisFunction(x, options) {
-    const orientation = options && options.orientation ? options.orientation : 'bottom';
+    const orientation =
+      options && options.orientation ? options.orientation : 'bottom';
     let axis;
 
     switch (orientation) {
@@ -84,9 +88,7 @@ class XAxis {
         axis = axisBottom(x);
     }
 
-    axis = axis
-      .tickSizeOuter(0)
-      .tickFormat(this.getAxisFormatter());
+    axis = axis.tickSizeOuter(0).tickFormat(this.getAxisFormatter());
 
     if (options.ticks) {
       axis.ticks(options.ticks);
@@ -167,13 +169,18 @@ class XAxis {
 
           label.text(null);
 
-          let tspan = label.append('tspan')
+          let tspan = label
+            .append('tspan')
             .attr('x', x || 0)
             .attr('y', y)
             .attr('dy', `${dy}em`)
             .text(null);
 
-          while (words.length && !this.maxLinesExceeded && !this.improperlyTruncated) {
+          while (
+            words.length &&
+            !this.maxLinesExceeded &&
+            !this.improperlyTruncated
+          ) {
             // Get the last word in the label
             word = words.pop();
 
@@ -195,14 +202,15 @@ class XAxis {
                 tspan.text(line.join(' '));
                 line = [word];
 
-                tspan = label.append('tspan')
+                tspan = label
+                  .append('tspan')
                   .attr('x', 0)
                   .attr('y', y)
-                  .attr('dy', `${(lineNumber * tspanLineHeight) + dy}em`)
+                  .attr('dy', `${lineNumber * tspanLineHeight + dy}em`)
                   .text(word);
 
                 lineNumber += 1;
-              // If there are no lines left then and the label is still wider then truncate
+                // If there are no lines left then and the label is still wider then truncate
               } else {
                 const widthPerLetter = tspanWidth / currentLine.length;
                 const overflow = tspanWidth - bandwidth;
@@ -247,17 +255,18 @@ class XAxis {
         const label = tick.select('text');
         const x = label.attr('x');
         const labelTitle = label.select('title');
-        let labelText = labelTitle.size() > 0 ? labelTitle.text() : label.text();
+        let labelText =
+          labelTitle.size() > 0 ? labelTitle.text() : label.text();
         const titleText = labelText;
 
         label.text(null);
 
-        const tspan = label.append('tspan')
+        const tspan = label
+          .append('tspan')
           .attr('x', x)
           .text(labelText);
 
-        label.attr('transform', 'rotate(-45)')
-          .style('text-anchor', 'end');
+        label.attr('transform', 'rotate(-45)').style('text-anchor', 'end');
 
         // We need to refactor our measurements in container. Instead of modifying height and
         // width we should create an svg object which we assign the mutated values to.
@@ -265,7 +274,8 @@ class XAxis {
         // consistent height
 
         const labelRect = label.node().getBoundingClientRect();
-        const maxLabelHeight = (this.dimensions.bottom - this.dimensions.top) * 0.40;
+        const maxLabelHeight =
+          (this.dimensions.bottom - this.dimensions.top) * 0.4;
 
         if (labelRect.height > maxLabelHeight) {
           const overflow = labelRect.height - maxLabelHeight;
@@ -309,7 +319,7 @@ class XAxis {
     const doesOverflow = (tickArray, width) => {
       let totalWidth = 0;
 
-      tickArray.forEach((t) => {
+      tickArray.forEach(t => {
         totalWidth += t.width;
       });
 
@@ -327,10 +337,11 @@ class XAxis {
         ticks.push(tickObj);
         totalTickWidth += tickWidth;
       });
-    // If the labels are NOT rotated then use the following algorithm to pluck labels
+      // If the labels are NOT rotated then use the following algorithm to pluck labels
     } else if (
       !this.labelsRotated &&
-      (this.scaleType !== 'ordinal' || (this.scaleType === 'ordinal' && !shouldWrapAndRotate))
+      (this.scaleType !== 'ordinal' ||
+        (this.scaleType === 'ordinal' && !shouldWrapAndRotate))
     ) {
       selection.each((data, index, items) => {
         const tick = select(items[index]);
@@ -348,7 +359,7 @@ class XAxis {
 
       while (overflows) {
         // eslint-disable-next-line no-loop-func
-        const newTicks = ticks.filter((tick, index) => (index % stride === 0));
+        const newTicks = ticks.filter((tick, index) => index % stride === 0);
 
         // If we are down to our last tick then we'll deal with an overflow
         if (newTicks.length <= 1) {
@@ -374,7 +385,8 @@ class XAxis {
   render(elem) {
     const { height, width } = this.dimensions;
     const options = this.axisOptions;
-    const orientation = options && options.orientation ? options.orientation : 'bottom';
+    const orientation =
+      options && options.orientation ? options.orientation : 'bottom';
 
     if (elem) {
       this.elem = elem;
@@ -401,12 +413,13 @@ class XAxis {
 
       this.axis = this.elem
         .append('g')
-          .attr('class', CSS.getClassName('axis', 'axis-x'))
-          .attr('transform', `translate(${translate})`)
-          .call(axis);
+        .attr('class', CSS.getClassName('axis', 'axis-x'))
+        .attr('transform', `translate(${translate})`)
+        .call(axis);
 
       if (orientation === 'top' || orientation === 'bottom') {
-        this.axis.selectAll('.tick')
+        this.axis
+          .selectAll('.tick')
           .call(this.dedupe)
           .call(this.wrap)
           .call(this.rotate)
@@ -414,13 +427,17 @@ class XAxis {
       }
 
       if (options.title) {
-        this.axis.append('text')
+        this.axis
+          .append('text')
           .attr('y', 0)
           .attr('dy', () => {
             let result;
 
             try {
-              const xAxis = this.elem.select(CSS.getClassSelector('axis-x')).node().getBBox();
+              const xAxis = this.elem
+                .select(CSS.getClassSelector('axis-x'))
+                .node()
+                .getBBox();
 
               if (orientation === 'left' || orientation === 'right') {
                 result = xAxis.width;
@@ -464,7 +481,6 @@ class XAxis {
               default:
                 rotation = 0;
             }
-
 
             return `rotate(${rotation})`;
           })

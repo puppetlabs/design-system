@@ -15,15 +15,16 @@ class Legend {
   }
 
   getFormattedLabel(value) {
-    const options = this.options;
+    const { options } = this;
     const legendFormatter = options.legend && options.legend.formatter;
 
     return helpers.getFormattedValue(legendFormatter, value);
   }
 
   getFormattedAggregate(datum) {
-    const options = this.options;
-    const yOptions = options.axis && options.axis.y ? options.axis.y[datum.axis] : {};
+    const { options } = this;
+    const yOptions =
+      options.axis && options.axis.y ? options.axis.y[datum.axis] : {};
     const optionFormatter = yOptions.values && yOptions.values.formatter;
 
     return helpers.getFormattedValue(optionFormatter, datum.aggregate);
@@ -51,7 +52,7 @@ class Legend {
       });
     } else {
       // We need to set the axis for each series.
-      values = seriesData.map((s) => {
+      values = seriesData.map(s => {
         const series = {
           data: s.data,
           color: s.color,
@@ -74,13 +75,17 @@ class Legend {
   }
 
   renderIndicator(elements, alignment) {
-    const options = this.options;
+    const { options } = this;
 
-    elements.append('span')
+    elements
+      .append('span')
       .classed(CSS.getClassName('series-indicator'), true)
-      .classed(CSS.getClassName('series-indicator-right'), alignment === 'right')
+      .classed(
+        CSS.getClassName('series-indicator-right'),
+        alignment === 'right',
+      )
       .style('background', d => (d.color ? d.color : null))
-      .style('opacity', d => (helpers.getSeriesIndicatorOpacity(d, options)));
+      .style('opacity', d => helpers.getSeriesIndicatorOpacity(d, options));
   }
 
   render(selection) {
@@ -107,13 +112,22 @@ class Legend {
 
       container = selection
         .append('div')
-        .style('max-height', orientation === 'bottom' || orientation === 'top' ? maxHeight : null)
-        .style('max-width', orientation === 'left' || orientation === 'right' ? maxWidth : null)
-        .attr('class', classnames(
-          CSS.getClassName('legend'),
-          CSS.getClassName(`legend-${orientation}`),
-          CSS.getClassName(`legend-align-${alignment}`),
-        ));
+        .style(
+          'max-height',
+          orientation === 'bottom' || orientation === 'top' ? maxHeight : null,
+        )
+        .style(
+          'max-width',
+          orientation === 'left' || orientation === 'right' ? maxWidth : null,
+        )
+        .attr(
+          'class',
+          classnames(
+            CSS.getClassName('legend'),
+            CSS.getClassName(`legend-${orientation}`),
+            CSS.getClassName(`legend-align-${alignment}`),
+          ),
+        );
 
       if (
         (orientation === 'bottom' || orientation === 'top') &&
@@ -129,61 +143,76 @@ class Legend {
 
       const data = this.getLegendValues(seriesData, legendOptions.expanded);
 
-      legendItems = container.selectAll(CSS.getClassName('legend-item'))
+      legendItems = container
+        .selectAll(CSS.getClassName('legend-item'))
         .data(data)
         .enter()
         .append('div')
-          .attr('class', (d, i) => (
-            classnames(CSS.getClassName('legend-item'), CSS.getColorClassName(i), {
+        .attr('class', (d, i) =>
+          classnames(
+            CSS.getClassName('legend-item'),
+            CSS.getColorClassName(i),
+            {
               [CSS.getClassName('legend-item-disabled')]: d.disabled,
-            })
-          ))
-          .on('mouseover', (d) => {
-            dispatchers.call('highlightSeries', this, d.seriesIndex);
-          })
-          .on('mouseout', () => {
-            dispatchers.call('unHighlightSeries');
-          });
+            },
+          ),
+        )
+        .on('mouseover', d => {
+          dispatchers.call('highlightSeries', this, d.seriesIndex);
+        })
+        .on('mouseout', () => {
+          dispatchers.call('unHighlightSeries');
+        });
 
       if (dispatchers.enabled('legendItemClick.external')) {
-        legendItems
-          .style('cursor', 'pointer')
-          .on('click', function (d) {
-            dispatchers.call('legendItemClick', this, { event, data: d });
-          });
+        legendItems.style('cursor', 'pointer').on('click', function(d) {
+          dispatchers.call('legendItemClick', this, { event, data: d });
+        });
       }
 
       dispatchers.on('update.legend', () => {
-        container.selectAll(CSS.getClassSelector('legend-item'))
-          .classed(CSS.getClassName('legend-item-disabled'), d => (d.disabled));
+        container
+          .selectAll(CSS.getClassSelector('legend-item'))
+          .classed(CSS.getClassName('legend-item-disabled'), d => d.disabled);
       });
 
-      dispatchers.on('highlightSeries.legend', (seriesIndex) => {
-        legendItems.each(function (d, i) {
-          select(this).style('opacity', (i === seriesIndex) ? null : UNHIGHLIGHTED_OPACITY);
+      dispatchers.on('highlightSeries.legend', seriesIndex => {
+        legendItems.each(function(d, i) {
+          select(this).style(
+            'opacity',
+            i === seriesIndex ? null : UNHIGHLIGHTED_OPACITY,
+          );
         });
       });
 
       dispatchers.on('unHighlightSeries.legend', () => {
-        legendItems.each(function () {
+        legendItems.each(function() {
           select(this).style('opacity', null);
         });
       });
 
-      if (alignment === 'left' || alignment === 'center' || alignment === undefined) {
+      if (
+        alignment === 'left' ||
+        alignment === 'center' ||
+        alignment === undefined
+      ) {
         this.renderIndicator(legendItems, alignment);
       }
 
-      legendItems.append('span')
+      legendItems
+        .append('span')
         .attr('class', CSS.getClassName('legend-item-value'))
         .text(d => d.label);
 
       const hasAggregate = data.some(d => d.aggregate !== undefined);
+      const getAggregate = d =>
+        d.aggregate !== undefined ? `: ${this.getFormattedAggregate(d)}` : null;
 
       if (hasAggregate) {
-        legendItems.append('span')
+        legendItems
+          .append('span')
           .attr('class', CSS.getClassName('legend-item-aggregate'))
-          .text(d => (d.aggregate !== undefined ? `: ${this.getFormattedAggregate(d)}` : null));
+          .text(getAggregate);
       }
 
       if (alignment === 'right') {

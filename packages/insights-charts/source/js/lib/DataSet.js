@@ -17,13 +17,15 @@ class DataSet {
 
   getGroups() {
     return this.data.series
-      .filter(d => (d.disabled !== true && d.label !== undefined))
+      .filter(d => d.disabled !== true && d.label !== undefined)
       .map(d => d.label);
   }
 
   getGroupsByType(type) {
     return this.data.series
-      .filter(d => d.disabled !== true && d.type === type && d.label !== undefined)
+      .filter(
+        d => d.disabled !== true && d.type === type && d.label !== undefined,
+      )
       .map(d => d.label);
   }
 
@@ -34,55 +36,59 @@ class DataSet {
   getCategories() {
     const dataSet = this;
     const type = this.getCategoryType();
-    const categories = this.data.categories;
+    const { categories } = this.data;
     const zoomCategories = this.zoomCategories || [];
     const newCategories = [];
 
     categories.forEach((category, index) => {
+      let revisedCategory = category;
+
       if (
         zoomCategories.length === 0 ||
-        (zoomCategories.length > 0 && index >= zoomCategories[0] && index <= zoomCategories[1])
+        (zoomCategories.length > 0 &&
+          index >= zoomCategories[0] &&
+          index <= zoomCategories[1])
       ) {
-        if (typeof category.label === 'undefined') {
-          category = { label: category };
+        if (typeof revisedCategory.label === 'undefined') {
+          revisedCategory = { label: revisedCategory };
         }
 
-        category.categoryIndex = index;
+        revisedCategory.categoryIndex = index;
 
         switch (type) {
           case 'date':
-            category.label = moment(category.label);
+            revisedCategory.label = moment(revisedCategory.label);
             break;
           case 'number':
-            if (helpers.isFloat(category.label)) {
-              category.label = parseFloat(category.label);
-            } else if (helpers.isInt(category.label)) {
-              category.label = parseInt(category.label, 10);
+            if (helpers.isFloat(revisedCategory.label)) {
+              revisedCategory.label = parseFloat(revisedCategory.label);
+            } else if (helpers.isInt(revisedCategory.label)) {
+              revisedCategory.label = parseInt(revisedCategory.label, 10);
             }
 
             break;
           default:
-            category.label = category.label;
         }
 
-        category.isTargetable = function () {
+        revisedCategory.isTargetable = function() {
           if (dataSet.seriesData === undefined) {
             dataSet.getSeries();
           }
 
           if (typeof this.targetable === 'undefined') {
-            this.targetable = dataSet.seriesData
-              .some((s) => {
-                const dataPoints = s.data.filter(d => d.categoryIndex === category.categoryIndex);
+            this.targetable = dataSet.seriesData.some(s => {
+              const dataPoints = s.data.filter(
+                d => d.categoryIndex === revisedCategory.categoryIndex,
+              );
 
-                return dataPoints.some(d => d.y !== null);
-              });
+              return dataPoints.some(d => d.y !== null);
+            });
           }
 
           return this.targetable;
         };
 
-        newCategories.push(category);
+        newCategories.push(revisedCategory);
       }
     });
 
@@ -94,9 +100,11 @@ class DataSet {
 
     this.getSeries();
 
-    return this.seriesData.filter(s => (
-      (s.axis === i || (s.axis === undefined && i === 0)) && s.disabled !== true
-    ));
+    return this.seriesData.filter(
+      s =>
+        (s.axis === i || (s.axis === undefined && i === 0)) &&
+        s.disabled !== true,
+    );
   }
 
   getSeries() {
@@ -109,9 +117,9 @@ class DataSet {
       newSeries.seriesIndex = index;
       newSeries.data = [];
 
-      categories.forEach((category) => {
+      categories.forEach(category => {
         const d = s.data[category.categoryIndex];
-        const datum = (typeof d === 'object' && d !== null ? d : { y: d });
+        const datum = typeof d === 'object' && d !== null ? d : { y: d };
 
         datum.x = datum.x ? datum.x : category.label;
         datum.y0 = datum.y0 ? datum.y0 : 0;
@@ -135,9 +143,11 @@ class DataSet {
   }
 
   validateSeries() {
-    this.data.series.forEach((s) => {
+    this.data.series.forEach(s => {
       if (s.data.length !== this.data.categories.length) {
-        throw new Error('The length of each data object needs to equal the length of categories');
+        throw new Error(
+          'The length of each data object needs to equal the length of categories',
+        );
       }
     });
   }

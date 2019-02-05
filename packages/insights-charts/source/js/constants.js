@@ -10,4 +10,14 @@ export const UNHIGHLIGHTED_OPACITY = 0.22;
 export const TOOLTIP_POINTER_MARGIN = 20;
 export const DATA_LABEL_MARGIN = 10;
 export const DEFAULT_Y_TICKS = 5;
-export const CHARTS_WITH_NO_MARGINS = ['sparkline', 'donut', 'gauge'];
+export const VIZ_TYPES = {
+  AREA: 'area',
+  LINE: 'line',
+  COLUMN: 'column',
+  DONUT: 'donut',
+  GAUGE: 'gauge',
+  SCATTER: 'scatter',
+  BUBBLE: 'bubble',
+  COMBINATION: 'combination',
+  SPARKLINE: 'sparkline',
+};

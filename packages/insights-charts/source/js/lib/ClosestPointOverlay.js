@@ -16,15 +16,16 @@ class ClosestPointOverlay {
 
   bindEvents() {
     const categories = this.categories
-      .map((c) => {
-        c.targetable = c.isTargetable();
+      .map(c => {
+        const revisedC = c;
+        revisedC.targetable = c.isTargetable();
 
-        return c;
+        return revisedC;
       })
       .filter(c => c.targetable);
 
-    const x = this.x;
-    const dispatchers = this.dispatchers;
+    const { x } = this;
+    const { dispatchers } = this;
 
     // If we have no mouse-targetable categories, just bail out.
     if (categories.length === 0) {
@@ -36,7 +37,7 @@ class ClosestPointOverlay {
         dispatchers.call('activatePointOfInterest');
         dispatchers.call('tooltipHide');
       })
-      .on('mousemove', function () {
+      .on('mousemove', function() {
         // We want to get the mouse position relative to the POIOverlay to determine the closest
         // category, but we need the mouse position relative to body for the `tooltipMove` event.
         const globalMouse = mouse(select('body').node());
@@ -65,16 +66,16 @@ class ClosestPointOverlay {
 
           // work out which category is closest to the mouse
           if (mouseCategory - d0.label > d1.label - mouseCategory) {
-            categoryIndex = d1.categoryIndex;
+            ({ categoryIndex } = d1);
             category = d1.label;
           } else {
-            categoryIndex = d0.categoryIndex;
+            ({ categoryIndex } = d0);
             category = d0.label;
           }
         } else {
           // Handle ordinal scales here. We need an extra step to map the mouse position to
           // the x scale.
-          const values = categories.map(c => (x(c.label)));
+          const values = categories.map(c => x(c.label));
 
           index = bisectLeft(values, xPos);
 
@@ -87,23 +88,31 @@ class ClosestPointOverlay {
           const d1 = values[index];
 
           if (xPos - d0 > d1 - xPos) {
-            categoryIndex = categories[index].categoryIndex;
+            ({ categoryIndex } = categories[index]);
             category = categories[index].label;
           } else {
-            categoryIndex = categories[lowerIndex].categoryIndex;
+            ({ categoryIndex } = categories[lowerIndex]);
             category = categories[lowerIndex].label;
           }
         }
 
         dispatchers.call('activatePointOfInterest', this, category);
-        dispatchers.call('tooltipMove', this, categoryIndex, 0, category, globalMouse);
+        dispatchers.call(
+          'tooltipMove',
+          this,
+          categoryIndex,
+          0,
+          category,
+          globalMouse,
+        );
       });
   }
 
   render(elem) {
     const { width, height } = this.dimensions;
 
-    this.overlay = elem.append('rect')
+    this.overlay = elem
+      .append('rect')
       .attr('class', CSS.getClassName('overlay'))
       .attr('width', width)
       .attr('height', height);

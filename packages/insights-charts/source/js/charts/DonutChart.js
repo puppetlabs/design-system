@@ -1,17 +1,41 @@
+import deepmerge from 'deepmerge';
 import Chart from './Chart';
 import Container from '../lib/Container';
 import Tooltip from '../lib/Tooltip';
 import Donut from '../lib/Donut';
 
+const chartOptions = {
+  margins: {
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
+  axis: {
+    x: {
+      enabled: false,
+    },
+    y: {
+      enabled: false,
+    },
+  },
+  legend: {
+    expanded: true,
+  },
+};
+
 class DonutChart extends Chart {
-  constructor({ elem, type, data, options, dispatchers, id }) {
-    super({ elem, type, data, options, dispatchers, id });
+  constructor(props) {
+    const revisedProps = props;
+    revisedProps.options = deepmerge(chartOptions, props.options || {});
+
+    super(revisedProps);
   }
 
   render() {
     const seriesData = this.data.getSeries();
-    const dispatchers = this.dispatchers;
-    const options = this.options;
+    const { dispatchers } = this;
+    const { options } = this;
 
     this.container = new Container(this.data, options, dispatchers);
     this.container.render(this.elem);
@@ -36,12 +60,6 @@ class DonutChart extends Chart {
     this.tooltip.update(seriesData, options, dispatchers, this.id);
 
     this.donut.update(seriesData, options, dimensions, dispatchers);
-  }
-
-  destroy() {
-    if (this.tooltip) {
-      this.tooltip.destroy();
-    }
   }
 }
 

@@ -12,7 +12,7 @@ class Grid {
 
   renderXGridLines() {
     const options = this.options.axis.x;
-    const orientation = options.orientation;
+    const { orientation } = options;
     let axis;
 
     if (orientation === 'left' || orientation === 'right') {
@@ -59,11 +59,10 @@ class Grid {
     if (options.enabled) {
       const { width, height } = this.dimensions;
 
-      this.grid = this.elem.append('g')
-        .attr('class', CSS.getClassName('grid'));
+      this.grid = this.elem.append('g').attr('class', CSS.getClassName('grid'));
 
       if (options.vertical) {
-        const orientation = this.options.axis.x.orientation;
+        const { orientation } = this.options.axis.x;
         let translate;
         let tickSize;
 
@@ -78,10 +77,15 @@ class Grid {
           tickSize = -height;
         }
 
-        this.verticalGrid = this.grid.append('g')
+        this.verticalGrid = this.grid
+          .append('g')
           .attr('class', CSS.getClassName('grid-vertical'))
           .attr('transform', `translate(${translate})`)
-          .call(this.renderXGridLines().tickSize(tickSize).tickFormat(''));
+          .call(
+            this.renderXGridLines()
+              .tickSize(tickSize)
+              .tickFormat(''),
+          );
       }
 
       if (options.horizontal) {
@@ -100,10 +104,15 @@ class Grid {
           tickSize = -height;
         }
 
-        this.horizontalGrid = this.grid.append('g')
+        this.horizontalGrid = this.grid
+          .append('g')
           .attr('transform', `translate(${translate})`)
           .attr('class', CSS.getClassName('grid-horizontal'))
-          .call(this.renderYGridLines().tickSize(tickSize).tickFormat(''));
+          .call(
+            this.renderYGridLines()
+              .tickSize(tickSize)
+              .tickFormat(''),
+          );
       }
     }
 

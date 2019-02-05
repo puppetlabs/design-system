@@ -20,7 +20,7 @@ class SparklineCharts extends React.Component {
       series: [
         {
           label: 'Loss',
-          data: getRandomData(dataPoints, { sparseness }),
+          data: [0, 0, 0, 0, 0, 5, 0, 0, 0, 0],
         },
       ],
     };
@@ -87,11 +87,26 @@ class SparklineCharts extends React.Component {
     return (
       <div>
         <h1>Line Sparkline</h1>
-        <div className="sg-chart" ref={ (c) => { this.line = c; } } />
+        <div
+          className="sg-chart"
+          ref={c => {
+            this.line = c;
+          }}
+        />
         <h1>Area Sparkline</h1>
-        <div className="sg-chart" ref={ (c) => { this.area = c; } } />
+        <div
+          className="sg-chart"
+          ref={c => {
+            this.area = c;
+          }}
+        />
         <h1>Column Sparkline</h1>
-        <div className="sg-chart" ref={ (c) => { this.column = c; } } />
+        <div
+          className="sg-chart"
+          ref={c => {
+            this.column = c;
+          }}
+        />
       </div>
     );
   }

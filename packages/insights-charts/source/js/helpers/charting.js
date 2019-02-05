@@ -2,11 +2,10 @@ import moment from 'moment';
 import clone from 'clone';
 import { min as d3Min, max as d3Max } from 'd3-array';
 import formatters from './formatters';
-import { POI_RADIUS, POI_SCALING_FACTOR } from '../constants';
+import { POI_RADIUS, POI_SCALING_FACTOR, VIZ_TYPES } from '../constants';
 import ZScale from '../lib/scales/ZScale';
 
 const helpers = {
-
   isTimestamp(str) {
     const res = [
       /^([0-9]{4}(-|\/)[0-9]{1,2}|[0-9]{1,2}(-|\/)[0-9]{4})$/,
@@ -33,30 +32,32 @@ const helpers = {
   stackData(data) {
     const columns = {};
 
-    return data.map((s) => {
+    return data.map(s => {
       const yIndex = s.axis !== undefined ? s.axis : 0;
 
       if (typeof columns[yIndex] === 'undefined') {
         columns[yIndex] = {};
       }
 
-      s.data.map((d) => {
-        if (typeof columns[yIndex][d.x] === 'undefined') {
-          columns[yIndex][d.x] = {
-            y0Positive: d.y0,
-            y0Negative: d.y0,
+      s.data.map(d => {
+        const revisedD = d;
+
+        if (typeof columns[yIndex][revisedD.x] === 'undefined') {
+          columns[yIndex][revisedD.x] = {
+            y0Positive: revisedD.y0,
+            y0Negative: revisedD.y0,
           };
         }
 
-        if (d.y >= 0) {
-          d.y0 = columns[yIndex][d.x].y0Positive;
-          columns[yIndex][d.x].y0Positive += d.y || 0;
-        } else if (d.y < 0) {
-          d.y0 = columns[yIndex][d.x].y0Negative;
-          columns[yIndex][d.x].y0Negative += d.y || 0;
+        if (revisedD.y >= 0) {
+          revisedD.y0 = columns[yIndex][revisedD.x].y0Positive;
+          columns[yIndex][revisedD.x].y0Positive += revisedD.y || 0;
+        } else if (revisedD.y < 0) {
+          revisedD.y0 = columns[yIndex][revisedD.x].y0Negative;
+          columns[yIndex][revisedD.x].y0Negative += revisedD.y || 0;
         }
 
-        return d;
+        return revisedD;
       });
 
       return s;
@@ -65,7 +66,9 @@ const helpers = {
 
   getColumnLength(options, y, d, yAxisIndex = 0) {
     const axisOptions = options.axis || {};
-    const isYReversed = axisOptions.y ? options.axis.y[yAxisIndex].reversed : false;
+    const isYReversed = axisOptions.y
+      ? options.axis.y[yAxisIndex].reversed
+      : false;
     const isStacked = options.layout === 'stacked';
     const axisMin = isYReversed ? y.domain()[1] : y.domain()[0];
 
@@ -86,7 +89,9 @@ const helpers = {
   getYPosition(options, y, d, yAxisIndex = 0) {
     const axisOptions = options.axis || {};
     const orientation = axisOptions.x ? axisOptions.x.orientation : 'bottom';
-    const isYReversed = axisOptions.y ? axisOptions.y[yAxisIndex].reversed : false;
+    const isYReversed = axisOptions.y
+      ? axisOptions.y[yAxisIndex].reversed
+      : false;
     const isStacked = options.layout === 'stacked';
     const isRotated = orientation === 'left' || orientation === 'right';
     const axisMin = isYReversed ? y.domain()[1] : y.domain()[0];
@@ -114,9 +119,12 @@ const helpers = {
   },
 
   getFormattedValue(optionFormatter, value) {
-    let formatter = d => (d);
+    let formatter = d => d;
 
-    if (optionFormatter && Object.keys(formatters).indexOf(optionFormatter) >= 0) {
+    if (
+      optionFormatter &&
+      Object.keys(formatters).indexOf(optionFormatter) >= 0
+    ) {
       formatter = formatters[optionFormatter];
     } else if (optionFormatter && typeof optionFormatter === 'function') {
       formatter = optionFormatter;
@@ -128,7 +136,7 @@ const helpers = {
   isStackable(type) {
     let stackable = true;
 
-    if (type === 'line' || type === 'scatter') {
+    if (type === VIZ_TYPES.LINE || type === VIZ_TYPES.SCATTER) {
       stackable = false;
     }
 
@@ -136,10 +144,10 @@ const helpers = {
   },
 
   getSeriesIndicatorOpacity(datum, options) {
-    const type = options.type;
+    const { type } = options;
     let opacity = null;
 
-    if (type === 'combination') {
+    if (type === VIZ_TYPES.COMBINATION) {
       opacity = options[datum.type] && options[datum.type].opacity;
     } else if (options[type] && options[type].opacity) {
       opacity = options[type] && options[type].opacity;
@@ -163,16 +171,24 @@ const helpers = {
 
   getMaximumPoint(data, options, layout) {
     let maxPoint = { y: 0, y0: 0, x: 0 };
+    let revisedLayout = layout;
 
-    data.forEach((s) => {
-      s.data.forEach((d) => {
-        if (layout === 'combination') {
-          layout = options[d.seriesType] && options[d.seriesType].layout;
+    data.forEach(s => {
+      s.data.forEach(d => {
+        if (
+          revisedLayout === VIZ_TYPES.COMBINATION &&
+          options[d.seriesType] &&
+          options[d.seriesType].layout
+        ) {
+          ({ revisedLayout } = options[d.seriesType]);
         }
 
-        if (layout === 'stacked' && ((d.y + d.y0) > (maxPoint.y + maxPoint.y0))) {
+        if (
+          revisedLayout === 'stacked' &&
+          d.y + d.y0 > maxPoint.y + maxPoint.y0
+        ) {
           maxPoint = d;
-        } else if (layout !== 'stacked' && d.y > maxPoint.y) {
+        } else if (revisedLayout !== 'stacked' && d.y > maxPoint.y) {
           maxPoint = d;
         }
       });
@@ -196,7 +212,7 @@ const helpers = {
   getMaxBubbleRadius(data) {
     let numberOfPoints = 0;
 
-    data.forEach((series) => {
+    data.forEach(series => {
       numberOfPoints += series.data.length;
     });
 
@@ -219,12 +235,19 @@ const helpers = {
     const zScale = new ZScale(data, dimensions);
     const z = zScale.generate();
 
-    const radius = d => helpers.getBubbleRadius(d.z, z, dimensions.width, dimensions.height);
+    const radius = d =>
+      helpers.getBubbleRadius(d.z, z, dimensions.width, dimensions.height);
 
     let axisLengths = [dimensions.height, dimensions.width];
-    if (isYAxis && (options.orientation === 'bottom' || options.orientation === 'top')) {
+    if (
+      isYAxis &&
+      (options.orientation === 'bottom' || options.orientation === 'top')
+    ) {
       axisLengths = axisLengths.reverse();
-    } else if (isXAxis && (options.orientation === 'right' || options.orientation === 'left')) {
+    } else if (
+      isXAxis &&
+      (options.orientation === 'right' || options.orientation === 'left')
+    ) {
       axisLengths = axisLengths.reverse();
     }
 
@@ -236,8 +259,8 @@ const helpers = {
     let point;
 
     if (limitType === 'max') {
-      adjustedSeries = s.data.map((d) => {
-        let adjusted = d[axis] + ((radius(d) / (relativeAxisLength / (max - min))));
+      adjustedSeries = s.data.map(d => {
+        let adjusted = d[axis] + radius(d) / (relativeAxisLength / (max - min));
 
         adjusted += buffer;
 
@@ -246,8 +269,9 @@ const helpers = {
 
       point = d3Max(adjustedSeries);
     } else if (limitType === 'min') {
-      adjustedSeries = s.data.map((d) => {
-        let adjusted = d[axis] - (Math.abs(((radius(d) / (relativeAxisLength / (max - min))))));
+      adjustedSeries = s.data.map(d => {
+        let adjusted =
+          d[axis] - Math.abs(radius(d) / (relativeAxisLength / (max - min)));
 
         adjusted -= buffer;
 
@@ -287,6 +311,7 @@ const helpers = {
     const n = this.validatedNumber(d);
     let isInt = false;
 
+    // eslint-disable-next-line
     if (!isNaN(n)) {
       isInt = n % 1 === 0;
     }
@@ -298,6 +323,7 @@ const helpers = {
     const n = this.validatedNumber(d);
     let isFloat = false;
 
+    // eslint-disable-next-line
     if (!isNaN(n)) {
       isFloat = n % 1 !== 0;
     }
@@ -310,22 +336,25 @@ const helpers = {
     let highestNumber = 0;
     let highestKey = null;
 
-    categories.forEach((d) => {
-      if (d.label) {
-        d = d.label;
+    categories.forEach(d => {
+      let revisedD = d;
+
+      if (revisedD.label) {
+        revisedD = revisedD.label;
       }
 
       if (
-        (d && d._isAMomentObject) || // eslint-disable-line no-underscore-dangle
-        (helpers.isTimestamp(d) && moment(new Date(d)).isValid()) ||
-        d instanceof Date
+        (revisedD && revisedD._isAMomentObject) || // eslint-disable-line no-underscore-dangle
+        (helpers.isTimestamp(revisedD) &&
+          moment(new Date(revisedD)).isValid()) ||
+        revisedD instanceof Date
       ) {
         if (!types.date) {
           types.date = 0;
         }
 
         types.date += 1;
-      } else if (this.isInt(d) || this.isFloat(d)) {
+      } else if (this.isInt(revisedD) || this.isFloat(revisedD)) {
         if (!types.number) {
           types.number = 0;
         }
@@ -340,7 +369,7 @@ const helpers = {
       }
     });
 
-    Object.keys(types).forEach((type) => {
+    Object.keys(types).forEach(type => {
       if (typeof type === 'string') {
         if (types[type] > highestNumber) {
           highestNumber = types[type];

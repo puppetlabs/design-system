@@ -2,10 +2,20 @@ import CSS from '../../helpers/css';
 import formatters from '../../helpers/formatters';
 import helpers from '../../helpers/charting';
 import Series from './Series';
-import { DATA_LABEL_MARGIN } from '../../constants';
+import { DATA_LABEL_MARGIN, VIZ_TYPES } from '../../constants';
 
 class SeriesDataLabel extends Series {
-  constructor(data, dimensions, x, y, clipPathId, options, dispatchers, yAxisIndex, x1) {
+  constructor(
+    data,
+    dimensions,
+    x,
+    y,
+    clipPathId,
+    options,
+    dispatchers,
+    yAxisIndex,
+    x1,
+  ) {
     super(
       data,
       dimensions,
@@ -30,7 +40,7 @@ class SeriesDataLabel extends Series {
   }
 
   isHorizontal() {
-    const orientation = this.options.axis.x.orientation;
+    const { orientation } = this.options.axis.x;
 
     return orientation === 'left' || orientation === 'right';
   }
@@ -43,12 +53,14 @@ class SeriesDataLabel extends Series {
     const { options, y } = this;
     let visibility = 'visible';
 
-    if (options.type === 'column') {
+    if (options.type === VIZ_TYPES.COLUMN) {
       const barLength = helpers.getColumnLength(options, y, d, this.yAxisIndex);
       const textRect = node.parentNode.getBBox();
-      const labelLength = this.isHorizontal() ? textRect.width : textRect.height;
+      const labelLength = this.isHorizontal()
+        ? textRect.width
+        : textRect.height;
 
-      if (barLength < (labelLength + DATA_LABEL_MARGIN)) {
+      if (barLength < labelLength + DATA_LABEL_MARGIN) {
         visibility = 'hidden';
       }
     }
@@ -75,12 +87,12 @@ class SeriesDataLabel extends Series {
 
   getY(d) {
     const { y, options } = this;
-    const orientation = options.axis.x.orientation;
+    const { orientation } = options.axis.x;
     const isYAxisReversed = options.axis.y[this.yAxisIndex].reversed;
     const isStacked = options.layout === 'stacked';
     const isRotated = orientation === 'left' || orientation === 'right';
-    const isColumn = options.type === 'column';
-    const isBubble = options.type === 'bubble';
+    const isColumn = options.type === VIZ_TYPES.COLUMN;
+    const isBubble = options.type === VIZ_TYPES.BUBBLE;
 
     const datumMin = d.y0;
     const datumMax = d.y;
@@ -95,7 +107,9 @@ class SeriesDataLabel extends Series {
 
     let dataLabelMargin = 0;
     if (!isBubble) {
-      dataLabelMargin = isYAxisReversed ? -DATA_LABEL_MARGIN : DATA_LABEL_MARGIN;
+      dataLabelMargin = isYAxisReversed
+        ? -DATA_LABEL_MARGIN
+        : DATA_LABEL_MARGIN;
     }
 
     if (
@@ -117,7 +131,7 @@ class SeriesDataLabel extends Series {
     let translate;
 
     if (this.isGrouped()) {
-      const xPos = x(d.x) + (x1.bandwidth() / 2);
+      const xPos = x(d.x) + x1.bandwidth() / 2;
 
       if (this.isHorizontal()) {
         translate = `translate(0,${xPos})`;
@@ -131,8 +145,8 @@ class SeriesDataLabel extends Series {
 
   getTextAnchor(node, d) {
     const textRect = node.getBoundingClientRect();
-    const isColumn = this.options.type === 'column';
-    const isBubble = this.options.type === 'bubble';
+    const isColumn = this.options.type === VIZ_TYPES.COLUMN;
+    const isBubble = this.options.type === VIZ_TYPES.BUBBLE;
     let anchor = 'middle';
     const isYAxisReversed = this.options.axis.y[this.yAxisIndex].reversed;
     const leftEdge = this.dimensions.left + this.dimensions.margins.left;
@@ -145,9 +159,15 @@ class SeriesDataLabel extends Series {
         anchor = 'end';
       }
     } else if (!isColumn && !isBubble) {
-      if (textRect.left <= leftEdge && (textRect.left + textRect.width) >= leftEdge) {
+      if (
+        textRect.left <= leftEdge &&
+        textRect.left + textRect.width >= leftEdge
+      ) {
         anchor = 'start';
-      } else if (textRect.right >= rightEdge && (textRect.right - textRect.width) <= rightEdge) {
+      } else if (
+        textRect.right >= rightEdge &&
+        textRect.right - textRect.width <= rightEdge
+      ) {
         anchor = 'end';
       }
     }
@@ -162,12 +182,16 @@ class SeriesDataLabel extends Series {
   }
 
   getFormattedValue(d) {
-    const options = this.options;
-    const yOptions = options.axis && options.axis.y ? options.axis.y[this.yAxisIndex] : {};
+    const { options } = this;
+    const yOptions =
+      options.axis && options.axis.y ? options.axis.y[this.yAxisIndex] : {};
     const optionFormatter = yOptions.values && yOptions.values.formatter;
-    let formatter = value => (value);
+    let formatter = value => value;
 
-    if (optionFormatter && Object.keys(formatters).indexOf(optionFormatter) >= 0) {
+    if (
+      optionFormatter &&
+      Object.keys(formatters).indexOf(optionFormatter) >= 0
+    ) {
       formatter = formatters[optionFormatter];
     } else if (optionFormatter && typeof optionFormatter === 'function') {
       formatter = optionFormatter;
@@ -180,7 +204,7 @@ class SeriesDataLabel extends Series {
     this.renderCount += 1;
 
     const self = this;
-    const options = this.options;
+    const { options } = this;
     const enabled = options.data_labels && options.data_labels.enabled;
 
     if (!this.selection) {
@@ -188,43 +212,52 @@ class SeriesDataLabel extends Series {
     }
 
     if (enabled) {
-      this.series = selection.selectAll(CSS.getClassSelector(this.selector))
-        .data(this.data, d => (d.seriesIndex));
+      this.series = selection
+        .selectAll(CSS.getClassSelector(this.selector))
+        .data(this.data, d => d.seriesIndex);
 
       this.series.exit().remove();
 
-      this.series = this.series.enter()
+      this.series = this.series
+        .enter()
         .append('g')
         .merge(this.series);
 
-      this.series
-        .attr('class', d => (CSS.getClassName('series', this.selector, `color-${d.seriesIndex}`)));
+      this.series.attr('class', d =>
+        CSS.getClassName('series', this.selector, `color-${d.seriesIndex}`),
+      );
 
-      this.groups = this.series.selectAll(CSS.getClassSelector('data-label-group'))
-          .data(d => (!d.disabled ? d.data : []), d => (d.categoryIndex));
+      this.groups = this.series
+        .selectAll(CSS.getClassSelector('data-label-group'))
+        .data(d => (!d.disabled ? d.data : []), d => d.categoryIndex);
 
       this.groups.exit().remove();
 
-      const newGroups = this.groups.enter()
-        .append('g');
+      const newGroups = this.groups.enter().append('g');
 
-      newGroups.append('text').attr('class', CSS.getClassName('data-label-shadow'));
+      newGroups
+        .append('text')
+        .attr('class', CSS.getClassName('data-label-shadow'));
       newGroups.append('text').attr('class', CSS.getClassName('data-label'));
 
-      this.groups = newGroups.merge(this.groups)
+      this.groups = newGroups
+        .merge(this.groups)
         .attr('class', CSS.getClassName('data-label-group'));
 
-      let shadows = this.groups.selectAll(CSS.getClassSelector('data-label-shadow'));
+      let shadows = this.groups.selectAll(
+        CSS.getClassSelector('data-label-shadow'),
+      );
 
-      shadows = shadows.attr('class', CSS.getClassName('data-label-shadow'))
+      shadows = shadows
+        .attr('class', CSS.getClassName('data-label-shadow'))
         .text(this.getFormattedValue)
         .attr('x', this.isHorizontal() ? this.getY : this.getX)
         .attr('y', this.isHorizontal() ? this.getX : this.getY)
         .attr('transform', this.getTransform)
-        .attr('text-anchor', function (d) {
+        .attr('text-anchor', function(d) {
           return self.getTextAnchor(this, d);
         })
-        .attr('style', function (d) {
+        .attr('style', function(d) {
           return `visibility: ${self.getVisibility(d, this)};`;
         })
         .attr('opacity', 0)
@@ -232,15 +265,16 @@ class SeriesDataLabel extends Series {
 
       let labels = this.groups.selectAll(CSS.getClassSelector('data-label'));
 
-      labels = labels.attr('class', CSS.getClassName('data-label'))
+      labels = labels
+        .attr('class', CSS.getClassName('data-label'))
         .text(this.getFormattedValue)
         .attr('x', this.isHorizontal() ? this.getY : this.getX)
         .attr('y', this.isHorizontal() ? this.getX : this.getY)
         .attr('transform', this.getTransform)
-        .attr('text-anchor', function (d) {
+        .attr('text-anchor', function(d) {
           return self.getTextAnchor(this, d);
         })
-        .attr('style', function (d) {
+        .attr('style', function(d) {
           return `visibility: ${self.getVisibility(d, this)};`;
         })
         .attr('opacity', 0)
@@ -248,13 +282,19 @@ class SeriesDataLabel extends Series {
 
       // We only want to animate in the data labels on the first render. Subsequent updates should
       // simply display them
-      if (this.renderCount === 1 && options.animations && options.animations.enabled) {
-        shadows.transition()
+      if (
+        this.renderCount === 1 &&
+        options.animations &&
+        options.animations.enabled
+      ) {
+        shadows
+          .transition()
           .delay(options.animations.duration)
           .duration(options.animations.duration / 4)
           .attr('opacity', 1);
 
-        labels.transition()
+        labels
+          .transition()
           .delay(options.animations.duration)
           .duration(options.animations.duration / 4)
           .attr('opacity', 1);

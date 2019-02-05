@@ -1,5 +1,5 @@
 const getLocale = () => {
-  const navigator = window.navigator;
+  const { navigator } = window;
 
   if (navigator.languages) {
     return navigator.languages[0];
