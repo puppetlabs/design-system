@@ -75,7 +75,7 @@
     "react-addons-test-utils": "15.3.2",
     "react-dom": "16.4.0",
     "react-router": "^3.0.0",
-    "react-styleguidist": "7.0.14",
+    "react-styleguidist": "8.0.6",
     "sass-loader": "7.0.1",
     "sinon": "^1.17.6",
     "sinon-chai": "^2.8.0",
