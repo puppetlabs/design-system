@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Examples from 'react-styleguidist/lib/rsg-components/Examples';
@@ -16,14 +17,14 @@ const ExamplePlaceholder =
     : () => <div />;
 
 const propTypes = {
-  component: PropTypes.object.isRequired,
+  component: PropTypes.shape({}).isRequired,
   depth: PropTypes.number.isRequired,
   exampleMode: PropTypes.string.isRequired,
   usageMode: PropTypes.string.isRequired,
 };
 
 const contextTypes = {
-  config: PropTypes.object.isRequired,
+  config: PropTypes.shape({}).isRequired,
   displayMode: PropTypes.string,
 };
 
@@ -119,3 +120,4 @@ ReactComponent.propTypes = propTypes;
 ReactComponent.contextTypes = contextTypes;
 
 export default ReactComponent;
+/* eslint-enable */

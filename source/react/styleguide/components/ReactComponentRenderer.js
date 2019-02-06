@@ -1,7 +1,8 @@
+/* eslint-disable */
 import React from 'react';
 import PropTypes from 'prop-types';
 import Badge from '../../library/badge';
-import Text from '../../library/Text';
+import Text from '../../library/text';
 import Pathline from 'react-styleguidist/lib/rsg-components/Pathline';
 import Styled from 'react-styleguidist/lib/rsg-components/Styled';
 
@@ -103,3 +104,4 @@ ReactComponentRenderer.defaultProps = {
 };
 
 export default Styled(styles)(ReactComponentRenderer);
+/* eslint-enable */
