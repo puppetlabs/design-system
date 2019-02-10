@@ -57,7 +57,7 @@ const defaultProps = {
   actionsPosition: 'right',
 };
 
-const isEmpty = str => !str || str.match(/^\s*$/);
+const isEmpty = str => !str || (str.match && str.match(/^\s*$/));
 
 /**
  * When using react-hot-loader, all components are actually proxied to another
