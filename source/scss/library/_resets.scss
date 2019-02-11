@@ -1,3 +1,15 @@
+//
+// TODO: We should be relying on this as little as possible. A good test as we update components
+// could be to do a visual diff with this line commented out
+[class^='rc-'] {
+  font-family: $puppet-font-family;
+  font-size: $puppet-font-size-base;
+  font-weight: $puppet-font-weight-normal;
+  line-height: $puppet-line-height-default;
+}
+
+// TODO: the typography overrides here need to be consistent with styling elsewhere
+// We should probably deprecate <Content /> and just rely on these overrides
 [class^='rc-'] {
   box-sizing: border-box;
 
