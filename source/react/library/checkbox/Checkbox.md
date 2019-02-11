@@ -3,6 +3,7 @@ The Checkbox component is a lightly styled wrapper around an html checkbox input
 Design specification: [http://styleguide.puppetlabs.net/Containers.html](http://styleguide.puppetlabs.net/Containers.html)
 
 ### Basic use
+
 ```
 const exampleStyle = { marginRight: 10, marginBottom: 2 };
 

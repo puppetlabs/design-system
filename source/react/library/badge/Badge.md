@@ -19,6 +19,7 @@
 ```
 
 ### Number pills
+
 ```
 <Badge type="pill" color="danger">12</Badge>
 <Badge type="pill" color="info">24</Badge>

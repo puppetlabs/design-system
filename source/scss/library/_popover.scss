@@ -1,3 +1,15 @@
+$puppet-popover-bg: $puppet-bg-light !default;
+$puppet-popover-bg-dark: $puppet-bg-dark !default;
+$puppet-popover-border: $puppet-border !default;
+$puppet-popover-border-radius: $puppet-border-radius !default;
+$puppet-popover-close-color: $puppet-n400 !default;
+$puppet-popover-shadow: $puppet-outer-shadow-large !default;
+$puppet-popover-padding: $puppet-medium !default;
+$puppet-popover-small-width: 260px !default;
+$puppet-popover-medium-width: 300px !default;
+$puppet-popover-large-width: 400px !default;
+$puppet-popover-elevation: 24 !default;
+
 .rc-popover {
   animation: 0.1s ease-in-out rc-fade-in;
   background: $puppet-popover-bg;
@@ -16,9 +28,9 @@
   }
 
   .rc-popover-hint {
-    color: $puppet-dropdown-hint-color;
+    color: $puppet-font-color-medium;
     display: block;
-    font-size: $puppet-dropdown-hint-font-size;
+    font-size: $puppet-font-size-base;
     margin-right: 33px;
     padding: 0;
   }

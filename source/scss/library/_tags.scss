@@ -1,3 +1,47 @@
+// Tags
+// ----------------------------------------------------------------------------
+$puppet-tag-bg: $puppet-action-base !default;
+$puppet-tag-border-radius: $puppet-border-radius !default;
+$puppet-tag-border: 1px solid $puppet-bg-subtle !default;
+$puppet-tag-border-selected: $puppet-border-action !default;
+$puppet-tag-color: $puppet-white !default;
+$puppet-tag-font-size: $puppet-font-size-base !default;
+$puppet-tag-font-weight: $puppet-font-weight-medium !default;
+$puppet-tag-height: $puppet-large !default; // Todo: Base on grid
+$puppet-tag-line-height: $puppet-tag-height !default;
+$puppet-tag-margin: $puppet-mini !default;
+$puppet-tag-padding: $puppet-small !default;
+$puppet-tag-shadow-selected: $puppet-selected-shadow !default;
+
+$puppet-tag-bg-bold: #dfe4e8 !default;
+$puppet-tag-color-bold: #40484d !default;
+
+$puppet-tag-removable-bg: $puppet-action-base !default;
+$puppet-tag-removable-bg-hover: $puppet-action-hover !default;
+$puppet-tag-removable-bg-highlighted: $puppet-action-hover !default;
+
+$puppet-tag-removable-border: 1px solid transparent !default;
+$puppet-tag-removable-border-hover: 1px solid transparent !default;
+$puppet-tag-removable-border-highlighted: $puppet-border-action !default;
+
+$puppet-tag-removable-icon: transparentize($puppet-n800, 0.2) !default;
+$puppet-tag-removable-icon-hover: $puppet-n800 !default;
+$puppet-tag-removable-secondary-icon: transparentize($puppet-white, 0.2) !default;
+$puppet-tag-removable-secondary-icon-hover: $puppet-white !default;
+
+$puppet-tag-removable-color: $puppet-white !default;
+$puppet-tag-removable-color-hover: $puppet-white !default;
+$puppet-tag-removable-color-highlighted: $puppet-white !default;
+
+$puppet-tag-icon-spacing: $puppet-tiny !default;
+$puppet-tag-icon-size: $puppet-small !default;
+$puppet-tag-icon-fill: $puppet-n400 !default;
+
+$puppet-tag-tiny-font-size: $puppet-font-size-tiny !default;
+$puppet-tag-tiny-height: $puppet-medium !default; // Todo: Base on grid
+$puppet-tag-tiny-line-height: $puppet-tag-tiny-height !default;
+$puppet-tag-tiny-padding: 0 $puppet-tiny !default;
+
 .rc-tag {
   align-items: center;
   background: $puppet-tag-bg;

@@ -1,3 +1,23 @@
+$puppet-list-item-bg: $puppet-bg-light !default;
+$puppet-list-item-bg-hover: $puppet-bg-light !default;
+$puppet-list-item-color: $puppet-font-color-base !default;
+$puppet-list-item-color-hover: $puppet-font-color-base !default;
+$puppet-list-item-border: $puppet-border !default;
+$puppet-list-item-border-hover: $puppet-border-color-hover !default;
+$puppet-list-item-border-selected: $puppet-border-color-action-base !default;
+$puppet-list-item-shadow-selected: $puppet-selected-shadow !default;
+$puppet-list-item-border-radius: 0 !default;
+$puppet-list-item-font-size: $puppet-font-size-base !default;
+$puppet-list-item-padding: $puppet-small !default;
+$puppet-list-item-lineheight: $puppet-line-height-default !default;
+$puppet-list-item-height: $puppet-size-base * 4 !default;
+$puppet-list-item-margin: 0 !default;
+$puppet-list-item-selected-bg: $puppet-bg-subtle !default;
+
+$puppet-list-item-small-font-size: $puppet-font-size-small !default;
+$puppet-list-item-small-lineheight: $puppet-medium !default;
+$puppet-list-item-small-height: $puppet-size-base * 3 !default;
+
 .rc-list {
   margin: 0;
   padding: 0;

@@ -1,3 +1,21 @@
+$puppet-accordion-bg: $puppet-bg-light !default;
+$puppet-accordion-item-title-bg-color: $puppet-white !default;
+$puppet-accordion-item-title-color: $puppet-font-color-medium !default;
+$puppet-accordion-item-title-hover: $puppet-font-color-base !default;
+$puppet-accordion-item-title-height: $puppet-huge;
+$puppet-accordion-item-title-padding: 0 $puppet-medium !default; // Todo: Base on grid
+$puppet-accordion-item-border: $puppet-border-subtle !default;
+$puppet-accordion-icon-color: $puppet-icon-fill-base !default;
+$puppet-accordion-icon-color-hover: $puppet-icon-fill-hover !default;
+$puppet-accordion-item-content-padding: $puppet-medium !default;
+
+$puppet-accordion-header-title-color: $puppet-font-color-medium !default;
+$puppet-accordion-header-title-color-active: $puppet-action-base !default;
+$puppet-accordion-header-height: $puppet-huge !default;
+$puppet-accordion-header-bg: $puppet-white !default;
+
+$puppet-accordion-animation-speed: $puppet-animation-speed-base !default;
+
 .rc-accordion {
   background: $puppet-accordion-bg;
   height: 100%;

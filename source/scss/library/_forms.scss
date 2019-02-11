@@ -1,3 +1,23 @@
+$puppet-form-font-weight: $puppet-font-weight-heavy !default;
+$puppet-form-letter-spacing: $puppet-heading-letter-spacing !default;
+$puppet-form-font-family: $puppet-font-family-heading !default;
+$puppet-form-label-color: $puppet-n800 !default;
+$puppet-form-label-color-dark: $puppet-font-color-base !default;
+$puppet-form-label-font-size: $puppet-font-size-tiny !default;
+$puppet-form-label-font-size-large: $puppet-font-size-small !default;
+$puppet-form-description-color: $puppet-font-color-medium !default;
+$puppet-form-description-font-size: $puppet-font-size-tiny !default;
+
+$puppet-form-section-legend-font-size: $puppet-font-size-base !default;
+$puppet-form-section-legend-font-weight: $puppet-font-weight-heavy !default;
+$puppet-form-section-legend-color: $puppet-n900 !default;
+$puppet-form-section-flyout-icon-color: $puppet-n400 !default;
+
+$puppet-form-field-margin: $puppet-small !default;
+$puppet-form-vertical-padding: $puppet-tiny !default;
+
+$puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
+
 .rc-form-field {
   padding-bottom: $puppet-form-vertical-padding * 2;
 }
@@ -172,124 +192,6 @@
   }
 }
 
-/* stylelint-disable  */
-.rc-filter-form {
-  position: relative;
-
-  .rc-split-button {
-    background: $puppet-filter-split-bg;
-    border-top-left-radius: $puppet-filter-radius;
-    border-top-right-radius: $puppet-filter-radius;
-    position: absolute;
-    right: 0;
-    // We probably shouldn't hardcode this...
-    top: -19px;
-    visibility: hidden;
-
-    .rc-button-main {
-      background: $puppet-filter-split-bg;
-
-      .rc-button-content {
-        color: $puppet-button-bg;
-        float: right;
-      }
-
-      &:hover {
-        .rc-button-content {
-          color: $puppet-button-bg-hover;
-        }
-      }
-    }
-
-    .rc-button-menu {
-      background: $puppet-filter-split-menu-bg;
-
-      &:hover {
-        background: $puppet-filter-split-menu-bg-hover;
-      }
-
-      .rc-button-menu-inner {
-        path {
-          fill: $puppet-filter-input-bg;
-        }
-      }
-
-      &:hover {
-        .rc-button-menu-inner {
-          path {
-            fill: $puppet-filter-input-bg;
-          }
-        }
-      }
-    }
-  }
-
-  .rc-filter-form-fields {
-    background: $puppet-filter-bg;
-    border-radius: $puppet-filter-radius;
-    padding: $puppet-filter-padding;
-
-    .rc-selects-row {
-      display: flex;
-
-      .rc-select {
-        flex-grow: 1;
-      }
-
-      .rc-input {
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-      }
-
-      .rc-select-left {
-        margin-right: 2px;
-      }
-
-      .rc-select-left .rc-input {
-        border-top-left-radius: $puppet-filter-radius;
-      }
-
-      .rc-select-right .rc-input {
-        border-top-right-radius: $puppet-filter-radius;
-      }
-    }
-
-    .rc-input {
-      border-color: $puppet-filter-border-color;
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-      margin-top: 1px;
-
-      &:focus {
-        border: $puppet-filter-border-active;
-        box-shadow: $puppet-filter-selected-shadow;
-      }
-    }
-  }
-
-  &.rc-filter-form-no-value {
-    .rc-filter-form-fields .rc-selects-row {
-      .rc-select-left > .rc-input {
-        border-bottom-left-radius: $puppet-filter-radius;
-      }
-
-      .rc-select-right > .rc-input {
-        border-bottom-right-radius: $puppet-filter-radius;
-      }
-    }
-  }
-
-  &:hover {
-    .rc-split-button {
-      visibility: visible;
-    }
-
-    .rc-filter-form-fields {
-      border-top-right-radius: 0;
-    }
-  }
-}
-
 // Specific field style overrides. These should be minimal
 
 .rc-form-field-checkbox,
@@ -299,5 +201,3 @@
     display: none;
   }
 }
-
-/* stylelint-enable  */

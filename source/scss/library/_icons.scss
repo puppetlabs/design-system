@@ -1,3 +1,7 @@
+// Icons
+// ----------------------------------------------------------------------------
+$puppet-icon-primary-fill: $puppet-brand-primary !default;
+
 .rc-icon {
   fill: $puppet-icon-fill-base;
   transition: all 0.2s;
@@ -6,7 +10,6 @@
     fill: $puppet-icon-fill-hover;
   }
 }
-
 
 // TWO-TONE ICONS
 // Generates classes for two-tone icons
@@ -17,7 +20,7 @@
 $rc-icon-tone-colors: (
   primary: $puppet-brand-primary,
   blue: $puppet-b500,
-  neutral: $puppet-n700
+  neutral: $puppet-n700,
 );
 
 /* stylelint-disable */
@@ -35,7 +38,6 @@ $rc-icon-tone-colors: (
 .rc-icon-tone {
   @include icon-tones;
 }
-
 
 .rc-icon-primary-fill {
   fill: $puppet-icon-primary-fill;

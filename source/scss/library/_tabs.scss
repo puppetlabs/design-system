@@ -1,3 +1,19 @@
+// Tab variables/options
+// ----------------------------------------------------------------------------
+$puppet-tab-font-family: $puppet-font-family-button !default;
+$puppet-tab-font-size: $puppet-font-size-small !default;
+$puppet-tab-font-weight: normal !default;
+$puppet-tab-case: uppercase !default;
+$puppet-tab-color: $puppet-font-color-subtle !default;
+$puppet-tab-color-active: $puppet-action-base !default;
+$puppet-tab-border: 2px solid $puppet-border-color-subtle !default;
+$puppet-tab-border-active: 2px solid $puppet-border-color-action-base !default;
+$puppet-tab-bg: $puppet-bg-light !default;
+$puppet-tab-padding: $puppet-small $puppet-large !default;
+$puppet-tab-width-vertical: 140px !default;
+$puppet-tab-panel-padding: $puppet-large 0 !default;
+$puppet-tab-panel-padding-vertical: 0 $puppet-large !default;
+
 .rc-tabs {
   .rc-tab {
     display: inline-block;

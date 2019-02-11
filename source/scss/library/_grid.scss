@@ -1,3 +1,8 @@
+// Grid
+$puppet-grid-gutter: $puppet-size-base !default;
+$puppet-grid-gutter-vertical: $puppet-grid-gutter !default;
+$puppet-grid-gutter-horizontal: $puppet-grid-gutter !default;
+$puppet-grid-divider-border: $puppet-border-subtle;
 $default-column-count: 12;
 
 .rc-grid {

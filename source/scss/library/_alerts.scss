@@ -1,3 +1,9 @@
+// ----------------------------------------------------------------------------
+$puppet-alert-width: 394px !default;
+$puppet-alert-padding: 10px 16px !default;
+$puppet-alert-shadow: 8px 8px 16px 0 rgba(0, 14, 28, 0.32) !default;
+$puppet-alert-border-radius: $puppet-border-radius !default;
+
 @mixin rc-alert-colors($type, $color) {
   &.rc-alert-#{$type} {
     background-color: lighten($color, 50%);
@@ -13,7 +19,6 @@
     }
   }
 }
-
 
 .rc-alert {
   @include rc-alert-colors('error', $puppet-neg-bg-base);

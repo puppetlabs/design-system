@@ -1,3 +1,19 @@
+$puppet-header-height: 72px !default;
+$puppet-header-bg: $puppet-black !default;
+$puppet-header-menu-bg: $puppet-n900 !default;
+$puppet-header-color: $puppet-white !default;
+$puppet-header-padding: 0 40px 0 24px !default;
+$puppet-header-menu-item-button-bg-hover: lighten($puppet-header-menu-bg, 10%) !default;
+
+$puppet-header-nav-icon-fill-base: $puppet-n200 !default;
+$puppet-header-nav-icon-fill-hover: $puppet-white !default;
+$puppet-header-nav-icon-fill-active: $puppet-brand-primary !default;
+$puppet-header-nav-icon-bg-base: transparent !default;
+$puppet-header-nav-icon-bg-hover: $puppet-n800 !default;
+$puppet-header-nav-icon-bg-active: $puppet-n800 !default;
+$puppet-header-nav-icon-bg-size: 40px !default;
+$puppet-header-nav-icon-margin: 24px !default;
+
 .rc-header {
   align-items: center;
   background: $puppet-header-bg;
@@ -64,7 +80,6 @@
   }
 }
 
-
 // Main Icon Nav
 // ----------------------------------------------------------------------------
 .rc-header-items .rc-button {
@@ -123,7 +138,6 @@
     transform: scale(1);
   }
 }
-
 
 @media only screen and (max-width: $puppet-breakpoint-medium) {
   .rc-header-menu-control {

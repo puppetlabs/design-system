@@ -3,6 +3,7 @@ Cards provide flexible containers for related pieces of UI content. There are pr
 Design specification: [http://styleguide.puppetlabs.net/Containers.html](http://styleguide.puppetlabs.net/Containers.html)
 
 ### Primary Cards
+
 ```
 const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
 <div style={{ display: 'flex' }}>
@@ -30,6 +31,7 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
 ```
 
 ### Secondary Cards
+
 ```
 const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
 <div style={{ display: 'flex' }}>

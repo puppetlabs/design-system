@@ -1,3 +1,21 @@
+// Dropdown
+// ----------------------------------------------------------------------------
+$puppet-dropdown-padding: $puppet-medium !default;
+$puppet-dropdown-padding-small: $puppet-small !default;
+$puppet-dropdown-label-font-size: $puppet-font-size-base !default;
+$puppet-dropdown-label-font-weight: $puppet-font-weight-heavy !default;
+$puppet-dropdown-label-line-height: $puppet-medium !default;
+$puppet-dropdown-label-color: $puppet-action-base !default;
+$puppet-dropdown-label-color-error: $puppet-neg-color-base !default;
+$puppet-dropdown-label-color-disabled: $puppet-n600 !default;
+//
+$puppet-dropdown-chevron-height: $puppet-small !default;
+$puppet-dropdown-chevron-width: $puppet-small !default;
+
+// Hint is the title for the header on some menus
+$puppet-dropdown-hint-color: $puppet-font-color-medium !default;
+$puppet-dropdown-hint-font-size: $puppet-font-size-base !default;
+
 @mixin dropdown-label-colors($color, $color-disabled, $color-error) {
   &.rc-dropdown-toggle-error {
     .rc-dropdown-label {
@@ -79,11 +97,11 @@
 }
 
 .rc-dropdown-toggle-select {
-  background: $puppet-select-label-bg;
-  border: $puppet-select-label-border;
-  border-radius: $puppet-select-label-border-radius;
+  background: $puppet-action-subtle;
+  border: $puppet-border;
+  border-radius: $puppet-border-radius;
   display: block;
-  padding: $puppet-select-label-padding;
+  padding: $puppet-small;
 
   .rc-dropdown-label {
     display: block;
@@ -92,7 +110,7 @@
 
   .rc-dropdown-label-text {
     display: block;
-    font-size: $puppet-select-label-font-size;
+    font-size: $puppet-font-size-small;
     margin-right: $puppet-medium;
     overflow: hidden;
     text-overflow: ellipsis;

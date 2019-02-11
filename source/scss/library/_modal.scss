@@ -1,3 +1,27 @@
+$puppet-modal-bg: $puppet-bg-light !default;
+$puppet-modal-color: $puppet-font-color-base !default;
+$puppet-modal-border: 1px solid $puppet-n400 !default;
+$puppet-modal-border-radius: $puppet-tiny !default;
+$puppet-modal-overlay-bg: rgba(4, 8, 10, 0.16) !default;
+$puppet-modal-elevation: 24 !default;
+$puppet-modal-padding: $puppet-large !default;
+$puppet-modal-shadow: $puppet-outer-shadow-giant !default;
+$puppet-modal-close-top: $puppet-medium !default;
+$puppet-modal-close-right: $puppet-medium !default;
+$puppet-modal-width-small: 400px !default;
+$puppet-modal-width: 480px !default;
+$puppet-modal-width-medium: 580px !default;
+$puppet-modal-width-large: 1200px !default;
+$puppet-modal-title-font-size: $puppet-font-size-large !default;
+$puppet-modal-title-padding: 40px 80px !default; // Todo: Base on grid
+$puppet-modal-title-border: $puppet-border !default;
+$puppet-modal-sidebar-bg: $puppet-bg-subtle !default;
+$puppet-modal-sidebar-width: 300px !default;
+$puppet-modal-sidebar-padding: $puppet-modal-padding !default;
+$puppet-modal-actions-border: none !default;
+$puppet-modal-actions-padding: $puppet-modal-padding !default;
+$puppet-modal-actions-cta-padding: $puppet-small 0 $puppet-small 0 !default;
+
 .rc-modal-overlay {
   background: $puppet-modal-overlay-bg;
   height: 100%;
@@ -20,7 +44,7 @@
   width: 100%;
 
   &:hover {
-    color: $puppet-n700;;
+    color: $puppet-n700;
   }
 }
 

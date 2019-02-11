@@ -1,3 +1,25 @@
+$puppet-input-color: $puppet-font-color-base !default;
+$puppet-input-color-placeholder: $puppet-font-color-subtle !default;
+
+$puppet-input-bg: $puppet-bg-light !default;
+$puppet-input-bg-hover: $puppet-bg-light !default;
+$puppet-input-bg-focus: $puppet-bg-light !default;
+
+$puppet-input-border: $puppet-border !default;
+$puppet-input-border-hover: $puppet-border-hover !default;
+$puppet-input-border-focus: $puppet-border-action !default;
+$puppet-input-border-radius: $puppet-border-radius !default;
+$puppet-input-border-error: 1px solid $puppet-neg-border-base !default;
+
+$puppet-input-height: $puppet-huge !default;
+$puppet-input-padding: $puppet-tiny $puppet-small !default;
+
+$puppet-input-small-height: $puppet-size-base * 3 !default; // 24px
+$puppet-input-small-padding: $puppet-tiny !default;
+
+$puppet-input-simple-bg: transparent !default;
+$puppet-input-simple-focus-bg: transparent !default;
+
 %focused-input {
   background: $puppet-input-bg-focus;
   border: $puppet-input-border-focus;

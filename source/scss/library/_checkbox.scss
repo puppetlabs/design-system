@@ -1,3 +1,10 @@
+$puppet-checkbox-border: $puppet-border !default;
+$puppet-checkbox-border-hover: $puppet-border-hover !default;
+$puppet-checkbox-border-radius: $puppet-border-radius-small !default;
+$puppet-checkbox-icon-fill: $puppet-action-base !default;
+$puppet-checkbox-padding: $puppet-small !default;
+$puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
+
 .rc-checkbox-input {
   align-items: center;
   cursor: pointer;

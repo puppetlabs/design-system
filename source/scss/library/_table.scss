@@ -1,3 +1,10 @@
+$puppet-table-font-size: $puppet-font-size-base !default;
+$puppet-table-border: 1px solid $puppet-n400 !default;
+$puppet-table-shadow: $puppet-outer-shadow !default;
+$puppet-table-header-bg: $puppet-n50 !default;
+$puppet-table-header-color: $puppet-n600 !default;
+$puppet-table-border-radius: $puppet-border-radius !default;
+
 .rc-table {
   border-collapse: separate;
   border-spacing: 0;

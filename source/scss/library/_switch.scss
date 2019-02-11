@@ -1,3 +1,24 @@
+// Switch
+// ----------------------------------------------------------------------------
+$puppet-switch-height: 21px !default; // Todo: Base on grid
+$puppet-switch-width: 47px !default; // Todo: Base on grid
+$puppet-switch-padding: 5px !default; // Todo : Base on grid
+$puppet-switch-handle-height: $puppet-switch-height -
+  ($puppet-switch-padding * 2) !default;
+
+$puppet-switch-on-bg: $puppet-action-base !default;
+$puppet-switch-on-bg-hover: $puppet-action-hover !default;
+$puppet-switch-on-text: $puppet-font-color-light !default;
+$puppet-switch-on-icon-fill: $puppet-white !default;
+$puppet-switch-on-icon-size: 12px !default;
+
+$puppet-switch-off-bg: $puppet-action-subtle !default;
+$puppet-switch-off-bg-hover: $puppet-action-hover-subtle !default;
+$puppet-switch-off-text: $puppet-font-color-base !default;
+$puppet-switch-off-icon-fill: $puppet-icon-fill-base;
+$puppet-switch-off-icon-fill-hover: $puppet-icon-fill-hover;
+$puppet-switch-off-icon-size: 12px !default;
+
 .rc-switch-input {
   align-items: center;
   cursor: pointer;

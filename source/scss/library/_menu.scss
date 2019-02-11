@@ -1,3 +1,70 @@
+// Menu
+// ----------------------------------------------------------------------------
+$puppet-menu-bg: $puppet-bg-light;
+$puppet-menu-border: $puppet-border;
+$puppet-menu-border-alt: $puppet-border-subtle;
+$puppet-menu-border-radius: $puppet-border-radius;
+
+// Menu Items
+$puppet-menu-item-font-size: $puppet-font-size-small !default;
+$puppet-menu-item-font-weight: $puppet-font-weight-normal !default;
+$puppet-menu-item-line-height: $puppet-medium !default;
+$puppet-menu-item-height: $puppet-huge !default;
+$puppet-menu-item-margin: $puppet-tiny !default;
+$puppet-menu-item-padding: $puppet-small !default;
+
+$puppet-menu-item-bg: transparent !default;
+$puppet-menu-item-bg-hover: $puppet-n50 !default;
+$puppet-menu-item-bg-active: transparent !default;
+$puppet-menu-item-border-radius: $puppet-border-radius !default;
+$puppet-menu-item-color: $puppet-font-color-base !default;
+$puppet-menu-item-color-hover: $puppet-action-base !default;
+$puppet-menu-item-color-active: $puppet-action-base !default;
+$puppet-menu-item-icon-fill: $puppet-icon-fill-base !default;
+$puppet-menu-item-icon-fill-hover: $puppet-icon-fill-action-base !default;
+$puppet-menu-item-icon-fill-active: $puppet-icon-fill-action-base !default;
+
+// Menu Header
+$puppet-menu-header-border: $puppet-border-subtle !default;
+$puppet-menu-header-height: 32px !default;
+$puppet-menu-header-padding: 0 12px !default;
+$puppet-menu-title-color: $puppet-font-color-medium !default;
+$puppet-menu-title-font-family: $puppet-font-family-heading !default;
+$puppet-menu-title-font-size: 11px !default;
+$puppet-menu-title-font-weight: $puppet-font-weight-heavy !default;
+
+// Menu Sections
+$puppet-menu-section-border: $puppet-border-subtle !default;
+$puppet-menu-section-title-color: $puppet-font-color-medium !default;
+$puppet-menu-section-title-font-family: $puppet-font-family-heading !default;
+$puppet-menu-section-title-font-size: 11px !default;
+$puppet-menu-section-title-font-weight: 600 !default;
+$puppet-menu-section-title-padding: 8px 12px 0 !default;
+$puppet-menu-section-title-text-transform: uppercase !default;
+$puppet-menu-section-padding: 16px !default;
+
+// Menu actions
+$puppet-menu-actions-bg: $puppet-bg-subtle !default;
+$puppet-menu-actions-color: $puppet-font-color-medium !default;
+$puppet-menu-actions-msg-font-size: $puppet-font-size-small !default;
+$puppet-menu-actions-padding: 8px 16px !default;
+
+// Dark Menus
+$puppet-menu-bg-dark: $puppet-n900 !default;
+$puppet-menu-border-dark: $puppet-n900 !default;
+$puppet-menu-item-bg-dark: transparent !default;
+$puppet-menu-item-bg-hover-dark: $puppet-n800 !default;
+$puppet-menu-item-bg-active-dark: $puppet-n800 !default;
+$puppet-menu-item-color-dark: $puppet-n100 !default;
+$puppet-menu-item-color-hover-dark: $puppet-white !default;
+$puppet-menu-item-color-active-dark: $puppet-brand-primary !default;
+$puppet-menu-item-icon-fill-dark: $puppet-n200 !default;
+$puppet-menu-item-icon-fill-hover-dark: $puppet-white !default;
+$puppet-menu-item-icon-fill-active-dark: $puppet-brand-primary !default;
+$puppet-menu-section-title-color-dark: $puppet-n500 !default;
+$puppet-menu-title-color-dark: $puppet-n500 !default;
+$puppet-menu-actions-bg-dark: $puppet-black !default;
+
 @mixin menu-colors(
   $bg-menu,
   $bg,
@@ -11,9 +78,8 @@
   $icon-fill-hover,
   $icon-fill-active,
   $title-color,
-  $section-title-color,
+  $section-title-color
 ) {
-
   background: $bg-menu;
   border: $border;
   border-radius: $puppet-menu-border-radius;
@@ -65,7 +131,6 @@
     color: $color-active;
   }
 
-
   .rc-menu-header {
     border-bottom: $border;
   }
@@ -98,7 +163,7 @@
     $puppet-menu-item-icon-fill-hover,
     $puppet-menu-item-icon-fill-active,
     $puppet-menu-title-color,
-    $puppet-menu-section-title-color,
+    $puppet-menu-section-title-color
   );
 }
 
@@ -150,8 +215,6 @@
 .rc-menu-close:focus {
   outline: none;
 }
-
-
 
 .rc-menu-item {
   font-size: $puppet-menu-item-font-size;
@@ -229,7 +292,6 @@
   cursor: default;
 }
 
-
 // Menu Sections
 .rc-menu-section {
   &.rc-menu-section-padding {
@@ -249,9 +311,6 @@
     border: 0;
   }
 }
-
-
-
 
 .rc-menu-section-title {
   display: block;
@@ -294,7 +353,6 @@
   justify-content: flex-end;
 }
 
-
 // Dark Menu
 .rc-menu-dark {
   @include menu-colors(
@@ -310,7 +368,7 @@
     $puppet-menu-item-icon-fill-hover-dark,
     $puppet-menu-item-icon-fill-active-dark,
     $puppet-menu-title-color-dark,
-    $puppet-menu-section-title-color-dark,
+    $puppet-menu-section-title-color-dark
   );
 
   .rc-menu-actions {
