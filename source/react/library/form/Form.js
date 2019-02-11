@@ -406,8 +406,8 @@ class Form extends Component {
         onCancel={onCancel}
       >
         {children}
-        {actions}
         {error}
+        {actions}
       </form>
     );
   }
