@@ -34,12 +34,12 @@ $puppet-table-border-radius: $puppet-border-radius !default;
   }
 
   th {
-    @extend %rc-uppercase;
     background-color: $puppet-table-header-bg;
     border-top: $puppet-table-border;
     color: $puppet-table-header-color;
     font-size: 10px;
     letter-spacing: 1px;
+    text-transform: uppercase;
   }
 
   th:first-of-type {

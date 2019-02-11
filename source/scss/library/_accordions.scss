@@ -72,9 +72,9 @@ $puppet-accordion-animation-speed: $puppet-animation-speed-base !default;
 }
 
 .rc-accordion-header-title {
-  @extend %rc-uppercase;
   color: $puppet-accordion-header-title-color;
   flex-grow: 1;
+  text-transform: uppercase;
   transition: all 0.2s;
 }
 

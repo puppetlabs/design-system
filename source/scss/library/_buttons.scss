@@ -112,6 +112,18 @@ $puppet-button-error-border-color: transparent !default;
 $puppet-button-error-border-color-hover: transparent !default;
 $puppet-button-error-border-color-active: transparent !default;
 
+%button-reset {
+  background: none;
+  border: 0;
+  color: inherit;
+  cursor: default;
+  font: inherit;
+  line-height: normal;
+  overflow: visible;
+  padding: 0;
+  user-select: none;
+}
+
 @mixin button-colors(
   $bg,
   $bg-hover,

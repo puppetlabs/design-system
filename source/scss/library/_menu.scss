@@ -375,3 +375,7 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
     background: $puppet-menu-actions-bg-dark;
   }
 }
+
+.rc-menu-subtle {
+  background: $puppet-bg-subtle;
+}
