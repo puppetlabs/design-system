@@ -1,0 +1,15 @@
+// This file contains variables considered to be part of the outward-facing API
+// of this library, to be used by consuming apps for one-off components that
+// still need to be consistent with our overall patterns. This variable set should be
+// added to over time but kept minimal to reduce maitainence bloat
+
+// Most elements share a common border radius
+$puppet-common-border-radius: 4px !default;
+
+// Often used border dividing content
+$puppet-common-border: 1px solid $puppet-n400;
+$puppet-common-border-subtle: 1px solid $puppet-n300;
+
+// Often used content backgrounds
+$puppet-common-bg: $puppet-white;
+$puppet-common-bg-subtle: $puppet-n50;
