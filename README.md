@@ -10,21 +10,6 @@ Please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) for details on filing a
 [PDS](https://tickets.puppetlabs.com/browse/PDS) ticket, setting up your
 development environment, opening a Pull Request, and requesting reviews.
 
-## Styleguide
-
-The Puppet Styleguide is published to http://styleguide.puppetlabs.net
-
-The React components in this repo are intended to correspond to Sketch symbols in the UI library ([design/puppet-ui-library.sketch](design/puppet-ui-library.sketch)) and implementations should follow the Puppet Styleguide ([design/puppet-styleguide.sketch](design/puppet-styleguide.sketch)). (The HTML version of the Styleguide is located at [design/styleguide/index.html](design/styleguide/index.html), whose PNGs can be updated by running `./design/update-styleguide.sh`).
-
-## Component documentation
-
-Components are documented using React Styleguidist, which provides API docs alongside live editable (in-browser) React components. To view these, clone this repository, install dependencies, and run the Styleguidist server:
-
-- `git clone git@github.com:puppetlabs/react-components.git && cd react-components`
-- `npm install`
-- `npm start`
-- Open http://localhost:6060.
-
 ## Installation
 
 This library is distributed as an npm package on [Artifactory](https://confluence.puppetlabs.com/display/SRE/Artifactory+Basics). As such, you should point to the Artifactory registry for `@puppet` scoped packages by adding and committing the following to an `.npmrc` file in your project.
@@ -115,6 +100,57 @@ module.exports = function override(config, env) {
   return config;
 };
 ```
+
+## Using components
+
+The full set of react components are exported from the project root and can be imported as such:
+
+```
+import { Button } from '@puppet/react-components';
+
+...
+
+const MyComponent = () => <Button>My Button</Button>;
+```
+
+## Using Scss
+
+To include the react-components scss bundle in your app place the following line at the top of your scss heirarchy:
+
+```
+@import 'node_modules/@puppet/react-components/source/scss/library/ui';
+```
+
+### Publicly available variables and helpers
+
+A set of common variables and mixins can be found in the [public scss directory](source/scss/library/public). You will automatically have access to them in your code:
+
+```
+.my-class {
+  @include puppet-type-body(subtle);
+
+  background-color: $puppet-n200;
+  border: $puppet-common-border;
+}
+```
+
+**Other Variables are used internally but are not considered part of the stable API and are therefore subject to change**
+
+
+## Styleguide
+
+The Puppet Styleguide is published to http://styleguide.puppetlabs.net
+
+The React components in this repo are intended to correspond to Sketch symbols in the UI library ([design/puppet-ui-library.sketch](design/puppet-ui-library.sketch)) and implementations should follow the Puppet Styleguide ([design/puppet-styleguide.sketch](design/puppet-styleguide.sketch)). (The HTML version of the Styleguide is located at [design/styleguide/index.html](design/styleguide/index.html), whose PNGs can be updated by running `./design/update-styleguide.sh`).
+
+## Component documentation
+
+Components are documented using React Styleguidist, which provides API docs alongside live editable (in-browser) React components. To view these, clone this repository, install dependencies, and run the Styleguidist server:
+
+- `git clone git@github.com:puppetlabs/react-components.git && cd react-components`
+- `npm install`
+- `npm start`
+- Open http://localhost:6060.
 
 ## Contributing
 
