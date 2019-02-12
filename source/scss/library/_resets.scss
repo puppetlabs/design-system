@@ -1,10 +1,19 @@
-// TODO: Is there a better way to do this kind of thing?
+// TODO: We need to get rid of these overrides
 [class^='rc-'] {
-  @include puppet-type-body();
   box-sizing: border-box;
+  font-family: $puppet-type-body-font-family;
+  font-size: $puppet-type-body-font-size;
+  font-weight: $puppet-type-body-font-weight;
+  line-height: $puppet-type-body-line-height;
 
   * {
     box-sizing: border-box;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   p {
@@ -13,37 +22,5 @@
 
   a {
     @include puppet-type-link();
-  }
-
-  h1 {
-    @include puppet-type-h1();
-  }
-
-  h2 {
-    @include puppet-type-h2();
-  }
-
-  h3 {
-    @include puppet-type-h3();
-  }
-
-  h4 {
-    @include puppet-type-h4();
-  }
-
-  h5 {
-    @include puppet-type-h5();
-  }
-
-  h6 {
-    @include puppet-type-h6();
-  }
-
-  // TODO: unfortunately some things are relying on these overrides. should
-  // attempt to remove
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
   }
 }
