@@ -1,26 +1,10 @@
-//
-// TODO: We should be relying on this as little as possible. A good test as we update components
-// could be to do a visual diff with this line commented out
+// TODO: Is there a better way to do this kind of thing?
 [class^='rc-'] {
-  font-family: $puppet-font-family;
-  font-size: $puppet-font-size-base;
-  font-weight: $puppet-font-weight-normal;
-  line-height: $puppet-line-height-default;
-}
-
-// TODO: the typography overrides here need to be consistent with styling elsewhere
-// We should probably deprecate <Content /> and just rely on these overrides
-[class^='rc-'] {
+  @include puppet-type-body();
   box-sizing: border-box;
 
   * {
     box-sizing: border-box;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
   }
 
   p {
@@ -28,20 +12,38 @@
   }
 
   a {
-    color: $puppet-anchor-color;
-    font-weight: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    text-transform: none;
+    @include puppet-type-link();
   }
 
-  a:hover {
-    color: $puppet-anchor-hover;
-    // text-decoration: underline;
+  h1 {
+    @include puppet-type-h1();
   }
 
-  a:active {
-    color: $puppet-action-active;
-    // text-decoration: underline;
+  h2 {
+    @include puppet-type-h2();
+  }
+
+  h3 {
+    @include puppet-type-h3();
+  }
+
+  h4 {
+    @include puppet-type-h4();
+  }
+
+  h5 {
+    @include puppet-type-h5();
+  }
+
+  h6 {
+    @include puppet-type-h6();
+  }
+
+  // TODO: unfortunately some things are relying on these overrides. should
+  // attempt to remove
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 }

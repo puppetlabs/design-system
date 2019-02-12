@@ -1,121 +1,45 @@
-// Heading
-// ----------------------------------------------------------------------------
-$puppet-heading-font-family: $puppet-font-family;
-
-$puppet-heading-color: $puppet-font-color-base !default;
-$puppet-heading-medium-color: $puppet-font-color-medium !default;
-$puppet-heading-subtle-color: $puppet-font-color-subtle !default;
-
-$puppet-heading-hero-font-size: 48px !default;
-$puppet-heading-hero-line-height: calc(56 / 48) !default;
-$puppet-heading-hero-font-family: $puppet-font-family-heading !default;
-$puppet-heading-hero-font-weight: $puppet-font-weight-medium !default;
-
-$puppet-heading-h1-font-size: 40px !default;
-$puppet-heading-h1-line-height: calc(48 / 40) !default;
-$puppet-heading-h1-font-family: $puppet-font-family-heading !default;
-$puppet-heading-h1-font-weight: $puppet-font-weight-medium !default;
-
-$puppet-heading-h2-font-size: 32px !default;
-$puppet-heading-h2-line-height: calc(40 / 32) !default;
-$puppet-heading-h2-font-family: $puppet-font-family-heading !default;
-$puppet-heading-h2-font-weight: $puppet-font-weight-medium !default;
-
-$puppet-heading-h3-font-size: 24px !default;
-$puppet-heading-h3-line-height: calc(32 / 24) !default;
-$puppet-heading-h3-font-family: $puppet-font-family-heading !default;
-$puppet-heading-h3-font-weight: $puppet-font-weight-medium !default;
-
-$puppet-heading-h4-font-size: 18px !default;
-$puppet-heading-h4-line-height: calc(24 / 18) !default;
-$puppet-heading-h4-font-family: $puppet-font-family-heading !default;
-$puppet-heading-h4-font-weight: $puppet-font-weight-medium !default;
-
-$puppet-heading-h5-font-size: 14px !default;
-$puppet-heading-h5-line-height: calc(20 / 14) !default;
-$puppet-heading-h5-font-family: $puppet-font-family !default;
-$puppet-heading-h5-font-weight: $puppet-font-weight-heavy !default;
-
-$puppet-heading-h6-font-size: 12px !default;
-$puppet-heading-h6-line-height: calc(18 / 12) !default;
-$puppet-heading-h6-font-family: $puppet-font-family !default;
-$puppet-heading-h6-font-weight: $puppet-font-weight-heavy !default;
-
-$puppet-heading-small-title-font-size: 11px !default;
-$puppet-heading-small-title-line-height: calc(16 / 11) !default;
-$puppet-heading-small-title-font-family: $puppet-font-family-heading !default;
-$puppet-heading-small-title-font-weight: $puppet-font-weight-heavy !default;
-
 .rc-heading {
-  color: $puppet-heading-color;
   margin: 0;
 }
 
-.rc-heading-medium {
-  color: $puppet-heading-medium-color;
-}
-
-.rc-heading-subtle {
-  color: $puppet-heading-subtle-color;
-}
-
-.rc-heading-caps {
-  text-transform: uppercase;
-}
-
 .rc-heading-hero {
-  font-family: $puppet-heading-hero-font-family;
-  font-size: $puppet-heading-hero-font-size;
-  font-weight: $puppet-heading-hero-font-weight;
-  line-height: $puppet-heading-hero-line-height;
+  @include puppet-type-hero();
 }
 
 .rc-heading-h1 {
-  font-family: $puppet-heading-h1-font-family;
-  font-size: $puppet-heading-h1-font-size;
-  font-weight: $puppet-heading-h1-font-weight;
-  line-height: $puppet-heading-h1-line-height;
+  @include puppet-type-h1();
 }
 
 .rc-heading-h2 {
-  font-family: $puppet-heading-h2-font-family;
-  font-size: $puppet-heading-h2-font-size;
-  font-weight: $puppet-heading-h2-font-weight;
-  line-height: $puppet-heading-h2-line-height;
+  @include puppet-type-h2();
 }
 
 .rc-heading-h3 {
-  font-family: $puppet-heading-h3-font-family;
-  font-size: $puppet-heading-h3-font-size;
-  font-weight: $puppet-heading-h3-font-weight;
-  line-height: $puppet-heading-h3-line-height;
+  @include puppet-type-h3();
 }
 
 .rc-heading-h4 {
-  font-family: $puppet-heading-h4-font-family;
-  font-size: $puppet-heading-h4-font-size;
-  font-weight: $puppet-heading-h4-font-weight;
-  line-height: $puppet-heading-h4-line-height;
+  @include puppet-type-h4();
 }
 
 .rc-heading-h5 {
-  font-family: $puppet-heading-h5-font-family;
-  font-size: $puppet-heading-h5-font-size;
-  font-weight: $puppet-heading-h5-font-weight;
-  line-height: $puppet-heading-h5-line-height;
+  @include puppet-type-h5();
 }
 
 .rc-heading-h6 {
-  font-family: $puppet-heading-h6-font-family;
-  font-size: $puppet-heading-h6-font-size;
-  font-weight: $puppet-heading-h6-font-weight;
-  line-height: $puppet-heading-h6-line-height;
+  @include puppet-type-h6();
 }
 
 .rc-heading-small-title {
-  font-family: $puppet-heading-small-title-font-family;
-  font-size: $puppet-heading-small-title-font-size;
-  font-weight: $puppet-heading-small-title-font-weight;
-  line-height: $puppet-heading-small-title-line-height;
+  @include puppet-type-label();
+}
+
+@each $color, $code in $puppet-type-colors {
+  .rc-heading-#{$color} {
+    color: $code;
+  }
+}
+
+.rc-heading-caps {
   text-transform: uppercase;
 }
