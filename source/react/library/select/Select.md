@@ -161,7 +161,7 @@ const options = [
 ];
 
 <Select
-  multiple
+  type="multiselect"
   options={ options }
 />
 ```
@@ -176,7 +176,7 @@ const options = [
 ];
 
 <Select
-  multiple
+  type="multiselect"
   onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
@@ -198,7 +198,7 @@ const options = [
 
 <Select
   onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  multiple
+  type="multiselect"
   size="small"
   options={ options }
 />
