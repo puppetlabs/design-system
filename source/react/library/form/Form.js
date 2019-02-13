@@ -74,7 +74,27 @@ const defaultProps = {
   style: {},
 };
 
-const isEmpty = str => !str || (typeof str === 'string' && str.match(/^\s*$/));
+export const isEmpty = (value, fieldType) => {
+  switch (fieldType) {
+    case 'text':
+    case 'email':
+    case 'password':
+    case 'url':
+    case 'multiline':
+    case 'select': {
+      return !value || !!value.match(/^\s*$/);
+    }
+    case 'number': {
+      return value !== 0 && !value;
+    }
+    case 'multiselect': {
+      return !value || !value.length;
+    }
+    default: {
+      return !!value;
+    }
+  }
+};
 
 /**
  * Collects the user provided props for all FormFields into

@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import React from 'react';
 import sinon from 'sinon';
 
-import Form from '../../source/react/library/form/Form';
+import Form, { isEmpty } from '../../source/react/library/form/Form';
 import Button from '../../source/react/library/buttons/Button';
 
 describe('<Form />', () => {
@@ -387,6 +387,29 @@ describe('<Form />', () => {
       );
 
       expect(wrapper.find(Button)).not.to.have.prop('disabled', true);
+    });
+  });
+
+  describe('isEmpty method', () => {
+    const emptyThings = {
+      text: '',
+      password: ' ',
+      number: undefined,
+      multiselect: [],
+    };
+
+    const fullThings = {
+      text: 'full',
+      number: 0,
+      multiselect: ['thing'],
+    };
+
+    Object.entries(emptyThings).forEach(([type, value]) => {
+      expect(isEmpty(value, type)).to.equal(true);
+    });
+
+    Object.entries(fullThings).forEach(([type, value]) => {
+      expect(isEmpty(value, type)).to.equal(false);
     });
   });
 });
