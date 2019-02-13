@@ -283,50 +283,6 @@ $puppet-sidebar-level-2-padding                    : 0 0 0 8px !default;
 $puppet-sidebar-level-2-item-margin                : 2px 0 !default;
 $puppet-sidebar-level-2-item-padding               : 0 12px !default;
 
-
-
-// Datepicker
-// ----------------------------------------------------------------------------
-$puppet-arrow-size                                 : $puppet-tiny !default;
-$puppet-datepicker-bg                              : $puppet-bg-light !default;
-$puppet-datepicker-button-border-color             : $puppet-button-secondary-border-color !default;
-$puppet-datepicker-icon                            : $puppet-icon-fill-base !default;
-$puppet-datepicker-icon-hover                      : $puppet-action-hover !default;
-$puppet-datepicker-othermonth-opacity              : 0.25 !default;
-$puppet-datepicker-padding                         : $puppet-large !default;
-$puppet-datepicker-radius                          : $puppet-border-radius !default;
-
-$puppet-datepicker-border-color                    : transparent !default;
-$puppet-datepicker-border-width                    : 0 !default;
-
-$puppet-datepicker-font-color                      : $puppet-font-color-base !default;
-
-$puppet-datepicker-month-bg                        : $puppet-bg-subtle !default;
-$puppet-datepicker-month-color                     : $puppet-font-color-medium !default;
-$puppet-datepicker-month-font-size                 : $puppet-font-size-base !default;
-$puppet-datepicker-month-font-weight               : $puppet-font-weight-heavy !default;
-$puppet-datepicker-month-border                    : $puppet-datepicker-border-width solid $puppet-datepicker-border-color !default;
-
-$puppet-datepicker-weekday-color                   : $puppet-font-color-subtle !default;
-$puppet-datepicker-weekday-font-weight             : $puppet-font-weight-heavy !default;
-$puppet-datepicker-weekday-text                    : uppercase !default;
-$puppet-datepicker-weekday-font-size               : $puppet-font-size-tiny !default;
-$puppet-datepicker-weekday-letter-spacing          : 1px !default;
-$puppet-datepicker-weekday-border                  : $puppet-datepicker-border-width solid $puppet-datepicker-border-color !default;
-
-$puppet-datepicker-selected-bg                     : $puppet-action-base !default;
-$puppet-datepicker-selected-border                 : $puppet-datepicker-border-width solid $puppet-datepicker-selected-bg !default;
-$puppet-datepicker-selected-color                  : $puppet-font-color-light !default;
-$puppet-datepicker-selected-edges-bg               : $puppet-action-hover !default;
-$puppet-datepicker-selected-edges-radius           : $puppet-datepicker-radius !default;
-$puppet-datepicker-selection-margin                : 1px !default;
-
-$puppet-datepicker-newrange-bg                     : $puppet-datepicker-selected-bg !default;
-
-$puppet-datepicker-hover-bg                        : $puppet-action-hover !default;
-$puppet-datepicker-hover-color                     : $puppet-font-color-light !default;
-$puppet-datepicker-hover-border                    : 0 solid transparent !default;
-
 // Dropdown
 // ----------------------------------------------------------------------------
 $puppet-dropdown-padding                           : $puppet-medium !default;
@@ -561,15 +517,6 @@ $puppet-modal-sidebar-padding                      : $puppet-modal-padding !defa
 $puppet-modal-actions-border                       : none !default;
 $puppet-modal-actions-padding                      : $puppet-modal-padding !default;
 $puppet-modal-actions-cta-padding                  : $puppet-small 0 $puppet-small 0 !default;
-
-// Preset ranges
-// ----------------------------------------------------------------------------
-$puppet-date-range-color                           : $puppet-datepicker-selected-bg !default;
-$puppet-date-range-border                          : $puppet-datepicker-border-width solid
-$puppet-datepicker-border-color !default;
-$puppet-date-range-hover-bg                        : $puppet-datepicker-selected-bg !default;
-$puppet-date-range-hover-border                    : $puppet-datepicker-border-width solid
-$puppet-date-range-hover-bg !default;
 
 // Popover
 // ----------------------------------------------------------------------------

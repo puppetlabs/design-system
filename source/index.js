@@ -31,7 +31,6 @@ import Modal from './react/library/modals/Modal';
 import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import Tabs from './react/library/tabs/Tabs';
 import TabPanel from './react/library/tabs/TabPanel';
-import DatePicker from './react/library/datepicker/DatePicker';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 import Table from './react/library/table/Table';
 import ColumnSelect from './react/library/table/ColumnSelect';
@@ -81,7 +80,6 @@ export {
   ColumnSelect,
   ColumnInput,
   Accordion,
-  DatePicker,
   Select,
   Form,
   Filters,
