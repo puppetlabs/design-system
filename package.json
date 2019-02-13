@@ -64,8 +64,6 @@
     "jsdom": "11.1.0",
     "mocha": "3.5.3",
     "mocha-jsdom": "1.2.0",
-    "moment-range": "3.0.0",
-    "moment-timezone": "0.5.13",
     "node-sass": "4.9.0",
     "nodemon": "^1.10.2",
     "nyc": "10.3.2",
@@ -89,9 +87,7 @@
   "peerDependencies": {
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "prop-types": "^15.6.2",
-    "moment": "^2.22.2",
-    "moment-timezone": "^0.5.13"
+    "prop-types": "^15.6.2"
   },
   "dependencies": {
     "classnames": "^2.2.5",
@@ -99,7 +95,6 @@
     "debounce": "^1.1.0",
     "deep-equal": "^1.0.1",
     "hoist-non-react-statics": "^3.1.0",
-    "react-daterange-picker": "2.0.1",
     "react-onclickoutside": "^6.7.0",
     "react-sortable-hoc": "^0.6.8",
     "react-transition-group": "^2.2.1"

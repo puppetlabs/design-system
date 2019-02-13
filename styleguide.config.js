@@ -27,7 +27,6 @@ module.exports = {
     '**/card/ActionsSearch.js',
     '**/card/Header.js',
     '**/card/Section.js',
-    '**/datepicker/DatePickerWrapper.js',
     '**/dropdown/DropdownLabel.js',
     '**/filters/FilterItem.js',
     '**/form/FormFlyout.js',
@@ -45,7 +44,6 @@ module.exports = {
     '**/table/ColumnCheckbox.js',
   ],
   require: [
-    path.join(__dirname, 'styleguideSetup.js'),
     path.join(__dirname, 'source/scss/styleguide.scss'),
     path.join(__dirname, 'source/scss/library/ui.scss'),
   ],
