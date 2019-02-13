@@ -4,8 +4,8 @@ import classnames from 'classnames';
 import { getKey } from '../../helpers/statics';
 import Button from '../buttons/Button';
 import Section from './Section';
-import Subsection from './Subsection';
-import SubsectionItem from './SubsectionItem';
+import Item from './Item';
+import Accordion from './SidebarAccordion';
 
 const propTypes = {
   children: PropTypes.node,
@@ -43,24 +43,10 @@ class Sidebar extends React.Component {
 
     this.state = {
       minimized: props.minimized,
-      activeSection: null,
     };
 
-    this.onSectionClick = this.onSectionClick.bind(this);
     this.onToggle = this.onToggle.bind(this);
     this.onLogoClick = this.onLogoClick.bind(this);
-  }
-
-  onSectionClick(title, isAccordion) {
-    const newState = {};
-
-    if (isAccordion) {
-      newState.minimized = false;
-    } else {
-      newState.activeSection = title;
-    }
-
-    this.setState(newState);
   }
 
   onToggle() {
@@ -79,22 +65,6 @@ class Sidebar extends React.Component {
     if (onLogoClick) {
       onLogoClick();
     }
-  }
-
-  getSections() {
-    const { children } = this.props;
-    const { minimized, activeSection } = this.state;
-
-    return React.Children.map(children, (section, idx) => {
-      const props = {
-        key: getKey(section, idx),
-        onSectionClick: this.onSectionClick,
-        minimized,
-        activeSection,
-      };
-
-      return React.cloneElement(section, props);
-    });
   }
 
   getToggle() {
@@ -116,6 +86,20 @@ class Sidebar extends React.Component {
         />
       </div>
     );
+  }
+
+  renderChildren() {
+    const { children } = this.props;
+    const { minimized } = this.state;
+
+    return React.Children.map(children, (child, idx) => {
+      const props = {
+        key: getKey(child, idx),
+        minimized,
+      };
+
+      return React.cloneElement(child, props);
+    });
   }
 
   renderLogo() {
@@ -144,7 +128,7 @@ class Sidebar extends React.Component {
   render() {
     const { togglable, theme, className } = this.props;
     const { minimized } = this.state;
-    const sections = this.getSections();
+    const children = this.renderChildren();
     const logo = this.renderLogo();
 
     const classNames = classnames('rc-sidebar', className, {
@@ -158,11 +142,13 @@ class Sidebar extends React.Component {
     }
 
     return (
-      <div className={classNames}>
+      <aside className={classNames}>
         {logo}
-        <ul className="rc-sidebar-level-1">{sections}</ul>
+        <div className="rc-sidebar-container">
+          <ul>{children}</ul>
+        </div>
         {toggle}
-      </div>
+      </aside>
     );
   }
 }
@@ -171,7 +157,7 @@ Sidebar.propTypes = propTypes;
 Sidebar.defaultProps = defaultProps;
 
 Sidebar.Section = Section;
-Sidebar.Subsection = Subsection;
-Sidebar.SubsectionItem = SubsectionItem;
+Sidebar.Item = Item;
+Sidebar.Accordion = Accordion;
 
 export default Sidebar;

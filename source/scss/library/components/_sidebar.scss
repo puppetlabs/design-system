@@ -1,85 +1,68 @@
-// Dark Sidebar
-$puppet-sidebar-dark-bg: $puppet-n900 !default;
-$puppet-sidebar-dark-logo-bg: $puppet-black !default;
-$puppet-sidebar-dark-divider: $puppet-border-dark !default;
-$puppet-sidebar-dark-item-bg: $puppet-n850 !default;
-$puppet-sidebar-dark-item-bg-hover: $puppet-n900 !default;
-$puppet-sidebar-dark-item-bg-active: $puppet-n850 !default;
-$puppet-sidebar-dark-item-icon-fill: $puppet-n600 !default;
-$puppet-sidebar-dark-item-icon-fill-hover: $puppet-brand-primary !default;
-$puppet-sidebar-dark-item-icon-fill-active: $puppet-brand-primary !default;
-$puppet-sidebar-dark-item-icon-margin: 12px !default;
-$puppet-sidebar-dark-item-color: $puppet-n400 !default;
-$puppet-sidebar-dark-item-color-hover: $puppet-brand-primary !default;
-$puppet-sidebar-dark-item-color-active: $puppet-brand-primary !default;
-$puppet-sidebar-dark-label-color: $puppet-n500 !default;
-
 // Sidebar General
-$puppet-sidebar-toggle-height: 56px !default;
+$puppet-sidebar-toggle-height                      : 56px !default;
 
-$puppet-sidebar-bg: $puppet-bg-light !default;
-$puppet-sidebar-font: $puppet-font-family-heading !default;
-$puppet-sidebar-width: 240px !default;
-$puppet-sidebar-minimized-width: 73px !default;
+$puppet-sidebar-bg                                 : $puppet-n900 !default;
+$puppet-sidebar-font                               : $puppet-font-family-heading !default;
+$puppet-sidebar-width                              : 240px !default;
+$puppet-sidebar-minimized-width                    : 73px !default;
 
-$puppet-sidebar-level-1-padding: 16px 0 !default;
+$puppet-sidebar-logo-bg                            : $puppet-black !default;
+$puppet-sidebar-logo-height                        : 72px !default;
+$puppet-sidebar-logo-padding                       : 16px !default;
+$puppet-sidebar-minimized-logo-padding             : 16px 16px 16px 20px !default;
 
-$puppet-sidebar-logo-bg: $puppet-n50 !default;
-$puppet-sidebar-logo-height: 72px !default;
-$puppet-sidebar-logo-padding: 16px !default;
-$puppet-sidebar-minimized-logo-padding: 16px 16px 16px 20px !default;
+$puppet-sidebar-divider                            : $puppet-border-dark !default;
+$puppet-sidebar-open-divider-margin                : 15px 0 16px !default; // 15 compensates for border
+$puppet-sidebar-closed-divider-margin              : 16px 0 !default;
+$puppet-sidebar-toggle-icon-size                   : 12px !important;
 
-$puppet-sidebar-divider: $puppet-border-subtle !default;
-$puppet-sidebar-open-divider-margin: 15px 0 16px !default; // 15 compensates for border
-$puppet-sidebar-closed-divider-margin: 16px 0 !default;
-$puppet-sidebar-toggle-icon-size: 12px !important;
+$puppet-sidebar-item-bg                            : $puppet-n850 !default;
+$puppet-sidebar-item-bg-hover                      : $puppet-n900 !default;
+$puppet-sidebar-item-bg-active                     : $puppet-n850 !default;
 
-$puppet-sidebar-item-bg: $puppet-bg-light !default;
-$puppet-sidebar-item-bg-hover: $puppet-bg-subtle !default;
-$puppet-sidebar-item-bg-active: $puppet-bg-subtle !default;
+$puppet-sidebar-item-border-radius                 : $puppet-border-radius !default;
 
-$puppet-sidebar-item-border-radius: $puppet-border-radius !default;
+$puppet-sidebar-item-color                         : $puppet-n400 !default;
+$puppet-sidebar-item-color-hover                   : $puppet-brand-primary !default;
+$puppet-sidebar-item-color-active                  : $puppet-brand-primary !default;
 
-$puppet-sidebar-item-color: $puppet-font-color-medium !default;
-$puppet-sidebar-item-color-hover: $puppet-action-base !default;
-$puppet-sidebar-item-color-active: $puppet-action-base !default;
+$puppet-sidebar-item-font-size                     : 16px !default;
+$puppet-sidebar-item-font-weight                   : $puppet-font-weight-normal !default;
+$puppet-sidebar-item-height-toggled                : 40px !default;
+$puppet-sidebar-item-line-height                   : 32px !default;
+$puppet-sidebar-item-margin                        : 2px 16px !default;
+$puppet-sidebar-item-padding                       : 0 12px !default;
+$puppet-sidebar-item-title-padding                 : 4px 0 !default;
 
-$puppet-sidebar-item-font-size: 16px !default;
-$puppet-sidebar-item-font-weight: $puppet-font-weight-normal !default;
-$puppet-sidebar-item-height-toggled: 40px !default;
-$puppet-sidebar-item-line-height: 32px !default;
-$puppet-sidebar-item-margin: 2px 16px !default;
-$puppet-sidebar-item-padding: 0 12px !default;
-$puppet-sidebar-item-title-padding: 4px 0 !default;
+$puppet-sidebar-item-icon-fill                     : $puppet-n600 !default;
+$puppet-sidebar-item-icon-fill-hover               : $puppet-brand-primary !default;
+$puppet-sidebar-item-icon-fill-active              : $puppet-brand-primary !default;
+$puppet-sidebar-item-icon-margin                   : 12px !default;
 
-$puppet-sidebar-item-icon-fill: $puppet-n700 !default;
-$puppet-sidebar-item-icon-fill-hover: $puppet-action-base !default;
-$puppet-sidebar-item-icon-fill-active: $puppet-action-base !default;
-$puppet-sidebar-item-icon-margin: 12px !default;
+$puppet-sidebar-item-karet-margin                  : 8px !default;
 
-$puppet-sidebar-item-karet-margin: 8px !default;
 
 // Sidebar Sections
 
 // Labels
-$puppet-sidebar-label-color: $puppet-font-color-medium !default;
-$puppet-sidebar-label-font: $puppet-font-family-label !default;
-$puppet-sidebar-label-font-size: $puppet-font-size-tiny !default;
-$puppet-sidebar-label-line-height: $puppet-small !default;
-$puppet-sidebar-label-margin: 0 0 $puppet-small !default;
-$puppet-sidebar-label-padding: 0 $puppet-large 0 !default;
-$puppet-sidebar-label-text-transform: uppercase !default;
+$puppet-sidebar-label-color                        : $puppet-n500 !default;
+$puppet-sidebar-label-font                         : $puppet-font-family-label !default;
+$puppet-sidebar-label-font-size                    : $puppet-font-size-tiny !default;
+$puppet-sidebar-label-line-height                  : $puppet-small !default;
+$puppet-sidebar-label-margin                       : 0 0 $puppet-small !default;
+$puppet-sidebar-label-padding                      : 0 $puppet-large 0 !default;
+$puppet-sidebar-label-text-transform               : uppercase !default;
 
 // Top Level
 // No specific level-1 options atm
 
 // Second Level
-$puppet-sidebar-level-2-font-size: 14px !default;
-$puppet-sidebar-level-2-margin: 8px 16px 8px 32px !default;
-$puppet-sidebar-level-2-padding: 0 0 0 8px !default;
+$puppet-sidebar-level-2-font-size                  : 14px !default;
+$puppet-sidebar-level-2-margin                     : 8px 16px 8px 32px !default;
+$puppet-sidebar-level-2-padding                    : 0 0 0 8px !default;
 
-$puppet-sidebar-level-2-item-margin: 2px 0 !default;
-$puppet-sidebar-level-2-item-padding: 0 12px !default;
+$puppet-sidebar-level-2-item-margin                : 2px 0 !default;
+$puppet-sidebar-level-2-item-padding               : 0 12px !default;
 
 // Sidebar
 .rc-sidebar {
@@ -93,20 +76,6 @@ $puppet-sidebar-level-2-item-padding: 0 12px !default;
   transition: width 0.2s ease-in-out;
   width: $puppet-sidebar-width;
   z-index: 12;
-}
-
-.rc-tooltip-area {
-  display: block;
-}
-
-.rc-sidebar-item-title,
-.rc-sidebar-level-2,
-.rc-sidebar-label,
-.rc-sidebar-item-karet {
-  opacity: 1;
-  transition: visibility 0s linear 0.2s, opacity 0.3s linear, height 0.2s linear;
-  visibility: visible;
-  white-space: nowrap;
 }
 
 .rc-sidebar-logo {
@@ -123,22 +92,21 @@ $puppet-sidebar-level-2-item-padding: 0 12px !default;
   }
 }
 
-.rc-sidebar-minimized .rc-sidebar-logo {
-  padding: $puppet-sidebar-minimized-logo-padding;
-
-  .rc-logo-text {
-    opacity: 0;
-    visibility: hidden;
-  }
+.rc-sidebar-item-title,
+.rc-sidebar-label,
+.rc-sidebar-item-karet {
+  opacity: 1;
+  transition: visibility 0s linear 0.2s, opacity 0.3s linear, height 0.2s linear;
+  visibility: visible;
+  white-space: nowrap;
 }
 
-// Minimized Sidebar Styles
 .rc-sidebar-minimized {
   margin-right: 0;
   width: $puppet-sidebar-minimized-width;
 
   .rc-sidebar-item-title,
-  .rc-sidebar-level-2,
+  .rc-sidebar-accordion-open,
   .rc-sidebar-label,
   .rc-sidebar-item-badge,
   .rc-sidebar-item-karet {
@@ -149,11 +117,6 @@ $puppet-sidebar-level-2-item-padding: 0 12px !default;
     padding: 0 !important;
     transition-delay: 0s;
     visibility: hidden;
-  }
-
-  .rc-sidebar-divider {
-    border-top: $puppet-sidebar-divider;
-    margin: $puppet-sidebar-closed-divider-margin;
   }
 
   .rc-sidebar-toggle {
@@ -170,8 +133,13 @@ $puppet-sidebar-level-2-item-padding: 0 12px !default;
     width: $puppet-sidebar-item-height-toggled;
   }
 
-  .rc-sidebar-item-content {
-    height: $puppet-sidebar-item-height-toggled;
+  .rc-sidebar-logo {
+    padding: $puppet-sidebar-minimized-logo-padding;
+  }
+
+  .rc-logo-text {
+    opacity: 0;
+    visibility: hidden;
   }
 }
 
@@ -197,7 +165,10 @@ $puppet-sidebar-level-2-item-padding: 0 12px !default;
   }
 }
 
-.rc-sidebar-toggle-btn:hover {
+.rc-sidebar-toggle-btn:hover,
+.rc-sidebar-toggle-btn:active,
+.rc-sidebar-toggle-btn:focus {
+  background: $puppet-sidebar-item-bg-active;
   border: 0;
   box-shadow: none;
 
@@ -206,25 +177,10 @@ $puppet-sidebar-level-2-item-padding: 0 12px !default;
   }
 }
 
-// Sidebar Levels
-.rc-sidebar-level-1 {
+.rc-sidebar-container {
   flex: 1;
   height: inherit;
   overflow: auto;
-  padding: $puppet-sidebar-level-1-padding !important;
-}
-
-.rc-sidebar-level-1:last-of-type {
-  border-bottom: 0;
-}
-
-// Sidebar Dividers
-.rc-sidebar-divider {
-  border-top: $puppet-sidebar-divider;
-  border-top-color: transparent;
-  display: block;
-  margin: $puppet-sidebar-open-divider-margin;
-  transition: margin 0.2s ease-in-out;
 }
 
 // Sidebar Labels
@@ -241,9 +197,10 @@ $puppet-sidebar-level-2-item-padding: 0 12px !default;
 }
 
 .rc-sidebar-item-link {
+  align-items: center;
   border-radius: $puppet-sidebar-item-border-radius;
   cursor: pointer;
-  display: block;
+  display: flex;
   height: 100%;
   margin: $puppet-sidebar-item-margin;
   outline: none;
@@ -260,25 +217,11 @@ $puppet-sidebar-level-2-item-padding: 0 12px !default;
   .rc-icon-fill {
     fill: $puppet-sidebar-item-icon-fill-hover;
   }
-
-  .rc-icon-fill-2 {
-    fill: lighten($puppet-sidebar-item-icon-fill-hover, 12%);
-  }
-
-  .rc-icon-fill-3 {
-    fill: darken($puppet-sidebar-item-icon-fill-hover, 12%);
-  }
-}
-
-.rc-sidebar-item-content {
-  align-items: center;
-  display: flex;
-  flex-direction: row;
 }
 
 .rc-sidebar-item-title {
   color: $puppet-sidebar-item-color;
-  display: block;
+  flex-grow: 1;
   font-family: $puppet-sidebar-font;
   font-size: $puppet-sidebar-item-font-size;
   font-weight: $puppet-sidebar-item-font-weight;
@@ -325,246 +268,26 @@ $puppet-sidebar-level-2-item-padding: 0 12px !default;
   fill: $puppet-sidebar-item-icon-fill-active;
 }
 
-.rc-sidebar-item-selected .rc-icon-fill-2,
-.rc-sidebar-item-selected:hover .rc-icon-fill-2 {
-  fill: lighten($puppet-sidebar-item-icon-fill-active, 12%);
+.rc-sidebar-section {
+  padding: 16px 0;
 }
 
-.rc-sidebar-item-selected .rc-icon-fill-3,
-.rc-sidebar-item-selected:hover .rc-icon-fill-3 {
-  fill: darken($puppet-sidebar-item-icon-fill-active, 12%);
-}
+.rc-sidebar-accordion {
+  display: none;
 
-// Open Item
-// Selected Item
-.rc-sidebar-item-active-accordion > .rc-sidebar-item-link,
-.rc-sidebar-item-active-accordion:hover > .rc-sidebar-item-link {
-  background: $puppet-sidebar-item-bg;
-
-  .rc-sidebar-item-title {
-    color: $puppet-sidebar-item-color-active;
+  .rc-sidebar-item {
+    font-size: 14px;
+    margin: $puppet-sidebar-level-2-margin !important;
+    padding: $puppet-sidebar-level-2-padding !important;
   }
 }
 
-.rc-sidebar-item-active-accordion .rc-icon-fill,
-.rc-sidebar-item-active-accordion:hover .rc-icon-fill {
-  fill: $puppet-sidebar-item-icon-fill-active;
+.rc-sidebar-accordion-open {
+  display: block;
 }
 
-// We want open level-1 items to be highlighted
-// when the sidebar is minimized since the level-2
-// indicators aren't visible
-.rc-sidebar-minimized .rc-sidebar-item-active-accordion,
-.rc-sidebar-minimized .rc-sidebar-item-active-accordion:hover {
-  .rc-icon-fill {
-    fill: $puppet-sidebar-item-icon-fill;
-  }
-
-  .rc-sidebar-item-link {
-    background: $puppet-sidebar-item-bg;
-  }
-
-  &.rc-sidebar-item-selected .rc-icon-fill {
-    fill: $puppet-sidebar-item-icon-fill-hover;
-  }
-
-  &.rc-sidebar-item-selected .rc-sidebar-item-link {
-    background: $puppet-sidebar-item-bg-active;
-  }
-}
-
-// Level 2
-// Currently no need for special styles for Level 2  Items
-.rc-sidebar-level-2 {
-  height: auto;
-  margin: $puppet-sidebar-level-2-margin !important;
-  padding: $puppet-sidebar-level-2-padding !important;
-}
-
-.rc-sidebar-level-2 .rc-sidebar-item-link {
-  margin: $puppet-sidebar-level-2-item-margin;
-  padding: $puppet-sidebar-level-2-item-padding;
-}
-
-.rc-sidebar-level-2 .rc-sidebar-item-title {
-  font-size: 14px;
-}
-
-.rc-sidebar-view-more-item {
-  position: relative;
-
-  .rc-sidebar-item-title {
-    color: $puppet-sidebar-item-color-hover;
-  }
-
-  .rc-sidebar-item-title::before {
-    color: $puppet-sidebar-dark-item-icon-fill-active;
-    content: '›';
-    font-size: 16px;
-    left: 0;
-    position: absolute;
-  }
-}
-
-// SIDEBAR THEMES
-// ==============
-
-//Dark Sidebar
-.rc-sidebar.rc-sidebar-dark {
-  background: $puppet-sidebar-dark-bg;
-  border-right: $puppet-border-dark;
-
-  .rc-sidebar-logo {
-    background: $puppet-sidebar-dark-logo-bg;
-  }
-
-  .rc-sidebar-toggle {
-    background: $puppet-sidebar-dark-bg;
-    border-right: $puppet-border-dark;
-  }
-
-  .rc-sidebar-toggle-btn:hover,
-  .rc-sidebar-toggle-btn:active,
-  .rc-sidebar-toggle-btn:focus {
-    background: $puppet-sidebar-dark-item-bg-active;
-    border: 0;
-    box-shadow: none;
-  }
-
-  .rc-sidebar-toggle-btn:hover svg,
-  .rc-sidebar-toggle-btn:active svg,
-  .rc-sidebar-toggle-btn:focus svg {
-    fill: $puppet-sidebar-dark-item-icon-fill-hover;
-  }
-
-  .rc-sidebar-label {
-    color: $puppet-sidebar-dark-label-color;
-  }
-
-  .rc-sidebar-item-link:hover {
-    background: $puppet-sidebar-dark-item-bg-hover;
-  }
-
-  .rc-sidebar-item-link:hover .rc-sidebar-item-title {
-    color: $puppet-sidebar-dark-item-color-hover;
-  }
-
-  .rc-sidebar-item-link:hover .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill-hover;
-  }
-
-  .rc-sidebar-item-link:hover .rc-icon-fill-2 {
-    fill: lighten($puppet-sidebar-dark-item-icon-fill-hover, 16%);
-  }
-
-  .rc-sidebar-item-link:hover .rc-icon-fill-3 {
-    fill: darken($puppet-sidebar-dark-item-icon-fill-hover, 16%);
-  }
-
-  .rc-sidebar-item-title {
-    color: $puppet-sidebar-dark-item-color;
-  }
-
-  .rc-sidebar-item-icon .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill;
-  }
-
-  .rc-sidebar-item-selected > .rc-sidebar-item-link,
-  .rc-sidebar-item-selected:hover > .rc-sidebar-item-link {
-    background: $puppet-sidebar-dark-item-bg-active;
-  }
-
-  /* stylelint-disable */
-  // TODO We can probably reduce complexity so that we don't need such specific targeting
-  .rc-sidebar-item-selected > .rc-sidebar-item-link .rc-sidebar-item-title,
-  .rc-sidebar-item-selected:hover
-    > .rc-sidebar-item-link
-    .rc-sidebar-item-title {
-    color: $puppet-sidebar-dark-item-color-active;
-  }
-  /* stylelint-enable */
-
-  .rc-sidebar-item-selected .rc-icon-fill,
-  .rc-sidebar-item-selected:hover .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill-active;
-  }
-
-  .rc-sidebar-item-selected .rc-icon-fill-2,
-  .rc-sidebar-item-selected:hover .rc-icon-fill-2 {
-    fill: lighten($puppet-sidebar-dark-item-icon-fill-active, 16%);
-  }
-
-  .rc-sidebar-item-selected .rc-icon-fill-3,
-  .rc-sidebar-item-selected:hover .rc-icon-fill-3 {
-    fill: darken($puppet-sidebar-dark-item-icon-fill-active, 16%);
-  }
-
-  // Open Item
-  // Selected Item
-  .rc-sidebar-item-active-accordion > .rc-sidebar-item-link,
-  .rc-sidebar-item-active-accordion:hover > .rc-sidebar-item-link {
-    background: $puppet-sidebar-dark-item-bg;
-  }
-
-  /* stylelint-disable */
-  // TODO We can probably reduce complexity so that we don't need such specific targeting
-  .rc-sidebar-item-active-accordion
-    > .rc-sidebar-item-link
-    .rc-sidebar-item-title,
-  .rc-sidebar-item-active-accordion:hover
-    > .rc-sidebar-item-link
-    .rc-sidebar-item-title {
-    color: $puppet-sidebar-dark-item-color-active;
-  }
-  /* stylelint-enable */
-
-  .rc-sidebar-item-active-accordion .rc-icon-fill,
-  .rc-sidebar-item-active-accordion:hover .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill-active;
-  }
-
-  // Links such as "View all reports"
-  .rc-sidebar-item-link:hover {
-    background: $puppet-sidebar-dark-item-bg-hover;
-  }
-
-  .rc-sidebar-item-link:hover .rc-sidebar-item-title {
-    color: $puppet-sidebar-dark-item-color-hover;
-  }
-
-  .rc-sidebar-item-link:hover .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill-hover;
-  }
-}
-
-// Minimized Dark Theme
-.rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-divider {
-  border-top: solid 1px $puppet-n850;
-}
-
-.rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-item-active-accordion,
-.rc-sidebar-dark.rc-sidebar-minimized .rc-sidebar-item-active-accordion:hover {
-  .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill;
-  }
-
-  .rc-sidebar-item-link {
-    background: $puppet-sidebar-dark-item-bg;
-  }
-
-  &.rc-sidebar-item-selected .rc-icon-fill {
-    fill: $puppet-sidebar-dark-item-icon-fill-hover;
-  }
-
-  &.rc-sidebar-item-selected .rc-icon-fill-2 {
-    fill: lighten($puppet-sidebar-dark-item-icon-fill-hover, 10%);
-  }
-
-  &.rc-sidebar-item-selected .rc-icon-fill-3 {
-    fill: lighten($puppet-sidebar-dark-item-icon-fill-hover, 20%);
-  }
-
-  &.rc-sidebar-item-selected .rc-sidebar-item-link {
-    background: $puppet-sidebar-dark-item-bg-active;
+.rc-sidebar-minimized {
+  .rc-sidebar-section {
+    border-top: solid 1px $puppet-n850;
   }
 }

@@ -54,14 +54,4 @@ describe('<Subsection />', () => {
       SIDEBAR_SUBSECTION_TRUNC_LENGTH,
     );
   });
-
-  it('should provide a view all link if list is truncated', () => {
-    const wrapper = shallow(
-      <Subsection truncate {...defaultProps}>
-        {items}
-      </Subsection>,
-    );
-
-    expect(wrapper.find('.rc-sidebar-view-more-item').length).to.eql(1);
-  });
 });
