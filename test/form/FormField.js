@@ -67,6 +67,18 @@ describe('<FormField />', () => {
     ).to.have.text('This is a field error');
   });
 
+  it('still renders the description if the error prop is true but not a string', () => {
+    expect(
+      shallow(
+        <FormField
+          {...requiredProps}
+          description="This is a field description"
+          error
+        />,
+      ).find('.rc-form-field-description'),
+    ).to.have.text('This is a field description');
+  });
+
   it('applies a className per string type prop', () => {
     expect(
       shallow(<FormField {...requiredProps} type="password" />),
