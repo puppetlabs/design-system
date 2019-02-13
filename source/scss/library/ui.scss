@@ -3,26 +3,27 @@
 @import url('//fonts.googleapis.com/css?family=Montserrat');
 
 @import 'fonts';
+
 @import 'public/palettes';
 @import 'public/common';
 @import 'public/typography';
+
 @import 'variables';
 @import 'utils/animations';
 @import 'utils/mixins';
 @import 'resets';
+
+@import 'components/forms/index';
+
 @import 'components/buttons';
 @import 'components/cards';
 @import 'components/loading';
 @import 'components/popover';
 @import 'components/dropdown';
-@import 'components/select';
-@import 'components/forms';
 @import 'components/text';
 @import 'components/tags';
-@import 'components/input';
 @import 'components/lists';
 @import 'components/icons';
-@import 'components/switch';
 @import 'components/modal';
 @import 'components/tabs';
 @import 'components/table';

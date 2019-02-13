@@ -59,11 +59,11 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 }
 
 .rc-popover-menu .rc-form-section {
-  border-bottom: $puppet-popover-border;
-  border-bottom-left-radius: $puppet-popover-border-radius;
-  border-bottom-right-radius: $puppet-popover-border-radius;
-  border-left: $puppet-popover-border;
-  border-right: $puppet-popover-border;
+  border-bottom: $puppet-border;
+  border-bottom-left-radius: $puppet-border-radius;
+  border-bottom-right-radius: $puppet-border-radius;
+  border-left: $puppet-border;
+  border-right: $puppet-border;
 }
 
 .rc-popover-menu .rc-menu-section {
