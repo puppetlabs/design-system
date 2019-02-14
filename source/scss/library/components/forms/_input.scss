@@ -1,93 +1,61 @@
-$puppet-input-color: $puppet-font-color-base !default;
-$puppet-input-color-placeholder: $puppet-font-color-subtle !default;
-
-$puppet-input-bg: $puppet-bg-light !default;
-$puppet-input-bg-hover: $puppet-bg-light !default;
-$puppet-input-bg-focus: $puppet-bg-light !default;
-
-$puppet-input-border: $puppet-border !default;
-$puppet-input-border-hover: $puppet-border-hover !default;
-$puppet-input-border-focus: $puppet-border-action !default;
-$puppet-input-border-radius: $puppet-border-radius !default;
-$puppet-input-border-error: 1px solid $puppet-neg-border-base !default;
-
-$puppet-input-height: $puppet-huge !default;
-$puppet-input-padding: $puppet-tiny $puppet-small !default;
-
-$puppet-input-small-height: $puppet-size-base * 3 !default; // 24px
-$puppet-input-small-padding: $puppet-tiny !default;
-
-$puppet-input-simple-bg: transparent !default;
-$puppet-input-simple-focus-bg: transparent !default;
-
-%focused-input {
-  background: $puppet-input-bg-focus;
-  border: $puppet-input-border-focus;
-  // box-shadow: $puppet-selected-shadow;
-  &:hover {
-    border: $puppet-input-border-focus;
-  }
-}
-
-%disabled-input {
-  background: $puppet-input-bg;
-  color: $puppet-input-color;
-  opacity: $puppet-disabled-opacity;
-
-  &:hover {
-    background: $puppet-input-bg;
-    border: $puppet-input-border;
-    color: $puppet-input-color;
-  }
-}
-
-%input {
-  background: $puppet-input-bg;
-  border: $puppet-input-border;
-  border-radius: $puppet-input-border-radius;
-  color: $puppet-input-color;
-  outline: none;
-  // Really only applies when .rc-input is a textarea
-  width: 100%;
-}
-
 .rc-input {
-  @extend %input;
-  font-size: $puppet-font-size-base;
-  height: $puppet-input-height;
-  line-height: 1;
-  padding: $puppet-input-padding;
+  @include puppet-type-body();
 
-  &.rc-input-error {
-    border: $puppet-input-border-error;
+  background-color: $puppet-shared-input-background;
+  border: $puppet-shared-input-border;
+  border-radius: $puppet-common-border-radius;
+  outline: none;
+  padding: 5px 7px;
+  width: 100%;
+
+  &::placeholder {
+    @include puppet-type-body(subtle);
+  }
+
+  &:hover {
+    border: $puppet-shared-input-border-hover;
   }
 
   &:focus {
-    @extend %focused-input;
+    box-shadow: $puppet-common-focus-outline;
   }
 
-  &:hover {
-    background: $puppet-input-bg-hover;
-    border: $puppet-input-border-hover;
+  &:disabled {
+    cursor: default;
+    opacity: $puppet-shared-disabled-input-opacity;
+    pointer-events: none;
   }
 
-  &::placeholder {
-    color: $puppet-input-color-placeholder;
-  }
-
-  &[disabled] {
-    @extend %disabled-input;
-  }
-
-  &.rc-input-small {
-    font-size: $puppet-font-size-small;
-    height: $puppet-input-small-height;
-    padding: $puppet-input-small-padding;
+  &.rc-input-error {
+    border: $puppet-shared-input-border-error;
   }
 }
 
+// TODO: Small inputs should be deprecated
+.rc-input-small {
+  @include puppet-type-small();
+  padding: 3px 8px;
+
+  ::placeholder {
+    @include puppet-type-small(subtle);
+  }
+}
+
+.rc-input-simple,
+.rc-input-simple:hover {
+  background: transparent;
+  border-left: 0;
+  border-radius: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+.rc-input-simple:focus {
+  box-shadow: 0 2px 0 0 $puppet-b300 !important;
+}
+
 .rc-input-multiline {
-  height: $puppet-size-base * 9;
+  height: 72px;
   resize: vertical;
   vertical-align: top;
 }
@@ -106,11 +74,11 @@ $puppet-input-simple-focus-bg: transparent !default;
   }
 
   .rc-input-icon.leading {
-    left: $puppet-small;
+    left: 8px;
   }
 
   .rc-input-icon.trailing {
-    right: $puppet-small;
+    right: 8px;
   }
 
   .rc-input-icon.leading ~ .rc-input {
@@ -120,23 +88,4 @@ $puppet-input-simple-focus-bg: transparent !default;
   .rc-input-icon.trailing ~ .rc-input {
     padding-right: 32px;
   }
-}
-
-.rc-input-simple,
-.rc-input-simple:hover {
-  background: transparent;
-  border-bottom-width: 1px;
-  border-left: 0;
-  border-radius: 0;
-  border-right: 0;
-  border-top: 0;
-}
-
-.rc-input-simple:focus {
-  background: transparent;
-  border-bottom-width: 1px;
-  border-left: 0 !important;
-  border-right: 0 !important;
-  border-top: 0 !important;
-  box-shadow: none !important;
 }
