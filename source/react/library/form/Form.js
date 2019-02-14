@@ -74,26 +74,24 @@ const defaultProps = {
   style: {},
 };
 
-export const isEmpty = (value, fieldType) => {
-  switch (fieldType) {
-    case 'text':
-    case 'email':
-    case 'password':
-    case 'url':
-    case 'multiline':
-    case 'select': {
-      return !value || !!value.match(/^\s*$/);
-    }
-    case 'number': {
-      return value !== 0 && !value;
-    }
-    case 'multiselect': {
-      return !value || !value.length;
-    }
-    default: {
-      return !!value;
-    }
+export const isEmpty = value => {
+  if (typeof value === 'string') {
+    return !value || !!value.match(/^\s*$/);
   }
+
+  if (typeof value === 'number') {
+    return value !== 0 && !value;
+  }
+
+  if (Array.isArray(value)) {
+    return value.length === 0;
+  }
+
+  if (typeof value === 'object') {
+    return !value || Object.keys(value).length === 0;
+  }
+
+  return !value;
 };
 
 /**

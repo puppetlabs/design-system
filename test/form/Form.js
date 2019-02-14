@@ -391,25 +391,15 @@ describe('<Form />', () => {
   });
 
   describe('isEmpty method', () => {
-    const emptyThings = {
-      text: '',
-      password: ' ',
-      number: undefined,
-      multiselect: [],
-    };
+    const emptyThings = ['', ' ', undefined, null, [], {}];
+    const fullThings = ['full', 0, ['thing'], { thing: 'full' }];
 
-    const fullThings = {
-      text: 'full',
-      number: 0,
-      multiselect: ['thing'],
-    };
-
-    Object.entries(emptyThings).forEach(([type, value]) => {
-      expect(isEmpty(value, type)).to.equal(true);
+    emptyThings.forEach(thing => {
+      expect(isEmpty(thing)).to.eql(true);
     });
 
-    Object.entries(fullThings).forEach(([type, value]) => {
-      expect(isEmpty(value, type)).to.equal(false);
+    fullThings.forEach(thing => {
+      expect(isEmpty(thing)).to.eql(false);
     });
   });
 });
