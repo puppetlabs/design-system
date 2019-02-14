@@ -74,7 +74,25 @@ const defaultProps = {
   style: {},
 };
 
-const isEmpty = str => !str || (typeof str === 'string' && str.match(/^\s*$/));
+export const isEmpty = value => {
+  if (typeof value === 'string') {
+    return !value || !!value.match(/^\s*$/);
+  }
+
+  if (typeof value === 'number') {
+    return value !== 0 && !value;
+  }
+
+  if (Array.isArray(value)) {
+    return value.length === 0;
+  }
+
+  if (typeof value === 'object') {
+    return !value || Object.keys(value).length === 0;
+  }
+
+  return !value;
+};
 
 /**
  * Collects the user provided props for all FormFields into

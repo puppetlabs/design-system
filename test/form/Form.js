@@ -3,7 +3,7 @@ import { expect } from 'chai';
 import React from 'react';
 import sinon from 'sinon';
 
-import Form from '../../source/react/library/form/Form';
+import Form, { isEmpty } from '../../source/react/library/form/Form';
 import Button from '../../source/react/library/buttons/Button';
 
 describe('<Form />', () => {
@@ -387,6 +387,19 @@ describe('<Form />', () => {
       );
 
       expect(wrapper.find(Button)).not.to.have.prop('disabled', true);
+    });
+  });
+
+  describe('isEmpty method', () => {
+    const emptyThings = ['', ' ', undefined, null, [], {}];
+    const fullThings = ['full', 0, ['thing'], { thing: 'full' }];
+
+    emptyThings.forEach(thing => {
+      expect(isEmpty(thing)).to.eql(true);
+    });
+
+    fullThings.forEach(thing => {
+      expect(isEmpty(thing)).to.eql(false);
     });
   });
 });
