@@ -5,42 +5,22 @@ $puppet-tag-border-radius: $puppet-border-radius !default;
 $puppet-tag-border: 1px solid $puppet-bg-subtle !default;
 $puppet-tag-border-selected: $puppet-border-action !default;
 $puppet-tag-color: $puppet-white !default;
-$puppet-tag-font-size: $puppet-font-size-base !default;
-$puppet-tag-font-weight: $puppet-font-weight-medium !default;
+$puppet-tag-font-size: $puppet-button-font-size !default;
+$puppet-tag-font-weight: $puppet-button-font-weight !default;
 $puppet-tag-height: $puppet-large !default; // Todo: Base on grid
-$puppet-tag-line-height: $puppet-tag-height !default;
 $puppet-tag-margin: $puppet-mini !default;
 $puppet-tag-padding: $puppet-small !default;
 $puppet-tag-shadow-selected: $puppet-selected-shadow !default;
 
-$puppet-tag-bg-bold: #dfe4e8 !default;
-$puppet-tag-color-bold: #40484d !default;
+$puppet-tag-icon: transparentize($puppet-white, 0.2) !default;
+$puppet-tag-icon-hover: $puppet-white !default;
 
-$puppet-tag-removable-bg: $puppet-action-base !default;
-$puppet-tag-removable-bg-hover: $puppet-action-hover !default;
-$puppet-tag-removable-bg-highlighted: $puppet-action-hover !default;
+$puppet-tag-bg-hover: $puppet-action-hover !default;
+$puppet-tag-border-hover: 1px solid transparent !default;
 
-$puppet-tag-removable-border: 1px solid transparent !default;
-$puppet-tag-removable-border-hover: 1px solid transparent !default;
-$puppet-tag-removable-border-highlighted: $puppet-border-action !default;
-
-$puppet-tag-removable-icon: transparentize($puppet-n800, 0.2) !default;
-$puppet-tag-removable-icon-hover: $puppet-n800 !default;
-$puppet-tag-removable-secondary-icon: transparentize($puppet-white, 0.2) !default;
-$puppet-tag-removable-secondary-icon-hover: $puppet-white !default;
-
-$puppet-tag-removable-color: $puppet-white !default;
-$puppet-tag-removable-color-hover: $puppet-white !default;
-$puppet-tag-removable-color-highlighted: $puppet-white !default;
-
-$puppet-tag-icon-spacing: $puppet-tiny !default;
-$puppet-tag-icon-size: $puppet-small !default;
-$puppet-tag-icon-fill: $puppet-n400 !default;
-
-$puppet-tag-tiny-font-size: $puppet-font-size-tiny !default;
-$puppet-tag-tiny-height: $puppet-medium !default; // Todo: Base on grid
-$puppet-tag-tiny-line-height: $puppet-tag-tiny-height !default;
-$puppet-tag-tiny-padding: 0 $puppet-tiny !default;
+$puppet-tag-small-font-size: $puppet-font-size-small !default;
+$puppet-tag-small-height: $puppet-medium !default; // Todo: Base on grid
+$puppet-tag-small-padding: 0 $puppet-small !default;
 
 .rc-tag {
   align-items: center;
@@ -56,61 +36,24 @@ $puppet-tag-tiny-padding: 0 $puppet-tiny !default;
   padding: 0 $puppet-tag-padding;
   position: relative;
 
-  .rc-tag-actions {
-    float: right;
-    height: 100%;
-  }
-
-  .rc-tag-actions .rc-button {
-    height: 100%;
-  }
-
-  &.rc-tag-block {
-    display: flex;
-    margin-right: 0;
-    width: 100%;
-  }
-
   .rc-tag-content,
   .rc-tooltip-area {
     flex-grow: 1;
     font-size: $puppet-tag-font-size;
     overflow: hidden;
+    padding-right: 8px;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
 }
 
-.rc-tag-primary {
-  background: $puppet-brand-primary;
-  border-color: $puppet-bg-subtle;
-  color: $puppet-white;
-}
-
-.rc-tag-secondary {
-  background: $puppet-brand-secondary;
-  border-color: $puppet-brand-secondary;
-  color: $puppet-white;
-}
-
-// TODO: Create mixin for applying colors
-.rc-tag-bold {
-  background: $puppet-tag-bg-bold;
-  border-color: $puppet-tag-bg-bold;
-  color: $puppet-tag-color-bold;
-}
-
-.rc-tag-tiny {
-  height: $puppet-tag-tiny-height;
-  padding: $puppet-tag-tiny-padding;
+.rc-tag-small {
+  height: $puppet-tag-small-height;
+  padding: $puppet-tag-small-padding;
 
   .rc-tag-content {
-    font-size: $puppet-tag-tiny-font-size;
+    font-size: $puppet-tag-small-font-size;
   }
-}
-
-.rc-tag-round {
-  border-radius: 1000px;
 }
 
 .rc-tag-remove-button {
@@ -119,30 +62,21 @@ $puppet-tag-tiny-padding: 0 $puppet-tiny !default;
   display: flex;
 }
 
-.rc-tag-removable {
-  .rc-tag-content,
-  .rc-tooltip-area {
-    padding-right: 8px;
-  }
+.rc-tag-remove-button .rc-icon {
+  fill: $puppet-tag-icon;
+}
+
+.rc-tag-remove-button:hover .rc-icon {
+  fill: $puppet-tag-icon-hover;
 }
 
 .rc-tag-selectable {
-  background: $puppet-tag-removable-bg;
-  border: $puppet-tag-removable-border;
-  color: $puppet-tag-removable-color;
   cursor: pointer;
 }
 
 .rc-tag-selectable:hover {
-  background: $puppet-tag-removable-bg-hover;
-  border: $puppet-tag-removable-border-hover;
-  color: $puppet-tag-removable-color-hover;
-}
-
-.rc-tag-selectable.rc-tag-highlighted {
-  background: $puppet-tag-removable-bg-highlighted;
-  border: $puppet-tag-removable-border-highlighted;
-  color: $puppet-tag-removable-color-highlighted;
+  background: $puppet-tag-bg-hover;
+  border: $puppet-tag-border-hover;
 }
 
 .rc-tag-selected {
@@ -150,12 +84,65 @@ $puppet-tag-tiny-padding: 0 $puppet-tiny !default;
   box-shadow: $puppet-tag-shadow-selected;
 }
 
-.rc-tag-removable {
-  .rc-tag-remove-button .rc-icon {
-    fill: $puppet-tag-removable-secondary-icon;
-  }
 
-  .rc-tag-remove-button:hover .rc-icon {
-    fill: $puppet-tag-removable-secondary-icon-hover;
+.rc-tag {
+  align-items: center;
+  background: $puppet-tag-bg;
+  border: $puppet-tag-border;
+  border-radius: $puppet-tag-border-radius;
+  color: $puppet-tag-color;
+  display: inline-flex;
+  font-size: $puppet-tag-font-size;
+  font-weight: $puppet-tag-font-weight;
+  height: $puppet-tag-height;
+  margin: 0 $puppet-tag-margin;
+  padding: 0 $puppet-tag-padding;
+  position: relative;
+
+  .rc-tag-content,
+  .rc-tooltip-area {
+    flex-grow: 1;
+    font-size: $puppet-tag-font-size;
+    overflow: hidden;
+    padding-right: 8px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
+}
+
+.rc-tag-small {
+  height: $puppet-tag-small-height;
+  padding: $puppet-tag-small-padding;
+
+  .rc-tag-content {
+    font-size: $puppet-tag-small-font-size;
+  }
+}
+
+.rc-tag-remove-button {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.rc-tag-remove-button .rc-icon {
+  fill: $puppet-tag-icon;
+}
+
+.rc-tag-remove-button:hover .rc-icon {
+  fill: $puppet-tag-icon-hover;
+}
+
+.rc-tag-selectable {
+  cursor: pointer;
+}
+
+.rc-tag-selectable:hover {
+  background: $puppet-tag-bg-hover;
+  border: $puppet-tag-border-hover;
+}
+
+.rc-tag-selected {
+  border: $puppet-tag-border-selected;
+  box-shadow: $puppet-tag-shadow-selected;
 }

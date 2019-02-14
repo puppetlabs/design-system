@@ -2,40 +2,25 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
-import { TooltipHoverArea } from '../tooltips/Tooltip';
 import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
   /** Selected state */
-  primary: PropTypes.bool,
-  secondary: PropTypes.bool,
-  bold: PropTypes.bool,
   selected: PropTypes.bool,
   className: PropTypes.string,
-  round: PropTypes.bool,
-  size: PropTypes.oneOf(['tiny', 'small', 'medium']),
-  block: PropTypes.bool,
-  tooltip: PropTypes.bool,
+  size: PropTypes.oneOf(['small', 'medium']),
   onRemove: PropTypes.func,
-  actions: PropTypes.arrayOf(PropTypes.element),
   onClick: PropTypes.func,
   children: PropTypes.node,
 };
 
 const defaultProps = {
-  primary: false,
-  secondary: false,
   selected: false,
-  round: false,
   className: '',
-  size: 'small',
-  block: false,
-  actions: null,
-  tooltip: false,
-  onRemove: null,
+  size: 'medium',
+  onRemove() {},
   onClick: null,
   children: null,
-  bold: false,
 };
 
 /**
@@ -70,89 +55,36 @@ class Tag extends React.Component {
     e.preventDefault();
     e.stopPropagation();
 
-    if (onRemove) {
-      onRemove(e);
-    }
+    onRemove(e);
   }
 
   renderContent() {
-    const actions = this.renderActions();
-    const { children, tooltip } = this.props;
+    const { children } = this.props;
 
-    let jsx = (
-      <div className="rc-tag-content">
-        {children}
-        {actions}
-      </div>
-    );
-
-    if (tooltip) {
-      jsx = (
-        <TooltipHoverArea anchor="bottom" tooltip={jsx}>
-          {jsx}
-        </TooltipHoverArea>
-      );
-    }
-
-    return jsx;
-  }
-
-  renderActions() {
-    const { actions } = this.props;
-    let jsx;
-
-    if (actions) {
-      jsx = <div className="rc-tag-actions">{actions}</div>;
-    }
-
-    return jsx;
+    return <div className="rc-tag-content">{children}</div>;
   }
 
   renderRemoveButton() {
-    const { onRemove } = this.props;
-    let jsx;
-
-    if (onRemove) {
-      jsx = (
-        // eslint-disable-next-line jsx-a11y/anchor-is-valid
-        <a
-          role="button"
-          tabIndex="0"
-          className="rc-tag-button rc-tag-remove-button"
-          onClick={this.onRemove}
-          onKeyDown={this.onKeyDownRemove}
-        >
-          <Icon type="close" size="tiny" />
-        </a>
-      );
-    }
-
-    return jsx;
+    return (
+      // eslint-disable-next-line jsx-a11y/anchor-is-valid
+      <a
+        role="button"
+        tabIndex="0"
+        className="rc-tag-button rc-tag-remove-button"
+        onClick={this.onRemove}
+        onKeyDown={this.onKeyDownRemove}
+      >
+        <Icon type="close" size="tiny" />
+      </a>
+    );
   }
 
   render() {
-    const {
-      onRemove,
-      onClick,
-      primary,
-      secondary,
-      bold,
-      selected,
-      size,
-      block,
-      round,
-      className,
-    } = this.props;
+    const { onClick, selected, size, className } = this.props;
 
     const classNames = classnames('rc-tag', className, {
-      'rc-tag-primary': primary,
-      'rc-tag-secondary': secondary,
-      'rc-tag-bold': bold,
       'rc-tag-selected': selected,
       'rc-tag-selectable': onClick,
-      'rc-tag-removable': onRemove,
-      'rc-tag-block': block,
-      'rc-tag-round': round,
       [`rc-tag-${size}`]: size,
     });
 

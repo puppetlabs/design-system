@@ -1,62 +1,30 @@
-```
-<div>
-  <Tag
-    removable>I'm a default tag</Tag>
-  <Tag
-    round
-    removable>I'm a round tag</Tag>
-  <Tag
-    bold
-    removable>I'm a bold tag</Tag>
-  <Tag
-    primary
-    removable>I'm a primary tag</Tag>
-  <Tag
-    secondary
-    removable>I'm a secondary tag</Tag>
-</div>
-```
-
-Clickable, removable tag:
+Tags:
 
 ```
 <div>
+  <Tag
+    onRemove={ () => { console.log('Tag removed!') } }
+  >
+    I'm a default tag!
+  </Tag>
   <Tag
     onClick={ () => { console.log('Tag clicked!') } }
-    removable
+    onRemove={ () => { console.log('Tag removed!') } }
   >
     I'm a clickable tag!
   </Tag>
   <Tag
+    selected     
     onRemove={ () => { console.log('Tag removed!') } }
-    removable
   >
-    I'm a removable tag!
-  </Tag>
-  <Tag
-    onClick={ () => { console.log('Tag clicked!') } }
-    onRemove={ () => { console.log('Tag removed!') } }
-    removable
-  >
-    I'm a clickable & removable tag!
+    I'm a selected tag!
   </Tag>
 </div>
-```
-
-Tag with a tooltip:
-
-```
-<Tag block tooltip>I'm a happy tag with a tooltip!</Tag>
-```
-
-Selected Tag:
-
-```
-<Tag block selected>I'm a happy selected Tag!</Tag>
 ```
 
 Tag sizes:
 
 ```
-<Tag block size="tiny">I'm a tiny tag!</Tag>
+<Tag>I'm a default medium tag!</Tag>
+<Tag size="small">I'm a small tag!</Tag>
 ```

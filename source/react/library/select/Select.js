@@ -20,7 +20,7 @@ import Popover from '../popover/Popover';
 import Button from '../buttons/Button';
 import Text from '../text/Text';
 
-import SelectItem from './SelectItem';
+import Tag from '../tag/Tag';
 
 const propTypes = {
   /** Input name */
@@ -631,16 +631,14 @@ class Select extends React.Component {
     let selected = [];
 
     if (type === 'multiselect' && !valueless) {
-      const selectedCount = selectedState.length;
-
-      selected = selectedState.map((option, index) => (
-        <SelectItem
+      selected = selectedState.map(option => (
+        <Tag
           onRemove={() => this.onRemove(option.id)}
           key={`select-item-${option.id}`}
-          highlighted={index === selectedCount - 1}
-          value={option.label}
           size={size}
-        />
+        >
+          {option.label}
+        </Tag>
       ));
     }
 
