@@ -162,7 +162,6 @@ const options = [
 
 ```
 const options = [
-  { value: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onChange prop.', label: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onChange prop.', selected: true },
   { value: 'Sig', label: 'Sig', selected: true },
   { value: 'Colby', label: 'Colby' },
 ];
