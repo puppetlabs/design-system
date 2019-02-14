@@ -1,0 +1,131 @@
+// Dropdown
+// ----------------------------------------------------------------------------
+$puppet-dropdown-padding: $puppet-medium !default;
+$puppet-dropdown-padding-small: $puppet-small !default;
+$puppet-dropdown-label-font-size: $puppet-font-size-base !default;
+$puppet-dropdown-label-font-weight: $puppet-font-weight-heavy !default;
+$puppet-dropdown-label-line-height: $puppet-medium !default;
+$puppet-dropdown-label-color: $puppet-action-base !default;
+$puppet-dropdown-label-color-error: $puppet-neg-color-base !default;
+$puppet-dropdown-label-color-disabled: $puppet-n600 !default;
+//
+$puppet-dropdown-chevron-height: $puppet-small !default;
+$puppet-dropdown-chevron-width: $puppet-small !default;
+
+// Hint is the title for the header on some menus
+$puppet-dropdown-hint-color: $puppet-font-color-medium !default;
+$puppet-dropdown-hint-font-size: $puppet-font-size-base !default;
+
+@mixin dropdown-label-colors($color, $color-disabled, $color-error) {
+  &.rc-dropdown-toggle-error {
+    .rc-dropdown-label {
+      color: $color-error;
+    }
+
+    .rc-icon {
+      fill: $color-error;
+    }
+  }
+
+  &.rc-dropdown-toggle-error:focus {
+    .rc-dropdown-label {
+      color: darken($color-error, 20%);
+    }
+
+    .rc-icon {
+      fill: darken($color-error, 20%);
+    }
+  }
+
+  &:focus {
+    .rc-dropdown-label {
+      color: darken($color, 20%);
+    }
+
+    .rc-icon {
+      fill: darken($color, 20%);
+    }
+  }
+
+  &[disabled] {
+    .rc-dropdown-label {
+      color: $color-disabled;
+    }
+
+    .rc-icon {
+      fill: $color-disabled;
+    }
+  }
+
+  .rc-dropdown-label {
+    color: $color;
+  }
+
+  .rc-icon {
+    fill: $color;
+  }
+}
+
+.rc-dropdown-toggle {
+  @include dropdown-label-colors(
+    $puppet-dropdown-label-color,
+    $puppet-dropdown-label-color-disabled,
+    $puppet-dropdown-label-color-error
+  );
+
+  &[disabled] {
+    pointer-events: none;
+  }
+
+  .rc-dropdown-label {
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .rc-dropdown-label-text {
+    font-size: $puppet-dropdown-label-font-size;
+    font-weight: $puppet-dropdown-label-font-weight;
+  }
+
+  .rc-icon {
+    height: $puppet-dropdown-chevron-height;
+    left: 0;
+    position: relative;
+    top: 0;
+    width: $puppet-dropdown-chevron-width;
+  }
+}
+
+.rc-dropdown-toggle-select {
+  background: $puppet-action-subtle;
+  border: $puppet-border;
+  border-radius: $puppet-border-radius;
+  display: block;
+  padding: $puppet-small;
+
+  .rc-dropdown-label {
+    display: block;
+    position: relative;
+  }
+
+  .rc-dropdown-label-text {
+    display: block;
+    font-size: $puppet-font-size-small;
+    margin-right: $puppet-medium;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .rc-icon {
+    left: auto;
+    position: absolute;
+    right: 0;
+    top: 5px;
+  }
+}
+
+.rc-dropdown-label-text {
+  font-size: $puppet-dropdown-label-font-size;
+  font-weight: $puppet-dropdown-label-font-weight;
+  line-height: $puppet-dropdown-label-line-height;
+}

@@ -1,0 +1,148 @@
+$puppet-accordion-bg: $puppet-bg-light !default;
+$puppet-accordion-item-title-bg-color: $puppet-white !default;
+$puppet-accordion-item-title-color: $puppet-font-color-medium !default;
+$puppet-accordion-item-title-hover: $puppet-font-color-base !default;
+$puppet-accordion-item-title-height: $puppet-huge;
+$puppet-accordion-item-title-padding: 0 $puppet-medium !default; // Todo: Base on grid
+$puppet-accordion-item-border: $puppet-border-subtle !default;
+$puppet-accordion-icon-color: $puppet-icon-fill-base !default;
+$puppet-accordion-icon-color-hover: $puppet-icon-fill-hover !default;
+$puppet-accordion-item-content-padding: $puppet-medium !default;
+
+$puppet-accordion-header-title-color: $puppet-font-color-medium !default;
+$puppet-accordion-header-title-color-active: $puppet-action-base !default;
+$puppet-accordion-header-height: $puppet-huge !default;
+$puppet-accordion-header-bg: $puppet-white !default;
+
+$puppet-accordion-animation-speed: $puppet-animation-speed-base !default;
+
+.rc-accordion {
+  background: $puppet-accordion-bg;
+  height: 100%;
+}
+
+.rc-accordion-items {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.rc-accordion-item-header,
+.rc-accordion-header {
+  align-items: center;
+  background-color: $puppet-accordion-item-title-bg-color;
+  border-radius: $puppet-border-radius $puppet-border-radius 0 0;
+  display: flex;
+}
+
+.rc-accordion-header {
+  background: $puppet-accordion-header-bg;
+  border: $puppet-accordion-item-border;
+  height: $puppet-accordion-header-height;
+}
+
+.rc-accordion-header-main {
+  display: flex;
+  flex: 1;
+  padding: $puppet-accordion-item-title-padding;
+}
+
+.rc-accordion-header-action {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  flex: none;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+
+  .rc-icon {
+    @include icon-opacity-hover;
+    fill: $puppet-icon-fill-base;
+  }
+}
+
+.rc-accordion-header-icon {
+  display: inherit;
+  margin-right: 10px;
+}
+
+.rc-badge.rc-accordion-header-badge {
+  margin-left: 4px;
+}
+
+.rc-accordion-header-title {
+  color: $puppet-accordion-header-title-color;
+  flex-grow: 1;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.rc-accordion-item-header {
+  height: $puppet-accordion-item-title-height;
+  padding: $puppet-accordion-item-title-padding;
+
+  &:hover {
+    text-decoration: none !important;
+  }
+
+  &:hover .rc-accordion-item-header-title {
+    color: $puppet-action-base;
+  }
+
+  &:hover .rc-accordion-header-icon .rc-icon,
+  &:hover .rc-accordion-item-header-action .rc-icon {
+    fill: $puppet-icon-fill-action-base;
+  }
+}
+
+.rc-accordion-item-header-title {
+  flex-grow: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.rc-accordion-item {
+  border-bottom: $puppet-accordion-item-border;
+  border-left: $puppet-accordion-item-border;
+  border-right: $puppet-accordion-item-border;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0;
+  transition: all $puppet-accordion-animation-speed;
+}
+
+.rc-accordion-item-content {
+  border-top: $puppet-accordion-item-border;
+  height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0;
+  transition: opacity $puppet-accordion-animation-speed;
+  visibility: hidden;
+}
+
+.rc-accordion-item-active {
+  flex-grow: 1;
+
+  .rc-accordion-header-icon .rc-icon,
+  &:hover .rc-accordion-header-icon .rc-icon {
+    fill: $puppet-icon-fill-hover;
+  }
+
+  .rc-accordion-item-header .rc-accordion-item-header-title,
+  &:hover .rc-accordion-item-header .rc-accordion-item-header-title {
+    color: $puppet-accordion-header-title-color-active;
+  }
+
+  .rc-accordion-item-content {
+    flex-direction: column;
+    flex-grow: 1;
+    opacity: 1;
+    overflow: auto;
+    padding: $puppet-accordion-item-content-padding;
+    visibility: visible;
+  }
+}

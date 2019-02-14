@@ -1,0 +1,8 @@
+.rc-link {
+  @include puppet-type-link();
+
+  // Extra overrides so that buttons look like links
+  background: none;
+  border: 0;
+  padding: 0;
+}

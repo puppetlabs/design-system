@@ -1,0 +1,45 @@
+.rc-heading {
+  margin: 0;
+}
+
+.rc-heading-hero {
+  @include puppet-type-hero();
+}
+
+.rc-heading-h1 {
+  @include puppet-type-h1();
+}
+
+.rc-heading-h2 {
+  @include puppet-type-h2();
+}
+
+.rc-heading-h3 {
+  @include puppet-type-h3();
+}
+
+.rc-heading-h4 {
+  @include puppet-type-h4();
+}
+
+.rc-heading-h5 {
+  @include puppet-type-h5();
+}
+
+.rc-heading-h6 {
+  @include puppet-type-h6();
+}
+
+.rc-heading-small-title {
+  @include puppet-type-label();
+}
+
+@each $color, $code in $puppet-type-colors {
+  .rc-heading-#{$color} {
+    color: $code;
+  }
+}
+
+.rc-heading-caps {
+  text-transform: uppercase;
+}

@@ -1,0 +1,64 @@
+// ----------------------------------------------------------------------------
+$puppet-alert-width: 394px !default;
+$puppet-alert-padding: 10px 16px !default;
+$puppet-alert-shadow: 8px 8px 16px 0 rgba(0, 14, 28, 0.32) !default;
+$puppet-alert-border-radius: $puppet-border-radius !default;
+
+@mixin rc-alert-colors($type, $color) {
+  &.rc-alert-#{$type} {
+    background-color: lighten($color, 50%);
+    border: 1px solid $color;
+    color: $color;
+
+    .rc-alert-type-icon {
+      fill: $color;
+    }
+
+    .rc-alert-message {
+      color: $color;
+    }
+  }
+}
+
+.rc-alert {
+  @include rc-alert-colors('error', $puppet-neg-bg-base);
+  @include rc-alert-colors('success', $puppet-pos-bg-base);
+  @include rc-alert-colors('warning', $puppet-warn-bg-base);
+  @include rc-alert-colors('info', $puppet-action-base);
+
+  border-radius: $puppet-alert-border-radius;
+  box-shadow: $puppet-alert-shadow;
+  cursor: default;
+  display: flex;
+  left: 50%;
+  margin-left: -$puppet-alert-width / 2;
+  padding: $puppet-alert-padding;
+  position: fixed;
+  top: 8px;
+  width: $puppet-alert-width;
+  z-index: 25;
+}
+
+.rc-alert-static {
+  box-shadow: none;
+  margin-left: 0;
+  position: static;
+  width: 100%;
+  z-index: auto;
+}
+
+.rc-alert-type-icon {
+  margin-right: 8px;
+  margin-top: 1px;
+}
+
+.rc-alert-message {
+  flex-grow: 1;
+}
+
+.rc-alert-close {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 18px;
+}

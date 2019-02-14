@@ -1,4 +1,5 @@
 #### Deprecated
+
 ##### Note that size has been deprecated from menus and is no longer a valid prop.
 
 #### Basic Menu
@@ -38,6 +39,7 @@ const listOptions = [
 ```
 
 #### Sections
+
 `MenuSection` can be used to separate content from one another. Useful when you need to distinguish categories to provide further context to users.
 
 ```
@@ -71,6 +73,7 @@ const hiveListOptions = [
 ```
 
 #### Other Content in a MenuSection
+
 `MenuSection` can be given extra `padding` for content that isn't a `MenuList`
 
 ```
@@ -91,8 +94,8 @@ const target = <Button>Open menu with sections</Button>;
 </Popover>
 ```
 
-
 #### Actions and Action Messages
+
 `MenuActions` can be used to provide context-specific actions and informations to users.
 
 ```

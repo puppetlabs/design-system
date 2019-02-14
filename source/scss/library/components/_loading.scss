@@ -1,0 +1,31 @@
+$puppet-loading-indicator-fill: $puppet-icon-fill-base !default;
+
+.rc-loading {
+  align-items: center;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+
+  path {
+    fill: $puppet-loading-indicator-fill;
+  }
+}
+
+.rc-loading.loading-page {
+  align-items: center;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  svg {
+    align-self: center;
+    display: flex;
+    height: 100px;
+    width: 100px;
+  }
+}

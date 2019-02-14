@@ -20,7 +20,7 @@ const defaultProps = {
 const MenuSection = ({ className, subtle, padding, children, title }) => (
   <div
     className={classnames('rc-menu-section', className, {
-      'rc-bg-subtle': subtle,
+      'rc-menu-subtle': subtle,
       'rc-menu-section-padding': padding,
     })}
   >

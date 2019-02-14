@@ -1,0 +1,96 @@
+$puppet-tooltip-hint-bg: rgba($puppet-black, 0.9) !default;
+$puppet-tooltip-hint-color: $puppet-n400 !default;
+$puppet-tooltip-hint-padding: $puppet-tiny $puppet-small !default;
+$puppet-tooltip-hint-radius: $puppet-border-radius !default;
+$puppet-tooltip-hint-font-size: $puppet-font-size-small !default;
+$puppet-tooltip-hint-elevation: 24 !default;
+$puppet-tooltip-hint-max-width: 168px !default;
+
+$puppet-tooltip-hint-close-bg: $puppet-black !default;
+
+.rc-tooltip-container {
+  position: absolute;
+}
+
+.rc-tooltip-area {
+  display: inline-block;
+}
+
+.rc-tooltip {
+  background: $puppet-tooltip-hint-bg;
+  border-radius: $puppet-tooltip-hint-radius;
+  color: $puppet-tooltip-hint-color;
+  display: inline;
+  font-size: $puppet-tooltip-hint-font-size;
+  max-width: $puppet-tooltip-hint-max-width;
+  padding: $puppet-tooltip-hint-padding;
+  position: absolute;
+  z-index: $puppet-tooltip-hint-elevation;
+
+  .rc-tooltip-carat {
+    border-style: solid;
+    border-width: 8px;
+    height: 0;
+    position: absolute;
+    width: 0;
+  }
+
+  &:hover .rc-tooltip-close {
+    visibility: visible;
+  }
+}
+
+.rc-tooltip-close {
+  align-items: center;
+  background: $puppet-tooltip-hint-close-bg;
+  border-radius: 100px;
+  cursor: pointer;
+  display: flex;
+  height: 16px;
+  justify-content: center;
+  position: absolute;
+  right: -4px;
+  top: -4px;
+  visibility: hidden;
+  width: 16px;
+
+  .rc-icon {
+    fill: $puppet-tooltip-hint-color;
+    fill-opacity: 0.5;
+  }
+
+  &:hover .rc-icon {
+    fill-opacity: 1;
+  }
+}
+
+// https://davidwalsh.name/detect-scrollbar-width
+.rc-tooltip-scrollbar-measurer {
+  height: 100px;
+  overflow: scroll;
+  position: absolute;
+  top: -9999px;
+  visibility: hidden;
+  width: 100px;
+}
+
+.rc-tooltip-position-right {
+  .rc-tooltip-carat {
+    border-color: transparent $puppet-tooltip-hint-bg transparent transparent;
+    left: -16px;
+  }
+}
+
+.rc-tooltip-position-bottom {
+  .rc-tooltip-carat {
+    border-color: transparent transparent $puppet-tooltip-hint-bg transparent;
+    top: -16px;
+  }
+}
+
+.rc-tooltip-position-left {
+  .rc-tooltip-carat {
+    border-color: transparent transparent transparent $puppet-tooltip-hint-bg;
+    right: -16px;
+  }
+}

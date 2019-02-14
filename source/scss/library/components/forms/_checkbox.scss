@@ -1,0 +1,74 @@
+$puppet-checkbox-border: $puppet-border !default;
+$puppet-checkbox-border-hover: $puppet-border-hover !default;
+$puppet-checkbox-border-radius: $puppet-border-radius-small !default;
+$puppet-checkbox-icon-fill: $puppet-action-base !default;
+$puppet-checkbox-padding: $puppet-small !default;
+$puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
+
+.rc-checkbox-input {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.rc-checkbox-container {
+  height: 16px;
+  margin-right: 10px;
+  position: relative;
+}
+
+// https://github.com/stylelint/stylelint/issues/331#issuecomment-127043187
+/* stylelint-disable property-no-vendor-prefix */
+.rc-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border: $puppet-checkbox-border;
+  border-radius: $puppet-checkbox-border-radius;
+  cursor: pointer;
+  height: $puppet-medium;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  width: $puppet-medium;
+}
+
+.rc-checkbox + .rc-icon {
+  animation: 200ms 1 ease-in rc-zoom-in;
+  display: none;
+  height: 16px;
+  left: 2px;
+  pointer-events: none;
+  position: absolute;
+  top: -1px;
+  width: 16px;
+}
+
+.rc-checkbox-error {
+  border: $puppet-checkbox-border-error;
+}
+
+.rc-checkbox:hover {
+  border: $puppet-checkbox-border-hover;
+
+  &.rc-checkbox:checked {
+    border: $puppet-checkbox-border;
+  }
+}
+
+.rc-checkbox:checked + .rc-icon {
+  display: block;
+  fill: $puppet-checkbox-icon-fill;
+}
+
+.rc-checkbox:disabled {
+  cursor: default;
+  opacity: $puppet-disabled-opacity;
+
+  + .rc-icon {
+    opacity: $puppet-disabled-opacity;
+  }
+}
+
+/* stylelint-enable property-no-vendor-prefix */

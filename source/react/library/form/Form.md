@@ -4,7 +4,7 @@ The `Form` component must be used in conjunction with one or more [Form.Field](#
 
 ### Uncontrolled (recommended in most cases)
 
-In *uncontrolled* mode the Form component tracks field values in internal state. The form may be supplied an initialValues object prop with each field name and its initial value, and a submit handler that is passed the final values. When new `initialValues` are detected, the component is reset (see [error handling](#linkylink) below).
+In _uncontrolled_ mode the Form component tracks field values in internal state. The form may be supplied an initialValues object prop with each field name and its initial value, and a submit handler that is passed the final values. When new `initialValues` are detected, the component is reset (see [error handling](#linkylink) below).
 
 ```
 const movieOptions = [
@@ -100,7 +100,8 @@ class MyPage extends React.Component {
 
 ### Controlled
 
-In *controlled* mode, the consumer is responsible for managing form value state. This is used most commonly when the field values may change from external sources or if changes to the values are automatically reflected elsewhere in the ui. The form must be passed a `values` object prop with keys corresponding to field names, and an 'onChange' handler that updates external state.
+In _controlled_ mode, the consumer is responsible for managing form value state. This is used most commonly when the field values may change from external sources or if changes to the values are automatically reflected elsewhere in the ui. The form must be passed a `values` object prop with keys corresponding to field names, and an 'onChange' handler that updates external state.
+
 ```
 const movieOptions = [
   'American Treasure',

@@ -1,17 +1,10 @@
-%button-reset {
-  background: none;
-  border: 0;
-  color: inherit;
-  cursor: default;
-  font: inherit;
-  line-height: normal;
-  overflow: visible;
-  padding: 0;
-  user-select: none;
-}
-
+// TODO: We need to get rid of these overrides
 [class^='rc-'] {
   box-sizing: border-box;
+  font-family: $puppet-type-body-font-family;
+  font-size: $puppet-type-body-font-size;
+  font-weight: $puppet-type-body-font-weight;
+  line-height: $puppet-type-body-line-height;
 
   * {
     box-sizing: border-box;
@@ -28,20 +21,6 @@
   }
 
   a {
-    color: $puppet-anchor-color;
-    font-weight: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    text-transform: none;
-  }
-
-  a:hover {
-    color: $puppet-anchor-hover;
-    // text-decoration: underline;
-  }
-
-  a:active {
-    color: $puppet-action-active;
-    // text-decoration: underline;
+    @include puppet-type-link();
   }
 }

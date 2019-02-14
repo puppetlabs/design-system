@@ -1,0 +1,218 @@
+// Selects
+// ----------------------------------------------------------------------------
+$puppet-select-color: $puppet-font-color-base !default;
+$puppet-select-border-radius: $puppet-border-radius !default;
+$puppet-select-item-highlighted-bg: $puppet-action-hover !default;
+
+$puppet-select-menu-max-height: 240px !default;
+
+// TODO Tiny Inputs to be deprecated - not used
+$puppet-select-tiny-item-margin: $puppet-mini 0 $puppet-mini $puppet-mini !default;
+$puppet-select-tiny-item-padding: 0 $puppet-small !default;
+$puppet-select-label-font-size: $puppet-font-size-small !default;
+$puppet-select-label-padding: $puppet-small !default;
+$puppet-select-label-bg: $puppet-action-subtle !default;
+$puppet-select-label-border: $puppet-border !default;
+$puppet-select-label-border-radius: $puppet-border-radius !default;
+
+.rc-select-popover-wrapper {
+  display: block;
+  width: 100%;
+}
+
+.rc-select-popover {
+  max-height: 200px;
+
+  .rc-select-menu-options {
+    flex: 1 1 auto;
+    overflow-y: auto;
+  }
+
+  .rc-menu-item a,
+  .rc-menu-item:first-of-type a,
+  .rc-menu-item:last-of-type a {
+    border-width: 0;
+  }
+}
+
+.rc-select {
+  color: $puppet-font-color-base;
+  cursor: pointer;
+  position: relative;
+}
+
+.rc-select-menu {
+  display: flex;
+  flex-direction: column;
+  max-height: $puppet-select-menu-max-height;
+}
+
+.rc-select-wrapper {
+  position: relative;
+}
+
+.rc-select-input {
+  @extend %input;
+  align-items: center;
+  display: flex;
+  min-height: 32px;
+  min-width: 0;
+  overflow: hidden;
+  padding: 0 16px 0 8px;
+  position: relative;
+  text-overflow: ellipsis;
+  // transition: all 0.2s;
+
+  &:hover {
+    border: $puppet-border-hover;
+  }
+
+  &:hover .rc-select-action .rc-icon-chevron-down {
+    fill: $puppet-action-base;
+  }
+}
+
+.rc-select-multiple .rc-select-input {
+  padding: 0 8px;
+}
+
+.rc-select-input .rc-input {
+  border: 0;
+  box-shadow: none;
+  flex: 1 0 4px;
+  height: 28px;
+  margin: 0;
+  min-height: initial;
+  padding: 0;
+  position: relative;
+
+  &:hover,
+  &:focus {
+    border: 0 !important;
+    box-shadow: none;
+  }
+}
+
+.rc-select-content {
+  align-items: center;
+  display: flex;
+  flex: 1 0 0%; // https://github.com/philipwalton/flexbugs#flexbug-4
+  flex-wrap: wrap;
+  min-width: 0;
+
+  .rc-tag {
+    transform: translateX(-4px);
+  }
+
+  .rc-tag-medium {
+    height: 28px;
+  }
+
+  .rc-tag-highlighted {
+    background: $puppet-select-item-highlighted-bg;
+  }
+
+  .rc-tag-highlighted .rc-icon {
+    opacity: 1;
+  }
+}
+
+.rc-select-actions {
+  align-items: center;
+  display: flex;
+  flex: 0 1 auto;
+  height: 20px;
+  margin-left: 8px;
+}
+
+.rc-select-small .rc-select-input {
+  min-height: 24px;
+  padding: 0 8px;
+
+  .rc-input {
+    font-size: 12px;
+    height: 20px;
+    line-height: $puppet-medium;
+    min-height: initial;
+    padding: 0;
+  }
+}
+
+.rc-select-disabled {
+  .rc-select-input {
+    @extend %disabled-input;
+  }
+
+  &:hover .rc-select-input .rc-icon-chevron-down {
+    fill: $puppet-icon-fill-base;
+  }
+}
+
+.rc-select-wrapper-open {
+  .rc-select-input {
+    @extend %focused-input;
+  }
+}
+
+.rc-select-actions {
+  .rc-select-action {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    margin-right: $puppet-small;
+    min-width: 12px;
+    outline: none;
+    transition: all 0.2s;
+  }
+
+  .rc-select-action:last-of-type {
+    margin-right: 0;
+  }
+}
+
+.rc-select-action .rc-icon-chevron-down {
+  height: 12px;
+  width: 12px;
+}
+
+.rc-select-action .rc-icon-close {
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.rc-popover-no-portal {
+  .rc-select-menu {
+    position: relative;
+  }
+}
+
+.rc-select-disabled {
+  cursor: default;
+
+  .rc-input {
+    cursor: default;
+  }
+}
+
+.rc-select-wrapper-open {
+  .rc-select-input {
+    @extend %focused-input;
+
+    cursor: text;
+  }
+
+  .rc-select-actions .rc-icon-chevron-down {
+    fill: $puppet-action-base;
+  }
+}
+
+.rc-select-small {
+  .rc-icon-chevron-down {
+    height: 8px !important;
+    width: 8px !important;
+  }
+}

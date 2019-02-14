@@ -56,6 +56,7 @@ const options = [
   secondary
 />
 ```
+
 ```
 const options = [
   { id: 1, value: 'option 1' },
@@ -69,6 +70,7 @@ const options = [
   secondary
 />
 ```
+
 ```
 const options = [
   { id: 1, value: 'option 1' },
@@ -82,6 +84,7 @@ const options = [
   secondary
 />
 ```
+
 ```
 const options = [
   { id: 1, value: 'option 1' },
@@ -145,6 +148,7 @@ const options = [
 ```
 
 #### Dropdown with inherited width
+
 By default Dropdowns are the width of their widest content.
 When set to `inheritWidth` the menu is as wide as its target button.
 
