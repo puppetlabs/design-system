@@ -19,5 +19,10 @@ Tags:
   >
     I'm a selected tag!
   </Tag>
+  <Tag
+    disabled     
+  >
+    I'm a disabled tag!
+  </Tag>
 </div>
 ```

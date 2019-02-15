@@ -8,7 +8,7 @@ $puppet-tag-color: $puppet-white !default;
 $puppet-tag-font-size: $puppet-button-font-size !default;
 $puppet-tag-font-weight: $puppet-button-font-weight !default;
 $puppet-tag-height: $puppet-large !default; // Todo: Base on grid
-$puppet-tag-margin: $puppet-mini !default;
+$puppet-tag-margin: $puppet-tiny $puppet-tiny $puppet-tiny 0 !default;
 $puppet-tag-padding: $puppet-small !default;
 $puppet-tag-shadow-selected: $puppet-selected-shadow !default;
 
@@ -28,7 +28,7 @@ $puppet-tag-border-hover: 1px solid transparent !default;
   font-size: $puppet-tag-font-size;
   font-weight: $puppet-tag-font-weight;
   height: $puppet-tag-height;
-  margin: 0 $puppet-tag-margin;
+  margin: $puppet-tag-margin;
   padding: 0 $puppet-tag-padding;
   position: relative;
 
@@ -47,6 +47,11 @@ $puppet-tag-border-hover: 1px solid transparent !default;
   align-items: center;
   cursor: pointer;
   display: flex;
+}
+
+.rc-tag-remove-button-disabled {
+  cursor: default;
+  pointer-events: none;
 }
 
 .rc-tag-remove-button .rc-icon {
@@ -69,4 +74,9 @@ $puppet-tag-border-hover: 1px solid transparent !default;
 .rc-tag-selected {
   border: $puppet-tag-border-selected;
   box-shadow: $puppet-tag-shadow-selected;
+}
+
+.rc-tag-disabled {
+  cursor: default;
+  pointer-events: none;
 }

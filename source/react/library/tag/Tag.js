@@ -11,6 +11,7 @@ const propTypes = {
   onRemove: PropTypes.func,
   onClick: PropTypes.func,
   children: PropTypes.node,
+  disabled: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -19,6 +20,7 @@ const defaultProps = {
   onRemove() {},
   onClick: null,
   children: null,
+  disabled: false,
 };
 
 /**
@@ -63,12 +65,17 @@ class Tag extends React.Component {
   }
 
   renderRemoveButton() {
+    const { disabled } = this.props;
+    const classNames = classnames('rc-tag-button rc-tag-remove-button', {
+      'rc-tag-remove-button-disabled': disabled,
+    });
+
     return (
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
       <a
         role="button"
         tabIndex="0"
-        className="rc-tag-button rc-tag-remove-button"
+        className={classNames}
         onClick={this.onRemove}
         onKeyDown={this.onKeyDownRemove}
       >
@@ -78,11 +85,12 @@ class Tag extends React.Component {
   }
 
   render() {
-    const { onClick, selected, className } = this.props;
+    const { onClick, selected, className, disabled } = this.props;
 
     const classNames = classnames('rc-tag', className, {
       'rc-tag-selected': selected,
       'rc-tag-selectable': onClick,
+      'rc-tag-disabled': disabled,
     });
 
     const content = this.renderContent();
@@ -92,7 +100,7 @@ class Tag extends React.Component {
       className: classNames,
     };
 
-    if (onClick) {
+    if (onClick && !disabled) {
       props.role = 'button';
       props.onClick = this.onClick;
     }
