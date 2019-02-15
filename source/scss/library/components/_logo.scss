@@ -1,0 +1,37 @@
+// NOTE: logos come from marketing and therefore don't necessarily use our
+// color palettes. Therefore, it makes sense to hard code colors here
+.rc-logo {
+  display: block;
+  height: 34px;
+
+  .rc-logo-product,
+  .rc-logo-bug {
+    fill: #ffae1a;
+  }
+
+  .rc-logo-puppet {
+    fill: #090a0a;
+  }
+}
+
+.rc-logo-inverted {
+  .rc-logo-puppet {
+    fill: #fff;
+  }
+}
+
+.rc-logo-two-line {
+  height: 51px;
+}
+
+.rc-logo-type-bug {
+  height: 32px;
+  width: 32px;
+}
+
+.rc-logo-condensed {
+  .rc-logo-product,
+  .rc-logo-puppet, {
+    transform: translateX(-3px);
+  }
+}

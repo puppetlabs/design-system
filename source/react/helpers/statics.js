@@ -68,6 +68,23 @@ const omit = (keys, object) => {
   return newObject;
 };
 
+/**
+ * Getter method for nested values that won't NPE
+ *
+ * @exmaple path(['one', 'two'], { one: { two: 'hi' } }) => 'hi';
+ * @exmaple path(['three', 'two'], { one: { two: 'hi' } }) => undefined;
+ */
+const path = (valuePath, object) => {
+  const [prop, ...rest] = valuePath;
+  const nextObj = object[prop];
+
+  if (!nextObj || !rest.length) {
+    return nextObj;
+  }
+
+  return path(rest, object[prop]);
+};
+
 const mapColumnsToText = {
   1: 'one',
   2: 'two',
@@ -93,6 +110,7 @@ export {
   componentHasType,
   mapObj,
   omit,
+  path,
 };
 
 export default isNodeInRoot;
