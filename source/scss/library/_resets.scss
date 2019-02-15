@@ -21,6 +21,20 @@
   }
 
   a {
-    @include puppet-type-link();
+    color: $puppet-anchor-color;
+    font-weight: normal;
+    letter-spacing: normal;
+    text-decoration: none;
+    text-transform: none;
+  }
+
+  a:hover {
+    color: $puppet-anchor-hover;
+    // text-decoration: underline;
+  }
+
+  a:active {
+    color: $puppet-action-active;
+    // text-decoration: underline;
   }
 }
