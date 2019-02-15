@@ -58,9 +58,11 @@ const propTypes = {
   placeholder: PropTypes.string,
   /** Disables default 'portal' usage, rendering menu in normal dom structure */
   disablePortal: PropTypes.bool,
-  /** Optional "custom action" when user clicks `newOptionLabel` at bottom of dropdown */
+  /** Optional boolean flag that adds a custom action at the bottom of the dropdown */
+  newOption: PropTypes.bool,
+  /** Handler for when the user clicks the custom action at the bottom of the dropdown */
   onNewOption: PropTypes.func,
-  /** Label for "custom action" shown at bottom of dropdown if `onNewOption` prop is present */
+  /** Label for the custom actions shown at bottom of the dropdown */
   newOptionLabel: PropTypes.string,
   /** Custom user-provided className */
   className: PropTypes.string,
@@ -90,8 +92,9 @@ const defaultProps = {
   options: [],
   noResultsLabel: 'No results found',
   popoverClassName: '',
-  newOptionLabel: 'Add new',
+  newOption: false,
   onNewOption: null,
+  newOptionLabel: 'Add new',
 };
 
 const getNextIdx = (currentIdx, options) => {
@@ -521,9 +524,9 @@ class Select extends React.Component {
 
   renderNewOptionControls() {
     let jsx;
-    const { onNewOption, newOptionLabel } = this.props;
+    const { newOption, onNewOption, newOptionLabel } = this.props;
 
-    if (onNewOption) {
+    if (newOption) {
       jsx = (
         <Menu.Actions centered>
           <Menu.Actions.Buttons>

@@ -117,7 +117,7 @@ const options = [
   { value: 'Great Tequila with Actual Rocks', label: 'Great Tequila with Actual Rocks' }
 ];
 
-<Select options={ options } onChange={ onChange } onNewOption={ onNewOption } newOptionLabel="Add a New Drink" />
+<Select options={ options } onChange={ onChange } newOption onNewOption={ onNewOption } newOptionLabel="Add a New Drink" />
 ```
 
 ---
