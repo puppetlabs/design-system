@@ -18,10 +18,6 @@ $puppet-tag-icon-hover: $puppet-white !default;
 $puppet-tag-bg-hover: $puppet-action-hover !default;
 $puppet-tag-border-hover: 1px solid transparent !default;
 
-$puppet-tag-small-font-size: $puppet-font-size-small !default;
-$puppet-tag-small-height: $puppet-medium !default; // Todo: Base on grid
-$puppet-tag-small-padding: 0 $puppet-small !default;
-
 .rc-tag {
   align-items: center;
   background: $puppet-tag-bg;
@@ -44,78 +40,6 @@ $puppet-tag-small-padding: 0 $puppet-small !default;
     padding-right: 8px;
     text-overflow: ellipsis;
     white-space: nowrap;
-  }
-}
-
-.rc-tag-small {
-  height: $puppet-tag-small-height;
-  padding: $puppet-tag-small-padding;
-
-  .rc-tag-content {
-    font-size: $puppet-tag-small-font-size;
-  }
-}
-
-.rc-tag-remove-button {
-  align-items: center;
-  cursor: pointer;
-  display: flex;
-}
-
-.rc-tag-remove-button .rc-icon {
-  fill: $puppet-tag-icon;
-}
-
-.rc-tag-remove-button:hover .rc-icon {
-  fill: $puppet-tag-icon-hover;
-}
-
-.rc-tag-selectable {
-  cursor: pointer;
-}
-
-.rc-tag-selectable:hover {
-  background: $puppet-tag-bg-hover;
-  border: $puppet-tag-border-hover;
-}
-
-.rc-tag-selected {
-  border: $puppet-tag-border-selected;
-  box-shadow: $puppet-tag-shadow-selected;
-}
-
-
-.rc-tag {
-  align-items: center;
-  background: $puppet-tag-bg;
-  border: $puppet-tag-border;
-  border-radius: $puppet-tag-border-radius;
-  color: $puppet-tag-color;
-  display: inline-flex;
-  font-size: $puppet-tag-font-size;
-  font-weight: $puppet-tag-font-weight;
-  height: $puppet-tag-height;
-  margin: 0 $puppet-tag-margin;
-  padding: 0 $puppet-tag-padding;
-  position: relative;
-
-  .rc-tag-content,
-  .rc-tooltip-area {
-    flex-grow: 1;
-    font-size: $puppet-tag-font-size;
-    overflow: hidden;
-    padding-right: 8px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-}
-
-.rc-tag-small {
-  height: $puppet-tag-small-height;
-  padding: $puppet-tag-small-padding;
-
-  .rc-tag-content {
-    font-size: $puppet-tag-small-font-size;
   }
 }
 

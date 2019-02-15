@@ -33,43 +33,6 @@ const options = [
 
 ---
 
-### Sizes
-
-#### Default Size
-
-```
-const options = [
-  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode III  Revenge of the Sith',
-];
-
-<Select
-  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-/>
-```
-
-#### Small
-
-```
-const options = [
-  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode III  Revenge of the Sith',
-];
-
-<Select
-  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-  size="small"
-/>
-```
-
----
-
 ### Optional
 
 #### Clearable Select
@@ -155,22 +118,6 @@ const options = [
     'Option 1',
     'Option 2',
   ] }
-/>
-```
-
-#### Small Multiselect
-
-```
-const options = [
-  { value: 'Sig', label: 'Sig', selected: true },
-  { value: 'Colby', label: 'Colby' },
-];
-
-<Select
-  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  type="multiselect"
-  size="small"
-  options={ options }
 />
 ```
 

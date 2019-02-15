@@ -21,10 +21,3 @@ Tags:
   </Tag>
 </div>
 ```
-
-Tag sizes:
-
-```
-<Tag>I'm a default medium tag!</Tag>
-<Tag size="small">I'm a small tag!</Tag>
-```

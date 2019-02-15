@@ -8,7 +8,6 @@ const propTypes = {
   /** Selected state */
   selected: PropTypes.bool,
   className: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'medium']),
   onRemove: PropTypes.func,
   onClick: PropTypes.func,
   children: PropTypes.node,
@@ -17,7 +16,6 @@ const propTypes = {
 const defaultProps = {
   selected: false,
   className: '',
-  size: 'medium',
   onRemove() {},
   onClick: null,
   children: null,
@@ -80,12 +78,11 @@ class Tag extends React.Component {
   }
 
   render() {
-    const { onClick, selected, size, className } = this.props;
+    const { onClick, selected, className } = this.props;
 
     const classNames = classnames('rc-tag', className, {
       'rc-tag-selected': selected,
       'rc-tag-selectable': onClick,
-      [`rc-tag-${size}`]: size,
     });
 
     const content = this.renderContent();

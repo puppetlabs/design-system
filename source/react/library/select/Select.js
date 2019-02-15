@@ -10,7 +10,6 @@ import {
   ESC_KEY_CODE,
   UP_KEY_CODE,
 } from '../../constants';
-import { formSize } from '../../helpers/customPropTypes';
 
 import Icon from '../icon/Icon';
 import Loading from '../loading/Loading';
@@ -27,8 +26,6 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   /** Select type. 'select' is the default single-select, where 'multiselect' allows multiple options */
   type: PropTypes.oneOf(['select', 'multiselect']),
-  /** Form elements come in two standard sizes */
-  size: formSize,
   /** Current value of the input. Should be a string for 'select' type and an array for 'multiline' */
   value: (props, ...rest) => {
     if (props.type === 'select') {
@@ -101,7 +98,6 @@ const defaultProps = {
   onChange() {},
   className: '',
   style: {},
-  size: 'medium',
   options: [],
   noResultsLabel: 'No results found',
   popoverClassName: '',
@@ -515,7 +511,6 @@ class Select extends React.Component {
 
   renderMenuList() {
     const { inputValue, selected: selectedState, focusedId } = this.state;
-    const { size } = this.props;
     const options = this.getOptions(inputValue);
 
     const selected = selectedState.map(o => o.id);
@@ -526,7 +521,6 @@ class Select extends React.Component {
           this.menuList = c;
         }}
         selected={selected}
-        size={size}
         options={options}
         onChange={this.onSelect}
         onFocus={this.onFocus}
@@ -555,7 +549,7 @@ class Select extends React.Component {
   }
 
   renderMenu() {
-    const { size, noResultsLabel } = this.props;
+    const { noResultsLabel } = this.props;
     let menuList = this.renderMenuList();
     if (!menuList.props.options.length) {
       menuList = (
@@ -570,7 +564,7 @@ class Select extends React.Component {
     });
 
     const jsx = (
-      <Menu className="rc-select-menu" size={size}>
+      <Menu className="rc-select-menu">
         <Menu.Section className={className}>{menuList}</Menu.Section>
         {actions}
       </Menu>
@@ -625,7 +619,7 @@ class Select extends React.Component {
   }
 
   renderContent() {
-    const { type, size, valueless } = this.props;
+    const { type, valueless } = this.props;
     const { selected: selectedState } = this.state;
     const input = this.renderInput();
     let selected = [];
@@ -635,7 +629,6 @@ class Select extends React.Component {
         <Tag
           onRemove={() => this.onRemove(option.id)}
           key={`select-item-${option.id}`}
-          size={size}
         >
           {option.label}
         </Tag>
@@ -654,7 +647,6 @@ class Select extends React.Component {
     const {
       type,
       placeholder: placeholderProp,
-      size,
       disabled,
       loading,
       loadingText,
@@ -678,7 +670,6 @@ class Select extends React.Component {
         onKeyUp={this.onKeyUp}
         onChange={this.onInputChange}
         value={this.getInputValue()}
-        size={size}
         required={required}
         inputRef={c => {
           this.input = c;
@@ -698,7 +689,6 @@ class Select extends React.Component {
       disabled,
       loading,
       type,
-      size,
       disablePortal,
       style,
     } = this.props;
@@ -720,7 +710,6 @@ class Select extends React.Component {
     const classNames = classnames('rc-select', 'rc-select-popover-wrapper', {
       'rc-select-disabled': disabled || loading,
       'rc-select-multiple': type === 'multiselect',
-      [`rc-select-${size}`]: size,
     });
 
     const content = (
