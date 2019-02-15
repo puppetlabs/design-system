@@ -16,9 +16,16 @@ const defaultProps = {
 const Section = props => {
   const { label: labelProp, children, minimized } = props;
   let label;
+  let labelId;
 
   if (labelProp) {
-    label = <div className="rc-sidebar-label">{labelProp}</div>;
+    labelId = `nav-heading-${labelProp.toLowerCase().replace(/\s/, '-')}`;
+
+    label = (
+      <div id={labelId} className="rc-sidebar-label">
+        {labelProp}
+      </div>
+    );
   }
 
   const revisedChildren = React.Children.map(children, child => {
@@ -30,10 +37,12 @@ const Section = props => {
   });
 
   return (
-    <div className="rc-sidebar-section">
+    <Fragment>
       {label}
-      {revisedChildren}
-    </div>
+      <ul aria-labelledby={labelId} className="rc-sidebar-section">
+        {revisedChildren}
+      </ul>
+    </Fragment>
   );
 };
 

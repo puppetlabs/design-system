@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import { ENTER_KEY_CODE } from 'constants';
+import { ENTER_KEY_CODE } from '../../constants';
 import Icon from '../icon';
 import Badge from '../badge';
 import TooltipHoverArea from '../tooltips/TooltipHoverArea';
@@ -71,9 +71,7 @@ class Item extends React.Component {
       as: Component,
     } = this.props;
 
-    const classNames = classnames('rc-sidebar-item', className, {
-      'rc-sidebar-item-selected': active,
-    });
+    const classNames = classnames('rc-sidebar-item', className);
 
     let karet;
     let badge;
@@ -116,9 +114,13 @@ class Item extends React.Component {
       );
     }
 
+    const linkClassNames = classnames('rc-sidebar-item-link', {
+      'rc-sidebar-item-link-selected': active,
+    });
+
     const link = (
       <Component
-        className="rc-sidebar-item-link"
+        className={linkClassNames}
         role="button"
         tabIndex={0}
         onClick={this.onClick}

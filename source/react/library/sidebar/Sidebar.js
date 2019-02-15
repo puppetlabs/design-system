@@ -112,6 +112,7 @@ class Sidebar extends React.Component {
     if (jsx && onLogoClick) {
       jsx = (
         <a role="button" tabIndex={0} onClick={this.onLogoClick}>
+          <span className="rc-visually-hidden">Home</span>
           {jsx}
         </a>
       );
@@ -144,9 +145,13 @@ class Sidebar extends React.Component {
     return (
       <aside className={classNames}>
         {logo}
-        <div className="rc-sidebar-container">
-          <ul>{children}</ul>
-        </div>
+        <nav
+          role="navigation"
+          aria-label="Main"
+          className="rc-sidebar-container"
+        >
+          {children}
+        </nav>
         {toggle}
       </aside>
     );
