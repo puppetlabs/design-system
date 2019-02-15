@@ -85,41 +85,6 @@ const options = [
 <Select options={ options } clearable />
 ```
 
-#### Custom Actions
-
-```
-const onChange = (selected, modifiedOption) => {
-  console.log(selected, modifiedOption);
-}
-
-const onNewOption = () => {
-  alert('Adding a new drink');
-}
-
-const options = [
-  { value: 'Coffee', label: 'Coffee' },
-  { value: 'Tea', label: 'Tea' },
-  { value: 'Gatorade', label: 'Gatorade' },
-  { value: 'Apple Juice', label: 'Apple Juice' },
-  { value: 'Cranberry Juice', label: 'Cranberry Juice' },
-  { value: 'Banana Juice', label: 'Banana Juice' },
-  { value: "Bone Hurtin' Juice", label: "Bone Hurtin' Juice" },
-  { value: 'Blue Cheese Juice', label: 'Blue Cheese Juice' },
-  { value: 'Beer', label: 'Beer' },
-  { value: 'Wine', label: 'Wine' },
-  { value: 'Vodka', label: 'Vodka' },
-  { value: 'Whiskey', label: 'Whiskey' },
-  { value: 'Crappy Tequila', label: 'Crappy Tequila' },
-  { value: 'Fine Tequila', label: 'Fine Tequila' },
-  { value: 'Great Tequila', label: 'Great Tequila' },
-  { value: 'Great Tequila with Rocks', label: 'Great Tequila with Rocks' },
-  { value: 'Great Tequila with Water', label: 'Great Tequila with Water' },
-  { value: 'Great Tequila with Actual Rocks', label: 'Great Tequila with Actual Rocks' }
-];
-
-<Select options={ options } onChange={ onChange } newOption onNewOption={ onNewOption } newOptionLabel="Add a New Drink" />
-```
-
 ---
 
 ### States

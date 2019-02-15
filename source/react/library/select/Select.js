@@ -58,11 +58,17 @@ const propTypes = {
   placeholder: PropTypes.string,
   /** Disables default 'portal' usage, rendering menu in normal dom structure */
   disablePortal: PropTypes.bool,
-  /** Optional boolean flag that adds a custom action at the bottom of the dropdown */
+  /** Optional boolean flag that adds a custom action at the bottom of the dropdown
+   * @ignore
+   */
   newOption: PropTypes.bool,
-  /** Handler for when the user clicks the custom action at the bottom of the dropdown */
+  /** Handler for when the user clicks the custom action at the bottom of the dropdown
+   * @ignore
+   */
   onNewOption: PropTypes.func,
-  /** Label for the custom actions shown at bottom of the dropdown */
+  /** Label for the custom actions shown at bottom of the dropdown
+   * @ignore
+   */
   newOptionLabel: PropTypes.string,
   /** Custom user-provided className */
   className: PropTypes.string,
