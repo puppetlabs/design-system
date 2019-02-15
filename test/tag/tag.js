@@ -36,4 +36,24 @@ describe('<Tag />', () => {
     expect(onClick.called).to.equal(false);
     expect(onRemove.called).to.equal(true);
   });
+
+  it('should have a disabled class if disabled', () => {
+    const wrapper = shallow(<Tag />);
+
+    expect(wrapper.hasClass('rc-tag-disabled')).to.equal(false);
+
+    wrapper.setProps({ disabled: true });
+
+    expect(wrapper.hasClass('rc-tag-disabled')).to.equal(true);
+  });
+
+  it('should have a selected class if selected', () => {
+    const wrapper = shallow(<Tag />);
+
+    expect(wrapper.hasClass('rc-tag-selected')).to.equal(false);
+
+    wrapper.setProps({ selected: true });
+
+    expect(wrapper.hasClass('rc-tag-selected')).to.equal(true);
+  });
 });

@@ -74,17 +74,12 @@ class Tag extends React.Component {
   }
 
   renderRemoveButton() {
-    const { disabled } = this.props;
-    const classNames = classnames('rc-tag-button rc-tag-remove-button', {
-      'rc-tag-remove-button-disabled': disabled,
-    });
-
     return (
       // eslint-disable-next-line jsx-a11y/anchor-is-valid
       <a
         role="button"
         tabIndex="0"
-        className={classNames}
+        className="rc-tag-button rc-tag-remove-button"
         onClick={this.onRemove}
         onKeyDown={this.onKeyDownRemove}
       >

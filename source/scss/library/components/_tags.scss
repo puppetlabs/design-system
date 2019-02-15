@@ -55,11 +55,6 @@ $puppet-tag-icon-hover: $puppet-white !default;
   padding: $puppet-tag-remove-button-padding;
 }
 
-.rc-tag-remove-button-disabled {
-  cursor: default;
-  pointer-events: none;
-}
-
 .rc-tag-remove-button .rc-icon {
   fill: $puppet-tag-icon;
 }
