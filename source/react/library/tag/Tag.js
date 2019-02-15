@@ -59,9 +59,18 @@ class Tag extends React.Component {
   }
 
   renderContent() {
-    const { children } = this.props;
+    const { children, onClick, disabled } = this.props;
+    const classNames = classnames('rc-tag-content', {
+      'rc-tag-selectable': onClick,
+    });
+    const props = { className: classNames };
 
-    return <div className="rc-tag-content">{children}</div>;
+    if (onClick && !disabled) {
+      props.role = 'button';
+      props.onClick = this.onClick;
+    }
+
+    return <div {...props}>{children}</div>;
   }
 
   renderRemoveButton() {
@@ -85,28 +94,18 @@ class Tag extends React.Component {
   }
 
   render() {
-    const { onClick, selected, className, disabled } = this.props;
+    const { selected, className, disabled } = this.props;
 
     const classNames = classnames('rc-tag', className, {
       'rc-tag-selected': selected,
-      'rc-tag-selectable': onClick,
       'rc-tag-disabled': disabled,
     });
 
     const content = this.renderContent();
     const removeButton = this.renderRemoveButton();
 
-    const props = {
-      className: classNames,
-    };
-
-    if (onClick && !disabled) {
-      props.role = 'button';
-      props.onClick = this.onClick;
-    }
-
     return (
-      <div {...props}>
+      <div className={classNames}>
         {content}
         {removeButton}
       </div>

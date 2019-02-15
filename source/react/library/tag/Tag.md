@@ -14,15 +14,15 @@ Tags:
     I'm a clickable tag!
   </Tag>
   <Tag
+    disabled     
+  >
+    I'm a disabled tag!
+  </Tag>
+  <Tag
     selected     
     onRemove={ () => { console.log('Tag removed!') } }
   >
     I'm a selected tag!
-  </Tag>
-  <Tag
-    disabled     
-  >
-    I'm a disabled tag!
   </Tag>
 </div>
 ```
