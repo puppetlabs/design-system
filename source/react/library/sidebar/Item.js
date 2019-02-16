@@ -118,6 +118,12 @@ class Item extends React.Component {
       'rc-sidebar-item-link-selected': active,
     });
 
+    const contextualProps = {};
+
+    if (active) {
+      contextualProps['aria-current'] = 'page';
+    }
+
     const link = (
       <Component
         className={linkClassNames}
@@ -125,6 +131,7 @@ class Item extends React.Component {
         tabIndex={0}
         onClick={this.onClick}
         onKeyDown={this.onKeyDown}
+        {...contextualProps}
       >
         {icon}
         <span className="rc-sidebar-item-title">{title}</span>
