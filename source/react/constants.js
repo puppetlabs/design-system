@@ -39,6 +39,8 @@ export const filterOperators = [
 export const iconSizes = {
   tiny: '8px',
   small: '12px',
-  base: '16px',
+  medium: '16px',
   large: '24px',
 };
+
+export const iconDefaultSize = iconSizes.medium;

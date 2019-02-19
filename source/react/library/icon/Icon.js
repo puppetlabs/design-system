@@ -1,22 +1,26 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import { iconSizes } from '../../constants';
+import { iconSizes, iconDefaultSize } from '../../constants';
 import icons from './icons';
 
 const propTypes = {
-  viewBox: PropTypes.string,
+  type: PropTypes.string,
   size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
   height: PropTypes.string,
   width: PropTypes.string,
-  type: PropTypes.string,
   svg: PropTypes.element,
+  viewBox: PropTypes.string,
   className: PropTypes.string,
 };
 
 const defaultProps = {
-  height: '30px',
-  width: '30px',
+  type: null,
+  size: iconDefaultSize,
+  height: null,
+  width: null,
+  svg: null,
+  viewbox: null,
   className: '',
 };
 
@@ -36,34 +40,44 @@ const Icon = props => {
   let viewBox = propsViewBox;
   let icon = null;
 
-  if (!svg && icons[type]) {
-    const { svg: alternateSvg } = icons[type];
-    svg = alternateSvg;
+  const getProperty = property => {
+    // If a unique icon variant exists for a specific size, use it
+    // otherwise, use the default icon and size it accordingly
+    const scaledIcon = `${type}-${size}`;
+
+    const { [property]: prop } = icons[scaledIcon] || icons[type];
+
+    return prop;
+  };
+
+  if (!svg) {
+    svg = getProperty('svg');
   }
 
-  if (!viewBox && icons[type]) {
-    const { viewBox: alternateViewBox } = icons[type];
-    viewBox = alternateViewBox;
+  if (!viewBox) {
+    viewBox = getProperty('viewBox');
   }
 
-  if (size) {
-    switch (size) {
-      case 'tiny':
-        styles.height = iconSizes.tiny;
-        styles.width = iconSizes.tiny;
-        break;
-      case 'small':
-        styles.height = iconSizes.small;
-        styles.width = iconSizes.small;
-        break;
-      case 'large':
-        styles.height = iconSizes.large;
-        styles.width = iconSizes.large;
-        break;
-      default:
-        styles.height = iconSizes.base;
-        styles.width = iconSizes.base;
-    }
+  switch (size) {
+    case 'tiny':
+      styles.height = iconSizes.tiny;
+      styles.width = iconSizes.tiny;
+      break;
+    case 'small':
+      styles.height = iconSizes.small;
+      styles.width = iconSizes.small;
+      break;
+    case 'medium':
+      styles.height = iconSizes.medium;
+      styles.width = iconSizes.medium;
+      break;
+    case 'large':
+      styles.height = iconSizes.large;
+      styles.width = iconSizes.large;
+      break;
+    default:
+      styles.height = iconDefaultSize;
+      styles.width = iconDefaultSize;
   }
 
   if (svg) {
