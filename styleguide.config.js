@@ -42,6 +42,7 @@ module.exports = {
     '**/table/ColumnSelect.js',
     '**/table/ColumnHeader.js',
     '**/table/ColumnCheckbox.js',
+    '**/logo/logos.js',
   ],
   require: [
     path.join(__dirname, 'source/scss/styleguide.scss'),
