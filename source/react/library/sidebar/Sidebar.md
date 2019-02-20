@@ -34,3 +34,50 @@ Sidebar with clickable Sidebar.sections, logo, and dark theme:
   </Sidebar>
 </div>
 ```
+
+### Minimized Sidebar
+
+```javascript
+<div style={{ position: 'relative', height: '800px' }}>
+  <Sidebar minimized>
+    <Sidebar.Header
+      logo="insights"
+      onLogoClick={() => console.log('logo clicked')}
+    />
+    <Sidebar.Navigation>
+      <Sidebar.Section>
+        <Sidebar.Item onClick={() => {}} title="Home" icon="home" active />
+      </Sidebar.Section>
+      <Sidebar.Section label="reports">
+        <Sidebar.Item
+          onClick={() => {}}
+          title="Speed & Frequency"
+          icon="speed"
+        />
+        <Sidebar.Item
+          onClick={() => {}}
+          title="Reliability"
+          icon="reliability"
+        />
+        <Sidebar.Item onClick={() => {}} title="Security" icon="security" />
+        <Sidebar.Item onClick={() => {}} title="Business Value" icon="value" />
+        <Sidebar.Item onClick={() => {}} title="Pipeline" icon="pipeline" />
+      </Sidebar.Section>
+      <Sidebar.Section label="conifg">
+        <Sidebar.Item
+          onClick={() => {}}
+          title="Connections"
+          icon="connections"
+          label="config"
+        />
+        <Sidebar.Item
+          onClick={() => {}}
+          title="Data Model"
+          icon="data-fields"
+        />
+      </Sidebar.Section>
+    </Sidebar.Navigation>
+    <Sidebar.Footer username="Lorem Ipsum" version="1969.7.20" />
+  </Sidebar>
+</div>
+```

@@ -4,16 +4,18 @@ import { ENTER_KEY_CODE } from '../../constants';
 import Logo from '../logo';
 
 const propTypes = {
+  minimized: PropTypes.bool,
   logo: PropTypes.string,
   onLogoClick: PropTypes.func,
 };
 
 const defaultProps = {
+  minimized: false,
   logo: '',
   onLogoClick() {},
 };
 
-class Header extends React.Component {
+class SidebarHeader extends React.Component {
   constructor(props) {
     super(props);
 
@@ -29,7 +31,6 @@ class Header extends React.Component {
 
   onLogoClick() {
     const { onLogoClick } = this.props;
-    // this.setState({ menuOpen: false });
 
     if (onLogoClick) {
       onLogoClick();
@@ -37,11 +38,11 @@ class Header extends React.Component {
   }
 
   renderLogo() {
-    const { logo } = this.props;
+    const { logo, minimized } = this.props;
     let jsx;
 
     if (logo) {
-      jsx = <Logo inverted product={logo} />;
+      jsx = <Logo inverted product={logo} type={minimized ? 'bug' : 'full'} />;
     }
 
     return jsx;
@@ -74,7 +75,7 @@ class Header extends React.Component {
   }
 }
 
-Header.propTypes = propTypes;
-Header.defaultProps = defaultProps;
+SidebarHeader.propTypes = propTypes;
+SidebarHeader.defaultProps = defaultProps;
 
-export default Header;
+export default SidebarHeader;

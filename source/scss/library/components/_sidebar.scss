@@ -22,7 +22,6 @@ $puppet-sidebar-item-color-active: $puppet-brand-primary !default;
 
 $puppet-sidebar-item-font-size: 16px !default;
 $puppet-sidebar-item-font-weight: $puppet-font-weight-normal !default;
-$puppet-sidebar-item-height-toggled: 40px !default;
 $puppet-sidebar-item-line-height: 40px !default;
 $puppet-sidebar-item-margin: 2px 16px !default;
 $puppet-sidebar-item-padding: 0 12px !default;
@@ -211,32 +210,46 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   display: block;
 }
 
+// Footer
+
 .rc-sidebar-footer {
-  align-items: center;
   background: $puppet-sidebar-footer-bg;
-  display: flex;
   height: $puppet-sidebar-footer-height;
   overflow: hidden;
   padding: $puppet-sidebar-padding;
 }
 
-.rc-sidebar-user-icon {
-  margin-right: $puppet-sidebar-padding;
+.rc-sidebar-footer-meta {
+  align-items: center;
+  display: flex;
+  height: 100%;
 }
 
-.rc-sidebar-footer-details {
+.rc-sidebar-footer-meta-details {
   display: flex;
   flex-direction: column;
+  margin-left: $puppet-sidebar-padding;
 }
 
-.rc-sidebar-footer-username,
-.rc-sidebar-footer-version {
+.rc-sidebar-footer-meta-username,
+.rc-sidebar-footer-meta-version {
   color: $puppet-n500;
 }
+
+// Minimized Sidebar
 
 .rc-sidebar-minimized {
   margin-right: 0;
   width: $puppet-sidebar-minimized-width;
+
+  .rc-sidebar-logo {
+    padding: $puppet-sidebar-minimized-logo-padding;
+  }
+
+  .rc-logo-text {
+    opacity: 0;
+    visibility: hidden;
+  }
 
   .rc-sidebar-item-title,
   .rc-sidebar-accordion-open,
@@ -252,15 +265,6 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
     visibility: hidden;
   }
 
-  .rc-sidebar-logo {
-    padding: $puppet-sidebar-minimized-logo-padding;
-  }
-
-  .rc-logo-text {
-    opacity: 0;
-    visibility: hidden;
-  }
-
   .rc-sidebar-section {
     border-top: solid 1px $puppet-n850;
     padding: 16px 0;
@@ -269,5 +273,10 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   .rc-sidebar-section:first-of-type {
     border-top: 0;
     padding-top: 0;
+  }
+
+  .rc-sidebar-footer-meta {
+    align-items: center;
+    justify-content: center;
   }
 }

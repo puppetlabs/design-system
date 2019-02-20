@@ -1,17 +1,18 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import Section from './Section';
-import Item from './Item';
-import Footer from './Footer';
-import Header from './Header';
-import Navigation from './Navigation';
+import Section from './SidebarSection';
+import Item from './SidebarItem';
+import Footer from './SidebarFooter';
+import Header from './SidebarHeader';
+import Navigation from './SidebarNavigation';
+import renderChildren from './helper';
 
 const propTypes = {
-  children: PropTypes.node,
   className: PropTypes.string,
   /** Is sidebar at the smaller size? */
   minimized: PropTypes.bool,
+  children: PropTypes.node, //eslint-disable-line
 };
 
 const defaultProps = {
@@ -23,12 +24,14 @@ const defaultProps = {
 /**
  * `Sidebar` displays high-level navigation with optional subsections and actions.
  */
-const Sidebar = ({ className, children, minimized }) => {
+const Sidebar = props => {
+  const { className, minimized } = props;
   const classNames = classnames('rc-sidebar', className, {
     'rc-sidebar-minimized': minimized,
   });
+  const revisedChildren = renderChildren(props);
 
-  return <aside className={classNames}>{children}</aside>;
+  return <aside className={classNames}>{revisedChildren}</aside>;
 };
 
 Sidebar.propTypes = propTypes;

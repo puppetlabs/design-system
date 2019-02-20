@@ -33,7 +33,7 @@ const defaultProps = {
   children: null,
 };
 
-class Item extends React.Component {
+class SidebarItem extends React.Component {
   constructor(props) {
     super(props);
 
@@ -141,7 +141,7 @@ class Item extends React.Component {
   }
 }
 
-Item.propTypes = propTypes;
-Item.defaultProps = defaultProps;
+SidebarItem.propTypes = propTypes;
+SidebarItem.defaultProps = defaultProps;
 
-export default Item;
+export default SidebarItem;

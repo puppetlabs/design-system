@@ -1,14 +1,22 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import Item from './Item';
+import Item from './SidebarItem';
 
 const propTypes = {
   open: PropTypes.bool,
+  title: PropTypes.string,
+  icon: PropTypes.string,
+  count: PropTypes.number,
+  children: PropTypes.node,
 };
 
 const defaultProps = {
   open: false,
+  title: '',
+  icon: '',
+  count: null,
+  children: [],
 };
 
 class SidebarAccordion extends React.Component {
@@ -30,7 +38,7 @@ class SidebarAccordion extends React.Component {
   }
 
   render() {
-    const { children, title, icon, count, badge } = this.props;
+    const { children, title, icon, count } = this.props;
     const { open } = this.state;
     const accordionClassNames = classnames('rc-sidebar-accordion', {
       'rc-sidebar-accordion-open': open,
@@ -44,7 +52,6 @@ class SidebarAccordion extends React.Component {
           icon={icon}
           title={title}
           count={count}
-          badge={badge}
           onClick={this.onClick}
         />
         <div className={accordionClassNames}>{children}</div>

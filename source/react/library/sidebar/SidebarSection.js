@@ -1,20 +1,22 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import renderChildren from './helper';
 
 const propTypes = {
-  children: PropTypes.node,
+  children: PropTypes.node, // eslint-disable-line
   /** Section label that renders above section title */
   label: PropTypes.node,
-  minimized: PropTypes.bool,
+  minimized: PropTypes.bool, // eslint-disable-line
 };
 
 const defaultProps = {
   children: null,
   label: null,
+  minimized: false,
 };
 
-const Section = props => {
-  const { label: labelProp, children, minimized } = props;
+const SidebarSection = props => {
+  const { label: labelProp } = props;
   let label;
   let labelId;
 
@@ -28,13 +30,7 @@ const Section = props => {
     );
   }
 
-  const revisedChildren = React.Children.map(children, child => {
-    const newProps = {
-      minimized,
-    };
-
-    return React.cloneElement(child, newProps);
-  });
+  const revisedChildren = renderChildren(props);
 
   return (
     <Fragment>
@@ -46,7 +42,7 @@ const Section = props => {
   );
 };
 
-Section.propTypes = propTypes;
-Section.defaultProps = defaultProps;
+SidebarSection.propTypes = propTypes;
+SidebarSection.defaultProps = defaultProps;
 
-export default Section;
+export default SidebarSection;
