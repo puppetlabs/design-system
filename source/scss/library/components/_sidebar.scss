@@ -1,66 +1,59 @@
-// Sidebar General
-$puppet-sidebar-toggle-height                      : 56px !default;
+$puppet-sidebar-bg: $puppet-n900 !default;
+$puppet-sidebar-padding: 16px !default;
+$puppet-sidebar-font: $puppet-font-family-heading !default;
+$puppet-sidebar-width: 240px !default;
+$puppet-sidebar-minimized-width: 73px !default;
 
-$puppet-sidebar-bg                                 : $puppet-n900 !default;
-$puppet-sidebar-font                               : $puppet-font-family-heading !default;
-$puppet-sidebar-width                              : 240px !default;
-$puppet-sidebar-minimized-width                    : 73px !default;
+$puppet-sidebar-logo-bg: $puppet-black !default;
+$puppet-sidebar-logo-height: 72px !default;
+$puppet-sidebar-logo-padding: $puppet-sidebar-padding !default;
+$puppet-sidebar-minimized-logo-padding: $puppet-sidebar-padding $puppet-sidebar-padding $puppet-sidebar-padding 20px !default;
 
-$puppet-sidebar-logo-bg                            : $puppet-black !default;
-$puppet-sidebar-logo-height                        : 72px !default;
-$puppet-sidebar-logo-padding                       : 16px !default;
-$puppet-sidebar-minimized-logo-padding             : 16px 16px 16px 20px !default;
+$puppet-sidebar-item-bg: $puppet-n850 !default;
+$puppet-sidebar-item-bg-hover: $puppet-n900 !default;
+$puppet-sidebar-item-bg-active: $puppet-n850 !default;
+$puppet-sidebar-item-border-focus: 0 0 0 2px $puppet-b300 !default;
 
-$puppet-sidebar-divider                            : $puppet-border-dark !default;
-$puppet-sidebar-open-divider-margin                : 15px 0 16px !default; // 15 compensates for border
-$puppet-sidebar-closed-divider-margin              : 16px 0 !default;
-$puppet-sidebar-toggle-icon-size                   : 12px !important;
+$puppet-sidebar-item-border-radius: $puppet-border-radius !default;
 
-$puppet-sidebar-item-bg                            : $puppet-n850 !default;
-$puppet-sidebar-item-bg-hover                      : $puppet-n900 !default;
-$puppet-sidebar-item-bg-active                     : $puppet-n850 !default;
-$puppet-sidebar-item-border-focus                  : 0 0 0 2px $puppet-b300 !default;
+$puppet-sidebar-item-color: $puppet-n400 !default;
+$puppet-sidebar-item-color-hover: $puppet-brand-primary !default;
+$puppet-sidebar-item-color-active: $puppet-brand-primary !default;
 
-$puppet-sidebar-item-border-radius                 : $puppet-border-radius !default;
+$puppet-sidebar-item-font-size: 16px !default;
+$puppet-sidebar-item-font-weight: $puppet-font-weight-normal !default;
+$puppet-sidebar-item-height-toggled: 40px !default;
+$puppet-sidebar-item-line-height: 40px !default;
+$puppet-sidebar-item-margin: 2px 16px !default;
+$puppet-sidebar-item-padding: 0 12px !default;
+$puppet-sidebar-item-title-padding: 4px 0 !default;
 
-$puppet-sidebar-item-color                         : $puppet-n400 !default;
-$puppet-sidebar-item-color-hover                   : $puppet-brand-primary !default;
-$puppet-sidebar-item-color-active                  : $puppet-brand-primary !default;
+$puppet-sidebar-item-icon-fill: $puppet-n600 !default;
+$puppet-sidebar-item-icon-fill-hover: $puppet-brand-primary !default;
+$puppet-sidebar-item-icon-fill-active: $puppet-brand-primary !default;
+$puppet-sidebar-item-icon-margin: 12px !default;
 
-$puppet-sidebar-item-font-size                     : 16px !default;
-$puppet-sidebar-item-font-weight                   : $puppet-font-weight-normal !default;
-$puppet-sidebar-item-height-toggled                : 40px !default;
-$puppet-sidebar-item-line-height                   : 40px !default;
-$puppet-sidebar-item-margin                        : 2px 16px !default;
-$puppet-sidebar-item-padding                       : 0 12px !default;
-$puppet-sidebar-item-title-padding                 : 4px 0 !default;
-
-$puppet-sidebar-item-icon-fill                     : $puppet-n600 !default;
-$puppet-sidebar-item-icon-fill-hover               : $puppet-brand-primary !default;
-$puppet-sidebar-item-icon-fill-active              : $puppet-brand-primary !default;
-$puppet-sidebar-item-icon-margin                   : 12px !default;
-
-$puppet-sidebar-item-karet-margin                  : 8px !default;
+$puppet-sidebar-item-karet-margin: 8px !default;
 
 
 // Sidebar Sections
 
 // Labels
-$puppet-sidebar-label-color                        : $puppet-n500 !default;
-$puppet-sidebar-label-font                         : $puppet-font-family-label !default;
-$puppet-sidebar-label-font-size                    : $puppet-font-size-tiny !default;
-$puppet-sidebar-label-line-height                  : $puppet-small !default;
-$puppet-sidebar-label-margin                       : $puppet-large 0 $puppet-small !default;
-$puppet-sidebar-label-padding                      : 0 $puppet-large 0 !default;
-$puppet-sidebar-label-text-transform               : uppercase !default;
+$puppet-sidebar-label-color: $puppet-n500 !default;
+$puppet-sidebar-label-font: $puppet-font-family-label !default;
+$puppet-sidebar-label-font-size: $puppet-font-size-tiny !default;
+$puppet-sidebar-label-line-height: $puppet-small !default;
+$puppet-sidebar-label-margin: $puppet-large 0 $puppet-small !default;
+$puppet-sidebar-label-padding: 0 $puppet-large 0 !default;
+$puppet-sidebar-label-text-transform: uppercase !default;
 
-// Top Level
-// No specific level-1 options atm
+$puppet-sidebar-item-accordion-font-size: 14px !default;
+$puppet-sidebar-item-accordion-margin: 8px 16px 8px 32px !default;
+$puppet-sidebar-item-accordion-padding: 0 0 0 8px !default;
 
-// Second Level
-$puppet-sidebar-item-accordion-font-size           : 14px !default;
-$puppet-sidebar-item-accordion-margin              : 8px 16px 8px 32px !default;
-$puppet-sidebar-item-accordion-padding             : 0 0 0 8px !default;
+$puppet-sidebar-footer-height: 72px !default;
+$puppet-sidebar-footer-bg: $puppet-black !default;
+
 
 // Sidebar
 .rc-sidebar {
@@ -90,7 +83,7 @@ $puppet-sidebar-item-accordion-padding             : 0 0 0 8px !default;
   }
 }
 
-.rc-sidebar-container {
+.rc-sidebar-navigation {
   flex: 1;
   height: inherit;
   overflow: auto;
@@ -143,9 +136,16 @@ $puppet-sidebar-item-accordion-padding             : 0 0 0 8px !default;
   }
 }
 
-.rc-sidebar-item-link:focus,
-.rc-sidebar-toggle-btn:focus {
+.rc-sidebar-item-link:focus {
   box-shadow: $puppet-sidebar-item-border-focus;
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-item-color-hover;
+  }
+
+  .rc-icon-fill {
+    fill: $puppet-sidebar-item-icon-fill-hover;
+  }
 }
 
 .rc-sidebar-item-title {
@@ -211,38 +211,27 @@ $puppet-sidebar-item-accordion-padding             : 0 0 0 8px !default;
   display: block;
 }
 
-// Toggle for Collapse & Expand of the sidebar
-.rc-sidebar-toggle {
+.rc-sidebar-footer {
   align-items: center;
-  background: $puppet-sidebar-bg;
-  border-right: $puppet-border-subtle;
-  height: $puppet-sidebar-toggle-height;
+  background: $puppet-sidebar-footer-bg;
+  display: flex;
+  height: $puppet-sidebar-footer-height;
   overflow: hidden;
-  padding: 8px;
-  text-align: center;
-  transition: width 0.2s ease-in-out;
-  width: $puppet-sidebar-width;
+  padding: $puppet-sidebar-padding;
 }
 
-.rc-sidebar-toggle-btn {
-  height: $puppet-sidebar-item-height-toggled;
-
-  .rc-icon {
-    height: $puppet-sidebar-toggle-icon-size;
-    width: $puppet-sidebar-toggle-icon-size;
-  }
+.rc-sidebar-user-icon {
+  margin-right: $puppet-sidebar-padding;
 }
 
-.rc-sidebar-toggle-btn:hover,
-.rc-sidebar-toggle-btn:active,
-.rc-sidebar-toggle-btn:focus {
-  background: $puppet-sidebar-item-bg-active;
-  border: 0;
-  box-shadow: none;
+.rc-sidebar-footer-details {
+  display: flex;
+  flex-direction: column;
+}
 
-  .rc-icon {
-    fill: $puppet-sidebar-item-icon-fill-hover;
-  }
+.rc-sidebar-footer-username,
+.rc-sidebar-footer-version {
+  color: $puppet-n500;
 }
 
 .rc-sidebar-minimized {
@@ -280,19 +269,5 @@ $puppet-sidebar-item-accordion-padding             : 0 0 0 8px !default;
   .rc-sidebar-section:first-of-type {
     border-top: 0;
     padding-top: 0;
-  }
-
-  .rc-sidebar-toggle {
-    margin-left: auto;
-    margin-right: auto;
-    transition: width 0.2s ease-in-out;
-    width: $puppet-sidebar-minimized-width;
-  }
-
-  .rc-sidebar-toggle-btn {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 8px;
-    width: $puppet-sidebar-item-height-toggled;
   }
 }

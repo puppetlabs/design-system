@@ -8,6 +8,7 @@ import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 
 const propTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  to: PropTypes.string,
   title: PropTypes.string.isRequired,
   icon: PropTypes.string,
   className: PropTypes.string,
@@ -21,6 +22,7 @@ const propTypes = {
 
 const defaultProps = {
   as: 'a',
+  to: '',
   icon: '',
   className: '',
   minimized: false,
@@ -51,13 +53,6 @@ class Item extends React.Component {
     }
   }
 
-  getSubsectionLength() {
-    const { children } = this.props;
-    const { children: subsection } = children.props;
-
-    return React.Children.toArray(subsection).length;
-  }
-
   render() {
     const {
       title,
@@ -68,6 +63,7 @@ class Item extends React.Component {
       active,
       count,
       open,
+      to,
       as: Component,
     } = this.props;
 
@@ -131,6 +127,7 @@ class Item extends React.Component {
         tabIndex={0}
         onClick={this.onClick}
         onKeyDown={this.onKeyDown}
+        to={to}
         {...contextualProps}
       >
         {icon}
