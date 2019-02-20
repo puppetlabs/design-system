@@ -54,7 +54,8 @@ $puppet-sidebar-footer-height: 72px !default;
 $puppet-sidebar-footer-bg: $puppet-black !default;
 
 
-// Sidebar
+// Generic sidebar
+
 .rc-sidebar {
   background: $puppet-sidebar-bg;
   border-right: $puppet-border-subtle;
@@ -67,6 +68,8 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   width: $puppet-sidebar-width;
   z-index: 12;
 }
+
+// Sidebar header
 
 .rc-sidebar-logo {
   background: $puppet-sidebar-logo-bg;
@@ -82,12 +85,16 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   }
 }
 
+// Sidebar navigation area
+
 .rc-sidebar-navigation {
   flex: 1;
   height: inherit;
   overflow: auto;
   padding: 16px 0;
 }
+
+// Sidebar section & items
 
 .rc-sidebar-label {
   color: $puppet-sidebar-label-color;
@@ -210,7 +217,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   display: block;
 }
 
-// Footer
+// Sidebar footer
 
 .rc-sidebar-footer {
   background: $puppet-sidebar-footer-bg;
@@ -236,7 +243,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   color: $puppet-n500;
 }
 
-// Minimized Sidebar
+// Minimized sidebar
 
 .rc-sidebar-minimized {
   margin-right: 0;
