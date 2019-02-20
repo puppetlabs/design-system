@@ -37,6 +37,7 @@ module.exports = {
     '**/select/SelectItem.js',
     '**/sidebar/Section.js',
     '**/icon/icons.js',
+    '**/icon/constants.js',
     '**/table/Column.js',
     '**/table/ColumnInput.js',
     '**/table/ColumnSelect.js',

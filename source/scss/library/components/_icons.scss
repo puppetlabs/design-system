@@ -5,6 +5,7 @@ $puppet-icon-primary-fill: $puppet-brand-primary !default;
 .rc-icon {
   fill: $puppet-icon-fill-base;
   transition: all 0.2s;
+  vertical-align: middle;
 
   &:hover {
     fill: $puppet-icon-fill-hover;
@@ -43,9 +44,27 @@ $rc-icon-tone-colors: (
   fill: $puppet-icon-primary-fill;
 }
 
+
+// Styleguide styles //
 .rc-icon-table {
+  border-collapse: separate;
+  border-spacing: 4px;
   table-layout: fixed;
   width: 100%;
+}
+
+.rc-icon-table tr:not(:first-of-type):hover {
+  border-radius: $puppet-common-border-radius;
+  box-shadow: $puppet-common-focus-outline;
+}
+
+.rc-icon-table tr th:first-of-type {
+  text-align: left;
+}
+
+.rc-icon-table tr td:not(:first-of-type) {
+  border-radius: $puppet-common-border-radius;
+  text-align: center;
 }
 
 .rc-icon-unique-variant {
