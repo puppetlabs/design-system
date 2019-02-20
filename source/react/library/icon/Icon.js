@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import { iconSizes, iconDefaultSize } from '../../constants';
+import { iconConfig } from '../../constants';
 import icons from './icons';
 
 const propTypes = {
@@ -16,11 +16,11 @@ const propTypes = {
 
 const defaultProps = {
   type: null,
-  size: iconDefaultSize,
+  size: iconConfig.default.size,
   height: null,
   width: null,
   svg: null,
-  viewbox: null,
+  viewBox: null,
   className: '',
 };
 
@@ -38,52 +38,50 @@ const Icon = props => {
 
   let svg = propsSvg;
   let viewBox = propsViewBox;
-  let icon = null;
+  const icon = icons[type];
 
-  const getProperty = property => {
-    // If a unique icon variant exists for a specific size, use it
-    // otherwise, use the default icon and size it accordingly
-    const scaledIcon = `${type}-${size}`;
+  if (!svg && icon) {
+    // If a unique variant exists for a specific size, use it
+    // otherwise, use the default icon and scale it accordingly
+    const scaledIcon = icon.variants && icon.variants[size];
 
-    const { [property]: prop } = icons[scaledIcon] || icons[type];
+    if (scaledIcon) {
+      viewBox = viewBox || iconConfig[size].viewBox;
 
-    return prop;
-  };
+      svg = scaledIcon.svg;
+    } else {
+      viewBox = viewBox || iconConfig.default.viewBox;
 
-  if (!svg) {
-    svg = getProperty('svg');
-  }
-
-  if (!viewBox) {
-    viewBox = getProperty('viewBox');
+      svg = icon.svg;
+    }
   }
 
   switch (size) {
     case 'tiny':
-      styles.height = iconSizes.tiny;
-      styles.width = iconSizes.tiny;
+      styles.height = iconConfig.tiny.size;
+      styles.width = iconConfig.tiny.size;
       break;
     case 'small':
-      styles.height = iconSizes.small;
-      styles.width = iconSizes.small;
+      styles.height = iconConfig.small.size;
+      styles.width = iconConfig.small.size;
       break;
     case 'medium':
-      styles.height = iconSizes.medium;
-      styles.width = iconSizes.medium;
+      styles.height = iconConfig.medium.size;
+      styles.width = iconConfig.medium.size;
       break;
     case 'large':
-      styles.height = iconSizes.large;
-      styles.width = iconSizes.large;
+      styles.height = iconConfig.large.size;
+      styles.width = iconConfig.large.size;
       break;
     default:
-      styles.height = iconDefaultSize;
-      styles.width = iconDefaultSize;
+      styles.height = iconConfig.default.size;
+      styles.width = iconConfig.default.size;
   }
 
   if (svg) {
     const classNames = classnames('rc-icon', `rc-icon-${type}`, className);
 
-    icon = (
+    return (
       <svg
         className={classNames}
         width={width}
@@ -96,7 +94,7 @@ const Icon = props => {
     );
   }
 
-  return icon;
+  return null;
 };
 
 Icon.propTypes = propTypes;

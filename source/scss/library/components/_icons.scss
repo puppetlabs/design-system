@@ -42,3 +42,12 @@ $rc-icon-tone-colors: (
 .rc-icon-primary-fill {
   fill: $puppet-icon-primary-fill;
 }
+
+.rc-icon-table {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.rc-icon-unique-variant {
+  background: rgba($puppet-brand-primary, 0.1);
+}
