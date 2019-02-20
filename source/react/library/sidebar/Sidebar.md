@@ -30,7 +30,11 @@ Sidebar with clickable Sidebar.sections, logo, and dark theme:
         />
       </Sidebar.Section>
     </Sidebar.Navigation>
-    <Sidebar.Footer username="Lorem Ipsum" version="1969.7.20" />
+    <Sidebar.Footer
+      username="Lorem Ipsum"
+      version="1969.7.20"
+      onClick={console.log}
+    />
   </Sidebar>
 </div>
 ```
