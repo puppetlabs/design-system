@@ -6,8 +6,8 @@
 // Most elements share a common border radius
 $puppet-common-border-radius: 4px !default;
 
-// Element spacing should be multiples of this base
-$puppet-common-spacing-base: 4px;
+// Element spacing should be multiples of this base. 4px is acceptible in some cases
+$puppet-common-spacing-base: 8px;
 
 // Often used border dividing content
 $puppet-common-border: 1px solid $puppet-n400 !default;
