@@ -318,7 +318,7 @@ class Modal extends React.Component {
           tabIndex={0}
           onClick={this.onClose}
         >
-          <Icon size="medium" type="close-16px" />
+          <Icon size="medium" type="close" />
         </a>
       );
     }

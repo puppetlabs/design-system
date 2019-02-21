@@ -65,7 +65,7 @@ const Switch = ({
       />
       <div className="rc-switch-label">
         <span className="rc-switch-label-on">
-          <Icon width="12px" height="12px" type="checkmark" />
+          <Icon width="12px" height="12px" type="check" />
         </span>
         <span className="rc-switch-label-off">
           <Icon width="12px" height="12px" type="close" />

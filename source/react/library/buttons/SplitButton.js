@@ -75,13 +75,13 @@ class SplitButton extends React.Component {
 
     switch (menuStatus) {
       case 'success':
-        iconType = 'checkmark';
+        iconType = 'check';
         break;
       case 'processing':
         iconType = 'loader';
         break;
       default:
-        iconType = 'dropdown';
+        iconType = 'chevron-down';
     }
 
     return (

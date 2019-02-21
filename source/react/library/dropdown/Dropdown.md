@@ -3,7 +3,7 @@
 ```
 const options = [
   { id: 1, value: 'Edit', icon: "pencil" },
-  { id: 2, value: 'Export', icon: "export"  },
+  { id: 2, value: 'Export', icon: "pdf"  },
   { id: 3, value: 'Delete', icon: "trash"  },
 ];
 
@@ -136,7 +136,7 @@ const options = [
 ```
 const options = [
   { id: 1, value: 'Edit', icon: "pencil" },
-  { id: 2, value: 'Export', icon: "export" },
+  { id: 2, value: 'Export', icon: "pdf" },
   { id: 3, value: 'Delete', icon: "trash" },
 ];
 

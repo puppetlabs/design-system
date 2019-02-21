@@ -183,7 +183,7 @@ class Section extends React.Component {
 
       karet = (
         <span className="rc-sidebar-item-karet">
-          <Icon width="8px" height="8px" type="dropdown" />
+          <Icon width="8px" height="8px" type="chevron-down" />
         </span>
       );
 

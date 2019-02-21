@@ -79,6 +79,6 @@ describe('<SplitButton />', () => {
         .find('DropdownMenu')
         .find('Icon')
         .prop('type'),
-    ).to.eql('checkmark');
+    ).to.eql('check');
   });
 });

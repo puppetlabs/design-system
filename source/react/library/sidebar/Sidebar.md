@@ -23,14 +23,12 @@ const logo = (
 
   <Sidebar togglable onLogoClick={ () => console.log('logo clicked') } logo={ logo } theme="dark">
     <Sidebar.Section onClick={ () => {} } title="Home" icon="home" active />
-    <Sidebar.Section onClick={ () => {} } title="Speed & Frequency" icon="speed" label="reports"/>
-    <Sidebar.Section onClick={ () => {} } title="Reliability" icon="reliability" />
-    <Sidebar.Section onClick={ () => {} } title="Security" icon="security" />
-    <Sidebar.Section onClick={ () => {} } title="Business Value" icon="value" />
-    <Sidebar.Section onClick={ () => {} } title="Pipeline" icon="pipeline" />
+    <Sidebar.Section onClick={ () => {} } title="Code" icon="code" label="reports"/>
+    <Sidebar.Section onClick={ () => {} } title="Build" icon="build" />
+    <Sidebar.Section onClick={ () => {} } title="Deploy" icon="deploy" />
     <Sidebar.Section onClick={ () => {} } title="My Reports" icon="reports" label="custom reports" />
     <Sidebar.Section onClick={ () => {} } title="Connections" icon="connections" label="config" />
-    <Sidebar.Section onClick={ () => {} } title="Data Model" icon="data-fields" />
+    <Sidebar.Section onClick={ () => {} } title="Data Model" icon="connections" />
   </Sidebar>
 </div>
 ```
@@ -64,18 +62,16 @@ const getOptions = (options) => {
 <div style={{position:"relative", height:"700px"}}>
   <Sidebar togglable>
     <Sidebar.Section title="Home" icon="home" />
-    <Sidebar.Section onClick={ () => {} } title="Speed & Frequency" icon="speed" label="reports"/>
-    <Sidebar.Section onClick={ () => {} } title="Reliability" icon="reliability" />
-    <Sidebar.Section onClick={ () => {} } title="Security" icon="security" />
-    <Sidebar.Section onClick={ () => {} } title="Business Value" icon="value" />
-    <Sidebar.Section onClick={ () => {} } title="Pipeline" icon="pipeline" />
+    <Sidebar.Section onClick={ () => {} } title="Code" icon="code" label="reports"/>
+    <Sidebar.Section onClick={ () => {} } title="Build" icon="build" />
+    <Sidebar.Section onClick={ () => {} } title="Deploy" icon="deploy" />
     <Sidebar.Section title="My Reports" icon="reports" open label="custom reports">
       <Sidebar.Subsection title="My Reports" truncate>
         { getOptions(customReports) }
       </Sidebar.Subsection>
     </Sidebar.Section>
     <Sidebar.Section title="Connections" icon="connections" label="config" />
-    <Sidebar.Section title="Data Model" icon="data-fields" />
+    <Sidebar.Section title="Data Model" icon="connections" />
   </Sidebar>
 </div>
 ```
