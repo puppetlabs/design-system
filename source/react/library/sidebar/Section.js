@@ -183,7 +183,7 @@ class Section extends React.Component {
 
       karet = (
         <span className="rc-sidebar-item-karet">
-          <Icon width="8px" height="8px" type="chevron-down" />
+          <Icon size="tiny" type="chevron-down" />
         </span>
       );
 
@@ -208,7 +208,7 @@ class Section extends React.Component {
     if (iconProp) {
       icon = (
         <span className="rc-sidebar-item-icon">
-          <Icon width="16px" height="16px" type={iconProp} />
+          <Icon type={iconProp} />
         </span>
       );
     }

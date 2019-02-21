@@ -78,7 +78,7 @@ class AccordionItem extends React.Component {
     if (icon) {
       jsx.push(
         <span key="header-icon" className="rc-accordion-header-icon">
-          <Icon width="16px" height="16px" type={icon} />
+          <Icon type={icon} />
         </span>,
       );
     }
@@ -115,7 +115,7 @@ class AccordionItem extends React.Component {
     } else {
       jsx.push(
         <span key="header-action" className="rc-accordion-item-header-action">
-          <Icon width="10px" height="10px" type="plus" />
+          <Icon style={{ height: '10px', width: '10px' }} type="plus" />
         </span>,
       );
 

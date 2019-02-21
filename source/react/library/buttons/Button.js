@@ -159,7 +159,7 @@ class Button extends React.Component {
     };
 
     const loader = processing ? (
-      <Icon height="75%" width="100%" type="loader" />
+      <Icon style={{ height: '75%', width: '100%' }} type="loader" />
     ) : null;
 
     if (children || label) {
@@ -167,10 +167,10 @@ class Button extends React.Component {
     }
 
     if (propIcon || floating) {
-      const iconSize = simple ? '8px' : '16px';
+      const iconSize = simple ? 'tiny' : 'medium';
       const iconType = !propIcon && floating ? 'plus' : propIcon;
 
-      icon = <Icon height={iconSize} width={iconSize} type={iconType} />;
+      icon = <Icon size={iconSize} type={iconType} />;
     }
 
     if (dropdownProp && !processing) {
@@ -178,7 +178,10 @@ class Button extends React.Component {
 
       dropdown = (
         <span className="rc-button-dropdown-icon">
-          <Icon height={iconSize} width={iconSize} type="chevron-down" />
+          <Icon
+            style={{ height: iconSize, width: iconSize }}
+            type="chevron-down"
+          />
         </span>
       );
     }

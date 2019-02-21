@@ -69,7 +69,6 @@ class SplitButton extends React.Component {
 
   renderDropdownTarget() {
     const { menuStatus, disabledMenu, error, size, secondary } = this.props;
-    const iconSize = '12px';
 
     let iconType;
 
@@ -93,7 +92,7 @@ class SplitButton extends React.Component {
         secondary={secondary}
       >
         <div className="rc-button-menu-inner">
-          <Icon height={iconSize} width={iconSize} type={iconType} />
+          <Icon size="small" type={iconType} />
         </div>
       </Button>
     );

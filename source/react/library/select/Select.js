@@ -13,6 +13,7 @@ import {
 import { formSize } from '../../helpers/customPropTypes';
 
 import Icon from '../icon/Icon';
+import Loading from '../loading/Loading';
 import Input from '../input/Input';
 import Menu from '../menu';
 import Popover from '../popover/Popover';
@@ -595,15 +596,13 @@ class Select extends React.Component {
           onClick={this.onClear}
           onKeyDown={this.onKeyDownClear}
         >
-          <Icon width="10px" height="10px" type="close" />
+          <Icon style={{ height: '10px', width: '10px' }} type="close" />
         </a>,
       );
     }
 
     if (loading) {
-      actions.push(
-        <Icon key="loader" width="12px" height="12px" type="loader" />,
-      );
+      actions.push(<Loading style={{ height: '12px', width: '12px' }} />);
     }
 
     if (!loading) {
@@ -617,7 +616,7 @@ class Select extends React.Component {
           onClick={this.onChevronClick}
           onKeyDown={this.onKeyDownChevron}
         >
-          <Icon width="12px" height="12px" type="chevron-down" />
+          <Icon type="chevron-down" size="small" />
         </a>,
       );
     }

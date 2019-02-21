@@ -39,7 +39,7 @@ class MenuHeader extends React.Component {
           className="rc-menu-close"
           onClick={onClose}
         >
-          <Icon type="close" width="8px" height="8px" />
+          <Icon type="close" size="tiny" />
         </a>
       );
     }

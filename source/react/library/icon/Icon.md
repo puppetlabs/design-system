@@ -1,11 +1,11 @@
-**To render an icon:**
+**To render an icon, either:**
 
 * Provide a type and a size (size optional)
 * Provide an svg and a viewBox
 
 **The specific svg rendered is decided by the following:**
 
-1. If there is a unique svg for the type and size provided, we render it.
+1. If there is a unique svg for the type and size provided, we render it. Unique svgs are indicated by colored backgrounds below.
 2. Otherwise, we scale down the next largest svg, or if unavailable, scale up the next smallest svg
 
 *This creates a cascading effect from large to tiny, that reverses if necessary*

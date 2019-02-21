@@ -34,7 +34,7 @@ const Loading = ({ className, size: propSize }) => {
 
   return (
     <div className={classnames('rc-loading', className)}>
-      <Icon type="loader" height={size} width={size} />
+      <Icon type="loader" style={{ height: size, width: size }} />
     </div>
   );
 };

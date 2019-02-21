@@ -82,7 +82,7 @@ class CardActionsSearch extends React.Component {
     return (
       <div className="rc-card-action rc-card-search">
         <a tabIndex="0" role="button" onClick={this.toggleSearch}>
-          <Icon type="search" height="16px" width="16px" />
+          <Icon type="search" />
         </a>
         {input}
       </div>
