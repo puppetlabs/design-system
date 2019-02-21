@@ -8,9 +8,6 @@
 1. If there is a unique svg for the type and size provided, we render it. Unique svgs are indicated by colored backgrounds below.
 2. Otherwise, we scale down the next largest svg, or if unavailable, scale up the next smallest svg
 
-*This creates a cascading effect from large to tiny, that reverses if necessary*
-
-
 ```
 const icons = require('./icons').default;
 const Renderer = () => {
