@@ -125,7 +125,7 @@ const propTypes = {
 
 const defaultProps = {
   type: null,
-  size: ICON_CONFIG.default.size,
+  size: 'medium',
   svg: null,
   viewBox: null,
   className: '',
@@ -148,30 +148,31 @@ const Icon = props => {
 
   // Let's define the svg and viewbox if not passed in as props
   if (!svg && icon) {
-    const hasDefault = !!icon.svg;
-    const getScaledIcon = variant => icon.variants && icon.variants[variant];
+    const getScaledIcon = variant => icon[variant];
     const scaledIcon = getScaledIcon(size);
 
-    const defineElements = (config, variant) => {
-      ({ svg } = config);
+    const defineElements = (element, variant) => {
+      svg = element;
       viewBox = viewBox || ICON_CONFIG[variant].viewBox;
     };
 
     if (scaledIcon) {
-      // If a unique svg exists for a specific size, let's use it
+      // If a unique svg exists for the size requested, let's use it
       defineElements(scaledIcon, size);
-    } else if (hasDefault) {
-      // Else if there isn't a unique svg for the size,
-      // let's use the default svg and scale it accordingly
-      defineElements(icon, 'default');
     } else {
       // Else if there isn't a unique svg for the size,
-      // and there isn't a default svg to scale,
-      // let's choose the largest available variant and scale it accordingly
-      const largestSize = AVAILABLE_SIZES.find(alt => getScaledIcon(alt));
-      const largestIcon = getScaledIcon(largestSize);
+      // let's scale down the next largest svg,
+      // or if unavailable, scale up the next smallest svg
 
-      defineElements(largestIcon, largestSize);
+      const index = AVAILABLE_SIZES.indexOf(size);
+      const largerSizes = AVAILABLE_SIZES.slice(0, index).reverse();
+      const smallerSizes = AVAILABLE_SIZES.slice(index + 1);
+
+      let closestSize = largerSizes.find(alt => getScaledIcon(alt));
+      closestSize = closestSize || smallerSizes.find(alt => getScaledIcon(alt));
+      const closestIcon = getScaledIcon(closestSize);
+
+      defineElements(closestIcon, closestSize);
     }
   }
 

@@ -62,5 +62,4 @@ export const ICON_CONFIG = {
   small: smallIcon,
   medium: mediumIcon,
   large: largeIcon,
-  default: mediumIcon,
 };

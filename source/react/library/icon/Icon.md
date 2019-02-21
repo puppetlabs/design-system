@@ -6,8 +6,10 @@
 **The specific svg rendered is decided by the following:**
 
 1. If there is a unique svg for the type and size provided, we render it.
-2. Otherwise, we use the default (medium) svg and scale it accordingly.
-3. In the case that there is no default svg, we use the largest svg and scale down.
+2. Otherwise, we scale down the next largest svg, or if unavailable, scale up the next smallest svg
+
+*This creates a cascading effect from large to tiny, that reverses if necessary*
+
 
 ```
 const icons = require('./icons').default;
@@ -17,8 +19,7 @@ const Renderer = () => {
 
   for (var i = 0; i < names.length; i++) {
     // Unique icon variants have colored bg
-    const variants = Object.keys(icons[names[i]].variants || {});
-    const isDefault = () => icons[names[i]].svg;
+    const variants = Object.keys(icons[names[i]] || {});
     const isUnique = size => variants.includes(size);
 
     components.push(
@@ -35,7 +36,7 @@ const Renderer = () => {
           <Icon type={ names[i] } size="small"/>
         </td>
 
-        <td className={isDefault() ? "rc-icon-unique-variant" : ""} key={ names[i] + `-medium` }>
+        <td className={isUnique('medium') ? "rc-icon-unique-variant" : ""} key={ names[i] + `-medium` }>
           <Icon type={ names[i] } size="medium"/>
         </td>
 
