@@ -1,3 +1,14 @@
+**To render an icon:**
+
+* Provide a type and a size (size optional)
+* Provide an svg and a viewBox
+
+**The specific svg rendered is decided by the following:**
+
+1. If there is a unique svg for the type and size provided, we render it.
+2. Otherwise, we use the default (medium) svg and scale it accordingly.
+3. In the case that there is no default svg, we use the largest svg and scale down.
+
 ```
 const icons = require('./icons').default;
 const Renderer = () => {
@@ -7,6 +18,7 @@ const Renderer = () => {
   for (var i = 0; i < names.length; i++) {
     // Unique icon variants have colored bg
     const variants = Object.keys(icons[names[i]].variants || {});
+    const isDefault = () => icons[names[i]].svg;
     const isUnique = size => variants.includes(size);
 
     components.push(
@@ -23,7 +35,7 @@ const Renderer = () => {
           <Icon type={ names[i] } size="small"/>
         </td>
 
-        <td className="rc-icon-unique-variant" key={ names[i] + `-medium` }>
+        <td className={isDefault() ? "rc-icon-unique-variant" : ""} key={ names[i] + `-medium` }>
           <Icon type={ names[i] } size="medium"/>
         </td>
 

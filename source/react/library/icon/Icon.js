@@ -1,20 +1,125 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import { ICON_CONFIG, AVAILABLE_ICONS } from './constants';
+import { ICON_CONFIG } from '../../constants';
 import icons from './icons';
 
+// These are defined here so they render in the styleguide props list
+const AVAILABLE_SIZES = ['large', 'medium', 'small', 'tiny'];
+const AVAILABLE_ICONS = [
+  'account',
+  'activity',
+  'alert',
+  'annotate',
+  'area-chart',
+  'arrow-down',
+  'arrow-left',
+  'arrow-right',
+  'arrow-up',
+  'audience',
+  'attach',
+  'bar-chart',
+  'basics',
+  'bell',
+  'book',
+  'brush',
+  'bubble',
+  'build',
+  'check',
+  'clipboard',
+  'close',
+  'circle-check',
+  'circle-help',
+  'circle-info',
+  'circle-plus',
+  'code',
+  'column-chart',
+  'combo',
+  'company',
+  'connections',
+  'csv',
+  'data-grid',
+  'data',
+  'dashboard',
+  'deploy',
+  'diamond',
+  'donut',
+  'double-left',
+  'double-right',
+  'drag-handle',
+  'duplicate',
+  'email',
+  'engagement',
+  'excel',
+  'eye',
+  'filters',
+  'gear',
+  'grid',
+  'hamburger',
+  'history',
+  'home',
+  'image',
+  'impact',
+  'increment',
+  'kebab-h',
+  'kebab-v',
+  'key',
+  'kpi',
+  'layers',
+  'line',
+  'line-chart',
+  'link',
+  'list',
+  'minus',
+  'package',
+  'paper',
+  'parameters',
+  'pdf',
+  'pencil',
+  'performance',
+  'pipeline',
+  'plus',
+  'private',
+  'report',
+  'resize',
+  'scatter',
+  'search',
+  'send',
+  'share',
+  'shield',
+  'sign-out',
+  'sort-ascending',
+  'sort-descending',
+  'sort',
+  'spinner',
+  'square',
+  'structure',
+  'tag',
+  'target',
+  'text',
+  'time-series',
+  'tools',
+  'trash',
+  'users',
+  'versions',
+  'wallet',
+  'x',
+  'zoom-in',
+  'zoom-out',
+];
+
 const propTypes = {
-  /** Pick your icon */
+  /** Choose your icon */
   type: PropTypes.oneOf(AVAILABLE_ICONS),
-  /** Choose your size */
-  size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
-  /** Or pass in your own svg and viewbox */
+  /** Optional choose your size */
+  size: PropTypes.oneOf(AVAILABLE_SIZES),
+  /** Or pass in your own svg... */
   svg: PropTypes.element,
+  /** ...and viewbox */
   viewBox: PropTypes.string,
-  /** Optional additional classes */
+  /** Optional add additional classes */
   className: PropTypes.string,
-  /** Optional additional inline style */
+  /** Optional add additional inline styles */
   style: PropTypes.shape({}),
 };
 
@@ -41,19 +146,32 @@ const Icon = props => {
   let viewBox = propsViewBox;
   const icon = icons[type];
 
-  // If a unique variant exists for a specific size, let's use it
-  // otherwise, we'll use the default icon and scale it accordingly
+  // Let's define the svg and viewbox if not passed in as props
   if (!svg && icon) {
-    const scaledIcon = icon.variants && icon.variants[size];
+    const hasDefault = !!icon.svg;
+    const getScaledIcon = variant => icon.variants && icon.variants[variant];
+    const scaledIcon = getScaledIcon(size);
+
+    const defineElements = (config, variant) => {
+      ({ svg } = config);
+      viewBox = viewBox || ICON_CONFIG[variant].viewBox;
+    };
 
     if (scaledIcon) {
-      ({ svg } = scaledIcon);
-
-      viewBox = viewBox || ICON_CONFIG[size].viewBox;
+      // If a unique svg exists for a specific size, let's use it
+      defineElements(scaledIcon, size);
+    } else if (hasDefault) {
+      // Else if there isn't a unique svg for the size,
+      // let's use the default svg and scale it accordingly
+      defineElements(icon, 'default');
     } else {
-      ({ svg } = icon);
+      // Else if there isn't a unique svg for the size,
+      // and there isn't a default svg to scale,
+      // let's choose the largest available variant and scale it accordingly
+      const largestSize = AVAILABLE_SIZES.find(alt => getScaledIcon(alt));
+      const largestIcon = getScaledIcon(largestSize);
 
-      viewBox = viewBox || ICON_CONFIG.default.viewBox;
+      defineElements(largestIcon, largestSize);
     }
   }
 
