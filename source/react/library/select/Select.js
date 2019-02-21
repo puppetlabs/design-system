@@ -16,6 +16,7 @@ import Icon from '../icon/Icon';
 import Input from '../input/Input';
 import Menu from '../menu';
 import Popover from '../popover/Popover';
+import Button from '../buttons/Button';
 import Text from '../text/Text';
 
 import SelectItem from './SelectItem';
@@ -57,6 +58,18 @@ const propTypes = {
   placeholder: PropTypes.string,
   /** Disables default 'portal' usage, rendering menu in normal dom structure */
   disablePortal: PropTypes.bool,
+  /** Optional boolean flag that adds a custom action at the bottom of the dropdown
+   * @ignore
+   */
+  newOption: PropTypes.bool,
+  /** Handler for when the user clicks the custom action at the bottom of the dropdown
+   * @ignore
+   */
+  onNewOption: PropTypes.func,
+  /** Label for the custom actions shown at bottom of the dropdown
+   * @ignore
+   */
+  newOptionLabel: PropTypes.string,
   /** Custom user-provided className */
   className: PropTypes.string,
   /** Custom user-provided inline styles */
@@ -85,6 +98,9 @@ const defaultProps = {
   options: [],
   noResultsLabel: 'No results found',
   popoverClassName: '',
+  newOption: false,
+  onNewOption: null,
+  newOptionLabel: 'Add new',
 };
 
 const getNextIdx = (currentIdx, options) => {
@@ -512,6 +528,25 @@ class Select extends React.Component {
     );
   }
 
+  renderNewOptionControls() {
+    let jsx;
+    const { newOption, onNewOption, newOptionLabel } = this.props;
+
+    if (newOption) {
+      jsx = (
+        <Menu.Actions centered>
+          <Menu.Actions.Buttons>
+            <Button simple onClick={onNewOption} icon="plus">
+              {newOptionLabel}
+            </Button>
+          </Menu.Actions.Buttons>
+        </Menu.Actions>
+      );
+    }
+
+    return jsx;
+  }
+
   renderMenu() {
     const { size, noResultsLabel } = this.props;
     let menuList = this.renderMenuList();
@@ -522,12 +557,15 @@ class Select extends React.Component {
         </Text>
       );
     }
+    const actions = this.renderNewOptionControls();
+    const className = classnames('rc-select-menu-options', {
+      'rc-no-bottom-radius': actions,
+    });
 
     const jsx = (
       <Menu className="rc-select-menu" size={size}>
-        <Menu.Section className="rc-select-menu-options">
-          {menuList}
-        </Menu.Section>
+        <Menu.Section className={className}>{menuList}</Menu.Section>
+        {actions}
       </Menu>
     );
 
