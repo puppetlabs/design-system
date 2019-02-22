@@ -189,13 +189,14 @@ $puppet-type-label-font-weight: 600 !default;
 }
 
 @mixin puppet-type-link() {
-  @include puppet-type-body;
+  @include puppet-type-body();
 
   color: $puppet-type-color-link;
   cursor: pointer;
   outline: none;
   text-decoration: none;
 
+  &:focus,
   &:hover {
     color: $puppet-type-color-link-hover;
     text-decoration: underline;
