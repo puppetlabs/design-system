@@ -1,3 +1,16 @@
+# 5.0.0-alpha.10
+
+- Add badges to styleguide indicating component approval state
+- Design bug fix: Place form-level error alert between fields and action instead of below all
+- Add optional "custom action" to Select w/ onNewOption and newOptionLabel props.
+- Upgrade react dependency to 16.8
+- **Breaking Change** Remove DatePicker component and subdependencies (moved to insights-ui)
+- Refactor scss: create components subdirectory and 'public' directory containing stable scss variables and mixins
+- Bug fix in FormField: make isEmpty check generalizable to non-strings
+- Bug fix: Update multiselect docs to use type="multiselect"
+- Create new "Logo" component encapsulating logo design patterns
+- Style Input component to spec
+
 # 5.0.0-alpha.9
 
 - Fix bug that prevented validating checkbox form fields in forms
