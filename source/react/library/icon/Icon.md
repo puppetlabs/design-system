@@ -5,7 +5,7 @@
 
 **The specific svg rendered is decided by the following:**
 
-1. If there is a unique svg for the type and size provided, we render it. Unique svgs are indicated by colored backgrounds below.
+1. If there is a unique svg for the type and size provided, we render it. Unique svgs are indicated by a colored background below.
 2. Otherwise, we scale down the next largest svg, or if unavailable, scale up the next smallest svg
 
 ```
@@ -47,6 +47,8 @@ const Renderer = () => {
 
   return (
     <div className="rc-sg-wrapper">
+      <Alert growl={ false } isActive={ true } type="success" message="Icons with a green background have been approved by Design. Scaled svgs (white background) should be OK'd before using." />
+      <br />
       <table className="rc-icon-table">
         <tr>
           <th>Name</th>
