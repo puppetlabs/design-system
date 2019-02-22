@@ -118,12 +118,12 @@ const MyComponent = () => <Button>My Button</Button>;
 To include the react-components scss bundle in your app place the following line at the top of your scss heirarchy:
 
 ```
-@import 'node_modules/@puppet/react-components/source/scss/library/ui';
+@import '~@puppet/react-components/source/scss/library/ui';
 ```
 
 ### Publicly available variables and helpers
 
-A set of common variables and mixins can be found in the [public scss directory](source/scss/library/public). You will automatically have access to them in your code:
+A set of common variables and mixins can be found in the [public scss directory](source/scss/library/public). You will automatically have access to them in your code. Note: users of CSS Modules with sass-loader (`*.module.scss` files) may need to `@import '~@puppet/react-components/source/scss/library/public/index';` for access to the public variables.
 
 ```
 .my-class {
