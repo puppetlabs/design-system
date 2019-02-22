@@ -11,7 +11,6 @@ const AVAILABLE_ICONS = [
   'alert',
   'annotate',
   'area-chart',
-  'audience',
   'attach',
   'bar-chart',
   'basics',
