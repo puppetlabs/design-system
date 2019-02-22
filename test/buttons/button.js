@@ -57,10 +57,15 @@ describe('<Button />', () => {
   });
 
   it('should have a processing indicator when enabled', () => {
-    const wrapper = shallow(<Button processing />);
-    const Icon = wrapper.find('Icon');
+    const wrapper = shallow(<Button />);
+    let Loading = wrapper.find('Loading');
 
-    expect(Icon.prop('type')).to.equal('loader');
+    expect(Loading.length).to.equal(0);
+
+    wrapper.setProps({ processing: true });
+    Loading = wrapper.find('Loading');
+
+    expect(Loading.length).to.equal(1);
   });
 
   it('should render an icon when provided', () => {

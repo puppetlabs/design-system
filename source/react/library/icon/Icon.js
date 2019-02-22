@@ -68,7 +68,6 @@ const AVAILABLE_ICONS = [
   'line-chart',
   'link',
   'list',
-  'loader',
   'minus',
   'package',
   'paper',

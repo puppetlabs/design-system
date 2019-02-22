@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
+import Loading from '../loading/Loading';
 import { TooltipStickyArea } from '../tooltips/Tooltip';
 
 const propTypes = {
@@ -159,7 +160,7 @@ class Button extends React.Component {
     };
 
     const loader = processing ? (
-      <Icon style={{ height: '75%', width: '100%' }} type="loader" />
+      <Loading style={{ height: '75%', width: '100%' }} />
     ) : null;
 
     if (children || label) {

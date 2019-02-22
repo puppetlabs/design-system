@@ -3,6 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 import Button from './Button';
 import Icon from '../icon/Icon';
+import Loading from '../loading/Loading';
 import DropdownMenu from '../dropdown/DropdownMenu';
 
 const propTypes = {
@@ -70,17 +71,17 @@ class SplitButton extends React.Component {
   renderDropdownTarget() {
     const { menuStatus, disabledMenu, error, size, secondary } = this.props;
 
-    let iconType;
+    let icon;
 
     switch (menuStatus) {
       case 'success':
-        iconType = 'check';
+        icon = <Icon size="small" type="check" />;
         break;
       case 'processing':
-        iconType = 'loader';
+        icon = <Loading style={{ height: '12px', width: '12px' }} />;
         break;
       default:
-        iconType = 'chevron-down';
+        icon = <Icon size="small" type="chevron-down" />;
     }
 
     return (
@@ -91,9 +92,7 @@ class SplitButton extends React.Component {
         disabled={disabledMenu}
         secondary={secondary}
       >
-        <div className="rc-button-menu-inner">
-          <Icon size="small" type={iconType} />
-        </div>
+        <div className="rc-button-menu-inner">{icon}</div>
       </Button>
     );
   }

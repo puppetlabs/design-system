@@ -54,6 +54,7 @@ describe('<SplitButton />', () => {
     const wrapper = shallow(<SplitButton {...defaultProps} />);
 
     expect(wrapper.find('DropdownMenu').length).to.eql(1);
+    expect(wrapper.find('DropdownMenu').find('Loading').length).to.eql(0);
   });
 
   it('should render a dropdown menu with a loading indicator when a menu option is processing', () => {
@@ -61,12 +62,7 @@ describe('<SplitButton />', () => {
       <SplitButton {...defaultProps} menuStatus="processing" />,
     );
 
-    expect(
-      wrapper
-        .find('DropdownMenu')
-        .find('Icon')
-        .prop('type'),
-    ).to.eql('loader');
+    expect(wrapper.find('DropdownMenu').find('Loading').length).to.eql(1);
   });
 
   it('should render a dropdown menu with a success indicator when a menu option is successful', () => {
