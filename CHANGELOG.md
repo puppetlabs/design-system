@@ -1,3 +1,7 @@
+# 5.0.0-alpha.11
+
+- Bug fix: create index file for public scss variables
+
 # 5.0.0-alpha.10
 
 - Add badges to styleguide indicating component approval state
