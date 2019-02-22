@@ -574,11 +574,11 @@ class Select extends React.Component {
 
   renderActions() {
     const { selected } = this.state;
-    const { clearable } = this.props;
+    const { clearable, disabled } = this.props;
     const value = this.getInputValue();
     const actions = [];
 
-    if (clearable && (value || selected.length)) {
+    if (clearable && !disabled && (value || selected.length)) {
       actions.push(
         // eslint-disable-next-line jsx-a11y/anchor-is-valid
         <a
