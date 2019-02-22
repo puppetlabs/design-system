@@ -196,12 +196,6 @@ $puppet-input-border-error: 1px solid $puppet-neg-border-base !default;
   }
 }
 
-.rc-select-wrapper-open {
-  .rc-select-input {
-    @extend %focused-input;
-  }
-}
-
 .rc-select-actions {
   .rc-select-action {
     align-items: center;
