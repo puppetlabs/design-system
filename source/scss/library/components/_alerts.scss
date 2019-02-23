@@ -48,12 +48,15 @@ $puppet-alert-border-radius: $puppet-border-radius !default;
 }
 
 .rc-alert-type-icon {
+  flex-shrink: 0;
   margin-right: 8px;
   margin-top: 1px;
 }
 
 .rc-alert-message {
   flex-grow: 1;
+  overflow: auto;
+  overflow-wrap: break-word;
 }
 
 .rc-alert-close {
