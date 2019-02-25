@@ -17,7 +17,6 @@ const propTypes = {
   count: PropTypes.number,
   onClick: PropTypes.func,
   accordion: PropTypes.bool,
-  children: PropTypes.node,
 };
 
 const defaultProps = {
@@ -30,7 +29,6 @@ const defaultProps = {
   accordion: false,
   count: null,
   onClick() {},
-  children: null,
 };
 
 class SidebarItem extends React.Component {
