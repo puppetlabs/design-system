@@ -4,12 +4,16 @@ import { ENTER_KEY_CODE } from '../../constants';
 import Logo from '../logo';
 
 const propTypes = {
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  to: PropTypes.string,
   minimized: PropTypes.bool,
   logo: PropTypes.string,
   onClick: PropTypes.func,
 };
 
 const defaultProps = {
+  as: 'div',
+  to: null,
   minimized: false,
   logo: '',
   onClick() {},
@@ -56,17 +60,26 @@ class SidebarHeader extends React.Component {
   }
 
   render() {
-    const { onClick } = this.props;
+    const { as, to, onClick } = this.props;
     const logo = this.renderLogo();
-    let Component = 'div';
+    let Component;
+    let componentProps;
     let jsx;
 
     if (logo) {
-      if (onClick) {
+      if (as) {
+        Component = as;
+        componentProps = { to };
+      } else if (onClick) {
         Component = 'button';
+        componentProps = { onClick };
       }
 
-      jsx = <Component className="rc-sidebar-logo">{logo}</Component>;
+      jsx = (
+        <Component className="rc-sidebar-logo" {...componentProps}>
+          {logo}
+        </Component>
+      );
     }
 
     return jsx;
