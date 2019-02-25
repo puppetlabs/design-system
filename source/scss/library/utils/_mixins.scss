@@ -50,4 +50,15 @@
     }
   }
 }
+
+@mixin rc-button-reset() {
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+
+  &:disabled {
+    cursor: default;
+  }
+}
 /* stylelint-enable */

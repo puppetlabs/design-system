@@ -20,3 +20,4 @@ $puppet-common-bg-subtle: $puppet-n50 !default;
 
 // Common focused element outline, implemented as a box shadow
 $puppet-common-focus-outline: 0 0 0 2px $puppet-b300 !default;
+$puppet-common-focus-outline-inset: inset $puppet-common-focus-outline !default;

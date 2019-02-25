@@ -6,13 +6,13 @@ import Logo from '../logo';
 const propTypes = {
   minimized: PropTypes.bool,
   logo: PropTypes.string,
-  onLogoClick: PropTypes.func,
+  onClick: PropTypes.func,
 };
 
 const defaultProps = {
   minimized: false,
   logo: '',
-  onLogoClick() {},
+  onClick() {},
 };
 
 class SidebarHeader extends React.Component {
@@ -20,20 +20,20 @@ class SidebarHeader extends React.Component {
     super(props);
 
     this.onLogoKeyPress = this.onLogoKeyPress.bind(this);
-    this.onLogoClick = this.onLogoClick.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
   onLogoKeyPress(e) {
     if (e.keyCode === ENTER_KEY_CODE) {
-      this.onLogoClick();
+      this.onClick();
     }
   }
 
-  onLogoClick() {
-    const { onLogoClick } = this.props;
+  onClick() {
+    const { onClick } = this.props;
 
-    if (onLogoClick) {
-      onLogoClick();
+    if (onClick) {
+      onClick();
     }
   }
 
@@ -49,26 +49,17 @@ class SidebarHeader extends React.Component {
   }
 
   render() {
-    const { onLogoClick } = this.props;
+    const { onClick } = this.props;
     const logo = this.renderLogo();
-    let jsx = logo;
+    let Component = 'div';
+    let jsx;
 
-    if (jsx && onLogoClick) {
-      jsx = (
-        <div
-          role="button"
-          tabIndex={0}
-          onClick={this.onLogoClick}
-          onKeyDown={this.onLogoKeyPress}
-        >
-          <span className="rc-visually-hidden">Home</span>
-          {jsx}
-        </div>
-      );
-    }
+    if (logo) {
+      if (onClick) {
+        Component = 'button';
+      }
 
-    if (jsx) {
-      jsx = <div className="rc-sidebar-logo">{jsx}</div>;
+      jsx = <Component className="rc-sidebar-logo">{logo}</Component>;
     }
 
     return jsx;

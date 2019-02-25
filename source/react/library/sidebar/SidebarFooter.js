@@ -23,7 +23,9 @@ const defaultProps = {
 };
 
 const SidebarFooter = ({ username, version, onClick, minimized }) => {
+  let Component = 'div';
   let meta;
+  let componentProps;
 
   if (!minimized) {
     meta = (
@@ -38,27 +40,27 @@ const SidebarFooter = ({ username, version, onClick, minimized }) => {
     );
   }
 
+  if (onClick) {
+    Component = 'button';
+    componentProps = {
+      type: 'button',
+      tabIndex: 0,
+    };
+  }
+
   return (
-    <div className="rc-sidebar-footer">
-      <div
-        role="button"
-        tabIndex={0}
-        className="rc-sidebar-footer-meta"
-        onClick={onClick}
-        onKeyPress={e => {
-          if (e.keyCode === ENTER_KEY_CODE) {
-            onClick();
-          }
-        }}
-      >
-        <Icon
-          size="large"
-          type="user"
-          className="rc-sidebar-footer-meta-user-icon"
-        />
-        {meta}
-      </div>
-    </div>
+    <Component
+      {...componentProps}
+      className="rc-sidebar-footer"
+      onClick={onClick}
+    >
+      <Icon
+        size="large"
+        type="user"
+        className="rc-sidebar-footer-meta-user-icon"
+      />
+      {meta}
+    </Component>
   );
 };
 

@@ -1,11 +1,11 @@
-Sidebar with clickable Sidebar.sections, logo, and dark theme:
+Sidebar with header, sections, nav items, and footer
 
 ```javascript
 <div style={{ position: 'relative', height: '800px' }}>
   <Sidebar>
     <Sidebar.Header
       logo="insights"
-      onLogoClick={() => console.log('logo clicked')}
+      onClick={() => console.log('logo clicked')}
     />
     <Sidebar.Navigation>
       <Sidebar.Section>
@@ -46,7 +46,7 @@ Sidebar with clickable Sidebar.sections, logo, and dark theme:
   <Sidebar minimized>
     <Sidebar.Header
       logo="insights"
-      onLogoClick={() => console.log('logo clicked')}
+      onClick={() => console.log('logo clicked')}
     />
     <Sidebar.Navigation>
       <Sidebar.Section>
