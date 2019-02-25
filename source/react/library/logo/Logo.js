@@ -19,8 +19,8 @@ const propTypes = {
   type: PropTypes.oneOf(['full', 'bug']),
   /** Boolean "inverted" option for logo display on dark backgrounds */
   inverted: PropTypes.bool,
-  /** @ignore This prop produces a condensed version of the full logo for use *only in the sidebar component* */
-  condensed: PropTypes.bool,
+  /** @ignore This prop produces an expanded version of the full logo for use *only in the sidebar component* */
+  expanded: PropTypes.bool,
   /** Optional className. Additionally, other event handlers and and props are propagated to the inner svg element for use as needed */
   className: PropTypes.string,
 };
@@ -28,11 +28,11 @@ const propTypes = {
 const defaultProps = {
   type: 'full',
   inverted: false,
-  condensed: false,
+  expanded: false,
   className: '',
 };
 
-const Logo = ({ product, type, inverted, condensed, className, ...rest }) => {
+const Logo = ({ product, type, inverted, expanded, className, ...rest }) => {
   const svgDef = path([product, type], logos);
 
   if (!svgDef) {
@@ -49,7 +49,7 @@ const Logo = ({ product, type, inverted, condensed, className, ...rest }) => {
         `rc-logo-type-${type}`,
         {
           'rc-logo-inverted': inverted,
-          'rc-logo-condensed': condensed,
+          'rc-logo-expanded': expanded,
           'rc-logo-two-line': twoLine,
         },
         className,

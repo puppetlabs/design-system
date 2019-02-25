@@ -42,7 +42,14 @@ class SidebarHeader extends React.Component {
     let jsx;
 
     if (logo) {
-      jsx = <Logo inverted product={logo} type={minimized ? 'bug' : 'full'} />;
+      jsx = (
+        <Logo
+          inverted
+          expanded
+          product={logo}
+          type={minimized ? 'bug' : 'full'}
+        />
+      );
     }
 
     return jsx;
