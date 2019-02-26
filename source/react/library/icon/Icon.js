@@ -178,7 +178,6 @@ const Icon = props => {
 
     return (
       <svg
-        {...props}
         className={classNames}
         viewBox={viewBox}
         style={{
@@ -186,6 +185,7 @@ const Icon = props => {
           height: ICON_CONFIG[size].size,
           ...style,
         }}
+        {...props}
       >
         {svg}
       </svg>
