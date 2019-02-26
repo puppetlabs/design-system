@@ -1,5 +1,3 @@
-Sidebar with header, sections, nav items, and footer
-
 ```javascript
 <div style={{ position: 'relative', height: '800px' }}>
   <Sidebar>
