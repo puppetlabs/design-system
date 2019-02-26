@@ -71,7 +71,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
 
 // Sidebar header
 
-.rc-sidebar-logo {
+.rc-sidebar-header {
   @include rc-button-reset();
   align-items: center;
   background: $puppet-sidebar-logo-bg;
@@ -89,7 +89,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   }
 }
 
-.rc-sidebar-logo:focus {
+.rc-sidebar-header:focus {
   box-shadow: $puppet-common-focus-outline-inset;
 }
 
@@ -259,7 +259,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   margin-right: 0;
   width: $puppet-sidebar-minimized-width;
 
-  .rc-sidebar-logo {
+  .rc-sidebar-header {
     justify-content: center;
     padding: $puppet-sidebar-minimized-logo-padding;
   }

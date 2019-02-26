@@ -76,7 +76,7 @@ class SidebarHeader extends React.Component {
       }
 
       jsx = (
-        <Component className="rc-sidebar-logo" {...componentProps}>
+        <Component className="rc-sidebar-header" {...componentProps}>
           {logo}
         </Component>
       );
