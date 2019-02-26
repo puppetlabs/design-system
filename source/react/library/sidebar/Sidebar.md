@@ -25,7 +25,7 @@ const logo = (
     <Sidebar.Section onClick={ () => {} } title="Home" icon="home" active />
     <Sidebar.Section onClick={ () => {} } title="Code" icon="code" label="reports"/>
     <Sidebar.Section onClick={ () => {} } title="Build" icon="build" />
-    <Sidebar.Section onClick={ () => {} } title="Deploy" icon="deploy" />
+    <Sidebar.Section onClick={ () => {} } title="Deploy" icon="rocket" />
     <Sidebar.Section onClick={ () => {} } title="My Reports" icon="reports" label="custom reports" />
     <Sidebar.Section onClick={ () => {} } title="Connections" icon="connections" label="config" />
     <Sidebar.Section onClick={ () => {} } title="Data Model" icon="connections" />
@@ -64,7 +64,7 @@ const getOptions = (options) => {
     <Sidebar.Section title="Home" icon="home" />
     <Sidebar.Section onClick={ () => {} } title="Code" icon="code" label="reports"/>
     <Sidebar.Section onClick={ () => {} } title="Build" icon="build" />
-    <Sidebar.Section onClick={ () => {} } title="Deploy" icon="deploy" />
+    <Sidebar.Section onClick={ () => {} } title="Deploy" icon="rocket" />
     <Sidebar.Section title="My Reports" icon="reports" open label="custom reports">
       <Sidebar.Subsection title="My Reports" truncate>
         { getOptions(customReports) }

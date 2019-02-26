@@ -100,10 +100,10 @@ class Alert extends React.Component {
         break;
       case 'info':
       case 'warning':
-        typeIcon = 'circle-info';
+        typeIcon = 'question-circle';
         break;
       default:
-        typeIcon = 'circle-check';
+        typeIcon = 'check-circle';
     }
 
     if (!isActive) {
