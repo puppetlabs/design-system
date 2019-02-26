@@ -95,7 +95,13 @@ const options = [
 <Select disabled />
 ```
 
-Select with no portal:
+#### Loading
+
+```
+<Select loading />
+```
+
+#### Select with no portal
 
 ```
 const options = [

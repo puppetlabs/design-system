@@ -46,6 +46,10 @@ const propTypes = {
   ),
   /** Is the input disabled? */
   disabled: PropTypes.bool,
+  /** Is data for the Select loading */
+  loading: PropTypes.bool,
+  /** Placeholder text to show while loading */
+  loadingText: PropTypes.string,
   /** Is the input required? */
   required: PropTypes.bool,
   /** If true, the user is free to type in the input box, automatically filtering results. TODO: determine if this is still default true */
@@ -89,6 +93,8 @@ const defaultProps = {
   valueless: false,
   typeahead: true,
   disabled: false,
+  loading: false,
+  loadingText: 'Loading...',
   required: false,
   autoOpen: false,
   onChange() {},
@@ -574,11 +580,11 @@ class Select extends React.Component {
 
   renderActions() {
     const { selected } = this.state;
-    const { clearable } = this.props;
+    const { clearable, disabled, loading } = this.props;
     const value = this.getInputValue();
     const actions = [];
 
-    if (clearable && (value || selected.length)) {
+    if (clearable && !disabled && !loading && (value || selected.length)) {
       actions.push(
         // eslint-disable-next-line jsx-a11y/anchor-is-valid
         <a
@@ -594,19 +600,27 @@ class Select extends React.Component {
       );
     }
 
-    actions.push(
-      // eslint-disable-next-line jsx-a11y/anchor-is-valid
-      <a
-        key="open"
-        role="button"
-        tabIndex={0}
-        className="rc-select-action"
-        onClick={this.onChevronClick}
-        onKeyDown={this.onKeyDownChevron}
-      >
-        <Icon width="12px" height="12px" type="chevron-down" />
-      </a>,
-    );
+    if (loading) {
+      actions.push(
+        <Icon key="loader" width="12px" height="12px" type="loader" />,
+      );
+    }
+
+    if (!loading) {
+      actions.push(
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
+        <a
+          key="open"
+          role="button"
+          tabIndex={0}
+          className="rc-select-action"
+          onClick={this.onChevronClick}
+          onKeyDown={this.onKeyDownChevron}
+        >
+          <Icon width="12px" height="12px" type="chevron-down" />
+        </a>,
+      );
+    }
 
     return <div className="rc-select-actions">{actions}</div>;
   }
@@ -645,6 +659,8 @@ class Select extends React.Component {
       placeholder: placeholderProp,
       size,
       disabled,
+      loading,
+      loadingText,
       name,
       required,
       valueless,
@@ -655,6 +671,7 @@ class Select extends React.Component {
     if (type === 'select' || !selected.length || valueless) {
       placeholder = placeholderProp;
     }
+    if (loading) placeholder = loadingText;
 
     const input = (
       <Input
@@ -669,7 +686,7 @@ class Select extends React.Component {
         inputRef={c => {
           this.input = c;
         }}
-        disabled={disabled}
+        disabled={disabled || loading}
       />
     );
 
@@ -682,6 +699,7 @@ class Select extends React.Component {
       popoverClassName,
       className,
       disabled,
+      loading,
       type,
       size,
       disablePortal,
@@ -693,6 +711,7 @@ class Select extends React.Component {
       'rc-select-wrapper',
       {
         'rc-select-wrapper-open': open === true,
+        'rc-select-wrapper-loading': loading === true,
       },
       className,
     );
@@ -702,7 +721,7 @@ class Select extends React.Component {
       popoverClassName,
     );
     const classNames = classnames('rc-select', 'rc-select-popover-wrapper', {
-      'rc-select-disabled': disabled,
+      'rc-select-disabled': disabled || loading,
       'rc-select-multiple': type === 'multiselect',
       [`rc-select-${size}`]: size,
     });
@@ -716,7 +735,7 @@ class Select extends React.Component {
     let jsx;
 
     // If the Select is disabled, there's no need to render the whole Popover ordeal.
-    if (disabled) {
+    if (disabled || loading) {
       jsx = <div className={classNames}>{content}</div>;
     } else {
       const menu = this.renderMenu();

@@ -191,14 +191,13 @@ $puppet-input-border-error: 1px solid $puppet-neg-border-base !default;
     @extend %disabled-input;
   }
 
+  // Don't further lower opacity when the parent already sets opacity
+  .rc-input:disabled {
+    opacity: 1;
+  }
+
   &:hover .rc-select-input .rc-icon-chevron-down {
     fill: $puppet-icon-fill-base;
-  }
-}
-
-.rc-select-wrapper-open {
-  .rc-select-input {
-    @extend %focused-input;
   }
 }
 
