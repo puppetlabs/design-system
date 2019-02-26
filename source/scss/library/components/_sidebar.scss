@@ -73,8 +73,10 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
 
 .rc-sidebar-logo {
   @include rc-button-reset();
+  align-items: center;
   background: $puppet-sidebar-logo-bg;
   border: $puppet-sidebar-item-border-focus;
+  display: flex;
   height: $puppet-sidebar-logo-height;
   overflow: hidden;
   padding: $puppet-sidebar-logo-padding;
@@ -258,6 +260,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   width: $puppet-sidebar-minimized-width;
 
   .rc-sidebar-logo {
+    justify-content: center;
     padding: $puppet-sidebar-minimized-logo-padding;
   }
 
@@ -290,7 +293,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
     padding-top: 0;
   }
 
-  .rc-sidebar-footer-meta {
+  .rc-sidebar-footer {
     align-items: center;
     justify-content: center;
   }

@@ -35,6 +35,7 @@ module.exports = {
     '**/grid/Row.js',
     '**/popover/PopoverContent.js',
     '**/select/SelectItem.js',
+    '**/sidebar/helper.js',
     '**/sidebar/SidebarAccordion.js',
     '**/sidebar/SidebarFooter.js',
     '**/sidebar/SidebarHeader.js',
