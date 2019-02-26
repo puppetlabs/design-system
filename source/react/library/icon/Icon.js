@@ -137,6 +137,7 @@ const Icon = props => {
     svg: propsSvg,
     viewBox: propsViewBox,
     style,
+    ...rest
   } = props;
 
   let svg = propsSvg;
@@ -185,7 +186,7 @@ const Icon = props => {
           height: ICON_CONFIG[size].size,
           ...style,
         }}
-        {...props}
+        {...rest}
       >
         {svg}
       </svg>
