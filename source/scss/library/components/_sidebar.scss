@@ -243,10 +243,6 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   .rc-sidebar-footer-meta-version {
     color: $puppet-sidebar-item-color-hover;
   }
-
-  .rc-icon {
-    fill: $puppet-sidebar-item-icon-fill-hover;
-  }
 }
 
 .rc-sidebar-footer:focus {
@@ -256,16 +252,26 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   .rc-sidebar-footer-meta-version {
     color: $puppet-sidebar-item-color-hover;
   }
-
-  .rc-icon {
-    fill: $puppet-sidebar-item-icon-fill-hover;
-  }
 }
 
 .rc-sidebar-footer-meta-details {
   display: flex;
   flex-direction: column;
   margin-left: $puppet-sidebar-padding;
+}
+
+.rc-sidebar-footer-meta-user {
+  align-items: center;
+  background: $puppet-sidebar-item-icon-fill-hover;
+  border-radius: 100px;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+  
+  .rc-icon {
+    fill: $puppet-sidebar-footer-bg;
+  }
 }
 
 .rc-sidebar-footer-meta-username,

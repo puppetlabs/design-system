@@ -53,11 +53,9 @@ const SidebarFooter = ({ username, version, onClick, minimized }) => {
       className="rc-sidebar-footer"
       onClick={onClick}
     >
-      <Icon
-        size="large"
-        type="profile"
-        className="rc-sidebar-footer-meta-user-icon"
-      />
+      <div className="rc-sidebar-footer-meta-user">
+        <Icon type="profile" className="rc-sidebar-footer-meta-user-icon" />
+      </div>
       {meta}
     </Component>
   );
