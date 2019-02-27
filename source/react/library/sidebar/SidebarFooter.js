@@ -33,7 +33,7 @@ const SidebarFooter = ({ username, version, onClick, minimized }) => {
         <Heading as="h6" className="rc-sidebar-footer-meta-username">
           {username}
         </Heading>
-        <Text size="small" className="rc-sidebar-footer-meta-version">
+        <Text size="tiny" className="rc-sidebar-footer-meta-version">
           Version: {version}
         </Text>
       </div>
