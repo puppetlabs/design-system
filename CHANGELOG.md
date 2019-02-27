@@ -1,3 +1,9 @@
+# 5.0.0-alpha.12
+
+- Update icon set and icon scaling
+- Add loading state to select
+- Fix input container width
+
 # 5.0.0-alpha.11
 
 - Bug fix: create index file for public scss variables
