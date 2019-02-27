@@ -63,13 +63,13 @@ describe.only('<Sidebar />', () => {
     });
 
     it('should render an icon when the prop is provided ', () => {
-      const wrapper = shallow(<Sidebar.Item title="test" icon="tes" />);
+      const wrapper = shallow(<Sidebar.Item title="test" icon="profile" />);
 
       expect(wrapper.find('Icon').length).to.eql(1);
     });
 
     it('should render an icon when the prop is provided ', () => {
-      const wrapper = shallow(<Sidebar.Item title="test" icon="tes" />);
+      const wrapper = shallow(<Sidebar.Item title="test" icon="profile" />);
 
       expect(wrapper.find('Icon').length).to.eql(1);
     });
