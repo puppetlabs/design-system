@@ -12,7 +12,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  as: 'div',
+  as: 'button',
   to: null,
   minimized: false,
   logo: '',
@@ -62,27 +62,20 @@ class SidebarHeader extends React.Component {
   render() {
     const { as, to, onClick } = this.props;
     const logo = this.renderLogo();
-    let Component;
+    const Component = as;
     let componentProps;
-    let jsx;
 
-    if (logo) {
-      if (as) {
-        Component = as;
-        componentProps = { to };
-      } else if (onClick) {
-        Component = 'button';
-        componentProps = { onClick };
-      }
-
-      jsx = (
-        <Component className="rc-sidebar-header" {...componentProps}>
-          {logo}
-        </Component>
-      );
+    if (to) {
+      componentProps = { to };
+    } else if (onClick) {
+      componentProps = { onClick };
     }
 
-    return jsx;
+    return (
+      <Component className="rc-sidebar-header" {...componentProps}>
+        {logo}
+      </Component>
+    );
   }
 }
 

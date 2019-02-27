@@ -21,11 +21,6 @@
           icon="connections"
           label="config"
         />
-        <Sidebar.Item
-          onClick={() => {}}
-          title="Data Model"
-          icon="data-fields"
-        />
       </Sidebar.Section>
     </Sidebar.Navigation>
     <Sidebar.Footer
@@ -51,19 +46,9 @@
         <Sidebar.Item onClick={() => {}} title="Home" icon="home" active />
       </Sidebar.Section>
       <Sidebar.Section label="reports">
-        <Sidebar.Item
-          onClick={() => {}}
-          title="Speed & Frequency"
-          icon="speed"
-        />
-        <Sidebar.Item
-          onClick={() => {}}
-          title="Reliability"
-          icon="reliability"
-        />
-        <Sidebar.Item onClick={() => {}} title="Security" icon="security" />
-        <Sidebar.Item onClick={() => {}} title="Business Value" icon="value" />
-        <Sidebar.Item onClick={() => {}} title="Pipeline" icon="pipeline" />
+        <Sidebar.Item onClick={() => {}} title="Code" icon="code" />
+        <Sidebar.Item onClick={() => {}} title="Build" icon="build" />
+        <Sidebar.Item onClick={() => {}} title="Deploy" icon="rocket" />
       </Sidebar.Section>
       <Sidebar.Section label="conifg">
         <Sidebar.Item
@@ -71,11 +56,6 @@
           title="Connections"
           icon="connections"
           label="config"
-        />
-        <Sidebar.Item
-          onClick={() => {}}
-          title="Data Model"
-          icon="data-fields"
         />
       </Sidebar.Section>
     </Sidebar.Navigation>

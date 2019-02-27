@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Icon from '../icon/Icon';
 import Heading from '../heading';
 import Text from '../text';
-import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
   /** Displays the name of the user in the sidebar's footer */
@@ -56,7 +55,7 @@ const SidebarFooter = ({ username, version, onClick, minimized }) => {
     >
       <Icon
         size="large"
-        type="user"
+        type="profile"
         className="rc-sidebar-footer-meta-user-icon"
       />
       {meta}

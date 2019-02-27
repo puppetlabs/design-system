@@ -145,7 +145,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
     color: $puppet-sidebar-item-color-hover;
   }
 
-  .rc-icon-fill {
+  .rc-icon {
     fill: $puppet-sidebar-item-icon-fill-hover;
   }
 }
@@ -157,7 +157,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
     color: $puppet-sidebar-item-color-hover;
   }
 
-  .rc-icon-fill {
+  .rc-icon {
     fill: $puppet-sidebar-item-icon-fill-hover;
   }
 }
@@ -180,7 +180,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   display: flex;
   margin-right: $puppet-sidebar-item-icon-margin;
 
-  .rc-icon-fill {
+  .rc-icon {
     fill: $puppet-sidebar-item-icon-fill;
   }
 }
@@ -206,8 +206,8 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   }
 }
 
-.rc-sidebar-item-link-selected .rc-icon-fill,
-.rc-sidebar-item-link-selected:hover .rc-icon-fill {
+.rc-sidebar-item-link-selected .rc-icon,
+.rc-sidebar-item-link-selected:hover .rc-icon {
   fill: $puppet-sidebar-item-icon-fill-active;
 }
 
@@ -244,7 +244,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
     color: $puppet-sidebar-item-color-hover;
   }
 
-  .rc-icon-fill {
+  .rc-icon {
     fill: $puppet-sidebar-item-icon-fill-hover;
   }
 }
@@ -257,7 +257,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
     color: $puppet-sidebar-item-color-hover;
   }
 
-  .rc-icon-fill {
+  .rc-icon {
     fill: $puppet-sidebar-item-icon-fill-hover;
   }
 }
