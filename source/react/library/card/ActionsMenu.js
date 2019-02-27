@@ -49,7 +49,7 @@ class CardActionsMenu extends React.Component {
       /* eslint-disable jsx-a11y/anchor-is-valid */
       let target = (
         <a>
-          <Icon type={menuToggleIcon} height="16px" width="16px" />
+          <Icon type={menuToggleIcon} />
         </a>
       );
 

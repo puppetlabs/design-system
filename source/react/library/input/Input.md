@@ -58,6 +58,6 @@ const exampleStyle = { marginBottom: 10 };
 <div>
   <Input name="input-ex11" style={exampleStyle} icon="search" placeholder="Search for stuff"/>
   <Input name="input-ex12" style={exampleStyle} icon="key" placeholder="Whatever this thing is, it's probably super secure!"/>
-  <Input name="input-ex13" style={exampleStyle} trailingIcon="visible" placeholder="We will eventually use this for a masked input"/>
+  <Input name="input-ex13" style={exampleStyle} trailingIcon="eye" placeholder="We will eventually use this for a masked input"/>
 </div>
 ```

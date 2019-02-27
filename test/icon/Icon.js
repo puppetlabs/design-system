@@ -8,11 +8,11 @@ import Icon from '../../source/react/library/icon';
 describe('<Icon />', () => {
   jsdom({ skipWindowCheck: true });
 
-  it('should have className "rc-icon-edit" if "edit" is passed in as type', () => {
-    const props = { type: 'edit' };
+  it('should have className "rc-icon-pencil" if "pencil" is passed in as type', () => {
+    const props = { type: 'pencil' };
     const wrapper = shallow(<Icon {...props} />);
 
-    expect(wrapper.hasClass('rc-icon-edit')).to.equal(true);
+    expect(wrapper.hasClass('rc-icon-pencil')).to.equal(true);
   });
 
   it('should render custom svg and viewBox when passed one', () => {
@@ -26,8 +26,8 @@ describe('<Icon />', () => {
     expect(wrapper.find('.rc-icon').props().viewBox).to.eql('viewBox');
   });
 
-  it('should return null if no svg is supplied', () => {
-    const props = { type: 'unedfinedType' };
+  it('should return null if no icon type or raw svg is supplied', () => {
+    const props = { type: null };
     const wrapper = shallow(<Icon {...props} />);
 
     expect(wrapper.getElement(0)).to.eql(null);

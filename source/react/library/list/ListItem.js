@@ -107,7 +107,7 @@ class ListItem extends React.PureComponent {
           className="rc-list-item-action rc-list-item-remove"
           onClick={this.onRemove}
         >
-          <Icon type="close" width={iconSize} height={iconSize} />
+          <Icon type="close" style={{ height: iconSize, width: iconSize }} />
         </a>
       );
     }
@@ -132,7 +132,7 @@ class ListItem extends React.PureComponent {
           className="rc-list-item-action rc-list-item-edit rc-list-item-hidden"
           onClick={this.onEdit}
         >
-          <Icon type="pencil" width={iconSize} height={iconSize} />
+          <Icon type="pencil" style={{ height: iconSize, width: iconSize }} />
         </a>
       );
     }

@@ -175,7 +175,7 @@ class Tooltip extends React.Component {
           onClick={onClose}
           onKeyDown={this.onHandleKeyDown}
         >
-          <Icon height="8px" width="8px" type="close" />
+          <Icon type="close" size="tiny" />
         </div>
       );
     }

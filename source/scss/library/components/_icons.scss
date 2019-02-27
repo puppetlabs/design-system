@@ -1,44 +1,9 @@
 // Icons
 // ----------------------------------------------------------------------------
-$puppet-icon-primary-fill: $puppet-brand-primary !default;
+$puppet-icon-fill: $puppet-n600 !default;
 
 .rc-icon {
-  fill: $puppet-icon-fill-base;
+  fill: $puppet-icon-fill;
   transition: all 0.2s;
-
-  &:hover {
-    fill: $puppet-icon-fill-hover;
-  }
-}
-
-// TWO-TONE ICONS
-// Generates classes for two-tone icons
-// Classes are placed inside of svgs in icons.js ಠ_ಠ
-
-// TODO update icons.js with color arguments for two tone icons
-
-$rc-icon-tone-colors: (
-  primary: $puppet-brand-primary,
-  blue: $puppet-b500,
-  neutral: $puppet-n700,
-);
-
-/* stylelint-disable */
-@mixin icon-tones($attribute: 'fill', $prefix: '-') {
-  @each $color, $hex in $rc-icon-tone-colors {
-    &#{$prefix}#{$color} {
-      .rc-icon-tone-fill {
-        #{$attribute}: $hex;
-      }
-    }
-  }
-}
-/* stylelint-enable */
-
-.rc-icon-tone {
-  @include icon-tones;
-}
-
-.rc-icon-primary-fill {
-  fill: $puppet-icon-primary-fill;
+  vertical-align: middle;
 }

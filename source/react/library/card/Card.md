@@ -70,7 +70,7 @@ const menuOptions = [
 ];
 
 const actions = [
-  <Card.ActionsMenu key="menu-2" menuToggleIcon="bar-small" menuOptions={ menuOptions } />,
+  <Card.ActionsMenu key="menu-2" menuToggleIcon="column-chart" menuOptions={ menuOptions } />,
   <Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />,
 ];
 

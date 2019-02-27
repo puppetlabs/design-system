@@ -88,7 +88,7 @@ class DropdownLabel extends React.Component {
       >
         <span className="rc-dropdown-label">
           <span className="rc-button-content">{label}</span>{' '}
-          <Icon width="8px" height="8px" type="chevron-down" />
+          <Icon size="tiny" type="chevron-down" />
         </span>
       </a>
     );

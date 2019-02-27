@@ -87,7 +87,7 @@ class Accordion extends React.Component {
     if (icon) {
       iconJSX = (
         <span className="rc-accordion-header-icon">
-          <Icon width="16px" height="16px" type={icon} />
+          <Icon type={icon} />
         </span>
       );
     }
@@ -103,7 +103,7 @@ class Accordion extends React.Component {
         <span className="rc-accordion-header-action">
           {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
           <a href="" onClick={this.onClose}>
-            <Icon width="8px" height="8px" type="close" />
+            <Icon size="tiny" type="close" />
           </a>
         </span>
       </div>

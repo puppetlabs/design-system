@@ -66,7 +66,7 @@ const Checkbox = ({
         onChange={e => onChange(e.target.checked, e)}
         {...otherProps}
       />
-      <Icon type="check" width="16px" height="16px" />
+      <Icon type="check" />
     </div>
     {label}
   </Text>

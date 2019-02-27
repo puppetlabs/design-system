@@ -18,7 +18,7 @@ const logo = (
 const nav = [
   { icon: 'gear', label: 'Settings', key: 'settings' },
   { icon: 'key', label: 'Tokens', key: 'tokens' },
-  { icon: 'user', label: 'User', key: 'user' },
+  { icon: 'profile', label: 'User', key: 'user' },
 ];
 
 <Header

@@ -56,7 +56,7 @@ class MenuItem extends React.Component {
     let jsx;
 
     if (selected) {
-      jsx = <Icon type="check" height="12px" width="12px" />;
+      jsx = <Icon type="check" size="small" />;
     }
 
     return jsx;
@@ -69,7 +69,7 @@ class MenuItem extends React.Component {
     if (option.icon) {
       jsx = (
         <div className="rc-menu-icon">
-          <Icon type={option.icon} height="16px" width="16px" />
+          <Icon type={option.icon} />
         </div>
       );
     }

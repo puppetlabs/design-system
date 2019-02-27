@@ -30,7 +30,7 @@ const target = <Button icon="kebab" square secondary></Button>;
 const listOptions = [
   { id: 0, value: 'Edit', icon: "pencil" },
   { id: 1, value: 'Share', icon: "share" },
-  { id: 2, value: 'Duplicate', icon: "clone" },
+  { id: 2, value: 'Duplicate', icon: "duplicate" },
   { id: 3, value: 'Delete', icon: "trash" },
 ];
 <Popover menu title="Options" target={ target } padding={ false } border={ false } closeButton>

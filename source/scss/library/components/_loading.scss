@@ -29,3 +29,11 @@ $puppet-loading-indicator-fill: $puppet-icon-fill-base !default;
     width: 100px;
   }
 }
+
+// Styleguide styles //
+.rc-loading-table {
+  border-collapse: separate;
+  border-spacing: 4px;
+  table-layout: fixed;
+  width: 100%;
+}
