@@ -9,16 +9,18 @@ import Navigation from './SidebarNavigation';
 import renderChildren from './helper';
 
 const propTypes = {
+  /** CSS class name applied to the root element */
   className: PropTypes.string,
-  /** Is sidebar at the smaller size? */
+  /** Minimize the width of the sidebar and only show icons, rather than icons and text */
   minimized: PropTypes.bool,
+  /** The children are generally `Sidebar.Header`, `Sidebar.Navigation`, `Sidebar.Section`, `Sidebar.Item` and `Sidebar.Footer`. However, due to the composable nature of this component you can add to it as needed  */
   children: PropTypes.node, //eslint-disable-line
 };
 
 const defaultProps = {
-  children: [],
   className: '',
   minimized: false,
+  children: [],
 };
 
 /**
@@ -30,13 +32,17 @@ const defaultProps = {
  * currently active. For the time being this component does not support nesting.
  */
 const Sidebar = props => {
-  const { className, minimized } = props;
+  const { className, minimized, ...rest } = props;
   const classNames = classnames('rc-sidebar', className, {
     'rc-sidebar-minimized': minimized,
   });
   const revisedChildren = renderChildren(props);
 
-  return <aside className={classNames}>{revisedChildren}</aside>;
+  return (
+    <aside className={classNames} {...rest}>
+      {revisedChildren}
+    </aside>
+  );
 };
 
 Sidebar.propTypes = propTypes;

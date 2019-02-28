@@ -5,26 +5,26 @@ import Heading from '../heading';
 import Text from '../text';
 
 const propTypes = {
+  /** The root HTML element  */
+  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
   /** Displays the name of the user in the sidebar's footer */
   username: PropTypes.string,
   /** Displays the version of the software in the sidebar's footer */
   version: PropTypes.string,
-  /** Function fired if the username and version section is clicked */
-  onClick: PropTypes.func,
+  /** Has the parent sidebar been minimized? If so render the minimized version of the footer. Don't worry about setting this manually. The parent components will add this prop for you. */
   minimized: PropTypes.bool,
 };
 
 const defaultProps = {
+  as: 'button',
   username: '',
   version: '',
   minimized: false,
-  onClick() {},
 };
 
-const SidebarFooter = ({ username, version, onClick, minimized }) => {
-  let Component = 'div';
+const SidebarFooter = ({ as, username, version, minimized, ...rest }) => {
+  const Component = as;
   let meta;
-  let componentProps;
 
   if (!minimized) {
     meta = (
@@ -39,20 +39,8 @@ const SidebarFooter = ({ username, version, onClick, minimized }) => {
     );
   }
 
-  if (onClick) {
-    Component = 'button';
-    componentProps = {
-      type: 'button',
-      tabIndex: 0,
-    };
-  }
-
   return (
-    <Component
-      {...componentProps}
-      className="rc-sidebar-footer"
-      onClick={onClick}
-    >
+    <Component className="rc-sidebar-footer" {...rest}>
       <div className="rc-sidebar-footer-meta-user">
         <Icon type="profile" className="rc-sidebar-footer-meta-user-icon" />
       </div>
