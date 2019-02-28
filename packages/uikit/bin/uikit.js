@@ -31,6 +31,12 @@ require('yargs') //eslint-disable-line
         default: '',
         describe: 'The root directory in which to generate the template',
       });
+
+      yargs.option('modules', {
+        alias: 'm',
+        default: false,
+        describe: 'Generate scss boilerplate using css modules',
+      });
     },
     handler: generate,
   })

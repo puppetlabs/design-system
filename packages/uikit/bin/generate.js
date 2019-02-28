@@ -3,21 +3,38 @@ const klawSync = require('klaw-sync');
 const path = require('path');
 const HandleBars = require('handlebars');
 
+HandleBars.registerHelper('inline-if', (condition, t, f) => {
+  if (condition) {
+    return t;
+  }
+
+  return f;
+});
+
 const getNameVariants = require('./getNameVariants/getNameVariants');
 
 /**
  * The preGenerate hook can be used if files need to be overlaid afterwards
  */
 
-const generate = ({ template, name, directory }) => {
+const getActions = templatePath => {
+  const uikitrcPath = path.resolve(templatePath, '.uikitrc.js');
+
+  if (fs.existsSync(uikitrcPath)) {
+    return require(uikitrcPath); // eslint-disable-line
+  }
+
+  return {};
+};
+
+const generate = ({ template, name, directory, modules }) => {
   const templatePath = path.resolve(__dirname, '../templates', template);
   const dest = path.resolve(process.cwd(), directory, name);
   const files = klawSync(templatePath);
-  const model = { name: getNameVariants(name) };
-  const {
-    preGenerate = () => {},
-    postGenerate = () => {},
-  } = require(path.resolve(templatePath, '.uikitrc.js')); // eslint-disable-line
+  const model = { name: getNameVariants(name), modules };
+  const { preGenerate = () => {}, postGenerate = () => {} } = getActions(
+    templatePath,
+  );
 
   preGenerate({ dest });
 
