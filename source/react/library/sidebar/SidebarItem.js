@@ -13,7 +13,6 @@ const propTypes = {
   minimized: PropTypes.bool,
   active: PropTypes.bool,
   count: PropTypes.number,
-  accordion: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -22,7 +21,6 @@ const defaultProps = {
   className: '',
   minimized: false,
   active: false,
-  accordion: false,
   count: null,
 };
 
@@ -30,12 +28,10 @@ const SidebarItem = props => {
   const {
     title,
     icon: iconProp,
-    accordion,
     className,
     minimized,
     active,
     count,
-    open,
     as: Component,
     ...rest
   } = props;
@@ -43,7 +39,6 @@ const SidebarItem = props => {
   const classNames = classnames('rc-sidebar-item', className);
 
   let badge;
-  let karet;
 
   if (count) {
     badge = (
@@ -51,16 +46,6 @@ const SidebarItem = props => {
         <Badge type="pill" color="neutral">
           {count}
         </Badge>
-      </span>
-    );
-  }
-
-  if (accordion) {
-    const chevron = open ? 'chevron-up' : 'chevron-down';
-
-    karet = (
-      <span className="rc-sidebar-item-karet">
-        <Icon size="tiny" type={chevron} />
       </span>
     );
   }
@@ -103,7 +88,6 @@ const SidebarItem = props => {
       {icon}
       <span className="rc-sidebar-item-title">{title}</span>
       {badge}
-      {karet}
     </Component>
   );
 
