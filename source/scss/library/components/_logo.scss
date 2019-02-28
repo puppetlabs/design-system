@@ -29,9 +29,9 @@
   width: 32px;
 }
 
-.rc-logo-condensed {
+.rc-logo-expanded {
   .rc-logo-product,
-  .rc-logo-puppet, {
-    transform: translateX(-3px);
+  .rc-logo-puppet {
+    transform: translateX(3px);
   }
 }

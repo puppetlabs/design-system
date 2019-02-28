@@ -9,16 +9,18 @@
 @import 'variables';
 @import 'utils/animations';
 @import 'utils/mixins';
+@import 'utils/helpers';
 @import 'resets';
 
 @import 'components/forms/index';
 
+@import 'components/heading';
+@import 'components/text';
 @import 'components/buttons';
 @import 'components/cards';
 @import 'components/loading';
 @import 'components/popover';
 @import 'components/dropdown';
-@import 'components/text';
 @import 'components/tags';
 @import 'components/lists';
 @import 'components/icons';
@@ -35,7 +37,6 @@
 @import 'components/sidebar';
 @import 'components/breadcrumb';
 @import 'components/grid';
-@import 'components/heading';
 @import 'components/alerts';
 @import 'components/badge';
 @import 'components/link';

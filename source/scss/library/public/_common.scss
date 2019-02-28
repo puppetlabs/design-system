@@ -12,6 +12,7 @@ $puppet-common-spacing-base: 8px;
 // Often used border dividing content
 $puppet-common-border: 1px solid $puppet-n400 !default;
 $puppet-common-border-subtle: 1px solid $puppet-n300 !default;
+$puppet-common-border-active: 1px solid $puppet-b600 !default;
 
 // Often used content backgrounds
 $puppet-common-bg: $puppet-white !default;
@@ -19,3 +20,4 @@ $puppet-common-bg-subtle: $puppet-n50 !default;
 
 // Common focused element outline, implemented as a box shadow
 $puppet-common-focus-outline: 0 0 0 2px $puppet-b300 !default;
+$puppet-common-focus-outline-inset: inset $puppet-common-focus-outline !default;
