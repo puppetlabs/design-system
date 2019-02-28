@@ -100,13 +100,13 @@ $puppet-filters-form-border: $puppet-border !default;
       background: $puppet-filter-split-bg;
 
       .rc-button-content {
-        color: $puppet-button-bg;
+        color: $puppet-action-base;
         float: right;
       }
 
       &:hover {
         .rc-button-content {
-          color: $puppet-button-bg-hover;
+          color: $puppet-action-hover;
         }
       }
     }

@@ -48,7 +48,7 @@ export function ReactComponentRenderer(props) {
 
   if (metadata.approved_by) {
     const badges = metadata.approved_by.map(label => (
-      <Badge color="info">{label}</Badge>
+      <Badge key={label} color="info">{label}</Badge>
     ));
 
     metadataJSX = (
@@ -66,7 +66,7 @@ export function ReactComponentRenderer(props) {
         {heading}
         {pathLine && <Pathline>{pathLine}</Pathline>}
       </header>
-      <div style={{ 'margin-bottom': '20px' }}>{metadataJSX}</div>
+      <div style={{ marginBottom: '20px' }}>{metadataJSX}</div>
       {(description || docs) && (
         <div className={classes.docs}>
           {description}

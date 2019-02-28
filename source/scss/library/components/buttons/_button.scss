@@ -1,0 +1,77 @@
+.rc-button {
+  border-radius: $puppet-common-border-radius;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  position: relative;
+  vertical-align: top;
+
+
+  // TODO: This annoying **** is to override the resets we're doing on all
+  // .rc stuff in _resets.scss. Should remove once we fix that problem
+  .rc-button-content {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+  }
+
+  &:focus {
+    box-shadow: $puppet-common-focus-outline;
+  }
+
+  &:disabled,
+  &[aria-disabled=true] {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.rc-button-medium {
+  @include puppet-type-button();
+  padding: 5px 16px 4px;
+}
+
+.rc-button-small {
+  @include puppet-type-button-small();
+  padding: 2px 12px;
+}
+
+.rc-button-loading {
+  .rc-icon {
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .rc-button-content {
+    visibility: hidden;
+  }
+}
+
+.rc-button-primary {
+  @include button-type($puppet-button-primary);
+}
+
+.rc-button-secondary {
+  @include button-type($puppet-button-secondary);
+}
+
+.rc-button-tertiary {
+  @include button-type($puppet-button-tertiary);
+}
+
+.rc-button-danger.rc-button-bold {
+  @include button-type($puppet-button-danger);
+}
+
+.rc-button-danger.rc-button-subtle {
+  @include button-type($puppet-button-danger-subtle);
+}
+
+.rc-button-transparent {
+  @include button-type($puppet-button-transparent);
+}

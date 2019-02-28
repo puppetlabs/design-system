@@ -1,80 +1,95 @@
-Button sizes:
+Puppet products use a family of buttons, with each button intended for a different purpose.
+
+### Primary
+
+Used for the single most important action on any given page, generally defined as the action which moves the user forward in a workflow (e.g. next, submit, continue, run, etc.) or resolves a workflow (e.g. delete, apply, commit, etc.). A primary action button should be used sparingly: no more than 1 primary action per page or instance.
 
 ```
-<ButtonGroup>
-  <Button size="large">Large Button</Button>
+const buttonStyle = { margin: 5 };
 
-  <Button>Default Button</Button>
-
-  <Button size="small">Small Button</Button>
-
-  <Button size="tiny">Tiny Button</Button>
-</ButtonGroup>
+<div>
+  <Button style={buttonStyle}>Primary</Button>
+  <Button loading style={buttonStyle}>Primary</Button>
+  <Button disabled style={buttonStyle}>Primary</Button>
+</div>
 ```
 
-Button styles:
+### Secondary
+
+Used to be ghost button. This button is used to show as hierarchically less important than the primary action, or the predominant action on the page when no action is deemed of primary importance.
 
 ```
-<ButtonGroup>
-  <Button>Primary Button</Button>
-  <Button secondary>Secondary Button</Button>
-  <Button transparent>Transparent Button</Button>
-  <Button icon="plus" simple>Simple Button</Button>
-  <Button icon="plus" simple secondary>Secondary Simple Button</Button>
-  <Button error>Error Button</Button>
-</ButtonGroup>
+const buttonStyle = { margin: 5 };
+
+<div>
+  <Button type="secondary" style={buttonStyle}>Secondary</Button>
+  <Button type="secondary" loading style={buttonStyle}>Secondary</Button>
+  <Button type="secondary" disabled style={buttonStyle}>Secondary</Button>
+</div>
 ```
 
-Floating action button:
+### Tertiary
+
+Used to be “Secondary action button”. The most commonly used button. It showcases actions that a user might take on any given page which are not the single most important action; this might include micro-workflows such as applying a filter, confirming a change, etc.
 
 ```
-<Button floating={ true } />
+const buttonStyle = { margin: 5 };
+
+<div>
+  <Button type="tertiary" style={buttonStyle}>Tertiary</Button>
+  <Button type="tertiary" loading style={buttonStyle}>Tertiary</Button>
+  <Button type="tertiary" disabled style={buttonStyle}>Tertiary</Button>
+</div>
 ```
 
-Dropdown icon:
+### Tertiary
 
-```
-<Button dropdown>Dropdown</Button>
-```
+To indicate a dangerous or destructive action, we utilize a red button. This button should always come with descriptive text so as not to rely solely on a color for meaning. For actions of lesser implications, use the subtle version.
 
+#### Bold
 ```
-<Button size="small" dropdown>Small dropdown</Button>
-```
+const buttonStyle = { margin: 5 };
 
-```
-<Button secondary dropdown>Secondary dropdown</Button>
-```
-
-```
-<Button dropdown disabled>Disabled</Button>
+<div>
+  <Button type="danger" style={buttonStyle}>Danger Bold</Button>
+  <Button type="danger" loading style={buttonStyle}>Danger Bold</Button>
+  <Button type="danger" disabled style={buttonStyle}>Danger Bold</Button>
+</div>
 ```
 
-Processing
-
+#### Subtle
 ```
-<Button processing>Processing</Button>
-```
+const buttonStyle = { margin: 5 };
 
-Disabled button:
-
-```
-<Button disabled>I'm a disabled button!</Button>
-```
-
-Button with an error:
-
-```
-<Button error>Click me</Button>
+<div>
+  <Button type="danger" weight="subtle" style={buttonStyle}>Danger Subtle</Button>
+  <Button type="danger" weight="subtle" loading style={buttonStyle}>Danger Subtle</Button>
+  <Button type="danger" weight="subtle" disabled style={buttonStyle}>Danger Subtle</Button>
+</div>
 ```
 
-Button with an error and message:
+### Small Buttons
+
+Small buttons exist exclusively for use in the dashboard editor. Necessity of small buttons is under review.  
 
 ```
-<Button error message="Something went wrong here...">Click me</Button>
+const buttonStyle = { margin: 2 };
+
+<div>
+  <Button size="small" style={buttonStyle}>Primary</Button>
+  <Button size="small" type="secondary" style={buttonStyle}>Secondary</Button>
+  <Button size="small" type="tertiary" style={buttonStyle}>Tertiary</Button>
+  <Button size="small" type="danger" style={buttonStyle}>Danger Bold</Button>
+  <Button size="small" type="danger" weight="subtle" style={buttonStyle}>Danger Subtle</Button>
+</div>
+
 ```
 
-A different component rendered as a button, which is useful for `a` elements or `Link` components (from React Router):
+### Transparent Button
+
+The lowest level button in the visual hierarchy. These are so far most often used at the bottom of a menu, or for card controls.  
 
 ```
-<Button as="a" href="http://puppet.com">Link to puppet.com</Button>
+<Button size="small" type="transparent">Transparent</Button>
+
 ```
