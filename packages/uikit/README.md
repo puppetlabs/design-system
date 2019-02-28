@@ -43,11 +43,17 @@ The uikit includes a script for generating arbitrary boilerplate through templat
 - **Method**: `uikit generate method myMethod`
   Generates utility method boilerplate
 
+#### Specifying a directory:
+
 By default the script will generate the template in the current working directory. Optionally you may specify a path to another directory with the `--directory` (`-d`) option:
 
 ```
 uikit generate <template> <name> -d <path to directory>
 ```
+
+#### Scss modules
+
+Passing a `--modules=true` or `-m` option will generate code with scss module support
 
 ## Contributing
 
