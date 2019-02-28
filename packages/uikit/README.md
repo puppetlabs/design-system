@@ -70,3 +70,16 @@ To create a new generator template:
   - `name.dash`: Dashcased name (e.g. `my-component`)
 
 In addition, the filename itself of `.handlebars` files will be compiled as a handlebars template. This is useful if you want to generate named files such as `MyComponent.jsx`.
+
+3. Optionally, add a `.uikitrc.js` file to the template directory. The file should optionally export a `preGenerate` and `postGenerate` action, each passed the destination directory of the resulting templated output.
+
+```
+module.exports = {
+  preGenerate({ dest }) {
+    ...
+  },
+  postGenerate({ dest }) {
+    ...
+  },
+}
+```
