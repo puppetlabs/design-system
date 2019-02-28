@@ -1,3 +1,11 @@
+# 5.0.0-alpha.13
+
+- Updates to Sidebar
+  - **breaking change** Change the API for the `Sidebar` to make it more composable. This now includes `Sidebar.Header`, `Sidebar.Navigation`, `Sidebar.Footer`, `Sidebar.Section`, and `Sidebar.Item`.
+  - **breaking change** Remove nested navigation items
+  - **breaking change** Remove `toggleable` from the list of props. The expectation now is that the minimized sidebar would be applied via a user setting
+  - Refactor to make accessible
+
 # 5.0.0-alpha.12
 
 - Update icon set and icon scaling
