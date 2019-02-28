@@ -34,7 +34,7 @@
 
 .rc-button-small {
   @include puppet-type-button-small();
-  padding: 2px 12px;
+  padding: 3px 12px;
 }
 
 .rc-button-loading {
@@ -74,4 +74,8 @@
 
 .rc-button-transparent {
   @include button-type($puppet-button-transparent);
+
+  &.rc-button-small {
+    padding: 0 4px;
+  }
 }

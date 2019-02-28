@@ -68,7 +68,7 @@ const buttonStyle = { margin: 5 };
 </div>
 ```
 
-### Small Buttons
+### Small buttons
 
 Small buttons exist exclusively for use in the dashboard editor. Necessity of small buttons is under review.  
 
@@ -85,7 +85,7 @@ const buttonStyle = { margin: 2 };
 
 ```
 
-### Transparent Button
+### Transparent small button
 
 The lowest level button in the visual hierarchy. These are so far most often used at the bottom of a menu, or for card controls.  
 
