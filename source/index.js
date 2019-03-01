@@ -49,6 +49,7 @@ import Text from './react/library/text';
 import Alert from './react/library/alert';
 import Badge from './react/library/badge';
 import Link from './react/library/link';
+import Logo from './react/library/logo';
 
 export {
   Breadcrumb,
@@ -94,4 +95,5 @@ export {
   Alert,
   Badge,
   Link,
+  Logo,
 };
