@@ -1,3 +1,7 @@
+# 5.0.0-alpha.14
+
+- Exporting the new Logo component
+
 # 5.0.0-alpha.13
 
 - Updates to Sidebar
