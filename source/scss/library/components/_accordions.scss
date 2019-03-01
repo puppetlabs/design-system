@@ -81,6 +81,7 @@ $puppet-accordion-animation-speed: $puppet-animation-speed-base !default;
 .rc-accordion-item-header {
   height: $puppet-accordion-item-title-height;
   padding: $puppet-accordion-item-title-padding;
+  text-decoration: none;
 
   &:hover {
     text-decoration: none !important;

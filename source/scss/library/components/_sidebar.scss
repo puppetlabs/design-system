@@ -104,6 +104,15 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
 
 // Sidebar section & items
 
+.rc-sidebar-section {
+  margin: 0;
+  padding-left: 0;
+}
+
+.rc-sidebar-item {
+  list-style: none;
+}
+
 .rc-sidebar-label {
   color: $puppet-sidebar-label-color;
   display: block;

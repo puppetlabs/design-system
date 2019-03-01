@@ -52,14 +52,14 @@ class Tabs extends React.Component {
 
       return (
         <li key={tabKey} className={className}>
-          <a href="/#/tab" onClick={onClick}>
+          <a className="rc-tab-link" href="/#/tab" onClick={onClick}>
             {panel.props.title}
           </a>
         </li>
       );
     });
 
-    return <ul>{tabs}</ul>;
+    return <ul className="rc-tabs-list">{tabs}</ul>;
   }
 
   renderPanels() {

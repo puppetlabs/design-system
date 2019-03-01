@@ -194,6 +194,11 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
   }
 }
 
+.rc-menu-list {
+  margin: 0;
+  padding: 0;
+}
+
 // Close Icon in Menu Header
 .rc-menu-header .rc-menu-close {
   align-items: center;
@@ -220,7 +225,9 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
   font-size: $puppet-menu-item-font-size;
   font-weight: $puppet-menu-item-font-weight;
   line-height: $puppet-menu-item-line-height;
+  list-style: none;
   margin: $puppet-menu-item-margin;
+  padding: 0;
   transition: all 0.2s;
 }
 
