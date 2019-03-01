@@ -5,6 +5,7 @@
   - **breaking change** Remove nested navigation items
   - **breaking change** Remove `toggleable` from the list of props. The expectation now is that the minimized sidebar would be applied via a user setting
   - Refactor to make accessible
+- Overflow fix for the Alert component
 
 # 5.0.0-alpha.12
 
