@@ -1,6 +1,6 @@
 // ----------------------------------------------------------------------------
 $puppet-alert-width: 394px !default;
-$puppet-alert-padding: 10px 16px !default;
+$puppet-alert-padding: 11px 12px !default;
 $puppet-alert-shadow: 8px 8px 16px 0 rgba(0, 14, 28, 0.32) !default;
 $puppet-alert-border-radius: $puppet-border-radius !default;
 
@@ -26,6 +26,7 @@ $puppet-alert-border-radius: $puppet-border-radius !default;
   @include rc-alert-colors('warning', $puppet-warn-bg-base);
   @include rc-alert-colors('info', $puppet-action-base);
 
+  align-items: center;
   border-radius: $puppet-alert-border-radius;
   box-shadow: $puppet-alert-shadow;
   cursor: default;
@@ -48,12 +49,14 @@ $puppet-alert-border-radius: $puppet-border-radius !default;
 }
 
 .rc-alert-type-icon {
-  margin-right: 8px;
-  margin-top: 1px;
+  flex-shrink: 0;
+  margin-right: 12px;
 }
 
 .rc-alert-message {
   flex-grow: 1;
+  overflow: auto;
+  overflow-wrap: break-word;
 }
 
 .rc-alert-close {
