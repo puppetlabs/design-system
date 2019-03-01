@@ -1,3 +1,5 @@
+The loading component provides a general purpose spinner for general purposes.
+
 ```
 <table className="rc-loading-table">
   <tr>
@@ -10,7 +12,7 @@
     <td><Loading size="large" /></td>
     <td><Loading size="small" /></td>
     <td><Loading size="tiny" /></td>
-    <td><Loading style={{ height: '10%', width: '10%' }} /></td>
+    <td><Loading style={{ height: 16, width: 16 }} /></td>
   </tr>
 </ table>
 
