@@ -71,7 +71,7 @@ const Button = ({
   >
     <span className="rc-button-content">{children}</span>
     {icon && <Icon size={size} type={icon} className="rc-button-icon-svg" />}
-    {loading && <Loading style={{ width: 16, height: 16 }} />}
+    {loading && <Loading className="rc-button-loader" />}
   </Element>
 );
 
