@@ -93,3 +93,17 @@ The lowest level button in the visual hierarchy. These are so far most often use
 <Button size="small" type="transparent">Transparent</Button>
 
 ```
+
+### Icon button
+
+The lowest level button in the visual hierarchy. These are so far most often used at the bottom of a menu, or for card controls.  
+
+```
+<Button icon="pencil" />
+<Button icon="chevron-down">Sheeeit</Button>
+<Button size="small" icon="pencil" />
+<Button size="small" icon="chevron-down">Sheeeit</Button>
+<Button size="small" type="transparent" icon="pencil" />
+<Button size="small" type="transparent" icon="chevron-down">Sheeeit</Button>
+
+```

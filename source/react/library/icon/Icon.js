@@ -6,7 +6,7 @@ import icons from './icons';
 
 // These are defined here so they render in the styleguide props list
 const AVAILABLE_SIZES = ['large', 'medium', 'small', 'tiny'];
-const AVAILABLE_ICONS = [
+export const AVAILABLE_ICONS = [
   'activity',
   'alert',
   'annotate',

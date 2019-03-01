@@ -16,6 +16,11 @@
     line-height: inherit;
   }
 
+  .rc-button-icon-svg {
+    fill: inherit;
+    vertical-align: text-bottom;
+  }
+
   &:focus {
     box-shadow: $puppet-common-focus-outline;
   }
@@ -29,16 +34,16 @@
 
 .rc-button-medium {
   @include puppet-type-button();
-  padding: 5px 16px 4px;
+  padding: 5px 15px;
 }
 
 .rc-button-small {
   @include puppet-type-button-small();
-  padding: 3px 12px;
+  padding: 3px 11px;
 }
 
 .rc-button-loading {
-  .rc-icon {
+  .rc-loading {
     bottom: 0;
     left: 0;
     margin: auto;
@@ -47,7 +52,8 @@
     top: 0;
   }
 
-  .rc-button-content {
+  .rc-button-content,
+  .rc-button-icon-svg {
     visibility: hidden;
   }
 }
@@ -76,6 +82,47 @@
   @include button-type($puppet-button-transparent);
 
   &.rc-button-small {
-    padding: 0 4px;
+    padding: 0 3px;
+  }
+}
+
+.rc-button-icon.rc-button-medium {
+  padding: 5px 7px;
+}
+
+.rc-button-icon.rc-button-medium.rc-button-text {
+  .rc-button-content {
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+
+.rc-button-icon.rc-button-small {
+  padding: 3px 5px;
+
+  .rc-button-icon-svg {
+    padding: 1px 0;
+  }
+}
+
+.rc-button-icon.rc-button-small.rc-button-text {
+  .rc-button-content {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+}
+
+.rc-button-transparent.rc-button-icon.rc-button-small {
+  padding: 0 3px;
+
+  .rc-button-icon-svg {
+    padding: 1px 0;
+  }
+}
+
+.rc-button-transparent.rc-button-icon.rc-button-small.rc-button-text {
+  .rc-button-content {
+    margin-left: 4px;
+    margin-right: 4px;
   }
 }

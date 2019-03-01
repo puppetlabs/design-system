@@ -112,6 +112,7 @@ $puppet-button-transparent: (
     background: disable-color(map-get($basestate, background)),
     border: disable-color(map-get($basestate, border)),
     color: disable-color(map-get($basestate, color)),
+    fill: disable-color(map-get($basestate, color)),
   );
 
   @return $disabled;
@@ -121,6 +122,7 @@ $puppet-button-transparent: (
   background-color: map-get($properties, background);
   border: 1px solid map-get($properties, border);
   color: map-get($properties, color);
+  fill: map-get($properties, color);
 }
 
 @mixin button-type($typedef) {

@@ -2,7 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { renderableElement } from '../../helpers/customPropTypes';
-import Icon from '../icon/Icon';
+import Icon, { AVAILABLE_ICONS } from '../icon/Icon';
+import Loading from '../loading/Loading';
 
 const propTypes = {
   as: renderableElement,
@@ -14,6 +15,7 @@ const propTypes = {
     'transparent',
   ]),
   weight: PropTypes.oneOf(['bold', 'subtle']),
+  icon: PropTypes.oneOf(AVAILABLE_ICONS),
   size: PropTypes.oneOf(['medium', 'small']),
   loading: PropTypes.bool,
   className: PropTypes.string,
@@ -24,6 +26,7 @@ const defaultProps = {
   as: 'button',
   type: 'primary',
   weight: 'bold',
+  icon: null,
   size: 'medium',
   loading: false,
   buttonType: undefined,
@@ -38,6 +41,7 @@ const Button = ({
   type,
   size,
   weight,
+  icon,
   loading,
   buttonType,
   className,
@@ -52,8 +56,12 @@ const Button = ({
       `rc-button-${type}`,
       `rc-button-${weight}`,
       `rc-button-${size}`,
-      { 'rc-button-loading': loading },
-      { 'rc-button-disabled': disabled },
+      {
+        'rc-button-loading': loading,
+        'rc-button-disabled': disabled,
+        'rc-button-icon': icon,
+        'rc-button-text': children,
+      },
       className,
     )}
     disabled={loading || disabled}
@@ -62,7 +70,8 @@ const Button = ({
     {...rest}
   >
     <span className="rc-button-content">{children}</span>
-    {loading && <Icon width="16px" height="16px" type="loader" />}
+    {icon && <Icon size={size} type={icon} className="rc-button-icon-svg" />}
+    {loading && <Loading style={{ width: 16, height: 16 }} />}
   </Element>
 );
 
