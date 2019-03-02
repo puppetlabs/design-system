@@ -13,6 +13,7 @@ const propTypes = {
     'tertiary',
     'danger',
     'transparent',
+    'text',
   ]),
   weight: PropTypes.oneOf(['bold', 'subtle']),
   icon: PropTypes.oneOf(AVAILABLE_ICONS),
@@ -39,7 +40,6 @@ const assignTypeDefault = (buttonType, Element) =>
 const Button = ({
   as: Element,
   type,
-  size,
   weight,
   icon,
   loading,
@@ -55,12 +55,11 @@ const Button = ({
       'rc-button',
       `rc-button-${type}`,
       `rc-button-${weight}`,
-      `rc-button-${size}`,
       {
         'rc-button-loading': loading,
         'rc-button-disabled': disabled,
         'rc-button-icon': icon,
-        'rc-button-text': children,
+        'rc-button-labeled': children,
       },
       className,
     )}
@@ -70,7 +69,13 @@ const Button = ({
     {...rest}
   >
     <span className="rc-button-content">{children}</span>
-    {icon && <Icon size={size} type={icon} className="rc-button-icon-svg" />}
+    {icon && (
+      <Icon
+        size={type === 'text' ? 'small' : 'medium'}
+        type={icon}
+        className="rc-button-icon-svg"
+      />
+    )}
     {loading && <Loading className="rc-button-loader" />}
   </Element>
 );

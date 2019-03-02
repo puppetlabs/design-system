@@ -1,19 +1,15 @@
 .rc-button {
+  @include puppet-type-button();
   border-radius: $puppet-common-border-radius;
   cursor: pointer;
   display: inline-block;
   outline: none;
+  padding: 5px 15px;
   position: relative;
   vertical-align: top;
 
-
-  // TODO: This annoying **** is to override the resets we're doing on all
-  // .rc stuff in _resets.scss. Should remove once we fix that problem
   .rc-button-content {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    line-height: inherit;
+    display: inline-block;
   }
 
   .rc-button-icon-svg {
@@ -30,16 +26,6 @@
     cursor: default;
     pointer-events: none;
   }
-}
-
-.rc-button-medium {
-  @include puppet-type-button();
-  padding: 5px 15px;
-}
-
-.rc-button-small {
-  @include puppet-type-button-small();
-  padding: 3px 11px;
 }
 
 .rc-button-loading {
@@ -83,48 +69,32 @@
 
 .rc-button-transparent {
   @include button-type($puppet-button-transparent);
-
-  &.rc-button-small {
-    padding: 0 3px;
-  }
 }
 
-.rc-button-icon.rc-button-medium {
+.rc-button-text {
+  @include puppet-type-button-small();
+  @include button-type($puppet-button-transparent);
+  border: 0 !important;
+  padding: 0 4px;
+}
+
+.rc-button-icon {
   padding: 5px 7px;
-}
 
-.rc-button-icon.rc-button-medium.rc-button-text {
-  .rc-button-content {
+  &.rc-button-labeled .rc-button-content {
     margin-left: 8px;
     margin-right: 8px;
   }
 }
 
-.rc-button-icon.rc-button-small {
-  padding: 3px 5px;
+.rc-button-text.rc-button-icon {
+  padding: 0 4px;
 
   .rc-button-icon-svg {
     padding: 1px 0;
   }
-}
 
-.rc-button-icon.rc-button-small.rc-button-text {
-  .rc-button-content {
-    margin-left: 4px;
-    margin-right: 4px;
-  }
-}
-
-.rc-button-transparent.rc-button-icon.rc-button-small {
-  padding: 0 3px;
-
-  .rc-button-icon-svg {
-    padding: 1px 0;
-  }
-}
-
-.rc-button-transparent.rc-button-icon.rc-button-small.rc-button-text {
-  .rc-button-content {
+  &.rc-button-labeled .rc-button-content {
     margin-left: 4px;
     margin-right: 4px;
   }

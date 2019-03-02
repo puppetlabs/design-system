@@ -7,14 +7,11 @@ const propTypes = {
   size: PropTypes.oneOf(['tiny', 'small', 'large']),
   /** Optional add additional classes */
   className: PropTypes.string,
-  /** Optional add additional inline styles */
-  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
   size: 'large',
   className: '',
-  style: {},
 };
 
 const Loading = ({ className, size, ...rest }) => (

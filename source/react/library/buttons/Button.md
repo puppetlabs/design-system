@@ -42,7 +42,7 @@ const buttonStyle = { margin: 5 };
 </div>
 ```
 
-### Tertiary
+### Danger
 
 To indicate a dangerous or destructive action, we utilize a red button. This button should always come with descriptive text so as not to rely solely on a color for meaning. For actions of lesser implications, use the subtle version.
 
@@ -68,42 +68,47 @@ const buttonStyle = { margin: 5 };
 </div>
 ```
 
-### Small buttons
+### Icon button
 
-Small buttons exist exclusively for use in the dashboard editor. Necessity of small buttons is under review.  
+When working with a small amount of real estate, icon buttons can be used when the designer is sure that the icon used is clear enough with its action. Because of clarity issues, icon buttons should be used only when no other interface element is appropriate (e.g. Edit, Add, Settings, Profile, More, Trash, Close/Remove, Show/Hide, Expand/Collapse, Full screen, Help, Information, Link, Attach, Notification, Export, Chart). Icon buttons can be used with an additional "transparent" variation for minimalism in place.
+```
+const buttonStyle = { margin: 2 };
+
+<div>
+  <div>
+    <Button icon="pencil" style={buttonStyle} />
+    <Button icon="pencil" style={buttonStyle} loading />
+    <Button icon="pencil" style={buttonStyle} disabled />
+  </div>
+  <div>
+    <Button type="secondary" style={buttonStyle} icon="pencil" />
+    <Button type="secondary" style={buttonStyle} icon="pencil" loading />
+    <Button type="secondary" style={buttonStyle} icon="pencil" disabled/>
+  </div>
+  <div>
+    <Button type="tertiary" style={buttonStyle} icon="pencil" />
+    <Button type="tertiary" style={buttonStyle} icon="pencil" loading />
+    <Button type="tertiary" style={buttonStyle} icon="pencil" disabled />
+  </div>
+  <div>
+    <Button type="transparent" style={buttonStyle} icon="pencil" />
+    <Button type="transparent" style={buttonStyle} icon="pencil" loading />
+    <Button type="transparent" style={buttonStyle} icon="pencil" disabled />
+  </div>
+</div>
+
+```
+
+### Text button
+
+The lowest level button in the visual hierarchy. These are so far most often used at the bottom of a menu, or for card controls. Designed to work reasonably well inline.
 
 ```
 const buttonStyle = { margin: 2 };
 
 <div>
-  <Button size="small" style={buttonStyle}>Primary</Button>
-  <Button size="small" type="secondary" style={buttonStyle}>Secondary</Button>
-  <Button size="small" type="tertiary" style={buttonStyle}>Tertiary</Button>
-  <Button size="small" type="danger" style={buttonStyle}>Danger Bold</Button>
-  <Button size="small" type="danger" weight="subtle" style={buttonStyle}>Danger Subtle</Button>
+  <Button type="text" style={buttonStyle} >Text</Button>
+  <Button type="text" icon="chevron-down" style={buttonStyle}>I might be an inline button select</Button>
 </div>
-
-```
-
-### Transparent small button
-
-The lowest level button in the visual hierarchy. These are so far most often used at the bottom of a menu, or for card controls.  
-
-```
-<Button size="small" type="transparent">Transparent</Button>
-
-```
-
-### Icon button
-
-The lowest level button in the visual hierarchy. These are so far most often used at the bottom of a menu, or for card controls.  
-
-```
-<Button icon="pencil" />
-<Button icon="chevron-down">Sheeeit</Button>
-<Button size="small" icon="pencil" />
-<Button size="small" icon="chevron-down">Sheeeit</Button>
-<Button size="small" type="transparent" icon="pencil" />
-<Button size="small" type="transparent" icon="chevron-down">Sheeeit</Button>
 
 ```
