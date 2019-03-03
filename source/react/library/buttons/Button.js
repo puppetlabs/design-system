@@ -42,6 +42,7 @@ const Button = ({
   type,
   weight,
   icon,
+  trailingIcon,
   loading,
   buttonType,
   className,
@@ -59,7 +60,9 @@ const Button = ({
         'rc-button-loading': loading,
         'rc-button-disabled': disabled,
         'rc-button-icon': icon,
-        'rc-button-labeled': children,
+        'rc-button-trailing-icon': trailingIcon,
+        'rc-button-empty': !children,
+        'rc-button-full': children,
       },
       className,
     )}
@@ -68,11 +71,18 @@ const Button = ({
     aria-label={loading && children}
     {...rest}
   >
-    <span className="rc-button-content">{children}</span>
     {icon && (
       <Icon
         size={type === 'text' ? 'small' : 'medium'}
         type={icon}
+        className="rc-button-icon-svg"
+      />
+    )}
+    <span className="rc-button-content">{children}</span>
+    {trailingIcon && (
+      <Icon
+        size={type === 'text' ? 'small' : 'medium'}
+        type={trailingIcon}
         className="rc-button-icon-svg"
       />
     )}

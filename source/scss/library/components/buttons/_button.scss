@@ -9,12 +9,18 @@
   vertical-align: top;
 
   .rc-button-content {
-    display: inline-block;
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
   }
 
   .rc-button-icon-svg {
+    bottom: 0;
     fill: inherit;
-    vertical-align: text-bottom;
+    margin: auto;
+    position: absolute;
+    top: 0;
   }
 
   &:focus {
@@ -25,25 +31,6 @@
   &[aria-disabled=true] {
     cursor: default;
     pointer-events: none;
-  }
-}
-
-.rc-button-loading {
-  .rc-button-loader {
-    bottom: 0;
-    fill: inherit;
-    height: 16px;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 16px;
-  }
-
-  .rc-button-content,
-  .rc-button-icon-svg {
-    visibility: hidden;
   }
 }
 
@@ -78,24 +65,85 @@
   padding: 0 4px;
 }
 
-.rc-button-icon {
-  padding: 5px 7px;
+.rc-button-loading {
+  .rc-button-loader {
+    bottom: 0;
+    fill: inherit;
+    height: 16px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+  }
 
-  &.rc-button-labeled .rc-button-content {
-    margin-left: 8px;
-    margin-right: 8px;
+  .rc-button-content,
+  .rc-button-icon-svg {
+    visibility: hidden;
+  }
+}
+
+.rc-button-icon {
+  &.rc-button-empty {
+    height: 32px;
+    width: 32px;
+  }
+
+  &.rc-button-full {
+    padding-left: 31px;
+  }
+
+  .rc-button-icon-svg {
+    left: 8px;
+  }
+}
+
+.rc-button-trailing-icon {
+  &.rc-button-empty {
+    height: 32px;
+    width: 32px;
+  }
+
+  &.rc-button-full {
+    padding-right: 31px;
+  }
+
+  .rc-button-icon-svg {
+    right: 8px;
   }
 }
 
 .rc-button-text.rc-button-icon {
   padding: 0 4px;
 
-  .rc-button-icon-svg {
-    padding: 1px 0;
+  &.rc-button-empty {
+    height: 16px;
+    width: 16px;
   }
 
-  &.rc-button-labeled .rc-button-content {
-    margin-left: 4px;
-    margin-right: 4px;
+  &.rc-button-full {
+    padding-left: 19px;
+  }
+
+  .rc-button-icon-svg {
+    left: 4px;
+  }
+}
+
+.rc-button-text.rc-button-trailing-icon {
+  padding: 0 4px;
+
+  &.rc-button-empty {
+    height: 16px;
+    width: 16px;
+  }
+
+  &.rc-button-full {
+    padding-right: 19px;
+  }
+
+  .rc-button-icon-svg {
+    right: 4px;
   }
 }
