@@ -1,7 +1,6 @@
 import jsdom from 'mocha-jsdom';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
-import sinon from 'sinon';
 import React from 'react';
 
 import Logo, { SUPPORTED_LOGOS } from '../../source/react/library/logo/Logo';

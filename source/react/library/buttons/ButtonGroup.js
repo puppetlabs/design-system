@@ -11,7 +11,9 @@ const defaultProps = {
 };
 
 const ButtonGroup = ({ children, className, ...rest }) => (
-  <div className={classNames('rc-button-group', className)} {...rest} />
+  <div className={classNames('rc-button-group', className)} {...rest}>
+    {children}
+  </div>
 );
 
 ButtonGroup.propTypes = propTypes;

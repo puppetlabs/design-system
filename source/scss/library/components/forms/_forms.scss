@@ -143,6 +143,10 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
   justify-content: flex-start;
 }
 
+.rc-form-actions-block .rc-form-action {
+  flex: 1;
+}
+
 .rc-form-error {
   margin-top: $puppet-form-field-margin * 2;
 }

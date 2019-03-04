@@ -108,7 +108,8 @@ const buttonStyle = { margin: 2 };
 
 <div>
   <Button type="text" style={buttonStyle} >Text</Button>
-  <Button type="text" icon="chevron-down" style={buttonStyle}>I might be an inline button select</Button>
+  <Button type="text" icon="plus" style={buttonStyle}>Add option</Button>
+  <Button type="text" trailingIcon="chevron-down" style={buttonStyle}>Select option</Button>
 </div>
 
 ```

@@ -188,7 +188,11 @@ class Filters extends React.Component {
     let jsx;
 
     if (!editing && !adding && filters.length) {
-      jsx = <Button simple icon="plus" label={ctaLabel} onClick={this.onAdd} />;
+      jsx = (
+        <Button type="text" icon="plus" onClick={this.onAdd}>
+          {ctaLabel}
+        </Button>
+      );
     }
 
     return jsx;

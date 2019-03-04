@@ -64,11 +64,9 @@ describe('<Filters />', () => {
         <Filters filters={filters} strings={filterStrings} />,
       );
 
-      expect(wrapper.find('Button[icon="plus"]').prop('label')).to.eql(
+      expect(wrapper.find('Button[icon="plus"]').prop('children')).to.eql(
         'addCTA custom label',
       );
-      wrapper.find('Button[secondary=false]').simulate('click');
-      expect(wrapper.find('FilterForm').length).to.eql(1);
     });
   });
 });

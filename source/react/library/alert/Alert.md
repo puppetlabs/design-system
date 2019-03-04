@@ -3,7 +3,7 @@
 ```
 const initialState = { isGrowlActive: false };
 <div>
-  <Button label="Toggle growl" onClick={ () => { setState({ isGrowlActive: !state.isGrowlActive }) } } />
+  <Button onClick={ () => { setState({ isGrowlActive: !state.isGrowlActive }) } } >Toggle growl</Button>
   <Alert
     isActive={ state.isGrowlActive }
     message="Hello world"

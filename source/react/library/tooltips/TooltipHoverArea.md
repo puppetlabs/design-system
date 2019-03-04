@@ -2,7 +2,7 @@
 const Button = require('../buttons/Button.js').default;
 
 <TooltipHoverArea tooltip="I'm a happy tooltip!" anchor="bottom" >
-  <Button label="I'm a happy button!" />
+  <Button>I'm a happy button!</Button>
 </TooltipHoverArea>
 ```
 
@@ -25,7 +25,7 @@ const childStyle = {
 <div style={ parentStyle }>
   <div style={ childStyle } >
     <TooltipHoverArea tooltip="I'm a happy tooltip!" anchor="bottom" >
-      <Button label="I'm a happy button!" />
+      <Button>I'm a happy button!</Button>
     </TooltipHoverArea>
   </div>
 </div>

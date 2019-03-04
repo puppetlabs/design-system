@@ -79,7 +79,7 @@ const exampleTableColumns = [{
 <div style={ { height: '400px' } } >
   <Accordion title='This accordion has autoOpen on' autoOpen>
     <Accordion.Item key="elem1" title="With a Button">
-      <Button label="My Button" />
+      <Button>My Button</Button>
     </Accordion.Item>
     <Accordion.Item key="elem2" title="With a Table">
        <Table

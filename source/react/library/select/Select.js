@@ -537,7 +537,7 @@ class Select extends React.Component {
       jsx = (
         <Menu.Actions centered>
           <Menu.Actions.Buttons>
-            <Button simple onClick={onNewOption} icon="plus">
+            <Button type="text" onClick={onNewOption} icon="plus">
               {newOptionLabel}
             </Button>
           </Menu.Actions.Buttons>

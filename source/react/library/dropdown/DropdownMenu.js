@@ -153,7 +153,9 @@ class DropdownMenu extends React.Component {
     if (multiple) {
       jsx = (
         <Menu.Actions centered>
-          <Button block simple label={applyLabel} onClick={this.onApply} />
+          <Button type="text" onClick={this.onApply}>
+            {applyLabel}
+          </Button>
         </Menu.Actions>
       );
     }

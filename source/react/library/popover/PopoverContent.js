@@ -90,8 +90,7 @@ class PopoverContent extends React.Component {
       if (closeButton) {
         close = (
           <Button
-            transparent
-            size="small"
+            type="transparent"
             className="rc-popover-close"
             icon="delete"
             onClick={this.onClose}

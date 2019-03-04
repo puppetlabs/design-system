@@ -3,8 +3,9 @@ initialState = { isOpen: false };
 <div>
   <Button
     onClick={ () => { setState({ isOpen: true }) }}
-    label="Open confirmation modal"
-  />
+  >
+    Open confirmation modal
+  </Button>
 
   { state.isOpen &&
   <ConfirmationModal
@@ -23,8 +24,9 @@ initialState = { isOpen: false };
 <div>
   <Button
     onClick={ () => { setState({ isOpen: true }) }}
-    label="Open confirmation modal"
-  />
+  >
+    Open confirmation modal
+  </Button>
 
   { state.isOpen &&
   <ConfirmationModal

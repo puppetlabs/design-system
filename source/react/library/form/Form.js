@@ -288,26 +288,18 @@ class Form extends Component {
   }
 
   renderSubmitButton(isValid) {
-    const {
-      submittable,
-      submitting,
-      size,
-      disabled,
-      submitLabel,
-      actionsPosition,
-    } = this.props;
+    const { submittable, submitting, disabled, submitLabel } = this.props;
     if (submittable) {
       return (
         <Button
           key="submit"
           className="rc-form-action"
-          type="submit"
-          processing={submitting}
-          size={size}
+          buttonType="submit"
+          loading={submitting}
           disabled={disabled || !isValid}
-          label={submitLabel}
-          block={actionsPosition === 'block'}
-        />
+        >
+          {submitLabel}
+        </Button>
       );
     }
 
@@ -315,26 +307,18 @@ class Form extends Component {
   }
 
   renderCancelButton() {
-    const {
-      cancellable,
-      size,
-      disabled,
-      onCancel,
-      cancelLabel,
-      actionsPosition,
-    } = this.props;
+    const { cancellable, disabled, onCancel, cancelLabel } = this.props;
     if (cancellable) {
       return (
         <Button
           key="cancel"
           className="rc-form-action"
-          secondary
-          size={size}
+          type="tertiary"
           disabled={disabled}
           onClick={onCancel}
-          label={cancelLabel}
-          block={actionsPosition === 'block'}
-        />
+        >
+          {cancelLabel}
+        </Button>
       );
     }
 
