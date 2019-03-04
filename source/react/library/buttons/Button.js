@@ -17,7 +17,6 @@ const propTypes = {
   ]),
   weight: PropTypes.oneOf(['bold', 'subtle']),
   icon: PropTypes.oneOf(AVAILABLE_ICONS),
-  size: PropTypes.oneOf(['medium', 'small']),
   loading: PropTypes.bool,
   className: PropTypes.string,
   buttonType: PropTypes.oneOf(['button', 'submit', 'reset']),
@@ -28,7 +27,6 @@ const defaultProps = {
   type: 'primary',
   weight: 'bold',
   icon: null,
-  size: 'medium',
   loading: false,
   buttonType: undefined,
   className: '',
@@ -68,7 +66,6 @@ const Button = ({
     )}
     disabled={loading || disabled}
     aria-disabled={Element !== 'button' && (loading || disabled)}
-    aria-label={loading && children}
     {...rest}
   >
     {icon && (

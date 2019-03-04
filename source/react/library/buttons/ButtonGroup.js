@@ -3,11 +3,13 @@ import React from 'react';
 import classNames from 'classnames';
 
 const propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array]),
+  children: PropTypes.node,
+  className: PropTypes.string,
 };
 
 const defaultProps = {
   children: null,
+  className: '',
 };
 
 const ButtonGroup = ({ children, className, ...rest }) => (
