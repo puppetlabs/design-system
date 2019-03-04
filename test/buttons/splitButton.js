@@ -1,5 +1,5 @@
 import jsdom from 'mocha-jsdom';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 

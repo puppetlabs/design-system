@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import { renderableElement, formSize } from '../../helpers/customPropTypes';
+import { renderableElement } from '../../helpers/customPropTypes';
 import { omit } from '../../helpers/statics';
 import Input, {
   SUPPORTED_TYPES as INPUT_SUPPORTED_TYPES,
@@ -31,8 +31,6 @@ const propTypes = {
   /* Depending on the field, value can be any type */
   // eslint-disable-next-line react/forbid-prop-types
   value: PropTypes.any,
-  /** Form elements come in two standard sizes */
-  size: formSize,
   /** Form error, causing element to render red when present */
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Expanded explainer for the field */
@@ -56,7 +54,6 @@ const propTypes = {
 
 const defaultProps = {
   value: undefined,
-  size: 'medium',
   error: '',
   description: '',
   required: false,
