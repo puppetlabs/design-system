@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import classnames from 'classnames';
-import Icon from '../icon/Icon';
+import Button from '../buttons/Button';
 
 const propTypes = {
   /** Text to render in place of a current label */
@@ -17,10 +16,7 @@ const propTypes = {
   disabled: PropTypes.bool,
   /* Error state */
   error: PropTypes.string,
-  tabIndex: PropTypes.number,
   onClick: PropTypes.func,
-  /* Sets the size of the anchor/button */
-  size: PropTypes.oneOf(['tiny', 'small', 'large', 'auto', null]),
 };
 
 const defaultProps = {
@@ -32,9 +28,7 @@ const defaultProps = {
   simple: false,
   disabled: false,
   error: '',
-  tabIndex: 0,
   onClick: () => {},
-  size: null,
 };
 
 /**
@@ -53,10 +47,8 @@ class DropdownLabel extends React.Component {
       transparent,
       simple,
       error,
-      tabIndex,
       disabled,
       onClick,
-      size,
     } = this.props;
     let label = propsLabel;
 
@@ -66,31 +58,29 @@ class DropdownLabel extends React.Component {
       label = 'Select One';
     }
 
-    const className = classnames('rc-button', {
-      'rc-button-transparent': transparent && !primary && !secondary && !simple,
-      'rc-button-secondary': secondary,
-      'rc-button-primary': primary,
-      'rc-button-simple': simple,
-      'rc-button-error': error,
-      [`rc-button-${size}`]: size,
-    });
+    let type;
 
-    // TODO: This should render a button element or an anchor if its for navigation
-    /* eslint-disable jsx-a11y/click-events-have-key-events */
-    /* eslint-disable jsx-a11y/anchor-is-valid */
+    if (error) {
+      type = 'danger';
+    } else if (simple) {
+      type = 'text';
+    } else if (transparent) {
+      type = 'transparent';
+    } else if (secondary) {
+      type = 'tertiary';
+    } else if (primary) {
+      type = 'primary';
+    }
+
     return (
-      <a
-        role="button"
-        tabIndex={tabIndex}
+      <Button
+        type={type}
         disabled={disabled}
         onClick={onClick}
-        className={className}
+        trailingIcon="chevron-down"
       >
-        <span className="rc-dropdown-label">
-          <span className="rc-button-content">{label}</span>{' '}
-          <Icon size="tiny" type="chevron-down" />
-        </span>
-      </a>
+        {label}
+      </Button>
     );
   }
 }
