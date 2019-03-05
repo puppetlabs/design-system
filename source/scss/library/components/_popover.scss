@@ -73,6 +73,7 @@ $puppet-popover-elevation: 24 !default;
 .rc-popover-wrapper {
   display: inline-block;
   line-height: 1;
+  vertical-align: text-bottom;
 }
 
 .rc-popover-wrapper-relative {
