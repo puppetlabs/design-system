@@ -18,11 +18,5 @@ Tags:
   >
     I'm a disabled tag!
   </Tag>
-  <Tag
-    selected     
-    onRemove={ () => { console.log('Tag removed!') } }
-  >
-    I'm a selected tag!
-  </Tag>
 </div>
 ```

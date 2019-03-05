@@ -1,18 +1,17 @@
 // Tags
 // ----------------------------------------------------------------------------
 $puppet-tag-bg: $puppet-action-base !default;
+$puppet-tag-border: 0 !default;
 $puppet-tag-border-radius: $puppet-border-radius !default;
-$puppet-tag-border-selected: $puppet-border-action !default;
 $puppet-tag-color: $puppet-white !default;
 $puppet-tag-font-size: $puppet-button-font-size !default;
 $puppet-tag-font-weight: $puppet-button-font-weight !default;
-$puppet-tag-height: $puppet-large !default; // Todo: Base on grid
+$puppet-tag-height: $puppet-large !default;
 $puppet-tag-margin: $puppet-tiny $puppet-tiny $puppet-tiny 0 !default;
 
-$puppet-tag-content-padding: 0 $puppet-small 0 $puppet-small !default;
+$puppet-tag-main-content-padding: 0 $puppet-small 0 $puppet-small !default;
 $puppet-tag-remove-button-padding: 0 $puppet-small 0 $puppet-small !default;
 
-$puppet-tag-shadow-selected: $puppet-common-focus-outline !default;
 $puppet-tag-action-hover: $puppet-action-hover !default;
 $puppet-tag-bg-disabled-opacity: $puppet-disabled-opacity !default;
 
@@ -27,31 +26,35 @@ $puppet-tag-icon-hover: $puppet-white !default;
   display: inline-flex;
   font-size: $puppet-tag-font-size;
   font-weight: $puppet-tag-font-weight;
+  height: $puppet-tag-height;
   margin: $puppet-tag-margin;
   position: relative;
+}
 
-  .rc-tag-content {
-    border-bottom-left-radius: $puppet-tag-border-radius;
-    border-top-left-radius: $puppet-tag-border-radius;
-    font-size: $puppet-tag-font-size;
-    overflow: hidden;
-    padding: $puppet-tag-content-padding;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+.rc-tag-main-content,
+.rc-tag-remove-button {
+  align-items: center;
+  background: $puppet-tag-bg;
+  border: $puppet-tag-border;
+  color: $puppet-tag-color;
+  font-size: $puppet-tag-font-size;
+  line-height: $puppet-tag-height;
+}
 
-  .rc-tag-content,
-  .rc-tag-remove-button {
-    height: $puppet-tag-height;
-    line-height: $puppet-tag-height;
-  }
+.rc-tag-main-content {
+  border-bottom-left-radius: $puppet-tag-border-radius;
+  border-top-left-radius: $puppet-tag-border-radius;
+  overflow: hidden;
+  padding: $puppet-tag-main-content-padding;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .rc-tag-remove-button {
-  align-items: center;
   border-bottom-right-radius: $puppet-tag-border-radius;
   border-top-right-radius: $puppet-tag-border-radius;
   cursor: pointer;
+  line-height: $puppet-tag-height;
   padding: $puppet-tag-remove-button-padding;
 }
 
@@ -63,21 +66,12 @@ $puppet-tag-icon-hover: $puppet-white !default;
   fill: $puppet-tag-icon-hover;
 }
 
-.rc-tag-selectable {
+.rc-tag-clickable {
   cursor: pointer;
 }
 
-.rc-tag-selectable:hover {
+.rc-tag-clickable:hover {
   background: $puppet-tag-action-hover;
-}
-
-.rc-tag-selected {
-  box-shadow: $puppet-tag-shadow-selected;
-
-  .rc-tag-content,
-  .rc-tag-remove-button {
-    border: 0;
-  }
 }
 
 .rc-tag-disabled {

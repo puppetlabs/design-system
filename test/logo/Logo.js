@@ -27,9 +27,9 @@ describe('<Logo />', () => {
     );
   });
 
-  it('applies condensed className with condensed prop', () => {
-    expect(shallow(<Logo condensed product="insights" />)).to.have.className(
-      'rc-logo-condensed',
+  it('applies expanded className with expanded prop', () => {
+    expect(shallow(<Logo expanded product="insights" />)).to.have.className(
+      'rc-logo-expanded',
     );
   });
 

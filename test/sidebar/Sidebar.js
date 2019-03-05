@@ -4,7 +4,7 @@ import { expect } from 'chai';
 
 import Sidebar from '../../source/react/library/sidebar/Sidebar';
 
-describe.only('<Sidebar />', () => {
+describe('<Sidebar />', () => {
   it('should render without blowing up', () => {
     const wrapper = shallow(<Sidebar />);
 

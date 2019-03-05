@@ -12,14 +12,16 @@ describe('<Tag />', () => {
   it('should render the children provided', () => {
     const wrapper = shallow(<Tag>hello world!</Tag>);
 
-    expect(wrapper.find('.rc-tag-content').text()).to.eql('hello world!');
+    expect(wrapper.find('.rc-tag-main-content').text()).to.eql('hello world!');
   });
 
   it('should respond to a click event', () => {
     const onClick = sinon.spy();
     const wrapper = shallow(<Tag onClick={onClick} />);
 
-    wrapper.find('.rc-tag-content').simulate('click', { preventDefault() {} });
+    wrapper
+      .find('.rc-tag-main-content')
+      .simulate('click', { preventDefault() {} });
 
     expect(onClick.called).to.equal(true);
   });
@@ -45,15 +47,5 @@ describe('<Tag />', () => {
     wrapper.setProps({ disabled: true });
 
     expect(wrapper.hasClass('rc-tag-disabled')).to.equal(true);
-  });
-
-  it('should have a selected class if selected', () => {
-    const wrapper = shallow(<Tag />);
-
-    expect(wrapper.hasClass('rc-tag-selected')).to.equal(false);
-
-    wrapper.setProps({ selected: true });
-
-    expect(wrapper.hasClass('rc-tag-selected')).to.equal(true);
   });
 });
