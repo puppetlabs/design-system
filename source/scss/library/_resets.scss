@@ -5,36 +5,4 @@
   font-size: $puppet-type-body-font-size;
   font-weight: $puppet-type-body-font-weight;
   line-height: $puppet-type-body-line-height;
-
-  * {
-    box-sizing: border-box;
-  }
-
-  ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  a {
-    color: $puppet-anchor-color;
-    font-weight: normal;
-    letter-spacing: normal;
-    text-decoration: none;
-    text-transform: none;
-  }
-
-  a:hover {
-    color: $puppet-anchor-hover;
-    // text-decoration: underline;
-  }
-
-  a:active {
-    color: $puppet-action-active;
-    // text-decoration: underline;
-  }
 }
