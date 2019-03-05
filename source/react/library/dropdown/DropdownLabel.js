@@ -64,12 +64,12 @@ class DropdownLabel extends React.Component {
       type = 'danger';
     } else if (simple) {
       type = 'text';
-    } else if (transparent) {
-      type = 'transparent';
     } else if (secondary) {
       type = 'tertiary';
     } else if (primary) {
       type = 'primary';
+    } else if (transparent) {
+      type = 'transparent';
     }
 
     return (

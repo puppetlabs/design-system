@@ -41,36 +41,6 @@ const options = [
 />
 ```
 
-#### Sizes
-
-```
-const options = [
-  { id: 1, value: 'option 1' },
-  { id: 2, value: 'option 2' },
-];
-
-<Dropdown
-  label="I'm a tiny dropdown"
-  size="tiny"
-  options={ options }
-  secondary
-/>
-```
-
-```
-const options = [
-  { id: 1, value: 'option 1' },
-  { id: 2, value: 'option 2' },
-];
-
-<Dropdown
-  label="I'm a small dropdown"
-  size="small"
-  options={ options }
-  secondary
-/>
-```
-
 ```
 const options = [
   { id: 1, value: 'option 1' },
