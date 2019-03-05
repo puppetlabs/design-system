@@ -6,7 +6,9 @@ import Icon, { AVAILABLE_ICONS } from '../icon/Icon';
 import Loading from '../loading/Loading';
 
 const propTypes = {
+  /** React component / element to render. Useful in cases where a button is used for navigation, so that it can be rendered as an anchor tag with the same styling */
   as: renderableElement,
+  /** Main visual variant */
   type: PropTypes.oneOf([
     'primary',
     'secondary',
@@ -15,19 +17,33 @@ const propTypes = {
     'transparent',
     'text',
   ]),
+  /** Additional property used for connotative variants (such as danger) to choose between a strong and soft version */
   weight: PropTypes.oneOf(['bold', 'subtle']),
+  /** Optional icon to be rendered instead of / in addition to button text. If both an icon and text are present, the icon will be rendered before the text */
   icon: PropTypes.oneOf(AVAILABLE_ICONS),
+  /** Button text or other content */
+  children: PropTypes.node,
+  /** Optional trailing icon rendered after button text. For icon-only buttons, please use the 'icon' prop instead */
+  trailingIcon: PropTypes.oneOf(AVAILABLE_ICONS),
+  /** Is the button disabled?  */
+  disabled: PropTypes.bool,
+  /** If true, button will render with a loading spinner */
   loading: PropTypes.bool,
-  className: PropTypes.string,
+  /** Optional html button type override */
   buttonType: PropTypes.oneOf(['button', 'submit', 'reset']),
+  /** Optional additional className. Additionally, all other props are propagated directly to the inner element */
+  className: PropTypes.string,
 };
 
 const defaultProps = {
   as: 'button',
   type: 'primary',
   weight: 'bold',
+  children: null,
   icon: null,
+  trailingIcon: null,
   loading: false,
+  disabled: false,
   buttonType: undefined,
   className: '',
 };
@@ -66,6 +82,7 @@ const Button = ({
     )}
     disabled={loading || disabled}
     aria-disabled={Element !== 'button' && (loading || disabled)}
+    aria-label={children || icon || trailingIcon}
     {...rest}
   >
     {icon && (
