@@ -2,7 +2,7 @@ Puppet products use a family of buttons, with each button intended for a differe
 
 ### Primary
 
-Used for the single most important action on any given page, generally defined as the action which moves the user forward in a workflow (e.g. next, submit, continue, run, etc.) or resolves a workflow (e.g. delete, apply, commit, etc.). A primary action button should be used sparingly: no more than 1 primary action per page or instance.
+Used for the single most important action on any given page, generally defined as the action which moves  the user forward in a workflow (e.g. next, submit, continue, run, etc.) or resolves a workflow (e.g. delete, apply, commit, etc.). A primary action button should be used sparingly: no more than 1 primary action per page  or instance.
 
 ```
 const buttonStyle = { margin: 5 };
