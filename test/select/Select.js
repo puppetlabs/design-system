@@ -110,8 +110,8 @@ describe('<Select />', () => {
 
       const values = [];
 
-      wrapper.find('SelectItem').forEach(Item => {
-        values.push(Item.prop('value'));
+      wrapper.find('Tag').forEach(Tag => {
+        values.push(Tag.text());
       });
 
       expect(values.length).to.equal(2);

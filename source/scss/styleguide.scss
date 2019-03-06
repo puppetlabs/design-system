@@ -332,6 +332,10 @@
   width: 100%;
 }
 
+.rc-icon-table .rc-icon {
+  vertical-align: middle;
+}
+
 .rc-icon-table tr:not(:first-of-type):hover {
   border-radius: $puppet-common-border-radius;
   box-shadow: $puppet-common-focus-outline;

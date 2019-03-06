@@ -12,20 +12,16 @@ describe('<Tag />', () => {
   it('should render the children provided', () => {
     const wrapper = shallow(<Tag>hello world!</Tag>);
 
-    expect(wrapper.text()).to.eql('hello world!');
-  });
-
-  it('should accept a tooltip prop and render a tooltip', () => {
-    const wrapper = shallow(<Tag tooltip>hi!</Tag>);
-
-    expect(wrapper.find('TooltipHoverArea').length).to.eql(1);
+    expect(wrapper.find('.rc-tag-main-content').text()).to.eql('hello world!');
   });
 
   it('should respond to a click event', () => {
     const onClick = sinon.spy();
     const wrapper = shallow(<Tag onClick={onClick} />);
 
-    wrapper.simulate('click', { preventDefault() {} });
+    wrapper
+      .find('.rc-tag-main-content')
+      .simulate('click', { preventDefault() {} });
 
     expect(onClick.called).to.equal(true);
   });
@@ -41,5 +37,15 @@ describe('<Tag />', () => {
 
     expect(onClick.called).to.equal(false);
     expect(onRemove.called).to.equal(true);
+  });
+
+  it('should have a disabled class if disabled', () => {
+    const wrapper = shallow(<Tag />);
+
+    expect(wrapper.hasClass('rc-tag-disabled')).to.equal(false);
+
+    wrapper.setProps({ disabled: true });
+
+    expect(wrapper.hasClass('rc-tag-disabled')).to.equal(true);
   });
 });

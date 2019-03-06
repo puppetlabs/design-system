@@ -33,43 +33,6 @@ const options = [
 
 ---
 
-### Sizes
-
-#### Default Size
-
-```
-const options = [
-  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode III  Revenge of the Sith',
-];
-
-<Select
-  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-/>
-```
-
-#### Small
-
-```
-const options = [
-  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode III  Revenge of the Sith',
-];
-
-<Select
-  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-  size="small"
-/>
-```
-
----
-
 ### Optional
 
 #### Clearable Select
@@ -155,23 +118,6 @@ const options = [
     'Option 1',
     'Option 2',
   ] }
-/>
-```
-
-#### Small Multiselect
-
-```
-const options = [
-  { value: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onChange prop.', label: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onChange prop.', selected: true },
-  { value: 'Sig', label: 'Sig', selected: true },
-  { value: 'Colby', label: 'Colby' },
-];
-
-<Select
-  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  type="multiselect"
-  size="small"
-  options={ options }
 />
 ```
 
