@@ -1,4 +1,4 @@
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 import Home from './Home';
 
@@ -7,6 +7,6 @@ import Home from './Home';
  * This is where you would also add redux store connection / internal
  * state management
  */
-const HomeContainer = withNamespaces('home')(Home);
+const HomeContainer = withTranslation('home')(Home);
 
 export default HomeContainer;

@@ -30,7 +30,6 @@ module.exports = merge(commonConfig, {
               importLoaders: 2,
               localIdentName: '[hash:base64:5]',
               camelCase: true,
-              minimize: true,
             },
           },
           'postcss-loader',
@@ -45,7 +44,7 @@ module.exports = merge(commonConfig, {
           MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
-            options: { importLoaders: 2, minimize: true },
+            options: { importLoaders: 2 },
           },
           'postcss-loader',
           'resolve-url-loader',

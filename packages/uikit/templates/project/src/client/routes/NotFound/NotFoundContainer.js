@@ -1,7 +1,7 @@
-import { withNamespaces } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 import NotFound from './NotFound';
 
-const NotFoundContainer = withNamespaces('common')(NotFound);
+const NotFoundContainer = withTranslation('common')(NotFound);
 
 export default NotFoundContainer;

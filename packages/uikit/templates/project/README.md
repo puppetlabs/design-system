@@ -30,6 +30,7 @@ uikit generate component <ComponentName>
 ```
 
 or to create utility methods with
+
 ```
 uikit generate method <methodName>
 ```

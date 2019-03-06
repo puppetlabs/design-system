@@ -1,10 +1,10 @@
 .app {
   height: 100vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
-.main-content {
+.app-main-content {
   flex: 1;
   overflow: auto;
   padding: 40px;

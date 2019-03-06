@@ -1,0 +1,12 @@
+{
+  "sections": {
+    "pages": "Pages",
+    "actions": "Actions"
+  },
+  "pages": {
+    "home": "Home"
+  },
+  "actions": {
+    "export": "Export"
+  }
+}
