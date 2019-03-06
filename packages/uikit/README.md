@@ -43,11 +43,17 @@ The uikit includes a script for generating arbitrary boilerplate through templat
 - **Method**: `uikit generate method myMethod`
   Generates utility method boilerplate
 
+#### Specifying a directory:
+
 By default the script will generate the template in the current working directory. Optionally you may specify a path to another directory with the `--directory` (`-d`) option:
 
 ```
 uikit generate <template> <name> -d <path to directory>
 ```
+
+#### Scss modules
+
+Passing a `--modules=true` or `-m` option will generate code with scss module support
 
 ## Contributing
 
@@ -70,3 +76,16 @@ To create a new generator template:
   - `name.dash`: Dashcased name (e.g. `my-component`)
 
 In addition, the filename itself of `.handlebars` files will be compiled as a handlebars template. This is useful if you want to generate named files such as `MyComponent.jsx`.
+
+3. Optionally, add a `.uikitrc.js` file to the template directory. The file should optionally export a `preGenerate` and `postGenerate` action, each passed the destination directory of the resulting templated output.
+
+```
+module.exports = {
+  preGenerate({ dest }) {
+    ...
+  },
+  postGenerate({ dest }) {
+    ...
+  },
+}
+```
