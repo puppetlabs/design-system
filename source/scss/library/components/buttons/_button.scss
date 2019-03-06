@@ -60,7 +60,7 @@
 
 .rc-button-text {
   @include puppet-type-button-small();
-  @include button-type($puppet-button-transparent);
+  @include button-type($puppet-button-text);
   border: 0 !important;
   padding: 0 4px;
 }
