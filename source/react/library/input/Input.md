@@ -16,23 +16,13 @@ const exampleStyle = { marginBottom: 10 };
 </div>
 ```
 
-### Visual variations
+### Simple visual variant
 
-Inputs are available in small size for those tight areas, and in a "simple" visual variant.
+Inputs are available in a "simple" visual variant, primarily used for in-site search boxes
 
 ```
-const exampleStyle = { marginBottom: 10 };
 
-<div style={{ display: 'flex' }}>
-  <div style={{ width: '50%', margin: 5 }}>
-    <Input name="input-ex6" style={exampleStyle} placeholder="Standard"/>
-    <Input name="input-ex7" style={exampleStyle} size="small" placeholder="Small"/>
-  </div>
-  <div style={{ width: '50%', margin: 5 }}>
-    <Input name="input-ex8" style={exampleStyle} simple placeholder="Simple"/>
-    <Input name="input-ex9" style={exampleStyle} simple size="small" placeholder="Small simple"/>
-  </div>
-</div>
+<Input name="input-ex6" simple icon="search" placeholder="Search"/>
 ```
 
 ### Event handling

@@ -68,7 +68,7 @@ $puppet-list-item-small-height: $puppet-size-base * 3 !default;
 .rc-list-item-action {
   align-items: center;
   cursor: pointer;
-  display: block;
+  display: flex;
   justify-content: center;
   padding: 0;
   position: relative;

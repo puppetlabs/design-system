@@ -94,19 +94,17 @@ class ConfirmationModal extends React.Component {
     const submitButton = (
       <Button
         key="submit-button"
-        label={strings.confirm}
         onClick={this.onConfirm}
-        processing={processingConfirmation}
-      />
+        loading={processingConfirmation}
+      >
+        {strings.confirm}
+      </Button>
     );
 
     const cancelButton = (
-      <Button
-        secondary
-        key="cancel-button"
-        label={strings.cancel}
-        onClick={this.onCancel}
-      />
+      <Button type="tertiary" key="cancel-button" onClick={this.onCancel}>
+        {strings.cancel}
+      </Button>
     );
 
     if (actionsPosition === 'left') {

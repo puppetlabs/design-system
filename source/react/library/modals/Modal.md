@@ -34,8 +34,8 @@ initialState = { isOpen: null };
       title="I'm a happy modal with actions!"
       actionsCTA="Select an action"
       actions={ [
-        <Button key="button-1" label="Click me!" onClick={ () => { setState({ isOpen: null }) } } />,
-        <Button key="button-2" secondary label="Or me!" onClick={ () => { setState({ isOpen: null }) } } />
+        <Button key="button-1" onClick={ () => { setState({ isOpen: null }) } } >Click me!</Button,
+        <Button key="button-2" onClick={ () => { setState({ isOpen: null }) } } >Or me!</Button>
       ]}
       onClose={ () => { setState({ isOpen: null }) }}
     >

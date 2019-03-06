@@ -10,13 +10,14 @@
 @import 'utils/animations';
 @import 'utils/mixins';
 @import 'utils/helpers';
+@import 'utils/functions';
 @import 'resets';
 
 @import 'components/forms/index';
+@import 'components/buttons/index';
 
 @import 'components/heading';
 @import 'components/text';
-@import 'components/buttons';
 @import 'components/cards';
 @import 'components/loading';
 @import 'components/popover';

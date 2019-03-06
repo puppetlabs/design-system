@@ -54,14 +54,14 @@ describe('<Modal />', () => {
   });
 
   it('should contain a button if actions are provided', () => {
-    const actions = [<Button key="submit-button" label="submit" />];
+    const actions = [<Button key="submit-button">submit</Button>];
     const modal = shallow(<Modal actions={actions} />);
 
-    expect(modal.find('Button').prop('label')).to.equal('submit');
+    expect(modal.find('Button').prop('children')).to.equal('submit');
   });
 
   it('should contain an actionsCTA if one is provided', () => {
-    const actions = [<Button key="submit-button" label="submit" />];
+    const actions = [<Button key="submit-button">submit</Button>];
     const modal = shallow(
       <Modal actionsCTA="happy actions cta" actions={actions} />,
     );

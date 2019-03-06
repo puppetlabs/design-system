@@ -1,0 +1,163 @@
+$puppet-button-primary: (
+  base: (
+    background: $puppet-b500,
+    border: $puppet-b500,
+    color: $puppet-white,
+  ),
+  hover: (
+    background: $puppet-b400,
+    border: $puppet-b400,
+    color: $puppet-white,
+  ),
+  active: (
+    background: $puppet-b600,
+    border: $puppet-b600,
+    color: $puppet-white,
+  ),
+);
+
+$puppet-button-secondary: (
+  base: (
+    background: $puppet-white,
+    border: $puppet-n400,
+    color: $puppet-b500,
+  ),
+  hover: (
+    background: $puppet-white,
+    border: $puppet-n400,
+    color: $puppet-b400,
+  ),
+  active: (
+    background: $puppet-white,
+    border: $puppet-n400,
+    color: $puppet-b600,
+  ),
+);
+
+$puppet-button-tertiary: (
+  base: (
+    background: $puppet-n200,
+    border: $puppet-n400,
+    color: $puppet-n800,
+  ),
+  hover: (
+    background: $puppet-n100,
+    border: $puppet-n400,
+    color: $puppet-b400,
+  ),
+  active: (
+    background: $puppet-n200,
+    border: $puppet-n400,
+    color: $puppet-b600,
+  ),
+);
+
+$puppet-button-danger: (
+  base: (
+    background: $puppet-r500,
+    border: $puppet-r500,
+    color: $puppet-white,
+  ),
+  hover: (
+    background: $puppet-r400,
+    border: $puppet-r400,
+    color: $puppet-white,
+  ),
+  active: (
+    background: $puppet-r600,
+    border: $puppet-r600,
+    color: $puppet-white,
+  ),
+);
+
+$puppet-button-danger-subtle: (
+  base: (
+    background: $puppet-white,
+    border: $puppet-n400,
+    color: $puppet-r500,
+  ),
+  hover: (
+    background: $puppet-white,
+    border: $puppet-n400,
+    color: $puppet-r400,
+  ),
+  active: (
+    background: $puppet-white,
+    border: $puppet-n400,
+    color: $puppet-r600,
+  ),
+);
+
+$puppet-button-transparent: (
+  base: (
+    background: transparent,
+    border: transparent,
+    color: $puppet-n600,
+  ),
+  hover: (
+    background: $puppet-n200,
+    border: $puppet-n200,
+    color: $puppet-b400,
+  ),
+  active: (
+    background: $puppet-n200,
+    border: $puppet-n200,
+    color: $puppet-b600,
+  ),
+);
+
+$puppet-button-text: (
+  base: (
+    background: transparent,
+    border: transparent,
+    color: $puppet-b500,
+  ),
+  hover: (
+    background: transparent,
+    border: transparent,
+    color: $puppet-b400,
+  ),
+  active: (
+    background: transparent,
+    border: transparent,
+    color: $puppet-b600,
+  ),
+);
+
+@function disable($basestate) {
+  $disabled: (
+    background: disable-color(map-get($basestate, background)),
+    border: disable-color(map-get($basestate, border)),
+    color: disable-color(map-get($basestate, color)),
+    fill: disable-color(map-get($basestate, color)),
+  );
+
+  @return $disabled;
+}
+
+@mixin button-type-properties($properties) {
+  background-color: map-get($properties, background);
+  border: 1px solid map-get($properties, border);
+  color: map-get($properties, color);
+  fill: map-get($properties, color);
+}
+
+@mixin button-type($typedef) {
+  @include button-type-properties(map-get($typedef, base));
+
+  &:hover {
+    @include button-type-properties(map-get($typedef, hover));
+  }
+
+  &:active {
+    @include button-type-properties(map-get($typedef, active));
+  }
+
+  &.rc-button-disabled {
+    @include button-type-properties(disable(map-get($typedef, base)));
+  }
+}
+
+@import './button';
+@import './buttongroup';
+@import './splitbutton';

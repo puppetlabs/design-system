@@ -1,4 +1,4 @@
-$puppet-loading-indicator-fill: $puppet-icon-fill-base !default;
+$puppet-loading-indicator-fill: $puppet-n600;
 
 .rc-loading {
   align-items: center;
@@ -6,34 +6,27 @@ $puppet-loading-indicator-fill: $puppet-icon-fill-base !default;
   height: 100%;
   justify-content: center;
   width: 100%;
-
-  path {
-    fill: $puppet-loading-indicator-fill;
-  }
 }
 
-.rc-loading.loading-page {
-  align-items: center;
-  bottom: 0;
-  display: flex;
-  justify-content: center;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-
-  svg {
-    align-self: center;
-    display: flex;
-    height: 100px;
-    width: 100px;
-  }
+.rc-loading-svg {
+  fill: $puppet-loading-indicator-fill;
 }
 
-// Styleguide styles //
-.rc-loading-table {
-  border-collapse: separate;
-  border-spacing: 4px;
-  table-layout: fixed;
-  width: 100%;
+.rc-loading-background {
+  opacity: 0.2;
+}
+
+.rc-loading-large {
+  height: 100px;
+  width: 100px;
+}
+
+.rc-loading-small {
+  height: 50px;
+  width: 50px;
+}
+
+.rc-loading-tiny {
+  height: 40px;
+  width: 40px;
 }

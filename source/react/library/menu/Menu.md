@@ -26,7 +26,7 @@ const titansListOptions = [
 `listOptions` can display icons next to each item. Titles may optionally have a `closeButton`.
 
 ```
-const target = <Button icon="kebab" square secondary></Button>;
+const target = <Button icon="kebab" type="tertiary"></Button>;
 const listOptions = [
   { id: 0, value: 'Edit', icon: "pencil" },
   { id: 1, value: 'Share', icon: "share" },
@@ -112,12 +112,9 @@ const target = <Button>Menu with actions</Button>;
     <MenuSection title="Models">
       <MenuList options={ listOptions } />
     </MenuSection>
-    <MenuActions>
+    <MenuActions centered>
       <MenuActions.Buttons>
-        <ButtonGroup>
-          <Button simple secondary>Cancel</Button>
-          <Button simple>Apply</Button>
-        </ButtonGroup>
+        <Button type="text">Apply</Button>
       </MenuActions.Buttons>
     </MenuActions>
   </Menu>

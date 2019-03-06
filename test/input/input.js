@@ -118,12 +118,6 @@ describe('<Input />', () => {
     expect(onFocus.called).to.equal(true);
   });
 
-  it('should have className corresponding to size small if size is provided', () => {
-    expect(
-      shallow(<Input {...requiredProps} size="small" />).find('input'),
-    ).to.have.className('rc-input-small');
-  });
-
   it('should have className corresponding to a present error if provided', () => {
     expect(
       shallow(<Input {...requiredProps} error />).find('input'),

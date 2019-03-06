@@ -17,20 +17,6 @@ const defaultProps = {
 };
 
 class SidebarHeader extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick() {
-    const { onClick } = this.props;
-
-    if (onClick) {
-      onClick();
-    }
-  }
-
   renderLogo() {
     const { logo, minimized } = this.props;
     let jsx;
@@ -50,13 +36,12 @@ class SidebarHeader extends React.Component {
   }
 
   render() {
-    const { as, ...rest } = this.props;
+    const { as, minimized, ...rest } = this.props;
     const logo = this.renderLogo();
     const Component = as;
-    let componentProps;
 
     return (
-      <Component className="rc-sidebar-header" {...componentProps} {...rest}>
+      <Component className="rc-sidebar-header" {...rest}>
         {logo}
       </Component>
     );

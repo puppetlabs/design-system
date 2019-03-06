@@ -31,7 +31,7 @@ describe('<Form />', () => {
         .descendants(Button);
 
       expect(shallow(<Form submittable />).find(Button)).to.have.prop(
-        'type',
+        'buttonType',
         'submit',
       );
     });

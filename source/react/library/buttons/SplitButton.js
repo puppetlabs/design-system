@@ -2,8 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Button from './Button';
-import Icon from '../icon/Icon';
-import Loading from '../loading/Loading';
 import DropdownMenu from '../dropdown/DropdownMenu';
 
 const propTypes = {
@@ -12,7 +10,6 @@ const propTypes = {
   label: PropTypes.string.isRequired,
   className: PropTypes.string,
   processing: PropTypes.bool,
-  error: PropTypes.bool,
   dropdownWidth: PropTypes.string,
   dropdownSize: PropTypes.string,
   /** Whether or not to render the Menu in a Portal */
@@ -30,7 +27,6 @@ const propTypes = {
 
 const defaultProps = {
   processing: false,
-  error: false,
   dropdownWidth: '125px',
   disablePortal: false,
   disabled: false,
@@ -69,31 +65,16 @@ class SplitButton extends React.Component {
   }
 
   renderDropdownTarget() {
-    const { menuStatus, disabledMenu, error, size, secondary } = this.props;
-
-    let icon;
-
-    switch (menuStatus) {
-      case 'success':
-        icon = <Icon size="small" type="check" />;
-        break;
-      case 'processing':
-        icon = <Loading style={{ height: '12px', width: '12px' }} />;
-        break;
-      default:
-        icon = <Icon size="small" type="chevron-down" />;
-    }
+    const { menuStatus, disabledMenu, secondary } = this.props;
 
     return (
       <Button
-        error={error}
-        className="rc-button-menu"
-        size={size}
+        className="rc-split-button-menu"
         disabled={disabledMenu}
-        secondary={secondary}
-      >
-        <div className="rc-button-menu-inner">{icon}</div>
-      </Button>
+        type={secondary ? 'secondary' : 'primary'}
+        icon={menuStatus === 'success' ? 'check' : 'chevron-down'}
+        loading={menuStatus === 'processing'}
+      />
     );
   }
 
@@ -128,7 +109,6 @@ class SplitButton extends React.Component {
       size,
       disabled,
       processing,
-      error,
       className,
       secondary,
     } = this.props;
@@ -136,15 +116,15 @@ class SplitButton extends React.Component {
     return (
       <div className={classnames('rc-split-button', className)}>
         <Button
-          error={error}
-          processing={processing}
+          loading={processing}
           size={size}
           onClick={this.onClick}
-          label={label}
           disabled={disabled}
-          className="rc-button-main"
-          secondary={secondary}
-        />
+          className="rc-split-button-main"
+          type={secondary ? 'secondary' : 'primary'}
+        >
+          {label}
+        </Button>
         {dropdown}
       </div>
     );

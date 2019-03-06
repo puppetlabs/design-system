@@ -16,7 +16,7 @@ describe('<FilterForm />', () => {
     const button = wrapper.find('Button').at(1);
 
     expect(button.prop('disabled')).to.eql(false);
-    expect(button.prop('label')).to.eql('Add');
+    expect(button.prop('children')).to.eql('Add');
   });
 
   it('should render an "update" cta if filter prop is passed in', () => {
@@ -25,7 +25,7 @@ describe('<FilterForm />', () => {
     const button = wrapper.find('Button').at(1);
 
     expect(button.prop('disabled')).to.eql(false);
-    expect(button.prop('label')).to.eql('Update');
+    expect(button.prop('children')).to.eql('Update');
   });
 
   describe('overriding overridable things', () => {

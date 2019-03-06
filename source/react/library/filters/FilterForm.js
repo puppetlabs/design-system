@@ -18,7 +18,6 @@ const propTypes = {
   fields: PropTypes.arrayOf(PropTypes.string),
   /** Defaults to the standard set as defined in constants. */
   operators: PropTypes.arrayOf(PropTypes.object),
-  size: PropTypes.string,
   actionsPosition: PropTypes.oneOf(['left', 'right']),
   strings: PropTypes.shape({
     /* Custom remove label */
@@ -63,7 +62,6 @@ const defaultProps = {
   removable: false,
   fields: [],
   filter: {},
-  size: 'small',
   actionsPosition: 'right',
   operators: filterOperators,
   strings: defaultStrings,
@@ -203,7 +201,7 @@ class FilterForm extends React.Component {
     const operators = this.getOperators();
     const fields = this.getFields();
 
-    const { strings, size, actionsPosition, cancellable } = this.props;
+    const { strings, actionsPosition, cancellable } = this.props;
 
     const submitLabel = Object.keys(filter).length
       ? strings.filterUpdate
@@ -216,7 +214,6 @@ class FilterForm extends React.Component {
         onChange={this.onUpdate}
         onCancel={this.onCancel}
         onSubmit={this.onSubmit}
-        size={size}
         cancelLabel={strings.filterCancel}
         submitLabel={submitLabel}
         actionsPosition={actionsPosition}

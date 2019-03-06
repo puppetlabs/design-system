@@ -9,7 +9,6 @@ import {
   omit,
   shallowDiff,
 } from '../../helpers/statics';
-import { formSize } from '../../helpers/customPropTypes';
 
 import FormField from './FormField';
 import FormSection from './FormSection';
@@ -35,8 +34,6 @@ const propTypes = {
   cancelLabel: PropTypes.string,
   /** Cancel event handler */
   onCancel: PropTypes.func,
-  /** Form come in two sizes. The value passed in here will be propagated down to all contained form fields */
-  size: formSize,
   /** Boolean to render form fields inline. The value passed in here will be propagated down to all contained form fields */
   inline: PropTypes.bool,
   /** Positioning of the action buttons  */
@@ -64,7 +61,6 @@ const defaultProps = {
   onCancel() {},
   onChange() {},
   submitting: false,
-  size: 'medium',
   inline: false,
   actionsPosition: 'right',
   disabled: false,
@@ -252,7 +248,7 @@ class Form extends Component {
       validator,
     } = userProvidedFieldProps;
 
-    const { size, inline, disabled } = this.props;
+    const { inline, disabled } = this.props;
     const values = this.getValues();
     const value = values[name];
 
@@ -280,7 +276,6 @@ class Form extends Component {
       ...fieldProps,
       error,
       disabled: disabled || userProvidedFieldProps.disabled,
-      size,
       inline,
       value: values[name],
       onChange: val => this.onChange(name, val),
@@ -288,26 +283,18 @@ class Form extends Component {
   }
 
   renderSubmitButton(isValid) {
-    const {
-      submittable,
-      submitting,
-      size,
-      disabled,
-      submitLabel,
-      actionsPosition,
-    } = this.props;
+    const { submittable, submitting, disabled, submitLabel } = this.props;
     if (submittable) {
       return (
         <Button
           key="submit"
           className="rc-form-action"
-          type="submit"
-          processing={submitting}
-          size={size}
+          buttonType="submit"
+          loading={submitting}
           disabled={disabled || !isValid}
-          label={submitLabel}
-          block={actionsPosition === 'block'}
-        />
+        >
+          {submitLabel}
+        </Button>
       );
     }
 
@@ -315,26 +302,18 @@ class Form extends Component {
   }
 
   renderCancelButton() {
-    const {
-      cancellable,
-      size,
-      disabled,
-      onCancel,
-      cancelLabel,
-      actionsPosition,
-    } = this.props;
+    const { cancellable, disabled, onCancel, cancelLabel } = this.props;
     if (cancellable) {
       return (
         <Button
           key="cancel"
           className="rc-form-action"
-          secondary
-          size={size}
+          type="tertiary"
           disabled={disabled}
           onClick={onCancel}
-          label={cancelLabel}
-          block={actionsPosition === 'block'}
-        />
+        >
+          {cancelLabel}
+        </Button>
       );
     }
 

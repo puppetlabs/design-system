@@ -353,3 +353,10 @@
 .rc-icon-unique-variant {
   background: rgba($puppet-pos-bg-base, 0.1);
 }
+
+.rc-loading-table {
+  border-collapse: separate;
+  border-spacing: 4px;
+  table-layout: fixed;
+  width: 100%;
+}

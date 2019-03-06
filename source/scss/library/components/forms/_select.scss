@@ -173,19 +173,6 @@ $puppet-input-border-error: 1px solid $puppet-neg-border-base !default;
   margin-left: 8px;
 }
 
-.rc-select-small .rc-select-input {
-  min-height: 24px;
-  padding: 0 8px;
-
-  .rc-input {
-    font-size: 12px;
-    height: 20px;
-    line-height: $puppet-medium;
-    min-height: initial;
-    padding: 0;
-  }
-}
-
 .rc-select-disabled {
   .rc-select-input {
     @extend %disabled-input;
@@ -254,12 +241,5 @@ $puppet-input-border-error: 1px solid $puppet-neg-border-base !default;
 
   .rc-select-actions .rc-icon-chevron-down {
     fill: $puppet-action-base;
-  }
-}
-
-.rc-select-small {
-  .rc-icon-chevron-down {
-    height: 8px !important;
-    width: 8px !important;
   }
 }

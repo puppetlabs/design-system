@@ -85,14 +85,14 @@ describe('<DropdownMenu />', () => {
     const wrapperNoApplyLabel = shallow(
       <DropdownMenu multiple options={options} />,
     );
-    expect(wrapperNoApplyLabel.find('Popover Button').prop('label')).to.equal(
-      defaultApplyLabel,
-    );
+    expect(
+      wrapperNoApplyLabel.find('Popover Button').prop('children'),
+    ).to.equal(defaultApplyLabel);
 
     const wrapperApplyLabel = shallow(
       <DropdownMenu multiple options={options} applyLabel="New apply label" />,
     );
-    expect(wrapperApplyLabel.find('Popover Button').prop('label')).to.equal(
+    expect(wrapperApplyLabel.find('Popover Button').prop('children')).to.equal(
       newApplyLabel,
     );
   });
