@@ -2,8 +2,6 @@ import React from 'react';
 import { string } from 'prop-types';
 import { Heading, Text } from '@puppet/react-components';
 
-import styles from './PageTitle.module.scss';
-
 const propTypes = {
   title: string.isRequired,
   subtitle: string,
@@ -14,7 +12,7 @@ const defaultProps = {
 };
 
 const PageTitle = ({ title, subtitle }) => (
-  <div className={styles.pageTitle}>
+  <div>
     <Heading as="h3">{title}</Heading>
     {subtitle && <Text color="medium">{subtitle}</Text>}
   </div>

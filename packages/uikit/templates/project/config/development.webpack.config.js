@@ -50,4 +50,9 @@ module.exports = merge(commonConfig, {
       },
     ],
   },
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
+  },
 });
