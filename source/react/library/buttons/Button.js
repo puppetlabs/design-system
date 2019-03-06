@@ -48,8 +48,22 @@ const defaultProps = {
   className: '',
 };
 
-const assignTypeDefault = (buttonType, Element) =>
-  buttonType || Element === 'button' ? 'button' : null;
+/**
+ * We want to assign the default 'type' attribute diferently depending
+ * on the underling element being rendered. If the element is a button,
+ * type should default to 'button', otherwise null
+ */
+const assignTypeDefault = (buttonType, Element) => {
+  if (buttonType) {
+    return buttonType;
+  }
+
+  if (Element === 'button') {
+    return 'button';
+  }
+
+  return null;
+};
 
 const Button = ({
   as: Element,

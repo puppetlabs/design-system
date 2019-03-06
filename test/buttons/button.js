@@ -46,6 +46,13 @@ describe('<Button />', () => {
     );
   });
 
+  it('Assigns the provided buttonType prop as type on the inner element', () => {
+    expect(shallow(<Button buttonType="submit" />).find('button')).to.have.attr(
+      'type',
+      'submit',
+    );
+  });
+
   it('Assigns button type attribute by default on button elements', () => {
     expect(shallow(<Button />).find('button')).to.have.attr('type', 'button');
   });
