@@ -58,6 +58,12 @@ class DropdownLabel extends React.Component {
       label = 'Select One';
     }
 
+    /**
+     * BAD CODE ALERT
+     * This is a temporary hack to map the current DropdownLabel props to
+     * the new Button props. We will remove this at a later date
+     * when the dropdown component is hardened
+     */
     let type;
 
     if (error) {
