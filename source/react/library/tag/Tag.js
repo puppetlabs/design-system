@@ -4,17 +4,17 @@ import classnames from 'classnames';
 import Icon from '../icon/Icon';
 
 const propTypes = {
-  // What do we do when user clicks remove button
+  /**  What do we do when user clicks remove button? */
   onRemove: PropTypes.func,
-  // What do we do (if anything) when user clicks body content
+  /**  What do we do (if anything) when user clicks body content? */
   onClick: PropTypes.func,
-  // Tag body content
+  /**  Tag body content */
   children: PropTypes.node,
-  // Is clicking/removing disabled?
+  /**  Is clicking/removing disabled? */
   disabled: PropTypes.bool,
-  // Optional additional classes
+  /**  Optional additional classes */
   className: PropTypes.string,
-  // Optional additional inline styes
+  /**  Optional additional inline styes */
   style: PropTypes.shape({}),
 };
 
