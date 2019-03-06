@@ -1,3 +1,19 @@
+# 5.0.0-alpha.15
+
+- Button updates
+  - **Breaking change** remove `size` prop
+  - Add `weight` prop
+  - **Breaking change** remove props: `secondary`, `transparent`, `floating`, `simple`, `badge`, `block`, `round`, `square`, `dropdown`, `error`, and `message`
+  - Introduce string `type` prop for main visual variant switching
+  - **Breaking change** replace `processing` prop with `loading` to maintain consistency with design docs
+  - **Breaking change**: prexisting `type` prop has been renamed `buttonType`
+  - **Breaking change**: Remove `label` prop, text is now only passed in as children
+  - Update Button documentation
+  - \*\*Breaking change
+  - Adapt to Button API changes in consuming components
+  - Update Loading component to set size with css
+  - **Breaking change** Remove support for small form fields
+
 # 5.0.0-alpha.14
 
 - Exporting the new Logo component
