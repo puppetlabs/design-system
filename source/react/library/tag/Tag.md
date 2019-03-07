@@ -8,6 +8,7 @@ Tags:
     I'm a default tag!
   </Tag>
   <Tag
+    clickable
     onClick={ () => { console.log('Tag clicked!') } }
     onRemove={ () => { console.log('Tag removed!') } }
   >

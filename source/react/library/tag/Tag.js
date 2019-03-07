@@ -6,6 +6,8 @@ import Icon from '../icon/Icon';
 const propTypes = {
   /**  What do we do when user clicks remove button? */
   onRemove: PropTypes.func,
+  /**  Can user click body content? */
+  clickable: PropTypes.bool,
   /**  What do we do (if anything) when user clicks body content? */
   onClick: PropTypes.func,
   /**  Tag body content */
@@ -20,6 +22,7 @@ const propTypes = {
 
 const defaultProps = {
   onRemove() {},
+  clickable: false,
   onClick: null,
   children: null,
   disabled: false,
@@ -30,13 +33,21 @@ const defaultProps = {
 /**
  * `Tag` is used to repesent a removable and optionally clickable item.
  */
-const Tag = ({ disabled, children, onClick, onRemove, className, style }) => {
+const Tag = ({
+  disabled,
+  children,
+  clickable,
+  onClick,
+  onRemove,
+  className,
+  style,
+}) => {
   const tagClassNames = classnames('rc-tag', className, {
     'rc-tag-disabled': disabled,
   });
 
   const mainContentClassNames = classnames('rc-tag-main-content', {
-    'rc-tag-clickable': onClick,
+    'rc-tag-clickable': clickable,
   });
 
   return (
@@ -44,7 +55,7 @@ const Tag = ({ disabled, children, onClick, onRemove, className, style }) => {
       <button
         type="button"
         className={mainContentClassNames}
-        onClick={onClick}
+        onClick={clickable && onClick}
         disabled={disabled || !onClick}
       >
         {children}
