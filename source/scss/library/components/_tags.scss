@@ -41,6 +41,12 @@ $puppet-tag-icon-hover: $puppet-white !default;
   line-height: $puppet-tag-height;
 }
 
+.rc-tag-main-content:focus,
+.rc-tag-remove-button:focus {
+  box-shadow: $puppet-common-focus-outline;
+  outline: none;
+}
+
 .rc-tag-main-content {
   border-bottom-left-radius: $puppet-tag-border-radius;
   border-top-left-radius: $puppet-tag-border-radius;
