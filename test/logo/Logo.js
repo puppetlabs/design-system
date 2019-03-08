@@ -20,6 +20,12 @@ describe('<Logo />', () => {
     });
   });
 
+  it('renders a custom product name with the provided text', () => {
+    expect(shallow(<Logo product="My Product" />)).to.contain.text(
+      'My Product',
+    );
+  });
+
   it('applies inverted className with inverted prop', () => {
     expect(shallow(<Logo inverted product="insights" />)).to.have.className(
       'rc-logo-inverted',
