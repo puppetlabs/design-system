@@ -9,7 +9,6 @@ import Breadcrumb from './react/library/breadcrumb';
 
 // Buttons
 import Button from './react/library/buttons/Button';
-import SplitButton from './react/library/buttons/SplitButton';
 import ButtonGroup from './react/library/buttons/ButtonGroup';
 
 // Dropdown
@@ -55,7 +54,6 @@ export {
   Breadcrumb,
   Button,
   ButtonGroup,
-  SplitButton,
   Card,
   Icon,
   Tag,

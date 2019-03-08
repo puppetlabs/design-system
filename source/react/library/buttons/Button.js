@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { renderableElement } from '../../helpers/customPropTypes';
@@ -65,60 +65,72 @@ const assignTypeDefault = (buttonType, Element) => {
   return null;
 };
 
-const Button = ({
-  as: Element,
-  type,
-  weight,
-  icon,
-  trailingIcon,
-  loading,
-  buttonType,
-  className,
-  children,
-  disabled,
-  ...rest
-}) => (
-  <Element
-    type={assignTypeDefault(buttonType, Element)}
-    className={classNames(
-      'rc-button',
-      `rc-button-${type}`,
-      `rc-button-${weight}`,
-      {
-        'rc-button-loading': loading,
-        'rc-button-disabled': disabled,
-        'rc-button-icon': icon,
-        'rc-button-trailing-icon': trailingIcon,
-        'rc-button-empty': !children,
-        'rc-button-full': children,
-      },
+const Button = forwardRef(
+  (
+    {
+      as: Element,
+      type,
+      weight,
+      icon,
+      trailingIcon,
+      loading,
+      buttonType,
       className,
-    )}
-    disabled={loading || disabled}
-    aria-disabled={Element !== 'button' && (loading || disabled)}
-    aria-label={children || icon || trailingIcon}
-    {...rest}
-  >
-    {icon && (
-      <Icon
-        size={type === 'text' ? 'small' : 'medium'}
-        type={icon}
-        className="rc-button-icon-svg"
-      />
-    )}
-    <span className="rc-button-content">{children}</span>
-    {trailingIcon && (
-      <Icon
-        size={type === 'text' ? 'small' : 'medium'}
-        type={trailingIcon}
-        className="rc-button-icon-svg"
-      />
-    )}
-    {loading && <Loading className="rc-button-loader" />}
-  </Element>
+      children,
+      disabled,
+      ...rest
+    },
+    ref,
+  ) => (
+    <Element
+      ref={ref}
+      type={assignTypeDefault(buttonType, Element)}
+      className={classNames(
+        'rc-button',
+        `rc-button-${type}`,
+        `rc-button-${weight}`,
+        {
+          'rc-button-loading': loading,
+          'rc-button-disabled': disabled,
+          'rc-button-icon': icon,
+          'rc-button-trailing-icon': trailingIcon,
+          'rc-button-empty': !children,
+          'rc-button-full': children,
+        },
+        className,
+      )}
+      disabled={loading || disabled}
+      aria-disabled={Element !== 'button' && (loading || disabled)}
+      aria-label={children || icon || trailingIcon}
+      {...rest}
+    >
+      {icon && (
+        <Icon
+          size={type === 'text' ? 'small' : 'medium'}
+          type={icon}
+          className="rc-button-icon-svg"
+        />
+      )}
+      <span className="rc-button-content">{children}</span>
+      {trailingIcon && (
+        <Icon
+          size={type === 'text' ? 'small' : 'medium'}
+          type={trailingIcon}
+          className="rc-button-icon-svg"
+        />
+      )}
+      {loading && <Loading className="rc-button-loader" />}
+    </Element>
+  ),
 );
 
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
+
+/**
+ * This is a readability improvement for devTools to account for the new use
+ * of forwardRef(). Without this, a button's display name is 'ForwardRef(Button)'
+ */
+Button.displayName = 'Button';
 
 export default Button;
