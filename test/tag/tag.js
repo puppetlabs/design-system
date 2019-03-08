@@ -17,7 +17,7 @@ describe('<Tag />', () => {
 
   it('should respond to a click event', () => {
     const onClick = sinon.spy();
-    const wrapper = shallow(<Tag onClick={onClick} />);
+    const wrapper = shallow(<Tag clickable onClick={onClick} />);
 
     wrapper
       .find('.rc-tag-main-content')
@@ -29,7 +29,9 @@ describe('<Tag />', () => {
   it('should respond to a separate, isolated onRemove click event', () => {
     const onClick = sinon.spy();
     const onRemove = sinon.spy();
-    const wrapper = shallow(<Tag onClick={onClick} onRemove={onRemove} />);
+    const wrapper = shallow(
+      <Tag clickable onClick={onClick} onRemove={onRemove} />,
+    );
 
     wrapper
       .find('.rc-tag-remove-button')

@@ -92,32 +92,6 @@ describe('<Select />', () => {
       expect(wrapper.find('Input').prop('value')).to.equal('Sig');
     });
 
-    it('should select multiple options when passed a selected prop that is an arrray', () => {
-      const options = [
-        { value: 'Michael', label: 'Sig' },
-        { value: 'Geoff', label: 'Catnasty' },
-        { value: 'Colby', label: 'Colbs' },
-      ];
-
-      const wrapper = mount(
-        <Select
-          type="multiselect"
-          options={options}
-          {...defaultProps}
-          value={['Michael', 'Geoff']}
-        />,
-      );
-
-      const values = [];
-
-      wrapper.find('Tag').forEach(Tag => {
-        values.push(Tag.text());
-      });
-
-      expect(values.length).to.equal(2);
-      expect(values.join(', ')).to.equal('Sig, Catnasty');
-    });
-
     it('should allow selected objects to be selected and deselected by clicking on them', () => {
       const onChange = sinon.spy();
       const wrapper = mount(
