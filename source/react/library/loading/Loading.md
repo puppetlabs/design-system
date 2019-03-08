@@ -1,4 +1,4 @@
-The loading component provides a general purpose spinner for general purposes.
+The loading component provides a general purpose spinner. It will automatically center itself within its containing element.
 
 ```
 <table className="rc-loading-table">
