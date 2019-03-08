@@ -127,4 +127,10 @@ const Button = forwardRef(
 Button.propTypes = propTypes;
 Button.defaultProps = defaultProps;
 
+/**
+ * This is a readability improvement for devTools to account for the new use
+ * of forwardRef(). Without this, a button's display name is 'ForwardRef(Button)'
+ */
+Button.displayName = 'Button';
+
 export default Button;
