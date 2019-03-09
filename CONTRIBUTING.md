@@ -70,6 +70,17 @@ To lint Scss:
 npm run scss-lint
 ```
 
+## Commits
+
+![](https://imgs.xkcd.com/comics/git_commit.png)
+
+- The commit summary (first line) should:
+    - Be no more than 72 characters,
+    - Use imperative present tense ("fix", not "fixed" or "fixes"), and
+    - Include Jira ticket if applicable (e.g. "(PDS-XXX) Rest of message")
+- A commit body may be added when the commit is sufficiently complex (to include motivation for the change, contrast with the previous behavior, etc.)
+- Commits should be of appropriate granularity (and keep formatting and refactoring in separate commits)
+
 ## Rebasing vs merging
 
 When you are the sole contributor on a branch it is prefered that you rebase the parent branch to keep
