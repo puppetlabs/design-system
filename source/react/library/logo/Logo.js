@@ -14,7 +14,10 @@ export const SUPPORTED_LOGOS = [
 
 const propTypes = {
   /** A string specifying the product name from one of the supported set */
-  product: PropTypes.oneOf(SUPPORTED_LOGOS).isRequired,
+  product: PropTypes.oneOfType([
+    PropTypes.oneOf(SUPPORTED_LOGOS),
+    PropTypes.string,
+  ]).isRequired,
   /** Logo type (full or bug) */
   type: PropTypes.oneOf(['full', 'bug']),
   /** Boolean "inverted" option for logo display on dark backgrounds */
@@ -33,13 +36,9 @@ const defaultProps = {
 };
 
 const Logo = ({ product, type, inverted, expanded, className, ...rest }) => {
-  const svgDef = path([product, type], logos);
+  const svgDef = path([product, type], logos) || path(['puppet', type], logos);
 
-  if (!svgDef) {
-    return null;
-  }
-
-  const { svg, twoLine, viewBox } = svgDef;
+  const { svg, twoLine, viewBox } = svgDef(product);
 
   return (
     <svg
