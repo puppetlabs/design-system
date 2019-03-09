@@ -13,7 +13,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: paths.client('locales'), to: paths.dist('locales') },
     ]),
-    new CleanWebpackPlugin(['dist'], { root: paths.root() }),
+    new CleanWebpackPlugin(['styleguide-dist'], { root: paths.root() }),
     new HtmlWebpackPlugin({
       template: paths.client('index.html'),
     }),
@@ -40,7 +40,7 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [path.resolve(__dirname, '../src/client'), 'node_modules'],
+    modules: [path.resolve(__dirname, '../styleguide/client'), 'node_modules'],
     extensions: ['.js', '.mjs', '.jsx'],
     symlinks: false,
   },

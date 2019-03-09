@@ -1,5 +1,6 @@
 node_modules
 dist
+styleguide-dist
 coverage
 .DS_Store
 .env.development

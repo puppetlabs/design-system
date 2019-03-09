@@ -40,7 +40,7 @@ module.exports = {
   settings: {
   'import/resolver': {
     node: {
-      paths: [path.resolve(__dirname, 'src/client')],
+      paths: [path.resolve(__dirname, 'styleguide/client')],
     },
   },
 },

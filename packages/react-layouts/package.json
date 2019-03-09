@@ -4,7 +4,7 @@
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "./scripts/build",
+    "build:styleguide": "./scripts/build-styleguide",
     "format": "./scripts/format",
     "lint": "./scripts/lint",
     "start": "./scripts/start",

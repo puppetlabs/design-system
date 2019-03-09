@@ -4,5 +4,5 @@
   then
       export $(cat .env.development | xargs)
   fi
-  node --experimental-modules src/server/dev.mjs
+  node --experimental-modules styleguide/server/dev.mjs
 )
