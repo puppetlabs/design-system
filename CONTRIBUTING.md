@@ -87,6 +87,7 @@ Before doing so, here's a small checklist to run through:
 
 - [ ] Have I written tests where appropriate?
 - [ ] Have my tests and linter passed locally?
+- [ ] Have I added my change to CHANGELOG.md?
 
 If the answer to these is "yes", you're ready to go! Once you've pushed your
 branch up to Github, you're ready to open a pull request.
@@ -125,9 +126,8 @@ that process:
 1. Open a Pull Request from development to master.
 2. Title it with `Development (vx.x.x)` indicating that it's a PR from
    Development, and which version will be released.
-3. Take a look at the "Files changed", then update the CHANGELOG.md file with
-   a summary of the changes. Sometimes this may require looking through the
-   commit message or even contacting their authors.
+3. Take a look at the "Files changed", and make sure the CHANGELOG.md file
+   contains a summary of the changes.
 4. Assign the maintainers. (See "Opening a pull request" above)
 5. Upon approval your pull request will be merged by the reviewer. The reviewer
    is responsible for making sure the deployment goes out smoothly, and for
