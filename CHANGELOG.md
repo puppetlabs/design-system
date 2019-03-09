@@ -1,3 +1,11 @@
+# 5.0.0-alpha.16
+
+- **Breaking Change** Remove SplitButton
+- **Breaking Change** require that `clickable` prop be present in `Tag` for main body to be clickable
+- Style update in Tag
+- Introduce fallback custom logo option
+- Upgrade webpack to avoid vulnerability
+
 # 5.0.0-alpha.15
 
 - Button updates
