@@ -11,7 +11,7 @@ module.exports = {
   },
   plugins: [
     new CopyWebpackPlugin([
-      { from: paths.client('locales'), to: paths.dist('locales') },
+      { from: paths.client('locales'), to: paths.styleguideDist('locales') },
     ]),
     new CleanWebpackPlugin(['styleguide-dist'], { root: paths.root() }),
     new HtmlWebpackPlugin({
@@ -20,8 +20,8 @@ module.exports = {
   ],
   output: {
     filename: 'bundles/[name].[hash].js',
-    path: paths.dist(),
-    publicPath: '',
+    path: paths.styleguideDist(),
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -40,7 +40,11 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [path.resolve(__dirname, '../styleguide/client'), 'node_modules'],
+    modules: [
+      path.resolve(__dirname, '../styleguide/client'),
+      path.resolve(__dirname, '../src'),
+      'node_modules',
+    ],
     extensions: ['.js', '.mjs', '.jsx'],
     symlinks: false,
   },

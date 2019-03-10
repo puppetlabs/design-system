@@ -1,0 +1,10 @@
+.home {
+  margin: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .home-title {
+    margin-bottom: 16px;
+  }
+}

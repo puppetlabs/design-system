@@ -4,29 +4,21 @@ import { Link } from 'react-router-dom';
 import { Sidebar } from '@puppet/react-components';
 
 const propTypes = {
-  t: PropTypes.func.isRequired,
   location: PropTypes.shape({ pathname: PropTypes.string.isRequired })
     .isRequired,
 };
 
-const AppSidebar = ({ t, location: { pathname } }) => (
+const AppSidebar = ({ location: { pathname } }) => (
   <Sidebar>
     <Sidebar.Header logo="insights" as={Link} to="/" />
     <Sidebar.Navigation>
-      <Sidebar.Section label={t('sections.pages')}>
+      <Sidebar.Section label="Authentication">
         <Sidebar.Item
-          title={t('pages.home')}
-          icon="home"
-          active={pathname === '/'}
+          title="Login"
+          icon="key"
+          active={pathname === 'auth/login'}
           as={Link}
-          to="/"
-        />
-      </Sidebar.Section>
-      <Sidebar.Section label={t('sections.actions')}>
-        <Sidebar.Item
-          title={t('actions.export')}
-          icon="pdf"
-          onClick={() => {}}
+          to="/auth/login"
         />
       </Sidebar.Section>
     </Sidebar.Navigation>

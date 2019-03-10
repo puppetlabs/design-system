@@ -1,0 +1,36 @@
+@import 'node_modules/@puppet/react-components/source/scss/library/public/index.scss';
+
+
+.rl-auth-layout {
+  align-items: center;
+  background-color: $puppet-n50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.rl-auth-layout-logo {
+  height: 68px;
+}
+
+.rl-auth-layout-title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.rl-auth-layout-subtitle {
+  margin-top: 8px;
+}
+
+.rl-auth-layout-content {
+  display: flex;
+  margin-top: 32px;
+  padding: 48px;
+  width: 410px;
+}
+
+.rl-auth-layout-action {
+  margin-top: 16px;
+  text-align: center;
+}

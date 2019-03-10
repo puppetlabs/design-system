@@ -1,18 +1,15 @@
-import React, { Fragment } from 'react';
-import { func } from 'prop-types';
+import React from 'react';
+import { Heading, Text } from '@puppet/react-components';
 
-import PageTitle from 'components/PageTitle';
+import './Home.scss';
 
-const propTypes = {
-  t: func.isRequired,
-};
-
-const Home = ({ t }) => (
-  <Fragment>
-    <PageTitle title={t('title')} />
-  </Fragment>
+const Home = () => (
+  <div className="home">
+    <Heading className="home-title">Puppet React Layouts</Heading>
+    <Text>
+      A collection of reusable pages and layouts for the Puppet Design System
+    </Text>
+  </div>
 );
-
-Home.propTypes = propTypes;
 
 export default Home;

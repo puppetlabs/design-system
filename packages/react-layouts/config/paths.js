@@ -3,8 +3,10 @@ const { map } = require('ramda');
 
 const paths = map(p => path.resolve.bind(null, __dirname, '..', p), {
   root: '',
+  src: 'src',
+  dist: 'dist',
   styleguide: 'styleguide',
-  dist: 'styleguide-dist',
+  styleguideDist: 'styleguide-dist',
   client: 'styleguide/client',
   server: 'styleguide/server',
 });
