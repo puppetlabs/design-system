@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from '@puppet/react-components';
-
-import AuthLayout from '../AuthLayout';
+import { renderableElement } from 'utils/customPropTypes';
+import AuthLayout from 'auth/AuthLayout';
 
 const propTypes = {
-  product: PropTypes.string.isRequired,
+  /** Product logo. One of the official set or a custom string */
+  product: PropTypes.string,
+  /** Form submit handler. Handled asynchronously, passed the field values { email, password } */
   onSubmit: PropTypes.func,
+  /** Callback executed with a submit fetch error when present. Should map the error object to a localized string message */
   mapErrorToMessage: PropTypes.func,
+  /** Element override for the reset password link, to allow use of ReactRouter */
+  renderResetPasswordAs: renderableElement,
+  /** Additional props passed to the reset password link */
+  resetPasswordProps: PropTypes.shape({}),
+  /** Full set of necessary localized strings. Defaults are provided for ease of setup but **translated strings should be used in production** */
   localeStrings: PropTypes.shape({
     title: PropTypes.string.isRequired,
     submitLabel: PropTypes.string.isRequired,
@@ -19,8 +27,11 @@ const propTypes = {
 };
 
 const defaultProps = {
+  product: 'insights',
   onSubmit() {},
   mapErrorToMessage: () => '',
+  renderResetPasswordAs: 'a',
+  resetPasswordProps: {},
   localeStrings: {
     title: 'Sign in',
     submitLabel: 'Sign in',
@@ -42,6 +53,8 @@ class Login extends Component {
       submitting: false,
       error: '',
     };
+
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   async onSubmit(values) {
@@ -60,17 +73,25 @@ class Login extends Component {
 
   render() {
     const { submitting, error } = this.state;
-    const { product, onSubmit, localeStrings } = this.props;
+    const {
+      product,
+      renderResetPasswordAs,
+      resetPasswordProps,
+      localeStrings,
+      onSubmit,
+      mapErrorToMessage,
+      ...rest
+    } = this.props;
 
     return (
-      <AuthLayout product={product} title={localeStrings.title}>
+      <AuthLayout product={product} title={localeStrings.title} {...rest}>
         <Form
           submittable
           actionsPosition="block"
           submitLabel={localeStrings.submitLabel}
           submitting={submitting}
           error={error}
-          onSubmit={onSubmit}
+          onSubmit={this.onSubmit}
         >
           <Form.Field
             type="email"
@@ -91,6 +112,9 @@ class Login extends Component {
             placeholder={localeStrings.passwordPlaceholder}
           />
         </Form>
+        <AuthLayout.Action as={renderResetPasswordAs} {...resetPasswordProps}>
+          {localeStrings.resetPasswordLink}
+        </AuthLayout.Action>
       </AuthLayout>
     );
   }
