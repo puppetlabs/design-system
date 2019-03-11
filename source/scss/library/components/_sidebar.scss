@@ -144,6 +144,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   margin: $puppet-sidebar-item-margin;
   outline: none;
   padding: $puppet-sidebar-item-padding;
+  text-decoration: none;
 }
 
 .rc-sidebar-item-link:hover {
@@ -277,7 +278,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   height: 32px;
   justify-content: center;
   width: 32px;
-  
+
   .rc-icon {
     fill: $puppet-sidebar-footer-bg;
   }

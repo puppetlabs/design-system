@@ -5,6 +5,7 @@
 - Style update in Tag
 - Introduce fallback custom logo option
 - Upgrade webpack to avoid vulnerability
+- Design fix: remove text decoration in sidebar links
 
 # 5.0.0-alpha.15
 
