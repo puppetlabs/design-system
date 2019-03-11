@@ -52,6 +52,7 @@ $puppet-tag-icon-hover: $puppet-white !default;
   border-top-left-radius: $puppet-tag-border-radius;
   overflow: hidden;
   padding: $puppet-tag-main-content-padding;
+  pointer-events: none;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -74,6 +75,7 @@ $puppet-tag-icon-hover: $puppet-white !default;
 
 .rc-tag-clickable {
   cursor: pointer;
+  pointer-events: auto;
 }
 
 .rc-tag-clickable:hover {
