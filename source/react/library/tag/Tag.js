@@ -23,7 +23,7 @@ const propTypes = {
 const defaultProps = {
   onRemove() {},
   clickable: false,
-  onClick: null,
+  onClick() {},
   children: null,
   disabled: false,
   className: '',
@@ -55,7 +55,7 @@ const Tag = ({
       <button
         type="button"
         className={mainContentClassNames}
-        onClick={clickable && onClick}
+        onClick={onClick}
         disabled={disabled || !onClick}
       >
         {children}
