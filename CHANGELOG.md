@@ -1,3 +1,7 @@
+# 5.0.0-alpha.17
+
+- Bug fix: Symmetrize shallowDiff helper so that shallowDiff({}, { key: 'value' }) returns true
+
 # 5.0.0-alpha.16
 
 - **Breaking Change** Remove SplitButton
