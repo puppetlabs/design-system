@@ -6,6 +6,7 @@ import { Text } from '@puppet/react-components';
 
 import i18n from 'i18n';
 import Home from 'routes/Home';
+import Confirmation from 'routes/Confirmation';
 import Login from 'routes/Login';
 import NotFound from 'routes/NotFound';
 import Sidebar from 'components/Sidebar';
@@ -21,6 +22,7 @@ const App = () => (
           <div className="app-main-content">
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/auth/confirmation" component={Confirmation} />
               <Route exact path="/auth/login" component={Login} />
               <Route component={NotFound} />
             </Switch>

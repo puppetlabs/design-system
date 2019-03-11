@@ -1,5 +1,5 @@
 {
-  "title": "Sign in to My Product",
+  "title": "Sign in to Product",
   "submitLabel": "Sign in",
   "emailLabel": "Email",
   "emailRequiredFieldMessage": "You must provide an email address",
@@ -7,5 +7,5 @@
   "passwordLabel": "Password",
   "passwordRequiredFieldMessage": "You must provide a password",
   "passwordPlaceholder": "Enter password",
-  "resetPasswordLink": "Reset password",
+  "resetPasswordLink": "Reset password"
 }

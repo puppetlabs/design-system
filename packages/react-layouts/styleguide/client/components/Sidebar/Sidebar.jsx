@@ -10,9 +10,16 @@ const propTypes = {
 
 const AppSidebar = ({ location: { pathname } }) => (
   <Sidebar>
-    <Sidebar.Header logo="insights" as={Link} to="/" />
+    <Sidebar.Header logo="Product" as={Link} to="/" />
     <Sidebar.Navigation>
       <Sidebar.Section label="Authentication">
+        <Sidebar.Item
+          title="Confirmation"
+          icon="key"
+          active={pathname === 'auth/confirmation'}
+          as={Link}
+          to="/auth/confirmation"
+        />
         <Sidebar.Item
           title="Login"
           icon="key"

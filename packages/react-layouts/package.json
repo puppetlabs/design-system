@@ -80,7 +80,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.0.0-alpha.15",
+    "@puppet/react-components": "^5.0.0-alpha.17",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.3"

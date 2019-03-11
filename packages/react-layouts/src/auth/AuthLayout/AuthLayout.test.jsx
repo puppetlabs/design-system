@@ -6,7 +6,7 @@ import AuthLayout from './AuthLayout';
 
 const requiredProps = {
   title: 'title',
-  product: 'insights',
+  product: 'Product',
 };
 
 test('renders without crashing', () => {
@@ -16,7 +16,7 @@ test('renders without crashing', () => {
 test('passes product prop to the logo component', () => {
   shallow(<AuthLayout {...requiredProps} />)
     .find(Logo)
-    .should.have.prop('product', 'insights');
+    .should.have.prop('product', 'Product');
 });
 
 test('renders a title', () => {

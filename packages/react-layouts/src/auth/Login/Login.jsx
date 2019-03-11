@@ -26,26 +26,14 @@ const propTypes = {
   }),
 };
 
-export const DEFAULT_STRINGS = {
-  title: 'Sign in',
-  submitLabel: 'Sign in',
-  emailLabel: 'Email',
-  emailRequiredFieldMessage: 'You must provide an email address',
-  emailPlaceholder: 'Email address',
-  passwordLabel: 'Password',
-  passwordRequiredFieldMessage: 'You must provide a password',
-  passwordPlaceholder: 'Enter password',
-  resetPasswordLink: 'Reset password',
-};
-
 const defaultProps = {
-  product: 'insights',
+  product: 'Product',
   onSubmit() {},
   mapErrorToMessage: () => '',
   renderResetPasswordAs: 'a',
   resetPasswordProps: {},
   localeStrings: {
-    title: 'Sign in',
+    title: 'Sign in to Product',
     submitLabel: 'Sign in',
     emailLabel: 'Email',
     emailRequiredFieldMessage: 'You must provide an email address',
@@ -77,7 +65,7 @@ class Login extends Component {
 
       await onSubmit(values);
 
-      this.setState({ submitting: false });
+      this.setState({ submitting: false, error: '' });
     } catch (e) {
       this.setState({ submitting: false, error: mapErrorToMessage(e) });
     }

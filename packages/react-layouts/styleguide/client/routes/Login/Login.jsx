@@ -34,7 +34,7 @@ const LoginStyleguide = ({ t }) => {
 
   return (
     <Login
-      product="insights"
+      product="Product"
       onSubmit={onSubmit}
       mapErrorToMessage={mapErrorToMessage}
       renderResetPasswordAs={Link}

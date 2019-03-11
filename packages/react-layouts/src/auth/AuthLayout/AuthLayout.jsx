@@ -19,6 +19,15 @@ const defaultProps = {
   children: null,
 };
 
+// TODO: we need to export these from react-components
+const OFFICIAL_LOGOS = [
+  'container-registry',
+  'discovery',
+  'enterprise',
+  'insights',
+  'pipelines',
+];
+
 const AuthLayout = ({
   product,
   title,
@@ -26,18 +35,29 @@ const AuthLayout = ({
   className,
   children,
   ...rest
-}) => (
-  <div className={classNames('rl-auth-layout', className)} {...rest}>
-    <Logo className="rl-auth-layout-logo" product={product} />
-    <Card className="rl-auth-layout-content">
-      <div className="rl-auth-layout-title">
-        <Heading as="h5">{title}</Heading>
-        <div className="rl-auth-layout-subtitle">{subtitle}</div>
-      </div>
-      {children}
-    </Card>
-  </div>
-);
+}) => {
+  const logoType = OFFICIAL_LOGOS.includes(product) ? 'full' : 'bug';
+
+  return (
+    <div className={classNames('rl-auth-layout', className)} {...rest}>
+      <Logo
+        type={logoType}
+        className={classNames(
+          'rl-auth-layout-logo',
+          `rl-auth-layout-logo-${logoType}`,
+        )}
+        product={product}
+      />
+      <Card className="rl-auth-layout-content">
+        <div className="rl-auth-layout-title">
+          <Heading as="h5">{title}</Heading>
+          <div className="rl-auth-layout-subtitle">{subtitle}</div>
+        </div>
+        {children}
+      </Card>
+    </div>
+  );
+};
 
 AuthLayout.propTypes = propTypes;
 AuthLayout.defaultProps = defaultProps;
