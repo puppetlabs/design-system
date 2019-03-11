@@ -26,6 +26,18 @@ const propTypes = {
   }),
 };
 
+export const DEFAULT_STRINGS = {
+  title: 'Sign in',
+  submitLabel: 'Sign in',
+  emailLabel: 'Email',
+  emailRequiredFieldMessage: 'You must provide an email address',
+  emailPlaceholder: 'Email address',
+  passwordLabel: 'Password',
+  passwordRequiredFieldMessage: 'You must provide a password',
+  passwordPlaceholder: 'Enter password',
+  resetPasswordLink: 'Reset password',
+};
+
 const defaultProps = {
   product: 'insights',
   onSubmit() {},
@@ -122,5 +134,6 @@ class Login extends Component {
 
 Login.propTypes = propTypes;
 Login.defaultProps = defaultProps;
+Login.requiredStrings = Object.keys(defaultProps.localeStrings);
 
 export default Login;
