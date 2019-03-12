@@ -1,3 +1,8 @@
+# 0.2.0
+- Confirmation page
+- Forgot Password pages
+- Reset Password pages
+
 # 0.1.1
 
 - Bug fix: Remove unnecessary dependencies
