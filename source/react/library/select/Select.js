@@ -596,7 +596,9 @@ class Select extends React.Component {
     }
 
     if (loading) {
-      actions.push(<Loading style={{ height: '12px', width: '12px' }} />);
+      actions.push(
+        <Loading key="loading" style={{ height: '12px', width: '12px' }} />,
+      );
     }
 
     if (!loading) {
