@@ -3,28 +3,31 @@ import { shallow } from 'enzyme';
 import sinon from 'sinon';
 import AuthLayout from 'auth/AuthLayout';
 
-import ForgotPassword from './ForgotPassword';
+import ResetPassword from './ResetPassword';
 
 test('renders without crashing', () => {
-  shallow(<ForgotPassword />);
+  shallow(<ResetPassword />);
 });
 
 test('executes onSubmit callback appropriately', () => {
   const onSubmit = sinon.spy();
-  const forgotPassword = shallow(<ForgotPassword onSubmit={onSubmit} />);
+  const forgotPassword = shallow(
+    <ResetPassword token="xyz" onSubmit={onSubmit} />,
+  );
 
   const values = {
-    email: 'email@email.com',
+    passwordA: 'password',
+    passwordB: 'password',
   };
 
   forgotPassword.instance().onSubmit(values);
 
-  onSubmit.should.have.been.calledWith(values);
+  onSubmit.should.have.been.calledWith('xyz', values);
 });
 
 test('Sets the form error to the value returned by mapErrorToMessage on error', () => {
   const forgotPassword = shallow(
-    <ForgotPassword
+    <ResetPassword
       onSubmit={() => {
         throw new Error('error');
       }}
@@ -33,7 +36,8 @@ test('Sets the form error to the value returned by mapErrorToMessage on error', 
   );
 
   const values = {
-    email: 'email@email.com',
+    passwordA: 'password',
+    passwordB: 'password',
   };
 
   forgotPassword.instance().onSubmit(values);
@@ -48,17 +52,17 @@ test('propagates additional props to outer element', () => {
     style: { margin: 0 },
   };
 
-  shallow(<ForgotPassword {...extraProps} />).should.have.props(extraProps);
+  shallow(<ResetPassword {...extraProps} />).should.have.props(extraProps);
 });
 
 test('passes down renderBackToLoginAs prop to action', () => {
-  shallow(<ForgotPassword renderBackToLoginAs="button" />)
+  shallow(<ResetPassword renderBackToLoginAs="button" />)
     .find(AuthLayout.Action)
     .should.have.prop('as', 'button');
 });
 
 test('passes resetPasswordProps to the form action', () => {
-  shallow(<ForgotPassword backToLoginProps={{ to: '/a/b' }} />)
+  shallow(<ResetPassword backToLoginProps={{ to: '/a/b' }} />)
     .find(AuthLayout.Action)
     .should.have.prop('to', '/a/b');
 });

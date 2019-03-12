@@ -4,5 +4,5 @@ import { shallow } from 'enzyme';
 import Confirmation from './Confirmation';
 
 test('renders without crashing', () => {
-  shallow(<Confirmation t={s => s} />);
+  shallow(<Confirmation t={s => s} history={{ push() {} }} />);
 });
