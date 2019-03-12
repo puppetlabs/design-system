@@ -43,6 +43,12 @@ const AppSidebar = ({ location: { pathname } }) => (
           as={Link}
           to="/auth/reset-password"
         />
+        <Sidebar.Item
+          title="Reset Password Success"
+          active={pathname === '/auth/reset-password-success'}
+          as={Link}
+          to="/auth/reset-password-success"
+        />
       </Sidebar.Section>
     </Sidebar.Navigation>
   </Sidebar>

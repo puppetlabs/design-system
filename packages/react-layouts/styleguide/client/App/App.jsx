@@ -11,6 +11,7 @@ import ForgotPassword from 'routes/ForgotPassword';
 import ForgotPasswordSent from 'routes/ForgotPasswordSent';
 import Login from 'routes/Login';
 import ResetPassword from 'routes/ResetPassword';
+import ResetPasswordSuccess from 'routes/ResetPasswordSuccess';
 import NotFound from 'routes/NotFound';
 import Sidebar from 'components/Sidebar';
 
@@ -41,6 +42,11 @@ const App = () => (
                 exact
                 path="/auth/reset-password"
                 component={ResetPassword}
+              />
+              <Route
+                exact
+                path="/auth/reset-password-success"
+                component={ResetPasswordSuccess}
               />
               <Route component={NotFound} />
             </Switch>

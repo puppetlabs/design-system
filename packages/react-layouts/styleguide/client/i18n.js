@@ -26,7 +26,16 @@ i18n
     fallbackLng: 'en',
     /* Translation namespaces corresponding to json files in locales/<lng>
      * You may wish to have a namespace per view */
-    ns: ['common', 'home', 'login', 'confirmation', 'forgot-password'],
+    ns: [
+      'common',
+      'home',
+      'login',
+      'confirmation',
+      'forgot-password',
+      'forgot-password-sent',
+      'reset-password',
+      'reset-password-success',
+    ],
     interpolation: {
       escapeValue: false,
     },
