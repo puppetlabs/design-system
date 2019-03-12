@@ -11,10 +11,10 @@ const propTypes = {
   onSubmit: PropTypes.func,
   /** Callback executed with a submit fetch error when present. Should map the error object to a localized string message */
   mapErrorToMessage: PropTypes.func,
-  /** Element override for the reset password link, to allow use of ReactRouter */
-  renderResetPasswordAs: renderableElement,
+  /** Element override for the back to login link, to allow use of ReactRouter */
+  renderBackToLoginAs: renderableElement,
   /** Additional props passed to the reset password link */
-  resetPasswordProps: PropTypes.shape({}),
+  backToLoginProps: PropTypes.shape({}),
   /** Full set of necessary localized strings. Defaults are provided for ease of setup but **translated strings should be used in production** */
   localeStrings: PropTypes.shape({
     title: PropTypes.string.isRequired,
@@ -22,10 +22,7 @@ const propTypes = {
     emailLabel: PropTypes.string.isRequired,
     emailRequiredFieldMessage: PropTypes.string.isRequired,
     emailPlaceholder: PropTypes.string.isRequired,
-    passwordLabel: PropTypes.string.isRequired,
-    passwordRequiredFieldMessage: PropTypes.string.isRequired,
-    passwordPlaceholder: PropTypes.string.isRequired,
-    resetPasswordLink: PropTypes.string.isRequired,
+    backToLoginLink: PropTypes.string.isRequired,
   }),
 };
 
@@ -33,18 +30,15 @@ const defaultProps = {
   product: 'Product',
   onSubmit() {},
   mapErrorToMessage: () => '',
-  renderResetPasswordAs: 'a',
-  resetPasswordProps: {},
+  renderBackToLoginAs: 'a',
+  backToLoginProps: {},
   localeStrings: {
-    title: 'Sign in to Product',
-    submitLabel: 'Sign in',
+    title: 'We can send you a reset link',
+    submitLabel: 'Send reset link',
     emailLabel: 'Email',
     emailRequiredFieldMessage: 'You must provide an email address',
     emailPlaceholder: 'Email address',
-    passwordLabel: 'Password',
-    passwordRequiredFieldMessage: 'You must provide a password',
-    passwordPlaceholder: 'Enter password',
-    resetPasswordLink: 'Reset password',
+    backToLoginLink: 'Return to sign in',
   },
 };
 
@@ -78,8 +72,8 @@ class Login extends Component {
     const { submitting, error } = this.state;
     const {
       product,
-      renderResetPasswordAs,
-      resetPasswordProps,
+      renderBackToLoginAs,
+      backToLoginProps,
       localeStrings,
       onSubmit,
       mapErrorToMessage,
@@ -105,18 +99,9 @@ class Login extends Component {
             requiredFieldMessage={localeStrings.emailRequiredFieldMessage}
             placeholder={localeStrings.emailPlaceholder}
           />
-          <Form.Field
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            label={localeStrings.passwordLabel}
-            required
-            requiredFieldMessage={localeStrings.passwordRequiredFieldMessage}
-            placeholder={localeStrings.passwordPlaceholder}
-          />
         </Form>
-        <AuthLayout.Action as={renderResetPasswordAs} {...resetPasswordProps}>
-          {localeStrings.resetPasswordLink}
+        <AuthLayout.Action as={renderBackToLoginAs} {...backToLoginProps}>
+          {localeStrings.backToLoginLink}
         </AuthLayout.Action>
       </AuthLayout>
     );

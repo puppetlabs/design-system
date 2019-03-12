@@ -10,7 +10,7 @@ const propTypes = {
 
 const AppSidebar = ({ location: { pathname } }) => (
   <Sidebar>
-    <Sidebar.Header logo="Product" as={Link} to="/" />
+    <Sidebar.Header logo="Design System" as={Link} to="/" />
     <Sidebar.Navigation>
       <Sidebar.Section label="Authentication">
         <Sidebar.Item
@@ -21,6 +21,13 @@ const AppSidebar = ({ location: { pathname } }) => (
           to="/auth/confirmation"
         />
         <Sidebar.Item
+          title="Forgot Password"
+          icon="key"
+          active={pathname === 'auth/forgot-password'}
+          as={Link}
+          to="/auth/forgot-password"
+        />
+        <Sidebar.Item
           title="Login"
           icon="key"
           active={pathname === 'auth/login'}
@@ -29,7 +36,6 @@ const AppSidebar = ({ location: { pathname } }) => (
         />
       </Sidebar.Section>
     </Sidebar.Navigation>
-    <Sidebar.Footer username="Lorem Ipsum" version="1969.7.20" />
   </Sidebar>
 );
 

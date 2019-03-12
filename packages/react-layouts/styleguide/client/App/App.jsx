@@ -7,6 +7,7 @@ import { Text } from '@puppet/react-components';
 import i18n from 'i18n';
 import Home from 'routes/Home';
 import Confirmation from 'routes/Confirmation';
+import ForgotPassword from 'routes/ForgotPassword';
 import Login from 'routes/Login';
 import NotFound from 'routes/NotFound';
 import Sidebar from 'components/Sidebar';
@@ -23,6 +24,11 @@ const App = () => (
             <Switch>
               <Route exact path="/" component={Home} />
               <Route exact path="/auth/confirmation" component={Confirmation} />
+              <Route
+                exact
+                path="/auth/forgot-password"
+                component={ForgotPassword}
+              />
               <Route exact path="/auth/login" component={Login} />
               <Route component={NotFound} />
             </Switch>
