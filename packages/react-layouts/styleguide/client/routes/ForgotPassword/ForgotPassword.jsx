@@ -8,9 +8,12 @@ import ForgotPassword from 'auth/ForgotPassword';
 
 const propTypes = {
   t: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
-const ForgotPasswordStyleguide = ({ t }) => {
+const ForgotPasswordStyleguide = ({ t, history }) => {
   // Pulling corresponding keys from login.json
   const localeStrings = mapObjIndexed(
     (value, key) => t(key),
@@ -22,6 +25,8 @@ const ForgotPasswordStyleguide = ({ t }) => {
     await new Promise(res => setTimeout(res, 1000));
 
     console.log(`Submitted ${values.email}`);
+
+    history.push('/auth/forgot-password-sent');
   };
 
   // Repace with custom error handling

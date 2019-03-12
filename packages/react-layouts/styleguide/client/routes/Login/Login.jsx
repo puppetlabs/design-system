@@ -8,9 +8,12 @@ import Login from 'auth/Login';
 
 const propTypes = {
   t: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
-const LoginStyleguide = ({ t }) => {
+const LoginStyleguide = ({ t, history }) => {
   // Pulling corresponding keys from login.json
   const localeStrings = mapObjIndexed(
     (value, key) => t(key),
@@ -22,6 +25,8 @@ const LoginStyleguide = ({ t }) => {
     await new Promise(res => setTimeout(res, 1000));
 
     console.log(`Logged in with email ${values.email}`);
+
+    history.push('/');
   };
 
   // Repace with custom error handling

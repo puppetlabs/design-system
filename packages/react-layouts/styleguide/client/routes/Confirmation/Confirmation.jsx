@@ -7,9 +7,12 @@ import Confirmation from 'auth/Confirmation';
 
 const propTypes = {
   t: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func,
+  }).isRequired,
 };
 
-const ConfirmationStyleguide = ({ t }) => {
+const ConfirmationStyleguide = ({ t, history }) => {
   // Pulling corresponding keys from login.json
   const localeStrings = mapObjIndexed(
     (value, key) => t(key),
@@ -41,6 +44,8 @@ const ConfirmationStyleguide = ({ t }) => {
     await new Promise(res => setTimeout(res, 1000));
 
     console.log(`Logged in with email ${values.email}`);
+
+    history.push('/');
   };
 
   // Repace with custom error handling

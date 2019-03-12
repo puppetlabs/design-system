@@ -42,7 +42,7 @@ const defaultProps = {
   },
 };
 
-class Login extends Component {
+class ForgotPassword extends Component {
   constructor(props) {
     super(props);
 
@@ -108,8 +108,8 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = propTypes;
-Login.defaultProps = defaultProps;
-Login.requiredStrings = Object.keys(defaultProps.localeStrings);
+ForgotPassword.propTypes = propTypes;
+ForgotPassword.defaultProps = defaultProps;
+ForgotPassword.requiredStrings = Object.keys(defaultProps.localeStrings);
 
-export default Login;
+export default ForgotPassword;

@@ -15,22 +15,25 @@ const AppSidebar = ({ location: { pathname } }) => (
       <Sidebar.Section label="Authentication">
         <Sidebar.Item
           title="Confirmation"
-          icon="key"
-          active={pathname === 'auth/confirmation'}
+          active={pathname === '/auth/confirmation'}
           as={Link}
           to="/auth/confirmation"
         />
         <Sidebar.Item
           title="Forgot Password"
-          icon="key"
-          active={pathname === 'auth/forgot-password'}
+          active={pathname === '/auth/forgot-password'}
           as={Link}
           to="/auth/forgot-password"
         />
         <Sidebar.Item
+          title="Forgot Password Sent"
+          active={pathname === '/auth/forgot-password-sent'}
+          as={Link}
+          to="/auth/forgot-password-sent"
+        />
+        <Sidebar.Item
           title="Login"
-          icon="key"
-          active={pathname === 'auth/login'}
+          active={pathname === '/auth/login'}
           as={Link}
           to="/auth/login"
         />
