@@ -8,6 +8,7 @@ const options = [
 ];
 
 <Select
+  name="basic"
   onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
@@ -24,6 +25,7 @@ const options = [
 ];
 
 <Select
+  name="selected"
   onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
   placeholder="Select one..."
@@ -45,7 +47,7 @@ const options = [
   { value: 'Tea', label: 'Tea' },
 ];
 
-<Select options={ options } clearable />
+<Select name="clearable" options={ options } clearable />
 ```
 
 ---
@@ -55,13 +57,13 @@ const options = [
 #### Disabled
 
 ```
-<Select disabled />
+<Select name="disabled" disabled />
 ```
 
 #### Loading
 
 ```
-<Select loading />
+<Select name="loading" loading />
 ```
 
 #### Select with no portal
@@ -74,10 +76,30 @@ const options = [
 ];
 
 <Select
+  name="no-portal"
   onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   disablePortal
   options={ options }
   placeholder="Select one..."
+/>
+```
+
+#### autoOpen enabled
+
+_Note: Add `autoOpen` prop to see example (because it was removed to avoid autoscroll in docs)._
+
+```
+const options = [
+  { value: 'Geoff', label: 'Geoff' },
+  { value: 'Colby', label: 'Colby', selected: true },
+  { value: 'Michael', label: 'Sig' },
+];
+
+<Select
+  name="select-auto-open"
+  /* autoOpen */
+  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
+  options={ options }
 />
 ```
 
@@ -95,6 +117,7 @@ const options = [
 ];
 
 <Select
+  name="multiselect"
   type="multiselect"
   options={ options }
 />
@@ -110,6 +133,7 @@ const options = [
 ];
 
 <Select
+  name="multiselect-options"
   type="multiselect"
   onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
   options={ options }
@@ -118,23 +142,5 @@ const options = [
     'Option 1',
     'Option 2',
   ] }
-/>
-```
-
-#### autoOpen Enabled
-
-_SIG - Temporarily removed to prevent autoscroll_
-
-```
-const options = [
-  { value: 'Geoff', label: 'Geoff' },
-  { value: 'Colby', label: 'Colby', selected: true },
-  { value: 'Michael', label: 'Sig' },
-];
-
-<Select
-  onChange={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-
-  options={ options }
 />
 ```
