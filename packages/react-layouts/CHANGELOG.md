@@ -1,3 +1,7 @@
+# 0.2.4
+
+- Add flex:1 rule to auth-layout-container
+
 # 0.2.3
 
 - Bug fix: export layouts individually from index.js
