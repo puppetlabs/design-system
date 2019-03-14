@@ -1,10 +1,9 @@
 {
   "name": "@puppet/react-layouts",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "main": "dist/react-layouts.js",
-  "module": "src/index.js",
   "scripts": {
     "build": "./scripts/build",
     "build:styleguide": "./scripts/build-styleguide",
