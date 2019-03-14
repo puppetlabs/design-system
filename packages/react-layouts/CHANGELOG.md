@@ -1,6 +1,14 @@
-# 0.2.1
+# 0.2.3
+
+- Bug fix: export layouts individually from index.js
+
+# 0.2.2
 
 - Bug fix: remove modules entry from package.json
+
+# 0.2.1
+
+- Update readme
 
 # 0.2.0
 

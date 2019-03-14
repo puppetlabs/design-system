@@ -5,7 +5,7 @@ import Login from 'auth/Login';
 import ResetPassword from 'auth/ResetPassword';
 import ResetPasswordSuccess from 'auth/ResetPasswordSuccess';
 
-export default {
+export {
   Confirmation,
   ForgotPassword,
   ForgotPasswordSent,
