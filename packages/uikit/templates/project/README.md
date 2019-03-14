@@ -6,7 +6,8 @@
 
 ## Developing locally
 
-Run `npm start` to boot up a development server. It will automatically hot-reload on file changes.
+- Run `npm start` to boot up a development server.
+- Open [http://localhost:3000](http://localhost:3000). It will automatically hot-reload on file changes.
 
 ## Build static asset bundles:
 
