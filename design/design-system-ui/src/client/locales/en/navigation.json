@@ -9,18 +9,18 @@
     "home": "Home",
     "colors": "Colors",
     "typography": "Typography",
-    "icons": "Icons and Logos",
+    "icons": "Icons and logos",
     "alignments": "Alignments",
     "containers": "Containers",
-    "components": "Components",
+    "components": "Component principles",
     "buttons": "Buttons",
-    "formComponents": "Form Components",
+    "formComponents": "Form components",
     "dialogs": "Dialogs",
     "uncategorized": "Uncategorized",
-    "justInCase": "Just in Case",
+    "justInCase": "Just in case",
     "navigation": "Navigation",
-    "formLayouts": "Form Layouts",
-    "reactComponents": "React Components",
-    "guiTextGuidelines": "GUI Text Guidelines"
+    "formPatterns": "Form layouts",
+    "reactComponents": "React components",
+    "guiTextGuidelines": "GUI text guidelines"
   }
 }

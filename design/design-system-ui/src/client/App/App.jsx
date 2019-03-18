@@ -1,12 +1,10 @@
 import React, { Suspense } from 'react';
 import { hot } from 'react-hot-loader'; // this should only be done in the top level App component
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
-
 import i18n from 'i18n';
-import Home from 'routes/Home';
-import NotFound from 'routes/NotFound';
 import Sidebar from 'components/Sidebar';
+import AppRouter from './AppRouter';
 
 import './App.scss';
 
@@ -17,10 +15,7 @@ const App = () => (
         <div className="app">
           <Sidebar />
           <div className="app-main-content">
-            <Switch>
-              <Route exact path="/" component={Home} />
-              <Route component={NotFound} />
-            </Switch>
+            <AppRouter />
           </div>
         </div>
       </Router>
