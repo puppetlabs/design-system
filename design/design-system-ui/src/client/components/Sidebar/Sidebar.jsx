@@ -11,7 +11,7 @@ const propTypes = {
 
 const AppSidebar = ({ t, location: { pathname } }) => (
   <Sidebar>
-    <Sidebar.Header logo="Product" as={Link} to="/" />
+    <Sidebar.Header logo="Design System" as={Link} to="/" />
     <Sidebar.Navigation>
       <Sidebar.Section label={t('sections.pages')}>
         <Sidebar.Item
