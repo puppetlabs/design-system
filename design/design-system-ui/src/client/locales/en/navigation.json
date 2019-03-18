@@ -1,12 +1,26 @@
 {
   "sections": {
-    "pages": "Pages",
-    "actions": "Actions"
+    "overview": "Overview",
+    "styleguide": "Styleguide",
+    "api": "API Docs",
+    "writing": "Writing Guides"
   },
   "pages": {
-    "home": "Home"
-  },
-  "actions": {
-    "export": "Export"
+    "home": "Home",
+    "colors": "Colors",
+    "typography": "Typography",
+    "icons": "Icons and Logos",
+    "alignments": "Alignments",
+    "containers": "Containers",
+    "components": "Components",
+    "buttons": "Buttons",
+    "formComponents": "Form Components",
+    "dialogs": "Dialogs",
+    "uncategorized": "Uncategorized",
+    "justInCase": "Just in Case",
+    "navigation": "Navigation",
+    "formLayouts": "Form Layouts",
+    "reactComponents": "React Components",
+    "guiTextGuidelines": "GUI Text Guidelines"
   }
 }
