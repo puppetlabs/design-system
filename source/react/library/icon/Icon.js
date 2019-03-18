@@ -43,7 +43,7 @@ export const AVAILABLE_ICONS = [
   'duplicate',
   'ellipsis',
   'email',
-  'engagament',
+  'engagement',
   'excel',
   'eye',
   'filters',

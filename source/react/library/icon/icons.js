@@ -438,7 +438,7 @@ const icons = {
     ),
   },
 
-  engagament: {
+  engagement: {
     large: (
       <path
         fillRule="evenodd"
