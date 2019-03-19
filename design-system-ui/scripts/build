@@ -1,0 +1,9 @@
+#!/bin/sh
+
+(
+  if [ -e .env.production ]
+  then
+      export $(cat .env.production | xargs)
+  fi
+  ./node_modules/.bin/webpack --config=config/production.webpack.config.js
+)
