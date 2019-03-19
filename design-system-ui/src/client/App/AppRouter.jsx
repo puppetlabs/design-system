@@ -14,6 +14,7 @@ import Uncategorized from '../routes/Uncategorized';
 import JustInCase from '../routes/JustInCase';
 import Navigation from '../routes/Navigation';
 import FormPatterns from '../routes/FormPatterns';
+import ModalLayouts from '../routes/ModalLayouts';
 import ReactComponents from '../routes/ReactComponents';
 
 import NotFound from '../routes/NotFound';
@@ -75,6 +76,10 @@ const routes = [
   {
     path: '/form-patterns',
     component: FormPatterns,
+  },
+  {
+    path: '/modal-layouts',
+    component: ModalLayouts,
   },
   {
     path: '/react-components',

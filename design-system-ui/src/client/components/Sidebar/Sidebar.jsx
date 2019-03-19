@@ -53,7 +53,7 @@ const AppSidebar = ({ t, location: { pathname } }) => (
         />
         <Sidebar.Item
           title={t('pages.components')}
-          icon="duplicate"
+          icon="build"
           as={Link}
           to="/components"
           active={pathname === '/components'}
@@ -113,6 +113,13 @@ const AppSidebar = ({ t, location: { pathname } }) => (
           as={Link}
           to="/form-patterns"
           active={pathname === '/form-patterns'}
+        />
+        <Sidebar.Item
+          title={t('pages.modalLayouts')}
+          icon="duplicate"
+          as={Link}
+          to="/modal-layouts"
+          active={pathname === '/modal-layouts'}
         />
       </Sidebar.Section>
       <Sidebar.Section label={t('sections.api')}>
