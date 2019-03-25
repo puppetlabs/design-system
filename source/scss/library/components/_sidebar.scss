@@ -214,11 +214,10 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   .rc-sidebar-item-title {
     color: $puppet-sidebar-item-color-active;
   }
-}
 
-.rc-sidebar-item-link-selected .rc-icon,
-.rc-sidebar-item-link-selected:hover .rc-icon {
-  fill: $puppet-sidebar-item-icon-fill-active;
+  .rc-icon {
+    fill: $puppet-sidebar-item-icon-fill-active;
+  }
 }
 
 .rc-sidebar-accordion {
