@@ -208,7 +208,8 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
 
 // Selected Item
 .rc-sidebar-item-link-selected,
-.rc-sidebar-item-link-selected:hover {
+.rc-sidebar-item-link-selected:hover,
+.rc-sidebar-item-link.active {
   background: $puppet-sidebar-item-bg-active;
 
   .rc-sidebar-item-title {
