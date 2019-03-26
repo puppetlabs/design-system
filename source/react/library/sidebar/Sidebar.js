@@ -33,7 +33,13 @@ const defaultProps = {
  * support nesting beyond items in sections.
  *
  * This component is stateless so you will need to manage which `Sidebar.Item`
- * is currently active.
+ * is currently highlighted with the `active` prop or use it with React Router's
+ * [NavLink](https://reacttraining.com/react-router/web/api/NavLink) component,
+ * which will apply an `active` class when the URL matches:
+ *
+ * ```jsx
+ * <Sidebar.Item title="Hello" as={NavLink} to="/hello" />
+ * ```
  */
 const Sidebar = props => {
   const { className, minimized, ...rest } = props;
