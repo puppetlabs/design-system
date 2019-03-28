@@ -5,11 +5,11 @@ import classnames from 'classnames';
 const propTypes = {
   actions: PropTypes.node,
   /** Primary title */
-  title: PropTypes.string,
+  title: PropTypes.node,
   /** Class to the title eelement */
   titleClassName: PropTypes.string,
   /** Secondary title */
-  subtitle: PropTypes.string,
+  subtitle: PropTypes.node,
   /** Controls to update the contents of the card */
   controls: PropTypes.node,
   /** Card description */
