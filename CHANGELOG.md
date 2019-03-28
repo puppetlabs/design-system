@@ -1,7 +1,9 @@
 # 5.0.0-alpha.18
 
+- Enable installing react-components as a [git URL dependency](https://docs.npmjs.com/files/package.json#git-urls-as-dependencies) to reference forks, branches, or commits, e.g. `npm install vine77/react-components#5.0-development`
 - Add compatibility with React Router to the `Sidebar`
 - Remove text underline for `<Button as="a">`
+- Add React app for http://designsystem.puppetlabs.net
 
 # 5.0.0-alpha.17
 
