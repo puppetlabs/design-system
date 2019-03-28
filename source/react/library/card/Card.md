@@ -1,6 +1,6 @@
 Cards provide flexible containers for related pieces of UI content. There are primary and secondary variants available at multiple elevations. Each may become 'selectable' for use in a selectable list.
 
-Design specification: [http://styleguide.puppetlabs.net/Containers.html](http://styleguide.puppetlabs.net/Containers.html)
+Design specification: <a href="http://designsystem.puppetlabs.net/containers" target="_top">designsystem.puppetlabs.net/containers</a>
 
 ### Primary Cards
 

@@ -154,7 +154,7 @@ A set of common variables and mixins can be found in the [public scss directory]
 
 ## Styleguide
 
-The Puppet Styleguide is published to http://styleguide.puppetlabs.net
+The Puppet Design System is published to http://designsystem.puppetlabs.net
 
 The React components in this repo are intended to correspond to Sketch symbols in the UI library ([design/puppet-ui-library.sketch](design/puppet-ui-library.sketch)) and implementations should follow the Puppet Styleguide ([design/puppet-styleguide.sketch](design/puppet-styleguide.sketch)). (The HTML version of the Styleguide is located at [design/styleguide/index.html](design/styleguide/index.html), whose PNGs can be updated by running `./design/update-styleguide.sh`).
 
