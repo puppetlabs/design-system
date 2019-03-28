@@ -1,3 +1,8 @@
+# 5.0.0-alpha.18
+
+- Add compatibility with React Router to the `Sidebar`
+- Remove text underline for `<Button as="a">`
+
 # 5.0.0-alpha.17
 
 - Bug fix: Symmetrize shallowDiff helper so that shallowDiff({}, { key: 'value' }) returns true
