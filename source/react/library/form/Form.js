@@ -123,7 +123,7 @@ const renderField = (child, updatedFieldProps) =>
 
 const renderChildren = (children, updatedFieldPropMap) =>
   React.Children.toArray(children)
-    .filter(child => child && child.props)
+    .filter(child => child)
     .map(child => {
       /**
        * If the child is a field, do special field rendering
@@ -135,7 +135,7 @@ const renderChildren = (children, updatedFieldPropMap) =>
       /**
        * If the child has children, recurse. This will cover Form.Section and any wrapper divs
        */
-      if (child.props.children) {
+      if (child.props && child.props.children) {
         return React.cloneElement(child, {
           children: renderChildren(child.props.children, updatedFieldPropMap),
         });
