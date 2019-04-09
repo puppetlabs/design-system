@@ -38,7 +38,6 @@ import Form from './react/library/form';
 import Filters from './react/library/filters';
 import Checkbox from './react/library/checkbox/Checkbox';
 import Content from './react/library/content/Content';
-import Header from './react/library/header';
 import Portal from './react/library/portal';
 import Heading from './react/library/heading';
 import Text from './react/library/text';
@@ -79,7 +78,6 @@ export {
   Filters,
   Checkbox,
   Content,
-  Header,
   Sidebar,
   Portal,
   Heading,
