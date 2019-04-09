@@ -1,3 +1,11 @@
+# 5.0.0-alpha.19
+- **Breaking change** Remove tabs component
+- **Breaking change** Remove grid component
+- **Breaking change** Remove header component
+- **Breaking change** Remove slider component
+- **Breaking change** Remove breadcrumb component
+- Improve Text component documentation
+
 # 5.0.0-alpha.18
 
 - Enable installing react-components as a [git URL dependency](https://docs.npmjs.com/files/package.json#git-urls-as-dependencies) to reference forks, branches, or commits, e.g. `npm install vine77/react-components#5.0-development`
