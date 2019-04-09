@@ -57,6 +57,7 @@ class Tooltip extends React.Component {
 
     if (target) {
       bindParentScroll(target, this.setPosition);
+      target.addEventListener('mouseover', this.setPosition);
     }
   }
 
@@ -74,6 +75,7 @@ class Tooltip extends React.Component {
 
     if (target) {
       unbindParentScroll(target, this.setPosition);
+      target.removeEventListener('mouseover', this.setPosition);
     }
   }
 
