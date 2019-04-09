@@ -28,8 +28,6 @@ import List from './react/library/list/List';
 import ListItem from './react/library/list/ListItem';
 import Modal from './react/library/modals/Modal';
 import ConfirmationModal from './react/library/modals/ConfirmationModal';
-import Tabs from './react/library/tabs/Tabs';
-import TabPanel from './react/library/tabs/TabPanel';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 import Table from './react/library/table/Table';
 import ColumnSelect from './react/library/table/ColumnSelect';
@@ -72,8 +70,6 @@ export {
   ListItem,
   Modal,
   ConfirmationModal,
-  Tabs,
-  TabPanel,
   TooltipHoverArea,
   Table,
   ColumnSelect,
