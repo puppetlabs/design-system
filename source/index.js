@@ -4,9 +4,6 @@ import MenuList from './react/library/menu/MenuList';
 import MenuHeader from './react/library/menu/MenuHeader';
 import MenuSection from './react/library/menu/MenuSection';
 
-// Breadcrumbs
-import Breadcrumb from './react/library/breadcrumb';
-
 // Buttons
 import Button from './react/library/buttons/Button';
 import ButtonGroup from './react/library/buttons/ButtonGroup';
@@ -28,8 +25,6 @@ import List from './react/library/list/List';
 import ListItem from './react/library/list/ListItem';
 import Modal from './react/library/modals/Modal';
 import ConfirmationModal from './react/library/modals/ConfirmationModal';
-import Tabs from './react/library/tabs/Tabs';
-import TabPanel from './react/library/tabs/TabPanel';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 import Table from './react/library/table/Table';
 import ColumnSelect from './react/library/table/ColumnSelect';
@@ -40,9 +35,7 @@ import Form from './react/library/form';
 import Filters from './react/library/filters';
 import Checkbox from './react/library/checkbox/Checkbox';
 import Content from './react/library/content/Content';
-import Header from './react/library/header';
 import Portal from './react/library/portal';
-import Grid from './react/library/grid';
 import Heading from './react/library/heading';
 import Text from './react/library/text';
 import Alert from './react/library/alert';
@@ -51,7 +44,6 @@ import Link from './react/library/link';
 import Logo from './react/library/logo';
 
 export {
-  Breadcrumb,
   Button,
   ButtonGroup,
   Card,
@@ -72,8 +64,6 @@ export {
   ListItem,
   Modal,
   ConfirmationModal,
-  Tabs,
-  TabPanel,
   TooltipHoverArea,
   Table,
   ColumnSelect,
@@ -84,10 +74,8 @@ export {
   Filters,
   Checkbox,
   Content,
-  Header,
   Sidebar,
   Portal,
-  Grid,
   Heading,
   Text,
   Alert,
