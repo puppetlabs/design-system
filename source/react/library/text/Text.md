@@ -1,4 +1,4 @@
-The text component provides an encapsulated way to use typography consistent with design system rules. Together the `size` and `color`
+The text component provides an encapsulated way to use typography consistent with design system rules. Together the `size` and `color` props determine the rendered typographical variant.
 
 Design specification: <a href="http://designsystem.puppetlabs.net/typography" target="_top">designsystem.puppetlabs.net/typography</a>
 
