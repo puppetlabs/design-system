@@ -2,6 +2,7 @@
   "sections": {
     "overview": "Overview",
     "styleguide": "Styleguide",
+    "invision": "Inspectable",
     "api": "API Docs",
     "writing": "Writing Guides"
   },
@@ -22,6 +23,7 @@
     "formPatterns": "Form layouts",
     "modalLayouts": "Modal layouts",
     "reactComponents": "React components",
-    "guiTextGuidelines": "GUI text guidelines"
+    "guiTextGuidelines": "Text guidelines (Confluence)",
+    "invision": "Styleguide (InVision)"
   }
 }
