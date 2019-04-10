@@ -214,6 +214,7 @@ Fix regressions in three areas:
 - Add `secondary` boolean prop to SplitButton to use the secondary background color
 - Update Sketchfiles
 - Set default apply apply label
+- Update tooltip position on hover over the target element
 
 # 4.16.0
 
