@@ -50,12 +50,17 @@ $puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
   width: 16px;
 }
 
-.rc-checkbox-error {
-  border: $puppet-checkbox-border-error;
+.rc-checkbox:focus {
+  box-shadow: $puppet-common-focus-outline;
 }
 
 .rc-checkbox:hover {
   border: $puppet-checkbox-border-hover;
+}
+
+.rc-checkbox-error,
+.rc-checkbox-error:hover {
+  border: $puppet-checkbox-border-error;
 }
 
 .rc-checkbox:checked + .rc-icon {
