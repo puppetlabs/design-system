@@ -1,7 +1,8 @@
 $puppet-checkbox-border: $puppet-border !default;
 $puppet-checkbox-border-hover: $puppet-border-hover !default;
-$puppet-checkbox-border-radius: $puppet-border-radius-small !default;
+$puppet-checkbox-border-radius: $puppet-border-radius !default;
 $puppet-checkbox-icon-fill: $puppet-action-base !default;
+$puppet-checkbox-icon-fill-hover: $puppet-shared-fill-hover !default;
 $puppet-checkbox-padding: $puppet-small !default;
 $puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
 
@@ -9,6 +10,10 @@ $puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
   align-items: center;
   cursor: pointer;
   display: flex;
+}
+
+.rc-checkbox-input:not(:last-of-type) {
+  margin-bottom: 14px;
 }
 
 .rc-checkbox-container {
@@ -51,10 +56,6 @@ $puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
 
 .rc-checkbox:hover {
   border: $puppet-checkbox-border-hover;
-
-  &.rc-checkbox:checked {
-    border: $puppet-checkbox-border;
-  }
 }
 
 .rc-checkbox:checked + .rc-icon {
@@ -62,11 +63,18 @@ $puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
   fill: $puppet-checkbox-icon-fill;
 }
 
-.rc-checkbox:disabled {
+.rc-checkbox:hover + .rc-icon {
+  fill: $puppet-checkbox-icon-fill-hover;
+}
+
+.rc-checkbox:disabled,
+.rc-checkbox:disabled:hover {
+  border: $puppet-checkbox-border;
   cursor: default;
   opacity: $puppet-disabled-opacity;
 
   + .rc-icon {
+    fill: $puppet-checkbox-icon-fill;
     opacity: $puppet-disabled-opacity;
   }
 }

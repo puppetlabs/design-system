@@ -3,6 +3,7 @@ $puppet-shared-input-border: 1px solid $puppet-n400;
 $puppet-shared-input-border-hover: 1px solid $puppet-n600;
 $puppet-shared-input-border-error: 1px solid $puppet-r500;
 $puppet-shared-disabled-input-opacity: 0.4;
+$puppet-shared-fill-hover: $puppet-b400;
 
 @import './checkbox';
 @import './forms';
