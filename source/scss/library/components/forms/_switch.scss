@@ -1,8 +1,8 @@
 // Switch
 // ----------------------------------------------------------------------------
-$puppet-switch-height: 21px !default; // Todo: Base on grid
-$puppet-switch-width: 47px !default; // Todo: Base on grid
-$puppet-switch-padding: 5px !default; // Todo : Base on grid
+$puppet-switch-height: 16px !default;
+$puppet-switch-width: 40px !default;
+$puppet-switch-padding: 4px !default;
 $puppet-switch-handle-height: $puppet-switch-height -
   ($puppet-switch-padding * 2) !default;
 
@@ -27,7 +27,7 @@ $puppet-switch-off-icon-size: 12px !default;
 
 .rc-switch-container {
   display: inline-block;
-  height: 21px;
+  height: $puppet-switch-height;
   margin-right: 10px;
   position: relative;
 }
@@ -153,8 +153,15 @@ $puppet-switch-off-icon-size: 12px !default;
   position: absolute;
 }
 
-.rc-switch-error {
-  // we need error state
+
+.rc-switch-checkbox:focus {
+  box-shadow: $puppet-common-focus-outline;
 }
+
+.rc-switch-input:hover .rc-switch-checkbox:checked .rc-switch-label,
+.rc-switch-input:hover .rc-switch-error .rc-switch-checkbox:checked .rc-switch-label {
+  background: $puppet-switch-on-bg-hover;
+}
+
 
 /* stylelint-enable property-no-vendor-prefix */

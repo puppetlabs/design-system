@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-import Icon from '../icon/Icon';
 import Text from '../text/Text';
 
 const propTypes = {
@@ -20,6 +19,10 @@ const propTypes = {
   inputRef: PropTypes.func,
   /** Change handler. Passed in order: new value, original event. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
   onChange: PropTypes.func,
+  /** Custom user-provided className */
+  className: PropTypes.string,
+  /** Custom user-provided inline styles */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -28,6 +31,8 @@ const defaultProps = {
   error: false,
   onChange() {},
   inputRef() {},
+  className: '',
+  style: {},
 };
 
 const Switch = ({
@@ -44,6 +49,7 @@ const Switch = ({
 }) => (
   <Text
     as="label"
+    size="small"
     htmlFor={name}
     className={classNames('rc-switch-input', className)}
     style={style}
@@ -63,14 +69,7 @@ const Switch = ({
         onChange={e => onChange(e.target.checked, e)}
         {...otherProps}
       />
-      <div className="rc-switch-label">
-        <span className="rc-switch-label-on">
-          <Icon type="check" size="small" />
-        </span>
-        <span className="rc-switch-label-off">
-          <Icon type="close" size="small" />
-        </span>
-      </div>
+      <div className="rc-switch-label" />
     </div>
     {label}
   </Text>
