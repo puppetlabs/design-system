@@ -1,8 +1,8 @@
 // Switch
 // ----------------------------------------------------------------------------
-$puppet-switch-height: 16px !default;
+$puppet-switch-height: $puppet-medium !default;
 $puppet-switch-width: 40px !default;
-$puppet-switch-padding: 4px !default;
+$puppet-switch-padding: $puppet-tiny !default;
 $puppet-switch-handle-height: $puppet-switch-height -
   ($puppet-switch-padding * 2) !default;
 
@@ -13,11 +13,10 @@ $puppet-switch-on-icon-fill: $puppet-white !default;
 $puppet-switch-on-icon-size: 12px !default;
 
 $puppet-switch-off-bg: $puppet-action-subtle !default;
-$puppet-switch-off-bg-hover: $puppet-action-hover-subtle !default;
 $puppet-switch-off-text: $puppet-font-color-base !default;
 $puppet-switch-off-icon-fill: $puppet-switch-on-bg;
-$puppet-switch-off-icon-fill-hover: $puppet-action-hover;
-$puppet-switch-off-icon-size: 12px !default;
+$puppet-switch-off-icon-fill-hover: $puppet-switch-on-bg-hover;
+$puppet-switch-off-icon-size: $puppet-switch-on-icon-size;
 
 .rc-switch-input {
   align-items: center;
@@ -32,7 +31,7 @@ $puppet-switch-off-icon-size: 12px !default;
 .rc-switch-container {
   display: inline-block;
   height: $puppet-switch-height;
-  margin-right: 8px;
+  margin-right: $puppet-small;
   position: relative;
 }
 
@@ -92,10 +91,6 @@ $puppet-switch-off-icon-size: 12px !default;
   transition: all 0.2s;
   width: $puppet-switch-width;
 
-  &:hover {
-    background: $puppet-switch-off-bg-hover;
-  }
-
   .rc-icon {
     position: absolute;
     top: 50%;
@@ -115,10 +110,6 @@ $puppet-switch-off-icon-size: 12px !default;
     width: $puppet-switch-handle-height;
   }
 
-  &:hover::after {
-    background: $puppet-switch-off-icon-fill-hover;
-  }
-
   .rc-switch-label-off {
     display: block;
     left: 0;
@@ -130,10 +121,6 @@ $puppet-switch-off-icon-size: 12px !default;
     height: $puppet-switch-off-icon-size;
     right: $puppet-switch-padding * 1.4;
     width: $puppet-switch-off-icon-size;
-  }
-
-  &:hover .rc-switch-label-off .rc-icon {
-    fill: $puppet-switch-off-icon-fill-hover;
   }
 
   .rc-switch-label-on {
@@ -162,13 +149,21 @@ $puppet-switch-off-icon-size: 12px !default;
   box-shadow: $puppet-common-focus-outline;
 }
 
-.rc-switch-checkbox:checked:hover + .rc-switch-label {
+.rc-switch-checkbox:not(:disabled):checked:hover + .rc-switch-label {
   background: $puppet-switch-on-bg-hover;
 }
 
-.rc-switch-checkbox:not(:checked):hover + .rc-switch-label::after {
-  background: $puppet-switch-on-bg-hover;
+.rc-switch-checkbox:not(:disabled):not(:checked):hover + .rc-switch-label::after {
+  background: $puppet-switch-off-icon-fill-hover;
 }
 
+.rc-switch-checkbox:disabled,
+.rc-switch-checkbox:disabled:hover {
+  cursor: default;
+
+  + .rc-switch-label {
+    opacity: $puppet-disabled-opacity;
+  }
+}
 
 /* stylelint-enable property-no-vendor-prefix */

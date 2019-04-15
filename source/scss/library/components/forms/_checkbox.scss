@@ -17,8 +17,8 @@ $puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
 }
 
 .rc-checkbox-container {
-  height: 16px;
-  margin-right: 8px;
+  height: $puppet-medium;
+  margin-right: $puppet-small;
   position: relative;
 }
 
@@ -42,12 +42,12 @@ $puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
 .rc-checkbox + .rc-icon {
   animation: 200ms 1 ease-in rc-zoom-in;
   display: none;
-  height: 16px;
+  height: $puppet-medium;
   left: 2px;
   pointer-events: none;
   position: absolute;
   top: -1px;
-  width: 16px;
+  width: $puppet-medium;
 }
 
 .rc-checkbox:focus {

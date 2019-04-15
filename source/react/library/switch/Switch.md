@@ -9,7 +9,6 @@ const exampleStyle = { marginRight: 10 };
   <Switch name="switch-ex-unchecked" label="Unchecked" style={exampleStyle} />
   <Switch name="switch-ex-checked" label="Checked" style={exampleStyle} checked />
   <Switch name="switch-ex-disabled" label="Disabled" style={exampleStyle} checked disabled/>
-  <Switch name="switch-ex-error" label="Error" style={exampleStyle} error />
 </div>
 ```
 
