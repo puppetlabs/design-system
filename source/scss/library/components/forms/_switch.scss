@@ -15,8 +15,8 @@ $puppet-switch-on-icon-size: 12px !default;
 $puppet-switch-off-bg: $puppet-action-subtle !default;
 $puppet-switch-off-bg-hover: $puppet-action-hover-subtle !default;
 $puppet-switch-off-text: $puppet-font-color-base !default;
-$puppet-switch-off-icon-fill: $puppet-icon-fill-base;
-$puppet-switch-off-icon-fill-hover: $puppet-icon-fill-hover;
+$puppet-switch-off-icon-fill: $puppet-switch-on-bg;
+$puppet-switch-off-icon-fill-hover: $puppet-action-hover;
 $puppet-switch-off-icon-size: 12px !default;
 
 .rc-switch-input {
@@ -25,10 +25,14 @@ $puppet-switch-off-icon-size: 12px !default;
   display: flex;
 }
 
+.rc-switch-input:not(:last-of-type) {
+  margin-bottom: 12px;
+}
+
 .rc-switch-container {
   display: inline-block;
   height: $puppet-switch-height;
-  margin-right: 10px;
+  margin-right: 8px;
   position: relative;
 }
 
@@ -158,8 +162,11 @@ $puppet-switch-off-icon-size: 12px !default;
   box-shadow: $puppet-common-focus-outline;
 }
 
-.rc-switch-input:hover .rc-switch-checkbox:checked .rc-switch-label,
-.rc-switch-input:hover .rc-switch-error .rc-switch-checkbox:checked .rc-switch-label {
+.rc-switch-checkbox:checked:hover + .rc-switch-label {
+  background: $puppet-switch-on-bg-hover;
+}
+
+.rc-switch-checkbox:not(:checked):hover + .rc-switch-label::after {
   background: $puppet-switch-on-bg-hover;
 }
 
