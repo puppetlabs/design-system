@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 
 import Item from './ListItem';
 
 const propTypes = {
-  sortable: PropTypes.bool,
   children: PropTypes.node,
   /** either "ordered" or "unordered" */
   type: PropTypes.string,
@@ -13,21 +11,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-  sortable: false,
   onSort: () => {},
   type: 'unordered',
   children: null,
 };
-
-const SortableItem = SortableElement(({ value }) => value);
-
-const SortableList = SortableContainer(({ items }) => {
-  const list = items.map((i, idx) => (
-    <SortableItem key={i.key} index={idx} value={i} />
-  ));
-
-  return <div>{list}</div>;
-});
 
 /**
  * `List` is a container for rendering `ListItem`s.
@@ -45,21 +32,9 @@ class List extends React.Component {
   }
 
   render() {
-    const { type, sortable, children: propsChildren } = this.props;
-    let children = React.Children.toArray(propsChildren);
+    const { type, children: propsChildren } = this.props;
+    const children = React.Children.toArray(propsChildren);
     let jsx;
-
-    if (sortable) {
-      children = (
-        <SortableList
-          items={children}
-          onSortEnd={this.onSortEnd}
-          helperClass="rc-list-dragging"
-          pressDelay={100}
-          lockToContainerEdges
-        />
-      );
-    }
 
     if (type === 'ordered') {
       jsx = <ol className="rc-list rc-list-ordered">{children}</ol>;

@@ -96,7 +96,6 @@
     "deep-equal": "^1.0.1",
     "hoist-non-react-statics": "^3.1.0",
     "react-onclickoutside": "^6.7.0",
-    "react-sortable-hoc": "^0.6.8",
     "react-transition-group": "^2.2.1"
   }
 }

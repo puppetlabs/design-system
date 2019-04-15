@@ -6,7 +6,7 @@ import Filter from './FilterItem';
 import Form from './FilterForm';
 
 import Button from '../buttons/Button';
-import List from '../list/List';
+import List from './List';
 
 import { filterOperators } from '../../constants';
 
