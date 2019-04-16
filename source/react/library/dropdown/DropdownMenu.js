@@ -3,7 +3,7 @@ import React from 'react';
 import classnames from 'classnames';
 import Popover from '../popover/Popover';
 import Button from '../buttons/Button';
-import Menu from '../menu/Menu';
+import Menu from '../../internal/menu/Menu';
 
 const propTypes = {
   anchor: PropTypes.string,

@@ -1,9 +1,3 @@
-// Menu
-import Menu from './react/library/menu/Menu';
-import MenuList from './react/library/menu/MenuList';
-import MenuHeader from './react/library/menu/MenuHeader';
-import MenuSection from './react/library/menu/MenuSection';
-
 // Buttons
 import Button from './react/library/buttons/Button';
 import ButtonGroup from './react/library/buttons/ButtonGroup';
@@ -52,10 +46,6 @@ export {
   Input,
   DropdownLabel,
   DropdownMenu,
-  Menu,
-  MenuHeader,
-  MenuSection,
-  MenuList,
   Switch,
   Loading,
   Modal,

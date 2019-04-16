@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import Icon from '../icon/Icon';
+import Icon from '../../library/icon/Icon';
 
 const propTypes = {
   title: PropTypes.string,
