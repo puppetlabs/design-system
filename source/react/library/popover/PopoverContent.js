@@ -5,7 +5,7 @@ import { isNodeInRoot } from '../../helpers/statics';
 
 import portal from '../portal';
 import togglable from '../togglable';
-import Menu from '../../internal/menu/Menu';
+import Menu from '../../internal/deprecated-menu/Menu';
 import Button from '../buttons/Button';
 
 const propTypes = {

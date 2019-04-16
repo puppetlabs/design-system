@@ -14,7 +14,7 @@ import {
 import Icon from '../icon/Icon';
 import Loading from '../loading/Loading';
 import Input from '../input/Input';
-import Menu from '../../internal/menu/Menu';
+import Menu from '../../internal/deprecated-menu/Menu';
 import Popover from '../popover/Popover';
 import Button from '../buttons/Button';
 import Text from '../text/Text';
