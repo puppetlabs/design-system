@@ -188,7 +188,7 @@ const updateScrollPosition = ({ list }) => {
   const parent = list.parentElement;
   const children = Array.from(list.children);
   const selectedChildren = children.filter(c =>
-    hasClass(c, 'rc-menu-item-focused'),
+    hasClass(c, 'rc-menu-deprecateditem-focused'),
   );
 
   if (selectedChildren.length) {
@@ -553,7 +553,7 @@ class Select extends React.Component {
     let menuList = this.renderMenuList();
     if (!menuList.props.options.length) {
       menuList = (
-        <Text color="subtle" className="rc-menu-item">
+        <Text color="subtle" className="rc-menu-deprecateditem">
           {noResultsLabel}
         </Text>
       );

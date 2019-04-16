@@ -84,21 +84,21 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
   border: $border;
   border-radius: $puppet-menu-border-radius;
 
-  .rc-menu-item .rc-icon {
+  .rc-menu-deprecateditem .rc-icon {
     fill: $icon-fill;
     transition: fill 0.2s ease-in-out;
   }
 
-  .rc-menu-item a {
+  .rc-menu-deprecateditem a {
     background: $bg;
     color: $color;
     transition: background-color 0.2s ease-in-out;
   }
 
-  .rc-menu-item:hover a,
-  .rc-menu-item-focused a,
-  .rc-menu-item-selected:hover a,
-  .rc-menu-item-focused.rc-menu-item-selected a {
+  .rc-menu-deprecateditem:hover a,
+  .rc-menu-deprecateditem-focused a,
+  .rc-menu-deprecateditem-selected:hover a,
+  .rc-menu-deprecateditem-focused.rc-menu-deprecateditem-selected a {
     background: $bg-hover;
     color: $color-hover;
 
@@ -107,43 +107,43 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
     }
   }
 
-  .rc-menu-item-selected a {
+  .rc-menu-deprecateditem-selected a {
     background: $bg-active;
     color: $color-active;
   }
 
-  .rc-menu-item-selected .rc-icon {
+  .rc-menu-deprecateditem-selected .rc-icon {
     fill: $icon-fill-active;
   }
 
-  .rc-menu-item-disabled a {
+  .rc-menu-deprecateditem-disabled a {
     opacity: $puppet-disabled-opacity;
   }
 
-  .rc-menu-item-disabled:hover a,
-  .rc-menu-item-disabled.rc-menu-item-focused a {
+  .rc-menu-deprecateditem-disabled:hover a,
+  .rc-menu-deprecateditem-disabled.rc-menu-deprecateditem-focused a {
     background: $bg;
     color: $color-hover;
   }
 
-  .rc-menu-item-disabled.rc-menu-item-selected:hover a {
+  .rc-menu-deprecateditem-disabled.rc-menu-deprecateditem-selected:hover a {
     background: $bg;
     color: $color-active;
   }
 
-  .rc-menu-header {
+  .rc-menu-deprecatedheader {
     border-bottom: $border;
   }
 
-  .rc-menu-title {
+  .rc-menu-deprecatedtitle {
     color: $title-color;
   }
 
-  .rc-menu-section {
+  .rc-menu-deprecatedsection {
     border-bottom: $border;
   }
 
-  .rc-menu-section-title {
+  .rc-menu-deprecatedsection-title {
     color: $section-title-color;
   }
 }
@@ -169,12 +169,12 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
 
 // Menu Construction
 .rc-menu {
-  .rc-menu-sections {
+  .rc-menu-deprecatedsections {
     max-height: 200px;
     overflow: scroll;
   }
 
-  .rc-menu-header {
+  .rc-menu-deprecatedheader {
     align-items: center;
     border-radius: $puppet-menu-border-radius $puppet-menu-border-radius 0 0;
     display: flex;
@@ -182,7 +182,7 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
     padding: $puppet-menu-header-padding;
   }
 
-  .rc-menu-title {
+  .rc-menu-deprecatedtitle {
     flex: 1 1 0%;
     font-family: $puppet-menu-title-font-family;
     font-size: $puppet-menu-title-font-size;
@@ -194,13 +194,13 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
   }
 }
 
-.rc-menu-list {
+.rc-menu-deprecatedlist {
   margin: 0;
   padding: 0;
 }
 
 // Close Icon in Menu Header
-.rc-menu-header .rc-menu-close {
+.rc-menu-deprecatedheader .rc-menu-deprecatedclose {
   align-items: center;
   cursor: pointer;
   display: flex;
@@ -217,11 +217,11 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
   }
 }
 
-.rc-menu-close:focus {
+.rc-menu-deprecatedclose:focus {
   outline: none;
 }
 
-.rc-menu-item {
+.rc-menu-deprecateditem {
   font-size: $puppet-menu-item-font-size;
   font-weight: $puppet-menu-item-font-weight;
   line-height: $puppet-menu-item-line-height;
@@ -231,7 +231,7 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
   transition: all 0.2s;
 }
 
-.rc-menu-item a {
+.rc-menu-deprecateditem a {
   align-items: center;
   border-radius: $puppet-menu-item-border-radius;
   display: flex;
@@ -242,7 +242,7 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
   white-space: nowrap;
 }
 
-.rc-menu-item-text {
+.rc-menu-deprecateditem-text {
   font-size: $puppet-menu-item-font-size;
   font-weight: $puppet-menu-item-font-weight;
   line-height: $puppet-menu-item-line-height;
@@ -250,13 +250,13 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
   text-overflow: ellipsis;
 }
 
-.rc-menu-item .rc-menu-item-focused {
+.rc-menu-deprecateditem .rc-menu-deprecateditem-focused {
   text-decoration: none;
 }
 
 // TODO Make flex
-.rc-menu-item-with-icon,
-.rc-menu-item-selected {
+.rc-menu-deprecateditem-with-icon,
+.rc-menu-deprecateditem-selected {
   a {
     position: relative;
   }
@@ -272,41 +272,41 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
 // This will prevent accidental menu resizing when the selected icon is
 // toggles off and on
 // Need to use variables
-.rc-menu-multiple .rc-menu-item a,
-.rc-menu-item-selected a {
+.rc-menu-deprecatedmultiple .rc-menu-deprecateditem a,
+.rc-menu-deprecateditem-selected a {
   padding-right: 32px;
 }
 
-.rc-menu-item-selected .rc-icon-check {
+.rc-menu-deprecateditem-selected .rc-icon-check {
   left: unset;
   right: 8px;
 }
 
 // TODO This seems very fragile
 // Should be named for menu, not dropdown
-.rc-menu-item-with-icon a {
+.rc-menu-deprecateditem-with-icon a {
   padding-left: $puppet-dropdown-padding-small * 4;
   padding-right: $puppet-dropdown-padding-small * 2;
 }
 
-.rc-menu-item-with-icon .rc-menu-icon {
+.rc-menu-deprecateditem-with-icon .rc-menu-deprecatedicon {
   .rc-icon {
     left: $puppet-dropdown-padding-small;
   }
 }
 
-.rc-menu-item-disabled a {
+.rc-menu-deprecateditem-disabled a {
   cursor: default;
 }
 
 // Menu Sections
-.rc-menu-section {
-  &.rc-menu-section-padding {
+.rc-menu-deprecatedsection {
+  &.rc-menu-deprecatedsection-padding {
     // Optional padding for a section that doesn't have a menuList in it
     padding: $puppet-menu-section-padding;
   }
 
-  &.rc-menu-section-padding .rc-menu-section-title {
+  &.rc-menu-deprecatedsection-padding .rc-menu-deprecatedsection-title {
     padding: 0 0 4px;
   }
 
@@ -314,12 +314,12 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
     border-bottom: 0;
   }
 
-  .rc-menu-list {
+  .rc-menu-deprecatedlist {
     border: 0;
   }
 }
 
-.rc-menu-section-title {
+.rc-menu-deprecatedsection-title {
   display: block;
   font-family: $puppet-menu-section-title-font-family;
   font-size: $puppet-menu-section-title-font-size;
@@ -329,24 +329,24 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
 }
 
 // Menu Actions
-.rc-menu-actions {
+.rc-menu-deprecatedactions {
   align-items: center;
   background: $puppet-menu-actions-bg;
   border-radius: 0 0 $puppet-menu-border-radius $puppet-menu-border-radius;
   padding: $puppet-menu-actions-padding;
 
-  &.rc-menu-actions-centered .rc-menu-actions-buttons {
+  &.rc-menu-deprecatedactions-centered .rc-menu-deprecatedactions-buttons {
     justify-content: center;
   }
 }
 
-.rc-menu-actions-buttons {
+.rc-menu-deprecatedactions-buttons {
   display: flex;
   flex: 1 1 auto;
   justify-content: flex-end;
 }
 
-.rc-menu-actions-message {
+.rc-menu-deprecatedactions-message {
   color: $puppet-menu-actions-color;
   display: flex;
   flex: 1 1 auto;
@@ -354,14 +354,14 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
   justify-content: flex-start;
 }
 
-.rc-menu-actions-buttons {
+.rc-menu-deprecatedactions-buttons {
   display: flex;
   flex: 1 1 auto;
   justify-content: flex-end;
 }
 
 // Dark Menu
-.rc-menu-dark {
+.rc-menu-deprecateddark {
   @include menu-colors(
     $puppet-menu-bg-dark,
     $puppet-menu-item-bg-dark,
@@ -378,11 +378,11 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
     $puppet-menu-section-title-color-dark
   );
 
-  .rc-menu-actions {
+  .rc-menu-deprecatedactions {
     background: $puppet-menu-actions-bg-dark;
   }
 }
 
-.rc-menu-subtle {
+.rc-menu-deprecatedsubtle {
   background: $puppet-bg-subtle;
 }

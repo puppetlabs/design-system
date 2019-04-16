@@ -19,12 +19,12 @@ const defaultProps = {
 
 const MenuSection = ({ className, subtle, padding, children, title }) => (
   <div
-    className={classnames('rc-menu-section', className, {
-      'rc-menu-subtle': subtle,
-      'rc-menu-section-padding': padding,
+    className={classnames('rc-menu-deprecatedsection', className, {
+      'rc-menu-deprecatedsubtle': subtle,
+      'rc-menu-deprecatedsection-padding': padding,
     })}
   >
-    {title.length > 0 && <span className="rc-menu-section-title">{title}</span>}
+    {title.length > 0 && <span className="rc-menu-deprecatedsection-title">{title}</span>}
     {children}
   </div>
 );

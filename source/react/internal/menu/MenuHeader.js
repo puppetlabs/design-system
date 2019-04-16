@@ -18,7 +18,7 @@ class MenuHeader extends React.Component {
     let jsx;
 
     if (title) {
-      return <div className="rc-menu-title">{title}</div>;
+      return <div className="rc-menu-deprecatedtitle">{title}</div>;
     }
 
     return jsx;
@@ -36,7 +36,7 @@ class MenuHeader extends React.Component {
         <a
           role="button"
           tabIndex={0}
-          className="rc-menu-close"
+          className="rc-menu-deprecatedclose"
           onClick={onClose}
         >
           <Icon type="close" size="tiny" />
@@ -53,7 +53,7 @@ class MenuHeader extends React.Component {
     const close = this.renderClose();
 
     return (
-      <div className="rc-menu-header">
+      <div className="rc-menu-deprecatedheader">
         {title}
         {close}
       </div>

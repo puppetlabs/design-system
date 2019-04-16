@@ -16,8 +16,8 @@ const defaultProps = {
 };
 
 const MenuActions = ({ centered, children }) => {
-  const className = classnames('rc-menu-actions', {
-    'rc-menu-actions-centered': centered,
+  const className = classnames('rc-menu-deprecatedactions', {
+    'rc-menu-deprecatedactions-centered': centered,
   });
 
   return <div className={className}>{children}</div>;

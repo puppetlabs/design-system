@@ -12,7 +12,7 @@ const defaultProps = {
 };
 
 const MenuActionsMessage = ({ message, children }) => (
-  <div className="rc-menu-actions-message">{message || children}</div>
+  <div className="rc-menu-deprecatedactions-message">{message || children}</div>
 );
 
 MenuActionsMessage.propTypes = propTypes;

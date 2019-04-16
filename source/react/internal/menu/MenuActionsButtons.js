@@ -10,7 +10,7 @@ const defaultProps = {
 };
 
 const MenuActionsButtons = ({ children }) => (
-  <div className="rc-menu-actions-buttons">{children}</div>
+  <div className="rc-menu-deprecatedactions-buttons">{children}</div>
 );
 
 MenuActionsButtons.propTypes = propTypes;

@@ -68,7 +68,7 @@ class MenuItem extends React.Component {
 
     if (option.icon) {
       jsx = (
-        <div className="rc-menu-icon">
+        <div className="rc-menu-deprecatedicon">
           <Icon type={option.icon} />
         </div>
       );
@@ -81,11 +81,11 @@ class MenuItem extends React.Component {
     const { className: propsClassName, focused, option, onFocus } = this.props;
     const checkmark = this.renderCheckmark();
     const icon = this.renderIcon();
-    const className = classnames('rc-menu-item', propsClassName, {
-      'rc-menu-item-with-icon': icon,
-      'rc-menu-item-selected': checkmark,
-      'rc-menu-item-focused': focused,
-      'rc-menu-item-disabled': option.disabled,
+    const className = classnames('rc-menu-deprecateditem', propsClassName, {
+      'rc-menu-deprecateditem-with-icon': icon,
+      'rc-menu-deprecateditem-selected': checkmark,
+      'rc-menu-deprecateditem-focused': focused,
+      'rc-menu-deprecateditem-disabled': option.disabled,
     });
 
     let { value } = option;
@@ -102,11 +102,11 @@ class MenuItem extends React.Component {
       >
         <a
           href={option.href || option.id}
-          className="rc-menu-item-anchor"
+          className="rc-menu-deprecateditem-anchor"
           onClick={this.onClick}
         >
           {icon}
-          <span className="rc-menu-item-text">{value}</span>
+          <span className="rc-menu-deprecateditem-text">{value}</span>
           {checkmark}
         </a>
       </li>

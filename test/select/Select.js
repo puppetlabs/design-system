@@ -69,7 +69,7 @@ describe('<Select />', () => {
       wrapper.find('.rc-select-input').simulate('click');
 
       wrapper
-        .find('.rc-menu-item-selected')
+        .find('.rc-menu-deprecateditem-selected')
         .find('a')
         .simulate('click');
 
@@ -105,10 +105,10 @@ describe('<Select />', () => {
 
       wrapper.find('.rc-select-input').simulate('click');
 
-      expect(wrapper.find('.rc-menu-item-selected').length).to.eql(0);
+      expect(wrapper.find('.rc-menu-deprecateditem-selected').length).to.eql(0);
 
       wrapper
-        .find('.rc-menu-item')
+        .find('.rc-menu-deprecateditem')
         .first()
         .find('a')
         .simulate('click');
@@ -119,11 +119,11 @@ describe('<Select />', () => {
         options[0], // second arg is the item that was selected...
       ]);
 
-      expect(wrapper.find('.rc-menu-item-selected').length).to.eql(1);
+      expect(wrapper.find('.rc-menu-deprecateditem-selected').length).to.eql(1);
 
       // Now we'll deselect that item
       wrapper
-        .find('.rc-menu-item')
+        .find('.rc-menu-deprecateditem')
         .first()
         .find('a')
         .simulate('click');
@@ -131,7 +131,7 @@ describe('<Select />', () => {
 
       expect(onChange.lastCall.args).to.eql([undefined, options[0]]);
 
-      expect(wrapper.find('.rc-menu-item-selected').length).to.eql(0);
+      expect(wrapper.find('.rc-menu-deprecateditem-selected').length).to.eql(0);
     });
 
     it('should emit the newly selected value onChange', () => {

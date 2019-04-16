@@ -17,7 +17,7 @@ describe('<DropdownMenu />', () => {
       <DropdownMenu title="I love hints!" options={options} />,
     );
 
-    expect(wrapper.find('.rc-menu-title').text()).to.equal('I love hints!');
+    expect(wrapper.find('.rc-menu-deprecatedtitle').text()).to.equal('I love hints!');
   });
 
   it('should render a blank slate', () => {

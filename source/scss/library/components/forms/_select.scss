@@ -76,9 +76,9 @@ $puppet-input-border-error: 1px solid $puppet-neg-border-base !default;
     overflow-y: auto;
   }
 
-  .rc-menu-item a,
-  .rc-menu-item:first-of-type a,
-  .rc-menu-item:last-of-type a {
+  .rc-menu-deprecateditem a,
+  .rc-menu-deprecateditem:first-of-type a,
+  .rc-menu-deprecateditem:last-of-type a {
     border-width: 0;
   }
 }

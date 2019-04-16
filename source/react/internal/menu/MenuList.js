@@ -74,9 +74,9 @@ class MenuList extends React.Component {
   render() {
     const { focusedId } = this.state;
     const { multiple, selected, options, size, onChange } = this.props;
-    const className = classnames('rc-menu-list', {
-      [`rc-menu-list-${size}`]: size,
-      'rc-menu-multiple': multiple,
+    const className = classnames('rc-menu-deprecatedlist', {
+      [`rc-menu-deprecatedlist-${size}`]: size,
+      'rc-menu-deprecatedmultiple': multiple,
     });
 
     const jsx = options.map(option => {
