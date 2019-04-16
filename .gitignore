@@ -8,6 +8,5 @@ npm-debug.log
 .nyc_output/
 /coverage
 .DS_Store
-package-lock.json
 /complexity
 /design/styleguide/images/*.png

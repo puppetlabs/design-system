@@ -171,7 +171,8 @@ class FormField extends React.Component {
 
   renderDescription() {
     const { error, description } = this.props;
-    const message = error || description;
+    // Note: error can be a string or boolean
+    const message = error && typeof error === 'string' ? error : description;
     let jsx;
 
     if (message) {
