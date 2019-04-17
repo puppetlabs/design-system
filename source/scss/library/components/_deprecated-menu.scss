@@ -149,7 +149,7 @@ $puppet-menu-actions-bg-dark: $puppet-black !default;
 }
 // End mixin menu item colors
 
-.rc-menu {
+.rc-menu-deprecated {
   @include menu-colors(
     $puppet-menu-bg,
     $puppet-menu-item-bg,

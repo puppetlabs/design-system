@@ -27,3 +27,10 @@ $puppet-common-focus-outline: 0 0 0 2px $puppet-action-outline !default;
 $puppet-common-focus-outline-inset: inset $puppet-common-focus-outline !default;
 
 $puppet-common-disabled-opacity: 0.4;
+
+$puppet-common-elevation-50: 1px 1px 2px rgba($puppet-black, 0.08);
+$puppet-common-elevation-100: 1px 1px 2px rgba($puppet-black, 0.16);
+$puppet-common-elevation-150: 2px 2px 4px rgba($puppet-black, 0.16);
+$puppet-common-elevation-200: 2px 2px 8px rgba($puppet-black, 0.16);
+$puppet-common-elevation-400: 8px 8px 16px rgba($puppet-black, 0.16);
+$puppet-common-elevation-800: 8px 8px 32px rgba($puppet-black, 0.16);
