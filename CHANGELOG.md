@@ -5,6 +5,8 @@
 - **Breaking change** Remove slider component
 - **Breaking change** Remove breadcrumb component
 - Improve Text component documentation
+- Bug fix: Allow form children with no props
+- Allow any node for Card.Header title
 
 # 5.0.0-alpha.18
 
