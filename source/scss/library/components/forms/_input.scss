@@ -1,8 +1,8 @@
 .rc-input {
   @include puppet-type-body();
 
-  background-color: $puppet-shared-input-background;
-  border: $puppet-shared-input-border;
+  background-color: $puppet-common-bg;
+  border: $puppet-common-border;
   border-radius: $puppet-common-border-radius;
   outline: none;
   padding: 5px 7px;
@@ -13,7 +13,7 @@
   }
 
   &:hover {
-    border: $puppet-shared-input-border-hover;
+    border: $puppet-common-border-hover;
   }
 
   &:focus {
@@ -27,7 +27,7 @@
   }
 
   &.rc-input-error {
-    border: $puppet-shared-input-border-error;
+    border: $puppet-common-border-error;
   }
 }
 
