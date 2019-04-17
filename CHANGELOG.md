@@ -217,12 +217,14 @@ Fix regressions in three areas:
 - Pass through all extra props to the inner element
 - Substantially update Card documentation in styleguidist
 
+# 4.16.2
+- Upgrade dev dependencies
+- Update tooltip position on hover over the target element
 # 4.16.1
 
 - Add `secondary` boolean prop to SplitButton to use the secondary background color
 - Update Sketchfiles
 - Set default apply apply label
-- Update tooltip position on hover over the target element
 
 # 4.16.0
 
