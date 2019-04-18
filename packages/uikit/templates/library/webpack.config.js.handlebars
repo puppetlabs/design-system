@@ -2,15 +2,20 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
-const paths = require('./paths');
+
+const paths = {
+  root: path.resolve(__dirname),
+  src: path.resolve(__dirname, 'src'),
+  dist: path.resolve(__dirname, 'dist'),
+};
 
 module.exports = {
-  entry: paths.src('index.js'),
+  entry: path.resolve(paths.src, 'index.js'),
   mode: 'production',
   target: 'node',
   devtool: 'source-map',
   plugins: [
-    new CleanWebpackPlugin(['dist'], { root: paths.root() }),
+    new CleanWebpackPlugin(['dist'], { root: paths.root }),
     new MiniCssExtractPlugin({
       filename: 'index.css',
       chunkFilename: '[id].[hash].css',
@@ -24,7 +29,7 @@ module.exports = {
     filename: 'index.js',
     library: '{{name.dash}}',
     libraryTarget: 'umd',
-    path: paths.dist(),
+    path: paths.dist,
     publicPath: './',
   },
   externals: [
@@ -79,7 +84,7 @@ module.exports = {
     ],
   },
   resolve: {
-    modules: [path.resolve(__dirname, '../src'), 'node_modules'],
+    modules: [paths.src, 'node_modules'],
     extensions: ['.js', '.mjs', '.jsx'],
   },
 };

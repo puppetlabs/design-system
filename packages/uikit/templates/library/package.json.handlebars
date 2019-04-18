@@ -4,16 +4,15 @@
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "main": "dist/index.js",
-  "module": "src/index.js",
   "scripts": {
-    "build": "./scripts/build",
-    "format": "./scripts/format",
-    "lint": "./scripts/lint",
-    "prepublish": "npm run build",
+    "build": "webpack",
+    "watch": "webpack --watch",
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch",
-    "watch": "./scripts/watch"
+    "format": "eslint --fix {src,jest}/**/*.{js,jsx,mjs} && prettier --write {src,jest}/**/*.{graphql,json,css,md} .babelrc .prettierrc package.json README.md CONTRIBUTING.md",
+    "lint": "eslint {src,jest}/**/*.{js,jsx,mjs} jest.config.js postcss.config.js",
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
@@ -56,7 +55,6 @@
     "postcss-loader": "^3.0.0",
     "prettier": "^1.16.4",
     "query-string": "^6.2.0",
-    "ramda": "^0.26.1",
     "raw-loader": "^1.0.0",
     "react-dom": "^16.8.3",
     "react-i18next": "^10.2.1",
