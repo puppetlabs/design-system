@@ -10,7 +10,7 @@ const options = [
 
 const initialState = { selected: null };
 
-<OptionsMenu
+<OptionMenu
   id="options-menu-one"
   options={options}
   selected={state.selected}
@@ -27,7 +27,7 @@ const options = [
 
 const initialState = { selected: null };
 
-<OptionsMenu
+<OptionMenu
   id="options-menu-two"
   options={options}
   selected={state.selected}
@@ -47,7 +47,7 @@ const options = [
 
 const initialState = { selected: null };
 
-<OptionsMenu
+<OptionMenu
   id="options-menu-three"
   type="multiple"
   options={options}

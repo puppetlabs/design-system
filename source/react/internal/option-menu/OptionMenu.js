@@ -8,6 +8,8 @@ import {
   HOME_KEY_CODE,
   END_KEY_CODE,
   ENTER_KEY_CODE,
+  ESC_KEY_CODE,
+  SPACE_KEY_CODE,
 } from '../../constants';
 
 import OptionMenuItem from './OptionMenuItem';
@@ -29,10 +31,11 @@ const propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
-  className: PropTypes.string,
+  actionLabel: PropTypes.string,
   onChange: PropTypes.func,
   onActionClick: PropTypes.func,
-  actionLabel: PropTypes.string,
+  onEscape: PropTypes.func,
+  className: PropTypes.string,
 };
 
 const defaultProps = {
@@ -43,6 +46,7 @@ const defaultProps = {
   onChange() {},
   actionLabel: 'Apply',
   onActionClick() {},
+  onEscape() {},
 };
 
 const getOptionId = (id, value) => `${id}-${value}`;
@@ -69,6 +73,7 @@ class OptionMenu extends Component {
     this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
+    this.onKeyDownInAction = this.onKeyDownInAction.bind(this);
     this.onFocus = this.onFocus.bind(this);
   }
 
@@ -120,6 +125,8 @@ class OptionMenu extends Component {
   }
 
   onKeyDown(e) {
+    const { onEscape } = this.props;
+
     switch (e.keyCode) {
       case UP_KEY_CODE: {
         this.onArrowUp();
@@ -141,8 +148,28 @@ class OptionMenu extends Component {
         e.preventDefault();
         break;
       }
+      case SPACE_KEY_CODE:
       case ENTER_KEY_CODE: {
         this.selectFocusedItem();
+        e.preventDefault();
+        break;
+      }
+      case ESC_KEY_CODE: {
+        onEscape(e);
+        e.preventDefault();
+        break;
+      }
+      default:
+        break;
+    }
+  }
+
+  onKeyDownInAction(e) {
+    const { onEscape } = this.props;
+
+    switch (e.keyCode) {
+      case ESC_KEY_CODE: {
+        onEscape(e);
         e.preventDefault();
         break;
       }
@@ -196,6 +223,7 @@ class OptionMenu extends Component {
       onMouseEnterItem,
       onMouseLeave,
       onKeyDown,
+      onKeyDownInAction,
       onFocus,
     } = this;
     const { focusedIndex } = this.state;
@@ -248,6 +276,7 @@ class OptionMenu extends Component {
             type="button"
             className="rc-menu-action"
             onClick={onActionClick}
+            onKeyDown={onKeyDownInAction}
           >
             {actionLabel}
           </button>

@@ -7,7 +7,7 @@ module.exports = {
     link: '#269CFF',
     name: '#269CFF',
   },
-  components: 'source/react/internal/optionmenu/**/*.js',
+  components: 'source/react/internal/option-menu/**/*.js',
   styleguideComponents: {
     ReactComponent: path.join(
       __dirname,
