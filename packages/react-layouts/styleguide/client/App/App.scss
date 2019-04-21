@@ -1,0 +1,10 @@
+.app {
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.app-main-content {
+  flex: 1;
+  overflow: auto;
+}
