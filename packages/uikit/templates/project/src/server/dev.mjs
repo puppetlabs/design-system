@@ -17,5 +17,5 @@ app
   )
   .use(hotMiddleware(compiler, { reload: true }))
   .listen(port, () => {
-    console.log(`Server listening at port ${port}`);
+    console.log(`Server listening at http://localhost:${port}\n`);
   });
