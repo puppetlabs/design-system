@@ -1,0 +1,29 @@
+{
+  "sections": {
+    "overview": "Overview",
+    "styleguide": "Styleguide",
+    "invision": "Inspectable",
+    "api": "API Docs",
+    "writing": "Writing Guides"
+  },
+  "pages": {
+    "home": "Home",
+    "colors": "Colors",
+    "typography": "Typography",
+    "icons": "Icons and logos",
+    "alignments": "Alignments",
+    "containers": "Containers",
+    "components": "Component principles",
+    "buttons": "Buttons",
+    "formComponents": "Form components",
+    "dialogs": "Dialogs",
+    "uncategorized": "Uncategorized",
+    "justInCase": "Just in case",
+    "navigation": "Navigation",
+    "formPatterns": "Form layouts",
+    "modalLayouts": "Modal layouts",
+    "reactComponents": "React components",
+    "guiTextGuidelines": "Text guidelines (Confluence)",
+    "invision": "Styleguide (InVision)"
+  }
+}
