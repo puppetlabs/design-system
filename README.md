@@ -1,17 +1,17 @@
 # Puppet Design System
 
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
 The Puppet Design System, documented at http://designsystem.puppetlabs.net, is
 composed of the following:
 
-- Puppet Styleguide: Design specifications
-- Puppet React Components: Library of reusable React components
-- Puppet React Layouts: Library of reusable React layouts
-- Puppet UI Toolkit: A `uikit` CLI for generating apps, components, etc.
-- Puppet Design System UI: The website documenting the Design System
+- Puppet Styleguide: Design specifications [packages/design-assets/puppet-styleguide.sketch](packages/design-assets/puppet-styleguide.sketch)
+- Puppet React Components: Library of reusable React components [puppetlabs/react-components](https://github.com/puppetlabs/react-components)
+- Puppet React Layouts: Library of reusable React layouts [packages/react-layouts](packages/react-layouts)
+- Puppet UI Toolkit: A `uikit` CLI for generating apps, components, etc. [packages/uikit](packages/uikit)
+- Puppet Design System Website: The website documenting the Design System [packages/design-system-website](packages/design-system-website)
 
-## Usage
+## Lerna commands
 
 - `npx lerna [command]`:
     - `npx lerna add <pkg> [globs..]`: Add a single dependency to matched
