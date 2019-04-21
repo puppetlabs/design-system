@@ -1,0 +1,10 @@
+#!/bin/bash
+
+ESLINT_EXTS=\{js,jsx,mjs\}
+ESLINT_EXTRAS=( jest.config.js )
+PRETTIER_EXTS=\{graphql,json,css,md\}
+PRETTIER_EXTRAS=( .prettierrc package.json README.md )
+SRC_DIRS=\{bin,jest\}
+
+eslint --fix $SRC_DIRS/**/*.$ESLINT_EXTS ${ESLINT_EXTRAS[@]} && \
+prettier --write $SRC_DIRS/**/*.$PRETTIER_EXTS ${PRETTIER_EXTRAS[@]}

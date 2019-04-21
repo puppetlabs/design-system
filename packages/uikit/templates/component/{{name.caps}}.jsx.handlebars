@@ -1,0 +1,13 @@
+import React from 'react';
+
+{{#if modules}}
+import styles from './{{name.caps}}.module.scss';
+
+const {{name.caps}} = () => <div className={styles.{{name.camel~}} }>{{name.caps}}</div>;
+{{else}}
+import './{{name.caps}}.scss';
+
+const {{name.caps}} = () => <div className="{{name.dash}}">{{name.caps}}</div>;
+{{/if}}
+
+export default {{name.caps}};

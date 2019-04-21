@@ -1,0 +1,9 @@
+#!/bin/sh
+
+(
+  if [ -e .env.production ]
+  then
+      export $(cat .env.production | xargs)
+  fi
+  node --experimental-modules src/server/prod.mjs
+)

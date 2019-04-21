@@ -1,0 +1,7 @@
+#!/bin/bash
+
+ESLINT_EXTS=\{js,jsx,mjs\}
+ESLINT_EXTRAS=( jest.config.js )
+SRC_DIRS=\{bin,jest\}
+
+eslint $SRC_DIRS/**/*.$ESLINT_EXTS ${ESLINT_EXTRAS[@]}

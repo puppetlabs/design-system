@@ -1,0 +1,5 @@
+- 0.4.0
+  - Adds a directory (-d) option to the generator script so that users don't have to cd to the directory they want to generate in
+  - Adds a 'method' generator template
+  - Updates the project generator template with additional ui boilerplate including routing, basic routes such as a home page and not found page, app chrome pulled from @puppet/react-components, and i18n internationalization.
+  - Cleans out old uikit components now deprecated in favor of @puppet/react-components

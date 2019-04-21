@@ -1,0 +1,43 @@
+{
+  "name": "@puppet/uikit",
+  "version": "0.4.0",
+  "main": "dist/uikit.js",
+  "author": "Puppet, Inc.",
+  "license": "UNLICENSED",
+  "bin": {
+    "uikit": "./bin/uikit.js"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
+  },
+  "scripts": {
+    "format": "./scripts/format",
+    "lint": "./scripts/lint",
+    "test": "jest",
+    "test:coverage": "jest --collectCoverage",
+    "test:watch": "jest --watch"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "cheerio": "^1.0.0-rc.2",
+    "eslint": "^5.15.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-chai-friendly": "^0.4.1",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "jest": "^24.5.0",
+    "prettier": "^1.16.4",
+    "sinon": "7.2.7",
+    "sinon-chai": "^3.3.0"
+  },
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "handlebars": "^4.1.0",
+    "klaw-sync": "^6.0.0",
+    "ramda": "^0.26.1",
+    "yargs": "^13.2.2"
+  }
+}
