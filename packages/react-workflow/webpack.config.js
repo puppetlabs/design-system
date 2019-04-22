@@ -9,9 +9,9 @@ const paths = {
   dist: path.resolve(__dirname, 'dist'),
 };
 
-module.exports = {
+module.exports = env => ({
   entry: path.resolve(paths.src, 'index.js'),
-  mode: 'production',
+  mode: env.development ? 'development' : 'production',
   target: 'node',
   devtool: 'source-map',
   plugins: [
@@ -87,4 +87,4 @@ module.exports = {
     modules: [paths.src, 'node_modules'],
     extensions: ['.js', '.mjs', '.jsx'],
   },
-};
+});
