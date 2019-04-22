@@ -6,6 +6,7 @@
   flex-direction: column;
 }
 
+.rc-action-menu,
 .rc-options-menu-single {
   &:focus-within {
     box-shadow: $puppet-common-focus-outline, $puppet-common-elevation-200;
@@ -60,6 +61,14 @@
   display: flex;
   list-style-type: none;
   padding: 2px 8px;
+}
+
+.rc-menu-item-inner {
+  @include puppet-type-small();
+  display: flex;
+  flex: 1;
+  outline: none;
+  text-decoration: none;
 }
 
 .rc-menu-item-selected {

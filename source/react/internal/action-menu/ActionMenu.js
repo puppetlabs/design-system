@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { renderableElement } from '../../helpers/customPropTypes';
 
 import {
   UP_KEY_CODE,
@@ -12,64 +13,52 @@ import {
   SPACE_KEY_CODE,
 } from '../../constants';
 
-import OptionMenuItem from './OptionMenuItem';
+import ActionMenuItem from './ActionMenuItem';
 import Icon from '../../library/icon';
 
 const isNil = val => val == null;
 
-export const menuOption = PropTypes.shape({
-  value: PropTypes.string.isRequired,
-  label: PropTypes.node.isRequired,
-  icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
-});
-
 const propTypes = {
   id: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['single', 'multiple']),
-  options: PropTypes.arrayOf(menuOption),
-  selected: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
-  actionLabel: PropTypes.string,
-  onChange: PropTypes.func,
+  actions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      label: PropTypes.node.isRequired,
+      icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+      onClick: PropTypes.func,
+      as: renderableElement,
+    }),
+  ),
   onActionClick: PropTypes.func,
   onEscape: PropTypes.func,
   className: PropTypes.string,
 };
 
 const defaultProps = {
-  options: [],
-  type: 'single',
-  className: '',
-  selected: null,
-  onChange() {},
-  actionLabel: 'Apply',
+  actions: [],
   onActionClick() {},
   onEscape() {},
+  className: '',
 };
 
-const getOptionId = (id, value) => `${id}-${value}`;
+const getOptionId = (id, actionId) => `${id}-${actionId}`;
 
-const getFocusedId = (focusedIndex, id, options) =>
-  isNil(focusedIndex)
-    ? undefined
-    : getOptionId(id, options[focusedIndex].value);
+const getFocusedId = (focusedIndex, id, actions) =>
+  isNil(focusedIndex) ? undefined : getOptionId(id, actions[focusedIndex].id);
 
-const getSelectionSet = selection =>
-  new Set(Array.isArray(selection) ? selection : [selection]);
-
-class OptionMenu extends Component {
+class ActionMenu extends Component {
   constructor(props) {
     super(props);
 
-    const { options } = this.props;
+    const { actions } = this.props;
 
     this.state = {
-      focusedIndex: options.length ? 0 : null,
+      focusedIndex: actions.length ? 0 : null,
     };
 
-    this.onClickItem = this.onClickItem.bind(this);
+    this.actionRefs = [];
+
+    this.executeAction = this.executeAction.bind(this);
     this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
@@ -83,10 +72,6 @@ class OptionMenu extends Component {
     if (isNil(focusedIndex)) {
       this.focusFirst();
     }
-  }
-
-  onClickItem(value) {
-    this.select(value);
   }
 
   onMouseEnterItem(focusedIndex) {
@@ -113,13 +98,13 @@ class OptionMenu extends Component {
 
   onArrowDown() {
     const { focusedIndex } = this.state;
-    const { options } = this.props;
+    const { actions } = this.props;
 
     if (isNil(focusedIndex)) {
       this.focusFirst();
     } else {
       this.setState({
-        focusedIndex: Math.min(options.length - 1, focusedIndex + 1),
+        focusedIndex: Math.min(actions.length - 1, focusedIndex + 1),
       });
     }
   }
@@ -150,7 +135,7 @@ class OptionMenu extends Component {
       }
       case SPACE_KEY_CODE:
       case ENTER_KEY_CODE: {
-        this.selectFocusedItem();
+        this.executeFocusedItem();
         e.preventDefault();
         break;
       }
@@ -178,77 +163,67 @@ class OptionMenu extends Component {
     }
   }
 
+  executeAction(onClick, id) {
+    const { onActionClick } = this.props;
+
+    onActionClick(id);
+
+    if (onClick) {
+      onClick();
+    }
+  }
+
   focusFirst() {
     this.setState({ focusedIndex: 0 });
   }
 
   focusLast() {
-    const { options } = this.props;
+    const { actions } = this.props;
 
-    this.setState({ focusedIndex: options.length - 1 });
+    this.setState({ focusedIndex: actions.length - 1 });
   }
 
-  select(value) {
-    const { type, selected, onChange } = this.props;
-
-    if (type === 'multiple') {
-      const selectionSet = getSelectionSet(selected);
-
-      if (selectionSet.has(value)) {
-        selectionSet.delete(value);
-      } else {
-        selectionSet.add(value);
-      }
-      onChange(Array.from(selectionSet));
-    } else {
-      onChange(value);
-    }
-  }
-
-  selectFocusedItem() {
+  executeFocusedItem() {
     const { focusedIndex } = this.state;
-    const { options } = this.props;
 
-    if (!isNil(focusedIndex)) {
-      const { value } = options[focusedIndex];
+    // triggering click event so that links work
+    if (!isNil(focusedIndex) && this.actionRefs[focusedIndex]) {
+      const focusedElement = this.actionRefs[focusedIndex];
 
-      this.select(value);
+      focusedElement.click();
     }
   }
 
   /* eslint-disable jsx-a11y/click-events-have-key-events */
   render() {
     const {
-      onClickItem,
+      executeAction,
       onMouseEnterItem,
       onMouseLeave,
       onKeyDown,
-      onKeyDownInAction,
       onFocus,
     } = this;
     const { focusedIndex } = this.state;
     const {
       id,
-      options,
-      selected,
-      type,
+      actions,
       actionLabel,
       onActionClick,
+      onEscape,
       className,
       ...rest
     } = this.props;
 
-    const selectionSet = getSelectionSet(selected);
-    const focusedId = getFocusedId(focusedIndex, id, options);
+    const focusedId = getFocusedId(focusedIndex, id, actions);
 
     return (
       <div
-        className={classNames('rc-menu', `rc-options-menu-${type}`, className)}
+        className={classNames('rc-menu', 'rc-action-menu', className)}
         {...rest}
       >
         <ul
           id={id}
-          role="listbox"
+          role="menu"
           tabIndex={0}
           className="rc-menu-list"
           aria-activedescendant={focusedId}
@@ -257,37 +232,32 @@ class OptionMenu extends Component {
           onFocus={onFocus}
           {...rest}
         >
-          {options.map(({ value, label, icon }, index) => (
-            <OptionMenuItem
-              id={getOptionId(id, value)}
-              key={value}
-              focused={index === focusedIndex}
-              selected={selectionSet.has(value)}
-              icon={icon}
-              onClick={() => onClickItem(value)}
-              onMouseEnter={() => onMouseEnterItem(index)}
-            >
-              {label}
-            </OptionMenuItem>
-          ))}
+          {actions.map(
+            ({ id: actionId, label, icon, onClick, ...other }, index) => (
+              <ActionMenuItem
+                id={getOptionId(id, actionId)}
+                key={actionId}
+                focused={index === focusedIndex}
+                icon={icon}
+                onMouseEnter={() => onMouseEnterItem(index)}
+                onClick={() => executeAction(onClick, actionId)}
+                ref={el => {
+                  this.actionRefs[index] = el;
+                }}
+                {...other}
+              >
+                {label}
+              </ActionMenuItem>
+            ),
+          )}
         </ul>
-        {type === 'multiple' && (
-          <button
-            type="button"
-            className="rc-menu-action"
-            onClick={onActionClick}
-            onKeyDown={onKeyDownInAction}
-          >
-            {actionLabel}
-          </button>
-        )}
       </div>
     );
   }
 }
 /* eslint-enable */
 
-OptionMenu.propTypes = propTypes;
-OptionMenu.defaultProps = defaultProps;
+ActionMenu.propTypes = propTypes;
+ActionMenu.defaultProps = defaultProps;
 
-export default OptionMenu;
+export default ActionMenu;
