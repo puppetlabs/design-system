@@ -20,6 +20,10 @@ const propTypes = {
   inputRef: PropTypes.func,
   /** Change handler. Passed in order: new value, original event. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
   onChange: PropTypes.func,
+  /** Custom user-provided className */
+  className: PropTypes.string,
+  /** Custom user-provided inline styles */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -28,6 +32,8 @@ const defaultProps = {
   error: false,
   onChange() {},
   inputRef() {},
+  className: '',
+  style: {},
 };
 
 /**

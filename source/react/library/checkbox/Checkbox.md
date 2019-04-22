@@ -5,12 +5,13 @@ Design specification: <a href="http://designsystem.puppetlabs.net/forms" target=
 ### Basic use
 
 ```
-const exampleStyle = { marginRight: 10, marginBottom: 2 };
+const exampleStyle = { marginRight: 10 };
 
 <div>
   <Checkbox name="checkbox-ex-unchecked" label="Unchecked" style={exampleStyle}/>
   <Checkbox name="checkbox-ex-checked" label="Checked" style={exampleStyle} checked />
   <Checkbox name="checkbox-ex-disabled" label="Disabled" style={exampleStyle} checked disabled />
+  <Checkbox name="checkbox-ex-error" label="Error" style={exampleStyle} error />
 </div>
 ```
 

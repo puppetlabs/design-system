@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import ListItem from '../../source/react/library/list/ListItem';
+import ListItem from '../../source/react/library/filters/ListItem';
 
 describe('<ListItem />', () => {
   jsdom({ skipWindowCheck: true });

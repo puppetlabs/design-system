@@ -29,6 +29,8 @@ module.exports = {
     '**/card/Section.js',
     '**/dropdown/DropdownLabel.js',
     '**/filters/FilterItem.js',
+    '**/filters/List.js',
+    '**/filters/ListItem.js',
     '**/form/FormFlyout.js',
     '**/form/FormSection.js',
     '**/grid/Column.js',

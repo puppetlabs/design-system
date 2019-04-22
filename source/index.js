@@ -21,8 +21,6 @@ import Popover from './react/library/popover/Popover';
 import Input from './react/library/input/Input';
 import Switch from './react/library/switch/Switch';
 import Loading from './react/library/loading/Loading';
-import List from './react/library/list/List';
-import ListItem from './react/library/list/ListItem';
 import Modal from './react/library/modals/Modal';
 import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
@@ -60,8 +58,6 @@ export {
   MenuList,
   Switch,
   Loading,
-  List,
-  ListItem,
   Modal,
   ConfirmationModal,
   TooltipHoverArea,

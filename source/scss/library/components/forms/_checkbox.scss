@@ -1,19 +1,16 @@
-$puppet-checkbox-border: $puppet-border !default;
-$puppet-checkbox-border-hover: $puppet-border-hover !default;
-$puppet-checkbox-border-radius: $puppet-border-radius-small !default;
-$puppet-checkbox-icon-fill: $puppet-action-base !default;
-$puppet-checkbox-padding: $puppet-small !default;
-$puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
-
 .rc-checkbox-input {
   align-items: center;
   cursor: pointer;
   display: flex;
 }
 
+.rc-checkbox-input:not(:last-of-type) {
+  margin-bottom: $puppet-common-spacing-base * 1.5;
+}
+
 .rc-checkbox-container {
-  height: 16px;
-  margin-right: 10px;
+  height: $puppet-common-spacing-base * 2;
+  margin-right: $puppet-common-spacing-base;
   position: relative;
 }
 
@@ -24,50 +21,57 @@ $puppet-checkbox-border-error: 1px solid $puppet-neg-border-base !default;
   -moz-appearance: none;
   appearance: none;
 
-  border: $puppet-checkbox-border;
-  border-radius: $puppet-checkbox-border-radius;
+  border: $puppet-common-border;
+  border-radius: $puppet-common-border-radius;
   cursor: pointer;
-  height: $puppet-medium;
+  height: $puppet-common-spacing-base * 2;
   margin: 0;
   outline: none;
   padding: 0;
-  width: $puppet-medium;
+  width: $puppet-common-spacing-base * 2;
 }
 
 .rc-checkbox + .rc-icon {
-  animation: 200ms 1 ease-in rc-zoom-in;
   display: none;
-  height: 16px;
+  height: $puppet-common-spacing-base * 2;
   left: 2px;
   pointer-events: none;
   position: absolute;
   top: -1px;
-  width: 16px;
+  width: $puppet-common-spacing-base * 2;
 }
 
-.rc-checkbox-error {
-  border: $puppet-checkbox-border-error;
+.rc-checkbox:focus {
+  box-shadow: $puppet-common-focus-outline;
 }
 
 .rc-checkbox:hover {
-  border: $puppet-checkbox-border-hover;
+  border: $puppet-common-border-hover;
+}
 
-  &.rc-checkbox:checked {
-    border: $puppet-checkbox-border;
-  }
+.rc-checkbox-error,
+.rc-checkbox-error:hover {
+  border: $puppet-common-border-error;
 }
 
 .rc-checkbox:checked + .rc-icon {
   display: block;
-  fill: $puppet-checkbox-icon-fill;
+  fill: $puppet-action-base;
 }
 
-.rc-checkbox:disabled {
+.rc-checkbox:hover + .rc-icon {
+  fill: $puppet-action-hover;
+}
+
+.rc-checkbox:disabled,
+.rc-checkbox:disabled:hover {
+  border: $puppet-common-border;
   cursor: default;
-  opacity: $puppet-disabled-opacity;
+  opacity: $puppet-shared-disabled-input-opacity;
 
   + .rc-icon {
-    opacity: $puppet-disabled-opacity;
+    fill: $puppet-action-base;
+    opacity: $puppet-shared-disabled-input-opacity;
   }
 }
 
