@@ -25,7 +25,7 @@ export const menuOption = PropTypes.shape({
 
 const propTypes = {
   id: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['single', 'multiple']),
+  multiple: PropTypes.bool,
   options: PropTypes.arrayOf(menuOption),
   selected: PropTypes.oneOfType([
     PropTypes.string,
@@ -40,7 +40,7 @@ const propTypes = {
 
 const defaultProps = {
   options: [],
-  type: 'single',
+  multiple: false,
   className: '',
   selected: null,
   onChange() {},
@@ -189,9 +189,9 @@ class OptionMenu extends Component {
   }
 
   select(value) {
-    const { type, selected, onChange } = this.props;
+    const { multiple, selected, onChange } = this.props;
 
-    if (type === 'multiple') {
+    if (multiple) {
       const selectionSet = getSelectionSet(selected);
 
       if (selectionSet.has(value)) {
@@ -231,7 +231,7 @@ class OptionMenu extends Component {
       id,
       options,
       selected,
-      type,
+      multiple,
       actionLabel,
       onActionClick,
       className,
@@ -243,7 +243,14 @@ class OptionMenu extends Component {
 
     return (
       <div
-        className={classNames('rc-menu', `rc-options-menu-${type}`, className)}
+        className={classNames(
+          'rc-menu',
+          {
+            'rc-options-menu-multiple': multiple,
+            'rc-options-menu-single': !multiple,
+          },
+          className,
+        )}
         {...rest}
       >
         <ul
@@ -271,7 +278,7 @@ class OptionMenu extends Component {
             </OptionMenuItem>
           ))}
         </ul>
-        {type === 'multiple' && (
+        {multiple && (
           <button
             type="button"
             className="rc-menu-action"
