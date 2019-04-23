@@ -1,25 +1,5 @@
-$puppet-form-font-weight: $puppet-font-weight-heavy !default;
-$puppet-form-letter-spacing: $puppet-heading-letter-spacing !default;
-$puppet-form-font-family: $puppet-font-family-heading !default;
-$puppet-form-label-color: $puppet-n800 !default;
-$puppet-form-label-color-dark: $puppet-font-color-base !default;
-$puppet-form-label-font-size: $puppet-font-size-tiny !default;
-$puppet-form-label-font-size-large: $puppet-font-size-small !default;
-$puppet-form-description-color: $puppet-font-color-medium !default;
-$puppet-form-description-font-size: $puppet-font-size-tiny !default;
-
-$puppet-form-section-legend-font-size: $puppet-font-size-base !default;
-$puppet-form-section-legend-font-weight: $puppet-font-weight-heavy !default;
-$puppet-form-section-legend-color: $puppet-n900 !default;
-$puppet-form-section-flyout-icon-color: $puppet-n400 !default;
-
-$puppet-form-field-margin: $puppet-small !default;
-$puppet-form-vertical-margin: $puppet-tiny !default;
-
-$puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
-
 .rc-form-field {
-  margin-bottom: 20px;
+  margin-bottom: $puppet-common-spacing-base * 2.5;
 }
 
 .rc-form-field:last-child {
@@ -29,7 +9,6 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 .rc-form-section {
   border: 0;
   margin: 0;
-  margin: 0;
 
   &[disabled] .rc-input {
     @extend %disabled-input;
@@ -37,29 +16,29 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 }
 
 .rc-form-section {
-  margin-bottom: $puppet-form-vertical-margin * 4;
+  margin-bottom: $puppet-common-spacing-base * 2;
 
   &:last-child {
-    margin-bottom: $puppet-form-vertical-margin * 2;
+    margin-bottom: $puppet-common-spacing-base;
   }
 }
+
 // Add margin-top to sections after non-sections (e.g. non-nested fields)
 :not(.rc-form-section) + .rc-form-section {
-  margin-top: $puppet-form-vertical-margin * 2;
+  margin-top: $puppet-common-spacing-base;
 }
 
 .rc-form-field-content {
   display: block;
   margin: 0;
-  margin: 0;
 }
 
 .rc-popover-menu .rc-form-section {
-  border-bottom: $puppet-border;
-  border-bottom-left-radius: $puppet-border-radius;
-  border-bottom-right-radius: $puppet-border-radius;
-  border-left: $puppet-border;
-  border-right: $puppet-border;
+  border-bottom: $puppet-common-border;
+  border-bottom-left-radius: $puppet-common-border-radius;
+  border-bottom-right-radius: $puppet-common-border-radius;
+  border-left: $puppet-common-border;
+  border-right: $puppet-common-border;
 }
 
 .rc-popover-menu .rc-menu-section {
@@ -69,16 +48,15 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 }
 
 .rc-form-flyout {
-  margin: $puppet-form-field-margin;
+  margin: $puppet-common-spacing-base;
 }
 
 .rc-form-section-legend {
-  color: $puppet-form-section-legend-color;
+  color: $puppet-type-color-base;
   display: block;
-  font-size: $puppet-form-section-legend-font-size;
-  font-weight: $puppet-form-section-legend-font-weight;
-  margin: 0;
-  margin: 0 0 $puppet-form-vertical-margin;
+  font-size: $puppet-type-body-font-size;
+  font-weight: $puppet-type-weight-heavy;
+  margin: 0 0 $puppet-common-spacing-base;
 
   span {
     display: block;
@@ -91,38 +69,32 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 }
 
 .rc-form-section-flyout-target {
-  margin-left: $puppet-tiny;
+  margin-left: $puppet-common-spacing-base * 0.5;
 
   .rc-icon {
-    fill: $puppet-form-section-flyout-icon-color;
+    fill: $puppet-type-color-subtle;
   }
 }
 
 .rc-form-field-label {
-  color: #5D6F7A;
+  @include puppet-type-label(medium);
   display: block;
-  font-family: $puppet-form-font-family;
-  font-size: $puppet-form-label-font-size;
-  font-weight: $puppet-font-weight-heavy;
-  letter-spacing: $puppet-form-letter-spacing;
-  line-height: $puppet-medium;
-  margin: 0;
-  margin-bottom: $puppet-form-vertical-margin;
-  text-transform: uppercase;
+  letter-spacing: $puppet-type-spacing-medium;
+  line-height: $puppet-common-spacing-base * 2;
+  margin-bottom: $puppet-common-spacing-base * 0.5;
 }
 
+
 .rc-form-field-description {
-  color: $puppet-form-description-color;
-  font-size: $puppet-form-description-font-size;
-  font-weight: $puppet-form-font-weight;
-  letter-spacing: $puppet-form-letter-spacing;
-  line-height: $puppet-medium;
-  margin-top: 8px;
+  @include puppet-type-tiny(medium);
+  letter-spacing: $puppet-type-spacing-medium;
+  line-height: $puppet-common-spacing-base * 2;
+  margin-top: $puppet-common-spacing-base;
 }
 
 .rc-form-field-description-icon {
   margin-bottom: 2px;
-  margin-right: 4px;
+  margin-right: $puppet-common-spacing-base * 0.5;
 }
 
 .rc-form-actions {
@@ -130,7 +102,7 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
   justify-content: flex-end;
 
   .rc-form-action:not(:last-child) {
-    margin-right: 4px;
+    margin-right: $puppet-common-spacing-base * 0.5;
   }
 }
 
@@ -143,7 +115,7 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 }
 
 .rc-form-error {
-  margin-top: $puppet-form-field-margin * 2;
+  margin-top: $puppet-common-spacing-base * 2;
 }
 
 .rc-form-field-error {
@@ -163,7 +135,6 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
     display: flex;
     flex-grow: 1;
     margin: 0;
-    margin-bottom: 0;
   }
 
   .rc-form-field-content {
@@ -178,12 +149,6 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
   .rc-form-field-description {
     display: flex;
     justify-content: flex-end;
-  }
-}
-
-.rc-form-tiny {
-  .rc-form-field-label {
-    font-size: $puppet-form-tiny-label-font-size;
   }
 }
 

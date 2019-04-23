@@ -7,7 +7,7 @@ $puppet-menu-border-radius: $puppet-border-radius;
 
 // Menu Items
 $puppet-menu-item-font-size: $puppet-font-size-small !default;
-$puppet-menu-item-font-weight: $puppet-font-weight-normal !default;
+$puppet-menu-item-font-weight: $puppet-type-weight-normal !default;
 $puppet-menu-item-line-height: $puppet-medium !default;
 $puppet-menu-item-height: $puppet-huge !default;
 $puppet-menu-item-margin: $puppet-tiny !default;
@@ -31,7 +31,7 @@ $puppet-menu-header-padding: 0 12px !default;
 $puppet-menu-title-color: $puppet-font-color-medium !default;
 $puppet-menu-title-font-family: $puppet-font-family-heading !default;
 $puppet-menu-title-font-size: 11px !default;
-$puppet-menu-title-font-weight: $puppet-font-weight-heavy !default;
+$puppet-menu-title-font-weight: $puppet-type-weight-heavy !default;
 
 // Menu Sections
 $puppet-menu-section-border: $puppet-border-subtle !default;
