@@ -14,26 +14,22 @@ $puppet-form-section-legend-color: $puppet-n900 !default;
 $puppet-form-section-flyout-icon-color: $puppet-n400 !default;
 
 $puppet-form-field-margin: $puppet-small !default;
-$puppet-form-vertical-padding: $puppet-tiny !default;
+$puppet-form-vertical-margin: $puppet-tiny !default;
 
 $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 
 .rc-form-field {
-  padding-bottom: $puppet-form-vertical-padding * 2;
+  margin-bottom: 20px;
 }
 
 .rc-form-field:last-child {
-  padding-bottom: 0;
-
-  .rc-form-field-description {
-    padding-bottom: 0;
-  }
+  margin-bottom: 0;
 }
 
 .rc-form-section {
   border: 0;
   margin: 0;
-  padding: 0;
+  margin: 0;
 
   &[disabled] .rc-input {
     @extend %disabled-input;
@@ -41,21 +37,21 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 }
 
 .rc-form-section {
-  padding-bottom: $puppet-form-vertical-padding * 4;
+  margin-bottom: $puppet-form-vertical-margin * 4;
 
   &:last-child {
-    padding-bottom: $puppet-form-vertical-padding * 2;
+    margin-bottom: $puppet-form-vertical-margin * 2;
   }
 }
 // Add margin-top to sections after non-sections (e.g. non-nested fields)
 :not(.rc-form-section) + .rc-form-section {
-  margin-top: $puppet-form-vertical-padding * 2;
+  margin-top: $puppet-form-vertical-margin * 2;
 }
 
 .rc-form-field-content {
   display: block;
   margin: 0;
-  padding: 0;
+  margin: 0;
 }
 
 .rc-popover-menu .rc-form-section {
@@ -73,7 +69,7 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 }
 
 .rc-form-flyout {
-  padding: $puppet-form-field-margin;
+  margin: $puppet-form-field-margin;
 }
 
 .rc-form-section-legend {
@@ -82,14 +78,13 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
   font-size: $puppet-form-section-legend-font-size;
   font-weight: $puppet-form-section-legend-font-weight;
   margin: 0;
-  padding: 0 0 $puppet-form-vertical-padding;
+  margin: 0 0 $puppet-form-vertical-margin;
 
   span {
     display: block;
     height: 21px;
     margin: 0;
     overflow: hidden;
-    padding: 0;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
@@ -104,7 +99,7 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 }
 
 .rc-form-field-label {
-  color: $puppet-form-label-color;
+  color: #5D6F7A;
   display: block;
   font-family: $puppet-form-font-family;
   font-size: $puppet-form-label-font-size;
@@ -112,7 +107,7 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
   letter-spacing: $puppet-form-letter-spacing;
   line-height: $puppet-medium;
   margin: 0;
-  padding-bottom: $puppet-form-vertical-padding;
+  margin-bottom: $puppet-form-vertical-margin;
   text-transform: uppercase;
 }
 
@@ -122,17 +117,17 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
   font-weight: $puppet-form-font-weight;
   letter-spacing: $puppet-form-letter-spacing;
   line-height: $puppet-medium;
-  margin: 0;
-  padding: 4px 0;
+  margin-top: 8px;
+}
+
+.rc-form-field-description-icon {
+  margin-bottom: 2px;
+  margin-right: 4px;
 }
 
 .rc-form-actions {
   display: flex;
   justify-content: flex-end;
-
-  &:not(:empty) {
-    padding-top: $puppet-form-field-margin * 2;
-  }
 
   .rc-form-action:not(:last-child) {
     margin-right: 4px;
@@ -152,12 +147,8 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
 }
 
 .rc-form-field-error {
-  .rc-form-field-label {
-    color: $puppet-neg-color-base;
-  }
-
-  .rc-form-field-description {
-    color: $puppet-neg-color-base;
+  .rc-form-field-description-icon {
+    fill: $puppet-action-error;
   }
 }
 
@@ -172,7 +163,7 @@ $puppet-form-tiny-label-font-size: $puppet-font-size-tiny * 0.9 !default;
     display: flex;
     flex-grow: 1;
     margin: 0;
-    padding-bottom: 0;
+    margin-bottom: 0;
   }
 
   .rc-form-field-content {

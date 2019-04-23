@@ -151,7 +151,7 @@ $puppet-switch-handle-height: $puppet-switch-height -
   cursor: default;
 
   + .rc-switch-label {
-    opacity: $puppet-shared-disabled-input-opacity;
+    opacity: $puppet-common-disabled-opacity;
   }
 }
 

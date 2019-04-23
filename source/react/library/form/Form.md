@@ -14,8 +14,8 @@ const movieOptions = [
 ];
 
 const initialValues = {
-  controlledFirstName: 'First',
-  controlledLastName: 'Last',
+  controlledFirstName: 'Sponge',
+  controlledLastName: 'Bob',
   controlledPassword: "",
   controlledFavoriteMovie: "",
   controlledNotARobot: false
@@ -60,14 +60,12 @@ class MyPage extends React.Component {
           name="controlledFirstName"
           label="First name"
           placeholder="Enter your first name..."
-          description="Please enter your first name"
         />
         <Form.Field
           type="text"
           name="controlledLastName"
           label="Last name"
           placeholder="Enter your first name..."
-          description="Please enter your last name"
         />
         <Form.Field
           type="password"
@@ -75,6 +73,7 @@ class MyPage extends React.Component {
           label="Password"
           placeholder="Enter your password..."
           description="Please enter your password"
+          error="You goofed up now"
         />
         <Form.Field
           type="select"
@@ -82,7 +81,6 @@ class MyPage extends React.Component {
           label="favorite movie"
           placeholder="Choose a movie"
           options={movieOptions}
-          description="What is your favorite movie?"
         />
         <Form.Field
           type="checkbox"
@@ -149,14 +147,12 @@ class MyPage extends React.Component {
           name="firstName"
           label="First name"
           placeholder="Enter your first name..."
-          description="Please enter your first name"
         />
         <Form.Field
           type="text"
           name="lastName"
           label="Last name"
           placeholder="Enter your first name..."
-          description="Please enter your last name"
         />
         <Form.Field
           type="password"
@@ -164,6 +160,7 @@ class MyPage extends React.Component {
           label="Password"
           placeholder="Enter your password..."
           description="Please enter your password"
+          error="You goofed up now"
         />
         <Form.Field
           type="select"
@@ -171,7 +168,6 @@ class MyPage extends React.Component {
           label="favorite movie"
           placeholder="Choose a movie"
           options={movieOptions}
-          description="What is your favorite movie?"
         />
         <Form.Field
           type="checkbox"

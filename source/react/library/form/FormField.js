@@ -9,6 +9,7 @@ import Input, {
 import Select from '../select/Select';
 import Switch from '../switch/Switch';
 import Checkbox from '../checkbox/Checkbox';
+import Icon from '../icon/Icon';
 
 const supportedTypes = [
   ...INPUT_SUPPORTED_TYPES,
@@ -119,10 +120,20 @@ class FormField extends React.Component {
     const { error, description } = this.props;
     // Note: error can be a string or boolean
     const message = error && typeof error === 'string' ? error : description;
+    const iconType = error ? 'alert' : 'info-circle';
     let jsx;
 
     if (message) {
-      jsx = <div className="rc-form-field-description">{message}</div>;
+      jsx = (
+        <div className="rc-form-field-description">
+          <Icon
+            className="rc-form-field-description-icon"
+            size="small"
+            type={iconType}
+          />
+          {message}
+        </div>
+      );
     }
 
     return jsx;

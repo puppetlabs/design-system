@@ -67,11 +67,11 @@
 .rc-checkbox:disabled:hover {
   border: $puppet-common-border;
   cursor: default;
-  opacity: $puppet-shared-disabled-input-opacity;
+  opacity: $puppet-common-disabled-opacity;
 
   + .rc-icon {
     fill: $puppet-action-base;
-    opacity: $puppet-shared-disabled-input-opacity;
+    opacity: $puppet-common-disabled-opacity;
   }
 }
 
