@@ -8,6 +8,7 @@ composed of the following:
 - Puppet Styleguide: Design specifications [packages/design-assets/puppet-styleguide.sketch](packages/design-assets/puppet-styleguide.sketch)
 - Puppet React Components: Library of reusable React components [puppetlabs/react-components](https://github.com/puppetlabs/react-components)
 - Puppet React Layouts: Library of reusable React layouts [packages/react-layouts](packages/react-layouts)
+- Puppet Sass Variables: A set of public Sass variables for color palettes, typography, borders, etc. [packages/sass-variables](packages/sass-variables)
 - Puppet UI Toolkit: A `uikit` CLI for generating apps, components, etc. [packages/uikit](packages/uikit)
 - Puppet Design System Website: The website documenting the Design System [packages/design-system-website](packages/design-system-website)
 
