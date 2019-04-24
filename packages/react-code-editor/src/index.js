@@ -1,4 +1,4 @@
-import HelloWorld from './HelloWorld';
+import CodeEditor from './CodeEditor';
 
 // eslint-disable-next-line import/prefer-default-export
-export { HelloWorld };
+export { CodeEditor };

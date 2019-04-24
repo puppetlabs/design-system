@@ -20,6 +20,7 @@
     "@babel/polyfill": "^7.2.5",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "@puppet/sass-variables": "*",
     "autoprefixer": "^9.4.9",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
@@ -75,8 +76,10 @@
   },
   "dependencies": {
     "@puppet/react-components": "^5.0.0-alpha.15",
+    "brace": "^0.11.1",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
-    "react": "^16.8.3"
+    "react": "^16.8.3",
+    "react-ace": "^6.5.0"
   }
 }

@@ -1,0 +1,11 @@
+@import '~@puppet/sass-variables/index';
+
+.rc-code-editor.ace_editor {
+  background-color: $puppet-n900;
+  border-radius: $puppet-border-radius;
+  width: 100%;
+
+  .ace_gutter {
+    background: $puppet-n950;
+  }
+}

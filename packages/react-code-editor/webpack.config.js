@@ -11,7 +11,7 @@ const paths = {
 
 module.exports = env => ({
   entry: path.resolve(paths.src, 'index.js'),
-  mode: env.development ? 'development' : 'production',
+  mode: env && env.development ? 'development' : 'production',
   target: 'node',
   devtool: 'source-map',
   plugins: [
