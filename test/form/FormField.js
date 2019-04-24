@@ -52,7 +52,7 @@ describe('<FormField />', () => {
           description="This is a field description"
         />,
       ).find('.rc-form-field-description'),
-    ).to.have.text('This is a field description');
+    ).to.contain.text('This is a field description');
   });
 
   it('replaces the description with an error if present', () => {
@@ -64,7 +64,7 @@ describe('<FormField />', () => {
           error="This is a field error"
         />,
       ).find('.rc-form-field-description'),
-    ).to.have.text('This is a field error');
+    ).to.contain.text('This is a field error');
   });
 
   it('still renders the description if the error prop is true but not a string', () => {
@@ -76,7 +76,7 @@ describe('<FormField />', () => {
           error
         />,
       ).find('.rc-form-field-description'),
-    ).to.have.text('This is a field description');
+    ).to.contain.text('This is a field description');
   });
 
   it('applies a className per string type prop', () => {
