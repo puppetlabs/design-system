@@ -1,43 +1,42 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Icon } from '@puppet/react-components';
+import { Card, Heading, Icon, Text } from '@puppet/react-components';
 import './WorkflowCard.scss';
 
 const propTypes = {
-  actions: PropTypes.arrayOf(PropTypes.node),
   children: PropTypes.node,
-  icon: PropTypes.string,
-  subtitle: PropTypes.string,
-  title: PropTypes.string,
+  node: PropTypes.shape({
+    id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    type: PropTypes.string,
+  }).isRequired,
 };
 
 const defaultProps = {
-  actions: [],
   children: null,
-  icon: '',
-  subtitle: '',
-  title: '',
 };
 
-const PipelineCard = ({ actions, children, icon, subtitle, title }) => (
+const WorkflowCard = ({ node, children }) => (
   <Card className="rc-workflow-card">
-    {title && (
-      <Card.Header
-        title={
-          <>
-            {icon && <Icon type={icon} />}
-            {title}
-          </>
+    <div className="rc-workflow-card-container">
+      <Icon
+        className="rc-workflow-card-icon"
+        size="medium"
+        type={
+          node.type && node.type.toLowerCase() === 'trigger'
+            ? 'activity'
+            : 'build'
         }
-        subtitle={subtitle}
-        actions={actions}
       />
-    )}
-    <Card.Section>{children}</Card.Section>
+      <Text className="rc-workflow-label">{node.type || 'Action'}</Text>
+      <Heading as="h4" className="rc-workflow-title">
+        {node.id}
+      </Heading>
+      {children && <Card.Section>{children}</Card.Section>}
+    </div>
   </Card>
 );
 
-PipelineCard.propTypes = propTypes;
-PipelineCard.defaultProps = defaultProps;
+WorkflowCard.propTypes = propTypes;
+WorkflowCard.defaultProps = defaultProps;
 
-export default PipelineCard;
+export default WorkflowCard;

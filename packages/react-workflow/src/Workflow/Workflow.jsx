@@ -8,6 +8,7 @@ const propTypes = {
   nodes: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      type: PropTypes.string,
       needs: PropTypes.arrayOf(
         PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       ),
@@ -25,7 +26,7 @@ const Workflow = ({ nodes }) => {
   return (
     <div className="rc-workflow">
       <Connectors {...dag} />
-      {Object.entries(dag.nodes).map(([id, { x, y }]) => (
+      {Object.entries(dag.nodes).map(([id, { x, y, ...node }]) => (
         <div
           key={id}
           style={{
@@ -35,18 +36,7 @@ const Workflow = ({ nodes }) => {
             gridRowEnd: y + 1,
           }}
         >
-          <WorkflowCard title={id} subtitle="Commit to GitHub" icon="activity">
-            <dl>
-              <dt>Repository</dt>
-              <dd>puppetlabs/pipelines-ui</dd>
-              <dt>Commit</dt>
-              <dd>d99f0c1 on master</dd>
-              <dt>Last triggered</dt>
-              <dd>14 hours ago</dd>
-              <dt>Author</dt>
-              <dd>vine77</dd>
-            </dl>
-          </WorkflowCard>
+          <WorkflowCard node={node} />
         </div>
       ))}
     </div>

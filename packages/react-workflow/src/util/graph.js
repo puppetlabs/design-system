@@ -28,7 +28,7 @@ const generateGraphLayout = nodesArray => {
   dag.setDefaultEdgeLabel(() => ({}));
 
   nodesArray.forEach(node => {
-    dag.setNode(node.id, { label: node.id, ...nodeConfig });
+    dag.setNode(node.id, { label: node.id, ...nodeConfig, ...node });
     if (node.needs) node.needs.forEach(parent => dag.setEdge(parent, node.id));
   });
 

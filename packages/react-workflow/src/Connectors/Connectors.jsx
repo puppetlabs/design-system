@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
-const CARD_WIDTH = 280;
-const CARD_HEIGHT = 240;
+const CARD_WIDTH = 240;
+const CARD_HEIGHT = 75;
 const HORIZONTAL_GUTTER = 24;
 const VERTICAL_GUTTER = 48;
 const ARROW_SIZE = 4;
