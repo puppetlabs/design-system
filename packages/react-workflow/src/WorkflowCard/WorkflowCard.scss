@@ -1,0 +1,58 @@
+@import '~@puppet/sass-variables/index';
+
+$puppet-small: $puppet-common-spacing-base;
+$puppet-medium: 2 * $puppet-common-spacing-base;
+
+.rc-workflow-card {
+  min-width: 200px;
+  max-width: 400px;
+  height: 240px;
+
+  .rc-card-title-area {
+    overflow: visible;
+  }
+
+  .rc-icon-activity {
+    fill: $puppet-purple;
+  }
+
+  .rc-icon-package {
+    fill: $puppet-teal;
+  }
+
+  .rc-icon-send {
+    fill: $puppet-b300;
+  }
+  
+  .rc-card-title-area {
+    margin: 0 (-$puppet-medium);
+    padding: 0 $puppet-medium $puppet-medium;
+    border-bottom: $puppet-common-border;
+
+    svg {
+      margin-right: $puppet-small;
+    }
+  }
+
+  dl {
+    display: grid;
+    margin: 0;
+  }
+  dt {
+    grid-column: 1;
+    color: $puppet-n700;
+  }
+  dd {
+    grid-column: 2;
+    margin-left: 2em;
+  }
+  dt, dd {
+    margin-bottom: $puppet-small;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+}
