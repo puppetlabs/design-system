@@ -1,16 +1,31 @@
 # react-workflow
 
-## Installation
+## Usage
 
-`npm install`
+Add the package to your project:
 
-## Build static asset bundles
+```sh
+npm install @puppet/react-workflow
+```
 
-- `npm run build`
+Import the Sass styles (e.g. in your index.scss):
 
-## Other Actions
+```scss
+@import '~@puppet/react-workflow/src/index';
+```
 
-- `npm run watch`: Rebuild on file changes
+Import and use the react component:
+
+```js
+import Workflow from '@puppet/react-workflow';
+```
+
+## Actions
+
+- `npm install`: Install dependencies of package
+- `npm run build`: Build static asset bundles
+- `npm run watch`: Rebuild on file changes and output the production build
+- `npm run watch:dev`: Rebuild on file changes and output a development build (e.g. retaining `debugger` statements)
 - `npm test`: Run all tests with jest
 - `npm run test:watch`: Run tests in watch mode
 - `npm run test:coverage`: Run tests with coverage reporting
