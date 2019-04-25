@@ -32,9 +32,11 @@ const generate = ({ template, name, directory, modules }) => {
   const dest = path.resolve(process.cwd(), directory, name);
   const files = klawSync(templatePath);
   const model = { name: getNameVariants(name), modules };
-  const { preGenerate = () => {}, postGenerate = () => {} } = getActions(
-    templatePath,
-  );
+  const {
+    preGenerate = () => {},
+    postGenerate = () => {},
+    message = () => `Generated ${template} "${name}" in ${dest}`,
+  } = getActions(templatePath);
 
   preGenerate({ dest });
 
@@ -60,7 +62,7 @@ const generate = ({ template, name, directory, modules }) => {
 
   postGenerate({ dest });
 
-  console.log(`Generated ${template} "${name}" in ${dest}`);
+  console.log(message({ template, name, dest }));
 };
 
 module.exports = generate;
