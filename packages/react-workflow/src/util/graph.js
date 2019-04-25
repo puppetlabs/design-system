@@ -36,8 +36,11 @@ const generateGraphLayout = nodesArray => {
   const graph = dag.graph();
   const width = graph.width + 1;
   const height = graph.height + 1;
+
   const nodes = dag.nodes().reduce((nodesMap, id) => {
-    const { label, x, y, ...node } = dag.node(id);
+    const findNode = dag.node(id);
+    if (!findNode) return nodesMap;
+    const { label, x, y, ...node } = findNode;
     return {
       [id]: {
         id: label,
