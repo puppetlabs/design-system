@@ -40,24 +40,26 @@ const Connectors = ({ width, height, nodes, edges }) => {
   const svgWidth = CARD_WIDTH * width + HORIZONTAL_GUTTER * (width - 1);
   const svgHeight = CARD_HEIGHT * height + VERTICAL_GUTTER * (height - 1);
 
-  const connectors = edges.map(edge => ({
-    key: `${edge.start}-${edge.end}`,
-    startX:
-      nodes[edge.start].x * CARD_WIDTH +
-      HORIZONTAL_GUTTER * (nodes[edge.start].x - 1) -
-      CARD_WIDTH / 2,
-    startY:
-      nodes[edge.start].y * CARD_HEIGHT +
-      VERTICAL_GUTTER * (nodes[edge.start].y - 1),
-    endX:
-      nodes[edge.end].x * CARD_WIDTH +
-      HORIZONTAL_GUTTER * (nodes[edge.end].x - 1) -
-      CARD_WIDTH / 2,
-    endY:
-      nodes[edge.end].y * CARD_HEIGHT +
-      VERTICAL_GUTTER * (nodes[edge.end].y - 1) -
-      CARD_HEIGHT,
-  }));
+  const connectors = edges
+    .filter(edge => nodes[edge.start] && nodes[edge.end])
+    .map(edge => ({
+      key: `${edge.start}-${edge.end}`,
+      startX:
+        nodes[edge.start].x * CARD_WIDTH +
+        HORIZONTAL_GUTTER * (nodes[edge.start].x - 1) -
+        CARD_WIDTH / 2,
+      startY:
+        nodes[edge.start].y * CARD_HEIGHT +
+        VERTICAL_GUTTER * (nodes[edge.start].y - 1),
+      endX:
+        nodes[edge.end].x * CARD_WIDTH +
+        HORIZONTAL_GUTTER * (nodes[edge.end].x - 1) -
+        CARD_WIDTH / 2,
+      endY:
+        nodes[edge.end].y * CARD_HEIGHT +
+        VERTICAL_GUTTER * (nodes[edge.end].y - 1) -
+        CARD_HEIGHT,
+    }));
 
   return (
     <svg className="rc-workflow-connectors" width={svgWidth} height={svgHeight}>
