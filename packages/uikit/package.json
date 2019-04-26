@@ -7,9 +7,6 @@
   "bin": {
     "uikit": "./bin/uikit.js"
   },
-  "publishConfig": {
-    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
-  },
   "scripts": {
     "format": "./scripts/format",
     "lint": "./scripts/lint",
