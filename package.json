@@ -5,7 +5,6 @@
     "bootstrap": "lerna bootstrap --hoist"
   },
   "devDependencies": {
-    "lerna": "^3.13.1"
-  },
-  "dependencies": {}
+    "lerna": "^3.13.3"
+  }
 }
