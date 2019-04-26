@@ -14,6 +14,13 @@
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch"
   },
+  "dependencies": {
+    "fs-extra": "^7.0.1",
+    "handlebars": "^4.1.0",
+    "klaw-sync": "^6.0.0",
+    "ramda": "^0.26.1",
+    "yargs": "^13.2.2"
+  },
   "devDependencies": {
     "chai": "^4.2.0",
     "cheerio": "^1.0.0-rc.2",
@@ -29,12 +36,5 @@
     "prettier": "^1.16.4",
     "sinon": "7.2.7",
     "sinon-chai": "^3.3.0"
-  },
-  "dependencies": {
-    "fs-extra": "^7.0.1",
-    "handlebars": "^4.1.0",
-    "klaw-sync": "^6.0.0",
-    "ramda": "^0.26.1",
-    "yargs": "^13.2.2"
   }
 }

@@ -17,6 +17,12 @@
     "test:watch": "jest --watch",
     "watch": "./scripts/watch"
   },
+  "dependencies": {
+    "@puppet/react-components": "^5.0.0-alpha.17",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.3"
+  },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/polyfill": "^7.2.5",
@@ -77,11 +83,5 @@
     "webpack-hot-middleware": "^2.24.3",
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
-  },
-  "dependencies": {
-    "@puppet/react-components": "^5.0.0-alpha.17",
-    "classnames": "^2.2.6",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.3"
   }
 }
