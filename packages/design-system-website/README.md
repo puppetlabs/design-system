@@ -1,4 +1,4 @@
-# Puppet starter ui
+# Design System Website
 
 ## Installation
 
