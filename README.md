@@ -44,7 +44,7 @@ You can also run `npm link` in a particular package subfolder and `npm link @pup
 
 ## Testing
 
-You can run `npm test` in a package subfolder or `lerna run test` in the top folder to test all packages.
+You can run `npm test` in a package subfolder or `npm test` in the top folder to test all packages.
 
 ## Publishing
 
