@@ -16,7 +16,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.0.0-alpha.15",
+    "@puppet/react-components": "^5.0.0-alpha.19",
     "brace": "^0.11.1",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
