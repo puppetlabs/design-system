@@ -2,5 +2,8 @@
   "name": "@puppet/sass-variables",
   "version": "0.1.0",
   "author": "Puppet, Inc.",
-  "license": "UNLICENSED"
+  "license": "UNLICENSED",
+  "publishConfig": {
+    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
+  }
 }

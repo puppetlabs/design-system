@@ -15,6 +15,9 @@
     "lint": "eslint {src,jest}/**/*.{js,jsx,mjs} jest.config.js postcss.config.js",
     "prepare": "npm run build"
   },
+  "publishConfig": {
+    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
+  },
   "dependencies": {
     "@puppet/react-components": "^5.0.0-alpha.19",
     "brace": "^0.11.1",

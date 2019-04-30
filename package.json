@@ -2,9 +2,13 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap --hoist"
+    "bootstrap": "lerna bootstrap --hoist",
+    "publish": "lerna bootstrap --hoist && lerna publish"
   },
   "devDependencies": {
-    "lerna": "^3.13.3"
+    "lerna": "^3.13.4"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   }
 }
