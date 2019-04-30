@@ -13,6 +13,9 @@
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch"
   },
+  "publishConfig": {
+    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
+  },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/polyfill": "^7.2.5",
