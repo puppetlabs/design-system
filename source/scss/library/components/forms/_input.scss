@@ -22,7 +22,7 @@
 
   &:disabled {
     cursor: default;
-    opacity: $puppet-shared-disabled-input-opacity;
+    opacity: $puppet-common-disabled-opacity;
     pointer-events: none;
   }
 

@@ -5,5 +5,5 @@
     @return transparent;
   }
 
-  @return mix($color, $puppet-white, $puppet-common-disabled-opacity);
+  @return mix($color, $puppet-white, $puppet-common-disabled-opacity * 100%);
 }
