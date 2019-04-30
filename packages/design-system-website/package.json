@@ -32,7 +32,7 @@
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
     "@hot-loader/react-dom": "^16.8.3",
-    "@puppet/design-assets": "*",
+    "@puppet/design-assets": "^0.1.0",
     "autoprefixer": "^9.4.9",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.1",
