@@ -25,75 +25,43 @@ class Tabs extends React.Component {
     super(props);
 
     this.state = {
-      focussedIndex: null,
-      tabProps: [],
+      activeIndex: 0,
     };
 
-    this.activateTab = this.activateTab.bind(this);
     this.keyupEventListener = this.keyupEventListener.bind(this);
   }
 
-  componentWillMount() {
+  getTabProps() {
+    const { activeIndex } = this.state;
     const { children } = this.props;
 
     const tabProps = children.map((child, index) => {
+      const isActive = activeIndex === index;
+
       const panelProps = {
-        tabIndex: 0,
         role: 'tabPanel',
         id: `${child.props.title}-panel`,
         'aria-labelledby': child.props.title,
-        hidden: !child.props.selected,
+        hidden: !isActive,
         className: classNames('rc-tabs-panel', child.props.className),
         content: child.props.content,
       };
 
       return {
         role: 'tab',
-        'aria-selected': !!child.props.selected,
+        'aria-selected': !!isActive,
         'aria-controls': `${child.props.title}-panel`,
         id: child.props.title,
-        tabindex: !child.props.selected ? -1 : 0,
-        onClick: () => this.activateTab(index),
+        tabindex: !isActive ? -1 : 0,
+        onClick: () => this.setState({ activeIndex: index }),
         onKeyUp: this.keyupEventListener,
+        focus: activeIndex === index,
         className: classNames('rc-tabs-tab', child.props.className),
         panel: panelProps,
       };
     });
 
-    this.setState({ tabProps });
-  }
-
-  // Activates any given tab panel
-  activateTab(index) {
-    const { tabProps } = this.state;
-    const tab = tabProps[index];
-    const { panel } = tab;
-
-    // Deactivate all other tabs
-    this.deactivateTabs();
-
-    // Remove tabindex attribute
-    tab.tabindex = 0;
-
-    // Set the tab as selected
-    tab['aria-selected'] = true;
-
-    // Remove hidden attribute from tab panel to make it visible
-    panel.hidden = false;
-
-    // Set focus when required
-    this.setState({ focussedIndex: index });
-  }
-
-  // Deactivate all tabs and tab panels
-  deactivateTabs() {
-    const { tabProps } = this.state;
-
-    for (let t = 0; t < tabProps.length; t += 1) {
-      tabProps[t].tabindex = -1;
-      tabProps[t]['aria-selected'] = false;
-      tabProps[t].panel.hidden = true;
-    }
+    return tabProps;
   }
 
   // Handle keyup on tabs
@@ -106,29 +74,24 @@ class Tabs extends React.Component {
   }
 
   switchTabOnArrowPress(offset) {
-    const { tabProps, focussedIndex } = this.state;
-    const nextFocussedIndex = focussedIndex + offset;
+    const { children } = this.props;
+    const { activeIndex } = this.state;
+    const nextFocussedIndex = activeIndex + offset;
     let adjustedNextFocussedIndex;
 
-    if (tabProps.length > nextFocussedIndex && nextFocussedIndex >= 0) {
+    if (children.length > nextFocussedIndex && nextFocussedIndex >= 0) {
       adjustedNextFocussedIndex = nextFocussedIndex;
     } else if (offset < 0) {
-      adjustedNextFocussedIndex = tabProps.length - 1;
+      adjustedNextFocussedIndex = children.length - 1;
     } else if (offset > 0) {
       adjustedNextFocussedIndex = 0;
     }
 
-    this.setState({ focussedIndex: adjustedNextFocussedIndex });
-
-    this.activateTab(adjustedNextFocussedIndex);
+    this.setState({ activeIndex: adjustedNextFocussedIndex });
   }
 
   render() {
-    const { tabProps, focussedIndex } = this.state;
-
-    tabProps.forEach((tab, index) => {
-      tab.focus = focussedIndex === index;
-    });
+    const tabProps = this.getTabProps();
 
     const tabs = tabProps.map(props => <Tab {...props} />);
     const panels = tabProps.map(tab => {
