@@ -140,7 +140,11 @@ class DropdownMenu extends React.Component {
     }
 
     if (blank || multiple) {
-      jsx = <Menu.Section className="rc-menu-deprecatedsection-list">{jsx}</Menu.Section>;
+      jsx = (
+        <Menu.Section className="rc-menu-deprecatedsection-list">
+          {jsx}
+        </Menu.Section>
+      );
     }
 
     return jsx;

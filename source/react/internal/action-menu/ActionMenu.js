@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { renderableElement } from '../../helpers/customPropTypes';
-
 import {
   UP_KEY_CODE,
   DOWN_KEY_CODE,
@@ -31,6 +30,8 @@ const propTypes = {
   ),
   onActionClick: PropTypes.func,
   onEscape: PropTypes.func,
+  onFocus: PropTypes.func,
+  onBlur: PropTypes.func,
   className: PropTypes.string,
 };
 
@@ -38,6 +39,8 @@ const defaultProps = {
   actions: [],
   onActionClick() {},
   onEscape() {},
+  onFocus() {},
+  onBlur() {},
   className: '',
 };
 
@@ -46,7 +49,7 @@ const getOptionId = (id, actionId) => `${id}-${actionId}`;
 const getFocusedId = (focusedIndex, id, actions) =>
   isNil(focusedIndex) ? undefined : getOptionId(id, actions[focusedIndex].id);
 
-class ActionMenu extends Component {
+class ActionMenuInternal extends Component {
   constructor(props) {
     super(props);
 
@@ -67,11 +70,14 @@ class ActionMenu extends Component {
   }
 
   onFocus() {
+    const { onFocus } = this.props;
     const { focusedIndex } = this.state;
 
     if (isNil(focusedIndex)) {
       this.focusFirst();
     }
+
+    onFocus();
   }
 
   onMouseEnterItem(focusedIndex) {
@@ -173,6 +179,12 @@ class ActionMenu extends Component {
     }
   }
 
+  focus() {
+    if (this.listRef) {
+      this.listRef.focus();
+    }
+  }
+
   focusFirst() {
     this.setState({ focusedIndex: 0 });
   }
@@ -211,6 +223,8 @@ class ActionMenu extends Component {
       onActionClick,
       onEscape,
       className,
+      style,
+      onClickOutside,
       ...rest
     } = this.props;
 
@@ -218,8 +232,8 @@ class ActionMenu extends Component {
 
     return (
       <div
-        className={classNames('rc-menu', 'rc-action-menu', className)}
-        {...rest}
+        className={classNames('rc-menu', 'rc-action-menu-internal', className)}
+        style={style}
       >
         <ul
           id={id}
@@ -230,6 +244,9 @@ class ActionMenu extends Component {
           onMouseLeave={onMouseLeave}
           onKeyDown={onKeyDown}
           onFocus={onFocus}
+          ref={el => {
+            this.listRef = el;
+          }}
           {...rest}
         >
           {actions.map(
@@ -257,7 +274,7 @@ class ActionMenu extends Component {
 }
 /* eslint-enable */
 
-ActionMenu.propTypes = propTypes;
-ActionMenu.defaultProps = defaultProps;
+ActionMenuInternal.propTypes = propTypes;
+ActionMenuInternal.defaultProps = defaultProps;
 
-export default ActionMenu;
+export default ActionMenuInternal;

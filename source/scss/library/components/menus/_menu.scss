@@ -6,7 +6,7 @@
   flex-direction: column;
 }
 
-.rc-action-menu,
+.rc-action-menu-internal,
 .rc-options-menu-single {
   &:focus-within {
     box-shadow: $puppet-common-focus-outline, $puppet-common-elevation-200;
@@ -95,4 +95,14 @@
 
 .rc-menu-item-focused {
   background-color: $puppet-n200;
+}
+
+
+
+
+
+.rc-action-menu-closed {
+  .rc-action-menu-internal {
+    display: none;
+  }
 }

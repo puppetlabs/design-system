@@ -78,11 +78,14 @@ class OptionMenu extends Component {
   }
 
   onFocus() {
+    const { onFocus } = this.props;
     const { focusedIndex } = this.state;
 
     if (isNil(focusedIndex)) {
       this.focusFirst();
     }
+
+    onFocus();
   }
 
   onClickItem(value) {
@@ -235,6 +238,7 @@ class OptionMenu extends Component {
       actionLabel,
       onActionClick,
       className,
+      style,
       ...rest
     } = this.props;
 
@@ -251,7 +255,7 @@ class OptionMenu extends Component {
           },
           className,
         )}
-        {...rest}
+        style={style}
       >
         <ul
           id={id}
