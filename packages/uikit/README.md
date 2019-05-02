@@ -2,9 +2,7 @@
 
 A toolkit for UI development at Puppet
 
-## Installation
-
-### Prerequisites
+## Prerequisites
 
 Install a recent version of Node.js (including npm), typically the latest LTS version, e.g.:
 
@@ -12,29 +10,13 @@ Install a recent version of Node.js (including npm), typically the latest LTS ve
 brew install node@10
 ```
 
-Set up npm to use [Artifactory](https://artifactory.delivery.puppetlabs.net) for packages with a scope of `@puppet` like uikit:
+## Installation
+
+To install uikit (or update it to the latest version) globally from Artifactory, making the `uikit` command available in your shell:
 
 ```sh
-npm config set @puppet:registry https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/
+npm install -g @puppet/uikit --registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm/
 ```
-
-### Global install from Artifactory
-
-To install uikit globally (or update it to the latest version), making the `uikit` command available in your shell:
-
-```sh
-npm install -g @puppet/uikit
-```
-
-### Local for development
-
-If you want to develop in this project but still want access to the scripts globally, clone this repo then run:
-
-```sh
-npm link
-```
-
-Then any script run with `uikit <command>` will access the most recent code in your local repo.
 
 ## Generators
 
@@ -49,7 +31,7 @@ The uikit includes a script for generating arbitrary boilerplate through templat
 - **Method**: `uikit generate method myMethod`
   Generates utility method boilerplate
 
-#### Specifying a directory:
+### Specifying a directory:
 
 By default the script will generate the template in the current working directory. Optionally you may specify a path to another directory with the `--directory` (`-d`) option:
 
@@ -57,7 +39,7 @@ By default the script will generate the template in the current working director
 uikit generate <template> <name> -d <path to directory>
 ```
 
-#### Sass modules
+### Sass modules
 
 Passing a `--modules=true` or `-m` option will generate code with scss module support
 
@@ -66,6 +48,16 @@ Passing a `--modules=true` or `-m` option will generate code with scss module su
 ### Filing issues
 
 uikit and other design-system projects use the Puppet Design System project in Jira for tracking tickets: <https://tickets.puppetlabs.com/browse/PDS>
+
+### Local uikit for development
+
+If you want to develop in this project but still want access to the scripts globally, clone this repo then run:
+
+```sh
+npm link
+```
+
+Then any script run with `uikit <command>` will access the most recent code in your local repo.
 
 ### Adding a generator
 
