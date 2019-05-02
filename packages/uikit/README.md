@@ -1,36 +1,40 @@
 # Puppet UI Toolkit
 
-A toolkit for all aspects of ui development at Puppet
+A toolkit for UI development at Puppet
 
 ## Installation
 
 ### Prerequisites
 
-Install a recent version of Node.js (including npm), typically the latest LTS version, e.g. `brew install node@8`.
+Install a recent version of Node.js (including npm), typically the latest LTS version, e.g.:
+
+```sh
+brew install node@10
+```
 
 Set up npm to use [Artifactory](https://artifactory.delivery.puppetlabs.net) for packages with a scope of `@puppet` like uikit:
 
-```
+```sh
 npm config set @puppet:registry https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/
 ```
 
-### Global via Artifactory
+### Global install from Artifactory
 
-Install uikit globally to make the `uikit` command available in your shell.
+To install uikit globally (or update it to the latest version), making the `uikit` command available in your shell:
 
-```
-npm i -g @puppet/uikit
+```sh
+npm install -g @puppet/uikit
 ```
 
 ### Local for development
 
-If you want to develop in this project but still want access to the scripts globally, clone this repo then run
+If you want to develop in this project but still want access to the scripts globally, clone this repo then run:
 
-```
+```sh
 npm link
 ```
 
-Any script run with `uikit <command>` will access the most recent code in your repo.
+Then any script run with `uikit <command>` will access the most recent code in your local repo.
 
 ## Generators
 
@@ -49,11 +53,11 @@ The uikit includes a script for generating arbitrary boilerplate through templat
 
 By default the script will generate the template in the current working directory. Optionally you may specify a path to another directory with the `--directory` (`-d`) option:
 
-```
+```sh
 uikit generate <template> <name> -d <path to directory>
 ```
 
-#### Scss modules
+#### Sass modules
 
 Passing a `--modules=true` or `-m` option will generate code with scss module support
 
@@ -61,7 +65,7 @@ Passing a `--modules=true` or `-m` option will generate code with scss module su
 
 ### Filing issues
 
-uikit and [react-components](https://github.com/puppetlabs/react-components) use the Product Design System project in Jira for tracking tickets: <https://tickets.puppetlabs.com/browse/PDS>
+uikit and other design-system projects use the Puppet Design System project in Jira for tracking tickets: <https://tickets.puppetlabs.com/browse/PDS>
 
 ### Adding a generator
 
@@ -81,13 +85,13 @@ In addition, the filename itself of `.handlebars` files will be compiled as a ha
 
 3. Optionally, add a `.uikitrc.js` file to the template directory. The file should optionally export a `preGenerate` and `postGenerate` action, each passed the destination directory of the resulting templated output.
 
-```
+```js
 module.exports = {
   preGenerate({ dest }) {
-    ...
+    // ...
   },
   postGenerate({ dest }) {
-    ...
+    // ...
   },
 }
 ```
