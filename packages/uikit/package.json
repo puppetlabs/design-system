@@ -17,6 +17,7 @@
   "publishConfig": {
     "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   },
+  "files": ["*"],
   "dependencies": {
     "fs-extra": "^7.0.1",
     "handlebars": "^4.1.0",
