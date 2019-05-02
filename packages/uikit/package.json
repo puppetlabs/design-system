@@ -1,6 +1,6 @@
 {
   "name": "@puppet/uikit",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "main": "dist/uikit.js",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
@@ -17,7 +17,9 @@
   "publishConfig": {
     "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   },
-  "files": ["*"],
+  "files": [
+    "*"
+  ],
   "dependencies": {
     "fs-extra": "^7.0.1",
     "handlebars": "^4.1.0",
