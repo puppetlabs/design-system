@@ -12,7 +12,7 @@ import {
   SPACE_KEY_CODE,
 } from '../../constants';
 
-import ActionMenuItem from './ActionMenuItem';
+import ActionMenuListItem from './ActionMenuListItem';
 import Icon from '../../library/icon';
 
 const isNil = val => val == null;
@@ -49,7 +49,7 @@ const getOptionId = (id, actionId) => `${id}-${actionId}`;
 const getFocusedId = (focusedIndex, id, actions) =>
   isNil(focusedIndex) ? undefined : getOptionId(id, actions[focusedIndex].id);
 
-class ActionMenuInternal extends Component {
+class ActionMenuList extends Component {
   constructor(props) {
     super(props);
 
@@ -232,14 +232,14 @@ class ActionMenuInternal extends Component {
 
     return (
       <div
-        className={classNames('rc-menu', 'rc-action-menu-internal', className)}
+        className={classNames('rc-menu-list', 'rc-action-menu-list', className)}
         style={style}
       >
         <ul
           id={id}
           role="menu"
           tabIndex={0}
-          className="rc-menu-list"
+          className="rc-menu-list-inner"
           aria-activedescendant={focusedId}
           onMouseLeave={onMouseLeave}
           onKeyDown={onKeyDown}
@@ -251,7 +251,7 @@ class ActionMenuInternal extends Component {
         >
           {actions.map(
             ({ id: actionId, label, icon, onClick, ...other }, index) => (
-              <ActionMenuItem
+              <ActionMenuListItem
                 id={getOptionId(id, actionId)}
                 key={actionId}
                 focused={index === focusedIndex}
@@ -264,7 +264,7 @@ class ActionMenuInternal extends Component {
                 {...other}
               >
                 {label}
-              </ActionMenuItem>
+              </ActionMenuListItem>
             ),
           )}
         </ul>
@@ -274,7 +274,7 @@ class ActionMenuInternal extends Component {
 }
 /* eslint-enable */
 
-ActionMenuInternal.propTypes = propTypes;
-ActionMenuInternal.defaultProps = defaultProps;
+ActionMenuList.propTypes = propTypes;
+ActionMenuList.defaultProps = defaultProps;
 
-export default ActionMenuInternal;
+export default ActionMenuList;

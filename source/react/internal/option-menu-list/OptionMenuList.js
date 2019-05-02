@@ -12,21 +12,21 @@ import {
   SPACE_KEY_CODE,
 } from '../../constants';
 
-import OptionMenuItem from './OptionMenuItem';
+import OptionMenuListItem from './OptionMenuListItem';
 import Icon from '../../library/icon';
 
 const isNil = val => val == null;
 
-export const menuOption = PropTypes.shape({
-  value: PropTypes.string.isRequired,
-  label: PropTypes.node.isRequired,
-  icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
-});
-
 const propTypes = {
   id: PropTypes.string.isRequired,
   multiple: PropTypes.bool,
-  options: PropTypes.arrayOf(menuOption),
+  options: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.string.isRequired,
+      label: PropTypes.node.isRequired,
+      icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+    }),
+  ),
   selected: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
@@ -59,7 +59,7 @@ const getFocusedId = (focusedIndex, id, options) =>
 const getSelectionSet = selection =>
   new Set(Array.isArray(selection) ? selection : [selection]);
 
-class OptionMenu extends Component {
+class OptionMenuList extends Component {
   constructor(props) {
     super(props);
 
@@ -248,10 +248,10 @@ class OptionMenu extends Component {
     return (
       <div
         className={classNames(
-          'rc-menu',
+          'rc-menu-list',
           {
-            'rc-options-menu-multiple': multiple,
-            'rc-options-menu-single': !multiple,
+            'rc-option-menu-list-multiple': multiple,
+            'rc-option-menu-list-single': !multiple,
           },
           className,
         )}
@@ -269,7 +269,7 @@ class OptionMenu extends Component {
           {...rest}
         >
           {options.map(({ value, label, icon }, index) => (
-            <OptionMenuItem
+            <OptionMenuListItem
               id={getOptionId(id, value)}
               key={value}
               focused={index === focusedIndex}
@@ -279,7 +279,7 @@ class OptionMenu extends Component {
               onMouseEnter={() => onMouseEnterItem(index)}
             >
               {label}
-            </OptionMenuItem>
+            </OptionMenuListItem>
           ))}
         </ul>
         {multiple && (
@@ -298,7 +298,7 @@ class OptionMenu extends Component {
 }
 /* eslint-enable */
 
-OptionMenu.propTypes = propTypes;
-OptionMenu.defaultProps = defaultProps;
+OptionMenuList.propTypes = propTypes;
+OptionMenuList.defaultProps = defaultProps;
 
-export default OptionMenu;
+export default OptionMenuList;

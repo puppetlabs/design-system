@@ -19,7 +19,7 @@ const defaultProps = {
 };
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-const OptionMenuItem = ({
+const OptionMenuListItem = ({
   id,
   children,
   focused,
@@ -46,7 +46,7 @@ const OptionMenuItem = ({
 );
 /* eslint-enable */
 
-OptionMenuItem.propTypes = propTypes;
-OptionMenuItem.defaultProps = defaultProps;
+OptionMenuListItem.propTypes = propTypes;
+OptionMenuListItem.defaultProps = defaultProps;
 
-export default OptionMenuItem;
+export default OptionMenuListItem;

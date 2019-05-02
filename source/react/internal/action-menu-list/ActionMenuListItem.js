@@ -30,21 +30,21 @@ const OptionMenuItem = forwardRef(
       return (
         <li
           role="none"
-          className={classNames('rc-menu-item', {
-            'rc-menu-item-focused': focused,
+          className={classNames('rc-menu-list-item', {
+            'rc-menu-list-item-focused': focused,
           })}
           onMouseEnter={onMouseEnter}
         >
           <Element
             id={id}
             role="menuitem"
-            className="rc-menu-item-inner"
+            className="rc-menu-list-item-inner"
             ref={ref}
             tabIndex={-1}
             {...rest}
           >
-            {icon && <Icon className="rc-menu-item-icon" type={icon} />}
-            <span className="rc-menu-item-content">{children}</span>
+            {icon && <Icon className="rc-menu-list-item-icon" type={icon} />}
+            <span className="rc-menu-list-item-content">{children}</span>
           </Element>
         </li>
       );
@@ -53,15 +53,15 @@ const OptionMenuItem = forwardRef(
       <li
         role="menuitem"
         id={id}
-        className={classNames('rc-menu-item', {
-          'rc-menu-item-focused': focused,
+        className={classNames('rc-menu-list-item', {
+          'rc-menu-list-item-focused': focused,
         })}
         onMouseEnter={onMouseEnter}
         ref={ref}
         {...rest}
       >
-        {icon && <Icon className="rc-menu-item-icon" type={icon} />}
-        <span className="rc-menu-item-content">{children}</span>
+        {icon && <Icon className="rc-menu-list-item-icon" type={icon} />}
+        <span className="rc-menu-list-item-content">{children}</span>
       </li>
     );
   },

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Button from '../buttons/Button';
-import ActionMenuInternal from '../../internal/action-menu';
+import ActionMenuList from '../../internal/action-menu-list';
 import { renderableElement } from '../../helpers/customPropTypes';
 import { AVAILABLE_ICONS } from '../icon/Icon';
 
@@ -153,7 +153,7 @@ class ActionMenu extends Component {
         >
           {label}
         </Button>
-        <ActionMenuInternal
+        <ActionMenuList
           id={`${id}-menu`}
           actions={actions}
           aria-labelledby={id}
