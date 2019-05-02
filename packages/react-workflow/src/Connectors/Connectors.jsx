@@ -5,7 +5,6 @@ const CARD_WIDTH = 240;
 const CARD_HEIGHT = 75;
 const HORIZONTAL_GUTTER = 24;
 const VERTICAL_GUTTER = 48;
-const ARROW_SIZE = 4;
 
 function createPath({ startX, startY, endX, endY }) {
   const deltaX = (endX - startX) * 0.25;
@@ -21,12 +20,7 @@ function createPath({ startX, startY, endX, endY }) {
     delta} A${delta} ${delta} 0 0 ${arc1} ${startX +
     delta * Math.sign(deltaX)} ${startY + 2 * delta} H${endX -
     delta * Math.sign(deltaX)} A${delta} ${delta} 0 0 ${arc2} ${endX} ${startY +
-    3 * delta} V${endY - 1}`;
-}
-
-function createArrow({ endX, endY }) {
-  return `M${endX - ARROW_SIZE} ${endY - ARROW_SIZE - 1} L ${endX} ${endY -
-    1} L ${endX + ARROW_SIZE} ${endY - ARROW_SIZE - 1}`;
+    3 * delta} V${endY}`;
 }
 
 const propTypes = {
@@ -66,10 +60,6 @@ const Connectors = ({ width, height, nodes, edges }) => {
       {connectors.map(connector => (
         <Fragment key={connector.key}>
           <path className="rc-workflow-connector" d={createPath(connector)} />
-          <path
-            className="rc-workflow-connector-arrow"
-            d={createArrow(connector)}
-          />
         </Fragment>
       ))}
     </svg>
