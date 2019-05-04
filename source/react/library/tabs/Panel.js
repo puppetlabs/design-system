@@ -1,13 +1,33 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../buttons/Button';
+const propTypes = {
+  title: PropTypes.string,
+  active: PropTypes.bool.isRequired,
+  children: PropTypes.node,
+  /** Managed internally for events */
+  id: PropTypes.number.isRequired,
+};
 
-const propTypes = {};
+const defaultProps = {
+  title: '',
+  children: null,
+};
 
-const defaultProps = {};
+const Panel = ({ title, active, children, id }) => {
+  const panelProps = {
+    role: 'tabPanel',
+    id: `${id}-panel`,
+    'aria-labelledby': title,
+    hidden: !active,
+  };
 
-const Panel = ({ content, ...props }) => <div {...props}>{content}</div>;
+  return (
+    <div className="rc-tabs-panel" {...panelProps}>
+      {children}
+    </div>
+  );
+};
 
 Panel.propTypes = propTypes;
 Panel.defaultProps = defaultProps;

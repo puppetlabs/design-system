@@ -1,37 +1,56 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 
 import Button from '../buttons/Button';
 
-//needs to have a title, because it needs a unique id
-const propTypes = {};
+const propTypes = {
+  title: PropTypes.string,
+  active: PropTypes.bool.isRequired,
+  /** onClick for Tab button. Callback to parent */
+  onKeyUp: PropTypes.func.isRequired,
+  /** onClick for Tab button. Callback to parent */
+  onClick: PropTypes.func.isRequired,
+  /** Managed internally for events */
+  id: PropTypes.number.isRequired,
+};
 
-const defaultProps = {};
+const defaultProps = {
+  title: '',
+};
 
 class Tab extends React.Component {
-  componentWillUpdate(newProps) {
-    const { focus } = newProps;
+  componentWillUpdate(props) {
+    const { active } = props;
 
-    console.log(focus, newProps.id)
-
-    if (focus) {
+    if (active) {
       this.tab.focus();
     }
   }
 
   render() {
-    const { id, ...rest } = this.props;
+    const { title, active, onKeyUp, onClick, id } = this.props;
+
+    const buttonProps = {
+      role: 'tab',
+      'aria-selected': !!active,
+      'aria-controls': `${title}-panel`,
+      id,
+      tabindex: !active ? -1 : 0,
+      onClick: () => onClick(id),
+      onKeyUp,
+      focus: active,
+    };
 
     return (
       <Button
+        className="rc-tabs-button"
         id={id}
         ref={button => {
           this.tab = button;
         }}
-        {...rest}
+        {...buttonProps}
       >
-        {id}
+        {title}
       </Button>
     );
   }

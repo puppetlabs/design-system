@@ -1,17 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import classNames from 'classnames';
 
 import Tab from './Tab';
 import Panel from './Panel';
 
 const propTypes = {
+  /** Nested Tab components */
   children: PropTypes.node,
+  /** Optional additional className */
+  className: PropTypes.string,
+  /** Optional additional inline style */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
   children: null,
+  className: '',
+  style: {},
 };
 
 // Add or substract depending on key pressed
@@ -25,47 +31,34 @@ class Tabs extends React.Component {
     super(props);
 
     this.state = {
-      activeIndex: 0,
+      activeIndex: null,
     };
 
-    this.keyupEventListener = this.keyupEventListener.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.onKeyUp = this.onKeyUp.bind(this);
   }
 
-  getTabProps() {
-    const { activeIndex } = this.state;
+  componentWillMount() {
     const { children } = this.props;
+    let defaultActiveIndex = 0;
 
-    const tabProps = children.map((child, index) => {
-      const isActive = activeIndex === index;
+    React.Children.toArray(children)
+      .filter(child => child && child.props)
+      .forEach((child, index) => {
+        const { active } = child.props;
 
-      const panelProps = {
-        role: 'tabPanel',
-        id: `${child.props.title}-panel`,
-        'aria-labelledby': child.props.title,
-        hidden: !isActive,
-        className: classNames('rc-tabs-panel', child.props.className),
-        content: child.props.content,
-      };
+        if (active) defaultActiveIndex = index;
+      });
 
-      return {
-        role: 'tab',
-        'aria-selected': !!isActive,
-        'aria-controls': `${child.props.title}-panel`,
-        id: child.props.title,
-        tabindex: !isActive ? -1 : 0,
-        onClick: () => this.setState({ activeIndex: index }),
-        onKeyUp: this.keyupEventListener,
-        focus: activeIndex === index,
-        className: classNames('rc-tabs-tab', child.props.className),
-        panel: panelProps,
-      };
-    });
+    this.setState({ activeIndex: defaultActiveIndex });
+  }
 
-    return tabProps;
+  onClick(index) {
+    this.setState({ activeIndex: index });
   }
 
   // Handle keyup on tabs
-  keyupEventListener(event) {
+  onKeyUp(event) {
     const key = event.keyCode;
 
     if (direction[key]) {
@@ -91,17 +84,38 @@ class Tabs extends React.Component {
   }
 
   render() {
-    const tabProps = this.getTabProps();
+    const { children, className, style } = this.props;
+    const { activeIndex } = this.state;
 
-    const tabs = tabProps.map(props => <Tab {...props} />);
-    const panels = tabProps.map(tab => {
-      const props = tab.panel;
+    const tabs = [];
+    const panels = [];
 
-      return <Panel {...props} />;
-    });
+    React.Children.toArray(children)
+      .filter(child => child && child.props)
+      .forEach((child, index) => {
+        // Strip active prop. Only used to set default state.
+        const { active, ...rest } = child.props;
+
+        const panelProps = {
+          active: activeIndex === index,
+          id: index,
+          key: index,
+          ...rest,
+        };
+
+        panels.push(<Panel {...panelProps} />);
+
+        const tabProps = {
+          onClick: this.onClick,
+          onKeyUp: this.onKeyUp,
+          ...panelProps,
+        };
+
+        tabs.push(<Tab {...tabProps} />);
+      });
 
     return (
-      <div className="rc-tabs">
+      <div className={classNames('rc-form', className)} style={style}>
         <div className="rc-tabs-list" role="tablist">
           {tabs}
         </div>
@@ -113,5 +127,7 @@ class Tabs extends React.Component {
 
 Tabs.propTypes = propTypes;
 Tabs.defaultProps = defaultProps;
+
+Tabs.Tab = Tab;
 
 export default Tabs;
