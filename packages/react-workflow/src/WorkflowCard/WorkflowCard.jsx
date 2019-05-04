@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import { Card, Heading, Icon, Text } from '@puppet/react-components';
 import './WorkflowCard.scss';
 
@@ -8,6 +9,12 @@ const propTypes = {
   node: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     type: PropTypes.string,
+    needs: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    ),
+    children: PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+    ),
   }).isRequired,
 };
 
@@ -16,7 +23,12 @@ const defaultProps = {
 };
 
 const WorkflowCard = ({ node, children }) => (
-  <Card className="rc-workflow-card">
+  <Card
+    className={classNames('rc-workflow-card', {
+      'rc-workflow-has-children': node.children && node.children.length,
+      'rc-workflow-has-parents': node.needs && node.needs.length,
+    })}
+  >
     <div className="rc-workflow-card-container">
       <Icon
         className="rc-workflow-card-icon"

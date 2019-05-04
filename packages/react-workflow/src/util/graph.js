@@ -46,12 +46,18 @@ const generateGraphLayout = nodesArray => {
         id: label,
         x: Math.floor(x + 1),
         y: Math.floor(y + 1),
+        children: [],
         ...node,
       },
       ...nodesMap,
     };
   }, {});
-  const edges = dag.edges().map(edge => ({ start: edge.v, end: edge.w }));
+  const edges = dag.edges().map(edge => {
+    const start = edge.v;
+    const end = edge.w;
+    nodes[start].children.push(end);
+    return { start, end };
+  });
 
   return {
     width,

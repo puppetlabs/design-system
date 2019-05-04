@@ -3,13 +3,14 @@
 $puppet-small: $puppet-common-spacing-base;
 $puppet-medium: 2 * $puppet-common-spacing-base;
 $puppet-elev-50-shadow: 1px 1px 2px rgba($puppet-black, 0.08) !default;
+$workflow-connector-diameter: 12px;
 
 .rc-workflow-card {
+  position: relative;
   min-width: 200px;
   max-width: 400px;
   height: 75px;
   box-shadow: $puppet-elev-50-shadow;
-  overflow: hidden;
 
   .rc-workflow-card-container {
     position: relative;
@@ -44,27 +45,25 @@ $puppet-elev-50-shadow: 1px 1px 2px rgba($puppet-black, 0.08) !default;
   .rc-icon-build {
     fill: $puppet-b300;
   }
-  
-  // Styling if a dl is passed as WorkflowCard `children`
-  dl {
-    display: grid;
-    margin: 0;
-  }
-  dt {
-    grid-column: 1;
-    color: $puppet-n700;
-  }
-  dd {
-    grid-column: 2;
-    margin-left: 2em;
-  }
-  dt, dd {
-    margin-bottom: $puppet-small;
-    overflow: hidden;
-    text-overflow: ellipsis;
+}
 
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-  }
+.rc-workflow-has-parents::before,
+.rc-workflow-has-children::after {
+  display: block;
+  content: "";
+  position: absolute;
+  left: 240/2 - $workflow-connector-diameter/2 - 1;
+  width: $workflow-connector-diameter;
+  height: $workflow-connector-diameter;
+  border: 3px solid grey;
+  border-radius: $workflow-connector-diameter/2;
+  background-color: white;
+}
+
+.rc-workflow-has-parents::before {
+  top: -($workflow-connector-diameter/2);
+}
+
+.rc-workflow-has-children::after {
+  bottom: -($workflow-connector-diameter/2);
 }
