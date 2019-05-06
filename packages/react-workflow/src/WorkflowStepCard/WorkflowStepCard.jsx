@@ -2,28 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Card, Heading, Icon, Text } from '@puppet/react-components';
-import './WorkflowStepCard.scss';
 
 const propTypes = {
-  children: PropTypes.node,
   node: PropTypes.shape({
     id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     type: PropTypes.string,
-    needs: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    ),
-    children: PropTypes.arrayOf(
-      PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
-    ),
+    parents: PropTypes.arrayOf(PropTypes.object),
+    children: PropTypes.arrayOf(PropTypes.object),
     status: PropTypes.string,
   }).isRequired,
 };
 
-const defaultProps = {
-  children: null,
-};
-
-const WorkflowCard = ({ node, children }) => (
+const WorkflowStepCard = ({ node }) => (
   <Card
     className={classNames(
       'rc-workflow-card',
@@ -35,7 +25,7 @@ const WorkflowCard = ({ node, children }) => (
         ),
       {
         'rc-workflow-has-children': node.children && node.children.length,
-        'rc-workflow-has-parents': node.needs && node.needs.length,
+        'rc-workflow-has-parents': node.parents && node.parents.length,
       },
     )}
   >
@@ -44,12 +34,10 @@ const WorkflowCard = ({ node, children }) => (
       <Heading as="h4" className="rc-workflow-title">
         {node.id}
       </Heading>
-      {children && <Card.Section>{children}</Card.Section>}
     </div>
   </Card>
 );
 
-WorkflowCard.propTypes = propTypes;
-WorkflowCard.defaultProps = defaultProps;
+WorkflowStepCard.propTypes = propTypes;
 
-export default WorkflowCard;
+export default WorkflowStepCard;

@@ -7,11 +7,11 @@ import Connectors from '../Connectors';
 const propTypes = {
   nodes: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
       type: PropTypes.string,
-      needs: PropTypes.arrayOf(
-        PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      ),
+      parents: PropTypes.arrayOf(PropTypes.object),
+      children: PropTypes.arrayOf(PropTypes.object),
+      status: PropTypes.string,
     }),
   ),
 };
