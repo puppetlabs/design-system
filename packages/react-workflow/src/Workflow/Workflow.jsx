@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { generateGraphLayout } from 'util/graph';
-import WorkflowCard from '../WorkflowCard';
+import WorkflowStepCard from '../WorkflowStepCard';
 import Connectors from '../Connectors';
 
 const propTypes = {
@@ -35,7 +35,7 @@ const Workflow = ({ nodes }) => {
             gridRowEnd: y + 1,
           }}
         >
-          <WorkflowCard node={node} />
+          <WorkflowStepCard node={node} />
         </div>
       ))}
     </div>

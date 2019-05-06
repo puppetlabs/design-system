@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Card, Heading, Icon, Text } from '@puppet/react-components';
-import './WorkflowCard.scss';
+import './WorkflowStepCard.scss';
 
 const propTypes = {
   children: PropTypes.node,
