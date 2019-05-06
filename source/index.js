@@ -17,6 +17,7 @@ import Card from './react/library/card';
 import Sidebar from './react/library/sidebar/Sidebar';
 import Icon from './react/library/icon/Icon';
 import Tag from './react/library/tag/Tag';
+import Table from './react/library/table';
 import Popover from './react/library/popover/Popover';
 import Input from './react/library/input/Input';
 import Switch from './react/library/switch/Switch';
@@ -44,6 +45,7 @@ export {
   Card,
   Icon,
   Tag,
+  Table,
   Popover,
   Dropdown,
   Input,

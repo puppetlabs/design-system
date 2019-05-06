@@ -3,20 +3,30 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const propTypes = {
+  /** Table data. Must be an array of objects */
   data: PropTypes.arrayOf(PropTypes.shape({})),
+  /** Array of column specifications */
   columns: PropTypes.arrayOf(
     PropTypes.shape({
+      /** Optional cell data getter method. By default it will grab data at the provided dataKey */
       cellDataGetter: PropTypes.func,
+      /** Optional cell renderer method. */
       cellRenderer: PropTypes.func,
+      /** Classname to apply to each data cell. Useful for setting explicit column widths */
       className: PropTypes.string,
-      columnData: PropTypes.any,
+      /** Unique string key defining this column */
       dataKey: PropTypes.string.isRequired,
+      /** Column header text */
       label: PropTypes.node,
+      /** Column header text */
       style: PropTypes.shape({}),
     }),
   ).isRequired,
+  /** Provides a unique key for each table row. */
   rowKey: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Optional additional table className */
   className: PropTypes.string,
+  /** Optional additional table inline style */
   style: PropTypes.shape({}),
 };
 
@@ -37,8 +47,12 @@ const Table = ({ data, columns, rowKey, className, ...rest }) => (
   <table className={classNames('rc-table', className)} {...rest}>
     <thead>
       <tr className="rc-table-header">
-        {columns.map(({ label, dataKey }) => (
-          <th className="rc-table-header-cell" key={dataKey}>
+        {columns.map(({ label, dataKey, className: cellClassName, style }) => (
+          <th
+            className={classNames('rc-table-header-cell', cellClassName)}
+            key={dataKey}
+            style={style}
+          >
             {label}
           </th>
         ))}
@@ -54,7 +68,6 @@ const Table = ({ data, columns, rowKey, className, ...rest }) => (
             const {
               cellDataGetter,
               cellRenderer,
-              columnData,
               dataKey,
               className: cellClassName,
               style,
@@ -71,11 +84,9 @@ const Table = ({ data, columns, rowKey, className, ...rest }) => (
               >
                 {cellRenderer({
                   cellData: cellDataGetter({
-                    columnData,
                     dataKey,
                     rowData,
                   }),
-                  columnData,
                   columnIndex,
                   dataKey,
                   rowData,
