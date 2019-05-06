@@ -30,25 +30,6 @@ $workflow-status-border: 2px;
   .rc-workflow-title {
     margin: 0;
   }
-
-  .rc-workflow-card-icon {
-    position: absolute;
-    top: 0;
-    right: 0;
-  }
-
-  .rc-icon-activity {
-    fill: $puppet-purple;
-  }
-
-  .rc-icon-package {
-    fill: $puppet-teal;
-  }
-
-  .rc-icon-send,
-  .rc-icon-build {
-    fill: $puppet-b300;
-  }
 }
 
 .rc-workflow-has-parents::before,

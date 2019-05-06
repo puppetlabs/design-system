@@ -40,15 +40,6 @@ const WorkflowCard = ({ node, children }) => (
     )}
   >
     <div className="rc-workflow-card-container">
-      <Icon
-        className="rc-workflow-card-icon"
-        size="medium"
-        type={
-          node.type && node.type.toLowerCase() === 'trigger'
-            ? 'activity'
-            : 'build'
-        }
-      />
       <Text className="rc-workflow-label">{node.type || 'Action'}</Text>
       <Heading as="h4" className="rc-workflow-title">
         {node.id}
