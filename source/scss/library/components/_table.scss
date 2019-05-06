@@ -1,0 +1,42 @@
+.rc-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.rc-table-cell,
+.rc-table-header-cell {
+  border-bottom: $puppet-common-border;
+  position: relative;
+
+
+  // 2px white vertical border on table cells is implemented with a ::before
+  // element to avoid diagonal blending line between the vertical and horizontal
+  // borders
+  &:not(:first-child) {
+    padding-left: 18px;
+  }
+
+  &:not(:first-child)::before {
+    background-color: $puppet-white;
+    bottom: 0;
+    content: '';
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 2px;
+  }
+}
+
+.rc-table-header-cell {
+  @include puppet-type-h6(subtle);
+  background-color: $puppet-n100;
+  padding: 11px 16px;
+  text-align: left;
+}
+
+.rc-table-cell {
+  @include puppet-type-small();
+  padding: 15px 16px;
+}
