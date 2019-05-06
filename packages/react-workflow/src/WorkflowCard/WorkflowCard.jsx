@@ -15,6 +15,7 @@ const propTypes = {
     children: PropTypes.arrayOf(
       PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
     ),
+    status: PropTypes.string,
   }).isRequired,
 };
 
@@ -24,10 +25,19 @@ const defaultProps = {
 
 const WorkflowCard = ({ node, children }) => (
   <Card
-    className={classNames('rc-workflow-card', {
-      'rc-workflow-has-children': node.children && node.children.length,
-      'rc-workflow-has-parents': node.needs && node.needs.length,
-    })}
+    className={classNames(
+      'rc-workflow-card',
+      node.status && `rc-workflow-card-status-${node.status}`,
+      node.parents &&
+        node.parents.map(
+          parent =>
+            parent.status && `rc-workflow-card-parent-status-${parent.status}`,
+        ),
+      {
+        'rc-workflow-has-children': node.children && node.children.length,
+        'rc-workflow-has-parents': node.needs && node.needs.length,
+      },
+    )}
   >
     <div className="rc-workflow-card-container">
       <Icon

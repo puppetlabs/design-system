@@ -21,7 +21,6 @@ const defaultProps = {
 
 const Workflow = ({ nodes }) => {
   const dag = generateGraphLayout(nodes);
-  console.log(dag);
 
   return (
     <div className="rc-workflow">
