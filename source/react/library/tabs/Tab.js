@@ -1,11 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 import Button from '../buttons/Button';
 
 const propTypes = {
   title: PropTypes.string,
-  active: PropTypes.bool.isRequired,
+  /** Is the button selected?  */
+  selected: PropTypes.bool.isRequired,
+  /** Is the button disabled?  */
+  disabled: PropTypes.bool,
   /** onClick for Tab button. Callback to parent */
   onKeyUp: PropTypes.func.isRequired,
   /** onClick for Tab button. Callback to parent */
@@ -16,38 +20,43 @@ const propTypes = {
 
 const defaultProps = {
   title: '',
+  disabled: false,
 };
 
 class Tab extends React.Component {
   componentWillUpdate(props) {
-    const { active } = props;
+    const { selected } = props;
 
-    if (active) {
+    if (selected) {
       this.tab.focus();
     }
   }
 
   render() {
-    const { title, active, onKeyUp, onClick, id } = this.props;
+    const { title, selected, disabled, onKeyUp, onClick, id } = this.props;
 
     const buttonProps = {
       role: 'tab',
-      'aria-selected': !!active,
+      'aria-selected': !!selected,
       'aria-controls': `${title}-panel`,
       id,
-      tabindex: !active ? -1 : 0,
+      tabindex: !selected ? -1 : 0,
       onClick: () => onClick(id),
       onKeyUp,
-      focus: active,
+      focus: selected,
     };
 
     return (
       <Button
-        className="rc-tabs-button"
+        type="secondary"
+        className={classNames('rc-tabs-button', {
+          'rc-tabs-button-selected': selected,
+        })}
         id={id}
         ref={button => {
           this.tab = button;
         }}
+        disabled={disabled}
         {...buttonProps}
       >
         {title}

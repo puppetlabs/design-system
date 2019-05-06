@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   title: PropTypes.string,
-  active: PropTypes.bool.isRequired,
+  selected: PropTypes.bool.isRequired,
   children: PropTypes.node,
   /** Managed internally for events */
   id: PropTypes.number.isRequired,
@@ -14,12 +14,12 @@ const defaultProps = {
   children: null,
 };
 
-const Panel = ({ title, active, children, id }) => {
+const Panel = ({ title, selected, children, id }) => {
   const panelProps = {
-    role: 'tabPanel',
+    role: 'tabpanel',
     id: `${id}-panel`,
     'aria-labelledby': title,
-    hidden: !active,
+    hidden: !selected,
   };
 
   return (

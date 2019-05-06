@@ -46,6 +46,8 @@ module.exports = {
     '**/sidebar/SidebarSection.js',
     '**/icon/icons.js',
     '**/icon/constants.js',
+    '**/tabs/Tab.js',
+    '**/tabs/Panel.js',
     '**/table/Column.js',
     '**/table/ColumnInput.js',
     '**/table/ColumnSelect.js',
