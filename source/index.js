@@ -17,6 +17,7 @@ import Card from './react/library/card';
 import Sidebar from './react/library/sidebar/Sidebar';
 import Icon from './react/library/icon/Icon';
 import Tag from './react/library/tag/Tag';
+import Table from './react/library/table';
 import Popover from './react/library/popover/Popover';
 import Input from './react/library/input/Input';
 import Switch from './react/library/switch/Switch';
@@ -24,9 +25,6 @@ import Loading from './react/library/loading/Loading';
 import Modal from './react/library/modals/Modal';
 import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
-import Table from './react/library/table/Table';
-import ColumnSelect from './react/library/table/ColumnSelect';
-import ColumnInput from './react/library/table/ColumnInput';
 import Accordion from './react/library/accordion';
 import Select from './react/library/select/Select';
 import Form from './react/library/form';
@@ -47,6 +45,7 @@ export {
   Card,
   Icon,
   Tag,
+  Table,
   Popover,
   Dropdown,
   Input,
@@ -61,9 +60,6 @@ export {
   Modal,
   ConfirmationModal,
   TooltipHoverArea,
-  Table,
-  ColumnSelect,
-  ColumnInput,
   Accordion,
   Select,
   Form,
