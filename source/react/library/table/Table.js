@@ -26,6 +26,8 @@ const propTypes = {
   ).isRequired,
   /** Provides a unique key for each table row. */
   rowKey: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  /** Render table in fixed-layout mode */
+  fixed: PropTypes.bool,
   /** Optional additional table className */
   className: PropTypes.string,
   /** Optional additional table inline style */
@@ -35,6 +37,7 @@ const propTypes = {
 const defaultProps = {
   data: [],
   rowKey: 'id',
+  fixed: false,
   className: '',
   style: {},
 };
@@ -45,8 +48,11 @@ const defaultColumnDefs = {
   label: '',
 };
 
-const Table = ({ data, columns, rowKey, className, ...rest }) => (
-  <table className={classNames('rc-table', className)} {...rest}>
+const Table = ({ data, columns, fixed, rowKey, className, ...rest }) => (
+  <table
+    className={classNames('rc-table', { 'rc-table-fixed': fixed }, className)}
+    {...rest}
+  >
     <thead>
       <tr className="rc-table-header">
         {columns.map(({ label, dataKey, className: cellClassName, style }) => (

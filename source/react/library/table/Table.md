@@ -24,9 +24,9 @@ const columns = [
 
 ```
 
-### Custom column widths
+### Fixed layouts
 
-The table component uses fixed column layouts. Explicit widths can be provided
+The `fixed` prop allows the table to be used in fixed layout mode. Explicit widths can be provided
 with the inline `style` parameter on each column or with an additional className.
 
 ```
@@ -45,7 +45,7 @@ const columns = [
   { label: 'Detections', dataKey: 'detections' }
 ];
 
-<Table data={data} columns={columns} />
+<Table fixed data={data} columns={columns} />
 
 ```
 ### Nested Data

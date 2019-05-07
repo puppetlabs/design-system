@@ -2,8 +2,12 @@
   background-color: $puppet-white;
   border-collapse: collapse;
   border-spacing: 0;
-  table-layout: fixed;
+  table-layout: auto;
   width: 100%;
+}
+
+.rc-table-fixed {
+  table-layout: fixed;
 }
 
 .rc-table-cell,
