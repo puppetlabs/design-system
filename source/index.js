@@ -38,6 +38,8 @@ import Alert from './react/library/alert';
 import Badge from './react/library/badge';
 import Link from './react/library/link';
 import Logo from './react/library/logo';
+import Breadcrumbs from './react/library/breadcrumbs';
+import Tabs from './react/library/tabs';
 
 export {
   Button,
@@ -74,4 +76,6 @@ export {
   Badge,
   Link,
   Logo,
+  Tabs,
+  Breadcrumbs,
 };

@@ -14,6 +14,8 @@ const propTypes = {
   className: PropTypes.string,
   /** Optional inline style. Additionally, other event handlers and and props are propagated to the inner element for use as needed */
   style: PropTypes.shape({}),
+  /** Optional disabled prop */
+  disabled: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -22,6 +24,7 @@ const defaultProps = {
   className: '',
   children: null,
   style: {},
+  disabled: false,
 };
 
 const Link = ({ as, size, className, children, disabled, ...rest }) => {

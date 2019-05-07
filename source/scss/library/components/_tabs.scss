@@ -1,7 +1,9 @@
 // Tabs
 // ----------------------------------------------------------------------------
 .rc-tabs {
-  width: 100%;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .rc-tabs-list {
@@ -93,6 +95,7 @@
 // Panel
 .rc-tabs-panel {
   border-top: $puppet-common-border;
+  flex: 1;
   padding: $puppet-common-spacing-base * 2 $puppet-common-spacing-base * 0.5 0 $puppet-common-spacing-base * 0.5;
   position: relative;
   z-index: 2;

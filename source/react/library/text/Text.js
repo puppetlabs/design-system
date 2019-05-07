@@ -27,7 +27,15 @@ const defaultProps = {
   style: {},
 };
 
-const Text = ({ as: Element, size, color, children, className, ...other }) => (
+const Text = ({
+  as: Element,
+  size,
+  color,
+  children,
+  className,
+  style,
+  ...other
+}) => (
   <Element
     className={classNames(
       'rc-text',
@@ -37,6 +45,7 @@ const Text = ({ as: Element, size, color, children, className, ...other }) => (
       },
       className,
     )}
+    style={style}
     {...other}
   >
     {children}
