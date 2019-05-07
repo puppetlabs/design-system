@@ -128,6 +128,7 @@ describe('<Table />', () => {
         label: 'Field',
         dataKey: 'field',
         cellDataGetter,
+        columnData: 'data',
       },
     ];
 
@@ -136,11 +137,13 @@ describe('<Table />', () => {
     expect(cellDataGetter).to.have.been.calledWith({
       dataKey: 'field',
       rowData: data[0],
+      columnData: 'data',
     });
 
     expect(cellDataGetter).to.have.been.calledWith({
       dataKey: 'field',
       rowData: data[1],
+      columnData: 'data',
     });
   });
 
@@ -152,6 +155,7 @@ describe('<Table />', () => {
         label: 'Name',
         dataKey: 'name',
         cellRenderer,
+        columnData: 'data',
       },
     ];
 
@@ -163,6 +167,7 @@ describe('<Table />', () => {
       dataKey: 'name',
       rowData: data[0],
       rowIndex: 0,
+      columnData: 'data',
     });
 
     expect(cellRenderer).to.have.been.calledWith({
@@ -171,6 +176,7 @@ describe('<Table />', () => {
       dataKey: 'name',
       rowData: data[1],
       rowIndex: 1,
+      columnData: 'data',
     });
   });
 });
