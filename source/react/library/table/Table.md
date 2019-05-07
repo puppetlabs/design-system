@@ -93,6 +93,7 @@ The `cellRenderer` property on each column definition can be used to render cust
 ```js static
 function ({
   cellData: any,
+  columnData: any,
   columnIndex: number,
   dataKey: string,
   rowData: any,

@@ -12,6 +12,8 @@ const propTypes = {
       cellDataGetter: PropTypes.func,
       /** Optional cell renderer method. */
       cellRenderer: PropTypes.func,
+      /** Arbitrary additional data passed to the cell renderer for this column */
+      columnData: PropTypes.any,
       /** Classname to apply to each data cell. Useful for setting explicit column widths */
       className: PropTypes.string,
       /** Unique string key defining this column */
@@ -68,6 +70,7 @@ const Table = ({ data, columns, rowKey, className, ...rest }) => (
             const {
               cellDataGetter,
               cellRenderer,
+              columnData,
               dataKey,
               className: cellClassName,
               style,
@@ -85,8 +88,10 @@ const Table = ({ data, columns, rowKey, className, ...rest }) => (
                 {cellRenderer({
                   cellData: cellDataGetter({
                     dataKey,
+                    columnData,
                     rowData,
                   }),
+                  columnData,
                   columnIndex,
                   dataKey,
                   rowData,
