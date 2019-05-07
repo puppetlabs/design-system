@@ -42,6 +42,12 @@ npm run bootstrap
 
 You can also run `npm link` in a particular package subfolder and `npm link @puppet/<package-name>`, like normal, for local development when consuming one of these packages in another project. See each individual package's own README.md; some have `npm run watch` commands to rebuild on change.
 
+Create a new package by using uikit:
+
+```sh
+cd packages && npx uikit generate library hello-world
+```
+
 ## Testing
 
 You can run `npm test` in a package subfolder or `npm test` in the top folder to test all packages.
