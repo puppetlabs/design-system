@@ -23,6 +23,7 @@
   "dependencies": {
     "fs-extra": "^7.0.1",
     "handlebars": "^4.1.0",
+    "jscodeshift": "^0.6.4",
     "klaw-sync": "^6.0.0",
     "ramda": "^0.26.1",
     "yargs": "^13.2.2"
