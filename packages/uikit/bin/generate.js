@@ -29,9 +29,10 @@ const getActions = templatePath => {
 
 const generate = ({ template, name, directory, modules }) => {
   const templatePath = path.resolve(__dirname, '../templates', template);
-  const dest = path.resolve(process.cwd(), directory, name);
   const files = klawSync(templatePath);
   const model = { name: getNameVariants(name), modules };
+  const { defaultDirectory = '' } = getActions(templatePath);
+  const dest = path.resolve(process.cwd(), directory || defaultDirectory, name);
   const {
     preGenerate = () => {},
     postGenerate = () => {},
