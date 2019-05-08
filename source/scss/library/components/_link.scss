@@ -18,11 +18,3 @@
   border: 0;
   padding: 0;
 }
-
-.rc-link-disabled,
-.rc-link-disabled:hover,
-.rc-link-disabled:active,
-.rc-link-disabled:focus {
-  color: disable-color($puppet-type-color-base);
-  pointer-events: none;
-}
