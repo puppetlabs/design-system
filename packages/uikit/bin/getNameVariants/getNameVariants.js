@@ -11,34 +11,46 @@ const {
 } = require('ramda');
 
 /**
- * Splits a name either at capital casing, camel or snake delimiters
+ * Splits a name at capital casing, camel, snake, dash, or space delimiters
  * e.g. my-component => ['my', 'component'];
  *      myComponent => ['my', 'component'];
  */
 const parseName = pipe(
-  split(/-|_|(?=[A-Z])/),
+  split(/-|_| |(?=[A-Z])/),
   map(toLower),
 );
 
-const capitalizeFirst = name => concat(toUpper(head(name)), tail(name));
+const capitalizeWords = map(name => concat(toUpper(head(name)), tail(name)));
 
-const toCaps = pipe(
-  map(capitalizeFirst),
+const humanize = pipe(
+  parseName,
+  capitalizeWords,
+  join(' '),
+);
+
+const pascalize = pipe(
+  parseName,
+  capitalizeWords,
   join(''),
 );
 
-const toCamel = parsedName =>
-  concat(head(parsedName), toCaps(tail(parsedName)));
-
-const toDash = join('-');
-
-const getNameVariants = pipe(
+const camelize = pipe(
   parseName,
-  parsedName => ({
-    caps: toCaps(parsedName),
-    camel: toCamel(parsedName),
-    dash: toDash(parsedName),
-  }),
+  parsedName =>
+    concat(head(parsedName), capitalizeWords(tail(parsedName)).join('')),
 );
+
+const dasherize = pipe(
+  parseName,
+  join('-'),
+);
+
+const getNameVariants = original => ({
+  original,
+  humanized: humanize(original),
+  pascalized: pascalize(original),
+  camelized: camelize(original),
+  dasherized: dasherize(original),
+});
 
 module.exports = getNameVariants;

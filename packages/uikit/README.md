@@ -68,10 +68,12 @@ To create a new generator template:
 1.  Add the name of your template to `TEMPLATE_OPTIONS` in `bin/uikit.js`.
 2.  Create a directory with your desired template files. If a file in your template has the `.handlebars` extension, the generator script will compile it as a handlebars template, stripping the `.handlebars` extension from the filename. The handlebars template will have access to the following variables:
 
-- `name`: An object with name variants derived from the cli argument:
-  - `name.caps`: Capitalized name (e.g. `MyComponent`)
-  - `name.camel`: Camelcased name (e.g. `myComponent`)
-  - `name.dash`: Dashcased name (e.g. `my-component`)
+- `name`: An object with name variants derived from the CLI argument:
+  - `name.original`: The unmodified CLI argument
+  - `name.humanized`: Capitalized words with spaces (e.g. `My Component`)
+  - `name.pascalized`: Upper camel-cased aka Pascal cased name (e.g. `MyComponent`)
+  - `name.camelized`: Lower camel-cased name (e.g. `myComponent`)
+  - `name.dasherized`: Kebab-cased name (e.g. `my-component`)
 
 In addition, the filename itself of `.handlebars` files will be compiled as a handlebars template. This is useful if you want to generate named files such as `MyComponent.jsx`.
 

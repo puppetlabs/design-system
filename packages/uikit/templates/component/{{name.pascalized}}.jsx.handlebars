@@ -1,0 +1,13 @@
+import React from 'react';
+
+{{#if modules}}
+import styles from './{{name.pascalized}}.module.scss';
+
+const {{name.pascalized}} = () => <div className={styles.{{name.camelized~}} }>{{name.pascalized}}</div>;
+{{else}}
+import './{{name.pascalized}}.scss';
+
+const {{name.pascalized}} = () => <div className="{{name.dasherized}}">{{name.pascalized}}</div>;
+{{/if}}
+
+export default {{name.pascalized}};
