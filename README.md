@@ -2,8 +2,9 @@
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-The Puppet Design System, documented at http://designsystem.puppetlabs.net, is
-composed of the following:
+The Puppet Design System is documented at http://designsystem.puppetlabs.net. For background, see [What's the Puppet Design System](https://confluence.puppetlabs.com/display/PDS/What%27s+Puppet+Design+System) and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b). For questions, ask [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY).
+
+The Puppet Design System includes:
 
 - Puppet Styleguide: Design specifications [packages/design-assets/puppet-styleguide.sketch](packages/design-assets/puppet-styleguide.sketch)
 - Puppet React Components: Library of reusable React components [puppetlabs/react-components](https://github.com/puppetlabs/react-components) Note: `@puppet/react-components` still lives under its own repository, but will eventually be migrated here.
