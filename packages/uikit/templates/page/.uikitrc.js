@@ -1,6 +1,7 @@
 const Runner = require('jscodeshift/src/Runner.js');
 
 module.exports = {
+  excludedFiles: ['transform.js'],
   postGenerate({ dest }) {
     const transformFile = '';
     const paths = [];

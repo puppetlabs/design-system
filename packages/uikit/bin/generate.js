@@ -36,13 +36,18 @@ const generate = ({ template, name, directory, modules }) => {
     preGenerate = () => {},
     postGenerate = () => {},
     message = () => `Generated ${template} "${name}" in ${dest}`,
+    excludedFiles = [],
   } = getActions(templatePath);
+  const allExcludedFiles = excludedFiles.concat(['.uikitrc.js']);
 
   preGenerate({ dest });
 
   files
     .filter(({ stats }) => !stats.isDirectory())
-    .filter(({ path: p }) => !p.endsWith('.uikitrc.js'))
+    .filter(
+      ({ path: p }) =>
+        !allExcludedFiles.some(excludedFile => p.endsWith(excludedFile)),
+    )
     .forEach(file => {
       const extension = path.extname(file.path);
       const data = fs.readFileSync(file.path, 'utf8');
