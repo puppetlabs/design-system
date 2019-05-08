@@ -1,4 +1,4 @@
-```
+```jsx
 initialState = { isOpen: null };
 <div>
   <ButtonGroup>
@@ -20,14 +20,6 @@ initialState = { isOpen: null };
       onClose={ () => { setState({ isOpen: null }) }}
     >
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit ante non mauris tristique, id iaculis orci varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper fringilla congue. Donec sed risus id augue aliquet laoreet a tempus nunc. Donec ultricies leo ac urna elementum, ac egestas quam viverra. Suspendisse erat eros, tempus eget condimentum ut, consectetur sed risus. In pretium dignissim nulla sit amet rhoncus. Nam sodales sem sapien, ac pretium mauris congue vitae.</p>
-
-      <p>Aenean vehicula imperdiet quam, sit amet fringilla ligula. Nam orci arcu, ultricies nec feugiat vel, dignissim sit amet tellus. Nulla ut lobortis urna. Aenean augue ante, vehicula in fermentum sit amet, rhoncus sed ipsum. Donec aliquam velit a nunc mattis interdum. Proin congue urna non efficitur aliquam. Proin molestie condimentum accumsan. Suspendisse mattis volutpat augue a venenatis. Donec quis nulla a quam aliquam faucibus in non augue. Nam sodales nisi ac nibh posuere facilisis. Suspendisse pharetra nibh tincidunt, efficitur purus et, blandit ex. Pellentesque commodo mauris malesuada elit dignissim commodo. Suspendisse vehicula non neque ac vestibulum. Nunc non leo a arcu hendrerit condimentum. Duis auctor ligula non enim varius, vitae rutrum purus ultrices.</p>
-
-      <p>Integer ut elit nec leo suscipit posuere eu et sapien. Curabitur vel dolor diam. Curabitur fringilla sapien sit amet lacinia dignissim. Suspendisse sodales vestibulum ultricies. Aliquam eget pulvinar urna. Maecenas eu maximus eros. Aliquam maximus lorem a consequat euismod. Curabitur ac est a turpis mollis accumsan in vitae arcu. Praesent ultrices, turpis et pretium consequat, erat purus bibendum augue, ac placerat nisi metus sed erat. Suspendisse posuere at risus nec auctor. Praesent pretium metus in sapien vulputate, quis feugiat enim iaculis. Vestibulum eget porta urna. Suspendisse ornare lacinia neque dictum fermentum. Mauris pharetra, ex et facilisis sagittis, nunc ligula finibus enim, eget sodales diam sem non ligula. Curabitur id auctor diam, vehicula semper lorem.</p>
-
-      <p>Fusce et enim sed tellus auctor lacinia non in mi. Donec vel vestibulum elit, ut condimentum massa. Aenean faucibus erat vitae diam hendrerit fermentum. Quisque sit amet dui eu leo gravida vestibulum. Vivamus vel velit ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi non nibh accumsan nulla tincidunt luctus ut eu urna. Nullam egestas lacinia nibh in hendrerit. Cras ornare ut est sed pellentesque.</p>
-
-      <p>Pellentesque a tristique lacus, eu faucibus elit. Maecenas accumsan vehicula nulla, sed laoreet libero cursus sit amet. Vivamus efficitur tortor et posuere vestibulum. Curabitur non arcu interdum, porttitor ligula in, accumsan lorem. Proin tempus in ligula in dignissim. Nullam ac ornare justo, luctus maximus est. Mauris bibendum sagittis fringilla. Mauris imperdiet aliquet ex quis porttitor. Suspendisse efficitur auctor metus, nec tristique dui pretium in. Duis eleifend mauris non erat ullamcorper fringilla.</p>
     </Modal>
   }
 
@@ -50,7 +42,7 @@ initialState = { isOpen: null };
 
 Modals can have sidebars:
 
-```
+```jsx
 initialState = { isOpen: null };
 <div>
   <ButtonGroup>
