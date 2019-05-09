@@ -1,0 +1,12 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+
+import {{name.pascalized}} from './{{name.pascalized}}';
+
+test('renders without crashing', () => {
+  const requiredProps = {
+    t: s => s,
+  };
+
+  shallow(<{{name.pascalized}} {...requiredProps} />);
+});

@@ -41,7 +41,7 @@ const generate = ({ template, name, directory, modules }) => {
   } = getActions(templatePath);
   const allExcludedFiles = excludedFiles.concat(['.uikitrc.js']);
 
-  preGenerate({ dest });
+  preGenerate({ dest, name });
 
   files
     .filter(({ stats }) => !stats.isDirectory())
@@ -66,7 +66,7 @@ const generate = ({ template, name, directory, modules }) => {
       fs.outputFileSync(newPath, output, 'utf8');
     });
 
-  postGenerate({ dest });
+  postGenerate({ dest, name });
 
   console.log(message({ template, name, dest }));
 };

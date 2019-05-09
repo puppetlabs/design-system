@@ -1,0 +1,18 @@
+import React, { Fragment } from 'react';
+import { func } from 'prop-types';
+
+import PageTitle from 'components/PageTitle';
+
+const propTypes = {
+  t: func.isRequired,
+};
+
+const {{name.pascalized}} = ({ t }) => (
+  <Fragment>
+    <PageTitle title="{{name.humanized}}" />
+  </Fragment>
+);
+
+{{name.pascalized}}.propTypes = propTypes;
+
+export default {{name.pascalized}};
