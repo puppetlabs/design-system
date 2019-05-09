@@ -35,7 +35,7 @@ const Workflow = ({ nodes }) => {
 
   return (
     <div className="rc-workflow">
-      {dag.edges.length > 0 && <Connectors {...dag} />}
+      {dag.edges.length > 0 ? <Connectors {...dag} /> : <p>Empty workflow</p>}
       {Object.entries(dag.nodes).map(([id, { x, y, ...node }]) => (
         <div
           key={id}

@@ -181,17 +181,27 @@ import { Tabs } from '@puppet/react-components';
 ## Add components from other `@puppet` packages to tab content:
 
 ```jsx
+import React from 'react';
+import { Tabs } from '@puppet/react-components';
 import { Workflow } from '@puppet/react-workflow';
 import { CodeEditor } from '@puppet/react-code-editor';
+import PageTitle from 'components/PageTitle';
 
-<Tabs type="secondary">
-  <Tabs.Tab title="GUI">
-    <Workflow />
-  </Tabs.Tab>
-  <Tabs.Tab title="YAML">
-    <CodeEditor minLines={100} />
-  </Tabs.Tab>
-</Tabs>
+const Hello = () => (
+  <div className="route-hello">
+    <PageTitle title="Hello" />
+    <Tabs type="secondary">
+      <Tabs.Tab title="GUI">
+        <Workflow />
+      </Tabs.Tab>
+      <Tabs.Tab title="YAML">
+        <CodeEditor minLines={100} />
+      </Tabs.Tab>
+    </Tabs>
+  </div>
+);
+
+export default Hello;
 ```
 
 ## Connect the output of CodeEditor to the input of Workflow
