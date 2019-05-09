@@ -26,13 +26,14 @@ const AppSidebar = ({ t, location: { pathname } }) => (
           />
         ))}
       </Sidebar.Section>
-      <Sidebar.Section label={t('sections.actions')}>
+      <Sidebar.Section label="Settings">
+        <Sidebar.Item title="Admin" icon="gear" as={Link} to="/admin" />
         <Sidebar.Item
-          title={t('actions.export')}
+          title="Sign out"
           icon="sign-out"
           onClick={() => {
             // eslint-disable-next-line no-alert
-            alert('Export');
+            alert('Sign out');
           }}
         />
       </Sidebar.Section>
