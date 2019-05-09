@@ -1,10 +1,11 @@
 import React from 'react';
 import PageTitle from 'components/PageTitle';
+import './{{name.pascalized}}.scss';
 
 const {{name.pascalized}} = () => (
-  <>
+  <div className="route-{{name.dasherized}}">
     <PageTitle title="{{name.humanized}}" />
-  </>
+  </div>
 );
 
 export default {{name.pascalized}};
