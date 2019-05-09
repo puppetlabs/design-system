@@ -79,7 +79,7 @@ export default MyPage;
 
 ## Add remote data to a table
 
-Add a `fetch` request in a `useEffect` hook and store the data with a `useState` hook in `src/client/routes/MyPage/MyPage.jsx`:
+Add a `fetch` request in a `useEffect` hook and store the data with a `useState` hook. Your `src/client/routes/MyPage/MyPage.jsx` file should look like this:
 
 ```jsx
 import React, { useState, useEffect } from 'react';
@@ -115,4 +115,49 @@ const MyPage = () => {
 };
 
 export default MyPage;
+```
+
+## Create and publish your own npm package
+
+Create a new library with the following command (outside of the directories used above):
+
+```sh
+uikit generate library world && cd world && npm install
+```
+
+Make a change to `src/World.jsx`:
+
+```jsx
+import React from 'react';
+
+const World = () => (
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/The_Earth_seen_from_Apollo_17_with_transparent_background.png/603px-The_Earth_seen_from_Apollo_17_with_transparent_background.png" />
+);
+
+export default World;
+```
+
+Publish the package to our internal npm registry on Artifactory:
+
+```sh
+npm login --registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm/  # Use your PuppetPass
+npm publish
+```
+
+Go back to the `hello-world` app and install the newly published `@puppet/world` package:
+
+```sh
+npm install @puppet/world
+```
+
+Generate a new page on which to show the `World` component:
+
+```sh
+uikit generate page Hello
+```
+
+Add the `World` component to `src/client/routes/Hello/Hello.jsx`:
+
+```jsx
+<World />
 ```
