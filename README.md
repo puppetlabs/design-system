@@ -13,6 +13,10 @@ The Puppet Design System includes:
 - Puppet UI Toolkit: A `uikit` CLI for generating apps, components, etc. [packages/uikit](packages/uikit)
 - Puppet Design System Website: The website documenting the Design System [packages/design-system-website](packages/design-system-website)
 
+## Getting started
+
+For a guided walkthrough of `uikit` with examples of using React components, Sass variables, and other packages, see the [Getting Started](getting-started.md) guide.
+
 ## Consuming npm packages
 
 The packages in this monorepo are published to Artifactory, so the consuming project should have an `.npmrc` file to set the registry for the `@puppet` scope:
