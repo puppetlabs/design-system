@@ -1,19 +1,15 @@
 import React from 'react';
-import { func } from 'prop-types';
-import { Heading } from '@puppet/react-components';
-
+import { Link } from 'react-router-dom';
+import { Button, Heading } from '@puppet/react-components';
 import './NotFound.scss';
 
-const propTypes = {
-  t: func.isRequired,
-};
-
-const NotFound = ({ t }) => (
+const NotFound = () => (
   <div className="route-not-found">
-    <Heading as="h1">{t('notFound')}</Heading>
+    <Heading as="h1">Page not found</Heading>
+    <Button as={Link} to="/">
+      Go home
+    </Button>
   </div>
 );
-
-NotFound.propTypes = propTypes;
 
 export default NotFound;

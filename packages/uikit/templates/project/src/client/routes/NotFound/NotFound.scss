@@ -3,4 +3,9 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+
+  .rc-heading-h1 {
+    margin-bottom: 16px;
+  }
 }
