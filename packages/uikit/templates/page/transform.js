@@ -7,7 +7,7 @@ const transform = ({ source }, { jscodeshift: j }, { name: originalName }) => {
   // Add import
   const lastImport = root.find(j.ImportDeclaration).at(-1);
   lastImport.insertAfter(
-    `import ${name.pascalized} from 'routes/${name.pascalized}';`,
+    `import ${name.pascalized} from 'routes/${name.original}';`,
   );
 
   // Add route
