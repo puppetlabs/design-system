@@ -1,0 +1,18 @@
+.route-home {
+  max-width: 730px;
+  margin: 100px auto;
+
+  .rc-heading-h1 {
+    width: 100%;
+    text-align: center;
+    margin: 0 0 16px;
+    padding: 0 0 15px;
+    border-bottom: 1px solid #ccd4d9;
+  }
+
+  .rc-button {
+    margin: 24px auto;
+    width: fit-content;
+    display: block;
+  }
+}
