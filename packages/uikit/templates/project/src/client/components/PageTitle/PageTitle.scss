@@ -1,0 +1,21 @@
+@import '~@puppet/sass-variables/index';
+
+.page-title {
+  margin: -40px -40px 20px;
+  padding: 24px 40px;
+  background-color: $puppet-white;
+  border-bottom: 1px solid $puppet-n400;
+}
+
+.page-title + .rc-tabs {
+  margin: -37px -40px 0;
+  background-color: $puppet-white;
+
+  .rc-tabs-list {
+    padding: 0 40px;
+  }
+
+  .rc-tabs-panel {
+    padding: 24px 40px;
+  }
+}
