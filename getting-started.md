@@ -1,6 +1,6 @@
 # Getting started
 
-This is a guided walkthrough of `uikit` with examples of using React components, Sass variables, and other packages.
+This is a guided walkthrough of `uikit` with examples of using React components, Sass variables, and other packages as well as how to create your own package.
 
 ## Create a web app
 
@@ -72,9 +72,6 @@ const columns = [
 ];
 
 <Table data={data} columns={columns} />
-);
-
-export default MyPage;
 ```
 
 ## Add remote data to a table
