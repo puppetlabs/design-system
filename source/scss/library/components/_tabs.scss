@@ -72,10 +72,6 @@
   color: $puppet-type-color-link-active;
 }
 
-.rc-tabs-button:disabled {
-  color: disable-color($puppet-font-color-base);
-}
-
 // Panel
 .rc-tabs-panel {
   border-top: $puppet-common-border;

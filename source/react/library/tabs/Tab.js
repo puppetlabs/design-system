@@ -10,8 +10,6 @@ const propTypes = {
   active: PropTypes.bool,
   /** Is the button focussed?  */
   focussed: PropTypes.bool,
-  /** Is the button disabled?  */
-  disabled: PropTypes.bool,
   /** onClick for Tab button. Callback to parent */
   onKeyDown: PropTypes.func,
   /** onClick for Tab button. Callback to parent */
@@ -24,7 +22,6 @@ const defaultProps = {
   title: '',
   active: false,
   focussed: false,
-  disabled: false,
   onKeyDown() {},
   onClick() {},
   id: null,
@@ -40,7 +37,7 @@ class Tab extends React.Component {
   }
 
   render() {
-    const { title, active, disabled, onKeyDown, onClick, id } = this.props;
+    const { title, active, onKeyDown, onClick, id } = this.props;
 
     const buttonProps = {
       role: 'tab',
@@ -63,7 +60,6 @@ class Tab extends React.Component {
         ref={button => {
           this.tab = button;
         }}
-        disabled={disabled}
         {...buttonProps}
       >
         {title}
