@@ -6,8 +6,8 @@ import Button from '../buttons/Button';
 
 const propTypes = {
   title: PropTypes.string,
-  /** Is the button selected?  */
-  selected: PropTypes.bool.isRequired,
+  /** Is the button active?  */
+  active: PropTypes.bool.isRequired,
   /** Is the button focussed?  */
   focussed: PropTypes.bool.isRequired,
   /** Is the button disabled?  */
@@ -35,24 +35,24 @@ class Tab extends React.Component {
   }
 
   render() {
-    const { title, selected, disabled, onKeyDown, onClick, id } = this.props;
+    const { title, active, disabled, onKeyDown, onClick, id } = this.props;
 
     const buttonProps = {
       role: 'tab',
-      'aria-selected': !!selected,
+      'aria-selected': !!active,
       'aria-controls': `${title}-panel`,
       id,
-      tabindex: !selected ? -1 : 0,
+      tabindex: !active ? -1 : 0,
       onClick: () => onClick(id),
       onKeyDown,
-      focus: selected,
+      focus: active,
     };
 
     return (
       <Button
         type="secondary"
         className={classNames('rc-tabs-button', {
-          'rc-tabs-button-selected': selected,
+          'rc-tabs-button-active': active,
         })}
         id={id}
         ref={button => {

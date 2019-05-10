@@ -63,11 +63,11 @@
 //   z-index: 3;
 // }
 
-.rc-tabs-button-selected {
+.rc-tabs-button-active {
   color: $puppet-type-color-link;
 }
 
-.rc-tabs-button-selected::after {
+.rc-tabs-button-active::after {
   background: $puppet-white;
   bottom: -1px;
   content: '';
@@ -103,8 +103,8 @@
 
 // Secondary coloring
 .rc-tabs-secondary {
-  .rc-tabs-button-selected,
-  .rc-tabs-button-selected::after,
+  .rc-tabs-button-active,
+  .rc-tabs-button-active::after,
   .rc-tabs-button:focus:not(:active)::after, // remove this line if choosing alternative
   .rc-tabs-panel {
     background: $puppet-bg-subtle;

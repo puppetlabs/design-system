@@ -2,7 +2,7 @@ The Tabs component is a lightly styled wrapper that expects nested Tabs.Tab comp
 
 Each Tabs.Tab will create a nav button using your title prop and a panel which will render anything you nest inside.
 
-You can directly set selected and disabled flags on Tabs.Tab
+You can directly set active and disabled flags on Tabs.Tab
 
 ---
 ---
@@ -41,8 +41,8 @@ Optional Tab props:
   <Tabs.Tab title="Default">
     No optional props
   </Tabs.Tab>
-  <Tabs.Tab title="Selected" selected>
-    <em>selected</em> prop on Tab
+  <Tabs.Tab title="Active" active>
+    <em>active</em> prop on Tab
   </Tabs.Tab>
   <Tabs.Tab title="Disabled" disabled>
     <em>disabled</em> prop on Tab

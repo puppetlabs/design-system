@@ -7,7 +7,7 @@ import Tab from './Tab';
 import Panel from './Panel';
 
 const propTypes = {
-  /** Currently controls bg color of selected tab & panel */
+  /** Currently controls bg color of active tab & panel */
   type: PropTypes.oneOf(['primary', 'secondary']),
   /** Nested Tab components */
   children: PropTypes.node,
@@ -29,7 +29,7 @@ class Tabs extends React.Component {
     super(props);
 
     this.state = {
-      selectedIndex: null,
+      activeIndex: null,
       dirty: false,
     };
 
@@ -39,21 +39,21 @@ class Tabs extends React.Component {
 
   componentWillMount() {
     const { children } = this.props;
-    let defaultSelectedIndex = 0;
+    let defaultActiveIndex = 0;
 
     React.Children.toArray(children)
       .filter(child => child && child.props)
       .forEach((child, index) => {
-        const { selected } = child.props;
+        const { active } = child.props;
 
-        if (selected) defaultSelectedIndex = index;
+        if (active) defaultActiveIndex = index;
       });
 
-    this.setState({ selectedIndex: defaultSelectedIndex });
+    this.setState({ activeIndex: defaultActiveIndex });
   }
 
   onClick(index) {
-    this.setState({ selectedIndex: index, dirty: true });
+    this.setState({ activeIndex: index, dirty: true });
   }
 
   // Handle keyup on tabs
@@ -69,8 +69,8 @@ class Tabs extends React.Component {
 
   switchTabOnArrowPress(offset) {
     const { children } = this.props;
-    const { selectedIndex } = this.state;
-    const nextFocussedIndex = selectedIndex + offset;
+    const { activeIndex } = this.state;
+    const nextFocussedIndex = activeIndex + offset;
     let adjustedNextFocussedIndex;
 
     if (children.length > nextFocussedIndex && nextFocussedIndex >= 0) {
@@ -81,12 +81,12 @@ class Tabs extends React.Component {
       adjustedNextFocussedIndex = 0;
     }
 
-    this.setState({ selectedIndex: adjustedNextFocussedIndex, dirty: true });
+    this.setState({ activeIndex: adjustedNextFocussedIndex, dirty: true });
   }
 
   render() {
     const { children, className, style, type } = this.props;
-    const { selectedIndex, dirty } = this.state;
+    const { activeIndex, dirty } = this.state;
 
     const tabs = [];
     const panels = [];
@@ -94,12 +94,12 @@ class Tabs extends React.Component {
     React.Children.toArray(children)
       .filter(child => child && child.props)
       .forEach((child, index) => {
-        // Strip selected prop. Only used to set default state.
-        const { selected: selectedProp, ...rest } = child.props;
-        const selected = selectedIndex === index;
+        // Strip active prop. Only used to set default state.
+        const { active: activeProp, ...rest } = child.props;
+        const active = activeIndex === index;
 
         const panelProps = {
-          selected,
+          active,
           id: index,
           key: index,
           ...rest,
@@ -110,7 +110,7 @@ class Tabs extends React.Component {
         const tabProps = {
           onClick: this.onClick,
           onKeyDown: this.onKeyDown,
-          focussed: dirty && selected,
+          focussed: dirty && active,
           ...panelProps,
         };
 
