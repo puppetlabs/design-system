@@ -59,10 +59,11 @@ class Tabs extends React.Component {
   // Handle keyup on tabs
   onKeyDown(event) {
     const key = event.keyCode;
-    const isValid = key === LEFT_KEY_CODE || RIGHT_KEY_CODE;
+    const isSwitched = key === LEFT_KEY_CODE || key === RIGHT_KEY_CODE;
     const offset = -(UP_KEY_CODE - key);
 
-    if (isValid) {
+    if (isSwitched) {
+      event.preventDefault();
       this.switchTabOnArrowPress(offset);
     }
   }
@@ -99,19 +100,19 @@ class Tabs extends React.Component {
         const active = activeIndex === index;
 
         const panelProps = {
+          ...rest,
           active,
           id: index,
           key: index,
-          ...rest,
         };
 
         panels.push(<Panel {...panelProps} />);
 
         const tabProps = {
+          ...panelProps,
           onClick: this.onClick,
           onKeyDown: this.onKeyDown,
           focussed: dirty && active,
-          ...panelProps,
         };
 
         tabs.push(<Tab {...tabProps} />);

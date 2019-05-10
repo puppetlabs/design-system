@@ -3,15 +3,19 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   title: PropTypes.string,
-  active: PropTypes.bool.isRequired,
+  /** Is the panel active?  */
+  active: PropTypes.bool,
+  /** Panel contents */
   children: PropTypes.node,
   /** Managed internally for events */
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
 };
 
 const defaultProps = {
   title: '',
+  active: false,
   children: null,
+  id: null,
 };
 
 const Panel = ({ title, active, children, id }) => {

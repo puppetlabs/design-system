@@ -14,7 +14,7 @@
 
 // Tab
 .rc-tabs-button {
-  border: $puppet-common-border $puppet-common-border 0 $puppet-common-border;
+  border-bottom: 0;
   border-radius: $puppet-common-border-radius $puppet-common-border-radius 0 0;
   color: $puppet-font-color-base;
   height: $puppet-common-spacing-base * 4;
@@ -36,49 +36,33 @@
   box-shadow: inset 0 0 0 1px $puppet-b300;
 }
 
-.rc-tabs-button:focus:not(:active)::after {
-  background: $puppet-white;
-  bottom: -1px;
-  content: '';
-  height: 3px;
-  left: 0;
-  margin-left: 1px;
-  margin-right: 1px;
-  position: absolute;
-  right: 0;
-  z-index: 3;
-}
-
-// Alternative // With bottom border per comp
-// .rc-tabs-button:focus:not(:active)::after {
-//   background: $puppet-b300;
-//   bottom: -1px;
-//   content: '';
-//   height: 1px;
-//   left: 0;
-//   margin-left: -1px;
-//   margin-right: -1px;
-//   position: absolute;
-//   right: 0;
-//   z-index: 3;
-// }
-
 .rc-tabs-button-active {
   color: $puppet-type-color-link;
 }
 
+.rc-tabs-button:focus::after,
 .rc-tabs-button-active::after {
-  background: $puppet-white;
   bottom: -1px;
   content: '';
-  height: 1px;
+  height: 3px;
   left: 0;
   position: absolute;
   right: 0;
   z-index: 3;
 }
 
+.rc-tabs-button:focus::after {
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+.rc-tabs-button-active::after {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 .rc-tabs-button:hover {
+  border-bottom: 0;
   color: $puppet-type-color-link-hover;
 }
 
@@ -101,11 +85,19 @@
   z-index: 2;
 }
 
+// Primary coloring
+.rc-tabs-button-active,
+.rc-tabs-button-active::after,
+.rc-tabs-button:focus:not(:active)::after,
+.rc-tabs-panel {
+  background: $puppet-white;
+}
+
 // Secondary coloring
 .rc-tabs-secondary {
   .rc-tabs-button-active,
   .rc-tabs-button-active::after,
-  .rc-tabs-button:focus:not(:active)::after, // remove this line if choosing alternative
+  .rc-tabs-button:focus::after,
   .rc-tabs-panel {
     background: $puppet-bg-subtle;
   }

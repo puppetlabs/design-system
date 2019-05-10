@@ -11,13 +11,14 @@ Default Tabs:
 ```
 <Tabs>
   <Tabs.Tab title="Good">
-    Il buono
+    Once focussed, use arrows to switch tabs.
   </Tabs.Tab>
   <Tabs.Tab title="Bad">
-    Il brutto
+    Hit Tab to focus down.
+    <br /><input></input>
   </Tabs.Tab>
   <Tabs.Tab title="Ugly">
-    Il cattivo
+    Hit Shift + Tab to focus up.
   </Tabs.Tab>
 </Tabs>
 ```

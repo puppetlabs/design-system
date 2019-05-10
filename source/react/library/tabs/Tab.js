@@ -7,22 +7,27 @@ import Button from '../buttons/Button';
 const propTypes = {
   title: PropTypes.string,
   /** Is the button active?  */
-  active: PropTypes.bool.isRequired,
+  active: PropTypes.bool,
   /** Is the button focussed?  */
-  focussed: PropTypes.bool.isRequired,
+  focussed: PropTypes.bool,
   /** Is the button disabled?  */
   disabled: PropTypes.bool,
   /** onClick for Tab button. Callback to parent */
-  onKeyDown: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func,
   /** onClick for Tab button. Callback to parent */
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   /** Managed internally for events */
-  id: PropTypes.number.isRequired,
+  id: PropTypes.number,
 };
 
 const defaultProps = {
   title: '',
+  active: false,
+  focussed: false,
   disabled: false,
+  onKeyDown() {},
+  onClick() {},
+  id: null,
 };
 
 class Tab extends React.Component {
@@ -42,10 +47,10 @@ class Tab extends React.Component {
       'aria-selected': !!active,
       'aria-controls': `${title}-panel`,
       id,
-      tabindex: !active ? -1 : 0,
+      tabIndex: !active ? -1 : 0,
       onClick: () => onClick(id),
       onKeyDown,
-      focus: active,
+      focus: active ? 1 : 0,
     };
 
     return (
