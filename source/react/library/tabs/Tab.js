@@ -8,10 +8,12 @@ const propTypes = {
   title: PropTypes.string,
   /** Is the button selected?  */
   selected: PropTypes.bool.isRequired,
+  /** Is the button focussed?  */
+  focussed: PropTypes.bool.isRequired,
   /** Is the button disabled?  */
   disabled: PropTypes.bool,
   /** onClick for Tab button. Callback to parent */
-  onKeyUp: PropTypes.func.isRequired,
+  onKeyDown: PropTypes.func.isRequired,
   /** onClick for Tab button. Callback to parent */
   onClick: PropTypes.func.isRequired,
   /** Managed internally for events */
@@ -25,15 +27,15 @@ const defaultProps = {
 
 class Tab extends React.Component {
   componentWillUpdate(props) {
-    const { selected } = props;
+    const { focussed } = props;
 
-    if (selected) {
+    if (focussed) {
       this.tab.focus();
     }
   }
 
   render() {
-    const { title, selected, disabled, onKeyUp, onClick, id } = this.props;
+    const { title, selected, disabled, onKeyDown, onClick, id } = this.props;
 
     const buttonProps = {
       role: 'tab',
@@ -42,7 +44,7 @@ class Tab extends React.Component {
       id,
       tabindex: !selected ? -1 : 0,
       onClick: () => onClick(id),
-      onKeyUp,
+      onKeyDown,
       focus: selected,
     };
 

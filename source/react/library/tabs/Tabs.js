@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { LEFT_KEY_CODE, RIGHT_KEY_CODE, UP_KEY_CODE } from '../../constants';
 
 import Tab from './Tab';
 import Panel from './Panel';
@@ -23,22 +24,17 @@ const defaultProps = {
   style: {},
 };
 
-// Add or substract depending on key pressed
-const direction = {
-  37: -1, // left arrow
-  39: 1, // right arrow
-};
-
 class Tabs extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       selectedIndex: null,
+      dirty: false,
     };
 
     this.onClick = this.onClick.bind(this);
-    this.onKeyUp = this.onKeyUp.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   componentWillMount() {
@@ -57,15 +53,17 @@ class Tabs extends React.Component {
   }
 
   onClick(index) {
-    this.setState({ selectedIndex: index });
+    this.setState({ selectedIndex: index, dirty: true });
   }
 
   // Handle keyup on tabs
-  onKeyUp(event) {
+  onKeyDown(event) {
     const key = event.keyCode;
+    const isValid = key === LEFT_KEY_CODE || RIGHT_KEY_CODE;
+    const offset = -(UP_KEY_CODE - key);
 
-    if (direction[key]) {
-      this.switchTabOnArrowPress(direction[key]);
+    if (isValid) {
+      this.switchTabOnArrowPress(offset);
     }
   }
 
@@ -83,12 +81,12 @@ class Tabs extends React.Component {
       adjustedNextFocussedIndex = 0;
     }
 
-    this.setState({ selectedIndex: adjustedNextFocussedIndex });
+    this.setState({ selectedIndex: adjustedNextFocussedIndex, dirty: true });
   }
 
   render() {
     const { children, className, style, type } = this.props;
-    const { selectedIndex } = this.state;
+    const { selectedIndex, dirty } = this.state;
 
     const tabs = [];
     const panels = [];
@@ -97,10 +95,11 @@ class Tabs extends React.Component {
       .filter(child => child && child.props)
       .forEach((child, index) => {
         // Strip selected prop. Only used to set default state.
-        const { selected, ...rest } = child.props;
+        const { selected: selectedProp, ...rest } = child.props;
+        const selected = selectedIndex === index;
 
         const panelProps = {
-          selected: selectedIndex === index,
+          selected,
           id: index,
           key: index,
           ...rest,
@@ -110,7 +109,8 @@ class Tabs extends React.Component {
 
         const tabProps = {
           onClick: this.onClick,
-          onKeyUp: this.onKeyUp,
+          onKeyDown: this.onKeyDown,
+          focussed: dirty && selected,
           ...panelProps,
         };
 
