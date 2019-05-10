@@ -24,12 +24,14 @@ The uikit includes a script for generating arbitrary boilerplate through templat
 
 - **Project**: `uikit generate project my-project`
   Generates a puppet React project
-- **Library**: `uikit generate library my-library`
-  Generates a React library appropriate for publishing as a consumable package
+- **Page**: `uikit generate page MyPage`
+  Run from the root of a project (generated with the above command). Creates a route, item in navigation, and view component for a new page.
 - **Component**: `uikit generate component MyComponent`
   Generates component boilerplate, including a test and scss file
 - **Method**: `uikit generate method myMethod`
   Generates utility method boilerplate
+- **Library**: `uikit generate library my-library`
+Generates a React library appropriate for publishing as a consumable package
 
 ### Specifying a directory:
 
