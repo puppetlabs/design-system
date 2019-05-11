@@ -27,9 +27,13 @@ const propTypes = {
   ),
   /** Currently selected value or values */
   value: PropTypes.oneOfType([
+    //eslint-disable-line
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
+  onChange: PropTypes.func,
+  /** When in multiple mode, should the selected items be applied immediately? */
+  applyImmediately: PropTypes.bool, // eslint-disable-line
   /** Text rendered when no value is selected */
   placeholder: PropTypes.string,
   /** Main visual variant */
@@ -41,6 +45,7 @@ const propTypes = {
     'transparent',
     'text',
   ]),
+  actionLabel: PropTypes.string, //eslint-disable-line
   /** Additional property used for connotative variants (such as danger) to choose between a strong and soft version */
   weight: PropTypes.oneOf(['bold', 'subtle']),
   /** Anchor orientation of the dropdown menu */
@@ -60,9 +65,12 @@ const propTypes = {
 const defaultProps = {
   multiple: false,
   options: [],
+  applyImmediately: false,
   value: null,
+  onChange() {},
   placeholder: 'Select',
   type: 'primary',
+  actionLabel: undefined,
   weight: 'bold',
   anchor: 'bottom left',
   icon: null,
@@ -71,6 +79,12 @@ const defaultProps = {
   className: '',
   style: {},
 };
+
+const isControlled = ({ multiple, applyImmediately }) =>
+  !multiple || applyImmediately;
+
+const getActionLabel = ({ actionLabel, applyImmediately }) =>
+  actionLabel || (applyImmediately ? 'Done' : 'Apply');
 
 class ButtonSelect extends Component {
   constructor(props) {
@@ -88,6 +102,19 @@ class ButtonSelect extends Component {
     this.focusMenu = this.focusMenu.bind(this);
     this.closeAndFocusButton = this.closeAndFocusButton.bind(this);
     this.onMenuBlur = this.onMenuBlur.bind(this);
+    this.onValueChange = this.onValueChange.bind(this);
+    this.onActionClick = this.onActionClick.bind(this);
+    this.getButtonLabel = this.getButtonLabel.bind(this);
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    if (isControlled(props) || !state.open) {
+      return {
+        listValue: props.value,
+      };
+    }
+
+    return null;
   }
 
   onClickButton() {
@@ -104,6 +131,43 @@ class ButtonSelect extends Component {
     if (!this.container.contains(e.relatedTarget)) {
       this.close();
     }
+  }
+
+  onValueChange(listValue) {
+    const { onChange, multiple } = this.props;
+
+    if (isControlled(this.props)) {
+      onChange(listValue);
+    } else {
+      this.setState({ listValue });
+    }
+
+    if (!multiple) {
+      this.closeAndFocusButton();
+    }
+  }
+
+  onActionClick() {
+    const { onChange } = this.props;
+    const { listValue } = this.state;
+
+    if (!isControlled(this.props)) {
+      onChange(listValue);
+    }
+
+    this.closeAndFocusButton();
+  }
+
+  getButtonLabel() {
+    const { placeholder, multiple, options, value } = this.props;
+
+    if (multiple || !value) {
+      return placeholder;
+    }
+
+    const selectedOption = options.find(option => option.value === value);
+
+    return selectedOption.selectedLabel || selectedOption.label;
   }
 
   closeAndFocusButton() {
@@ -137,12 +201,17 @@ class ButtonSelect extends Component {
   }
 
   render() {
-    const { open, menuStyle } = this.state;
+    const {
+      onValueChange,
+      onClickButton,
+      onMenuBlur,
+      closeAndFocusButton,
+      onActionClick,
+    } = this;
+    const { open, menuStyle, listValue } = this.state;
     const {
       id,
       multiple,
-      value,
-      placeholder,
       type,
       icon,
       disabled,
@@ -169,6 +238,7 @@ class ButtonSelect extends Component {
         }}
       >
         <Button
+          className="rc-button-select-target"
           type={type}
           weight={weight}
           icon={icon}
@@ -178,23 +248,25 @@ class ButtonSelect extends Component {
           aria-haspopup="true"
           aria-controls={`${id}-menu`}
           aria-expanded={open}
-          onClick={this.onClickButton}
+          onClick={onClickButton}
           ref={button => {
             this.button = button;
           }}
         >
-          {placeholder}
+          {this.getButtonLabel()}
         </Button>
         <OptionMenuList
           id={`${id}-menu`}
           multiple={multiple}
           options={options}
-          selected={value}
+          selected={listValue}
           aria-labelledby={id}
-          onActionClick={this.closeAndFocusButton}
-          onBlur={this.onMenuBlur}
-          onEscape={this.closeAndFocusButton}
+          onActionClick={onActionClick}
+          onBlur={onMenuBlur}
+          onEscape={closeAndFocusButton}
+          onChange={onValueChange}
           style={menuStyle}
+          actionLabel={getActionLabel(this.props)}
           ref={menu => {
             this.menu = menu;
           }}

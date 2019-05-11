@@ -11,10 +11,6 @@ const options = [
   { value: 'four', label: 'Four' },
   { value: 'five', label: 'Five' },
   { value: 'six', label: 'Six' },
-  { value: 'seven', label: 'Seven' },
-  { value: 'eight', label: 'Seven' },
-  { value: 'nine', label: 'Seven' },
-  { value: 'ten', label: 'Seven' }
 ];
 
 const style = { display: 'inline-block', margin: 10 };
@@ -23,9 +19,10 @@ const style = { display: 'inline-block', margin: 10 };
   <ButtonSelect
     id="action-menu-one"
     options={options}
-    placeholder="Select one"
+    placeholder="Select a value"
     style={style}
-    multiple
+    value={state.value}
+    onChange={value => setState({ value })}
   />
 </div>
 ```

@@ -36,12 +36,14 @@ const propTypes = {
   onChange: PropTypes.func,
   onActionClick: PropTypes.func,
   onEscape: PropTypes.func,
+  onBlur: PropTypes.func,
   className: PropTypes.string,
 };
 
 const defaultProps = {
   options: [],
   multiple: false,
+  onBlur() {},
   className: '',
   selected: null,
   onChange() {},
@@ -78,6 +80,8 @@ class OptionMenuList extends Component {
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyDownInAction = this.onKeyDownInAction.bind(this);
     this.onFocus = this.onFocus.bind(this);
+    this.onMenuBlur = this.onMenuBlur.bind(this);
+    this.onActionBlur = this.onActionBlur.bind(this);
   }
 
   onFocus() {
@@ -179,6 +183,22 @@ class OptionMenuList extends Component {
     }
   }
 
+  onMenuBlur(e) {
+    const { onBlur } = this.props;
+
+    if (e.relatedTarget !== this.button) {
+      onBlur(e);
+    }
+  }
+
+  onActionBlur(e) {
+    const { onBlur } = this.props;
+
+    if (e.relatedTarget !== this.menu) {
+      onBlur(e);
+    }
+  }
+
   focusMenu() {
     if (this.menu) {
       this.menu.focus();
@@ -244,6 +264,8 @@ class OptionMenuList extends Component {
       onKeyDown,
       onKeyDownInAction,
       onFocus,
+      onMenuBlur,
+      onActionBlur,
     } = this;
     const { focusedIndex } = this.state;
     const {
@@ -256,6 +278,7 @@ class OptionMenuList extends Component {
       onEscape,
       className,
       style,
+      onBlur,
       ...rest
     } = this.props;
 
@@ -283,6 +306,7 @@ class OptionMenuList extends Component {
           onMouseLeave={onMouseLeave}
           onKeyDown={onKeyDown}
           onFocus={onFocus}
+          onBlur={onMenuBlur}
           ref={menu => {
             this.menu = menu;
           }}
@@ -311,6 +335,10 @@ class OptionMenuList extends Component {
             className="rc-menu-action"
             onClick={onActionClick}
             onKeyDown={onKeyDownInAction}
+            onBlur={onActionBlur}
+            ref={button => {
+              this.button = button;
+            }}
           >
             {actionLabel}
           </button>
