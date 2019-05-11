@@ -85,6 +85,43 @@ const path = (valuePath, object) => {
 
   return path(rest, object[prop]);
 };
+
+const getDropdownPosition = (target, anchor, margin) => {
+  const { width, height } = target.getBoundingClientRect();
+
+  switch (anchor) {
+    case 'bottom right': {
+      return {
+        top: height + margin,
+        right: 0,
+        width,
+      };
+    }
+    case 'top right': {
+      return {
+        bottom: height + margin,
+        right: 0,
+        width,
+      };
+    }
+    case 'top left': {
+      return {
+        bottom: height + margin,
+        left: 0,
+        width,
+      };
+    }
+    default:
+    case 'bottom left': {
+      return {
+        top: height + margin,
+        left: 0,
+        width,
+      };
+    }
+  }
+};
+
 export {
   unbindParentScroll,
   bindParentScroll,
@@ -95,6 +132,7 @@ export {
   mapObj,
   omit,
   path,
+  getDropdownPosition,
 };
 
 export default isNodeInRoot;

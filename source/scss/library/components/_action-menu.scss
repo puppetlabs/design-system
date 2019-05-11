@@ -1,3 +1,14 @@
+.rc-action-menu {
+  position: relative;
+
+  .rc-action-menu-list {
+    max-height: 200px;
+    min-width: 150px;
+    position: absolute;
+    z-index: 10;
+  }
+}
+
 .rc-action-menu-closed {
   .rc-action-menu-list {
     display: none;

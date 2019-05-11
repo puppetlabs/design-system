@@ -23,7 +23,16 @@ const defaultProps = {
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 const OptionMenuItem = forwardRef(
   (
-    { as: Element, id, children, focused, icon, onMouseEnter, ...rest },
+    {
+      as: Element,
+      id,
+      children,
+      focused,
+      icon,
+      onMouseEnter,
+      innerRef,
+      ...rest
+    },
     ref,
   ) => {
     if (Element) {
@@ -34,13 +43,14 @@ const OptionMenuItem = forwardRef(
             'rc-menu-list-item-focused': focused,
           })}
           onMouseEnter={onMouseEnter}
+          ref={ref}
         >
           <Element
             id={id}
             role="menuitem"
             className="rc-menu-list-item-inner"
-            ref={ref}
             tabIndex={-1}
+            ref={innerRef}
             {...rest}
           >
             {icon && <Icon className="rc-menu-list-item-icon" type={icon} />}
@@ -61,7 +71,9 @@ const OptionMenuItem = forwardRef(
         {...rest}
       >
         {icon && <Icon className="rc-menu-list-item-icon" type={icon} />}
-        <span className="rc-menu-list-item-content">{children}</span>
+        <span className="rc-menu-list-item-content" ref={innerRef}>
+          {children}
+        </span>
       </li>
     );
   },

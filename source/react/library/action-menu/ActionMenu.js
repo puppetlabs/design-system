@@ -3,11 +3,17 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Button from '../buttons/Button';
 import ActionMenuList from '../../internal/action-menu-list';
-import { renderableElement } from '../../helpers/customPropTypes';
+import {
+  renderableElement,
+  anchorOrientation,
+} from '../../helpers/customPropTypes';
 import { AVAILABLE_ICONS } from '../icon/Icon';
+import { getDropdownPosition } from '../../helpers/statics';
 
 const propTypes = {
+  /** Unique id */
   id: PropTypes.string.isRequired,
+  /** An Array of action objects */
   actions: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
@@ -29,13 +35,17 @@ const propTypes = {
   ]),
   /** Additional property used for connotative variants (such as danger) to choose between a strong and soft version */
   weight: PropTypes.oneOf(['bold', 'subtle']),
+  /** Anchor orientation of the dropdown menu */
+  anchor: anchorOrientation,
   /** Optional icon to be rendered instead of / in addition to button text. If both an icon and text are present, the icon will be rendered before the text */
   icon: PropTypes.oneOf(AVAILABLE_ICONS),
   /** Is the button disabled?  */
   disabled: PropTypes.bool,
   /** If true, button will render with a loading spinner */
   loading: PropTypes.bool,
+  /** Optional additional className passed to the outer element */
   className: PropTypes.string,
+  /** Optional inline style passed to the outer element */
   style: PropTypes.shape({}),
 };
 
@@ -44,6 +54,7 @@ const defaultProps = {
   label: '',
   type: 'primary',
   weight: 'bold',
+  anchor: 'bottom left',
   icon: null,
   loading: false,
   disabled: false,
@@ -57,6 +68,7 @@ class ActionMenu extends Component {
 
     this.state = {
       open: false,
+      menuStyle: {},
     };
 
     this.open = this.open.bind(this);
@@ -79,7 +91,7 @@ class ActionMenu extends Component {
   }
 
   onMenuBlur(e) {
-    if (e.relatedTarget !== this.button) {
+    if (!this.container.contains(e.relatedTarget)) {
       this.close();
     }
   }
@@ -90,7 +102,12 @@ class ActionMenu extends Component {
   }
 
   open() {
-    this.setState({ open: true }, this.focusMenu);
+    const { anchor } = this.props;
+
+    this.setState(
+      { open: true, menuStyle: getDropdownPosition(this.button, anchor, 8) },
+      this.focusMenu,
+    );
   }
 
   close() {
@@ -110,7 +127,7 @@ class ActionMenu extends Component {
   }
 
   render() {
-    const { open } = this.state;
+    const { open, menuStyle } = this.state;
     const {
       id,
       label,
@@ -135,6 +152,9 @@ class ActionMenu extends Component {
           className,
         )}
         style={style}
+        ref={container => {
+          this.container = container;
+        }}
       >
         <Button
           type={type}
@@ -160,6 +180,7 @@ class ActionMenu extends Component {
           onActionClick={this.closeAndFocusButton}
           onBlur={this.onMenuBlur}
           onEscape={this.closeAndFocusButton}
+          style={menuStyle}
           ref={menu => {
             this.menu = menu;
           }}

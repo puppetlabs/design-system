@@ -60,6 +60,7 @@ class ActionMenuList extends Component {
     };
 
     this.actionRefs = [];
+    this.actionInnerRefs = [];
 
     this.executeAction = this.executeAction.bind(this);
     this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
@@ -98,7 +99,7 @@ class ActionMenuList extends Component {
     if (isNil(focusedIndex)) {
       this.focusLast();
     } else {
-      this.setState({ focusedIndex: Math.max(0, focusedIndex - 1) });
+      this.focusItem(Math.max(0, focusedIndex - 1));
     }
   }
 
@@ -109,9 +110,7 @@ class ActionMenuList extends Component {
     if (isNil(focusedIndex)) {
       this.focusFirst();
     } else {
-      this.setState({
-        focusedIndex: Math.min(actions.length - 1, focusedIndex + 1),
-      });
+      this.focusItem(Math.min(actions.length - 1, focusedIndex + 1));
     }
   }
 
@@ -186,13 +185,19 @@ class ActionMenuList extends Component {
   }
 
   focusFirst() {
-    this.setState({ focusedIndex: 0 });
+    this.focusItem(0);
   }
 
   focusLast() {
     const { actions } = this.props;
 
-    this.setState({ focusedIndex: actions.length - 1 });
+    this.focusItem(actions.length - 1);
+  }
+
+  focusItem(focusedIndex) {
+    this.setState({ focusedIndex });
+
+    this.actionRefs[focusedIndex].scrollIntoView(false);
   }
 
   executeFocusedItem() {
@@ -200,7 +205,7 @@ class ActionMenuList extends Component {
 
     // triggering click event so that links work
     if (!isNil(focusedIndex) && this.actionRefs[focusedIndex]) {
-      const focusedElement = this.actionRefs[focusedIndex];
+      const focusedElement = this.actionInnerRefs[focusedIndex];
 
       focusedElement.click();
     }
@@ -260,6 +265,9 @@ class ActionMenuList extends Component {
                 onClick={() => executeAction(onClick, actionId)}
                 ref={el => {
                   this.actionRefs[index] = el;
+                }}
+                innerRef={el => {
+                  this.actionInnerRefs[index] = el;
                 }}
                 {...other}
               >

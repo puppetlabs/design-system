@@ -1,9 +1,11 @@
 .rc-menu-list {
+  background-color: $puppet-white;
   border: $puppet-common-border;
   border-radius: $puppet-common-border-radius;
   box-shadow: $puppet-common-elevation-200;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
 }
 
 .rc-action-menu-list,

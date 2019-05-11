@@ -23,6 +23,13 @@ export const elementElevation = PropTypes.oneOf([
   800,
 ]);
 
+export const anchorOrientation = PropTypes.oneOf([
+  'bottom right',
+  'top right',
+  'top left',
+  'bottom left',
+]);
+
 /**
  * Design system common form sizes
  */
