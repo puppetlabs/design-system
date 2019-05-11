@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import scrollIntoView from 'scroll-into-view-if-needed';
 
 import {
   UP_KEY_CODE,
@@ -69,6 +70,8 @@ class OptionMenuList extends Component {
       focusedIndex: options.length ? 0 : null,
     };
 
+    this.optionRefs = [];
+
     this.onClickItem = this.onClickItem.bind(this);
     this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
@@ -78,14 +81,11 @@ class OptionMenuList extends Component {
   }
 
   onFocus() {
-    const { onFocus } = this.props;
     const { focusedIndex } = this.state;
 
     if (isNil(focusedIndex)) {
       this.focusFirst();
     }
-
-    onFocus();
   }
 
   onClickItem(value) {
@@ -110,7 +110,7 @@ class OptionMenuList extends Component {
     if (isNil(focusedIndex)) {
       this.focusLast();
     } else {
-      this.setState({ focusedIndex: Math.max(0, focusedIndex - 1) });
+      this.focusItem(Math.max(0, focusedIndex - 1));
     }
   }
 
@@ -121,9 +121,7 @@ class OptionMenuList extends Component {
     if (isNil(focusedIndex)) {
       this.focusFirst();
     } else {
-      this.setState({
-        focusedIndex: Math.min(options.length - 1, focusedIndex + 1),
-      });
+      this.focusItem(Math.min(options.length - 1, focusedIndex + 1));
     }
   }
 
@@ -181,14 +179,32 @@ class OptionMenuList extends Component {
     }
   }
 
+  focusMenu() {
+    if (this.menu) {
+      this.menu.focus();
+    }
+  }
+
   focusFirst() {
-    this.setState({ focusedIndex: 0 });
+    this.focusItem(0);
   }
 
   focusLast() {
     const { options } = this.props;
 
-    this.setState({ focusedIndex: options.length - 1 });
+    this.focusItem(options.length - 1);
+  }
+
+  focusItem(focusedIndex) {
+    this.setState({ focusedIndex });
+
+    /**
+     * Scrolls newly focused item into view if it is not
+     */
+    scrollIntoView(this.optionRefs[focusedIndex], {
+      block: 'end',
+      scrollMode: 'if-needed',
+    });
   }
 
   select(value) {
@@ -237,6 +253,7 @@ class OptionMenuList extends Component {
       multiple,
       actionLabel,
       onActionClick,
+      onEscape,
       className,
       style,
       ...rest
@@ -261,11 +278,14 @@ class OptionMenuList extends Component {
           id={id}
           role="listbox"
           tabIndex={0}
-          className="rc-menu-list"
+          className="rc-menu-list-inner"
           aria-activedescendant={focusedId}
           onMouseLeave={onMouseLeave}
           onKeyDown={onKeyDown}
           onFocus={onFocus}
+          ref={menu => {
+            this.menu = menu;
+          }}
           {...rest}
         >
           {options.map(({ value, label, icon }, index) => (
@@ -277,6 +297,9 @@ class OptionMenuList extends Component {
               icon={icon}
               onClick={() => onClickItem(value)}
               onMouseEnter={() => onMouseEnterItem(index)}
+              ref={option => {
+                this.optionRefs[index] = option;
+              }}
             >
               {label}
             </OptionMenuListItem>

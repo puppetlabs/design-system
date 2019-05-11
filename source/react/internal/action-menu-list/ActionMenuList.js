@@ -31,7 +31,6 @@ const propTypes = {
   ),
   onActionClick: PropTypes.func,
   onEscape: PropTypes.func,
-  onFocus: PropTypes.func,
   onBlur: PropTypes.func,
   className: PropTypes.string,
 };
@@ -40,7 +39,6 @@ const defaultProps = {
   actions: [],
   onActionClick() {},
   onEscape() {},
-  onFocus() {},
   onBlur() {},
   className: '',
 };
@@ -78,14 +76,11 @@ class ActionMenuList extends Component {
   }
 
   onFocus() {
-    const { onFocus } = this.props;
     const { focusedIndex } = this.state;
 
     if (isNil(focusedIndex)) {
       this.focusFirst();
     }
-
-    onFocus();
   }
 
   onMouseEnterItem(focusedIndex) {

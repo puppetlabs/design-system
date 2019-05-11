@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
@@ -19,30 +19,27 @@ const defaultProps = {
 };
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-const OptionMenuListItem = ({
-  id,
-  children,
-  focused,
-  selected,
-  icon,
-  onClick,
-  onMouseEnter,
-}) => (
-  <li
-    role="option"
-    id={id}
-    className={classNames('rc-menu-item', {
-      'rc-menu-item-focused': focused,
-      'rc-menu-item-selected': selected,
-    })}
-    aria-selected={selected}
-    onClick={onClick}
-    onMouseEnter={onMouseEnter}
-  >
-    {icon && <Icon className="rc-menu-item-icon" type={icon} />}
-    <span className="rc-menu-item-content">{children}</span>
-    {selected && <Icon className="rc-menu-item-checkmark" type="check" />}
-  </li>
+const OptionMenuListItem = forwardRef(
+  ({ id, children, focused, selected, icon, onClick, onMouseEnter }, ref) => (
+    <li
+      role="option"
+      id={id}
+      className={classNames('rc-menu-list-item', {
+        'rc-menu-list-item-focused': focused,
+        'rc-menu-list-item-selected': selected,
+      })}
+      aria-selected={selected}
+      onClick={onClick}
+      onMouseEnter={onMouseEnter}
+      ref={ref}
+    >
+      {icon && <Icon className="rc-menu-list-item-icon" type={icon} />}
+      <span className="rc-menu-list-item-content">{children}</span>
+      {selected && (
+        <Icon className="rc-menu-list-item-checkmark" type="check" />
+      )}
+    </li>
+  ),
 );
 /* eslint-enable */
 

@@ -2,33 +2,36 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Button from '../buttons/Button';
-import ActionMenuList from '../../internal/action-menu-list';
-import {
-  renderableElement,
-  anchorOrientation,
-} from '../../helpers/customPropTypes';
+import OptionMenuList from '../../internal/option-menu-list';
+import { anchorOrientation } from '../../helpers/customPropTypes';
 import Icon from '../icon';
 import { getDropdownPosition } from '../../helpers/statics';
 
 const propTypes = {
   /** Unique id */
   id: PropTypes.string.isRequired,
-  /** An Array of action objects */
-  actions: PropTypes.arrayOf(
+  /** Is this a multiple button select? */
+  multiple: PropTypes.bool,
+  /** An Array of select options */
+  options: PropTypes.arrayOf(
     PropTypes.shape({
-      /** Unique action id */
-      id: PropTypes.string.isRequired,
-      /** Action text */
-      label: PropTypes.node.isRequired,
-      /** Optional icon rendered to the left of action text */
+      /** Select option value */
+      value: PropTypes.string.isRequired,
+      /** Select option label */
+      label: PropTypes.string.isRequired,
+      /** Optional alternate label rendered in the main button element if the option is selected. */
+      selectedLabel: PropTypes.string,
+      /** Optional icon associated with this option */
       icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
-      /** Action click handler. Not needed if the action is a link */
-      onClick: PropTypes.func,
-      /** Custom action element. Useful for creating navigation actions with as: 'a' or as: Link. Additionally, extra props not listed here are passed through to the action element. This allows custom props such as `href` or `to` to be passed to the inner action element. */
-      as: renderableElement,
     }),
   ),
-  label: PropTypes.string,
+  /** Currently selected value or values */
+  value: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.arrayOf(PropTypes.string),
+  ]),
+  /** Text rendered when no value is selected */
+  placeholder: PropTypes.string,
   /** Main visual variant */
   type: PropTypes.oneOf([
     'primary',
@@ -55,8 +58,10 @@ const propTypes = {
 };
 
 const defaultProps = {
-  actions: [],
-  label: '',
+  multiple: false,
+  options: [],
+  value: null,
+  placeholder: 'Select',
   type: 'primary',
   weight: 'bold',
   anchor: 'bottom left',
@@ -67,7 +72,7 @@ const defaultProps = {
   style: {},
 };
 
-class ActionMenu extends Component {
+class ButtonSelect extends Component {
   constructor(props) {
     super(props);
 
@@ -121,7 +126,7 @@ class ActionMenu extends Component {
 
   focusMenu() {
     if (this.menu) {
-      this.menu.focus();
+      this.menu.focusMenu();
     }
   }
 
@@ -135,12 +140,14 @@ class ActionMenu extends Component {
     const { open, menuStyle } = this.state;
     const {
       id,
-      label,
+      multiple,
+      value,
+      placeholder,
       type,
       icon,
       disabled,
       loading,
-      actions,
+      options,
       weight,
       className,
       style,
@@ -149,10 +156,10 @@ class ActionMenu extends Component {
     return (
       <div
         className={classNames(
-          'rc-action-menu',
+          'rc-button-select',
           {
-            'rc-action-menu-open': open,
-            'rc-action-menu-closed': !open,
+            'rc-button-select-open': open,
+            'rc-button-select-closed': !open,
           },
           className,
         )}
@@ -176,11 +183,13 @@ class ActionMenu extends Component {
             this.button = button;
           }}
         >
-          {label}
+          {placeholder}
         </Button>
-        <ActionMenuList
+        <OptionMenuList
           id={`${id}-menu`}
-          actions={actions}
+          multiple={multiple}
+          options={options}
+          selected={value}
           aria-labelledby={id}
           onActionClick={this.closeAndFocusButton}
           onBlur={this.onMenuBlur}
@@ -195,7 +204,7 @@ class ActionMenu extends Component {
   }
 }
 
-ActionMenu.propTypes = propTypes;
-ActionMenu.defaultProps = defaultProps;
+ButtonSelect.propTypes = propTypes;
+ButtonSelect.defaultProps = defaultProps;
 
-export default ActionMenu;
+export default ButtonSelect;
