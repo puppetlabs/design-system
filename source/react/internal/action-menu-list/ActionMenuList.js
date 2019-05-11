@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import scrollIntoView from 'scroll-into-view-if-needed';
 import { renderableElement } from '../../helpers/customPropTypes';
 import {
   UP_KEY_CODE,
@@ -59,14 +60,20 @@ class ActionMenuList extends Component {
       focusedIndex: actions.length ? 0 : null,
     };
 
+    /**
+     * List of refs to action item elements
+     */
     this.actionRefs = [];
+    /**
+     * List of refs to inner action item content, including rendered anchor
+     * tags if used
+     */
     this.actionInnerRefs = [];
 
     this.executeAction = this.executeAction.bind(this);
     this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
     this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
-    this.onKeyDownInAction = this.onKeyDownInAction.bind(this);
     this.onFocus = this.onFocus.bind(this);
   }
 
@@ -154,20 +161,6 @@ class ActionMenuList extends Component {
     }
   }
 
-  onKeyDownInAction(e) {
-    const { onEscape } = this.props;
-
-    switch (e.keyCode) {
-      case ESC_KEY_CODE: {
-        onEscape(e);
-        e.preventDefault();
-        break;
-      }
-      default:
-        break;
-    }
-  }
-
   executeAction(onClick, id) {
     const { onActionClick } = this.props;
 
@@ -197,7 +190,13 @@ class ActionMenuList extends Component {
   focusItem(focusedIndex) {
     this.setState({ focusedIndex });
 
-    this.actionRefs[focusedIndex].scrollIntoView(false);
+    /**
+     * Scrolls newly focused item into view if it is not
+     */
+    scrollIntoView(this.actionRefs[focusedIndex], {
+      block: 'end',
+      scrollMode: 'if-needed',
+    });
   }
 
   executeFocusedItem() {
