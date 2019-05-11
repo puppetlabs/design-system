@@ -303,6 +303,7 @@ class OptionMenuList extends Component {
           tabIndex={0}
           className="rc-menu-list-inner"
           aria-activedescendant={focusedId}
+          aria-multiselectable={multiple}
           onMouseLeave={onMouseLeave}
           onKeyDown={onKeyDown}
           onFocus={onFocus}

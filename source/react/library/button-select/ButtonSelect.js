@@ -10,7 +10,7 @@ import { getDropdownPosition } from '../../helpers/statics';
 const propTypes = {
   /** Unique id */
   id: PropTypes.string.isRequired,
-  /** Is this a multiple button select? */
+  /** Are multiple selections allowed? */
   multiple: PropTypes.bool,
   /** An Array of select options */
   options: PropTypes.arrayOf(
@@ -31,6 +31,7 @@ const propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
+  /** Value change handler. Will receive the new value */
   onChange: PropTypes.func,
   /** When in multiple mode, should the selected items be applied immediately? */
   applyImmediately: PropTypes.bool, // eslint-disable-line
@@ -45,6 +46,7 @@ const propTypes = {
     'transparent',
     'text',
   ]),
+  /** Text to render as the action label in multiple mode */
   actionLabel: PropTypes.string, //eslint-disable-line
   /** Additional property used for connotative variants (such as danger) to choose between a strong and soft version */
   weight: PropTypes.oneOf(['bold', 'subtle']),
