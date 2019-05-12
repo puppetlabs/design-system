@@ -2,17 +2,11 @@
 import Button from './react/library/buttons/Button';
 import ButtonGroup from './react/library/buttons/ButtonGroup';
 
-// Dropdown
-import Dropdown from './react/library/dropdown/Dropdown';
-import DropdownMenu from './react/library/dropdown/DropdownMenu';
-import DropdownLabel from './react/library/dropdown/DropdownLabel';
-
 import Card from './react/library/card';
 import Sidebar from './react/library/sidebar/Sidebar';
 import Icon from './react/library/icon/Icon';
 import Tag from './react/library/tag/Tag';
 import Table from './react/library/table';
-import Popover from './react/library/popover/Popover';
 import Input from './react/library/input/Input';
 import Switch from './react/library/switch/Switch';
 import Loading from './react/library/loading/Loading';
@@ -41,11 +35,7 @@ export {
   Icon,
   Tag,
   Table,
-  Popover,
-  Dropdown,
   Input,
-  DropdownLabel,
-  DropdownMenu,
   Switch,
   Loading,
   Modal,

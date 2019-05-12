@@ -63,15 +63,14 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
 The Card component includes sub-components for arranging content in repeatable manner. **NOTE**: These features are not design complete and are subject to change in future releases.
 
 ```
-const menuOptions = [
-  { value: 'I\'m a test value!', id: 0 },
-  { value: 'Me too!', id: 1 },
-  { value: 'Me three...', id: 2 },
+const cardActions = [
+  { label: 'Do thing 1', id: 0, onClick: () => console.log('You did thing 1') },
+  { label: 'Do thing 2!', id: 1, onClick: () => console.log('You did thing 2') },
+  { label: 'Me three...', id: 2, onClick: () => console.log('You did thing 3') },
 ];
 
 const actions = [
-  <Card.ActionsMenu key="menu-2" menuToggleIcon="column-chart" menuOptions={ menuOptions } />,
-  <Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />,
+  <Card.ActionsMenu id="menu-1" actions={ cardActions } />,
 ];
 
 <Card>
