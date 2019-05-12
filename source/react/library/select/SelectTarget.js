@@ -6,8 +6,16 @@ const propTypes = {};
 
 const defaultProps = {};
 
+const renderText = (type, value, placeholder) => {
+  if (type === 'multiselect' || !value) {
+    return placeholder;
+  }
+
+  return value;
+};
+
 const Input = forwardRef(
-  ({ error, value, placeholder, className, ...rest }, ref) => (
+  ({ error, value, type, placeholder, className, ...rest }, ref) => (
     <div className={classNames('rc-input-container', 'rc-select-target')}>
       <Icon
         className="rc-input-icon trailing"
@@ -24,7 +32,7 @@ const Input = forwardRef(
         ref={ref}
         {...rest}
       >
-        {value || placeholder}
+        {renderText(type, value, placeholder)}
       </button>
     </div>
   ),

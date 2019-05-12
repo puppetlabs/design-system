@@ -1,4 +1,4 @@
-The Select component allows users to select a value or set of values from a list of options. It behaves much like a form element, but is intended for use outside of forms for general page control. The selected value is updated automatically when the user selects a new option.
+The Select component is a form element allowing for selection of a value from a set of options.
 
 ### Basic use
 
