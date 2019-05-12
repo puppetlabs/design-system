@@ -9,10 +9,6 @@
 .rc-form-section {
   border: 0;
   margin: 0;
-
-  &[disabled] .rc-input {
-    @extend %disabled-input;
-  }
 }
 
 .rc-form-section {

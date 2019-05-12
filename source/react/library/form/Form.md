@@ -8,9 +8,9 @@ In _uncontrolled_ mode the Form component tracks field values in internal state.
 
 ```
 const movieOptions = [
-  'American Treasure',
-  'Ghost Rider',
-  'Kick-Ass',
+  { value: 'american-treasure', label: 'American Treasure' },
+  { value: 'ghost-rider', label: 'Ghost Rider' },
+  { value: 'point_break', label: 'Point Break' },
 ];
 
 const initialValues = {
@@ -102,9 +102,9 @@ In _controlled_ mode, the consumer is responsible for managing form value state.
 
 ```
 const movieOptions = [
-  'American Treasure',
-  'Ghost Rider',
-  'Kick-Ass',
+  { value: 'american-treasure', label: 'American Treasure' },
+  { value: 'ghost-rider', label: 'Ghost Rider' },
+  { value: 'point_break', label: 'Point Break' },
 ];
 
 const initialValues = {
