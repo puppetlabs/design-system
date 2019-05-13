@@ -1,11 +1,11 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const CARD_WIDTH = 240;
 const CARD_HEIGHT = 75;
 const HORIZONTAL_GUTTER = 24;
 const VERTICAL_GUTTER = 48;
-const ARROW_SIZE = 4;
 
 function createPath({ startX, startY, endX, endY }) {
   const deltaX = (endX - startX) * 0.25;
@@ -21,12 +21,7 @@ function createPath({ startX, startY, endX, endY }) {
     delta} A${delta} ${delta} 0 0 ${arc1} ${startX +
     delta * Math.sign(deltaX)} ${startY + 2 * delta} H${endX -
     delta * Math.sign(deltaX)} A${delta} ${delta} 0 0 ${arc2} ${endX} ${startY +
-    3 * delta} V${endY - 1}`;
-}
-
-function createArrow({ endX, endY }) {
-  return `M${endX - ARROW_SIZE} ${endY - ARROW_SIZE - 1} L ${endX} ${endY -
-    1} L ${endX + ARROW_SIZE} ${endY - ARROW_SIZE - 1}`;
+    3 * delta} V${endY}`;
 }
 
 const propTypes = {
@@ -59,19 +54,31 @@ const Connectors = ({ width, height, nodes, edges }) => {
         nodes[edge.end].y * CARD_HEIGHT +
         VERTICAL_GUTTER * (nodes[edge.end].y - 1) -
         CARD_HEIGHT,
+      status: nodes[edge.start].status,
     }));
 
   return (
     <svg className="rc-workflow-connectors" width={svgWidth} height={svgHeight}>
-      {connectors.map(connector => (
-        <Fragment key={connector.key}>
-          <path className="rc-workflow-connector" d={createPath(connector)} />
-          <path
-            className="rc-workflow-connector-arrow"
-            d={createArrow(connector)}
-          />
-        </Fragment>
-      ))}
+      {connectors
+        .sort((a, b) => {
+          if (a.status === b.status) return 0;
+          if (a.status === undefined) return -1;
+          if (a.status === 'success') return -1;
+          if (a.status === 'error') return 1;
+          return 0;
+        })
+        .map(connector => (
+          <Fragment key={connector.key}>
+            <path
+              className={classNames(
+                'rc-workflow-connector',
+                connector.status &&
+                  `rc-workflow-connector-status-${connector.status}`,
+              )}
+              d={createPath(connector)}
+            />
+          </Fragment>
+        ))}
     </svg>
   );
 };

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { generateGraphLayout } from 'util/graph';
-import WorkflowCard from '../WorkflowCard';
+import WorkflowStepCard from '../WorkflowStepCard';
 import Connectors from '../Connectors';
 
 const propTypes = {
@@ -10,9 +10,9 @@ const propTypes = {
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       name: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
       type: PropTypes.string,
-      needs: PropTypes.arrayOf(
-        PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-      ),
+      parents: PropTypes.arrayOf(PropTypes.object),
+      children: PropTypes.arrayOf(PropTypes.object),
+      status: PropTypes.string,
     }),
   ),
 };
@@ -46,7 +46,7 @@ const Workflow = ({ nodes }) => {
             gridRowEnd: y + 1,
           }}
         >
-          <WorkflowCard node={node} />
+          <WorkflowStepCard node={node} />
         </div>
       ))}
     </div>

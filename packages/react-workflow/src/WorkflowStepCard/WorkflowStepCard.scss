@@ -1,0 +1,91 @@
+@import '~@puppet/sass-variables/index';
+
+$puppet-small: $puppet-common-spacing-base;
+$puppet-medium: 2 * $puppet-common-spacing-base;
+$puppet-elev-50-shadow: 1px 1px 2px rgba($puppet-black, 0.08) !default;
+$workflow-card-width: 240px;
+$workflow-connector-diameter: 12px;
+$workflow-default-border: 1px;
+$workflow-status-border: 2px;
+
+.rc-workflow-card {
+  position: relative;
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 400px;
+  height: 75px;
+  box-shadow: $puppet-elev-50-shadow;
+
+  .rc-workflow-card-container {
+    position: relative;
+  }
+
+  .rc-workflow-label {
+    text-transform: uppercase;
+    color: #5d6f7a;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .rc-workflow-title {
+    margin: 0;
+  }
+}
+
+.rc-workflow-has-parents::before,
+.rc-workflow-has-children::after {
+  display: block;
+  content: '';
+  position: absolute;
+  left: $workflow-card-width/2 - $workflow-connector-diameter/2 -
+    $workflow-default-border;
+  width: $workflow-connector-diameter;
+  height: $workflow-connector-diameter;
+  border: 3px solid #818f98;
+  border-radius: $workflow-connector-diameter/2;
+  background-color: white;
+}
+
+[class*='rc-workflow-card-status'] {
+  &.rc-workflow-has-parents::before,
+  &.rc-workflow-has-children::after {
+    left: $workflow-card-width/2 - $workflow-connector-diameter/2 -
+      $workflow-status-border;
+  }
+}
+
+.rc-workflow-has-parents::before {
+  top: -($workflow-connector-diameter/2);
+}
+
+.rc-workflow-has-children::after {
+  bottom: -($workflow-connector-diameter/2);
+}
+
+.rc-workflow-card-status-success {
+  border: $workflow-status-border solid $puppet-g600;
+
+  &::after {
+    border-color: $puppet-g600;
+  }
+}
+
+.rc-workflow-card-status-error {
+  border: $workflow-status-border solid $puppet-r500;
+
+  &::after {
+    border-color: $puppet-r500;
+  }
+}
+
+.rc-workflow-card-parent-status-success {
+  &::before {
+    border-color: $puppet-g600;
+  }
+}
+
+.rc-workflow-card-parent-status-error {
+  &::before {
+    border-color: $puppet-r500;
+  }
+}
