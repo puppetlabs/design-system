@@ -2,27 +2,28 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  title: PropTypes.string,
-  /** Is the panel active?  */
+  /** Internally managed tab ID  */
+  id: PropTypes.string,
+  /** Internally managed tabs ID  */
+  tabsId: PropTypes.string,
+  /** Internally managed active state  */
   active: PropTypes.bool,
-  /** Panel contents */
+  /** Internally managed Panel contents */
   children: PropTypes.node,
-  /** Managed internally for events */
-  id: PropTypes.number,
 };
 
 const defaultProps = {
-  title: '',
+  id: null,
+  tabsId: null,
   active: false,
   children: null,
-  id: null,
 };
 
-const Panel = ({ title, active, children, id }) => {
+const Panel = ({ id, tabsId, active, children }) => {
   const panelProps = {
     role: 'tabpanel',
-    id: `${id}-panel`,
-    'aria-labelledby': title,
+    id: `${tabsId}-panel-${id}`,
+    'aria-labelledby': `${tabsId}-tab-${id}`,
     hidden: !active,
   };
 

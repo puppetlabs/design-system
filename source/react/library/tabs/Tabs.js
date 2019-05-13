@@ -7,10 +7,16 @@ import Tab from './Tab';
 import Panel from './Panel';
 
 const propTypes = {
+  /** For accesibility, a unique ID is required */
+  id: PropTypes.string.isRequired,
   /** Currently controls bg color of active tab & panel */
   type: PropTypes.oneOf(['primary', 'secondary']),
-  /** Nested Tab components */
+  /** Nested Tab.Tabs components */
   children: PropTypes.node,
+  /** Optionally set active Tab with Tab ID */
+  activeTab: PropTypes.string,
+  /** Optional onChange event handler. If onChange exists, Tabs are in controlled mode */
+  onChange: PropTypes.func,
   /** Optional additional className */
   className: PropTypes.string,
   /** Optional additional inline style */
@@ -20,6 +26,8 @@ const propTypes = {
 const defaultProps = {
   type: 'primary',
   children: null,
+  activeTab: null,
+  onChange: null,
   className: '',
   style: {},
 };
@@ -38,34 +46,50 @@ class Tabs extends React.Component {
   }
 
   componentWillMount() {
-    const { children } = this.props;
-    let defaultActiveIndex = 0;
+    const { activeTab } = this.props;
+    const activeIndex = this.getActiveIndex(activeTab);
 
-    React.Children.toArray(children)
-      .filter(child => child && child.props)
-      .forEach((child, index) => {
-        const { active } = child.props;
-
-        if (active) defaultActiveIndex = index;
-      });
-
-    this.setState({ activeIndex: defaultActiveIndex });
+    this.setState({ activeIndex });
   }
 
-  onClick(index) {
-    this.setState({ activeIndex: index, dirty: true });
+  onClick(activeTab) {
+    const { onChange } = this.props;
+
+    if (!onChange) {
+      const newActiveIndex = this.getActiveIndex(activeTab);
+
+      this.setState({ activeIndex: newActiveIndex, dirty: true });
+    }
   }
 
-  // Handle keyup on tabs
   onKeyDown(event) {
     const key = event.keyCode;
     const isSwitched = key === LEFT_KEY_CODE || key === RIGHT_KEY_CODE;
     const offset = -(UP_KEY_CODE - key);
 
     if (isSwitched) {
+      const { onChange } = this.props;
+
       event.preventDefault();
-      this.switchTabOnArrowPress(offset);
+
+      if (!onChange) this.switchTabOnArrowPress(offset);
     }
+  }
+
+  getActiveIndex(newActive) {
+    const { children } = this.props;
+    const { activeIndex } = this.state;
+    let newActiveIndex = activeIndex || 0;
+
+    React.Children.toArray(children)
+      .filter(child => child && child.props)
+      .forEach((child, index) => {
+        const { id } = child.props;
+
+        if (newActive === id) newActiveIndex = index;
+      });
+
+    return newActiveIndex;
   }
 
   switchTabOnArrowPress(offset) {
@@ -86,7 +110,7 @@ class Tabs extends React.Component {
   }
 
   render() {
-    const { children, className, style, type } = this.props;
+    const { children, className, style, type, id: tabsId } = this.props;
     const { activeIndex, dirty } = this.state;
 
     const tabs = [];
@@ -95,15 +119,17 @@ class Tabs extends React.Component {
     React.Children.toArray(children)
       .filter(child => child && child.props)
       .forEach((child, index) => {
-        // Strip active prop. Only used to set default state.
-        const { active: activeProp, ...rest } = child.props;
+        const { id } = child.props;
         const active = activeIndex === index;
 
+        const getKey = component => `${tabsId}-${component}-${id}`;
+
         const panelProps = {
-          ...rest,
+          ...child.props,
+          id,
+          tabsId,
           active,
-          id: index,
-          key: index,
+          key: getKey('panel'),
         };
 
         panels.push(<Panel {...panelProps} />);
@@ -113,6 +139,7 @@ class Tabs extends React.Component {
           onClick: this.onClick,
           onKeyDown: this.onKeyDown,
           focussed: dirty && active,
+          key: getKey('tab'),
         };
 
         tabs.push(<Tab {...tabProps} />);

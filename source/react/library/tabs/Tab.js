@@ -5,26 +5,29 @@ import classNames from 'classnames';
 import Button from '../buttons/Button';
 
 const propTypes = {
+  /** Visible tab label  */
   title: PropTypes.string,
-  /** Is the button active?  */
+  /** For accesibility and state management, a unique ID is required  */
+  id: PropTypes.string.isRequired,
+  /** Internally managed tabs ID  */
+  tabsId: PropTypes.string,
+  /** Internally managed active state  */
   active: PropTypes.bool,
-  /** Is the button focussed?  */
+  /** Internally managed focus state  */
   focussed: PropTypes.bool,
-  /** onClick for Tab button. Callback to parent */
+  /** Internally managed onClick for Tab button. Callback to parent */
   onKeyDown: PropTypes.func,
-  /** onClick for Tab button. Callback to parent */
+  /** Internally managed onClick for Tab button. Callback to parent */
   onClick: PropTypes.func,
-  /** Managed internally for events */
-  id: PropTypes.number,
 };
 
 const defaultProps = {
   title: '',
+  tabsId: null,
   active: false,
   focussed: false,
   onKeyDown() {},
   onClick() {},
-  id: null,
 };
 
 class Tab extends React.Component {
@@ -37,13 +40,13 @@ class Tab extends React.Component {
   }
 
   render() {
-    const { title, active, onKeyDown, onClick, id } = this.props;
+    const { title, active, onKeyDown, onClick, id, tabsId } = this.props;
 
     const buttonProps = {
       role: 'tab',
       'aria-selected': !!active,
-      'aria-controls': `${title}-panel`,
-      id,
+      'aria-controls': `${tabsId}-panel-${id}`,
+      id: `${tabsId}-tab-${id}`,
       tabIndex: !active ? -1 : 0,
       onClick: () => onClick(id),
       onKeyDown,

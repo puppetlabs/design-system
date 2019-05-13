@@ -9,24 +9,30 @@ import Tabs from '../../source/react/library/tabs/Tabs';
 describe('<Tabs.Tab />', () => {
   jsdom({ skipWindowCheck: true });
 
+  const defaultTabsProps = {
+    id: 'default-tabs',
+  };
+
   it('applies the provided className to the outer wrapper', () => {
     const className = 'foo';
-    expect(shallow(<Tabs className={className} />)).to.have.className(
-      className,
-    );
+    expect(
+      shallow(<Tabs className={className} {...defaultTabsProps} />),
+    ).to.have.className(className);
   });
 
   it('applies the provided inline styles to the outer wrapper', () => {
     const style = { hidden: true };
-    expect(shallow(<Tabs style={style} />)).to.have.to.have.style(style);
+    expect(
+      shallow(<Tabs style={style} {...defaultTabsProps} />),
+    ).to.have.to.have.style(style);
   });
 
   it('renders a nav button per each child', () => {
     expect(
       mount(
-        <Tabs>
-          <span>foo</span>
-          <span>foo</span>
+        <Tabs {...defaultTabsProps}>
+          <span id="1">foo</span>
+          <span id="2">foo</span>
         </Tabs>,
       ),
     )
@@ -37,9 +43,9 @@ describe('<Tabs.Tab />', () => {
   it('renders a panel per each child', () => {
     expect(
       mount(
-        <Tabs>
-          <span>foo</span>
-          <span>foo</span>
+        <Tabs {...defaultTabsProps}>
+          <span id="1">foo</span>
+          <span id="2">foo</span>
         </Tabs>,
       ),
     )
@@ -51,8 +57,8 @@ describe('<Tabs.Tab />', () => {
     const title = 'foo';
     expect(
       mount(
-        <Tabs>
-          <Tabs.Tab title={title} />
+        <Tabs {...defaultTabsProps}>
+          <Tabs.Tab title={title} id="1" />
         </Tabs>,
       ).find('.rc-button'),
     ).to.have.text(title);
@@ -62,8 +68,8 @@ describe('<Tabs.Tab />', () => {
     const panel = 'bar';
     expect(
       mount(
-        <Tabs>
-          <Tabs.Tab>{panel}</Tabs.Tab>
+        <Tabs {...defaultTabsProps}>
+          <Tabs.Tab id="1">{panel}</Tabs.Tab>
         </Tabs>,
       ).find('.rc-tabs-panel'),
     ).to.have.text(panel);
@@ -72,9 +78,9 @@ describe('<Tabs.Tab />', () => {
   it('should respond to click events on Tabs.Tab', () => {
     sinon.spy(Tabs.prototype, 'onClick');
     const wrapper = mount(
-      <Tabs>
-        <Tabs.Tab />
-        <Tabs.Tab />
+      <Tabs {...defaultTabsProps}>
+        <Tabs.Tab id="1" />
+        <Tabs.Tab id="2" />
       </Tabs>,
     );
 
@@ -97,9 +103,9 @@ describe('<Tabs.Tab />', () => {
   it('should respond to keyDown events on Tabs.Tab', () => {
     sinon.spy(Tabs.prototype, 'onKeyDown');
     const wrapper = mount(
-      <Tabs>
-        <Tabs.Tab />
-        <Tabs.Tab />
+      <Tabs {...defaultTabsProps}>
+        <Tabs.Tab id="1" />
+        <Tabs.Tab id="2" />
       </Tabs>,
     );
 
