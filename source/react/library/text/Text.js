@@ -12,8 +12,10 @@ const propTypes = {
   color: PropTypes.oneOf(['subtle', 'medium', 'danger', 'warning', 'success']),
   /** Text body */
   children: PropTypes.node,
-  /** Optional additional classname. Additionally, other event handlers and and props are propagated to the inner element for use as needed */
+  /** Optional additional classname. */
   className: PropTypes.string,
+  /** Optional inline style. Additionally, other event handlers and and props are propagated to the inner element for use as needed */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -22,6 +24,7 @@ const defaultProps = {
   className: '',
   size: 'medium',
   color: null,
+  style: {},
 };
 
 const Text = ({ as: Element, size, color, children, className, ...other }) => (
