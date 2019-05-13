@@ -202,21 +202,32 @@ $puppet-type-label-font-weight: $puppet-type-weight-heavy !default;
 }
 
 @mixin puppet-type-link() {
-  @include puppet-type-body();
-
   color: $puppet-type-color-link;
   cursor: pointer;
   outline: none;
   text-decoration: none;
 
-  &:focus,
   &:hover {
     color: $puppet-type-color-link-hover;
     text-decoration: underline;
   }
 
+  &:focus {
+    box-shadow: inset 0 -4px 0 -1px $puppet-b100;
+  }
+
+  &:focus:hover {
+    text-decoration: none;
+  }
+
   &:active {
     color: $puppet-type-color-link-active;
     text-decoration: none;
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: $puppet-common-disabled-opacity;
+    pointer-events: none;
   }
 }

@@ -1,3 +1,15 @@
+.rc-link-size-medium {
+  @include puppet-type-body();
+}
+
+.rc-link-size-small {
+  @include puppet-type-small();
+}
+
+.rc-link-size-tiny {
+  @include puppet-type-tiny();
+}
+
 .rc-link {
   @include puppet-type-link();
 
