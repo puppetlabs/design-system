@@ -1,8 +1,23 @@
 # 5.0.0-alpha.20
+
 - Update form icons, spacing and font colors to match design system
 - Align disabled input opacity across components
+- Style checkbox, switch, and FormField
+- **Breaking change** Remove List component
+- **Breaking change** Table column definition spec updated to match a subset of [React-Virtaluzed](https://github.com/bvaughn/react-virtualized/blob/master/docs/Column.md)'s column definition spec. This is to standardize this basic table API with the API currently used in Puppet Remediate. We will evolve this basic spec as needed going forward.
+- **Breaking Change** Remove striped prop. Table is no longer stripey
+- **Breaking Change** Remove `selectable` prop. The basic table is no longer selectable
+- **Breaking Change** Remove onChange and onSelectChange. No longer needed as the table is not interactive.
+- **Breaking Change** `getRowKey` method replaced with `rowKey` prop. By default it will look for rowData.id
+- **Breaking Change** Remove `ColumnSelect` and `ColumnInput` public components
+- Table style updates
+- Greatly improved table documentation
+- Style link focus state
+- Introduce size prop to link element
+- Re-implement tabs component
 
 # 5.0.0-alpha.19
+
 - **Breaking change** Remove tabs component
 - **Breaking change** Remove grid component
 - **Breaking change** Remove header component
@@ -224,8 +239,10 @@ Fix regressions in three areas:
 - Substantially update Card documentation in styleguidist
 
 # 4.16.2
+
 - Upgrade dev dependencies
 - Update tooltip position on hover over the target element
+
 # 4.16.1
 
 - Add `secondary` boolean prop to SplitButton to use the secondary background color
