@@ -44,7 +44,7 @@ Secondary Tabs (and change default active):
 
 _In controlled mode (onChange prop passed to Tabs), the user has no implicit control over component navigation._
 ```
-<Tabs id="controlled-tabs" activeTab="tab-2" onChange={()=>{}}>
+<Tabs id="controlled-tabs" activeTab="tab-2" onChange={console.log}>
   <Tabs.Tab title="Not navigable" id="tab-1">
     Can't get here without using onChange.
   </Tabs.Tab>

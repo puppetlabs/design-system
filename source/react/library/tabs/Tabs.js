@@ -35,9 +35,13 @@ const defaultProps = {
 class Tabs extends React.Component {
   constructor(props) {
     super(props);
+    // By default, the first tab is active
+    const defaultActive = React.Children.toArray(props.children).filter(
+      child => child && child.props,
+    )[0].props.id;
 
     this.state = {
-      activeIndex: null,
+      activeTab: props.activeTab || defaultActive,
       dirty: false,
     };
 
@@ -45,20 +49,13 @@ class Tabs extends React.Component {
     this.onKeyDown = this.onKeyDown.bind(this);
   }
 
-  componentWillMount() {
-    const { activeTab } = this.props;
-    const activeIndex = this.getActiveIndex(activeTab);
-
-    this.setState({ activeIndex });
-  }
-
   onClick(activeTab) {
     const { onChange } = this.props;
 
-    if (!onChange) {
-      const newActiveIndex = this.getActiveIndex(activeTab);
-
-      this.setState({ activeIndex: newActiveIndex, dirty: true });
+    if (onChange) {
+      onChange(activeTab);
+    } else {
+      this.setState({ activeTab, dirty: true });
     }
   }
 
@@ -68,59 +65,59 @@ class Tabs extends React.Component {
     const offset = -(UP_KEY_CODE - key);
 
     if (isSwitched) {
-      const { onChange } = this.props;
-
       event.preventDefault();
 
-      if (!onChange) this.switchTabOnArrowPress(offset);
+      this.switchTabOnArrowPress(offset);
     }
   }
 
-  getActiveIndex(newActive) {
-    const { children } = this.props;
-    const { activeIndex } = this.state;
-    let newActiveIndex = activeIndex || 0;
+  switchTabOnArrowPress(offset) {
+    const { children, onChange } = this.props;
+    const { activeTab } = this.state;
+    let activeIndex = 0;
 
     React.Children.toArray(children)
       .filter(child => child && child.props)
       .forEach((child, index) => {
         const { id } = child.props;
 
-        if (newActive === id) newActiveIndex = index;
+        if (activeTab === id) activeIndex = index;
       });
 
-    return newActiveIndex;
-  }
+    const nextIndex = activeIndex + offset;
+    let adjustedNextIndex;
 
-  switchTabOnArrowPress(offset) {
-    const { children } = this.props;
-    const { activeIndex } = this.state;
-    const nextFocussedIndex = activeIndex + offset;
-    let adjustedNextFocussedIndex;
-
-    if (children.length > nextFocussedIndex && nextFocussedIndex >= 0) {
-      adjustedNextFocussedIndex = nextFocussedIndex;
+    if (children.length > nextIndex && nextIndex >= 0) {
+      adjustedNextIndex = nextIndex;
     } else if (offset < 0) {
-      adjustedNextFocussedIndex = children.length - 1;
+      adjustedNextIndex = children.length - 1;
     } else if (offset > 0) {
-      adjustedNextFocussedIndex = 0;
+      adjustedNextIndex = 0;
     }
 
-    this.setState({ activeIndex: adjustedNextFocussedIndex, dirty: true });
+    const newActiveTab = React.Children.toArray(children).filter(
+      child => child && child.props,
+    )[adjustedNextIndex].props.id;
+
+    if (onChange) {
+      onChange(newActiveTab);
+    } else {
+      this.setState({ activeTab: newActiveTab, dirty: true });
+    }
   }
 
   render() {
     const { children, className, style, type, id: tabsId } = this.props;
-    const { activeIndex, dirty } = this.state;
+    const { activeTab, dirty } = this.state;
 
     const tabs = [];
     const panels = [];
 
     React.Children.toArray(children)
       .filter(child => child && child.props)
-      .forEach((child, index) => {
+      .forEach(child => {
         const { id } = child.props;
-        const active = activeIndex === index;
+        const active = activeTab === id;
 
         const getKey = component => `${tabsId}-${component}-${id}`;
 
