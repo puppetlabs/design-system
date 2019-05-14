@@ -38,10 +38,10 @@ class Tabs extends React.Component {
     // By default, the first tab is active
     const defaultActive = React.Children.toArray(props.children).filter(
       child => child && child.props,
-    )[0].props.id;
+    )[0];
 
     this.state = {
-      activeTab: props.activeTab || defaultActive,
+      activeTab: props.activeTab || (defaultActive && defaultActive.props.id),
       dirty: false,
     };
 

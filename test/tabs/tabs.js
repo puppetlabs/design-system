@@ -86,8 +86,8 @@ describe('<Tabs.Tab />', () => {
 
     // First tab is active by default
     expect(wrapper)
-      .to.have.state('activeIndex')
-      .equal(0);
+      .to.have.state('activeTab')
+      .equal('1');
 
     // Click on second tab
     wrapper
@@ -96,8 +96,8 @@ describe('<Tabs.Tab />', () => {
       .simulate('click');
 
     expect(wrapper)
-      .to.have.state('activeIndex')
-      .equal(1);
+      .to.have.state('activeTab')
+      .equal('2');
   });
 
   it('should respond to keyDown events on Tabs.Tab', () => {
@@ -112,12 +112,12 @@ describe('<Tabs.Tab />', () => {
     // Simulate right arrow press on first Tab
     wrapper
       .find('.rc-button')
-      .at(0)
+      .at(1)
       .simulate('keydown', { keyCode: 39 });
 
     expect(wrapper)
-      .to.have.state('activeIndex')
-      .equal(1);
+      .to.have.state('activeTab')
+      .equal('2');
 
     // Simulate left arrow press on second Tab
     wrapper
@@ -126,8 +126,8 @@ describe('<Tabs.Tab />', () => {
       .simulate('keydown', { keyCode: 37 });
 
     expect(wrapper)
-      .to.have.state('activeIndex')
-      .equal(0);
+      .to.have.state('activeTab')
+      .equal('1');
 
     // Simulate left arrow press on first Tab (to simulate wrapping)
     wrapper
@@ -136,7 +136,7 @@ describe('<Tabs.Tab />', () => {
       .simulate('keydown', { keyCode: 37 });
 
     expect(wrapper)
-      .to.have.state('activeIndex')
-      .equal(1);
+      .to.have.state('activeTab')
+      .equal('2');
   });
 });
