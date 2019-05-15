@@ -10,6 +10,7 @@ export const SUPPORTED_LOGOS = [
   'enterprise',
   'insights',
   'pipelines',
+  'remediate',
 ];
 
 const propTypes = {
