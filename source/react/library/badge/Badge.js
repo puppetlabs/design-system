@@ -3,38 +3,32 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  type: PropTypes.oneOf(['bold', 'subtle', 'pill']),
-  color: PropTypes.oneOf(['danger', 'info', 'neutral', 'success', 'warning']),
-  level: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6, null]),
-  palette: PropTypes.oneOf(['sequential', null]),
-  className: PropTypes.string,
+  type: PropTypes.oneOf(['danger', 'info', 'neutral', 'success', 'warning']),
+  weight: PropTypes.oneOf(['bold', 'subtle']),
+  pill: PropTypes.bool,
   children: PropTypes.node,
+  className: PropTypes.string,
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  type: 'bold',
-  level: null,
-  color: 'neutral',
-  palette: null,
-  className: '',
+  type: 'neutral',
+  weight: 'bold',
+  pill: false,
   children: null,
+  className: '',
+  style: {},
 };
 
-const Badge = ({
-  type,
-  color,
-  level,
-  palette,
-  className,
-  children,
-  ...props
-}) => (
+const Badge = ({ type, weight, pill, children, className, ...props }) => (
   <div
     className={classNames(
       'rc-badge',
       `rc-badge-${type}`,
-      `rc-badge-${color}`,
-      `rc-badge-${palette}-${level}`,
+      `rc-badge-${weight}`,
+      {
+        'rc-badge-pill': pill,
+      },
       className,
     )}
     {...props}
