@@ -14,7 +14,7 @@ const propTypes = {
   /** Internally managed active state  */
   active: PropTypes.bool,
   /** Internally managed focus state  */
-  focussed: PropTypes.bool,
+  focused: PropTypes.bool,
   /** Internally managed onClick for Tab button. Callback to parent */
   onKeyDown: PropTypes.func,
   /** Internally managed onClick for Tab button. Callback to parent */
@@ -25,16 +25,16 @@ const defaultProps = {
   title: '',
   tabsId: null,
   active: false,
-  focussed: false,
+  focused: false,
   onKeyDown() {},
   onClick() {},
 };
 
 class Tab extends React.Component {
   componentWillUpdate(props) {
-    const { focussed } = props;
+    const { focused } = props;
 
-    if (focussed) {
+    if (focused) {
       this.tab.focus();
     }
   }

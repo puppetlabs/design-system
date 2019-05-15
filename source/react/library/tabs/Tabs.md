@@ -1,20 +1,18 @@
 The Tabs component is a lightly styled wrapper that expects nested Tabs.Tab components. It requires a unique id for accessibility and can optionally take a type prop for secondary styling. It offers both a controlled and uncontrolled mode, dependent on the presence of an onChange prop.
 
-Each Tabs.Tab will populate a button with its title prop and a panel with anything you nest inside.
-
-Tabs.Tab requires an id for accessibility and state management.
+Each Tabs.Tab requires a unique `id` and a string `title`. Component children are propagated through to the relevant tab panel.
 
 ---
 
-### Uncontrolled Mode
+### Basic Use (uncontrolled)
 
-_In uncontrolled mode (no onChange prop on Tabs), the user has full control over component navigation._
+_By default the Tabs component will handle all interactions as users switch between tabs. An optional initialTab prop can be used_
 
 Default Tabs:
 ```
-<Tabs id="default-tabs">
+<Tabs>
   <Tabs.Tab title="1" id="tab-1">
-    Once focussed, use arrows to switch tabs.
+    Once focused, use arrows to switch tabs.
   </Tabs.Tab>
   <Tabs.Tab title="2" id="tab-2">
     Hit Tab to focus down.
@@ -27,7 +25,7 @@ Default Tabs:
 ```
 Secondary Tabs (and change default active):
 ```
-<Tabs type="secondary" id="secondary-tabs" activeTab="tab-3">
+<Tabs type="secondary" initialTab="tab-3">
   <Tabs.Tab title="1" id="tab-1">
     The Tab title prop becomes the button label.
   </Tabs.Tab>
@@ -42,14 +40,47 @@ Secondary Tabs (and change default active):
 
 ### Controlled Mode
 
-_In controlled mode (onChange prop passed to Tabs), the user has no implicit control over component navigation._
+_The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected._
 ```
-<Tabs id="controlled-tabs" activeTab="tab-2" onChange={console.log}>
-  <Tabs.Tab title="Not navigable" id="tab-1">
-    Can't get here without using onChange.
-  </Tabs.Tab>
-  <Tabs.Tab title="Active" id="tab-2">
-    This can only be navigated away from using onChange.
-  </Tabs.Tab>
-</Tabs>
+
+class MyPageWithTabs extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      activeTab: 'tab-1',
+    }
+
+    this.onTabChange = this.onTabChange.bind(this);
+  }
+
+  onTabChange(newTab) {
+    this.setState({ activeTab: newTab });
+  }
+
+  render() {
+    const { activeTab } = this.state;
+
+    return (
+      <Tabs id="controlled-tabs" onChange={this.onTabChange}>
+        <Tabs.Tab
+          title="Tabby tab"
+          id="tab-1"
+          active={activeTab === 'tab-1'}
+        >
+          Tab 1
+        </Tabs.Tab>
+        <Tabs.Tab
+          title="Tabby cat"
+          id="tab-2"
+          active={activeTab === 'tab-2'}
+        >
+          Tab 2
+        </Tabs.Tab>
+      </Tabs>
+    );
+  }
+}
+
+<MyPageWithTabs />
 ```

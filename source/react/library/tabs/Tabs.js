@@ -2,19 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { LEFT_KEY_CODE, RIGHT_KEY_CODE, UP_KEY_CODE } from '../../constants';
+import withId from '../../helpers/withId';
 
 import Tab from './Tab';
 import Panel from './Panel';
 
 const propTypes = {
-  /** For accesibility, a unique ID is required */
+  /**
+   * This prop is automatically passed from the withID HOC
+   * @ignore
+   */
   id: PropTypes.string.isRequired,
   /** Currently controls bg color of active tab & panel */
   type: PropTypes.oneOf(['primary', 'secondary']),
   /** Nested Tab.Tabs components */
   children: PropTypes.node,
   /** Optionally set active Tab with Tab ID */
-  activeTab: PropTypes.string,
+  initialTab: PropTypes.string,
   /** Optional onChange event handler. If onChange exists, Tabs are in controlled mode */
   onChange: PropTypes.func,
   /** Optional additional className */
@@ -26,8 +30,8 @@ const propTypes = {
 const defaultProps = {
   type: 'primary',
   children: null,
-  activeTab: null,
-  onChange: null,
+  initialTab: null,
+  onChange() {},
   className: '',
   style: {},
 };
@@ -41,8 +45,7 @@ class Tabs extends React.Component {
     )[0];
 
     this.state = {
-      activeTab: props.activeTab || (defaultActive && defaultActive.props.id),
-      dirty: false,
+      activeTab: props.initialTab || (defaultActive && defaultActive.props.id),
     };
 
     this.onClick = this.onClick.bind(this);
@@ -51,12 +54,8 @@ class Tabs extends React.Component {
 
   onClick(activeTab) {
     const { onChange } = this.props;
-
-    if (onChange) {
-      onChange(activeTab);
-    } else {
-      this.setState({ activeTab, dirty: true });
-    }
+    this.setState({ activeTab });
+    onChange(activeTab);
   }
 
   onKeyDown(event) {
@@ -69,6 +68,17 @@ class Tabs extends React.Component {
 
       this.switchTabOnArrowPress(offset);
     }
+  }
+
+  getActiveTab() {
+    const { activeTab } = this.state;
+    const { children } = this.props;
+
+    const activeChild = React.Children.toArray(children).find(
+      child => child && child.props && child.props.active,
+    );
+
+    return (activeChild && activeChild.props.id) || activeTab;
   }
 
   switchTabOnArrowPress(offset) {
@@ -99,16 +109,14 @@ class Tabs extends React.Component {
       child => child && child.props,
     )[adjustedNextIndex].props.id;
 
-    if (onChange) {
-      onChange(newActiveTab);
-    } else {
-      this.setState({ activeTab: newActiveTab, dirty: true });
-    }
+    this.setState({ activeTab: newActiveTab });
+    onChange(newActiveTab);
   }
 
   render() {
     const { children, className, style, type, id: tabsId } = this.props;
-    const { activeTab, dirty } = this.state;
+
+    const activeTab = this.getActiveTab();
 
     const tabs = [];
     const panels = [];
@@ -135,7 +143,7 @@ class Tabs extends React.Component {
           ...panelProps,
           onClick: this.onClick,
           onKeyDown: this.onKeyDown,
-          focussed: dirty && active,
+          focused: active,
           key: getKey('tab'),
         };
 
@@ -161,4 +169,4 @@ Tabs.defaultProps = defaultProps;
 
 Tabs.Tab = Tab;
 
-export default Tabs;
+export default withId(Tabs);
