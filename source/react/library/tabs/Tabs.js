@@ -18,7 +18,7 @@ const propTypes = {
   /** Nested Tab.Tabs components */
   children: PropTypes.node,
   /** Optionally set active Tab with Tab ID */
-  initialTab: PropTypes.string,
+  initialTab: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** Optional onChange event handler. If onChange exists, Tabs are in controlled mode */
   onChange: PropTypes.func,
   /** Optional additional className */
@@ -36,20 +36,28 @@ const defaultProps = {
   style: {},
 };
 
+const collectChildProps = children =>
+  React.Children.toArray(children)
+    .filter(child => child && child.props)
+    .map((child, index) => ({
+      ...child.props,
+      index,
+    }));
+
+const getTabId = ({ id, index }) => id || index;
+
 class Tabs extends React.Component {
   constructor(props) {
     super(props);
-    // By default, the first tab is active
-    const defaultActive = React.Children.toArray(props.children).filter(
-      child => child && child.props,
-    )[0];
+
+    const childProps = collectChildProps(props.children);
 
     this.state = {
-      activeTab: props.initialTab || (defaultActive && defaultActive.props.id),
+      activeTab:
+        props.initialTab || (childProps.length ? getTabId(childProps[0]) : 0),
     };
 
     this.onClick = this.onClick.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   onClick(activeTab) {
@@ -58,7 +66,7 @@ class Tabs extends React.Component {
     onChange(activeTab);
   }
 
-  onKeyDown(event) {
+  onKeyDown(event, childProps) {
     const key = event.keyCode;
     const isSwitched = key === LEFT_KEY_CODE || key === RIGHT_KEY_CODE;
     const offset = -(UP_KEY_CODE - key);
@@ -66,33 +74,26 @@ class Tabs extends React.Component {
     if (isSwitched) {
       event.preventDefault();
 
-      this.switchTabOnArrowPress(offset);
+      this.switchTabOnArrowPress(offset, childProps);
     }
   }
 
-  getActiveTab() {
+  getActiveTab(childProps) {
     const { activeTab } = this.state;
-    const { children } = this.props;
 
-    const activeChild = React.Children.toArray(children).find(
-      child => child && child.props && child.props.active,
-    );
+    const activeChild = childProps.find(props => props.active);
 
-    return (activeChild && activeChild.props.id) || activeTab;
+    return (activeChild && getTabId(activeChild)) || activeTab;
   }
 
-  switchTabOnArrowPress(offset) {
+  switchTabOnArrowPress(offset, childProps) {
     const { children, onChange } = this.props;
-    const { activeTab } = this.state;
-    let activeIndex = 0;
 
-    React.Children.toArray(children)
-      .filter(child => child && child.props)
-      .forEach((child, index) => {
-        const { id } = child.props;
+    const activeTab = this.getActiveTab(childProps);
 
-        if (activeTab === id) activeIndex = index;
-      });
+    const activeIndex = childProps.findIndex(
+      child => getTabId(child) === activeTab,
+    );
 
     const nextIndex = activeIndex + offset;
     let adjustedNextIndex;
@@ -105,50 +106,47 @@ class Tabs extends React.Component {
       adjustedNextIndex = 0;
     }
 
-    const newActiveTab = React.Children.toArray(children).filter(
-      child => child && child.props,
-    )[adjustedNextIndex].props.id;
+    const newActiveTab = getTabId(childProps[adjustedNextIndex]);
 
     this.setState({ activeTab: newActiveTab });
+
     onChange(newActiveTab);
   }
 
   render() {
     const { children, className, style, type, id: tabsId } = this.props;
 
-    const activeTab = this.getActiveTab();
+    const childProps = collectChildProps(children);
+
+    const activeTab = this.getActiveTab(childProps);
 
     const tabs = [];
     const panels = [];
 
-    React.Children.toArray(children)
-      .filter(child => child && child.props)
-      .forEach(child => {
-        const { id } = child.props;
-        const active = activeTab === id;
+    childProps.forEach(props => {
+      const id = getTabId(props);
+      const active = activeTab === id;
 
-        const getKey = component => `${tabsId}-${component}-${id}`;
+      const panelProps = {
+        ...props,
+        id,
+        tabsId,
+        active,
+        key: `${tabsId}-panel-${id}`,
+      };
 
-        const panelProps = {
-          ...child.props,
-          id,
-          tabsId,
-          active,
-          key: getKey('panel'),
-        };
+      panels.push(<Panel {...panelProps} />);
 
-        panels.push(<Panel {...panelProps} />);
+      const tabProps = {
+        ...panelProps,
+        onClick: this.onClick,
+        onKeyDown: e => this.onKeyDown(e, childProps),
+        focused: active,
+        key: `${tabsId}-tab-${id}`,
+      };
 
-        const tabProps = {
-          ...panelProps,
-          onClick: this.onClick,
-          onKeyDown: this.onKeyDown,
-          focused: active,
-          key: getKey('tab'),
-        };
-
-        tabs.push(<Tab {...tabProps} />);
-      });
+      tabs.push(<Tab {...tabProps} />);
+    });
 
     return (
       <div

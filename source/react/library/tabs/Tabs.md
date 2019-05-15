@@ -11,28 +11,28 @@ _By default the Tabs component will handle all interactions as users switch betw
 Default Tabs:
 ```
 <Tabs>
-  <Tabs.Tab title="1" id="tab-1">
+  <Tabs.Tab title="Tab 1">
     Once focused, use arrows to switch tabs.
   </Tabs.Tab>
-  <Tabs.Tab title="2" id="tab-2">
+  <Tabs.Tab title="Tab 2">
     Hit Tab to focus down.
     <br /><input></input>
   </Tabs.Tab>
-  <Tabs.Tab title="3" id="tab-3">
+  <Tabs.Tab title="Tab 3">
     Hit Shift + Tab to focus up.
   </Tabs.Tab>
 </Tabs>
 ```
-Secondary Tabs (and change default active):
+Secondary Tabs:
 ```
-<Tabs type="secondary" initialTab="tab-3">
-  <Tabs.Tab title="1" id="tab-1">
+<Tabs type="secondary" initialTab={2}>
+  <Tabs.Tab title="Tab 1">
     The Tab title prop becomes the button label.
   </Tabs.Tab>
-  <Tabs.Tab title="2" id="tab-2">
+  <Tabs.Tab title="Tab 2">
     Whatever is nested inside the Tab become the Panel content.
   </Tabs.Tab>
-  <Tabs.Tab title="3" id="tab-3">
+  <Tabs.Tab title="Tab 3">
     To change the default tab, set the activeTab prop on Tabs equal to the desired Tab ID.
   </Tabs.Tab>
 </Tabs>
@@ -40,7 +40,7 @@ Secondary Tabs (and change default active):
 
 ### Controlled Mode
 
-_The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected._
+_The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected. In this mode we recommend supplying a unique `id` to each Tab element so that the active tab is easier to track. If no id is provided the Tabs component will use the positional index._
 ```
 
 class MyPageWithTabs extends React.Component {
@@ -55,6 +55,7 @@ class MyPageWithTabs extends React.Component {
   }
 
   onTabChange(newTab) {
+    console.log(`Switching to tab ${newTab}`)
     this.setState({ activeTab: newTab });
   }
 

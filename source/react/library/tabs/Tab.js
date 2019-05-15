@@ -7,8 +7,8 @@ import Button from '../buttons/Button';
 const propTypes = {
   /** Visible tab label  */
   title: PropTypes.string,
-  /** For accesibility and state management, a unique ID is required  */
-  id: PropTypes.string.isRequired,
+  /** For ease of reference in controlled-mode, a custom unique id can be provided. By default the tab index will be used  */
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Internally managed tabs ID  */
   tabsId: PropTypes.string,
   /** Internally managed active state  */
@@ -23,6 +23,7 @@ const propTypes = {
 
 const defaultProps = {
   title: '',
+  id: null,
   tabsId: null,
   active: false,
   focused: false,
