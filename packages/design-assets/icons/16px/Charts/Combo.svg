@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Charts/Combo</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Charts/Combo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M1,10 L2,10 L2,13 L1,13 L1,10 Z M3,9 L4,9 L4,13 L3,13 L3,9 Z M5,6 L6,6 L6,13 L5,13 L5,6 Z M7,7 L8,7 L8,13 L7,13 L7,7 Z M9,8 L10,8 L10,13 L9,13 L9,8 Z M11,9 L12,9 L12,13 L11,13 L11,9 Z M13,6 L14,6 L14,13 L13,13 L13,6 Z M15,4 L16,4 L16,13 L15,13 L15,4 Z M0,14 L16,14 L16,16 L0,16 L0,14 Z M1.23021488,7.56173762 L0,6 L5.37131312,1.63597189 L10.2945748,3.63597189 L14.7697851,-1.94511074e-13 L16,1.56173762 L10.6286869,5.92576573 L5.70542517,3.92576573 L1.23021488,7.56173762 Z" id="i-16-chart-combo" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M1 10h1v3H1v-3zm2-1h1v4H3V9zm2-3h1v7H5V6zm2 1h1v6H7V7zm2 1h1v5H9V8zm2 1h1v4h-1V9zm2-3h1v7h-1V6zm2-2h1v9h-1V4zM0 14h16v2H0v-2zm1.23-6.438L0 6l5.371-4.364 4.924 2L14.77 0 16 1.562l-5.371 4.364-4.924-2L1.23 7.562z" fill="#818F99" fill-rule="evenodd"/></svg>

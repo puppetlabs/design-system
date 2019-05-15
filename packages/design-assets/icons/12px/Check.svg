@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/12px/Check</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/12px/Check" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="i-12-check" fill="#818F99" points="4.2 7.20000005 1.8 4.80000005 0 6.60000005 4.2 10.8 12 3.00000005 10.2 1.20000005"></polygon>
-    </g>
-</svg>
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg"><path fill="#818F99" d="M4.2 7.2L1.8 4.8 0 6.6l4.2 4.2L12 3l-1.8-1.8z" fill-rule="evenodd"/></svg>

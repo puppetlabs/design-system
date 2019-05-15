@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Attach</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Attach" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M5,5 L5,9 C5,10.7 6.3,12 8,12 C9.7,12 11,10.7 11,9 L11,4.5 C11,2 9,0 6.5,0 C4,0 2,2 2,4.5 L2,10 C2,13.3 4.7,16 8,16 C11.3,16 14,13.3 14,10 L14,4 L12,4 L12,10 C12,12.2 10.2,14 8,14 C5.8,14 4,12.2 4,10 L4,4.5 C4,3.1 5.1,2 6.5,2 C7.9,2 9,3.1 9,4.5 L9,9 C9,9.6 8.6,10 8,10 C7.4,10 7,9.6 7,9 L7,5 L5,5 Z" id="icon-attach-16" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M5 5v4c0 1.7 1.3 3 3 3s3-1.3 3-3V4.5C11 2 9 0 6.5 0S2 2 2 4.5V10c0 3.3 2.7 6 6 6s6-2.7 6-6V4h-2v6c0 2.2-1.8 4-4 4s-4-1.8-4-4V4.5C4 3.1 5.1 2 6.5 2S9 3.1 9 4.5V9c0 .6-.4 1-1 1s-1-.4-1-1V5H5z" fill="#818F99" fill-rule="evenodd"/></svg>

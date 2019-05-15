@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Bell</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Bell" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M11,8 L11,5 C11,3.3045695 9.6954305,2 8,2 C6.3045695,2 5,3.3045695 5,5 L5,8 C5,9.1334754 4.67211944,10.1032139 4.08698521,11 L11.9130148,11 C11.3278806,10.1032139 11,9.1334754 11,8 Z M15,11 C15.6,11 16,11.4 16,12 C16,12.6 15.6,13 15,13 L1,13 C0.4,13 0,12.6 0,12 C0,11.4 0.4,11 1,11 L1.5,11 C2.2,10.3 3,9.3 3,8 L3,5 C3,2.2 5.2,0 8,0 C10.8,0 13,2.2 13,5 L13,8 C13,9.3 13.8,10.3 14.5,11 L15,11 Z M10,14 C10,15.1 9.1,16 8,16 C6.9,16 6,15.1 6,14 L10,14 Z" id="i-16-bell" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M11 8V5c0-1.695-1.305-3-3-3S5 3.305 5 5v3c0 1.133-.328 2.103-.913 3h7.826C11.328 10.103 11 9.133 11 8zm4 3c.6 0 1 .4 1 1s-.4 1-1 1H1c-.6 0-1-.4-1-1s.4-1 1-1h.5C2.2 10.3 3 9.3 3 8V5c0-2.8 2.2-5 5-5s5 2.2 5 5v3c0 1.3.8 2.3 1.5 3h.5zm-5 3c0 1.1-.9 2-2 2s-2-.9-2-2h4z" fill="#818F99" fill-rule="evenodd"/></svg>

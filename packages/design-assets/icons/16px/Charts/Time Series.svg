@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Charts/Time Series</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Charts/Time-Series" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M15,2 C15.553,2 16,2.447 16,3 L16,15 C16,15.553 15.553,16 15,16 L1,16 C0.447,16 0,15.553 0,15 L0,3 C0,2.447 0.447,2 1,2 L3,2 L3,0 L5,0 L5,2 L7,2 L7,0 L9,0 L9,2 L11,2 L11,0 L13,0 L13,2 L15,2 Z M14,14 L14,5 L2,5 L2,14 L14,14 Z M4,7 L6,7 L6,9 L4,9 L4,7 Z M7,7 L9,7 L9,9 L7,9 L7,7 Z M4,10 L6,10 L6,12 L4,12 L4,10 Z M7,10 L9,10 L9,12 L7,12 L7,10 Z M10,7 L12,7 L12,9 L10,9 L10,7 Z M10,10 L12,10 L12,12 L10,12 L10,10 Z" id="i-16-chart-time-series" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M15 2a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H1a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1h2V0h2v2h2V0h2v2h2V0h2v2h2zm-1 12V5H2v9h12zM4 7h2v2H4V7zm3 0h2v2H7V7zm-3 3h2v2H4v-2zm3 0h2v2H7v-2zm3-3h2v2h-2V7zm0 3h2v2h-2v-2z" fill="#818F99" fill-rule="evenodd"/></svg>

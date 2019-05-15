@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Sharing/Company</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Sharing/Company" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M12,6 L15,6 L15,15 L1,15 L1,1 L12,1 L12,6 Z M12,8 L12,13 L13,13 L13,8 L12,8 Z M3,3 L3,13 L10,13 L10,3 L3,3 Z M4,4 L6,4 L6,6 L4,6 L4,4 Z M4,7 L6,7 L6,9 L4,9 L4,7 Z M4,10 L6,10 L6,12 L4,12 L4,10 Z M7,4 L9,4 L9,6 L7,6 L7,4 Z M7,7 L9,7 L9,9 L7,9 L7,7 Z M7,10 L9,10 L9,12 L7,12 L7,10 Z" id="i-16-share-company" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M12 6h3v9H1V1h11v5zm0 2v5h1V8h-1zM3 3v10h7V3H3zm1 1h2v2H4V4zm0 3h2v2H4V7zm0 3h2v2H4v-2zm3-6h2v2H7V4zm0 3h2v2H7V7zm0 3h2v2H7v-2z" fill="#818F99" fill-rule="evenodd"/></svg>

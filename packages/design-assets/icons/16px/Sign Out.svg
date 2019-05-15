@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Sign Out</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Sign-Out" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M1,16 C0.4,16 0,15.6 0,15 L0,1 C0,0.4 0.4,0 1,0 L10,0 C10.6,0 11,0.4 11,1 L11,4 L9,4 L9,2 L2,2 L2,14 L9,14 L9,12 L11,12 L11,15 C11,15.6 10.6,16 10,16 L1,16 Z M12,4 L16,8 L12,12 L12,9 L6,9 L6,7 L12,7 L12,4 Z" id="i-16-sign-out" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M1 16c-.6 0-1-.4-1-1V1c0-.6.4-1 1-1h9c.6 0 1 .4 1 1v3H9V2H2v12h7v-2h2v3c0 .6-.4 1-1 1H1zM12 4l4 4-4 4V9H6V7h6V4z" fill="#818F99" fill-rule="evenodd"/></svg>

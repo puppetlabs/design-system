@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Kebab</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Kebab" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M8,10 C6.8954305,10 6,9.1045695 6,8 C6,6.8954305 6.8954305,6 8,6 C9.1045695,6 10,6.8954305 10,8 C10,9.1045695 9.1045695,10 8,10 Z M8,4 C6.8954305,4 6,3.1045695 6,2 C6,0.8954305 6.8954305,0 8,0 C9.1045695,0 10,0.8954305 10,2 C10,3.1045695 9.1045695,4 8,4 Z M8,16 C6.8954305,16 6,15.1045695 6,14 C6,12.8954305 6.8954305,12 8,12 C9.1045695,12 10,12.8954305 10,14 C10,15.1045695 9.1045695,16 8,16 Z" id="i-16-kebab" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M8 10a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0-6a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 12a2 2 0 1 1 0-4 2 2 0 0 1 0 4z" fill="#818F99" fill-rule="evenodd"/></svg>

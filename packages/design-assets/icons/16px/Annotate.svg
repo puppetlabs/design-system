@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Annotate</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Annotate" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M15,0 L1,0 C0.4,0 0,0.4 0,1 L0,12 C0,12.6 0.4,13 1,13 L4.6,13 L7.3,15.7 C7.5,15.9 7.7,16 8,16 C8.3,16 8.5,15.9 8.7,15.7 L11.4,13 L15,13 C15.6,13 16,12.6 16,12 L16,1 C16,0.4 15.6,0 15,0 Z M14,11 L11,11 C10.7,11 10.5,11.1 10.3,11.3 L8,13.6 L5.7,11.3 C5.5,11.1 5.3,11 5,11 L2,11 L2,2 L14,2 L14,11 Z" id="i-16-annotate" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M15 0H1C.4 0 0 .4 0 1v11c0 .6.4 1 1 1h3.6l2.7 2.7c.2.2.4.3.7.3.3 0 .5-.1.7-.3l2.7-2.7H15c.6 0 1-.4 1-1V1c0-.6-.4-1-1-1zm-1 11h-3c-.3 0-.5.1-.7.3L8 13.6l-2.3-2.3c-.2-.2-.4-.3-.7-.3H2V2h12v9z" fill="#818F99" fill-rule="evenodd"/></svg>

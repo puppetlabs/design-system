@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Duplicate</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Duplicate" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M10.4285714,12 L2.57142857,12 C1.70242857,12 1,11.2975714 1,10.4285714 L1,2.57142857 C1,1.704 1.70242857,1 2.57142857,1 L10.4285714,1 C11.2975714,1 12,1.704 12,2.57142857 L12,10.4285714 C12,11.2975714 11.2975714,12 10.4285714,12 Z M9,10 C9.553,10 10,9.553 10,9 L10,4 C10,3.448 9.553,3 9,3 L4,3 C3.447,3 3,3.448 3,4 L3,9 C3,9.553 3.447,10 4,10 L9,10 Z M14,15 L5,15 C4.44771525,15 4,14.5522847 4,14 C4,13.4477153 4.44771525,13 5,13 L13,13 L13,5 C13,4.44771525 13.4477153,4 14,4 C14.5522847,4 15,4.44771525 15,5 L15,14 C15,14.553 14.553,15 14,15 Z" id="i-16-duplicate" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M10.429 12H2.57A1.57 1.57 0 0 1 1 10.429V2.57C1 1.704 1.702 1 2.571 1h7.858C11.298 1 12 1.704 12 2.571v7.858A1.57 1.57 0 0 1 10.429 12zM9 10a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h5zm5 5H5a1 1 0 0 1 0-2h8V5a1 1 0 0 1 2 0v9a1 1 0 0 1-1 1z" fill="#818F99" fill-rule="evenodd"/></svg>

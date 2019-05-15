@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Excel</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Excel" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M12,12 L9.64969802,12 L8,10 L6.36134599,12 L4,12 L6.92942192,8.5 L4.56393443,5 L6.94874892,5 L8,7 L9.23623814,5 L11.6631579,5 L9.18308887,8.5 L12,12 Z M3,2 L3,14 L13,14 L13,4 L11,4 L11,2 L3,2 Z M1,0 L12,0 L15,3 L15,16 L1,16 L1,0 Z" id="i-16-excel" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M12 12H9.65L8 10l-1.639 2H4l2.93-3.5L4.563 5h2.385L8 7l1.236-2h2.427l-2.48 3.5L12 12zM3 2v12h10V4h-2V2H3zM1 0h11l3 3v13H1V0z" fill="#818F99" fill-rule="evenodd"/></svg>

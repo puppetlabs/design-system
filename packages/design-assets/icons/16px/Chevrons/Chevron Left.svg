@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Chevrons/Chevron Left</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Chevrons/Chevron-Left" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M7.41421356,8 L9.70710678,10.2928932 C10.0976311,10.6834175 10.0976311,11.3165825 9.70710678,11.7071068 C9.31658249,12.0976311 8.68341751,12.0976311 8.29289322,11.7071068 L5.29289322,8.70710678 C4.90236893,8.31658249 4.90236893,7.68341751 5.29289322,7.29289322 L8.29289322,4.29289322 C8.68341751,3.90236893 9.31658249,3.90236893 9.70710678,4.29289322 C10.0976311,4.68341751 10.0976311,5.31658249 9.70710678,5.70710678 L7.41421356,8 Z" id="i-16-chevron-left" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M7.414 8l2.293 2.293a1 1 0 1 1-1.414 1.414l-3-3a1 1 0 0 1 0-1.414l3-3a1 1 0 0 1 1.414 1.414L7.414 8z" fill="#818F99" fill-rule="evenodd"/></svg>

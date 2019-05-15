@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Gear</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Gear" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M12.9,4.5 L14.4,3 L13,1.6 L11.5,3.1 C10.8,2.6 9.9,2.2 9,2.1 L9,0 L7,0 L7,2.1 C6.1,2.3 5.2,2.6 4.5,3.1 L3.1,1.6 L1.6,3.1 L3.1,4.6 C2.6,5.2 2.2,6.1 2.1,7 L0,7 L0,9 L2.1,9 C2.3,9.9 2.6,10.8 3.1,11.5 L1.6,13 L3,14.4 L4.5,12.9 C5.2,13.4 6.1,13.8 7,13.9 L7,16 L9,16 L9,13.9 C9.9,13.7 10.8,13.4 11.5,12.9 L13,14.4 L14.4,13 L12.9,11.5 C13.4,10.8 13.8,9.9 13.9,9 L16,9 L16,7 L13.9,7 C13.8,6.1 13.4,5.2 12.9,4.5 Z M8,11 C6.3,11 5,9.7 5,8 C5,6.3 6.3,5 8,5 C9.7,5 11,6.3 11,8 C11,9.7 9.7,11 8,11 Z" id="i-16-gear" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M12.9 4.5L14.4 3 13 1.6l-1.5 1.5c-.7-.5-1.6-.9-2.5-1V0H7v2.1c-.9.2-1.8.5-2.5 1L3.1 1.6 1.6 3.1l1.5 1.5c-.5.6-.9 1.5-1 2.4H0v2h2.1c.2.9.5 1.8 1 2.5L1.6 13 3 14.4l1.5-1.5c.7.5 1.6.9 2.5 1V16h2v-2.1c.9-.2 1.8-.5 2.5-1l1.5 1.5 1.4-1.4-1.5-1.5c.5-.7.9-1.6 1-2.5H16V7h-2.1c-.1-.9-.5-1.8-1-2.5zM8 11c-1.7 0-3-1.3-3-3s1.3-3 3-3 3 1.3 3 3-1.3 3-3 3z" fill="#818F99" fill-rule="evenodd"/></svg>

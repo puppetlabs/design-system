@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Info Circle</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Info-Circle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M8,0 C12.4,0 16,3.6 16,8 C16,12.4 12.4,16 8,16 C3.6,16 0,12.4 0,8 C0,3.6 3.6,0 8,0 Z M8,14 C11.3,14 14,11.3 14,8 C14,4.7 11.3,2 8,2 C4.7,2 2,4.7 2,8 C2,11.3 4.7,14 8,14 Z M7,7 L9,7 L9,12 L7,12 L7,7 Z M8,6 C7.44771525,6 7,5.55228475 7,5 C7,4.44771525 7.44771525,4 8,4 C8.55228475,4 9,4.44771525 9,5 C9,5.55228475 8.55228475,6 8,6 Z" id="i-16-info-circle" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M8 0c4.4 0 8 3.6 8 8s-3.6 8-8 8-8-3.6-8-8 3.6-8 8-8zm0 14c3.3 0 6-2.7 6-6s-2.7-6-6-6-6 2.7-6 6 2.7 6 6 6zM7 7h2v5H7V7zm1-1a1 1 0 1 1 0-2 1 1 0 0 1 0 2z" fill="#818F99" fill-rule="evenodd"/></svg>

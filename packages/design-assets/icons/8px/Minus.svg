@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/8px/Minus</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/8px/Minus" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <polygon id="i-8-minus" fill="#818F99" points="0 3 0 5 8 5 8 3"></polygon>
-    </g>
-</svg>
+<svg width="8" height="8" xmlns="http://www.w3.org/2000/svg"><path fill="#818F99" d="M0 3v2h8V3z" fill-rule="evenodd"/></svg>

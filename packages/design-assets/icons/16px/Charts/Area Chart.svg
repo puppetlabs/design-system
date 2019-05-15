@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Charts/Area Chart</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Charts/Area-Chart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M0,14 L16,14 L16,16 L0,16 L0,14 Z M0,12 L4.66666667,4.66666667 L6.66666667,8.33333333 L10.6666667,1 L16,12 L0,12 Z" id="i-16-chart-area" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M0 14h16v2H0v-2zm0-2l4.667-7.333 2 3.666 4-7.333L16 12H0z" fill="#818F99" fill-rule="evenodd"/></svg>

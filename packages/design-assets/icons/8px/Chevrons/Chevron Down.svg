@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/8px/Chevrons/Chevron Down</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/8px/Chevrons/Chevron-Down" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M4,4.58578644 L6.29289322,2.29289322 C6.68341751,1.90236893 7.31658249,1.90236893 7.70710678,2.29289322 C8.09763107,2.68341751 8.09763107,3.31658249 7.70710678,3.70710678 L4.70710678,6.70710678 C4.31658249,7.09763107 3.68341751,7.09763107 3.29289322,6.70710678 L0.292893219,3.70710678 C-0.0976310729,3.31658249 -0.0976310729,2.68341751 0.292893219,2.29289322 C0.683417511,1.90236893 1.31658249,1.90236893 1.70710678,2.29289322 L4,4.58578644 Z" id="i-8-chevron-down" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="8" height="8" xmlns="http://www.w3.org/2000/svg"><path d="M4 4.586l2.293-2.293a1 1 0 0 1 1.414 1.414l-3 3a1 1 0 0 1-1.414 0l-3-3a1 1 0 1 1 1.414-1.414L4 4.586z" fill="#818F99" fill-rule="evenodd"/></svg>

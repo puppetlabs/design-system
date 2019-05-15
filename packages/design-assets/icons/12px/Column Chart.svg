@@ -1,15 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="12px" height="12px" viewBox="0 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/12px/Column Chart</title>
-    <desc>Created with Sketch.</desc>
-    <defs>
-        <path d="M0,10 L12,10 L12,12 L0,12 L0,10 Z M8,0 L11,0 L11,9 L8,9 L8,0 Z M4,3 L7,3 L7,9 L4,9 L4,3 Z M0,6 L3,6 L3,9 L0,9 L0,6 Z" id="path-1"></path>
-    </defs>
-    <g id="Icons/12px/Column-Chart" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <mask id="mask-2" fill="white">
-            <use xlink:href="#path-1"></use>
-        </mask>
-        <use id="i-12-column-chart" fill="#818F99" xlink:href="#path-1"></use>
-    </g>
-</svg>
+<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M0 10h12v2H0v-2zM8 0h3v9H8V0zM4 3h3v6H4V3zM0 6h3v3H0V6z" id="a"/></defs><use fill="#818F99" xlink:href="#a" fill-rule="evenodd"/></svg>

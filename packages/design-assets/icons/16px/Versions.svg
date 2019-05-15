@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Versions</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Versions" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M3.414,2 L9,7.586 L9,16 L7,16 L7,8.414 L2,3.414 L2,6 L0,6 L0,1 C0,0.448 0.448,0 1,0 L6,0 L6,2 L3.414,2 Z M15,0 C15.552,0 16,0.448 16,1 L16,6 L14,6 L14,3.414 L10.828,6.586 L9.414,5.172 L12.586,2 L10,2 L10,0 L15,0 Z" id="i-16-versions" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M3.414 2L9 7.586V16H7V8.414l-5-5V6H0V1a1 1 0 0 1 1-1h5v2H3.414zM15 0a1 1 0 0 1 1 1v5h-2V3.414l-3.172 3.172-1.414-1.414L12.586 2H10V0h5z" fill="#818F99" fill-rule="evenodd"/></svg>

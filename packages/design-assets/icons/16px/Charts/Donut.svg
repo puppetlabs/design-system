@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Charts/Donut</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Charts/Donut" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M7,1.07088886 L7,5.17070571 C5.83480763,5.58254212 5,6.69378117 5,8 C5,9.65685425 6.34314575,11 8,11 C9.30621883,11 10.4174579,10.1651924 10.8292943,9 L14.9291111,9 C14.4438815,12.3922941 11.5264719,15 8,15 C4.13400675,15 1,11.8659932 1,8 C1,4.47352809 3.60770586,1.55611852 7,1.07088886 Z M8,1 C11.8659932,1 15,4.13400675 15,8 L11,8 C11,6.34314575 9.65685425,5 8,5 L8,1 Z" id="i-16-chart-donut" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M7 1.07v4.1A3.001 3.001 0 1 0 10.83 9h4.1A7.002 7.002 0 0 1 1 8a7.002 7.002 0 0 1 6-6.93zM8 1a7 7 0 0 1 7 7h-4a3 3 0 0 0-3-3V1z" fill="#818F99" fill-rule="evenodd"/></svg>

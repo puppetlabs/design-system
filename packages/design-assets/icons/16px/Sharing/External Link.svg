@@ -1,9 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
-    <title>Icons/16px/Sharing/External Link</title>
-    <desc>Created with Sketch.</desc>
-    <g id="Icons/16px/Sharing/External-Link" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M15,0 C15.6,0 16,0.4 16,1 L16,8 L14,8 L14,3.4 L7.7,9.7 L6.3,8.3 L12.6,2 L8,2 L8,0 L15,0 Z M14,16 L1,16 C0.4,16 0,15.6 0,15 L0,2 C0,1.4 0.4,1 1,1 L5,1 L5,3 L2,3 L2,14 L13,14 L13,11 L15,11 L15,15 C15,15.6 14.6,16 14,16 Z" id="i-16-external" fill="#818F99"></path>
-    </g>
-</svg>
+<svg width="16" height="16" xmlns="http://www.w3.org/2000/svg"><path d="M15 0c.6 0 1 .4 1 1v7h-2V3.4L7.7 9.7 6.3 8.3 12.6 2H8V0h7zm-1 16H1c-.6 0-1-.4-1-1V2c0-.6.4-1 1-1h4v2H2v11h11v-3h2v4c0 .6-.4 1-1 1z" fill="#818F99" fill-rule="evenodd"/></svg>
