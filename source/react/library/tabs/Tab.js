@@ -7,14 +7,14 @@ import Button from '../buttons/Button';
 const propTypes = {
   /** Visible tab label  */
   title: PropTypes.string,
-  /** For accesibility and state management, a unique ID is required  */
-  id: PropTypes.string.isRequired,
+  /** For ease of reference in controlled-mode, a custom unique id can be provided. By default the tab index will be used  */
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Internally managed tabs ID  */
   tabsId: PropTypes.string,
   /** Internally managed active state  */
   active: PropTypes.bool,
   /** Internally managed focus state  */
-  focussed: PropTypes.bool,
+  focused: PropTypes.bool,
   /** Internally managed onClick for Tab button. Callback to parent */
   onKeyDown: PropTypes.func,
   /** Internally managed onClick for Tab button. Callback to parent */
@@ -23,18 +23,19 @@ const propTypes = {
 
 const defaultProps = {
   title: '',
+  id: null,
   tabsId: null,
   active: false,
-  focussed: false,
+  focused: false,
   onKeyDown() {},
   onClick() {},
 };
 
 class Tab extends React.Component {
   componentWillUpdate(props) {
-    const { focussed } = props;
+    const { focused } = props;
 
-    if (focussed) {
+    if (focused) {
       this.tab.focus();
     }
   }

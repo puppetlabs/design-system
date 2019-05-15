@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const propTypes = {
   /** Internally managed tab ID  */
-  id: PropTypes.string,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Internally managed tabs ID  */
   tabsId: PropTypes.string,
   /** Internally managed active state  */

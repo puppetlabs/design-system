@@ -1,3 +1,8 @@
+# 5.0.0-alpha.21
+- id is no longer a required prop of Tabs
+- **Breaking change** Rename `activeTab` prop on `Tabs` to `initialTab`
+- **Breaking change** Manual tab activation is now controlled at the Tabs.Tab component level with the `active` prop
+
 # 5.0.0-alpha.20
 
 - Update form icons, spacing and font colors to match design system
