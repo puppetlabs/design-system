@@ -3,38 +3,38 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
 const propTypes = {
-  type: PropTypes.oneOf(['bold', 'subtle', 'pill']),
-  color: PropTypes.oneOf(['danger', 'info', 'neutral', 'success', 'warning']),
-  level: PropTypes.oneOf([0, 1, 2, 3, 4, 5, 6, null]),
-  palette: PropTypes.oneOf(['sequential', null]),
-  className: PropTypes.string,
+  /** Type dictates badge coloring */
+  type: PropTypes.oneOf(['danger', 'info', 'neutral', 'success', 'warning']),
+  /** Weight dictates the punchiness of badge coloring */
+  weight: PropTypes.oneOf(['bold', 'subtle']),
+  /** Setting pill to true fully rounds the borders */
+  pill: PropTypes.bool,
+  /** The content to render within the badge */
   children: PropTypes.node,
+  /** Optional additional classnames */
+  className: PropTypes.string,
+  /** Optional additional inline styles */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  type: 'bold',
-  level: null,
-  color: 'neutral',
-  palette: null,
-  className: '',
+  type: 'neutral',
+  weight: 'bold',
+  pill: false,
   children: null,
+  className: '',
+  style: {},
 };
 
-const Badge = ({
-  type,
-  color,
-  level,
-  palette,
-  className,
-  children,
-  ...props
-}) => (
+const Badge = ({ type, weight, pill, children, className, ...props }) => (
   <div
     className={classNames(
       'rc-badge',
       `rc-badge-${type}`,
-      `rc-badge-${color}`,
-      `rc-badge-${palette}-${level}`,
+      `rc-badge-${weight}`,
+      {
+        'rc-badge-pill': pill,
+      },
       className,
     )}
     {...props}

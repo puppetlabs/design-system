@@ -48,7 +48,7 @@ export function ReactComponentRenderer(props) {
 
   if (metadata.approved_by) {
     const badges = metadata.approved_by.map(label => (
-      <Badge key={label} color="info">{label}</Badge>
+      <Badge key={label} type="info">{label}</Badge>
     ));
 
     metadataJSX = (
@@ -57,7 +57,7 @@ export function ReactComponentRenderer(props) {
       </div>
     );
   } else {
-    metadataJSX = <Badge color="danger">Not approved</Badge>;
+    metadataJSX = <Badge type="danger">Not approved</Badge>;
   }
 
   return (
