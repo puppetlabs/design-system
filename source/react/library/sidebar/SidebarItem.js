@@ -43,7 +43,7 @@ const SidebarItem = props => {
   if (count) {
     badge = (
       <span className="rc-sidebar-item-badge">
-        <Badge type="pill" color="neutral">
+        <Badge pill type="neutral">
           {count}
         </Badge>
       </span>

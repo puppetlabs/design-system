@@ -114,7 +114,7 @@ const columns = [
   {
     label: 'Exclamation',
     dataKey: 'exclamation',
-    cellRenderer: ({ cellData }) => <Badge color="info">{cellData}</Badge>
+    cellRenderer: ({ cellData }) => <Badge type="info">{cellData}</Badge>
   },
   {
     label: 'Created',
