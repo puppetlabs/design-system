@@ -9,9 +9,13 @@ import {
 } from '../../helpers/customPropTypes';
 import Icon from '../icon';
 import { getDropdownPosition } from '../../helpers/statics';
+import withId from '../../helpers/withId';
 
 const propTypes = {
-  /** Unique id */
+  /**
+   * This prop is automatically passed from the withID HOC
+   * @ignore
+   */
   id: PropTypes.string.isRequired,
   /** An Array of action objects */
   actions: PropTypes.arrayOf(
@@ -198,4 +202,4 @@ class ActionMenu extends Component {
 ActionMenu.propTypes = propTypes;
 ActionMenu.defaultProps = defaultProps;
 
-export default ActionMenu;
+export default withId(ActionMenu);

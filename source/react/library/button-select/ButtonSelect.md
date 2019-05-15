@@ -17,7 +17,6 @@ const style = { display: 'inline-block', margin: 10 };
 
 <div>
   <ButtonSelect
-    id="button-select-one"
     options={options}
     placeholder="Select a value"
     style={style}
@@ -28,7 +27,6 @@ const style = { display: 'inline-block', margin: 10 };
     }}
   />
   <ButtonSelect
-    id="button-select-two"
     type="secondary"
     options={options}
     placeholder="Select a value"
@@ -40,7 +38,6 @@ const style = { display: 'inline-block', margin: 10 };
     }}
   />
   <ButtonSelect
-    id="button-select-three"
     type="tertiary"
     options={options}
     placeholder="Select a value"
@@ -72,7 +69,6 @@ const style = { display: 'inline-block', margin: 10 };
 
 <div>
   <ButtonSelect
-    id="button-select-four"
     type="tertiary"
     options={options}
     placeholder="Select multiple things"
@@ -108,7 +104,6 @@ const style = { display: 'inline-block', margin: 10 };
 
 <div>
   <ButtonSelect
-    id="button-select-five"
     type="tertiary"
     multiple
     options={options}
@@ -145,7 +140,6 @@ const style = { display: 'inline-block', margin: 10 };
 
 <div>
   <ButtonSelect
-    id="button-select-six"
     type="tertiary"
     multiple
     applyImmediately

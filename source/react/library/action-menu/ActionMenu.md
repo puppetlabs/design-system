@@ -2,7 +2,8 @@ The ActionMenu component allows users to execute actions from a dropdown menu li
 
 ### Basic use
 
-Actions are specified by entries in an `actions` array prop. In most cases, action callbacks should be specified with the `onClick` property of each action item. If the action involves navigation, an anchor tag or custom link component with appropriate props (`href` or `to`) specifying the navigation location. Each action can optionally include an icon.
+Actions are specified by entries in an `actions` array prop. In most cases, action callbacks should be specified with the `onClick` property of each action item. If the action involves navigation, an anchor tag or custom link component with appropriate props (`href` or `to`) can be rendered with the `as` prop. Each action can optionally include an icon.
+
 ```
 const actions = [
   { id: 'one', icon: 'pencil', label: 'Do thing one', onClick() { console.log('Thing one'); } },
@@ -14,20 +15,17 @@ const style = { display: 'inline-block', margin: 10 };
 
 <div>
   <ActionMenu
-    id="action-menu-one"
     actions={actions}
     label="Choose an Action"
     style={style}
   />
   <ActionMenu
-    id="action-menu-two"
     type="secondary"
     actions={actions}
     label="Choose an Action"
     style={style}
   />
   <ActionMenu
-    id="action-menu-three"
     type="tertiary"
     actions={actions}
     label="Choose an Action"
@@ -51,27 +49,23 @@ const style = { display: 'inline-block', margin: 10 };
 
 <div>
   <ActionMenu
-    id="action-menu-four"
     actions={actions}
     icon="kebab"
     style={style}
   />
   <ActionMenu
-    id="action-menu-five"
     type="secondary"
     actions={actions}
     icon="kebab"
     style={style}
   />
   <ActionMenu
-    id="action-menu-six"
     type="tertiary"
     actions={actions}
     icon="kebab"
     style={style}
   />
   <ActionMenu
-    id="action-menu-seven"
     type="transparent"
     actions={actions}
     icon="kebab"
@@ -95,14 +89,12 @@ const style = { display: 'inline-block', margin: 10 };
 
 <div>
   <ActionMenu
-    id="action-menu-eight"
     actions={actions}
     type="tertiary"
     icon="chevron-down"
     style={style}
   />
   <ActionMenu
-    id="action-menu-nine"
     anchor="top left"
     actions={actions}
     type="tertiary"
@@ -110,7 +102,6 @@ const style = { display: 'inline-block', margin: 10 };
     style={style}
   />
   <ActionMenu
-    id="action-menu-ten"
     anchor="top right"
     actions={actions}
     type="tertiary"
@@ -118,7 +109,6 @@ const style = { display: 'inline-block', margin: 10 };
     style={style}
   />
   <ActionMenu
-    id="action-menu-eleven"
     anchor="bottom right"
     actions={actions}
     type="tertiary"

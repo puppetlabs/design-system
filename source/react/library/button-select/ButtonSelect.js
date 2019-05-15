@@ -6,9 +6,13 @@ import OptionMenuList from '../../internal/option-menu-list';
 import { anchorOrientation } from '../../helpers/customPropTypes';
 import Icon from '../icon';
 import { getDropdownPosition } from '../../helpers/statics';
+import withId from '../../helpers/withId';
 
 const propTypes = {
-  /** Unique id */
+  /**
+   * This prop is automatically passed from the withID HOC
+   * @ignore
+   */
   id: PropTypes.string.isRequired,
   /** Are multiple selections allowed? */
   multiple: PropTypes.bool,
@@ -281,4 +285,4 @@ class ButtonSelect extends Component {
 ButtonSelect.propTypes = propTypes;
 ButtonSelect.defaultProps = defaultProps;
 
-export default ButtonSelect;
+export default withId(ButtonSelect);
