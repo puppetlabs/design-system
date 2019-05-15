@@ -107,7 +107,7 @@ class ButtonSelect extends Component {
     this.focusButton = this.focusButton.bind(this);
     this.focusMenu = this.focusMenu.bind(this);
     this.closeAndFocusButton = this.closeAndFocusButton.bind(this);
-    this.onMenuBlur = this.onMenuBlur.bind(this);
+    this.onBlur = this.onBlur.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
     this.onActionClick = this.onActionClick.bind(this);
     this.getButtonLabel = this.getButtonLabel.bind(this);
@@ -133,7 +133,7 @@ class ButtonSelect extends Component {
     }
   }
 
-  onMenuBlur(e) {
+  onBlur(e) {
     if (!this.container.contains(e.relatedTarget)) {
       this.close();
     }
@@ -210,7 +210,7 @@ class ButtonSelect extends Component {
     const {
       onValueChange,
       onClickButton,
-      onMenuBlur,
+      onBlur,
       closeAndFocusButton,
       onActionClick,
     } = this;
@@ -239,6 +239,7 @@ class ButtonSelect extends Component {
           className,
         )}
         style={style}
+        onBlur={onBlur}
         ref={container => {
           this.container = container;
         }}
@@ -268,7 +269,6 @@ class ButtonSelect extends Component {
           selected={listValue}
           aria-labelledby={id}
           onActionClick={onActionClick}
-          onBlur={onMenuBlur}
           onEscape={closeAndFocusButton}
           onChange={onValueChange}
           style={menuStyle}

@@ -86,7 +86,7 @@ class ActionMenu extends Component {
     this.focusButton = this.focusButton.bind(this);
     this.focusMenu = this.focusMenu.bind(this);
     this.closeAndFocusButton = this.closeAndFocusButton.bind(this);
-    this.onMenuBlur = this.onMenuBlur.bind(this);
+    this.onBlur = this.onBlur.bind(this);
   }
 
   onClickButton() {
@@ -99,7 +99,7 @@ class ActionMenu extends Component {
     }
   }
 
-  onMenuBlur(e) {
+  onBlur(e) {
     if (!this.container.contains(e.relatedTarget)) {
       this.close();
     }
@@ -161,6 +161,7 @@ class ActionMenu extends Component {
           className,
         )}
         style={style}
+        onBlur={this.onBlur}
         ref={container => {
           this.container = container;
         }}
@@ -187,7 +188,6 @@ class ActionMenu extends Component {
           actions={actions}
           aria-labelledby={id}
           onActionClick={this.closeAndFocusButton}
-          onBlur={this.onMenuBlur}
           onEscape={this.closeAndFocusButton}
           style={menuStyle}
           ref={menu => {
