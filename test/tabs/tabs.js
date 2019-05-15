@@ -1,10 +1,9 @@
 import jsdom from 'mocha-jsdom';
 import { shallow, mount } from 'enzyme';
-import sinon from 'sinon';
 import { expect } from 'chai';
 import React from 'react';
 
-import Tabs from '../../source/react/library/tabs/Tabs';
+import { UnwrappedTabs as Tabs } from '../../source/react/library/tabs/Tabs';
 
 describe('<Tabs.Tab />', () => {
   jsdom({ skipWindowCheck: true });
@@ -76,7 +75,6 @@ describe('<Tabs.Tab />', () => {
   });
 
   it('should respond to click events on Tabs.Tab', () => {
-    sinon.spy(Tabs.prototype, 'onClick');
     const wrapper = mount(
       <Tabs {...defaultTabsProps}>
         <Tabs.Tab id="1" />
@@ -101,7 +99,6 @@ describe('<Tabs.Tab />', () => {
   });
 
   it('should respond to keyDown events on Tabs.Tab', () => {
-    sinon.spy(Tabs.prototype, 'onKeyDown');
     const wrapper = mount(
       <Tabs {...defaultTabsProps}>
         <Tabs.Tab id="1" />

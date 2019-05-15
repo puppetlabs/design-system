@@ -169,4 +169,6 @@ Tabs.defaultProps = defaultProps;
 
 Tabs.Tab = Tab;
 
+export { Tabs as UnwrappedTabs };
+
 export default withId(Tabs);
