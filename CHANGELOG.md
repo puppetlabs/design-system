@@ -2,6 +2,11 @@
 - id is no longer a required prop of Tabs
 - **Breaking change** Rename `activeTab` prop on `Tabs` to `initialTab`
 - **Breaking change** Manual tab activation is now controlled at the Tabs.Tab component level with the `active` prop
+- **Breaking change** "type" prop on Badge renamed "weight"
+- **Breaking change** "pill" badge type is now a boolean
+- **Breaking change** "color" prop on badge renamed "type"
+- **Breaking change** Remove palette prop on Badge
+- Add Remediate logo
 
 # 5.0.0-alpha.20
 
