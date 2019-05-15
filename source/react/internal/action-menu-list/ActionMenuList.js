@@ -43,10 +43,10 @@ const defaultProps = {
   className: '',
 };
 
-const getOptionId = (id, actionId) => `${id}-${actionId}`;
+const getActionId = (id, actionId) => `${id}-${actionId}`;
 
 const getFocusedId = (focusedIndex, id, actions) =>
-  isNil(focusedIndex) ? undefined : getOptionId(id, actions[focusedIndex].id);
+  isNil(focusedIndex) ? undefined : getActionId(id, actions[focusedIndex].id);
 
 class ActionMenuList extends Component {
   constructor(props) {
@@ -251,7 +251,7 @@ class ActionMenuList extends Component {
           {actions.map(
             ({ id: actionId, label, icon, onClick, ...other }, index) => (
               <ActionMenuListItem
-                id={getOptionId(id, actionId)}
+                id={getActionId(id, actionId)}
                 key={actionId}
                 focused={index === focusedIndex}
                 icon={icon}

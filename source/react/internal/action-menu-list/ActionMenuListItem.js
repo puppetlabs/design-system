@@ -21,7 +21,7 @@ const defaultProps = {
 };
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
-const OptionMenuItem = forwardRef(
+const ActionMenuListItem = forwardRef(
   (
     {
       as: Element,
@@ -80,7 +80,7 @@ const OptionMenuItem = forwardRef(
 );
 /* eslint-enable */
 
-OptionMenuItem.propTypes = propTypes;
-OptionMenuItem.defaultProps = defaultProps;
+ActionMenuListItem.propTypes = propTypes;
+ActionMenuListItem.defaultProps = defaultProps;
 
-export default OptionMenuItem;
+export default ActionMenuListItem;

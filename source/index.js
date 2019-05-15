@@ -1,7 +1,7 @@
-// Buttons
+import ActionMenu from './react/library/action-menu';
 import Button from './react/library/buttons/Button';
 import ButtonGroup from './react/library/buttons/ButtonGroup';
-
+import ButtonSelect from './react/library/button-select';
 import Card from './react/library/card';
 import Sidebar from './react/library/sidebar/Sidebar';
 import Icon from './react/library/icon/Icon';
@@ -29,8 +29,10 @@ import Logo from './react/library/logo';
 import Tabs from './react/library/tabs';
 
 export {
+  ActionMenu,
   Button,
   ButtonGroup,
+  ButtonSelect,
   Card,
   Icon,
   Tag,
