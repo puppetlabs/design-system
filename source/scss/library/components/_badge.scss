@@ -1,27 +1,12 @@
-$badge-colors: (
-  // TODO reformat current badges for a bold and subtle palettes
-  // TODO move map to variables-components file
-  /* Sequential chart color palette */
-  sequential: (
-    0: #ece571,
-    1: #9dd986,
-    2: #62c692,
-    3: #34af9e,
-    4: #089099,
-    5: #03586c,
-    6: #053c75
-  )
-);
-
 .rc-badge {
-  border-radius: $puppet-border-radius-small;
+  border-radius: $puppet-common-border-radius-small;
   display: inline-block;
-  font-family: $puppet-font-family-label;
-  font-size: $puppet-font-size-tiny;
+  font-family: $puppet-type-font-family-secondary;
+  font-size: $puppet-type-tiny-font-size;
   font-weight: $puppet-type-weight-heavy;
-  line-height: $puppet-medium;
-  margin: 0 $puppet-mini;
-  padding: 0 4px;
+  line-height: $puppet-common-spacing-base * 2;
+  margin: 0 $puppet-common-spacing-base * 0.25;
+  padding: 0 $puppet-common-spacing-base * 0.5;
   text-align: center;
   text-transform: uppercase;
 }
@@ -29,7 +14,7 @@ $badge-colors: (
 .rc-badge-pill,
 .rc-badge-bold {
   &.rc-badge-danger {
-    background-color: $puppet-neg-bg-base;
+    background-color: $puppet-r600;
     color: $puppet-white;
   }
 
@@ -39,25 +24,25 @@ $badge-colors: (
   }
 
   &.rc-badge-neutral {
-    background-color: $puppet-n300;
-    color: $puppet-font-color-base;
+    background-color: $puppet-n800;
+    color: $puppet-white;
   }
 
   &.rc-badge-success {
-    background-color: $puppet-pos-color-base;
+    background-color: $puppet-g700;
     color: $puppet-white;
   }
 
 
   &.rc-badge-warning {
-    background-color: $puppet-warn-color-base;
+    background-color: $puppet-y700;
     color: $puppet-white;
   }
 }
 
 .rc-badge-pill {
-  border-radius: $puppet-circle-radius;
-  padding: 0 8px;
+  border-radius: $puppet-common-circle-radius;
+  padding: 0 $puppet-common-spacing-base * 2;
 }
 
 .rc-badge-subtle {
@@ -68,41 +53,22 @@ $badge-colors: (
 
   &.rc-badge-info {
     background-color: $puppet-b100;
-    color: $puppet-b500;
+    color: $puppet-b600;
   }
 
   &.rc-badge-neutral {
     background-color: $puppet-n100;
-    color: $puppet-n700;
+    color: $puppet-n800;
   }
 
 
   &.rc-badge-success {
     background-color: $puppet-g100;
-    color: $puppet-g700;
+    color: $puppet-g800;
   }
 
   &.rc-badge-warning {
     background-color: $puppet-y100;
-    color: $puppet-y800;
-  }
-}
-
-// SEQUENTIAL COLOR BADGES
-@each $color-key, $color-value in $badge-colors {
-  @each $tone-key, $tone-value in $color-value {
-
-    // Currently limiting scope to just the sequential palette
-    @if $color-key == sequential {
-      .rc-badge-subtle.rc-badge-#{$color-key}-#{$tone-key} {
-        background-color: tint($tone-value, 80) !important;
-        color: shade($tone-value, 50) !important;
-      }
-
-      .rc-badge-bold.rc-badge-#{$color-key}-#{$tone-key} {
-        background-color: $tone-value !important;
-        color: $puppet-white !important;
-      }
-    }
+    color: $puppet-y700;
   }
 }
