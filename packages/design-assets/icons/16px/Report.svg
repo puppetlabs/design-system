@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Icons/16px/Report</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons/16px/Report" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M9,0 C9.6,0 10,0.4 10,1 L10,15 C10,15.6 9.6,16 9,16 L7,16 C6.4,16 6,15.6 6,15 L6,1 C6,0.4 6.4,0 7,0 L9,0 Z M3,10 C3.6,10 4,10.4 4,11 L4,15 C4,15.6 3.6,16 3,16 L1,16 C0.4,16 0,15.6 0,15 L0,11 C0,10.4 0.4,10 1,10 L3,10 Z M15,5 C15.6,5 16,5.4 16,6 L16,15 C16,15.6 15.6,16 15,16 L13,16 C12.4,16 12,15.6 12,15 L12,6 C12,5.4 12.4,5 13,5 L15,5 Z" id="i-16-report" fill="#818F99"></path>
+    </g>
+</svg>

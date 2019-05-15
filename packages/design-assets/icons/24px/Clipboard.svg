@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Icons/24px/Clipboard</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons/24px/Clipboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M18,3 L18,8 L13,8 L13,7 C13,6.44728475 12.5527153,6 12,6 C11.4472847,6 11,6.44728475 11,7 L11,8 L6,8 L6,3 L3,3 L3,22 L21,22 L21,3 L18,3 Z M18,1 L23,1 L23,24 L1,24 L1,1 L6,1 L6,0 L18,0 L18,1 Z M11,15.5857864 L15,11.5857864 L16.4142136,13 L11,18.4142136 L7.58578644,15 L9,13.5857864 L11,15.5857864 Z M8,2 L8,6 L9.17060009,6 C9.58229049,4.83462116 10.6933783,4 12,4 C13.3066217,4 14.4177095,4.83462116 14.8293999,6 L16,6 L16,2 L8,2 Z" id="i-24-clipboard" fill="#818F99"></path>
+    </g>
+</svg>

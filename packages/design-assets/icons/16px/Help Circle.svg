@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Icons/16px/Help Circle</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons/16px/Help-Circle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M8,0 C12.4,0 16,3.6 16,8 C16,12.4 12.4,16 8,16 C3.6,16 0,12.4 0,8 C0,3.6 3.6,0 8,0 Z M8,14 C11.3,14 14,11.3 14,8 C14,4.7 11.3,2 8,2 C4.7,2 2,4.7 2,8 C2,11.3 4.7,14 8,14 Z M8,13 C7.44771525,13 7,12.5522847 7,12 C7,11.4477153 7.44771525,11 8,11 C8.55228475,11 9,11.4477153 9,12 C9,12.5522847 8.55228475,13 8,13 Z M7.1,5.5 L6.6,6.4 L4.9,5.4 L5.4,4.5 C5.9,3.6 6.9,3 8,3 C9.7,3 11,4.3 11,6 C11,7.4 10.1,8 9.5,8.4 C9,8.7 9,8.8 9,9 L9,10 L7,10 L7,9 C7,7.7 7.8,7.1 8.4,6.7 C8.9,6.4 9,6.3 9,6 C9,5.4 8.6,5 8,5 C7.6,5 7.3,5.2 7.1,5.5 Z" id="i-16-help-circle" fill="#818F99"></path>
+    </g>
+</svg>

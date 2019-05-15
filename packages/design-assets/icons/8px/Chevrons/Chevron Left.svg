@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="8px" height="8px" viewBox="0 0 8 8" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Icons/8px/Chevrons/Chevron Left</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons/8px/Chevrons/Chevron-Left" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M3.41421356,4 L5.70710678,6.29289322 C6.09763107,6.68341751 6.09763107,7.31658249 5.70710678,7.70710678 C5.31658249,8.09763107 4.68341751,8.09763107 4.29289322,7.70710678 L1.29289322,4.70710678 C0.902368927,4.31658249 0.902368927,3.68341751 1.29289322,3.29289322 L4.29289322,0.292893219 C4.68341751,-0.0976310729 5.31658249,-0.0976310729 5.70710678,0.292893219 C6.09763107,0.683417511 6.09763107,1.31658249 5.70710678,1.70710678 L3.41421356,4 Z" id="i-8-chevron-left" fill="#818F99"></path>
+    </g>
+</svg>

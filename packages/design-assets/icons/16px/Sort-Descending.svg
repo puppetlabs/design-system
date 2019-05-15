@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="16px" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 54.1 (76490) - https://sketchapp.com -->
+    <title>Icons/16px/Sort-Descending</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Icons/16px/Sort-Descending" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M6,16 L1,16 C0.448,16 0,15.552 0,15 L0,10 C0,9.448 0.448,9 1,9 L6,9 C6.552,9 7,9.448 7,10 L7,15 C7,15.552 6.552,16 6,16 Z M6,7 L1,7 C0.448,7 0,6.552 0,6 L0,1 C0,0.448 0.448,0 1,0 L6,0 C6.552,0 7,0.448 7,1 L7,6 C7,6.552 6.552,7 6,7 Z M2,5 L5,5 L5,2 L2,2 L2,5 Z M13,11 L16,11 L12,16 L8,11 L11,11 L11,1 C11,0.448 11.448,0 12,0 C12.552,0 13,0.448 13,1 L13,11 Z" id="i-16-sort-descending" fill="#818F99"></path>
+    </g>
+</svg>
