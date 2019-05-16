@@ -15,8 +15,7 @@ import {
 
 import ActionMenuListItem from './ActionMenuListItem';
 import Icon from '../../library/icon';
-
-const isNil = val => val == null;
+import { isNil, focus } from '../../helpers/statics';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -167,9 +166,7 @@ class ActionMenuList extends Component {
   }
 
   focus() {
-    if (this.listRef) {
-      this.listRef.focus();
-    }
+    focus(this.listRef);
   }
 
   focusFirst() {

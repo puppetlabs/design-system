@@ -122,6 +122,15 @@ const getDropdownPosition = (target, anchor, margin) => {
   }
 };
 
+const isNil = val => val == null;
+
+const focus = element => {
+  // Not type checking that it has a focus method, that's on you!
+  if (element) {
+    element.focus();
+  }
+};
+
 export {
   unbindParentScroll,
   bindParentScroll,
@@ -133,6 +142,8 @@ export {
   omit,
   path,
   getDropdownPosition,
+  isNil,
+  focus,
 };
 
 export default isNodeInRoot;

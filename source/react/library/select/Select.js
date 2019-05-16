@@ -5,7 +5,7 @@ import OptionMenuList from '../../internal/option-menu-list';
 import { anchorOrientation } from '../../helpers/customPropTypes';
 import Icon from '../icon';
 import SelectTarget from './SelectTarget';
-import { getDropdownPosition } from '../../helpers/statics';
+import { getDropdownPosition, focus } from '../../helpers/statics';
 
 const propTypes = {
   /** Unique id */
@@ -192,9 +192,7 @@ class Select extends Component {
   }
 
   focusButton() {
-    if (this.button) {
-      this.button.focus();
-    }
+    focus(this.button);
   }
 
   render() {

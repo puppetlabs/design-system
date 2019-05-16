@@ -8,7 +8,7 @@ import {
   anchorOrientation,
 } from '../../helpers/customPropTypes';
 import Icon from '../icon';
-import { getDropdownPosition } from '../../helpers/statics';
+import { getDropdownPosition, focus } from '../../helpers/statics';
 import withId from '../../helpers/withId';
 
 const propTypes = {
@@ -124,14 +124,12 @@ class ActionMenu extends Component {
   }
 
   focusMenu() {
-    if (this.menu) {
-      this.menu.focus();
-    }
+    focus(this.menu);
   }
 
   focusButton() {
     if (this.button) {
-      this.button.focus();
+      focus(this.button);
     }
   }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { focus } from '../../helpers/statics';
 
 import Button from '../buttons/Button';
 
@@ -36,7 +37,7 @@ class Tab extends React.Component {
     const { focused } = props;
 
     if (focused) {
-      this.tab.focus();
+      focus(this.tab);
     }
   }
 

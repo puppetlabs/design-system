@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import scrollIntoView from 'scroll-into-view-if-needed';
+import { isNil, focus } from '../../helpers/statics';
 
 import {
   UP_KEY_CODE,
@@ -15,8 +16,6 @@ import {
 
 import OptionMenuListItem from './OptionMenuListItem';
 import Icon from '../../library/icon';
-
-const isNil = val => val == null;
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -200,9 +199,7 @@ class OptionMenuList extends Component {
   }
 
   focusMenu() {
-    if (this.menu) {
-      this.menu.focus();
-    }
+    focus(this.menu);
   }
 
   focusFirst() {
