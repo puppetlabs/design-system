@@ -27,15 +27,9 @@
     @include puppet-type-h6();
   }
 
-  label {
-    @include puppet-type-label('medium');
-  }
-
   h1,
   h2,
-  h3,
-  ul,
-  ol, {
+  h3 {
     margin-bottom: $puppet-common-spacing-base * 3;
     margin-top: 0;
   }
@@ -45,6 +39,36 @@
   h6 {
     margin-bottom: $puppet-common-spacing-base;
     margin-top: 0;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    margin-bottom: $puppet-common-spacing-base * 3;
+    margin-top: 0;
+    padding-left: 0;
+  }
+
+  ul li::before {
+    color: $puppet-brand-primary;
+    content: '\25CF';  // 25CF is the unicode for a big bullet
+    display: inline-block;
+    width: $puppet-common-spacing-base * 3;
+  }
+
+  ol {
+    counter-reset: item;
+  }
+
+  ol li {
+    display: block;
+  }
+
+  ol li::before {
+    content: counter(item) '. ';
+    counter-increment: item;
+    display: inline-block;
+    width: $puppet-common-spacing-base * 3;
   }
 
   p {
