@@ -4,12 +4,14 @@ initialState = { isOpen: null };
   <ButtonGroup>
     <Button
       onClick={ () => { setState({ isOpen: 'main' }) }}
-      label="Open simple modal"
-    />
+    >
+      Open simple modal
+    </Button>
     <Button
       onClick={ () => { setState({ isOpen: 'actions' }) }}
-      label="Open modal with actions"
-    />
+    >
+      Open modal with actions
+    </Button>
   </ButtonGroup>
 
   { state.isOpen === 'main' &&
@@ -34,7 +36,7 @@ initialState = { isOpen: null };
       title="I'm a happy modal with actions!"
       actionsCTA="Select an action"
       actions={ [
-        <Button key="button-1" onClick={ () => { setState({ isOpen: null }) } } >Click me!</Button,
+        <Button key="button-1" onClick={ () => { setState({ isOpen: null }) } } >Click me!</Button>,
         <Button key="button-2" onClick={ () => { setState({ isOpen: null }) } } >Or me!</Button>
       ]}
       onClose={ () => { setState({ isOpen: null }) }}
@@ -54,12 +56,14 @@ initialState = { isOpen: null };
   <ButtonGroup>
     <Button
       onClick={ () => { setState({ isOpen: 'leftSidebar' }) }}
-      label="Open modal with left sidebar"
-    />
+    >
+      Open modal with left sidebar
+    </Button>
     <Button
       onClick={ () => { setState({ isOpen: 'rightSidebar' }) }}
-      label="Open modal with right sidebar"
-    />
+    >
+      Open modal with right sidebar
+    </Button>
   </ButtonGroup>
 
   { state.isOpen === 'leftSidebar' &&
