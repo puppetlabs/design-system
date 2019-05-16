@@ -27,31 +27,46 @@
     @include puppet-type-h6();
   }
 
-  ul {
-    margin: $puppet-list-margin;
-  }
-
-  ul:last-child {
-    margin-bottom: 0;
+  label {
+    @include puppet-type-label('medium');
   }
 
   h1,
   h2,
   h3,
-  h4 {
-    margin: $puppet-heading-margin;
+  ul,
+  ol, {
+    margin-bottom: $puppet-common-spacing-base * 3;
+    margin-top: 0;
   }
 
+  h4,
   h5,
   h6 {
-    margin: $puppet-heading-margin-small;
+    margin-bottom: $puppet-common-spacing-base;
+    margin-top: 0;
   }
 
   p {
-    margin: $puppet-p-margin;
+    margin-bottom: $puppet-common-spacing-base * 2;
+    margin-top: 0;
   }
 
-  p:last-child {
+  p + h1,
+  p + h2,
+  p + h3,
+  p + h4,
+  p + h5,
+  p + h6 {
+    margin-top: $puppet-common-spacing-base * 3;
+  }
+
+  li {
+    margin-bottom: $puppet-common-spacing-base;
+    margin-top: 0;
+  }
+
+  li:last-child {
     margin-bottom: 0;
   }
 }
