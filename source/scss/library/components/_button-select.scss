@@ -1,14 +1,8 @@
-.rc-select {
+.rc-button-select {
   position: relative;
 
-  .rc-select-target {
-    cursor: pointer;
+  .rc-button-select-target {
     flex: 1;
-  }
-
-  .rc-select-target .rc-input {
-    cursor: pointer;
-    text-align: left;
   }
 
   .rc-menu-list {
@@ -22,7 +16,7 @@
   }
 }
 
-.rc-select-closed {
+.rc-button-select-closed {
   .rc-menu-list {
     display: none;
   }

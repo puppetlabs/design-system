@@ -9,10 +9,6 @@
 .rc-form-section {
   border: 0;
   margin: 0;
-
-  &[disabled] .rc-input {
-    @extend %disabled-input;
-  }
 }
 
 .rc-form-section {
@@ -41,7 +37,7 @@
   border-right: $puppet-common-border;
 }
 
-.rc-popover-menu .rc-menu-section {
+.rc-popover-menu .rc-menu-deprecatedsection {
   .rc-form-section {
     border: 0;
   }

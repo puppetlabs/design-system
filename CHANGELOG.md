@@ -1,3 +1,12 @@
+# 5.0.0-alpha.22
+- **Breaking change** Remove Dropdown component
+- **Breaking change** Remove Popover component
+- **Breaking change** Remove Menu component
+- Implement new ButtonSelect component
+- Implement new ActionMenu component
+- **Breaking change** Remove autoOpen, clearable, disablePortal, newOption, onNewOption, newOptionLabel, noResultsLabel, popoverClassName, valueless, and typeahead props from `Select`
+- Add actionLabel prop to select
+
 # 5.0.0-alpha.21
 - id is no longer a required prop of Tabs
 - **Breaking change** Rename `activeTab` prop on `Tabs` to `initialTab`

@@ -1,0 +1,19 @@
+.rc-action-menu {
+  position: relative;
+
+  .rc-menu-list {
+    min-width: 150px;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .rc-action-menu-list-inner {
+    max-height: 200px;
+  }
+}
+
+.rc-action-menu-closed {
+  .rc-action-menu-list {
+    display: none;
+  }
+}

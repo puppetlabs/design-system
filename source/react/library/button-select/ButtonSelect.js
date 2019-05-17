@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import Button from '../buttons/Button';
 import OptionMenuList from '../../internal/option-menu-list';
 import { anchorOrientation } from '../../helpers/customPropTypes';
 import Icon from '../icon';
-import SelectTarget from './SelectTarget';
 import { getDropdownPosition, focus } from '../../helpers/statics';
+import withId from '../../helpers/withId';
 
 const propTypes = {
-  /** Unique id */
-  name: PropTypes.string.isRequired,
+  /**
+   * This prop is automatically passed from the withID HOC
+   * @ignore
+   */
+  id: PropTypes.string.isRequired,
+  /** Are multiple selections allowed? */
+  multiple: PropTypes.bool,
   /** An Array of select options */
   options: PropTypes.arrayOf(
     PropTypes.shape({
@@ -17,6 +23,8 @@ const propTypes = {
       value: PropTypes.string.isRequired,
       /** Select option label */
       label: PropTypes.string.isRequired,
+      /** Optional alternate label rendered in the main button element if the option is selected. */
+      selectedLabel: PropTypes.string,
       /** Optional icon associated with this option */
       icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
     }),
@@ -29,32 +37,31 @@ const propTypes = {
   ]),
   /** Value change handler. Will receive the new value */
   onChange: PropTypes.func,
-  /**
-   * When in multiselect mode, should the selected items be applied immediately?
-   * @ignore
-   */
+  /** When in multiple mode, should the selected items be applied immediately? */
   applyImmediately: PropTypes.bool, // eslint-disable-line
   /** Text rendered when no value is selected */
   placeholder: PropTypes.string,
-  /**
-   * Select or multiselect. This is a secret prop as multiselection is not fully supported
-   *
-   * @ignore
-   */
-  type: PropTypes.oneOf(['select', 'multiselect']),
-  /**
-   * Text to render as the action label in multiple mode
-   * @ignore
-   */
+  /** Main visual variant */
+  type: PropTypes.oneOf([
+    'primary',
+    'secondary',
+    'tertiary',
+    'danger',
+    'transparent',
+    'text',
+  ]),
+  /** Text to render as the action label in multiple mode */
   actionLabel: PropTypes.string, //eslint-disable-line
+  /** Additional property used for connotative variants (such as danger) to choose between a strong and soft version */
+  weight: PropTypes.oneOf(['bold', 'subtle']),
   /** Anchor orientation of the dropdown menu */
   anchor: anchorOrientation,
-  /** Is a value required?  */
-  required: PropTypes.bool,
-  /** Is the input disabled?  */
+  /** Optional icon to be rendered instead of / in addition to button text. If both an icon and text are present, the icon will be rendered before the text */
+  icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+  /** Is the button disabled?  */
   disabled: PropTypes.bool,
-  /** Form error, causing element to render red when present */
-  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  /** If true, button will render with a loading spinner */
+  loading: PropTypes.bool,
   /** Optional additional className passed to the outer element */
   className: PropTypes.string,
   /** Optional inline style passed to the outer element */
@@ -62,28 +69,30 @@ const propTypes = {
 };
 
 const defaultProps = {
+  multiple: false,
   options: [],
   applyImmediately: false,
   value: null,
   onChange() {},
   placeholder: 'Select',
-  type: 'select',
+  type: 'primary',
   actionLabel: undefined,
+  weight: 'bold',
   anchor: 'bottom left',
+  icon: null,
+  loading: false,
   disabled: false,
-  required: false,
-  error: '',
   className: '',
   style: {},
 };
 
-const isControlled = ({ type, applyImmediately }) =>
-  type !== 'multiselect' || applyImmediately;
+const isControlled = ({ multiple, applyImmediately }) =>
+  !multiple || applyImmediately;
 
 const getActionLabel = ({ actionLabel, applyImmediately }) =>
   actionLabel || (applyImmediately ? 'Done' : 'Apply');
 
-class Select extends Component {
+class ButtonSelect extends Component {
   constructor(props) {
     super(props);
 
@@ -131,7 +140,7 @@ class Select extends Component {
   }
 
   onValueChange(listValue) {
-    const { onChange, type } = this.props;
+    const { onChange, multiple } = this.props;
 
     if (isControlled(this.props)) {
       onChange(listValue);
@@ -139,7 +148,7 @@ class Select extends Component {
       this.setState({ listValue });
     }
 
-    if (type !== 'multiselect') {
+    if (!multiple) {
       this.closeAndFocusButton();
     }
   }
@@ -156,15 +165,15 @@ class Select extends Component {
   }
 
   getButtonLabel() {
-    const { type, options, value } = this.props;
+    const { placeholder, multiple, options, value } = this.props;
 
-    if (type === 'multiselect' || !value) {
-      return null;
+    if (multiple || !value) {
+      return placeholder;
     }
 
     const selectedOption = options.find(option => option.value === value);
 
-    return selectedOption.label;
+    return selectedOption.selectedLabel || selectedOption.label;
   }
 
   closeAndFocusButton() {
@@ -205,25 +214,25 @@ class Select extends Component {
     } = this;
     const { open, menuStyle, listValue } = this.state;
     const {
-      name,
+      id,
+      multiple,
       type,
+      icon,
       disabled,
+      loading,
       options,
+      weight,
       className,
       style,
-      error,
-      value,
-      placeholder,
-      required,
     } = this.props;
 
     return (
       <div
         className={classNames(
-          'rc-select',
+          'rc-button-select',
           {
-            'rc-select-open': open,
-            'rc-select-closed': !open,
+            'rc-button-select-open': open,
+            'rc-button-select-closed': !open,
           },
           className,
         )}
@@ -233,32 +242,30 @@ class Select extends Component {
           this.container = container;
         }}
       >
-        <SelectTarget
-          id={`${name}-label`}
+        <Button
+          className="rc-button-select-target"
+          type={type}
+          weight={weight}
+          icon={icon}
+          trailingIcon={icon ? null : 'chevron-down'}
           disabled={disabled}
-          error={error}
+          loading={loading}
           aria-haspopup="true"
-          aria-controls={`${name}-menu`}
+          aria-controls={`${id}-menu`}
           aria-expanded={open}
           onClick={onClickButton}
-          value={this.getButtonLabel()}
-          placeholder={placeholder}
           ref={button => {
             this.button = button;
           }}
-        />
-        <input
-          type="hidden"
-          name={name}
-          value={value || ''}
-          required={required}
-        />
+        >
+          {this.getButtonLabel()}
+        </Button>
         <OptionMenuList
-          id={`${name}-menu`}
-          multiple={type === 'multiselect'}
+          id={`${id}-menu`}
+          multiple={multiple}
           options={options}
           selected={listValue}
-          aria-labelledby={`${name}-label`}
+          aria-labelledby={id}
           onActionClick={onActionClick}
           onEscape={closeAndFocusButton}
           onChange={onValueChange}
@@ -273,7 +280,7 @@ class Select extends Component {
   }
 }
 
-Select.propTypes = propTypes;
-Select.defaultProps = defaultProps;
+ButtonSelect.propTypes = propTypes;
+ButtonSelect.defaultProps = defaultProps;
 
-export default Select;
+export default withId(ButtonSelect);
