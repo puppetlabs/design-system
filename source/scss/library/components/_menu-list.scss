@@ -87,6 +87,9 @@
 
 .rc-menu-list-item-content {
   flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .rc-menu-list-item-checkmark {

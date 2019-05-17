@@ -36,7 +36,11 @@ const OptionMenuListItem = forwardRef(
       {icon && <Icon className="rc-menu-list-item-icon" type={icon} />}
       <span className="rc-menu-list-item-content">{children}</span>
       {selected && (
-        <Icon className="rc-menu-list-item-checkmark" type="check" />
+        <Icon
+          className="rc-menu-list-item-checkmark"
+          type="check"
+          size="small"
+        />
       )}
     </li>
   ),
