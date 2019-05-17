@@ -15,7 +15,7 @@ const options = [
 
 const style = { display: 'inline-block', margin: 10 };
 
-<div>
+<div style={{ display: 'flex', alignItems: 'center' }}>
   <ButtonSelect
     options={options}
     placeholder="Select a value"
@@ -46,6 +46,28 @@ const style = { display: 'inline-block', margin: 10 };
     onChange={value3 => {
       console.log('New Value:', value3);
       setState({ value3 });
+    }}
+  />
+  <ButtonSelect
+    type="transparent"
+    options={options}
+    placeholder="Select a value"
+    style={style}
+    value={state.value4}
+    onChange={value4 => {
+      console.log('New Value:', value4);
+      setState({ value4 });
+    }}
+  />
+  <ButtonSelect
+    type="text"
+    options={options}
+    placeholder="Select a value"
+    style={style}
+    value={state.value5}
+    onChange={value5 => {
+      console.log('New Value:', value5);
+      setState({ value5 });
     }}
   />
 </div>
