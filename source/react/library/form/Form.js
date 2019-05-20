@@ -359,12 +359,12 @@ class Form extends Component {
       return (
         <Alert
           isActive
-          growl={false}
           closeable={false}
-          type="error"
-          message={error}
+          type="danger"
           className="rc-form-error"
-        />
+        >
+          {error}
+        </Alert>
       );
     }
 

@@ -47,7 +47,9 @@ const Renderer = () => {
 
   return (
     <div className="rc-sg-wrapper">
-      <Alert growl={ false } isActive={ true } type="success" message="Icons with a green background have been approved by Design. Scaled svgs (white background) should be OK'd before using." />
+      <Alert isActive={ true } type="success">
+        Icons with a green background have been approved by Design. Scaled svgs (white background) should be OK'd before using.
+      </Alert>
       <br />
       <table className="rc-icon-table">
         <tr>
