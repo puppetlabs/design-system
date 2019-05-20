@@ -3,23 +3,28 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
-  className: PropTypes.string,
+  /** Content to be rendered in wrapper */
   children: PropTypes.node,
+  /** Optional additional className for outer wrapper */
+  className: PropTypes.string,
+  /** Optional additional inline styles for outer wrapper */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  className: '',
   children: null,
+  className: '',
+  style: {},
 };
 
-/**
- * `Content` is a container component for rendering other React components.
- */
-
-const Content = ({ className, children }) => {
+const Content = ({ className, children, ...rest }) => {
   const classNames = classnames('rc-content', className);
 
-  return <div className={classNames}>{children}</div>;
+  return (
+    <div className={classNames} {...rest}>
+      {children}
+    </div>
+  );
 };
 
 Content.propTypes = propTypes;
