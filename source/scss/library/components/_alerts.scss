@@ -1,39 +1,62 @@
-// ----------------------------------------------------------------------------
-$puppet-alert-width: 394px !default;
-$puppet-alert-padding: 11px 12px !default;
-$puppet-alert-shadow: 8px 8px 16px 0 rgba(0, 14, 28, 0.32) !default;
-$puppet-alert-border-radius: $puppet-border-radius !default;
+$puppet-alert-width: 432px !default;
 
-@mixin rc-alert-colors($type, $color) {
+$colors: (
+  danger: $puppet-danger-bold,
+  danger-border: $puppet-danger-bright,
+  danger-active: $puppet-danger-subtle,
+  danger-hover: $puppet-r50,
+  info: $puppet-info-bold,
+  info-border: $puppet-info-bright,
+  info-active: $puppet-info-subtle,
+  info-hover: $puppet-b50,
+  success: $puppet-success-bold,
+  success-border: $puppet-success-bright,
+  success-active: $puppet-success-subtle,
+  success-hover: $puppet-g50,
+  warning: $puppet-warning-bold,
+  warning-border: $puppet-warning-bright,
+  warning-active: $puppet-warning-subtle,
+  warning-hover: $puppet-y50,
+  neutral: $puppet-neutral-bold,
+  neutral-border: $puppet-neutral-bright,
+  neutral-active: $puppet-neutral-subtle,
+  neutral-hover: $puppet-n50,
+);
+
+@mixin rc-alert-colors($type) {
   &.rc-alert-#{$type} {
-    background-color: lighten($color, 50%);
-    border: 1px solid $color;
-    color: $color;
+    border: 1px solid map-get($colors, $type + '-border');
 
-    .rc-alert-type-icon {
-      fill: $color;
+    .rc-alert-primary-icon,
+    .rc-alert-dismiss-icon .rc-icon-button-icon-svg {
+      fill: map-get($colors, $type);
     }
 
-    .rc-alert-message {
-      color: $color;
+    .rc-icon-button:hover,
+    .rc-icon-button:focus, {
+      background: map-get($colors, $type + '-hover');
+    }
+
+    .rc-icon-button:active {
+      background: map-get($colors, $type + '-active');
     }
   }
 }
 
 .rc-alert {
-  @include rc-alert-colors('error', $puppet-neg-bg-base);
-  @include rc-alert-colors('success', $puppet-pos-bg-base);
-  @include rc-alert-colors('warning', $puppet-warn-bg-base);
-  @include rc-alert-colors('info', $puppet-action-base);
+  @include rc-alert-colors('danger');
+  @include rc-alert-colors('info');
+  @include rc-alert-colors('success');
+  @include rc-alert-colors('warning');
+  @include rc-alert-colors('neutral');
 
   align-items: center;
-  border-radius: $puppet-alert-border-radius;
-  box-shadow: $puppet-alert-shadow;
+  background: $puppet-white;
+  border-radius: $puppet-common-border-radius;
   cursor: default;
   display: flex;
   left: 50%;
   margin-left: -$puppet-alert-width / 2;
-  padding: $puppet-alert-padding;
   position: fixed;
   top: 8px;
   width: $puppet-alert-width;
@@ -48,20 +71,78 @@ $puppet-alert-border-radius: $puppet-border-radius !default;
   z-index: auto;
 }
 
-.rc-alert-type-icon {
+.rc-alert-primary-icon {
   flex-shrink: 0;
-  margin-right: 12px;
+  margin: $puppet-common-spacing-base;
+  margin-right: 0;
 }
 
 .rc-alert-message {
   flex-grow: 1;
+  font-weight: $puppet-type-weight-heavy;
   overflow: auto;
   overflow-wrap: break-word;
+  padding: $puppet-common-spacing-base;
 }
 
-.rc-alert-close {
-  align-items: center;
+.rc-alert-dismiss-icon {
+  padding: 0;
+}
+
+.rc-alert .rc-icon-button {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+}
+
+// Icon Button
+// TODO: Consider splitting this out if the component ever stands alone
+
+.rc-icon-button {
+  border: 0;
+  border-radius: $puppet-common-border-radius;
   cursor: pointer;
-  display: flex;
-  height: 18px;
+  display: inline-block;
+  height: 34px;
+  outline: none;
+  position: relative;
+  text-decoration: none;
+  vertical-align: top;
+  width: 34px;
+
+  .rc-icon-button-icon-svg {
+    bottom: 0;
+    fill: inherit;
+    margin: auto;
+    position: absolute;
+    right: $puppet-common-spacing-base;
+    top: 0;
+  }
+
+  &:focus {
+    box-shadow: $puppet-common-focus-outline-inset;
+  }
+
+  &:disabled,
+  &[aria-disabled=true] {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.rc-icon-button-loading {
+  .rc-icon-button-loader {
+    bottom: 0;
+    fill: inherit;
+    height: 16px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+  }
+
+  .rc-icon-button-icon-svg {
+    visibility: hidden;
+  }
 }

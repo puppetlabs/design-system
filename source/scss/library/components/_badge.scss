@@ -18,56 +18,56 @@
 
 .rc-badge-bold {
   &.rc-badge-danger {
-    background-color: $puppet-r600;
+    background-color: $puppet-danger-bold;
     color: $puppet-white;
   }
 
   &.rc-badge-info {
-    background-color: $puppet-b600;
+    background-color: $puppet-info-bold;
     color: $puppet-white;
   }
 
   &.rc-badge-neutral {
-    background-color: $puppet-n800;
+    background-color: $puppet-neutral-bold;
     color: $puppet-white;
   }
 
   &.rc-badge-success {
-    background-color: $puppet-g700;
+    background-color: $puppet-g800; // Exception
     color: $puppet-white;
   }
 
 
   &.rc-badge-warning {
-    background-color: $puppet-y700;
+    background-color: $puppet-warning-bold;
     color: $puppet-white;
   }
 }
 
 .rc-badge-subtle {
   &.rc-badge-danger {
-    background-color: $puppet-r100;
-    color: $puppet-r600;
+    background-color: $puppet-danger-subtle;
+    color: $puppet-danger-bold;
   }
 
   &.rc-badge-info {
-    background-color: $puppet-b100;
-    color: $puppet-b600;
+    background-color: $puppet-info-subtle;
+    color: $puppet-info-bold;
   }
 
   &.rc-badge-neutral {
-    background-color: $puppet-n100;
-    color: $puppet-n800;
+    background-color: $puppet-neutral-subtle;
+    color: $puppet-neutral-bold;
   }
 
 
   &.rc-badge-success {
-    background-color: $puppet-g100;
-    color: $puppet-g800;
+    background-color: $puppet-success-subtle;
+    color: $puppet-success-bold;
   }
 
   &.rc-badge-warning {
-    background-color: $puppet-y100;
-    color: $puppet-y700;
+    background-color: $puppet-warning-subtle;
+    color: $puppet-warning-bold;
   }
 }
