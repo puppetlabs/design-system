@@ -19,7 +19,7 @@ const initialState = { isGrowlActive: false };
 
 Success
 ```
-  <Alert isActive={ true } type="success">
+  <Alert type="success">
     Success! Things seem to have gone well afterall.
   </Alert>
 ```
@@ -27,7 +27,7 @@ Success
 Danger
 
 ```
-<Alert isActive={ true } type="danger">
+<Alert type="danger">
   Danger! Things have gone bad. I blame Sig.
 </Alert>
 ```
@@ -35,7 +35,7 @@ Danger
 Warning
 
 ```
-<Alert isActive={ true } type="warning">
+<Alert type="warning">
   This may affect access for other users.
 </Alert>
 ```
@@ -43,14 +43,14 @@ Warning
 Info
 
 ```
-<Alert isActive={ true } type="info">
+<Alert type="info">
   This is some good content. Now you know.
 </Alert>
 ```
 
 Neutral
 ```
-<Alert isActive={ true } type="neutral">
+<Alert type="neutral">
   Welp. This is meh content.
 </Alert>
 ```
@@ -59,7 +59,7 @@ Neutral
 
 Elevated
 ```
-<Alert elevated isActive={ true } type="danger">
+<Alert elevated type="danger">
   This alert is elevated. Are you ready for that?
 </Alert>
 ```

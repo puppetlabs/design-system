@@ -47,7 +47,7 @@ const Renderer = () => {
 
   return (
     <div className="rc-sg-wrapper">
-      <Alert isActive={ true } type="success">
+      <Alert type="success">
         Icons with a green background have been approved by Design. Scaled svgs (white background) should be OK'd before using.
       </Alert>
       <br />

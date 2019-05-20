@@ -35,7 +35,7 @@ const defaultProps = {
   closeable: true,
   onClose: () => {},
   growl: false,
-  isActive: false,
+  isActive: true,
   dismissAfter: 5000,
   elevated: false,
   className: '',
