@@ -21,6 +21,8 @@ const propTypes = {
   isActive: PropTypes.bool,
   /** How long should the growl stay on the page? */
   dismissAfter: PropTypes.number,
+  /** Alert 'elevation' visually indicated with box-shadow */
+  elevated: PropTypes.bool,
   /** Optional additional className. */
   className: PropTypes.string,
   /** Optional additional inline styles. */
@@ -35,6 +37,7 @@ const defaultProps = {
   growl: false,
   isActive: false,
   dismissAfter: 5000,
+  elevated: false,
   className: '',
   style: {},
 };
@@ -93,6 +96,7 @@ class Alert extends React.Component {
       growl,
       isActive,
       dismissAfter,
+      elevated,
       className,
       ...rest
     } = this.props;
@@ -101,6 +105,7 @@ class Alert extends React.Component {
       {
         [`rc-alert-${type}`]: type,
         'rc-alert-static': !growl,
+        'rc-alert-elevated': elevated,
       },
       className,
     );

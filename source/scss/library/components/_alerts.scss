@@ -72,8 +72,12 @@ $colors: (
   z-index: 25;
 }
 
+
+.rc-alert-elevated {
+  box-shadow: $puppet-elev-200-shadow;
+}
+
 .rc-alert-static {
-  box-shadow: none;
   margin-left: 0;
   position: static;
   width: 100%;

@@ -54,3 +54,12 @@ Neutral
   Welp. This is meh content.
 </Alert>
 ```
+
+## Alert elevation
+
+Elevated
+```
+<Alert elevated isActive={ true } type="danger">
+  This alert is elevated. Are you ready for that?
+</Alert>
+```
