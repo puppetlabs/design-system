@@ -5,33 +5,51 @@ const initialState = { isGrowlActive: false };
 <div>
   <Button onClick={ () => { setState({ isGrowlActive: !state.isGrowlActive }) } } >Toggle growl</Button>
   <Alert
+    growl={ true }
     isActive={ state.isGrowlActive }
-    message="Hello world"
     onClose={ () => { setState({ isGrowlActive: false }) } }
-  />
+  >
+    Success! You toggled it!
+  </Alert>
 </div>
 ```
 
 ## Alert types
 
+Success
 ```
-  <Alert growl={ false } isActive={ true } message="Success! Things seem to have gone well afterall." />
+  <Alert isActive={ true } type="success">
+    Success! Things seem to have gone well afterall.
+  </Alert>
 ```
 
-Error
+Danger
 
 ```
-<Alert growl={ false } isActive={ true } type="error" message="Error! Things have gone bad. I blame Sig." />
+<Alert isActive={ true } type="danger">
+  Danger! Things have gone bad. I blame Sig.
+</Alert>
 ```
 
 Warning
 
 ```
-<Alert growl={ false } isActive={ true } type="warning" message="This may affect access for other users" />
+<Alert isActive={ true } type="warning">
+  This may affect access for other users.
+</Alert>
 ```
 
 Info
 
 ```
-<Alert growl={ false } isActive={ true } type="info" message="Hello world" />
+<Alert isActive={ true } type="info">
+  This is some good content. Now you know.
+</Alert>
+```
+
+Neutral
+```
+<Alert isActive={ true } type="neutral">
+  Welp. This is meh content.
+</Alert>
 ```

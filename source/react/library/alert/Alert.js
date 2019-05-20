@@ -3,27 +3,40 @@ import classnames from 'classnames';
 import React from 'react';
 import Text from '../text';
 import Icon from '../icon';
+import IconButton from './IconButton';
 import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
-  message: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
-  type: PropTypes.oneOf(['success', 'error', 'info', 'warning']),
+  /** Main content */
+  children: PropTypes.string,
+  /** Main visual variant */
+  type: PropTypes.oneOf(['success', 'danger', 'info', 'warning', 'neutral']),
+  /** What shoould happen on dismiss? */
   closeable: PropTypes.bool,
-  growl: PropTypes.bool,
+  /** What should happen on explicit close? */
   onClose: PropTypes.func,
-  dismissAfter: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+  /** Should the alert render at the top of page? */
+  growl: PropTypes.bool,
+  /** Should the dismiss timer start? */
+  isActive: PropTypes.bool,
+  /** How long should the growl stay on the page? */
+  dismissAfter: PropTypes.number,
+  /** Optional additional className. */
   className: PropTypes.string,
+  /** Optional additional inline styles. */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  isActive: false,
-  closeable: true,
+  children: '',
   type: 'success',
-  growl: true,
+  closeable: true,
   onClose: () => {},
+  growl: false,
+  isActive: false,
   dismissAfter: 5000,
   className: '',
+  style: {},
 };
 
 class Alert extends React.Component {
@@ -74,13 +87,13 @@ class Alert extends React.Component {
 
   render() {
     const {
-      message,
-      isActive,
+      children,
       type,
       closeable,
       growl,
-      className,
+      isActive,
       dismissAfter,
+      className,
       ...rest
     } = this.props;
     const classNames = classnames(
@@ -95,10 +108,11 @@ class Alert extends React.Component {
     let typeIcon;
 
     switch (type) {
-      case 'error':
+      case 'danger':
         typeIcon = 'alert';
         break;
       case 'info':
+      case 'neutral':
       case 'warning':
         typeIcon = 'question-circle';
         break;
@@ -111,26 +125,21 @@ class Alert extends React.Component {
     }
 
     if (closeable) {
-      // TODO: we need to find a way to use the button component with simple icons that don't
-      // need the various button styles
       closeButton = (
-        <div
-          className="rc-alert-close"
-          role="button"
-          tabIndex={0}
+        <IconButton
+          icon="x"
           onClick={this.onClose}
           onKeyDown={this.onKeyDown}
-        >
-          <Icon type="close" size="tiny" />
-        </div>
+          className="rc-alert-dismiss-icon"
+        />
       );
     }
 
     return (
       <div className={classNames} {...rest}>
-        <Icon className="rc-alert-type-icon" type={typeIcon} size="medium" />
+        <Icon className="rc-alert-primary-icon" type={typeIcon} size="medium" />
         <Text className="rc-alert-message" size="small">
-          {message}
+          {children}
         </Text>
         {closeButton}
       </div>
