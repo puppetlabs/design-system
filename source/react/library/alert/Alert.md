@@ -15,6 +15,16 @@ const initialState = { isGrowlActive: false };
 </div>
 ```
 
+## Alert actions
+
+onClose
+```
+  <Alert type="info" onClose={() => console.log('theoretically at least')}>
+    Did you know this alert can be dismissed?
+  </Alert>
+```
+
+
 ## Alert types
 
 Success

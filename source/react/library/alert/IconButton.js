@@ -22,7 +22,7 @@ const propTypes = {
   /** Optional additional className. */
   className: PropTypes.string,
   /** Optional additional inline styles. */
-  styles: PropTypes.string,
+  styles: PropTypes.shape({}),
 };
 
 const defaultProps = {
