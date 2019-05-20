@@ -6,6 +6,7 @@ const initialState = { isGrowlActive: false };
   <Button onClick={ () => { setState({ isGrowlActive: !state.isGrowlActive }) } } >Toggle growl</Button>
   <Alert
     growl={ true }
+    type="success"
     isActive={ state.isGrowlActive }
     onClose={ () => { setState({ isGrowlActive: false }) } }
   >

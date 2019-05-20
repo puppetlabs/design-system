@@ -27,7 +27,7 @@ const propTypes = {
 
 const defaultProps = {
   as: 'button',
-  type: 'primary',
+  type: 'info',
   icon: null,
   size: 'medium',
   disabled: false,

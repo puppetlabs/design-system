@@ -27,18 +27,27 @@ $colors: (
   &.rc-alert-#{$type} {
     border: 1px solid map-get($colors, $type + '-border');
 
-    .rc-alert-primary-icon,
-    .rc-alert-dismiss-icon .rc-icon-button-icon-svg {
+    .rc-alert-primary-icon {
+      fill: map-get($colors, $type);
+    }
+  }
+
+  .rc-icon-button-#{$type} {
+    .rc-icon-button-icon-svg {
       fill: map-get($colors, $type);
     }
 
-    .rc-icon-button:hover,
-    .rc-icon-button:focus, {
+    &:hover,
+    &:focus, {
       background: map-get($colors, $type + '-hover');
     }
 
-    .rc-icon-button:active {
+    &:active {
       background: map-get($colors, $type + '-active');
+    }
+
+    &.rc-icon-button-disabled .rc-icon-button-icon-svg {
+      fill: disable-color(map-get($colors, $type));
     }
   }
 }

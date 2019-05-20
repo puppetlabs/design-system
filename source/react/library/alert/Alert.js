@@ -10,7 +10,7 @@ const propTypes = {
   /** Main content */
   children: PropTypes.string,
   /** Main visual variant */
-  type: PropTypes.oneOf(['success', 'danger', 'info', 'warning', 'neutral']),
+  type: PropTypes.oneOf(['neutral', 'info', 'danger', 'success', 'warning']),
   /** What shoould happen on dismiss? */
   closeable: PropTypes.bool,
   /** What should happen on explicit close? */
@@ -29,7 +29,7 @@ const propTypes = {
 
 const defaultProps = {
   children: '',
-  type: 'success',
+  type: 'info',
   closeable: true,
   onClose: () => {},
   growl: false,
@@ -128,6 +128,7 @@ class Alert extends React.Component {
       closeButton = (
         <IconButton
           icon="x"
+          type={type}
           onClick={this.onClose}
           onKeyDown={this.onKeyDown}
           className="rc-alert-dismiss-icon"
