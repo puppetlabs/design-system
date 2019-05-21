@@ -1,4 +1,10 @@
 # 5.0.0-alpha.22
+- **Breaking change** Remove isActive, growl & dismissAfter props and all growl functionality from Alert
+- **Breaking change** Use Alert children, not message prop, for inner content
+- **Breaking change** Replace 'error' with 'danger' as one accepted value for type prop for Alert
+- Add elevated prop to Alert
+- Add IconButton as an auxiliary component for Alert
+- Abstract color schemes for success, danger, warning & info states
 - **Breaking change** Remove Dropdown component
 - **Breaking change** Remove Popover component
 - **Breaking change** Remove Menu component
