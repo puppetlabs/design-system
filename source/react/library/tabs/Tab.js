@@ -1,17 +1,22 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { focus } from '../../helpers/statics';
+import { renderableElement } from '../../helpers/customPropTypes';
 
 import Button from '../buttons/Button';
 
+import getTabId from './getTabId';
+import getPanelId from './getPanelId';
+
 const propTypes = {
+  /** html element to render tab button as */
+  as: renderableElement,
   /** Visible tab label  */
   title: PropTypes.string,
   /** For ease of reference in controlled-mode, a custom unique id can be provided. By default the tab index will be used  */
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Internally managed tabs ID  */
-  tabsId: PropTypes.string,
+  /** Id of the parent tabs element  */
+  parentId: PropTypes.string,
   /** Internally managed active state  */
   active: PropTypes.bool,
   /** Internally managed focus state  */
@@ -23,55 +28,34 @@ const propTypes = {
 };
 
 const defaultProps = {
+  as: 'button',
   title: '',
   id: null,
-  tabsId: null,
+  parentId: null,
   active: false,
-  focused: false,
-  onKeyDown() {},
-  onClick() {},
 };
 
-class Tab extends React.Component {
-  componentWillUpdate(props) {
-    const { focused } = props;
-
-    if (focused) {
-      focus(this.tab);
-    }
-  }
-
-  render() {
-    const { title, active, onKeyDown, onClick, id, tabsId } = this.props;
-
-    const buttonProps = {
-      role: 'tab',
-      'aria-selected': !!active,
-      'aria-controls': `${tabsId}-panel-${id}`,
-      id: `${tabsId}-tab-${id}`,
-      tabIndex: !active ? -1 : 0,
-      onClick: () => onClick(id),
-      onKeyDown,
-      focus: active ? 1 : 0,
-    };
-
-    return (
-      <Button
-        type="secondary"
-        className={classNames('rc-tabs-button', {
-          'rc-tabs-button-active': active,
-        })}
-        id={id}
-        ref={button => {
-          this.tab = button;
-        }}
-        {...buttonProps}
-      >
-        {title}
-      </Button>
-    );
-  }
-}
+const Tab = forwardRef(
+  ({ as, title, active, onClick, id, parentId, ...rest }, ref) => (
+    <Button
+      id={getTabId(parentId, id)}
+      as={as}
+      type="secondary"
+      role="tab"
+      aria-selected={!!active}
+      aria-controls={getPanelId(parentId, id)}
+      onClick={() => onClick(id)}
+      tabIndex={active ? 0 : -1}
+      className={classNames('rc-tabs-button', {
+        'rc-tabs-button-active': active,
+      })}
+      ref={ref}
+      {...rest}
+    >
+      {title}
+    </Button>
+  ),
+);
 
 Tab.propTypes = propTypes;
 Tab.defaultProps = defaultProps;

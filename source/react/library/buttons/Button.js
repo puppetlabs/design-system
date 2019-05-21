@@ -8,6 +8,8 @@ import Loading from '../loading/Loading';
 const propTypes = {
   /** React component / element to render. Useful in cases where a button is used for navigation, so that it can be rendered as an anchor tag with the same styling */
   as: renderableElement,
+  /** Prop to use for a `ref` passed to the inner element. */
+  forwardRefAs: PropTypes.string,
   /** Main visual variant */
   type: PropTypes.oneOf([
     'primary',
@@ -37,6 +39,7 @@ const propTypes = {
 
 const defaultProps = {
   as: 'button',
+  forwardRefAs: 'ref',
   type: 'primary',
   weight: 'bold',
   children: null,
@@ -69,6 +72,7 @@ const Button = forwardRef(
   (
     {
       as: Element,
+      forwardRefAs,
       type,
       weight,
       icon,
@@ -83,7 +87,6 @@ const Button = forwardRef(
     ref,
   ) => (
     <Element
-      ref={ref}
       type={assignTypeDefault(buttonType, Element)}
       className={classNames(
         'rc-button',
@@ -102,6 +105,9 @@ const Button = forwardRef(
       disabled={loading || disabled}
       aria-disabled={Element !== 'button' && (loading || disabled)}
       aria-label={children || icon || trailingIcon}
+      {...{
+        [forwardRefAs]: ref,
+      }}
       {...rest}
     >
       {icon && (

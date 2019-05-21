@@ -2,45 +2,26 @@
 // ----------------------------------------------------------------------------
 .rc-tabs {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  height: 100%;
+  margin-top: $puppet-common-spacing-base * 2;
 }
 
 .rc-tabs-list {
-  margin-bottom: -1px;
-  margin-top: $puppet-common-spacing-base * 2;
   overflow: visible;
 }
 
 // Tab
 .rc-tabs-button {
-  border-bottom: 0;
-  border-radius: $puppet-common-border-radius $puppet-common-border-radius 0 0;
-  color: $puppet-font-color-base;
-  height: $puppet-common-spacing-base * 4;
+  border-bottom: 0 !important;
+  border-radius: $puppet-common-border-radius $puppet-common-border-radius 0 0 !important;
+  color: $puppet-type-color-base;
   margin: 0 2px;
-  padding: 0 $puppet-common-spacing-base * 3;
+  padding-left: $puppet-common-spacing-base * 3;
+  padding-right: $puppet-common-spacing-base * 3;
   position: relative;
 }
 
-.rc-tabs-button:first-of-type {
-  margin-left: $puppet-common-spacing-base * 0.5;
-}
-
-.rc-tabs-button:last-of-type {
-  margin-right: $puppet-common-spacing-base * 0.5;
-}
-
-.rc-tabs-button:focus {
-  border-color: $puppet-b300;
-  box-shadow: inset 0 0 0 1px $puppet-b300;
-}
-
-.rc-tabs-button-active {
-  color: $puppet-type-color-link;
-}
-
-.rc-tabs-button:focus::after,
 .rc-tabs-button-active::after {
   bottom: -1px;
   content: '';
@@ -51,25 +32,16 @@
   z-index: 3;
 }
 
-.rc-tabs-button:focus::after {
-  margin-left: 1px;
-  margin-right: 1px;
+.rc-tabs-button:first-of-type {
+  margin-left: $puppet-common-spacing-base * 0.5;
 }
 
-.rc-tabs-button-active::after {
-  margin-left: 0;
-  margin-right: 0;
+.rc-tabs-button:last-of-type {
+  margin-right: $puppet-common-spacing-base * 0.5;
 }
 
-.rc-tabs-button:hover {
-  border-bottom: 0;
-  color: $puppet-type-color-link-hover;
-}
-
-.rc-tabs-button:active {
-  border-color: $puppet-n400;
-  box-shadow: none;
-  color: $puppet-type-color-link-active;
+.rc-tabs-button-active {
+  color: $puppet-type-color-link;
 }
 
 // Panel
@@ -77,24 +49,21 @@
   border-top: $puppet-common-border;
   flex: 1;
   padding: $puppet-common-spacing-base * 2 $puppet-common-spacing-base * 0.5 0 $puppet-common-spacing-base * 0.5;
-  position: relative;
-  z-index: 2;
+  z-index: 1;
 }
 
 // Primary coloring
 .rc-tabs-button-active,
 .rc-tabs-button-active::after,
-.rc-tabs-button:focus:not(:active)::after,
 .rc-tabs-panel {
-  background: $puppet-white;
+  background-color: $puppet-white;
 }
 
 // Secondary coloring
 .rc-tabs-secondary {
   .rc-tabs-button-active,
   .rc-tabs-button-active::after,
-  .rc-tabs-button:focus::after,
   .rc-tabs-panel {
-    background: $puppet-bg-subtle;
+    background-color: $puppet-bg-subtle;
   }
 }
