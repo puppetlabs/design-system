@@ -51,7 +51,17 @@ const getActiveTab = (props, state) => {
 
   const activeChild = childProps.find(p => p.active);
 
-  const activeTab = (activeChild && activeChild.id) || state.activeTab;
+  let activeTab;
+
+  if (activeChild && activeChild.id) {
+    activeTab = activeChild.id;
+  } else if (state.activeTab != null) {
+    // eslint-disable-next-line
+    activeTab = state.activeTab;
+  } else if (childProps.length) {
+    activeTab = childProps[0].id;
+  }
+
   const activeIndex = childProps.findIndex(p => p.id === activeTab);
 
   return {
@@ -66,9 +76,7 @@ class Tabs extends React.Component {
 
     this.tabButtonRefs = [];
 
-    this.state = {
-      activeTab: 0,
-    };
+    this.state = getActiveTab(props, {});
 
     this.onClick = this.onClick.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
