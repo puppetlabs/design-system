@@ -10,7 +10,7 @@ const propTypes = {
   /** Main content */
   children: PropTypes.string,
   /** Main visual variant */
-  type: PropTypes.oneOf(['neutral', 'info', 'danger', 'success', 'warning']),
+  type: PropTypes.oneOf(['info', 'danger', 'success', 'warning']),
   /** Should the alert have a dismiss button? */
   closeable: PropTypes.bool,
   /** What should happen on explicit close? */
@@ -117,9 +117,8 @@ class Alert extends React.Component {
         typeIcon = 'alert';
         break;
       case 'info':
-      case 'neutral':
       case 'warning':
-        typeIcon = 'question-circle';
+        typeIcon = 'info-circle';
         break;
       default:
         typeIcon = 'check-circle';

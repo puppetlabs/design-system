@@ -59,13 +59,6 @@ Info
 </Alert>
 ```
 
-Neutral
-```
-<Alert type="neutral">
-  Welp. This is meh content.
-</Alert>
-```
-
 ## Alert elevation
 
 Elevated
