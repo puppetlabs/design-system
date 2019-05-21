@@ -4,7 +4,6 @@ import React from 'react';
 import Text from '../text';
 import Icon from '../icon';
 import IconButton from './IconButton';
-import { ENTER_KEY_CODE } from '../../constants';
 
 const propTypes = {
   /** Main content */
@@ -15,12 +14,6 @@ const propTypes = {
   closeable: PropTypes.bool,
   /** What should happen on explicit close? */
   onClose: PropTypes.func,
-  /** Should the alert render at the top of page? */
-  growl: PropTypes.bool,
-  /** Should the dismiss timer start? */
-  isActive: PropTypes.bool,
-  /** How long should the growl stay on the page? */
-  dismissAfter: PropTypes.number,
   /** Alert 'elevation' visually indicated with box-shadow */
   elevated: PropTypes.bool,
   /** Optional additional className. */
@@ -34,9 +27,6 @@ const defaultProps = {
   type: 'info',
   closeable: false,
   onClose() {},
-  growl: false,
-  isActive: true,
-  dismissAfter: 5000,
   elevated: false,
   className: '',
   styles: {},
@@ -47,23 +37,6 @@ class Alert extends React.Component {
     super(props);
 
     this.onClose = this.onClose.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-  }
-
-  componentDidMount() {
-    const { isActive } = this.props;
-
-    if (isActive) {
-      this.handleDismiss(this.props);
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { isActive } = this.props;
-
-    if (!isActive && nextProps.isActive) {
-      this.handleDismiss(nextProps);
-    }
   }
 
   onClose() {
@@ -72,30 +45,11 @@ class Alert extends React.Component {
     onClose();
   }
 
-  onKeyDown(e) {
-    if (e.keyCode === ENTER_KEY_CODE) {
-      this.onClose();
-    }
-  }
-
-  handleDismiss(props) {
-    const { dismissAfter } = props;
-
-    if (dismissAfter) {
-      setTimeout(() => {
-        this.onClose();
-      }, dismissAfter);
-    }
-  }
-
   render() {
     const {
       children,
       type,
       closeable,
-      growl,
-      isActive,
-      dismissAfter,
       elevated,
       className,
       ...rest
@@ -104,7 +58,6 @@ class Alert extends React.Component {
       'rc-alert',
       {
         [`rc-alert-${type}`]: type,
-        'rc-alert-static': !growl,
         'rc-alert-elevated': elevated,
       },
       className,
@@ -116,16 +69,13 @@ class Alert extends React.Component {
       case 'danger':
         typeIcon = 'alert';
         break;
+      case 'success':
+        typeIcon = 'check-circle';
+        break;
       case 'info':
       case 'warning':
-        typeIcon = 'info-circle';
-        break;
       default:
-        typeIcon = 'check-circle';
-    }
-
-    if (!isActive) {
-      return false;
+        typeIcon = 'info-circle';
     }
 
     if (closeable) {
@@ -134,7 +84,6 @@ class Alert extends React.Component {
           icon="x"
           type={type}
           onClick={this.onClose}
-          onKeyDown={this.onKeyDown}
           className="rc-alert-dismiss-icon"
         />
       );

@@ -1,21 +1,3 @@
-## Alert as a growl
-
-```
-const initialState = { isGrowlActive: false };
-<div>
-  <Button onClick={ () => { setState({ isGrowlActive: !state.isGrowlActive }) } } >Toggle growl</Button>
-  <Alert
-    growl={ true }
-    type="success"
-    isActive={ state.isGrowlActive }
-    closeable
-    onClose={ () => { setState({ isGrowlActive: false }) } }
-  >
-    Success! You toggled it!
-  </Alert>
-</div>
-```
-
 ## Alert actions
 
 closeable + onClose
