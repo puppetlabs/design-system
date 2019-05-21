@@ -85,8 +85,7 @@ $colors: (
 }
 
 .rc-alert .rc-icon-button {
-  border-bottom-left-radius: 0;
-  border-top-left-radius: 0;
+  border-radius: 0 3px 3px 0; // 3px to account for gap when focussed
 }
 
 // Icon Button
