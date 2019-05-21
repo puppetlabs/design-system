@@ -128,7 +128,7 @@ import { Button } from '@puppet/react-components';
 const MyComponent = () => <Button>My Button</Button>;
 ```
 
-## Using Scss
+## Using Sass
 
 To include the react-components scss bundle in your app place the following line at the top of your scss heirarchy:
 
