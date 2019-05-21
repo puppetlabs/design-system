@@ -1,37 +1,51 @@
-## Alert as a growl
+## Alert actions
 
+closeable + onClose
 ```
-const initialState = { isGrowlActive: false };
-<div>
-  <Button onClick={ () => { setState({ isGrowlActive: !state.isGrowlActive }) } } >Toggle growl</Button>
-  <Alert
-    isActive={ state.isGrowlActive }
-    message="Hello world"
-    onClose={ () => { setState({ isGrowlActive: false }) } }
-  />
-</div>
+  <Alert type="info" closeable onClose={() => console.log('theoretically at least')}>
+    Did you know this alert can be dismissed?
+  </Alert>
 ```
+
 
 ## Alert types
 
+Success
 ```
-  <Alert growl={ false } isActive={ true } message="Success! Things seem to have gone well afterall." />
+  <Alert type="success">
+    Success! Things seem to have gone well afterall.
+  </Alert>
 ```
 
-Error
+Danger
 
 ```
-<Alert growl={ false } isActive={ true } type="error" message="Error! Things have gone bad. I blame Sig." />
+<Alert type="danger">
+  Danger! Things have gone bad. I blame Sig.
+</Alert>
 ```
 
 Warning
 
 ```
-<Alert growl={ false } isActive={ true } type="warning" message="This may affect access for other users" />
+<Alert type="warning">
+  This may affect access for other users.
+</Alert>
 ```
 
 Info
 
 ```
-<Alert growl={ false } isActive={ true } type="info" message="Hello world" />
+<Alert type="info">
+  This is some good content. Now you know.
+</Alert>
+```
+
+## Alert elevation
+
+Elevated
+```
+<Alert elevated type="danger">
+  This alert is elevated. Are you ready for that?
+</Alert>
 ```
