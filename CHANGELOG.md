@@ -6,6 +6,8 @@
 - Implement new ActionMenu component
 - **Breaking change** Remove autoOpen, clearable, disablePortal, newOption, onNewOption, newOptionLabel, noResultsLabel, popoverClassName, valueless, and typeahead props from `Select`
 - Add actionLabel prop to select
+- Tab targets can now be rendered as custom elements in order to enable routable tabs
+- Button can now forward ref to a prop with an alternate name
 
 # 5.0.0-alpha.21
 - id is no longer a required prop of Tabs
