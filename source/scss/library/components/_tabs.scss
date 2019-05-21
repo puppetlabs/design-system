@@ -2,8 +2,8 @@
 // ----------------------------------------------------------------------------
 .rc-tabs {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  height: 100%;
   margin-top: $puppet-common-spacing-base * 2;
 }
 
@@ -22,6 +22,16 @@
   position: relative;
 }
 
+.rc-tabs-button-active::after {
+  bottom: -1px;
+  content: '';
+  height: 3px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 3;
+}
+
 .rc-tabs-button:first-of-type {
   margin-left: $puppet-common-spacing-base * 0.5;
 }
@@ -31,63 +41,29 @@
 }
 
 .rc-tabs-button-active {
-  border-bottom: 1px solid $puppet-white;
   color: $puppet-type-color-link;
 }
-
-.rc-tabs-button:focus {
-  box-shadow: $puppet-common-focus-outline-inset;
-}
-
-.rc-tabs-button:focus::after,
-.rc-tabs-button-active::after {
-  bottom: -1px;
-  content: '';
-  height: 10px;
-  left: 0;
-  position: absolute;
-  right: 0;
-  z-index: 1;
-}
-
-.rc-tabs-button:focus::after {
-  margin-left: 2px;
-  margin-right: 2px;
-}
-
-.rc-tabs-button:active::after,
-.rc-tabs-button-active::after {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.rc-tabs-button:active {
-  box-shadow: none;
-}
-
 
 // Panel
 .rc-tabs-panel {
   border-top: $puppet-common-border;
   flex: 1;
   padding: $puppet-common-spacing-base * 2 $puppet-common-spacing-base * 0.5 0 $puppet-common-spacing-base * 0.5;
+  z-index: 1;
 }
 
 // Primary coloring
 .rc-tabs-button-active,
 .rc-tabs-button-active::after,
-.rc-tabs-button:focus:not(:active)::after,
 .rc-tabs-panel {
-  background: $puppet-white;
+  background-color: $puppet-white;
 }
 
 // Secondary coloring
 .rc-tabs-secondary {
   .rc-tabs-button-active,
-  .rc-tabs-button:active,
   .rc-tabs-button-active::after,
-  .rc-tabs-button:focus::after,
   .rc-tabs-panel {
-    background: $puppet-bg-subtle;
+    background-color: $puppet-bg-subtle;
   }
 }
