@@ -61,9 +61,9 @@
 
 // Secondary coloring
 .rc-tabs-secondary {
-  .rc-tabs-button-active,
-  .rc-tabs-button-active::after,
-  .rc-tabs-panel {
+  > .rc-tabs-list > .rc-tabs-button-active,
+  > .rc-tabs-list > .rc-tabs-button-active::after,
+  > .rc-tabs-panel {
     background-color: $puppet-bg-subtle;
   }
 }
