@@ -48,13 +48,19 @@ describe('<Alert />', () => {
     );
   });
 
-  it('should render a functional dismissal button if provided an onClose', () => {
-    const onClose = sinon.spy();
+  it('should render a dismissal button if provided closeable prop', () => {
     const wrapper = mount(<Alert />);
 
     expect(wrapper.find('IconButton').exists()).to.equal(false);
 
-    wrapper.setProps({ onClose });
+    wrapper.setProps({ closeable: true });
+
+    expect(wrapper.find('IconButton').exists()).to.equal(true);
+  });
+
+  it('should trigger onClose if dismissal button is clicked', () => {
+    const onClose = sinon.spy();
+    const wrapper = mount(<Alert closeable onClose={onClose} />);
 
     wrapper.find('IconButton').simulate('click');
 

@@ -8,6 +8,7 @@ const initialState = { isGrowlActive: false };
     growl={ true }
     type="success"
     isActive={ state.isGrowlActive }
+    closeable
     onClose={ () => { setState({ isGrowlActive: false }) } }
   >
     Success! You toggled it!
@@ -17,9 +18,9 @@ const initialState = { isGrowlActive: false };
 
 ## Alert actions
 
-onClose
+closeable + onClose
 ```
-  <Alert type="info" onClose={() => console.log('theoretically at least')}>
+  <Alert type="info" closeable onClose={() => console.log('theoretically at least')}>
     Did you know this alert can be dismissed?
   </Alert>
 ```

@@ -357,7 +357,7 @@ class Form extends Component {
 
     if (error) {
       return (
-        <Alert closeable={false} type="danger" className="rc-form-error">
+        <Alert type="danger" className="rc-form-error">
           {error}
         </Alert>
       );

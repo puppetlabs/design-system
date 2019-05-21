@@ -11,6 +11,8 @@ const propTypes = {
   children: PropTypes.string,
   /** Main visual variant */
   type: PropTypes.oneOf(['neutral', 'info', 'danger', 'success', 'warning']),
+  /** Should the alert have a dismiss button? */
+  closeable: PropTypes.bool,
   /** What should happen on explicit close? */
   onClose: PropTypes.func,
   /** Should the alert render at the top of page? */
@@ -30,7 +32,8 @@ const propTypes = {
 const defaultProps = {
   children: '',
   type: 'info',
-  onClose: null,
+  closeable: false,
+  onClose() {},
   growl: false,
   isActive: true,
   dismissAfter: 5000,
@@ -64,7 +67,7 @@ class Alert extends React.Component {
   }
 
   onClose() {
-    const { onClose = () => {} } = this.props;
+    const { onClose } = this.props;
 
     onClose();
   }
@@ -89,7 +92,7 @@ class Alert extends React.Component {
     const {
       children,
       type,
-      onClose,
+      closeable,
       growl,
       isActive,
       dismissAfter,
@@ -126,7 +129,7 @@ class Alert extends React.Component {
       return false;
     }
 
-    if (onClose) {
+    if (closeable) {
       closeButton = (
         <IconButton
           icon="x"
