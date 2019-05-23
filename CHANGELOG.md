@@ -1,3 +1,7 @@
+# 5.0.0-alpha.23
+- Bug fix: use overflow: auto in menus
+- Bug fix: correctly diff active id in tabs
+
 # 5.0.0-alpha.22
 - **Breaking change** Remove isActive, growl & dismissAfter props and all growl functionality from Alert
 - **Breaking change** Use Alert children, not message prop, for inner content
