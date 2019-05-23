@@ -54,7 +54,7 @@
   border-top-right-radius: $puppet-common-border-radius - 1px;
   margin: 0;
   outline: none;
-  overflow: scroll;
+  overflow: auto;
   padding: $puppet-common-spacing-base / 2;
 }
 
