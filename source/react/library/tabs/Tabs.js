@@ -87,7 +87,7 @@ class Tabs extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const prevActiveTab = getActiveTab(prevProps, prevState);
+    const { activeTab: prevActiveTab } = getActiveTab(prevProps, prevState);
     const { activeTab } = this.state;
 
     if (activeTab !== prevActiveTab) {
