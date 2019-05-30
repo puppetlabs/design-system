@@ -1,3 +1,6 @@
+# 5.0.0-alpha.24
+- Add "integration" icon
+
 # 5.0.0-alpha.23
 - Bug fix: use overflow: auto in menus
 - Bug fix: correctly diff active id in tabs

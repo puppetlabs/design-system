@@ -56,6 +56,7 @@ export const AVAILABLE_ICONS = [
   'impact',
   'increment',
   'info-circle',
+  'integration',
   'kebab',
   'key',
   'kpi',
