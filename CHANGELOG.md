@@ -1,6 +1,7 @@
 # 5.0.0-alpha.24
 - Add "integration" icon
 - **Breaking change** Temporarily remove Accordion component
+- **Breaking change** Rename Heading's boolean `smallTitle` prop to `label`
 
 # 5.0.0-alpha.23
 - Bug fix: use overflow: auto in menus
