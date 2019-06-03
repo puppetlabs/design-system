@@ -3,6 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import Overview from '../routes/Overview';
 import Colors from '../routes/Colors';
 import Typography from '../routes/Typography';
+import Content from '../routes/Content';
 import Icons from '../routes/Icons';
 import Alignments from '../routes/Alignments';
 import Containers from '../routes/Containers';
@@ -10,6 +11,8 @@ import Components from '../routes/Components';
 import Buttons from '../routes/Buttons';
 import Forms from '../routes/Forms';
 import Dialogs from '../routes/Dialogs';
+import Tables from '../routes/Tables';
+import Subnavigation from '../routes/Subnavigation';
 import Uncategorized from '../routes/Uncategorized';
 import JustInCase from '../routes/JustInCase';
 import Navigation from '../routes/Navigation';
@@ -32,6 +35,10 @@ const routes = [
   {
     path: '/typography',
     component: Typography,
+  },
+  {
+    path: '/content',
+    component: Content,
   },
   {
     path: '/icons',
@@ -60,6 +67,14 @@ const routes = [
   {
     path: '/dialogs',
     component: Dialogs,
+  },
+  {
+    path: '/tables',
+    component: Tables,
+  },
+  {
+    path: '/subnavigation',
+    component: Subnavigation,
   },
   {
     path: '/uncategorized',
