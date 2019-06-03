@@ -38,6 +38,13 @@ const AppSidebar = ({ t, location: { pathname } }) => (
           active={pathname === '/typography'}
         />
         <Sidebar.Item
+          title={t('pages.content')}
+          icon="basics"
+          as={Link}
+          to="/content"
+          active={pathname === '/content'}
+        />
+        <Sidebar.Item
           title={t('pages.icons')}
           icon="image"
           as={Link}
@@ -46,7 +53,7 @@ const AppSidebar = ({ t, location: { pathname } }) => (
         />
         <Sidebar.Item
           title={t('pages.alignments')}
-          icon="grid"
+          icon="hamburger"
           as={Link}
           to="/alignments"
           active={pathname === '/alignments'}
@@ -85,6 +92,20 @@ const AppSidebar = ({ t, location: { pathname } }) => (
           as={Link}
           to="/dialogs"
           active={pathname === '/dialogs'}
+        />
+        <Sidebar.Item
+          title={t('pages.tables')}
+          icon="grid"
+          as={Link}
+          to="/tables"
+          active={pathname === '/tables'}
+        />
+        <Sidebar.Item
+          title={t('pages.subnavigation')}
+          icon="structure"
+          as={Link}
+          to="/subnavigation"
+          active={pathname === '/subnavigation'}
         />
         <Sidebar.Item
           title={t('pages.uncategorized')}
