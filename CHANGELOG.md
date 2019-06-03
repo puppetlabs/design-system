@@ -1,5 +1,6 @@
 # 5.0.0-alpha.24
 - Add "integration" icon
+- **Breaking change** Temporarily remove Accordion component
 
 # 5.0.0-alpha.23
 - Bug fix: use overflow: auto in menus

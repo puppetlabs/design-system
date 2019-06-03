@@ -20,7 +20,6 @@ module.exports = {
     '**/Saving.js',
     '**/FadeInAndOut.js',
     '**/**/index.js',
-    '**/accordion/AccordionItem.js',
     '**/alert/IconButton.js',
     '**/breadcrumb/Section.js',
     '**/breadcrumb/Separator.js',

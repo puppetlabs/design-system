@@ -13,7 +13,6 @@ import Loading from './react/library/loading/Loading';
 import Modal from './react/library/modals/Modal';
 import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
-import Accordion from './react/library/accordion';
 import Select from './react/library/select/Select';
 import Form from './react/library/form';
 import Filters from './react/library/filters';
@@ -43,7 +42,6 @@ export {
   Modal,
   ConfirmationModal,
   TooltipHoverArea,
-  Accordion,
   Select,
   Form,
   Filters,
