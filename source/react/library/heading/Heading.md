@@ -6,6 +6,7 @@
 <Heading as="h4">Heading 4</Heading>
 <Heading as="h5">Heading 5</Heading>
 <Heading as="h6">Heading 6</Heading>
+<Heading label>Label</Heading>
 ```
 
 Heading - color medium
@@ -18,6 +19,7 @@ Heading - color medium
 <Heading as="h4" color="medium">Heading 4</Heading>
 <Heading as="h5" color="medium">Heading 5</Heading>
 <Heading as="h6" color="medium">Heading 6</Heading>
+<Heading label color="medium">Label</Heading>
 ```
 
 Heading - color subtle
@@ -30,4 +32,5 @@ Heading - color subtle
 <Heading as="h4" color="subtle">Heading 4</Heading>
 <Heading as="h5" color="subtle">Heading 5</Heading>
 <Heading as="h6" color="subtle">Heading 6</Heading>
+<Heading label color="subtle">Label</Heading>
 ```
