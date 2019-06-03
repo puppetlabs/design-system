@@ -21,7 +21,7 @@
     "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.0.0-alpha.19",
+    "@puppet/react-components": "^5.0.0-alpha.24",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.3"
