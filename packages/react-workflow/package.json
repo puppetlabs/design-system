@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-workflow",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "main": "dist/index.js",
