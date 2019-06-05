@@ -26,6 +26,7 @@ import Badge from './react/library/badge';
 import Link from './react/library/link';
 import Logo from './react/library/logo';
 import Tabs from './react/library/tabs';
+import Breadcrumb from './react/library/breadcrumb/Breadcrumb';
 
 export {
   ActionMenu,
@@ -56,4 +57,5 @@ export {
   Link,
   Logo,
   Tabs,
+  Breadcrumb,
 };

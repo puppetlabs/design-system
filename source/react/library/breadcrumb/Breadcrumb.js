@@ -1,17 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import BreadcrumbSection from './BreadcrumbSection';
 
 const propTypes = {
+  /** The BreadcrumbSections to render */
   children: PropTypes.node,
+  /** Optional additional classnames */
+  className: PropTypes.string,
+  /** Optional additional inline styles */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
   children: undefined,
+  className: '',
+  style: {},
 };
 
-const Breadcrumb = ({ children }) => (
-  <div className="rc-breadcrumb">{children}</div>
+const Breadcrumb = ({ children, className, ...props }) => (
+  <div className={classNames('rc-breadcrumb', className)} {...props}>
+    {children}
+  </div>
 );
 
 Breadcrumb.propTypes = propTypes;

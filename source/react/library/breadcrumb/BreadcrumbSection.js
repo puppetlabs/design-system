@@ -4,6 +4,7 @@ import Icon from '../icon/Icon';
 import Text from '../text/Text';
 
 const propTypes = {
+  /** The route to render. Can be either a link or some plain text (current route)  */
   children: PropTypes.node,
 };
 
