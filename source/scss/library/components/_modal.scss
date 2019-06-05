@@ -5,9 +5,7 @@ $puppet-modal-border-radius: $puppet-tiny !default;
 $puppet-modal-overlay-bg: rgba(4, 8, 10, 0.16) !default;
 $puppet-modal-elevation: 24 !default;
 $puppet-modal-padding: $puppet-large !default;
-$puppet-modal-shadow: $puppet-outer-shadow-giant !default;
-$puppet-modal-close-top: $puppet-medium !default;
-$puppet-modal-close-right: $puppet-medium !default;
+$puppet-modal-shadow: $puppet-elev-400-shadow !default;
 $puppet-modal-width-small: 400px !default;
 $puppet-modal-width: 480px !default;
 $puppet-modal-width-medium: 580px !default;
@@ -33,44 +31,22 @@ $puppet-modal-actions-cta-padding: $puppet-small 0 $puppet-small 0 !default;
 }
 
 .rc-modal-close {
-  color: $puppet-n600;
-  cursor: pointer;
-  height: 100%;
-  left: 0;
-  padding-top: 20px;
-  position: fixed;
-  text-align: center;
-  top: 0;
-  width: 100%;
-
-  &:hover {
-    color: $puppet-n700;
-  }
+  right: 2px;
+  position: absolute;
+  top: 1px;
 }
 
 .rc-modal {
   background: $puppet-modal-bg;
   border: $puppet-modal-border;
   border-radius: $puppet-modal-border-radius;
-  box-shadow: 8px 8px 12px 0 rgba(66, 74, 82, 0.12);
+  box-shadow: $puppet-modal-shadow;
   color: $puppet-modal-color;
-  margin: 0 auto;
+  margin: $puppet-size-base * 8 auto;
+  outline: none;
   overflow: hidden;
   position: relative;
-  top: 64px;
   width: $puppet-modal-width;
-}
-
-.rc-modal-close-button {
-  cursor: pointer;
-  display: inline-block;
-  position: absolute;
-  right: $puppet-modal-close-right;
-  top: $puppet-modal-close-top;
-
-  .rc-icon {
-    display: block;
-  }
 }
 
 .rc-modal-content {
