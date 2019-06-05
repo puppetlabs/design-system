@@ -1,0 +1,13 @@
+.rc-breadcrumb {
+  .rc-breadcrumb-section {
+    display: inline-block;
+  }
+
+  .rc-icon-chevron-right {
+    fill: $puppet-n500;
+  }
+
+  .rc-icon-chevron-right:last-of-type {
+    display: none;
+  }
+}
