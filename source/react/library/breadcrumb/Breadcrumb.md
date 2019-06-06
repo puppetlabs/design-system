@@ -5,13 +5,12 @@ The Breadcrumb component allows users to navigate upwards through the parent rou
 ```
 <Breadcrumb>
   <Breadcrumb.Section>
-    <Link size="tiny" as={Link} to="/items">
+    <Link as={Link} to="/items">
       Items
     </Link>
   </Breadcrumb.Section>
   <Breadcrumb.Section>
     <Link
-      size="tiny"
       as={Link}
       to={`/items/11/details`}
     >

@@ -18,11 +18,21 @@ const defaultProps = {
   style: {},
 };
 
-const Breadcrumb = ({ children, className, ...props }) => (
-  <div className={classNames('rc-breadcrumb', className)} {...props}>
-    {children}
-  </div>
-);
+const Breadcrumb = ({ children, className, ...props }) => {
+  let crumbs = React.Children.toArray(children);
+
+  crumbs = crumbs.map((crumb, index) => {
+    const active = index === crumbs.length - 1;
+
+    return React.cloneElement(crumb, { active });
+  });
+
+  return (
+    <div className={classNames('rc-breadcrumb', className)} {...props}>
+      {crumbs}
+    </div>
+  );
+};
 
 Breadcrumb.propTypes = propTypes;
 Breadcrumb.defaultProps = defaultProps;
