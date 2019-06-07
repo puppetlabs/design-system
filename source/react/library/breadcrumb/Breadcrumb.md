@@ -6,12 +6,14 @@ Breadcrumb.Section components will render as Link components with all passed pro
 
 The last Breadcrumb.Section (the leaf route) will render as an unclickable Text component.
 
+In the example below, the first Breadcrumb.Section is configured to use react router, while the second produces a conventional <a> tag.
+
 ```
 <Breadcrumb>
   <Breadcrumb.Section as={Link} to="/items">
     Items
   </Breadcrumb.Section>
-  <Breadcrumb.Section as={Link} to={`/items/11/details`}>
+  <Breadcrumb.Section href="https://www.puppet.com/items/11" target="_blank">
     11
   </Breadcrumb.Section>
   <Breadcrumb.Section>
