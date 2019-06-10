@@ -5,32 +5,23 @@ import classnames from 'classnames';
 import { bindParentScroll, unbindParentScroll } from '../../helpers/statics';
 import portal from '../portal';
 import TooltipHoverArea from './TooltipHoverArea';
-import TooltipStickyArea from './TooltipStickyArea';
-import Icon from '../icon/Icon';
-import { ENTER_KEY_CODE } from '../../constants';
 
 const CARAT_HEIGHT = 8;
 
 const propTypes = {
   anchor: PropTypes.string,
-  sticky: PropTypes.bool,
   style: PropTypes.shape({}),
   target: PropTypes.oneOfType([PropTypes.object, PropTypes.element]).isRequired,
-  onClose: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 const defaultProps = {
-  sticky: false,
   style: {},
   anchor: 'right',
-  onClose: null,
   children: null,
 };
 
 const getDefaultState = () => ({
-  onClose: null,
-  sticky: false,
   tooltipPosition: {},
   caratPosition: {},
 });
@@ -81,14 +72,6 @@ class Tooltip extends React.Component {
 
   onResize() {
     this.setPosition();
-  }
-
-  onHandleKeyDown(e) {
-    const { onClose } = this.props;
-
-    if (e.keyCode === ENTER_KEY_CODE && onClose) {
-      onClose();
-    }
   }
 
   getScrollbarWidth() {
@@ -164,32 +147,10 @@ class Tooltip extends React.Component {
     return { w, h };
   }
 
-  renderCloseButton() {
-    let jsx;
-    const { sticky, onClose } = this.props;
-
-    if (sticky && onClose) {
-      jsx = (
-        <div
-          role="button"
-          tabIndex={0}
-          className="rc-tooltip-close"
-          onClick={onClose}
-          onKeyDown={this.onHandleKeyDown}
-        >
-          <Icon type="close" size="tiny" />
-        </div>
-      );
-    }
-
-    return jsx;
-  }
-
   render() {
     const { tooltipPosition, caratPosition } = this.state;
     const { anchor, style, children } = this.props;
     const className = classnames('rc-tooltip', `rc-tooltip-position-${anchor}`);
-    const closeButton = this.renderCloseButton();
 
     const styles = { ...tooltipPosition, ...style };
 
@@ -209,7 +170,6 @@ class Tooltip extends React.Component {
         />
         <div className="rc-tooltip-carat" style={caratPosition} />
         {children}
-        {closeButton}
       </div>
     );
   }
@@ -218,5 +178,5 @@ class Tooltip extends React.Component {
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;
 
-export { TooltipHoverArea, TooltipStickyArea };
+export { TooltipHoverArea };
 export default portal(Tooltip);
