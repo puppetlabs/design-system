@@ -1,3 +1,9 @@
+# 5.0.0-alpha.25
+- Introduce breadcrumb component
+- **Breaking change** Remove TooltipStickyArea component
+- **Breaking change** Remove sticky and onClose options from tooltip
+- Tooltip no longer uses react-portal
+
 # 5.0.0-alpha.24
 - Add "integration" icon
 - **Breaking change** Temporarily remove Accordion component
