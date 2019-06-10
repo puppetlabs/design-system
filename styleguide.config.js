@@ -55,6 +55,7 @@ module.exports = {
     '**/table/ColumnCheckbox.js',
     '**/logo/logos.js',
     '**/breadcrumb/BreadcrumbSection.js',
+    '**/tooltips/Tooltip.js',
   ],
   require: [
     path.join(__dirname, 'source/scss/styleguide.scss'),
