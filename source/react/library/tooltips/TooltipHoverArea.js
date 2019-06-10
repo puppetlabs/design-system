@@ -1,26 +1,38 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import classNames from 'classnames';
 
 import Tooltip from './Tooltip';
 import FadeInAndOut from '../FadeInAndOut';
 
 const propTypes = {
-  anchor: PropTypes.string,
+  /** Position of tooltip relative to the activating element */
+  anchor: PropTypes.oneOf(['bottom', 'right']),
+  /** Optional onClick for the activating element */
   onClick: PropTypes.func,
+  /** The content of the tooltip */
   tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
     .isRequired,
+  /** The activating element for the tooltip */
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
     .isRequired,
+  /** Optional additional className */
+  className: PropTypes.string,
+  /** Optional additional inline style */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
   anchor: null,
   onClick: null,
+  className: '',
+  style: {},
 };
 
 /**
- * `TooltipHoverArea` allows you to define a zone that a tooltip will be rendered next to
- * when the zone has been hovered over.
+ * When elements inside a `TooltipHoverArea` are hovered over or focussed on, a tooltip will render next to it.
+ *
+ * The tooltip prop passed to `TooltipHoverArea`--the tooltip content--can be a string or an element.
  */
 class TooltipHoverArea extends React.Component {
   constructor(props) {
@@ -69,17 +81,21 @@ class TooltipHoverArea extends React.Component {
   render() {
     const tooltip = this.renderTooltip();
     const { open } = this.state;
-    const { children } = this.props;
+    const { children, className, style } = this.props;
 
     const props = {
       role: this.onClick ? 'button' : null,
       onClick: this.onClick,
+      style,
     };
 
     return (
       <div
         {...props}
-        className="rc-tooltip-area rc-tooltip-area-hover"
+        className={classNames(
+          'rc-tooltip-area rc-tooltip-area-hover',
+          className,
+        )}
         onMouseEnter={this.onMouseOver}
         onMouseLeave={this.onMouseOut}
         ref={c => {

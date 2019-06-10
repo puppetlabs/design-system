@@ -32,10 +32,6 @@ $puppet-tooltip-hint-max-width: 168px !default;
     position: absolute;
     width: 0;
   }
-
-  &:hover .rc-tooltip-close {
-    visibility: visible;
-  }
 }
 
 // https://davidwalsh.name/detect-scrollbar-width
@@ -59,12 +55,5 @@ $puppet-tooltip-hint-max-width: 168px !default;
   .rc-tooltip-carat {
     border-color: transparent transparent $puppet-tooltip-hint-bg transparent;
     top: -16px;
-  }
-}
-
-.rc-tooltip-position-left {
-  .rc-tooltip-carat {
-    border-color: transparent transparent transparent $puppet-tooltip-hint-bg;
-    right: -16px;
   }
 }

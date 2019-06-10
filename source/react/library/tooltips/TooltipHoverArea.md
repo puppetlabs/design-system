@@ -24,7 +24,7 @@ const childStyle = {
 
 <div style={ parentStyle }>
   <div style={ childStyle } >
-    <TooltipHoverArea tooltip="I'm a happy tooltip!" anchor="bottom" >
+    <TooltipHoverArea tooltip="I'm a happy tooltip!" anchor="right" >
       <Button>I'm a happy button!</Button>
     </TooltipHoverArea>
   </div>
