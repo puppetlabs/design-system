@@ -3,7 +3,6 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { bindParentScroll, unbindParentScroll } from '../../helpers/statics';
-import portal from '../portal';
 import TooltipHoverArea from './TooltipHoverArea';
 
 const CARAT_HEIGHT = 8;
@@ -33,7 +32,6 @@ class Tooltip extends React.Component {
     this.state = getDefaultState();
 
     this.onResize = this.onResize.bind(this);
-    this.onHandleKeyDown = this.onHandleKeyDown.bind(this);
     this.setPosition = this.setPosition.bind(this);
     this.setPositionRight = this.setPositionRight.bind(this);
     this.setPositionBottom = this.setPositionBottom.bind(this);
@@ -151,7 +149,6 @@ class Tooltip extends React.Component {
     const { tooltipPosition, caratPosition } = this.state;
     const { anchor, style, children } = this.props;
     const className = classnames('rc-tooltip', `rc-tooltip-position-${anchor}`);
-
     const styles = { ...tooltipPosition, ...style };
 
     return (
@@ -179,4 +176,4 @@ Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;
 
 export { TooltipHoverArea };
-export default portal(Tooltip);
+export default Tooltip;
