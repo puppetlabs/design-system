@@ -97,7 +97,9 @@ class TooltipHoverArea extends React.Component {
           className,
         )}
         onMouseEnter={this.onMouseOver}
+        onFocus={this.onMouseOver}
         onMouseLeave={this.onMouseOut}
+        onBlur={this.onMouseOut}
         ref={c => {
           this.elem = c;
         }}
