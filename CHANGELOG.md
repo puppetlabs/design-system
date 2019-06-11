@@ -1,19 +1,27 @@
+# 5.0.0-alpha.26
+
+- Fix conflicting aria-disabled attribute in Button
+
 # 5.0.0-alpha.25
+
 - Introduce breadcrumb component
 - **Breaking change** Remove TooltipStickyArea component
 - **Breaking change** Remove sticky and onClose options from tooltip
 - Tooltip no longer uses react-portal
 
 # 5.0.0-alpha.24
+
 - Add "integration" icon
 - **Breaking change** Temporarily remove Accordion component
 - **Breaking change** Rename Heading's boolean `smallTitle` prop to `label`
 
 # 5.0.0-alpha.23
+
 - Bug fix: use overflow: auto in menus
 - Bug fix: correctly diff active id in tabs
 
 # 5.0.0-alpha.22
+
 - **Breaking change** Remove isActive, growl & dismissAfter props and all growl functionality from Alert
 - **Breaking change** Use Alert children, not message prop, for inner content
 - **Breaking change** Replace 'error' with 'danger' as one accepted value for type prop for Alert
@@ -31,6 +39,7 @@
 - Button can now forward ref to a prop with an alternate name
 
 # 5.0.0-alpha.21
+
 - id is no longer a required prop of Tabs
 - **Breaking change** Rename `activeTab` prop on `Tabs` to `initialTab`
 - **Breaking change** Manual tab activation is now controlled at the Tabs.Tab component level with the `active` prop
