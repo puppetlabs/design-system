@@ -103,7 +103,7 @@ const Button = forwardRef(
         className,
       )}
       disabled={loading || disabled}
-      aria-disabled={Element !== 'button' && (loading || disabled)}
+      aria-disabled={Element === 'button' ? undefined : loading || disabled}
       aria-label={children || icon || trailingIcon}
       {...{
         [forwardRefAs]: ref,

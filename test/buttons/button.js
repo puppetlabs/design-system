@@ -90,7 +90,19 @@ describe('<Button />', () => {
     );
   });
 
-  it('Renders an icon of the specified type if provided', () => {
+  it("doesn't apply an aria-disabled attribute to buttons", () => {
+    expect(shallow(<Button />).find('button')).not.to.have.attr(
+      'aria-disabled',
+    );
+    expect(shallow(<Button disabled />).find('button')).not.to.have.attr(
+      'aria-disabled',
+    );
+    expect(shallow(<Button loading />).find('button')).not.to.have.attr(
+      'aria-disabled',
+    );
+  });
+
+  it('renders an icon of the specified type if provided', () => {
     expect(shallow(<Button icon="pencil" />).find('Icon')).to.have.prop(
       'type',
       'pencil',
