@@ -11,18 +11,15 @@ $puppet-modal-width: 480px !default;
 $puppet-modal-width-medium: 580px !default;
 $puppet-modal-width-large: 1200px !default;
 $puppet-modal-title-font-size: $puppet-font-size-large !default;
-$puppet-modal-title-padding: 40px 80px !default; // Todo: Base on grid
-$puppet-modal-title-border: $puppet-border !default;
-$puppet-modal-sidebar-bg: $puppet-bg-subtle !default;
-$puppet-modal-sidebar-width: 300px !default;
-$puppet-modal-sidebar-padding: $puppet-modal-padding !default;
 $puppet-modal-actions-border: none !default;
 $puppet-modal-actions-padding: $puppet-modal-padding !default;
-$puppet-modal-actions-cta-padding: $puppet-small 0 $puppet-small 0 !default;
 
 .rc-modal-overlay {
+  align-items: center;
   background: $puppet-modal-overlay-bg;
+  display: flex;
   height: 100%;
+  justify-content: center;
   left: 0;
   position: fixed;
   top: 0;
@@ -31,9 +28,9 @@ $puppet-modal-actions-cta-padding: $puppet-small 0 $puppet-small 0 !default;
 }
 
 .rc-modal-close {
-  right: 2px;
   position: absolute;
-  top: 1px;
+  right: 2px;
+  top: 2px;
 }
 
 .rc-modal {
@@ -42,7 +39,7 @@ $puppet-modal-actions-cta-padding: $puppet-small 0 $puppet-small 0 !default;
   border-radius: $puppet-modal-border-radius;
   box-shadow: $puppet-modal-shadow;
   color: $puppet-modal-color;
-  margin: $puppet-size-base * 8 auto;
+  margin: $puppet-giant;
   outline: none;
   overflow: hidden;
   position: relative;
@@ -57,70 +54,11 @@ $puppet-modal-actions-cta-padding: $puppet-small 0 $puppet-small 0 !default;
   transform: translateZ(0);
 }
 
-.rc-modal-sidebar {
-  background-color: transparent;
-  float: right;
-  height: 1px; // this will get dynamically set via the react component.
-  padding: $puppet-modal-sidebar-padding;
-  width: $puppet-modal-sidebar-width;
-}
-
 .rc-modal-actions {
   background: $puppet-modal-bg;
   border-top: $puppet-modal-actions-border;
   overflow: hidden;
   padding: $puppet-modal-actions-padding;
-}
-
-.rc-modal-actions-right {
-  text-align: right;
-}
-
-.rc-modal-actions-left {
-  text-align: left;
-
-  .rc-modal-actions-cta {
-    margin-left: 8px;
-  }
-}
-
-.rc-modal-actions-cta {
-  margin: 0;
-  padding: $puppet-modal-actions-cta-padding;
-}
-
-.rc-modal-with-sidebar {
-  background: $puppet-modal-sidebar-bg;
-
-  .rc-modal-content,
-  .rc-modal-actions {
-    margin-right: $puppet-modal-sidebar-width;
-  }
-}
-
-.rc-modal-with-sidebar-left {
-  .rc-modal-sidebar {
-    float: left;
-  }
-
-  .rc-modal-content,
-  .rc-modal-actions {
-    margin-left: $puppet-modal-sidebar-width;
-    margin-right: 0;
-  }
-
-  .rc-modal-content {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
-    border-top-right-radius: $puppet-modal-border-radius;
-  }
-}
-
-.rc-modal-with-sidebar-right {
-  .rc-modal-content {
-    border-bottom-right-radius: 0;
-    border-top-right-radius: 0;
-  }
 }
 
 .rc-modal-small {
