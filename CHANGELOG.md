@@ -1,6 +1,8 @@
 # 5.0.0-alpha.26
 
 - Fix conflicting aria-disabled attribute in Button
+- Add accessible Modal
+- **Breaking change** Remove ConfirmationModal
 
 # 5.0.0-alpha.25
 
