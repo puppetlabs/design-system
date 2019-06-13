@@ -46,31 +46,27 @@ $puppet-modal-actions-padding: $puppet-modal-padding !default;
   width: $puppet-modal-width;
 }
 
+.rc-modal-title {
+  margin: $puppet-modal-padding;
+}
+
 .rc-modal-content {
   background: $puppet-modal-bg;
   border-radius: $puppet-modal-border-radius;
+  margin: $puppet-modal-padding;
   overflow-y: auto;
-  padding: $puppet-modal-padding;
   transform: translateZ(0);
 }
 
 .rc-modal-actions {
   background: $puppet-modal-bg;
   border-top: $puppet-modal-actions-border;
+  margin: $puppet-modal-actions-padding;
   overflow: hidden;
-  padding: $puppet-modal-actions-padding;
 }
 
 .rc-modal-small {
   width: $puppet-modal-width-small;
-
-  .rc-modal-content {
-    padding: 20px;
-  }
-
-  .rc-modal-actions {
-    padding: 20px;
-  }
 }
 
 .rc-modal-medium {
@@ -79,9 +75,4 @@ $puppet-modal-actions-padding: $puppet-modal-padding !default;
 
 .rc-modal-large {
   width: $puppet-modal-width-large;
-}
-
-.rc-modal-title {
-  font-size: $puppet-modal-title-font-size;
-  padding-bottom: 8px;
 }
