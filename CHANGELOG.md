@@ -2,6 +2,7 @@
 
 - Fix conflicting aria-disabled attribute in Button
 - Add accessible Modal
+- **Breaking change** Modal actions are now left-aligned
 - **Breaking change** Remove ConfirmationModal
 
 # 5.0.0-alpha.25
