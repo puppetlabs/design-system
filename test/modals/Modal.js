@@ -4,8 +4,8 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import Modal from '../../source/react/library/modals/Modal';
 import Button from '../../source/react/library/buttons/Button';
+import Modal from '../../source/react/library/modals/Modal';
 
 describe('<Modal />', () => {
   jsdom({ skipWindowCheck: true });
@@ -25,25 +25,24 @@ describe('<Modal />', () => {
     expect(modal.find('.rc-modal-close').length).to.equal(1);
   });
 
-  // it('should contain a valid title', () => {
-  //   const modal = shallow(<Modal title="title">{content}</Modal>);
-  //   expect(modal.find('Heading').prop('children')).to.equal('title');
-  // });
+  it('should contain a valid title', () => {
+    const modal = shallow(<Modal title="title">{content}</Modal>);
+    expect(modal.find('Heading').prop('children')).to.equal('title');
+  });
 
-  // it('should contain a valid content text', () => {
-  //   const modal = shallow(<Modal>{content}</Modal>);
-  //   expect(
-  //     modal
-  //       .find('Content')
-  //       .childAt(0)
-  //       .text(),
-  //   ).to.equal(content);
-  // });
+  it('should contain a valid content text', () => {
+    const modal = shallow(<Modal>{content}</Modal>);
+    expect(modal.find('.rc-modal-content').text()).to.equal(content);
+  });
 
-  // it('should contain a button if actions are provided', () => {
-  //   const actions = [<Button key="submit-button">submit</Button>];
-  //   const modal = shallow(<Modal actions={actions} />);
+  it('should contain a button if actions are provided', () => {
+    const actions = [
+      <Button id="submit-button" key="submit-button">
+        submit
+      </Button>,
+    ];
+    const modal = shallow(<Modal actions={actions} />);
 
-  //   expect(modal.find('Button').prop('children')).to.equal('submit');
-  // });
+    expect(modal.find('#submit-button').prop('children')).to.equal('submit');
+  });
 });
