@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import clone from 'clone';
 import { filterOperators } from '../../constants';
 import Form from '../form';
 
@@ -90,7 +89,7 @@ class FilterForm extends React.Component {
     super(props);
 
     this.state = {
-      filter: clone(props.filter),
+      filter: props.filter,
     };
 
     this.onUpdate = this.onUpdate.bind(this);
