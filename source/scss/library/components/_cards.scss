@@ -1,214 +1,148 @@
-$puppet-card-padding: $puppet-medium !default;
-$puppet-card-border-radius: $puppet-border-radius !default;
-// Primary
-$puppet-card-primary-bg: $puppet-white !default;
-$puppet-card-primary-border: $puppet-border !default;
-// Secondary
-$puppet-card-secondary-bg: $puppet-n200 !default;
-$puppet-card-secondary-border: $puppet-border !default;
-// Selectable
-$puppet-card-selectable-border-hover: $puppet-border-action !default;
-$puppet-card-selectable-shadow: $puppet-selectable-shadow !default;
-$puppet-card-selectable-shadow-hover: $puppet-selectable-shadow-hover !default;
-// Selected
-$puppet-card-border-selected: $puppet-border-action !default;
-$puppet-card-border-selected-hover: $puppet-border-action-hover !default;
-$puppet-card-selected-shadow: $puppet-selected-shadow !default;
-$puppet-card-selected-shadow-hover: $puppet-selected-shadow-hover !default;
+$puppet-card-padding: 17px !default;
 
-// Card subcomponents. NOTE: these variables should be considered unstable
-$puppet-card-title-size: $puppet-font-size-medium !default;
-$puppet-card-title-case: none !default;
-$puppet-card-title-color: $puppet-font-color-base !default;
-$puppet-card-title-margin: $puppet-tiny !default;
-$puppet-card-subtitle-size: $puppet-font-size-small !default;
-$puppet-card-subtitle-color: $puppet-font-color-medium !default;
-$puppet-card-controls-size: $puppet-font-size-small !default;
-$puppet-card-controls-color: $puppet-font-color-base !default;
-$puppet-card-search-margin: $puppet-medium 0 0 !default;
-$puppet-card-description-font-size: $puppet-font-size-base !default;
-$puppet-card-action-color-active: $puppet-action-base !default;
+// All borders are implemented as box-shadow. This is to avoid problems when
+// the active border switchs from 1px wide to 2px wide
+$puppet-card-border: inset 0 0 0 1px $puppet-n400;
+$puppet-card-border-hover: inset 0 0 0 1px $puppet-b400;
+$puppet-card-border-active: inset 0 0 0 1px $puppet-b600;
+
+$puppet-card-selected-border: inset 0 0 0 2px $puppet-b500;
+$puppet-card-selected-active-border: inset 0 0 0 2px $puppet-b600;
+
+$null-shadow: 0 0 0 0 transparent;
+
+@mixin base-shadow($elevation-shadow) {
+  box-shadow: $puppet-card-border, $elevation-shadow;
+
+  &.rc-card-selected {
+    box-shadow: $puppet-card-selected-border, $elevation-shadow;
+  }
+}
+
+@mixin selectable-shadow($elevation-shadow) {
+  &:hover {
+    box-shadow: $puppet-card-border-hover, $elevation-shadow;
+  }
+
+  &:focus {
+    box-shadow: $puppet-card-border, $elevation-shadow,
+      $puppet-common-focus-outline;
+  }
+
+  &:focus:hover {
+    box-shadow: $puppet-card-border-hover, $elevation-shadow,
+      $puppet-common-focus-outline;
+  }
+
+  &:focus:active {
+    box-shadow: $puppet-card-border-active, $elevation-shadow,
+      $puppet-common-focus-outline;
+  }
+
+  &.rc-card-selected {
+    &:focus {
+      box-shadow: $puppet-card-selected-border, $elevation-shadow,
+        $puppet-common-focus-outline;
+    }
+
+    &:focus:active {
+      box-shadow: $puppet-card-selected-active-border, $elevation-shadow,
+        $puppet-common-focus-outline;
+    }
+  }
+}
 
 .rc-card {
-  border-radius: $puppet-card-border-radius;
+  border: 0;
+  border-radius: $puppet-common-border-radius;
   display: flex;
   flex-direction: column;
+  min-height: 66px;
+  outline: none;
   padding: $puppet-card-padding;
   position: relative;
-  transition: border, box-shadow, background-color, border-radius, top, left,
-    bottom, right;
-  transition-duration: $puppet-animation-speed-base;
-  transition-timing-function: ease-in-out;
-}
-
-.rc-card-elevation-0 {
-  box-shadow: none;
-}
-
-.rc-card-elevation-50 {
-  box-shadow: $puppet-elev-50-shadow;
-}
-
-.rc-card-elevation-100 {
-  box-shadow: $puppet-elev-100-shadow;
-}
-
-.rc-card-elevation-150 {
-  box-shadow: $puppet-elev-150-shadow;
-}
-
-.rc-card-elevation-200 {
-  box-shadow: $puppet-elev-200-shadow;
-}
-
-.rc-card-elevation-400 {
-  box-shadow: $puppet-elev-400-shadow;
-}
-
-.rc-card-elevation-800 {
-  box-shadow: $puppet-elev-800-shadow;
 }
 
 .rc-card-primary {
-  background-color: $puppet-card-primary-bg;
-  border: $puppet-card-primary-border;
+  background-color: $puppet-white;
 }
 
 .rc-card-secondary {
-  background-color: $puppet-card-secondary-bg;
-  border: $puppet-card-secondary-border;
+  background-color: $puppet-n200;
 }
 
+.rc-card-elevation-0 {
+  @include base-shadow($null-shadow);
+}
+
+.rc-card-elevation-50 {
+  @include base-shadow($puppet-common-elevation-50);
+}
+
+.rc-card-elevation-100 {
+  @include base-shadow($puppet-common-elevation-100);
+}
+
+.rc-card-elevation-150 {
+  @include base-shadow($puppet-common-elevation-150);
+}
+
+.rc-card-elevation-200 {
+  @include base-shadow($puppet-common-elevation-200);
+}
+
+.rc-card-elevation-400 {
+  @include base-shadow($puppet-common-elevation-400);
+}
+
+.rc-card-elevation-800 {
+  @include base-shadow($puppet-common-elevation-800);
+}
+
+/* stylelint-disable */
+a.rc-card,
+button.rc-card,
 .rc-card-selectable {
-  box-shadow: $puppet-card-selectable-shadow;
   cursor: pointer;
+  text-decoration: unset;
+  color: unset;
 
-  &:hover {
-    border: $puppet-card-selectable-border-hover;
-    box-shadow: $puppet-card-selectable-shadow-hover;
+  &.rc-card-elevation-0 {
+    @include selectable-shadow($null-shadow);
+  }
+
+  &.rc-card-elevation-50 {
+    @include selectable-shadow($puppet-common-elevation-50);
+  }
+
+  &.rc-card-elevation-100 {
+    @include selectable-shadow($puppet-common-elevation-100);
+  }
+
+  &.rc-card-elevation-150 {
+    @include selectable-shadow($puppet-common-elevation-150);
+  }
+
+  &.rc-card-elevation-200 {
+    @include selectable-shadow($puppet-common-elevation-200);
+  }
+
+  &.rc-card-elevation-400 {
+    @include selectable-shadow($puppet-common-elevation-400);
+  }
+
+  &.rc-card-elevation-800 {
+    @include selectable-shadow($puppet-common-elevation-800);
   }
 }
-
-.rc-card-selected {
-  border: $puppet-card-border-selected;
-  box-shadow: $puppet-card-selected-shadow;
-
-  &:hover {
-    border: $puppet-card-border-selected-hover;
-    box-shadow: $puppet-card-selected-shadow-hover;
-  }
-}
-
-.rc-card-header {
-  width: 100%;
-
-  + .rc-card-section,
-  + .rc-card-header {
-    padding-top: $puppet-card-padding;
-  }
-}
-
-.rc-card-title-actions {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-bottom: $puppet-mini;
-
-  &:only-child {
-    margin-bottom: 0;
-  }
-}
-
-.rc-card-description {
-  font-size: $puppet-card-description-font-size;
-}
-
-.rc-card-title-area {
-  flex-grow: 1;
-  overflow: hidden;
-}
-
-.rc-card-title {
-  color: $puppet-card-title-color;
-  font-size: $puppet-card-title-size;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-transform: $puppet-card-title-case;
-  white-space: nowrap;
-
-  + .rc-card-controls,
-  + .rc-card-subtitle,
-  + .rc-card-description {
-    margin-top: $puppet-card-title-margin;
-  }
-}
-
-.rc-card-subtitle {
-  color: $puppet-card-subtitle-color;
-  font-size: $puppet-card-subtitle-size;
-}
-
-.rc-card-controls {
-  color: $puppet-card-controls-color;
-  font-size: $puppet-card-controls-size;
-
-  + .rc-card-description {
-    margin-top: $puppet-card-title-margin;
-  }
-}
-
-.rc-card-section {
-  width: 100%;
-
-  + .rc-card-section,
-  + .rc-card-header {
-    padding-top: $puppet-card-padding;
-  }
-}
+/* stylelint-enable */
 
 .rc-card-actions {
-  align-self: flex-start;
-  display: flex;
-  margin-left: 8px;
-  z-index: 24;
-
-  .rc-card-remove {
-    background: $puppet-bg-subtle;
-    border-radius: 50%;
-    cursor: pointer;
-    height: 21px;
-    line-height: 20px;
-    text-align: center;
-    width: 21px;
-  }
+  position: absolute;
+  right: 17px;
+  top: 17px;
 }
 
-// TODO: Cleanup button nesting so you don't need to be so explicit with overrides
-.rc-card-actions .rc-popover-target-open {
-  .rc-icon {
-    fill: $puppet-card-action-color-active;
-  }
-
-  &:hover .rc-icon {
-    fill: $puppet-card-action-color-active;
-  }
-}
-
-.rc-card-action {
-  cursor: pointer;
-  margin-left: 8px;
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-}
-
-.rc-card-search {
-  display: flex;
-
-  .rc-input {
-    margin-left: 8px;
-    margin-top: -4px;
-    width: 200px;
-  }
+.rc-card-title:not(:last-child) {
+  margin-bottom: $puppet-common-spacing-base * 2;
 }

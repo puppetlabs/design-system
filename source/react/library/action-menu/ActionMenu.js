@@ -21,7 +21,7 @@ const propTypes = {
   actions: PropTypes.arrayOf(
     PropTypes.shape({
       /** Unique action id */
-      id: PropTypes.string.isRequired,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       /** Action text */
       label: PropTypes.node.isRequired,
       /** Optional icon rendered to the left of action text */

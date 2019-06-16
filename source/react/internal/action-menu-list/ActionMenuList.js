@@ -21,7 +21,7 @@ const propTypes = {
   id: PropTypes.string.isRequired,
   actions: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       label: PropTypes.node.isRequired,
       icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
       onClick: PropTypes.func,
