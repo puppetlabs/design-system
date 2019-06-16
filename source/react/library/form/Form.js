@@ -396,6 +396,7 @@ class Form extends Component {
         style={style}
         onSubmit={onSubmit}
         onCancel={onCancel}
+        noValidate
       >
         {children}
         {error}
