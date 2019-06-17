@@ -1,95 +1,116 @@
-```
+A `Modal` is a container with arbitrary content that opens above other page
+content.
+
+```jsx
 initialState = { isOpen: null };
-<div>
-  <ButtonGroup>
-    <Button
-      onClick={ () => { setState({ isOpen: 'main' }) }}
-    >
-      Open simple modal
-    </Button>
-    <Button
-      onClick={ () => { setState({ isOpen: 'actions' }) }}
-    >
-      Open modal with actions
-    </Button>
-  </ButtonGroup>
 
-  { state.isOpen === 'main' &&
-    <Modal
-      title="I'm a happy modal!"
-      onClose={ () => { setState({ isOpen: null }) }}
-    >
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit ante non mauris tristique, id iaculis orci varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper fringilla congue. Donec sed risus id augue aliquet laoreet a tempus nunc. Donec ultricies leo ac urna elementum, ac egestas quam viverra. Suspendisse erat eros, tempus eget condimentum ut, consectetur sed risus. In pretium dignissim nulla sit amet rhoncus. Nam sodales sem sapien, ac pretium mauris congue vitae.</p>
+<>
+  <Button onClick={() => { setState({ isOpen: true }) }}>
+    Open simple modal
+  </Button>
 
-      <p>Aenean vehicula imperdiet quam, sit amet fringilla ligula. Nam orci arcu, ultricies nec feugiat vel, dignissim sit amet tellus. Nulla ut lobortis urna. Aenean augue ante, vehicula in fermentum sit amet, rhoncus sed ipsum. Donec aliquam velit a nunc mattis interdum. Proin congue urna non efficitur aliquam. Proin molestie condimentum accumsan. Suspendisse mattis volutpat augue a venenatis. Donec quis nulla a quam aliquam faucibus in non augue. Nam sodales nisi ac nibh posuere facilisis. Suspendisse pharetra nibh tincidunt, efficitur purus et, blandit ex. Pellentesque commodo mauris malesuada elit dignissim commodo. Suspendisse vehicula non neque ac vestibulum. Nunc non leo a arcu hendrerit condimentum. Duis auctor ligula non enim varius, vitae rutrum purus ultrices.</p>
-
-      <p>Integer ut elit nec leo suscipit posuere eu et sapien. Curabitur vel dolor diam. Curabitur fringilla sapien sit amet lacinia dignissim. Suspendisse sodales vestibulum ultricies. Aliquam eget pulvinar urna. Maecenas eu maximus eros. Aliquam maximus lorem a consequat euismod. Curabitur ac est a turpis mollis accumsan in vitae arcu. Praesent ultrices, turpis et pretium consequat, erat purus bibendum augue, ac placerat nisi metus sed erat. Suspendisse posuere at risus nec auctor. Praesent pretium metus in sapien vulputate, quis feugiat enim iaculis. Vestibulum eget porta urna. Suspendisse ornare lacinia neque dictum fermentum. Mauris pharetra, ex et facilisis sagittis, nunc ligula finibus enim, eget sodales diam sem non ligula. Curabitur id auctor diam, vehicula semper lorem.</p>
-
-      <p>Fusce et enim sed tellus auctor lacinia non in mi. Donec vel vestibulum elit, ut condimentum massa. Aenean faucibus erat vitae diam hendrerit fermentum. Quisque sit amet dui eu leo gravida vestibulum. Vivamus vel velit ante. Interdum et malesuada fames ac ante ipsum primis in faucibus. Morbi non nibh accumsan nulla tincidunt luctus ut eu urna. Nullam egestas lacinia nibh in hendrerit. Cras ornare ut est sed pellentesque.</p>
-
-      <p>Pellentesque a tristique lacus, eu faucibus elit. Maecenas accumsan vehicula nulla, sed laoreet libero cursus sit amet. Vivamus efficitur tortor et posuere vestibulum. Curabitur non arcu interdum, porttitor ligula in, accumsan lorem. Proin tempus in ligula in dignissim. Nullam ac ornare justo, luctus maximus est. Mauris bibendum sagittis fringilla. Mauris imperdiet aliquet ex quis porttitor. Suspendisse efficitur auctor metus, nec tristique dui pretium in. Duis eleifend mauris non erat ullamcorper fringilla.</p>
+  { state.isOpen &&
+    <Modal onClose={() => { setState({ isOpen: null }) }}>
+      Non eram nescius, Brute, cum, quae summis ingeniis exquisitaque doctrina philosophi Graeco sermone tractavissent, ea Latinis litteris mandaremus, fore ut hic noster labor in varias reprehensiones incurreret. nam quibusdam, et iis quidem non admodum indoctis, totum hoc displicet philosophari. quidam autem non tam id reprehendunt, si remissius agatur, sed tantum studium tamque multam operam ponendam in eo non arbitrantur. erunt etiam, et ii quidem eruditi Graecis litteris, contemnentes Latinas, qui se dicant in Graecis legendis operam malle consumere. postremo aliquos futuros suspicor, qui me ad alias litteras vocent, genus hoc scribendi, etsi sit elegans, personae tamen et dignitatis esse negent.
     </Modal>
   }
-
-  { state.isOpen === 'actions' &&
-    <Modal
-      title="I'm a happy modal with actions!"
-      actionsCTA="Select an action"
-      actions={ [
-        <Button key="button-1" onClick={ () => { setState({ isOpen: null }) } } >Click me!</Button>,
-        <Button key="button-2" onClick={ () => { setState({ isOpen: null }) } } >Or me!</Button>
-      ]}
-      onClose={ () => { setState({ isOpen: null }) }}
-    >
-      <span>I'm some happy content within the modal!</span>
-    </Modal>
-  }
-
-</div>
+</>
 ```
 
-Modals can have sidebars:
+The `Modal.Title` and `Modal.Actions` subcomponents should be used when a
+heading at the top and buttons at the bottom are desired respectively.
 
-```
+```jsx
 initialState = { isOpen: null };
-<div>
-  <ButtonGroup>
-    <Button
-      onClick={ () => { setState({ isOpen: 'leftSidebar' }) }}
-    >
-      Open modal with left sidebar
-    </Button>
-    <Button
-      onClick={ () => { setState({ isOpen: 'rightSidebar' }) }}
-    >
-      Open modal with right sidebar
-    </Button>
-  </ButtonGroup>
 
-  { state.isOpen === 'leftSidebar' &&
-    <Modal
-      title="I am a happy modal"
-      sidebar="Happy Sidebar!"
-      sidebarPosition="left"
-      onClose={ () => { setState({ isOpen: null }) } }
-      margin={ 200 }
-      actionsCTA="I'm a happy action cta!"
-    >
-      Happy Content!
+<>
+  <Button onClick={() => { setState({ isOpen: true }) }}>
+    Open modal with sub-components
+  </Button>
+
+  { state.isOpen &&
+    <Modal onClose={() => { setState({ isOpen: null }) }}>
+      <Modal.Title>Liber Secundus</Modal.Title>
+      Hic cum uterque me intueretur seseque ad audiendum significarent paratos, Primum, inquam, deprecor, ne me tamquam philosophum putetis scholam vobis aliquam explicaturum, quod ne in ipsis quidem philosophis magnopere umquam probavi. quando enim Socrates, qui parens philosophiae iure dici potest, quicquam tale fecit? eorum erat iste mos qui tum sophistae nominabantur, quorum e numero primus est ausus Leontinus Gorgias in conventu poscere quaestionem, id est iubere dicere, qua de re quis vellet audire. audax negotium, dicerem impudens, nisi hoc institutum postea translatum ad philosophos nostros esset.
+      <Modal.Actions>
+        <Button onClick={() => { setState({ isOpen: null }) }}>Ubmitsay</Button>
+        <Button type="tertiary" onClick={() => { setState({ isOpen: null }) }}>
+          Ancelcay
+        </Button>
+      </Modal.Actions>
+    </Modal>
+  }
+</>
+```
+
+A common pattern is to include a Form in a Modal. This may be accomplished by
+composing these components.
+
+```jsx
+initialState = { isOpen: null };
+
+<>
+  <Button onClick={() => { setState({ isOpen: true }) }}>
+    Open modal with form
+  </Button>
+
+  { state.isOpen &&
+    <Modal onClose={() => { setState({ isOpen: null }) }}>
+      <Modal.Title>Replete ex hac forma</Modal.Title>
+      <Form submittable cancellable onSubmit={
+        () => { setState({ isOpen: null }) }
+      }
+      onCancel={
+        () => { setState({ isOpen: null }) }
+      }
+      >
+        <Form.Field
+          type="email"
+          name="inscriptio"
+          label="Inscriptio"
+          placeholder="Email"
+        />
+        <Form.Field
+          type="select"
+          name="selectBook"
+          label="Eligere libro"
+          placeholder="Choose a book"
+          options={[
+            { value: 'one', label: 'Liber Primus' },
+            { value: 'two', label: 'Liber Secundus' },
+            { value: 'three', label: 'Liber Tertius' },
+            { value: 'four', label: 'Liber Quartus' },
+            { value: 'five', label: 'Liber Quintus' },
+          ]}
+        />
+        <Form.Field
+          type="checkbox"
+          name="likesCicero"
+          label="Do you like Cicero?"
+        />
+      </Form>
     </Modal>
   }
 
-  { state.isOpen === 'rightSidebar' &&
-    <Modal
-      title="I am a happy modal"
-      sidebar="Happy Sidebar!"
-      sidebarPosition="right"
-      onClose={ () => { setState({ isOpen: null }) } }
-      margin={ 200 }
-      actionsCTA="I'm a happy action cta!"
-    >
-      Happy Content!
+</>
+```
+
+Closing via the ESC key and clicking outside the modal can be disabled, but that
+is not recommended unless special handling of something like a wizard is
+required.
+
+```jsx
+initialState = { isOpen: null };
+
+<>
+  <Button onClick={() => { setState({ isOpen: true }) }}>
+    Open modal that is hard to close
+  </Button>
+
+  { state.isOpen &&
+    <Modal closeOnEscapeAndOverlay={false} onClose={() => { setState({ isOpen: null }) }}>
+      This modal can only be closed by clicking the "×" button in the upper-right of the modal, but not by hitting the escape key or by clicking outside the modal.
     </Modal>
   }
-</div>
+</>
 ```

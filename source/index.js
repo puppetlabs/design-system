@@ -11,7 +11,6 @@ import Input from './react/library/input/Input';
 import Switch from './react/library/switch/Switch';
 import Loading from './react/library/loading/Loading';
 import Modal from './react/library/modals/Modal';
-import ConfirmationModal from './react/library/modals/ConfirmationModal';
 import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
 import Select from './react/library/select/Select';
 import Form from './react/library/form';
@@ -41,7 +40,6 @@ export {
   Switch,
   Loading,
   Modal,
-  ConfirmationModal,
   TooltipHoverArea,
   Select,
   Form,

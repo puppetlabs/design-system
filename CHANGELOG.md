@@ -1,6 +1,12 @@
 # 5.0.0-alpha.26
 
 - Fix conflicting aria-disabled attribute in Button
+- Add accessible Modal
+- **Breaking change** Modal actions are now left-aligned
+- **Breaking change** Remove ConfirmationModal
+- **Breaking change** Remove `title` prop from Modal in favor of Modal.Title subcomponent
+- **Breaking change** Remove `actions` prop from Modal in favor of Modal.Actions subcomponent
+- **Breaking change** Remove `size` prop from Modal. Default is now 480px, users can override by passing a custom className
 
 # 5.0.0-alpha.25
 
