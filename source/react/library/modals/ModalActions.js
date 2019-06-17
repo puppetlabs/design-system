@@ -12,9 +12,6 @@ const defaultProps = {
   actionsPosition: 'left',
 };
 
-/**
- * The card actions menu is just an actionsMenu with some defaults set
- */
 const ModalActions = ({ className, actionsPosition, ...rest }) => (
   <div
     className={classNames(

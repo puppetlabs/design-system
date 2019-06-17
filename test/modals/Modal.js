@@ -1,10 +1,8 @@
 import jsdom from 'mocha-jsdom';
 import sinon from 'sinon';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
-
-import Button from '../../source/react/library/buttons/Button';
 import Modal from '../../source/react/library/modals/Modal';
 
 describe('<Modal />', () => {

@@ -1,81 +1,96 @@
-A `Modal` is a container with arbitrary content that opens above other page content.
+A `Modal` is a container with arbitrary content that opens above other page
+content.
 
 ```jsx
 initialState = { isOpen: null };
-<div>
-  <Button
-    onClick={ () => { setState({ isOpen: 'main' }) }}
-  >
+
+<>
+  <Button onClick={() => { setState({ isOpen: true }) }}>
     Open simple modal
   </Button>
 
-  { state.isOpen === 'main' &&
-    <Modal onClose={ () => { setState({ isOpen: null }) }}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit ante non mauris tristique, id iaculis orci varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper fringilla congue. Donec sed risus id augue aliquet laoreet a tempus nunc. Donec ultricies leo ac urna elementum, ac egestas quam viverra. Suspendisse erat eros, tempus eget condimentum ut, consectetur sed risus. In pretium dignissim nulla sit amet rhoncus. Nam sodales sem sapien, ac pretium mauris congue vitae.
+  { state.isOpen &&
+    <Modal onClose={() => { setState({ isOpen: null }) }}>
+      Non eram nescius, Brute, cum, quae summis ingeniis exquisitaque doctrina philosophi Graeco sermone tractavissent, ea Latinis litteris mandaremus, fore ut hic noster labor in varias reprehensiones incurreret. nam quibusdam, et iis quidem non admodum indoctis, totum hoc displicet philosophari. quidam autem non tam id reprehendunt, si remissius agatur, sed tantum studium tamque multam operam ponendam in eo non arbitrantur. erunt etiam, et ii quidem eruditi Graecis litteris, contemnentes Latinas, qui se dicant in Graecis legendis operam malle consumere. postremo aliquos futuros suspicor, qui me ad alias litteras vocent, genus hoc scribendi, etsi sit elegans, personae tamen et dignitatis esse negent.
     </Modal>
   }
-
-</div>
+</>
 ```
 
-The `Modal.Title` and `Modal.Actions` subcomponents should be used to
+The `Modal.Title` and `Modal.Actions` subcomponents should be used when a
+heading at the top and buttons at the bottom are desired respectively.
 
 ```jsx
 initialState = { isOpen: null };
-<div>
-  <Button
-    onClick={ () => { setState({ isOpen: 'title' }) }}
-  >
+
+<>
+  <Button onClick={() => { setState({ isOpen: true }) }}>
     Open modal with sub-components
   </Button>
 
-  { state.isOpen === 'title' &&
-    <Modal onClose={ () => { setState({ isOpen: null }) }}>
-      <Modal.Title>Titular Content</Modal.Title>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit ante non mauris tristique, id iaculis orci varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper fringilla congue. Donec sed risus id augue aliquet laoreet a tempus nunc. Donec ultricies leo ac urna elementum, ac egestas quam viverra. Suspendisse erat eros, tempus eget condimentum ut, consectetur sed risus. In pretium dignissim nulla sit amet rhoncus. Nam sodales sem sapien, ac pretium mauris congue vitae.
+  { state.isOpen &&
+    <Modal onClose={() => { setState({ isOpen: null }) }}>
+      <Modal.Title>Liber Secundus</Modal.Title>
+      Hic cum uterque me intueretur seseque ad audiendum significarent paratos, Primum, inquam, deprecor, ne me tamquam philosophum putetis scholam vobis aliquam explicaturum, quod ne in ipsis quidem philosophis magnopere umquam probavi. quando enim Socrates, qui parens philosophiae iure dici potest, quicquam tale fecit? eorum erat iste mos qui tum sophistae nominabantur, quorum e numero primus est ausus Leontinus Gorgias in conventu poscere quaestionem, id est iubere dicere, qua de re quis vellet audire. audax negotium, dicerem impudens, nisi hoc institutum postea translatum ad philosophos nostros esset.
       <Modal.Actions>
-        <Button>Engage!</Button>
-        <Button type="secondary">Abort!</Button>
+        <Button onClick={() => { setState({ isOpen: null }) }}>Ubmitsay</Button>
+        <Button type="tertiary" onClick={() => { setState({ isOpen: null }) }}>
+          Ancelcay
+        </Button>
       </Modal.Actions>
     </Modal>
   }
-
-</div>
+</>
 ```
 
-A common pattern is to include a Form in a Modal. This may be accomplished by composing these components.
+A common pattern is to include a Form in a Modal. This may be accomplished by
+composing these components.
 
 ```jsx
 initialState = { isOpen: null };
-<div>
-  <Button
-    onClick={ () => { setState({ isOpen: 'wide' }) }}
-  >
-    Open wide modal
+
+<>
+  <Button onClick={() => { setState({ isOpen: true }) }}>
+    Open modal with form
   </Button>
 
-  { state.isOpen === 'wide' &&
-    <Modal size="large" onClose={ () => { setState({ isOpen: null }) }}>
-      <Modal.Title>Fill out this form!</Modal.Title>
-      <Form submittable cancellable>
+  { state.isOpen &&
+    <Modal onClose={() => { setState({ isOpen: null }) }}>
+      <Modal.Title>Replete ex hac forma</Modal.Title>
+      <Form submittable cancellable onSubmit={
+        () => { setState({ isOpen: null }) }
+      }
+      onCancel={
+        () => { setState({ isOpen: null }) }
+      }
+      >
         <Form.Field
           type="email"
-          name="email"
-          label="Email"
+          name="inscriptio"
+          label="Inscriptio"
+          placeholder="Email"
         />
         <Form.Field
-          type="text"
-          name="favorite_animal"
-          label="Favorite Animal"
+          type="select"
+          name="selectBook"
+          label="Eligere libro"
+          placeholder="Choose a book"
+          options={[
+            { value: 'one', label: 'Liber Primus' },
+            { value: 'two', label: 'Liber Secundus' },
+            { value: 'three', label: 'Liber Tertius' },
+            { value: 'four', label: 'Liber Quartus' },
+            { value: 'five', label: 'Liber Quintus' },
+          ]}
         />
         <Form.Field
           type="checkbox"
-          name="is_weirdo"
-          label="Are you a weirdo?"
+          name="likesCicero"
+          label="Do you like Cicero?"
         />
       </Form>
     </Modal>
   }
 
-</div>
+</>
 ```

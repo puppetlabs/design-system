@@ -11,9 +11,6 @@ const defaultProps = {
   className: '',
 };
 
-/**
- * The card actions menu is just an actionsMenu with some defaults set
- */
 const ModalTitle = ({ className, ...rest }) => (
   <Heading
     as="h3"
