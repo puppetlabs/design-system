@@ -10,8 +10,6 @@ import ModalActions from './ModalActions';
 const propTypes = {
   /** Actions to render */
   actions: PropTypes.node,
-  /** The selector for your top-level app element */
-  appElementSelector: PropTypes.string,
   /** Additional classes to add in addition to 'rc-modal' */
   className: PropTypes.string,
   /** Allow closing via the ESC key and clicking outside the modal */
@@ -23,7 +21,6 @@ const propTypes = {
 };
 const defaultProps = {
   actions: null,
-  appElementSelector: 'body',
   className: '',
   closeOnEscapeAndOverlay: true,
   isOpen: true,
@@ -55,13 +52,17 @@ class Modal extends Component {
 
     return (
       <ReactModal
+        // https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal
+        // "The aria-modal property introduced by ARIA 1.1 replaces aria-hidden
+        // for informing assistive technologies that content outside a dialog is
+        // inert." Thus, we can omit `aria-hidden` with this prop and add
+        // `aria-modal` with the modal prop below.
+        ariaHideApp={false}
         className={classNames('rc-modal', className)}
         isOpen={isOpen}
         onRequestClose={closeOnEscapeAndOverlay ? onClose : undefined}
         overlayClassName={`rc-modal-overlay ${overlayClassName}`}
-        aria={{
-          modal: true,
-        }}
+        aria={{ modal: true }}
         {...props}
       >
         <Button
