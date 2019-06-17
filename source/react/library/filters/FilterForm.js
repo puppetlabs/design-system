@@ -222,7 +222,6 @@ class FilterForm extends React.Component {
           type="select"
           name="field"
           label={strings.filterField}
-          disablePortal
           options={fields}
           placeholder={strings.filterFieldPlaceholder}
         />
@@ -230,7 +229,6 @@ class FilterForm extends React.Component {
           type="select"
           name="op"
           label={strings.filterOperator}
-          disablePortal
           options={operators}
           placeholder={strings.filterOperatorPlaceholder}
         />

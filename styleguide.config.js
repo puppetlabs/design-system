@@ -15,11 +15,9 @@ module.exports = {
     ),
   },
   ignore: [
-    '**/portal.js',
-    '**/togglable.js',
-    '**/Saving.js',
     '**/**/index.js',
     '**/alert/IconButton.js',
+    '**/FadeInAndOut.js',
     '**/breadcrumb/Section.js',
     '**/breadcrumb/Separator.js',
     '**/card/CardActionSelect.js',

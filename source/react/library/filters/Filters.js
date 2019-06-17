@@ -4,7 +4,7 @@ import React from 'react';
 import Filter from './FilterItem';
 import Form from './FilterForm';
 
-import Button from '../buttons/Button';
+import Button from '../button/Button';
 import List from './List';
 
 import { filterOperators } from '../../constants';

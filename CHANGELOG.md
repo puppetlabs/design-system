@@ -18,6 +18,7 @@
 - Add Card.Title subcomponent
 - **Breaking Change** Rename Card.ActionsMenu -> Card.ActionSelect
 - Remove Filters and related components from react-components documentation, add note about deficiencies
+- **Breaking Change** Remove ButtonGroup component
 
 # 5.0.0-alpha.25
 

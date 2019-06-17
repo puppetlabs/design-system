@@ -4,7 +4,7 @@ import React from 'react';
 import sinon from 'sinon';
 
 import Form, { isEmpty } from '../../source/react/library/form/Form';
-import Button from '../../source/react/library/buttons/Button';
+import Button from '../../source/react/library/button/Button';
 
 describe('<Form />', () => {
   it('should propagate user provided className', () => {
