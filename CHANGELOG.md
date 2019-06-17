@@ -8,6 +8,16 @@
 - **Breaking change** Remove `actions` prop from Modal in favor of Modal.Actions subcomponent
 - **Breaking change** Remove `size` prop from Modal. Default is now 480px, users can override by passing a custom className
 - **Breaking change** Replace `onRequestClose` callback prop on Modal with `onClose` for consistency with other components
+- List core-js as direct dependency (needed by way of @babel/polyfill)
+- Use webpack-node-externals to reduce bundle size
+- ActionMenu can accept a number as an action id
+- Update Card styling to include focus state
+- Update Card documentation
+- **Breaking change** Remove Card.Header subcomponent
+- **Breaking change** Remove Card.Section subcomponent
+- Add Card.Title subcomponent
+- **Breaking Change** Rename Card.ActionsMenu -> Card.ActionSelect
+- Remove Filters and related components from react-components documentation, add note about deficiencies
 
 # 5.0.0-alpha.25
 
