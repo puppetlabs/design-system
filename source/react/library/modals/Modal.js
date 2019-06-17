@@ -14,6 +14,8 @@ const propTypes = {
   appElementSelector: PropTypes.string,
   /** Additional classes to add in addition to 'rc-modal' */
   className: PropTypes.string,
+  /** Allow closing via the ESC key and clicking outside the modal */
+  closeOnEscapeAndOverlay: PropTypes.bool,
   /** A boolean to toggle the modal open and closed */
   isOpen: PropTypes.bool,
   /** Function to call when the close button is clicked or ESC is pressed */
@@ -23,6 +25,7 @@ const defaultProps = {
   actions: null,
   appElementSelector: 'body',
   className: '',
+  closeOnEscapeAndOverlay: true,
   isOpen: true,
   onClose: () => {},
 };
@@ -43,6 +46,7 @@ class Modal extends Component {
     const {
       children,
       className,
+      closeOnEscapeAndOverlay,
       isOpen,
       onClose,
       overlayClassName,
@@ -53,7 +57,7 @@ class Modal extends Component {
       <ReactModal
         className={classNames('rc-modal', className)}
         isOpen={isOpen}
-        onClose={onClose}
+        onRequestClose={closeOnEscapeAndOverlay ? onClose : undefined}
         overlayClassName={`rc-modal-overlay ${overlayClassName}`}
         aria={{
           modal: true,

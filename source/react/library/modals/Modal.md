@@ -94,3 +94,23 @@ initialState = { isOpen: null };
 
 </>
 ```
+
+Closing via the ESC key and clicking outside the modal can be disabled, but that
+is not recommended unless special handling of something like a wizard is
+required.
+
+```jsx
+initialState = { isOpen: null };
+
+<>
+  <Button onClick={() => { setState({ isOpen: true }) }}>
+    Open modal that is hard to close
+  </Button>
+
+  { state.isOpen &&
+    <Modal closeOnEscapeAndOverlay={false} onClose={() => { setState({ isOpen: null }) }}>
+      This modal can only be closed by clicking the "×" button in the upper-right of the modal, but not by hitting the escape key or by clicking outside the modal.
+    </Modal>
+  }
+</>
+```
