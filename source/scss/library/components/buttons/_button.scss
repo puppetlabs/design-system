@@ -148,3 +148,7 @@
     right: 4px;
   }
 }
+
+.rc-button + .rc-button {
+  margin-left: $puppet-common-spacing;
+}

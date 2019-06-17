@@ -95,11 +95,14 @@
 
 .rc-form-actions {
   display: flex;
-  justify-content: flex-end;
 
   .rc-form-action:not(:last-child) {
     margin-right: $puppet-common-spacing-base * 0.5;
   }
+}
+
+.rc-form-actions-right {
+  justify-content: flex-end;
 }
 
 .rc-form-actions-left {

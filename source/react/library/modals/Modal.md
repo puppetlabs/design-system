@@ -1,3 +1,5 @@
+A `Modal` is a container with arbitrary content that opens above other page content.
+
 ```jsx
 initialState = { isOpen: null };
 <div>
@@ -8,42 +10,15 @@ initialState = { isOpen: null };
   </Button>
 
   { state.isOpen === 'main' &&
-    <Modal onRequestClose={ () => { setState({ isOpen: null }) }}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit ante non mauris tristique, id iaculis orci varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper fringilla congue. Donec sed risus id augue aliquet laoreet a tempus nunc.
+    <Modal onClose={ () => { setState({ isOpen: null }) }}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit ante non mauris tristique, id iaculis orci varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper fringilla congue. Donec sed risus id augue aliquet laoreet a tempus nunc. Donec ultricies leo ac urna elementum, ac egestas quam viverra. Suspendisse erat eros, tempus eget condimentum ut, consectetur sed risus. In pretium dignissim nulla sit amet rhoncus. Nam sodales sem sapien, ac pretium mauris congue vitae.
     </Modal>
   }
 
 </div>
 ```
 
-A `Modal` may contain buttons.
-
-```jsx
-initialState = { isOpen: null };
-<div>
-  <Button
-    onClick={ () => { setState({ isOpen: 'buttons' }) }}
-  >
-    Open modal that contains a button
-  </Button>
-
-  { state.isOpen === 'buttons' &&
-    <Modal
-      actions={
-        <Button primary onClick={() => setState({ isOpen: null })}>
-          Submit
-        </Button>
-       }
-      onRequestClose={ () => { setState({ isOpen: null }) }}
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-    </Modal>
-  }
-
-</div>
-```
-
-A `Modal` may contain have a header.
+The `Modal.Title` and `Modal.Actions` subcomponents should be used to
 
 ```jsx
 initialState = { isOpen: null };
@@ -51,22 +26,24 @@ initialState = { isOpen: null };
   <Button
     onClick={ () => { setState({ isOpen: 'title' }) }}
   >
-    Open modal that contains a header
+    Open modal with sub-components
   </Button>
 
   { state.isOpen === 'title' &&
-    <Modal
-      title="Welcome to this modal dialog box"
-      onRequestClose={ () => { setState({ isOpen: null }) }}
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    <Modal onClose={ () => { setState({ isOpen: null }) }}>
+      <Modal.Title>Titular Content</Modal.Title>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit ante non mauris tristique, id iaculis orci varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper fringilla congue. Donec sed risus id augue aliquet laoreet a tempus nunc. Donec ultricies leo ac urna elementum, ac egestas quam viverra. Suspendisse erat eros, tempus eget condimentum ut, consectetur sed risus. In pretium dignissim nulla sit amet rhoncus. Nam sodales sem sapien, ac pretium mauris congue vitae.
+      <Modal.Actions>
+        <Button>Engage!</Button>
+        <Button type="secondary">Abort!</Button>
+      </Modal.Actions>
     </Modal>
   }
 
 </div>
 ```
 
-A `Modal` may be very wide.
+A common pattern is to include a Form in a Modal. This may be accomplished by composing these components.
 
 ```jsx
 initialState = { isOpen: null };
@@ -78,8 +55,25 @@ initialState = { isOpen: null };
   </Button>
 
   { state.isOpen === 'wide' &&
-    <Modal size="large" onRequestClose={ () => { setState({ isOpen: null }) }}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec suscipit ante non mauris tristique, id iaculis orci varius. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ullamcorper fringilla congue. Donec sed risus id augue aliquet laoreet a tempus nunc. Donec ultricies leo ac urna elementum, ac egestas quam viverra. Suspendisse erat eros, tempus eget condimentum ut, consectetur sed risus. In pretium dignissim nulla sit amet rhoncus. Nam sodales sem sapien, ac pretium mauris congue vitae.
+    <Modal size="large" onClose={ () => { setState({ isOpen: null }) }}>
+      <Modal.Title>Fill out this form!</Modal.Title>
+      <Form submittable cancellable>
+        <Form.Field
+          type="email"
+          name="email"
+          label="Email"
+        />
+        <Form.Field
+          type="text"
+          name="favorite_animal"
+          label="Favorite Animal"
+        />
+        <Form.Field
+          type="checkbox"
+          name="is_weirdo"
+          label="Are you a weirdo?"
+        />
+      </Form>
     </Modal>
   }
 
