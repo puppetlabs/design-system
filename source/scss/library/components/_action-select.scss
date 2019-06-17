@@ -1,4 +1,4 @@
-.rc-action-menu {
+.rc-action-select {
   position: relative;
 
   .rc-menu-list {
@@ -7,13 +7,13 @@
     z-index: 10;
   }
 
-  .rc-action-menu-list-inner {
+  .rc-menu-list-inner {
     max-height: 200px;
   }
 }
 
-.rc-action-menu-closed {
-  .rc-action-menu-list {
+.rc-action-select-closed {
+  .rc-menu-list {
     display: none;
   }
 }

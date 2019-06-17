@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Button from '../buttons/Button';
-import ActionMenuList from '../../internal/action-menu-list';
+import ActionSelectList from '../../internal/action-menu-list';
 import {
   renderableElement,
   anchorOrientation,
@@ -71,7 +71,7 @@ const defaultProps = {
   style: {},
 };
 
-class ActionMenu extends Component {
+class ActionSelect extends Component {
   constructor(props) {
     super(props);
 
@@ -151,10 +151,10 @@ class ActionMenu extends Component {
     return (
       <div
         className={classNames(
-          'rc-action-menu',
+          'rc-action-select',
           {
-            'rc-action-menu-open': open,
-            'rc-action-menu-closed': !open,
+            'rc-action-select-open': open,
+            'rc-action-select-closed': !open,
           },
           className,
         )}
@@ -181,7 +181,7 @@ class ActionMenu extends Component {
         >
           {label}
         </Button>
-        <ActionMenuList
+        <ActionSelectList
           id={`${id}-menu`}
           actions={actions}
           aria-labelledby={id}
@@ -197,7 +197,7 @@ class ActionMenu extends Component {
   }
 }
 
-ActionMenu.propTypes = propTypes;
-ActionMenu.defaultProps = defaultProps;
+ActionSelect.propTypes = propTypes;
+ActionSelect.defaultProps = defaultProps;
 
-export default withId(ActionMenu);
+export default withId(ActionSelect);

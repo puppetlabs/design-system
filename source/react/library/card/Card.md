@@ -82,7 +82,7 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
 
 ### Card Content
 
-Card content is arbitrary as determined by the needs of the application. We provide two convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, and `Card.ActionMenu` which provides selection from a set of card actions,
+Card content is arbitrary as determined by the needs of the application. We provide two convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, and `Card.ActionSelect` which provides selection from a set of card actions,
 pre-styled in a consistent manner.
 
 ```
@@ -94,7 +94,7 @@ const cardActions = [
 
 <Card>
   <Card.Title>Title</Card.Title>
-  <Card.ActionMenu actions={cardActions}/>
+  <Card.ActionSelect actions={cardActions}/>
   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </Card>
 ```

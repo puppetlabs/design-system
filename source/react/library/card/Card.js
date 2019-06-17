@@ -6,7 +6,7 @@ import {
   elementElevation,
 } from '../../helpers/customPropTypes';
 
-import CardActionMenu from './CardActionMenu';
+import CardActionSelect from './CardActionSelect';
 import CardTitle from './CardTitle';
 
 const propTypes = {
@@ -77,7 +77,7 @@ const Card = ({
 Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
 
-Card.ActionMenu = CardActionMenu;
+Card.ActionSelect = CardActionSelect;
 Card.Title = CardTitle;
 
 export default Card;
