@@ -35,6 +35,8 @@ module.exports = {
     '**/form/FormSection.js',
     '**/grid/Column.js',
     '**/grid/Row.js',
+    '**/modals/ModalActions.js',
+    '**/modals/ModalTitle.js',
     '**/popover/PopoverContent.js',
     '**/select/SelectItem.js',
     '**/sidebar/helper.js',
