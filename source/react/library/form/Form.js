@@ -62,7 +62,7 @@ const defaultProps = {
   onChange() {},
   submitting: false,
   inline: false,
-  actionsPosition: 'right',
+  actionsPosition: 'left',
   disabled: false,
   error: '',
   children: null,
