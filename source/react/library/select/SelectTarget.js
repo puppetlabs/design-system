@@ -14,7 +14,7 @@ const renderText = (type, value, placeholder) => {
   return value;
 };
 
-const Input = forwardRef(
+const SelectTarget = forwardRef(
   ({ error, value, type, placeholder, className, ...rest }, ref) => (
     <div className={classNames('rc-input-container', 'rc-select-target')}>
       <Icon
@@ -38,7 +38,7 @@ const Input = forwardRef(
   ),
 );
 
-Input.propTypes = propTypes;
-Input.defaultProps = defaultProps;
+SelectTarget.propTypes = propTypes;
+SelectTarget.defaultProps = defaultProps;
 
-export default Input;
+export default SelectTarget;

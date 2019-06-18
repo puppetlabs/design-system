@@ -1,19 +1,19 @@
 // Tags
 // ----------------------------------------------------------------------------
-$puppet-tag-bg: $puppet-action-base !default;
+$puppet-tag-bg: $puppet-b500 !default;
 $puppet-tag-border: 0 !default;
-$puppet-tag-border-radius: $puppet-border-radius !default;
+$puppet-tag-border-radius: $puppet-common-border-radius !default;
 $puppet-tag-color: $puppet-white !default;
 $puppet-tag-font-size: 14px !default;
 $puppet-tag-font-weight: normal !default;
-$puppet-tag-height: $puppet-large !default;
-$puppet-tag-margin: $puppet-tiny $puppet-tiny $puppet-tiny 0 !default;
+$puppet-tag-height: $puppet-common-spacing-base * 6 !default;
+$puppet-tag-margin: $puppet-common-spacing-base $puppet-common-spacing-base $puppet-common-spacing-base 0 !default;
 
-$puppet-tag-main-content-padding: 0 $puppet-small 0 $puppet-small !default;
-$puppet-tag-remove-button-padding: 0 $puppet-small 0 $puppet-small !default;
+$puppet-tag-main-content-padding: 0 $puppet-common-spacing-base * 2 0 $puppet-common-spacing-base * 2 !default;
+$puppet-tag-remove-button-padding: 0 $puppet-common-spacing-base * 2 0 $puppet-common-spacing-base * 2 !default;
 
-$puppet-tag-action-hover: $puppet-action-hover !default;
-$puppet-tag-bg-disabled-opacity: $puppet-disabled-opacity !default;
+$puppet-tag-action-hover: $puppet-b400 !default;
+$puppet-tag-bg-disabled-opacity: $puppet-common-disabled-opacity !default;
 
 $puppet-tag-icon: transparentize($puppet-white, 0.2) !default;
 $puppet-tag-icon-hover: $puppet-white !default;

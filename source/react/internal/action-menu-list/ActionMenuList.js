@@ -15,7 +15,7 @@ import {
 
 import ActionMenuListItem from './ActionMenuListItem';
 import Icon from '../../library/icon';
-import { isNil, focus } from '../../helpers/statics';
+import { isNil, focus, cancelEvent } from '../../helpers/statics';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -121,33 +121,33 @@ class ActionMenuList extends Component {
     switch (e.keyCode) {
       case UP_KEY_CODE: {
         this.onArrowUp();
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       case DOWN_KEY_CODE: {
         this.onArrowDown();
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       case HOME_KEY_CODE: {
         this.focusFirst();
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       case END_KEY_CODE: {
         this.focusLast();
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       case SPACE_KEY_CODE:
       case ENTER_KEY_CODE: {
         this.executeFocusedItem();
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       case ESC_KEY_CODE: {
         onEscape(e);
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       default:

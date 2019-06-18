@@ -19,6 +19,9 @@
 - **Breaking Change** Rename Card.ActionsMenu -> Card.ActionSelect
 - Remove Filters and related components from react-components documentation, add note about deficiencies
 - **Breaking Change** Remove ButtonGroup component
+- **Breaking Change** Rename ActionMenu -> ActionSelect
+- **Breaking Change** Remove many scss variables from palettes and common
+- **Breaking Change** $puppet-common-spacing-base is now 4px
 
 # 5.0.0-alpha.25
 

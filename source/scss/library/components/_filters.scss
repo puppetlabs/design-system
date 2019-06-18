@@ -4,13 +4,13 @@ $puppet-filter-border-color: $puppet-n300;
 $puppet-filter-border: $puppet-common-border-subtle;
 $puppet-filter-bg: $puppet-r100 !default;
 $puppet-filter-radius: $puppet-common-border-radius !default;
-$puppet-filter-padding: $puppet-common-spacing-base * 0.25 !default;
+$puppet-filter-padding: $puppet-common-spacing-base * 0.5 !default;
 $puppet-filter-placeholder-color: $puppet-type-color-subtle !default;
 $puppet-filter-input-bg: $puppet-white !default;
 $puppet-filter-selected-shadow: 0 0 0 1px $puppet-b500, $puppet-common-elevation-150 !default;
 $puppet-filter-border-active: 1px solid $puppet-b500 !default;
 
-$puppet-filter-select-padding: $puppet-common-spacing-base * 0.5 !default;
+$puppet-filter-select-padding: $puppet-common-spacing-base !default;
 $puppet-filter-select-height: 10px !default; // Todo: Base on grid
 
 $puppet-filter-split-bg: $puppet-n400 !default;
@@ -29,10 +29,10 @@ $puppet-filter-split-menu-bg-hover: lighten($puppet-filter-split-menu-bg, 15%) !
 }
 
 .rc-filters-action:hover {
-  color: $puppet-action-base !important;
+  color: $puppet-b500 !important;
 
   .rc-icon {
-    fill: $puppet-action-base;
+    fill: $puppet-b500;
   }
 }
 
@@ -42,7 +42,7 @@ $puppet-filter-split-menu-bg-hover: lighten($puppet-filter-split-menu-bg, 15%) !
   .rc-filter-field-name,
   .rc-filter-field-op,
   .rc-filter-field-value {
-    font-size: $puppet-font-size-base;
+    font-size: 14px;
   }
 }
 
@@ -51,7 +51,7 @@ $puppet-filter-split-menu-bg-hover: lighten($puppet-filter-split-menu-bg, 15%) !
   .rc-filter-field-name,
   .rc-filter-field-op,
   .rc-filter-field-value {
-    font-size: $puppet-font-size-small;
+    font-size: 12px;
   }
 }
 
@@ -93,13 +93,13 @@ $puppet-filter-split-menu-bg-hover: lighten($puppet-filter-split-menu-bg, 15%) !
       background: $puppet-filter-split-bg;
 
       .rc-button-content {
-        color: $puppet-action-base;
+        color: $puppet-b500;
         float: right;
       }
 
       &:hover {
         .rc-button-content {
-          color: $puppet-action-hover;
+          color: $puppet-b400;
         }
       }
     }

@@ -310,5 +310,5 @@ $puppet-button-text: (
 }
 
 .rc-button + .rc-button {
-  margin-left: $puppet-common-spacing-base;
+  margin-left: $puppet-common-spacing-base * 2;
 }

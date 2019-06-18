@@ -1,6 +1,6 @@
 $puppet-sidebar-bg: $puppet-n900 !default;
 $puppet-sidebar-padding: 16px !default;
-$puppet-sidebar-font: $puppet-font-family-heading !default;
+$puppet-sidebar-font: $puppet-type-font-family-secondary !default;
 $puppet-sidebar-width: 240px !default;
 $puppet-sidebar-minimized-width: 73px !default;
 
@@ -14,7 +14,7 @@ $puppet-sidebar-item-bg-hover: $puppet-n900 !default;
 $puppet-sidebar-item-bg-active: $puppet-n850 !default;
 $puppet-sidebar-item-border-focus: $puppet-common-focus-outline !default;
 
-$puppet-sidebar-item-border-radius: $puppet-border-radius !default;
+$puppet-sidebar-item-border-radius: $puppet-common-border-radius !default;
 
 $puppet-sidebar-item-color: $puppet-n400 !default;
 $puppet-sidebar-item-color-hover: $puppet-brand-primary !default;
@@ -39,11 +39,11 @@ $puppet-sidebar-item-karet-margin: 8px !default;
 
 // Labels
 $puppet-sidebar-label-color: $puppet-n500 !default;
-$puppet-sidebar-label-font: $puppet-font-family-label !default;
-$puppet-sidebar-label-font-size: $puppet-font-size-tiny !default;
-$puppet-sidebar-label-line-height: $puppet-small !default;
-$puppet-sidebar-label-margin: $puppet-large 0 $puppet-small !default;
-$puppet-sidebar-label-padding: 0 $puppet-large 0 !default;
+$puppet-sidebar-label-font: $puppet-type-font-family-secondary !default;
+$puppet-sidebar-label-font-size: 11px !default;
+$puppet-sidebar-label-line-height: $puppet-common-spacing-base * 2 !default;
+$puppet-sidebar-label-margin: $puppet-common-spacing-base * 6 0 $puppet-common-spacing-base * 2 !default;
+$puppet-sidebar-label-padding: 0 $puppet-common-spacing-base * 6 0 !default;
 $puppet-sidebar-label-text-transform: uppercase !default;
 
 $puppet-sidebar-item-accordion-font-size: 14px !default;
@@ -58,7 +58,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
 
 .rc-sidebar {
   background: $puppet-sidebar-bg;
-  border-right: $puppet-border-subtle;
+  border-right: $puppet-common-border-subtle;
   display: flex;
   flex-direction: column;
   font-family: $puppet-sidebar-font;

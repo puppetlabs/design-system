@@ -14,7 +14,7 @@
   }
 
   &:hover {
-    border: $puppet-common-border-hover;
+    border: $puppet-shared-input-border-hover;
   }
 
   &:focus {
@@ -28,7 +28,7 @@
   }
 
   &.rc-input-error {
-    border: $puppet-common-border-error;
+    border: $puppet-shared-input-border-error;
   }
 }
 
@@ -56,13 +56,13 @@
 }
 
 .rc-input-multiline {
-  height: $puppet-common-spacing-base * 9;
+  height: $puppet-common-spacing-base * 18;
   resize: vertical;
   vertical-align: top;
 }
 
 .rc-input-small.rc-input-multiline {
-  height: $puppet-common-spacing-base * 7;
+  height: $puppet-common-spacing-base * 14;
 }
 
 .rc-input-container {
@@ -76,11 +76,11 @@
   }
 
   .rc-input-icon.leading {
-    left: $puppet-common-spacing-base;
+    left: $puppet-common-spacing-base * 2;
   }
 
   .rc-input-icon.trailing {
-    right: $puppet-common-spacing-base;
+    right: $puppet-common-spacing-base * 2;
   }
 
   .rc-input-icon.leading ~ .rc-input {

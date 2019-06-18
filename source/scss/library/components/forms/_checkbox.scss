@@ -5,12 +5,12 @@
 }
 
 .rc-checkbox-input:not(:last-of-type) {
-  margin-bottom: $puppet-common-spacing-base * 1.5;
+  margin-bottom: $puppet-common-spacing-base * 3;
 }
 
 .rc-checkbox-container {
-  height: $puppet-common-spacing-base * 2;
-  margin-right: $puppet-common-spacing-base;
+  height: $puppet-common-spacing-base * 4;
+  margin-right: $puppet-common-spacing-base * 2;
   position: relative;
 }
 
@@ -24,21 +24,21 @@
   border: $puppet-common-border;
   border-radius: $puppet-common-border-radius;
   cursor: pointer;
-  height: $puppet-common-spacing-base * 2;
+  height: $puppet-common-spacing-base * 4;
   margin: 0;
   outline: none;
   padding: 0;
-  width: $puppet-common-spacing-base * 2;
+  width: $puppet-common-spacing-base * 4;
 }
 
 .rc-checkbox + .rc-icon {
   display: none;
-  height: $puppet-common-spacing-base * 2;
+  height: $puppet-common-spacing-base * 4;
   left: 2px;
   pointer-events: none;
   position: absolute;
   top: -1px;
-  width: $puppet-common-spacing-base * 2;
+  width: $puppet-common-spacing-base * 4;
 }
 
 .rc-checkbox:focus {
@@ -46,21 +46,21 @@
 }
 
 .rc-checkbox:hover {
-  border: $puppet-common-border-hover;
+  border: $puppet-shared-input-border-hover;
 }
 
 .rc-checkbox-error,
 .rc-checkbox-error:hover {
-  border: $puppet-common-border-error;
+  border: $puppet-shared-input-border-error;
 }
 
 .rc-checkbox:checked + .rc-icon {
   display: block;
-  fill: $puppet-action-base;
+  fill: $puppet-b500;
 }
 
 .rc-checkbox:hover + .rc-icon {
-  fill: $puppet-action-hover;
+  fill: $puppet-b400;
 }
 
 .rc-checkbox:disabled,
@@ -70,7 +70,7 @@
   opacity: $puppet-common-disabled-opacity;
 
   + .rc-icon {
-    fill: $puppet-action-base;
+    fill: $puppet-b500;
     opacity: $puppet-common-disabled-opacity;
   }
 }
