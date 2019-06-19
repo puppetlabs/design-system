@@ -14,7 +14,8 @@ const renderText = (type, value, placeholder) => {
   return value;
 };
 
-const Input = forwardRef(
+/* eslint-disable react/prop-types */
+const SelectTarget = forwardRef(
   ({ error, value, type, placeholder, className, ...rest }, ref) => (
     <div className={classNames('rc-input-container', 'rc-select-target')}>
       <Icon
@@ -37,8 +38,8 @@ const Input = forwardRef(
     </div>
   ),
 );
+/* eslint-enable */
+SelectTarget.propTypes = propTypes;
+SelectTarget.defaultProps = defaultProps;
 
-Input.propTypes = propTypes;
-Input.defaultProps = defaultProps;
-
-export default Input;
+export default SelectTarget;

@@ -43,7 +43,7 @@ const Switch = ({
   style,
   inputRef,
   onChange,
-  type,
+  type, // eslint-disable-line
   label,
   ...otherProps
 }) => (

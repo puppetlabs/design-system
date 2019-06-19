@@ -131,6 +131,13 @@ const focus = element => {
   }
 };
 
+const cancelEvent = e => {
+  if (e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+};
+
 export {
   unbindParentScroll,
   bindParentScroll,
@@ -144,6 +151,7 @@ export {
   getDropdownPosition,
   isNil,
   focus,
+  cancelEvent,
 };
 
 export default isNodeInRoot;

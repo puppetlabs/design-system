@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import Button from '../buttons/Button';
+import Button from '../button/Button';
 import OptionMenuList from '../../internal/option-menu-list';
 import { anchorOrientation } from '../../helpers/customPropTypes';
 import Icon from '../icon';

@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import { TooltipHoverArea } from '../tooltips/Tooltip';
+import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 
 const propTypes = {
   title: PropTypes.string,

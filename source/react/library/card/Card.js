@@ -6,10 +6,8 @@ import {
   elementElevation,
 } from '../../helpers/customPropTypes';
 
-import Header from './Header';
-import Section from './Section';
-import ActionsMenu from './ActionsMenu';
-import ActionsSearch from './ActionsSearch';
+import CardActionSelect from './CardActionSelect';
+import CardTitle from './CardTitle';
 
 const propTypes = {
   /** Html element or react component to render */
@@ -31,7 +29,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  as: 'div',
+  as: undefined,
   type: 'primary',
   elevation: 0,
   selectable: false,
@@ -41,8 +39,11 @@ const defaultProps = {
   onClick() {},
 };
 
+const assignDefaultElement = (as, selectable) =>
+  as || (selectable ? 'button' : 'div');
+
 const Card = ({
-  as: Element,
+  as,
   type,
   elevation,
   selectable,
@@ -50,31 +51,33 @@ const Card = ({
   className,
   children,
   ...rest
-}) => (
-  <Element
-    className={classNames(
-      'rc-card',
-      `rc-card-${type}`,
-      `rc-card-elevation-${elevation}`,
-      {
-        'rc-card-selectable': selectable,
-        'rc-card-selected': selected,
-      },
-      className,
-    )}
-    aria-selected={selected}
-    {...rest}
-  >
-    {children}
-  </Element>
-);
+}) => {
+  const Element = assignDefaultElement(as, selectable);
+
+  return (
+    <Element
+      className={classNames(
+        'rc-card',
+        `rc-card-${type}`,
+        `rc-card-elevation-${elevation}`,
+        {
+          'rc-card-selectable': selectable,
+          'rc-card-selected': selected,
+        },
+        className,
+      )}
+      aria-selected={selected}
+      {...rest}
+    >
+      {children}
+    </Element>
+  );
+};
 
 Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
 
-Card.Header = Header;
-Card.Section = Section;
-Card.ActionsMenu = ActionsMenu;
-Card.ActionsSearch = ActionsSearch;
+Card.ActionSelect = CardActionSelect;
+Card.Title = CardTitle;
 
 export default Card;

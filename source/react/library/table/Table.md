@@ -48,6 +48,7 @@ const columns = [
 <Table fixed data={data} columns={columns} />
 
 ```
+
 ### Nested Data
 
 The `cellDataGetter` property on each column definition can be used to get nested or computed data from the data array. The method should implement the following signature:
@@ -139,5 +140,9 @@ React requires unique keys on iterated elements to ensure performant and bug-fre
 Optional a function returning the unique value can be provided:
 
 ```js static
-<Table data={data} columns={columns} rowKey={rowData => rowdata.nested.uniqueKey} />
+<Table
+  data={data}
+  columns={columns}
+  rowKey={rowData => rowdata.nested.uniqueKey}
+/>
 ```

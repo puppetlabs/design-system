@@ -7,13 +7,13 @@ Design specification: <a href="http://designsystem.puppetlabs.net/forms" target=
 ```
 const exampleStyle = { marginBottom: 10 };
 
-<div>
-  <Input style={exampleStyle} name="input-ex1" type="text" placeholder="Standard text input (or alternates 'email', 'url', 'search')"/>
-  <Input style={exampleStyle} name="input-ex2" type="password" placeholder="Password input"/>
-  <Input style={exampleStyle} name="input-ex3" type="number" placeholder="Number input"/>
-  <Input style={exampleStyle} name="input-ex4" type="text" placeholder="Disabled input" disabled />
-  <Input style={exampleStyle} name="input-ex5" type="multiline" placeholder="Multiline input" />
-</div>
+<form>
+  <Input style={exampleStyle} name="input-ex1" autoComplete="input-ex1" type="text" placeholder="Standard text input (or alternates 'email', 'url', 'search')"/>
+  <Input style={exampleStyle} name="input-ex2" autoComplete="input-ex2" type="password" placeholder="Password input"/>
+  <Input style={exampleStyle} name="input-ex3" autoComplete="input-ex3" type="number" placeholder="Number input"/>
+  <Input style={exampleStyle} name="input-ex4" autoComplete="input-ex4" type="text" placeholder="Disabled input" disabled />
+  <Input style={exampleStyle} name="input-ex5" autoComplete="input-ex5" type="multiline" placeholder="Multiline input" />
+</form>
 ```
 
 ### Simple visual variant

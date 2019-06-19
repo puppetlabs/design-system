@@ -58,17 +58,20 @@ class MyPage extends React.Component {
         <Form.Field
           type="text"
           name="controlledFirstName"
+          autoComplete="firstname"
           label="First name"
           placeholder="Enter your first name..."
         />
         <Form.Field
           type="text"
           name="controlledLastName"
+          autoComplete="lastname"
           label="Last name"
           placeholder="Enter your first name..."
         />
         <Form.Field
           type="password"
+          autoComplete="current-password"
           name="controlledPassword"
           label="Password"
           placeholder="Enter your password..."
@@ -145,18 +148,21 @@ class MyPage extends React.Component {
         <Form.Field
           type="text"
           name="firstName"
+          autoComplete="firstname"
           label="First name"
           placeholder="Enter your first name..."
         />
         <Form.Field
           type="text"
           name="lastName"
+          autoComplete="lastname"
           label="Last name"
           placeholder="Enter your first name..."
         />
         <Form.Field
           type="password"
           name="password"
+          autoComplete="current-password"
           label="Password"
           placeholder="Enter your password..."
           description="Please enter your password"

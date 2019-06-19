@@ -9,6 +9,7 @@ Each Tabs.Tab requires a unique `id` and a string `title`. Component children ar
 _By default the Tabs component will handle all interactions as users switch between tabs. An optional initialTab prop can be used_
 
 Default Tabs:
+
 ```
 <Tabs>
   <Tabs.Tab title="Tab 1">
@@ -23,7 +24,9 @@ Default Tabs:
   </Tabs.Tab>
 </Tabs>
 ```
+
 Secondary Tabs:
+
 ```
 <Tabs type="secondary" initialTab={2}>
   <Tabs.Tab title="Tab 1">
@@ -41,6 +44,7 @@ Secondary Tabs:
 ### Controlled Mode
 
 _The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected. In this mode we recommend supplying a unique `id` to each Tab element so that the active tab is easier to track. If no id is provided the Tabs component will use the positional index._
+
 ```
 
 class MyPageWithTabs extends React.Component {

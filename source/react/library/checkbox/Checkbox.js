@@ -48,8 +48,7 @@ const Checkbox = ({
   style,
   inputRef,
   onChange,
-  size,
-  type,
+  type, // eslint-disable-line
   ...otherProps
 }) => (
   <Text

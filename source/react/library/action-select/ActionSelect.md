@@ -1,4 +1,4 @@
-The ActionMenu component allows users to execute actions from a dropdown menu list appearing below a button element. It can be rendered with the full set of stylistic options available to the button component. It supports both imperative actions handled with click events and navigation actions with anchor tags.
+The ActionSelect component allows users to execute actions from a dropdown menu list appearing below a button element. It can be rendered with the full set of stylistic options available to the button component. It supports both imperative actions handled with click events and navigation actions with anchor tags.
 
 ### Basic use
 
@@ -14,18 +14,18 @@ const actions = [
 const style = { display: 'inline-block', margin: 10 };
 
 <div>
-  <ActionMenu
+  <ActionSelect
     actions={actions}
     label="Choose an Action"
     style={style}
   />
-  <ActionMenu
+  <ActionSelect
     type="secondary"
     actions={actions}
     label="Choose an Action"
     style={style}
   />
-  <ActionMenu
+  <ActionSelect
     type="tertiary"
     actions={actions}
     label="Choose an Action"
@@ -34,7 +34,7 @@ const style = { display: 'inline-block', margin: 10 };
 </div>
 ```
 
-### Icon ActionMenu
+### Icon ActionSelect
 
 A common variant will use an icon (often the `kebab` icon) instead of button text.
 
@@ -48,24 +48,24 @@ const actions = [
 const style = { display: 'inline-block', margin: 10 };
 
 <div>
-  <ActionMenu
+  <ActionSelect
     actions={actions}
     icon="kebab"
     style={style}
   />
-  <ActionMenu
+  <ActionSelect
     type="secondary"
     actions={actions}
     icon="kebab"
     style={style}
   />
-  <ActionMenu
+  <ActionSelect
     type="tertiary"
     actions={actions}
     icon="kebab"
     style={style}
   />
-  <ActionMenu
+  <ActionSelect
     type="transparent"
     actions={actions}
     icon="kebab"
@@ -76,7 +76,7 @@ const style = { display: 'inline-block', margin: 10 };
 
 ### Menu Anchor
 
-The `anchor` prop can be used to specify the corner at which the dropdown menu list should be anchored to the button target. This is most useful with icon ActionMenus because the width of the dropdown menu list will exceed the width of the button target, but may also be useful if standard ActionMenus are rendered near the bottom of a content area.
+The `anchor` prop can be used to specify the corner at which the dropdown menu list should be anchored to the button target. This is most useful with icon ActionSelects because the width of the dropdown menu list will exceed the width of the button target, but may also be useful if standard ActionSelects are rendered near the bottom of a content area.
 
 ```
 const actions = [
@@ -88,27 +88,27 @@ const actions = [
 const style = { display: 'inline-block', margin: 10 };
 
 <div>
-  <ActionMenu
+  <ActionSelect
     actions={actions}
     type="tertiary"
     icon="chevron-down"
     style={style}
   />
-  <ActionMenu
+  <ActionSelect
     anchor="top left"
     actions={actions}
     type="tertiary"
     icon="chevron-up"
     style={style}
   />
-  <ActionMenu
+  <ActionSelect
     anchor="top right"
     actions={actions}
     type="tertiary"
     icon="chevron-up"
     style={style}
   />
-  <ActionMenu
+  <ActionSelect
     anchor="bottom right"
     actions={actions}
     type="tertiary"

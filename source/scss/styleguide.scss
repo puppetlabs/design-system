@@ -1,6 +1,4 @@
-@import './library/public/palettes';
-@import './library/public/common';
-@import './library/variables';
+@import './library/public/index';
 
 .swatch-wrapper {
   display: flex;
@@ -8,7 +6,7 @@
 }
 
 .swatch {
-  border: $puppet-border;
+  border: $puppet-common-border;
   display: flex;
   flex-direction: column;
   height: 125px;
@@ -23,8 +21,8 @@
 
 .swatch-title {
   flex-shrink: 0;
-  font-family: $puppet-font-family;
-  font-size: $puppet-font-size-tiny;
+  font-family: $puppet-type-font-family;
+  font-size: 11px;
   padding: 4px;
   text-align: center;
 }
@@ -351,7 +349,7 @@
 }
 
 .rc-icon-unique-variant {
-  background: rgba($puppet-pos-bg-base, 0.1);
+  background: rgba($puppet-g500, 0.1);
 }
 
 .rc-loading-table {

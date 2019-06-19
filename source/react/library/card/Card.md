@@ -19,14 +19,6 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
     <Heading as="h3">Raised</Heading>
     <Text>Elevation 100</Text>
   </Card>
-  <Card selectable style={cardExampleStyle}>
-    <Heading as="h3">Selectable</Heading>
-    <Text>Elevation 50</Text>
-  </Card>
-  <Card selectable selected style={cardExampleStyle}>
-    <Heading as="h3">Selected</Heading>
-    <Text>Elevation 50</Text>
-  </Card>
 </div>
 ```
 
@@ -47,39 +39,62 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
     <Heading as="h3">Raised</Heading>
     <Text>Elevation 100</Text>
   </Card>
-  <Card type="secondary" selectable style={cardExampleStyle}>
-    <Heading as="h3">Selectable</Heading>
-    <Text>Elevation 50</Text>
+</div>
+```
+
+### Selectable Cards
+
+Cards are often used on grids where the content in each card is selectable, perhaps controlling the content of a sidebar or other page area.
+
+```
+initialState = {
+  selected: null,
+}
+
+const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
+<div style={{ display: 'flex' }}>
+  <Card
+    selectable
+    selected={state.selected === 'a'}
+    onClick={() => setState({ selected: 'a' })}
+    style={cardExampleStyle}
+  >
+    <Heading as="h3">A</Heading>
   </Card>
-  <Card type="secondary" selectable selected style={cardExampleStyle}>
-    <Heading as="h3">Selected</Heading>
-    <Text>Elevation 50</Text>
+  <Card
+    selectable
+    selected={state.selected === 'b'}
+    onClick={() => setState({ selected: 'b' })}
+    style={cardExampleStyle}
+  >
+    <Heading as="h3">B</Heading>
+  </Card>
+  <Card
+    selectable
+    selected={state.selected === 'c'}
+    onClick={() => setState({ selected: 'c' })}
+    style={cardExampleStyle}
+  >
+    <Heading as="h3">C</Heading>
   </Card>
 </div>
 ```
 
 ### Card Content
 
-The Card component includes sub-components for arranging content in repeatable manner. **NOTE**: These features are not design complete and are subject to change in future releases.
+Card content is arbitrary as determined by the needs of the application. We provide two convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, and `Card.ActionSelect` which provides selection from a set of card actions,
+pre-styled in a consistent manner.
 
 ```
 const cardActions = [
-  { label: 'Do thing 1', id: 0, onClick: () => console.log('You did thing 1') },
-  { label: 'Do thing 2!', id: 1, onClick: () => console.log('You did thing 2') },
-  { label: 'Me three...', id: 2, onClick: () => console.log('You did thing 3') },
-];
-
-const actions = [
-  <Card.ActionsMenu id="menu-1" actions={ cardActions } />,
+  { label: 'Card Action 1', id: 0, onClick: () => console.log('You did thing 1') },
+  { label: 'Card Action 2', id: 1, onClick: () => console.log('You did thing 2') },
+  { label: 'Card Action 3', id: 2, onClick: () => console.log('You did thing 3') },
 ];
 
 <Card>
-  <Card.Header title="Title" subtitle="Card Subtitle" actions={ actions } />
-  <Card.Section>
-    Card Section
-  </Card.Section>
-  <Card.Section>
-    Another Card Section
-  </Card.Section>
+  <Card.Title>Title</Card.Title>
+  <Card.ActionSelect actions={cardActions}/>
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </Card>
 ```

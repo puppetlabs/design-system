@@ -1,16 +1,17 @@
 ## Alert actions
 
 closeable + onClose
+
 ```
   <Alert type="info" closeable onClose={() => console.log('theoretically at least')}>
     Did you know this alert can be dismissed?
   </Alert>
 ```
 
-
 ## Alert types
 
 Success
+
 ```
   <Alert type="success">
     Success! Things seem to have gone well afterall.
@@ -44,6 +45,7 @@ Info
 ## Alert elevation
 
 Elevated
+
 ```
 <Alert elevated type="danger">
   This alert is elevated. Are you ready for that?

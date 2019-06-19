@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import clone from 'clone';
 import { filterOperators } from '../../constants';
 import Form from '../form';
 
@@ -90,7 +89,7 @@ class FilterForm extends React.Component {
     super(props);
 
     this.state = {
-      filter: clone(props.filter),
+      filter: props.filter,
     };
 
     this.onUpdate = this.onUpdate.bind(this);
@@ -223,7 +222,6 @@ class FilterForm extends React.Component {
           type="select"
           name="field"
           label={strings.filterField}
-          disablePortal
           options={fields}
           placeholder={strings.filterFieldPlaceholder}
         />
@@ -231,7 +229,6 @@ class FilterForm extends React.Component {
           type="select"
           name="op"
           label={strings.filterOperator}
-          disablePortal
           options={operators}
           placeholder={strings.filterOperatorPlaceholder}
         />

@@ -1,28 +1,21 @@
 // Filters
 // ----------------------------------------------------------------------------
-$puppet-filter-border-color: $puppet-border-hr !default;
-$puppet-filter-border: $puppet-border-size-base $puppet-border-style
-  $puppet-filter-border-color !default;
-$puppet-filter-bg: $puppet-neg-bg-subtle-base !default;
-$puppet-filter-radius: $puppet-border-radius !default;
-$puppet-filter-padding: $puppet-mini !default;
-$puppet-filter-placeholder-color: $puppet-font-color-subtle !default;
-$puppet-filter-input-bg: $puppet-bg-light !default;
-$puppet-filter-selected-shadow: $puppet-selected-shadow !default;
-$puppet-filter-border-active: $puppet-border-action !default;
+$puppet-filter-border-color: $puppet-n300;
+$puppet-filter-border: $puppet-common-border-subtle;
+$puppet-filter-bg: $puppet-r100 !default;
+$puppet-filter-radius: $puppet-common-border-radius !default;
+$puppet-filter-padding: $puppet-common-spacing-base * 0.5 !default;
+$puppet-filter-placeholder-color: $puppet-type-color-subtle !default;
+$puppet-filter-input-bg: $puppet-white !default;
+$puppet-filter-selected-shadow: 0 0 0 1px $puppet-b500, $puppet-common-elevation-150 !default;
+$puppet-filter-border-active: 1px solid $puppet-b500 !default;
 
-$puppet-filter-select-padding: $puppet-tiny !default;
+$puppet-filter-select-padding: $puppet-common-spacing-base !default;
 $puppet-filter-select-height: 10px !default; // Todo: Base on grid
 
 $puppet-filter-split-bg: $puppet-n400 !default;
 $puppet-filter-split-menu-bg: darken($puppet-filter-split-bg, 10%) !default;
 $puppet-filter-split-menu-bg-hover: lighten($puppet-filter-split-menu-bg, 15%) !default;
-
-$puppet-filters-filter-bg: $puppet-action-base !default;
-$puppet-filters-filter-bg-hover: $puppet-action-hover !default;
-$puppet-filters-filter-color: $puppet-white !default;
-$puppet-filters-filter-action-color: lighten($puppet-filters-filter-bg, 15%) !default;
-$puppet-filters-form-border: $puppet-border !default;
 
 .rc-filters {
   .rc-form {
@@ -36,10 +29,10 @@ $puppet-filters-form-border: $puppet-border !default;
 }
 
 .rc-filters-action:hover {
-  color: $puppet-action-base !important;
+  color: $puppet-b500 !important;
 
   .rc-icon {
-    fill: $puppet-action-base;
+    fill: $puppet-b500;
   }
 }
 
@@ -49,7 +42,7 @@ $puppet-filters-form-border: $puppet-border !default;
   .rc-filter-field-name,
   .rc-filter-field-op,
   .rc-filter-field-value {
-    font-size: $puppet-font-size-base;
+    font-size: 14px;
   }
 }
 
@@ -58,7 +51,7 @@ $puppet-filters-form-border: $puppet-border !default;
   .rc-filter-field-name,
   .rc-filter-field-op,
   .rc-filter-field-value {
-    font-size: $puppet-font-size-small;
+    font-size: 12px;
   }
 }
 
@@ -100,13 +93,13 @@ $puppet-filters-form-border: $puppet-border !default;
       background: $puppet-filter-split-bg;
 
       .rc-button-content {
-        color: $puppet-action-base;
+        color: $puppet-b500;
         float: right;
       }
 
       &:hover {
         .rc-button-content {
-          color: $puppet-action-hover;
+          color: $puppet-b400;
         }
       }
     }

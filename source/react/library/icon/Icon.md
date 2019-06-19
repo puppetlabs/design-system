@@ -1,7 +1,7 @@
 **To render an icon, either:**
 
-* Provide a type and a size (size optional)
-* Provide an svg and a viewBox
+- Provide a type and a size (size optional)
+- Provide an svg and a viewBox
 
 **The specific svg rendered is decided by the following:**
 
@@ -20,7 +20,7 @@ const Renderer = () => {
     const isUnique = size => variants.includes(size);
 
     components.push(
-      <tr>
+      <tr key={i}>
         <td key={ names[i] }>
           { names[i] }
         </td>
@@ -52,14 +52,18 @@ const Renderer = () => {
       </Alert>
       <br />
       <table className="rc-icon-table">
-        <tr>
-          <th>Name</th>
-          <th>Tiny</th>
-          <th>Small</th>
-          <th>Medium (default)</th>
-          <th>Large</th>
-        </tr>
-        { components }
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Tiny</th>
+            <th>Small</th>
+            <th>Medium (default)</th>
+            <th>Large</th>
+          </tr>
+        </thead>
+        <tbody>
+          { components }
+        </tbody>
       </table>
     </div>
   );

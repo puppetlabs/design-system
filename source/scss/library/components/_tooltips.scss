@@ -1,8 +1,8 @@
 $puppet-tooltip-hint-bg: rgba($puppet-black, 0.9) !default;
 $puppet-tooltip-hint-color: $puppet-n400 !default;
-$puppet-tooltip-hint-padding: $puppet-tiny $puppet-small !default;
-$puppet-tooltip-hint-radius: $puppet-border-radius !default;
-$puppet-tooltip-hint-font-size: $puppet-font-size-small !default;
+$puppet-tooltip-hint-padding: $puppet-common-spacing-base $puppet-common-spacing-base * 2 !default;
+$puppet-tooltip-hint-radius: $puppet-common-border-radius !default;
+$puppet-tooltip-hint-font-size: 12px !default;
 $puppet-tooltip-hint-elevation: 24 !default;
 $puppet-tooltip-hint-max-width: 168px !default;
 

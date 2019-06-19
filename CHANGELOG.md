@@ -7,6 +7,26 @@
 - **Breaking change** Remove `title` prop from Modal in favor of Modal.Title subcomponent
 - **Breaking change** Remove `actions` prop from Modal in favor of Modal.Actions subcomponent
 - **Breaking change** Remove `size` prop from Modal. Default is now 480px, users can override by passing a custom className
+- **Breaking change** Remove `unbindShortcut`, `bindShortcut`, `margin`, `height`, `size`, `sidebar`, `sidebarPosition`, `actionsCTA`, `modalClassName`, `actionsPosition`, and `title` props from Modal
+- List core-js as direct dependency (needed by way of @babel/polyfill)
+- Use webpack-node-externals to reduce bundle size
+- ActionMenu can accept a number as an action id
+- Update Card styling to include focus state
+- Update Card documentation
+- **Breaking change** Remove Card.Header subcomponent
+- **Breaking change** Remove Card.Section subcomponent
+- Add Card.Title subcomponent
+- **Breaking Change** Rename Card.ActionsMenu -> Card.ActionSelect
+- Remove Filters and related components from react-components documentation, add note about deficiencies
+- **Breaking Change** Remove ButtonGroup component
+- **Breaking Change** Rename ActionMenu -> ActionSelect
+- **Breaking Change** Remove many scss variables from palettes and common
+- **Breaking Change** $puppet-common-spacing-base is now 4px, updated for clarity of intent
+- Stop propagation of key events from active select menus
+- Upgrade dependencies
+- Fix all console errors in styleguidist
+- Remove unnecessary styleguidist wrapper components
+- Add margins and max height to modal component
 
 # 5.0.0-alpha.25
 

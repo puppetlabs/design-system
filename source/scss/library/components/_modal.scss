@@ -5,9 +5,12 @@
   border: $puppet-common-border;
   border-radius: $puppet-common-border-radius;
   box-shadow: $puppet-common-elevation-400;
+  box-sizing: border-box;
+  margin: $puppet-common-spacing-base * 8;
+  max-height: calc(100vh - #{$puppet-common-spacing-base} * 16);
   outline: none;
   overflow: auto;
-  padding: $puppet-common-spacing-base * 3;
+  padding: $puppet-common-spacing-base * 6;
   position: relative;
   width: 480px;
 }
@@ -32,12 +35,12 @@
 }
 
 .rc-modal-title {
-  margin-bottom: $puppet-common-spacing-base * 2;
+  margin-bottom: $puppet-common-spacing-base * 4;
 }
 
 .rc-modal-actions {
   display: flex;
-  margin-top: $puppet-common-spacing-base * 4;
+  margin-top: $puppet-common-spacing-base * 8;
 }
 
 .rc-form-actions-right {

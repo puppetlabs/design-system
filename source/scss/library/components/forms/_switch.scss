@@ -1,9 +1,9 @@
 // Switch
 // ----------------------------------------------------------------------------
-$puppet-switch-icon-length: $puppet-common-spacing-base * 1.5 !default;
-$puppet-switch-width: $puppet-common-spacing-base * 5 !default;
-$puppet-switch-height: $puppet-common-spacing-base * 2 !default;
-$puppet-switch-padding: $puppet-common-spacing-base * 0.5 !default;
+$puppet-switch-icon-length: $puppet-common-spacing-base * 3 !default;
+$puppet-switch-width: $puppet-common-spacing-base * 10 !default;
+$puppet-switch-height: $puppet-common-spacing-base * 4 !default;
+$puppet-switch-padding: $puppet-common-spacing-base !default;
 $puppet-switch-handle-height: $puppet-switch-height -
   ($puppet-switch-padding * 2) !default;
 
@@ -14,13 +14,13 @@ $puppet-switch-handle-height: $puppet-switch-height -
 }
 
 .rc-switch-input:not(:last-of-type) {
-  margin-bottom: $puppet-common-spacing-base * 1.5;
+  margin-bottom: $puppet-common-spacing-base * 3;
 }
 
 .rc-switch-container {
   display: inline-block;
   height: $puppet-switch-height;
-  margin-right: $puppet-common-spacing-base;
+  margin-right: $puppet-common-spacing-base * 2;
   position: relative;
 }
 
@@ -31,7 +31,7 @@ $puppet-switch-handle-height: $puppet-switch-height -
   -moz-appearance: none;
   appearance: none;
 
-  border-radius: $puppet-common-circle-radius;
+  border-radius: 1000px;
   cursor: pointer;
   height: $puppet-switch-height;
   margin: 0;
@@ -40,12 +40,12 @@ $puppet-switch-handle-height: $puppet-switch-height -
   width: $puppet-switch-width;
 
   &:checked + .rc-switch-label {
-    background: $puppet-action-base;
+    background: $puppet-b500;
     color: $puppet-type-color-white;
   }
 
   &:checked + .rc-switch-label:hover {
-    background: $puppet-action-hover;
+    background: $puppet-b400;
   }
 
   &:checked + .rc-switch-label .rc-switch-label-off {
@@ -64,7 +64,7 @@ $puppet-switch-handle-height: $puppet-switch-height -
 
 .rc-switch-label {
   background: $puppet-common-bg-subtle;
-  border-radius: $puppet-common-circle-radius;
+  border-radius: 1000px;
   box-sizing: content-box;
   color: $puppet-type-color-base;
   cursor: pointer;
@@ -87,7 +87,7 @@ $puppet-switch-handle-height: $puppet-switch-height -
   }
 
   &::after {
-    background: $puppet-action-base;
+    background: $puppet-b500;
     border-radius: $puppet-switch-handle-height;
     content: '';
     display: block;
@@ -106,7 +106,7 @@ $puppet-switch-handle-height: $puppet-switch-height -
   }
 
   .rc-switch-label-off .rc-icon {
-    fill: $puppet-action-base;
+    fill: $puppet-b500;
     height: $puppet-switch-icon-length;
     right: $puppet-switch-padding * 1.5;
     width: $puppet-switch-icon-length;
@@ -139,11 +139,11 @@ $puppet-switch-handle-height: $puppet-switch-height -
 }
 
 .rc-switch-checkbox:not(:disabled):checked:hover + .rc-switch-label {
-  background: $puppet-action-hover;
+  background: $puppet-b400;
 }
 
 .rc-switch-checkbox:not(:disabled):not(:checked):hover + .rc-switch-label::after {
-  background: $puppet-action-hover;
+  background: $puppet-b400;
 }
 
 .rc-switch-checkbox:disabled,

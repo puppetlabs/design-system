@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import scrollIntoView from 'scroll-into-view-if-needed';
-import { isNil, focus } from '../../helpers/statics';
+import { isNil, focus, cancelEvent } from '../../helpers/statics';
 
 import {
   UP_KEY_CODE,
@@ -37,6 +37,7 @@ const propTypes = {
   onEscape: PropTypes.func,
   onBlur: PropTypes.func,
   className: PropTypes.string,
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -49,6 +50,7 @@ const defaultProps = {
   actionLabel: 'Apply',
   onActionClick() {},
   onEscape() {},
+  style: {},
 };
 
 const getOptionId = (id, value) => `${id}-${value}`;
@@ -134,33 +136,33 @@ class OptionMenuList extends Component {
     switch (e.keyCode) {
       case UP_KEY_CODE: {
         this.onArrowUp();
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       case DOWN_KEY_CODE: {
         this.onArrowDown();
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       case HOME_KEY_CODE: {
         this.focusFirst();
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       case END_KEY_CODE: {
         this.focusLast();
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       case SPACE_KEY_CODE:
       case ENTER_KEY_CODE: {
         this.selectFocusedItem();
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       case ESC_KEY_CODE: {
         onEscape(e);
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       default:
@@ -174,7 +176,7 @@ class OptionMenuList extends Component {
     switch (e.keyCode) {
       case ESC_KEY_CODE: {
         onEscape(e);
-        e.preventDefault();
+        cancelEvent(e);
         break;
       }
       default:

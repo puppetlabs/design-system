@@ -1,34 +1,31 @@
 .rc-badge {
-  border-radius: $puppet-common-border-radius-small;
+  @include puppet-type-label();
+  border-radius: 2px;
   display: inline-block;
-  font-family: $puppet-type-font-family-secondary;
-  font-size: $puppet-type-tiny-font-size;
-  font-weight: $puppet-type-weight-heavy;
-  line-height: $puppet-common-spacing-base * 2;
-  margin: 0 $puppet-common-spacing-base * 0.25;
-  padding: 0 $puppet-common-spacing-base * 0.5;
+  margin: 0 $puppet-common-spacing-base * 0.5;
+  padding: 0 $puppet-common-spacing-base;
   text-align: center;
   text-transform: uppercase;
 }
 
 .rc-badge-pill {
-  border-radius: $puppet-common-circle-radius;
-  padding: 0 $puppet-common-spacing-base * 2;
+  border-radius: 1000px;
+  padding: 0 $puppet-common-spacing-base * 4;
 }
 
 .rc-badge-bold {
   &.rc-badge-danger {
-    background-color: $puppet-danger-bold;
+    background-color: $puppet-r600;
     color: $puppet-white;
   }
 
   &.rc-badge-info {
-    background-color: $puppet-info-bold;
+    background-color: $puppet-b600;
     color: $puppet-white;
   }
 
   &.rc-badge-neutral {
-    background-color: $puppet-neutral-bold;
+    background-color: $puppet-n800;
     color: $puppet-white;
   }
 
@@ -39,35 +36,35 @@
 
 
   &.rc-badge-warning {
-    background-color: $puppet-warning-bold;
+    background-color: $puppet-y700;
     color: $puppet-white;
   }
 }
 
 .rc-badge-subtle {
   &.rc-badge-danger {
-    background-color: $puppet-danger-subtle;
-    color: $puppet-danger-bold;
+    background-color: $puppet-r100;
+    color: $puppet-r600;
   }
 
   &.rc-badge-info {
-    background-color: $puppet-info-subtle;
-    color: $puppet-info-bold;
+    background-color: $puppet-b100;
+    color: $puppet-b600;
   }
 
   &.rc-badge-neutral {
-    background-color: $puppet-neutral-subtle;
-    color: $puppet-neutral-bold;
+    background-color: $puppet-n100;
+    color: $puppet-n800;
   }
 
 
   &.rc-badge-success {
-    background-color: $puppet-success-subtle;
-    color: $puppet-success-bold;
+    background-color: $puppet-g100;
+    color: $puppet-g700;
   }
 
   &.rc-badge-warning {
-    background-color: $puppet-warning-subtle;
-    color: $puppet-warning-bold;
+    background-color: $puppet-y100;
+    color: $puppet-y700;
   }
 }

@@ -10,6 +10,7 @@ If we move to support all html elements, the following should also be implemente
 1. `label` color and spacing
 
 `Base styles:`
+
 ```
 const style = {color: '#5d6f7a'};
 const highlight = element => <span style={style}>{element}</span>;
@@ -37,6 +38,7 @@ const highlight = element => <span style={style}>{element}</span>;
 ```
 
 `An example:`
+
 ```
 <Content>
   <h2>Examples</h2>
@@ -63,3 +65,4 @@ const highlight = element => <span style={style}>{element}</span>;
 
   <p>Recent research suggest that this old wisdom is no longer valid. In some studies user's have signaled that 90 characters is preferred, thus our 90 character maximum.</p>
 </Content>
+```

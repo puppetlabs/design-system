@@ -47,6 +47,7 @@ const buttonStyle = { margin: 5 };
 To indicate a dangerous or destructive action, we utilize a red button. This button should always come with descriptive text so as not to rely solely on a color for meaning. For actions of lesser implications, use the subtle version.
 
 #### Bold
+
 ```
 const buttonStyle = { margin: 5 };
 
@@ -58,6 +59,7 @@ const buttonStyle = { margin: 5 };
 ```
 
 #### Subtle
+
 ```
 const buttonStyle = { margin: 5 };
 
@@ -71,6 +73,7 @@ const buttonStyle = { margin: 5 };
 ### Icon button
 
 When working with a small amount of real estate, icon buttons can be used when the designer is sure that the icon used is clear enough with its action. Because of clarity issues, icon buttons should be used only when no other interface element is appropriate (e.g. Edit, Add, Settings, Profile, More, Trash, Close/Remove, Show/Hide, Expand/Collapse, Full screen, Help, Information, Link, Attach, Notification, Export, Chart). Icon buttons can be used with an additional "transparent" variation for minimalism in place.
+
 ```
 const buttonStyle = { margin: 2 };
 

@@ -15,7 +15,7 @@ Tags:
     I'm a clickable tag!
   </Tag>
   <Tag
-    disabled     
+    disabled
   >
     I'm a disabled tag!
   </Tag>
