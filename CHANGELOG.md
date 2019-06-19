@@ -21,11 +21,12 @@
 - **Breaking Change** Remove ButtonGroup component
 - **Breaking Change** Rename ActionMenu -> ActionSelect
 - **Breaking Change** Remove many scss variables from palettes and common
-- **Breaking Change** $puppet-common-spacing-base is now 4px
+- **Breaking Change** $puppet-common-spacing-base is now 4px, updated for clarity of intent
 - Stop propagation of key events from active select menus
 - Upgrade dependencies
 - Fix all console errors in styleguidist
 - Remove unnecessary styleguidist wrapper components
+- Add margins and max height to modal component
 
 # 5.0.0-alpha.25
 

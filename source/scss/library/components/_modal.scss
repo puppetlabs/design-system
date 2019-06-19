@@ -5,6 +5,9 @@
   border: $puppet-common-border;
   border-radius: $puppet-common-border-radius;
   box-shadow: $puppet-common-elevation-400;
+  box-sizing: border-box;
+  margin: $puppet-common-spacing-base * 8;
+  max-height: calc(100vh - #{$puppet-common-spacing-base} * 16);
   outline: none;
   overflow: auto;
   padding: $puppet-common-spacing-base * 6;
