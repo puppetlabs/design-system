@@ -4,7 +4,7 @@ The logo component provides easy access to marketing-approved logos in our appli
 
 ### Standard
 
-```
+```jsx
 <div style={{ display: 'flex', flexWrap: 'wrap', padding: 10 }}>
   <Logo product="container-registry" style={{ margin: 5 }}/>
   <Logo product="discovery" style={{ margin: 5 }} />
@@ -18,7 +18,7 @@ The logo component provides easy access to marketing-approved logos in our appli
 
 ### Inverted
 
-```
+```jsx
 <div style={{ backgroundColor: 'black', padding: 10, display: 'flex', flexWrap: 'wrap' }}>
   <Logo inverted product="container-registry" style={{ margin: 5 }} />
   <Logo inverted product="discovery" style={{ margin: 5 }} />
@@ -32,7 +32,7 @@ The logo component provides easy access to marketing-approved logos in our appli
 
 ### Bug
 
-```
+```jsx
 <div style={{ display: 'flex', flexWrap: 'wrap', padding: 10 }}>
   <Logo type="bug" product="container-registry" style={{ margin: 5 }} />
   <Logo type="bug" product="discovery" style={{ margin: 5 }} />

@@ -8,7 +8,7 @@
 1. If there is a unique svg for the type and size provided, we render it. Unique svgs are indicated by a colored background below.
 2. Otherwise, we scale down the next largest svg, or if unavailable, scale up the next smallest svg
 
-```
+```jsx
 const icons = require('./icons').default;
 const Renderer = () => {
   const names = Object.keys(icons);

@@ -1,4 +1,4 @@
-```
+```jsx
 let filters = [
   { field: 'Name', op: '=', value: 'Steve' },
   { field: 'Name', op: '!=', value: 'Ben has a cat that jumps, its cool' },
@@ -23,7 +23,7 @@ A `Filters` control that allows filters to be marked as `removable`.
 This is used for letting the user dictate which filters are displayed in the filter bar, and are
 hence removable by the end user.
 
-```
+```jsx
 const filters = [
   { field: 'Animal type', op: '=', value: 'Big cat' },
 ];

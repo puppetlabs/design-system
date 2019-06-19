@@ -1,6 +1,6 @@
 Tags:
 
-```
+```jsx
 <div>
   <Tag
     onRemove={ () => { console.log('Tag removed!') } }

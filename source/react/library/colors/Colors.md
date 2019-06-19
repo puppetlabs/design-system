@@ -1,6 +1,6 @@
 #### Base Colors
 
-```js
+```jsx
 const colors = ['amber', 'teal', 'purple', 'red'];
 
 <Colors colors={colors} />;
@@ -8,7 +8,7 @@ const colors = ['amber', 'teal', 'purple', 'red'];
 
 #### Brand Colors
 
-```js
+```jsx
 const colors = ['brand-primary', 'brand-secondary'];
 
 <Colors colors={colors} />;
@@ -16,7 +16,7 @@ const colors = ['brand-primary', 'brand-secondary'];
 
 #### Neutral Colors
 
-```js
+```jsx
 const colors = [
   'black',
   'n950',
@@ -39,7 +39,7 @@ const colors = [
 
 #### Blues
 
-```js
+```jsx
 colors = [
   'b900',
   'b800',
@@ -58,7 +58,7 @@ colors = [
 
 #### Reds
 
-```js
+```jsx
 colors = [
   'r900',
   'r800',
@@ -77,7 +77,7 @@ colors = [
 
 #### Yellows
 
-```js
+```jsx
 colors = [
   'y900',
   'y800',
@@ -96,7 +96,7 @@ colors = [
 
 #### Greens
 
-```js
+```jsx
 colors = [
   'g900',
   'g800',
@@ -115,7 +115,7 @@ colors = [
 
 #### Purples
 
-```js
+```jsx
 colors = [
   'p900',
   'p800',

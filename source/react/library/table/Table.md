@@ -3,7 +3,7 @@ pagination, sorting, or filtering and therefore should be used in simple cases.
 
 ### Basic use
 
-```
+```jsx
 const data = [
   { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
   { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 },
@@ -19,9 +19,7 @@ const columns = [
   { label: 'Detections', dataKey: 'detections' }
 ];
 
-
 <Table data={data} columns={columns} />
-
 ```
 
 ### Fixed layouts
@@ -29,7 +27,7 @@ const columns = [
 The `fixed` prop allows the table to be used in fixed layout mode. Explicit widths can be provided
 with the inline `style` parameter on each column or with an additional className.
 
-```
+```jsx
 const data = [
   { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
   { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 },
@@ -46,7 +44,6 @@ const columns = [
 ];
 
 <Table fixed data={data} columns={columns} />
-
 ```
 
 ### Nested Data
@@ -63,7 +60,7 @@ function ({
 
 The default cellDataGetter will grab the `dataKey` attribute.
 
-```
+```jsx
 const data = [
   { id: 1, user: { name: 'Meriwether Lewis', employer: { name: 'The Corps of Discovery' } } },
   { id: 2, user: { name: 'Johnny Utah', employer: { name: 'FBI' } } },
@@ -84,7 +81,6 @@ const columns = [
 ];
 
 <Table data={data} columns={columns} />
-
 ```
 
 ### Custom cell rendering
@@ -104,7 +100,7 @@ function ({
 
 The default cellRenderer will render `cellData` as a string.
 
-```
+```jsx
 const data = [
   { id: 1, exclamation: 'HAH!', metaData: { created: new Date() } },
   { id: 2, exclamation: 'Bananas!', metaData: { created: new Date() } },
@@ -126,20 +122,19 @@ const columns = [
 ];
 
 <Table data={data} columns={columns} />
-
 ```
 
 ### Row keys
 
 React requires unique keys on iterated elements to ensure performant and bug-free rendering (see [here](https://reactjs.org/docs/lists-and-keys.html#keys)). By default the Table component will attempt to grab an `id` property off each data entry. This can be overriden by passing another unique key:
 
-```js static
+```jsx static
 <Table data={data} columns={columns} rowKey="myUniqueKey" />
 ```
 
 Optional a function returning the unique value can be provided:
 
-```js static
+```jsx static
 <Table
   data={data}
   columns={columns}

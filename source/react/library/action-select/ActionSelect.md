@@ -4,7 +4,7 @@ The ActionSelect component allows users to execute actions from a dropdown menu 
 
 Actions are specified by entries in an `actions` array prop. In most cases, action callbacks should be specified with the `onClick` property of each action item. If the action involves navigation, an anchor tag or custom link component with appropriate props (`href` or `to`) can be rendered with the `as` prop. Each action can optionally include an icon.
 
-```
+```jsx
 const actions = [
   { id: 'one', icon: 'pencil', label: 'Do thing one', onClick() { console.log('Thing one'); } },
   { id: 'two', icon: 'send', label: 'Do thing two', onClick() { console.log('Thing two'); } },
@@ -38,7 +38,7 @@ const style = { display: 'inline-block', margin: 10 };
 
 A common variant will use an icon (often the `kebab` icon) instead of button text.
 
-```
+```jsx
 const actions = [
   { id: 'one', icon: 'pencil', label: 'Do thing one', onClick() { console.log('Thing one'); } },
   { id: 'two', icon: 'send', label: 'Do thing two', onClick() { console.log('Thing two'); } },
@@ -78,7 +78,7 @@ const style = { display: 'inline-block', margin: 10 };
 
 The `anchor` prop can be used to specify the corner at which the dropdown menu list should be anchored to the button target. This is most useful with icon ActionSelects because the width of the dropdown menu list will exceed the width of the button target, but may also be useful if standard ActionSelects are rendered near the bottom of a content area.
 
-```
+```jsx
 const actions = [
   { id: 'one', icon: 'pencil', label: 'Do thing one', onClick() { console.log('Thing one'); } },
   { id: 'two', icon: 'send', label: 'Do thing two', onClick() { console.log('Thing two'); } },

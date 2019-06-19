@@ -4,7 +4,7 @@ Design specification: <a href="http://designsystem.puppetlabs.net/forms" target=
 
 ### Basic use
 
-```
+```jsx
 const exampleStyle = { marginRight: 10 };
 
 <div>
@@ -17,7 +17,7 @@ const exampleStyle = { marginRight: 10 };
 
 ### Event handling
 
-```
+```jsx
 <Checkbox
   name="checkbox-ex-event-handling"
   label="Checkbox label is also clickable"

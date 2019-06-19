@@ -4,7 +4,7 @@ The Select component is a form element allowing for selection of a value from a 
 
 Options are specified by entries in an `options` array prop. Each requires a unique value and a friendly label to display to users.
 
-```
+```jsx
 const options = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },

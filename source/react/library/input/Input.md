@@ -4,7 +4,7 @@ Design specification: <a href="http://designsystem.puppetlabs.net/forms" target=
 
 ### Available types
 
-```
+```jsx
 const exampleStyle = { marginBottom: 10 };
 
 <form>
@@ -20,8 +20,7 @@ const exampleStyle = { marginBottom: 10 };
 
 Inputs are available in a "simple" visual variant, primarily used for in-site search boxes
 
-```
-
+```jsx
 <Input name="input-ex6" simple icon="search" placeholder="Search"/>
 ```
 
@@ -29,7 +28,7 @@ Inputs are available in a "simple" visual variant, primarily used for in-site se
 
 Just as with native inputs, the Input component should typically be used as a "controlled" component.
 
-```
+```jsx
 <Input
   name="input-ex10"
   value={state.value}
@@ -42,7 +41,7 @@ Just as with native inputs, the Input component should typically be used as a "c
 
 Optional leading and trailing icons may be added where needed
 
-```
+```jsx
 const exampleStyle = { marginBottom: 10 };
 
 <div>

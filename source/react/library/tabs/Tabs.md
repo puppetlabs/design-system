@@ -10,7 +10,7 @@ _By default the Tabs component will handle all interactions as users switch betw
 
 Default Tabs:
 
-```
+```jsx
 <Tabs>
   <Tabs.Tab title="Tab 1">
     Once focused, use arrows to switch tabs.
@@ -27,7 +27,7 @@ Default Tabs:
 
 Secondary Tabs:
 
-```
+```jsx
 <Tabs type="secondary" initialTab={2}>
   <Tabs.Tab title="Tab 1">
     The Tab title prop becomes the button label.
@@ -45,8 +45,7 @@ Secondary Tabs:
 
 _The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected. In this mode we recommend supplying a unique `id` to each Tab element so that the active tab is easier to track. If no id is provided the Tabs component will use the positional index._
 
-```
-
+```jsx
 class MyPageWithTabs extends React.Component {
   constructor(props) {
     super(props);

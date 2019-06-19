@@ -2,7 +2,7 @@ The Switch component is a lightly styled wrapper around an html checkbox input. 
 
 Design specification: <a href="http://designsystem.puppetlabs.net/forms" target="_top">designsystem.puppetlabs.net/forms</a>
 
-```
+```jsx
 const exampleStyle = { marginRight: 10 };
 
 <div>
@@ -14,7 +14,7 @@ const exampleStyle = { marginRight: 10 };
 
 ### Event handling
 
-```
+```jsx
 <Switch
   name="foo"
   label="Is this thing on yet?"

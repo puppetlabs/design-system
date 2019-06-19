@@ -4,7 +4,7 @@ Puppet products use a family of buttons, with each button intended for a differe
 
 Used for the single most important action on any given page, generally defined as the action which moves  the user forward in a workflow (e.g. next, submit, continue, run, etc.) or resolves a workflow (e.g. delete, apply, commit, etc.). A primary action button should be used sparingly: no more than 1 primary action per page  or instance.
 
-```
+```jsx
 const buttonStyle = { margin: 5 };
 
 <div>
@@ -18,7 +18,7 @@ const buttonStyle = { margin: 5 };
 
 Used to be ghost button. This button is used to show as hierarchically less important than the primary action, or the predominant action on the page when no action is deemed of primary importance.
 
-```
+```jsx
 const buttonStyle = { margin: 5 };
 
 <div>
@@ -32,7 +32,7 @@ const buttonStyle = { margin: 5 };
 
 Used to be “Secondary action button”. The most commonly used button. It showcases actions that a user might take on any given page which are not the single most important action; this might include micro-workflows such as applying a filter, confirming a change, etc.
 
-```
+```jsx
 const buttonStyle = { margin: 5 };
 
 <div>
@@ -48,7 +48,7 @@ To indicate a dangerous or destructive action, we utilize a red button. This but
 
 #### Bold
 
-```
+```jsx
 const buttonStyle = { margin: 5 };
 
 <div>
@@ -60,7 +60,7 @@ const buttonStyle = { margin: 5 };
 
 #### Subtle
 
-```
+```jsx
 const buttonStyle = { margin: 5 };
 
 <div>
@@ -74,7 +74,7 @@ const buttonStyle = { margin: 5 };
 
 When working with a small amount of real estate, icon buttons can be used when the designer is sure that the icon used is clear enough with its action. Because of clarity issues, icon buttons should be used only when no other interface element is appropriate (e.g. Edit, Add, Settings, Profile, More, Trash, Close/Remove, Show/Hide, Expand/Collapse, Full screen, Help, Information, Link, Attach, Notification, Export, Chart). Icon buttons can be used with an additional "transparent" variation for minimalism in place.
 
-```
+```jsx
 const buttonStyle = { margin: 2 };
 
 <div>
@@ -99,14 +99,13 @@ const buttonStyle = { margin: 2 };
     <Button type="transparent" style={buttonStyle} icon="pencil" disabled />
   </div>
 </div>
-
 ```
 
 ### Text button
 
 The lowest level button in the visual hierarchy. These are so far most often used at the bottom of a menu, or for card controls. Designed to work reasonably well inline.
 
-```
+```jsx
 const buttonStyle = { margin: 2 };
 
 <div>
@@ -114,5 +113,4 @@ const buttonStyle = { margin: 2 };
   <Button type="text" icon="plus" style={buttonStyle}>Add option</Button>
   <Button type="text" trailingIcon="chevron-down" style={buttonStyle}>Select option</Button>
 </div>
-
 ```

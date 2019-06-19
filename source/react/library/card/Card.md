@@ -4,7 +4,7 @@ Design specification: <a href="http://designsystem.puppetlabs.net/containers" ta
 
 ### Primary Cards
 
-```
+```jsx
 const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
 <div style={{ display: 'flex' }}>
   <Card style={cardExampleStyle}>
@@ -24,7 +24,7 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
 
 ### Secondary Cards
 
-```
+```jsx
 const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
 <div style={{ display: 'flex' }}>
   <Card type="secondary" style={cardExampleStyle}>
@@ -46,7 +46,7 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
 
 Cards are often used on grids where the content in each card is selectable, perhaps controlling the content of a sidebar or other page area.
 
-```
+```jsx
 initialState = {
   selected: null,
 }
@@ -85,7 +85,7 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
 Card content is arbitrary as determined by the needs of the application. We provide two convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, and `Card.ActionSelect` which provides selection from a set of card actions,
 pre-styled in a consistent manner.
 
-```
+```jsx
 const cardActions = [
   { label: 'Card Action 1', id: 0, onClick: () => console.log('You did thing 1') },
   { label: 'Card Action 2', id: 1, onClick: () => console.log('You did thing 2') },

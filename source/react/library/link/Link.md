@@ -1,6 +1,6 @@
 The Link component encapsulates link styling but allows rendering of custom html elements.
 
-```
+```jsx
 const linkStyle = { marginRight: 10 };
 
 <div>

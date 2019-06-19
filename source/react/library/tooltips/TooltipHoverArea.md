@@ -1,6 +1,6 @@
 _Note: Aria attributes to be set on Tooltip and TooltipHoverArea components post-1.0_
 
-```
+```jsx
 const Button = require('../button/Button.js').default;
 
 <TooltipHoverArea tooltip="I'm a happy tooltip!" anchor="bottom" >
@@ -10,7 +10,7 @@ const Button = require('../button/Button.js').default;
 
 A `TooltipHoverArea` in a scrolling container:
 
-```
+```jsx
 const Button = require('../button/Button.js').default;
 
 const parentStyle = {

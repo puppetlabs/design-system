@@ -2,7 +2,7 @@ The text component provides an encapsulated way to use typography consistent wit
 
 Design specification: <a href="http://designsystem.puppetlabs.net/typography" target="_top">designsystem.puppetlabs.net/typography</a>
 
-```js
+```jsx
 <Text>Medium</Text>
 <Text size="small">Small</Text>
 <Text size="tiny">Tiny</Text>
@@ -10,7 +10,7 @@ Design specification: <a href="http://designsystem.puppetlabs.net/typography" ta
 
 #### Text - color medium
 
-```js
+```jsx
 <Text color="medium">Medium</Text>
 <Text color="medium" size="small">Small</Text>
 <Text color="medium" size="tiny">Tiny</Text>
@@ -18,7 +18,7 @@ Design specification: <a href="http://designsystem.puppetlabs.net/typography" ta
 
 #### Heading - color subtle
 
-```js
+```jsx
 <Text color="subtle">Medium</Text>
 <Text color="subtle" size="small">Small</Text>
 <Text color="subtle" size="tiny">Tiny</Text>
@@ -26,7 +26,7 @@ Design specification: <a href="http://designsystem.puppetlabs.net/typography" ta
 
 #### Heading - color danger
 
-```js
+```jsx
 <Text color="danger">Medium</Text>
 <Text color="danger" size="small">Small</Text>
 <Text color="danger" size="tiny">Tiny</Text>
@@ -34,7 +34,7 @@ Design specification: <a href="http://designsystem.puppetlabs.net/typography" ta
 
 #### Heading - color warning
 
-```js
+```jsx
 <Text color="warning">Medium</Text>
 <Text color="warning" size="small">Small</Text>
 <Text color="warning" size="tiny">Tiny</Text>
@@ -42,7 +42,7 @@ Design specification: <a href="http://designsystem.puppetlabs.net/typography" ta
 
 #### Heading - color success
 
-```js
+```jsx
 <Text color="success">Medium</Text>
 <Text color="success" size="small">Small</Text>
 <Text color="success" size="tiny">Tiny</Text>

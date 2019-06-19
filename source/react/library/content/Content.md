@@ -11,7 +11,7 @@ If we move to support all html elements, the following should also be implemente
 
 `Base styles:`
 
-```
+```jsx
 const style = {color: '#5d6f7a'};
 const highlight = element => <span style={style}>{element}</span>;
 
@@ -39,7 +39,7 @@ const highlight = element => <span style={style}>{element}</span>;
 
 `An example:`
 
-```
+```jsx
 <Content>
   <h2>Examples</h2>
 
