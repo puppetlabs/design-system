@@ -7,7 +7,7 @@
 - **Breaking change** Remove `title` prop from Modal in favor of Modal.Title subcomponent
 - **Breaking change** Remove `actions` prop from Modal in favor of Modal.Actions subcomponent
 - **Breaking change** Remove `size` prop from Modal. Default is now 480px, users can override by passing a custom className
-- **Breaking change** Replace `onRequestClose` callback prop on Modal with `onClose` for consistency with other components
+- **Breaking change** Remove `unbindShortcut`, `bindShortcut`, `margin`, `height`, `size`, `sidebar`, `sidebarPosition`, `actionsCTA`, `modalClassName`, `actionsPosition`, and `title` props from Modal
 - List core-js as direct dependency (needed by way of @babel/polyfill)
 - Use webpack-node-externals to reduce bundle size
 - ActionMenu can accept a number as an action id
