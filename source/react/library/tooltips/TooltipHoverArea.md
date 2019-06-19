@@ -1,4 +1,4 @@
-*Note: Aria attributes to be set on Tooltip and TooltipHoverArea components post-1.0*
+_Note: Aria attributes to be set on Tooltip and TooltipHoverArea components post-1.0_
 
 ```
 const Button = require('../button/Button.js').default;

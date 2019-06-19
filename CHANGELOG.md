@@ -24,6 +24,8 @@
 - **Breaking Change** $puppet-common-spacing-base is now 4px
 - Stop propagation of key events from active select menus
 - Upgrade dependencies
+- Fix all console errors in styleguidist
+- Remove unnecessary styleguidist wrapper components
 
 # 5.0.0-alpha.25
 

@@ -4,18 +4,18 @@ The component delegates the rendering of individual form input fields to sub com
 
 The current available string `type` values are detailed in the table below. We intend to add more over time.
 
-| Type           | Component                    | Data Type     | Description                                         |
-| -------------- | ---------------------------- | ------------- | --------------------------------------------------- |
-| text (default) | [Input](#input)              | string        | Standard html text input                            |
-| email          | [Input](#input)              | string        | Html email input with browser validation            |
-| password       | [Input](#input)              | string        | Hidden password input                               |
-| url            | [Input](#input)              | string        | Url input with browser validation                   |
-| search         | [Input](#input)              | string        | Html 'search' type input                            |
-| number         | [Input](#input)              | number        | Html number input with stepper                      |
-| multiline      | [Input](#input) (multiline)  | string        | Html textarea for long strings                      |
-| checkbox       | [Checkbox](#checkbox)        | boolean       | Html checkbox                                       |
-| switch         | [Switch](#switch)            | boolean       | Another boolean input designed to denote 'on / off' |
-| select         | [Select](#select)            | string        | Dropdown selection                                  |
+| Type           | Component                    | Data Type         | Description                                         |
+| -------------- | ---------------------------- | ----------------- | --------------------------------------------------- |
+| text (default) | [Input](#input)              | string            | Standard html text input                            |
+| email          | [Input](#input)              | string            | Html email input with browser validation            |
+| password       | [Input](#input)              | string            | Hidden password input                               |
+| url            | [Input](#input)              | string            | Url input with browser validation                   |
+| search         | [Input](#input)              | string            | Html 'search' type input                            |
+| number         | [Input](#input)              | number            | Html number input with stepper                      |
+| multiline      | [Input](#input) (multiline)  | string            | Html textarea for long strings                      |
+| checkbox       | [Checkbox](#checkbox)        | boolean           | Html checkbox                                       |
+| switch         | [Switch](#switch)            | boolean           | Another boolean input designed to denote 'on / off' |
+| select         | [Select](#select)            | string            | Dropdown selection                                  |
 | multiselect    | [Select](#select) (multiple) | Array&ltstring&gt | Dropdown selection allowing multiple options        |
 
 In addition it is possible to pass in a custom input component via the `type` prop:

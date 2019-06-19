@@ -3,6 +3,7 @@ The ButtonSelect component allows users to select a value or set of values from 
 ### Basic use
 
 Options are specified by entries in an `options` array prop. Each requires a unique value and a friendly label to display to users.
+
 ```
 const options = [
   { value: 'one', label: 'One' },

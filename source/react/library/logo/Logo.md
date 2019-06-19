@@ -3,6 +3,7 @@ The logo component provides easy access to marketing-approved logos in our appli
 **NOTE: Custom logos should be used internally only. All public facing products should be given official trademarked logos through marketing.**
 
 ### Standard
+
 ```
 <div style={{ display: 'flex', flexWrap: 'wrap', padding: 10 }}>
   <Logo product="container-registry" style={{ margin: 5 }}/>
@@ -16,6 +17,7 @@ The logo component provides easy access to marketing-approved logos in our appli
 ```
 
 ### Inverted
+
 ```
 <div style={{ backgroundColor: 'black', padding: 10, display: 'flex', flexWrap: 'wrap' }}>
   <Logo inverted product="container-registry" style={{ margin: 5 }} />
@@ -29,6 +31,7 @@ The logo component provides easy access to marketing-approved logos in our appli
 ```
 
 ### Bug
+
 ```
 <div style={{ display: 'flex', flexWrap: 'wrap', padding: 10 }}>
   <Logo type="bug" product="container-registry" style={{ margin: 5 }} />

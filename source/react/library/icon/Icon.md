@@ -1,7 +1,7 @@
 **To render an icon, either:**
 
-* Provide a type and a size (size optional)
-* Provide an svg and a viewBox
+- Provide a type and a size (size optional)
+- Provide an svg and a viewBox
 
 **The specific svg rendered is decided by the following:**
 
