@@ -8,8 +8,6 @@ import ModalTitle from './ModalTitle';
 import ModalActions from './ModalActions';
 
 const propTypes = {
-  /** Actions to render */
-  actions: PropTypes.node,
   /** Additional classes to add in addition to 'rc-modal' */
   className: PropTypes.string,
   /** Allow closing via the ESC key and clicking outside the modal */
@@ -24,7 +22,6 @@ const propTypes = {
   children: PropTypes.node,
 };
 const defaultProps = {
-  actions: null,
   className: '',
   closeOnEscapeAndOverlay: true,
   isOpen: true,
