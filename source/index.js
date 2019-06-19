@@ -10,7 +10,7 @@ import Input from './react/library/input/Input';
 import Switch from './react/library/switch/Switch';
 import Loading from './react/library/loading/Loading';
 import Modal from './react/library/modals/Modal';
-import { TooltipHoverArea } from './react/library/tooltips/Tooltip';
+import TooltipHoverArea from './react/library/tooltips/TooltipHoverArea';
 import Select from './react/library/select/Select';
 import Form from './react/library/form';
 import Filters from './react/library/filters';
@@ -44,7 +44,6 @@ export {
   Checkbox,
   Content,
   Sidebar,
-  Portal,
   Heading,
   Text,
   Alert,

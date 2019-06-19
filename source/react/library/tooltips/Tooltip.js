@@ -3,7 +3,6 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { bindParentScroll, unbindParentScroll } from '../../helpers/statics';
-import TooltipHoverArea from './TooltipHoverArea';
 
 const CARAT_HEIGHT = 8;
 
@@ -175,5 +174,4 @@ class Tooltip extends React.Component {
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;
 
-export { TooltipHoverArea };
 export default Tooltip;

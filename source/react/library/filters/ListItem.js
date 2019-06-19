@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
 import Icon from '../icon/Icon';
-import { TooltipHoverArea } from '../tooltips/Tooltip';
+import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 
 const propTypes = {
   size: PropTypes.oneOf(['tiny', 'small', 'medium']),

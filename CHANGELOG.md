@@ -22,6 +22,8 @@
 - **Breaking Change** Rename ActionMenu -> ActionSelect
 - **Breaking Change** Remove many scss variables from palettes and common
 - **Breaking Change** $puppet-common-spacing-base is now 4px
+- Stop propagation of key events from active select menus
+- Upgrade dependencies
 
 # 5.0.0-alpha.25
 

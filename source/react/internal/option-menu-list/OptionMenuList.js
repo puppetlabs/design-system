@@ -37,6 +37,7 @@ const propTypes = {
   onEscape: PropTypes.func,
   onBlur: PropTypes.func,
   className: PropTypes.string,
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -49,6 +50,7 @@ const defaultProps = {
   actionLabel: 'Apply',
   onActionClick() {},
   onEscape() {},
+  style: {},
 };
 
 const getOptionId = (id, value) => `${id}-${value}`;

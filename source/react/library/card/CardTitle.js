@@ -1,10 +1,15 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Heading from '../heading';
 
-const propTypes = {};
+const propTypes = {
+  className: PropTypes.string,
+};
 
-const defaultProps = {};
+const defaultProps = {
+  className: '',
+};
 
 /**
  * The card actions menu is just an actionsMenu with some defaults set

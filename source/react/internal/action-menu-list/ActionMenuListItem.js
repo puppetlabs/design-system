@@ -13,11 +13,13 @@ const propTypes = {
   icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
   onMouseEnter: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
+  innerRef: PropTypes.func,
 };
 
 const defaultProps = {
   as: undefined,
   icon: null,
+  innerRef() {},
 };
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */

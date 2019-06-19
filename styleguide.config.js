@@ -8,12 +8,6 @@ module.exports = {
     name: '#269CFF',
   },
   components: 'source/react/library/**/*.js',
-  styleguideComponents: {
-    ReactComponent: path.join(
-      __dirname,
-      'source/react/styleguide/components/ReactComponent',
-    ),
-  },
   ignore: [
     '**/**/index.js',
     '**/alert/IconButton.js',

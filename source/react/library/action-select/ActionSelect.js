@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Button from '../button/Button';
-import ActionSelectList from '../../internal/action-menu-list';
+import ActionMenuList from '../../internal/action-menu-list';
 import {
   renderableElement,
   anchorOrientation,
@@ -181,7 +181,7 @@ class ActionSelect extends Component {
         >
           {label}
         </Button>
-        <ActionSelectList
+        <ActionMenuList
           id={`${id}-menu`}
           actions={actions}
           aria-labelledby={id}

@@ -19,8 +19,6 @@ const propTypes = {
   parentId: PropTypes.string,
   /** Internally managed active state  */
   active: PropTypes.bool,
-  /** Internally managed focus state  */
-  focused: PropTypes.bool,
   /** Internally managed onClick for Tab button. Callback to parent */
   onKeyDown: PropTypes.func,
   /** Internally managed onClick for Tab button. Callback to parent */
@@ -33,6 +31,8 @@ const defaultProps = {
   id: null,
   parentId: null,
   active: false,
+  onKeyDown() {},
+  onClick() {},
 };
 
 const Tab = forwardRef(

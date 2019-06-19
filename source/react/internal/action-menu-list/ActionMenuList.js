@@ -32,6 +32,7 @@ const propTypes = {
   onEscape: PropTypes.func,
   onBlur: PropTypes.func,
   className: PropTypes.string,
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -40,6 +41,7 @@ const defaultProps = {
   onEscape() {},
   onBlur() {},
   className: '',
+  style: {},
 };
 
 const getActionId = (id, actionId) => `${id}-${actionId}`;
@@ -215,12 +217,10 @@ class ActionMenuList extends Component {
     const {
       id,
       actions,
-      actionLabel,
       onActionClick,
       onEscape,
       className,
       style,
-      onClickOutside,
       ...rest
     } = this.props;
 
