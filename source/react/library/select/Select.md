@@ -18,6 +18,7 @@ const style = { margin: 10 };
 <div>
   <Select
     id="button-select-one"
+    name="select-example"
     options={options}
     placeholder="Select a value"
     style={style}

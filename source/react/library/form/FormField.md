@@ -16,7 +16,7 @@ The current available string `type` values are detailed in the table below. We i
 | checkbox       | [Checkbox](#checkbox)        | boolean       | Html checkbox                                       |
 | switch         | [Switch](#switch)            | boolean       | Another boolean input designed to denote 'on / off' |
 | select         | [Select](#select)            | string        | Dropdown selection                                  |
-| multiselect    | [Select](#select) (multiple) | Array<string> | Dropdown selection allowing multiple options        |
+| multiselect    | [Select](#select) (multiple) | Array&ltstring&gt | Dropdown selection allowing multiple options        |
 
 In addition it is possible to pass in a custom input component via the `type` prop:
 
