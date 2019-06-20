@@ -1,5 +1,5 @@
 import ActionSelect from './react/library/action-select';
-import Button from './react/library/button/Button';
+import Button from './react/library/button';
 import ButtonSelect from './react/library/button-select';
 import Card from './react/library/card';
 import Sidebar from './react/library/sidebar/Sidebar';

@@ -2,23 +2,17 @@ A `Modal` is a container with arbitrary content that opens above other page
 content.
 
 ```jsx
-initialState = { isOpen: null };
+import Button from '../button';
+
+const [open, setOpen] = React.useState(false);
 
 <>
-  <Button
-    onClick={() => {
-      setState({ isOpen: true });
-    }}
-  >
+  <Button onClick={() => setOpen(true)}>
     Open simple modal
   </Button>
 
-  {state.isOpen && (
-    <Modal
-      onClose={() => {
-        setState({ isOpen: null });
-      }}
-    >
+  {open && (
+    <Modal onClose={() => setOpen(false)}>
       Non eram nescius, Brute, cum, quae summis ingeniis exquisitaque doctrina
       philosophi Graeco sermone tractavissent, ea Latinis litteris mandaremus,
       fore ut hic noster labor in varias reprehensiones incurreret. nam
@@ -38,23 +32,17 @@ The `Modal.Title` and `Modal.Actions` subcomponents should be used when a
 heading at the top and buttons at the bottom are desired respectively.
 
 ```jsx
-initialState = { isOpen: null };
+import Button from '../button';
+
+const [open, setOpen] = React.useState(false);
 
 <>
-  <Button
-    onClick={() => {
-      setState({ isOpen: true });
-    }}
-  >
+  <Button onClick={() => setOpen(true)}>
     Open modal with sub-components
   </Button>
 
-  {state.isOpen && (
-    <Modal
-      onClose={() => {
-        setState({ isOpen: null });
-      }}
-    >
+  {open && (
+    <Modal onClose={() => setOpen(false)}>
       <Modal.Title>Liber Secundus</Modal.Title>
       Hic cum uterque me intueretur seseque ad audiendum significarent paratos, Primum,
       inquam, deprecor, ne me tamquam philosophum putetis scholam vobis aliquam explicaturum,
@@ -90,33 +78,24 @@ A common pattern is to include a Form in a Modal. This may be accomplished by
 composing these components.
 
 ```jsx
-initialState = { isOpen: null };
+import Button from '../button';
+import Form from '../form';
+
+const [open, setOpen] = React.useState(false);
 
 <>
-  <Button
-    onClick={() => {
-      setState({ isOpen: true });
-    }}
-  >
+  <Button onClick={() => setOpen(true)}>
     Open modal with form
   </Button>
 
-  {state.isOpen && (
-    <Modal
-      onClose={() => {
-        setState({ isOpen: null });
-      }}
-    >
+  {open && (
+    <Modal onClose={() => setOpen(false)}>
       <Modal.Title>Replete ex hac forma</Modal.Title>
       <Form
         submittable
         cancellable
-        onSubmit={() => {
-          setState({ isOpen: null });
-        }}
-        onCancel={() => {
-          setState({ isOpen: null });
-        }}
+        onSubmit={() => setOpen(false)}
+        onCancel={() => setOpen(false)}
       >
         <Form.Field
           type="email"
@@ -153,24 +132,17 @@ is not recommended unless special handling of something like a wizard is
 required.
 
 ```jsx
-initialState = { isOpen: null };
+import Button from '../button';
+
+const [open, setOpen] = React.useState(false);
 
 <>
-  <Button
-    onClick={() => {
-      setState({ isOpen: true });
-    }}
-  >
+  <Button onClick={() => setOpen(true)}>
     Open modal that is hard to close
   </Button>
 
-  {state.isOpen && (
-    <Modal
-      closeOnEscapeAndOverlay={false}
-      onClose={() => {
-        setState({ isOpen: null });
-      }}
-    >
+  {open && (
+    <Modal closeOnEscapeAndOverlay={false} onClose={() => setOpen(false)}>
       This modal can only be closed by clicking the "×" button in the
       upper-right of the modal, but not by hitting the escape key or by clicking
       outside the modal.
