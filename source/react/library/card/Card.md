@@ -5,7 +5,11 @@ Design specification: <a href="http://designsystem.puppetlabs.net/containers" ta
 ### Primary Cards
 
 ```jsx
+import Heading from '../heading';
+import Text from '../Text';
+
 const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
+
 <div style={{ display: 'flex' }}>
   <Card style={cardExampleStyle}>
     <Heading as="h3">Flat</Heading>
@@ -25,7 +29,11 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
 ### Secondary Cards
 
 ```jsx
+import Heading from '../heading';
+import Text from '../Text';
+
 const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
+
 <div style={{ display: 'flex' }}>
   <Card type="secondary" style={cardExampleStyle}>
     <Heading as="h3">Flat</Heading>
@@ -47,11 +55,14 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
 Cards are often used on grids where the content in each card is selectable, perhaps controlling the content of a sidebar or other page area.
 
 ```jsx
+import Heading from '../heading';
+
 initialState = {
   selected: null,
 }
 
 const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
+
 <div style={{ display: 'flex' }}>
   <Card
     selectable

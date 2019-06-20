@@ -9,7 +9,9 @@
 2. Otherwise, we scale down the next largest svg, or if unavailable, scale up the next smallest svg
 
 ```jsx
-const icons = require('./icons').default;
+import Alert from '../alert';
+import icons from './icons';
+
 const Renderer = () => {
   const names = Object.keys(icons);
   const components = [];

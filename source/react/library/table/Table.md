@@ -101,6 +101,8 @@ function ({
 The default cellRenderer will render `cellData` as a string.
 
 ```jsx
+import Badge from '../badge';
+
 const data = [
   { id: 1, exclamation: 'HAH!', metaData: { created: new Date() } },
   { id: 2, exclamation: 'Bananas!', metaData: { created: new Date() } },
