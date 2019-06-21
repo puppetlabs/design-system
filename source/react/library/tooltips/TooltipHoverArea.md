@@ -3,9 +3,9 @@ _Note: Aria attributes to be set on Tooltip and TooltipHoverArea components post
 ```jsx
 const Button = require('../button/Button.js').default;
 
-<TooltipHoverArea tooltip="I'm a happy tooltip!" anchor="bottom" >
+<TooltipHoverArea tooltip="I'm a happy tooltip!" anchor="bottom">
   <Button>I'm a happy button!</Button>
-</TooltipHoverArea>
+</TooltipHoverArea>;
 ```
 
 A `TooltipHoverArea` in a scrolling container:
@@ -24,11 +24,11 @@ const childStyle = {
   backgroundColor: 'gray',
 };
 
-<div style={ parentStyle }>
-  <div style={ childStyle } >
-    <TooltipHoverArea tooltip="I'm a happy tooltip!" anchor="right" >
+<div style={parentStyle}>
+  <div style={childStyle}>
+    <TooltipHoverArea tooltip="I'm a happy tooltip!" anchor="right">
       <Button>I'm a happy button!</Button>
     </TooltipHoverArea>
   </div>
-</div>
+</div>;
 ```

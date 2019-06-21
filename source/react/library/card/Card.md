@@ -8,7 +8,13 @@ Design specification: <a href="http://designsystem.puppetlabs.net/containers" ta
 import Heading from '../heading';
 import Text from '../text';
 
-const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
+const cardExampleStyle = {
+  width: 150,
+  height: 150,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight: 12,
+};
 
 <div style={{ display: 'flex' }}>
   <Card style={cardExampleStyle}>
@@ -23,7 +29,7 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
     <Heading as="h3">Raised</Heading>
     <Text>Elevation 100</Text>
   </Card>
-</div>
+</div>;
 ```
 
 ### Secondary Cards
@@ -32,7 +38,13 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
 import Heading from '../heading';
 import Text from '../text';
 
-const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
+const cardExampleStyle = {
+  width: 150,
+  height: 150,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight: 12,
+};
 
 <div style={{ display: 'flex' }}>
   <Card type="secondary" style={cardExampleStyle}>
@@ -47,7 +59,7 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
     <Heading as="h3">Raised</Heading>
     <Text>Elevation 100</Text>
   </Card>
-</div>
+</div>;
 ```
 
 ### Selectable Cards
@@ -59,9 +71,15 @@ import Heading from '../heading';
 
 initialState = {
   selected: null,
-}
+};
 
-const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
+const cardExampleStyle = {
+  width: 150,
+  height: 150,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight: 12,
+};
 
 <div style={{ display: 'flex' }}>
   <Card
@@ -88,7 +106,7 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
   >
     <Heading as="h3">C</Heading>
   </Card>
-</div>
+</div>;
 ```
 
 ### Card Content
@@ -98,14 +116,31 @@ pre-styled in a consistent manner.
 
 ```jsx
 const cardActions = [
-  { label: 'Card Action 1', id: 0, onClick: () => console.log('You did thing 1') },
-  { label: 'Card Action 2', id: 1, onClick: () => console.log('You did thing 2') },
-  { label: 'Card Action 3', id: 2, onClick: () => console.log('You did thing 3') },
+  {
+    label: 'Card Action 1',
+    id: 0,
+    onClick: () => console.log('You did thing 1'),
+  },
+  {
+    label: 'Card Action 2',
+    id: 1,
+    onClick: () => console.log('You did thing 2'),
+  },
+  {
+    label: 'Card Action 3',
+    id: 2,
+    onClick: () => console.log('You did thing 3'),
+  },
 ];
 
 <Card>
   <Card.Title>Title</Card.Title>
-  <Card.ActionSelect actions={cardActions}/>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</Card>
+  <Card.ActionSelect actions={cardActions} />
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
+  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
+  in culpa qui officia deserunt mollit anim id est laborum.
+</Card>;
 ```

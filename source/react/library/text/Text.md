@@ -10,7 +10,7 @@ Design specification: <a href="http://designsystem.puppetlabs.net/typography" ta
 
 #### Color
 
-A variety of color options are available.  
+A variety of color options are available.
 
 ##### Neutrals
 

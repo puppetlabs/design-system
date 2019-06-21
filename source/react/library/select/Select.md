@@ -29,5 +29,5 @@ const style = { margin: 10 };
       setState({ value1 });
     }}
   />
-</div>
+</div>;
 ```

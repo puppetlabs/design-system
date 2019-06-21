@@ -8,11 +8,26 @@ Design specification: <a href="http://designsystem.puppetlabs.net/forms" target=
 const exampleStyle = { marginRight: 10 };
 
 <div>
-  <Checkbox name="checkbox-ex-unchecked" label="Unchecked" style={exampleStyle}/>
-  <Checkbox name="checkbox-ex-checked" label="Checked" style={exampleStyle} checked />
-  <Checkbox name="checkbox-ex-disabled" label="Disabled" style={exampleStyle} checked disabled />
+  <Checkbox
+    name="checkbox-ex-unchecked"
+    label="Unchecked"
+    style={exampleStyle}
+  />
+  <Checkbox
+    name="checkbox-ex-checked"
+    label="Checked"
+    style={exampleStyle}
+    checked
+  />
+  <Checkbox
+    name="checkbox-ex-disabled"
+    label="Disabled"
+    style={exampleStyle}
+    checked
+    disabled
+  />
   <Checkbox name="checkbox-ex-error" label="Error" style={exampleStyle} error />
-</div>
+</div>;
 ```
 
 ### Event handling

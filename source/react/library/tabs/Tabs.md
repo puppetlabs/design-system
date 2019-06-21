@@ -12,16 +12,13 @@ Default Tabs:
 
 ```jsx
 <Tabs>
-  <Tabs.Tab title="Tab 1">
-    Once focused, use arrows to switch tabs.
-  </Tabs.Tab>
+  <Tabs.Tab title="Tab 1">Once focused, use arrows to switch tabs.</Tabs.Tab>
   <Tabs.Tab title="Tab 2">
     Hit Tab to focus down.
-    <br /><input></input>
+    <br />
+    <input></input>
   </Tabs.Tab>
-  <Tabs.Tab title="Tab 3">
-    Hit Shift + Tab to focus up.
-  </Tabs.Tab>
+  <Tabs.Tab title="Tab 3">Hit Shift + Tab to focus up.</Tabs.Tab>
 </Tabs>
 ```
 
@@ -36,7 +33,8 @@ Secondary Tabs:
     Whatever is nested inside the Tab become the Panel content.
   </Tabs.Tab>
   <Tabs.Tab title="Tab 3">
-    To change the default tab, set the activeTab prop on Tabs equal to the desired Tab ID.
+    To change the default tab, set the activeTab prop on Tabs equal to the
+    desired Tab ID.
   </Tabs.Tab>
 </Tabs>
 ```
@@ -52,13 +50,13 @@ class MyPageWithTabs extends React.Component {
 
     this.state = {
       activeTab: 'tab-1',
-    }
+    };
 
     this.onTabChange = this.onTabChange.bind(this);
   }
 
   onTabChange(newTab) {
-    console.log(`Switching to tab ${newTab}`)
+    console.log(`Switching to tab ${newTab}`);
     this.setState({ activeTab: newTab });
   }
 
@@ -67,18 +65,10 @@ class MyPageWithTabs extends React.Component {
 
     return (
       <Tabs id="controlled-tabs" onChange={this.onTabChange}>
-        <Tabs.Tab
-          title="Tabby tab"
-          id="tab-1"
-          active={activeTab === 'tab-1'}
-        >
+        <Tabs.Tab title="Tabby tab" id="tab-1" active={activeTab === 'tab-1'}>
           Tab 1
         </Tabs.Tab>
-        <Tabs.Tab
-          title="Tabby cat"
-          id="tab-2"
-          active={activeTab === 'tab-2'}
-        >
+        <Tabs.Tab title="Tabby cat" id="tab-2" active={activeTab === 'tab-2'}>
           Tab 2
         </Tabs.Tab>
       </Tabs>
@@ -86,5 +76,5 @@ class MyPageWithTabs extends React.Component {
   }
 }
 
-<MyPageWithTabs />
+<MyPageWithTabs />;
 ```

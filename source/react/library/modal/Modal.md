@@ -7,9 +7,7 @@ import Button from '../button';
 const [open, setOpen] = React.useState(false);
 
 <>
-  <Button onClick={() => setOpen(true)}>
-    Open simple modal
-  </Button>
+  <Button onClick={() => setOpen(true)}>Open simple modal</Button>
 
   {open && (
     <Modal onClose={() => setOpen(false)}>
@@ -37,9 +35,7 @@ import Button from '../button';
 const [open, setOpen] = React.useState(false);
 
 <>
-  <Button onClick={() => setOpen(true)}>
-    Open modal with sub-components
-  </Button>
+  <Button onClick={() => setOpen(true)}>Open modal with sub-components</Button>
 
   {open && (
     <Modal onClose={() => setOpen(false)}>
@@ -53,19 +49,8 @@ const [open, setOpen] = React.useState(false);
       vellet audire. audax negotium, dicerem impudens, nisi hoc institutum postea
       translatum ad philosophos nostros esset.
       <Modal.Actions>
-        <Button
-          onClick={() => {
-            setState({ isOpen: null });
-          }}
-        >
-          Ubmitsay
-        </Button>
-        <Button
-          type="tertiary"
-          onClick={() => {
-            setState({ isOpen: null });
-          }}
-        >
+        <Button onClick={() => setOpen(false)}>Ubmitsay</Button>
+        <Button type="tertiary" onClick={() => setOpen(false)}>
           Ancelcay
         </Button>
       </Modal.Actions>
@@ -84,9 +69,7 @@ import Form from '../form';
 const [open, setOpen] = React.useState(false);
 
 <>
-  <Button onClick={() => setOpen(true)}>
-    Open modal with form
-  </Button>
+  <Button onClick={() => setOpen(true)}>Open modal with form</Button>
 
   {open && (
     <Modal onClose={() => setOpen(false)}>

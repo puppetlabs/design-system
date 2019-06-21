@@ -71,7 +71,7 @@ const style = { display: 'inline-block', margin: 10 };
       setState({ value5 });
     }}
   />
-</div>
+</div>;
 ```
 
 ### Custom selected labels
@@ -81,7 +81,7 @@ An alternate `selectedLabel` prop can be specified on each option.
 ```jsx
 initialState = {
   value: 'name',
-}
+};
 
 const options = [
   { value: 'name', label: 'Name', selectedLabel: 'Sort by name' },
@@ -102,7 +102,7 @@ const style = { display: 'inline-block', margin: 10 };
       setState({ value });
     }}
   />
-</div>
+</div>;
 ```
 
 ### Multiple selections
@@ -112,7 +112,7 @@ Multiple values can be selected if the `multiple` prop is `true`. In this mode a
 ```jsx
 initialState = {
   value: [],
-}
+};
 
 const options = [
   { value: 'one', label: 'One' },
@@ -138,7 +138,7 @@ const style = { display: 'inline-block', margin: 10 };
       setState({ value });
     }}
   />
-</div>
+</div>;
 ```
 
 ### Multiple selections, immediately applied
@@ -148,7 +148,7 @@ The default multi-select behavior can be overridden with the `applyImmediately` 
 ```jsx
 initialState = {
   value: [],
-}
+};
 
 const options = [
   { value: 'one', label: 'One' },
@@ -175,5 +175,5 @@ const style = { display: 'inline-block', margin: 10 };
       setState({ value });
     }}
   />
-</div>
+</div>;
 ```

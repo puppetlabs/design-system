@@ -6,7 +6,7 @@ The logo component provides easy access to marketing-approved logos in our appli
 
 ```jsx
 <div style={{ display: 'flex', flexWrap: 'wrap', padding: 10 }}>
-  <Logo product="container-registry" style={{ margin: 5 }}/>
+  <Logo product="container-registry" style={{ margin: 5 }} />
   <Logo product="discovery" style={{ margin: 5 }} />
   <Logo product="enterprise" style={{ margin: 5 }} />
   <Logo product="insights" style={{ margin: 5 }} />
@@ -19,7 +19,14 @@ The logo component provides easy access to marketing-approved logos in our appli
 ### Inverted
 
 ```jsx
-<div style={{ backgroundColor: 'black', padding: 10, display: 'flex', flexWrap: 'wrap' }}>
+<div
+  style={{
+    backgroundColor: 'black',
+    padding: 10,
+    display: 'flex',
+    flexWrap: 'wrap',
+  }}
+>
   <Logo inverted product="container-registry" style={{ margin: 5 }} />
   <Logo inverted product="discovery" style={{ margin: 5 }} />
   <Logo inverted product="enterprise" style={{ margin: 5 }} />

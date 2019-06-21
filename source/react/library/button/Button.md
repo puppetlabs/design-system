@@ -9,9 +9,13 @@ const buttonStyle = { margin: 5 };
 
 <div>
   <Button style={buttonStyle}>Primary</Button>
-  <Button loading style={buttonStyle}>Primary</Button>
-  <Button disabled style={buttonStyle}>Primary</Button>
-</div>
+  <Button loading style={buttonStyle}>
+    Primary
+  </Button>
+  <Button disabled style={buttonStyle}>
+    Primary
+  </Button>
+</div>;
 ```
 
 ### Secondary
@@ -22,10 +26,16 @@ Used to be ghost button. This button is used to show as hierarchically less impo
 const buttonStyle = { margin: 5 };
 
 <div>
-  <Button type="secondary" style={buttonStyle}>Secondary</Button>
-  <Button type="secondary" loading style={buttonStyle}>Secondary</Button>
-  <Button type="secondary" disabled style={buttonStyle}>Secondary</Button>
-</div>
+  <Button type="secondary" style={buttonStyle}>
+    Secondary
+  </Button>
+  <Button type="secondary" loading style={buttonStyle}>
+    Secondary
+  </Button>
+  <Button type="secondary" disabled style={buttonStyle}>
+    Secondary
+  </Button>
+</div>;
 ```
 
 ### Tertiary
@@ -36,10 +46,16 @@ Used to be “Secondary action button”. The most commonly used button. It show
 const buttonStyle = { margin: 5 };
 
 <div>
-  <Button type="tertiary" style={buttonStyle}>Tertiary</Button>
-  <Button type="tertiary" loading style={buttonStyle}>Tertiary</Button>
-  <Button type="tertiary" disabled style={buttonStyle}>Tertiary</Button>
-</div>
+  <Button type="tertiary" style={buttonStyle}>
+    Tertiary
+  </Button>
+  <Button type="tertiary" loading style={buttonStyle}>
+    Tertiary
+  </Button>
+  <Button type="tertiary" disabled style={buttonStyle}>
+    Tertiary
+  </Button>
+</div>;
 ```
 
 ### Danger
@@ -52,10 +68,16 @@ To indicate a dangerous or destructive action, we utilize a red button. This but
 const buttonStyle = { margin: 5 };
 
 <div>
-  <Button type="danger" style={buttonStyle}>Danger Bold</Button>
-  <Button type="danger" loading style={buttonStyle}>Danger Bold</Button>
-  <Button type="danger" disabled style={buttonStyle}>Danger Bold</Button>
-</div>
+  <Button type="danger" style={buttonStyle}>
+    Danger Bold
+  </Button>
+  <Button type="danger" loading style={buttonStyle}>
+    Danger Bold
+  </Button>
+  <Button type="danger" disabled style={buttonStyle}>
+    Danger Bold
+  </Button>
+</div>;
 ```
 
 #### Subtle
@@ -64,10 +86,16 @@ const buttonStyle = { margin: 5 };
 const buttonStyle = { margin: 5 };
 
 <div>
-  <Button type="danger" weight="subtle" style={buttonStyle}>Danger Subtle</Button>
-  <Button type="danger" weight="subtle" loading style={buttonStyle}>Danger Subtle</Button>
-  <Button type="danger" weight="subtle" disabled style={buttonStyle}>Danger Subtle</Button>
-</div>
+  <Button type="danger" weight="subtle" style={buttonStyle}>
+    Danger Subtle
+  </Button>
+  <Button type="danger" weight="subtle" loading style={buttonStyle}>
+    Danger Subtle
+  </Button>
+  <Button type="danger" weight="subtle" disabled style={buttonStyle}>
+    Danger Subtle
+  </Button>
+</div>;
 ```
 
 ### Icon button
@@ -86,7 +114,7 @@ const buttonStyle = { margin: 2 };
   <div>
     <Button type="secondary" style={buttonStyle} icon="pencil" />
     <Button type="secondary" style={buttonStyle} icon="pencil" loading />
-    <Button type="secondary" style={buttonStyle} icon="pencil" disabled/>
+    <Button type="secondary" style={buttonStyle} icon="pencil" disabled />
   </div>
   <div>
     <Button type="tertiary" style={buttonStyle} icon="pencil" />
@@ -98,7 +126,7 @@ const buttonStyle = { margin: 2 };
     <Button type="transparent" style={buttonStyle} icon="pencil" loading />
     <Button type="transparent" style={buttonStyle} icon="pencil" disabled />
   </div>
-</div>
+</div>;
 ```
 
 ### Text button
@@ -109,8 +137,14 @@ The lowest level button in the visual hierarchy. These are so far most often use
 const buttonStyle = { margin: 2 };
 
 <div>
-  <Button type="text" style={buttonStyle} >Text</Button>
-  <Button type="text" icon="plus" style={buttonStyle}>Add option</Button>
-  <Button type="text" trailingIcon="chevron-down" style={buttonStyle}>Select option</Button>
-</div>
+  <Button type="text" style={buttonStyle}>
+    Text
+  </Button>
+  <Button type="text" icon="plus" style={buttonStyle}>
+    Add option
+  </Button>
+  <Button type="text" trailingIcon="chevron-down" style={buttonStyle}>
+    Select option
+  </Button>
+</div>;
 ```

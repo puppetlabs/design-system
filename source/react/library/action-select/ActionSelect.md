@@ -6,19 +6,36 @@ Actions are specified by entries in an `actions` array prop. In most cases, acti
 
 ```jsx
 const actions = [
-  { id: 'one', icon: 'pencil', label: 'Do thing one', onClick() { console.log('Thing one'); } },
-  { id: 'two', icon: 'send', label: 'Do thing two', onClick() { console.log('Thing two'); } },
-  { id: 'three', as: 'a', href: 'https://www.google.com', target: "_blank", label: 'Open link', icon: 'link' },
+  {
+    id: 'one',
+    icon: 'pencil',
+    label: 'Do thing one',
+    onClick() {
+      console.log('Thing one');
+    },
+  },
+  {
+    id: 'two',
+    icon: 'send',
+    label: 'Do thing two',
+    onClick() {
+      console.log('Thing two');
+    },
+  },
+  {
+    id: 'three',
+    as: 'a',
+    href: 'https://www.google.com',
+    target: '_blank',
+    label: 'Open link',
+    icon: 'link',
+  },
 ];
 
 const style = { display: 'inline-block', margin: 10 };
 
 <div>
-  <ActionSelect
-    actions={actions}
-    label="Choose an Action"
-    style={style}
-  />
+  <ActionSelect actions={actions} label="Choose an Action" style={style} />
   <ActionSelect
     type="secondary"
     actions={actions}
@@ -31,7 +48,7 @@ const style = { display: 'inline-block', margin: 10 };
     label="Choose an Action"
     style={style}
   />
-</div>
+</div>;
 ```
 
 ### Icon ActionSelect
@@ -40,38 +57,45 @@ A common variant will use an icon (often the `kebab` icon) instead of button tex
 
 ```jsx
 const actions = [
-  { id: 'one', icon: 'pencil', label: 'Do thing one', onClick() { console.log('Thing one'); } },
-  { id: 'two', icon: 'send', label: 'Do thing two', onClick() { console.log('Thing two'); } },
-  { id: 'three', as: 'a', href: 'https://www.google.com', target: "_blank", label: 'Open link', icon: 'link' },
+  {
+    id: 'one',
+    icon: 'pencil',
+    label: 'Do thing one',
+    onClick() {
+      console.log('Thing one');
+    },
+  },
+  {
+    id: 'two',
+    icon: 'send',
+    label: 'Do thing two',
+    onClick() {
+      console.log('Thing two');
+    },
+  },
+  {
+    id: 'three',
+    as: 'a',
+    href: 'https://www.google.com',
+    target: '_blank',
+    label: 'Open link',
+    icon: 'link',
+  },
 ];
 
 const style = { display: 'inline-block', margin: 10 };
 
 <div>
-  <ActionSelect
-    actions={actions}
-    icon="kebab"
-    style={style}
-  />
-  <ActionSelect
-    type="secondary"
-    actions={actions}
-    icon="kebab"
-    style={style}
-  />
-  <ActionSelect
-    type="tertiary"
-    actions={actions}
-    icon="kebab"
-    style={style}
-  />
+  <ActionSelect actions={actions} icon="kebab" style={style} />
+  <ActionSelect type="secondary" actions={actions} icon="kebab" style={style} />
+  <ActionSelect type="tertiary" actions={actions} icon="kebab" style={style} />
   <ActionSelect
     type="transparent"
     actions={actions}
     icon="kebab"
     style={style}
   />
-</div>
+</div>;
 ```
 
 ### Menu Anchor
@@ -80,9 +104,30 @@ The `anchor` prop can be used to specify the corner at which the dropdown menu l
 
 ```jsx
 const actions = [
-  { id: 'one', icon: 'pencil', label: 'Do thing one', onClick() { console.log('Thing one'); } },
-  { id: 'two', icon: 'send', label: 'Do thing two', onClick() { console.log('Thing two'); } },
-  { id: 'three', as: 'a', href: 'https://www.google.com', target: "_blank", label: 'Open link', icon: 'link' },
+  {
+    id: 'one',
+    icon: 'pencil',
+    label: 'Do thing one',
+    onClick() {
+      console.log('Thing one');
+    },
+  },
+  {
+    id: 'two',
+    icon: 'send',
+    label: 'Do thing two',
+    onClick() {
+      console.log('Thing two');
+    },
+  },
+  {
+    id: 'three',
+    as: 'a',
+    href: 'https://www.google.com',
+    target: '_blank',
+    label: 'Open link',
+    icon: 'link',
+  },
 ];
 
 const style = { display: 'inline-block', margin: 10 };
@@ -115,5 +160,5 @@ const style = { display: 'inline-block', margin: 10 };
     icon="chevron-down"
     style={style}
   />
-</div>
+</div>;
 ```
