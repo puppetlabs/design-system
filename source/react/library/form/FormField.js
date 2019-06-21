@@ -6,10 +6,10 @@ import { omit } from '../../helpers/statics';
 import Input, {
   SUPPORTED_TYPES as INPUT_SUPPORTED_TYPES,
 } from '../input/Input';
-import Select from '../select/Select';
-import Switch from '../switch/Switch';
-import Checkbox from '../checkbox/Checkbox';
-import Icon from '../icon/Icon';
+import Select from '../select';
+import Switch from '../switch';
+import Checkbox from '../checkbox';
+import Icon from '../icon';
 
 const supportedTypes = [
   ...INPUT_SUPPORTED_TYPES,

@@ -2,14 +2,13 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Alert from '../alert';
-import Button from '../button/Button';
+import Button from '../button';
 import {
   componentHasType,
   mapObj,
   omit,
   shallowDiff,
 } from '../../helpers/statics';
-
 import FormField from './FormField';
 import FormSection from './FormSection';
 

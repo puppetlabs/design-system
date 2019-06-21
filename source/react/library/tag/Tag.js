@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import Icon from '../icon/Icon';
+import Icon from '../icon';
 
 const propTypes = {
   /**  What do we do when user clicks remove button? */

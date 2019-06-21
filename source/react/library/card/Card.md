@@ -6,7 +6,7 @@ Design specification: <a href="http://designsystem.puppetlabs.net/containers" ta
 
 ```jsx
 import Heading from '../heading';
-import Text from '../Text';
+import Text from '../text';
 
 const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
 
@@ -30,7 +30,7 @@ const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justif
 
 ```jsx
 import Heading from '../heading';
-import Text from '../Text';
+import Text from '../text';
 
 const cardExampleStyle = { width: 150, height: 150, alignItems: 'center', justifyContent: 'center', marginRight: 12 };
 
