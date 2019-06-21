@@ -40,6 +40,10 @@ $null-shadow: 0 0 0 0 transparent;
   }
 
   &.rc-card-selected {
+    &:hover {
+      box-shadow: $puppet-card-selected-border, $elevation-shadow;
+    }
+
     &:focus {
       box-shadow: $puppet-card-selected-border, $elevation-shadow,
         $puppet-common-focus-outline;
