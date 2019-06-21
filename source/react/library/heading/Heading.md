@@ -1,4 +1,4 @@
-```js
+```jsx
 <Heading as="h1" hero>Hero</Heading>
 <Heading as="h1">Heading 1</Heading>
 <Heading as="h2">Heading 2</Heading>
@@ -11,7 +11,7 @@
 
 Heading - color medium
 
-```js
+```jsx
 <Heading as="h1" color="medium" hero>Hero</Heading>
 <Heading as="h1" color="medium">Heading 1</Heading>
 <Heading as="h2" color="medium">Heading 2</Heading>
@@ -24,7 +24,7 @@ Heading - color medium
 
 Heading - color subtle
 
-```js
+```jsx
 <Heading as="h1" color="subtle" hero>Hero</Heading>
 <Heading as="h1" color="subtle">Heading 1</Heading>
 <Heading as="h2" color="subtle">Heading 2</Heading>

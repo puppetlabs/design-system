@@ -2,48 +2,32 @@ The text component provides an encapsulated way to use typography consistent wit
 
 Design specification: <a href="http://designsystem.puppetlabs.net/typography" target="_top">designsystem.puppetlabs.net/typography</a>
 
-```js
-<Text>Medium</Text>
+```jsx
+<Text>Default text size</Text>
 <Text size="small">Small</Text>
 <Text size="tiny">Tiny</Text>
 ```
 
-#### Text - color medium
+#### Color
 
-```js
-<Text color="medium">Medium</Text>
-<Text color="medium" size="small">Small</Text>
-<Text color="medium" size="tiny">Tiny</Text>
+A variety of color options are available.
+
+##### Neutrals
+
+These colors are used for the majority of text.
+
+```jsx
+<Text>This is using the default color. It is the darkest and the most commonly used.</Text>
+<Text color="medium">This text is in a medium gray color. It is used to reduce emphasis on text.</Text>
+<Text color="subtle">This text uses the subtle color. It further reduce emphasis and is typically reserved for asides and supplemental information.</Text>
 ```
 
-#### Heading - color subtle
+##### Stoplight colors
 
-```js
-<Text color="subtle">Medium</Text>
-<Text color="subtle" size="small">Small</Text>
-<Text color="subtle" size="tiny">Tiny</Text>
-```
+Our "stoplight" colors are reserved to apply meaning, or state, within a given context.
 
-#### Heading - color danger
-
-```js
-<Text color="danger">Medium</Text>
-<Text color="danger" size="small">Small</Text>
-<Text color="danger" size="tiny">Tiny</Text>
-```
-
-#### Heading - color warning
-
-```js
-<Text color="warning">Medium</Text>
-<Text color="warning" size="small">Small</Text>
-<Text color="warning" size="tiny">Tiny</Text>
-```
-
-#### Heading - color success
-
-```js
-<Text color="success">Medium</Text>
-<Text color="success" size="small">Small</Text>
-<Text color="success" size="tiny">Tiny</Text>
+```jsx
+<Text color="success"><strong>Success</strong>: Used to communicate a successful operation or general approval.</Text>
+<Text color="danger"><strong>Danger</strong>: This communicates a dangerous, irrecoverable action or failure of some kind.</Text>
+<Text color="warning"><strong>Warning</strong>: This is used to call attention to specific information or to provide a warning. Can also be used to convey an unknown state IF that could be problematic for the user.</Text>
 ```

@@ -6,7 +6,7 @@ The `Form` component must be used in conjunction with one or more [Form.Field](#
 
 In _uncontrolled_ mode the Form component tracks field values in internal state. The form may be supplied an initialValues object prop with each field name and its initial value, and a submit handler that is passed the final values. When new `initialValues` are detected, the component is reset (see [error handling](#linkylink) below).
 
-```
+```jsx
 const movieOptions = [
   { value: 'american-treasure', label: 'American Treasure' },
   { value: 'ghost-rider', label: 'Ghost Rider' },
@@ -16,9 +16,9 @@ const movieOptions = [
 const initialValues = {
   controlledFirstName: 'Sponge',
   controlledLastName: 'Bob',
-  controlledPassword: "",
-  controlledFavoriteMovie: "",
-  controlledNotARobot: false
+  controlledPassword: '',
+  controlledFavoriteMovie: '',
+  controlledNotARobot: false,
 };
 
 /** Mock api call method */
@@ -31,7 +31,7 @@ class MyPage extends React.Component {
     this.state = {
       values: initialValues,
       submitting: false,
-    }
+    };
 
     this.onSubmit = this.onSubmit.bind(this);
   }
@@ -92,18 +92,18 @@ class MyPage extends React.Component {
           description="Are you a human?"
         />
       </Form>
-    )
+    );
   }
 }
 
-<MyPage />
+<MyPage />;
 ```
 
 ### Controlled
 
 In _controlled_ mode, the consumer is responsible for managing form value state. This is used most commonly when the field values may change from external sources or if changes to the values are automatically reflected elsewhere in the ui. The form must be passed a `values` object prop with keys corresponding to field names, and an 'onChange' handler that updates external state.
 
-```
+```jsx
 const movieOptions = [
   { value: 'american-treasure', label: 'American Treasure' },
   { value: 'ghost-rider', label: 'Ghost Rider' },
@@ -113,9 +113,9 @@ const movieOptions = [
 const initialValues = {
   firstName: 'Hi',
   lastName: 'There',
-  password: "",
-  favoriteMovie: "",
-  notARobot: false
+  password: '',
+  favoriteMovie: '',
+  notARobot: false,
 };
 
 /** Mock api call method */
@@ -127,7 +127,7 @@ class MyPage extends React.Component {
 
     this.state = {
       values: initialValues,
-    }
+    };
 
     this.onChange = this.onChange.bind(this);
   }
@@ -141,10 +141,7 @@ class MyPage extends React.Component {
     const { values } = this.state;
 
     return (
-      <Form
-        values={values}
-        onChange={this.onChange}
-      >
+      <Form values={values} onChange={this.onChange}>
         <Form.Field
           type="text"
           name="firstName"
@@ -182,9 +179,9 @@ class MyPage extends React.Component {
           description="Are you a human?"
         />
       </Form>
-    )
+    );
   }
 }
 
-<MyPage />
+<MyPage />;
 ```

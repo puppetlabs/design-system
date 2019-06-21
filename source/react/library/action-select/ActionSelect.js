@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import Button from '../button/Button';
+import Button from '../button';
 import ActionMenuList from '../../internal/action-menu-list';
 import {
   renderableElement,

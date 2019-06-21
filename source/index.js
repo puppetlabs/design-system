@@ -1,21 +1,21 @@
 import ActionSelect from './react/library/action-select';
-import Button from './react/library/button/Button';
+import Button from './react/library/button';
 import ButtonSelect from './react/library/button-select';
 import Card from './react/library/card';
-import Sidebar from './react/library/sidebar/Sidebar';
-import Icon from './react/library/icon/Icon';
-import Tag from './react/library/tag/Tag';
+import Sidebar from './react/library/sidebar';
+import Icon from './react/library/icon';
+import Tag from './react/library/tag';
 import Table from './react/library/table';
-import Input from './react/library/input/Input';
-import Switch from './react/library/switch/Switch';
-import Loading from './react/library/loading/Loading';
-import Modal from './react/library/modals/Modal';
+import Input from './react/library/input';
+import Switch from './react/library/switch';
+import Loading from './react/library/loading';
+import Modal from './react/library/modal';
 import TooltipHoverArea from './react/library/tooltips/TooltipHoverArea';
-import Select from './react/library/select/Select';
+import Select from './react/library/select';
 import Form from './react/library/form';
 import Filters from './react/library/filters';
-import Checkbox from './react/library/checkbox/Checkbox';
-import Content from './react/library/content/Content';
+import Checkbox from './react/library/checkbox';
+import Content from './react/library/content';
 import Heading from './react/library/heading';
 import Text from './react/library/text';
 import Alert from './react/library/alert';
@@ -23,7 +23,7 @@ import Badge from './react/library/badge';
 import Link from './react/library/link';
 import Logo from './react/library/logo';
 import Tabs from './react/library/tabs';
-import Breadcrumb from './react/library/breadcrumb/Breadcrumb';
+import Breadcrumb from './react/library/breadcrumb';
 
 export {
   ActionSelect,

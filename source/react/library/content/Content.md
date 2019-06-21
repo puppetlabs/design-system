@@ -11,8 +11,8 @@ If we move to support all html elements, the following should also be implemente
 
 `Base styles:`
 
-```
-const style = {color: '#5d6f7a'};
+```jsx
+const style = { color: '#5d6f7a' };
 const highlight = element => <span style={style}>{element}</span>;
 
 <Content>
@@ -34,35 +34,66 @@ const highlight = element => <span style={style}>{element}</span>;
   <h4>{highlight('h4')} has 8px bottom margin.</h4>
   <h5>{highlight('h5')} has 8px bottom margin.</h5>
   <h6>{highlight('h6')} has 8px bottom margin.</h6>
-</Content>
+</Content>;
 ```
 
 `An example:`
 
-```
+```jsx
 <Content>
   <h2>Examples</h2>
 
   <h3>Divide into sections</h3>
 
-  <p>Write as if we are thinking, speaking, human beings. Trust that there is another human out there, on the other side of the screen, using our products. They are desperately eager to understand what we want to tell them. Let us make that as clear as possible.</p>
+  <p>
+    Write as if we are thinking, speaking, human beings. Trust that there is
+    another human out there, on the other side of the screen, using our
+    products. They are desperately eager to understand what we want to tell
+    them. Let us make that as clear as possible.
+  </p>
 
-  <p>It is helpful if we emphasize terminology so it is easier to distinguish from other forms of content. For example, a set of <em>tasks</em> can be combined into a <em>plan</em> when using <a>Bolt</a>.</p>
+  <p>
+    It is helpful if we emphasize terminology so it is easier to distinguish
+    from other forms of content. For example, a set of <em>tasks</em> can be
+    combined into a <em>plan</em> when using <a>Bolt</a>.
+  </p>
 
   <h4>Line length</h4>
 
-  <p>The number of characters per line influences readability. In english, the following guidelines are considered the easiest to understand.</p>
+  <p>
+    The number of characters per line influences readability. In english, the
+    following guidelines are considered the easiest to understand.
+  </p>
 
   <h5>Desktop</h5>
 
   <ul>
-    <li><strong>45 to 75 characters</strong> is regarded as the most satisfactory line length.</li>
-    <li><strong>66 characters</strong> is considered an <strong>optimal</strong> line length though longer is ok.</li>
-    <li><strong>90 characters</strong> is considered <strong>too long</strong> and makes it difficult to traverse text from line to line.</li>
+    <li>
+      <strong>45 to 75 characters</strong> is regarded as the most satisfactory
+      line length.
+    </li>
+    <li>
+      <strong>66 characters</strong> is considered an <strong>optimal</strong>{' '}
+      line length though longer is ok.
+    </li>
+    <li>
+      <strong>90 characters</strong> is considered <strong>too long</strong> and
+      makes it difficult to traverse text from line to line.
+    </li>
   </ul>
 
-  <p>According to Elements of Typographical Style anything from 45 to 75 characters is widely-regarded as a satisfactory length of line for a single-column page set in a serifed text face in a text size. The 66-character line (counting both letters and spaces) is widely regarded as ideal.</p>
+  <p>
+    According to Elements of Typographical Style anything from 45 to 75
+    characters is widely-regarded as a satisfactory length of line for a
+    single-column page set in a serifed text face in a text size. The
+    66-character line (counting both letters and spaces) is widely regarded as
+    ideal.
+  </p>
 
-  <p>Recent research suggest that this old wisdom is no longer valid. In some studies user's have signaled that 90 characters is preferred, thus our 90 character maximum.</p>
+  <p>
+    Recent research suggest that this old wisdom is no longer valid. In some
+    studies user's have signaled that 90 characters is preferred, thus our 90
+    character maximum.
+  </p>
 </Content>
 ```

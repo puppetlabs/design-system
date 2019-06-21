@@ -1,12 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-
 import Filter from './FilterItem';
 import Form from './FilterForm';
-
-import Button from '../button/Button';
+import Button from '../button';
 import List from './List';
-
 import { filterOperators } from '../../constants';
 
 const propTypes = {

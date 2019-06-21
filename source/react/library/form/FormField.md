@@ -20,7 +20,7 @@ The current available string `type` values are detailed in the table below. We i
 
 In addition it is possible to pass in a custom input component via the `type` prop:
 
-```js static
+```jsx static
 <Form.Field type={MyCustomInput} />
 ```
 

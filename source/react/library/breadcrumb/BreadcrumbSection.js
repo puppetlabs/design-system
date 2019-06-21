@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../icon/Icon';
-import Text from '../text/Text';
-import Hyperlink from '../link/Link';
+import Icon from '../icon';
+import Text from '../text';
+import Hyperlink from '../link';
 
 const propTypes = {
   /** The route to render. Can be either a link or some plain text (current route)  */

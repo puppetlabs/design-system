@@ -1,4 +1,4 @@
-```javascript
+```jsx
 <div style={{ position: 'relative', height: '800px' }}>
   <Sidebar>
     <Sidebar.Header
@@ -34,7 +34,7 @@
 
 ### Minimized Sidebar
 
-```javascript
+```jsx
 <div style={{ position: 'relative', height: '800px' }}>
   <Sidebar minimized>
     <Sidebar.Header

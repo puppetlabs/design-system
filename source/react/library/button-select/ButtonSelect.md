@@ -4,7 +4,7 @@ The ButtonSelect component allows users to select a value or set of values from 
 
 Options are specified by entries in an `options` array prop. Each requires a unique value and a friendly label to display to users.
 
-```
+```jsx
 const options = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },
@@ -71,17 +71,17 @@ const style = { display: 'inline-block', margin: 10 };
       setState({ value5 });
     }}
   />
-</div>
+</div>;
 ```
 
 ### Custom selected labels
 
 An alternate `selectedLabel` prop can be specified on each option.
 
-```
+```jsx
 initialState = {
   value: 'name',
-}
+};
 
 const options = [
   { value: 'name', label: 'Name', selectedLabel: 'Sort by name' },
@@ -102,17 +102,17 @@ const style = { display: 'inline-block', margin: 10 };
       setState({ value });
     }}
   />
-</div>
+</div>;
 ```
 
 ### Multiple selections
 
 Multiple values can be selected if the `multiple` prop is `true`. In this mode an `Apply` button will render below the options list. The newly selected values are not applied until the user activates this button. If they escape or click out of the open menu, their changes will be discarded.
 
-```
+```jsx
 initialState = {
   value: [],
-}
+};
 
 const options = [
   { value: 'one', label: 'One' },
@@ -138,17 +138,17 @@ const style = { display: 'inline-block', margin: 10 };
       setState({ value });
     }}
   />
-</div>
+</div>;
 ```
 
 ### Multiple selections, immediately applied
 
 The default multi-select behavior can be overridden with the `applyImmediately` prop. In this mode, a 'done' button will still render for consistency but the values will be immediately applied.
 
-```
+```jsx
 initialState = {
   value: [],
-}
+};
 
 const options = [
   { value: 'one', label: 'One' },
@@ -175,5 +175,5 @@ const style = { display: 'inline-block', margin: 10 };
       setState({ value });
     }}
   />
-</div>
+</div>;
 ```

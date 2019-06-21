@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { renderableElement } from '../../helpers/customPropTypes';
 import Icon, { AVAILABLE_ICONS } from '../icon/Icon';
-import Loading from '../loading/Loading';
+import Loading from '../loading';
 
 const propTypes = {
   /** React component / element to render. Useful in cases where a button is used for navigation, so that it can be rendered as an anchor tag with the same styling */

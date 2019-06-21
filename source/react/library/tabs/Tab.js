@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { renderableElement } from '../../helpers/customPropTypes';
 
-import Button from '../button/Button';
+import Button from '../button';
 
 import getTabId from './getTabId';
 import getPanelId from './getPanelId';

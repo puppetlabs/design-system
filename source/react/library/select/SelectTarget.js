@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
-import Icon from '../icon/Icon';
+import Icon from '../icon';
 
 const propTypes = {};
 

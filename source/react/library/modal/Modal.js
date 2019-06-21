@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
-import Button from '../button/Button';
+import Button from '../button';
 
 import ModalTitle from './ModalTitle';
 import ModalActions from './ModalActions';

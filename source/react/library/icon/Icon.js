@@ -199,6 +199,7 @@ const Icon = props => {
 
 Icon.propTypes = propTypes;
 Icon.defaultProps = defaultProps;
+
 Icon.AVAILABLE_SIZES = AVAILABLE_SIZES;
 Icon.AVAILABLE_ICONS = AVAILABLE_ICONS;
 

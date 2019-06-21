@@ -8,7 +8,9 @@ The last Breadcrumb.Section (the leaf route) will render as an unclickable Text 
 
 In the example below, the first Breadcrumb.Section is configured to use react router, while the second produces a conventional <a> tag.
 
-```
+```jsx
+import Link from '../link';
+
 <Breadcrumb>
   <Breadcrumb.Section as={Link} to="/items">
     Items
@@ -16,8 +18,6 @@ In the example below, the first Breadcrumb.Section is configured to use react ro
   <Breadcrumb.Section href="https://www.puppet.com/items/11" target="_blank">
     11
   </Breadcrumb.Section>
-  <Breadcrumb.Section>
-    details
-  </Breadcrumb.Section>
-</Breadcrumb>
+  <Breadcrumb.Section>details</Breadcrumb.Section>
+</Breadcrumb>;
 ```

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Icon from '../icon/Icon';
+import Icon from '../icon';
 import Heading from '../heading';
 import Text from '../text';
 

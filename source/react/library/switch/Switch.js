@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
-import Text from '../text/Text';
+import Text from '../text';
 
 const propTypes = {
   /** Name of the input */

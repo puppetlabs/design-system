@@ -3,7 +3,7 @@ import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
-import Modal from '../../source/react/library/modals/Modal';
+import Modal from '../../source/react/library/modal/Modal';
 
 describe('<Modal />', () => {
   jsdom({ skipWindowCheck: true });
