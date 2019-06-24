@@ -310,8 +310,6 @@ describe('<Form />', () => {
         'error',
         'test-error',
       );
-
-      expect(wrapper.find(Button)).to.have.prop('disabled', true);
     });
 
     it('should not run validators before the submit button is activated', () => {
