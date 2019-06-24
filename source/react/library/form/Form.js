@@ -112,12 +112,17 @@ const collectFieldProps = children => {
 };
 
 const isFormValid = fieldProps =>
-  !Object.values(fieldProps).some(props => props.error);
+  !Object.values(fieldProps).some(props => props.blockingError);
 
-const renderField = (child, updatedFieldProps) =>
+const renderField = (
+  child,
+  { name, blockingError, nonBlockingError, ...otherUpdatedProps },
+) =>
   React.createElement(child.type, {
-    key: updatedFieldProps.name,
-    ...updatedFieldProps,
+    key: name,
+    name,
+    error: blockingError || nonBlockingError,
+    ...otherUpdatedProps,
   });
 
 const renderChildren = (children, updatedFieldPropMap) =>
@@ -241,7 +246,7 @@ class Form extends Component {
   updateFieldProps(userProvidedFieldProps, validate) {
     const {
       name,
-      error: userProvidedError,
+      error,
       required,
       requiredFieldMessage,
       validator,
@@ -251,13 +256,13 @@ class Form extends Component {
     const values = this.getValues();
     const value = values[name];
 
-    let error = userProvidedError;
+    let blockingError;
 
-    if (validate && !error) {
+    if (validate) {
       if (required && isEmpty(value)) {
-        error = requiredFieldMessage;
+        blockingError = requiredFieldMessage;
       } else if (validator) {
-        error = validator(value, values);
+        blockingError = validator(value, values);
       }
     }
 
@@ -267,13 +272,14 @@ class Form extends Component {
      * Form.Field
      */
     const fieldProps = omit(
-      ['requiredFieldMessage', 'validator'],
+      ['requiredFieldMessage', 'validator', 'error'],
       userProvidedFieldProps,
     );
 
     return {
       ...fieldProps,
-      error,
+      blockingError,
+      nonBlockingError: error,
       disabled: disabled || userProvidedFieldProps.disabled,
       inline,
       value: values[name],
