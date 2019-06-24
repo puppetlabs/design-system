@@ -1,3 +1,6 @@
+# 5.0.0-alpha.8
+- Bug Fix: Allow submission of forms with manually provided field-level errors
+
 # 5.0.0-alpha.27
 
 - Upgrade Styleguidist to v9
