@@ -25,6 +25,8 @@ const propTypes = {
   submittable: PropTypes.bool,
   /** Optional override for the submit button label */
   submitLabel: PropTypes.string,
+  /** Optional override for the submit button type */
+  submitType: PropTypes.oneOf(['primary', 'secondary', 'danger']),
   /** Submit event handler. Will be passed the most recent form values */
   onSubmit: PropTypes.func,
   /** Is the form cancellable? If true a cancel button will render */
@@ -54,6 +56,7 @@ const defaultProps = {
   values: undefined,
   submittable: false,
   submitLabel: 'Submit',
+  submitType: 'primary',
   onSubmit() {},
   cancellable: false,
   cancelLabel: 'Cancel',
@@ -282,7 +285,13 @@ class Form extends Component {
   }
 
   renderSubmitButton(isValid) {
-    const { submittable, submitting, disabled, submitLabel } = this.props;
+    const {
+      submittable,
+      submitting,
+      disabled,
+      submitLabel,
+      submitType,
+    } = this.props;
     if (submittable) {
       return (
         <Button
@@ -291,6 +300,7 @@ class Form extends Component {
           buttonType="submit"
           loading={submitting}
           disabled={disabled || !isValid}
+          type={submitType}
         >
           {submitLabel}
         </Button>
