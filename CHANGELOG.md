@@ -1,3 +1,8 @@
+# 5.0.0-alpha.27
+
+- Stop propagation for ActionSelect and ActionMenuList buttons
+- Add SubmitType prop to Form
+
 # 5.0.0-alpha.26
 
 - Fix conflicting aria-disabled attribute in Button

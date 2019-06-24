@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-components",
-  "version": "5.0.0-alpha.26",
+  "version": "5.0.0-alpha.27",
   "description": "Collection of reusable React components",
   "main": "build/library.js",
   "publishConfig": {
