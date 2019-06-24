@@ -1,5 +1,7 @@
 # 5.0.0-alpha.27
 
+- Upgrade Styleguidist to v9
+- Update Card selected hover state to be the same as card selected state
 - Stop propagation for ActionSelect and ActionMenuList buttons
 - Add SubmitType prop to Form
 
