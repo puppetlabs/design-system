@@ -89,7 +89,8 @@ class ActionSelect extends Component {
     this.onBlur = this.onBlur.bind(this);
   }
 
-  onClickButton() {
+  onClickButton(e) {
+    e.stopPropagation();
     const { open } = this.state;
 
     if (open) {

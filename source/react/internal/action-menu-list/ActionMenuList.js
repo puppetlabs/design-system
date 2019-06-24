@@ -157,7 +157,8 @@ class ActionMenuList extends Component {
     }
   }
 
-  executeAction(onClick, id) {
+  executeAction(e, onClick, id) {
+    e.stopPropagation();
     const { onActionClick } = this.props;
 
     onActionClick(id);
@@ -253,7 +254,7 @@ class ActionMenuList extends Component {
                 focused={index === focusedIndex}
                 icon={icon}
                 onMouseEnter={() => onMouseEnterItem(index)}
-                onClick={() => executeAction(onClick, actionId)}
+                onClick={e => executeAction(e, onClick, actionId)}
                 ref={el => {
                   this.actionRefs[index] = el;
                 }}
