@@ -74,6 +74,8 @@ class Alert extends React.Component {
         break;
       case 'info':
       case 'warning':
+        typeIcon = 'alert';
+        break;
       default:
         typeIcon = 'info-circle';
     }
