@@ -1,4 +1,10 @@
-# 5.0.0-alpha.8
+# 5.0.0-alpha.29
+
+- Add type prop to Tab so an individual tab can have `type="secondary"` for a gray tab and panel background
+- Remove border-right from Sidebar
+
+# 5.0.0-alpha.28
+
 - Bug Fix: Allow submission of forms with manually provided field-level errors
 
 # 5.0.0-alpha.27
