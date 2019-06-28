@@ -179,8 +179,16 @@ class Tabs extends React.Component {
             />
           ))}
         </div>
-        {childProps.map(({ id, children }) => (
-          <Panel key={id} id={id} parentId={parentId} active={activeTab === id}>
+        {childProps.map(({ id, children, type: tabType }) => (
+          <Panel
+            key={id}
+            id={id}
+            parentId={parentId}
+            active={activeTab === id}
+            className={classNames({
+              'rc-tabs-panel-type-secondary': tabType === 'secondary',
+            })}
+          >
             {children}
           </Panel>
         ))}

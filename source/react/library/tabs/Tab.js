@@ -11,6 +11,8 @@ import getPanelId from './getPanelId';
 const propTypes = {
   /** html element to render tab button as */
   as: renderableElement,
+  /** Currently controls bg color of active tab & panel */
+  type: PropTypes.oneOf(['primary', 'secondary']),
   /** Visible tab label  */
   title: PropTypes.string,
   /** For ease of reference in controlled-mode, a custom unique id can be provided. By default the tab index will be used  */
@@ -27,6 +29,7 @@ const propTypes = {
 
 const defaultProps = {
   as: 'button',
+  type: 'primary',
   title: '',
   id: null,
   parentId: null,
@@ -36,7 +39,7 @@ const defaultProps = {
 };
 
 const Tab = forwardRef(
-  ({ as, title, active, onClick, id, parentId, ...rest }, ref) => (
+  ({ as, type, title, active, onClick, id, parentId, ...rest }, ref) => (
     <Button
       id={getTabId(parentId, id)}
       as={as}
@@ -48,6 +51,7 @@ const Tab = forwardRef(
       tabIndex={active ? 0 : -1}
       className={classNames('rc-tabs-button', {
         'rc-tabs-button-active': active,
+        'rc-tabs-tab-secondary': type === 'secondary',
       })}
       ref={ref}
       {...rest}

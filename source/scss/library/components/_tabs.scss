@@ -61,10 +61,11 @@
 }
 
 // Secondary coloring
-.rc-tabs-secondary {
-  > .rc-tabs-list > .rc-tabs-button-active,
-  > .rc-tabs-list > .rc-tabs-button-active::after,
-  > .rc-tabs-panel {
-    background-color: $puppet-common-bg-subtle;
-  }
+.rc-tabs-secondary > .rc-tabs-list > .rc-tabs-button-active,
+.rc-tabs-secondary > .rc-tabs-list > .rc-tabs-button-active::after,
+.rc-tabs-secondary > .rc-tabs-panel,
+.rc-tabs-tab-secondary.rc-tabs-button-active,
+.rc-tabs-tab-secondary.rc-tabs-button-active::after,
+.rc-tabs-panel-type-secondary {
+  background-color: $puppet-common-bg-subtle;
 }

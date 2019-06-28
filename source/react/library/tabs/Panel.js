@@ -13,6 +13,8 @@ const propTypes = {
   active: PropTypes.bool,
   /** Internally managed Panel contents */
   children: PropTypes.node,
+  /** Extra class to apply to the Panel */
+  className: PropTypes.string,
 };
 
 const defaultProps = {
@@ -20,14 +22,15 @@ const defaultProps = {
   parentId: null,
   active: false,
   children: null,
+  className: '',
 };
 
-const Panel = ({ id, parentId, active, children }) => (
+const Panel = ({ id, parentId, active, children, className }) => (
   <div
     role="tabpanel"
     id={getPanelId(parentId, id)}
     aria-labelledby={getTabId(parentId, id)}
-    className="rc-tabs-panel"
+    className={`rc-tabs-panel ${className}`}
     hidden={!active}
   >
     {children}
