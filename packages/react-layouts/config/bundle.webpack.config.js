@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 const paths = require('./paths');
@@ -10,7 +10,7 @@ module.exports = {
   target: 'node',
   devtool: 'source-map',
   plugins: [
-    new CleanWebpackPlugin(['dist'], { root: paths.root() }),
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'react-layouts.css',
       chunkFilename: '[id].[hash].css',
