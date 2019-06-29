@@ -5,7 +5,16 @@ const path = require('path');
 const paths = require('./paths');
 
 module.exports = {
-  entry: paths.src('index.js'),
+  entry: {
+    index: paths.src('index.js'),
+    css: paths.src('index.scss'),
+    Confirmation: paths.src('auth/Confirmation/index.js'),
+    ForgotPassword: paths.src('auth/ForgotPassword/index.js'),
+    ForgotPasswordSent: paths.src('auth/ForgotPasswordSent/index.js'),
+    Login: paths.src('auth/Login/index.js'),
+    ResetPassword: paths.src('auth/ResetPassword/index.js'),
+    ResetPasswordSuccess: paths.src('auth/ResetPasswordSuccess/index.js'),
+  },
   mode: 'production',
   target: 'node',
   devtool: 'source-map',
@@ -21,11 +30,18 @@ module.exports = {
     children: false,
   },
   output: {
-    filename: 'react-layouts.js',
+    filename: '[name].js',
+    chunkFilename: '[chunkhash].js',
     library: 'react-layouts',
     libraryTarget: 'umd',
     path: paths.dist(),
     publicPath: './',
+  },
+  optimization: {
+    splitChunks: {
+      chunks: 'all',
+      minSize: 0,
+    },
   },
   externals: [
     nodeExternals({

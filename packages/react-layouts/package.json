@@ -3,7 +3,7 @@
   "version": "0.2.8",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
-  "main": "dist/react-layouts.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "./scripts/build",
     "build:styleguide": "./scripts/build-styleguide",
