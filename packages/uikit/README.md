@@ -31,7 +31,7 @@ The uikit includes a script for generating arbitrary boilerplate through templat
 - **Method**: `uikit generate method myMethod`
   Generates utility method boilerplate
 - **Library**: `uikit generate library my-library`
-Generates a React library appropriate for publishing as a consumable package
+  Generates a React library appropriate for publishing as a consumable package
 
 ### Specifying a directory:
 
@@ -89,5 +89,5 @@ module.exports = {
   postGenerate({ dest }) {
     // ...
   },
-}
+};
 ```

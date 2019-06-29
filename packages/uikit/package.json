@@ -41,7 +41,7 @@
     "eslint-plugin-react": "^7.14.2",
     "jest": "^24.8.0",
     "prettier": "^1.18.2",
-    "sinon": "7.3.2",
+    "sinon": "^7.3.2",
     "sinon-chai": "^3.3.0"
   }
 }
