@@ -4,7 +4,6 @@ import ButtonSelect from './react/library/button-select';
 import Card from './react/library/card';
 import Sidebar from './react/library/sidebar';
 import Icon from './react/library/icon';
-import Tag from './react/library/tag';
 import Table from './react/library/table';
 import Input from './react/library/input';
 import Switch from './react/library/switch';
@@ -31,7 +30,6 @@ export {
   ButtonSelect,
   Card,
   Icon,
-  Tag,
   Table,
   Input,
   Switch,
