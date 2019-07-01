@@ -2,6 +2,9 @@
 
 - Add type prop to Tab so an individual tab can have `type="secondary"` for a gray tab and panel background
 - Remove border-right from Sidebar
+- **Breaking change** Remove tag component
+- Update typography and styling for Text, Tab, Sidebar, Badge, Alert and Card components
+- Remove extraneous font imports
 
 # 5.0.0-alpha.28
 
