@@ -149,7 +149,8 @@ $puppet-button-text: (
     @include button-type-properties(map-get($typedef, hover));
   }
 
-  &:active, &.rc-button-loading {
+  &:active,
+  &.rc-button-loading {
     @include button-type-properties(map-get($typedef, active));
   }
 
