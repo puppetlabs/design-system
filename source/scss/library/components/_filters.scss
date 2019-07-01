@@ -18,6 +18,8 @@ $puppet-filter-split-menu-bg: darken($puppet-filter-split-bg, 10%) !default;
 $puppet-filter-split-menu-bg-hover: lighten($puppet-filter-split-menu-bg, 15%) !default;
 
 .rc-filters {
+  @include puppet-type-body();
+
   .rc-form {
     animation: 0.4s 1 rc-fade-in;
   }

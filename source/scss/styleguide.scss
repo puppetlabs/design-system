@@ -1,5 +1,9 @@
 @import './library/public/index';
 
+body {
+  @include puppet-type-body();
+}
+
 .swatch-wrapper {
   display: flex;
   flex-flow: wrap;

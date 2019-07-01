@@ -35,7 +35,7 @@
 }
 
 .rc-table-header-cell {
-  @include puppet-type-h6(subtle);
+  @include puppet-type-h6(medium);
   background-color: $puppet-n200;
   padding: 11px 16px;
   text-align: left;

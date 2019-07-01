@@ -252,6 +252,10 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   .rc-sidebar-footer-meta-version {
     color: $puppet-sidebar-item-color-hover;
   }
+  
+  .rc-sidebar-footer-meta-user {
+    background: $puppet-sidebar-item-color-hover;
+  }
 }
 
 .rc-sidebar-footer:focus {
@@ -271,7 +275,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
 
 .rc-sidebar-footer-meta-user {
   align-items: center;
-  background: $puppet-sidebar-item-icon-fill-hover;
+  background: $puppet-n500;
   border-radius: 100px;
   display: flex;
   height: 32px;

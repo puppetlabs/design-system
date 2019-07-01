@@ -32,16 +32,6 @@
   }
 }
 
-// TODO: Small inputs should be deprecated
-.rc-input-small {
-  @include puppet-type-small();
-  padding: 2px 7px;
-
-  ::placeholder {
-    @include puppet-type-small(subtle);
-  }
-}
-
 .rc-input-simple,
 .rc-input-simple:hover {
   background: transparent;
@@ -59,10 +49,6 @@
   height: $puppet-common-spacing-base * 18;
   resize: vertical;
   vertical-align: top;
-}
-
-.rc-input-small.rc-input-multiline {
-  height: $puppet-common-spacing-base * 14;
 }
 
 .rc-input-container {

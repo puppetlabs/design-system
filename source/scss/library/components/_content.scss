@@ -1,4 +1,6 @@
 .rc-content {
+  @include puppet-type-body();
+
   a {
     @include puppet-type-link();
   }
