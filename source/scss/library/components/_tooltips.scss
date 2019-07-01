@@ -24,14 +24,6 @@ $puppet-tooltip-hint-max-width: 168px !default;
   padding: $puppet-tooltip-hint-padding;
   position: absolute;
   z-index: $puppet-tooltip-hint-elevation;
-
-  .rc-tooltip-carat {
-    border-style: solid;
-    border-width: 8px;
-    height: 0;
-    position: absolute;
-    width: 0;
-  }
 }
 
 // https://davidwalsh.name/detect-scrollbar-width
@@ -42,18 +34,4 @@ $puppet-tooltip-hint-max-width: 168px !default;
   top: -9999px;
   visibility: hidden;
   width: 100px;
-}
-
-.rc-tooltip-position-right {
-  .rc-tooltip-carat {
-    border-color: transparent $puppet-tooltip-hint-bg transparent transparent;
-    left: -16px;
-  }
-}
-
-.rc-tooltip-position-bottom {
-  .rc-tooltip-carat {
-    border-color: transparent transparent $puppet-tooltip-hint-bg transparent;
-    top: -16px;
-  }
 }
