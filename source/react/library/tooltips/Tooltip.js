@@ -4,7 +4,11 @@ import classnames from 'classnames';
 
 import { bindParentScroll, unbindParentScroll } from '../../helpers/statics';
 
-const CARAT_HEIGHT = 8;
+// CARAT_HEIGHT is legacy code from when there was a carat on the tooltip
+// This is still used to set the distance from the target to the nearest tooltip edge,
+// which is twice this value (6px). TODO: Clean up this code
+// @NOTE: 6px is intentionally a non-multiple of the base spacing so that the tooltip is offset from other elements
+const CARAT_HEIGHT = 3;
 
 const propTypes = {
   anchor: PropTypes.string,
@@ -145,7 +149,7 @@ class Tooltip extends React.Component {
   }
 
   render() {
-    const { tooltipPosition, caratPosition } = this.state;
+    const { tooltipPosition } = this.state;
     const { anchor, style, children } = this.props;
     const className = classnames('rc-tooltip', `rc-tooltip-position-${anchor}`);
     const styles = { ...tooltipPosition, ...style };
@@ -164,7 +168,6 @@ class Tooltip extends React.Component {
             this.scrollMeasurer = c;
           }}
         />
-        <div className="rc-tooltip-carat" style={caratPosition} />
         {children}
       </div>
     );
