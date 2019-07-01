@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from '../icon';
-import { formSize } from '../../helpers/customPropTypes';
 
 /**
  * This corresponds to a set of native input types plus 'multiline',
@@ -28,8 +27,6 @@ const propTypes = {
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Optional field placeholder */
   placeholder: PropTypes.string,
-  /** Form elements come in two standard sizes */
-  size: formSize,
   /** Alternate visual variation */
   simple: PropTypes.bool,
   /** Is the input disabled */
@@ -52,7 +49,6 @@ const propTypes = {
 
 const defaultProps = {
   type: 'text',
-  size: 'medium',
   value: '',
   placeholder: '',
   simple: false,
@@ -81,7 +77,6 @@ const parseValue = (value, type) => {
 const Input = ({
   name,
   type,
-  size,
   simple,
   error,
   icon,
@@ -122,7 +117,6 @@ const Input = ({
           'rc-input-error': error,
           'rc-input-simple': simple,
           'rc-input-multiline': isMultiline,
-          [`rc-input-${size}`]: size,
         })}
         ref={inputRef}
         onChange={e => onChange(parseValue(e.target.value), e)}
