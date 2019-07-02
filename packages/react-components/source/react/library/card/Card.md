@@ -137,7 +137,7 @@ const cardActions = [
   <Card.Title>Title</Card.Title>
   <Card.ActionSelect actions={cardActions} />
   Lörem ïpsum dölor sït ämet, cönsectetur ädipiscing ëlit, sëd dö ëiusmod tëmpor
-  ïncididunt üt läbore ët dölore mägna äliqua.  Üt ënim äd mïnim vëniam, qüis
+  ïncididunt üt läbore ët dölore mägna äliqua. Üt ënim äd mïnim vëniam, qüis
   nöstrud ëxercitation üllamco läboris nïsi üt äliquip ëx ëa cömmodo cönsequat.
   Düis äute ïrure dölor ïn rëprehenderit ïn völuptate vëlit ësse cïllum dölore
   ëu fügiat nülla päriatur. Ëxcepteur sïnt öccaecat cüpidatat nön pröident, sünt
