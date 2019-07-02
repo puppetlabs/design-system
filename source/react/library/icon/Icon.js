@@ -1,91 +1,206 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import { iconSizes } from '../../constants';
+import { ICON_CONFIG } from '../../constants';
 import icons from './icons';
 
+// These are defined here so they render in the styleguide props list
+const AVAILABLE_SIZES = ['large', 'medium', 'small', 'tiny'];
+export const AVAILABLE_ICONS = [
+  'activity',
+  'alert',
+  'annotate',
+  'area-chart',
+  'attach',
+  'bar-chart',
+  'basics',
+  'bell',
+  'book',
+  'brush',
+  'bubble',
+  'build',
+  'check',
+  'check-circle',
+  'chevron-down',
+  'chevron-left',
+  'chevron-right',
+  'chevron-up',
+  'clipboard',
+  'close',
+  'code',
+  'column-chart',
+  'combo',
+  'company',
+  'connections',
+  'csv',
+  'data',
+  'dashboard',
+  'diamond',
+  'donut',
+  'double-left',
+  'double-right',
+  'drag-handle',
+  'duplicate',
+  'ellipsis',
+  'email',
+  'engagement',
+  'excel',
+  'eye',
+  'filters',
+  'gear',
+  'grid',
+  'hamburger',
+  'history',
+  'home',
+  'image',
+  'impact',
+  'increment',
+  'info-circle',
+  'integration',
+  'kebab',
+  'key',
+  'kpi',
+  'layers',
+  'line',
+  'line-chart',
+  'link',
+  'list',
+  'minus',
+  'package',
+  'paper',
+  'parameters',
+  'pdf',
+  'pencil',
+  'performance',
+  'pipeline',
+  'plus',
+  'plus-circle',
+  'private',
+  'profile',
+  'question-circle',
+  'reports',
+  'resize',
+  'rocket',
+  'scatter',
+  'search',
+  'send',
+  'share',
+  'shield',
+  'sign-out',
+  'sort-ascending',
+  'sort-descending',
+  'sort',
+  'square',
+  'structure',
+  'tag',
+  'target',
+  'text',
+  'time-series',
+  'tools',
+  'trash',
+  'users',
+  'versions',
+  'wallet',
+  'x',
+  'zoom-in',
+  'zoom-out',
+];
+
 const propTypes = {
-  viewBox: PropTypes.string,
-  size: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
-  height: PropTypes.string,
-  width: PropTypes.string,
-  type: PropTypes.string,
+  /** Choose your icon */
+  type: PropTypes.oneOf(AVAILABLE_ICONS),
+  /** Optional choose your size */
+  size: PropTypes.oneOf(AVAILABLE_SIZES),
+  /** Or pass in your own svg... */
   svg: PropTypes.element,
+  /** ...and viewbox */
+  viewBox: PropTypes.string,
+  /** Optional add additional classes */
   className: PropTypes.string,
+  /** Optional add additional inline styles */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  height: '30px',
-  width: '30px',
+  type: null,
+  size: 'medium',
+  svg: null,
+  viewBox: null,
   className: '',
+  style: {},
 };
 
 const Icon = props => {
   const {
     className,
-    width,
     type,
-    height,
     size,
     svg: propsSvg,
     viewBox: propsViewBox,
+    style,
+    ...rest
   } = props;
-  const styles = { width, height };
 
   let svg = propsSvg;
   let viewBox = propsViewBox;
-  let icon = null;
+  const icon = icons[type];
 
-  if (!svg && icons[type]) {
-    const { svg: alternateSvg } = icons[type];
-    svg = alternateSvg;
-  }
+  // Let's define the svg and viewbox if not passed in as props
+  if (!svg && icon) {
+    const getScaledIcon = variant => icon[variant];
+    const scaledIcon = getScaledIcon(size);
 
-  if (!viewBox && icons[type]) {
-    const { viewBox: alternateViewBox } = icons[type];
-    viewBox = alternateViewBox;
-  }
+    const defineElements = (element, variant) => {
+      svg = element;
+      viewBox = viewBox || ICON_CONFIG[variant].viewBox;
+    };
 
-  if (size) {
-    switch (size) {
-      case 'tiny':
-        styles.height = iconSizes.tiny;
-        styles.width = iconSizes.tiny;
-        break;
-      case 'small':
-        styles.height = iconSizes.small;
-        styles.width = iconSizes.small;
-        break;
-      case 'large':
-        styles.height = iconSizes.large;
-        styles.width = iconSizes.large;
-        break;
-      default:
-        styles.height = iconSizes.base;
-        styles.width = iconSizes.base;
+    if (scaledIcon) {
+      // If a unique svg exists for the size requested, let's use it
+      defineElements(scaledIcon, size);
+    } else {
+      // Else if there isn't a unique svg for the size,
+      // let's scale down the next largest svg,
+      // or if unavailable, scale up the next smallest svg
+
+      const index = AVAILABLE_SIZES.indexOf(size);
+      const largerSizes = AVAILABLE_SIZES.slice(0, index).reverse();
+      const smallerSizes = AVAILABLE_SIZES.slice(index + 1);
+
+      let closestSize = largerSizes.find(alt => getScaledIcon(alt));
+      closestSize = closestSize || smallerSizes.find(alt => getScaledIcon(alt));
+      const closestIcon = getScaledIcon(closestSize);
+
+      defineElements(closestIcon, closestSize);
     }
   }
 
   if (svg) {
     const classNames = classnames('rc-icon', `rc-icon-${type}`, className);
 
-    icon = (
+    return (
       <svg
         className={classNames}
-        width={width}
-        height={height}
         viewBox={viewBox}
-        style={styles}
+        style={{
+          width: ICON_CONFIG[size].size,
+          height: ICON_CONFIG[size].size,
+          ...style,
+        }}
+        {...rest}
       >
         {svg}
       </svg>
     );
   }
 
-  return icon;
+  return null;
 };
 
 Icon.propTypes = propTypes;
 Icon.defaultProps = defaultProps;
+
+Icon.AVAILABLE_SIZES = AVAILABLE_SIZES;
+Icon.AVAILABLE_ICONS = AVAILABLE_ICONS;
 
 export default Icon;

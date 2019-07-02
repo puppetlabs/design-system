@@ -1,0 +1,343 @@
+$puppet-sidebar-bg: $puppet-n900 !default;
+$puppet-sidebar-padding: 16px !default;
+$puppet-sidebar-font: $puppet-type-font-family-secondary !default;
+$puppet-sidebar-width: 240px !default;
+$puppet-sidebar-minimized-width: 73px !default;
+
+$puppet-sidebar-logo-bg: $puppet-black !default;
+$puppet-sidebar-logo-height: 72px !default;
+$puppet-sidebar-logo-padding: $puppet-sidebar-padding !default;
+$puppet-sidebar-minimized-logo-padding: $puppet-sidebar-padding $puppet-sidebar-padding $puppet-sidebar-padding 20px !default;
+
+$puppet-sidebar-item-bg: $puppet-n850 !default;
+$puppet-sidebar-item-bg-hover: $puppet-n900 !default;
+$puppet-sidebar-item-bg-active: $puppet-n850 !default;
+$puppet-sidebar-item-border-focus: $puppet-common-focus-outline !default;
+
+$puppet-sidebar-item-border-radius: $puppet-common-border-radius !default;
+
+$puppet-sidebar-item-color: $puppet-n400 !default;
+$puppet-sidebar-item-color-hover: $puppet-brand-primary !default;
+$puppet-sidebar-item-color-active: $puppet-brand-primary !default;
+
+$puppet-sidebar-item-font-size: 16px !default;
+$puppet-sidebar-item-font-weight: $puppet-type-weight-normal !default;
+$puppet-sidebar-item-line-height: 40px !default;
+$puppet-sidebar-item-margin: 2px 16px !default;
+$puppet-sidebar-item-padding: 0 12px !default;
+$puppet-sidebar-item-title-padding: 4px 0 !default;
+
+$puppet-sidebar-item-icon-fill: $puppet-n600 !default;
+$puppet-sidebar-item-icon-fill-hover: $puppet-brand-primary !default;
+$puppet-sidebar-item-icon-fill-active: $puppet-brand-primary !default;
+$puppet-sidebar-item-icon-margin: 12px !default;
+
+$puppet-sidebar-item-karet-margin: 8px !default;
+
+
+// Sidebar Sections
+
+// Labels
+$puppet-sidebar-label-color: $puppet-n500 !default;
+$puppet-sidebar-label-font: $puppet-type-font-family-secondary !default;
+$puppet-sidebar-label-font-size: 11px !default;
+$puppet-sidebar-label-line-height: $puppet-common-spacing-base * 2 !default;
+$puppet-sidebar-label-margin: $puppet-common-spacing-base * 6 0 $puppet-common-spacing-base * 2 !default;
+$puppet-sidebar-label-padding: 0 $puppet-common-spacing-base * 6 0 !default;
+$puppet-sidebar-label-text-transform: uppercase !default;
+
+$puppet-sidebar-item-accordion-font-size: 14px !default;
+$puppet-sidebar-item-accordion-margin: 8px 16px 8px 32px !default;
+$puppet-sidebar-item-accordion-padding: 0 0 0 8px !default;
+
+$puppet-sidebar-footer-height: 72px !default;
+$puppet-sidebar-footer-bg: $puppet-black !default;
+
+
+// Generic sidebar
+
+.rc-sidebar {
+  background: $puppet-sidebar-bg;
+  display: flex;
+  flex-direction: column;
+  font-family: $puppet-sidebar-font;
+  height: inherit;
+  overflow: hidden;
+  transition: width 0.2s ease-in-out;
+  width: $puppet-sidebar-width;
+  z-index: 12;
+}
+
+// Sidebar header
+
+.rc-sidebar-header {
+  @include rc-button-reset();
+  align-items: center;
+  background: $puppet-sidebar-logo-bg;
+  border: $puppet-sidebar-item-border-focus;
+  display: flex;
+  height: $puppet-sidebar-logo-height;
+  overflow: hidden;
+  padding: $puppet-sidebar-logo-padding;
+  transition: all 0.2s ease-in-out;
+
+  .rc-logo-text {
+    opacity: 100;
+    transition: all 0.2s ease-in-out;
+    visibility: visible;
+  }
+}
+
+.rc-sidebar-header:focus {
+  box-shadow: $puppet-common-focus-outline-inset;
+}
+
+// Sidebar navigation area
+
+.rc-sidebar-navigation {
+  flex: 1;
+  height: inherit;
+  overflow: auto;
+  padding: 16px 0;
+}
+
+// Sidebar section & items
+
+.rc-sidebar-section {
+  margin: 0;
+  padding-left: 0;
+}
+
+.rc-sidebar-item {
+  list-style: none;
+}
+
+.rc-sidebar-label {
+  color: $puppet-sidebar-label-color;
+  display: block;
+  font-family: $puppet-sidebar-label-font;
+  font-size: $puppet-sidebar-label-font-size;
+  height: auto;
+  line-height: $puppet-sidebar-label-line-height;
+  margin: $puppet-sidebar-label-margin;
+  padding: $puppet-sidebar-label-padding;
+  text-transform: $puppet-sidebar-label-text-transform;
+}
+
+.rc-sidebar-label,
+.rc-sidebar-item-title,
+.rc-sidebar-item-karet {
+  opacity: 1;
+  transition: visibility 0s linear 0.2s, opacity 0.3s linear, height 0.2s linear;
+  visibility: visible;
+  white-space: nowrap;
+}
+
+.rc-sidebar-item-link {
+  align-items: center;
+  border-radius: $puppet-sidebar-item-border-radius;
+  cursor: pointer;
+  display: flex;
+  height: $puppet-sidebar-item-line-height;
+  line-height: $puppet-sidebar-item-line-height;
+  margin: $puppet-sidebar-item-margin;
+  outline: none;
+  padding: $puppet-sidebar-item-padding;
+  text-decoration: none;
+}
+
+.rc-sidebar-item-link:hover {
+  background: $puppet-sidebar-item-bg-hover;
+  text-decoration: none !important;
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-item-color-hover;
+  }
+
+  .rc-icon {
+    fill: $puppet-sidebar-item-icon-fill-hover;
+  }
+}
+
+.rc-sidebar-item-link:focus {
+  box-shadow: $puppet-sidebar-item-border-focus;
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-item-color-hover;
+  }
+
+  .rc-icon {
+    fill: $puppet-sidebar-item-icon-fill-hover;
+  }
+}
+
+.rc-sidebar-item-title {
+  color: $puppet-sidebar-item-color;
+  flex-grow: 1;
+  font-family: $puppet-sidebar-font;
+  font-size: $puppet-sidebar-item-font-size;
+  font-weight: $puppet-sidebar-item-font-weight;
+  height: auto;
+  line-height: $puppet-sidebar-item-line-height;
+  overflow: hidden;
+  padding: $puppet-sidebar-item-title-padding;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rc-sidebar-item-icon {
+  display: flex;
+  margin-right: $puppet-sidebar-item-icon-margin;
+
+  .rc-icon {
+    fill: $puppet-sidebar-item-icon-fill;
+  }
+}
+
+.rc-sidebar-item-karet {
+  display: flex;
+  margin-left: $puppet-sidebar-item-karet-margin;
+}
+
+.rc-sidebar-item-badge {
+  display: flex;
+  margin-left: $puppet-sidebar-item-karet-margin;
+  transition: width 0.2s ease-in-out;
+}
+
+// Selected Item
+.rc-sidebar-item-link-selected,
+.rc-sidebar-item-link-selected:hover,
+.rc-sidebar-item-link.active {
+  background: $puppet-sidebar-item-bg-active;
+
+  .rc-sidebar-item-title {
+    color: $puppet-sidebar-item-color-active;
+  }
+
+  .rc-icon {
+    fill: $puppet-sidebar-item-icon-fill-active;
+  }
+}
+
+.rc-sidebar-accordion {
+  display: none;
+
+  .rc-sidebar-item {
+    font-size: 14px;
+    margin: $puppet-sidebar-item-accordion-margin !important;
+    padding: $puppet-sidebar-item-accordion-padding !important;
+  }
+}
+
+.rc-sidebar-accordion-open {
+  display: block;
+}
+
+// Sidebar footer
+
+.rc-sidebar-footer {
+  @include rc-button-reset();
+  align-items: center;
+  background: $puppet-sidebar-footer-bg;
+  display: flex;
+  height: $puppet-sidebar-footer-height;
+  overflow: hidden;
+  padding: $puppet-sidebar-padding;
+  text-align: left;
+}
+
+.rc-sidebar-footer:hover {
+  .rc-sidebar-footer-meta-username,
+  .rc-sidebar-footer-meta-version {
+    color: $puppet-sidebar-item-color-hover;
+  }
+  
+  .rc-sidebar-footer-meta-user {
+    background: $puppet-sidebar-item-color-hover;
+  }
+}
+
+.rc-sidebar-footer:focus {
+  box-shadow: $puppet-common-focus-outline-inset;
+
+  .rc-sidebar-footer-meta-username,
+  .rc-sidebar-footer-meta-version {
+    color: $puppet-sidebar-item-color-hover;
+  }
+}
+
+.rc-sidebar-footer-meta-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: $puppet-sidebar-padding;
+}
+
+.rc-sidebar-footer-meta-user {
+  align-items: center;
+  background: $puppet-n500;
+  border-radius: 100px;
+  display: flex;
+  height: 32px;
+  justify-content: center;
+  width: 32px;
+
+  .rc-icon {
+    fill: $puppet-sidebar-footer-bg;
+  }
+}
+
+.rc-sidebar-footer-meta-username,
+.rc-sidebar-footer-meta-version {
+  color: $puppet-n500;
+}
+
+.rc-sidebar-footer-meta-version {
+  text-transform: uppercase;
+}
+
+// Minimized sidebar
+
+.rc-sidebar-minimized {
+  margin-right: 0;
+  width: $puppet-sidebar-minimized-width;
+
+  .rc-sidebar-header {
+    justify-content: center;
+    padding: $puppet-sidebar-minimized-logo-padding;
+  }
+
+  .rc-logo-text {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .rc-sidebar-item-title,
+  .rc-sidebar-accordion-open,
+  .rc-sidebar-label,
+  .rc-sidebar-item-badge,
+  .rc-sidebar-item-karet {
+    height: 0;
+    margin: 0 !important;
+    opacity: 0;
+    overflow: hidden;
+    padding: 0 !important;
+    transition-delay: 0s;
+    visibility: hidden;
+  }
+
+  .rc-sidebar-section {
+    border-top: 2px solid $puppet-n850;
+    padding: 16px 0;
+  }
+
+  .rc-sidebar-section:first-of-type {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .rc-sidebar-footer {
+    align-items: center;
+    justify-content: center;
+  }
+}

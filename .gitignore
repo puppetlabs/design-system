@@ -9,4 +9,3 @@ npm-debug.log
 /coverage
 .DS_Store
 /complexity
-/design/styleguide/images/*.png

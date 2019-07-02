@@ -1,0 +1,107 @@
+.rc-menu-list {
+  background-color: $puppet-white;
+  border: $puppet-common-border;
+  border-radius: $puppet-common-border-radius;
+  box-shadow: $puppet-common-elevation-200;
+  display: flex;
+  flex-direction: column;
+}
+
+.rc-action-menu-list,
+.rc-option-menu-list-single {
+  &:focus-within {
+    box-shadow: $puppet-common-focus-outline, $puppet-common-elevation-200;
+  }
+}
+
+.rc-option-menu-list-multiple {
+  .rc-menu-list-inner:focus {
+    border: 2px solid $puppet-b300;
+    padding: $puppet-common-spacing-base - 2px;
+  }
+
+  .rc-menu-action:focus {
+    box-shadow: $puppet-common-focus-outline-inset;
+  }
+}
+
+.rc-menu-action {
+  @include puppet-type-button-small();
+
+  background-color: $puppet-n50 !important;
+  border: 0;
+  border-bottom-left-radius: $puppet-common-border-radius - 1px;
+  border-bottom-right-radius: $puppet-common-border-radius - 1px;
+  border-top: $puppet-common-border;
+  color: $puppet-b500;
+  cursor: pointer;
+  display: block;
+  outline: none;
+  padding: 8px 0;
+  text-align: center;
+
+  &:hover {
+    color: $puppet-b400;
+  }
+
+  &:active {
+    color: $puppet-b600;
+  }
+}
+
+.rc-menu-list-inner {
+  border-top-left-radius: $puppet-common-border-radius - 1px;
+  border-top-right-radius: $puppet-common-border-radius - 1px;
+  margin: 0;
+  outline: none;
+  overflow: auto;
+  padding: $puppet-common-spacing-base;
+}
+
+.rc-menu-list-item {
+  @include puppet-type-small();
+
+  align-items: center;
+  border-radius: 2px;
+  cursor: pointer;
+  display: flex;
+  list-style-type: none;
+  padding: 4px 8px;
+}
+
+.rc-menu-list-item-inner {
+  @include puppet-type-small();
+  display: flex;
+  flex: 1;
+  outline: none;
+  text-decoration: none;
+}
+
+.rc-menu-list-item-selected {
+  color: $puppet-b500;
+
+  .rc-menu-list-item-checkmark {
+    fill: $puppet-b500;
+  }
+}
+
+.rc-menu-list-item-content {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rc-menu-list-item-checkmark {
+  flex: none;
+  margin-left: $puppet-common-spacing-base * 2;
+}
+
+.rc-menu-list-item-icon {
+  flex: none;
+  margin-right: $puppet-common-spacing-base * 2;
+}
+
+.rc-menu-list-item-focused {
+  background-color: $puppet-n200;
+}

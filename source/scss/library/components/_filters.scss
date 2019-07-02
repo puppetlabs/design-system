@@ -1,0 +1,196 @@
+// Filters
+// ----------------------------------------------------------------------------
+$puppet-filter-border-color: $puppet-n300;
+$puppet-filter-border: $puppet-common-border-subtle;
+$puppet-filter-bg: $puppet-r100 !default;
+$puppet-filter-radius: $puppet-common-border-radius !default;
+$puppet-filter-padding: $puppet-common-spacing-base * 0.5 !default;
+$puppet-filter-placeholder-color: $puppet-type-color-subtle !default;
+$puppet-filter-input-bg: $puppet-white !default;
+$puppet-filter-selected-shadow: 0 0 0 1px $puppet-b500, $puppet-common-elevation-150 !default;
+$puppet-filter-border-active: 1px solid $puppet-b500 !default;
+
+$puppet-filter-select-padding: $puppet-common-spacing-base !default;
+$puppet-filter-select-height: 10px !default; // Todo: Base on grid
+
+$puppet-filter-split-bg: $puppet-n400 !default;
+$puppet-filter-split-menu-bg: darken($puppet-filter-split-bg, 10%) !default;
+$puppet-filter-split-menu-bg-hover: lighten($puppet-filter-split-menu-bg, 15%) !default;
+
+.rc-filters {
+  @include puppet-type-body();
+
+  .rc-form {
+    animation: 0.4s 1 rc-fade-in;
+  }
+
+  .rc-tag {
+    height: 27px;
+    line-height: 27px;
+  }
+}
+
+.rc-filters-action:hover {
+  color: $puppet-b500 !important;
+
+  .rc-icon {
+    fill: $puppet-b500;
+  }
+}
+
+// Filter definitions within List Items
+.rc-list-item-medium {
+  .rc-filter-filter,
+  .rc-filter-field-name,
+  .rc-filter-field-op,
+  .rc-filter-field-value {
+    font-size: 14px;
+  }
+}
+
+.rc-list-item-small {
+  .rc-filter-filter,
+  .rc-filter-field-name,
+  .rc-filter-field-op,
+  .rc-filter-field-value {
+    font-size: 12px;
+  }
+}
+
+.rc-filters-filter {
+  .rc-filter-field-name,
+  .rc-filter-field-op {
+    padding-right: 4px;
+  }
+
+  .rc-filter-field-op {
+    opacity: 0.8;
+  }
+
+  .rc-filter-field-name,
+  .rc-filter-field-value {
+    font-weight: $puppet-type-weight-heavy;
+  }
+
+  .rc-filter-field-op {
+    font-style: italic;
+  }
+}
+
+/* stylelint-disable  */
+.rc-filter-form {
+  position: relative;
+
+  .rc-split-button {
+    background: $puppet-filter-split-bg;
+    border-top-left-radius: $puppet-filter-radius;
+    border-top-right-radius: $puppet-filter-radius;
+    position: absolute;
+    right: 0;
+    // We probably shouldn't hardcode this...
+    top: -19px;
+    visibility: hidden;
+
+    .rc-button-main {
+      background: $puppet-filter-split-bg;
+
+      .rc-button-content {
+        color: $puppet-b500;
+        float: right;
+      }
+
+      &:hover {
+        .rc-button-content {
+          color: $puppet-b400;
+        }
+      }
+    }
+
+    .rc-button-menu {
+      background: $puppet-filter-split-menu-bg;
+
+      &:hover {
+        background: $puppet-filter-split-menu-bg-hover;
+      }
+
+      .rc-button-menu-inner {
+        path {
+          fill: $puppet-filter-input-bg;
+        }
+      }
+
+      &:hover {
+        .rc-button-menu-inner {
+          path {
+            fill: $puppet-filter-input-bg;
+          }
+        }
+      }
+    }
+  }
+
+  .rc-filter-form-fields {
+    background: $puppet-filter-bg;
+    border-radius: $puppet-filter-radius;
+    padding: $puppet-filter-padding;
+
+    .rc-selects-row {
+      display: flex;
+
+      .rc-select {
+        flex-grow: 1;
+      }
+
+      .rc-input {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+
+      .rc-select-left {
+        margin-right: 2px;
+      }
+
+      .rc-select-left .rc-input {
+        border-top-left-radius: $puppet-filter-radius;
+      }
+
+      .rc-select-right .rc-input {
+        border-top-right-radius: $puppet-filter-radius;
+      }
+    }
+
+    .rc-input {
+      border-color: $puppet-filter-border-color;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+      margin-top: 1px;
+
+      &:focus {
+        border: $puppet-filter-border-active;
+        box-shadow: $puppet-filter-selected-shadow;
+      }
+    }
+  }
+
+  &.rc-filter-form-no-value {
+    .rc-filter-form-fields .rc-selects-row {
+      .rc-select-left > .rc-input {
+        border-bottom-left-radius: $puppet-filter-radius;
+      }
+
+      .rc-select-right > .rc-input {
+        border-bottom-right-radius: $puppet-filter-radius;
+      }
+    }
+  }
+
+  &:hover {
+    .rc-split-button {
+      visibility: visible;
+    }
+
+    .rc-filter-form-fields {
+      border-top-right-radius: 0;
+    }
+  }
+}

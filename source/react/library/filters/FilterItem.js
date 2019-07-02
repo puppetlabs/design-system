@@ -3,7 +3,7 @@ import React from 'react';
 
 import { filterOperators } from '../../constants';
 
-import ListItem from '../list/ListItem';
+import ListItem from './ListItem';
 
 const propTypes = {
   filter: PropTypes.shape({

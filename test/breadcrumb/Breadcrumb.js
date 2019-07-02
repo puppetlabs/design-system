@@ -1,57 +1,42 @@
-import { shallow } from 'enzyme';
-import { expect } from 'chai';
-import sinon from 'sinon';
 import React from 'react';
+import { shallow, mount } from 'enzyme';
+import { expect } from 'chai';
 
-import Breadcrumb from '../../source/react/library/breadcrumb';
+import Breadcrumb from '../../source/react/library/breadcrumb/Breadcrumb';
+import Link from '../../source/react/library/link/Link';
+import Text from '../../source/react/library/text/Text';
 
-describe('<Breadcrumb />', () => {
-  it('should render without blowing up', () => {
-    const wrapper = shallow(<Breadcrumb />);
+const labels = ['items', '11', 'details'];
+const sections = [
+  <Breadcrumb.Section href="https://www.puppet.com" key={labels[0]}>
+    {labels[0]}
+  </Breadcrumb.Section>,
+  <Breadcrumb.Section href="https://www.puppet.com" key={labels[1]}>
+    {labels[1]}
+  </Breadcrumb.Section>,
+  <Breadcrumb.Section key={labels[2]}>{labels[2]}</Breadcrumb.Section>,
+];
 
-    expect(wrapper.length).to.eql(1);
-  });
+it('renders without crashing', () => {
+  shallow(<Breadcrumb />);
 });
 
-describe('<Breadcrumb.Section />', () => {
-  it('should render without blowing up', () => {
-    const wrapper = shallow(<Breadcrumb.Section />);
+it('renders a Link component for all sections except the last (which renders a Text component)', () => {
+  const wrapper = mount(<Breadcrumb>{sections}</Breadcrumb>);
 
-    expect(wrapper.length).to.eql(1);
-  });
+  expect(
+    wrapper
+      .find(Link)
+      .first()
+      .text(),
+  ).to.equal(labels[0]);
 
-  it('should not fire the onClick event when a section without a link is clicked', () => {
-    const onClick = sinon.spy();
-    const wrapper = shallow(<Breadcrumb.Section onClick={onClick} />);
-    wrapper.onClick = onClick;
-    wrapper.simulate('click');
+  expect(
+    wrapper
+      .find(Link)
+      .at(1)
+      .text(),
+  ).to.equal(labels[1]);
 
-    expect(onClick.called).to.equal(false);
-  });
-
-  it('should fire the onClick event when a section with a link is clicked', () => {
-    const onClick = sinon.spy();
-    const wrapper = shallow(
-      <Breadcrumb.Section onClick={onClick} link route="test" />,
-    );
-    wrapper.onClick = onClick;
-    wrapper.simulate('click');
-
-    expect(onClick.called).to.equal(true);
-    expect(onClick.args[0][0]).to.equal('test');
-  });
-});
-
-describe('<Breadcrumb.Separator />', () => {
-  it('should render without blowing up', () => {
-    const wrapper = shallow(<Breadcrumb.Separator />);
-
-    expect(wrapper.length).to.eql(1);
-  });
-
-  it('should be able to change the icon used for the separator', () => {
-    const wrapper = shallow(<Breadcrumb.Separator icon="chevron-left" />);
-
-    expect(wrapper.find('Icon').prop('type')).to.eql('chevron-left');
-  });
+  expect(wrapper.find(Text).text()).to.equal(labels[2]);
 });

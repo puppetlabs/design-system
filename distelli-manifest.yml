@@ -12,5 +12,3 @@ insights/react-components:
     - npm run js-lint
     - npm run scss-lint
     - npm run test
-  AfterBuildSuccess:
-    - ./scripts/release-if-master.sh

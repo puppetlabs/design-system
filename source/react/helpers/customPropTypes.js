@@ -1,3 +1,40 @@
+import PropTypes from 'prop-types';
+
+/**
+ * PropType for anything that can be rendered as a JSX element. Most often this
+ * will be used for the flexible element rendering 'as' prop. See library/card/Card.js
+ * for an example.
+ */
+export const renderableElement = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.func,
+]);
+
+/**
+ * Design system available element elevations
+ */
+export const elementElevation = PropTypes.oneOf([
+  0,
+  50,
+  100,
+  150,
+  200,
+  400,
+  800,
+]);
+
+export const anchorOrientation = PropTypes.oneOf([
+  'bottom right',
+  'top right',
+  'top left',
+  'bottom left',
+]);
+
+/**
+ * Design system common form sizes
+ */
+export const formSize = PropTypes.oneOf(['medium', 'small']);
+
 /**
  * PropType wrapper that displays a deprecation message long with normal
  * propType checking.
@@ -13,7 +50,6 @@
  * since default props are assigned before propType checking
  * @param  {String} message Deprecation message
  */
-/* eslint-disable import/prefer-default-export */
 export const deprecated = message => typeChecker => {
   if (process.env.NODE_ENV !== 'development') {
     return typeChecker;
@@ -29,4 +65,3 @@ export const deprecated = message => typeChecker => {
     return typeChecker(props, key, componentName, location, propFullName);
   };
 };
-/* eslint-enable */

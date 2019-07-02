@@ -1,240 +1,37 @@
-### Basic Select
+The Select component is a form element allowing for selection of a value from a set of options.
 
-```
+### Basic use
+
+Options are specified by entries in an `options` array prop. Each requires a unique value and a friendly label to display to users.
+
+```jsx
 const options = [
-  'Option 1',
-  'Option 2',
-  'Option 3',
+  { value: 'en', label: 'English' },
+  { value: 'ru', label: 'русский' },
+  { value: 'zh', label: '中文'},
+  { value: 'sq', label: 'Albanian' },
+  { value: 'ar', label: 'Arabic' },
+  { value: 'eu', label: 'Basque' },
+  { value: 'bn', label: 'Bengali' },
+  { value: 'bs', label: 'Bosnian' },
+  { value: 'bg', label: 'Bulgarian' },
+  { value: 'ca', label: 'Catalan' },
 ];
 
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-/>
-```
+const style = { margin: 10 };
 
-#### Selected prop as a string
-
-```
-const options = [
-  'Option 1',
-  'Option 2',
-  'Option 3',
-];
-
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-  selected="Option 1"
-/>
-```
-
----
-
-### Sizes
-
-#### Default Size
-
-```
-const options = [
-  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode III  Revenge of the Sith',
-];
-
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-/>
-```
-
-#### Small
-
-```
-const options = [
-  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode III  Revenge of the Sith',
-];
-
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-  size="small"
-/>
-```
-
-#### Large
-
-```
-const options = [
-  'Star Wars: Episode I  The Phantom Menace Star Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the SithStar Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode II  Attack of the Clones Star Wars: Episode III  Revenge of the Sith',
-  'Star Wars: Episode III  Revenge of the Sith',
-];
-
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-  size="large"
-/>
-```
-
----
-
-### Optional
-
-#### Clearable Select
-
-When set to clearable, all options can be removed by clicking the dismiss icon.
-
-```
-const options = [
-  { value: 'Coffee', label: 'Coffee', selected: true },
-  { value: 'Tea', label: 'Tea' },
-];
-
-<Select options={ options } clearable />
-```
-
-#### Custom Actions
-
-```
-const onSelect = (selected, modifiedOption) => {
-  console.log(selected, modifiedOption);
-}
-
-const onNewOption = () => {
-  alert('Adding a new drink');
-}
-
-const options = [
-  { value: 'Coffee', label: 'Coffee' },
-  { value: 'Tea', label: 'Tea' },
-  { value: 'Gatorade', label: 'Gatorade' },
-  { value: 'Apple Juice', label: 'Apple Juice' },
-  { value: 'Cranberry Juice', label: 'Cranberry Juice' },
-  { value: 'Banana Juice', label: 'Banana Juice' },
-  { value: "Bone Hurtin' Juice", label: "Bone Hurtin' Juice" },
-  { value: 'Blue Cheese Juice', label: 'Blue Cheese Juice' },
-  { value: 'Beer', label: 'Beer' },
-  { value: 'Wine', label: 'Wine' },
-  { value: 'Vodka', label: 'Vodka' },
-  { value: 'Whiskey', label: 'Whiskey' },
-  { value: 'Crappy Tequila', label: 'Crappy Tequila' },
-  { value: 'Fine Tequila', label: 'Fine Tequila' },
-  { value: 'Great Tequila', label: 'Great Tequila' },
-  { value: 'Great Tequila with Rocks', label: 'Great Tequila with Rocks' },
-  { value: 'Great Tequila with Water', label: 'Great Tequila with Water' },
-  { value: 'Great Tequila with Actual Rocks', label: 'Great Tequila with Actual Rocks' }
-];
-
-<Select options={ options } onSelect={ onSelect } onNewOption={ onNewOption } newOptionLabel="Add a New Drink" />
-```
-
----
-
-### States
-
-#### Disabled
-
-```
-<Select disabled />
-```
-
-Select with no portal:
-
-```
-const options = [
-  'Geoff',
-  'Colby',
-  'Sig',
-];
-
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  disablePortal
-  options={ options }
-  placeholder="Select one..."
-/>
-```
-
----
-
-## Multiselect
-
-Multiselects allow the user to select multiple options at once.
-
-```
-const options = [
-  'Option 1',
-  'Option 2',
-  'Option 3',
-];
-
-<Select
-  multiple
-  options={ options }
-/>
-```
-
-#### Multiselect with pre-selected options
-
-```
-const options = [
-  'Option 1',
-  'Option 2',
-  'Option 3',
-];
-
-<Select
-  multiple
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  options={ options }
-  placeholder="Select one..."
-  selected={ [
-    'Option 1',
-    'Option 2',
-  ] }
-/>
-```
-
-#### Small Multiselect
-
-```
-const options = [
-  { value: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onSelect prop.', label: 'Select is a stateful component but allows the user to modify the state by passing an updated options prop, or listen to changes to the state by passing a callback to the onSelect prop.', selected: true },
-  { value: 'Sig', label: 'Sig', selected: true },
-  { value: 'Colby', label: 'Colby' },
-];
-
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-  multiple
-  size="small"
-  options={ options }
-/>
-```
-
-#### autoOpen Enabled
-
-_SIG - Temporarily removed to prevent autoscroll_
-
-```
-const options = [
-  { value: 'Geoff', label: 'Geoff' },
-  { value: 'Colby', label: 'Colby', selected: true },
-  { value: 'Michael', label: 'Sig' },
-];
-
-<Select
-  onSelect={(selected, modifiedOption) => console.log(selected, modifiedOption)}
-
-  options={ options }
-/>
+<div>
+  <Select
+    id="button-select-one"
+    name="select-example"
+    options={options}
+    placeholder="Select your language"
+    style={style}
+    value={state.value1}
+    onChange={value1 => {
+      console.log('New Value:', value1);
+      setState({ value1 });
+    }}
+  />
+</div>;
 ```

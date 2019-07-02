@@ -1,0 +1,368 @@
+@import './library/public/index';
+
+body {
+  @include puppet-type-body();
+}
+
+.swatch-wrapper {
+  display: flex;
+  flex-flow: wrap;
+}
+
+.swatch {
+  border: $puppet-common-border;
+  display: flex;
+  flex-direction: column;
+  height: 125px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  width: 100px;
+}
+
+.swatch-color {
+  flex-grow: 1;
+}
+
+.swatch-title {
+  flex-shrink: 0;
+  font-family: $puppet-type-font-family;
+  font-size: 11px;
+  padding: 4px;
+  text-align: center;
+}
+
+.swatch-color-amber {
+  background: $puppet-amber;
+}
+
+.swatch-color-teal {
+  background: $puppet-teal;
+}
+
+.swatch-color-purple {
+  background: $puppet-purple;
+}
+
+.swatch-color-red {
+  background: $puppet-red;
+}
+
+.swatch-color-brand-primary {
+  background: $puppet-brand-primary;
+}
+
+.swatch-color-brand-secondary {
+  background: $puppet-brand-secondary;
+}
+
+.swatch-color-black {
+  background: $puppet-black;
+}
+
+
+// Neatrals
+
+.swatch-color-n950 {
+  background: $puppet-n950;
+}
+
+.swatch-color-n900 {
+  background: $puppet-n900;
+}
+
+.swatch-color-n850 {
+  background: $puppet-n850;
+}
+
+.swatch-color-n800 {
+  background: $puppet-n800;
+}
+
+.swatch-color-n700 {
+  background: $puppet-n700;
+}
+
+.swatch-color-n600 {
+  background: $puppet-n600;
+}
+
+.swatch-color-n500 {
+  background: $puppet-n500;
+}
+
+.swatch-color-n400 {
+  background: $puppet-n400;
+}
+
+.swatch-color-n300 {
+  background: $puppet-n300;
+}
+
+.swatch-color-n200 {
+  background: $puppet-n200;
+}
+
+.swatch-color-n100 {
+  background: $puppet-n100;
+}
+
+.swatch-color-n50 {
+  background: $puppet-n50;
+}
+
+.swatch-color-white {
+  background: $puppet-white;
+}
+
+// Blues
+
+.swatch-color-b900 {
+  background: $puppet-b900;
+}
+
+.swatch-color-b800 {
+  background: $puppet-b800;
+}
+
+.swatch-color-b700 {
+  background: $puppet-b700;
+}
+
+.swatch-color-b600 {
+  background: $puppet-b600;
+}
+
+.swatch-color-b500 {
+  background: $puppet-b500;
+}
+
+.swatch-color-b400 {
+  background: $puppet-b400;
+}
+
+.swatch-color-b300 {
+  background: $puppet-b300;
+}
+
+.swatch-color-b200 {
+  background: $puppet-b200;
+}
+
+.swatch-color-b100 {
+  background: $puppet-b100;
+}
+
+.swatch-color-b50 {
+  background: $puppet-b50;
+}
+
+
+// Reds
+
+.swatch-color-r900 {
+  background: $puppet-r900;
+}
+
+.swatch-color-r800 {
+  background: $puppet-r800;
+}
+
+.swatch-color-r700 {
+  background: $puppet-r700;
+}
+
+.swatch-color-r600 {
+  background: $puppet-r600;
+}
+
+.swatch-color-r500 {
+  background: $puppet-r500;
+}
+
+.swatch-color-r400 {
+  background: $puppet-r400;
+}
+
+.swatch-color-r300 {
+  background: $puppet-r300;
+}
+
+.swatch-color-r200 {
+  background: $puppet-r200;
+}
+
+.swatch-color-r100 {
+  background: $puppet-r100;
+}
+
+.swatch-color-r50 {
+  background: $puppet-r50;
+}
+
+// Yellows
+
+.swatch-color-y900 {
+  background: $puppet-y900;
+}
+
+.swatch-color-y800 {
+  background: $puppet-y800;
+}
+
+.swatch-color-y700 {
+  background: $puppet-y700;
+}
+
+.swatch-color-y600 {
+  background: $puppet-y600;
+}
+
+.swatch-color-y500 {
+  background: $puppet-y500;
+}
+
+.swatch-color-y400 {
+  background: $puppet-y400;
+}
+
+.swatch-color-y300 {
+  background: $puppet-y300;
+}
+
+.swatch-color-y200 {
+  background: $puppet-y200;
+}
+
+.swatch-color-y100 {
+  background: $puppet-y100;
+}
+
+.swatch-color-y50 {
+  background: $puppet-y50;
+}
+
+// Greens
+
+.swatch-color-g900 {
+  background: $puppet-g900;
+}
+
+.swatch-color-g800 {
+  background: $puppet-g800;
+}
+
+.swatch-color-g700 {
+  background: $puppet-g700;
+}
+
+.swatch-color-g600 {
+  background: $puppet-g600;
+}
+
+.swatch-color-g500 {
+  background: $puppet-g500;
+}
+
+.swatch-color-g400 {
+  background: $puppet-g400;
+}
+
+.swatch-color-g300 {
+  background: $puppet-g300;
+}
+
+.swatch-color-g200 {
+  background: $puppet-g200;
+}
+
+.swatch-color-g100 {
+  background: $puppet-g100;
+}
+
+.swatch-color-g50 {
+  background: $puppet-g50;
+}
+
+// Purples
+
+.swatch-color-p900 {
+  background: $puppet-p900;
+}
+
+.swatch-color-p800 {
+  background: $puppet-p800;
+}
+
+.swatch-color-p700 {
+  background: $puppet-p700;
+}
+
+.swatch-color-p600 {
+  background: $puppet-p600;
+}
+
+.swatch-color-p500 {
+  background: $puppet-p500;
+}
+
+.swatch-color-p400 {
+  background: $puppet-p400;
+}
+
+.swatch-color-p300 {
+  background: $puppet-p300;
+}
+
+.swatch-color-p200 {
+  background: $puppet-p200;
+}
+
+.swatch-color-p100 {
+  background: $puppet-p100;
+}
+
+.swatch-color-p50 {
+  background: $puppet-p50;
+}
+
+
+// Icons
+.rc-icon-table {
+  border-collapse: separate;
+  border-spacing: 4px;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.rc-icon-table .rc-icon {
+  vertical-align: middle;
+}
+
+.rc-icon-table tr:not(:first-of-type):hover {
+  border-radius: $puppet-common-border-radius;
+  box-shadow: $puppet-common-focus-outline;
+}
+
+.rc-icon-table tr th:first-of-type {
+  text-align: left;
+}
+
+.rc-icon-table tr td:not(:first-of-type) {
+  border-radius: $puppet-common-border-radius;
+  text-align: center;
+}
+
+.rc-icon-unique-variant {
+  background: rgba($puppet-g500, 0.1);
+}
+
+.rc-loading-table {
+  border-collapse: separate;
+  border-spacing: 4px;
+  table-layout: fixed;
+  width: 100%;
+}
+
+.column-width-35p {
+  width: 35%;
+}

@@ -11,12 +11,21 @@ describe('<FilterForm />', () => {
     expect(wrapper.length).to.eql(1);
   });
 
-  it('should render an enabled submit button by default', () => {
+  it('should render an enabled "add" button by default', () => {
     const wrapper = mount(<FilterForm />);
     const button = wrapper.find('Button').at(1);
 
     expect(button.prop('disabled')).to.eql(false);
-    expect(button.prop('label')).to.eql('Submit');
+    expect(button.prop('children')).to.eql('Add');
+  });
+
+  it('should render an "update" cta if filter prop is passed in', () => {
+    const filter = { 0: 'foo', 1: 'bar' };
+    const wrapper = mount(<FilterForm filter={filter} />);
+    const button = wrapper.find('Button').at(1);
+
+    expect(button.prop('disabled')).to.eql(false);
+    expect(button.prop('children')).to.eql('Update');
   });
 
   describe('overriding overridable things', () => {
@@ -30,15 +39,15 @@ describe('<FilterForm />', () => {
       };
       const wrapper = shallow(<FilterForm strings={filterStrings} />);
 
-      expect(
-        wrapper.find('FormField[name="filterField"]').prop('label'),
-      ).to.eql('filterField custom label');
-      expect(
-        wrapper.find('FormField[name="filterOperator"]').prop('label'),
-      ).to.eql('filterOperator custom label');
-      expect(
-        wrapper.find('FormField[name="filterValue"]').prop('label'),
-      ).to.eql('filterValue custom label');
+      expect(wrapper.find('FormField[name="field"]').prop('label')).to.eql(
+        'filterField custom label',
+      );
+      expect(wrapper.find('FormField[name="op"]').prop('label')).to.eql(
+        'filterOperator custom label',
+      );
+      expect(wrapper.find('FormField[name="value"]').prop('label')).to.eql(
+        'filterValue custom label',
+      );
     });
   });
 });

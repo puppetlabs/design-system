@@ -1,10 +1,352 @@
+# 5.0.0-alpha.30
+
+- **Breaking change** Remove tag component
+- Update typography and styling for Text, Tab, Sidebar, Badge, Alert and Card components
+- Remove extraneous font imports
+
+# 5.0.0-alpha.29
+
+- Add type prop to Tab so an individual tab can have `type="secondary"` for a gray tab and panel background
+- Remove border-right from Sidebar
+
+# 5.0.0-alpha.28
+
+- Bug Fix: Allow submission of forms with manually provided field-level errors
+
+# 5.0.0-alpha.27
+
+- Upgrade Styleguidist to v9
+- Update Card selected hover state to be the same as card selected state
+- Stop propagation for ActionSelect and ActionMenuList buttons
+- Add SubmitType prop to Form
+
+# 5.0.0-alpha.26
+
+- Fix conflicting aria-disabled attribute in Button
+- Add accessible Modal
+- **Breaking change** Modal actions are now left-aligned
+- **Breaking change** Remove ConfirmationModal
+- **Breaking change** Remove `title` prop from Modal in favor of Modal.Title subcomponent
+- **Breaking change** Remove `actions` prop from Modal in favor of Modal.Actions subcomponent
+- **Breaking change** Remove `size` prop from Modal. Default is now 480px, users can override by passing a custom className
+- **Breaking change** Remove `unbindShortcut`, `bindShortcut`, `margin`, `height`, `size`, `sidebar`, `sidebarPosition`, `actionsCTA`, `modalClassName`, `actionsPosition`, and `title` props from Modal
+- List core-js as direct dependency (needed by way of @babel/polyfill)
+- Use webpack-node-externals to reduce bundle size
+- ActionMenu can accept a number as an action id
+- Update Card styling to include focus state
+- Update Card documentation
+- **Breaking change** Remove Card.Header subcomponent
+- **Breaking change** Remove Card.Section subcomponent
+- Add Card.Title subcomponent
+- **Breaking Change** Rename Card.ActionsMenu -> Card.ActionSelect
+- Remove Filters and related components from react-components documentation, add note about deficiencies
+- **Breaking Change** Remove ButtonGroup component
+- **Breaking Change** Rename ActionMenu -> ActionSelect
+- **Breaking Change** Remove many scss variables from palettes and common
+- **Breaking Change** $puppet-common-spacing-base is now 4px, updated for clarity of intent
+- Stop propagation of key events from active select menus
+- Upgrade dependencies
+- Fix all console errors in styleguidist
+- Remove unnecessary styleguidist wrapper components
+- Add margins and max height to modal component
+
+# 5.0.0-alpha.25
+
+- Introduce breadcrumb component
+- **Breaking change** Remove TooltipStickyArea component
+- **Breaking change** Remove sticky and onClose options from tooltip
+- Tooltip no longer uses react-portal
+
+# 5.0.0-alpha.24
+
+- Add "integration" icon
+- **Breaking change** Temporarily remove Accordion component
+- **Breaking change** Rename Heading's boolean `smallTitle` prop to `label`
+
+# 5.0.0-alpha.23
+
+- Bug fix: use overflow: auto in menus
+- Bug fix: correctly diff active id in tabs
+
+# 5.0.0-alpha.22
+
+- **Breaking change** Remove isActive, growl & dismissAfter props and all growl functionality from Alert
+- **Breaking change** Use Alert children, not message prop, for inner content
+- **Breaking change** Replace 'error' with 'danger' as one accepted value for type prop for Alert
+- Add elevated prop to Alert
+- Add IconButton as an auxiliary component for Alert
+- Abstract color schemes for success, danger, warning & info states
+- **Breaking change** Remove Dropdown component
+- **Breaking change** Remove Popover component
+- **Breaking change** Remove Menu component
+- Implement new ButtonSelect component
+- Implement new ActionMenu component
+- **Breaking change** Remove autoOpen, clearable, disablePortal, newOption, onNewOption, newOptionLabel, noResultsLabel, popoverClassName, valueless, and typeahead props from `Select`
+- Add actionLabel prop to select
+- Tab targets can now be rendered as custom elements in order to enable routable tabs
+- Button can now forward ref to a prop with an alternate name
+
+# 5.0.0-alpha.21
+
+- id is no longer a required prop of Tabs
+- **Breaking change** Rename `activeTab` prop on `Tabs` to `initialTab`
+- **Breaking change** Manual tab activation is now controlled at the Tabs.Tab component level with the `active` prop
+- **Breaking change** "type" prop on Badge renamed "weight"
+- **Breaking change** "pill" badge type is now a boolean
+- **Breaking change** "color" prop on badge renamed "type"
+- **Breaking change** Remove palette prop on Badge
+- Add Remediate logo
+
+# 5.0.0-alpha.20
+
+- Update form icons, spacing and font colors to match design system
+- Align disabled input opacity across components
+- Style checkbox, switch, and FormField
+- **Breaking change** Remove List component
+- **Breaking change** Table column definition spec updated to match a subset of [React-Virtaluzed](https://github.com/bvaughn/react-virtualized/blob/master/docs/Column.md)'s column definition spec. This is to standardize this basic table API with the API currently used in Puppet Remediate. We will evolve this basic spec as needed going forward.
+- **Breaking Change** Remove striped prop. Table is no longer stripey
+- **Breaking Change** Remove `selectable` prop. The basic table is no longer selectable
+- **Breaking Change** Remove onChange and onSelectChange. No longer needed as the table is not interactive.
+- **Breaking Change** `getRowKey` method replaced with `rowKey` prop. By default it will look for rowData.id
+- **Breaking Change** Remove `ColumnSelect` and `ColumnInput` public components
+- Table style updates
+- Greatly improved table documentation
+- Style link focus state
+- Introduce size prop to link element
+- Re-implement tabs component
+
+# 5.0.0-alpha.19
+
+- **Breaking change** Remove tabs component
+- **Breaking change** Remove grid component
+- **Breaking change** Remove header component
+- **Breaking change** Remove slider component
+- **Breaking change** Remove breadcrumb component
+- Improve Text component documentation
+- Bug fix: Allow form children with no props
+- Allow any node for Card.Header title
+
+# 5.0.0-alpha.18
+
+- Enable installing react-components as a [git URL dependency](https://docs.npmjs.com/files/package.json#git-urls-as-dependencies) to reference forks, branches, or commits, e.g. `npm install vine77/react-components#5.0-development`
+- Add compatibility with React Router to the `Sidebar`
+- Remove text underline for `<Button as="a">`
+- Add React app for http://designsystem.puppetlabs.net
+
+# 5.0.0-alpha.17
+
+- Bug fix: Symmetrize shallowDiff helper so that shallowDiff({}, { key: 'value' }) returns true
+
+# 5.0.0-alpha.16
+
+- **Breaking Change** Remove SplitButton
+- **Breaking Change** require that `clickable` prop be present in `Tag` for main body to be clickable
+- Style update in Tag
+- Introduce fallback custom logo option
+- Upgrade webpack to avoid vulnerability
+- Design fix: remove text decoration in sidebar links
+
+# 5.0.0-alpha.15
+
+- Button updates
+  - **Breaking change** remove `size` prop
+  - Add `weight` prop
+  - **Breaking change** remove props: `secondary`, `transparent`, `floating`, `simple`, `badge`, `block`, `round`, `square`, `dropdown`, `error`, and `message`
+  - Introduce string `type` prop for main visual variant switching
+  - **Breaking change** replace `processing` prop with `loading` to maintain consistency with design docs
+  - **Breaking change**: prexisting `type` prop has been renamed `buttonType`
+  - **Breaking change**: Remove `label` prop, text is now only passed in as children
+  - Update Button documentation
+  - \*\*Breaking change
+  - Adapt to Button API changes in consuming components
+  - Update Loading component to set size with css
+  - **Breaking change** Remove support for small form fields
+
+# 5.0.0-alpha.14
+
+- Exporting the new Logo component
+
+# 5.0.0-alpha.13
+
+- Updates to Sidebar
+  - **breaking change** Change the API for the `Sidebar` to make it more composable. This now includes `Sidebar.Header`, `Sidebar.Navigation`, `Sidebar.Footer`, `Sidebar.Section`, and `Sidebar.Item`.
+  - **breaking change** Remove nested navigation items
+  - **breaking change** Remove `toggleable` from the list of props. The expectation now is that the minimized sidebar would be applied via a user setting
+  - Refactor to make accessible
+- Overflow fix for the Alert component
+
+# 5.0.0-alpha.12
+
+- Update icon set and icon scaling
+- Add loading state to select
+- Fix input container width
+
+# 5.0.0-alpha.11
+
+- Bug fix: create index file for public scss variables
+
+# 5.0.0-alpha.10
+
+- Add badges to styleguide indicating component approval state
+- Design bug fix: Place form-level error alert between fields and action instead of below all
+- Add optional "custom action" to Select w/ onNewOption and newOptionLabel props.
+- Upgrade react dependency to 16.8
+- **Breaking Change** Remove DatePicker component and subdependencies (moved to insights-ui)
+- Refactor scss: create components subdirectory and 'public' directory containing stable scss variables and mixins
+- Bug fix in FormField: make isEmpty check generalizable to non-strings
+- Bug fix: Update multiselect docs to use type="multiselect"
+- Create new "Logo" component encapsulating logo design patterns
+- Style Input component to spec
+
+# 5.0.0-alpha.9
+
+- Fix bug that prevented validating checkbox form fields in forms
+
+# 5.0.0-alpha.8
+
+- Update Form.Field component:
+  - **breaking change** `size` prop is now restricted to `medium` and `small`
+  - **breaking change** remove `tooltip` prop option
+  - **breaking change** remove `elementProps` prop, replace by spreading all additional props to inner input element.
+  - Create standardized FormField interface
+  - Clean up internal code substantially based on standardized input interface
+  - Create extensive documentation for the use and intent of `Form.Field`
+- Update Input component:
+  - **breaking change** Restrict to `medium` and `small` sizes
+  - Remove unnecessary internal event handling
+  - Pass `className` and inline `style` to top level wrapper div
+  - Spread all props down to internal input
+  - **breaking change**: Remove `.focus()` and `.blur` methods in favor of an `inputRef` prop that allows users direct access to the inner dom element.
+  - **breaking change** Remove `multiline` boolean prop in favor of `<Input type="multiline" />`. This clarifies the API and will make the component easier to use via `Form.Field`.
+  - Fix visual bugs in icon inputs
+  - **breaking change** replace boolean `icon` prop with string `icon` prop so that an arbitrary icon can be used inside the input field.
+  - Add `trailingIcon` prop, for a trailing icon
+  - **Breaking change** onChange handler now reports back the new input value, parsed based on input type, rather than the original event. This change is to standardize the Form.Field interface.
+  - **breaking change** deprecate boolean `autoComplete` prop in favor of the ability to pass `autoComplete = 'off'` to the inner element via spread-props.
+  - Clean up internal implementation significantly.
+  - Update input documentation
+- Update checkbox component:
+  - Remove unnecessary internal state management
+  - Spread all props to internal element
+  - Introduce label element to input, styled appropriately and positioned to the right of the element
+  - Accessibility fix: Use native disabled and required tags on inner input element.
+  - Update checkbox documentation
+  - **breaking change** name and label are now required props
+  - **breaking change** checkbox now takes its value from `value` prop rather than `checked` prop. This is to align with FormField interface
+- Update Switch component:
+  - Spread all props to internal element
+  - Accessibility fix: Don't use `label` element for internal rendering
+  - Update documentation
+  - Remove unnecessary internal state management
+  - Spread all props to internal element
+  - Introduce label element to input, styled appropriately and positioned to the right of the element
+  - Accessibility fix: Use native disabled and required tags on inner input element.
+  - Update checkbox documentation
+  - **breaking change** name and label are now required props
+  - **breaking change** checkbox now takes its value from `value` prop rather than `checked` prop. This is to align with FormField interface
+  - **breaking change** `onChange` callback now reports new value, rather than original event. This is to align with the FormField interface.
+- Update `Select` component:
+  - **breaking change** `name` prop is now required
+  - **breaking change** replace `onSelect` prop with `onChange` prop. This is to standardize FormField interface, the methods function identically.
+  - **breaking change** replace `selected` prop with `value` prop. This is to standardize FormField interface.
+  - **breaking change** Select now only accepts `medium` and `small` as size options.
+  - ** breaking change** Remove new option functionality including unused `onPendingDeleteChange`, `onNewOption`, and `newOptionLabel` props.
+  - **breaking change** remove unused `valueless prop
+- **breaking change**: Remove `Toggle` component
+- Misc changes to account for form field changes:
+  - Update Card.ActionsSearch to use formsize small
+  - Internal updates in FilterForm to account for FormField differences
+  - Remove unnecessary option parsing from `ColumnSelect` component (Select does its own selection parsing)
+  - Tweak `Text` component so that `medium` size is default rather than `null`. This aligns with how size is used in `FormFields` and produces no breaking chnages because the default is still the same.
+
+# 5.0.0-alpha.7
+
+- Always reveal view all reports link for My Reports
+- Add color palettes to styleguidist
+
+# 5.0.0-alpha.6
+
+- Add the ability to pass a classname to sidebar
+- Adding a two tone optoin to the code icon
+
+# 5.0.0-alpha.5
+
+- Include the clicked date range option as a param in Datepicker callback
+
+# 5.0.0-alpha.4
+
+- Bug fix: correct propTypes on Checkbox required prop
+
+# 5.0.0-alpha.3
+
+Sidebar component:
+
+- Add badge for number of custom reports
+- Fix the logo to the top of page and contain scroll to main content
+- Always enable open/close on sections with sub items
+- Call out “view all reports…”
+- Increase # of visible reports
+- Fix karet not rendering bug
+- Sort reports by last updated
+- Fix bug whereby changing report name loses active state
+- Fix bug whereby navigating from “view all reports…” page loses active state
+
+Filters component:
+
+- Filters component should show form, not “Add” button, if no filters exist
+- Filters component should not render cancel button if no filters exist
+
+Accordion component:
+
+- Let accordion render a badge next to section title
+
+Tag Component
+
+- Update base styles
+- Bester silo nested click events
+- Improve markdown in styleguide
+
+Timeseries
+
+- Remove icon
+
+Fix regressions in three areas:
+
+- Datagrid search (broken)
+- Series limits and Groups limits (broken)
+- Active/hover states for component cards (got lost in styleguide updates)
+
+# 5.0.0-alpha.2
+
+- Fix for the management of children using react-hot-loader
+- Updated readme
+- Allow non string/number columns in tables
+- Updates to sketch library
+- Guide for updating components to 5.0
+- Deprecating the Saving, Toggle, Stencil, Slidein, Progress, BlankSlate, and Pagenav components
+
+# 5.0.0-alpha.1
+
+- - **breaking change**: Completely remove `Panel` component
+- Adds `elevation` prop controlling box-shadow elevation
+- **breaking change** Removes `style` prop, so that `style` can be used to pass the card inline-styles
+- Adds `secondary` card (controlled by new `type` prop)
+- Adds `as` prop for dynamic element rendering
+- **breaking change** Adds `selectable` prop. Previously, a card was considered selectable if it was passed an `onClick` handler. This separates the handler from the boolean rendering logic.
+- **breaking change** removes `width` and `height` props. Users can now specify explicit widths and heights via inline styles: `<Card style={{ width: 40, height: 60 }} />`
+- Pass through all extra props to the inner element
+- Substantially update Card documentation in styleguidist
+
+# 4.16.2
+
+- Upgrade dev dependencies
+- Update tooltip position on hover over the target element
+
 # 4.16.1
 
 - Add `secondary` boolean prop to SplitButton to use the secondary background color
 - Update Sketchfiles
 - Set default apply apply label
-- Update tooltip position on hover over the target element
-
 
 # 4.16.0
 

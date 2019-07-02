@@ -1,0 +1,152 @@
+$puppet-card-padding: 17px !default;
+
+// All borders are implemented as box-shadow. This is to avoid problems when
+// the active border switchs from 1px wide to 2px wide
+$puppet-card-border: inset 0 0 0 1px $puppet-n400;
+$puppet-card-border-hover: inset 0 0 0 1px $puppet-b500;
+$puppet-card-border-active: inset 0 0 0 1px $puppet-b600;
+
+$puppet-card-selected-border: inset 0 0 0 2px $puppet-b500;
+$puppet-card-selected-active-border: inset 0 0 0 2px $puppet-b600;
+
+$null-shadow: 0 0 0 0 transparent;
+
+@mixin base-shadow($elevation-shadow) {
+  box-shadow: $puppet-card-border, $elevation-shadow;
+
+  &.rc-card-selected {
+    box-shadow: $puppet-card-selected-border, $elevation-shadow;
+  }
+}
+
+@mixin selectable-shadow($elevation-shadow) {
+  &:hover {
+    box-shadow: $puppet-card-border-hover, $elevation-shadow;
+  }
+
+  &:focus {
+    box-shadow: $puppet-card-border, $elevation-shadow,
+      $puppet-common-focus-outline;
+  }
+
+  &:focus:hover {
+    box-shadow: $puppet-card-border-hover, $elevation-shadow,
+      $puppet-common-focus-outline;
+  }
+
+  &:focus:active {
+    box-shadow: $puppet-card-border-active, $elevation-shadow,
+      $puppet-common-focus-outline;
+  }
+
+  &.rc-card-selected {
+    &:hover {
+      box-shadow: $puppet-card-selected-border, $elevation-shadow;
+    }
+
+    &:focus {
+      box-shadow: $puppet-card-selected-border, $elevation-shadow,
+        $puppet-common-focus-outline;
+    }
+
+    &:focus:active {
+      box-shadow: $puppet-card-selected-active-border, $elevation-shadow,
+        $puppet-common-focus-outline;
+    }
+  }
+}
+
+.rc-card {
+  border: 0;
+  border-radius: $puppet-common-border-radius;
+  display: flex;
+  flex-direction: column;
+  min-height: 66px;
+  outline: none;
+  padding: $puppet-card-padding;
+  position: relative;
+}
+
+.rc-card-primary {
+  background-color: $puppet-white;
+}
+
+.rc-card-secondary {
+  background-color: $puppet-n200;
+}
+
+.rc-card-elevation-0 {
+  @include base-shadow($null-shadow);
+}
+
+.rc-card-elevation-50 {
+  @include base-shadow($puppet-common-elevation-50);
+}
+
+.rc-card-elevation-100 {
+  @include base-shadow($puppet-common-elevation-100);
+}
+
+.rc-card-elevation-150 {
+  @include base-shadow($puppet-common-elevation-150);
+}
+
+.rc-card-elevation-200 {
+  @include base-shadow($puppet-common-elevation-200);
+}
+
+.rc-card-elevation-400 {
+  @include base-shadow($puppet-common-elevation-400);
+}
+
+.rc-card-elevation-800 {
+  @include base-shadow($puppet-common-elevation-800);
+}
+
+/* stylelint-disable */
+a.rc-card,
+button.rc-card,
+.rc-card-selectable {
+  cursor: pointer;
+  text-decoration: unset;
+  color: unset;
+
+  &.rc-card-elevation-0 {
+    @include selectable-shadow($null-shadow);
+  }
+
+  &.rc-card-elevation-50 {
+    @include selectable-shadow($puppet-common-elevation-50);
+  }
+
+  &.rc-card-elevation-100 {
+    @include selectable-shadow($puppet-common-elevation-100);
+  }
+
+  &.rc-card-elevation-150 {
+    @include selectable-shadow($puppet-common-elevation-150);
+  }
+
+  &.rc-card-elevation-200 {
+    @include selectable-shadow($puppet-common-elevation-200);
+  }
+
+  &.rc-card-elevation-400 {
+    @include selectable-shadow($puppet-common-elevation-400);
+  }
+
+  &.rc-card-elevation-800 {
+    @include selectable-shadow($puppet-common-elevation-800);
+  }
+}
+/* stylelint-enable */
+
+.rc-card-action-select {
+  position: absolute;
+  right: 17px;
+  top: 17px;
+}
+
+.rc-card-title:not(:last-child) {
+  margin-bottom: $puppet-common-spacing-base * 4;
+}

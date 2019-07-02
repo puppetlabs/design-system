@@ -1,0 +1,70 @@
+.rc-badge {
+  @include puppet-type-label();
+  border-radius: 2px;
+  display: inline-block;
+  margin: 0 $puppet-common-spacing-base * 0.5;
+  padding: 0 $puppet-common-spacing-base;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.rc-badge-pill {
+  border-radius: 1000px;
+  padding: 0 $puppet-common-spacing-base * 4;
+}
+
+.rc-badge-bold {
+  &.rc-badge-danger {
+    background-color: $puppet-r600;
+    color: $puppet-white;
+  }
+
+  &.rc-badge-info {
+    background-color: $puppet-b600;
+    color: $puppet-white;
+  }
+
+  &.rc-badge-neutral {
+    background-color: $puppet-n800;
+    color: $puppet-white;
+  }
+
+  &.rc-badge-success {
+    background-color: $puppet-g700;
+    color: $puppet-white;
+  }
+
+
+  &.rc-badge-warning {
+    background-color: $puppet-y700;
+    color: $puppet-white;
+  }
+}
+
+.rc-badge-subtle {
+  &.rc-badge-danger {
+    background-color: $puppet-r100;
+    color: $puppet-r600;
+  }
+
+  &.rc-badge-info {
+    background-color: $puppet-b100;
+    color: $puppet-b600;
+  }
+
+  &.rc-badge-neutral {
+    background-color: $puppet-n100;
+    color: $puppet-n800;
+  }
+
+
+  &.rc-badge-success {
+    background-color: $puppet-g100;
+    color: $puppet-g700;
+  }
+
+  &.rc-badge-warning {
+    background-color: $puppet-y100;
+    color: $puppet-y700;
+  }
+}

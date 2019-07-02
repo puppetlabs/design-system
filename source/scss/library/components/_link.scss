@@ -1,0 +1,20 @@
+.rc-link-size-medium {
+  @include puppet-type-body();
+}
+
+.rc-link-size-small {
+  @include puppet-type-small();
+}
+
+.rc-link-size-tiny {
+  @include puppet-type-tiny();
+}
+
+.rc-link {
+  @include puppet-type-link();
+
+  // Extra overrides so that buttons look like links
+  background: none;
+  border: 0;
+  padding: 0;
+}

@@ -1,13 +1,9 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import clone from 'clone';
-
 import Filter from './FilterItem';
 import Form from './FilterForm';
-
-import Button from '../buttons/Button';
-import List from '../list/List';
-
+import Button from '../button';
+import List from './List';
 import { filterOperators } from '../../constants';
 
 const propTypes = {
@@ -44,8 +40,10 @@ const propTypes = {
     filterOperatorPlaceholder: PropTypes.string.isRequired,
     /* Custom label for cancel button */
     filterCancel: PropTypes.string.isRequired,
-    /* Custom label for submit button */
-    filterSubmit: PropTypes.string.isRequired,
+    /* Custom label for submit button when adding */
+    filterAdd: PropTypes.string.isRequired,
+    /* Custom label for submit button when updating */
+    filterUpdate: PropTypes.string.isRequired,
     /* Custom label for add button */
     addCTA: PropTypes.string,
   }),
@@ -122,7 +120,7 @@ class Filters extends React.Component {
     if (editing) {
       const index = filters.findIndex(f => getFilterKey(f) === editing);
 
-      newFilters = clone(filters);
+      newFilters = [...filters];
       newFilters[index] = filter;
     } else {
       newFilters = filters.concat(filter);
@@ -181,23 +179,33 @@ class Filters extends React.Component {
 
   renderAction() {
     const { editing, adding } = this.state;
-    const { strings, addCTA } = this.props;
+    const { strings, addCTA, filters } = this.props;
     const ctaLabel = strings.addCTA || addCTA;
     let jsx;
 
-    if (!editing && !adding) {
-      jsx = <Button simple icon="plus" label={ctaLabel} onClick={this.onAdd} />;
+    if (!editing && !adding && filters.length) {
+      jsx = (
+        <Button type="text" icon="plus" onClick={this.onAdd}>
+          {ctaLabel}
+        </Button>
+      );
     }
 
     return jsx;
   }
 
   renderForm() {
-    const { removableToggle, fields, operators, strings } = this.props;
+    const { removableToggle, fields, operators, strings, filters } = this.props;
     const { filter } = this.state;
+    let cancellable = true;
+
+    if (!filters.length) {
+      cancellable = false;
+    }
 
     return (
       <Form
+        cancellable={cancellable}
         removable={removableToggle}
         fields={fields}
         filter={filter}
@@ -211,11 +219,12 @@ class Filters extends React.Component {
 
   render() {
     const { adding, editing } = this.state;
+    const { filters: rawFilters } = this.props;
     const action = this.renderAction();
     let filters;
     let form;
 
-    if (adding || editing) {
+    if (adding || editing || !rawFilters.length) {
       form = this.renderForm();
     } else {
       filters = this.renderFilters();

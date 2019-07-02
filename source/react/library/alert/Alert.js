@@ -3,27 +3,33 @@ import classnames from 'classnames';
 import React from 'react';
 import Text from '../text';
 import Icon from '../icon';
-import { ENTER_KEY_CODE } from '../../constants';
+import IconButton from './IconButton';
 
 const propTypes = {
-  message: PropTypes.string.isRequired,
-  isActive: PropTypes.bool,
-  type: PropTypes.oneOf(['success', 'error', 'info', 'warning']),
+  /** Main content */
+  children: PropTypes.string,
+  /** Main visual variant */
+  type: PropTypes.oneOf(['info', 'danger', 'success', 'warning']),
+  /** Should the alert have a dismiss button? */
   closeable: PropTypes.bool,
-  growl: PropTypes.bool,
+  /** What should happen on explicit close? */
   onClose: PropTypes.func,
-  dismissAfter: PropTypes.number, // eslint-disable-line react/no-unused-prop-types
+  /** Alert 'elevation' visually indicated with box-shadow */
+  elevated: PropTypes.bool,
+  /** Optional additional className. */
   className: PropTypes.string,
+  /** Optional additional inline styles. */
+  styles: PropTypes.shape({}),
 };
 
 const defaultProps = {
-  isActive: false,
-  closeable: true,
-  type: 'success',
-  growl: true,
-  onClose: () => {},
-  dismissAfter: 5000,
+  children: '',
+  type: 'info',
+  closeable: false,
+  onClose() {},
+  elevated: false,
   className: '',
+  styles: {},
 };
 
 class Alert extends React.Component {
@@ -31,23 +37,6 @@ class Alert extends React.Component {
     super(props);
 
     this.onClose = this.onClose.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-  }
-
-  componentDidMount() {
-    const { isActive } = this.props;
-
-    if (isActive) {
-      this.handleDismiss(this.props);
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-    const { isActive } = this.props;
-
-    if (!isActive && nextProps.isActive) {
-      this.handleDismiss(nextProps);
-    }
   }
 
   onClose() {
@@ -56,38 +45,20 @@ class Alert extends React.Component {
     onClose();
   }
 
-  onKeyDown(e) {
-    if (e.keyCode === ENTER_KEY_CODE) {
-      this.onClose();
-    }
-  }
-
-  handleDismiss(props) {
-    const { dismissAfter } = props;
-
-    if (dismissAfter) {
-      setTimeout(() => {
-        this.onClose();
-      }, dismissAfter);
-    }
-  }
-
   render() {
     const {
-      message,
-      isActive,
+      children,
       type,
       closeable,
-      growl,
+      elevated,
       className,
-      dismissAfter,
       ...rest
     } = this.props;
     const classNames = classnames(
       'rc-alert',
       {
         [`rc-alert-${type}`]: type,
-        'rc-alert-static': !growl,
+        'rc-alert-elevated': elevated,
       },
       className,
     );
@@ -95,42 +66,36 @@ class Alert extends React.Component {
     let typeIcon;
 
     switch (type) {
-      case 'error':
-        typeIcon = 'close-circle';
+      case 'danger':
+        typeIcon = 'alert';
+        break;
+      case 'success':
+        typeIcon = 'check-circle';
         break;
       case 'info':
       case 'warning':
-        typeIcon = 'info-circle';
+        typeIcon = 'alert';
         break;
       default:
-        typeIcon = 'check-circle';
-    }
-
-    if (!isActive) {
-      return false;
+        typeIcon = 'info-circle';
     }
 
     if (closeable) {
-      // TODO: we need to find a way to use the button component with simple icons that don't
-      // need the various button styles
       closeButton = (
-        <div
-          className="rc-alert-close"
-          role="button"
-          tabIndex={0}
+        <IconButton
+          icon="x"
+          type={type}
           onClick={this.onClose}
-          onKeyDown={this.onKeyDown}
-        >
-          <Icon type="close" size="tiny" />
-        </div>
+          className="rc-alert-dismiss-icon"
+        />
       );
     }
 
     return (
       <div className={classNames} {...rest}>
-        <Icon className="rc-alert-type-icon" type={typeIcon} size="medium" />
+        <Icon className="rc-alert-primary-icon" type={typeIcon} size="medium" />
         <Text className="rc-alert-message" size="small">
-          {message}
+          {children}
         </Text>
         {closeButton}
       </div>
