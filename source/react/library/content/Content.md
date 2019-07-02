@@ -61,7 +61,7 @@ const highlight = element => <span style={style}>{element}</span>;
   <h4>Line length</h4>
 
   <p>
-    The number of characters per line influences readability. In english, the
+    The number of characters per line influences readability. In English, the
     following guidelines are considered the easiest to understand.
   </p>
 
@@ -83,7 +83,7 @@ const highlight = element => <span style={style}>{element}</span>;
   </ul>
 
   <p>
-    According to Elements of Typographical Style anything from 45 to 75
+    According to Elements of Typographical Style, anything from 45 to 75
     characters is widely-regarded as a satisfactory length of line for a
     single-column page set in a serifed text face in a text size. The
     66-character line (counting both letters and spaces) is widely regarded as
@@ -92,7 +92,7 @@ const highlight = element => <span style={style}>{element}</span>;
 
   <p>
     Recent research suggest that this old wisdom is no longer valid. In some
-    studies user's have signaled that 90 characters is preferred, thus our 90
+    studies, user's have signaled that 90 characters is preferred, thus our 90
     character maximum.
   </p>
 </Content>
