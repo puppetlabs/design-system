@@ -154,7 +154,6 @@ React layouts scss depends on react-components scss. To use, place the following
 
 `npm install`
 
-
 ## Build static asset bundles:
 
 `npm run build`

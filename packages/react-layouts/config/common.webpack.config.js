@@ -1,6 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const paths = require('./paths');
 
@@ -13,7 +13,7 @@ module.exports = {
     new CopyWebpackPlugin([
       { from: paths.client('locales'), to: paths.styleguideDist('locales') },
     ]),
-    new CleanWebpackPlugin(['styleguide-dist'], { root: paths.root() }),
+    new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
       template: paths.client('index.html'),
     }),
