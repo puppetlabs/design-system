@@ -1,163 +1,146 @@
-```
-<Card.Card>
-  <Card.Header title="I'm a happy card!" subtitle="I'm a happy subtitle" />
-  <Card.Section>I am a section for card content</Card.Section>
-</Card.Card>
+Cards provide flexible containers for related pieces of UI content. There are primary and secondary variants available at multiple elevations. Each may become 'selectable' for use in a selectable list.
+
+Design specification: <a href="http://designsystem.puppetlabs.net/containers" target="_top">designsystem.puppetlabs.net/containers</a>
+
+### Primary Cards
+
+```jsx
+import Heading from '../heading';
+import Text from '../text';
+
+const cardExampleStyle = {
+  width: 150,
+  height: 150,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight: 12,
+};
+
+<div style={{ display: 'flex' }}>
+  <Card style={cardExampleStyle}>
+    <Heading as="h3">Flat</Heading>
+    <Text>Elevation 0</Text>
+  </Card>
+  <Card elevation={50} style={cardExampleStyle}>
+    <Heading as="h3">Subtle</Heading>
+    <Text>Elevation 50</Text>
+  </Card>
+  <Card elevation={100} style={cardExampleStyle}>
+    <Heading as="h3">Raised</Heading>
+    <Text>Elevation 100</Text>
+  </Card>
+</div>;
 ```
 
-Selectable `Card`:
+### Secondary Cards
 
-```
-<Card.Card onClick={() => {}}>
-  <Card.Header title="I'm selectable!" subtitle="I am a selectable subtitle!" />
-</Card.Card>
+```jsx
+import Heading from '../heading';
+import Text from '../text';
+
+const cardExampleStyle = {
+  width: 150,
+  height: 150,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight: 12,
+};
+
+<div style={{ display: 'flex' }}>
+  <Card type="secondary" style={cardExampleStyle}>
+    <Heading as="h3">Flat</Heading>
+    <Text>Elevation 0</Text>
+  </Card>
+  <Card type="secondary" elevation={50} style={cardExampleStyle}>
+    <Heading as="h3">Subtle</Heading>
+    <Text>Elevation 50</Text>
+  </Card>
+  <Card type="secondary" elevation={100} style={cardExampleStyle}>
+    <Heading as="h3">Raised</Heading>
+    <Text>Elevation 100</Text>
+  </Card>
+</div>;
 ```
 
-Card with two sections inside:
+### Selectable Cards
 
-```
-<Card.Card>
-  <Card.Section>
-    I am a card section
-  </Card.Section>
-  <Card.Section>
-    I am a also card section
-  </Card.Section>
-</Card.Card>
+Cards are often used on grids where the content in each card is selectable, perhaps controlling the content of a sidebar or other page area.
+
+```jsx
+import Heading from '../heading';
+
+initialState = {
+  selected: null,
+};
+
+const cardExampleStyle = {
+  width: 150,
+  height: 150,
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginRight: 12,
+};
+
+<div style={{ display: 'flex' }}>
+  <Card
+    selectable
+    selected={state.selected === 'a'}
+    onClick={() => setState({ selected: 'a' })}
+    style={cardExampleStyle}
+  >
+    <Heading as="h3">A</Heading>
+  </Card>
+  <Card
+    selectable
+    selected={state.selected === 'b'}
+    onClick={() => setState({ selected: 'b' })}
+    style={cardExampleStyle}
+  >
+    <Heading as="h3">B</Heading>
+  </Card>
+  <Card
+    selectable
+    selected={state.selected === 'c'}
+    onClick={() => setState({ selected: 'c' })}
+    style={cardExampleStyle}
+  >
+    <Heading as="h3">C</Heading>
+  </Card>
+</div>;
 ```
 
-Card with description & title
+### Card Content
 
-```
-<Card.Card>
-  <Card.Header title="I am a title" description="I am a card description" />
-  <Card.Section>I am the content of the card</Card.Section>
-</Card.Card>
-```
+Card content is arbitrary as determined by the needs of the application. We provide two convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, and `Card.ActionSelect` which provides selection from a set of card actions,
+pre-styled in a consistent manner.
 
-Card with action dropdown
-
-```
-const menuOptions = [
-  { value: 'I\'m a test value!', id: 0 },
-  { value: 'Me too!', id: 1 },
-  { value: 'Me three...', id: 2 },
+```jsx
+const cardActions = [
+  {
+    label: 'Card Action 1',
+    id: 0,
+    onClick: () => console.log('You did thing 1'),
+  },
+  {
+    label: 'Card Action 2',
+    id: 1,
+    onClick: () => console.log('You did thing 2'),
+  },
+  {
+    label: 'Card Action 3',
+    id: 2,
+    onClick: () => console.log('You did thing 3'),
+  },
 ];
 
-const actions = [<Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />];
-<Card.Card>
-  <Card.Header title="I am a title" actions={ actions } />
-</Card.Card>
-```
-
-Card with action dropdown and no title
-
-```
-const menuOptions = [
-  { value: 'I\'m a test value!', id: 0 },
-  { value: 'Me too!', id: 1 },
-  { value: 'Me three...', id: 2 },
-];
-
-const actions = [<Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />];
-<Card.Card>
-  <Card.Header actions={ actions } />
-</Card.Card>
-```
-
-Card with two action dropdowns
-
-```
-const menuOptions = [
-  { value: 'I\'m a test value!', id: 0 },
-  { value: 'Me too!', id: 1 },
-  { value: 'Me three...', id: 2 },
-];
-
-const actions = [
-  <Card.ActionsMenu key="menu-2" menuToggleIcon="bar-small" menuOptions={ menuOptions } />,
-  <Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />,
-];
-
-<Card.Card>
-  <Card.Header title="I am a title" actions={ actions } />
-</Card.Card>
-```
-
-Card with two action dropdowns and a really long title
-
-```
-const menuOptions = [
-  { value: 'I\'m a test value!', id: 0 },
-  { value: 'Me too!', id: 1 },
-  { value: 'Me three...', id: 2 },
-];
-
-const actions = [
-  <Card.ActionsMenu key="menu-2" menuToggleIcon="bar-small" menuOptions={ menuOptions } />,
-  <Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />,
-];
-
-<Card.Card>
-  <Card.Header title="I am a really really really really really really really really really really really really long title" actions={ actions } />
-</Card.Card>
-```
-
-Card with two types of actions, menu and search
-
-```
-const menuOptions = [
-  { value: 'I\'m a test value!', id: 0 },
-  { value: 'Me too!', id: 1 },
-  { value: 'Me three...', id: 2 },
-];
-
-const actions = [
-  <Card.ActionsSearch key="menu-1" onSearch={ (value) => { console.log(value) }  } />,
-  <Card.ActionsMenu key="menu-2" menuOptions={ menuOptions } />,
-];
-
-<Card.Card>
-  <Card.Header title="I am a title" actions={ actions } />
-</Card.Card>
-```
-
-Card with action menu in error state
-
-```
-const menuOptions = [
-  { value: 'I\'m a test value!', id: 0 },
-  { value: 'Me too!', id: 1 },
-  { value: 'Me three...', id: 2 },
-];
-
-const actions = [
-  <Card.ActionsMenu
-    key="menu-1"
-    message="There is an error in this card"
-    menuOptions={ menuOptions }
-  />,
-];
-
-<Card.Card>
-  <Card.Header title="I am a title" actions={ actions } />
-</Card.Card>
-```
-
-Card with no title, subtitle, or controls, but with actions and description
-
-```
-const menuOptions = [
-  { value: 'I\'m a test value!', id: 0 },
-  { value: 'Me too!', id: 1 },
-  { value: 'Me three...', id: 2 },
-];
-
-const actions = [
-  <Card.ActionsMenu key="menu-1" menuOptions={ menuOptions } />,
-];
-
-<Card.Card>
-  <Card.Header description="I am a card description" actions={ actions } />
-</Card.Card>
+<Card>
+  <Card.Title>Title</Card.Title>
+  <Card.ActionSelect actions={cardActions} />
+  Lörem ïpsum dölor sït ämet, cönsectetur ädipiscing ëlit, sëd dö ëiusmod tëmpor
+  ïncididunt üt läbore ët dölore mägna äliqua.  Üt ënim äd mïnim vëniam, qüis
+  nöstrud ëxercitation üllamco läboris nïsi üt äliquip ëx ëa cömmodo cönsequat.
+  Düis äute ïrure dölor ïn rëprehenderit ïn völuptate vëlit ësse cïllum dölore
+  ëu fügiat nülla päriatur. Ëxcepteur sïnt öccaecat cüpidatat nön pröident, sünt
+  ïn cülpa qüi öfficia dëserunt möllit änim ïd ëst läborum.
+</Card>;
 ```

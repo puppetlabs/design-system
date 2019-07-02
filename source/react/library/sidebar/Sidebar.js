@@ -1,175 +1,67 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classnames from 'classnames';
-import { getKey } from '../../helpers/statics';
-import Button from '../buttons/Button';
-import Section from './Section';
-import Subsection from './Subsection';
-import SubsectionItem from './SubsectionItem';
+import Section from './SidebarSection';
+import Item from './SidebarItem';
+import Footer from './SidebarFooter';
+import Header from './SidebarHeader';
+import Navigation from './SidebarNavigation';
+import renderChildren from './helper';
 
 const propTypes = {
-  children: PropTypes.node,
-  /** Easy prop to enable toggle between sidebar sizes */
-  togglable: PropTypes.bool,
-  /** Is sidebar at the smaller size? */
+  /** CSS class name applied to the root element */
+  className: PropTypes.string,
+  /** Minimize the width of the sidebar and only show icons, rather than icons and text */
   minimized: PropTypes.bool,
-  /** Helpful for forcing a resize event to update svg drawings */
-  onToggle: PropTypes.func,
-  /** Shows logo in sidebar */
-  logo: PropTypes.element,
-  onLogoClick: PropTypes.func,
-  /** Determines colors */
-  theme: PropTypes.oneOf(['dark', null]),
+  /** The children are generally `Sidebar.Header`, `Sidebar.Navigation`, `Sidebar.Section`, `Sidebar.Item` and `Sidebar.Footer`. However, due to the composable nature of this component you can add to it as needed  */
+  children: PropTypes.node, //eslint-disable-line
 };
 
 const defaultProps = {
-  children: [],
-  togglable: false,
+  className: '',
   minimized: false,
-  onToggle: () => {},
-  logo: undefined,
-  onLogoClick: undefined,
-  theme: null,
+  children: [],
 };
 
 /**
- * `Sidebar` displays high-level navigation with optional subsections and actions.
+ * The `Sidebar` component was designed and developed to be used as the primary
+ * webapp navigation. Care has been taken to make sure it is accessible. (If any
+ * a11y issues are discovered, please file a PDS bug.) It is made up of the
+ * primary `Sidebar` component but can be composed by using the
+ * `Sidebar.Header`, `Sidebar.Navigation`, `Sidebar.Section`, `Sidebar.Item`,
+ * and `Sidebar.Footer` components. For the time being, this component does not
+ * support nesting beyond items in sections.
+ *
+ * This component is stateless so you will need to manage which `Sidebar.Item`
+ * is currently highlighted with the `active` prop or use it with React Router's
+ * [NavLink](https://reacttraining.com/react-router/web/api/NavLink) component,
+ * which will apply an `active` class when the URL matches:
+ *
+ * ```jsx
+ * <Sidebar.Item title="Hello" as={NavLink} to="/hello" />
+ * ```
  */
-class Sidebar extends React.Component {
-  constructor(props) {
-    super(props);
+const Sidebar = props => {
+  const { className, minimized, ...rest } = props;
+  const classNames = classnames('rc-sidebar', className, {
+    'rc-sidebar-minimized': minimized,
+  });
+  const revisedChildren = renderChildren(props);
 
-    this.state = {
-      minimized: props.minimized,
-      activeSection: null,
-    };
-
-    this.onSectionClick = this.onSectionClick.bind(this);
-    this.onToggle = this.onToggle.bind(this);
-    this.onLogoClick = this.onLogoClick.bind(this);
-  }
-
-  onSectionClick(title, isAccordion) {
-    const newState = {};
-
-    if (isAccordion) {
-      newState.minimized = false;
-    } else {
-      newState.activeSection = title;
-    }
-
-    this.setState(newState);
-  }
-
-  onToggle() {
-    const { minimized } = this.state;
-    const { onToggle } = this.props;
-
-    onToggle();
-
-    this.setState({ minimized: !minimized });
-  }
-
-  onLogoClick() {
-    const { onLogoClick } = this.props;
-    // this.setState({ menuOpen: false });
-
-    if (onLogoClick) {
-      onLogoClick();
-    }
-  }
-
-  getSections() {
-    const { children } = this.props;
-    const { minimized, activeSection } = this.state;
-
-    return React.Children.map(children, (section, idx) => {
-      const props = {
-        key: getKey(section, idx),
-        onSectionClick: this.onSectionClick,
-        minimized,
-        activeSection,
-      };
-
-      return React.cloneElement(section, props);
-    });
-  }
-
-  getToggle() {
-    const { minimized } = this.state;
-    let icon = 'chevron-left';
-
-    if (minimized) {
-      icon = 'chevron-right';
-    }
-
-    return (
-      <div className="rc-sidebar-toggle">
-        <Button
-          className="rc-sidebar-toggle-btn"
-          onClick={this.onToggle}
-          block
-          transparent
-          icon={icon}
-        />
-      </div>
-    );
-  }
-
-  renderLogo() {
-    const { logo, onLogoClick } = this.props;
-    let jsx = logo;
-
-    // TODO: This should render a button element or an anchor if its for navigation
-    /* eslint-disable jsx-a11y/click-events-have-key-events */
-    /* eslint-disable jsx-a11y/anchor-is-valid */
-    if (jsx && onLogoClick) {
-      jsx = (
-        <a role="button" tabIndex={0} onClick={this.onLogoClick}>
-          {jsx}
-        </a>
-      );
-    }
-    /* eslint-enable */
-
-    if (jsx) {
-      jsx = <div className="rc-sidebar-logo">{jsx}</div>;
-    }
-
-    return jsx;
-  }
-
-  render() {
-    const { togglable, theme } = this.props;
-    const { minimized } = this.state;
-    const sections = this.getSections();
-    const logo = this.renderLogo();
-
-    const className = classnames('rc-sidebar', {
-      'rc-sidebar-minimized': minimized,
-      [`rc-sidebar-${theme}`]: theme,
-    });
-
-    let toggle;
-    if (togglable) {
-      toggle = this.getToggle();
-    }
-
-    return (
-      <div className={className}>
-        {logo}
-        <ul className="rc-sidebar-level-1">{sections}</ul>
-        {toggle}
-      </div>
-    );
-  }
-}
+  return (
+    <aside className={classNames} {...rest}>
+      {revisedChildren}
+    </aside>
+  );
+};
 
 Sidebar.propTypes = propTypes;
 Sidebar.defaultProps = defaultProps;
 
+Sidebar.Header = Header;
+Sidebar.Navigation = Navigation;
 Sidebar.Section = Section;
-Sidebar.Subsection = Subsection;
-Sidebar.SubsectionItem = SubsectionItem;
+Sidebar.Item = Item;
+Sidebar.Footer = Footer;
 
 export default Sidebar;

@@ -1,0 +1,29 @@
+.rc-select {
+  position: relative;
+
+  .rc-select-target {
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .rc-select-target .rc-input {
+    cursor: pointer;
+    text-align: left;
+  }
+
+  .rc-menu-list {
+    min-width: 150px;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .rc-menu-list-inner {
+    max-height: 150px;
+  }
+}
+
+.rc-select-closed {
+  .rc-menu-list {
+    display: none;
+  }
+}

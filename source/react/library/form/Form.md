@@ -1,239 +1,187 @@
-```
+The `Form` component encapsulates user data entry of various data types, with consistent styling, error handling, validation. To maintain consistency and accessibility, this should be considered the primary API for user input in Puppet apps.
+
+The `Form` component must be used in conjunction with one or more [Form.Field](#formfield) sub-components controlling individual inputs. In general, the `Form.Field` sub-components are responsible for basic rendering and user input handling while the parent `Form` component is responsible for tracking the entire form's value, handling form submission and cancellation, and coordinating form field errors and validation. For more information on available props and options for the `Form.Field` sub-component, see [here](#formfield).
+
+### Uncontrolled (recommended in most cases)
+
+In _uncontrolled_ mode, the Form component tracks field values in internal state. The form may be supplied an initialValues object prop with each field name and its initial value, and a submit handler that is passed the final values. When new `initialValues` are detected, the component is reset (see [error handling](#linkylink) below).
+
+```jsx
 const movieOptions = [
-  'American Treasure',
-  'Ghost Rider',
-  'Kick-Ass',
+  { value: 'american-treasure', label: 'American Treasure' },
+  { value: 'ghost-rider', label: 'Ghost Rider' },
+  { value: 'point_break', label: 'Point Break' },
 ];
 
-<Form>
-  <Form.Field
-    type="input"
-    name="firstName"
-    label="First name"
-    elementProps={ { placeholder: 'Enter your first name...' } }
-    description="Please enter your first name"
-  />
-  <Form.Field
-    type="input"
-    name="lastName"
-    label="Last name"
-    value={ true }
-    elementProps={ { placeholder: 'Enter your first name...' } }
-    description="Please enter your last name"
-  />
-  <Form.Field
-    type="password"
-    name="password"
-    label="Password"
-    value={ true }
-    elementProps={ { placeholder: 'Enter your password...' } }
-    description="Please enter your password"
-  />
-  <Form.Field
-    inline
-    type="select"
-    name="favoriteMovie"
-    label="favorite movie"
-    elementProps={ { options: movieOptions } }
-    description="What is your favorite movie?"
-  />
-  <Form.Field
-    inline
-    type="checkbox"
-    name="notARobot"
-    label="Not a robot"
-    description="Are you a human?"
-    tooltip="We only allow real people to sign up. No robots, yet."
-    value={ true }
-  />
-</Form>
-```
-
-Form displaying an input with an error:
-
-```
-const errors = {
-  name: 'Name is taken',
-  age: 'You are not old enough!',
+const initialValues = {
+  controlledFirstName: 'Sponge',
+  controlledLastName: 'Bob',
+  controlledPassword: '',
+  controlledFavoriteMovie: '',
+  controlledNotARobot: false,
 };
 
-<Form errors={ errors }>
-  <Form.Field
-    type="input"
-    name="name"
-    label="name"
-    value="John"
-    description="Please enter your name"
-  />
-  <Form.Field
-    inline
-    type="input"
-    name="age"
-    label="age"
-    value={ 5 }
-  />
-</Form>
+/** Mock api call method */
+const submitForm = values => values;
+
+class MyPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      values: initialValues,
+      submitting: false,
+    };
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(values) {
+    this.setState({ submitting: true });
+
+    submitForm(values);
+
+    this.setState({ submitting: false, values });
+  }
+
+  render() {
+    const { values, submitting } = this.state;
+
+    return (
+      <Form
+        submittable
+        cancellable
+        initialValues={values}
+        submitting={submitting}
+        onSubmit={this.onSubmit}
+      >
+        <Form.Field
+          type="text"
+          name="controlledFirstName"
+          autoComplete="firstname"
+          label="First name"
+          placeholder="Enter your first name..."
+        />
+        <Form.Field
+          type="text"
+          name="controlledLastName"
+          autoComplete="lastname"
+          label="Last name"
+          placeholder="Enter your last name..."
+        />
+        <Form.Field
+          type="password"
+          autoComplete="current-password"
+          name="controlledPassword"
+          label="Password"
+          placeholder="Enter your password..."
+          description="Please enter your password"
+          error="You goofed up now"
+        />
+        <Form.Field
+          type="select"
+          name="controlledFavoriteMovie"
+          label="favorite movie"
+          placeholder="Choose a movie"
+          options={movieOptions}
+        />
+        <Form.Field
+          type="checkbox"
+          name="controlledNotARobot"
+          label="Not a robot"
+          description="Are you a human?"
+        />
+      </Form>
+    );
+  }
+}
+
+<MyPage />;
 ```
 
-Form with a `Select`:
+### Controlled
 
-```
-const options = [
-  'Oregon',
-  'California',
-  'New York',
-  'Neverland',
+In _controlled_ mode, the consumer is responsible for managing form value state. This is used most commonly when the field values may change from external sources or if changes to the values are automatically reflected elsewhere in the ui. The form must be passed a `values` object prop with keys corresponding to field names, and an 'onChange' handler that updates external state.
+
+```jsx
+const movieOptions = [
+  { value: 'american-treasure', label: 'American Treasure' },
+  { value: 'ghost-rider', label: 'Ghost Rider' },
+  { value: 'point_break', label: 'Point Break' },
 ];
 
-<Form>
-  <Form.Field
-    type="select"
-    name="state"
-    label="State"
-    description="Select a state"
-    elementProps={ { options } }
-  />
-</Form>
-```
-
-## Form with sections
-
-```
-const yAxisFlyout = (
-  <Form.Flyout>
-    <Form.Field
-      type="input"
-      name="alias"
-      label="alias"
-      value="My fun alias"
-    />
-  </Form.Flyout>
-);
-
-<Form>
-  <Form.Field
-    key="form-section-1"
-    type="input"
-    name="title"
-    label="title"
-  />
-  <Form.Section title="X-Axis" tooltip="Edit the X Axis here" key="form-section-2">
-    <Form.Field
-      type="input"
-      name="xAxisDimensions"
-      value="my dimension"
-      label="dimensions"
-    />
-    <Form.Field
-      type="input"
-      name="xAxisMetrics"
-      label="metrics"
-    />
-  </Form.Section>
-  <Form.Section title="Y-Axis" flyout={ yAxisFlyout } key="form-section-3">
-    <Form.Field
-      type="input"
-      name="yAxisMetrics"
-      label="metrics"
-    />
-  </Form.Section>
-</Form>
-```
-
-## Inline form with validation
-
-You must fill out the various fields for the form to be submittable.
-
-```
-const validator = (values) => {
-  errors = {};
-
-  if (!values.firstName) {
-    errors.firstName = 'You must supply a first name';
-  }
-
-  if (!values.lastName) {
-    errors.lastName = 'You must supply a last name';
-  }
-
-  if (!values.cheese) {
-    errors.cheese = 'Come on, everyone likes cheese.';
-  }
-
-  return errors;
+const initialValues = {
+  firstName: 'Johnny',
+  lastName: 'Blaze',
+  password: '',
+  favoriteMovie: '',
+  notARobot: false,
 };
 
-<Form
-  inline
-  submittable
-  validator={ validator }
-  onSubmit={ (values) => { alert(`submitted ${JSON.stringify(values)}`) } }
->
-  <Form.Field
-    type="input"
-    name="firstName"
-    label="First name"
-    placeholder="Enter your first name..."
-    description="Please enter your first name"
-  />
-  <Form.Field
-    type="input"
-    name="lastName"
-    label="Last name"
-    placeholder="Enter your last name..."
-    description="Please enter your last name"
-  />
-  <Form.Field
-    name="cheese"
-    value={ false }
-    type="switch"
-    label="Likes cheese"
-  />
-</Form>
-```
+/** Mock api call method */
+const submitForm = values => values;
 
-## Form with actions
+class MyPage extends React.Component {
+  constructor(props) {
+    super(props);
 
-Default actions are on the right
+    this.state = {
+      values: initialValues,
+    };
 
-```
-<Form submittable cancellable>
-  <Form.Field
-    type="input"
-    name="firstName"
-    label="First name"
-    elementProps={ { placeholder: 'Enter your first name...' } }
-    description="Please enter your first name"
-  />
-  <Form.Field
-    type="input"
-    name="lastName"
-    label="Last name"
-    value={ true }
-    elementProps={ { placeholder: 'Enter your first name...' } }
-    description="Please enter your last name"
-  />
-</Form>
-```
+    this.onChange = this.onChange.bind(this);
+  }
 
-Actions to the left with actionsPosition
+  onChange(name, values) {
+    console.log(`${name} field changed`);
+    this.setState({ values });
+  }
 
-```
-<Form submittable cancellable actionsPosition="left">
-  <Form.Field
-    type="input"
-    name="firstName"
-    label="First name"
-    elementProps={ { placeholder: 'Enter your first name...' } }
-    description="Please enter your first name"
-  />
-  <Form.Field
-    type="input"
-    name="lastName"
-    label="Last name"
-    value={ true }
-    elementProps={ { placeholder: 'Enter your first name...' } }
-    description="Please enter your last name"
-  />
-</Form>
+  render() {
+    const { values } = this.state;
+
+    return (
+      <Form values={values} onChange={this.onChange}>
+        <Form.Field
+          type="text"
+          name="firstName"
+          autoComplete="firstname"
+          label="First name"
+          placeholder="Enter your first name..."
+        />
+        <Form.Field
+          type="text"
+          name="lastName"
+          autoComplete="lastname"
+          label="Last name"
+          placeholder="Enter your last name..."
+        />
+        <Form.Field
+          type="password"
+          name="password"
+          autoComplete="current-password"
+          label="Password"
+          placeholder="Enter your password..."
+          description="Please enter your password"
+          error="You goofed up now"
+        />
+        <Form.Field
+          type="select"
+          name="favoriteMovie"
+          label="favorite movie"
+          placeholder="Choose a movie"
+          options={movieOptions}
+        />
+        <Form.Field
+          type="checkbox"
+          name="notARobot"
+          label="Not a robot"
+          description="Are you a human?"
+        />
+      </Form>
+    );
+  }
+}
+
+<MyPage />;
 ```

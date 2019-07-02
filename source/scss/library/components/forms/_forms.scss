@@ -1,0 +1,163 @@
+.rc-form-field {
+  margin-bottom: $puppet-common-spacing-base * 4;
+}
+
+.rc-form-field:last-child {
+  margin-bottom: 0;
+}
+
+.rc-form-section {
+  border: 0;
+  margin: 0;
+}
+
+.rc-form-section {
+  margin-bottom: $puppet-common-spacing-base * 4;
+
+  &:last-child {
+    margin-bottom: $puppet-common-spacing-base * 2;
+  }
+}
+
+// Add margin-top to sections after non-sections (e.g. non-nested fields)
+:not(.rc-form-section) + .rc-form-section {
+  margin-top: $puppet-common-spacing-base * 2;
+}
+
+.rc-form-field-content {
+  display: block;
+  margin: 0;
+}
+
+.rc-popover-menu .rc-form-section {
+  border-bottom: $puppet-common-border;
+  border-bottom-left-radius: $puppet-common-border-radius;
+  border-bottom-right-radius: $puppet-common-border-radius;
+  border-left: $puppet-common-border;
+  border-right: $puppet-common-border;
+}
+
+.rc-popover-menu .rc-menu-deprecatedsection {
+  .rc-form-section {
+    border: 0;
+  }
+}
+
+.rc-form-flyout {
+  margin: $puppet-common-spacing-base * 2;
+}
+
+.rc-form-section-legend {
+  color: $puppet-type-color-base;
+  display: block;
+  font-size: $puppet-type-body-font-size;
+  font-weight: $puppet-type-weight-heavy;
+  margin: 0 0 $puppet-common-spacing-base * 2;
+
+  span {
+    display: block;
+    height: 21px;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.rc-form-section-flyout-target {
+  margin-left: $puppet-common-spacing-base;
+
+  .rc-icon {
+    fill: $puppet-type-color-subtle;
+  }
+}
+
+.rc-form-field-label {
+  @include puppet-type-label(medium);
+  display: block;
+  letter-spacing: $puppet-type-spacing-medium;
+  line-height: $puppet-common-spacing-base * 4;
+  margin-bottom: $puppet-common-spacing-base;
+}
+
+
+.rc-form-field-description {
+  @include puppet-type-tiny(medium);
+  letter-spacing: $puppet-type-spacing-medium;
+  line-height: $puppet-common-spacing-base * 4;
+  margin-top: $puppet-common-spacing-base * 2;
+}
+
+.rc-form-field-description-icon {
+  margin-bottom: 2px;
+  margin-right: $puppet-common-spacing-base;
+}
+
+.rc-form-actions {
+  display: flex;
+
+  .rc-form-action:not(:last-child) {
+    margin-right: $puppet-common-spacing-base;
+  }
+}
+
+.rc-form-actions-right {
+  justify-content: flex-end;
+}
+
+.rc-form-actions-left {
+  justify-content: flex-start;
+}
+
+.rc-form-actions-block .rc-form-action {
+  flex: 1;
+}
+
+.rc-form-error {
+  margin-bottom: $puppet-common-spacing-base * 4;
+  margin-top: $puppet-common-spacing-base * 4;
+}
+
+.rc-form-field-error {
+  .rc-form-field-description-icon {
+    fill: $puppet-r500;
+  }
+}
+
+.rc-form-field-inline {
+  align-items: center;
+  width: 100%;
+}
+
+.rc-form-inline,
+.rc-form-field-inline {
+  .rc-form-field-label {
+    display: flex;
+    flex-grow: 1;
+    margin: 0;
+  }
+
+  .rc-form-field-content {
+    align-items: center;
+    display: flex;
+  }
+
+  .rc-toggle .rc-switch {
+    margin: 0;
+  }
+
+  .rc-form-field-description {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+// Specific field style overrides. These should be minimal
+
+.rc-form-field-checkbox,
+.rc-form-field-switch {
+  // Hide labels: these fields will use the label internally in a custom style
+  .rc-form-field-label {
+    display: none;
+  }
+}

@@ -1,78 +1,118 @@
 import jsdom from 'mocha-jsdom';
-import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import Button from '../../source/react/library/buttons/Button';
-import Card from '../../source/react/library/card';
+import Button from '../../source/react/library/button/Button';
 
 describe('<Button />', () => {
   jsdom({ skipWindowCheck: true });
 
-  it('should render a <button> tag by default', () => {
-    const wrapper = shallow(<Button />);
-
-    expect(wrapper.find('button[type="button"]')).to.have.lengthOf(1);
+  it('renders the child content inside a button', () => {
+    expect(shallow(<Button>Hi</Button>).find('button')).to.have.text('Hi');
   });
 
-  it('should render the element passed in the `as` prop', () => {
-    const wrapper = shallow(<Button as="a" href="http://puppet.com" />);
-
-    expect(wrapper.find('a[href="http://puppet.com"]')).to.have.lengthOf(1);
+  it('applies the provided className to the inner button element', () => {
+    expect(
+      shallow(<Button className="classy" />).find('button'),
+    ).to.have.className('classy');
   });
 
-  it('should render the component pass in the `as` prop', () => {
-    const wrapper = shallow(<Button as={Card} />);
+  it('passes through additional props to the inner button element', () => {
+    const extraProps = {
+      onChange() {},
+      disabled: true,
+    };
 
-    expect(wrapper.type()).to.equal(Card);
+    expect(shallow(<Button {...extraProps} />).find('button')).to.have.props(
+      extraProps,
+    );
   });
 
-  it('should have disabled attr when passed disabled prop', () => {
-    const wrapper = shallow(<Button disabled />);
-
-    expect(wrapper).to.have.attr('disabled');
+  it('renders a button element by default', () => {
+    expect(shallow(<Button />)).to.have.descendants('button');
   });
 
-  it('should have aria-disabled attr when passed disabled prop and special as prop', () => {
-    const wrapper = shallow(<Button as="a" disabled />);
+  it('renders the element specified by the "as" prop', () => {
+    expect(shallow(<Button as="a" />)).to.have.descendants('a');
 
-    expect(wrapper).to.have.attr('aria-disabled');
+    // eslint-disable-next-line
+    const MyComponent = ({ children, ...props }) => (
+      <div {...props}>{children}</div>
+    );
+
+    expect(shallow(<Button as={MyComponent} />)).to.have.descendants(
+      MyComponent,
+    );
   });
 
-  it('should not respond to click events when disabled', () => {
-    const onClick = sinon.spy();
-    const wrapper = shallow(<Button disabled onClick={onClick} />);
-    wrapper.simulate('click', { preventDefault: () => {} });
-
-    expect(onClick.called).to.equal(false);
+  it('assigns the provided buttonType prop as type on the inner element', () => {
+    expect(shallow(<Button buttonType="submit" />).find('button')).to.have.attr(
+      'type',
+      'submit',
+    );
   });
 
-  it('should respond to click events', () => {
-    const onClick = sinon.spy();
-    const wrapper = shallow(<Button onClick={onClick} />);
-    wrapper.simulate('click');
-
-    expect(onClick.called).to.equal(true);
+  it('assigns button type attribute by default on button elements', () => {
+    expect(shallow(<Button />).find('button')).to.have.attr('type', 'button');
   });
 
-  it('should have a processing indicator when enabled', () => {
-    const wrapper = shallow(<Button processing />);
-    const Icon = wrapper.find('Icon');
-
-    expect(Icon.prop('type')).to.equal('loader');
+  it('does not assign a default type on non-button elements', () => {
+    expect(shallow(<Button as="a" />).find('a')).to.not.have.attr('type');
   });
 
-  it('should render an icon when provided', () => {
-    const wrapper = shallow(<Button icon="plus" />);
-    const Icon = wrapper.find('Icon');
-
-    expect(Icon.prop('type')).to.equal('plus');
+  it('renders a loader if loading', () => {
+    expect(shallow(<Button loading />)).to.have.descendants('Loading');
   });
 
-  it('should render a button with a badge', () => {
-    const wrapper = shallow(<Button badge icon="plus" />);
+  it('applies a disabled attribute if disabled or loading', () => {
+    expect(shallow(<Button disabled />).find('button')).to.have.attr(
+      'disabled',
+    );
+    expect(shallow(<Button loading />).find('button')).to.have.attr('disabled');
+  });
 
-    expect(wrapper).to.have.className('rc-button-badged');
+  it('applies an aria-disabled attribute to non-buttons if disabled or loading', () => {
+    expect(shallow(<Button as="a" disabled />).find('a')).to.have.attr(
+      'aria-disabled',
+    );
+    expect(shallow(<Button as="a" loading />).find('a')).to.have.attr(
+      'aria-disabled',
+    );
+  });
+
+  it('applies an aria-disabled attribute to non-buttons if disabled or loading', () => {
+    expect(shallow(<Button as="a" disabled />).find('a')).to.have.attr(
+      'aria-disabled',
+    );
+    expect(shallow(<Button as="a" loading />).find('a')).to.have.attr(
+      'aria-disabled',
+    );
+  });
+
+  it("doesn't apply an aria-disabled attribute to buttons", () => {
+    expect(shallow(<Button />).find('button')).not.to.have.attr(
+      'aria-disabled',
+    );
+    expect(shallow(<Button disabled />).find('button')).not.to.have.attr(
+      'aria-disabled',
+    );
+    expect(shallow(<Button loading />).find('button')).not.to.have.attr(
+      'aria-disabled',
+    );
+  });
+
+  it('renders an icon of the specified type if provided', () => {
+    expect(shallow(<Button icon="pencil" />).find('Icon')).to.have.prop(
+      'type',
+      'pencil',
+    );
+  });
+
+  it('renders a trailing icon of the specified type if provided', () => {
+    expect(shallow(<Button trailingIcon="pencil" />).find('Icon')).to.have.prop(
+      'type',
+      'pencil',
+    );
   });
 });

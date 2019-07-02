@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const nodeExternals = require('webpack-node-externals');
 
 const env = process.env.NODE_ENV || 'development';
 let plugins;
@@ -25,6 +26,7 @@ if (env === 'production') {
 
 module.exports = {
   mode: 'none', // We don't want this feature. See above.
+  node: false,
   entry: {
     library: './source/index.js',
   },
@@ -33,23 +35,9 @@ module.exports = {
     filename: '[name].js',
     libraryTarget: 'commonjs2',
   },
-  externals: {
-    react: {
-      commonjs2: 'react',
-    },
-    'react-dom': {
-      commonjs2: 'react-dom',
-    },
-    'prop-types': {
-      commonjs2: 'prop-types',
-    },
-    moment: {
-      commonjs2: 'moment',
-    },
-    'moment-timezone': {
-      commonjs2: 'moment-timezone',
-    },
-  },
+  externals: [
+    nodeExternals({ modulesDir: path.resolve(__dirname, 'node_modules') }),
+  ],
   module: {
     rules: [
       {

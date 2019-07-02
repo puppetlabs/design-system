@@ -1,0 +1,158 @@
+// Switch
+// ----------------------------------------------------------------------------
+$puppet-switch-icon-length: $puppet-common-spacing-base * 3 !default;
+$puppet-switch-width: $puppet-common-spacing-base * 10 !default;
+$puppet-switch-height: $puppet-common-spacing-base * 4 !default;
+$puppet-switch-padding: $puppet-common-spacing-base !default;
+$puppet-switch-handle-height: $puppet-switch-height -
+  ($puppet-switch-padding * 2) !default;
+
+.rc-switch-input {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.rc-switch-input:not(:last-of-type) {
+  margin-bottom: $puppet-common-spacing-base * 3;
+}
+
+.rc-switch-container {
+  display: inline-block;
+  height: $puppet-switch-height;
+  margin-right: $puppet-common-spacing-base * 2;
+  position: relative;
+}
+
+// https://github.com/stylelint/stylelint/issues/331#issuecomment-127043187
+/* stylelint-disable property-no-vendor-prefix */
+.rc-switch-checkbox {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  border-radius: 1000px;
+  cursor: pointer;
+  height: $puppet-switch-height;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  width: $puppet-switch-width;
+
+  &:checked + .rc-switch-label {
+    background: $puppet-b500;
+    color: $puppet-type-color-white;
+  }
+
+  &:checked + .rc-switch-label:hover {
+    background: $puppet-b400;
+  }
+
+  &:checked + .rc-switch-label .rc-switch-label-off {
+    display: none;
+  }
+
+  &:checked + .rc-switch-label .rc-switch-label-on {
+    display: block;
+  }
+
+  &:checked + .rc-switch-label::after {
+    background: $puppet-common-bg;
+    left: calc(100% - (#{$puppet-switch-padding} + #{$puppet-switch-handle-height}));
+  }
+}
+
+.rc-switch-label {
+  background: $puppet-common-bg-subtle;
+  border-radius: 1000px;
+  box-sizing: content-box;
+  color: $puppet-type-color-base;
+  cursor: pointer;
+  display: block;
+  height: $puppet-switch-height;
+  left: 0;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  transition: all 0.2s;
+  width: $puppet-switch-width;
+
+  .rc-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &::after {
+    background: $puppet-b500;
+    border-radius: $puppet-switch-handle-height;
+    content: '';
+    display: block;
+    height: $puppet-switch-handle-height;
+    left: $puppet-switch-padding;
+    position: absolute;
+    top: $puppet-switch-padding;
+    transition: all 0.2s ease;
+    width: $puppet-switch-handle-height;
+  }
+
+  .rc-switch-label-off {
+    display: block;
+    left: 0;
+    right: 0;
+  }
+
+  .rc-switch-label-off .rc-icon {
+    fill: $puppet-b500;
+    height: $puppet-switch-icon-length;
+    right: $puppet-switch-padding * 1.5;
+    width: $puppet-switch-icon-length;
+  }
+
+  .rc-switch-label-on {
+    display: none;
+    left: 0;
+    right: 0;
+  }
+
+  .rc-switch-label-on .rc-icon {
+    fill: $puppet-common-bg;
+    height: $puppet-switch-icon-length;
+    left: $puppet-switch-padding * 1.5;
+    width: $puppet-switch-icon-length;
+  }
+}
+
+[class*='rc-switch-label-'] {
+  display: inline-block;
+  height: $puppet-switch-height;
+  line-height: $puppet-switch-height;
+  position: absolute;
+}
+
+
+.rc-switch-checkbox:focus {
+  box-shadow: $puppet-common-focus-outline;
+}
+
+.rc-switch-checkbox:not(:disabled):checked:hover + .rc-switch-label {
+  background: $puppet-b400;
+}
+
+.rc-switch-checkbox:not(:disabled):not(:checked):hover + .rc-switch-label::after {
+  background: $puppet-b400;
+}
+
+.rc-switch-checkbox:disabled,
+.rc-switch-checkbox:disabled:hover {
+  cursor: default;
+
+  + .rc-switch-label {
+    opacity: $puppet-common-disabled-opacity;
+  }
+}
+
+/* stylelint-enable property-no-vendor-prefix */

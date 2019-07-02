@@ -1,4 +1,5 @@
 export const ANIMATION_TIMING = 200;
+
 export const ENTER_KEY_CODE = 13;
 export const BACK_KEY_CODE = 8;
 export const TAB_KEY_CODE = 9;
@@ -7,8 +8,11 @@ export const LEFT_KEY_CODE = 37;
 export const RIGHT_KEY_CODE = 39;
 export const UP_KEY_CODE = 38;
 export const DOWN_KEY_CODE = 40;
+export const END_KEY_CODE = 35;
+export const HOME_KEY_CODE = 36;
+export const SPACE_KEY_CODE = 32;
 
-export const SIDEBAR_SUBSECTION_TRUNC_LENGTH = 3;
+export const SIDEBAR_SUBSECTION_TRUNC_LENGTH = 6;
 
 export const filterOperators = [
   { symbol: '=', label: 'Equals', sentence: 'is equal to' },
@@ -36,9 +40,30 @@ export const filterOperators = [
   },
 ];
 
-export const iconSizes = {
-  tiny: '8px',
-  small: '12px',
-  base: '16px',
-  large: '24px',
+// Icons
+const tinyIcon = {
+  size: '8px',
+  viewBox: '0 0 8 8',
+};
+
+const smallIcon = {
+  size: '12px',
+  viewBox: '0 0 12 12',
+};
+
+const mediumIcon = {
+  size: '16px',
+  viewBox: '0 0 16 16',
+};
+
+const largeIcon = {
+  size: '24px',
+  viewBox: '0 0 24 24',
+};
+
+export const ICON_CONFIG = {
+  tiny: tinyIcon,
+  small: smallIcon,
+  medium: mediumIcon,
+  large: largeIcon,
 };

@@ -1,6 +1,6 @@
 import jsdom from 'mocha-jsdom';
 import sinon from 'sinon';
-import { shallow, mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
@@ -9,31 +9,58 @@ import Switch from '../../source/react/library/switch/Switch';
 describe('<Switch />', () => {
   jsdom({ skipWindowCheck: true });
 
-  const defaultProps = {
-    name: 'id',
-    checked: true,
-    onChange: sinon.spy(),
+  const requiredProps = {
+    name: 'test-name',
+    label: 'test-label',
   };
 
-  it('should have className provided by className prop if provided', () => {
-    const wrapper = shallow(<Switch {...defaultProps} className="foo" />);
-
-    expect(wrapper.hasClass('foo')).to.equal(true);
+  it('propagates the provided className to the top level element', () => {
+    expect(
+      shallow(<Switch {...requiredProps} className="test-class" />),
+    ).to.have.className('test-class');
   });
 
-  it('should have className "rc-switch-checked" if className prop is not provided', () => {
-    const wrapper = shallow(<Switch {...defaultProps} />);
-
-    expect(wrapper.hasClass('rc-switch-checked')).to.equal(true);
+  it('propagates provided inline style to the top level element', () => {
+    expect(
+      shallow(<Switch {...requiredProps} style={{ marginTop: 10 }} />),
+    ).to.have.style('margin-top', '10px');
   });
 
-  it('should trigger provided onChange function from props when input is changed', () => {
-    const wrapper = mount(<Switch {...defaultProps} />);
+  it('should have an accessible ref method to the inner input element', async () => {
+    const switchNode = await new Promise(resolve => {
+      mount(<Switch {...requiredProps} inputRef={resolve} />);
+    });
 
-    const input = wrapper.find('.rc-switch-checkbox');
+    expect(switchNode.nodeName).to.equal('INPUT');
+  });
 
-    input.simulate('change');
+  it('should respond to change if onChange is provided', () => {
+    const onChange = sinon.spy();
+    const wrapper = mount(<Switch {...requiredProps} onChange={onChange} />);
 
-    expect(wrapper.prop('onChange').calledOnce).to.equal(true);
+    wrapper.find('input').simulate('change');
+
+    expect(onChange.called).to.equal(true);
+  });
+
+  it('should respond to focus if onFocus is provided', () => {
+    const onFocus = sinon.spy();
+    const wrapper = mount(<Switch {...requiredProps} onFocus={onFocus} />);
+
+    wrapper.find('input').simulate('focus');
+
+    expect(onFocus.called).to.equal(true);
+  });
+
+  it('should have className corresponding to a present error if provided', () => {
+    expect(
+      shallow(<Switch {...requiredProps} error />).find('.rc-switch-container'),
+    ).to.have.className('rc-switch-error');
+  });
+
+  it('should have an attribute corresponding to being disabled', () => {
+    expect(shallow(<Switch {...requiredProps} disabled />).find('input'))
+      .to.have.prop('disabled')
+      .to.equal(true);
   });
 });

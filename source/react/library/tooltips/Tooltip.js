@@ -3,34 +3,27 @@ import React from 'react';
 import classnames from 'classnames';
 
 import { bindParentScroll, unbindParentScroll } from '../../helpers/statics';
-import portal from '../portal';
-import TooltipHoverArea from './TooltipHoverArea';
-import TooltipStickyArea from './TooltipStickyArea';
-import Icon from '../icon/Icon';
-import { ENTER_KEY_CODE } from '../../constants';
 
-const CARAT_HEIGHT = 8;
+// CARAT_HEIGHT is legacy code from when there was a carat on the tooltip
+// This is still used to set the distance from the target to the nearest tooltip edge,
+// which is twice this value (6px). TODO: Clean up this code
+// @NOTE: 6px is intentionally a non-multiple of the base spacing so that the tooltip is offset from other elements
+const CARAT_HEIGHT = 3;
 
 const propTypes = {
   anchor: PropTypes.string,
-  sticky: PropTypes.bool,
   style: PropTypes.shape({}),
   target: PropTypes.oneOfType([PropTypes.object, PropTypes.element]).isRequired,
-  onClose: PropTypes.func,
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };
 
 const defaultProps = {
-  sticky: false,
   style: {},
   anchor: 'right',
-  onClose: null,
   children: null,
 };
 
 const getDefaultState = () => ({
-  onClose: null,
-  sticky: false,
   tooltipPosition: {},
   caratPosition: {},
 });
@@ -42,7 +35,6 @@ class Tooltip extends React.Component {
     this.state = getDefaultState();
 
     this.onResize = this.onResize.bind(this);
-    this.onHandleKeyDown = this.onHandleKeyDown.bind(this);
     this.setPosition = this.setPosition.bind(this);
     this.setPositionRight = this.setPositionRight.bind(this);
     this.setPositionBottom = this.setPositionBottom.bind(this);
@@ -81,14 +73,6 @@ class Tooltip extends React.Component {
 
   onResize() {
     this.setPosition();
-  }
-
-  onHandleKeyDown(e) {
-    const { onClose } = this.props;
-
-    if (e.keyCode === ENTER_KEY_CODE && onClose) {
-      onClose();
-    }
   }
 
   getScrollbarWidth() {
@@ -164,33 +148,10 @@ class Tooltip extends React.Component {
     return { w, h };
   }
 
-  renderCloseButton() {
-    let jsx;
-    const { sticky, onClose } = this.props;
-
-    if (sticky && onClose) {
-      jsx = (
-        <div
-          role="button"
-          tabIndex={0}
-          className="rc-tooltip-close"
-          onClick={onClose}
-          onKeyDown={this.onHandleKeyDown}
-        >
-          <Icon height="8px" width="8px" type="close" />
-        </div>
-      );
-    }
-
-    return jsx;
-  }
-
   render() {
-    const { tooltipPosition, caratPosition } = this.state;
+    const { tooltipPosition } = this.state;
     const { anchor, style, children } = this.props;
     const className = classnames('rc-tooltip', `rc-tooltip-position-${anchor}`);
-    const closeButton = this.renderCloseButton();
-
     const styles = { ...tooltipPosition, ...style };
 
     return (
@@ -207,9 +168,7 @@ class Tooltip extends React.Component {
             this.scrollMeasurer = c;
           }}
         />
-        <div className="rc-tooltip-carat" style={caratPosition} />
         {children}
-        {closeButton}
       </div>
     );
   }
@@ -218,5 +177,4 @@ class Tooltip extends React.Component {
 Tooltip.propTypes = propTypes;
 Tooltip.defaultProps = defaultProps;
 
-export { TooltipHoverArea, TooltipStickyArea };
-export default portal(Tooltip);
+export default Tooltip;

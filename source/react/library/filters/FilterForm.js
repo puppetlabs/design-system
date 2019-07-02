@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 
-import clone from 'clone';
 import { filterOperators } from '../../constants';
 import Form from '../form';
 
@@ -14,10 +13,10 @@ const propTypes = {
   removable: PropTypes.bool,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
+  cancellable: PropTypes.bool,
   fields: PropTypes.arrayOf(PropTypes.string),
   /** Defaults to the standard set as defined in constants. */
   operators: PropTypes.arrayOf(PropTypes.object),
-  size: PropTypes.string,
   actionsPosition: PropTypes.oneOf(['left', 'right']),
   strings: PropTypes.shape({
     /* Custom remove label */
@@ -36,21 +35,24 @@ const propTypes = {
     filterOperatorPlaceholder: PropTypes.string.isRequired,
     /* Custom label for cancel button */
     filterCancel: PropTypes.string.isRequired,
-    /* Custom label for submit button */
-    filterSubmit: PropTypes.string.isRequired,
+    /* Custom label for submit button when adding */
+    filterAdd: PropTypes.string.isRequired,
+    /* Custom label for submit button when updating */
+    filterUpdate: PropTypes.string.isRequired,
   }),
 };
 
 const defaultStrings = {
   filterRemovable: 'removable',
   filterValue: 'value',
-  filterValuePlaceholder: 'A string (e.g. Jim) or a number (1500)',
+  filterValuePlaceholder: 'A word, phrase, or number',
   filterField: 'field',
   filterFieldPlaceholder: 'Choose a field...',
   filterOperator: 'operation',
   filterOperatorPlaceholder: 'Choose an operation...',
   filterCancel: 'Cancel',
-  filterSubmit: 'Submit',
+  filterAdd: 'Add',
+  filterUpdate: 'Update',
 };
 
 const defaultProps = {
@@ -59,10 +61,10 @@ const defaultProps = {
   removable: false,
   fields: [],
   filter: {},
-  size: 'small',
   actionsPosition: 'right',
   operators: filterOperators,
   strings: defaultStrings,
+  cancellable: true,
 };
 
 const isValueless = (op, operators) => {
@@ -87,7 +89,7 @@ class FilterForm extends React.Component {
     super(props);
 
     this.state = {
-      filter: clone(props.filter),
+      filter: props.filter,
     };
 
     this.onUpdate = this.onUpdate.bind(this);
@@ -113,35 +115,15 @@ class FilterForm extends React.Component {
   }
 
   onUpdate(field, values) {
-    const { filter } = this.state;
     const { operators } = this.props;
     const value = values[field];
-    const newState = {
-      filter,
-    };
+    const filter = { ...values };
 
-    switch (field) {
-      case 'filterField':
-        newState.filter.field = value.id;
-        break;
-      case 'filterOperator':
-        newState.filter.op = value.id;
-
-        if (isValueless(value.id, operators)) {
-          delete newState.filter.value;
-        }
-
-        break;
-      case 'filterValue':
-        newState.filter.value = value;
-        break;
-      case 'filterRemovable':
-        newState.filter.removable = value;
-        break;
-      default:
+    if (isValueless(value, operators)) {
+      delete filter.value;
     }
 
-    this.setState(newState);
+    this.setState({ filter });
   }
 
   getFields() {
@@ -169,7 +151,6 @@ class FilterForm extends React.Component {
   }
 
   renderRemovableField() {
-    const { filter } = this.state;
     const { removable, strings } = this.props;
 
     let jsx;
@@ -177,9 +158,8 @@ class FilterForm extends React.Component {
     if (removable) {
       jsx = (
         <Form.Field
-          value={filter.removable}
           type="checkbox"
-          name="filterRemovable"
+          name="removable"
           label={strings.filterRemovable}
           inline
         />
@@ -191,7 +171,7 @@ class FilterForm extends React.Component {
 
   renderValueField() {
     const {
-      filter: { op, value = '' },
+      filter: { op },
     } = this.state;
 
     const { operators, strings } = this.props;
@@ -202,11 +182,10 @@ class FilterForm extends React.Component {
     if (!valueless) {
       jsx = (
         <Form.Field
-          type="input"
-          name="filterValue"
+          type="text"
+          name="value"
           label={strings.filterValue}
-          value={value}
-          elementProps={{ placeholder: strings.filterValuePlaceholder }}
+          placeholder={strings.filterValuePlaceholder}
         />
       );
     }
@@ -215,45 +194,43 @@ class FilterForm extends React.Component {
   }
 
   render() {
+    const { filter } = this.state;
     const removableField = this.renderRemovableField();
     const valueField = this.renderValueField();
     const operators = this.getOperators();
     const fields = this.getFields();
 
-    const { strings, size, actionsPosition } = this.props;
+    const { strings, actionsPosition, cancellable } = this.props;
+
+    const submitLabel = Object.keys(filter).length
+      ? strings.filterUpdate
+      : strings.filterAdd;
 
     return (
       <Form
         submittable
-        cancellable
+        cancellable={cancellable}
         onChange={this.onUpdate}
         onCancel={this.onCancel}
         onSubmit={this.onSubmit}
-        size={size}
         cancelLabel={strings.filterCancel}
-        submitLabel={strings.filterSubmit}
+        submitLabel={submitLabel}
         actionsPosition={actionsPosition}
-        allowUnchangedSubmit
+        values={filter}
       >
         <Form.Field
           type="select"
-          name="filterField"
+          name="field"
           label={strings.filterField}
-          elementProps={{
-            disablePortal: true,
-            options: fields,
-            placeholder: strings.filterFieldPlaceholder,
-          }}
+          options={fields}
+          placeholder={strings.filterFieldPlaceholder}
         />
         <Form.Field
           type="select"
-          name="filterOperator"
+          name="op"
           label={strings.filterOperator}
-          elementProps={{
-            disablePortal: true,
-            options: operators,
-            placeholder: strings.filterOperatorPlaceholder,
-          }}
+          options={operators}
+          placeholder={strings.filterOperatorPlaceholder}
         />
         {valueField}
         {removableField}

@@ -1,7 +1,22 @@
-The Link component encapsulates link styling but allows rendering of custom html element
+The Link component encapsulates link styling but allows rendering of custom html elements.
 
-```
-<Link href="https://www.google.com" style={{ margin: 10 }}>I am an anchor tag</Link>
-<Link as="button" onClick={console.log} style={{ margin: 10 }}>I am a button</Link>
-<Link as={props => <span {...props} />} to="/test">I am a custom component (think react router)</Link>
+```jsx
+const linkStyle = { marginRight: 10 };
+
+<div>
+  <Link href="https://www.google.com" target="_blank" style={linkStyle}>
+    Link
+  </Link>
+  <Link
+    href="https://www.google.com"
+    target="_blank"
+    size="small"
+    style={linkStyle}
+  >
+    Small link
+  </Link>
+  <Link as="button" onClick={() => console.log('hi')} style={linkStyle}>
+    Link as button element
+  </Link>
+</div>;
 ```
