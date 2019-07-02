@@ -4,7 +4,7 @@ The `Form` component must be used in conjunction with one or more [Form.Field](#
 
 ### Uncontrolled (recommended in most cases)
 
-In _uncontrolled_ mode the Form component tracks field values in internal state. The form may be supplied an initialValues object prop with each field name and its initial value, and a submit handler that is passed the final values. When new `initialValues` are detected, the component is reset (see [error handling](#linkylink) below).
+In _uncontrolled_ mode, the Form component tracks field values in internal state. The form may be supplied an initialValues object prop with each field name and its initial value, and a submit handler that is passed the final values. When new `initialValues` are detected, the component is reset (see [error handling](#linkylink) below).
 
 ```jsx
 const movieOptions = [
@@ -67,7 +67,7 @@ class MyPage extends React.Component {
           name="controlledLastName"
           autoComplete="lastname"
           label="Last name"
-          placeholder="Enter your first name..."
+          placeholder="Enter your last name..."
         />
         <Form.Field
           type="password"
@@ -111,8 +111,8 @@ const movieOptions = [
 ];
 
 const initialValues = {
-  firstName: 'Hi',
-  lastName: 'There',
+  firstName: 'Johnny',
+  lastName: 'Blaze',
   password: '',
   favoriteMovie: '',
   notARobot: false,
@@ -154,7 +154,7 @@ class MyPage extends React.Component {
           name="lastName"
           autoComplete="lastname"
           label="Last name"
-          placeholder="Enter your first name..."
+          placeholder="Enter your last name..."
         />
         <Form.Field
           type="password"
