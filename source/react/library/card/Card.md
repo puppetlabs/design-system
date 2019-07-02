@@ -136,11 +136,11 @@ const cardActions = [
 <Card>
   <Card.Title>Title</Card.Title>
   <Card.ActionSelect actions={cardActions} />
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-  incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-  nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-  Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-  eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
-  in culpa qui officia deserunt mollit anim id est laborum.
+  Lörem ïpsum dölor sït ämet, cönsectetur ädipiscing ëlit, sëd dö ëiusmod tëmpor
+  ïncididunt üt läbore ët dölore mägna äliqua.  Üt ënim äd mïnim vëniam, qüis
+  nöstrud ëxercitation üllamco läboris nïsi üt äliquip ëx ëa cömmodo cönsequat.
+  Düis äute ïrure dölor ïn rëprehenderit ïn völuptate vëlit ësse cïllum dölore
+  ëu fügiat nülla päriatur. Ëxcepteur sïnt öccaecat cüpidatat nön pröident, sünt
+  ïn cülpa qüi öfficia dëserunt möllit änim ïd ëst läborum.
 </Card>;
 ```
