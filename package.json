@@ -3,11 +3,12 @@
   "private": true,
   "scripts": {
     "bootstrap": "lerna bootstrap --hoist",
-    "publish": "lerna bootstrap --hoist && lerna publish",
+    "format": "lerna run format",
+    "lint": "lerna run lint",
+    "postinstall": "npm run bootstrap",
     "test": "lerna run test"
   },
   "devDependencies": {
-    "@puppet/uikit": "^0.5.2",
     "lerna": "^3.13.4"
   },
   "publishConfig": {
