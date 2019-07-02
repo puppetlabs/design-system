@@ -6,12 +6,16 @@ Options are specified by entries in an `options` array prop. Each requires a uni
 
 ```jsx
 const options = [
-  { value: 'one', label: 'One' },
-  { value: 'two', label: 'Two' },
-  { value: 'three', label: 'Three' },
-  { value: 'four', label: 'Four' },
-  { value: 'five', label: 'Five' },
-  { value: 'six', label: 'Six' },
+  { value: 'en', label: 'English' },
+  { value: 'ru', label: 'русский' },
+  { value: 'zh', label: '中文'},
+  { value: 'sq', label: 'Albanian' },
+  { value: 'ar', label: 'Arabic' },
+  { value: 'eu', label: 'Basque' },
+  { value: 'bn', label: 'Bengali' },
+  { value: 'bs', label: 'Bosnian' },
+  { value: 'bg', label: 'Bulgarian' },
+  { value: 'ca', label: 'Catalan' },
 ];
 
 const style = { margin: 10 };
@@ -21,7 +25,7 @@ const style = { margin: 10 };
     id="button-select-one"
     name="select-example"
     options={options}
-    placeholder="Select a value"
+    placeholder="Select your language"
     style={style}
     value={state.value1}
     onChange={value1 => {
