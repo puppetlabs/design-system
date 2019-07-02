@@ -1,0 +1,71 @@
+// Tabs
+// ----------------------------------------------------------------------------
+.rc-tabs {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: $puppet-common-spacing-base * 4;
+}
+
+.rc-tabs-list {
+  overflow: visible;
+}
+
+// Tab
+.rc-tabs-button {
+  border-bottom: 0 !important;
+  border-radius: $puppet-common-border-radius $puppet-common-border-radius 0 0 !important;
+  color: $puppet-type-color-base;
+  margin: 0 2px;
+  margin-left: 2px !important;
+  padding-left: $puppet-common-spacing-base * 6;
+  padding-right: $puppet-common-spacing-base * 6;
+  position: relative;
+}
+
+.rc-tabs-button-active::after {
+  bottom: -1px;
+  content: '';
+  height: 3px;
+  left: 0;
+  position: absolute;
+  right: 0;
+  z-index: 3;
+}
+
+.rc-tabs-button:first-of-type {
+  margin-left: $puppet-common-spacing-base;
+}
+
+.rc-tabs-button:last-of-type {
+  margin-right: $puppet-common-spacing-base;
+}
+
+.rc-tabs-button-active {
+  color: $puppet-type-color-link;
+}
+
+// Panel
+.rc-tabs-panel {
+  border-top: $puppet-common-border;
+  flex: 1;
+  padding: $puppet-common-spacing-base * 4 $puppet-common-spacing-base 0 $puppet-common-spacing-base;
+  z-index: 1;
+}
+
+// Primary coloring
+.rc-tabs-button-active,
+.rc-tabs-button-active::after,
+.rc-tabs-panel {
+  background-color: $puppet-white;
+}
+
+// Secondary coloring
+.rc-tabs-secondary > .rc-tabs-list > .rc-tabs-button-active,
+.rc-tabs-secondary > .rc-tabs-list > .rc-tabs-button-active::after,
+.rc-tabs-secondary > .rc-tabs-panel,
+.rc-tabs-tab-secondary.rc-tabs-button-active,
+.rc-tabs-tab-secondary.rc-tabs-button-active::after,
+.rc-tabs-panel-type-secondary {
+  background-color: $puppet-n50;
+}

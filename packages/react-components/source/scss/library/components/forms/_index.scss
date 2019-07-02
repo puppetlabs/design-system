@@ -1,0 +1,8 @@
+$puppet-shared-input-border-hover: 1px solid $puppet-n600;
+$puppet-shared-input-border-error: 1px solid $puppet-r500;
+
+@import './checkbox';
+@import './forms';
+@import './input';
+@import './select';
+@import './switch';

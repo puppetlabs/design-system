@@ -1,0 +1,19 @@
+.rc-action-select {
+  position: relative;
+
+  .rc-menu-list {
+    min-width: 150px;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .rc-menu-list-inner {
+    max-height: 200px;
+  }
+}
+
+.rc-action-select-closed {
+  .rc-menu-list {
+    display: none;
+  }
+}

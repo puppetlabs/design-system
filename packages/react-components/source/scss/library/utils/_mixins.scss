@@ -1,0 +1,65 @@
+@mixin clearfix {
+  &::after {
+    clear: both;
+    content: '';
+    display: table;
+  }
+}
+
+@mixin transition($x...) {
+  transition: $x;
+}
+
+@mixin icon-opacity-hover(
+  $start-opacity: 0.8,
+  $end-opacity: 1,
+  $transition: opacity 0.2s
+) {
+  opacity: $start-opacity;
+  transition: $transition;
+
+  &:hover {
+    opacity: $end-opacity;
+  }
+}
+
+@mixin icon-scale-hover($scale: 1.2, $transition: transform 0.2s) {
+  transition: $transition;
+
+  &:hover {
+    transform: scale($scale);
+  }
+
+  &:focus {
+    transform: scale($scale);
+  }
+}
+
+/* stylelint-disable */
+// Great mixing for working with maps
+// https://frontstuff.io/generate-all-your-utility-classes-with-sass-maps
+@mixin modifiers($map, $attribute, $prefix: '-', $separator: '-', $base: 'base') {
+  @each $key, $value in $map {
+    &#{if($key != $base, #{$prefix}#{$key}, '')} {
+      @if type-of($value) == 'map' {
+        @include modifiers($value, $attribute, $separator);
+      }
+      @else {
+        #{$attribute}: $value;
+      }
+    }
+  }
+}
+
+@mixin rc-button-reset() {
+  border: 0;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  transition: all 0s !important;
+
+  &:disabled {
+    cursor: default;
+  }
+}
+/* stylelint-enable */

@@ -1,0 +1,94 @@
+.rc-content {
+  @include puppet-type-body();
+
+  a {
+    @include puppet-type-link();
+  }
+
+  h1 {
+    @include puppet-type-h1();
+  }
+
+  h2 {
+    @include puppet-type-h2();
+  }
+
+  h3 {
+    @include puppet-type-h3();
+  }
+
+  h4 {
+    @include puppet-type-h4();
+  }
+
+  h5 {
+    @include puppet-type-h5();
+  }
+
+  h6 {
+    @include puppet-type-h6();
+  }
+
+  h1,
+  h2,
+  h3 {
+    margin-bottom: $puppet-common-spacing-base * 6;
+    margin-top: 0;
+  }
+
+  h4,
+  h5,
+  h6 {
+    margin-bottom: $puppet-common-spacing-base * 2;
+    margin-top: 0;
+  }
+
+  ol,
+  ul {
+    border-collapse: separate;
+    border-spacing: 0 $puppet-common-spacing-base * 2;
+    list-style: none;
+    margin-bottom: $puppet-common-spacing-base * 4;
+    margin-top: -$puppet-common-spacing-base * 2;
+    padding-left: 0;
+  }
+
+  li {
+    display: table-row;
+  }
+
+  ol li::before,
+  ul li::before {
+    display: table-cell;
+    text-align: left;
+    width: $puppet-common-spacing-base * 6;
+  }
+
+  ol {
+    counter-reset: item;
+  }
+
+  ol li::before {
+    content: counter(item) '. ';
+    counter-increment: item;
+  }
+
+  ul li::before {
+    color: $puppet-brand-primary;
+    content: '\25CF';  // 25CF is the unicode for a big bullet
+  }
+
+  p {
+    margin-bottom: $puppet-common-spacing-base * 4;
+    margin-top: 0;
+  }
+
+  p + h1,
+  p + h2,
+  p + h3,
+  p + h4,
+  p + h5,
+  p + h6 {
+    margin-top: $puppet-common-spacing-base * 6;
+  }
+}

@@ -1,0 +1,143 @@
+$colors: (
+  danger: $puppet-r600,
+  danger-border: $puppet-r300,
+  danger-active: $puppet-r100,
+  danger-hover: $puppet-r50,
+  info: $puppet-b600,
+  info-border: $puppet-b300,
+  info-active: $puppet-b100,
+  info-hover: $puppet-b50,
+  success: $puppet-g700,
+  success-border: $puppet-g400,
+  success-active: $puppet-g100,
+  success-hover: $puppet-g50,
+  warning: $puppet-y700,
+  warning-border: $puppet-y300,
+  warning-active: $puppet-y100,
+  warning-hover: $puppet-y50,
+  // Neutral type is only available for Icon Button
+  neutral: $puppet-n800,
+  neutral-active: $puppet-n100,
+  neutral-hover: $puppet-n50,
+);
+
+@mixin rc-alert-colors($type) {
+  &.rc-alert-#{$type} {
+    border: 1px solid map-get($colors, $type + '-border');
+
+    .rc-alert-primary-icon {
+      fill: map-get($colors, $type);
+    }
+  }
+
+  .rc-icon-button-#{$type} {
+    .rc-icon-button-icon-svg {
+      fill: map-get($colors, $type);
+    }
+
+    &:hover,
+    &:focus, {
+      background: map-get($colors, $type + '-hover');
+    }
+
+    &:active {
+      background: map-get($colors, $type + '-active');
+    }
+
+    &.rc-icon-button-disabled .rc-icon-button-icon-svg {
+      fill: disable-color(map-get($colors, $type));
+    }
+  }
+}
+
+.rc-alert {
+  @include rc-alert-colors('danger');
+  @include rc-alert-colors('info');
+  @include rc-alert-colors('success');
+  @include rc-alert-colors('warning');
+
+  align-items: center;
+  background: $puppet-white;
+  border-radius: $puppet-common-border-radius;
+  cursor: default;
+  display: flex;
+  left: 50%;
+  top: 8px;
+  width: 100%;
+}
+
+.rc-alert-elevated {
+  box-shadow: $puppet-common-elevation-200;
+}
+
+.rc-alert-primary-icon {
+  flex-shrink: 0;
+  margin: $puppet-common-spacing-base * 2;
+  margin-right: 0;
+}
+
+.rc-alert-message {
+  flex-grow: 1;
+  font-weight: $puppet-type-weight-heavy;
+  overflow: auto;
+  overflow-wrap: break-word;
+  padding: $puppet-common-spacing-base * 2;
+}
+
+.rc-alert .rc-icon-button {
+  border-radius: 0 3px 3px 0; // 3px to account for gap when focussed
+}
+
+// Icon Button
+// TODO: Consider splitting this out if the component ever stands alone
+
+.rc-icon-button {
+  border: 0;
+  border-radius: $puppet-common-border-radius;
+  cursor: pointer;
+  display: inline-block;
+  height: 34px;
+  outline: none;
+  padding: 0;
+  position: relative;
+  text-decoration: none;
+  vertical-align: top;
+  width: 34px;
+
+  .rc-icon-button-icon-svg {
+    bottom: 0;
+    fill: inherit;
+    margin: auto;
+    position: absolute;
+    right: $puppet-common-spacing-base * 2;
+    top: 0;
+  }
+
+  &:focus {
+    box-shadow: $puppet-common-focus-outline-inset;
+  }
+
+  &:disabled,
+  &[aria-disabled=true] {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.rc-icon-button-loading {
+  .rc-icon-button-loader {
+    bottom: 0;
+    fill: inherit;
+    height: 16px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 16px;
+  }
+
+  .rc-icon-button-icon-svg {
+    visibility: hidden;
+  }
+}

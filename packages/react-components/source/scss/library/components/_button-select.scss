@@ -1,0 +1,23 @@
+.rc-button-select {
+  position: relative;
+
+  .rc-button-select-target {
+    flex: 1;
+  }
+
+  .rc-menu-list {
+    min-width: 150px;
+    position: absolute;
+    z-index: 10;
+  }
+
+  .rc-menu-list-inner {
+    max-height: 150px;
+  }
+}
+
+.rc-button-select-closed {
+  .rc-menu-list {
+    display: none;
+  }
+}

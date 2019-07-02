@@ -1,0 +1,18 @@
+.rc-text {
+  @include puppet-type-body();
+  color: $puppet-type-color-base;
+}
+
+.rc-text-size-small {
+  @include puppet-type-small();
+}
+
+.rc-text-size-tiny {
+  @include puppet-type-tiny();
+}
+
+@each $color, $code in $puppet-type-colors {
+  .rc-text-#{$color} {
+    color: $code;
+  }
+}
