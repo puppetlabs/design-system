@@ -6,8 +6,8 @@
     "format": "lerna run format",
     "lint": "lerna run lint",
     "postinstall": "npm run bootstrap",
-    "publish": "./scripts/requireVersionBumps && lerna publish from-package",
-    "test": "lerna run test"
+    "publish": "./scripts/publish",
+    "test": "./scripts/test"
   },
   "devDependencies": {
     "lerna": "^3.13.4"
