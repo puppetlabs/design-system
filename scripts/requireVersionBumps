@@ -42,9 +42,12 @@ const requireVersionBumps = async () => {
 
   if (packagesThatNeedVersionBumps.length) {
     throw new Error(
-      `The following packages require new versions: ${packagesThatNeedVersionBumps
-        .map(package => package.name)
-        .join(", ")}`
+`The following packages require new versions:
+
+${packagesThatNeedVersionBumps.map(package => package.name).join(`,
+`)}.
+
+Try running: "npm run version"`
     );
   }
 };
