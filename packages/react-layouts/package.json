@@ -22,6 +22,7 @@
   },
   "dependencies": {
     "@puppet/react-components": "^5.0.0-alpha.29",
+    "@puppet/sass-variables": "^0.1.0",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2",
     "react": "^16.8.6"

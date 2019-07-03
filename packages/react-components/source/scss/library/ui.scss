@@ -1,10 +1,7 @@
-@import 'fonts';
-
-@import 'public/index';
+@import '~@puppet/sass-variables/index';
 
 @import 'utils/animations';
 @import 'utils/mixins';
-@import 'utils/helpers';
 @import 'utils/functions';
 
 @import 'components/forms/index';

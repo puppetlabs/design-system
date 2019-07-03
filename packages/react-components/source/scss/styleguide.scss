@@ -1,4 +1,4 @@
-@import './library/public/index';
+@import '~@puppet/sass-variables/index';
 
 body {
   @include puppet-type-body();
