@@ -153,7 +153,7 @@ const AppSidebar = ({ t, location: { pathname } }) => (
         />
       </Sidebar.Section>
     </Sidebar.Navigation>
-    <Sidebar.Footer username="Design System" version="5.0.0-alpha" />
+    <Sidebar.Footer username="Design System" version="5.0.0-beta" />
   </Sidebar>
 );
 
