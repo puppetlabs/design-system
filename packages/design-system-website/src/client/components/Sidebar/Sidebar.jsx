@@ -143,14 +143,6 @@ const AppSidebar = ({ t, location: { pathname } }) => (
           active={pathname === '/modal-layouts'}
         />
       </Sidebar.Section>
-      <Sidebar.Section label={t('sections.invision')}>
-        <Sidebar.Item
-          title={t('pages.invision')}
-          icon="connections"
-          as="a"
-          href="https://puppet.invisionapp.com/d/main#/projects/prototypes/16875874"
-        />
-      </Sidebar.Section>
       <Sidebar.Section label={t('sections.api')}>
         <Sidebar.Item
           title={t('pages.reactComponents')}

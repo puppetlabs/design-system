@@ -3,7 +3,7 @@
     "overview": "Overview",
     "styleguide": "Styleguide",
     "invision": "Inspectable",
-    "api": "API Docs",
+    "api": "API Docs"
   },
   "pages": {
     "home": "Home",
@@ -25,7 +25,6 @@
     "formPatterns": "Form layouts",
     "modalLayouts": "Modal layouts",
     "reactComponents": "React components",
-    "guiTextGuidelines": "Text guidelines (Confluence)",
-    "invision": "Styleguide (InVision)"
+    "guiTextGuidelines": "Text guidelines (Confluence)"
   }
 }
