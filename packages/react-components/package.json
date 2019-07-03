@@ -17,8 +17,9 @@
     "lint": "npm run js-lint && npm run scss-lint",
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
+    "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'",
     "start": "styleguidist server",
-    "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'"
+    "styleguide:build": "styleguidist build"
   },
   "repository": {
     "type": "git",
@@ -71,7 +72,7 @@
     "prettier": "^1.18.2",
     "react-addons-test-utils": "^15.6.2",
     "react-router": "^5.0.1",
-    "react-styleguidist": "^9.1.8",
+    "react-styleguidist": "^9.1.11",
     "rimraf": "^2.6.3",
     "sass-loader": "^7.1.0",
     "sinon": "^7.3.2",
