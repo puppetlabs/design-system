@@ -72,7 +72,7 @@
     "prettier": "^1.18.2",
     "react-addons-test-utils": "^15.6.2",
     "react-router": "^5.0.1",
-    "react-styleguidist": "^9.1.8",
+    "react-styleguidist": "^9.1.11",
     "rimraf": "^2.6.3",
     "sass-loader": "^7.1.0",
     "sinon": "^7.3.2",
