@@ -17,8 +17,9 @@
     "lint": "npm run js-lint && npm run scss-lint",
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
+    "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'",
     "start": "styleguidist server",
-    "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'"
+    "styleguide:build": "styleguidist build"
   },
   "repository": {
     "type": "git",
