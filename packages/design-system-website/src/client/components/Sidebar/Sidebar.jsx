@@ -160,14 +160,6 @@ const AppSidebar = ({ t, location: { pathname } }) => (
           active={pathname === '/react-components'}
         />
       </Sidebar.Section>
-      <Sidebar.Section label={t('sections.writing')}>
-        <Sidebar.Item
-          title={t('pages.guiTextGuidelines')}
-          icon="book"
-          as="a"
-          href="https://confluence.puppetlabs.com/x/DYK8B"
-        />
-      </Sidebar.Section>
     </Sidebar.Navigation>
     <Sidebar.Footer username="Design System" version="5.0.0-alpha" />
   </Sidebar>
