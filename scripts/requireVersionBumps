@@ -1,0 +1,62 @@
+#!/usr/bin/env node
+
+const fs = require("fs");
+const path = require("path");
+const util = require("util");
+const cp = require("child_process");
+
+const exec = util.promisify(cp.exec);
+
+const getChangedPackages = async () => {
+  const { stdout } = await exec("lerna changed --loglevel silent --json", {
+    encoding: "utf8"
+  });
+
+  return JSON.parse(stdout);
+};
+
+const augmentPackageData = async package => {
+  const { stdout } = await exec(
+    `npm view ${package.name}@${package.version} --json`
+  );
+
+  const published = stdout && JSON.parse(stdout);
+
+  return {
+    ...package,
+    published
+  };
+};
+
+const requireVersionBumps = async () => {
+  console.log("Checking package versions ...");
+  const changedPackages = await getChangedPackages();
+
+  const augmentedPackageData = await Promise.all(
+    changedPackages.map(augmentPackageData)
+  );
+
+  const packagesThatNeedVersionBumps = augmentedPackageData.filter(
+    package => package.published
+  );
+
+  if (packagesThatNeedVersionBumps.length) {
+    throw new Error(
+`The following packages require new versions:
+
+${packagesThatNeedVersionBumps.map(package => package.name).join(`,
+`)}.
+
+Try running: "npm run version"`
+    );
+  }
+};
+
+requireVersionBumps()
+  .then(() => {
+    console.log("Success!: All changed packages have appropriate new versions");
+  })
+  .catch(e => {
+    console.error(e.message);
+    process.exit(1);
+  });

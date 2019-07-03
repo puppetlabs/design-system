@@ -1,3 +1,15 @@
+// Common font families
+$puppet-type-font-family: 'Open Sans', sans-serif !default;
+$puppet-type-font-family-secondary: 'Calibre', sans-serif !default;
+
+// Common weights
+$puppet-type-weight-normal: 400 !default;
+$puppet-type-weight-heavy: 600 !default;
+
+// Common spacing
+$puppet-type-spacing-medium: 0.4px !default;
+
+// Common colors
 $puppet-type-color-base: $puppet-n900 !default;
 $puppet-type-color-medium: $puppet-n700 !default;
 $puppet-type-color-subtle: $puppet-n600 !default;
@@ -21,68 +33,68 @@ $puppet-type-colors: (
 
 $puppet-type-hero-font-size: 48px !default;
 $puppet-type-hero-line-height: calc(56 / 48) !default;
-$puppet-type-hero-font-family: Calibre !default;
-$puppet-type-hero-font-weight: 600 !default;
+$puppet-type-hero-font-family: $puppet-type-font-family-secondary !default;
+$puppet-type-hero-font-weight: $puppet-type-weight-heavy !default;
 
 $puppet-type-h1-font-size: 40px !default;
 $puppet-type-h1-line-height: calc(48 / 40) !default;
-$puppet-type-h1-font-family: Calibre !default;
-$puppet-type-h1-font-weight: 600 !default;
+$puppet-type-h1-font-family: $puppet-type-font-family-secondary !default;
+$puppet-type-h1-font-weight: $puppet-type-weight-heavy !default;
 
 $puppet-type-h2-font-size: 32px !default;
 $puppet-type-h2-line-height: calc(40 / 32) !default;
-$puppet-type-h2-font-family: Calibre !default;
-$puppet-type-h2-font-weight: 600 !default;
+$puppet-type-h2-font-family: $puppet-type-font-family-secondary !default;
+$puppet-type-h2-font-weight: $puppet-type-weight-heavy !default;
 
 $puppet-type-h3-font-size: 24px !default;
 $puppet-type-h3-line-height: calc(32 / 24) !default;
-$puppet-type-h3-font-family: Calibre !default;
-$puppet-type-h3-font-weight: 600 !default;
+$puppet-type-h3-font-family: $puppet-type-font-family-secondary !default;
+$puppet-type-h3-font-weight: $puppet-type-weight-heavy !default;
 
 $puppet-type-h4-font-size: 18px !default;
 $puppet-type-h4-line-height: calc(24 / 18) !default;
-$puppet-type-h4-font-family: Calibre !default;
-$puppet-type-h4-font-weight: 600 !default;
+$puppet-type-h4-font-family: $puppet-type-font-family-secondary !default;
+$puppet-type-h4-font-weight: $puppet-type-weight-heavy !default;
 
 $puppet-type-h5-font-size: 14px !default;
 $puppet-type-h5-line-height: calc(20 / 14) !default;
-$puppet-type-h5-font-family: 'Open Sans' !default;
+$puppet-type-h5-font-family: $puppet-type-font-family !default;
 $puppet-type-h5-font-weight: 700 !default;
 
 $puppet-type-h6-font-size: 12px !default;
-$puppet-type-h6-line-height: calc(18 / 12) !default;
-$puppet-type-h6-font-family: 'Open Sans' !default;
+$puppet-type-h6-line-height: calc(16 / 12) !default;
+$puppet-type-h6-font-family: $puppet-type-font-family !default;
 $puppet-type-h6-font-weight: 700 !default;
 
 $puppet-type-body-font-size: 14px !default;
 $puppet-type-body-line-height: calc(20 / 14) !default;
-$puppet-type-body-font-family: 'Open Sans' !default;
+$puppet-type-body-font-family: $puppet-type-font-family !default;
 $puppet-type-body-font-weight: 400 !default;
 
 $puppet-type-small-font-size: 12px !default;
-$puppet-type-small-line-height: calc(18 / 12) !default;
-$puppet-type-small-font-family: 'Open Sans' !default;
+$puppet-type-small-line-height: calc(16 / 12) !default;
+$puppet-type-small-font-family: $puppet-type-font-family !default;
 $puppet-type-small-font-weight: 400 !default;
 
 $puppet-type-tiny-font-size: 11px !default;
 $puppet-type-tiny-line-height: calc(16 / 11) !default;
-$puppet-type-tiny-font-family: 'Open Sans' !default;
-$puppet-type-tiny-font-weight: 600 !default;
+$puppet-type-tiny-font-family: $puppet-type-font-family !default;
+$puppet-type-tiny-font-weight: $puppet-type-weight-heavy !default;
 
 $puppet-type-button-font-size: 14px !default;
 $puppet-type-button-line-height: calc(20 / 14) !default;
-$puppet-type-button-font-family: Calibre !default;
-$puppet-type-button-font-weight: 600 !default;
+$puppet-type-button-font-family: $puppet-type-font-family-secondary !default;
+$puppet-type-button-font-weight: $puppet-type-weight-heavy !default;
 
 $puppet-type-button-small-font-size: 12px !default;
 $puppet-type-button-small-line-height: calc(16 / 12) !default;
-$puppet-type-button-small-font-family: Calibre !default;
-$puppet-type-button-small-font-weight: 600 !default;
+$puppet-type-button-small-font-family: $puppet-type-font-family-secondary !default;
+$puppet-type-button-small-font-weight: $puppet-type-weight-heavy !default;
 
 $puppet-type-label-font-size: 11px !default;
 $puppet-type-label-line-height: calc(16 / 11) !default;
-$puppet-type-label-font-family: Calibre !default;
-$puppet-type-label-font-weight: 600 !default;
+$puppet-type-label-font-family: $puppet-type-font-family-secondary !default;
+$puppet-type-label-font-weight: $puppet-type-weight-heavy !default;
 
 @mixin puppet-type-hero($color: base) {
   color: map-get($puppet-type-colors, $color);
@@ -190,21 +202,32 @@ $puppet-type-label-font-weight: 600 !default;
 }
 
 @mixin puppet-type-link() {
-  @include puppet-type-body();
-
   color: $puppet-type-color-link;
   cursor: pointer;
   outline: none;
   text-decoration: none;
 
-  &:focus,
   &:hover {
     color: $puppet-type-color-link-hover;
     text-decoration: underline;
   }
 
+  &:focus {
+    box-shadow: inset 0 -4px 0 -1px $puppet-b100;
+  }
+
+  &:focus:hover {
+    text-decoration: none;
+  }
+
   &:active {
     color: $puppet-type-color-link-active;
     text-decoration: none;
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    opacity: $puppet-common-disabled-opacity;
+    pointer-events: none;
   }
 }

@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Potentially we will want this to only run on master. Let's see how CI/CD works out
+# if [[ $CURRENT_BRANCH == "master" ]];
+# then
+#   ./scripts/requireVersionBumps
+# fi
+
+./scripts/requireVersionBumps
+lerna run lint
+lerna run test

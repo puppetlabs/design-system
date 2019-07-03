@@ -8,7 +8,7 @@ Options are specified by entries in an `options` array prop. Each requires a uni
 const options = [
   { value: 'en', label: 'English' },
   { value: 'ru', label: 'русский' },
-  { value: 'zh', label: '中文'},
+  { value: 'zh', label: '中文' },
   { value: 'sq', label: 'Albanian' },
   { value: 'ar', label: 'Arabic' },
   { value: 'eu', label: 'Basque' },

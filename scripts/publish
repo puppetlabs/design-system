@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+# Potentially we will want this to only run on master.
+if [[ $CURRENT_BRANCH == "master" ]];
+then
+  ./scripts/requireVersionBumps
+  lerna publish from-package
+else
+  echo "You may only publish off master"
+  exit 0
+fi

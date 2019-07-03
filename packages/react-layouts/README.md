@@ -146,7 +146,7 @@ export default withTranslation('login')(withRouter(Login));
 React layouts scss depends on react-components scss. To use, place the following lines at the top of your scss hierarchy:
 
 ```
-@import '~@puppet/react-components/source/scss/library/ui';
+@import '~@puppet/sass-variables/index';
 @import '~@puppet/react-layouts/src/index';
 ```
 
