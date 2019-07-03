@@ -20,7 +20,7 @@ const augmentPackageData = async package => {
     `npm view ${package.name}@${package.version} --json`
   );
 
-  const published = !!JSON.parse(stdout);
+  const published = stdout && JSON.parse(stdout);
 
   return {
     ...package,
