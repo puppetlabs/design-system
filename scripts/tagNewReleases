@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+const fs = require("fs");
+const path = require("path");
+const util = require("util");
+const cp = require("child_process");
+
+const exec = util.promisify(cp.exec);
+
+const getChangedPackages = async () => {
+  const { stdout } = await exec("lerna changed --loglevel silent --json", {
+    encoding: "utf8"
+  });
+
+  return JSON.parse(stdout);
+};
+
+const tagChangedVersions = async () => {
+  const changedPackages = await getChangedPackages();
+
+    changedPackages.forEach(package =>
+      cp.execSync(`git tag ${package.name}@${package.version}`)
+    )
+};
+
+tagChangedVersions().then(console.log);

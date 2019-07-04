@@ -9,6 +9,8 @@ if [[ $CURRENT_BRANCH == "master" ]];
 then
   ./scripts/requireVersionBumps
   lerna publish from-package --yes
+  ./scripts/tagNewReleases
+  git push --tags
 else
   echo "You may only publish off master"
   exit 0
