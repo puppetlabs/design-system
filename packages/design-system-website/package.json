@@ -1,6 +1,6 @@
 {
   "name": "@puppet/design-system-website",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "scripts": {
@@ -17,7 +17,7 @@
     "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.0.0-beta.1",
+    "@puppet/react-components": "^5.0.0-beta.2",
     "classnames": "^2.2.6",
     "i18next": "^17.0.4",
     "i18next-xhr-backend": "^3.0.0",
@@ -32,7 +32,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@hot-loader/react-dom": "^16.8.6",
-    "@puppet/design-assets": "^0.2.0",
+    "@puppet/design-assets": "^0.2.1",
     "autoprefixer": "^9.6.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^10.0.2",
