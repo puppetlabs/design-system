@@ -8,7 +8,7 @@ CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 if [[ $CURRENT_BRANCH == "master" ]];
 then
   ./scripts/requireVersionBumps
-  lerna publish from-package
+  lerna publish from-package --yes
 else
   echo "You may only publish off master"
   exit 0
