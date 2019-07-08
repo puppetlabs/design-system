@@ -6,9 +6,7 @@
     "format": "lerna run format",
     "lint": "lerna run lint",
     "postinstall": "npm run bootstrap",
-    "publish": "./scripts/publish",
-    "test": "./scripts/test",
-    "version": "lerna version --no-git-tag-version"
+    "test": "./scripts/test"
   },
   "devDependencies": {
     "lerna": "^3.13.4"
