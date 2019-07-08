@@ -60,7 +60,11 @@ module.exports = {
         {
           test: /\.scss$/,
           exclude: /node_modules/,
-          use: ExtractTextPlugin.extract(['css-loader', 'sass-loader']),
+          use: ExtractTextPlugin.extract([
+            'css-loader',
+            'resolve-url-loader',
+            { loader: 'sass-loader', options: { sourceMap: true } },
+          ]),
         },
         {
           test: /\.js$/,
