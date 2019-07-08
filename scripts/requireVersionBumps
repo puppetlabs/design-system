@@ -8,11 +8,15 @@ const cp = require("child_process");
 const exec = util.promisify(cp.exec);
 
 const getChangedPackages = async () => {
-  const { stdout } = await exec("lerna changed --loglevel silent --json", {
-    encoding: "utf8"
-  });
+  try {
+    const { stdout } = await exec("lerna changed --loglevel silent --json", {
+      encoding: "utf8"
+    });
 
-  return JSON.parse(stdout);
+    return JSON.parse(stdout);
+  } catch (e) {
+    return [];
+  }
 };
 
 const augmentPackageData = async package => {
