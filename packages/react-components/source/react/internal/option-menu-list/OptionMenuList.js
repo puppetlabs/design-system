@@ -31,10 +31,12 @@ const propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
+  focusedIndex: PropTypes.number,
   actionLabel: PropTypes.string,
   onChange: PropTypes.func,
   onActionClick: PropTypes.func,
   onEscape: PropTypes.func,
+  onMouseEnterItem: PropTypes.func,
   onBlur: PropTypes.func,
   className: PropTypes.string,
   style: PropTypes.shape({}),
@@ -46,17 +48,19 @@ const defaultProps = {
   onBlur() {},
   className: '',
   selected: null,
+  focusedIndex: 0,
   onChange() {},
   actionLabel: 'Apply',
   onActionClick() {},
   onEscape() {},
+  onMouseEnterItem() {},
   style: {},
 };
 
 const getOptionId = (id, value) => `${id}-${value}`;
 
 const getFocusedId = (focusedIndex, id, options) =>
-  isNil(focusedIndex)
+  isNil(focusedIndex) || focusedIndex >= options.length
     ? undefined
     : getOptionId(id, options[focusedIndex].value);
 
@@ -67,10 +71,10 @@ class OptionMenuList extends Component {
   constructor(props) {
     super(props);
 
-    const { options } = this.props;
+    const { options, focusedIndex } = this.props;
 
     this.state = {
-      focusedIndex: options.length ? 0 : null,
+      focusedIndex: options.length ? focusedIndex : null,
     };
 
     this.optionRefs = [];
@@ -83,6 +87,15 @@ class OptionMenuList extends Component {
     this.onFocus = this.onFocus.bind(this);
     this.onMenuBlur = this.onMenuBlur.bind(this);
     this.onActionBlur = this.onActionBlur.bind(this);
+  }
+
+  componentWillReceiveProps(props) {
+    const { options, focusedIndex } = props;
+    const { focusedIndex: oldFocusedIndex } = this.props;
+
+    if (options.length && focusedIndex !== oldFocusedIndex) {
+      this.focusItem(focusedIndex);
+    }
   }
 
   onFocus() {
@@ -98,9 +111,9 @@ class OptionMenuList extends Component {
   }
 
   onMouseEnterItem(focusedIndex) {
-    this.setState({
-      focusedIndex,
-    });
+    const { onMouseEnterItem } = this.props;
+
+    this.setState({ focusedIndex }, onMouseEnterItem(focusedIndex));
   }
 
   onMouseLeave() {
@@ -278,11 +291,17 @@ class OptionMenuList extends Component {
       className,
       style,
       onBlur,
+      focusedIndex: focussed,
+      onMouseEnterItem: onEnter,
       ...rest
     } = this.props;
 
     const selectionSet = getSelectionSet(selected);
     const focusedId = getFocusedId(focusedIndex, id, options);
+
+    if (!options.length) {
+      return null;
+    }
 
     return (
       <div
