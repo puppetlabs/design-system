@@ -37,7 +37,7 @@ const propTypes = {
   onChange: PropTypes.func,
   onActionClick: PropTypes.func,
   onEscape: PropTypes.func,
-  onMouseEnterItem: PropTypes.func,
+  onFocusItem: PropTypes.func,
   onBlur: PropTypes.func,
   filtering: PropTypes.bool,
   className: PropTypes.string,
@@ -55,7 +55,7 @@ const defaultProps = {
   actionLabel: 'Apply',
   onActionClick() {},
   onEscape() {},
-  onMouseEnterItem() {},
+  onFocusItem() {},
   filtering: false,
   style: {},
 };
@@ -84,7 +84,6 @@ class OptionMenuList extends Component {
 
     this.onClickItem = this.onClickItem.bind(this);
     this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyDownInAction = this.onKeyDownInAction.bind(this);
     this.onFocus = this.onFocus.bind(this);
@@ -114,15 +113,7 @@ class OptionMenuList extends Component {
   }
 
   onMouseEnterItem(focusedIndex) {
-    const { onMouseEnterItem } = this.props;
-
-    this.setState({ focusedIndex }, onMouseEnterItem(focusedIndex));
-  }
-
-  onMouseLeave() {
-    this.setState({
-      focusedIndex: null,
-    });
+    this.focusItem(focusedIndex);
   }
 
   onArrowUp() {
@@ -231,7 +222,9 @@ class OptionMenuList extends Component {
   }
 
   focusItem(focusedIndex) {
-    this.setState({ focusedIndex });
+    const { onFocusItem } = this.props;
+
+    this.setState({ focusedIndex }, onFocusItem(focusedIndex));
 
     /**
      * Scrolls newly focused item into view if it is not
@@ -275,7 +268,6 @@ class OptionMenuList extends Component {
     const {
       onClickItem,
       onMouseEnterItem,
-      onMouseLeave,
       onKeyDown,
       onKeyDownInAction,
       onFocus,
@@ -295,7 +287,7 @@ class OptionMenuList extends Component {
       style,
       onBlur,
       focusedIndex: focussed,
-      onMouseEnterItem: onEnter,
+      onFocusItem,
       filtering,
       ...rest
     } = this.props;
@@ -319,7 +311,6 @@ class OptionMenuList extends Component {
           className="rc-menu-list-inner"
           aria-activedescendant={focusedId}
           aria-multiselectable={multiple}
-          onMouseLeave={onMouseLeave}
           onKeyDown={onKeyDown}
           onFocus={onFocus}
           onBlur={onMenuBlur}

@@ -100,8 +100,6 @@ class Select extends Component {
       menuStyle: {},
       // The focused menulist item index
       focusedIndex: 0,
-      // The options that match the user's input
-      filteredOptions: props.options,
     };
 
     this.open = this.open.bind(this);
@@ -114,8 +112,9 @@ class Select extends Component {
     this.onValueChange = this.onValueChange.bind(this);
     this.onActionClick = this.onActionClick.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
-    this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
+    this.onFocusItem = this.onFocusItem.bind(this);
     this.getButtonLabel = this.getButtonLabel.bind(this);
+    this.getOptions = this.getOptions.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
@@ -145,7 +144,7 @@ class Select extends Component {
   }
 
   onValueChange(listValue) {
-    const { onChange, type, options, onFilter } = this.props;
+    const { onChange, type, onFilter } = this.props;
 
     if (isControlled(this.props)) {
       onChange(listValue);
@@ -156,14 +155,9 @@ class Select extends Component {
     if (type === AUTOCOMPLETE) {
       if (onFilter) {
         onFilter(listValue);
-      } else {
-        const filteredOptions = options.filter(
-          option =>
-            option.value.toLowerCase().indexOf(listValue.toLowerCase()) > -1,
-        );
-
-        this.setState({ filteredOptions, focusedIndex: 0 });
       }
+
+      this.setState({ focusedIndex: 0 });
     }
 
     if (type === SELECT) {
@@ -183,11 +177,12 @@ class Select extends Component {
   }
 
   // TODO: We now have key handling here in Select and also in the OptionMenuList.
-  // When we introduce hooks, we should refactor and merge this logic.
+  // When we introduce hooks, we should combine this logic under a custom `useFocusIndex` hook.
 
   // For use in conjunction with autocomplete
   onKeyDown(e) {
-    const { filteredOptions, focusedIndex } = this.state;
+    const filteredOptions = this.getOptions();
+    const { focusedIndex } = this.state;
 
     // User pressed the enter key, update input value
     if (e.keyCode === ENTER_KEY_CODE) {
@@ -211,7 +206,7 @@ class Select extends Component {
     }
   }
 
-  onMouseEnterItem(focusedIndex) {
+  onFocusItem(focusedIndex) {
     this.setState({ focusedIndex });
   }
 
@@ -225,6 +220,20 @@ class Select extends Component {
     const selectedOption = options.find(option => option.value === value);
 
     return selectedOption.label;
+  }
+
+  getOptions() {
+    const { options, value, type } = this.props;
+
+    let filteredOptions = options;
+
+    if (value && type === AUTOCOMPLETE) {
+      filteredOptions = options.filter(
+        option => option.value.toLowerCase().indexOf(value.toLowerCase()) > -1,
+      );
+    }
+
+    return filteredOptions;
   }
 
   closeAndFocusButton() {
@@ -266,16 +275,11 @@ class Select extends Component {
       onActionClick,
       getButtonLabel,
       onKeyDown,
-      onMouseEnterItem,
+      onFocusItem,
+      getOptions,
       open: onOpen,
     } = this;
-    const {
-      open,
-      menuStyle,
-      listValue,
-      filteredOptions,
-      focusedIndex,
-    } = this.state;
+    const { open, menuStyle, listValue, focusedIndex } = this.state;
     const {
       name,
       type,
@@ -367,7 +371,7 @@ class Select extends Component {
         <OptionMenuList
           id={`${name}-menu`}
           multiple={type === MULTISELECT}
-          options={filteredOptions}
+          options={getOptions()}
           selected={listValue}
           focusedIndex={focusedIndex}
           aria-labelledby={`${name}-label`}
@@ -375,7 +379,7 @@ class Select extends Component {
           onActionClick={onActionClick}
           onEscape={closeAndFocusButton}
           onChange={onValueChange}
-          onMouseEnterItem={onMouseEnterItem}
+          onFocusItem={onFocusItem}
           filtering={filtering}
           style={menuStyle}
           actionLabel={getActionLabel(this.props)}

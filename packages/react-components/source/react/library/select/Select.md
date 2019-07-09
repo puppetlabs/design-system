@@ -38,7 +38,7 @@ const style = { margin: 10 };
 
 ### Autocomplete
 
-With type `autocomplete`, the Select input will accept text and provide filtered menu options accordingly. Full keyboard navigation of the menu options is retained. Where necessary, polling for new filter options can elicit a loading state. 
+With type `autocomplete`, the Select input will accept text and provide filtered menu options accordingly. Full keyboard navigation of the menu options is retained. Where necessary, polling for new filter options can elicit a loading state.
 
 ```jsx
 const options = [
@@ -60,7 +60,7 @@ const style = { margin: 10 };
     id="button-select-one"
     name="select-example"
     options={options}
-    placeholder="Select your language"
+    placeholder="Select your fruit"
     style={style}
     value={state.value1}
     onChange={value1 => {
