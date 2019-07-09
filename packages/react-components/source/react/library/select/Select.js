@@ -48,6 +48,10 @@ const propTypes = {
    * Text to render as the action label in multiple mode
    * @ignore
    */
+  /** Menulist filtering handler. For use with autocomplete. Will receive the user input */
+  onFilter: PropTypes.func,
+  /** Is the menulist being filtered? */
+  filtering: PropTypes.bool,
   actionLabel: PropTypes.string, //eslint-disable-line
   /** Anchor orientation of the dropdown menu */
   anchor: anchorOrientation,
@@ -70,6 +74,8 @@ const defaultProps = {
   onChange() {},
   placeholder: 'Select',
   type: 'select',
+  onFilter: null,
+  filtering: false,
   actionLabel: undefined,
   anchor: 'bottom left',
   disabled: false,
@@ -139,7 +145,7 @@ class Select extends Component {
   }
 
   onValueChange(listValue) {
-    const { onChange, type, options } = this.props;
+    const { onChange, type, options, onFilter } = this.props;
 
     if (isControlled(this.props)) {
       onChange(listValue);
@@ -148,12 +154,16 @@ class Select extends Component {
     }
 
     if (type === AUTOCOMPLETE) {
-      const filteredOptions = options.filter(
-        option =>
-          option.value.toLowerCase().indexOf(listValue.toLowerCase()) > -1,
-      );
+      if (onFilter) {
+        onFilter(listValue);
+      } else {
+        const filteredOptions = options.filter(
+          option =>
+            option.value.toLowerCase().indexOf(listValue.toLowerCase()) > -1,
+        );
 
-      this.setState({ filteredOptions, focusedIndex: 0 });
+        this.setState({ filteredOptions, focusedIndex: 0 });
+      }
     }
 
     if (type === SELECT) {
@@ -273,6 +283,7 @@ class Select extends Component {
       value,
       placeholder,
       required,
+      filtering,
     } = this.props;
 
     let input;
@@ -362,6 +373,7 @@ class Select extends Component {
           onEscape={closeAndFocusButton}
           onChange={onValueChange}
           onMouseEnterItem={onMouseEnterItem}
+          filtering={filtering}
           style={menuStyle}
           actionLabel={getActionLabel(this.props)}
           ref={menu => {

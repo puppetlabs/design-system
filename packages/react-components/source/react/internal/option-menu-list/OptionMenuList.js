@@ -16,6 +16,7 @@ import {
 
 import OptionMenuListItem from './OptionMenuListItem';
 import Icon from '../../library/icon';
+import Loading from '../../library/loading';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -38,6 +39,7 @@ const propTypes = {
   onEscape: PropTypes.func,
   onMouseEnterItem: PropTypes.func,
   onBlur: PropTypes.func,
+  filtering: PropTypes.bool,
   className: PropTypes.string,
   style: PropTypes.shape({}),
 };
@@ -54,6 +56,7 @@ const defaultProps = {
   onActionClick() {},
   onEscape() {},
   onMouseEnterItem() {},
+  filtering: false,
   style: {},
 };
 
@@ -293,28 +296,22 @@ class OptionMenuList extends Component {
       onBlur,
       focusedIndex: focussed,
       onMouseEnterItem: onEnter,
+      filtering,
       ...rest
     } = this.props;
-
-    const selectionSet = getSelectionSet(selected);
-    const focusedId = getFocusedId(focusedIndex, id, options);
 
     if (!options.length) {
       return null;
     }
 
-    return (
-      <div
-        className={classNames(
-          'rc-menu-list',
-          {
-            'rc-option-menu-list-multiple': multiple,
-            'rc-option-menu-list-single': !multiple,
-          },
-          className,
-        )}
-        style={style}
-      >
+    const selectionSet = getSelectionSet(selected);
+    const focusedId = getFocusedId(focusedIndex, id, options);
+    let list;
+
+    if (filtering) {
+      list = <Loading size="small" className="rc-menu-list-loader" />;
+    } else {
+      list = (
         <ul
           id={id}
           role="listbox"
@@ -348,6 +345,22 @@ class OptionMenuList extends Component {
             </OptionMenuListItem>
           ))}
         </ul>
+      );
+    }
+
+    return (
+      <div
+        className={classNames(
+          'rc-menu-list',
+          {
+            'rc-option-menu-list-multiple': multiple,
+            'rc-option-menu-list-single': !multiple,
+          },
+          className,
+        )}
+        style={style}
+      >
+        {list}
         {multiple && (
           <button
             type="button"
