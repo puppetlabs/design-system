@@ -182,6 +182,9 @@ class Select extends Component {
     this.closeAndFocusButton();
   }
 
+  // TODO: We now have key handling here in Select and also in the OptionMenuList.
+  // When we introduce hooks, we should refactor and merge this logic.
+
   // For use in conjunction with autocomplete
   onKeyDown(e) {
     const { filteredOptions, focusedIndex } = this.state;
