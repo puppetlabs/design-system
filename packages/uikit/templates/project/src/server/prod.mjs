@@ -1,7 +1,7 @@
 import express from 'express';
 
 import app from './index.mjs';
-import paths from '../../config/paths';
+import paths from '../../config/paths.js';
 
 const port = process.env.PORT || 3000;
 
