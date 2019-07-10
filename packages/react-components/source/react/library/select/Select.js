@@ -386,6 +386,7 @@ class Select extends Component {
           ref={menu => {
             this.menu = menu;
           }}
+          tabIndex={type === AUTOCOMPLETE ? -1 : 0}
         />
       </div>
     );
