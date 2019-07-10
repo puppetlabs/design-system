@@ -3,7 +3,7 @@ import hotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
 
 import app from './index.mjs';
-import webpackConfig from '../../config/development.webpack.config';
+import webpackConfig from '../../config/development.webpack.config.js';
 
 const port = process.env.PORT || 3000;
 const compiler = webpack(webpackConfig);
