@@ -305,6 +305,7 @@ class Select extends Component {
             name={name}
             value={value || ''}
             placeholder={placeholder}
+            aria-label={placeholder}
             required={required}
             disabled={disabled}
             error={error}
@@ -336,6 +337,7 @@ class Select extends Component {
               onClick={onClickButton}
               value={getButtonLabel()}
               placeholder={placeholder}
+              aria-label={placeholder}
               ref={button => {
                 this.button = button;
               }}
