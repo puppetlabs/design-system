@@ -4,8 +4,10 @@ set -e  # Exit if any command exits with a non-zero exit code
 
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-if [[ $CURRENT_BRANCH == "master" ]];
+# If branch is master in CI or master locally
+if [ "$TRAVIS_BRANCH" == "master" ] || [ "$CURRENT_BRANCH" == "master" ];
 then
+  # Require `lerna changed` to return 0 packages changed since last tagged release
   ./scripts/requireVersionBumps
 fi
 
