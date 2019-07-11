@@ -1,16 +1,16 @@
 #!/usr/bin/env node
 
-const fs = require("fs");
-const path = require("path");
-const util = require("util");
-const cp = require("child_process");
+const fs = require('fs');
+const path = require('path');
+const util = require('util');
+const cp = require('child_process');
 
 const exec = util.promisify(cp.exec);
 
 const getChangedPackages = async () => {
   try {
-    const { stdout } = await exec("lerna changed --loglevel silent --json", {
-      encoding: "utf8"
+    const { stdout } = await exec('lerna changed --loglevel silent --json', {
+      encoding: 'utf8',
     });
 
     return JSON.parse(stdout);
@@ -21,44 +21,44 @@ const getChangedPackages = async () => {
 
 const augmentPackageData = async package => {
   const { stdout } = await exec(
-    `npm view ${package.name}@${package.version} --json`
+    `npm view ${package.name}@${package.version} --json`,
   );
 
   const published = stdout && JSON.parse(stdout);
 
   return {
     ...package,
-    published
+    published,
   };
 };
 
 const requireVersionBumps = async () => {
-  console.log("Checking package versions ...");
+  console.log('Checking package versions ...');
   const changedPackages = await getChangedPackages();
 
   const augmentedPackageData = await Promise.all(
-    changedPackages.map(augmentPackageData)
+    changedPackages.map(augmentPackageData),
   );
 
   const packagesThatNeedVersionBumps = augmentedPackageData.filter(
-    package => package.published
+    package => package.published,
   );
 
   if (packagesThatNeedVersionBumps.length) {
     throw new Error(
-`The following packages require new versions:
+      `The following packages require new versions:
 
 ${packagesThatNeedVersionBumps.map(package => package.name).join(`,
 `)}.
 
-Try running: "npm run version"`
+Try running: "npm run version"`,
     );
   }
 };
 
 requireVersionBumps()
   .then(() => {
-    console.log("Success!: All changed packages have appropriate new versions");
+    console.log('Success!: All changed packages have appropriate new versions');
   })
   .catch(e => {
     console.error(e.message);

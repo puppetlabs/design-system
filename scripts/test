@@ -1,15 +1,31 @@
 #!/bin/bash
 
-set -e
+set -e  # Exit if any command exits with a non-zero exit code
 
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-# Potentially we will want this to only run on master. Let's see how CI/CD works out
-# if [[ $CURRENT_BRANCH == "master" ]];
-# then
-#   ./scripts/requireVersionBumps
-# fi
+echo "CURRENT_BRANCH: $CURRENT_BRANCH"
+echo "TRAVIS_BRANCH: $TRAVIS_BRANCH"
+echo "TRAVIS_PULL_REQUEST_BRANCH: $TRAVIS_PULL_REQUEST_BRANCH"
 
-./scripts/requireVersionBumps
-lerna run lint
-lerna run test
+# If this is not a pull request and the branch is master in CI or master locally
+if [ -z $TRAVIS_PULL_REQUEST_BRANCH ] && [ "$TRAVIS_BRANCH" == "master" ] || [ "$CURRENT_BRANCH" == "master" ];
+then
+  # Require `lerna changed` to return 0 packages changed since last tagged release
+  echo "Checking if packages have changed since master..."
+  ./scripts/requireVersionBumps
+fi
+
+# If this is a pull request
+if [ -n $TRAVIS_PULL_REQUEST_BRANCH ];
+then
+  # Only lint and test packages that have changed from the target branch
+  echo "Pull request detected: Running tests in packages that have changed..."
+  lerna run lint --since $TRAVIS_BRANCH
+  lerna run test --since $TRAVIS_BRANCH
+else
+  # Otherwise run lint and test in all packages
+  echo "Running lint and test in all packages..."
+  lerna run lint
+  lerna run test
+fi
