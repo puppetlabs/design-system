@@ -6,8 +6,14 @@ import { anchorOrientation } from '../../helpers/customPropTypes';
 import Icon from '../icon';
 import Input from '../input';
 import SelectTarget from './SelectTarget';
-import { getDropdownPosition, focus } from '../../helpers/statics';
-import { ENTER_KEY_CODE, DOWN_KEY_CODE, UP_KEY_CODE } from '../../constants';
+import { getDropdownPosition, focus, cancelEvent } from '../../helpers/statics';
+import {
+  ENTER_KEY_CODE,
+  DOWN_KEY_CODE,
+  UP_KEY_CODE,
+  ESC_KEY_CODE,
+  SPACE_KEY_CODE,
+} from '../../constants';
 
 const SELECT = 'select';
 const MULTISELECT = 'multiselect';
@@ -144,7 +150,7 @@ class Select extends Component {
   }
 
   onValueChange(listValue) {
-    const { onChange, type, onFilter } = this.props;
+    const { onChange, type, onFilter, options } = this.props;
 
     if (isControlled(this.props)) {
       onChange(listValue);
@@ -160,7 +166,7 @@ class Select extends Component {
       this.setState({ focusedIndex: 0 });
     }
 
-    if (type === SELECT) {
+    if (options.filter(option => option.value === listValue).length) {
       this.closeAndFocusButton();
     }
   }
@@ -182,27 +188,44 @@ class Select extends Component {
   // For use in conjunction with autocomplete
   onKeyDown(e) {
     const filteredOptions = this.getOptions();
-    const { focusedIndex } = this.state;
+    const { focusedIndex, open } = this.state;
 
-    // User pressed the enter key, update input value
-    if (e.keyCode === ENTER_KEY_CODE) {
-      this.onValueChange(filteredOptions[focusedIndex].value);
-    }
-    // User pressed the up arrow, decrement the index
-    else if (e.keyCode === UP_KEY_CODE) {
-      if (focusedIndex === 0) {
-        return;
+    if (open) {
+      switch (e.keyCode) {
+        case UP_KEY_CODE: {
+          cancelEvent(e);
+
+          if (focusedIndex === 0) return;
+
+          this.setState({ focusedIndex: focusedIndex - 1 });
+          break;
+        }
+        case DOWN_KEY_CODE: {
+          cancelEvent(e);
+
+          if (focusedIndex + 1 === filteredOptions.length) return;
+
+          this.setState({ focusedIndex: focusedIndex + 1 });
+          break;
+        }
+        case SPACE_KEY_CODE:
+        case ENTER_KEY_CODE: {
+          cancelEvent(e);
+
+          this.onValueChange(filteredOptions[focusedIndex].value);
+          break;
+        }
+        case ESC_KEY_CODE: {
+          cancelEvent(e);
+
+          this.closeAndFocusButton();
+          break;
+        }
+        default:
+          break;
       }
-
-      this.setState({ focusedIndex: focusedIndex - 1 });
-    }
-    // User pressed the down arrow, increment the index
-    else if (e.keyCode === DOWN_KEY_CODE) {
-      if (focusedIndex + 1 === filteredOptions.length) {
-        return;
-      }
-
-      this.setState({ focusedIndex: focusedIndex + 1 });
+    } else {
+      this.setState({ open: !open });
     }
   }
 
@@ -237,8 +260,8 @@ class Select extends Component {
   }
 
   closeAndFocusButton() {
-    this.close();
     this.focusButton();
+    this.close();
   }
 
   open() {
