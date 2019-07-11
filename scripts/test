@@ -9,11 +9,14 @@ then
   ./scripts/requireVersionBumps
 fi
 
-lerna run lint
-
-if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]];
+# If this is a pull request
+if [ -n $TRAVIS_PULL_REQUEST_BRANCH ];
 then
+  # Only lint and test packages that have changed from the target branch
   lerna run test --since $TRAVIS_BRANCH
+  lerna run lint --since $TRAVIS_BRANCH
 else
+  # Otherwise run lint and test in all packages
   lerna run test
+  lerna run lint
 fi
