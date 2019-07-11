@@ -240,6 +240,7 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   @include rc-button-reset();
   align-items: center;
   background: $puppet-sidebar-footer-bg;
+  box-sizing: border-box;
   display: flex;
   height: $puppet-sidebar-footer-height;
   overflow: hidden;
