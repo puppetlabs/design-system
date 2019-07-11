@@ -22,7 +22,7 @@ const AppSidebar = ({ t, location: { pathname } }) => (
           active={pathname === '/'}
         />
       </Sidebar.Section>
-      <Sidebar.Section label={t('sections.styleguide')}>
+      <Sidebar.Section label={t('sections.foundations')}>
         <Sidebar.Item
           title={t('pages.colors')}
           icon="brush"
@@ -36,13 +36,6 @@ const AppSidebar = ({ t, location: { pathname } }) => (
           as={Link}
           to="/typography"
           active={pathname === '/typography'}
-        />
-        <Sidebar.Item
-          title={t('pages.content')}
-          icon="basics"
-          as={Link}
-          to="/content"
-          active={pathname === '/content'}
         />
         <Sidebar.Item
           title={t('pages.icons')}
@@ -59,19 +52,14 @@ const AppSidebar = ({ t, location: { pathname } }) => (
           active={pathname === '/alignments'}
         />
         <Sidebar.Item
-          title={t('pages.components')}
-          icon="build"
-          as={Link}
-          to="/components"
-          active={pathname === '/components'}
-        />
-        <Sidebar.Item
           title={t('pages.containers')}
           icon="package"
           as={Link}
           to="/containers"
           active={pathname === '/containers'}
         />
+      </Sidebar.Section>
+      <Sidebar.Section label={t('sections.components')}>
         <Sidebar.Item
           title={t('pages.buttons')}
           icon="engagement"
@@ -114,13 +102,8 @@ const AppSidebar = ({ t, location: { pathname } }) => (
           to="/uncategorized"
           active={pathname === '/uncategorized'}
         />
-        <Sidebar.Item
-          title={t('pages.justInCase')}
-          icon="plus-circle"
-          as={Link}
-          to="/just-in-case"
-          active={pathname === '/just-in-case'}
-        />
+      </Sidebar.Section>
+      <Sidebar.Section label={t('sections.patterns')}>
         <Sidebar.Item
           title={t('pages.navigation')}
           icon="structure"
