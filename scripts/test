@@ -1,15 +1,19 @@
 #!/bin/bash
 
-set -e
+set -e  # Exit if any command exits with a non-zero exit code
 
 CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-# Potentially we will want this to only run on master. Let's see how CI/CD works out
-# if [[ $CURRENT_BRANCH == "master" ]];
-# then
-#   ./scripts/requireVersionBumps
-# fi
+if [[ $CURRENT_BRANCH == "master" ]];
+then
+  ./scripts/requireVersionBumps
+fi
 
-./scripts/requireVersionBumps
 lerna run lint
-lerna run test
+
+if [[ -n $TRAVIS_PULL_REQUEST_BRANCH ]];
+then
+  lerna run test --since $TRAVIS_BRANCH
+else
+  lerna run test
+fi
