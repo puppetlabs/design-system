@@ -8,8 +8,8 @@ echo "CURRENT_BRANCH: $CURRENT_BRANCH"
 echo "TRAVIS_BRANCH: $TRAVIS_BRANCH"
 echo "TRAVIS_PULL_REQUEST_BRANCH: $TRAVIS_PULL_REQUEST_BRANCH"
 
-# If branch is master in CI or master locally
-if [ "$TRAVIS_BRANCH" == "master" ] || [ "$CURRENT_BRANCH" == "master" ];
+# If this is not a pull request and the branch is master in CI or master locally
+if [ -z $TRAVIS_PULL_REQUEST_BRANCH ] && [ "$TRAVIS_BRANCH" == "master" ] || [ "$CURRENT_BRANCH" == "master" ];
 then
   # Require `lerna changed` to return 0 packages changed since last tagged release
   echo "Checking if packages have changed since master..."
