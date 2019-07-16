@@ -53,6 +53,7 @@ $puppet-sidebar-item-accordion-padding: 0 0 0 8px !default;
 
 $puppet-sidebar-footer-height: 72px !default;
 $puppet-sidebar-footer-bg: $puppet-black !default;
+$puppet-sidebar-footer-meta-icon: 32px;
 
 // Generic sidebar
 
@@ -247,6 +248,14 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   padding: $puppet-sidebar-padding;
   text-align: left;
   text-decoration: none !important;
+
+  .rc-sidebar-footer-meta-username,
+  .rc-sidebar-footer-meta-version {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: $puppet-sidebar-width - $puppet-sidebar-padding * 3 - $puppet-sidebar-footer-meta-icon;
+  }
 }
 
 .rc-sidebar-footer:hover,
@@ -281,9 +290,9 @@ $puppet-sidebar-footer-bg: $puppet-black !default;
   background: $puppet-n500;
   border-radius: 100px;
   display: flex;
-  height: 32px;
+  height: $puppet-sidebar-footer-meta-icon;
   justify-content: center;
-  width: 32px;
+  width: $puppet-sidebar-footer-meta-icon;
 
   .rc-icon {
     fill: $puppet-sidebar-footer-bg;
