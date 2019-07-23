@@ -1,26 +1,13 @@
 # Puppet React Components
 
 Puppet React Components is a collection of general-purpose reusable React
-components and their associated styles. Components here are currently in
-widest use by the Puppet Insights team but are designed to be consumed by other
-teams and products.
-
-We welcome contributions and have put together a process for contributing.
-Please refer to our [CONTRIBUTING.md](CONTRIBUTING.md) for details on filing a
-[PDS](https://tickets.puppetlabs.com/browse/PDS) ticket, setting up your
-development environment, opening a Pull Request, and requesting reviews.
-
-## Styleguide
-
-The Puppet Styleguide is published to http://designsystem.puppetlabs.net
-
-The React components in this repo are intended to correspond to Sketch symbols in the UI library ([design/puppet-ui-library.sketch](design/puppet-ui-library.sketch)) and implementations should follow the Puppet Styleguide ([design/puppet-styleguide.sketch](design/puppet-styleguide.sketch)). (The HTML version of the Styleguide is located at [design/styleguide/index.html](design/styleguide/index.html), whose PNGs can be updated by running `./design/update-styleguide.sh`).
+components and their associated styles.
 
 ## Component documentation
 
 Components are documented using React Styleguidist, which provides API docs alongside live editable (in-browser) React components. To view these, clone this repository, install dependencies, and run the Styleguidist server:
 
-- `git clone git@github.com:puppetlabs/react-components.git && cd react-components`
+- `git clone git@github.com:puppetlabs/design-system.git && cd packages/react-components`
 - `npm install`
 - `npm start`
 - Open http://localhost:6060.
@@ -138,7 +125,7 @@ To include the react-components scss bundle in your app place the following line
 
 ### Publicly available variables and helpers
 
-A set of common variables and mixins can be found in the [public scss directory](source/scss/library/public). You will automatically have access to them in your code. Note: users of CSS Modules with sass-loader (`*.module.scss` files) may need to `@import '~@puppet/react-components/source/scss/library/public/index';` for access to the public variables.
+A set of common variables and mixins can be found in the sass-variables package. You should automatically have access to them in your code. Note: users of CSS Modules with sass-loader (`*.module.scss` files) may need to `@import '~@puppet/sass-variables/index';` for access to the public variables.
 
 ```
 .my-class {
@@ -156,16 +143,7 @@ A set of common variables and mixins can be found in the [public scss directory]
 
 The Puppet Design System is published to http://designsystem.puppetlabs.net
 
-The React components in this repo are intended to correspond to Sketch symbols in the UI library ([design/puppet-ui-library.sketch](design/puppet-ui-library.sketch)) and implementations should follow the Puppet Styleguide ([design/puppet-styleguide.sketch](design/puppet-styleguide.sketch)). (The HTML version of the Styleguide is located at [design/styleguide/index.html](design/styleguide/index.html), whose PNGs can be updated by running `./design/update-styleguide.sh`).
-
-## Component documentation
-
-Components are documented using React Styleguidist, which provides API docs alongside live editable (in-browser) React components. To view these, clone this repository, install dependencies, and run the Styleguidist server:
-
-- `git clone git@github.com:puppetlabs/react-components.git && cd react-components`
-- `npm install`
-- `npm start`
-- Open http://localhost:6060.
+The React components in this repo are intended to correspond to Sketch symbols in the UI library `puppet-ui-library.sketch` and implementations should follow the Puppet Styleguide `puppet-styleguide.sketch` (in the `design-assets` package).
 
 ## Contributing
 

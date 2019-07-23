@@ -171,9 +171,9 @@ React layouts scss depends on react-components scss. To use, place the following
 - `npm run lint`: Lint everything
 - `npm run format`: Run auto code formatting
 
-## Puppet Uikit generator:
+## Puppet uikit generator
 
-This ui was built in accordance with the patterns established in the [puppet uikit generator](https://github.com/puppetlabs/uikit). You may find it useful to create component boilerplate with
+This package was built in accordance with the patterns established in the [uikit](https://github.com/puppetlabs/design-system/tree/master/packages/uikit). You may find it useful to create component boilerplate with:
 
 ```
 uikit generate component <ComponentName> -d src/client/components
