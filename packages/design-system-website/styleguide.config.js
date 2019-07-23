@@ -7,7 +7,7 @@ module.exports = {
     link: '#269CFF',
     name: '#269CFF',
   },
-  components: 'source/react/library/**/*.js',
+  components: '../react-components/source/react/library/**/*.js',
   ignore: [
     '**/**/index.js',
     '**/alert/IconButton.js',
@@ -51,8 +51,8 @@ module.exports = {
     '**/tooltips/Tooltip.js',
   ],
   require: [
-    path.join(__dirname, 'source/scss/styleguide.scss'),
-    path.join(__dirname, 'source/scss/library/ui.scss'),
+    path.join(__dirname, '../react-components/source/scss/styleguide.scss'),
+    path.join(__dirname, '../react-components/source/scss/library/ui.scss'),
   ],
   webpackConfig: {
     module: {
@@ -69,7 +69,23 @@ module.exports = {
         {
           test: /\.jsx?$/,
           exclude: /node_modules\/(?!buble)/,
-          use: 'babel-loader',
+          use: {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                [
+                  '@babel/preset-env',
+                  { useBuiltIns: 'usage', corejs: '3.0.1' },
+                ],
+                '@babel/preset-react',
+              ],
+              env: {
+                development: {
+                  plugins: ['react-hot-loader/babel'],
+                },
+              },
+            },
+          },
         },
         {
           test: /\.(eot|svg|ttf|woff|woff2|png|jpg)$/,
