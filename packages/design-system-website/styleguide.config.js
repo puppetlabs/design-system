@@ -2,7 +2,7 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
-  title: 'Puppet React Components',
+  title: 'Puppet Design System',
   theme: {
     link: '#269CFF',
     name: '#269CFF',
@@ -75,7 +75,11 @@ module.exports = {
               presets: [
                 [
                   '@babel/preset-env',
-                  { useBuiltIns: 'usage', corejs: '3.0.1' },
+                  {
+                    useBuiltIns: 'usage',
+                    corejs: '3.0.1',
+                    modules: false,
+                  },
                 ],
                 '@babel/preset-react',
               ],

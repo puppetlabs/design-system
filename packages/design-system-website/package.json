@@ -10,6 +10,9 @@
   "publishConfig": {
     "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   },
+  "dependencies": {
+    "@puppet/sass-variables": "^1.0.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
@@ -47,16 +50,5 @@
     "webpack-cli": "^3.3.5",
     "webpack-dev-server": "^3.7.2",
     "webpack-node-externals": "^1.7.2"
-  },
-  "dependencies": {
-    "@puppet/sass-variables": "^1.0.0",
-    "classnames": "^2.2.6",
-    "hoist-non-react-statics": "^3.3.0",
-    "prop-types": "^15.7.2",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-modal": "^3.8.1",
-    "react-transition-group": "^4.1.1",
-    "scroll-into-view-if-needed": "^2.2.20"
   }
 }
