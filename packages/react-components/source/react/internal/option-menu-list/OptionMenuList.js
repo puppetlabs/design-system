@@ -300,7 +300,7 @@ class OptionMenuList extends Component {
     const focusedId = getFocusedId(focusedIndex, id, options);
     let list;
 
-    if (filtering) {
+    if (filtering || !options.length) {
       list = <Loading size="small" className="rc-menu-list-loader" />;
     } else {
       list = (
