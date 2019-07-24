@@ -6,10 +6,19 @@ import Button from '../button';
 const [open, setOpen] = React.useState(false);
 
 <>
-  <Button type="danger" onClick={() => setOpen(true)}>Open confirmation modal</Button>
+  <Button type="danger" onClick={() => setOpen(true)}>
+    Open confirmation modal
+  </Button>
 
   {open && (
-    <ConfirmationModal title="Are you sure?" description ="This isn't going to be pretty. Is this really what you want to do?"  confirmButton="Destroy forever?" cancelButton="Go back, go back!!" confirmButtonType="danger" cancelButtonType="tertiary" confirmAction={() => setOpen(false)} cancelAction={() => setOpen(false)}
+    <ConfirmationModal
+      title="Are you sure?"
+      description="This isn't going to be pretty. Is this really what you want to do?"
+      confirmLabel="Destroy forever?"
+      cancelLabel="Go back, go back!!"
+      confirmButtonType="danger"
+      onConfirm={() => setOpen(false)}
+      onCancel={() => setOpen(false)}
     />
   )}
 </>;

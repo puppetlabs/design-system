@@ -6,43 +6,43 @@ import Button from '../button';
 const propTypes = {
   title: PropTypes.string,
   description: PropTypes.string,
-  confirmButton: PropTypes.string,
-  cancelButton: PropTypes.string,
+  confirmLabel: PropTypes.string,
+  cancelLabel: PropTypes.string,
   confirmButtonType: PropTypes.string,
   cancelButtonType: PropTypes.string,
-  confirmAction: PropTypes.func,
-  cancelAction: PropTypes.func,
+  onConfirm: PropTypes.func,
+  onCancel: PropTypes.func,
 };
 const defaultProps = {
   title: '',
   description: '',
-  confirmButton: '',
-  cancelButton: '',
+  confirmLabel: '',
+  cancelLabel: '',
   confirmButtonType: '',
   cancelButtonType: '',
-  confirmAction: () => {},
-  cancelAction: () => {},
+  onConfirm: () => {},
+  onCancel: () => {},
 };
 
 const ConfirmationModal = ({
   title,
   description,
-  confirmButton,
-  cancelButton,
+  confirmLabel,
+  cancelLabel,
   confirmButtonType,
   cancelButtonType,
-  confirmAction,
-  cancelAction,
+  onConfirm,
+  onCancel,
 }) => (
-  <Modal onClose={cancelAction}>
+  <Modal onClose={onCancel}>
     <Modal.Title>{title}</Modal.Title>
     {description}
     <Modal.Actions>
-      <Button type={confirmButtonType} onClick={confirmAction}>
-        {confirmButton}
+      <Button type={confirmButtonType} onClick={onConfirm}>
+        {confirmLabel}
       </Button>
-      <Button type={cancelButtonType} onClick={cancelAction}>
-        {cancelButton}
+      <Button type={cancelButtonType} onClick={onCancel}>
+        {cancelLabel}
       </Button>
     </Modal.Actions>
   </Modal>
