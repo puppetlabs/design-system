@@ -7,7 +7,7 @@ module.exports = {
     link: '#269CFF',
     name: '#269CFF',
   },
-  components: '../react-components/source/react/library/**/*.js',
+  components: '../react-components/source/react/**/*.{js,jsx}',
   ignore: [
     '**/**/index.js',
     '**/alert/IconButton.js',
@@ -51,7 +51,7 @@ module.exports = {
     '**/tooltips/Tooltip.js',
   ],
   require: [
-    path.join(__dirname, '../react-components/source/scss/styleguide.scss'),
+    path.join(__dirname, 'styleguide.scss'),
     path.join(__dirname, '../react-components/source/scss/library/ui.scss'),
   ],
   webpackConfig: {
