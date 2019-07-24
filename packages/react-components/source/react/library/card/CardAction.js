@@ -14,13 +14,13 @@ const defaultProps = {
 /**
  * The card button is just a Button with some defaults set
  */
-const CardButton = ({ className, ...rest }) => (
+const CardAction = ({ className, ...rest }) => (
   <div className={classNames('rc-card-action-select', className)}>
     <Button icon="trash" type="transparent" {...rest} />
   </div>
 );
 
-CardButton.propTypes = propTypes;
-CardButton.defaultProps = defaultProps;
+CardAction.propTypes = propTypes;
+CardAction.defaultProps = defaultProps;
 
-export default CardButton;
+export default CardAction;

@@ -7,7 +7,7 @@ import {
 } from '../../helpers/customPropTypes';
 
 import CardActionSelect from './CardActionSelect';
-import CardButton from './CardButton';
+import CardAction from './CardAction';
 import CardTitle from './CardTitle';
 
 const propTypes = {
@@ -79,7 +79,7 @@ Card.propTypes = propTypes;
 Card.defaultProps = defaultProps;
 
 Card.ActionSelect = CardActionSelect;
-Card.Button = CardButton;
+Card.Action = CardAction;
 Card.Title = CardTitle;
 
 export default Card;

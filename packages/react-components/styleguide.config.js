@@ -15,7 +15,7 @@ module.exports = {
     '**/breadcrumb/Section.js',
     '**/breadcrumb/Separator.js',
     '**/card/CardActionSelect.js',
-    '**/card/CardButton.js',
+    '**/card/CardAction.js',
     '**/card/CardTitle.js',
     '**/card/Section.js',
     '**/dropdown/DropdownLabel.js',
