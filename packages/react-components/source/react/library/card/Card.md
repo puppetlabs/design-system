@@ -111,8 +111,7 @@ const cardExampleStyle = {
 
 ### Card Content
 
-Card content is arbitrary as determined by the needs of the application. We provide two convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, and `Card.ActionSelect` which provides selection from a set of card actions,
-pre-styled in a consistent manner.
+Card content is arbitrary as determined by the needs of the application. We provide three convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, `Card.ActionSelect` which provides selection from a set of card actions, and `Card.Action` which provides access to a single card action, pre-styled in a consistent manner.
 
 ```jsx
 const cardActions = [
@@ -143,4 +142,14 @@ const cardActions = [
   ëu fügiat nülla päriatur. Ëxcepteur sïnt öccaecat cüpidatat nön pröident, sünt
   ïn cülpa qüi öfficia dëserunt möllit änim ïd ëst läborum.
 </Card>;
+```
+
+```jsx
+<Card>
+  <Card.Title>Title</Card.Title>
+  <Card.Action onClick={() => console.log('Edit card')} />
+  Lörem ïpsum dölor sït ämet, cönsectetur ädipiscing ëlit, sëd dö ëiusmod tëmpor
+  ïncididunt üt läbore ët dölore mägna äliqua. Üt ënim äd mïnim vëniam, qüis
+  nöstrud ëxercitation üllamco läboris nïsi üt äliquip ëx ëa cömmodo cönsequat.
+</Card>
 ```
