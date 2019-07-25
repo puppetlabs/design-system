@@ -86,6 +86,7 @@
 }
 
 .rc-menu-list-item-content {
+  display: flex;
   flex: 1;
   overflow: hidden;
   text-overflow: ellipsis;

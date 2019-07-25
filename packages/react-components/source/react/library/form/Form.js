@@ -317,14 +317,13 @@ class Form extends Component {
   }
 
   renderCancelButton() {
-    const { cancellable, disabled, onCancel, cancelLabel } = this.props;
+    const { cancellable, onCancel, cancelLabel } = this.props;
     if (cancellable) {
       return (
         <Button
           key="cancel"
           className="rc-form-action"
           type="tertiary"
-          disabled={disabled}
           onClick={onCancel}
         >
           {cancelLabel}
