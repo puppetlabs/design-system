@@ -1,3 +1,20 @@
+# 5.2.0
+- Add Card.Action component for a single action
+- Don't disable cancel button when entire form is disabled
+- Small styling bug fix in dropdown
+
+# 5.1.0
+- Add ConfirmationModal component
+
+# 5.0.2
+- Truncate text in sidebar footer details
+
+# 5.0.1
+- Support navigation links in sidebar footer
+
+# 5.0.0
+- Release stable branch
+
 # 5.0.0-alpha.30
 
 - **Breaking change** Remove tag component
