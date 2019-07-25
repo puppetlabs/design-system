@@ -111,7 +111,7 @@ const cardExampleStyle = {
 
 ### Card Content
 
-Card content is arbitrary as determined by the needs of the application. We provide three convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, `Card.ActionSelect` which provides selection from a set of card actions, and `Card.Button` which provides access to a single card action, pre-styled in a consistent manner.
+Card content is arbitrary as determined by the needs of the application. We provide three convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, `Card.ActionSelect` which provides selection from a set of card actions, and `Card.Action` which provides access to a single card action, pre-styled in a consistent manner.
 
 ```jsx
 const cardActions = [
