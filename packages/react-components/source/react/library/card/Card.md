@@ -147,7 +147,7 @@ const cardActions = [
 ```jsx
 <Card>
   <Card.Title>Title</Card.Title>
-  <Card.Action onClick={() => console.log('Delete card')} />
+  <Card.Action onClick={() => console.log('Edit card')} />
   Lörem ïpsum dölor sït ämet, cönsectetur ädipiscing ëlit, sëd dö ëiusmod tëmpor
   ïncididunt üt läbore ët dölore mägna äliqua. Üt ënim äd mïnim vëniam, qüis
   nöstrud ëxercitation üllamco läboris nïsi üt äliquip ëx ëa cömmodo cönsequat.

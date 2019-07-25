@@ -16,7 +16,7 @@ const defaultProps = {
  */
 const CardAction = ({ className, ...rest }) => (
   <div className={classNames('rc-card-action-select', className)}>
-    <Button icon="trash" type="transparent" {...rest} />
+    <Button icon="pencil" type="transparent" {...rest} />
   </div>
 );
 
