@@ -1,0 +1,61 @@
+@import '@puppet/react-components/source/scss/library/ui';
+@import '@puppet/sass-variables/_index';
+
+.rc-table-container{
+    overflow-x:auto;
+    
+}
+
+.table-empty-state-container{
+
+  margin: auto;
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 100px;  
+}
+
+.rc-column-header-label-active{color: $puppet-b500; width: fit-content; margin: 0;
+  padding: 0;
+}
+
+.rc-column-header-icon-container{
+    float: right;
+    display: flex;
+    flex-direction: column;
+    font-size: 7px;
+}
+    
+.asc{
+    .rc-column-header-icon-up{color: $puppet-b500;}
+}
+.desc{
+    .rc-column-header-icon-down{color: $puppet-b500;}
+}
+
+  .rc-table-horizontal-scroll {
+    margin: auto;
+    overflow: auto;
+  }
+  .rc-table-fixed-column table {
+    width: 100%;
+    // margin: auto;
+    border-collapse: separate;
+    border-spacing: 0;
+  
+  th:first-child {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    // background: #ccc;
+  }
+
+  td:first-child {
+    position: -webkit-sticky;
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: #ccc;
+  }
+  }
+  
