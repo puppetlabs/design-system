@@ -18,8 +18,7 @@
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
     "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'",
-    "start": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "start": "cd ../design-system-website && styleguidist server"
   },
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",

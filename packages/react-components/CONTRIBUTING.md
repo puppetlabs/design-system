@@ -15,7 +15,7 @@ avoid duplicated work and often serves as a chance for others to weigh in.
 ## Setting up your development environment
 
 We use Node.js and npm scripts for our build tooling. Our CI server runs Node
-v8.11.3 LTS, which we recommend you do as well. You can install versions of Node
+LTS, which we recommend you do as well. You can install versions of Node
 using [nvm](https://github.com/creationix/nvm).
 
 Once you've installed Node, install the dependencies for this project with:

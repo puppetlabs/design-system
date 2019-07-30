@@ -23,7 +23,7 @@ module.exports = {
 
   sections: [
     {
-      name: 'Introduction',
+      name: 'Puppet Design System',
       content: 'README.md',
     },
     // The below section gets hidden when `skipComponentsWithoutExample` is true
