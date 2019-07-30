@@ -2,7 +2,7 @@
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-The Puppet Design System is a resource for creating user interfaces based on brand, UX, and dev principles that can be used to improve consistency, efficiency, and scale. It is a shared set of behaviors, patterns, styles, components, and standards and standards we use to create a unified experience across products and prevent fragmentation as we scale design across products, platforms, and time zones.
+The Puppet Design System is a resource for creating user interfaces based on brand, UX, and dev principles that can be used to improve consistency, efficiency, and scale. It is a shared set of behaviors, patterns, styles, components, and standards we use to create a unified experience across products and prevent fragmentation as we scale design across products, platforms, and time zones.
 
 For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b).
 

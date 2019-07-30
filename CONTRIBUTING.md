@@ -1,30 +1,36 @@
 # Contributing to the Puppet Design System
 
-The Puppet Design System is a team effort and all types of contributions are welcome. A good place to start is by visiting [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) in Slack. You can also contact contact <puppet-design-system@puppet.com>.
+The Puppet Design System is a cross-functional team effort across Puppet with shared ownership where contributions are welcome and encouraged. A good place to start is by visiting [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) in Slack. You can also contact contact <puppet-design-system@puppet.com>.
 
-See the overall [Consumption and Contribution](https://github.com/puppetlabs/design-system/wiki/Consumption-and-Contribution) wiki.
+- See the general [Consumption and Contribution](https://github.com/puppetlabs/design-system/wiki/Consumption-and-Contribution) principles on the wiki.
+- See individual CONTRIBUTING.md files for specific packages:
+    - react-components: [packages/react-components/CONTRIBUTING.md](packages/react-components/CONTRIBUTING.md)
 
-## Monorepo
+## Install
 
-Running the following command in the root of the design-system monorepo installs all dependencies as well as linking local packages together, hoisting duplicate dependencies up to the top directory to reduce install time:
-
-```sh
-npm run bootstrap
-```
-
-You can also run `npm link` in a particular package subfolder and `npm link @puppet/<package-name>`, like normal, for local development when consuming one of these packages in another project. See each individual package's own README.md; some have `npm run watch` commands to rebuild on change.
-
-Create a new package by using uikit:
+Clone the design-system monorepo:
 
 ```sh
-cd packages && npx uikit generate library hello-world
+git clone git@github.com:puppetlabs/design-system.git && cd design-system
 ```
 
-## Packages
+Run `npm install` in the root of the design-system to install all package dependencies (which uses [Lerna](https://lerna.js.org/) to link local packages together and hoist duplicate dependencies up to the top directory to reduce install time):
 
-See the relevant CONTRIBUTING.md file in individual packages:
+```sh
+npm install
+```
 
-- react-components: [packages/react-components/CONTRIBUTING.md](packages/react-components/CONTRIBUTING.md)
+## Sandbox
+
+You can develop components locally without a separate consuming application with the help of [Styleguidist](https://react-styleguidist.js.org), which provides an isolated React component development environment as a living style guide:
+
+```sh
+npm start
+```
+
+## Local development
+
+To develop locally using a separate app that consumes a design-system package, you can run `npm link` in a particular package subfolder and `npm link @puppet/<package-name>` in the consuming app. See each individual package's own README.md; some have `npm run watch` commands to rebuild on change.
 
 ## Testing
 
@@ -32,7 +38,7 @@ You can run `npm test` in a package subfolder or `npm test` in the top folder to
 
 ## Publishing
 
-This project currently uses Lerna's independent mode, so the following command will prompt you to select a new version for any packages that have changed since the last version tags. Warning: this command results in a git push to your `origin` remote.
+This project currently uses Lerna's independent mode, so the following command will prompt you to select a new version for any packages that have changed since the last version tags. WARNING: this command results in a git push to your `origin` remote.
 
 ```sh
 npm run publish
