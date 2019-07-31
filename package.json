@@ -2,11 +2,11 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "bootstrap": "lerna bootstrap --hoist",
     "format": "lerna run format",
     "lint": "lerna run lint",
-    "postinstall": "npm run bootstrap",
-    "test": "./scripts/test"
+    "postinstall": "lerna bootstrap --hoist",
+    "test": "./scripts/test",
+    "start": "cd packages/design-system-website && styleguidist server"
   },
   "devDependencies": {
     "lerna": "^3.13.4"

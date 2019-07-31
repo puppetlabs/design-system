@@ -7,7 +7,7 @@ Puppet React Layouts is a collection of full pages and other reusable layouts ap
 This library is distributed as an npm package on [Artifactory](https://confluence.puppetlabs.com/display/SRE/Artifactory+Basics). As such, you should point to the Artifactory registry for `@puppet` scoped packages by adding and committing the following to an `.npmrc` file in your project.
 
 ```sh
-echo "@puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/" >> .npmrc
+echo "@puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/" > .npmrc
 ```
 
 You can then install `react-layouts` in your project with the following command:
@@ -171,9 +171,9 @@ React layouts scss depends on react-components scss. To use, place the following
 - `npm run lint`: Lint everything
 - `npm run format`: Run auto code formatting
 
-## Puppet Uikit generator:
+## Puppet uikit generator
 
-This ui was built in accordance with the patterns established in the [puppet uikit generator](https://github.com/puppetlabs/uikit). You may find it useful to create component boilerplate with
+This package was built in accordance with the patterns established in the [uikit](https://github.com/puppetlabs/design-system/tree/master/packages/uikit). You may find it useful to create component boilerplate with:
 
 ```
 uikit generate component <ComponentName> -d src/client/components

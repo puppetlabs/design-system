@@ -1,37 +1,22 @@
-# Design System Website
+# A resource for creating user interfaces based on brand, UX, and dev principles
 
-## Installation
+The Puppet Design System represents the behaviors, components, principles and visual presentation we share. It is based on our objective to provide consistency, efficiency, and quality experiences to our customers. With it we scale design across departments, products, platforms, and time zones.
 
-`npm install`
+For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b).
 
-## Developing locally
+## Get started
 
-- Run `npm start` to boot up a development server.
-- Open [http://localhost:3000](http://localhost:3000). It will automatically hot-reload on file changes.
+- [Developers](https://github.com/puppetlabs/design-system/blob/master/README.md)
+- [Designers](https://github.com/puppetlabs/design-system/wiki/Consumption-and-Contribution)
 
-## Build static asset bundles:
+## Contribute
 
-`npm run build`
+The Puppet Design System is a cross-functional team effort across Puppet with shared ownership where contributions are welcome and encouraged. Read more in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Other Actions
+## Feedback
 
-- `npm run serve`: Serve the production bundles
-- `npm test`: Run all tests with jest
-- `npm run test:watch`: Run tests in watch mode
-- `npm run test:coverage`: Run tests with coverage reporting
-- `npm run lint`: Lint everything
-- `npm run format`: Run auto code formatting
+We are continuing to iterate on the PDS, and appreciate your feedback and questions. Say hi Slack in the [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) channel, contact <puppet-design-system@puppet.com> or [report an issue](https://tickets.puppetlabs.com/secure/CreateIssueDetails!init.jspa?pid=16902&issuetype=1&priority=6) in Jira (the "PDS" project).
 
-## Puppet Uikit generator:
+## Release Notes
 
-This ui was built in accordance with the patterns established in the [puppet uikit generator](https://github.com/puppetlabs/uikit). You may find it useful to create component boilerplate with
-
-```
-uikit generate component <ComponentName>
-```
-
-or to create utility methods with
-
-```
-uikit generate method <methodName>
-```
+See the changelog for each package, like react-components' [CHANGELOG.md](https://github.com/puppetlabs/design-system/blob/master/packages/react-components/CHANGELOG.md).

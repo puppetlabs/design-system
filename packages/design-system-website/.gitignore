@@ -1,6 +1,11 @@
-node_modules
-dist
-coverage
+# Ignore generated stuffs
+/node_modules
+/build
+/dist
+/styleguide
+npm-debug.log
+*.sw[onp]
+.nyc_output/
+/coverage
 .DS_Store
-.env.development
-.env.production
+/complexity

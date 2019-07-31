@@ -1,8 +1,68 @@
 # Puppet Design System
 
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![Build Status](https://travis-ci.com/puppetlabs/design-system.svg?token=bzCDGKPSRoVpSFdNdZuv&branch=master)](https://travis-ci.com/puppetlabs/design-system)
 
-The Puppet Design System is documented at http://designsystem.puppetlabs.net. For background, see [What's the Puppet Design System](https://confluence.puppetlabs.com/display/PDS/What%27s+Puppet+Design+System) and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b). For questions, ask [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY).
+The Puppet Design System represents the behaviors, components, principles and visual presentation we share. It is based on our objective to provide consistency, efficiency, and quality experiences to our customers. With it we scale design across departments, products, platforms, and time zones.
+
+For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b). Visit the living styleguide at <http://designsystem.puppetlabs.net>.
+
+## Quick start
+
+### With an existing app
+
+To add the main package, `@puppet/react-components`, to an existing project:
+
+```sh
+echo "@puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/" > .npmrc
+npm install @puppet/react-components
+```
+
+### From scratch
+
+To try out the design system from scratch, generate a new project with uikit:
+
+```sh
+npm install -g @puppet/uikit --registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm/
+uikit generate project my-project
+```
+
+### In a sandbox
+
+If you'd just like to play around with the components in a sandbox with the design-system repo, you can run [Styleguidist](https://react-styleguidist.js.org) locally, though this is also hosted at <http://designsystem.puppetlabs.net>, which includes live editable code.
+
+```sh
+git clone git@github.com:puppetlabs/design-system.git && cd design-system
+npm install
+npm start
+```
+
+### Add components
+
+```html
+import { Button } from '@puppet/react-components';
+<Button>Hello world!</Button>
+```
+
+### Use common styles
+
+To use public Sass variables, add `@puppet/sass-variables` to your project:
+
+```sh
+npm install @puppet/react-components
+```
+
+Reference the [public variables](packages/sass-variables) from your Sass files:
+
+```scss
+@import '~@puppet/sass-variables/index';
+.my-text {
+  color: $puppet-amber;
+}
+```
+
+Note: See the [Getting Started](getting-started.md) guide for a longer walkthrough with examples of using the uikit, React components, Sass variables, and other packages.
+
+## Packages
 
 The Puppet Design System includes:
 
@@ -13,88 +73,15 @@ The Puppet Design System includes:
 - Puppet UI Toolkit: A `uikit` CLI for generating apps, components, etc. [packages/uikit](packages/uikit)
 - Puppet Design System Website: The website documenting the Design System [packages/design-system-website](packages/design-system-website)
 
-## Getting started
+## Contribute
 
-For a guided walkthrough of `uikit` with examples of using React components, Sass variables, and other packages, see the [Getting Started](getting-started.md) guide.
+The Puppet Design System is a cross-functional team effort across Puppet with shared ownership where contributions are welcome and encouraged. Read more in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Consuming npm packages
+## Feedback
 
-The packages in this monorepo are published to Artifactory, so the consuming project should have an `.npmrc` file to set the registry for the `@puppet` scope:
+We are continuing to iterate on the Puppet Design System and appreciate your feedback and questions. Say hi Slack in the [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) channel, contact <puppet-design-system@puppet.com> or [report an issue](https://tickets.puppetlabs.com/secure/CreateIssueDetails!init.jspa?pid=16902&issuetype=1&priority=6) in Jira (the "PDS" project).
 
-```
-@puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/
-```
 
-Once your project points to Artifactory, you can install one or more packages, e.g.:
+## Release Notes
 
-```sh
-npm install @puppet/sass-variables @puppet/layouts
-```
-
-Then follow each package's own README.md instructions to consume components, e.g.:
-
-```js
-import { Login } from '@puppet/react-layouts';
-```
-
-## Contributing
-
-The following command installs all dependencies as well as linking local packages together, hoisting duplicate dependencies up to the top directory to reduce install time:
-
-```sh
-npm run bootstrap
-```
-
-You can also run `npm link` in a particular package subfolder and `npm link @puppet/<package-name>`, like normal, for local development when consuming one of these packages in another project. See each individual package's own README.md; some have `npm run watch` commands to rebuild on change.
-
-Create a new package by using uikit:
-
-```sh
-cd packages && npx uikit generate library hello-world
-```
-
-## Testing
-
-You can run `npm test` in a package subfolder or `npm test` in the top folder to test all packages.
-
-## Publishing
-
-This project currently uses Lerna's independent mode, so the following command will prompt you to select a new version for any packages that have changed since the last version tags. Warning: this command results in a git push to your `origin` remote.
-
-```sh
-npm run publish
-```
-
-If `origin` was not puppetlabs/design-system, push the "Publish" commit that created, along with version tags, to the upstream repo:
-
-```sh
-git push --follow-tags git@github.com:puppetlabs/design-system.git master
-```
-
-## Lerna commands
-
-- `npx lerna [command]`:
-    - `npx lerna add <pkg> [globs..]`: Add a single dependency to matched
-      packages
-    - `npx lerna bootstrap`: Link local packages together and install remaining
-      package dependencies
-    - `npx lerna changed`: List local packages that have changed since the last
-      tagged release [aliases: updated]
-    - `npx lerna clean`: Remove the node_modules directory from all packages
-    - `npx lerna create <name> [loc]`: Create a new lerna-managed package
-    - `npx lerna diff [pkgName]`: Diff all packages or a single package since
-      the last release
-    - `npx lerna exec [cmd] [args..]`: Execute an arbitrary command in each
-      package
-    - `npx lerna import <dir>`: Import a package into the monorepo with commit
-      history
-    - `npx lerna init`: Create a new Lerna repo or upgrade an existing repo to
-      the current version of Lerna.
-    - `npx lerna link`: Symlink together all packages that are dependencies of
-      each other
-    - `npx lerna list`: List local packages [aliases: ls, la, ll]
-    - `npx lerna publish [bump]`: Publish packages in the current project.
-    - `npx lerna run <script>`: Run an npm script in each package that contains
-      that script
-    - `npx lerna version [bump]`: Bump version of packages changed since the
-      last release.
+See the changelog for each package, like react-components' [CHANGELOG.md](packages/react-components/CHANGELOG.md).
