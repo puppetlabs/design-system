@@ -8,6 +8,8 @@ For background, see [Puppet Design System](https://confluence.puppetlabs.com/dis
 
 ## Quick start
 
+Note: These steps must be completed while on the corporate network or VPN.
+
 ### With an existing app
 
 To add the main package, `@puppet/react-components`, to an existing project:
