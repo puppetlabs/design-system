@@ -6,7 +6,8 @@
     "lint": "lerna run lint",
     "postinstall": "lerna bootstrap --hoist",
     "test": "./scripts/test",
-    "start": "cd packages/design-system-website && styleguidist server"
+    "start": "cd packages/design-system-website && styleguidist server",
+    "styleguidist:build": "cd packages/design-system-website && styleguidist build"
   },
   "devDependencies": {
     "lerna": "^3.13.4"

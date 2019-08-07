@@ -1,4 +1,15 @@
 language: node_js
-
 node_js:
-  - 'lts/*'
+- lts/*
+before_deploy:
+- npm run styleguidist:build
+deploy:
+  provider: pages
+  local_dir: packages/design-system-website/dist
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  on:
+    branch: master
+env:
+  global:
+  - secure: R3Hjwf1c5RivWAjLNgYgueYB7hy6RI47xGPtPiRNeWQSOMvWz/Lmgaq8EfTeFfCW2rlkLrrZKxmCSh1l4PJbgSihlbAnxkL4uQ1oH00/w4IuKDi3ZL9o4PjXbDufDqW7yUSsxoh86+MfCD1b7ktATfHGqkB5P+bjTIHKwZKHCOv8jis/A0GNlIGsPce9GAt68rpcPUMxK96b/nOHWfdGk7XLyJ+SoU/q0IqfnYGPfZdAUMXLwwDIut2IJOhanAPGfr9BjHOh/WgdY1XrwLPF9UWqvY8pemBkSaDwEjOSZpMnTAZqBa6gv48V2rpCP9gpbjudWSWy4NugyOu/OVDfxxdojPh7GtDBxrG3zNI0rKrLmmMXiumefUeMFK7/53fTdmNv0Gt/qaUVAwLp07Q2Pc9N+h5r+4/Uy8ypNjVd3MXyT4LJQCJ8d58cDBCkoP4hxhp5wT0F3iE1lIe74TH47grghjs40YHooMOMFMpOOQ/3vX+oC4BM1iqwhhFwej04lgKLKZfL/6EXd25eE3td1iJbKU78Z9LimD33evu+c1ATw0U8SVht8ZoHdDaMNCAcpV0GpzHQVubMe1NC53lDe3JofkbTn7vTtUl4k77VHXHhaBwjYs+aVDugKMJDGRTKMRfDlpt3+MLlWwXOgX3N/jkGX46qtIeT5o0kduPdi8Q=
