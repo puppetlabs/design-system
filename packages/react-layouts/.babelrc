@@ -1,10 +1,17 @@
 {
   "presets": [
-    ["@babel/preset-env", { "useBuiltIns": "usage", "corejs": 3 }],
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "usage",
+        "corejs": 2
+      }
+    ],
     "@babel/preset-react"
   ],
   "env": {
     "development": {
+      // Remove this after migrating to Styleguidist
       "plugins": ["react-hot-loader/babel"]
     }
   }
