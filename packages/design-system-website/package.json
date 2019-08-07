@@ -1,6 +1,6 @@
 {
   "name": "@puppet/design-system-website",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "scripts": {
@@ -17,7 +17,7 @@
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
     "@babel/register": "^7.4.4",
-    "@puppet/sass-variables": "^1.0.0",
+    "@puppet/sass-variables": "^1.0.1",
     "babel-loader": "^8.0.6",
     "babel-plugin-module-alias": "^1.6.0",
     "babel-preset-react-hmre": "^1.1.1",
