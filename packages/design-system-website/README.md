@@ -8,7 +8,7 @@ For background, see [Puppet Design System](https://confluence.puppetlabs.com/dis
 
 **Developers** can get started by cloning the repo and following the [quickstart guide](https://github.com/puppetlabs/design-system).
 
-**Writers**, should start with the [writing guidelines](https://confluence.puppetlabs.com/display/Writing/Puppet+content+style+guide). These are helpful for anyone creating content, from full pages to micro-copy.
+**Writers** should start with the [writing guidelines](https://confluence.puppetlabs.com/display/Writing/Puppet+content+style+guide). These are helpful for anyone creating content, from full pages to micro-copy.
 
 ### Contribute
 The Puppet Design System is a cross-functional team effort with shared ownership. Contributions are both welcome and encouraged.  We have written a [best-practices guide](https://github.com/puppetlabs/design-system/wiki) to help you get started.
@@ -16,14 +16,14 @@ The Puppet Design System is a cross-functional team effort with shared ownership
 Developers should start with the the [CONTRIBUTING.md](https://github.com/puppetlabs/design-system/blob/master/CONTRIBUTING.md) in the repo. Designers should reference the [design criteria for adding symbols and styles](https://github.com/puppetlabs/design-system/wiki/Design-criteria) to the Sketch library.
 
 ### Feedback
-We are continuing to iterate on the PDS, and appreciate your feedback and questions. Say hi Slack in the [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) channel, contact [puppet-design-system@puppet.com](mailto:puppet-design-system@puppet.com) or [report an issue](https://tickets.puppetlabs.com/secure/CreateIssueDetails!init.jspa?pid=16902&issuetype=1&priority=6) in Jira (the “PDS” project).
+We are continuing to iterate on the PDS, and appreciate your feedback and questions. Say hi in Slack in the [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) channel, contact [puppet-design-system@puppet.com](mailto:puppet-design-system@puppet.com) or [report an issue](https://tickets.puppetlabs.com/secure/CreateIssueDetails!init.jspa?pid=16902&issuetype=1&priority=6) in Jira (the “PDS” project).
 
 ### Release Notes
 We’ve most recently simplified the site, combining content from the Sketch-based style guide, with the react-library. Our hope is to make the site easier to navigate, with much more thorough documentation.
 
-* Simplified the site to be purely based on styleguidist.
+* Simplified the site to be purely based on Styleguidist.
 * New content template, with documentation pulled directly from the repo.
-* Moved to GitHub pages to simplify and automate deployment of the site.
+* Moved to GitHub Pages to simplify and automate deployment of the site.
 * Updated documentation for multiple components.
 
-You can also see the changelog for each package, like react-components’ at [CHANGELOG.md](https://github.com/puppetlabs/design-system/blob/master/packages/react-components/CHANGELOG.md).
+You can also see the changelog for each package, like react-components’, at [CHANGELOG.md](https://github.com/puppetlabs/design-system/blob/master/packages/react-components/CHANGELOG.md).
