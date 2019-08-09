@@ -4,7 +4,7 @@ This is a collection of the common values, behaviors, components, and styles we 
 For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence or watch the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b) .
 
 ### Getting started
-**Designers** should download and install the Sketch library. Instructions for installation and receiving updates are on Confluence.
+**Designers** should download and install the [Sketch library](https://github.com/puppetlabs/design-system/blob/master/packages/design-assets/puppet-ui-library.sketch). Instructions for [installation and receiving updates](https://confluence.puppetlabs.com/display/UXT/Design+System+Sketch+library) are on Confluence.
 
 **Developers** can get started by cloning the repo and following the [quickstart guide](https://github.com/puppetlabs/design-system).
 
