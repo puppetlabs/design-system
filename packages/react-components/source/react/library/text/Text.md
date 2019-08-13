@@ -9,17 +9,31 @@ import { Text } from '@puppet/react-components';
 
 The text component is a foundational element that provides an encapsulated way to use typography, consistent with design system rules. Together the `size` and `color` props determine the rendered typographical variant.
 
-Our products use three font families, with their various weights and sizes, to communicate clearly with our users. Don’t introduce new typographic styles to our products without consulting the UX team.
+Our products use three font families, with their various weights and sizes, to communicate clearly with our users. 
 
-Design specifications can be found in the [Styleguide](packages/design-assets/puppet-styleguide.sketch).
+Don’t introduce new typographic styles to our products without consulting the UX team. Design specifications can be found in the [Styleguide](packages/design-assets/puppet-styleguide.sketch).
 
-## Type
+## Types
+### Primary
+The primary (default) text is categorized as Body text, used for page content.
+
+* Font Family: Open Sans
+* Font weight: 400 Regular
+* Size / line height: 14px / 20px
+
+```jsx
+<Text>Default text size</Text>
+```
+
+## Variations
 ### Font Families
+The following 3 font families are utilized in a variety of styles. The use cases for these are outlined below.
+
 * <strong>Calibre</strong>: Headlines, titles, navigation, visualizations, and other primary elements
 * <strong>Open Sans</strong>: Body copy and general UI elements and content
 * <strong>Inconsolata</strong>: Code samples
 <details>
-<summary>font family examples</summary>
+<summary>Font Family Examples</summary>
 <p>
 [Insert "Type style" table found http://designsystem.puppetlabs.net/typography]
 </p>
@@ -47,7 +61,7 @@ Our "stoplight" colors are reserved to apply meaning, or state, within a given c
 ```
 
 # Related
-*  [Header](http://designsystem.puppetlabs.net/components/#header) 
+*  [Heading](http://designsystem.puppetlabs.net/components/#heading) 
 *  [Link](http://designsystem.puppetlabs.net/components/#link) 
 *  [Color](http://designsystem.puppetlabs.net/components/#colors) 
 
