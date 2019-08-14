@@ -11,17 +11,25 @@ const propTypes = {
     /** Optional change label displayed after count. Current default "rows" */
     label: PropTypes.string,
   }),
+  children: PropTypes.node,
 };
 
 const defaultProps = {
   rowCount: {},
+  children: undefined,
 };
 
-function TableFooter({ rowCount }) {
+function TableFooter({ children, rowCount }) {
   return (
-    <Text className="rc-table-row-count">
-      {rowCount.count} {rowCount.label ? rowCount.label : null}
-    </Text>
+    <div className="dg-table-footer-container">
+      {children === undefined ? (
+        <Text as="h3" color="medium" className="dg-table-row-count">
+          {rowCount.count} {rowCount.label ? rowCount.label : null}
+        </Text>
+      ) : (
+        children
+      )}
+    </div>
   );
 }
 

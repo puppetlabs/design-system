@@ -1,86 +1,132 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import {
+  arrayOf,
+  shape,
+  func,
+  any,
+  string,
+  node,
+  bool,
+  oneOfType,
+} from 'prop-types';
 import classNames from 'classnames';
-import { Heading } from '@puppet/react-components';
+import { Heading, Checkbox } from '@puppet/react-components';
+import { get } from 'lodash';
 import ColumnHeader from './ColumnHeader';
-// import './Table.scss';
 
 const propTypes = {
   /** Table data. Must be an array of objects */
-  data: PropTypes.arrayOf(PropTypes.shape({})),
+  data: arrayOf(shape({})),
   /** Array of column specifications */
-  columns: PropTypes.arrayOf(
-    PropTypes.shape({
+  columns: arrayOf(
+    shape({
       /** Optional cell data getter method. By default it will grab data at the provided dataKey */
-      cellDataGetter: PropTypes.func,
+      cellDataGetter: func,
       /** Optional cell renderer method. */
-      cellRenderer: PropTypes.func,
+      cellRenderer: func,
       /** Arbitrary additional data passed to the cell renderer for this column */
-      columnData: PropTypes.any,
-      /** Classname to apply to each data cell. Useful for setting explicit column widths */
-      className: PropTypes.string,
+      columnData: any,
       /** Unique string key defining this column */
-      dataKey: PropTypes.string.isRequired,
+      dataKey: string.isRequired,
       /** Column header text */
-      label: PropTypes.node,
+      label: node,
       /** Column header text */
-      style: PropTypes.shape({}),
+      style: shape({}),
     }),
   ).isRequired,
   /** Provides a unique key for each table row. */
-  rowKey: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+  rowKey: oneOfType([func, string]),
   /** Render table in fixed-layout mode */
-  fixed: PropTypes.bool,
+  fixed: bool,
   /** Optional additional table className */
-  className: PropTypes.string,
+  className: string,
   /** Optional additional table style to add column header icons */
-  sortable: PropTypes.bool,
+  sortable: bool,
   /** Optional object to decribe the current sorting state for styling */
-  sortedColumn: PropTypes.shape({
+  sortedColumn: shape({
     /** Descibes sort direction in either asc or desc */
-    direction: PropTypes.string,
+    direction: string,
     /** Descibes the column being sorted using the column dataKey  */
-    sortDataKey: PropTypes.string,
+    sortDataKey: string,
   }),
   /** Function that will return direction and dataKey on every sort action  */
-  sortFunc: PropTypes.func,
-  style: PropTypes.shape({}),
+  onSort: func,
+  style: shape({}),
   /** Optional boolean to cause horizontal scrolling when table extends past the container */
-  horizontalSroll: PropTypes.bool,
+  horizontalSroll: bool,
   /** Optional boolean to cause the first column to be fixed when horizontalScrool is true */
-  fixedColumn: PropTypes.bool,
+  fixedColumn: bool,
   /** Optional string to provider header which is visable when no data is available */
-  emptyStateHeader: PropTypes.string,
+  emptyStateHeader: string,
   /** Optional string to provider descriptive message explaining the empty state of the table */
-  emptyStateMessage: PropTypes.string,
+  emptyStateMessage: string,
+  /** Optional function which can be used to render styling on specific rows */
+  rowClassName: func,
+  /** Optional function which can be used to render styling on specific column */
+  columnClassName: func,
+  /** Boolean to render select checkbox column */
+  selectable: bool,
+  /** Row checked action method, will get checked state and row data  */
+  onRowChecked: func,
+  /** Action between to the table header checkbox */
+  onHeaderChecked: func,
+  /** State of the table header checkbox */
+  headerCheckState: bool,
 };
 
 const defaultProps = {
   data: [],
-  rowKey: 'id',
+  rowKey: undefined,
   fixed: false,
   className: '',
   sortable: false,
-  sortFunc: () => {},
+  onSort: () => {},
   style: {},
   sortedColumn: { direction: '', sortDataKey: '' },
   horizontalSroll: false,
   fixedColumn: false,
   emptyStateHeader: 'No data available',
   emptyStateMessage: 'Prompt to action or solution',
+  rowClassName: () => {},
+  columnClassName: () => {},
+  selectable: false,
+  onRowChecked: () => {},
+  onHeaderChecked: () => {},
+  headerCheckState: false,
 };
 
 const defaultColumnDefs = {
-  cellDataGetter: ({ dataKey, rowData }) => rowData[dataKey],
+  cellDataGetter: ({ dataKey, rowData }) => get(rowData, dataKey),
   cellRenderer: ({ cellData }) => cellData,
   label: '',
 };
 
 class Table extends Component {
+  uniqueIDCheck = (rowKey, rowData, rowIndex) => {
+    if (rowKey === undefined) {
+      const newRowData = rowData;
+      newRowData.id = rowIndex;
+      return newRowData.id;
+    }
+    if (typeof rowKey === 'string') {
+      return rowData[rowKey];
+    }
+    return rowKey(rowData);
+  };
+
   columnHeaderCallBack = (direction, dataKey) => {
-    const { sortFunc } = this.props;
-    // console.log('TABle', dataFromCH);
-    sortFunc(direction, dataKey);
+    const { onSort } = this.props;
+    onSort(direction, dataKey);
+  };
+
+  classNameTypeManage = (classname, data, index) => {
+    let name;
+    if (typeof classname === 'function') {
+      name = classname(data, index);
+    } else if (typeof classname === 'string') {
+      name = classname;
+    }
+    return name;
   };
 
   render() {
@@ -92,13 +138,19 @@ class Table extends Component {
       className,
       sortable,
       sortedColumn,
-      // searchable,
       fixedColumn,
       horizontalSroll,
       emptyStateHeader,
       emptyStateMessage,
+      rowClassName,
+      columnClassName,
+      selectable,
+      onRowChecked,
+      onHeaderChecked,
+      headerCheckState,
       ...rest
     } = this.props;
+
     return (
       <div
         className={classNames(
@@ -108,7 +160,7 @@ class Table extends Component {
       >
         <table
           className={classNames(
-            'rc-table',
+            'dg-table',
             { 'rc-table-fixed': fixed },
             className,
           )}
@@ -116,58 +168,90 @@ class Table extends Component {
         >
           <ColumnHeader
             columns={columns}
+            selectable={selectable}
             sortable={sortable}
             sortedColumn={sortedColumn}
             columnHeaderCallBack={this.columnHeaderCallBack}
+            onHeaderChecked={onHeaderChecked}
+            headerCheckState={headerCheckState}
           />
           <tbody>
-            {data.map((rowData, rowIndex) => (
-              <tr
-                className="rc-table-row"
-                key={
-                  typeof rowKey === 'string' ? rowData[rowKey] : rowKey(rowData)
-                }
-              >
-                {columns.map((column, columnIndex) => {
-                  const {
-                    cellDataGetter,
-                    cellRenderer,
-                    columnData,
-                    dataKey,
-                    className: cellClassName,
-                    style,
-                  } = {
-                    ...defaultColumnDefs,
-                    ...column,
-                  };
-
-                  return (
+            {data.map((rowData, rowIndex) => {
+              return (
+                <tr
+                  className={classNames(
+                    'dg-table-row',
+                    `dg-table-row-${rowIndex}`,
+                    this.classNameTypeManage(rowClassName, rowData, rowIndex),
+                  )}
+                  key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
+                >
+                  {selectable ? (
                     <td
-                      key={dataKey}
-                      className={classNames('rc-table-cell', cellClassName)}
-                      style={style}
-                    >
-                      {cellRenderer({
-                        cellData: cellDataGetter({
-                          dataKey,
-                          columnData,
-                          rowData,
-                        }),
-                        columnData,
-                        columnIndex,
-                        dataKey,
+                      key={`checkbox ${this.uniqueIDCheck(
+                        rowKey,
                         rowData,
                         rowIndex,
-                      })}
+                      )}`}
+                    >
+                      <Checkbox
+                        className={classNames(
+                          'dg-table-cell',
+                          'dg-table-checkbox',
+                        )}
+                        onChange={checked => onRowChecked(checked, rowData)}
+                        checked={rowData.selected}
+                      />
                     </td>
-                  );
-                })}
-              </tr>
-            ))}
+                  ) : null}
+                  {columns.map((column, columnIndex) => {
+                    const {
+                      cellDataGetter,
+                      cellRenderer,
+                      columnData,
+                      dataKey,
+                      style,
+                    } = {
+                      ...defaultColumnDefs,
+                      ...column,
+                    };
+
+                    return (
+                      <td
+                        key={`${(rowIndex, dataKey)}`}
+                        className={classNames(
+                          'dg-table-cell',
+                          `dg.table-cell-${dataKey}`,
+                          this.classNameTypeManage(
+                            columnClassName,
+                            dataKey,
+                            columnIndex,
+                          ),
+                        )}
+                        style={style}
+                      >
+                        {cellRenderer({
+                          cellData: cellDataGetter({
+                            dataKey,
+                            columnData,
+                            rowData,
+                          }),
+                          columnData,
+                          columnIndex,
+                          dataKey,
+                          rowData,
+                          rowIndex,
+                        })}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
           </tbody>
         </table>
         {data.length < 1 ? (
-          <div className="table-empty-state-container">
+          <div className="dg-empty-state-container">
             <Heading as="h3" color="medium">
               {emptyStateHeader}
             </Heading>

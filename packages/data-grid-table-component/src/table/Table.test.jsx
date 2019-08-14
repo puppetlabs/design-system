@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import { mount, shallow } from 'enzyme';
 import sinon from 'sinon';
 import Table from './Table';
+import './'
 
 const data = [
     { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },

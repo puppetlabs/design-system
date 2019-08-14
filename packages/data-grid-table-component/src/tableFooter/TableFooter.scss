@@ -1,11 +1,11 @@
-@import '@puppet/react-components/source/scss/library/ui';
-@import '@puppet/sass-variables/_index';
 
-.rc-table-row-count{
-    font-family: $puppet-type-font-family;
-    color:$puppet-n700;
-    size: $puppet-type-h6-font-size;
-    line-height: $puppet-type-h6-line-height;
-    padding: 10px;
-    display:inline-block;
+.dg-table-row-count{
+    margin-right: 20px;
+}
+.dg-table-footer-container{
+    padding-top: 10px; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
 }

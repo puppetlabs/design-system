@@ -4,8 +4,8 @@ import './TablePageSelector.scss';
 import { Button } from '@puppet/react-components';
 
 const propTypes = {
-  currentPage: PropTypes.number.isRequired,
-  pageCount: PropTypes.number.isRequired,
+  currentPage: PropTypes.number,
+  pageCount: PropTypes.number,
   onClickHandler: PropTypes.func.isRequired,
   delta: PropTypes.number,
   disableDescArrow: PropTypes.bool,
@@ -13,6 +13,8 @@ const propTypes = {
 };
 
 const defaultProps = {
+  currentPage: undefined,
+  pageCount: undefined,
   delta: 1,
   disableDescArrow: false,
   disableAscArrow: false,
@@ -58,16 +60,19 @@ class TablePageSelector extends Component {
     const right = current + delta + 1;
     const range = [];
     const rangeWithDots = [];
-    let l;
+    let l = 0;
 
     for (let i = 1; i <= last; i += 1) {
       if (i === 1 || i === last || (i >= left && i < right)) {
         range.push(i);
+        // i= numbers to be displayed
       }
     }
+    // console.log(range);
     // eslint-disable-next-line
-    for (const i of range) {
+    for (let i of range) {
       if (l) {
+        // after three clicks add dots
         if (i - l === 2) {
           rangeWithDots.push(l + 1);
         } else if (i - l !== 1) {
@@ -76,6 +81,7 @@ class TablePageSelector extends Component {
       }
 
       rangeWithDots.push(i);
+
       l = i;
     }
 
@@ -96,17 +102,18 @@ class TablePageSelector extends Component {
     return (
       <div className="rc-page-selector-container">
         <Button
-          className={disableDescArrow && 'rc-page-select-icon-disabled'}
+          className="rc-page-select-icon-desc"
           type="transparent"
+          disabled={disableDescArrow}
           onClick={e => this.changePage(e, onClickHandler, currentPage, 'desc')}
         >
           {'<'}
         </Button>
-        {display.map(i => {
+        {display.map((i, index) => {
           return (
             <Button
               type={i === currentPage ? 'primary' : 'transparent'}
-              key={i}
+              key={(i, index)}
               onClick={e =>
                 this.changePage(e, onClickHandler, currentPage, null, i)
               }
@@ -116,8 +123,9 @@ class TablePageSelector extends Component {
           );
         })}
         <Button
-          className={disableAscArrow && 'rc-page-select-icon-disabled'}
+          className="rc-page-select-icon-asc"
           type="transparent"
+          disabled={disableAscArrow}
           onClick={e =>
             this.changePage(
               e,

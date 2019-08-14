@@ -7,21 +7,29 @@ const propTypes = {
   /** Optional feature to display number of rows in table */
   rowCount: PropTypes.shape({
     /** Provide the number of rows displayed */
-    count: PropTypes.string,
+    count: PropTypes.number,
     /** Optional change label displayed after count. Current default "rows" */
     label: PropTypes.string,
   }),
+  children: PropTypes.node,
 };
 
 const defaultProps = {
   rowCount: {},
+  children: undefined,
 };
 
-function TableHeader({ rowCount }) {
+function TableHeader({ children, rowCount }) {
   return (
-    <Text className="rc-table-row-count">
-      {rowCount.count} {rowCount.label ? rowCount.label : null}
-    </Text>
+    <div className="dg-table-header-container">
+      {children === undefined ? (
+        <Text as="h3" color="medium" className="dg-table-row-count">
+          {rowCount.count} {rowCount.label ? rowCount.label : null}
+        </Text>
+      ) : (
+        children
+      )}
+    </div>
   );
 }
 
