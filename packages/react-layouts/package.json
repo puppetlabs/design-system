@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-layouts",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "main": "dist/react-layouts.js",
@@ -21,7 +21,7 @@
     "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.2.1",
+    "@puppet/react-components": "^5.3.0",
     "@puppet/sass-variables": "^1.0.1",
     "classnames": "^2.2.6",
     "core-js": "^3.1.4",
