@@ -1,3 +1,7 @@
+# 5.3.0
+- Add corejs as top-level dependency
+- Add contract and spaceship icons
+
 # 5.2.0
 - Add Card.Action component for a single action
 - Don't disable cancel button when entire form is disabled
