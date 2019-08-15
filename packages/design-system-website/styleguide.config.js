@@ -23,12 +23,15 @@ module.exports = {
   styleguideComponents: {
     ComponentsListRenderer: path.join(
       __dirname,
-      'styleguide/ComponentsListRenderer',
+      'styleguideComponents/ComponentsListRenderer',
     ),
-    StyleGuideRenderer: path.join(__dirname, 'styleguide/StyleGuideRenderer'),
+    StyleGuideRenderer: path.join(
+      __dirname,
+      'styleguideComponents/StyleGuideRenderer',
+    ),
     TableOfContentsRenderer: path.join(
       __dirname,
-      'styleguide/TableOfContentsRenderer',
+      'styleguideComponents/TableOfContentsRenderer',
     ),
   },
 

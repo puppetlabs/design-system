@@ -1,0 +1,15 @@
+@import '~@puppet/sass-variables/index';
+
+.rc-sidebar-navigation {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.pds-filter {
+  margin-bottom: 4 * $puppet-common-spacing-base;
+
+  .rc-input {
+    box-sizing: border-box;
+    color: $puppet-n400;
+  }
+}
