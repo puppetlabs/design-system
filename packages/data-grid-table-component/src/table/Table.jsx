@@ -10,9 +10,11 @@ import {
   oneOfType,
 } from 'prop-types';
 import classNames from 'classnames';
-import { Heading, Checkbox } from '@puppet/react-components';
 import { get } from 'lodash';
+import { Heading, Checkbox } from '@puppet/react-components';
+
 import ColumnHeader from './ColumnHeader';
+import './Table.scss';
 
 const propTypes = {
   /** Table data. Must be an array of objects */

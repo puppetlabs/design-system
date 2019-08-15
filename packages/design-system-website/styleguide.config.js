@@ -26,6 +26,12 @@ module.exports = {
       name: 'Puppet Design System',
       content: 'README.md',
     },
+    {
+      name: 'Data Grid Package',
+      description: 'Hello world!',
+      components: '../data-grid-table-component/src/**/*.{js,jsx}',
+      ignore: [],
+    },
     // The below section gets hidden when `skipComponentsWithoutExample` is true
     {
       name: 'Hello world',
@@ -129,6 +135,8 @@ module.exports = {
                 ],
                 '@babel/preset-react',
               ],
+              plugins: ['@babel/plugin-proposal-class-properties'],
+
               env: {
                 development: {
                   plugins: ['react-hot-loader/babel'],

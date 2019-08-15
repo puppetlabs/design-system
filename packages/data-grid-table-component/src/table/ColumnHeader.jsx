@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { func, any, string, shape, bool, node, arrayOf } from 'prop-types';
 import classnames from 'classnames';
-import { Checkbox } from '@puppet/react-components';
+// import { Checkbox } from '@puppet/react-components';
 
 const propTypes = {
   columns: arrayOf(

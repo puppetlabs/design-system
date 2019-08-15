@@ -10,6 +10,7 @@
     "styleguidist:build": "cd packages/design-system-website && styleguidist build"
   },
   "devDependencies": {
+    "@babel/preset-stage-2": "^7.0.0",
     "lerna": "^3.13.4"
   },
   "publishConfig": {

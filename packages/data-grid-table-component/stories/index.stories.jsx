@@ -100,7 +100,6 @@ const pageSelectFunc = newPage => {
 };
 
 const rowClassNames = tableData => {
-  // console.log(tableData);
   if (tableData.eventType === 'Virus/Malware') {
     return 'table-row-error table-row-example';
   }
