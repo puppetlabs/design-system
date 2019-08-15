@@ -1,12 +1,30 @@
-**To render an icon, either:**
+<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Icons</small>
 
-- Provide a type and a size (size optional)
-- Provide an svg and a viewBox
+## Overview
 
-**The specific svg rendered is decided by the following:**
+Icons and logos are designed to have consistency in style and spacing. They are output as SVG elements and wrapped in components.
+
+Design and size specifications can be found in the Sketch Styleguide file.
+
+### Rendering Icons
+
+To render an icon, either:
+
+* Provide a type and a size (size optional)
+* Provide an svg and a viewBox
+
+The specific svg rendered is decided by the following:
 
 1. If there is a unique svg for the type and size provided, we render it. Unique svgs are indicated by a colored background below.
 2. Otherwise, we scale down the next largest svg, or if unavailable, scale up the next smallest svg
+
+See also: [Button](#/React%20Components/Button) and [Button Select](#/React%20Components/ButtonSelect)
+
+## Basic Use
+
+Below is a chart of existing icons. Note that there are varying scales and levels of detail for each icon. Make sure that your icon size is consistent throughout your product.
+
+Icons with a green background have been approved by Design. Scaled svgs (white background) should be approved before using.
 
 ```jsx
 import Alert from '../alert';
@@ -80,3 +98,7 @@ const Renderer = () => {
 };
 <Renderer />;
 ```
+## Related
+
+* [Button](#/React%20Components/Button)
+* [Button Select](#/React%20Components/Button Select)
