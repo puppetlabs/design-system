@@ -20,6 +20,17 @@ module.exports = {
   },
   pagePerSection: true,
   skipComponentsWithoutExample: true,
+  styleguideComponents: {
+    ComponentsListRenderer: path.join(
+      __dirname,
+      'styleguide/ComponentsListRenderer',
+    ),
+    StyleGuideRenderer: path.join(__dirname, 'styleguide/StyleGuideRenderer'),
+    TableOfContentsRenderer: path.join(
+      __dirname,
+      'styleguide/TableOfContentsRenderer',
+    ),
+  },
 
   sections: [
     {
