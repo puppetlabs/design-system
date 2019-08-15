@@ -1,11 +1,6 @@
-# Links
-```jsx
-import { Link } from '@puppet/react-components';
-```
-[Insert Props & Methods expanding section]
+<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Button / 2 Action</small>
 
 ## Overview
-###### Sketch symbol: puppet-ui-library / Button / 2 Action
 
 The Link component encapsulates link styling but allows rendering of custom html elements.
 
