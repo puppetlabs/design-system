@@ -1,3 +1,26 @@
+<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Text</small>
+
+## Overview
+
+The Heading component is another typographical element. It is related to the [Text component](#/React%20Components/Text), but it covers the text treatments that live outside of the body, small and tiny styles defined in the Text componenet.
+
+Design specifications and use cases for the existing styles can be found in the Sketch Styleguide file.
+
+### Font families
+
+The following 2 font families are utilized in the Heading component. 
+
+* <strong>Calibre</strong>: Titles (hero's), heading (sizes 1-4), and labels
+* <strong>Open Sans</strong>: Heading (sizes 5 & 6) 
+
+See also: [Text](#/React%20Components/Text) and [Content](#/React%20Components/Content)
+
+## Types
+
+### Primary
+
+The primary (default) header style is in the color Neutral 900 (base), in various weights and sizes. 
+
 ```jsx
 <Heading as="h1" hero>Hero</Heading>
 <Heading as="h1">Heading 1</Heading>
@@ -9,7 +32,9 @@
 <Heading label>Label</Heading>
 ```
 
-Heading - color medium
+### Secondary
+
+Another option for the header color is Neutral 700 (medium). 
 
 ```jsx
 <Heading as="h1" color="medium" hero>Hero</Heading>
@@ -22,7 +47,7 @@ Heading - color medium
 <Heading label color="medium">Label</Heading>
 ```
 
-Heading - color subtle
+Another option for the header color is Neutral 600 (subtle), used as the most subtle treatment.
 
 ```jsx
 <Heading as="h1" color="subtle" hero>Hero</Heading>
@@ -34,3 +59,9 @@ Heading - color subtle
 <Heading as="h6" color="subtle">Heading 6</Heading>
 <Heading label color="subtle">Label</Heading>
 ```
+
+## Related
+
+* [Colors](#/React%20Components/Colors)
+* [Content](#/React%20Components/Content)
+* [Text](#/React%20Components/Text)
