@@ -1,150 +1,86 @@
-Puppet products use a family of buttons, with each button intended for a different purpose.
+## Overview
+
+<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Button</small>
+
+Puppet products use a family of buttons, with each button intended for a different purpose. Buttons are different from links. They carry out a specified action when clicked, such as submitting a form, adding content to a list, or initiating edit functionality. Avoid using them to provide navigation.
+
+### Microcopy
+
+* When providing a label for a button, use an imperative verb and a noun, for example: Add group. The verb-plus-noun construction increases usability and eliminates ambiguity for localization.
+* Rarely, just the imperative verb is ok (Apply, Add, Remove) if the context is crystal clear.
+* Use sentence-case capitalization: Capitalize the first word, and lowercase all other words except proper nouns.
+
+### States and interaction
+
+Buttons provide built in support for hover, active, and focused interactions. All buttons also provide loading and disabled states as needed.
+
+## Types
 
 ### Primary
 
-Used for the single most important action on any given page, generally defined as the action which moves  the user forward in a workflow (e.g. next, submit, continue, run, etc.) or resolves a workflow (e.g. delete, apply, commit, etc.). A primary action button should be used sparingly: no more than 1 primary action per page  or instance.
+Use a primary action button for the single most important action on the page — the action which initiates a workflow (e.g. Add node, Create report, etc.), moves the user forward in a workflow (e.g. next, submit, continue, run, etc.), or resolves a workflow (e.g. delete, apply, commit, etc.).
 
-```jsx
-const buttonStyle = { margin: 5 };
+A primary action button should be used sparingly: no more than 1 primary action per page or instance (e.g. within a modal).
 
-<div>
-  <Button style={buttonStyle}>Primary</Button>
-  <Button loading style={buttonStyle}>
-    Primary
-  </Button>
-  <Button disabled style={buttonStyle}>
-    Primary
-  </Button>
-</div>;
-```
+[insert example, include a variation with an icon]
+
 
 ### Secondary
 
-Used to be ghost button. This button is used to show as hierarchically less important than the primary action, or the predominant action on the page when no action is deemed of primary importance.
+Use this button for actions that are important, but hierarchically less important than the primary action. Use it for the predominant action on the page when there is no primary action.
 
-```jsx
-const buttonStyle = { margin: 5 };
-
-<div>
-  <Button type="secondary" style={buttonStyle}>
-    Secondary
-  </Button>
-  <Button type="secondary" loading style={buttonStyle}>
-    Secondary
-  </Button>
-  <Button type="secondary" disabled style={buttonStyle}>
-    Secondary
-  </Button>
-</div>;
-```
+[insert example, include a variation with an icon]
 
 ### Tertiary
 
-Used to be “Secondary action button”. The most commonly used button. It showcases actions that a user might take on any given page which are not the single most important action; this might include micro-workflows such as applying a filter, confirming a change, etc.
+This button type is for less important actions that a user might take on a page, for example, for micro-workflows such as applying a filter or confirming a change.
 
-```jsx
-const buttonStyle = { margin: 5 };
+[insert example, include a variation with an icon]
 
-<div>
-  <Button type="tertiary" style={buttonStyle}>
-    Tertiary
-  </Button>
-  <Button type="tertiary" loading style={buttonStyle}>
-    Tertiary
-  </Button>
-  <Button type="tertiary" disabled style={buttonStyle}>
-    Tertiary
-  </Button>
-</div>;
-```
+### Transparent
+
+Use this button when the design is dense or getting cluttered, or for low-level actions when the hierarchy is deep. For example, transparent buttons are effective in toolbars, or for actions inside a table cell.
+
+[insert example, include a variation with an icon]
 
 ### Danger
 
-To indicate a dangerous or destructive action, we utilize a red button. This button should always come with descriptive text so as not to rely solely on a color for meaning. For actions of lesser implications, use the subtle version.
+Use a red button to indicate a dangerous or destructive action. Always provide descriptive text, and get wording advice from a writer. For actions with less severe implications, or when many destructive actions are visible, use the subtle style.
 
-#### Bold
-
-```jsx
-const buttonStyle = { margin: 5 };
-
-<div>
-  <Button type="danger" style={buttonStyle}>
-    Danger Bold
-  </Button>
-  <Button type="danger" loading style={buttonStyle}>
-    Danger Bold
-  </Button>
-  <Button type="danger" disabled style={buttonStyle}>
-    Danger Bold
-  </Button>
-</div>;
-```
-
-#### Subtle
-
-```jsx
-const buttonStyle = { margin: 5 };
-
-<div>
-  <Button type="danger" weight="subtle" style={buttonStyle}>
-    Danger Subtle
-  </Button>
-  <Button type="danger" weight="subtle" loading style={buttonStyle}>
-    Danger Subtle
-  </Button>
-  <Button type="danger" weight="subtle" disabled style={buttonStyle}>
-    Danger Subtle
-  </Button>
-</div>;
-```
-
-### Icon button
-
-When working with a small amount of real estate, icon buttons can be used when the designer is sure that the icon used is clear enough with its action. Because of clarity issues, icon buttons should be used only when no other interface element is appropriate (e.g. Edit, Add, Settings, Profile, More, Trash, Close/Remove, Show/Hide, Expand/Collapse, Full screen, Help, Information, Link, Attach, Notification, Export, Chart). Icon buttons can be used with an additional "transparent" variation for minimalism in place.
-
-```jsx
-const buttonStyle = { margin: 2 };
-
-<div>
-  <div>
-    <Button icon="pencil" style={buttonStyle} />
-    <Button icon="pencil" style={buttonStyle} loading />
-    <Button icon="pencil" style={buttonStyle} disabled />
-  </div>
-  <div>
-    <Button type="secondary" style={buttonStyle} icon="pencil" />
-    <Button type="secondary" style={buttonStyle} icon="pencil" loading />
-    <Button type="secondary" style={buttonStyle} icon="pencil" disabled />
-  </div>
-  <div>
-    <Button type="tertiary" style={buttonStyle} icon="pencil" />
-    <Button type="tertiary" style={buttonStyle} icon="pencil" loading />
-    <Button type="tertiary" style={buttonStyle} icon="pencil" disabled />
-  </div>
-  <div>
-    <Button type="transparent" style={buttonStyle} icon="pencil" />
-    <Button type="transparent" style={buttonStyle} icon="pencil" loading />
-    <Button type="transparent" style={buttonStyle} icon="pencil" disabled />
-  </div>
-</div>;
-```
+[insert example, bold and subtle together, include a variation with an icon]
 
 ### Text button
 
-The lowest level button in the visual hierarchy. These are so far most often used at the bottom of a menu, or for card controls. Designed to work reasonably well inline.
+The lowest level button in the visual hierarchy. Similar in appearance to links, these are used to reduce visual weight or noise and are reserved for extremely compact use cases.
 
-```jsx
-const buttonStyle = { margin: 2 };
+Example uses include adding content to a text list, providing actions within a menu, or providing card controls. Note that you should use these for actions, not navigations. See the [Link component](#/React%20Components/Link) for more information.
 
-<div>
-  <Button type="text" style={buttonStyle}>
-    Text
-  </Button>
-  <Button type="text" icon="plus" style={buttonStyle}>
-    Add option
-  </Button>
-  <Button type="text" trailingIcon="chevron-down" style={buttonStyle}>
-    Select option
-  </Button>
-</div>;
-```
+[insert example, include a variation with an icon - do not show the select, as that should be with ButtonSelect]
+
+## Variations
+
+### Icon
+
+Use icons to assist in understanding the purpose of a button, or to help distinguish the button from similar actions that lie in close proximity. By default, include words to describe the button as this is much more accessible. Icons are available for use in every button type.
+
+Use an icon by itself when you’re working with smaller spaces and are sure that the meaning of clicking a button is clear enough by its picture. A few icons are common across many applications and are acceptable for use. Solo icon buttons must provide a tooltip with [TooltipHoverArea](#/React%20Components/TooltipHoverArea).
+
+*Note*: Indicating states (danger, success, warning) with icon colors is reserved for specific use cases within alerts and messages. Do not use color on icon buttons arbitrarily.
+
+#### Example: Primary buttons with only icons
+
+[insert examples of different states]
+
+#### Example: Acceptable icons - with and without text
+
+[insert examples using tertiary buttons, both with and without words. Place solo examples within a TooltipHoverArea.
+
+Edit, Add, Settings, Profile, More, Trash, Close, Remove, Show, Hide, Expand, Collapse, Full screen, Help, Information, Link, Attach, Notification, Export, and Chart]
+
+## Related
+*  [ButtonSelect](#/React%20Components/ButtonSelect) 
+*  [ActionSelect](#/React%20Components/ActionSelect) 
+*  [Icon](#/React%20Components/Icon) 
+*  [Loading](#/React%20Components/Loading) 
+*  [Form](#/React%20Components/Form) 
+*  [TooltipHoverArea](#/React%20Components/TooltipHoverArea)
