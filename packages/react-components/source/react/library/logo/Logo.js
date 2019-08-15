@@ -9,6 +9,7 @@ export const SUPPORTED_LOGOS = [
   'discovery',
   'enterprise',
   'insights',
+  'nebula',
   'pipelines',
   'remediate',
 ];

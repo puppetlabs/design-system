@@ -10,6 +10,7 @@ The logo component provides easy access to marketing-approved logos in our appli
   <Logo product="discovery" style={{ margin: 5 }} />
   <Logo product="enterprise" style={{ margin: 5 }} />
   <Logo product="insights" style={{ margin: 5 }} />
+  <Logo product="nebula" style={{ margin: 5 }} />
   <Logo product="pipelines" style={{ margin: 5 }} />
   <Logo product="remediate" style={{ margin: 5 }} />
   <Logo product="My Product" style={{ margin: 5 }} />
@@ -31,6 +32,7 @@ The logo component provides easy access to marketing-approved logos in our appli
   <Logo inverted product="discovery" style={{ margin: 5 }} />
   <Logo inverted product="enterprise" style={{ margin: 5 }} />
   <Logo inverted product="insights" style={{ margin: 5 }} />
+  <Logo inverted product="nebula" style={{ margin: 5 }} />
   <Logo inverted product="pipelines" style={{ margin: 5 }} />
   <Logo inverted product="remediate" style={{ margin: 5 }} />
   <Logo inverted product="My Product" style={{ margin: 5 }} />
