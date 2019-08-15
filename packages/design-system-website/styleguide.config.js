@@ -34,7 +34,7 @@ module.exports = {
 
   sections: [
     {
-      name: 'Home',
+      name: 'Puppet Design System',
       content: 'README.md',
     },
     {
