@@ -1,3 +1,8 @@
+# 5.4.0
+- Add project nebula logo
+- Add invite, shrug, and lock icons
+- Update some component documentation
+
 # 5.3.0
 - Add corejs as top-level dependency
 - Add contract and spaceship icons
