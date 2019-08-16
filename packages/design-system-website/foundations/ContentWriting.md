@@ -1,7 +1,7 @@
-The written word is how we engage with the user and is critical in providing clarity into how our products work. The importance of writing should not be overlooked and is equal in weight to design and development to providing a quality experience.
+The written word is how we engage with the user. The importance of writing should not be overlooked and is equal in weight to design and development to providing a quality experience.
 
 ## Titles
-Titles label pages or content areas. Titles are also used for navigation, for example, in the PE sidebar.
+Titles are used to label pages or content areas. Titles are also used for navigation, for example, in the PE sidebar.
 
 * Use the same heading for both the navigation and the page.
 * Use a single noun or noun phrase that describes the content of the page, for example, Events, Reports, or Unsigned Certificates.
@@ -89,6 +89,6 @@ The following sample pattern shows how to lay out type on a page. It provides re
 ```
 
 ## Related
-* [Writing guidelines](https://confluence.puppetlabs.com/display/Writing/Puppet+content+style+guide) on Confluence
-* [Typography](#/Foundations/Typography) - definitions and rules for our typefaces and fonts
-* [Content](#/React%20Components/Content) - a component for placing content blocks within an interface
+* [Writing guidelines on Confluence](https://confluence.puppetlabs.com/display/Writing/Puppet+content+style+guide)
+* [Typography](#/Foundations/Typography) : definitions and rules for our typefaces and fonts
+* [Content](#/React%20Components/Content) : a component for placing content blocks within an interface

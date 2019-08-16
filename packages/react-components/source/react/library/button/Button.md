@@ -23,7 +23,7 @@ Use a primary action button for the single most important action on the page —
 A primary action button should be used sparingly: no more than 1 primary action per page or instance (e.g. within a modal).
 
 ```jsx
-const buttonStyle = { margin: 4 };
+const buttonStyle = { margin: 2 };
 
 <div>
   <Button style={buttonStyle}>Primary</Button>
@@ -42,7 +42,7 @@ const buttonStyle = { margin: 4 };
 Use this button for actions that are important, but hierarchically less important than the primary action. Use it for the predominant action on the page when there is no primary action.
 
 ```jsx
-const buttonStyle = { margin: 4 };
+const buttonStyle = { margin: 2 };
 
 <div>
   <Button type="secondary" style={buttonStyle}>
@@ -65,7 +65,7 @@ const buttonStyle = { margin: 4 };
 This button type is for less important actions that a user might take on a page, for example, for micro-workflows such as applying a filter or confirming a change.
 
 ```jsx
-const buttonStyle = { margin: 4 };
+const buttonStyle = { margin: 2 };
 
 <div>
   <Button type="tertiary" style={buttonStyle}>
@@ -88,7 +88,7 @@ const buttonStyle = { margin: 4 };
 Use this button when the design is dense or getting cluttered, or for low-level actions when the hierarchy is deep. For example, transparent buttons are effective in toolbars, or for actions inside a table cell.
 
 ```jsx
-const buttonStyle = { margin: 4 };
+const buttonStyle = { margin: 2 };
 
 <div>
   <Button type="transparent" style={buttonStyle}>
@@ -111,7 +111,7 @@ const buttonStyle = { margin: 4 };
 Use a red button to indicate a dangerous or destructive action. Always provide descriptive text, and get wording advice from a writer.
 
 ```jsx
-const buttonStyle = { margin: 4 };
+const buttonStyle = { margin: 2 };
 
 <div>
   <Button type="danger" style={buttonStyle}>
@@ -133,7 +133,7 @@ const buttonStyle = { margin: 4 };
 For actions with less severe implications, or when many destructive actions are visible, use the subtle style.
 
 ```jsx
-const buttonStyle = { margin: 4 };
+const buttonStyle = { margin: 2 };
 
 <div>
   <Button type="danger" weight="subtle" style={buttonStyle}>
@@ -184,7 +184,7 @@ Use icons to assist in understanding the purpose of a button, or to help disting
 #### Example: Transparent buttons with only icons
 
 ```jsx
-const buttonStyle = { margin: 4 };
+const buttonStyle = { margin: 2 };
 
 <div>
   <div>
@@ -200,80 +200,56 @@ const buttonStyle = { margin: 4 };
 Use an icon by itself when you’re working with smaller spaces and are sure that the meaning of clicking a button is clear enough by its picture. A few icons are common across many applications and are acceptable for use. Solo icon buttons must provide a tooltip with [TooltipHoverArea](#/React%20Components/TooltipHoverArea).
 
 ```jsx
-const buttonStyle = { margin: 4 };
+const divStyle = { marginBottom: 16 };
 
 <div>
-  <div>
-    <Button icon="plus" style={buttonStyle} />
-    <Button icon="plus">Add</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="plus" />
+    <Button type="secondary" icon="plus">Add</Button>
   </div>
-  <div>
-    <Button icon="pencil" style={buttonStyle} />
-    <Button icon="pencil">Attach</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="pencil" />
+    <Button type="secondary" icon="pencil">Attach</Button>
   </div>
-  <div>
-    <Button icon="area-chart" style={buttonStyle} />
-    <Button icon="area-chart">Chart</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="area-chart" />
+    <Button type="secondary" icon="area-chart">Chart</Button>
   </div>
-  <div>
-    <Button type="transparent" icon="x" style={buttonStyle} />
-    <Button type="transparent" icon="x" style={buttonStyle}>Close</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="pencil" />
+    <Button type="secondary" icon="pencil">Edit</Button>
   </div>
-  <div>
-    <Button icon="chevron-up" style={buttonStyle} />
-    <Button icon="chevron-up">Collapse</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="question-circle" />
+    <Button type="secondary" icon="question-circle">Help</Button>
   </div>
-  <div>
-    <Button icon="pencil" style={buttonStyle} />
-    <Button icon="pencil">Edit</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="hamburger" />
+    <Button type="secondary" icon="hamburger">Menu</Button>
   </div>
-  <div>
-    <Button icon="email" style={buttonStyle} />
-    <Button icon="email">Email</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="kebab" />
+    <Button type="secondary" icon="kebab">More</Button>
   </div>
-  <div>
-    <Button icon="chevron-right" style={buttonStyle} />
-    <Button icon="chevron-right">Expand</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="profile" />
+    <Button type="secondary" icon="profile">Profile</Button>
   </div>
-  <div>
-    <Button icon="help" style={buttonStyle} />
-    <Button icon="help">Help</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="trash" />
+    <Button type="secondary" icon="trash">Remove</Button>
   </div>
-  <div>
-    <Button icon="home" style={buttonStyle} />
-    <Button icon="home">Home</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="gear" />
+    <Button type="secondary" icon="gear">Settings</Button>
   </div>
-  <div>
-    <Button icon="image" style={buttonStyle} />
-    <Button icon="image">Image</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="zoom-in" />
+    <Button type="secondary" icon="zoom-in">Zoom In</Button>
   </div>
-  <div>
-    <Button icon="hamburger" style={buttonStyle} />
-    <Button icon="hamburger">Menu</button>
-  </div>
-  <div>
-    <Button icon="kebab" style={buttonStyle} />
-    <Button icon="kebab">More</button>
-  </div>
-  <div>
-    <Button icon="profile" style={buttonStyle} />
-    <Button icon="profile">Profile</button>
-  </div>
-  <div>
-    <Button icon="trash" style={buttonStyle} />
-    <Button icon="trash">Remove</button>
-  </div>
-  <div>
-    <Button icon="gear" style={buttonStyle} />
-    <Button icon="gear">Settings</button>
-  </div>
-  <div>
-    <Button icon="zoom-in" style={buttonStyle} />
-    <Button icon="zoom-in">Zoom In</button>
-  </div>
-  <div>
-    <Button icon="zoom-out" style={buttonStyle} />
-    <Button icon="zoom-out">Zoom Out</button>
+  <div style={divStyle}>
+    <Button type="secondary" icon="zoom-out" />
+    <Button type="secondary" icon="zoom-out">Zoom Out</Button>
   </div>
 </div>;
 ```

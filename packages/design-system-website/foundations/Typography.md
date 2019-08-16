@@ -44,7 +44,7 @@ All font sizes and their associated line-heights are based on our 4px grid.
   <text size="small">Detail page titles, page-section titles</text>
   <text size="small">Open Sans, bold 700, 12px/16px</text>
 
-  <Head label>Label</Heading>
+  <Heading label>Label</Heading>
   <text size="small">Sidebar headings and other small format headings. Small form labels, badges, visualization callouts, legends</text>
   <text size="small">Calibre, semi-bold 6600, 11px/16px</text>
 
@@ -62,8 +62,8 @@ All font sizes and their associated line-heights are based on our 4px grid.
 ```
 
 ## Related
-* [Content](#/React%20Components/Content) - Used to place formatted text within other components. Provides examples and rules for adding content to a page.
-* [Heading](#/React%20Components/Heading) - Place a heading anywhere.
-* [Text](#/React%20Components/Text) - Place individual text strings.
-* [Link](#/React%20Components/Link) - Place text links within other elements.
-* [Content writing](#/React%20Components/Content) - a component for placing content blocks within an interface
+* [Content](#/React%20Components/Content) : used to place formatted text within other components. Provides examples and rules for adding content to a page
+* [Heading](#/React%20Components/Heading) : place a heading anywhere
+* [Text](#/React%20Components/Text) : place individual text strings
+* [Link](#/React%20Components/Link) : place text links within other elements
+* [Content writing](#/React%20Components/Content) : a component for placing content blocks within an interface

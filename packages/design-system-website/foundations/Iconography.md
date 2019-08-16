@@ -2,6 +2,8 @@ Iconography is a crucial part of our visual language. When properly designed and
 
 Icon design sits squarely within a venn diagram between illustration and product design. Icons provide us a great creative opportunity while they must also clearly communicate their concept. They also have many technical constraints given their small size and the need to be consistent across dozens of icons.
 
+A list of available icons are available in the [icon component](#/React%20Components/Icon).
+
 `Insert venn diagram`
 
 ## Icon construction
@@ -116,3 +118,6 @@ Test that the icon:
 * Accepts style changes
 * Name corresponds with Sketch library and exported svg
 * Is added to documentation
+
+## Related
+* [Icon component](#/React%20Components/Icon) : a list of available icons and guidelines for using them
