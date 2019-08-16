@@ -26,12 +26,15 @@ export function ComponentsListRenderer({ items: allItems }, { config }) {
     const isItemSelected = windowHash === href;
 
     if (components.length === 0 && sections.length === 0) {
+      const renderedName =
+        visibleName === 'Puppet Design System' ? 'Home' : visibleName;
+
       return (
         <Sidebar.Item
           active={isItemSelected}
           href={href}
           key={href}
-          title={visibleName}
+          title={renderedName}
         />
       );
     }
