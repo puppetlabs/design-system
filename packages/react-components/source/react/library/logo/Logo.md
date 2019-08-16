@@ -1,3 +1,4 @@
+## Overview
 The logo component provides easy access to marketing-approved logos in our applications. A full set of official product logos may be specified by strings, in both full and bug variations. Additionally, an arbitrary logo may be rendered with the default puppet bug and a custom product name. Other components in the react component library, most prominently, the [Sidebar](#sidebar) are designed to work out-of-the-box with this component.
 
 **NOTE: Custom logos should be used internally only. All public facing products should be given official trademarked logos through marketing.**

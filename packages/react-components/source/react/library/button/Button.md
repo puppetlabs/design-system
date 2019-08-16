@@ -22,32 +22,134 @@ Use a primary action button for the single most important action on the page —
 
 A primary action button should be used sparingly: no more than 1 primary action per page or instance (e.g. within a modal).
 
-[insert example, include a variation with an icon]
+```jsx
+const buttonStyle = { margin: 2 };
 
+<div>
+  <Button style={buttonStyle}>Primary</Button>
+  <Button style={buttonStyle} icon="pencil">Primary with icon</Button>
+  <Button loading style={buttonStyle}>
+    Primary
+  </Button>
+  <Button disabled style={buttonStyle}>
+    Primary
+  </Button>
+</div>;
+```
 
 ### Secondary
 
 Use this button for actions that are important, but hierarchically less important than the primary action. Use it for the predominant action on the page when there is no primary action.
 
-[insert example, include a variation with an icon]
+```jsx
+const buttonStyle = { margin: 2 };
+
+<div>
+  <Button type="secondary" style={buttonStyle}>
+    Secondary
+  </Button>
+  <Button type="secondary" style={buttonStyle} icon="pencil">
+    Secondary with icon
+  </Button>
+  <Button type="secondary" loading style={buttonStyle}>
+    Secondary
+  </Button>
+  <Button type="secondary" disabled style={buttonStyle}>
+    Secondary
+  </Button>
+</div>;
+```
 
 ### Tertiary
 
 This button type is for less important actions that a user might take on a page, for example, for micro-workflows such as applying a filter or confirming a change.
 
-[insert example, include a variation with an icon]
+```jsx
+const buttonStyle = { margin: 2 };
+
+<div>
+  <Button type="tertiary" style={buttonStyle}>
+    Tertiary
+  </Button>
+  <Button type="tertiary" icon="pencil" style={buttonStyle}>
+    Tertiary with icon
+  </Button>
+  <Button type="tertiary" loading style={buttonStyle}>
+    Tertiary
+  </Button>
+  <Button type="tertiary" disabled style={buttonStyle}>
+    Tertiary
+  </Button>
+</div>;
+```
 
 ### Transparent
 
 Use this button when the design is dense or getting cluttered, or for low-level actions when the hierarchy is deep. For example, transparent buttons are effective in toolbars, or for actions inside a table cell.
 
-[insert example, include a variation with an icon]
+```jsx
+const buttonStyle = { margin: 2 };
+
+<div>
+  <Button type="transparent" style={buttonStyle}>
+    Transparent
+  </Button>
+  <Button type="transparent" icon="pencil" style={buttonStyle}>
+    Transparent with icon
+  </Button>
+  <Button type="transparent" loading style={buttonStyle}>
+    Transparent
+  </Button>
+  <Button type="transparent" disabled style={buttonStyle}>
+    Transparent
+  </Button>
+</div>;
+```
 
 ### Danger
 
-Use a red button to indicate a dangerous or destructive action. Always provide descriptive text, and get wording advice from a writer. For actions with less severe implications, or when many destructive actions are visible, use the subtle style.
+Use a red button to indicate a dangerous or destructive action. Always provide descriptive text, and get wording advice from a writer.
 
-[insert example, bold and subtle together, include a variation with an icon]
+```jsx
+const buttonStyle = { margin: 2 };
+
+<div>
+  <Button type="danger" style={buttonStyle}>
+    Danger
+  </Button>
+  <Button type="danger" icon="trash" style={buttonStyle}>
+    Danger with icon
+  </Button>
+  <Button type="danger" loading style={buttonStyle}>
+    Danger
+  </Button>
+  <Button type="danger" disabled style={buttonStyle}>
+    Danger
+  </Button>
+</div>;
+```
+
+#### Danger subtle
+For actions with less severe implications, or when many destructive actions are visible, use the subtle style.
+
+```jsx
+const buttonStyle = { margin: 2 };
+
+<div>
+  <Button type="danger" weight="subtle" style={buttonStyle}>
+    Danger subtle
+  </Button>
+  <Button type="danger" weight="subtle" style={buttonStyle} icon="trash">
+    Danger subtle with icon
+  </Button>
+  <Button type="danger" weight="subtle" loading style={buttonStyle}>
+    Danger subtle
+  </Button>
+  <Button type="danger" weight="subtle" disabled style={buttonStyle}>
+    Danger subtle
+  </Button>
+</div>;
+```
 
 ### Text button
 
@@ -55,7 +157,21 @@ The lowest level button in the visual hierarchy. Similar in appearance to links,
 
 Example uses include adding content to a text list, providing actions within a menu, or providing card controls. Note that you should use these for actions, not navigations. See the [Link component](#/React%20Components/Link) for more information.
 
-[insert example, include a variation with an icon - do not show the select, as that should be with ButtonSelect]
+```jsx
+const buttonStyle = { margin: 2 };
+
+<div>
+  <Button type="text" style={buttonStyle}>
+    Text
+  </Button>
+  <Button type="text" icon="plus" style={buttonStyle}>
+    Add option
+  </Button>
+  <Button type="text" trailingIcon="chevron-down" style={buttonStyle}>
+    Select option
+  </Button>
+</div>;
+```
 
 ## Variations
 
@@ -63,24 +179,85 @@ Example uses include adding content to a text list, providing actions within a m
 
 Use icons to assist in understanding the purpose of a button, or to help distinguish the button from similar actions that lie in close proximity. By default, include words to describe the button as this is much more accessible. Icons are available for use in every button type.
 
-Use an icon by itself when you’re working with smaller spaces and are sure that the meaning of clicking a button is clear enough by its picture. A few icons are common across many applications and are acceptable for use. Solo icon buttons must provide a tooltip with [TooltipHoverArea](#/React%20Components/TooltipHoverArea).
-
 *Note*: Indicating states (danger, success, warning) with icon colors is reserved for specific use cases within alerts and messages. Do not use color on icon buttons arbitrarily.
 
-#### Example: Primary buttons with only icons
+#### Example: Transparent buttons with only icons
 
-[insert examples of different states]
+```jsx
+const buttonStyle = { margin: 2 };
+
+<div>
+  <div>
+    <Button type="transparent" icon="pencil" style={buttonStyle} />
+    <Button type="transparent" icon="pencil" style={buttonStyle} loading />
+    <Button type="transparent" icon="pencil" style={buttonStyle} disabled />
+  </div>
+</div>;
+```
 
 #### Example: Acceptable icons - with and without text
 
-[insert examples using tertiary buttons, both with and without words. Place solo examples within a TooltipHoverArea.
+Use an icon by itself when you’re working with smaller spaces and are sure that the meaning of clicking a button is clear enough by its picture. A few icons are common across many applications and are acceptable for use. Solo icon buttons must provide a tooltip with [TooltipHoverArea](#/React%20Components/TooltipHoverArea).
 
-Edit, Add, Settings, Profile, More, Trash, Close, Remove, Show, Hide, Expand, Collapse, Full screen, Help, Information, Link, Attach, Notification, Export, and Chart]
+```jsx
+const divStyle = { marginBottom: 16 };
+
+<div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="plus" />
+    <Button type="secondary" icon="plus">Add</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="pencil" />
+    <Button type="secondary" icon="pencil">Attach</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="area-chart" />
+    <Button type="secondary" icon="area-chart">Chart</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="pencil" />
+    <Button type="secondary" icon="pencil">Edit</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="question-circle" />
+    <Button type="secondary" icon="question-circle">Help</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="hamburger" />
+    <Button type="secondary" icon="hamburger">Menu</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="kebab" />
+    <Button type="secondary" icon="kebab">More</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="profile" />
+    <Button type="secondary" icon="profile">Profile</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="trash" />
+    <Button type="secondary" icon="trash">Remove</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="gear" />
+    <Button type="secondary" icon="gear">Settings</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="zoom-in" />
+    <Button type="secondary" icon="zoom-in">Zoom In</Button>
+  </div>
+  <div style={divStyle}>
+    <Button type="secondary" icon="zoom-out" />
+    <Button type="secondary" icon="zoom-out">Zoom Out</Button>
+  </div>
+</div>;
+```
 
 ## Related
-*  [ButtonSelect](#/React%20Components/ButtonSelect) 
-*  [ActionSelect](#/React%20Components/ActionSelect) 
-*  [Icon](#/React%20Components/Icon) 
-*  [Loading](#/React%20Components/Loading) 
-*  [Form](#/React%20Components/Form) 
+*  [ButtonSelect](#/React%20Components/ButtonSelect)
+*  [ActionSelect](#/React%20Components/ActionSelect)
+*  [Icon](#/React%20Components/Icon)
+*  [Loading](#/React%20Components/Loading)
+*  [Form](#/React%20Components/Form)
 *  [TooltipHoverArea](#/React%20Components/TooltipHoverArea)

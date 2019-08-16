@@ -1,4 +1,4 @@
-## Our collective approach to increase consistency, build quickly,  and deliver quality experience to our customers. 
+## Our collective approach to increase consistency, build quickly,  and deliver quality experience to our customers.
 This is a collection of the common values, behaviors, components, and styles we share at Puppet. It represents our shared objective to quickly deliver value to our customers. With it we scale design across departments, platforms, and time zones.
 
 For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence or watch the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b) .
@@ -8,7 +8,7 @@ For background, see [Puppet Design System](https://confluence.puppetlabs.com/dis
 
 **Developers** can get started by cloning the repo and following the [quickstart guide](https://github.com/puppetlabs/design-system).
 
-**Writers** should start with the [writing guidelines](https://confluence.puppetlabs.com/display/Writing/Puppet+content+style+guide). These are helpful for anyone creating content, from full pages to micro-copy.
+**Writers** should start with the [foundation on content writing](#/Foundations/Content%20Writing) or the [writing guidelines on Confluence](https://confluence.puppetlabs.com/display/Writing/Puppet+content+style+guide). These are helpful for anyone creating content, from full pages to micro-copy.
 
 ### Contribute
 The Puppet Design System is a cross-functional team effort with shared ownership. Contributions are both welcome and encouraged.  We have written a [best-practices guide](https://github.com/puppetlabs/design-system/wiki) to help you get started.
