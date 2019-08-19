@@ -86,8 +86,7 @@ const defaultProps = {
   onFilter: null,
   filtering: false,
   paginated: false,
-  paginationWarning:
-    'More results available. Refine your search to reveal them.',
+  paginationWarning: 'Viewing the first page of results.',
   actionLabel: undefined,
   anchor: 'bottom left',
   disabled: false,
