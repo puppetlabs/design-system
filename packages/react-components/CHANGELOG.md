@@ -1,3 +1,7 @@
+
+# 5.4.1
+- Fix shrug and lock icons
+
 # 5.4.0
 - Add project nebula logo
 - Add invite, shrug, and lock icons
