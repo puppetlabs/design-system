@@ -106,3 +106,10 @@
 .rc-menu-list-item-focused {
   background-color: $puppet-n200;
 }
+
+.rc-menu-pagination {
+  @include puppet-type-small();
+
+  cursor: default;
+  padding: 4px 12px;
+}

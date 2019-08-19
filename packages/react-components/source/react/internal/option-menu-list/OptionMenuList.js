@@ -40,6 +40,8 @@ const propTypes = {
   onFocusItem: PropTypes.func,
   onBlur: PropTypes.func,
   filtering: PropTypes.bool,
+  paginated: PropTypes.bool,
+  paginationWarning: PropTypes.string,
   className: PropTypes.string,
   style: PropTypes.shape({}),
 };
@@ -57,6 +59,8 @@ const defaultProps = {
   onEscape() {},
   onFocusItem() {},
   filtering: false,
+  paginated: false,
+  paginationWarning: '',
   style: {},
 };
 
@@ -289,6 +293,8 @@ class OptionMenuList extends Component {
       focusedIndex: focussed,
       onFocusItem,
       filtering,
+      paginated,
+      paginationWarning,
       ...rest
     } = this.props;
 
@@ -339,6 +345,15 @@ class OptionMenuList extends Component {
       );
     }
 
+    let pagination;
+
+    if (paginated && paginationWarning) {
+      // TODO: Get sign off on this prompt and upgrade to pagination controls if appropriate
+      pagination = (
+        <span className="rc-menu-pagination">{paginationWarning}</span>
+      );
+    }
+
     return (
       <div
         className={classNames(
@@ -352,6 +367,7 @@ class OptionMenuList extends Component {
         style={style}
       >
         {list}
+        {pagination}
         {multiple && (
           <button
             type="button"

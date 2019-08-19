@@ -12,7 +12,6 @@ import {
   DOWN_KEY_CODE,
   UP_KEY_CODE,
   ESC_KEY_CODE,
-  SPACE_KEY_CODE,
 } from '../../constants';
 
 const SELECT = 'select';
@@ -54,10 +53,14 @@ const propTypes = {
    * Text to render as the action label in multiple mode
    * @ignore
    */
-  /** Menulist filtering handler. For use with autocomplete. Will receive the user input */
+  /** Autocomplete prop: Fires when search is updated */
   onFilter: PropTypes.func,
-  /** Is the menulist being filtered? */
+  /** Autocomplete prop: Is the list being filtered? */
   filtering: PropTypes.bool,
+  /** Autocomplete prop: Are there more results? */
+  paginated: PropTypes.bool,
+  /** Autocomplete prop: How should we relay that more results exist? */
+  paginationWarning: PropTypes.string,
   actionLabel: PropTypes.string, //eslint-disable-line
   /** Anchor orientation of the dropdown menu */
   anchor: anchorOrientation,
@@ -82,6 +85,9 @@ const defaultProps = {
   type: 'select',
   onFilter: null,
   filtering: false,
+  paginated: false,
+  paginationWarning:
+    'More results available. Refine your search to reveal them.',
   actionLabel: undefined,
   anchor: 'bottom left',
   disabled: false,
@@ -208,11 +214,12 @@ class Select extends Component {
           this.setState({ focusedIndex: focusedIndex + 1 });
           break;
         }
-        case SPACE_KEY_CODE:
         case ENTER_KEY_CODE: {
           cancelEvent(e);
 
-          this.onValueChange(filteredOptions[focusedIndex].value);
+          if (filteredOptions[focusedIndex]) {
+            this.onValueChange(filteredOptions[focusedIndex].value);
+          }
           break;
         }
         case ESC_KEY_CODE: {
@@ -314,6 +321,8 @@ class Select extends Component {
       placeholder,
       required,
       filtering,
+      paginated,
+      paginationWarning,
     } = this.props;
 
     let input;
@@ -406,6 +415,8 @@ class Select extends Component {
           onChange={onValueChange}
           onFocusItem={onFocusItem}
           filtering={filtering}
+          paginated={paginated}
+          paginationWarning={paginationWarning}
           style={menuStyle}
           actionLabel={getActionLabel(this.props)}
           ref={menu => {
