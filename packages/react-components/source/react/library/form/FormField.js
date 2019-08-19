@@ -16,7 +16,6 @@ const supportedTypes = [
   'checkbox',
   'switch',
   'select',
-  'multiselect',
 ];
 
 const propTypes = {
@@ -95,6 +94,7 @@ const mapTypeToElement = type => {
     case 'switch':
       return Switch;
     case 'select':
+    case 'autocomplete':
     case 'multiselect':
       return Select;
     default:
