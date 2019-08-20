@@ -55,8 +55,6 @@ const propTypes = {
    */
   /** Autocomplete prop: Fires when search is updated */
   onFilter: PropTypes.func,
-  /** Autocomplete prop: Is the list being filtered? */
-  filtering: PropTypes.bool,
   /** Autocomplete prop: Are there more results? */
   paginated: PropTypes.bool,
   /** Autocomplete prop: How should we relay that more results exist? */
@@ -84,7 +82,6 @@ const defaultProps = {
   placeholder: 'Select',
   type: 'select',
   onFilter: null,
-  filtering: false,
   paginated: false,
   paginationWarning: 'Viewing the first page of results.',
   actionLabel: undefined,
@@ -319,7 +316,6 @@ class Select extends Component {
       value,
       placeholder,
       required,
-      filtering,
       paginated,
       paginationWarning,
     } = this.props;
@@ -413,7 +409,6 @@ class Select extends Component {
           onEscape={closeAndFocusButton}
           onChange={onValueChange}
           onFocusItem={onFocusItem}
-          filtering={filtering}
           paginated={paginated}
           paginationWarning={paginationWarning}
           style={menuStyle}

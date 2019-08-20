@@ -16,7 +16,6 @@ import {
 
 import OptionMenuListItem from './OptionMenuListItem';
 import Icon from '../../library/icon';
-import Loading from '../../library/loading';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -39,7 +38,6 @@ const propTypes = {
   onEscape: PropTypes.func,
   onFocusItem: PropTypes.func,
   onBlur: PropTypes.func,
-  filtering: PropTypes.bool,
   paginated: PropTypes.bool,
   paginationWarning: PropTypes.string,
   className: PropTypes.string,
@@ -58,7 +56,6 @@ const defaultProps = {
   onActionClick() {},
   onEscape() {},
   onFocusItem() {},
-  filtering: false,
   paginated: false,
   paginationWarning: '',
   style: {},
@@ -292,7 +289,6 @@ class OptionMenuList extends Component {
       onBlur,
       focusedIndex: focussed,
       onFocusItem,
-      filtering,
       paginated,
       paginationWarning,
       ...rest
@@ -304,46 +300,41 @@ class OptionMenuList extends Component {
 
     const selectionSet = getSelectionSet(selected);
     const focusedId = getFocusedId(focusedIndex, id, options);
-    let list;
 
-    if (filtering || !options.length) {
-      list = <Loading size="small" className="rc-menu-list-loader" />;
-    } else {
-      list = (
-        <ul
-          id={id}
-          role="listbox"
-          tabIndex={0}
-          className="rc-menu-list-inner"
-          aria-activedescendant={focusedId}
-          aria-multiselectable={multiple}
-          onKeyDown={onKeyDown}
-          onFocus={onFocus}
-          onBlur={onMenuBlur}
-          ref={menu => {
-            this.menu = menu;
-          }}
-          {...rest}
-        >
-          {options.map(({ value, label, icon }, index) => (
-            <OptionMenuListItem
-              id={getOptionId(id, value)}
-              key={value}
-              focused={index === focusedIndex}
-              selected={selectionSet.has(value)}
-              icon={icon}
-              onClick={() => onClickItem(value)}
-              onMouseEnter={() => onMouseEnterItem(index)}
-              ref={option => {
-                this.optionRefs[index] = option;
-              }}
-            >
-              {label}
-            </OptionMenuListItem>
-          ))}
-        </ul>
-      );
-    }
+    const list = (
+      <ul
+        id={id}
+        role="listbox"
+        tabIndex={0}
+        className="rc-menu-list-inner"
+        aria-activedescendant={focusedId}
+        aria-multiselectable={multiple}
+        onKeyDown={onKeyDown}
+        onFocus={onFocus}
+        onBlur={onMenuBlur}
+        ref={menu => {
+          this.menu = menu;
+        }}
+        {...rest}
+      >
+        {options.map(({ value, label, icon }, index) => (
+          <OptionMenuListItem
+            id={getOptionId(id, value)}
+            key={value}
+            focused={index === focusedIndex}
+            selected={selectionSet.has(value)}
+            icon={icon}
+            onClick={() => onClickItem(value)}
+            onMouseEnter={() => onMouseEnterItem(index)}
+            ref={option => {
+              this.optionRefs[index] = option;
+            }}
+          >
+            {label}
+          </OptionMenuListItem>
+        ))}
+      </ul>
+    );
 
     let pagination;
 
