@@ -37,6 +37,7 @@ const propTypes = {
   onActionClick: PropTypes.func,
   onEscape: PropTypes.func,
   onFocusItem: PropTypes.func,
+  onClickItem: PropTypes.func,
   onBlur: PropTypes.func,
   paginated: PropTypes.bool,
   paginationWarning: PropTypes.string,
@@ -56,6 +57,7 @@ const defaultProps = {
   onActionClick() {},
   onEscape() {},
   onFocusItem() {},
+  onClickItem() {},
   paginated: false,
   paginationWarning: '',
   style: {},
@@ -110,7 +112,11 @@ class OptionMenuList extends Component {
   }
 
   onClickItem(value) {
+    const { onClickItem } = this.props;
+
     this.select(value);
+
+    onClickItem();
   }
 
   onMouseEnterItem(focusedIndex) {
@@ -139,7 +145,7 @@ class OptionMenuList extends Component {
   }
 
   onKeyDown(e) {
-    const { onEscape } = this.props;
+    const { onEscape, onClickItem } = this.props;
 
     switch (e.keyCode) {
       case UP_KEY_CODE: {
@@ -165,6 +171,7 @@ class OptionMenuList extends Component {
       case SPACE_KEY_CODE:
       case ENTER_KEY_CODE: {
         this.selectFocusedItem();
+        onClickItem();
         cancelEvent(e);
         break;
       }
@@ -291,6 +298,7 @@ class OptionMenuList extends Component {
       onFocusItem,
       paginated,
       paginationWarning,
+      onClickItem: onClick,
       ...rest
     } = this.props;
 

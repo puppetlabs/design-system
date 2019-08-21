@@ -152,7 +152,7 @@ class Select extends Component {
   }
 
   onValueChange(listValue) {
-    const { onChange, type, onFilter, options } = this.props;
+    const { onChange, type, onFilter } = this.props;
 
     if (isControlled(this.props)) {
       onChange(listValue);
@@ -166,10 +166,6 @@ class Select extends Component {
       }
 
       this.setState({ focusedIndex: 0 });
-    }
-
-    if (options.filter(option => option.value === listValue).length) {
-      this.closeAndFocusButton();
     }
   }
 
@@ -215,6 +211,8 @@ class Select extends Component {
 
           if (filteredOptions[focusedIndex]) {
             this.onValueChange(filteredOptions[focusedIndex].value);
+
+            this.closeAndFocusButton();
           }
           break;
         }
@@ -411,6 +409,7 @@ class Select extends Component {
           onEscape={closeAndFocusButton}
           onChange={onValueChange}
           onFocusItem={onFocusItem}
+          onClickItem={closeAndFocusButton}
           paginated={paginated}
           paginationWarning={paginationWarning}
           style={menuStyle}
