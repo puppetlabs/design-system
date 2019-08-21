@@ -38,7 +38,7 @@ const style = { margin: 10 };
 
 ### Autocomplete
 
-With type `autocomplete`, the Select input will accept text and provide filtered menu options accordingly. Full keyboard navigation of the menu options is retained. Where necessary, polling for new filter options can elicit a loading state.
+With type `autocomplete`, the Select input will accept text and provide filtered menu options accordingly. Full keyboard navigation of the menu options is retained.
 
 ```jsx
 const options = [
@@ -66,42 +66,6 @@ const style = { margin: 10 };
     onChange={value1 => {
       console.log('New Value:', value1);
       setState({ value1 });
-    }}
-    type="autocomplete"
-  />
-</div>;
-```
-
-### Autocomplete with polling
-
-```jsx
-const options = [
-  { value: 'apple', label: 'apple' },
-  { value: 'orange', label: 'orange' },
-  { value: 'pear', label: 'pear' },
-  { value: 'banana', label: 'banana' },
-  { value: 'kiwi', label: 'kiwi' },
-  { value: 'watermelon', label: 'watermelon' },
-  { value: 'pineapple', label: 'pineapple' },
-  { value: 'strawberry', label: 'strawberry' },
-  { value: 'raspberry', label: 'raspberry' },
-];
-
-const style = { margin: 10 };
-
-<div>
-  <Select
-    id="button-select-two"
-    name="select-example-two"
-    options={options}
-    placeholder="Select your fruit (with fake polling)"
-    style={style}
-    filtering={state.filtering}
-    value={state.value1}
-    onChange={value1 => {
-      console.log('New Value:', value1);
-      setState({ value1, filtering: true });
-      setTimeout(function(){ setState({ filtering: false }); }, 1000);
     }}
     type="autocomplete"
   />

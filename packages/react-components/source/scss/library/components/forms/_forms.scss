@@ -74,20 +74,10 @@
 
 .rc-form-field-label {
   @include puppet-type-label(medium);
-  display: flex;
+  display: block;
   letter-spacing: $puppet-type-spacing-medium;
   line-height: $puppet-common-spacing-base * 4;
   margin-bottom: $puppet-common-spacing-base;
-
-  .rc-form-field-label-text {
-    flex: 1;
-  }
-
-  .rc-loading {
-    display: inline;
-    padding-left: $puppet-common-spacing-base;
-    width: unset;
-  }
 }
 
 .rc-form-field-description {

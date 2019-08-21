@@ -10,7 +10,6 @@ import Select from '../select';
 import Switch from '../switch';
 import Checkbox from '../checkbox';
 import Icon from '../icon';
-import Loading from '../loading';
 
 const supportedTypes = [
   ...INPUT_SUPPORTED_TYPES,
@@ -46,8 +45,6 @@ const propTypes = {
   inline: PropTypes.bool,
   /** This will be used by the parent `Form` to track updates. */
   onChange: PropTypes.func,
-  /* Are the field options filtering */
-  filtering: PropTypes.bool,
   /** Optional additional className */
   className: PropTypes.string,
   /** Optional additional inline styles */
@@ -66,7 +63,6 @@ const defaultProps = {
   onChange() {},
   className: '',
   style: {},
-  filtering: false,
 };
 
 /**
@@ -80,7 +76,6 @@ export const formInputInterface = omit(
     'className',
     'description',
     'style',
-    'filtering',
   ],
   propTypes,
 );
@@ -155,7 +150,6 @@ class FormField extends React.Component {
         'style',
         'requiredFieldMessage',
         'validator',
-        'filtering',
       ],
       this.props,
     );
@@ -166,27 +160,13 @@ class FormField extends React.Component {
   }
 
   render() {
-    const {
-      type,
-      name,
-      label,
-      className,
-      inline,
-      error,
-      style,
-      filtering,
-    } = this.props;
+    const { type, name, label, className, inline, error, style } = this.props;
     const description = this.renderDescription();
     const typeName = this.getTypeName();
     const element = this.renderElement();
-    let loading;
 
     if (type === 'hidden') {
       return element;
-    }
-
-    if (filtering) {
-      loading = <Loading style={{ height: 11, width: 11 }} />;
     }
 
     return (
@@ -209,8 +189,7 @@ class FormField extends React.Component {
             className="rc-form-field-label"
             key="field-label"
           >
-            <span className="rc-form-field-label-text">{label}</span>
-            {loading}
+            {label}
           </label>
           {element}
         </div>
