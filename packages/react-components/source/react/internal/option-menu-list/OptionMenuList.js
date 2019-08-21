@@ -96,7 +96,7 @@ class OptionMenuList extends Component {
 
   componentWillReceiveProps(props) {
     const { options, focusedIndex } = props;
-    const { focusedIndex: oldFocusedIndex } = this.props;
+    const { focusedIndex: oldFocusedIndex } = this.state;
 
     if (options.length && focusedIndex !== oldFocusedIndex) {
       this.focusItem(focusedIndex);
@@ -237,10 +237,13 @@ class OptionMenuList extends Component {
     /**
      * Scrolls newly focused item into view if it is not
      */
-    scrollIntoView(this.optionRefs[focusedIndex], {
-      block: 'end',
-      scrollMode: 'if-needed',
-    });
+    const item = this.optionRefs[focusedIndex];
+    if (item) {
+      scrollIntoView(item, {
+        block: 'end',
+        scrollMode: 'if-needed',
+      });
+    }
   }
 
   select(value) {
