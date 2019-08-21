@@ -249,11 +249,13 @@ class Select extends Component {
   }
 
   getOptions() {
-    const { options, value, type } = this.props;
+    const { options, value, type, onFilter } = this.props;
 
     let filteredOptions = options;
 
-    if (value && type === AUTOCOMPLETE) {
+    // If the ingesting app uses the onFilter event handler, it should provide the filtered options
+    // Otherwise, let's filter the presumably static list here
+    if (value && type === AUTOCOMPLETE && !onFilter) {
       filteredOptions = options.filter(
         option => option.value.toLowerCase().indexOf(value.toLowerCase()) > -1,
       );
