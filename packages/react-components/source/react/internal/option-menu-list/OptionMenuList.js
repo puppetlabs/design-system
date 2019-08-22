@@ -31,11 +31,15 @@ const propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
+  focusedIndex: PropTypes.number,
   actionLabel: PropTypes.string,
   onChange: PropTypes.func,
   onActionClick: PropTypes.func,
   onEscape: PropTypes.func,
+  onFocusItem: PropTypes.func,
+  onClickItem: PropTypes.func,
   onBlur: PropTypes.func,
+  footer: PropTypes.node,
   className: PropTypes.string,
   style: PropTypes.shape({}),
 };
@@ -46,17 +50,21 @@ const defaultProps = {
   onBlur() {},
   className: '',
   selected: null,
+  focusedIndex: 0,
   onChange() {},
   actionLabel: 'Apply',
   onActionClick() {},
   onEscape() {},
+  onFocusItem() {},
+  onClickItem() {},
+  footer: null,
   style: {},
 };
 
 const getOptionId = (id, value) => `${id}-${value}`;
 
 const getFocusedId = (focusedIndex, id, options) =>
-  isNil(focusedIndex)
+  isNil(focusedIndex) || focusedIndex >= options.length
     ? undefined
     : getOptionId(id, options[focusedIndex].value);
 
@@ -67,22 +75,30 @@ class OptionMenuList extends Component {
   constructor(props) {
     super(props);
 
-    const { options } = this.props;
+    const { options, focusedIndex } = this.props;
 
     this.state = {
-      focusedIndex: options.length ? 0 : null,
+      focusedIndex: options.length ? focusedIndex : null,
     };
 
     this.optionRefs = [];
 
     this.onClickItem = this.onClickItem.bind(this);
     this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
-    this.onMouseLeave = this.onMouseLeave.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyDownInAction = this.onKeyDownInAction.bind(this);
     this.onFocus = this.onFocus.bind(this);
     this.onMenuBlur = this.onMenuBlur.bind(this);
     this.onActionBlur = this.onActionBlur.bind(this);
+  }
+
+  componentWillReceiveProps(props) {
+    const { options, focusedIndex } = props;
+    const { focusedIndex: oldFocusedIndex } = this.state;
+
+    if (options.length && focusedIndex !== oldFocusedIndex) {
+      this.focusItem(focusedIndex);
+    }
   }
 
   onFocus() {
@@ -94,19 +110,15 @@ class OptionMenuList extends Component {
   }
 
   onClickItem(value) {
+    const { onClickItem } = this.props;
+
     this.select(value);
+
+    onClickItem();
   }
 
   onMouseEnterItem(focusedIndex) {
-    this.setState({
-      focusedIndex,
-    });
-  }
-
-  onMouseLeave() {
-    this.setState({
-      focusedIndex: null,
-    });
+    this.focusItem(focusedIndex);
   }
 
   onArrowUp() {
@@ -131,7 +143,7 @@ class OptionMenuList extends Component {
   }
 
   onKeyDown(e) {
-    const { onEscape } = this.props;
+    const { onEscape, onClickItem } = this.props;
 
     switch (e.keyCode) {
       case UP_KEY_CODE: {
@@ -157,6 +169,7 @@ class OptionMenuList extends Component {
       case SPACE_KEY_CODE:
       case ENTER_KEY_CODE: {
         this.selectFocusedItem();
+        onClickItem();
         cancelEvent(e);
         break;
       }
@@ -215,15 +228,20 @@ class OptionMenuList extends Component {
   }
 
   focusItem(focusedIndex) {
-    this.setState({ focusedIndex });
+    const { onFocusItem } = this.props;
+
+    this.setState({ focusedIndex }, onFocusItem(focusedIndex));
 
     /**
      * Scrolls newly focused item into view if it is not
      */
-    scrollIntoView(this.optionRefs[focusedIndex], {
-      block: 'end',
-      scrollMode: 'if-needed',
-    });
+    const item = this.optionRefs[focusedIndex];
+    if (item) {
+      scrollIntoView(item, {
+        block: 'end',
+        scrollMode: 'if-needed',
+      });
+    }
   }
 
   select(value) {
@@ -259,7 +277,6 @@ class OptionMenuList extends Component {
     const {
       onClickItem,
       onMouseEnterItem,
-      onMouseLeave,
       onKeyDown,
       onKeyDownInAction,
       onFocus,
@@ -278,11 +295,60 @@ class OptionMenuList extends Component {
       className,
       style,
       onBlur,
+      focusedIndex: focussed,
+      onFocusItem,
+      footer,
+      onClickItem: onClick,
       ...rest
     } = this.props;
 
+    if (!options.length) {
+      return null;
+    }
+
     const selectionSet = getSelectionSet(selected);
     const focusedId = getFocusedId(focusedIndex, id, options);
+
+    const list = (
+      <ul
+        id={id}
+        role="listbox"
+        tabIndex={0}
+        className="rc-menu-list-inner"
+        aria-activedescendant={focusedId}
+        aria-multiselectable={multiple}
+        onKeyDown={onKeyDown}
+        onFocus={onFocus}
+        onBlur={onMenuBlur}
+        ref={menu => {
+          this.menu = menu;
+        }}
+        {...rest}
+      >
+        {options.map(({ value, label, icon }, index) => (
+          <OptionMenuListItem
+            id={getOptionId(id, value)}
+            key={value}
+            focused={index === focusedIndex}
+            selected={selectionSet.has(value)}
+            icon={icon}
+            onClick={() => onClickItem(value)}
+            onMouseEnter={() => onMouseEnterItem(index)}
+            ref={option => {
+              this.optionRefs[index] = option;
+            }}
+          >
+            {label}
+          </OptionMenuListItem>
+        ))}
+      </ul>
+    );
+
+    let listFooter;
+
+    if (footer) {
+      listFooter = <span className="rc-menu-footer">{footer}</span>;
+    }
 
     return (
       <div
@@ -296,39 +362,8 @@ class OptionMenuList extends Component {
         )}
         style={style}
       >
-        <ul
-          id={id}
-          role="listbox"
-          tabIndex={0}
-          className="rc-menu-list-inner"
-          aria-activedescendant={focusedId}
-          aria-multiselectable={multiple}
-          onMouseLeave={onMouseLeave}
-          onKeyDown={onKeyDown}
-          onFocus={onFocus}
-          onBlur={onMenuBlur}
-          ref={menu => {
-            this.menu = menu;
-          }}
-          {...rest}
-        >
-          {options.map(({ value, label, icon }, index) => (
-            <OptionMenuListItem
-              id={getOptionId(id, value)}
-              key={value}
-              focused={index === focusedIndex}
-              selected={selectionSet.has(value)}
-              icon={icon}
-              onClick={() => onClickItem(value)}
-              onMouseEnter={() => onMouseEnterItem(index)}
-              ref={option => {
-                this.optionRefs[index] = option;
-              }}
-            >
-              {label}
-            </OptionMenuListItem>
-          ))}
-        </ul>
+        {list}
+        {listFooter}
         {multiple && (
           <button
             type="button"
