@@ -39,8 +39,7 @@ const propTypes = {
   onFocusItem: PropTypes.func,
   onClickItem: PropTypes.func,
   onBlur: PropTypes.func,
-  paginated: PropTypes.bool,
-  paginationWarning: PropTypes.string,
+  footer: PropTypes.node,
   className: PropTypes.string,
   style: PropTypes.shape({}),
 };
@@ -58,8 +57,7 @@ const defaultProps = {
   onEscape() {},
   onFocusItem() {},
   onClickItem() {},
-  paginated: false,
-  paginationWarning: '',
+  footer: null,
   style: {},
 };
 
@@ -299,8 +297,7 @@ class OptionMenuList extends Component {
       onBlur,
       focusedIndex: focussed,
       onFocusItem,
-      paginated,
-      paginationWarning,
+      footer,
       onClickItem: onClick,
       ...rest
     } = this.props;
@@ -347,13 +344,10 @@ class OptionMenuList extends Component {
       </ul>
     );
 
-    let pagination;
+    let listFooter;
 
-    if (paginated && paginationWarning) {
-      // TODO: Get sign off on this prompt and upgrade to pagination controls if appropriate
-      pagination = (
-        <span className="rc-menu-pagination">{paginationWarning}</span>
-      );
+    if (footer) {
+      listFooter = <span className="rc-menu-footer">{footer}</span>;
     }
 
     return (
@@ -369,7 +363,7 @@ class OptionMenuList extends Component {
         style={style}
       >
         {list}
-        {pagination}
+        {listFooter}
         {multiple && (
           <button
             type="button"

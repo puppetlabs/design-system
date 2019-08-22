@@ -53,13 +53,11 @@ const propTypes = {
    * Text to render as the action label in multiple mode
    * @ignore
    */
+  actionLabel: PropTypes.string, //eslint-disable-line
   /** Autocomplete prop: Fires when search is updated */
   onFilter: PropTypes.func,
-  /** Autocomplete prop: Are there more results? */
-  paginated: PropTypes.bool,
-  /** Autocomplete prop: How should we relay that more results exist? */
-  paginationWarning: PropTypes.string,
-  actionLabel: PropTypes.string, //eslint-disable-line
+  /** Optional ability to append node (ie. disclaimer) to bottom of menu list */
+  footer: PropTypes.node,
   /** Anchor orientation of the dropdown menu */
   anchor: anchorOrientation,
   /** Is a value required?  */
@@ -82,8 +80,7 @@ const defaultProps = {
   placeholder: 'Select',
   type: 'select',
   onFilter: null,
-  paginated: false,
-  paginationWarning: 'Viewing the first page of results.',
+  footer: null,
   actionLabel: undefined,
   anchor: 'bottom left',
   disabled: false,
@@ -316,8 +313,7 @@ class Select extends Component {
       value,
       placeholder,
       required,
-      paginated,
-      paginationWarning,
+      footer,
     } = this.props;
 
     let input;
@@ -410,8 +406,7 @@ class Select extends Component {
           onChange={onValueChange}
           onFocusItem={onFocusItem}
           onClickItem={closeAndFocusButton}
-          paginated={paginated}
-          paginationWarning={paginationWarning}
+          footer={footer}
           style={menuStyle}
           actionLabel={getActionLabel(this.props)}
           ref={menu => {
