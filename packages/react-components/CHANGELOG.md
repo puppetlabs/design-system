@@ -1,33 +1,42 @@
-# 5.4.2
+# 5.5.0
+
 - Add autocomplete type for Select
 
 # 5.4.1
+
 - Fix shrug and lock icons
 
 # 5.4.0
+
 - Add project nebula logo
 - Add invite, shrug, and lock icons
 - Update some component documentation
 
 # 5.3.0
+
 - Add corejs as top-level dependency
 - Add contract and spaceship icons
 
 # 5.2.0
+
 - Add Card.Action component for a single action
 - Don't disable cancel button when entire form is disabled
 - Small styling bug fix in dropdown
 
 # 5.1.0
+
 - Add ConfirmationModal component
 
 # 5.0.2
+
 - Truncate text in sidebar footer details
 
 # 5.0.1
+
 - Support navigation links in sidebar footer
 
 # 5.0.0
+
 - Release stable branch
 
 # 5.0.0-alpha.30
