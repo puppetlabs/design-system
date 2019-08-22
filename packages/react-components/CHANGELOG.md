@@ -1,3 +1,5 @@
+# 5.4.2
+- Add autocomplete type for Select
 
 # 5.4.1
 - Fix shrug and lock icons
