@@ -1,6 +1,6 @@
 {
   "name": "@puppet/design-system-website",
-  "version": "1.2.1",
+  "version": "1.2.2",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "scripts": {
@@ -49,7 +49,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.4.1",
+    "@puppet/react-components": "^5.5.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-hot-loader": "^4.12.11",
