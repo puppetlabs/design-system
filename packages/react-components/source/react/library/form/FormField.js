@@ -16,6 +16,7 @@ const supportedTypes = [
   'checkbox',
   'switch',
   'select',
+  'autocomplete',
 ];
 
 const propTypes = {
