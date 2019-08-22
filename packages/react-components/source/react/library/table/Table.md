@@ -1,7 +1,17 @@
-The table component renders arrays of data in a tabular form. It does not handle
-pagination, sorting, or filtering and therefore should be used in simple cases.
+## Overview
+
+Tables display data and sometimes allow users to take action on that data. Tables can contain other UI elements, like links or buttons. Table design is modular, with discreet options available to support a variety of use cases. The table component renders arrays of data in a tabular form. It does not handle pagination, sorting, or filtering and therefore should be used in simple cases.
+
+
+### Microcopy
+
+* Use headings to eliminate redundant words in columns. For example, instead of Version 3.8.4 and Version 3.8.5, title the column Version, and use only the version numbers in the table cells. This makes it easier for users to scan the options and reduces word count for Localization. Use sentence case capitalization.
+* Use capitalization appropriate to the item named in the cell. For example, if the cell lists an environment, use the same capitalization as the environment name.
+
 
 ### Basic use
+
+A basic table displays content and doesn't add additional capabilities.
 
 <!-- prettier-ignore-start -->
 ```jsx
@@ -15,8 +25,8 @@ const data = [
 ];
 
 const columns = [
-  { label: 'Event Type', dataKey: 'eventType' },
-  { label: 'Affected Devices', dataKey: 'affectedDevices' },
+  { label: 'Event type', dataKey: 'eventType' },
+  { label: 'Affected devices', dataKey: 'affectedDevices' },
   { label: 'Detections', dataKey: 'detections' },
 ];
 
@@ -26,8 +36,7 @@ const columns = [
 
 ### Fixed layouts
 
-The `fixed` prop allows the table to be used in fixed layout mode. Explicit widths can be provided
-with the inline `style` parameter on each column or with an additional className.
+The `fixed` prop allows the table to be used in fixed layout mode. Provide explicit widths with the inline `style` parameter on each column or with an additional className.
 
 <!-- prettier-ignore-start -->
 ```jsx
@@ -41,8 +50,8 @@ const data = [
 ];
 
 const columns = [
-  { label: 'Event Type', dataKey: 'eventType', style: { width: '50%' } },
-  { label: 'Affected Devices', dataKey: 'affectedDevices', className: 'column-width-35p' },
+  { label: 'Event type', dataKey: 'eventType', style: { width: '50%' } },
+  { label: 'Affected devices', dataKey: 'affectedDevices', className: 'column-width-35p' },
   { label: 'Detections', dataKey: 'detections' },
 ];
 
@@ -52,7 +61,7 @@ const columns = [
 
 ### Nested Data
 
-The `cellDataGetter` property on each column definition can be used to get nested or computed data from the data array. The method should implement the following signature:
+Use the `cellDataGetter` property on each column definition to get nested or computed data from the data array. The method should implement the following signature:
 
 ```js static
 function ({
@@ -62,7 +71,7 @@ function ({
 }): any
 ```
 
-The default cellDataGetter will grab the `dataKey` attribute.
+The default cellDataGetter grabs the `dataKey` attribute.
 
 <!-- prettier-ignore-start -->
 ```jsx
@@ -91,7 +100,7 @@ const columns = [
 
 ### Custom cell rendering
 
-The `cellRenderer` property on each column definition can be used to render custom data. The method should implement the following signature:
+Use the `cellRenderer` property on each column definition to render custom data. The method should implement the following signature:
 
 ```js static
 function ({
@@ -104,7 +113,7 @@ function ({
 }): node
 ```
 
-The default cellRenderer will render `cellData` as a string.
+The default cellRenderer renders `cellData` as a string.
 
 ```jsx
 import Badge from '../badge';
@@ -134,13 +143,13 @@ const columns = [
 
 ### Row keys
 
-React requires unique keys on iterated elements to ensure performant and bug-free rendering (see [here](https://reactjs.org/docs/lists-and-keys.html#keys)). By default the Table component will attempt to grab an `id` property off each data entry. This can be overriden by passing another unique key:
+React requires unique keys on iterated elements to ensure [performant and bug-free rendering](https://reactjs.org/docs/lists-and-keys.html#keys). By default the Table component will attempt to grab an `id` property off each data entry. This can be overriden by passing another unique key:
 
 ```jsx static
 <Table data={data} columns={columns} rowKey="myUniqueKey" />
 ```
 
-Optional a function returning the unique value can be provided:
+A unique key can also be provided via a function:
 
 ```jsx static
 <Table
