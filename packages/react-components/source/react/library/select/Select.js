@@ -70,6 +70,8 @@ const propTypes = {
   className: PropTypes.string,
   /** Optional inline style passed to the outer element */
   style: PropTypes.shape({}),
+  /** Control the state of the options menu */
+  open: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -88,6 +90,7 @@ const defaultProps = {
   error: '',
   className: '',
   style: {},
+  open: null,
 };
 
 const isControlled = ({ type, applyImmediately }) =>
@@ -101,7 +104,7 @@ class Select extends Component {
     super(props);
 
     this.state = {
-      open: false,
+      open: props.open || false,
       menuStyle: {},
       // The focused menulist item index
       focusedIndex: 0,
@@ -123,13 +126,22 @@ class Select extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
+    let newProps;
+
     if (isControlled(props) || !state.open) {
-      return {
+      newProps = {
         listValue: props.value,
       };
     }
 
-    return null;
+    if (props.open) {
+      newProps = {
+        open: props.open,
+        ...newProps,
+      };
+    }
+
+    return newProps;
   }
 
   onClickButton() {
@@ -223,6 +235,28 @@ class Select extends Component {
           break;
       }
     } else {
+      switch (e.keyCode) {
+        case UP_KEY_CODE: {
+          // prevent cursor going to beginning of input
+
+          cancelEvent(e);
+          break;
+        }
+        case DOWN_KEY_CODE: {
+          // prevent cursor going to end of input
+
+          cancelEvent(e);
+          break;
+        }
+        case ENTER_KEY_CODE: {
+          // prevent form submission
+          cancelEvent(e);
+          break;
+        }
+        default:
+          break;
+      }
+
       this.setState({ open: !open });
     }
   }
