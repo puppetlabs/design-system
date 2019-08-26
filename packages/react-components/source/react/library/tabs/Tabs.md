@@ -1,14 +1,16 @@
-The Tabs component is a lightly styled wrapper that expects nested Tabs.Tab components. It requires a unique id for accessibility and can optionally take a type prop for secondary styling. It offers both a controlled and uncontrolled mode, dependent on the presence of an onChange prop.
+## Overview
 
-Each Tabs.Tab requires a unique `id` and a string `title`. Component children are propagated through to the relevant tab panel.
+Tabs allow users to toggle between sets of related content within the same content area. Use tabs to switch between variations of the same content (e.g. simple vs. advanced forms).
 
----
+The Tabs component is a lightly styled wrapper that expects nested Tabs. Tab components require a unique `id` for accessibility, a string `title` and optionally take a `type` prop for secondary styling. Component children are propagated through to the relevant tab panel. It offers both a controlled and uncontrolled mode, dependent on the presence of an `onChange` prop. By default, the Tabs component handles all interactions as users switch between tabs. An optional `initialTab` prop can be used.
 
-### Basic Use (uncontrolled)
+### Microcopy
 
-_By default the Tabs component will handle all interactions as users switch between tabs. An optional initialTab prop can be used_
+* Use a single noun or noun phrase that describes the content of the tab, for example, Facts, Reports, or Activity Log.
 
-Default Tabs:
+## Types
+
+### Primary
 
 ```jsx
 <Tabs>
@@ -22,7 +24,7 @@ Default Tabs:
 </Tabs>
 ```
 
-Secondary Tabs:
+### Secondary
 
 ```jsx
 <Tabs type="secondary" initialTab={2}>
@@ -39,9 +41,9 @@ Secondary Tabs:
 </Tabs>
 ```
 
-### Controlled Mode
+## Controlled Mode
 
-_The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected. In this mode we recommend supplying a unique `id` to each Tab element so that the active tab is easier to track. If no id is provided the Tabs component will use the positional index._
+The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected. In this mode we recommend supplying a unique `id` to each Tab element so that the active tab is easier to track. If no id is provided the Tabs component will use the positional index.
 
 ```jsx
 class MyPageWithTabs extends React.Component {
