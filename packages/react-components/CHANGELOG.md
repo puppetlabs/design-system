@@ -1,3 +1,9 @@
+# 5.6.0
+
+- Add `open` prop to the Select component
+- Stop propagation in Select component for key up, key down, and enter events
+- Update docs for Table and Tabs
+
 # 5.5.0
 
 - Add autocomplete type for Select
