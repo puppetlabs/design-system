@@ -70,6 +70,8 @@ const propTypes = {
   className: PropTypes.string,
   /** Optional inline style passed to the outer element */
   style: PropTypes.shape({}),
+  /** Control the state of the options menu */
+  open: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -88,6 +90,7 @@ const defaultProps = {
   error: '',
   className: '',
   style: {},
+  open: null,
 };
 
 const isControlled = ({ type, applyImmediately }) =>
@@ -123,13 +126,33 @@ class Select extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
+    let newProps;
+
     if (isControlled(props) || !state.open) {
-      return {
+      newProps = {
         listValue: props.value,
       };
     }
 
-    return null;
+    return newProps;
+  }
+
+  // If `open` prop is passed as default, let's trigger menu open
+  componentDidMount() {
+    const { open } = this.props;
+
+    if (open) {
+      this.open();
+    }
+  }
+
+  // If `open` prop is updated, let's trigger menu open
+  componentDidUpdate(prevProps) {
+    const { open } = this.props;
+
+    if (open && open !== prevProps.open) {
+      this.open();
+    }
   }
 
   onClickButton() {
@@ -223,6 +246,26 @@ class Select extends Component {
           break;
       }
     } else {
+      switch (e.keyCode) {
+        case UP_KEY_CODE: {
+          // prevent cursor going to beginning of input
+          cancelEvent(e);
+          break;
+        }
+        case DOWN_KEY_CODE: {
+          // prevent cursor going to end of input
+          cancelEvent(e);
+          break;
+        }
+        case ENTER_KEY_CODE: {
+          // prevent form submission
+          cancelEvent(e);
+          break;
+        }
+        default:
+          break;
+      }
+
       this.setState({ open: !open });
     }
   }
@@ -344,6 +387,7 @@ class Select extends Component {
               this.button = button;
             }}
             onChange={onValueChange}
+            autoComplete="off"
           />
         );
         break;
