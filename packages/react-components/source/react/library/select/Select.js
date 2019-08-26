@@ -387,6 +387,7 @@ class Select extends Component {
               this.button = button;
             }}
             onChange={onValueChange}
+            autoComplete="off"
           />
         );
         break;
