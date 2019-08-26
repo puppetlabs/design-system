@@ -3,7 +3,13 @@
   "version": "1.0.1",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
+  "scripts": {
+    "format": "prettier --write **/*.scss && stylelint --fix **/*.scss"
+  },
   "publishConfig": {
     "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
+  },
+  "devDependencies": {
+    "stylelint-config-prettier": "^5.2.0"
   }
 }
