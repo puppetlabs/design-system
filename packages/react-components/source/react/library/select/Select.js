@@ -104,7 +104,7 @@ class Select extends Component {
     super(props);
 
     this.state = {
-      open: props.open || false,
+      open: false,
       menuStyle: {},
       // The focused menulist item index
       focusedIndex: 0,
@@ -134,14 +134,25 @@ class Select extends Component {
       };
     }
 
-    if (props.open) {
-      newProps = {
-        open: props.open,
-        ...newProps,
-      };
-    }
-
     return newProps;
+  }
+
+  // If `open` prop is passed as default, let's trigger menu open
+  componentDidMount() {
+    const { open } = this.props;
+
+    if (open) {
+      this.open();
+    }
+  }
+
+  // If `open` prop is updated, let's trigger menu open
+  componentDidUpdate(prevProps) {
+    const { open } = this.props;
+
+    if (open && open !== prevProps.open) {
+      this.open();
+    }
   }
 
   onClickButton() {
@@ -238,13 +249,11 @@ class Select extends Component {
       switch (e.keyCode) {
         case UP_KEY_CODE: {
           // prevent cursor going to beginning of input
-
           cancelEvent(e);
           break;
         }
         case DOWN_KEY_CODE: {
           // prevent cursor going to end of input
-
           cancelEvent(e);
           break;
         }
