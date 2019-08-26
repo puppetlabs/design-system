@@ -2,7 +2,7 @@
 
 Tabs allow users to toggle between sets of related content within the same content area. Use tabs to switch between variations of the same content (e.g. simple vs. advanced forms).
 
-The Tabs component is a lightly styled wrapper that expects nested Tabs.Tab components which require a unique `id` for accessibility, a string `title` and optionally takes a `type` prop for secondary styling. Component children are propagated through to the relevant tab panel. It offers both a controlled and uncontrolled mode, dependent on the presence of an onChange prop. By default the Tabs component handles all interactions as users switch between tabs. An optional initialTab prop can be used.
+The Tabs component is a lightly styled wrapper that expects nested Tabs. Tab components require a unique `id` for accessibility, a string `title` and optionally take a `type` prop for secondary styling. Component children are propagated through to the relevant tab panel. It offers both a controlled and uncontrolled mode, dependent on the presence of an `onChange` prop. By default, the Tabs component handles all interactions as users switch between tabs. An optional `initialTab` prop can be used.
 
 ### Microcopy
 
