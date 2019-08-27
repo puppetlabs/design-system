@@ -3,7 +3,6 @@
 To use public Sass variables, add `@puppet/sass-variables` to your project:
 
 ```sh
-echo "@puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/" > .npmrc
 npm install @puppet/sass-variables
 ```
 

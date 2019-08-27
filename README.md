@@ -15,7 +15,6 @@ Note: These steps must be completed while on the corporate network or VPN.
 To add the main package, `@puppet/react-components`, to an existing project:
 
 ```sh
-echo "@puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/" > .npmrc
 npm install @puppet/react-components
 ```
 
@@ -24,7 +23,7 @@ npm install @puppet/react-components
 To try out the design system from scratch, generate a new project with uikit:
 
 ```sh
-npm install -g @puppet/uikit --registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm/
+npm install -g @puppet/uikit
 uikit generate project my-project
 ```
 

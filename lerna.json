@@ -1,5 +1,4 @@
 {
   "packages": ["packages/*"],
-  "version": "independent",
-  "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm/"
+  "version": "independent"
 }

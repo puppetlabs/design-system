@@ -7,9 +7,6 @@
     "start": "npm i && npx styleguidist server",
     "styleguide:build": "npm i && npx styleguidist build"
   },
-  "publishConfig": {
-    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
-  },
   "devDependencies": {
     "@babel/core": "^7.4.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",

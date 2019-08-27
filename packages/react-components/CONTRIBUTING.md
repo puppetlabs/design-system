@@ -21,7 +21,7 @@ using [nvm](https://github.com/creationix/nvm).
 Once you've installed Node, install the dependencies for this project with:
 
 ```
-make setup
+npm install
 ```
 
 UI Components includes a styleguide that allows us to test components in
@@ -114,6 +114,11 @@ maintainers. Again, thank you for the contribution!
 
 ## Releasing a new version
 
+New versions are currently released by maintainers using `lerna publish`. Please collaborate with the team in [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) to release a new version. (Note: This process will likely be replaced with automated releases on push to master.)
+
+<!--
+## Releasing a new version
+
 New versions of UI Components are built and published to Artifactory using
 [Puppet Pipelines](http://pipelines.puppet.com/). This happens whenever a commit
 is pushed to the master branch. Ideally, the only commits to master happen via a
@@ -143,6 +148,7 @@ that process:
 5. Upon approval your pull request will be merged by the reviewer. The reviewer
    is responsible for making sure the deployment goes out smoothly, and for
    rolling back otherwise.
+-->
 
 ## Reviewing pull requests
 

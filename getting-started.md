@@ -9,7 +9,7 @@ If you don't have a recent version of Node.js installed locally, install the lat
 Install `uikit`:
 
 ```sh
-npm install -g @puppet/uikit --registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm/
+npm install -g @puppet/uikit
 ```
 
 Generate a web app:

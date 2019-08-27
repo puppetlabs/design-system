@@ -11,8 +11,5 @@
   },
   "devDependencies": {
     "lerna": "^3.13.4"
-  },
-  "publishConfig": {
-    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
   }
 }

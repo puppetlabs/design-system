@@ -3,9 +3,6 @@
   "version": "5.6.0",
   "description": "Collection of reusable React components",
   "main": "build/library.js",
-  "publishConfig": {
-    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
-  },
   "scripts": {
     "analyze": "webpack --config webpack.analyze.config.js",
     "prebuild": "rimraf build",
