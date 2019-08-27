@@ -1,6 +1,9 @@
-name: Node CI
+name: GitHub Pages
 
-on: [push]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   test:
@@ -32,12 +35,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-      if: github.ref == 'master'
+    - run: npm install
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@2.0.1
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
         FOLDER: packages/design-system-website/dist
-        BUILD_SCRIPT: npm install && npm run styleguidist:build
+        BUILD_SCRIPT: (cd packages/design-system-website && npm install && npm run styleguide:build)
         COMMIT_NAME: GitHub Actions
