@@ -1,6 +1,6 @@
 # Puppet UI Toolkit
 
-A toolkit for UI development at Puppet
+A toolkit for generating React projects, components, etc.
 
 ## Prerequisites
 

@@ -3,7 +3,6 @@
   "version": "5.6.0",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
-  "description": "Collection of reusable React components",
   "main": "build/library.js",
   "scripts": {
     "analyze": "webpack --config webpack.analyze.config.js",
