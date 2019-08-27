@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "npm i && npx styleguidist server",
-    "styleguide:build": "npm i && npx styleguidist build"
+    "styleguide:build": "styleguidist build"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

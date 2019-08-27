@@ -7,7 +7,7 @@
     "postinstall": "lerna bootstrap --hoist",
     "test": "./scripts/test",
     "start": "cd packages/design-system-website && npm i && npx styleguidist server",
-    "styleguidist:build": "cd packages/design-system-website && npm i && npx styleguidist build"
+    "styleguide:build": "cd packages/design-system-website && npm run styleguide:build"
   },
   "devDependencies": {
     "lerna": "^3.13.4"
