@@ -1,6 +1,8 @@
 {
   "name": "@puppet/react-components",
   "version": "5.6.0",
+  "author": "Puppet, Inc.",
+  "license": "UNLICENSED",
   "description": "Collection of reusable React components",
   "main": "build/library.js",
   "scripts": {
@@ -17,8 +19,9 @@
     "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'",
     "start": "cd ../design-system-website && npm i && npx styleguidist server"
   },
-  "author": "Puppet, Inc.",
-  "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=12.4.0"
   },

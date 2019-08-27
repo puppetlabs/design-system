@@ -17,6 +17,9 @@
     "test:watch": "jest --watch",
     "watch": "./scripts/watch"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@puppet/react-components": "^5.6.0",
     "@puppet/sass-variables": "^1.1.0",

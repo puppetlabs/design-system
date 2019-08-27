@@ -6,6 +6,9 @@
   "scripts": {
     "format": "prettier --write **/*.scss && stylelint --fix **/*.scss"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "stylelint-config-prettier": "^5.2.0"
   }

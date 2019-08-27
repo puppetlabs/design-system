@@ -3,6 +3,7 @@
   "version": "1.2.3",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
+  "private": true,
   "scripts": {
     "start": "npm i && npx styleguidist server",
     "styleguide:build": "npm i && npx styleguidist build"
