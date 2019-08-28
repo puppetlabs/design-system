@@ -13,9 +13,7 @@
     "test:watch": "jest --watch",
     "format": "eslint --fix src/**/*.{js,jsx} && prettier --write {src}/**/*.{graphql,json,css,md} .babelrc .prettierrc package.json README.md CONTRIBUTING.md",
     "lint": "eslint src/**/*.{js,jsx} postcss.config.js",
-    "prepare": "npm run build",
-    "storybook": "start-storybook -p 6006",ge
-    "build-storybook": "build-storybook"
+    "prepare": "npm run build"
   },
   "publishConfig": {
     "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
