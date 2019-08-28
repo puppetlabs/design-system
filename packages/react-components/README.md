@@ -14,20 +14,9 @@ Components are documented using React Styleguidist, which provides API docs alon
 
 ## Installation
 
-This library is distributed as an npm package on [Artifactory](https://confluence.puppetlabs.com/display/SRE/Artifactory+Basics). As such, you should point to the Artifactory registry for `@puppet` scoped packages by adding and committing the following to an `.npmrc` file in your project.
-
-```sh
-echo "@puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/" > .npmrc
-```
-
-You can then install `react-components` in your project with the following command:
-
 ```sh
 npm install @puppet/react-components
 ```
-
-If you run into issues while installing, please double check that you're either
-on the corporate WiFi or VPN.
 
 ## Setup
 

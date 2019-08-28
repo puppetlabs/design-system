@@ -1,11 +1,9 @@
 {
   "name": "@puppet/react-components",
   "version": "5.6.0",
-  "description": "Collection of reusable React components",
+  "author": "Puppet, Inc.",
+  "license": "UNLICENSED",
   "main": "build/library.js",
-  "publishConfig": {
-    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
-  },
   "scripts": {
     "analyze": "webpack --config webpack.analyze.config.js",
     "prebuild": "rimraf build",
@@ -20,8 +18,9 @@
     "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'",
     "start": "cd ../design-system-website && npm i && npx styleguidist server"
   },
-  "author": "Puppet, Inc.",
-  "license": "UNLICENSED",
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">=12.4.0"
   },

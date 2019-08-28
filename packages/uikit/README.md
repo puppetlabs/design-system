@@ -1,6 +1,6 @@
 # Puppet UI Toolkit
 
-A toolkit for UI development at Puppet
+A toolkit for generating React projects, components, etc.
 
 ## Prerequisites
 
@@ -12,10 +12,10 @@ brew install node@10
 
 ## Installation
 
-To install uikit (or update it to the latest version) globally from Artifactory, making the `uikit` command available in your shell:
+To install uikit (or update it to the latest version) globally, making the `uikit` command available in your shell:
 
 ```sh
-npm install -g @puppet/uikit --registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm/
+npm install -g @puppet/uikit
 ```
 
 ## Generators

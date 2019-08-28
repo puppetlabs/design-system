@@ -15,7 +15,7 @@
     "test:watch": "jest --watch"
   },
   "publishConfig": {
-    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
+    "access": "public"
   },
   "files": [
     "*"

@@ -3,7 +3,5 @@
   "version": "1.0.0",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
-  "publishConfig": {
-    "registry": "https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm__local/"
-  }
+  "private": true
 }
