@@ -4,13 +4,15 @@ content.
 ```jsx
 import Button from '../button';
 
-const [open, setOpen] = React.useState(false);
+initialState = {
+  open: false,
+};
 
 <>
-  <Button onClick={() => setOpen(true)}>Open simple modal</Button>
+  <Button onClick={() => setState({ open: true })}>Open simple modal</Button>
 
-  {open && (
-    <Modal onClose={() => setOpen(false)}>
+  {state.open && (
+    <Modal onClose={() => setState({ open: false })}>
       Non eram nescius, Brute, cum, quae summis ingeniis exquisitaque doctrina
       philosophi Graeco sermone tractavissent, ea Latinis litteris mandaremus,
       fore ut hic noster labor in varias reprehensiones incurreret. nam
@@ -32,13 +34,15 @@ heading at the top and buttons at the bottom are desired respectively.
 ```jsx
 import Button from '../button';
 
-const [open, setOpen] = React.useState(false);
+initialState = {
+  open: false,
+};
 
 <>
-  <Button onClick={() => setOpen(true)}>Open modal with sub-components</Button>
+  <Button onClick={() => setState({ open: true })}>Open modal with sub-components</Button>
 
-  {open && (
-    <Modal onClose={() => setOpen(false)}>
+  {state.open && (
+    <Modal onClose={() => setState({ open: false })}>
       <Modal.Title>Liber Secundus</Modal.Title>
       Hic cum uterque me intueretur seseque ad audiendum significarent paratos, Primum,
       inquam, deprecor, ne me tamquam philosophum putetis scholam vobis aliquam explicaturum,
@@ -49,8 +53,8 @@ const [open, setOpen] = React.useState(false);
       vellet audire. audax negotium, dicerem impudens, nisi hoc institutum postea
       translatum ad philosophos nostros esset.
       <Modal.Actions>
-        <Button onClick={() => setOpen(false)}>Ubmitsay</Button>
-        <Button type="tertiary" onClick={() => setOpen(false)}>
+        <Button onClick={() => setState({ open: false })}>Ubmitsay</Button>
+        <Button type="tertiary" onClick={() => setState({ open: false })}>
           Ancelcay
         </Button>
       </Modal.Actions>
@@ -66,19 +70,21 @@ composing these components.
 import Button from '../button';
 import Form from '../form';
 
-const [open, setOpen] = React.useState(false);
+initialState = {
+  open: false,
+};
 
 <>
-  <Button onClick={() => setOpen(true)}>Open modal with form</Button>
+  <Button onClick={() => setState({ open: true })}>Open modal with form</Button>
 
-  {open && (
-    <Modal onClose={() => setOpen(false)}>
+  {state.open && (
+    <Modal onClose={() => setState({ open: false })}>
       <Modal.Title>Replete ex hac forma</Modal.Title>
       <Form
         submittable
         cancellable
-        onSubmit={() => setOpen(false)}
-        onCancel={() => setOpen(false)}
+        onSubmit={() => setState({ open: false })}
+        onCancel={() => setState({ open: false })}
       >
         <Form.Field
           type="email"
@@ -117,15 +123,17 @@ required.
 ```jsx
 import Button from '../button';
 
-const [open, setOpen] = React.useState(false);
+initialState = {
+  open: false,
+};
 
 <>
-  <Button onClick={() => setOpen(true)}>
+  <Button onClick={() => setState({ open: true })}>
     Open modal that is hard to close
   </Button>
 
-  {open && (
-    <Modal closeOnEscapeAndOverlay={false} onClose={() => setOpen(false)}>
+  {state.open && (
+    <Modal closeOnEscapeAndOverlay={false} onClose={() => setState({ open: false })}>
       This modal can only be closed by clicking the "×" button in the
       upper-right of the modal, but not by hitting the escape key or by clicking
       outside the modal.

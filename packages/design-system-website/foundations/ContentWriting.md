@@ -24,6 +24,7 @@ Information strings provide current data about a page (such as minutes since dat
 ## Example
 The following sample pattern shows how to lay out type on a page. It provides reasonable defaults for long-form content on a page. Always consult with your technical writer from Tech Pubs to get help crafting effective UI content.
 
+<!--
 ```jsx
 <Content>
   <h2>Examples</h2>
@@ -87,6 +88,7 @@ The following sample pattern shows how to lay out type on a page. It provides re
   </p>
 </Content>
 ```
+-->
 
 ## Related
 * [Writing guidelines on Confluence](https://confluence.puppetlabs.com/display/Writing/Puppet+content+style+guide)

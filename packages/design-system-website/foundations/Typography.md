@@ -15,6 +15,7 @@ Inconsolate is our fixed-width typeface for used to represent code and code exam
 ## Sizes
 All font sizes and their associated line-heights are based on our 4px grid.
 
+<!--
 ```
   <Heading as="h1" hero>Hero</Heading>
   <text size="small">Large number is chart gauges</text>
@@ -60,6 +61,7 @@ All font sizes and their associated line-heights are based on our 4px grid.
   <text size="small">Breadcrumbs, captions, and form field descriptions</text>
   <text size="small">Open sans, semi-bold 600, 11px/20px</text>
 ```
+-->
 
 ## Related
 * [Content](#/React%20Components/Content) : used to place formatted text within other components. Provides examples and rules for adding content to a page

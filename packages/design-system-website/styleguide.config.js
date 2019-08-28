@@ -44,10 +44,10 @@ module.exports = {
       name: 'Foundations',
       sectionDepth: 1,
       sections: [
-        {
-          name: 'Accessibility',
-          content: 'foundations/Accessibility.md',
-        },
+        // {
+        //   name: 'Accessibility',
+        //   content: 'foundations/Accessibility.md',
+        // },
         {
           name: 'Content Writing',
           content: 'foundations/ContentWriting.md',
@@ -72,6 +72,7 @@ module.exports = {
         '**/FadeInAndOut.js',
         '**/breadcrumb/Section.js',
         '**/breadcrumb/Separator.js',
+        '**/card/CardAction.js',
         '**/card/CardActionSelect.js',
         '**/card/CardTitle.js',
         '**/card/Section.js',
