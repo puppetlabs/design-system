@@ -68,7 +68,7 @@ Our "stoplight" colors are reserved to apply meaning, or state, within a given c
 <Text color="warning"><strong>Warning</strong> (Red 600): This is used to call attention to specific information or to provide a warning. Can also be used to convey an unknown state IF that could be problematic for the user.</Text>
 ```
 
-# Related
+## Related
 
 * [Color](#/React%20Components/Colors)
 * [Content](#/React%20Components/Content)
