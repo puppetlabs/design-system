@@ -28,5 +28,5 @@ import Link from '../link';
 
 ## Related
 
-* [Tabs](#/React%20Components/Tabs)
+* [Link](#/React%20Components/Link)
 * [Text](#/React%20Components/Text)
