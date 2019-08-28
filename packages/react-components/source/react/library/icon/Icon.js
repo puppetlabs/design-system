@@ -46,6 +46,7 @@ export const AVAILABLE_ICONS = [
   'email',
   'engagement',
   'excel',
+  'export-csv',
   'eye',
   'filters',
   'gear',
