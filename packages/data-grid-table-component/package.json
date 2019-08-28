@@ -11,10 +11,10 @@
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch",
-    "format": "eslint --fix {src,jest}/**/*.{js,jsx,mjs} && prettier --write {src,jest}/**/*.{graphql,json,css,md} .babelrc .prettierrc package.json README.md CONTRIBUTING.md",
-    "lint": "eslint {src,jest}/**/*.{js,jsx,mjs} jest.config.js postcss.config.js",
+    "format": "eslint --fix src/**/*.{js,jsx} && prettier --write {src}/**/*.{graphql,json,css,md} .babelrc .prettierrc package.json README.md CONTRIBUTING.md",
+    "lint": "eslint src/**/*.{js,jsx} postcss.config.js",
     "prepare": "npm run build",
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6006",ge
     "build-storybook": "build-storybook"
   },
   "publishConfig": {
