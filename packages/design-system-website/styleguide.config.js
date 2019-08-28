@@ -72,6 +72,7 @@ module.exports = {
         '**/FadeInAndOut.js',
         '**/breadcrumb/Section.js',
         '**/breadcrumb/Separator.js',
+        '**/card/CardAction.js',
         '**/card/CardActionSelect.js',
         '**/card/CardTitle.js',
         '**/card/Section.js',
