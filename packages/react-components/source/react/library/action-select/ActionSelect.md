@@ -8,7 +8,7 @@ Menus allow a user to select from a list of things. Menus are scrollable if ther
 
 Specific use cases and interactions can be found in the Sketch Styleguide file (under Components / Dialogues / Menu, Menu triggers). 
 
-See also: [Button Select](#/React%20Components/ButtonSelect)
+See also: [Button Select](#/React%20Components/ButtonSelect), [Select](#/React%20Components/Select)
 
 ## Basic use
 
@@ -181,3 +181,4 @@ const style = { display: 'inline-block', margin: 10 };
 *  [CardAction](#/React%20Components/CardAction)
 *  [FormField](#/React%20Components/FormField)
 *  [Modal](#/React%20Components/Modal)
+*  [Select](#/React%20Components/Select)
