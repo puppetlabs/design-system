@@ -1,6 +1,16 @@
+<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Menu</small>
+
+## Overview
+
 The ActionSelect component allows users to execute actions from a dropdown menu list appearing below a button element. It can be rendered with the full set of stylistic options available to the button component. It supports both imperative actions handled with click events and navigation actions with anchor tags.
 
-### Basic use
+Menus allow a user to select from a list of things. Menus are scrollable if there are enough options to warrant it, and can have simple text options, or can be combined with an icon for quicker comprehension. ActionSelect is used to perform an action that doesn’t result in a direct change to the page, otherwise known as a non-stateful action.
+
+Specific use cases and interactions can be found in the Sketch Styleguide file (under Dialogues - Menu, Menu triggers). 
+
+See also: [Button Select](#/React%20Components/ButtonSelect)
+
+## Basic use
 
 Actions are specified by entries in an `actions` array prop. In most cases, action callbacks should be specified with the `onClick` property of each action item. If the action involves navigation, an anchor tag or custom link component with appropriate props (`href` or `to`) can be rendered with the `as` prop. Each action can optionally include an icon.
 
@@ -50,6 +60,8 @@ const style = { display: 'inline-block', margin: 10 };
   />
 </div>;
 ```
+
+## Variations
 
 ### Icon ActionSelect
 
