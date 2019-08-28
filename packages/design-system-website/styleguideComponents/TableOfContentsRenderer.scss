@@ -1,0 +1,23 @@
+@import '~@puppet/sass-variables/index';
+
+.rc-sidebar-navigation {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.pds-filter {
+  margin: 4 * $puppet-common-spacing-base;
+
+  .rc-input {
+    background-color: $puppet-n950;
+    border-color: $puppet-n950;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: $puppet-n400;
+    height: 32px;
+  }
+
+  .rc-input:hover {
+    border-color: $puppet-n900;
+  }
+}

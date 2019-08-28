@@ -6,8 +6,8 @@
     "lint": "lerna run lint",
     "postinstall": "lerna bootstrap --hoist",
     "test": "./scripts/test",
-    "start": "cd packages/design-system-website && styleguidist server",
-    "styleguidist:build": "cd packages/design-system-website && styleguidist build"
+    "start": "cd packages/design-system-website && npm i && npx styleguidist server",
+    "styleguidist:build": "cd packages/design-system-website && npm i && npx styleguidist build"
   },
   "devDependencies": {
     "@babel/preset-stage-2": "^7.0.0",

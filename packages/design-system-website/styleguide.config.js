@@ -20,6 +20,20 @@ module.exports = {
   },
   pagePerSection: true,
   skipComponentsWithoutExample: true,
+  styleguideComponents: {
+    ComponentsListRenderer: path.join(
+      __dirname,
+      'styleguideComponents/ComponentsListRenderer',
+    ),
+    StyleGuideRenderer: path.join(
+      __dirname,
+      'styleguideComponents/StyleGuideRenderer',
+    ),
+    TableOfContentsRenderer: path.join(
+      __dirname,
+      'styleguideComponents/TableOfContentsRenderer',
+    ),
+  },
 
   sections: [
     {
@@ -40,8 +54,26 @@ module.exports = {
     },
     // The below section gets hidden when `skipComponentsWithoutExample` is true
     {
-      name: 'Hello world',
-      description: 'Hello world!',
+      name: 'Foundations',
+      sectionDepth: 1,
+      sections: [
+        {
+          name: 'Accessibility',
+          content: 'foundations/Accessibility.md',
+        },
+        {
+          name: 'Content Writing',
+          content: 'foundations/ContentWriting.md',
+        },
+        {
+          name: 'Iconography',
+          content: 'foundations/Iconography.md',
+        },
+        {
+          name: 'Typography',
+          content: 'foundations/Typography.md',
+        },
+      ],
     },
     {
       name: 'React Components',

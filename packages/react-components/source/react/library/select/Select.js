@@ -4,8 +4,19 @@ import PropTypes from 'prop-types';
 import OptionMenuList from '../../internal/option-menu-list';
 import { anchorOrientation } from '../../helpers/customPropTypes';
 import Icon from '../icon';
+import Input from '../input';
 import SelectTarget from './SelectTarget';
-import { getDropdownPosition, focus } from '../../helpers/statics';
+import { getDropdownPosition, focus, cancelEvent } from '../../helpers/statics';
+import {
+  ENTER_KEY_CODE,
+  DOWN_KEY_CODE,
+  UP_KEY_CODE,
+  ESC_KEY_CODE,
+} from '../../constants';
+
+const SELECT = 'select';
+const MULTISELECT = 'multiselect';
+const AUTOCOMPLETE = 'autocomplete';
 
 const propTypes = {
   /** Unique id */
@@ -36,17 +47,17 @@ const propTypes = {
   applyImmediately: PropTypes.bool, // eslint-disable-line
   /** Text rendered when no value is selected */
   placeholder: PropTypes.string,
-  /**
-   * Select or multiselect. This is a secret prop as multiselection is not fully supported
-   *
-   * @ignore
-   */
-  type: PropTypes.oneOf(['select', 'multiselect']),
+  /** Select or autocomplete. Multiselection is NOT yet fully supported */
+  type: PropTypes.oneOf([SELECT, AUTOCOMPLETE, MULTISELECT]),
   /**
    * Text to render as the action label in multiple mode
    * @ignore
    */
   actionLabel: PropTypes.string, //eslint-disable-line
+  /** Autocomplete prop: Fires when search is updated */
+  onFilter: PropTypes.func,
+  /** Optional ability to append node (ie. disclaimer) to bottom of menu list */
+  footer: PropTypes.node,
   /** Anchor orientation of the dropdown menu */
   anchor: anchorOrientation,
   /** Is a value required?  */
@@ -59,6 +70,8 @@ const propTypes = {
   className: PropTypes.string,
   /** Optional inline style passed to the outer element */
   style: PropTypes.shape({}),
+  /** Control the state of the options menu */
+  open: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -68,6 +81,8 @@ const defaultProps = {
   onChange() {},
   placeholder: 'Select',
   type: 'select',
+  onFilter: null,
+  footer: null,
   actionLabel: undefined,
   anchor: 'bottom left',
   disabled: false,
@@ -75,10 +90,11 @@ const defaultProps = {
   error: '',
   className: '',
   style: {},
+  open: null,
 };
 
 const isControlled = ({ type, applyImmediately }) =>
-  type !== 'multiselect' || applyImmediately;
+  type !== MULTISELECT || applyImmediately;
 
 const getActionLabel = ({ actionLabel, applyImmediately }) =>
   actionLabel || (applyImmediately ? 'Done' : 'Apply');
@@ -90,6 +106,8 @@ class Select extends Component {
     this.state = {
       open: false,
       menuStyle: {},
+      // The focused menulist item index
+      focusedIndex: 0,
     };
 
     this.open = this.open.bind(this);
@@ -101,17 +119,40 @@ class Select extends Component {
     this.onBlur = this.onBlur.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
     this.onActionClick = this.onActionClick.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
+    this.onFocusItem = this.onFocusItem.bind(this);
     this.getButtonLabel = this.getButtonLabel.bind(this);
+    this.getOptions = this.getOptions.bind(this);
   }
 
   static getDerivedStateFromProps(props, state) {
+    let newProps;
+
     if (isControlled(props) || !state.open) {
-      return {
+      newProps = {
         listValue: props.value,
       };
     }
 
-    return null;
+    return newProps;
+  }
+
+  // If `open` prop is passed as default, let's trigger menu open
+  componentDidMount() {
+    const { open } = this.props;
+
+    if (open) {
+      this.open();
+    }
+  }
+
+  // If `open` prop is updated, let's trigger menu open
+  componentDidUpdate(prevProps) {
+    const { open } = this.props;
+
+    if (open && open !== prevProps.open) {
+      this.open();
+    }
   }
 
   onClickButton() {
@@ -131,7 +172,7 @@ class Select extends Component {
   }
 
   onValueChange(listValue) {
-    const { onChange, type } = this.props;
+    const { onChange, type, onFilter } = this.props;
 
     if (isControlled(this.props)) {
       onChange(listValue);
@@ -139,8 +180,12 @@ class Select extends Component {
       this.setState({ listValue });
     }
 
-    if (type !== 'multiselect') {
-      this.closeAndFocusButton();
+    if (type === AUTOCOMPLETE) {
+      if (onFilter) {
+        onFilter(listValue);
+      }
+
+      this.setState({ focusedIndex: 0 });
     }
   }
 
@@ -155,10 +200,84 @@ class Select extends Component {
     this.closeAndFocusButton();
   }
 
+  // TODO: We now have key handling here in Select and also in the OptionMenuList.
+  // When we introduce hooks, we should combine this logic under a custom `useFocusIndex` hook.
+
+  // For use in conjunction with autocomplete
+  onKeyDown(e) {
+    const filteredOptions = this.getOptions();
+    const { focusedIndex, open } = this.state;
+
+    if (open) {
+      switch (e.keyCode) {
+        case UP_KEY_CODE: {
+          cancelEvent(e);
+
+          if (focusedIndex === 0) return;
+
+          this.setState({ focusedIndex: focusedIndex - 1 });
+          break;
+        }
+        case DOWN_KEY_CODE: {
+          cancelEvent(e);
+
+          if (focusedIndex + 1 === filteredOptions.length) return;
+
+          this.setState({ focusedIndex: focusedIndex + 1 });
+          break;
+        }
+        case ENTER_KEY_CODE: {
+          cancelEvent(e);
+
+          if (filteredOptions[focusedIndex]) {
+            this.onValueChange(filteredOptions[focusedIndex].value);
+
+            this.closeAndFocusButton();
+          }
+          break;
+        }
+        case ESC_KEY_CODE: {
+          cancelEvent(e);
+
+          this.closeAndFocusButton();
+          break;
+        }
+        default:
+          break;
+      }
+    } else {
+      switch (e.keyCode) {
+        case UP_KEY_CODE: {
+          // prevent cursor going to beginning of input
+          cancelEvent(e);
+          break;
+        }
+        case DOWN_KEY_CODE: {
+          // prevent cursor going to end of input
+          cancelEvent(e);
+          break;
+        }
+        case ENTER_KEY_CODE: {
+          // prevent form submission
+          cancelEvent(e);
+          break;
+        }
+        default:
+          break;
+      }
+
+      this.setState({ open: !open });
+    }
+  }
+
+  onFocusItem(focusedIndex) {
+    this.setState({ focusedIndex });
+  }
+
   getButtonLabel() {
     const { type, options, value } = this.props;
 
-    if (type === 'multiselect' || !value) {
+    if (type === MULTISELECT || !value) {
       return null;
     }
 
@@ -167,9 +286,25 @@ class Select extends Component {
     return selectedOption.label;
   }
 
+  getOptions() {
+    const { options, value, type, onFilter } = this.props;
+
+    let filteredOptions = options;
+
+    // If the ingesting app uses the onFilter event handler, it should provide the filtered options
+    // Otherwise, let's filter the presumably static list here
+    if (value && type === AUTOCOMPLETE && !onFilter) {
+      filteredOptions = options.filter(
+        option => option.value.toLowerCase().indexOf(value.toLowerCase()) > -1,
+      );
+    }
+
+    return filteredOptions;
+  }
+
   closeAndFocusButton() {
-    this.close();
     this.focusButton();
+    this.close();
   }
 
   open() {
@@ -186,7 +321,9 @@ class Select extends Component {
   }
 
   focusMenu() {
-    if (this.menu) {
+    const { type } = this.props;
+
+    if (this.menu && !(type === AUTOCOMPLETE)) {
       this.menu.focusMenu();
     }
   }
@@ -202,20 +339,86 @@ class Select extends Component {
       onBlur,
       closeAndFocusButton,
       onActionClick,
+      getButtonLabel,
+      onKeyDown,
+      onFocusItem,
+      getOptions,
+      open: onOpen,
     } = this;
-    const { open, menuStyle, listValue } = this.state;
+    const { open, menuStyle, listValue, focusedIndex } = this.state;
     const {
       name,
       type,
       disabled,
-      options,
       className,
       style,
       error,
       value,
       placeholder,
       required,
+      footer,
     } = this.props;
+
+    let input;
+
+    switch (type) {
+      case 'autocomplete':
+        input = (
+          <Input
+            id={`${name}-label`}
+            role="combobox"
+            type="text"
+            name={name}
+            value={value || ''}
+            placeholder={placeholder}
+            aria-label={placeholder}
+            required={required}
+            disabled={disabled}
+            error={error}
+            aria-expanded={open}
+            aria-haspopup="listbox"
+            aria-owns={`${name}-menu`}
+            aria-controls={`${name}-menu`}
+            aria-autocomplete="list"
+            onFocus={onOpen}
+            onClick={onOpen}
+            onKeyDown={onKeyDown}
+            inputRef={button => {
+              this.button = button;
+            }}
+            onChange={onValueChange}
+            autoComplete="off"
+          />
+        );
+        break;
+      default:
+        input = (
+          <>
+            <SelectTarget
+              id={`${name}-label`}
+              disabled={disabled}
+              error={error}
+              aria-haspopup="listbox"
+              aria-controls={`${name}-menu`}
+              aria-expanded={open}
+              onClick={onClickButton}
+              value={getButtonLabel()}
+              placeholder={placeholder}
+              aria-label={placeholder}
+              ref={button => {
+                this.button = button;
+              }}
+            />
+            <input
+              type="hidden"
+              name={name}
+              value={value || ''}
+              required={required}
+            />
+          </>
+        );
+        break;
+    }
 
     return (
       <div
@@ -233,40 +436,27 @@ class Select extends Component {
           this.container = container;
         }}
       >
-        <SelectTarget
-          id={`${name}-label`}
-          disabled={disabled}
-          error={error}
-          aria-haspopup="true"
-          aria-controls={`${name}-menu`}
-          aria-expanded={open}
-          onClick={onClickButton}
-          value={this.getButtonLabel()}
-          placeholder={placeholder}
-          ref={button => {
-            this.button = button;
-          }}
-        />
-        <input
-          type="hidden"
-          name={name}
-          value={value || ''}
-          required={required}
-        />
+        {input}
         <OptionMenuList
           id={`${name}-menu`}
-          multiple={type === 'multiselect'}
-          options={options}
+          multiple={type === MULTISELECT}
+          options={getOptions()}
           selected={listValue}
+          focusedIndex={focusedIndex}
           aria-labelledby={`${name}-label`}
+          role="listbox"
           onActionClick={onActionClick}
           onEscape={closeAndFocusButton}
           onChange={onValueChange}
+          onFocusItem={onFocusItem}
+          onClickItem={closeAndFocusButton}
+          footer={footer}
           style={menuStyle}
           actionLabel={getActionLabel(this.props)}
           ref={menu => {
             this.menu = menu;
           }}
+          tabIndex={type === AUTOCOMPLETE ? -1 : 0}
         />
       </div>
     );
