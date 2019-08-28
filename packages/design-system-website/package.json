@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
@@ -49,7 +50,5 @@
     "webpack-dev-server": "^3.7.2",
     "webpack-node-externals": "^1.7.2"
   },
-  "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.5.5"
-  }
+  "dependencies": {}
 }

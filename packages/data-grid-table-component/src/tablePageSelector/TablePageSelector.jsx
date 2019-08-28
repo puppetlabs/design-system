@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import './TablePageSelector.scss';
+// import './TablePageSelector.scss';
 import { Button } from '@puppet/react-components';
 
 const propTypes = {

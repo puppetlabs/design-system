@@ -15,6 +15,8 @@ import { Heading, Checkbox } from '@puppet/react-components';
 
 import ColumnHeader from './ColumnHeader';
 import './Table.scss';
+import TableHeader from '../tableHeader/TableHeader';
+import TableFooter from '../tableFooter/TableFooter';
 
 const propTypes = {
   /** Table data. Must be an array of objects */
@@ -63,9 +65,9 @@ const propTypes = {
   /** Optional string to provider descriptive message explaining the empty state of the table */
   emptyStateMessage: string,
   /** Optional function which can be used to render styling on specific rows */
-  rowClassName: func,
+  rowClassName: oneOfType([func, string]),
   /** Optional function which can be used to render styling on specific column */
-  columnClassName: func,
+  columnClassName: oneOfType([func, string]),
   /** Boolean to render select checkbox column */
   selectable: bool,
   /** Row checked action method, will get checked state and row data  */
@@ -150,6 +152,7 @@ class Table extends Component {
       onRowChecked,
       onHeaderChecked,
       headerCheckState,
+      onSort,
       ...rest
     } = this.props;
 
@@ -203,6 +206,8 @@ class Table extends Component {
                         )}
                         onChange={checked => onRowChecked(checked, rowData)}
                         checked={rowData.selected}
+                        label=""
+                        name=""
                       />
                     </td>
                   ) : null}
@@ -223,7 +228,7 @@ class Table extends Component {
                         key={`${(rowIndex, dataKey)}`}
                         className={classNames(
                           'dg-table-cell',
-                          `dg.table-cell-${dataKey}`,
+                          `dg-table-cell-${dataKey}`,
                           this.classNameTypeManage(
                             columnClassName,
                             dataKey,
@@ -271,5 +276,8 @@ class Table extends Component {
 
 Table.propTypes = propTypes;
 Table.defaultProps = defaultProps;
+
+Table.TableHeader = TableHeader;
+Table.TableFooter = TableFooter;
 
 export default Table;

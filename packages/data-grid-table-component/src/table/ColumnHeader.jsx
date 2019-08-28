@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { func, any, string, shape, bool, node, arrayOf } from 'prop-types';
 import classnames from 'classnames';
-// import { Checkbox } from '@puppet/react-components';
+import { Checkbox } from '@puppet/react-components';
 
 const propTypes = {
   columns: arrayOf(
@@ -87,6 +87,9 @@ class ColumnHeader extends Component {
               <Checkbox
                 onChange={checked => onHeaderChecked(checked)}
                 checked={headerCheckState}
+                label=""
+                name=""
+                className="dg-table-header-checkbox-element"
               />
             </th>
           ) : null}
@@ -95,7 +98,7 @@ class ColumnHeader extends Component {
               <th
                 className={classnames(
                   'rc-table-header-cell',
-                  `dg-table-header-${columns.dataKey}`,
+                  `dg-table-header-${dataKey}`,
                   cellClassName,
                 )}
                 key={dataKey}
@@ -120,20 +123,26 @@ class ColumnHeader extends Component {
                       'dg-column-header-icon-container',
                     )}
                   >
-                    <icon
+                    <div
                       className="dg-column-header-icon-up"
                       onClick={e => this.onClick(e, 'asc', dataKey)}
+                      onKeyPress={e => this.onClick(e, 'asc', dataKey)}
                       size="large"
+                      role="button"
+                      tabIndex="-2"
                     >
                       ▲
-                    </icon>
-                    <icon
+                    </div>
+                    <div
                       className="dg-column-header-icon-down"
                       onClick={e => this.onClick(e, 'desc', dataKey)}
+                      onKeyPress={e => this.onClick(e, 'desc', dataKey)}
                       size="large"
+                      role="button"
+                      tabIndex="-1"
                     >
                       ▼
-                    </icon>
+                    </div>
                   </span>
                 ) : (
                   <div />

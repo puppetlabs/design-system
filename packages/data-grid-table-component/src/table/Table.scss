@@ -23,16 +23,28 @@
     display: flex;
     flex-direction: column;
     font-size: 7px;
+    outline: none;
+    cursor: pointer;
+}
+
+.dg-column-header-icon-up{
+  outline: none;
+}
+.dg-column-header-icon-down{
+  outline: none;
 }
     
 .asc{
     .dg-column-header-icon-up{
       color: $puppet-b500;
+      outline: none;
     }
 }
 .desc{
+  outline: none;
     .dg-column-header-icon-down{
       color: $puppet-b500;
+      outline: none;
     }
 }
 
@@ -62,13 +74,7 @@
     }
   }
 
-  .table-row-error{
-    background: red;
-  }
-
-  .table-row-okay{
-    background: greenyellow;
-  }
+ 
 
   .dg-table-header-checkbox{
     width: 20px;
