@@ -1,27 +1,31 @@
 The written word is how we engage with the user. The importance of writing should not be overlooked and is equal in weight to design and development to providing a quality experience.
 
 ## Titles
+
 Titles are used to label pages or content areas. Titles are also used for navigation, for example, in the PE sidebar.
 
-* Use the same heading for both the navigation and the page.
-* Use a single noun or noun phrase that describes the content of the page, for example, Events, Reports, or Unsigned Certificates.
-* Use sentence case capitalization: Unsigned certificates, Hosts by operating system.
+- Use the same heading for both the navigation and the page.
+- Use a single noun or noun phrase that describes the content of the page, for example, Events, Reports, or Unsigned Certificates.
+- Use sentence case capitalization: Unsigned certificates, Hosts by operating system.
 
 ## Short descriptions
+
 Short descriptions explain the purpose of a page or element. Short descriptions can provide context for users and instruct them on how best to use the software.
 
-* Use imperative verbs to describe what the user can do with the page or element, for example, View your Puppet-managed nodes, create node groups, and apply classification data.
-* Use complete sentences with appropriate capitalization and punctuation.
-* Limit short descriptions to 1 or 2 sentences. If necessary, follow with a question mark icon, and put more information in a tooltip.
+- Use imperative verbs to describe what the user can do with the page or element, for example, View your Puppet-managed nodes, create node groups, and apply classification data.
+- Use complete sentences with appropriate capitalization and punctuation.
+- Limit short descriptions to 1 or 2 sentences. If necessary, follow with a question mark icon, and put more information in a tooltip.
 
 ## Information strings
+
 Information strings provide current data about a page (such as minutes since data refresh, or number of nodes under management), but are not interactive.
 
-* Use i18n best practices when writing these strings so that they are easily translatable.
-* Generally, separate figures from the body of the sentence with colons. For example, Data refreshed:13 minutes ago.
-* Do not use closing punctuation, unless you are separating two info strings on a single line, as in **Status as of**: a few seconds ago **Show**: Events from last run.
+- Use i18n best practices when writing these strings so that they are easily translatable.
+- Generally, separate figures from the body of the sentence with colons. For example, Data refreshed:13 minutes ago.
+- Do not use closing punctuation, unless you are separating two info strings on a single line, as in **Status as of**: a few seconds ago **Show**: Events from last run.
 
 ## Example
+
 The following sample pattern shows how to lay out type on a page. It provides reasonable defaults for long-form content on a page. Always consult with your technical writer from Tech Pubs to get help crafting effective UI content.
 
 <!--
@@ -91,6 +95,7 @@ The following sample pattern shows how to lay out type on a page. It provides re
 -->
 
 ## Related
-* [Writing guidelines on Confluence](https://confluence.puppetlabs.com/display/Writing/Puppet+content+style+guide)
-* [Typography](#/Foundations/Typography) : definitions and rules for our typefaces and fonts
-* [Content](#/React%20Components/Content) : a component for placing content blocks within an interface
+
+- [Writing guidelines on Confluence](https://confluence.puppetlabs.com/display/Writing/Puppet+content+style+guide)
+- [Typography](#/Foundations/Typography) : definitions and rules for our typefaces and fonts
+- [Content](#/React%20Components/Content) : a component for placing content blocks within an interface

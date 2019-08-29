@@ -1,18 +1,23 @@
 ## Overview
+
 Our products use three typefaces, with their various weights and sizes, to communicate clearly to our users. Don’t introduce new typographic styles to our products without consulting the UX team.
 
 ## Typefaces
 
 ### Calibre
+
 Calibre is our brand typeface and is used in our logo, branding and other marketing materials. We use it in our products to separate content and interactive elements from other content. Examples include headlines, titles, navigation, visualizations, and other primary elements
 
 ### Open Sans
+
 We use Open Sans for the majority of content. Calibre is great in larger sizes but becomes problematic at the smaller sizes our products need, becoming difficult to read within a dense interface.
 
 ### Inconsolata
+
 Inconsolate is our fixed-width typeface for used to represent code and code examples.
 
 ## Sizes
+
 All font sizes and their associated line-heights are based on our 4px grid.
 
 <!--
@@ -64,8 +69,9 @@ All font sizes and their associated line-heights are based on our 4px grid.
 -->
 
 ## Related
-* [Content](#/React%20Components/Content) : used to place formatted text within other components. Provides examples and rules for adding content to a page
-* [Heading](#/React%20Components/Heading) : place a heading anywhere
-* [Text](#/React%20Components/Text) : place individual text strings
-* [Link](#/React%20Components/Link) : place text links within other elements
-* [Content writing](#/React%20Components/Content) : a component for placing content blocks within an interface
+
+- [Content](#/React%20Components/Content) : used to place formatted text within other components. Provides examples and rules for adding content to a page
+- [Heading](#/React%20Components/Heading) : place a heading anywhere
+- [Text](#/React%20Components/Text) : place individual text strings
+- [Link](#/React%20Components/Link) : place text links within other elements
+- [Content writing](#/React%20Components/Content) : a component for placing content blocks within an interface
