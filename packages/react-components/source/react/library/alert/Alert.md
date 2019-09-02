@@ -17,7 +17,7 @@ closeable + onClose
 Success
 
 ```jsx
-<Alert type="success">Success! Things seem to have gone well afterall.</Alert>
+<Alert type="success" >Success! Things seem to have gone well afterall.</Alert>
 ```
 
 Danger
@@ -35,7 +35,7 @@ Warning
 Info
 
 ```jsx
-<Alert type="info">This is some good content. Now you know.</Alert>
+<Alert type="info">This is some good content. Now you know. </Alert>
 ```
 
 ## Alert elevation
@@ -45,5 +45,19 @@ Elevated
 ```jsx
 <Alert elevated type="danger">
   This alert is elevated. Are you ready for that?
+</Alert>
+```
+
+## Alert information
+
+Expanded
+
+```jsx
+<Alert type="warning" 
+closeable 
+onClose={() => console.log('theoretically at least')}
+bodyText="This will give the user more information on what the alert is about."
+>
+Warning! Something did not complete.
 </Alert>
 ```

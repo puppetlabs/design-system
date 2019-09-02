@@ -8,6 +8,8 @@ import IconButton from './IconButton';
 const propTypes = {
   /** Main content */
   children: PropTypes.string,
+  /** Additional content */
+  bodyText: PropTypes.string,
   /** Main visual variant */
   type: PropTypes.oneOf(['info', 'danger', 'success', 'warning']),
   /** Should the alert have a dismiss button? */
@@ -24,6 +26,7 @@ const propTypes = {
 
 const defaultProps = {
   children: '',
+  bodyText: '',
   type: 'info',
   closeable: false,
   onClose() {},
@@ -48,6 +51,7 @@ class Alert extends React.Component {
   render() {
     const {
       children,
+      bodyText,
       type,
       closeable,
       elevated,
@@ -98,6 +102,11 @@ class Alert extends React.Component {
           {children}
         </Text>
         {closeButton}
+        {bodyText && (
+          <Text className="rc-alert-body-message" size="small">
+            {bodyText}
+          </Text>
+        )}
       </div>
     );
   }
