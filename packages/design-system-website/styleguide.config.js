@@ -70,6 +70,8 @@ module.exports = {
         '**/**/index.js',
         '**/alert/IconButton.js',
         '**/FadeInAndOut.js',
+        '**/alert/AlertActions.js',
+        '**/alert/AlertMessage.js',
         '**/breadcrumb/Section.js',
         '**/breadcrumb/Separator.js',
         '**/card/CardAction.js',

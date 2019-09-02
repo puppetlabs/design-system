@@ -87,12 +87,17 @@ $colors: (
 }
 .rc-alert-body-message {
   flex-basis: 100%;
-  padding: 0 ($puppet-common-spacing-base * 12) ($puppet-common-spacing-base * 4) ($puppet-common-spacing-base * 9);
+  padding: 6px 0 8px 0;
 }
 
 .rc-alert .rc-icon-button {
   border-radius: 0 3px 3px 0; // 3px to account for gap when focussed
 }
+
+.rc-alert-actions {
+  margin: 8px 0 8px 0;
+}
+
 
 // Icon Button
 // TODO: Consider splitting this out if the component ever stands alone
