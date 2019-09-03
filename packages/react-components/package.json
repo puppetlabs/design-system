@@ -85,6 +85,7 @@
     "react-dom": "^16.9.0",
     "react-modal": "^3.8.1",
     "react-transition-group": "^4.1.1",
+    "regenerator-runtime": "^0.13.3",
     "scroll-into-view-if-needed": "^2.2.20"
   }
 }
