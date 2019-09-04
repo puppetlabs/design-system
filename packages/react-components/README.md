@@ -106,3 +106,14 @@ const MyComponent = () => <Button>My Button</Button>;
 Please see our [CONTRIBUTING.md](CONTRIBUTING.md) for details on
 setting up your development environment, opening a Pull Request, and requesting
 reviews.
+
+## Additional configuration examples
+
+### [Continuous Delivery for PE](https://github.com/puppetlabs/PipelinesInfra)
+
+The following configuration allows CD4PE to rely on `react-components` to provide all its required fonts.
+
+- [webpack.config.js](https://github.com/puppetlabs/PipelinesInfra/blob/d40d8207793f9ae847e8f65595c9e03b7c61c2a0/webpack.config.js)
+- [puppetReactComponentsStyles.scss](https://github.com/puppetlabs/PipelinesInfra/blob/d40d8207793f9ae847e8f65595c9e03b7c61c2a0/src/main/js/styles/puppetReactComponentsStyles.scss) imports all the scss from `react-components`.
+- [Layout.jsx](https://github.com/puppetlabs/PipelinesInfra/blob/d40d8207793f9ae847e8f65595c9e03b7c61c2a0/src/main/js/containers/Layout.jsx#L25) actually applies this scss to the app.
+- Building the app generates all the required font files in CD4PE's [public folder](https://github.com/puppetlabs/PipelinesInfra/tree/d40d8207793f9ae847e8f65595c9e03b7c61c2a0/public).
