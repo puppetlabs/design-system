@@ -1,3 +1,7 @@
+# 5.7.0
+
+- Add export-csv icon
+
 # 5.6.1
 
 - Import core-js as single dependency without @babel/preset-env's useBuiltIns option to add compatibility with Gatsby.
