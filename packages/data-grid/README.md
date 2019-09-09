@@ -1,23 +1,23 @@
-# data-grid-table-component
+# data-grid
 
 ## Usage
 
 Add the package to your project:
 
 ```sh
-npm install @puppet/data-grid-table-component
+npm install @puppet/data-grid
 ```
 
 Import the Sass styles (e.g. in your index.scss):
 
 ```scss
-@import '~@puppet/data-grid-table-component/src/index';
+@import '~@puppet/data-grid/src/index';
 ```
 
 Import and use the react component:
 
 ```js
-import { DataGridTableComponent } from '@puppet/data-grid-table-component';
+import { DataGridTableComponent } from '@puppet/data-grid';
 ```
 
 ## Actions
