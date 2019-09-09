@@ -41,6 +41,19 @@ module.exports = {
       content: 'README.md',
     },
     {
+      name: 'Data Grid Package',
+      description:
+        'The Data Grid package was developed to aid in the structuring of data. By using columns and rows data can be orginized and presented informative way. Unlike the basic table component in the puppet react component libary the data grid component includes more features to help with more complex presentation tasks and to support user interaction with data. ',
+      components: '../data-grid-table-component/src/**/*.{js,jsx}',
+      ignore: [
+        '**/**/ColumnHeader.jsx',
+        '**/**/index.jsx',
+        '**/**/utils.jsx',
+        '**/**/index.js',
+      ],
+    },
+    // The below section gets hidden when `skipComponentsWithoutExample` is true
+    {
       name: 'Foundations',
       sectionDepth: 1,
       sections: [
@@ -161,6 +174,8 @@ module.exports = {
                 ],
                 '@babel/preset-react',
               ],
+              plugins: ['@babel/plugin-proposal-class-properties'],
+
               env: {
                 development: {
                   plugins: ['react-hot-loader/babel'],

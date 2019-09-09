@@ -1,0 +1,569 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
+<Table
+  className=""
+  columnClassName={[Function]}
+  columns={
+    Array [
+      Object {
+        "dataKey": "eventType",
+        "label": "Event Type",
+      },
+      Object {
+        "dataKey": "affectedDevices",
+        "label": "Affected Devices",
+      },
+      Object {
+        "dataKey": "detections",
+        "label": "Detections",
+      },
+      Object {
+        "dataKey": "Link",
+        "label": "Linked field",
+      },
+    ]
+  }
+  data={
+    Array [
+      Object {
+        "affectedDevices": 20,
+        "detections": 634,
+        "eventType": "Virus/Malware",
+        "id": 0,
+      },
+      Object {
+        "affectedDevices": 20,
+        "detections": 634,
+        "eventType": "Spyware/Grayware",
+        "id": 1,
+      },
+      Object {
+        "affectedDevices": 15,
+        "detections": 598,
+        "eventType": "URL Filtering",
+        "id": 2,
+      },
+      Object {
+        "affectedDevices": 15,
+        "detections": 598,
+        "eventType": "Web Reputation",
+        "id": 3,
+      },
+      Object {
+        "affectedDevices": 15,
+        "detections": 497,
+        "eventType": "Network Virus",
+        "id": 4,
+      },
+      Object {
+        "affectedDevices": 0,
+        "detections": 0,
+        "eventType": "Application Control",
+        "id": 5,
+      },
+      Object {
+        "affectedDevices": 0,
+        "detections": 0,
+        "eventType": "Application Control",
+        "id": 6,
+      },
+    ]
+  }
+  emptyStateHeader="No data available"
+  emptyStateMessage="Prompt to action or solution"
+  fixed={false}
+  fixedColumn={false}
+  headerCheckState={false}
+  horizontalSroll={false}
+  onHeaderChecked={[Function]}
+  onRowChecked={[Function]}
+  onSort={[Function]}
+  rowClassName={[Function]}
+  selectable={false}
+  sortable={false}
+  sortedColumn={
+    Object {
+      "direction": "",
+      "sortDataKey": "",
+    }
+  }
+  style={Object {}}
+>
+  <div
+    className=""
+  >
+    <table
+      className="dg-table"
+      style={Object {}}
+    >
+      <ColumnHeader
+        columnHeaderCallBack={[Function]}
+        columns={
+          Array [
+            Object {
+              "dataKey": "eventType",
+              "label": "Event Type",
+            },
+            Object {
+              "dataKey": "affectedDevices",
+              "label": "Affected Devices",
+            },
+            Object {
+              "dataKey": "detections",
+              "label": "Detections",
+            },
+            Object {
+              "dataKey": "Link",
+              "label": "Linked field",
+            },
+          ]
+        }
+        headerCheckState={false}
+        onHeaderChecked={[Function]}
+        selectable={false}
+        sortable={false}
+        sortedColumn={
+          Object {
+            "direction": "",
+            "sortDataKey": "",
+          }
+        }
+      >
+        <thead>
+          <tr
+            className="rc-table-header"
+          >
+            <th
+              className="rc-table-header-cell dg-table-header-eventType"
+              key="eventType"
+            >
+              <span
+                as="h6"
+                className=""
+                color="medium"
+              >
+                Event Type
+              </span>
+              <div />
+            </th>
+            <th
+              className="rc-table-header-cell dg-table-header-affectedDevices"
+              key="affectedDevices"
+            >
+              <span
+                as="h6"
+                className=""
+                color="medium"
+              >
+                Affected Devices
+              </span>
+              <div />
+            </th>
+            <th
+              className="rc-table-header-cell dg-table-header-detections"
+              key="detections"
+            >
+              <span
+                as="h6"
+                className=""
+                color="medium"
+              >
+                Detections
+              </span>
+              <div />
+            </th>
+            <th
+              className="rc-table-header-cell dg-table-header-Link"
+              key="Link"
+            >
+              <span
+                as="h6"
+                className=""
+                color="medium"
+              >
+                Linked field
+              </span>
+              <div />
+            </th>
+          </tr>
+        </thead>
+      </ColumnHeader>
+      <tbody>
+        <tr
+          className="dg-table-row dg-table-row-0"
+          key="0"
+        >
+          <td
+            className="dg-table-cell dg-table-cell-eventType"
+            key="eventType"
+          >
+            Virus/Malware
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-affectedDevices"
+            key="affectedDevices"
+          >
+            20
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-detections"
+            key="detections"
+          >
+            634
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-Link"
+            key="Link"
+          />
+        </tr>
+        <tr
+          className="dg-table-row dg-table-row-1"
+          key="1"
+        >
+          <td
+            className="dg-table-cell dg-table-cell-eventType"
+            key="eventType"
+          >
+            Spyware/Grayware
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-affectedDevices"
+            key="affectedDevices"
+          >
+            20
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-detections"
+            key="detections"
+          >
+            634
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-Link"
+            key="Link"
+          />
+        </tr>
+        <tr
+          className="dg-table-row dg-table-row-2"
+          key="2"
+        >
+          <td
+            className="dg-table-cell dg-table-cell-eventType"
+            key="eventType"
+          >
+            URL Filtering
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-affectedDevices"
+            key="affectedDevices"
+          >
+            15
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-detections"
+            key="detections"
+          >
+            598
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-Link"
+            key="Link"
+          />
+        </tr>
+        <tr
+          className="dg-table-row dg-table-row-3"
+          key="3"
+        >
+          <td
+            className="dg-table-cell dg-table-cell-eventType"
+            key="eventType"
+          >
+            Web Reputation
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-affectedDevices"
+            key="affectedDevices"
+          >
+            15
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-detections"
+            key="detections"
+          >
+            598
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-Link"
+            key="Link"
+          />
+        </tr>
+        <tr
+          className="dg-table-row dg-table-row-4"
+          key="4"
+        >
+          <td
+            className="dg-table-cell dg-table-cell-eventType"
+            key="eventType"
+          >
+            Network Virus
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-affectedDevices"
+            key="affectedDevices"
+          >
+            15
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-detections"
+            key="detections"
+          >
+            497
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-Link"
+            key="Link"
+          />
+        </tr>
+        <tr
+          className="dg-table-row dg-table-row-5"
+          key="5"
+        >
+          <td
+            className="dg-table-cell dg-table-cell-eventType"
+            key="eventType"
+          >
+            Application Control
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-affectedDevices"
+            key="affectedDevices"
+          >
+            0
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-detections"
+            key="detections"
+          >
+            0
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-Link"
+            key="Link"
+          />
+        </tr>
+        <tr
+          className="dg-table-row dg-table-row-6"
+          key="6"
+        >
+          <td
+            className="dg-table-cell dg-table-cell-eventType"
+            key="eventType"
+          >
+            Application Control
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-affectedDevices"
+            key="affectedDevices"
+          >
+            0
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-detections"
+            key="detections"
+          >
+            0
+          </td>
+          <td
+            className="dg-table-cell dg-table-cell-Link"
+            key="Link"
+          />
+        </tr>
+      </tbody>
+    </table>
+    <div />
+  </div>
+</Table>
+`;
+
+exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
+<Table
+  className=""
+  columnClassName={[Function]}
+  columns={
+    Array [
+      Object {
+        "dataKey": "eventType",
+        "label": "Event Type",
+      },
+      Object {
+        "dataKey": "affectedDevices",
+        "label": "Affected Devices",
+      },
+      Object {
+        "dataKey": "detections",
+        "label": "Detections",
+      },
+      Object {
+        "dataKey": "Link",
+        "label": "Linked field",
+      },
+    ]
+  }
+  data={Array []}
+  emptyStateHeader="No data available"
+  emptyStateMessage="Prompt to action or solution"
+  fixed={false}
+  fixedColumn={false}
+  headerCheckState={false}
+  horizontalSroll={false}
+  onHeaderChecked={[Function]}
+  onRowChecked={[Function]}
+  onSort={[Function]}
+  rowClassName={[Function]}
+  selectable={false}
+  sortable={false}
+  sortedColumn={
+    Object {
+      "direction": "",
+      "sortDataKey": "",
+    }
+  }
+  style={Object {}}
+>
+  <div
+    className=""
+  >
+    <table
+      className="dg-table"
+      style={Object {}}
+    >
+      <ColumnHeader
+        columnHeaderCallBack={[Function]}
+        columns={
+          Array [
+            Object {
+              "dataKey": "eventType",
+              "label": "Event Type",
+            },
+            Object {
+              "dataKey": "affectedDevices",
+              "label": "Affected Devices",
+            },
+            Object {
+              "dataKey": "detections",
+              "label": "Detections",
+            },
+            Object {
+              "dataKey": "Link",
+              "label": "Linked field",
+            },
+          ]
+        }
+        headerCheckState={false}
+        onHeaderChecked={[Function]}
+        selectable={false}
+        sortable={false}
+        sortedColumn={
+          Object {
+            "direction": "",
+            "sortDataKey": "",
+          }
+        }
+      >
+        <thead>
+          <tr
+            className="rc-table-header"
+          >
+            <th
+              className="rc-table-header-cell dg-table-header-eventType"
+              key="eventType"
+            >
+              <span
+                as="h6"
+                className=""
+                color="medium"
+              >
+                Event Type
+              </span>
+              <div />
+            </th>
+            <th
+              className="rc-table-header-cell dg-table-header-affectedDevices"
+              key="affectedDevices"
+            >
+              <span
+                as="h6"
+                className=""
+                color="medium"
+              >
+                Affected Devices
+              </span>
+              <div />
+            </th>
+            <th
+              className="rc-table-header-cell dg-table-header-detections"
+              key="detections"
+            >
+              <span
+                as="h6"
+                className=""
+                color="medium"
+              >
+                Detections
+              </span>
+              <div />
+            </th>
+            <th
+              className="rc-table-header-cell dg-table-header-Link"
+              key="Link"
+            >
+              <span
+                as="h6"
+                className=""
+                color="medium"
+              >
+                Linked field
+              </span>
+              <div />
+            </th>
+          </tr>
+        </thead>
+      </ColumnHeader>
+      <tbody />
+    </table>
+    <div
+      className="dg-empty-state-container"
+    >
+      <Heading
+        allCaps={false}
+        as="h3"
+        className=""
+        color="medium"
+        hero={false}
+        label={false}
+      >
+        <h3
+          className="rc-heading rc-heading-h3 rc-heading-medium"
+        >
+          No data available
+        </h3>
+      </Heading>
+      <Heading
+        allCaps={false}
+        as="h4"
+        className=""
+        color="medium"
+        hero={false}
+        label={false}
+      >
+        <h4
+          className="rc-heading rc-heading-h4 rc-heading-medium"
+        >
+          Prompt to action or solution
+        </h4>
+      </Heading>
+    </div>
+  </div>
+</Table>
+`;

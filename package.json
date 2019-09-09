@@ -10,6 +10,7 @@
     "styleguide:build": "cd packages/design-system-website && npm run styleguide:build"
   },
   "devDependencies": {
+    "@babel/preset-stage-2": "^7.0.0",
     "lerna": "^3.13.4"
   }
 }
