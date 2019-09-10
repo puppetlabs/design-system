@@ -40,18 +40,6 @@ module.exports = {
       name: 'Puppet Design System',
       content: 'README.md',
     },
-    {
-      name: 'Data Grid Package',
-      description:
-        'The Data Grid package was developed to aid in the structuring of data. By using columns and rows data can be orginized and presented informative way. Unlike the basic table component in the puppet react component libary the data grid component includes more features to help with more complex presentation tasks and to support user interaction with data. ',
-      components: '../data-grid/src/**/*.{js,jsx}',
-      ignore: [
-        '**/**/ColumnHeader.jsx',
-        '**/**/index.jsx',
-        '**/**/utils.jsx',
-        '**/**/index.js',
-      ],
-    },
     // The below section gets hidden when `skipComponentsWithoutExample` is true
     {
       name: 'Foundations',
@@ -123,6 +111,16 @@ module.exports = {
         '**/tooltips/Tooltip.js',
       ],
     },
+    {
+      name: 'Data Grid',
+      components: '../data-grid/src/**/*.{js,jsx}',
+      ignore: [
+        '**/**/ColumnHeader.jsx',
+        '**/**/index.jsx',
+        '**/**/utils.jsx',
+        '**/**/index.js',
+      ],
+    },
     // {
     //   name: 'React Layouts',
     //   description: 'This is a test of the emergency broadcasting system',
@@ -131,7 +129,7 @@ module.exports = {
     // },
   ],
   getComponentPathLine(componentPath) {
-    const name = path.basename(componentPath, '.js');
+    const name = path.basename(componentPath).replace(/\.jsx?$/, '');
     const dir = path.dirname(componentPath);
     const packageName = dir.split('/')[1];
     return `import { ${name} } from '@puppet/${packageName}';`;
