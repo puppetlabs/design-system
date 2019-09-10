@@ -1,7 +1,5 @@
 The input component is used for standard text and number html input elements. It is a lightly styled wrapper around core DOM elements, leaving most auxiliary functionality to the [FormField](#form) wrapper. We recommend that in most cases the FormField component be used to ensure complete design consistency, but there may be some cases in which a pure input element is desired.
 
-Design specification: <a href="http://designsystem.puppetlabs.net/forms" target="_top">designsystem.puppetlabs.net/forms</a>
-
 ### Available types
 
 ```jsx
