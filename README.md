@@ -4,7 +4,7 @@
 
 The Puppet Design System represents the behaviors, components, principles and visual presentation we share. It is based on our objective to provide consistency, efficiency, and quality experiences to our customers. With it we scale design across departments, products, platforms, and time zones.
 
-For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b). Visit the living styleguide at <http://designsystem.puppetlabs.net>.
+For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b). Visit the living styleguide at <https://puppetlabs.github.io/design-system>.
 
 ## Quick start
 
@@ -29,7 +29,7 @@ uikit generate project my-project
 
 ### In a sandbox
 
-If you'd just like to play around with the components in a sandbox with the design-system repo, you can run [Styleguidist](https://react-styleguidist.js.org) locally, though this is also hosted at <http://designsystem.puppetlabs.net>, which includes live editable code.
+If you'd just like to play around with the components in a sandbox with the design-system repo, you can run [Styleguidist](https://react-styleguidist.js.org) locally, though this is also hosted at <https://puppetlabs.github.io/design-system>, which includes live editable code.
 
 ```sh
 git clone git@github.com:puppetlabs/design-system.git && cd design-system

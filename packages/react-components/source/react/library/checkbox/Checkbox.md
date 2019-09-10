@@ -1,7 +1,5 @@
 The Checkbox component is a lightly styled wrapper around an html checkbox input. It leaves most auxiliary functionality to the [FormField](#form) wrapper. We recommend that in most cases the Checkbox is used through the FormField component be used to ensure complete design consistency, but there may be some cases in which a pure Checkbox element is desired.
 
-Design specification: <a href="http://designsystem.puppetlabs.net/forms" target="_top">designsystem.puppetlabs.net/forms</a>
-
 ### Basic use
 
 ```jsx

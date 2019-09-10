@@ -10,7 +10,7 @@ For links that drill into item details:
 * Use the most clearly identifiable piece of information about the item being drilled into; for example, the node name or event time stamp.
 * Use capitalization appropriate to the item that the link is named after.
 
-Consider these 3 states for links: hover, focused and pressed (similar to [Button](http://designsystem.puppetlabs.net/components/#button) states). 
+Consider these 3 states for links: hover, focused and pressed (similar to [Button](#/React%20Components/Button) states). 
 
 ## Types
 ### Primary Links
@@ -27,11 +27,11 @@ Secondary links use the color of the text around them. In order to meet WCAG AA 
 
 ## Variations
 ### Link as a Button
-This variation is a link that acts like a [Button](http://designsystem.puppetlabs.net/components/#button), in that they carry out a specified action when clicked. These are styled the same as primary links.
+This variation is a link that acts like a [Button](#/React%20Components/Button), in that they carry out a specified action when clicked. These are styled the same as primary links.
 
 [Insert example for "link as a button element"]
 
 
 # Related
-*  [Button](http://designsystem.puppetlabs.net/components/#button) 
-*  [Text](http://designsystem.puppetlabs.net/components/#text) 
+*  [Button](#/React%20Components/Button) 
+*  [Text](#/React%20Components/Text) 
