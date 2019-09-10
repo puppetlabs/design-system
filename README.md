@@ -1,7 +1,5 @@
 # Puppet Design System
 
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/) [![Build Status](https://travis-ci.com/puppetlabs/design-system.svg?token=bzCDGKPSRoVpSFdNdZuv&branch=master)](https://travis-ci.com/puppetlabs/design-system)
-
 The Puppet Design System represents the behaviors, components, principles and visual presentation we share. It is based on our objective to provide consistency, efficiency, and quality experiences to our customers. With it we scale design across departments, products, platforms, and time zones.
 
 For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b). Visit the living styleguide at <http://designsystem.puppetlabs.net>.
