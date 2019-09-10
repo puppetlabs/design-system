@@ -129,7 +129,7 @@ module.exports = {
     // },
   ],
   getComponentPathLine(componentPath) {
-    const name = path.basename(componentPath, '.js');
+    const name = path.basename(componentPath).replace(/\.jsx?$/, '');
     const dir = path.dirname(componentPath);
     const packageName = dir.split('/')[1];
     return `import { ${name} } from '@puppet/${packageName}';`;
