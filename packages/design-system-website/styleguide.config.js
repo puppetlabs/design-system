@@ -112,6 +112,14 @@ module.exports = {
       ],
     },
     {
+      name: 'React Layouts',
+      components: '../react-layouts/src/**/*.{js,jsx}',
+      ignore: [
+        '**/**/index.js',
+        '**/*.test.{js,jsx}',
+      ],
+    },
+    {
       name: 'Data Grid',
       components: '../data-grid/src/**/*.{js,jsx}',
       ignore: [
@@ -121,12 +129,6 @@ module.exports = {
         '**/**/index.js',
       ],
     },
-    // {
-    //   name: 'React Layouts',
-    //   description: 'This is a test of the emergency broadcasting system',
-    //   components: '../react-layouts/src/auth/**/*.{js,jsx}',
-    //   ignore: ['**/**/index.js', '**/*.test.{js,jsx}'],
-    // },
   ],
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath).replace(/\.jsx?$/, '');

@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import sinon from 'sinon';
-import AuthLayout from 'auth/AuthLayout';
+import AuthLayout from '../AuthLayout';
 
 import Login from './Login';
 

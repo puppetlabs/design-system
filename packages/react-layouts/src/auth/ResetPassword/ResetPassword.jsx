@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from '@puppet/react-components';
-import { renderableElement } from 'utils/customPropTypes';
-import AuthLayout from 'auth/AuthLayout';
+import { renderableElement } from '../../utils/customPropTypes';
+import AuthLayout from '../AuthLayout';
 
 const propTypes = {
   /** Product logo. One of the official set or a custom string */

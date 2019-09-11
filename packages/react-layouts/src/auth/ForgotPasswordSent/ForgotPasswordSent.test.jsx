@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import AuthLayout from 'auth/AuthLayout';
+import AuthLayout from '../AuthLayout';
 
 import ForgotPasswordSent from './ForgotPasswordSent';
 
