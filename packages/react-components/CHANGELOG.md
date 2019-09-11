@@ -1,3 +1,7 @@
+# 5.6.2
+
+- Add `indeterminate` prop to the Checkbox component
+
 # 5.6.1
 
 - Import core-js as single dependency without @babel/preset-env's useBuiltIns option to add compatibility with Gatsby.
