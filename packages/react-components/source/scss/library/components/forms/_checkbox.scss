@@ -75,4 +75,10 @@
   }
 }
 
+.rc-checkbox-indeterminate + .rc-icon {
+  display: block;
+  fill: $puppet-b500;
+  top: 2px;
+}
+
 /* stylelint-enable property-no-vendor-prefix */

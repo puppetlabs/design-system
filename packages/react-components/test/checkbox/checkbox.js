@@ -63,4 +63,10 @@ describe('<Checkbox />', () => {
       .to.have.prop('disabled')
       .to.equal(true);
   });
+
+  it('should have className corresponding to being indeterminate', () => {
+    expect(
+      shallow(<Checkbox {...requiredProps} indeterminate />).find('input'),
+    ).to.have.className('rc-checkbox-indeterminate');
+  });
 });

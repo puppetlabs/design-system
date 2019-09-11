@@ -698,9 +698,7 @@ const icons = {
   },
 
   minus: {
-    tiny: (
-      <polygon fill="#818F99" fillRule="evenodd" points="0 3 0 5 8 5 8 3" />
-    ),
+    tiny: <polygon fillRule="evenodd" points="0 3 0 5 8 5 8 3" />,
   },
 
   package: {
