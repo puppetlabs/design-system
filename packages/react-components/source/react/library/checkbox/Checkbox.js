@@ -77,7 +77,7 @@ const Checkbox = ({
         {...otherProps}
       />
       {indeterminate ? (
-        <Icon type="minus" size="small" />
+        <Icon type="indeterminate" size="small" />
       ) : (
         <Icon type="check" />
       )}

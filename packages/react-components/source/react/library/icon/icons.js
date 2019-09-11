@@ -591,7 +591,13 @@ const icons = {
       />
     ),
   },
-
+  indeterminate: {
+    small: (
+      <g strokeWidth="1" fillRule="evenodd">
+        <rect x="1" y="7" width="10" height="4" />
+      </g>
+    ),
+  },
   integration: {
     medium: (
       <path
@@ -698,7 +704,9 @@ const icons = {
   },
 
   minus: {
-    tiny: <polygon fillRule="evenodd" points="0 3 0 5 8 5 8 3" />,
+    tiny: (
+      <polygon fill="#818F99" fillRule="evenodd" points="0 3 0 5 8 5 8 3" />
+    ),
   },
 
   package: {
