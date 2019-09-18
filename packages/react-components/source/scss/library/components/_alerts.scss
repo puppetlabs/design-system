@@ -56,7 +56,9 @@ $colors: (
   @include rc-alert-colors('success');
   @include rc-alert-colors('warning');
 
-  align-items: center;
+
+  flex-wrap: wrap;
+  align-items: centre;
   background: $puppet-white;
   border-radius: $puppet-common-border-radius;
   cursor: default;
@@ -83,10 +85,19 @@ $colors: (
   overflow-wrap: break-word;
   padding: $puppet-common-spacing-base * 2;
 }
+.rc-alert-body-message {
+  flex-basis: 100%;
+  padding: 6px 0 8px 0;
+}
 
 .rc-alert .rc-icon-button {
   border-radius: 0 3px 3px 0; // 3px to account for gap when focussed
 }
+
+.rc-alert-actions {
+  margin: 8px 0 8px 0;
+}
+
 
 // Icon Button
 // TODO: Consider splitting this out if the component ever stands alone
@@ -109,7 +120,7 @@ $colors: (
     fill: inherit;
     margin: auto;
     position: absolute;
-    right: $puppet-common-spacing-base * 2;
+    left: $puppet-common-spacing-base * 2;
     top: 0;
   }
 

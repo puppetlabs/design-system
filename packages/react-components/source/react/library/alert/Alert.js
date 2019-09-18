@@ -5,6 +5,9 @@ import Text from '../text';
 import Icon from '../icon';
 import IconButton from './IconButton';
 
+import AlertMessage from './AlertMessage';
+import AlertActions from './AlertActions';
+
 const propTypes = {
   /** Main content */
   children: PropTypes.string,
@@ -105,5 +108,8 @@ class Alert extends React.Component {
 
 Alert.propTypes = propTypes;
 Alert.defaultProps = defaultProps;
+
+Alert.Message = AlertMessage;
+Alert.Actions = AlertActions;
 
 export default Alert;

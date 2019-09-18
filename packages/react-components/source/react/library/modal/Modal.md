@@ -52,7 +52,7 @@ initialState = {
       Gorgias in conventu poscere quaestionem, id est iubere dicere, qua de re quis
       vellet audire. audax negotium, dicerem impudens, nisi hoc institutum postea
       translatum ad philosophos nostros esset.
-      <Modal.Actions>
+      <Modal.Actions actionsPosition="right">
         <Button onClick={() => setState({ open: false })}>Ubmitsay</Button>
         <Button type="tertiary" onClick={() => setState({ open: false })}>
           Ancelcay
