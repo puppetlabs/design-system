@@ -38,3 +38,66 @@ const exampleStyle = { marginRight: 10 };
   onChange={checked => setState({ checked })}
 />
 ```
+
+### indeterminate state
+
+```jsx
+class IndeterminateExample extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      checkBoxes : [{ checked: false}, { checked: false}, { checked: false}],
+    }
+    this.onClick = this.onClick.bind(this);
+    this.onSelectAll = this.onSelectAll.bind(this);
+  }
+
+  onSelectAll(checked) {
+    const { checkBoxes } = this.state;
+    checkBoxes.forEach(box => {
+      box.checked = checked;
+    });
+    this.setState({
+      checkBoxes,
+    })
+  }
+
+  onClick(checked, i) {
+    const { checkBoxes } = this.state;
+    checkBoxes[i].checked = checked;
+    this.setState({
+      checkBoxes: checkBoxes,
+    })
+  }
+
+  render() {
+    const { checkBoxes } = this.state;
+    let ticked = 0;
+    checkBoxes.forEach(box => {
+      if (box.checked) {
+        ticked += 1;
+      }
+    });
+    return (
+      <div>
+        <Checkbox
+          name="Select All"
+          label="Select All"
+          indeterminate={ticked > 0 && ticked < checkBoxes.length}
+          checked={ticked === checkBoxes.length}
+          onChange={checked => this.onSelectAll(checked)}
+        />
+      {checkBoxes.map((box, i) => <Checkbox
+          name={`Box ${i}`}
+          label={`Box ${i}`}
+          checked={box.checked}
+          onChange={(checked) => this.onClick(checked, i)}
+        />)}
+      </div>
+    )
+  }
+}
+
+<IndeterminateExample />
+
+```

@@ -57,6 +57,7 @@ export const AVAILABLE_ICONS = [
   'image',
   'impact',
   'increment',
+  'indeterminate',
   'info-circle',
   'integration',
   'invite',

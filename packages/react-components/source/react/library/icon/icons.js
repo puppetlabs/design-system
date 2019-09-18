@@ -591,7 +591,13 @@ const icons = {
       />
     ),
   },
-
+  indeterminate: {
+    small: (
+      <g strokeWidth="1" fillRule="evenodd">
+        <rect x="1" y="7" width="10" height="4" />
+      </g>
+    ),
+  },
   integration: {
     medium: (
       <path

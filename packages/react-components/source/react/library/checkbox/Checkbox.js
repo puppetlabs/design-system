@@ -14,6 +14,8 @@ const propTypes = {
   value: PropTypes.bool,
   /** Is the input disabled */
   disabled: PropTypes.bool,
+  /** Is indeterminate state */
+  indeterminate: PropTypes.bool,
   /** Form error, causing element to render red when present */
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Ref method passed to the inner input element */
@@ -30,6 +32,7 @@ const defaultProps = {
   value: false,
   disabled: false,
   error: false,
+  indeterminate: false,
   onChange() {},
   inputRef() {},
   className: '',
@@ -44,6 +47,7 @@ const Checkbox = ({
   value,
   label,
   error,
+  indeterminate,
   className,
   style,
   inputRef,
@@ -67,11 +71,16 @@ const Checkbox = ({
         ref={inputRef}
         className={classNames('rc-checkbox', {
           'rc-checkbox-error': error,
+          'rc-checkbox-indeterminate': indeterminate,
         })}
         onChange={e => onChange(e.target.checked, e)}
         {...otherProps}
       />
-      <Icon type="check" />
+      {indeterminate ? (
+        <Icon type="indeterminate" size="small" />
+      ) : (
+        <Icon type="check" />
+      )}
     </div>
     {label}
   </Text>
