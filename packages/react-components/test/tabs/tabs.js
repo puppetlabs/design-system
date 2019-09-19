@@ -30,8 +30,8 @@ describe('<Tabs.Tab />', () => {
     expect(
       mount(
         <Tabs {...defaultTabsProps}>
-          <span id="1">foo</span>
-          <span id="2">foo</span>
+          <Tabs.Tab id="1">foo</Tabs.Tab>
+          <Tabs.Tab id="2">foo</Tabs.Tab>
         </Tabs>,
       ),
     )
@@ -43,13 +43,27 @@ describe('<Tabs.Tab />', () => {
     expect(
       mount(
         <Tabs {...defaultTabsProps}>
-          <span id="1">foo</span>
-          <span id="2">foo</span>
+          <Tabs.Tab id="1">foo</Tabs.Tab>
+          <Tabs.Tab id="2">foo</Tabs.Tab>
         </Tabs>,
       ),
     )
       .to.have.exactly(2)
       .descendants('.rc-tabs-panel');
+  });
+
+  it('renders siblings of Tabs.Tab', () => {
+    expect(
+      mount(
+        <Tabs {...defaultTabsProps}>
+          <Tabs.Tab id="1">foo</Tabs.Tab>
+          <Tabs.Tab id="2">foo</Tabs.Tab>
+          <span id="sibling-of-tabs">Hello world</span>
+        </Tabs>,
+      ),
+    )
+      .to.have.exactly(1)
+      .descendants('#sibling-of-tabs');
   });
 
   it('renders the title prop on Tabs.Tab as the button content', () => {
