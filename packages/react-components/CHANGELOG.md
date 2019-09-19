@@ -13,6 +13,7 @@
 
 # 5.6.1
 
+- NOTICE: Packages are now being published to npm instead of Artifactory, so `.npmrc` files with lines ending in `/npm__local/` should replace those instances with `/npm/` (which combines Artifactory with an npm mirror) or remove them if Artifactory is no longer needed.
 - Import core-js as single dependency without @babel/preset-env's useBuiltIns option to add compatibility with Gatsby.
 
 # 5.6.0
