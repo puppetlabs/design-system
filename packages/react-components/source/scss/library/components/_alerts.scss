@@ -55,14 +55,14 @@ $colors: (
   @include rc-alert-colors('info');
   @include rc-alert-colors('success');
   @include rc-alert-colors('warning');
-
-
-  flex-wrap: wrap;
   align-items: centre;
   background: $puppet-white;
   border-radius: $puppet-common-border-radius;
   cursor: default;
   display: flex;
+
+
+  flex-wrap: wrap;
   left: 50%;
   top: 8px;
   width: 100%;
@@ -85,9 +85,10 @@ $colors: (
   overflow-wrap: break-word;
   padding: $puppet-common-spacing-base * 2;
 }
+
 .rc-alert-body-message {
   flex-basis: 100%;
-  padding: 6px 0 8px 0;
+  padding: 6px 0 8px;
 }
 
 .rc-alert .rc-icon-button {
@@ -95,7 +96,7 @@ $colors: (
 }
 
 .rc-alert-actions {
-  margin: 8px 0 8px 0;
+  margin: 8px 0;
 }
 
 
@@ -118,9 +119,9 @@ $colors: (
   .rc-icon-button-icon-svg {
     bottom: 0;
     fill: inherit;
+    left: $puppet-common-spacing-base * 2;
     margin: auto;
     position: absolute;
-    left: $puppet-common-spacing-base * 2;
     top: 0;
   }
 
