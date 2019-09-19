@@ -37,9 +37,9 @@ const defaultProps = {
   style: {},
 };
 
-const collectChildProps = children =>
+const collectTabsProps = children =>
   React.Children.toArray(children)
-    .filter(child => child && child.props)
+    .filter(child => child && child.props && child.type.displayName === 'Tab')
     .map((child, index) => ({
       ...child.props,
       id: child.props.id || index,
@@ -47,9 +47,9 @@ const collectChildProps = children =>
     }));
 
 const getActiveTab = (props, state) => {
-  const childProps = collectChildProps(props.children);
+  const tabsProps = collectTabsProps(props.children);
 
-  const activeChild = childProps.find(p => p.active);
+  const activeChild = tabsProps.find(p => p.active);
 
   let activeTab;
 
@@ -58,11 +58,11 @@ const getActiveTab = (props, state) => {
   } else if (state.activeTab != null) {
     // eslint-disable-next-line
     activeTab = state.activeTab;
-  } else if (childProps.length) {
-    activeTab = childProps[0].id;
+  } else if (tabsProps.length) {
+    activeTab = tabsProps[0].id;
   }
 
-  const activeIndex = childProps.findIndex(p => p.id === activeTab);
+  const activeIndex = tabsProps.findIndex(p => p.id === activeTab);
 
   return {
     activeTab,
@@ -115,10 +115,10 @@ class Tabs extends React.Component {
     }
   }
 
-  getActiveTab(childProps) {
+  getActiveTab(tabsProps) {
     const { activeTab } = this.state;
 
-    const activeChild = childProps.find(props => props.active);
+    const activeChild = tabsProps.find(props => props.active);
 
     return (activeChild && activeChild.id) || activeTab;
   }
@@ -156,7 +156,10 @@ class Tabs extends React.Component {
       id: parentId,
     } = this.props;
 
-    const childProps = collectChildProps(userProvidedChildren);
+    const tabsProps = collectTabsProps(userProvidedChildren);
+    const otherChildren = userProvidedChildren.filter(
+      child => child.type.displayName !== 'Tab',
+    );
 
     return (
       <div
@@ -164,7 +167,7 @@ class Tabs extends React.Component {
         style={style}
       >
         <div className="rc-tabs-list" role="tablist">
-          {childProps.map(({ id, children, ...rest }, index) => (
+          {tabsProps.map(({ id, children, ...rest }, index) => (
             <Tab
               {...rest}
               key={id}
@@ -178,8 +181,9 @@ class Tabs extends React.Component {
               }}
             />
           ))}
+          {otherChildren}
         </div>
-        {childProps.map(({ id, children, type: tabType }) => (
+        {tabsProps.map(({ id, children, type: tabType }) => (
           <Panel
             key={id}
             id={id}

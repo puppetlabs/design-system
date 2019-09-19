@@ -63,5 +63,6 @@ const Tab = forwardRef(
 
 Tab.propTypes = propTypes;
 Tab.defaultProps = defaultProps;
+Tab.displayName = 'Tab';
 
 export default Tab;
