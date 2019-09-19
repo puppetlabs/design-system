@@ -1,3 +1,7 @@
+# 5.9.0
+
+- Add import and export icons
+
 # 5.8.0
 
 - Add `indeterminate` prop to the Checkbox component
