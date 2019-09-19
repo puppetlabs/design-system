@@ -1,3 +1,9 @@
+# 5.9.1
+
+- Allow siblings of `Tabs.Tab` in `Tabs` component
+- Add onBlur prop to Select Component
+- Clean up icon SVG tags
+
 # 5.9.0
 
 - Add import and export icons
