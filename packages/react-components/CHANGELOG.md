@@ -1,6 +1,15 @@
-# 5.6.2
+# 5.8.0
 
 - Add `indeterminate` prop to the Checkbox component
+- Expand Alert functionality with Alert.Message and Alert.Actions components
+
+# 5.7.1
+
+- Update README.md
+
+# 5.7.0
+
+- Add export-csv icon
 
 # 5.6.1
 
