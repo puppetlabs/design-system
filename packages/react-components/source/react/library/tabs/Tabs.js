@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { LEFT_KEY_CODE, RIGHT_KEY_CODE, UP_KEY_CODE } from '../../constants';
 import withId from '../../helpers/withId';
-import { focus } from '../../helpers/statics';
+import { componentHasType, focus } from '../../helpers/statics';
 
 import Tab from './Tab';
 import Panel from './Panel';
@@ -39,7 +39,7 @@ const defaultProps = {
 
 const collectTabsProps = children =>
   React.Children.toArray(children)
-    .filter(child => child && child.props && child.type.displayName === 'Tab')
+    .filter(child => child && child.props && componentHasType(child, Tab))
     .map((child, index) => ({
       ...child.props,
       id: child.props.id || index,
@@ -158,7 +158,7 @@ class Tabs extends React.Component {
 
     const tabsProps = collectTabsProps(userProvidedChildren);
     const otherChildren = userProvidedChildren.filter(
-      child => child.type.displayName !== 'Tab',
+      child => !componentHasType(child, Tab),
     );
 
     return (
