@@ -467,35 +467,26 @@ const icons = {
 
   export: {
     medium: (
-      <g fillRule="evenodd">
+      <>
         <path
           fillRule="evenodd"
           d="M0 14.5v-13A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5V7h-2V2H2v12h5v2H1.5A1.5 1.5 0 0 1 0 14.5z"
         />
         <path d="M16 10v5a1 1 0 0 1-1 1h-5v-2h2.4L7 8.6 8.6 7l5.4 5.4V10h2z" />
-      </g>
+      </>
     ),
   },
 
   'export-csv': {
     medium: (
-      <svg
-        id="Layer_1"
-        data-name="Layer 1"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 16 16"
-      >
-        <defs>
-          <style>.cls-1{`fill:#818f99;`}</style>
-        </defs>
-        <title>i-16-export_csv</title>
+      <>
         <rect x="4" y="7" width="2" height="2" />
         <rect x="4" y="10" width="2" height="2" />
         <polygon points="2 2 10 2 12 4 12 7 14 7 14 3 11 0 0 0 0 16 7 16 7 14 2 14 2 2" />
         <path d="M14,10v2.61L10.41,9,9,10.42,12.6,14H10v2h5a1,1,0,0,0,1-1V10Z" />
         <rect x="7" y="4" width="2" height="2" />
         <rect x="4" y="4" width="2" height="2" />
-      </svg>
+      </>
     ),
   },
 
@@ -588,10 +579,7 @@ const icons = {
 
   import: {
     medium: (
-      <path
-        fillRule="nonzero"
-        d="M1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5H8v-2h6V2H2v6H0V1.5A1.5 1.5 0 0 1 1.5 0zM8 12V9.6L2.6 15 1 13.4 6.4 8H4V6h5a1 1 0 0 1 1 1v5H8z"
-      />
+      <path d="M1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5H8v-2h6V2H2v6H0V1.5A1.5 1.5 0 0 1 1.5 0zM8 12V9.6L2.6 15 1 13.4 6.4 8H4V6h5a1 1 0 0 1 1 1v5H8z" />
     ),
   },
 
@@ -613,11 +601,7 @@ const icons = {
     ),
   },
   indeterminate: {
-    small: (
-      <g strokeWidth="1" fillRule="evenodd">
-        <rect x="1" y="7" width="10" height="4" />
-      </g>
-    ),
+    small: <rect fillRule="evenodd" x="1" y="7" width="10" height="4" />,
   },
   integration: {
     medium: (
@@ -725,9 +709,7 @@ const icons = {
   },
 
   minus: {
-    tiny: (
-      <polygon fill="#818F99" fillRule="evenodd" points="0 3 0 5 8 5 8 3" />
-    ),
+    tiny: <polygon fillRule="evenodd" points="0 3 0 5 8 5 8 3" />,
   },
 
   package: {
