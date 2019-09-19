@@ -157,7 +157,7 @@ class Tabs extends React.Component {
     } = this.props;
 
     const tabsProps = collectTabsProps(userProvidedChildren);
-    const otherChildren = userProvidedChildren.filter(
+    const otherChildren = React.Children.toArray(userProvidedChildren).filter(
       child => !componentHasType(child, Tab),
     );
 
