@@ -67,6 +67,9 @@ const style = { margin: 10 };
       console.log('New Value:', value1);
       setState({ value1 });
     }}
+    onBlur={() => {
+      console.log('onBlur')
+    }}
     type="autocomplete"
   />
 </div>;
