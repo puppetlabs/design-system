@@ -467,15 +467,13 @@ const icons = {
 
   export: {
     medium: (
-      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16">
-        <g fill="#818F99" fillRule="evenodd">
-          <path
-            fillRule="evenodd"
-            d="M0 14.5v-13A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5V7h-2V2H2v12h5v2H1.5A1.5 1.5 0 0 1 0 14.5z"
-          />
-          <path d="M16 10v5a1 1 0 0 1-1 1h-5v-2h2.4L7 8.6 8.6 7l5.4 5.4V10h2z" />
-        </g>
-      </svg>
+      <g fillRule="evenodd">
+        <path
+          fillRule="evenodd"
+          d="M0 14.5v-13A1.5 1.5 0 0 1 1.5 0h13A1.5 1.5 0 0 1 16 1.5V7h-2V2H2v12h5v2H1.5A1.5 1.5 0 0 1 0 14.5z"
+        />
+        <path d="M16 10v5a1 1 0 0 1-1 1h-5v-2h2.4L7 8.6 8.6 7l5.4 5.4V10h2z" />
+      </g>
     ),
   },
 
@@ -591,7 +589,6 @@ const icons = {
   import: {
     medium: (
       <path
-        fill="#818F99"
         fillRule="nonzero"
         d="M1.5 0h13A1.5 1.5 0 0 1 16 1.5v13a1.5 1.5 0 0 1-1.5 1.5H8v-2h6V2H2v6H0V1.5A1.5 1.5 0 0 1 1.5 0zM8 12V9.6L2.6 15 1 13.4 6.4 8H4V6h5a1 1 0 0 1 1 1v5H8z"
       />
