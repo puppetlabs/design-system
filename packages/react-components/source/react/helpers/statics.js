@@ -44,17 +44,8 @@ const mapObj = (obj, fn) => {
   return mappedObj;
 };
 
-/**
- * When using react-hot-loader, all components are actually proxied to another
- * type. This makes the strict equality check on the Type fail, but luckily they
- * extend the class in their proxy, so we can check against the prototype.
- *
- * @see https://github.com/gaearon/react-hot-loader/issues/304
- */
 const componentHasType = (component, Type) =>
-  component &&
-  component.type &&
-  (component.type === Type || component.type.prototype instanceof Type);
+  component && component.type && component.type === Type;
 
 const omit = (keys, object) => {
   const keySet = new Set(keys);
