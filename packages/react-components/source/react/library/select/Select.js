@@ -72,6 +72,8 @@ const propTypes = {
   style: PropTypes.shape({}),
   /** Control the state of the options menu */
   open: PropTypes.bool,
+  /** onBlur handler */
+  onBlur: PropTypes.func,
 };
 
 const defaultProps = {
@@ -91,6 +93,7 @@ const defaultProps = {
   className: '',
   style: {},
   open: null,
+  onBlur() {},
 };
 
 const isControlled = ({ type, applyImmediately }) =>
@@ -166,8 +169,10 @@ class Select extends Component {
   }
 
   onBlur(e) {
+    const { onBlur } = this.props;
     if (!this.container.contains(e.relatedTarget)) {
       this.close();
+      onBlur();
     }
   }
 
