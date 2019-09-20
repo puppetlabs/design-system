@@ -1054,6 +1054,15 @@ const icons = {
     ),
   },
 
+  top: {
+    medium: (
+      <path
+        fillRule="evenodd"
+        d="M8 10.414l-2.293 2.293a1 1 0 11-1.414-1.414l3-3a1 1 0 011.414 0l3 3a1 1 0 01-1.414 1.414L8 10.414zM3 3h10a1 1 0 010 2H3a1 1 0 110-2z"
+      />
+    ),
+  },
+
   trash: {
     medium: (
       <path
