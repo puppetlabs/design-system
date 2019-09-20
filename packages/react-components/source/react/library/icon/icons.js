@@ -1018,6 +1018,15 @@ const icons = {
     ),
   },
 
+  terminal: {
+    medium: (
+      <path
+        fillRule="evenodd"
+        d="M1 0h14a1 1 0 011 1v14a1 1 0 01-1 1H1a1 1 0 01-1-1V1a1 1 0 011-1zm1 2v12h12V2H2zm4.586 6L4.293 5.707a1 1 0 011.414-1.414l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L6.586 8zM9 10h3v2H9v-2z"
+      />
+    ),
+  },
+
   text: {
     medium: (
       <path
