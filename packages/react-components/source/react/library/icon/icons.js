@@ -96,6 +96,15 @@ const icons = {
     ),
   },
 
+  bottom: {
+    medium: (
+      <path
+        fillRule="evenodd"
+        d="M8 5.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 011.414-1.414L8 5.586zM13 13H3a1 1 0 010-2h10a1 1 0 110 2z"
+      />
+    ),
+  },
+
   brush: {
     medium: (
       <path
