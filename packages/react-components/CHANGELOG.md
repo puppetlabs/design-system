@@ -1,3 +1,7 @@
+# 5.9.3
+
+- Allow PropTypes.node in Tab title
+
 # 5.9.2
 
 - Add icons for "terminal", "top", and "bottom"

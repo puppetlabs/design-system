@@ -14,7 +14,7 @@ const propTypes = {
   /** Currently controls bg color of active tab & panel */
   type: PropTypes.oneOf(['primary', 'secondary']),
   /** Visible tab label  */
-  title: PropTypes.string,
+  title: PropTypes.node,
   /** For ease of reference in controlled-mode, a custom unique id can be provided. By default the tab index will be used  */
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Id of the parent tabs element  */
