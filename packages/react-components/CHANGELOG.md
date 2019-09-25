@@ -1,3 +1,7 @@
+# 5.9.2
+
+- Add icons for "terminal", "top", and "bottom"
+
 # 5.9.1
 
 - Allow siblings of `Tabs.Tab` in `Tabs` component
@@ -6,7 +10,7 @@
 
 # 5.9.0
 
-- Add import and export icons
+- Add "import" and "export" icons
 
 # 5.8.0
 
