@@ -1,4 +1,10 @@
-### Bold badges (default)
+## Overview
+
+Badges are persistent informational components. They give the user context for what they’re looking at, providing metadata or additional info on elements in the ui. Badges can have inherent meaning conveyed by color, but must be understandable based solely on the string of text that they contain for accessibility. The component defaults to the bold, neutral colored square badge, which can be changed to suit the desired meaning or effect. 
+
+## Type
+
+### Default Badges
 
 ```jsx
 <Badge type="danger">Danger</Badge>
@@ -8,6 +14,8 @@
 <Badge type="warning">Warning</Badge>
 ```
 
+### Pill badges
+
 ```jsx
 <Badge pill type="danger">12</Badge>
 <Badge pill type="info">24</Badge>
@@ -15,6 +23,8 @@
 <Badge pill type="success">48</Badge>
 <Badge pill type="warning">60</Badge>
 ```
+
+## Variations
 
 ### Subtle badges
 
