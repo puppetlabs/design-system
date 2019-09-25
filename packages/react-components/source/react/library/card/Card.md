@@ -1,4 +1,6 @@
-Cards provide flexible containers for related pieces of UI content. There are primary and secondary variants available at multiple elevations. Each may become 'selectable' for use in a selectable list.
+### Overview
+
+Cards provide flexible containers for related pieces of UI content. There are primary and secondary variants available at multiple elevations. Each may become 'selectable' for use in a selectable list and can contain standardized card content such as a title, an action, or selection of actions.
 
 ### Primary Cards
 
@@ -111,6 +113,8 @@ const cardExampleStyle = {
 
 Card content is arbitrary as determined by the needs of the application. We provide three convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, `Card.ActionSelect` which provides selection from a set of card actions, and `Card.Action` which provides access to a single card action, pre-styled in a consistent manner.
 
+#### Card with action select
+
 ```jsx
 const cardActions = [
   {
@@ -141,6 +145,8 @@ const cardActions = [
   ïn cülpa qüi öfficia dëserunt möllit änim ïd ëst läborum.
 </Card>;
 ```
+
+#### Card with single action
 
 ```jsx
 <Card>
