@@ -5,12 +5,6 @@ This provides a reasonable default for text formatting in text-heavy pages, such
 
 _Styling is limited to elements available in markdown._
 
-If we move to support all html elements, the following should also be implemented:
-
-1. `header + description` spacing
-1. `caption` color and spacing
-1. `label` color and spacing
-
 `Base styles:`
 
 ```jsx
