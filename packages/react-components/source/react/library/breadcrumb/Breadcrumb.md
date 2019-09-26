@@ -22,7 +22,7 @@ import Link from '../link';
   <Breadcrumb.Section href="https://www.puppet.com/items/11" target="_blank">
     11
   </Breadcrumb.Section>
-  <Breadcrumb.Section>details</Breadcrumb.Section>
+  <Breadcrumb.Section>Details</Breadcrumb.Section>
 </Breadcrumb>;
 ```
 
