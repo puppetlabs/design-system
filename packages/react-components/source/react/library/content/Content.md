@@ -1,4 +1,5 @@
 ## Overview
+
 The Content component allows you to place formatted text within your application.
 This provides a reasonable default for text formatting in text-heavy pages, such as documentation, legal documents, and inline help.
 
@@ -19,14 +20,12 @@ const highlight = element => <span style={style}>{element}</span>;
 <Content>
   <p>{highlight('p')} has 16px bottom margin.</p>
   <ul>
-    <li>{highlight('ul')} has 24px bottom margin and 0 left padding.</li>
-    <li>{highlight('ul li')} has 8px bottom margin and a yellow bullet.</li>
-    <li>{highlight('last ul li')} has 0 bottom margin.</li>
+    <li>{highlight('ul')} has 24px of space below it 0 left padding.</li>
+    <li>{highlight('ul li')} uses yellow bullets.</li>
   </ul>
   <ol>
-    <li>{highlight('ol')} has 24px bottom margin and 0 left padding.</li>
-    <li>{highlight('ol li')} has 8px bottom margin and a yellow number.</li>
-    <li>{highlight('last ol li')} has 0 bottom margin.</li>
+    <li>{highlight('ol')} has 24px of space below it 0 left padding.</li>
+    <li>{highlight('ol li')} uses black numbers.</li>
   </ol>
   <p>{highlight('p + h#')} has 24px top margin (applied to h#).</p>
   <h1>{highlight('h1')} has 24px bottom margin.</h1>
