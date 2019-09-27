@@ -609,9 +609,11 @@ const icons = {
       />
     ),
   },
+
   indeterminate: {
     small: <rect fillRule="evenodd" x="1" y="7" width="10" height="4" />,
   },
+
   integration: {
     medium: (
       <path
@@ -719,6 +721,15 @@ const icons = {
 
   minus: {
     tiny: <polygon fillRule="evenodd" points="0 3 0 5 8 5 8 3" />,
+  },
+
+  'minus-circle': {
+    medium: (
+      <path
+        fillRule="evenodd"
+        d="M8 0c4.411 0 8 3.589 8 8s-3.589 8-8 8-8-3.589-8-8 3.589-8 8-8zm0 14c3.309 0 6-2.691 6-6s-2.691-6-6-6-6 2.691-6 6 2.691 6 6 6zM4 7h8v2H4V7z"
+      />
+    ),
   },
 
   package: {
