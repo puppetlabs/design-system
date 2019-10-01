@@ -4,7 +4,7 @@
   "scripts": {
     "format": "lerna run format",
     "lint": "lerna run lint",
-    "postinstall": "for package in packages/*; do (echo \"Installing $package dependencies...\" && cd $package && npm install); done",
+    "postinstall": "lerna bootstrap",
     "test": "lerna run lint && lerna run test",
     "start": "cd packages/design-system-website && npx styleguidist server",
     "styleguide:build": "cd packages/design-system-website && npm run styleguide:build"
