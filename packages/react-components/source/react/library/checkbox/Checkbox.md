@@ -44,10 +44,10 @@ const exampleStyle = { marginRight: 10 };
 ```jsx
 class IndeterminateExample extends React.Component {
   constructor() {
-    super()
+    super();
     this.state = {
-      checkBoxes : [{ checked: false}, { checked: false}, { checked: false}],
-    }
+      checkBoxes: [{ checked: false }, { checked: false }, { checked: false }],
+    };
     this.onClick = this.onClick.bind(this);
     this.onSelectAll = this.onSelectAll.bind(this);
   }
@@ -59,7 +59,7 @@ class IndeterminateExample extends React.Component {
     });
     this.setState({
       checkBoxes,
-    })
+    });
   }
 
   onClick(checked, i) {
@@ -67,7 +67,7 @@ class IndeterminateExample extends React.Component {
     checkBoxes[i].checked = checked;
     this.setState({
       checkBoxes: checkBoxes,
-    })
+    });
   }
 
   render() {
@@ -87,17 +87,18 @@ class IndeterminateExample extends React.Component {
           checked={ticked === checkBoxes.length}
           onChange={checked => this.onSelectAll(checked)}
         />
-      {checkBoxes.map((box, i) => <Checkbox
-          name={`Box ${i}`}
-          label={`Box ${i}`}
-          checked={box.checked}
-          onChange={(checked) => this.onClick(checked, i)}
-        />)}
+        {checkBoxes.map((box, i) => (
+          <Checkbox
+            name={`Box ${i}`}
+            label={`Box ${i}`}
+            checked={box.checked}
+            onChange={checked => this.onClick(checked, i)}
+          />
+        ))}
       </div>
-    )
+    );
   }
 }
 
-<IndeterminateExample />
-
+<IndeterminateExample />;
 ```

@@ -68,7 +68,7 @@ const style = { margin: 10 };
       setState({ value1 });
     }}
     onBlur={() => {
-      console.log('onBlur')
+      console.log('onBlur');
     }}
     type="autocomplete"
   />

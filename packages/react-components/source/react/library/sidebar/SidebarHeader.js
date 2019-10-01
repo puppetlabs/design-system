@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Logo from '../logo';
 
 const propTypes = {
-  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  as: PropTypes.elementType,
   minimized: PropTypes.bool,
   logo: PropTypes.string,
   onClick: PropTypes.func,

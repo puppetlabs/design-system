@@ -10,8 +10,8 @@ Design and size specifications can be found in the Sketch Styleguide file.
 
 To render an icon, either:
 
-* Provide a type and a size (size optional)
-* Provide an SVG and a viewBox
+- Provide a type and a size (size optional)
+- Provide an svg and a viewBox
 
 The specific SVG rendered is decided by the following:
 
@@ -75,7 +75,9 @@ const Renderer = () => {
   return (
     <div className="rc-sg-wrapper">
       <Alert type="success">
-        Icons with a <em>green</em> background are the unique SVGs created by the UX team. Scaled SVGs with a <em>white</em> background should be approved before using.
+        Icons with a <em>green</em> background are the unique SVGs created by
+        the UX team. Scaled SVGs with a <em>white</em> background should be
+        approved before using.
       </Alert>
       <br />
       <table className="rc-icon-table">
@@ -95,7 +97,8 @@ const Renderer = () => {
 };
 <Renderer />;
 ```
+
 ## Related
 
-* [Button](#/React%20Components/Button) : buttons are able to render an icon as part of the component
-* [Button Select](#/React%20Components/ButtonSelect)
+- [Button](#/React%20Components/Button) : buttons are able to render an icon as part of the component
+- [Button Select](#/React%20Components/ButtonSelect)

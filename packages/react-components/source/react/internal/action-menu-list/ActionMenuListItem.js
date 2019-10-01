@@ -1,12 +1,11 @@
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { renderableElement } from '../../helpers/customPropTypes';
 
 import Icon from '../../library/icon';
 
 const propTypes = {
-  as: renderableElement,
+  as: PropTypes.elementType,
   id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   focused: PropTypes.bool.isRequired,

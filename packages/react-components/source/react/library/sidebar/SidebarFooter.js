@@ -6,7 +6,7 @@ import Text from '../text';
 
 const propTypes = {
   /** The root HTML element  */
-  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  as: PropTypes.elementType,
   /** Displays the name of the user in the sidebar's footer */
   username: PropTypes.string,
   /** Displays the version of the software in the sidebar's footer */

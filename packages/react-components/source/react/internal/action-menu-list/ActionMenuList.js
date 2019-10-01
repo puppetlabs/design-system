@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import scrollIntoView from 'scroll-into-view-if-needed';
-import { renderableElement } from '../../helpers/customPropTypes';
 import {
   UP_KEY_CODE,
   DOWN_KEY_CODE,
@@ -25,7 +24,7 @@ const propTypes = {
       label: PropTypes.node.isRequired,
       icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
       onClick: PropTypes.func,
-      as: renderableElement,
+      as: PropTypes.elementType,
     }),
   ),
   onActionClick: PropTypes.func,

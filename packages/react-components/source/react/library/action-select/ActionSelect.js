@@ -3,10 +3,7 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Button from '../button';
 import ActionMenuList from '../../internal/action-menu-list';
-import {
-  renderableElement,
-  anchorOrientation,
-} from '../../helpers/customPropTypes';
+import { anchorOrientation } from '../../helpers/customPropTypes';
 import Icon from '../icon';
 import { getDropdownPosition, focus } from '../../helpers/statics';
 import withId from '../../helpers/withId';
@@ -29,7 +26,7 @@ const propTypes = {
       /** Action click handler. Not needed if the action is a link */
       onClick: PropTypes.func,
       /** Custom action element. Useful for creating navigation actions with as: 'a' or as: Link. Additionally, extra props not listed here are passed through to the action element. This allows custom props such as `href` or `to` to be passed to the inner action element. */
-      as: renderableElement,
+      as: PropTypes.elementType,
     }),
   ),
   label: PropTypes.string,

@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
-import { renderableElement } from '../../helpers/customPropTypes';
 import { omit } from '../../helpers/statics';
 import Input, {
   SUPPORTED_TYPES as INPUT_SUPPORTED_TYPES,
@@ -23,7 +22,7 @@ const propTypes = {
   /** The type of input to render. Can be either a string corresponding to a supported input type or a custom React component satisfying the input interface */
   type: PropTypes.oneOfType([
     PropTypes.oneOf(supportedTypes),
-    renderableElement,
+    PropTypes.elementType,
   ]).isRequired,
   /** A unique identifier for this field */
   name: PropTypes.string.isRequired,

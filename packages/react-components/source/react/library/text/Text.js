@@ -1,11 +1,10 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import { renderableElement } from '../../helpers/customPropTypes';
 
 const propTypes = {
   /** Html element or react component to render */
-  as: renderableElement,
+  as: PropTypes.elementType,
   /** Text Size */
   size: PropTypes.oneOf(['medium', 'small', 'tiny']),
   /** Text color */

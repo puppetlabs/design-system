@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from '@puppet/react-components';
-import { renderableElement } from '../../utils/customPropTypes';
 import AuthLayout from '../AuthLayout';
 
 const propTypes = {
@@ -12,7 +11,7 @@ const propTypes = {
   /** Callback executed with a submit fetch error when present. Should map the error object to a localized string message */
   mapErrorToMessage: PropTypes.func,
   /** Element override for the back to login link, to allow use of ReactRouter */
-  renderBackToLoginAs: renderableElement,
+  renderBackToLoginAs: PropTypes.elementType,
   /** Additional props passed to the reset password link */
   backToLoginProps: PropTypes.shape({}),
   /** Full set of necessary localized strings. Defaults are provided for ease of setup but **translated strings should be used in production** */

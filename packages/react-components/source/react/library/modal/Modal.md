@@ -39,7 +39,9 @@ initialState = {
 };
 
 <>
-  <Button onClick={() => setState({ open: true })}>Open modal with sub-components</Button>
+  <Button onClick={() => setState({ open: true })}>
+    Open modal with sub-components
+  </Button>
 
   {state.open && (
     <Modal onClose={() => setState({ open: false })}>
@@ -133,7 +135,10 @@ initialState = {
   </Button>
 
   {state.open && (
-    <Modal closeOnEscapeAndOverlay={false} onClose={() => setState({ open: false })}>
+    <Modal
+      closeOnEscapeAndOverlay={false}
+      onClose={() => setState({ open: false })}
+    >
       This modal can only be closed by clicking the "×" button in the
       upper-right of the modal, but not by hitting the escape key or by clicking
       outside the modal.

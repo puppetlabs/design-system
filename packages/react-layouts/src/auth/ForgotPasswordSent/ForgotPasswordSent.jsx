@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { renderableElement } from '../../utils/customPropTypes';
 import AuthLayout from '../AuthLayout';
 
 const propTypes = {
   /** Product logo. One of the official set or a custom string */
   product: PropTypes.string,
   /** Element override for the back to login link, to allow use of ReactRouter */
-  renderBackToLoginAs: renderableElement,
+  renderBackToLoginAs: PropTypes.elementType,
   /** Additional props passed to the back to login link */
   backToLoginProps: PropTypes.shape({}),
   /** Full set of necessary localized strings. Defaults are provided for ease of setup but **translated strings should be used in production** */
