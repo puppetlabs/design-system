@@ -6,7 +6,7 @@
     "lint": "lerna run lint",
     "postinstall": "lerna bootstrap",
     "test": "lerna run lint && lerna run test",
-    "start": "cd packages/design-system-website && npx styleguidist server",
+    "start": "cd packages/design-system-website && npm start",
     "styleguide:build": "cd packages/design-system-website && npm run styleguide:build"
   },
   "devDependencies": {
