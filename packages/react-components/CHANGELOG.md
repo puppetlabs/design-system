@@ -1,3 +1,8 @@
+# 5.9.4
+- Internal: use PropTypes.elementType over custom renderableElement type
+- Docs Updates
+- Add minus-circle icon
+
 # 5.9.3
 
 - Allow PropTypes.node in Tab title

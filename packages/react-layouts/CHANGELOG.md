@@ -1,3 +1,6 @@
+# 1.0.19
+- Internal: use PropTypes.elementType over custom renderableElement type
+
 # 0.2.4
 
 - Add flex:1 rule to auth-layout-container
