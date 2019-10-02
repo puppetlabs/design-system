@@ -87,5 +87,6 @@
     "react-transition-group": "^4.1.1",
     "regenerator-runtime": "^0.13.3",
     "scroll-into-view-if-needed": "^2.2.20"
-  }
+  },
+  "gitHead": "4a6c41ff75aabb2ec705588e6ab757fc69ac9f97"
 }

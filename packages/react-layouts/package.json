@@ -88,5 +88,6 @@
     "webpack-hot-middleware": "^2.25.0",
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
-  }
+  },
+  "gitHead": "4a6c41ff75aabb2ec705588e6ab757fc69ac9f97"
 }
