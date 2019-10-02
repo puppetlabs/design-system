@@ -92,9 +92,9 @@ class OptionMenuList extends Component {
     this.onActionBlur = this.onActionBlur.bind(this);
   }
 
-  componentWillReceiveProps(props) {
-    const { options, focusedIndex } = props;
-    const { focusedIndex: oldFocusedIndex } = this.state;
+  componentDidUpdate(prevProps, prevState) {
+    const { options, focusedIndex } = this.props;
+    const { focusedIndex: oldFocusedIndex } = prevState;
 
     if (options.length && focusedIndex !== oldFocusedIndex) {
       this.focusItem(focusedIndex);
