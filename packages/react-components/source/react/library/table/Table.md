@@ -2,12 +2,10 @@
 
 Tables display data and sometimes allow users to take action on that data. Tables can contain other UI elements, like links or buttons. Table design is modular, with discreet options available to support a variety of use cases. The table component renders arrays of data in a tabular form. It does not handle pagination, sorting, or filtering and therefore should be used in simple cases.
 
-
 ### Microcopy
 
-* Use headings to eliminate redundant words in columns. For example, instead of Version 3.8.4 and Version 3.8.5, title the column Version, and use only the version numbers in the table cells. This makes it easier for users to scan the options and reduces word count for Localization. Use sentence case capitalization.
-* Use capitalization appropriate to the item named in the cell. For example, if the cell lists an environment, use the same capitalization as the environment name.
-
+- Use headings to eliminate redundant words in columns. For example, instead of Version 3.8.4 and Version 3.8.5, title the column Version, and use only the version numbers in the table cells. This makes it easier for users to scan the options and reduces word count for Localization. Use sentence case capitalization.
+- Use capitalization appropriate to the item named in the cell. For example, if the cell lists an environment, use the same capitalization as the environment name.
 
 ### Basic use
 

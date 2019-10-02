@@ -1,7 +1,6 @@
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { renderableElement } from '../../helpers/customPropTypes';
 
 import Button from '../button';
 
@@ -10,7 +9,7 @@ import getPanelId from './getPanelId';
 
 const propTypes = {
   /** html element to render tab button as */
-  as: renderableElement,
+  as: PropTypes.elementType,
   /** Currently controls bg color of active tab & panel */
   type: PropTypes.oneOf(['primary', 'secondary']),
   /** Visible tab label  */

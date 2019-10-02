@@ -1,10 +1,13 @@
 ## Overview
+
 Puppet’s color palettes have various themes that associate a particular color and its tonal range with a particular functional role. Don’t introduce new colors into your products without consulting the UX team. To ensure accessibility for the greatest number of users, use the color contrast ratios recommended here.
 
 ### Palettes
+
 Each hue is made up of a gradient of colors from light to dark, broken up into individual swatches. We use a numbering scheme of 50 to 950, with 50 representing the lightest shade and 950 representing the darkest. 0 is reserved for white and 1000 for black. 500 represents the base tone from which the rest of the palette is created. These tones are mapped to specific uses, e.g. 50 and 100 are primarily used for light backgrounds, 700 and above for text.
 
 ### Interactions
+
 We follow a consistent process for creating interactions. Our base color tone begins at 500. Hover states use a lighter color, typically 400. Pressed or active states are typically 600. 300 is used for focus.
 
 `insert color mapping example`
@@ -20,7 +23,9 @@ const colors = ['brand-primary', 'brand-secondary'];
 
 <Colors colors={colors} />;
 ```
+
 ## UI palette
+
 Use the UI palette use neutral colors for product chrome: trim, backgrounds, containers, content zones, and other foundational parts.
 
 ### Neutral colors
@@ -47,6 +52,7 @@ const colors = [
 ```
 
 ## Action palette
+
 Use the actions palette for only the most important actions a user can take on a page — often buttons or links. B500 is also used to indicate "on", whenever a component begins as transparent or a neutral color, e.g. the border of input fields change from grey to blue.
 
 #### Blues
@@ -69,9 +75,11 @@ colors = [
 ```
 
 ## Stoplight palette
+
 We use red, yellow, and green to indicate status, similar to a stop light and other traffic signals. We can not rely on color alone to assist all users. Red and green can be hard to distinguish by users afflicted with a common form of color blindness. Because of this always use another method such as icons or text to supplement the status.
 
 ### Reds
+
 Use red to indicate destructive actions, errors and failures.
 
 ```jsx
@@ -92,6 +100,7 @@ colors = [
 ```
 
 #### Yellows
+
 Use yellow to indicate warnings. Yellow is a particularly troublesome color to work with when testing for accessibility. Consult a UX designer when using yellow.
 
 `New rules for yellow are under review. Yellow 600 and above is being considered for deprecation, with specific rules exceptions being made for its use.`
@@ -114,6 +123,7 @@ colors = [
 ```
 
 #### Greens
+
 Use green to indicate success or to indicate approval actions.
 
 ```jsx
@@ -134,6 +144,7 @@ colors = [
 ```
 
 #### Purples
+
 Purple is still under consideration for its particular use case. It is being considered to indicate instructions or information.
 
 ```jsx

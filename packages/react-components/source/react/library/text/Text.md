@@ -12,9 +12,9 @@ Design specifications and use cases for the existing styles can be found in the 
 
 The following 3 font families are utilized in a variety of styles. The use cases for these are outlined below.
 
-* <strong>Calibre</strong>: Headings, titles, navigation, visualizations, and other primary elements (See [Heading](#/React%20Components/Heading))
-* <strong>Open Sans</strong>: Body copy and general UI elements and content (like this `Text` component)
-* <strong>Inconsolata</strong>: Code samples
+- <strong>Calibre</strong>: Headings, titles, navigation, visualizations, and other primary elements (See [Heading](#/React%20Components/Heading))
+- <strong>Open Sans</strong>: Body copy and general UI elements and content (like this `Text` component)
+- <strong>Inconsolata</strong>: Code samples
 
 See also: [Heading](#/React%20Components/Heading) and [Content](#/React%20Components/Content)
 
@@ -24,9 +24,9 @@ See also: [Heading](#/React%20Components/Heading) and [Content](#/React%20Compon
 
 The primary (default) text is categorized as Body text, used for page content.
 
-* Font Family: Open Sans
-* Font weight: 400 Regular
-* Size / line height: 14px / 20px
+- Font Family: Open Sans
+- Font weight: 400 Regular
+- Size / line height: 14px / 20px
 
 ```jsx
 <Text>Default text size</Text>
@@ -46,7 +46,7 @@ Most text should have a size of medium, the default, but small and tiny are also
 
 ### Text colors
 
-Take into account expected behavior and accessibility guidelines when using text colors. 
+Take into account expected behavior and accessibility guidelines when using text colors.
 
 #### Neutral colors
 
@@ -70,7 +70,7 @@ Our "stoplight" colors are reserved to apply meaning, or state, within a given c
 
 ## Related
 
-* [Color](#/React%20Components/Colors)
-* [Content](#/React%20Components/Content)
-* [Heading](#/React%20Components/Heading)
-* [Link](#/React%20Components/Link)
+- [Color](#/React%20Components/Colors)
+- [Content](#/React%20Components/Content)
+- [Heading](#/React%20Components/Heading)
+- [Link](#/React%20Components/Link)

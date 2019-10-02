@@ -116,10 +116,7 @@ module.exports = {
     {
       name: 'React Layouts',
       components: '../react-layouts/src/**/*.{js,jsx}',
-      ignore: [
-        '**/**/index.js',
-        '**/*.test.{js,jsx}',
-      ],
+      ignore: ['**/**/index.js', '**/*.test.{js,jsx}'],
     },
     {
       name: 'Data Grid',
@@ -144,7 +141,9 @@ module.exports = {
   },
   require: [
     path.join(__dirname, 'styleguide.scss'),
+    path.join(__dirname, '../sass-variables/_index.scss'),
     path.join(__dirname, '../react-components/source/scss/library/ui.scss'),
+    path.join(__dirname, '../react-layouts/src/index.scss'),
   ],
   styleguideDir: 'dist',
   webpackConfig: {
@@ -191,6 +190,13 @@ module.exports = {
           use: 'file-loader',
         },
       ],
+    },
+    resolve: {
+      modules: [
+        'node_modules',
+      ],
+      extensions: ['.js', '.mjs', '.jsx'],
+      symlinks: false,
     },
     plugins: [
       new ExtractTextPlugin({ filename: 'styleguide.css', allChunks: true }),

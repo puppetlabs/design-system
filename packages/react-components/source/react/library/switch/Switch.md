@@ -32,6 +32,7 @@ const exampleStyle = { marginRight: 10 };
   />
 </div>;
 ```
+
 Event Handling
 
 ```jsx
@@ -45,7 +46,8 @@ Event Handling
   }}
 />
 ```
+
 ## Related
 
-* [FormField](#/React%20Components/FormField)
-* [Input](#/React%20Components/Input)
+- [FormField](#/React%20Components/FormField)
+- [Input](#/React%20Components/Input)

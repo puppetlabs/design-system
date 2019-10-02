@@ -6,7 +6,7 @@ import Badge from '../badge';
 import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 
 const propTypes = {
-  as: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  as: PropTypes.elementType,
   title: PropTypes.string.isRequired,
   icon: PropTypes.string,
   className: PropTypes.string,

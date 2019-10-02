@@ -16,7 +16,7 @@
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
     "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'",
-    "start": "cd ../design-system-website && npm i && npx styleguidist server"
+    "start": "cd ../design-system-website && styleguidist server"
   },
   "publishConfig": {
     "access": "public"

@@ -5,7 +5,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "npm i && npx styleguidist server",
+    "start": "styleguidist server",
     "styleguide:build": "styleguidist build"
   },
   "devDependencies": {

@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {
-  renderableElement,
-  elementElevation,
-} from '../../helpers/customPropTypes';
+import { elementElevation } from '../../helpers/customPropTypes';
 
 import CardActionSelect from './CardActionSelect';
 import CardAction from './CardAction';
@@ -12,7 +9,7 @@ import CardTitle from './CardTitle';
 
 const propTypes = {
   /** Html element or react component to render */
-  as: renderableElement,
+  as: PropTypes.elementType,
   /** Main visual variant */
   type: PropTypes.oneOf(['primary', 'secondary']),
   /** Card 'elevation' visually indicated with box-shadow */

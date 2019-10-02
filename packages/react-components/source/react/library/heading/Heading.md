@@ -8,10 +8,10 @@ Design specifications and use cases for the existing styles can be found in the 
 
 ### Font families
 
-The following 2 font families are utilized in the Heading component. 
+The following 2 font families are utilized in the Heading component.
 
-* <strong>Calibre</strong>: Titles (hero's), heading (sizes 1-4), and labels
-* <strong>Open Sans</strong>: Heading (sizes 5 & 6) 
+- <strong>Calibre</strong>: Titles (hero's), heading (sizes 1-4), and labels
+- <strong>Open Sans</strong>: Heading (sizes 5 & 6)
 
 See also: [Text](#/React%20Components/Text) and [Content](#/React%20Components/Content)
 
@@ -19,7 +19,7 @@ See also: [Text](#/React%20Components/Text) and [Content](#/React%20Components/C
 
 ### Primary
 
-The primary (default) header style is in the color Neutral 900 (base), in various weights and sizes. 
+The primary (default) header style is in the color Neutral 900 (base), in various weights and sizes.
 
 ```jsx
 <Heading as="h1" hero>Hero</Heading>
@@ -34,7 +34,7 @@ The primary (default) header style is in the color Neutral 900 (base), in variou
 
 ### Secondary
 
-Another option for the header color is Neutral 700 (medium). 
+Another option for the header color is Neutral 700 (medium).
 
 ```jsx
 <Heading as="h1" color="medium" hero>Hero</Heading>
@@ -62,6 +62,6 @@ Another option for the header color is Neutral 600 (subtle), used as the most su
 
 ## Related
 
-* [Colors](#/React%20Components/Colors)
-* [Content](#/React%20Components/Content)
-* [Text](#/React%20Components/Text)
+- [Colors](#/React%20Components/Colors)
+- [Content](#/React%20Components/Content)
+- [Text](#/React%20Components/Text)

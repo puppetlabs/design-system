@@ -32,5 +32,6 @@ const highlight = element => <span style={style}>{element}</span>;
 ```
 
 ## Related
-* [Content writing](#/Foundations/ContentWriting) : guidance and examples for writing content
-* [Typography](#/Foundations/Typography) : rules and definitions for typefaces and fonts
+
+- [Content writing](#/Foundations/ContentWriting) : guidance and examples for writing content
+- [Typography](#/Foundations/Typography) : rules and definitions for typefaces and fonts

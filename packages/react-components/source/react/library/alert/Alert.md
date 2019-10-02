@@ -8,7 +8,7 @@ closeable + onClose
   closeable
   onClose={() => console.log('theoretically at least')}
 >
-Did you know this alert can be dismissed?
+  Did you know this alert can be dismissed?
 </Alert>
 ```
 
@@ -17,7 +17,7 @@ Did you know this alert can be dismissed?
 Success
 
 ```jsx
-<Alert type="success" >Success! Things seem to have gone well afterall.</Alert>
+<Alert type="success">Success! Things seem to have gone well afterall.</Alert>
 ```
 
 Danger
@@ -44,7 +44,7 @@ Elevated
 
 ```jsx
 <Alert elevated type="danger">
-This alert is elevated. Are you ready for that?
+  This alert is elevated. Are you ready for that?
 </Alert>
 ```
 
@@ -53,30 +53,39 @@ This alert is elevated. Are you ready for that?
 Expanded
 
 ```jsx
-<Alert type="warning" 
-closeable 
-onClose={() => console.log('theoretically at least')}
+<Alert
+  type="warning"
+  closeable
+  onClose={() => console.log('theoretically at least')}
 >
-Warning! Something did not complete.
-<Alert.Message>This will give the user more information on what the alert is about.</Alert.Message>
+  Warning! Something did not complete.
+  <Alert.Message>
+    This will give the user more information on what the alert is about.
+  </Alert.Message>
 </Alert>
 ```
 
 Action Buttons
 
-``` jsx
+```jsx
 import Button from '../button';
 
-<Alert type="warning"
-closeable
-onClose={() => console.log('theoretically at least')}
+<Alert
+  type="warning"
+  closeable
+  onClose={() => console.log('theoretically at least')}
 >
   Warning! Something did not complete.
-  <Alert.Message>This will give the user more information on what the alert is about.</Alert.Message>
+  <Alert.Message>
+    This will give the user more information on what the alert is about.
+  </Alert.Message>
   <Alert.Actions>
-    <Button type="primary" onClick={() => console.log('clicked')}>Button</Button>
-    <Button type="transparent" onClick={() => console.log('clicked')}>Cancel</Button>
+    <Button type="primary" onClick={() => console.log('clicked')}>
+      Button
+    </Button>
+    <Button type="transparent" onClick={() => console.log('clicked')}>
+      Cancel
+    </Button>
   </Alert.Actions>
-</Alert>
-
+</Alert>;
 ```

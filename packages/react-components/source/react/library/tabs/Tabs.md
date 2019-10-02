@@ -6,7 +6,7 @@ The Tabs component is a lightly styled wrapper that expects nested Tabs. Tab com
 
 ### Microcopy
 
-* Use a single noun or noun phrase that describes the content of the tab, for example, Facts, Reports, or Activity Log.
+- Use a single noun or noun phrase that describes the content of the tab, for example, Facts, Reports, or Activity Log.
 
 ## Types
 

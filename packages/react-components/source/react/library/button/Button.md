@@ -6,9 +6,9 @@ Puppet products use a family of buttons, with each button intended for a differe
 
 ### Microcopy
 
-* When providing a label for a button, use an imperative verb and a noun, for example: Add group. The verb-plus-noun construction increases usability and eliminates ambiguity for localization.
-* Rarely, just the imperative verb is ok (Apply, Add, Remove) if the context is crystal clear.
-* Use sentence-case capitalization: Capitalize the first word, and lowercase all other words except proper nouns.
+- When providing a label for a button, use an imperative verb and a noun, for example: Add group. The verb-plus-noun construction increases usability and eliminates ambiguity for localization.
+- Rarely, just the imperative verb is ok (Apply, Add, Remove) if the context is crystal clear.
+- Use sentence-case capitalization: Capitalize the first word, and lowercase all other words except proper nouns.
 
 ### States and interaction
 
@@ -27,7 +27,9 @@ const buttonStyle = { margin: 2 };
 
 <div>
   <Button style={buttonStyle}>Primary</Button>
-  <Button style={buttonStyle} icon="pencil">Primary with icon</Button>
+  <Button style={buttonStyle} icon="pencil">
+    Primary with icon
+  </Button>
   <Button loading style={buttonStyle}>
     Primary
   </Button>
@@ -130,6 +132,7 @@ const buttonStyle = { margin: 2 };
 ```
 
 #### Danger subtle
+
 For actions with less severe implications, or when many destructive actions are visible, use the subtle style.
 
 ```jsx
@@ -179,7 +182,7 @@ const buttonStyle = { margin: 2 };
 
 Use icons to assist in understanding the purpose of a button, or to help distinguish the button from similar actions that lie in close proximity. By default, include words to describe the button as this is much more accessible. Icons are available for use in every button type.
 
-*Note*: Indicating states (danger, success, warning) with icon colors is reserved for specific use cases within alerts and messages. Do not use color on icon buttons arbitrarily.
+_Note_: Indicating states (danger, success, warning) with icon colors is reserved for specific use cases within alerts and messages. Do not use color on icon buttons arbitrarily.
 
 #### Example: Transparent buttons with only icons
 
@@ -205,59 +208,84 @@ const divStyle = { marginBottom: 16 };
 <div>
   <div style={divStyle}>
     <Button type="secondary" icon="plus" />
-    <Button type="secondary" icon="plus">Add</Button>
+    <Button type="secondary" icon="plus">
+      Add
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="pencil" />
-    <Button type="secondary" icon="pencil">Attach</Button>
+    <Button type="secondary" icon="pencil">
+      Attach
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="area-chart" />
-    <Button type="secondary" icon="area-chart">Chart</Button>
+    <Button type="secondary" icon="area-chart">
+      Chart
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="pencil" />
-    <Button type="secondary" icon="pencil">Edit</Button>
+    <Button type="secondary" icon="pencil">
+      Edit
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="question-circle" />
-    <Button type="secondary" icon="question-circle">Help</Button>
+    <Button type="secondary" icon="question-circle">
+      Help
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="hamburger" />
-    <Button type="secondary" icon="hamburger">Menu</Button>
+    <Button type="secondary" icon="hamburger">
+      Menu
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="kebab" />
-    <Button type="secondary" icon="kebab">More</Button>
+    <Button type="secondary" icon="kebab">
+      More
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="profile" />
-    <Button type="secondary" icon="profile">Profile</Button>
+    <Button type="secondary" icon="profile">
+      Profile
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="trash" />
-    <Button type="secondary" icon="trash">Remove</Button>
+    <Button type="secondary" icon="trash">
+      Remove
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="gear" />
-    <Button type="secondary" icon="gear">Settings</Button>
+    <Button type="secondary" icon="gear">
+      Settings
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="zoom-in" />
-    <Button type="secondary" icon="zoom-in">Zoom In</Button>
+    <Button type="secondary" icon="zoom-in">
+      Zoom In
+    </Button>
   </div>
   <div style={divStyle}>
     <Button type="secondary" icon="zoom-out" />
-    <Button type="secondary" icon="zoom-out">Zoom Out</Button>
+    <Button type="secondary" icon="zoom-out">
+      Zoom Out
+    </Button>
   </div>
 </div>;
 ```
 
 ## Related
-*  [ButtonSelect](#/React%20Components/ButtonSelect)
-*  [ActionSelect](#/React%20Components/ActionSelect)
-*  [Icon](#/React%20Components/Icon)
-*  [Loading](#/React%20Components/Loading)
-*  [Form](#/React%20Components/Form)
-*  [TooltipHoverArea](#/React%20Components/TooltipHoverArea)
+
+- [ButtonSelect](#/React%20Components/ButtonSelect)
+- [ActionSelect](#/React%20Components/ActionSelect)
+- [Icon](#/React%20Components/Icon)
+- [Loading](#/React%20Components/Loading)
+- [Form](#/React%20Components/Form)
+- [TooltipHoverArea](#/React%20Components/TooltipHoverArea)

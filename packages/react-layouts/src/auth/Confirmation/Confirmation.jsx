@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from '@puppet/react-components';
-import { renderableElement } from '../../utils/customPropTypes';
 import AuthLayout from '../AuthLayout';
 
 const propTypes = {
@@ -20,7 +19,7 @@ const propTypes = {
   /** If true, company selection will be disabled (the assumption is that the user is on a company account where this is fixed) */
   disableCompanySelection: PropTypes.bool,
   /** Element override for the reset password link, to allow use of ReactRouter */
-  renderResetPasswordAs: renderableElement,
+  renderResetPasswordAs: PropTypes.elementType,
   /** Additional props passed to the reset password link */
   resetPasswordProps: PropTypes.shape({}),
   /** Full set of necessary localized strings. Defaults are provided for ease of setup but **translated strings should be used in production** */

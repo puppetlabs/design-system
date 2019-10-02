@@ -5,8 +5,9 @@
 The loading component provides a general purpose spinner. It will automatically center itself within its containing element. This component also includes a loader of configurable size.
 
 Use the loading indicator when:
-* A process is taking long enough that you want the user to know that they system isn’t hung. 
-* The load time is greater than 1 second. (Do not use the loading indicator when the load time is 1 second or shorter). 
+
+- A process is taking long enough that you want the user to know that they system isn’t hung.
+- The load time is greater than 1 second. (Do not use the loading indicator when the load time is 1 second or shorter).
 
 See also: [Icon](#/React%20Components/Icon) and [Form](#/React%20Components/Form)
 
@@ -45,5 +46,5 @@ There are 4 available sizes for this component, with the large size as the defau
 
 ## Related
 
-* [Form](#/React%20Components/Form)
-* [Icon](#/React%20Components/Icon)
+- [Form](#/React%20Components/Form)
+- [Icon](#/React%20Components/Icon)
