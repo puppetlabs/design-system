@@ -36,13 +36,17 @@ class SidebarHeader extends React.Component {
   }
 
   render() {
-    const { as, minimized, ...rest } = this.props;
-    const logo = this.renderLogo();
+    const { as, minimized, logo, ...rest } = this.props;
+    const logoComponent = this.renderLogo();
     const Component = as;
 
     return (
-      <Component className="rc-sidebar-header" {...rest}>
-        {logo}
+      <Component
+        className="rc-sidebar-header"
+        {...rest}
+        aria-label={`Return to ${logo} home`}
+      >
+        {logoComponent}
       </Component>
     );
   }
