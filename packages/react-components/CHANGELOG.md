@@ -1,4 +1,10 @@
+# 5.9.5
+
+- Update Alert font weight and color
+- Fix Alert wrapping
+
 # 5.9.4
+
 - Internal: use PropTypes.elementType over custom renderableElement type
 - Docs Updates
 - Add minus-circle icon
