@@ -2,8 +2,9 @@
 <div style={{ position: 'relative', height: '800px' }}>
   <Sidebar>
     <Sidebar.Header
-      logo="insights"
+      logo="pipelines"
       onClick={() => console.log('logo clicked')}
+      ariaLabel="Return to the home page"
     />
     <Sidebar.Navigation>
       <Sidebar.Section>
@@ -38,8 +39,9 @@
 <div style={{ position: 'relative', height: '800px' }}>
   <Sidebar minimized>
     <Sidebar.Header
-      logo="insights"
+      logo="pipelines"
       onClick={() => console.log('logo clicked')}
+      ariaLabel="Return to the home page"
     />
     <Sidebar.Navigation>
       <Sidebar.Section>

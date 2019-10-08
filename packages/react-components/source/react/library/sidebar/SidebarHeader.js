@@ -7,6 +7,7 @@ const propTypes = {
   minimized: PropTypes.bool,
   logo: PropTypes.string,
   onClick: PropTypes.func,
+  ariaLabel: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
@@ -36,17 +37,13 @@ class SidebarHeader extends React.Component {
   }
 
   render() {
-    const { as, minimized, logo, ...rest } = this.props;
-    const logoComponent = this.renderLogo();
+    const { as, minimized, ariaLabel, ...rest } = this.props;
+    const logo = this.renderLogo();
     const Component = as;
 
     return (
-      <Component
-        className="rc-sidebar-header"
-        {...rest}
-        aria-label={`Return to ${logo} home`}
-      >
-        {logoComponent}
+      <Component className="rc-sidebar-header" {...rest} aria-label={ariaLabel}>
+        {logo}
       </Component>
     );
   }
