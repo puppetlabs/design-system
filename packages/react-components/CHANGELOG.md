@@ -1,7 +1,11 @@
-# 5.9.5
+# 5.9.6
 
 - Update Alert font weight and color
 - Fix Alert wrapping
+
+# 5.9.5
+
+- Remove console warning by replacing deprecated use of componentWillReceiveProps with componentDidUpdate
 
 # 5.9.4
 
