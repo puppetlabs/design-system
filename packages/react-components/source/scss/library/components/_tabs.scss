@@ -51,6 +51,7 @@
   flex: 1;
   padding: $puppet-common-spacing-base * 4 $puppet-common-spacing-base 0 $puppet-common-spacing-base;
   z-index: 1;
+  min-height: 0;
 }
 
 // Primary coloring
