@@ -10,7 +10,12 @@ const propTypes = {
 
 const AppSidebar = ({ location: { pathname } }) => (
   <Sidebar>
-    <Sidebar.Header logo="Design System" as={Link} to="/" />
+    <Sidebar.Header
+      logo="Design System"
+      as={Link}
+      to="/"
+      ariaLabel="Return to Design System Home"
+    />
     <Sidebar.Navigation>
       <Sidebar.Section label="Authentication">
         <Sidebar.Item
