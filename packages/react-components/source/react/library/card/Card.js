@@ -64,6 +64,7 @@ const Card = ({
         },
         className,
       )}
+      aria-current={selected || null}
       {...rest}
     >
       {children}
