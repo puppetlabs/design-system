@@ -1,5 +1,18 @@
 The Data Grid package was developed to aid in the structuring of data. By using columns and rows, data can be orginized and presented informative way. Unlike the basic `Table` component in the react-components libary, the data-grid component includes more features to help with more complex presentational tasks and to support user interaction with data.
 
+### Importing 
+To add the Data Grid package to your libary run 
+
+**npm install @puppet/Data-Grid**
+
+In your .js file which will be rendering the Data Grid Table component you can reference your node modules instance with the following command:
+
+**import { Table } from '@puppet/data-grid';**
+
+In your app level index.scss add the command below to import the Data Grids styles
+
+**@import '~@puppet/data-grid/dist/index';**
+
 ### Basic use
 
 The Data Grid component requires two main props to render properly. The first is the 'data'. This prop accepts an array of objects, each of which typically will contain properties of data to be rendered. Compatible data types include stings, numbers, html elements etc. For each object in the array a column will be rendered in the data grid. The second prop is 'columns'. This prop accepts an array of objects, each of which should contain a 'label' and a 'datakey' property. For each object in the array a column will render. The text present at the top of the column will be the string value supplied to the 'label' property for said object. The 'datakey' property should contain a string matching to a property of the provided data objects. This is how each piece of data is matched to an appropriate columns.  
@@ -806,4 +819,56 @@ const dataToBePaginated = makeData();
     };
      <StatefulParent data={dataToBePaginated} />;
 
+```
+
+### Handling Boolean's, Null and Undefined
+
+Currently the Data Grid component will not render any text when a boolean value is given. To enable your table to render true or false simply provide you column with a cell render function. Null and Undefined are special as they represent an empty data set. Take the example below, a host my not have a reporting feature, therefore blank is the approprate value however a custom string could also be used.   
+
+
+```jsx 
+import { Link } from '@puppet/react-components';
+const data = [
+  {
+    eventType: 'yr32gi0sgipl4gs.delivery.puppetlabs.net',
+    reportCompleted: true,
+  },
+  {
+    eventType: 'hycvrb16yqoldoe.delivery.puppetlabs.net',
+    reportCompleted: false,
+  },
+  {
+    eventType: 'hycvrbppsp6dve.delivery.puppetlabs.net',
+    reportCompleted: null,
+  },
+  {
+    eventType: 'hycvrkjdhjfp6dve.delivery.puppetlabs.net',
+    reportCompleted: undefined,
+  },
+  {
+    eventType: 'rb16yssp6dwwve.delivery.puppetlabs.net',
+    reportCompleted: true,
+  }
+];
+
+const columns = [
+  {
+    label: 'Host',
+    dataKey: 'eventType',
+  },
+  { label: 'Report Has Completed', dataKey: 'reportCompleted',  cellRenderer: ({ cellData }) => {
+    // '== null' catches both null and undefined values
+    if (cellData == null) {
+      // returning nothing will mean a blank cell 
+      // or you could return a string 
+      // return 'No reporting possible'
+      return;
+    } else {
+        return cellData.toString();
+      }
+    },
+  }
+];
+
+<Table data={data} columns={columns} />
 ```
