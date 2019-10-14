@@ -1,7 +1,7 @@
 # Next
 
-- **Breaking change** Sidebar component now requires ariaLabel prop
-- Use aria-current instead of aria-selected for selected Card components
+- Add `ariaLabel` as optional prop to `Sidebar.Header` component
+- Use `aria-current` instead of `aria-selected` for selected Card components
 - various accessibility and bug fixes
 
 # 5.9.6
