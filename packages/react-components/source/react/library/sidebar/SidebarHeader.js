@@ -3,17 +3,18 @@ import PropTypes from 'prop-types';
 import Logo from '../logo';
 
 const propTypes = {
+  ariaLabel: PropTypes.string,
   as: PropTypes.elementType,
-  minimized: PropTypes.bool,
   logo: PropTypes.string,
+  minimized: PropTypes.bool,
   onClick: PropTypes.func,
-  ariaLabel: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
+  ariaLabel: 'Return to home',
   as: 'button',
-  minimized: false,
   logo: '',
+  minimized: false,
   onClick() {},
 };
 
