@@ -82,6 +82,8 @@ const Icon = props => {
 
     return (
       <svg
+        width={ICON_CONFIG[size].size}
+        height={ICON_CONFIG[size].size}
         className={classNames}
         viewBox={viewBox}
         style={{
