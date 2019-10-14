@@ -25,7 +25,7 @@ describe('<Sidebar />', () => {
 
   describe('<Sidebar.Header />', () => {
     it('should render without blowing up', () => {
-      const wrapper = shallow(<Sidebar.Header />);
+      const wrapper = shallow(<Sidebar.Header ariaLabel="Test label" />);
 
       expect(wrapper.length).to.eql(1);
     });
