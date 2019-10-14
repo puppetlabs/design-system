@@ -1,3 +1,8 @@
+# Next
+
+- **Breaking change** Sidebar component now requires ariaLabel prop
+- various accessibility and bug fixes
+
 # 5.9.6
 
 - Update Alert font weight and color
