@@ -1,5 +1,9 @@
 @import '~@puppet/react-components/source/scss/library/ui';
 
+html, body, #root {
+  height: 100%;
+}
+
 html {
   box-sizing: border-box;
 }

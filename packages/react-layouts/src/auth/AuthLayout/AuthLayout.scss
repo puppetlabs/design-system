@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   min-height: 100%;
-  flex: 1;
+  padding: 32px;
 }
 
 .rl-auth-layout-logo {
@@ -30,8 +30,9 @@
 .rl-auth-layout-content {
   display: flex;
   margin-top: 32px;
+  max-width: 410px;
   padding: 48px;
-  width: 410px;
+  width: 100%;
 }
 
 .rl-auth-layout-action {
