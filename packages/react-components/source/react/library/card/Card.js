@@ -64,7 +64,6 @@ const Card = ({
         },
         className,
       )}
-      aria-selected={selected}
       {...rest}
     >
       {children}

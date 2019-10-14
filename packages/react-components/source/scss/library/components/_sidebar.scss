@@ -259,7 +259,7 @@ $puppet-sidebar-footer-meta-icon: 32px;
 }
 
 .rc-sidebar-footer:hover,
-.rc-sidebar-footer.active {
+.rc-sidebar-footer:active {
   .rc-sidebar-footer-meta-username,
   .rc-sidebar-footer-meta-version {
     color: $puppet-sidebar-item-color-hover;
@@ -276,6 +276,10 @@ $puppet-sidebar-footer-meta-icon: 32px;
   .rc-sidebar-footer-meta-username,
   .rc-sidebar-footer-meta-version {
     color: $puppet-sidebar-item-color-hover;
+  }
+  
+  .rc-sidebar-footer-meta-user {
+    background: $puppet-sidebar-item-color-hover;
   }
 }
 
