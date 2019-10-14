@@ -1,4 +1,10 @@
+# 1.0.22
+
+- Add padding to AuthLayout
+- Avoid vh units for mobile compatibility in uikit project template
+
 # 1.0.19
+
 - Internal: use PropTypes.elementType over custom renderableElement type
 
 # 0.2.4

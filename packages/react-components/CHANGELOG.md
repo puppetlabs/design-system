@@ -1,8 +1,10 @@
-# Next
+# 5.9.7
 
 - Add `ariaLabel` as optional prop to `Sidebar.Header` component
 - Use `aria-current` instead of `aria-selected` for selected Card components
-- various accessibility and bug fixes
+- Add focus style to Sidebar footer
+- Fix scrolling in tabs on Firefox
+- Add height and width attributes Icon SVGs
 
 # 5.9.6
 
