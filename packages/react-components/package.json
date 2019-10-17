@@ -4,11 +4,13 @@
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "main": "build/library.js",
+  "module": "dist/index.js",
   "scripts": {
     "analyze": "webpack --config webpack.analyze.config.js",
     "prebuild": "rimraf build",
     "build": "NODE_ENV=production webpack",
-    "prepare": "npm run build",
+    "build:modules": "babel ./source --out-dir ./dist --copy-files --delete-dir-on-start --source-map",
+    "prepare": "npm run build && npm run build:modules",
     "complexity": "es6-plato -r -d complexity source/react && open ./complexity/index.html",
     "watch": "nodemon --watch source -x \"npm run build\"",
     "test": "nyc --require=./test/jsdom.js --reporter=html mocha --require @babel/register --require core-js --require regenerator-runtime/runtime --recursive",
@@ -26,6 +28,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
+    "@babel/cli": "^7.6.4",
     "@babel/plugin-proposal-object-rest-spread": "^7.4.4",
     "@babel/polyfill": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
