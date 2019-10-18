@@ -1,3 +1,7 @@
+# 5.9.8
+
+- Fix keyboard navigation bug in ButtonSelect introduced by version 5.9.5.
+
 # 5.9.7
 
 - Add `ariaLabel` as optional prop to `Sidebar.Header` component
