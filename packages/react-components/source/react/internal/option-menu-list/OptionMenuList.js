@@ -92,11 +92,15 @@ class OptionMenuList extends Component {
     this.onActionBlur = this.onActionBlur.bind(this);
   }
 
+  // Update focused item for autocomplete
   componentDidUpdate(prevProps, prevState) {
     const { options, focusedIndex } = this.props;
-    const { focusedIndex: oldFocusedIndex } = prevState;
 
-    if (options.length && focusedIndex !== oldFocusedIndex) {
+    if (
+      options.length &&
+      focusedIndex !== prevProps.focusedIndex &&
+      focusedIndex !== prevState.focusedIndex
+    ) {
       this.focusItem(focusedIndex);
     }
   }
