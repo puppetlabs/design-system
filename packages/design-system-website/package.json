@@ -1,6 +1,6 @@
 {
   "name": "@puppet/design-system-website",
-  "version": "1.2.15",
+  "version": "1.2.16",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "private": true,
@@ -48,7 +48,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.9.7",
+    "@puppet/react-components": "^5.9.8",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
