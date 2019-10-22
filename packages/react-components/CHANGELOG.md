@@ -1,3 +1,7 @@
+# 5.9.9
+
+- Add "hourglass" icon
+
 # 5.9.8
 
 - Fix keyboard navigation bug in ButtonSelect introduced by version 5.9.5.
