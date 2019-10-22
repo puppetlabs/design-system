@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-layouts",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "main": "dist/react-layouts.js",
@@ -21,7 +21,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.9.9",
+    "@puppet/react-components": "^5.9.10",
     "@puppet/sass-variables": "^1.1.3",
     "classnames": "^2.2.6",
     "core-js": "^3.1.4",
