@@ -1,3 +1,7 @@
+# 5.9.10
+
+- Fix `fillRule` capitalization in "hourglass" icon
+
 # 5.9.9
 
 - Add "hourglass" icon
