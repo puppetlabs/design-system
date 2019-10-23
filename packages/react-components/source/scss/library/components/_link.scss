@@ -18,3 +18,20 @@
   border: 0;
   padding: 0;
 }
+
+.rc-table-cell > .rc-link:only-child,
+.rc-table-header-cell > .rc-link:only-child {
+  // For links that are the direct and only descendent a cell, fill up the cell
+  display: inline-block;
+  margin: -15px -16px;
+  padding: 15px 16px;
+  width: 100%;
+
+  &:focus {
+    box-shadow: none;
+
+    .rc-link-children {  // stylelint-disable-line max-nesting-depth
+      box-shadow: inset 0 -4px 0 -1px $puppet-b100;
+    }
+  }
+}
