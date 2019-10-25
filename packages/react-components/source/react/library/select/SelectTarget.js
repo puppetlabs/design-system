@@ -28,11 +28,11 @@ const SelectTarget = forwardRef(
         {...rest}
       >
         <Icon
-        className="rc-input-icon trailing"
-        width="16px"
-        height="16px"
-        type="chevron-down"
-      />
+          className="rc-input-icon trailing"
+          width="16px"
+          height="16px"
+          type="chevron-down"
+        />
         {renderText(type, value, placeholder)}
       </button>
     </div>
