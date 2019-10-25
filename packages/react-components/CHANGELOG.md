@@ -1,3 +1,7 @@
+# 5.9.11
+
+- Fix bug where Select caret icon click didn't trigger dropdown
+
 # 5.9.10
 
 - Fix `fillRule` capitalization in "hourglass" icon
