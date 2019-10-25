@@ -36,6 +36,15 @@ To develop locally using a separate app that consumes a design-system package, y
 
 You can run `npm test` in a package subfolder or `npm test` in the top folder to test all packages.
 
+## Pull requests
+
+Put up a PR for the design-system repo that follows these guidelines:
+
+- Granularity: Make commits of logical units (ideally with each commit passing tests).
+- Tense: Use the imperative present tense (e.g. "Change", not "Changed" or "Changes") to describe what changed from the consumer's perspective in the commit summary (with any extra details or motivation in the commit body).
+- Ticket: Associate with the Jira issue by adding the issue key to the commit body and, if it resolves the ticket, use the "PDS-123 #resolve" syntax to resolve the issue.
+- Fork: For the Jira issue to be resolved on merging rather than opening the PR (with the above syntax), the PR can be opened from a branch on your fork of the design-system repo.
+
 ## Publishing
 
 This project currently uses Lerna's independent mode, so the following command will prompt you to select a new version for any packages that have changed since the last version tags. WARNING: this command results in a git push to your `origin` remote.
