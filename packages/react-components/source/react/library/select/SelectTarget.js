@@ -18,12 +18,6 @@ const renderText = (type, value, placeholder) => {
 const SelectTarget = forwardRef(
   ({ error, value, type, placeholder, className, ...rest }, ref) => (
     <div className={classNames('rc-input-container', 'rc-select-target')}>
-      <Icon
-        className="rc-input-icon trailing"
-        width="16px"
-        height="16px"
-        type="chevron-down"
-      />
       <button
         type="button"
         className={classNames('rc-input', {
@@ -33,6 +27,12 @@ const SelectTarget = forwardRef(
         ref={ref}
         {...rest}
       >
+        <Icon
+        className="rc-input-icon trailing"
+        width="16px"
+        height="16px"
+        type="chevron-down"
+      />
         {renderText(type, value, placeholder)}
       </button>
     </div>
