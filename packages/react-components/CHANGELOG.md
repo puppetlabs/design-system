@@ -1,6 +1,8 @@
 # 5.9.11
 
 - Fix bug where Select caret icon click didn't trigger dropdown
+- Fix `npm start` in packages/react-components
+- Fix `npm run format`
 
 # 5.9.10
 
