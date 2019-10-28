@@ -115,6 +115,7 @@ The default cellRenderer renders `cellData` as a string.
 
 ```jsx
 import Badge from '../badge';
+import Link from '../link';
 
 const data = [
   { id: 1, exclamation: 'HAH!', metaData: { created: new Date() } },
@@ -132,7 +133,7 @@ const columns = [
     label: 'Created',
     dataKey: 'created',
     cellDataGetter: ({ rowData }) => rowData.metaData.created,
-    cellRenderer: ({ cellData }) => cellData.toLocaleString(),
+    cellRenderer: ({ cellData }) => <Link href="https://puppet.com/" className="rc-link">{cellData.toLocaleString()}</Link>,
   },
 ];
 

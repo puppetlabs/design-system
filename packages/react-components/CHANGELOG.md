@@ -1,6 +1,7 @@
 # 5.9.11
 
 - Fix bug where Select caret icon click didn't trigger dropdown
+- Increase click target size for a Link that is the only direct descendant in a table cell
 - Fix `npm start` in packages/react-components
 - Fix `npm run format`
 

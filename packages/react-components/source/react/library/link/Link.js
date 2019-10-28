@@ -42,7 +42,7 @@ const Link = ({ as, size, className, children, disabled, ...rest }) => {
       aria-disabled={disabled}
       {...rest}
     >
-      {children}
+      <span className="rc-link-children">{children}</span>
     </Element>
   );
 };
