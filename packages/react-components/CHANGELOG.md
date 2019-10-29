@@ -1,3 +1,9 @@
+# 5.9.12
+
+- Add boolean `innerFocus` prop to Button component
+- Prevent caret icon from overlapping text in Select component
+- Add docs for rendering a Button as a hyperlink
+
 # 5.9.11
 
 - Fix bug where Select caret icon click didn't trigger dropdown
