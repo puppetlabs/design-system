@@ -1,4 +1,5 @@
 .rc-select {
+  min-width: 100px;
   position: relative;
 
   .rc-select-target {
@@ -8,6 +9,7 @@
 
   .rc-select-target .rc-input {
     cursor: pointer;
+    padding-right: 30px;
     text-align: left;
   }
 
