@@ -29,9 +29,13 @@ jobs:
 
   deploy:
 
+    needs: test
+
     runs-on: ubuntu-latest
 
-    needs: test
+    strategy:
+      matrix:
+        node-version: [12.x]
 
     steps:
     - uses: actions/checkout@v1
