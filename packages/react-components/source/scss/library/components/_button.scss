@@ -124,6 +124,9 @@ $puppet-button-text: (
   ),
 );
 
+$puppet-button-padding-horizontal: 15px;
+$puppet-button-padding-vertical: 5px;
+
 @function disable($basestate) {
   $disabled: (
     background: disable-color(map-get($basestate, background)),
@@ -165,7 +168,7 @@ $puppet-button-text: (
   cursor: pointer;
   display: inline-block;
   outline: none;
-  padding: 5px 15px;
+  padding: $puppet-button-padding-vertical $puppet-button-padding-horizontal;
   position: relative;
   text-decoration: none;
   vertical-align: top;
@@ -185,12 +188,19 @@ $puppet-button-text: (
     top: 0;
   }
 
-  &:focus {
+  &:not(.rc-button-inner-focus):focus {
     box-shadow: $puppet-common-focus-outline;
   }
 
+  &.rc-button-inner-focus:focus {
+    border: 0;
+    box-shadow: $puppet-common-focus-outline-inset;
+    padding: ($puppet-button-padding-vertical + 1)
+      ($puppet-button-padding-horizontal + 1);
+  }
+
   &:disabled,
-  &[aria-disabled=true] {
+  &[aria-disabled='true'] {
     cursor: default;
     pointer-events: none;
   }

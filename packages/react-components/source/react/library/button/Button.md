@@ -281,6 +281,22 @@ const divStyle = { marginBottom: 16 };
 </div>;
 ```
 
+### Button as hyperlink
+
+If the design specifies a call-to-action (CTA) button that actually performs navigation, it is important for accessibility and interaction with browser features that the rendered HTML is a normal `<a href="link-to-somewhere">` anchor element. The way to render a Button component as an `a` element is to use react-component's `as` prop pattern, e.g. `<Button as="a" href="http://google.com">`.
+
+```jsx
+<Button as="a" href="http://google.com">Go to Google</Button>
+```
+
+### Inner focus outline
+
+Add the boolean prop `innerFocus` in cases where a button is inside a container (e.g. toolbar, card) and needs the focus style to use an inner instead of outer outline so it doesn't bleed outside the container.
+
+```jsx
+<Button innerFocus>Focus me</Button>
+```
+
 ## Related
 
 - [ButtonSelect](#/React%20Components/ButtonSelect)

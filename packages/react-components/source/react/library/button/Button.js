@@ -26,10 +26,12 @@ const propTypes = {
   children: PropTypes.node,
   /** Optional trailing icon rendered after button text. For icon-only buttons, please use the 'icon' prop instead */
   trailingIcon: PropTypes.oneOf(AVAILABLE_ICONS),
-  /** Is the button disabled?  */
+  /** Is the button disabled? */
   disabled: PropTypes.bool,
   /** If true, button will render with a loading spinner */
   loading: PropTypes.bool,
+  /** If true, a focused button will use an inner instead of outer outline */
+  innerFocus: PropTypes.bool,
   /** Optional html button type override */
   buttonType: PropTypes.oneOf(['button', 'submit', 'reset']),
   /** Optional additional className. Additionally, all other props are propagated directly to the inner element */
@@ -45,6 +47,7 @@ const defaultProps = {
   icon: null,
   trailingIcon: null,
   loading: false,
+  innerFocus: false,
   disabled: false,
   buttonType: undefined,
   className: '',
@@ -77,6 +80,7 @@ const Button = forwardRef(
       icon,
       trailingIcon,
       loading,
+      innerFocus,
       buttonType,
       className,
       children,
@@ -98,6 +102,7 @@ const Button = forwardRef(
           'rc-button-trailing-icon': trailingIcon,
           'rc-button-empty': !children,
           'rc-button-full': children,
+          'rc-button-inner-focus': innerFocus,
         },
         className,
       )}
