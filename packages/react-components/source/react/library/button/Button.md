@@ -289,6 +289,14 @@ If the design specifies a call-to-action (CTA) button that actually performs nav
 <Button as="a" href="http://google.com">Go to Google</Button>
 ```
 
+### Inner focus outline
+
+Add the boolean prop `innerFocus` in cases where a button is inside a container (e.g. toolbar, card) and needs the focus style to use an inner instead of outer outline so it doesn't bleed outside the container.
+
+```jsx
+<Button innerFocus>Focus me</Button>
+```
+
 ## Related
 
 - [ButtonSelect](#/React%20Components/ButtonSelect)
