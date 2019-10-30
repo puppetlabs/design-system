@@ -33,15 +33,11 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
     - uses: actions/checkout@v1
     - run: npm install
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@2.0.1
+      uses: puppetlabs/github-pages-deploy-action@master
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         BRANCH: gh-pages
