@@ -7,6 +7,7 @@
   outline: none;
   padding: 5px 7px;
   width: 100%;
+  box-sizing: border-box;
 
   &.rc-input-empty,
   &::placeholder {
