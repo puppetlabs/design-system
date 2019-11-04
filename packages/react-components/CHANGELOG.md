@@ -1,3 +1,9 @@
+# 5.9.13
+
+- Fix `Input` width from overextending its container
+- Update package-lock.json files
+- Upgrade lerna to 3.18.3 so lockfiles get updated on lerna commands
+
 # 5.9.12
 
 - Add boolean `innerFocus` prop to Button component
