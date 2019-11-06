@@ -1,3 +1,8 @@
+# 5.9.14
+
+- Allow menu list for selects to expand to their intrinsic width for Select, ActionSelect, and ButtonSelect
+- Place Card.Title and Card.Action in flexbox header to fix a potential overlap of a long title with actions
+
 # 5.9.13
 
 - Fix `Input` width from overextending its container
