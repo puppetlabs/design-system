@@ -141,10 +141,9 @@ button.rc-card,
 }
 /* stylelint-enable */
 
-.rc-card-action-select {
-  position: absolute;
-  right: 17px;
-  top: 17px;
+.rc-card-header {
+  display: flex;
+  justify-content: space-between;
 }
 
 .rc-card-title:not(:last-child) {
