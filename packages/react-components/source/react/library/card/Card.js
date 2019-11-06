@@ -65,10 +65,12 @@ const Card = ({
   );
   const otherChildren = childrenArray.filter(
     child =>
-      child.type &&
-      child.type.name !== 'CardTitle' &&
-      child.type.name !== 'CardAction' &&
-      child.type.name !== 'CardActionSelect',
+      !(
+        child.type &&
+        (child.type.name === 'CardTitle' ||
+          child.type.name === 'CardAction' ||
+          child.type.name === 'CardActionSelect')
+      ),
   );
 
   return (

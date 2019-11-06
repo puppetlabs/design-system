@@ -1,3 +1,7 @@
+# 5.9.15
+
+- Fix Card content
+
 # 5.9.14
 
 - Allow menu list for selects to expand to their intrinsic width for Select, ActionSelect, and ButtonSelect
