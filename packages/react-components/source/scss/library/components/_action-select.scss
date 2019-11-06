@@ -2,7 +2,7 @@
   position: relative;
 
   .rc-menu-list {
-    min-width: 150px;
+    box-sizing: border-box;
     position: absolute;
     z-index: 10;
   }

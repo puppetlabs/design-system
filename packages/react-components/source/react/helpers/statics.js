@@ -85,21 +85,21 @@ const getDropdownPosition = (target, anchor, margin) => {
       return {
         top: height + margin,
         right: 0,
-        width,
+        minWidth: width,
       };
     }
     case 'top right': {
       return {
         bottom: height + margin,
         right: 0,
-        width,
+        minWidth: width,
       };
     }
     case 'top left': {
       return {
         bottom: height + margin,
         left: 0,
-        width,
+        minWidth: width,
       };
     }
     default:
@@ -107,7 +107,7 @@ const getDropdownPosition = (target, anchor, margin) => {
       return {
         top: height + margin,
         left: 0,
-        width,
+        minWidth: width,
       };
     }
   }
