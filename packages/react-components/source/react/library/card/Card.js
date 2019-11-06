@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { elementElevation } from '../../helpers/customPropTypes';
@@ -52,6 +52,25 @@ const Card = ({
 }) => {
   const Element = assignDefaultElement(as, selectable);
 
+  // Find title and actions for placement in header
+  const childrenArray = Children.toArray(children);
+  const title = childrenArray.find(
+    child => child.type && child.type.name === 'CardTitle',
+  );
+  const actions = childrenArray.find(
+    child =>
+      child.type &&
+      (child.type.name === 'CardAction' ||
+        child.type.name === 'CardActionSelect'),
+  );
+  const otherChildren = childrenArray.filter(
+    child =>
+      child.type &&
+      child.type.name !== 'CardTitle' &&
+      child.type.name !== 'CardAction' &&
+      child.type.name !== 'CardActionSelect',
+  );
+
   return (
     <Element
       className={classNames(
@@ -67,7 +86,13 @@ const Card = ({
       aria-current={selected || null}
       {...rest}
     >
-      {children}
+      {(title || actions) && (
+        <div className="rc-card-header">
+          <div>{title}</div>
+          <div>{actions}</div>
+        </div>
+      )}
+      {otherChildren}
     </Element>
   );
 };
