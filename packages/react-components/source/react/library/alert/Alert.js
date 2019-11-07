@@ -10,7 +10,7 @@ import AlertActions from './AlertActions';
 
 const propTypes = {
   /** Main content */
-  children: PropTypes.string,
+  children: PropTypes.node,
   /** Main visual variant */
   type: PropTypes.oneOf(['info', 'danger', 'success', 'warning']),
   /** Should the alert have a dismiss button? */
