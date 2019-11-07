@@ -1,3 +1,8 @@
+# 5.9.16
+
+- Add Card.Header subcomponent
+- Allow any content (instead of just strings) in Alert component
+
 # 5.9.15
 
 - Fix Card content
