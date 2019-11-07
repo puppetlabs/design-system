@@ -141,11 +141,30 @@ button.rc-card,
 }
 /* stylelint-enable */
 
-.rc-card-header {
-  display: flex;
-  justify-content: space-between;
+.rc-card-action-select {
+  position: absolute;
+  right: 17px;
+  top: 17px;
 }
 
-.rc-card-title:not(:last-child) {
+.rc-card-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  .rc-card-action-select {
+    position: static;
+  }
+
+  > * {
+    flex-grow: 0;
+  }
+
+  .rc-card-title {
+    flex-grow: 1;
+  }
+}
+
+.rc-card-title {
   margin-bottom: $puppet-common-spacing-base * 4;
 }
