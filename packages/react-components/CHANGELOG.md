@@ -1,7 +1,11 @@
-# 5.9.16
+# 5.9.17 (2019-11-08)
 
-- Add Card.Header subcomponent
-- Allow any content (instead of just strings) in Alert component
+- Upgrade to React 16.11.0
+
+# 5.9.16 (2019-11-07)
+
+- [Card] Add Card.Header subcomponent
+- [Alert] Allow any content (instead of just strings) in Alert component
 
 # 5.9.15
 
