@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
+import filterDescendants from '../../helpers/filterDescendants';
 import Button from '../button';
 
 import ModalTitle from './ModalTitle';
@@ -42,30 +43,41 @@ const Modal = ({
   onClose,
   overlayClassName,
   ...props
-}) => (
-  <ReactModal
-    // https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal
-    // "The aria-modal property introduced by ARIA 1.1 replaces aria-hidden
-    // for informing assistive technologies that content outside a dialog is
-    // inert." Thus, we can omit `aria-hidden` with this prop and add
-    // `aria-modal` with the modal prop below.
-    ariaHideApp={false}
-    className={classNames('rc-modal', className)}
-    isOpen={isOpen}
-    onRequestClose={closeOnEscapeAndOverlay ? onClose : undefined}
-    overlayClassName={`rc-modal-overlay ${overlayClassName}`}
-    aria={{ modal: true }}
-    {...props}
-  >
-    <Button
-      className="rc-modal-close"
-      icon="x"
-      type="transparent"
-      onClick={onClose}
-    />
-    {children}
-  </ReactModal>
-);
+}) => {
+  const { pluckedDescendants: actions, otherDescendants } = filterDescendants({
+    children,
+    filter: childTypeName => childTypeName === 'ModalActions',
+  });
+  const hasActions = actions.length > 0;
+
+  return (
+    <ReactModal
+      // https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal
+      // "The aria-modal property introduced by ARIA 1.1 replaces aria-hidden
+      // for informing assistive technologies that content outside a dialog is
+      // inert." Thus, we can omit `aria-hidden` with this prop and add
+      // `aria-modal` with the modal prop below.
+      ariaHideApp={false}
+      className={classNames('rc-modal', className, {
+        'rc-modal-has-actions': hasActions,
+      })}
+      isOpen={isOpen}
+      onRequestClose={closeOnEscapeAndOverlay ? onClose : undefined}
+      overlayClassName={`rc-modal-overlay ${overlayClassName}`}
+      aria={{ modal: true }}
+      {...props}
+    >
+      <Button
+        className="rc-modal-close"
+        icon="x"
+        type="transparent"
+        onClick={onClose}
+      />
+      <div className="rc-modal-children">{otherDescendants}</div>
+      {hasActions && <div className="rc-modal-footer">{actions}</div>}
+    </ReactModal>
+  );
+};
 
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
