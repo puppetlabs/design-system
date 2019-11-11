@@ -39,6 +39,8 @@ const propTypes = {
     'transparent',
     'text',
   ]),
+  /** If true, a focused button will use an inner instead of outer outline */
+  innerFocus: PropTypes.bool,
   /** Additional property used for connotative variants (such as danger) to choose between a strong and soft version */
   weight: PropTypes.oneOf(['bold', 'subtle']),
   /** Anchor orientation of the dropdown menu */
@@ -59,6 +61,7 @@ const defaultProps = {
   actions: [],
   label: '',
   type: 'primary',
+  innerFocus: false,
   weight: 'bold',
   anchor: 'bottom left',
   icon: null,
@@ -137,6 +140,7 @@ class ActionSelect extends Component {
       id,
       label,
       type,
+      innerFocus,
       icon,
       disabled,
       loading,
@@ -164,6 +168,7 @@ class ActionSelect extends Component {
       >
         <Button
           type={type}
+          innerFocus={innerFocus}
           weight={weight}
           icon={icon}
           trailingIcon={icon ? null : 'chevron-down'}

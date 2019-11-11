@@ -50,6 +50,8 @@ const propTypes = {
     'transparent',
     'text',
   ]),
+  /** If true, a focused button will use an inner instead of outer outline */
+  innerFocus: PropTypes.bool,
   /** Text to render as the action label in multiple mode */
   actionLabel: PropTypes.string, //eslint-disable-line
   /** Additional property used for connotative variants (such as danger) to choose between a strong and soft version */
@@ -76,6 +78,7 @@ const defaultProps = {
   onChange() {},
   placeholder: 'Select',
   type: 'primary',
+  innerFocus: false,
   actionLabel: undefined,
   weight: 'bold',
   anchor: 'bottom left',
@@ -217,6 +220,7 @@ class ButtonSelect extends Component {
       id,
       multiple,
       type,
+      innerFocus,
       icon,
       disabled,
       loading,
@@ -254,6 +258,7 @@ class ButtonSelect extends Component {
           aria-controls={`${id}-menu`}
           aria-expanded={open}
           onClick={onClickButton}
+          innerFocus={innerFocus}
           ref={button => {
             this.button = button;
           }}
