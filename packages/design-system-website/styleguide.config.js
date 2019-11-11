@@ -78,6 +78,7 @@ module.exports = {
         '**/card/CardAction.js',
         '**/card/CardActionSelect.js',
         '**/card/CardTitle.js',
+        '**/card/CardHeader.js',
         '**/card/Section.js',
         '**/dropdown/DropdownLabel.js',
         '**/filters/**',
@@ -192,9 +193,7 @@ module.exports = {
       ],
     },
     resolve: {
-      modules: [
-        'node_modules',
-      ],
+      modules: ['node_modules'],
       extensions: ['.js', '.mjs', '.jsx'],
       symlinks: false,
     },
