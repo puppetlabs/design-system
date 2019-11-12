@@ -1,3 +1,8 @@
+# 5.9.18 (2019-11-12)
+
+- [Button] Fix spacing issues with `innerFocus` icon buttons
+- [Icon] Fix 'double-left' icon to match 'double-right' icon
+
 # 5.9.17 (2019-11-08)
 
 - Upgrade to React 16.11.0
