@@ -173,6 +173,10 @@ $puppet-button-padding-vertical: 5px;
   text-decoration: none;
   vertical-align: top;
 
+  &:focus {
+    box-shadow: $puppet-common-focus-outline;
+  }
+
   .rc-button-content {
     font-family: inherit;
     font-size: inherit;
@@ -186,17 +190,6 @@ $puppet-button-padding-vertical: 5px;
     margin: auto;
     position: absolute;
     top: 0;
-  }
-
-  &:not(.rc-button-inner-focus):focus {
-    box-shadow: $puppet-common-focus-outline;
-  }
-
-  &.rc-button-inner-focus:focus {
-    border: 0;
-    box-shadow: $puppet-common-focus-outline-inset;
-    padding: ($puppet-button-padding-vertical + 1)
-      ($puppet-button-padding-horizontal + 1);
   }
 
   &:disabled,
@@ -317,6 +310,41 @@ $puppet-button-padding-vertical: 5px;
 
   .rc-button-icon-svg {
     right: 4px;
+  }
+}
+
+.rc-button-inner-focus {
+  border-radius: 0;
+
+  &:focus {
+    border: 0;
+    box-shadow: $puppet-common-focus-outline-inset;
+  }
+}
+
+.rc-button-inner-focus:not(.rc-button-text):focus {
+  padding: ($puppet-button-padding-vertical + 1)
+    ($puppet-button-padding-horizontal + 1);
+}
+
+// Inner focus requires adjusted icon positioning due to the hidden border
+.rc-button-inner-focus:not(.rc-button-text).rc-button-icon:focus {
+  &.rc-button-full {
+    padding-left: 32px;
+  }
+
+  .rc-button-icon-svg {
+    left: 8px;
+  }
+}
+
+.rc-button-trailing-icon:not(.rc-button-text).rc-button-trailing-icon:focus {
+  &.rc-button-full {
+    padding-right: 32px;
+  }
+
+  .rc-button-icon-svg {
+    right: 8px;
   }
 }
 
