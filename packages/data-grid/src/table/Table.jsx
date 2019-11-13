@@ -259,10 +259,10 @@ class Table extends Component {
         </table>
         {data.length < 1 ? (
           <div className="dg-empty-state-container">
-            <Heading as="h3" color="medium">
+            <Heading className="dg-empty-state-header" as="h3" color="medium">
               {emptyStateHeader}
             </Heading>
-            <Heading as="h4" color="medium">
+            <Heading className="dg-empty-state-message" as="h5" color="medium">
               {emptyStateMessage}
             </Heading>
           </div>

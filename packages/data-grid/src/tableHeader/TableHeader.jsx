@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Text } from '@puppet/react-components';
+import { Heading } from '@puppet/react-components';
 import './TableHeader.scss';
 
 const propTypes = {
@@ -23,9 +23,9 @@ function TableHeader({ children, rowCount }) {
   return (
     <div className="dg-table-header-container">
       {children === undefined ? (
-        <Text as="h3" color="medium" className="dg-table-row-count">
+        <Heading as="h5" color="medium" className="dg-table-row-count">
           {rowCount.count} {rowCount.label ? rowCount.label : null}
-        </Text>
+        </Heading>
       ) : (
         children
       )}
