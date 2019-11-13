@@ -23,6 +23,7 @@
   flex-direction: column;
   margin: $puppet-common-spacing-base * 8;
   max-height: calc(100vh - #{$puppet-common-spacing-base} * 16);
+  min-height: 100px;
   outline: none;
   position: relative;
   width: 480px;
@@ -49,6 +50,10 @@
 
 .rc-modal-footer {
   padding: $puppet-common-spacing-base * 6;
+}
+
+.rc-modal-is-overflowing .rc-modal-footer {
+  border-top: $puppet-common-border;
 }
 
 .rc-modal-actions-right {
