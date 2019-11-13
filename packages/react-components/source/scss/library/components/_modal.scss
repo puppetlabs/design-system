@@ -48,11 +48,11 @@
   margin-bottom: $puppet-common-spacing-base * 4;
 }
 
-.rc-modal-footer {
+.rc-modal-actions {
   padding: $puppet-common-spacing-base * 6;
 }
 
-.rc-modal-is-overflowing .rc-modal-footer {
+.rc-modal-is-overflowing .rc-modal-actions {
   border-top: $puppet-common-border;
 }
 
@@ -62,4 +62,8 @@
 
 .rc-modal-actions-left {
   text-align: left;
+}
+
+.rc-modal-actions-center {
+  text-align: center;
 }

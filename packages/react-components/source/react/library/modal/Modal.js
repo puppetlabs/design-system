@@ -97,7 +97,7 @@ class Modal extends Component {
         <div className="rc-modal-children" ref={this.refCallback}>
           {otherDescendants}
         </div>
-        {hasActions && <div className="rc-modal-footer">{actions}</div>}
+        {hasActions && actions}
       </ReactModal>
     );
   }
