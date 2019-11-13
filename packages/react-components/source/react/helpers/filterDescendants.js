@@ -6,7 +6,8 @@ import { Children, cloneElement } from 'react';
  * that match the filter criteria as well as the other descendants (in the
  * original nested structure) minus the plucked descendants.
  *
- * @returns {Object} An object with `pluckedDescendants` and `otherDescendants`
+ * @param {{children: array, filter: function}} parameters
+ * @returns {{pluckedDescendants: array, otherDescendants: array}} descendants
  */
 const filterDescendants = ({ children, filter }) => {
   let pluckedDescendants = [];
