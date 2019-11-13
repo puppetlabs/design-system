@@ -39,15 +39,14 @@ class Modal extends Component {
   constructor(props) {
     super(props);
     this.state = { scrollbarWidth: 0, isOverflowing: false };
+    this.refCallback = element => {
+      if (element) {
+        const scrollbarWidth = element.offsetWidth - element.clientWidth;
+        const isOverflowing = element.scrollHeight - element.clientHeight > 0;
+        this.setState({ scrollbarWidth, isOverflowing });
+      }
+    };
   }
-
-  refCallback = element => {
-    if (element) {
-      const scrollbarWidth = element.offsetWidth - element.clientWidth;
-      const isOverflowing = element.scrollHeight - element.clientHeight > 0;
-      this.setState({ scrollbarWidth, isOverflowing });
-    }
-  };
 
   render() {
     const {
