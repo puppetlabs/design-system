@@ -1,20 +1,3 @@
-.rc-modal {
-  @include puppet-type-body();
-
-  background: $puppet-common-bg;
-  border: $puppet-common-border;
-  border-radius: $puppet-common-border-radius;
-  box-shadow: $puppet-common-elevation-400;
-  box-sizing: border-box;
-  margin: $puppet-common-spacing-base * 8;
-  max-height: calc(100vh - #{$puppet-common-spacing-base} * 16);
-  outline: none;
-  overflow: auto;
-  padding: $puppet-common-spacing-base * 6;
-  position: relative;
-  width: 480px;
-}
-
 .rc-modal-overlay {
   align-items: center;
   background: rgba($puppet-black, 0.16);
@@ -28,6 +11,33 @@
   z-index: 24;
 }
 
+.rc-modal {
+  @include puppet-type-body();
+
+  background: $puppet-common-bg;
+  border: $puppet-common-border;
+  border-radius: $puppet-common-border-radius;
+  box-shadow: $puppet-common-elevation-400;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: $puppet-common-spacing-base * 8;
+  max-height: calc(100vh - #{$puppet-common-spacing-base} * 16);
+  min-height: 100px;
+  outline: none;
+  position: relative;
+  width: 480px;
+}
+
+.rc-modal-children {
+  overflow: auto;
+  padding: $puppet-common-spacing-base * 6;
+}
+
+.rc-modal-has-actions .rc-modal-children {
+  padding-bottom: $puppet-common-spacing-base * 2;
+}
+
 .rc-modal-close {
   position: absolute;
   right: 2px;
@@ -39,18 +49,21 @@
 }
 
 .rc-modal-actions {
-  display: flex;
-  margin-top: $puppet-common-spacing-base * 8;
+  padding: $puppet-common-spacing-base * 6;
 }
 
-.rc-form-actions-right {
-  justify-content: flex-end;
+.rc-modal-is-overflowing .rc-modal-actions {
+  border-top: $puppet-common-border;
 }
 
-.rc-form-actions-left {
-  justify-content: flex-start;
+.rc-modal-actions-right {
+  text-align: right;
 }
 
-.rc-form-actions-block .rc-form-action {
-  justify-content: normal;
+.rc-modal-actions-left {
+  text-align: left;
+}
+
+.rc-modal-actions-center {
+  text-align: center;
 }

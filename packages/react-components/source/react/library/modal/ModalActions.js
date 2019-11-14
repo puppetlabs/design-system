@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 const propTypes = {
   className: PropTypes.string,
-  actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
+  actionsPosition: PropTypes.oneOf(['left', 'right', 'center']),
 };
 
 const defaultProps = {

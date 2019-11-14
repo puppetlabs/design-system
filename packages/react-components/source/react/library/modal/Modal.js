@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import ReactModal from 'react-modal';
+import filterDescendants from '../../helpers/filterDescendants';
 import Button from '../button';
 
 import ModalTitle from './ModalTitle';
@@ -34,38 +35,73 @@ const defaultProps = {
  * `Modal` renders content in an accessible dialog box above the main content of
  * a page
  */
-const Modal = ({
-  children,
-  className,
-  closeOnEscapeAndOverlay,
-  isOpen,
-  onClose,
-  overlayClassName,
-  ...props
-}) => (
-  <ReactModal
-    // https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal
-    // "The aria-modal property introduced by ARIA 1.1 replaces aria-hidden
-    // for informing assistive technologies that content outside a dialog is
-    // inert." Thus, we can omit `aria-hidden` with this prop and add
-    // `aria-modal` with the modal prop below.
-    ariaHideApp={false}
-    className={classNames('rc-modal', className)}
-    isOpen={isOpen}
-    onRequestClose={closeOnEscapeAndOverlay ? onClose : undefined}
-    overlayClassName={`rc-modal-overlay ${overlayClassName}`}
-    aria={{ modal: true }}
-    {...props}
-  >
-    <Button
-      className="rc-modal-close"
-      icon="x"
-      type="transparent"
-      onClick={onClose}
-    />
-    {children}
-  </ReactModal>
-);
+class Modal extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { scrollbarWidth: 0, isOverflowing: false };
+    this.refCallback = element => {
+      if (element) {
+        const scrollbarWidth = element.offsetWidth - element.clientWidth;
+        const isOverflowing = element.scrollHeight - element.clientHeight > 0;
+        this.setState({ scrollbarWidth, isOverflowing });
+      }
+    };
+  }
+
+  render() {
+    const {
+      children,
+      className,
+      closeOnEscapeAndOverlay,
+      isOpen,
+      onClose,
+      overlayClassName,
+      ...props
+    } = this.props;
+
+    const { scrollbarWidth, isOverflowing } = this.state;
+
+    const { pluckedDescendants: actions, otherDescendants } = filterDescendants(
+      {
+        children,
+        filter: childTypeName => childTypeName === 'ModalActions',
+      },
+    );
+    const hasActions = actions.length > 0;
+
+    return (
+      <ReactModal
+        // https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal
+        // "The aria-modal property introduced by ARIA 1.1 replaces aria-hidden
+        // for informing assistive technologies that content outside a dialog is
+        // inert." Thus, we can omit `aria-hidden` with this prop and add
+        // `aria-modal` with the modal prop below.
+        ariaHideApp={false}
+        className={classNames('rc-modal', className, {
+          'rc-modal-has-actions': hasActions,
+          'rc-modal-is-overflowing': isOverflowing,
+        })}
+        isOpen={isOpen}
+        onRequestClose={closeOnEscapeAndOverlay ? onClose : undefined}
+        overlayClassName={`rc-modal-overlay ${overlayClassName}`}
+        aria={{ modal: true }}
+        {...props}
+      >
+        <Button
+          className="rc-modal-close"
+          icon="x"
+          onClick={onClose}
+          style={{ right: scrollbarWidth + 2 }}
+          type="transparent"
+        />
+        <div className="rc-modal-children" ref={this.refCallback}>
+          {otherDescendants}
+        </div>
+        {hasActions && actions}
+      </ReactModal>
+    );
+  }
+}
 
 Modal.propTypes = propTypes;
 Modal.defaultProps = defaultProps;
