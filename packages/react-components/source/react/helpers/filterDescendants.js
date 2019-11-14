@@ -12,7 +12,9 @@ const filterDescendants = ({ children, filter }) => {
   let pluckedDescendants = [];
   const otherDescendants = [];
 
-  Children.forEach(children, child => {
+  if (!filter) return children;
+
+  Children.toArray(children).forEach(child => {
     if (filter(child.type && child.type.name)) {
       pluckedDescendants.push(child);
     } else if (child.props && child.props.children) {
@@ -32,7 +34,7 @@ const filterDescendants = ({ children, filter }) => {
 
       const childWithoutPluckedDescendants = cloneElement(
         child,
-        [],
+        {},
         nestedOtherDescendants,
       );
 
