@@ -1,3 +1,10 @@
+# 5.9.19 (2019-11-15)
+
+- [Modal] Affix Modal.Actions to footer
+- [Modal] Make Modal's close button always fixed to upper-right
+- [Modal] Add border between footer and content if overflowing
+- [Card] Don't require user to wrap Card title and actions in header component
+
 # 5.9.18 (2019-11-12)
 
 - [Button] Fix spacing issues with `innerFocus` icon buttons
