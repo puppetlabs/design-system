@@ -119,16 +119,6 @@ module.exports = {
       components: '../react-layouts/src/**/*.{js,jsx}',
       ignore: ['**/**/index.js', '**/*.test.{js,jsx}'],
     },
-    {
-      name: 'Data Grid',
-      components: '../data-grid/src/**/*.{js,jsx}',
-      ignore: [
-        '**/**/ColumnHeader.jsx',
-        '**/**/index.jsx',
-        '**/**/utils.jsx',
-        '**/**/index.js',
-      ],
-    },
   ],
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath).replace(/\.jsx?$/, '');
