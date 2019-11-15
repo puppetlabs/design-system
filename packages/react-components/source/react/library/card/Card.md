@@ -111,7 +111,7 @@ const cardExampleStyle = {
 
 ### Card Content
 
-Card content is arbitrary as determined by the needs of the application. We provide three convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, `Card.ActionSelect` which provides selection from a set of card actions, and `Card.Action` which provides access to a single card action, pre-styled in a consistent manner. Title and actions should be nested inside a `Card.Header` if they are both present.
+Card content is arbitrary as determined by the needs of the application. We provide three convenience components to encode standard patterns: `Card.Title`, which provides a consistently applied card header, `Card.ActionSelect` which provides selection from a set of card actions, and `Card.Action` which provides access to a single card action, pre-styled in a consistent manner.
 
 #### Card with action select
 
@@ -135,10 +135,8 @@ const cardActions = [
 ];
 
 <Card>
-  <Card.Header>
-    <Card.Title>Title</Card.Title>
-    <Card.ActionSelect actions={cardActions} />
-  </Card.Header>
+  <Card.Title>Title</Card.Title>
+  <Card.ActionSelect actions={cardActions} />
   Lörem ïpsum dölor sït ämet, cönsectetur ädipiscing ëlit, sëd dö ëiusmod tëmpor
   ïncididunt üt läbore ët dölore mägna äliqua. Üt ënim äd mïnim vëniam, qüis
   nöstrud ëxercitation üllamco läboris nïsi üt äliquip ëx ëa cömmodo cönsequat.
@@ -152,10 +150,8 @@ const cardActions = [
 
 ```jsx
 <Card>
-  <Card.Header>
-    <Card.Title>Title</Card.Title>
-    <Card.Action icon="pencil" onClick={() => console.log('Edit card')} />
-  </Card.Header>
+  <Card.Title>Title</Card.Title>
+  <Card.Action icon="pencil" onClick={() => console.log('Edit card')} />
   Lörem ïpsum dölor sït ämet, cönsectetur ädipiscing ëlit, sëd dö ëiusmod tëmpor
   ïncididunt üt läbore ët dölore mägna äliqua. Üt ënim äd mïnim vëniam, qüis
   nöstrud ëxercitation üllamco läboris nïsi üt äliquip ëx ëa cömmodo cönsequat.

@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { elementElevation } from '../../helpers/customPropTypes';
+import filterDescendants from '../../helpers/filterDescendants';
 
 import CardActionSelect from './CardActionSelect';
 import CardAction from './CardAction';
-import CardHeader from './CardHeader';
 import CardTitle from './CardTitle';
 
 const propTypes = {
@@ -52,6 +52,20 @@ const Card = ({
   ...rest
 }) => {
   const Element = assignDefaultElement(as, selectable);
+  const {
+    pluckedDescendants: title,
+    otherDescendants: filteredDescendants,
+  } = filterDescendants({
+    children,
+    filter: childTypeName => childTypeName === 'CardTitle',
+  });
+  const { pluckedDescendants: actions, otherDescendants } = filterDescendants({
+    children: filteredDescendants,
+    filter: childTypeName =>
+      childTypeName === 'CardAction' || childTypeName === 'CardActionSelect',
+  });
+  const hasTitle = title.length > 0;
+  const hasActions = actions.length > 0;
 
   return (
     <Element
@@ -68,7 +82,13 @@ const Card = ({
       aria-current={selected || null}
       {...rest}
     >
-      {children}
+      {(hasTitle || hasActions) && (
+        <div className="rc-card-header">
+          {title}
+          {actions}
+        </div>
+      )}
+      {otherDescendants}
     </Element>
   );
 };
@@ -78,7 +98,6 @@ Card.defaultProps = defaultProps;
 
 Card.ActionSelect = CardActionSelect;
 Card.Action = CardAction;
-Card.Header = CardHeader;
 Card.Title = CardTitle;
 
 export default Card;
