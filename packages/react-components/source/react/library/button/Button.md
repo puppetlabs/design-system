@@ -286,7 +286,9 @@ const divStyle = { marginBottom: 16 };
 If the design specifies a call-to-action (CTA) button that actually performs navigation, it is important for accessibility and interaction with browser features that the rendered HTML is a normal `<a href="link-to-somewhere">` anchor element. The way to render a Button component as an `a` element is to use react-component's `as` prop pattern, e.g. `<Button as="a" href="http://google.com">`.
 
 ```jsx
-<Button as="a" href="http://google.com">Go to Google</Button>
+<Button as="a" href="http://google.com">
+  Go to Google
+</Button>
 ```
 
 ### Inner focus outline

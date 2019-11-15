@@ -36,6 +36,7 @@ module.exports = {
         specialLink: ['to', 'button'],
       },
     ],
+    'react/jsx-props-no-spreading': 0,
   },
   settings: {
     'import/resolver': {

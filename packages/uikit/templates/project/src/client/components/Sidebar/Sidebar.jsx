@@ -12,7 +12,7 @@ const propTypes = {
 
 const AppSidebar = ({ t, location: { pathname } }) => (
   <Sidebar>
-    <Sidebar.Header logo="{{name.humanized}}" as={Link} to="/" />
+    <Sidebar.Header logo="my-project" as={Link} to="/" />
     <Sidebar.Navigation>
       <Sidebar.Section label={t('sections.pages')}>
         {routes.map(({ title, path, icon = 'pdf' }) => (

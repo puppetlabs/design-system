@@ -1,5 +1,5 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
@@ -15,7 +15,7 @@ module.exports = env => ({
   target: 'node',
   devtool: 'source-map',
   plugins: [
-    new CleanWebpackPlugin(['dist'], { root: paths.root }),
+    new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
       filename: 'index.css',
       chunkFilename: '[id].[hash].css',
@@ -27,7 +27,7 @@ module.exports = env => ({
   },
   output: {
     filename: 'index.js',
-    library: '{{name.dasherized}}',
+    library: 'my-library',
     libraryTarget: 'umd',
     path: paths.dist,
     publicPath: './',
