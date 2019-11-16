@@ -18,7 +18,7 @@ test('executes onSubmit callback appropriately', () => {
     password: 'password',
   };
 
-  login.instance().onSubmit(values);
+  login.find('Form').prop('onSubmit')(values);
 
   onSubmit.should.have.been.calledWith(values);
 });
@@ -38,7 +38,7 @@ test('Sets the form error to the value returned by mapErrorToMessage on error', 
     password: 'password',
   };
 
-  login.instance().onSubmit(values);
+  login.find('Form').prop('onSubmit')(values);
 
   login.find('Form').should.have.prop('error', 'you screwed up!');
 });

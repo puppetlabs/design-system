@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { getHash } from 'rsg-components/../utils/handleHash';
+import { useStyleGuideContext } from 'rsg-components/Context';
 import { Sidebar } from '@puppet/react-components';
 
 const propTypes = {
   items: PropTypes.array.isRequired,
 };
-const contextTypes = {
-  config: PropTypes.object.isRequired,
-};
 
-export function ComponentsListRenderer({ items: allItems }, { config }) {
-  const { pagePerSection } = config;
+export function ComponentsListRenderer({ items: allItems, ...rest }) {
+  const {
+		config: { pagePerSection },
+	} = useStyleGuideContext();
   const items = allItems.filter(item => item.visibleName);
 
   if (!items.length) {
@@ -80,6 +80,5 @@ export function ComponentsListRenderer({ items: allItems }, { config }) {
 }
 
 ComponentsListRenderer.propTypes = propTypes;
-ComponentsListRenderer.contextTypes = contextTypes;
 
 export default ComponentsListRenderer;

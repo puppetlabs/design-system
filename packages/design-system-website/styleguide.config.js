@@ -193,7 +193,7 @@ module.exports = {
       ],
     },
     resolve: {
-      modules: ['node_modules'],
+      modules: [path.resolve(__dirname, 'node_modules')],
       extensions: ['.js', '.mjs', '.jsx'],
       symlinks: false,
     },

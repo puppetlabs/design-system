@@ -10,11 +10,11 @@
     "access": "public"
   },
   "devDependencies": {
-    "stylelint-config-prettier": "^5.2.0"
+    "stylelint-config-prettier": "^6.0.0"
   },
   "gitHead": "4a6c41ff75aabb2ec705588e6ab757fc69ac9f97",
   "dependencies": {
-    "prettier": "^1.18.2",
+    "prettier": "^1.19.1",
     "stylelint": "^11.1.1",
     "stylelint-config-sass-guidelines": "^6.1.0"
   }

@@ -133,7 +133,11 @@ const columns = [
     label: 'Created',
     dataKey: 'created',
     cellDataGetter: ({ rowData }) => rowData.metaData.created,
-    cellRenderer: ({ cellData }) => <Link href="https://puppet.com/" className="rc-link">{cellData.toLocaleString()}</Link>,
+    cellRenderer: ({ cellData }) => (
+      <Link href="https://puppet.com/" className="rc-link">
+        {cellData.toLocaleString()}
+      </Link>
+    ),
   },
 ];
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import renderChildren from './helper';
 
@@ -33,12 +33,12 @@ const SidebarSection = props => {
   const revisedChildren = renderChildren(props);
 
   return (
-    <Fragment>
+    <>
       {label}
       <ul aria-labelledby={labelId} className="rc-sidebar-section">
         {revisedChildren}
       </ul>
-    </Fragment>
+    </>
   );
 };
 

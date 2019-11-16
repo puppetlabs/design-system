@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Form } from '@puppet/react-components';
 import AuthLayout from '../AuthLayout';
@@ -47,80 +47,67 @@ const defaultProps = {
   },
 };
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
+const Login = ({
+  product,
+  onSubmit: onSubmitProp,
+  mapErrorToMessage,
+  renderResetPasswordAs,
+  resetPasswordProps,
+  localeStrings,
+  ...rest
+}) => {
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
-    this.state = {
-      submitting: false,
-      error: '',
-    };
-
-    this.onSubmit = this.onSubmit.bind(this);
-  }
-
-  async onSubmit(values) {
-    const { onSubmit, mapErrorToMessage } = this.props;
-
+  const onSubmit = async values => {
     try {
-      this.setState({ submitting: true });
+      setSubmitting(true);
 
-      await onSubmit(values);
+      await onSubmitProp(values);
 
-      this.setState({ submitting: false, error: '' });
+      setSubmitting(false);
+      setError('');
     } catch (e) {
-      this.setState({ submitting: false, error: mapErrorToMessage(e) });
+      setSubmitting(false);
+      setError(mapErrorToMessage(e));
     }
-  }
+  };
 
-  render() {
-    const { submitting, error } = this.state;
-    const {
-      product,
-      renderResetPasswordAs,
-      resetPasswordProps,
-      localeStrings,
-      onSubmit,
-      mapErrorToMessage,
-      ...rest
-    } = this.props;
-
-    return (
-      <AuthLayout product={product} title={localeStrings.title} {...rest}>
-        <Form
-          submittable
-          actionsPosition="block"
-          submitLabel={localeStrings.submitLabel}
-          submitting={submitting}
-          error={error}
-          onSubmit={this.onSubmit}
-        >
-          <Form.Field
-            type="email"
-            name="email"
-            autoComplete="username email"
-            label={localeStrings.emailLabel}
-            required
-            requiredFieldMessage={localeStrings.emailRequiredFieldMessage}
-            placeholder={localeStrings.emailPlaceholder}
-          />
-          <Form.Field
-            type="password"
-            name="password"
-            autoComplete="current-password"
-            label={localeStrings.passwordLabel}
-            required
-            requiredFieldMessage={localeStrings.passwordRequiredFieldMessage}
-            placeholder={localeStrings.passwordPlaceholder}
-          />
-        </Form>
-        <AuthLayout.Action as={renderResetPasswordAs} {...resetPasswordProps}>
-          {localeStrings.resetPasswordLink}
-        </AuthLayout.Action>
-      </AuthLayout>
-    );
-  }
-}
+  return (
+    <AuthLayout product={product} title={localeStrings.title} {...rest}>
+      <Form
+        submittable
+        actionsPosition="block"
+        submitLabel={localeStrings.submitLabel}
+        submitting={submitting}
+        error={error}
+        onSubmit={onSubmit}
+      >
+        <Form.Field
+          type="email"
+          name="email"
+          autoComplete="username email"
+          label={localeStrings.emailLabel}
+          required
+          requiredFieldMessage={localeStrings.emailRequiredFieldMessage}
+          placeholder={localeStrings.emailPlaceholder}
+        />
+        <Form.Field
+          type="password"
+          name="password"
+          autoComplete="current-password"
+          label={localeStrings.passwordLabel}
+          required
+          requiredFieldMessage={localeStrings.passwordRequiredFieldMessage}
+          placeholder={localeStrings.passwordPlaceholder}
+        />
+      </Form>
+      <AuthLayout.Action as={renderResetPasswordAs} {...resetPasswordProps}>
+        {localeStrings.resetPasswordLink}
+      </AuthLayout.Action>
+    </AuthLayout>
+  );
+};
 
 Login.propTypes = propTypes;
 Login.defaultProps = defaultProps;

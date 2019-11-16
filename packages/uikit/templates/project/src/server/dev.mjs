@@ -3,6 +3,7 @@ import hotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
 
 import app from './index.mjs';
+// eslint-disable-next-line
 import webpackConfig from '../../config/development.webpack.config.js';
 
 const port = process.env.PORT || 3000;
