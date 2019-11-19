@@ -28,6 +28,8 @@ const propTypes = {
   rowKey: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
   /** Render table in fixed-layout mode */
   fixed: PropTypes.bool,
+  /** Render table with a border */
+  bordered: PropTypes.bool,
   /** Optional additional table className */
   className: PropTypes.string,
   /** Optional additional table inline style */
@@ -38,6 +40,7 @@ const defaultProps = {
   data: [],
   rowKey: 'id',
   fixed: false,
+  bordered: false,
   className: '',
   style: {},
 };
@@ -48,9 +51,22 @@ const defaultColumnDefs = {
   label: '',
 };
 
-const Table = ({ data, columns, fixed, rowKey, className, ...rest }) => (
+const Table = ({
+  data,
+  columns,
+  fixed,
+  bordered,
+  rowKey,
+  className,
+  ...rest
+}) => (
   <table
-    className={classNames('rc-table', { 'rc-table-fixed': fixed }, className)}
+    className={classNames(
+      'rc-table',
+      { 'rc-table-fixed': fixed },
+      { 'rc-table-bordered': bordered },
+      className,
+    )}
     {...rest}
   >
     <thead>

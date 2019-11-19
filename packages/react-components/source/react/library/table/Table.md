@@ -55,6 +55,30 @@ const columns = [
 
 <Table fixed data={data} columns={columns} />;
 ```
+
+### Bordered Table
+
+The `bordered` prop adds optional border styling to the table.
+
+<!-- prettier-ignore-start -->
+```jsx
+const data = [
+  { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
+  { id: 2, eventType: 'Spyware/Grayware', affectedDevices: 20, detections: 634 },
+  { id: 3, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 },
+  { id: 4, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 },
+  { id: 5, eventType: 'Network Virus', affectedDevices: 15, detections: 497 },
+  { id: 6, eventType: 'Application Control', affectedDevices: 0, detections: 0 },
+];
+
+const columns = [
+  { label: 'Event type', dataKey: 'eventType', style: { width: '50%' } },
+  { label: 'Affected devices', dataKey: 'affectedDevices', className: 'column-width-35p' },
+  { label: 'Detections', dataKey: 'detections' },
+];
+
+<Table bordered data={data} columns={columns} />;
+```
 <!-- prettier-ignore-end -->
 
 ### Nested Data

@@ -10,9 +10,21 @@
   table-layout: fixed;
 }
 
+.rc-table-bordered {
+  border: $puppet-common-border;
+  border-collapse: separate;
+  border-radius: $puppet-common-border-radius;
+  box-shadow: $puppet-common-elevation-50;
+  overflow: hidden;
+  
+  .rc-table-row:last-of-type .rc-table-cell {
+    border-bottom: 0;
+  }
+}
+
 .rc-table-cell,
 .rc-table-header-cell {
-  border-bottom: $puppet-common-border;
+  border-bottom: $puppet-common-border-subtle;
   position: relative;
 
   // 2px white vertical border on table cells is implemented with a ::before
