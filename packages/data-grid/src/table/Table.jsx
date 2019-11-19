@@ -11,7 +11,7 @@ import {
 } from 'prop-types';
 import classNames from 'classnames';
 import { get } from 'lodash';
-import { Heading, Checkbox } from '@puppet/react-components';
+import { Heading, Checkbox, Text } from '@puppet/react-components';
 
 import ColumnHeader from './ColumnHeader';
 import './Table.scss';
@@ -262,9 +262,9 @@ class Table extends Component {
             <Heading className="dg-empty-state-header" as="h3" color="medium">
               {emptyStateHeader}
             </Heading>
-            <Heading className="dg-empty-state-message" as="h5" color="medium">
+            <Text className="dg-empty-state-message" color="medium">
               {emptyStateMessage}
-            </Heading>
+            </Text>
           </div>
         ) : (
           <div />
