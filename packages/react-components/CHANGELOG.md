@@ -1,3 +1,7 @@
+# 5.9.20
+
+- [Alert] Hide empty Alert.Message
+
 # 5.9.19 (2019-11-15)
 
 - [Modal] Affix Modal.Actions to footer
