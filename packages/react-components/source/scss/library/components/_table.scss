@@ -15,25 +15,16 @@
   border-collapse: separate;
   border-radius: $puppet-common-border-radius;
   box-shadow: $puppet-common-elevation-50;
+  overflow: hidden;
   
-
-  .rc-table-header-cell,
   .rc-table-row:last-of-type .rc-table-cell {
     border-bottom: 0;
-  }
-
-  .rc-table-header-cell:first-of-type {
-    border-top-left-radius: $puppet-common-border-radius;
-  }
-
-  .rc-table-header-cell:last-of-type {
-    border-top-right-radius: $puppet-common-border-radius;
   }
 }
 
 .rc-table-cell,
 .rc-table-header-cell {
-  border-bottom: $puppet-common-border;
+  border-bottom: $puppet-common-border-subtle;
   position: relative;
 
   // 2px white vertical border on table cells is implemented with a ::before
