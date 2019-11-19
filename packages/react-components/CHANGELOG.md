@@ -1,5 +1,6 @@
 # 5.9.20
 
+- [Table] Add `bordered` prop to Table (for rounded outer border and shadow)
 - [Alert] Hide empty Alert.Message
 
 # 5.9.19 (2019-11-15)
