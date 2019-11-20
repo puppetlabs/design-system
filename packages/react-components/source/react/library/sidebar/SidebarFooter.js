@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../icon';
 import Heading from '../heading';
@@ -32,9 +32,11 @@ const SidebarFooter = ({ as, username, version, minimized, ...rest }) => {
         <Heading as="h6" className="rc-sidebar-footer-meta-username">
           {username}
         </Heading>
-        <Text size="tiny" className="rc-sidebar-footer-meta-version">
-          Version: {version}
-        </Text>
+        {version && (
+          <Text size="tiny" className="rc-sidebar-footer-meta-version">
+            Version: {version}
+          </Text>
+        )}
       </div>
     );
   }
