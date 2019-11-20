@@ -1,4 +1,6 @@
 ```jsx
+import Badge from '../badge';
+
 <div style={{ position: 'relative', height: '800px' }}>
   <Sidebar>
     <Sidebar.Header
@@ -12,10 +14,10 @@
       </Sidebar.Section>
       <Sidebar.Section label="reports">
         <Sidebar.Item onClick={() => {}} title="Code" icon="code" />
-        <Sidebar.Item onClick={() => {}} title="Build" icon="build" />
-        <Sidebar.Item onClick={() => {}} title="Deploy" icon="rocket" />
+        <Sidebar.Item onClick={() => {}} title="Build" icon="build" count={5} />
+        <Sidebar.Item onClick={() => {}} title="Deploy" icon="rocket" badge={<Badge pill type="success">4</Badge>} />
       </Sidebar.Section>
-      <Sidebar.Section label="conifg">
+      <Sidebar.Section label="config">
         <Sidebar.Item
           onClick={() => {}}
           title="Connections"
@@ -52,7 +54,7 @@
         <Sidebar.Item onClick={() => {}} title="Build" icon="build" />
         <Sidebar.Item onClick={() => {}} title="Deploy" icon="rocket" />
       </Sidebar.Section>
-      <Sidebar.Section label="conifg">
+      <Sidebar.Section label="config">
         <Sidebar.Item
           onClick={() => {}}
           title="Connections"
