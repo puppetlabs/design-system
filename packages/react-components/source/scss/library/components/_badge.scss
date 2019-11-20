@@ -1,11 +1,11 @@
 .rc-badge {
   @include puppet-type-label();
+  align-items: center;
   border-radius: 2px;
   display: inline-flex;
-  align-items: center;
   justify-content: center;
-  min-height: $puppet-common-spacing-base * 4;
   margin: 0 $puppet-common-spacing-base * 0.5;
+  min-height: $puppet-common-spacing-base * 4;
   padding: 0 $puppet-common-spacing-base;
   text-transform: uppercase;
 }
