@@ -5,11 +5,9 @@ import PropTypes from 'prop-types';
 const propTypes = {
   /** Html element or react component to render */
   as: PropTypes.elementType,
-  /** Text Size */
-  size: PropTypes.oneOf(['medium', 'small', 'tiny']),
-  /** Text color */
-  color: PropTypes.oneOf(['subtle', 'medium', 'danger', 'warning', 'success']),
-  /** Text body */
+  /** Code Size */
+  size: PropTypes.oneOf(['medium', 'small']),
+  /** Code body */
   children: PropTypes.node,
   /** Optional additional classname. */
   className: PropTypes.string,
@@ -18,29 +16,19 @@ const propTypes = {
 };
 
 const defaultProps = {
-  as: 'div',
+  as: 'code',
   children: '',
   className: '',
   size: 'medium',
-  color: null,
   style: {},
 };
 
-const Text = ({
-  as: Element,
-  size,
-  color,
-  children,
-  className,
-  style,
-  ...other
-}) => (
+const Code = ({ as: Element, size, children, className, style, ...other }) => (
   <Element
     className={classNames(
-      'rc-text',
+      'rc-code',
       {
-        [`rc-text-size-${size}`]: size,
-        [`rc-text-${color}`]: color,
+        [`rc-code-size-${size}`]: size,
       },
       className,
     )}
@@ -51,7 +39,7 @@ const Text = ({
   </Element>
 );
 
-Text.propTypes = propTypes;
-Text.defaultProps = defaultProps;
+Code.propTypes = propTypes;
+Code.defaultProps = defaultProps;
 
-export default Text;
+export default Code;

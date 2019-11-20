@@ -97,15 +97,15 @@ $puppet-type-label-line-height: calc(16 / 11) !default;
 $puppet-type-label-font-family: $puppet-type-font-family-secondary !default;
 $puppet-type-label-font-weight: $puppet-type-weight-heavy !default;
 
-$puppet-type-code-font-size: 14px !default;
+$puppet-type-code-font-size: 16px !default;
 $puppet-type-code-line-height: calc(20 / 14) !default;
 $puppet-type-code-font-family: $puppet-type-font-family-monospace !default;
-$puppet-type-code-font-weight: 400 !default;
+$puppet-type-code-font-weight: $puppet-type-weight-normal !default;
 
-$puppet-type-code-bold-font-size: 14px !default;
-$puppet-type-code-bold-line-height: calc(20 / 14) !default;
-$puppet-type-code-bold-font-family: $puppet-type-font-family-monospace !default;
-$puppet-type-code-bold-font-weight: 700 !default;
+$puppet-type-code-small-font-size: 14px !default;
+$puppet-type-code-small-line-height: calc(20 / 12) !default;
+$puppet-type-code-small-font-family: $puppet-type-font-family-monospace !default;
+$puppet-type-code-small-font-weight: $puppet-type-weight-normal !default;
 
 @mixin puppet-type-hero($color: base) {
   color: map-get($puppet-type-colors, $color);
@@ -212,10 +212,18 @@ $puppet-type-code-bold-font-weight: 700 !default;
   text-transform: uppercase;
 }
 
-@mixin puppet-type-code($color: base) {
-  color: map-get($puppet-type-colors, $color);
+@mixin puppet-type-code() {
   font-family: $puppet-type-code-font-family;
+  font-size: $puppet-type-code-font-size;
   font-weight: $puppet-type-code-font-weight;
+  line-height: $puppet-type-code-line-height;
+}
+
+@mixin puppet-type-code-small() {
+  font-family: $puppet-type-code-small-font-family;
+  font-size: $puppet-type-code-small-font-size;
+  font-weight: $puppet-type-code-small-font-weight;
+  line-height: $puppet-type-code-small-line-height;
 }
 
 @mixin puppet-type-link() {

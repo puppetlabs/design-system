@@ -27,6 +27,7 @@ import Logo from './react/library/logo';
 import Tabs from './react/library/tabs';
 import Breadcrumb from './react/library/breadcrumb';
 import ConfirmationModal from './react/library/confirmation-modal';
+import Code from './react/library/code';
 
 export {
   ActionSelect,
@@ -55,4 +56,5 @@ export {
   Tabs,
   Breadcrumb,
   ConfirmationModal,
+  Code,
 };
