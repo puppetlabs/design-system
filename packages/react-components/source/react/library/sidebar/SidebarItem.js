@@ -13,6 +13,7 @@ const propTypes = {
   minimized: PropTypes.bool,
   active: PropTypes.bool,
   count: PropTypes.number,
+  badge: PropTypes.node,
 };
 
 const defaultProps = {
@@ -22,6 +23,7 @@ const defaultProps = {
   minimized: false,
   active: false,
   count: null,
+  badge: null,
 };
 
 const SidebarItem = props => {
@@ -32,6 +34,7 @@ const SidebarItem = props => {
     minimized,
     active,
     count,
+    badge: badgeProp,
     as: Component,
     ...rest
   } = props;
@@ -40,7 +43,9 @@ const SidebarItem = props => {
 
   let badge;
 
-  if (count) {
+  if (badgeProp) {
+    badge = <span className="rc-sidebar-item-badge">{badgeProp}</span>;
+  } else if (count) {
     badge = (
       <span className="rc-sidebar-item-badge">
         <Badge pill type="neutral">

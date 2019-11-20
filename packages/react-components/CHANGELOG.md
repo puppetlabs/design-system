@@ -1,5 +1,6 @@
 # 5.9.20
 
+- [Sidebar] Add `badge` prop to Sidebar.Item for full control over badges (instead of `count`, which just controls badge content)
 - [Table] Add `bordered` prop to Table (for rounded outer border and shadow)
 - [Alert] Hide empty Alert.Message
 
