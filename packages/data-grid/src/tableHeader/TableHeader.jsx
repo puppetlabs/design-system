@@ -23,7 +23,7 @@ function TableHeader({ children, rowCount }) {
   return (
     <div className="dg-table-header-container">
       {children === undefined ? (
-        <Text as="h3" color="medium" className="dg-table-row-count">
+        <Text as="h5" color="medium" className="dg-table-row-count">
           {rowCount.count} {rowCount.label ? rowCount.label : null}
         </Text>
       ) : (

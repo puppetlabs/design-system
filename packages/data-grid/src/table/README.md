@@ -107,7 +107,10 @@ const columns = [
   { label: 'Linked field', dataKey: 'Link' },
 ];
 
+<div>
+<Table.TableHeader rowCount={{ count: 0 , label: 'Nodes' }} />
 <Table data={data} columns={columns} />
+</div>
 ```
 If your table is unpopulated due to a known issue, it might be best to guide an approprate action the user. To do this use the 'emptyStateHeader' and 'emptyStateMessage' props to pass your helpful string.  
 
@@ -126,9 +129,12 @@ const columns = [
 ];
 
 const emptyStateHeader = 'Connection Failed';
-const emptyStateMessage = 'Reconnect to survise';
+const emptyStateMessage = 'Reconnect to service';
 
+<div>
+<Table.TableHeader rowCount={{ count: 0 , label: 'Nodes' }} />
 <Table data={data} columns={columns} emptyStateHeader={emptyStateHeader} emptyStateMessage={emptyStateMessage} />
+</div>
 ```
 
 ### Custom Row Styling

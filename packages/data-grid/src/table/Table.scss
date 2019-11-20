@@ -8,7 +8,11 @@
   margin: auto;
   text-align: center;
   padding-top: 100px;
-  padding-bottom: 100px;  
+  padding-bottom: 100px; 
+  
+  .dg-empty-state-message{
+    margin-top: 8px;
+  }
 }
 
 .dg-column-header-label-active{
