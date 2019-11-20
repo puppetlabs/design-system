@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-components",
-  "version": "5.9.19",
+  "version": "5.9.20",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "main": "build/library.js",
@@ -76,7 +76,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@puppet/sass-variables": "^1.1.5",
+    "@puppet/sass-variables": "^1.1.6",
     "classnames": "^2.2.6",
     "core-js": "^3.4.1",
     "hoist-non-react-statics": "^3.3.1",
