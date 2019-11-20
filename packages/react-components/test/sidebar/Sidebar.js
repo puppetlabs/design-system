@@ -3,6 +3,8 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
 import Sidebar from '../../source/react/library/sidebar/Sidebar';
+import Badge from '../../source/react/library/badge/Badge';
+import Icon from '../../source/react/library/icon/Icon';
 
 describe('<Sidebar />', () => {
   it('should render without blowing up', () => {
@@ -68,10 +70,33 @@ describe('<Sidebar />', () => {
       expect(wrapper.find('Icon').length).to.eql(1);
     });
 
-    it('should render an icon when the prop is provided ', () => {
-      const wrapper = shallow(<Sidebar.Item title="test" icon="profile" />);
+    it('should render a count when the prop is provided ', () => {
+      const wrapper = shallow(<Sidebar.Item title="test" count={5} />);
 
-      expect(wrapper.find('Icon').length).to.eql(1);
+      expect(wrapper.find('Badge').length).to.eql(1);
+      expect(
+        wrapper
+          .find('Badge')
+          .childAt(0)
+          .text(),
+      ).to.eql('5');
+    });
+
+    it('should render a custom badge when the prop is provided ', () => {
+      const wrapper = shallow(
+        <Sidebar.Item
+          title="test"
+          badge={
+            <Badge pill>
+              <Icon type="check" />
+            </Badge>
+          }
+        />,
+      );
+
+      const customBadgeNode = wrapper.find('Badge');
+      expect(customBadgeNode.length).to.eql(1);
+      expect(customBadgeNode.find('Icon').length).to.eql(1);
     });
 
     it('should render as a different element when the prop is provided ', () => {
