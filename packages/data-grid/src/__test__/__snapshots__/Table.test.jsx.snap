@@ -538,31 +538,31 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
       <Heading
         allCaps={false}
         as="h3"
-        className=""
+        className="dg-empty-state-header"
         color="medium"
         hero={false}
         label={false}
       >
         <h3
-          className="rc-heading rc-heading-h3 rc-heading-medium"
+          className="rc-heading rc-heading-h3 rc-heading-medium dg-empty-state-header"
         >
           No data available
         </h3>
       </Heading>
-      <Heading
-        allCaps={false}
-        as="h4"
-        className=""
+      <Text
+        as="div"
+        className="dg-empty-state-message"
         color="medium"
-        hero={false}
-        label={false}
+        size="medium"
+        style={Object {}}
       >
-        <h4
-          className="rc-heading rc-heading-h4 rc-heading-medium"
+        <div
+          className="rc-text rc-text-size-medium rc-text-medium dg-empty-state-message"
+          style={Object {}}
         >
           Prompt to action or solution
-        </h4>
-      </Heading>
+        </div>
+      </Text>
     </div>
   </div>
 </Table>
