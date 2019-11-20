@@ -32,6 +32,18 @@ The primary (default) text is categorized as Body text, used for page content.
 <Text>Default text size</Text>
 ```
 
+### Monospace
+
+Monospace font should be used for codeblocks.
+
+- Font Family: Inconsolata
+- Font weight: 400 Regular
+- Size / line height: 14px / 20px
+
+```jsx
+<Text code>This is a codeblock</Text>
+```
+
 ## Variations
 
 ### Text sizes

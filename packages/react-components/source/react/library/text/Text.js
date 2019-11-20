@@ -9,6 +9,8 @@ const propTypes = {
   size: PropTypes.oneOf(['medium', 'small', 'tiny']),
   /** Text color */
   color: PropTypes.oneOf(['subtle', 'medium', 'danger', 'warning', 'success']),
+  /** Use monospace for code block */
+  code: PropTypes.bool,
   /** Text body */
   children: PropTypes.node,
   /** Optional additional classname. */
@@ -23,6 +25,7 @@ const defaultProps = {
   className: '',
   size: 'medium',
   color: null,
+  code: false,
   style: {},
 };
 
@@ -30,6 +33,7 @@ const Text = ({
   as: Element,
   size,
   color,
+  code,
   children,
   className,
   style,
@@ -38,6 +42,7 @@ const Text = ({
   <Element
     className={classNames(
       'rc-text',
+      { 'rc-text-code': code },
       {
         [`rc-text-size-${size}`]: size,
         [`rc-text-${color}`]: color,

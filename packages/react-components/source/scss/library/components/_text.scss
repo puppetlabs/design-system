@@ -11,6 +11,10 @@
   @include puppet-type-tiny();
 }
 
+.rc-text-code {
+  @include puppet-type-code();
+}
+
 @each $color, $code in $puppet-type-colors {
   .rc-text-#{$color} {
     color: $code;
