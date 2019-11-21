@@ -1,12 +1,14 @@
 ## Overview
 
-See also: [Heading](#/React%20Components/Heading) [Text](#/React%20Components/Text) and [Content](#/React%20Components/Content)
+The Code component font should be used for codeblocks.
+
+See also: [Heading](#/React%20Components/Heading), [Text](#/React%20Components/Text), and [Content](#/React%20Components/Content)
 
 ## Types
 
 ### Primary
 
-The Code component font should be used for codeblocks. The default styles for this component are:
+The default styles for this component are:
 
 - Font Family: Inconsolata
 - Font weight: 400 Regular
@@ -46,7 +48,6 @@ Most code should have a size of medium, the default, but the small code variant 
 
 ## Related
 
-- [Color](#/React%20Components/Colors)
 - [Content](#/React%20Components/Content)
 - [Heading](#/React%20Components/Heading)
-- [Link](#/React%20Components/Link)
+- [Text](#/React%20Components/Text)
