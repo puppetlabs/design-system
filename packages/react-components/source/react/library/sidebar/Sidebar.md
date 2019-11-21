@@ -15,7 +15,16 @@ import Badge from '../badge';
       <Sidebar.Section label="reports">
         <Sidebar.Item onClick={() => {}} title="Code" icon="code" />
         <Sidebar.Item onClick={() => {}} title="Build" icon="build" count={5} />
-        <Sidebar.Item onClick={() => {}} title="Deploy" icon="rocket" badge={<Badge pill type="success">4</Badge>} />
+        <Sidebar.Item
+          onClick={() => {}}
+          title="Deploy"
+          icon="rocket"
+          badge={
+            <Badge pill type="success">
+              4
+            </Badge>
+          }
+        />
       </Sidebar.Section>
       <Sidebar.Section label="config">
         <Sidebar.Item
@@ -27,12 +36,18 @@ import Badge from '../badge';
       </Sidebar.Section>
     </Sidebar.Navigation>
     <Sidebar.Footer
+      profileIcon={
+        <img
+          style={{ borderRadius: '100px', height: '50px' }}
+          src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=100"
+        />
+      }
       username="Lorem Ipsum"
       version="1969.7.20"
       onClick={console.log}
     />
   </Sidebar>
-</div>
+</div>;
 ```
 
 ### Minimized Sidebar
