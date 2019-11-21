@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Icon from '../icon';
 import Heading from '../heading';
@@ -13,7 +13,7 @@ const propTypes = {
   version: PropTypes.string,
   /** Has the parent sidebar been minimized? If so render the minimized version of the footer. Don't worry about setting this manually. The parent components will add this prop for you. */
   minimized: PropTypes.bool,
-  /** Displays an element of the users choice **/
+  /** Displays an element of the users choice * */
   profileIcon: PropTypes.node,
 };
 
@@ -36,14 +36,11 @@ const SidebarFooter = ({
   const Component = as;
   let meta;
 
-  const renderProfileIcon = profileIconProp => {
-    let profileIcon;
+  const renderProfileIcon = () => {
     if (profileIconProp) {
-      return <Fragment>{profileIconProp}</Fragment>;
+      return <>{profileIconProp}</>;
     }
-    return (profileIcon = (
-      <Icon type="profile" className="rc-sidebar-footer-meta-user-icon" />
-    ));
+    return <Icon type="profile" className="rc-sidebar-footer-meta-user-icon" />;
   };
 
   if (!minimized) {
