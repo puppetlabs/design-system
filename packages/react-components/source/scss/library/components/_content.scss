@@ -84,7 +84,7 @@
   }
 
   //
-  // Lists
+  // Lists (general)
   //
 
   ol,
@@ -122,7 +122,7 @@
     width: $puppet-common-spacing-base * 6;
   }
 
-  // Define bullet styles for ordered list items
+  // Bullet styles for ordered lists
   ol > li::before {
     color: $puppet-n800;
     content: counter(item) '. ';
@@ -132,7 +132,7 @@
     width: 20px;
   }
 
-  // Define bullet styles for unordered list items
+  // Bullet styles for unordered lists
   ul > li::before {
     color: $puppet-n800;
     content: '\25AA'; // square
@@ -140,17 +140,21 @@
     width: 20px;
   }
 
-  // Nested ol and ul styles
+  //
+  // Nested list styles
+  //
 
-  // TODO create a system whereby an infinite number of ordered and unordered lists have appropriate styling
+  // TODO Create a system whereby an infinite number of ordered and unordered lists have appropriate styling
   // ie. what do the bullets of a third level ordered list look like? [1,2,3] -> [i, ii, iii] -> [?,?,?]
 
-  // Use lower case italics for nested ordered list items
+  // Lower case italics for nested ordered lists
+  /* stylelint-disable-next-line selector-max-compound-selectors */
   ol li ol > li::before {
     content: counter(item, lower-roman) '. ';
   }
 
-  // Use triangles for nested unordered list items
+  // Triangles for nested unordered lists
+  /* stylelint-disable-next-line selector-max-compound-selectors */
   ul li ul > li::before {
     content: '\25B4'; // triangle
   }
@@ -241,14 +245,17 @@
     vertical-align: top;
   }
 
-  // Make first column sticky
+  // Make first column sticky unless narrow screen
   td:first-child,
   th:first-child {
     background-color: $puppet-n50;
     left: 0;
     position: sticky;
+  }
 
-    @media (max-width: 767px) {
+  @media (max-width: 767px) {
+    td:first-child,
+    th:first-child {
       position: unset;
     }
   }
@@ -267,6 +274,7 @@
     border-top: 1px solid $puppet-n300;
   }
 
+  /* stylelint-disable-next-line selector-max-compound-selectors */
   thead + tbody tr:first-child td {
     border-top: 0;
   }
@@ -300,10 +308,12 @@
     border-top-right-radius: $puppet-common-border-radius;
   }
 
+  /* stylelint-disable-next-line selector-max-compound-selectors */
   thead + tbody tr:first-child td:first-child {
     border-top-left-radius: 0;
   }
 
+  /* stylelint-disable-next-line selector-max-compound-selectors */
   thead + tbody tr:first-child td:last-child {
     border-top-right-radius: 0;
   }
