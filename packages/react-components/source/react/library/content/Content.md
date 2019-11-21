@@ -28,6 +28,7 @@ const highlight = element => <span style={style}>{element}</span>;
   <h4>{highlight('h4')} has 8px bottom margin.</h4>
   <h5>{highlight('h5')} has 8px bottom margin.</h5>
   <h6>{highlight('h6')} has 8px bottom margin.</h6>
+  <code>{highlight('code')} uses a monospace font</code>
 </Content>;
 ```
 

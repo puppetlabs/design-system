@@ -66,3 +66,19 @@
   src: url('./fonts/CalibreWeb-SemiboldItalic.woff2') format('woff2'),
     url('./fonts/CalibreWeb-SemiboldItalic.woff') format('woff');
 }
+
+@font-face {
+  font-family: Inconsolata;
+  font-style: normal;
+  font-weight: 400;
+  src: url('./fonts/Inconsolata-Regular.woff2') format('woff2'),
+    url('./fonts/Inconsolata-Regular.woff') format('woff');
+}
+
+@font-face {
+  font-family: Inconsolata;
+  font-style: normal;
+  font-weight: 700;
+  src: url('./fonts/Inconsolata-Bold.woff2') format('woff2'),
+    url('./fonts/Inconsolata-Bold.woff') format('woff');
+}

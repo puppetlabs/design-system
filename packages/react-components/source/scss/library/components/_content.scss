@@ -29,6 +29,10 @@
     @include puppet-type-h6();
   }
 
+  code {
+    @include puppet-type-code();
+  }
+
   h1,
   h2,
   h3 {

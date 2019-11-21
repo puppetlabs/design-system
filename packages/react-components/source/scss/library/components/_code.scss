@@ -1,0 +1,7 @@
+.rc-code {
+  @include puppet-type-code();
+}
+
+.rc-code-size-small {
+  @include puppet-type-code-small();
+}
