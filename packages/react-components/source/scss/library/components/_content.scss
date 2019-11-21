@@ -177,6 +177,7 @@
   pre > code {
     border-left: 8px solid $puppet-n300;
     border-radius: 2px;
+    box-sizing: border-box;
     display: block;
     padding: $puppet-common-spacing-base $puppet-common-spacing-base * 2;
     width: 100%;
