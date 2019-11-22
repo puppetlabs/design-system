@@ -231,7 +231,7 @@
   table {
     border-spacing: 0;
     display: block;
-    font-size: 12px;
+    font-size: $puppet-type-small-font-size;
     line-height: calc(16 / 12);
     margin-bottom: $puppet-common-spacing-base * 6;
     overflow-x: auto;
