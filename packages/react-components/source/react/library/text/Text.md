@@ -14,9 +14,9 @@ The following 3 font families are utilized in a variety of styles. The use cases
 
 - <strong>Calibre</strong>: Headings, titles, navigation, visualizations, and other primary elements (See [Heading](#/React%20Components/Heading))
 - <strong>Open Sans</strong>: Body copy and general UI elements and content (like this `Text` component)
-- <strong>Inconsolata</strong>: Code samples
+- <strong>Inconsolata</strong>: Code samples (See [Code](#/React%20Components/Code))
 
-See also: [Heading](#/React%20Components/Heading) and [Content](#/React%20Components/Content)
+See also: [Heading](#/React%20Components/Heading), [Code](#/React%20Components/Code) and [Content](#/React%20Components/Content)
 
 ## Types
 
@@ -74,3 +74,4 @@ Our "stoplight" colors are reserved to apply meaning, or state, within a given c
 - [Content](#/React%20Components/Content)
 - [Heading](#/React%20Components/Heading)
 - [Link](#/React%20Components/Link)
+- [Code](#/React%20Components/Code)
