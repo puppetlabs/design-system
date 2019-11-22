@@ -1,32 +1,48 @@
 .rc-content {
   @include puppet-type-body();
 
+  //
+  // Links
+  //
+
   a {
     @include puppet-type-link();
   }
 
+  //
+  // Headers
+  //
+
+  // TODO: Define margins for h1 -- was not relevant for Nebula
   h1 {
     @include puppet-type-h1();
   }
 
+  // TODO: Define margins for h2 -- was not relevant for Nebula
   h2 {
     @include puppet-type-h2();
   }
 
   h3 {
     @include puppet-type-h3();
+    margin-bottom: $puppet-common-spacing-base * 1;
   }
 
   h4 {
     @include puppet-type-h4();
+    margin-bottom: $puppet-common-spacing-base * 2;
+    margin-top: $puppet-common-spacing-base * -1;
   }
 
   h5 {
     @include puppet-type-h5();
+    margin-bottom: $puppet-common-spacing-base * 2;
+    margin-top: $puppet-common-spacing-base * -1;
   }
 
   h6 {
     @include puppet-type-h6();
+    margin-bottom: $puppet-common-spacing-base * 2;
   }
 
   code {
@@ -47,6 +63,30 @@
     margin-top: 0;
   }
 
+  //
+  // Paragraphs
+  //
+
+  p {
+    line-height: calc(22 / 14);
+    margin-bottom: $puppet-common-spacing-base * 4;
+    margin-top: 0;
+  }
+
+  // Adjust margin top for headings that preceed paragraphs
+  p + h1,
+  p + h2,
+  p + h3,
+  p + h4,
+  p + h5,
+  p + h6 {
+    margin-top: $puppet-common-spacing-base * 8;
+  }
+
+  //
+  // Lists (general)
+  //
+
   ol,
   ul {
     border-collapse: separate;
@@ -57,8 +97,22 @@
     padding-left: 0;
   }
 
+  ol {
+    counter-reset: item;
+  }
+
   li {
     display: table-row;
+  }
+
+  li > p {
+    margin-bottom: 0;
+  }
+
+  li > ul,
+  li > ol {
+    margin-bottom: 0;
+    margin-top: 0;
   }
 
   ol li::before,
@@ -68,31 +122,208 @@
     width: $puppet-common-spacing-base * 6;
   }
 
-  ol {
-    counter-reset: item;
-  }
-
-  ol li::before {
+  // Bullet styles for ordered lists
+  ol > li::before {
+    color: $puppet-n800;
     content: counter(item) '. ';
     counter-increment: item;
+    font-size: 12px;
+    font-weight: 600;
+    width: 20px;
   }
 
-  ul li::before {
-    color: $puppet-brand-primary;
-    content: '\25CF';  // 25CF is the unicode for a big bullet
+  // Bullet styles for unordered lists
+  ul > li::before {
+    color: $puppet-n800;
+    content: '\25AA'; // square
+    counter-reset: item;
+    width: 20px;
   }
 
-  p {
-    margin-bottom: $puppet-common-spacing-base * 4;
-    margin-top: 0;
+  //
+  // Nested list styles
+  //
+
+  // TODO Create a system whereby an infinite number of ordered and unordered lists have appropriate styling
+  // ie. what do the bullets of a third level ordered list look like? [1,2,3] -> [i, ii, iii] -> [?,?,?]
+
+  // Lower case italics for nested ordered lists
+  /* stylelint-disable-next-line selector-max-compound-selectors */
+  ol li ol > li::before {
+    content: counter(item, lower-roman) '. ';
   }
 
-  p + h1,
-  p + h2,
-  p + h3,
-  p + h4,
-  p + h5,
-  p + h6 {
-    margin-top: $puppet-common-spacing-base * 6;
+  // Triangles for nested unordered lists
+  /* stylelint-disable-next-line selector-max-compound-selectors */
+  ul li ul > li::before {
+    content: '\25B4'; // triangle
+  }
+
+  //
+  // Code
+  //
+
+  pre {
+    // Make code blocks wrap
+    overflow-x: auto;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  // Style broken out code
+  pre > code {
+    border-left: 8px solid $puppet-n300;
+    border-radius: 2px;
+    box-sizing: border-box;
+    display: block;
+    padding: $puppet-common-spacing-base $puppet-common-spacing-base * 2;
+    width: 100%;
+  }
+
+  // Style inline code
+  code {
+    background-color: $puppet-n100;
+    border-radius: 2px;
+    font-family: $puppet-type-font-family-monospace;
+    padding: $puppet-common-spacing-base / 2 $puppet-common-spacing-base;
+  }
+
+  //
+  // Blockquotes
+  //
+
+  blockquote::before {
+    background-color: $puppet-n300;
+    border-radius: 2px;
+    bottom: 0;
+    content: '';
+    margin-left: -$puppet-common-spacing-base * 4;
+    position: absolute;
+    top: 0;
+    width: 6px;
+  }
+
+  blockquote {
+    margin-inline-start: $puppet-common-spacing-base * 6;
+    position: relative;
+  }
+
+  //
+  // Images
+  //
+
+  img {
+    background: #fff;
+    border: 1px solid $puppet-n300;
+    border-radius: $puppet-common-border-radius;
+    box-sizing: border-box;
+    max-width: 100%;
+    padding: 4px;
+  }
+
+  //
+  // Tables (general)
+  //
+
+  table {
+    border-spacing: 0;
+    display: block;
+    font-size: $puppet-type-small-font-size;
+    line-height: calc(16 / 12);
+    margin-bottom: $puppet-common-spacing-base * 6;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  td,
+  th {
+    background-color: $puppet-white;
+    border-bottom: 1px solid $puppet-n200;
+    border-right: 1px solid $puppet-n200;
+    min-width: 150px;
+    padding: $puppet-common-spacing-base * 2;
+    text-align: left;
+    vertical-align: top;
+  }
+
+  // Make first column sticky unless narrow screen
+  td:first-child,
+  th:first-child {
+    background-color: $puppet-n50;
+    left: 0;
+    position: sticky;
+  }
+
+  @media (max-width: 767px) {
+    td:first-child,
+    th:first-child {
+      position: unset;
+    }
+  }
+
+  td:first-child > code,
+  th:first-child > code {
+    background-color: $puppet-n200;
+  }
+
+  //
+  // Table outer border
+  //
+
+  tr:first-child th,
+  tr:first-child td {
+    border-top: 1px solid $puppet-n300;
+  }
+
+  /* stylelint-disable-next-line selector-max-compound-selectors */
+  thead + tbody tr:first-child td {
+    border-top: 0;
+  }
+
+  tr:last-child th,
+  tr:last-child td {
+    border-bottom: 1px solid $puppet-n300;
+  }
+
+  th:first-child,
+  td:first-child {
+    border-left: 1px solid $puppet-n300;
+  }
+
+  th:last-child,
+  td:last-child {
+    border-right: 1px solid $puppet-n300;
+  }
+
+  tr:first-child td:first-child,
+  tr:first-child th:first-child {
+    border-top-left-radius: $puppet-common-border-radius;
+  }
+
+  //
+  // Table border radius
+  //
+
+  tr:first-child td:last-child,
+  tr:first-child th:last-child {
+    border-top-right-radius: $puppet-common-border-radius;
+  }
+
+  /* stylelint-disable-next-line selector-max-compound-selectors */
+  thead + tbody tr:first-child td:first-child {
+    border-top-left-radius: 0;
+  }
+
+  /* stylelint-disable-next-line selector-max-compound-selectors */
+  thead + tbody tr:first-child td:last-child {
+    border-top-right-radius: 0;
+  }
+
+  tr:last-child td:first-child {
+    border-bottom-left-radius: $puppet-common-border-radius;
+  }
+
+  tr:last-child td:last-child {
+    border-bottom-right-radius: $puppet-common-border-radius;
   }
 }
