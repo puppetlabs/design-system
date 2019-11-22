@@ -1,3 +1,9 @@
+# 5.10.0
+
+- [Code] Add Code component [#176](https://github.com/puppetlabs/design-system/pull/176) by @melcherry98
+- [sass-variables] Add Inconsolata monospace font [#176](https://github.com/puppetlabs/design-system/pull/176) by @melcherry98
+- [Content] Add more styles to HTML in Content component [#177](https://github.com/puppetlabs/design-system/pull/177) by @sprokusk
+
 # 5.9.20
 
 - [Sidebar] Add `badge` prop to Sidebar.Item for full control over badges (instead of `count`, which just controls badge content)
