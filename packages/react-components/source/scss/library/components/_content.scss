@@ -216,9 +216,11 @@
   //
 
   img {
+    background: #fff;
     border: 1px solid $puppet-n300;
     border-radius: 4px;
-    max-width: 600px;
+    max-width: 100%;
+    padding: 4px;
   }
 
   //
