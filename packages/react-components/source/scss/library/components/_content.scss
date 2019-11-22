@@ -187,7 +187,7 @@
   code {
     background-color: $puppet-n100;
     border-radius: 2px;
-    font-family: Inconsolata, monospace;
+    font-family: $puppet-type-font-family-monospace;
     padding: $puppet-common-spacing-base / 2 $puppet-common-spacing-base;
   }
 
