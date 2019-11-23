@@ -1,10 +1,10 @@
-# 5.10.0
+# 5.10.0 (2019-11-22)
 
-- [Code] Add Code component [#176](https://github.com/puppetlabs/design-system/pull/176) by @melcherry98
-- [sass-variables] Add Inconsolata monospace font [#176](https://github.com/puppetlabs/design-system/pull/176) by @melcherry98
-- [Content] Add more styles to HTML in Content component [#177](https://github.com/puppetlabs/design-system/pull/177) by @sprokusk
+- [Code] Add Code component [#176](https://github.com/puppetlabs/design-system/pull/176) by [@melcherry98](https://github.com/melcherry98)
+- [sass-variables] Add Inconsolata monospace font [#176](https://github.com/puppetlabs/design-system/pull/176) by [@melcherry98](https://github.com/melcherry98)
+- [Content] Add more styles to HTML in Content component [#177](https://github.com/puppetlabs/design-system/pull/177) by [@sprokusk](https://github.com/sprokusk)
 
-# 5.9.20
+# 5.9.20 (2019-11-20)
 
 - [Sidebar] Add `badge` prop to Sidebar.Item for full control over badges (instead of `count`, which just controls badge content)
 - [Table] Add `bordered` prop to Table (for rounded outer border and shadow)
