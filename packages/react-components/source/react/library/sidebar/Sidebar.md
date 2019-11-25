@@ -37,10 +37,7 @@ import Badge from '../badge';
     </Sidebar.Navigation>
     <Sidebar.Footer
       profileIcon={
-        <img
-          style={{ borderRadius: '100px', height: '50px' }}
-          src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=100"
-        />
+        <img src="https://www.gravatar.com/avatar/205e460b479e2e5b48aec07710c08d50?s=100" />
       }
       username="Lorem Ipsum"
       version="1969.7.20"
