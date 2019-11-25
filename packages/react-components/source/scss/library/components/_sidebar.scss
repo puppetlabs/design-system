@@ -294,12 +294,19 @@ $puppet-sidebar-footer-meta-icon: 32px;
   background: $puppet-n500;
   border-radius: 100px;
   display: flex;
+  fill: $puppet-sidebar-footer-bg;
   height: $puppet-sidebar-footer-meta-icon;
   justify-content: center;
   width: $puppet-sidebar-footer-meta-icon;
 
   .rc-icon {
     fill: $puppet-sidebar-footer-bg;
+  }
+
+  * {
+    border-radius: 100px;
+    height: 100%;
+    width: 100%;
   }
 }
 

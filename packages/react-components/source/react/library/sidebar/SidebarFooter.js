@@ -36,13 +36,6 @@ const SidebarFooter = ({
   const Component = as;
   let meta;
 
-  const renderProfileIcon = () => {
-    if (profileIconProp) {
-      return <>{profileIconProp}</>;
-    }
-    return <Icon type="profile" className="rc-sidebar-footer-meta-user-icon" />;
-  };
-
   if (!minimized) {
     meta = (
       <div className="rc-sidebar-footer-meta-details">
@@ -61,7 +54,9 @@ const SidebarFooter = ({
   return (
     <Component className="rc-sidebar-footer" {...rest}>
       <div className="rc-sidebar-footer-meta-user">
-        {renderProfileIcon(profileIconProp)}
+        {profileIconProp || (
+          <Icon type="profile" className="rc-sidebar-footer-meta-user-icon" />
+        )}
       </div>
       {meta}
     </Component>
