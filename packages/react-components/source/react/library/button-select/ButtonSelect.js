@@ -170,8 +170,15 @@ class ButtonSelect extends Component {
   getButtonLabel() {
     const { placeholder, multiple, options, value } = this.props;
 
-    if (multiple || !value) {
+    if (!value || value.length === 0) {
       return placeholder;
+    }
+    if (multiple) {
+      const selectedOptions = options
+        .filter(option => value.includes(option.value))
+        .map(option => option.selectedLabel || option.label);
+
+      return selectedOptions.join(', ');
     }
 
     const selectedOption = options.find(option => option.value === value);
