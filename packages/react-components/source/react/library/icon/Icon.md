@@ -105,8 +105,6 @@ To use a custom SVG not included in the chart above, separately specify both the
 Below we render the GitHub logo.
 
 ```jsx
-import icons from './icons';
-
 const Renderer = () => {
   const customIcon = {
     viewBox: '0 0 16 16',
