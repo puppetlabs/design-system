@@ -7,40 +7,45 @@ const exampleStyle = { marginBottom: 10 };
 
 <form>
   <Input
-    style={exampleStyle}
     name="input-ex1"
-    autoComplete="input-ex1"
     type="text"
+    value={state['input-ex1-value']}
     placeholder="Standard text input (or alternates 'email', 'url', 'search')"
+    style={exampleStyle}
+    onChange={value => setState({ 'input-ex1-value': value })}
   />
   <Input
-    style={exampleStyle}
     name="input-ex2"
-    autoComplete="input-ex2"
     type="password"
+    value={state['input-ex2-value']}
     placeholder="Password input"
+    style={exampleStyle}
+    onChange={value => setState({ 'input-ex2-value': value })}
   />
   <Input
-    style={exampleStyle}
     name="input-ex3"
-    autoComplete="input-ex3"
     type="number"
+    value={state['input-ex3-value']}
     placeholder="Number input"
+    style={exampleStyle}
+    onChange={value => setState({ 'input-ex3-value': value })}
   />
   <Input
-    style={exampleStyle}
     name="input-ex4"
-    autoComplete="input-ex4"
     type="text"
+    value={state['input-ex4-value']}
     placeholder="Disabled input"
+    style={exampleStyle}
+    onChange={value => setState({ 'input-ex4-value': value })}
     disabled
   />
   <Input
-    style={exampleStyle}
     name="input-ex5"
-    autoComplete="input-ex5"
     type="multiline"
+    value={state['input-ex5-value']}
     placeholder="Multiline input"
+    style={exampleStyle}
+    onChange={value => setState({ 'input-ex5-value': value })}
   />
 </form>;
 ```
@@ -50,7 +55,14 @@ const exampleStyle = { marginBottom: 10 };
 Inputs are available in a "simple" visual variant, primarily used for in-site search boxes
 
 ```jsx
-<Input name="input-ex6" simple icon="search" placeholder="Search" />
+<Input
+  name="input-ex6"
+  value={state.value}
+  placeholder="Search"
+  icon="search"
+  simple
+  onChange={value => setState({ value })}
+/>
 ```
 
 ### Event handling
@@ -74,23 +86,29 @@ Optional leading and trailing icons may be added where needed
 const exampleStyle = { marginBottom: 10 };
 
 <div>
-  <Input
+  <Input  
     name="input-ex11"
-    style={exampleStyle}
+    value={state['input-ex11-value']}
     icon="search"
     placeholder="Search for stuff"
+    style={exampleStyle}
+    onChange={value => setState({ 'input-ex11-value': value })}
   />
   <Input
     name="input-ex12"
-    style={exampleStyle}
+    value={state['input-ex12-value']}
     icon="key"
     placeholder="Whatever this thing is, it's probably super secure!"
+    style={exampleStyle}
+    onChange={value => setState({ 'input-ex12-value': value })}
   />
   <Input
     name="input-ex13"
-    style={exampleStyle}
+    value={state['input-ex13-value']}
     trailingIcon="eye"
     placeholder="We will eventually use this for a masked input"
+    style={exampleStyle}
+    onChange={value => setState({ 'input-ex13-value': value })}
   />
 </div>;
 ```
