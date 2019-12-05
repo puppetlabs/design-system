@@ -1,10 +1,6 @@
 .rc-button-select {
   position: relative;
 
-  .rc-button-select-target {
-    flex: 1;
-  }
-
   .rc-menu-list {
     box-sizing: border-box;
     position: absolute;
@@ -14,6 +10,13 @@
   .rc-menu-list-inner {
     max-height: 150px;
   }
+}
+
+.rc-button-select-target-multiple.rc-button-select-target-selected {
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .rc-button-select-closed {

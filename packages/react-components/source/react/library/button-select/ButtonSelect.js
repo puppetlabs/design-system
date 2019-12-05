@@ -235,6 +235,7 @@ class ButtonSelect extends Component {
       weight,
       className,
       style,
+      value,
     } = this.props;
 
     return (
@@ -254,7 +255,10 @@ class ButtonSelect extends Component {
         }}
       >
         <Button
-          className="rc-button-select-target"
+          className={classNames('rc-button-select-target', {
+            'rc-button-select-target-multiple': multiple,
+            'rc-button-select-target-selected': value && value.length !== 0,
+          })}
           type={type}
           weight={weight}
           icon={icon}
