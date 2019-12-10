@@ -124,15 +124,14 @@ class ColumnHeader extends Component {
                 </span>
 
                 {sortable ? (
-                  <span
-                    className={classnames(
-                      {
+                  <span className="dg-column-header-icon-container">
+                    <Icon
+                      type="increment"
+                      size="medium"
+                      className={classnames('dg-column-header-icon-color', {
                         [direction]: dataKey === sortDataKey,
-                      },
-                      'dg-column-header-icon-container',
-                    )}
-                  >
-                    <Icon type="increment" size="medium" />
+                      })}
+                    />
                   </span>
                 ) : (
                   <div />

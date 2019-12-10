@@ -29,16 +29,13 @@
   outline: none;
 }
 
-.asc {
-  .dg-column-header-icon-up {
-    color: $puppet-b500;
-    outline: none;
+.dg-column-header-icon-color {
+  &.asc {
+    --up: $puppet-b500;
   }
-}
-.desc {
-  .dg-column-header-icon-down {
-    color: $puppet-b500;
-    outline: none;
+
+  &.desc {
+    --down: $puppet-b500;
   }
 }
 
