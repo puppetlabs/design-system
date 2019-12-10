@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { func, any, string, shape, bool, node, arrayOf } from 'prop-types';
 import classnames from 'classnames';
-import { Checkbox } from '@puppet/react-components';
+import { Checkbox, Icon } from '@puppet/react-components';
 
 const propTypes = {
   columns: arrayOf(
@@ -50,18 +50,25 @@ const defaultProps = {
   headerCheckState: false,
 };
 
-class ColumnHeader extends Component {
-  onClick(e, direction, dataKey) {
-    e.preventDefault();
-    const { columnHeaderCallBack } = this.props;
-    columnHeaderCallBack(direction, dataKey);
-  }
+const SORT_DIRECTION = { ASC: 'asc', DESC: 'desc' };
 
-  onClickToggle(e, direction, dataKey) {
+class ColumnHeader extends Component {
+  sortColumn = (e, dataKey) => {
     e.preventDefault();
-    const { columnHeaderCallBack } = this.props;
-    columnHeaderCallBack(direction, dataKey);
-  }
+    const { columnHeaderCallBack, sortedColumn } = this.props;
+
+    let dir;
+    if (sortedColumn.sortDataKey === dataKey) {
+      dir =
+        sortedColumn.direction === SORT_DIRECTION.ASC
+          ? SORT_DIRECTION.DESC
+          : SORT_DIRECTION.ASC;
+    } else {
+      dir = SORT_DIRECTION.ASC;
+    }
+
+    columnHeaderCallBack(dir, dataKey);
+  };
 
   render() {
     const {
@@ -100,9 +107,11 @@ class ColumnHeader extends Component {
                   'rc-table-header-cell',
                   `dg-table-header-${dataKey}`,
                   cellClassName,
+                  { 'dg-column-header-sortable': sortable === true },
                 )}
                 key={dataKey}
                 style={style}
+                onClick={e => this.sortColumn(e, dataKey)}
               >
                 <span
                   as="h6"
@@ -114,7 +123,7 @@ class ColumnHeader extends Component {
                   {label}
                 </span>
 
-                {sortable === true ? (
+                {sortable ? (
                   <span
                     className={classnames(
                       {
@@ -123,26 +132,7 @@ class ColumnHeader extends Component {
                       'dg-column-header-icon-container',
                     )}
                   >
-                    <div
-                      className="dg-column-header-icon-up"
-                      onClick={e => this.onClick(e, 'asc', dataKey)}
-                      onKeyPress={e => this.onClick(e, 'asc', dataKey)}
-                      size="large"
-                      role="button"
-                      tabIndex="-2"
-                    >
-                      ▲
-                    </div>
-                    <div
-                      className="dg-column-header-icon-down"
-                      onClick={e => this.onClick(e, 'desc', dataKey)}
-                      onKeyPress={e => this.onClick(e, 'desc', dataKey)}
-                      size="large"
-                      role="button"
-                      tabIndex="-1"
-                    >
-                      ▼
-                    </div>
+                    <Icon type="increment" size="medium" />
                   </span>
                 ) : (
                   <div />

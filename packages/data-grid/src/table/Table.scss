@@ -1,9 +1,5 @@
 @import '@puppet/sass-variables/_index';
 
-.rc-table-container {
-  overflow-x: auto;
-}
-
 .dg-empty-state-container {
   margin: auto;
   text-align: center;
@@ -22,19 +18,14 @@
   padding: 0;
 }
 
+.dg-column-header-sortable {
+  cursor: pointer;
+}
+
 .dg-column-header-icon-container {
   float: right;
   display: flex;
   flex-direction: column;
-  font-size: 7px;
-  outline: none;
-  cursor: pointer;
-}
-
-.dg-column-header-icon-up {
-  outline: none;
-}
-.dg-column-header-icon-down {
   outline: none;
 }
 
@@ -45,11 +36,14 @@
   }
 }
 .desc {
-  outline: none;
   .dg-column-header-icon-down {
     color: $puppet-b500;
     outline: none;
   }
+}
+
+.dg-table-header-checkbox {
+  width: 20px;
 }
 
 .dg-table-horizontal-scroll {
@@ -78,10 +72,6 @@
   }
 }
 
-.dg-table-header-checkbox {
-  width: 20px;
-}
-
 .dg-table {
   background-color: $puppet-white;
   border-collapse: collapse;
@@ -90,8 +80,7 @@
   width: 100%;
 }
 
-.dg-table-cell,
-.dg-table-header-cell {
+.dg-table-cell {
   position: relative;
 
   &:not(:first-child) {
@@ -107,21 +96,13 @@
     top: 0;
     width: 2px;
   }
-}
 
-.dg-table-header-cell {
-  @include puppet-type-h6(medium);
-  background-color: $puppet-n200;
-  padding: 11px 16px;
-  text-align: left;
-}
-
-.dg-table-cell {
   @include puppet-type-small();
   padding: 15px 16px;
   line-height: 18px;
 }
 
-tr {
+tr.dg-table-row,
+tr.rc-table-header {
   border-bottom: $puppet-common-border;
 }
