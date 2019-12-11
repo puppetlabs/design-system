@@ -165,7 +165,7 @@ class Table extends Component {
       >
         <table
           className={classNames(
-            'dg-table',
+            'rc-table',
             { 'rc-table-fixed': fixed },
             className,
           )}
@@ -186,7 +186,6 @@ class Table extends Component {
                 <tr
                   className={classNames(
                     'dg-table-row',
-                    `dg-table-row-${rowIndex}`,
                     this.classNameTypeManage(rowClassName, rowData, rowIndex),
                   )}
                   key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
@@ -198,12 +197,10 @@ class Table extends Component {
                         rowData,
                         rowIndex,
                       )}`}
+                      className="rc-table-cell"
                     >
                       <Checkbox
-                        className={classNames(
-                          'dg-table-cell',
-                          'dg-table-checkbox',
-                        )}
+                        className="dg-table-checkbox"
                         onChange={checked => onRowChecked(checked, rowData)}
                         checked={rowData.selected}
                         label=""
@@ -227,8 +224,7 @@ class Table extends Component {
                       <td
                         key={`${(rowIndex, dataKey)}`}
                         className={classNames(
-                          'dg-table-cell',
-                          `dg-table-cell-${dataKey}`,
+                          'rc-table-cell',
                           this.classNameTypeManage(
                             columnClassName,
                             dataKey,

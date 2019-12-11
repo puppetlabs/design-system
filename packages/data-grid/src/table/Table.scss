@@ -11,22 +11,16 @@
   }
 }
 
-.dg-column-header-label-active {
-  color: $puppet-b500;
-  width: fit-content;
-  margin: 0;
-  padding: 0;
-}
-
 .dg-column-header-sortable {
   cursor: pointer;
 }
 
+.dg-column-header-label-active {
+  color: $puppet-b500;
+}
+
 .dg-column-header-icon-container {
   float: right;
-  display: flex;
-  flex-direction: column;
-  outline: none;
 }
 
 .dg-column-header-icon-color {
@@ -39,8 +33,12 @@
   }
 }
 
-.dg-table-header-checkbox {
-  width: 20px;
+.dg-table-header-checkbox-container {
+  width: 16px;
+}
+
+.dg-table-header-checkbox > div, .dg-table-checkbox > div {
+  margin-right: 0;
 }
 
 .dg-table-horizontal-scroll {
@@ -67,39 +65,4 @@
     z-index: 2;
     background: #ccc;
   }
-}
-
-.dg-table {
-  background-color: $puppet-white;
-  border-collapse: collapse;
-  border-spacing: 0;
-  table-layout: auto;
-  width: 100%;
-}
-
-.dg-table-cell {
-  position: relative;
-
-  &:not(:first-child) {
-    padding-left: 18px;
-  }
-
-  &:not(:first-child)::before {
-    background-color: $puppet-white;
-    bottom: 0;
-    content: '';
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 2px;
-  }
-
-  @include puppet-type-small();
-  padding: 15px 16px;
-  line-height: 18px;
-}
-
-tr.dg-table-row,
-tr.rc-table-header {
-  border-bottom: $puppet-common-border;
 }

@@ -88,7 +88,7 @@ class ColumnHeader extends Component {
             <th
               className={classnames(
                 'rc-table-header-cell',
-                `dg-table-header-checkbox`,
+                `dg-table-header-checkbox-container`,
               )}
             >
               <Checkbox
@@ -96,19 +96,16 @@ class ColumnHeader extends Component {
                 checked={headerCheckState}
                 label=""
                 name=""
-                className="dg-table-header-checkbox-element"
+                className="dg-table-header-checkbox"
               />
             </th>
           ) : null}
           {columns.map(
             ({ label, dataKey, className: cellClassName, style }) => (
               <th
-                className={classnames(
-                  'rc-table-header-cell',
-                  `dg-table-header-${dataKey}`,
-                  cellClassName,
-                  { 'dg-column-header-sortable': sortable === true },
-                )}
+                className={classnames('rc-table-header-cell', cellClassName, {
+                  'dg-column-header-sortable': sortable === true,
+                })}
                 key={dataKey}
                 style={style}
                 onClick={e => this.sortColumn(e, dataKey)}
@@ -133,9 +130,7 @@ class ColumnHeader extends Component {
                       })}
                     />
                   </span>
-                ) : (
-                  <div />
-                )}
+                ) : null}
               </th>
             ),
           )}
