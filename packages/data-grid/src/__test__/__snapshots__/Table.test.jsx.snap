@@ -75,7 +75,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   fixed={false}
   fixedColumn={false}
   headerCheckState={false}
-  horizontalSroll={false}
+  horizontalScroll={false}
   onHeaderChecked={[Function]}
   onRowChecked={[Function]}
   onSort={[Function]}
@@ -94,7 +94,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     className=""
   >
     <table
-      className="dg-table"
+      className="rc-table"
       style={Object {}}
     >
       <ColumnHeader
@@ -135,8 +135,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             className="rc-table-header"
           >
             <th
-              className="rc-table-header-cell dg-table-header-eventType"
+              className="rc-table-header-cell"
               key="eventType"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              tabIndex={null}
             >
               <span
                 as="h6"
@@ -145,11 +148,13 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               >
                 Event Type
               </span>
-              <div />
             </th>
             <th
-              className="rc-table-header-cell dg-table-header-affectedDevices"
+              className="rc-table-header-cell"
               key="affectedDevices"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              tabIndex={null}
             >
               <span
                 as="h6"
@@ -158,11 +163,13 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               >
                 Affected Devices
               </span>
-              <div />
             </th>
             <th
-              className="rc-table-header-cell dg-table-header-detections"
+              className="rc-table-header-cell"
               key="detections"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              tabIndex={null}
             >
               <span
                 as="h6"
@@ -171,11 +178,13 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               >
                 Detections
               </span>
-              <div />
             </th>
             <th
-              className="rc-table-header-cell dg-table-header-Link"
+              className="rc-table-header-cell"
               key="Link"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              tabIndex={null}
             >
               <span
                 as="h6"
@@ -184,198 +193,197 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               >
                 Linked field
               </span>
-              <div />
             </th>
           </tr>
         </thead>
       </ColumnHeader>
       <tbody>
         <tr
-          className="dg-table-row dg-table-row-0"
+          className="dg-table-row"
           key="0"
         >
           <td
-            className="dg-table-cell dg-table-cell-eventType"
+            className="rc-table-cell"
             key="eventType"
           >
             Virus/Malware
           </td>
           <td
-            className="dg-table-cell dg-table-cell-affectedDevices"
+            className="rc-table-cell"
             key="affectedDevices"
           >
             20
           </td>
           <td
-            className="dg-table-cell dg-table-cell-detections"
+            className="rc-table-cell"
             key="detections"
           >
             634
           </td>
           <td
-            className="dg-table-cell dg-table-cell-Link"
+            className="rc-table-cell"
             key="Link"
           />
         </tr>
         <tr
-          className="dg-table-row dg-table-row-1"
+          className="dg-table-row"
           key="1"
         >
           <td
-            className="dg-table-cell dg-table-cell-eventType"
+            className="rc-table-cell"
             key="eventType"
           >
             Spyware/Grayware
           </td>
           <td
-            className="dg-table-cell dg-table-cell-affectedDevices"
+            className="rc-table-cell"
             key="affectedDevices"
           >
             20
           </td>
           <td
-            className="dg-table-cell dg-table-cell-detections"
+            className="rc-table-cell"
             key="detections"
           >
             634
           </td>
           <td
-            className="dg-table-cell dg-table-cell-Link"
+            className="rc-table-cell"
             key="Link"
           />
         </tr>
         <tr
-          className="dg-table-row dg-table-row-2"
+          className="dg-table-row"
           key="2"
         >
           <td
-            className="dg-table-cell dg-table-cell-eventType"
+            className="rc-table-cell"
             key="eventType"
           >
             URL Filtering
           </td>
           <td
-            className="dg-table-cell dg-table-cell-affectedDevices"
+            className="rc-table-cell"
             key="affectedDevices"
           >
             15
           </td>
           <td
-            className="dg-table-cell dg-table-cell-detections"
+            className="rc-table-cell"
             key="detections"
           >
             598
           </td>
           <td
-            className="dg-table-cell dg-table-cell-Link"
+            className="rc-table-cell"
             key="Link"
           />
         </tr>
         <tr
-          className="dg-table-row dg-table-row-3"
+          className="dg-table-row"
           key="3"
         >
           <td
-            className="dg-table-cell dg-table-cell-eventType"
+            className="rc-table-cell"
             key="eventType"
           >
             Web Reputation
           </td>
           <td
-            className="dg-table-cell dg-table-cell-affectedDevices"
+            className="rc-table-cell"
             key="affectedDevices"
           >
             15
           </td>
           <td
-            className="dg-table-cell dg-table-cell-detections"
+            className="rc-table-cell"
             key="detections"
           >
             598
           </td>
           <td
-            className="dg-table-cell dg-table-cell-Link"
+            className="rc-table-cell"
             key="Link"
           />
         </tr>
         <tr
-          className="dg-table-row dg-table-row-4"
+          className="dg-table-row"
           key="4"
         >
           <td
-            className="dg-table-cell dg-table-cell-eventType"
+            className="rc-table-cell"
             key="eventType"
           >
             Network Virus
           </td>
           <td
-            className="dg-table-cell dg-table-cell-affectedDevices"
+            className="rc-table-cell"
             key="affectedDevices"
           >
             15
           </td>
           <td
-            className="dg-table-cell dg-table-cell-detections"
+            className="rc-table-cell"
             key="detections"
           >
             497
           </td>
           <td
-            className="dg-table-cell dg-table-cell-Link"
+            className="rc-table-cell"
             key="Link"
           />
         </tr>
         <tr
-          className="dg-table-row dg-table-row-5"
+          className="dg-table-row"
           key="5"
         >
           <td
-            className="dg-table-cell dg-table-cell-eventType"
+            className="rc-table-cell"
             key="eventType"
           >
             Application Control
           </td>
           <td
-            className="dg-table-cell dg-table-cell-affectedDevices"
+            className="rc-table-cell"
             key="affectedDevices"
           >
             0
           </td>
           <td
-            className="dg-table-cell dg-table-cell-detections"
+            className="rc-table-cell"
             key="detections"
           >
             0
           </td>
           <td
-            className="dg-table-cell dg-table-cell-Link"
+            className="rc-table-cell"
             key="Link"
           />
         </tr>
         <tr
-          className="dg-table-row dg-table-row-6"
+          className="dg-table-row"
           key="6"
         >
           <td
-            className="dg-table-cell dg-table-cell-eventType"
+            className="rc-table-cell"
             key="eventType"
           >
             Application Control
           </td>
           <td
-            className="dg-table-cell dg-table-cell-affectedDevices"
+            className="rc-table-cell"
             key="affectedDevices"
           >
             0
           </td>
           <td
-            className="dg-table-cell dg-table-cell-detections"
+            className="rc-table-cell"
             key="detections"
           >
             0
           </td>
           <td
-            className="dg-table-cell dg-table-cell-Link"
+            className="rc-table-cell"
             key="Link"
           />
         </tr>
@@ -416,7 +424,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   fixed={false}
   fixedColumn={false}
   headerCheckState={false}
-  horizontalSroll={false}
+  horizontalScroll={false}
   onHeaderChecked={[Function]}
   onRowChecked={[Function]}
   onSort={[Function]}
@@ -435,7 +443,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     className=""
   >
     <table
-      className="dg-table"
+      className="rc-table"
       style={Object {}}
     >
       <ColumnHeader
@@ -476,8 +484,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
             className="rc-table-header"
           >
             <th
-              className="rc-table-header-cell dg-table-header-eventType"
+              className="rc-table-header-cell"
               key="eventType"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              tabIndex={null}
             >
               <span
                 as="h6"
@@ -486,11 +497,13 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
               >
                 Event Type
               </span>
-              <div />
             </th>
             <th
-              className="rc-table-header-cell dg-table-header-affectedDevices"
+              className="rc-table-header-cell"
               key="affectedDevices"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              tabIndex={null}
             >
               <span
                 as="h6"
@@ -499,11 +512,13 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
               >
                 Affected Devices
               </span>
-              <div />
             </th>
             <th
-              className="rc-table-header-cell dg-table-header-detections"
+              className="rc-table-header-cell"
               key="detections"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              tabIndex={null}
             >
               <span
                 as="h6"
@@ -512,11 +527,13 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
               >
                 Detections
               </span>
-              <div />
             </th>
             <th
-              className="rc-table-header-cell dg-table-header-Link"
+              className="rc-table-header-cell"
               key="Link"
+              onClick={[Function]}
+              onKeyPress={[Function]}
+              tabIndex={null}
             >
               <span
                 as="h6"
@@ -525,7 +542,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
               >
                 Linked field
               </span>
-              <div />
             </th>
           </tr>
         </thead>
