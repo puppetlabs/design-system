@@ -4,27 +4,27 @@ import { Text } from '@puppet/react-components';
 import './TableFooter.scss';
 
 const propTypes = {
-  /** Optional feature to display number of rows in table */
-  rowCount: PropTypes.shape({
-    /** Provide the number of rows displayed */
-    count: PropTypes.string,
-    /** Optional change label displayed after count. Current default "rows" */
-    label: PropTypes.string,
-  }),
+  /** Optional feature to display number of rows in table. Provide both the count and 'item' label in a string. */
+  rowCount: PropTypes.string,
+  /** Optional feature to display number of rows selected in table. Provide both the count and 'selected' label in a string. */
+  selectedRowCount: PropTypes.string,
   children: PropTypes.node,
 };
 
 const defaultProps = {
-  rowCount: {},
+  rowCount: null,
+  selectedRowCount: null,
   children: undefined,
 };
 
-function TableFooter({ children, rowCount }) {
+function TableFooter({ children, rowCount, selectedRowCount }) {
   return (
     <div className="dg-table-footer-container">
       {children === undefined ? (
         <Text as="h3" color="medium" className="dg-table-row-count">
-          {rowCount.count} {rowCount.label ? rowCount.label : null}
+          {rowCount || null}
+          {rowCount && selectedRowCount ? ' - ' : null}
+          {selectedRowCount || null}
         </Text>
       ) : (
         children
