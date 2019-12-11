@@ -1,5 +1,3 @@
-<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Toggle</small>
-
 ## Overview
 
 The Switch component is a lightly styled wrapper around an html checkbox input. It leaves most auxiliary functionality to the [FormField](#form) wrapper. We recommend that in most cases the Switch is used through the FormField component be used to ensure complete design consistency, but there may be some cases in which a pure Switch element is desired.

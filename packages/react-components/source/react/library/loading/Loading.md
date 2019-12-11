@@ -1,5 +1,3 @@
-<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Loader</small>
-
 ## Overview
 
 The loading component provides a general purpose spinner. It will automatically center itself within its containing element. This component also includes a loader of configurable size.

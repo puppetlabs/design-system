@@ -1,7 +1,5 @@
 ## Overview
 
-<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Button</small>
-
 Puppet products use a family of buttons, with each button intended for a different purpose. Buttons are different from links. They carry out a specified action when clicked, such as submitting a form, adding content to a list, or initiating edit functionality. Avoid using them to provide navigation.
 
 ### Microcopy

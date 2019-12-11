@@ -1,5 +1,3 @@
-<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Menu</small>
-
 ## Overview
 
 The ActionSelect component allows users to execute actions from a dropdown menu list appearing below a button element. It can be rendered with the full set of stylistic options available to the button component. It supports both imperative actions handled with click events and navigation actions with anchor tags.

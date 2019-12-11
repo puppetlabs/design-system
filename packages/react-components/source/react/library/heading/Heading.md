@@ -1,5 +1,3 @@
-<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Text</small>
-
 ## Overview
 
 The Heading component is another typographical element. It is related to the [Text component](#/React%20Components/Text), but it covers the text treatments that live outside of the body, small and tiny styles defined in the Text componenet.

@@ -1,5 +1,3 @@
-<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Icons</small>
-
 ## Overview
 
 Icons and logos are designed to have consistency in style and spacing. They are output as SVG elements and wrapped in components.
