@@ -21,7 +21,7 @@ function TableHeader({ children, rowCount, selectedRowCount }) {
   return (
     <div className="dg-table-header-container">
       {children === undefined ? (
-        <Text as="h5" color="medium" className="dg-table-row-count">
+        <Text color="medium" size="small" className="dg-table-row-count">
           {rowCount || null}
           {rowCount && selectedRowCount ? ' - ' : null}
           {selectedRowCount || null}

@@ -21,7 +21,7 @@ function TableFooter({ children, rowCount, selectedRowCount }) {
   return (
     <div className="dg-table-footer-container">
       {children === undefined ? (
-        <Text as="h3" color="medium" className="dg-table-row-count">
+        <Text color="medium" size="small" className="dg-table-row-count">
           {rowCount || null}
           {rowCount && selectedRowCount ? ' - ' : null}
           {selectedRowCount || null}

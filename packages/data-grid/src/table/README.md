@@ -510,7 +510,7 @@ const columns = [
 const rowCount = '7 runs';
 
 <div>
-  <Table.TableHeader rowCount="555 Nodes" />
+  <Table.TableHeader rowCount="555 nodes" />
   <Table data={data} columns={columns} />
   <Table.TableFooter rowCount={rowCount} />
 </div>;
