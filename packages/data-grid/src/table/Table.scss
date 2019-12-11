@@ -70,6 +70,14 @@
   margin-right: 0;
 }
 
+.dg-table-row-selected {
+  background-color: $puppet-b50;
+
+  .rc-table-cell::before {
+    width: 0;
+  }
+}
+
 /** Horizontal Scrolling **/
 
 .dg-table-horizontal-scroll {

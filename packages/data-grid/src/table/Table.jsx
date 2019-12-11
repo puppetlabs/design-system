@@ -187,6 +187,7 @@ class Table extends Component {
                   className={classNames(
                     'dg-table-row',
                     this.classNameTypeManage(rowClassName, rowData, rowIndex),
+                    { 'dg-table-row-selected': rowData.selected === true },
                   )}
                   key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
                 >
@@ -262,9 +263,7 @@ class Table extends Component {
               {emptyStateMessage}
             </Text>
           </div>
-        ) : (
-          <div />
-        )}
+        ) : null}
       </div>
     );
   }

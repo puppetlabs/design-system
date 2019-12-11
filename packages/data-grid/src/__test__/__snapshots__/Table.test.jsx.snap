@@ -389,7 +389,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         </tr>
       </tbody>
     </table>
-    <div />
   </div>
 </Table>
 `;
