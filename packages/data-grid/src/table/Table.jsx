@@ -187,7 +187,10 @@ class Table extends Component {
                   className={classNames(
                     'dg-table-row',
                     this.classNameTypeManage(rowClassName, rowData, rowIndex),
-                    { 'dg-table-row-selected': rowData.selected === true },
+                    {
+                      'dg-table-row-selected':
+                        selectable && rowData.selected === true,
+                    },
                   )}
                   key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
                 >

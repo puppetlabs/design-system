@@ -108,7 +108,7 @@ const columns = [
 ];
 
 <div>
-  <Table.TableHeader rowCount={{ count: 0, label: 'Nodes' }} />
+  <Table.TableHeader rowCount="0 Nodes" />
   <Table data={data} columns={columns} />
 </div>;
 ```
@@ -133,7 +133,7 @@ const emptyStateHeader = 'Connection Failed';
 const emptyStateMessage = 'Reconnect to service';
 
 <div>
-  <Table.TableHeader rowCount={{ count: 0, label: 'Nodes' }} />
+  <Table.TableHeader rowCount="0 Nodes" />
   <Table
     data={data}
     columns={columns}
@@ -434,7 +434,7 @@ class StatefulParent extends React.Component {
 
 ### Row Count
 
-To render a basic count and text header or footer an object containing a count and label can be provided to the 'rowCount' prop. If the 'rowCount' prop doesn't suit the needs of your project HTML can be passed as a child to the header and footer components.
+To render a basic count and text header or footer a string containing a count and label can be provided to the 'rowCount' prop. If the 'rowCount' prop doesn't suit the needs of your project HTML can be passed as a child to the header and footer components.
 
 ```jsx
 import TableHeader from '../tableHeader/TableHeader';
@@ -507,10 +507,10 @@ const columns = [
   { label: 'Linked field', dataKey: 'Link' },
 ];
 
-const rowCount = { count: '7', label: 'runs' };
+const rowCount = '7 runs';
 
 <div>
-  <Table.TableHeader rowCount={{ count: 555, label: 'Nodes' }} />
+  <Table.TableHeader rowCount="555 Nodes" />
   <Table data={data} columns={columns} />
   <Table.TableFooter rowCount={rowCount} />
 </div>;
