@@ -15,7 +15,7 @@ const defaultProps = {
  * The card actions menu is just an actionsMenu with some defaults set
  */
 const CardActionSelect = ({ className, ...rest }) => (
-  <div className={classNames('rc-card-action-select', className)}>
+  <div className={classNames('rc-card-actions', className)}>
     <ActionSelect
       icon="kebab"
       type="transparent"

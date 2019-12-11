@@ -16,7 +16,7 @@ const defaultProps = {
  */
 const CardTitle = ({ className, ...rest }) => (
   <Heading
-    as="h3"
+    as="h4"
     className={classNames('rc-card-title', className)}
     {...rest}
   />
