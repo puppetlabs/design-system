@@ -109,6 +109,10 @@ class ColumnHeader extends Component {
                 key={dataKey}
                 style={style}
                 onClick={e => this.sortColumn(e, dataKey)}
+                onKeyPress={e =>
+                  e.key === 'Enter' ? this.sortColumn(e, dataKey) : null
+                }
+                tabIndex={sortable ? 0 : null}
               >
                 <span
                   as="h6"

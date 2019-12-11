@@ -17,6 +17,30 @@
   cursor: pointer;
 }
 
+.dg-column-header-sortable:hover {
+  color: $puppet-b400;
+}
+
+.dg-column-header-sortable:focus {
+  outline: 0;
+  border: 0;
+  box-shadow: $puppet-common-focus-outline-inset;
+
+  &::before {
+    width: 0;
+  }
+}
+
+.dg-column-header-sortable:active {
+  border: 0;
+  box-shadow: $puppet-common-focus-outline-inset;
+  color: $puppet-b600;
+
+  &::before {
+    width: 0;
+  }
+}
+
 .dg-column-header-label-active {
   color: $puppet-b500;
 }
