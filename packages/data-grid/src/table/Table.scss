@@ -11,6 +11,8 @@
   }
 }
 
+/** Column Sorting **/
+
 .dg-column-header-sortable {
   cursor: pointer;
 }
@@ -33,6 +35,8 @@
   }
 }
 
+/** Row Selection **/
+
 .dg-table-header-checkbox-container {
   width: 16px;
 }
@@ -41,12 +45,13 @@
   margin-right: 0;
 }
 
+/** Horizontal Scrolling **/
+
 .dg-table-horizontal-scroll {
-  margin: auto;
-  overflow: auto;
+  overflow-x: scroll;
 }
 
-.dg-table-fixed-column table {
+.dg-table-fixed-column {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
@@ -63,6 +68,6 @@
     position: sticky;
     left: 0;
     z-index: 2;
-    background: #ccc;
+    background-color: $puppet-n200;
   }
 }

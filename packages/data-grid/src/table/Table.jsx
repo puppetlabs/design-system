@@ -57,7 +57,7 @@ const propTypes = {
   onSort: func,
   style: shape({}),
   /** Optional boolean to cause horizontal scrolling when table extends past the container */
-  horizontalSroll: bool,
+  horizontalScroll: bool,
   /** Optional boolean to cause the first column to be fixed when horizontalScrool is true */
   fixedColumn: bool,
   /** Optional string to provider header which is visable when no data is available */
@@ -87,7 +87,7 @@ const defaultProps = {
   onSort: () => {},
   style: {},
   sortedColumn: { direction: '', sortDataKey: '' },
-  horizontalSroll: false,
+  horizontalScroll: false,
   fixedColumn: false,
   emptyStateHeader: 'No data available',
   emptyStateMessage: 'Prompt to action or solution',
@@ -143,7 +143,7 @@ class Table extends Component {
       sortable,
       sortedColumn,
       fixedColumn,
-      horizontalSroll,
+      horizontalScroll,
       emptyStateHeader,
       emptyStateMessage,
       rowClassName,
@@ -158,10 +158,10 @@ class Table extends Component {
 
     return (
       <div
-        className={classNames(
-          { 'rc-table-fixed-column': fixedColumn },
-          { 'rc-table-horizontal-scroll': horizontalSroll },
-        )}
+        className={classNames({
+          'dg-table-horizontal-scroll': horizontalScroll,
+          'dg-table-fixed-column': fixedColumn,
+        })}
       >
         <table
           className={classNames(
