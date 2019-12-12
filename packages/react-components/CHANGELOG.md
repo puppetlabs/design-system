@@ -1,3 +1,10 @@
+# Unreleased
+
+- [Sidebar] Add `profileIcon` prop to Sidebar.Footer for custom profile icons or images
+- [Sidebar] Make `version` prop optional in Sidebar.Footer
+- [Docs] Add example of using a custom SVG in the Icon component <small>by [@rhyza]</small>
+- Update CODEOWNERS file to use GitHub team instead of usernames <small>by [@vine77]</small>
+
 # 5.10.0 (2019-11-22)
 
 - [Code] Add Code component [#176](https://github.com/puppetlabs/design-system/pull/176) by [@melcherry98](https://github.com/melcherry98)
