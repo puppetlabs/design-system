@@ -4,12 +4,19 @@ import PropTypes from 'prop-types';
 import { Button, Text } from '@puppet/react-components';
 
 const propTypes = {
+  /** Optional feature to display number of items currently displayed in table. Usually formatted as `${currentItem - itemsPerPage + 1} - ${currentItem} of ${totalNumItems} items.` */
   paginationCountText: PropTypes.string,
+  /** Current page number. */
   currentPage: PropTypes.number,
+  /** Total number of pages. */
   pageCount: PropTypes.number,
+  /** Function that updates the current page to the page the user clicks. Takes new page as an argument. */
   onClickHandler: PropTypes.func.isRequired,
+  /** The number of nearest neighbors of the currently selected page that are shown in the numbres list. */
   delta: PropTypes.number,
+  /** Disables previous page arrow if true. */
   disableDescArrow: PropTypes.bool,
+  /** Disables next page arrow if true. */
   disableAscArrow: PropTypes.bool,
 };
 
