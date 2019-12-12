@@ -25,20 +25,16 @@ const defaultProps = {
 
 class TablePageSelector extends Component {
   // takes current page and total number of pages and returns a new array with button values
-  pagination = (c, m, d) => {
-    const current = c;
-    const last = m;
-    const delta = d;
+  pagination = (current, last, delta) => {
     const left = current - delta;
-    const right = current + delta + 1;
-    const range = [];
+    const right = current + delta;
+    const range = []; // page numbers to be displayed
     const rangeWithDots = [];
     let l = 0;
 
     for (let i = 1; i <= last; i += 1) {
-      if (i === 1 || i === last || (i >= left && i < right)) {
+      if (i === 1 || i === last || (i >= left && i <= right)) {
         range.push(i);
-        // i= numbers to be displayed
       }
     }
     // eslint-disable-next-line
@@ -51,7 +47,6 @@ class TablePageSelector extends Component {
           rangeWithDots.push('...');
         }
       }
-
       rangeWithDots.push(i);
 
       l = i;
@@ -89,6 +84,7 @@ class TablePageSelector extends Component {
               <Button
                 type={i === currentPage ? 'primary' : 'transparent'}
                 key={(i, index)}
+                disabled={i === '...'}
                 onClick={() => updatePage(i)}
               >
                 {i}
