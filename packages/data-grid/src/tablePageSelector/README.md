@@ -36,16 +36,10 @@ When the number of pages is unknown then a Page navigation implementation can be
 
 ```jsx
 const pageSelectFunc = newPage => {
-  // sortFunc will return direction and dataKey on every sort action
-  // This information can be used to carryout a sorting logic on your data and rerender the table
+  // sortFunc will return dataKey on every sort action
+  // This information can be used to carryout a sorting logic on your data and re-render the table
   console.log('newPage to be rendered ', newPage);
 };
 
 <TablePageSelector onClickHandler={pageSelectFunc} />;
-```
-
-When page limits are reached or navigation is unavilable it is best practice to disable the arrow buttons
-
-```jsx
-<TablePageSelector disableDescArrow disableAscArrow />
 ```

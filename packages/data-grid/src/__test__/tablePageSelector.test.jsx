@@ -10,7 +10,7 @@ const wrapper = mount(
     currentPage={1}
     pageCount={4}
     delta={1}
-    onClickHandler={() => {}}
+    updatePage={() => {}}
   />,
 );
 const wrapper2 = mount(
@@ -18,7 +18,7 @@ const wrapper2 = mount(
     currentPage={2}
     pageCount={7}
     delta={1}
-    onClickHandler={() => {}}
+    updatePage={() => {}}
   />,
 );
 const wrapper3 = mount(
@@ -26,7 +26,7 @@ const wrapper3 = mount(
     currentPage={3}
     pageCount={7}
     delta={1}
-    onClickHandler={() => {}}
+    updatePage={() => {}}
   />,
 );
 const wrapper4 = mount(
@@ -34,7 +34,7 @@ const wrapper4 = mount(
     currentPage={4}
     pageCount={7}
     delta={1}
-    onClickHandler={() => {}}
+    updatePage={() => {}}
   />,
 );
 const wrapper5 = mount(
@@ -42,7 +42,7 @@ const wrapper5 = mount(
     currentPage={11}
     pageCount={20}
     delta={1}
-    onClickHandler={() => {}}
+    updatePage={() => {}}
   />,
 );
 const wrapper6 = mount(
@@ -50,7 +50,7 @@ const wrapper6 = mount(
     currentPage={5}
     pageCount={7}
     delta={1}
-    onClickHandler={() => {}}
+    updatePage={() => {}}
   />,
 );
 const wrapper7 = mount(
@@ -58,7 +58,7 @@ const wrapper7 = mount(
     currentPage={6}
     pageCount={7}
     delta={1}
-    onClickHandler={() => {}}
+    updatePage={() => {}}
   />,
 );
 const wrapper8 = mount(
@@ -66,7 +66,7 @@ const wrapper8 = mount(
     currentPage={7}
     pageCount={7}
     delta={1}
-    onClickHandler={() => {}}
+    updatePage={() => {}}
   />,
 );
 const mockFunction = jest.fn();
@@ -75,7 +75,7 @@ const wrapper9 = mount(
     currentPage={7}
     pageCount={7}
     delta={2}
-    onClickHandler={mockFunction}
+    updatePage={mockFunction}
   />,
 );
 
@@ -119,37 +119,16 @@ describe('Pagination Navigation', () => {
       .last()
       .simulate('click');
 
-    expect(mockFunction.mock.calls[0][0]).toBe('PreviousPage');
+    expect(mockFunction.mock.calls[0][0]).toBe(6);
     expect(mockFunction.mock.calls[1][0]).toBe(5);
-    expect(mockFunction.mock.calls[2][0]).toBe('NextPage');
   });
 });
 
 describe('Page Navigation', () => {
-  const disbaledMock = jest.fn();
-  const wrapper10 = mount(
-    <TablePageSelector
-      onClickHandler={() => {}}
-      disableDescArrow
-      disableAscArrow
-    />,
-  );
+  const wrapper10 = mount(<TablePageSelector updatePage={() => {}} />);
 
   test('Check only arrow render', () => {
     expect(wrapper10).toMatchSnapshot();
     expect(wrapper10.findWhere(n => n.type() === 'button')).toHaveLength(2);
-  });
-  test('Arrows disable when props are true', () => {
-    wrapper10
-      .find('button')
-      .first()
-      .simulate('click');
-
-    wrapper10
-      .find('button')
-      .last()
-      .simulate('click');
-
-    expect(disbaledMock).not.toHaveBeenCalled();
   });
 });

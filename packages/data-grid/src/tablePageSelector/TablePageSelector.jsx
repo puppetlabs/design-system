@@ -68,9 +68,13 @@ class TablePageSelector extends Component {
 
     return (
       <>
-        <Text color="medium" size="small" className="dg-table-row-count">
-          {paginationCountText || null}
-        </Text>
+        {paginationCountText ? (
+          <Text color="medium" size="small" className="dg-table-row-count">
+            {paginationCountText}
+          </Text>
+        ) : (
+          <div />
+        )}
         <div className="rc-page-selector-container">
           <Button
             className="rc-page-selector-button"

@@ -518,7 +518,7 @@ const rowCount = '7 runs';
 
 ### Custom Data Paths
 
-When possible it is best for a user not to have to process there data before supplying it to the data grid component. Therefore data paths can be supplied to the table column component to pull information out of your nested data objects.
+When possible, it is best for a user to not have to process their data before supplying it to the data grid component. Therefore data paths can be supplied to the table column component to pull information out of your nested data objects.
 
 ```jsx
 const data2 = [
@@ -546,7 +546,7 @@ const columns2 = [
 
 ### Selection column
 
-Should your data grid component support an users action within your project then the selectable feature can be used. By passing the 'selectable' prop a column of checkboxes will appear. If the 'selected' property is passed to your data objects then the checkboxes will render checked. When a user clicks a rows checkbox an 'onRowSelected' is fired and the checked value and the row which was clicked is returned. When a user clicks the headers checkbox an 'onHeaderSelected' is fired and the checked value is returned. To control the state of the headers checkbox use the 'headerCheckState' prop.
+Should your data grid component support a user action within your project then the selectable feature can be used. By passing the 'selectable' prop a column of checkboxes will appear. If the 'selected' property is passed to your data objects, then the checkboxes will render checked. When a user clicks a rows checkbox an 'onRowSelected' is fired and the checked value and the row which was clicked is returned. When a user clicks the headers checkbox an 'onHeaderSelected' is fired and the checked value is returned. To control the state of the headers checkbox use the 'headerCheckState' prop.
 
 ```jsx
 import { Link } from '@puppet/react-components';
@@ -676,13 +676,12 @@ class StatefulParent extends React.Component {
 
 ### Pagination table
 
-Pagination is a simple navigation method that lets you split a huge amount of content within your data grid into smaller parts. The spliting up of data helps the user from becoming overwhelmed in information and to help the performance of the browser. The data grid does not paginate the data itself but provides the means to display your paginated data. Your server will need to provide you with broken down data, that data's page number, the total number of pages and the number of rows on each page. With this information a paginated table can be created like the example below.
+Pagination is a simple navigation method that lets you split a huge amount of content within your data grid into smaller parts. The splitting up of data helps the user from becoming overwhelmed in information and to help the performance of the browser. The data grid does not paginate the data itself but provides the means to display your paginated data. Your server will need to provide you with broken down data, that data's page number, the total number of pages and the number of rows on each page. With this information a paginated table can be created like the example below.
 
 ```jsx
 import { Link, Heading } from '@puppet/react-components';
 import makeData from './utils.jsx';
 import { TablePageSelector, TableFooter } from '../index';
-// import TableFooter from '../index';
 
 const data = [
   {
@@ -761,8 +760,6 @@ class StatefulParent extends React.Component {
   }
 
   pageSelectFunc(newPage) {
-    // sortFunc will return direction and dataKey on every sort action
-    // This information can be used to carryout a sorting logic on your data and re-render the table
     const { CurrentPage } = this.state;
     this.setState({ CurrentPage: newPage });
   }
