@@ -75,7 +75,7 @@ $puppet-sidebar-footer-meta-icon: 32px;
   @include rc-button-reset();
   align-items: center;
   background: $puppet-sidebar-logo-bg;
-  border: $puppet-sidebar-item-border-focus;
+  box-sizing: border-box;
   display: flex;
   height: $puppet-sidebar-logo-height;
   overflow: hidden;
