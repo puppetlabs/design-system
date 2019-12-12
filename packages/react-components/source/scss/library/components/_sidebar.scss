@@ -301,6 +301,12 @@ $puppet-sidebar-footer-meta-icon: 32px;
   .rc-icon {
     fill: $puppet-sidebar-footer-bg;
   }
+
+  * {
+    border-radius: 100px;
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .rc-sidebar-footer-meta-username,
