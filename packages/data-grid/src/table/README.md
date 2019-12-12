@@ -764,16 +764,7 @@ class StatefulParent extends React.Component {
     // sortFunc will return direction and dataKey on every sort action
     // This information can be used to carryout a sorting logic on your data and re-render the table
     const { CurrentPage } = this.state;
-    if (typeof newPage === 'number') {
-      this.setState({ CurrentPage: newPage });
-    } else if (typeof newPage === 'string') {
-      if (newPage === 'PreviousPage' && CurrentPage !== 1) {
-        this.setState({ CurrentPage: CurrentPage - 1 });
-      }
-      if (newPage === 'NextPage' && CurrentPage !== 40) {
-        this.setState({ CurrentPage: CurrentPage + 1 });
-      }
-    }
+    this.setState({ CurrentPage: newPage });
   }
 
   breakIntoMultiplePages(originalArray, pageSize) {
@@ -803,7 +794,7 @@ class StatefulParent extends React.Component {
             paginationCountText={tableFooterText}
             currentPage={CurrentPage}
             pageCount={PageCount}
-            onClickHandler={this.pageSelectFunc}
+            updatePage={this.pageSelectFunc}
           />
         </TableFooter>
       </div>
