@@ -108,7 +108,7 @@ const columns = [
 ];
 
 <div>
-  <Table.TableHeader rowCount="0 Nodes" />
+  <Table.TableHeader rowCountText="0 nodes" />
   <Table data={data} columns={columns} />
 </div>;
 ```
@@ -133,7 +133,7 @@ const emptyStateHeader = 'Connection Failed';
 const emptyStateMessage = 'Reconnect to service';
 
 <div>
-  <Table.TableHeader rowCount="0 Nodes" />
+  <Table.TableHeader rowCountText="0 nodes" />
   <Table
     data={data}
     columns={columns}
@@ -510,9 +510,9 @@ const columns = [
 const rowCount = '7 runs';
 
 <div>
-  <Table.TableHeader rowCount="555 nodes" />
+  <Table.TableHeader rowCountText="555 nodes" />
   <Table data={data} columns={columns} />
-  <Table.TableFooter rowCount={rowCount} />
+  <Table.TableFooter rowCountText={rowCount} />
 </div>;
 ```
 
@@ -762,7 +762,7 @@ class StatefulParent extends React.Component {
 
   pageSelectFunc(newPage) {
     // sortFunc will return direction and dataKey on every sort action
-    // This information can be used to carryout a sorting logic on your data and rerender the table
+    // This information can be used to carryout a sorting logic on your data and re-render the table
     const { CurrentPage } = this.state;
     if (typeof newPage === 'number') {
       this.setState({ CurrentPage: newPage });
