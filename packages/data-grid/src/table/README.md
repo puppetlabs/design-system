@@ -799,20 +799,12 @@ class StatefulParent extends React.Component {
       <div>
         <Table data={Pages.arrayOfArrays[renderPages]} columns={columns} />
         <TableFooter>
-          <Heading
-            as="h4"
-            color="medium"
-            className="story-pagination-footer-text"
-          >
-            {tableFooterText}
-          </Heading>
-          <div className="story-pagination-footer-selector">
-            <TablePageSelector
-              currentPage={CurrentPage}
-              pageCount={PageCount}
-              onClickHandler={this.pageSelectFunc}
-            />
-          </div>
+          <TablePageSelector
+            paginationCountText={tableFooterText}
+            currentPage={CurrentPage}
+            pageCount={PageCount}
+            onClickHandler={this.pageSelectFunc}
+          />
         </TableFooter>
       </div>
     );

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import './TablePageSelector.scss';
-import { Button } from '@puppet/react-components';
+import { Button, Text } from '@puppet/react-components';
 
 const propTypes = {
+  paginationCountText: PropTypes.string,
   currentPage: PropTypes.number,
   pageCount: PropTypes.number,
   onClickHandler: PropTypes.func.isRequired,
@@ -13,6 +14,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  paginationCountText: null,
   currentPage: undefined,
   pageCount: undefined,
   delta: 1,
@@ -90,6 +92,7 @@ class TablePageSelector extends Component {
 
   render() {
     const {
+      paginationCountText,
       pageCount,
       currentPage,
       onClickHandler,
@@ -100,47 +103,54 @@ class TablePageSelector extends Component {
     const display = this.pagination(currentPage, pageCount, delta);
 
     return (
-      <div className="rc-page-selector-container">
-        <Button
-          className="rc-page-select-icon-desc"
-          type="transparent"
-          disabled={disableDescArrow}
-          onClick={e => this.changePage(e, onClickHandler, currentPage, 'desc')}
-        >
-          {'<'}
-        </Button>
-        {display.map((i, index) => {
-          return (
-            <Button
-              type={i === currentPage ? 'primary' : 'transparent'}
-              key={(i, index)}
-              onClick={e =>
-                this.changePage(e, onClickHandler, currentPage, null, i)
-              }
-            >
-              {i}
-            </Button>
-          );
-        })}
-        <Button
-          className="rc-page-select-icon-asc"
-          type="transparent"
-          disabled={disableAscArrow}
-          onClick={e =>
-            this.changePage(
-              e,
-              onClickHandler,
-              currentPage,
-              'asc',
-              null,
-              null,
-              pageCount,
-            )
-          }
-        >
-          {'>'}
-        </Button>
-      </div>
+      <>
+        <Text color="medium" size="small" className="dg-table-row-count">
+          {paginationCountText || null}
+        </Text>
+        <div className="rc-page-selector-container">
+          <Button
+            className="rc-page-select-icon-desc"
+            type="transparent"
+            disabled={disableDescArrow}
+            onClick={e =>
+              this.changePage(e, onClickHandler, currentPage, 'desc')
+            }
+          >
+            {'<'}
+          </Button>
+          {display.map((i, index) => {
+            return (
+              <Button
+                type={i === currentPage ? 'primary' : 'transparent'}
+                key={(i, index)}
+                onClick={e =>
+                  this.changePage(e, onClickHandler, currentPage, null, i)
+                }
+              >
+                {i}
+              </Button>
+            );
+          })}
+          <Button
+            className="rc-page-select-icon-asc"
+            type="transparent"
+            disabled={disableAscArrow}
+            onClick={e =>
+              this.changePage(
+                e,
+                onClickHandler,
+                currentPage,
+                'asc',
+                null,
+                null,
+                pageCount,
+              )
+            }
+          >
+            {'>'}
+          </Button>
+        </div>
+      </>
     );
   }
 }
