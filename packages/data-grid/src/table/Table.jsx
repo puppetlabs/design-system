@@ -14,9 +14,10 @@ import { get } from 'lodash';
 import { Heading, Checkbox, Text } from '@puppet/react-components';
 
 import ColumnHeader from './ColumnHeader';
-import './Table.scss';
 import TableHeader from '../tableHeader/TableHeader';
 import TableFooter from '../tableFooter/TableFooter';
+
+import './Table.scss';
 
 const propTypes = {
   /** Table data. Must be an array of objects */

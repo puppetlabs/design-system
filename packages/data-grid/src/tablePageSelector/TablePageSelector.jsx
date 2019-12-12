@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import './TablePageSelector.scss';
-import { Button, Icon, Text } from '@puppet/react-components';
+import { Button, Text } from '@puppet/react-components';
+
+import './TablePageSelector.scss';
 
 const propTypes = {
   /** Optional feature to display number of items currently displayed in table. Usually formatted as `${currentItem - itemsPerPage + 1} - ${currentItem} of ${totalNumItems} items.` */
@@ -72,16 +73,16 @@ class TablePageSelector extends Component {
         </Text>
         <div className="rc-page-selector-container">
           <Button
-            className="rc-page-select-icon-desc"
+            className="rc-page-selector-button"
             type="transparent"
+            icon="chevron-left"
             disabled={currentPage === 1}
             onClick={() => updatePage(currentPage - 1)}
-          >
-            <Icon type="chevron-left" size="medium" />
-          </Button>
+          />
           {display.map((i, index) => {
             return (
               <Button
+                className="rc-page-selector-button"
                 type={i === currentPage ? 'primary' : 'transparent'}
                 key={(i, index)}
                 disabled={i === '...'}
@@ -92,13 +93,12 @@ class TablePageSelector extends Component {
             );
           })}
           <Button
-            className="rc-page-select-icon-asc"
+            className="rc-page-selector-button"
             type="transparent"
+            icon="chevron-right"
             disabled={currentPage === pageCount}
             onClick={() => updatePage(currentPage + 1)}
-          >
-            <Icon type="chevron-right" size="medium" />
-          </Button>
+          />
         </div>
       </>
     );

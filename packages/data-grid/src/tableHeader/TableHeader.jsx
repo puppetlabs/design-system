@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from '@puppet/react-components';
+
 import './TableHeader.scss';
 
 const propTypes = {
