@@ -1,5 +1,7 @@
 # Unreleased
 
+# 5.11.0 (2019-12-13)
+
 - [Sidebar] Add `profileIcon` prop to Sidebar.Footer for custom profile icons or images by [@jilliankeenan](https://github.com/jilliankeenan)
 - [Sidebar] Make `version` prop optional in Sidebar.Footer by [@jilliankeenan](https://github.com/jilliankeenan)
 - [Sidebar] Fix padding on `Sidebar.Header` when it has an `as` prop by [@vine77](https://github.com/vine77)
