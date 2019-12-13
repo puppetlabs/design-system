@@ -170,8 +170,15 @@ class ButtonSelect extends Component {
   getButtonLabel() {
     const { placeholder, multiple, options, value } = this.props;
 
-    if (multiple || !value) {
+    if (!value || value.length === 0) {
       return placeholder;
+    }
+    if (multiple) {
+      const selectedOptions = options
+        .filter(option => value.includes(option.value))
+        .map(option => option.selectedLabel || option.label);
+
+      return selectedOptions.join(', ');
     }
 
     const selectedOption = options.find(option => option.value === value);
@@ -228,6 +235,7 @@ class ButtonSelect extends Component {
       weight,
       className,
       style,
+      value,
     } = this.props;
 
     return (
@@ -247,7 +255,10 @@ class ButtonSelect extends Component {
         }}
       >
         <Button
-          className="rc-button-select-target"
+          className={classNames('rc-button-select-target', {
+            'rc-button-select-target-multiple': multiple,
+            'rc-button-select-target-selected': value && value.length !== 0,
+          })}
           type={type}
           weight={weight}
           icon={icon}

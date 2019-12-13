@@ -127,7 +127,6 @@ const style = { display: 'inline-block', margin: 10 };
 
 <div>
   <ButtonSelect
-    type="tertiary"
     multiple
     options={options}
     placeholder="Select multiple things"
@@ -157,6 +156,10 @@ const options = [
   { value: 'four', label: 'Four' },
   { value: 'five', label: 'Five' },
   { value: 'six', label: 'Six' },
+  { value: 'seven', label: 'Seven' },
+  { value: 'eight', label: 'Eight' },
+  { value: 'nine', label: 'Nine' },
+  { value: 'ten', label: 'Ten' },
 ];
 
 const style = { display: 'inline-block', margin: 10 };
