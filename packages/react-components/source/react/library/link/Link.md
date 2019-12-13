@@ -1,5 +1,3 @@
-<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Button / 2 Action</small>
-
 ## Overview
 
 The Link component encapsulates link styling but allows rendering of custom html elements.

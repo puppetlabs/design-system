@@ -31,10 +31,6 @@ const defaultProps = {
   children: null,
 };
 
-/**
- * `Modal` renders content in an accessible dialog box above the main content of
- * a page
- */
 class Modal extends Component {
   constructor(props) {
     super(props);

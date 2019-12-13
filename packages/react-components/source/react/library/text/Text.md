@@ -1,5 +1,3 @@
-<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Text</small>
-
 ## Overview
 
 The text component is a foundational element that provides an encapsulated way to use typography, consistent with design system rules. Together the `size` and `color` props determine the rendered typographical variant.

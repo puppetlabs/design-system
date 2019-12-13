@@ -1,6 +1,3 @@
-<small class="rsg--pathline-29">Sketch symbol: puppet-ui-library / Text</small>
-</br>_(Include the file path for the sketch symbol provided in the [Google sheet].)_
-
 ## Overview
 
 This section should contain the description and intent of the component. This is generally a combination of the styleguide docs and API docs. Make sure to call out states or anything to look out for in the sections below. Reference the [Button](#/React%20Components/Button) component as an example.
