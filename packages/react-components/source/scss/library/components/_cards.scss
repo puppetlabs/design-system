@@ -141,19 +141,14 @@ button.rc-card,
 }
 /* stylelint-enable */
 
-.rc-card-action-select {
-  position: absolute;
-  right: 17px;
-  top: 17px;
-}
-
 .rc-card-header {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
 
-  .rc-card-action-select {
-    position: static;
+  .rc-card-actions {
+    margin-right: -4px;
+    margin-top: -4px;
   }
 
   > * {

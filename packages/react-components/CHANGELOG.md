@@ -4,6 +4,8 @@
 - [Sidebar] Make `version` prop optional in Sidebar.Footer by [@jilliankeenan](https://github.com/jilliankeenan)
 - [Sidebar] Fix padding on `Sidebar.Header` when it has an `as` prop by [@vine77](https://github.com/vine77)
 - [ButtonSelect] Show selected items in multiselect button by [@vine77](https://github.com/vine77)
+- [Card] Decrease font-size in Card.Title from h3 to h4 (24px to 18px) by [@vine77](https://github.com/vine77)
+- [Card] Move Card.Actions 4px closer to the top and left in Card by [@vine77](https://github.com/vine77)
 - [Docs] Add example of using a custom SVG in the Icon component by [@rhyza](https://github.com/rhyza)
 - [Docs] Update Sidebar documentation by [@vine77](https://github.com/vine77)
 - Update CODEOWNERS file to use GitHub team instead of usernames by [@vine77](https://github.com/vine77)
