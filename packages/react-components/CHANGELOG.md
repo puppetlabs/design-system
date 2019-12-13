@@ -1,9 +1,10 @@
 # Unreleased
 
-- [Sidebar] Add `profileIcon` prop to Sidebar.Footer for custom profile icons or images
-- [Sidebar] Make `version` prop optional in Sidebar.Footer
-- [Docs] Add example of using a custom SVG in the Icon component <small>by [@rhyza]</small>
-- Update CODEOWNERS file to use GitHub team instead of usernames <small>by [@vine77]</small>
+- [Sidebar] Add `profileIcon` prop to Sidebar.Footer for custom profile icons or images by [@jilliankeenan](https://github.com/jilliankeenan)
+- [Sidebar] Make `version` prop optional in Sidebar.Footer by [@jilliankeenan](https://github.com/jilliankeenan)
+- [ButtonSelect] Show selected items in multiselect button by [@vine77](https://github.com/vine77)
+- [Docs] Add example of using a custom SVG in the Icon component by [@rhyza](https://github.com/rhyza)
+- Update CODEOWNERS file to use GitHub team instead of usernames by [@vine77](https://github.com/vine77)
 
 # 5.10.0 (2019-11-22)
 
