@@ -298,17 +298,6 @@ const data = [
   },
 ];
 
-const columns = [
-  {
-    label: 'Event Type1',
-    dataKey: 'eventType',
-  },
-  { label: 'Affected Devices', dataKey: 'affectedDevices' },
-
-  { label: 'Detections', dataKey: 'detections' },
-  { label: 'Linked field', dataKey: 'Link' },
-];
-
 const columnClassNames = (dataKey, index) => {
   if (dataKey === 'eventType' || index === 3) {
     return 'table-row-error';
@@ -316,7 +305,31 @@ const columnClassNames = (dataKey, index) => {
   return 'table-row-okay';
 };
 
-<Table data={data} columns={columns} columnClassName={columnClassNames} />;
+const columns = [
+  {
+    label: 'Event Type1',
+    dataKey: 'eventType',
+    columnClassName: (dataKey, index) => columnClassNames(dataKey, index),
+  },
+  {
+    label: 'Affected Devices',
+    dataKey: 'affectedDevices',
+    columnClassName: (dataKey, index) => columnClassNames(dataKey, index),
+  },
+
+  {
+    label: 'Detections',
+    dataKey: 'detections',
+    columnClassName: (dataKey, index) => columnClassNames(dataKey, index),
+  },
+  {
+    label: 'Linked field',
+    dataKey: 'Link',
+    columnClassName: (dataKey, index) => columnClassNames(dataKey, index),
+  },
+];
+
+<Table data={data} columns={columns} />;
 ```
 
 ### Sortable Columns

@@ -33,9 +33,11 @@ const propTypes = {
       columnData: any,
       /** Unique string key defining this column */
       dataKey: string.isRequired,
-      /** Column header text */
+      /** Optional classname that can be a string or a function taking the dataKey and column index which can be used to render styling on specific column */
+      columnClassName: oneOfType([func, string]),
+      /** Label for column header text */
       label: node,
-      /** Column header text */
+      /** Styling for column header text */
       style: shape({}),
     }),
   ).isRequired,
@@ -56,7 +58,6 @@ const propTypes = {
   }),
   /** Function that will return direction and dataKey on every sort action  */
   onSort: func,
-  style: shape({}),
   /** Optional boolean to cause horizontal scrolling when table extends past the container */
   horizontalScroll: bool,
   /** Optional boolean to cause the first column to be fixed when horizontalScrool is true */
@@ -67,8 +68,6 @@ const propTypes = {
   emptyStateMessage: string,
   /** Optional function which can be used to render styling on specific rows */
   rowClassName: oneOfType([func, string]),
-  /** Optional function which can be used to render styling on specific column */
-  columnClassName: oneOfType([func, string]),
   /** Boolean to render select checkbox column */
   selectable: bool,
   /** Row checked action method, will get checked state and row data  */
@@ -86,14 +85,12 @@ const defaultProps = {
   className: '',
   sortable: false,
   onSort: () => {},
-  style: {},
   sortedColumn: { direction: '', sortDataKey: '' },
   horizontalScroll: false,
   fixedColumn: false,
   emptyStateHeader: 'No data available',
   emptyStateMessage: 'Prompt to action or solution',
   rowClassName: () => {},
-  columnClassName: () => {},
   selectable: false,
   onRowChecked: () => {},
   onHeaderChecked: () => {},
@@ -148,7 +145,6 @@ class Table extends Component {
       emptyStateHeader,
       emptyStateMessage,
       rowClassName,
-      columnClassName,
       selectable,
       onRowChecked,
       onHeaderChecked,
@@ -219,6 +215,7 @@ class Table extends Component {
                       cellRenderer,
                       columnData,
                       dataKey,
+                      columnClassName,
                       style,
                     } = {
                       ...defaultColumnDefs,

@@ -12,13 +12,11 @@ const propTypes = {
       cellRenderer: func,
       /** Arbitrary additional data passed to the cell renderer for this column */
       columnData: any,
-      /** Classname to apply to each data cell. Useful for setting explicit column widths */
-      className: string,
       /** Unique string key defining this column */
       dataKey: string.isRequired,
-      /** Column header text */
+      /** Label for column header text */
       label: node,
-      /** Column header text */
+      /** Styling for column header text */
       style: shape({}),
     }),
   ).isRequired,
@@ -100,44 +98,42 @@ class ColumnHeader extends Component {
               />
             </th>
           ) : null}
-          {columns.map(
-            ({ label, dataKey, className: cellClassName, style }) => (
-              <th
-                className={classnames('rc-table-header-cell', cellClassName, {
-                  'dg-column-header-sortable': sortable === true,
+          {columns.map(({ label, dataKey, style }) => (
+            <th
+              className={classnames('rc-table-header-cell', {
+                'dg-column-header-sortable': sortable === true,
+              })}
+              key={dataKey}
+              style={style}
+              onClick={e => this.sortColumn(e, dataKey)}
+              onKeyPress={e =>
+                e.key === 'Enter' ? this.sortColumn(e, dataKey) : null
+              }
+              tabIndex={sortable ? 0 : null}
+            >
+              <span
+                as="h6"
+                color="medium"
+                className={classnames({
+                  'dg-column-header-label-active': dataKey === sortDataKey,
                 })}
-                key={dataKey}
-                style={style}
-                onClick={e => this.sortColumn(e, dataKey)}
-                onKeyPress={e =>
-                  e.key === 'Enter' ? this.sortColumn(e, dataKey) : null
-                }
-                tabIndex={sortable ? 0 : null}
               >
-                <span
-                  as="h6"
-                  color="medium"
-                  className={classnames({
-                    'dg-column-header-label-active': dataKey === sortDataKey,
-                  })}
-                >
-                  {label}
-                </span>
+                {label}
+              </span>
 
-                {sortable ? (
-                  <span className="dg-column-header-icon-container">
-                    <Icon
-                      type="increment"
-                      size="medium"
-                      className={classnames('dg-column-header-icon-color', {
-                        [direction]: dataKey === sortDataKey,
-                      })}
-                    />
-                  </span>
-                ) : null}
-              </th>
-            ),
-          )}
+              {sortable ? (
+                <span className="dg-column-header-icon-container">
+                  <Icon
+                    type="increment"
+                    size="medium"
+                    className={classnames('dg-column-header-icon-color', {
+                      [direction]: dataKey === sortDataKey,
+                    })}
+                  />
+                </span>
+              ) : null}
+            </th>
+          ))}
         </tr>
       </thead>
     );
