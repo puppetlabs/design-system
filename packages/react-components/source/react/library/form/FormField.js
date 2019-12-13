@@ -2,21 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 import { omit } from '../../helpers/statics';
-import Input, {
-  SUPPORTED_TYPES as INPUT_SUPPORTED_TYPES,
-} from '../input/Input';
-import Select from '../select';
-import Switch from '../switch';
-import Checkbox from '../checkbox';
-import Icon from '../icon';
 
-const supportedTypes = [
-  ...INPUT_SUPPORTED_TYPES,
-  'checkbox',
-  'switch',
-  'select',
-  'autocomplete',
-];
+import FormFieldElement, { supportedTypes } from './internal/FormFieldElement';
+import FormFieldDescription from './internal/FormFieldDescription';
 
 const propTypes = {
   /** The type of input to render. Can be either a string corresponding to a supported input type or a custom React component satisfying the input interface */
@@ -88,159 +76,93 @@ export const formInputInterface = omit(
   propTypes,
 );
 
-const isReactComponent = c =>
-  (c && c.prototype && c.prototype.isReactComponent) || typeof c === 'function';
+const getTypeName = type => (typeof type === 'string' ? type : null);
 
-const mapTypeToElement = type => {
-  if (isReactComponent(type)) {
-    return type;
+const getLabelStyle = (inlineLabelWidth, inline) => {
+  if (inline && inlineLabelWidth) {
+    return {
+      width: inlineLabelWidth,
+    };
   }
 
-  switch (type) {
-    case 'checkbox':
-      return Checkbox;
-    case 'switch':
-      return Switch;
-    case 'select':
-    case 'autocomplete':
-    case 'multiselect':
-      return Select;
-    default:
-      return Input;
-  }
+  return null;
 };
-/**
- * `FormField`s are meant to be rendered as children either within a `Form` or a `FormSection`.
- */
-class FormField extends React.Component {
-  getTypeName() {
-    const { type } = this.props;
-    let name;
 
-    if (typeof type === 'string') {
-      name = type;
-    }
-
-    return name;
+const getFieldStyle = (style, inlineLabelWidth, tabbed) => {
+  if (tabbed && inlineLabelWidth) {
+    return {
+      ...style,
+      marginLeft: inlineLabelWidth,
+    };
   }
 
-  renderDescription() {
-    const { error, description } = this.props;
-    // Note: error can be a string or boolean
-    const message = error && typeof error === 'string' ? error : description;
-    const iconType = error ? 'alert' : 'info-circle';
-    let jsx;
+  return style;
+};
 
-    if (message) {
-      jsx = (
-        <div className="rc-form-field-description">
-          <Icon
-            className="rc-form-field-description-icon"
-            size="small"
-            type={iconType}
-          />
-          {message}
+const FormField = props => {
+  const {
+    type,
+    name,
+    label,
+    labelType,
+    className,
+    inline,
+    inlineLabelWidth,
+    error,
+    description,
+    style,
+  } = props;
+  const typeName = getTypeName(type);
+  const tabbed = inline && (type === 'checkbox' || type === 'switch');
+  const labelStyle = getLabelStyle(inlineLabelWidth, inline);
+  const fieldStyle = getFieldStyle(style, inlineLabelWidth, tabbed);
+
+  const element = <FormFieldElement {...props} />;
+
+  if (type === 'hidden') {
+    return element;
+  }
+
+  return (
+    <div
+      className={classNames(
+        'rc-form-field',
+        {
+          'rc-form-field-inline': inline,
+          'rc-form-field-tabbed': tabbed,
+          [`rc-form-field-${typeName}`]: typeName,
+          'rc-form-field-error': error,
+        },
+        className,
+      )}
+      style={fieldStyle}
+    >
+      <div className="rc-form-field-content">
+        {/* eslint-disable-next-line jsx-a11y/label-has-for */}
+        <label
+          htmlFor={name}
+          className={classNames(
+            'rc-form-field-label',
+            `rc-form-field-label-${labelType}`,
+          )}
+          key="field-label"
+          style={labelStyle}
+        >
+          {label}
+        </label>
+        <div className="rc-form-field-element">
+          {element}
+          {inline && (
+            <FormFieldDescription error={error} description={description} />
+          )}
         </div>
-      );
-    }
-
-    return jsx;
-  }
-
-  renderElement() {
-    const { type } = this.props;
-
-    const elementProps = omit(
-      [
-        'labelType',
-        'inline',
-        'inlineLabelWidth',
-        'description',
-        'className',
-        'style',
-        'requiredFieldMessage',
-        'validator',
-      ],
-      this.props,
-    );
-
-    const Element = mapTypeToElement(type);
-
-    return <Element {...elementProps} />;
-  }
-
-  render() {
-    const {
-      type,
-      name,
-      label,
-      labelType,
-      className,
-      inline,
-      inlineLabelWidth,
-      error,
-      style,
-    } = this.props;
-    const description = this.renderDescription();
-    const typeName = this.getTypeName();
-    const element = this.renderElement();
-    const tabbed = inline && (type === 'checkbox' || type === 'switch');
-
-    if (type === 'hidden') {
-      return element;
-    }
-
-    let formFieldStyles = style;
-    let formFieldLabelStyles;
-
-    if (inlineLabelWidth && inline) {
-      formFieldLabelStyles = { width: `${inlineLabelWidth}px` };
-    }
-
-    if (inlineLabelWidth && tabbed) {
-      formFieldStyles = {
-        ...formFieldStyles,
-        marginLeft: `${inlineLabelWidth}px`,
-      };
-    }
-
-    return (
-      <div
-        className={classNames(
-          'rc-form-field',
-          {
-            'rc-form-field-inline': inline,
-            'rc-form-field-tabbed': tabbed,
-            [`rc-form-field-${typeName}`]: typeName,
-            'rc-form-field-error': error,
-          },
-          className,
-        )}
-        style={formFieldStyles}
-      >
-        <div className="rc-form-field-content">
-          {/* eslint-disable-next-line jsx-a11y/label-has-for */}
-          <label
-            htmlFor={name}
-            title={label}
-            className={classNames('rc-form-field-label', {
-              [`rc-form-field-label-${labelType}`]: labelType,
-            })}
-            key="field-label"
-            style={formFieldLabelStyles}
-          >
-            {label}
-          </label>
-          <div className="rc-form-field-element">
-            {element}
-            {inline && description}
-          </div>
-        </div>
-        {!inline && description}
       </div>
-    );
-  }
-}
+      {!inline && (
+        <FormFieldDescription error={error} description={description} />
+      )}
+    </div>
+  );
+};
 
 FormField.propTypes = propTypes;
 FormField.defaultProps = defaultProps;

@@ -3,7 +3,8 @@ import { expect } from 'chai';
 import React from 'react';
 import sinon from 'sinon';
 
-import Form, { isEmpty } from '../../source/react/library/form/Form';
+import Form from '../../source/react/library/form/Form';
+import { isEmpty } from '../../source/react/library/form/internal/methods';
 import Button from '../../source/react/library/button/Button';
 
 describe('<Form />', () => {
@@ -26,11 +27,11 @@ describe('<Form />', () => {
     });
 
     it('should render a submit button if the submittable prop is true', () => {
-      expect(shallow(<Form submittable />))
+      expect(mount(<Form submittable />))
         .to.have.exactly(1)
         .descendants(Button);
 
-      expect(shallow(<Form submittable />).find(Button)).to.have.prop(
+      expect(mount(<Form submittable />).find(Button)).to.have.prop(
         'buttonType',
         'submit',
       );
@@ -43,7 +44,7 @@ describe('<Form />', () => {
     });
 
     it('should render a cancel button if the submittable prop is true', () => {
-      expect(shallow(<Form cancellable />))
+      expect(mount(<Form cancellable />))
         .to.have.exactly(1)
         .descendants(Button);
     });
@@ -97,7 +98,8 @@ describe('<Form />', () => {
         </Form>,
       );
 
-      expect(wrapper.state().values).to.eql(initialValues);
+      expect(wrapper.find(Form.Field).first()).to.have.prop('value', 'A');
+      expect(wrapper.find(Form.Field).last()).to.have.prop('value', 'B');
     });
 
     it('should update values state when an input changes', () => {
@@ -118,7 +120,8 @@ describe('<Form />', () => {
         .first()
         .simulate('change', { target: { value: 'AA' } });
 
-      expect(wrapper.state().values).to.eql({ a: 'AA', b: 'B' });
+      expect(wrapper.find(Form.Field).first()).to.have.prop('value', 'AA');
+      expect(wrapper.find(Form.Field).last()).to.have.prop('value', 'B');
     });
 
     it('should fire onChange callback when inputs change', () => {

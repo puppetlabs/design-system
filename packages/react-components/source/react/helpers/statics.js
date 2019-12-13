@@ -30,9 +30,20 @@ const isNodeInRoot = (node, root) => {
 
 const getKey = (child = {}, idx) => child.key || String(idx);
 
-const shallowDiff = (objA, objB) =>
-  Object.entries(objA).some(([key, value]) => objB[key] !== value) ||
-  Object.entries(objB).some(([key, value]) => objA[key] !== value);
+const is = (constructor, value) =>
+  (value != null && value.constructor === constructor) ||
+  value instanceof constructor;
+
+const shallowDiff = (objA, objB) => {
+  if (is(Object, objA) && is(Object, objB)) {
+    return (
+      Object.entries(objA).some(([key, value]) => objB[key] !== value) ||
+      Object.entries(objB).some(([key, value]) => objA[key] !== value)
+    );
+  }
+
+  return objA === objB;
+};
 
 const mapObj = (obj, fn) => {
   const mappedObj = {};
