@@ -23,24 +23,6 @@ const defaultProps = {
   children: [],
 };
 
-/**
- * The `Sidebar` component was designed and developed to be used as the primary
- * webapp navigation. Care has been taken to make sure it is accessible. (If any
- * a11y issues are discovered, please file a PDS bug.) It is made up of the
- * primary `Sidebar` component but can be composed by using the
- * `Sidebar.Header`, `Sidebar.Navigation`, `Sidebar.Section`, `Sidebar.Item`,
- * and `Sidebar.Footer` components. For the time being, this component does not
- * support nesting beyond items in sections.
- *
- * This component is stateless so you will need to manage which `Sidebar.Item`
- * is currently highlighted with the `active` prop or use it with React Router's
- * [NavLink](https://reacttraining.com/react-router/web/api/NavLink) component,
- * which will apply an `active` class when the URL matches:
- *
- * ```jsx
- * <Sidebar.Item title="Hello" as={NavLink} to="/hello" />
- * ```
- */
 const Sidebar = props => {
   const { className, minimized, ...rest } = props;
   const classNames = classnames('rc-sidebar', className, {

@@ -75,7 +75,7 @@ $puppet-sidebar-footer-meta-icon: 32px;
   @include rc-button-reset();
   align-items: center;
   background: $puppet-sidebar-logo-bg;
-  border: $puppet-sidebar-item-border-focus;
+  box-sizing: border-box;
   display: flex;
   height: $puppet-sidebar-logo-height;
   overflow: hidden;
@@ -296,16 +296,16 @@ $puppet-sidebar-footer-meta-icon: 32px;
   display: flex;
   height: $puppet-sidebar-footer-meta-icon;
   justify-content: center;
+  overflow: hidden;
   width: $puppet-sidebar-footer-meta-icon;
 
   .rc-icon {
     fill: $puppet-sidebar-footer-bg;
   }
 
-  * {
-    border-radius: 100px;
-    height: 100%;
-    width: 100%;
+  > * {
+    max-height: 100%;
+    max-width: 100%;
   }
 }
 

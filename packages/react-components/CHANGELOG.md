@@ -2,8 +2,10 @@
 
 - [Sidebar] Add `profileIcon` prop to Sidebar.Footer for custom profile icons or images by [@jilliankeenan](https://github.com/jilliankeenan)
 - [Sidebar] Make `version` prop optional in Sidebar.Footer by [@jilliankeenan](https://github.com/jilliankeenan)
+- [Sidebar] Fix padding on `Sidebar.Header` when it has an `as` prop by [@vine77](https://github.com/vine77)
 - [ButtonSelect] Show selected items in multiselect button by [@vine77](https://github.com/vine77)
 - [Docs] Add example of using a custom SVG in the Icon component by [@rhyza](https://github.com/rhyza)
+- [Docs] Update Sidebar documentation by [@vine77](https://github.com/vine77)
 - Update CODEOWNERS file to use GitHub team instead of usernames by [@vine77](https://github.com/vine77)
 
 # 5.10.0 (2019-11-22)
