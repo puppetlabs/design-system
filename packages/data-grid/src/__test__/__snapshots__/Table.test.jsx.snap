@@ -3,22 +3,25 @@
 exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
 <Table
   className=""
-  columnClassName={[Function]}
   columns={
     Array [
       Object {
+        "columnClassName": "testColumnClassName",
         "dataKey": "eventType",
         "label": "Event Type",
       },
       Object {
+        "columnClassName": "testColumnClassName",
         "dataKey": "affectedDevices",
         "label": "Affected Devices",
       },
       Object {
+        "columnClassName": "testColumnClassName",
         "dataKey": "detections",
         "label": "Detections",
       },
       Object {
+        "columnClassName": "testColumnClassName",
         "dataKey": "Link",
         "label": "Linked field",
       },
@@ -88,32 +91,34 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       "sortDataKey": "",
     }
   }
-  style={Object {}}
 >
   <div
     className=""
   >
     <table
       className="rc-table"
-      style={Object {}}
     >
       <ColumnHeader
         columnHeaderCallBack={[Function]}
         columns={
           Array [
             Object {
+              "columnClassName": "testColumnClassName",
               "dataKey": "eventType",
               "label": "Event Type",
             },
             Object {
+              "columnClassName": "testColumnClassName",
               "dataKey": "affectedDevices",
               "label": "Affected Devices",
             },
             Object {
+              "columnClassName": "testColumnClassName",
               "dataKey": "detections",
               "label": "Detections",
             },
             Object {
+              "columnClassName": "testColumnClassName",
               "dataKey": "Link",
               "label": "Linked field",
             },
@@ -203,25 +208,25 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           key="0"
         >
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="eventType"
           >
             Virus/Malware
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="affectedDevices"
           >
             20
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="detections"
           >
             634
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="Link"
           />
         </tr>
@@ -230,25 +235,25 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           key="1"
         >
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="eventType"
           >
             Spyware/Grayware
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="affectedDevices"
           >
             20
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="detections"
           >
             634
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="Link"
           />
         </tr>
@@ -257,25 +262,25 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           key="2"
         >
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="eventType"
           >
             URL Filtering
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="affectedDevices"
           >
             15
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="detections"
           >
             598
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="Link"
           />
         </tr>
@@ -284,25 +289,25 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           key="3"
         >
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="eventType"
           >
             Web Reputation
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="affectedDevices"
           >
             15
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="detections"
           >
             598
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="Link"
           />
         </tr>
@@ -311,25 +316,25 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           key="4"
         >
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="eventType"
           >
             Network Virus
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="affectedDevices"
           >
             15
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="detections"
           >
             497
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="Link"
           />
         </tr>
@@ -338,25 +343,25 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           key="5"
         >
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="eventType"
           >
             Application Control
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="affectedDevices"
           >
             0
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="detections"
           >
             0
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="Link"
           />
         </tr>
@@ -365,25 +370,25 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           key="6"
         >
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="eventType"
           >
             Application Control
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="affectedDevices"
           >
             0
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="detections"
           >
             0
           </td>
           <td
-            className="rc-table-cell"
+            className="rc-table-cell testColumnClassName"
             key="Link"
           />
         </tr>
@@ -396,22 +401,25 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
 exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
 <Table
   className=""
-  columnClassName={[Function]}
   columns={
     Array [
       Object {
+        "columnClassName": "testColumnClassName",
         "dataKey": "eventType",
         "label": "Event Type",
       },
       Object {
+        "columnClassName": "testColumnClassName",
         "dataKey": "affectedDevices",
         "label": "Affected Devices",
       },
       Object {
+        "columnClassName": "testColumnClassName",
         "dataKey": "detections",
         "label": "Detections",
       },
       Object {
+        "columnClassName": "testColumnClassName",
         "dataKey": "Link",
         "label": "Linked field",
       },
@@ -436,32 +444,34 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
       "sortDataKey": "",
     }
   }
-  style={Object {}}
 >
   <div
     className=""
   >
     <table
       className="rc-table"
-      style={Object {}}
     >
       <ColumnHeader
         columnHeaderCallBack={[Function]}
         columns={
           Array [
             Object {
+              "columnClassName": "testColumnClassName",
               "dataKey": "eventType",
               "label": "Event Type",
             },
             Object {
+              "columnClassName": "testColumnClassName",
               "dataKey": "affectedDevices",
               "label": "Affected Devices",
             },
             Object {
+              "columnClassName": "testColumnClassName",
               "dataKey": "detections",
               "label": "Detections",
             },
             Object {
+              "columnClassName": "testColumnClassName",
               "dataKey": "Link",
               "label": "Linked field",
             },

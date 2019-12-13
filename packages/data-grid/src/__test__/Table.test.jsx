@@ -31,10 +31,26 @@ const data = [
 ];
 
 const columns = [
-  { label: 'Event Type', dataKey: 'eventType' },
-  { label: 'Affected Devices', dataKey: 'affectedDevices' },
-  { label: 'Detections', dataKey: 'detections' },
-  { label: 'Linked field', dataKey: 'Link' },
+  {
+    label: 'Event Type',
+    dataKey: 'eventType',
+    columnClassName: 'testColumnClassName',
+  },
+  {
+    label: 'Affected Devices',
+    dataKey: 'affectedDevices',
+    columnClassName: 'testColumnClassName',
+  },
+  {
+    label: 'Detections',
+    dataKey: 'detections',
+    columnClassName: 'testColumnClassName',
+  },
+  {
+    label: 'Linked field',
+    dataKey: 'Link',
+    columnClassName: 'testColumnClassName',
+  },
 ];
 
 const wrapper = mount(<Table columns={columns} data={data} />);
@@ -42,12 +58,7 @@ const wrapper2 = <Table columns={columns} />;
 const wrapper3 = mount(<Table columns={columns} data={[]} />);
 const wrapper4 = mount(<Table columns={columns} data={data} sortable />);
 const wrapper6 = mount(
-  <Table
-    columns={columns}
-    data={data}
-    rowClassName="testRowClassName"
-    columnClassName="testColumnClassName"
-  />,
+  <Table columns={columns} data={data} rowClassName="testRowClassName" />,
 );
 const wrapper10 = mount(<Table columns={columns} data={data} selectable />);
 
@@ -195,10 +206,12 @@ describe('Custom classes', () => {
   // eslint-disable-next-line
   const wrapper7 = mount(
     <Table
-      columns={columns}
+      columns={columns.map(x => ({
+        ...x,
+        columnClassName: () => columnMockfunc(),
+      }))}
       data={data}
       rowClassName={rowMockfunc}
-      columnClassName={columnMockfunc}
     />,
   );
 
