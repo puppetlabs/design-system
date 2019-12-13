@@ -1,5 +1,6 @@
 # Unreleased
 
+- [Select] Allow truthy string in addition to boolean `open` prop in `Select` component by [@vine77](https://github.com/vine77)
 - [Docs] Update ButtonSelect documentation by [@vine77](https://github.com/vine77)
 
 # 5.11.0 (2019-12-13)
