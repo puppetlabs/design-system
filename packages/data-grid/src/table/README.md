@@ -334,7 +334,7 @@ const columns = [
 
 ### Sortable Columns
 
-Built into the data grid component is the ability to render ascending and descending arrows on the top of every column. To do this declare the table as a sortable table and render the arrows by passing the 'sortable' prop. Should you wish to render the table with a preselected arrow, the 'sortedColumn' prop can be passed an object. The object should contain a 'direction' property with either an 'asc' or 'desc' string value and a sortDataKey property. When an arrow is clicked an onSort event is fired, this will return the direction of the arrow clicked and the appropriate column datakey. It is necessary to handle this action and update the sortColumn props object as well as the tables data object.
+Built into the data grid component is the ability to render ascending and descending arrows on the top of every column. To do this declare a column to be and render the arrows by passing the 'sortable' prop to the columns of your choice. Should you wish to render the table with a preselected arrow, the 'sortedColumn' prop can be passed an object. The object should contain a 'direction' property with either an 'asc' or 'desc' string value and a sortDataKey property. When an arrow is clicked an onSort event is fired, this will return the direction of the arrow clicked and the appropriate column datakey. It is necessary to handle this action and update the sortColumn props object as well as the tables data object.
 
 ```jsx
 import { Link } from '@puppet/react-components';
@@ -397,17 +397,18 @@ const columns = [
   {
     label: 'Event Type1',
     dataKey: 'eventType',
+    sortable: true,
   },
-  { label: 'Affected Devices', dataKey: 'affectedDevices' },
+  { label: 'Affected Devices', dataKey: 'affectedDevices', sortable: true },
 
-  { label: 'Detections', dataKey: 'detections' },
-  { label: 'Linked field', dataKey: 'Link' },
+  { label: 'Detections', dataKey: 'detections', sortable: true },
+  { label: 'Linked field', dataKey: 'Link', },
 ];
 
 class StatefulParent extends React.Component {
   constructor() {
     super();
-    this.state = { sortDataKey: 'Link', direction: 'desc', data };
+    this.state = { sortDataKey: 'eventType', direction: 'desc', data };
     this.handleOnSort = this.handleOnSort.bind(this);
   }
 
@@ -435,7 +436,6 @@ class StatefulParent extends React.Component {
       <Table
         data={stateData}
         columns={columns}
-        sortable
         onSort={this.handleOnSort}
         sortedColumn={sortedColumn}
       />
@@ -633,7 +633,7 @@ const columns = [
 class StatefulParent extends React.Component {
   constructor() {
     super();
-    this.state = { data, checkAll: null };
+    this.state = { data, checkAll: false };
     this.updateData = this.updateData.bind(this);
     this.updateSelectAllValue = this.updateSelectAllValue.bind(this);
   }

@@ -33,10 +33,12 @@ const propTypes = {
       columnData: any,
       /** Unique string key defining this column */
       dataKey: string.isRequired,
-      /** Optional classname that can be a string or a function taking the dataKey and column index which can be used to render styling on specific column */
-      columnClassName: oneOfType([func, string]),
       /** Label for column header text */
       label: node,
+      /** Optional feature to make column sortrable */
+      sortable: bool,
+      /** Optional classname that can be a string or a function taking the dataKey and column index which can be used to render styling on specific column */
+      columnClassName: oneOfType([func, string]),
       /** Styling for column header text */
       style: shape({}),
     }),
@@ -47,8 +49,6 @@ const propTypes = {
   fixed: bool,
   /** Optional additional table className */
   className: string,
-  /** Optional additional table style to add column header icons */
-  sortable: bool,
   /** Optional object to decribe the current sorting state for styling */
   sortedColumn: shape({
     /** Descibes sort direction in either asc or desc */
@@ -83,7 +83,6 @@ const defaultProps = {
   rowKey: undefined,
   fixed: false,
   className: '',
-  sortable: false,
   onSort: () => {},
   sortedColumn: { direction: '', sortDataKey: '' },
   horizontalScroll: false,
@@ -138,7 +137,6 @@ class Table extends Component {
       fixed,
       rowKey,
       className,
-      sortable,
       sortedColumn,
       fixedColumn,
       horizontalScroll,
@@ -193,7 +191,6 @@ class Table extends Component {
           <ColumnHeader
             columns={columns}
             selectable={selectable}
-            sortable={sortable}
             sortedColumn={sortedColumn}
             columnHeaderCallBack={this.columnHeaderCallBack}
             onSelectAll={selectAll}

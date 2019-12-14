@@ -82,7 +82,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   rowClassName={[Function]}
   selectAllValue={false}
   selectable={false}
-  sortable={false}
   sortedColumn={
     Object {
       "direction": "",
@@ -127,7 +126,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         onSelectAll={[Function]}
         selectAllValue={false}
         selectable={false}
-        sortable={false}
         sortedColumn={
           Object {
             "direction": "",
@@ -435,7 +433,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   rowClassName={[Function]}
   selectAllValue={false}
   selectable={false}
-  sortable={false}
   sortedColumn={
     Object {
       "direction": "",
@@ -480,7 +477,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
         onSelectAll={[Function]}
         selectAllValue={false}
         selectable={false}
-        sortable={false}
         sortedColumn={
           Object {
             "direction": "",

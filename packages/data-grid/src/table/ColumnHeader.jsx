@@ -16,12 +16,12 @@ const propTypes = {
       dataKey: string.isRequired,
       /** Label for column header text */
       label: node,
+      /** Boolean to render sorting icons in header */
+      sortable: bool,
       /** Styling for column header text */
       style: shape({}),
     }),
   ).isRequired,
-  /** Boolean to render sorting icons in header */
-  sortable: bool,
   /** Callback to return click action */
   columnHeaderCallBack: func,
   /** Object containing key fields of text describing which header should be active */
@@ -40,7 +40,6 @@ const propTypes = {
 };
 
 const defaultProps = {
-  sortable: false,
   columnHeaderCallBack: null,
   sortedColumn: { direction: '', sortDataKey: '' },
   selectable: false,
@@ -71,7 +70,6 @@ class ColumnHeader extends Component {
   render() {
     const {
       columns,
-      sortable,
       sortedColumn,
       selectable,
       onSelectAll,
@@ -98,14 +96,14 @@ class ColumnHeader extends Component {
               />
             </th>
           ) : null}
-          {columns.map(({ label, dataKey, style }) => (
+          {columns.map(({ label, dataKey, sortable, style }) => (
             <th
               className={classnames('rc-table-header-cell', {
                 'dg-column-header-sortable': sortable === true,
               })}
               key={dataKey}
               style={style}
-              onClick={e => this.sortColumn(e, dataKey)}
+              onClick={e => (sortable ? this.sortColumn(e, dataKey) : () => {})}
               onKeyPress={e =>
                 e.key === 'Enter' ? this.sortColumn(e, dataKey) : null
               }

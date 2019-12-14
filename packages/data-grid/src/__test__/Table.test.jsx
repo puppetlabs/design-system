@@ -53,10 +53,37 @@ const columns = [
   },
 ];
 
+const sortedColumns = [
+  {
+    label: 'Event Type',
+    dataKey: 'eventType',
+    columnClassName: 'testColumnClassName',
+    sortable: true,
+  },
+  {
+    label: 'Affected Devices',
+    dataKey: 'affectedDevices',
+    columnClassName: 'testColumnClassName',
+    sortable: true,
+  },
+  {
+    label: 'Detections',
+    dataKey: 'detections',
+    columnClassName: 'testColumnClassName',
+    sortable: true,
+  },
+  {
+    label: 'Linked field',
+    dataKey: 'Link',
+    columnClassName: 'testColumnClassName',
+    sortable: true,
+  },
+];
+
 const wrapper = mount(<Table columns={columns} data={data} />);
 const wrapper2 = <Table columns={columns} />;
 const wrapper3 = mount(<Table columns={columns} data={[]} />);
-const wrapper4 = mount(<Table columns={columns} data={data} sortable />);
+const wrapper4 = mount(<Table columns={sortedColumns} data={data} />);
 const wrapper6 = mount(
   <Table columns={columns} data={data} rowClassName="testRowClassName" />,
 );
@@ -178,9 +205,8 @@ describe('Sortable Props', () => {
   const sortedState = { direction: 'asc', sortDataKey: 'eventType' };
   const wrapper5 = mount(
     <Table
-      columns={columns}
+      columns={sortedColumns}
       data={data}
-      sortable
       onSort={mockfunc}
       sortedColumn={sortedState}
     />,
