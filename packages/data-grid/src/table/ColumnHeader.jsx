@@ -34,9 +34,9 @@ const propTypes = {
   /** Boolean to render select all checkbox */
   selectable: bool,
   /** Function which handles when the checkbox on click  */
-  onHeaderChecked: func,
+  onSelectAll: func,
   /** Allows the state of the checkbox to be defined  */
-  headerCheckState: bool,
+  selectAllValue: bool,
 };
 
 const defaultProps = {
@@ -44,8 +44,8 @@ const defaultProps = {
   columnHeaderCallBack: null,
   sortedColumn: { direction: '', sortDataKey: '' },
   selectable: false,
-  onHeaderChecked: () => {},
-  headerCheckState: false,
+  onSelectAll: () => {},
+  selectAllValue: false,
 };
 
 const SORT_DIRECTION = { ASC: 'asc', DESC: 'desc' };
@@ -74,8 +74,8 @@ class ColumnHeader extends Component {
       sortable,
       sortedColumn,
       selectable,
-      onHeaderChecked,
-      headerCheckState,
+      onSelectAll,
+      selectAllValue,
     } = this.props;
     const { direction, sortDataKey } = sortedColumn;
 
@@ -90,8 +90,8 @@ class ColumnHeader extends Component {
               )}
             >
               <Checkbox
-                onChange={checked => onHeaderChecked(checked)}
-                checked={headerCheckState}
+                onChange={value => onSelectAll(value)}
+                checked={selectAllValue}
                 label=""
                 name=""
                 className="dg-table-header-checkbox"

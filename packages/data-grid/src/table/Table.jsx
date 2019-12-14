@@ -70,12 +70,12 @@ const propTypes = {
   rowClassName: oneOfType([func, string]),
   /** Boolean to render select checkbox column */
   selectable: bool,
-  /** Row checked action method, will get checked state and row data  */
-  onRowChecked: func,
-  /** Action between to the table header checkbox */
-  onHeaderChecked: func,
+  /** Updates state of data. Accepts new data value. */
+  updateData: func,
+  /** Update state of table header checkbox value. Accepts new checkbox value. */
+  updateSelectAllValue: func,
   /** State of the table header checkbox */
-  headerCheckState: bool,
+  selectAllValue: bool,
 };
 
 const defaultProps = {
@@ -92,9 +92,9 @@ const defaultProps = {
   emptyStateMessage: 'Prompt to action or solution',
   rowClassName: () => {},
   selectable: false,
-  onRowChecked: () => {},
-  onHeaderChecked: () => {},
-  headerCheckState: false,
+  updateData: () => {},
+  updateSelectAllValue: () => {},
+  selectAllValue: false,
 };
 
 const defaultColumnDefs = {
@@ -146,12 +146,34 @@ class Table extends Component {
       emptyStateMessage,
       rowClassName,
       selectable,
-      onRowChecked,
-      onHeaderChecked,
-      headerCheckState,
+      updateData,
+      updateSelectAllValue,
+      selectAllValue,
       onSort,
       ...rest
     } = this.props;
+
+    const selectAll = value => {
+      const updatedData = data.map(x => {
+        return { ...x, selected: value };
+      });
+      updateData(updatedData);
+      updateSelectAllValue(value);
+    };
+
+    const onRowSelected = (index, selected) => {
+      const updatedData = data.map(x => x);
+      updatedData[index].selected = selected;
+
+      if (!selected && selectAllValue) {
+        updateSelectAllValue(false);
+      }
+      if (selected && !selectAllValue && updatedData.every(x => x.selected)) {
+        updateSelectAllValue(true);
+      }
+
+      updateData(updatedData);
+    };
 
     return (
       <div
@@ -174,8 +196,8 @@ class Table extends Component {
             sortable={sortable}
             sortedColumn={sortedColumn}
             columnHeaderCallBack={this.columnHeaderCallBack}
-            onHeaderChecked={onHeaderChecked}
-            headerCheckState={headerCheckState}
+            onSelectAll={selectAll}
+            selectAllValue={selectAllValue}
           />
           <tbody>
             {data.map((rowData, rowIndex) => {
@@ -202,7 +224,7 @@ class Table extends Component {
                     >
                       <Checkbox
                         className="dg-table-checkbox"
-                        onChange={checked => onRowChecked(checked, rowData)}
+                        onChange={value => onRowSelected(rowIndex, value)}
                         checked={rowData.selected}
                         label=""
                         name=""

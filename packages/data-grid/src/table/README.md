@@ -559,7 +559,7 @@ const columns2 = [
 
 ### Selection column
 
-Should your data grid component support a user action within your project then the selectable feature can be used. By passing the 'selectable' prop a column of checkboxes will appear. If the 'selected' property is passed to your data objects, then the checkboxes will render checked. When a user clicks a rows checkbox an 'onRowSelected' is fired and the checked value and the row which was clicked is returned. When a user clicks the headers checkbox an 'onHeaderSelected' is fired and the checked value is returned. To control the state of the headers checkbox use the 'headerCheckState' prop.
+Should your data grid component support a user action within your project then the selectable feature can be used. By passing the 'selectable' prop a column of checkboxes will appear. If the 'selected' property is passed to your data objects, then the checkboxes will render checked. When a user clicks a rows checkbox an 'updateData' is fired and the updated data will be returned. When a user clicks the headers checkbox an 'updateSelectAllValue' is fired and the checked value is returned. To control the state of the headers checkbox use the 'selectAllValue' prop.
 
 ```jsx
 import { Link } from '@puppet/react-components';
@@ -633,38 +633,17 @@ const columns = [
 class StatefulParent extends React.Component {
   constructor() {
     super();
-    this.state = { data, checkAll: undefined };
-    this.onHeaderSelected = this.onHeaderSelected.bind(this);
-    this.onRowSelected = this.onRowSelected.bind(this);
+    this.state = { data, checkAll: null };
+    this.updateData = this.updateData.bind(this);
+    this.updateSelectAllValue = this.updateSelectAllValue.bind(this);
   }
 
-  onRowSelected(checked, row) {
-    const { data: stateData } = this.state;
-    // find the index of object from array that you want to update
-    const objIndex = stateData.findIndex(obj => obj.unique === row.unique);
-
-    // make new object of updated object.
-    const updatedObj = { ...stateData[objIndex], selected: checked };
-
-    // make final new array of objects by combining updated object.
-    const updatedData = [
-      ...stateData.slice(0, objIndex),
-      updatedObj,
-      ...stateData.slice(objIndex + 1),
-    ];
-
-    this.setState({
-      data: updatedData,
-    });
+  updateData(updatedData) {
+    this.setState({ data: updatedData });
   }
 
-  onHeaderSelected(checked) {
-    this.setState({ checkAll: checked });
-    const { data: stateData } = this.state;
-
-    for (let i = 0; i < stateData.length; i += 1) {
-      stateData[i].selected = checked;
-    }
+  updateSelectAllValue(value) {
+    this.setState({ checkAll: value });
   }
 
   render() {
@@ -676,9 +655,9 @@ class StatefulParent extends React.Component {
           data={stateData}
           columns={columns}
           selectable
-          onRowChecked={this.onRowSelected}
-          onHeaderChecked={this.onHeaderSelected}
-          headerCheckState={headerCheckboxState}
+          updateData={this.updateData}
+          updateSelectAllValue={this.updateSelectAllValue}
+          selectAllValue={headerCheckboxState}
         />
       </div>
     );

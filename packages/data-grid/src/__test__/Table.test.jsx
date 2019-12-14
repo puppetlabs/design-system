@@ -244,9 +244,9 @@ describe('Selection Props', () => {
       columns={columns}
       data={data}
       selectable
-      onHeaderChecked={headerCheckMockfunc}
-      headerCheckState
-      onRowChecked={rowCheckMockfunc}
+      updateSelectAllValue={headerCheckMockfunc}
+      selectAllValue
+      updateData={rowCheckMockfunc}
     />,
   );
 
@@ -261,7 +261,7 @@ describe('Selection Props', () => {
   });
   expect(wrapper9.findWhere(n => n.name() === 'Checkbox')).toHaveLength(8);
 
-  test('When header checkbox is clicked fire onHeaderChecked', () => {
+  test('When header checkbox is clicked fire updateSelectAllValue', () => {
     wrapper9
       .find('.rc-checkbox')
       .first()
@@ -269,7 +269,7 @@ describe('Selection Props', () => {
     expect(headerCheckMockfunc).toHaveBeenCalled();
   });
 
-  test('When row checkbox is clicked fire onRowChecked', () => {
+  test('When row checkbox is clicked fire updateData', () => {
     wrapper9
       .find('.rc-checkbox')
       .last()
@@ -277,7 +277,7 @@ describe('Selection Props', () => {
     expect(rowCheckMockfunc).toHaveBeenCalled();
   });
 
-  test('headerCheckState passes checkbox state correctly', () => {
+  test('selectAllValue passes checkbox state correctly', () => {
     expect(
       wrapper9
         .find('.dg-table-header-checkbox')

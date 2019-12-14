@@ -77,12 +77,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   emptyStateMessage="Prompt to action or solution"
   fixed={false}
   fixedColumn={false}
-  headerCheckState={false}
   horizontalScroll={false}
-  onHeaderChecked={[Function]}
-  onRowChecked={[Function]}
   onSort={[Function]}
   rowClassName={[Function]}
+  selectAllValue={false}
   selectable={false}
   sortable={false}
   sortedColumn={
@@ -91,6 +89,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       "sortDataKey": "",
     }
   }
+  updateData={[Function]}
+  updateSelectAllValue={[Function]}
 >
   <div
     className=""
@@ -124,8 +124,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             },
           ]
         }
-        headerCheckState={false}
-        onHeaderChecked={[Function]}
+        onSelectAll={[Function]}
+        selectAllValue={false}
         selectable={false}
         sortable={false}
         sortedColumn={
@@ -430,12 +430,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   emptyStateMessage="Prompt to action or solution"
   fixed={false}
   fixedColumn={false}
-  headerCheckState={false}
   horizontalScroll={false}
-  onHeaderChecked={[Function]}
-  onRowChecked={[Function]}
   onSort={[Function]}
   rowClassName={[Function]}
+  selectAllValue={false}
   selectable={false}
   sortable={false}
   sortedColumn={
@@ -444,6 +442,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
       "sortDataKey": "",
     }
   }
+  updateData={[Function]}
+  updateSelectAllValue={[Function]}
 >
   <div
     className=""
@@ -477,8 +477,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
             },
           ]
         }
-        headerCheckState={false}
-        onHeaderChecked={[Function]}
+        onSelectAll={[Function]}
+        selectAllValue={false}
         selectable={false}
         sortable={false}
         sortedColumn={
