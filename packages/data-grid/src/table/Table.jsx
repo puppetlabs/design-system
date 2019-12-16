@@ -70,8 +70,8 @@ const propTypes = {
   rowClassName: oneOfType([func, string]),
   /** Boolean to render select checkbox column */
   selectable: bool,
-  /** Updates state of data. Accepts new data value. */
-  updateData: func,
+  /** Callback executed when table data updates through selection. */
+  onUpdateData: func,
   /** Update state of table header checkbox value. Accepts new checkbox value. */
   updateSelectAllValue: func,
   /** State of the table header checkbox */
@@ -91,7 +91,7 @@ const defaultProps = {
   emptyStateMessage: 'Prompt to action or solution',
   rowClassName: () => {},
   selectable: false,
-  updateData: () => {},
+  onUpdateData: () => {},
   updateSelectAllValue: () => {},
   selectAllValue: false,
 };
@@ -144,7 +144,7 @@ class Table extends Component {
       emptyStateMessage,
       rowClassName,
       selectable,
-      updateData,
+      onUpdateData,
       updateSelectAllValue,
       selectAllValue,
       onSort,
@@ -155,7 +155,7 @@ class Table extends Component {
       const updatedData = data.map(x => {
         return { ...x, selected: value };
       });
-      updateData(updatedData);
+      onUpdateData(updatedData);
       updateSelectAllValue(value);
     };
 
@@ -170,7 +170,7 @@ class Table extends Component {
         updateSelectAllValue(true);
       }
 
-      updateData(updatedData);
+      onUpdateData(updatedData);
     };
 
     return (

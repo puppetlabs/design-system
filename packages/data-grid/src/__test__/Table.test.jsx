@@ -272,7 +272,7 @@ describe('Selection Props', () => {
       selectable
       updateSelectAllValue={headerCheckMockfunc}
       selectAllValue
-      updateData={rowCheckMockfunc}
+      onUpdateData={rowCheckMockfunc}
     />,
   );
 
@@ -295,7 +295,7 @@ describe('Selection Props', () => {
     expect(headerCheckMockfunc).toHaveBeenCalled();
   });
 
-  test('When row checkbox is clicked fire updateData', () => {
+  test('When row checkbox is clicked fire onUpdateData', () => {
     wrapper9
       .find('.rc-checkbox')
       .last()

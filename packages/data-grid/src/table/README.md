@@ -402,7 +402,7 @@ const columns = [
   { label: 'Affected Devices', dataKey: 'affectedDevices', sortable: true },
 
   { label: 'Detections', dataKey: 'detections', sortable: true },
-  { label: 'Linked field', dataKey: 'Link', },
+  { label: 'Linked field', dataKey: 'Link' },
 ];
 
 class StatefulParent extends React.Component {
@@ -559,7 +559,7 @@ const columns2 = [
 
 ### Selection column
 
-Should your data grid component support a user action within your project then the selectable feature can be used. By passing the 'selectable' prop a column of checkboxes will appear. If the 'selected' property is passed to your data objects, then the checkboxes will render checked. When a user clicks a rows checkbox an 'updateData' is fired and the updated data will be returned. When a user clicks the headers checkbox an 'updateSelectAllValue' is fired and the checked value is returned. To control the state of the headers checkbox use the 'selectAllValue' prop.
+Should your data grid component support a user action within your project then the selectable feature can be used. By passing the 'selectable' prop a column of checkboxes will appear. If the 'selected' property is passed to your data objects, then the checkboxes will render checked. When a user clicks a rows checkbox an 'onUpdateData' is fired and the updated data will be returned. When a user clicks the headers checkbox an 'updateSelectAllValue' is fired and the checked value is returned. To control the state of the headers checkbox use the 'selectAllValue' prop.
 
 ```jsx
 import { Link } from '@puppet/react-components';
@@ -634,11 +634,11 @@ class StatefulParent extends React.Component {
   constructor() {
     super();
     this.state = { data, checkAll: false };
-    this.updateData = this.updateData.bind(this);
+    this.onUpdateData = this.onUpdateData.bind(this);
     this.updateSelectAllValue = this.updateSelectAllValue.bind(this);
   }
 
-  updateData(updatedData) {
+  onUpdateData(updatedData) {
     this.setState({ data: updatedData });
   }
 
@@ -655,7 +655,7 @@ class StatefulParent extends React.Component {
           data={stateData}
           columns={columns}
           selectable
-          updateData={this.updateData}
+          onUpdateData={this.onUpdateData}
           updateSelectAllValue={this.updateSelectAllValue}
           selectAllValue={headerCheckboxState}
         />

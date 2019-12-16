@@ -79,6 +79,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   fixedColumn={false}
   horizontalScroll={false}
   onSort={[Function]}
+  onUpdateData={[Function]}
   rowClassName={[Function]}
   selectAllValue={false}
   selectable={false}
@@ -88,7 +89,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       "sortDataKey": "",
     }
   }
-  updateData={[Function]}
   updateSelectAllValue={[Function]}
 >
   <div
@@ -430,6 +430,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   fixedColumn={false}
   horizontalScroll={false}
   onSort={[Function]}
+  onUpdateData={[Function]}
   rowClassName={[Function]}
   selectAllValue={false}
   selectable={false}
@@ -439,7 +440,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
       "sortDataKey": "",
     }
   }
-  updateData={[Function]}
   updateSelectAllValue={[Function]}
 >
   <div
