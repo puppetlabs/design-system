@@ -96,7 +96,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       className="rc-table"
     >
       <ColumnHeader
-        columnHeaderCallBack={[Function]}
         columns={
           Array [
             Object {
@@ -122,6 +121,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           ]
         }
         onSelectAll={[Function]}
+        onSort={[Function]}
         selectAllValue={false}
         selectable={false}
         sortedColumn={
@@ -445,7 +445,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
       className="rc-table"
     >
       <ColumnHeader
-        columnHeaderCallBack={[Function]}
         columns={
           Array [
             Object {
@@ -471,6 +470,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
           ]
         }
         onSelectAll={[Function]}
+        onSort={[Function]}
         selectAllValue={true}
         selectable={false}
         sortedColumn={

@@ -23,7 +23,7 @@ const propTypes = {
     }),
   ).isRequired,
   /** Callback to return click action */
-  columnHeaderCallBack: func,
+  onSort: func,
   /** Object containing key fields of text describing which header should be active */
   sortedColumn: shape({
     /** The direction of the active icon */
@@ -40,7 +40,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  columnHeaderCallBack: null,
+  onSort: () => {},
   sortedColumn: { direction: '', sortDataKey: '' },
   selectable: false,
   onSelectAll: () => {},
@@ -52,7 +52,7 @@ const SORT_DIRECTION = { ASC: 'asc', DESC: 'desc' };
 class ColumnHeader extends Component {
   sortColumn = (e, dataKey) => {
     e.preventDefault();
-    const { columnHeaderCallBack, sortedColumn } = this.props;
+    const { onSort, sortedColumn } = this.props;
 
     let dir;
     if (sortedColumn.sortDataKey === dataKey) {
@@ -64,7 +64,7 @@ class ColumnHeader extends Component {
       dir = SORT_DIRECTION.ASC;
     }
 
-    columnHeaderCallBack(dir, dataKey);
+    onSort(dir, dataKey);
   };
 
   render() {

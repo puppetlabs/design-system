@@ -58,7 +58,7 @@ const propTypes = {
     /** Descibes the column being sorted using the column dataKey  */
     sortDataKey: string,
   }),
-  /** Function that will return direction and dataKey on every sort action  */
+  /** Callback function that will return direction and dataKey on every sort action  */
   onSort: func,
   /** Optional boolean to cause horizontal scrolling when table extends past the container */
   horizontalScroll: bool,
@@ -121,11 +121,6 @@ class Table extends Component {
     return rowKey(rowData);
   };
 
-  columnHeaderCallBack = (direction, dataKey) => {
-    const { onSort } = this.props;
-    onSort(direction, dataKey);
-  };
-
   classNameTypeManage = (classname, data, index) => {
     let name;
     if (typeof classname === 'function') {
@@ -179,6 +174,10 @@ class Table extends Component {
       onUpdateData(updatedData);
     };
 
+    const onColumnSort = (direction, dataKey) => {
+      onSort(direction, dataKey);
+    };
+
     return (
       <div
         className={classNames({
@@ -198,7 +197,7 @@ class Table extends Component {
             columns={columns}
             selectable={selectable}
             sortedColumn={sortedColumn}
-            columnHeaderCallBack={this.columnHeaderCallBack}
+            onSort={onColumnSort}
             onSelectAll={selectAll}
             selectAllValue={selectAllValue}
           />
