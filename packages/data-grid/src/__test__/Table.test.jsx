@@ -34,22 +34,22 @@ const columns = [
   {
     label: 'Event Type',
     dataKey: 'eventType',
-    columnClassName: 'testColumnClassName',
+    className: 'testColumnClassName',
   },
   {
     label: 'Affected Devices',
     dataKey: 'affectedDevices',
-    columnClassName: 'testColumnClassName',
+    className: 'testColumnClassName',
   },
   {
     label: 'Detections',
     dataKey: 'detections',
-    columnClassName: 'testColumnClassName',
+    className: 'testColumnClassName',
   },
   {
     label: 'Linked field',
     dataKey: 'Link',
-    columnClassName: 'testColumnClassName',
+    className: 'testColumnClassName',
   },
 ];
 
@@ -57,25 +57,25 @@ const sortedColumns = [
   {
     label: 'Event Type',
     dataKey: 'eventType',
-    columnClassName: 'testColumnClassName',
+    className: 'testColumnClassName',
     sortable: true,
   },
   {
     label: 'Affected Devices',
     dataKey: 'affectedDevices',
-    columnClassName: 'testColumnClassName',
+    className: 'testColumnClassName',
     sortable: true,
   },
   {
     label: 'Detections',
     dataKey: 'detections',
-    columnClassName: 'testColumnClassName',
+    className: 'testColumnClassName',
     sortable: true,
   },
   {
     label: 'Linked field',
     dataKey: 'Link',
-    columnClassName: 'testColumnClassName',
+    className: 'testColumnClassName',
     sortable: true,
   },
 ];
@@ -234,7 +234,7 @@ describe('Custom classes', () => {
     <Table
       columns={columns.map(x => ({
         ...x,
-        columnClassName: () => columnMockfunc(),
+        className: () => columnMockfunc(),
       }))}
       data={data}
       rowClassName={rowMockfunc}

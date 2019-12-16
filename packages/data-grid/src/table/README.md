@@ -239,7 +239,7 @@ const rowClassNames = tableData => {
 
 ### Custom Column Styling
 
-Should the need arise where you have to add styling to the table column. The best practice is to use the 'columnClassName' prop to assign a css classname each td with the same column ID. Should you need to carry out conditional styling a function can be supplied.
+Should the need arise where you have to add styling to the table column. The best practice is to use the 'className' prop to assign a css classname each td with the same column ID. Should you need to carry out conditional styling a function can be supplied.
 
 ```jsx
 import { Link } from '@puppet/react-components';
@@ -309,23 +309,23 @@ const columns = [
   {
     label: 'Event Type1',
     dataKey: 'eventType',
-    columnClassName: (dataKey, index) => columnClassNames(dataKey, index),
+    className: (dataKey, index) => columnClassNames(dataKey, index),
   },
   {
     label: 'Affected Devices',
     dataKey: 'affectedDevices',
-    columnClassName: (dataKey, index) => columnClassNames(dataKey, index),
+    className: (dataKey, index) => columnClassNames(dataKey, index),
   },
 
   {
     label: 'Detections',
     dataKey: 'detections',
-    columnClassName: (dataKey, index) => columnClassNames(dataKey, index),
+    className: (dataKey, index) => columnClassNames(dataKey, index),
   },
   {
     label: 'Linked field',
     dataKey: 'Link',
-    columnClassName: (dataKey, index) => columnClassNames(dataKey, index),
+    className: (dataKey, index) => columnClassNames(dataKey, index),
   },
 ];
 

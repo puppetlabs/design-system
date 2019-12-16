@@ -38,7 +38,7 @@ const propTypes = {
       /** Optional feature to make column sortrable */
       sortable: bool,
       /** Optional classname that can be a string or a function taking the dataKey and column index which can be used to render styling on specific column */
-      columnClassName: oneOfType([func, string]),
+      className: oneOfType([func, string]),
       /** Styling for column header text */
       style: shape({}),
     }),
@@ -234,7 +234,7 @@ class Table extends Component {
                       cellRenderer,
                       columnData,
                       dataKey,
-                      columnClassName,
+                      className: columnClassName,
                       style,
                     } = {
                       ...defaultColumnDefs,

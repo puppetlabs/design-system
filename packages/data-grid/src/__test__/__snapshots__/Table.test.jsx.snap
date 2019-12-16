@@ -6,22 +6,22 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   columns={
     Array [
       Object {
-        "columnClassName": "testColumnClassName",
+        "className": "testColumnClassName",
         "dataKey": "eventType",
         "label": "Event Type",
       },
       Object {
-        "columnClassName": "testColumnClassName",
+        "className": "testColumnClassName",
         "dataKey": "affectedDevices",
         "label": "Affected Devices",
       },
       Object {
-        "columnClassName": "testColumnClassName",
+        "className": "testColumnClassName",
         "dataKey": "detections",
         "label": "Detections",
       },
       Object {
-        "columnClassName": "testColumnClassName",
+        "className": "testColumnClassName",
         "dataKey": "Link",
         "label": "Linked field",
       },
@@ -102,22 +102,22 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         columns={
           Array [
             Object {
-              "columnClassName": "testColumnClassName",
+              "className": "testColumnClassName",
               "dataKey": "eventType",
               "label": "Event Type",
             },
             Object {
-              "columnClassName": "testColumnClassName",
+              "className": "testColumnClassName",
               "dataKey": "affectedDevices",
               "label": "Affected Devices",
             },
             Object {
-              "columnClassName": "testColumnClassName",
+              "className": "testColumnClassName",
               "dataKey": "detections",
               "label": "Detections",
             },
             Object {
-              "columnClassName": "testColumnClassName",
+              "className": "testColumnClassName",
               "dataKey": "Link",
               "label": "Linked field",
             },
@@ -402,22 +402,22 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   columns={
     Array [
       Object {
-        "columnClassName": "testColumnClassName",
+        "className": "testColumnClassName",
         "dataKey": "eventType",
         "label": "Event Type",
       },
       Object {
-        "columnClassName": "testColumnClassName",
+        "className": "testColumnClassName",
         "dataKey": "affectedDevices",
         "label": "Affected Devices",
       },
       Object {
-        "columnClassName": "testColumnClassName",
+        "className": "testColumnClassName",
         "dataKey": "detections",
         "label": "Detections",
       },
       Object {
-        "columnClassName": "testColumnClassName",
+        "className": "testColumnClassName",
         "dataKey": "Link",
         "label": "Linked field",
       },
@@ -453,22 +453,22 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
         columns={
           Array [
             Object {
-              "columnClassName": "testColumnClassName",
+              "className": "testColumnClassName",
               "dataKey": "eventType",
               "label": "Event Type",
             },
             Object {
-              "columnClassName": "testColumnClassName",
+              "className": "testColumnClassName",
               "dataKey": "affectedDevices",
               "label": "Affected Devices",
             },
             Object {
-              "columnClassName": "testColumnClassName",
+              "className": "testColumnClassName",
               "dataKey": "detections",
               "label": "Detections",
             },
             Object {
-              "columnClassName": "testColumnClassName",
+              "className": "testColumnClassName",
               "dataKey": "Link",
               "label": "Linked field",
             },
