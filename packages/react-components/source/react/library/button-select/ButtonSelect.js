@@ -16,7 +16,7 @@ const propTypes = {
   id: PropTypes.string.isRequired,
   /** Are multiple selections allowed? */
   multiple: PropTypes.bool,
-  /** An Array of select options */
+  /** An array of select options */
   options: PropTypes.arrayOf(
     PropTypes.shape({
       /** Select option value */
@@ -35,7 +35,7 @@ const propTypes = {
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
   ]),
-  /** Value change handler. Will receive the new value */
+  /** Value change handler. This function gets passed the new value as the only parameter. */
   onChange: PropTypes.func,
   /** When in multiple mode, should the selected items be applied immediately? */
   applyImmediately: PropTypes.bool, // eslint-disable-line

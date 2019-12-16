@@ -1,8 +1,32 @@
-The ButtonSelect component allows users to select a value or set of values from a list of options. It behaves much like a form element, but is intended for use outside of forms for general page control. The selected value is updated automatically when the user selects a new option.
+## Overview
 
-### Basic use
+The `ButtonSelect` component allows users to select a value or set of values from a list of options. It behaves much like a form element, but is intended for use outside of forms as a general page control. The selected value is updated automatically when the user selects a new option, so it can be used to change content on a page without the need for a separate "submit" button.
 
-Options are specified by entries in an `options` array prop. Each requires a unique value and a friendly label to display to users.
+## Basic use
+
+Options are specified by entries in an `options` array prop. Each requires a unique `value` and a friendly `label` to display to users.
+
+```jsx
+const options = [
+  { value: 'hello', label: 'Hello' },
+  { value: 'world', label: 'World' },
+  { value: 'hi', label: 'Hi' },
+  { value: 'mom', label: 'Mom' },
+];
+
+<ButtonSelect
+  options={options}
+  value={state.value}
+  onChange={value => {
+    console.log('New Value:', value);
+    setState({ value });
+  }}
+/>
+```
+
+## Types
+
+The visual types of `ButtonSelect` are "primary", "secondary", "tertiary", "danger", "transparent", "text".
 
 ```jsx
 const options = [
@@ -50,6 +74,17 @@ const style = { display: 'inline-block', margin: 10 };
     }}
   />
   <ButtonSelect
+    type="danger"
+    options={options}
+    placeholder="Select a value"
+    style={style}
+    value={state.value3}
+    onChange={value3 => {
+      console.log('New Value:', value3);
+      setState({ value3 });
+    }}
+  />
+  <ButtonSelect
     type="transparent"
     options={options}
     placeholder="Select a value"
@@ -73,6 +108,8 @@ const style = { display: 'inline-block', margin: 10 };
   />
 </div>;
 ```
+
+## Variants
 
 ### Custom selected labels
 
@@ -141,6 +178,8 @@ const style = { display: 'inline-block', margin: 10 };
 ```
 
 ### Multiple selections, immediately applied
+
+Warning: Consult with your UX designer prior to using this option. We are considering deprecating this behavior in order to simplify multi-select menus.
 
 The default multi-select behavior can be overridden with the `applyImmediately` prop. In this mode, a 'done' button will still render for consistency but the values will be immediately applied.
 

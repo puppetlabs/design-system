@@ -1,5 +1,7 @@
 # Unreleased
 
+- [Docs] Update ButtonSelect documentation by [@vine77](https://github.com/vine77)
+
 # 5.11.0 (2019-12-13)
 
 - [Sidebar] Add `profileIcon` prop to Sidebar.Footer for custom profile icons or images by [@jilliankeenan](https://github.com/jilliankeenan)
