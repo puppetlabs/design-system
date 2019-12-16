@@ -380,7 +380,7 @@ class Select extends Component {
             required={required}
             disabled={disabled}
             error={error}
-            aria-expanded={open}
+            aria-expanded={!!open}
             aria-haspopup="listbox"
             aria-owns={`${name}-menu`}
             aria-controls={`${name}-menu`}
@@ -405,7 +405,7 @@ class Select extends Component {
               error={error}
               aria-haspopup="listbox"
               aria-controls={`${name}-menu`}
-              aria-expanded={open}
+              aria-expanded={!!open}
               onClick={onClickButton}
               value={getButtonLabel()}
               placeholder={placeholder}
