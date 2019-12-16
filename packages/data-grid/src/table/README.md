@@ -559,7 +559,7 @@ const columns2 = [
 
 ### Selection column
 
-Should your data grid component support a user action within your project then the selectable feature can be used. By passing the 'selectable' prop a column of checkboxes will appear. If the 'selected' property is passed to your data objects, then the checkboxes will render checked. When a user clicks a rows checkbox an 'onUpdateData' is fired and the updated data will be returned. When a user clicks the headers checkbox an 'updateSelectAllValue' is fired and the checked value is returned. To control the state of the headers checkbox use the 'selectAllValue' prop.
+Should your data grid component support a user action within your project then the selectable feature can be used. By passing the 'selectable' prop a column of checkboxes will appear. If the 'selected' property is passed to your data objects, then the checkboxes will render checked. When a user clicks a rows checkbox an 'onUpdateData' is fired and the updated data will be returned.
 
 ```jsx
 import { Link } from '@puppet/react-components';
@@ -633,21 +633,16 @@ const columns = [
 class StatefulParent extends React.Component {
   constructor() {
     super();
-    this.state = { data, checkAll: false };
+    this.state = { data };
     this.onUpdateData = this.onUpdateData.bind(this);
-    this.updateSelectAllValue = this.updateSelectAllValue.bind(this);
   }
 
   onUpdateData(updatedData) {
     this.setState({ data: updatedData });
   }
 
-  updateSelectAllValue(value) {
-    this.setState({ checkAll: value });
-  }
-
   render() {
-    const { data: stateData, checkAll: headerCheckboxState } = this.state;
+    const { data: stateData } = this.state;
 
     return (
       <div>
@@ -656,8 +651,6 @@ class StatefulParent extends React.Component {
           columns={columns}
           selectable
           onUpdateData={this.onUpdateData}
-          updateSelectAllValue={this.updateSelectAllValue}
-          selectAllValue={headerCheckboxState}
         />
       </div>
     );

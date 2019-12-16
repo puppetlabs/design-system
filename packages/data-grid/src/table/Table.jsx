@@ -45,6 +45,8 @@ const propTypes = {
   ).isRequired,
   /** Provides a unique key for each table row. */
   rowKey: oneOfType([func, string]),
+  /** Optional function which can be used to render styling on specific rows */
+  rowClassName: oneOfType([func, string]),
   /** Render table in fixed-layout mode */
   fixed: bool,
   /** Optional additional table className */
@@ -66,16 +68,10 @@ const propTypes = {
   emptyStateHeader: string,
   /** Optional string to provider descriptive message explaining the empty state of the table */
   emptyStateMessage: string,
-  /** Optional function which can be used to render styling on specific rows */
-  rowClassName: oneOfType([func, string]),
   /** Boolean to render select checkbox column */
   selectable: bool,
   /** Callback executed when table data updates through selection. */
   onUpdateData: func,
-  /** Update state of table header checkbox value. Accepts new checkbox value. */
-  updateSelectAllValue: func,
-  /** State of the table header checkbox */
-  selectAllValue: bool,
 };
 
 const defaultProps = {
@@ -92,8 +88,6 @@ const defaultProps = {
   rowClassName: () => {},
   selectable: false,
   onUpdateData: () => {},
-  updateSelectAllValue: () => {},
-  selectAllValue: false,
 };
 
 const defaultColumnDefs = {
@@ -103,6 +97,18 @@ const defaultColumnDefs = {
 };
 
 class Table extends Component {
+  constructor(props) {
+    super(props);
+
+    const { data } = this.props;
+    let value = false;
+    if (data.every(x => x.selected)) {
+      value = true;
+    }
+
+    this.state = { selectAllValue: value };
+  }
+
   uniqueIDCheck = (rowKey, rowData, rowIndex) => {
     if (rowKey === undefined) {
       const newRowData = rowData;
@@ -145,18 +151,18 @@ class Table extends Component {
       rowClassName,
       selectable,
       onUpdateData,
-      updateSelectAllValue,
-      selectAllValue,
       onSort,
       ...rest
     } = this.props;
+
+    const { selectAllValue } = this.state;
 
     const selectAll = value => {
       const updatedData = data.map(x => {
         return { ...x, selected: value };
       });
       onUpdateData(updatedData);
-      updateSelectAllValue(value);
+      this.setState({ selectAllValue: value });
     };
 
     const onRowSelected = (index, selected) => {
@@ -164,10 +170,10 @@ class Table extends Component {
       updatedData[index].selected = selected;
 
       if (!selected && selectAllValue) {
-        updateSelectAllValue(false);
+        this.setState({ selectAllValue: false });
       }
       if (selected && !selectAllValue && updatedData.every(x => x.selected)) {
-        updateSelectAllValue(true);
+        this.setState({ selectAllValue: true });
       }
 
       onUpdateData(updatedData);
@@ -222,7 +228,7 @@ class Table extends Component {
                       <Checkbox
                         className="dg-table-checkbox"
                         onChange={value => onRowSelected(rowIndex, value)}
-                        checked={rowData.selected}
+                        value={rowData.selected}
                         label=""
                         name=""
                       />

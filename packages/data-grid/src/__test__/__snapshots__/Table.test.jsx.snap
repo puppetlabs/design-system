@@ -81,7 +81,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   onSort={[Function]}
   onUpdateData={[Function]}
   rowClassName={[Function]}
-  selectAllValue={false}
   selectable={false}
   sortedColumn={
     Object {
@@ -89,7 +88,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       "sortDataKey": "",
     }
   }
-  updateSelectAllValue={[Function]}
 >
   <div
     className=""
@@ -432,7 +430,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   onSort={[Function]}
   onUpdateData={[Function]}
   rowClassName={[Function]}
-  selectAllValue={false}
   selectable={false}
   sortedColumn={
     Object {
@@ -440,7 +437,6 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
       "sortDataKey": "",
     }
   }
-  updateSelectAllValue={[Function]}
 >
   <div
     className=""
@@ -475,7 +471,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
           ]
         }
         onSelectAll={[Function]}
-        selectAllValue={false}
+        selectAllValue={true}
         selectable={false}
         sortedColumn={
           Object {

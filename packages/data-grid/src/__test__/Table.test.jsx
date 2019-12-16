@@ -87,7 +87,6 @@ const wrapper4 = mount(<Table columns={sortedColumns} data={data} />);
 const wrapper6 = mount(
   <Table columns={columns} data={data} rowClassName="testRowClassName" />,
 );
-const wrapper10 = mount(<Table columns={columns} data={data} selectable />);
 
 describe('Snapshot test', () => {
   test('Check component matches previous HTML snapshot', () => {
@@ -263,15 +262,12 @@ describe('Custom classes', () => {
 });
 
 describe('Selection Props', () => {
-  const headerCheckMockfunc = jest.fn();
   const rowCheckMockfunc = jest.fn();
   const wrapper9 = mount(
     <Table
       columns={columns}
       data={data}
       selectable
-      updateSelectAllValue={headerCheckMockfunc}
-      selectAllValue
       onUpdateData={rowCheckMockfunc}
     />,
   );
@@ -287,36 +283,12 @@ describe('Selection Props', () => {
   });
   expect(wrapper9.findWhere(n => n.name() === 'Checkbox')).toHaveLength(8);
 
-  test('When header checkbox is clicked fire updateSelectAllValue', () => {
-    wrapper9
-      .find('.rc-checkbox')
-      .first()
-      .simulate('change');
-    expect(headerCheckMockfunc).toHaveBeenCalled();
-  });
-
   test('When row checkbox is clicked fire onUpdateData', () => {
     wrapper9
       .find('.rc-checkbox')
       .last()
       .simulate('change');
     expect(rowCheckMockfunc).toHaveBeenCalled();
-  });
-
-  test('selectAllValue passes checkbox state correctly', () => {
-    expect(
-      wrapper9
-        .find('.dg-table-header-checkbox')
-        .first()
-        .prop('checked'),
-    ).toBeTruthy();
-
-    expect(
-      wrapper10
-        .find('.dg-table-header-checkbox')
-        .first()
-        .prop('checked'),
-    ).toBeFalsy();
   });
 
   test('When property `selected` is true in data prop object table row cells are rendered correctly', () => {
@@ -349,6 +321,6 @@ describe('Selection Props', () => {
         .find('.rc-checkbox')
         .last()
         .prop('checked'),
-    ).toBeTruthy();
+    ).toEqual(true);
   });
 });

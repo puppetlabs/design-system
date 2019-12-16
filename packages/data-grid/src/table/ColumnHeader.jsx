@@ -89,7 +89,7 @@ class ColumnHeader extends Component {
             >
               <Checkbox
                 onChange={value => onSelectAll(value)}
-                checked={selectAllValue}
+                value={selectAllValue}
                 label=""
                 name=""
                 className="dg-table-header-checkbox"
