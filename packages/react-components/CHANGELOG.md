@@ -1,6 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.11.0...HEAD)
 
 - [Select] Allow truthy string in addition to boolean `open` prop in `Select` component by [@vine77](https://github.com/vine77)
+- [Card] Fix filtering of Card title and actions in production builds by [@vine77](https://github.com/vine77)
 - [Docs] Update ButtonSelect documentation by [@vine77](https://github.com/vine77)
 
 # [5.11.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.10.0...@puppet/react-components@5.11.0) (2019-12-13)
