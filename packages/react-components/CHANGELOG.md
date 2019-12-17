@@ -1,9 +1,9 @@
-# Unreleased
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.11.0...HEAD)
 
 - [Select] Allow truthy string in addition to boolean `open` prop in `Select` component by [@vine77](https://github.com/vine77)
 - [Docs] Update ButtonSelect documentation by [@vine77](https://github.com/vine77)
 
-# 5.11.0 (2019-12-13)
+# [5.11.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.10.0...@puppet/react-components@5.11.0) (2019-12-13)
 
 - [Sidebar] Add `profileIcon` prop to Sidebar.Footer for custom profile icons or images by [@jilliankeenan](https://github.com/jilliankeenan)
 - [Sidebar] Make `version` prop optional in Sidebar.Footer by [@jilliankeenan](https://github.com/jilliankeenan)
@@ -15,80 +15,80 @@
 - [Docs] Update Sidebar documentation by [@vine77](https://github.com/vine77)
 - Update CODEOWNERS file to use GitHub team instead of usernames by [@vine77](https://github.com/vine77)
 
-# 5.10.0 (2019-11-22)
+# [5.10.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.20...@puppet/react-components@5.10.0) (2019-11-22)
 
 - [Code] Add Code component [#176](https://github.com/puppetlabs/design-system/pull/176) by [@melcherry98](https://github.com/melcherry98)
 - [sass-variables] Add Inconsolata monospace font [#176](https://github.com/puppetlabs/design-system/pull/176) by [@melcherry98](https://github.com/melcherry98)
 - [Content] Add more styles to HTML in Content component [#177](https://github.com/puppetlabs/design-system/pull/177) by [@sprokusk](https://github.com/sprokusk)
 
-# 5.9.20 (2019-11-20)
+# [5.9.20](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.19...@puppet/react-components@5.9.20) (2019-11-20)
 
 - [Sidebar] Add `badge` prop to Sidebar.Item for full control over badges (instead of `count`, which just controls badge content)
 - [Table] Add `bordered` prop to Table (for rounded outer border and shadow)
 - [Alert] Hide empty Alert.Message
 
-# 5.9.19 (2019-11-15)
+# [5.9.19](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.18...@puppet/react-components@5.9.19) (2019-11-15)
 
 - [Modal] Affix Modal.Actions to footer
 - [Modal] Make Modal's close button always fixed to upper-right
 - [Modal] Add border between footer and content if overflowing
 - [Card] Don't require user to wrap Card title and actions in header component
 
-# 5.9.18 (2019-11-12)
+# [5.9.18](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.17...@puppet/react-components@5.9.18) (2019-11-12)
 
 - [Button] Fix spacing issues with `innerFocus` icon buttons
 - [Icon] Fix 'double-left' icon to match 'double-right' icon
 
-# 5.9.17 (2019-11-08)
+# [5.9.17](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.16...@puppet/react-components@5.9.17) (2019-11-08)
 
 - Upgrade to React 16.11.0
 
-# 5.9.16 (2019-11-07)
+# [5.9.16](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.15...@puppet/react-components@5.9.16) (2019-11-07)
 
 - [Card] Add Card.Header subcomponent
 - [Alert] Allow any content (instead of just strings) in Alert component
 
-# 5.9.15
+# [5.9.15](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.14...@puppet/react-components@5.9.15)
 
 - Fix Card content
 
-# 5.9.14
+# [5.9.14](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.13...@puppet/react-components@5.9.14)
 
 - Allow menu list for selects to expand to their intrinsic width for Select, ActionSelect, and ButtonSelect
 - Place Card.Title and Card.Action in flexbox header to fix a potential overlap of a long title with actions
 
-# 5.9.13
+# [5.9.13](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.12...@puppet/react-components@5.9.13)
 
 - Fix `Input` width from overextending its container
 - Update package-lock.json files
 - Upgrade lerna to 3.18.3 so lockfiles get updated on lerna commands
 
-# 5.9.12
+# [5.9.12](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.11...@puppet/react-components@5.9.12)
 
 - Add boolean `innerFocus` prop to Button component
 - Prevent caret icon from overlapping text in Select component
 - Add docs for rendering a Button as a hyperlink
 
-# 5.9.11
+# [5.9.11](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.10...@puppet/react-components@5.9.11)
 
 - Fix bug where Select caret icon click didn't trigger dropdown
 - Increase click target size for a Link that is the only direct descendant in a table cell
 - Fix `npm start` in packages/react-components
 - Fix `npm run format`
 
-# 5.9.10
+# [5.9.10](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.9...@puppet/react-components@5.9.10)
 
 - Fix `fillRule` capitalization in "hourglass" icon
 
-# 5.9.9
+# [5.9.9](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.8...@puppet/react-components@5.9.9)
 
 - Add "hourglass" icon
 
-# 5.9.8
+# [5.9.8](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.7...@puppet/react-components@5.9.8)
 
 - Fix keyboard navigation bug in ButtonSelect introduced by version 5.9.5.
 
-# 5.9.7
+# [5.9.7](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.6...@puppet/react-components@5.9.7)
 
 - Add `ariaLabel` as optional prop to `Sidebar.Header` component
 - Use `aria-current` instead of `aria-selected` for selected Card components
@@ -96,53 +96,53 @@
 - Fix scrolling in tabs on Firefox
 - Add height and width attributes Icon SVGs
 
-# 5.9.6
+# [5.9.6](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.5...@puppet/react-components@5.9.6)
 
 - Update Alert font weight and color
 - Fix Alert wrapping
 
-# 5.9.5
+# [5.9.5](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.4...@puppet/react-components@5.9.5)
 
 - Remove console warning by replacing deprecated use of componentWillReceiveProps with componentDidUpdate
 
-# 5.9.4
+# [5.9.4](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.3...@puppet/react-components@5.9.4)
 
 - Internal: use PropTypes.elementType over custom renderableElement type
 - Docs Updates
 - Add minus-circle icon
 
-# 5.9.3
+# [5.9.3](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.2...@puppet/react-components@5.9.3)
 
 - Allow PropTypes.node in Tab title
 
-# 5.9.2
+# [5.9.2](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.1...@puppet/react-components@5.9.2)
 
 - Add icons for "terminal", "top", and "bottom"
 
-# 5.9.1
+# [5.9.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.0...@puppet/react-components@5.9.1)
 
 - Allow siblings of `Tabs.Tab` in `Tabs` component
 - Add onBlur prop to Select Component
 - Clean up icon SVG tags
 
-# 5.9.0
+# [5.9.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.8.0...@puppet/react-components@5.9.0)
 
 - Add "import" and "export" icons
 
-# 5.8.0
+# [5.8.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.7.1...@puppet/react-components@5.8.0)
 
 - Add `indeterminate` prop to the Checkbox component
 - Expand Alert functionality with Alert.Message and Alert.Actions components
 
-# 5.7.1
+# [5.7.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.7.0...@puppet/react-components@5.7.1)
 
 - Update README.md
 
-# 5.7.0
+# [5.7.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.6.1...@puppet/react-components@5.7.0)
 
 - Add export-csv icon
 
-# 5.6.1
+# [5.6.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.6.0...@puppet/react-components@5.6.1)
 
 - NOTICE: Packages are now being published to npm instead of Artifactory, so `.npmrc` files with lines ending in `/npm__local/` should replace those instances with `/npm/` (which combines Artifactory with an npm mirror) or remove them if Artifactory is no longer needed. For your per-user `~/.npmrc` file, it's okay to have this line (without `/npm__local/`), but we recommend removing it entirely so that each project can have its own `.npmrc` file to manage dependencies per-project:
     ```
@@ -150,50 +150,50 @@
     ```
 - Import core-js as single dependency without @babel/preset-env's useBuiltIns option to add compatibility with Gatsby.
 
-# 5.6.0
+# [5.6.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.5.0...@puppet/react-components@5.6.0)
 
 - Add `open` prop to the Select component
 - Stop propagation in Select component for key up, key down, and enter events
 - Update docs for Table and Tabs
 
-# 5.5.0
+# [5.5.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.4.1...@puppet/react-components@5.5.0)
 
 - Add autocomplete type for Select
 
-# 5.4.1
+# [5.4.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.4.0...@puppet/react-components@5.4.1)
 
 - Fix shrug and lock icons
 
-# 5.4.0
+# [5.4.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.3.0...@puppet/react-components@5.4.0)
 
 - Add project nebula logo
 - Add invite, shrug, and lock icons
 - Update some component documentation
 
-# 5.3.0
+# [5.3.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.2.0...@puppet/react-components@5.3.0)
 
 - Add corejs as top-level dependency
 - Add contract and spaceship icons
 
-# 5.2.0
+# [5.2.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.1.0...@puppet/react-components@5.2.0)
 
 - Add Card.Action component for a single action
 - Don't disable cancel button when entire form is disabled
 - Small styling bug fix in dropdown
 
-# 5.1.0
+# [5.1.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.0.2...@puppet/react-components@5.1.0)
 
 - Add ConfirmationModal component
 
-# 5.0.2
+# [5.0.2](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.0.1...@puppet/react-components@5.0.2)
 
 - Truncate text in sidebar footer details
 
-# 5.0.1
+# [5.0.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.0.0...@puppet/react-components@5.0.1)
 
 - Support navigation links in sidebar footer
 
-# 5.0.0
+# [5.0.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.0.0-alpha.30...@puppet/react-components@5.0.0)
 
 - Release stable branch
 
