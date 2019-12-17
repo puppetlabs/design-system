@@ -65,13 +65,13 @@ const propTypes = {
   /** Is the input disabled?  */
   disabled: PropTypes.bool,
   /** Form error, causing element to render red when present */
-  error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   /** Optional additional className passed to the outer element */
   className: PropTypes.string,
   /** Optional inline style passed to the outer element */
   style: PropTypes.shape({}),
-  /** Control the state of the options menu */
-  open: PropTypes.bool,
+  /** Control whether the options menu is open or closed with the `open` boolean prop. (Note that, for special cases, because the select dropdown will open when this prop changes to a different and truthy value, you can pass a different string to keep the dropdown open.) */
+  open: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   /** onBlur handler */
   onBlur: PropTypes.func,
 };
@@ -380,7 +380,7 @@ class Select extends Component {
             required={required}
             disabled={disabled}
             error={error}
-            aria-expanded={open}
+            aria-expanded={!!open}
             aria-haspopup="listbox"
             aria-owns={`${name}-menu`}
             aria-controls={`${name}-menu`}
@@ -405,7 +405,7 @@ class Select extends Component {
               error={error}
               aria-haspopup="listbox"
               aria-controls={`${name}-menu`}
-              aria-expanded={open}
+              aria-expanded={!!open}
               onClick={onClickButton}
               value={getButtonLabel()}
               placeholder={placeholder}
