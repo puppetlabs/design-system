@@ -55,7 +55,10 @@ class YScale {
       if (isBubble && isChart) {
         min = helpers.getAdjustedLimit(props);
       } else {
-        min = d3Min(s.data.filter(d => d.y !== null), d => d.y);
+        min = d3Min(
+          s.data.filter(d => d.y !== null),
+          d => d.y,
+        );
       }
 
       return min;
@@ -80,7 +83,10 @@ class YScale {
       if (isBubble && isChart) {
         max = helpers.getAdjustedLimit(props);
       } else {
-        max = d3Max(s.data.filter(d => d.y !== null), d => d.y);
+        max = d3Max(
+          s.data.filter(d => d.y !== null),
+          d => d.y,
+        );
       }
 
       return max;

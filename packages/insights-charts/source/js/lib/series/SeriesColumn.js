@@ -120,9 +120,10 @@ class SeriesColumn extends Series {
       .attr('clip-path', `url(#${this.clipPathId})`);
 
     // updating bars that were already in the view
-    let rect = series
-      .selectAll(CSS.getClassSelector('column-rect'))
-      .data(d => d.data, d => d.categoryIndex);
+    let rect = series.selectAll(CSS.getClassSelector('column-rect')).data(
+      d => d.data,
+      d => d.categoryIndex,
+    );
 
     // removing bars that no longer exist
     rect.exit().remove();

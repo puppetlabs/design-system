@@ -201,9 +201,10 @@ class SeriesPoi extends Series {
           )}`,
       );
 
-      let pois = this.series
-        .selectAll(CSS.getClassSelector('poi'))
-        .data(d => (!d.disabled ? d.data : []), d => d.categoryIndex);
+      let pois = this.series.selectAll(CSS.getClassSelector('poi')).data(
+        d => (!d.disabled ? d.data : []),
+        d => d.categoryIndex,
+      );
 
       pois.exit().remove();
 

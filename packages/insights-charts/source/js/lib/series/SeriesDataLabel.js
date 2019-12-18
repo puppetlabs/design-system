@@ -229,7 +229,10 @@ class SeriesDataLabel extends Series {
 
       this.groups = this.series
         .selectAll(CSS.getClassSelector('data-label-group'))
-        .data(d => (!d.disabled ? d.data : []), d => d.categoryIndex);
+        .data(
+          d => (!d.disabled ? d.data : []),
+          d => d.categoryIndex,
+        );
 
       this.groups.exit().remove();
 

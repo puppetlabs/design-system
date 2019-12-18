@@ -176,9 +176,7 @@ class Container {
 
       this.testG.attr(
         'transform',
-        `translate(${this.dimensions.margins.left}, ${
-          this.dimensions.margins.top
-        })`,
+        `translate(${this.dimensions.margins.left}, ${this.dimensions.margins.top})`,
       );
 
       // The width of the x axis needs to take into account the margins applied by the y axis

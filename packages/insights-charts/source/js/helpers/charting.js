@@ -3,6 +3,7 @@ import clone from 'clone';
 import { min as d3Min, max as d3Max } from 'd3-array';
 import formatters from './formatters';
 import { POI_RADIUS, POI_SCALING_FACTOR, VIZ_TYPES } from '../constants';
+/* eslint-disable import/no-cycle */
 import ZScale from '../lib/scales/ZScale';
 
 const helpers = {
@@ -224,8 +225,14 @@ const helpers = {
     const isYAxis = axis === 'y';
     const isXAxis = axis === 'x';
 
-    const max = d3Max(s.data.filter(d => d[axis] !== null), d => d[axis]);
-    let min = d3Min(s.data.filter(d => d[axis] !== null), d => d[axis]);
+    const max = d3Max(
+      s.data.filter(d => d[axis] !== null),
+      d => d[axis],
+    );
+    let min = d3Min(
+      s.data.filter(d => d[axis] !== null),
+      d => d[axis],
+    );
 
     // We do this to account for using .nice on y-axis
     if (isYAxis) {

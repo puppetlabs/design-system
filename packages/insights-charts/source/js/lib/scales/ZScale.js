@@ -1,13 +1,24 @@
 import { scalePow } from 'd3-scale';
 import { min as d3Min, max as d3Max } from 'd3-array';
 import { POI_RADIUS } from '../../constants';
+/* eslint-disable import/no-cycle */
 import helpers from '../../helpers/charting';
 
 const getMinimum = data =>
-  d3Min(data, s => d3Min(s.data.filter(d => d.z !== null), d => d.z));
+  d3Min(data, s =>
+    d3Min(
+      s.data.filter(d => d.z !== null),
+      d => d.z,
+    ),
+  );
 
 const getMaximum = data =>
-  d3Max(data, s => d3Max(s.data.filter(d => d.z !== null), d => d.z));
+  d3Max(data, s =>
+    d3Max(
+      s.data.filter(d => d.z !== null),
+      d => d.z,
+    ),
+  );
 
 class ZScale {
   constructor(data, dimensions) {
