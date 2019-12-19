@@ -16,14 +16,14 @@ module.exports = {
     },
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      include: [
-        path.join(__dirname, 'source/js'),
-      ],
-      use: {
-        loader: 'babel-loader',
+    rules: [
+      {
+        test: /\.js$/,
+        include: [path.join(__dirname, 'source/js')],
+        use: {
+          loader: 'babel-loader',
+        },
       },
-    }],
+    ],
   },
 };

@@ -151,6 +151,11 @@ module.exports = {
       ignore: ['**/**/index.js', '**/*.test.{js,jsx}'],
     },
     {
+      name: 'React Charts',
+      components: '../insights-charts/source/js/**/*.{js,jsx}',
+      ignore: ['**/**/index.js', '**/*.test.{js,jsx}'],
+    },
+    {
       name: 'Data Grid',
       components: '../data-grid/src/**/*.{js,jsx}',
       ignore: [
