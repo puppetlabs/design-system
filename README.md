@@ -1,12 +1,10 @@
 # Puppet Design System
 
-The Puppet Design System represents the behaviors, components, principles and visual presentation we share. It is based on our objective to provide consistency, efficiency, and quality experiences to our customers. With it we scale design across departments, products, platforms, and time zones.
+The Puppet Design System represents the behaviors, components, principles and visual presentation we share. It is based on our objective to provide consistency, efficiency, and quality experiences to our customers. With it, we scale design across departments, products, platforms, and time zones.
 
-For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b). Visit the living styleguide at <https://puppetlabs.github.io/design-system>.
+For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b). Visit the documentation and living styleguide at <https://puppetlabs.github.io/design-system>.
 
 ## Quick start
-
-Note: These steps must be completed while on the corporate network or VPN.
 
 ### With an existing app
 
@@ -47,7 +45,7 @@ import { Button } from '@puppet/react-components';
 To use public Sass variables, add `@puppet/sass-variables` to your project:
 
 ```sh
-npm install @puppet/react-components
+npm install @puppet/sass-variables
 ```
 
 Reference the [public variables](packages/sass-variables) from your Sass files:
