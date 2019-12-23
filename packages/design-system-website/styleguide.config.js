@@ -25,6 +25,10 @@ module.exports = {
       __dirname,
       'styleguideComponents/ComponentsListRenderer',
     ),
+    SectionHeadingRenderer: path.join(
+      __dirname,
+      'styleguideComponents/SectionHeadingRenderer',
+    ),
     StyleGuideRenderer: path.join(
       __dirname,
       'styleguideComponents/StyleGuideRenderer',
@@ -201,5 +205,6 @@ module.exports = {
       new ExtractTextPlugin({ filename: 'styleguide.css', allChunks: true }),
     ],
   },
+  // Disable sorting component props
   sortProps: props => props,
 };
