@@ -1,6 +1,6 @@
 ## Overview
 
-Puppet’s color palettes have various themes that associate a particular color and its tonal range with a particular functional role. Don’t introduce new colors into your products without consulting the UX team. To ensure accessibility for the greatest number of users, use the color contrast ratios recommended here.
+Puppet's color palettes have various themes that associate a particular color and its tonal range with a particular functional role. Don't introduce new colors into your products without consulting the UX team. To ensure accessibility for the greatest number of users, use the color contrast ratios recommended here.
 
 ### Palettes
 
@@ -10,13 +10,11 @@ Each hue is made up of a gradient of colors from light to dark, broken up into i
 
 We follow a consistent process for creating interactions. Our base color tone begins at 500. Hover states use a lighter color, typically 400. Pressed or active states are typically 600. 300 is used for focus.
 
-`insert color mapping example`
-
 ## Brand palette
 
 Puppet's primary brand color is Amber. This particular color should only be used in the context of Puppet logos, or on dark backgrounds, such as the sidebar component.
 
-`Do not use brand colors other than amber. These colors are being revisited as part of our brand refresh.`
+_Note: Do not use brand colors other than amber. These colors are being revisited as part of our brand refresh._
 
 ```jsx
 const colors = ['brand-primary', 'brand-secondary'];
@@ -26,9 +24,13 @@ const colors = ['brand-primary', 'brand-secondary'];
 
 ## UI palette
 
-Use the UI palette use neutral colors for product chrome: trim, backgrounds, containers, content zones, and other foundational parts.
+Code should always reference the Sass color variable (instead of directly referencing hex values). The variable definitions are located in [_palettes.scss](https://github.com/puppetlabs/design-system/blob/master/packages/sass-variables/_palettes.scss) in the `sass-variables` package, e.g. `$puppet-black`, `$puppet-n950`, etc.
+
+
 
 ### Neutral colors
+
+Use the UI palette use neutral colors for product chrome: trim, backgrounds, containers, content zones, and other foundational parts.
 
 ```jsx
 const colors = [
@@ -55,7 +57,7 @@ const colors = [
 
 Use the actions palette for only the most important actions a user can take on a page — often buttons or links. B500 is also used to indicate "on", whenever a component begins as transparent or a neutral color, e.g. the border of input fields change from grey to blue.
 
-#### Blues
+### Blues
 
 ```jsx
 colors = [
@@ -99,7 +101,7 @@ colors = [
 <Colors colors={colors} />;
 ```
 
-#### Yellows
+### Yellows
 
 Use yellow to indicate warnings. Yellow is a particularly troublesome color to work with when testing for accessibility. Consult a UX designer when using yellow.
 
@@ -122,7 +124,7 @@ colors = [
 <Colors colors={colors} />;
 ```
 
-#### Greens
+### Greens
 
 Use green to indicate success or to indicate approval actions.
 
@@ -143,7 +145,7 @@ colors = [
 <Colors colors={colors} />;
 ```
 
-#### Purples
+### Purples
 
 Purple is still under consideration for its particular use case. It is being considered to indicate instructions or information.
 

@@ -2,6 +2,7 @@
 
 - [Select] Allow truthy string in addition to boolean `open` prop in `Select` component by [@vine77](https://github.com/vine77)
 - [Docs] Update ButtonSelect documentation by [@vine77](https://github.com/vine77)
+- [Docs] Update Colors documentation and add link to the color definitions in _palettes.scss by [@vine77](https://github.com/vine77)
 
 # [5.11.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.10.0...@puppet/react-components@5.11.0) (2019-12-13)
 
