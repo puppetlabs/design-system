@@ -55,14 +55,10 @@ const Card = ({
   const {
     pluckedDescendants: title,
     otherDescendants: filteredDescendants,
-  } = filterDescendants({
-    children,
-    filter: childTypeName => childTypeName === 'CardTitle',
-  });
+  } = filterDescendants({ children, components: CardTitle });
   const { pluckedDescendants: actions, otherDescendants } = filterDescendants({
     children: filteredDescendants,
-    filter: childTypeName =>
-      childTypeName === 'CardAction' || childTypeName === 'CardActionSelect',
+    components: [CardAction, CardActionSelect],
   });
   const hasTitle = title.length > 0;
   const hasActions = actions.length > 0;

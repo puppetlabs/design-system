@@ -1,31 +1,27 @@
 import { Children, cloneElement } from 'react';
 
 /**
- * Given `children` and `filter` (a function that is passed `child.type.name`),
- * return the plucked descendants (even if they were nested) as a flat array
- * that match the filter criteria as well as the other descendants (in the
- * original nested structure) minus the plucked descendants.
+ * Given `children` (and their nested descendants) and `components`, return the
+ * plucked descendants that are instances of any of the given `components` as
+ * well as the other descendants in the original nested structure (minus plucked
+ * descendants).
  *
- * @param {{children: array, filter: function}} parameters
- * @returns {{pluckedDescendants: array, otherDescendants: array}} descendants
+ * @param {{children: Array|ReactNode, components: ReactElement|ReactElement[]}} parameters
+ * @returns {{pluckedDescendants: Array, otherDescendants: Array}} descendants
  */
-const filterDescendants = ({ children, filter }) => {
+const filterDescendants = ({ children, components: component }) => {
   let pluckedDescendants = [];
   const otherDescendants = [];
-
-  if (!filter) return children;
+  const components = Array.isArray(component) ? component : [component];
 
   Children.toArray(children).forEach(child => {
-    if (filter(child.type && child.type.name)) {
+    if (child.type && components.some(type => child.type === type)) {
       pluckedDescendants.push(child);
     } else if (child.props && child.props.children) {
       const {
         pluckedDescendants: nestedPluckedDescendants,
         otherDescendants: nestedOtherDescendants,
-      } = filterDescendants({
-        children: child.props.children,
-        filter,
-      });
+      } = filterDescendants({ children: child.props.children, components });
 
       if (nestedPluckedDescendants.length > 0) {
         pluckedDescendants = pluckedDescendants.concat(
