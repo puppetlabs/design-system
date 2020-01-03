@@ -74,3 +74,45 @@ const style = { margin: 10 };
   />
 </div>;
 ```
+
+
+### MultiSelect
+
+With type `multiselect`, the Select input will allow multiple values to be selected. In this mode an Apply button will render below the options list. The newly selected values are not applied until the user activates this button and if the options chosen exceed the side of the input the excess content will be replaced with an ellipsis. If they escape or click out of the open menu, their changes will be discarded.
+
+```jsx
+initialState = {
+  value: [],
+};
+
+const options = [
+  { value: 'en', label: 'English' },
+  { value: 'ru', label: 'русский' },
+  { value: 'zh', label: '中文' },
+  { value: 'sq', label: 'Albanian' },
+  { value: 'ar', label: 'Arabic' },
+  { value: 'eu', label: 'Basque' },
+  { value: 'bn', label: 'Bengali' },
+  { value: 'bs', label: 'Bosnian' },
+  { value: 'bg', label: 'Bulgarian' },
+  { value: 'ca', label: 'Catalan' },
+];
+
+const style = { margin: 10 };
+
+<div>
+  <Select
+    id="button-select-one"
+    name="select-example-one"
+    options={options}
+    placeholder="Select your language"
+    style={style}
+    value={state.value}
+    onChange={value => {
+      console.log('New Value', value);
+      setState({ value });
+    }}
+    type="multiselect"
+  />
+</div>;
+```
