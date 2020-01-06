@@ -130,7 +130,6 @@ class Select extends Component {
 
   static getDerivedStateFromProps(props, state) {
     if (isControlled(props) || !state.open) {
-      console.log('this is controlled');
       return {
         listValue: props.value,
       };
