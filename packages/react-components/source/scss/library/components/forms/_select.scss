@@ -9,8 +9,11 @@
 
   .rc-select-target .rc-input {
     cursor: pointer;
+    overflow: hidden;
     padding-right: 30px;
     text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
 
   .rc-menu-list {

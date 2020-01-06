@@ -129,15 +129,12 @@ class Select extends Component {
   }
 
   static getDerivedStateFromProps(props, state) {
-    let newProps;
-
     if (isControlled(props) || !state.open) {
-      newProps = {
+      return {
         listValue: props.value,
       };
     }
-
-    return newProps;
+    return null;
   }
 
   // If `open` prop is passed as default, let's trigger menu open
@@ -191,6 +188,10 @@ class Select extends Component {
       }
 
       this.setState({ focusedIndex: 0 });
+    }
+
+    if (type !== MULTISELECT) {
+      this.closeAndFocusButton();
     }
   }
 
@@ -280,10 +281,17 @@ class Select extends Component {
   }
 
   getButtonLabel() {
-    const { type, options, value } = this.props;
+    const { type, options, value, placeholder } = this.props;
+    if (!value || value.length === 0) {
+      return placeholder;
+    }
 
-    if (type === MULTISELECT || !value) {
-      return null;
+    if (type === MULTISELECT) {
+      const selectedOptions = options
+        .filter(option => value.includes(option.value))
+        .map(option => option.selectedLabel || option.label);
+
+      return selectedOptions.join(', ');
     }
 
     const selectedOption = options.find(option => option.value === value);
@@ -293,7 +301,6 @@ class Select extends Component {
 
   getOptions() {
     const { options, value, type, onFilter } = this.props;
-
     let filteredOptions = options;
 
     // If the ingesting app uses the onFilter event handler, it should provide the filtered options
@@ -454,7 +461,6 @@ class Select extends Component {
           onEscape={closeAndFocusButton}
           onChange={onValueChange}
           onFocusItem={onFocusItem}
-          onClickItem={closeAndFocusButton}
           footer={footer}
           style={menuStyle}
           actionLabel={getActionLabel(this.props)}
