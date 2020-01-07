@@ -1,5 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.11.1...HEAD)
 
+- [Select] Add `multiselect` type to `Select` component by [jilliankeenan](https://github.com/jilliankeenan)
+
 # [5.11.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.11.0...@puppet/react-components@5.11.1) (2019-12-30)
 
 - [Select] Allow truthy string in addition to boolean `open` prop in `Select` component by [@vine77](https://github.com/vine77)
