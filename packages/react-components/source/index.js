@@ -21,6 +21,7 @@ import Content from './react/library/content';
 import Heading from './react/library/heading';
 import Text from './react/library/text';
 import Alert from './react/library/alert';
+import ErrorAlert from './react/library/error-alert';
 import Badge from './react/library/badge';
 import Link from './react/library/link';
 import Logo from './react/library/logo';
@@ -57,4 +58,5 @@ export {
   Breadcrumb,
   ConfirmationModal,
   Code,
+  ErrorAlert,
 };

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import Alert from '../alert';
+import ErrorAlert from '../error-alert';
 import { mapObj, shallowDiff } from '../../helpers/statics';
+import * as types from '../../helpers/customPropTypes';
 import FormField from './FormField';
 import FormSection from './FormSection';
 import FormActions from './internal/FormActions';
@@ -51,8 +52,8 @@ const propTypes = {
   actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
   /** Is the form disabled? Will disable all fields and actions */
   disabled: PropTypes.bool,
-  /** A single error message, to be rendered in a banner, above the entire form */
-  error: PropTypes.string,
+  /** An error as a string, Error instance, or custom extended type including item errors */
+  error: types.error,
   /** All relevant form fields and form sections must be passed in as children */
   children: PropTypes.node,
   /** Optional additional className */
@@ -140,7 +141,15 @@ const Form = props => {
    * Map of field name to updated props
    */
   const updatedFieldPropMap = mapObj(fieldProps, userProvidedFieldProps =>
-    updateFieldProps(userProvidedFieldProps, validate, props, values, onChange),
+    updateFieldProps(
+      userProvidedFieldProps,
+      validate,
+      props,
+      values,
+      error,
+      fieldPaths,
+      onChange,
+    ),
   );
 
   const isValid = isFormValid(updatedFieldPropMap);
@@ -156,11 +165,7 @@ const Form = props => {
       noValidate
     >
       {children}
-      {error && (
-        <Alert type="danger" className="rc-form-error">
-          {error}
-        </Alert>
-      )}
+      {error && <ErrorAlert error={error} className="rc-form-error" />}
       <FormActions
         submitting={submitting}
         submittable={submittable}

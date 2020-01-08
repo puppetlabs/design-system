@@ -74,13 +74,13 @@ const splitPath = fieldPath => {
 /**
  * Gets value at nested path in object
  */
-const getValue = (fieldPath, object) => path(splitPath(fieldPath), object);
+const getValue = (fieldPath, object) => path(fieldPath, object);
 
 /**
  * Updates value at nested path in object
  */
 const updateValue = (fieldPath, value, object) =>
-  assocPath(splitPath(fieldPath), value, object);
+  assocPath(fieldPath, value, object);
 
 /**
  * Flattens a nested object by picking off the values at the path specified
@@ -113,7 +113,9 @@ export const reconstitute = (flatObject, originalNestedObject, fieldPaths) => {
  * setting the path to be the field name by default if not provided
  */
 export const getFieldPaths = fieldProps =>
-  mapObj(fieldProps, props => props.path || props.name);
+  mapObj(fieldProps, props =>
+    props.path ? splitPath(props.path) : [props.name],
+  );
 
 const renderField = (
   child,
@@ -168,6 +170,8 @@ export const updateFieldProps = (
   validate,
   props,
   values,
+  formError,
+  fieldPaths,
   onChange,
 ) => {
   const {
@@ -191,6 +195,9 @@ export const updateFieldProps = (
     }
   }
 
+  const nonBlockingError =
+    error || path(['items', ...fieldPaths[name], 'message'], formError);
+
   /**
    * These fields are removed because they are only used by the parent
    * Form element to set the final error value (above), not by the consuming
@@ -204,7 +211,7 @@ export const updateFieldProps = (
   return {
     ...fieldProps,
     blockingError,
-    nonBlockingError: error,
+    nonBlockingError,
     disabled: disabled || userProvidedFieldProps.disabled, // Form overwrites field
     labelType: userProvidedFieldProps.labelType || labelType, // Field overwrites form
     inline: userProvidedFieldProps.inline || inline, // Field overwrites form
