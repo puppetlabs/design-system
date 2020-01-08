@@ -69,14 +69,7 @@ const defaultProps = {
  * The form input interface is the propTypes above, minus the ones that get stripped off
  */
 export const formInputInterface = omit(
-  [
-    'requiredFieldMessage',
-    'validator',
-    'inline',
-    'className',
-    'description',
-    'style',
-  ],
+  ['requiredFieldMessage', 'validator', 'className', 'description', 'style'],
   propTypes,
 );
 
