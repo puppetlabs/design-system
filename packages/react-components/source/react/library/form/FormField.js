@@ -31,6 +31,8 @@ const propTypes = {
   requiredFieldMessage: PropTypes.string,
   /* An optional validation function. Will be passed in order: the current field value, and the entire form value */
   validator: PropTypes.func,
+  /* An optional nested path at which to access field data. Nested path can be delimted with `.` or with brackets `[]`. For example: my.nested.array[0] */
+  path: PropTypes.string,
   /* Alternate inline display format */
   inline: PropTypes.bool,
   /** Width of the inline label */
@@ -52,7 +54,8 @@ const defaultProps = {
   required: false,
   requiredFieldMessage: 'Required field',
   validator() {},
-  inline: null,
+  path: '',
+  inline: false,
   inlineLabelWidth: null,
   onChange() {},
   className: '',

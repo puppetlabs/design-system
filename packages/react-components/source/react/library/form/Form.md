@@ -296,3 +296,34 @@ class MyPage extends React.Component {
 
 <MyPage />;
 ```
+
+### Nested data structures
+
+The `Form` component supports nested data structures through the optional `path` prop on `Form.Field`. Each `path` may reference a nested value in the data provided to the form through `values` or `initialValues`, with the value location delimited by `.` or brackets `[]`. It will report back the original data structure with updated values through the `onSubmit` and `onChange` callbacks.
+
+```
+const initialValues = {
+  a: 'John',
+  b: {
+    c: 'Jacob',
+    d: {
+      e: 'Jingle'
+    }
+  },
+  f: ['Heimer', 'Schmidt']
+};
+
+<Form
+  initialValues={initialValues}
+  onChange={console.log}
+  onSubmit={console.log}
+  submittable
+  cancellable
+>
+  <Form.Field label="Name" name="a" type="text" />
+  <Form.Field label="Name Part 2" name="c" path="b.c" type="text" />
+  <Form.Field label="Name Part 3" name="e" path="b.d.e" type="text" />
+  <Form.Field label="Name Part 4" name="g" path="f[0]" type="text" />
+  <Form.Field label="Name Part 6" name="h" path="f[1]" type="text" />
+</Form>
+```

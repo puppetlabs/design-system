@@ -126,6 +126,67 @@ const getDropdownPosition = (target, anchor, margin) => {
 
 const isNil = val => val == null;
 
+/**
+ * Immutably updates a value at a given index in an array
+ */
+export const update = (index, newValue, arr) => {
+  const newArr = [...arr];
+
+  newArr[index] = newValue;
+
+  return newArr;
+};
+
+/**
+ * Immutably updates a value at a given key in an object
+ */
+export const assoc = (prop, newValue, obj) => {
+  const base = isNil(obj) ? {} : obj;
+
+  return {
+    ...base,
+    [prop]: newValue,
+  };
+};
+
+/**
+ * Wrapper around the two previous methods with a type check.
+ * will only assume type is an array of both value and target
+ * are array-like
+ */
+const assocOrUpdate = (prop, newValue, object) => {
+  if (Number.isInteger(prop) && Array.isArray(object)) {
+    return update(prop, newValue, object);
+  }
+
+  return assoc(prop, newValue, object);
+};
+
+/**
+ * Immutably sets the value at a given path in a nested object
+ */
+export const assocPath = (valuePath, newValue, object) => {
+  if (!valuePath.length) {
+    return newValue;
+  }
+
+  const [prop, ...rest] = valuePath;
+
+  if (rest.length) {
+    let nextObj;
+
+    if (isNil(object) || !object[prop]) {
+      nextObj = Number.isInteger(prop) ? [] : {};
+    } else {
+      nextObj = object[prop];
+    }
+
+    return assocOrUpdate(prop, assocPath(rest, newValue, nextObj), object);
+  }
+
+  return assocOrUpdate(prop, newValue, object);
+};
+
 const focus = element => {
   // Not type checking that it has a focus method, that's on you!
   if (element) {

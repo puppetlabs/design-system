@@ -14,6 +14,8 @@ import {
   updateFieldProps,
   renderChildren,
   isFormValid,
+  getFieldPaths,
+  flatten,
 } from './internal/methods';
 
 const propTypes = {
@@ -84,7 +86,7 @@ const defaultProps = {
 
 const Form = props => {
   const {
-    initialValues,
+    initialValues: initialValuesProp,
     values: valuesProp,
     onChange: onChangeProp,
     submitting,
@@ -101,12 +103,17 @@ const Form = props => {
     className,
     style,
   } = props;
+  const fieldProps = collectFieldProps(userProvidedChildren);
+  const fieldPaths = getFieldPaths(fieldProps);
+
+  const initialValues = flatten(initialValuesProp, fieldPaths);
+
   const [validate, setValidate] = useState(false);
   const [valuesState, setValues] = useState(initialValues);
 
   const previousInitialValues = usePrevious(initialValues);
   const isControlled = !!valuesProp;
-  const values = valuesProp || valuesState;
+  const values = isControlled ? flatten(valuesProp, fieldPaths) : valuesState;
 
   if (validate && shallowDiff(initialValues, previousInitialValues)) {
     setValidate(false);
@@ -114,26 +121,26 @@ const Form = props => {
 
   const onChange = contextualizeOnChange(
     values,
+    fieldPaths,
+    valuesProp || initialValuesProp,
     setValues,
     isControlled,
     onChangeProp,
   );
 
-  const onSubmit = contextualizeOnSubmit(props, setValidate, values, onChange);
+  const onSubmit = contextualizeOnSubmit(
+    props,
+    fieldPaths,
+    setValidate,
+    values,
+    onChange,
+  );
 
   /**
    * Map of field name to updated props
    */
-  const updatedFieldPropMap = mapObj(
-    collectFieldProps(userProvidedChildren),
-    userProvidedFieldProps =>
-      updateFieldProps(
-        userProvidedFieldProps,
-        validate,
-        props,
-        values,
-        onChange,
-      ),
+  const updatedFieldPropMap = mapObj(fieldProps, userProvidedFieldProps =>
+    updateFieldProps(userProvidedFieldProps, validate, props, values, onChange),
   );
 
   const isValid = isFormValid(updatedFieldPropMap);

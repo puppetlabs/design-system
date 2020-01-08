@@ -85,23 +85,6 @@ describe('<Form />', () => {
       expect(wrapper.find(Form.Field).last()).to.have.prop('value', 'B');
     });
 
-    it('should set the intial values state equal to initialValues', () => {
-      const initialValues = {
-        a: 'A',
-        b: 'B',
-      };
-
-      const wrapper = shallow(
-        <Form initialValues={initialValues}>
-          <Form.Field type="text" name="a" label="label-A" />
-          <Form.Field type="text" name="b" label="label-B" />
-        </Form>,
-      );
-
-      expect(wrapper.find(Form.Field).first()).to.have.prop('value', 'A');
-      expect(wrapper.find(Form.Field).last()).to.have.prop('value', 'B');
-    });
-
     it('should update values state when an input changes', () => {
       const initialValues = {
         a: 'A',
@@ -146,6 +129,145 @@ describe('<Form />', () => {
 
       // eslint-disable-next-line
       expect(onChange).to.have.been.called;
+    });
+
+    describe('nested data', () => {
+      it('should supply nested initial values based on name or path field props', () => {
+        const initialValues = {
+          a: 'A',
+          path: {
+            to: {
+              b: 'B',
+            },
+          },
+          array: [
+            'C',
+            {
+              d: 'D',
+            },
+          ],
+        };
+
+        const wrapper = shallow(
+          <Form initialValues={initialValues}>
+            <Form.Field type="text" name="a" label="label-A" />
+            <Form.Field type="text" name="b" label="label-B" path="path.to.b" />
+            <Form.Field
+              type="text"
+              name="c"
+              label="label-C"
+              path="array[1].d"
+            />
+          </Form>,
+        );
+
+        expect(wrapper.find(Form.Field).first()).to.have.prop('value', 'A');
+        expect(wrapper.find(Form.Field).at(1)).to.have.prop('value', 'B');
+        expect(wrapper.find(Form.Field).last()).to.have.prop('value', 'D');
+      });
+
+      it('should update values state when an input changes', () => {
+        const initialValues = {
+          a: 'A',
+          path: {
+            to: {
+              b: 'B',
+            },
+          },
+          array: [
+            'C',
+            {
+              d: 'D',
+            },
+          ],
+        };
+
+        const wrapper = mount(
+          <Form initialValues={initialValues}>
+            <Form.Field type="text" name="a" label="label-A" />
+            <Form.Field type="text" name="b" label="label-B" path="path.to.b" />
+            <Form.Field
+              type="text"
+              name="c"
+              label="label-C"
+              path="array[1].d"
+            />
+          </Form>,
+        );
+
+        wrapper
+          .find('input')
+          .last()
+          .simulate('change', { target: { value: 'DD' } });
+
+        wrapper
+          .find('input')
+          .at(1)
+          .simulate('change', { target: { value: 'BB' } });
+
+        expect(wrapper.find(Form.Field).first()).to.have.prop('value', 'A');
+        expect(wrapper.find(Form.Field).at(1)).to.have.prop('value', 'BB');
+        expect(wrapper.find(Form.Field).last()).to.have.prop('value', 'DD');
+      });
+
+      it('should report back un-nested updates through onChange', () => {
+        const initialValues = {
+          a: 'A',
+          path: {
+            to: {
+              b: 'B',
+            },
+          },
+          array: [
+            'C',
+            {
+              d: 'D',
+            },
+          ],
+        };
+
+        const expectedFinalValues = {
+          a: 'A',
+          path: {
+            to: {
+              b: 'BB',
+            },
+          },
+          array: [
+            'C',
+            {
+              d: 'DD',
+            },
+          ],
+        };
+
+        const onChange = sinon.spy();
+
+        const wrapper = mount(
+          <Form initialValues={initialValues} onChange={onChange}>
+            <Form.Field type="text" name="a" label="label-A" />
+            <Form.Field type="text" name="b" label="label-B" path="path.to.b" />
+            <Form.Field
+              type="text"
+              name="c"
+              label="label-C"
+              path="array[1].d"
+            />
+          </Form>,
+        );
+
+        wrapper
+          .find('input')
+          .last()
+          .simulate('change', { target: { value: 'DD' } });
+
+        wrapper
+          .find('input')
+          .at(1)
+          .simulate('change', { target: { value: 'BB' } });
+
+        expect(onChange.args[1][1]).to.eql(expectedFinalValues);
+      });
     });
   });
 

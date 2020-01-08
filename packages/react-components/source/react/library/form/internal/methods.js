@@ -1,5 +1,11 @@
 import React, { useEffect, useRef } from 'react';
-import { componentHasType, mapObj, omit } from '../../../helpers/statics';
+import {
+  componentHasType,
+  mapObj,
+  omit,
+  path,
+  assocPath,
+} from '../../../helpers/statics';
 import FormField from '../FormField';
 
 export const isEmpty = value => {
@@ -46,6 +52,68 @@ export const collectFieldProps = children => {
 
 export const isFormValid = fieldProps =>
   !Object.values(fieldProps).some(props => props.blockingError);
+
+/**
+ * Splits a path string into array segments
+ */
+const splitPath = fieldPath => {
+  if (typeof fieldPath === 'string') {
+    return fieldPath
+      .split(/[.[\]]+/)
+      .filter(p => p)
+      .map(p => {
+        const maybeNum = Number(p);
+
+        return Number.isNaN(maybeNum) ? p : maybeNum;
+      });
+  }
+
+  return [];
+};
+
+/**
+ * Gets value at nested path in object
+ */
+const getValue = (fieldPath, object) => path(splitPath(fieldPath), object);
+
+/**
+ * Updates value at nested path in object
+ */
+const updateValue = (fieldPath, value, object) =>
+  assocPath(splitPath(fieldPath), value, object);
+
+/**
+ * Flattens a nested object by picking off the values at the path specified
+ * in each Form.Field definition
+ */
+export const flatten = (nestedObject, fieldPaths) => {
+  const toReturn = {};
+  Object.entries(fieldPaths).forEach(([field, fieldPath]) => {
+    toReturn[field] = getValue(fieldPath, nestedObject);
+  });
+  return toReturn;
+};
+
+/**
+ * Updates a nested data structure by updating with values from a flatObject
+ * at the paths specified by the path in each Form.Field definition
+ */
+export const reconstitute = (flatObject, originalNestedObject, fieldPaths) => {
+  let toReturn = originalNestedObject;
+
+  Object.entries(fieldPaths).forEach(([field, fieldPath]) => {
+    toReturn = updateValue(fieldPath, flatObject[field], toReturn);
+  });
+
+  return toReturn;
+};
+
+/**
+ * Given an index of field props by name, returns an index of field paths by name,
+ * setting the path to be the field name by default if not provided
+ */
+export const getFieldPaths = fieldProps =>
+  mapObj(fieldProps, props => props.path || props.name);
 
 const renderField = (
   child,
@@ -129,7 +197,7 @@ export const updateFieldProps = (
    * Form.Field
    */
   const fieldProps = omit(
-    ['requiredFieldMessage', 'validator', 'error'],
+    ['requiredFieldMessage', 'validator', 'error', 'path'],
     userProvidedFieldProps,
   );
 
@@ -149,6 +217,8 @@ export const updateFieldProps = (
 
 export const contextualizeOnChange = (
   values,
+  fieldPaths,
+  originalObject,
   setValues,
   isControlled,
   onChange,
@@ -162,17 +232,27 @@ export const contextualizeOnChange = (
     setValues(newValues);
   }
 
-  onChange(name, newValues);
+  const unNested = reconstitute(
+    {
+      ...values,
+      [name]: value,
+    },
+    originalObject,
+    fieldPaths,
+  );
+
+  onChange(name, unNested);
 };
 
 export const contextualizeOnSubmit = (
   props,
+  fieldPaths,
   setValidate,
   values,
   onChange,
 ) => async e => {
   e.preventDefault();
-  const { children: userProvidedChildren, onSubmit } = props;
+  const { children: userProvidedChildren, onSubmit, initialValues } = props;
 
   setValidate(true);
 
@@ -189,6 +269,6 @@ export const contextualizeOnSubmit = (
   const isValid = isFormValid(fieldProps);
 
   if (isValid) {
-    onSubmit(values);
+    onSubmit(reconstitute(values, initialValues, fieldPaths));
   }
 };
