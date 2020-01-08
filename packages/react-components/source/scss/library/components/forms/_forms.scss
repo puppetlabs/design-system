@@ -73,11 +73,19 @@
 }
 
 .rc-form-field-label {
-  @include puppet-type-label(medium);
   display: block;
   letter-spacing: $puppet-type-spacing-medium;
-  line-height: $puppet-common-spacing-base * 4;
+  line-height: $puppet-common-spacing-base * 4 !important;
   margin-bottom: $puppet-common-spacing-base;
+
+  &.rc-form-field-label-primary {
+    @include puppet-type-label(medium);
+  }
+
+  &.rc-form-field-label-secondary {
+    @include puppet-type-h6(medium);
+    font-weight: $puppet-type-weight-heavy;
+  }
 }
 
 .rc-form-field-description {

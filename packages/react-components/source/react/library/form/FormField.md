@@ -42,6 +42,8 @@ const formInputInterface = {
    * a duplication of the label.
    */
   label: PropTypes.string,
+  /** The styling of the label */
+  labelType: PropTypes.oneOf(['primary', 'secondary']),
   /** Current value of the input */
   value: PropTypes.any,
   /** Alternate inline display format */

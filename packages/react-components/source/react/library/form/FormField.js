@@ -18,6 +18,9 @@ const supportedTypes = [
   'autocomplete',
 ];
 
+const PRIMARY = 'primary';
+const SECONDARY = 'secondary';
+
 const propTypes = {
   /** The type of input to render. Can be either a string corresponding to a supported input type or a custom React component satisfying the input interface */
   type: PropTypes.oneOfType([
@@ -28,6 +31,8 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   /** A human-friendly identifier for this field */
   label: PropTypes.string.isRequired,
+  /** The styling of the identifier for this field */
+  labelType: PropTypes.oneOf([PRIMARY, SECONDARY]),
   /* Depending on the field, value can be any type */
   // eslint-disable-next-line react/forbid-prop-types
   value: PropTypes.any,
@@ -53,6 +58,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  labelType: PRIMARY,
   value: undefined,
   error: '',
   description: '',
@@ -137,6 +143,7 @@ class FormField extends React.Component {
 
     const elementProps = omit(
       [
+        'labelType',
         'inline',
         'description',
         'className',
@@ -153,7 +160,16 @@ class FormField extends React.Component {
   }
 
   render() {
-    const { type, name, label, className, inline, error, style } = this.props;
+    const {
+      type,
+      name,
+      label,
+      labelType,
+      className,
+      inline,
+      error,
+      style,
+    } = this.props;
     const description = this.renderDescription();
     const typeName = this.getTypeName();
     const element = this.renderElement();
@@ -179,7 +195,7 @@ class FormField extends React.Component {
           {/* eslint-disable-next-line jsx-a11y/label-has-for */}
           <label
             htmlFor={name}
-            className="rc-form-field-label"
+            className={`rc-form-field-label rc-form-field-label-${labelType}`}
             key="field-label"
           >
             {label}
