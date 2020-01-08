@@ -259,7 +259,12 @@ export const contextualizeOnSubmit = (
   onChange,
 ) => async e => {
   e.preventDefault();
-  const { children: userProvidedChildren, onSubmit, initialValues } = props;
+  const {
+    children: userProvidedChildren,
+    onSubmit,
+    initialValues,
+    error,
+  } = props;
 
   setValidate(true);
 
@@ -270,7 +275,15 @@ export const contextualizeOnSubmit = (
   const fieldProps = mapObj(
     collectFieldProps(userProvidedChildren),
     userProvidedFieldProps =>
-      updateFieldProps(userProvidedFieldProps, true, props, values, onChange),
+      updateFieldProps(
+        userProvidedFieldProps,
+        true,
+        props,
+        values,
+        error,
+        fieldPaths,
+        onChange,
+      ),
   );
 
   const isValid = isFormValid(fieldProps);
