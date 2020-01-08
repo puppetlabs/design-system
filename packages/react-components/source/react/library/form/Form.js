@@ -35,8 +35,6 @@ const propTypes = {
   cancelLabel: PropTypes.string,
   /** Cancel event handler */
   onCancel: PropTypes.func,
-  /** Boolean to render form fields inline. The value passed in here will be propagated down to all contained form fields */
-  inline: PropTypes.bool,
   /** Positioning of the action buttons  */
   actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
   /** Is the form disabled? Will disable all fields and actions */
@@ -63,7 +61,6 @@ const defaultProps = {
   onCancel() {},
   onChange() {},
   submitting: false,
-  inline: false,
   actionsPosition: 'left',
   disabled: false,
   error: '',
@@ -255,7 +252,7 @@ class Form extends Component {
       validator,
     } = userProvidedFieldProps;
 
-    const { inline, disabled } = this.props;
+    const { disabled } = this.props;
     const values = this.getValues();
     const value = values[name];
 
@@ -284,7 +281,6 @@ class Form extends Component {
       blockingError,
       nonBlockingError: error,
       disabled: disabled || userProvidedFieldProps.disabled,
-      inline,
       value: values[name],
       onChange: val => this.onChange(name, val),
     };
