@@ -188,7 +188,7 @@ class MyPage extends React.Component {
 
 ### Form variants
 
-Variant styles are achieved by manipulating props on the individual FormFields. Below, fields have been made inline and label text is not uppercased.
+Variant styles are achieved by manipulating `labelType` and `inline` on the Form and/or individual FormFields. Below, all fields have been made inline and label text is not uppercased.
 
 ```jsx
 const movieOptions = [
@@ -239,60 +239,50 @@ class MyPage extends React.Component {
         initialValues={values}
         submitting={submitting}
         onSubmit={this.onSubmit}
+        labelType="secondary"
+        inline
       >
         <Form.Field
           type="text"
           name="controlledFirstName"
           autoComplete="firstname"
           label="First name"
-          labelType="secondary"
           placeholder="Enter your first name..."
-          inline
         />
         <Form.Field
           type="text"
           name="controlledLastName"
           autoComplete="lastname"
           label="Last name"
-          labelType="secondary"
           placeholder="Enter your last name..."
-          inline
         />
         <Form.Field
           type="password"
           autoComplete="current-password"
           name="controlledPassword"
           label="Password"
-          labelType="secondary"
           placeholder="Enter your password..."
           description="Please enter your password"
           error="You goofed up now"
-          inline
         />
         <Form.Field
           type="select"
           name="controlledFavoriteMovie"
           label="Long label to ask what your favorite movie is."
-          labelType="secondary"
           placeholder="Choose a movie"
           options={movieOptions}
-          inline
         />
         <Form.Field
           type="checkbox"
           name="controlledNotARobot"
           label="Not a robot"
-          labelType="secondary"
           description="Are you a human?"
-          inline
         />
         <Form.Field
           type="switch"
           name="controlledNotAHuman"
           label="Not a human"
-          labelType="secondary"
           description="Are you a robot?"
-          inline
         />
       </Form>
     );

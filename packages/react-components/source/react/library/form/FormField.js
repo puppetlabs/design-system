@@ -18,9 +18,6 @@ const supportedTypes = [
   'autocomplete',
 ];
 
-const PRIMARY = 'primary';
-const SECONDARY = 'secondary';
-
 const propTypes = {
   /** The type of input to render. Can be either a string corresponding to a supported input type or a custom React component satisfying the input interface */
   type: PropTypes.oneOfType([
@@ -32,7 +29,7 @@ const propTypes = {
   /** A human-friendly identifier for this field */
   label: PropTypes.string.isRequired,
   /** The styling of the identifier for this field */
-  labelType: PropTypes.oneOf([PRIMARY, SECONDARY]),
+  labelType: PropTypes.oneOf(['primary', 'secondary']),
   /* Depending on the field, value can be any type */
   // eslint-disable-next-line react/forbid-prop-types
   value: PropTypes.any,
@@ -58,7 +55,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  labelType: PRIMARY,
+  labelType: 'primary',
   value: undefined,
   error: '',
   description: '',
