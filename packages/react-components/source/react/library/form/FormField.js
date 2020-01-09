@@ -184,6 +184,8 @@ class FormField extends React.Component {
           'rc-form-field',
           {
             'rc-form-field-inline': inline,
+            'rc-form-field-tabbed':
+              inline && (type === 'checkbox' || type === 'switch'),
             [`rc-form-field-${typeName}`]: typeName,
             'rc-form-field-error': error,
           },
@@ -195,6 +197,7 @@ class FormField extends React.Component {
           {/* eslint-disable-next-line jsx-a11y/label-has-for */}
           <label
             htmlFor={name}
+            title={label}
             className={`rc-form-field-label rc-form-field-label-${labelType}`}
             key="field-label"
           >

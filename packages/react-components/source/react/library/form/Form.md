@@ -185,3 +185,119 @@ class MyPage extends React.Component {
 
 <MyPage />;
 ```
+
+### Form variants
+
+Variant styles are achieved by manipulating props on the individual FormFields. Below, fields have been made inline and label text is not uppercased.
+
+```jsx
+const movieOptions = [
+  { value: 'american-treasure', label: 'American Treasure' },
+  { value: 'ghost-rider', label: 'Ghost Rider' },
+  { value: 'point_break', label: 'Point Break' },
+];
+
+const initialValues = {
+  controlledFirstName: 'Sponge',
+  controlledLastName: 'Bob',
+  controlledPassword: '',
+  controlledFavoriteMovie: '',
+  controlledNotARobot: false,
+  controlledNotAHuman: false,
+};
+
+/** Mock api call method */
+const submitForm = values => values;
+
+class MyPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      values: initialValues,
+      submitting: false,
+    };
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(values) {
+    this.setState({ submitting: true });
+
+    submitForm(values);
+
+    this.setState({ submitting: false, values });
+  }
+
+  render() {
+    const { values, submitting } = this.state;
+
+    return (
+      <Form
+        submittable
+        cancellable
+        initialValues={values}
+        submitting={submitting}
+        onSubmit={this.onSubmit}
+      >
+        <Form.Field
+          type="text"
+          name="controlledFirstName"
+          autoComplete="firstname"
+          label="First name"
+          labelType="secondary"
+          placeholder="Enter your first name..."
+          inline
+        />
+        <Form.Field
+          type="text"
+          name="controlledLastName"
+          autoComplete="lastname"
+          label="Last name"
+          labelType="secondary"
+          placeholder="Enter your last name..."
+          inline
+        />
+        <Form.Field
+          type="password"
+          autoComplete="current-password"
+          name="controlledPassword"
+          label="Password"
+          labelType="secondary"
+          placeholder="Enter your password..."
+          description="Please enter your password"
+          error="You goofed up now"
+          inline
+        />
+        <Form.Field
+          type="select"
+          name="controlledFavoriteMovie"
+          label="Long label to ask what your favorite movie is."
+          labelType="secondary"
+          placeholder="Choose a movie"
+          options={movieOptions}
+          inline
+        />
+        <Form.Field
+          type="checkbox"
+          name="controlledNotARobot"
+          label="Not a robot"
+          labelType="secondary"
+          description="Are you a human?"
+          inline
+        />
+        <Form.Field
+          type="switch"
+          name="controlledNotAHuman"
+          label="Not a human"
+          labelType="secondary"
+          description="Are you a robot?"
+          inline
+        />
+      </Form>
+    );
+  }
+}
+
+<MyPage />;
+```

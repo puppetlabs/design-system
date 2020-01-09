@@ -132,16 +132,22 @@
 }
 
 .rc-form-field-inline {
-  align-items: center;
   width: 100%;
 }
 
 .rc-form-inline,
 .rc-form-field-inline {
+  .rc-form-field-description {
+    margin-left: 180px + 48px;
+  }
+
   .rc-form-field-label {
-    display: flex;
-    flex-grow: 1;
     margin: 0;
+    margin-right: 48px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 180px;
   }
 
   .rc-form-field-content {
@@ -152,10 +158,13 @@
   .rc-toggle .rc-switch {
     margin: 0;
   }
+}
+
+.rc-form-field-tabbed {
+  margin-left: 180px + 48px;
 
   .rc-form-field-description {
-    display: flex;
-    justify-content: flex-end;
+    margin-left: 0;
   }
 }
 
