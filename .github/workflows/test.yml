@@ -2,10 +2,13 @@ name: Test
 
 on:
   push:
-    branches:
-      - '*'
-      - '!development'
-      - '!master'
+    branches-ignore: 
+      - development
+      - master
+  pull_request:
+    branches-ignore: 
+      - development
+      - master
 
 jobs:
   test:
