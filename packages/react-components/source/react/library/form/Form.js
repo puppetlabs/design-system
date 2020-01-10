@@ -289,10 +289,11 @@ class Form extends Component {
       ...fieldProps,
       blockingError,
       nonBlockingError: error,
-      disabled: disabled || userProvidedFieldProps.disabled,
-      labelType,
-      inline,
-      inlineLabelWidth,
+      disabled: disabled || userProvidedFieldProps.disabled, // Form overwrites field
+      labelType: userProvidedFieldProps.labelType || labelType, // Field overwrites form
+      inline: userProvidedFieldProps.inline || inline, // Field overwrites form
+      inlineLabelWidth:
+        userProvidedFieldProps.inlineLabelWidth || inlineLabelWidth, // Field overwrites form
       value: values[name],
       onChange: val => this.onChange(name, val),
     };
