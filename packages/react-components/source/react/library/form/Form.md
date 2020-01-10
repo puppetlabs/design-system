@@ -1,6 +1,10 @@
+## Overview
+
 The `Form` component encapsulates user data entry of various data types, with consistent styling, error handling, validation. To maintain consistency and accessibility, this should be considered the primary API for user input in Puppet apps.
 
 The `Form` component must be used in conjunction with one or more [Form.Field](#formfield) sub-components controlling individual inputs. In general, the `Form.Field` sub-components are responsible for basic rendering and user input handling while the parent `Form` component is responsible for tracking the entire form's value, handling form submission and cancellation, and coordinating form field errors and validation. For more information on available props and options for the `Form.Field` sub-component, see [here](#formfield).
+
+## Types
 
 ### Uncontrolled (recommended in most cases)
 
@@ -186,7 +190,7 @@ class MyPage extends React.Component {
 <MyPage />;
 ```
 
-### Form variants
+## Variations
 
 Variant styles are achieved by manipulating `labelType`, `inline` and `inlineLabelWidth` on the Form and/or individual FormFields. Below, all fields have been made inline with lowercased labels.
 
