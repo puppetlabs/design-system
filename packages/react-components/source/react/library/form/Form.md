@@ -241,17 +241,18 @@ class MyPage extends React.Component {
         onSubmit={this.onSubmit}
         labelType="secondary"
         inline
+        inlineLabelWidth={180} // default
       >
         <Form.Field
           type="text"
-          name="controlledFirstName"
+          name="fName"
           autoComplete="firstname"
           label="First name"
           placeholder="Enter your first name..."
         />
         <Form.Field
           type="text"
-          name="controlledLastName"
+          name="lName"
           autoComplete="lastname"
           label="Last name"
           placeholder="Enter your last name..."
@@ -259,7 +260,7 @@ class MyPage extends React.Component {
         <Form.Field
           type="password"
           autoComplete="current-password"
-          name="controlledPassword"
+          name="pword"
           label="Password"
           placeholder="Enter your password..."
           description="Please enter your password"
@@ -267,20 +268,20 @@ class MyPage extends React.Component {
         />
         <Form.Field
           type="select"
-          name="controlledFavoriteMovie"
+          name="favMovie"
           label="Long label to ask what your favorite movie is."
           placeholder="Choose a movie"
           options={movieOptions}
         />
         <Form.Field
           type="checkbox"
-          name="controlledNotARobot"
+          name="nRobot"
           label="Not a robot"
           description="Are you a human?"
         />
         <Form.Field
           type="switch"
-          name="controlledNotAHuman"
+          name="nHuman"
           label="Not a human"
           description="Are you a robot?"
         />
