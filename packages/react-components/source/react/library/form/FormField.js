@@ -46,7 +46,7 @@ const propTypes = {
   /* Alternate inline display format */
   inline: PropTypes.bool,
   /** Width of the inline label */
-  inlineLabelWidth: PropTypes.integer,
+  inlineLabelWidth: PropTypes.number,
   /** This will be used by the parent `Form` to track updates. */
   onChange: PropTypes.func,
   /** Optional additional className */
@@ -75,7 +75,16 @@ const defaultProps = {
  * The form input interface is the propTypes above, minus the ones that get stripped off
  */
 export const formInputInterface = omit(
-  ['requiredFieldMessage', 'validator', 'className', 'description', 'style'],
+  [
+    'requiredFieldMessage',
+    'validator',
+    'className',
+    'description',
+    'style',
+    'labelType',
+    'inline',
+    'inlineLabelWidth',
+  ],
   propTypes,
 );
 
@@ -145,6 +154,7 @@ class FormField extends React.Component {
       [
         'labelType',
         'inline',
+        'inlineLabelWidth',
         'description',
         'className',
         'style',

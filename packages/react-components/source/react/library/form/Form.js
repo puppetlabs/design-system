@@ -40,7 +40,7 @@ const propTypes = {
   /** Boolean to render form fields inline. The value passed in here will be propagated down to all contained form fields */
   inline: PropTypes.bool,
   /** Width of all inline labels */
-  inlineLabelWidth: PropTypes.integer,
+  inlineLabelWidth: PropTypes.number,
   /** Positioning of the action buttons  */
   actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
   /** Is the form disabled? Will disable all fields and actions */
