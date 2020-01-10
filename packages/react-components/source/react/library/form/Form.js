@@ -35,8 +35,12 @@ const propTypes = {
   cancelLabel: PropTypes.string,
   /** Cancel event handler */
   onCancel: PropTypes.func,
+  /** The styling of the identifier for all fields */
+  labelType: PropTypes.oneOf(['primary', 'secondary']),
   /** Boolean to render form fields inline. The value passed in here will be propagated down to all contained form fields */
   inline: PropTypes.bool,
+  /** Width of all inline labels */
+  inlineLabelWidth: PropTypes.number,
   /** Positioning of the action buttons  */
   actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
   /** Is the form disabled? Will disable all fields and actions */
@@ -63,7 +67,9 @@ const defaultProps = {
   onCancel() {},
   onChange() {},
   submitting: false,
+  labelType: 'primary',
   inline: false,
+  inlineLabelWidth: null,
   actionsPosition: 'left',
   disabled: false,
   error: '',
@@ -255,7 +261,7 @@ class Form extends Component {
       validator,
     } = userProvidedFieldProps;
 
-    const { inline, disabled } = this.props;
+    const { labelType, inline, inlineLabelWidth, disabled } = this.props;
     const values = this.getValues();
     const value = values[name];
 
@@ -283,8 +289,11 @@ class Form extends Component {
       ...fieldProps,
       blockingError,
       nonBlockingError: error,
-      disabled: disabled || userProvidedFieldProps.disabled,
-      inline,
+      disabled: disabled || userProvidedFieldProps.disabled, // Form overwrites field
+      labelType: userProvidedFieldProps.labelType || labelType, // Field overwrites form
+      inline: userProvidedFieldProps.inline || inline, // Field overwrites form
+      inlineLabelWidth:
+        userProvidedFieldProps.inlineLabelWidth || inlineLabelWidth, // Field overwrites form
       value: values[name],
       onChange: val => this.onChange(name, val),
     };

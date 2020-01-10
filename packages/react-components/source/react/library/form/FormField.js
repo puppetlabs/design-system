@@ -28,6 +28,8 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   /** A human-friendly identifier for this field */
   label: PropTypes.string.isRequired,
+  /** The styling of the identifier for this field */
+  labelType: PropTypes.oneOf(['primary', 'secondary']),
   /* Depending on the field, value can be any type */
   // eslint-disable-next-line react/forbid-prop-types
   value: PropTypes.any,
@@ -43,6 +45,8 @@ const propTypes = {
   validator: PropTypes.func,
   /* Alternate inline display format */
   inline: PropTypes.bool,
+  /** Width of the inline label */
+  inlineLabelWidth: PropTypes.number,
   /** This will be used by the parent `Form` to track updates. */
   onChange: PropTypes.func,
   /** Optional additional className */
@@ -53,13 +57,15 @@ const propTypes = {
 };
 
 const defaultProps = {
+  labelType: null,
   value: undefined,
   error: '',
   description: '',
   required: false,
   requiredFieldMessage: 'Required field',
   validator() {},
-  inline: false,
+  inline: null,
+  inlineLabelWidth: null,
   onChange() {},
   className: '',
   style: {},
@@ -72,10 +78,12 @@ export const formInputInterface = omit(
   [
     'requiredFieldMessage',
     'validator',
-    'inline',
     'className',
     'description',
     'style',
+    'labelType',
+    'inline',
+    'inlineLabelWidth',
   ],
   propTypes,
 );
@@ -144,7 +152,9 @@ class FormField extends React.Component {
 
     const elementProps = omit(
       [
+        'labelType',
         'inline',
+        'inlineLabelWidth',
         'description',
         'className',
         'style',
@@ -160,13 +170,38 @@ class FormField extends React.Component {
   }
 
   render() {
-    const { type, name, label, className, inline, error, style } = this.props;
+    const {
+      type,
+      name,
+      label,
+      labelType,
+      className,
+      inline,
+      inlineLabelWidth,
+      error,
+      style,
+    } = this.props;
     const description = this.renderDescription();
     const typeName = this.getTypeName();
     const element = this.renderElement();
+    const tabbed = inline && (type === 'checkbox' || type === 'switch');
 
     if (type === 'hidden') {
       return element;
+    }
+
+    let formFieldStyles = style;
+    let formFieldLabelStyles;
+
+    if (inlineLabelWidth && inline) {
+      formFieldLabelStyles = { width: `${inlineLabelWidth}px` };
+    }
+
+    if (inlineLabelWidth && tabbed) {
+      formFieldStyles = {
+        ...formFieldStyles,
+        marginLeft: `${inlineLabelWidth}px`,
+      };
     }
 
     return (
@@ -175,25 +210,33 @@ class FormField extends React.Component {
           'rc-form-field',
           {
             'rc-form-field-inline': inline,
+            'rc-form-field-tabbed': tabbed,
             [`rc-form-field-${typeName}`]: typeName,
             'rc-form-field-error': error,
           },
           className,
         )}
-        style={style}
+        style={formFieldStyles}
       >
         <div className="rc-form-field-content">
           {/* eslint-disable-next-line jsx-a11y/label-has-for */}
           <label
             htmlFor={name}
-            className="rc-form-field-label"
+            title={label}
+            className={classNames('rc-form-field-label', {
+              [`rc-form-field-label-${labelType}`]: labelType,
+            })}
             key="field-label"
+            style={formFieldLabelStyles}
           >
             {label}
           </label>
-          {element}
+          <div className="rc-form-field-element">
+            {element}
+            {inline && description}
+          </div>
         </div>
-        {description}
+        {!inline && description}
       </div>
     );
   }

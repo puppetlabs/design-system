@@ -42,8 +42,12 @@ const formInputInterface = {
    * a duplication of the label.
    */
   label: PropTypes.string,
+  /** The styling of the label */
+  labelType: PropTypes.oneOf(['primary', 'secondary']),
   /** Current value of the input */
   value: PropTypes.any,
+  /** Alternate inline display format */
+  inline: PropTypes.bool,
   /** Change handler. **Must be passed the intended new value of the input** */
   onChange: PropTypes.func,
   /** Form elements come in two standard sizes, medium (default), and small */

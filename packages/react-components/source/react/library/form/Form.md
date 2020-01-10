@@ -141,7 +141,7 @@ class MyPage extends React.Component {
     const { values } = this.state;
 
     return (
-      <Form values={values} onChange={this.onChange}>
+      <Form values={values} onChange={this.onChange} submittable cancellable>
         <Form.Field
           type="text"
           name="firstName"
@@ -177,6 +177,113 @@ class MyPage extends React.Component {
           name="notARobot"
           label="Not a robot"
           description="Are you a human?"
+        />
+      </Form>
+    );
+  }
+}
+
+<MyPage />;
+```
+
+### Form variants
+
+Variant styles are achieved by manipulating `labelType`, `inline` and `inlineLabelWidth` on the Form and/or individual FormFields. Below, all fields have been made inline with lowercased labels.
+
+```jsx
+const movieOptions = [
+  { value: 'american-treasure', label: 'American Treasure' },
+  { value: 'ghost-rider', label: 'Ghost Rider' },
+  { value: 'point_break', label: 'Point Break' },
+];
+
+const initialValues = {
+  controlledFirstName: 'Sponge',
+  controlledLastName: 'Bob',
+  controlledPassword: '',
+  controlledFavoriteMovie: '',
+  controlledNotARobot: false,
+  controlledNotAHuman: false,
+};
+
+/** Mock api call method */
+const submitForm = values => values;
+
+class MyPage extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      values: initialValues,
+      submitting: false,
+    };
+
+    this.onSubmit = this.onSubmit.bind(this);
+  }
+
+  onSubmit(values) {
+    this.setState({ submitting: true });
+
+    submitForm(values);
+
+    this.setState({ submitting: false, values });
+  }
+
+  render() {
+    const { values, submitting } = this.state;
+
+    return (
+      <Form
+        submittable
+        cancellable
+        initialValues={values}
+        submitting={submitting}
+        onSubmit={this.onSubmit}
+        labelType="secondary"
+        inline
+        inlineLabelWidth={180} // default
+      >
+        <Form.Field
+          type="text"
+          name="fName"
+          autoComplete="firstname"
+          label="First name"
+          placeholder="Enter your first name..."
+        />
+        <Form.Field
+          type="text"
+          name="lName"
+          autoComplete="lastname"
+          label="Last name"
+          placeholder="Enter your last name..."
+        />
+        <Form.Field
+          type="password"
+          autoComplete="current-password"
+          name="pword"
+          label="Password"
+          placeholder="Enter your password..."
+          description="Please enter your password"
+          error="You goofed up now"
+        />
+        <Form.Field
+          type="select"
+          name="favMovie"
+          label="Long label to ask what your favorite movie is."
+          placeholder="Choose a movie"
+          options={movieOptions}
+        />
+        <Form.Field
+          type="checkbox"
+          name="nRobot"
+          label="Not a robot"
+          description="Are you a human?"
+        />
+        <Form.Field
+          type="switch"
+          name="nHuman"
+          label="Not a human"
+          description="Are you a robot?"
         />
       </Form>
     );
