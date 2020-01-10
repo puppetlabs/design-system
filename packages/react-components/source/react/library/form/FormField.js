@@ -45,6 +45,8 @@ const propTypes = {
   validator: PropTypes.func,
   /* Alternate inline display format */
   inline: PropTypes.bool,
+  /** Width of the inline label */
+  inlineLabelWidth: PropTypes.integer,
   /** This will be used by the parent `Form` to track updates. */
   onChange: PropTypes.func,
   /** Optional additional className */
@@ -63,6 +65,7 @@ const defaultProps = {
   requiredFieldMessage: 'Required field',
   validator() {},
   inline: false,
+  inlineLabelWidth: null,
   onChange() {},
   className: '',
   style: {},
@@ -164,15 +167,31 @@ class FormField extends React.Component {
       labelType,
       className,
       inline,
+      inlineLabelWidth,
       error,
       style,
     } = this.props;
     const description = this.renderDescription();
     const typeName = this.getTypeName();
     const element = this.renderElement();
+    const tabbed = inline && (type === 'checkbox' || type === 'switch');
 
     if (type === 'hidden') {
       return element;
+    }
+
+    let formFieldStyles = style;
+    let formFieldLabelStyles;
+
+    if (inlineLabelWidth && inline) {
+      formFieldLabelStyles = { width: `${inlineLabelWidth}px` };
+    }
+
+    if (inlineLabelWidth && tabbed) {
+      formFieldStyles = {
+        ...formFieldStyles,
+        'margin-left': `${inlineLabelWidth}px`,
+      };
     }
 
     return (
@@ -181,14 +200,13 @@ class FormField extends React.Component {
           'rc-form-field',
           {
             'rc-form-field-inline': inline,
-            'rc-form-field-tabbed':
-              inline && (type === 'checkbox' || type === 'switch'),
+            'rc-form-field-tabbed': tabbed,
             [`rc-form-field-${typeName}`]: typeName,
             'rc-form-field-error': error,
           },
           className,
         )}
-        style={style}
+        style={formFieldStyles}
       >
         <div className="rc-form-field-content">
           {/* eslint-disable-next-line jsx-a11y/label-has-for */}
@@ -197,12 +215,16 @@ class FormField extends React.Component {
             title={label}
             className={`rc-form-field-label rc-form-field-label-${labelType}`}
             key="field-label"
+            style={formFieldLabelStyles}
           >
             {label}
           </label>
-          {element}
+          <div className="rc-form-field-element">
+            {element}
+            {inline && description}
+          </div>
         </div>
-        {description}
+        {!inline && description}
       </div>
     );
   }

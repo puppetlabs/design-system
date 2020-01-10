@@ -39,6 +39,8 @@ const propTypes = {
   labelType: PropTypes.oneOf(['primary', 'secondary']),
   /** Boolean to render form fields inline. The value passed in here will be propagated down to all contained form fields */
   inline: PropTypes.bool,
+  /** Width of all inline labels */
+  inlineLabelWidth: PropTypes.integer,
   /** Positioning of the action buttons  */
   actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
   /** Is the form disabled? Will disable all fields and actions */
@@ -67,6 +69,7 @@ const defaultProps = {
   submitting: false,
   labelType: 'primary',
   inline: false,
+  inlineLabelWidth: null,
   actionsPosition: 'left',
   disabled: false,
   error: '',
@@ -258,7 +261,7 @@ class Form extends Component {
       validator,
     } = userProvidedFieldProps;
 
-    const { labelType, inline, disabled } = this.props;
+    const { labelType, inline, inlineLabelWidth, disabled } = this.props;
     const values = this.getValues();
     const value = values[name];
 
@@ -289,6 +292,7 @@ class Form extends Component {
       disabled: disabled || userProvidedFieldProps.disabled,
       labelType,
       inline,
+      inlineLabelWidth,
       value: values[name],
       onChange: val => this.onChange(name, val),
     };

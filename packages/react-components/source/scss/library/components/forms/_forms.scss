@@ -1,3 +1,6 @@
+$puppet-form-inline-label-column-width: $puppet-common-spacing-base * 45 !default;
+$puppet-form-inline-label-gutter-width: $puppet-common-spacing-base * 12 !default;
+
 .rc-form-field {
   margin-bottom: $puppet-common-spacing-base * 4;
 }
@@ -131,28 +134,25 @@
   }
 }
 
-.rc-form-field-inline {
-  width: 100%;
-}
-
 .rc-form-inline,
 .rc-form-field-inline {
-  .rc-form-field-description {
-    margin-left: 180px + 48px;
-  }
-
   .rc-form-field-label {
+    flex-shrink: 0;
     margin: 0;
-    margin-right: 48px;
     overflow: hidden;
+    padding-right: $puppet-form-inline-label-gutter-width;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: 180px;
+    width: $puppet-form-inline-label-column-width;
   }
 
   .rc-form-field-content {
     align-items: center;
     display: flex;
+  }
+
+  .rc-form-field-element {
+    flex: 1;
   }
 
   .rc-toggle .rc-switch {
@@ -161,11 +161,8 @@
 }
 
 .rc-form-field-tabbed {
-  margin-left: 180px + 48px;
-
-  .rc-form-field-description {
-    margin-left: 0;
-  }
+  margin-left: $puppet-form-inline-label-column-width;
+  padding-left: $puppet-form-inline-label-gutter-width;
 }
 
 // Specific field style overrides. These should be minimal

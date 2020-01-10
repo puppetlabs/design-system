@@ -141,7 +141,7 @@ class MyPage extends React.Component {
     const { values } = this.state;
 
     return (
-      <Form values={values} onChange={this.onChange}>
+      <Form values={values} onChange={this.onChange} submittable cancellable>
         <Form.Field
           type="text"
           name="firstName"
@@ -188,7 +188,7 @@ class MyPage extends React.Component {
 
 ### Form variants
 
-Variant styles are achieved by manipulating `labelType` and `inline` on the Form and/or individual FormFields. Below, all fields have been made inline and label text is not uppercased.
+Variant styles are achieved by manipulating `labelType`, `inline` and `inlineLabelWidth` on the Form and/or individual FormFields. Below, all fields have been made inline and label text is not uppercased.
 
 ```jsx
 const movieOptions = [
