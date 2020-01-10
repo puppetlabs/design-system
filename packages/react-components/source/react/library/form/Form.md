@@ -188,7 +188,7 @@ class MyPage extends React.Component {
 
 ### Form variants
 
-Variant styles are achieved by manipulating `labelType`, `inline` and `inlineLabelWidth` on the Form and/or individual FormFields. Below, all fields have been made inline and label text is not uppercased.
+Variant styles are achieved by manipulating `labelType`, `inline` and `inlineLabelWidth` on the Form and/or individual FormFields. Below, all fields have been made inline with lowercased labels.
 
 ```jsx
 const movieOptions = [

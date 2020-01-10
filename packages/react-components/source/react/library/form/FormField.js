@@ -57,14 +57,14 @@ const propTypes = {
 };
 
 const defaultProps = {
-  labelType: 'primary',
+  labelType: null,
   value: undefined,
   error: '',
   description: '',
   required: false,
   requiredFieldMessage: 'Required field',
   validator() {},
-  inline: false,
+  inline: null,
   inlineLabelWidth: null,
   onChange() {},
   className: '',
@@ -223,7 +223,9 @@ class FormField extends React.Component {
           <label
             htmlFor={name}
             title={label}
-            className={`rc-form-field-label rc-form-field-label-${labelType}`}
+            className={classNames('rc-form-field-label', {
+              [`rc-form-field-label-${labelType}`]: labelType,
+            })}
             key="field-label"
             style={formFieldLabelStyles}
           >
