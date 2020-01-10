@@ -200,7 +200,7 @@ class FormField extends React.Component {
     if (inlineLabelWidth && tabbed) {
       formFieldStyles = {
         ...formFieldStyles,
-        'margin-left': `${inlineLabelWidth}px`,
+        marginLeft: `${inlineLabelWidth}px`,
       };
     }
 
