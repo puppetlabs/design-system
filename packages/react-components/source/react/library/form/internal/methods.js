@@ -74,13 +74,13 @@ const splitPath = fieldPath => {
 /**
  * Gets value at nested path in object
  */
-const getValue = (fieldPath, object) => path(fieldPath, object);
+const getValue = (fieldPath, object) => path(splitPath(fieldPath), object);
 
 /**
  * Updates value at nested path in object
  */
 const updateValue = (fieldPath, value, object) =>
-  assocPath(fieldPath, value, object);
+  assocPath(splitPath(fieldPath), value, object);
 
 /**
  * Flattens a nested object by picking off the values at the path specified
@@ -113,9 +113,7 @@ export const reconstitute = (flatObject, originalNestedObject, fieldPaths) => {
  * setting the path to be the field name by default if not provided
  */
 export const getFieldPaths = fieldProps =>
-  mapObj(fieldProps, props =>
-    props.path ? splitPath(props.path) : [props.name],
-  );
+  mapObj(fieldProps, props => props.path || props.name);
 
 const renderField = (
   child,
@@ -161,6 +159,18 @@ export const usePrevious = value => {
   return ref.current;
 };
 
+const getErrorMessage = error => {
+  if (!error) {
+    return '';
+  }
+
+  if (typeof error === 'string') {
+    return error;
+  }
+
+  return error.message;
+};
+
 /**
  * Updates user provdided props to child Form.Field components with validation
  * and other context from the parent Form component
@@ -196,7 +206,7 @@ export const updateFieldProps = (
   }
 
   const nonBlockingError =
-    error || path(['items', ...fieldPaths[name], 'message'], formError);
+    error || getErrorMessage(path(['items', fieldPaths[name]], formError));
 
   /**
    * These fields are removed because they are only used by the parent

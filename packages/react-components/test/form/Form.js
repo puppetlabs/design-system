@@ -6,6 +6,7 @@ import sinon from 'sinon';
 import Form from '../../source/react/library/form/Form';
 import { isEmpty } from '../../source/react/library/form/internal/methods';
 import Button from '../../source/react/library/button/Button';
+import ErrorAlert from '../../source/react/library/error-alert';
 
 describe('<Form />', () => {
   it('should propagate user provided className', () => {
@@ -414,6 +415,51 @@ describe('<Form />', () => {
       );
 
       expect(wrapper).to.have.descendants('.test-div');
+    });
+  });
+
+  describe('extended error handling', () => {
+    it('should pass through the error prop to an inner ErrorAlert', () => {
+      const initialValues = {
+        a: 'A',
+        b: 'B',
+      };
+
+      const error = {
+        message: 'message',
+        causes: ['cause1'],
+      };
+
+      const wrapper = mount(
+        <Form initialValues={initialValues} error={error}>
+          <Form.Field type="text" name="a" label="label-A" />
+          <Form.Field type="text" name="b" label="label-B" />
+        </Form>,
+      );
+
+      expect(wrapper)
+        .to.have.descendants(ErrorAlert)
+        .with.prop('error', error);
+    });
+
+    it('should pass through the error prop to an inner ErrorAlert', () => {
+      const error = {
+        message: 'message',
+        items: {
+          a: 'errora',
+          'b.c': 'errorc',
+        },
+      };
+
+      const wrapper = mount(
+        <Form error={error}>
+          <Form.Field type="text" name="a" label="label-A" />
+          <Form.Field type="text" name="c" path="b.c" label="label-C" />
+        </Form>,
+      );
+
+      expect(wrapper.find(Form.Field).first()).to.have.prop('error', 'errora');
+      expect(wrapper.find(Form.Field).last()).to.have.prop('error', 'errorc');
     });
   });
 

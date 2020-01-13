@@ -78,6 +78,10 @@ const omit = (keys, object) => {
  * @exmaple path(['three', 'two'], { one: { two: 'hi' } }) => undefined;
  */
 const path = (valuePath, object) => {
+  if (!object) {
+    return undefined;
+  }
+
   const [prop, ...rest] = valuePath;
   const nextObj = object[prop];
 

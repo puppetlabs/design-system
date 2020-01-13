@@ -52,6 +52,8 @@ const FormFieldElement = props => {
   const elementProps = omit(
     [
       'inline',
+      'inlineLabelWidth',
+      'labelType',
       'description',
       'className',
       'style',
