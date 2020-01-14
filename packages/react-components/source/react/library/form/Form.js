@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import ErrorAlert from '../error-alert';
+import Alert from '../alert';
 import { mapObj, shallowDiff } from '../../helpers/statics';
 import * as types from '../../helpers/customPropTypes';
 import FormField from './FormField';
@@ -165,7 +165,11 @@ const Form = props => {
       noValidate
     >
       {children}
-      {error && <ErrorAlert error={error} className="rc-form-error" />}
+      {error && (
+        <Alert className="rc-form-error">
+          <Alert.Error error={error} />
+        </Alert>
+      )}
       <FormActions
         submitting={submitting}
         submittable={submittable}

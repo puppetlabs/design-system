@@ -6,7 +6,7 @@ import sinon from 'sinon';
 import Form from '../../source/react/library/form/Form';
 import { isEmpty } from '../../source/react/library/form/internal/methods';
 import Button from '../../source/react/library/button/Button';
-import ErrorAlert from '../../source/react/library/error-alert';
+import Alert from '../../source/react/library/alert/Alert';
 
 describe('<Form />', () => {
   it('should propagate user provided className', () => {
@@ -419,7 +419,7 @@ describe('<Form />', () => {
   });
 
   describe('extended error handling', () => {
-    it('should pass through the error prop to an inner ErrorAlert', () => {
+    it('should pass through the error prop to an inner Error', () => {
       const initialValues = {
         a: 'A',
         b: 'B',
@@ -438,7 +438,7 @@ describe('<Form />', () => {
       );
 
       expect(wrapper)
-        .to.have.descendants(ErrorAlert)
+        .to.have.descendants(Alert.Error)
         .with.prop('error', error);
     });
 

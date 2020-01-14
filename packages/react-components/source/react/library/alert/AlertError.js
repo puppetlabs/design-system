@@ -1,6 +1,6 @@
 import React from 'react';
 import { error as errorType } from '../../helpers/customPropTypes';
-import Alert from '../alert/Alert';
+import AlertMessage from './AlertMessage';
 
 const propTypes = {
   /** An error as a string, Error instance, or custom extended type */
@@ -44,25 +44,25 @@ const CauseList = ({ error }) => {
   );
 };
 
-const ErrorAlert = ({ error, ...rest }) => {
+const AlertError = ({ error }) => {
   const causes = getPublicCauses(error);
 
   return (
-    <Alert type="danger" {...rest}>
+    <>
       {getMessage(error)}
       {!!causes.length && (
-        <Alert.Message>
+        <AlertMessage>
           <CauseList error={error} />
-        </Alert.Message>
+        </AlertMessage>
       )}
-    </Alert>
+    </>
   );
 };
 
-ErrorAlert.propTypes = propTypes;
+AlertError.propTypes = propTypes;
 
 CauseList.propTypes = {
   error: errorType.isRequired,
 };
 
-export default ErrorAlert;
+export default AlertError;
