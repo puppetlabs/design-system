@@ -166,7 +166,7 @@ const Form = props => {
     >
       {children}
       {error && (
-        <Alert className="rc-form-error">
+        <Alert type="danger" className="rc-form-error">
           <Alert.Error error={error} />
         </Alert>
       )}
