@@ -1,4 +1,11 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.12.0...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.0...HEAD)
+- [Form] Support nested data structures in Form
+- [Alert] Create Alert.Error subcomponent for automatic error message formatting
+
+# [5.12.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.12.0...@puppet/react-components@5.13.0) (2020-01-15)
+
+- [Select] Add `multiselect` type to `Select` component by [jilliankeenan](https://github.com/jilliankeenan)
+- [Form & FormField] Expose `inline`, `inlineLabelWidth` and `labelType` on both components for flexible form variants by [@sprokusk](https://github.com/sprokusk)
 
 # [5.12.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.11.1...@puppet/react-components@5.12.0) (2020-01-13)
 
