@@ -68,3 +68,47 @@ describe('<Alert />', () => {
     expect(onClose).to.have.been.called;
   });
 });
+
+describe('<Alert.Error />', () => {
+  it('renders string error', () => {
+    const wrapper = mount(
+      <Alert>
+        <Alert.Error error="stranger danger" />
+      </Alert>,
+    );
+
+    expect(wrapper).to.have.text('stranger danger');
+  });
+
+  it('renders Error instance message', () => {
+    const wrapper = mount(
+      <Alert>
+        <Alert.Error error={new Error('stranger danger')} />
+      </Alert>,
+    );
+
+    expect(wrapper).to.have.text('stranger danger');
+  });
+
+  it('renders a list of causes, filtered to include only those with no sensitivity', () => {
+    const error = {
+      message: 'testy',
+      causes: [
+        { message: 'test1', sensitivity: 100 },
+        { message: 'test2', sensitivity: 0 },
+      ],
+    };
+
+    const wrapper = mount(
+      <Alert>
+        <Alert.Error error={error} />
+      </Alert>,
+    );
+
+    expect(wrapper)
+      .to.have.exactly(1)
+      .descendants('li');
+
+    expect(wrapper.find('li')).to.have.text('test2');
+  });
+});

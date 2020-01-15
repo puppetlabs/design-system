@@ -190,7 +190,7 @@ class MyPage extends React.Component {
 <MyPage />;
 ```
 
-## Variations
+## Visual Variations
 
 Variant styles are achieved by manipulating `labelType`, `inline` and `inlineLabelWidth` on the Form and/or individual FormFields. Below, all fields have been made inline with lowercased labels.
 
@@ -295,4 +295,124 @@ class MyPage extends React.Component {
 }
 
 <MyPage />;
+```
+
+## API Features
+
+### Nested data structures
+
+The `Form` component supports nested data structures through the optional `path` prop on `Form.Field`. Each `path` may reference a nested value in the data provided to the form through `values` or `initialValues`, with the value location delimited by `.` or brackets `[]`. It will report back the original data structure with updated values through the `onSubmit` and `onChange` callbacks.
+
+```
+const initialValues = {
+  a: 'John',
+  b: {
+    c: 'Jacob',
+    d: {
+      e: 'Jingle'
+    }
+  },
+  f: ['Heimer', 'Schmidt']
+};
+
+<Form
+  initialValues={initialValues}
+  onChange={console.log}
+  onSubmit={console.log}
+  submittable
+  cancellable
+>
+  <Form.Field label="Name" name="a" type="text" />
+  <Form.Field label="Name Part 2" name="c" path="b.c" type="text" />
+  <Form.Field label="Name Part 3" name="e" path="b.d.e" type="text" />
+  <Form.Field label="Name Part 4" name="g" path="f[0]" type="text" />
+  <Form.Field label="Name Part 6" name="h" path="f[1]" type="text" />
+</Form>
+```
+
+### Errors
+
+The `Form` may be provided with an `error` prop in one of three formats. Provided errors will not block submission of the form.
+
+#### String error messages
+
+If passed a string, the `Form` will render an [alert](#/React%20Components/Alert) below the form fields containing that string message.
+
+```
+<Form submittable cancellable error="This error is passed in as a string">
+  <Form.Field label="Order" type="text" name="food" />
+  <Form.Field label="How Many" type="number" name="howmany" />
+</Form>
+```
+
+#### Error instances
+
+The `Form` will also accept javascript error instances, rendering an [alert](#/React%20Components/Alert) with the error message. This is ideal for api-generated error messages.
+
+```
+const error = new Error('This is a javascript error instance.');
+
+<Form submittable cancellable error={error}>
+  <Form.Field label="Planet" type="text" name="planet" />
+  <Form.Field label="Moons" type="number" name="moons" />
+</Form>
+```
+
+#### Causes and field-level errors
+
+The `Form` will also accept any object satisfying an extended error interface that supports enumerated error causes, and a set of `items` renderable as field-level errors. This usecase is intended primarily to enable server-sent errors to map cleanly to fields in a nested data structure. If a client wishes to render a field-level error on an individual field, they may pass an `error` prop directly to a `Form.Field`.
+
+Error causes may be supplied as an array under the `causes` key, and may themselves have sub-causes. Each cause may also specify a numerical sensitivity, where a non-zero sensitivity indicates that the cause should be hidden from the user. This is to allow APIs to return causes for developer debugging alongside user-facing causes. Each cause will render in a nested list inside the error alert. See [ErrorAlert](#/React%20Components/ErrorAlert) for more information.
+
+Field-level errors may be supplied in an object under the `items` key. The keys in the `items` object should correspond to the `name` or `path` (if using a nested structure) of the field in question. The values should be strings, errors, or extended errors including a field-level error message to be rendered under each field.
+
+Here is an example custom error object, including both `causes` and `items`:
+
+
+```js static
+{
+  message: 'Top-level error message',
+  causes: [
+    {
+      message: 'Error cause 1',
+      causes: ['Elaborating on cause 1'],
+      sensitivity: 0 // sensitivities higher than 0 will not display, see below
+    },
+    new Error('Error cause 2'),
+    'Error cause 3'
+  ],
+  items: {
+    fieldName: 'This field is bad',
+    'path.to.otherfield': new Error('This nested field is bad'),
+    'field[0]': {
+      message: 'this item is wrong'
+    }
+  }
+}
+```
+
+```
+const error = {
+  message: 'This form is bad!',
+  causes: [
+    {
+      message: 'Error cause 1',
+      causes: ['Elaborating on cause 1'],
+      sensitivity: 0 // sensitivities higher than 0 will not display, see below
+    },
+    new Error('Error cause 2'),
+    'Error cause 3'
+  ],
+  items: {
+    country: 'This is not a country',
+    'country.state': 'A non-existent country can\'t have a state',
+    'country.state.city': 'Are you serious?'
+  }
+};
+
+<Form submittable cancellable error={error}>
+  <Form.Field label="Country" type="text" name="country" />
+  <Form.Field label="State" type="text" name="state" path="country.state"/>
+  <Form.Field label="City" type="text" name="city" path="country.state.city"/>
+</Form>
 ```
