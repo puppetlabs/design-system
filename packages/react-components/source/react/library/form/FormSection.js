@@ -17,40 +17,31 @@ const defaultProps = {
   flyout: null,
 };
 
-class FormSection extends React.Component {
-  renderLegend() {
-    const { title, tooltip, flyout } = this.props;
+const FormSectionLegend = ({ title, tooltip, flyout }) => {
+  const legend = (
+    <legend className="rc-form-section-legend">
+      <span>{title}</span>
+      {flyout}
+    </legend>
+  );
 
-    let jsx = (
-      <legend className="rc-form-section-legend">
-        <span>{title}</span>
-        {flyout}
-      </legend>
-    );
-
-    if (tooltip) {
-      jsx = (
-        <TooltipHoverArea tooltip={tooltip} anchor="bottom">
-          {jsx}
-        </TooltipHoverArea>
-      );
-    }
-
-    return jsx;
-  }
-
-  render() {
-    const { children } = this.props;
-    const legend = this.renderLegend();
-
+  if (tooltip) {
     return (
-      <fieldset className="rc-form-section">
+      <TooltipHoverArea tooltip={tooltip} anchor="bottom">
         {legend}
-        {children}
-      </fieldset>
+      </TooltipHoverArea>
     );
   }
-}
+
+  return legend;
+};
+
+const FormSection = ({ title, tooltip, flyout, children }) => (
+  <fieldset className="rc-form-section">
+    <FormSectionLegend title={title} tooltip={tooltip} flyout={flyout} />
+    {children}
+  </fieldset>
+);
 
 FormSection.propTypes = propTypes;
 FormSection.defaultProps = defaultProps;

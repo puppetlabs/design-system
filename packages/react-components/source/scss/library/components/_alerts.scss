@@ -155,3 +155,12 @@ $colors: (
     visibility: hidden;
   }
 }
+
+.rc-error-alert-cause-list {
+  margin: 0;
+  padding-left: $puppet-common-spacing-base * 4;
+}
+
+.rc-error-alert-cause {
+  font-family: $puppet-type-font-family-monospace;
+}

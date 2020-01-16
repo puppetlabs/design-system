@@ -20,10 +20,26 @@ export const anchorOrientation = PropTypes.oneOf([
   'bottom left',
 ]);
 
+const extendedErrorShape = {
+  message: PropTypes.string.isRequired,
+  sensitivity: PropTypes.number,
+};
+
 /**
- * Design system common form sizes
+ * Common error type for design system things. The error can be a string,
+ * an Error instance, or can be any type satisfying an extended interface which
+ * includes an optional array of error causes and set of field-specific
+ * errors under 'items'
  */
-export const formSize = PropTypes.oneOf(['medium', 'small']);
+export const error = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.instanceOf(Error),
+  PropTypes.shape(extendedErrorShape),
+]);
+
+// recursive type definitions must be assigned after variable instantiation
+extendedErrorShape.causes = PropTypes.arrayOf(error);
+extendedErrorShape.items = PropTypes.objectOf(error);
 
 /**
  * PropType wrapper that displays a deprecation message long with normal
