@@ -3,10 +3,8 @@ import { expect } from 'chai';
 import React from 'react';
 import sinon from 'sinon';
 
-import Form from '../../source/react/library/form/Form';
-import { isEmpty } from '../../source/react/library/form/internal/methods';
+import Form, { isEmpty } from '../../source/react/library/form/Form';
 import Button from '../../source/react/library/button/Button';
-import Alert from '../../source/react/library/alert/Alert';
 
 describe('<Form />', () => {
   it('should propagate user provided className', () => {
@@ -28,11 +26,11 @@ describe('<Form />', () => {
     });
 
     it('should render a submit button if the submittable prop is true', () => {
-      expect(mount(<Form submittable />))
+      expect(shallow(<Form submittable />))
         .to.have.exactly(1)
         .descendants(Button);
 
-      expect(mount(<Form submittable />).find(Button)).to.have.prop(
+      expect(shallow(<Form submittable />).find(Button)).to.have.prop(
         'buttonType',
         'submit',
       );
@@ -45,7 +43,7 @@ describe('<Form />', () => {
     });
 
     it('should render a cancel button if the submittable prop is true', () => {
-      expect(mount(<Form cancellable />))
+      expect(shallow(<Form cancellable />))
         .to.have.exactly(1)
         .descendants(Button);
     });
@@ -86,6 +84,22 @@ describe('<Form />', () => {
       expect(wrapper.find(Form.Field).last()).to.have.prop('value', 'B');
     });
 
+    it('should set the intial values state equal to initialValues', () => {
+      const initialValues = {
+        a: 'A',
+        b: 'B',
+      };
+
+      const wrapper = shallow(
+        <Form initialValues={initialValues}>
+          <Form.Field type="text" name="a" label="label-A" />
+          <Form.Field type="text" name="b" label="label-B" />
+        </Form>,
+      );
+
+      expect(wrapper.state().values).to.eql(initialValues);
+    });
+
     it('should update values state when an input changes', () => {
       const initialValues = {
         a: 'A',
@@ -104,8 +118,7 @@ describe('<Form />', () => {
         .first()
         .simulate('change', { target: { value: 'AA' } });
 
-      expect(wrapper.find(Form.Field).first()).to.have.prop('value', 'AA');
-      expect(wrapper.find(Form.Field).last()).to.have.prop('value', 'B');
+      expect(wrapper.state().values).to.eql({ a: 'AA', b: 'B' });
     });
 
     it('should fire onChange callback when inputs change', () => {
@@ -130,145 +143,6 @@ describe('<Form />', () => {
 
       // eslint-disable-next-line
       expect(onChange).to.have.been.called;
-    });
-
-    describe('nested data', () => {
-      it('should supply nested initial values based on name or path field props', () => {
-        const initialValues = {
-          a: 'A',
-          path: {
-            to: {
-              b: 'B',
-            },
-          },
-          array: [
-            'C',
-            {
-              d: 'D',
-            },
-          ],
-        };
-
-        const wrapper = shallow(
-          <Form initialValues={initialValues}>
-            <Form.Field type="text" name="a" label="label-A" />
-            <Form.Field type="text" name="b" label="label-B" path="path.to.b" />
-            <Form.Field
-              type="text"
-              name="c"
-              label="label-C"
-              path="array[1].d"
-            />
-          </Form>,
-        );
-
-        expect(wrapper.find(Form.Field).first()).to.have.prop('value', 'A');
-        expect(wrapper.find(Form.Field).at(1)).to.have.prop('value', 'B');
-        expect(wrapper.find(Form.Field).last()).to.have.prop('value', 'D');
-      });
-
-      it('should update values state when an input changes', () => {
-        const initialValues = {
-          a: 'A',
-          path: {
-            to: {
-              b: 'B',
-            },
-          },
-          array: [
-            'C',
-            {
-              d: 'D',
-            },
-          ],
-        };
-
-        const wrapper = mount(
-          <Form initialValues={initialValues}>
-            <Form.Field type="text" name="a" label="label-A" />
-            <Form.Field type="text" name="b" label="label-B" path="path.to.b" />
-            <Form.Field
-              type="text"
-              name="c"
-              label="label-C"
-              path="array[1].d"
-            />
-          </Form>,
-        );
-
-        wrapper
-          .find('input')
-          .last()
-          .simulate('change', { target: { value: 'DD' } });
-
-        wrapper
-          .find('input')
-          .at(1)
-          .simulate('change', { target: { value: 'BB' } });
-
-        expect(wrapper.find(Form.Field).first()).to.have.prop('value', 'A');
-        expect(wrapper.find(Form.Field).at(1)).to.have.prop('value', 'BB');
-        expect(wrapper.find(Form.Field).last()).to.have.prop('value', 'DD');
-      });
-
-      it('should report back un-nested updates through onChange', () => {
-        const initialValues = {
-          a: 'A',
-          path: {
-            to: {
-              b: 'B',
-            },
-          },
-          array: [
-            'C',
-            {
-              d: 'D',
-            },
-          ],
-        };
-
-        const expectedFinalValues = {
-          a: 'A',
-          path: {
-            to: {
-              b: 'BB',
-            },
-          },
-          array: [
-            'C',
-            {
-              d: 'DD',
-            },
-          ],
-        };
-
-        const onChange = sinon.spy();
-
-        const wrapper = mount(
-          <Form initialValues={initialValues} onChange={onChange}>
-            <Form.Field type="text" name="a" label="label-A" />
-            <Form.Field type="text" name="b" label="label-B" path="path.to.b" />
-            <Form.Field
-              type="text"
-              name="c"
-              label="label-C"
-              path="array[1].d"
-            />
-          </Form>,
-        );
-
-        wrapper
-          .find('input')
-          .last()
-          .simulate('change', { target: { value: 'DD' } });
-
-        wrapper
-          .find('input')
-          .at(1)
-          .simulate('change', { target: { value: 'BB' } });
-
-        expect(onChange.args[1][1]).to.eql(expectedFinalValues);
-      });
     });
   });
 
@@ -415,51 +289,6 @@ describe('<Form />', () => {
       );
 
       expect(wrapper).to.have.descendants('.test-div');
-    });
-  });
-
-  describe('extended error handling', () => {
-    it('should pass through the error prop to an inner Error', () => {
-      const initialValues = {
-        a: 'A',
-        b: 'B',
-      };
-
-      const error = {
-        message: 'message',
-        causes: ['cause1'],
-      };
-
-      const wrapper = mount(
-        <Form initialValues={initialValues} error={error}>
-          <Form.Field type="text" name="a" label="label-A" />
-          <Form.Field type="text" name="b" label="label-B" />
-        </Form>,
-      );
-
-      expect(wrapper)
-        .to.have.descendants(Alert.Error)
-        .with.prop('error', error);
-    });
-
-    it('should pass through the error prop to an inner ErrorAlert', () => {
-      const error = {
-        message: 'message',
-        items: {
-          a: 'errora',
-          'b.c': 'errorc',
-        },
-      };
-
-      const wrapper = mount(
-        <Form error={error}>
-          <Form.Field type="text" name="a" label="label-A" />
-          <Form.Field type="text" name="c" path="b.c" label="label-C" />
-        </Form>,
-      );
-
-      expect(wrapper.find(Form.Field).first()).to.have.prop('error', 'errora');
-      expect(wrapper.find(Form.Field).last()).to.have.prop('error', 'errorc');
     });
   });
 
