@@ -3,6 +3,7 @@ module.exports = {
     '\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$':
       '<rootDir>/jest/fileMock.js',
     '\\.scss$': 'identity-obj-proxy',
+    '^react$': '<rootDir>/node_modules/react',
   },
   moduleDirectories: ['node_modules', 'styleguide/client', 'src'],
   setupFilesAfterEnv: ['<rootDir>/jest/setupTests.js'],

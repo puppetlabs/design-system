@@ -1,4 +1,4 @@
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
@@ -12,7 +12,7 @@ describe('<FormSection />', () => {
   });
 
   it('should render the label with a tooltip when one is provided', () => {
-    const wrapper = shallow(
+    const wrapper = mount(
       <FormSection title="label boii" tooltip="hello world" />,
     );
 
