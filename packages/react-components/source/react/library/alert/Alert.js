@@ -7,7 +7,6 @@ import IconButton from './IconButton';
 
 import AlertMessage from './AlertMessage';
 import AlertActions from './AlertActions';
-import AlertError from './AlertError';
 
 const propTypes = {
   /** Main content */
@@ -112,6 +111,5 @@ Alert.defaultProps = defaultProps;
 
 Alert.Message = AlertMessage;
 Alert.Actions = AlertActions;
-Alert.Error = AlertError;
 
 export default Alert;

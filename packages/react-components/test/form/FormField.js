@@ -1,4 +1,4 @@
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
@@ -22,32 +22,31 @@ describe('<FormField />', () => {
 
   it('propagates user provided className', () => {
     expect(
-      mount(<FormField {...requiredProps} className="test-class" />),
+      shallow(<FormField {...requiredProps} className="test-class" />),
     ).to.have.className('test-class');
   });
 
   it('propagates user provided inline style', () => {
     expect(
-      mount(<FormField {...requiredProps} style={{ marginTop: 10 }} />),
+      shallow(<FormField {...requiredProps} style={{ marginTop: 10 }} />),
     ).to.have.style('margin-top', '10px');
   });
 
   it('renders a label with the provided label text', () => {
-    expect(mount(<FormField {...requiredProps} />).find('label')).to.have.text(
-      'testLabel',
-    );
+    expect(
+      shallow(<FormField {...requiredProps} />).find('label'),
+    ).to.have.text('testLabel');
   });
 
   it('renders a label with an htmlFor prop equal to the provided name', () => {
-    expect(mount(<FormField {...requiredProps} />).find('label')).to.have.prop(
-      'htmlFor',
-      'testField',
-    );
+    expect(
+      shallow(<FormField {...requiredProps} />).find('label'),
+    ).to.have.prop('htmlFor', 'testField');
   });
 
   it('renders the provided description if present', () => {
     expect(
-      mount(
+      shallow(
         <FormField
           {...requiredProps}
           description="This is a field description"
@@ -58,7 +57,7 @@ describe('<FormField />', () => {
 
   it('replaces the description with an error if present', () => {
     expect(
-      mount(
+      shallow(
         <FormField
           {...requiredProps}
           description="This is a field description"
@@ -70,7 +69,7 @@ describe('<FormField />', () => {
 
   it('still renders the description if the error prop is true but not a string', () => {
     expect(
-      mount(
+      shallow(
         <FormField
           {...requiredProps}
           description="This is a field description"
@@ -82,7 +81,7 @@ describe('<FormField />', () => {
 
   it('applies a className per string type prop', () => {
     expect(
-      mount(<FormField {...requiredProps} type="password" />),
+      shallow(<FormField {...requiredProps} type="password" />),
     ).to.have.className('rc-form-field-password');
   });
 
@@ -90,7 +89,7 @@ describe('<FormField />', () => {
    * TODO: we could actually grab the values here and make sure they satisfy the propTypes
    */
   it('applies the appropriate props to the inner input element', () => {
-    expect(mount(<FormField {...requiredProps} />).find(Input)).to.have.props(
+    expect(shallow(<FormField {...requiredProps} />).find(Input)).to.have.props(
       Object.keys(formInputInterface),
     );
   });
@@ -98,27 +97,27 @@ describe('<FormField />', () => {
   it('renders an Input for all Input supported types', () => {
     INPUT_SUPPORTED_TYPES.forEach(type => {
       expect(
-        mount(<FormField {...requiredProps} type={type} />),
+        shallow(<FormField {...requiredProps} type={type} />),
       ).to.have.descendants(Input);
     });
   });
 
   it('renders a Checkbox for checkbox type', () => {
     expect(
-      mount(<FormField {...requiredProps} type="checkbox" />),
+      shallow(<FormField {...requiredProps} type="checkbox" />),
     ).to.have.descendants(Checkbox);
   });
 
   it('renders a Switch for switch type', () => {
     expect(
-      mount(<FormField {...requiredProps} type="switch" />),
+      shallow(<FormField {...requiredProps} type="switch" />),
     ).to.have.descendants(Switch);
   });
 
   it('renders a Select for select and multiselect type', () => {
     ['select', 'multiselect'].forEach(type => {
       expect(
-        mount(<FormField {...requiredProps} type={type} />),
+        shallow(<FormField {...requiredProps} type={type} />),
       ).to.have.descendants(Select);
     });
   });
@@ -127,7 +126,7 @@ describe('<FormField />', () => {
     const MyInput = () => <div />;
 
     expect(
-      mount(<FormField {...requiredProps} type={MyInput} />),
+      shallow(<FormField {...requiredProps} type={MyInput} />),
     ).to.have.descendants(MyInput);
   });
 });
