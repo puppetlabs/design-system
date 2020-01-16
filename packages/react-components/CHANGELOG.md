@@ -1,41 +1,39 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.0...HEAD)
-- [Form] Support nested data structures in Form
-- [Alert] Create Alert.Error subcomponent for automatic error message formatting
 
-# [5.12.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.12.0...@puppet/react-components@5.13.0) (2020-01-15)
+# [5.13.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.12.0...@puppet/react-components@5.13.0) (2020-01-15)
 
-- [Select] Add `multiselect` type to `Select` component by [jilliankeenan](https://github.com/jilliankeenan)
-- [Form & FormField] Expose `inline`, `inlineLabelWidth` and `labelType` on both components for flexible form variants by [@sprokusk](https://github.com/sprokusk)
+- [Form] Support nested data structures in Form (by [nmuldavin](https://github.com/nmuldavin) in [#193](https://github.com/puppetlabs/design-system/pull/193))
+- [Alert] Create Alert.Error subcomponent for automatic error message formatting (by [nmuldavin](https://github.com/nmuldavin) in [#193](https://github.com/puppetlabs/design-system/pull/193))
 
 # [5.12.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.11.1...@puppet/react-components@5.12.0) (2020-01-13)
 
-- [Select] Add `multiselect` type to `Select` component by [jilliankeenan](https://github.com/jilliankeenan)
-- [Form & FormField] Expose `inline`, `inlineLabelWidth` and `labelType` on both components for flexible form variants by [@sprokusk](https://github.com/sprokusk)
+- [Select] Add `multiselect` type to `Select` component (by [jilliankeenan](https://github.com/jilliankeenan) in [#192](https://github.com/puppetlabs/design-system/pull/192))
+- [Form & FormField] Expose `inline`, `inlineLabelWidth` and `labelType` on both components for flexible form variants (by [@sprokusk](https://github.com/sprokusk) in [#194](https://github.com/puppetlabs/design-system/pull/194))
 
 # [5.11.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.11.0...@puppet/react-components@5.11.1) (2019-12-30)
 
-- [Select] Allow truthy string in addition to boolean `open` prop in `Select` component by [@vine77](https://github.com/vine77)
-- [Card] Fix filtering of Card title and actions in production builds by [@vine77](https://github.com/vine77)
-- [Docs] Update ButtonSelect documentation by [@vine77](https://github.com/vine77)
-- [Docs] Update Colors documentation and add link to the color definitions in _palettes.scss by [@vine77](https://github.com/vine77)
+- [Select] Allow truthy string in addition to boolean `open` prop in `Select` component (by [@vine77](https://github.com/vine77))
+- [Card] Fix filtering of Card title and actions in production builds (by [@vine77](https://github.com/vine77))
+- [Docs] Update ButtonSelect documentation (by [@vine77](https://github.com/vine77))
+- [Docs] Update Colors documentation and add link to the color definitions in _palettes.scss (by [@vine77](https://github.com/vine77))
 
 # [5.11.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.10.0...@puppet/react-components@5.11.0) (2019-12-13)
 
-- [Sidebar] Add `profileIcon` prop to Sidebar.Footer for custom profile icons or images by [@jilliankeenan](https://github.com/jilliankeenan)
-- [Sidebar] Make `version` prop optional in Sidebar.Footer by [@jilliankeenan](https://github.com/jilliankeenan)
-- [Sidebar] Fix padding on `Sidebar.Header` when it has an `as` prop by [@vine77](https://github.com/vine77)
-- [ButtonSelect] Show selected items in multiselect button by [@vine77](https://github.com/vine77)
-- [Card] Decrease font-size in Card.Title from h3 to h4 (24px to 18px) by [@vine77](https://github.com/vine77)
-- [Card] Move Card.Actions 4px closer to the top and left in Card by [@vine77](https://github.com/vine77)
-- [Docs] Add example of using a custom SVG in the Icon component by [@rhyza](https://github.com/rhyza)
-- [Docs] Update Sidebar documentation by [@vine77](https://github.com/vine77)
-- Update CODEOWNERS file to use GitHub team instead of usernames by [@vine77](https://github.com/vine77)
+- [Sidebar] Add `profileIcon` prop to Sidebar.Footer for custom profile icons or images (by [@jilliankeenan](https://github.com/jilliankeenan))
+- [Sidebar] Make `version` prop optional in Sidebar.Footer (by [@jilliankeenan](https://github.com/jilliankeenan))
+- [Sidebar] Fix padding on `Sidebar.Header` when it has an `as` prop (by [@vine77](https://github.com/vine77))
+- [ButtonSelect] Show selected items in multiselect button (by [@vine77](https://github.com/vine77))
+- [Card] Decrease font-size in Card.Title from h3 to h4 (24px to 18px) (by [@vine77](https://github.com/vine77))
+- [Card] Move Card.Actions 4px closer to the top and left in Card (by [@vine77](https://github.com/vine77))
+- [Docs] Add example of using a custom SVG in the Icon component (by [@rhyza](https://github.com/rhyza))
+- [Docs] Update Sidebar documentation (by [@vine77](https://github.com/vine77))
+- Update CODEOWNERS file to use GitHub team instead of usernames (by [@vine77](https://github.com/vine77))
 
 # [5.10.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.20...@puppet/react-components@5.10.0) (2019-11-22)
 
-- [Code] Add Code component [#176](https://github.com/puppetlabs/design-system/pull/176) by [@melcherry98](https://github.com/melcherry98)
-- [sass-variables] Add Inconsolata monospace font [#176](https://github.com/puppetlabs/design-system/pull/176) by [@melcherry98](https://github.com/melcherry98)
-- [Content] Add more styles to HTML in Content component [#177](https://github.com/puppetlabs/design-system/pull/177) by [@sprokusk](https://github.com/sprokusk)
+- [Code] Add Code component [#176](https://github.com/puppetlabs/design-system/pull/176) (by [@melcherry98](https://github.com/melcherry98))
+- [sass-variables] Add Inconsolata monospace font [#176](https://github.com/puppetlabs/design-system/pull/176) (by [@melcherry98](https://github.com/melcherry98))
+- [Content] Add more styles to HTML in Content component [#177](https://github.com/puppetlabs/design-system/pull/177) (by [@sprokusk](https://github.com/sprokusk))
 
 # [5.9.20](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.9.19...@puppet/react-components@5.9.20) (2019-11-20)
 
