@@ -58,6 +58,7 @@ const FormFieldElement = props => {
       'className',
       'style',
       'requiredFieldMessage',
+      'requiredOnLoad',
       'validator',
     ],
     props,

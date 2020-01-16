@@ -29,6 +29,8 @@ const propTypes = {
   required: PropTypes.bool,
   /* The error message to display if the field is required but not present at validation */
   requiredFieldMessage: PropTypes.string,
+  /* Should the required message render on load */
+  requiredOnLoad: PropTypes.bool,
   /* An optional validation function. Will be passed in order: the current field value, and the entire form value */
   validator: PropTypes.func,
   /* An optional nested path at which to access field data. Nested path can be delimted with `.` or with brackets `[]`. For example: my.nested.array[0] */
@@ -53,6 +55,7 @@ const defaultProps = {
   description: '',
   required: false,
   requiredFieldMessage: 'Required field',
+  requiredOnLoad: false,
   validator() {},
   path: '',
   inline: false,
@@ -68,6 +71,7 @@ const defaultProps = {
 export const formInputInterface = omit(
   [
     'requiredFieldMessage',
+    'requiredOnLoad',
     'validator',
     'className',
     'description',
