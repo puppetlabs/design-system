@@ -258,6 +258,7 @@ class Form extends Component {
       error,
       required,
       requiredFieldMessage,
+      requiredOnLoad,
       validator,
     } = userProvidedFieldProps;
 
@@ -267,7 +268,7 @@ class Form extends Component {
 
     let blockingError;
 
-    if (validate) {
+    if (validate || requiredOnLoad) {
       if (required && isEmpty(value)) {
         blockingError = requiredFieldMessage;
       } else if (validator) {
@@ -281,7 +282,7 @@ class Form extends Component {
      * Form.Field
      */
     const fieldProps = omit(
-      ['requiredFieldMessage', 'validator', 'error'],
+      ['requiredFieldMessage', 'requiredOnLoad', 'validator', 'error'],
       userProvidedFieldProps,
     );
 

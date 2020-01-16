@@ -41,6 +41,8 @@ const propTypes = {
   required: PropTypes.bool,
   /* The error message to display if the field is required but not present at validation */
   requiredFieldMessage: PropTypes.string,
+  /* Should the required message render on load */
+  requiredOnLoad: PropTypes.bool,
   /* An optional validation function. Will be passed in order: the current field value, and the entire form value */
   validator: PropTypes.func,
   /* Alternate inline display format */
@@ -63,6 +65,7 @@ const defaultProps = {
   description: '',
   required: false,
   requiredFieldMessage: 'Required field',
+  requiredOnLoad: false,
   validator() {},
   inline: null,
   inlineLabelWidth: null,
@@ -77,6 +80,7 @@ const defaultProps = {
 export const formInputInterface = omit(
   [
     'requiredFieldMessage',
+    'requiredOnLoad',
     'validator',
     'className',
     'description',
@@ -159,6 +163,7 @@ class FormField extends React.Component {
         'className',
         'style',
         'requiredFieldMessage',
+        'requiredOnLoad',
         'validator',
       ],
       this.props,
