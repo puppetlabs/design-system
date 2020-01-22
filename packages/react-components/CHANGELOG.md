@@ -1,4 +1,8 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.0...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.1...HEAD)
+
+# [5.13.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.0...@puppet/react-components@5.13.1) (2020-01-22)
+
+- [sass-variables] Add `$puppet-common-font-path` variable (to allow importing react-components' ui.scss and thus sass-variables without requiring resolve-url-loader configured in webpack) (by [scotje](https://github.com/scotje) in [#196](https://github.com/puppetlabs/design-system/pull/196))
 
 # [5.13.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.12.0...@puppet/react-components@5.13.0) (2020-01-15)
 
