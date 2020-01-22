@@ -3,6 +3,8 @@
 // still need to be consistent with our overall patterns. This variable set should be
 // added to over time but kept minimal to reduce maitainence bloat
 
+$puppet-common-font-path: './fonts' !default;
+
 // Most elements share a common border radius
 $puppet-common-border-radius: 4px !default;
 
