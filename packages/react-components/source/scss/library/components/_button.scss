@@ -338,16 +338,6 @@ $puppet-button-padding-vertical: 5px;
   }
 }
 
-.rc-button-trailing-icon:not(.rc-button-text).rc-button-trailing-icon:focus {
-  &.rc-button-full {
-    padding-right: 32px;
-  }
-
-  .rc-button-icon-svg {
-    right: 8px;
-  }
-}
-
 .rc-button + .rc-button {
   margin-left: $puppet-common-spacing-base * 2;
 }
