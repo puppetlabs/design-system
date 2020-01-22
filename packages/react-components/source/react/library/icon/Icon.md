@@ -130,4 +130,4 @@ const Renderer = () => {
 ## Related
 
 - [Button](#/React%20Components/Button) : buttons are able to render an icon as part of the component
-- [Button Select](#/React%20Components/ButtonSelect)
+- [ButtonSelect](#/React%20Components/ButtonSelect)
