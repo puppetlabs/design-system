@@ -18,6 +18,7 @@ module.exports = {
       },
     },
   },
+  assetsDir: 'public',
   pagePerSection: true,
   skipComponentsWithoutExample: true,
   styleguideComponents: {

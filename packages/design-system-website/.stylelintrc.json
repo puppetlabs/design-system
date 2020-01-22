@@ -7,6 +7,9 @@
       {
         "ignore": ["blockless-at-rules"]
       }
+    ],
+    "selector-max-id": [
+      1
     ]
   }
 }
