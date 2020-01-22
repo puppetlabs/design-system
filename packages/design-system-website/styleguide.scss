@@ -1,18 +1,20 @@
 @import '~@puppet/sass-variables/index';
 
 /********** Homepage **********/
-#puppet-design-system::before {
-  background-image: url('/hero.svg');
-  background-position: 0 -60px;
-  background-repeat: no-repeat;
-  content: '';
-  display: block;
-  height: 440px;
-  left: 0;
-  position: absolute;
-  top: 0;
-  width: 100%;
-  z-index: -1;
+#puppet-design-system {
+  &::before {
+    background-image: url('/hero.svg');
+    background-position: 0 -60px;
+    background-repeat: no-repeat;
+    content: '';
+    display: block;
+    height: 440px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
 
   + h2 {
     margin-bottom: 90px;
