@@ -30,6 +30,7 @@ module.exports = {
       __dirname,
       'styleguideComponents/ComponentsListRenderer',
     ),
+    Markdown: path.join(__dirname, 'styleguideComponents/Markdown'),
     SectionHeadingRenderer: path.join(
       __dirname,
       'styleguideComponents/SectionHeadingRenderer',
@@ -38,11 +39,14 @@ module.exports = {
       __dirname,
       'styleguideComponents/StyleGuideRenderer',
     ),
+    TabButtonRenderer: path.join(
+      __dirname,
+      'styleguideComponents/TabButtonRenderer',
+    ),
     TableOfContentsRenderer: path.join(
       __dirname,
       'styleguideComponents/TableOfContentsRenderer',
     ),
-    Markdown: path.join(__dirname, 'styleguideComponents/Markdown'),
   },
 
   sections: [
