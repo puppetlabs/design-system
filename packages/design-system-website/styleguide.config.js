@@ -6,6 +6,10 @@ module.exports = {
   theme: {
     link: '#269CFF',
     name: '#269CFF',
+    fontFamily: {
+      base: ['Open Sans', 'sans-serif'],
+      monospace: ['Inconsolata', 'monospace'],
+    },
   },
   styles: {
     Ribbon: {
@@ -38,10 +42,7 @@ module.exports = {
       __dirname,
       'styleguideComponents/TableOfContentsRenderer',
     ),
-    Markdown: path.join(
-      __dirname,
-      'styleguideComponents/Markdown',
-    ),
+    Markdown: path.join(__dirname, 'styleguideComponents/Markdown'),
   },
 
   sections: [
