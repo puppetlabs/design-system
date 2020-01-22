@@ -37,6 +37,10 @@ module.exports = {
       __dirname,
       'styleguideComponents/TableOfContentsRenderer',
     ),
+    Markdown: path.join(
+      __dirname,
+      'styleguideComponents/Markdown',
+    ),
   },
 
   sections: [
