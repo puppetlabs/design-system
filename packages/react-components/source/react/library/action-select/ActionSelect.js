@@ -53,6 +53,8 @@ const propTypes = {
   loading: PropTypes.bool,
   /** Optional additional className passed to the outer element */
   className: PropTypes.string,
+  /** Optional inline width passed to the button element */
+  width: PropTypes.string,
   /** Optional inline style passed to the outer element */
   style: PropTypes.shape({}),
 };
@@ -68,6 +70,7 @@ const defaultProps = {
   loading: false,
   disabled: false,
   className: '',
+  width: null,
   style: {},
 };
 
@@ -147,6 +150,7 @@ class ActionSelect extends Component {
       actions,
       weight,
       className,
+      width,
       style,
     } = this.props;
 
@@ -171,6 +175,7 @@ class ActionSelect extends Component {
           innerFocus={innerFocus}
           weight={weight}
           icon={icon}
+          style={width ? { width, textAlign: 'left' } : null}
           trailingIcon={icon ? null : 'chevron-down'}
           disabled={disabled}
           loading={loading}
