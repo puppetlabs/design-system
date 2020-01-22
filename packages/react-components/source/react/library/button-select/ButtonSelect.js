@@ -66,6 +66,8 @@ const propTypes = {
   loading: PropTypes.bool,
   /** Optional additional className passed to the outer element */
   className: PropTypes.string,
+  /** Optional inline width passed to the button element */
+  width: PropTypes.string,
   /** Optional inline style passed to the outer element */
   style: PropTypes.shape({}),
 };
@@ -86,6 +88,7 @@ const defaultProps = {
   loading: false,
   disabled: false,
   className: '',
+  width: null,
   style: {},
 };
 
@@ -234,6 +237,7 @@ class ButtonSelect extends Component {
       options,
       weight,
       className,
+      width,
       style,
       value,
     } = this.props;
@@ -263,6 +267,7 @@ class ButtonSelect extends Component {
           weight={weight}
           icon={icon}
           trailingIcon={icon ? null : 'chevron-down'}
+          style={width ? { width, textAlign: 'left' } : null}
           disabled={disabled}
           loading={loading}
           aria-haspopup="true"

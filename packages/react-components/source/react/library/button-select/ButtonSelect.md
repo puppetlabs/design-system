@@ -219,3 +219,26 @@ const style = { display: 'inline-block', margin: 10 };
   />
 </div>;
 ```
+
+### Custom Width
+
+Use the `width` prop to customize the width of the button.
+
+```jsx
+const options = [
+  { value: 'hello', label: 'Hello' },
+  { value: 'world', label: 'World' },
+  { value: 'hi', label: 'Hi' },
+  { value: 'mom', label: 'Mom' },
+];
+
+<ButtonSelect
+  options={options}
+  value={state.value}
+  onChange={value => {
+    console.log('New Value:', value);
+    setState({ value });
+  }}
+  width="100px"
+/>
+```

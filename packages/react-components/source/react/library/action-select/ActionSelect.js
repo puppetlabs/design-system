@@ -175,8 +175,8 @@ class ActionSelect extends Component {
           innerFocus={innerFocus}
           weight={weight}
           icon={icon}
-          style={width ? { width, textAlign: 'left' } : null}
           trailingIcon={icon ? null : 'chevron-down'}
+          style={width ? { width, textAlign: 'left' } : null}
           disabled={disabled}
           loading={loading}
           aria-haspopup="true"
