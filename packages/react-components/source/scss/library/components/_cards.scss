@@ -57,6 +57,7 @@ $null-shadow: 0 0 0 0 transparent;
 }
 
 .rc-card {
+  @include puppet-type-body();
   border: 0;
   border-radius: $puppet-common-border-radius;
   display: flex;
