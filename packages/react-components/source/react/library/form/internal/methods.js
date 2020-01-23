@@ -189,7 +189,7 @@ export const updateFieldProps = (
     error,
     required,
     requiredFieldMessage,
-    requiredOnLoad,
+    validateOnLoad,
     validator,
   } = userProvidedFieldProps;
 
@@ -198,8 +198,8 @@ export const updateFieldProps = (
 
   let blockingError;
 
-  if (validate || requiredOnLoad) {
-    if ((required || requiredOnLoad) && isEmpty(value)) {
+  if (validate || validateOnLoad) {
+    if (required && isEmpty(value)) {
       blockingError = requiredFieldMessage;
     } else if (validator) {
       blockingError = validator(value, values);
@@ -215,7 +215,7 @@ export const updateFieldProps = (
    * Form.Field
    */
   const fieldProps = omit(
-    ['requiredFieldMessage', 'requiredOnLoad', 'validator', 'error', 'path'],
+    ['requiredFieldMessage', 'validateOnLoad', 'validator', 'error', 'path'],
     userProvidedFieldProps,
   );
 
