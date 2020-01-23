@@ -338,7 +338,7 @@ $puppet-button-padding-vertical: 5px;
   }
 }
 
-.rc-button-trailing-icon:not(.rc-button-text).rc-button-trailing-icon:focus {
+.rc-button-inner-focus.rc-button-trailing-icon:not(.rc-button-text).rc-button-trailing-icon:focus {
   &.rc-button-full {
     padding-right: 32px;
   }

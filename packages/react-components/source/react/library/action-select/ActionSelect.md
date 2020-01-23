@@ -173,6 +173,50 @@ const style = { display: 'inline-block', margin: 10 };
 </div>;
 ```
 
+### Custom Width
+
+Use the `width` prop to customize the width of the button.
+
+```jsx
+const actions = [
+  {
+    id: 'one',
+    icon: 'pencil',
+    label: 'Do thing one',
+    onClick() {
+      console.log('Thing one');
+    },
+  },
+  {
+    id: 'two',
+    icon: 'send',
+    label: 'Do thing two',
+    onClick() {
+      console.log('Thing two');
+    },
+  },
+  {
+    id: 'three',
+    as: 'a',
+    href: 'https://www.google.com',
+    target: '_blank',
+    label: 'Open link',
+    icon: 'link',
+  },
+];
+
+const style = { display: 'inline-block', margin: 10 };
+
+<div>
+  <ActionSelect
+    actions={actions}
+    label="Choose an Action"
+    style={style}
+    width="200px"
+  />
+</div>;
+```
+
 ## Related
 
 - [ButtonSelect](#/React%20Components/ButtonSelect)
