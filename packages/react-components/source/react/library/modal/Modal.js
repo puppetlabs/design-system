@@ -60,9 +60,10 @@ class Modal extends Component {
     const { pluckedDescendants: actions, otherDescendants } = filterDescendants(
       {
         children,
-        filter: childTypeName => childTypeName === 'ModalActions',
+        components: ModalActions,
       },
     );
+
     const hasActions = actions.length > 0;
 
     return (
