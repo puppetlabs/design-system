@@ -28,9 +28,13 @@ const Breadcrumb = ({ children, className, ...props }) => {
   });
 
   return (
-    <div className={classNames('rc-breadcrumb', className)} {...props}>
-      {crumbs}
-    </div>
+    <nav
+      aria-label="Breadcrumb"
+      className={classNames('rc-breadcrumb', className)}
+      {...props}
+    >
+      <ol>{crumbs}</ol>
+    </nav>
   );
 };
 

@@ -18,7 +18,7 @@ const defaultProps = {
 
 const BreadcrumbSection = ({ children, active, ...props }) => {
   let crumb = (
-    <>
+    <li>
       <Hyperlink
         className="rc-breadcrumb-section"
         color="medium"
@@ -27,15 +27,22 @@ const BreadcrumbSection = ({ children, active, ...props }) => {
       >
         {children}
       </Hyperlink>
-      <Icon type="chevron-right" />
-    </>
+      <Icon type="chevron-right" aria-hidden="true" />
+    </li>
   );
 
   if (active) {
     crumb = (
-      <Text className="rc-breadcrumb-section" color="medium" size="tiny">
-        {children}
-      </Text>
+      <li>
+        <Text
+          aria-current="page"
+          className="rc-breadcrumb-section"
+          color="medium"
+          size="tiny"
+        >
+          {children}
+        </Text>
+      </li>
     );
   }
 
