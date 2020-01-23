@@ -1,18 +1,20 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.1...HEAD)
 
+- [ActionSelect, ButtonSelect] Add `width` prop to ActionSelect and ButtonSelect (by [@rhyza](https://github.com/rhyza) in [#199](https://github.com/puppetlabs/design-system/pull/199))
+
 # [5.13.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.0...@puppet/react-components@5.13.1) (2020-01-22)
 
-- [sass-variables] Add `$puppet-common-font-path` variable (to allow importing react-components' ui.scss and thus sass-variables without requiring resolve-url-loader configured in webpack) (by [scotje](https://github.com/scotje) in [#196](https://github.com/puppetlabs/design-system/pull/196))
+- [sass-variables] Add `$puppet-common-font-path` variable (to allow importing react-components' ui.scss and thus sass-variables without requiring resolve-url-loader configured in webpack) (by [@scotje](https://github.com/scotje) in [#196](https://github.com/puppetlabs/design-system/pull/196))
 
 # [5.13.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.12.0...@puppet/react-components@5.13.0) (2020-01-15)
 
-- [Form] Support nested data structures in Form (by [nmuldavin](https://github.com/nmuldavin) in [#193](https://github.com/puppetlabs/design-system/pull/193))
-- [Alert] Create Alert.Error subcomponent for automatic error message formatting (by [nmuldavin](https://github.com/nmuldavin) in [#193](https://github.com/puppetlabs/design-system/pull/193))
+- [Form] Support nested data structures in Form (by [@nmuldavin](https://github.com/nmuldavin) in [#193](https://github.com/puppetlabs/design-system/pull/193))
+- [Alert] Create Alert.Error subcomponent for automatic error message formatting (by [@nmuldavin](https://github.com/nmuldavin) in [#193](https://github.com/puppetlabs/design-system/pull/193))
 
 # [5.12.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.11.1...@puppet/react-components@5.12.0) (2020-01-13)
 
-- [Select] Add `multiselect` type to `Select` component (by [jilliankeenan](https://github.com/jilliankeenan) in [#192](https://github.com/puppetlabs/design-system/pull/192))
-- [Form & FormField] Expose `inline`, `inlineLabelWidth` and `labelType` on both components for flexible form variants (by [@sprokusk](https://github.com/sprokusk) in [#194](https://github.com/puppetlabs/design-system/pull/194))
+- [Select] Add `multiselect` type to `Select` component (by [@jilliankeenan](https://github.com/jilliankeenan) in [#192](https://github.com/puppetlabs/design-system/pull/192))
+- [Form] Expose `inline`, `inlineLabelWidth` and `labelType` on both components for flexible form variants (by [@sprokusk](https://github.com/sprokusk) in [#194](https://github.com/puppetlabs/design-system/pull/194))
 
 # [5.11.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.11.0...@puppet/react-components@5.11.1) (2019-12-30)
 
