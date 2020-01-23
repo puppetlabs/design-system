@@ -1,66 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Styled from 'rsg-components/Styled';
 import cx from 'clsx';
-
-export const styles = ({
-  space,
-  color,
-  fontFamily,
-  fontSize,
-  buttonTextTransform,
-}) => ({
-  button: {
-    padding: [[space[1], 0]],
-    fontFamily: fontFamily.base,
-    fontSize: fontSize.base,
-    color: color.light,
-    background: 'transparent',
-    textTransform: buttonTextTransform,
-    transition: 'color 750ms ease-out',
-    border: 'none',
-    cursor: 'pointer',
-    '&:hover, &:focus': {
-      isolate: false,
-      outline: 0,
-      color: color.linkHover,
-      transition: 'color 150ms ease-in',
-    },
-    '&:focus:not($isActive)': {
-      isolate: false,
-      outline: [[1, 'dotted', color.linkHover]],
-    },
-    '& + &': {
-      isolate: false,
-      marginLeft: space[1],
-    },
-  },
-  isActive: {
-    borderBottom: [[2, color.linkHover, 'solid']],
-  },
-});
+import { Button } from '@puppet/react-components';
 
 export function TabButtonRenderer({
-  classes,
   name,
   className,
   onClick,
   active,
   children,
 }) {
-  const classNames = cx(classes.button, className, {
-    [classes.isActive]: active,
-  });
-
   return (
-    <button type="button" name={name} className={classNames} onClick={onClick}>
+    <Button
+      name={name}
+      className={className}
+      type="transparent"
+      icon={active ? 'chevron-down' : 'chevron-right'}
+      onClick={onClick}
+    >
       {children}
-    </button>
+    </Button>
   );
 }
 
 TabButtonRenderer.propTypes = {
-  classes: PropTypes.object.isRequired,
   name: PropTypes.string,
   className: PropTypes.string,
   onClick: PropTypes.func,
@@ -68,4 +31,4 @@ TabButtonRenderer.propTypes = {
   children: PropTypes.node,
 };
 
-export default Styled(styles)(TabButtonRenderer);
+export default TabButtonRenderer;
