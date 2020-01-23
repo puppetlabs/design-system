@@ -23,6 +23,7 @@ const BreadcrumbSection = ({ children, active, ...props }) => {
         className="rc-breadcrumb-section"
         color="medium"
         size="tiny"
+        tabindex="0"
         {...props}
       >
         {children}
