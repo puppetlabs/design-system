@@ -86,6 +86,7 @@ module.exports = {
         '**/alert/IconButton.js',
         '**/FadeInAndOut.js',
         '**/alert/AlertActions.js',
+        '**/alert/AlertError.js',
         '**/alert/AlertMessage.js',
         '**/breadcrumb/Section.js',
         '**/breadcrumb/Separator.js',
