@@ -6,4 +6,14 @@
   .rc-icon-chevron-right {
     fill: $puppet-n500;
   }
+
+  ol {
+    margin: 0;
+    padding-left: 0;
+  }
+
+  ol li {
+    display: inline;
+    list-style: none;
+  }
 }
