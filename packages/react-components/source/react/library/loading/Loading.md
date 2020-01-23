@@ -14,13 +14,15 @@ See also: [Icon](#/React%20Components/Icon) and [Form](#/React%20Components/Form
 There are 4 available sizes for this component, with the large size as the default. The small, tiny or custom sizes can also be used when appropriate.
 
 ```jsx
+import Text from '../text';
+
 <table className="rc-loading-table">
   <thead>
     <tr>
-      <th>Large (default)</th>
-      <th>Small</th>
-      <th>Tiny</th>
-      <th>Custom</th>
+      <th><Text>Large (default)</Text></th>
+      <th><Text>Small</Text></th>
+      <th><Text>Tiny</Text></th>
+      <th><Text>Custom</Text></th>
     </tr>
   </thead>
   <tbody>

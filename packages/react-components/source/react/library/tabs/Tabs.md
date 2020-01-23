@@ -13,30 +13,40 @@ The Tabs component is a lightly styled wrapper that expects nested Tabs. Tab com
 ### Primary
 
 ```jsx
+import Text from '../text';
+
 <Tabs>
-  <Tabs.Tab title="Tab 1">Once focused, use arrows to switch tabs.</Tabs.Tab>
-  <Tabs.Tab title="Tab 2">
-    Hit Tab to focus down.
-    <br />
-    <input></input>
+  <Tabs.Tab title="Tab 1">
+    <Text>Once focused, use arrows to switch tabs.</Text>
   </Tabs.Tab>
-  <Tabs.Tab title="Tab 3">Hit Shift + Tab to focus up.</Tabs.Tab>
-</Tabs>
+  <Tabs.Tab title="Tab 2">
+    <Text>
+      Hit Tab to focus down.
+      <br />
+      <input></input>
+    </Text>
+  </Tabs.Tab>
+  <Tabs.Tab title="Tab 3">
+    <Text>Hit Shift + Tab to focus up.</Text>
+  </Tabs.Tab>
+</Tabs>;
 ```
 
 ### Secondary
 
 ```jsx
+import Text from '../text';
+
 <Tabs type="secondary" initialTab={2}>
   <Tabs.Tab title="Tab 1">
-    The Tab title prop becomes the button label.
+    <Text>The Tab title prop becomes the button label.</Text>
   </Tabs.Tab>
   <Tabs.Tab title="Tab 2">
-    Whatever is nested inside the Tab become the Panel content.
+    <Text>Whatever is nested inside the Tab become the Panel content.</Text>
   </Tabs.Tab>
   <Tabs.Tab title="Tab 3">
-    To change the default tab, set the activeTab prop on Tabs equal to the
-    desired Tab ID.
+    <Text>To change the default tab, set the activeTab prop on Tabs equal to the
+    desired Tab ID.</Text>
   </Tabs.Tab>
 </Tabs>
 ```
@@ -46,6 +56,8 @@ The Tabs component is a lightly styled wrapper that expects nested Tabs. Tab com
 The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected. In this mode we recommend supplying a unique `id` to each Tab element so that the active tab is easier to track. If no id is provided the Tabs component will use the positional index.
 
 ```jsx
+import Text from '../text';
+
 class MyPageWithTabs extends React.Component {
   constructor(props) {
     super(props);
@@ -68,10 +80,10 @@ class MyPageWithTabs extends React.Component {
     return (
       <Tabs id="controlled-tabs" onChange={this.onTabChange}>
         <Tabs.Tab title="Tabby tab" id="tab-1" active={activeTab === 'tab-1'}>
-          Tab 1
+          <Text>Tab 1</Text>
         </Tabs.Tab>
         <Tabs.Tab title="Tabby cat" id="tab-2" active={activeTab === 'tab-2'}>
-          Tab 2
+          <Text>Tab 2</Text>
         </Tabs.Tab>
       </Tabs>
     );
