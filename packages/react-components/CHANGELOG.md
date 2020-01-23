@@ -1,6 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.1...HEAD)
 
 - [ActionSelect, ButtonSelect] Add `width` prop to ActionSelect and ButtonSelect (by [@rhyza](https://github.com/rhyza) in [#199](https://github.com/puppetlabs/design-system/pull/199))
+- [Breadcrumb] Fix Breadcrumb accessibility and focusability
 
 # [5.13.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.0...@puppet/react-components@5.13.1) (2020-01-22)
 
