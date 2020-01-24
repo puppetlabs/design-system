@@ -43,12 +43,12 @@
   padding: 8px 0;
   text-align: center;
 
-  &.left {
+  &:first-child {
     border-bottom-left-radius: $puppet-common-border-radius - 1px;
     border-right: $puppet-common-border;
   }
 
-  &.right {
+  &:last-child {
     border-bottom-right-radius: $puppet-common-border-radius - 1px;
   }
 

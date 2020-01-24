@@ -229,6 +229,7 @@ class ButtonSelect extends Component {
     const {
       id,
       multiple,
+      applyImmediately,
       type,
       innerFocus,
       icon,
@@ -284,6 +285,7 @@ class ButtonSelect extends Component {
         <OptionMenuList
           id={`${id}-menu`}
           multiple={multiple}
+          showCancel={multiple && !applyImmediately}
           options={options}
           selected={listValue}
           aria-labelledby={id}

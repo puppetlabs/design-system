@@ -20,6 +20,7 @@ import Icon from '../../library/icon';
 const propTypes = {
   id: PropTypes.string.isRequired,
   multiple: PropTypes.bool,
+  showCancel: PropTypes.bool,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
@@ -48,6 +49,7 @@ const propTypes = {
 const defaultProps = {
   options: [],
   multiple: false,
+  showCancel: false,
   onBlur() {},
   className: '',
   selected: null,
@@ -304,6 +306,7 @@ class OptionMenuList extends Component {
       options,
       selected,
       multiple,
+      showCancel,
       actionLabel,
       cancelLabel,
       onActionClick,
@@ -384,7 +387,7 @@ class OptionMenuList extends Component {
           <div className="rc-menu-action-container">
             <button
               type="button"
-              className="rc-menu-action left"
+              className="rc-menu-action"
               onClick={onActionClick}
               onKeyDown={onKeyDownInAction}
               onBlur={onActionBlur}
@@ -394,18 +397,20 @@ class OptionMenuList extends Component {
             >
               {actionLabel}
             </button>
-            <button
-              type="button"
-              className="rc-menu-action right"
-              onClick={onCancel}
-              onKeyDown={onKeyDownInAction}
-              onBlur={onActionBlur}
-              ref={button => {
-                this.button = button;
-              }}
-            >
-              {cancelLabel}
-            </button>
+            {showCancel && (
+              <button
+                type="button"
+                className="rc-menu-action"
+                onClick={onCancel}
+                onKeyDown={onKeyDownInAction}
+                onBlur={onActionBlur}
+                ref={button => {
+                  this.button = button;
+                }}
+              >
+                {cancelLabel}
+              </button>
+            )}
           </div>
         )}
       </div>
