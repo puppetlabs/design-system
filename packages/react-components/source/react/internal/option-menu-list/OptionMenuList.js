@@ -33,6 +33,7 @@ const propTypes = {
   ]),
   focusedIndex: PropTypes.number,
   actionLabel: PropTypes.string,
+  cancelLabel: PropTypes.string,
   onChange: PropTypes.func,
   onActionClick: PropTypes.func,
   onEscape: PropTypes.func,
@@ -53,6 +54,7 @@ const defaultProps = {
   focusedIndex: 0,
   onChange() {},
   actionLabel: 'Apply',
+  cancelLabel: 'Cancel',
   onActionClick() {},
   onEscape() {},
   onFocusItem() {},
@@ -85,6 +87,7 @@ class OptionMenuList extends Component {
 
     this.onClickItem = this.onClickItem.bind(this);
     this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyDownInAction = this.onKeyDownInAction.bind(this);
     this.onFocus = this.onFocus.bind(this);
@@ -123,6 +126,13 @@ class OptionMenuList extends Component {
 
   onMouseEnterItem(focusedIndex) {
     this.focusItem(focusedIndex);
+  }
+
+  onCancel(e) {
+    const { onEscape } = this.props;
+
+    onEscape(e);
+    cancelEvent(e);
   }
 
   onArrowUp() {
@@ -281,6 +291,7 @@ class OptionMenuList extends Component {
     const {
       onClickItem,
       onMouseEnterItem,
+      onCancel,
       onKeyDown,
       onKeyDownInAction,
       onFocus,
@@ -294,6 +305,7 @@ class OptionMenuList extends Component {
       selected,
       multiple,
       actionLabel,
+      cancelLabel,
       onActionClick,
       onEscape,
       className,
@@ -369,18 +381,32 @@ class OptionMenuList extends Component {
         {list}
         {listFooter}
         {multiple && (
-          <button
-            type="button"
-            className="rc-menu-action"
-            onClick={onActionClick}
-            onKeyDown={onKeyDownInAction}
-            onBlur={onActionBlur}
-            ref={button => {
-              this.button = button;
-            }}
-          >
-            {actionLabel}
-          </button>
+          <div className="rc-menu-action-container">
+            <button
+              type="button"
+              className="rc-menu-action left"
+              onClick={onActionClick}
+              onKeyDown={onKeyDownInAction}
+              onBlur={onActionBlur}
+              ref={button => {
+                this.button = button;
+              }}
+            >
+              {actionLabel}
+            </button>
+            <button
+              type="button"
+              className="rc-menu-action right"
+              onClick={onCancel}
+              onKeyDown={onKeyDownInAction}
+              onBlur={onActionBlur}
+              ref={button => {
+                this.button = button;
+              }}
+            >
+              {cancelLabel}
+            </button>
+          </div>
         )}
       </div>
     );

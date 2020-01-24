@@ -25,20 +25,32 @@
   }
 }
 
+.rc-menu-action-container {
+  display: flex;
+}
+
 .rc-menu-action {
   @include puppet-type-button-small();
 
   background-color: $puppet-n50 !important;
   border: 0;
-  border-bottom-left-radius: $puppet-common-border-radius - 1px;
-  border-bottom-right-radius: $puppet-common-border-radius - 1px;
   border-top: $puppet-common-border;
   color: $puppet-b500;
   cursor: pointer;
   display: block;
+  flex-grow: 1;
   outline: none;
   padding: 8px 0;
   text-align: center;
+
+  &.left {
+    border-bottom-left-radius: $puppet-common-border-radius - 1px;
+    border-right: $puppet-common-border;
+  }
+
+  &.right {
+    border-bottom-right-radius: $puppet-common-border-radius - 1px;
+  }
 
   &:hover {
     color: $puppet-b400;
