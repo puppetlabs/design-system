@@ -18,24 +18,24 @@ const propTypes = {
   label: PropTypes.string.isRequired,
   /** The styling of the identifier for this field */
   labelType: PropTypes.oneOf(['primary', 'secondary']),
-  /* Depending on the field, value can be any type */
+  /** Depending on the field, value can be any type */
   // eslint-disable-next-line react/forbid-prop-types
   value: PropTypes.any,
   /** Form error, causing element to render red when present */
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Expanded explainer for the field */
   description: PropTypes.string,
-  /* Is the field required */
+  /** Is the field required */
   required: PropTypes.bool,
-  /* The error message to display if the field is required but not present at validation */
+  /** The error message to display if the field is required but not present at validation */
   requiredFieldMessage: PropTypes.string,
-  /* Should an error message render on load (the rendered msg depends on the presence of required or validator) */
+  /** Should an error message render on load (the rendered msg depends on the presence of required or validator) */
   validateOnLoad: PropTypes.bool,
-  /* An optional validation function. Will be passed in order: the current field value, and the entire form value */
+  /** An optional validation function. Will be passed in order: the current field value, and the entire form value */
   validator: PropTypes.func,
-  /* An optional nested path at which to access field data. Nested path can be delimted with `.` or with brackets `[]`. For example: my.nested.array[0] */
+  /** An optional nested path at which to access field data. Nested path can be delimted with `.` or with brackets `[]`. For example: my.nested.array[0] */
   path: PropTypes.string,
-  /* Alternate inline display format */
+  /** Alternate inline display format */
   inline: PropTypes.bool,
   /** Width of the inline label */
   inlineLabelWidth: PropTypes.number,
