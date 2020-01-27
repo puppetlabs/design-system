@@ -1,9 +1,11 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.1...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.14.0...HEAD)
+
+# [5.14.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.1...@puppet/react-components@5.14.0) (2020-01-27)
 
 - [ActionSelect, ButtonSelect] Add `width` prop to ActionSelect and ButtonSelect (by [@rhyza](https://github.com/rhyza) in [#201](https://github.com/puppetlabs/design-system/pull/201))
 - [Form] Add boolean `validateOnLoad` prop to Form.Field (by [@sprokusk](https://github.com/sprokusk) in [#202](https://github.com/puppetlabs/design-system/pull/202))
 - [Breadcrumb] Fix Breadcrumb accessibility and focusability (by [@rhyza](https://github.com/rhyza) in [#199](https://github.com/puppetlabs/design-system/pull/199))
-- [Modal] Fix padding for modal actions, an issue introduced in 5.11.1 (by [@vine77](https://github.com/vine77) in [#204](https://github.com/puppetlabs/design-system/pull/204))
+- [Modal] Fix padding for modal actions, an issue introduced in version 5.11.1 (by [@vine77](https://github.com/vine77) in [#204](https://github.com/puppetlabs/design-system/pull/204))
 
 # [5.13.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.0...@puppet/react-components@5.13.1) (2020-01-22)
 
