@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-components",
-  "version": "5.13.1",
+  "version": "5.14.0",
   "author": "Puppet, Inc.",
   "license": "UNLICENSED",
   "main": "build/library.js",
