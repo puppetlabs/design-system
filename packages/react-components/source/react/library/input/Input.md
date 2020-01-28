@@ -1,6 +1,12 @@
-The input component is used for standard text and number html input elements. It is a lightly styled wrapper around core DOM elements, leaving most auxiliary functionality to the [FormField](#form) wrapper. We recommend that in most cases the FormField component be used to ensure complete design consistency, but there may be some cases in which a pure input element is desired.
+## Overview
 
-### Available types
+The `Input` component is used for standard text and number html input elements. It is a lightly styled wrapper around core DOM elements, leaving most auxiliary functionality to the [FormField](#form) wrapper. We recommend that in most cases the FormField component be used to ensure complete design consistency, but there may be some cases in which a pure input element is desired.
+
+## Basic Use
+
+Just as with native inputs, the `Input` component should typically be used as a "controlled" component.
+
+Note that for input labels, use the `Input` component within a [FormField](#form) wrapper.
 
 ```jsx
 const exampleStyle = { marginBottom: 10 };
@@ -49,10 +55,11 @@ const exampleStyle = { marginBottom: 10 };
   />
 </form>;
 ```
+## Variations
 
-### Simple visual variant
+### Simple and small variant
 
-Inputs are available in a "simple" visual variant, primarily used for in-site search boxes
+Inputs are available in a "simple" visual variant, primarily used for in-site search boxes. These fields should not be used without a leading icon for findability.
 
 ```jsx
 <Input
@@ -65,22 +72,11 @@ Inputs are available in a "simple" visual variant, primarily used for in-site se
 />
 ```
 
-### Event handling
+### Inputs with icons
 
-Just as with native inputs, the Input component should typically be used as a "controlled" component.
+#### Leading icon
 
-```jsx
-<Input
-  name="input-ex10"
-  value={state.value}
-  placeholder="This value is tracked by react state"
-  onChange={value => setState({ value })}
-/>
-```
-
-### Icons
-
-Optional leading and trailing icons may be added where needed
+Optional leading icons may be added where needed to provide more immediate context. These icons are not interactive.
 
 ```jsx
 const exampleStyle = { marginBottom: 10 };
@@ -102,6 +98,17 @@ const exampleStyle = { marginBottom: 10 };
     style={exampleStyle}
     onChange={value => setState({ 'input-ex12-value': value })}
   />
+</div>;
+```
+
+#### Trailing icon
+
+Optional trailing icons are meant to be interactive and used to manipulate the content of an input. For example, show/hide password. Note: while this example is not currently set up to be interactive and the password reveal example is not an available component.
+
+```jsx
+const exampleStyle = { marginBottom: 10 };
+
+<div>
   <Input
     name="input-ex13"
     value={state['input-ex13-value']}
@@ -112,3 +119,8 @@ const exampleStyle = { marginBottom: 10 };
   />
 </div>;
 ```
+
+## Related
+
+- [Form](#/React%20Components/Form)
+- [FormField](#/React%20Components/FormField)
