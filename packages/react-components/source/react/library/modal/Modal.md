@@ -176,7 +176,7 @@ const [open, setOpen] = React.useState(false);
 
 ### Confirm an action
 
-If you would like to use a modal to confirm a user performing an action (e.g. "Are you sure you want to delete this?"), then please refer to the [ConfirmationModal](#/React%20Components/ConfirmationModal) component which simplifies that structure.
+If you would like to use a modal to confirm a user performing a destructive action (e.g. "Are you sure you want to delete this?"), then please refer to the [ConfirmationModal](#/React%20Components/ConfirmationModal) component which simplifies that structure.
 
 ## Related
 
