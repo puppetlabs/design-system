@@ -31,6 +31,7 @@ module.exports = {
       'styleguideComponents/ComponentsListRenderer',
     ),
     Markdown: path.join(__dirname, 'styleguideComponents/Markdown'),
+    Pre: path.join(__dirname, 'styleguideComponents/PreRenderer'),
     SectionHeadingRenderer: path.join(
       __dirname,
       'styleguideComponents/SectionHeadingRenderer',
