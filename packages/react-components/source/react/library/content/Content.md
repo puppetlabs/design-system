@@ -1,11 +1,17 @@
 ## Overview
 
-The Content component allows you to place formatted text within your application.
+The `Content` component allows you to place formatted text within your application.
 This provides a reasonable default for text formatting in text-heavy pages, such as documentation, legal documents, and inline help.
 
 _Styling is limited to elements available in markdown._
 
-##### Example #1
+## Basic Use
+
+The `Content` component is simply used as a wrapper for your content.
+
+### Example #1
+
+Here, `Content` provides default styling for headers, lists, and blockquotes when semantically tagged.
 
 ```jsx
 <Content>
@@ -300,7 +306,9 @@ _Styling is limited to elements available in markdown._
 </Content>
 ```
 
-##### Example #2
+### Example #2
+
+Here, `Content` provides default styling for tables, blockquotes, and code when semantically tagged.
 
 ```jsx
 const example1 = `      steps:
@@ -570,5 +578,5 @@ const example2 = `kubeconfig-file:
 
 ## Related
 
-- [Content writing](#/Foundations/ContentWriting) : guidance and examples for writing content
-- [Typography](#/Foundations/Typography) : rules and definitions for typefaces and fonts
+- [Content writing](#/Foundations/ContentWriting): guidance and examples for writing content
+- [Typography](#/Foundations/Typography): rules and definitions for typefaces and fonts
