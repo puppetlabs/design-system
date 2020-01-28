@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import cx from 'clsx';
 import Styled from 'rsg-components/Styled';
-// import prismTheme from '../../../styles/prismTheme';
+import prismTheme from './prismTheme';
 
 const styles = ({ space, color, fontSize, fontFamily, borderRadius }) => ({
 	pre: {
@@ -16,11 +16,11 @@ const styles = ({ space, color, fontSize, fontFamily, borderRadius }) => ({
 		hyphens: 'none',
 		backgroundColor: color.codeBackground,
 		padding: [[space[1], space[2]]],
-		border: [[1, color.codeBackground, 'solid']],
+		borderLeft: [[8, '#e4e9ed', 'solid']],
 		borderRadius,
 		marginTop: 0,
 		marginBottom: space[2],
-		// ...prismTheme({ color }),
+		...prismTheme({ color }),
 	},
 });
 

@@ -4,11 +4,17 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   title: 'Puppet Design System',
   theme: {
-    link: '#269CFF',
-    name: '#269CFF',
+    borderRadius: '4px',
+    color: {
+      codeBackground: '#f2f5f7',
+    },
     fontFamily: {
       base: ['Open Sans', 'sans-serif'],
       monospace: ['Inconsolata', 'monospace'],
+    },
+    fontSize: {
+      small: '14px',
+      text: '16px',
     },
   },
   styles: {
