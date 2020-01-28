@@ -144,7 +144,7 @@ const style = { display: 'inline-block', margin: 10 };
 
 ### Multiple selections
 
-Multiple values can be selected if the `multiple` prop is `true`. In this mode an `Apply` button will render below the options list. The newly selected values are not applied until the user activates this button. If they escape or click out of the open menu, their changes will be discarded.
+Multiple values can be selected if the `multiple` prop is `true`. In this mode an "Apply" button will render below the options list. The newly selected values are not applied until the user activates this button. If the user clicks the "Cancel" button, presses escape, or click out of the open menu, their changes will be discarded.
 
 ```jsx
 initialState = {
@@ -181,7 +181,7 @@ const style = { display: 'inline-block', margin: 10 };
 
 Warning: Consult with your UX designer prior to using this option. We are considering deprecating this behavior in order to simplify multi-select menus.
 
-The default multi-select behavior can be overridden with the `applyImmediately` prop. In this mode, a 'done' button will still render for consistency but the values will be immediately applied. If the user escapes, clicks the Cancel button, or clicks out of the open menu, their changes will be discarded.
+The default multi-select behavior can be overridden with the `applyImmediately` prop. In this mode, a 'Done' button will still render for consistency but the values will be immediately applied. If the user escapes or clicks out of the open menu, their changes will be discarded.
 
 ```jsx
 initialState = {
