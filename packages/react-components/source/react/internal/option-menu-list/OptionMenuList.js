@@ -344,7 +344,7 @@ class OptionMenuList extends Component {
         }}
         {...rest}
       >
-        {options.map(({ value, label, icon, svg, viewBox }, index) => (
+        {options.map(({ value, label, icon, svg }, index) => (
           <OptionMenuListItem
             id={getOptionId(id, value)}
             key={value}
@@ -352,7 +352,6 @@ class OptionMenuList extends Component {
             selected={selectionSet.has(value)}
             icon={icon}
             svg={svg}
-            viewBox={viewBox}
             onClick={() => onClickItem(value)}
             onMouseEnter={() => onMouseEnterItem(index)}
             ref={option => {
