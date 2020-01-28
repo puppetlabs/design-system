@@ -68,13 +68,16 @@ class Alert extends React.Component {
     );
     let closeButton;
     let typeIcon;
+    let eventBased;
 
     switch (type) {
       case 'danger':
         typeIcon = 'alert';
+        eventBased = true;
         break;
       case 'success':
         typeIcon = 'check-circle';
+        eventBased = true;
         break;
       case 'info':
       case 'warning':
@@ -96,7 +99,12 @@ class Alert extends React.Component {
     }
 
     return (
-      <div className={classNames} {...rest}>
+      <div
+        className={classNames}
+        role={eventBased ? 'alert' : null}
+        aria-live={eventBased ? 'polite' : null}
+        {...rest}
+      >
         <Icon className="rc-alert-primary-icon" type={typeIcon} size="medium" />
         <Text className="rc-alert-message" size="small">
           {children}
