@@ -2,6 +2,10 @@
 
 The `Input` component is used for standard text and number html input elements. It is a lightly styled wrapper around core DOM elements, leaving most auxiliary functionality to the [FormField](#form) wrapper. We recommend that in most cases the FormField component be used to ensure complete design consistency, but there may be some cases in which a pure input element is desired.
 
+### States and interaction
+
+Inputs provide built in support for hover, active, and focused interactions. All inputs also provide disabled states as needed.
+
 ## Basic Use
 
 Just as with native inputs, the `Input` component should typically be used as a "controlled" component.
