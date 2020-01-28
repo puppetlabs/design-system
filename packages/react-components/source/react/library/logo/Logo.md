@@ -4,7 +4,11 @@ The logo component provides easy access to marketing-approved logos in our appli
 
 **NOTE: Custom logos should be used internally only. All public facing products should be given official trademarked logos through marketing.**
 
+## Variations
+
 ### Standard
+
+The standard style variation exists for light backgrounds.
 
 ```jsx
 <div style={{ display: 'flex', flexWrap: 'wrap', padding: 10 }}>
@@ -20,6 +24,8 @@ The logo component provides easy access to marketing-approved logos in our appli
 ```
 
 ### Inverted
+
+This style variation exists for dark backgrounds, where the Puppet logo uses white.
 
 ```jsx
 <div
@@ -42,6 +48,8 @@ The logo component provides easy access to marketing-approved logos in our appli
 ```
 
 ### Bug
+
+There are times when you might need to use only the graphical icon for a Puppet product.
 
 ```jsx
 <div style={{ display: 'flex', flexWrap: 'wrap', padding: 10 }}>
