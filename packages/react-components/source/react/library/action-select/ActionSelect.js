@@ -23,6 +23,8 @@ const propTypes = {
       label: PropTypes.node.isRequired,
       /** Optional icon rendered to the left of action text */
       icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+      /** Optional custom icon rendered to the left of action text */
+      svg: PropTypes.element,
       /** Action click handler. Not needed if the action is a link */
       onClick: PropTypes.func,
       /** Custom action element. Useful for creating navigation actions with as: 'a' or as: Link. Additionally, extra props not listed here are passed through to the action element. This allows custom props such as `href` or `to` to be passed to the inner action element. */

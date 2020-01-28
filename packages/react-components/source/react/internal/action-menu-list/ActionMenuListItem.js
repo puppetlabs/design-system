@@ -9,7 +9,10 @@ const propTypes = {
   id: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   focused: PropTypes.bool.isRequired,
+  /** Optional: choose an icon */
   icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+  /** Or pass in your own svg... */
+  svg: PropTypes.element,
   onMouseEnter: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   innerRef: PropTypes.func,
@@ -18,6 +21,7 @@ const propTypes = {
 const defaultProps = {
   as: undefined,
   icon: null,
+  svg: null,
   innerRef() {},
 };
 
@@ -30,6 +34,7 @@ const ActionMenuListItem = forwardRef(
       children,
       focused,
       icon,
+      svg,
       onMouseEnter,
       innerRef,
       ...rest
@@ -55,6 +60,9 @@ const ActionMenuListItem = forwardRef(
             {...rest}
           >
             {icon && <Icon className="rc-menu-list-item-icon" type={icon} />}
+            {svg && !icon && (
+              <Icon className="rc-menu-list-item-icon" svg={svg} />
+            )}
             <span className="rc-menu-list-item-content">{children}</span>
           </Element>
         </li>
@@ -72,6 +80,7 @@ const ActionMenuListItem = forwardRef(
         {...rest}
       >
         {icon && <Icon className="rc-menu-list-item-icon" type={icon} />}
+        {svg && !icon && <Icon className="rc-menu-list-item-icon" svg={svg} />}
         <span className="rc-menu-list-item-content" ref={innerRef}>
           {children}
         </span>
