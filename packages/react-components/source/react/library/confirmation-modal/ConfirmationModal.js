@@ -4,17 +4,19 @@ import Modal from '../modal';
 import Button from '../button';
 
 const propTypes = {
-  /** Optional modal title */
+  /** Heading in the modal window */
   title: PropTypes.string,
-  /** Optional modal string content */
+  /** Content in the modal window */
   description: PropTypes.string,
+  /** A boolean to toggle the modal open and closed */
+  isOpen: PropTypes.bool,
   /** Confirmation button label */
   confirmLabel: PropTypes.string,
   /** Cancel button label */
   cancelLabel: PropTypes.string,
-  /** Confirm button type, default resembles a secondary button */
+  /** Confirm button type, defaults to "primary" */
   confirmButtonType: PropTypes.string,
-  /** Cancel button type, default resembles a secondary button */
+  /** Cancel button type, defaults to "tertiary" */
   cancelButtonType: PropTypes.string,
   /** Function to call when action is confirmed */
   onConfirm: PropTypes.func,
@@ -24,10 +26,11 @@ const propTypes = {
 const defaultProps = {
   title: '',
   description: '',
+  isOpen: true,
   confirmLabel: '',
   cancelLabel: '',
-  confirmButtonType: '',
-  cancelButtonType: '',
+  confirmButtonType: 'primary',
+  cancelButtonType: 'tertiary',
   onConfirm: () => {},
   onCancel: () => {},
 };
@@ -35,6 +38,7 @@ const defaultProps = {
 const ConfirmationModal = ({
   title,
   description,
+  isOpen,
   confirmLabel,
   cancelLabel,
   confirmButtonType,
@@ -42,8 +46,8 @@ const ConfirmationModal = ({
   onConfirm,
   onCancel,
 }) => (
-  <Modal onClose={onCancel}>
-    <Modal.Title>{title}</Modal.Title>
+  <Modal onClose={onCancel} isOpen={isOpen}>
+    {title && <Modal.Title>{title}</Modal.Title>}
     {description}
     <Modal.Actions>
       <Button type={confirmButtonType} onClick={onConfirm}>
