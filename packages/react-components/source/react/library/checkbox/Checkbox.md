@@ -110,6 +110,7 @@ class IndeterminateExample extends React.Component {
             name={`Box ${i}`}
             label={`Box ${i}`}
             value={box.checked}
+            key={i}
             onChange={checked => this.onClick(checked, i)}
           />
         ))}
