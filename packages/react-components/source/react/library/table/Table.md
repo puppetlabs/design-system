@@ -7,7 +7,7 @@ Tables display data and sometimes allow users to take action on that data. Table
 - Use headings to eliminate redundant words in columns. For example, instead of Version 3.8.4 and Version 3.8.5, title the column Version, and use only the version numbers in the table cells. This makes it easier for users to scan the options and reduces word count for Localization. Use sentence case capitalization.
 - Use capitalization appropriate to the item named in the cell. For example, if the cell lists an environment, use the same capitalization as the environment name.
 
-### Basic use
+## Basic use
 
 A basic table displays content and doesn't add additional capabilities.
 
@@ -31,6 +31,8 @@ const columns = [
 <Table data={data} columns={columns} />;
 ```
 <!-- prettier-ignore-end -->
+
+## Variations
 
 ### Fixed layouts
 
@@ -184,4 +186,25 @@ A unique key can also be provided via a function:
   columns={columns}
   rowKey={rowData => rowdata.nested.uniqueKey}
 />
+```
+
+### Hidden Overflow
+
+Use the `hideOverflow` flag if you want to hide long cell content with an ellipses. The flag only affects the column it is turned on for. You must provide explicit widths with the inline `style` parameter on each column you want to use it on or with an additional className.
+
+<!-- prettier-ignore-start -->
+```jsx
+const data = [
+  { id: 1, type: 'Lorem ipsum', passage: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', characters: 123 },
+  { id: 2, type: 'Cicero', passage: 'Sed ut perspiciatis', characters: 19 },
+  { id: 3, type: '1914', passage: 'But I must explain to you how all this mistaken idea', characters: 52 },
+];
+
+const columns = [
+  { label: 'Types', dataKey: 'type' },
+  { label: 'Passage', dataKey: 'passage', style: { width: '50%'}, hideOverflow: true },
+  { label: 'Character Length', dataKey: 'characters' },
+];
+
+<Table fixed data={data} columns={columns} />;
 ```
