@@ -1,14 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import {
-  LEFT_KEY_CODE,
-  RIGHT_KEY_CODE,
-  UP_KEY_CODE,
-  isKeyModified,
-} from '../../constants';
+import { LEFT_KEY_CODE, RIGHT_KEY_CODE, UP_KEY_CODE } from '../../constants';
 import withId from '../../helpers/withId';
-import { componentHasType, focus } from '../../helpers/statics';
+import { componentHasType, focus, isKeyModified } from '../../helpers/statics';
 
 import Tab from './Tab';
 import Panel from './Panel';
