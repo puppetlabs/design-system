@@ -78,7 +78,7 @@ const style = { margin: 10 };
 
 ### MultiSelect
 
-With type `multiselect`, the Select input will allow multiple values to be selected. In this mode an Apply button will render below the options list. The newly selected values are not applied until the user activates this button unless the `applyImmediately` props has been passed a boolean value of true in which case it will apply immediately. If the options chosen exceed the side of the input the excess content will be replaced with an ellipsis. If they escape or click out of the open menu, their changes will be discarded.
+With type `multiselect`, the Select input will allow multiple values to be selected. In this mode an Apply button will render below the options list. The newly selected values are not applied until the user activates this button unless the `applyImmediately` props has been passed a boolean value of true in which case it will apply immediately. If the options chosen exceed the side of the input the excess content will be replaced with an ellipsis. If they escape, click the Cancel button, or click out of the open menu, their changes will be discarded.
 
 ```jsx
 initialState = {

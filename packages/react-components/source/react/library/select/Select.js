@@ -452,6 +452,7 @@ class Select extends Component {
         <OptionMenuList
           id={`${name}-menu`}
           multiple={type === MULTISELECT}
+          showCancel={type === MULTISELECT}
           options={getOptions()}
           selected={listValue}
           focusedIndex={focusedIndex}

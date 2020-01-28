@@ -5,6 +5,7 @@
   box-shadow: $puppet-common-elevation-200;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .rc-action-menu-list,
@@ -25,20 +26,27 @@
   }
 }
 
+.rc-menu-action-container {
+  display: flex;
+}
+
 .rc-menu-action {
   @include puppet-type-button-small();
 
   background-color: $puppet-n50 !important;
   border: 0;
-  border-bottom-left-radius: $puppet-common-border-radius - 1px;
-  border-bottom-right-radius: $puppet-common-border-radius - 1px;
   border-top: $puppet-common-border;
   color: $puppet-b500;
   cursor: pointer;
   display: block;
+  flex-grow: 1;
   outline: none;
-  padding: 8px 0;
+  padding: $puppet-common-spacing-base * 2 $puppet-common-spacing-base * 4;
   text-align: center;
+
+  &:first-child:not(:only-child) {
+    border-right: $puppet-common-border;
+  }
 
   &:hover {
     color: $puppet-b400;
@@ -50,8 +58,6 @@
 }
 
 .rc-menu-list-inner {
-  border-top-left-radius: $puppet-common-border-radius - 1px;
-  border-top-right-radius: $puppet-common-border-radius - 1px;
   margin: 0;
   outline: none;
   overflow: auto;

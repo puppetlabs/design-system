@@ -20,6 +20,7 @@ import Icon from '../../library/icon';
 const propTypes = {
   id: PropTypes.string.isRequired,
   multiple: PropTypes.bool,
+  showCancel: PropTypes.bool,
   options: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,
@@ -33,6 +34,7 @@ const propTypes = {
   ]),
   focusedIndex: PropTypes.number,
   actionLabel: PropTypes.string,
+  cancelLabel: PropTypes.string,
   onChange: PropTypes.func,
   onActionClick: PropTypes.func,
   onEscape: PropTypes.func,
@@ -47,12 +49,14 @@ const propTypes = {
 const defaultProps = {
   options: [],
   multiple: false,
+  showCancel: false,
   onBlur() {},
   className: '',
   selected: null,
   focusedIndex: 0,
   onChange() {},
   actionLabel: 'Apply',
+  cancelLabel: 'Cancel',
   onActionClick() {},
   onEscape() {},
   onFocusItem() {},
@@ -85,6 +89,7 @@ class OptionMenuList extends Component {
 
     this.onClickItem = this.onClickItem.bind(this);
     this.onMouseEnterItem = this.onMouseEnterItem.bind(this);
+    this.onCancel = this.onCancel.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onKeyDownInAction = this.onKeyDownInAction.bind(this);
     this.onFocus = this.onFocus.bind(this);
@@ -123,6 +128,13 @@ class OptionMenuList extends Component {
 
   onMouseEnterItem(focusedIndex) {
     this.focusItem(focusedIndex);
+  }
+
+  onCancel(e) {
+    const { onEscape } = this.props;
+
+    onEscape(e);
+    cancelEvent(e);
   }
 
   onArrowUp() {
@@ -281,6 +293,7 @@ class OptionMenuList extends Component {
     const {
       onClickItem,
       onMouseEnterItem,
+      onCancel,
       onKeyDown,
       onKeyDownInAction,
       onFocus,
@@ -293,7 +306,9 @@ class OptionMenuList extends Component {
       options,
       selected,
       multiple,
+      showCancel,
       actionLabel,
+      cancelLabel,
       onActionClick,
       onEscape,
       className,
@@ -369,18 +384,34 @@ class OptionMenuList extends Component {
         {list}
         {listFooter}
         {multiple && (
-          <button
-            type="button"
-            className="rc-menu-action"
-            onClick={onActionClick}
-            onKeyDown={onKeyDownInAction}
-            onBlur={onActionBlur}
-            ref={button => {
-              this.button = button;
-            }}
-          >
-            {actionLabel}
-          </button>
+          <div className="rc-menu-action-container">
+            <button
+              type="button"
+              className="rc-menu-action"
+              onClick={onActionClick}
+              onKeyDown={onKeyDownInAction}
+              onBlur={onActionBlur}
+              ref={button => {
+                this.button = button;
+              }}
+            >
+              {actionLabel}
+            </button>
+            {showCancel && (
+              <button
+                type="button"
+                className="rc-menu-action"
+                onClick={onCancel}
+                onKeyDown={onKeyDownInAction}
+                onBlur={onActionBlur}
+                ref={button => {
+                  this.button = button;
+                }}
+              >
+                {cancelLabel}
+              </button>
+            )}
+          </div>
         )}
       </div>
     );

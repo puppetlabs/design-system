@@ -181,7 +181,7 @@ const style = { display: 'inline-block', margin: 10 };
 
 Warning: Consult with your UX designer prior to using this option. We are considering deprecating this behavior in order to simplify multi-select menus.
 
-The default multi-select behavior can be overridden with the `applyImmediately` prop. In this mode, a 'done' button will still render for consistency but the values will be immediately applied.
+The default multi-select behavior can be overridden with the `applyImmediately` prop. In this mode, a 'done' button will still render for consistency but the values will be immediately applied. If the user escapes, clicks the Cancel button, or clicks out of the open menu, their changes will be discarded.
 
 ```jsx
 initialState = {
