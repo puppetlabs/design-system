@@ -239,13 +239,12 @@ $puppet-type-code-small-font-weight: $puppet-type-weight-normal !default;
 
   &:focus {
     box-shadow: inset 0 -4px 0 -1px $puppet-b100;
-  }
-
-  &:focus:hover {
+    color: $puppet-type-color-link;
     text-decoration: none;
   }
 
   &:active {
+    box-shadow: none;
     color: $puppet-type-color-link-active;
     text-decoration: none;
   }

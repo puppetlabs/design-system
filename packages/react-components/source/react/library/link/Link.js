@@ -15,6 +15,8 @@ const propTypes = {
   style: PropTypes.shape({}),
   /** Optional disabled prop */
   disabled: PropTypes.bool,
+  /** Type of Link */
+  type: PropTypes.oneOf(['primary', 'secondary']),
 };
 
 const defaultProps = {
@@ -24,15 +26,17 @@ const defaultProps = {
   children: null,
   style: {},
   disabled: false,
+  type: 'primary',
 };
 
-const Link = ({ as, size, className, children, disabled, ...rest }) => {
+const Link = ({ as, size, className, children, disabled, type, ...rest }) => {
   const Element = as;
 
   return (
     <Element
       className={classNames(
         'rc-link',
+        `rc-link-${type}`,
         {
           [`rc-link-size-${size}`]: size,
         },
