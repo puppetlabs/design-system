@@ -1,4 +1,14 @@
-A `Confirmation Modal` is a modal shown when a user does something that would destroy a meaningful amount of their work. They are prompted to confirm this action to make sure that it wasn't accidentally or unintentionally done.
+## Overview
+
+A `Confirmation Modal` is a specialized [Modal](#modal) with two action buttons shown when a user performs an action that would destroy a meaningful amount of their work. They are prompted to confirm this action to make sure that it wasn't accidentally or unintentionally done.
+
+### Microcopy
+
+- It is recommended to differentiate the button type for the confirm and cancel button, e.g. making the confirm button be of type `primary` or `danger` and cancel button be of type `secondary`.
+
+## Basic Use
+
+A `Confirmation Modal` is a controlled component, so you're required to have a handler for controlling the open state of the modal.
 
 ```jsx
 import Button from '../button';
@@ -25,3 +35,8 @@ initialState = {
   )}
 </>;
 ```
+
+## Related
+
+- [Modal](#/React%20Components/Modal)
+- [Button](#/React%20Components/Button)

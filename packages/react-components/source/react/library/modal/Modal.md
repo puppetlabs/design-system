@@ -2,7 +2,7 @@
 
 A `Modal` is an accessible dialog box that opens arbitrary content in a container above the rest of the screen and temporarily blocks interactions with content behind it. Modals have a close button in the upper-right but can also be closed by clicking outside the modal or pressing the ESC key. Modals are intended to be used sparingly and generally don't affect the URL unless perhaps via a query parameter.
 
-### Basic use
+## Basic use
 
 `Modal` is a controlled component, so you're required to add an `onClick` handler that sets the boolean passed to `isOpen` to false or otherwise conditionally hides it.
 
@@ -31,9 +31,9 @@ const [open, setOpen] = React.useState(false);
 </>;
 ```
 
-### Variations
+## Variations
 
-#### Title and Actions
+### Title and Actions
 
 The `Modal.Title` and `Modal.Actions` subcomponents should be used when a
 heading at the top and buttons at the bottom are desired respectively.
@@ -68,7 +68,7 @@ const [open, setOpen] = React.useState(false);
 </>;
 ```
 
-#### Form in a Modal
+### Form in a Modal
 
 A common pattern is to include a Form in a Modal. This may be accomplished by
 composing these components.
@@ -121,7 +121,7 @@ const [open, setOpen] = React.useState(false);
 </>;
 ```
 
-#### Actions alignment
+### Actions alignment
 
 Although the design guidelines are to use left aligned buttons on modals and forms, you can override that if necessary with the `actionsPosition` prop on `Modal.Actions`.
 
@@ -148,7 +148,7 @@ const [open, setOpen] = React.useState(false);
 </>;
 ```
 
-#### Prevent closing
+### Prevent closing
 
 Closing via the ESC key and clicking outside the modal can be disabled, but that
 is not recommended unless special handling of something like a wizard is
@@ -173,3 +173,11 @@ const [open, setOpen] = React.useState(false);
   )}
 </>;
 ```
+
+### Confirm an action
+
+If you would like to use a modal to confirm a user performing an action (e.g. "Are you sure you want to delete this?"), then please refer to the [ConfirmationModal](#/React%20Components/ConfirmationModal) component which simplifies that structure.
+
+## Related
+
+- [ConfirmationModal](#/React%20Components/ConfirmationModal)
