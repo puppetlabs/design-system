@@ -14,6 +14,17 @@ export const SPACE_KEY_CODE = 32;
 
 export const SIDEBAR_SUBSECTION_TRUNC_LENGTH = 6;
 
+export const isKeyModified = event => {
+  return (
+    event.getModifierState('Shift') ||
+    event.getModifierState('Fn') ||
+    event.getModifierState('Control') ||
+    event.getModifierState('Alt') ||
+    event.getModifierState('Meta') ||
+    event.getModifierState('OS')
+  );
+};
+
 export const filterOperators = [
   { symbol: '=', label: 'Equals', sentence: 'is equal to' },
   { symbol: '!=', label: "Doesn't equal", sentence: 'does not equal' },

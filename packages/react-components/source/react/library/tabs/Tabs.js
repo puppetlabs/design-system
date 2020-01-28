@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { LEFT_KEY_CODE, RIGHT_KEY_CODE, UP_KEY_CODE } from '../../constants';
+import {
+  LEFT_KEY_CODE,
+  RIGHT_KEY_CODE,
+  UP_KEY_CODE,
+  isKeyModified,
+} from '../../constants';
 import withId from '../../helpers/withId';
 import { componentHasType, focus } from '../../helpers/statics';
 
@@ -105,7 +110,9 @@ class Tabs extends React.Component {
 
   onKeyDown(event) {
     const key = event.keyCode;
-    const isSwitched = key === LEFT_KEY_CODE || key === RIGHT_KEY_CODE;
+    const isSwitched =
+      (key === LEFT_KEY_CODE || key === RIGHT_KEY_CODE) &&
+      !isKeyModified(event);
     const offset = -(UP_KEY_CODE - key);
 
     if (isSwitched) {
