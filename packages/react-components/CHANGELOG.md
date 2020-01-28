@@ -1,5 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.14.0...HEAD)
 
+- [Select, ButtonSelect] Add "Cancel" button to multiselect dropdowns (by [@rhyza](https://github.com/rhyza) in [#205](https://github.com/puppetlabs/design-system/pull/205))
+
 # [5.14.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.1...@puppet/react-components@5.14.0) (2020-01-27)
 
 - [ActionSelect, ButtonSelect] Add `width` prop to ActionSelect and ButtonSelect (by [@rhyza](https://github.com/rhyza) in [#201](https://github.com/puppetlabs/design-system/pull/201))
