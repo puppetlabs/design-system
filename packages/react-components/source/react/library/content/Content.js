@@ -3,6 +3,8 @@ import React from 'react';
 import classnames from 'classnames';
 
 const propTypes = {
+  /** React component / element to render. Useful in cases where a button is used for navigation, so that it can be rendered as an anchor tag with the same styling */
+  as: PropTypes.elementType,
   /** Content to be rendered in wrapper */
   children: PropTypes.node,
   /** Optional additional className for outer wrapper */
@@ -12,18 +14,19 @@ const propTypes = {
 };
 
 const defaultProps = {
+  as: 'div',
   children: null,
   className: '',
   style: {},
 };
 
-const Content = ({ className, children, ...rest }) => {
+const Content = ({ as: Element, className, children, ...rest }) => {
   const classNames = classnames('rc-content', className);
 
   return (
-    <div className={classNames} {...rest}>
+    <Element className={classNames} {...rest}>
       {children}
-    </div>
+    </Element>
   );
 };
 

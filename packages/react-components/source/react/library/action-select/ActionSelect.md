@@ -6,7 +6,7 @@ Menus allow a user to select from a list of things. Menus are scrollable if ther
 
 Specific use cases and interactions can be found in the Sketch Styleguide file (under Components / Dialogues / Menu, Menu triggers).
 
-See also: [Button Select](#/React%20Components/ButtonSelect), [Select](#/React%20Components/Select)
+See also: [ButtonSelect](#/React%20Components/ButtonSelect), [Select](#/React%20Components/Select)
 
 ## Basic use
 

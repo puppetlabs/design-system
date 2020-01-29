@@ -4,10 +4,25 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
   title: 'Puppet Design System',
   theme: {
-    link: '#269CFF',
-    name: '#269CFF',
+    borderRadius: '4px',
+    color: {
+      codeBackground: '#f2f5f7',
+    },
+    fontFamily: {
+      base: ['Open Sans', 'sans-serif'],
+      monospace: ['Inconsolata', 'monospace'],
+    },
+    fontSize: {
+      small: '14px',
+      text: '16px',
+    },
   },
   styles: {
+    Editor: {
+      root: {
+        fontSize: '16px',
+      },
+    },
     Ribbon: {
       root: {
         top: '-20px',
@@ -18,6 +33,7 @@ module.exports = {
       },
     },
   },
+  assetsDir: 'public',
   pagePerSection: true,
   skipComponentsWithoutExample: true,
   styleguideComponents: {
@@ -25,9 +41,23 @@ module.exports = {
       __dirname,
       'styleguideComponents/ComponentsListRenderer',
     ),
+    Markdown: path.join(__dirname, 'styleguideComponents/Markdown'),
+    Pre: path.join(__dirname, 'styleguideComponents/PreRenderer'),
+    PlaygroundRenderer: path.join(
+      __dirname,
+      'styleguideComponents/PlaygroundRenderer',
+    ),
+    SectionHeadingRenderer: path.join(
+      __dirname,
+      'styleguideComponents/SectionHeadingRenderer',
+    ),
     StyleGuideRenderer: path.join(
       __dirname,
       'styleguideComponents/StyleGuideRenderer',
+    ),
+    TabButtonRenderer: path.join(
+      __dirname,
+      'styleguideComponents/TabButtonRenderer',
     ),
     TableOfContentsRenderer: path.join(
       __dirname,
@@ -72,6 +102,7 @@ module.exports = {
         '**/alert/IconButton.js',
         '**/FadeInAndOut.js',
         '**/alert/AlertActions.js',
+        '**/alert/AlertError.js',
         '**/alert/AlertMessage.js',
         '**/breadcrumb/Section.js',
         '**/breadcrumb/Separator.js',
@@ -201,5 +232,6 @@ module.exports = {
       new ExtractTextPlugin({ filename: 'styleguide.css', allChunks: true }),
     ],
   },
+  // Disable sorting component props
   sortProps: props => props,
 };

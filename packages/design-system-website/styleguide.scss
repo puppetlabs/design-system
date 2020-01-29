@@ -1,8 +1,42 @@
 @import '~@puppet/sass-variables/index';
 
-body {
-  @include puppet-type-body();
+/********** Homepage **********/
+
+#puppet-design-system {
+  &::before {
+    background-image: url('/hero.svg');
+    background-position: 0 -60px;
+    background-repeat: no-repeat;
+    content: '';
+    display: block;
+    height: 440px;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+  }
+
+  + h2 {
+    margin-bottom: 30px;
+    min-height: 140px;
+  }
 }
+
+/********** Styleguidist overrides **********/
+ 
+// stylelint-disable-next-line selector-max-id
+#section-puppet-design-system {
+  display: none;
+}
+
+// stylelint-disable-next-line selector-no-qualifying-type
+span.rc-content > p:only-child {
+  display: inline;
+}
+
+
+/********** Components **********/
 
 .swatch-wrapper {
   display: flex;
@@ -60,7 +94,7 @@ body {
 }
 
 
-// Neatrals
+// Neutral colors
 
 .swatch-color-n950 {
   background: $puppet-n950;
@@ -114,7 +148,7 @@ body {
   background: $puppet-white;
 }
 
-// Blues
+// Blue colors
 
 .swatch-color-b900 {
   background: $puppet-b900;
@@ -157,7 +191,7 @@ body {
 }
 
 
-// Reds
+// Red colors
 
 .swatch-color-r900 {
   background: $puppet-r900;
@@ -199,7 +233,7 @@ body {
   background: $puppet-r50;
 }
 
-// Yellows
+// Yellow colors
 
 .swatch-color-y900 {
   background: $puppet-y900;
@@ -241,7 +275,7 @@ body {
   background: $puppet-y50;
 }
 
-// Greens
+// Green colors
 
 .swatch-color-g900 {
   background: $puppet-g900;
@@ -283,7 +317,7 @@ body {
   background: $puppet-g50;
 }
 
-// Purples
+// Purple colors
 
 .swatch-color-p900 {
   background: $puppet-p900;
@@ -327,6 +361,7 @@ body {
 
 
 // Icons
+
 .rc-icon-table {
   border-collapse: separate;
   border-spacing: 4px;
