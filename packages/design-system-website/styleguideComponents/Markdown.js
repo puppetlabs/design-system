@@ -24,7 +24,7 @@ export const overrides = {
 
 function Markdown({ text, inline }) {
   return (
-    <Content>
+    <Content as="span">
       {compiler(stripHtmlComments(text), { overrides, forceBlock: true })}
     </Content>
   );

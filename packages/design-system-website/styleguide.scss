@@ -1,6 +1,7 @@
 @import '~@puppet/sass-variables/index';
 
 /********** Homepage **********/
+
 #puppet-design-system {
   &::before {
     background-image: url('/hero.svg');
@@ -22,10 +23,18 @@
   }
 }
 
+/********** Styleguidist overrides **********/
+ 
 // stylelint-disable-next-line selector-max-id
 #section-puppet-design-system {
   display: none;
 }
+
+// stylelint-disable-next-line selector-no-qualifying-type
+span.rc-content > p:only-child {
+  display: inline;
+}
+
 
 /********** Components **********/
 
@@ -85,7 +94,7 @@
 }
 
 
-// Neatrals
+// Neutral colors
 
 .swatch-color-n950 {
   background: $puppet-n950;
@@ -139,7 +148,7 @@
   background: $puppet-white;
 }
 
-// Blues
+// Blue colors
 
 .swatch-color-b900 {
   background: $puppet-b900;
@@ -182,7 +191,7 @@
 }
 
 
-// Reds
+// Red colors
 
 .swatch-color-r900 {
   background: $puppet-r900;
@@ -224,7 +233,7 @@
   background: $puppet-r50;
 }
 
-// Yellows
+// Yellow colors
 
 .swatch-color-y900 {
   background: $puppet-y900;
@@ -266,7 +275,7 @@
   background: $puppet-y50;
 }
 
-// Greens
+// Green colors
 
 .swatch-color-g900 {
   background: $puppet-g900;
@@ -308,7 +317,7 @@
   background: $puppet-g50;
 }
 
-// Purples
+// Purple colors
 
 .swatch-color-p900 {
   background: $puppet-p900;
@@ -352,6 +361,7 @@
 
 
 // Icons
+
 .rc-icon-table {
   border-collapse: separate;
   border-spacing: 4px;
