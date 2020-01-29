@@ -1,6 +1,11 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.14.0...HEAD)
 
 - [Select, ButtonSelect] Add "Cancel" button to multiselect dropdowns (by [@rhyza](https://github.com/rhyza) in [#205](https://github.com/puppetlabs/design-system/pull/205))
+- Add "secondary" option for `type` prop in `Link` component (by [@vine77](https://github.com/vine77) in [#200](https://github.com/puppetlabs/design-system/pull/200))
+- Add `as` prop to `Content` component (by [@vine77](https://github.com/vine77) in [#200](https://github.com/puppetlabs/design-system/pull/200))
+- Increase padding of `code` in `Content` (by [@vine77](https://github.com/vine77) in [#200](https://github.com/puppetlabs/design-system/pull/200))
+- Style docs homepage with header background image (by [@vine77](https://github.com/vine77) in [#200](https://github.com/puppetlabs/design-system/pull/200))
+- Style docs with fonts and react-components Content, Heading, and Button components (by [@vine77](https://github.com/vine77) in [#200](https://github.com/puppetlabs/design-system/pull/200))
 
 # [5.14.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.13.1...@puppet/react-components@5.14.0) (2020-01-27)
 
