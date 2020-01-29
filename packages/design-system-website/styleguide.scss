@@ -4,7 +4,7 @@
 
 #puppet-design-system {
   &::before {
-    background-image: url('hero.svg');
+    background-image: url('./public/hero.svg');
     background-position: 0 -60px;
     background-repeat: no-repeat;
     content: '';
