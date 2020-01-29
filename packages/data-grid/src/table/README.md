@@ -15,7 +15,7 @@ In your app level index.scss add the command below to import the Data Grids styl
 
 ### Basic use
 
-The Data Grid component requires two main props to render properly. The first is the 'data'. This prop accepts an array of objects, each of which typically will contain properties of data to be rendered. Compatible data types include stings, numbers, html elements etc. For each object in the array a column will be rendered in the data grid. The second prop is 'columns'. This prop accepts an array of objects, each of which should contain a 'label' and a 'datakey' property. For each object in the array a column will render. The text present at the top of the column will be the string value supplied to the 'label' property for said object. The 'datakey' property should contain a string matching to a property of the provided data objects. This is how each piece of data is matched to an appropriate columns.  
+The Data Grid component requires two main props to render properly. The first is the 'data'. This prop accepts an array of objects, each of which typically will contain properties of data to be rendered. Compatible data types include stings, numbers, HTML elements etc. For each object in the array a column will be rendered in the data grid. The second prop is 'columns'. This prop accepts an array of objects, each of which should contain a 'label' and a 'datakey' property. For each object in the array a column will render. The text present at the top of the column will be the string value supplied to the 'label' property for said object. The 'datakey' property should contain a string matching to a property of the provided data objects. This is how each piece of data is matched to an appropriate columns.
 
 
 ```jsx 
@@ -429,7 +429,7 @@ const columns = [
 
 ### Row Count
 
-To render a basic count and text header or footer an object containing a count and label can be provided to the 'rowCount' prop. If the 'rowCount' prop doesn't suit the needs of your project html can be passed as a child to the header and footer components.
+To render a basic count and text header or footer an object containing a count and label can be provided to the 'rowCount' prop. If the 'rowCount' prop doesn't suit the needs of your project HTML can be passed as a child to the header and footer components.
 
 ```jsx 
 import TableHeader from '../tableHeader/TableHeader';

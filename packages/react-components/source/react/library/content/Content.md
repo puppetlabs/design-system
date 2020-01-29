@@ -1,17 +1,14 @@
 ## Overview
 
-The `Content` component allows you to place formatted text within your application.
-This provides a reasonable default for text formatting in text-heavy pages, such as documentation, legal documents, and inline help.
+The `Content` component allows you to place formatted text within your application. This provides a reasonable default for text formatting in text-heavy pages, such as documentation, legal documents, and inline help.
 
-_Styling is limited to elements available in markdown._
+_Note: Styling is limited to elements available in markdown._
 
 ## Basic Use
 
-The `Content` component is simply used as a wrapper for your content.
+The `Content` component is a wrapper for simple HTML content, which provides default styling for common elements like text, links, headers, lists, code, blockquotes, tables, and images when semantically tagged (i.e. features in Markdown).
 
 ### Example #1
-
-Here, `Content` provides default styling for headers, lists, and blockquotes when semantically tagged.
 
 ```jsx
 <Content>
@@ -307,8 +304,6 @@ Here, `Content` provides default styling for headers, lists, and blockquotes whe
 ```
 
 ### Example #2
-
-Here, `Content` provides default styling for tables, blockquotes, and code when semantically tagged.
 
 ```jsx
 const example1 = `      steps:

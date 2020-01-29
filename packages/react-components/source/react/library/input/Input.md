@@ -1,6 +1,6 @@
 ## Overview
 
-The `Input` component is used for standard text and number html input elements. It is a lightly styled wrapper around core DOM elements, leaving most auxiliary functionality to the [FormField](#form) wrapper. We recommend that in most cases the FormField component be used to ensure complete design consistency, but there may be some cases in which a pure input element is desired.
+The `Input` component is used for standard text and number HTML input elements. It is a lightly styled wrapper around core DOM elements, leaving most auxiliary functionality to the [`Form.Field`](#/React%20Components/FormField) wrapper. We recommend that in most cases the `Form.Field` component be used to ensure complete design consistency, but there may be some cases in which a pure input element is desired.
 
 ### States and interaction
 
@@ -10,7 +10,7 @@ Inputs provide built in support for hover, active, and focused interactions. All
 
 Just as with native inputs, the `Input` component should typically be used as a "controlled" component.
 
-Note that for input labels, use the `Input` component within a [FormField](#form) wrapper.
+Note that for input labels, use the `Input` component within a [`Form.Field`](#/React%20Components/FormField) wrapper.
 
 ```jsx
 const exampleStyle = { marginBottom: 10 };
@@ -61,7 +61,7 @@ const exampleStyle = { marginBottom: 10 };
 ```
 ## Variations
 
-### Simple and small variant
+### Simple
 
 Inputs are available in a "simple" visual variant, primarily used for in-site search boxes. These fields should not be used without a leading icon for findability.
 
@@ -107,7 +107,7 @@ const exampleStyle = { marginBottom: 10 };
 
 #### Trailing icon
 
-Optional trailing icons are meant to be interactive and used to manipulate the content of an input. For example, show/hide password. Note: while this example is not currently set up to be interactive and the password reveal example is not an available component.
+Optional trailing icons are meant to be interactive and used to manipulate the content of an input, for example a show/hide password control. (Note: This example is not currently set up to be interactive.)
 
 ```jsx
 const exampleStyle = { marginBottom: 10 };
@@ -127,4 +127,4 @@ const exampleStyle = { marginBottom: 10 };
 ## Related
 
 - [Form](#/React%20Components/Form)
-- [FormField](#/React%20Components/FormField)
+- [Form.Field](#/React%20Components/FormField)

@@ -221,7 +221,7 @@ const style = { display: 'inline-block', margin: 10 };
 
 - [ButtonSelect](#/React%20Components/ButtonSelect)
 - [Button](#/React%20Components/Button)
-- [CardAction](#/React%20Components/CardAction)
-- [FormField](#/React%20Components/FormField)
+- [Card.Action](#/React%20Components/Card)
+- [Form.Field](#/React%20Components/FormField)
 - [Modal](#/React%20Components/Modal)
 - [Select](#/React%20Components/Select)

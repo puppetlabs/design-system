@@ -1,6 +1,6 @@
 ## Overview
 
-The Checkbox component is a lightly styled wrapper around an html checkbox input. It leaves most auxiliary functionality to the [FormField](#FormField) wrapper. We recommend that in most cases the Checkbox is used through the FormField component to ensure complete design consistency, but there may be some cases in which a pure Checkbox element is desired.
+The `Checkbox` component is a lightly styled wrapper around an HTML checkbox input. It leaves most auxiliary functionality to the [`Form.Field`](#/React%20Components/FormField) wrapper. We recommend that in most cases the `Checkbox` is used through the `Form.Field` component to ensure complete design consistency, but there may be some cases in which a pure Checkbox element is desired.
 
 ### States and interaction
 
@@ -124,4 +124,4 @@ class IndeterminateExample extends React.Component {
 ## Related
 
 - [Form](#/React%20Components/Form)
-- [FormField](#/React%20Components/FormField)
+- [Form.Field](#/React%20Components/FormField)

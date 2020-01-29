@@ -1,6 +1,6 @@
 ## Overview
 
-The Link component encapsulates link styling but allows rendering of custom html elements.
+The Link component encapsulates link styling but allows rendering of custom HTML elements.
 
 Links drill into item details (for example, about a specific node). Apply text links to body content elements and body-small content elements, but not to titles or headings. The application of a link does not change the underlying type style, except by the addition of color and an underline.
 
