@@ -1,4 +1,6 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.14.0...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.0...HEAD)
+
+# [5.15.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.14.0...@puppet/react-components@5.15.0) (2020-01-29)
 
 - [Select, ButtonSelect] Add "Cancel" button to multiselect dropdowns (by [@rhyza](https://github.com/rhyza) in [#205](https://github.com/puppetlabs/design-system/pull/205))
 - [Link] Add "secondary" option for `type` prop in `Link` component (by [@vine77](https://github.com/vine77) in [#200](https://github.com/puppetlabs/design-system/pull/200))
