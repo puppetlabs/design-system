@@ -38,6 +38,10 @@ module.exports = {
     ),
     Markdown: path.join(__dirname, 'styleguideComponents/Markdown'),
     Pre: path.join(__dirname, 'styleguideComponents/PreRenderer'),
+    PlaygroundRenderer: path.join(
+      __dirname,
+      'styleguideComponents/PlaygroundRenderer',
+    ),
     SectionHeadingRenderer: path.join(
       __dirname,
       'styleguideComponents/SectionHeadingRenderer',
