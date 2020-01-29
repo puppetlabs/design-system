@@ -10,7 +10,7 @@ At the end of this section, include a selective group of directly relevant links
 
 Depending on the situation, it might be appropriate to add another section below the Overview to dive deeper into specifics. The title of this section will vary depending on the content that lives here. 
 
-## Type
+## Types
 
 _(This section contains component examples, ordered by the visual variants of primary, secondary, tertiary, etc. Start with the main visual variant as the primary example.)_
 
@@ -23,9 +23,11 @@ Followed by the primary example.
 ```
 
 ## Basic Use
-_(If the component does not contain visual variants, or if the primary/second/tert model doesn't work, use this header instead.)_
+
+_(If the component does not contain types (e.g. "primary", "second", "tertiary") or variants, use this header instead.)_
 
 ## Variations
+
 _(This section generally pertains to different expressions of the basic component. Not all components will require this section. Reference the [Button](#/React%20Components/Button) and [Text](#/React%20Components/Text) components.)_
 
 ### Name of variant #1

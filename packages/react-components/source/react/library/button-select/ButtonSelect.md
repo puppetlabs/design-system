@@ -109,7 +109,7 @@ const style = { display: 'inline-block', margin: 10 };
 </div>;
 ```
 
-## Variants
+## Variations
 
 ### Custom selected labels
 

@@ -190,7 +190,7 @@ A unique key can also be provided via a function:
 
 ### Hidden Overflow
 
-Use the `hideOverflow` flag if you want to hide long cell content with an ellipses. The flag only affects the column it is turned on for. You must provide explicit widths with the inline `style` parameter on each column you want to use it on or with an additional className.
+Use the `hideOverflow` flag if you want to hide long cell content with an ellipses. The flag only affects the column it is turned on for.
 
 <!-- prettier-ignore-start -->
 ```jsx
