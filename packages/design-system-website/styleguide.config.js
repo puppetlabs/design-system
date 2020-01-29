@@ -18,6 +18,11 @@ module.exports = {
     },
   },
   styles: {
+    Editor: {
+      root: {
+        fontSize: '16px',
+      },
+    },
     Ribbon: {
       root: {
         top: '-20px',

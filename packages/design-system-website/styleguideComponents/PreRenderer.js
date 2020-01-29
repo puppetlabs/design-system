@@ -7,7 +7,7 @@ import prismTheme from './prismTheme';
 const styles = ({ space, color, fontSize, fontFamily, borderRadius }) => ({
 	pre: {
 		fontFamily: fontFamily.monospace,
-		fontSize: fontSize.small,
+		fontSize: fontSize.text,
 		lineHeight: 1.5,
 		color: color.base,
 		whiteSpace: 'pre-wrap',
