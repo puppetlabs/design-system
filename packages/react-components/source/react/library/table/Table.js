@@ -20,6 +20,8 @@ const propTypes = {
       dataKey: PropTypes.string.isRequired,
       /** Column header text */
       label: PropTypes.node,
+      /** Truncate long cell content with ellipses. Must also specify a maxWidth in either the style prop or through a className. Default: false */
+      hideOverflow: PropTypes.bool,
       /** Column header text */
       style: PropTypes.shape({}),
     }),
@@ -94,6 +96,7 @@ const Table = ({
               cellRenderer,
               columnData,
               dataKey,
+              hideOverflow,
               className: cellClassName,
               style,
             } = {
@@ -104,7 +107,11 @@ const Table = ({
             return (
               <td
                 key={dataKey}
-                className={classNames('rc-table-cell', cellClassName)}
+                className={classNames(
+                  'rc-table-cell',
+                  { 'rc-table-cell-hide-overflow': hideOverflow },
+                  cellClassName,
+                )}
                 style={style}
               >
                 {cellRenderer({
