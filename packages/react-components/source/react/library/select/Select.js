@@ -367,6 +367,7 @@ class Select extends Component {
       error,
       value,
       placeholder,
+      applyImmediately,
       required,
       footer,
     } = this.props;
@@ -452,7 +453,7 @@ class Select extends Component {
         <OptionMenuList
           id={`${name}-menu`}
           multiple={type === MULTISELECT}
-          showCancel={type === MULTISELECT}
+          showCancel={type === MULTISELECT && !applyImmediately}
           options={getOptions()}
           selected={listValue}
           focusedIndex={focusedIndex}

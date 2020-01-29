@@ -1,5 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.0...HEAD)
 
+- [Select] Fix to omit "Cancel" button when `applyImmediately` is true (by [@rhyza](https://github.com/rhyza) in [#208](https://github.com/puppetlabs/design-system/pull/208))
+
 # [5.15.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.14.0...@puppet/react-components@5.15.0) (2020-01-29)
 
 - [Select, ButtonSelect] Add "Cancel" button to multiselect dropdowns (by [@rhyza](https://github.com/rhyza) in [#205](https://github.com/puppetlabs/design-system/pull/205))
