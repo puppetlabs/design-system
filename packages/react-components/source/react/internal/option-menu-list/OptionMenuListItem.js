@@ -9,18 +9,25 @@ const propTypes = {
   children: PropTypes.node.isRequired,
   focused: PropTypes.bool.isRequired,
   selected: PropTypes.bool.isRequired,
+  /** Optional: choose an icon */
   icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+  /** Or pass in your own svg... */
+  svg: PropTypes.element,
   onClick: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
 };
 
 const defaultProps = {
   icon: null,
+  svg: null,
 };
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 const OptionMenuListItem = forwardRef(
-  ({ id, children, focused, selected, icon, onClick, onMouseEnter }, ref) => (
+  (
+    { id, children, focused, selected, icon, svg, onClick, onMouseEnter },
+    ref,
+  ) => (
     <li
       role="option"
       id={id}
@@ -34,6 +41,7 @@ const OptionMenuListItem = forwardRef(
       ref={ref}
     >
       {icon && <Icon className="rc-menu-list-item-icon" type={icon} />}
+      {svg && !icon && <Icon className="rc-menu-list-item-icon" svg={svg} />}
       <span className="rc-menu-list-item-content">{children}</span>
       {selected && (
         <Icon

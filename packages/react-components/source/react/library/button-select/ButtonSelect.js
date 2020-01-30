@@ -27,6 +27,8 @@ const propTypes = {
       selectedLabel: PropTypes.string,
       /** Optional icon associated with this option */
       icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+      /** Optional custom icon associated with this option */
+      svg: PropTypes.element,
     }),
   ),
   /** Currently selected value or values */

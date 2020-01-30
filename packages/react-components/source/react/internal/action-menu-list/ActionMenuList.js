@@ -23,6 +23,7 @@ const propTypes = {
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
       label: PropTypes.node.isRequired,
       icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+      svg: PropTypes.element,
       onClick: PropTypes.func,
       as: PropTypes.elementType,
     }),
@@ -246,12 +247,13 @@ class ActionMenuList extends Component {
           {...rest}
         >
           {actions.map(
-            ({ id: actionId, label, icon, onClick, ...other }, index) => (
+            ({ id: actionId, label, icon, svg, onClick, ...other }, index) => (
               <ActionMenuListItem
                 id={getActionId(id, actionId)}
                 key={actionId}
                 focused={index === focusedIndex}
                 icon={icon}
+                svg={svg}
                 onMouseEnter={() => onMouseEnterItem(index)}
                 onClick={e => executeAction(e, onClick, actionId)}
                 ref={el => {

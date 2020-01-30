@@ -344,13 +344,14 @@ class OptionMenuList extends Component {
         }}
         {...rest}
       >
-        {options.map(({ value, label, icon }, index) => (
+        {options.map(({ value, label, icon, svg }, index) => (
           <OptionMenuListItem
             id={getOptionId(id, value)}
             key={value}
             focused={index === focusedIndex}
             selected={selectionSet.has(value)}
             icon={icon}
+            svg={svg}
             onClick={() => onClickItem(value)}
             onMouseEnter={() => onMouseEnterItem(index)}
             ref={option => {
