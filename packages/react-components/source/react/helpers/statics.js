@@ -205,6 +205,17 @@ const cancelEvent = e => {
   }
 };
 
+export const isKeyModified = event => {
+  return (
+    event.getModifierState('Shift') ||
+    event.getModifierState('Fn') ||
+    event.getModifierState('Control') ||
+    event.getModifierState('Alt') ||
+    event.getModifierState('Meta') ||
+    event.getModifierState('OS')
+  );
+};
+
 export {
   unbindParentScroll,
   bindParentScroll,
