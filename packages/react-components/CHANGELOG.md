@@ -1,5 +1,9 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.0...HEAD)
 
+# [5.15.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.0...@puppet/react-components@5.15.1) (2020-01-30)
+
+- [Select, ActionSelect, ButtonSelect] Add custom icon support to dropdowns (by [@rhyza](https://github.com/rhyza) in [#209](https://github.com/puppetlabs/design-system/pull/209))
+- [Tabs] Exclude multikey shortcuts from tab keyboard navigation (by [@rhyza](https://github.com/rhyza) in [#210](https://github.com/puppetlabs/design-system/pull/210))
 - [Select] Fix to omit "Cancel" button when `applyImmediately` is true (by [@rhyza](https://github.com/rhyza) in [#208](https://github.com/puppetlabs/design-system/pull/208))
 
 # [5.15.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.14.0...@puppet/react-components@5.15.0) (2020-01-29)
