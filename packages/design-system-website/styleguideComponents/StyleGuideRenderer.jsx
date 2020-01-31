@@ -18,7 +18,11 @@ export function StyleGuideRenderer({ children, toc, hasSidebar }) {
     <div className="app">
       {hasSidebar && (
         <Sidebar>
-          <Sidebar.Header logo="Design System" as="a" href="/" />
+          <Sidebar.Header
+            logo="Design System"
+            as="a"
+            href="#/Puppet%20Design%20System"
+          />
           {toc}
         </Sidebar>
       )}
