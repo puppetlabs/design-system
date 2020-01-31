@@ -14,6 +14,10 @@ For background, see [Puppet Design System](https://confluence.puppetlabs.com/dis
 
 **Writers** should start with the [foundation on content writing](#/Foundations/Content%20Writing) or the [writing guidelines on Confluence](https://confluence.puppetlabs.com/display/Writing/Puppet+content+style+guide). These are helpful for anyone creating content, from full pages to micro-copy.
 
+### Release notes
+
+See the changelog for each package, like react-components' [CHANGELOG.md](https://github.com/puppetlabs/design-system/blob/master/packages/react-components/CHANGELOG.md).
+
 ### Contribute
 
 The Puppet Design System is a cross-functional team effort with shared ownership. Contributions are both welcome and encouraged. We have written a [best-practices guide](https://github.com/puppetlabs/design-system/wiki) to help you get started.
