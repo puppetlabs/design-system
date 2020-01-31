@@ -208,3 +208,7 @@ const columns = [
 
 <Table fixed data={data} columns={columns} />;
 ```
+
+## Related
+
+- [`Table` in data-grid package](https://puppetlabs.github.io/design-system/#/Data%20Grid/Table)
