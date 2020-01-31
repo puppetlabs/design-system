@@ -2,7 +2,7 @@
   "name": "@puppet/react-layouts",
   "version": "1.0.44",
   "author": "Puppet, Inc.",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "main": "dist/react-layouts.js",
   "scripts": {
     "build": "./scripts/build",

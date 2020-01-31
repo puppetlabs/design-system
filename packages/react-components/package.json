@@ -2,7 +2,7 @@
   "name": "@puppet/react-components",
   "version": "5.15.1",
   "author": "Puppet, Inc.",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "main": "build/library.js",
   "scripts": {
     "analyze": "webpack --config webpack.analyze.config.js",
