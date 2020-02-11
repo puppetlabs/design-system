@@ -3,7 +3,7 @@
   "version": "1.0.11",
   "main": "dist/uikit.js",
   "author": "Puppet, Inc.",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "bin": {
     "uikit": "./bin/uikit.js"
   },

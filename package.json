@@ -1,5 +1,6 @@
 {
   "name": "root",
+  "license": "Apache-2.0",
   "private": true,
   "scripts": {
     "format": "lerna run format",
