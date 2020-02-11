@@ -1,5 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.0...HEAD)
 
+- Add Apache 2.0 open source license
+
 # [5.15.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.0...@puppet/react-components@5.15.1) (2020-01-30)
 
 - [Select, ActionSelect, ButtonSelect] Add custom icon support to dropdowns (by [@rhyza](https://github.com/rhyza) in [#209](https://github.com/puppetlabs/design-system/pull/209))
