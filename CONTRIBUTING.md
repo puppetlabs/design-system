@@ -1,6 +1,6 @@
 # Contributing to the Puppet Design System
 
-The Puppet Design System is a cross-functional team effort across Puppet with shared ownership where contributions are welcome and encouraged. A good place to start is by visiting [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) in Slack. You can also contact contact <puppet-design-system@puppet.com>.
+The Puppet Design System is a cross-functional team effort across Puppet with shared ownership where contributions are encouraged. Though designed for and maintained by Puppet, outside PRs are welcome. A good place to start is by visiting [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) in Puppet's internal Slack or contacting <puppet-design-system@puppet.com>.
 
 - See the general [Consumption and Contribution](https://github.com/puppetlabs/design-system/wiki/Consumption-and-Contribution) principles on the wiki.
 - See individual CONTRIBUTING.md files for specific packages:
