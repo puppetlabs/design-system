@@ -1,6 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.0...HEAD)
 
 - Add Apache 2.0 open source license
+- [Button] Darken the default text color in the transparent Button (by [@vine77](https://github.com/vine77) in [#214](https://github.com/puppetlabs/design-system/pull/214))
 
 # [5.15.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.0...@puppet/react-components@5.15.1) (2020-01-30)
 
