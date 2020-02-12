@@ -54,6 +54,10 @@
   border: $puppet-shared-input-border-error;
 }
 
+.rc-checkbox-error.rc-checkbox:checked + .rc-icon {
+  fill: $puppet-r600;
+}
+
 .rc-checkbox:checked + .rc-icon {
   display: block;
   fill: $puppet-b500;
