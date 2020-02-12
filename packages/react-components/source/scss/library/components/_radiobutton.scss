@@ -1,0 +1,83 @@
+.rc-radiobutton-input {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+}
+
+.rc-radiobutton-input:not(:last-of-type) {
+  margin-bottom: $puppet-common-spacing-base * 3;
+}
+
+.rc-radiobutton-container {
+  height: $puppet-common-spacing-base * 4;
+  margin-right: $puppet-common-spacing-base * 2;
+  position: relative;
+}
+
+// https://github.com/stylelint/stylelint/issues/331#issuecomment-127043187
+/* stylelint-disable property-no-vendor-prefix */
+/* stylelint-disable length-zero-no-unit */
+.rc-radiobutton {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: $puppet-common-border;
+  border-radius: $puppet-common-border-radius * 2;
+  cursor: pointer;
+  height: $puppet-common-spacing-base * 4;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  width: $puppet-common-spacing-base * 4;
+}
+
+.rc-radiobutton + .rc-icon {
+  display: none;
+  height: $puppet-common-spacing-base * 4;
+  left: 0px;
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  width: $puppet-common-spacing-base * 4;
+}
+
+.rc-radiobutton:focus {
+  box-shadow: $puppet-common-focus-outline;
+}
+
+.rc-radiobutton:hover {
+  border: $puppet-shared-input-border-hover;
+}
+
+.rc-radiobutton-error,
+.rc-radiobutton-error:hover {
+  border: $puppet-shared-input-border-error;
+}
+
+.rc-radiobutton-error.rc-radiobutton:checked + .rc-icon {
+  fill: $puppet-r600;
+}
+
+.rc-radiobutton:checked + .rc-icon {
+  display: block;
+  fill: $puppet-b500;
+}
+
+.rc-radiobutton:hover + .rc-icon {
+  fill: $puppet-b400;
+}
+
+.rc-radiobutton:disabled,
+.rc-radiobutton:disabled:hover {
+  border: $puppet-common-border;
+  cursor: default;
+  opacity: $puppet-common-disabled-opacity;
+
+  + .rc-icon {
+    fill: $puppet-b500;
+    opacity: $puppet-common-disabled-opacity;
+  }
+}
+
+/* stylelint-enable length-zero-no-unit */
+/* stylelint-enable property-no-vendor-prefix */
