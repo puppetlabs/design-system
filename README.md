@@ -2,7 +2,7 @@
 
 The Puppet Design System represents the behaviors, components, principles and visual presentation we share. It is based on our objective to provide consistency, efficiency, and quality experiences to our customers. With it, we scale design across departments, products, platforms, and time zones.
 
-For background, see [Puppet Design System](https://confluence.puppetlabs.com/display/PDS) on Confluence and the [Big Picture presentation](https://primetime.bluejeans.com/a2m/events/playback/33fcd61c-3ad2-4413-9393-cc216551d61b). Visit the documentation and living styleguide at <https://puppetlabs.github.io/design-system>.
+Visit the documentation and living styleguide at <https://puppetlabs.github.io/design-system>.
 
 ## Quick start
 
@@ -76,7 +76,7 @@ The Puppet Design System is a cross-functional team effort across Puppet with sh
 
 ## Feedback
 
-We are continuing to iterate on the Puppet Design System and appreciate your feedback and questions. Say hi Slack in the [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) channel, contact <puppet-design-system@puppet.com> or [report an issue](https://tickets.puppetlabs.com/secure/CreateIssueDetails!init.jspa?pid=16902&issuetype=1&priority=6) in Jira (the "PDS" project).
+We are continuing to iterate on the Puppet Design System and appreciate your feedback and questions. Feel free to create an issue, pull request, or contact <puppet-design-system@puppet.com>. Puppet employees can follow along in Slack ([#team-design-system](https://puppet.slack.com/messages/CFFECRQAY)) or Jira ([PDS](https://tickets.puppetlabs.com/secure/RapidBoard.jspa?projectKey=PDS&rapidView=1018&view=planning)).
 
 
 ## Release Notes
