@@ -88,6 +88,10 @@ module.exports = {
           content: 'foundations/Iconography.md',
         },
         {
+          name: 'Responsiveness',
+          content: 'foundations/Responsiveness.md',
+        },
+        {
           name: 'Typography',
           content: 'foundations/Typography.md',
         },

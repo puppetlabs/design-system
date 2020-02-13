@@ -1,0 +1,25 @@
+$breakpoints: (
+  'small': 576px,
+  'medium': 768px,
+  'large': 992px,
+) !default;
+
+@mixin respond-above($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  } @else {
+    @warn "Unrecognized breakpoint '#{$breakpoint}'. Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+@mixin respond-below($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (max-width: map-get($breakpoints, $breakpoint) - 1) {
+      @content;
+    }
+  } @else {
+    @warn "Unrecognized breakpoint '#{$breakpoint}'. Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
