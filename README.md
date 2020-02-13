@@ -1,5 +1,7 @@
 # Puppet Design System
 
+This is a test of the emergency broadcasting system. This is only a test.
+
 The Puppet Design System represents the behaviors, components, principles and visual presentation we share. It is based on our objective to provide consistency, efficiency, and quality experiences to our customers. With it, we scale design across departments, products, platforms, and time zones.
 
 Visit the documentation and living styleguide at <https://puppetlabs.github.io/design-system>.
