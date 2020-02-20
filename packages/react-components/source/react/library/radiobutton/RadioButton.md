@@ -8,30 +8,37 @@ Radio buttons provide built in support for hover, active, and focused interactio
 
 ```jsx
 const exampleStyle = { marginRight: 10 };
+const [value, setValue] = React.useState(0);
 
 <div>
   <RadioButton
     name="radiobutton-ex-unchecked"
     label="Unchecked"
     style={exampleStyle}
+    value={value === 0}
+    onChange={() => setValue(0)}
   />
   <RadioButton
     name="radiobutton-ex-checked"
     label="Checked"
     style={exampleStyle}
-    value
+    value={value === 1}
+    onChange={() => setValue(1)}
   />
   <RadioButton
     name="radiobutton-ex-disabled"
     label="Disabled"
     style={exampleStyle}
-    value
+    value={value === 2}
+    onChange={() => setValue(2)}
     disabled
   />
   <RadioButton
     name="radiobutton-ex-error"
     label="Error"
     style={exampleStyle}
+    value={value === 3}
+    onChange={() => setValue(3)}
     error
   />
 </div>;
