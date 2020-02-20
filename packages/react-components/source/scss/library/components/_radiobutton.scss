@@ -1,14 +1,14 @@
-.rc-checkbox-input {
+.rc-radiobutton-input {
   align-items: center;
   cursor: pointer;
   display: flex;
 }
 
-.rc-checkbox-input:not(:last-of-type) {
+.rc-radiobutton-input:not(:last-of-type) {
   margin-bottom: $puppet-common-spacing-base * 3;
 }
 
-.rc-checkbox-container {
+.rc-radiobutton-container {
   height: $puppet-common-spacing-base * 4;
   margin-right: $puppet-common-spacing-base * 2;
   position: relative;
@@ -16,13 +16,13 @@
 
 // https://github.com/stylelint/stylelint/issues/331#issuecomment-127043187
 /* stylelint-disable property-no-vendor-prefix */
-.rc-checkbox {
+/* stylelint-disable length-zero-no-unit */
+.rc-radiobutton {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
   border: $puppet-common-border;
-  border-radius: $puppet-common-border-radius;
+  border-radius: $puppet-common-border-radius * 2;
   cursor: pointer;
   height: $puppet-common-spacing-base * 4;
   margin: 0;
@@ -31,44 +31,44 @@
   width: $puppet-common-spacing-base * 4;
 }
 
-.rc-checkbox + .rc-icon {
+.rc-radiobutton + .rc-icon {
   display: none;
   height: $puppet-common-spacing-base * 4;
-  left: 2px;
+  left: 0px;
   pointer-events: none;
   position: absolute;
-  top: -1px;
+  top: 0px;
   width: $puppet-common-spacing-base * 4;
 }
 
-.rc-checkbox:focus {
+.rc-radiobutton:focus {
   box-shadow: $puppet-common-focus-outline;
 }
 
-.rc-checkbox:hover {
+.rc-radiobutton:hover {
   border: $puppet-shared-input-border-hover;
 }
 
-.rc-checkbox-error,
-.rc-checkbox-error:hover {
+.rc-radiobutton-error,
+.rc-radiobutton-error:hover {
   border: $puppet-shared-input-border-error;
 }
 
-.rc-checkbox-error.rc-checkbox:checked + .rc-icon {
+.rc-radiobutton-error.rc-radiobutton:checked + .rc-icon {
   fill: $puppet-r600;
 }
 
-.rc-checkbox:checked + .rc-icon {
+.rc-radiobutton:checked + .rc-icon {
   display: block;
   fill: $puppet-b500;
 }
 
-.rc-checkbox:hover + .rc-icon {
+.rc-radiobutton:hover + .rc-icon {
   fill: $puppet-b400;
 }
 
-.rc-checkbox:disabled,
-.rc-checkbox:disabled:hover {
+.rc-radiobutton:disabled,
+.rc-radiobutton:disabled:hover {
   border: $puppet-common-border;
   cursor: default;
   opacity: $puppet-common-disabled-opacity;
@@ -79,9 +79,5 @@
   }
 }
 
-.rc-checkbox-indeterminate + .rc-icon {
-  display: block;
-  fill: $puppet-b500;
-}
-
+/* stylelint-enable length-zero-no-unit */
 /* stylelint-enable property-no-vendor-prefix */
