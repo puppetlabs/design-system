@@ -1,5 +1,8 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.2...HEAD)
 
+- [RadioButton] Add new Radiobutton component (by [@jilliankeenan](https://github.com/jilliankeenan) in [#215](https://github.com/puppetlabs/design-system/pull/215))
+- [Checkbox] Fix color of checked icon for error state (by [@jilliankeenan](https://github.com/jilliankeenan) in [#215](https://github.com/puppetlabs/design-system/pull/215))
+
 # [5.15.2](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.1...@puppet/react-components@5.15.2) (2020-02-12)
 
 - Add Apache 2.0 open source license (by [@caseywilliams](https://github.com/caseywilliams) in [#213](https://github.com/puppetlabs/design-system/pull/213))
