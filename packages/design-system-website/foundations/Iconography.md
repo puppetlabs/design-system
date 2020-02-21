@@ -75,8 +75,7 @@ The vast majority of icons do not provide enough information by themselves for a
 
 ## Naming conventions
 
-The same name should be used between the Sketch library and the component library.
-Names should be prioritized in descending order:
+The same name should be used between the Figma library and the component library. Names should be prioritized in descending order:
 
 1. **Object noun** - eg. Diamond, not Quality. Pencil, not Edit.
 2. **Verb**. Describe the action, if the noun would be less clear. - eg. Undo, not Curved-Arrow-Left.
@@ -127,7 +126,7 @@ Test that the icon:
 
 - Scales correctly
 - Accepts style changes
-- Name corresponds with Sketch library and exported SVG
+- Name corresponds with Figma library and exported SVG
 - Is added to documentation
 
 ## Related

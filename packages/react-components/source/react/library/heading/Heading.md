@@ -2,8 +2,6 @@
 
 The Heading component is another typographical element. It is related to the [Text component](#/React%20Components/Text), but it covers the text treatments that live outside of the body, small and tiny styles defined in the Text componenet.
 
-Design specifications and use cases for the existing styles can be found in the Sketch Styleguide file.
-
 ### Font families
 
 The following 2 font families are utilized in the Heading component.

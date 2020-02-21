@@ -4,8 +4,6 @@ The text component is a foundational element that provides an encapsulated way t
 
 Our products use three font families, with their various weights and sizes, to communicate clearly with our users. Don’t introduce new typographic styles to our products without consulting the UX team.
 
-Design specifications and use cases for the existing styles can be found in the Sketch Styleguide file.
-
 ### Font families
 
 The following 3 font families are utilized in a variety of styles. The use cases for these are outlined below.

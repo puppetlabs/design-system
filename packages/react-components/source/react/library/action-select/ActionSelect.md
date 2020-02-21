@@ -4,8 +4,6 @@ The ActionSelect component allows users to execute actions from a dropdown menu 
 
 Menus allow a user to select from a list of things. Menus are scrollable if there are enough options to warrant it, and can have simple text options, or can be combined with an icon for quicker comprehension. ActionSelect is used to perform an action that doesn’t result in a direct change to the page, otherwise known as a non-stateful action.
 
-Specific use cases and interactions can be found in the Sketch Styleguide file (under Components / Dialogues / Menu, Menu triggers).
-
 See also: [ButtonSelect](#/React%20Components/ButtonSelect), [Select](#/React%20Components/Select)
 
 ## Basic use
