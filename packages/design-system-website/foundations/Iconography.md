@@ -4,7 +4,6 @@ Icon design sits squarely within a venn diagram between illustration and product
 
 A list of available icons are available in the [icon component](#/React%20Components/Icon).
 
-`Insert venn diagram`
 
 ## Icon construction
 
@@ -12,7 +11,7 @@ A list of available icons are available in the [icon component](#/React%20Compon
 
 By default our icons align to our 4px grid on a 16x16 artboard. We allow icons to be scaled up to 24x24.
 
-`Insert grid examples`
+`Insert icon-grid`
 
 When we reduce to 8x8, we always create a new icon. It is important that we remove non-critical detail as we scale down.
 
@@ -20,7 +19,7 @@ When scaling up to 24x24 consider creating a new icon, taking advantage of the l
 
 Icons are not scaled up over 24x24 pixels. If you need something larger use an illustration instead. Icons may be used as development placeholders, but should always be made into a more detailed illustration before being made public-facing.
 
-`Insert placeholder and illustration examples`
+`Insert icon-size-complexity`
 
 ## Pixel grid
 
@@ -55,19 +54,15 @@ Because of the technical nature of Puppet's products, most icons will not have a
 
 To accomplish this we must always review how icons will be used in-situ. This is exceptionally important in navigation, where a user relies more on a passing familiarity and position on screen to return to a specific screen.
 
-`Insert navigation example`
+`Insert icon-silhouette`
 
 ## Using icons in isolation
 
 The vast majority of icons do not provide enough information by themselves for a user to understand their purpose. It is very important that when using icons that we provide enough context for the user. **That does not mean icons always need text next to them**. It means we need to be considerate when providing context in other ways to aid user understanding.
 
-`Insert WSYWIG toolbar image`
+`Insert icon-notext image`
 
-**Example**: The toolbar for a text editor needs to conserve space so all actions are visible. Context here is provided by:
-
-- Clear association with the text editor - presented as buttons, grouped into a toolbar
-- Leaning on broad familiarity with text editors in general
-- Using common icon metaphors
+`Insert icon-kebabs image`
 
 **Consider**
 
