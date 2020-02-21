@@ -4,7 +4,6 @@ Icon design sits squarely within a venn diagram between illustration and product
 
 A list of available icons are available in the [icon component](#/React%20Components/Icon).
 
-`Insert venn diagram`
 
 ## Icon construction
 
@@ -12,7 +11,7 @@ A list of available icons are available in the [icon component](#/React%20Compon
 
 By default our icons align to our 4px grid on a 16x16 artboard. We allow icons to be scaled up to 24x24.
 
-`Insert grid examples`
+![Merge icon on 16x16 grid](./icon-grid.svg)
 
 When we reduce to 8x8, we always create a new icon. It is important that we remove non-critical detail as we scale down.
 
@@ -20,7 +19,7 @@ When scaling up to 24x24 consider creating a new icon, taking advantage of the l
 
 Icons are not scaled up over 24x24 pixels. If you need something larger use an illustration instead. Icons may be used as development placeholders, but should always be made into a more detailed illustration before being made public-facing.
 
-`Insert placeholder and illustration examples`
+![Example of reducing complexity when reducing size](./icon-size-complexity.svg)
 
 ## Pixel grid
 
@@ -51,23 +50,20 @@ Icons should clearly communicate their associated content. They also reflect the
 
 ### Silhouettes
 
-Because of the technical nature of Puppet's products, most icons will not have a clear meaning by themselves. Instead the icon primarily provides a distinguishing characteristic to help the user navigate between similar topics or actions.
+A distinct silhouette helps the user quickly identify and understand iconography as they scan across a page. Because of the technical nature of Puppet's products, most icons will not have a clear meaning by themselves. Instead the icon primarily provides a distinguishing characteristic to help the user navigate between similar topics or actions.
 
-To accomplish this we must always review how icons will be used in-situ. This is exceptionally important in navigation, where a user relies more on a passing familiarity and position on screen to return to a specific screen.
+This is exceptionally important in navigation, where a user relies more on a passing familiarity and position on screen to return to a specific screen.
 
-`Insert navigation example`
+![Example of icons with distinct silhouettes and confusing silhouettes](./icon-silhouette.svg)
 
 ## Using icons in isolation
 
 The vast majority of icons do not provide enough information by themselves for a user to understand their purpose. It is very important that when using icons that we provide enough context for the user. **That does not mean icons always need text next to them**. It means we need to be considerate when providing context in other ways to aid user understanding.
 
-`Insert WSYWIG toolbar image`
+![Example showcasing how a bell icon may be easily recognizable without text, while a box may not.](./icon-notext.svg)
 
-**Example**: The toolbar for a text editor needs to conserve space so all actions are visible. Context here is provided by:
+![Ellipsis and kebab icons are ok to use without text](./icon-kebabs.svg)
 
-- Clear association with the text editor - presented as buttons, grouped into a toolbar
-- Leaning on broad familiarity with text editors in general
-- Using common icon metaphors
 
 **Consider**
 
@@ -131,9 +127,9 @@ Test that the icon:
 
 - Scales correctly
 - Accepts style changes
-- Name corresponds with Sketch library and exported svg
+- Name corresponds with Sketch library and exported SVG
 - Is added to documentation
 
 ## Related
 
-- [Icon component](#/React%20Components/Icon) : a list of available icons and guidelines for using them
+- [Icon component](#/React%20Components/Icon): a list of available icons and guidelines for using them
