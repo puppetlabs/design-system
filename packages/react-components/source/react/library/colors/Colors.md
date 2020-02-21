@@ -24,9 +24,7 @@ const colors = ['brand-primary', 'brand-secondary'];
 
 ## UI palette
 
-Code should always reference the Sass color variable (instead of directly referencing hex values). The variable definitions are located in [_palettes.scss](https://github.com/puppetlabs/design-system/blob/master/packages/sass-variables/_palettes.scss) in the `sass-variables` package, e.g. `$puppet-black`, `$puppet-n950`, etc.
-
-
+Code should always reference the Sass color variable (instead of directly referencing hex values). The variable definitions are located in [\_palettes.scss](https://github.com/puppetlabs/design-system/blob/master/packages/sass-variables/_palettes.scss) in the `sass-variables` package, e.g. `$puppet-black`, `$puppet-n950`, etc.
 
 ### Neutral colors
 

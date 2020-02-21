@@ -19,10 +19,18 @@ import Text from '../text';
 <table className="rc-loading-table">
   <thead>
     <tr>
-      <th><Text>Large (default)</Text></th>
-      <th><Text>Small</Text></th>
-      <th><Text>Tiny</Text></th>
-      <th><Text>Custom</Text></th>
+      <th>
+        <Text>Large (default)</Text>
+      </th>
+      <th>
+        <Text>Small</Text>
+      </th>
+      <th>
+        <Text>Tiny</Text>
+      </th>
+      <th>
+        <Text>Custom</Text>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -41,7 +49,7 @@ import Text from '../text';
       </td>
     </tr>
   </tbody>
-</table>
+</table>;
 ```
 
 ## Related

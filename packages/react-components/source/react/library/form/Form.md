@@ -368,7 +368,6 @@ Field-level errors may be supplied in an object under the `items` key. The keys 
 
 Here is an example custom error object, including both `causes` and `items`:
 
-
 ```js static
 {
   message: 'Top-level error message',

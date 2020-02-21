@@ -193,16 +193,33 @@ A unique key can also be provided via a function:
 Use the `hideOverflow` flag if you want to hide long cell content with an ellipses. The flag only affects the column it is turned on for.
 
 <!-- prettier-ignore-start -->
+
 ```jsx
 const data = [
-  { id: 1, type: 'Lorem ipsum', passage: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.', characters: 123 },
+  {
+    id: 1,
+    type: 'Lorem ipsum',
+    passage:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    characters: 123,
+  },
   { id: 2, type: 'Cicero', passage: 'Sed ut perspiciatis', characters: 19 },
-  { id: 3, type: '1914', passage: 'But I must explain to you how all this mistaken idea', characters: 52 },
+  {
+    id: 3,
+    type: '1914',
+    passage: 'But I must explain to you how all this mistaken idea',
+    characters: 52,
+  },
 ];
 
 const columns = [
   { label: 'Types', dataKey: 'type' },
-  { label: 'Passage', dataKey: 'passage', style: { width: '50%'}, hideOverflow: true },
+  {
+    label: 'Passage',
+    dataKey: 'passage',
+    style: { width: '50%' },
+    hideOverflow: true,
+  },
   { label: 'Character Length', dataKey: 'characters' },
 ];
 

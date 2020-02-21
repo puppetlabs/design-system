@@ -1,4 +1,4 @@
-## Overview
+## Mixins
 
 This system remains mostly unopinionated on responsive tools, but the `sass-variables` package contains a few mixins to help you customize your own styles based on the viewport width:
 
@@ -23,7 +23,7 @@ This system remains mostly unopinionated on responsive tools, but the `sass-vari
     } 
     ```
 
-### Breakpoint widths
+## Breakpoints
 
 The mixins respond to three sizes by default:
 
@@ -52,7 +52,7 @@ $breakpoints: (
 }
 ```
 
-### Which mixin should I use?
+## Which mixin should I use?
 
 The conventional wisdom of "mobile-first" design encourages designing at the smallest widths first, then progressively enhancing the design for larger sizes. This tends to improve the responsiveness of the design overall, since it forces a focus on multiple sizes from the beginning.
 

@@ -131,7 +131,9 @@ import Button from '../button';
 const [open, setOpen] = React.useState(false);
 
 <>
-  <Button onClick={() => setOpen(true)}>Open modal with right-aligned buttons</Button>
+  <Button onClick={() => setOpen(true)}>
+    Open modal with right-aligned buttons
+  </Button>
 
   {open && (
     <Modal onClose={() => setOpen(false)}>

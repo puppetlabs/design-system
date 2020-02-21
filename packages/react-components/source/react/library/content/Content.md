@@ -281,8 +281,7 @@ The `Content` component is a wrapper for simple HTML content, which provides def
         <li>
           <p>
             For more information on our curated step specifications, see{' '}
-            <a href="/documentation/step-specifications">Step specifications</a>
-            .
+            <a href="/documentation/step-specifications">Step specifications</a>.
           </p>
         </li>
         <li>

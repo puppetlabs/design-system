@@ -18,7 +18,9 @@ Consider these 3 states for links: hover, focused and pressed (similar to [Butto
 Primary inline links are blue (B500), to differentiate from the text around them. There are two sizes for inline links: The default size, and a small size.
 
 ```jsx
-<Link as="a" href="http://google.com" target="_blank">Primary Link</Link>
+<Link as="a" href="http://google.com" target="_blank">
+  Primary Link
+</Link>
 ```
 
 ### Secondary Links
@@ -26,7 +28,9 @@ Primary inline links are blue (B500), to differentiate from the text around them
 Secondary links use the color of the text around them. In order to meet WCAG AA 2.0 standards, the initial state must be underlined. Hover, focus, and pressed states are the same as blue inline links.
 
 ```jsx
-<Link type="secondary" as="a" href="http://google.com" target="_blank">Secondary Link</Link>
+<Link type="secondary" as="a" href="http://google.com" target="_blank">
+  Secondary Link
+</Link>
 ```
 
 ## Variations
@@ -38,7 +42,9 @@ This variation is a link that acts like a [Button](#/React%20Components/Button),
 ```jsx
 import Button from '../button';
 
-<Link as={Button} onClick={() => console.log('Clicked link as button')}>Link as Button</Link>
+<Link as={Button} onClick={() => console.log('Clicked link as button')}>
+  Link as Button
+</Link>;
 ```
 
 # Related

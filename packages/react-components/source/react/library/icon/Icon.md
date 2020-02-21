@@ -117,10 +117,7 @@ const Renderer = () => {
 
   return (
     <div className="rc-sg-wrapper">
-      <Icon
-        svg={customIcon.svg}
-        viewBox={customIcon.viewBox}
-      />
+      <Icon svg={customIcon.svg} viewBox={customIcon.viewBox} />
     </div>
   );
 };

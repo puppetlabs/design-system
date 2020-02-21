@@ -21,7 +21,7 @@ const options = [
     console.log('New Value:', value);
     setState({ value });
   }}
-/>
+/>;
 ```
 
 ## Types
@@ -281,5 +281,5 @@ const options = [
     setState({ value });
   }}
   width="100px"
-/>
+/>;
 ```

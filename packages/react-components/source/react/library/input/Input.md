@@ -59,6 +59,7 @@ const exampleStyle = { marginBottom: 10 };
   />
 </form>;
 ```
+
 ## Variations
 
 ### Simple
@@ -86,7 +87,7 @@ Optional leading icons may be added where needed to provide more immediate conte
 const exampleStyle = { marginBottom: 10 };
 
 <div>
-  <Input  
+  <Input
     name="input-ex11"
     value={state['input-ex11-value']}
     icon="search"

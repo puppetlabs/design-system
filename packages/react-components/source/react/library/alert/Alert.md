@@ -139,19 +139,19 @@ class CustomError extends Error {
 Errors of any valid type will be displayed automatically:
 
 ```jsx
-
 const extendedError = {
-  message: 'There\'s no reason to become alarmed',
+  message: "There's no reason to become alarmed",
   causes: [
     {
-      message: 'and we hope you\'ll enjoy the rest of your flight.',
+      message: "and we hope you'll enjoy the rest of your flight.",
       causes: [
         {
-          message: 'By the way, is there anyone on board who knows how to fly a plane?'
-        }
-      ]
+          message:
+            'By the way, is there anyone on board who knows how to fly a plane?',
+        },
+      ],
     },
-  ]
+  ],
 };
 
 <div>
@@ -162,9 +162,13 @@ const extendedError = {
     <Alert.Error error="The autopilot is deflating!" />
   </Alert>
   <Alert type="info" style={{ marginBottom: 5 }}>
-    <Alert.Error error={new Error('Looks like I picked the wrong week to quit sniffing glue.')} />
+    <Alert.Error
+      error={
+        new Error('Looks like I picked the wrong week to quit sniffing glue.')
+      }
+    />
   </Alert>
-</div>
+</div>;
 ```
 
 #### Cause sensitivity:
@@ -172,21 +176,22 @@ const extendedError = {
 A primary usecase for this meta-component is to automatically display API-generated errors. In this scenario it is likely that some errors returned as causes will be overly technical, and therefor not fit for display to end-users. To solve for this case, the Error alert will hide `causes` with a numerical `sensitivity` index that is greater than zero:
 
 ```jsx
-
 const extendedError = {
   message: 'Yo, your stuff is whack!',
   causes: [
     {
-      message: 'This is the reason for whackness we will display to the user, but there is more!',
+      message:
+        'This is the reason for whackness we will display to the user, but there is more!',
     },
     {
-      message: 'Jargony jargon jargon this is the technical reason why it is whack',
+      message:
+        'Jargony jargon jargon this is the technical reason why it is whack',
       sensitivity: 50,
-    }
-  ]
+    },
+  ],
 };
 
 <Alert type="danger">
   <Alert.Error error={extendedError} />
-</Alert>
+</Alert>;
 ```

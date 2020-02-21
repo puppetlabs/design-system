@@ -45,10 +45,12 @@ import Text from '../text';
     <Text>Whatever is nested inside the Tab become the Panel content.</Text>
   </Tabs.Tab>
   <Tabs.Tab title="Tab 3">
-    <Text>To change the default tab, set the activeTab prop on Tabs equal to the
-    desired Tab ID.</Text>
+    <Text>
+      To change the default tab, set the activeTab prop on Tabs equal to the
+      desired Tab ID.
+    </Text>
   </Tabs.Tab>
-</Tabs>
+</Tabs>;
 ```
 
 ## Controlled Mode
