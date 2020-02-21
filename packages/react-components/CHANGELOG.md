@@ -1,5 +1,6 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.2...HEAD)
 
+- [sass-variables] Add breakpoint variables and media query mixins for use in responsive layouts (by [@caseywilliams](https://github.com/caseywilliams) in [#218](https://github.com/puppetlabs/design-system/pull/218))
 - [RadioButton] Add new Radiobutton component (by [@jilliankeenan](https://github.com/jilliankeenan) in [#215](https://github.com/puppetlabs/design-system/pull/215))
 - [Checkbox] Fix color of checked icon for error state (by [@jilliankeenan](https://github.com/jilliankeenan) in [#215](https://github.com/puppetlabs/design-system/pull/215))
 
