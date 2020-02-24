@@ -8,6 +8,7 @@
     "uikit": "./bin/uikit.js"
   },
   "scripts": {
+    "link": "npm link",
     "format": "./scripts/format",
     "lint": "./scripts/lint",
     "test": "jest",

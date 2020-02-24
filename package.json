@@ -8,7 +8,8 @@
     "postinstall": "lerna bootstrap",
     "test": "lerna run lint && lerna run test",
     "start": "cd packages/design-system-website && npm start",
-    "styleguide:build": "cd packages/design-system-website && npm run styleguide:build"
+    "styleguide:build": "cd packages/design-system-website && npm run styleguide:build",
+    "publish": "lerna publish"
   },
   "devDependencies": {
     "@babel/preset-stage-2": "^7.0.0",

@@ -4,7 +4,7 @@ The Breadcrumb component allows users to navigate upwards through the parent rou
 
 Breadcrumbs give the user a sense of place, and an understanding of both where they are and the path they took to get there. If they were deep-linked to the page, the breadcrumb helps them understand the context of what’s on the page, and how they might return there later.
 
-Place breadcrumbs at the top of the page. Don’t link the name of the current page. Reference the Sketch Styleguide file, under Components / Subnavigation / Breadcrumb.
+Place breadcrumbs at the top of the page. Don’t link the name of the current page.
 
 ## Basic Use
 

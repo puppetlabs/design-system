@@ -20,7 +20,7 @@ npm install @puppet/react-components
 
 ## Setup
 
-### Webpack (without Create React App)
+### With webpack (without Create React App)
 
 React Components utilizes Calibre and Open Sans. In order for Calibre to load, you will need to process the react-components scss with Webpack. This has currently been tested with webpack 4 using css-loader, sass-loader, file-loader, resolve-url-loader, and mini-css-extract-plugin. The following is an example configuration for a consuming application:
 
@@ -66,7 +66,7 @@ const common = {
 };
 ```
 
-### Create React App
+### With Create React App (CRA)
 
 If you are using CRA with [react-app-rewired](https://github.com/timarney/react-app-rewired) (after following their [instructions](https://github.com/timarney/react-app-rewired/blob/master/README.md#how-to-rewire-your-create-react-app-project) for switching from react-scripts to react-app-rewired in package.json), you can use this included rewire instead (after adding `resolve-url-loader` to devDependencies):
 

@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "main": "dist/index.js",
   "scripts": {
+    "link": "npm link",
     "build": "webpack",
     "watch": "webpack --watch",
     "watch:dev": "webpack --watch --env.development",

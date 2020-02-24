@@ -2,10 +2,6 @@
 
 The Puppet Design System is a cross-functional team effort across Puppet with shared ownership where contributions are encouraged. Though designed for and maintained by Puppet, outside PRs are welcome. A good place to start is by visiting [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) in Puppet's internal Slack or contacting <puppet-design-system@puppet.com>.
 
-- See the general [Consumption and Contribution](https://github.com/puppetlabs/design-system/wiki/Consumption-and-Contribution) principles on the wiki.
-- See individual CONTRIBUTING.md files for specific packages:
-    - react-components: [packages/react-components/CONTRIBUTING.md](packages/react-components/CONTRIBUTING.md)
-
 ## Install
 
 Clone the design-system monorepo:
@@ -14,7 +10,7 @@ Clone the design-system monorepo:
 git clone git@github.com:puppetlabs/design-system.git && cd design-system
 ```
 
-Run `npm install` in the root of the design-system to install all package dependencies (which uses [Lerna](https://lerna.js.org/) to link local packages together and hoist duplicate dependencies up to the top directory to reduce install time):
+We recommend the latest LTS version of Node.js. Run `npm install` in the root of the design-system to install all package dependencies (which uses [Lerna](https://lerna.js.org/) to link local packages together and hoist duplicate dependencies up to the top directory to reduce install time):
 
 ```sh
 npm install
@@ -30,22 +26,34 @@ npm start
 
 ## Local development
 
-To develop locally using a separate app that consumes a design-system package, you can run `npm link` in a particular package subfolder and `npm link @puppet/<package-name>` in the consuming app. See each individual package's own README.md; some have `npm run watch` commands to rebuild on change.
+To develop locally using a separate app that consumes a design-system package:
+
+1. Run `npx lerna run link` (which will run `npm link` in consumable packages).
+2. Run `npm link @puppet/<package-name>` in the consuming app.
+3. Run `npx lerna run --parallel watch` to rebuild packages on change ( or just `npm run watch` in the desired package).
 
 ## Testing
 
-You can run `npm test` in a package subfolder or `npm test` in the top folder to test all packages.
+Run `npm test` in the top folder to test all packages, or `npm test` in the desired package. You can also run `npm lint` to check for code formatting errors or `npm format` to attempt to automatically fix them.
 
 ## Pull requests
 
 Put up a PR for the design-system repo that follows these guidelines:
 
-- Granularity: Make commits of logical units (ideally with each commit passing tests).
-- Tense: Use the imperative present tense (e.g. "Change", not "Changed" or "Changes") to describe what changed from the consumer's perspective in the commit summary (with any extra details or motivation in the commit body).
-- Ticket: Associate with the Jira issue by adding the issue key to the commit body and, if it resolves the ticket, use the "PDS-123 #resolve" syntax to resolve the issue.
-- Fork: For the Jira issue to be resolved on merging rather than opening the PR (with the above syntax), the PR can be opened from a branch on your fork of the design-system repo.
+- Granularity: Make commits of logical units (ideally with each commit passing tests, and formatting and refactoring in separate commits).
+- Commit summary: The first line should be no more than 72 characters (with any extra details or motivation in the commit body).
+- Tense: Use the imperative present tense (e.g. "Add feature", not "Added feature") to describe what changed from the consumer's perspective in the commit summary.
+- Changelog: Add a line about your change to the package's CHANGELOG.md file.
+
+| <img src="https://imgs.xkcd.com/comics/git_commit.png" alt="xkcd comic about commit messages"/> |
+| ------------- |
+| <p align="center">Don't do this</p> |
+
+See more guidelines for contributors and maintainers in the [Principles, Patterns, and Guidelines](principles-patterns-guidelines.md) doc.
 
 ## Publishing
+
+New versions are currently released by maintainers using `npm run publish`. Please collaborate with the team to release a new version. (Note: This process will likely be replaced with automated releases on push to master.)
 
 This project currently uses Lerna's independent mode, so the following command will prompt you to select a new version for any packages that have changed since the last version tags. WARNING: this command results in a git push to your `origin` remote.
 
@@ -53,7 +61,7 @@ This project currently uses Lerna's independent mode, so the following command w
 npm run publish
 ```
 
-If `origin` was not puppetlabs/design-system, push the "Publish" commit that created, along with version tags, to the upstream repo:
+If `origin` was not puppetlabs/design-system, push the "Publish" commit the above command created, along with version tags, to the upstream repo:
 
 ```sh
 git push --follow-tags git@github.com:puppetlabs/design-system.git master
