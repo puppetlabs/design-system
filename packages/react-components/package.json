@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "main": "build/library.js",
   "scripts": {
+    "link": "npm link",
     "analyze": "webpack --config webpack.analyze.config.js",
     "prebuild": "rimraf build",
     "build": "NODE_ENV=production webpack",

@@ -5,6 +5,7 @@
   "license": "Apache-2.0",
   "main": "dist/react-layouts.js",
   "scripts": {
+    "link": "npm link",
     "build": "./scripts/build",
     "build:styleguide": "./scripts/build-styleguide",
     "format": "./scripts/format",
