@@ -49,6 +49,8 @@ Put up a PR for the design-system repo that follows these guidelines:
 | ------------- |
 | <p align="center">Don't do this</p> |
 
+See more guidelines for contributors and maintainers in the [Principles, Patterns, and Guidelines](principles-patterns-guidelines.md) doc.
+
 ## Publishing
 
 New versions are currently released by maintainers using `npm run publish`. Please collaborate with the team to release a new version. (Note: This process will likely be replaced with automated releases on push to master.)

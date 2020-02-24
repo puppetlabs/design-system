@@ -1,4 +1,4 @@
-# Principles, patterns, and guidelines
+# Principles, Patterns, and Guidelines
 
 ## Reviewing pull requests
 
