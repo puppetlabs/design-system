@@ -22,6 +22,8 @@ const propTypes = {
   onConfirm: PropTypes.func,
   /** Function to call when action is cancelled, close button is clicked, or ESC is pressed */
   onCancel: PropTypes.func,
+  /** If true, confirm button will render with a loading spinner */
+  confirmButtonLoading: PropTypes.bool,
 };
 const defaultProps = {
   title: '',
@@ -33,6 +35,7 @@ const defaultProps = {
   cancelButtonType: 'tertiary',
   onConfirm: () => {},
   onCancel: () => {},
+  confirmButtonLoading: false,
 };
 
 const ConfirmationModal = ({
@@ -45,12 +48,17 @@ const ConfirmationModal = ({
   cancelButtonType,
   onConfirm,
   onCancel,
+  confirmButtonLoading,
 }) => (
   <Modal onClose={onCancel} isOpen={isOpen}>
     {title && <Modal.Title>{title}</Modal.Title>}
     {description}
     <Modal.Actions>
-      <Button type={confirmButtonType} onClick={onConfirm}>
+      <Button
+        type={confirmButtonType}
+        onClick={onConfirm}
+        loading={confirmButtonLoading}
+      >
         {confirmLabel}
       </Button>
       <Button type={cancelButtonType} onClick={onCancel}>
