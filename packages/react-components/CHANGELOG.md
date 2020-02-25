@@ -1,5 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.16.0...HEAD)
 
+- [ConfirmationModal] Add `confirmButtonLoading` prop to ConfirmationModal (by [@VitaC123](https://github.com/VitaC123) in [#223](https://github.com/puppetlabs/design-system/pull/223))
+
 # [5.16.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.2...@puppet/react-components@5.16.0) (2020-02-24)
 
 - [sass-variables] Add breakpoint variables and media query mixins for use in responsive layouts (by [@caseywilliams](https://github.com/caseywilliams) in [#218](https://github.com/puppetlabs/design-system/pull/218))
@@ -1074,4 +1076,3 @@ Fix regressions in three areas:
 
 - Add filter icon
 - Make Tab panels clickable
-- Add confirmButtonLoading prop to ConfirmationModal
