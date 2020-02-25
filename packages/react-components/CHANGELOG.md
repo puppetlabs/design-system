@@ -1074,3 +1074,4 @@ Fix regressions in three areas:
 
 - Add filter icon
 - Make Tab panels clickable
+- Add confirmButtonLoading prop to ConfirmationModal
