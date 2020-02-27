@@ -227,8 +227,8 @@ const columns = [
   { label: 'Linked field', dataKey: 'Link' },
 ];
 
-const rowClassNames = tableData => {
-  if (tableData.eventType === 'Virus/Malware') {
+const rowClassNames = data => {
+  if (data.eventType === 'Virus/Malware') {
     return 'table-row-error table-row-example';
   }
   return 'table-row-okay';
@@ -902,4 +902,120 @@ const columns = [
 ];
 
 <Table data={data} columns={columns} />;
+```
+
+### Table Quick Filtering
+
+<h2 style="color:red">Need's Review</h2>
+
+Quick filter functionality is embedded within the table header, all you need to do is pass what filters you want and handle the users selection.   
+
+```jsx 
+const data = [
+  {
+    eventType: 'Task',
+    reportCompleted: true,
+  },
+  {
+    eventType: 'Task',
+    reportCompleted: false,
+  },
+  {
+    eventType: 'Task',
+    reportCompleted: true,
+  },
+  {
+    eventType: 'Plan',
+    reportCompleted: false,
+  },
+  {
+    eventType: 'Plan',
+    reportCompleted: true,
+  }
+];
+
+const columns = [
+  {
+    label: 'Host',
+    dataKey: 'eventType',
+  },
+  { label: 'Report Has Completed', dataKey: 'reportCompleted',  cellRenderer: ({ cellData }) => {
+      return cellData.toString();
+    },
+  }
+];
+const filters = [
+  {
+    fieldLabel: 'Event Type',
+    field: 'eventType',
+    options: [
+      {
+        value: 'Task',
+        icon: 'build',
+        label: 'Task',
+      },
+      {
+        value: 'Plan',
+        icon: 'clipboard',
+        label: 'Plan',
+      },
+    ],
+  },
+  {
+    fieldLabel: 'Report Completed',
+    field: 'reportCompleted',
+    options: [
+      {
+        value: true,
+        icon: 'pencil',
+        label: 'True',
+      },
+      {
+        value: false,
+        icon: 'send',
+        label: 'False',
+      },
+    ],
+  },
+];
+
+
+class StatefulParent extends React.Component {
+  constructor() {
+    super();
+    this.state = { renderedData: data };
+    this.applyFilter = this.applyFilter.bind(this);
+  }
+
+  applyFilter(activeFilters) {
+    let filteredData = data;
+
+    if (activeFilters.length > 0) {
+      activeFilters.forEach(aFilter => {
+        const { field: filterField } = aFilter;
+        filteredData = filteredData.filter(
+          row => row[filterField] === aFilter.value,
+        );
+      });
+      this.setState({ renderedData: filteredData });
+    } else {
+      this.setState({ renderedData: data });
+    }
+  }
+
+  render() {
+    const { renderedData } = this.state;
+    return (
+      <div>
+        <Table.TableHeader
+          filters={filters}
+          onFilterChange={this.applyFilter}
+        />
+        <Table data={renderedData} columns={columns} />
+      </div>
+    );
+  }
+}
+<StatefulParent />;
+
 ```

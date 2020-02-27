@@ -1,0 +1,21 @@
+@import '~@puppet/sass-variables';
+
+.dg-pill-bulder-container {
+    display: flex;
+   
+    .dg-pill-container {
+        .dg-filter-pill {
+            margin-bottom: 16px;
+            font-weight: $puppet-type-weight-normal;
+            font-size: $puppet-type-small-font-size;
+         .rc-button-icon-svg{
+            font-size: $puppet-type-small-font-size;
+            // height: 8px !important;
+         }   
+        }
+    }
+
+    .dg-pill-remove-all-button {
+        margin: 8px 0 8px 8px;
+    }
+}
