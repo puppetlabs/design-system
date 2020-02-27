@@ -631,7 +631,6 @@ const columns = [
 ];
 
 class StatefulParent extends React.Component {
-
   constructor() {
     super();
     this.state = {
@@ -644,7 +643,6 @@ class StatefulParent extends React.Component {
   }
 
   checkIfIndeterminateState(state) {
-    console.log('check state')
     const { data, IndeterminateState, checkAll } = this.state;
     let x = data.filter(e => e.selected === true);
 
@@ -680,7 +678,6 @@ class StatefulParent extends React.Component {
 
     // find the index of object from array that you want to update
     const objIndex = stateData.findIndex(obj => obj.unique === row.unique);
-    console.log('row selected: ', objIndex, row)
 
     // make new object of updated object.
     const updatedObj = { ...stateData[objIndex], selected: checked };
@@ -707,8 +704,6 @@ class StatefulParent extends React.Component {
 
     this.checkIfIndeterminateState();
 
-    console.log(stateData, IndeterminateState)
-
     return (
       <div>
         <Table
@@ -722,11 +717,10 @@ class StatefulParent extends React.Component {
           checkIfIndeterminateState={this.checkIfIndeterminateState}
         />
       </div>
-        );
-      }
-    };
-    <StatefulParent />;
-    
+    );
+  }
+}
+<StatefulParent />;
 ```
 
 ### Pagination table
