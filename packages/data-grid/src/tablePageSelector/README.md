@@ -3,59 +3,31 @@ The TablePageSelector component has been developed for used alongside the DataGr
 ### Pagination Navigation
 
 ```jsx
-<TablePageSelector
-  currentPage={1}
-  pageCount={4}
-  delta={1}
-/>
+<TablePageSelector currentPage={1} pageCount={4} delta={1} />
 ```
 
 ```jsx
-<TablePageSelector
-  currentPage={2}
-  pageCount={7}
-  delta={1}
-/>
+<TablePageSelector currentPage={2} pageCount={7} delta={1} />
 ```
 
 ```jsx
-<TablePageSelector
-  currentPage={3}
-  pageCount={7}
-  delta={1}
-/>
+<TablePageSelector currentPage={3} pageCount={7} delta={1} />
 ```
 
 ```jsx
-<TablePageSelector
-  currentPage={4}
-  pageCount={20}
-  delta={1}
-/>
+<TablePageSelector currentPage={4} pageCount={20} delta={1} />
 ```
 
 ```jsx
-<TablePageSelector
-  currentPage={5}
-  pageCount={7}
-  delta={1}
-/>
+<TablePageSelector currentPage={5} pageCount={7} delta={1} />
 ```
 
 ```jsx
-<TablePageSelector
-  currentPage={6}
-  pageCount={7}
-  delta={1}
-/>
+<TablePageSelector currentPage={6} pageCount={7} delta={1} />
 ```
 
 ```jsx
-<TablePageSelector
-  currentPage={7}
-  pageCount={7}
-  delta={1}
-/>
+<TablePageSelector currentPage={7} pageCount={7} delta={1} />
 ```
 
 ### Page Navigation
@@ -64,20 +36,10 @@ When the number of pages is unknown then a Page navigation implementation can be
 
 ```jsx
 const pageSelectFunc = newPage => {
-  // sortFunc will return direction and dataKey on every sort action
-  // This information can be used to carryout a sorting logic on your data and rerender the table
+  // sortFunc will return dataKey on every sort action
+  // This information can be used to carryout a sorting logic on your data and re-render the table
   console.log('newPage to be rendered ', newPage);
 };
 
-  <TablePageSelector
-    onClickHandler={pageSelectFunc}
-  />
-```
-When page limits are reached or navigation is unavilable it is best practice to disable the arrow buttons
-
-```jsx
-  <TablePageSelector
-    disableDescArrow
-    disableAscArrow
-  />
+<TablePageSelector onClickHandler={pageSelectFunc} />;
 ```

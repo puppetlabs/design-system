@@ -603,10 +603,14 @@ const icons = {
 
   increment: {
     medium: (
-      <path
-        fillRule="evenodd"
-        d="M4,11 L12,11 L8,15 L4,11 Z M4,5 L8,1 L12,5 L4,5 Z"
-      />
+      <>
+        <path
+          fillRule="evenodd"
+          fill="var(--down)"
+          d="M4,11 L12,11 L8,15 L4,11 Z"
+        />
+        <path fillRule="evenodd" fill="var(--up)" d="M4,5 L8,1 L12,5 L4,5 Z" />
+      </>
     ),
   },
 

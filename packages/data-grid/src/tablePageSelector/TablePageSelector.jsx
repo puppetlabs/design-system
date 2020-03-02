@@ -1,74 +1,43 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import './TablePageSelector.scss';
-import { Button } from '@puppet/react-components';
+import { Button, Text } from '@puppet/react-components';
+
+import './TablePageSelector.scss';
 
 const propTypes = {
+  /** Optional feature to display number of items currently displayed in table. Usually formatted as `${currentItem - itemsPerPage + 1} - ${currentItem} of ${totalNumItems} items.` */
+  paginationCountText: PropTypes.string,
+  /** Current page number. */
   currentPage: PropTypes.number,
+  /** Total number of pages. */
   pageCount: PropTypes.number,
-  onClickHandler: PropTypes.func.isRequired,
+  /** Function that updates the current page to the page the user clicks. Takes new page as an argument. */
+  updatePage: PropTypes.func.isRequired,
+  /** The number of nearest neighbors of the currently selected page that are shown in the numbres list. */
   delta: PropTypes.number,
-  disableDescArrow: PropTypes.bool,
-  disableAscArrow: PropTypes.bool,
 };
 
 const defaultProps = {
+  paginationCountText: null,
   currentPage: undefined,
   pageCount: undefined,
   delta: 1,
-  disableDescArrow: false,
-  disableAscArrow: false,
 };
 
 class TablePageSelector extends Component {
-  // On click handler that returns the new page number to the parent component depending on which button was clicked
-  changePage = (
-    e,
-    onClickHandler,
-    currentPage,
-    direction,
-    selectedPage,
-    pageCount,
-  ) => {
-    // update the current page
-    let newPage;
-    if (direction === 'asc' && currentPage !== pageCount) {
-      //   newPage = currentPage + 1;
-      newPage = 'NextPage';
-    }
-    if (direction === 'desc' && currentPage !== 1) {
-      //   newPage = currentPage - 1;
-      newPage = 'PreviousPage';
-    }
-    if (selectedPage === '...') {
-      return;
-    }
-    if (selectedPage) {
-      newPage = selectedPage;
-    }
-    if (newPage !== undefined) {
-      onClickHandler(newPage);
-    }
-  };
-
   // takes current page and total number of pages and returns a new array with button values
-  pagination = (c, m, d) => {
-    const current = c;
-    const last = m;
-    const delta = d;
+  pagination = (current, last, delta) => {
     const left = current - delta;
-    const right = current + delta + 1;
-    const range = [];
+    const right = current + delta;
+    const range = []; // page numbers to be displayed
     const rangeWithDots = [];
     let l = 0;
 
     for (let i = 1; i <= last; i += 1) {
-      if (i === 1 || i === last || (i >= left && i < right)) {
+      if (i === 1 || i === last || (i >= left && i <= right)) {
         range.push(i);
-        // i= numbers to be displayed
       }
     }
-    // console.log(range);
     // eslint-disable-next-line
     for (let i of range) {
       if (l) {
@@ -79,7 +48,6 @@ class TablePageSelector extends Component {
           rangeWithDots.push('...');
         }
       }
-
       rangeWithDots.push(i);
 
       l = i;
@@ -90,57 +58,53 @@ class TablePageSelector extends Component {
 
   render() {
     const {
+      paginationCountText,
       pageCount,
       currentPage,
-      onClickHandler,
+      updatePage,
       delta,
-      disableDescArrow,
-      disableAscArrow,
     } = this.props;
     const display = this.pagination(currentPage, pageCount, delta);
 
     return (
-      <div className="rc-page-selector-container">
-        <Button
-          className="rc-page-select-icon-desc"
-          type="transparent"
-          disabled={disableDescArrow}
-          onClick={e => this.changePage(e, onClickHandler, currentPage, 'desc')}
-        >
-          {'<'}
-        </Button>
-        {display.map((i, index) => {
-          return (
-            <Button
-              type={i === currentPage ? 'primary' : 'transparent'}
-              key={(i, index)}
-              onClick={e =>
-                this.changePage(e, onClickHandler, currentPage, null, i)
-              }
-            >
-              {i}
-            </Button>
-          );
-        })}
-        <Button
-          className="rc-page-select-icon-asc"
-          type="transparent"
-          disabled={disableAscArrow}
-          onClick={e =>
-            this.changePage(
-              e,
-              onClickHandler,
-              currentPage,
-              'asc',
-              null,
-              null,
-              pageCount,
-            )
-          }
-        >
-          {'>'}
-        </Button>
-      </div>
+      <>
+        {paginationCountText ? (
+          <Text color="medium" size="small" className="dg-table-row-count">
+            {paginationCountText}
+          </Text>
+        ) : (
+          <div />
+        )}
+        <div className="rc-page-selector-container">
+          <Button
+            className="rc-page-selector-button"
+            type="transparent"
+            icon="chevron-left"
+            disabled={currentPage === 1}
+            onClick={() => updatePage(currentPage - 1)}
+          />
+          {display.map((i, index) => {
+            return (
+              <Button
+                className="rc-page-selector-button"
+                type={i === currentPage ? 'primary' : 'transparent'}
+                key={(i, index)}
+                disabled={i === '...'}
+                onClick={() => updatePage(i)}
+              >
+                {i}
+              </Button>
+            );
+          })}
+          <Button
+            className="rc-page-selector-button"
+            type="transparent"
+            icon="chevron-right"
+            disabled={currentPage === pageCount}
+            onClick={() => updatePage(currentPage + 1)}
+          />
+        </div>
+      </>
     );
   }
 }

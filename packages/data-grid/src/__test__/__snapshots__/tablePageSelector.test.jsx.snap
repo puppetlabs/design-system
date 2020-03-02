@@ -3,19 +3,19 @@
 exports[`Page Navigation Check only arrow render 1`] = `
 <TablePageSelector
   delta={1}
-  disableAscArrow={true}
-  disableDescArrow={true}
-  onClickHandler={[Function]}
+  paginationCountText={null}
+  updatePage={[Function]}
 >
+  <div />
   <div
     className="rc-page-selector-container"
   >
     <Button
       as="button"
-      className="rc-page-select-icon-desc"
-      disabled={true}
+      className="rc-page-selector-button"
+      disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-left"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -24,25 +24,49 @@ exports[`Page Navigation Check only arrow render 1`] = `
       weight="bold"
     >
       <button
-        aria-label="<"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-full rc-page-select-icon-desc"
-        disabled={true}
+        aria-label="chevron-left"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
+        disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-left"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M7.41421356,8 L9.70710678,10.2928932 C10.0976311,10.6834175 10.0976311,11.3165825 9.70710678,11.7071068 C9.31658249,12.0976311 8.68341751,12.0976311 8.29289322,11.7071068 L5.29289322,8.70710678 C4.90236893,8.31658249 4.90236893,7.68341751 5.29289322,7.29289322 L8.29289322,4.29289322 C8.68341751,3.90236893 9.31658249,3.90236893 9.70710678,4.29289322 C10.0976311,4.68341751 10.0976311,5.31658249 9.70710678,5.70710678 L7.41421356,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &lt;
-        </span>
+        />
       </button>
     </Button>
     <Button
       as="button"
-      className="rc-page-select-icon-asc"
+      className="rc-page-selector-button"
       disabled={true}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-right"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -51,17 +75,41 @@ exports[`Page Navigation Check only arrow render 1`] = `
       weight="bold"
     >
       <button
-        aria-label=">"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-full rc-page-select-icon-asc"
+        aria-label="chevron-right"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={true}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-right"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M8.58578644,8 L6.29289322,5.70710678 C5.90236893,5.31658249 5.90236893,4.68341751 6.29289322,4.29289322 C6.68341751,3.90236893 7.31658249,3.90236893 7.70710678,4.29289322 L10.7071068,7.29289322 C11.0976311,7.68341751 11.0976311,8.31658249 10.7071068,8.70710678 L7.70710678,11.7071068 C7.31658249,12.0976311 6.68341751,12.0976311 6.29289322,11.7071068 C5.90236893,11.3165825 5.90236893,10.6834175 6.29289322,10.2928932 L8.58578644,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &gt;
-        </span>
+        />
       </button>
     </Button>
   </div>
@@ -72,20 +120,20 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
 <TablePageSelector
   currentPage={1}
   delta={1}
-  disableAscArrow={false}
-  disableDescArrow={false}
-  onClickHandler={[Function]}
   pageCount={4}
+  paginationCountText={null}
+  updatePage={[Function]}
 >
+  <div />
   <div
     className="rc-page-selector-container"
   >
     <Button
       as="button"
-      className="rc-page-select-icon-desc"
-      disabled={false}
+      className="rc-page-selector-button"
+      disabled={true}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-left"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -94,22 +142,46 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       weight="bold"
     >
       <button
-        aria-label="<"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-desc"
-        disabled={false}
+        aria-label="chevron-left"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-icon rc-button-empty rc-page-selector-button"
+        disabled={true}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-left"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M7.41421356,8 L9.70710678,10.2928932 C10.0976311,10.6834175 10.0976311,11.3165825 9.70710678,11.7071068 C9.31658249,12.0976311 8.68341751,12.0976311 8.29289322,11.7071068 L5.29289322,8.70710678 C4.90236893,8.31658249 4.90236893,7.68341751 5.29289322,7.29289322 L8.29289322,4.29289322 C8.68341751,3.90236893 9.31658249,3.90236893 9.70710678,4.29289322 C10.0976311,4.68341751 10.0976311,5.31658249 9.70710678,5.70710678 L7.41421356,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &lt;
-        </span>
+        />
       </button>
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -123,7 +195,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     >
       <button
         aria-label={1}
-        className="rc-button rc-button-primary rc-button-bold rc-button-full"
+        className="rc-button rc-button-primary rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -137,7 +209,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -151,7 +223,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     >
       <button
         aria-label={2}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -165,7 +237,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -179,7 +251,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     >
       <button
         aria-label={3}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -193,7 +265,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -207,7 +279,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     >
       <button
         aria-label={4}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -221,10 +293,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     </Button>
     <Button
       as="button"
-      className="rc-page-select-icon-asc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-right"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -233,17 +305,41 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       weight="bold"
     >
       <button
-        aria-label=">"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-asc"
+        aria-label="chevron-right"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-right"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M8.58578644,8 L6.29289322,5.70710678 C5.90236893,5.31658249 5.90236893,4.68341751 6.29289322,4.29289322 C6.68341751,3.90236893 7.31658249,3.90236893 7.70710678,4.29289322 L10.7071068,7.29289322 C11.0976311,7.68341751 11.0976311,8.31658249 10.7071068,8.70710678 L7.70710678,11.7071068 C7.31658249,12.0976311 6.68341751,12.0976311 6.29289322,11.7071068 C5.90236893,11.3165825 5.90236893,10.6834175 6.29289322,10.2928932 L8.58578644,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &gt;
-        </span>
+        />
       </button>
     </Button>
   </div>
@@ -254,20 +350,20 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
 <TablePageSelector
   currentPage={2}
   delta={1}
-  disableAscArrow={false}
-  disableDescArrow={false}
-  onClickHandler={[Function]}
   pageCount={7}
+  paginationCountText={null}
+  updatePage={[Function]}
 >
+  <div />
   <div
     className="rc-page-selector-container"
   >
     <Button
       as="button"
-      className="rc-page-select-icon-desc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-left"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -276,22 +372,46 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
       weight="bold"
     >
       <button
-        aria-label="<"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-desc"
+        aria-label="chevron-left"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-left"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M7.41421356,8 L9.70710678,10.2928932 C10.0976311,10.6834175 10.0976311,11.3165825 9.70710678,11.7071068 C9.31658249,12.0976311 8.68341751,12.0976311 8.29289322,11.7071068 L5.29289322,8.70710678 C4.90236893,8.31658249 4.90236893,7.68341751 5.29289322,7.29289322 L8.29289322,4.29289322 C8.68341751,3.90236893 9.31658249,3.90236893 9.70710678,4.29289322 C10.0976311,4.68341751 10.0976311,5.31658249 9.70710678,5.70710678 L7.41421356,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &lt;
-        </span>
+        />
       </button>
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -305,7 +425,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     >
       <button
         aria-label={1}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -319,7 +439,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -333,7 +453,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     >
       <button
         aria-label={2}
-        className="rc-button rc-button-primary rc-button-bold rc-button-full"
+        className="rc-button rc-button-primary rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -347,7 +467,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -361,7 +481,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     >
       <button
         aria-label={3}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -375,8 +495,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     </Button>
     <Button
       as="button"
-      className=""
-      disabled={false}
+      className="rc-page-selector-button"
+      disabled={true}
       forwardRefAs="ref"
       icon={null}
       innerFocus={false}
@@ -389,8 +509,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     >
       <button
         aria-label="..."
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
-        disabled={false}
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-full rc-page-selector-button"
+        disabled={true}
         onClick={[Function]}
         type="button"
       >
@@ -403,7 +523,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -417,7 +537,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     >
       <button
         aria-label={7}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -431,10 +551,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     </Button>
     <Button
       as="button"
-      className="rc-page-select-icon-asc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-right"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -443,17 +563,41 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
       weight="bold"
     >
       <button
-        aria-label=">"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-asc"
+        aria-label="chevron-right"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-right"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M8.58578644,8 L6.29289322,5.70710678 C5.90236893,5.31658249 5.90236893,4.68341751 6.29289322,4.29289322 C6.68341751,3.90236893 7.31658249,3.90236893 7.70710678,4.29289322 L10.7071068,7.29289322 C11.0976311,7.68341751 11.0976311,8.31658249 10.7071068,8.70710678 L7.70710678,11.7071068 C7.31658249,12.0976311 6.68341751,12.0976311 6.29289322,11.7071068 C5.90236893,11.3165825 5.90236893,10.6834175 6.29289322,10.2928932 L8.58578644,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &gt;
-        </span>
+        />
       </button>
     </Button>
   </div>
@@ -464,20 +608,20 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
 <TablePageSelector
   currentPage={3}
   delta={1}
-  disableAscArrow={false}
-  disableDescArrow={false}
-  onClickHandler={[Function]}
   pageCount={7}
+  paginationCountText={null}
+  updatePage={[Function]}
 >
+  <div />
   <div
     className="rc-page-selector-container"
   >
     <Button
       as="button"
-      className="rc-page-select-icon-desc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-left"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -486,22 +630,46 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
       weight="bold"
     >
       <button
-        aria-label="<"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-desc"
+        aria-label="chevron-left"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-left"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M7.41421356,8 L9.70710678,10.2928932 C10.0976311,10.6834175 10.0976311,11.3165825 9.70710678,11.7071068 C9.31658249,12.0976311 8.68341751,12.0976311 8.29289322,11.7071068 L5.29289322,8.70710678 C4.90236893,8.31658249 4.90236893,7.68341751 5.29289322,7.29289322 L8.29289322,4.29289322 C8.68341751,3.90236893 9.31658249,3.90236893 9.70710678,4.29289322 C10.0976311,4.68341751 10.0976311,5.31658249 9.70710678,5.70710678 L7.41421356,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &lt;
-        </span>
+        />
       </button>
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -515,7 +683,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     >
       <button
         aria-label={1}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -529,7 +697,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -543,7 +711,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     >
       <button
         aria-label={2}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -557,7 +725,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -571,7 +739,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     >
       <button
         aria-label={3}
-        className="rc-button rc-button-primary rc-button-bold rc-button-full"
+        className="rc-button rc-button-primary rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -585,7 +753,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -599,7 +767,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     >
       <button
         aria-label={4}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -613,8 +781,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     </Button>
     <Button
       as="button"
-      className=""
-      disabled={false}
+      className="rc-page-selector-button"
+      disabled={true}
       forwardRefAs="ref"
       icon={null}
       innerFocus={false}
@@ -627,8 +795,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     >
       <button
         aria-label="..."
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
-        disabled={false}
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-full rc-page-selector-button"
+        disabled={true}
         onClick={[Function]}
         type="button"
       >
@@ -641,7 +809,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -655,7 +823,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     >
       <button
         aria-label={7}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -669,10 +837,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
     </Button>
     <Button
       as="button"
-      className="rc-page-select-icon-asc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-right"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -681,17 +849,41 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
       weight="bold"
     >
       <button
-        aria-label=">"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-asc"
+        aria-label="chevron-right"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-right"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M8.58578644,8 L6.29289322,5.70710678 C5.90236893,5.31658249 5.90236893,4.68341751 6.29289322,4.29289322 C6.68341751,3.90236893 7.31658249,3.90236893 7.70710678,4.29289322 L10.7071068,7.29289322 C11.0976311,7.68341751 11.0976311,8.31658249 10.7071068,8.70710678 L7.70710678,11.7071068 C7.31658249,12.0976311 6.68341751,12.0976311 6.29289322,11.7071068 C5.90236893,11.3165825 5.90236893,10.6834175 6.29289322,10.2928932 L8.58578644,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &gt;
-        </span>
+        />
       </button>
     </Button>
   </div>
@@ -702,20 +894,20 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
 <TablePageSelector
   currentPage={4}
   delta={1}
-  disableAscArrow={false}
-  disableDescArrow={false}
-  onClickHandler={[Function]}
   pageCount={7}
+  paginationCountText={null}
+  updatePage={[Function]}
 >
+  <div />
   <div
     className="rc-page-selector-container"
   >
     <Button
       as="button"
-      className="rc-page-select-icon-desc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-left"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -724,22 +916,46 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
       weight="bold"
     >
       <button
-        aria-label="<"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-desc"
+        aria-label="chevron-left"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-left"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M7.41421356,8 L9.70710678,10.2928932 C10.0976311,10.6834175 10.0976311,11.3165825 9.70710678,11.7071068 C9.31658249,12.0976311 8.68341751,12.0976311 8.29289322,11.7071068 L5.29289322,8.70710678 C4.90236893,8.31658249 4.90236893,7.68341751 5.29289322,7.29289322 L8.29289322,4.29289322 C8.68341751,3.90236893 9.31658249,3.90236893 9.70710678,4.29289322 C10.0976311,4.68341751 10.0976311,5.31658249 9.70710678,5.70710678 L7.41421356,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &lt;
-        </span>
+        />
       </button>
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -753,7 +969,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     >
       <button
         aria-label={1}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -767,7 +983,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -781,7 +997,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     >
       <button
         aria-label={2}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -795,7 +1011,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -809,7 +1025,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     >
       <button
         aria-label={3}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -823,7 +1039,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -837,7 +1053,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     >
       <button
         aria-label={4}
-        className="rc-button rc-button-primary rc-button-bold rc-button-full"
+        className="rc-button rc-button-primary rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -851,7 +1067,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -865,7 +1081,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     >
       <button
         aria-label={5}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -879,7 +1095,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -893,7 +1109,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     >
       <button
         aria-label={6}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -907,7 +1123,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -921,7 +1137,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     >
       <button
         aria-label={7}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -935,10 +1151,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
     </Button>
     <Button
       as="button"
-      className="rc-page-select-icon-asc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-right"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -947,17 +1163,41 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
       weight="bold"
     >
       <button
-        aria-label=">"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-asc"
+        aria-label="chevron-right"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-right"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M8.58578644,8 L6.29289322,5.70710678 C5.90236893,5.31658249 5.90236893,4.68341751 6.29289322,4.29289322 C6.68341751,3.90236893 7.31658249,3.90236893 7.70710678,4.29289322 L10.7071068,7.29289322 C11.0976311,7.68341751 11.0976311,8.31658249 10.7071068,8.70710678 L7.70710678,11.7071068 C7.31658249,12.0976311 6.68341751,12.0976311 6.29289322,11.7071068 C5.90236893,11.3165825 5.90236893,10.6834175 6.29289322,10.2928932 L8.58578644,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &gt;
-        </span>
+        />
       </button>
     </Button>
   </div>
@@ -968,20 +1208,20 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
 <TablePageSelector
   currentPage={11}
   delta={1}
-  disableAscArrow={false}
-  disableDescArrow={false}
-  onClickHandler={[Function]}
   pageCount={20}
+  paginationCountText={null}
+  updatePage={[Function]}
 >
+  <div />
   <div
     className="rc-page-selector-container"
   >
     <Button
       as="button"
-      className="rc-page-select-icon-desc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-left"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -990,22 +1230,46 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
       weight="bold"
     >
       <button
-        aria-label="<"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-desc"
+        aria-label="chevron-left"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-left"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M7.41421356,8 L9.70710678,10.2928932 C10.0976311,10.6834175 10.0976311,11.3165825 9.70710678,11.7071068 C9.31658249,12.0976311 8.68341751,12.0976311 8.29289322,11.7071068 L5.29289322,8.70710678 C4.90236893,8.31658249 4.90236893,7.68341751 5.29289322,7.29289322 L8.29289322,4.29289322 C8.68341751,3.90236893 9.31658249,3.90236893 9.70710678,4.29289322 C10.0976311,4.68341751 10.0976311,5.31658249 9.70710678,5.70710678 L7.41421356,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &lt;
-        </span>
+        />
       </button>
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1019,7 +1283,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     >
       <button
         aria-label={1}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1033,8 +1297,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     </Button>
     <Button
       as="button"
-      className=""
-      disabled={false}
+      className="rc-page-selector-button"
+      disabled={true}
       forwardRefAs="ref"
       icon={null}
       innerFocus={false}
@@ -1047,8 +1311,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     >
       <button
         aria-label="..."
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
-        disabled={false}
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-full rc-page-selector-button"
+        disabled={true}
         onClick={[Function]}
         type="button"
       >
@@ -1061,7 +1325,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1075,7 +1339,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     >
       <button
         aria-label={10}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1089,7 +1353,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1103,7 +1367,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     >
       <button
         aria-label={11}
-        className="rc-button rc-button-primary rc-button-bold rc-button-full"
+        className="rc-button rc-button-primary rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1117,7 +1381,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1131,7 +1395,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     >
       <button
         aria-label={12}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1145,8 +1409,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     </Button>
     <Button
       as="button"
-      className=""
-      disabled={false}
+      className="rc-page-selector-button"
+      disabled={true}
       forwardRefAs="ref"
       icon={null}
       innerFocus={false}
@@ -1159,8 +1423,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     >
       <button
         aria-label="..."
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
-        disabled={false}
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-full rc-page-selector-button"
+        disabled={true}
         onClick={[Function]}
         type="button"
       >
@@ -1173,7 +1437,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1187,7 +1451,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     >
       <button
         aria-label={20}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1201,10 +1465,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
     </Button>
     <Button
       as="button"
-      className="rc-page-select-icon-asc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-right"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -1213,17 +1477,41 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
       weight="bold"
     >
       <button
-        aria-label=">"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-asc"
+        aria-label="chevron-right"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-right"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M8.58578644,8 L6.29289322,5.70710678 C5.90236893,5.31658249 5.90236893,4.68341751 6.29289322,4.29289322 C6.68341751,3.90236893 7.31658249,3.90236893 7.70710678,4.29289322 L10.7071068,7.29289322 C11.0976311,7.68341751 11.0976311,8.31658249 10.7071068,8.70710678 L7.70710678,11.7071068 C7.31658249,12.0976311 6.68341751,12.0976311 6.29289322,11.7071068 C5.90236893,11.3165825 5.90236893,10.6834175 6.29289322,10.2928932 L8.58578644,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &gt;
-        </span>
+        />
       </button>
     </Button>
   </div>
@@ -1234,20 +1522,20 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
 <TablePageSelector
   currentPage={5}
   delta={1}
-  disableAscArrow={false}
-  disableDescArrow={false}
-  onClickHandler={[Function]}
   pageCount={7}
+  paginationCountText={null}
+  updatePage={[Function]}
 >
+  <div />
   <div
     className="rc-page-selector-container"
   >
     <Button
       as="button"
-      className="rc-page-select-icon-desc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-left"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -1256,22 +1544,46 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
       weight="bold"
     >
       <button
-        aria-label="<"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-desc"
+        aria-label="chevron-left"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-left"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M7.41421356,8 L9.70710678,10.2928932 C10.0976311,10.6834175 10.0976311,11.3165825 9.70710678,11.7071068 C9.31658249,12.0976311 8.68341751,12.0976311 8.29289322,11.7071068 L5.29289322,8.70710678 C4.90236893,8.31658249 4.90236893,7.68341751 5.29289322,7.29289322 L8.29289322,4.29289322 C8.68341751,3.90236893 9.31658249,3.90236893 9.70710678,4.29289322 C10.0976311,4.68341751 10.0976311,5.31658249 9.70710678,5.70710678 L7.41421356,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &lt;
-        </span>
+        />
       </button>
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1285,7 +1597,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     >
       <button
         aria-label={1}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1299,8 +1611,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     </Button>
     <Button
       as="button"
-      className=""
-      disabled={false}
+      className="rc-page-selector-button"
+      disabled={true}
       forwardRefAs="ref"
       icon={null}
       innerFocus={false}
@@ -1313,8 +1625,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     >
       <button
         aria-label="..."
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
-        disabled={false}
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-full rc-page-selector-button"
+        disabled={true}
         onClick={[Function]}
         type="button"
       >
@@ -1327,7 +1639,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1341,7 +1653,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     >
       <button
         aria-label={4}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1355,7 +1667,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1369,7 +1681,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     >
       <button
         aria-label={5}
-        className="rc-button rc-button-primary rc-button-bold rc-button-full"
+        className="rc-button rc-button-primary rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1383,7 +1695,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1397,7 +1709,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     >
       <button
         aria-label={6}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1411,7 +1723,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1425,7 +1737,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     >
       <button
         aria-label={7}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1439,10 +1751,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
     </Button>
     <Button
       as="button"
-      className="rc-page-select-icon-asc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-right"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -1451,17 +1763,41 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
       weight="bold"
     >
       <button
-        aria-label=">"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-asc"
+        aria-label="chevron-right"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-right"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M8.58578644,8 L6.29289322,5.70710678 C5.90236893,5.31658249 5.90236893,4.68341751 6.29289322,4.29289322 C6.68341751,3.90236893 7.31658249,3.90236893 7.70710678,4.29289322 L10.7071068,7.29289322 C11.0976311,7.68341751 11.0976311,8.31658249 10.7071068,8.70710678 L7.70710678,11.7071068 C7.31658249,12.0976311 6.68341751,12.0976311 6.29289322,11.7071068 C5.90236893,11.3165825 5.90236893,10.6834175 6.29289322,10.2928932 L8.58578644,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &gt;
-        </span>
+        />
       </button>
     </Button>
   </div>
@@ -1472,20 +1808,20 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
 <TablePageSelector
   currentPage={6}
   delta={1}
-  disableAscArrow={false}
-  disableDescArrow={false}
-  onClickHandler={[Function]}
   pageCount={7}
+  paginationCountText={null}
+  updatePage={[Function]}
 >
+  <div />
   <div
     className="rc-page-selector-container"
   >
     <Button
       as="button"
-      className="rc-page-select-icon-desc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-left"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -1494,22 +1830,46 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
       weight="bold"
     >
       <button
-        aria-label="<"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-desc"
+        aria-label="chevron-left"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-left"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M7.41421356,8 L9.70710678,10.2928932 C10.0976311,10.6834175 10.0976311,11.3165825 9.70710678,11.7071068 C9.31658249,12.0976311 8.68341751,12.0976311 8.29289322,11.7071068 L5.29289322,8.70710678 C4.90236893,8.31658249 4.90236893,7.68341751 5.29289322,7.29289322 L8.29289322,4.29289322 C8.68341751,3.90236893 9.31658249,3.90236893 9.70710678,4.29289322 C10.0976311,4.68341751 10.0976311,5.31658249 9.70710678,5.70710678 L7.41421356,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &lt;
-        </span>
+        />
       </button>
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1523,7 +1883,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
     >
       <button
         aria-label={1}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1537,8 +1897,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
     </Button>
     <Button
       as="button"
-      className=""
-      disabled={false}
+      className="rc-page-selector-button"
+      disabled={true}
       forwardRefAs="ref"
       icon={null}
       innerFocus={false}
@@ -1551,8 +1911,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
     >
       <button
         aria-label="..."
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
-        disabled={false}
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-full rc-page-selector-button"
+        disabled={true}
         onClick={[Function]}
         type="button"
       >
@@ -1565,7 +1925,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1579,7 +1939,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
     >
       <button
         aria-label={5}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1593,7 +1953,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1607,7 +1967,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
     >
       <button
         aria-label={6}
-        className="rc-button rc-button-primary rc-button-bold rc-button-full"
+        className="rc-button rc-button-primary rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1621,7 +1981,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1635,7 +1995,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
     >
       <button
         aria-label={7}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1649,10 +2009,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
     </Button>
     <Button
       as="button"
-      className="rc-page-select-icon-asc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-right"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -1661,17 +2021,41 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
       weight="bold"
     >
       <button
-        aria-label=">"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-asc"
+        aria-label="chevron-right"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-right"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M8.58578644,8 L6.29289322,5.70710678 C5.90236893,5.31658249 5.90236893,4.68341751 6.29289322,4.29289322 C6.68341751,3.90236893 7.31658249,3.90236893 7.70710678,4.29289322 L10.7071068,7.29289322 C11.0976311,7.68341751 11.0976311,8.31658249 10.7071068,8.70710678 L7.70710678,11.7071068 C7.31658249,12.0976311 6.68341751,12.0976311 6.29289322,11.7071068 C5.90236893,11.3165825 5.90236893,10.6834175 6.29289322,10.2928932 L8.58578644,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &gt;
-        </span>
+        />
       </button>
     </Button>
   </div>
@@ -1682,20 +2066,20 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
 <TablePageSelector
   currentPage={7}
   delta={1}
-  disableAscArrow={false}
-  disableDescArrow={false}
-  onClickHandler={[Function]}
   pageCount={7}
+  paginationCountText={null}
+  updatePage={[Function]}
 >
+  <div />
   <div
     className="rc-page-selector-container"
   >
     <Button
       as="button"
-      className="rc-page-select-icon-desc"
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-left"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -1704,22 +2088,46 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
       weight="bold"
     >
       <button
-        aria-label="<"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-desc"
+        aria-label="chevron-left"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-left"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M7.41421356,8 L9.70710678,10.2928932 C10.0976311,10.6834175 10.0976311,11.3165825 9.70710678,11.7071068 C9.31658249,12.0976311 8.68341751,12.0976311 8.29289322,11.7071068 L5.29289322,8.70710678 C4.90236893,8.31658249 4.90236893,7.68341751 5.29289322,7.29289322 L8.29289322,4.29289322 C8.68341751,3.90236893 9.31658249,3.90236893 9.70710678,4.29289322 C10.0976311,4.68341751 10.0976311,5.31658249 9.70710678,5.70710678 L7.41421356,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &lt;
-        </span>
+        />
       </button>
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1733,7 +2141,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
     >
       <button
         aria-label={1}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1747,8 +2155,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
     </Button>
     <Button
       as="button"
-      className=""
-      disabled={false}
+      className="rc-page-selector-button"
+      disabled={true}
       forwardRefAs="ref"
       icon={null}
       innerFocus={false}
@@ -1761,8 +2169,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
     >
       <button
         aria-label="..."
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
-        disabled={false}
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-full rc-page-selector-button"
+        disabled={true}
         onClick={[Function]}
         type="button"
       >
@@ -1775,7 +2183,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1789,7 +2197,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
     >
       <button
         aria-label={6}
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1803,7 +2211,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
     </Button>
     <Button
       as="button"
-      className=""
+      className="rc-page-selector-button"
       disabled={false}
       forwardRefAs="ref"
       icon={null}
@@ -1817,7 +2225,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
     >
       <button
         aria-label={7}
-        className="rc-button rc-button-primary rc-button-bold rc-button-full"
+        className="rc-button rc-button-primary rc-button-bold rc-button-full rc-page-selector-button"
         disabled={false}
         onClick={[Function]}
         type="button"
@@ -1831,10 +2239,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
     </Button>
     <Button
       as="button"
-      className="rc-page-select-icon-asc"
-      disabled={false}
+      className="rc-page-selector-button"
+      disabled={true}
       forwardRefAs="ref"
-      icon={null}
+      icon="chevron-right"
       innerFocus={false}
       loading={false}
       onClick={[Function]}
@@ -1843,17 +2251,41 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
       weight="bold"
     >
       <button
-        aria-label=">"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-full rc-page-select-icon-asc"
-        disabled={false}
+        aria-label="chevron-right"
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-icon rc-button-empty rc-page-selector-button"
+        disabled={true}
         onClick={[Function]}
         type="button"
       >
+        <Icon
+          className="rc-button-icon-svg"
+          size="medium"
+          style={Object {}}
+          svg={null}
+          type="chevron-right"
+          viewBox={null}
+        >
+          <svg
+            className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
+            height="16px"
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+            viewBox="0 0 16 16"
+            width="16px"
+          >
+            <path
+              d="M8.58578644,8 L6.29289322,5.70710678 C5.90236893,5.31658249 5.90236893,4.68341751 6.29289322,4.29289322 C6.68341751,3.90236893 7.31658249,3.90236893 7.70710678,4.29289322 L10.7071068,7.29289322 C11.0976311,7.68341751 11.0976311,8.31658249 10.7071068,8.70710678 L7.70710678,11.7071068 C7.31658249,12.0976311 6.68341751,12.0976311 6.29289322,11.7071068 C5.90236893,11.3165825 5.90236893,10.6834175 6.29289322,10.2928932 L8.58578644,8 Z"
+              fillRule="evenodd"
+            />
+          </svg>
+        </Icon>
         <span
           className="rc-button-content"
-        >
-          &gt;
-        </span>
+        />
       </button>
     </Button>
   </div>

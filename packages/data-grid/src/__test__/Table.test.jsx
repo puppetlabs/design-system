@@ -31,25 +31,62 @@ const data = [
 ];
 
 const columns = [
-  { label: 'Event Type', dataKey: 'eventType' },
-  { label: 'Affected Devices', dataKey: 'affectedDevices' },
-  { label: 'Detections', dataKey: 'detections' },
-  { label: 'Linked field', dataKey: 'Link' },
+  {
+    label: 'Event Type',
+    dataKey: 'eventType',
+    className: 'testColumnClassName',
+  },
+  {
+    label: 'Affected Devices',
+    dataKey: 'affectedDevices',
+    className: 'testColumnClassName',
+  },
+  {
+    label: 'Detections',
+    dataKey: 'detections',
+    className: 'testColumnClassName',
+  },
+  {
+    label: 'Linked field',
+    dataKey: 'Link',
+    className: 'testColumnClassName',
+  },
+];
+
+const sortedColumns = [
+  {
+    label: 'Event Type',
+    dataKey: 'eventType',
+    className: 'testColumnClassName',
+    sortable: true,
+  },
+  {
+    label: 'Affected Devices',
+    dataKey: 'affectedDevices',
+    className: 'testColumnClassName',
+    sortable: true,
+  },
+  {
+    label: 'Detections',
+    dataKey: 'detections',
+    className: 'testColumnClassName',
+    sortable: true,
+  },
+  {
+    label: 'Linked field',
+    dataKey: 'Link',
+    className: 'testColumnClassName',
+    sortable: true,
+  },
 ];
 
 const wrapper = mount(<Table columns={columns} data={data} />);
 const wrapper2 = <Table columns={columns} />;
 const wrapper3 = mount(<Table columns={columns} data={[]} />);
-const wrapper4 = mount(<Table columns={columns} data={data} sortable />);
+const wrapper4 = mount(<Table columns={sortedColumns} data={data} />);
 const wrapper6 = mount(
-  <Table
-    columns={columns}
-    data={data}
-    rowClassName="testRowClassName"
-    columnClassName="testColumnClassName"
-  />,
+  <Table columns={columns} data={data} rowClassName="testRowClassName" />,
 );
-const wrapper10 = mount(<Table columns={columns} data={data} selectable />);
 
 describe('Snapshot test', () => {
   test('Check component matches previous HTML snapshot', () => {
@@ -80,25 +117,17 @@ describe('Data Prop', () => {
     expect(
       wrapper
         .find('tr.dg-table-row-0')
-        .contains(
-          <td className="dg-table-cell dg-table-cell-eventType">
-            Virus/Malware
-          </td>,
-        ),
+        .contains(<td className="rc-table-cell">Virus/Malware</td>),
     );
     expect(
       wrapper
         .find('tr.dg-table-row-0')
-        .contains(
-          <td className="dg-table-cell dg-table-cell-affectedDevices">20</td>,
-        ),
+        .contains(<td className="rc-table-cell">20</td>),
     );
     expect(
       wrapper
         .find('tr.dg-table-row-0')
-        .contains(
-          <td className="dg-table-cell dg-table-cell-detections">634</td>,
-        ),
+        .contains(<td className="rc-table-cell">634</td>),
     );
   });
 });
@@ -163,7 +192,7 @@ describe('Column Prop', () => {
   test('Customs can collect data with dataKey paths', () => {
     expect(
       wrapper8
-        .find('td.dg-table-cell')
+        .find('td.rc-table-cell')
         .at(2)
         .text(),
     ).toEqual('600');
@@ -175,41 +204,21 @@ describe('Sortable Props', () => {
   const sortedState = { direction: 'asc', sortDataKey: 'eventType' };
   const wrapper5 = mount(
     <Table
-      columns={columns}
+      columns={sortedColumns}
       data={data}
-      sortable
       onSort={mockfunc}
       sortedColumn={sortedState}
     />,
   );
 
   test('When sortable prop is true header icons render ', () => {
-    expect(wrapper4.find('.dg-column-header-icon-up')).toHaveLength(
-      columns.length,
-    );
-    expect(wrapper4.find('.dg-column-header-icon-down')).toHaveLength(
-      columns.length,
-    );
-  });
-
-  test('When icons are clicked fire onSort handler / onSort returns correct information', () => {
-    wrapper5
-      .find('.dg-column-header-icon-up')
-      .first()
-      .simulate('click');
-    expect(mockfunc).toHaveBeenCalledWith('asc', 'eventType');
-
-    wrapper5
-      .find('.dg-column-header-icon-down')
-      .first()
-      .simulate('click');
-    expect(mockfunc).toHaveBeenCalledWith('desc', 'eventType');
+    expect(wrapper4.find('.rc-icon-increment')).toHaveLength(columns.length);
   });
 
   test('SortedColumn renders correctly', () => {
     expect(
       wrapper5
-        .find('.dg-table-header-eventType')
+        .find('.rc-table-header')
         .children()
         .exists('.dg-column-header-label-active'),
     ).toBe(true);
@@ -222,10 +231,12 @@ describe('Custom classes', () => {
   // eslint-disable-next-line
   const wrapper7 = mount(
     <Table
-      columns={columns}
+      columns={columns.map(x => ({
+        ...x,
+        className: () => columnMockfunc(),
+      }))}
       data={data}
       rowClassName={rowMockfunc}
-      columnClassName={columnMockfunc}
     />,
   );
 
@@ -240,7 +251,7 @@ describe('Custom classes', () => {
   });
 
   test('Custom column classname of string is rendered', () => {
-    wrapper6.find('td.dg-table-cell').forEach(node => {
+    wrapper6.find('td.rc-table-cell').forEach(node => {
       expect(node.hasClass('testColumnClassName')).toEqual(true);
     });
   });
@@ -251,60 +262,33 @@ describe('Custom classes', () => {
 });
 
 describe('Selection Props', () => {
-  const headerCheckMockfunc = jest.fn();
   const rowCheckMockfunc = jest.fn();
   const wrapper9 = mount(
     <Table
       columns={columns}
       data={data}
       selectable
-      onHeaderChecked={headerCheckMockfunc}
-      headerCheckState
-      onRowChecked={rowCheckMockfunc}
+      onUpdateData={rowCheckMockfunc}
     />,
   );
 
   test('When selectable prop passed table renders correctly', () => {
     expect(
       wrapper9
-        .find('.dg-table-header-checkbox-element')
+        .find('.dg-table-header-checkbox')
         .first()
         .parent()
-        .is('th.dg-table-header-checkbox'),
+        .is('th.dg-table-header-checkbox-container'),
     ).toEqual(true);
   });
   expect(wrapper9.findWhere(n => n.name() === 'Checkbox')).toHaveLength(8);
 
-  test('When header checkbox is clicked fire onHeaderChecked', () => {
-    wrapper9
-      .find('.rc-checkbox')
-      .first()
-      .simulate('change');
-    expect(headerCheckMockfunc).toHaveBeenCalled();
-  });
-
-  test('When row checkbox is clicked fire onRowChecked', () => {
+  test('When row checkbox is clicked fire onUpdateData', () => {
     wrapper9
       .find('.rc-checkbox')
       .last()
       .simulate('change');
     expect(rowCheckMockfunc).toHaveBeenCalled();
-  });
-
-  test('headerCheckState passes checkbox state correctly', () => {
-    expect(
-      wrapper9
-        .find('.dg-table-header-checkbox-element')
-        .first()
-        .prop('checked'),
-    ).toBeTruthy();
-
-    expect(
-      wrapper10
-        .find('.dg-table-header-checkbox-element')
-        .first()
-        .prop('checked'),
-    ).toBeFalsy();
   });
 
   test('When property `selected` is true in data prop object table row cells are rendered correctly', () => {
@@ -337,6 +321,6 @@ describe('Selection Props', () => {
         .find('.rc-checkbox')
         .last()
         .prop('checked'),
-    ).toBeTruthy();
+    ).toEqual(true);
   });
 });

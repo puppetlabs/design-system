@@ -1,30 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text } from '@puppet/react-components';
+
 import './TableHeader.scss';
 
 const propTypes = {
-  /** Optional feature to display number of rows in table */
-  rowCount: PropTypes.shape({
-    /** Provide the number of rows displayed */
-    count: PropTypes.number,
-    /** Optional change label displayed after count. Current default "rows" */
-    label: PropTypes.string,
-  }),
+  /** Optional feature to display number of rows in table. Provide both the count and 'item' label in a string. */
+  rowCountText: PropTypes.string,
+  /** Optional feature to display number of rows selected in table. Provide both the count and 'selected' label in a string. */
+  selectedRowCountText: PropTypes.string,
   children: PropTypes.node,
 };
 
 const defaultProps = {
-  rowCount: {},
+  rowCountText: null,
+  selectedRowCountText: null,
   children: undefined,
 };
 
-function TableHeader({ children, rowCount }) {
+function TableHeader({ children, rowCountText, selectedRowCountText }) {
   return (
     <div className="dg-table-header-container">
       {children === undefined ? (
-        <Text as="h5" color="medium" className="dg-table-row-count">
-          {rowCount.count} {rowCount.label ? rowCount.label : null}
+        <Text color="medium" size="small" className="dg-table-row-count">
+          {rowCountText || null}
+          {rowCountText && selectedRowCountText ? ' - ' : null}
+          {selectedRowCountText || null}
         </Text>
       ) : (
         children

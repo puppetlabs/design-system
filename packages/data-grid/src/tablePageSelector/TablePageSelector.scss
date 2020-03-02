@@ -1,4 +1,7 @@
-.rc-page-selector-container{
-    text-align: right;
-    padding-top: 0px;
+.rc-page-selector-container {
+  .rc-page-selector-button {
+    padding: 0 6px;
+    min-width: 24px;
+    height: 24px;
+  }
 }

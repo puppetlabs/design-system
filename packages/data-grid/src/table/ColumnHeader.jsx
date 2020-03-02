@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { func, any, string, shape, bool, node, arrayOf } from 'prop-types';
 import classnames from 'classnames';
-import { Checkbox } from '@puppet/react-components';
+import { Checkbox, Icon } from '@puppet/react-components';
 
 const propTypes = {
   columns: arrayOf(
@@ -12,20 +12,18 @@ const propTypes = {
       cellRenderer: func,
       /** Arbitrary additional data passed to the cell renderer for this column */
       columnData: any,
-      /** Classname to apply to each data cell. Useful for setting explicit column widths */
-      className: string,
       /** Unique string key defining this column */
       dataKey: string.isRequired,
-      /** Column header text */
+      /** Label for column header text */
       label: node,
-      /** Column header text */
+      /** Boolean to render sorting icons in header */
+      sortable: bool,
+      /** Styling for column header text */
       style: shape({}),
     }),
   ).isRequired,
-  /** Boolean to render sorting icons in header */
-  sortable: bool,
   /** Callback to return click action */
-  columnHeaderCallBack: func,
+  onSort: func,
   /** Object containing key fields of text describing which header should be active */
   sortedColumn: shape({
     /** The direction of the active icon */
@@ -36,41 +34,46 @@ const propTypes = {
   /** Boolean to render select all checkbox */
   selectable: bool,
   /** Function which handles when the checkbox on click  */
-  onHeaderChecked: func,
+  onSelectAll: func,
   /** Allows the state of the checkbox to be defined  */
-  headerCheckState: bool,
+  selectAllValue: bool,
 };
 
 const defaultProps = {
-  sortable: false,
-  columnHeaderCallBack: null,
+  onSort: () => {},
   sortedColumn: { direction: '', sortDataKey: '' },
   selectable: false,
-  onHeaderChecked: () => {},
-  headerCheckState: false,
+  onSelectAll: () => {},
+  selectAllValue: false,
 };
 
-class ColumnHeader extends Component {
-  onClick(e, direction, dataKey) {
-    e.preventDefault();
-    const { columnHeaderCallBack } = this.props;
-    columnHeaderCallBack(direction, dataKey);
-  }
+const SORT_DIRECTION = { ASC: 'asc', DESC: 'desc' };
 
-  onClickToggle(e, direction, dataKey) {
+class ColumnHeader extends Component {
+  sortColumn = (e, dataKey) => {
     e.preventDefault();
-    const { columnHeaderCallBack } = this.props;
-    columnHeaderCallBack(direction, dataKey);
-  }
+    const { onSort, sortedColumn } = this.props;
+
+    let dir;
+    if (sortedColumn.sortDataKey === dataKey) {
+      dir =
+        sortedColumn.direction === SORT_DIRECTION.ASC
+          ? SORT_DIRECTION.DESC
+          : SORT_DIRECTION.ASC;
+    } else {
+      dir = SORT_DIRECTION.ASC;
+    }
+
+    onSort(dir, dataKey);
+  };
 
   render() {
     const {
       columns,
-      sortable,
       sortedColumn,
       selectable,
-      onHeaderChecked,
-      headerCheckState,
+      onSelectAll,
+      selectAllValue,
     } = this.props;
     const { direction, sortDataKey } = sortedColumn;
 
@@ -81,75 +84,54 @@ class ColumnHeader extends Component {
             <th
               className={classnames(
                 'rc-table-header-cell',
-                `dg-table-header-checkbox`,
+                `dg-table-header-checkbox-container`,
               )}
             >
               <Checkbox
-                onChange={checked => onHeaderChecked(checked)}
-                checked={headerCheckState}
+                onChange={value => onSelectAll(value)}
+                value={selectAllValue}
                 label=""
                 name=""
-                className="dg-table-header-checkbox-element"
+                className="dg-table-header-checkbox"
               />
             </th>
           ) : null}
-          {columns.map(
-            ({ label, dataKey, className: cellClassName, style }) => (
-              <th
-                className={classnames(
-                  'rc-table-header-cell',
-                  `dg-table-header-${dataKey}`,
-                  cellClassName,
-                )}
-                key={dataKey}
-                style={style}
+          {columns.map(({ label, dataKey, sortable, style }) => (
+            <th
+              className={classnames('rc-table-header-cell', {
+                'dg-column-header-sortable': sortable === true,
+              })}
+              key={dataKey}
+              style={style}
+              onClick={e => (sortable ? this.sortColumn(e, dataKey) : () => {})}
+              onKeyPress={e =>
+                e.key === 'Enter' ? this.sortColumn(e, dataKey) : null
+              }
+              tabIndex={sortable ? 0 : null}
+            >
+              <span
+                as="h6"
+                color="medium"
+                className={classnames({
+                  'dg-column-header-label-active': dataKey === sortDataKey,
+                })}
               >
-                <span
-                  as="h6"
-                  color="medium"
-                  className={classnames({
-                    'dg-column-header-label-active': dataKey === sortDataKey,
-                  })}
-                >
-                  {label}
-                </span>
+                {label}
+              </span>
 
-                {sortable === true ? (
-                  <span
-                    className={classnames(
-                      {
-                        [direction]: dataKey === sortDataKey,
-                      },
-                      'dg-column-header-icon-container',
-                    )}
-                  >
-                    <div
-                      className="dg-column-header-icon-up"
-                      onClick={e => this.onClick(e, 'asc', dataKey)}
-                      onKeyPress={e => this.onClick(e, 'asc', dataKey)}
-                      size="large"
-                      role="button"
-                      tabIndex="-2"
-                    >
-                      ▲
-                    </div>
-                    <div
-                      className="dg-column-header-icon-down"
-                      onClick={e => this.onClick(e, 'desc', dataKey)}
-                      onKeyPress={e => this.onClick(e, 'desc', dataKey)}
-                      size="large"
-                      role="button"
-                      tabIndex="-1"
-                    >
-                      ▼
-                    </div>
-                  </span>
-                ) : (
-                  <div />
-                )}
-              </th>
-            ),
-          )}
+              {sortable ? (
+                <span className="dg-column-header-icon-container">
+                  <Icon
+                    type="increment"
+                    size="medium"
+                    className={classnames('dg-column-header-icon-color', {
+                      [direction]: dataKey === sortDataKey,
+                    })}
+                  />
+                </span>
+              ) : null}
+            </th>
+          ))}
         </tr>
       </thead>
     );

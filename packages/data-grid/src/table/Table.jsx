@@ -14,9 +14,10 @@ import { get } from 'lodash';
 import { Heading, Checkbox, Text } from '@puppet/react-components';
 
 import ColumnHeader from './ColumnHeader';
-import './Table.scss';
 import TableHeader from '../tableHeader/TableHeader';
 import TableFooter from '../tableFooter/TableFooter';
+
+import './Table.scss';
 
 const propTypes = {
   /** Table data. Must be an array of objects */
@@ -32,20 +33,24 @@ const propTypes = {
       columnData: any,
       /** Unique string key defining this column */
       dataKey: string.isRequired,
-      /** Column header text */
+      /** Label for column header text */
       label: node,
-      /** Column header text */
+      /** Optional feature to make column sortrable */
+      sortable: bool,
+      /** Optional classname that can be a string or a function taking the dataKey and column index which can be used to render styling on specific column */
+      className: oneOfType([func, string]),
+      /** Styling for column header text */
       style: shape({}),
     }),
   ).isRequired,
   /** Provides a unique key for each table row. */
   rowKey: oneOfType([func, string]),
+  /** Optional function which can be used to render styling on specific rows */
+  rowClassName: oneOfType([func, string]),
   /** Render table in fixed-layout mode */
   fixed: bool,
   /** Optional additional table className */
   className: string,
-  /** Optional additional table style to add column header icons */
-  sortable: bool,
   /** Optional object to decribe the current sorting state for styling */
   sortedColumn: shape({
     /** Descibes sort direction in either asc or desc */
@@ -53,29 +58,20 @@ const propTypes = {
     /** Descibes the column being sorted using the column dataKey  */
     sortDataKey: string,
   }),
-  /** Function that will return direction and dataKey on every sort action  */
+  /** Callback function that will return direction and dataKey on every sort action  */
   onSort: func,
-  style: shape({}),
   /** Optional boolean to cause horizontal scrolling when table extends past the container */
-  horizontalSroll: bool,
+  horizontalScroll: bool,
   /** Optional boolean to cause the first column to be fixed when horizontalScrool is true */
   fixedColumn: bool,
   /** Optional string to provider header which is visable when no data is available */
   emptyStateHeader: string,
   /** Optional string to provider descriptive message explaining the empty state of the table */
   emptyStateMessage: string,
-  /** Optional function which can be used to render styling on specific rows */
-  rowClassName: oneOfType([func, string]),
-  /** Optional function which can be used to render styling on specific column */
-  columnClassName: oneOfType([func, string]),
   /** Boolean to render select checkbox column */
   selectable: bool,
-  /** Row checked action method, will get checked state and row data  */
-  onRowChecked: func,
-  /** Action between to the table header checkbox */
-  onHeaderChecked: func,
-  /** State of the table header checkbox */
-  headerCheckState: bool,
+  /** Callback executed when table data updates through selection. */
+  onUpdateData: func,
 };
 
 const defaultProps = {
@@ -83,20 +79,15 @@ const defaultProps = {
   rowKey: undefined,
   fixed: false,
   className: '',
-  sortable: false,
   onSort: () => {},
-  style: {},
   sortedColumn: { direction: '', sortDataKey: '' },
-  horizontalSroll: false,
+  horizontalScroll: false,
   fixedColumn: false,
   emptyStateHeader: 'No data available',
   emptyStateMessage: 'Prompt to action or solution',
   rowClassName: () => {},
-  columnClassName: () => {},
   selectable: false,
-  onRowChecked: () => {},
-  onHeaderChecked: () => {},
-  headerCheckState: false,
+  onUpdateData: () => {},
 };
 
 const defaultColumnDefs = {
@@ -106,6 +97,18 @@ const defaultColumnDefs = {
 };
 
 class Table extends Component {
+  constructor(props) {
+    super(props);
+
+    const { data } = this.props;
+    let value = false;
+    if (data.every(x => x.selected)) {
+      value = true;
+    }
+
+    this.state = { selectAllValue: value };
+  }
+
   uniqueIDCheck = (rowKey, rowData, rowIndex) => {
     if (rowKey === undefined) {
       const newRowData = rowData;
@@ -116,11 +119,6 @@ class Table extends Component {
       return rowData[rowKey];
     }
     return rowKey(rowData);
-  };
-
-  columnHeaderCallBack = (direction, dataKey) => {
-    const { onSort } = this.props;
-    onSort(direction, dataKey);
   };
 
   classNameTypeManage = (classname, data, index) => {
@@ -140,32 +138,56 @@ class Table extends Component {
       fixed,
       rowKey,
       className,
-      sortable,
       sortedColumn,
       fixedColumn,
-      horizontalSroll,
+      horizontalScroll,
       emptyStateHeader,
       emptyStateMessage,
       rowClassName,
-      columnClassName,
       selectable,
-      onRowChecked,
-      onHeaderChecked,
-      headerCheckState,
+      onUpdateData,
       onSort,
       ...rest
     } = this.props;
 
+    const { selectAllValue } = this.state;
+
+    const selectAll = value => {
+      const updatedData = data.map(x => {
+        return { ...x, selected: value };
+      });
+      onUpdateData(updatedData);
+      this.setState({ selectAllValue: value });
+    };
+
+    const onRowSelected = (index, selected) => {
+      const updatedData = data.map(x => x);
+      updatedData[index].selected = selected;
+
+      if (!selected && selectAllValue) {
+        this.setState({ selectAllValue: false });
+      }
+      if (selected && !selectAllValue && updatedData.every(x => x.selected)) {
+        this.setState({ selectAllValue: true });
+      }
+
+      onUpdateData(updatedData);
+    };
+
+    const onColumnSort = (direction, dataKey) => {
+      onSort(direction, dataKey);
+    };
+
     return (
       <div
-        className={classNames(
-          { 'rc-table-fixed-column': fixedColumn },
-          { 'rc-table-horizontal-scroll': horizontalSroll },
-        )}
+        className={classNames({
+          'dg-table-horizontal-scroll': horizontalScroll,
+          'dg-table-fixed-column': fixedColumn,
+        })}
       >
         <table
           className={classNames(
-            'dg-table',
+            'rc-table',
             { 'rc-table-fixed': fixed },
             className,
           )}
@@ -174,11 +196,10 @@ class Table extends Component {
           <ColumnHeader
             columns={columns}
             selectable={selectable}
-            sortable={sortable}
             sortedColumn={sortedColumn}
-            columnHeaderCallBack={this.columnHeaderCallBack}
-            onHeaderChecked={onHeaderChecked}
-            headerCheckState={headerCheckState}
+            onSort={onColumnSort}
+            onSelectAll={selectAll}
+            selectAllValue={selectAllValue}
           />
           <tbody>
             {data.map((rowData, rowIndex) => {
@@ -186,8 +207,11 @@ class Table extends Component {
                 <tr
                   className={classNames(
                     'dg-table-row',
-                    `dg-table-row-${rowIndex}`,
                     this.classNameTypeManage(rowClassName, rowData, rowIndex),
+                    {
+                      'dg-table-row-selected':
+                        selectable && rowData.selected === true,
+                    },
                   )}
                   key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
                 >
@@ -198,14 +222,12 @@ class Table extends Component {
                         rowData,
                         rowIndex,
                       )}`}
+                      className="rc-table-cell"
                     >
                       <Checkbox
-                        className={classNames(
-                          'dg-table-cell',
-                          'dg-table-checkbox',
-                        )}
-                        onChange={checked => onRowChecked(checked, rowData)}
-                        checked={rowData.selected}
+                        className="dg-table-checkbox"
+                        onChange={value => onRowSelected(rowIndex, value)}
+                        value={rowData.selected}
                         label=""
                         name=""
                       />
@@ -217,6 +239,7 @@ class Table extends Component {
                       cellRenderer,
                       columnData,
                       dataKey,
+                      className: columnClassName,
                       style,
                     } = {
                       ...defaultColumnDefs,
@@ -227,8 +250,7 @@ class Table extends Component {
                       <td
                         key={`${(rowIndex, dataKey)}`}
                         className={classNames(
-                          'dg-table-cell',
-                          `dg-table-cell-${dataKey}`,
+                          'rc-table-cell',
                           this.classNameTypeManage(
                             columnClassName,
                             dataKey,
@@ -266,9 +288,7 @@ class Table extends Component {
               {emptyStateMessage}
             </Text>
           </div>
-        ) : (
-          <div />
-        )}
+        ) : null}
       </div>
     );
   }
