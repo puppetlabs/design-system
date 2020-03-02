@@ -1,0 +1,23 @@
+.rc-tag {
+  background: $puppet-b500;
+  border-radius: $puppet-common-border-radius;
+  display: flex;
+  width: max-content;
+
+  .rc-icon {
+    height: 12px !important;
+    width: 12px !important;
+  }
+}
+
+.rc-tag-label-background {
+  align-items: center;
+  display: flex;
+
+  .rc-tag-text {
+    color: $puppet-white;
+    height: fit-content;
+    padding-left: 8px;
+    padding-right: 4px;
+  }
+}
