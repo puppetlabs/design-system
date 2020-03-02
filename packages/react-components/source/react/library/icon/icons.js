@@ -1039,6 +1039,21 @@ const icons = {
     ),
   },
 
+  star: {
+    medium: (
+      <>
+        <path
+          fillRule="evenodd"
+          d="M14 2H2v12h12V2zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z"
+        />
+        <path
+          fillRule="evenodd"
+          d="M8 10.545L5.293 11.97l.517-3.015L3.62 6.82l3.026-.44L8 3.636 9.354 6.38l3.027.44-2.19 2.135.516 3.015L8 10.545z"
+        />
+      </>
+    ),
+  },
+
   structure: {
     medium: (
       <path
