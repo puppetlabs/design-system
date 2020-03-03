@@ -127,7 +127,8 @@ const Renderer = () => {
 1. _Design_: Create a new icon following the checklist and naming conventions on the [Iconography](#/Foundations/Iconography) Foundations page.
 2. _Engineering_: Run the SVG through [svgo](https://github.com/svg/svgo) to minify and remove redundant data.
 3. _Engineering_: Strip out the wrapping `svg` element, usually (but not always) leaving just a `path`.
-4. _Engineering_: Add the icon to [icons.js](https://github.com/puppetlabs/design-system/blob/master/packages/react-components/source/react/library/icon/icons.js), specifying the icon name and native SVG sizes (usually "medium" for 16px but optionally also "tiny" for 8px, "small" for 12px, or "large" for 24px).
+4. _Engineering_: Remove all instances of the `fill` attribute so that icons can be styled with CSS.
+5. _Engineering_: Add the icon to [icons.js](https://github.com/puppetlabs/design-system/blob/master/packages/react-components/source/react/library/icon/icons.js), specifying the icon name and native SVG sizes (usually "medium" for 16px but optionally also "tiny" for 8px, "small" for 12px, or "large" for 24px).
 
 ## Related
 
