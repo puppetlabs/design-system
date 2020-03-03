@@ -420,6 +420,21 @@ const icons = {
     ),
   },
 
+  download: {
+    medium: (
+      <>
+        <path
+          fillRule="evenodd"
+          d="M16 15c0 .6-.4 1-1 1H1c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h3v2H2v10h12V4h-2V2h3c.6 0 1 .4 1 1v12z"
+        />
+        <path
+          fillRule="evenodd"
+          d="M12 8l-4 4-4-4h3V0h2v8h3z"
+        />
+      </>
+    ),
+  },
+
   'drag-handle': {
     small: (
       <path
@@ -1021,6 +1036,21 @@ const icons = {
         fillRule="evenodd"
         d="M1,1 L7,1 L7,7 L1,7 L1,1 Z M3,3 L3,5 L5,5 L5,3 L3,3 Z"
       />
+    ),
+  },
+
+  star: {
+    medium: (
+      <>
+        <path
+          fillRule="evenodd"
+          d="M14 2H2v12h12V2zM2 0a2 2 0 00-2 2v12a2 2 0 002 2h12a2 2 0 002-2V2a2 2 0 00-2-2H2z"
+        />
+        <path
+          fillRule="evenodd"
+          d="M8 10.545L5.293 11.97l.517-3.015L3.62 6.82l3.026-.44L8 3.636 9.354 6.38l3.027.44-2.19 2.135.516 3.015L8 10.545z"
+        />
+      </>
     ),
   },
 
