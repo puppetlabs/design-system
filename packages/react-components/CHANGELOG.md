@@ -1,5 +1,8 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.16.0...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.17.0...HEAD)
 
+# [5.17.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.16.0...@puppet/react-components@5.17.0) (2020-02-24)
+
+- [Icon] Add "download" and "star" icons to the Icon component (by [@nkanderson](https://github.com/nkanderson) in [#226](https://github.com/puppetlabs/design-system/pull/226))
 - [ConfirmationModal] Add `confirmButtonLoading` prop to ConfirmationModal (by [@VitaC123](https://github.com/VitaC123) in [#223](https://github.com/puppetlabs/design-system/pull/223))
 
 # [5.16.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.15.2...@puppet/react-components@5.16.0) (2020-02-24)
