@@ -268,7 +268,7 @@ describe('Selection Props', () => {
       columns={columns}
       data={data}
       selectable
-      onUpdateData={rowCheckMockfunc}
+      onRowChecked={rowCheckMockfunc}
     />,
   );
 
