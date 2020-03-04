@@ -427,10 +427,7 @@ const icons = {
           fillRule="evenodd"
           d="M16 15c0 .6-.4 1-1 1H1c-.6 0-1-.4-1-1V3c0-.6.4-1 1-1h3v2H2v10h12V4h-2V2h3c.6 0 1 .4 1 1v12z"
         />
-        <path
-          fillRule="evenodd"
-          d="M12 8l-4 4-4-4h3V0h2v8h3z"
-        />
+        <path fillRule="evenodd" d="M12 8l-4 4-4-4h3V0h2v8h3z" />
       </>
     ),
   },
