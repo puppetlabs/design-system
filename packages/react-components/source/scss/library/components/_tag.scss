@@ -15,9 +15,10 @@
   display: flex;
 
   .rc-tag-text {
+    @include puppet-type-button();
     color: $puppet-white;
     height: fit-content;
-    padding-left: 8px;
+    padding-left: 15px;
     padding-right: 4px;
   }
 }
