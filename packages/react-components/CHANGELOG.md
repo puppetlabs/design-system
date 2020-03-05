@@ -1,4 +1,8 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.17.0...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.18.0...HEAD)
+
+# [5.18.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.17.0...@puppet/react-components@5.18.0) (2020-03-05)
+
+- [Tag] Add Tag component (by [@Lukeaber](https://github.com/Lukeaber) in [#225](https://github.com/puppetlabs/design-system/pull/225))
 
 # [5.17.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.16.0...@puppet/react-components@5.17.0) (2020-03-02)
 
