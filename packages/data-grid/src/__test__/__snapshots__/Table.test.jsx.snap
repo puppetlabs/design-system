@@ -77,9 +77,12 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   emptyStateMessage="Prompt to action or solution"
   fixed={false}
   fixedColumn={false}
+  headerCheckState={false}
+  headerIndeterminateState={true}
   horizontalScroll={false}
+  onHeaderChecked={[Function]}
+  onRowChecked={[Function]}
   onSort={[Function]}
-  onUpdateData={[Function]}
   rowClassName={[Function]}
   selectable={false}
   sortedColumn={
@@ -120,6 +123,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             },
           ]
         }
+        headerIndeterminateState={true}
         onSelectAll={[Function]}
         onSort={[Function]}
         selectAllValue={false}
@@ -426,9 +430,12 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   emptyStateMessage="Prompt to action or solution"
   fixed={false}
   fixedColumn={false}
+  headerCheckState={false}
+  headerIndeterminateState={true}
   horizontalScroll={false}
+  onHeaderChecked={[Function]}
+  onRowChecked={[Function]}
   onSort={[Function]}
-  onUpdateData={[Function]}
   rowClassName={[Function]}
   selectable={false}
   sortedColumn={
@@ -469,9 +476,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
             },
           ]
         }
+        headerIndeterminateState={true}
         onSelectAll={[Function]}
         onSort={[Function]}
-        selectAllValue={true}
+        selectAllValue={false}
         selectable={false}
         sortedColumn={
           Object {

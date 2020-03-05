@@ -70,8 +70,14 @@ const propTypes = {
   emptyStateMessage: string,
   /** Boolean to render select checkbox column */
   selectable: bool,
-  /** Callback executed when table data updates through selection. */
-  onUpdateData: func,
+  /** Row checked action method, will get checked state and row data  */
+  onRowChecked: func,
+  /** Action between to the table header checkbox */
+  onHeaderChecked: func,
+  /** State of the table header checkbox */
+  headerCheckState: bool,
+  /** Variable passed to the header to say if a bash icon should be used */
+  headerIndeterminateState: bool,
 };
 
 const defaultProps = {
@@ -87,7 +93,10 @@ const defaultProps = {
   emptyStateMessage: 'Prompt to action or solution',
   rowClassName: () => {},
   selectable: false,
-  onUpdateData: () => {},
+  onRowChecked: () => {},
+  onHeaderChecked: () => {},
+  headerCheckState: false,
+  headerIndeterminateState: true,
 };
 
 const defaultColumnDefs = {
@@ -97,18 +106,6 @@ const defaultColumnDefs = {
 };
 
 class Table extends Component {
-  constructor(props) {
-    super(props);
-
-    const { data } = this.props;
-    let value = false;
-    if (data.every(x => x.selected)) {
-      value = true;
-    }
-
-    this.state = { selectAllValue: value };
-  }
-
   uniqueIDCheck = (rowKey, rowData, rowIndex) => {
     if (rowKey === undefined) {
       const newRowData = rowData;
@@ -145,34 +142,13 @@ class Table extends Component {
       emptyStateMessage,
       rowClassName,
       selectable,
-      onUpdateData,
+      onHeaderChecked,
+      headerCheckState,
+      onRowChecked,
       onSort,
+      headerIndeterminateState,
       ...rest
     } = this.props;
-
-    const { selectAllValue } = this.state;
-
-    const selectAll = value => {
-      const updatedData = data.map(x => {
-        return { ...x, selected: value };
-      });
-      onUpdateData(updatedData);
-      this.setState({ selectAllValue: value });
-    };
-
-    const onRowSelected = (index, selected) => {
-      const updatedData = data.map(x => x);
-      updatedData[index].selected = selected;
-
-      if (!selected && selectAllValue) {
-        this.setState({ selectAllValue: false });
-      }
-      if (selected && !selectAllValue && updatedData.every(x => x.selected)) {
-        this.setState({ selectAllValue: true });
-      }
-
-      onUpdateData(updatedData);
-    };
 
     const onColumnSort = (direction, dataKey) => {
       onSort(direction, dataKey);
@@ -198,8 +174,9 @@ class Table extends Component {
             selectable={selectable}
             sortedColumn={sortedColumn}
             onSort={onColumnSort}
-            onSelectAll={selectAll}
-            selectAllValue={selectAllValue}
+            onSelectAll={onHeaderChecked}
+            selectAllValue={headerCheckState}
+            headerIndeterminateState={headerIndeterminateState}
           />
           <tbody>
             {data.map((rowData, rowIndex) => {
@@ -226,7 +203,7 @@ class Table extends Component {
                     >
                       <Checkbox
                         className="dg-table-checkbox"
-                        onChange={value => onRowSelected(rowIndex, value)}
+                        onChange={checked => onRowChecked(checked, rowData)}
                         value={rowData.selected}
                         label=""
                         name=""

@@ -633,16 +633,76 @@ const columns = [
 class StatefulParent extends React.Component {
   constructor() {
     super();
-    this.state = { data };
-    this.onUpdateData = this.onUpdateData.bind(this);
+    this.state = {
+      data,
+      checkAll: false,
+      IndeterminateState: false,
+    };
+    this.onHeaderSelected = this.onHeaderSelected.bind(this);
+    this.onRowSelected = this.onRowSelected.bind(this);
   }
 
-  onUpdateData(updatedData) {
-    this.setState({ data: updatedData });
+  checkIfIndeterminateState(state) {
+    const { data, IndeterminateState, checkAll } = this.state;
+    let x = data.filter(e => e.selected === true);
+
+    if (x.length > 0 && IndeterminateState === false && checkAll === false) {
+      this.setState({ IndeterminateState: true });
+    } else if (
+      (x.length === 0 && IndeterminateState === true) ||
+      (x.length === 0 && checkAll === true)
+    ) {
+      this.setState({ IndeterminateState: false, checkAll: false });
+    }
+    if (x.length === data.length && checkAll === false) {
+      this.setState({ IndeterminateState: false, checkAll: true });
+    }
+  }
+
+  onHeaderSelected(checked) {
+    const { data: stateData, IndeterminateState } = this.state;
+
+    this.setState({ IndeterminateState: false, checkAll: checked });
+
+    for (let i = 0; i < stateData.length; i += 1) {
+      stateData[i].selected = checked;
+    }
+  }
+
+  onRowSelected(checked, row) {
+    const { data: stateData, checkAll } = this.state;
+
+    if (checkAll) {
+      this.setState({ checkAll: false });
+    }
+
+    // find the index of object from array that you want to update
+    const objIndex = stateData.findIndex(obj => obj.unique === row.unique);
+
+    // make new object of updated object.
+    const updatedObj = { ...stateData[objIndex], selected: checked };
+
+    // make final new array of objects by combining updated object.
+    const updatedData = [
+      ...stateData.slice(0, objIndex),
+      updatedObj,
+      ...stateData.slice(objIndex + 1),
+    ];
+
+    this.checkIfIndeterminateState(),
+      this.setState({
+        data: updatedData,
+      });
   }
 
   render() {
-    const { data: stateData } = this.state;
+    const {
+      data: stateData,
+      checkAll: headerCheckboxState,
+      IndeterminateState,
+    } = this.state;
+
+    this.checkIfIndeterminateState();
 
     return (
       <div>
@@ -650,7 +710,11 @@ class StatefulParent extends React.Component {
           data={stateData}
           columns={columns}
           selectable
-          onUpdateData={this.onUpdateData}
+          onRowChecked={this.onRowSelected}
+          onHeaderChecked={this.onHeaderSelected}
+          headerCheckState={headerCheckboxState}
+          headerIndeterminateState={IndeterminateState}
+          checkIfIndeterminateState={this.checkIfIndeterminateState}
         />
       </div>
     );
