@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import Button from '../button';
 import Heading from '../heading';
 
@@ -46,7 +45,7 @@ const SidePanel = ({
 
   return (
     open && (
-      <div className="rc-sidepanel">
+      <div className={`rc-sidepanel ${className}`}>
         <div className="rc-sidepanel-toolbar">
           <Heading
             as="h5"
@@ -57,7 +56,7 @@ const SidePanel = ({
           </Heading>
           <div className="rc-sidepanel-actions">{actions}</div>
         </div>
-        <div className={classNames('rc-sidepanel-content', contentClassName)}>
+        <div className={`rc-sidepanel-content ${contentClassName}`}>
           {children}
         </div>
       </div>

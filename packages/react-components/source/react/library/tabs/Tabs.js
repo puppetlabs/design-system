@@ -166,7 +166,6 @@ class Tabs extends React.Component {
       id: parentId,
       panePadding,
       style,
-      tabs,
       toolbar,
       type,
     } = this.props;
