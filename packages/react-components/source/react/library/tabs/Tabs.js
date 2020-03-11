@@ -29,10 +29,8 @@ const propTypes = {
   panePadding: PropTypes.bool,
   /** Optional additional inline style */
   style: PropTypes.shape({}),
-  /** Style as a toolbar with adjacent tabs */
-  toolbar: PropTypes.bool,
-  /** Controls background color of active tab */
-  type: PropTypes.oneOf(['primary', 'secondary']),
+  /** Controls background color of active tab or styles as a toolbar */
+  type: PropTypes.oneOf(['primary', 'secondary', 'toolbar']),
 };
 
 const defaultProps = {
@@ -43,7 +41,6 @@ const defaultProps = {
   onChange() {},
   panePadding: true,
   style: {},
-  toolbar: false,
   type: 'primary',
 };
 
@@ -166,7 +163,6 @@ class Tabs extends React.Component {
       id: parentId,
       panePadding,
       style,
-      toolbar,
       type,
     } = this.props;
 
@@ -179,7 +175,6 @@ class Tabs extends React.Component {
       <div
         className={classNames('rc-tabs', `rc-tabs-${type}`, className, {
           'rc-tabs-pane-padding': panePadding,
-          'rc-tabs-toolbar': toolbar,
         })}
         style={style}
       >

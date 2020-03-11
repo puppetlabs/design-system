@@ -54,8 +54,6 @@ import Text from '../text';
 </Tabs>;
 ```
 
-## Variants
-
 ### Toolbar
 
 ```jsx
@@ -67,7 +65,7 @@ const [open, setOpen] = React.useState(false);
 
 <div style={{ display: 'flex' }}>
   <div style={{ flexGrow: 1 }}>
-    <Tabs bordered toolbar>
+    <Tabs type="toolbar" bordered>
       <Tabs.Tab icon="home" title="Tab 1">
         <Text>This is the first toolbar tab.</Text>
       </Tabs.Tab>
@@ -85,7 +83,7 @@ const [open, setOpen] = React.useState(false);
     </Tabs>
   </div>
   <div>
-    <SidePanel bordered title="SidePanel for the toolbar" open={open} onClose={() => setOpen(false)}>
+    <SidePanel type="toolbar" bordered title="SidePanel for the toolbar" open={open} onClose={() => setOpen(false)}>
       <Text>I am a SidePanel</Text>
     </SidePanel>
   </div>

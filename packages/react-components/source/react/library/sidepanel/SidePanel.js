@@ -4,13 +4,13 @@ import Button from '../button';
 import Heading from '../heading';
 
 const propTypes = {
+  className: PropTypes.string,
   children: PropTypes.node,
-  initialOpen: PropTypes.bool,
+  contentClassName: PropTypes.string,
+  onClose: PropTypes.func,
   open: PropTypes.bool,
   title: PropTypes.string,
-  onClose: PropTypes.func,
-  className: PropTypes.string,
-  contentClassName: PropTypes.string,
+  type: PropTypes.oneOf(['toolbar']).isRequired,
 };
 
 const defaultProps = {
