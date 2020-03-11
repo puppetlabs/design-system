@@ -1,0 +1,16 @@
+.columns {
+  display: flex;
+  flex-direction: row;
+}
+
+.column {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  min-width: 0;
+
+  &.fixed {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}
