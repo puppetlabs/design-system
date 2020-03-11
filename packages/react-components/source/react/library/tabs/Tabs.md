@@ -53,6 +53,26 @@ import Text from '../text';
 </Tabs>;
 ```
 
+## Variants
+
+### Toolbar
+
+```jsx
+import Text from '../text';
+
+<Tabs bordered toolbar>
+  <Tabs.Tab icon="home" title="Tab 1">
+    <Text>This is the first toolbar tab.</Text>
+  </Tabs.Tab>
+  <Tabs.Tab icon="rocket" title="Tab 2">
+    <Text>This is the second toolbar tab.</Text>
+  </Tabs.Tab>
+  <Tabs.Tab icon="spaceship" title="Tab 3">
+    <Text>This is the third toolbar tab.</Text>
+  </Tabs.Tab>
+</Tabs>
+```
+
 ## Controlled Mode
 
 The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected. In this mode we recommend supplying a unique `id` to each Tab element so that the active tab is easier to track. If no id is provided the Tabs component will use the positional index.
@@ -93,4 +113,26 @@ class MyPageWithTabs extends React.Component {
 }
 
 <MyPageWithTabs />;
+```
+
+# Tab
+
+## Types
+
+As seen above, the `Tabs.Tab` component is used as children of `Tabs` and have props of their own, `id`, `title`, `active`, and `type`. A `type` of "primary" or "secondary" may be used on individual tabs to change the background color of the tab panel, which allows you to choose the type that works best for each tab's content.
+
+```jsx
+import Text from '../text';
+
+<Tabs>
+  <Tabs.Tab title="Primary tab">
+    <Text>White background on first tab when type is primary</Text>
+  </Tabs.Tab>
+  <Tabs.Tab title="Secondary tab" type="secondary">
+    <Text>Grey background on first tab when type is secondary</Text>
+  </Tabs.Tab>
+  <Tabs.Tab title="Primary tab" type="primary">
+    <Text>White background on first tab when type is primary</Text>
+  </Tabs.Tab>
+</Tabs>;
 ```

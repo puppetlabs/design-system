@@ -9,32 +9,41 @@ import Tab from './Tab';
 import Panel from './Panel';
 
 const propTypes = {
+  /** Only applies to toolbar tabs and adds a surrounding border */
+  bordered: PropTypes.bool,
+  /** Nested Tab.Tabs components */
+  children: PropTypes.node,
+  /** Optional additional className */
+  className: PropTypes.string,
   /**
    * This prop is automatically passed from the withID HOC
    * @ignore
    */
   id: PropTypes.string.isRequired,
-  /** Currently controls bg color of active tab & panel */
-  type: PropTypes.oneOf(['primary', 'secondary']),
-  /** Nested Tab.Tabs components */
-  children: PropTypes.node,
   /** Optionally set active Tab with Tab ID */
   initialTab: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** Optional onChange event handler. If onChange exists, Tabs are in controlled mode */
   onChange: PropTypes.func,
-  /** Optional additional className */
-  className: PropTypes.string,
+  /** Add padding to tab pane */
+  panePadding: PropTypes.bool,
   /** Optional additional inline style */
   style: PropTypes.shape({}),
+  /** Style as a toolbar with adjacent tabs */
+  toolbar: PropTypes.bool,
+  /** Controls background color of active tab */
+  type: PropTypes.oneOf(['primary', 'secondary']),
 };
 
 const defaultProps = {
-  type: 'primary',
+  bordered: false,
   children: null,
+  className: '',
   initialTab: null,
   onChange() {},
-  className: '',
+  panePadding: true,
   style: {},
+  toolbar: false,
+  type: 'primary',
 };
 
 const collectTabsProps = children =>
@@ -151,11 +160,15 @@ class Tabs extends React.Component {
   render() {
     const { activeTab } = this.state;
     const {
+      bordered,
       children: userProvidedChildren,
       className,
-      style,
-      type,
       id: parentId,
+      panePadding,
+      style,
+      tabs,
+      toolbar,
+      type,
     } = this.props;
 
     const tabsProps = collectTabsProps(userProvidedChildren);
@@ -165,7 +178,11 @@ class Tabs extends React.Component {
 
     return (
       <div
-        className={classNames('rc-tabs', `rc-tabs-${type}`, className)}
+        className={classNames('rc-tabs', `rc-tabs-${type}`, className, {
+          'rc-tabs-bordered': bordered,
+          'rc-tabs-pane-padding': panePadding,
+          'rc-tabs-toolbar': toolbar,
+        })}
         style={style}
       >
         <div className="rc-tabs-list" role="tablist">
