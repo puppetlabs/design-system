@@ -8,6 +8,8 @@
 }
 
 .rc-tabs-list {
+  align-items: flex-end;
+  display: flex;
   overflow: visible;
 }
 
@@ -83,8 +85,9 @@
 
 .rc-tabs-toolbar > .rc-tabs-list {
   background-color: $puppet-n50;
-  overflow: auto;
-  // z-index: 2;
+  border-bottom: $puppet-common-border;
+  border-top: $puppet-common-border;
+  z-index: 2;
 }
 
 .rc-tabs-toolbar .rc-tabs-button {
@@ -131,24 +134,20 @@
   border-top: 0;
 }
 
-.rc-tabs-bordered .rc-tabs-list {
-  border: $puppet-common-border;
-}
-
+// Tabs.Actions
 .rc-tabs-actions {
+  display: flex;
   margin-left: auto;
-}
 
-.rc-tabs-toolbar .rc-button {
-  background-color: $puppet-n50;
-  border-radius: 0;
-  border-width: 0 0 0 1px;
-
-  &:hover {
-    border-width: 0 0 0 1px;
+  .rc-button-inner-focus {
+    border-left: $puppet-common-border;
   }
 
-  + .rc-button {
+  .rc-button-inner-focus:focus {
+    padding-left: 15px;
+  }
+
+  .rc-button-inner-focus + .rc-button-inner-focus {
     margin-left: 0;
   }
 }

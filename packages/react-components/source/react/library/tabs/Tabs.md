@@ -35,6 +35,7 @@ import Text from '../text';
 ### Secondary
 
 ```jsx
+import Button from '../button';
 import Text from '../text';
 
 <Tabs type="secondary" initialTab={2}>
@@ -58,19 +59,37 @@ import Text from '../text';
 ### Toolbar
 
 ```jsx
+import Button from '../button';
+import SidePanel from '../sidepanel';
 import Text from '../text';
 
-<Tabs bordered toolbar>
-  <Tabs.Tab icon="home" title="Tab 1">
-    <Text>This is the first toolbar tab.</Text>
-  </Tabs.Tab>
-  <Tabs.Tab icon="rocket" title="Tab 2">
-    <Text>This is the second toolbar tab.</Text>
-  </Tabs.Tab>
-  <Tabs.Tab icon="spaceship" title="Tab 3">
-    <Text>This is the third toolbar tab.</Text>
-  </Tabs.Tab>
-</Tabs>
+const [open, setOpen] = React.useState(false);
+
+<div style={{ display: 'flex' }}>
+  <div style={{ flexGrow: 1 }}>
+    <Tabs bordered toolbar>
+      <Tabs.Tab icon="home" title="Tab 1">
+        <Text>This is the first toolbar tab.</Text>
+      </Tabs.Tab>
+      <Tabs.Tab icon="rocket" title="Tab 2">
+        <Text>This is the second toolbar tab.</Text>
+      </Tabs.Tab>
+      <Tabs.Tab icon="spaceship" title="Tab 3">
+        <Text>This is the third toolbar tab.</Text>
+      </Tabs.Tab>
+      <Tabs.Actions>
+        <Button innerFocus type="transparent" onClick={() => setOpen(true)}>
+          Open sidebar
+        </Button>
+      </Tabs.Actions>
+    </Tabs>
+  </div>
+  <div>
+    <SidePanel bordered title="SidePanel for the toolbar" open={open} onClose={() => setOpen(false)}>
+      <Text>I am a SidePanel</Text>
+    </SidePanel>
+  </div>
+</div>;
 ```
 
 ## Controlled Mode

@@ -5,12 +5,13 @@ import { LEFT_KEY_CODE, RIGHT_KEY_CODE, UP_KEY_CODE } from '../../constants';
 import withId from '../../helpers/withId';
 import { componentHasType, focus, isKeyModified } from '../../helpers/statics';
 
+import Actions from './Actions';
 import Tab from './Tab';
 import Panel from './Panel';
 
 const propTypes = {
-  /** Only applies to toolbar tabs and adds a surrounding border */
-  bordered: PropTypes.bool,
+  /** An area for action buttons aligned right */
+  actions: PropTypes.node,
   /** Nested Tab.Tabs components */
   children: PropTypes.node,
   /** Optional additional className */
@@ -35,7 +36,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  bordered: false,
+  actions: null,
   children: null,
   className: '',
   initialTab: null,
@@ -160,7 +161,6 @@ class Tabs extends React.Component {
   render() {
     const { activeTab } = this.state;
     const {
-      bordered,
       children: userProvidedChildren,
       className,
       id: parentId,
@@ -179,7 +179,6 @@ class Tabs extends React.Component {
     return (
       <div
         className={classNames('rc-tabs', `rc-tabs-${type}`, className, {
-          'rc-tabs-bordered': bordered,
           'rc-tabs-pane-padding': panePadding,
           'rc-tabs-toolbar': toolbar,
         })}
@@ -223,6 +222,7 @@ class Tabs extends React.Component {
 Tabs.propTypes = propTypes;
 Tabs.defaultProps = defaultProps;
 
+Tabs.Actions = Actions;
 Tabs.Tab = Tab;
 
 export { Tabs as UnwrappedTabs };
