@@ -1,0 +1,35 @@
+.rc-sidepanel {
+  background: $puppet-white;
+  border-left: $puppet-common-border;
+  display: flex;
+  flex: none;
+  flex-direction: column;
+  width: 326px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
+
+.rc-sidepanel-actions {
+  border-left: $puppet-common-border;
+}
+
+.rc-sidepanel-toolbar {
+  background-color: $puppet-n50;
+  border-bottom: $puppet-common-border;
+  border-top: $puppet-common-border;
+  display: flex;
+  justify-content: space-between;
+}
+
+.rc-sidepanel-heading {
+  color: $puppet-n800;
+  font-family: $puppet-type-font-family-secondary;
+  padding: 6px $puppet-common-spacing-base * 4;
+}
+
+.rc-sidepanel-content {
+  overflow: auto;
+  padding: $puppet-common-spacing-base * 4;
+}

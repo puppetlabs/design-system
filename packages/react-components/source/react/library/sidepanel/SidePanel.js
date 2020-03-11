@@ -1,0 +1,71 @@
+import React, { useState } from 'react';
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
+import Button from '../button';
+import Heading from '../heading';
+
+const propTypes = {
+  children: PropTypes.node,
+  initialOpen: PropTypes.bool,
+  open: PropTypes.bool,
+  title: PropTypes.string,
+  onClose: PropTypes.func,
+  className: PropTypes.string,
+  contentClassName: PropTypes.string,
+};
+
+const defaultProps = {
+  children: null,
+  open: true,
+  title: '',
+  onClose() {},
+  className: '',
+  contentClassName: '',
+};
+
+/**
+ * SidePanel may be used inside the rightmost Columns.Column.
+ */
+const SidePanel = ({
+  children,
+  open,
+  title,
+  onClose,
+  className,
+  contentClassName,
+}) => {
+  const actions = (
+    <Button
+      icon="close"
+      type="transparent"
+      innerFocus
+      aria-label="Close side panel"
+      onClick={onClose}
+    />
+  );
+
+  return (
+    open && (
+      <div className="rc-sidepanel">
+        <div className="rc-sidepanel-toolbar">
+          <Heading
+            as="h5"
+            className="rc-sidepanel-heading"
+            id="rc-sidepanel-header"
+          >
+            {title}
+          </Heading>
+          <div className="rc-sidepanel-actions">{actions}</div>
+        </div>
+        <div className={classNames('rc-sidepanel-content', contentClassName)}>
+          {children}
+        </div>
+      </div>
+    )
+  );
+};
+
+SidePanel.propTypes = propTypes;
+SidePanel.defaultProps = defaultProps;
+
+export default SidePanel;

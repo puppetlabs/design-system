@@ -103,3 +103,7 @@ Add the `minimized` boolean prop to Sidebar to render a narrow version with icon
   </Sidebar>
 </div>
 ```
+
+## Related
+
+- [SidePanel](#/React%20Components/SidePanel)
