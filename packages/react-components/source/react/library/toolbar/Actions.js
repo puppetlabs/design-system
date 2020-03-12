@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 const propTypes = {
-  align: PropTypes.oneOf('left', 'right'),
+  align: PropTypes.oneOf(['left', 'right']),
   children: PropTypes.node,
   className: PropTypes.string,
 };

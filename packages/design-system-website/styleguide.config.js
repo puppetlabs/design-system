@@ -144,6 +144,7 @@ module.exports = {
         '**/table/ColumnSelect.js',
         '**/table/ColumnHeader.js',
         '**/table/ColumnCheckbox.js',
+        '**/toolbar/Actions.js',
         '**/logo/logos.js',
         '**/breadcrumb/BreadcrumbSection.js',
         '**/tooltips/Tooltip.js',

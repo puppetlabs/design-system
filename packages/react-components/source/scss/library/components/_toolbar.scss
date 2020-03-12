@@ -1,9 +1,14 @@
+/* stylelint-disable selector-max-compound-selectors */
+
 .rc-toolbar {
+  background-color: $puppet-n50;
+  border-bottom: $puppet-common-border;
+  border-top: $puppet-common-border;
   display: flex;
 }
 
 .rc-toolbar > .rc-tabs {
-  margin: 0;
+  margin: -1px 0;
 }
 
 .rc-toolbar > .rc-tabs > .rc-tabs-list {
@@ -88,3 +93,5 @@
     margin-left: 0;
   }
 }
+
+/* stylelint-enable selector-max-compound-selectors */

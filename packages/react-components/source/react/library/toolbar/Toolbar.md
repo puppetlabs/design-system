@@ -1,6 +1,6 @@
 ## Overview
 
-Toolbar is a container that styles tabs and buttons to be unified and compact.
+Toolbar acts as a container for tabs and buttons that is unified and compact.
 
 ## Basic use
 
@@ -18,7 +18,7 @@ import Button from '../button';
 </Toolbar>;
 ```
 
-## Tabs
+## Toolbar with Tabs
 
 ```jsx
 import Button from '../button';
