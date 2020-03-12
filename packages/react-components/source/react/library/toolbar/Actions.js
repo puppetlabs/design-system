@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const propTypes = {
   /** Contents are typically buttons */
   children: PropTypes.node,
-  /** Class to add to .rc-tabs-actions */
+  /** Class to add to .rc-toolbar-actions */
   className: PropTypes.string,
 };
 
@@ -14,7 +14,7 @@ const defaultProps = {
 };
 
 const Actions = ({ children, className }) => (
-  <div className={`rc-tabs-actions ${className}`}>{children}</div>
+  <div className={`rc-toolbar-actions ${className}`}>{children}</div>
 );
 
 Actions.propTypes = propTypes;

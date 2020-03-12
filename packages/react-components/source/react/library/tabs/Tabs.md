@@ -54,42 +54,6 @@ import Text from '../text';
 </Tabs>;
 ```
 
-### Toolbar
-
-```jsx
-import Button from '../button';
-import SidePanel from '../sidepanel';
-import Text from '../text';
-
-const [open, setOpen] = React.useState(false);
-
-<div style={{ display: 'flex' }}>
-  <div style={{ flexGrow: 1 }}>
-    <Tabs type="toolbar" bordered>
-      <Tabs.Tab icon="home" title="Tab 1">
-        <Text>This is the first toolbar tab.</Text>
-      </Tabs.Tab>
-      <Tabs.Tab icon="rocket" title="Tab 2">
-        <Text>This is the second toolbar tab.</Text>
-      </Tabs.Tab>
-      <Tabs.Tab icon="spaceship" title="Tab 3">
-        <Text>This is the third toolbar tab.</Text>
-      </Tabs.Tab>
-      <Tabs.Actions>
-        <Button innerFocus type="transparent" onClick={() => setOpen(true)}>
-          Open sidebar
-        </Button>
-      </Tabs.Actions>
-    </Tabs>
-  </div>
-  <div>
-    <SidePanel type="toolbar" bordered title="SidePanel for the toolbar" open={open} onClose={() => setOpen(false)}>
-      <Text>I am a SidePanel</Text>
-    </SidePanel>
-  </div>
-</div>;
-```
-
 ## Controlled Mode
 
 The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected. In this mode we recommend supplying a unique `id` to each Tab element so that the active tab is easier to track. If no id is provided the Tabs component will use the positional index.

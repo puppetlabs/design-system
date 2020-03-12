@@ -5,13 +5,10 @@ import { LEFT_KEY_CODE, RIGHT_KEY_CODE, UP_KEY_CODE } from '../../constants';
 import withId from '../../helpers/withId';
 import { componentHasType, focus, isKeyModified } from '../../helpers/statics';
 
-import Actions from './Actions';
 import Tab from './Tab';
 import Panel from './Panel';
 
 const propTypes = {
-  /** An area for action buttons aligned right */
-  actions: PropTypes.node,
   /** Nested Tab.Tabs components */
   children: PropTypes.node,
   /** Optional additional className */
@@ -29,12 +26,11 @@ const propTypes = {
   panePadding: PropTypes.bool,
   /** Optional additional inline style */
   style: PropTypes.shape({}),
-  /** Controls background color of active tab or styles as a toolbar */
-  type: PropTypes.oneOf(['primary', 'secondary', 'toolbar']),
+  /** Controls background color of active tab */
+  type: PropTypes.oneOf(['primary', 'secondary']),
 };
 
 const defaultProps = {
-  actions: null,
   children: null,
   className: '',
   initialTab: null,
@@ -216,7 +212,6 @@ class Tabs extends React.Component {
 Tabs.propTypes = propTypes;
 Tabs.defaultProps = defaultProps;
 
-Tabs.Actions = Actions;
 Tabs.Tab = Tab;
 
 export { Tabs as UnwrappedTabs };
