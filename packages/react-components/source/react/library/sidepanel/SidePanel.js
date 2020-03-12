@@ -6,6 +6,7 @@ import Heading from '../heading';
 const propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
+  closeButtonProps: PropTypes.shape({}),
   contentClassName: PropTypes.string,
   onClose: PropTypes.func,
   open: PropTypes.bool,
@@ -31,15 +32,17 @@ const SidePanel = ({
   title,
   onClose,
   className,
+  closeButtonProps,
   contentClassName,
 }) => {
   const actions = (
     <Button
-      icon="close"
+      icon="x"
       type="transparent"
       innerFocus
       aria-label="Close side panel"
       onClick={onClose}
+      {...closeButtonProps}
     />
   );
 
