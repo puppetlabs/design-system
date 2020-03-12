@@ -1,3 +1,7 @@
+.rc-toolbar {
+  display: flex;
+}
+
 .rc-toolbar > .rc-tabs {
   margin: 0;
 }
@@ -53,17 +57,31 @@
   border-top: 0;
 }
 
-// Tabs.Actions
 .rc-toolbar-actions {
   display: flex;
-  margin-left: auto;
 
-  .rc-button-inner-focus {
-    border-left: $puppet-common-border;
+  &.rc-toolbar-actions-left {
+    margin: 0 auto 0 0;
+
+    .rc-button-inner-focus {
+      border-right: $puppet-common-border;
+    }
+
+    .rc-button-inner-focus:focus {
+      padding-right: 15px;
+    }
   }
 
-  .rc-button-inner-focus:focus {
-    padding-left: 15px;
+  &.rc-toolbar-actions-right {
+    margin: 0 0 0 auto;
+
+    .rc-button-inner-focus {
+      border-left: $puppet-common-border;
+    }
+
+    .rc-button-inner-focus:focus {
+      padding-left: 15px;
+    }
   }
 
   .rc-button-inner-focus + .rc-button-inner-focus {

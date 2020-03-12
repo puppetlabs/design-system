@@ -6,6 +6,22 @@ Toolbar is a container that styles tabs and buttons to be unified and compact.
 
 ```jsx
 import Button from '../button';
+
+<Toolbar>
+  <Toolbar.Actions>
+    <Button innerFocus type="transparent">
+      Toolbar button
+    </Button>
+    <Button innerFocus type="transparent" icon="download" />
+    <Button innerFocus type="transparent" icon="gear" />
+  </Toolbar.Actions>
+</Toolbar>;
+```
+
+## Tabs
+
+```jsx
+import Button from '../button';
 import SidePanel from '../sidepanel';
 import Tabs from '../tabs';
 import Text from '../text';
@@ -25,7 +41,7 @@ const [open, setOpen] = React.useState(false);
         <Tabs.Tab icon="spaceship" title="Tab 3">
           <Text>This is the third toolbar tab.</Text>
         </Tabs.Tab>
-        <Toolbar.Actions>
+        <Toolbar.Actions align="right">
           <Button innerFocus type="transparent" onClick={() => setOpen(true)}>
             Open sidebar
           </Button>

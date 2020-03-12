@@ -1,20 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 
 const propTypes = {
-  /** Contents are typically buttons */
+  align: PropTypes.oneOf('left', 'right'),
   children: PropTypes.node,
-  /** Class to add to .rc-toolbar-actions */
   className: PropTypes.string,
 };
 
 const defaultProps = {
+  align: 'left',
   children: null,
   className: '',
 };
 
-const Actions = ({ children, className }) => (
-  <div className={`rc-toolbar-actions ${className}`}>{children}</div>
+const Actions = ({ align, children, className }) => (
+  <div
+    className={classNames(
+      'rc-toolbar-actions',
+      `rc-toolbar-actions-${align}`,
+      className,
+    )}
+  >
+    {children}
+  </div>
 );
 
 Actions.propTypes = propTypes;
