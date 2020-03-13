@@ -1,5 +1,12 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.18.0...HEAD)
 
+# [5.19.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.18.0...@puppet/react-components@5.19.0) (2020-03-13)
+
+- [Toolbar] Add Toolbar component (by [@vine77](https://github.com/vine77) in [#229](https://github.com/puppetlabs/design-system/pull/229))
+- [SidePanel] Add SidePanel component (by [@vine77](https://github.com/vine77) in [#229](https://github.com/puppetlabs/design-system/pull/229))
+- [Columns] Add Columns component (by [@vine77](https://github.com/vine77) in [#229](https://github.com/puppetlabs/design-system/pull/229))
+- [Icon] Add "error" icon (by [@jilliankeenan](https://github.com/jilliankeenan) in [#228](https://github.com/puppetlabs/design-system/pull/228))
+
 # [5.18.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.17.0...@puppet/react-components@5.18.0) (2020-03-05)
 
 - [Tag] Add Tag component (by [@Lukeaber](https://github.com/Lukeaber) in [#225](https://github.com/puppetlabs/design-system/pull/225))
