@@ -14,7 +14,7 @@ import Text from '../text';
     type="toolbar"
     closeButtonProps={{ onClick: () => console.log('Clicked close button') }}
   >
-    Hello world!
+    <Text>Hello world!</Text>
   </SidePanel>
 </div>
 ```
