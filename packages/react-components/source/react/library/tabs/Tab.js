@@ -3,42 +3,46 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
 import Button from '../button';
+import Icon from '../icon';
 
 import getTabId from './getTabId';
 import getPanelId from './getPanelId';
 
 const propTypes = {
-  /** html element to render tab button as */
-  as: PropTypes.elementType,
-  /** Currently controls bg color of active tab & panel */
-  type: PropTypes.oneOf(['primary', 'secondary']),
-  /** Visible tab label  */
-  title: PropTypes.node,
-  /** For ease of reference in controlled-mode, a custom unique id can be provided. By default the tab index will be used  */
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  /** Id of the parent tabs element  */
-  parentId: PropTypes.string,
-  /** Internally managed active state  */
+  /** Internally managed active state */
   active: PropTypes.bool,
+  /** HTML element to render tab button as */
+  as: PropTypes.elementType,
+  /** The name of an icon to render before title */
+  icon: PropTypes.string,
+  /** For ease of reference in controlled-mode, a custom unique id can be provided. By default the tab index will be used */
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   /** Internally managed onClick for Tab button. Callback to parent */
   onKeyDown: PropTypes.func,
   /** Internally managed onClick for Tab button. Callback to parent */
   onClick: PropTypes.func,
+  /** ID of the parent tabs element */
+  parentId: PropTypes.string,
+  /** Visible tab label */
+  title: PropTypes.node,
+  /** Controls the background color of active tab and panel */
+  type: PropTypes.oneOf(['primary', 'secondary']),
 };
 
 const defaultProps = {
+  active: false,
   as: 'button',
-  type: 'primary',
-  title: '',
+  icon: null,
   id: null,
   parentId: null,
-  active: false,
   onKeyDown() {},
   onClick() {},
+  title: '',
+  type: 'primary',
 };
 
 const Tab = forwardRef(
-  ({ as, type, title, active, onClick, id, parentId, ...rest }, ref) => (
+  ({ active, as, icon, id, onClick, parentId, title, type, ...rest }, ref) => (
     <Button
       id={getTabId(parentId, id)}
       as={as}
@@ -55,6 +59,7 @@ const Tab = forwardRef(
       ref={ref}
       {...rest}
     >
+      {icon && <Icon className="rc-tabs-button-icon" type={icon} />}
       {title}
     </Button>
   ),

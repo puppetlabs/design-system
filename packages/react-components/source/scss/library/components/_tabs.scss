@@ -8,6 +8,8 @@
 }
 
 .rc-tabs-list {
+  align-items: flex-end;
+  display: flex;
   overflow: visible;
 }
 
@@ -50,8 +52,12 @@
   border-top: $puppet-common-border;
   flex: 1;
   min-height: 0;
-  padding: $puppet-common-spacing-base * 4 $puppet-common-spacing-base 0 $puppet-common-spacing-base;
   z-index: 1;
+}
+
+.rc-tabs-pane-padding .rc-tabs-panel {
+  padding: $puppet-common-spacing-base * 4 $puppet-common-spacing-base 0
+    $puppet-common-spacing-base;
 }
 
 // Primary coloring

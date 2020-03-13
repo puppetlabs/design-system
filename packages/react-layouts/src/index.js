@@ -2,6 +2,7 @@ import 'core-js'; // TODO: Potentially remove polyfills from package, after tria
 import 'regenerator-runtime/runtime';
 
 import AuthLayout from './auth/AuthLayout';
+import Columns from './Columns';
 import Confirmation from './auth/Confirmation';
 import ForgotPassword from './auth/ForgotPassword';
 import ForgotPasswordSent from './auth/ForgotPasswordSent';
@@ -11,6 +12,7 @@ import ResetPasswordSuccess from './auth/ResetPasswordSuccess';
 
 export {
   AuthLayout,
+  Columns,
   Confirmation,
   ForgotPassword,
   ForgotPasswordSent,
