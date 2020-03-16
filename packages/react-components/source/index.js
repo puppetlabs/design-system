@@ -24,11 +24,13 @@ import Modal from './react/library/modal';
 import RadioButton from './react/library/radiobutton';
 import Select from './react/library/select';
 import Sidebar from './react/library/sidebar';
+import SidePanel from './react/library/sidepanel';
 import Switch from './react/library/switch';
 import Table from './react/library/table';
 import Tabs from './react/library/tabs';
 import Tag from './react/library/tag';
 import Text from './react/library/text';
+import Toolbar from './react/library/toolbar';
 import TooltipHoverArea from './react/library/tooltips/TooltipHoverArea';
 
 export {
@@ -55,10 +57,12 @@ export {
   RadioButton,
   Select,
   Sidebar,
+  SidePanel,
   Switch,
   Table,
   Tabs,
   Tag,
   Text,
+  Toolbar,
   TooltipHoverArea,
 };
