@@ -1,5 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.18.0...HEAD)
 
+- [Docs] Add instructions for setting up fonts in different environments (by [sprokusk](https://github.com/sprokusk) in [#233](https://github.com/puppetlabs/design-system/pull/233))
+
 # [5.19.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.18.0...@puppet/react-components@5.19.0) (2020-03-13)
 
 - [Toolbar] Add Toolbar component (by [@vine77](https://github.com/vine77) in [#229](https://github.com/puppetlabs/design-system/pull/229))
