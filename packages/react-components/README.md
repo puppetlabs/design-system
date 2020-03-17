@@ -76,6 +76,25 @@ Can't resolve './fonts/OpenSans-SemiboldItalic.woff2' in '/Users/me/Documents/Pu
 
 Likewise, SASS/SCSS compilation errors will arise if `css-loader` and `sass-loader` are not declared.
 
+### An alternative to `resolve-url-loader` when using with webpack
+
+Import react-components' `ui.scss` after defining the path to your local `sass-variables/fonts` file.
+
+`pds_styles.scss`
+```
+// Allow webpack to resolve font URLs relative to this entrypoint
+$puppet-common-font-path: './node_modules/@puppet/sass-variables/fonts';
+
+@import '~@puppet/react-components/source/scss/library/ui';
+```
+`pages/index.js`
+
+```
+import '../pds_styles.scss'
+
+...
+```
+
 ### Using With Gatsby
 
 In addition to needing `resolve-url-loader`, a Gatsby app will need `gatsby-plugin-sass` in order to support the SASS/SCSS stylesheets in the design system. First [install gatsby-plugin-sass](https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-plugin-sass/README.md), then [configure `useResolveUrlLoader`](https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-plugin-sass/README.md#relative-paths--url). Given this configuration, a Gatsby app will not need `css-loader` or `sass-loader`.
