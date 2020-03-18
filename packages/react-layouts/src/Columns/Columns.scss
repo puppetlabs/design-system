@@ -1,13 +1,17 @@
-.columns {
+.rc-columns {
   display: flex;
   flex-direction: row;
 }
 
-.column {
+.rc-column {
   flex-grow: 1;
   flex-shrink: 1;
   flex-basis: auto;
   min-width: 0;
+
+  &:empty {
+    display: none;
+  }
 
   &.fixed {
     flex-grow: 0;
