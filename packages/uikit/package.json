@@ -44,6 +44,5 @@
     "prettier": "^1.19.1",
     "sinon": "^7.5.0",
     "sinon-chai": "^3.5.0"
-  },
-  "gitHead": "4a6c41ff75aabb2ec705588e6ab757fc69ac9f97"
+  }
 }
