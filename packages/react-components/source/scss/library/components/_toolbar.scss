@@ -3,19 +3,30 @@
 .rc-toolbar {
   background-color: $puppet-n50;
   border-bottom: $puppet-common-border;
-  border-top: $puppet-common-border;
   display: flex;
 }
 
+.rc-toolbar-border {
+  border-top: $puppet-common-border;
+}
+
 .rc-toolbar > .rc-tabs {
-  margin: -1px 0;
+  margin-bottom: -1px;
+  margin-top: 0;
+}
+
+.rc-toolbar-border > .rc-tabs {
+  margin-top: -1px;
 }
 
 .rc-toolbar > .rc-tabs > .rc-tabs-list {
   background-color: $puppet-n50;
   border-bottom: $puppet-common-border;
-  border-top: $puppet-common-border;
   z-index: 2;
+}
+
+.rc-toolbar-border > .rc-tabs > .rc-tabs-list {
+  border-top: $puppet-common-border;
 }
 
 .rc-toolbar > .rc-tabs > .rc-tabs-list > .rc-tabs-button {
@@ -60,6 +71,7 @@
 
 .rc-toolbar > .rc-tabs > .rc-tabs-panel {
   border-top: 0;
+  padding: 0;
 }
 
 .rc-toolbar-actions {

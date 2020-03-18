@@ -7,7 +7,7 @@ Toolbar acts as a container for tabs and buttons that is unified and compact.
 ```jsx
 import Button from '../button';
 
-<Toolbar>
+<Toolbar border>
   <Toolbar.Actions>
     <Button innerFocus type="transparent">
       Toolbar button
@@ -30,7 +30,7 @@ const [open, setOpen] = React.useState(false);
 
 <div style={{ display: 'flex' }}>
   <div style={{ flexGrow: 1 }}>
-    <Toolbar>
+    <Toolbar border>
       <Tabs>
         <Tabs.Tab icon="home" title="Tab 1">
           <Text>This is the first toolbar tab.</Text>
@@ -52,7 +52,7 @@ const [open, setOpen] = React.useState(false);
   <div>
     <SidePanel
       type="toolbar"
-      bordered
+      border
       title="SidePanel for the toolbar"
       open={open}
       onClose={() => setOpen(false)}

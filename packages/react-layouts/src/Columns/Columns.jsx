@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-// import './Columns.scss';
+import './Columns.scss';
 
 const columnsPropTypes = {
   children: PropTypes.node,
@@ -13,7 +13,7 @@ const columnsDefaultProps = {
 };
 
 const Columns = ({ children, className }) => (
-  <div className={classNames('columns', className)}>{children}</div>
+  <div className={classNames('rc-columns', className)}>{children}</div>
 );
 
 Columns.propTypes = columnsPropTypes;
@@ -31,7 +31,9 @@ const columnDefaultProps = {
 };
 
 const Column = ({ children, className, fixed }) => (
-  <div className={classNames('column', className, { fixed })}>{children}</div>
+  <div className={classNames('rc-column', className, { fixed })}>
+    {children}
+  </div>
 );
 
 Column.propTypes = columnPropTypes;

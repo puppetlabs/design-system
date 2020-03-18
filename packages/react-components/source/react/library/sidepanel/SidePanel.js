@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Button from '../button';
 import Heading from '../heading';
 
 const propTypes = {
+  border: PropTypes.bool,
   className: PropTypes.string,
   children: PropTypes.node,
   closeButtonProps: PropTypes.shape({}),
@@ -15,7 +17,9 @@ const propTypes = {
 };
 
 const defaultProps = {
+  border: false,
   children: null,
+  closeButtonProps: {},
   open: true,
   title: '',
   onClose() {},
@@ -27,6 +31,7 @@ const defaultProps = {
  * SidePanel may be used inside the rightmost Columns.Column.
  */
 const SidePanel = ({
+  border,
   children,
   open,
   title,
@@ -48,7 +53,11 @@ const SidePanel = ({
 
   return (
     open && (
-      <div className={`rc-sidepanel ${className}`}>
+      <div
+        className={classNames('rc-sidepanel', className, {
+          'rc-sidepanel-border': border,
+        })}
+      >
         <div className="rc-sidepanel-toolbar">
           <Heading
             as="h5"

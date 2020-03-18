@@ -4,6 +4,7 @@
   display: flex;
   flex: none;
   flex-direction: column;
+  height: 100%;
   width: 326px;
 
   @media (max-width: 767px) {
@@ -18,9 +19,12 @@
 .rc-sidepanel-toolbar {
   background-color: $puppet-n50;
   border-bottom: $puppet-common-border;
-  border-top: $puppet-common-border;
   display: flex;
   justify-content: space-between;
+}
+
+.rc-sidepanel-border .rc-sidepanel-toolbar {
+  border-top: $puppet-common-border;
 }
 
 .rc-sidepanel-heading {
