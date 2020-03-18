@@ -30,8 +30,11 @@ const columnDefaultProps = {
   fixed: false,
 };
 
-const Column = ({ children, className, fixed }) => (
-  <div className={classNames('rc-column', className, { fixed })}>
+const Column = ({ children, className, fixed, ...otherProps }) => (
+  <div
+    className={classNames('rc-column', className, { fixed })}
+    {...otherProps}
+  >
     {children}
   </div>
 );

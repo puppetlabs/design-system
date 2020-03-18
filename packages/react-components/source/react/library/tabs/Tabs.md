@@ -117,3 +117,8 @@ import Text from '../text';
   </Tabs.Tab>
 </Tabs>;
 ```
+
+## Related
+
+- [SidePanel](#/React%20Components/SidePanel)
+- [Toolbar](#/React%20Components/Toolbar)

@@ -10,6 +10,7 @@ import Text from '../text';
 
 <div className="sidebar-container">
   <SidePanel
+    border
     title="My SidePanel"
     type="toolbar"
     closeButtonProps={{ onClick: () => console.log('Clicked close button') }}
@@ -21,5 +22,7 @@ import Text from '../text';
 
 ## Related
 
+- [Columns](#/React%20Layouts/Columns)
 - [Sidebar](#/React%20Components/Sidebar)
 - [Tabs](#/React%20Components/Tabs)
+- [Toolbar](#/React%20Components/Toolbar)

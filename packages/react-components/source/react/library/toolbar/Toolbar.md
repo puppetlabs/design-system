@@ -22,14 +22,15 @@ import Button from '../button';
 
 ```jsx
 import Button from '../button';
+import Columns from '../../../../../react-layouts/src/Columns';
 import SidePanel from '../sidepanel';
 import Tabs from '../tabs';
 import Text from '../text';
 
 const [open, setOpen] = React.useState(false);
 
-<div style={{ display: 'flex' }}>
-  <div style={{ flexGrow: 1 }}>
+<Columns>
+  <Columns.Column>
     <Toolbar border>
       <Tabs>
         <Tabs.Tab icon="home" title="Tab 1">
@@ -48,8 +49,8 @@ const [open, setOpen] = React.useState(false);
         </Toolbar.Actions>
       </Tabs>
     </Toolbar>
-  </div>
-  <div>
+  </Columns.Column>
+  <Columns.Column fixed>
     <SidePanel
       type="toolbar"
       border
@@ -59,6 +60,12 @@ const [open, setOpen] = React.useState(false);
     >
       <Text>I am a SidePanel</Text>
     </SidePanel>
-  </div>
-</div>;
+  </Columns.Column>
+</Columns >;
 ```
+
+## Related
+
+- [Columns](#/React%20Layouts/Columns)
+- [SidePanel](#/React%20Components/SidePanel)
+- [Tabs](#/React%20Components/Tabs)
