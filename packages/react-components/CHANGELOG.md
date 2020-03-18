@@ -1,6 +1,10 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.18.0...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.1...HEAD)
+
+# [5.19.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.0...@puppet/react-components@5.19.1) (2020-03-18)
 
 - [Docs] Add instructions for setting up fonts in different environments (by [sprokusk](https://github.com/sprokusk) in [#233](https://github.com/puppetlabs/design-system/pull/233))
+- [SidePanel, Toolbar] Add `border` prop to Toolbar and Sidebar (by [@vine77](https://github.com/vine77) in [#235](https://github.com/puppetlabs/design-system/pull/235))
+- Upgrade dependencies (by [@vine77](https://github.com/vine77) in [b91310b](https://github.com/puppetlabs/design-system/commit/b91310b722c509d90268b6efeae6692404074f0f))
 
 # [5.19.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.18.0...@puppet/react-components@5.19.0) (2020-03-13)
 
