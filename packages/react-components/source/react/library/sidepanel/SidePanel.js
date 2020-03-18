@@ -16,6 +16,7 @@ const propTypes = {
 
 const defaultProps = {
   children: null,
+  closeButtonProps: {},
   open: true,
   title: '',
   onClose() {},
