@@ -1,6 +1,6 @@
 {
   "name": "@puppet/data-grid",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "dist/index.js",
@@ -20,8 +20,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.19.0",
-    "@puppet/sass-variables": "^1.4.0",
+    "@puppet/react-components": "^5.19.1",
+    "@puppet/sass-variables": "^1.4.1",
     "classnames": "^2.2.6",
     "init": "^0.1.2",
     "lodash": "^4.17.15",
