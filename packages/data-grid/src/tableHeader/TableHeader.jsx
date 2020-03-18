@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { string, number, arrayOf, shape, node, func } from 'prop-types';
+import React from 'react';
+import { string, arrayOf, shape, node, func } from 'prop-types';
 import { Text } from '@puppet/react-components';
 import QuickFilter from '../quickFilter';
-import PillBuilder from '../pillBuilder';
+import TagBuilder from '../tagBuilder';
 import './TableHeader.scss';
 
 const propTypes = {
@@ -33,6 +33,19 @@ const propTypes = {
   ),
   /** Callback function called when a filter is changed, returns the currently selected filters */
   onFilterChange: func,
+  /** */
+  activeFilters: arrayOf(
+    shape({
+      /** The value returned when a remove button on a pill is clicked */
+      field: string,
+      /** The text shown in the first part of the pill */
+      fieldLabel: string,
+      /** The value shown on the second half of a pill */
+      value: string,
+    }),
+  ),
+  onRemoveAll: func,
+  onRemoveTag: func,
 };
 
 const defaultProps = {
@@ -41,110 +54,44 @@ const defaultProps = {
   children: undefined,
   filters: [],
   onFilterChange: () => {},
+  activeFilters: [],
+  onRemoveAll: () => {},
+  onRemoveTag: () => {},
 };
 
-class TableHeader extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { selectedfilters: [] };
-    this.onFilterSelect = this.onFilterSelect.bind(this);
-  }
-
-  onFilterUpdate() {
-    const { onFilterChange } = this.props;
-    const { selectedfilters } = this.state;
-    onFilterChange(selectedfilters);
-  }
-
-  onFilterSelect(filter, label, value) {
-    const newPill = { fieldLabel: label, value, field: filter };
-    const { selectedfilters } = this.state;
-
-    // if filter field already exists get me the id and change it
-    if (selectedfilters.some(e => e.field === filter)) {
-      const effectedIndex = selectedfilters.findIndex(x => x.field === filter);
-
-      const newArray = selectedfilters;
-
-      newArray.splice(effectedIndex, 1, newPill);
-
-      this.setState(
-        {
-          selectedfilters: newArray,
-        },
-        () => this.onFilterUpdate(),
-      );
-    } else {
-      this.setState(
-        {
-          selectedfilters: [...selectedfilters, newPill],
-        },
-        () => this.onFilterUpdate(),
-      );
-    }
-  }
-
-  onRemoveAll() {
-    this.setState(
-      {
-        selectedfilters: [],
-      },
-      () => this.onFilterUpdate(),
-    );
-  }
-
-  onRemovePill(pill) {
-    const { selectedfilters } = this.state;
-    const newArray = selectedfilters;
-
-    const effectedIndex = selectedfilters.findIndex(x => x.field === pill);
-
-    newArray.splice(effectedIndex, 1);
-
-    this.setState(
-      {
-        selectedfilters: newArray,
-      },
-      () => this.onFilterUpdate(),
-    );
-  }
-
-  render() {
-    const {
-      children,
-      rowCountText,
-      selectedRowCountText,
-      filters,
-    } = this.props;
-    const { selectedfilters } = this.state;
-
-    return (
-      <div className="dg-table-header-container">
-        {children === undefined ? (
-          <Text as="h5" color="medium" className="dg-table-row-count">
-            {rowCountText || null}
-            {rowCountText && selectedRowCountText ? ' - ' : null}
-            {selectedRowCountText || null}
-          </Text>
-        ) : (
-          children
-        )}
-        {filters.length > 0 && (
-          <div>
-            <QuickFilter
-              filters={filters}
-              onFilterSelect={this.onFilterSelect}
-            />
-            <PillBuilder
-              filters={selectedfilters}
-              onRemoveAll={() => this.onRemoveAll()}
-              onRemovePill={pill => this.onRemovePill(pill)}
-            />
-          </div>
-        )}
-      </div>
-    );
-  }
+function TableHeader({
+  children,
+  rowCountText,
+  selectedRowCountText,
+  filters,
+  activeFilters,
+  onFilterChange,
+  onRemoveAll,
+  onRemoveTag,
+}) {
+  return (
+    <div className="dg-table-header-container">
+      {children === undefined ? (
+        <Text as="h5" color="medium" className="dg-table-row-count">
+          {rowCountText || null}
+          {rowCountText && selectedRowCountText ? ' - ' : null}
+          {selectedRowCountText || null}
+        </Text>
+      ) : (
+        children
+      )}
+      {filters.length > 0 && (
+        <div>
+          <QuickFilter filters={filters} onFilterSelect={onFilterChange} />
+          <TagBuilder
+            filters={activeFilters}
+            onRemoveAll={onRemoveAll}
+            onRemoveTag={onRemoveTag}
+          />
+        </div>
+      )}
+    </div>
+  );
 }
 
 TableHeader.propTypes = propTypes;

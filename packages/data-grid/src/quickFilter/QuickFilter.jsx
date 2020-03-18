@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes, { arrayOf, shape, func, string, array } from 'prop-types';
+import { arrayOf, shape, func, string } from 'prop-types';
 import { ButtonSelect } from '@puppet/react-components';
 import './QuickFilter.scss';
 
@@ -13,14 +13,16 @@ const propTypes = {
       /** Unique key that should match datakey of column being filtered */
       field: string,
       /** Options are the possible selections that a user can pick from under a certain field */
-      options: arrayOf({
-        /** Is the value returned after a users selection for a dataset to be filter by */
-        value: string,
-        /** Should you wish to add an icon to a specific row */
-        icon: string,
-        /** Text which will be displayed for each option */
-        label: string,
-      }),
+      options: arrayOf(
+        shape({
+          /** Is the value returned after a users selection for a dataset to be filter by */
+          value: string,
+          /** Should you wish to add an icon to a specific row */
+          icon: string,
+          /** Text which will be displayed for each option */
+          label: string,
+        }),
+      ),
     }),
   ).isRequired,
   /** Function called whenever a user clicks an action */
@@ -31,10 +33,11 @@ function QuickFilter({ filters, onFilterSelect }) {
   return (
     <div className="dg-quick-filter-container">
       <div className="dg-quick-filter-filters">
-        {filters.map(filter => {
+        {filters.map((filter, idx) => {
           return (
             <ButtonSelect
               className="dg-quick-filter"
+              id={`quick-filter-${idx}`}
               type="tertiary"
               options={filter.options}
               placeholder={filter.fieldLabel}

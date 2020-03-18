@@ -1,9 +1,11 @@
-This is the Pill Builder
+## Overview
+
+
 
 ```jsx
 
-const onRemovePill = (filter, value) =>{
-    console.log('A pill was picked', filter)
+const onRemoveTag = (filter, value) =>{
+    console.log('A tag was picked', filter)
 }
 const onRemoveAll = () => {
     console.log('User Removed All Filters')
@@ -23,9 +25,9 @@ const filters = [
   }
 ];
 
-<PillBuilder
+<TagBuilder
 filters={filters}
-onRemovePill={onRemovePill}
+onRemoveTag={onRemovePill}
 onRemoveAll={onRemoveAll}
 />
 ```

@@ -1,7 +1,9 @@
 import React from 'react';
 import { arrayOf, shape, func, string } from 'prop-types';
-import { Button } from '@puppet/react-components';
-import './PillBuilder.scss';
+import { Tag, Button } from '@puppet/react-components';
+import classNames from 'classnames';
+
+import './TagBuilder.scss';
 
 const propTypes = {
   /** Optional feature to display number of rows in table */
@@ -16,36 +18,33 @@ const propTypes = {
     }),
   ).isRequired,
   /** Callback function called when user clicks a pill */
-  onRemovePill: func.isRequired,
+  onRemoveTag: func.isRequired,
   /** Callback function called when user clicks the remove all button */
   onRemoveAll: func.isRequired,
 };
 
-function PillBuilder({ filters, onRemovePill, onRemoveAll }) {
+function TagBuilder({ filters, onRemoveTag, onRemoveAll }) {
   return (
-    <div className="dg-pill-bulder-container">
-      <div className="dg-pill-container">
+    <div className="dg-tag-bulder-container">
+      <div className="dg-tag-container">
         {filters.map(({ field, fieldLabel, value }, idx) => {
           let displayValue = value;
           if (typeof value === 'boolean') {
             displayValue = value.toString();
           }
+          const tagLabel = `${fieldLabel} = ${displayValue}`;
           return (
-            <Button
-              className="dg-filter-pill"
-              id={idx}
-              trailingIcon="close"
-              onKeyDown={() => onRemovePill(field)}
-              onClick={() => onRemovePill(field)}
-              weight="subtle"
-            >
-              {fieldLabel} = {displayValue}
-            </Button>
+            <Tag
+              class={classNames('dg-filter-tag', `dg-filter-tag-${idx}`)}
+              onClick={() => onRemoveTag(field)}
+              label={tagLabel}
+              key={`dg-filter-tag-${idx + 1}`}
+            />
           );
         })}
         {filters.length > 1 && (
           <Button
-            className="dg-pill-remove-all-button"
+            className="dg-tag-remove-all-button"
             type="text"
             icon="close"
             onKeyDown={() => onRemoveAll()}
@@ -59,6 +58,6 @@ function PillBuilder({ filters, onRemovePill, onRemoveAll }) {
   );
 }
 
-PillBuilder.propTypes = propTypes;
+TagBuilder.propTypes = propTypes;
 
-export default PillBuilder;
+export default TagBuilder;
