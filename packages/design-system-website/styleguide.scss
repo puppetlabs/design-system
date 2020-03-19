@@ -24,7 +24,7 @@
 }
 
 /********** Styleguidist overrides **********/
- 
+
 // stylelint-disable-next-line selector-max-id
 #section-puppet-design-system {
   display: none;
@@ -35,6 +35,27 @@ span.rc-content > p:only-child {
   display: inline;
 }
 
+article[data-testid="Glossary-examples"] {
+  table {
+    display: inline;
+    margin-right: $puppet-common-spacing-base;
+  }
+
+  table:nth-of-type(2n) {
+    td {
+      background: white !important;
+    }
+  }
+
+  th {
+    background: white !important;
+    padding-top: $puppet-common-spacing-base * 4;
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    font-size: 16px;
+  }
+}
 
 /********** Components **********/
 
