@@ -1,5 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.1...HEAD)
 
+- [Docs] Add glossary of components by category (by [sprokusk](https://github.com/sprokusk) in [#236](https://github.com/puppetlabs/design-system/pull/236))
+
 # [5.19.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.0...@puppet/react-components@5.19.1) (2020-03-18)
 
 - [Docs] Add instructions for setting up fonts in different environments (by [sprokusk](https://github.com/sprokusk) in [#233](https://github.com/puppetlabs/design-system/pull/233))
