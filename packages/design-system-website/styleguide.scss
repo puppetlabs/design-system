@@ -35,7 +35,7 @@ span.rc-content > p:only-child {
   display: inline;
 }
 
-article[data-testid="Glossary-examples"] {
+article[data-testid='Glossary-examples'] {
   table {
     display: inline;
     margin-right: $puppet-common-spacing-base;
@@ -43,17 +43,27 @@ article[data-testid="Glossary-examples"] {
 
   table:nth-of-type(2n) {
     td {
-      background: white !important;
+      background: #fff !important;
+    }
+  }
+
+  tbody tr:first-child td {
+    border-top: $puppet-common-border-subtle !important;
+
+    &:first-child {
+      border-top-left-radius: $puppet-common-border-radius !important;
+    }
+
+    &:last-child {
+      border-top-right-radius: $puppet-common-border-radius !important;
     }
   }
 
   th {
-    background: white !important;
-    padding-top: $puppet-common-spacing-base * 4;
-    border-top: none !important;
-    border-right: none !important;
-    border-left: none !important;
+    background: #fff !important;
+    border: 0 !important;
     font-size: 16px;
+    padding-top: $puppet-common-spacing-base * 4;
   }
 }
 
@@ -113,7 +123,6 @@ article[data-testid="Glossary-examples"] {
 .swatch-color-black {
   background: $puppet-black;
 }
-
 
 // Neutral colors
 
@@ -210,7 +219,6 @@ article[data-testid="Glossary-examples"] {
 .swatch-color-b50 {
   background: $puppet-b50;
 }
-
 
 // Red colors
 
@@ -379,7 +387,6 @@ article[data-testid="Glossary-examples"] {
 .swatch-color-p50 {
   background: $puppet-p50;
 }
-
 
 // Icons
 
