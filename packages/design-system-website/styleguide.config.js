@@ -70,6 +70,10 @@ module.exports = {
       name: 'Puppet Design System',
       content: 'README.md',
     },
+    {
+      name: "Glossary",
+      content: 'glossary/README.md',
+    },
     // The below section gets hidden when `skipComponentsWithoutExample` is true
     {
       name: 'Foundations',

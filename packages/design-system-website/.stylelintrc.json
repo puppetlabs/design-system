@@ -3,7 +3,7 @@
   "ignoreFiles": ["**/*.js"],
   "rules": {
     "max-nesting-depth": [
-      1,
+      2,
       {
         "ignore": ["blockless-at-rules"]
       }
