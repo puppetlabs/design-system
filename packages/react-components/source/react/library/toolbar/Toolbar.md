@@ -4,6 +4,8 @@ Toolbar acts as a container for tabs and buttons that is unified and compact.
 
 ## Basic use
 
+The Toolbar may be used without tabs if it only contains buttons.
+
 ```jsx
 import Button from '../button';
 
@@ -19,6 +21,9 @@ import Button from '../button';
 ```
 
 ## Toolbar with Tabs
+
+Note: If tab panels are expected to expand to full height, then Toolbar (the
+container of Tabs) may need to add `height="100%"`.
 
 ```jsx
 import Button from '../button';
