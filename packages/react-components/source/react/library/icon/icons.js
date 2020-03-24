@@ -354,6 +354,15 @@ const icons = {
     ),
   },
 
+  copy: {
+    medium: (
+      <path
+        fill-rule="evenodd"
+        d="M11 12v3a1 1 0 01-1 1H2a1 1 0 01-1-1V5a1 1 0 011-1h3V1a1 1 0 011-1h8a1 1 0 011 1v10a1 1 0 01-1 1h-3zm0-2h2V2H7v2h3a1 1 0 011 1v5zM9 6H3v8h6V6z"
+      />
+    ),
+  },
+
   csv: {
     medium: (
       <path
