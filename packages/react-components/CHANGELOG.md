@@ -1,5 +1,8 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.1...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.2...HEAD)
 
+# [5.19.2](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.1...@puppet/react-components@5.19.2) (2020-03-23)
+
+- [Toolbar] Add `height` prop to Toolbar (by [@vine77](https://github.com/vine77) in [#237](https://github.com/puppetlabs/design-system/pull/237))
 - [Docs] Add glossary of components by category (by [sprokusk](https://github.com/sprokusk) in [#236](https://github.com/puppetlabs/design-system/pull/236))
 
 # [5.19.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.0...@puppet/react-components@5.19.1) (2020-03-18)
