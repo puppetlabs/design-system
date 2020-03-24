@@ -5,6 +5,7 @@
   flex: 1;
   flex-direction: column;
   margin-top: $puppet-common-spacing-base * 4;
+  max-width: 100%;
 }
 
 .rc-tabs-list {
