@@ -1,6 +1,9 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.2...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.3...HEAD)
+
+# [5.19.3](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.2...@puppet/react-components@5.19.3) (2020-03-24)
 
 - [Icon] Add "alarm", "copy", and "hook" icons (by [@vine77](https://github.com/vine77) in [#238](https://github.com/puppetlabs/design-system/pull/238))
+- [Tabs] Fix for wide tab panels pushing container too wide (by [@vine77](https://github.com/vine77) in [#238](https://github.com/puppetlabs/design-system/pull/238))
 
 # [5.19.2](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.1...@puppet/react-components@5.19.2) (2020-03-23)
 
