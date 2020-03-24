@@ -1,5 +1,7 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.2...HEAD)
 
+- [Icon] Add "alarm", "copy", and "hook" icons (by [@vine77](https://github.com/vine77) in [#238](https://github.com/puppetlabs/design-system/pull/238))
+
 # [5.19.2](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.1...@puppet/react-components@5.19.2) (2020-03-23)
 
 - [Toolbar] Add `height` prop to Toolbar (by [@vine77](https://github.com/vine77) in [#237](https://github.com/puppetlabs/design-system/pull/237))
