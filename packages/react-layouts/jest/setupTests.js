@@ -1,6 +1,3 @@
-import 'core-js'; // TODO: Potentially remove polyfills from package, after triaging potential breaking changes
-import 'regenerator-runtime/runtime';
-
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { configure } from 'enzyme';

@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Logo, Card } from '@puppet/react-components';
 
-import AuthLayout from './AuthLayout';
+import Authentication from './Authentication';
 
 const requiredProps = {
   title: 'title',
@@ -10,34 +10,34 @@ const requiredProps = {
 };
 
 test('renders without crashing', () => {
-  shallow(<AuthLayout {...requiredProps} />);
+  shallow(<Authentication {...requiredProps} />);
 });
 
 test('passes product prop to the logo component', () => {
-  shallow(<AuthLayout {...requiredProps} />)
+  shallow(<Authentication {...requiredProps} />)
     .find(Logo)
     .should.have.prop('product', 'Product');
 });
 
 test('renders a title', () => {
-  mount(<AuthLayout {...requiredProps} />).should.contain.text('title');
+  mount(<Authentication {...requiredProps} />).should.contain.text('title');
 });
 
 test('renders a subtitle if present', () => {
   mount(
-    <AuthLayout {...requiredProps} subtitle="subtitle" />,
+    <Authentication {...requiredProps} subtitle="subtitle" />,
   ).should.contain.text('subtitle');
 });
 
 test('Renders children inside a card', () => {
-  mount(<AuthLayout {...requiredProps}>Hi</AuthLayout>)
+  mount(<Authentication {...requiredProps}>Hi</Authentication>)
     .find(Card)
     .should.contain.text('Hi');
 });
 
 test('propagates className to outer element', () => {
   shallow(
-    <AuthLayout {...requiredProps} className="test" />,
+    <Authentication {...requiredProps} className="test" />,
   ).should.have.className('test');
 });
 
@@ -47,7 +47,7 @@ test('propagates all additinal props to outer element', () => {
     'aria-label': 'hi',
   };
 
-  shallow(<AuthLayout {...requiredProps} {...extraProps} />).should.have.props(
-    extraProps,
-  );
+  shallow(
+    <Authentication {...requiredProps} {...extraProps} />,
+  ).should.have.props(extraProps);
 });

@@ -7,7 +7,6 @@
   "scripts": {
     "link": "npm link",
     "build": "./scripts/build",
-    "build:styleguide": "./scripts/build-styleguide",
     "format": "./scripts/format",
     "lint": "./scripts/lint",
     "prepublish": "npm run build",
@@ -25,10 +24,8 @@
     "@puppet/react-components": "^5.19.3",
     "@puppet/sass-variables": "^1.4.1",
     "classnames": "^2.2.6",
-    "core-js": "^3.6.4",
     "prop-types": "^15.7.2",
-    "react": "^16.13.0",
-    "regenerator-runtime": "^0.13.5"
+    "react": "^16.13.0"
   },
   "devDependencies": {
     "@babel/core": "^7.8.7",

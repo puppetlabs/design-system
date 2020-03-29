@@ -13,11 +13,11 @@ const defaultProps = {
   children: null,
 };
 
-const AuthLayoutAction = ({ className, ...rest }) => (
+const AuthenticationAction = ({ className, ...rest }) => (
   <Link className={classNames('rl-auth-layout-action', className)} {...rest} />
 );
 
-AuthLayoutAction.propTypes = propTypes;
-AuthLayoutAction.defaultProps = defaultProps;
+AuthenticationAction.propTypes = propTypes;
+AuthenticationAction.defaultProps = defaultProps;
 
-export default AuthLayoutAction;
+export default AuthenticationAction;
