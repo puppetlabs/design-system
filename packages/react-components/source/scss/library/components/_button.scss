@@ -173,6 +173,11 @@ $puppet-button-padding-vertical: 5px;
   text-decoration: none;
   vertical-align: top;
 
+  // Removes dotted outline around button text on firefox
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
   &:focus {
     box-shadow: $puppet-common-focus-outline;
   }
