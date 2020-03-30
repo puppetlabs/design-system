@@ -5,11 +5,29 @@ import { Card, Heading, Logo } from '@puppet/react-components';
 
 import AuthenticationAction from './AuthenticationAction';
 
+export const SUPPORTED_LOGOS = [
+  'container-registry',
+  'discovery',
+  'enterprise',
+  'insights',
+  'nebula',
+  'pipelines',
+  'remediate',
+];
+
 const propTypes = {
+  /** Authentication page title, for example "Login to My Product" */
   title: PropTypes.string.isRequired,
-  product: PropTypes.oneOf(Logo.SUPPORTED_LOGOS).isRequired,
+  /** Authentication page subtitle, rendered below title. Intended for help relevant to the confirmation page */
   subtitle: PropTypes.string,
+  /** Product logo. One of the official set or a custom string */
+  product: PropTypes.oneOfType([
+    PropTypes.oneOf(SUPPORTED_LOGOS),
+    PropTypes.string,
+  ]).isRequired,
+  /** Optional additional className */
   className: PropTypes.string,
+  /** Content, rendered inside a centered card */
   children: PropTypes.node,
 };
 
@@ -27,7 +45,7 @@ const Authentication = ({
   children,
   ...rest
 }) => {
-  const logoType = Logo.SUPPORTED_LOGOS.includes(product) ? 'full' : 'bug';
+  const logoType = SUPPORTED_LOGOS.includes(product) ? 'full' : 'bug';
 
   return (
     <div className={classNames('rl-authentication', className)} {...rest}>

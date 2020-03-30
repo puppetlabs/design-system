@@ -14,7 +14,10 @@ const defaultProps = {
 };
 
 const AuthenticationAction = ({ className, ...rest }) => (
-  <Link className={classNames('rl-auth-layout-action', className)} {...rest} />
+  <Link
+    className={classNames('rl-authentication-action', className)}
+    {...rest}
+  />
 );
 
 AuthenticationAction.propTypes = propTypes;
