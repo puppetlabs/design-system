@@ -5,6 +5,9 @@ module.exports = {
     '\\.scss$': 'identity-obj-proxy',
     '^react$': '<rootDir>/node_modules/react',
   },
+  transform: {
+    '\\.(js|jsx)': 'babel-jest',
+  },
   moduleDirectories: ['node_modules', 'src'],
   setupFilesAfterEnv: ['<rootDir>/jest/setupTests.js'],
   testPathIgnorePatterns: ['<rootDir>/node_modules/'],
