@@ -17,7 +17,7 @@ window.expect = expect;
 /**
  * Console errors are errors (in particular this will catch propType errors)
  */
-global.console.error = e => {
+global.console.error = (e) => {
   throw new Error(e);
 };
 
