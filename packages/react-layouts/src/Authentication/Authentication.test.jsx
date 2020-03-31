@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import { Logo, Card } from '@puppet/react-components';
+import PageContent from '../PageContent';
 
 import Authentication from './Authentication';
 

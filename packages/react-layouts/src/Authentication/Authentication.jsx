@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { Card, Heading, Logo } from '@puppet/react-components';
+import PageContent from '../PageContent';
 
 import AuthenticationAction from './AuthenticationAction';
 
@@ -48,7 +49,12 @@ const Authentication = ({
   const logoType = SUPPORTED_LOGOS.includes(product) ? 'full' : 'bug';
 
   return (
-    <div className={classNames('rl-authentication', className)} {...rest}>
+    <PageContent
+      type="secondary"
+      className={className}
+      innerClassName="rl-authentication"
+      {...rest}
+    >
       <Logo
         type={logoType}
         className={classNames(
@@ -64,7 +70,7 @@ const Authentication = ({
         </div>
         {children}
       </Card>
-    </div>
+    </PageContent>
   );
 };
 
