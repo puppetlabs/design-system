@@ -21,7 +21,7 @@
 .rl-page-content-inner {
   flex: 1;
   opacity: 0;
-  animation: loadedContent $puppet-common-transition-duration forwards;
+  animation: opacityFadeIn $puppet-common-transition-duration forwards;
 }
 
 .rl-page-content-delayed > .rl-page-content-inner {
