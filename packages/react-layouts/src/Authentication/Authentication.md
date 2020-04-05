@@ -1,6 +1,6 @@
 ## Overview
 
-`Authentication` provides a standardized layout for authentication screens used for login, registration, "forgot password", or similar use-cases. It is designed to be composed with the `Form` component to provided whatever authentication-related use input is needed.
+`Authentication` provides a standardized layout for authentication screens used for login, registration, "forgot password", or similar use-cases. It is designed to be composed with the `Form` component to provided whatever authentication-related use input is needed. It will display one of the official logos specified with a string key, or a custom generated logo specified with the `product` prop. See [Logo](#/React%20Components/Logo) for more information.
 
 # Example: Login
 
@@ -105,3 +105,4 @@ import { Form } from '@puppet/react-components';
 ## Related
 
 - [Form](#/React%20Components/Form)
+- [Logo](#/React%20Components/Logo)
