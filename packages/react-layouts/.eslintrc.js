@@ -42,7 +42,6 @@ module.exports = {
     'import/resolver': {
       node: {
         paths: [
-          path.resolve(__dirname, 'styleguide/client'),
           path.resolve(__dirname, 'src'),
         ],
       },

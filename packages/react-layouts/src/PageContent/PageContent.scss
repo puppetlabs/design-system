@@ -1,0 +1,29 @@
+@import '~@puppet/sass-variables/index';
+
+.rl-page-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.rl-page-content-primary {
+  background: $puppet-white;
+}
+
+.rl-page-content-secondary {
+  background: $puppet-n50;
+}
+
+.rl-page-content-padding-medium {
+  padding: $puppet-common-spacing-base * 8;
+}
+
+.rl-page-content-inner {
+  flex: 1;
+  opacity: 0;
+  animation: opacityFadeIn $puppet-common-transition-duration forwards;
+}
+
+.rl-page-content-delayed > .rl-page-content-inner {
+  animation-delay: 0.5s;
+}

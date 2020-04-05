@@ -2,6 +2,6 @@
 
 ESLINT_EXTS=\{js,jsx,mjs\}
 ESLINT_EXTRAS=( jest.config.js postcss.config.js )
-SRC_DIRS=\{config,jest,scripts,src,styleguide,utils\}
+SRC_DIRS=\{config,jest,scripts,src\}
 
 eslint $SRC_DIRS/**/*.$ESLINT_EXTS ${ESLINT_EXTRAS[@]}

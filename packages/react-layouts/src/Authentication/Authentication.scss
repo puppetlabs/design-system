@@ -1,0 +1,39 @@
+@import '~@puppet/sass-variables/index';
+
+.rl-authentication {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+}
+
+.rl-authentication-logo {
+  height: 68px;
+}
+
+.rl-authentication-logo-bug {
+  width: 68px;
+}
+
+.rl-authentication-title {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.rl-authentication-subtitle {
+  margin-top: 8px;
+}
+
+.rl-authentication-content {
+  display: flex;
+  margin-top: 32px;
+  max-width: 410px;
+  padding: 48px;
+  width: 100%;
+}
+
+.rl-authentication-action {
+  margin-top: 16px;
+  text-align: center;
+}

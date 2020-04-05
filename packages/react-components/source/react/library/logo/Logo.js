@@ -64,5 +64,6 @@ const Logo = ({ product, type, inverted, expanded, className, ...rest }) => {
 
 Logo.propTypes = propTypes;
 Logo.defaultProps = defaultProps;
+Logo.SUPPORTED_LOGOS = SUPPORTED_LOGOS;
 
 export default Logo;

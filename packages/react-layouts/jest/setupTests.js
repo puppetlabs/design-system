@@ -1,4 +1,3 @@
-import 'core-js'; // TODO: Potentially remove polyfills from package, after triaging potential breaking changes
 import 'regenerator-runtime/runtime';
 
 import chai, { expect } from 'chai';
@@ -18,7 +17,7 @@ window.expect = expect;
 /**
  * Console errors are errors (in particular this will catch propType errors)
  */
-global.console.error = e => {
+global.console.error = (e) => {
   throw new Error(e);
 };
 

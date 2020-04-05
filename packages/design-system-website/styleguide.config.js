@@ -71,7 +71,7 @@ module.exports = {
       content: 'README.md',
     },
     {
-      name: "Glossary",
+      name: 'Glossary',
       content: 'glossary/README.md',
     },
     // The below section gets hidden when `skipComponentsWithoutExample` is true
@@ -157,7 +157,11 @@ module.exports = {
     {
       name: 'React Layouts',
       components: '../react-layouts/src/**/*.{js,jsx}',
-      ignore: ['**/**/index.js', '**/*.test.{js,jsx}'],
+      ignore: [
+        '**/**/index.js',
+        '**/*.test.{js,jsx}',
+        '**/Authentication/AuthenticationAction.jsx',
+      ],
     },
     {
       name: 'Data Grid',
