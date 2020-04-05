@@ -1,4 +1,10 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.3...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.4...HEAD)
+
+# [5.19.4](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.3...@puppet/react-components@5.19.4) (2020-04-05)
+- [Button] Hide inner focus outline on firefox
+
+- [Icon] Add "alarm", "copy", and "hook" icons (by [@vine77](https://github.com/vine77) in [#238](https://github.com/puppetlabs/design-system/pull/238))
+- [Tabs] Fix for wide tab panels pushing container too wide (by [@vine77](https://github.com/vine77) in [#238](https://github.com/puppetlabs/design-system/pull/238))
 
 # [5.19.3](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.2...@puppet/react-components@5.19.3) (2020-03-24)
 

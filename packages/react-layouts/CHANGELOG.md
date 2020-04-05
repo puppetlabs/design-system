@@ -1,3 +1,7 @@
+# 2.0.0-alpha.0
+- Remove all auth layouts. Replace with single Authentication layout
+- Add PageLayout component, upstreamed from project nebula
+
 # 1.0.22
 
 - Add padding to AuthLayout
