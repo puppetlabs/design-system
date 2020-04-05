@@ -9,29 +9,23 @@ The following contrived example loads and un-loads page content continuously so 
 ```jsx
 import { Heading, Text } from '@puppet/react-components';
 
-const PerpetuallyLoadingExample = () => {
-  const [loading, setLoading] = React.useState(false);
+const [loading, setLoading] = React.useState(false);
 
-  React.useEffect(() => {
-    const timeout = setTimeout(() => setLoading(!loading), 2000);
+React.useEffect(() => {
+  const timeout = setTimeout(() => setLoading(!loading), 2000);
 
 
-    return () => {
-      clearTimeout(timeout);
-    };
-  }, [loading]);
+  return () => {
+    clearTimeout(timeout);
+  };
+}, [loading]);
 
-  return (
-    <PageContent
-      loading={loading}
-      type="secondary"
-      style={{ height:500, display: 'flex', textAlign: 'center' }}
-    >
-      <Heading>Sample</Heading>
-      <Text>Content</Text>
-    </PageContent>
-  )
-}
-
-<PerpetuallyLoadingExample />
+<PageContent
+  loading={loading}
+  type="secondary"
+  style={{ height:500, display: 'flex', textAlign: 'center' }}
+>
+  <Heading>Sample</Heading>
+  <Text>Content</Text>
+</PageContent>
 ```
