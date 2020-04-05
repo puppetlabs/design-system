@@ -1,6 +1,6 @@
 {
   "name": "@puppet/design-system-website",
-  "version": "1.3.10",
+  "version": "1.4.0",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "private": true,
@@ -16,7 +16,7 @@
     "@babel/preset-env": "^7.8.7",
     "@babel/preset-react": "^7.8.3",
     "@babel/register": "^7.8.6",
-    "@puppet/sass-variables": "^1.4.1",
+    "@puppet/sass-variables": "^1.4.2",
     "babel-loader": "^8.0.6",
     "babel-plugin-module-alias": "^1.6.0",
     "babel-preset-react-hmre": "^1.1.1",
@@ -53,9 +53,9 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@puppet/data-grid": "^0.2.5",
-    "@puppet/react-components": "^5.19.3",
-    "@puppet/react-layouts": "^1.1.2",
+    "@puppet/data-grid": "^0.2.6",
+    "@puppet/react-components": "^5.19.4",
+    "@puppet/react-layouts": "^2.0.0-alpha.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
