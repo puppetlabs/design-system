@@ -1,6 +1,6 @@
 {
   "name": "@puppet/design-system-website",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "private": true,
@@ -53,9 +53,9 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@puppet/data-grid": "^0.2.6",
-    "@puppet/react-components": "^5.19.4",
-    "@puppet/react-layouts": "^2.0.0-alpha.0",
+    "@puppet/data-grid": "^0.2.7",
+    "@puppet/react-components": "^5.19.5",
+    "@puppet/react-layouts": "^2.0.0-alpha.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
