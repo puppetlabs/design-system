@@ -9,7 +9,7 @@
     "test": "lerna run lint && lerna run test",
     "start": "cd packages/design-system-website && npm start",
     "styleguide:build": "cd packages/design-system-website && npm run styleguide:build",
-    "release": "lerna version patch --yes --no-push && publish from-git --yes && git push --tags"
+    "release": "lerna publish from-package --yes"
   },
   "devDependencies": {
     "@babel/preset-stage-2": "^7.0.0",
