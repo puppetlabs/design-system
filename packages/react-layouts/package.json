@@ -20,12 +20,15 @@
   "publishConfig": {
     "access": "public"
   },
+  "peerDependencies": {
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
   "dependencies": {
     "@puppet/react-components": "^5.19.5",
     "@puppet/sass-variables": "^1.4.2",
     "classnames": "^2.2.6",
-    "prop-types": "^15.7.2",
-    "react": "^16.13.1"
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
@@ -70,6 +73,7 @@
     "query-string": "^6.11.1",
     "ramda": "^0.27.0",
     "raw-loader": "^4.0.0",
+    "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.20",
     "react-i18next": "^11.3.4",
