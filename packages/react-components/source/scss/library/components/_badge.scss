@@ -9,6 +9,10 @@
   text-transform: uppercase;
 }
 
+.rc-badge + .rc-badge {
+  margin-left: $puppet-common-spacing-base;
+}
+
 .rc-badge-pill {
   border-radius: 1000px;
   padding: 0 $puppet-common-spacing-base * 4;
