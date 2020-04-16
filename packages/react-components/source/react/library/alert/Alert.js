@@ -71,15 +71,13 @@ class Alert extends React.Component {
 
     switch (type) {
       case 'danger':
+      case 'warning':
         typeIcon = 'alert';
         break;
       case 'success':
         typeIcon = 'check-circle';
         break;
       case 'info':
-      case 'warning':
-        typeIcon = 'alert';
-        break;
       default:
         typeIcon = 'info-circle';
     }
