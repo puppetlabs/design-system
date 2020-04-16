@@ -22,8 +22,6 @@ const propTypes = {
   elevated: PropTypes.bool,
   /** Optional additional className. */
   className: PropTypes.string,
-  /** Optional additional inline styles. */
-  styles: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -33,7 +31,6 @@ const defaultProps = {
   onClose() {},
   elevated: false,
   className: '',
-  styles: {},
 };
 
 class Alert extends React.Component {
@@ -71,15 +68,13 @@ class Alert extends React.Component {
 
     switch (type) {
       case 'danger':
+      case 'warning':
         typeIcon = 'alert';
         break;
       case 'success':
         typeIcon = 'check-circle';
         break;
       case 'info':
-      case 'warning':
-        typeIcon = 'alert';
-        break;
       default:
         typeIcon = 'info-circle';
     }

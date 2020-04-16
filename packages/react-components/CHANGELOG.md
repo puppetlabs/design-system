@@ -1,8 +1,13 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.4...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.6...HEAD)
+
+# [5.19.6](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.5...@puppet/react-components@5.19.6) (2020-04-16)
+
+- [Alert] Fix icon for info Alert, an issue introduced in 5.0.0-beta.3 (by [@vine77](https://github.com/vine77) in [#243](https://github.com/puppetlabs/design-system/pull/243))
+- [Badge] Remove outer margin from Badge component while retaining margin between adjacent Badge components (by [@vine77](https://github.com/vine77) in [#241](https://github.com/puppetlabs/design-system/pull/241))
 
 # [5.19.4](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.3...@puppet/react-components@5.19.4) (2020-04-05)
-- [Button] Hide inner focus outline on firefox
 
+- [Button] Hide inner focus outline on firefox
 - [Icon] Add "alarm", "copy", and "hook" icons (by [@vine77](https://github.com/vine77) in [#238](https://github.com/puppetlabs/design-system/pull/238))
 - [Tabs] Fix for wide tab panels pushing container too wide (by [@vine77](https://github.com/vine77) in [#238](https://github.com/puppetlabs/design-system/pull/238))
 
