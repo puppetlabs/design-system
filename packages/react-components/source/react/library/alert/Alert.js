@@ -22,8 +22,6 @@ const propTypes = {
   elevated: PropTypes.bool,
   /** Optional additional className. */
   className: PropTypes.string,
-  /** Optional additional inline styles. */
-  styles: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -33,7 +31,6 @@ const defaultProps = {
   onClose() {},
   elevated: false,
   className: '',
-  styles: {},
 };
 
 class Alert extends React.Component {
