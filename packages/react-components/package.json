@@ -25,6 +25,10 @@
   "engines": {
     "node": ">=12.4.0"
   },
+  "peerDependencies": {
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.8.7",
     "@babel/plugin-proposal-object-rest-spread": "^7.8.3",
@@ -60,7 +64,9 @@
     "nodemon": "^1.19.4",
     "nyc": "^14.1.1",
     "prettier": "^1.19.1",
+    "react": "^16.13.0",
     "react-addons-test-utils": "^15.6.2",
+    "react-dom": "^16.13.0",
     "react-router": "^5.1.2",
     "react-styleguidist": "^10.6.2",
     "resolve-url-loader": "^3.1.1",
@@ -82,8 +88,6 @@
     "core-js": "^3.6.4",
     "hoist-non-react-statics": "^3.3.1",
     "prop-types": "^15.7.2",
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0",
     "react-modal": "^3.11.2",
     "react-transition-group": "^4.3.0",
     "regenerator-runtime": "^0.13.5",
