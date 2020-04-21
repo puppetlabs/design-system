@@ -1,4 +1,8 @@
-# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.6...HEAD)
+# [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.20.0...HEAD)
+
+# [5.20.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.6...@puppet/react-components@5.20.0) (2020-04-21)
+
+- Move react and react-dom from dependencies to peerDependencies (by [@jilliankeenan](https://github.com/jilliankeenan) in [#242](https://github.com/puppetlabs/design-system/pull/242))
 
 # [5.19.6](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.5...@puppet/react-components@5.19.6) (2020-04-16)
 
