@@ -1,5 +1,9 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.20.0...HEAD)
 
+# [5.20.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.20.0...@puppet/react-components@5.20.1) (2020-05-08)
+
+- Add Relay logo
+
 # [5.20.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.6...@puppet/react-components@5.20.0) (2020-04-21)
 
 - Move react and react-dom from dependencies to peerDependencies (by [@jilliankeenan](https://github.com/jilliankeenan) in [#242](https://github.com/puppetlabs/design-system/pull/242))
@@ -102,7 +106,7 @@
 - [Select] Allow truthy string in addition to boolean `open` prop in `Select` component (by [@vine77](https://github.com/vine77))
 - [Card] Fix filtering of Card title and actions in production builds (by [@vine77](https://github.com/vine77))
 - [Docs] Update ButtonSelect documentation (by [@vine77](https://github.com/vine77))
-- [Docs] Update Colors documentation and add link to the color definitions in _palettes.scss (by [@vine77](https://github.com/vine77))
+- [Docs] Update Colors documentation and add link to the color definitions in \_palettes.scss (by [@vine77](https://github.com/vine77))
 
 # [5.11.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.10.0...@puppet/react-components@5.11.0) (2019-12-13)
 
@@ -246,9 +250,9 @@
 # [5.6.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.6.0...@puppet/react-components@5.6.1)
 
 - NOTICE: Packages are now being published to npm instead of Artifactory, so `.npmrc` files with lines ending in `/npm__local/` should replace those instances with `/npm/` (which combines Artifactory with an npm mirror) or remove them if Artifactory is no longer needed. For your per-user `~/.npmrc` file, it's okay to have this line (without `/npm__local/`), but we recommend removing it entirely so that each project can have its own `.npmrc` file to manage dependencies per-project:
-    ```
-    @puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm/
-    ```
+  ```
+  @puppet:registry=https://artifactory.delivery.puppetlabs.net/artifactory/api/npm/npm/
+  ```
 - Import core-js as single dependency without @babel/preset-env's useBuiltIns option to add compatibility with Gatsby.
 
 # [5.6.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.5.0...@puppet/react-components@5.6.0)
@@ -343,7 +347,7 @@
 - **Breaking Change** Remove ButtonGroup component
 - **Breaking Change** Rename ActionMenu -> ActionSelect
 - **Breaking Change** Remove many scss variables from palettes and common
-- **Breaking Change** $puppet-common-spacing-base is now 4px, updated for clarity of intent
+- **Breaking Change** \$puppet-common-spacing-base is now 4px, updated for clarity of intent
 - Stop propagation of key events from active select menus
 - Upgrade dependencies
 - Fix all console errors in styleguidist
@@ -887,7 +891,7 @@ Fix regressions in three areas:
 # 2.0.0
 
 - Rename library to @puppet/react-components
-- Replace scss variable prefix with $puppet-
+- Replace scss variable prefix with \$puppet-
 
 # 1.3.3
 
