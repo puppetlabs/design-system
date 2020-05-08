@@ -6,16 +6,6 @@ import PageContent from '../PageContent';
 
 import AuthenticationAction from './AuthenticationAction';
 
-export const SUPPORTED_LOGOS = [
-  'container-registry',
-  'discovery',
-  'enterprise',
-  'insights',
-  'nebula',
-  'pipelines',
-  'remediate',
-];
-
 const propTypes = {
   /** Authentication page title, for example "Login to My Product" */
   title: PropTypes.string.isRequired,
@@ -23,7 +13,7 @@ const propTypes = {
   subtitle: PropTypes.string,
   /** Product logo. One of the official set or a custom string */
   product: PropTypes.oneOfType([
-    PropTypes.oneOf(SUPPORTED_LOGOS),
+    PropTypes.oneOf(Logo.SUPPORTED_LOGOS),
     PropTypes.string,
   ]).isRequired,
   /** Optional additional className */
@@ -46,7 +36,7 @@ const Authentication = ({
   children,
   ...rest
 }) => {
-  const logoType = SUPPORTED_LOGOS.includes(product) ? 'full' : 'bug';
+  const logoType = Logo.SUPPORTED_LOGOS.includes(product) ? 'full' : 'bug';
 
   return (
     <PageContent
