@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
+  "main": "dist/react-code-editor.js",
   "scripts": {
     "link": "npm link",
     "format": "./scripts/format",
