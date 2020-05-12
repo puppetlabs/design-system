@@ -12,7 +12,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'react-layouts.css',
+      filename: 'react-code-editor.css',
       chunkFilename: '[id].[hash].css',
     }),
   ],
@@ -21,8 +21,8 @@ module.exports = {
     children: false,
   },
   output: {
-    filename: 'react-layouts.js',
-    library: 'react-layouts',
+    filename: 'react-code-editor.js',
+    library: 'react-code-editor',
     libraryTarget: 'umd',
     path: paths.dist(),
     publicPath: './',
