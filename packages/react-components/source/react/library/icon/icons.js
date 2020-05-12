@@ -150,6 +150,10 @@ const icons = {
     ),
   },
 
+  bullet: {
+    small: <circle cx="6" cy="6" r="2.5" />,
+  },
+
   check: {
     tiny: (
       <polygon
