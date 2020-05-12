@@ -6,10 +6,11 @@
   "main": "dist/react-code-editor.js",
   "scripts": {
     "link": "npm link",
-    "format": "./scripts/format",
     "build": "./scripts/build",
-    "test": "jest",
+    "format": "./scripts/format",
     "lint": "./scripts/lint",
+    "prepublish": "npm run build",
+    "test": "jest",
     "watch": "./scripts/watch"
   },
   "dependencies": {
