@@ -1,20 +1,32 @@
-```
-<div>
-  <CodeEditor
-    name="UNIQUE_ID_OF_DIV_1"
-    onChange={a => console.log('onChange!', a)}
-  />
-</div>
+## Overview
+
+`CodeEditor` is a styled wrapper around react-ace, i.e. Ace Editor and Brace, which provides a standalone code editor with syntax highlighting.
+
+## Types
+
+## Editable
+
+```jsx
+<CodeEditor
+  name="UNIQUE_ID_OF_DIV_1"
+  value={`animals:
+  dog: true
+  cat: false`}
+  onChange={newValue => console.log('Editor contents:', newValue)}
+  height={200}
+/>
 ```
 
-Read only
+## Read-only and light mode
 
-```
-<div>
-  <CodeEditor
-    name="UNIQUE_ID_OF_DIV_2"
-    value={`apiVersion: v1\nversion: 0.1.6\ndescription: "Some stuff I found on the ground"\nitems:\n- potatoes\n- carrots\n- cabbage`}
-    readOnly={true}
-  />
-</div>
+```jsx
+<CodeEditor
+  name="UNIQUE_ID_OF_DIV_2"
+  readOnly
+  darkMode={false}
+  value={`animals:
+  dog: true
+  cat: false`}
+  height={200}
+/>
 ```

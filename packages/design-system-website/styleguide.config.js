@@ -173,6 +173,11 @@ module.exports = {
         '**/**/index.js',
       ],
     },
+    {
+      name: 'Code Editor',
+      components: '../react-code-editor/src/**/*.{js,jsx}',
+      ignore: ['**/**/index.js', '**/*.test.{js,jsx}'],
+    },
   ],
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath).replace(/\.jsx?$/, '');

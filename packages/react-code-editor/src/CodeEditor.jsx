@@ -25,7 +25,7 @@ const propTypes = {
   minLines: PropTypes.number,
   maxLines: PropTypes.number,
   wrapEnabled: PropTypes.bool,
-  height: PropTypes.string,
+  height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   width: PropTypes.string,
   showGutter: PropTypes.bool,
   showPrintMargin: PropTypes.bool,
@@ -71,9 +71,6 @@ const defaultProps = {
   },
 };
 
-/**
- * `CodeEditor` is a styled wrapper around react-ace, i.e. Ace Editor and Brace
- */
 const CodeEditor = ({
   className,
   theme,
