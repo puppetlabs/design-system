@@ -5,3 +5,7 @@
 .rc-code-size-small {
   @include puppet-type-code-small();
 }
+
+.rc-code-block {
+  @include puppet-type-code-block();
+}
