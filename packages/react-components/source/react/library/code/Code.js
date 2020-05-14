@@ -7,6 +7,8 @@ const propTypes = {
   as: PropTypes.elementType,
   /** Code Size */
   size: PropTypes.oneOf(['medium', 'small']),
+  /** Code Type */
+  type: PropTypes.oneOf(['inline', 'block']),
   /** Code body */
   children: PropTypes.node,
   /** Optional additional classname. */
@@ -17,16 +19,26 @@ const propTypes = {
 
 const defaultProps = {
   as: 'code',
+  type: 'inline',
   children: '',
   className: '',
   size: 'medium',
   style: {},
 };
 
-const Code = ({ as: Element, size, children, className, style, ...other }) => (
+const Code = ({
+  as: Element,
+  size,
+  type,
+  children,
+  className,
+  style,
+  ...other
+}) => (
   <Element
     className={classNames(
       'rc-code',
+      `rc-code-${type}`,
       {
         [`rc-code-size-${size}`]: size,
       },
