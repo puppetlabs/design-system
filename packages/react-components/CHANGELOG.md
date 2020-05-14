@@ -1,5 +1,9 @@
 # [Unreleased](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.20.0...HEAD)
 
+# @puppet/react-code-editor 0.1.0 (2020-05-13)
+
+- First release of CodeEditor
+
 # [5.20.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.20.0...@puppet/react-components@5.20.1) (2020-05-08)
 
 - Add Relay logo
