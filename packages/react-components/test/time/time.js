@@ -9,7 +9,8 @@ describe('<Time />', () => {
   jsdom({ skipWindowCheck: true });
 
   it('should render without blowing up', () => {
-    shallow(<Time>{Date.now()}</Time>);
+    const time = `2020-05-01T15:37:45.1429698Z`;
+    shallow(<Time>{time}</Time>);
   });
 
   it('should render a time element', () => {
@@ -29,7 +30,7 @@ describe('<Time />', () => {
     expect(wrapper.type()).to.be.equal('time');
 
     expect(wrapper.debug()).to.be.equal(
-      `<time datetime="2020-05-01T15:37:45.142Z">\n  May 1, 2020, 4:37:45 PM\n</time>`,
+      `<time datetime="2020-05-01T15:37:45.142Z">\n  May 1, 2020, 3:37:45 PM\n</time>`,
     );
   });
 });
