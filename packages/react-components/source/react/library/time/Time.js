@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { pickBy, isNil } from 'lodash';
+import pickBy from 'lodash.pickby';
 
 const propTypes = {
   /** Html element or react component to render */
