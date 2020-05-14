@@ -96,6 +96,26 @@ class MyPageWithTabs extends React.Component {
 <MyPageWithTabs />;
 ```
 
+## Padding
+
+By default, tab panes have padding for simple use cases, but this can be removed by adding `panePadding={false}` to `Tabs`.
+
+```jsx
+import Text from '../text';
+
+<Tabs panePadding={false}>
+  <Tabs.Tab title="Tab 1">
+    <Text style={{ margin: '20px 0' }}>
+      Default padding can be removed on Tabs so that tab content can define its
+      own padding.
+    </Text>
+  </Tabs.Tab>
+  <Tabs.Tab title="Tab 2">
+    <Text>This tab forgot to add its own padding.</Text>
+  </Tabs.Tab>
+</Tabs>;
+```
+
 # Tab
 
 ## Types
