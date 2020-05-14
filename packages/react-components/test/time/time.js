@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import Time from '../../source/react/library/Time/Time';
+import Time from '../../source/react/library/time/Time';
 
 describe('<Time />', () => {
   jsdom({ skipWindowCheck: true });
