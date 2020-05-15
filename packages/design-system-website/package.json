@@ -54,8 +54,8 @@
   },
   "dependencies": {
     "@puppet/data-grid": "^0.2.7",
-    "@puppet/react-components": "^5.19.5",
-    "@puppet/react-layouts": "^2.0.0-alpha.1",
+    "@puppet/react-components": "^5.20.3",
+    "@puppet/react-layouts": "^2.0.0-alpha.4",
     "brace": "^0.11.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
