@@ -25,7 +25,7 @@ The `Content` component is a wrapper for simple HTML content, which provides def
         your Nebula web interface. If you don't see it there, add the workflow
         from our{' '}
         <a
-          href="https://github.com/puppetlabs/nebula-workflow-examples/tree/master/example-workflows/gke-provision-and-deploy-workflow"
+          href="https://github.com/puppetlabs/relay-workflow-examples/tree/master/example-workflows/gke-provision-and-deploy-workflow"
           target="_blank"
           rel="noopener noreferrer"
         >
