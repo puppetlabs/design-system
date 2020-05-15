@@ -83,7 +83,7 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@puppet/sass-variables": "^1.4.2",
+    "@puppet/sass-variables": "^1.4.3",
     "classnames": "^2.2.6",
     "core-js": "^3.6.4",
     "hoist-non-react-statics": "^3.3.1",
