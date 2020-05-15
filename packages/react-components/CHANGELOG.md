@@ -1,8 +1,8 @@
-# [5.20.2](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.20.0...@puppet/react-components@5.20.2) (2020-05-14)
+# [5.20.3](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.20.1...@puppet/react-components@5.20.3) (2020-05-14)
 
 - Add bullet icon
 - Add new type block to Code
-- First release of CodeEditor
+- First release of CodeEditor as @puppet/react-code-editor 0.1.0
 
 # [5.20.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.20.0...@puppet/react-components@5.20.1) (2020-05-08)
 
