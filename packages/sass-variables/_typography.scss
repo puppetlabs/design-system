@@ -230,6 +230,7 @@ $puppet-type-code-small-font-weight: $puppet-type-weight-normal !default;
   background-color: $puppet-n100;
   box-shadow: inset 8px 0 0 #E4E9ED;
   padding: $puppet-common-spacing-base * 3 $puppet-common-spacing-base * 6;
+  white-space: pre;
 }
 
 @mixin puppet-type-link() {
