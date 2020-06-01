@@ -33,6 +33,22 @@ Secondary links use the color of the text around them. In order to meet WCAG AA 
 </Link>
 ```
 
+## Sizes
+
+Links have a `size` property with values to match each of the sizes available on the [`Text`](/#/React%20Components/Text) component. The default is `regular`, which matches default body text.
+
+```jsx
+<Link size="large"><strong>Large:</strong> The five boxing wizards jump quickly.</Link>
+<br />
+<Link size="medium"><strong>Medium:</strong> The five boxing wizards jump quickly.</Link>
+<br />
+<Link><strong>Regular (default):</strong> The five boxing wizards jump quickly.</Link>
+<br />
+<Link size="small"><strong>Small:</strong> The five boxing wizards jump quickly.</Link>
+<br />
+<Link size="tiny"><strong>Tiny:</strong> The five boxing wizards jump quickly.</Link>
+```
+
 ## Variations
 
 ### Link as a Button

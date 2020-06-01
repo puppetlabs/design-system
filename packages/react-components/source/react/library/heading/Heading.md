@@ -2,20 +2,30 @@
 
 The Heading component is another typographical element. It is related to the [Text component](#/React%20Components/Text), but it covers the text treatments that live outside of the body, small and tiny styles defined in the Text componenet.
 
-### Font families
+### Font family
 
-The following 2 font families are utilized in the Heading component.
+The Heading component uses the **Calibre** font.
 
-- <strong>Calibre</strong>: Titles (hero's), heading (sizes 1-4), and labels
-- <strong>Open Sans</strong>: Heading (sizes 5 & 6)
+Our products use three font families, with their various weights and sizes, to communicate clearly with our users. Don’t introduce new typographic styles to our products without consulting the UX team. Each font faimly is intended for a different set of use cases:
 
-See also: [Text](#/React%20Components/Text) and [Content](#/React%20Components/Content)
+- <strong>Calibre</strong> is for headings, titles, navigation, visualizations, and other primary elements.
+- <strong>Open Sans</strong> is for body copy and general UI elements and content.
+- <strong>Inconsolata</strong> is for code samples.
+
+If Calibre isn't right for your use case, consider whether one of these alternatives would be more appropriate than overriding the font family of the Heading component:
+
+- use the [Text](#/React%20Components/Text) component to render general text in Open Sans,
+- use the [Code](#/React%20Components/Code) component to render code in Inconsolata,
+- use the [Content](#/React%20Components/Content) component to automatically format arbitrary markup using all three fonts as appropriate, or
+- write styles for your own component using the sass mixins defined in the `@puppet/sass-variables` package's `_typography` partial as needed.
+
+See the [Typography](#/Foundations/Typography) page for more guidance on font families and font use.
 
 ## Types
 
 ### Primary
 
-The primary (default) header style is in the color Neutral 900 (base), in various weights and sizes.
+The primary (default) header style is in the color Neutral 900, in various weights and sizes.
 
 ```jsx
 <Heading as="h1" hero>Hero</Heading>
@@ -30,7 +40,7 @@ The primary (default) header style is in the color Neutral 900 (base), in variou
 
 ### Secondary
 
-Another option for the header color is Neutral 700 (medium).
+Another option for the header color is Neutral 700 (`medium`).
 
 ```jsx
 <Heading as="h1" color="medium" hero>Hero</Heading>
@@ -43,7 +53,7 @@ Another option for the header color is Neutral 700 (medium).
 <Heading label color="medium">Label</Heading>
 ```
 
-Another option for the header color is Neutral 600 (subtle), used as the most subtle treatment.
+Another option for the header color is Neutral 600 (`subtle`), used as the most subtle treatment.
 
 ```jsx
 <Heading as="h1" color="subtle" hero>Hero</Heading>
