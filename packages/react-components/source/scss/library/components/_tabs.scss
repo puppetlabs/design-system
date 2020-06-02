@@ -19,6 +19,7 @@
   border-bottom: 0 !important;
   border-radius: $puppet-common-border-radius $puppet-common-border-radius 0 0 !important;
   color: $puppet-type-color-base;
+  fill: $puppet-type-color-base;
   margin: 0 2px;
   margin-left: 2px !important;
   padding-left: $puppet-common-spacing-base * 6;
@@ -46,6 +47,7 @@
 
 .rc-tabs-button-active {
   color: $puppet-type-color-link;
+  fill: $puppet-type-color-link;
 }
 
 // Panel
@@ -54,6 +56,12 @@
   flex: 1;
   min-height: 0;
   z-index: 1;
+}
+
+.rc-tabs-button-icon {
+  fill: inherit !important;
+  margin-right: $puppet-common-spacing-base * 2;
+  vertical-align: text-bottom;
 }
 
 .rc-tabs-pane-padding .rc-tabs-panel {

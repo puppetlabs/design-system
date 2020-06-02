@@ -14,6 +14,7 @@ const propTypes = {
   open: PropTypes.bool,
   title: PropTypes.string,
   type: PropTypes.oneOf(['toolbar']).isRequired,
+  toolbarType: PropTypes.oneOf(['primary', 'secondary']),
 };
 
 const defaultProps = {
@@ -25,6 +26,7 @@ const defaultProps = {
   onClose() {},
   className: '',
   contentClassName: '',
+  toolbarType: 'primary',
 };
 
 /**
@@ -39,6 +41,7 @@ const SidePanel = ({
   className,
   closeButtonProps,
   contentClassName,
+  toolbarType,
 }) => {
   const actions = (
     <Button
@@ -58,7 +61,9 @@ const SidePanel = ({
           'rc-sidepanel-border': border,
         })}
       >
-        <div className="rc-sidepanel-toolbar">
+        <div
+          className={`rc-sidepanel-toolbar rc-sidepanel-toolbar-${toolbarType}`}
+        >
           <Heading
             as="h5"
             className="rc-sidepanel-heading"

@@ -20,6 +20,24 @@ import Button from '../button';
 </Toolbar>;
 ```
 
+## Secondary toolbar
+
+The Toolbar comes in a "secondary" visual variant:
+
+```jsx
+import Button from '../button';
+
+<Toolbar type="secondary" border>
+  <Toolbar.Actions>
+    <Button innerFocus type="transparent">
+      Toolbar button
+    </Button>
+    <Button innerFocus type="transparent" icon="download" />
+    <Button innerFocus type="transparent" icon="gear" />
+  </Toolbar.Actions>
+</Toolbar>;
+```
+
 ## Toolbar with Tabs
 
 Note: If tab panels are expected to expand to full height, then Toolbar (the
