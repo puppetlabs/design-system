@@ -15,7 +15,7 @@ const propTypes = {
   /** A unique identifier for this field */
   name: PropTypes.string.isRequired,
   /** A human-friendly identifier for this field */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /** The styling of the identifier for this field */
   labelType: PropTypes.oneOf(['primary', 'secondary']),
   /** Depending on the field, value can be any type */
