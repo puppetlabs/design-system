@@ -63,34 +63,10 @@
     left: 8px;
   }
 }
-//
-// .rc-toolbar .rc-tabs-button:not(:active):not(:hover) {
-//   color: $puppet-n700;
-//   fill: $puppet-n700;
-// }
-//
-// .rc-toolbar .rc-tabs-button-active {
-//   z-index: 1;
-// }
-//
-// .rc-toolbar-primary .rc-tabs-button-active {
-//   background-color: $puppet-white;
-// }
-//
-// .rc-toolbar .rc-tabs-button-active:not(:active):not(:hover) {
-//   color: $puppet-type-color-link;
-//   fill: $puppet-type-color-link;
-// }
-//
-// .rc-toolbar > .rc-tabs > .rc-tabs-list > .rc-button-secondary.rc-button-disabled {
-//   color: rgba($puppet-n700, 0.4);
-//   fill: rgba($puppet-n700, 0.4);
-// }
-//
-// .rc-toolbar > .rc-tabs > .rc-tabs-panel {
-//   border-top: 0;
-//   padding: 0;
-// }
+
+.rc-toolbar > .rc-tabs > .rc-tabs-panel {
+  padding: 0;
+}
 
 .rc-toolbar-actions {
   display: flex;
