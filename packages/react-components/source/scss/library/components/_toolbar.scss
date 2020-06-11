@@ -49,14 +49,17 @@
   margin: 0 !important;
   padding: 6px 24px;
 
+  &.rc-tabs-button-active::after {
+    content: none;
+  }
+
+  &.rc-tabs-button-active:not(:disabled) {
+    background-color: $puppet-b100 !important;
+  }
+
   &:focus {
     border-right-color: $puppet-n400;
     box-shadow: $puppet-common-focus-outline-inset;
-
-    &.rc-tabs-button-active::after {
-      border-left: 2px solid $puppet-b300;
-      border-right: 2px solid $puppet-b300;
-    }
   }
 
   &:focus .rc-tabs-button-icon {
