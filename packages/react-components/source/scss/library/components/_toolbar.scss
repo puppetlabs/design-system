@@ -17,8 +17,6 @@
   border-top: $puppet-common-border;
 }
 
-// fix for double-borders with secondary button in toolbar
-
 .rc-toolbar > .rc-tabs {
   margin-bottom: -1px;
   margin-top: 0;
@@ -29,7 +27,6 @@
 }
 
 .rc-toolbar > .rc-tabs > .rc-tabs-list {
-  border-bottom: $puppet-common-border;
   z-index: 2;
 }
 
@@ -52,47 +49,48 @@
   margin: 0 !important;
   padding: 6px 24px;
 
-  &::after {
-    content: none;
-  }
-
   &:focus {
     border-right-color: $puppet-n400;
     box-shadow: $puppet-common-focus-outline-inset;
+
+    &.rc-tabs-button-active::after {
+      border-left: 2px solid $puppet-b300;
+      border-right: 2px solid $puppet-b300;
+    }
   }
 
   &:focus .rc-tabs-button-icon {
     left: 8px;
   }
 }
-
-.rc-toolbar .rc-tabs-button:not(:active):not(:hover) {
-  color: $puppet-n700;
-  fill: $puppet-n700;
-}
-
-.rc-toolbar .rc-tabs-button-active {
-  z-index: 1;
-}
-
-.rc-toolbar-primary .rc-tabs-button-active {
-  background-color: $puppet-white;
-}
-
-.rc-toolbar .rc-tabs-button-active:not(:active):not(:hover) {
-  color: $puppet-type-color-link;
-  fill: $puppet-type-color-link;
-}
-
-.rc-toolbar > .rc-tabs > .rc-tabs-list > .rc-button-secondary.rc-button-disabled {
-  color: rgba($puppet-n700, 0.4);
-  fill: rgba($puppet-n700, 0.4);
-}
-
-.rc-toolbar > .rc-tabs > .rc-tabs-panel {
-  border-top: 0;
-  padding: 0;
-}
+//
+// .rc-toolbar .rc-tabs-button:not(:active):not(:hover) {
+//   color: $puppet-n700;
+//   fill: $puppet-n700;
+// }
+//
+// .rc-toolbar .rc-tabs-button-active {
+//   z-index: 1;
+// }
+//
+// .rc-toolbar-primary .rc-tabs-button-active {
+//   background-color: $puppet-white;
+// }
+//
+// .rc-toolbar .rc-tabs-button-active:not(:active):not(:hover) {
+//   color: $puppet-type-color-link;
+//   fill: $puppet-type-color-link;
+// }
+//
+// .rc-toolbar > .rc-tabs > .rc-tabs-list > .rc-button-secondary.rc-button-disabled {
+//   color: rgba($puppet-n700, 0.4);
+//   fill: rgba($puppet-n700, 0.4);
+// }
+//
+// .rc-toolbar > .rc-tabs > .rc-tabs-panel {
+//   border-top: 0;
+//   padding: 0;
+// }
 
 .rc-toolbar-actions {
   display: flex;

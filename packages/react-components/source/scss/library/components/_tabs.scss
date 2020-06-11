@@ -25,6 +25,11 @@
   padding-left: $puppet-common-spacing-base * 6;
   padding-right: $puppet-common-spacing-base * 6;
   position: relative;
+
+  .rc-button-content {
+    align-items: center;
+    display: flex;
+  }
 }
 
 .rc-tabs-button-active::after {

@@ -55,7 +55,7 @@ const [open, setOpen] = React.useState(false);
 <Columns>
   <Columns.Column>
     <Toolbar border>
-      <Tabs>
+      <Tabs type="secondary">
         <Tabs.Tab icon="home" title="Tab 1">
           <Text>This is the first toolbar tab.</Text>
         </Tabs.Tab>
