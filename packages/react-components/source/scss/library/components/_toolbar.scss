@@ -53,10 +53,6 @@
     content: none;
   }
 
-  &.rc-tabs-button-active:not(:disabled) {
-    background-color: $puppet-b100 !important;
-  }
-
   &:focus {
     border-right-color: $puppet-n400;
     box-shadow: $puppet-common-focus-outline-inset;
