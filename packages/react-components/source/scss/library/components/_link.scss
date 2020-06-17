@@ -10,19 +10,28 @@
   padding: 0;
 }
 
-.rc-link-size-medium {
+.rc-link {
   @include puppet-type-body();
+  @include puppet-type-link();
+}
+
+.rc-link-size-large {
+  @include puppet-type-large();
+  @include puppet-type-link();
+}
+
+.rc-link-size-medium {
+  @include puppet-type-medium();
+  @include puppet-type-link();
 }
 
 .rc-link-size-small {
   @include puppet-type-small();
+  @include puppet-type-link();
 }
 
 .rc-link-size-tiny {
   @include puppet-type-tiny();
-}
-
-.rc-link {
   @include puppet-type-link();
 }
 

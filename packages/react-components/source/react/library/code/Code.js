@@ -6,7 +6,7 @@ const propTypes = {
   /** Html element or react component to render */
   as: PropTypes.elementType,
   /** Code Size */
-  size: PropTypes.oneOf(['medium', 'small']),
+  size: PropTypes.oneOf(['tiny', 'small', 'regular', 'medium', 'large']),
   /** Code Type */
   type: PropTypes.oneOf(['inline', 'block']),
   /** Code body */
@@ -22,7 +22,7 @@ const defaultProps = {
   type: 'inline',
   children: '',
   className: '',
-  size: 'medium',
+  size: 'regular',
   style: {},
 };
 
