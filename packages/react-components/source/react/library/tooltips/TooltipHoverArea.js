@@ -7,15 +7,13 @@ import FadeInAndOut from '../FadeInAndOut';
 
 const propTypes = {
   /** Position of tooltip relative to the activating element */
-  anchor: PropTypes.oneOf(['bottom', 'right']),
+  anchor: PropTypes.oneOf(['bottom', 'right', 'left', 'top']),
   /** Optional onClick for the activating element */
   onClick: PropTypes.func,
   /** The content of the tooltip */
-  tooltip: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-    .isRequired,
+  tooltip: PropTypes.node.isRequired,
   /** The activating element for the tooltip */
-  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
-    .isRequired,
+  children: PropTypes.node.isRequired,
   /** Optional additional className */
   className: PropTypes.string,
   /** Optional additional inline style */
