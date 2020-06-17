@@ -7,7 +7,7 @@ const TOOLTIP_OFFSET = 6;
 
 const propTypes = {
   anchor: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-  target: PropTypes.element.isRequired,
+  target: PropTypes.instanceOf(Element).isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
   style: PropTypes.shape({}),
@@ -30,7 +30,7 @@ const getPosition = (anchor, target, tooltip) => {
   switch (anchor) {
     case 'top': {
       return {
-        bottom: top - TOOLTIP_OFFSET,
+        top: top - tooltipHeight - TOOLTIP_OFFSET,
         left: left + width / 2 - tooltipWidth / 2,
       };
     }
@@ -42,7 +42,7 @@ const getPosition = (anchor, target, tooltip) => {
     }
     case 'left': {
       return {
-        right: left - TOOLTIP_OFFSET,
+        left: left - tooltipWidth - TOOLTIP_OFFSET,
         top: top + height / 2 - tooltipHeight / 2,
       };
     }
@@ -68,10 +68,14 @@ const Tooltip = ({ anchor, target, children, className, style }) => {
 
     if (target) {
       bindParentScroll(target, setPosition);
+      target.addEventListener('mouseenter', setPosition);
     }
 
     return () => {
       unbindParentScroll(target, setPosition);
+      if (target) {
+        target.removeEventListener('mouseenter', setPosition);
+      }
     };
   }, [anchor, target, children]);
 
