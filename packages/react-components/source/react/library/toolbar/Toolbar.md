@@ -20,6 +20,24 @@ import Button from '../button';
 </Toolbar>;
 ```
 
+## Secondary toolbar
+
+The Toolbar comes in a "secondary" visual variant:
+
+```jsx
+import Button from '../button';
+
+<Toolbar type="secondary" border>
+  <Toolbar.Actions>
+    <Button innerFocus type="transparent">
+      Toolbar button
+    </Button>
+    <Button innerFocus type="transparent" icon="download" />
+    <Button innerFocus type="transparent" icon="gear" />
+  </Toolbar.Actions>
+</Toolbar>;
+```
+
 ## Toolbar with Tabs
 
 Note: If tab panels are expected to expand to full height, then Toolbar (the
@@ -37,7 +55,7 @@ const [open, setOpen] = React.useState(false);
 <Columns>
   <Columns.Column>
     <Toolbar border>
-      <Tabs>
+      <Tabs type="secondary">
         <Tabs.Tab icon="home" title="Tab 1">
           <Text>This is the first toolbar tab.</Text>
         </Tabs.Tab>
