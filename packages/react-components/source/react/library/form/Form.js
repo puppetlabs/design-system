@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Alert from '../alert';
@@ -114,11 +114,18 @@ const Form = props => {
 
   const previousInitialValues = usePrevious(initialValues);
   const isControlled = !!valuesProp;
-  const values = isControlled ? flatten(valuesProp, fieldPaths) : valuesState;
 
   if (validate && shallowDiff(initialValues, previousInitialValues)) {
     setValidate(false);
   }
+
+  useEffect(() => {
+    if (shallowDiff(initialValues, previousInitialValues)) {
+      setValues(initialValues);
+    }
+  }, [initialValues, validate]);
+
+  const values = isControlled ? flatten(valuesProp, fieldPaths) : valuesState;
 
   const onChange = contextualizeOnChange(
     values,
