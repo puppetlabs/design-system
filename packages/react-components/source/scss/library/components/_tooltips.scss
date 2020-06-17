@@ -1,37 +1,24 @@
 $puppet-tooltip-hint-bg: rgba($puppet-black, 0.9) !default;
 $puppet-tooltip-hint-color: $puppet-n400 !default;
-$puppet-tooltip-hint-padding: $puppet-common-spacing-base $puppet-common-spacing-base * 2 !default;
+$puppet-tooltip-hint-padding: $puppet-common-spacing-base
+  $puppet-common-spacing-base * 2 !default;
 $puppet-tooltip-hint-radius: $puppet-common-border-radius !default;
-$puppet-tooltip-hint-font-size: 12px !default;
 $puppet-tooltip-hint-elevation: 24 !default;
-$puppet-tooltip-hint-max-width: 168px !default;
-
-.rc-tooltip-container {
-  position: absolute;
-}
 
 .rc-tooltip-area {
   display: inline-block;
+  position: relative;
 }
 
 .rc-tooltip {
+  @include puppet-type-small();
+
   background: $puppet-tooltip-hint-bg;
   border-radius: $puppet-tooltip-hint-radius;
   color: $puppet-tooltip-hint-color;
-  display: inline;
-  font-size: $puppet-tooltip-hint-font-size;
-  max-width: $puppet-tooltip-hint-max-width;
+  overflow: hidden;
   padding: $puppet-tooltip-hint-padding;
   position: absolute;
+  white-space: nowrap;
   z-index: $puppet-tooltip-hint-elevation;
-}
-
-// https://davidwalsh.name/detect-scrollbar-width
-.rc-tooltip-scrollbar-measurer {
-  height: 100px;
-  overflow: scroll;
-  position: absolute;
-  top: -9999px;
-  visibility: hidden;
-  width: 100px;
 }
