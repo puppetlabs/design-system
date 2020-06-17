@@ -7,7 +7,6 @@ $puppet-tooltip-hint-elevation: 24 !default;
 
 .rc-tooltip-area {
   display: inline-block;
-  position: relative;
 }
 
 .rc-tooltip {
@@ -18,7 +17,7 @@ $puppet-tooltip-hint-elevation: 24 !default;
   color: $puppet-tooltip-hint-color;
   overflow: hidden;
   padding: $puppet-tooltip-hint-padding;
-  position: absolute;
+  position: fixed;
   white-space: nowrap;
   z-index: $puppet-tooltip-hint-elevation;
 }

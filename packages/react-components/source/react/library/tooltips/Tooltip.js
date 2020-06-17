@@ -1,6 +1,7 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import { bindParentScroll, unbindParentScroll } from '../../helpers/statics';
 
 const TOOLTIP_OFFSET = 6;
 
@@ -23,33 +24,33 @@ const getPosition = (anchor, target, tooltip) => {
   const targetRect = target ? target.getBoundingClientRect() : {};
   const tooltipRect = tooltip ? tooltip.getBoundingClientRect() : {};
 
-  const { width = 0, height = 0 } = targetRect;
+  const { top, left, bottom, right, width = 0, height = 0 } = targetRect;
   const { width: tooltipWidth = 0, height: tooltipHeight = 0 } = tooltipRect;
 
   switch (anchor) {
     case 'top': {
       return {
-        bottom: height + TOOLTIP_OFFSET,
-        left: width / 2 - tooltipWidth / 2,
+        bottom: top - TOOLTIP_OFFSET,
+        left: left + width / 2 - tooltipWidth / 2,
       };
     }
     case 'bottom': {
       return {
-        top: height + TOOLTIP_OFFSET,
-        left: width / 2 - tooltipWidth / 2,
+        top: bottom + TOOLTIP_OFFSET,
+        left: left + width / 2 - tooltipWidth / 2,
       };
     }
     case 'left': {
       return {
-        right: width + TOOLTIP_OFFSET,
-        top: height / 2 - tooltipHeight / 2,
+        right: left - TOOLTIP_OFFSET,
+        top: top + height / 2 - tooltipHeight / 2,
       };
     }
     case 'right':
     default: {
       return {
-        left: width + TOOLTIP_OFFSET,
-        top: height / 2 - tooltipHeight / 2,
+        left: right + TOOLTIP_OFFSET,
+        top: top + height / 2 - tooltipHeight / 2,
       };
     }
   }
@@ -57,8 +58,22 @@ const getPosition = (anchor, target, tooltip) => {
 
 const Tooltip = ({ anchor, target, children, className, style }) => {
   const ref = useRef(null);
+  const [position, setPositionState] = useState({});
 
-  const position = getPosition(anchor, target, ref.current);
+  const setPosition = () =>
+    setPositionState(getPosition(anchor, target, ref.current));
+
+  useEffect(() => {
+    setPosition();
+
+    if (target) {
+      bindParentScroll(target, setPosition);
+    }
+
+    return () => {
+      unbindParentScroll(target, setPosition);
+    };
+  }, [anchor, target, children]);
 
   return (
     <div
