@@ -14,7 +14,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  anchor: 'right',
+  anchor: 'top',
   children: null,
   className: '',
   style: {},
