@@ -17,10 +17,17 @@
 }
 
 .rc-sidepanel-toolbar {
-  background-color: $puppet-n50;
   border-bottom: $puppet-common-border;
   display: flex;
   justify-content: space-between;
+}
+
+.rc-sidepanel-toolbar-primary {
+  background-color: $puppet-white;
+}
+
+.rc-sidepanel-toolbar-secondary {
+  background-color: $puppet-n50;
 }
 
 .rc-sidepanel-border .rc-sidepanel-toolbar {
