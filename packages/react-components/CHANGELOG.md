@@ -1,12 +1,20 @@
+# 5.21.0 (2020-06-17)
+
+- [TooltipHoverArea] Change default `anchor` from "right" to "top" (by [@nmuldavin](https://github.com/nmuldavin) in [#258](https://github.com/puppetlabs/design-system/pull/258))
+- [TooltipHoverArea] Fix tooltip positioning (by [@nmuldavin](https://github.com/nmuldavin) in [#258](https://github.com/puppetlabs/design-system/pull/258))
+- [Toolbar] Add Toolbar `type` variant ("primary", "secondary"), update toolbar tabs style (by [@nmuldavin](https://github.com/nmuldavin) in [#257](https://github.com/puppetlabs/design-system/pull/257))
+- [Form] Fix Form updating of initialValues (by [@nmuldavin](https://github.com/nmuldavin) in [#258](https://github.com/puppetlabs/design-system/pull/258))
+- [Checkbox] Allow node labels in checkbox (which supports inline links within checkbox labels) (by [@nmuldavin](https://github.com/nmuldavin) in [#256](https://github.com/puppetlabs/design-system/pull/256))
+
 # [5.20.3](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.20.1...@puppet/react-components@5.20.3) (2020-05-14)
 
-- Add bullet icon
-- Add new type block to Code
+- [Icon] Add bullet icon
+- [Code] Add new type block to Code
 - First release of CodeEditor as @puppet/react-code-editor 0.1.0
 
 # [5.20.1](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.20.0...@puppet/react-components@5.20.1) (2020-05-08)
 
-- Add Relay logo
+- [Logo] Add Relay logo
 
 # [5.20.0](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.6...@puppet/react-components@5.20.0) (2020-04-21)
 

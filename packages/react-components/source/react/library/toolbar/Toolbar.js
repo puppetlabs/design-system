@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import Actions from './Actions';
 
 const propTypes = {
+  type: PropTypes.oneOf(['primary', 'secondary']),
   /** Should the Toolbar have a top and bottom border */
   border: PropTypes.bool,
   /** Children may include Tabs or Toolbar.Actions */
@@ -15,15 +16,16 @@ const propTypes = {
 };
 
 const defaultProps = {
+  type: 'primary',
   border: false,
   children: null,
   className: '',
   height: null,
 };
 
-const Toolbar = ({ border, children, className, height }) => (
+const Toolbar = ({ type, border, children, className, height }) => (
   <div
-    className={classNames('rc-toolbar', className, {
+    className={classNames('rc-toolbar', `rc-toolbar-${type}`, className, {
       'rc-toolbar-border': border,
     })}
     style={{ height }}

@@ -1,9 +1,16 @@
 /* stylelint-disable selector-max-compound-selectors */
 
 .rc-toolbar {
-  background-color: $puppet-n50;
   border-bottom: $puppet-common-border;
   display: flex;
+}
+
+.rc-toolbar-primary {
+  background-color: $puppet-white;
+}
+
+.rc-toolbar-secondary {
+  background-color: $puppet-n50;
 }
 
 .rc-toolbar-border {
@@ -20,24 +27,29 @@
 }
 
 .rc-toolbar > .rc-tabs > .rc-tabs-list {
-  background-color: $puppet-n50;
-  border-bottom: $puppet-common-border;
   z-index: 2;
+}
+
+.rc-toolbar-primary .rc-tabs-list {
+  background-color: $puppet-white;
+}
+
+.rc-toolbar-secondary .rc-tabs-list {
+  background-color: $puppet-n50;
 }
 
 .rc-toolbar-border > .rc-tabs > .rc-tabs-list {
   border-top: $puppet-common-border;
 }
 
-.rc-toolbar > .rc-tabs > .rc-tabs-list > .rc-tabs-button {
+.rc-toolbar .rc-tabs-button {
   border: 0;
   border-radius: 0 !important;
   border-right: $puppet-common-border;
-  color: $puppet-b500;
   margin: 0 !important;
   padding: 6px 24px;
 
-  &::after {
+  &.rc-tabs-button-active::after {
     content: none;
   }
 
@@ -46,46 +58,40 @@
     box-shadow: $puppet-common-focus-outline-inset;
   }
 
-  .rc-tabs-button-icon {
-    fill: $puppet-b500;
-    margin-right: $puppet-common-spacing-base * 2;
-    vertical-align: text-bottom;
-  }
-
   &:focus .rc-tabs-button-icon {
     left: 8px;
   }
 }
 
-.rc-toolbar > .rc-tabs > .rc-tabs-list > .rc-tabs-button-active {
-  background-color: $puppet-b500;
-  border-right-color: $puppet-b500;
-  color: $puppet-white;
-  padding-left: 25px;
-  z-index: 1;
-
-  .rc-tabs-button-icon {
-    fill: $puppet-white;
-  }
-}
-
 .rc-toolbar > .rc-tabs > .rc-tabs-panel {
-  border-top: 0;
   padding: 0;
 }
 
 .rc-toolbar-actions {
   display: flex;
 
+  .rc-button {
+    border: 0;
+    padding: 6px 16px;
+  }
+
+  .rc-button-icon.rc-button-full {
+    padding-left: 32px;
+  }
+
+  .rc-button-trailing-icon.rc-button-full {
+    padding-right: 32px;
+  }
+
+  .rc-button-icon-svg {
+    left: 8px;
+  }
+
   &.rc-toolbar-actions-left {
     margin: 0 auto 0 0;
 
     .rc-button-inner-focus {
       border-right: $puppet-common-border;
-    }
-
-    .rc-button-inner-focus:focus {
-      padding-right: 15px;
     }
   }
 
@@ -94,10 +100,6 @@
 
     .rc-button-inner-focus {
       border-left: $puppet-common-border;
-    }
-
-    .rc-button-inner-focus:focus {
-      padding-left: 15px;
     }
   }
 
