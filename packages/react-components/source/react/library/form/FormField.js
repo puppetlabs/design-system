@@ -43,6 +43,8 @@ const propTypes = {
   onChange: PropTypes.func,
   /** Optional additional className */
   className: PropTypes.string,
+  /** Optional additional className for inner field */
+  innerClassName: PropTypes.string,
   /** Optional additional inline styles */
   style: PropTypes.shape({}),
   /** All additional props are propagated to the inner input elements. See each option for details. TODO: figure out how to get this set up in styleguidist */
@@ -62,6 +64,7 @@ const defaultProps = {
   inlineLabelWidth: null,
   onChange() {},
   className: '',
+  innerClassName: '',
   style: {},
 };
 
@@ -108,23 +111,24 @@ const getFieldStyle = (style, inlineLabelWidth, tabbed) => {
 
 const FormField = props => {
   const {
-    type,
-    name,
-    label,
-    labelType,
     className,
+    description,
+    error,
+    innerClassName,
     inline,
     inlineLabelWidth,
-    error,
-    description,
+    label,
+    labelType,
+    name,
     style,
+    type,
   } = props;
   const typeName = getTypeName(type);
   const tabbed = inline && (type === 'checkbox' || type === 'switch');
   const labelStyle = getLabelStyle(inlineLabelWidth, inline);
   const fieldStyle = getFieldStyle(style, inlineLabelWidth, tabbed);
 
-  const element = <FormFieldElement {...props} />;
+  const element = <FormFieldElement {...props} className={innerClassName} />;
 
   if (type === 'hidden') {
     return element;
