@@ -51,11 +51,11 @@ const FormFieldElement = props => {
 
   const elementProps = omit(
     [
+      'description',
       'inline',
       'inlineLabelWidth',
+      'innerClassName',
       'labelType',
-      'description',
-      'className',
       'style',
       'requiredFieldMessage',
       'validateOnLoad',
