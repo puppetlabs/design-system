@@ -1,3 +1,7 @@
+# 5.21.1 (2020-06-30)
+
+- [Form] Add `innerClassName` prop to Form.Field (by [@vine77](https://github.com/vine77) in [#261](https://github.com/puppetlabs/design-system/pull/261))
+
 # 5.21.0 (2020-06-17)
 
 - [TooltipHoverArea] Change default `anchor` from "right" to "top" (by [@nmuldavin](https://github.com/nmuldavin) in [#258](https://github.com/puppetlabs/design-system/pull/258))
