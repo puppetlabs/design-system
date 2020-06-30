@@ -73,15 +73,16 @@ const defaultProps = {
  */
 export const formInputInterface = omit(
   [
-    'requiredFieldMessage',
-    'validateOnLoad',
-    'validator',
     'className',
     'description',
-    'style',
-    'labelType',
     'inline',
     'inlineLabelWidth',
+    'innerClassName',
+    'labelType',
+    'requiredFieldMessage',
+    'style',
+    'validateOnLoad',
+    'validator',
   ],
   propTypes,
 );
