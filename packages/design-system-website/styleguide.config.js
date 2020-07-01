@@ -84,6 +84,14 @@ module.exports = {
         //   content: 'foundations/Accessibility.md',
         // },
         {
+          name: 'Contributing',
+          content: 'foundations/Contributing.md',
+        },
+        {
+          name: 'Design',
+          content: 'foundations/Design.md',
+        },
+        {
           name: 'Content Writing',
           content: 'foundations/ContentWriting.md',
         },
