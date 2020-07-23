@@ -1,0 +1,17 @@
+.copy {
+  display: flex;
+}
+
+.copy-center {
+  align-items: center;
+}
+
+.copy-flex-end {
+  align-items: flex-end;
+}
+
+.copy-input {
+  flex: 1;
+  margin-bottom: 0;
+  margin-right: 12px;
+}
