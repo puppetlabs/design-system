@@ -80,6 +80,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   headerCheckState={false}
   headerIndeterminateState={true}
   horizontalScroll={false}
+  isLoading={false}
+  loadingMessage="Loading"
   onHeaderChecked={[Function]}
   onRowChecked={[Function]}
   onSort={[Function]}
@@ -124,6 +126,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           ]
         }
         headerIndeterminateState={true}
+        isLoading={false}
+        loadingMessage="Loading"
         onSelectAll={[Function]}
         onSort={[Function]}
         selectAllValue={false}
@@ -433,6 +437,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   headerCheckState={false}
   headerIndeterminateState={true}
   horizontalScroll={false}
+  isLoading={false}
+  loadingMessage="Loading"
   onHeaderChecked={[Function]}
   onRowChecked={[Function]}
   onSort={[Function]}
@@ -477,6 +483,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
           ]
         }
         headerIndeterminateState={true}
+        isLoading={false}
+        loadingMessage="Loading"
         onSelectAll={[Function]}
         onSort={[Function]}
         selectAllValue={false}
