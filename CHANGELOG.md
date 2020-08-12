@@ -1,3 +1,7 @@
+# 5.22.0 (2020-08-12)
+
+- [Copy] Add Copy component (by [@nkanderson](https://github.com/nkanderson) in [#270](https://github.com/puppetlabs/design-system/pull/270))
+
 # 5.21.1 (2020-06-30)
 
 - [Form] Add `innerClassName` prop to Form.Field (by [@vine77](https://github.com/vine77) in [#261](https://github.com/puppetlabs/design-system/pull/261))
