@@ -9,20 +9,22 @@ In the best case scenario, the design system will have enough existing assets to
 Designers generally initiate new feature work by creating a wireframe using design-system assets.
 
 1. Always attempt to use existing components: new ones should be a last resort
-1. Use the built in type and layer styles. This is the only way to have your designs automatically update.
-1. Use the built in symbols. Don’t convert them to layers. Learn to use and love overrides.
-1. If you want to show interaction, make use of the Cursor symbols (Symbols / Cursors) to provide hints of the interactivity.
-1. To indicate a components interactive state, use the built in symbol overrides.
+2. Use the built in type and layer styles. This is the only way to have your designs automatically update.
+3. Use the built in symbols. Don’t convert them to layers. Learn to use and love overrides.
+4. If you want to show interaction, make use of the Cursor symbols (Symbols / Cursors) to provide hints of the interactivity.
+5. To indicate a components interactive state, use the built in symbol overrides.
 
 ### Engineering
 
 Once handed a design comp it is generally the engineers responsibility to leverage existing design system code assets in the implementation of a new feature.
 
-1. Attempt to find a pre-baked component corresponding to the design you have been given. This website [react-components documentation](http://designsystem.puppetlabs.net/react-components) is a great primary resource. In addition there are several pre-built pages available from [react-layouts](https://github.com/puppetlabs/design-system/tree/master/packages/react-layouts).
-2. If a pre-baked component is not available, attempt to leverage the design system patterns encoded in our [sass-variable](https://github.com/puppetlabs/design-system/tree/master/packages/sass-variables) package. These sass variables and mixins encode our lowest-level foundational elements including typography, color palettes, and common patterns such as borders and focus outlines.
+1. Attempt to find a pre-baked component corresponding to the design you have been given. This website's documentation of react-components is a great primary resource. In addition there are several pre-built pages available from [react-layouts](https://github.com/puppetlabs/design-system/tree/master/packages/react-layouts).
+2. If a pre-baked component is not available, attempt to leverage the design system patterns encoded in our [sass-variable](https://github.com/puppetlabs/design-system/tree/master/packages/sass-variables) package. These Sass variables and mixins encode our lowest-level foundational elements including typography, color palettes, and common patterns such as borders and focus outlines.
 3. If you still can't find an existing asset, alert your designer: it may be a mistake, or they may not have done due-diligence in attempting to use existing patterns.
 
-For instructions on getting your app set up to consume design system assets please refer to the [main README](https://github.com/puppetlabs/design-system).
+For instructions on getting your app set up to consume design system assets please refer to the [README.md](https://github.com/puppetlabs/design-system/blob/development/README.md).
+
+For contributing, see [CONTRIBUTING.md](https://github.com/puppetlabs/design-system/blob/development/CONTRIBUTING.md).
 
 ## Extending the System
 
@@ -39,8 +41,8 @@ Once due diligence has been done attempting to use existing patterns, a designer
    - **Impact** - Does it impair or otherwise impact work from existing teams? Does it break an established pattern? How much work would need to be invested for it to be completed?
 1. Start a conversation with the design system leads about the system's failing: it is useful to track these things at a high level.
 1. Design and experiment as needed until the new pattern is hardened.
-   - When making new components, create new symbols in your working sketch file that can be ported to the library for use by others. Follow the [documented design criteria](https://github.com/puppetlabs/design-system/wiki/Design-criteria).
-   - You can create new icons if they are unique and no other icon serves your purpose. Create them as symbols, following the [icon creation guidelines](https://github.com/puppetlabs/design-system/wiki/Icons).
+   - When making new components, create new symbols that can be ported to the library for use by others. Follow the [documented design criteria](#/Foundations/Design).
+   - You can create new icons if they are unique and no other icon serves your purpose. Create them as symbols, following the [icon creation guidelines](#/Foundations/Iconography).
 1. Handoff the design to engineering
 
 ### Engineering
@@ -62,9 +64,9 @@ Once a pattern has been hardened and validated, it may be a good candidate for a
 
 New design and code patterns should be submitted in tandem to maintain parity. As implementation and adoption of these designs will impact multiple teams, a high degree of scrutiny will be applied to the design and code to assure that it meets our criteria.
 
-- [Design contribution criteria](https://github.com/puppetlabs/design-system/wiki/Design-criteria)
-- [Engineering contribution criteria](https://github.com/puppetlabs/design-system/wiki/Engineering-criteria)
+- [Design contribution criteria](#/Foundations/Design)
+- [Engineering contribution criteria](https://github.com/puppetlabs/design-system/blob/development/CONTRIBUTING.md)
 
 ### Review
 
-All contributions must be reviewed prior to inclusion. Reviews consist of representatives from each product team with final decisions belonging to the design system leads. You can refer to our [list of contacts](https://github.com/puppetlabs/design-system/wiki/People) for more information.
+All contributions must be reviewed prior to inclusion. Reviews consist of representatives from each product team with final decisions belonging to the design system leads.

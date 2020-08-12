@@ -45,19 +45,19 @@ Consider all of the following:
 
 ## Symbols
 
-Most components eventually become symbols that become part of the Sketch library.
+Most components eventually become symbols that become part of the design system library.
 
 ### Symbol names
 
 - Follow existing naming conventions where possible.
-- The name determines where it sits in the symbol menu's order. A forward slash (/) tells Sketch to use a folder structure.
+- The name determines where it sits in the symbol menu's order.
 
 ### UI states & variations
 
 Variations to state or layout, such as hover or focus, should be created as separate symbols. This allows them to be easily swapped out.
 
 - Variations should be instances of the base symbol with overrides applied.
-- All variations should be the same dimensions. Sketch interprets symbols with the same dimension as being hot-swappable.
+- All variations should be the same dimensions.
 
 **Example**: When creating the hover state for a button, place the default button symbol in the Hover symbols artboard. Use an override to change the appropriate colors. In the symbol menu, lock your overrides to prevent accidental changes by other designers.
 
@@ -90,11 +90,9 @@ All components should be aligned to our base 4px grid.
 - 16px between discrete elements in a row or column (eg. legend items in a chart)
 - 16px gutter between content containers or cards
 
----
+## Making updates
 
-# Making updates
-
-When updating symbols and styles within sketch be aware that removing layers will adversely affect downstream users. For instance if you need to change an existing text layer, do not delete it or replace it with a new layer. This breaks the connection to instances of that symbol in other files. Instead manipulate and adjust the existing layer to meet your needs. The same holds true for nested symbols, vector shapes, etc.
+When updating symbols and styles, be aware that removing layers will adversely affect downstream users. For instance if you need to change an existing text layer, do not delete it or replace it with a new layer. This breaks the connection to instances of that symbol in other files. Instead manipulate and adjust the existing layer to meet your needs. The same holds true for nested symbols, vector shapes, etc.
 
 - Do not delete existing layers
 - Use the replace function to swap out nested symbols
