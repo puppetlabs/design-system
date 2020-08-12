@@ -12,7 +12,7 @@ Get started by cloning the repo and following the [quickstart guide](https://git
 
 ### Release notes
 
-See the changelog at [CHANGELOG.md](https://github.com/puppetlabs/design-system/blob/development/CHANGELOG.md).
+See the changelog at [CHANGELOG.md](https://github.com/puppetlabs/design-system/blob/master/CHANGELOG.md).
 
 ### Contribute
 
