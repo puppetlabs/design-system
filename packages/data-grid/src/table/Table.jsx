@@ -59,7 +59,7 @@ const propTypes = {
     sortDataKey: string,
   }),
   /** Boolean to determine whether to display loading state */
-  isLoading: bool,
+  loading: bool,
   /** Optional string to provide alternative message when loading */
   loadingMessage: string,
   /** Callback function that will return direction and dataKey on every sort action  */
@@ -95,7 +95,7 @@ const defaultProps = {
   fixedColumn: false,
   emptyStateHeader: 'No data available',
   emptyStateMessage: 'Prompt to action or solution',
-  isLoading: false,
+  loading: false,
   loadingMessage: 'Loading',
   rowClassName: () => {},
   selectable: false,
@@ -142,7 +142,7 @@ class Table extends Component {
       rowKey,
       className,
       sortedColumn,
-      isLoading,
+      loading,
       loadingMessage,
       fixedColumn,
       horizontalScroll,
@@ -178,7 +178,7 @@ class Table extends Component {
           {...rest}
         >
           <ColumnHeader
-            isLoading={isLoading}
+            loading={loading}
             loadingMessage={loadingMessage}
             columns={columns}
             selectable={selectable}
@@ -189,14 +189,17 @@ class Table extends Component {
             headerIndeterminateState={headerIndeterminateState}
           />
           <tbody>
-            {isLoading && (
+            {loading && (
               <tr className="rc-table-cell">
                 <th
-                  ref={this.loadingHeaderRef}
                   className="dg-table-loading-container"
                   colSpan={columns.length}
                 >
-                  <div className="dg-table-loading-inner-container">
+                  <div
+                    className="dg-table-loading-inner-container"
+                    aria-live="polite"
+                    aria-busy={loading}
+                  >
                     <div>
                       <Loading className="dg-loading-size" />
                     </div>

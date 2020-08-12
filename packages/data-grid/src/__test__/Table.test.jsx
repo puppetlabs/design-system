@@ -87,7 +87,7 @@ const wrapper4 = mount(<Table columns={sortedColumns} data={data} />);
 const wrapper6 = mount(
   <Table columns={columns} data={data} rowClassName="testRowClassName" />,
 );
-const wrapper7 = mount(<Table columns={columns} data={data} isLoading />);
+const wrapper7 = mount(<Table columns={columns} data={data} loading />);
 
 describe('Snapshot test', () => {
   test('Check component matches previous HTML snapshot', () => {

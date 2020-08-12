@@ -145,7 +145,7 @@ const emptyStateMessage = 'Reconnect to service';
 
 ### Loading State
 
-In the case where a query is in progress you may need to have the table in a loading state. You can trigger this loading state by adding a Boolean value to the isLoading prop. You can also customize the message displayed to the user by passing your own string into the loadingMessage prop by default this will be "Loading".
+In the case where a query is in progress you may need to have the table in a loading state. You can trigger this loading state by adding a Boolean value to the loading prop. You can also customize the message displayed to the user by passing your own string into the loadingMessage prop by default this will be "Loading".
 
 ```jsx
 import { Link } from '@puppet/react-components';
@@ -215,7 +215,7 @@ const columns = [
   { label: 'Linked field', dataKey: 'Link' },
 ];
 
-<Table data={data} columns={columns} isLoading={true} />;
+<Table data={data} columns={columns} loading={true} />;
 ```
 
 ### Custom Row Styling
