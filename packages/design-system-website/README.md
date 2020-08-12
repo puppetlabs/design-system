@@ -12,7 +12,7 @@ Get started by cloning the repo and following the [quickstart guide](https://git
 
 ### Release notes
 
-See the changelog for each package, like react-components' [CHANGELOG.md](https://github.com/puppetlabs/design-system/blob/master/packages/react-components/CHANGELOG.md).
+See the changelog at [CHANGELOG.md](https://github.com/puppetlabs/design-system/blob/development/CHANGELOG.md).
 
 ### Contribute
 

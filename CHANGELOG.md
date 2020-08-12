@@ -29,6 +29,11 @@
 - [Alert] Fix icon for info Alert, an issue introduced in 5.0.0-beta.3 (by [@vine77](https://github.com/vine77) in [#243](https://github.com/puppetlabs/design-system/pull/243))
 - [Badge] Remove outer margin from Badge component while retaining margin between adjacent Badge components (by [@vine77](https://github.com/vine77) in [#241](https://github.com/puppetlabs/design-system/pull/241))
 
+# react-layouts 2.0.0-alpha.0 (2020-04-05)
+
+- Remove all auth layouts. Replace with single Authentication layout
+- Add PageLayout component, upstreamed from project nebula
+
 # [5.19.4](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.3...@puppet/react-components@5.19.4) (2020-04-05)
 
 - [Button] Hide inner focus outline on firefox
