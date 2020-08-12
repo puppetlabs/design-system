@@ -66,8 +66,16 @@
     left: $puppet-common-spacing-base * 2;
   }
 
+  rc-input-icon.leading.button {
+    left: $puppet-common-spacing-base * 0;
+  }
+
   .rc-input-icon.trailing {
     right: $puppet-common-spacing-base * 2;
+  }
+
+  .rc-input-icon.trailing.button {
+    right: $puppet-common-spacing-base * 0;
   }
 
   .rc-input-icon.leading ~ .rc-input {
@@ -77,4 +85,14 @@
   .rc-input-icon.trailing ~ .rc-input {
     padding-right: 31px;
   }
+
+  .rc-input-button-icon {
+    border: none;
+  }
+
+  .rc-input-button-icon:hover {
+    background: inherit;
+    border: none;
+  }
+
 }

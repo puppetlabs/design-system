@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Icon from '../icon';
+import Button from '../button';
 
 /**
  * This corresponds to a set of native input types plus 'multiline',
@@ -37,6 +38,8 @@ const propTypes = {
   icon: PropTypes.string,
   /** Optional icon rendered after input area */
   trailingIcon: PropTypes.string,
+  /** Whether or not the icon is rendered as a button */
+  iconButton: PropTypes.bool,
   /** Optional additional className */
   className: PropTypes.string,
   /** Optional inline styles */
@@ -45,6 +48,8 @@ const propTypes = {
   inputRef: PropTypes.func,
   /** Change handler. Passed in order: new value, original event. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
   onChange: PropTypes.func,
+  /** Function for button click (use iconButton to make icon clickable) */
+  onClickIconButton: PropTypes.func,
 };
 
 const defaultProps = {
@@ -56,10 +61,12 @@ const defaultProps = {
   error: false,
   icon: null,
   trailingIcon: null,
+  iconButton: false,
   style: {},
   className: '',
   inputRef() {},
   onChange() {},
+  onClickIconButton() {},
 };
 
 /**
@@ -81,34 +88,54 @@ const Input = ({
   error,
   icon,
   trailingIcon,
+  iconButton,
   className,
   style,
   inputRef,
   onChange,
+  onClickIconButton,
   ...otherProps
 }) => {
   const isMultiline = type === 'multiline';
 
   const Element = isMultiline ? 'textarea' : 'input';
 
+  const lIcon = iconButton ? (
+    <Button
+      className="rc-input-icon rc-input-button-icon leading button"
+      icon={icon}
+      type="transparent"
+      onClick={onClickIconButton()}
+    />
+  ) : (
+    <Icon
+      className="rc-input-icon leading"
+      width="16px"
+      height="16px"
+      type={icon}
+    />
+  );
+
+  const tIcon = iconButton ? (
+    <Button
+      className="rc-input-icon rc-input-button-icon trailing button"
+      icon={trailingIcon}
+      type="transparent"
+      onClick={onClickIconButton()}
+    />
+  ) : (
+    <Icon
+      className="rc-input-icon trailing"
+      width="16px"
+      height="16px"
+      type={trailingIcon}
+    />
+  );
+
   return (
     <div className={classNames('rc-input-container', className)} style={style}>
-      {icon && (
-        <Icon
-          className="rc-input-icon leading"
-          width="16px"
-          height="16px"
-          type={icon}
-        />
-      )}
-      {trailingIcon && (
-        <Icon
-          className="rc-input-icon trailing"
-          width="16px"
-          height="16px"
-          type={trailingIcon}
-        />
-      )}
+      {icon && lIcon}
+      {trailingIcon && tIcon}
       <Element
         id={name}
         name={name}
