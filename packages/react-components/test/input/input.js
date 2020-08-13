@@ -129,4 +129,13 @@ describe('<Input />', () => {
       shallow(<Input {...requiredProps} simple />).find('input'),
     ).to.have.className('rc-input-simple');
   });
+
+  it('should respond to click events if trailingIcon, iconButton, and onClickButtonIcon are provided', () => {
+    const onClick = sinon.spy();
+    const wrapper = mount(<Input {...requiredProps} trailingIcon="eye" iconButton onClickIconButton={onClick} />);
+
+    wrapper.find('button').simulate('click');
+
+    expect(onClick.called).to.equal(true);
+  });
 });
