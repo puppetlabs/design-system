@@ -108,19 +108,24 @@ const exampleStyle = { marginBottom: 10 };
 
 #### Trailing icon
 
-Optional trailing icons are meant to be interactive and used to manipulate the content of an input, for example a show/hide password control. (Note: This example is not currently set up to be interactive.)
+Optional trailing icons are meant to be interactive and used to manipulate the content of an input, for example a show/hide password control.
 
 ```jsx
 const exampleStyle = { marginBottom: 10 };
 
+const type = state['input-ex13-show'] ? 'text' : 'password';
+
 <div>
   <Input
     name="input-ex13"
+    type={type}
     value={state['input-ex13-value']}
     trailingIcon="eye"
-    placeholder="We will eventually use this for a masked input"
+    iconButton
+    placeholder="Use the trailing icon for showing/hiding passwords"
     style={exampleStyle}
     onChange={value => setState({ 'input-ex13-value': value })}
+    onClickIconButton={value => setState({ 'input-ex13-show': !state['input-ex13-show']})}
   />
 </div>;
 ```

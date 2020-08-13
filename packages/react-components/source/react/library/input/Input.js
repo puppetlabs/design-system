@@ -102,10 +102,10 @@ const Input = ({
 
   const lIcon = iconButton ? (
     <Button
-      className="rc-input-icon rc-input-button-icon leading button"
+      className="rc-input-icon rc-input-button-icon leading edge"
       icon={icon}
       type="transparent"
-      onClick={onClickIconButton()}
+      onClick={() => onClickIconButton()}
     />
   ) : (
     <Icon
@@ -118,10 +118,10 @@ const Input = ({
 
   const tIcon = iconButton ? (
     <Button
-      className="rc-input-icon rc-input-button-icon trailing button"
+      className="rc-input-icon rc-input-button-icon trailing edge"
       icon={trailingIcon}
       type="transparent"
-      onClick={onClickIconButton()}
+      onClick={() => onClickIconButton()}
     />
   ) : (
     <Icon
