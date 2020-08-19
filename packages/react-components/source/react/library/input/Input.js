@@ -36,10 +36,14 @@ const propTypes = {
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   /** Optional icon rendered before input area */
   icon: PropTypes.string,
-  /** Optional icon rendered after input area */
+  /** @deprecated Optional icon rendered after input area */
   trailingIcon: PropTypes.string,
-  /** Whether or not the icon is rendered as a button */
-  iconButton: PropTypes.bool,
+  /** Icon for rendered trailing button */
+  trailingButtonIcon: PropTypes.string,
+  /** Text for rendered trailing button. Can be used with or without trailingButtonIcon */
+  trailingButtonText: PropTypes.string,
+  /** Additional props for the trailing Button */
+  trailingButtonProps: PropTypes.shape({}),
   /** Optional additional className */
   className: PropTypes.string,
   /** Optional inline styles */
@@ -48,8 +52,8 @@ const propTypes = {
   inputRef: PropTypes.func,
   /** Change handler. Passed in order: new value, original event. Additionally, other event handlers and and props are propagated to the inner input element for use as needed */
   onChange: PropTypes.func,
-  /** Function for button click (use iconButton to make icon clickable) */
-  onClickIconButton: PropTypes.func,
+  /** Function for trailing button click */
+  onClickTrailingButton: PropTypes.func,
 };
 
 const defaultProps = {
@@ -61,12 +65,14 @@ const defaultProps = {
   error: false,
   icon: null,
   trailingIcon: null,
-  iconButton: false,
+  trailingButtonIcon: null,
+  trailingButtonText: '',
+  trailingButtonProps: {},
   style: {},
   className: '',
   inputRef() {},
   onChange() {},
-  onClickIconButton() {},
+  onClickTrailingButton() {},
 };
 
 /**
@@ -88,26 +94,23 @@ const Input = ({
   error,
   icon,
   trailingIcon,
-  iconButton,
+  trailingButtonIcon,
+  trailingButtonText,
+  trailingButtonProps,
   className,
   style,
   inputRef,
   onChange,
-  onClickIconButton,
+  onClickTrailingButton,
   ...otherProps
 }) => {
   const isMultiline = type === 'multiline';
 
   const Element = isMultiline ? 'textarea' : 'input';
 
-  const lIcon = iconButton ? (
-    <Button
-      className="rc-input-icon rc-input-button-icon leading edge"
-      icon={icon}
-      type="transparent"
-      onClick={() => onClickIconButton()}
-    />
-  ) : (
+  const showTrailingButton = !!trailingButtonIcon || !!trailingButtonText;
+
+  const lIcon = (
     <Icon
       className="rc-input-icon leading"
       width="16px"
@@ -116,26 +119,34 @@ const Input = ({
     />
   );
 
-  const tIcon = iconButton ? (
-    <Button
-      className="rc-input-icon rc-input-button-icon trailing edge"
-      icon={trailingIcon}
-      type="transparent"
-      onClick={() => onClickIconButton()}
-    />
-  ) : (
+  /** trailingIcon is deprecated */
+  const tIcon = (
     <Icon
-      className="rc-input-icon trailing"
+      className={`rc-input-icon trailing ${showTrailingButton &&
+        'with-trailing-button'}`}
       width="16px"
       height="16px"
       type={trailingIcon}
     />
   );
 
+  const trailingButton = (
+    <Button
+      className="rc-input-icon rc-input-button-icon trailing edge"
+      icon={trailingButtonIcon}
+      type="transparent"
+      onClick={() => onClickTrailingButton()}
+      {...trailingButtonProps}
+    >
+      {trailingButtonText}
+    </Button>
+  );
+
   return (
     <div className={classNames('rc-input-container', className)} style={style}>
       {icon && lIcon}
       {trailingIcon && tIcon}
+      {showTrailingButton && trailingButton}
       <Element
         id={name}
         name={name}

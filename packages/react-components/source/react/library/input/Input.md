@@ -120,12 +120,14 @@ const type = state['input-ex13-show'] ? 'text' : 'password';
     name="input-ex13"
     type={type}
     value={state['input-ex13-value']}
-    trailingIcon="eye"
-    iconButton
+    trailingButtonIcon="eye"
+    trailingButtonProps={{ 'aria-label': 'toggle show/hide text' }}
     placeholder="Use the trailing icon for showing/hiding passwords"
     style={exampleStyle}
     onChange={value => setState({ 'input-ex13-value': value })}
-    onClickIconButton={value => setState({ 'input-ex13-show': !state['input-ex13-show']})}
+    onClickTrailingButton={value =>
+      setState({ 'input-ex13-show': !state['input-ex13-show'] })
+    }
   />
 </div>;
 ```
