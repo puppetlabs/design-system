@@ -51,21 +51,19 @@ Put up a PR for the design-system repo that follows these guidelines:
 
 See more guidelines for contributors and maintainers in the [Principles, Patterns, and Guidelines](principles-patterns-guidelines.md) doc.
 
+Each PR should get a +1 before being merged into `development`. The [design-system-codeowners](https://github.com/orgs/puppetlabs/teams/design-system-codeowners/members) team should be able to help get PRs reviewed.
+
 ## Publishing
 
-New versions are currently released by maintainers using `npm run publish`. Please collaborate with the team to release a new version. (Note: This process will likely be replaced with automated releases on push to master.)
+New versions are currently released by maintainers using `npm run release`. Please collaborate with the team to release a new version. (Note: This process will likely be replaced with automated releases on push to master.)
 
-This project currently uses Lerna's independent mode, so the following command will prompt you to select a new version for any packages that have changed since the last version tags. WARNING: this command results in a git push to your `origin` remote.
-
-```sh
-npm run publish
-```
-
-If `origin` was not puppetlabs/design-system, push the "Publish" commit the above command created, along with version tags, to the upstream repo:
-
-```sh
-git push --follow-tags git@github.com:puppetlabs/design-system.git master
-```
+1. Request permissions to the [@puppet org on npm](https://www.npmjs.com/org/puppet). (An existing admin should be able to help.)
+2. Log in with your npm account: `npm login`.
+3. Open a PR from `development` to `master`.
+4. Update the `CHANGELOG.md`.
+5. Increment the desired packages versions in their `package.json` files, following [semver](https://semver.org/) for patch, minor, and major versions.
+6. Get a +1 and merge PR to `master`.
+7. Publish those packages to npm: `npm run release`.
 
 ## Lerna commands
 
