@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { forwardRef, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Alert from '../alert';
@@ -85,7 +85,7 @@ const defaultProps = {
   style: {},
 };
 
-const Form = props => {
+const Form = forwardRef((props, ref) => {
   const {
     initialValues: initialValuesProp,
     values: valuesProp,
@@ -170,6 +170,7 @@ const Form = props => {
       onSubmit={onSubmit}
       onCancel={onCancel}
       noValidate
+      ref={ref}
     >
       {children}
       {error && (
@@ -191,7 +192,7 @@ const Form = props => {
       />
     </form>
   );
-};
+});
 
 Form.propTypes = propTypes;
 Form.defaultProps = defaultProps;
