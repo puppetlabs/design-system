@@ -29,9 +29,13 @@ import Badge from '../badge';
       href="/"
     />
     <Sidebar.Navigation>
-      <Sidebar.Section>
-        <Sidebar.Item onClick={() => {}} title="Home" icon="home" active />
-      </Sidebar.Section>
+      <Sidebar.Item
+        onClick={() => {}}
+        title="Home"
+        icon="home"
+        active
+        containerElement="div"
+      />
       <Sidebar.Section label="reports">
         <Sidebar.Item onClick={() => {}} title="Code" icon="code" />
         <Sidebar.Item onClick={() => {}} title="Build" icon="build" count={5} />
@@ -82,9 +86,13 @@ Add the `minimized` boolean prop to Sidebar to render a narrow version with icon
       ariaLabel="Return to the home page"
     />
     <Sidebar.Navigation>
-      <Sidebar.Section>
-        <Sidebar.Item onClick={() => {}} title="Home" icon="home" active />
-      </Sidebar.Section>
+      <Sidebar.Item
+        onClick={() => {}}
+        title="Home"
+        icon="home"
+        active
+        containerElement="div"
+      />
       <Sidebar.Section label="reports">
         <Sidebar.Item onClick={() => {}} title="Code" icon="code" />
         <Sidebar.Item onClick={() => {}} title="Build" icon="build" />
