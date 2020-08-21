@@ -1,7 +1,8 @@
 # Next
 
 - [Copy] Add Copy component (by [@nkanderson](https://github.com/nkanderson) in [#270](https://github.com/puppetlabs/design-system/pull/270))
-- [Form] Use forwardRef in Form (by [@caseywilliams](https://github.com/caseywilliams) in [#283](https://github.com/puppetlabs/design-system/pull/283))
+- [Input] Add `trailingButtonIcon`, `trailingButtonText`, and `trailingButtonProps` props for show/hide functionality, deprecate `trailingIcon` (by [@eputnam](https://github.com/eputnam) in [#282](https://github.com/puppetlabs/design-system/pull/282))
+- [Form] Use `forwardRef` in Form (by [@caseywilliams](https://github.com/caseywilliams) in [#283](https://github.com/puppetlabs/design-system/pull/283))
 - [Sidebar] Add `containerElement` prop to Sidebar.Item (by [@vine77](https://github.com/vine77) in [#279](https://github.com/puppetlabs/design-system/pull/279))
 
 # 5.21.1 (2020-06-30)
