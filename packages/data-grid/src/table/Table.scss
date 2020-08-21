@@ -104,3 +104,29 @@
     background-color: $puppet-n200;
   }
 }
+
+/** Loading State **/
+
+.dg-table-loading-container {
+  width: 100%;
+  padding: 5px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: $puppet-white;
+
+  .dg-table-loading-inner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dg-loading-size {
+    height: 30px;
+    width: 30px;
+  }
+
+  .dg-table-loading-header {
+    margin-left: 10px;
+  }
+}

@@ -12,7 +12,7 @@ const propTypes = {
   contentClassName: PropTypes.string,
   onClose: PropTypes.func,
   open: PropTypes.bool,
-  title: PropTypes.string,
+  title: PropTypes.node,
   type: PropTypes.oneOf(['toolbar']).isRequired,
   toolbarType: PropTypes.oneOf(['primary', 'secondary']),
 };

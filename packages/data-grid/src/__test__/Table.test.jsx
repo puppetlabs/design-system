@@ -87,6 +87,7 @@ const wrapper4 = mount(<Table columns={sortedColumns} data={data} />);
 const wrapper6 = mount(
   <Table columns={columns} data={data} rowClassName="testRowClassName" />,
 );
+const wrapper7 = mount(<Table columns={columns} data={data} loading />);
 
 describe('Snapshot test', () => {
   test('Check component matches previous HTML snapshot', () => {
@@ -106,6 +107,14 @@ describe('Data Prop', () => {
       wrapper3
         .find('div.dg-empty-state-container')
         .hasClass('dg-empty-state-container'),
+    ).toEqual(true);
+  });
+
+  test('that when table is loading it renders loading state', () => {
+    expect(
+      wrapper7
+        .find('div.dg-table-loading-inner-container')
+        .hasClass('dg-table-loading-inner-container'),
     ).toEqual(true);
   });
 

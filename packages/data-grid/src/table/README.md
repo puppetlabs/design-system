@@ -143,6 +143,81 @@ const emptyStateMessage = 'Reconnect to service';
 </div>;
 ```
 
+### Loading State
+
+In the case where a query is in progress you may need to have the table in a loading state. You can trigger this loading state by adding a Boolean value to the loading prop. You can also customize the message displayed to the user by passing your own string into the loadingMessage prop by default this will be "Loading".
+
+```jsx
+import { Link } from '@puppet/react-components';
+const data = [
+  {
+    eventType: 'Application Control',
+    affectedDevices: 0,
+    detections: 1000,
+    sorted: 'asc',
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 6,
+  },
+  {
+    eventType: 'Virus/Malware',
+    affectedDevices: 20,
+    detections: 634,
+    unique: 1,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    selected: true,
+  },
+  {
+    eventType: 'Spyware/Grayware',
+    affectedDevices: 20,
+    detections: 634,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 2,
+  },
+  {
+    eventType: 'URL Filtering',
+    affectedDevices: 16,
+    detections: 599,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 3,
+  },
+  {
+    eventType: 'Web Reputation',
+    affectedDevices: 15,
+    detections: 598,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 4,
+  },
+  {
+    eventType: 'Network Virus',
+    affectedDevices: 15,
+    detections: 497,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 5,
+  },
+
+  {
+    eventType: 'Application Controls',
+    affectedDevices: 0,
+    detections: 0,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 7,
+  },
+];
+
+const columns = [
+  {
+    label: 'Event Type1',
+    dataKey: 'eventType',
+  },
+  { label: 'Affected Devices', dataKey: 'affectedDevices' },
+
+  { label: 'Detections', dataKey: 'detections' },
+  { label: 'Linked field', dataKey: 'Link' },
+];
+
+<Table data={data} columns={columns} loading={true} />;
+```
+
 ### Custom Row Styling
 
 Should the need arise where you have to add styling to the table rows. The best practice is to use the 'rowClassNames' prop to assign a css classname each row. Should you need to carry out conditional styling a function can be supplied.

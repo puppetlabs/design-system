@@ -1,3 +1,15 @@
+# react-components 5.22.0 (2020-08-21)
+
+- [Copy] Add Copy component (by [@nkanderson](https://github.com/nkanderson) in [#270](https://github.com/puppetlabs/design-system/pull/270))
+- [Input] Add `trailingButtonIcon`, `trailingButtonText`, and `trailingButtonProps` props for show/hide functionality, deprecate `trailingIcon` (by [@eputnam](https://github.com/eputnam) in [#282](https://github.com/puppetlabs/design-system/pull/282))
+- [Form] Use `forwardRef` in Form (by [@caseywilliams](https://github.com/caseywilliams) in [#283](https://github.com/puppetlabs/design-system/pull/283))
+- [Sidebar] Add `containerElement` prop to Sidebar.Item (by [@vine77](https://github.com/vine77) in [#279](https://github.com/puppetlabs/design-system/pull/279))
+- [SidePanel] Allow node type in SidePanel title prop (by [@vine77](https://github.com/vine77) in [#264](https://github.com/puppetlabs/design-system/pull/264))
+
+# data-grid 0.4.0 (2020-08-21)
+
+- [DataGrid] Add data-grid loading state (by [@jilliankeenan](https://github.com/jilliankeenan) in [#273](https://github.com/puppetlabs/design-system/pull/273))
+
 # 5.21.1 (2020-06-30)
 
 - [Form] Add `innerClassName` prop to Form.Field (by [@vine77](https://github.com/vine77) in [#261](https://github.com/puppetlabs/design-system/pull/261))
@@ -28,6 +40,11 @@
 
 - [Alert] Fix icon for info Alert, an issue introduced in 5.0.0-beta.3 (by [@vine77](https://github.com/vine77) in [#243](https://github.com/puppetlabs/design-system/pull/243))
 - [Badge] Remove outer margin from Badge component while retaining margin between adjacent Badge components (by [@vine77](https://github.com/vine77) in [#241](https://github.com/puppetlabs/design-system/pull/241))
+
+# react-layouts 2.0.0-alpha.0 (2020-04-05)
+
+- Remove all auth layouts. Replace with single Authentication layout
+- Add PageLayout component, upstreamed from project nebula
 
 # [5.19.4](https://github.com/puppetlabs/design-system/compare/@puppet/react-components@5.19.3...@puppet/react-components@5.19.4) (2020-04-05)
 

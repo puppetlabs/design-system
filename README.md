@@ -81,4 +81,4 @@ We are continuing to iterate on the Puppet Design System and appreciate your fee
 
 ## Release Notes
 
-See the changelog for each package, like react-components' [CHANGELOG.md](packages/react-components/CHANGELOG.md).
+See the changelog for each package, like react-components' [CHANGELOG.md](CHANGELOG.md).

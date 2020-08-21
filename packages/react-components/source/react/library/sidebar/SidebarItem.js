@@ -7,6 +7,7 @@ import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 
 const propTypes = {
   as: PropTypes.elementType,
+  containerElement: PropTypes.elementType,
   title: PropTypes.string.isRequired,
   icon: PropTypes.string,
   className: PropTypes.string,
@@ -18,6 +19,7 @@ const propTypes = {
 
 const defaultProps = {
   as: 'a',
+  containerElement: 'li',
   icon: '',
   className: '',
   minimized: false,
@@ -36,6 +38,7 @@ const SidebarItem = props => {
     count,
     badge: badgeProp,
     as: Component,
+    containerElement: ContainerComponent,
     ...rest
   } = props;
 
@@ -96,7 +99,7 @@ const SidebarItem = props => {
     </Component>
   );
 
-  return <li className={classNames}>{link}</li>;
+  return <ContainerComponent className={classNames}>{link}</ContainerComponent>;
 };
 
 SidebarItem.propTypes = propTypes;
