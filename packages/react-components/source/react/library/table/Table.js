@@ -13,6 +13,7 @@ const propTypes = {
       /** Optional cell renderer method. */
       cellRenderer: PropTypes.func,
       /** Arbitrary additional data passed to the cell renderer for this column */
+      // eslint-disable-next-line react/forbid-prop-types
       columnData: PropTypes.any,
       /** Classname to apply to each data cell. Useful for setting explicit column widths */
       className: PropTypes.string,
