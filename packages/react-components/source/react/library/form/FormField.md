@@ -45,6 +45,7 @@ const formInputInterface = {
   /** The styling of the label */
   labelType: PropTypes.oneOf(['primary', 'secondary']),
   /** Current value of the input */
+  // eslint-disable-next-line react/forbid-prop-types
   value: PropTypes.any,
   /** Alternate inline display format */
   inline: PropTypes.bool,
