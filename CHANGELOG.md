@@ -1,3 +1,7 @@
+# General (2020-08-24)
+
+- [CodeEditor] Removed react-code-editor package, so no new releases will be made to the current published version based on react-ace-editor.
+
 # react-components 5.22.0 (2020-08-21)
 
 - [Copy] Add Copy component (by [@nkanderson](https://github.com/nkanderson) in [#270](https://github.com/puppetlabs/design-system/pull/270))
