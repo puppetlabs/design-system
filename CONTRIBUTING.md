@@ -10,7 +10,13 @@ Clone the design-system monorepo:
 git clone git@github.com:puppetlabs/design-system.git && cd design-system
 ```
 
-We recommend the latest LTS version of Node.js. Run `npm install` in the root of the design-system to install all package dependencies (which uses [Lerna](https://lerna.js.org/) to link local packages together and hoist duplicate dependencies up to the top directory to reduce install time):
+The required version of Node.js can be found in `.nvmrc`. We recommend using [nvm](https://github.com/nvm-sh/nvm) (Node Version Manager) to switch between different versions of [Node](https://nodejs.org). If you have [nvm installed](https://github.com/nvm-sh/nvm#installing-and-updating), run the following command in the design-system directory to get the right version before performing other commands with npm:
+
+```sh
+nvm install && nvm use
+```
+
+Run `npm install` in the root of the design-system to install all package dependencies (which uses [Lerna](https://lerna.js.org/) to link local packages together and hoist duplicate dependencies up to the top directory to reduce install time):
 
 ```sh
 npm install
