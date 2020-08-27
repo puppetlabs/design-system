@@ -1,3 +1,13 @@
+# react-components 5.22.1 (2020-08-27)
+
+- [Tooltip] Fix issue with server-side rendering  (by [@caseywilliams](https://github.com/caseywilliams) in [#293](https://github.com/puppetlabs/design-system/pull/293))
+- [Security] Upgrade dependencies
+- [Docs] Update CONTRIBUTING.md
+
+# react-code-editor (2020-08-24)
+
+- [CodeEditor] Removed react-code-editor package, so no new releases will be made to the current published version based on react-ace-editor.
+
 # react-components 5.22.0 (2020-08-21)
 
 - [Copy] Add Copy component (by [@nkanderson](https://github.com/nkanderson) in [#270](https://github.com/puppetlabs/design-system/pull/270))
