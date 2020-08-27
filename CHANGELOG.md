@@ -1,4 +1,4 @@
-# react-components 5.22.1 (2020-08-27)
+# react-components 5.22.2 (2020-08-27)
 
 - [Tooltip] Fix issue with server-side rendering  (by [@caseywilliams](https://github.com/caseywilliams) in [#293](https://github.com/puppetlabs/design-system/pull/293))
 - [Security] Upgrade dependencies
