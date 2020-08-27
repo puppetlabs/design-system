@@ -7,7 +7,10 @@ const TOOLTIP_OFFSET = 6;
 
 const propTypes = {
   anchor: PropTypes.oneOf(['left', 'right', 'top', 'bottom']),
-  target: PropTypes.instanceOf(Element).isRequired,
+  target: (typeof Element === 'undefined'
+    ? PropTypes.any
+    : PropTypes.instanceOf(Element)
+  ).isRequired,
   children: PropTypes.node,
   className: PropTypes.string,
   style: PropTypes.shape({}),
