@@ -63,7 +63,6 @@ Note: See the [Getting Started](getting-started.md) guide for a longer walkthrou
 
 The Puppet Design System includes:
 
-- Design assets: UI library, Styleguide, logos, icons [packages/design-assets](packages/design-assets)
 - Puppet React Components: Library of reusable React components [packages/react-components](packages/react-components)
 - Puppet React Layouts: Library of reusable React layouts like login screens [packages/react-layouts](packages/react-layouts)
 - Puppet Sass Variables: A set of public Sass variables for color palettes, typography, borders, etc. [packages/sass-variables](packages/sass-variables)
