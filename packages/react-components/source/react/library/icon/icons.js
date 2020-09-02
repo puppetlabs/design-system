@@ -358,6 +358,15 @@ const icons = {
     ),
   },
 
+  'control-repo': {
+    medium: (
+      <path
+        fillRule="evenodd"
+        d="M14 5H8.172l-2-2H2v10h6v2H0V1h7l2 2h7v4h-2V5zm0 8h2v2h-2v-2zm-4-4h2v2h-2V9zm4 0h2v2h-2V9zm-4 4h2v2h-2v-2z"
+      />
+    ),
+  },
+
   copy: {
     medium: (
       <path
@@ -590,6 +599,15 @@ const icons = {
     ),
   },
 
+  hardware: {
+    medium: (
+      <path
+        fillRule="evenodd"
+        d="M2 0h12a2 2 0 012 2v4a2 2 0 01-2 2H2a2 2 0 01-2-2V2a2 2 0 012-2zm0 2v4h12V2H2zm9 1h2v2h-2V3zM8 3h2v2H8V3zm-8 7h16a2 2 0 01-2 2H2a2 2 0 01-2-2zm0 4h16a2 2 0 01-2 2H2a2 2 0 01-2-2z"
+      />
+    ),
+  },
+
   history: {
     large: (
       <path
@@ -798,6 +816,15 @@ const icons = {
       <path
         fillRule="evenodd"
         d="M8 0c4.411 0 8 3.589 8 8s-3.589 8-8 8-8-3.589-8-8 3.589-8 8-8zm0 14c3.309 0 6-2.691 6-6s-2.691-6-6-6-6 2.691-6 6 2.691 6 6 6zM4 7h8v2H4V7z"
+      />
+    ),
+  },
+
+  module: {
+    medium: (
+      <path
+        fill-rule="evenodd"
+        d="M8.5.289l5.928 3.422a1 1 0 01.5.866v6.846a1 1 0 01-.5.866L8.5 15.71a1 1 0 01-1 0L1.572 12.29a1 1 0 01-.5-.866V4.577a1 1 0 01.5-.866L7.5.29a1 1 0 011 0zM8 2L3 5v6l5 3 5-3V5L8 2zm.5 6.29v2.848L11 9.71V6.862L8.5 8.29zm-1 0L5 6.862V9.71l2.5 1.428V8.29zm.252-4.724a.5.5 0 01.496 0l3.5 2A.5.5 0 0112 6v4a.5.5 0 01-.252.434l-3.5 2a.5.5 0 01-.496 0l-3.5-2A.5.5 0 014 10V6a.5.5 0 01.252-.434l3.5-2zM8 4.576L5.508 6 8 7.424 10.492 6 8 4.576z"
       />
     ),
   },
