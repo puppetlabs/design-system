@@ -1,3 +1,7 @@
+# react-components 5.22.3 (2020-09-02)
+
+- [Icon] Add `control-repo`, `hardware`, and `module` icons.
+
 # design-assets (2020-09-01)
 
 - [design-assets] Removed `design-assets` package - See Figma for the most up-to-date design assets
