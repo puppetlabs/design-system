@@ -181,11 +181,6 @@ module.exports = {
         '**/**/index.js',
       ],
     },
-    {
-      name: 'Code Editor',
-      components: '../react-code-editor/src/**/*.{js,jsx}',
-      ignore: ['**/**/index.js', '**/*.test.{js,jsx}'],
-    },
   ],
   getComponentPathLine(componentPath) {
     const name = path.basename(componentPath).replace(/\.jsx?$/, '');
@@ -202,7 +197,6 @@ module.exports = {
     path.join(__dirname, '../sass-variables/_index.scss'),
     path.join(__dirname, '../react-components/source/scss/library/ui.scss'),
     path.join(__dirname, '../react-layouts/src/index.scss'),
-    path.join(__dirname, '../react-code-editor/src/index.scss'),
   ],
   styleguideDir: 'dist',
   webpackConfig: {
