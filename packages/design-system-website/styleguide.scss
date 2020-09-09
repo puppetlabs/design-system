@@ -23,6 +23,64 @@
   }
 }
 
+/********** UX Design Principles **********/
+
+#do {
+  color: $puppet-g400;
+
+  + ul > li::before {
+    color: $puppet-g400;
+    content: '✓';
+  }
+}
+
+#dont {
+  color: $puppet-r400;
+
+  + ul > li::before {
+    color: $puppet-r400;
+    content: '✓';
+  }
+}
+
+.pds-width-50-percent {
+  width: 50%;
+}
+
+.pds-gutter {
+  &:not(:last-child) {
+    margin-right: $puppet-common-spacing-base * 4;
+  }
+
+  &:not(:first-child) {
+    margin-left: $puppet-common-spacing-base * 4;
+  }
+}
+
+.pds-green-bar {
+  background-color: $puppet-g400;
+  display: block !important;
+  width: $puppet-common-spacing-base * 4;
+}
+
+.pds-blue-bar {
+  background-color: $puppet-b400;
+  display: block !important;
+  width: $puppet-common-spacing-base * 4;
+}
+
+.pds-red-bar {
+  background-color: $puppet-r400;
+  display: block !important;
+  width: $puppet-common-spacing-base * 4;
+}
+
+.pds-orange-bar {
+  background-color: $puppet-amber;
+  display: block !important;
+  width: $puppet-common-spacing-base * 4;
+}
+
 /********** Styleguidist overrides **********/
 
 // stylelint-disable-next-line selector-max-id
