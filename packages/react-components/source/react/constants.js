@@ -58,7 +58,7 @@ const mediumIcon = {
 
 const largeIcon = {
   size: '24px',
-  viewBox: '0 0 24 24',
+  viewBox: '0 0 32 32',
 };
 
 export const ICON_CONFIG = {
