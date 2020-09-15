@@ -26,6 +26,8 @@ const propTypes = {
   panePadding: PropTypes.bool,
   /** Optional additional inline style */
   style: PropTypes.shape({}),
+  /** Whether to use the transparent tab design instead of the default outlined tabs */
+  transparent: PropTypes.bool,
   /** Controls background color of active tab */
   type: PropTypes.oneOf(['primary', 'secondary']),
 };
@@ -37,6 +39,7 @@ const defaultProps = {
   onChange() {},
   panePadding: true,
   style: {},
+  transparent: false,
   type: 'primary',
 };
 
@@ -159,6 +162,7 @@ class Tabs extends React.Component {
       id: parentId,
       panePadding,
       style,
+      transparent,
       type,
     } = this.props;
 
@@ -171,6 +175,7 @@ class Tabs extends React.Component {
       <div
         className={classNames('rc-tabs', `rc-tabs-${type}`, className, {
           'rc-tabs-pane-padding': panePadding,
+          'rc-tabs-transparent': transparent,
         })}
         style={style}
       >

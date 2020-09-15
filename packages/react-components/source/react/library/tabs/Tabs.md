@@ -12,6 +12,8 @@ The Tabs component is a lightly styled wrapper that expects nested Tabs. Tab com
 
 ### Primary
 
+The default, primary type gives tabs a white background:
+
 ```jsx
 import Text from '../text';
 
@@ -34,6 +36,8 @@ import Text from '../text';
 
 ### Secondary
 
+If `type=secondary`, tabs change their background color on activation:
+
 ```jsx
 import Button from '../button';
 import Text from '../text';
@@ -50,6 +54,40 @@ import Text from '../text';
       To change the default tab, set the activeTab prop on Tabs equal to the
       desired Tab ID.
     </Text>
+  </Tabs.Tab>
+</Tabs>;
+```
+
+Individual `Tab` components may also set `type=secondary` themselves. See the **Tab** section below.
+
+### Transparent
+
+Set `transparent=true` to use an alternate, borderless tab design:
+
+```
+import Text from '../text';
+
+<Tabs transparent>
+  <Tabs.Tab title="Tab 1">
+    <Text>Tab 1</Text>
+  </Tabs.Tab>
+  <Tabs.Tab title="Tab 2">
+    <Text>Tab 2</Text>
+  </Tabs.Tab>
+</Tabs>;
+```
+
+Example with `type=secondary`:
+
+```
+import Text from '../text';
+
+<Tabs transparent type='secondary'>
+  <Tabs.Tab title="Tab 1">
+    <Text>Tab 1</Text>
+  </Tabs.Tab>
+  <Tabs.Tab title="Tab 2">
+    <Text>Tab 2</Text>
   </Tabs.Tab>
 </Tabs>;
 ```
@@ -127,13 +165,13 @@ import Text from '../text';
 
 <Tabs>
   <Tabs.Tab title="Primary tab">
-    <Text>White background on first tab when type is primary</Text>
+    <Text>Default white background on first tab</Text>
   </Tabs.Tab>
   <Tabs.Tab title="Secondary tab" type="secondary">
-    <Text>Grey background on first tab when type is secondary</Text>
+    <Text>Grey background on second tab, whose type is secondary</Text>
   </Tabs.Tab>
   <Tabs.Tab title="Primary tab" type="primary">
-    <Text>White background on first tab when type is primary</Text>
+    <Text>Default white background on the third tab</Text>
   </Tabs.Tab>
 </Tabs>;
 ```
