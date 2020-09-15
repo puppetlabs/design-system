@@ -92,6 +92,110 @@ import Text from '../text';
 </Tabs>;
 ```
 
+## Responding to smaller container widths
+
+By default, if the row of tabs is too long for its container element, it will be horizontally scrollable, and scroll buttons will be rendered at the left and right as needed:
+
+```
+import Text from '../text';
+
+<div style={{ maxWidth: '300px' }}>
+  <Tabs transparent>
+    <Tabs.Tab title="Tab One" id={1}>
+      <Text>
+        Tab 1 Odio aenean sed adipiscing diam donec adipiscing. Molestie ac feugiat sed lectus. Vitae aliquet nec ullamcorper sit amet risus nullam.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Two" id={2}>
+      <Text>
+        Tab 2 Eu non diam phasellus vestibulum lorem sed risus ultricies tristique. Vitae suscipit tellus mauris a diam maecenas sed.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Three" id={3}>
+      <Text>
+        Tab 3 Tempus iaculis urna id volutpat lacus. Feugiat vivamus at augue eget arcu dictum varius. Sit amet consectetur adipiscing elit pellentesque habitant morbi.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Four" id={4}>
+      <Text>
+        Tab 4 Mattis rhoncus urna neque viverra justo nec ultrices dui. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Five" id={5}>
+      <Text>
+        Tab 5 Odio aenean sed adipiscing diam donec adipiscing. Molestie ac feugiat sed lectus. Vitae aliquet nec ullamcorper sit amet risus nullam.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Six" id={6}>
+      <Text>
+        Tab 6 Eu non diam phasellus vestibulum lorem sed risus ultricies tristique. Vitae suscipit tellus mauris a diam maecenas sed.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Seven" id={7}>
+      <Text>
+        Tab 7 Tempus iaculis urna id volutpat lacus. Feugiat vivamus at augue eget arcu dictum varius. Sit amet consectetur adipiscing elit pellentesque habitant morbi.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Eight" id={8}>
+      <Text>
+        Tab 8 Mattis rhoncus urna neque viverra justo nec ultrices dui. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida.
+      </Text>
+    </Tabs.Tab>
+  </Tabs>
+</div>;
+```
+
+To disable this behavior, set `scroll=false`. The tab titles will wrap if needed, but content may still be cut off where there is not enough space:
+
+```
+import Text from '../text';
+
+<div style={{ maxWidth: '300px' }}>
+  <Tabs transparent scroll={false}>
+    <Tabs.Tab title="Tab One" id={1}>
+      <Text>
+        Tab 1 Odio aenean sed adipiscing diam donec adipiscing. Molestie ac feugiat sed lectus. Vitae aliquet nec ullamcorper sit amet risus nullam.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Two" id={2}>
+      <Text>
+        Tab 2 Eu non diam phasellus vestibulum lorem sed risus ultricies tristique. Vitae suscipit tellus mauris a diam maecenas sed.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Three" id={3}>
+      <Text>
+        Tab 3 Tempus iaculis urna id volutpat lacus. Feugiat vivamus at augue eget arcu dictum varius. Sit amet consectetur adipiscing elit pellentesque habitant morbi.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Four" id={4}>
+      <Text>
+        Tab 4 Mattis rhoncus urna neque viverra justo nec ultrices dui. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Five" id={5}>
+      <Text>
+        Tab 5 Odio aenean sed adipiscing diam donec adipiscing. Molestie ac feugiat sed lectus. Vitae aliquet nec ullamcorper sit amet risus nullam.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Six" id={6}>
+      <Text>
+        Tab 6 Eu non diam phasellus vestibulum lorem sed risus ultricies tristique. Vitae suscipit tellus mauris a diam maecenas sed.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Seven" id={7}>
+      <Text>
+        Tab 7 Tempus iaculis urna id volutpat lacus. Feugiat vivamus at augue eget arcu dictum varius. Sit amet consectetur adipiscing elit pellentesque habitant morbi.
+      </Text>
+    </Tabs.Tab>
+    <Tabs.Tab title="Tab Eight" id={8}>
+      <Text>
+        Tab 8 Mattis rhoncus urna neque viverra justo nec ultrices dui. Ultrices mi tempus imperdiet nulla malesuada pellentesque elit eget gravida.
+      </Text>
+    </Tabs.Tab>
+  </Tabs>
+</div>;
+```
+
 ## Controlled Mode
 
 The active tab can be manually controlled by setting `active=true` on an individual Tab. If more than one tab is marked active, the first active tab will be selected. In this mode we recommend supplying a unique `id` to each Tab element so that the active tab is easier to track. If no id is provided the Tabs component will use the positional index.
