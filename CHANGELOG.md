@@ -1,3 +1,7 @@
+# react-components 5.22.4 (2020-09-16)
+
+- [Icon] Add `azure`, `bitbucket`, `github`, and `gitlab` icons  (by [@eputnam](https://github.com/eputnam) in [#301](https://github.com/puppetlabs/design-system/pull/301))
+
 # react-components 5.22.3 (2020-09-02)
 
 - [Icon] Add `control-repo`, `hardware`, and `module` icons  (by [@sean-mckenna](https://github.com/sean-mckenna) in [#296](https://github.com/puppetlabs/design-system/pull/296))
