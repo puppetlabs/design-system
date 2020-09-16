@@ -22,15 +22,15 @@ Run `npm install` in the root of the design-system to install all package depend
 npm install
 ```
 
-## Sandbox
+## Run website locally
 
-You can develop components locally without a separate consuming application with the help of [Styleguidist](https://react-styleguidist.js.org), which provides an isolated React component development environment as a living style guide:
+You can run the http://puppet.style website locally in order to develop components in its own sandbox (without a separate consuming application). It is build with [Styleguidist](https://react-styleguidist.js.org), which provides an isolated React component development environment as a living style guide:
 
 ```sh
 npm start
 ```
 
-## Local development
+## Local development with consuming app
 
 To develop locally using a separate app that consumes a design-system package:
 
@@ -63,13 +63,19 @@ Each PR should get a +1 before being merged into `development`. The [design-syst
 
 New versions are currently released by maintainers using `npm run release`. Please collaborate with the team to release a new version. (Note: This process will likely be replaced with automated releases on push to master.)
 
+### Prerequisites
+
 1. Request permissions to the [@puppet org on npm](https://www.npmjs.com/org/puppet). (An existing admin should be able to help.)
 2. Log in with your npm account: `npm login`.
-3. Open a PR from `development` to `master`.
-4. Update the `CHANGELOG.md`.
-5. Increment the desired packages versions in their `package.json` files, following [semver](https://semver.org/) for patch, minor, and major versions.
-6. Get a +1 and merge PR to `master`.
-7. Publish those packages to npm: `npm run release`.
+
+### Steps
+
+1. Open a PR from `development` to `master`.
+2. Update the `CHANGELOG.md`.
+3. Increment the desired packages versions in their `package.json` files, following [semver](https://semver.org/) for patch, minor, and major versions.
+4. Update `package-lock.json` files by running `npm install`; you may have to run `git clean -dfX` first to force them to update.
+5. Push those changes to `development`, get a +1 on the PR, and merge to `master`.
+6. Publish the packages to npm with `npm run release`. (Lerna will find packages with new versions based on `package.json` files.)
 
 ## Lerna commands
 
