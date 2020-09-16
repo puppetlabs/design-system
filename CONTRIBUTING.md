@@ -24,7 +24,7 @@ npm install
 
 ## Run website locally
 
-You can run the http://puppet.style website locally in order to develop components in its own sandbox (without a separate consuming application). It is build with [Styleguidist](https://react-styleguidist.js.org), which provides an isolated React component development environment as a living style guide:
+You can run the http://puppet.style website locally in order to develop components in a sandbox without a separate consuming application. It is built with [Styleguidist](https://react-styleguidist.js.org), which provides an isolated React component development environment as well a living style guide:
 
 ```sh
 npm start
