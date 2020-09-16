@@ -84,16 +84,16 @@ module.exports = {
         //   content: 'foundations/Accessibility.md',
         // },
         {
+          name: 'Content Writing',
+          content: 'foundations/ContentWriting.md',
+        },
+        {
           name: 'Contributing',
           content: 'foundations/Contributing.md',
         },
         {
           name: 'Design',
           content: 'foundations/Design.md',
-        },
-        {
-          name: 'Content Writing',
-          content: 'foundations/ContentWriting.md',
         },
         {
           name: 'Iconography',
@@ -106,6 +106,10 @@ module.exports = {
         {
           name: 'Typography',
           content: 'foundations/Typography.md',
+        },
+        {
+          name: 'UX Design Principles',
+          content: 'foundations/DesignPrinciples.md',
         },
       ],
     },
