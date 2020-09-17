@@ -1,7 +1,9 @@
 import React from 'react';
 
-// Alphebetical list of icons
-// Sizes are tiny, small, medium, large in that order
+/** Alphabetical list of SVG icons
+ *  Sizes are tiny, small, medium, large in that order.
+ *  See Icon.md for instructions on adding new icons.
+ */
 const icons = {
   activity: {
     medium: (
@@ -1144,6 +1146,26 @@ const icons = {
           d="M8 10.545L5.293 11.97l.517-3.015L3.62 6.82l3.026-.44L8 3.636 9.354 6.38l3.027.44-2.19 2.135.516 3.015L8 10.545z"
         />
       </>
+    ),
+  },
+
+  'star-empty': {
+    medium: (
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M6.574 9.15l-1.352 3.446L7.98 10.92l2.756 1.676-1.343-3.422 2.674-1.956-3.087-.098-.999-2.973-1 2.974-3.046.097 2.64 1.931zM5.528 5.165l-4.562.145C.018 5.34-.355 6.558.412 7.119L4.15 9.854l-1.873 4.774c-.35.89.628 1.719 1.444 1.223l4.258-2.59 4.257 2.59c.816.496 1.794-.332 1.444-1.223l-1.863-4.75 3.771-2.76c.767-.56.394-1.777-.554-1.807l-4.602-.146L8.925.68c-.305-.908-1.585-.908-1.89 0L5.528 5.166z"
+      />
+    ),
+  },
+
+  'star-filled': {
+    medium: (
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M4.152 9.852L.412 7.114c-.767-.562-.395-1.778.555-1.808l4.563-.145L7.034.681c.305-.908 1.591-.908 1.896 0l1.504 4.479 4.604.146c.95.03 1.322 1.246.554 1.808l-3.773 2.762 1.862 4.75c.35.892-.63 1.722-1.446 1.225l-4.254-2.59-4.254 2.59c-.817.497-1.796-.333-1.446-1.226l1.871-4.773z"
+      />
     ),
   },
 
