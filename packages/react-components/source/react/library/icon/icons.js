@@ -1,7 +1,9 @@
 import React from 'react';
 
-// Alphebetical list of icons
-// Sizes are tiny, small, medium, large in that order
+/** Alphabetical list of SVG icons
+ *  Sizes are tiny, small, medium, large in that order.
+ *  See Icon.md for instructions on adding new icons.
+ */
 const icons = {
   activity: {
     medium: (
