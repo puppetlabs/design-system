@@ -146,6 +146,13 @@ class CreateFilterBuilder extends Component {
       width,
       style,
     } = this.props;
+
+    const movieOptions = [
+      { value: 'american-treasure', label: 'American Treasure' },
+      { value: 'ghost-rider', label: 'Ghost Rider' },
+      { value: 'point_break', label: 'Point Break' },
+    ];
+
     return (
       <div>
         <Button
@@ -195,6 +202,7 @@ class CreateFilterBuilder extends Component {
               autoComplete="Name"
               label="FIELD"
               placeholder="Name"
+              options={movieOptions}
             />
             <Form.Field
               type="select"
