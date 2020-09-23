@@ -42,6 +42,8 @@ const propTypes = {
   ]),
   /** Value change handler. Will receive the new value */
   onChange: PropTypes.func,
+  /** Value change handler for Autocomplete. Used to determine the string value for a given option.  */
+  onAutocompleteSelect: PropTypes.func,
   /**
    * When in multiselect mode, should the selected items be applied immediately?
    * @ignore
@@ -83,6 +85,7 @@ const defaultProps = {
   applyImmediately: false,
   value: null,
   onChange() {},
+  onAutocompleteSelect() {},
   placeholder: 'Select',
   type: 'select',
   onFilter: null,
@@ -124,6 +127,7 @@ class Select extends Component {
     this.onBlur = this.onBlur.bind(this);
     this.onValueChange = this.onValueChange.bind(this);
     this.onActionClick = this.onActionClick.bind(this);
+    this.onAutocompleteSelect = this.onAutocompleteSelect.bind(this);
     this.onKeyDown = this.onKeyDown.bind(this);
     this.onFocusItem = this.onFocusItem.bind(this);
     this.getButtonLabel = this.getButtonLabel.bind(this);
@@ -177,8 +181,9 @@ class Select extends Component {
 
   onValueChange(listValue) {
     const { onChange, type, onFilter } = this.props;
+    const { open } = this.state;
 
-    if (isControlled(this.props)) {
+    if (isControlled(this.props) || !open) {
       onChange(listValue);
     } else {
       this.setState({ listValue });
@@ -215,7 +220,9 @@ class Select extends Component {
   onKeyDown(e) {
     const filteredOptions = this.getOptions();
     const { focusedIndex, open } = this.state;
+    const { type } = this.props;
 
+    const isAutocomplete = type === AUTOCOMPLETE;
     if (open) {
       switch (e.keyCode) {
         case UP_KEY_CODE: {
@@ -236,10 +243,12 @@ class Select extends Component {
         }
         case ENTER_KEY_CODE: {
           cancelEvent(e);
-
           if (filteredOptions[focusedIndex]) {
-            this.onValueChange(filteredOptions[focusedIndex].value);
-
+            if (isAutocomplete) {
+              this.onAutocompleteSelect(filteredOptions[focusedIndex].value);
+            } else {
+              this.onValueChange(filteredOptions[focusedIndex].value);
+            }
             this.closeAndFocusButton();
           }
           break;
@@ -282,6 +291,13 @@ class Select extends Component {
     this.setState({ focusedIndex });
   }
 
+  onAutocompleteSelect(listValue) {
+    const { onAutocompleteSelect, options } = this.props;
+    const selectedOption = options.find(option => option.value === listValue);
+    onAutocompleteSelect(selectedOption);
+    this.closeAndFocusButton();
+  }
+
   getButtonLabel() {
     const { type, options, value, placeholder } = this.props;
     if (!value || value.length === 0) {
@@ -309,7 +325,7 @@ class Select extends Component {
     // Otherwise, let's filter the presumably static list here
     if (value && type === AUTOCOMPLETE && !onFilter) {
       filteredOptions = options.filter(
-        option => option.value.toLowerCase().indexOf(value.toLowerCase()) > -1,
+        option => option.label.toLowerCase().indexOf(value.toLowerCase()) > -1,
       );
     }
 
@@ -358,6 +374,7 @@ class Select extends Component {
       onFocusItem,
       getOptions,
       open: onOpen,
+      onAutocompleteSelect,
     } = this;
     const { open, menuStyle, listValue, focusedIndex } = this.state;
     const {
@@ -463,7 +480,9 @@ class Select extends Component {
           role="listbox"
           onActionClick={onActionClick}
           onEscape={closeAndFocusButton}
-          onChange={onValueChange}
+          onChange={
+            type === AUTOCOMPLETE ? onAutocompleteSelect : onValueChange
+          }
           onFocusItem={onFocusItem}
           footer={footer}
           style={menuStyle}

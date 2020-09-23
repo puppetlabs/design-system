@@ -50,19 +50,19 @@ With `type` set to `autocomplete`, the `Select` input will accept text and provi
 
 ```jsx
 const options = [
-  { value: 'apple', label: 'apple' },
-  { value: 'orange', label: 'orange' },
-  { value: 'pear', label: 'pear' },
-  { value: 'banana', label: 'banana' },
-  { value: 'kiwi', label: 'kiwi' },
-  { value: 'watermelon', label: 'watermelon' },
-  { value: 'pineapple', label: 'pineapple' },
-  { value: 'strawberry', label: 'strawberry' },
-  { value: 'raspberry', label: 'raspberry' },
+  { value: 'en', label: 'English' },
+  { value: 'ru', label: 'русский' },
+  { value: 'zh', label: '中文' },
+  { value: 'sq', label: 'Albanian' },
+  { value: 'ar', label: 'Arabic' },
+  { value: 'eu', label: 'Basque' },
+  { value: 'bn', label: 'Bengali' },
+  { value: 'bs', label: 'Bosnian' },
+  { value: 'bg', label: 'Bulgarian' },
+  { value: 'ca', label: 'Catalan' },
 ];
 
 const style = { margin: 10 };
-
 <div>
   <Select
     id="button-select-one"
@@ -79,6 +79,10 @@ const style = { margin: 10 };
       console.log('onBlur');
     }}
     type="autocomplete"
+    onAutocompleteSelect={option => {
+      console.log({ option });
+      setState({ value1: option.label });
+    }}
   />
 </div>;
 ```
