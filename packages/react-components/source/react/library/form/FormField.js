@@ -23,8 +23,8 @@ const propTypes = {
   value: PropTypes.any,
   /** Form error, causing element to render red when present */
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  /** Expanded explainer for the field */
-  description: PropTypes.string,
+  /** An optional explanatory message rendered below the form field. */
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /** Is the field required */
   required: PropTypes.bool,
   /** The error message to display if the field is required but not present at validation */
