@@ -58,7 +58,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     >
       <ButtonSelect
         className="dg-quick-filter"
-        id="quick-filter-0"
+        id="quick-filter-All-Operating-System-0"
         onChange={[Function]}
         options={
           Array [
@@ -88,7 +88,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           className="dg-quick-filter"
           disabled={false}
           icon={null}
-          id="quick-filter-0"
+          id="quick-filter-All-Operating-System-0"
           innerFocus={false}
           loading={false}
           multiple={false}
@@ -125,7 +125,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             style={Object {}}
           >
             <Button
-              aria-controls="quick-filter-0-menu"
+              aria-controls="quick-filter-All-Operating-System-0-menu"
               aria-expanded={false}
               aria-haspopup="true"
               as="button"
@@ -142,7 +142,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               weight="bold"
             >
               <button
-                aria-controls="quick-filter-0-menu"
+                aria-controls="quick-filter-All-Operating-System-0-menu"
                 aria-expanded={false}
                 aria-haspopup="true"
                 aria-label="All Operating System"
@@ -187,12 +187,12 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             </Button>
             <OptionMenuList
               actionLabel="Apply"
-              aria-labelledby="quick-filter-0"
+              aria-labelledby="quick-filter-All-Operating-System-0"
               cancelLabel="Cancel"
               className=""
               focusedIndex={0}
               footer={null}
-              id="quick-filter-0-menu"
+              id="quick-filter-All-Operating-System-0-menu"
               multiple={false}
               onActionClick={[Function]}
               onBlur={[Function]}
@@ -228,11 +228,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                 style={Object {}}
               >
                 <ul
-                  aria-activedescendant="quick-filter-0-menu-linux"
-                  aria-labelledby="quick-filter-0"
+                  aria-activedescendant="quick-filter-All-Operating-System-0-menu-linux"
+                  aria-labelledby="quick-filter-All-Operating-System-0"
                   aria-multiselectable={false}
                   className="rc-menu-list-inner"
-                  id="quick-filter-0-menu"
+                  id="quick-filter-All-Operating-System-0-menu"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -243,7 +243,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   <ForwardRef
                     focused={true}
                     icon="pencil"
-                    id="quick-filter-0-menu-linux"
+                    id="quick-filter-All-Operating-System-0-menu-linux"
                     key="linux"
                     onClick={[Function]}
                     onMouseEnter={[Function]}
@@ -253,7 +253,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     <li
                       aria-selected={false}
                       className="rc-menu-list-item rc-menu-list-item-focused"
-                      id="quick-filter-0-menu-linux"
+                      id="quick-filter-All-Operating-System-0-menu-linux"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       role="option"
@@ -294,7 +294,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   <ForwardRef
                     focused={false}
                     icon="send"
-                    id="quick-filter-0-menu-Windows"
+                    id="quick-filter-All-Operating-System-0-menu-Windows"
                     key="Windows"
                     onClick={[Function]}
                     onMouseEnter={[Function]}
@@ -304,7 +304,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     <li
                       aria-selected={false}
                       className="rc-menu-list-item"
-                      id="quick-filter-0-menu-Windows"
+                      id="quick-filter-All-Operating-System-0-menu-Windows"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       role="option"
@@ -345,7 +345,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   <ForwardRef
                     focused={false}
                     icon="link"
-                    id="quick-filter-0-menu-MacOS"
+                    id="quick-filter-All-Operating-System-0-menu-MacOS"
                     key="MacOS"
                     onClick={[Function]}
                     onMouseEnter={[Function]}
@@ -355,7 +355,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     <li
                       aria-selected={false}
                       className="rc-menu-list-item"
-                      id="quick-filter-0-menu-MacOS"
+                      id="quick-filter-All-Operating-System-0-menu-MacOS"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       role="option"
@@ -401,7 +401,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       </ButtonSelect>
       <ButtonSelect
         className="dg-quick-filter"
-        id="quick-filter-1"
+        id="quick-filter-Puppet-installed-1"
         onChange={[Function]}
         options={
           Array [
@@ -431,7 +431,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           className="dg-quick-filter"
           disabled={false}
           icon={null}
-          id="quick-filter-1"
+          id="quick-filter-Puppet-installed-1"
           innerFocus={false}
           loading={false}
           multiple={false}
@@ -468,7 +468,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             style={Object {}}
           >
             <Button
-              aria-controls="quick-filter-1-menu"
+              aria-controls="quick-filter-Puppet-installed-1-menu"
               aria-expanded={false}
               aria-haspopup="true"
               as="button"
@@ -485,7 +485,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               weight="bold"
             >
               <button
-                aria-controls="quick-filter-1-menu"
+                aria-controls="quick-filter-Puppet-installed-1-menu"
                 aria-expanded={false}
                 aria-haspopup="true"
                 aria-label="Puppet installed"
@@ -530,12 +530,12 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             </Button>
             <OptionMenuList
               actionLabel="Apply"
-              aria-labelledby="quick-filter-1"
+              aria-labelledby="quick-filter-Puppet-installed-1"
               cancelLabel="Cancel"
               className=""
               focusedIndex={0}
               footer={null}
-              id="quick-filter-1-menu"
+              id="quick-filter-Puppet-installed-1-menu"
               multiple={false}
               onActionClick={[Function]}
               onBlur={[Function]}
@@ -571,11 +571,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                 style={Object {}}
               >
                 <ul
-                  aria-activedescendant="quick-filter-1-menu-True"
-                  aria-labelledby="quick-filter-1"
+                  aria-activedescendant="quick-filter-Puppet-installed-1-menu-True"
+                  aria-labelledby="quick-filter-Puppet-installed-1"
                   aria-multiselectable={false}
                   className="rc-menu-list-inner"
-                  id="quick-filter-1-menu"
+                  id="quick-filter-Puppet-installed-1-menu"
                   onBlur={[Function]}
                   onChange={[Function]}
                   onFocus={[Function]}
@@ -586,7 +586,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   <ForwardRef
                     focused={true}
                     icon="pencil"
-                    id="quick-filter-1-menu-True"
+                    id="quick-filter-Puppet-installed-1-menu-True"
                     key="True"
                     onClick={[Function]}
                     onMouseEnter={[Function]}
@@ -596,7 +596,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     <li
                       aria-selected={false}
                       className="rc-menu-list-item rc-menu-list-item-focused"
-                      id="quick-filter-1-menu-True"
+                      id="quick-filter-Puppet-installed-1-menu-True"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       role="option"
@@ -637,7 +637,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   <ForwardRef
                     focused={false}
                     icon="send"
-                    id="quick-filter-1-menu-False"
+                    id="quick-filter-Puppet-installed-1-menu-False"
                     key="False"
                     onClick={[Function]}
                     onMouseEnter={[Function]}
@@ -647,7 +647,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     <li
                       aria-selected={false}
                       className="rc-menu-list-item"
-                      id="quick-filter-1-menu-False"
+                      id="quick-filter-Puppet-installed-1-menu-False"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       role="option"
@@ -688,7 +688,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   <ForwardRef
                     focused={false}
                     icon="link"
-                    id="quick-filter-1-menu-Unknown"
+                    id="quick-filter-Puppet-installed-1-menu-Unknown"
                     key="Unknown"
                     onClick={[Function]}
                     onMouseEnter={[Function]}
@@ -698,7 +698,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     <li
                       aria-selected={false}
                       className="rc-menu-list-item"
-                      id="quick-filter-1-menu-Unknown"
+                      id="quick-filter-Puppet-installed-1-menu-Unknown"
                       onClick={[Function]}
                       onMouseEnter={[Function]}
                       role="option"
