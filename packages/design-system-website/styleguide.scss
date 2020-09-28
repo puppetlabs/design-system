@@ -23,8 +23,66 @@
   }
 }
 
+/********** UX Design Principles **********/
+
+#do {
+  color: $puppet-g400;
+
+  + ul > li::before {
+    color: $puppet-g400;
+    content: '✓';
+  }
+}
+
+#dont {
+  color: $puppet-r400;
+
+  + ul > li::before {
+    color: $puppet-r400;
+    content: '✓';
+  }
+}
+
+.pds-width-50-percent {
+  width: 50%;
+}
+
+.pds-gutter {
+  &:not(:last-child) {
+    margin-right: $puppet-common-spacing-base * 4;
+  }
+
+  &:not(:first-child) {
+    margin-left: $puppet-common-spacing-base * 4;
+  }
+}
+
+.pds-green-bar {
+  background-color: $puppet-g400;
+  display: block !important;
+  width: $puppet-common-spacing-base * 4;
+}
+
+.pds-blue-bar {
+  background-color: $puppet-b400;
+  display: block !important;
+  width: $puppet-common-spacing-base * 4;
+}
+
+.pds-red-bar {
+  background-color: $puppet-r400;
+  display: block !important;
+  width: $puppet-common-spacing-base * 4;
+}
+
+.pds-orange-bar {
+  background-color: $puppet-amber;
+  display: block !important;
+  width: $puppet-common-spacing-base * 4;
+}
+
 /********** Styleguidist overrides **********/
- 
+
 // stylelint-disable-next-line selector-max-id
 #section-puppet-design-system {
   display: none;
@@ -35,6 +93,37 @@ span.rc-content > p:only-child {
   display: inline;
 }
 
+article[data-testid='Glossary-examples'] {
+  table {
+    display: inline;
+    margin-right: $puppet-common-spacing-base;
+  }
+
+  table:nth-of-type(2n) {
+    td {
+      background: #fff !important;
+    }
+  }
+
+  tbody tr:first-child td {
+    border-top: $puppet-common-border-subtle !important;
+
+    &:first-child {
+      border-top-left-radius: $puppet-common-border-radius !important;
+    }
+
+    &:last-child {
+      border-top-right-radius: $puppet-common-border-radius !important;
+    }
+  }
+
+  th {
+    background: #fff !important;
+    border: 0 !important;
+    font-size: 16px;
+    padding-top: $puppet-common-spacing-base * 4;
+  }
+}
 
 /********** Components **********/
 
@@ -92,7 +181,6 @@ span.rc-content > p:only-child {
 .swatch-color-black {
   background: $puppet-black;
 }
-
 
 // Neutral colors
 
@@ -189,7 +277,6 @@ span.rc-content > p:only-child {
 .swatch-color-b50 {
   background: $puppet-b50;
 }
-
 
 // Red colors
 
@@ -358,7 +445,6 @@ span.rc-content > p:only-child {
 .swatch-color-p50 {
   background: $puppet-p50;
 }
-
 
 // Icons
 

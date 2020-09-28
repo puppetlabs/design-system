@@ -1,0 +1,111 @@
+/* stylelint-disable selector-max-compound-selectors */
+
+.rc-toolbar {
+  border-bottom: $puppet-common-border;
+  display: flex;
+}
+
+.rc-toolbar-primary {
+  background-color: $puppet-white;
+}
+
+.rc-toolbar-secondary {
+  background-color: $puppet-n50;
+}
+
+.rc-toolbar-border {
+  border-top: $puppet-common-border;
+}
+
+.rc-toolbar > .rc-tabs {
+  margin-bottom: -1px;
+  margin-top: 0;
+}
+
+.rc-toolbar-border > .rc-tabs {
+  margin-top: -1px;
+}
+
+.rc-toolbar > .rc-tabs > .rc-tabs-list {
+  z-index: 2;
+}
+
+.rc-toolbar-primary .rc-tabs-list {
+  background-color: $puppet-white;
+}
+
+.rc-toolbar-secondary .rc-tabs-list {
+  background-color: $puppet-n50;
+}
+
+.rc-toolbar-border > .rc-tabs > .rc-tabs-list {
+  border-top: $puppet-common-border;
+}
+
+.rc-toolbar .rc-tabs-button {
+  border: 0;
+  border-radius: 0 !important;
+  border-right: $puppet-common-border;
+  margin: 0 !important;
+  padding: 6px 24px;
+
+  &.rc-tabs-button-active::after {
+    content: none;
+  }
+
+  &:focus {
+    border-right-color: $puppet-n400;
+    box-shadow: $puppet-common-focus-outline-inset;
+  }
+
+  &:focus .rc-tabs-button-icon {
+    left: 8px;
+  }
+}
+
+.rc-toolbar > .rc-tabs > .rc-tabs-panel {
+  padding: 0;
+}
+
+.rc-toolbar-actions {
+  display: flex;
+
+  .rc-button {
+    border: 0;
+    padding: 6px 16px;
+  }
+
+  .rc-button-icon.rc-button-full {
+    padding-left: 32px;
+  }
+
+  .rc-button-trailing-icon.rc-button-full {
+    padding-right: 32px;
+  }
+
+  .rc-button-icon-svg {
+    left: 8px;
+  }
+
+  &.rc-toolbar-actions-left {
+    margin: 0 auto 0 0;
+
+    .rc-button-inner-focus {
+      border-right: $puppet-common-border;
+    }
+  }
+
+  &.rc-toolbar-actions-right {
+    margin: 0 0 0 auto;
+
+    .rc-button-inner-focus {
+      border-left: $puppet-common-border;
+    }
+  }
+
+  .rc-button-inner-focus + .rc-button-inner-focus {
+    margin-left: 0;
+  }
+}
+
+/* stylelint-enable selector-max-compound-selectors */

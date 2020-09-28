@@ -266,6 +266,24 @@
     background-color: $puppet-n200;
   }
 
+  td > a:only-child,
+  th > a:only-child {
+    // For links that are the direct and only descendent a cell, fill up the cell
+    display: inline-block;
+    margin: -$puppet-common-spacing-base * 2;
+    padding: $puppet-common-spacing-base * 2;
+    width: 100%;
+
+    &:focus {
+      box-shadow: none;
+
+      // stylelint-disable-next-line
+      .rc-link-children {
+        box-shadow: inset 0 -4px 0 -1px $puppet-b100;
+      }
+    }
+  }
+
   //
   // Table outer border
   //

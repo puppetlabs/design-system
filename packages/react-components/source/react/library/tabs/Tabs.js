@@ -9,32 +9,35 @@ import Tab from './Tab';
 import Panel from './Panel';
 
 const propTypes = {
+  /** Nested Tab.Tabs components */
+  children: PropTypes.node,
+  /** Optional additional className */
+  className: PropTypes.string,
   /**
    * This prop is automatically passed from the withID HOC
    * @ignore
    */
   id: PropTypes.string.isRequired,
-  /** Currently controls bg color of active tab & panel */
-  type: PropTypes.oneOf(['primary', 'secondary']),
-  /** Nested Tab.Tabs components */
-  children: PropTypes.node,
   /** Optionally set active Tab with Tab ID */
   initialTab: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   /** Optional onChange event handler. If onChange exists, Tabs are in controlled mode */
   onChange: PropTypes.func,
-  /** Optional additional className */
-  className: PropTypes.string,
+  /** Add padding to tab pane */
+  panePadding: PropTypes.bool,
   /** Optional additional inline style */
   style: PropTypes.shape({}),
+  /** Controls background color of active tab */
+  type: PropTypes.oneOf(['primary', 'secondary']),
 };
 
 const defaultProps = {
-  type: 'primary',
   children: null,
+  className: '',
   initialTab: null,
   onChange() {},
-  className: '',
+  panePadding: true,
   style: {},
+  type: 'primary',
 };
 
 const collectTabsProps = children =>
@@ -153,9 +156,10 @@ class Tabs extends React.Component {
     const {
       children: userProvidedChildren,
       className,
+      id: parentId,
+      panePadding,
       style,
       type,
-      id: parentId,
     } = this.props;
 
     const tabsProps = collectTabsProps(userProvidedChildren);
@@ -165,7 +169,9 @@ class Tabs extends React.Component {
 
     return (
       <div
-        className={classNames('rc-tabs', `rc-tabs-${type}`, className)}
+        className={classNames('rc-tabs', `rc-tabs-${type}`, className, {
+          'rc-tabs-pane-padding': panePadding,
+        })}
         style={style}
       >
         <div className="rc-tabs-list" role="tablist">

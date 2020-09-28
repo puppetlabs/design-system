@@ -2,11 +2,11 @@ name: Test
 
 on:
   push:
-    branches-ignore: 
+    branches-ignore:
       - development
       - master
   pull_request:
-    branches-ignore: 
+    branches-ignore:
       - development
       - master
 
@@ -17,7 +17,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x]
+        node-version: [12.4.0]
 
     steps:
     - uses: actions/checkout@v1

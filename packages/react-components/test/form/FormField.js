@@ -95,6 +95,14 @@ describe('<FormField />', () => {
     );
   });
 
+  it('applies an innerClassName to the inner input element', () => {
+    expect(
+      mount(<FormField {...requiredProps} innerClassName="hello-world" />).find(
+        Input,
+      ),
+    ).to.have.prop('className', 'hello-world');
+  });
+
   it('renders an Input for all Input supported types', () => {
     INPUT_SUPPORTED_TYPES.forEach(type => {
       expect(

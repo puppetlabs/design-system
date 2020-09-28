@@ -9,10 +9,13 @@
     "test": "lerna run lint && lerna run test",
     "start": "cd packages/design-system-website && npm start",
     "styleguide:build": "cd packages/design-system-website && npm run styleguide:build",
-    "publish": "lerna publish"
+    "release": "lerna publish from-package"
   },
   "devDependencies": {
     "@babel/preset-stage-2": "^7.0.0",
-    "lerna": "^3.18.3"
+    "lerna": "^3.20.2"
+  },
+  "engines": {
+    "node": "12.4.0"
   }
 }

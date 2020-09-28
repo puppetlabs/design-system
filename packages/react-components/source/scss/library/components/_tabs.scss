@@ -5,9 +5,12 @@
   flex: 1;
   flex-direction: column;
   margin-top: $puppet-common-spacing-base * 4;
+  max-width: 100%;
 }
 
 .rc-tabs-list {
+  align-items: flex-end;
+  display: flex;
   overflow: visible;
 }
 
@@ -16,11 +19,17 @@
   border-bottom: 0 !important;
   border-radius: $puppet-common-border-radius $puppet-common-border-radius 0 0 !important;
   color: $puppet-type-color-base;
+  fill: $puppet-type-color-base;
   margin: 0 2px;
   margin-left: 2px !important;
   padding-left: $puppet-common-spacing-base * 6;
   padding-right: $puppet-common-spacing-base * 6;
   position: relative;
+
+  .rc-button-content {
+    align-items: center;
+    display: flex;
+  }
 }
 
 .rc-tabs-button-active::after {
@@ -43,6 +52,7 @@
 
 .rc-tabs-button-active {
   color: $puppet-type-color-link;
+  fill: $puppet-type-color-link;
 }
 
 // Panel
@@ -50,8 +60,18 @@
   border-top: $puppet-common-border;
   flex: 1;
   min-height: 0;
-  padding: $puppet-common-spacing-base * 4 $puppet-common-spacing-base 0 $puppet-common-spacing-base;
   z-index: 1;
+}
+
+.rc-tabs-button-icon {
+  fill: inherit !important;
+  margin-right: $puppet-common-spacing-base * 2;
+  vertical-align: text-bottom;
+}
+
+.rc-tabs-pane-padding .rc-tabs-panel {
+  padding: $puppet-common-spacing-base * 4 $puppet-common-spacing-base 0
+    $puppet-common-spacing-base;
 }
 
 // Primary coloring

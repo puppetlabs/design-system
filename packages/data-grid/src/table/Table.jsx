@@ -11,7 +11,7 @@ import {
 } from 'prop-types';
 import classNames from 'classnames';
 import { get } from 'lodash';
-import { Heading, Checkbox, Text } from '@puppet/react-components';
+import { Heading, Checkbox, Text, Loading } from '@puppet/react-components';
 
 import ColumnHeader from './ColumnHeader';
 import TableHeader from '../tableHeader/TableHeader';
@@ -30,6 +30,7 @@ const propTypes = {
       /** Optional cell renderer method. */
       cellRenderer: func,
       /** Arbitrary additional data passed to the cell renderer for this column */
+      // eslint-disable-next-line react/forbid-prop-types
       columnData: any,
       /** Unique string key defining this column */
       dataKey: string.isRequired,
@@ -58,6 +59,10 @@ const propTypes = {
     /** Descibes the column being sorted using the column dataKey  */
     sortDataKey: string,
   }),
+  /** Boolean to determine whether to display loading state */
+  loading: bool,
+  /** Optional string to provide alternative message when loading */
+  loadingMessage: string,
   /** Callback function that will return direction and dataKey on every sort action  */
   onSort: func,
   /** Optional boolean to cause horizontal scrolling when table extends past the container */
@@ -91,6 +96,8 @@ const defaultProps = {
   fixedColumn: false,
   emptyStateHeader: 'No data available',
   emptyStateMessage: 'Prompt to action or solution',
+  loading: false,
+  loadingMessage: 'Loading',
   rowClassName: () => {},
   selectable: false,
   onRowChecked: () => {},
@@ -136,6 +143,8 @@ class Table extends Component {
       rowKey,
       className,
       sortedColumn,
+      loading,
+      loadingMessage,
       fixedColumn,
       horizontalScroll,
       emptyStateHeader,
@@ -170,6 +179,8 @@ class Table extends Component {
           {...rest}
         >
           <ColumnHeader
+            loading={loading}
+            loadingMessage={loadingMessage}
             columns={columns}
             selectable={selectable}
             sortedColumn={sortedColumn}
@@ -179,6 +190,31 @@ class Table extends Component {
             headerIndeterminateState={headerIndeterminateState}
           />
           <tbody>
+            {loading && (
+              <tr className="rc-table-cell">
+                <th
+                  className="dg-table-loading-container"
+                  colSpan={columns.length}
+                >
+                  <div
+                    className="dg-table-loading-inner-container"
+                    aria-live="polite"
+                    aria-busy={loading}
+                  >
+                    <div>
+                      <Loading className="dg-loading-size" />
+                    </div>
+                    <Heading
+                      as="h5"
+                      color="medium"
+                      className="dg-table-loading-header"
+                    >
+                      {loadingMessage}
+                    </Heading>
+                  </div>
+                </th>
+              </tr>
+            )}
             {data.map((rowData, rowIndex) => {
               return (
                 <tr
@@ -222,7 +258,6 @@ class Table extends Component {
                       ...defaultColumnDefs,
                       ...column,
                     };
-
                     return (
                       <td
                         key={`${(rowIndex, dataKey)}`}

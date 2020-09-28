@@ -31,6 +31,7 @@ export function ComponentsListRenderer({ items: allItems, ...rest }) {
 
       return (
         <Sidebar.Item
+          containerElement="div"
           active={isItemSelected}
           href={href}
           key={href}

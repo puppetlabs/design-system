@@ -35,6 +35,7 @@ import Text from '../text';
 ### Secondary
 
 ```jsx
+import Button from '../button';
 import Text from '../text';
 
 <Tabs type="secondary" initialTab={2}>
@@ -94,3 +95,50 @@ class MyPageWithTabs extends React.Component {
 
 <MyPageWithTabs />;
 ```
+
+## Padding
+
+By default, tab panes have padding for simple use cases, but this can be removed by adding `panePadding={false}` to `Tabs`.
+
+```jsx
+import Text from '../text';
+
+<Tabs panePadding={false}>
+  <Tabs.Tab title="Tab 1">
+    <Text style={{ margin: '20px 0' }}>
+      Default padding can be removed on Tabs so that tab content can define its
+      own padding.
+    </Text>
+  </Tabs.Tab>
+  <Tabs.Tab title="Tab 2">
+    <Text>This tab forgot to add its own padding.</Text>
+  </Tabs.Tab>
+</Tabs>;
+```
+
+# Tab
+
+## Types
+
+As seen above, the `Tabs.Tab` component is used as children of `Tabs` and have props of their own, `id`, `title`, `active`, and `type`. A `type` of "primary" or "secondary" may be used on individual tabs to change the background color of the tab panel, which allows you to choose the type that works best for each tab's content.
+
+```jsx
+import Text from '../text';
+
+<Tabs>
+  <Tabs.Tab title="Primary tab">
+    <Text>White background on first tab when type is primary</Text>
+  </Tabs.Tab>
+  <Tabs.Tab title="Secondary tab" type="secondary">
+    <Text>Grey background on first tab when type is secondary</Text>
+  </Tabs.Tab>
+  <Tabs.Tab title="Primary tab" type="primary">
+    <Text>White background on first tab when type is primary</Text>
+  </Tabs.Tab>
+</Tabs>;
+```
+
+## Related
+
+- [SidePanel](#/React%20Components/SidePanel)
+- [Toolbar](#/React%20Components/Toolbar)

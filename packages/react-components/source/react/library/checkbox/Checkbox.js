@@ -9,7 +9,7 @@ const propTypes = {
   /** Name of the input */
   name: PropTypes.string.isRequired,
   /** Human friendly label */
-  label: PropTypes.string.isRequired,
+  label: PropTypes.node.isRequired,
   /** Boolean input value determining if the checkbox is checked or not */
   value: PropTypes.bool,
   /** Is the input disabled */

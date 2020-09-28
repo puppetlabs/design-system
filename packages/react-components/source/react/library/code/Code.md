@@ -46,6 +46,15 @@ Most code should have a size of medium, the default, but the small code variant 
 
 ```
 
+### Code types
+
+By default, code renders as inline type. Pass `type="block"` to change the styling.
+
+```jsx
+<Code type="block">{`This code is formatted as type "block"
+and it can be multiple lines`}</Code>
+```
+
 ## Related
 
 - [Content](#/React%20Components/Content)

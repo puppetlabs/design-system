@@ -70,6 +70,10 @@ module.exports = {
       name: 'Puppet Design System',
       content: 'README.md',
     },
+    {
+      name: 'Glossary',
+      content: 'glossary/README.md',
+    },
     // The below section gets hidden when `skipComponentsWithoutExample` is true
     {
       name: 'Foundations',
@@ -84,6 +88,14 @@ module.exports = {
           content: 'foundations/ContentWriting.md',
         },
         {
+          name: 'Contributing',
+          content: 'foundations/Contributing.md',
+        },
+        {
+          name: 'Design',
+          content: 'foundations/Design.md',
+        },
+        {
           name: 'Iconography',
           content: 'foundations/Iconography.md',
         },
@@ -94,6 +106,10 @@ module.exports = {
         {
           name: 'Typography',
           content: 'foundations/Typography.md',
+        },
+        {
+          name: 'UX Design Principles',
+          content: 'foundations/DesignPrinciples.md',
         },
       ],
     },
@@ -144,6 +160,7 @@ module.exports = {
         '**/table/ColumnSelect.js',
         '**/table/ColumnHeader.js',
         '**/table/ColumnCheckbox.js',
+        '**/toolbar/Actions.js',
         '**/logo/logos.js',
         '**/breadcrumb/BreadcrumbSection.js',
         '**/tooltips/Tooltip.js',
@@ -152,7 +169,11 @@ module.exports = {
     {
       name: 'React Layouts',
       components: '../react-layouts/src/**/*.{js,jsx}',
-      ignore: ['**/**/index.js', '**/*.test.{js,jsx}'],
+      ignore: [
+        '**/**/index.js',
+        '**/*.test.{js,jsx}',
+        '**/Authentication/AuthenticationAction.jsx',
+      ],
     },
     {
       name: 'Data Grid',

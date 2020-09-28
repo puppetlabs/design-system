@@ -129,4 +129,22 @@ describe('<Input />', () => {
       shallow(<Input {...requiredProps} simple />).find('input'),
     ).to.have.className('rc-input-simple');
   });
+
+  it('should respond to click events if trailingButtonIcon and onClickTrailingButton are provided', () => {
+    const onClick = sinon.spy();
+    const wrapper = mount(<Input {...requiredProps} trailingButtonIcon="eye" onClickTrailingButton={onClick} />);
+
+    wrapper.find('button').simulate('click');
+
+    expect(onClick.called).to.equal(true);
+  });
+
+  it('should respond to click events if trailingButtonText and onClickTrailingButton are provided', () => {
+    const onClick = sinon.spy();
+    const wrapper = mount(<Input {...requiredProps} trailingButtonText="Click me" onClickTrailingButton={onClick} />);
+
+    wrapper.find('button').simulate('click');
+
+    expect(onClick.called).to.equal(true);
+  });
 });

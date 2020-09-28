@@ -11,6 +11,7 @@ const propTypes = {
       /** Optional cell renderer method. */
       cellRenderer: func,
       /** Arbitrary additional data passed to the cell renderer for this column */
+      // eslint-disable-next-line react/forbid-prop-types
       columnData: any,
       /** Unique string key defining this column */
       dataKey: string.isRequired,
