@@ -1,10 +1,9 @@
 This is the Table Header
 
 ```jsx
-
-const onFilterChange = filters =>{
-    console.log('The new array of filters is', filters)
-}
+const onFilterChange = filters => {
+  console.log('The new array of filters is', filters);
+};
 
 const filters = [
   {
@@ -52,19 +51,18 @@ const filters = [
 ];
 
 <TableHeader
-rowCount={{ count: 555 , label: 'Nodes' }}
-filters={filters}
-onFilterChange={onFilterChange}
-/>
+  rowCount={{ count: 555, label: 'Nodes' }}
+  filters={filters}
+  onFilterChange={onFilterChange}
+/>;
 ```
 
 ### Table Quick Filtering
 
-Quick filter functionality is used either to limit on what filters can be applied to a table or as a way of speeding up a users desision making and apply meaningful filters quickly.  
+Quick filter functionality is used either to limit on what filters can be applied to a table or as a way of speeding up a users desision making and apply meaningful filters quickly.
 
-```jsx 
-
-import Table from '../table/Table.jsx'
+```jsx
+import Table from '../table/Table.jsx';
 const data = [
   {
     eventType: 'Task',
@@ -85,7 +83,7 @@ const data = [
   {
     eventType: 'Plan',
     reportCompleted: true,
-  }
+  },
 ];
 
 const columns = [
@@ -93,10 +91,13 @@ const columns = [
     label: 'Host',
     dataKey: 'eventType',
   },
-  { label: 'Report Has Completed', dataKey: 'reportCompleted',  cellRenderer: ({ cellData }) => {
+  {
+    label: 'Report Has Completed',
+    dataKey: 'reportCompleted',
+    cellRenderer: ({ cellData }) => {
       return cellData.toString();
     },
-  }
+  },
 ];
 const filters = [
   {
@@ -133,12 +134,12 @@ const filters = [
   },
 ];
 
-
 class StatefulParent extends React.Component {
   constructor() {
     super();
     this.state = { renderedData: data, selectedfilters: [] };
     this.onFilterSelect = this.onFilterSelect.bind(this);
+    this.onRemoveTag = this.onRemoveTag.bind(this);
     this.onRemoveAll = this.onRemoveAll.bind(this);
   }
 
@@ -197,15 +198,23 @@ class StatefulParent extends React.Component {
     const { selectedfilters } = this.state;
     const newArray = selectedfilters;
 
-    const effectedIndex = selectedfilters.findIndex(x => x.field === tag);
+    const findWithAttr = (array, attr, value) => {
+      for (var i = 0; i < array.length; i += 1) {
+        if (array[i][attr] === value) {
+          return i;
+        }
+      }
+      return -1;
+    };
 
-    newArray.splice(effectedIndex, 1);
+    const effectedIndex = findWithAttr(newArray, 'field', tag);
+    newArray.splice(effectedIndex);
 
     this.setState(
       {
         selectedfilters: newArray,
       },
-      () => this.onFilterUpdate(),
+      () => this.updateData(),
     );
   }
 
@@ -226,5 +235,4 @@ class StatefulParent extends React.Component {
   }
 }
 <StatefulParent />;
-
 ```
