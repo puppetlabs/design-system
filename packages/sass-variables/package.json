@@ -5,7 +5,8 @@
   "license": "Apache-2.0",
   "scripts": {
     "link": "npm link",
-    "format": "prettier --write **/*.scss && stylelint --fix **/*.scss"
+    "format": "prettier --write **/*.scss && stylelint --fix **/*.scss",
+    "upgrade": "npx npm-check-updates --upgrade"
   },
   "publishConfig": {
     "access": "public"

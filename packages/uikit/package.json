@@ -13,7 +13,8 @@
     "lint": "./scripts/lint",
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "upgrade": "npx npm-check-updates --upgrade"
   },
   "publishConfig": {
     "access": "public"
