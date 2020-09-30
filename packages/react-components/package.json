@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-components",
-  "version": "5.22.4",
+  "version": "5.22.5",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "build/library.js",
@@ -17,7 +17,8 @@
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
     "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'",
-    "start": "cd ../design-system-website && npm start"
+    "start": "cd ../design-system-website && npm start",
+    "upgrade": "npx npm-check-updates --upgrade"
   },
   "publishConfig": {
     "access": "public"
