@@ -1,4 +1,8 @@
-# react-components NEXT
+# sass-variables 1.4.4 (2020-09-30)
+
+- [Security] Upgrade sass-variables and design-system dependencies (by [@vine77](https://github.com/vine77) in [#307](https://github.com/puppetlabs/design-system/pull/307))
+
+# react-components 5.22.5 (2020-09-30)
 
 - [Icon] Add `star-empty` and `star-filled` icons  (by [@Sigler](https://github.com/Sigler) in [#303](https://github.com/puppetlabs/design-system/pull/303))
 
