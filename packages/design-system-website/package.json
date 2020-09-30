@@ -6,7 +6,8 @@
   "private": true,
   "scripts": {
     "start": "styleguidist server",
-    "styleguide:build": "styleguidist build"
+    "styleguide:build": "styleguidist build",
+    "upgrade": "npx npm-check-updates --upgrade"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
