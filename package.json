@@ -10,11 +10,11 @@
     "start": "cd packages/design-system-website && npm start",
     "styleguide:build": "cd packages/design-system-website && npm run styleguide:build",
     "release": "lerna publish from-package",
-    "upgrade": "lerna run upgrade"
+    "upgrade": "npx npm-check-updates --upgrade && lerna run upgrade"
   },
   "devDependencies": {
-    "@babel/preset-stage-2": "^7.0.0",
-    "lerna": "^3.20.2"
+    "@babel/preset-stage-2": "^7.8.3",
+    "lerna": "^3.22.1"
   },
   "engines": {
     "node": "12.4.0"
