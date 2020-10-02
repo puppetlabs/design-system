@@ -120,7 +120,6 @@ module.exports = {
         '**/card/CardHeader.js',
         '**/card/Section.js',
         '**/dropdown/DropdownLabel.js',
-        '**/filters/**',
         '**/form/FormSection.js',
         '**/form/internal',
         '**/grid/Column.js',

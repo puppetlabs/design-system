@@ -12,7 +12,6 @@ import Checkbox from './react/library/checkbox';
 import Code from './react/library/code';
 import ConfirmationModal from './react/library/confirmation-modal';
 import Content from './react/library/content';
-import Filters from './react/library/filters';
 import Form from './react/library/form';
 import Heading from './react/library/heading';
 import Icon from './react/library/icon';
@@ -45,7 +44,6 @@ export {
   Code, 
   ConfirmationModal, 
   Content, 
-  Filters,
   Form,
   Heading,
   Icon,
