@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime';
 
 import ActionSelect from './react/library/action-select';
 import Alert from './react/library/alert';
+import Avatar from './react/library/avatar';
 import Badge from './react/library/badge';
 import Breadcrumb from './react/library/breadcrumb';
 import Button from './react/library/button';
@@ -36,6 +37,7 @@ import TooltipHoverArea from './react/library/tooltips/TooltipHoverArea';
 export {
   ActionSelect,
   Alert,
+  Avatar,
   Badge,
   Breadcrumb,
   Button,

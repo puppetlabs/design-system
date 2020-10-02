@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import Icon from '../icon';
 import Heading from '../heading';
 import Text from '../text';
+import Avatar from '../avatar';
 
 const propTypes = {
   /** The root HTML element  */
@@ -54,9 +55,7 @@ const SidebarFooter = ({
   return (
     <Component className="rc-sidebar-footer" {...rest}>
       <div className="rc-sidebar-footer-meta-user">
-        {profileIconProp || (
-          <Icon type="profile" className="rc-sidebar-footer-meta-user-icon" />
-        )}
+        {profileIconProp || <Avatar>{profileIconProp}</Avatar>}
       </div>
       {meta}
     </Component>
