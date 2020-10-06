@@ -10,6 +10,7 @@ import ButtonSelect from './react/library/button-select';
 import Card from './react/library/card';
 import Checkbox from './react/library/checkbox';
 import Code from './react/library/code';
+import Copy from './react/library/copy';
 import ConfirmationModal from './react/library/confirmation-modal';
 import Content from './react/library/content';
 import Filters from './react/library/filters';
@@ -40,11 +41,12 @@ export {
   Breadcrumb,
   Button,
   ButtonSelect,
-  Card, 
-  Checkbox, 
-  Code, 
-  ConfirmationModal, 
-  Content, 
+  Card,
+  Checkbox,
+  Code,
+  ConfirmationModal,
+  Content,
+  Copy,
   Filters,
   Form,
   Heading,
