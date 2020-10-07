@@ -77,6 +77,53 @@ Inputs are available in a "simple" visual variant, primarily used for in-site se
 />
 ```
 
+### Size and Shape
+
+Inputs are available in two different sizes, "medium" and "large" and two different shapes, "squared" and "rounded". "medium" and "squared" inputs are the default.
+
+```jsx
+<Input
+  name="input-ex7"
+  value={state.value}
+  placeholder="blueberry spicehead"
+  icon="scatter"
+  shape="squared"
+  size="medium"
+  style={{ marginBottom: 10 }}
+  onChange={value => setState({ value })}
+/>
+<Input
+  name="input-ex7"
+  value={state.value}
+  placeholder="princess rainbow"
+  icon="integration"
+  shape="rounded"
+  size="medium"
+  style={{ marginBottom: 10 }}
+  onChange={value => setState({ value })}
+/>
+<Input
+  name="input-ex8"
+  value={state.value}
+  placeholder="twinkle starchild"
+  icon="star"
+  size="large"
+  shape="squared"
+  style={{ marginBottom: 10 }}
+  onChange={value => setState({ value })}
+/>
+<Input
+  name="input-ex9"
+  value={state.value}
+  placeholder="juniper lightning bug"
+  icon="activity"
+  size="large"
+  shape="rounded"
+  style={{ marginBottom: 10 }}
+  onChange={value => setState({ value })}
+/>
+```
+
 ### Inputs with icons
 
 #### Leading icon
