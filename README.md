@@ -6,6 +6,20 @@ Visit the documentation and living styleguide at <https://puppetlabs.github.io/d
 
 ## Quick start
 
+### Prerequisites
+
+Currently, a POSIX environment like macOS or Linux is required for development. (For Windows, you can use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/).) You must install the version of Node specified in [`.nvmrc`](.nvmrc). We recommend using [nvm](https://github.com/nvm-sh/nvm) (Node Version Manager), which allows you to `nvm install` the specified version and `nvm use` the specified version in the current shell (or `nvm alias default` to use the specified version in all new shells).
+
+### Local sandbox
+
+The primary development environment uses [Styleguidist](https://react-styleguidist.js.org) (which is what is also hosted at <https://puppet.style>). You can run it locally to view the docs and play around with components using live editable code:
+
+```sh
+git clone git@github.com:puppetlabs/design-system.git && cd design-system
+npm install
+npm start
+```
+
 ### With an existing app
 
 To add the main package, `@puppet/react-components`, to an existing project:
@@ -14,23 +28,13 @@ To add the main package, `@puppet/react-components`, to an existing project:
 npm install @puppet/react-components
 ```
 
-### From scratch
+### New app from scratch
 
 To try out the design system from scratch, generate a new project with uikit:
 
 ```sh
 npm install -g @puppet/uikit
 uikit generate project my-project
-```
-
-### In a sandbox
-
-If you'd just like to play around with the components in a sandbox with the design-system repo, you can run [Styleguidist](https://react-styleguidist.js.org) locally, though this is also hosted at <https://puppetlabs.github.io/design-system>, which includes live editable code.
-
-```sh
-git clone git@github.com:puppetlabs/design-system.git && cd design-system
-npm install
-npm start
 ```
 
 ### Add components
