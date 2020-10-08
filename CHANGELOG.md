@@ -1,7 +1,8 @@
 # react-components 5.23.0 (2020-10-07)
 
 - [Tabs] Add "transparent" Tabs variant and make Tabs scrollable (at narrow widths) (by [@caseywilliams](https://github.com/caseywilliams) in [#302](https://github.com/puppetlabs/design-system/pull/302))
-- [Input] Add size and shape props to Input component (by [melcherry98](https://github.com/melcherry98) in [#324](https://github.com/puppetlabs/design-system/pull/324))
+- [Input] Add size and shape props to Input component to support search bars (by [melcherry98](https://github.com/melcherry98) in [#324](https://github.com/puppetlabs/design-system/pull/324))
+- [Icon] Add "scan" and "pencil-list" icons (by [Ioannis-Karasavvaidis](https://github.com/Ioannis-Karasavvaidis) in [#329](https://github.com/puppetlabs/design-system/pull/329))
 - [Alert] Change icon for "danger" Alert (by [eliely](https://github.com/eliely) in [#320](https://github.com/puppetlabs/design-system/pull/320))
 - [Copy] Properly export Copy component (by [sprokusk](https://github.com/sprokusk) in [#322](https://github.com/puppetlabs/design-system/pull/322))
 - [Form] Relax Form.Field `description` prop type (by [vine77](https://github.com/vine77) in [#305](https://github.com/puppetlabs/design-system/pull/305))
