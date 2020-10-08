@@ -167,14 +167,11 @@ const Input = ({
         id={name}
         name={name}
         type={isMultiline ? undefined : type}
-        className={classNames(
-          'rc-input',
-          {
-            'rc-input-error': error,
-            'rc-input-simple': simple,
-            'rc-input-multiline': isMultiline,
-          },
-        )}
+        className={classNames('rc-input', {
+          'rc-input-error': error,
+          'rc-input-simple': simple,
+          'rc-input-multiline': isMultiline,
+        })}
         ref={inputRef}
         onChange={e => onChange(parseValue(e.target.value), e)}
         {...otherProps}
