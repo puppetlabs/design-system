@@ -22,6 +22,7 @@ The standard style variation exists for light backgrounds.
   <Logo product="pipelines" style={{ margin: 5 }} />
   <Logo product="remediate" style={{ margin: 5 }} />
   <Logo product="relay" style={{ margin: 5 }} />
+  <Logo product="comply" style={{ margin: 5 }} />
   <Logo product="My Product" style={{ margin: 5 }} />
 </div>
 ```
@@ -47,6 +48,7 @@ This style variation exists for dark backgrounds, where the Puppet logo uses whi
   <Logo inverted product="pipelines" style={{ margin: 5 }} />
   <Logo inverted product="remediate" style={{ margin: 5 }} />
   <Logo inverted product="relay" style={{ margin: 5 }} />
+  <Logo inverted product="comply" style={{ margin: 5 }} />
   <Logo inverted product="My Product" style={{ margin: 5 }} />
 </div>
 ```
@@ -64,6 +66,7 @@ There are times when you might need to use only the graphical icon for a Puppet 
   <Logo type="bug" product="pipelines" style={{ margin: 5 }} />
   <Logo type="bug" product="remediate" style={{ margin: 5 }} />
   <Logo type="bug" product="relay" style={{ margin: 5 }} />
+  <Logo type="bug" product="comply" style={{ margin: 5 }} />
   <Logo type="bug" product="My Product" style={{ margin: 5 }} />
 </div>
 ```

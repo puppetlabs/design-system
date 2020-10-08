@@ -1,3 +1,8 @@
+# react-components 5.23.1 (2020-10-07)
+
+- [Logo] Add "comply" logo (by [Ioannis-Karasavvaidis](https://github.com/Ioannis-Karasavvaidis) in [#327](https://github.com/puppetlabs/design-system/pull/327))
+- [Input] Fix bug with default `size` in Input (by [sprokusk](https://github.com/sprokusk) in [016651a](https://github.com/puppetlabs/design-system/commit/016651a357d2f2f1960147229cc7909f3088b4dc))
+
 # react-components 5.23.0 (2020-10-07)
 
 - [Tabs] Add "transparent" Tabs variant and make Tabs scrollable (at narrow widths) (by [@caseywilliams](https://github.com/caseywilliams) in [#302](https://github.com/puppetlabs/design-system/pull/302))

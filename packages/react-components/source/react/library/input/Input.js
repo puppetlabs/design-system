@@ -66,7 +66,7 @@ const defaultProps = {
   placeholder: '',
   simple: false,
   size: 'medium',
-  shape: 'squared',
+  shape: 'round',
   disabled: false,
   error: false,
   icon: null,

@@ -12,6 +12,7 @@ export const SUPPORTED_LOGOS = [
   'relay',
   'pipelines',
   'remediate',
+  'comply',
 ];
 
 const propTypes = {
