@@ -13,7 +13,7 @@ const onTagClick = () => {
 
 <div>
   <div>
-    <Tag label="Tag label" onClick={onTagClick}/>
+    <Tag label="Tag label" onClick={onTagClick} />
   </div>
 </div>;
 ```

@@ -17,7 +17,7 @@ import Text from '../text';
   >
     <Text>Hello world!</Text>
   </SidePanel>
-</div>
+</div>;
 ```
 
 ## Related

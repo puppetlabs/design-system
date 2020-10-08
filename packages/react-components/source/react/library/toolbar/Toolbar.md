@@ -84,7 +84,7 @@ const [open, setOpen] = React.useState(false);
       <Text>I am a SidePanel</Text>
     </SidePanel>
   </Columns.Column>
-</Columns >;
+</Columns>;
 ```
 
 ## Related
