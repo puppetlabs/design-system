@@ -30,6 +30,10 @@ const propTypes = {
   placeholder: PropTypes.string,
   /** Alternate visual variation */
   simple: PropTypes.bool,
+  /** Size of the input */
+  size: PropTypes.oneOf(['medium', 'large']),
+  /** Shape of the input */
+  shape: PropTypes.oneOf(['round', 'oval']),
   /** Is the input disabled */
   disabled: PropTypes.bool,
   /** Form error, causing element to render red when present */
@@ -61,6 +65,8 @@ const defaultProps = {
   value: '',
   placeholder: '',
   simple: false,
+  size: 'medium',
+  shape: 'squared',
   disabled: false,
   error: false,
   icon: null,
@@ -91,6 +97,8 @@ const Input = ({
   name,
   type,
   simple,
+  size,
+  shape,
   error,
   icon,
   trailingIcon,
@@ -143,7 +151,15 @@ const Input = ({
   );
 
   return (
-    <div className={classNames('rc-input-container', className)} style={style}>
+    <div
+      className={classNames(
+        className,
+        'rc-input-container',
+        `rc-input-container-${size}`,
+        `rc-input-container-${shape}`,
+      )}
+      style={style}
+    >
       {icon && lIcon}
       {trailingIcon && tIcon}
       {showTrailingButton && trailingButton}
@@ -151,11 +167,14 @@ const Input = ({
         id={name}
         name={name}
         type={isMultiline ? undefined : type}
-        className={classNames('rc-input', {
-          'rc-input-error': error,
-          'rc-input-simple': simple,
-          'rc-input-multiline': isMultiline,
-        })}
+        className={classNames(
+          'rc-input',
+          {
+            'rc-input-error': error,
+            'rc-input-simple': simple,
+            'rc-input-multiline': isMultiline,
+          },
+        )}
         ref={inputRef}
         onChange={e => onChange(parseValue(e.target.value), e)}
         {...otherProps}

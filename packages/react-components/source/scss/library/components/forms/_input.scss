@@ -46,6 +46,22 @@
   box-shadow: 0 2px 0 0 $puppet-b300 !important;
 }
 
+.rc-input-container-round .rc-input {
+  border-radius: $puppet-common-border-radius;
+}
+
+.rc-input-container-oval .rc-input {
+  border-radius: 80px;
+}
+
+.rc-input-container-medium .rc-input {
+  padding: 5px 7px;
+}
+
+.rc-input-container-large .rc-input {
+  padding: 10px;
+}
+
 .rc-input-multiline {
   height: $puppet-common-spacing-base * 18;
   resize: vertical;
@@ -95,4 +111,22 @@
     border: hidden;
   }
 
+  // Increase padding around icons in large inputs
+  &.rc-input-container-large {
+    .rc-input-icon.leading {
+      left: $puppet-common-spacing-base * 4 - 1;
+    }
+
+    .rc-input-icon.leading ~ .rc-input {
+      padding-left: $puppet-common-spacing-base * 10 - 1;
+    }
+
+    .rc-input-icon.trailing {
+      right: $puppet-common-spacing-base * 4 - 1;
+    }
+
+    .rc-input-icon.trailing ~ .rc-input {
+      padding-right: $puppet-common-spacing-base * 10 - 1;
+    }
+  }
 }
