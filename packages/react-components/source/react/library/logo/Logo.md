@@ -70,3 +70,7 @@ There are times when you might need to use only the graphical icon for a Puppet 
   <Logo type="bug" product="My Product" style={{ margin: 5 }} />
 </div>
 ```
+
+## Related
+
+- [Icon](#/React%20Components/Icon)

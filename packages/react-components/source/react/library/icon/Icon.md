@@ -132,10 +132,11 @@ const Renderer = () => {
 6. _Engineering_: Add the icon to [icons.js](https://github.com/puppetlabs/design-system/blob/master/packages/react-components/source/react/library/icon/icons.js) in alphabetical order, specifying the icon name and native SVG sizes (usually "medium" for 16px but optionally also "tiny" for 8px, "small" for 12px, or "large" for 24px).
 
 ## Disclaimer
-These icons include material from third parties and may be protected by their own, independent trademarks. Use of these materials is for illustrative purposes only and is not intended to infringe on the copyright or trademark of any of these third parties. Use of these materials does not imply endorsement by Puppet of the trademark holders. 
+
+These icons include material from third parties and may be protected by their own, independent trademarks. Use of these materials is for illustrative purposes only and is not intended to infringe on the copyright or trademark of any of these third parties. Use of these materials does not imply endorsement by Puppet of the trademark holders.
 
 ## Related
 
-- [Button](#/React%20Components/Button): Buttons are able to render an icon as part of the component
-- [ButtonSelect](#/React%20Components/ButtonSelect)
-- [Iconography](#/Foundations/Iconography) (Foundations)
+- [Logo](#/React%20Components/Logo)
+- [Button](#/React%20Components/Button) Buttons are able to render an icon as part of the component)
+- [Iconography](#/Foundations/Iconography) (in Foundations)
