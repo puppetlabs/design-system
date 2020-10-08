@@ -33,7 +33,7 @@ const propTypes = {
   /** Size of the input */
   size: PropTypes.oneOf(['medium', 'large']),
   /** Shape of the input */
-  shape: PropTypes.oneOf(['squared', 'rounded']),
+  shape: PropTypes.oneOf(['round', 'oval']),
   /** Is the input disabled */
   disabled: PropTypes.bool,
   /** Form error, causing element to render red when present */
@@ -151,7 +151,15 @@ const Input = ({
   );
 
   return (
-    <div className={classNames('rc-input-container', className)} style={style}>
+    <div
+      className={classNames(
+        className,
+        'rc-input-container',
+        `rc-input-container-${size}`,
+        `rc-input-container-${shape}`,
+      )}
+      style={style}
+    >
       {icon && lIcon}
       {trailingIcon && tIcon}
       {showTrailingButton && trailingButton}
@@ -161,8 +169,6 @@ const Input = ({
         type={isMultiline ? undefined : type}
         className={classNames(
           'rc-input',
-          `rc-input-${size}`,
-          `rc-input-${shape}`,
           {
             'rc-input-error': error,
             'rc-input-simple': simple,

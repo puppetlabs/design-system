@@ -79,7 +79,7 @@ Inputs are available in a "simple" visual variant, primarily used for in-site se
 
 ### Size and Shape
 
-Inputs are available in two different sizes, "medium" and "large" and two different shapes, "squared" and "rounded". "medium" and "squared" inputs are the default.
+Inputs are available in two different sizes, "medium" and "large" and two different shapes, "round" and "oval". "medium" and "round" inputs are the default.
 
 ```jsx
 <Input
@@ -87,7 +87,7 @@ Inputs are available in two different sizes, "medium" and "large" and two differ
   value={state.value}
   placeholder="blueberry spicehead"
   icon="scatter"
-  shape="squared"
+  shape="round"
   size="medium"
   style={{ marginBottom: 10 }}
   onChange={value => setState({ value })}
@@ -97,7 +97,7 @@ Inputs are available in two different sizes, "medium" and "large" and two differ
   value={state.value}
   placeholder="princess rainbow"
   icon="integration"
-  shape="rounded"
+  shape="oval"
   size="medium"
   style={{ marginBottom: 10 }}
   onChange={value => setState({ value })}
@@ -108,7 +108,7 @@ Inputs are available in two different sizes, "medium" and "large" and two differ
   placeholder="twinkle starchild"
   icon="star"
   size="large"
-  shape="squared"
+  shape="round"
   style={{ marginBottom: 10 }}
   onChange={value => setState({ value })}
 />
@@ -118,7 +118,7 @@ Inputs are available in two different sizes, "medium" and "large" and two differ
   placeholder="juniper lightning bug"
   icon="activity"
   size="large"
-  shape="rounded"
+  shape="oval"
   style={{ marginBottom: 10 }}
   onChange={value => setState({ value })}
 />
