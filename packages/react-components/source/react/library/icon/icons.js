@@ -399,7 +399,7 @@ const icons = {
     ),
   },
 
-  custom: {
+  'pencil-list': {
     medium: (
       <path
         fillRule="evenodd"
