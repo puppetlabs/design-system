@@ -33,7 +33,7 @@ const propTypes = {
   /** Size of the input */
   size: PropTypes.oneOf(['medium', 'large']),
   /** Shape of the input */
-  shape: PropTypes.oneOf(['round', 'oval']),
+  shape: PropTypes.oneOf(['round', 'oval', 'squared']),
   /** Is the input disabled */
   disabled: PropTypes.bool,
   /** Form error, causing element to render red when present */
