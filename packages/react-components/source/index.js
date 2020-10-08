@@ -22,6 +22,7 @@ import Link from './react/library/link';
 import Loading from './react/library/loading';
 import Logo from './react/library/logo';
 import Modal from './react/library/modal';
+import Popover from './react/library/popover';
 import RadioButton from './react/library/radiobutton';
 import Select from './react/library/select';
 import Sidebar from './react/library/sidebar';
@@ -56,6 +57,7 @@ export {
   Loading,
   Logo,
   Modal,
+  Popover,
   RadioButton,
   Select,
   Sidebar,
