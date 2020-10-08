@@ -138,6 +138,7 @@ const exampleStyle = { marginBottom: 10 };
     name="input-ex11"
     value={state['input-ex11-value']}
     icon="search"
+    shape="oval"
     placeholder="Search for stuff"
     style={exampleStyle}
     onChange={value => setState({ 'input-ex11-value': value })}

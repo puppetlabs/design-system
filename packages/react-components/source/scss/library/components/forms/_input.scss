@@ -54,11 +54,11 @@
   border-radius: 80px;
 }
 
-.rc-input-medium {
+.rc-input-container-medium .rc-input {
   padding: 5px 7px;
 }
 
-.rc-input-large {
+.rc-input-container-large .rc-input {
   padding: 10px;
 }
 
@@ -71,43 +71,62 @@
 .rc-input-container {
   flex-grow: 1;
   position: relative;
-}
 
-.rc-input-icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
+  .rc-input-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
-.rc-input-icon.leading {
-  left: $puppet-common-spacing-base * 2;
-}
+  .rc-input-icon.leading {
+    left: $puppet-common-spacing-base * 2;
+  }
 
-.rc-input-icon.trailing {
-  right: $puppet-common-spacing-base * 2;
-}
+  .rc-input-icon.trailing {
+    right: $puppet-common-spacing-base * 2;
+  }
 
-.rc-input-icon.trailing.edge {
-  right: $puppet-common-spacing-base * 0;
-}
+  .rc-input-icon.trailing.edge {
+    right: $puppet-common-spacing-base * 0;
+  }
 
-.rc-input-icon.trailing.with-trailing-button {
-  right: $puppet-common-spacing-base * 9;
-}
+  .rc-input-icon.trailing.with-trailing-button {
+    right: $puppet-common-spacing-base * 9;
+  }
 
-.rc-input-icon.leading ~ .rc-input {
-  padding-left: 31px;
-}
+  .rc-input-icon.leading ~ .rc-input {
+    padding-left: 31px;
+  }
 
-.rc-input-icon.trailing ~ .rc-input {
-  padding-right: 31px;
-}
+  .rc-input-icon.trailing ~ .rc-input {
+    padding-right: 31px;
+  }
 
-.rc-input-button-icon {
-  border: hidden;
-}
+  .rc-input-button-icon {
+    border: hidden;
+  }
 
-.rc-input-button-icon:hover {
-  background: inherit;
-  border: hidden;
+  .rc-input-button-icon:hover {
+    background: inherit;
+    border: hidden;
+  }
+
+  // Increase padding around icons in large inputs
+  &.rc-input-container-large {
+    .rc-input-icon.leading {
+      left: $puppet-common-spacing-base * 4 - 1;
+    }
+
+    .rc-input-icon.leading ~ .rc-input {
+      padding-left: $puppet-common-spacing-base * 10 - 1;
+    }
+
+    .rc-input-icon.trailing {
+      right: $puppet-common-spacing-base * 4 - 1;
+    }
+
+    .rc-input-icon.trailing ~ .rc-input {
+      padding-right: $puppet-common-spacing-base * 10 - 1;
+    }
+  }
 }
