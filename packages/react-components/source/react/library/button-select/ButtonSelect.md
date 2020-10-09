@@ -16,10 +16,10 @@ const options = [
 
 <ButtonSelect
   options={options}
-  value={state.value}
+  value={value}
   onChange={value => {
     console.log('New Value:', value);
-    setState({ value });
+    setValue(value);
   }}
 />;
 ```
@@ -45,10 +45,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select a value"
     style={style}
-    value={state.value1}
+    value={value1}
     onChange={value1 => {
       console.log('New Value:', value1);
-      setState({ value1 });
+      setValue(value1);
     }}
   />
   <ButtonSelect
@@ -56,10 +56,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select a value"
     style={style}
-    value={state.value2}
+    value={value2}
     onChange={value2 => {
       console.log('New Value:', value2);
-      setState({ value2 });
+      setValue(value2);
     }}
   />
   <ButtonSelect
@@ -67,10 +67,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select a value"
     style={style}
-    value={state.value3}
+    value={value3}
     onChange={value3 => {
       console.log('New Value:', value3);
-      setState({ value3 });
+      setValue(value3);
     }}
   />
   <ButtonSelect
@@ -78,10 +78,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select a value"
     style={style}
-    value={state.value3}
+    value={value3}
     onChange={value3 => {
       console.log('New Value:', value3);
-      setState({ value3 });
+      setValue(value3);
     }}
   />
   <ButtonSelect
@@ -89,10 +89,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select a value"
     style={style}
-    value={state.value4}
+    value={value4}
     onChange={value4 => {
       console.log('New Value:', value4);
-      setState({ value4 });
+      setValue(value4);
     }}
   />
   <ButtonSelect
@@ -100,10 +100,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select a value"
     style={style}
-    value={state.value5}
+    value={value5}
     onChange={value5 => {
       console.log('New Value:', value5);
-      setState({ value5 });
+      setValue(value5);
     }}
   />
 </div>;
@@ -116,9 +116,7 @@ const style = { display: 'inline-block', margin: 10 };
 An alternate `selectedLabel` prop can be specified on each option.
 
 ```jsx
-initialState = {
-  value: 'name',
-};
+const [value, setValue] = React.useState('name');
 
 const options = [
   { value: 'name', label: 'Name', selectedLabel: 'Sort by name' },
@@ -133,10 +131,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select multiple things"
     style={style}
-    value={state.value}
+    value={value}
     onChange={value => {
       console.log('New Value', value);
-      setState({ value });
+      setValue(value);
     }}
   />
 </div>;
@@ -147,9 +145,7 @@ const style = { display: 'inline-block', margin: 10 };
 Multiple values can be selected if the `multiple` prop is `true`. In this mode an "Apply" button will render below the options list. The newly selected values are not applied until the user activates this button. If the user clicks the "Cancel" button, presses escape, or click out of the open menu, their changes will be discarded.
 
 ```jsx
-initialState = {
-  value: [],
-};
+const [value, setValue] = React.useState([]);
 
 const options = [
   { value: 'one', label: 'One' },
@@ -168,10 +164,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select multiple things"
     style={style}
-    value={state.value}
+    value={value}
     onChange={value => {
       console.log('New Value', value);
-      setState({ value });
+      setValue(value);
     }}
   />
 </div>;
@@ -184,9 +180,7 @@ Warning: Consult with your UX designer prior to using this option. We are consid
 The default multi-select behavior can be overridden with the `applyImmediately` prop. In this mode, a 'Done' button will still render for consistency but the values will be immediately applied. If the user escapes or clicks out of the open menu, their changes will be discarded.
 
 ```jsx
-initialState = {
-  value: [],
-};
+const [value, setValue] = React.useState([]);
 
 const options = [
   { value: 'one', label: 'One' },
@@ -211,10 +205,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select multiple things"
     style={style}
-    value={state.value}
+    value={value}
     onChange={value => {
       console.log('New Value', value);
-      setState({ value });
+      setValue(value);
     }}
   />
 </div>;
@@ -252,10 +246,10 @@ const options = [
 <div>
   <ButtonSelect
     options={options}
-    value={state.value}
+    value={value}
     onChange={value => {
       console.log('New Value:', value);
-      setState({ value });
+      setValue(value);
     }}
   />
 </div>;
@@ -275,10 +269,10 @@ const options = [
 
 <ButtonSelect
   options={options}
-  value={state.value}
+  value={value}
   onChange={value => {
     console.log('New Value:', value);
-    setState({ value });
+    setValue(value);
   }}
   width="100px"
 />;

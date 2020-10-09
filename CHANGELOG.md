@@ -1,3 +1,17 @@
+# react-components 5.23.2 (2020-10-08)
+
+- [Input] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+- [ButtonSelect] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+- [Select] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+- [Checkbox] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+- [Card] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+- [Form] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+- [RadioButton] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+- [RadioButton] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+- [Switch] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+- [Tabs] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+- [README] Change setState to useState (by [Tim Rybicki](https://github.com/trybick) in [#334](https://github.com/puppetlabs/design-system/pull/334))
+
 # react-components 5.23.1 (2020-10-07)
 
 - [Logo] Add "comply" logo (by [Ioannis-Karasavvaidis](https://github.com/Ioannis-Karasavvaidis) in [#327](https://github.com/puppetlabs/design-system/pull/327))
@@ -22,15 +36,15 @@
 
 # react-components 5.22.5 (2020-09-30)
 
-- [Icon] Add `star-empty` and `star-filled` icons  (by [@Sigler](https://github.com/Sigler) in [#303](https://github.com/puppetlabs/design-system/pull/303))
+- [Icon] Add `star-empty` and `star-filled` icons (by [@Sigler](https://github.com/Sigler) in [#303](https://github.com/puppetlabs/design-system/pull/303))
 
 # react-components 5.22.4 (2020-09-16)
 
-- [Icon] Add `azure`, `bitbucket`, `github`, and `gitlab` icons  (by [@eputnam](https://github.com/eputnam) in [#301](https://github.com/puppetlabs/design-system/pull/301))
+- [Icon] Add `azure`, `bitbucket`, `github`, and `gitlab` icons (by [@eputnam](https://github.com/eputnam) in [#301](https://github.com/puppetlabs/design-system/pull/301))
 
 # react-components 5.22.3 (2020-09-02)
 
-- [Icon] Add `control-repo`, `hardware`, and `module` icons  (by [@sean-mckenna](https://github.com/sean-mckenna) in [#296](https://github.com/puppetlabs/design-system/pull/296))
+- [Icon] Add `control-repo`, `hardware`, and `module` icons (by [@sean-mckenna](https://github.com/sean-mckenna) in [#296](https://github.com/puppetlabs/design-system/pull/296))
 
 # design-assets (2020-09-01)
 

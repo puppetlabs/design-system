@@ -28,76 +28,65 @@ const initialValues = {
 /** Mock api call method */
 const submitForm = values => values;
 
-class MyPage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      values: initialValues,
-      submitting: false,
-    };
-
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+const MyPage = () => {
+  const [values, setValues] = React.useState(initialValues);
+  const [submitting, setSubmitting] = React.useState(false);
 
   onSubmit(values) {
-    this.setState({ submitting: true });
+    setSubmitting(true);
 
     submitForm(values);
 
-    this.setState({ submitting: false, values });
+    setSubmitting(false);
+    setValues(values);
   }
 
-  render() {
-    const { values, submitting } = this.state;
-
-    return (
-      <Form
-        submittable
-        cancellable
-        initialValues={values}
-        submitting={submitting}
-        onSubmit={this.onSubmit}
-      >
-        <Form.Field
-          type="text"
-          name="controlledFirstName"
-          autoComplete="firstname"
-          label="First name"
-          placeholder="Enter your first name..."
-        />
-        <Form.Field
-          type="text"
-          name="controlledLastName"
-          autoComplete="lastname"
-          label="Last name"
-          placeholder="Enter your last name..."
-        />
-        <Form.Field
-          type="password"
-          autoComplete="current-password"
-          name="controlledPassword"
-          label="Password"
-          placeholder="Enter your password..."
-          description="Please enter your password"
-          error="You goofed up now"
-        />
-        <Form.Field
-          type="select"
-          name="controlledFavoriteMovie"
-          label="favorite movie"
-          placeholder="Choose a movie"
-          options={movieOptions}
-        />
-        <Form.Field
-          type="checkbox"
-          name="controlledNotARobot"
-          label="Not a robot"
-          description="Are you a human?"
-        />
-      </Form>
-    );
-  }
+  return (
+    <Form
+      submittable
+      cancellable
+      initialValues={values}
+      submitting={submitting}
+      onSubmit={onSubmit}
+    >
+      <Form.Field
+        type="text"
+        name="controlledFirstName"
+        autoComplete="firstname"
+        label="First name"
+        placeholder="Enter your first name..."
+      />
+      <Form.Field
+        type="text"
+        name="controlledLastName"
+        autoComplete="lastname"
+        label="Last name"
+        placeholder="Enter your last name..."
+      />
+      <Form.Field
+        type="password"
+        autoComplete="current-password"
+        name="controlledPassword"
+        label="Password"
+        placeholder="Enter your password..."
+        description="Please enter your password"
+        error="You goofed up now"
+      />
+      <Form.Field
+        type="select"
+        name="controlledFavoriteMovie"
+        label="favorite movie"
+        placeholder="Choose a movie"
+        options={movieOptions}
+      />
+      <Form.Field
+        type="checkbox"
+        name="controlledNotARobot"
+        label="Not a robot"
+        description="Are you a human?"
+      />
+    </Form>
+  );
 }
 
 <MyPage />;
@@ -125,66 +114,54 @@ const initialValues = {
 /** Mock api call method */
 const submitForm = values => values;
 
-class MyPage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      values: initialValues,
-    };
-
-    this.onChange = this.onChange.bind(this);
-  }
+const MyPage = () => {
+  const [values, setValues] = React.useState(initialValues);
 
   onChange(name, values) {
     console.log(`${name} field changed`);
-    this.setState({ values });
+    setValues(values);
   }
 
-  render() {
-    const { values } = this.state;
-
-    return (
-      <Form values={values} onChange={this.onChange} submittable cancellable>
-        <Form.Field
-          type="text"
-          name="firstName"
-          autoComplete="firstname"
-          label="First name"
-          placeholder="Enter your first name..."
-        />
-        <Form.Field
-          type="text"
-          name="lastName"
-          autoComplete="lastname"
-          label="Last name"
-          placeholder="Enter your last name..."
-        />
-        <Form.Field
-          type="password"
-          name="password"
-          autoComplete="current-password"
-          label="Password"
-          placeholder="Enter your password..."
-          description="Please enter your password"
-          error="You goofed up now"
-        />
-        <Form.Field
-          type="select"
-          name="favoriteMovie"
-          label="favorite movie"
-          placeholder="Choose a movie"
-          options={movieOptions}
-        />
-        <Form.Field
-          type="checkbox"
-          name="notARobot"
-          label="Not a robot"
-          description="Are you a human?"
-        />
-      </Form>
-    );
-  }
+  return (
+    <Form values={values} onChange={onChange} submittable cancellable>
+      <Form.Field
+        type="text"
+        name="firstName"
+        autoComplete="firstname"
+        label="First name"
+        placeholder="Enter your first name..."
+      />
+      <Form.Field
+        type="text"
+        name="lastName"
+        autoComplete="lastname"
+        label="Last name"
+        placeholder="Enter your last name..."
+      />
+      <Form.Field
+        type="password"
+        name="password"
+        autoComplete="current-password"
+        label="Password"
+        placeholder="Enter your password..."
+        description="Please enter your password"
+        error="You goofed up now"
+      />
+      <Form.Field
+        type="select"
+        name="favoriteMovie"
+        label="favorite movie"
+        placeholder="Choose a movie"
+        options={movieOptions}
+      />
+      <Form.Field
+        type="checkbox"
+        name="notARobot"
+        label="Not a robot"
+        description="Are you a human?"
+      />
+    </Form>
+  );
 }
 
 <MyPage />;
@@ -213,85 +190,74 @@ const initialValues = {
 /** Mock api call method */
 const submitForm = values => values;
 
-class MyPage extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      values: initialValues,
-      submitting: false,
-    };
-
-    this.onSubmit = this.onSubmit.bind(this);
-  }
+const MyPage = () => {
+  const [values, setValues] = React.useState(initialValues);
+  const [submitting, setSubmitting] = React.useState(false);
 
   onSubmit(values) {
-    this.setState({ submitting: true });
+    setSubmitting(true);
 
     submitForm(values);
 
-    this.setState({ submitting: false, values });
+    setSubmitting(false);
+    setValues(values);
   }
 
-  render() {
-    const { values, submitting } = this.state;
-
-    return (
-      <Form
-        submittable
-        cancellable
-        initialValues={values}
-        submitting={submitting}
-        onSubmit={this.onSubmit}
-        labelType="secondary"
-        inline
-        inlineLabelWidth={180} // default
-      >
-        <Form.Field
-          type="text"
-          name="fName"
-          autoComplete="firstname"
-          label="First name"
-          placeholder="Enter your first name..."
-        />
-        <Form.Field
-          type="text"
-          name="lName"
-          autoComplete="lastname"
-          label="Last name"
-          placeholder="Enter your last name..."
-        />
-        <Form.Field
-          type="password"
-          autoComplete="current-password"
-          name="pword"
-          label="Password"
-          placeholder="Enter your password..."
-          description="Please enter your password"
-          error="You goofed up now"
-        />
-        <Form.Field
-          type="select"
-          name="favMovie"
-          label="Long label to ask what your favorite movie is."
-          placeholder="Choose a movie"
-          options={movieOptions}
-        />
-        <Form.Field
-          type="checkbox"
-          name="nRobot"
-          label="Not a robot"
-          description="Are you a human?"
-        />
-        <Form.Field
-          type="switch"
-          name="nHuman"
-          label="Not a human"
-          description="Are you a robot?"
-        />
-      </Form>
-    );
-  }
+  return (
+    <Form
+      submittable
+      cancellable
+      initialValues={values}
+      submitting={submitting}
+      onSubmit={onSubmit}
+      labelType="secondary"
+      inline
+      inlineLabelWidth={180} // default
+    >
+      <Form.Field
+        type="text"
+        name="fName"
+        autoComplete="firstname"
+        label="First name"
+        placeholder="Enter your first name..."
+      />
+      <Form.Field
+        type="text"
+        name="lName"
+        autoComplete="lastname"
+        label="Last name"
+        placeholder="Enter your last name..."
+      />
+      <Form.Field
+        type="password"
+        autoComplete="current-password"
+        name="pword"
+        label="Password"
+        placeholder="Enter your password..."
+        description="Please enter your password"
+        error="You goofed up now"
+      />
+      <Form.Field
+        type="select"
+        name="favMovie"
+        label="Long label to ask what your favorite movie is."
+        placeholder="Choose a movie"
+        options={movieOptions}
+      />
+      <Form.Field
+        type="checkbox"
+        name="nRobot"
+        label="Not a robot"
+        description="Are you a human?"
+      />
+      <Form.Field
+        type="switch"
+        name="nHuman"
+        label="Not a human"
+        description="Are you a robot?"
+      />
+    </Form>
+  );
 }
 
 <MyPage />;

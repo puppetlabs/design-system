@@ -203,36 +203,23 @@ The active tab can be manually controlled by setting `active=true` on an individ
 ```jsx
 import Text from '../text';
 
-class MyPageWithTabs extends React.Component {
-  constructor(props) {
-    super(props);
+const MyPageWithTabs = () => {
+  const [activeTab, setActiveTab] = React.useState('tab-1');
 
-    this.state = {
-      activeTab: 'tab-1',
-    };
-
-    this.onTabChange = this.onTabChange.bind(this);
-  }
-
-  onTabChange(newTab) {
+  const onTabChange = (newTab) => {
     console.log(`Switching to tab ${newTab}`);
-    this.setState({ activeTab: newTab });
+    setActiveTab(newTab);
   }
-
-  render() {
-    const { activeTab } = this.state;
-
-    return (
-      <Tabs id="controlled-tabs" onChange={this.onTabChange}>
-        <Tabs.Tab title="Tabby tab" id="tab-1" active={activeTab === 'tab-1'}>
-          <Text>Tab 1</Text>
-        </Tabs.Tab>
-        <Tabs.Tab title="Tabby cat" id="tab-2" active={activeTab === 'tab-2'}>
-          <Text>Tab 2</Text>
-        </Tabs.Tab>
-      </Tabs>
-    );
-  }
+  return (
+    <Tabs id="controlled-tabs" onChange={onTabChange}>
+      <Tabs.Tab title="Tabby tab" id="tab-1" active={activeTab === 'tab-1'}>
+        <Text>Tab 1</Text>
+      </Tabs.Tab>
+      <Tabs.Tab title="Tabby cat" id="tab-2" active={activeTab === 'tab-2'}>
+        <Text>Tab 2</Text>
+      </Tabs.Tab>
+    </Tabs>
+  );
 }
 
 <MyPageWithTabs />;

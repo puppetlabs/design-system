@@ -413,7 +413,7 @@ Built into the data grid component is the ability to render ascending and descen
 
 ```jsx
 import { Link } from '@puppet/react-components';
-const data = [
+const initialData = [
   {
     eventType: 'Application Control',
     affectedDevices: 0,
@@ -480,12 +480,15 @@ const columns = [
   { label: 'Linked field', dataKey: 'Link' },
 ];
 
-class StatefulParent extends React.Component {
-  constructor() {
-    super();
-    this.state = { sortDataKey: 'eventType', direction: 'desc', data };
-    this.handleOnSort = this.handleOnSort.bind(this);
-  }
+const StatefulParent = () => {
+  const [sortDataKey, setSortDataKey] = React.useState('eventType');
+  const [direction, setDirection] = React.useState('desc');
+  const [data, setData] = React.useState(initialData);
+
+  const sortedColumn = {
+    direction,
+    sortDataKey,
+  };
 
   handleOnSort(newDirection, newDataKey) {
     // sortFunc will return direction and dataKey on every sort action
@@ -493,29 +496,19 @@ class StatefulParent extends React.Component {
 
     const newArray = _.orderBy(data, [newDataKey], [newDirection]);
 
-    this.setState({
-      data: newArray,
-      direction: newDirection,
-      sortDataKey: newDataKey,
-    });
+    setData(newArray);
+    setDirection(newDirection);
+    setSortDataKey(newDataKey);
   }
 
-  render() {
-    const { data: stateData, sortDataKey, direction } = this.state;
-    const sortedColumn = {
-      direction,
-      sortDataKey,
-    };
-
-    return (
-      <Table
-        data={stateData}
-        columns={columns}
-        onSort={this.handleOnSort}
-        sortedColumn={sortedColumn}
-      />
-    );
-  }
+  return (
+    <Table
+      data={stateData}
+      columns={columns}
+      onSort={handleOnSort}
+      sortedColumn={sortedColumn}
+    />
+  );
 }
 <StatefulParent />;
 ```
@@ -639,7 +632,7 @@ Should your data grid component support a user action within your project then t
 ```jsx
 import { Link } from '@puppet/react-components';
 
-const data = [
+const initialData = [
   {
     eventType: 'Application Control',
     affectedDevices: 0,
@@ -705,50 +698,46 @@ const columns = [
   { label: 'Linked field', dataKey: 'Link' },
 ];
 
-class StatefulParent extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      data,
-      checkAll: false,
-      IndeterminateState: false,
-    };
-    this.onHeaderSelected = this.onHeaderSelected.bind(this);
-    this.onRowSelected = this.onRowSelected.bind(this);
-  }
+const StatefulParent = () => {
+  const [data, setData] = React.useState(initialData);
+  const [checkAll, setCheckAll] = React.useState(false);
+  const [IndeterminateState, setIndeterminateState] = React.useState(false);
 
-  checkIfIndeterminateState(state) {
-    const { data, IndeterminateState, checkAll } = this.state;
+  const checkIfIndeterminateState = () => {
     let x = data.filter(e => e.selected === true);
 
     if (x.length > 0 && IndeterminateState === false && checkAll === false) {
-      this.setState({ IndeterminateState: true });
+      setIndeterminateState(true);
     } else if (
       (x.length === 0 && IndeterminateState === true) ||
       (x.length === 0 && checkAll === true)
     ) {
-      this.setState({ IndeterminateState: false, checkAll: false });
+      setIndeterminateState(false,);
+      setCheckAll(false)
     }
     if (x.length === data.length && checkAll === false) {
-      this.setState({ IndeterminateState: false, checkAll: true });
+      setIndeterminateState(false);
+      setCheckAll(true)
     }
   }
 
-  onHeaderSelected(checked) {
-    const { data: stateData, IndeterminateState } = this.state;
+  const onHeaderSelected = (checked) => {
+    let stateData = data;
 
-    this.setState({ IndeterminateState: false, checkAll: checked });
+    setIndeterminateState(false);
+    setCheckAll(checked)
+
 
     for (let i = 0; i < stateData.length; i += 1) {
       stateData[i].selected = checked;
     }
   }
 
-  onRowSelected(checked, row) {
-    const { data: stateData, checkAll } = this.state;
+  const onRowSelected = (checked, row) => {
+    let stateData = data;
 
     if (checkAll) {
-      this.setState({ checkAll: false });
+      setCheckAll(false);
     }
 
     // find the index of object from array that you want to update
@@ -764,36 +753,24 @@ class StatefulParent extends React.Component {
       ...stateData.slice(objIndex + 1),
     ];
 
-    this.checkIfIndeterminateState(),
-      this.setState({
-        data: updatedData,
-      });
+    checkIfIndeterminateState(),
+      setData(updatedData);
   }
 
-  render() {
-    const {
-      data: stateData,
-      checkAll: headerCheckboxState,
-      IndeterminateState,
-    } = this.state;
-
-    this.checkIfIndeterminateState();
-
-    return (
-      <div>
-        <Table
-          data={stateData}
-          columns={columns}
-          selectable
-          onRowChecked={this.onRowSelected}
-          onHeaderChecked={this.onHeaderSelected}
-          headerCheckState={headerCheckboxState}
-          headerIndeterminateState={IndeterminateState}
-          checkIfIndeterminateState={this.checkIfIndeterminateState}
-        />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Table
+        data={data}
+        columns={columns}
+        selectable
+        onRowChecked={onRowSelected}
+        onHeaderChecked={onHeaderSelected}
+        headerCheckState={checkAll}
+        headerIndeterminateState={IndeterminateState}
+        checkIfIndeterminateState={checkIfIndeterminateState}
+      />
+    </div>
+  );
 }
 <StatefulParent />;
 ```
@@ -875,20 +852,23 @@ const columns = [
 
 const dataToBePaginated = makeData();
 
-class StatefulParent extends React.Component {
-  constructor() {
-    super();
-    this.state = { CurrentPage: 1 };
-    this.pageSelectFunc = this.pageSelectFunc.bind(this);
-    this.breakIntoMultiplePages = this.breakIntoMultiplePages.bind(this);
+const StatefulParent = () => {
+  const [CurrentPage, setCurrentPage] = React.useState(1);
+
+  const nodesPerPage = 5;
+  const Pages = breakIntoMultiplePages(dataToBePaginated, nodesPerPage);
+  const PageCount = Pages.arrayOfArrays.length;
+  const renderPages = CurrentPage - 1;
+  const currentNode = `${nodesPerPage * CurrentPage}`;
+  const tableFooterText = `${currentNode -
+    nodesPerPage +
+    1} - ${currentNode} of ${dataToBePaginated.length} nodes`;
+
+  const pageSelectFunc = (newPage) => {
+    setCurrentPage(newPage);
   }
 
-  pageSelectFunc(newPage) {
-    const { CurrentPage } = this.state;
-    this.setState({ CurrentPage: newPage });
-  }
-
-  breakIntoMultiplePages(originalArray, pageSize) {
+  const breakIntoMultiplePages = (originalArray, pageSize) => {
     const arrayOfArrays = [];
     for (let i = 0; i < originalArray.length; i += pageSize) {
       arrayOfArrays.push(originalArray.slice(i, i + pageSize));
@@ -896,31 +876,19 @@ class StatefulParent extends React.Component {
     return { arrayOfArrays };
   }
 
-  render() {
-    const nodesPerPage = 5;
-    const Pages = this.breakIntoMultiplePages(dataToBePaginated, nodesPerPage);
-    const PageCount = Pages.arrayOfArrays.length;
-    const { CurrentPage } = this.state;
-    const renderPages = CurrentPage - 1;
-    const currentNode = `${nodesPerPage * CurrentPage}`;
-    const tableFooterText = `${currentNode -
-      nodesPerPage +
-      1} - ${currentNode} of ${dataToBePaginated.length} nodes`;
-
-    return (
-      <div>
-        <Table data={Pages.arrayOfArrays[renderPages]} columns={columns} />
-        <TableFooter>
-          <TablePageSelector
-            paginationCountText={tableFooterText}
-            currentPage={CurrentPage}
-            pageCount={PageCount}
-            updatePage={this.pageSelectFunc}
-          />
-        </TableFooter>
-      </div>
-    );
-  }
+  return (
+    <div>
+      <Table data={Pages.arrayOfArrays[renderPages]} columns={columns} />
+      <TableFooter>
+        <TablePageSelector
+          paginationCountText={tableFooterText}
+          currentPage={CurrentPage}
+          pageCount={PageCount}
+          updatePage={pageSelectFunc}
+        />
+      </TableFooter>
+    </div>
+  );
 }
 <StatefulParent data={dataToBePaginated} />;
 ```

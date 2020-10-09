@@ -56,8 +56,8 @@ When the radio button is used outside of a [Form](#Form) component, the user is 
 <RadioButton
   name="radiobutton-ex-event-handling"
   label="Radio button label is also clickable"
-  value={state.checked}
-  onChange={checked => setState({ checked })}
+  value={checked}
+  onChange={checked => setChecked(checked)}
 />
 ```
 

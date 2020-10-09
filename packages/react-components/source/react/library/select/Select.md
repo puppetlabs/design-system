@@ -33,10 +33,10 @@ const style = { margin: 10 };
     options={options}
     placeholder="Select your language"
     style={style}
-    value={state.value1}
+    value={value1}
     onChange={value1 => {
       console.log('New Value:', value1);
-      setState({ value1 });
+      setValue(value1);
     }}
   />
 </div>;
@@ -70,10 +70,10 @@ const style = { margin: 10 };
     options={options}
     placeholder="Select your fruit"
     style={style}
-    value={state.value1}
+    value={value1}
     onChange={value1 => {
       console.log('New Value:', value1);
-      setState({ value1 });
+      setValue(value1);
     }}
     onBlur={() => {
       console.log('onBlur');
@@ -88,9 +88,7 @@ const style = { margin: 10 };
 With `type` set to `multiselect`, the `Select` input will allow multiple values to be selected. In this mode, an "Apply" button will render below the options list. The newly selected values are not applied until the user activates this button. If the options chosen exceed the side of the input, the excess content will be replaced with an ellipsis. If the user presses escape, clicks the "Cancel" button, or clicks out of the open menu, their changes will be discarded.
 
 ```jsx
-initialState = {
-  value: [],
-};
+const [value, setValue] = React.useState([]);
 
 const options = [
   { value: 'en', label: 'English' },
@@ -114,10 +112,10 @@ const style = { margin: 10 };
     options={options}
     placeholder="Select your language"
     style={style}
-    value={state.value}
+    value={value}
     onChange={value => {
       console.log('New Value', value);
-      setState({ value });
+      setValue(value);
     }}
     type="multiselect"
   />
@@ -131,9 +129,7 @@ Warning: Consult with your UX designer prior to using this option. We are consid
 The default multi-select behavior can be overridden with the `applyImmediately` prop. In this mode, a "Done" button will still render for consistency but the values will be immediately applied.
 
 ```jsx
-initialState = {
-  value: [],
-};
+const [value, setValue] = React.useState([]);
 
 const options = [
   { value: 'en', label: 'English' },
@@ -157,10 +153,10 @@ const style = { margin: 10 };
     options={options}
     placeholder="Select your language"
     style={style}
-    value={state.value}
+    value={value}
     onChange={value => {
       console.log('New Value', value);
-      setState({ value });
+      setValue(value);
     }}
     type="multiselect"
     applyImmediately
@@ -201,11 +197,11 @@ const options = [
   <Select
     name="select-icon-example"
     options={options}
-    value={state.value}
+    value={value}
     placeholder="Select a source control"
     onChange={value => {
       console.log('New Value:', value);
-      setState({ value });
+      setValue(value);
     }}
   />
 </div>;
