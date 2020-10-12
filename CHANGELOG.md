@@ -1,3 +1,9 @@
+# react-components 5.24.0 (2020-10-12)
+
+- [Popover] Add Popover component (by [melcherry98](https://github.com/melcherry98) in [#333](https://github.com/puppetlabs/design-system/pull/333))
+- [SidePanel] Add `closeButtonIcon` and `hideCloseButton` props to SidePanel (by [@jilliankeenan](https://github.com/jilliankeenan) in [#336](https://github.com/puppetlabs/design-system/pull/336))
+- [Logo] Fix logo for Comply (by [vine77](https://github.com/vine77) in [#332](https://github.com/puppetlabs/design-system/pull/332))
+
 # react-components 5.23.1 (2020-10-07)
 
 - [Logo] Add "comply" logo (by [Ioannis-Karasavvaidis](https://github.com/Ioannis-Karasavvaidis) in [#327](https://github.com/puppetlabs/design-system/pull/327))
