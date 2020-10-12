@@ -69,7 +69,7 @@ Cards are often used on grids where the content in each card is selectable, perh
 ```jsx
 import Heading from '../heading';
 
-const [selected, setSelected] = React.useState(null);
+const [selected, setSelected] = React.useState();
 
 const cardExampleStyle = {
   width: 150,
@@ -83,7 +83,7 @@ const cardExampleStyle = {
   <Card
     selectable
     selected={selected === 'a'}
-    onClick={() => setSelected(selected: 'a')}
+    onClick={() => setSelected('a')}
     style={cardExampleStyle}
   >
     <Heading as="h3">A</Heading>
@@ -91,7 +91,7 @@ const cardExampleStyle = {
   <Card
     selectable
     selected={selected === 'b'}
-    onClick={() => setSelected(selected: 'b')}
+    onClick={() => setSelected('b')}
     style={cardExampleStyle}
   >
     <Heading as="h3">B</Heading>
@@ -99,7 +99,7 @@ const cardExampleStyle = {
   <Card
     selectable
     selected={selected === 'c'}
-    onClick={() => setSelected(selected: 'c')}
+    onClick={() => setSelected('c')}
     style={cardExampleStyle}
   >
     <Heading as="h3">C</Heading>

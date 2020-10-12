@@ -41,12 +41,14 @@ When the checkbox is used within a [Form](#Form) component, the value state is e
 When the checkbox is used outside of a [Form](#Form) component, the user is responsible for managing value state.
 
 ```jsx
+const [checked, setChecked] = React.useState(false);
+
 <Checkbox
   name="checkbox-ex-event-handling"
   label="Checkbox label is also clickable"
   value={checked}
   onChange={checked => setChecked(!checked)}
-/>
+/>;
 ```
 
 ## Variations
@@ -58,53 +60,42 @@ Indeterminate state is indicated with a dash in the checkbox instead of a checkm
 In this example, indeterminate state is used for the "Select All" checkbox when only some of the options below it are selected.
 
 ```jsx
-const IndeterminateExample = () => {
-  const [checkBoxes, setCheckBoxes] =
-    React.useState({ checked: false }, { checked: false }, { checked: false });
-
-  const onSelectAll = (checked) => {
-    checkBoxes.forEach(box => {
-      box.checked = checked;
-    });
-    setCheckBoxes(checkBoxes});
-  }
-
-  const onClick = (checked, i) => {
-    checkBoxes[i].checked = checked;
-    setCheckBoxes(checkBoxes});
-  }
-
-  let ticked = 0;
-  checkBoxes.forEach(box => {
-    if (box.checked) {
-      ticked += 1;
-    }
-  });
-
-  return (
-    <div>
-      <Checkbox
-        name="Select All"
-        label="Select All"
-        indeterminate={ticked > 0 && ticked < checkBoxes.length}
-        value={ticked === checkBoxes.length}
-        onChange={checked => onSelectAll(checked)}
-        style={{ fontWeight: 'bold' }}
-      />
-      {checkBoxes.map((box, i) => (
-        <Checkbox
-          name={`Box ${i}`}
-          label={`Box ${i}`}
-          value={box.checked}
-          key={i}
-          onChange={checked => onClick(checked, i)}
-        />
-      ))}
-    </div>
+const [checkBoxes, setCheckBoxes] = React.useState([
+  { checked: false },
+  { checked: false },
+  { checked: false },
+]);
+const ticked = checkBoxes.reduce((acc, box) => acc + box.checked, 0);
+const onSelectAll = checked => {
+  setCheckBoxes(checkBoxes.map(box => ({ checked })));
+};
+const onClick = (checked, i) => {
+  setCheckBoxes(
+    checkBoxes.map((box, index) => (index === i ? { checked } : box)),
   );
-}
+};
 
-<IndeterminateExample />;
+return (
+  <div>
+    <Checkbox
+      name="Select All"
+      label="Select All"
+      indeterminate={ticked > 0 && ticked < checkBoxes.length}
+      value={ticked === checkBoxes.length}
+      onChange={checked => onSelectAll(checked)}
+      style={{ fontWeight: 'bold' }}
+    />
+    {checkBoxes.map((box, i) => (
+      <Checkbox
+        name={`Box ${i}`}
+        label={`Box ${i}`}
+        value={box.checked}
+        key={i}
+        onChange={checked => onClick(checked, i)}
+      />
+    ))}
+  </div>
+);
 ```
 
 ## Related

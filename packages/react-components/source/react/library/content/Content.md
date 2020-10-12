@@ -281,7 +281,8 @@ The `Content` component is a wrapper for simple HTML content, which provides def
         <li>
           <p>
             For more information on our curated step specifications, see{' '}
-            <a href="/documentation/step-specifications">Step specifications</a>.
+            <a href="/documentation/step-specifications">Step specifications</a>
+            .
           </p>
         </li>
         <li>
@@ -294,9 +295,6 @@ The `Content` component is a wrapper for simple HTML content, which provides def
           </p>
         </li>
       </ul>
-      <p>
-        <img src="https://storage.googleapis.com/nebula-docs/stage/example-workflows/gke-provision-and-deploy-workflow.png" />
-      </p>
     </div>
   </div>
 </Content>

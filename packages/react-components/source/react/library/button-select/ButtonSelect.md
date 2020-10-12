@@ -7,6 +7,7 @@ The `ButtonSelect` component allows users to select a value or set of values fro
 Options are specified by entries in an `options` array prop. Each requires a unique `value` and a friendly `label` to display to users.
 
 ```jsx
+const [value, setValue] = React.useState();
 const options = [
   { value: 'hello', label: 'Hello' },
   { value: 'world', label: 'World' },
@@ -29,6 +30,12 @@ const options = [
 The visual types of `ButtonSelect` are "primary", "secondary", "tertiary", "danger", "transparent", "text".
 
 ```jsx
+const [value1, setValue1] = React.useState();
+const [value2, setValue2] = React.useState();
+const [value3, setValue3] = React.useState();
+const [value4, setValue4] = React.useState();
+const [value5, setValue5] = React.useState();
+const [value6, setValue6] = React.useState();
 const options = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },
@@ -37,7 +44,6 @@ const options = [
   { value: 'five', label: 'Five' },
   { value: 'six', label: 'Six' },
 ];
-
 const style = { display: 'inline-block', margin: 10 };
 
 <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -48,7 +54,7 @@ const style = { display: 'inline-block', margin: 10 };
     value={value1}
     onChange={value1 => {
       console.log('New Value:', value1);
-      setValue(value1);
+      setValue1(value1);
     }}
   />
   <ButtonSelect
@@ -59,7 +65,7 @@ const style = { display: 'inline-block', margin: 10 };
     value={value2}
     onChange={value2 => {
       console.log('New Value:', value2);
-      setValue(value2);
+      setValue2(value2);
     }}
   />
   <ButtonSelect
@@ -70,7 +76,7 @@ const style = { display: 'inline-block', margin: 10 };
     value={value3}
     onChange={value3 => {
       console.log('New Value:', value3);
-      setValue(value3);
+      setValue3(value3);
     }}
   />
   <ButtonSelect
@@ -78,10 +84,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select a value"
     style={style}
-    value={value3}
-    onChange={value3 => {
-      console.log('New Value:', value3);
-      setValue(value3);
+    value={value4}
+    onChange={value4 => {
+      console.log('New Value:', value4);
+      setValue4(value4);
     }}
   />
   <ButtonSelect
@@ -89,10 +95,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select a value"
     style={style}
-    value={value4}
-    onChange={value4 => {
-      console.log('New Value:', value4);
-      setValue(value4);
+    value={value5}
+    onChange={value5 => {
+      console.log('New Value:', value5);
+      setValue5(value5);
     }}
   />
   <ButtonSelect
@@ -100,10 +106,10 @@ const style = { display: 'inline-block', margin: 10 };
     options={options}
     placeholder="Select a value"
     style={style}
-    value={value5}
-    onChange={value5 => {
-      console.log('New Value:', value5);
-      setValue(value5);
+    value={value6}
+    onChange={value6 => {
+      console.log('New Value:', value6);
+      setValue6(value6);
     }}
   />
 </div>;
@@ -116,13 +122,11 @@ const style = { display: 'inline-block', margin: 10 };
 An alternate `selectedLabel` prop can be specified on each option.
 
 ```jsx
-const [value, setValue] = React.useState('name');
-
+const [value, setValue] = React.useState();
 const options = [
   { value: 'name', label: 'Name', selectedLabel: 'Sort by name' },
   { value: 'date', label: 'Date', selectedLabel: 'Sort by date' },
 ];
-
 const style = { display: 'inline-block', margin: 10 };
 
 <div>
@@ -146,7 +150,6 @@ Multiple values can be selected if the `multiple` prop is `true`. In this mode a
 
 ```jsx
 const [value, setValue] = React.useState([]);
-
 const options = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },
@@ -155,7 +158,6 @@ const options = [
   { value: 'five', label: 'Five' },
   { value: 'six', label: 'Six' },
 ];
-
 const style = { display: 'inline-block', margin: 10 };
 
 <div>
@@ -181,7 +183,6 @@ The default multi-select behavior can be overridden with the `applyImmediately` 
 
 ```jsx
 const [value, setValue] = React.useState([]);
-
 const options = [
   { value: 'one', label: 'One' },
   { value: 'two', label: 'Two' },
@@ -194,7 +195,6 @@ const options = [
   { value: 'nine', label: 'Nine' },
   { value: 'ten', label: 'Ten' },
 ];
-
 const style = { display: 'inline-block', margin: 10 };
 
 <div>
@@ -219,6 +219,7 @@ const style = { display: 'inline-block', margin: 10 };
 Specify the `icon` prop on each option to display a supported icon to the left of that option, or use the `svg` prop to use a custom icon.
 
 ```jsx
+const [value, setValue] = React.useState();
 const customIcon = {
   viewBox: '0 0 16 16',
   svg: (
@@ -229,7 +230,6 @@ const customIcon = {
     />
   ),
 };
-
 const options = [
   {
     value: 'custom-icon',
@@ -260,6 +260,7 @@ const options = [
 Use the `width` prop to customize the width of the button.
 
 ```jsx
+const [value, setValue] = React.useState();
 const options = [
   { value: 'hello', label: 'Hello' },
   { value: 'world', label: 'World' },
