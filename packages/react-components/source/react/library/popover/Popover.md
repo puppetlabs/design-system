@@ -5,15 +5,26 @@ Popovers are containers that provide additional information or context to a user
 ### Popover
 
 ```jsx
-import Heading from '../heading';
 import Button from '../button';
+import Content from '../content';
+import Heading from '../heading';
+import Link from '../link';
+import Text from '../text';
+
 <div>
-  <Popover 
-    onClose={() => console.log('You closed me!')}
-  >
-    <Heading as="h3">I'm a popover!</Heading>
+  <Popover onClose={() => console.log('You closed me!')}>
+    <Content>
+      <h3>I'm a popover!</h3>
+      <p>
+        I can contain more content like{' '}
+        <a href="http://puppet.com" target="_blank">
+          links
+        </a>{' '}
+        that are harder for a simple tooltip to handle.
+      </p>
+    </Content>
   </Popover>
-</div>
+</div>;
 ```
 
 ## Variations
@@ -25,31 +36,31 @@ import Heading from '../heading';
 import Button from '../button';
 
 <div>
-  <Popover 
-    style={{marginBottom: '10px'}}
-    side='left' 
+  <Popover
+    side="left"
     onClose={() => console.log('Lets do the time warp again')}
+    style={{ marginBottom: '20px' }}
   >
     <Heading as="h3">Just a jump to the left</Heading>
   </Popover>
-  <Popover 
-    style={{marginBottom: '10px'}}
-    side='right' 
+  <Popover
+    side="right"
     onClose={() => console.log('Lets do the time warp again')}
+    style={{ marginBottom: '20px' }}
   >
     <Heading as="h3">And a step to the right</Heading>
   </Popover>
   <Popover
-    style={{marginBottom: '10px'}} 
-    side='top' 
+    side="top"
     onClose={() => console.log('Lets do the time warp again')}
+    style={{ marginBottom: '20px' }}
   >
     <Heading as="h3">With your hands on your hips</Heading>
   </Popover>
-  <Popover 
-    style={{marginBottom: '10px'}}
-    side='bottom' 
+  <Popover
+    side="bottom"
     onClose={() => console.log('Lets do the time warp again')}
+    style={{ marginBottom: '20px' }}
   >
     <Heading as="h3">You bring your knees in tight</Heading>
   </Popover>
@@ -64,26 +75,25 @@ import Button from '../button';
 
 <div>
   <Popover
-    style={{marginBottom: '10px'}}
-    elevation={50} 
+    elevation={50}
     onClose={() => console.log('theoretically at least')}
+    style={{ marginBottom: '20px' }}
   >
     <Heading as="h3">Elevation 50</Heading>
   </Popover>
-  <Popover 
-    style={{marginBottom: '10px'}}
-    elevation={100} 
+  <Popover
+    elevation={100}
     onClose={() => console.log('theoretically at least')}
+    style={{ marginBottom: '20px' }}
   >
     <Heading as="h3">Elevation 100</Heading>
   </Popover>
-  <Popover 
-    style={{marginBottom: '10px'}}
-    elevation={150} 
+  <Popover
+    elevation={150}
     onClose={() => console.log('theoretically at least')}
+    style={{ marginBottom: '20px' }}
   >
     <Heading as="h3">Elevation 150</Heading>
   </Popover>
 </div>;
 ```
-
