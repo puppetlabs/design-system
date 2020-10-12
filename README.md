@@ -8,7 +8,7 @@ Visit the documentation and living styleguide at <https://puppetlabs.github.io/d
 
 ### Prerequisites
 
-You must install the version of Node specified in [`.nvmrc`](.nvmrc). We recommend using [nvm](https://github.com/nvm-sh/nvm) (Node Version Manager), which allows you to `nvm install` the specified version and `nvm use` the specified version in the current shell (or `nvm alias default` to use the specified version in all new shells).
+Currently, a POSIX environment like macOS or Linux is required for development. (For Windows, you can use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/).) You must install the version of Node specified in [`.nvmrc`](.nvmrc). We recommend using [nvm](https://github.com/nvm-sh/nvm) (Node Version Manager), which allows you to `nvm install` the specified version and `nvm use` the specified version in the current shell (or `nvm alias default` to use the specified version in all new shells).
 
 ### Local sandbox
 

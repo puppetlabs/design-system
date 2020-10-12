@@ -124,18 +124,19 @@ const Renderer = () => {
 
 ## Adding icons to the Design System
 
-1. _Design_: Create a new icon following the checklist and naming conventions on the [Iconography](#/Foundations/Iconography) Foundations page.
-2. _Engineering_: Run the SVG through [svgo](https://github.com/svg/svgo) to minify and remove redundant data.
-3. _Engineering_: Strip out the wrapping `svg` element, usually (but not always) leaving just a `path`.
-4. _Engineering_: Remove all instances of the `fill` attribute so that icons can be styled with CSS. You may also remove `clip-rule` attributes.
-5. _Engineering_: Rename dasherized attributes like `fill-rule` with React-compatible properties like `fillRule`.
-6. _Engineering_: Add the icon to [icons.js](https://github.com/puppetlabs/design-system/blob/master/packages/react-components/source/react/library/icon/icons.js) in alphabetical order, specifying the icon name and native SVG sizes (usually "medium" for 16px but optionally also "tiny" for 8px, "small" for 12px, or "large" for 24px).
+1. Run the SVG through [svgo](https://github.com/svg/svgo) to minify and remove redundant data.
+2. Note the viewBox dimensions and choose the appropriate size: tiny (8px x 8px), small (12px x 12px), medium (16px x 16px), or large (24px x 24px). Most icons only use a single base size of medium.
+3. Strip out the wrapping `svg` element, usually (but not always) leaving just a `path`.
+4. Remove all instances of the `fill` attribute so that icons can be styled with CSS. You may also remove `clip-rule` attributes.
+5. Rename dasherized attributes like `fill-rule` with React-compatible properties like `fillRule`.
+6. Add the icon to [icons.js](https://github.com/puppetlabs/design-system/blob/development/packages/react-components/source/react/library/icon/icons.js) in alphabetical order, specifying the icon name and native SVG sizes (from step 2).
 
 ## Disclaimer
-These icons include material from third parties and may be protected by their own, independent trademarks. Use of these materials is for illustrative purposes only and is not intended to infringe on the copyright or trademark of any of these third parties. Use of these materials does not imply endorsement by Puppet of the trademark holders. 
+
+These icons include material from third parties and may be protected by their own, independent trademarks. Use of these materials is for illustrative purposes only and is not intended to infringe on the copyright or trademark of any of these third parties. Use of these materials does not imply endorsement by Puppet of the trademark holders.
 
 ## Related
 
-- [Button](#/React%20Components/Button): Buttons are able to render an icon as part of the component
-- [ButtonSelect](#/React%20Components/ButtonSelect)
-- [Iconography](#/Foundations/Iconography) (Foundations)
+- [Logo](#/React%20Components/Logo)
+- [Button](#/React%20Components/Button) Buttons are able to render an icon as part of the component)
+- [Iconography](#/Foundations/Iconography) (in Foundations)

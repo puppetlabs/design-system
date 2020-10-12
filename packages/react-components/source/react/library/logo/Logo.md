@@ -22,6 +22,7 @@ The standard style variation exists for light backgrounds.
   <Logo product="pipelines" style={{ margin: 5 }} />
   <Logo product="remediate" style={{ margin: 5 }} />
   <Logo product="relay" style={{ margin: 5 }} />
+  <Logo product="comply" style={{ margin: 5 }} />
   <Logo product="My Product" style={{ margin: 5 }} />
 </div>
 ```
@@ -47,6 +48,7 @@ This style variation exists for dark backgrounds, where the Puppet logo uses whi
   <Logo inverted product="pipelines" style={{ margin: 5 }} />
   <Logo inverted product="remediate" style={{ margin: 5 }} />
   <Logo inverted product="relay" style={{ margin: 5 }} />
+  <Logo inverted product="comply" style={{ margin: 5 }} />
   <Logo inverted product="My Product" style={{ margin: 5 }} />
 </div>
 ```
@@ -64,6 +66,21 @@ There are times when you might need to use only the graphical icon for a Puppet 
   <Logo type="bug" product="pipelines" style={{ margin: 5 }} />
   <Logo type="bug" product="remediate" style={{ margin: 5 }} />
   <Logo type="bug" product="relay" style={{ margin: 5 }} />
+  <Logo type="bug" product="comply" style={{ margin: 5 }} />
   <Logo type="bug" product="My Product" style={{ margin: 5 }} />
 </div>
 ```
+
+## Adding icons to the Design System
+
+1. Run the SVG through [svgo](https://github.com/svg/svgo) to minify and remove redundant data.
+2. Note the viewBox dimensions.
+3. Strip out the wrapping `svg` element, usually (but not always) leaving just a `path`.
+4. Remove all instances of the `fill` attribute so that icons can be styled with CSS. You may also remove `clip-rule` attributes.
+5. Rename dasherized attributes like `fill-rule` with React-compatible properties like `fillRule`.
+6. Add class names to the different `path` segments (so the component can add the correct colors on light and dark backgrounds) for `rc-logo-bug`, `rc-logo-puppet`, and `rc-logo-product`.
+7. Add the icon to [logos.js](https://github.com/puppetlabs/design-system/blob/development/packages/react-components/source/react/library/logo/logos.js), using the same format with viewBox dimensions (from step 2) in a separate property.
+
+## Related
+
+- [Icon](#/React%20Components/Icon)
