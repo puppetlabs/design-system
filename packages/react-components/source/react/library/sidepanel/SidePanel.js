@@ -9,7 +9,9 @@ const propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   closeButtonProps: PropTypes.shape({}),
+  closeIcon: PropTypes.string,
   contentClassName: PropTypes.string,
+  hideCloseIcon: PropTypes.bool,
   onClose: PropTypes.func,
   open: PropTypes.bool,
   title: PropTypes.node,
@@ -21,6 +23,8 @@ const defaultProps = {
   border: false,
   children: null,
   closeButtonProps: {},
+  closeIcon: 'x',
+  hideCloseIcon: false,
   open: true,
   title: '',
   onClose() {},
@@ -40,12 +44,14 @@ const SidePanel = ({
   onClose,
   className,
   closeButtonProps,
+  closeIcon,
   contentClassName,
   toolbarType,
+  hideCloseIcon,
 }) => {
   const actions = (
     <Button
-      icon="x"
+      icon={closeIcon}
       type="transparent"
       innerFocus
       aria-label="Close side panel"
@@ -71,7 +77,9 @@ const SidePanel = ({
           >
             {title}
           </Heading>
-          <div className="rc-sidepanel-actions">{actions}</div>
+          {!hideCloseIcon && (
+            <div className="rc-sidepanel-actions">{actions}</div>
+          )}
         </div>
         <div className={`rc-sidepanel-content ${contentClassName}`}>
           {children}
