@@ -4,7 +4,6 @@ Icon design sits squarely within a venn diagram between illustration and product
 
 A list of available icons are available in the [icon component](#/React%20Components/Icon).
 
-
 ## Icon construction
 
 ### Grid
@@ -63,7 +62,6 @@ The vast majority of icons do not provide enough information by themselves for a
 ![Example showcasing how a bell icon may be easily recognizable without text, while a box may not.](./icon-notext.svg)
 
 ![Ellipsis and kebab icons are ok to use without text](./icon-kebabs.svg)
-
 
 **Consider**
 
@@ -132,3 +130,4 @@ Test that the icon:
 ## Related
 
 - [Icon component](#/React%20Components/Icon): a list of available icons and guidelines for using them
+- [Logo component](#/React%20Components/Logo): the Puppet product logos

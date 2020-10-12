@@ -13,34 +13,45 @@ See also: [Code](#/React%20Components/Code) and [FormField](#/React%20Components
 ```
 
 ```jsx
-<Copy writeToClipboard={(value) => {console.log(`overwritten writeToClipboard: '${value}'`)}} onCopy={(value) => {console.log(`copied: '${value}'`)}}>Overwritten copy-to-clipboard with callback</Copy>
+<Copy
+  writeToClipboard={value => {
+    console.log(`overwritten writeToClipboard: '${value}'`);
+  }}
+  onCopy={value => {
+    console.log(`copied: '${value}'`);
+  }}
+>
+  Overwritten copy-to-clipboard with callback
+</Copy>
 ```
 
 ```jsx
-<Copy value="areallyreallylongstringthatyouaren'tdisplayinginfull">areallyreally...</Copy>
+<Copy value="areallyreallylongstringthatyouaren'tdisplayinginfull">
+  areallyreally...
+</Copy>
 ```
 
 ```jsx
 import Code from '../code';
 
-<Code type='block'>
+<Code type="block">
   <Copy>mod 'puppetlabs-stdlib', '6.3.0'</Copy>
-</Code>
+</Code>;
 ```
 
 ```jsx
 import Form from '../form';
 
-<Copy align='flex-end'>
+<Copy align="flex-end">
   <Form.Field
-    type='text'
-    name='label'
-    labelType='primary'
-    id='Trigger Workflow'
-    value='/v3/events/workflow'
-    label='Trigger Workflow'
+    type="text"
+    name="label"
+    labelType="primary"
+    id="Trigger Workflow"
+    value="/v3/events/workflow"
+    label="Trigger Workflow"
   />
-</Copy>
+</Copy>;
 ```
 
 ## Related
