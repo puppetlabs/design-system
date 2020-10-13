@@ -1,4 +1,5 @@
 import React from 'react';
+import sinon from 'sinon';
 import { shallow } from 'enzyme';
 import { expect } from 'chai';
 
@@ -110,6 +111,24 @@ describe('<Sidebar />', () => {
       const wrapper = shallow(<Sidebar.Footer />);
 
       expect(wrapper.length).to.eql(1);
+      expect(wrapper.find('.rc-sidebar-footer-button-signout').length).to.eql(
+        0,
+      );
+    });
+
+    it('should render signout button', () => {
+      const callback = sinon.fake();
+      const wrapper = shallow(
+        <Sidebar.Footer enableSignout onSignout={callback} />,
+      );
+
+      expect(wrapper.find('.rc-sidebar-footer-button-signout').length).to.eql(
+        1,
+      );
+
+      expect(callback.callCount).to.eql(0);
+      wrapper.find('.rc-sidebar-footer-button-signout').simulate('click');
+      expect(callback.calledOnce).to.be.true;
     });
   });
 });

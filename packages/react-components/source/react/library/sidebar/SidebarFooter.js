@@ -4,6 +4,8 @@ import Icon from '../icon';
 import Heading from '../heading';
 import Text from '../text';
 import Avatar from '../avatar';
+import classnames from 'classnames';
+import Button from '../button';
 
 const propTypes = {
   /** The root HTML element  */
@@ -16,6 +18,10 @@ const propTypes = {
   minimized: PropTypes.bool,
   /** Displays an element of the users choice * */
   profileIcon: PropTypes.node,
+  /** Boolean flag to enable or disable (default) signout button */
+  enableSignout: PropTypes.bool,
+  /** Signout callback function */
+  onSignout: PropTypes.func,
 };
 
 const defaultProps = {
@@ -24,6 +30,8 @@ const defaultProps = {
   version: '',
   minimized: false,
   profileIcon: null,
+  enableSignout: false,
+  onSignout: () => {},
 };
 
 const SidebarFooter = ({
@@ -32,10 +40,13 @@ const SidebarFooter = ({
   version,
   minimized,
   profileIcon: profileIconProp,
+  enableSignout,
+  onSignout,
   ...rest
 }) => {
   const Component = as;
   let meta;
+  let signout;
 
   if (!minimized) {
     meta = (
@@ -50,15 +61,34 @@ const SidebarFooter = ({
         )}
       </div>
     );
+
+    if (enableSignout) {
+      signout = (
+        <Button
+          className="rc-sidebar-footer-button-signout"
+          onClick={onSignout}
+        >
+          <Icon type="sign-out" className="rc-sidebar-footer-signout-icon" />
+        </Button>
+      );
+    }
   }
 
   return (
-    <Component className="rc-sidebar-footer" {...rest}>
-      <div className="rc-sidebar-footer-meta-user">
-        {profileIconProp || <Avatar>{profileIconProp}</Avatar>}
-      </div>
-      {meta}
-    </Component>
+    <div className="rc-sidebar-footer">
+      <Component
+        className={classnames('rc-sidebar-footer-button-user', {
+          'rc-sidebar-footer-button-minimized': minimized,
+        })}
+        {...rest}
+      >
+        <div className="rc-sidebar-footer-meta-user">
+          {profileIconProp || <Avatar>{profileIconProp}</Avatar>}
+        </div>
+        {meta}
+      </Component>
+      {signout}
+    </div>
   );
 };
 

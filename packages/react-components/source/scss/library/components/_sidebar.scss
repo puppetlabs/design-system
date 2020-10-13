@@ -51,7 +51,9 @@ $puppet-sidebar-item-accordion-padding: 0 0 0 8px !default;
 
 $puppet-sidebar-footer-height: 72px !default;
 $puppet-sidebar-footer-bg: $puppet-black !default;
-$puppet-sidebar-footer-meta-icon: 32px;
+$puppet-sidebar-footer-meta-icon: 32px !default;
+$puppet-sidebar-footer-signout-width: 56px !default;
+$puppet-sidebar-footer-signout-left-margin: 3px !default;
 
 // Generic sidebar
 
@@ -236,29 +238,66 @@ $puppet-sidebar-footer-meta-icon: 32px;
 // Sidebar footer
 
 .rc-sidebar-footer {
-  @include rc-button-reset();
-  align-items: center;
-  background: $puppet-sidebar-footer-bg;
   box-sizing: border-box;
   display: flex;
   height: $puppet-sidebar-footer-height;
   overflow: hidden;
-  padding: $puppet-sidebar-padding;
-  text-align: left;
   text-decoration: none !important;
+  justify-content: space-between;
+
+  .rc-sidebar-footer-button-user,
+  .rc-sidebar-footer-button-signout {
+    @include rc-button-reset();
+    display: flex;
+    background: $puppet-sidebar-footer-bg;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .rc-sidebar-footer-button-user {
+    flex: 1;
+    min-width: 0;
+    text-align: left;
+    justify-content: flex-start;
+    padding-left: $puppet-sidebar-padding;
+
+    &.rc-sidebar-footer-button-minimized {
+      padding: 0;
+      justify-content: center;
+    }
+  }
+
+  .rc-sidebar-footer-button-signout {
+    width: $puppet-sidebar-footer-signout-width;
+    margin-left: $puppet-sidebar-footer-signout-left-margin;
+  }
 
   .rc-sidebar-footer-meta-username,
   .rc-sidebar-footer-meta-version {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    width: $puppet-sidebar-width - $puppet-sidebar-padding * 3 -
-      $puppet-sidebar-footer-meta-icon;
   }
 }
 
-.rc-sidebar-footer:hover,
-.rc-sidebar-footer:active {
+.rc-sidebar-footer-button-signout:hover,
+.rc-sidebar-footer-button-signout:active {
+  .rc-sidebar-footer-signout-icon {
+    fill: $puppet-sidebar-item-color-hover;
+  }
+}
+
+.rc-sidebar-footer-button-signout:focus {
+  box-shadow: $puppet-common-focus-outline-inset;
+
+  .rc-sidebar-footer-signout-icon {
+    fill: $puppet-sidebar-item-color-hover;
+  }
+}
+
+.rc-sidebar-footer-button-user:hover,
+.rc-sidebar-footer-button-user:active {
   .rc-sidebar-footer-meta-username,
   .rc-sidebar-footer-meta-version {
     color: $puppet-sidebar-item-color-hover;
@@ -269,7 +308,7 @@ $puppet-sidebar-footer-meta-icon: 32px;
   }
 }
 
-.rc-sidebar-footer:focus {
+.rc-sidebar-footer-button-user:focus {
   box-shadow: $puppet-common-focus-outline-inset;
 
   .rc-sidebar-footer-meta-username,
@@ -284,6 +323,8 @@ $puppet-sidebar-footer-meta-icon: 32px;
 
 .rc-sidebar-footer-meta-details {
   display: flex;
+  flex: 1;
+  min-width: 0;
   flex-direction: column;
   margin-left: $puppet-sidebar-padding;
 }
