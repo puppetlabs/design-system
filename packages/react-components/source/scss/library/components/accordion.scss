@@ -1,0 +1,21 @@
+.rc-accordion-container {
+  border-bottom: $puppet-common-border;
+  border-top: $puppet-common-border;
+  //   display: flex;
+  //   min-height: 42px;
+  min-width: 100%;
+
+  .rc-accordion-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    min-height: 42px;
+    min-width: 100%;
+
+    .rc-accordion-toggle-button {
+      align-self: flex-start;
+      margin: 15px 0;
+    }
+  }
+}

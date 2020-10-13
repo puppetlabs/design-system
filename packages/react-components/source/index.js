@@ -1,6 +1,7 @@
 import 'core-js'; // TODO: Potentially remove polyfills from package, after triaging potential breaking changes
 import 'regenerator-runtime/runtime';
 
+import Accordion from './react/library/accordion';
 import ActionSelect from './react/library/action-select';
 import Alert from './react/library/alert';
 import Badge from './react/library/badge';
@@ -34,17 +35,18 @@ import Toolbar from './react/library/toolbar';
 import TooltipHoverArea from './react/library/tooltips/TooltipHoverArea';
 
 export {
+  Accordion,
   ActionSelect,
   Alert,
   Badge,
   Breadcrumb,
   Button,
   ButtonSelect,
-  Card, 
-  Checkbox, 
-  Code, 
-  ConfirmationModal, 
-  Content, 
+  Card,
+  Checkbox,
+  Code,
+  ConfirmationModal,
+  Content,
   Filters,
   Form,
   Heading,
