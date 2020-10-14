@@ -251,6 +251,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
     display: flex;
     background: $puppet-sidebar-footer-bg;
     height: 100%;
+    border-radius: 0;
     align-items: center;
     justify-content: center;
   }
