@@ -27,7 +27,12 @@
 }
 
 .rc-toolbar > .rc-tabs > .rc-tabs-list {
+  align-items: normal;
   z-index: 2;
+}
+
+.rc-toolbar > .rc-tabs > .rc-tabs-list-container > .rc-tabs-list {
+  align-items: normal;
 }
 
 .rc-toolbar-primary .rc-tabs-list {

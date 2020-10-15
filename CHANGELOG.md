@@ -1,3 +1,7 @@
+# react-components 5.24.1 (2020-10-14)
+
+- [Toolbar] Fix toolbar tabs alignment (by [melcherry98](https://github.com/melcherry98) in [#342](https://github.com/puppetlabs/design-system/pull/342))
+
 # react-components 5.24.0 (2020-10-12)
 
 - [Popover] Add Popover component (by [melcherry98](https://github.com/melcherry98) in [#333](https://github.com/puppetlabs/design-system/pull/333))
