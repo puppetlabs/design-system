@@ -11,7 +11,7 @@
 
   &.rc-input-empty,
   &::placeholder {
-    @include puppet-type-body(subtle);
+    @include puppet-type-body(medium);
   }
 
   &:hover {

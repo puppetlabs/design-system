@@ -1,3 +1,8 @@
+# react-components 5.24.2 (2020-10-22)
+
+- [Form.Field] Hide form field labels visually (but not to screen readers) when label is null
+- [Input] Update placeholder color to n700 to meet accessibility contrast ratios
+
 # react-components 5.24.1 (2020-10-14)
 
 - [Toolbar] Fix toolbar tabs alignment (by [melcherry98](https://github.com/melcherry98) in [#342](https://github.com/puppetlabs/design-system/pull/342))
