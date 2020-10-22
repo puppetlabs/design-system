@@ -247,7 +247,6 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
 
   .rc-sidebar-footer-button-user,
   .rc-sidebar-footer-button-signout {
-    @include rc-button-reset();
     display: flex;
     background: $puppet-sidebar-footer-bg;
     height: 100%;
@@ -258,10 +257,15 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
 
   .rc-sidebar-footer-button-user {
     flex: 1;
+    border: 0;
     min-width: 0;
     text-align: left;
     justify-content: flex-start;
-    padding-left: $puppet-sidebar-padding;
+    padding: 0 0 0 $puppet-sidebar-padding;
+
+    &.rc-sidebar-footer-clickable {
+      cursor: pointer;
+    }
 
     &.rc-sidebar-footer-button-minimized {
       padding: 0;
@@ -270,6 +274,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   }
 
   .rc-sidebar-footer-button-signout {
+    @include rc-button-reset();
     width: $puppet-sidebar-footer-signout-width;
     margin-left: $puppet-sidebar-footer-signout-left-margin;
   }
@@ -297,8 +302,8 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   }
 }
 
-.rc-sidebar-footer-button-user:hover,
-.rc-sidebar-footer-button-user:active {
+.rc-sidebar-footer-clickable.rc-sidebar-footer-button-user:hover,
+.rc-sidebar-footer-clickable.rc-sidebar-footer-button-user:active {
   .rc-sidebar-footer-meta-username,
   .rc-sidebar-footer-meta-version {
     color: $puppet-sidebar-item-color-hover;
@@ -309,7 +314,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   }
 }
 
-.rc-sidebar-footer-button-user:focus {
+.rc-sidebar-footer-clickable.rc-sidebar-footer-button-user:focus {
   box-shadow: $puppet-common-focus-outline-inset;
 
   .rc-sidebar-footer-meta-username,

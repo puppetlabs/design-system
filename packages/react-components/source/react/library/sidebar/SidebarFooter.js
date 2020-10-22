@@ -79,6 +79,7 @@ const SidebarFooter = ({
       <Component
         className={classnames('rc-sidebar-footer-button-user', {
           'rc-sidebar-footer-button-minimized': minimized,
+          'rc-sidebar-footer-clickable': rest.onClick,
         })}
         {...rest}
       >
