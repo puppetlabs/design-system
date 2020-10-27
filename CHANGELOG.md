@@ -1,7 +1,11 @@
+# react-components 5.24.3 (2020-10-27)
+
+- [Filter] Add onUpdate prop to filter (by [eglenfield](https://github.com/eglenfield) in [#344](https://github.com/puppetlabs/design-system/pull/344))
+
 # react-components 5.24.2 (2020-10-22)
 
-- [Form.Field] Hide form field labels visually (but not to screen readers) when label is null
-- [Input] Update placeholder color to n700 to meet accessibility contrast ratios
+- [Form.Field] Hide form field labels visually (but not to screen readers) when label is null (by [sprokusk](https://github.com/sprokusk) in [#348](https://github.com/puppetlabs/design-system/pull/348))
+- [Input] Update placeholder color to n700 to meet accessibility contrast ratios  (by [@Sigler](https://github.com/Sigler) in [#347](https://github.com/puppetlabs/design-system/pull/347))
 
 # react-components 5.24.1 (2020-10-14)
 
