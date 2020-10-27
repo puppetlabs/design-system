@@ -258,6 +258,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   .rc-sidebar-footer-button-user {
     flex: 1;
     border: 0;
+    outline: none;
     min-width: 0;
     text-align: left;
     justify-content: flex-start;
