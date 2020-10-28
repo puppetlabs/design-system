@@ -11,6 +11,7 @@ import ButtonSelect from './react/library/button-select';
 import Card from './react/library/card';
 import Checkbox from './react/library/checkbox';
 import Code from './react/library/code';
+import Copy from './react/library/copy';
 import ConfirmationModal from './react/library/confirmation-modal';
 import Content from './react/library/content';
 import Filters from './react/library/filters';
@@ -22,6 +23,7 @@ import Link from './react/library/link';
 import Loading from './react/library/loading';
 import Logo from './react/library/logo';
 import Modal from './react/library/modal';
+import Popover from './react/library/popover';
 import RadioButton from './react/library/radiobutton';
 import Select from './react/library/select';
 import Sidebar from './react/library/sidebar';
@@ -42,11 +44,12 @@ export {
   Breadcrumb,
   Button,
   ButtonSelect,
-  Card, 
-  Checkbox, 
-  Code, 
-  ConfirmationModal, 
-  Content, 
+  Card,
+  Checkbox,
+  Code,
+  ConfirmationModal,
+  Content,
+  Copy,
   Filters,
   Form,
   Heading,
@@ -56,6 +59,7 @@ export {
   Loading,
   Logo,
   Modal,
+  Popover,
   RadioButton,
   Select,
   Sidebar,

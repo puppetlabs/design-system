@@ -66,6 +66,7 @@ const Copy = ({
         [copyValue] = React.Children.toArray(children);
     }
   }
+
   // If copyValue is still null after checking children for valid values, return null
   if (!copyValue) return null;
 

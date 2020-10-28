@@ -19,6 +19,7 @@ const propTypes = {
   ),
   addCTA: PropTypes.string,
   onChange: PropTypes.func,
+  onUpdate: PropTypes.func,
   onSwitchView: PropTypes.func,
   removableToggle: PropTypes.bool,
   /** Defaults to the standard set as defined in constants. */
@@ -56,6 +57,7 @@ const defaultStrings = {
 const defaultProps = {
   fields: [],
   filters: [],
+  onUpdate: filter => filter,
   onChange: () => {},
   addCTA: 'Add filter',
   onSwitchView: () => {},
@@ -195,7 +197,14 @@ class Filters extends React.Component {
   }
 
   renderForm() {
-    const { removableToggle, fields, operators, strings, filters } = this.props;
+    const {
+      removableToggle,
+      fields,
+      operators,
+      strings,
+      filters,
+      onUpdate,
+    } = this.props;
     const { filter } = this.state;
     let cancellable = true;
 
@@ -210,6 +219,7 @@ class Filters extends React.Component {
         fields={fields}
         filter={filter}
         operators={operators}
+        onUpdate={onUpdate}
         onCancel={this.onCancel}
         onSubmit={this.onSubmitFilter}
         strings={strings}
