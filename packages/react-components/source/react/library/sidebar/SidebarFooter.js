@@ -84,7 +84,11 @@ const SidebarFooter = ({
         {...rest}
       >
         <div className="rc-sidebar-footer-meta-user">
-          {profileIconProp || <Avatar>{profileIconProp}</Avatar>}
+          {profileIconProp ? (
+            <Avatar>{profileIconProp}</Avatar>
+          ) : (
+            <Icon type="profile" className="rc-sidebar-footer-meta-user-icon" />
+          )}
         </div>
         {meta}
       </Component>
