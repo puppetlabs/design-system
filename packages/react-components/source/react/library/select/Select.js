@@ -17,23 +17,27 @@ import {
 const SELECT = 'select';
 const MULTISELECT = 'multiselect';
 const AUTOCOMPLETE = 'autocomplete';
+const TEXTSELECT = 'textselect';
 
 const propTypes = {
   /** Unique id */
   name: PropTypes.string.isRequired,
   /** An Array of select options */
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      /** Select option value */
-      value: PropTypes.string.isRequired,
-      /** Select option label */
-      label: PropTypes.string.isRequired,
-      /** Optional icon associated with this option */
-      icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
-      /** Optional custom icon associated with this option */
-      svg: PropTypes.element,
-    }),
-  ),
+  options: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        /** Select option value */
+        value: PropTypes.string.isRequired,
+        /** Select option label */
+        label: PropTypes.string.isRequired,
+        /** Optional icon associated with this option */
+        icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+        /** Optional custom icon associated with this option */
+        svg: PropTypes.element,
+      }),
+    ),
+    PropTypes.object,
+  ]),
   /** Currently selected value or values */
   value: PropTypes.oneOfType([
     //eslint-disable-line
@@ -50,7 +54,7 @@ const propTypes = {
   /** Text rendered when no value is selected */
   placeholder: PropTypes.string,
   /** Select or autocomplete. Multiselection is NOT yet fully supported */
-  type: PropTypes.oneOf([SELECT, AUTOCOMPLETE, MULTISELECT]),
+  type: PropTypes.oneOf([SELECT, AUTOCOMPLETE, MULTISELECT, TEXTSELECT]),
   /**
    * Text to render as the action label in multiple mode
    * @ignore
@@ -76,6 +80,14 @@ const propTypes = {
   open: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
   /** onBlur handler */
   onBlur: PropTypes.func,
+  /** Optional additional className passed to the outer menu list element */
+  menuListClassName: PropTypes.string,
+  /** Boolean that when true will render a navigation button in the dropdown */
+  navigationButton: PropTypes.bool,
+  /** Function called when navigation button is pressed */
+  onNavigate: PropTypes.func,
+  /** Text displayed on the navigation button */
+  navigationLabel: PropTypes.string,
 };
 
 const defaultProps = {
@@ -96,6 +108,10 @@ const defaultProps = {
   style: {},
   open: null,
   onBlur() {},
+  menuListClassName: '',
+  navigationButton: false,
+  onNavigate: () => {},
+  navigationLabel: '',
 };
 
 const isControlled = ({ type, applyImmediately }) =>
@@ -296,6 +312,16 @@ class Select extends Component {
       return selectedOptions.join(', ');
     }
 
+    if (typeof options === 'object' && !Array.isArray(options)) {
+      let x = {};
+      const optionTitles = Object.keys(options);
+      optionTitles.forEach(option => {
+        if (options[option].find(w => w.value === value)) {
+          x = options[option].find(w => w.value === value);
+        }
+      });
+      return x.label;
+    }
     const selectedOption = options.find(option => option.value === value);
 
     return selectedOption.label;
@@ -372,6 +398,10 @@ class Select extends Component {
       applyImmediately,
       required,
       footer,
+      menuListClassName,
+      navigationButton,
+      onNavigate,
+      navigationLabel,
     } = this.props;
 
     let input;
@@ -420,6 +450,7 @@ class Select extends Component {
               value={getButtonLabel()}
               placeholder={placeholder}
               aria-label={placeholder}
+              type={type}
               ref={button => {
                 this.button = button;
               }}
@@ -472,6 +503,10 @@ class Select extends Component {
             this.menu = menu;
           }}
           tabIndex={type === AUTOCOMPLETE ? -1 : 0}
+          className={menuListClassName}
+          navigationButton={navigationButton}
+          onNavigate={onNavigate}
+          navigationLabel={navigationLabel}
         />
       </div>
     );

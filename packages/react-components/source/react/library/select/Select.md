@@ -24,15 +24,12 @@ const options = [
   { value: 'ca', label: 'Catalan' },
 ];
 
-const style = { margin: 10 };
-
 <div>
   <Select
     id="button-select-one"
     name="select-example"
     options={options}
     placeholder="Select your language"
-    style={style}
     value={state.value1}
     onChange={value1 => {
       console.log('New Value:', value1);
@@ -207,6 +204,140 @@ const options = [
       console.log('New Value:', value);
       setState({ value });
     }}
+  />
+</div>;
+```
+
+### Descriptions
+
+When the option item's within a particular list requires further explanation a description property can be used.
+
+```jsx
+const options = [
+  {
+    value: 'en',
+    label: 'English',
+    description: 'The worlds most common language',
+  },
+  { value: 'ru', label: 'русский' },
+  {
+    value: 'zh',
+    label: '中文',
+    description: 'About 1.2 billion people speak Chinese ',
+  },
+  { value: 'sq', label: 'Albanian' },
+  { value: 'ar', label: 'Arabic' },
+  { value: 'eu', label: 'Basque' },
+  { value: 'bn', label: 'Bengali' },
+  { value: 'bs', label: 'Bosnian' },
+  { value: 'bg', label: 'Bulgarian' },
+  { value: 'ca', label: 'Catalan' },
+];
+
+<div>
+  <Select
+    id="button-select-one"
+    name="select-example"
+    options={options}
+    placeholder="Select your language"
+    value={state.value1}
+    onChange={value1 => {
+      console.log('New Value:', value1);
+      setState({ value1 });
+    }}
+  />
+</div>;
+```
+
+### Grouping
+
+List's of menu options can be broken up into multiple group's in order to make the list easier to read
+
+```jsx
+const options = {
+  Dogs: [
+    { value: 'gs', label: 'German Shepherd' },
+    { value: 'bd', label: 'Bulldog' },
+  ],
+  Cats: [
+    { value: 'p', label: 'Persian' },
+    { value: 's', label: 'Sphynx' },
+  ],
+};
+
+<div>
+  <Select
+    id="button-select-one"
+    name="select-example"
+    options={options}
+    placeholder="Select your animal"
+    value={state.value1}
+    onChange={value1 => {
+      console.log('New Value:', value1);
+      setState({ value1 });
+    }}
+  />
+</div>;
+```
+
+### Custom Navigation
+
+```jsx
+const options = {
+  'Favorite views': [
+    {
+      value: 'a',
+      label: '(Default View)',
+      description: 'No saved view displayed',
+    },
+    {
+      value: 'b',
+      label: 'A view name lorem',
+      description:
+        'Description lorem ipsumus lorem ip lorem ipsumus lorem ip lorem ipsumus lorem ip',
+    },
+    {
+      value: 'c',
+      label: 'View name E',
+      description: 'This is page E',
+    },
+    { value: 'd', label: 'View name G' },
+    {
+      value: 'f',
+      label: 'View name H',
+      description: 'This is page H',
+    },
+  ],
+  'Other views': [
+    {
+      value: 'g',
+      label: 'View name A',
+      description:
+        'Description lorem ipsumus lorem ip lorem ipsumus lorem ip lorem ipsumus lorem ip',
+    },
+    { value: 'h', label: 'View name B' },
+  ],
+};
+
+const onchange = () => {
+  console.log('Lets go to another page');
+};
+
+<div>
+  <Select
+    id="button-select-one"
+    type="textselect"
+    name="select-example"
+    options={options}
+    placeholder="Select your View"
+    value={state.value1}
+    onChange={value1 => {
+      console.log('New Value:', value1);
+      setState({ value1 });
+    }}
+    navigationButton
+    onNavigate={() => onchange()}
+    navigationLabel="Show all saved views"
   />
 </div>;
 ```

@@ -1,6 +1,7 @@
 import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import Icon from '../icon';
+import Button from '../button';
 
 const propTypes = {};
 
@@ -18,23 +19,26 @@ const renderText = (type, value, placeholder) => {
 const SelectTarget = forwardRef(
   ({ error, value, type, placeholder, className, ...rest }, ref) => (
     <div className={classNames('rc-input-container', 'rc-select-target')}>
-      <button
-        type="button"
+      <Button
+        type={type === 'textselect' ? 'text' : null}
         className={classNames('rc-input', {
           'rc-input-error': error,
           'rc-input-empty': !value,
+          'rc-input-text-select': type === 'textselect',
         })}
         ref={ref}
         {...rest}
       >
         <Icon
-          className="rc-input-icon trailing"
+          className={classNames('rc-input-icon trailing', {
+            'rc-input-icon-text-select': type === 'textselect',
+          })}
           width="16px"
           height="16px"
           type="chevron-down"
         />
         {renderText(type, value, placeholder)}
-      </button>
+      </Button>
     </div>
   ),
 );

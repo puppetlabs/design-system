@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import scrollIntoView from 'scroll-into-view-if-needed';
+import Text from '../../library/text';
 import { isNil, focus, cancelEvent } from '../../helpers/statics';
 
 import {
@@ -21,13 +22,21 @@ const propTypes = {
   id: PropTypes.string.isRequired,
   multiple: PropTypes.bool,
   showCancel: PropTypes.bool,
-  options: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.string.isRequired,
-      label: PropTypes.node.isRequired,
-      icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
-    }),
-  ),
+  options: PropTypes.oneOfType([
+    PropTypes.arrayOf(
+      PropTypes.shape({
+        /** Select option value */
+        value: PropTypes.string.isRequired,
+        /** Select option label */
+        label: PropTypes.string.isRequired,
+        /** Optional icon associated with this option */
+        icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+        /** Optional custom icon associated with this option */
+        svg: PropTypes.element,
+      }),
+    ),
+    PropTypes.object,
+  ]),
   selected: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.arrayOf(PropTypes.string),
@@ -44,6 +53,12 @@ const propTypes = {
   footer: PropTypes.node,
   className: PropTypes.string,
   style: PropTypes.shape({}),
+  /** Boolean that when true will render a navigation button in the dropdown */
+  navigationButton: PropTypes.bool,
+  /** Function called when navigation button is pressed */
+  onNavigate: PropTypes.func,
+  /** Text displayed on the navigation button */
+  navigationLabel: PropTypes.string,
 };
 
 const defaultProps = {
@@ -63,6 +78,9 @@ const defaultProps = {
   onClickItem() {},
   footer: null,
   style: {},
+  navigationButton: false,
+  onNavigate: () => {},
+  navigationLabel: 'Navigate',
 };
 
 const getOptionId = (id, value) => `${id}-${value}`;
@@ -80,7 +98,6 @@ class OptionMenuList extends Component {
     super(props);
 
     const { options, focusedIndex } = this.props;
-
     this.state = {
       focusedIndex: options.length ? focusedIndex : null,
     };
@@ -262,7 +279,6 @@ class OptionMenuList extends Component {
 
   select(value) {
     const { multiple, selected, onChange } = this.props;
-
     if (multiple) {
       const selectionSet = getSelectionSet(selected);
 
@@ -318,15 +334,76 @@ class OptionMenuList extends Component {
       onFocusItem,
       footer,
       onClickItem: onClick,
+      navigationButton,
+      onNavigate,
+      navigationLabel,
       ...rest
     } = this.props;
 
-    if (!options.length) {
-      return null;
-    }
-
     const selectionSet = getSelectionSet(selected);
-    const focusedId = getFocusedId(focusedIndex, id, options);
+    const focusedId = getFocusedId(null, id, options);
+    let isDescriptionMenu = false;
+    let optionsIsObject = false;
+    const groupMenu = [];
+
+    if (typeof options === 'object' && !Array.isArray(options)) {
+      optionsIsObject = true;
+
+      let listIndex = 0;
+      const optionTitles = Object.keys(options);
+
+      optionTitles.forEach(title => {
+        options[title].forEach(element => {
+          if (Object.prototype.hasOwnProperty.call(element, 'description')) {
+            isDescriptionMenu = true;
+          }
+        });
+
+        groupMenu.push(
+          <Text
+            className="rc-option-menu-list-title-item"
+            size="small"
+            color="medium"
+          >
+            {title}
+          </Text>,
+        );
+        groupMenu.push(
+          options[title].map(
+            ({ value, label, icon, svg, description }, index) => {
+              const groupedIndex = index + listIndex;
+              return (
+                <OptionMenuListItem
+                  id={getOptionId(id, value)}
+                  key={value}
+                  focused={groupedIndex === focusedIndex}
+                  selected={selectionSet.has(value)}
+                  icon={icon}
+                  svg={svg}
+                  isDescriptionMenu={isDescriptionMenu}
+                  description={description}
+                  isGroupedMenu
+                  onClick={() => onClickItem(value)}
+                  onMouseEnter={() => onMouseEnterItem(groupedIndex)}
+                  ref={option => {
+                    this.optionRefs[groupedIndex] = option;
+                  }}
+                >
+                  {label}
+                </OptionMenuListItem>
+              );
+            },
+          ),
+        );
+        listIndex += options[title].length;
+      });
+    } else {
+      options.forEach(element => {
+        if (Object.prototype.hasOwnProperty.call(element, 'description')) {
+          isDescriptionMenu = true;
+        }
+      });
+    }
 
     const list = (
       <ul
@@ -344,23 +421,31 @@ class OptionMenuList extends Component {
         }}
         {...rest}
       >
-        {options.map(({ value, label, icon, svg }, index) => (
-          <OptionMenuListItem
-            id={getOptionId(id, value)}
-            key={value}
-            focused={index === focusedIndex}
-            selected={selectionSet.has(value)}
-            icon={icon}
-            svg={svg}
-            onClick={() => onClickItem(value)}
-            onMouseEnter={() => onMouseEnterItem(index)}
-            ref={option => {
-              this.optionRefs[index] = option;
-            }}
-          >
-            {label}
-          </OptionMenuListItem>
-        ))}
+        {' '}
+        {optionsIsObject
+          ? groupMenu
+          : options.map(
+              ({ value, label, icon, svg, description, title }, index) => (
+                <OptionMenuListItem
+                  id={getOptionId(id, value)}
+                  key={value}
+                  focused={index === focusedIndex}
+                  selected={selectionSet.has(value)}
+                  icon={icon}
+                  svg={svg}
+                  isDescriptionMenu={isDescriptionMenu}
+                  description={description}
+                  title={title}
+                  onClick={() => onClickItem(value)}
+                  onMouseEnter={() => onMouseEnterItem(index)}
+                  ref={option => {
+                    this.optionRefs[index] = option;
+                  }}
+                >
+                  {label}
+                </OptionMenuListItem>
+              ),
+            )}
       </ul>
     );
 
@@ -412,6 +497,22 @@ class OptionMenuList extends Component {
                 {cancelLabel}
               </button>
             )}
+          </div>
+        )}
+        {navigationButton && (
+          <div className="rc-menu-action-container">
+            <button
+              type="button"
+              className="rc-menu-action"
+              onClick={() => onNavigate()}
+              onKeyDown={onKeyDownInAction}
+              onBlur={onActionBlur}
+              ref={button => {
+                this.button = button;
+              }}
+            >
+              {navigationLabel}
+            </button>
           </div>
         )}
       </div>

@@ -8,6 +8,11 @@
   overflow: hidden;
 }
 
+.rc-input {
+  font-family: $puppet-type-font-family;
+  font-weight: $puppet-type-weight-normal;
+}
+
 .rc-action-menu-list,
 .rc-option-menu-list-single {
   &:focus-within {
@@ -24,6 +29,16 @@
   .rc-menu-action:focus {
     box-shadow: $puppet-common-focus-outline-inset;
   }
+}
+
+.rc-input-text-select {
+  color: $puppet-type-color-link;
+  font-weight: $puppet-type-weight-heavy;
+  width: fit-content;
+}
+
+.rc-input-icon-text-select {
+  fill: $puppet-type-color-link !important;
 }
 
 .rc-menu-action-container {
@@ -64,6 +79,15 @@
   padding: $puppet-common-spacing-base;
 }
 
+.rc-option-menu-list-title-item {
+  border-bottom: $puppet-common-border;
+  padding: 4px 8px;
+
+  &:not(:first-of-type) {
+    padding: 12px 0 4px 8px;
+  }
+}
+
 .rc-menu-list-item {
   @include puppet-type-small();
 
@@ -91,10 +115,29 @@
   }
 }
 
+.rc-menu-list-item-grouped {
+  margin-left: 8px;
+}
+
 .rc-menu-list-item-content {
   display: flex;
   flex: 1;
   overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rc-menu-list-item-content-container {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.rc-menu-list-item-description {
+  overflow: hidden;
+  padding-left: 5px;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
