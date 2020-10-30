@@ -7,7 +7,6 @@
   "scripts": {
     "link": "npm link",
     "analyze": "webpack --config webpack.analyze.config.js",
-    "prebuild": "rimraf build",
     "build": "NODE_ENV=production webpack",
     "prepare": "npm run build",
     "complexity": "es6-plato -r -d complexity source/react && open ./complexity/index.html",
