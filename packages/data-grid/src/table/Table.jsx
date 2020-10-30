@@ -198,8 +198,6 @@ class Table extends Component {
                 >
                   <div
                     className="dg-table-loading-inner-container"
-                    aria-live="polite"
-                    aria-busy={loading}
                   >
                     <div>
                       <Loading className="dg-loading-size" />
