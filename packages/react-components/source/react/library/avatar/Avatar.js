@@ -9,8 +9,8 @@ const propTypes = {
   className: PropTypes.string,
   /** Optional avatar size */
   size: PropTypes.shape({}),
-   /** Optional additional inline styles */
-   style: PropTypes.shape({}),
+  /** Optional additional inline styles */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -21,7 +21,11 @@ const defaultProps = {
 };
 
 const Avatar = ({ children, className, size, style, ...props }) => (
-  <div className={classNames('rc-avatar', className)} {...props} style={{...size, ...style}}>
+  <div
+    className={classNames('rc-avatar', className)}
+    {...props}
+    style={{ ...size, ...style }}
+  >
     {children}
   </div>
 );

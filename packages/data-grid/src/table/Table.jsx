@@ -196,9 +196,7 @@ class Table extends Component {
                   className="dg-table-loading-container"
                   colSpan={columns.length}
                 >
-                  <div
-                    className="dg-table-loading-inner-container"
-                  >
+                  <div className="dg-table-loading-inner-container">
                     <div>
                       <Loading className="dg-loading-size" />
                     </div>

@@ -19,6 +19,7 @@ import Text from '../text';
   </SidePanel>
 </div>;
 ```
+
 ## Variations
 
 ### Alternative Button Icon
@@ -42,6 +43,7 @@ import Text from '../text';
 ```
 
 ### Static SidePanel
+
 An example of how you might use the `hideCloseButton` prop to have the `SidePanel` as a static component on a page.
 
 ```jsx
@@ -62,12 +64,7 @@ const TitleNode = () => (
 );
 
 <div className="sidebar-container">
-  <SidePanel
-    border
-    title={<TitleNode/>}
-    type="toolbar"
-    hideCloseButton="true"
-  >
+  <SidePanel border title={<TitleNode />} type="toolbar" hideCloseButton="true">
     <Text>Hello world!</Text>
   </SidePanel>
 </div>;
