@@ -22,7 +22,7 @@
   }
 }
 
-.rc-tag-neutral {
+.rc-tag-neutral.rc-tag-subtle {
   background-color: $puppet-white;
   border: $puppet-common-border;
 
@@ -37,7 +37,7 @@
   .rc-tag-remove-button {
     background: $puppet-white;
     border: $puppet-white;
-    fill: $puppet-b500;
+    fill: $puppet-n700;
 
     &:hover {
       background-color: $puppet-n200;

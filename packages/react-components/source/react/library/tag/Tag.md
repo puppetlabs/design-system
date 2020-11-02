@@ -20,7 +20,7 @@ const onTagClick = () => {
 
 ### Neutral
 
-The neutral tag can be selected through the type prop. This type of the tag has been developed to be used for displaying currently active filters within your application.
+The neutral tag can be selected through the type prop. This type of the tag has been developed to be used for displaying currently active filters within your application. Currently we only support a neutral subtle component. This also requires an emphasis="subtle" prop to be added.
 
 ```jsx
 const onTagClick = () => {
@@ -29,7 +29,12 @@ const onTagClick = () => {
 
 <div>
   <div>
-    <Tag label="Tag label" onClick={onTagClick} type="neutral" />
+    <Tag
+      label="Tag label"
+      onClick={onTagClick}
+      type="neutral"
+      emphasis="subtle"
+    />
   </div>
 </div>;
 ```

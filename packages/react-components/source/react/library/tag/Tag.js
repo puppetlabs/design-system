@@ -11,6 +11,8 @@ const propTypes = {
   onClick: func,
   /** Type dictates tag coloring */
   type: oneOf(['primary', 'neutral']),
+  /** Currently only subtle netural supported */
+  emphasis: oneOf(['bold', 'subtle']),
   /** Optional additional classnames */
   className: string,
 };
@@ -19,11 +21,19 @@ const defaultProps = {
   onClick: () => {},
   type: 'primary',
   className: '',
+  emphasis: 'bold',
 };
 
-const Tag = ({ label, onClick, type, className }) => {
+const Tag = ({ label, onClick, type, emphasis, className }) => {
   return (
-    <div className={classNames('rc-tag', `rc-tag-${type}`, className)}>
+    <div
+      className={classNames(
+        'rc-tag',
+        `rc-tag-${type}`,
+        `rc-tag-${emphasis}`,
+        className,
+      )}
+    >
       <div className="rc-tag-label-background">
         <Text className="rc-tag-text">{label}</Text>
       </div>
