@@ -66,6 +66,8 @@ import Badge from '../badge';
       username="Lorem Ipsum"
       version="1969.7.20"
       onClick={console.log}
+      enableSignout
+      onSignout={console.log}
     />
   </Sidebar>
 </div>;
