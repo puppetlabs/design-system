@@ -1,3 +1,7 @@
+# react-components NEXT
+
+- Fix ability to npm link react-components by removing `prebuild` step (by [chrisleicester](https://github.com/chrisleicester) in [#353](https://github.com/puppetlabs/design-system/pull/353))
+
 # react-components 5.24.3 (2020-10-27)
 
 - [Filter] Add onUpdate prop to filter (by [eglenfield](https://github.com/eglenfield) in [#344](https://github.com/puppetlabs/design-system/pull/344))
