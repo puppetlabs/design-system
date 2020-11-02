@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Icon from '../icon';
 import Heading from '../heading';
 import Text from '../text';
 import Avatar from '../avatar';
-import classnames from 'classnames';
 import Button from '../button';
 
 const propTypes = {
