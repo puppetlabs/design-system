@@ -241,43 +241,43 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   box-sizing: border-box;
   display: flex;
   height: $puppet-sidebar-footer-height;
+  justify-content: space-between;
   overflow: hidden;
   text-decoration: none !important;
-  justify-content: space-between;
 
   .rc-sidebar-footer-button-user,
   .rc-sidebar-footer-button-signout {
-    display: flex;
-    background: $puppet-sidebar-footer-bg;
-    height: 100%;
-    border-radius: 0;
     align-items: center;
+    background: $puppet-sidebar-footer-bg;
+    border-radius: 0;
+    display: flex;
+    height: 100%;
     justify-content: center;
   }
 
   .rc-sidebar-footer-button-user {
-    flex: 1;
     border: 0;
-    outline: none;
-    min-width: 0;
-    text-align: left;
+    flex: 1;
     justify-content: flex-start;
+    min-width: 0;
+    outline: none;
     padding: 0 0 0 $puppet-sidebar-padding;
+    text-align: left;
 
     &.rc-sidebar-footer-clickable {
       cursor: pointer;
     }
 
     &.rc-sidebar-footer-button-minimized {
-      padding: 0;
       justify-content: center;
+      padding: 0;
     }
   }
 
   .rc-sidebar-footer-button-signout {
     @include rc-button-reset();
-    width: $puppet-sidebar-footer-signout-width;
     margin-left: $puppet-sidebar-footer-signout-left-margin;
+    width: $puppet-sidebar-footer-signout-width;
   }
 
   .rc-sidebar-footer-meta-username,
@@ -331,9 +331,9 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
 .rc-sidebar-footer-meta-details {
   display: flex;
   flex: 1;
-  min-width: 0;
   flex-direction: column;
   margin-left: $puppet-sidebar-padding;
+  min-width: 0;
 }
 
 .rc-sidebar-footer-meta-user {
