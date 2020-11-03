@@ -5,8 +5,7 @@
   width: max-content;
 
   .rc-icon {
-    height: 12px !important;
-    width: 12px !important;
+    margin-left: 3px;
   }
 }
 
@@ -18,7 +17,34 @@
     @include puppet-type-button();
     color: $puppet-white;
     height: fit-content;
-    padding-left: 15px;
-    padding-right: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+}
+
+.rc-tag-neutral.rc-tag-subtle {
+  background-color: $puppet-white;
+  border: $puppet-common-border;
+
+  .rc-tag-label-background {
+    border-right: $puppet-common-border;
+
+    .rc-tag-text {
+      color: $puppet-n700;
+    }
+  }
+
+  .rc-tag-remove-button {
+    background: $puppet-white;
+    border: $puppet-white;
+    fill: $puppet-n700;
+
+    &:hover {
+      background-color: $puppet-n200;
+    }
+
+    .rc-icon-close {
+      margin-left: 10;
+    }
   }
 }
