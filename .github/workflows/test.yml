@@ -2,7 +2,9 @@ name: Test
 
 on:
   push:
+    branches: [development, master]
   pull_request:
+    branches-ignore: [development, master]
   # TODO: See if the following event can be used to get tests running on PRs from forks. Note that we would have to change the git context from the base to the PR with actions/checkout.
   # pull_request_target:
   #  types: [opened, reopened, synchronize]
