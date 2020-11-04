@@ -61,7 +61,7 @@ Each PR should get a +1 before being merged into `development`. The [design-syst
 
 ## Publishing
 
-New versions are currently released by maintainers using `npm run release`. Please collaborate with the team to release a new version. (Note: This process will likely be replaced with automated releases on push to master.)
+New versions are currently released by maintainers using `npm publish`. Please collaborate with the team to release a new version. (Note: This process will likely be replaced with automated releases on push to master.)
 
 ### Prerequisites
 
@@ -75,7 +75,7 @@ New versions are currently released by maintainers using `npm run release`. Plea
 3. Increment the desired packages versions in their `package.json` files, following [semver](https://semver.org/) for patch, minor, and major versions.
 4. Update `package-lock.json` files by running `npm install`; you may have to run `git clean -dfX` first to force them to update.
 5. Push those changes to `development`, get a +1 on the PR, and merge to `master`.
-6. Publish the packages to npm with `npm run release`. (Lerna will find packages with new versions based on `package.json` files.)
+6. Publish the packages to npm with `npm publish`. (Lerna will find packages with new versions based on `package.json` files.)
 
 ## Lerna commands
 
