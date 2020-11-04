@@ -17,21 +17,25 @@ import {
 import OptionMenuListItem from './OptionMenuListItem';
 import Icon from '../../library/icon';
 
+export const valueType = PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.shape({
+    key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  }),
+]);
+
 const propTypes = {
   id: PropTypes.string.isRequired,
   multiple: PropTypes.bool,
   showCancel: PropTypes.bool,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string.isRequired,
+      value: valueType.isRequired,
       label: PropTypes.node.isRequired,
       icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
     }),
   ),
-  selected: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
-  ]),
+  selected: PropTypes.oneOfType([valueType, PropTypes.arrayOf(valueType)]),
   focusedIndex: PropTypes.number,
   actionLabel: PropTypes.string,
   cancelLabel: PropTypes.string,
@@ -344,23 +348,27 @@ class OptionMenuList extends Component {
         }}
         {...rest}
       >
-        {options.map(({ value, label, icon, svg }, index) => (
-          <OptionMenuListItem
-            id={getOptionId(id, value)}
-            key={value}
-            focused={index === focusedIndex}
-            selected={selectionSet.has(value)}
-            icon={icon}
-            svg={svg}
-            onClick={() => onClickItem(value)}
-            onMouseEnter={() => onMouseEnterItem(index)}
-            ref={option => {
-              this.optionRefs[index] = option;
-            }}
-          >
-            {label}
-          </OptionMenuListItem>
-        ))}
+        {options.map(({ value, label, icon, svg }, index) => {
+          let key = value;
+          if (!(typeof value === 'string')) key = value.key;
+          return (
+            <OptionMenuListItem
+              id={getOptionId(id, value)}
+              key={key}
+              focused={index === focusedIndex}
+              selected={selectionSet.has(value)}
+              icon={icon}
+              svg={svg}
+              onClick={() => onClickItem(value)}
+              onMouseEnter={() => onMouseEnterItem(index)}
+              ref={option => {
+                this.optionRefs[index] = option;
+              }}
+            >
+              {label}
+            </OptionMenuListItem>
+          );
+        })}
       </ul>
     );
 

@@ -13,6 +13,7 @@ import {
   UP_KEY_CODE,
   ESC_KEY_CODE,
 } from '../../constants';
+import { valueType } from '../../internal/option-menu-list/OptionMenuList';
 
 const SELECT = 'select';
 const MULTISELECT = 'multiselect';
@@ -25,7 +26,7 @@ const propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       /** Select option value */
-      value: PropTypes.string.isRequired,
+      value: valueType.isRequired,
       /** Select option label */
       label: PropTypes.string.isRequired,
       /** Optional icon associated with this option */
@@ -37,8 +38,8 @@ const propTypes = {
   /** Currently selected value or values */
   value: PropTypes.oneOfType([
     //eslint-disable-line
-    PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
+    valueType,
+    PropTypes.arrayOf(valueType),
   ]),
   /** Value change handler. Will receive the new value */
   onChange: PropTypes.func,

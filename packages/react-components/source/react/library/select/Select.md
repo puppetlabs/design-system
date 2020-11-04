@@ -9,6 +9,7 @@ The Select component is a form element allowing for selection of a value or set 
 ## Basic use
 
 Options are specified by entries in an `options` array prop. Each requires a unique value and a friendly label to display to users.
+The value can be a string or an object. If it's an object, be sure it has a `key` field. This will be passed in as the React key for the list item.
 
 ```jsx
 const options = [
@@ -21,7 +22,10 @@ const options = [
   { value: 'bn', label: 'Bengali' },
   { value: 'bs', label: 'Bosnian' },
   { value: 'bg', label: 'Bulgarian' },
-  { value: 'ca', label: 'Catalan' },
+  {
+    value: { key: 'ca', code: 'ca', related: ['latin', 'spanish'] },
+    label: 'Catalan',
+  },
 ];
 
 const style = { margin: 10 };
