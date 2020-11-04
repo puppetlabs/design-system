@@ -8,7 +8,7 @@ return <Drawer />;
 
 ## Basic Use
 
-The `Drawer` component has to main content areas that can be populated through the child and headerContent props. The toggle feature can also be customised using the buttonTextOpen, buttonTextClosed and buttonType props. The drawer body can be opened and closed via the open prop.
+The `Drawer` component has two main content areas that can be populated through the child and headerContent props. The toggle feature can also be customised using the buttonTextOpen, buttonTextClosed and buttonType props. The drawer body can be opened and closed via the open prop.
 
 ```jsx
 const header = (
