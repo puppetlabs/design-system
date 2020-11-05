@@ -20,7 +20,7 @@ import Icon from '../../library/icon';
 export const valueType = PropTypes.oneOfType([
   PropTypes.string,
   PropTypes.shape({
-    key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    key: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   }),
 ]);
 
