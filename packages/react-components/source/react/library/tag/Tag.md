@@ -39,6 +39,28 @@ const onTagClick = () => {
 </div>;
 ```
 
+### Static Tag
+
+By adding `hideRemoveButton` to the tag component you can create a static tag in cases where you may want to disable the user from being able to remove it from a list.
+
+```jsx
+const onTagClick = () => {
+  console.log('The X was clicked');
+};
+
+<div>
+  <div>
+    <Tag
+      label="OS = 'Windows'"
+      onClick={onTagClick}
+      type="neutral"
+      emphasis="subtle"
+      hideRemoveButton
+    />
+  </div>
+</div>;
+```
+
 ## Related
 
 - [Badge](#/React%20Components/Badge)
