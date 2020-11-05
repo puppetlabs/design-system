@@ -15,6 +15,7 @@ const propTypes = {
   emphasis: oneOf(['bold', 'subtle']),
   /** Optional additional classnames */
   className: string,
+  /** Boolean to hide/show close button */
   hideRemoveButton: bool,
 };
 
@@ -67,9 +68,3 @@ Tag.propTypes = propTypes;
 Tag.defaultProps = defaultProps;
 
 export default Tag;
-
-// <div
-// className={classNames({
-//   '.rc-tag-border': !hideRemoveButton,
-// })}
-// >
