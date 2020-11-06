@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-import { bool, string, element, node, oneOf, elementType } from 'prop-types';
+import {
+  bool,
+  string,
+  element,
+  node,
+  oneOf,
+  elementType,
+  func,
+} from 'prop-types';
 import Button from '../button';
 
 const propTypes = {
@@ -8,6 +16,8 @@ const propTypes = {
   defaultOpen: bool,
   /** Control whether the body content is open or closed with the open boolean prop. */
   open: bool,
+  /** Callback which returns the new open prop value when the expand button is clicked */
+  buttonToggle: func,
   /** Button text used when the drawer is toggled open. */
   buttonTextOpen: string,
   /** Button text used when the drawer is toggled closed. */
@@ -24,6 +34,7 @@ const propTypes = {
 const defaultProps = {
   defaultOpen: undefined,
   open: undefined,
+  buttonToggle: () => {},
   buttonTextOpen: 'Hide details',
   buttonTextClosed: 'Details',
   headerContent: undefined,
@@ -35,6 +46,7 @@ const defaultProps = {
 function Drawer({
   defaultOpen,
   open,
+  buttonToggle,
   buttonTextOpen,
   buttonTextClosed,
   headerContent,
@@ -45,7 +57,7 @@ function Drawer({
   const [isOpen, setIsOpen] = useState(open !== undefined ? open : defaultOpen);
 
   const shouldSetIsOpen = () =>
-    open === undefined ? setIsOpen(!isOpen) : setIsOpen(open);
+    open === undefined ? setIsOpen(!isOpen) : buttonToggle(!open);
 
   return (
     <div className="rc-drawer-container">

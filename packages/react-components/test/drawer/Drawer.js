@@ -1,6 +1,7 @@
 import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
-import React from 'react';
+import React, { useState } from 'react';
+import sinon from 'sinon';
 
 import Drawer from '../../source/react/library/drawer/Drawer';
 
@@ -54,5 +55,30 @@ describe('<Drawer/>', () => {
     expect(wrapper.find('div.rc-drawer-body').text()).to.equal(
       'This is the body content',
     );
+  });
+
+  it('should repond to being controlled', () => {
+    const wrapper = shallow(<Drawer defaultOpen={true} />);
+    expect(wrapper.find('Button').text()).to.equal('Hide details');
+
+    const wrapper2 = shallow(<Drawer defaultOpen={true} open={false} />);
+    expect(wrapper2.find('Button').text()).to.equal('Details');
+
+    const open = false;
+
+    const toggle = sinon.spy();
+
+    const wrapper3 = shallow(
+      <Drawer
+        defaultOpen={true}
+        open={false}
+        open={open}
+        buttonToggle={toggle}
+      />,
+    );
+    expect(wrapper3.find('Button').text()).to.equal('Details');
+    const toggleButton = wrapper3.find('Button');
+    toggleButton.simulate('click');
+    expect(toggle).to.have.been.called;
   });
 });

@@ -21,13 +21,19 @@ const showMore = 'Show More Content';
 const showLess = 'Show Less Content';
 const buttonType = 'text';
 
+const toggle = state => {
+  console.log('New state returned');
+  setState({ state });
+};
+
 return (
   <Drawer
     headerContent={header}
     buttonTextOpen={showLess}
     buttonTextClosed={showMore}
     buttonType={buttonType}
-    open
+    open={state.value}
+    buttonToggle={toggle}
   >
     <h4>This is the body content</h4>
     <text>
