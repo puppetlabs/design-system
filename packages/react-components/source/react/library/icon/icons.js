@@ -716,10 +716,14 @@ const icons = {
       <>
         <path
           fillRule="evenodd"
-          fill="var(--down)"
+          className="rc-icon-increment-down"
           d="M4,11 L12,11 L8,15 L4,11 Z"
         />
-        <path fillRule="evenodd" fill="var(--up)" d="M4,5 L8,1 L12,5 L4,5 Z" />
+        <path
+          fillRule="evenodd"
+          className="rc-icon-increment-up"
+          d="M4,5 L8,1 L12,5 L4,5 Z"
+        />
       </>
     ),
   },
