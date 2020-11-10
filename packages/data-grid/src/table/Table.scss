@@ -51,11 +51,15 @@
 
 .dg-column-header-icon-color {
   &.asc {
-    --up: $puppet-b500;
+    .rc-icon-increment-up {
+      fill: $puppet-b500;
+    }
   }
 
   &.desc {
-    --down: $puppet-b500;
+    .rc-icon-increment-down {
+      fill: $puppet-b500;
+    }
   }
 }
 
