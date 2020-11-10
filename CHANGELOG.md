@@ -1,3 +1,7 @@
+# data-grid 0.5.1 (2020-11-10)
+
+- Use new version of react-components to get colored up and down icons in table headers (by [@Lukeaber](https://github.com/Lukeaber) in [#363](https://github.com/puppetlabs/design-system/pull/363))
+
 # react-components 5.25.1 (2020-11-10)
 
 - [Tabs] Add optional additional classname to Tabs.Tab component (by [@chrisleicester](https://github.com/chrisleicester) in [#357](https://github.com/puppetlabs/design-system/pull/357))
