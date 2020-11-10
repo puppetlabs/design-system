@@ -16,9 +16,11 @@
   .rc-tag-text {
     @include puppet-type-button();
     color: $puppet-white;
-    height: fit-content;
+    height: 24px;
+    padding-bottom: 4px;
     padding-left: 8px;
     padding-right: 8px;
+    padding-top: 4px;
   }
 }
 
@@ -26,12 +28,12 @@
   background-color: $puppet-white;
   border: $puppet-common-border;
 
-  .rc-tag-label-background {
+  .rc-tag-border {
     border-right: $puppet-common-border;
+  }
 
-    .rc-tag-text {
-      color: $puppet-n700;
-    }
+  .rc-tag-text {
+    color: $puppet-n700;
   }
 
   .rc-tag-remove-button {

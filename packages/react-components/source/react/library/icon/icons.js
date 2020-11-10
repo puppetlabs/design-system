@@ -716,10 +716,14 @@ const icons = {
       <>
         <path
           fillRule="evenodd"
-          fill="var(--down)"
+          className="rc-icon-increment-down"
           d="M4,11 L12,11 L8,15 L4,11 Z"
         />
-        <path fillRule="evenodd" fill="var(--up)" d="M4,5 L8,1 L12,5 L4,5 Z" />
+        <path
+          fillRule="evenodd"
+          className="rc-icon-increment-up"
+          d="M4,5 L8,1 L12,5 L4,5 Z"
+        />
       </>
     ),
   },
@@ -986,6 +990,15 @@ const icons = {
       <path
         fillRule="evenodd"
         d="M8,2 C6.9,2 6,2.9 6,4 L6,5 C6,6.1 6.9,7 8,7 C9.1,7 10,6.1 10,5 L10,4 C10,2.9 9.1,2 8,2 Z M8,0 C10.2,0 12,1.8 12,4 L12,5 C12,7.2 10.2,9 8,9 C5.8,9 4,7.2 4,5 L4,4 C4,1.8 5.8,0 8,0 Z M15,16 L1,16 L1,15 C1,12.2 3.2,10 6,10 L10,10 C12.8,10 15,12.2 15,15 L15,16 Z M6,12 C4.7,12 3.6,12.8 3.2,14 L12.8,14 C12.4,12.8 11.3,12 10,12 L6,12 Z"
+      />
+    ),
+  },
+
+  projects: {
+    medium: (
+      <path
+        fillRule="evenodd"
+        d="M16 13V3c0-1.65-1.35-3-3-3-1.3 0-2.4.84-2.82 2H1.1C.49 2 0 2.49 0 3.1v11.8c0 .61.49 1.1 1.1 1.1H13c1.65 0 3-1.35 3-3zm-3-1c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2.82 2H2V4h8v9c0 .35.07.69.18 1zM12 10.18V3c0-.55.45-1 1-1s1 .45 1 1v7.18c-.31-.11-.65-.18-1-.18s-.69.07-1 .18zM3 9h6V8H3v1zm0 2h4v-1H3v1zm5-4H3V6h5v1z"
       />
     ),
   },

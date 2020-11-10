@@ -1,3 +1,10 @@
+# react-components 5.25.1 (2020-11-10)
+
+- [Tabs] Add optional additional classname to Tabs.Tab component (by [@chrisleicester](https://github.com/chrisleicester) in [#357](https://github.com/puppetlabs/design-system/pull/357))
+- [Icon] Add "projects" icon (by [@chrisleicester](https://github.com/chrisleicester) in [#358](https://github.com/puppetlabs/design-system/pull/358))
+- [Tag] Add prop to Tag component to show/hide button (by [@jilliankeenan](https://github.com/jilliankeenan) in [#360](https://github.com/puppetlabs/design-system/pull/360))
+- [Icon] Add classes to paths in "increment" icon (by [@Lukeaber](https://github.com/Lukeaber) in [#361](https://github.com/puppetlabs/design-system/pull/361))
+
 # react-components 5.25.0 (2020-11-02)
 
 - [Avatar] Create Avatar component (by [@niftyrinki](https://github.com/niftyrinki) in [#319](https://github.com/puppetlabs/design-system/pull/319))
