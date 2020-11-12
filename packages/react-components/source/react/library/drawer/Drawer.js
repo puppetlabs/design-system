@@ -17,7 +17,7 @@ const propTypes = {
   /** Control whether the body content is open or closed with the open boolean prop. */
   open: bool,
   /** Callback which returns the new open prop value when the expand button is clicked */
-  buttonToggle: func,
+  onToggle: func,
   /** Button text used when the drawer is toggled open. */
   buttonTextOpen: string,
   /** Button text used when the drawer is toggled closed. */
@@ -34,7 +34,7 @@ const propTypes = {
 const defaultProps = {
   defaultOpen: undefined,
   open: undefined,
-  buttonToggle: () => {},
+  onToggle: () => {},
   buttonTextOpen: 'Hide details',
   buttonTextClosed: 'Details',
   headerContent: undefined,
@@ -46,7 +46,7 @@ const defaultProps = {
 function Drawer({
   defaultOpen,
   open,
-  buttonToggle,
+  onToggle,
   buttonTextOpen,
   buttonTextClosed,
   headerContent,
@@ -57,7 +57,7 @@ function Drawer({
   const [isOpen, setIsOpen] = useState(open !== undefined ? open : defaultOpen);
 
   const shouldSetIsOpen = () =>
-    open === undefined ? setIsOpen(!isOpen) : buttonToggle(!open);
+    open === undefined ? setIsOpen(!isOpen) : onToggle(!open);
 
   return (
     <div className="rc-drawer-container">

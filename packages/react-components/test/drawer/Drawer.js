@@ -69,12 +69,7 @@ describe('<Drawer/>', () => {
     const toggle = sinon.spy();
 
     const wrapper3 = shallow(
-      <Drawer
-        defaultOpen={true}
-        open={false}
-        open={open}
-        buttonToggle={toggle}
-      />,
+      <Drawer defaultOpen={true} open={false} open={open} onToggle={toggle} />,
     );
     expect(wrapper3.find('Button').text()).to.equal('Details');
     const toggleButton = wrapper3.find('Button');

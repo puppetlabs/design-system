@@ -33,7 +33,7 @@ return (
     buttonTextClosed={showMore}
     buttonType={buttonType}
     open={state.value}
-    buttonToggle={toggle}
+    onToggle={toggle}
   >
     <h4>This is the body content</h4>
     <text>
