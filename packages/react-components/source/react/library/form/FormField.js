@@ -23,8 +23,8 @@ const propTypes = {
   value: PropTypes.any,
   /** Form error, causing element to render red when present */
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
-  /** Expanded explainer for the field */
-  description: PropTypes.string,
+  /** An optional explanatory message rendered below the form field. */
+  description: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /** Is the field required */
   required: PropTypes.bool,
   /** The error message to display if the field is required but not present at validation */
@@ -45,6 +45,8 @@ const propTypes = {
   className: PropTypes.string,
   /** Optional additional className for inner field */
   innerClassName: PropTypes.string,
+  /** Optional placeholder to use as label substitute */
+  placeholder: PropTypes.string,
   /** Optional additional inline styles */
   style: PropTypes.shape({}),
   /** All additional props are propagated to the inner input elements. See each option for details. TODO: figure out how to get this set up in styleguidist */
@@ -66,6 +68,7 @@ const defaultProps = {
   className: '',
   innerClassName: '',
   style: {},
+  placeholder: '',
 };
 
 /**
@@ -123,6 +126,7 @@ const FormField = props => {
     name,
     style,
     type,
+    placeholder,
   } = props;
   const typeName = getTypeName(type);
   const tabbed = inline && (type === 'checkbox' || type === 'switch');
@@ -156,11 +160,12 @@ const FormField = props => {
           className={classNames(
             'rc-form-field-label',
             `rc-form-field-label-${labelType}`,
+            !label && `rc-form-field-label-not-visible`,
           )}
           key="field-label"
           style={labelStyle}
         >
-          {label}
+          {label || placeholder || description}
         </label>
         <div className="rc-form-field-element">
           {element}

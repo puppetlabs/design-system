@@ -15,7 +15,8 @@
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch",
-    "watch": "./scripts/watch"
+    "watch": "./scripts/watch",
+    "upgrade": "npx npm-check-updates --upgrade"
   },
   "publishConfig": {
     "access": "public"

@@ -50,4 +50,54 @@ describe('<FilterForm />', () => {
       );
     });
   });
+
+  describe('onUpdate', () => {
+    it('should default if onUpdate is not supplied', () => {
+      const fields = ['Name', 'Age'];
+      const wrapper = mount(<FilterForm fields={fields} />);
+
+      expect(wrapper.find('FilterForm').prop('onUpdate')).to.exist;
+
+      const field = wrapper.find('FormField[name="field"]');
+      field.simulate('click');
+      const value = field.find('FormFieldElement');
+      value.simulate('click');
+      const select = value.find('OptionMenuList');
+      select.simulate('click');
+      const item = select.find('ForwardRef[id*="Name"]').find('li');
+      item.simulate('click');
+
+      expect(
+        wrapper.find('form>FormField[name="field"]').prop('value'),
+        'default onUpdate is called',
+      ).to.eql('Name');
+    });
+
+    it('should override default if onUpdate supplied', () => {
+      const onUpdate = () => {
+        return {
+          field: 'Age',
+          op: '<',
+          value: 'Test value',
+        };
+      };
+      const fields = ['Name', 'Age'];
+      const wrapper = mount(<FilterForm fields={fields} onUpdate={onUpdate} />);
+      expect(wrapper.find('FilterForm').prop('onUpdate')).to.exist;
+
+      const field = wrapper.find('FormField[name="field"]');
+      field.simulate('click');
+      const value = field.find('FormFieldElement');
+      value.simulate('click');
+      const select = value.find('OptionMenuList');
+      select.simulate('click');
+      const item = select.find('ForwardRef[id*="Name"]').find('li');
+      item.simulate('click');
+
+      expect(
+        wrapper.find('form>FormField[name="field"]').prop('value'),
+        'custom onUpdate is called',
+      ).to.eql('Age');
+    });
+  });
 });

@@ -13,6 +13,7 @@ const propTypes = {
   removable: PropTypes.bool,
   onSubmit: PropTypes.func,
   onCancel: PropTypes.func,
+  onUpdate: PropTypes.func,
   cancellable: PropTypes.bool,
   fields: PropTypes.arrayOf(PropTypes.string),
   /** Defaults to the standard set as defined in constants. */
@@ -58,6 +59,7 @@ const defaultStrings = {
 const defaultProps = {
   onSubmit: () => {},
   onCancel: () => {},
+  onUpdate: filter => filter,
   removable: false,
   fields: [],
   filter: {},
@@ -115,13 +117,15 @@ class FilterForm extends React.Component {
   }
 
   onUpdate(field, values) {
-    const { operators } = this.props;
+    const { operators, onUpdate } = this.props;
     const value = values[field];
-    const filter = { ...values };
+    let filter = { ...values };
 
     if (isValueless(value, operators)) {
       delete filter.value;
     }
+
+    filter = onUpdate(filter);
 
     this.setState({ filter });
   }

@@ -89,6 +89,17 @@ $puppet-form-inline-label-gutter-width: $puppet-common-spacing-base * 12 !defaul
     @include puppet-type-h6(medium);
     font-weight: $puppet-type-weight-heavy;
   }
+
+  &.rc-form-field-label-not-visible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
 }
 
 .rc-form-field-description {

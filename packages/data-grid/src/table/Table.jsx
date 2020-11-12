@@ -196,11 +196,7 @@ class Table extends Component {
                   className="dg-table-loading-container"
                   colSpan={columns.length}
                 >
-                  <div
-                    className="dg-table-loading-inner-container"
-                    aria-live="polite"
-                    aria-busy={loading}
-                  >
+                  <div className="dg-table-loading-inner-container">
                     <div>
                       <Loading className="dg-loading-size" />
                     </div>

@@ -8,11 +8,7 @@
 import { Form } from '@puppet/react-components';
 
 <Authentication product="My Product" title="Sign in to My Product">
-  <Form
-    submittable
-    actionsPosition="block"
-    submitLabel="Sign in"
-  >
+  <Form submittable actionsPosition="block" submitLabel="Sign in">
     <Form.Field
       type="email"
       name="email"
@@ -32,10 +28,8 @@ import { Form } from '@puppet/react-components';
       placeholder="Enter password"
     />
   </Form>
-  <Authentication.Action>
-    Forgot your password?
-  </Authentication.Action>
-</Authentication>
+  <Authentication.Action>Forgot your password?</Authentication.Action>
+</Authentication>;
 ```
 
 # Example: New User Confirmation
@@ -48,11 +42,7 @@ import { Form } from '@puppet/react-components';
   title="Welcome to My Product"
   subtitle="To get started you'll need to confirm a few things and create a password"
 >
-  <Form
-    submittable
-    actionsPosition="block"
-    submitLabel="Get started"
-  >
+  <Form submittable actionsPosition="block" submitLabel="Get started">
     <Form.Field
       type="text"
       name="name"
@@ -99,7 +89,7 @@ import { Form } from '@puppet/react-components';
       placeholder="Password again"
     />
   </Form>
-</Authentication>
+</Authentication>;
 ```
 
 ## Related

@@ -77,6 +77,53 @@ Inputs are available in a "simple" visual variant, primarily used for in-site se
 />
 ```
 
+### Size and Shape
+
+Inputs are available in two different sizes, "medium" and "large" and two different shapes, "round" and "oval". "medium" and "round" inputs are the default.
+
+```jsx
+<Input
+  name="input-ex7"
+  value={state.value}
+  placeholder="blueberry spicehead"
+  icon="scatter"
+  shape="round"
+  size="medium"
+  style={{ marginBottom: 10 }}
+  onChange={value => setState({ value })}
+/>
+<Input
+  name="input-ex7"
+  value={state.value}
+  placeholder="princess rainbow"
+  icon="integration"
+  shape="oval"
+  size="medium"
+  style={{ marginBottom: 10 }}
+  onChange={value => setState({ value })}
+/>
+<Input
+  name="input-ex8"
+  value={state.value}
+  placeholder="twinkle starchild"
+  icon="star"
+  size="large"
+  shape="round"
+  style={{ marginBottom: 10 }}
+  onChange={value => setState({ value })}
+/>
+<Input
+  name="input-ex9"
+  value={state.value}
+  placeholder="juniper lightning bug"
+  icon="activity"
+  size="large"
+  shape="oval"
+  style={{ marginBottom: 10 }}
+  onChange={value => setState({ value })}
+/>
+```
+
 ### Inputs with icons
 
 #### Leading icon
@@ -91,6 +138,7 @@ const exampleStyle = { marginBottom: 10 };
     name="input-ex11"
     value={state['input-ex11-value']}
     icon="search"
+    shape="oval"
     placeholder="Search for stuff"
     style={exampleStyle}
     onChange={value => setState({ 'input-ex11-value': value })}

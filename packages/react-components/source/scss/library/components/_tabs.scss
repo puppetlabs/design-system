@@ -1,3 +1,6 @@
+$scroll-button-size: 32px;
+$bottom-border-shadow: inset 0 -2px 1px -1px $puppet-n400;
+
 // Tabs
 // ----------------------------------------------------------------------------
 .rc-tabs {
@@ -8,28 +11,66 @@
   max-width: 100%;
 }
 
-.rc-tabs-list {
+.rc-tabs-list-container {
   align-items: flex-end;
   display: flex;
-  overflow: visible;
+}
+
+.rc-tabs-list {
+  align-items: flex-end;
+  box-shadow: $bottom-border-shadow;
+  display: flex;
+  min-height: $scroll-button-size + 2; // Accommodate box shadow on focus
+  -ms-overflow-style: none;
+  overflow-x: auto;
+  overflow-y: hidden;
+  position: relative;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  width: 100%;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 // Tab
 .rc-tabs-button {
   border-bottom: 0 !important;
   border-radius: $puppet-common-border-radius $puppet-common-border-radius 0 0 !important;
+  box-shadow: $bottom-border-shadow;
   color: $puppet-type-color-base;
   fill: $puppet-type-color-base;
   margin: 0 2px;
-  margin-left: 2px !important;
+  margin-left: 2px !important; // override specific default button + button margin
   padding-left: $puppet-common-spacing-base * 6;
   padding-right: $puppet-common-spacing-base * 6;
   position: relative;
+  white-space: nowrap;
+
+  .rc-tabs-no-scroll & {
+    white-space: pre-wrap;
+  }
+
+  .rc-tabs-transparent & {
+    border: 0;
+    margin: 0;
+    margin-left: 0 !important; // override specific default button + button margin
+    padding: $puppet-common-spacing-base * 2 $puppet-common-spacing-base * 3;
+  }
+
+  .rc-tabs-transparent &:focus {
+    box-shadow: inset 0 0 0 $puppet-common-spacing-base / 2 $puppet-b300;
+  }
 
   .rc-button-content {
     align-items: center;
     display: flex;
   }
+}
+
+.rc-button.rc-tabs-button-scroll {
+  z-index: 2;
 }
 
 .rc-tabs-button-active::after {
@@ -44,10 +85,18 @@
 
 .rc-tabs-button:first-of-type {
   margin-left: $puppet-common-spacing-base;
+
+  .rc-tabs-transparent & {
+    margin-left: 0;
+  }
 }
 
 .rc-tabs-button:last-of-type {
   margin-right: $puppet-common-spacing-base;
+
+  .rc-tabs-transparent & {
+    margin-right: 0;
+  }
 }
 
 .rc-tabs-button-active {
@@ -57,7 +106,6 @@
 
 // Panel
 .rc-tabs-panel {
-  border-top: $puppet-common-border;
   flex: 1;
   min-height: 0;
   z-index: 1;
@@ -82,11 +130,23 @@
 }
 
 // Secondary coloring
-.rc-tabs-secondary > .rc-tabs-list > .rc-tabs-button-active,
-.rc-tabs-secondary > .rc-tabs-list > .rc-tabs-button-active::after,
+.rc-tabs-secondary .rc-tabs-list > .rc-tabs-button-active,
+.rc-tabs-secondary .rc-tabs-list > .rc-tabs-button-active::after,
 .rc-tabs-secondary > .rc-tabs-panel,
 .rc-tabs-tab-secondary.rc-tabs-button-active,
 .rc-tabs-tab-secondary.rc-tabs-button-active::after,
 .rc-tabs-panel-type-secondary {
   background-color: $puppet-n50;
+}
+
+// Transparent variant
+.rc-tabs-transparent {
+  &.rc-tabs-secondary .rc-tabs-list > .rc-tabs-button-active {
+    background-color: $puppet-white;
+  }
+
+  .rc-tabs-button.rc-tabs-button-active::after {
+    background-color: $puppet-b500;
+    bottom: 0;
+  }
 }

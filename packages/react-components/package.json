@@ -1,13 +1,12 @@
 {
   "name": "@puppet/react-components",
-  "version": "5.22.4",
+  "version": "5.25.1",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "build/library.js",
   "scripts": {
     "link": "npm link",
     "analyze": "webpack --config webpack.analyze.config.js",
-    "prebuild": "rimraf build",
     "build": "NODE_ENV=production webpack",
     "prepare": "npm run build",
     "complexity": "es6-plato -r -d complexity source/react && open ./complexity/index.html",
@@ -17,7 +16,8 @@
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
     "format": "eslint --fix 'source/**/*.{js,jsx}'; prettier --write 'source/**/*.{js,jsx,json,md}'",
-    "start": "cd ../design-system-website && npm start"
+    "start": "cd ../design-system-website && npm start",
+    "upgrade": "npx npm-check-updates --upgrade"
   },
   "publishConfig": {
     "access": "public"
@@ -70,7 +70,6 @@
     "react-router": "^5.2.0",
     "react-styleguidist": "^10.6.2",
     "resolve-url-loader": "^3.1.1",
-    "rimraf": "^3.0.2",
     "sass-loader": "^8.0.2",
     "sinon": "^7.5.0",
     "sinon-chai": "^3.5.0",

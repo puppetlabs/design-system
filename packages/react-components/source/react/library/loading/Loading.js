@@ -15,7 +15,7 @@ const defaultProps = {
 };
 
 const Loading = ({ className, size, ...rest }) => (
-  <div className="rc-loading">
+  <div className="rc-loading" aria-live="polite" aria-busy="true">
     <svg
       className={classNames('rc-loading-svg', `rc-loading-${size}`, className)}
       viewBox="4 4 32 32"
