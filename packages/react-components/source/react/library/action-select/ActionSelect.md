@@ -10,6 +10,7 @@ See also: [ButtonSelect](#/React%20Components/ButtonSelect), [Select](#/React%20
 
 Actions are specified by entries in an `actions` array prop. In most cases, action callbacks should be specified with the `onClick` property of each action item. If the action involves navigation, an anchor tag or custom link component with appropriate props (`href` or `to`) can be rendered with the `as` prop. Each action can optionally include an icon.
 
+<!--
 ```jsx
 const actions = [
   {
@@ -258,6 +259,46 @@ const style = { display: 'inline-block', margin: 10 };
     style={style}
     width="200px"
   />
+</div>;
+``` -->
+
+### Disable rows
+
+Use the `width` prop to customize the width of the button.
+
+```jsx
+const actions = [
+  {
+    id: 'one',
+    icon: 'pencil',
+    label: 'Do thing one',
+    disabled: true,
+    onClick() {
+      console.log('Thing one');
+    },
+  },
+  {
+    id: 'two',
+    icon: 'send',
+    label: 'Do thing two',
+    onClick() {
+      console.log('Thing two');
+    },
+  },
+  {
+    id: 'three',
+    as: 'a',
+    href: 'https://www.google.com',
+    target: '_blank',
+    label: 'Open link',
+    icon: 'link',
+  },
+];
+
+const style = { display: 'inline-block', margin: 10 };
+
+<div>
+  <ActionSelect actions={actions} label="Choose an Action" style={style} />
 </div>;
 ```
 
