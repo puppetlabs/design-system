@@ -10,7 +10,6 @@ See also: [ButtonSelect](#/React%20Components/ButtonSelect), [Select](#/React%20
 
 Actions are specified by entries in an `actions` array prop. In most cases, action callbacks should be specified with the `onClick` property of each action item. If the action involves navigation, an anchor tag or custom link component with appropriate props (`href` or `to`) can be rendered with the `as` prop. Each action can optionally include an icon.
 
-<!--
 ```jsx
 const actions = [
   {
@@ -260,11 +259,11 @@ const style = { display: 'inline-block', margin: 10 };
     width="200px"
   />
 </div>;
-``` -->
+```
 
 ### Disable rows
 
-Use the `width` prop to customize the width of the button.
+Use the `disabled` object property to disable a row in a dropdown and prevent onClick actions from happening.
 
 ```jsx
 const actions = [
