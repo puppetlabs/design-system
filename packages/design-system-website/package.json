@@ -30,7 +30,6 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "fast-csv": "^4.3.6",
     "file-loader": "^4.3.0",
     "jsdom": "^15.2.1",
     "mocha": "^6.2.3",
