@@ -1,12 +1,12 @@
 import React from 'react';
-import { func, string, oneOf, bool } from 'prop-types';
+import { func, string, oneOf, bool, node } from 'prop-types';
 import classNames from 'classnames';
 import Button from '../button';
 import Text from '../text';
 
 const propTypes = {
   /** Tag text or other content */
-  label: string.isRequired,
+  label: node.isRequired,
   /** Callback function called when clode icon is clicked */
   onClick: func,
   /** Type dictates tag coloring */
