@@ -57,7 +57,7 @@ const Tag = ({
           onClick={() => onClick()}
           icon="close"
           iconSize="small"
-          aria-label={`${label} Remove tag`}
+          aria-label="Remove tag"
         />
       )}
     </div>
