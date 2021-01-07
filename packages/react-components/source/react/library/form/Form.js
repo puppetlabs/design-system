@@ -40,6 +40,8 @@ const propTypes = {
   cancellable: PropTypes.bool,
   /** Optional override for the cancel button label */
   cancelLabel: PropTypes.string,
+  /** Optional override for the cancel button type */
+  cancelType: PropTypes.oneOf(['secondary', 'tertiary', 'transparent', 'text']),
   /** Cancel event handler */
   onCancel: PropTypes.func,
   /** The styling of the identifier for all fields */
@@ -71,6 +73,7 @@ const defaultProps = {
   onSubmit() {},
   cancellable: false,
   cancelLabel: 'Cancel',
+  cancelType: 'tertiary',
   onCancel() {},
   onChange() {},
   submitting: false,
@@ -96,6 +99,7 @@ const Form = forwardRef((props, ref) => {
     submitType,
     cancellable,
     cancelLabel,
+    cancelType,
     onCancel,
     actionsPosition,
     disabled,
@@ -185,6 +189,7 @@ const Form = forwardRef((props, ref) => {
         submitType={submitType}
         cancellable={cancellable}
         cancelLabel={cancelLabel}
+        cancelType={cancelType}
         onCancel={onCancel}
         actionsPosition={actionsPosition}
         disabled={disabled}

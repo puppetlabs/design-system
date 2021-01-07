@@ -1,3 +1,10 @@
+# react-components 5.26.0 (2021-01-07)
+
+- [Drawer] Add Drawer component (by [@Lukeaber](https://github.com/Lukeaber) in [#343](https://github.com/puppetlabs/design-system/pull/343))
+- [Icon] Add new chevron icons ("chevron-double-down" and "chevron-double-up") (by [@Lukeaber](https://github.com/Lukeaber) in [#343](https://github.com/puppetlabs/design-system/pull/343))
+- [Form] Add ability to choose cancel button type in Form actions (by [@jilliankeenan](https://github.com/jilliankeenan) in [#372](https://github.com/puppetlabs/design-system/pull/372))
+- [Security] Remove fast-csv dependency (by [@vine77](https://github.com/vine77) in [#369](https://github.com/puppetlabs/design-system/pull/369))
+
 # data-grid 0.5.1 (2020-11-10)
 
 - Use new version of react-components to get colored up and down icons in table headers (by [@Lukeaber](https://github.com/Lukeaber) in [#363](https://github.com/puppetlabs/design-system/pull/363))
