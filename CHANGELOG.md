@@ -1,3 +1,7 @@
+# react-components 5.26.1 (2021-01-08)
+
+- [Icon] Add new plus minus icon +/- (by [@Lukeaber](https://github.com/Lukeaber) in [#374](https://github.com/puppetlabs/design-system/pull/374))
+
 # react-components 5.26.0 (2021-01-07)
 
 - [Drawer] Add Drawer component (by [@Lukeaber](https://github.com/Lukeaber) in [#343](https://github.com/puppetlabs/design-system/pull/343))
