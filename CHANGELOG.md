@@ -1,3 +1,9 @@
+# react-components 5.26.2 (2021-01-27)
+
+- [Logo] Add Puppet Connect logo (by [@chrisleicester](https://github.com/chrisleicester) in [#376](https://github.com/puppetlabs/design-system/pull/376))
+- [security] Bump ini from 1.3.5 to 1.3.8 in /packages/react-layouts (by [@dependabot](https://github.com/apps/dependabot) in [#376](https://github.com/puppetlabs/design-system/pull/370))
+- [security] Bump ini from 1.3.5 to 1.3.8 in /packages/sass-variables (by [@dependabot](https://github.com/apps/dependabot) in [#371](https://github.com/puppetlabs/design-system/pull/371))
+
 # react-components 5.26.1 (2021-01-08)
 
 - [Icon] Add new plus minus icon +/- (by [@Lukeaber](https://github.com/Lukeaber) in [#374](https://github.com/puppetlabs/design-system/pull/374))
