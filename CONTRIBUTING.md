@@ -61,7 +61,12 @@ Each PR should get a +1 before being merged into `development`. The [design-syst
 
 ## Publishing
 
-New versions are currently released by maintainers using `npm run release`. Please collaborate with the team to release a new version. (Note: This process will likely be replaced with automated releases on push to master.)
+1. Create a PR from `development` to `master`.
+2. Increment the version in the appropriate package.json file (e.g. [packages/react-components/package.json](packages/react-components/package.json)), following [semver](https://semver.org).
+3. Run `npm install` so that package-lock.json files also get updated.
+3. Update the [CHANGELOG.md](CHANGELOG.md).
+4. Get a +1 and merge the PR to master, which will trigger a Relay workflow that runs the `npm run release` command.
+5. Verify the new version got published, e.g. by checking [https://www.npmjs.com/package/@puppet/react-components](https://www.npmjs.com/package/@puppet/react-components)
 
 ### Prerequisites
 
