@@ -1,6 +1,7 @@
 # react-components 5.26.3 (2021-01-29)
 
-- [Icon] Add Puppet Connect logo (by [@mardotio](https://github.com/mardotio) in [#379](https://github.com/puppetlabs/design-system/pull/379))
+- [Icon] Add inventory icon (by [@mardotio](https://github.com/mardotio) in [#379](https://github.com/puppetlabs/design-system/pull/379))
+
 # react-components 5.26.2 (2021-01-27)
 
 - [Logo] Add Puppet Connect logo (by [@chrisleicester](https://github.com/chrisleicester) in [#376](https://github.com/puppetlabs/design-system/pull/376))
