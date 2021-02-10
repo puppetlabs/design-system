@@ -24,6 +24,28 @@ const options = [
 />;
 ```
 
+### Disable rows
+
+Use the `disabled` object property to disable a row in a dropdown and prevent onClick actions from happening.
+
+```jsx
+const options = [
+  { value: 'hello', label: 'Hello' },
+  { value: 'world', label: 'World' },
+  { value: 'hi', label: 'Hi', disabled: true },
+  { value: 'mom', label: 'Mom', disabled: true },
+];
+
+<ButtonSelect
+  options={options}
+  value={state.value}
+  onChange={value => {
+    console.log('New Value:', value);
+    setState({ value });
+  }}
+/>;
+```
+
 ## Types
 
 The visual types of `ButtonSelect` are "primary", "secondary", "tertiary", "danger", "transparent", "text".

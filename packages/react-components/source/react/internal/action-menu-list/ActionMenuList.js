@@ -257,8 +257,12 @@ class ActionMenuList extends Component {
                 icon={icon}
                 svg={svg}
                 onMouseEnter={() => onMouseEnterItem(index)}
-                onClick={e => !disabled && executeAction(e, onClick, actionId)}
                 disabled={disabled}
+                onClick={
+                  disabled
+                    ? undefined
+                    : e => executeAction(e, onClick, actionId)
+                }
                 ref={el => {
                   this.actionRefs[index] = el;
                 }}
