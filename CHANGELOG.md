@@ -1,3 +1,7 @@
+# react-components 5.26.4 (2021-02-10)
+
+- [Select] Fix autocomplete select not staying open when typing (by [@jilliankeenan](https://github.com/jilliankeenan) in [#381](https://github.com/puppetlabs/design-system/pull/381))
+
 # react-components 5.26.3 (2021-01-29)
 
 - [Icon] Add inventory icon (by [@mardotio](https://github.com/mardotio) in [#379](https://github.com/puppetlabs/design-system/pull/379))
