@@ -20,6 +20,7 @@ import Icon from '../../library/icon';
 const propTypes = {
   id: PropTypes.string.isRequired,
   multiple: PropTypes.bool,
+  autocomplete: PropTypes.bool,
   showCancel: PropTypes.bool,
   options: PropTypes.arrayOf(
     PropTypes.shape({
@@ -49,6 +50,7 @@ const propTypes = {
 const defaultProps = {
   options: [],
   multiple: false,
+  autocomplete: false,
   showCancel: false,
   onBlur() {},
   className: '',
@@ -261,7 +263,7 @@ class OptionMenuList extends Component {
   }
 
   select(value) {
-    const { multiple, selected, onChange } = this.props;
+    const { multiple, selected, onChange, autocomplete, onEscape } = this.props;
 
     if (multiple) {
       const selectionSet = getSelectionSet(selected);
@@ -274,6 +276,9 @@ class OptionMenuList extends Component {
       onChange(Array.from(selectionSet));
     } else {
       onChange(value);
+      if (autocomplete) {
+        onEscape();
+      }
     }
   }
 
@@ -306,6 +311,7 @@ class OptionMenuList extends Component {
       options,
       selected,
       multiple,
+      autocomplete,
       showCancel,
       actionLabel,
       cancelLabel,
