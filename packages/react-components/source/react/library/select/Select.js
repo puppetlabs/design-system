@@ -192,7 +192,7 @@ class Select extends Component {
       this.setState({ focusedIndex: 0 });
     }
 
-    if (type !== MULTISELECT) {
+    if (type !== MULTISELECT && type !== AUTOCOMPLETE) {
       this.closeAndFocusButton();
     }
   }
@@ -455,6 +455,7 @@ class Select extends Component {
         <OptionMenuList
           id={`${name}-menu`}
           multiple={type === MULTISELECT}
+          autocomplete={type === AUTOCOMPLETE}
           showCancel={type === MULTISELECT && !applyImmediately}
           options={getOptions()}
           selected={listValue}
