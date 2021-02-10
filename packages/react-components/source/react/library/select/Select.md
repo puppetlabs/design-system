@@ -41,41 +41,6 @@ const style = { margin: 10 };
 </div>;
 ```
 
-### Disable rows
-
-Use the `disabled` object property to disable a row in a dropdown and prevent onClick actions from happening.
-
-```jsx
-const options = [
-  { value: 'en', label: 'English' },
-  { value: 'ru', label: 'русский' },
-  { value: 'zh', label: '中文' },
-  { value: 'sq', label: 'Albanian' },
-  { value: 'ar', label: 'Arabic' },
-  { value: 'eu', label: 'Basque', disabled: true },
-  { value: 'bn', label: 'Bengali', disabled: true },
-  { value: 'bs', label: 'Bosnian', disabled: true },
-  { value: 'bg', label: 'Bulgarian', disabled: true },
-  { value: 'ca', label: 'Catalan', disabled: true },
-];
-
-const style = { margin: 10 };
-
-<div>
-  <Select
-    name="disabled-select-example"
-    options={options}
-    placeholder="Select your language"
-    style={style}
-    value={state.value1}
-    onChange={value1 => {
-      console.log('New Value:', value1);
-      setState({ value1 });
-    }}
-  />
-</div>;
-```
-
 ## Variations
 
 ### Autocomplete
@@ -195,6 +160,42 @@ const style = { margin: 10 };
     }}
     type="multiselect"
     applyImmediately
+  />
+</div>;
+```
+
+## Option properties
+### Disabled options
+
+Use the `disabled` object property to disable a row in a dropdown.
+
+```jsx
+const options = [
+  { value: 'en', label: 'English' },
+  { value: 'ru', label: 'русский' },
+  { value: 'zh', label: '中文' },
+  { value: 'sq', label: 'Albanian' },
+  { value: 'ar', label: 'Arabic' },
+  { value: 'eu', label: 'Basque', disabled: true },
+  { value: 'bn', label: 'Bengali', disabled: true },
+  { value: 'bs', label: 'Bosnian', disabled: true },
+  { value: 'bg', label: 'Bulgarian', disabled: true },
+  { value: 'ca', label: 'Catalan', disabled: true },
+];
+
+const style = { margin: 10 };
+
+<div>
+  <Select
+    name="disabled-select-example"
+    options={options}
+    placeholder="Select your language"
+    style={style}
+    value={state.value1}
+    onChange={value1 => {
+      console.log('New Value:', value1);
+      setState({ value1 });
+    }}
   />
 </div>;
 ```
