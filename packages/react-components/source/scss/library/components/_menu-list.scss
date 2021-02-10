@@ -119,3 +119,13 @@
   cursor: default;
   padding: 4px 12px;
 }
+
+.rc-menu-list-item-disabled {
+  .rc-menu-list-item-content {
+    color: $puppet-n400;
+  }
+
+  .rc-menu-list-item-icon {
+    fill: $puppet-n400;
+  }
+}

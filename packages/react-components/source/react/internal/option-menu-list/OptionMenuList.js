@@ -27,6 +27,7 @@ const propTypes = {
       value: PropTypes.string.isRequired,
       label: PropTypes.node.isRequired,
       icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+      disabled: PropTypes.bool,
     }),
   ),
   selected: PropTypes.oneOfType([
@@ -350,7 +351,7 @@ class OptionMenuList extends Component {
         }}
         {...rest}
       >
-        {options.map(({ value, label, icon, svg }, index) => (
+        {options.map(({ value, label, icon, svg, disabled }, index) => (
           <OptionMenuListItem
             id={getOptionId(id, value)}
             key={value}
@@ -358,7 +359,8 @@ class OptionMenuList extends Component {
             selected={selectionSet.has(value)}
             icon={icon}
             svg={svg}
-            onClick={() => onClickItem(value)}
+            disabled={disabled}
+            onClick={disabled ? undefined : () => onClickItem(value)}
             onMouseEnter={() => onMouseEnterItem(index)}
             ref={option => {
               this.optionRefs[index] = option;

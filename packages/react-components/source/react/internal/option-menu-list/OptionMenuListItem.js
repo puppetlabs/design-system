@@ -15,17 +15,29 @@ const propTypes = {
   svg: PropTypes.element,
   onClick: PropTypes.func.isRequired,
   onMouseEnter: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
 };
 
 const defaultProps = {
   icon: null,
   svg: null,
+  disabled: false,
 };
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 const OptionMenuListItem = forwardRef(
   (
-    { id, children, focused, selected, icon, svg, onClick, onMouseEnter },
+    {
+      id,
+      children,
+      focused,
+      selected,
+      icon,
+      svg,
+      onClick,
+      onMouseEnter,
+      disabled,
+    },
     ref,
   ) => (
     <li
@@ -34,6 +46,7 @@ const OptionMenuListItem = forwardRef(
       className={classNames('rc-menu-list-item', {
         'rc-menu-list-item-focused': focused,
         'rc-menu-list-item-selected': selected,
+        'rc-menu-list-item-disabled': disabled,
       })}
       aria-selected={selected}
       onClick={onClick}
