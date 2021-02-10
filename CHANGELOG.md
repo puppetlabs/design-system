@@ -1,3 +1,7 @@
+# react-components 5.26.5 (2021-02-10)
+
+- [ActionSelect, ButtonSelect, Select] Allow disabling items in Select components (by [@Lukeaber](https://github.com/Lukeaber) in [#366](https://github.com/puppetlabs/design-system/pull/366))
+
 # react-components 5.26.4 (2021-02-10)
 
 - [Select] Fix autocomplete select not staying open when typing (by [@jilliankeenan](https://github.com/jilliankeenan) in [#381](https://github.com/puppetlabs/design-system/pull/381))

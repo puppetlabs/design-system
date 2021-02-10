@@ -111,37 +111,6 @@ const style = { display: 'inline-block', margin: 10 };
 
 ## Variations
 
-### Custom selected labels
-
-An alternate `selectedLabel` prop can be specified on each option.
-
-```jsx
-initialState = {
-  value: 'name',
-};
-
-const options = [
-  { value: 'name', label: 'Name', selectedLabel: 'Sort by name' },
-  { value: 'date', label: 'Date', selectedLabel: 'Sort by date' },
-];
-
-const style = { display: 'inline-block', margin: 10 };
-
-<div>
-  <ButtonSelect
-    type="tertiary"
-    options={options}
-    placeholder="Select multiple things"
-    style={style}
-    value={state.value}
-    onChange={value => {
-      console.log('New Value', value);
-      setState({ value });
-    }}
-  />
-</div>;
-```
-
 ### Multiple selections
 
 Multiple values can be selected if the `multiple` prop is `true`. In this mode an "Apply" button will render below the options list. The newly selected values are not applied until the user activates this button. If the user clicks the "Cancel" button, presses escape, or click out of the open menu, their changes will be discarded.
@@ -220,6 +189,84 @@ const style = { display: 'inline-block', margin: 10 };
 </div>;
 ```
 
+### Custom Width
+
+Use the `width` prop to customize the width of the button.
+
+```jsx
+const options = [
+  { value: 'hello', label: 'Hello' },
+  { value: 'world', label: 'World' },
+  { value: 'hi', label: 'Hi' },
+  { value: 'mom', label: 'Mom' },
+];
+
+<ButtonSelect
+  options={options}
+  value={state.value}
+  onChange={value => {
+    console.log('New Value:', value);
+    setState({ value });
+  }}
+  width="100px"
+/>;
+```
+
+## Option properties
+
+### Custom selected labels
+
+An alternate `selectedLabel` prop can be specified on each option.
+
+```jsx
+initialState = {
+  value: 'name',
+};
+
+const options = [
+  { value: 'name', label: 'Name', selectedLabel: 'Sort by name' },
+  { value: 'date', label: 'Date', selectedLabel: 'Sort by date' },
+];
+
+const style = { display: 'inline-block', margin: 10 };
+
+<div>
+  <ButtonSelect
+    type="tertiary"
+    options={options}
+    placeholder="Select multiple things"
+    style={style}
+    value={state.value}
+    onChange={value => {
+      console.log('New Value', value);
+      setState({ value });
+    }}
+  />
+</div>;
+```
+
+### Disabled options
+
+Use the `disabled` object property to disable a row in a dropdown.
+
+```jsx
+const options = [
+  { value: 'hello', label: 'Hello' },
+  { value: 'world', label: 'World' },
+  { value: 'hi', label: 'Hi', disabled: true },
+  { value: 'mom', label: 'Mom', disabled: true },
+];
+
+<ButtonSelect
+  options={options}
+  value={state.value}
+  onChange={value => {
+    console.log('New Value:', value);
+    setState({ value });
+  }}
+/>;
+```
+
 ### Icons
 
 Specify the `icon` prop on each option to display a supported icon to the left of that option, or use the `svg` prop to use a custom icon.
@@ -259,27 +306,4 @@ const options = [
     }}
   />
 </div>;
-```
-
-### Custom Width
-
-Use the `width` prop to customize the width of the button.
-
-```jsx
-const options = [
-  { value: 'hello', label: 'Hello' },
-  { value: 'world', label: 'World' },
-  { value: 'hi', label: 'Hi' },
-  { value: 'mom', label: 'Mom' },
-];
-
-<ButtonSelect
-  options={options}
-  value={state.value}
-  onChange={value => {
-    console.log('New Value:', value);
-    setState({ value });
-  }}
-  width="100px"
-/>;
 ```

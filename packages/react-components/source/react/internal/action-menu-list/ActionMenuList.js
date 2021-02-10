@@ -226,7 +226,6 @@ class ActionMenuList extends Component {
     } = this.props;
 
     const focusedId = getFocusedId(focusedIndex, id, actions);
-
     return (
       <div
         className={classNames('rc-menu-list', 'rc-action-menu-list', className)}
@@ -247,7 +246,10 @@ class ActionMenuList extends Component {
           {...rest}
         >
           {actions.map(
-            ({ id: actionId, label, icon, svg, onClick, ...other }, index) => (
+            (
+              { id: actionId, label, icon, svg, onClick, disabled, ...other },
+              index,
+            ) => (
               <ActionMenuListItem
                 id={getActionId(id, actionId)}
                 key={actionId}
@@ -255,7 +257,12 @@ class ActionMenuList extends Component {
                 icon={icon}
                 svg={svg}
                 onMouseEnter={() => onMouseEnterItem(index)}
-                onClick={e => executeAction(e, onClick, actionId)}
+                disabled={disabled}
+                onClick={
+                  disabled
+                    ? undefined
+                    : e => executeAction(e, onClick, actionId)
+                }
                 ref={el => {
                   this.actionRefs[index] = el;
                 }}

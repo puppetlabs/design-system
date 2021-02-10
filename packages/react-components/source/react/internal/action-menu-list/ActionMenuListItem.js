@@ -16,6 +16,7 @@ const propTypes = {
   onMouseEnter: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
   innerRef: PropTypes.func,
+  disabled: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -23,6 +24,7 @@ const defaultProps = {
   icon: null,
   svg: null,
   innerRef() {},
+  disabled: false,
 };
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
@@ -37,6 +39,7 @@ const ActionMenuListItem = forwardRef(
       svg,
       onMouseEnter,
       innerRef,
+      disabled,
       ...rest
     },
     ref,
@@ -47,6 +50,7 @@ const ActionMenuListItem = forwardRef(
           role="none"
           className={classNames('rc-menu-list-item', {
             'rc-menu-list-item-focused': focused,
+            'rc-menu-list-item-disabled': disabled,
           })}
           onMouseEnter={onMouseEnter}
           ref={ref}
@@ -57,6 +61,7 @@ const ActionMenuListItem = forwardRef(
             className="rc-menu-list-item-inner"
             tabIndex={-1}
             ref={innerRef}
+            disabled={disabled}
             {...rest}
           >
             {icon && <Icon className="rc-menu-list-item-icon" type={icon} />}
@@ -74,6 +79,7 @@ const ActionMenuListItem = forwardRef(
         id={id}
         className={classNames('rc-menu-list-item', {
           'rc-menu-list-item-focused': focused,
+          'rc-menu-list-item-disabled': disabled,
         })}
         onMouseEnter={onMouseEnter}
         ref={ref}
