@@ -1,3 +1,7 @@
+# react-components 5.26.6 (2021-02-24)
+
+- [Icon] Add refresh icon (by [@melcherry98](https://github.com/melcherry98) in [#384](https://github.com/puppetlabs/design-system/pull/384))
+
 # react-components 5.26.5 (2021-02-10)
 
 - [ActionSelect, ButtonSelect, Select] Allow disabling items in Select components (by [@Lukeaber](https://github.com/Lukeaber) in [#366](https://github.com/puppetlabs/design-system/pull/366))
