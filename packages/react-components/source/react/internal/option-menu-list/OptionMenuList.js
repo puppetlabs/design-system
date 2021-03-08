@@ -24,7 +24,8 @@ const propTypes = {
   showCancel: PropTypes.bool,
   options: PropTypes.arrayOf(
     PropTypes.shape({
-      value: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
       label: PropTypes.node.isRequired,
       icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
       disabled: PropTypes.bool,
@@ -32,6 +33,7 @@ const propTypes = {
   ),
   selected: PropTypes.oneOfType([
     PropTypes.string,
+    PropTypes.number,
     PropTypes.arrayOf(PropTypes.string),
   ]),
   focusedIndex: PropTypes.number,
