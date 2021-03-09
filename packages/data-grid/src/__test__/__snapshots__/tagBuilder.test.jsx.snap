@@ -27,15 +27,19 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     >
       <Tag
         class="dg-filter-tag dg-filter-tag-0"
+        className=""
+        emphasis="bold"
+        hideRemoveButton={false}
         key="dg-filter-tag-1"
         label="All Operating System = Windows"
         onClick={[Function]}
+        type="primary"
       >
         <div
-          className="rc-tag"
+          className="rc-tag rc-tag-primary rc-tag-bold"
         >
           <div
-            className="rc-tag-label-background"
+            className="rc-tag-label-background rc-tag-border"
           >
             <Text
               as="div"
@@ -53,12 +57,13 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             </Text>
           </div>
           <Button
-            aria-label="All Operating System = Windows Remove tag"
+            aria-label="Remove tag"
             as="button"
             className="rc-tag-remove-button"
             disabled={false}
             forwardRefAs="ref"
             icon="close"
+            iconSize="small"
             innerFocus={false}
             loading={false}
             onClick={[Function]}
@@ -67,7 +72,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             weight="bold"
           >
             <button
-              aria-label="All Operating System = Windows Remove tag"
+              aria-label="Remove tag"
               className="rc-button rc-button-primary rc-button-bold rc-button-icon rc-button-empty rc-tag-remove-button"
               disabled={false}
               onClick={[Function]}
@@ -75,7 +80,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             >
               <Icon
                 className="rc-button-icon-svg"
-                size="medium"
+                size="small"
                 style={Object {}}
                 svg={null}
                 type="close"
@@ -83,15 +88,15 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               >
                 <svg
                   className="rc-icon rc-icon-close rc-button-icon-svg"
-                  height="16px"
+                  height="12px"
                   style={
                     Object {
-                      "height": "16px",
-                      "width": "16px",
+                      "height": "12px",
+                      "width": "12px",
                     }
                   }
                   viewBox="0 0 8 8"
-                  width="16px"
+                  width="12px"
                 >
                   <polygon
                     fillRule="evenodd"
@@ -108,15 +113,19 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       </Tag>
       <Tag
         class="dg-filter-tag dg-filter-tag-1"
+        className=""
+        emphasis="bold"
+        hideRemoveButton={false}
         key="dg-filter-tag-2"
         label="Puppet Installed = true"
         onClick={[Function]}
+        type="primary"
       >
         <div
-          className="rc-tag"
+          className="rc-tag rc-tag-primary rc-tag-bold"
         >
           <div
-            className="rc-tag-label-background"
+            className="rc-tag-label-background rc-tag-border"
           >
             <Text
               as="div"
@@ -134,12 +143,13 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             </Text>
           </div>
           <Button
-            aria-label="Puppet Installed = true Remove tag"
+            aria-label="Remove tag"
             as="button"
             className="rc-tag-remove-button"
             disabled={false}
             forwardRefAs="ref"
             icon="close"
+            iconSize="small"
             innerFocus={false}
             loading={false}
             onClick={[Function]}
@@ -148,7 +158,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             weight="bold"
           >
             <button
-              aria-label="Puppet Installed = true Remove tag"
+              aria-label="Remove tag"
               className="rc-button rc-button-primary rc-button-bold rc-button-icon rc-button-empty rc-tag-remove-button"
               disabled={false}
               onClick={[Function]}
@@ -156,7 +166,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             >
               <Icon
                 className="rc-button-icon-svg"
-                size="medium"
+                size="small"
                 style={Object {}}
                 svg={null}
                 type="close"
@@ -164,15 +174,15 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               >
                 <svg
                   className="rc-icon rc-icon-close rc-button-icon-svg"
-                  height="16px"
+                  height="12px"
                   style={
                     Object {
-                      "height": "16px",
-                      "width": "16px",
+                      "height": "12px",
+                      "width": "12px",
                     }
                   }
                   viewBox="0 0 8 8"
-                  width="16px"
+                  width="12px"
                 >
                   <polygon
                     fillRule="evenodd"
@@ -193,6 +203,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         disabled={false}
         forwardRefAs="ref"
         icon="close"
+        iconSize="medium"
         innerFocus={false}
         loading={false}
         onClick={[Function]}
