@@ -48,6 +48,8 @@ const propTypes = {
   rowKey: oneOfType([func, string]),
   /** Optional function which can be used to render styling on specific rows */
   rowClassName: oneOfType([func, string]),
+  /** Optional function which can be used to execute a function on row click, will return rowKey, rowIndex, rowData */
+  onRowClick: func,
   /** Render table in fixed-layout mode */
   fixed: bool,
   /** Optional additional table className */
@@ -102,6 +104,7 @@ const defaultProps = {
   selectable: false,
   onRowChecked: () => {},
   onHeaderChecked: () => {},
+  onRowClick: () => {},
   headerCheckState: false,
   headerIndeterminateState: true,
 };
@@ -156,6 +159,7 @@ class Table extends Component {
       onRowChecked,
       onSort,
       headerIndeterminateState,
+      onRowClick,
       ...rest
     } = this.props;
 
@@ -223,6 +227,7 @@ class Table extends Component {
                     },
                   )}
                   key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
+                  onClick={() => onRowClick(rowKey, rowIndex, rowData)}
                 >
                   {selectable ? (
                     <td

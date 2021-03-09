@@ -272,12 +272,14 @@ describe('Custom classes', () => {
 
 describe('Selection Props', () => {
   const rowCheckMockfunc = jest.fn();
+  const rowClickMockfunc = jest.fn();
   const wrapper9 = mount(
     <Table
       columns={columns}
       data={data}
       selectable
       onRowChecked={rowCheckMockfunc}
+      onRowClick={rowClickMockfunc}
     />,
   );
 
@@ -331,5 +333,19 @@ describe('Selection Props', () => {
         .last()
         .prop('checked'),
     ).toEqual(true);
+  });
+
+  test('When row is clicked fire onRowClick', () => {
+    wrapper9
+      .find('.dg-table-row')
+      .first()
+      .simulate('click');
+
+    expect(rowClickMockfunc).toHaveBeenCalledWith(undefined, 0, {
+      affectedDevices: 20,
+      detections: 634,
+      eventType: 'Virus/Malware',
+      id: 0,
+    });
   });
 });
