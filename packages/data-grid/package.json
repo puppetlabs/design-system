@@ -24,7 +24,7 @@
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.22.0",
+    "@puppet/react-components": "^5.25.1",
     "@puppet/sass-variables": "^1.4.3",
     "classnames": "^2.2.6",
     "init": "^0.1.2",
