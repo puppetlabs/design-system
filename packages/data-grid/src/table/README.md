@@ -302,8 +302,8 @@ const columns = [
   { label: 'Linked field', dataKey: 'Link' },
 ];
 
-const rowClassNames = tableData => {
-  if (tableData.eventType === 'Virus/Malware') {
+const rowClassNames = data => {
+  if (data.eventType === 'Virus/Malware') {
     return 'table-row-error table-row-example';
   }
   return 'table-row-okay';
