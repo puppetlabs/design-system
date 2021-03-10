@@ -10,7 +10,7 @@ import Text from '../text';
 
 const cardExampleStyle = {
   width: 150,
-  height: 150,
+  minHeight: 100,
   alignItems: 'center',
   justifyContent: 'center',
   marginRight: 12,
@@ -40,7 +40,7 @@ import Text from '../text';
 
 const cardExampleStyle = {
   width: 150,
-  height: 150,
+  minHeight: 100,
   alignItems: 'center',
   justifyContent: 'center',
   marginRight: 12,
@@ -75,7 +75,7 @@ initialState = {
 
 const cardExampleStyle = {
   width: 150,
-  height: 150,
+  minHeight: 100,
   alignItems: 'center',
   justifyContent: 'center',
   marginRight: 12,

@@ -133,6 +133,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               disabled={false}
               forwardRefAs="ref"
               icon={null}
+              iconSize="medium"
               innerFocus={false}
               loading={false}
               onClick={[Function]}
@@ -188,6 +189,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             <OptionMenuList
               actionLabel="Apply"
               aria-labelledby="quick-filter-All-Operating-System-0"
+              autocomplete={false}
               cancelLabel="Cancel"
               className=""
               focusedIndex={0}
@@ -241,6 +243,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   tabIndex={0}
                 >
                   <ForwardRef
+                    disabled={false}
                     focused={true}
                     icon="pencil"
                     id="quick-filter-All-Operating-System-0-menu-linux"
@@ -292,6 +295,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     </li>
                   </ForwardRef>
                   <ForwardRef
+                    disabled={false}
                     focused={false}
                     icon="send"
                     id="quick-filter-All-Operating-System-0-menu-Windows"
@@ -343,6 +347,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     </li>
                   </ForwardRef>
                   <ForwardRef
+                    disabled={false}
                     focused={false}
                     icon="link"
                     id="quick-filter-All-Operating-System-0-menu-MacOS"
@@ -476,6 +481,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               disabled={false}
               forwardRefAs="ref"
               icon={null}
+              iconSize="medium"
               innerFocus={false}
               loading={false}
               onClick={[Function]}
@@ -531,6 +537,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             <OptionMenuList
               actionLabel="Apply"
               aria-labelledby="quick-filter-Puppet-installed-1"
+              autocomplete={false}
               cancelLabel="Cancel"
               className=""
               focusedIndex={0}
@@ -584,6 +591,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   tabIndex={0}
                 >
                   <ForwardRef
+                    disabled={false}
                     focused={true}
                     icon="pencil"
                     id="quick-filter-Puppet-installed-1-menu-True"
@@ -635,6 +643,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     </li>
                   </ForwardRef>
                   <ForwardRef
+                    disabled={false}
                     focused={false}
                     icon="send"
                     id="quick-filter-Puppet-installed-1-menu-False"
@@ -686,6 +695,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     </li>
                   </ForwardRef>
                   <ForwardRef
+                    disabled={false}
                     focused={false}
                     icon="link"
                     id="quick-filter-Puppet-installed-1-menu-Unknown"

@@ -48,7 +48,6 @@ describe('<Drawer/>', () => {
     wrapper.find('Button').simulate('click');
     expect(wrapper.find('Button').text()).to.equal(showLess);
 
-    console.log(wrapper.debug());
     expect(wrapper.find('div.rc-drawer-header-content').text()).to.equal(
       'Here is where I make you aware that theres more content to see ',
     );

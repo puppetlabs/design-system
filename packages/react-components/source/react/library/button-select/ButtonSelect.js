@@ -20,7 +20,8 @@ const propTypes = {
   options: PropTypes.arrayOf(
     PropTypes.shape({
       /** Select option value */
-      value: PropTypes.string.isRequired,
+      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+        .isRequired,
       /** Select option label */
       label: PropTypes.string.isRequired,
       /** Optional alternate label rendered in the main button element if the option is selected. */
@@ -33,9 +34,11 @@ const propTypes = {
   ),
   /** Currently selected value or values */
   value: PropTypes.oneOfType([
-    //eslint-disable-line
     PropTypes.string,
-    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.number,
+    PropTypes.arrayOf(
+      PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    ),
   ]),
   /** Value change handler. This function gets passed the new value as the only parameter. */
   onChange: PropTypes.func,
