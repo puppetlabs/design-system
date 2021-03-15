@@ -9,7 +9,7 @@ import {
   bool,
   oneOfType,
 } from 'prop-types';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import { get } from 'lodash';
 import { Heading, Checkbox, Text, Loading } from '@puppet/react-components';
 
@@ -169,13 +169,13 @@ class Table extends Component {
 
     return (
       <div
-        className={classNames({
+        className={classnames({
           'dg-table-horizontal-scroll': horizontalScroll,
           'dg-table-fixed-column': fixedColumn,
         })}
       >
         <table
-          className={classNames(
+          className={classnames(
             'rc-table',
             { 'rc-table-fixed': fixed },
             className,
@@ -218,7 +218,7 @@ class Table extends Component {
             {data.map((rowData, rowIndex) => {
               return (
                 <tr
-                  className={classNames(
+                  className={classnames(
                     'dg-table-row',
                     this.classNameTypeManage(rowClassName, rowData, rowIndex),
                     {
@@ -262,7 +262,7 @@ class Table extends Component {
                     return (
                       <td
                         key={`${(rowIndex, dataKey)}`}
-                        className={classNames(
+                        className={classnames(
                           'rc-table-cell',
                           this.classNameTypeManage(
                             columnClassName,
