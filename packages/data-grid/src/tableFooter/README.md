@@ -40,40 +40,7 @@ const columns = [
     },
   },
 ];
-const filters = [
-  {
-    fieldLabel: 'Event Type',
-    field: 'eventType',
-    options: [
-      {
-        value: 'Task',
-        icon: 'build',
-        label: 'Task',
-      },
-      {
-        value: 'Plan',
-        icon: 'clipboard',
-        label: 'Plan',
-      },
-    ],
-  },
-  {
-    fieldLabel: 'Report Completed',
-    field: 'reportCompleted',
-    options: [
-      {
-        value: true,
-        icon: 'pencil',
-        label: 'True',
-      },
-      {
-        value: false,
-        icon: 'send',
-        label: 'False',
-      },
-    ],
-  },
-];
+
 <div>
   <Table data={data} columns={columns} />
   <Table.TableFooter rowCountText={'5 reports'} />

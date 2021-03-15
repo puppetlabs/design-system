@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Text, ButtonSelect } from '@puppet/react-components';
-import TablePageSelector from './../tablePageSelector';
 import classnames from 'classnames';
+import TablePageSelector from '../tablePageSelector';
 
 import './TableFooter.scss';
 
@@ -14,17 +14,84 @@ const propTypes = {
   /** Optional overrides the default text on the rowPerPage feature. */
   rowsPerPageText: PropTypes.string,
   /** Sets the value of the rowPerPage ButtonSelect. */
-  rowsPerPageValue: PropTypes.number,
+  rowsPerPageValue: (
+    { rowsPerPage, PageSelector, rowsPerPageValue },
+    componentName,
+  ) => {
+    if (rowsPerPage || rowsPerPageValue) {
+      if (rowsPerPage === true && PageSelector === false) {
+        return new Error(
+          `Rows Per Page feature relays on the Page Selector, please set PageSelector to true in ${componentName}`,
+        );
+      }
+      if (
+        typeof rowsPerPageValue !== 'number' ||
+        rowsPerPageValue === undefined
+      ) {
+        return new Error(
+          `Please provide a rowPerPageValue of type "number" to ${componentName}`,
+        );
+      }
+    }
+    return null;
+  },
   /** Function that is to be returned on a row selection, returns value users selected. */
-  onRowPerPageSelect: PropTypes.func,
+  onRowPerPageSelect: (
+    { rowsPerPage, onRowPerPageSelect, PageSelector },
+    componentName,
+  ) => {
+    if (rowsPerPage || onRowPerPageSelect) {
+      if (rowsPerPage === true && PageSelector === false) {
+        return new Error(
+          `Rows Per Page feature relays on the Page Selector, please set PageSelector to true in ${componentName}`,
+        );
+      }
+      if (
+        typeof onRowPerPageSelect !== 'function' ||
+        onRowPerPageSelect === undefined
+      ) {
+        return new Error(
+          `Please provide a onRowPerPageSelect of type "function" to ${componentName}`,
+        );
+      }
+    }
+    return null;
+  },
   /** Optional bool that when true displays the rows Per Page feature. */
   PageSelector: PropTypes.bool,
   /** Current page number. */
-  currentPage: PropTypes.number,
+  currentPage: ({ PageSelector, currentPage }, componentName) => {
+    if (PageSelector || currentPage) {
+      if (typeof currentPage !== 'number' || currentPage === undefined) {
+        return new Error(
+          `Please provide a currentPage prop of type "number" to ${componentName}`,
+        );
+      }
+    }
+    return null;
+  },
   /** Total number of pages. */
-  pageCount: PropTypes.number,
+  pageCount: ({ PageSelector, pageCount }, propName, componentName) => {
+    if (PageSelector || pageCount) {
+      if (typeof pageCount !== 'number' || pageCount === undefined) {
+        return new Error(
+          `Please provide a pageCount prop of type "number" to ${componentName}`,
+        );
+      }
+    }
+    return null;
+  },
   /** Function that updates the current page to the page the user clicks. Takes new page as an argument. */
-  updatePage: PropTypes.func,
+  updatePage: ({ PageSelector, updatePage }, propName, componentName) => {
+    if (PageSelector || updatePage) {
+      if (typeof updatePage !== 'function' || updatePage === undefined) {
+        return new Error(
+          `Please provide a updatePage of type "function" to ${componentName}`,
+        );
+      }
+    }
+    return null;
+  },
   /** The number of nearest neighbors of the currently selected page that are shown in the numbres list. */
   delta: PropTypes.number,
   children: PropTypes.node,
@@ -32,14 +99,16 @@ const propTypes = {
 
 const defaultProps = {
   rowCountText: null,
-  selectedRowCountText: null,
   rowsPerPage: false,
   rowsPerPageText: 'Rows Per Page',
-  rowsPerPageDefaultValue: 10,
+  rowsPerPageValue: 10,
   onRowPerPageSelect: () => {},
   PageSelector: false,
-  children: undefined,
+  currentPage: 1,
+  pageCount: 1,
   updatePage: () => {},
+  delta: 1,
+  children: undefined,
 };
 const rowsPerPageDefaultOptions = [
   { value: 5, label: '5' },
@@ -88,6 +157,7 @@ function TableFooter({
                   {':'}
                 </Text>
                 <ButtonSelect
+                  className="dg-table-footer-rows-per-page-select"
                   options={rowsPerPageDefaultOptions}
                   value={rowsPerPageValue}
                   type="secondary"
