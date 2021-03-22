@@ -1,3 +1,7 @@
+# data-grid 0.5.3 (2021-03-22)
+
+- Add row per page feature (by [@Lukeaber](https://github.com/Lukeaber) in [#394](https://github.com/puppetlabs/design-system/pull/394))
+
 # react-components 5.26.7 (2021-03-09)
 
 - [ButtonSelect] Change button select to accept string and number values (by [@Lukeaber](https://github.com/Lukeaber) in [#387](https://github.com/puppetlabs/design-system/pull/387))
