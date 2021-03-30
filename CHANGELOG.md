@@ -1,3 +1,7 @@
+# react-components 5.26.8 (2021-03-30)
+
+- [Icon] Add expand icon (by [@sprokusk](https://github.com/sprokusk) in [#396](https://github.com/puppetlabs/design-system/pull/396))
+
 # data-grid 0.5.3 (2021-03-22)
 
 - Add row per page feature (by [@Lukeaber](https://github.com/Lukeaber) in [#394](https://github.com/puppetlabs/design-system/pull/394))
