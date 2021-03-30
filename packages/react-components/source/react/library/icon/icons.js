@@ -604,6 +604,33 @@ const icons = {
     ),
   },
 
+  expand: {
+    medium: (
+      <>
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M1 2C1 1.44772 1.44772 1 2 1H7V3H3V7H1V2Z"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M1 14C1 14.5523 1.44772 15 2 15H7V13H3V9H1V14Z"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M15 2C15 1.44772 14.5523 1 14 1H9V3H13V7H15V2Z"
+        />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          d="M15 14C15 14.5523 14.5523 15 14 15H9V13H13V9H15V14Z"
+        />
+      </>
+    ),
+  },
+
   filters: {
     medium: (
       <path
