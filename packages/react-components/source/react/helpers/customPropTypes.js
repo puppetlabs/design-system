@@ -20,6 +20,11 @@ export const anchorOrientation = PropTypes.oneOf([
   'bottom left',
 ]);
 
+export const reactRef = PropTypes.oneOfType([
+  PropTypes.func,
+  PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+]);
+
 const extendedErrorShape = {
   message: PropTypes.string.isRequired,
   sensitivity: PropTypes.number,
