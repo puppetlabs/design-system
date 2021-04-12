@@ -1,4 +1,4 @@
-import React, { forwardRef, useMemo, useState } from 'react';
+import React, { forwardRef, useEffect, useMemo, useState } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { usePopper } from 'react-popper';
@@ -19,10 +19,10 @@ const propTypes = {
   ]),
   /** Optional (default bottom). Where to position the overlay in relation to the target element. */
   position: PropTypes.oneOf(['top', 'right', 'bottom', 'left']),
-  /** Optional (default false). Whether or not the overlay should be rendered. */
-  show: PropTypes.bool,
-  /** React ref for the DOM element that should be used to position the overlay. */
-  target: reactRef.isRequired,
+  /** Optional (default false). Whether or not the overlay should be rendered. String value can be used instead of boolean to force the overlay to recalculate its position when the value changes. */
+  show: PropTypes.oneOfType([PropTypes.bool, PropTypes.string]),
+  /** React ref for the DOM element that should be used to position the overlay (if not provided the overlay will not be rendered). */
+  target: reactRef,
 };
 
 const defaultProps = {
@@ -31,6 +31,7 @@ const defaultProps = {
   offset: null,
   position: 'bottom',
   show: false,
+  target: null,
 };
 
 const innerAlignment = (position, { popper }) => {
@@ -102,10 +103,17 @@ const Overlay = forwardRef((props, fRef) => {
     align,
     position,
   ]);
-  const { styles, attributes } = usePopper(targetNode, overlayNode, {
+  const { styles, attributes, update } = usePopper(targetNode, overlayNode, {
     placement: position,
     modifiers: [withOffset(offset || offsetFn)],
   });
+
+  const updateOverlay = () => {
+    if (show && update) {
+      update();
+    }
+  };
+  useEffect(updateOverlay, [show]);
 
   if (!show) {
     return null;
