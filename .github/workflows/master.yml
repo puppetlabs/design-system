@@ -34,6 +34,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: sleep
+      uses: jakejarvis/wait-action@v0.1.0
+      with:
+        time: '35m'
     - name: Checkout
       uses: actions/checkout@v1
     - name: Install

@@ -1,3 +1,7 @@
+# react-components 5.27.0 (2021-04-08)
+
+- [Overlay] Add Overlay component (by [@mardotio](https://github.com/mardotio) in [#402](https://github.com/puppetlabs/design-system/pull/402))
+
 # react-components 5.26.8 (2021-03-30)
 
 - [Icon] Add expand icon (by [@sprokusk](https://github.com/sprokusk) in [#396](https://github.com/puppetlabs/design-system/pull/396))

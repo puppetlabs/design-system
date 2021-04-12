@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-components",
-  "version": "5.26.8",
+  "version": "5.27.0",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "build/library.js",
@@ -81,12 +81,14 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
     "@puppet/sass-variables": "^1.4.3",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
     "hoist-non-react-statics": "^3.3.1",
     "prop-types": "^15.7.2",
     "react-modal": "^3.11.2",
+    "react-popper": "^2.2.5",
     "react-transition-group": "^4.4.1",
     "regenerator-runtime": "^0.13.7",
     "scroll-into-view-if-needed": "^2.2.25"
