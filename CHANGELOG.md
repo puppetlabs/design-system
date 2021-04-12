@@ -1,5 +1,9 @@
 # react-components 5.27.0 (2021-04-08)
 
+- [Overlay] Add mechanism for force updating Overlay (by [@mardotio](https://github.com/mardotio) in [#403](https://github.com/puppetlabs/design-system/pull/403))
+
+# react-components 5.27.0 (2021-04-08)
+
 - [Overlay] Add Overlay component (by [@mardotio](https://github.com/mardotio) in [#402](https://github.com/puppetlabs/design-system/pull/402))
 
 # react-components 5.26.8 (2021-03-30)
