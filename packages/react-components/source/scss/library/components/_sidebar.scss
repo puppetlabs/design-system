@@ -263,6 +263,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
     outline: none;
     padding: 0 0 0 $puppet-sidebar-padding;
     text-align: left;
+    text-decoration: none;
 
     &.rc-sidebar-footer-clickable {
       cursor: pointer;
