@@ -1,3 +1,7 @@
+# react-components 5.27.2 (2021-04-15)
+
+- [Sidebar] Fix hover state for Sidebar.Footer link (by [@vine77](https://github.com/vine77) in [#407](https://github.com/puppetlabs/design-system/pull/407))
+
 # react-components 5.27.1 (2021-04-08)
 
 - [Overlay] Add mechanism for force updating Overlay (by [@mardotio](https://github.com/mardotio) in [#403](https://github.com/puppetlabs/design-system/pull/403))
