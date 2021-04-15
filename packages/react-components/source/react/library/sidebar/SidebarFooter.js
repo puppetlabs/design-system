@@ -47,6 +47,7 @@ const SidebarFooter = ({
   const Component = as;
   let meta;
   let signout;
+  const clickable = Boolean(rest.onClick) || as !== defaultProps.as;
 
   if (!minimized) {
     meta = (
@@ -79,7 +80,7 @@ const SidebarFooter = ({
       <Component
         className={classnames('rc-sidebar-footer-button-user', {
           'rc-sidebar-footer-button-minimized': minimized,
-          'rc-sidebar-footer-clickable': rest.onClick,
+          'rc-sidebar-footer-clickable': clickable,
         })}
         {...rest}
       >
