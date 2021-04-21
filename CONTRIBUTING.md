@@ -44,7 +44,7 @@ Run `npm test` in the top folder to test all packages, or `npm test` in the desi
 
 ## Pull requests
 
-Put up a PR for the design-system repo that follows these guidelines:
+Once you have made a change and verified that it works locally including in the Styleguidist website, put up a PR for the design-system repo that follows these guidelines:
 
 - Granularity: Make commits of logical units (ideally with each commit passing tests, and formatting and refactoring in separate commits).
 - Commit summary: The first line should be no more than 72 characters (with any extra details or motivation in the commit body).
@@ -61,26 +61,15 @@ Each PR should get a +1 before being merged into `development`. The [design-syst
 
 ## Publishing
 
+Publishing packages to npm is automated with Relay when a PR is merged to `master` if Lerna detects a new version in a package's `package.json` that doesn't yet exist on npm.
+
 1. Create a PR from `development` to `master`.
-2. Increment the version in the appropriate package.json file (e.g. [packages/react-components/package.json](packages/react-components/package.json)), following [semver](https://semver.org).
-3. Run `npm install` so that package-lock.json files also get updated.
-3. Update the [CHANGELOG.md](CHANGELOG.md).
-4. Get a +1 and merge the PR to master, which will trigger a Relay workflow that runs the `npm run release` command.
-5. Verify the new version got published, e.g. by checking [https://www.npmjs.com/package/@puppet/react-components](https://www.npmjs.com/package/@puppet/react-components)
-
-### Prerequisites
-
-1. Request permissions to the [@puppet org on npm](https://www.npmjs.com/org/puppet). (An existing admin should be able to help.)
-2. Log in with your npm account: `npm login`.
-
-### Steps
-
-1. Open a PR from `development` to `master`.
-2. Update the `CHANGELOG.md`.
-3. Increment the desired packages versions in their `package.json` files, following [semver](https://semver.org/) for patch, minor, and major versions.
-4. Update `package-lock.json` files by running `npm install`; you may have to run `git clean -dfX` first to force them to update.
-5. Push those changes to `development`, get a +1 on the PR, and merge to `master`.
-6. Publish the packages to npm with `npm run release`. (Lerna will find packages with new versions based on `package.json` files.)
+1. Verify that the changes are captured in `CHANGELOG.md`.
+1. Increment the version in the appropriate `package.json` files (e.g. [packages/react-components/package.json](packages/react-components/package.json)), following [semver](https://semver.org/) for patch, minor, and major versions.
+1. Also increment the version in the corresponding `package-lock.json` files. When updating a single package, this is most easily done by manually incrementing `version` in the `package-lock.json` file to match, but can also be done by running `npm install`, though you may have to run `git clean -dfX` first to force them to update.
+1. Get a +1 and merge the PR to master, which will trigger a Relay workflow that runs the `npm run release` command.
+1. Wait for a successful notification in the #team-design-system Slack channel, which could take a half hour or so.
+1. Verify the new version got published, e.g. by checking [https://www.npmjs.com/package/@puppet/react-components](https://www.npmjs.com/package/@puppet/react-components)
 
 ## Lerna commands
 
