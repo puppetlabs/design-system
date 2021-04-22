@@ -55,8 +55,13 @@ const mapObj = (obj, fn) => {
   return mappedObj;
 };
 
-const componentHasType = (component, Type) =>
-  component && component.type && component.type === Type;
+const displayNameOrName = (t) => t.displayName || t.name;
+
+const componentHasType = (component, Type) => 
+  // we use displayName here instead of just name because React might use a
+  // proxy during rendering. We care about the underlying type because that
+  // describes how the component behaves.
+  component && component.type && displayNameOrName(component.type) === displayNameOrName(Type);
 
 const omit = (keys, object) => {
   const keySet = new Set(keys);
