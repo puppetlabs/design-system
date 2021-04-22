@@ -30,6 +30,8 @@ const propTypes = {
   submitting: PropTypes.bool,
   /** Is the form submittable? If true a submit button will render */
   submittable: PropTypes.bool,
+  /** Will specifically disable the submit button on the form */
+  submitDisabled: PropTypes.bool,
   /** Optional override for the submit button label */
   submitLabel: PropTypes.string,
   /** Optional override for the submit button type */
@@ -68,6 +70,7 @@ const defaultProps = {
   initialValues: {},
   values: undefined,
   submittable: false,
+  submitDisabled: false,
   submitLabel: 'Submit',
   submitType: 'primary',
   onSubmit() {},
@@ -95,6 +98,7 @@ const Form = forwardRef((props, ref) => {
     onChange: onChangeProp,
     submitting,
     submittable,
+    submitDisabled,
     submitLabel,
     submitType,
     cancellable,
@@ -185,6 +189,7 @@ const Form = forwardRef((props, ref) => {
       <FormActions
         submitting={submitting}
         submittable={submittable}
+        submitDisabled={submitDisabled}
         submitLabel={submitLabel}
         submitType={submitType}
         cancellable={cancellable}
