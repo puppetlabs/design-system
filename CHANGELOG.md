@@ -1,3 +1,10 @@
+# react-components 5.27.3 (2021-04-23)
+
+- [Form] Add `submitDisabled` prop to Form component to disable submit button (by [@cathal41](https://github.com/cathal41) in [#406](https://github.com/puppetlabs/design-system/pull/406))
+- [Form.Field] Update hover target of form field (by [@cathal41](https://github.com/cathal41) in [#409](https://github.com/puppetlabs/design-system/pull/409))
+- [maintenance] Bump ssri from 6.0.1 to 6.0.2 (by [@dependabot](https://github.com/dependabot) in [#411](https://github.com/puppetlabs/design-system/pull/411))
+- [maintenance] Fix Element not defined error during server-side rendering (by [@scotje](https://github.com/scotje) in [#412](https://github.com/puppetlabs/design-system/pull/412))
+
 # react-components 5.27.2 (2021-04-15)
 
 - [Sidebar] Fix hover state for Sidebar.Footer link (by [@vine77](https://github.com/vine77) in [#407](https://github.com/puppetlabs/design-system/pull/407))

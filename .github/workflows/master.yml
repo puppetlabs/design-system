@@ -37,7 +37,7 @@ jobs:
     - name: sleep
       uses: jakejarvis/wait-action@v0.1.0
       with:
-        time: '35m'
+        time: '40m'
     - name: Checkout
       uses: actions/checkout@v1
     - name: Install

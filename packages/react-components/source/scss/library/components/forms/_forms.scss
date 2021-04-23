@@ -78,8 +78,7 @@ $puppet-form-inline-label-gutter-width: $puppet-common-spacing-base * 12 !defaul
 .rc-form-field-label {
   display: block;
   letter-spacing: $puppet-type-spacing-medium;
-  line-height: $puppet-common-spacing-base * 4 !important;
-  margin-bottom: $puppet-common-spacing-base;
+  line-height: $puppet-common-spacing-base * 5 !important;
 
   &.rc-form-field-label-primary {
     @include puppet-type-label(medium);

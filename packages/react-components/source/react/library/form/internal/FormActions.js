@@ -8,6 +8,7 @@ const propTypes = {
   values: PropTypes.shape({}),
   submitting: PropTypes.bool,
   submittable: PropTypes.bool,
+  submitDisabled: PropTypes.bool,
   submitLabel: PropTypes.string,
   submitType: PropTypes.oneOf(['primary', 'secondary', 'danger']),
   cancellable: PropTypes.bool,
@@ -23,6 +24,7 @@ const defaultProps = {
   initialValues: {},
   values: undefined,
   submittable: false,
+  submitDisabled: false,
   submitLabel: 'Submit',
   submitType: 'primary',
   cancellable: false,
@@ -38,6 +40,7 @@ const defaultProps = {
 const FormActions = ({
   submitting,
   submittable,
+  submitDisabled,
   submitLabel,
   submitType,
   cancellable,
@@ -58,7 +61,7 @@ const FormActions = ({
       className="rc-form-action"
       buttonType="submit"
       loading={submitting}
-      disabled={disabled || !isValid}
+      disabled={disabled || !isValid || submitDisabled}
       type={submitType}
     >
       {submitLabel}
