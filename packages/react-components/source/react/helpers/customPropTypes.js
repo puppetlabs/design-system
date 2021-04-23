@@ -22,7 +22,12 @@ export const anchorOrientation = PropTypes.oneOf([
 
 export const reactRef = PropTypes.oneOfType([
   PropTypes.func,
-  PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  PropTypes.shape({
+    current:
+      typeof Element === 'undefined'
+        ? PropTypes.any
+        : PropTypes.instanceOf(Element),
+  }),
 ]);
 
 const extendedErrorShape = {
