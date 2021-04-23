@@ -2,6 +2,13 @@
 
 The Puppet Design System is a cross-functional team effort across Puppet with shared ownership where contributions are encouraged. Though designed for and maintained by Puppet, outside PRs are welcome. A good place to start is by visiting [#team-design-system](https://puppet.slack.com/messages/CFFECRQAY) in Puppet's internal Slack or contacting <puppet-design-system@puppet.com>.
 
+- [Install](#install)
+- [Run website locally](#run-website-locally)
+- [Local development with consuming app](#local-development-with-consuming-app)
+- [Testing](#testing)
+- [Pull requests](#pull-requests)
+- [Publishing](#publishing)
+
 ## Install
 
 Clone the design-system monorepo:
@@ -44,12 +51,18 @@ Run `npm test` in the top folder to test all packages, or `npm test` in the desi
 
 ## Pull requests
 
-Once you have made a change and verified that it works locally including in the Styleguidist website, put up a PR for the design-system repo that follows these guidelines:
+Once you have made a change and verified that it works locally including in the Styleguidist website, put up a PR for the design-system repo.
 
-- Granularity: Make commits of logical units (ideally with each commit passing tests, and formatting and refactoring in separate commits).
-- Commit summary: The first line should be no more than 72 characters (with any extra details or motivation in the commit body).
-- Tense: Use the imperative present tense (e.g. "Add feature", not "Added feature") to describe what changed from the consumer's perspective in the commit summary.
-- Changelog: Add a line about your change to the package's CHANGELOG.md file.
+- **Branch**:
+    - Target the `master` branch if the change should be published upon merge. Note that the package versions will also need to be incremented following the [publishing](#publishing) instructions below.
+    - Target the `development` branch if the change doesn't need to be published upon merge, e.g. you'd like to do more testing, integration, or batch it up with other changes.
+- **Changelog**: Add a line about your change to the package's CHANGELOG.md file.
+    - Add a heading with the release date if targeting `master` or "Unreleased" if targeting `development`.
+    - Add context and be specific about the change by prefixing the change with the component affected and referencing props by name.
+- **Commits**
+    - Granularity: Make commits of logical units (ideally with each commit passing tests, and formatting and refactoring in separate commits).
+    - Commit summary: The first line should be no more than 72 characters (with any extra details or motivation in the commit body).
+    - Tense: Use the imperative present tense (e.g. "Add feature", not "Added feature") to describe what changed from the consumer's perspective in the commit summary.
 
 | <img src="https://imgs.xkcd.com/comics/git_commit.png" alt="xkcd comic about commit messages"/> |
 | ------------- |
@@ -57,44 +70,16 @@ Once you have made a change and verified that it works locally including in the 
 
 See more guidelines for contributors and maintainers in the [Principles, Patterns, and Guidelines](principles-patterns-guidelines.md) doc.
 
-Each PR should get a +1 before being merged into `development`. The [design-system-codeowners](https://github.com/orgs/puppetlabs/teams/design-system-codeowners/members) team should be able to help get PRs reviewed.
+Each PR should get a +1 before being merged. The [design-system-codeowners](https://github.com/orgs/puppetlabs/teams/design-system-codeowners/members) team should be able to help get PRs reviewed.
 
 ## Publishing
 
 Publishing packages to npm is automated with Relay when a PR is merged to `master` if Lerna detects a new version in a package's `package.json` that doesn't yet exist on npm.
 
-1. Create a PR from `development` to `master`.
-1. Verify that the changes are captured in `CHANGELOG.md`.
+1. Create a PR from `development` to `master` if the changes have been queued up on the `development` branch.
+1. Verify that the changes are captured in `CHANGELOG.md`, updating the release date if necessary.
 1. Increment the version in the appropriate `package.json` files (e.g. [packages/react-components/package.json](packages/react-components/package.json)), following [semver](https://semver.org/) for patch, minor, and major versions.
 1. Also increment the version in the corresponding `package-lock.json` files. When updating a single package, this is most easily done by manually incrementing `version` in the `package-lock.json` file to match, but can also be done by running `npm install`, though you may have to run `git clean -dfX` first to force them to update.
-1. Get a +1 and merge the PR to master, which will trigger a Relay workflow that runs the `npm run release` command.
+1. Merge the PR to master, which will trigger a Relay workflow that runs the `npm run release` command.
 1. Wait for a successful notification in the #team-design-system Slack channel, which could take a half hour or so.
 1. Verify the new version got published, e.g. by checking [https://www.npmjs.com/package/@puppet/react-components](https://www.npmjs.com/package/@puppet/react-components)
-
-## Lerna commands
-
-- `npx lerna [command]`:
-    - `npx lerna add <pkg> [globs..]`: Add a single dependency to matched
-      packages
-    - `npx lerna bootstrap`: Link local packages together and install remaining
-      package dependencies
-    - `npx lerna changed`: List local packages that have changed since the last
-      tagged release [aliases: updated]
-    - `npx lerna clean`: Remove the node_modules directory from all packages
-    - `npx lerna create <name> [loc]`: Create a new lerna-managed package
-    - `npx lerna diff [pkgName]`: Diff all packages or a single package since
-      the last release
-    - `npx lerna exec [cmd] [args..]`: Execute an arbitrary command in each
-      package
-    - `npx lerna import <dir>`: Import a package into the monorepo with commit
-      history
-    - `npx lerna init`: Create a new Lerna repo or upgrade an existing repo to
-      the current version of Lerna.
-    - `npx lerna link`: Symlink together all packages that are dependencies of
-      each other
-    - `npx lerna list`: List local packages [aliases: ls, la, ll]
-    - `npx lerna publish [bump]`: Publish packages in the current project.
-    - `npx lerna run <script>`: Run an npm script in each package that contains
-      that script
-    - `npx lerna version [bump]`: Bump version of packages changed since the
-      last release.
