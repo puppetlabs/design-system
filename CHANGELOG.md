@@ -1,3 +1,7 @@
+# react-component 5.27.4 (unreleased)
+
+- [Breadcrumb.Section] Add `disabled` prop to disable Breadcrumb section link (by [@mardotio](https://github.com/mardotio)) in [#414](https://github.com/puppetlabs/design-system/pull/414)
+
 # react-components 5.27.3 (2021-04-23)
 
 - [Form] Add `submitDisabled` prop to Form component to disable submit button (by [@cathal41](https://github.com/cathal41) in [#406](https://github.com/puppetlabs/design-system/pull/406))
