@@ -76,7 +76,7 @@ Each PR should get a +1 before being merged. The [design-system-codeowners](http
 
 Publishing packages to npm is automated with Relay when a PR is merged to `master` if Lerna detects a new version in a package's `package.json` that doesn't yet exist on npm.
 
-1. Create a PR from `development` to `master` if the changes have been queued up on the `development` branch.
+1. Create a PR from your feature branch to `master`.
 1. Verify that the changes are captured in `CHANGELOG.md`, updating the release date if necessary.
 1. Increment the version in the appropriate `package.json` files (e.g. [packages/react-components/package.json](packages/react-components/package.json)), following [semver](https://semver.org/) for patch, minor, and major versions.
 1. Also increment the version in the corresponding `package-lock.json` files. When updating a single package, this is most easily done by manually incrementing `version` in the `package-lock.json` file to match, but can also be done by running `npm install`, though you may have to run `git clean -dfX` first to force them to update.
