@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime';
 
 import ActionSelect from './react/library/action-select';
 import Alert from './react/library/alert';
+import Alerts from './react/library/alerts';
 import Avatar from './react/library/avatar';
 import Badge from './react/library/badge';
 import Breadcrumb from './react/library/breadcrumb';
@@ -41,6 +42,7 @@ import Overlay from './react/library/overlay';
 export {
   ActionSelect,
   Alert,
+  Alerts,
   Avatar,
   Badge,
   Breadcrumb,
