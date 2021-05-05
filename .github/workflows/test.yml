@@ -1,13 +1,6 @@
 name: Test
 
-on:
-  push:
-    branches: [development, master]
-  pull_request:
-    branches-ignore: [master]
-  # TODO: See if the following event can be used to get tests running on PRs from forks. Note that we would have to change the git context from the base to the PR with actions/checkout.
-  # pull_request_target:
-  #  types: [opened, reopened, synchronize]
+on: [pull_request]
 
 jobs:
   test:
@@ -23,10 +16,6 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
-      run: |
-        npm install
-        npm run build --if-present
-        npm test
-      env:
-        CI: true
+    - run: npm install
+    - run: npm run build --if-present
+    - run: npm test
