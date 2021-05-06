@@ -67,7 +67,7 @@ Once you have made a change and verified that it works locally including in the 
 1. **Branch**: Create a PR from your branch. Note that we usually push the branch directly to this repository rather than a fork.
     - Target the `main` branch (the default branch) if the change should be published upon merge.
     - Target the `releases/alpha` branch if it includes a breaking change.
-    - Target a feature branch if the change shouldn't be released yet.
+    - Target a feature branch if the change shouldn't be released yet. For example, a "feature" or "integration" branch can be used if you want to batch up multiple changes into a single release, which would then need to be followed up with another PR from that branch to `main` for a release.
 2. **Changelog**: Add a line about your change to the package's CHANGELOG.md.
     - Add a heading with the release date. Note that you may use "Unreleased" if it's not going to be released yet.
     - Add context and be specific about the change by prefixing the change with the component affected and referencing props by name.
