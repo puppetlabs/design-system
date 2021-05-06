@@ -6,8 +6,7 @@ The Puppet Design System is a cross-functional team effort across Puppet with sh
 - [Run website locally](#run-website-locally)
 - [Local development with consuming app](#local-development-with-consuming-app)
 - [Testing](#testing)
-- [Pull requests](#pull-requests)
-- [Publishing](#publishing)
+- [Pull requests and publishing](#pull-requests-and-publishing)
 
 ## Install
 
@@ -49,20 +48,11 @@ To develop locally using a separate app that consumes a design-system package:
 
 Run `npm test` in the top folder to test all packages, or `npm test` in the desired package. You can also run `npm lint` to check for code formatting errors or `npm format` to attempt to automatically fix them.
 
-## Pull requests
+## Commit guidelines
 
-Once you have made a change and verified that it works locally including in the Styleguidist website, put up a PR for the design-system repo.
-
-- **Branch**:
-    - Target the `master` branch if the change should be published upon merge. Note that the package versions will also need to be incremented following the [publishing](#publishing) instructions below.
-    - Target the `development` branch if the change doesn't need to be published upon merge, e.g. you'd like to do more testing, integration, or batch it up with other changes.
-- **Changelog**: Add a line about your change to the package's CHANGELOG.md file.
-    - Add a heading with the release date if targeting `master` or "Unreleased" if targeting `development`.
-    - Add context and be specific about the change by prefixing the change with the component affected and referencing props by name.
-- **Commits**
-    - Granularity: Make commits of logical units (ideally with each commit passing tests, and formatting and refactoring in separate commits).
-    - Commit summary: The first line should be no more than 72 characters (with any extra details or motivation in the commit body).
-    - Tense: Use the imperative present tense (e.g. "Add feature", not "Added feature") to describe what changed from the consumer's perspective in the commit summary.
+- Granularity: Make commits of logical units (ideally with each commit passing tests, and formatting and refactoring in separate commits).
+- Commit summary: The first line should be no more than 72 characters (with any extra details or motivation in the commit body).
+- Tense: Use the imperative present tense (e.g. "Add feature", not "Added feature") to describe what changed from the consumer's perspective in the commit summary.
 
 | <img src="https://imgs.xkcd.com/comics/git_commit.png" alt="xkcd comic about commit messages"/> |
 | ------------- |
@@ -70,16 +60,21 @@ Once you have made a change and verified that it works locally including in the 
 
 See more guidelines for contributors and maintainers in the [Principles, Patterns, and Guidelines](principles-patterns-guidelines.md) doc.
 
-Each PR should get a +1 before being merged. The [design-system-codeowners](https://github.com/orgs/puppetlabs/teams/design-system-codeowners/members) team should be able to help get PRs reviewed.
+## Pull requests and publishing
 
-## Publishing
+Once you have made a change and verified that it works locally including in the Styleguidist website, put up a PR. The author should own seeking review and merging/publishing. Publishing packages to npm is automated with Relay when a PR is merged to `main` or `releases/alpha` if Lerna detects a new version in a package's `package.json` that doesn't yet exist on npm.
 
-Publishing packages to npm is automated with Relay when a PR is merged to `master` if Lerna detects a new version in a package's `package.json` that doesn't yet exist on npm.
-
-1. Create a PR from your feature branch to `master`.
-1. Verify that the changes are captured in `CHANGELOG.md`, updating the release date if necessary.
-1. Increment the version in the appropriate `package.json` files (e.g. [packages/react-components/package.json](packages/react-components/package.json)), following [semver](https://semver.org/) for patch, minor, and major versions.
-1. Also increment the version in the corresponding `package-lock.json` files. When updating a single package, this is most easily done by manually incrementing `version` in the `package-lock.json` file to match, but can also be done by running `npm install`, though you may have to run `git clean -dfX` first to force them to update.
-1. Merge the PR to master, which will trigger a Relay workflow that runs the `npm run release` command.
-1. Wait for a successful notification in the #team-design-system Slack channel, which could take a half hour or so.
-1. Verify the new version got published, e.g. by checking [https://www.npmjs.com/package/@puppet/react-components](https://www.npmjs.com/package/@puppet/react-components)
+1. **Branch**: Create a PR from your branch. Note that we usually push the branch directly to this repository rather than a fork.
+    - Target the `main` branch (the default branch) if the change should be published upon merge.
+    - Target the `releases/alpha` branch if it includes a breaking change.
+    - Target a feature branch if the change shouldn't be released yet.
+2. **Changelog**: Add a line about your change to the package's CHANGELOG.md.
+    - Add a heading with the release date. Note that you may use "Unreleased" if it's not going to be released yet.
+    - Add context and be specific about the change by prefixing the change with the component affected and referencing props by name.
+3. **Version**: Update the version to be published, following [semver](https://semver.org/) for patch, minor, and major versions. Note that alpha versions also follow semver, in the form `6.0.0-alpha.3`.
+    - Increment the version in the appropriate `package.json` files, e.g. [packages/react-components/package.json](packages/react-components/package.json).
+    - Also increment the version in the corresponding `package-lock.json` files. When updating a single package, this is most easily done by simply manually incrementing the `version` field in the `package-lock.json` file to match, but can also be done by running `npm install`, though you may have to run `git clean -dfX` first to force them to update.
+4. **Review**: Get a +1 on the PR. Feel free to ping people to find a reviewer. The [design-system-codeowners](https://github.com/orgs/puppetlabs/teams/design-system-codeowners/members) team should be able to help.
+5. **Merge**: Merge the PR. Merging to `main` or `releases/alpha` will trigger a Relay workflow that runs the `npm run release` command.
+6. **Notification**: Wait for a successful notification in the #team-design-system Slack channel, which could take a half hour or so.
+7. **Verify**: Verify the new version got published, e.g. by checking [https://www.npmjs.com/package/@puppet/react-components](https://www.npmjs.com/package/@puppet/react-components).
