@@ -1,6 +1,8 @@
-# react-component 5.27.4 (unreleased)
+# react-component 5.28.0 (2021-05-06)
 
-- [Breadcrumb.Section] Add `disabled` prop to disable Breadcrumb section link (by [@mardotio](https://github.com/mardotio)) in [#414](https://github.com/puppetlabs/design-system/pull/414)
+- [Alerts] Add Alerts component (by [@vine77](https://github.com/vine77) in [#416](https://github.com/puppetlabs/design-system/pull/416))
+- [Breadcrumb] Add `disabled` prop to Breadcrumb.Section (by [@mardotio](https://github.com/mardotio)) in [#414](https://github.com/puppetlabs/design-system/pull/414)
+- [Icon] Add docs for customizing icon color (by [@vine77](https://github.com/vine77) in [#415](https://github.com/puppetlabs/design-system/pull/415))
 
 # react-components 5.27.3 (2021-04-23)
 
