@@ -5,7 +5,7 @@ import Section from './SidebarSection';
 import Item from './SidebarItem';
 import Footer from './SidebarFooter';
 import Header from './SidebarHeader';
-import Navigation from './SidebarNavigation';
+import SidebarNavigation from './SidebarNavigation';
 import renderChildren from './helper';
 
 const propTypes = {
@@ -23,7 +23,7 @@ const defaultProps = {
   children: [],
 };
 
-const Sidebar = props => {
+const Navigation = props => {
   const { className, minimized, ...rest } = props;
   const classNames = classnames('rc-sidebar', className, {
     'rc-sidebar-minimized': minimized,
@@ -37,13 +37,13 @@ const Sidebar = props => {
   );
 };
 
-Sidebar.propTypes = propTypes;
-Sidebar.defaultProps = defaultProps;
+Navigation.propTypes = propTypes;
+Navigation.defaultProps = defaultProps;
 
-Sidebar.Header = Header;
-Sidebar.Navigation = Navigation;
-Sidebar.Section = Section;
-Sidebar.Item = Item;
-Sidebar.Footer = Footer;
+Navigation.Header = Header;
+Navigation.Navigation = SidebarNavigation;
+Navigation.Section = Section;
+Navigation.Item = Item;
+Navigation.Footer = Footer;
 
-export default Sidebar;
+export default Navigation;
