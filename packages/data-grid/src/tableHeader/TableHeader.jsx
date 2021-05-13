@@ -1,6 +1,6 @@
 import React from 'react';
-import { string, arrayOf, shape, node, func } from 'prop-types';
-import { Text } from '@puppet/react-components';
+import { string, arrayOf, shape, node, func, bool } from 'prop-types';
+import { Text, Input } from '@puppet/react-components';
 import QuickFilter from '../quickFilter';
 import TagBuilder from '../tagBuilder';
 import './TableHeader.scss';
@@ -12,6 +12,14 @@ const propTypes = {
   selectedRowCountText: string,
   /** Allows children to be rendered within the tableheader */
   children: node,
+  /** Boolean value that determines if the seach box should be rendered */
+  search: bool,
+  /** String shown within blank input box */
+  searchPlaceholder: string,
+  /** The value shown in the input box */
+  searchValue: string,
+  /** Ran when user types into input box, returns new value */
+  onSearchChange: func,
   /** Allows you to pass an array to define each quick filter and its possible options */
   filters: arrayOf(
     shape({
@@ -52,6 +60,10 @@ const defaultProps = {
   rowCountText: null,
   selectedRowCountText: null,
   children: undefined,
+  search: false,
+  searchPlaceholder: '',
+  searchValue: '',
+  onSearchChange: () => {},
   filters: [],
   onFilterChange: () => {},
   activeFilters: [],
@@ -63,6 +75,10 @@ function TableHeader({
   children,
   rowCountText,
   selectedRowCountText,
+  search,
+  searchPlaceholder,
+  searchValue,
+  onSearchChange,
   filters,
   activeFilters,
   onFilterChange,
@@ -71,24 +87,44 @@ function TableHeader({
 }) {
   return (
     <div className="dg-table-header-container">
+      <div className="dg-table-header-content-container">
+        {search && (
+          <Input
+            className="dg-table-header-search"
+            name="dg-table-header-search"
+            type="search"
+            icon="search"
+            placeholder={searchPlaceholder}
+            value={searchValue}
+            onChange={onSearchChange}
+            aria-label="Search"
+          />
+        )}
+        {filters.length > 0 && search ? (
+          <div className="dg-table-header-vertical-line-separator" />
+        ) : null}
+        {filters.length > 0 && (
+          <div>
+            <QuickFilter filters={filters} onFilterSelect={onFilterChange} />
+          </div>
+        )}
+      </div>
+      {activeFilters.length > 0 && (
+        <TagBuilder
+          className="dg-table-header-tag-builder"
+          filters={activeFilters}
+          onRemoveAll={onRemoveAll}
+          onRemoveTag={onRemoveTag}
+        />
+      )}
       {children === undefined ? (
-        <Text as="h5" color="medium" className="dg-table-row-count">
+        <Text size="small" color="medium" className="dg-table-row-count">
           {rowCountText || null}
           {rowCountText && selectedRowCountText ? ' - ' : null}
           {selectedRowCountText || null}
         </Text>
       ) : (
         children
-      )}
-      {filters.length > 0 && (
-        <div>
-          <QuickFilter filters={filters} onFilterSelect={onFilterChange} />
-          <TagBuilder
-            filters={activeFilters}
-            onRemoveAll={onRemoveAll}
-            onRemoveTag={onRemoveTag}
-          />
-        </div>
       )}
     </div>
   );

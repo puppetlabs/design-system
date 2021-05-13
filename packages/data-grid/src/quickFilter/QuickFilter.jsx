@@ -38,6 +38,7 @@ function QuickFilter({ filters, onFilterSelect }) {
             <ButtonSelect
               className="dg-quick-filter"
               id={`quick-filter-${filter.field}-${idx}`}
+              key={`${idx + 1}`}
               type="tertiary"
               options={filter.options}
               placeholder={filter.fieldLabel}
