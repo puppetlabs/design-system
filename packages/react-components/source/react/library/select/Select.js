@@ -130,8 +130,8 @@ class Select extends Component {
     this.getOptions = this.getOptions.bind(this);
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (isControlled(props) || !state.open) {
+  static getDerivedStateFromProps(props) {
+    if (isControlled(props)) {
       return {
         listValue: props.value,
       };

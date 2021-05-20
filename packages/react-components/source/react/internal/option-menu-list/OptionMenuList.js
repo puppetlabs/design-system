@@ -78,7 +78,9 @@ const getFocusedId = (focusedIndex, id, options) =>
     : getOptionId(id, options[focusedIndex].value);
 
 const getSelectionSet = selection =>
-  new Set(Array.isArray(selection) ? selection : [selection]);
+  new Set(
+    (Array.isArray(selection) ? selection : [selection]).filter(el => !!el),
+  );
 
 class OptionMenuList extends Component {
   constructor(props) {
@@ -164,7 +166,8 @@ class OptionMenuList extends Component {
   }
 
   onKeyDown(e) {
-    const { onEscape, onClickItem } = this.props;
+    const { onEscape, onClickItem, options } = this.props;
+    const { focusedIndex } = this.state;
 
     switch (e.keyCode) {
       case UP_KEY_CODE: {
@@ -189,8 +192,11 @@ class OptionMenuList extends Component {
       }
       case SPACE_KEY_CODE:
       case ENTER_KEY_CODE: {
-        this.selectFocusedItem();
-        onClickItem();
+        const focused = options[focusedIndex];
+        if (focused && !focused.disabled) {
+          this.selectFocusedItem();
+          onClickItem();
+        }
         cancelEvent(e);
         break;
       }

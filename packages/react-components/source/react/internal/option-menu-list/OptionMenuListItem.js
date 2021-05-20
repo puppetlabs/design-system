@@ -13,7 +13,7 @@ const propTypes = {
   icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
   /** Or pass in your own svg... */
   svg: PropTypes.element,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
   onMouseEnter: PropTypes.func.isRequired,
   disabled: PropTypes.bool,
 };
@@ -22,6 +22,7 @@ const defaultProps = {
   icon: null,
   svg: null,
   disabled: false,
+  onClick: null,
 };
 
 /* eslint-disable jsx-a11y/click-events-have-key-events */
