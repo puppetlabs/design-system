@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import { shallow, mount } from 'enzyme';
 import React, { useState } from 'react';
+import Input from '../../source/react/library/input/Input';
 import Select from '../../source/react/library/select/Select';
 import SelectTarget from '../../source/react/library/select/SelectTarget';
 import OptionMenuList from '../../source/react/internal/option-menu-list';
@@ -18,6 +19,14 @@ const options = [
   { value: 'pineapple', label: 'pineapple' },
   { value: 'strawberry', label: 'strawberry' },
   { value: 'raspberry', label: 'raspberry' },
+  {
+    label: 'herbs',
+    value: [
+      { label: 'basil', value: 'basil' },
+      { label: 'parsley', value: 'parsley' },
+      { label: 'thyme', value: 'thyme' },
+    ],
+  },
 ];
 
 // eslint-disable-next-line react/prop-types
@@ -37,8 +46,11 @@ const ExampleSelect = ({ value: initialValue, ...props }) => {
   );
 };
 
-const getChoiceByText = (wrapper, text) =>
-  wrapper.find(OptionMenuListItem).filterWhere(n => n.text() === text);
+const getChoiceByText = (wrapper, name) =>
+  wrapper
+    .find(OptionMenuListItem)
+    .filterWhere(n => n.text() === name)
+    .first();
 
 describe('<Select />', () => {
   it('should render without falling over', () => {
@@ -109,10 +121,16 @@ describe('<Select />', () => {
     const wrapper = mount(<ExampleSelect name="test" options={options} open />);
 
     getChoiceByText(wrapper, 'kiwi').simulate('click');
+    expect(wrapper.find(Select).state('open')).to.equal(false);
     expect(wrapper.find(OptionMenuList).prop('selected')).to.equal('kiwi');
     expect(wrapper.find('input').prop('value')).to.equal('kiwi');
     expect(wrapper.find(SelectTarget).text()).to.equal('kiwi');
-    expect(wrapper.find(Select).state('open')).to.equal(false);
+    wrapper.find(SelectTarget).simulate('click');
+
+    getChoiceByText(wrapper, 'parsley').simulate('click');
+    expect(wrapper.find(OptionMenuList).prop('selected')).to.equal('parsley');
+    expect(wrapper.find('input').prop('value')).to.equal('parsley');
+    expect(wrapper.find(SelectTarget).text()).to.equal('parsley');
   });
 
   it('does _not_ deselect the option on second click', () => {
@@ -127,6 +145,13 @@ describe('<Select />', () => {
     expect(wrapper.find(SelectTarget).text()).to.equal('kiwi');
   });
 
+  it('displays option groups with headings correctly in the rendered listbox', () => {
+    const wrapper = mount(<Select name="test" options={options} />);
+    const list = wrapper.find('ul ul');
+    const headingItem = list.find(OptionMenuListItem).first();
+    expect(headingItem.prop('type')).to.equal('heading');
+  });
+
   describe('with multiselect', () => {
     const getApplyButton = wrapper =>
       wrapper
@@ -138,7 +163,7 @@ describe('<Select />', () => {
       const wrapper = mount(
         <ExampleSelect name="test" options={options} type="multiselect" open />,
       );
-      const selections = ['banana', 'kiwi'];
+      const selections = ['banana', 'parsley', 'kiwi', 'thyme'];
 
       selections.forEach(item => {
         getChoiceByText(wrapper, item).simulate('click');
@@ -146,24 +171,38 @@ describe('<Select />', () => {
       getApplyButton(wrapper).simulate('click');
 
       expect(wrapper.find(OptionMenuList).prop('selected')).to.eql(selections);
-      expect(wrapper.find(SelectTarget).text()).to.equal(selections.join(', '));
       expect(wrapper.find('input').prop('value')).to.eql(selections);
+      expect(wrapper.find(SelectTarget).text()).to.equal(
+        selections.sort().join(', '),
+      );
     });
 
     it('deselects a selected item on second click + Apply', () => {
       const wrapper = mount(
         <ExampleSelect name="test" options={options} type="multiselect" open />,
       );
-
-      getChoiceByText(wrapper, 'banana').simulate('click');
-      getChoiceByText(wrapper, 'kiwi').simulate('click');
+      const selections = ['banana', 'parsley', 'kiwi', 'thyme'];
+      selections.forEach(choice => {
+        getChoiceByText(wrapper, choice).simulate('click');
+      });
       getApplyButton(wrapper).simulate('click');
-      getChoiceByText(wrapper, 'kiwi').simulate('click');
+      wrapper.find(SelectTarget).simulate('click');
+
+      [selections.shift(), selections.shift()].forEach(choice => {
+        getChoiceByText(wrapper, choice).simulate('click');
+      });
       getApplyButton(wrapper).simulate('click');
 
-      expect(wrapper.find(OptionMenuList).prop('selected')).to.eql(['banana']);
-      expect(wrapper.find(SelectTarget).text()).to.equal('banana');
-      expect(wrapper.find('input').prop('value')).to.eql(['banana']);
+      expect(wrapper.find(OptionMenuList).prop('selected')).to.eql(selections);
+      expect(wrapper.find(SelectTarget).text()).to.equal(
+        selections.sort().join(', '),
+      );
+      expect(
+        wrapper
+          .find('input')
+          .prop('value')
+          .sort(),
+      ).to.eql(selections.sort());
     });
 
     it('applies selections without requiring the Apply button when applyImmediately is set', () => {

@@ -15,13 +15,40 @@ import {
   UP_KEY_CODE,
 } from '../../source/react/constants';
 
-const options = [
-  { value: 'peach', label: 'peach' },
-  { value: 'pear', label: 'pear' },
-  { value: 'apple', label: 'apple', disabled: true },
+// Example with option groups
+const optionsWithGroups = [
+  {
+    label: 'fruits',
+    value: [
+      { value: 'peach', label: 'peach' },
+      { value: 'pear', label: 'pear' },
+      { value: 'apple', label: 'apple', disabled: true },
+    ],
+  },
+  { label: 'none', value: 'none' },
+  {
+    label: 'berries',
+    disabled: true,
+    value: [
+      { value: 'strawberry', label: 'strawberry' },
+      { value: 'raspberry', label: 'raspberry' },
+    ],
+  },
+  { label: 'any', value: 'any', disabled: true },
 ];
 
-const lastIndex = options.length - 1;
+const lastIndex =
+  optionsWithGroups.reduce(
+    (total, opt) => total + (Array.isArray(opt.value) ? opt.value.length : 1),
+    0,
+  ) - 1;
+
+// Example without option groups
+const simpleOptions = [
+  { label: 'almond', value: 'almond' },
+  { label: 'hazelnut', value: 'hazelnut' },
+  { label: 'walnut', value: 'walnut', disabled: true },
+];
 
 const getChoiceByText = (wrapper, text) =>
   wrapper.find(OptionMenuListItem).filterWhere(n => n.text() === text);
@@ -46,8 +73,23 @@ describe('<OptionMenuList />', () => {
     expect(wrapper.length).to.equal(1);
   });
 
+  it('renders array values as option groups', () => {
+    const wrapper = shallow(<OptionMenuList id="test" options={optionsWithGroups} />);
+
+    const group = wrapper.find('ul ul').first();
+    const groupHeading = wrapper
+      .find(OptionMenuListItem)
+      .filterWhere(n => n.prop('type') === 'heading')
+      .first();
+
+    expect(group.prop('role')).to.equal('group');
+    expect(group.prop('aria-labelledby')).to.equal(groupHeading.prop('id'));
+  });
+
   it('focuses the first item by default', () => {
-    const wrapper = shallow(<OptionMenuList id="test" options={options} />);
+    const wrapper = shallow(
+      <OptionMenuList id="test" options={simpleOptions} />,
+    );
     const firstItem = wrapper.find(OptionMenuListItem).first();
     expect(firstItem.prop('focused')).to.equal(true);
     expect(firstItem.prop('selected')).to.equal(false);
@@ -59,16 +101,61 @@ describe('<OptionMenuList />', () => {
     ).to.equal(firstItem.prop('id'));
   });
 
-  it('allows focus but prevents select on disabled items', () => {
-    const wrapper = shallow(<OptionMenuList id="test" options={options} />);
+  it('focuses the first item by default (with option group)', () => {
+    const wrapper = shallow(<OptionMenuList id="test" options={optionsWithGroups} />);
+    const firstItem = wrapper
+      .find(OptionMenuListItem)
+      .filterWhere(n => n.prop('type') !== 'heading')
+      .first();
+    expect(firstItem.prop('focused')).to.equal(true);
+    expect(firstItem.prop('selected')).to.equal(false);
+    expect(
+      wrapper
+        .find('ul')
+        .first()
+        .prop('aria-activedescendant'),
+    ).to.equal(firstItem.prop('id'));
+  });
 
-    getChoiceByText(wrapper, 'apple').simulate('mouseenter');
-    expect(getChoiceByText(wrapper, 'apple').prop('focused')).to.equal(
+  it('does not allow focus on option group headings, but hovering over a heading removes existing focus', () => {
+    const wrapper = shallow(
+      <OptionMenuList
+        id="test"
+        options={optionsWithGroups}
+        focusedIndex={0}
+        selected="peach"
+      />,
+    );
+
+    const getHeading = () =>
+      wrapper
+        .find(OptionMenuListItem)
+        .filterWhere(n => n.prop('type') === 'heading')
+        .first();
+
+    expect(getChoiceByText(wrapper, 'peach').prop('focused')).to.equal(true);
+    getHeading().simulate('mouseenter');
+    expect(getChoiceByText(wrapper, 'peach').prop('focused')).to.equal(false);
+    expect(getHeading().prop('focused')).to.equal(false);
+  });
+
+  it('allows focus but prevents select on disabled items', () => {
+    const wrapper = shallow(<OptionMenuList id="test" options={optionsWithGroups} />);
+
+    wrapper.find(OptionMenuListItem).filterWhere(n => n.value === 'any');
+    getChoiceByText(wrapper, 'any').simulate('mouseenter');
+    expect(getChoiceByText(wrapper, 'any').prop('focused')).to.equal(true);
+
+    getChoiceByText(wrapper, 'any').simulate('click');
+    expect(getChoiceByText(wrapper, 'any').prop('selected')).to.equal(false);
+
+    getChoiceByText(wrapper, 'strawberry').simulate('mouseenter');
+    expect(getChoiceByText(wrapper, 'strawberry').prop('focused')).to.equal(
       true,
     );
 
-    getChoiceByText(wrapper, 'apple').simulate('click');
-    expect(getChoiceByText(wrapper, 'apple').prop('selected')).to.equal(
+    getChoiceByText(wrapper, 'strawberry').simulate('click');
+    expect(getChoiceByText(wrapper, 'strawberry').prop('selected')).to.equal(
       false,
     );
   });
@@ -80,15 +167,20 @@ describe('<OptionMenuList />', () => {
     const wrapper = mount(
       <OptionMenuList
         id="test"
-        options={options}
+        options={optionsWithGroups}
         onClickItem={onClick}
         onChange={onChange}
       />,
     );
 
-    getChoiceByText(wrapper, 'pear').simulate('click');
+    getChoiceByText(wrapper, 'none').simulate('click');
 
     expect(onClick.calledOnce).to.equal(true);
+    expect(onChange.calledWith('none')).to.equal(true);
+
+    getChoiceByText(wrapper, 'pear').simulate('click');
+
+    expect(onClick.calledTwice).to.equal(true);
     expect(onChange.calledWith('pear')).to.equal(true);
   });
 
@@ -99,13 +191,15 @@ describe('<OptionMenuList />', () => {
     const wrapper = mount(
       <OptionMenuList
         id="test"
-        options={options}
+        options={optionsWithGroups}
         onClickItem={onClick}
         onChange={onChange}
       />,
     );
 
-    getChoiceByText(wrapper, 'apple').simulate('click');
+    getChoiceByText(wrapper, 'any').simulate('click');
+    getChoiceByText(wrapper, 'strawberry').simulate('click');
+
     expect(onClick.called).to.equal(false);
     expect(onChange.called).to.equal(false);
   });
@@ -135,7 +229,7 @@ describe('<OptionMenuList />', () => {
       const wrapper = mount(
         <OptionMenuList
           id="test"
-          options={options}
+          options={optionsWithGroups}
           onFocusItem={onFocusItem}
         />,
       );
@@ -147,7 +241,7 @@ describe('<OptionMenuList />', () => {
       expect(wrapper.state('focusedIndex')).to.equal(1);
 
       pressKey(wrapper, DOWN_KEY_CODE, MANY_TIMES);
-      expect(wrapper.state('focusedIndex')).to.equal(options.length - 1);
+      expect(wrapper.state('focusedIndex')).to.equal(lastIndex);
     });
 
     it('focuses the previous item on up arrow', () => {
@@ -155,7 +249,7 @@ describe('<OptionMenuList />', () => {
       const wrapper = mount(
         <OptionMenuList
           id="test"
-          options={options}
+          options={optionsWithGroups}
           onFocusItem={onFocusItem}
           focusedIndex={lastIndex}
         />,
@@ -176,7 +270,7 @@ describe('<OptionMenuList />', () => {
       const wrapper = mount(
         <OptionMenuList
           id="test"
-          options={options}
+          options={optionsWithGroups}
           onFocusItem={onFocusItem}
           focusedIndex={3}
         />,
@@ -191,7 +285,7 @@ describe('<OptionMenuList />', () => {
       const wrapper = mount(
         <OptionMenuList
           id="test"
-          options={options}
+          options={optionsWithGroups}
           onFocusItem={onFocusItem}
           focusedIndex={1}
         />,
@@ -208,16 +302,20 @@ describe('<OptionMenuList />', () => {
       const wrapper = mount(
         <OptionMenuList
           id="test"
-          options={options}
+          options={optionsWithGroups}
           onClickItem={onClick}
           onChange={onChange}
-          focusedIndex={0}
+          focusedIndex={3}
         />,
       );
 
       pressKey(wrapper, ENTER_KEY_CODE);
       expect(onClick.calledOnce).to.equal(true);
-      expect(onChange.calledWith('peach')).to.equal(true);
+      expect(onChange.calledWith('none')).to.equal(true);
+
+      pressKey(wrapper, SPACE_KEY_CODE);
+      expect(onClick.calledTwice).to.equal(true);
+      expect(onChange.getCall(1).calledWithExactly('none')).to.equal(true);
     });
 
     it('does not call click handlers for a disabled item on enter or space', () => {
@@ -227,7 +325,7 @@ describe('<OptionMenuList />', () => {
       const wrapper = mount(
         <OptionMenuList
           id="test"
-          options={options}
+          options={optionsWithGroups}
           onClickItem={onClick}
           onChange={onChange}
           focusedIndex={2}
@@ -250,7 +348,7 @@ describe('<OptionMenuList />', () => {
       const wrapper = mount(
         <OptionMenuList
           id="test"
-          options={options}
+          options={optionsWithGroups}
           onClickItem={onClick}
           onChange={onChange}
           selected={['pear']}
@@ -271,7 +369,7 @@ describe('<OptionMenuList />', () => {
       const wrapper = mount(
         <OptionMenuList
           id="test"
-          options={options}
+          options={optionsWithGroups}
           onClickItem={onClick}
           onChange={onChange}
           selected={['peach', 'pear']}
