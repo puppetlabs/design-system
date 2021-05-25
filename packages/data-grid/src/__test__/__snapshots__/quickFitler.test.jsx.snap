@@ -59,6 +59,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       <ButtonSelect
         className="dg-quick-filter"
         id="quick-filter-All-Operating-System-0"
+        key="1"
         onChange={[Function]}
         options={
           Array [
@@ -407,6 +408,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       <ButtonSelect
         className="dg-quick-filter"
         id="quick-filter-Puppet-installed-1"
+        key="2"
         onChange={[Function]}
         options={
           Array [
