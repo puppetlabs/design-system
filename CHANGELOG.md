@@ -1,4 +1,8 @@
-# react-component 5.28.0 (2021-05-06)
+# react-components 5.29.0 (2021-06-01)
+
+- [Select] Add support for option groups to the Select component and fix keyboard handling of disabled options (by [@caseywilliams](https://github.com/caseywilliams)) in [#431](https://github.com/puppetlabs/design-system/pull/431)
+
+# react-components 5.28.0 (2021-05-06)
 
 - [Alerts] Add Alerts component (by [@vine77](https://github.com/vine77) in [#416](https://github.com/puppetlabs/design-system/pull/416))
 - [Breadcrumb] Add `disabled` prop to Breadcrumb.Section (by [@mardotio](https://github.com/mardotio)) in [#414](https://github.com/puppetlabs/design-system/pull/414)

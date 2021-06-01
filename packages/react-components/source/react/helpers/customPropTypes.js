@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Icon from '../library/icon';
 
 /**
  * Design system available element elevations
@@ -80,4 +81,17 @@ export const deprecated = message => typeChecker => {
 
     return typeChecker(props, key, componentName, location, propFullName);
   };
+};
+
+export const optionMenuItemShape = {
+  /** Value of the option */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** The label to show */
+  label: PropTypes.node.isRequired,
+  /** Optional icon associated with this option */
+  icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+  /** Optional custom icon associated with this option */
+  svg: PropTypes.element,
+  /** Whether this option is disabled */
+  disabled: PropTypes.bool,
 };

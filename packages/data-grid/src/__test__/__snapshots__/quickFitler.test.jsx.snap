@@ -253,6 +253,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     onMouseEnter={[Function]}
                     selected={false}
                     svg={null}
+                    type="option"
                   >
                     <li
                       aria-selected={false}
@@ -305,6 +306,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     onMouseEnter={[Function]}
                     selected={false}
                     svg={null}
+                    type="option"
                   >
                     <li
                       aria-selected={false}
@@ -357,6 +359,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     onMouseEnter={[Function]}
                     selected={false}
                     svg={null}
+                    type="option"
                   >
                     <li
                       aria-selected={false}
@@ -602,6 +605,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     onMouseEnter={[Function]}
                     selected={false}
                     svg={null}
+                    type="option"
                   >
                     <li
                       aria-selected={false}
@@ -654,6 +658,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     onMouseEnter={[Function]}
                     selected={false}
                     svg={null}
+                    type="option"
                   >
                     <li
                       aria-selected={false}
@@ -706,6 +711,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     onMouseEnter={[Function]}
                     selected={false}
                     svg={null}
+                    type="option"
                   >
                     <li
                       aria-selected={false}

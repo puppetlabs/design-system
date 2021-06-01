@@ -81,6 +81,45 @@ const style = { margin: 10 };
 </div>;
 ```
 
+### Option groups
+
+To render an option group, provide an array of child options as the value for a regular option. Parent options should
+still have labels, and if a parent is disabled, all its child options will be disabled, too.
+
+```jsx
+const optionsWithGroups = [{
+  label: "Spices",
+  value: [
+    {label: "Cinnamon", value: "cinnamon"},
+    {label: "Coriander", value: "coriander"},
+    {label: "Cumin", value: "cumin"},
+  ]
+}, {
+  label: "Oil",
+  value: "oil"
+}, {
+  label: "Vinegar",
+  value: "vinegar"
+}, {
+  label: "Herbs",
+  disabled: true,
+  value: [
+    {label: "Parsley", value: "parsley"},
+    {label: "Sage", value: "sage"},
+    {label: "Rosemary", value: "rosemary"},
+  ]
+}];
+
+<Select
+  name="select-option-group-example"
+  options={optionsWithGroups}
+  value={state.value}
+  onChange={value => {
+    setState({value});
+  }}
+/>;
+```
+
 ### MultiSelect
 
 With `type` set to `multiselect`, the `Select` input will allow multiple values to be selected. In this mode, an "Apply" button will render below the options list. The newly selected values are not applied until the user activates this button. If the options chosen exceed the side of the input, the excess content will be replaced with an ellipsis. If the user presses escape, clicks the "Cancel" button, or clicks out of the open menu, their changes will be discarded.
