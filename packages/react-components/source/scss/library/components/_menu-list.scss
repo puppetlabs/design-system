@@ -27,8 +27,22 @@
 }
 
 .rc-menu-list-group {
+  border-bottom: solid 1px $puppet-n300;
+  margin: 0 0 4px;
+  padding: 0 0 4px;
+}
+
+.rc-menu-list-group:only-child,
+.rc-menu-list-group:last-child {
+  border-bottom: none;
   margin: 0;
   padding: 0;
+}
+
+li + .rc-menu-list-group {
+  border-top: solid 1px $puppet-n300;
+  margin-top: 4px;
+  padding-top: 4px;
 }
 
 .rc-menu-action-container {
