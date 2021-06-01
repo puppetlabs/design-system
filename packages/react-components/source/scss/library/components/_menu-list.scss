@@ -34,7 +34,8 @@
 
 .rc-menu-list-group:only-child,
 .rc-menu-list-group:last-child {
-  border-bottom: none;
+  border-bottom-style: none;
+  border-bottom-width: 0;
   margin: 0;
   padding: 0;
 }
