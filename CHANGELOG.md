@@ -1,3 +1,8 @@
+# data-grid 0.5.4 (2021-03-09)
+
+- Fix Page Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#437](https://github.com/puppetlabs/design-system/pull/437))
+- Add data-grid search (by [@Lukeaber](https://github.com/Lukeaber) in [#430](https://github.com/puppetlabs/design-system/pull/430))
+
 # react-component 5.28.0 (2021-05-06)
 
 - [Alerts] Add Alerts component (by [@vine77](https://github.com/vine77) in [#416](https://github.com/puppetlabs/design-system/pull/416))
