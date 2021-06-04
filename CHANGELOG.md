@@ -1,3 +1,8 @@
+# data-grid 0.5.4 (2021-03-09)
+
+- Fix Page Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#437](https://github.com/puppetlabs/design-system/pull/437))
+- Add data-grid search (by [@Lukeaber](https://github.com/Lukeaber) in [#430](https://github.com/puppetlabs/design-system/pull/430))
+
 # react-components 5.29.0 (2021-06-01)
 
 - [Select] Add support for option groups to the Select component and fix keyboard handling of disabled options (by [@caseywilliams](https://github.com/caseywilliams)) in [#431](https://github.com/puppetlabs/design-system/pull/431)
