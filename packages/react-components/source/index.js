@@ -19,6 +19,7 @@ import Heading from './react/library/heading';
 import Icon from './react/library/icon';
 import Input from './react/library/input';
 import Link from './react/library/link';
+import List from './react/library/list';
 import Loading from './react/library/loading';
 import Logo from './react/library/logo';
 import Modal from './react/library/modal';
@@ -58,6 +59,7 @@ export {
   Icon,
   Input,
   Link,
+  List,
   Loading,
   Logo,
   Modal,
