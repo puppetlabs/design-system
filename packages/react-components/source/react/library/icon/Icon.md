@@ -94,6 +94,14 @@ const Renderer = () => {
 <Renderer />;
 ```
 
+## Customize icon color
+
+If you need a different color, you can customize it with CSS, targeting the `fill` property. The default color is defined in [_icons.scss](https://github.com/puppetlabs/design-system/blob/development/packages/react-components/source/scss/library/components/_icons.scss). You should be able to do something like `.your-icon { fill: $puppet-purple; }` with Sass.
+
+```jsx
+<Icon type="activity" style={{ fill: '#a263ff' }} />
+```
+
 ## Custom SVG use
 
 To use a custom SVG not included in the chart above, separately specify both the `path` attribute to the `svg` prop and the `viewBox` attribute to the `viewBox` prop.

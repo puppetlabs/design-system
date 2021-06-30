@@ -9,7 +9,7 @@ import {
   bool,
   oneOfType,
 } from 'prop-types';
-import classNames from 'classnames';
+import classnames from 'classnames';
 import { get } from 'lodash';
 import { Heading, Checkbox, Text, Loading } from '@puppet/react-components';
 
@@ -48,6 +48,8 @@ const propTypes = {
   rowKey: oneOfType([func, string]),
   /** Optional function which can be used to render styling on specific rows */
   rowClassName: oneOfType([func, string]),
+  /** Optional function which can be used to execute a function on row click, will return rowKey, rowIndex, rowData */
+  onRowClick: func,
   /** Render table in fixed-layout mode */
   fixed: bool,
   /** Optional additional table className */
@@ -102,6 +104,7 @@ const defaultProps = {
   selectable: false,
   onRowChecked: () => {},
   onHeaderChecked: () => {},
+  onRowClick: () => {},
   headerCheckState: false,
   headerIndeterminateState: true,
 };
@@ -156,6 +159,7 @@ class Table extends Component {
       onRowChecked,
       onSort,
       headerIndeterminateState,
+      onRowClick,
       ...rest
     } = this.props;
 
@@ -165,13 +169,13 @@ class Table extends Component {
 
     return (
       <div
-        className={classNames({
+        className={classnames({
           'dg-table-horizontal-scroll': horizontalScroll,
           'dg-table-fixed-column': fixedColumn,
         })}
       >
         <table
-          className={classNames(
+          className={classnames(
             'rc-table',
             { 'rc-table-fixed': fixed },
             className,
@@ -196,11 +200,7 @@ class Table extends Component {
                   className="dg-table-loading-container"
                   colSpan={columns.length}
                 >
-                  <div
-                    className="dg-table-loading-inner-container"
-                    aria-live="polite"
-                    aria-busy={loading}
-                  >
+                  <div className="dg-table-loading-inner-container">
                     <div>
                       <Loading className="dg-loading-size" />
                     </div>
@@ -218,7 +218,7 @@ class Table extends Component {
             {data.map((rowData, rowIndex) => {
               return (
                 <tr
-                  className={classNames(
+                  className={classnames(
                     'dg-table-row',
                     this.classNameTypeManage(rowClassName, rowData, rowIndex),
                     {
@@ -227,6 +227,7 @@ class Table extends Component {
                     },
                   )}
                   key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
+                  onClick={() => onRowClick(rowKey, rowIndex, rowData)}
                 >
                   {selectable ? (
                     <td
@@ -261,7 +262,7 @@ class Table extends Component {
                     return (
                       <td
                         key={`${(rowIndex, dataKey)}`}
-                        className={classNames(
+                        className={classnames(
                           'rc-table-cell',
                           this.classNameTypeManage(
                             columnClassName,

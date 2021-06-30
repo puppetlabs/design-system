@@ -80,7 +80,7 @@ class TablePageSelector extends Component {
             className="rc-page-selector-button"
             type="transparent"
             icon="chevron-left"
-            disabled={currentPage === 1}
+            disabled={!currentPage || currentPage === 1}
             onClick={() => updatePage(currentPage - 1)}
           />
           {display.map((i, index) => {
@@ -100,7 +100,7 @@ class TablePageSelector extends Component {
             className="rc-page-selector-button"
             type="transparent"
             icon="chevron-right"
-            disabled={currentPage === pageCount}
+            disabled={!currentPage || currentPage === pageCount}
             onClick={() => updatePage(currentPage + 1)}
           />
         </div>

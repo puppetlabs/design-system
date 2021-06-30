@@ -164,3 +164,18 @@ $colors: (
 .rc-error-alert-cause {
   font-family: $puppet-type-font-family-monospace;
 }
+
+// Alerts container for floating "growl" alerts
+.rc-alerts {
+  height: auto;
+  margin: $puppet-common-spacing-base * 4;
+  position: fixed;
+  right: 0;
+  top: 0;
+  width: $puppet-common-spacing-base * 112;
+  z-index: 1000;
+
+  .rc-alert {
+    margin-bottom: $puppet-common-spacing-base * 3;
+  }
+}

@@ -1,13 +1,12 @@
 {
   "name": "@puppet/react-components",
-  "version": "6.0.0-alpha.3",
+  "version": "5.29.1",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "build/library.js",
   "scripts": {
     "link": "npm link",
     "analyze": "webpack --config webpack.analyze.config.js",
-    "prebuild": "rimraf build",
     "build": "NODE_ENV=production webpack",
     "prepare": "npm run build",
     "complexity": "es6-plato -r -d complexity source/react && open ./complexity/index.html",
@@ -22,9 +21,6 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "engines": {
-    "node": ">=12.4.0"
   },
   "peerDependencies": {
     "react": "^16.13.0",
@@ -56,7 +52,6 @@
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.6",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "fast-csv": "^3.7.0",
     "file-loader": "^4.3.0",
     "jsdom": "^15.2.1",
     "mocha": "^6.2.3",
@@ -71,7 +66,6 @@
     "react-router": "^5.2.0",
     "react-styleguidist": "^10.6.2",
     "resolve-url-loader": "^3.1.1",
-    "rimraf": "^3.0.2",
     "sass-loader": "^8.0.2",
     "sinon": "^7.5.0",
     "sinon-chai": "^3.5.0",
@@ -84,12 +78,14 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
-    "@puppet/sass-variables": "^2.0.0-alpha.1",
+    "@popperjs/core": "^2.9.2",
+    "@puppet/sass-variables": "^1.4.3",
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
     "hoist-non-react-statics": "^3.3.1",
     "prop-types": "^15.7.2",
     "react-modal": "^3.11.2",
+    "react-popper": "^2.2.5",
     "react-transition-group": "^4.4.1",
     "regenerator-runtime": "^0.13.7",
     "scroll-into-view-if-needed": "^2.2.25"

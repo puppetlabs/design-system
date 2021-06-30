@@ -1,6 +1,6 @@
 {
   "name": "@puppet/design-system-website",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "private": true,
@@ -30,7 +30,6 @@
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
-    "fast-csv": "^3.7.0",
     "file-loader": "^4.3.0",
     "jsdom": "^15.2.1",
     "mocha": "^6.2.3",
@@ -54,8 +53,9 @@
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
+    "@popperjs/core": "^2.9.2",
     "@puppet/data-grid": "^0.2.7",
-    "@puppet/react-components": "^5.22.0",
+    "@puppet/react-components": "^5.27.0",
     "@puppet/react-layouts": "^2.0.0-alpha.4",
     "brace": "^0.11.1",
     "prop-types": "^15.7.2",
@@ -63,6 +63,7 @@
     "react-ace": "^8.1.0",
     "react-dom": "^16.13.1",
     "react-hot-loader": "^4.12.21",
+    "react-popper": "^2.2.5",
     "react-styleguidist": "^10.6.2"
   }
 }

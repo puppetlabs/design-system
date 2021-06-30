@@ -8,10 +8,12 @@ const propTypes = {
   values: PropTypes.shape({}),
   submitting: PropTypes.bool,
   submittable: PropTypes.bool,
+  submitDisabled: PropTypes.bool,
   submitLabel: PropTypes.string,
   submitType: PropTypes.oneOf(['primary', 'secondary', 'danger']),
   cancellable: PropTypes.bool,
   cancelLabel: PropTypes.string,
+  cancelType: PropTypes.oneOf(['secondary', 'tertiary', 'transparent', 'text']),
   onCancel: PropTypes.func,
   actionsPosition: PropTypes.oneOf(['left', 'right', 'block']),
   disabled: PropTypes.bool,
@@ -22,10 +24,12 @@ const defaultProps = {
   initialValues: {},
   values: undefined,
   submittable: false,
+  submitDisabled: false,
   submitLabel: 'Submit',
   submitType: 'primary',
   cancellable: false,
   cancelLabel: 'Cancel',
+  cancelType: 'tertiary',
   onCancel() {},
   submitting: false,
   actionsPosition: 'left',
@@ -36,10 +40,12 @@ const defaultProps = {
 const FormActions = ({
   submitting,
   submittable,
+  submitDisabled,
   submitLabel,
   submitType,
   cancellable,
   cancelLabel,
+  cancelType,
   onCancel,
   actionsPosition,
   disabled,
@@ -55,7 +61,7 @@ const FormActions = ({
       className="rc-form-action"
       buttonType="submit"
       loading={submitting}
-      disabled={disabled || !isValid}
+      disabled={disabled || !isValid || submitDisabled}
       type={submitType}
     >
       {submitLabel}
@@ -66,7 +72,7 @@ const FormActions = ({
     <Button
       key="cancel"
       className="rc-form-action"
-      type="tertiary"
+      type={cancelType}
       onClick={onCancel}
     >
       {cancelLabel}

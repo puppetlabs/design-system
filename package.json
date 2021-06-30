@@ -9,7 +9,7 @@
     "test": "lerna run lint && lerna run test",
     "start": "cd packages/design-system-website && npm start",
     "styleguide:build": "cd packages/design-system-website && npm run styleguide:build",
-    "release": "lerna publish from-package",
+    "release": "lerna publish --yes from-package",
     "upgrade": "npx npm-check-updates --upgrade && lerna run upgrade"
   },
   "devDependencies": {
@@ -18,5 +18,6 @@
   },
   "engines": {
     "node": "12.4.0"
-  }
+  },
+  "dependencies": {}
 }

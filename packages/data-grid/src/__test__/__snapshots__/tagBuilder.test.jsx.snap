@@ -1,0 +1,259 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
+<TagBuilder
+  filters={
+    Array [
+      Object {
+        "field": "all-operating-system",
+        "fieldLabel": "All Operating System",
+        "value": "Windows",
+      },
+      Object {
+        "field": "puppet-installed",
+        "fieldLabel": "Puppet Installed",
+        "value": "true",
+      },
+    ]
+  }
+  onRemoveAll={[MockFunction]}
+  onRemoveTag={[MockFunction]}
+>
+  <div
+    className="dg-tag-builder-container"
+  >
+    <div
+      className="dg-tag-container"
+    >
+      <Tag
+        class="dg-filter-tag dg-filter-tag-0"
+        className=""
+        emphasis="bold"
+        hideRemoveButton={false}
+        key="dg-filter-tag-1"
+        label="All Operating System = Windows"
+        onClick={[Function]}
+        type="primary"
+      >
+        <div
+          className="rc-tag rc-tag-primary rc-tag-bold"
+        >
+          <div
+            className="rc-tag-label-background rc-tag-border"
+          >
+            <Text
+              as="div"
+              className="rc-tag-text"
+              color={null}
+              size="medium"
+              style={Object {}}
+            >
+              <div
+                className="rc-text rc-text-size-medium rc-tag-text"
+                style={Object {}}
+              >
+                All Operating System = Windows
+              </div>
+            </Text>
+          </div>
+          <Button
+            aria-label="Remove tag"
+            as="button"
+            className="rc-tag-remove-button"
+            disabled={false}
+            forwardRefAs="ref"
+            icon="close"
+            iconSize="small"
+            innerFocus={false}
+            loading={false}
+            onClick={[Function]}
+            trailingIcon={null}
+            type="primary"
+            weight="bold"
+          >
+            <button
+              aria-label="Remove tag"
+              className="rc-button rc-button-primary rc-button-bold rc-button-icon rc-button-empty rc-tag-remove-button"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <Icon
+                className="rc-button-icon-svg"
+                size="small"
+                style={Object {}}
+                svg={null}
+                type="close"
+                viewBox={null}
+              >
+                <svg
+                  className="rc-icon rc-icon-close rc-button-icon-svg"
+                  height="12px"
+                  style={
+                    Object {
+                      "height": "12px",
+                      "width": "12px",
+                    }
+                  }
+                  viewBox="0 0 8 8"
+                  width="12px"
+                >
+                  <polygon
+                    fillRule="evenodd"
+                    points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
+                  />
+                </svg>
+              </Icon>
+              <span
+                className="rc-button-content"
+              />
+            </button>
+          </Button>
+        </div>
+      </Tag>
+      <Tag
+        class="dg-filter-tag dg-filter-tag-1"
+        className=""
+        emphasis="bold"
+        hideRemoveButton={false}
+        key="dg-filter-tag-2"
+        label="Puppet Installed = true"
+        onClick={[Function]}
+        type="primary"
+      >
+        <div
+          className="rc-tag rc-tag-primary rc-tag-bold"
+        >
+          <div
+            className="rc-tag-label-background rc-tag-border"
+          >
+            <Text
+              as="div"
+              className="rc-tag-text"
+              color={null}
+              size="medium"
+              style={Object {}}
+            >
+              <div
+                className="rc-text rc-text-size-medium rc-tag-text"
+                style={Object {}}
+              >
+                Puppet Installed = true
+              </div>
+            </Text>
+          </div>
+          <Button
+            aria-label="Remove tag"
+            as="button"
+            className="rc-tag-remove-button"
+            disabled={false}
+            forwardRefAs="ref"
+            icon="close"
+            iconSize="small"
+            innerFocus={false}
+            loading={false}
+            onClick={[Function]}
+            trailingIcon={null}
+            type="primary"
+            weight="bold"
+          >
+            <button
+              aria-label="Remove tag"
+              className="rc-button rc-button-primary rc-button-bold rc-button-icon rc-button-empty rc-tag-remove-button"
+              disabled={false}
+              onClick={[Function]}
+              type="button"
+            >
+              <Icon
+                className="rc-button-icon-svg"
+                size="small"
+                style={Object {}}
+                svg={null}
+                type="close"
+                viewBox={null}
+              >
+                <svg
+                  className="rc-icon rc-icon-close rc-button-icon-svg"
+                  height="12px"
+                  style={
+                    Object {
+                      "height": "12px",
+                      "width": "12px",
+                    }
+                  }
+                  viewBox="0 0 8 8"
+                  width="12px"
+                >
+                  <polygon
+                    fillRule="evenodd"
+                    points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
+                  />
+                </svg>
+              </Icon>
+              <span
+                className="rc-button-content"
+              />
+            </button>
+          </Button>
+        </div>
+      </Tag>
+      <Button
+        as="button"
+        className="dg-tag-remove-all-button"
+        disabled={false}
+        forwardRefAs="ref"
+        icon="close"
+        iconSize="medium"
+        innerFocus={false}
+        loading={false}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        trailingIcon={null}
+        type="text"
+        weight="bold"
+      >
+        <button
+          aria-label="Remove all"
+          className="rc-button rc-button-text rc-button-bold rc-button-icon rc-button-full dg-tag-remove-all-button"
+          disabled={false}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          type="button"
+        >
+          <Icon
+            className="rc-button-icon-svg"
+            size="small"
+            style={Object {}}
+            svg={null}
+            type="close"
+            viewBox={null}
+          >
+            <svg
+              className="rc-icon rc-icon-close rc-button-icon-svg"
+              height="12px"
+              style={
+                Object {
+                  "height": "12px",
+                  "width": "12px",
+                }
+              }
+              viewBox="0 0 8 8"
+              width="12px"
+            >
+              <polygon
+                fillRule="evenodd"
+                points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
+              />
+            </svg>
+          </Icon>
+          <span
+            className="rc-button-content"
+          >
+            Remove all
+          </span>
+        </button>
+      </Button>
+    </div>
+  </div>
+</TagBuilder>
+`;

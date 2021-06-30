@@ -18,6 +18,49 @@ const onTagClick = () => {
 </div>;
 ```
 
+### Neutral
+
+The neutral tag can be selected through the type prop. This type of the tag has been developed to be used for displaying currently active filters within your application. Currently we only support a neutral subtle component. This also requires an emphasis="subtle" prop to be added.
+
+```jsx
+const onTagClick = () => {
+  console.log('The X was clicked');
+};
+
+<div>
+  <div>
+    <Tag
+      label="Tag label"
+      onClick={onTagClick}
+      type="neutral"
+      emphasis="subtle"
+    />
+  </div>
+</div>;
+```
+
+### Static Tag
+
+By adding `hideRemoveButton` to the tag component you can create a static tag in cases where you may want to disable the user from being able to remove it from a list.
+
+```jsx
+const onTagClick = () => {
+  console.log('The X was clicked');
+};
+
+<div>
+  <div>
+    <Tag
+      label="OS = 'Windows'"
+      onClick={onTagClick}
+      type="neutral"
+      emphasis="subtle"
+      hideRemoveButton
+    />
+  </div>
+</div>;
+```
+
 ## Related
 
 - [Badge](#/React%20Components/Badge)

@@ -9,14 +9,21 @@ const propTypes = {
   children: PropTypes.node,
   /** Set internally--Is the breacrumb the leaf element? */
   active: PropTypes.bool,
+  /** Whether or not the breadcrumb should be rendered as a link or plain text */
+  disabled: PropTypes.bool,
 };
 
 const defaultProps = {
   children: undefined,
   active: false,
+  disabled: false,
 };
 
-const BreadcrumbSection = ({ children, active, ...props }) => {
+const BreadcrumbSection = ({ children, active, disabled, ...props }) => {
+  const chevron = active ? null : (
+    <Icon type="chevron-right" aria-hidden="true" />
+  );
+
   let crumb = (
     <li>
       <Hyperlink
@@ -28,11 +35,11 @@ const BreadcrumbSection = ({ children, active, ...props }) => {
       >
         {children}
       </Hyperlink>
-      <Icon type="chevron-right" aria-hidden="true" />
+      {chevron}
     </li>
   );
 
-  if (active) {
+  if (active || disabled) {
     crumb = (
       <li>
         <Text
@@ -43,6 +50,7 @@ const BreadcrumbSection = ({ children, active, ...props }) => {
         >
           {children}
         </Text>
+        {chevron}
       </li>
     );
   }

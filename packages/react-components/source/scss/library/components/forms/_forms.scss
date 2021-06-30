@@ -78,8 +78,7 @@ $puppet-form-inline-label-gutter-width: $puppet-common-spacing-base * 12 !defaul
 .rc-form-field-label {
   display: block;
   letter-spacing: $puppet-type-spacing-medium;
-  line-height: $puppet-common-spacing-base * 4 !important;
-  margin-bottom: $puppet-common-spacing-base;
+  line-height: $puppet-common-spacing-base * 5 !important;
 
   &.rc-form-field-label-primary {
     @include puppet-type-label(medium);
@@ -88,6 +87,17 @@ $puppet-form-inline-label-gutter-width: $puppet-common-spacing-base * 12 !defaul
   &.rc-form-field-label-secondary {
     @include puppet-type-h6(medium);
     font-weight: $puppet-type-weight-heavy;
+  }
+
+  &.rc-form-field-label-not-visible {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
   }
 }
 
