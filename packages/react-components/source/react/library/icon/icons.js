@@ -1029,7 +1029,20 @@ const icons = {
       />
     ),
   },
-
+  'plus-circle-filled': {
+    medium: (
+      <>
+        <path d="M7.75 15.9575C12.0302 15.9575 15.5 12.4877 15.5 8.20752C15.5 3.92731 12.0302 0.45752 7.75 0.45752C3.46979 0.45752 0 3.92731 0 8.20752C0 12.4877 3.46979 15.9575 7.75 15.9575Z" />
+        <path
+          fillRule="evenodd"
+          clipRule="evenodd"
+          fill="white"
+          fillOpacity="1"
+          d="M9 4.45752H7V7.45752H4V9.45752H7V12.4575H9V9.45752H12V7.45752H9V4.45752Z"
+        />
+      </>
+    ),
+  },
   'plus-minus': {
     medium: (
       <path
