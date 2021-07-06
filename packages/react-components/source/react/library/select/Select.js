@@ -283,6 +283,7 @@ class Select extends Component {
 
   getButtonLabel() {
     const { type, value, placeholder } = this.props;
+
     if (!value || value.length === 0) {
       return placeholder;
     }
@@ -298,6 +299,10 @@ class Select extends Component {
     const selectedOption = this.getOptions().find(
       option => option.value === value,
     );
+
+    if (!selectedOption) {
+      return placeholder;
+    }
 
     return selectedOption.label;
   }
