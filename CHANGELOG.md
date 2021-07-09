@@ -1,3 +1,8 @@
+# react-components 5.29.2 (2021-07-07)
+
+- [Icon] Add plus-circle-filled by in (by [@cathal41](https://github.com/cathal41) in [#447](https://github.com/puppetlabs/design-system/pull/447))
+- [Select] Show placeholder instead of throwing error if value isn't present in options (by [@vine77](https://github.com/vine77) in [#448](https://github.com/puppetlabs/design-system/pull/448))
+
 # data-grid 0.5.4 (2021-03-09)
 
 - Fix Page Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#437](https://github.com/puppetlabs/design-system/pull/437))
