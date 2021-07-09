@@ -12,6 +12,7 @@
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch",
+    "test:update": "jest --updateSnapshot",
     "format": "eslint --fix src/**/*.{js,jsx} && prettier --write {src}/**/*.{graphql,json,css,md} .babelrc .prettierrc package.json README.md CONTRIBUTING.md",
     "lint": "eslint src/**/*.{js,jsx} postcss.config.js",
     "prepare": "npm run build"
