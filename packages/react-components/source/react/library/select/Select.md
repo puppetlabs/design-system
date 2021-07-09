@@ -38,7 +38,7 @@ const options = [
 Note that if the `value` you pass is not present in the list of `options`, the value isn't cleared but the Select will only show the placeholder, so extra handling may need to be done in that case depending on the application.
 
 ```jsx
-import Alert from '../Alert';
+import Alert from '../alert';
 
 const [value, setValue] = React.useState('eo');
 const options = [
