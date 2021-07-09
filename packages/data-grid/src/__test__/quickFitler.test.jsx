@@ -63,7 +63,9 @@ describe('Snapshot test', () => {
 
 describe('Check component', () => {
   test('Number of dropdowns rendered ', () => {
-    expect(wrapper.find('ButtonSelect.dg-quick-filter')).toHaveLength(4);
+    expect(
+      wrapper.find('.dg-quick-filter-filters > .dg-quick-filter'),
+    ).toHaveLength(2);
   });
 
   test('onFilterSelect function gets called', () => {
