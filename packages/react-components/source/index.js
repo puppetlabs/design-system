@@ -1,6 +1,3 @@
-import 'core-js'; // TODO: Potentially remove polyfills from package, after triaging potential breaking changes
-import 'regenerator-runtime/runtime';
-
 import ActionSelect from './react/library/action-select';
 import Alert from './react/library/alert';
 import Alerts from './react/library/alerts';
