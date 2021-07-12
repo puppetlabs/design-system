@@ -13,12 +13,12 @@ import ConfirmationModal from './react/library/confirmation-modal';
 import Content from './react/library/content';
 import Copy from './react/library/copy';
 import Drawer from './react/library/drawer';
-import Filters from './react/library/filters';
 import Form from './react/library/form';
 import Heading from './react/library/heading';
 import Icon from './react/library/icon';
 import Input from './react/library/input';
 import Link from './react/library/link';
+import List from './react/library/list';
 import Loading from './react/library/loading';
 import Logo from './react/library/logo';
 import Modal from './react/library/modal';
@@ -52,12 +52,12 @@ export {
   Content,
   Copy,
   Drawer,
-  Filters,
   Form,
   Heading,
   Icon,
   Input,
   Link,
+  List,
   Loading,
   Logo,
   Modal,

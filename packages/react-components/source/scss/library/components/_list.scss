@@ -1,0 +1,34 @@
+.rc-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.rc-list-item {
+  @include puppet-type-body();
+  border-radius: 4px;
+  padding: $puppet-common-spacing-base * 2 $puppet-common-spacing-base * 3;
+
+  &:not(:last-child) {
+    margin-bottom: 2px;
+  }
+
+  a {
+    @include puppet-type-link();
+    display: block;
+    margin: $puppet-common-spacing-base * -2 $puppet-common-spacing-base * -3;
+    padding: $puppet-common-spacing-base * 2 $puppet-common-spacing-base * 3;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:hover {
+      border-radius: $puppet-common-border-radius;
+      text-decoration: none;
+    }
+  }
+
+  &.active {
+    background-color: $puppet-n50;
+  }
+}

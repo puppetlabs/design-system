@@ -333,15 +333,15 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
   outline: none;
   text-decoration: none;
 
-  &:hover {
-    color: $puppet-type-color-link-hover;
-    text-decoration: underline;
-  }
-
   &:focus {
     box-shadow: inset 0 -4px 0 -1px $puppet-b100;
     color: $puppet-type-color-link;
     text-decoration: none;
+  }
+
+  &:hover {
+    color: $puppet-type-color-link-hover;
+    text-decoration: underline;
   }
 
   &:active {

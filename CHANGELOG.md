@@ -1,3 +1,11 @@
+# react-components 6.0.0-alpha.5 (2021-07-12)
+
+- Add List component
+
+# react-components 6.0.0-alpha.4 (2021-07-12)
+
+- Upgrade dependencies
+
 # react-components 5.29.2 (2021-07-07)
 
 - [Icon] Add plus-circle-filled by in (by [@cathal41](https://github.com/cathal41) in [#447](https://github.com/puppetlabs/design-system/pull/447))
