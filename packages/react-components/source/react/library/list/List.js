@@ -31,7 +31,7 @@ const defaultProps = {
   children: null,
 };
 
-const List = ({ children }) => <div className="rc-list">{children}</div>;
+const List = ({ children }) => <ul className="rc-list">{children}</ul>;
 
 List.propTypes = propTypes;
 List.defaultProps = defaultProps;
