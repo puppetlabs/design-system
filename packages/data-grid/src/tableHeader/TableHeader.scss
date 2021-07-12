@@ -2,6 +2,30 @@
 
 .dg-table-row-count {
   margin-right: 20px;
-  margin-bottom: 16px;
+  margin-bottom: 11px;
   font-weight: $puppet-type-weight-heavy;
+}
+
+.dg-table-header-content-container {
+  display: flex;
+  padding-bottom: 16px;
+
+  .dg-table-header-search {
+    max-width: 360px;
+  }
+
+  .dg-table-header-vertical-line-separator {
+    border-left: 1px solid $puppet-n400;
+    height: 33px;
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+
+  .dg-quick-filter {
+    padding-bottom: 0px !important;
+  }
+
+  .dg-table-header-tag-builder {
+    margin-bottom: 8px;
+  }
 }

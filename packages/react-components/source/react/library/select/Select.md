@@ -8,13 +8,13 @@ The Select component is a form element allowing for selection of a value or set 
 
 ## Basic use
 
-Options are specified by entries in an `options` array prop. Each requires a unique value and a friendly label to display to users.
+Options are specified by entries in an `options` array prop, each of which requires a unique `value` and a friendly `label` to display to users.
 
 ```jsx
+const [value, setValue] = React.useState('');
+
 const options = [
-  { value: 'en', label: 'English' },
-  { value: 'ru', label: 'русский' },
-  { value: 'zh', label: '中文' },
+  { value: 'af', label: 'Afrikaans' },
   { value: 'sq', label: 'Albanian' },
   { value: 'ar', label: 'Arabic' },
   { value: 'eu', label: 'Basque' },
@@ -24,22 +24,45 @@ const options = [
   { value: 'ca', label: 'Catalan' },
 ];
 
-const style = { margin: 10 };
+<Select
+  name="select-example"
+  placeholder="Select your language"
+  options={options}
+  value={value}
+  onChange={newValue => setValue(newValue)}
+/>
+```
 
-<div>
+### Nonexistent value
+
+Note that if the `value` you pass is not present in the list of `options`, the value isn't cleared but the Select will only show the placeholder, so extra handling may need to be done in that case depending on the application.
+
+```jsx
+import Alert from '../alert';
+
+const [value, setValue] = React.useState('eo');
+const options = [
+  { value: 'af', label: 'Afrikaans' },
+  { value: 'sq', label: 'Albanian' },
+  { value: 'ar', label: 'Arabic' },
+  { value: 'eu', label: 'Basque' },
+  { value: 'bn', label: 'Bengali' },
+  { value: 'bs', label: 'Bosnian' },
+  { value: 'bg', label: 'Bulgarian' },
+  { value: 'ca', label: 'Catalan' },
+];
+const isValueInOptions = options.map(option => option.value).includes(value);
+
+<>
   <Select
-    id="button-select-one"
     name="select-example"
-    options={options}
     placeholder="Select your language"
-    style={style}
-    value={state.value1}
-    onChange={value1 => {
-      console.log('New Value:', value1);
-      setState({ value1 });
-    }}
+    options={options}
+    value={value}
+    onChange={newValue => setValue(newValue)}
   />
-</div>;
+  {!isValueInOptions && <Alert type="warning" style={{ marginTop: 10 }}>"{value}" is not an option</Alert>}
+</>
 ```
 
 ## Variations
@@ -65,8 +88,7 @@ const style = { margin: 10 };
 
 <div>
   <Select
-    id="button-select-one"
-    name="select-example-one"
+    name="autocomplete-example"
     options={options}
     placeholder="Select your fruit"
     style={style}
@@ -81,6 +103,45 @@ const style = { margin: 10 };
     type="autocomplete"
   />
 </div>;
+```
+
+### Option groups
+
+To render an option group, provide an array of child options as the value for a regular option. Parent options should
+still have labels, and if a parent is disabled, all its child options will be disabled, too.
+
+```jsx
+const optionsWithGroups = [{
+  label: "Spices",
+  value: [
+    {label: "Cinnamon", value: "cinnamon"},
+    {label: "Coriander", value: "coriander"},
+    {label: "Cumin", value: "cumin"},
+  ]
+}, {
+  label: "Oil",
+  value: "oil"
+}, {
+  label: "Vinegar",
+  value: "vinegar"
+}, {
+  label: "Herbs",
+  disabled: true,
+  value: [
+    {label: "Parsley", value: "parsley"},
+    {label: "Sage", value: "sage"},
+    {label: "Rosemary", value: "rosemary"},
+  ]
+}];
+
+<Select
+  name="select-option-group-example"
+  options={optionsWithGroups}
+  value={state.value}
+  onChange={value => {
+    setState({value});
+  }}
+/>;
 ```
 
 ### MultiSelect
@@ -109,8 +170,7 @@ const style = { margin: 10 };
 
 <div>
   <Select
-    id="button-select-one"
-    name="select-example-one"
+    name="multi-select-example"
     options={options}
     placeholder="Select your language"
     style={style}
@@ -152,8 +212,7 @@ const style = { margin: 10 };
 
 <div>
   <Select
-    id="button-select-one"
-    name="select-example-one"
+    name="multi-select-immediate-example"
     options={options}
     placeholder="Select your language"
     style={style}
@@ -164,6 +223,42 @@ const style = { margin: 10 };
     }}
     type="multiselect"
     applyImmediately
+  />
+</div>;
+```
+
+## Option properties
+### Disabled options
+
+Use the `disabled` object property to disable a row in a dropdown.
+
+```jsx
+const options = [
+  { value: 'en', label: 'English' },
+  { value: 'ru', label: 'русский' },
+  { value: 'zh', label: '中文' },
+  { value: 'sq', label: 'Albanian' },
+  { value: 'ar', label: 'Arabic' },
+  { value: 'eu', label: 'Basque', disabled: true },
+  { value: 'bn', label: 'Bengali', disabled: true },
+  { value: 'bs', label: 'Bosnian', disabled: true },
+  { value: 'bg', label: 'Bulgarian', disabled: true },
+  { value: 'ca', label: 'Catalan', disabled: true },
+];
+
+const style = { margin: 10 };
+
+<div>
+  <Select
+    name="disabled-select-example"
+    options={options}
+    placeholder="Select your language"
+    style={style}
+    value={state.value1}
+    onChange={value1 => {
+      console.log('New Value:', value1);
+      setState({ value1 });
+    }}
   />
 </div>;
 ```

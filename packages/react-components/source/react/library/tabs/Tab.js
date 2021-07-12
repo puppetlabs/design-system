@@ -9,6 +9,8 @@ import getTabId from './getTabId';
 import getPanelId from './getPanelId';
 
 const propTypes = {
+  /** Optional additional className */
+  className: PropTypes.string,
   /** Internally managed active state */
   active: PropTypes.bool,
   /** HTML element to render tab button as */
@@ -30,6 +32,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  className: '',
   active: false,
   as: 'button',
   icon: null,
@@ -42,7 +45,21 @@ const defaultProps = {
 };
 
 const Tab = forwardRef(
-  ({ active, as, icon, id, onClick, parentId, title, type, ...rest }, ref) => (
+  (
+    {
+      className,
+      active,
+      as,
+      icon,
+      id,
+      onClick,
+      parentId,
+      title,
+      type,
+      ...rest
+    },
+    ref,
+  ) => (
     <Button
       id={getTabId(parentId, id)}
       as={as}
@@ -52,7 +69,7 @@ const Tab = forwardRef(
       aria-controls={getPanelId(parentId, id)}
       onClick={() => onClick(id)}
       tabIndex={active ? 0 : -1}
-      className={classNames('rc-tabs-button', {
+      className={classNames('rc-tabs-button', className, {
         'rc-tabs-button-active': active,
         'rc-tabs-tab-secondary': type === 'secondary',
       })}

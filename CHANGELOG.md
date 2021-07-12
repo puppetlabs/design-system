@@ -1,16 +1,153 @@
+# react-components 5.29.2 (2021-07-07)
+
+- [Icon] Add plus-circle-filled by in (by [@cathal41](https://github.com/cathal41) in [#447](https://github.com/puppetlabs/design-system/pull/447))
+- [Select] Show placeholder instead of throwing error if value isn't present in options (by [@vine77](https://github.com/vine77) in [#448](https://github.com/puppetlabs/design-system/pull/448))
+
+# data-grid 0.5.4 (2021-03-09)
+
+- Fix Page Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#437](https://github.com/puppetlabs/design-system/pull/437))
+- Add data-grid search (by [@Lukeaber](https://github.com/Lukeaber) in [#430](https://github.com/puppetlabs/design-system/pull/430))
+
+# react-components 5.29.0 (2021-06-01)
+
+- [Select] Add support for option groups to the Select component and fix keyboard handling of disabled options (by [@caseywilliams](https://github.com/caseywilliams)) in [#431](https://github.com/puppetlabs/design-system/pull/431)
+
+# react-components 5.28.0 (2021-05-06)
+
+- [Alerts] Add Alerts component (by [@vine77](https://github.com/vine77) in [#416](https://github.com/puppetlabs/design-system/pull/416))
+- [Breadcrumb] Add `disabled` prop to Breadcrumb.Section (by [@mardotio](https://github.com/mardotio)) in [#414](https://github.com/puppetlabs/design-system/pull/414)
+- [Icon] Add docs for customizing icon color (by [@vine77](https://github.com/vine77) in [#415](https://github.com/puppetlabs/design-system/pull/415))
+
+# react-components 5.27.3 (2021-04-23)
+
+- [Form] Add `submitDisabled` prop to Form component to disable submit button (by [@cathal41](https://github.com/cathal41) in [#406](https://github.com/puppetlabs/design-system/pull/406))
+- [Form.Field] Update hover target of form field (by [@cathal41](https://github.com/cathal41) in [#409](https://github.com/puppetlabs/design-system/pull/409))
+- [maintenance] Bump ssri from 6.0.1 to 6.0.2 (by [@dependabot](https://github.com/dependabot) in [#411](https://github.com/puppetlabs/design-system/pull/411))
+- [maintenance] Fix Element not defined error during server-side rendering (by [@scotje](https://github.com/scotje) in [#412](https://github.com/puppetlabs/design-system/pull/412))
+
+# react-components 5.27.2 (2021-04-15)
+
+- [Sidebar] Fix hover state for Sidebar.Footer link (by [@vine77](https://github.com/vine77) in [#407](https://github.com/puppetlabs/design-system/pull/407))
+
+# react-components 5.27.1 (2021-04-08)
+
+- [Overlay] Add mechanism for force updating Overlay (by [@mardotio](https://github.com/mardotio) in [#403](https://github.com/puppetlabs/design-system/pull/403))
+
+# react-components 5.27.0 (2021-04-08)
+
+- [Overlay] Add Overlay component (by [@mardotio](https://github.com/mardotio) in [#402](https://github.com/puppetlabs/design-system/pull/402))
+
+# react-components 5.26.8 (2021-03-30)
+
+- [Icon] Add expand icon (by [@sprokusk](https://github.com/sprokusk) in [#396](https://github.com/puppetlabs/design-system/pull/396))
+
+# data-grid 0.5.3 (2021-03-22)
+
+- Add row per page feature (by [@Lukeaber](https://github.com/Lukeaber) in [#394](https://github.com/puppetlabs/design-system/pull/394))
+
+# react-components 5.26.7 (2021-03-09)
+
+- [ButtonSelect] Change button select to accept string and number values (by [@Lukeaber](https://github.com/Lukeaber) in [#387](https://github.com/puppetlabs/design-system/pull/387))
+
+# data-grid 0.5.2 (2021-03-09)
+
+- Add onRowClick handler (by [@Lukeaber](https://github.com/Lukeaber) in [#388](https://github.com/puppetlabs/design-system/pull/388))
+
+# react-layouts 2.0.0-alpha.6 (2021-03-09)
+
+- Bump elliptic from 6.5.3 to 6.5.4 (by [@dependabot](https://github.com/dependabot) in [#391](https://github.com/puppetlabs/design-system/pull/391))
+
+# design-system-website 1.4.4 (2021-03-09)
+
+- [Card] Use min-width in Card examples (by [@vine77](https://github.com/vine77) in [#390](https://github.com/puppetlabs/design-system/pull/390))
+- Bump prismjs from 1.21.0 to 1.23.0 (by [@dependabot](https://github.com/dependabot) in [#386](https://github.com/puppetlabs/design-system/pull/386))
+- Bump elliptic from 6.5.3 to 6.5.4 (by [@dependabot](https://github.com/dependabot) in [#392](https://github.com/puppetlabs/design-system/pull/392))
+
+# react-components 5.26.6 (2021-02-24)
+
+- [Icon] Add refresh icon (by [@melcherry98](https://github.com/melcherry98) in [#384](https://github.com/puppetlabs/design-system/pull/384))
+
+# react-components 5.26.5 (2021-02-10)
+
+- [ActionSelect, ButtonSelect, Select] Allow disabling items in Select components (by [@Lukeaber](https://github.com/Lukeaber) in [#366](https://github.com/puppetlabs/design-system/pull/366))
+
+# react-components 5.26.4 (2021-02-10)
+
+- [Select] Fix autocomplete select not staying open when typing (by [@jilliankeenan](https://github.com/jilliankeenan) in [#381](https://github.com/puppetlabs/design-system/pull/381))
+
+# react-components 5.26.3 (2021-01-29)
+
+- [Icon] Add inventory icon (by [@mardotio](https://github.com/mardotio) in [#379](https://github.com/puppetlabs/design-system/pull/379))
+
+# react-components 5.26.2 (2021-01-27)
+
+- [Logo] Add Puppet Connect logo (by [@chrisleicester](https://github.com/chrisleicester) in [#376](https://github.com/puppetlabs/design-system/pull/376))
+- [security] Bump ini from 1.3.5 to 1.3.8 in /packages/react-layouts (by [@dependabot](https://github.com/apps/dependabot) in [#370](https://github.com/puppetlabs/design-system/pull/370))
+- [security] Bump ini from 1.3.5 to 1.3.8 in /packages/sass-variables (by [@dependabot](https://github.com/apps/dependabot) in [#371](https://github.com/puppetlabs/design-system/pull/371))
+
+# react-components 5.26.1 (2021-01-08)
+
+- [Icon] Add new plus minus icon +/- (by [@Lukeaber](https://github.com/Lukeaber) in [#374](https://github.com/puppetlabs/design-system/pull/374))
+
+# react-components 5.26.0 (2021-01-07)
+
+- [Drawer] Add Drawer component (by [@Lukeaber](https://github.com/Lukeaber) in [#343](https://github.com/puppetlabs/design-system/pull/343))
+- [Icon] Add new chevron icons ("chevron-double-down" and "chevron-double-up") (by [@Lukeaber](https://github.com/Lukeaber) in [#343](https://github.com/puppetlabs/design-system/pull/343))
+- [Form] Add ability to choose cancel button type in Form actions (by [@jilliankeenan](https://github.com/jilliankeenan) in [#372](https://github.com/puppetlabs/design-system/pull/372))
+- [Security] Remove fast-csv dependency (by [@vine77](https://github.com/vine77) in [#369](https://github.com/puppetlabs/design-system/pull/369))
+
+# data-grid 0.5.1 (2020-11-10)
+
+- Use new version of react-components to get colored up and down icons in table headers (by [@Lukeaber](https://github.com/Lukeaber) in [#363](https://github.com/puppetlabs/design-system/pull/363))
+
+# react-components 5.25.1 (2020-11-10)
+
+- [Tabs] Add optional additional classname to Tabs.Tab component (by [@chrisleicester](https://github.com/chrisleicester) in [#357](https://github.com/puppetlabs/design-system/pull/357))
+- [Icon] Add "projects" icon (by [@chrisleicester](https://github.com/chrisleicester) in [#358](https://github.com/puppetlabs/design-system/pull/358))
+- [Tag] Add prop to Tag component to show/hide button (by [@jilliankeenan](https://github.com/jilliankeenan) in [#360](https://github.com/puppetlabs/design-system/pull/360))
+- [Icon] Add classes to paths in "increment" icon (by [@Lukeaber](https://github.com/Lukeaber) in [#361](https://github.com/puppetlabs/design-system/pull/361))
+
+# react-components 5.25.0 (2020-11-02)
+
+- [Avatar] Create Avatar component (by [@niftyrinki](https://github.com/niftyrinki) in [#319](https://github.com/puppetlabs/design-system/pull/319))
+- [Sidebar] Add signout option to Sidebar.Footer (by [@sean-mckenna](https://github.com/sean-mckenna) in [#338](https://github.com/puppetlabs/design-system/pull/338))
+- [Tag] Add "neutral" Tag (by [@Lukeaber](https://github.com/Lukeaber) in [#339](https://github.com/puppetlabs/design-system/pull/339))
+- [Icon] Add "dag" and "workspaces" icons (by [@sean-mckenna](https://github.com/sean-mckenna) in [#341](https://github.com/puppetlabs/design-system/pull/341))
+- [Loading] Add a11y to Loading component (by [@jilliankeenan](https://github.com/jilliankeenan) in [#345](https://github.com/puppetlabs/design-system/pull/345))
+- Fix ability to `npm link` react-components by removing `prebuild` step (by [@chrisleicester](https://github.com/chrisleicester) in [#353](https://github.com/puppetlabs/design-system/pull/353))
+
+# react-components 5.24.3 (2020-10-27)
+
+- [Filter] Add onUpdate prop to filter (by [@eglenfield](https://github.com/eglenfield) in [#344](https://github.com/puppetlabs/design-system/pull/344))
+
+# react-components 5.24.2 (2020-10-22)
+
+- [Form.Field] Hide form field labels visually (but not to screen readers) when label is null (by [@sprokusk](https://github.com/sprokusk) in [#348](https://github.com/puppetlabs/design-system/pull/348))
+- [Input] Update placeholder color to n700 to meet accessibility contrast ratios (by [@Sigler](https://github.com/Sigler) in [#347](https://github.com/puppetlabs/design-system/pull/347))
+
+# react-components 5.24.1 (2020-10-14)
+
+- [Toolbar] Fix toolbar tabs alignment (by [@melcherry98](https://github.com/melcherry98) in [#342](https://github.com/puppetlabs/design-system/pull/342))
+
+# react-components 5.24.0 (2020-10-12)
+
+- [Popover] Add Popover component (by [@melcherry98](https://github.com/melcherry98) in [#333](https://github.com/puppetlabs/design-system/pull/333))
+- [SidePanel] Add `closeButtonIcon` and `hideCloseButton` props to SidePanel (by [@jilliankeenan](https://github.com/jilliankeenan) in [#336](https://github.com/puppetlabs/design-system/pull/336))
+- [Logo] Fix logo for Comply (by [@vine77](https://github.com/vine77) in [#332](https://github.com/puppetlabs/design-system/pull/332))
+
 # react-components 5.23.1 (2020-10-07)
 
-- [Logo] Add "comply" logo (by [Ioannis-Karasavvaidis](https://github.com/Ioannis-Karasavvaidis) in [#327](https://github.com/puppetlabs/design-system/pull/327))
-- [Input] Fix bug with default `size` in Input (by [sprokusk](https://github.com/sprokusk) in [016651a](https://github.com/puppetlabs/design-system/commit/016651a357d2f2f1960147229cc7909f3088b4dc))
+- [Logo] Add "comply" logo (by [@Ioannis-Karasavvaidis](https://github.com/Ioannis-Karasavvaidis) in [#327](https://github.com/puppetlabs/design-system/pull/327))
+- [Input] Fix bug with default `size` in Input (by [@sprokusk](https://github.com/sprokusk) in [016651a](https://github.com/puppetlabs/design-system/commit/016651a357d2f2f1960147229cc7909f3088b4dc))
 
 # react-components 5.23.0 (2020-10-07)
 
 - [Tabs] Add "transparent" Tabs variant and make Tabs scrollable (at narrow widths) (by [@caseywilliams](https://github.com/caseywilliams) in [#302](https://github.com/puppetlabs/design-system/pull/302))
-- [Input] Add size and shape props to Input component to support search bars (by [melcherry98](https://github.com/melcherry98) in [#324](https://github.com/puppetlabs/design-system/pull/324))
-- [Icon] Add "scan" and "pencil-list" icons (by [Ioannis-Karasavvaidis](https://github.com/Ioannis-Karasavvaidis) in [#329](https://github.com/puppetlabs/design-system/pull/329))
-- [Alert] Change icon for "danger" Alert (by [eliely](https://github.com/eliely) in [#320](https://github.com/puppetlabs/design-system/pull/320))
-- [Copy] Properly export Copy component (by [sprokusk](https://github.com/sprokusk) in [#322](https://github.com/puppetlabs/design-system/pull/322))
-- [Form] Relax Form.Field `description` prop type (by [vine77](https://github.com/vine77) in [#305](https://github.com/puppetlabs/design-system/pull/305))
+- [Input] Add size and shape props to Input component to support search bars (by [@melcherry98](https://github.com/melcherry98) in [#324](https://github.com/puppetlabs/design-system/pull/324))
+- [Icon] Add "scan" and "pencil-list" icons (by [@Ioannis-Karasavvaidis](https://github.com/Ioannis-Karasavvaidis) in [#329](https://github.com/puppetlabs/design-system/pull/329))
+- [Alert] Change icon for "danger" Alert (by [@eliely](https://github.com/eliely) in [#320](https://github.com/puppetlabs/design-system/pull/320))
+- [Copy] Properly export Copy component (by [@sprokusk](https://github.com/sprokusk) in [#322](https://github.com/puppetlabs/design-system/pull/322))
+- [Form] Relax Form.Field `description` prop type (by [@vine77](https://github.com/vine77) in [#305](https://github.com/puppetlabs/design-system/pull/305))
 
 # data-grid 0.5.0 (2020-10-07)
 
@@ -22,15 +159,15 @@
 
 # react-components 5.22.5 (2020-09-30)
 
-- [Icon] Add `star-empty` and `star-filled` icons  (by [@Sigler](https://github.com/Sigler) in [#303](https://github.com/puppetlabs/design-system/pull/303))
+- [Icon] Add `star-empty` and `star-filled` icons (by [@Sigler](https://github.com/Sigler) in [#303](https://github.com/puppetlabs/design-system/pull/303))
 
 # react-components 5.22.4 (2020-09-16)
 
-- [Icon] Add `azure`, `bitbucket`, `github`, and `gitlab` icons  (by [@eputnam](https://github.com/eputnam) in [#301](https://github.com/puppetlabs/design-system/pull/301))
+- [Icon] Add `azure`, `bitbucket`, `github`, and `gitlab` icons (by [@eputnam](https://github.com/eputnam) in [#301](https://github.com/puppetlabs/design-system/pull/301))
 
 # react-components 5.22.3 (2020-09-02)
 
-- [Icon] Add `control-repo`, `hardware`, and `module` icons  (by [@sean-mckenna](https://github.com/sean-mckenna) in [#296](https://github.com/puppetlabs/design-system/pull/296))
+- [Icon] Add `control-repo`, `hardware`, and `module` icons (by [@sean-mckenna](https://github.com/sean-mckenna) in [#296](https://github.com/puppetlabs/design-system/pull/296))
 
 # design-assets (2020-09-01)
 

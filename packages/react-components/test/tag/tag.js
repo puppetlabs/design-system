@@ -29,4 +29,10 @@ describe('<Tag />', () => {
 
     expect(onClick.called).to.equal(true);
   });
+
+  it('should render the neutral tag when correct type is passed', () => {
+    const wrapper = shallow(<Tag label="Text" type="neutral" />);
+
+    expect(wrapper.hasClass('rc-tag-neutral')).to.equal(true);
+  });
 });

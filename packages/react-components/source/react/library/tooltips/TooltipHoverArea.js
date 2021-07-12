@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 
 import Tooltip from './Tooltip';
@@ -32,82 +32,69 @@ const defaultProps = {
  *
  * The tooltip prop passed to `TooltipHoverArea`--the tooltip content--can be a string or an element.
  */
-class TooltipHoverArea extends React.Component {
-  constructor(props) {
-    super(props);
+const TooltipHoverArea = ({
+  anchor,
+  children,
+  className,
+  onClick,
+  style,
+  tooltip,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [triggerElem, setTriggerElem] = useState(null);
 
-    this.state = { open: false };
-
-    this.onMouseOver = this.onMouseOver.bind(this);
-    this.onMouseOut = this.onMouseOut.bind(this);
-    this.onClick = this.onClick.bind(this);
-  }
-
-  onClick(e) {
-    const { onClick } = this.props;
-
+  function handleClick(e) {
     if (onClick) {
       // If something is going to happen on click, let's just close the tooltip.
-      this.setState({ open: false });
+      setIsOpen(false);
 
       onClick(e);
     }
   }
 
-  onMouseOver() {
-    this.setState({ open: true });
+  function onMouseOver() {
+    setIsOpen(true);
   }
 
-  onMouseOut() {
-    this.setState({ open: false });
+  function onMouseOut() {
+    setIsOpen(false);
   }
 
-  renderTooltip() {
-    const { anchor, tooltip } = this.props;
-
-    if (!this.elem) {
+  function renderTooltip() {
+    if (!triggerElem) {
       return null;
     }
 
     return (
-      <Tooltip target={this.elem} anchor={anchor}>
+      <Tooltip target={triggerElem} anchor={anchor}>
         {tooltip}
       </Tooltip>
     );
   }
 
-  render() {
-    const tooltip = this.renderTooltip();
-    const { open } = this.state;
-    const { children, className, style } = this.props;
+  const props = {
+    role: 'button',
+    onClick: handleClick,
+    style,
+  };
 
-    const props = {
-      role: this.onClick ? 'button' : null,
-      onClick: this.onClick,
-      style,
-    };
-
-    return (
-      <div
-        {...props}
-        className={classNames(
-          'rc-tooltip-area rc-tooltip-area-hover',
-          className,
-        )}
-        onMouseEnter={this.onMouseOver}
-        onFocus={this.onMouseOver}
-        onMouseLeave={this.onMouseOut}
-        onBlur={this.onMouseOut}
-        ref={c => {
-          this.elem = c;
-        }}
-      >
-        <FadeInAndOut in={open}>{tooltip}</FadeInAndOut>
-        {children}
-      </div>
-    );
-  }
-}
+  return (
+    <div
+      {...props}
+      className={classNames('rc-tooltip-area rc-tooltip-area-hover', className)}
+      onMouseEnter={onMouseOver}
+      onFocus={onMouseOver}
+      onMouseLeave={onMouseOut}
+      onBlur={onMouseOut}
+      ref={elem => {
+        setTriggerElem(elem);
+      }}
+    >
+      <FadeInAndOut in={isOpen}>{renderTooltip()}</FadeInAndOut>
+      {children}
+    </div>
+  );
+};
 
 TooltipHoverArea.propTypes = propTypes;
 TooltipHoverArea.defaultProps = defaultProps;

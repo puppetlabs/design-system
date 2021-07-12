@@ -29,6 +29,8 @@ const propTypes = {
       onClick: PropTypes.func,
       /** Custom action element. Useful for creating navigation actions with as: 'a' or as: Link. Additionally, extra props not listed here are passed through to the action element. This allows custom props such as `href` or `to` to be passed to the inner action element. */
       as: PropTypes.elementType,
+      /** Make a row unclickable */
+      disabled: PropTypes.bool,
     }),
   ),
   label: PropTypes.string,

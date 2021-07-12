@@ -22,6 +22,8 @@ const propTypes = {
   weight: PropTypes.oneOf(['bold', 'subtle']),
   /** Optional icon to be rendered instead of / in addition to button text. If both an icon and text are present, the icon will be rendered before the text */
   icon: PropTypes.oneOf(AVAILABLE_ICONS),
+  /** Optional prop to change the size of a leading or trailing icons */
+  iconSize: PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
   /** Button text or other content */
   children: PropTypes.node,
   /** Optional trailing icon rendered after button text. For icon-only buttons, please use the 'icon' prop instead */
@@ -45,6 +47,7 @@ const defaultProps = {
   weight: 'bold',
   children: null,
   icon: null,
+  iconSize: 'medium',
   trailingIcon: null,
   loading: false,
   innerFocus: false,
@@ -78,6 +81,7 @@ const Button = forwardRef(
       type,
       weight,
       icon,
+      iconSize,
       trailingIcon,
       loading,
       innerFocus,
@@ -116,7 +120,7 @@ const Button = forwardRef(
     >
       {icon && (
         <Icon
-          size={type === 'text' ? 'small' : 'medium'}
+          size={type === 'text' ? 'small' : iconSize}
           type={icon}
           className="rc-button-icon-svg"
         />
@@ -124,7 +128,7 @@ const Button = forwardRef(
       <span className="rc-button-content">{children}</span>
       {trailingIcon && (
         <Icon
-          size={type === 'text' ? 'small' : 'medium'}
+          size={type === 'text' ? 'small' : iconSize}
           type={trailingIcon}
           className="rc-button-icon-svg"
         />

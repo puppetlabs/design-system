@@ -1,0 +1,45 @@
+.rc-drawer-container {
+  min-width: fit-content;
+
+  .rc-drawer-header {
+    align-items: center;
+    border-top: $puppet-common-border;
+    display: flex;
+    justify-content: space-between;
+    min-height: 40px;
+    min-width: 100%;
+    overflow: hidden;
+  }
+
+  .rc-drawer-header-closed {
+    border-bottom: $puppet-common-border;
+  }
+
+  .rc-drawer-header-content-container {
+    border-right: $puppet-common-border;
+    flex-grow: 1;
+    height: 100%;
+    min-height: 40px;
+    overflow: hidden;
+    padding-right: 80px;
+  }
+
+  .rc-drawer-header-content-container-open {
+    border-bottom: $puppet-common-border;
+  }
+
+  .rc-drawer-toggle-container {
+    display: flex;
+    min-width: 136px;
+    padding: 0 5px;
+
+    .rc-drawer-toggle-button {
+      margin: auto;
+    }
+  }
+
+  .rc-drawer-body {
+    border-bottom: $puppet-common-border;
+    padding: 20px 50px;
+  }
+}

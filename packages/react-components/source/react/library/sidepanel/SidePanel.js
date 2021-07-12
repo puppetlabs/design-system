@@ -9,7 +9,11 @@ const propTypes = {
   className: PropTypes.string,
   children: PropTypes.node,
   closeButtonProps: PropTypes.shape({}),
+  /** Icon to be rendered for the close button  */
+  closeButtonIcon: PropTypes.string,
   contentClassName: PropTypes.string,
+  /** Boolean value used to conditionally render the close button  */
+  hideCloseButton: PropTypes.bool,
   onClose: PropTypes.func,
   open: PropTypes.bool,
   title: PropTypes.node,
@@ -21,6 +25,8 @@ const defaultProps = {
   border: false,
   children: null,
   closeButtonProps: {},
+  closeButtonIcon: 'x',
+  hideCloseButton: false,
   open: true,
   title: '',
   onClose() {},
@@ -40,12 +46,14 @@ const SidePanel = ({
   onClose,
   className,
   closeButtonProps,
+  closeButtonIcon,
   contentClassName,
   toolbarType,
+  hideCloseButton,
 }) => {
   const actions = (
     <Button
-      icon="x"
+      icon={closeButtonIcon}
       type="transparent"
       innerFocus
       aria-label="Close side panel"
@@ -71,7 +79,9 @@ const SidePanel = ({
           >
             {title}
           </Heading>
-          <div className="rc-sidepanel-actions">{actions}</div>
+          {!hideCloseButton && (
+            <div className="rc-sidepanel-actions">{actions}</div>
+          )}
         </div>
         <div className={`rc-sidepanel-content ${contentClassName}`}>
           {children}
