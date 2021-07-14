@@ -74,6 +74,6 @@ React layouts are ubiquitous combinations of react components needed for most mo
 
 |Grid                                                                          |
 |------------------------------------------------------------------------------|
-|[Columns](/#/React%20Layouts/Columns)                                         |
+|[Columns](/#/React%20Components/Columns)                                         |
 
 <br/><br/><br/>

@@ -9,6 +9,7 @@ import ButtonSelect from './react/library/button-select';
 import Card from './react/library/card';
 import Checkbox from './react/library/checkbox';
 import Code from './react/library/code';
+import Columns from './react/library/columns';
 import ConfirmationModal from './react/library/confirmation-modal';
 import Content from './react/library/content';
 import Copy from './react/library/copy';
@@ -48,6 +49,7 @@ export {
   Card,
   Checkbox,
   Code,
+  Columns,
   ConfirmationModal,
   Content,
   Copy,
