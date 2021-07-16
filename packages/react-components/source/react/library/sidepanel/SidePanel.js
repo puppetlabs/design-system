@@ -72,11 +72,7 @@ const SidePanel = ({
         <div
           className={`rc-sidepanel-toolbar rc-sidepanel-toolbar-${toolbarType}`}
         >
-          <Heading
-            as="h5"
-            className="rc-sidepanel-heading"
-            id="rc-sidepanel-header"
-          >
+          <Heading as="h6" className="rc-sidepanel-heading">
             {title}
           </Heading>
           {!hideCloseButton && (

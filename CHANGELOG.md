@@ -1,6 +1,11 @@
+# react-components 6.0.0-alpha.6 (2021-07-14)
+
+- BREAKING [Columns] Move Columns from react-layouts to react-components
+
 # react-components 6.0.0-alpha.5 (2021-07-12)
 
-- Add List component
+- [List] Add List component
+- BREAKING [Filters] Remove the old undocumented Filters component
 
 # react-components 6.0.0-alpha.4 (2021-07-12)
 
