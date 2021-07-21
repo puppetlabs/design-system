@@ -78,15 +78,15 @@ $puppet-form-inline-label-gutter-width: $puppet-common-spacing-base * 12 !defaul
 .rc-form-field-label {
   display: block;
   letter-spacing: $puppet-type-spacing-medium;
-  line-height: $puppet-common-spacing-base * 5 !important;
 
   &.rc-form-field-label-primary {
     @include puppet-type-label(medium);
+    line-height: calc(20 / 11);
   }
 
   &.rc-form-field-label-secondary {
     @include puppet-type-h6(medium);
-    font-weight: $puppet-type-weight-heavy;
+    line-height: calc(26 / 16);
   }
 
   &.rc-form-field-label-not-visible {
@@ -148,6 +148,7 @@ $puppet-form-inline-label-gutter-width: $puppet-common-spacing-base * 12 !defaul
 .rc-form-field-inline {
   .rc-form-field-label {
     flex-shrink: 0;
+    line-height: calc(32/11);
     margin: 0;
     overflow: hidden;
     padding-right: $puppet-form-inline-label-gutter-width;
@@ -156,8 +157,11 @@ $puppet-form-inline-label-gutter-width: $puppet-common-spacing-base * 12 !defaul
     width: $puppet-form-inline-label-column-width;
   }
 
+  .rc-form-field-label-secondary {
+    line-height: calc(32/16);
+  }
+
   .rc-form-field-content {
-    align-items: center;
     display: flex;
   }
 

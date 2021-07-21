@@ -1,15 +1,18 @@
+# react-components 6.0.0-alpha.7 (2021-07-20)
+
+- [Form] Fix form label spacing #452
 # react-components 6.0.0-alpha.6 (2021-07-14)
 
-- BREAKING [Columns] Move Columns from react-layouts to react-components
+- BREAKING [Columns] Move Columns from react-layouts to react-components #451
 
 # react-components 6.0.0-alpha.5 (2021-07-12)
 
-- [List] Add List component
-- BREAKING [Filters] Remove the old undocumented Filters component
+- [List] Add List component #446
+- BREAKING [Filters] Remove the old undocumented Filters component #446
 
 # react-components 6.0.0-alpha.4 (2021-07-12)
 
-- Upgrade dependencies
+- Upgrade dependencies #450
 
 # react-components 5.29.2 (2021-07-07)
 
