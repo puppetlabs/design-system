@@ -1,3 +1,6 @@
+# react-components 6.0.0-alpha.8 (2021-08-12)
+
+- [Overlay] Remove Overlay until build error is resolved
 # react-components 6.0.0-alpha.7 (2021-07-20)
 
 - [Form] Fix form label spacing #452
