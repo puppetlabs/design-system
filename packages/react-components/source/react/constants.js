@@ -67,3 +67,9 @@ export const ICON_CONFIG = {
   medium: mediumIcon,
   large: largeIcon,
 };
+
+export const STEPPER_STATES = {
+  active: 'active',
+  incomplete: 'incomplete',
+  complete: 'complete',
+};

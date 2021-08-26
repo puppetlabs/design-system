@@ -1,0 +1,124 @@
+.stepper {
+  &-container {
+    display: flex;
+    justify-content: space-between;
+    list-style-type: none;
+    margin-bottom: 20px;
+    min-width: 260px;
+    padding-left: 0;
+
+    .active,
+    .incomplete,
+    .complete {
+      flex: 1;
+      margin-right: 5px;
+      position: relative;
+    }
+
+    .active::after {
+      border-bottom: 2px solid $puppet-b600;
+      content: '';
+      position: absolute;
+      top: 8px;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .incomplete::after {
+      border-bottom: 2px solid $puppet-n700;
+      content: '';
+      position: absolute;
+      top: 8px;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .complete::after {
+      border-bottom: 2px solid $puppet-g700;
+      content: '';
+      position: absolute;
+      top: 8px;
+      width: 100%;
+      z-index: 2;
+    }
+
+  }
+
+  &-number {
+    height: 16px;
+    width: 16px;
+
+    .active-number,
+    .incomplete-number {
+      border-radius: 50%;
+      font-family: $puppet-type-font-family-secondary;
+      font-size: 11px;
+      letter-spacing: 0.4px;
+      line-height: 12px;
+      position: relative;
+      text-align: center;
+      text-transform: uppercase;
+      z-index: 5;
+    }
+
+    .active-number {
+      background: $puppet-b600;
+      border: 2px solid $puppet-b600;
+      color: $puppet-white;
+    }
+
+    .incomplete-number {
+      background: $puppet-white;
+      border: 2px solid $puppet-n700;
+      color: $puppet-n700;
+    }
+
+    .complete-icon-wrapper {
+      background: $puppet-white;
+      line-height: 13px;
+      position: relative;
+      text-align: center;
+      z-index: 5;
+    }
+
+    .complete-icon-wrapper > svg {
+      fill: $puppet-g700;
+    }
+  }
+
+  &-text-active,
+  &-text-incomplete,
+  &-text-complete {
+    font-family: $puppet-type-font-family-secondary;
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 20px;
+    margin-top: 5px;
+  }
+
+  &-text-active {
+    color: $puppet-b600;
+  }
+
+  &-text-complete {
+    color: $puppet-g700;
+  }
+
+  &-subtext-active,
+  &-subtext-incomplete,
+  &-subtext-complete {
+    font-size: 10px;
+    font-weight: 600;
+    line-height: 16px;
+  }
+
+  &-subtext-active {
+    color: $puppet-n800;
+  }
+
+  &-subtext-incomplete,
+  &-subtext-complete,
+  &-text-incomplete {
+    color: $puppet-n700;
+  }
+}
