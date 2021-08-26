@@ -1,4 +1,4 @@
-# react-components 5.29.2 (2021-08-23)
+# react-components 5.29.3 (2021-08-23)
 
 - [Stepper] Add Stepper container component (by [@desmondbera](https://github.com/desmondbera)
   in [#459](https://github.com/puppetlabs/design-system/pull/459))
