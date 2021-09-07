@@ -10,7 +10,7 @@ React components are flexible page elements. Define or nullify props on a given 
 |[Modal](/#/React%20Components/Modal)                                          |
 |[Table](/#/React%20Components/Table)                                          |
 |[Toolbar](/#/React%20Components/Toolbar)                                      |
-|[Sidepanel](/#/React%20Components/Sidepanel)                                  |
+|[SidePanel](/#/React%20Components/SidePanel)                                  |
 |[Content](/#/React%20Components/Content)                                      |
 
 |Navigation                                                                    |
