@@ -58,22 +58,3 @@ React components are flexible page elements. Define or nullify props on a given 
 |[TooltipHoverArea](/#/React%20Components/TooltipHoverArea)                    |
 
 <br/><br/><br/>
-
-### React layouts
-
-React layouts are ubiquitous combinations of react components needed for most modern web apps.
-
-|Authorization                                                                 |
-|------------------------------------------------------------------------------|
-|[Confirmation](/#/React%20Components/Confirmation)                            |
-|[ForgotPassword](/#/React%20Components/ForgotPassword)                        |
-|[Login](/#/React%20Components/Login)                                          |
-|[ForgotPasswordSent](/#/React%20Components/ForgotPasswordSent)                |
-|[ResetPassword](/#/React%20Components/ResetPassword)                          |
-|[ResetPasswordSuccess](/#/React%20Components/ResetPasswordSuccess)            |
-
-|Grid                                                                          |
-|------------------------------------------------------------------------------|
-|[Columns](/#/React%20Layouts/Columns)                                         |
-
-<br/><br/><br/>
