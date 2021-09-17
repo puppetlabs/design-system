@@ -1,3 +1,5 @@
+**Warning: Icons render as svg's and cannot be accessed with tabs or screen reader software, please use the [Button](#/React%20Components/Button) component with type "transparent" and an icon prop to add an interactive icon.**
+
 ## Overview
 
 Icons and logos are designed to have consistency in style and spacing. They are output as SVG elements and wrapped in components.

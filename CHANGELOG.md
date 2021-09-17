@@ -1,3 +1,7 @@
+# react-components 5.29.4 (2021-09-27)
+
+- [Icon] Add accessibility warning message to Icon docs (by [@cathal](https://github.com/cathal41) in [#466](https://github.com/puppetlabs/design-system/pull/466))
+
 # react-components 5.29.3 (2021-08-23)
 
 - [Stepper] Add Stepper container component (by [@desmondbera](https://github.com/desmondbera)
