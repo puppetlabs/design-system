@@ -2,6 +2,12 @@
 
 Icons and logos are designed to have consistency in style and spacing. They are output as SVG elements and wrapped in components.
 
+### Accessibility
+
+**Warning**: Be aware that icons render as SVGs that cannot be accessed with tabs or screen reader software. For interactivity, consider using the [Button](#/React%20Components/Button) component with the `icon` prop and a `type` of "transparent".
+
+See also: [Button](#/React%20Components/Button) and [Button Select](#/React%20Components/ButtonSelect)
+
 ### Rendering Icons
 
 To render an icon, either:
@@ -13,8 +19,6 @@ The specific SVG rendered is decided by the following:
 
 1. If there is a unique SVG for the type and size provided, it will be rendered. Unique SVGs are indicated by a green background below.
 2. Otherwise, we scale down the next largest SVG, or if unavailable, scale up the next smallest SVG.
-
-See also: [Button](#/React%20Components/Button) and [Button Select](#/React%20Components/ButtonSelect)
 
 ## Basic Use
 
