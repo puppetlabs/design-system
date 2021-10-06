@@ -217,7 +217,6 @@ $puppet-type-code-small-font-weight: $puppet-type-weight-normal !default;
   font-size: $puppet-type-code-font-size;
   font-weight: $puppet-type-code-font-weight;
   line-height: $puppet-type-code-line-height;
-  overflow-y: scroll;
 }
 
 @mixin puppet-type-code-small() {
@@ -225,14 +224,6 @@ $puppet-type-code-small-font-weight: $puppet-type-weight-normal !default;
   font-size: $puppet-type-code-small-font-size;
   font-weight: $puppet-type-code-small-font-weight;
   line-height: $puppet-type-code-small-line-height;
-}
-
-@mixin puppet-type-code-block() {
-  background-color: $puppet-n100;
-  border-left: 8px solid $puppet-n300;
-  display: block;
-  padding: $puppet-common-spacing-base * 3 $puppet-common-spacing-base * 6;
-  white-space: pre;
 }
 
 @mixin puppet-type-link() {

@@ -44,15 +44,17 @@ const Code = ({
     className={classNames(
       'rc-code',
       `rc-code-${type}`,
+      `rc-code-size-${size}`,
       {
-        [`rc-code-size-${size}`]: size,
+        'rc-code-copyable': copyable,
       },
       className,
     )}
     style={style}
     {...other}
   >
-    {copyable ? <Copy>{children}</Copy> : children}
+    <div className="rc-code-children">{children}</div>
+    {copyable && <Copy value={children} />}
   </Element>
 );
 
