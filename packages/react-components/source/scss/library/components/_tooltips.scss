@@ -1,23 +1,104 @@
-$puppet-tooltip-hint-bg: rgba($puppet-black, 0.9) !default;
-$puppet-tooltip-hint-color: $puppet-n400 !default;
+$puppet-tooltip-hint-bg: rgba($puppet-black, 0.9) !important !default;
+$puppet-tooltip-hint-color: $puppet-n400 !important !default;
 $puppet-tooltip-hint-padding: $puppet-common-spacing-base
-  $puppet-common-spacing-base * 2 !default;
-$puppet-tooltip-hint-radius: $puppet-common-border-radius !default;
-$puppet-tooltip-hint-elevation: 24 !default;
+  $puppet-common-spacing-base * 2 !important !default;
+$puppet-tooltip-hint-radius: $puppet-common-border-radius !important !default;
+$puppet-tooltip-hint-elevation: 1000 !important !default;
+$puppet-tooltip-caret-width: $puppet-common-spacing-base * 2;
 
-.rc-tooltip-area {
+.rc-tooltip-container {
   display: inline-block;
+  position: relative;
 }
 
 .rc-tooltip {
   @include puppet-type-small();
 
-  background: $puppet-tooltip-hint-bg;
+  background-color: $puppet-tooltip-hint-bg;
   border-radius: $puppet-tooltip-hint-radius;
   color: $puppet-tooltip-hint-color;
-  overflow: hidden;
+  opacity: 0;
   padding: $puppet-tooltip-hint-padding;
-  position: fixed;
+  position: absolute;
+  transition: opacity, $puppet-common-transition-duration ease-in-out 1s !important;
+  visibility: hidden;
   white-space: nowrap;
+  width: fit-content;
   z-index: $puppet-tooltip-hint-elevation;
+}
+
+.rc-tooltip-container:hover .rc-tooltip {
+  opacity: 1;
+  transition: opacity $puppet-common-transition-duration ease-in-out 0s !important;
+  visibility: visible;
+}
+
+/* TOOLTIP POSITIONS */
+.rc-tooltip-container .rc-tooltip-top {
+  left: 50%;
+  top: 0;
+  transform: translate(-50%, calc(-100% - 10px));
+}
+
+.rc-tooltip-bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, calc(100% + 10px));
+}
+
+.rc-tooltip-right {
+  right: 0;
+  top: 50%;
+  transform: translate(calc(100% + 10px), -50%);
+}
+
+.rc-tooltip-left {
+  left: 0;
+  top: 50%;
+  transform: translate(calc(-100% - 10px), -50%);
+}
+
+/* CARETS */
+.rc-tooltip-top::after {
+  border: 10px solid rgba($puppet-black, 0.9);
+  border-color: rgba($puppet-black, 0.9) transparent transparent transparent;
+  bottom: -20px;
+  content: '';
+  display: block;
+  left: calc(50% - 10px);
+  position: absolute;
+  transform: translateX(calc(50% - 10px));
+}
+
+.rc-tooltip-right::after {
+  border: 10px solid rgba($puppet-black, 0.9);
+  border-color: transparent rgba($puppet-black, 0.9) transparent transparent;
+  content: '';
+  display: block;
+  left: 1px;
+  position: absolute;
+  top: 50%;
+  transform: translate(-20px, -50%);
+}
+
+.rc-tooltip-bottom::after {
+  border: 10px solid rgba($puppet-black, 0.9);
+  border-color: transparent transparent rgba($puppet-black, 0.9) transparent;
+  content: '';
+  display: block;
+  left: calc(50% - 10px);
+  position: absolute;
+  top: -20px;
+  transform: translateX(calc(50% - 10px));
+}
+
+.rc-tooltip-left::after {
+  border: 10px solid rgba($puppet-black, 0.9);
+  border-color: transparent transparent transparent rgba($puppet-black, 0.9);
+  content: '';
+  display: block;
+  position: absolute;
+  right: 1px; //shows small white gap when set to zero
+  top: 50%;
+  transform: translate(20px, -50%);
 }

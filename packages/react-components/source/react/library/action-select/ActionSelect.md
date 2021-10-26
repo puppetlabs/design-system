@@ -303,6 +303,54 @@ const style = { display: 'inline-block', margin: 10 };
 </div>;
 ```
 
+## Tooltip
+
+Pass a string or element to the `tooltip` prop to show a tooltip on hover. The tooltips position can be set with the `tooltipAnchor` prop.
+
+```jsx
+const { useState } = require('react');
+
+const tooltipMessage = `I'm a happy tooltip!`;
+const [tooltip, setTooltip] = useState(tooltipMessage);
+
+const actions = [
+  {
+    id: 'one',
+    icon: 'pencil',
+    label: 'Enable tooltip',
+    onClick() {
+      setTooltip(tooltipMessage);
+    },
+  },
+  {
+    id: 'two',
+    icon: 'send',
+    label: 'Disable tooltip',
+    onClick() {
+      setTooltip(undefined);
+    },
+  },
+];
+
+const style = { display: 'inline-block', margin: 10 };
+
+<div>
+  <ActionSelect
+    actions={actions}
+    tooltip={tooltip}
+    label="Choose an Action"
+    style={style}
+  />
+  <ActionSelect
+    actions={actions}
+    tooltip={tooltip}
+    tooltipAnchor="right"
+    icon="kebab"
+    style={style}
+  />
+</div>;
+```
+
 ## Related
 
 - [ButtonSelect](#/React%20Components/ButtonSelect)
@@ -311,3 +359,4 @@ const style = { display: 'inline-block', margin: 10 };
 - [Form.Field](#/React%20Components/FormField)
 - [Modal](#/React%20Components/Modal)
 - [Select](#/React%20Components/Select)
+- [TooltipHoverArea](/#/React%20Components/TooltipHoverArea)
