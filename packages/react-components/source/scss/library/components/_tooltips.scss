@@ -7,9 +7,8 @@ $puppet-tooltip-hint-elevation: 1000 !default;
 $puppet-tooltip-caret-total-width: 6px;
 $puppet-tooltip-caret-visible-width: 3px;
 $puppet-caret-offset: 12px;
-$puppet-caret-vertical-offset: calc(
-  100% + (#{$puppet-tooltip-caret-total-width})
-);
+$puppet-caret-vertical-offset: calc(100% + #{$puppet-tooltip-caret-total-width});
+
 .rc-tooltip-container {
   display: inline-block;
   position: relative;
@@ -41,10 +40,7 @@ $puppet-caret-vertical-offset: calc(
 .rc-tooltip-container .rc-tooltip-top {
   left: 50%;
   top: 0;
-  transform: translate(
-    -50%,
-    calc(-100% - #{$puppet-tooltip-caret-total-width})
-  );
+  transform: translate(-50%, calc(-100% - #{$puppet-tooltip-caret-total-width}));
 }
 
 .rc-tooltip-bottom {
@@ -62,10 +58,7 @@ $puppet-caret-vertical-offset: calc(
 .rc-tooltip-left {
   left: 0.5px;
   top: 50%;
-  transform: translate(
-    calc(-100% - #{$puppet-tooltip-caret-total-width}),
-    -50%
-  );
+  transform: translate(calc(-100% - #{$puppet-tooltip-caret-total-width}), -50%);
 }
 
 /* CARETS */
