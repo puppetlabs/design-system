@@ -45,12 +45,12 @@ const TooltipHoverArea = ({
 }) => {
   return enabled && !!children ? (
     <span
+      aria-hidden="true"
       className={classNames(`rc-tooltip-container`, className)}
       onClick={onClick}
       onKeyPress={onClick}
     >
       <div
-        aria-hidden="true"
         className={classNames('rc-tooltip', `rc-tooltip-${anchor}`)}
         style={{ ...style }}
       >
