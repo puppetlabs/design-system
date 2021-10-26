@@ -62,12 +62,6 @@ const propTypes = {
   width: PropTypes.string,
   /** Optional inline style passed to the outer element */
   style: PropTypes.shape({}),
-
-  /** Optional string or Element to be display in a tooltip. If this parameter is not provided or it's falsey, tooltip will not be displayed */
-  tooltip: PropTypes.node,
-
-  /** Optional position of tooltip */
-  tooltipAnchor: PropTypes.oneOf(['bottom', 'right', 'left', 'top']),
 };
 
 const defaultProps = {
@@ -83,8 +77,6 @@ const defaultProps = {
   className: '',
   width: null,
   style: {},
-  tooltip: '',
-  tooltipAnchor: 'top',
 };
 
 class ActionSelect extends Component {
@@ -185,31 +177,25 @@ class ActionSelect extends Component {
           this.container = container;
         }}
       >
-        <TooltipHoverArea
-          enabled={!!tooltip}
-          anchor={tooltipAnchor}
-          tooltip={tooltip}
+        <Button
+          type={type}
+          innerFocus={innerFocus}
+          weight={weight}
+          icon={icon}
+          trailingIcon={icon ? null : 'chevron-down'}
+          style={width ? { width, textAlign: 'left' } : null}
+          disabled={disabled}
+          loading={loading}
+          aria-haspopup="true"
+          aria-controls={`${id}-menu`}
+          aria-expanded={open}
+          onClick={this.onClickButton}
+          ref={button => {
+            this.button = button;
+          }}
         >
-          <Button
-            type={type}
-            innerFocus={innerFocus}
-            weight={weight}
-            icon={icon}
-            trailingIcon={icon ? null : 'chevron-down'}
-            style={width ? { width, textAlign: 'left' } : null}
-            disabled={disabled}
-            loading={loading}
-            aria-haspopup="true"
-            aria-controls={`${id}-menu`}
-            aria-expanded={open}
-            onClick={this.onClickButton}
-            ref={button => {
-              this.button = button;
-            }}
-          >
-            {label}
-          </Button>
-        </TooltipHoverArea>
+          {label}
+        </Button>
         <ActionMenuList
           id={`${id}-menu`}
           actions={actions}

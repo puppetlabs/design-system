@@ -49,11 +49,9 @@ const TooltipHoverArea = ({
       className={classNames(`rc-tooltip-container`, className)}
       onClick={onClick}
       onKeyPress={onClick}
+      style={{ ...style }}
     >
-      <div
-        className={classNames('rc-tooltip', `rc-tooltip-${anchor}`)}
-        style={{ ...style }}
-      >
+      <div className={classNames('rc-tooltip', `rc-tooltip-${anchor}`)}>
         {tooltip}
       </div>
       {children}
