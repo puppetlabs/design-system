@@ -2,7 +2,7 @@ _Note: Aria attributes to be set on Tooltip and TooltipHoverArea components post
 
 ## Overview
 
-Use tooltips to provide instructional or contextual information beyond what fits in short descriptions. Tooltips fall under two length categories. Short tooltips are one line and their width is determined by the length of content they contain. Long tooltips have a specified width and vary in height to accommodate their content. By default, tooltips are viewed on-hover, but long tooltips have a variation where they’re invoked with a click and need to be explicitly dismissed. Use the long variation if the tooltip contains a link.
+Use tooltips to provide instructional or contextual information beyond what fits in short descriptions. Tooltips fall under two length categories. Short tooltips are one line and their width is determined by the length of content they contain. Long tooltips have a specified width and vary in height to accommodate their content. By default, tooltips are viewed on-hover, but long tooltips have a variation where they’re invoked with a click and need to be explicitly dismissed. Use the long variation if the tooltip contains a link. It is recommended you apply style and classes to TooltipHoverArea, not the children. Because this component is a wrapper, any styles or classes passed to TootipHoverArea will be passed to the children when it is disabled to ensure continuity.
 
 ### Microcopy
 

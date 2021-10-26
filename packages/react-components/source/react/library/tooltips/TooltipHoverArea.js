@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { cloneElement } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -26,6 +26,7 @@ export const defaultProps = {
   enabled: true,
   onClick: undefined,
 };
+
 /**
  *
  * When elements inside a `Tooltip` are hovered over or focussed on, a tooltip will render next to it.
@@ -43,7 +44,14 @@ const TooltipHoverArea = ({
   style,
   enabled,
 }) => {
-  return enabled && !!children ? (
+  /** Styles and classes need to be passed to the children if they are not being wrapped for them to display correctly */
+  const PassClassesToChildren = () =>
+    children &&
+    React.Children.map(children, child =>
+      cloneElement(child, { style, className }),
+    );
+
+  return enabled && !!children && !!tooltip ? (
     <span
       aria-hidden="true"
       className={classNames(`rc-tooltip-container`, className)}
@@ -57,7 +65,7 @@ const TooltipHoverArea = ({
       {children}
     </span>
   ) : (
-    children
+    <PassClassesToChildren />
   );
 };
 
