@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Button from '../button';
 import ActionMenuList from '../../internal/action-menu-list';
-import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 import { anchorOrientation } from '../../helpers/customPropTypes';
 import Icon from '../icon';
 import { getDropdownPosition, focus } from '../../helpers/statics';
@@ -157,8 +156,6 @@ class ActionSelect extends Component {
       className,
       width,
       style,
-      tooltip,
-      tooltipAnchor,
     } = this.props;
 
     return (
