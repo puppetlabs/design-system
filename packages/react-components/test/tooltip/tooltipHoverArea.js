@@ -25,7 +25,7 @@ describe('<TooltipHoverArea />', () => {
       <TooltipHoverArea {...defaultProps} enabled={false} />,
     );
 
-    expect(wrapper.find('.rc-tooltip-container')).to.have.length(0);
+    expect(wrapper.find('.rc-tooltip-container')).to.have.length(1);
     expect(wrapper.find('.rc-tooltip')).to.have.length(0);
   });
 });
