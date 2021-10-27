@@ -24,6 +24,7 @@ import Loading from './react/library/loading';
 import Logo from './react/library/logo';
 import Modal from './react/library/modal';
 import Popover from './react/library/popover';
+import Stepper from './react/library/stepper';
 import RadioButton from './react/library/radiobutton';
 import Select from './react/library/select';
 import SidePanel from './react/library/sidepanel';
@@ -63,6 +64,7 @@ export {
   Logo,
   Modal,
   Popover,
+  Stepper,
   RadioButton,
   Select,
   SidePanel,

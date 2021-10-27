@@ -13,18 +13,19 @@ describe('<TooltipHoverArea />', () => {
     children: <span className="target">I'm the target</span>,
   };
 
-  it('should just render wrapper around children by default', () => {
+  it('should render wrapper around children by default', () => {
     const wrapper = shallow(<TooltipHoverArea {...defaultProps} />);
 
-    expect(wrapper.find('.target')).to.have.length(1);
-    expect(wrapper.find('.tooltip')).to.have.length(0);
+    expect(wrapper.find('.rc-tooltip-container')).to.have.length(1);
+    expect(wrapper.find('.rc-tooltip')).to.have.length(1);
   });
 
-  xit('should render tooltip when open', () => {
-    const wrapper = mount(<TooltipHoverArea {...defaultProps} />);
-    wrapper.setState({ open: true });
+  it('should not wrap children when enabled is false', () => {
+    const wrapper = mount(
+      <TooltipHoverArea {...defaultProps} enabled={false} />,
+    );
 
-    expect(wrapper.find('.target')).to.have.length(1);
-    expect(wrapper.find('.tooltip')).to.have.length(1);
+    expect(wrapper.find('.rc-tooltip-container')).to.have.length(1);
+    expect(wrapper.find('.rc-tooltip')).to.have.length(0);
   });
 });

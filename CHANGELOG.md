@@ -1,3 +1,7 @@
+# react-components 6.0.0-alpha.10 (2021-10-27)
+
+- Merge 5.30.0 into alpha
+
 # react-components 6.0.0-alpha.8 (2021-08-12)
 
 - [Overlay] Remove Overlay until build error is resolved
@@ -16,6 +20,20 @@
 # react-components 6.0.0-alpha.4 (2021-07-12)
 
 - Upgrade dependencies #450
+# react-components 5.30.0 (2021-10-27)
+
+- [TooltipHoverArea] Update use CSS for hover and positioning logic. Add caret (by [@krable55](https://github.com/krable55) in [#477](https://github.com/puppetlabs/design-system/pull/477))
+
+# react-components 5.29.4 (2021-09-27)
+
+- [Icon] Add accessibility warning message to Icon docs (by [@cathal](https://github.com/cathal41) in [#466](https://github.com/puppetlabs/design-system/pull/466))
+
+# react-components 5.29.3 (2021-08-23)
+
+- [Stepper] Add Stepper container component (by [@desmondbera](https://github.com/desmondbera)
+  in [#459](https://github.com/puppetlabs/design-system/pull/459))
+- [StepperStep] Add StepperStep component (
+  by [@desmondbera](https://github.com/desmondbera) in [#459](https://github.com/puppetlabs/design-system/pull/459))
 
 # react-components 5.29.2 (2021-07-07)
 
