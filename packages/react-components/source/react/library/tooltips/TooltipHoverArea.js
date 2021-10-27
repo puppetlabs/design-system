@@ -1,4 +1,4 @@
-import React, { cloneElement } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 
@@ -44,14 +44,7 @@ const TooltipHoverArea = ({
   style,
   enabled,
 }) => {
-  /** Styles and classes need to be passed to the children if they are not being wrapped for them to display correctly */
-  const PassClassesToChildren = () =>
-    children &&
-    React.Children.map(children, child =>
-      cloneElement(child, { style, className }),
-    );
-
-  return enabled && !!children && !!tooltip ? (
+  return (
     <span
       aria-hidden="true"
       className={classNames(`rc-tooltip-container`, className)}
@@ -59,13 +52,13 @@ const TooltipHoverArea = ({
       onKeyPress={onClick}
       style={{ ...style }}
     >
-      <div className={classNames('rc-tooltip', `rc-tooltip-${anchor}`)}>
-        {tooltip}
-      </div>
+      {enabled && !!children && !!tooltip && (
+        <div className={classNames('rc-tooltip', `rc-tooltip-${anchor}`)}>
+          {tooltip}
+        </div>
+      )}
       {children}
     </span>
-  ) : (
-    <PassClassesToChildren />
   );
 };
 

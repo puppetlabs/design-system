@@ -6,7 +6,7 @@ $puppet-tooltip-hint-radius: $puppet-common-border-radius !default;
 $puppet-tooltip-hint-elevation: 1000 !default;
 $puppet-tooltip-caret-total-width: 6px;
 $puppet-tooltip-caret-visible-width: 3px;
-$puppet-caret-offset: 12px;
+$puppet-caret-offset: 11.5px;
 $puppet-caret-vertical-offset: calc(100% + #{$puppet-tooltip-caret-total-width});
 
 .rc-tooltip-container {
@@ -37,7 +37,7 @@ $puppet-caret-vertical-offset: calc(100% + #{$puppet-tooltip-caret-total-width})
 }
 
 /* TOOLTIP POSITIONS */
-.rc-tooltip-container .rc-tooltip-top {
+.rc-tooltip-top {
   left: 50%;
   top: 0;
   transform: translate(-50%, calc(-100% - #{$puppet-tooltip-caret-total-width}));
@@ -68,9 +68,9 @@ $puppet-caret-vertical-offset: calc(100% + #{$puppet-tooltip-caret-total-width})
   bottom: -$puppet-caret-offset;
   content: '';
   display: block;
-  left: calc(50% - #{$puppet-tooltip-caret-total-width});
+  left: 50%;
   position: absolute;
-  transform: translateX(calc(50% - #{$puppet-tooltip-caret-visible-width}));
+  transform: translateX(-50%);
 }
 
 .rc-tooltip-right::after {
@@ -89,10 +89,10 @@ $puppet-caret-vertical-offset: calc(100% + #{$puppet-tooltip-caret-total-width})
   border-color: transparent transparent rgba($puppet-black, 0.9) transparent;
   content: '';
   display: block;
-  left: calc(50% - #{$puppet-tooltip-caret-total-width});
+  left: 50%;
   position: absolute;
   top: -$puppet-caret-offset;
-  transform: translateX(calc(50% - #{$puppet-tooltip-caret-visible-width}));
+  transform: translateX(-50%);
 }
 
 .rc-tooltip-left::after {
