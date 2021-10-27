@@ -1,3 +1,7 @@
+# react-components 6.0.0-alpha.10 (2021-10-27)
+
+- Merge 5.30.0 into alpha
+
 # react-components 6.0.0-alpha.8 (2021-08-12)
 
 - [Overlay] Remove Overlay until build error is resolved
