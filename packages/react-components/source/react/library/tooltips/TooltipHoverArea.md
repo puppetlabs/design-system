@@ -43,3 +43,24 @@ const childStyle = {
   </div>
 </div>;
 ```
+
+### Example: Enable/Disable `TooltipHoverArea`
+
+```jsx
+const Button = require('../button/Button.js').default;
+const { useState } = require('react');
+
+const [modalIsEnabled, setEnabled] = useState(true);
+
+<div>
+  <TooltipHoverArea
+    enabled={modalIsEnabled}
+    tooltip="I'm a happy tooltip!"
+    anchor="right"
+  >
+    <Button onClick={() => setEnabled(!modalIsEnabled)}>
+      {`Click me to ${modalIsEnabled ? 'disable' : 'enable'} tooltip`}
+    </Button>
+  </TooltipHoverArea>
+</div>;
+```

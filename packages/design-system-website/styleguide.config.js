@@ -149,6 +149,7 @@ module.exports = {
         '**/sidebar/SidebarItem.js',
         '**/sidebar/SidebarNavigation.js',
         '**/sidebar/SidebarSection.js',
+        '**/stepper/StepperStep.js',
         '**/icon/icons.js',
         '**/icon/constants.js',
         '**/tabs/Tab.js',

@@ -4,15 +4,21 @@ The Data Grid package was developed to aid in the structuring of data. By using 
 
 To add the Data Grid package to your library run
 
-**npm install @puppet/Data-Grid**
+```sh
+npm install @puppet/data-grid
+```
 
 In your .js file which will be rendering the Data Grid Table component you can reference your node modules instance with the following command:
 
-**import { Table } from '@puppet/data-grid';**
+```jsx
+import { Table } from '@puppet/data-grid';
+```
 
 In your app level index.scss add the command below to import the Data Grids styles
 
-**@import '~@puppet/data-grid/dist/index';**
+```jsx
+@import '~@puppet/data-grid/dist/index';
+```
 
 ### Basic use
 

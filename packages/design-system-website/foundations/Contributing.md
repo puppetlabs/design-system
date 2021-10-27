@@ -22,9 +22,9 @@ Once handed a design comp it is generally the engineers responsibility to levera
 2. If a pre-baked component is not available, attempt to leverage the design system patterns encoded in our [sass-variable](https://github.com/puppetlabs/design-system/tree/master/packages/sass-variables) package. These Sass variables and mixins encode our lowest-level foundational elements including typography, color palettes, and common patterns such as borders and focus outlines.
 3. If you still can't find an existing asset, alert your designer: it may be a mistake, or they may not have done due-diligence in attempting to use existing patterns.
 
-For instructions on getting your app set up to consume design system assets please refer to the [README.md](https://github.com/puppetlabs/design-system/blob/development/README.md).
+For instructions on getting your app set up to consume design system assets please refer to the [README.md](https://github.com/puppetlabs/design-system/blob/main/README.md).
 
-For contributing, see [CONTRIBUTING.md](https://github.com/puppetlabs/design-system/blob/development/CONTRIBUTING.md).
+For contributing, see [CONTRIBUTING.md](https://github.com/puppetlabs/design-system/blob/main/CONTRIBUTING.md).
 
 ## Extending the System
 
@@ -65,7 +65,7 @@ Once a pattern has been hardened and validated, it may be a good candidate for a
 New design and code patterns should be submitted in tandem to maintain parity. As implementation and adoption of these designs will impact multiple teams, a high degree of scrutiny will be applied to the design and code to assure that it meets our criteria.
 
 - [Design contribution criteria](#/Foundations/Design)
-- [Engineering contribution criteria](https://github.com/puppetlabs/design-system/blob/development/CONTRIBUTING.md)
+- [Engineering contribution criteria](https://github.com/puppetlabs/design-system/blob/main/CONTRIBUTING.md)
 
 ### Review
 
