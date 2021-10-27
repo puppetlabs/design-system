@@ -1,3 +1,7 @@
+# react-components 5.30.0 (2021-10-27)
+
+- [TooltipHoverArea] Update use CSS for hover and positioning logic. Add caret (by [@krable55](https://github.com/krable55) in [#477](https://github.com/puppetlabs/design-system/pull/477))
+
 # react-components 5.29.4 (2021-09-27)
 
 - [Icon] Add accessibility warning message to Icon docs (by [@cathal](https://github.com/cathal41) in [#466](https://github.com/puppetlabs/design-system/pull/466))
