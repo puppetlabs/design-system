@@ -20,13 +20,14 @@ $puppet-caret-vertical-offset: calc(100% + #{$puppet-tooltip-caret-total-width})
   background-color: $puppet-tooltip-hint-bg;
   border-radius: $puppet-tooltip-hint-radius;
   color: $puppet-tooltip-hint-color;
+  max-width: 200px;
   opacity: 0;
   padding: $puppet-tooltip-hint-padding;
   position: absolute;
+  text-align: center;
   transition: opacity, $puppet-common-transition-duration ease-in-out;
   visibility: hidden;
-  white-space: nowrap;
-  width: fit-content;
+  width: max-content;
   z-index: $puppet-tooltip-hint-elevation;
 }
 
