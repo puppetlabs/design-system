@@ -12,53 +12,57 @@ $puppet-tooltip-hint-elevation: 1000 !default;
   background-color: $puppet-tooltip-hint-bg;
   border-radius: $puppet-tooltip-hint-radius;
   color: $puppet-tooltip-hint-color;
+  max-width: 200px;
   opacity: 0;
   padding: $puppet-tooltip-hint-padding;
-  pointer-events: none;
+  //pointer-events: none;
   position: absolute;
+  text-align: center;
   transition: opacity, $puppet-common-transition-duration ease-in-out;
   visibility: hidden;
-  white-space: nowrap;
-  width: fit-content;
   z-index: $puppet-tooltip-hint-elevation;
+}
+.rc-tooltip-reference {
+  display: inline-block;
 }
 .rc-tooltip[data-show] {
   opacity: 1;
   transition: opacity $puppet-common-transition-duration ease-in-out 0s;
   visibility: visible;
 }
-.rc-tooltip-arrow,
-.rc-tooltip-arrow::before {
+#rc-tooltip-arrow,
+#rc-tooltip-arrow::before {
   position: absolute;
   width: 6px;
   height: 6px;
   background: inherit;
+  text-align: initial;
 }
 
-.rc-tooltip-arrow {
+#rc-tooltip-arrow {
   visibility: hidden;
 }
 
-.rc-tooltip-arrow::before {
+#rc-tooltip-arrow::before {
   visibility: visible;
   content: '';
   transform: rotate(45deg);
 }
-.rc-tooltip-arrow[data-hide] {
+#rc-tooltip-arrow[data-hide] {
   visibility: hidden;
 }
-.rc-tooltip[data-popper-placement^='top'] > .rc-tooltip-arrow {
+.rc-tooltip[data-popper-placement^='top'] > #rc-tooltip-arrow {
   bottom: -3px;
 }
 
-.rc-tooltip[data-popper-placement^='bottom'] > .rc-tooltip-arrow {
+.rc-tooltip[data-popper-placement^='bottom'] > #rc-tooltip-arrow {
   top: -3px;
 }
 
-.rc-tooltip[data-popper-placement^='left'] > .rc-tooltip-arrow {
+.rc-tooltip[data-popper-placement^='left'] > #rc-tooltip-arrow {
   right: -3px;
 }
 
-.rc-tooltip[data-popper-placement^='right'] > .rc-tooltip-arrow {
+.rc-tooltip[data-popper-placement^='right'] > #rc-tooltip-arrow {
   left: -3px;
 }

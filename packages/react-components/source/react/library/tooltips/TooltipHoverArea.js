@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -53,9 +53,14 @@ const TooltipHoverArea = ({
   enabled,
   ...popperOptions
 }) => {
-  const arrowRef = useRef(null);
+  // Tooltip references
+  const [arrowElement, setArrowReference] = useState(null);
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
+
+  // Create delay timer for tooltip
+  const [timer, setTimer] = useState(null);
+  const [isActive, setIsActive] = useState(false);
 
   const popperModifiers = [
     {
@@ -66,7 +71,7 @@ const TooltipHoverArea = ({
       name: 'arrow',
       enabled: popperOptions.arrow,
       options: {
-        element: arrowRef?.current,
+        element: arrowElement,
         padding: 1,
         offset: [0, 6],
       },
@@ -94,15 +99,18 @@ const TooltipHoverArea = ({
     modifiers: popperModifiers,
   });
 
-  const handleMouseEvent = event => () => {
-    if (event === 'mouseover') {
-      popperElement?.setAttribute('data-show', '');
-    } else {
-      popperElement?.removeAttribute('data-show');
-    }
-  };
+  // Manage tooltip attributes
+  const showTooltip = () => popperElement?.setAttribute('data-show', '');
+  const hideTooltip = () => popperElement?.removeAttribute('data-show');
 
-  const addListeners = () => {
+  // Manage tooltip visibility
+  const mouseIn = () => enabled && setIsActive(true);
+  const mouseOut = () => setIsActive(false);
+
+  const handleMouseEvent = event =>
+    event === 'mouseover' ? mouseIn : mouseOut;
+
+  const addListeners = () =>
     ['mouseover', 'mouseout'].forEach(event => {
       referenceElement?.addEventListener?.(
         event,
@@ -110,8 +118,8 @@ const TooltipHoverArea = ({
         true,
       );
     });
-  };
-  const removeListeners = () => {
+
+  const removeListeners = () =>
     ['mouseover', 'mouseout'].forEach((event, i) => {
       referenceElement?.removeEventListener?.(
         event,
@@ -119,12 +127,28 @@ const TooltipHoverArea = ({
         true,
       );
     });
-  };
 
+  // Add listeners on mount
   useEffect(() => {
     addListeners();
     return () => removeListeners();
-  }, [referenceElement]);
+  }, [referenceElement, popperElement]);
+
+  // Handle tooltip visibility
+  useEffect(() => {
+    console.log('is rendering tooltip');
+    clearInterval(timer);
+    if (!isActive) {
+      let interval = setInterval(() => hideTooltip(), 1000);
+      setTimer(interval);
+    } else if (enabled) {
+      showTooltip();
+    }
+    return () => {
+      clearInterval(timer);
+      hideTooltip();
+    };
+  }, [isActive, enabled]);
 
   const root = document.getElementsByClassName('app')[0];
 
@@ -138,20 +162,34 @@ const TooltipHoverArea = ({
             ref={setPopperElement}
             style={styles.popper}
             {...attributes.popper}
+            onMouseEnter={mouseIn}
+            onMouseLeave={mouseOut}
           >
             {popperOptions.arrow && (
               <span
-                className="rc-tooltip-arrow"
+                id="rc-tooltip-arrow"
                 style={styles.arrow}
                 {...attributes.arrow}
-                ref={arrowRef}
+                ref={setArrowReference}
               />
             )}
             {tooltip}
           </div>,
           root,
         )}
-      {React.cloneElement(children, { ref: setReferenceElement })}
+      {/* 
+       <span ref={setReferenceElement} className="rc-tooltip-reference">
+        {children}
+      </span> */}
+      {React.cloneElement(children, {
+        // Preserves pre-existing refs
+        ref: node => {
+          setReferenceElement(node);
+          const { ref } = children;
+          if (typeof ref === 'function') ref(node);
+          else if (ref) ref.current = node;
+        },
+      })}
     </>
   );
 };
