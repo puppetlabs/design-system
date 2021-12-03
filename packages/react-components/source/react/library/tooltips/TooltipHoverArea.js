@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
+import React, { useState, useEffect, render } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { usePopper } from 'react-popper';
+import { usePopper, Popper } from 'react-popper';
+import Portal from '../portal/portal';
 
 export const propTypes = {
   /** Position of tooltip relative to the activating element */
@@ -23,6 +23,9 @@ export const propTypes = {
   flip: PropTypes.bool,
   //Add popper arrow option described in https://popper.js.org/popper-documentation.html#modifiers
   arrow: PropTypes.bool,
+
+  //Positioning options for popper.js
+  position: PropTypes.oneOf(['fixed', 'absolute']),
 };
 
 export const defaultProps = {
@@ -33,6 +36,7 @@ export const defaultProps = {
   onClick: undefined,
   flip: true,
   arrow: true,
+  position: 'fixed',
 };
 
 /**
@@ -51,16 +55,13 @@ const TooltipHoverArea = ({
   onClick,
   style,
   enabled,
+  position,
   ...popperOptions
 }) => {
   // Tooltip references
   const [arrowElement, setArrowReference] = useState(null);
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
-
-  // Create delay timer for tooltip
-  const [timer, setTimer] = useState(null);
-  const [isActive, setIsActive] = useState(false);
 
   const popperModifiers = [
     {
@@ -85,6 +86,7 @@ const TooltipHoverArea = ({
     {
       name: 'preventOverflow',
       options: {
+        rootBoundary: 'document',
         padding: 0,
       },
     },
@@ -94,73 +96,40 @@ const TooltipHoverArea = ({
     },
   ];
 
-  const { styles, attributes } = usePopper(referenceElement, popperElement, {
-    placement: anchor,
-    modifiers: popperModifiers,
-  });
+  const { styles, attributes, update } = usePopper(
+    referenceElement,
+    popperElement,
+    {
+      placement: anchor,
+      modifiers: popperModifiers,
+      strategy: position,
+    },
+  );
 
   // Manage tooltip attributes
   const showTooltip = () => popperElement?.setAttribute('data-show', '');
   const hideTooltip = () => popperElement?.removeAttribute('data-show');
 
   // Manage tooltip visibility
-  const mouseIn = () => enabled && setIsActive(true);
-  const mouseOut = () => setIsActive(false);
+  const mouseIn = () => {
+    // popper.js doesn't take into account layout changes, so we need to update it manually
+    update?.();
+    enabled && showTooltip();
+  };
+  const mouseOut = () => hideTooltip();
 
-  const handleMouseEvent = event =>
-    event === 'mouseover' ? mouseIn : mouseOut;
-
-  const addListeners = () =>
-    ['mouseover', 'mouseout'].forEach(event => {
-      referenceElement?.addEventListener?.(
-        event,
-        handleMouseEvent(event),
-        true,
-      );
-    });
-
-  const removeListeners = () =>
-    ['mouseover', 'mouseout'].forEach((event, i) => {
-      referenceElement?.removeEventListener?.(
-        event,
-        handleMouseEvent(event),
-        true,
-      );
-    });
-
-  // Add listeners on mount
   useEffect(() => {
-    addListeners();
-    return () => removeListeners();
-  }, [referenceElement, popperElement]);
-
-  // Handle tooltip visibility
-  useEffect(() => {
-    console.log('is rendering tooltip');
-    clearInterval(timer);
-    if (!isActive) {
-      let interval = setInterval(() => hideTooltip(), 1000);
-      setTimer(interval);
-    } else if (enabled) {
-      showTooltip();
-    }
-    return () => {
-      clearInterval(timer);
-      hideTooltip();
-    };
-  }, [isActive, enabled]);
-
-  const root = document.getElementsByClassName('app')[0];
+    !enabled && hideTooltip();
+  }, [enabled, children, referenceElement]);
 
   return (
     <>
-      {!!children &&
-        !!tooltip &&
-        createPortal(
+      {!!children && !!tooltip && (
+        <Portal>
           <div
             className={classNames('rc-tooltip', className)}
             ref={setPopperElement}
-            style={styles.popper}
+            style={{ ...styles.popper, ...style }}
             {...attributes.popper}
             onMouseEnter={mouseIn}
             onMouseLeave={mouseOut}
@@ -174,22 +143,17 @@ const TooltipHoverArea = ({
               />
             )}
             {tooltip}
-          </div>,
-          root,
-        )}
-      {/* 
-       <span ref={setReferenceElement} className="rc-tooltip-reference">
+          </div>
+        </Portal>
+      )}
+      <div
+        ref={setReferenceElement}
+        className="rc-tooltip-reference"
+        onMouseEnter={mouseIn}
+        onMouseLeave={mouseOut}
+      >
         {children}
-      </span> */}
-      {React.cloneElement(children, {
-        // Preserves pre-existing refs
-        ref: node => {
-          setReferenceElement(node);
-          const { ref } = children;
-          if (typeof ref === 'function') ref(node);
-          else if (ref) ref.current = node;
-        },
-      })}
+      </div>
     </>
   );
 };
