@@ -37,7 +37,9 @@ $puppet-tooltip-hint-elevation: 1000 !default;
   background: inherit;
   text-align: initial;
 }
-
+.rc-tooltip-reference {
+  display: inline-block;
+}
 #rc-tooltip-arrow {
   visibility: hidden;
 }
