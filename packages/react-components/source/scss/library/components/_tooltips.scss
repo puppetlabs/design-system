@@ -21,7 +21,6 @@ $puppet-tooltip-hint-elevation: 1000 !default;
   transition: opacity, $puppet-common-transition-duration ease-in-out;
   visibility: hidden;
   z-index: $puppet-tooltip-hint-elevation;
-  width: max-content;
 }
 
 .rc-tooltip[data-show] {
@@ -37,7 +36,12 @@ $puppet-tooltip-hint-elevation: 1000 !default;
   background: inherit;
   text-align: initial;
 }
+
+// reverts to display-inline block if its not inheriting from its parent
 .rc-tooltip-reference {
+  display: revert;
+}
+.rc-tooltip-reference div {
   display: inline-block;
 }
 #rc-tooltip-arrow {

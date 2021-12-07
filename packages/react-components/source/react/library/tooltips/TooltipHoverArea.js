@@ -19,13 +19,10 @@ export const propTypes = {
   style: PropTypes.shape({}),
   /** Optional, prevents tooltip from displaying when false */
   enabled: PropTypes.bool,
-  //Add popper flip option described in https://popper.js.org/popper-documentation.html#modifiers
-  flip: PropTypes.bool,
-  //Add popper arrow option described in https://popper.js.org/popper-documentation.html#modifiers
+  /** Show arrow on tooltip. Default is true */
   arrow: PropTypes.bool,
-
-  //Positioning options for popper.js
-  position: PropTypes.oneOf(['fixed', 'absolute']),
+  /** Text alignment options for tooltip */
+  textAlign: PropTypes.oneOf(['left', 'center', 'right']),
 };
 
 export const defaultProps = {
@@ -34,7 +31,6 @@ export const defaultProps = {
   style: {},
   enabled: true,
   onClick: undefined,
-  flip: true,
   arrow: true,
   position: 'fixed',
 };
@@ -56,6 +52,7 @@ const TooltipHoverArea = ({
   style,
   enabled,
   position,
+  textAlign = 'center',
   ...popperOptions
 }) => {
   // Tooltip references
@@ -66,7 +63,7 @@ const TooltipHoverArea = ({
   const popperModifiers = [
     {
       name: 'flip',
-      enabled: popperOptions.flip,
+      enabled: true,
     },
     {
       name: 'arrow',
@@ -106,6 +103,9 @@ const TooltipHoverArea = ({
     },
   );
 
+  // only limit tooltip width when the tooltip is a string
+  const maxWidth = typeof tooltip === 'string' ? '200px' : 'fit-content';
+
   // Manage tooltip attributes
   const showTooltip = () => popperElement?.setAttribute('data-show', '');
   const hideTooltip = () => popperElement?.removeAttribute('data-show');
@@ -129,10 +129,11 @@ const TooltipHoverArea = ({
           <div
             className={classNames('rc-tooltip', className)}
             ref={setPopperElement}
-            style={{ ...styles.popper, ...style }}
+            style={{ ...styles.popper, textAlign, maxWidth, ...style }}
             {...attributes.popper}
             onMouseEnter={mouseIn}
             onMouseLeave={mouseOut}
+            onClick={onClick}
           >
             {popperOptions.arrow && (
               <span
