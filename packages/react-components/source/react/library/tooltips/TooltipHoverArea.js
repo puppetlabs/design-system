@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { usePopper } from 'react-popper';
@@ -62,7 +62,9 @@ const TooltipHoverArea = ({
   const [arrowElement, setArrowReference] = useState(null);
   const [referenceElement, setReferenceElement] = useState(null);
   const [popperElement, setPopperElement] = useState(null);
-
+  const { current: tooltipId } = useRef(
+    `tooltip-${Math.floor(Math.random() * 10000)}`,
+  );
   const popperModifiers = [
     {
       name: 'flip',
@@ -125,8 +127,6 @@ const TooltipHoverArea = ({
     if (disabled) hideTooltip();
   }, [disabled, children, referenceElement]);
 
-  // unique id for aria-tooltip
-  const tooltipId = `tooltip-${Math.floor(Math.random() * 10000)}`;
   return (
     <>
       {!!children && !!tooltip && (
