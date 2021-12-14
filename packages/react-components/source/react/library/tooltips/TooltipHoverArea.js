@@ -1,7 +1,7 @@
-import React, { useState, useEffect, render } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { usePopper, Popper } from 'react-popper';
+import { usePopper } from 'react-popper';
 import Portal from '../portal/portal';
 
 export const propTypes = {
@@ -23,6 +23,8 @@ export const propTypes = {
   arrow: PropTypes.bool,
   /** Text alignment options for tooltip */
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  /** Position of tooltip relative to the activating element */
+  position: PropTypes.oneOf(['absolute', 'fixed', 'relative']),
 };
 
 export const defaultProps = {
@@ -33,7 +35,7 @@ export const defaultProps = {
   onClick: undefined,
   arrow: true,
   position: 'fixed',
-  inlineBlock: true,
+  textAlign: 'center',
 };
 
 /**
@@ -53,8 +55,7 @@ const TooltipHoverArea = ({
   style,
   disabled,
   position,
-  inlineBlock,
-  textAlign = 'center',
+  textAlign,
   ...popperOptions
 }) => {
   // Tooltip references
@@ -115,6 +116,7 @@ const TooltipHoverArea = ({
   // Manage tooltip visibility
   const mouseIn = () => {
     // popper.js doesn't take into account layout changes, so we need to update it manually
+    // eslint-disable-next-line
     update?.();
     !disabled && showTooltip();
   };
