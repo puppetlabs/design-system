@@ -116,20 +116,20 @@ const TooltipHoverArea = ({
   // Manage tooltip visibility
   const mouseIn = () => {
     // popper.js doesn't take into account layout changes, so we need to update it manually
-    // eslint-disable-next-line
-    update?.();
-    !disabled && showTooltip();
+    update();
+    if (!disabled) showTooltip();
   };
   const mouseOut = () => hideTooltip();
 
   useEffect(() => {
-    disabled && hideTooltip();
+    if (disabled) hideTooltip();
   }, [disabled, children, referenceElement]);
 
   return (
     <>
       {!!children && !!tooltip && (
         <Portal>
+          {/* eslint-disable-next-line */}
           <div
             className={classNames('rc-tooltip', className)}
             ref={setPopperElement}
