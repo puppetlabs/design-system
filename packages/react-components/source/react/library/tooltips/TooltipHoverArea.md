@@ -50,16 +50,16 @@ const childStyle = {
 const Button = require('../button/Button.js').default;
 const { useState } = require('react');
 
-const [modalIsEnabled, setEnabled] = useState(true);
+const [modalIsDisabled, setDisabled] = useState(false);
 
 <div>
   <TooltipHoverArea
-    enabled={modalIsEnabled}
+    disabled={modalIsDisabled}
     tooltip="I'm a happy tooltip!"
     anchor="right"
   >
-    <Button onClick={() => setEnabled(!modalIsEnabled)}>
-      {`Click me to ${modalIsEnabled ? 'disable' : 'enable'} tooltip`}
+    <Button onClick={() => setDisabled(!modalIsDisabled)}>
+      {`Click me to ${modalIsDisabled ? 'disable' : 'enable'} tooltip`}
     </Button>
   </TooltipHoverArea>
 </div>;

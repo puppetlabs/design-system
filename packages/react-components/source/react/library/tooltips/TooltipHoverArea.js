@@ -17,8 +17,8 @@ export const propTypes = {
   className: PropTypes.string,
   /** Optional additional inline style */
   style: PropTypes.shape({}),
-  /** Optional, prevents tooltip from displaying when false */
-  enabled: PropTypes.bool,
+  /** Optional, prevents tooltip from displaying when true */
+  disabled: PropTypes.bool,
   /** Show arrow on tooltip. Default is true */
   arrow: PropTypes.bool,
   /** Text alignment options for tooltip */
@@ -29,10 +29,11 @@ export const defaultProps = {
   anchor: 'top',
   className: '',
   style: {},
-  enabled: true,
+  disabled: false,
   onClick: undefined,
   arrow: true,
   position: 'fixed',
+  inlineBlock: true,
 };
 
 /**
@@ -50,8 +51,9 @@ const TooltipHoverArea = ({
   tooltip,
   onClick,
   style,
-  enabled,
+  disabled,
   position,
+  inlineBlock,
   textAlign = 'center',
   ...popperOptions
 }) => {
@@ -89,7 +91,7 @@ const TooltipHoverArea = ({
     },
     {
       name: 'hide',
-      enabled: !enabled,
+      enabled: disabled,
     },
   ];
 
@@ -114,13 +116,13 @@ const TooltipHoverArea = ({
   const mouseIn = () => {
     // popper.js doesn't take into account layout changes, so we need to update it manually
     update?.();
-    enabled && showTooltip();
+    !disabled && showTooltip();
   };
   const mouseOut = () => hideTooltip();
 
   useEffect(() => {
-    !enabled && hideTooltip();
-  }, [enabled, children, referenceElement]);
+    disabled && hideTooltip();
+  }, [disabled, children, referenceElement]);
 
   return (
     <>

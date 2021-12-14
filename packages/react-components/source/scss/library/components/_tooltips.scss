@@ -37,13 +37,10 @@ $puppet-tooltip-hint-elevation: 1000 !default;
   text-align: initial;
 }
 
-// reverts to display-inline block if its not inheriting from its parent
 .rc-tooltip-reference {
-  display: revert;
-}
-.rc-tooltip-reference div {
   display: inline-block;
 }
+
 #rc-tooltip-arrow {
   visibility: hidden;
 }

@@ -21,9 +21,7 @@ describe('<TooltipHoverArea />', () => {
   });
 
   it('should not wrap children when enabled is false', () => {
-    const wrapper = mount(
-      <TooltipHoverArea {...defaultProps} enabled={false} />,
-    );
+    const wrapper = mount(<TooltipHoverArea {...defaultProps} disabled />);
 
     expect(wrapper.find('.rc-tooltip-container')).to.have.length(1);
     expect(wrapper.find('.rc-tooltip')).to.have.length(0);
