@@ -125,12 +125,15 @@ const TooltipHoverArea = ({
     if (disabled) hideTooltip();
   }, [disabled, children, referenceElement]);
 
+  // unique id for aria-tooltip
+  const tooltipId = `tooltip-${Math.floor(Math.random() * 10000)}`;
   return (
     <>
       {!!children && !!tooltip && (
         <Portal>
           {/* eslint-disable-next-line */}
           <div
+            id={tooltipId}
             className={classNames('rc-tooltip', className)}
             ref={setPopperElement}
             style={{ ...styles.popper, textAlign, maxWidth, ...style }}
@@ -154,7 +157,7 @@ const TooltipHoverArea = ({
       )}
       <div
         ref={setReferenceElement}
-        aria-describedby={classNames('rc-tooltip', className)}
+        aria-describedby={tooltipId}
         className="rc-tooltip-reference"
         onMouseEnter={mouseIn}
         onFocus={mouseIn}
