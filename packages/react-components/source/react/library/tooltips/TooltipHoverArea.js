@@ -136,6 +136,7 @@ const TooltipHoverArea = ({
             onMouseEnter={mouseIn}
             onMouseLeave={mouseOut}
             onClick={onClick}
+            role="tooltip"
           >
             {popperOptions.arrow && (
               <span
@@ -151,8 +152,11 @@ const TooltipHoverArea = ({
       )}
       <div
         ref={setReferenceElement}
+        aria-describedby={classNames('rc-tooltip', className)}
         className="rc-tooltip-reference"
         onMouseEnter={mouseIn}
+        onFocus={mouseIn}
+        onBlur={mouseOut}
         onMouseLeave={mouseOut}
       >
         {children}
