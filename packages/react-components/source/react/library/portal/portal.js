@@ -6,9 +6,10 @@ const propTypes = {
 };
 
 const Portal = ({ children, target = 'tooltip' }) => {
-  const root = document.getElementsByClassName('app')[0];
+  const root = document.getElementById('root');
   const portalId = `portal-${target}`;
   let portal = document.getElementById(portalId);
+
   if (!portal) {
     portal = document.createElement('div');
     portal.id = portalId;
