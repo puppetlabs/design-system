@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { usePopper } from 'react-popper';
-import Portal from '../portal/portal';
+import Portal from '../portal';
 
 export const propTypes = {
   /** Position of tooltip relative to the activating element */
