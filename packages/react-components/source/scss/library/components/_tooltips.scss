@@ -8,14 +8,12 @@ $puppet-tooltip-hint-elevation: 1000 !default;
 .rc-tooltip,
 .rc-tooltip[data-popper-reference-hidden] {
   @include puppet-type-small();
-
   background-color: $puppet-tooltip-hint-bg;
   border-radius: $puppet-tooltip-hint-radius;
   color: $puppet-tooltip-hint-color;
   max-width: 200px;
   opacity: 0;
   padding: $puppet-tooltip-hint-padding;
-  //pointer-events: none;
   position: absolute;
   text-align: center;
   transition: opacity, $puppet-common-transition-duration ease-in-out;
@@ -28,43 +26,54 @@ $puppet-tooltip-hint-elevation: 1000 !default;
   transition: opacity $puppet-common-transition-duration ease-in-out 0s;
   visibility: visible;
 }
+
+/* stylelint-disable-next-line */
 #rc-tooltip-arrow,
 #rc-tooltip-arrow::before {
-  position: absolute;
-  width: 6px;
-  height: 6px;
   background: inherit;
+  height: 6px;
+  position: absolute;
   text-align: initial;
+  width: 6px;
 }
 
 .rc-tooltip-reference {
   display: inline-block;
 }
 
+/* stylelint-disable-next-line */
 #rc-tooltip-arrow {
   visibility: hidden;
 }
 
+/* stylelint-disable-next-line */
 #rc-tooltip-arrow::before {
-  visibility: visible;
   content: '';
   transform: rotate(45deg);
+  visibility: visible;
 }
+
+/* stylelint-disable-next-line */
 #rc-tooltip-arrow[data-hide] {
   visibility: hidden;
 }
+
+/* stylelint-disable-next-line */
 .rc-tooltip[data-popper-placement^='top'] > #rc-tooltip-arrow {
   bottom: -3px;
 }
 
+/* stylelint-disable-next-line */
 .rc-tooltip[data-popper-placement^='bottom'] > #rc-tooltip-arrow {
   top: -3px;
 }
 
+/* stylelint-disable-next-line */
 .rc-tooltip[data-popper-placement^='left'] > #rc-tooltip-arrow {
   right: -3px;
 }
 
+/* stylelint-disable-next-line */
 .rc-tooltip[data-popper-placement^='right'] > #rc-tooltip-arrow {
   left: -3px;
 }
