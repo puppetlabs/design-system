@@ -106,7 +106,7 @@ const defaultProps = {
   onHeaderChecked: () => {},
   onRowClick: () => {},
   headerCheckState: false,
-  headerIndeterminateState: true,
+  headerIndeterminateState: false,
 };
 
 const defaultColumnDefs = {

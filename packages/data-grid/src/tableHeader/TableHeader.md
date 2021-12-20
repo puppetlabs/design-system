@@ -515,3 +515,36 @@ class StatefulParent extends React.Component {
 }
 <StatefulParent />;
 ```
+
+### Table Actions
+
+Table actions are a list of actionable commands with are applied to the selected rows within a table. It is expected that table actions only work with selectable tables. 
+
+```jsx
+const onActionClick = filters => {
+  console.log('An action was selected', filters);
+};
+
+const actions = [
+      {
+        value: 'delete',
+        icon: 'trash',
+        label: 'Delete All',
+      },
+      {
+        value: 'send',
+        icon: 'rocket',
+        label: 'Send',
+      },
+      {
+        value: 'refresh',
+        label: 'Refresh',
+        icon: 'refresh',
+      },
+    ];
+
+<TableHeader
+  actions={actions}
+  onActionSelect={onActionClick}
+/>;
+```
