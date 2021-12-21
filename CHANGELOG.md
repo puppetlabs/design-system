@@ -1,3 +1,11 @@
+## data-grid 0.6.0 (2021-12-20)
+
+- [TableActions] Add table action dropdown to the table header component (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
+- [SelectWithPagination] Add's the new conditional rendering, props and implementation pattern for Selection with pagination (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
+# react-components 5.31.0 (2021-12-20)
+
+- [Icon] Add ban, pause and caret-right icon (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
+
 # react-components 5.30.0 (2021-10-27)
 
 - [TooltipHoverArea] Update use CSS for hover and positioning logic. Add caret (by [@krable55](https://github.com/krable55) in [#477](https://github.com/puppetlabs/design-system/pull/477))
