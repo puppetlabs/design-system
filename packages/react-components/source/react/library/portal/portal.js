@@ -6,14 +6,19 @@ const propTypes = {
 };
 
 const Portal = ({ children, target = 'tooltip' }) => {
-  const root = document.getElementById('root');
+  //portal target with fallbacks
+  const root =
+    document.getElementsByClassName('app')[0] ??
+    document.getElementById('root') ??
+    document.body;
+
   const portalId = `portal-${target}`;
   let portal = document.getElementById(portalId);
 
-  if (!portal) {
+  if (!portal && root) {
     portal = document.createElement('div');
     portal.id = portalId;
-    root.appendChild(portal);
+    root?.appendChild(portal);
   }
   return createPortal(children, portal);
 };

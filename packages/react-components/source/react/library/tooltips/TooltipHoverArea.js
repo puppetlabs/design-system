@@ -10,7 +10,7 @@ export const propTypes = {
   /** Optional onClick for the activating element */
   onClick: PropTypes.func,
   /** The content of the tooltip */
-  tooltip: PropTypes.node.isRequired,
+  tooltip: PropTypes.node,
   /** The activating element for the tooltip */
   children: PropTypes.node.isRequired,
   /** Optional additional className */
@@ -36,6 +36,7 @@ export const defaultProps = {
   arrow: true,
   position: 'fixed',
   textAlign: 'center',
+  tooltip: null,
 };
 
 /**
