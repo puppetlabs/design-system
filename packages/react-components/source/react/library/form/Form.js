@@ -111,6 +111,7 @@ const Form = forwardRef((props, ref) => {
     children: userProvidedChildren,
     className,
     style,
+    ...otherProps
   } = props;
   const fieldProps = collectFieldProps(userProvidedChildren);
   const fieldPaths = getFieldPaths(fieldProps);
@@ -179,6 +180,7 @@ const Form = forwardRef((props, ref) => {
       onCancel={onCancel}
       noValidate
       ref={ref}
+      {...otherProps}
     >
       {children}
       {error && (
