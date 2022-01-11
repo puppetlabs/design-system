@@ -1,3 +1,7 @@
+## Unreleased
+
+- [Form] Pass other props to Form component to form element (by [@vine77](https://github.com/vine77) in [#487](https://github.com/puppetlabs/design-system/pull/487))
+
 ## data-grid 0.6.0 (2021-12-20)
 
 - [TableActions] Add table action dropdown to the table header component (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
