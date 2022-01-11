@@ -39,14 +39,6 @@ export const defaultProps = {
   tooltip: null,
 };
 
-/**
- *
- * When elements inside a `Tooltip` are hovered over or focussed on, a tooltip will render next to it.
- *
- * @prop {string | Element } tooltip element or string to be rendered in the tooltip.
- *
- */
-
 const TooltipHoverArea = ({
   anchor,
   children,
@@ -113,8 +105,10 @@ const TooltipHoverArea = ({
   const maxWidth = typeof tooltip === 'string' ? '200px' : 'fit-content';
 
   // Manage tooltip attributes
-  const showTooltip = () => popperElement?.setAttribute('data-show', '');
-  const hideTooltip = () => popperElement?.removeAttribute('data-show');
+  const showTooltip = () =>
+    popperElement && popperElement.setAttribute('data-show', '');
+  const hideTooltip = () =>
+    popperElement && popperElement.removeAttribute('data-show');
 
   // Manage tooltip visibility
   const mouseIn = () => {

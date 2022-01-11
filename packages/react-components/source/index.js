@@ -37,7 +37,7 @@ import Tabs from './react/library/tabs';
 import Tag from './react/library/tag';
 import Text from './react/library/text';
 import Toolbar from './react/library/toolbar';
-import TooltipHoverArea from './react/library/tooltips/TooltipHoverArea';
+import TooltipHoverArea from './react/library/tooltips';
 import Overlay from './react/library/overlay';
 
 export {
