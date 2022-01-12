@@ -45,11 +45,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               as="div"
               className="rc-tag-text"
               color={null}
-              size="medium"
+              size="regular"
               style={Object {}}
             >
               <div
-                className="rc-text rc-text-size-medium rc-tag-text"
+                className="rc-text rc-text-size-regular rc-tag-text"
                 style={Object {}}
               >
                 All Operating System = Windows
@@ -131,11 +131,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               as="div"
               className="rc-tag-text"
               color={null}
-              size="medium"
+              size="regular"
               style={Object {}}
             >
               <div
-                className="rc-text rc-text-size-medium rc-tag-text"
+                className="rc-text rc-text-size-regular rc-tag-text"
                 style={Object {}}
               >
                 Puppet Installed = true

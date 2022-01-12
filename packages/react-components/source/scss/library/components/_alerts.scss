@@ -78,7 +78,7 @@ $colors: (
   font-weight: $puppet-type-h5-font-weight;
   overflow: auto;
   overflow-wrap: break-word;
-  padding: $puppet-common-spacing-base * 2;
+  padding: $puppet-common-spacing-base * 1.5 $puppet-common-spacing-base * 2;
 }
 
 .rc-alert-body-message {

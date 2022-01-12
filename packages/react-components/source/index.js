@@ -1,6 +1,3 @@
-import 'core-js'; // TODO: Potentially remove polyfills from package, after triaging potential breaking changes
-import 'regenerator-runtime/runtime';
-
 import ActionSelect from './react/library/action-select';
 import Alert from './react/library/alert';
 import Alerts from './react/library/alerts';
@@ -12,16 +9,17 @@ import ButtonSelect from './react/library/button-select';
 import Card from './react/library/card';
 import Checkbox from './react/library/checkbox';
 import Code from './react/library/code';
+import Columns from './react/library/columns';
 import ConfirmationModal from './react/library/confirmation-modal';
 import Content from './react/library/content';
 import Copy from './react/library/copy';
 import Drawer from './react/library/drawer';
-import Filters from './react/library/filters';
 import Form from './react/library/form';
 import Heading from './react/library/heading';
 import Icon from './react/library/icon';
 import Input from './react/library/input';
 import Link from './react/library/link';
+import List from './react/library/list';
 import Loading from './react/library/loading';
 import Logo from './react/library/logo';
 import Modal from './react/library/modal';
@@ -38,7 +36,6 @@ import Tag from './react/library/tag';
 import Text from './react/library/text';
 import Toolbar from './react/library/toolbar';
 import TooltipHoverArea from './react/library/tooltips';
-import Overlay from './react/library/overlay';
 
 export {
   ActionSelect,
@@ -52,20 +49,20 @@ export {
   Card,
   Checkbox,
   Code,
+  Columns,
   ConfirmationModal,
   Content,
   Copy,
   Drawer,
-  Filters,
   Form,
   Heading,
   Icon,
   Input,
   Link,
+  List,
   Loading,
   Logo,
   Modal,
-  Overlay,
   Popover,
   Stepper,
   RadioButton,

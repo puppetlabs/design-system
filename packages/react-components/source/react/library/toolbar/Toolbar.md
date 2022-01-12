@@ -45,7 +45,7 @@ container of Tabs) may need to add `height="100%"`.
 
 ```jsx
 import Button from '../button';
-import Columns from '../../../../../react-layouts/src/Columns';
+import Columns from '../columns';
 import SidePanel from '../sidepanel';
 import Tabs from '../tabs';
 import Text from '../text';
@@ -89,6 +89,6 @@ const [open, setOpen] = React.useState(false);
 
 ## Related
 
-- [Columns](#/React%20Layouts/Columns)
+- [Columns](#/React%20Components/Columns)
 - [SidePanel](#/React%20Components/SidePanel)
 - [Tabs](#/React%20Components/Tabs)

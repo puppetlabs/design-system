@@ -1,3 +1,27 @@
+// These margins are intentionally applied only within <Content /> components.
+// The <Text /> and <Heading /> components have zero margins outside of <Content />.
+$puppet-type-hero-margin: 32px !default;
+$puppet-type-h1-margin: 24px !default;
+$puppet-type-h2-margin: 20px !default;
+$puppet-type-h3-margin: 16px !default;
+$puppet-type-h4-margin: 16px !default;
+$puppet-type-h5-margin: 12px !default;
+$puppet-type-h6-margin: 12px !default;
+$puppet-type-large-margin: 16px !default;
+$puppet-type-medium-margin: 12px !default;
+$puppet-type-body-margin: 12px !default;
+$puppet-type-small-margin: 12px !default;
+$puppet-type-tiny-margin: 8px !default;
+
+// These code background styles are only applied within <Content> components.
+// <Code> components (and <code> tags) have no background style outside of
+// <Content> components.
+@mixin puppet-type-code-inline-background() {
+  background-color: $puppet-n100;
+  border-radius: 2px;
+  padding: 0 $puppet-common-spacing-base;
+}
+
 .rc-content {
   @include puppet-type-body();
 
@@ -12,55 +36,59 @@
   //
   // Headers
   //
-
-  // TODO: Define margins for h1 -- was not relevant for Nebula
-  h1 {
-    @include puppet-type-h1();
+  .rc-heading-hero {
+    @include puppet-type-hero();
+    margin-bottom: $puppet-type-hero-margin;
+    margin-top: $puppet-type-hero-margin * 2;
   }
 
-  // TODO: Define margins for h2 -- was not relevant for Nebula
+  h1 {
+    @include puppet-type-h1();
+    margin-bottom: $puppet-type-h1-margin;
+    margin-top: $puppet-type-h1-margin * 2;
+  }
+
   h2 {
     @include puppet-type-h2();
+    margin-bottom: $puppet-type-h2-margin;
+    margin-top: $puppet-type-h2-margin * 2;
   }
 
   h3 {
     @include puppet-type-h3();
-    margin-bottom: $puppet-common-spacing-base * 1;
+    margin-bottom: $puppet-type-h3-margin;
+    margin-top: $puppet-type-h3-margin * 2;
   }
 
   h4 {
     @include puppet-type-h4();
-    margin-bottom: $puppet-common-spacing-base * 2;
-    margin-top: $puppet-common-spacing-base * -1;
+    margin-bottom: $puppet-type-h4-margin;
+    margin-top: $puppet-type-h4-margin * 2;
   }
 
   h5 {
     @include puppet-type-h5();
-    margin-bottom: $puppet-common-spacing-base * 2;
-    margin-top: $puppet-common-spacing-base * -1;
+    margin-bottom: $puppet-type-h5-margin;
+    margin-top: $puppet-type-h5-margin * 2;
   }
 
   h6 {
     @include puppet-type-h6();
-    margin-bottom: $puppet-common-spacing-base * 2;
-  }
-
-  code {
-    @include puppet-type-code();
+    margin-bottom: $puppet-type-h6-margin;
+    margin-top: $puppet-type-h6-margin * 2;
   }
 
   h1,
   h2,
-  h3 {
-    margin-bottom: $puppet-common-spacing-base * 6;
-    margin-top: 0;
-  }
-
+  h3,
   h4,
   h5,
-  h6 {
-    margin-bottom: $puppet-common-spacing-base * 2;
-    margin-top: 0;
+  h6,
+  .rc-text,
+  .rc-heading {
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   //
@@ -68,19 +96,28 @@
   //
 
   p {
-    line-height: calc(22 / 14);
-    margin-bottom: $puppet-common-spacing-base * 4;
+    margin-bottom: $puppet-type-body-margin;
+  }
+
+  p,
+  .rc-text {
     margin-top: 0;
   }
 
-  // Adjust margin top for headings that preceed paragraphs
-  p + h1,
-  p + h2,
-  p + h3,
-  p + h4,
-  p + h5,
-  p + h6 {
-    margin-top: $puppet-common-spacing-base * 8;
+  .rc-text-size-large {
+    margin-bottom: $puppet-type-large-margin;
+  }
+
+  .rc-text-size-medium {
+    margin-bottom: $puppet-type-medium-margin;
+  }
+
+  .rc-text-size-small {
+    margin-bottom: $puppet-type-small-margin;
+  }
+
+  .rc-text-size-tiny {
+    margin-bottom: $puppet-type-tiny-margin;
   }
 
   //
@@ -127,9 +164,9 @@
     color: $puppet-n800;
     content: counter(item) '. ';
     counter-increment: item;
-    font-size: 12px;
+    font-size: $puppet-type-small-font-size;
     font-weight: 600;
-    width: 20px;
+    width: $puppet-common-spacing-base * 5;
   }
 
   // Bullet styles for unordered lists
@@ -137,7 +174,7 @@
     color: $puppet-n800;
     content: '\25AA'; // square
     counter-reset: item;
-    width: 20px;
+    width: $puppet-common-spacing-base * 5;
   }
 
   //
@@ -163,29 +200,51 @@
   // Code
   //
 
-  pre {
-    // Make code blocks wrap
-    overflow-x: auto;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-
-  // Style broken out code
-  pre > code {
-    border-left: 8px solid $puppet-n300;
-    border-radius: 2px;
-    box-sizing: border-box;
-    display: block;
-    padding: $puppet-common-spacing-base * 2 $puppet-common-spacing-base * 4;
-    width: 100%;
-  }
-
-  // Style inline code
+  // Plain <code> tags should get the default Code component
+  // size, which goes with the default body text size:
   code {
-    background-color: $puppet-n100;
-    border-radius: 2px;
-    font-family: $puppet-type-font-family-monospace;
-    padding: $puppet-common-spacing-base / 2 $puppet-common-spacing-base;
+    @include puppet-type-code();
+    // All <code> tags also have a background color inside Content components only:
+    @include puppet-type-code-inline-background();
+  }
+  // ...but now we've set those styles for _all_ <code> tags inside Content,
+  // including:
+  //
+  // - <code> tags inside PDS Text components that use non-default sizes, and
+  // - PDS Code components that use the <code> tag.
+  //
+  // Restore the PDS t-shirt sizes in those contexts:
+  .rc-text-size-tiny code,
+  .rc-code-size-tiny {
+    font-size: $puppet-type-code-tiny-font-size;
+  }
+
+  .rc-text-size-small code,
+  .rc-code-size-small {
+    font-size: $puppet-type-code-small-font-size;
+  }
+
+  .rc-text-size-medium code,
+  .rc-code-size-medium {
+    font-size: $puppet-type-code-medium-font-size;
+  }
+
+  .rc-text-size-large code,
+  .rc-code-size-large {
+    font-size: $puppet-type-code-large-font-size;
+  }
+
+  // Block-level code and nested Code components with type=block:
+  pre,
+  .rc-code-block {
+    @include puppet-type-code-block();
+    margin: $puppet-type-body-margin 0;
+
+    code {
+      // The inline code content background is slightly darker - override
+      // it here to keep the lighter block-level background-color:
+      background-color: $puppet-n50 !important;
+    }
   }
 
   //
@@ -197,15 +256,22 @@
     border-radius: 2px;
     bottom: 0;
     content: '';
-    margin-left: -$puppet-common-spacing-base * 4;
+    margin-left: -$puppet-common-spacing-base * 8;
     position: absolute;
     top: 0;
-    width: 6px;
+    width: $puppet-common-spacing-base * 2;
   }
 
   blockquote {
-    margin-inline-start: $puppet-common-spacing-base * 6;
+    @include puppet-type-h6(medium);
+    margin: $puppet-type-body-margin 0;
+    padding: $puppet-common-spacing-base * 4 $puppet-common-spacing-base * 8;
     position: relative;
+
+    p { // Must override these specifically, or we'll get paragraph styles
+      @include puppet-type-h6(medium);
+      margin: 0;
+    }
   }
 
   //
@@ -226,13 +292,17 @@
   //
 
   table {
+    @include puppet-type-small();
     border-spacing: 0;
     display: block;
-    font-size: $puppet-type-small-font-size;
-    line-height: calc(16 / 12);
     margin-bottom: $puppet-common-spacing-base * 6;
     overflow-x: auto;
     width: 100%;
+
+    code {
+      @include puppet-type-code-small();
+      line-height: inherit;
+    }
   }
 
   td,
@@ -254,9 +324,9 @@
     position: sticky;
   }
 
-  @media (max-width: 767px) {
-    td:first-child,
-    th:first-child {
+  td:first-child,
+  th:first-child {
+    @include respond-below(medium) {
       position: unset;
     }
   }

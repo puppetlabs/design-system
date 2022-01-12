@@ -1,6 +1,13 @@
 .rc-text {
   @include puppet-type-body();
-  color: $puppet-type-color-base;
+}
+
+.rc-text-size-large {
+  @include puppet-type-large();
+}
+
+.rc-text-size-medium {
+  @include puppet-type-medium();
 }
 
 .rc-text-size-small {

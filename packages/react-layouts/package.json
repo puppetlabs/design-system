@@ -26,8 +26,8 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@puppet/react-components": "^5.22.0",
-    "@puppet/sass-variables": "^1.4.3",
+    "@puppet/react-components": "^6.0.0-alpha.4",
+    "@puppet/sass-variables": "^2.0.0-alpha.2",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2"
   },
@@ -79,7 +79,6 @@
     "react-hot-loader": "^4.12.21",
     "react-i18next": "^11.7.1",
     "react-router-dom": "^5.2.0",
-    "regenerator-runtime": "^0.13.7",
     "resolve-url-loader": "^3.1.1",
     "sass-loader": "^8.0.2",
     "sinon": "^9.0.3",

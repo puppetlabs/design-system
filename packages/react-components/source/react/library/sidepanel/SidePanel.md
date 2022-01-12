@@ -72,7 +72,7 @@ const TitleNode = () => (
 
 ## Related
 
-- [Columns](#/React%20Layouts/Columns)
+- [Columns](#/React%20Components/Columns)
 - [Sidebar](#/React%20Components/Sidebar)
 - [Tabs](#/React%20Components/Tabs)
 - [Toolbar](#/React%20Components/Toolbar)

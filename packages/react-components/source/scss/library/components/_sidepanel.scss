@@ -36,7 +36,8 @@
 
 .rc-sidepanel-heading {
   color: $puppet-n800;
-  font-family: $puppet-type-font-family-secondary;
+  font-size: 14px;
+  line-height: calc(20 / 14);
   padding: 6px $puppet-common-spacing-base * 4;
 }
 

@@ -305,268 +305,388 @@ The `Content` component is a wrapper for simple HTML content, which provides def
 ### Example #2
 
 ```jsx
-const example1 = `      steps:
+import Heading from '../heading'
+import Code from '../code';
+import Text from '../text';
+import Link from '../link';
 
-      ...
+const exampleCode1 = `# This example uses a plain <code> tag inside a <pre> tag:
 
-      - name: k8s-provisioner
-      image: projectnebula/k8s-provisioner:latest
-      spec:
-        provider: gcp
-        project: my-project
-        clusterName: my-cluster
-        credentials:
-          gcpServiceAccountFile:
-            $type: Secret
-            name: credentials
-        stateStoreName: my-bucket
-        masterCount: 1
-        nodeCount: 3
-        zones:
-        - "us-west-2a"
-        region: us-west2`;
-const example2 = `kubeconfig-file:
-      $type: Output
-      name: kubeconfig-file
-      taskName: k8s-provisioner`;
+begin
+  require "puppet/util/command_line";
+  Puppet::Util::CommandLine.new.execute
+rescue LoadError => e
+  $stderr.puts e.message
+  exit(1)
+end`;
+
+const exampleCode2 = `# This example uses a PDS Code component with type="block":
+
+cron { "logrotate":
+  command => "/usr/sbin/logrotate",
+  user    => "root",
+  hour    => 2,
+  minute  => 0,
+}`;
+
+const exampleCode3 = `# This example uses a PDS Code component with type="block":
+
+exec { "tar -xf /Volumes/nfs02/important.tar":
+  cwd     => "/var/tmp",
+  creates => "/var/tmp/myfile",
+  path    => ["/usr/bin", "/usr/sbin",],
+}`;
 
 <Content>
-  <div className="main-container">
-    <div className="main-container-children">
-      <h3>Kubernetes provisioner</h3>
-      <p>
-        The Kubernetes provisioner step container creates and manages Kubernetes
-        clusters in cloud platforms.
-      </p>
-      <blockquote>
-        <p>
-          <strong>Note</strong>: This task provisions resources in your cloud
-          platform account. Deploying infrastructure creates real resources and
-          could incur a charge from your cloud provider.
-        </p>
-      </blockquote>
-      <p>Current supported platforms:</p>
+  <Heading as='hero'>Hero Heading</Heading>
+
+  <h1>
+    Heading 1 <a href="#">vis</a> vitae <Code size="large">apeirian</Code> atomorum
+  </h1>
+
+  <p>
+    Default body text: Offendit conceptam inciderint per at!{' '}
+    <a href="#">
+      Link with <Code>&lt;a&gt;</Code> tag
+    </a>{' '}
+    hinc eius et duo,{' '}
+    <Link href="#">
+      Link with <Code>Link</Code> component
+    </Link>{' '}
+    duo prima delenit atomorum ad, ei sed maluisset principes? Ne honestatis
+    intellegebat mea. Id sed idque commune, <code>inline &lt;code&gt; tag</code>{' '}
+    doming <Code>inline Code component</Code> complectitur, nam te illum
+    invidunt facilisis.
+  </p>
+
+  <Text size="large" color="subtle">
+    <Code size="large">Text</Code> component with size <Code size="large">large</Code>:
+    Rebum vivendo eu sit. Cu vide homero pri, atqui legere ut eos. Usu solet tamquam
+    apeirian ne, utinam laboramus ea vix, pri at luptatum interesset conclusionemque.
+    An usu mundi neglegentur, vix ne cetero omittam, usu meliore laboramus et.
+  </Text>
+
+  <p>
+    Tritani nonumes cu quo. Vis ne officiis expetendis, nec et prima prompta
+    principes, vidit falli nonumes an eum. Ei mei autem elitr, ex nusquam
+    dissentias eam, cu semper persius sententiae per.
+  </p>
+
+  <Text size="medium" color="medium">
+    <Code size="medium">Text</Code> component with size <Code size="medium">medium</Code>: Qui alia lobortis
+    in. Eum in dictas scribentur, mucius suscipit tincidunt vix eu, ut nostrud
+    docendi usu.
+  </Text>
+
+  <p>
+    Te mel dicat posidonium. Mei <Code>pertinax</Code> mandamus in. Tota vidit vim et, eos at
+    fugit facete! Salutandi <code>maiestatis</code> cum at, te esse nemore intellegat eos, ei
+    mel numquam inciderint?
+  </p>
+
+  <Text size="small" color="success">
+    <Code size="small">Text</Code> component with size <Code size="small">small</Code>: Eu qui modo nihil,
+    eu rebum scaevola cum, te ridens delicata nam. Et ius vero inani omittam, at
+    phaedrum hendrerit quo.
+  </Text>
+
+  <p>
+    Eu ius minim graeco debitis, vel te iudico omnium torquatos, per purto errem
+    repudiandae ne. Te viris vocibus invidunt eam, pro ex iisque facilis
+    constituto.
+  </p>
+
+  <Text size="tiny" color="danger">
+    <Code size="tiny">Text</Code> component with size <Code size="tiny">tiny</Code>: Denique maiestatis
+    adversarium id qui, et vel lorem tation legere. Eu ius minim graeco debitis,
+    vel te iudico omnium torquatos, per purto errem repudiandae ne.
+  </Text>
+
+  <p>
+    Consul quaerendum adversarium sed in, nostrum laboramus persecuti quo ea. At
+    pro regione tacimates sadipscing, has at errem scriptorem, mei honestatis
+    omittantur ad.
+  </p>
+
+  <blockquote>
+    <p>
+      Blockquote quo ne saepe decore <a href="#">scripserit</a>. Nec{' '}
+      <Code size='small'>mazim liberavisse</Code> ut, eos scripta sanctus adipiscing et, te
+      everti vivendo accusam vix.
+    </p>
+  </blockquote>
+
+  <p>
+    Cu ludus putent eleifend qui, lorem dicant tamquam no eam. Quo ne sanctus
+    constituam theophrastus, alia simul vix no. No oportere mediocrem omittantur
+    usu.
+  </p>
+
+  <pre>
+    <code className="lang-ruby">{exampleCode1} </code>
+  </pre>
+
+  <p>
+    Qui lucilius scripserit interesset et. Everti causae eos ad. At per duis
+    comprehensam, in vel eruditi detracto constituam. Vel alterum theophrastus
+    in, nec ad esse ubique menandri, est case dolorem in. Essent similique
+    dissentias quo in, vis et mentitum atomorum!
+  </p>
+
+  <Code type="block">{exampleCode2}</Code>
+
+  <h2>
+    Heading 2 mei no diceret <Code size='large'>detraxit</Code> splendide
+  </h2>
+
+  <p>Case doctus splendide sed ex:</p>
+
+  <ul>
+    <li>
+      Ex vel posse disputando. Per suscipit eleifend te, ad atqui legimus
+      suavitate sed, saepe denique te vix? Luptatum scribentur cotidieque mel
+      eu, eum delenit eligendi appetere eu.
+    </li>
+    <li>
+      Qui nobis molestie epicurei ad
       <ul>
         <li>
-          <p>Google Cloud Platform (GCP)</p>
+          Per habeo numquam ne. In vis constituam scriptorem! Ea per quidam
+          aliquam accusam.
         </li>
         <li>
-          <p>Amazon Web Services (AWS)</p>
+          Ludus reprimique vel et, quo ei oporteat probatus
+          <ul>
+            <li>
+              Per habeo numquam ne. In vis constituam scriptorem! Ea per quidam
+              aliquam accusam.
+            </li>
+            <li>Ludus reprimique vel et, quo ei oporteat probatus</li>
+          </ul>
+        </li>
+        <li>
+          Ritani nonumes cu quo.
+          <blockquote>
+            Modus epicuri evertitur ad nec, vim dicta partem prodesset an?
+            Commune salutandi efficiendi per no, eu vel atqui iuvaret
+            definiebas? Vel ad appetere interpretaris, pro ei persius
+            omittantur.
+          </blockquote>
         </li>
       </ul>
-      <h4>Specifications</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>Setting</th>
-            <th>Child setting</th>
-            <th>Data type</th>
-            <th>Description</th>
-            <th>Default</th>
-            <th>Required</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>provider</code>
-            </td>
-            <td>&nbsp;</td>
-            <td>string</td>
-            <td>
-              The cloud provider to use. Use <code>aws</code> or{' '}
-              <code>gcp</code>.
-            </td>
-            <td>None</td>
-            <td>True</td>
-          </tr>
-          <tr>
-            <td>
-              <code>project</code>
-            </td>
-            <td>&nbsp;</td>
-            <td>string The GCP project ID.</td>
-            <td>None</td>
-            <td>True for GCP</td>
-            <td>&nbsp;</td>
-          </tr>
-          <tr>
-            <td>
-              <code>clusterName</code>
-            </td>
-            <td>&nbsp;</td>
-            <td>string</td>
-            <td className="increased-min-width">
-              A name for your cluster. This must be a fully qualified domain
-              name (FQDN). You can use a root domain in route53 or GCP domain
-              name service (DNS), or you can set the domain to{' '}
-              <code>k8s.local</code> if you don't want to use one of your roots.
-            </td>
-            <td>None</td>
-            <td>True</td>
-          </tr>
-          <tr>
-            <td>
-              <code>credentials</code>
-            </td>
-            <td>&nbsp;</td>
-            <td>mapping</td>
-            <td>A map of credentials used for platform authentication.</td>
-            <td>None</td>
-            <td>True</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>
-              <code>gcpServiceAccountFile</code>
-            </td>
-            <td>string</td>
-            <td>
-              The GCP service account JSON. Pass the file contents to Nebula as
-              a secret. See the example below.
-            </td>
-            <td>None</td>
-            <td>True for GCP</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>
-              <code>awsAccessKeyID</code>
-            </td>
-            <td>string</td>
-            <td>The AWS access key ID.</td>
-            <td>None</td>
-            <td>True for AWS</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>
-              <code>awsSecretAccessKey</code>
-            </td>
-            <td>string</td>
-            <td>The AWS secret access key.</td>
-            <td>None</td>
-            <td>True for AWS</td>
-          </tr>
-          <tr>
-            <td>&nbsp;</td>
-            <td>
-              <code>sshPublicKey</code>
-            </td>
-            <td>string</td>
-            <td>
-              An SSH public key to install on the virtual machine instances that
-              run the cluster.
-            </td>
-            <td>None</td>
-            <td>True for AWS</td>
-          </tr>
-          <tr>
-            <td>
-              <code>stateStoreName</code>
-            </td>
-            <td>&nbsp;</td>
-            <td>string</td>
-            <td className="increased-min-width">
-              A storage bucket name to store cluster state. This configuration
-              uses the storage system of your cloud provider. AWS uses s3, GCP
-              uses GS. If the bucket exists, the task tries to just use it. If
-              the bucket does not exist, the task attempts to create the bucket.
-              Multiple clusters can use the same state storage as long as the{' '}
-              <code>clusterName</code> values are different.
-            </td>
-            <td>None</td>
-            <td>True</td>
-          </tr>
-          <tr>
-            <td>
-              <code>masterCount</code>
-            </td>
-            <td>&nbsp;</td>
-            <td>integer</td>
-            <td>A count of how many master nodes to provision.</td>
-            <td>1</td>
-            <td>False</td>
-          </tr>
-          <tr>
-            <td>
-              <code>nodeCount</code>
-            </td>
-            <td>&nbsp;</td>
-            <td>integer</td>
-            <td>A count of how many agent nodes to provision.</td>
-            <td>3</td>
-            <td>False</td>
-          </tr>
-          <tr>
-            <td>
-              <code>zones</code>
-            </td>
-            <td>&nbsp;</td>
-            <td>An sequence of strings</td>
-            <td>
-              An sequence of zones in the cloud platform to run node instances
-              in.
-            </td>
-            <td>None</td>
-            <td>True (at least one)</td>
-          </tr>
-          <tr>
-            <td>
-              <code>region</code>
-            </td>
-            <td>&nbsp;</td>
-            <td>string</td>
-            <td>A platform region to use when provisioning a cluster.</td>
-            <td>None</td>
-            <td>True</td>
-          </tr>
-        </tbody>
-      </table>
-      <blockquote>
-        <p>
-          <strong>Note</strong>: The value you set for a secret must be a
-          string. If you have multiple key-value pairs to pass into the secret,
-          or your secret is the contents of a file, you must encode the values
-          using base64 encoding, and use the encoded string as the secret value.
-        </p>
-      </blockquote>
-      <h4>Outputs</h4>
-      <p>
-        After a cluster is provisioned, Nebula stores the{' '}
-        <code>kubeconfig</code> file as an output. Other steps in your workflow,
-        like Kubectl or Helm can use the output to interact with the cluster.
-      </p>
-      <table>
-        <thead>
-          <tr>
-            <th>Key</th>
-            <th>Data type</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <code>kubeconfig-file</code>
-            </td>
-            <td>string</td>
-          </tr>
-        </tbody>
-      </table>
-      <h4>Examples</h4>
-      <p>Here is an example of the step in a Nebula workflow:</p>
-      <pre>
-        <code className="language-YAML">{example1}</code>
-      </pre>
-      <p>
-        Here is an example of how to call the <code>kubeconfig</code> file from
-        another step in your workflow:
-      </p>
-      <pre>
-        <code className="language-YAML">{example2}</code>
-      </pre>
-    </div>
-  </div>
+    </li>
+    <li>
+      In sit ludus omnium corpora
+      <ol>
+        <li>
+          Per habeo numquam ne. In vis constituam scriptorem! Ea per quidam
+          aliquam accusam.
+        </li>
+        <li>
+          Ludus reprimique vel et, quo ei oporteat probatus
+          <Code type="block">{exampleCode3}</Code>
+        </li>
+      </ol>
+    </li>
+    <li>An eam erat zril everti, eum no oporteat voluptaria</li>
+  </ul>
+
+  <p>
+    Ei pro insolens accusamus, id mea quodsi omnium philosophia? Eu agam liber
+    eripuit usu? His at ullum adipiscing assueverit, quo dolor ubique in. Pro te
+    libris theophrastus, primis oporteat et cum.
+  </p>
+
+  <ol>
+    <li>Mutat noluisse pericula eos an</li>
+    <li>
+      Latine eloquentiam appellantur sed ea
+      <ol>
+        <li>
+          Esse concludaturque mei ad. Has mazim admodum theophrastus an, est
+          mollis aperiam nominavi id. Ad zril offendit intellegat pri, id quo
+          officiis apeirian.
+        </li>
+        <li>
+          Cu purto omnesque signiferumque nec
+          <ol>
+            <li>
+              Esse concludaturque mei ad. Has mazim admodum theophrastus an, est
+              mollis aperiam nominavi id. Ad zril offendit intellegat pri, id
+              quo officiis apeirian.
+            </li>
+            <li>Cu purto omnesque signiferumque nec</li>
+          </ol>
+        </li>
+      </ol>
+    </li>
+    <li>Eum maiorum persequeris consequuntur</li>
+    <li>
+      Dicat accumsan ne mei
+      <ul>
+        <li>Ei eam vero meis omnium</li>
+        <li>
+          Per habeo numquam ne, ludus reprimique vel et, quo ei oporteat
+          probatus. Et labore equidem constituto vel, mea cu nonumes verterem
+          referrentur.
+        </li>
+      </ul>
+    </li>
+    <li>An eam erat zril everti, eum no oporteat voluptaria</li>
+  </ol>
+
+  <p>
+    Ea, sea ex duis ceteros forensibus! Per eros tollit et. Graece verear
+    periculis eos ea, nusquam appetere constituam ne mel, eius natum intellegat
+    eos eu! Enim facilisis accommodare ne sea, ei sea veri vocent iuvaret.
+  </p>
+
+  <h3>
+    Heading 3 an quo clita <Code size='large'>gubergren</Code> assentior
+  </h3>
+
+  <p>Quo veniam saperet mnesarchum ut, no dolor volutpat assueverit per</p>
+
+  <h4>
+    Heading 4 pro no verear <Code size='medium'>integre</Code> albucius
+  </h4>
+
+  <p>
+    Modus epicuri evertitur ad nec, vim dicta partem prodesset an? Commune
+    salutandi efficiendi per no, eu vel atqui iuvaret definiebas? Vel ad
+    appetere interpretaris, pro ei persius omittantur. Has justo veniam corpora
+    eu! Ne assum partem posidonium cum.
+  </p>
+
+  <h5>
+    Heading 5 ad zril iudico <Code>corrumpit</Code> ius
+  </h5>
+
+  <p>
+    Bonorum evertitur an mea, ex duo exerci ridens bonorum, ad vel facer
+    postulant. Enim laudem suavitate has eu, brute fabellas forensibus cu sed,
+    an duo solet dicant aperiri! Te utinam intellegam est, sed cu impetus
+    maiestatis neglegentur, cu duis recteque his.
+  </p>
+
+  <h6>
+    Heading 6 in pri <Code size='small'>appareat</Code> abhorreant
+  </h6>
+
+  <p>
+    Tale purto singulis quo an, prima utinam volumus ex eum, vim ex mucius
+    evertitur! Veniam tincidunt mel te, id est oportere tincidunt. Ius ex hinc
+    aperiam. Est ad malis dolores definitionem, habeo voluptatum at usu, altera
+    efficiantur cum te. Ut aliquid omnesque his, ei euripidis voluptatum
+    definiebas qui.
+  </p>
+
+  <p>
+    <strong>Example table:</strong>
+  </p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Setting</th>
+        <th>Child setting</th>
+        <th>Data type</th>
+        <th>Description</th>
+        <th>Default</th>
+        <th>Required</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <code>provider</code>
+        </td>
+        <td />
+        <td>string</td>
+        <td>
+          The cloud provider to use. Use <code>aws</code> or <code>gcp</code>.
+        </td>
+        <td>None</td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td>
+          <code>project</code>
+        </td>
+        <td />
+        <td>string The GCP project ID.</td>
+        <td>None</td>
+        <td>True for GCP</td>
+        <td />
+      </tr>
+      <tr>
+        <td>
+          <code>credentials</code>
+        </td>
+        <td />
+        <td>mapping</td>
+        <td>A map of credentials used for platform authentication.</td>
+        <td>None</td>
+        <td>True</td>
+      </tr>
+      <tr>
+        <td />
+        <td>
+          <code>gcpServiceAccountFile</code>
+        </td>
+        <td>string</td>
+        <td>
+          The GCP service account JSON. Pass the file contents to Nebula as a
+          secret. See the example below.
+        </td>
+        <td>None</td>
+        <td>True for GCP</td>
+      </tr>
+      <tr>
+        <td />
+        <td>
+          <code>awsAccessKeyID</code>
+        </td>
+        <td>string</td>
+        <td>The AWS access key ID.</td>
+        <td>None</td>
+        <td>True for AWS</td>
+      </tr>
+      <tr>
+        <td />
+        <td>
+          <code>awsSecretAccessKey</code>
+        </td>
+        <td>string</td>
+        <td>The AWS secret access key.</td>
+        <td>None</td>
+        <td>True for AWS</td>
+      </tr>
+      <tr>
+        <td />
+        <td>
+          <code>sshPublicKey</code>
+        </td>
+        <td>string</td>
+        <td>
+          An SSH public key to install on the virtual machine instances that run
+          the cluster.
+        </td>
+        <td>None</td>
+        <td>True for AWS</td>
+      </tr>
+      <tr>
+        <td>
+          <code>masterCount</code>
+        </td>
+        <td />
+        <td>integer</td>
+        <td>A count of how many master nodes to provision.</td>
+        <td>1</td>
+        <td>False</td>
+      </tr>
+    </tbody>
+  </table>
 </Content>;
 ```
 
