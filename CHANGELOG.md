@@ -1,7 +1,7 @@
 ## react-components 5.32.0 (2022-01-11)
 
-- [TooltipHoverArea] Migrate tooltip to react-popper for smarter positioning and better z-index/overlapping behavior, add centering and multiline options
 - [Form] Pass other props to Form component to form element (by [@vine77](https://github.com/vine77) in [#487](https://github.com/puppetlabs/design-system/pull/487))
+- [TooltipHoverArea] Migrate tooltip to react-popper for smarter positioning and better z-index/overlapping behavior, add centering and multiline options
 
 ## data-grid 0.6.0 (2021-12-20)
 
