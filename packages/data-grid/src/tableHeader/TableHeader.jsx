@@ -1,6 +1,6 @@
 import React from 'react';
 import { string, arrayOf, shape, node, func, bool } from 'prop-types';
-import { Text, Input } from '@puppet/react-components';
+import { Text, Input, ButtonSelect, Badge } from '@puppet/react-components';
 import QuickFilter from '../quickFilter';
 import TagBuilder from '../tagBuilder';
 import './TableHeader.scss';
@@ -12,7 +12,7 @@ const propTypes = {
   selectedRowCountText: string,
   /** Allows children to be rendered within the tableheader */
   children: node,
-  /** Boolean value that determines if the seach box should be rendered */
+  /** Boolean value that determines if the search box should be rendered */
   search: bool,
   /** String shown within blank input box */
   searchPlaceholder: string,
@@ -52,8 +52,35 @@ const propTypes = {
       value: string,
     }),
   ),
+  /** Callback function called when the tag close button is clicked */
   onRemoveAll: func,
+  /** Callback function called when the tags x button is clicked */
   onRemoveTag: func,
+  /** Actions are the possible selections that a user can pick from under a certain field */
+  actions: arrayOf({
+    /** Is the value returned after a users selection for a dataset to be filter by */
+    value: string,
+    /** Should you wish to add an icon to a specific row */
+    icon: string,
+    /** Text which will be displayed for each option */
+    label: string,
+  }),
+  /** String shown as action button select */
+  actionLabel: string,
+  /** Callback function called when an action is selected from the dropdown list */
+  onActionSelect: func,
+  /** Boolean used to conditionally render the showSelectAllBadge */
+  showSelectAllBadge: bool,
+  /** Text shown in the selectAllBadge */
+  selectAllBadgeText: string,
+  /** Callback function called when the selectAllBadge is clicked */
+  onSelectAllBadgeClick: func,
+  /** Boolean used to conditionally render the showClearAllBadge */
+  showClearAllBadge: bool,
+  /** Text shown in the clearAllBadge */
+  clearAllBadgeText: string,
+  /** Callback function called when the clearAllBadgeClick is clicked */
+  onClearAllBadgeClick: func,
 };
 
 const defaultProps = {
@@ -69,6 +96,15 @@ const defaultProps = {
   activeFilters: [],
   onRemoveAll: () => {},
   onRemoveTag: () => {},
+  actions: [],
+  actionLabel: 'Actions',
+  onActionSelect: () => {},
+  showSelectAllBadge: false,
+  selectAllBadgeText: 'Select all *** nodes',
+  onSelectAllBadgeClick: () => {},
+  showClearAllBadge: false,
+  clearAllBadgeText: 'Clear selection',
+  onClearAllBadgeClick: () => {},
 };
 
 function TableHeader({
@@ -84,6 +120,15 @@ function TableHeader({
   onFilterChange,
   onRemoveAll,
   onRemoveTag,
+  actions,
+  actionLabel,
+  onActionSelect,
+  showSelectAllBadge,
+  selectAllBadgeText,
+  onSelectAllBadgeClick,
+  showClearAllBadge,
+  clearAllBadgeText,
+  onClearAllBadgeClick,
 }) {
   return (
     <div className="dg-table-header-container">
@@ -108,6 +153,16 @@ function TableHeader({
             <QuickFilter filters={filters} onFilterSelect={onFilterChange} />
           </div>
         )}
+        {actions.length > 0 ? (
+          <ButtonSelect
+            className="dg-table-action"
+            type="transparent"
+            options={actions}
+            placeholder={actionLabel}
+            anchor="bottom right"
+            onChange={value => onActionSelect(value)}
+          />
+        ) : null}
       </div>
       {activeFilters.length > 0 && (
         <TagBuilder
@@ -117,15 +172,37 @@ function TableHeader({
           onRemoveTag={onRemoveTag}
         />
       )}
-      {children === undefined ? (
-        <Text size="small" color="medium" className="dg-table-row-count">
-          {rowCountText || null}
-          {rowCountText && selectedRowCountText ? ' - ' : null}
-          {selectedRowCountText || null}
-        </Text>
-      ) : (
-        children
-      )}
+      <div className="dg-table-header-text-container">
+        {!children ? (
+          <Text size="small" color="medium" className="dg-table-row-count">
+            {rowCountText || null}
+            {rowCountText && selectedRowCountText ? ' - ' : null}
+            {selectedRowCountText || null}
+          </Text>
+        ) : (
+          children
+        )}
+        {showSelectAllBadge && (
+          <Badge
+            onClick={onSelectAllBadgeClick}
+            className="dg-table-header-select-all"
+            weight="subtle"
+            type="info"
+          >
+            {selectAllBadgeText}
+          </Badge>
+        )}
+        {showClearAllBadge && (
+          <Badge
+            onClick={onClearAllBadgeClick}
+            className="dg-table-header-select-all"
+            weight="subtle"
+            type="danger"
+          >
+            {clearAllBadgeText}
+          </Badge>
+        )}
+      </div>
     </div>
   );
 }
