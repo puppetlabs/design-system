@@ -25,10 +25,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-#       - name: sleep
-#         uses: jakejarvis/wait-action@v0.1.0
-#         with:
-#           time: '40m'
+    - name: sleep
+      uses: jakejarvis/wait-action@v0.1.0
+      with:
+        time: '40m'
     - name: Checkout
       uses: actions/checkout@v2
     - name: Set Node version
@@ -38,9 +38,8 @@ jobs:
     - name: Install
       run: (cd packages/design-system-website && npm install && npm run styleguide:build)
     - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@releases/v3
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: packages/design-system-website/dist
-        COMMIT_NAME: GitHub Actions
+        token: ${{ secrets.ACCESS_TOKEN }}
+        branch: gh-pages
+        folder: packages/design-system-website/dist
