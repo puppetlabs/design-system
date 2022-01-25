@@ -70,6 +70,33 @@ const TitleNode = () => (
 </div>;
 ```
 
+### Hoist
+
+Using the `hoist` prop you can wrap the sidepanel in a portal to render at the top level of your appllication.
+
+```jsx
+import { useState } from 'react';
+import Text from '../text';
+import Button from '../Button';
+
+const [open, setOpen] = useState(false);
+
+<div className="sidebar-container">
+  <Button onClick={() => setOpen(!open)}>{open ? 'Close' : 'Open'} Me</Button>
+  <SidePanel
+    open={open}
+    border
+    hoist
+    title="My SidePanel"
+    type="toolbar"
+    closeButtonIcon="double-right"
+    closeButtonProps={{ onClick: () => setOpen(false) }}
+  >
+    <Text>Close me up!</Text>
+  </SidePanel>
+</div>;
+```
+
 ## Related
 
 - [Columns](#/React%20Components/Columns)
