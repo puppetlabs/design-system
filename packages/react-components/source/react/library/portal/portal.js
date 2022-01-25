@@ -21,12 +21,12 @@ const Portal = ({ children, target, active }) => {
   const portalId = `portal-${target}`;
   let portal = document.getElementById(portalId);
 
-  if (!portal && root) {
+  if (!portal && root && target) {
     portal = document.createElement('div');
     portal.id = portalId;
     root.appendChild(portal);
   }
-  return active ? createPortal(children, portal) : children;
+  return active && target ? createPortal(children, portal) : children;
 };
 Portal.propTypes = propTypes;
 PropTypes.defaultProps = defaultProps;

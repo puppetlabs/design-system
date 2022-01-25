@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import Button from '../button';
 import Heading from '../heading';
-import Portal from '../portal';
 
 const propTypes = {
   border: PropTypes.bool,
@@ -18,8 +17,6 @@ const propTypes = {
   onClose: PropTypes.func,
   open: PropTypes.bool,
   title: PropTypes.node,
-  /** Wraps side panel in portal for easy top-level rendering*/
-  hoist: PropTypes.bool,
   type: PropTypes.oneOf(['toolbar']).isRequired,
   toolbarType: PropTypes.oneOf(['primary', 'secondary']),
 };
@@ -30,7 +27,6 @@ const defaultProps = {
   closeButtonProps: {},
   closeButtonIcon: 'x',
   hideCloseButton: false,
-  hoist: false,
   open: true,
   title: '',
   onClose() {},
@@ -54,7 +50,6 @@ const SidePanel = ({
   contentClassName,
   toolbarType,
   hideCloseButton,
-  hoist,
 }) => {
   const actions = (
     <Button
@@ -68,29 +63,27 @@ const SidePanel = ({
   );
 
   return (
-    <Portal target="side-panel" active={hoist}>
-      {open && (
+    open && (
+      <div
+        className={classNames('rc-sidepanel', className, {
+          'rc-sidepanel-border': border,
+        })}
+      >
         <div
-          className={classNames('rc-sidepanel', className, {
-            'rc-sidepanel-border': border,
-          })}
+          className={`rc-sidepanel-toolbar rc-sidepanel-toolbar-${toolbarType}`}
         >
-          <div
-            className={`rc-sidepanel-toolbar rc-sidepanel-toolbar-${toolbarType}`}
-          >
-            <Heading as="h6" className="rc-sidepanel-heading">
-              {title}
-            </Heading>
-            {!hideCloseButton && (
-              <div className="rc-sidepanel-actions">{actions}</div>
-            )}
-          </div>
-          <div className={`rc-sidepanel-content ${contentClassName}`}>
-            {children}
-          </div>
+          <Heading as="h6" className="rc-sidepanel-heading">
+            {title}
+          </Heading>
+          {!hideCloseButton && (
+            <div className="rc-sidepanel-actions">{actions}</div>
+          )}
         </div>
-      )}
-    </Portal>
+        <div className={`rc-sidepanel-content ${contentClassName}`}>
+          {children}
+        </div>
+      </div>
+    )
   );
 };
 
