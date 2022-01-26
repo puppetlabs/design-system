@@ -1,6 +1,11 @@
-# react-components 6.0.0-alpha.11 (2022-01-16)
+# react-components 6.0.0-alpha.12 (2022-01-26)
 
 - [Sidebar.Header] Allow children and className to be passed to Sidebar.Header
+- [Overlay] Add Overlay back
+
+# react-components 6.0.0-alpha.11 (2022-01-12)
+
+- Merge 5.32.0 into alpha
 
 # react-components 6.0.0-alpha.10 (2021-10-27)
 
