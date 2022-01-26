@@ -39,13 +39,6 @@ object-assign
 /*!
  * The buffer module from node.js, for the browser.
  *
- * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
- * @license  MIT
- */
-
-/*!
- * The buffer module from node.js, for the browser.
- *
  * @author   Feross Aboukhadijeh <http://feross.org>
  * @license  MIT
  */
@@ -55,8 +48,6 @@ object-assign
  * Copyright 2014-2019 Benjamin Tan <https://bnjmnt4n.now.sh/>
  * Available under MIT license <https://github.com/bnjmnt4n/regjsgen/blob/master/LICENSE>
  */
-
-/*! clipboard-copy. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /*! https://mths.be/regenerate v1.3.3 by @mathias | MIT license */
 
