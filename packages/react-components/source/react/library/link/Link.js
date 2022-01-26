@@ -6,7 +6,7 @@ const propTypes = {
   /** Html element or react component to render */
   as: PropTypes.elementType,
   /** Text Size */
-  size: PropTypes.oneOf(['tiny', 'small', 'regular', 'medium', 'large']),
+  size: PropTypes.oneOf(['medium', 'small', 'tiny']),
   /** Link text */
   children: PropTypes.node,
   /** Optional additional classname. */
@@ -21,7 +21,7 @@ const propTypes = {
 
 const defaultProps = {
   as: 'a',
-  size: 'regular',
+  size: 'medium',
   className: '',
   children: null,
   style: {},

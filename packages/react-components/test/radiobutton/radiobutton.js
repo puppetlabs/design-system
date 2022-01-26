@@ -12,26 +12,7 @@ describe('<RadioButton />', () => {
   const requiredProps = {
     name: 'test-name',
     label: 'test-label',
-    value: 'foo',
   };
-
-  it('should have expected input element type', () => {
-    expect(
-      shallow(<RadioButton {...requiredProps} className="test-class" />).find('input'),
-    ).to.have.prop('type', 'radio');
-  });
-
-  it('should have expected input element name', () => {
-    expect(
-      shallow(<RadioButton {...requiredProps} className="test-class" />).find('input'),
-    ).to.have.prop('name', 'test-name');
-  });
-
-  it('should have expected input element id', () => {
-    expect(
-      shallow(<RadioButton {...requiredProps} className="test-class" />).find('input'),
-    ).to.have.prop('id', 'test-name-foo');
-  });
 
   it('propagates the provided className to the top level element', () => {
     expect(
@@ -61,7 +42,7 @@ describe('<RadioButton />', () => {
 
     wrapper.find('input').simulate('change');
 
-    expect(onChange.calledWith('foo')).to.equal(true);
+    expect(onChange.called).to.equal(true);
   });
 
   it('should respond to focus if onFocus is provided', () => {
@@ -83,17 +64,5 @@ describe('<RadioButton />', () => {
     expect(shallow(<RadioButton {...requiredProps} disabled />).find('input'))
       .to.have.prop('disabled')
       .to.equal(true);
-  });
-
-  it('should be checked if selected', () => {
-    expect(shallow(<RadioButton {...requiredProps} selectedValue='foo' />).find('input'))
-      .to.have.prop('checked')
-      .to.equal(true);
-  });
-
-  it('should be unchecked if not selected', () => {
-    expect(shallow(<RadioButton {...requiredProps} selectedValue='bar' />).find('input'))
-      .to.have.prop('checked')
-      .to.equal(false);
   });
 });

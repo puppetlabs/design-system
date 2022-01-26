@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime';
+
 import chai, { expect } from 'chai';
 import chaiEnzyme from 'chai-enzyme';
 import { configure } from 'enzyme';

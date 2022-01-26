@@ -2,57 +2,42 @@
 
 The text component is a foundational element that provides an encapsulated way to use typography, consistent with design system rules. Together the `size` and `color` props determine the rendered typographical variant.
 
-### Font family
+Our products use three font families, with their various weights and sizes, to communicate clearly with our users. Don’t introduce new typographic styles to our products without consulting the UX team.
 
-The Text component uses the **Open Sans** font.
+### Font families
 
-Our products use three font families, with their various weights and sizes, to communicate clearly with our users. Don’t introduce new typographic styles to our products without consulting the UX team. Each font faimly is intended for a different set of use cases:
+The following 3 font families are utilized in a variety of styles. The use cases for these are outlined below.
 
-- <strong>Open Sans</strong> is for body copy and general UI elements and content.
-- <strong>Calibre</strong> is for headings, titles, navigation, visualizations, and other primary elements.
-- <strong>Inconsolata</strong> is for code samples.
+- <strong>Calibre</strong>: Headings, titles, navigation, visualizations, and other primary elements (See [Heading](#/React%20Components/Heading))
+- <strong>Open Sans</strong>: Body copy and general UI elements and content (like this `Text` component)
+- <strong>Inconsolata</strong>: Code samples (See [Code](#/React%20Components/Code))
 
-If Open Sans isn't right for your use case, consider whether one of these alternatives would be more appropriate than overriding the font family of the Heading component:
+See also: [Heading](#/React%20Components/Heading), [Code](#/React%20Components/Code) and [Content](#/React%20Components/Content)
 
-- use the [Heading](#/React%20Components/Heading) component to render headings in Calibre,
-- use the [Code](#/React%20Components/Code) component to render code in Inconsolata,
-- use the [Content](#/React%20Components/Content) component to automatically format arbitrary markup using all three fonts as appropriate, or
-- write styles for your own component using the sass mixins defined in the `@puppet/sass-variables` package's `_typography` partial as needed.
+## Types
 
-See the [Typography](#/Foundations/Typography) page for more guidance on font families and font use.
+### Primary
 
-### Size
+The primary (default) text is categorized as Body text, used for page content.
 
-Size is controlled with the `size` property. The default size is `regular`; other options are `large`, `medium`, `small`, and `tiny`.
-
-All sizes use a regular weight (400), except `tiny`, which is semibold (600 weight). For bold text (700 weight), use `<strong>` tags inside your `Text` element.
-
-- The default `regular` size is appropriate for most body text.
-- The `medium` and `large` sizes are appropriate for use near headings that may dwarf smaller body font sizes, and for intro paragraphs that should attract the reader's attention.
-- The `small` size is appropriate for some labels and card content.
-- The `tiny` size should be used sparingly.
+- Font Family: Open Sans
+- Font weight: 400 Regular
+- Size / line height: 14px / 20px
 
 ```jsx
-import Code from '../code';
-import Link from '../link';
+<Text>Default text size</Text>
+```
 
-<div>
-  <Text size="large">
-    <strong>Large:</strong> The <Code size='large'>five</Code> boxing <Link href="#" size='large'>wizards</Link> jump quickly.
-  </Text>
-  <Text size="medium">
-    <strong>Medium:</strong> The <Code size='medium'>five</Code> boxing <Link href="#" size='medium'>wizards</Link> jump quickly.
-  </Text>
-  <Text size="regular">
-    <strong>Regular (default):</strong> The <Code>five</Code> boxing <Link href="#">wizards</Link> jump quickly.
-  </Text>
-  <Text size="small">
-    <strong>Small:</strong> The <Code size='small'>five</Code> boxing <Link href="#" size='small'>wizards</Link> jump quickly.
-  </Text>
-  <Text size="tiny">
-    <strong>Tiny:</strong> The <Code size='tiny'>five</Code> boxing <Link href="#" size='tiny'>wizards</Link> jump quickly.
-  </Text>
-</div>;
+## Variations
+
+### Text sizes
+
+Most text should have a size of medium, the default, but small and tiny are also options.
+
+```jsx
+<Text><strong>Medium:</strong> Body text is the most common size.</Text>
+<Text size="small"><strong>Small:</strong> Small text is used in some places like card content.</Text>
+<Text size="tiny"><strong>Tiny:</strong> Tiny text is rarely used.</Text>
 ```
 
 ### Text colors

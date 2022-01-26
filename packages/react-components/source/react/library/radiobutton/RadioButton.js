@@ -10,10 +10,8 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   /** Human friendly label */
   label: PropTypes.string.isRequired,
-  /** Value assigned to this radio button option */
-  value: PropTypes.string.isRequired,
-  /** Value that is currently selected in the radio button group */
-  selectedValue: PropTypes.string,
+  /** Boolean input value determining if the checkbox is checked or not */
+  value: PropTypes.bool,
   /** Is the input disabled */
   disabled: PropTypes.bool,
   /** Form error, causing element to render red when present */
@@ -29,7 +27,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  selectedValue: '',
+  value: false,
   disabled: false,
   error: false,
   onChange() {},
@@ -48,7 +46,6 @@ const radioDot = {
 const RadioButton = ({
   name,
   value,
-  selectedValue,
   label,
   error,
   className,
@@ -60,20 +57,21 @@ const RadioButton = ({
   <Text
     as="label"
     size="small"
+    htmlFor={name}
     className={classNames('rc-radiobutton-input', className)}
     style={style}
   >
     <div className="rc-radiobutton-container">
       <input
         type="radio"
-        id={`${name}-${value}`}
+        id={name}
         name={name}
-        checked={value === selectedValue}
+        checked={value}
         ref={inputRef}
         className={classNames('rc-radiobutton', {
           'rc-radiobutton-error': error,
         })}
-        onChange={e => onChange(value, e)}
+        onChange={e => onChange(e.target.checked, e)}
         {...otherProps}
       />
       <Icon svg={radioDot.svg} viewBox={radioDot.viewBox} />

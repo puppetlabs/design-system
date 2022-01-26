@@ -8,41 +8,37 @@ Radio buttons provide built in support for hover, active, and focused interactio
 
 ```jsx
 const exampleStyle = { marginRight: 10 };
-const [value, setValue] = React.useState('unchecked');
+const [value, setValue] = React.useState(0);
 
 <div>
   <RadioButton
-    name="radiobutton-ex"
+    name="radiobutton-ex-unchecked"
     label="Unchecked"
     style={exampleStyle}
-    value="unchecked"
-    selectedValue={value}
-    onChange={setValue}
+    value={value === 0}
+    onChange={() => setValue(0)}
   />
   <RadioButton
-    name="radiobutton-ex"
+    name="radiobutton-ex-checked"
     label="Checked"
     style={exampleStyle}
-    value="checked"
-    selectedValue={value}
-    onChange={setValue}
+    value={value === 1}
+    onChange={() => setValue(1)}
   />
   <RadioButton
-    name="radiobutton-ex"
+    name="radiobutton-ex-disabled"
     label="Disabled"
     style={exampleStyle}
-    value="disabled"
-    selectedValue={value}
-    onChange={setValue}
+    value={value === 2}
+    onChange={() => setValue(2)}
     disabled
   />
   <RadioButton
-    name="radiobutton-ex"
+    name="radiobutton-ex-error"
     label="Error"
     style={exampleStyle}
-    value="error"
-    selectedValue={value}
-    onChange={setValue}
+    value={value === 3}
+    onChange={() => setValue(3)}
     error
   />
 </div>;
@@ -57,14 +53,11 @@ When the radio button is used within a [Form](#Form) component, the value state 
 When the radio button is used outside of a [Form](#Form) component, the user is responsible for managing value state.
 
 ```jsx
-const [value, setValue] = React.useState('foo');
-
 <RadioButton
   name="radiobutton-ex-event-handling"
   label="Radio button label is also clickable"
-  value="bar"
-  selectedValue={value}
-  onChange={setValue}
+  value={state.checked}
+  onChange={checked => setState({ checked })}
 />
 ```
 

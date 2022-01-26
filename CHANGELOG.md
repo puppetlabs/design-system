@@ -1,32 +1,3 @@
-# react-components 6.0.0-alpha.11 (2022-01-12)
-
-- Merge 5.32.0 into alpha
-
-# react-components 6.0.0-alpha.10 (2021-10-27)
-
-- Merge 5.30.0 into alpha
-
-# react-components 6.0.0-alpha.8 (2021-08-12)
-
-- [Overlay] Remove Overlay until build error is resolved
-
-# react-components 6.0.0-alpha.7 (2021-07-20)
-
-- [Form] Fix form label spacing #452
-
-# react-components 6.0.0-alpha.6 (2021-07-14)
-
-- BREAKING [Columns] Move Columns from react-layouts to react-components #451
-
-# react-components 6.0.0-alpha.5 (2021-07-12)
-
-- [List] Add List component #446
-- BREAKING [Filters] Remove the old undocumented Filters component #446
-
-# react-components 6.0.0-alpha.4 (2021-07-12)
-
-- Upgrade dependencies #450
-
 ## react-components 5.32.0 (2022-01-11)
 
 - [Form] Pass other props to Form component to form element (by [@vine77](https://github.com/vine77) in [#487](https://github.com/puppetlabs/design-system/pull/487))
@@ -36,7 +7,6 @@
 
 - [TableActions] Add table action dropdown to the table header component (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
 - [SelectWithPagination] Add's the new conditional rendering, props and implementation pattern for Selection with pagination (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
-
 # react-components 5.31.0 (2021-12-20)
 
 - [Icon] Add ban, pause and caret-right icon (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
