@@ -12,7 +12,6 @@
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch",
-    "test:update": "jest --updateSnapshot",
     "format": "eslint --fix src/**/*.{js,jsx} && prettier --write {src}/**/*.{graphql,json,css,md} .babelrc .prettierrc package.json README.md CONTRIBUTING.md",
     "lint": "eslint src/**/*.{js,jsx} postcss.config.js",
     "prepare": "npm run build"
@@ -25,8 +24,8 @@
     "react-dom": "^16.13.0"
   },
   "dependencies": {
-    "@puppet/react-components": "^6.0.0-alpha.4",
-    "@puppet/sass-variables": "^2.0.0-alpha.2",
+    "@puppet/react-components": "^5.25.1",
+    "@puppet/sass-variables": "^1.4.3",
     "classnames": "^2.2.6",
     "init": "^0.1.2",
     "lodash": "^4.17.20",
@@ -52,6 +51,7 @@
     "clean-webpack-plugin": "^1.0.1",
     "connect-history-api-fallback": "^1.6.0",
     "copy-webpack-plugin": "^5.1.1",
+    "core-js": "^3.6.5",
     "css-loader": "^2.1.0",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.3",

@@ -72,7 +72,7 @@ const Copy = ({
 
   return (
     <div className={classNames('copy', `copy-${align}`, className)}>
-      {children && <div className="copy-input">{children}</div>}
+      <div className="copy-input">{children}</div>
       <Button
         icon="copy"
         className="value-copy-button"

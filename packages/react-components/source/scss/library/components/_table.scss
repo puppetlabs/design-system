@@ -56,11 +56,6 @@
   @include puppet-type-small();
   padding: 15px 16px;
 
-  a {
-    @include puppet-type-small();
-    @include puppet-type-link();
-  }
-
   &.rc-table-cell-hide-overflow {
     overflow: hidden;
     text-overflow: ellipsis;

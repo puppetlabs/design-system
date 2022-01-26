@@ -8,8 +8,8 @@ const propTypes = {
 const Portal = ({ children, target = 'tooltip' }) => {
   // portal target with fallbacks
   const root =
-    document.getElementsByClassName('app')[0] ||
-    document.getElementById('root') ||
+    document.getElementsByClassName('app')[0] ??
+    document.getElementById('root') ??
     document.body;
 
   const portalId = `portal-${target}`;

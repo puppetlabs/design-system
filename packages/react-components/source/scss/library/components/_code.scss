@@ -2,20 +2,8 @@
   @include puppet-type-code();
 }
 
-.rc-code-size-large {
-  @include puppet-type-code-large();
-}
-
-.rc-code-size-medium {
-  @include puppet-type-code-medium();
-}
-
 .rc-code-size-small {
   @include puppet-type-code-small();
-}
-
-.rc-code-size-tiny {
-  @include puppet-type-code-tiny();
 }
 
 .rc-code-block {

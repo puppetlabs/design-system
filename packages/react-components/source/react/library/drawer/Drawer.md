@@ -49,7 +49,7 @@ return (
 ## Related
 
 - [SidePanel](#/React%20Components/SidePanel)
-- [Columns](#/React%20Components/Columns)
+- [Columns](#/React%20Layouts/Columns)
 - [Sidebar](#/React%20Components/Sidebar)
 - [Tabs](#/React%20Components/Tabs)
 - [Toolbar](#/React%20Components/Toolbar)

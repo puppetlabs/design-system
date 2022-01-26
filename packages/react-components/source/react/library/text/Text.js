@@ -6,7 +6,7 @@ const propTypes = {
   /** Html element or react component to render */
   as: PropTypes.elementType,
   /** Text Size */
-  size: PropTypes.oneOf(['large', 'medium', 'regular', 'small', 'tiny']),
+  size: PropTypes.oneOf(['medium', 'small', 'tiny']),
   /** Text color */
   color: PropTypes.oneOf(['subtle', 'medium', 'danger', 'warning', 'success']),
   /** Text body */
@@ -21,7 +21,7 @@ const defaultProps = {
   as: 'div',
   children: '',
   className: '',
-  size: 'regular',
+  size: 'medium',
   color: null,
   style: {},
 };

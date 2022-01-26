@@ -1,8 +1,8 @@
 ## Overview
 
-The Code component should be used for code samples (inline and block level).
+The Code component font should be used for codeblocks.
 
-You may also use inline Code components inside the [Heading](#/React%20Components/Heading), [Text](#/React%20Components/Text), or [Content](#/React%20Components/Content) components if needed.
+See also: [Heading](#/React%20Components/Heading), [Text](#/React%20Components/Text), and [Content](#/React%20Components/Content)
 
 ## Types
 
@@ -12,14 +12,13 @@ The default styles for this component are:
 
 - Font Family: Inconsolata
 - Font weight: 400 Regular
-- Size: 16px
-- Line height: 20px for inline, 22px for block
+- Size / line height: 16px / 20px
 
 ```jsx
 import Text from '../text';
 
 <>
-  <Code>This is some code</Code>
+  <Code>This is a codeblock</Code>
   <div>
     <Code>
       <strong>Code</strong>
@@ -39,34 +38,21 @@ import Text from '../text';
 
 ### Code sizes
 
-Most code should have a size of `regular` (the default), but there are other available sizes to match the various sizes of the [`Text`](/#/React%20Components/Text) component:
+Most code should have a size of medium, the default, but the small code variant is also available by adding the `size` prop.
 
 ```jsx
-<Code as="span" size="large"><strong>Large:</strong> The five boxing wizards jump quickly.</Code>
-<br />
-<Code as="span" size="medium"><strong>Medium:</strong> The five boxing wizards jump quickly.</Code>
-<br />
-<Code as="span"><strong>Regular (default):</strong> The five boxing wizards jump quickly.</Code>
-<br />
-<Code as="span" size="small"><strong>Small:</strong> The five boxing wizards jump quickly.</Code>
-<br />
-<Code as="span" size="tiny"><strong>Tiny:</strong> The five boxing wizards jump quickly.</Code>
+<Code as="div"><strong>Medium:</strong> This code is the most common size.</Code>
+<Code as="div" size="small"><strong>Small:</strong> Small code is used in some places.</Code>
+
 ```
 
 ### Code types
 
-By default, code renders as `inline` type. Pass `type="block"` to render a block of code instead:
+By default, code renders as inline type. Pass `type="block"` to change the styling.
 
 ```jsx
-const exampleCode = `# This code is formatted as type "block" and it can be multiple lines:
-
-file { "/etc/passwd":
-  owner => "root",
-  group => "root",
-  mode  => "0644",
-}`;
-
-<Code type="block">{exampleCode}</Code>;
+<Code type="block">{`This code is formatted as type "block"
+and it can be multiple lines`}</Code>
 ```
 
 ## Related
