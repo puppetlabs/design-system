@@ -78,7 +78,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   fixed={false}
   fixedColumn={false}
   headerCheckState={false}
-  headerIndeterminateState={true}
+  headerIndeterminateState={false}
   horizontalScroll={false}
   loading={false}
   loadingMessage="Loading"
@@ -126,7 +126,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             },
           ]
         }
-        headerIndeterminateState={true}
+        headerIndeterminateState={false}
         loading={false}
         loadingMessage="Loading"
         onSelectAll={[Function]}
@@ -443,7 +443,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   fixed={false}
   fixedColumn={false}
   headerCheckState={false}
-  headerIndeterminateState={true}
+  headerIndeterminateState={false}
   horizontalScroll={false}
   loading={false}
   loadingMessage="Loading"
@@ -491,7 +491,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
             },
           ]
         }
-        headerIndeterminateState={true}
+        headerIndeterminateState={false}
         loading={false}
         loadingMessage="Loading"
         onSelectAll={[Function]}

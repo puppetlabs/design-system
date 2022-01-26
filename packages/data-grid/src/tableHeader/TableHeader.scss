@@ -1,10 +1,6 @@
 @import '@puppet/sass-variables/_index';
 
-.dg-table-row-count {
-  margin-right: 20px;
-  margin-bottom: 11px;
-  font-weight: $puppet-type-weight-heavy;
-}
+
 
 .dg-table-header-content-container {
   display: flex;
@@ -28,4 +24,22 @@
   .dg-table-header-tag-builder {
     margin-bottom: 8px;
   }
+
+  .dg-table-action {
+    margin-left: auto;
+  }
+}
+
+.dg-table-header-text-container{
+  display: flex;
+  margin-bottom: 11px;
+
+  .dg-table-row-count {
+    margin-right: 20px;
+    font-weight: $puppet-type-weight-heavy;
+  }
+
+ .dg-table-header-select-all{
+  cursor: pointer;
+ }
 }
