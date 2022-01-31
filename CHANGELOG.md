@@ -1,3 +1,7 @@
+# react-components 6.0.0-alpha.13 (2022-01-31)
+
+- Merge 5.32.1 into alpha
+
 # react-components 6.0.0-alpha.12 (2022-01-26)
 
 - [Sidebar.Header] Allow children and className to be passed to Sidebar.Header
