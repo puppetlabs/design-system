@@ -113,7 +113,7 @@ const TooltipHoverArea = ({
   // Manage tooltip visibility
   const mouseIn = () => {
     // popper.js doesn't take into account layout changes, so we need to update it manually
-    update();
+    update?.();
     if (!disabled) showTooltip();
   };
   const mouseOut = () => hideTooltip();
