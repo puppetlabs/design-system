@@ -1,3 +1,7 @@
+# react-components 6.0.0-alpha.13 (2022-01-31)
+
+- Merge 5.32.1 into alpha
+
 # react-components 6.0.0-alpha.12 (2022-01-26)
 
 - [Sidebar.Header] Allow children and className to be passed to Sidebar.Header
@@ -31,6 +35,10 @@
 # react-components 6.0.0-alpha.4 (2021-07-12)
 
 - Upgrade dependencies #450
+
+## react-components 5.32.1 (2022-01-31)
+
+-- [TooltipHoverArea] Prevent udpate method from being called when undefined. (by [@krable55](https://github.com/krable55) in [#504](https://github.com/puppetlabs/design-system/pull/504))
 
 ## react-components 5.32.0 (2022-01-11)
 
