@@ -2,6 +2,10 @@
 
 - Fix onRowClick Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#510](https://github.com/puppetlabs/design-system/pull/510))
 
+## react-components 5.32.1 (2022-01-31)
+
+-- [TooltipHoverArea] Prevent udpate method from being called when undefined. (by [@krable55](https://github.com/krable55) in [#504](https://github.com/puppetlabs/design-system/pull/504))
+
 ## react-components 5.32.0 (2022-01-11)
 
 - [Form] Pass other props to Form component to form element (by [@vine77](https://github.com/vine77) in [#487](https://github.com/puppetlabs/design-system/pull/487))
@@ -11,6 +15,7 @@
 
 - [TableActions] Add table action dropdown to the table header component (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
 - [SelectWithPagination] Add's the new conditional rendering, props and implementation pattern for Selection with pagination (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
+
 # react-components 5.31.0 (2021-12-20)
 
 - [Icon] Add ban, pause and caret-right icon (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
