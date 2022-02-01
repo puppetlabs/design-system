@@ -1,3 +1,7 @@
+# data-grid 0.6.1 (2021-03-09)
+
+- Fix onRowClick Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#510](https://github.com/puppetlabs/design-system/pull/510))
+
 ## react-components 5.32.1 (2022-01-31)
 
 -- [TooltipHoverArea] Prevent udpate method from being called when undefined. (by [@krable55](https://github.com/krable55) in [#504](https://github.com/puppetlabs/design-system/pull/504))
