@@ -138,9 +138,11 @@ class Table extends Component {
     return name;
   };
 
-  handleParentClick = (e, rowData, rowKey, rowIndex) => {
+  // Allows the child checkbox to be clicked without calling rowClick
+  handleOnClick = (e, rowData, rowKey, rowIndex) => {
     const { onRowClick } = this.props;
-    if (e.target.id !== `dg-checkbox-${rowIndex}`) {
+
+    if (!e.target.classList.contains('rc-checkbox')) {
       onRowClick(rowKey, rowIndex, rowData);
     }
   };
@@ -235,7 +237,7 @@ class Table extends Component {
                   )}
                   key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
                   onClick={e =>
-                    this.handleParentClick(e, rowData, rowKey, rowIndex)
+                    this.handleOnClick(e, rowData, rowKey, rowIndex)
                   }
                 >
                   {selectable ? (
@@ -248,7 +250,6 @@ class Table extends Component {
                       className="rc-table-cell"
                     >
                       <Checkbox
-                        id={`dg-checkbox-${rowIndex}`}
                         className="dg-table-checkbox"
                         onChange={checked => onRowChecked(checked, rowData)}
                         value={rowData.selected}
