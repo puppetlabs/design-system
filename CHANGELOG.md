@@ -1,3 +1,7 @@
+# data-grid 0.6.1 (2021-03-09)
+
+- Fix onRowClick Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#510](https://github.com/puppetlabs/design-system/pull/510))
+
 ## react-components 5.32.0 (2022-01-11)
 
 - [Form] Pass other props to Form component to form element (by [@vine77](https://github.com/vine77) in [#487](https://github.com/puppetlabs/design-system/pull/487))
