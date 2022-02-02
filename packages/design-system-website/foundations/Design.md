@@ -33,10 +33,10 @@ Collaboration is an important part of the design process so before publishing th
 #### Publishing
 As there’s the potential to break existing designs, publishing changes in the Figma library can appear daunting but following this process will mitigate the risk and issues that arise from publishing can always be rolled back.
 
-#### 5. Documentation
+### 5. Documentation
 The design system website allows designers and engineers to quickly reference coded components so providing documentation is very important. At a minimum, this should include a written overview of the component and written examples of any types and variations. Icons don’t normally need to be documented.
 
-#### 6. Handoff
+### 6. Handoff
 It’s the responsibility of the designer to ensure the following criteria is met for a smooth handoff to engineering.
 A successful design meets the following criteria:
 1. It is supported by a user need.
