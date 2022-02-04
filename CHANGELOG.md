@@ -1,3 +1,7 @@
+## react-components 5.32.2 (2022-02-04)
+
+- [Icon] Add unpatched and windows icons
+
 # data-grid 0.6.1 (2021-03-09)
 
 - Fix onRowClick Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#510](https://github.com/puppetlabs/design-system/pull/510))
