@@ -1,3 +1,7 @@
+## react-components 5.32.3 (2022-02-08)
+
+- [Code] Add `copyable` to Code component
+
 ## react-components 5.32.2 (2022-02-04)
 
 - [Icon] Add unpatched and windows icons
