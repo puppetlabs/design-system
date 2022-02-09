@@ -239,12 +239,6 @@ $puppet-type-tiny-margin: 8px !default;
   .rc-code-block {
     @include puppet-type-code-block();
     margin: $puppet-type-body-margin 0;
-
-    code {
-      // The inline code content background is slightly darker - override
-      // it here to keep the lighter block-level background-color:
-      background-color: $puppet-n50 !important;
-    }
   }
 
   //

@@ -53,7 +53,7 @@ const Code = ({
     style={style}
     {...other}
   >
-    <div className="rc-code-children">{children}</div>
+    <span className="rc-code-children">{children}</span>
     {copyable && <Copy value={children} />}
   </Element>
 );
