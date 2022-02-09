@@ -138,6 +138,15 @@ class Table extends Component {
     return name;
   };
 
+  // Allows the child checkbox to be clicked without calling rowClick
+  handleOnClick = (e, rowData, rowKey, rowIndex) => {
+    const { onRowClick } = this.props;
+
+    if (!e.target.classList.contains('rc-checkbox')) {
+      onRowClick(rowKey, rowIndex, rowData);
+    }
+  };
+
   render() {
     const {
       data,
@@ -227,7 +236,9 @@ class Table extends Component {
                     },
                   )}
                   key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
-                  onClick={() => onRowClick(rowKey, rowIndex, rowData)}
+                  onClick={e =>
+                    this.handleOnClick(e, rowData, rowKey, rowIndex)
+                  }
                 >
                   {selectable ? (
                     <td
