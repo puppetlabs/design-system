@@ -1,3 +1,7 @@
+# react-components 6.0.0-alpha.14 (2022-02-08)
+
+- Merge 5.32.3 into alpha
+
 # react-components 6.0.0-alpha.13 (2022-01-31)
 
 - Merge 5.32.1 into alpha
@@ -35,6 +39,18 @@
 # react-components 6.0.0-alpha.4 (2021-07-12)
 
 - Upgrade dependencies #450
+
+## react-components 5.32.3 (2022-02-08)
+
+- [Code] Add `copyable` to Code component
+
+## react-components 5.32.2 (2022-02-04)
+
+- [Icon] Add unpatched and windows icons
+
+# data-grid 0.6.1 (2021-03-09)
+
+- Fix onRowClick Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#510](https://github.com/puppetlabs/design-system/pull/510))
 
 ## react-components 5.32.1 (2022-01-31)
 

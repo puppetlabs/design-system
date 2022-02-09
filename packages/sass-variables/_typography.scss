@@ -314,17 +314,22 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
   line-height: $puppet-type-code-tiny-line-height;
 }
 
+  // background-color: $puppet-n100;
+  // border-left: 8px solid $puppet-n300;
+  // display: block;
+  // padding: 0;
+  // white-space: pre;
+
 @mixin puppet-type-code-block() {
   background-color: $puppet-n50;
-  box-shadow: inset 8px 0 0 #e4e9ed;
+  border-left: 8px solid $puppet-n300;
   box-sizing: border-box;
   display: block;
   @include puppet-type-code();
   line-height: $puppet-type-code-block-line-height;
-  overflow-x: auto;
+  overflow: auto;
   padding: $puppet-common-spacing-base * 3 $puppet-common-spacing-base * 6;
   white-space: pre;
-  word-wrap: break-word;
 }
 
 @mixin puppet-type-link() {
