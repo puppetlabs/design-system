@@ -35,7 +35,7 @@
     "mocha": "^6.2.3",
     "mocha-jsdom": "^2.0.0",
     "namor": "^2.0.2",
-    "node-sass": "^4.14.1",
+    "node-sass": "^7.0.0",
     "prettier": "^1.19.1",
     "react-addons-test-utils": "^15.6.2",
     "react-modal": "^3.11.2",
