@@ -1,3 +1,7 @@
+## react-components 5.32.4 (2022-02-11)
+
+- [Icon] Add exception icon
+
 ## react-components 5.32.3 (2022-02-08)
 
 - [Code] Add `copyable` to Code component
