@@ -207,7 +207,7 @@ const icons = {
     ),
   },
 
-  'change': {
+  change: {
     medium: (
       <path 
         fillRule="evenodd" 
