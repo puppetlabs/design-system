@@ -5,13 +5,9 @@ import classNames from 'classnames';
 import './CreateFilterBuilder.scss';
 
 const propTypes = {
-  /**
-   * This prop is automatically passed from the withID HOC
-   * @ignore
-   */
   id: PropTypes.string.isRequired,
-  /** An Array of action objects */
-  actions: PropTypes.arrayOf(
+  /** An Array of field objects */
+  fieldOptions: PropTypes.arrayOf(
     PropTypes.shape({
       /** Unique action id */
       id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
@@ -27,9 +23,31 @@ const propTypes = {
       as: PropTypes.elementType,
     }),
   ),
+   /** An Array of operator objects */
+  operatorOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      /** Unique action id */
+      id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+      /** Action text */
+      label: PropTypes.node.isRequired,
+      /** Optional icon rendered to the left of action text */
+      icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+      /** Optional custom icon rendered to the left of action text */
+      svg: PropTypes.element,
+      /** Action click handler. Not needed if the action is a link */
+      onClick: PropTypes.func,
+      /** Custom action element. Useful for creating navigation actions with as: 'a' or as: Link. Additionally, extra props not listed here are passed through to the action element. This allows custom props such as `href` or `to` to be passed to the inner action element. */
+      as: PropTypes.elementType,
+    }),
+  ),
+  /** Optional label for main button */
   buttonLabel: PropTypes.string,
+  /** Optional label for form submit button */
   submitLabel: PropTypes.string,
+  /** Optional label for form cancel button */
   cancelLabel: PropTypes.string,
+  /** Required func for called on form submission */
+  onSubmit: PropTypes.func.isRequired,
   /** Main visual variant */
   type: PropTypes.oneOf([
     'primary',
@@ -58,11 +76,18 @@ const propTypes = {
 };
 
 const defaultProps = {
-  actions: [],
+  fieldOptions: [],
+  operatorOptions: [],
   buttonLabel: 'Create filter',
   submitLabel: 'Apply',
   cancelLabel: 'Cancel',
-  type: 'primary',
+  fieldLabel: "FIELD",
+  fieldPlaceholder: "Name",
+  operatorLabel: "OPERATOR",
+  operatorPlaceholder: "Contains",
+  valueLabel: "VALUE",
+  valuePlaceholder: "Enter a string or number",
+  type: 'secondary',
   innerFocus: false,
   weight: 'bold',
   icon: null,
@@ -85,6 +110,7 @@ class CreateFilterBuilder extends Component {
     this.focusMenu = this.focusMenu.bind(this);
     this.closeAndFocusButton = this.closeAndFocusButton.bind(this);
     this.onBlur = this.onBlur.bind(this);
+    this.onApply = this.onApply.bind(this);
   }
 
   onClickButton(e) {
@@ -96,6 +122,13 @@ class CreateFilterBuilder extends Component {
     } else {
       this.open();
     }
+  }
+
+  onApply(value) {
+    const { onSubmit } = this.props;
+    console.log("called")
+    onSubmit(value)
+    this.close();
   }
 
   onBlur(e) {
@@ -110,8 +143,6 @@ class CreateFilterBuilder extends Component {
   }
 
   open() {
-    // const { anchor } = this.props;
-
     this.setState({ open: true }, this.focusMenu);
   }
 
@@ -136,6 +167,12 @@ class CreateFilterBuilder extends Component {
       buttonLabel,
       submitLabel,
       cancelLabel,
+      fieldLabel,
+      fieldPlaceholder,
+      operatorLabel,
+      operatorPlaceholder,
+      valueLabel,
+      valuePlaceholder,
       type,
       innerFocus,
       icon,
@@ -145,13 +182,9 @@ class CreateFilterBuilder extends Component {
       className,
       width,
       style,
+      fieldOptions,
+      operatorOptions,
     } = this.props;
-
-    const movieOptions = [
-      { value: 'american-treasure', label: 'American Treasure' },
-      { value: 'ghost-rider', label: 'Ghost Rider' },
-      { value: 'point_break', label: 'Point Break' },
-    ];
 
     return (
       <div>
@@ -174,7 +207,6 @@ class CreateFilterBuilder extends Component {
         >
           {buttonLabel}
         </Button>
-        {/* <FilterTemplate className="dg-filter-template" /> */}
         <Card
           className={classNames(
             'dg-filter-template-container',
@@ -187,36 +219,34 @@ class CreateFilterBuilder extends Component {
           <Form
             submittable
             cancellable
-            // initialValues={values}
-            // submitting={submitting}
-            onSubmit={this.onSubmit}
+            onSubmit={this.onApply}
             labelType="secondary"
             actionsPosition="right"
-            // inlineLabelWidth={180} // default
             submitLabel={submitLabel}
             cancelLabel={cancelLabel}
+            onCancel={this.close}
           >
             <Form.Field
               type="select"
               name="field"
               autoComplete="Name"
-              label="FIELD"
-              placeholder="Name"
-              options={movieOptions}
+              label={fieldLabel}
+              placeholder={fieldPlaceholder}
+              options={fieldOptions}
             />
             <Form.Field
               type="select"
-              name="lName"
+              name="operator"
               autoComplete="lastname"
-              label="OPERATOR"
-              placeholder="Contains"
+              label={operatorLabel}
+              placeholder={operatorPlaceholder}
+              options={operatorOptions}
             />
             <Form.Field
               type="text"
               name="value"
-              label="VALUE"
-              placeholder="Enter a string or number"
-              //   options={movieOptions}
+              label={valueLabel}
+              placeholder={valuePlaceholder}
             />
           </Form>
         </Card>

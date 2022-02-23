@@ -3,6 +3,7 @@ import { string, arrayOf, shape, node, func, bool } from 'prop-types';
 import { Text, Input, ButtonSelect, Badge } from '@puppet/react-components';
 import QuickFilter from '../quickFilter';
 import TagBuilder from '../tagBuilder';
+import CreateFilterBuilder from '../createFilterBuilder/CreateFilterBuilder';
 import './TableHeader.scss';
 
 const propTypes = {
@@ -20,6 +21,11 @@ const propTypes = {
   searchValue: string,
   /** Ran when user types into input box, returns new value */
   onSearchChange: func,
+  //TODO change node to actual prop layout
+  createFilterBuilder: bool,
+  filterBuilderFieldOptions: node,
+  filterBuilderOperatorOptions: node,
+  filterBuilderOnSubmit: func,
   /** Allows you to pass an array to define each quick filter and its possible options */
   filters: arrayOf(
     shape({
@@ -91,6 +97,10 @@ const defaultProps = {
   searchPlaceholder: '',
   searchValue: '',
   onSearchChange: () => {},
+  createFilterBuilder: false,
+  filterBuilderFieldOptions: [],
+  filterBuilderOperatorOptions: [],
+  filterBuilderOnSubmit: ()=>{},
   filters: [],
   onFilterChange: () => {},
   activeFilters: [],
@@ -115,6 +125,10 @@ function TableHeader({
   searchPlaceholder,
   searchValue,
   onSearchChange,
+  createFilterBuilder,
+  filterBuilderFieldOptions,
+  filterBuilderOperatorOptions,
+  filterBuilderOnSubmit,
   filters,
   activeFilters,
   onFilterChange,
@@ -133,6 +147,14 @@ function TableHeader({
   return (
     <div className="dg-table-header-container">
       <div className="dg-table-header-content-container">
+        {createFilterBuilder && <CreateFilterBuilder
+        fieldOptions={filterBuilderFieldOptions}
+        operatorOptions={filterBuilderOperatorOptions}
+        onSubmit={filterBuilderOnSubmit}
+        />}
+        {createFilterBuilder && (filters.length > 0 || search) ? (
+          <div className="dg-table-header-vertical-line-separator" />
+        ) : null}
         {search && (
           <Input
             className="dg-table-header-search"

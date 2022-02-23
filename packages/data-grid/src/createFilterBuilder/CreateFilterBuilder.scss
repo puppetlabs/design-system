@@ -1,7 +1,7 @@
 @import '@puppet/sass-variables/_index';
 
 .dg-filter-template-container{
-    max-width: 256px;
+    min-width: 200px;
     padding: 16px;
     position: absolute;
     margin-top: 4px;
