@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-layouts",
-  "version": "2.0.0-alpha.6",
+  "version": "2.0.0-alpha.7",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "dist/react-layouts.js",
@@ -26,8 +26,8 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
-    "@puppet/react-components": "^6.0.0-alpha.4",
-    "@puppet/sass-variables": "^2.0.0-alpha.2",
+    "@puppet/react-components": "^6.0.0-alpha.14",
+    "@puppet/sass-variables": "^2.0.0-alpha.3",
     "classnames": "^2.2.6",
     "prop-types": "^15.7.2"
   },
