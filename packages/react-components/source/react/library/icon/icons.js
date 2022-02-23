@@ -210,7 +210,7 @@ const icons = {
   change: {
     medium: (
       <path
-        fillRule="evenodd" 
+        fillRule="evenodd"
         d="M8 0c4.411 0 8 3.589 8 8s-3.589 8-8 8-8-3.589-8-8 3.589-8 8-8Zm0 14c3.309 0 6-2.691 6-6s-2.691-6-6-6-6 2.691-6 6 2.691 6 6 6Zm0-2V4a4 4 0 0 1 0 8Z"
       />
     ),
