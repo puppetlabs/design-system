@@ -209,7 +209,7 @@ const icons = {
 
   change: {
     medium: (
-      <path 
+      <path
         fillRule="evenodd" 
         d="M8 0c4.411 0 8 3.589 8 8s-3.589 8-8 8-8-3.589-8-8 3.589-8 8-8Zm0 14c3.309 0 6-2.691 6-6s-2.691-6-6-6-6 2.691-6 6 2.691 6 6 6Zm0-2V4a4 4 0 0 1 0 8Z"
       />
@@ -218,7 +218,7 @@ const icons = {
 
   'change-warning': {
     medium: (
-      <path 
+      <path
         fillRule="evenodd"
         d="M15 15.957H1a1.001 1.001 0 0 1-.894-1.449l7-14c.34-.677 1.449-.677 1.789 0l7 14A1 1 0 0 1 15 15.957Zm-12.381-2h10.764L8 3.193 2.619 13.957ZM8 6l3 6H8V6Z"
       />
