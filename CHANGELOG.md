@@ -1,3 +1,7 @@
+## react-components 5.32.5 (2022-02-24)
+
+- [Icon] Add change and change warning icon
+
 ## react-components 5.32.4 (2022-02-11)
 
 - [Icon] Add exception icon
