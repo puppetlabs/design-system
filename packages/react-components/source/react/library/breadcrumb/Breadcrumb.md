@@ -26,6 +26,16 @@ import Link from '../link';
 </Breadcrumb>;
 ```
 
+## Back
+
+The ‘back’ breadcrumb is a simplified version of the breadcrumb that aids way-finding by showing the user the name of the page they came from and allowing them to navigate back to it quickly. It is best used as an alternative to the ‘standard’ breadcrumb when the standard breadcrumb might provide confusion as to the user’s place in the application. This component should be used sparingly and you should show the name of the screen the user is navigating to where possible. Only one type of breadcrumb should be used in an application.
+
+```jsx
+import Link from '../link';
+
+<Breadcrumb type='back' backLabel="Back to home"/>
+```
+
 ## Related
 
 - [Link](#/React%20Components/Link)
