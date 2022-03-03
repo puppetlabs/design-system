@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { Card, Heading, Logo } from '@puppet/react-components';
-import PageContent from '../PageContent';
+import { Card, Heading, Logo, PageContent } from '@puppet/react-components';
 
 import AuthenticationAction from './AuthenticationAction';
 

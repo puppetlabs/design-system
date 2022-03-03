@@ -1,3 +1,7 @@
+# react-components 6.0.0-alpha.15 (2022-03-03)
+
+- BREAKING [PageContent] Move PageContent from react-layouts to react-components #551
+
 # react-components 6.0.0-alpha.14 (2022-02-08)
 
 - Merge 5.32.3 into alpha

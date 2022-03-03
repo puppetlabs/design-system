@@ -1,4 +1,4 @@
 import Authentication from './Authentication';
-import PageContent from './PageContent';
 
-export { Authentication, PageContent };
+// eslint-disable-next-line import/prefer-default-export
+export { Authentication };

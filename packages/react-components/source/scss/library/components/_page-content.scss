@@ -1,8 +1,8 @@
 @import '~@puppet/sass-variables/index';
 
 .rl-page-content {
-  flex: 1;
   display: flex;
+  flex: 1;
   flex-direction: column;
 }
 
@@ -19,9 +19,9 @@
 }
 
 .rl-page-content-inner {
+  animation: opacityFadeIn $puppet-common-transition-duration forwards;
   flex: 1;
   opacity: 0;
-  animation: opacityFadeIn $puppet-common-transition-duration forwards;
 }
 
 .rl-page-content-delayed > .rl-page-content-inner {
