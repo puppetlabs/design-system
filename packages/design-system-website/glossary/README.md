@@ -4,14 +4,16 @@ This is a (non-alphebetical) listing of all modules exported by Design System. I
 
 React components are flexible page elements. Define or nullify props on a given react component to drastically change it's appearence and behavior.
 
-| General layout                               |
-| -------------------------------------------- |
-| [Card](/#/React%20Components/Card)           |
-| [Content](/#/React%20Components/Content)     |
-| [Modal](/#/React%20Components/Modal)         |
-| [SidePanel](/#/React%20Components/SidePanel) |
-| [Table](/#/React%20Components/Table)         |
-| [Toolbar](/#/React%20Components/Toolbar)     |
+| General layout                                   |
+| ------------------------------------------------ |
+| [Card](/#/React%20Components/Card)               |
+| [Columns](/#/React%20Components/Columns)         |
+| [Content](/#/React%20Components/Content)         |
+| [Modal](/#/React%20Components/Modal)             |
+| [PageContent](/#/React%20Components/PageContent) |
+| [SidePanel](/#/React%20Components/SidePanel)     |
+| [Table](/#/React%20Components/Table)             |
+| [Toolbar](/#/React%20Components/Toolbar)         |
 
 | Navigation                                     |
 | ---------------------------------------------- |
