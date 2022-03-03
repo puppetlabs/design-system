@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import PageContent from './PageContent';
+import PageContent from '../../source/react/library/page-content';
 
 test('renders children', () => {
   shallow(<PageContent>Hi</PageContent>).should.have.text('Hi');
