@@ -1,33 +1,38 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
-
+import { expect } from 'chai';
 import PageContent from '../../source/react/library/page-content';
 
-test('renders children', () => {
-  shallow(<PageContent>Hi</PageContent>).should.have.text('Hi');
-});
+describe('<PageContent />', () => {
+  it('renders children', () => {
+    expect(shallow(<PageContent>Hi</PageContent>)).to.have.text('Hi');
+  });
 
-test('propagates className to outer element', () => {
-  shallow(
-    <PageContent className="classy">Hi</PageContent>,
-  ).should.have.className('classy');
-});
+  it('propagates className to outer element', () => {
+    expect(
+      shallow(<PageContent className="classy">Hi</PageContent>),
+    ).to.have.className('classy');
+  });
 
-test('propagates innerClassName to inner element', () => {
-  mount(<PageContent innerClassName="classy">Hi</PageContent>)
-    .childAt(0)
-    .childAt(0)
-    .should.have.className('classy');
-});
+  it('propagates innerClassName to inner element', () => {
+    expect(
+      mount(<PageContent innerClassName="classy">Hi</PageContent>)
+        .childAt(0)
+        .childAt(0),
+    ).to.have.className('classy');
+  });
 
-test('applies delayed className only if delayed and loading', () => {
-  mount(
-    <PageContent delayed loading>
-      Hi
-    </PageContent>,
-  ).should.have.className('rl-page-content-delayed');
+  it('applies delayed className only if delayed and loading', () => {
+    expect(
+      mount(
+        <PageContent delayed loading>
+          Hi
+        </PageContent>,
+      ),
+    ).to.have.className('rl-page-content-delayed');
 
-  shallow(<PageContent delayed>Hi</PageContent>).should.not.have.className(
-    'rl-page-content-delayed',
-  );
+    expect(
+      shallow(<PageContent delayed>Hi</PageContent>),
+    ).to.not.have.className('rl-page-content-delayed');
+  });
 });
