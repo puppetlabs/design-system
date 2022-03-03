@@ -7,7 +7,7 @@ import Hyperlink from '../link';
 const propTypes = {
   /** The route to render. Can be either a link or some plain text (current route)  */
   children: PropTypes.node,
-  /** Set internally--Is the breacrumb the leaf element? */
+  /** Set internally--Is the breadcrumb the leaf element? */
   active: PropTypes.bool,
   /** Whether or not the breadcrumb should be rendered as a link or plain text */
   disabled: PropTypes.bool,
