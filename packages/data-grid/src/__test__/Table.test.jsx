@@ -6,24 +6,24 @@ import Table from '../table/Table';
 configure({ adapter: new Adapter() });
 
 const data = [
-  { id: 1, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
+  { id: 0, eventType: 'Virus/Malware', affectedDevices: 20, detections: 634 },
   {
-    id: 2,
+    id: 1,
     eventType: 'Spyware/Grayware',
     affectedDevices: 20,
     detections: 634,
   },
-  { id: 3, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 },
-  { id: 4, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 },
-  { id: 5, eventType: 'Network Virus', affectedDevices: 15, detections: 497 },
+  { id: 2, eventType: 'URL Filtering', affectedDevices: 15, detections: 598 },
+  { id: 3, eventType: 'Web Reputation', affectedDevices: 15, detections: 598 },
+  { id: 4, eventType: 'Network Virus', affectedDevices: 15, detections: 497 },
   {
-    id: 6,
+    id: 5,
     eventType: 'Application Control',
     affectedDevices: 0,
     detections: 0,
   },
   {
-    id: 7,
+    id: 6,
     eventType: 'Application Control',
     affectedDevices: 0,
     detections: 0,

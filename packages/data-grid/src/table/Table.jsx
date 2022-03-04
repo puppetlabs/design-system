@@ -117,15 +117,13 @@ const defaultColumnDefs = {
 
 class Table extends Component {
   uniqueIDCheck = (rowKey, rowData, rowIndex) => {
-    if (rowKey === undefined) {
-      const newRowData = rowData;
-      newRowData.id = rowIndex;
-      return newRowData.id;
-    }
     if (typeof rowKey === 'string') {
       return rowData[rowKey];
     }
-    return rowKey(rowData);
+    if (typeof rowKey === 'function') {
+      return rowKey(rowData);
+    }
+    return rowIndex;
   };
 
   classNameTypeManage = (classname, data, index) => {
