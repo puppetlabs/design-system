@@ -6,6 +6,7 @@ import Heading from '../heading';
 import Text from '../text';
 import Avatar from '../avatar';
 import Button from '../button';
+import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 
 const propTypes = {
   /** The root HTML element  */
@@ -20,6 +21,8 @@ const propTypes = {
   profileIcon: PropTypes.node,
   /** Boolean flag to enable or disable (default) signout button */
   enableSignout: PropTypes.bool,
+  /** Sign-out icon tooltip text */
+  tooltip: PropTypes.string,
   /** Signout callback function */
   onSignout: PropTypes.func,
 };
@@ -31,6 +34,7 @@ const defaultProps = {
   minimized: false,
   profileIcon: null,
   enableSignout: false,
+  tooltip: null,
   onSignout: () => {},
 };
 
@@ -41,6 +45,7 @@ const SidebarFooter = ({
   minimized,
   profileIcon: profileIconProp,
   enableSignout,
+  tooltip,
   onSignout,
   ...rest
 }) => {
@@ -72,6 +77,13 @@ const SidebarFooter = ({
           <Icon type="sign-out" className="rc-sidebar-footer-signout-icon" />
         </Button>
       );
+      if (tooltip) {
+        signout = (
+          <TooltipHoverArea anchor="top" tooltip={tooltip}>
+            {signout}
+          </TooltipHoverArea>
+        );
+      }
     }
   }
 

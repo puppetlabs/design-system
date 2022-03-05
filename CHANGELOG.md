@@ -1,3 +1,7 @@
+## react-components 5.33.1 (2022-03-04)
+
+- [SidebarFooter] Add tooltip option (by [@chrisleicester](https://github.com/chrisleicester) in [#552](https://github.com/puppetlabs/design-system/pull/552))
+
 ## react-components 5.33.0 (2022-02-28)
 
 - [Breadcrumb] Add Back type (by [@Lukeaber](https://github.com/Lukeaber) in [#549](https://github.com/puppetlabs/design-system/pull/549))
@@ -5,6 +9,7 @@
 ## react-components 5.32.5 (2022-02-24)
 
 - [Icon] Add change and change warning icon
+
 ## react-components 5.32.4 (2022-02-11)
 
 - [Icon] Add exception icon
