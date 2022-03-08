@@ -68,7 +68,7 @@ import Badge from '../badge';
       onClick={console.log}
       enableSignout
       onSignout={console.log}
-      tooltip="Sign out!"
+      signoutTooltip="This is a custom tooltip"
     />
   </Sidebar>
 </div>;

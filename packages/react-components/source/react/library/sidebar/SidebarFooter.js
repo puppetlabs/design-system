@@ -22,7 +22,7 @@ const propTypes = {
   /** Boolean flag to enable or disable (default) signout button */
   enableSignout: PropTypes.bool,
   /** Sign-out icon tooltip text */
-  tooltip: PropTypes.string,
+  signoutTooltip: PropTypes.string,
   /** Signout callback function */
   onSignout: PropTypes.func,
 };
@@ -34,7 +34,7 @@ const defaultProps = {
   minimized: false,
   profileIcon: null,
   enableSignout: false,
-  tooltip: null,
+  signoutTooltip: 'Sign out',
   onSignout: () => {},
 };
 
@@ -45,7 +45,7 @@ const SidebarFooter = ({
   minimized,
   profileIcon: profileIconProp,
   enableSignout,
-  tooltip,
+  signoutTooltip,
   onSignout,
   ...rest
 }) => {
@@ -70,20 +70,15 @@ const SidebarFooter = ({
 
     if (enableSignout) {
       signout = (
-        <Button
-          className="rc-sidebar-footer-button-signout"
-          onClick={onSignout}
-        >
-          <Icon type="sign-out" className="rc-sidebar-footer-signout-icon" />
-        </Button>
+        <TooltipHoverArea anchor="top" tooltip={signoutTooltip}>
+          <Button
+            className="rc-sidebar-footer-button-signout"
+            onClick={onSignout}
+          >
+            <Icon type="sign-out" className="rc-sidebar-footer-signout-icon" />
+          </Button>
+        </TooltipHoverArea>
       );
-      if (tooltip) {
-        signout = (
-          <TooltipHoverArea anchor="top" tooltip={tooltip}>
-            {signout}
-          </TooltipHoverArea>
-        );
-      }
     }
   }
 
