@@ -1,3 +1,6 @@
+## react-components 5.33.2 (2022-03-09)
+
+- [Icon] Add Play icon
 ## react-components 5.33.1 (2022-03-04)
 
 - [SidebarFooter] Add tooltip option (by [@chrisleicester](https://github.com/chrisleicester) in [#552](https://github.com/puppetlabs/design-system/pull/552))

@@ -1057,6 +1057,15 @@ const icons = {
     ),
   },
 
+  play:{
+    medium: (
+      <>
+        <path d="M8 0a8 8 0 1 0 8 8 8.01 8.01 0 0 0-8-8Zm0 14a6 6 0 1 1 6-6 6.006 6.006 0 0 1-6 6Z"/>
+        <path fillRule="evenodd" clip-rule="evenodd" d="M6 4.801a.8.8 0 0 1 1.28-.64l4.265 3.2a.8.8 0 0 1 0 1.279L7.28 11.839a.8.8 0 0 1-1.28-.64V4.8Z" />
+      </>
+    ),
+  },
+
   plus: {
     tiny: (
       <polygon

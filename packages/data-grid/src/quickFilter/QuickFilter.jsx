@@ -42,22 +42,13 @@ function QuickFilter({ filters, onFilterSelect }) {
     <div className="dg-quick-filter-container">
       <div className="dg-quick-filter-filters">
         {filters.map((filter, idx) => {
-          return !filter.options ? (
-            <ButtonSelect
-              className="dg-quick-filter-empty"
-              id={`quick-filter-${filter.field}-${idx}`}
-              key={`${idx + 1}`}
-              type="tertiary"
-              options={emptyFilterOption}
-              placeholder={filter.fieldLabel}
-            />
-          ) : (
+          return (
             <ButtonSelect
               className="dg-quick-filter"
               id={`quick-filter-${filter.field}-${idx}`}
               key={`${idx + 1}`}
               type="tertiary"
-              options={filter.options}
+              options={!filter.options ? emptyFilterOption : filter.options}
               placeholder={filter.fieldLabel}
               onChange={value =>
                 onFilterSelect(filter.field, filter.fieldLabel, value)
