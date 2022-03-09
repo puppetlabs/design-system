@@ -50,12 +50,36 @@ const filters = [
   },
 ];
 
+const onActionClick = filters => {
+  console.log('An action was selected', filters);
+};
+
+const actions = [
+      {
+        value: 'delete',
+        icon: 'trash',
+        label: 'Delete All',
+      },
+      {
+        value: 'send',
+        icon: 'rocket',
+        label: 'Send',
+      },
+      {
+        value: 'refresh',
+        label: 'Refresh',
+        icon: 'refresh',
+      },
+    ];
+
 <TableHeader
   rowCount={{ count: 555, label: 'Nodes' }}
   filters={filters}
   onFilterChange={onFilterChange}
   search
-  createFilterBuilder
+  FilterBuilder
+  actions={actions}
+  onActionSelect={onActionClick}
 />;
 ```
 
@@ -318,9 +342,7 @@ const filters = [
       { value: 'eventType', label: 'Event' },
       { value: 'field2', label: 'Report Has Completed'},
     ];
-    const operatorOptions = [ { value: 'equals', label: 'Equals' },
-      { value: 'contains', label: 'Contains' },
-      ];
+    const operatorOptions = [ { value: 'equals', label: 'Equals' }];
 
 class StatefulParent extends React.Component {
   constructor() {
@@ -425,7 +447,7 @@ class StatefulParent extends React.Component {
           activeFilters={selectedfilters}
           onRemoveAll={this.onRemoveAll}
           onRemoveTag={this.onRemoveTag}
-          createFilterBuilder
+          FilterBuilder
           filterBuilderFieldOptions={fieldOptions}
           filterBuilderOperatorOptions={operatorOptions}
           filterBuilderOnSubmit={this.onSubmitBuilder}

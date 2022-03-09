@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Form, Card, Icon } from '@puppet/react-components';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import './CreateFilterBuilder.scss';
+import './FilterBuilder.scss';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -23,7 +23,13 @@ const propTypes = {
       as: PropTypes.elementType,
     }),
   ),
-   /** An Array of operator objects */
+  /** Optional new label added above top field */
+  fieldLabel: PropTypes.string,
+  /** Optional new placeholder added above top field */
+  fieldPlaceholder: PropTypes.string,
+  /** Optional new error text added to the top field */
+  fieldErrorText: PropTypes.string,
+  /** An Array of operator objects */
   operatorOptions: PropTypes.arrayOf(
     PropTypes.shape({
       /** Unique action id */
@@ -40,6 +46,18 @@ const propTypes = {
       as: PropTypes.elementType,
     }),
   ),
+  /** Optional new label added above middle field */
+  operatorLabel: PropTypes.string,
+  /** Optional new placeholder added above middle field */
+  operatorPlaceholder: PropTypes.string,
+  /** Optional new error text added to the bottom field */
+  operatorErrorText: PropTypes.string,
+  /** Optional new label added above bottom field */
+  valueLabel: PropTypes.string,
+  /** Optional new placeholder added above bottom field */
+  valuePlaceholder: PropTypes.string,
+  /** Optional new error text added to the bottom field */
+  valueErrorText: PropTypes.string,
   /** Optional label for main button */
   buttonLabel: PropTypes.string,
   /** Optional label for form submit button */
@@ -81,12 +99,15 @@ const defaultProps = {
   buttonLabel: 'Create filter',
   submitLabel: 'Apply',
   cancelLabel: 'Cancel',
-  fieldLabel: "FIELD",
-  fieldPlaceholder: "Name",
-  operatorLabel: "OPERATOR",
-  operatorPlaceholder: "Contains",
-  valueLabel: "VALUE",
-  valuePlaceholder: "Enter a string or number",
+  fieldLabel: 'FIELD',
+  fieldPlaceholder: 'Select a field',
+  fieldErrorText: 'Please complete this field',
+  operatorLabel: 'OPERATOR',
+  operatorPlaceholder: 'Select an operator',
+  operatorErrorText: 'Please complete this field',
+  valueLabel: 'VALUE',
+  valuePlaceholder: 'Enter a string or number',
+  valueErrorText: 'Please complete this field',
   type: 'secondary',
   innerFocus: false,
   weight: 'bold',
@@ -98,19 +119,23 @@ const defaultProps = {
   style: {},
 };
 
-class CreateFilterBuilder extends Component {
+class FilterBuilder extends Component {
   constructor(props) {
     super(props);
-    this.state = { open: false, menuStyle: {} };
+    this.state = {
+      open: false,
+      values: { field: '', operator: '', value: '' },
+      fieldError: false,
+      operatorError: false,
+      valueError: false,
+    };
 
     this.open = this.open.bind(this);
     this.close = this.close.bind(this);
     this.onClickButton = this.onClickButton.bind(this);
-    this.focusButton = this.focusButton.bind(this);
-    this.focusMenu = this.focusMenu.bind(this);
-    this.closeAndFocusButton = this.closeAndFocusButton.bind(this);
-    this.onBlur = this.onBlur.bind(this);
     this.onApply = this.onApply.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.validateFields = this.validateFields.bind(this);
   }
 
   onClickButton(e) {
@@ -124,22 +149,47 @@ class CreateFilterBuilder extends Component {
     }
   }
 
-  onApply(value) {
-    const { onSubmit } = this.props;
-    console.log("called")
-    onSubmit(value)
-    this.close();
+  onChange(_, newObj) {
+    this.setState({ values: newObj });
   }
 
-  onBlur(e) {
-    if (!this.container.contains(e.relatedTarget)) {
+  onApply(value) {
+    const { onSubmit } = this.props;
+    const hasError = this.validateFields(value);
+    if (!hasError) {
+      onSubmit(value);
+      this.setState({
+        values: { field: '', operator: '', value: '' },
+        fieldError: false,
+        operatorError: false,
+        valueError: false,
+      });
       this.close();
     }
   }
 
-  closeAndFocusButton() {
-    this.close();
-    this.focusButton();
+  validateFields(valuesObj) {
+    let hasError = false;
+    const { field, operator, value } = valuesObj;
+    if (field === '') {
+      this.setState({ fieldError: true });
+      hasError = true;
+    } else {
+      this.setState({ fieldError: false });
+    }
+    if (operator === '') {
+      this.setState({ operatorError: true });
+      hasError = true;
+    } else {
+      this.setState({ operatorError: false });
+    }
+    if (value === '') {
+      this.setState({ valueError: true });
+      hasError = true;
+    } else {
+      this.setState({ valueError: false });
+    }
+    return hasError;
   }
 
   open() {
@@ -148,20 +198,16 @@ class CreateFilterBuilder extends Component {
 
   close() {
     this.setState({ open: false });
-  }
-
-  focusMenu() {
-    focus(this.menu);
-  }
-
-  focusButton() {
-    if (this.button) {
-      focus(this.button);
-    }
+    this.setState({
+      values: { field: '', operator: '', value: '' },
+      fieldError: false,
+      operatorError: false,
+      valueError: false,
+    });
   }
 
   render() {
-    const { open } = this.state;
+    const { open, values, fieldError, operatorError, valueError } = this.state;
     const {
       id,
       buttonLabel,
@@ -169,10 +215,13 @@ class CreateFilterBuilder extends Component {
       cancelLabel,
       fieldLabel,
       fieldPlaceholder,
+      fieldErrorText,
       operatorLabel,
       operatorPlaceholder,
+      operatorErrorText,
       valueLabel,
       valuePlaceholder,
+      valueErrorText,
       type,
       innerFocus,
       icon,
@@ -225,28 +274,31 @@ class CreateFilterBuilder extends Component {
             submitLabel={submitLabel}
             cancelLabel={cancelLabel}
             onCancel={this.close}
+            values={values}
+            onChange={this.onChange}
           >
             <Form.Field
               type="select"
               name="field"
-              autoComplete="Name"
               label={fieldLabel}
               placeholder={fieldPlaceholder}
               options={fieldOptions}
+              error={fieldError && fieldErrorText}
             />
             <Form.Field
               type="select"
               name="operator"
-              autoComplete="lastname"
               label={operatorLabel}
               placeholder={operatorPlaceholder}
               options={operatorOptions}
+              error={operatorError && operatorErrorText}
             />
             <Form.Field
               type="text"
               name="value"
               label={valueLabel}
               placeholder={valuePlaceholder}
+              error={valueError && valueErrorText}
             />
           </Form>
         </Card>
@@ -255,7 +307,7 @@ class CreateFilterBuilder extends Component {
   }
 }
 
-CreateFilterBuilder.propTypes = propTypes;
-CreateFilterBuilder.defaultProps = defaultProps;
+FilterBuilder.propTypes = propTypes;
+FilterBuilder.defaultProps = defaultProps;
 
-export default CreateFilterBuilder;
+export default FilterBuilder;

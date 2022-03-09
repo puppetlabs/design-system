@@ -1,9 +1,27 @@
 import React from 'react';
-import { string, arrayOf, shape, node, func, bool } from 'prop-types';
-import { Text, Input, ButtonSelect, Badge } from '@puppet/react-components';
+import {
+  string,
+  arrayOf,
+  shape,
+  node,
+  func,
+  bool,
+  number,
+  element,
+  oneOfType,
+  oneOf,
+  elementType,
+} from 'prop-types';
+import {
+  Text,
+  Input,
+  ButtonSelect,
+  Badge,
+  Icon,
+} from '@puppet/react-components';
 import QuickFilter from '../quickFilter';
 import TagBuilder from '../tagBuilder';
-import CreateFilterBuilder from '../createFilterBuilder/CreateFilterBuilder';
+import CreateFilterBuilder from '../FilterBuilder/FilterBuilder';
 import './TableHeader.scss';
 
 const propTypes = {
@@ -21,10 +39,60 @@ const propTypes = {
   searchValue: string,
   /** Ran when user types into input box, returns new value */
   onSearchChange: func,
-  //TODO change node to actual prop layout
-  createFilterBuilder: bool,
-  filterBuilderFieldOptions: node,
-  filterBuilderOperatorOptions: node,
+  /**  Boolean value that determines if a createFilter box should be rendered */
+  FilterBuilder: bool,
+  /** An Array of field objects */
+  filterBuilderFieldOptions: arrayOf(
+    shape({
+      /** Unique action id */
+      id: oneOfType([string, number]).isRequired,
+      /** Action text */
+      label: node.isRequired,
+      /** Optional icon rendered to the left of action text */
+      icon: oneOf(Icon.AVAILABLE_ICONS),
+      /** Optional custom icon rendered to the left of action text */
+      svg: element,
+      /** Action click handler. Not needed if the action is a link */
+      onClick: func,
+      /** Custom action element. Useful for creating navigation actions with as: 'a' or as: Link. Additionally, extra props not listed here are passed through to the action element. This allows custom props such as `href` or `to` to be passed to the inner action element. */
+      as: elementType,
+    }),
+  ),
+  /** Optional new label added above top field of filterBuilder */
+  fieldLabel: string,
+  /** Optional new placeholder added above top field of filterBuilder */
+  fieldPlaceholder: string,
+  /** Optional new error text added to the top field of filterBuilder */
+  fieldErrorText: string,
+  /** Optional new label added above middle field of filterBuilder */
+  operatorLabel: string,
+  /** Optional new placeholder added above middle field of filterBuilder */
+  operatorPlaceholder: string,
+  /** Optional new error text added to the bottom field of filterBuilder */
+  operatorErrorText: string,
+  /** Optional new label added above bottom field of filterBuilder */
+  valueLabel: string,
+  /** Optional new placeholder added above bottom field of filterBuilder */
+  valuePlaceholder: string,
+  /** Optional new error text added to the bottom field of filterBuilder  */
+  valueErrorText: string,
+  /** An Array of operator objects */
+  filterBuilderOperatorOptions: arrayOf(
+    shape({
+      /** Unique action id */
+      id: oneOfType([string, number]).isRequired,
+      /** Action text */
+      label: node.isRequired,
+      /** Optional icon rendered to the left of action text */
+      icon: oneOf(Icon.AVAILABLE_ICONS),
+      /** Optional custom icon rendered to the left of action text */
+      svg: element,
+      /** Action click handler. Not needed if the action is a link */
+      onClick: func,
+      /** Custom action element. Useful for creating navigation actions with as: 'a' or as: Link. Additionally, extra props not listed here are passed through to the action element. This allows custom props such as `href` or `to` to be passed to the inner action element. */
+      as: elementType,
+    }),
+  ),
   filterBuilderOnSubmit: func,
   /** Allows you to pass an array to define each quick filter and its possible options */
   filters: arrayOf(
@@ -97,10 +165,19 @@ const defaultProps = {
   searchPlaceholder: '',
   searchValue: '',
   onSearchChange: () => {},
-  createFilterBuilder: false,
+  FilterBuilder: false,
+  fieldLabel: 'FIELD',
+  fieldPlaceholder: 'Select a field',
+  fieldErrorText: 'Please complete this field',
+  operatorLabel: 'OPERATOR',
+  operatorPlaceholder: 'Select an operator',
+  operatorErrorText: 'Please complete this field',
+  valueLabel: 'VALUE',
+  valuePlaceholder: 'Enter a string or number',
+  valueErrorText: 'Please complete this field',
   filterBuilderFieldOptions: [],
   filterBuilderOperatorOptions: [],
-  filterBuilderOnSubmit: ()=>{},
+  filterBuilderOnSubmit: () => {},
   filters: [],
   onFilterChange: () => {},
   activeFilters: [],
@@ -125,8 +202,17 @@ function TableHeader({
   searchPlaceholder,
   searchValue,
   onSearchChange,
-  createFilterBuilder,
+  FilterBuilder,
   filterBuilderFieldOptions,
+  fieldLabel,
+  fieldPlaceholder,
+  fieldErrorText,
+  operatorLabel,
+  operatorPlaceholder,
+  operatorErrorText,
+  valueLabel,
+  valuePlaceholder,
+  valueErrorText,
   filterBuilderOperatorOptions,
   filterBuilderOnSubmit,
   filters,
@@ -147,12 +233,23 @@ function TableHeader({
   return (
     <div className="dg-table-header-container">
       <div className="dg-table-header-content-container">
-        {createFilterBuilder && <CreateFilterBuilder
-        fieldOptions={filterBuilderFieldOptions}
-        operatorOptions={filterBuilderOperatorOptions}
-        onSubmit={filterBuilderOnSubmit}
-        />}
-        {createFilterBuilder && (filters.length > 0 || search) ? (
+        {FilterBuilder && (
+          <CreateFilterBuilder
+            fieldOptions={filterBuilderFieldOptions}
+            fieldPlaceholder={fieldPlaceholder}
+            operatorOptions={filterBuilderOperatorOptions}
+            onSubmit={filterBuilderOnSubmit}
+            fieldLabel={fieldLabel}
+            fieldErrorText={fieldErrorText}
+            operatorLabel={operatorLabel}
+            operatorPlaceholder={operatorPlaceholder}
+            operatorErrorText={operatorErrorText}
+            valueLabel={valueLabel}
+            valuePlaceholder={valuePlaceholder}
+            valueErrorText={valueErrorText}
+          />
+        )}
+        {FilterBuilder && (filters.length > 0 || search) ? (
           <div className="dg-table-header-vertical-line-separator" />
         ) : null}
         {search && (
