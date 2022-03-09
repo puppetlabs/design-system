@@ -30,14 +30,6 @@ const propTypes = {
 };
 
 function QuickFilter({ filters, onFilterSelect }) {
-  /** Used for the options array when there is no items to filter by */
-  const emptyFilterOption = [
-    {
-      label: 'No items to filter by',
-      disabled: true,
-    },
-  ];
-
   return (
     <div className="dg-quick-filter-container">
       <div className="dg-quick-filter-filters">
@@ -48,7 +40,7 @@ function QuickFilter({ filters, onFilterSelect }) {
               id={`quick-filter-${filter.field}-${idx}`}
               key={`${idx + 1}`}
               type="tertiary"
-              options={!filter.options ? emptyFilterOption : filter.options}
+              options={filter.options}
               placeholder={filter.fieldLabel}
               onChange={value =>
                 onFilterSelect(filter.field, filter.fieldLabel, value)
