@@ -1,4 +1,5 @@
 import React from 'react';
+import classnames from 'classnames';
 import { arrayOf, shape, func, string } from 'prop-types';
 import { ButtonSelect } from '@puppet/react-components';
 import './QuickFilter.scss';
@@ -27,20 +28,43 @@ const propTypes = {
   ).isRequired,
   /** Function called whenever a user clicks an action */
   onFilterSelect: func.isRequired,
+  /** Text which will be displayed if there are no options to filter by */
+  emptyFilterLabel: string,
 };
 
-function QuickFilter({ filters, onFilterSelect }) {
+const defaultProps = {
+  emptyFilterLabel: 'No items to filter by',
+};
+
+function QuickFilter({ filters, onFilterSelect, emptyFilterLabel }) {
+  /** Used for the options array when there is no items to filter by */
+  const emptyFilterOption = [
+    {
+      label: emptyFilterLabel,
+      disabled: true,
+      value: '',
+    },
+  ];
+
   return (
     <div className="dg-quick-filter-container">
       <div className="dg-quick-filter-filters">
         {filters.map((filter, idx) => {
           return (
             <ButtonSelect
-              className="dg-quick-filter"
+              className={classnames(
+                'dg-quick-filter-filter',
+                'dg-quick-filter',
+                {
+                  'dg-quick-filter-empty': filter.options.length === 0,
+                },
+              )}
               id={`quick-filter-${filter.field}-${idx}`}
               key={`${idx + 1}`}
               type="tertiary"
-              options={filter.options}
+              options={
+                filter.options.length === 0 ? emptyFilterOption : filter.options
+              }
               placeholder={filter.fieldLabel}
               onChange={value =>
                 onFilterSelect(filter.field, filter.fieldLabel, value)
@@ -54,5 +78,6 @@ function QuickFilter({ filters, onFilterSelect }) {
 }
 
 QuickFilter.propTypes = propTypes;
+QuickFilter.defaultProps = defaultProps;
 
 export default QuickFilter;
