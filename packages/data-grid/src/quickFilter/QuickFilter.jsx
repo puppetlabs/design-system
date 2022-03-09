@@ -30,11 +30,28 @@ const propTypes = {
 };
 
 function QuickFilter({ filters, onFilterSelect }) {
+  /** Used for the options array when there is no items to filter by */
+  const emptyFilterOption = [
+    {
+      label: 'No items to filter by',
+      disabled: true,
+    },
+  ];
+
   return (
     <div className="dg-quick-filter-container">
       <div className="dg-quick-filter-filters">
         {filters.map((filter, idx) => {
-          return (
+          return !filter.options ? (
+            <ButtonSelect
+              className="dg-quick-filter-empty"
+              id={`quick-filter-${filter.field}-${idx}`}
+              key={`${idx + 1}`}
+              type="tertiary"
+              options={emptyFilterOption}
+              placeholder={filter.fieldLabel}
+            />
+          ) : (
             <ButtonSelect
               className="dg-quick-filter"
               id={`quick-filter-${filter.field}-${idx}`}

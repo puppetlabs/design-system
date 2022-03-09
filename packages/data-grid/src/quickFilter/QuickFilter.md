@@ -49,6 +49,10 @@ const filters = [
       },
     ],
   },
+  {
+    fieldLabel: 'Empty filter',
+    field: 'Empty-array',
+  },
 ];
 
 
