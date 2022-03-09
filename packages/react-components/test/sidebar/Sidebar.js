@@ -130,5 +130,39 @@ describe('<Sidebar />', () => {
       wrapper.find('.rc-sidebar-footer-button-signout').simulate('click');
       expect(callback.calledOnce).to.be.true;
     });
+
+    it('should not render tooltip when sigout is disabled', () => {
+      const callback = sinon.fake();
+      const wrapper = shallow(
+        <Sidebar.Footer tooltip="I love being a tooltip" />,
+      );
+
+      expect(wrapper.find('TooltipHoverArea').length).to.eql(0);
+    });
+
+    it('should render the default tooltip when no tooltip is specified', () => {
+      const callback = sinon.fake();
+      const wrapper = shallow(
+        <Sidebar.Footer enableSignout onSignout={callback} />,
+      );
+      expect(wrapper.find('TooltipHoverArea').prop('tooltip')).to.eql(
+        'Sign out',
+      );
+    });
+
+    it('should render a a custom tooltip when specified', () => {
+      const callback = sinon.fake();
+      const wrapper = shallow(
+        <Sidebar.Footer
+          enableSignout
+          onSignout={callback}
+          signoutTooltip="I love being a tooltip"
+        />,
+      );
+
+      expect(wrapper.find('TooltipHoverArea').prop('tooltip')).to.eql(
+        'I love being a tooltip',
+      );
+    });
   });
 });
