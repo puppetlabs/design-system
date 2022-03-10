@@ -1,3 +1,6 @@
+## react-components 5.33.1 (2022-03-10)
+
+- [ConfirmationModal] Add className prop to confirmation modal (by [@Lukeaber](https://github.com/Lukeaber) in [#555](https://github.com/puppetlabs/design-system/pull/555))
 ## react-components 5.33.2 (2022-03-09)
 
 - [Icon] Add Play icon
