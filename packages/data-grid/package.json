@@ -1,6 +1,6 @@
 {
   "name": "@puppet/data-grid",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "dist/index.js",
@@ -20,8 +20,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^16.13.0",
-    "react-dom": "^16.13.0"
+    "react": "^16.13.0 || ^17.0.0",
+    "react-dom": "^16.13.0 || ^17.0.0"
   },
   "dependencies": {
     "@puppet/react-components": "^5.25.1",

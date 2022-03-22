@@ -1,3 +1,15 @@
+## data-grid 0.6.3 (2022-03-23)
+
+- Allow react 17 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#556](https://github.com/puppetlabs/design-system/pull/556))
+
+## react-components 5.33.4 (2022-03-23)
+
+- Allow react 17 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#556](https://github.com/puppetlabs/design-system/pull/556))
+
+## data-layouts 2.0.0-alpha.7 (2022-03-23)
+
+- Allow react 17 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#556](https://github.com/puppetlabs/design-system/pull/556))
+
 ## data-grid 0.6.2 (2022-03-22)
 
 - [QuickFilter] Add quick filter empty state to quick filter component and README file (by [@Jo-Lillie](https://github.com/Jo-Lillie) in [#553] (https://github.com/puppetlabs/design-system/pull/553))
