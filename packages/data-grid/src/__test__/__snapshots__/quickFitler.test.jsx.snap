@@ -2,6 +2,7 @@
 
 exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
 <QuickFilter
+  emptyFilterLabel="test empty filter label"
   filters={
     Array [
       Object {
@@ -46,6 +47,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           },
         ],
       },
+      Object {
+        "field": "Empty-array",
+        "fieldLabel": "Empty filter",
+        "options": Array [],
+      },
     ]
   }
   onFilterSelect={[MockFunction]}
@@ -57,7 +63,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       className="dg-quick-filter-filters"
     >
       <ButtonSelect
-        className="dg-quick-filter"
+        className="dg-quick-filter-filter dg-quick-filter"
         id="quick-filter-All-Operating-System-0"
         key="1"
         onChange={[Function]}
@@ -86,7 +92,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         <ButtonSelect
           anchor="bottom left"
           applyImmediately={false}
-          className="dg-quick-filter"
+          className="dg-quick-filter-filter dg-quick-filter"
           disabled={false}
           icon={null}
           id="quick-filter-All-Operating-System-0"
@@ -121,7 +127,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           width={null}
         >
           <div
-            className="rc-button-select rc-button-select-closed dg-quick-filter"
+            className="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter"
             onBlur={[Function]}
             style={Object {}}
           >
@@ -409,7 +415,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         </ButtonSelect>
       </ButtonSelect>
       <ButtonSelect
-        className="dg-quick-filter"
+        className="dg-quick-filter-filter dg-quick-filter"
         id="quick-filter-Puppet-installed-1"
         key="2"
         onChange={[Function]}
@@ -438,7 +444,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         <ButtonSelect
           anchor="bottom left"
           applyImmediately={false}
-          className="dg-quick-filter"
+          className="dg-quick-filter-filter dg-quick-filter"
           disabled={false}
           icon={null}
           id="quick-filter-Puppet-installed-1"
@@ -473,7 +479,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           width={null}
         >
           <div
-            className="rc-button-select rc-button-select-closed dg-quick-filter"
+            className="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter"
             onBlur={[Function]}
             style={Object {}}
           >
@@ -751,6 +757,196 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                         className="rc-menu-list-item-content"
                       >
                         Unknown
+                      </span>
+                    </li>
+                  </ForwardRef>
+                </ul>
+              </div>
+            </OptionMenuList>
+          </div>
+        </ButtonSelect>
+      </ButtonSelect>
+      <ButtonSelect
+        className="dg-quick-filter-filter dg-quick-filter dg-quick-filter-empty"
+        id="quick-filter-Empty-array-2"
+        key="3"
+        onChange={[Function]}
+        options={
+          Array [
+            Object {
+              "disabled": true,
+              "label": "test empty filter label",
+              "value": "",
+            },
+          ]
+        }
+        placeholder="Empty filter"
+        type="tertiary"
+      >
+        <ButtonSelect
+          anchor="bottom left"
+          applyImmediately={false}
+          className="dg-quick-filter-filter dg-quick-filter dg-quick-filter-empty"
+          disabled={false}
+          icon={null}
+          id="quick-filter-Empty-array-2"
+          innerFocus={false}
+          loading={false}
+          multiple={false}
+          onChange={[Function]}
+          options={
+            Array [
+              Object {
+                "disabled": true,
+                "label": "test empty filter label",
+                "value": "",
+              },
+            ]
+          }
+          placeholder="Empty filter"
+          style={Object {}}
+          type="tertiary"
+          value={null}
+          weight="bold"
+          width={null}
+        >
+          <div
+            className="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter dg-quick-filter-empty"
+            onBlur={[Function]}
+            style={Object {}}
+          >
+            <Button
+              aria-controls="quick-filter-Empty-array-2-menu"
+              aria-expanded={false}
+              aria-haspopup="true"
+              as="button"
+              className="rc-button-select-target"
+              disabled={false}
+              forwardRefAs="ref"
+              icon={null}
+              iconSize="medium"
+              innerFocus={false}
+              loading={false}
+              onClick={[Function]}
+              style={null}
+              trailingIcon="chevron-down"
+              type="tertiary"
+              weight="bold"
+            >
+              <button
+                aria-controls="quick-filter-Empty-array-2-menu"
+                aria-expanded={false}
+                aria-haspopup="true"
+                aria-label="Empty filter"
+                className="rc-button rc-button-tertiary rc-button-bold rc-button-trailing-icon rc-button-full rc-button-select-target"
+                disabled={false}
+                onClick={[Function]}
+                style={null}
+                type="button"
+              >
+                <span
+                  className="rc-button-content"
+                >
+                  Empty filter
+                </span>
+                <Icon
+                  className="rc-button-icon-svg"
+                  size="medium"
+                  style={Object {}}
+                  svg={null}
+                  type="chevron-down"
+                  viewBox={null}
+                >
+                  <svg
+                    className="rc-icon rc-icon-chevron-down rc-button-icon-svg"
+                    height="16px"
+                    style={
+                      Object {
+                        "height": "16px",
+                        "width": "16px",
+                      }
+                    }
+                    viewBox="0 0 16 16"
+                    width="16px"
+                  >
+                    <path
+                      d="M8,8.58578644 L10.2928932,6.29289322 C10.6834175,5.90236893 11.3165825,5.90236893 11.7071068,6.29289322 C12.0976311,6.68341751 12.0976311,7.31658249 11.7071068,7.70710678 L8.70710678,10.7071068 C8.31658249,11.0976311 7.68341751,11.0976311 7.29289322,10.7071068 L4.29289322,7.70710678 C3.90236893,7.31658249 3.90236893,6.68341751 4.29289322,6.29289322 C4.68341751,5.90236893 5.31658249,5.90236893 5.70710678,6.29289322 L8,8.58578644 Z"
+                      fillRule="evenodd"
+                    />
+                  </svg>
+                </Icon>
+              </button>
+            </Button>
+            <OptionMenuList
+              actionLabel="Apply"
+              aria-labelledby="quick-filter-Empty-array-2"
+              autocomplete={false}
+              cancelLabel="Cancel"
+              className=""
+              focusedIndex={0}
+              footer={null}
+              id="quick-filter-Empty-array-2-menu"
+              multiple={false}
+              onActionClick={[Function]}
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClickItem={[Function]}
+              onEscape={[Function]}
+              onFocusItem={[Function]}
+              options={
+                Array [
+                  Object {
+                    "disabled": true,
+                    "label": "test empty filter label",
+                    "value": "",
+                  },
+                ]
+              }
+              selected={null}
+              showCancel={false}
+              style={Object {}}
+            >
+              <div
+                className="rc-menu-list rc-option-menu-list-single"
+                style={Object {}}
+              >
+                <ul
+                  aria-activedescendant="quick-filter-Empty-array-2-menu-"
+                  aria-labelledby="quick-filter-Empty-array-2"
+                  aria-multiselectable={false}
+                  className="rc-menu-list-inner"
+                  id="quick-filter-Empty-array-2-menu"
+                  onBlur={[Function]}
+                  onChange={[Function]}
+                  onFocus={[Function]}
+                  onKeyDown={[Function]}
+                  role="listbox"
+                  tabIndex={0}
+                >
+                  <ForwardRef
+                    disabled={true}
+                    focused={true}
+                    icon={null}
+                    id="quick-filter-Empty-array-2-menu-"
+                    key=""
+                    onClick={[Function]}
+                    onMouseEnter={[Function]}
+                    selected={false}
+                    svg={null}
+                    type="option"
+                  >
+                    <li
+                      aria-selected={false}
+                      className="rc-menu-list-item rc-menu-list-item-disabled rc-menu-list-item-focused"
+                      id="quick-filter-Empty-array-2-menu-"
+                      onClick={[Function]}
+                      onMouseEnter={[Function]}
+                      role="option"
+                    >
+                      <span
+                        className="rc-menu-list-item-content"
+                      >
+                        test empty filter label
                       </span>
                     </li>
                   </ForwardRef>

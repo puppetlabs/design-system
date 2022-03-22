@@ -48,22 +48,53 @@ const filters = [
       },
     ],
   },
+  {
+    fieldLabel: 'Empty filter',
+    field: 'Empty-array',
+    options: [],
+  },
 ];
+
+const emptyFilterLabel = 'test empty filter label';
 
 const mockfunc = jest.fn();
 const wrapper = mount(
-  <QuickFilter filters={filters} onFilterSelect={mockfunc} />,
+  <QuickFilter
+    filters={filters}
+    onFilterSelect={mockfunc}
+    emptyFilterLabel={emptyFilterLabel}
+  />,
 );
-
 describe('Snapshot test', () => {
   test('Check component matches previous HTML snapshot', () => {
     expect(wrapper).toMatchSnapshot();
   });
 });
 
+describe('Check total number of quick filters', () => {
+  test('Number of quick filters rendered', () => {
+    expect(wrapper.find('div.dg-quick-filter-filter')).toHaveLength(3);
+  });
+});
+
+describe('Check number of empty quick filters', () => {
+  test('Number of empty quick filters rendered', () => {
+    expect(wrapper.find('div.dg-quick-filter-empty')).toHaveLength(1);
+  });
+
+  test('Empty filter label text', () => {
+    expect(
+      wrapper
+        .find('div.dg-quick-filter-empty')
+        .find('span.rc-menu-list-item-content')
+        .text(),
+    ).toEqual('test empty filter label');
+  });
+});
+
 describe('Check component', () => {
   test('Number of dropdowns rendered ', () => {
-    expect(wrapper.find('ButtonSelect.dg-quick-filter')).toHaveLength(4);
+    expect(wrapper.find('ButtonSelect.dg-quick-filter')).toHaveLength(6);
   });
 
   test('onFilterSelect function gets called', () => {
