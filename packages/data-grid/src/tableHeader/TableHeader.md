@@ -50,11 +50,36 @@ const filters = [
   },
 ];
 
+const onActionClick = filters => {
+  console.log('An action was selected', filters);
+};
+
+const actions = [
+      {
+        value: 'delete',
+        icon: 'trash',
+        label: 'Delete All',
+      },
+      {
+        value: 'send',
+        icon: 'rocket',
+        label: 'Send',
+      },
+      {
+        value: 'refresh',
+        label: 'Refresh',
+        icon: 'refresh',
+      },
+    ];
+
 <TableHeader
   rowCount={{ count: 555, label: 'Nodes' }}
   filters={filters}
   onFilterChange={onFilterChange}
-  searchable
+  search
+  FilterBuilder
+  actions={actions}
+  onActionSelect={onActionClick}
 />;
 ```
 
@@ -229,6 +254,205 @@ class StatefulParent extends React.Component {
           activeFilters={selectedfilters}
           onRemoveAll={this.onRemoveAll}
           onRemoveTag={this.onRemoveTag}
+        />
+        <Table data={renderedData} columns={columns} />
+      </div>
+    );
+  }
+}
+<StatefulParent />;
+```
+
+### Table Basic Filtering
+
+```jsx
+import Table from '../table/Table.jsx';
+const data = [
+  {
+    eventType: 'Task',
+    reportCompleted: true,
+  },
+  {
+    eventType: 'Task',
+    reportCompleted: false,
+  },
+  {
+    eventType: 'Task',
+    reportCompleted: true,
+  },
+  {
+    eventType: 'Plan',
+    reportCompleted: false,
+  },
+  {
+    eventType: 'Plan',
+    reportCompleted: true,
+  },
+];
+
+const columns = [
+  {
+    label: 'Event Type',
+    dataKey: 'eventType',
+  },
+  {
+    label: 'Report Has Completed',
+    dataKey: 'reportCompleted',
+    cellRenderer: ({ cellData }) => {
+      return cellData.toString();
+    },
+  },
+];
+const filters = [
+  {
+    fieldLabel: 'Event Type',
+    field: 'eventType',
+    options: [
+      {
+        value: 'Task',
+        icon: 'build',
+        label: 'Task',
+      },
+      {
+        value: 'Plan',
+        icon: 'clipboard',
+        label: 'Plan',
+      },
+    ],
+  },
+  {
+    fieldLabel: 'Report Completed',
+    field: 'reportCompleted',
+    options: [
+      {
+        value: true,
+        icon: 'pencil',
+        label: 'True',
+      },
+      {
+        value: false,
+        icon: 'send',
+        label: 'False',
+      },
+    ],
+  },
+];
+
+    const fieldOptions = [
+      { value: 'eventType', label: 'Event' },
+      { value: 'field2', label: 'Report Has Completed'},
+    ];
+    const operatorOptions = [ { value: 'equals', label: 'Equals' }];
+
+class StatefulParent extends React.Component {
+  constructor() {
+    super();
+    this.state = { renderedData: data, selectedfilters: [] };
+    this.onFilterSelect = this.onFilterSelect.bind(this);
+    this.onRemoveTag = this.onRemoveTag.bind(this);
+    this.onRemoveAll = this.onRemoveAll.bind(this);
+    this.onSubmitBuilder = this.onSubmitBuilder.bind(this);
+  }
+
+  onFilterSelect(filter, label, value) {
+    console.log("filter", filter, label, value)
+    const newTag = { fieldLabel: label, value, field: filter };
+    const { selectedfilters } = this.state;
+
+    // if filter field already exists get me the id and change it
+    if (selectedfilters.some(e => e.field === filter)) {
+      const effectedIndex = selectedfilters.findIndex(x => x.field === filter);
+
+      const newArray = selectedfilters;
+
+      newArray.splice(effectedIndex, 1, newTag);
+
+      this.setState(
+        {
+          selectedfilters: newArray,
+        },
+        () => this.updateData(),
+      );
+    } else {
+      this.setState(
+        {
+          selectedfilters: [...selectedfilters, newTag],
+        },
+        () => this.updateData(),
+      );
+    }
+  }
+
+  updateData() {
+    const { selectedfilters } = this.state;
+
+    // Update table data
+    let filteredData = data;
+
+    if (selectedfilters.length > 0) {
+      selectedfilters.forEach(aFilter => {
+        const { field: filterField } = aFilter;
+        filteredData = filteredData.filter(
+          row => row[filterField] === aFilter.value,
+        );
+      });
+      this.setState({ renderedData: filteredData });
+    } else {
+      this.setState({ renderedData: data });
+    }
+  }
+
+  onRemoveAll() {
+    this.setState({ selectedfilters: [] }, () => this.updateData());
+  }
+
+  onRemoveTag(tag) {
+    const { selectedfilters } = this.state;
+    const newArray = selectedfilters;
+
+    const findWithAttr = (array, attr, value) => {
+      for (var i = 0; i < array.length; i += 1) {
+        if (array[i][attr] === value) {
+          return i;
+        }
+      }
+      return -1;
+    };
+
+    const effectedIndex = findWithAttr(newArray, 'field', tag);
+    newArray.splice(effectedIndex);
+
+    this.setState(
+      {
+        selectedfilters: newArray,
+      },
+      () => this.updateData(),
+    );
+  }
+
+   onSubmitBuilder(values) {
+          console.log('submitted :', values)
+          const {field, operator, value} = values
+
+          this.onFilterSelect(field,field,value)
+      };
+
+  render() {
+    const { renderedData, selectedfilters } = this.state;
+    return (
+      <div>
+        <Table.TableHeader
+          filters={filters}
+          onFilterChange={this.onFilterSelect}
+          activeFilters={selectedfilters}
+          onRemoveAll={this.onRemoveAll}
+          onRemoveTag={this.onRemoveTag}
+          FilterBuilder
+          filterBuilderFieldOptions={fieldOptions}
+          filterBuilderOperatorOptions={operatorOptions}
+          filterBuilderOnSubmit={this.onSubmitBuilder}
+       
+
         />
         <Table data={renderedData} columns={columns} />
       </div>
