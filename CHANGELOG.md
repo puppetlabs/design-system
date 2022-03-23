@@ -1,3 +1,7 @@
+## data-grid 0.6.2 (2022-03-22)
+
+- [QuickFilter] Add quick filter empty state to quick filter component and README file (by [@Jo-Lillie](https://github.com/Jo-Lillie) in [#553] (https://github.com/puppetlabs/design-system/pull/553))
+
 ## react-components 5.33.1 (2022-03-10)
 
 - [ConfirmationModal] Add className prop to confirmation modal (by [@Lukeaber](https://github.com/Lukeaber) in [#555](https://github.com/puppetlabs/design-system/pull/555))

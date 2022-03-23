@@ -1,6 +1,6 @@
 {
   "name": "@puppet/data-grid",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "dist/index.js",
