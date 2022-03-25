@@ -71,6 +71,8 @@ const propTypes = {
   horizontalScroll: bool,
   /** Optional boolean to cause the first column to be fixed when horizontalScrool is true */
   fixedColumn: bool,
+  /** Optional boolean to cause the first column to be fixed when horizontalScrool is true */
+  fixedLastColumn: bool,
   /** Optional string to provider header which is visable when no data is available */
   emptyStateHeader: string,
   /** Optional string to provider descriptive message explaining the empty state of the table */
@@ -96,6 +98,7 @@ const defaultProps = {
   sortedColumn: { direction: '', sortDataKey: '' },
   horizontalScroll: false,
   fixedColumn: false,
+  fixedLastColumn: false,
   emptyStateHeader: 'No data available',
   emptyStateMessage: 'Prompt to action or solution',
   loading: false,
@@ -158,6 +161,7 @@ class Table extends Component {
       loading,
       loadingMessage,
       fixedColumn,
+      fixedLastColumn,
       horizontalScroll,
       emptyStateHeader,
       emptyStateMessage,
@@ -181,6 +185,7 @@ class Table extends Component {
         className={classnames({
           'dg-table-horizontal-scroll': horizontalScroll,
           'dg-table-fixed-column': fixedColumn,
+          'dg-table-fixed-last-column': fixedLastColumn,
         })}
       >
         <table
