@@ -1,3 +1,7 @@
+## react-components 5.33.5 (2022-03-29)
+
+- [Portal] Export Portal component for externl use (by [@Krable55](https://github.com/Krable55) in [#561] (https://github.com/puppetlabs/design-system/pull/561))
+
 ## data-grid 0.6.4 (2022-03-29)
 
 - [QuickFilter] fix quick filter empty state to allow for undefined options (by [@Jo-Lillie](https://github.com/Jo-Lillie) in [#560] (https://github.com/puppetlabs/design-system/pull/560))
