@@ -69,9 +69,9 @@ const propTypes = {
   onSort: func,
   /** Optional boolean to cause horizontal scrolling when table extends past the container */
   horizontalScroll: bool,
-  /** Optional boolean to cause the first column to be fixed when horizontalScrool is true */
+  /** Optional boolean to cause the first column to be fixed when horizontalScroll is true */
   fixedColumn: bool,
-  /** Optional boolean to cause the first column to be fixed when horizontalScrool is true */
+  /** Optional boolean to cause the last column to be fixed when horizontalScroll is true */
   fixedLastColumn: bool,
   /** Optional string to provider header which is visable when no data is available */
   emptyStateHeader: string,
