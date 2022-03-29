@@ -26,7 +26,6 @@ import Loading from './react/library/loading';
 import Logo from './react/library/logo';
 import Modal from './react/library/modal';
 import Popover from './react/library/popover';
-import Portal from './react/library/portal';
 import Stepper from './react/library/stepper';
 import RadioButton from './react/library/radiobutton';
 import Select from './react/library/select';
@@ -68,7 +67,6 @@ export {
   Modal,
   Overlay,
   Popover,
-  Portal,
   Stepper,
   RadioButton,
   Select,

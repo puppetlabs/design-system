@@ -56,10 +56,10 @@ const Copy = ({
       const child = React.Children.only(children);
       // An explicitly set `value` prop on the child node supercedes child text
       // value = child.props?.children ? child.props.children : value;
-      if (child.props && typeof child.props.children === 'string')
+      if (typeof child.props?.children === 'string')
         copyValue = child.props.children;
 
-      if (child.props && child.props.value) copyValue = child.props.value;
+      if (child.props?.value) copyValue = child.props.value;
     } catch (e) {
       // If `children` is not a single React element, a string node is a valid value
       if (typeof React.Children.toArray(children)[0] === 'string')

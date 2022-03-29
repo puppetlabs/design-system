@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { usePopper } from 'react-popper';
-import Portal from '../portal';
+import Portal from '../portal/portal';
 
 export const propTypes = {
   /** Position of tooltip relative to the activating element */
@@ -128,7 +128,7 @@ const TooltipHoverArea = ({
   return (
     <>
       {!!children && !!tooltip && (
-        <Portal target="tooltip">
+        <Portal>
           {/* eslint-disable-next-line */}
           <div
             id={tooltipId}

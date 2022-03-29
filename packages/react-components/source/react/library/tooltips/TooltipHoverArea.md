@@ -59,7 +59,7 @@ const [modalIsDisabled, setDisabled] = useState(false);
     anchor="right"
   >
     <Button onClick={() => setDisabled(!modalIsDisabled)}>
-      {`Click me to ${!modalIsDisabled ? 'disable' : 'enable'} tooltip`}
+      {`Click me to ${modalIsDisabled ? 'disable' : 'enable'} tooltip`}
     </Button>
   </TooltipHoverArea>
 </div>;
