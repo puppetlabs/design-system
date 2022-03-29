@@ -50,20 +50,21 @@ function QuickFilter({ filters, onFilterSelect, emptyFilterLabel }) {
     <div className="dg-quick-filter-container">
       <div className="dg-quick-filter-filters">
         {filters.map((filter, idx) => {
+          const { options = [] } = filter;
           return (
             <ButtonSelect
               className={classnames(
                 'dg-quick-filter-filter',
                 'dg-quick-filter',
                 {
-                  'dg-quick-filter-empty': filter.options.length === 0,
+                  'dg-quick-filter-empty': options.length === 0,
                 },
               )}
               id={`quick-filter-${filter.field}-${idx}`}
               key={`${idx + 1}`}
               type="tertiary"
               options={
-                filter.options.length === 0 ? emptyFilterOption : filter.options
+                options.length === 0 ? emptyFilterOption : filter.options
               }
               placeholder={filter.fieldLabel}
               onChange={value =>
