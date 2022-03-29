@@ -1,6 +1,6 @@
 ## data-grid 0.6.5 (2022-03-29)
 
-- [Table] Add `fixedLastColumn` option to data-grid Table (by [@vine77](https://github.com/vine77) in [#559] (https://github.com/puppetlabs/design-system/pull/559))
+- [Table] Add `fixedLastColumn` option to data-grid Table (by [@vine77](https://github.com/vine77) in [#559](https://github.com/puppetlabs/design-system/pull/559))
 
 ## react-components 5.33.5 (2022-03-29)
 
