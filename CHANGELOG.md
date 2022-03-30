@@ -1,3 +1,11 @@
+# react-components 6.0.0-alpha.16 (2022-03-30)
+
+- Merge 5.33.5 into alpha
+
+# data-grid 1.0.0-alpha.3 (2022-03-30)
+
+- Merge 0.6.5 into alpha
+
 # react-components 6.0.0-alpha.15 (2022-03-03)
 
 - BREAKING [PageContent] Move PageContent from react-layouts to react-components #551
@@ -75,9 +83,11 @@
 ## react-components 5.33.1 (2022-03-10)
 
 - [ConfirmationModal] Add className prop to confirmation modal (by [@Lukeaber](https://github.com/Lukeaber) in [#555](https://github.com/puppetlabs/design-system/pull/555))
+
 ## react-components 5.33.2 (2022-03-09)
 
 - [Icon] Add Play icon
+
 ## react-components 5.33.1 (2022-03-04)
 
 - [SidebarFooter] Add tooltip option (by [@chrisleicester](https://github.com/chrisleicester) in [#552](https://github.com/puppetlabs/design-system/pull/552))
