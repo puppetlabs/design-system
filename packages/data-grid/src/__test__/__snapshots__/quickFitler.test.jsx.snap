@@ -57,7 +57,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     <div
       className="dg-quick-filter-filters"
     >
-      <ButtonSelect
+      <ButtonSelect_ButtonSelect
         className="dg-quick-filter-filter dg-quick-filter"
         id="quick-filter-All-Operating-System-0"
         key="1"
@@ -84,7 +84,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         placeholder="All Operating System"
         type="tertiary"
       >
-        <ButtonSelect
+        <ButtonSelect_ButtonSelect
           anchor="bottom left"
           applyImmediately={false}
           className="dg-quick-filter-filter dg-quick-filter"
@@ -188,7 +188,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                 </Icon>
               </button>
             </Button>
-            <OptionMenuList
+            <OptionMenuList_OptionMenuList
               actionLabel="Apply"
               aria-labelledby="quick-filter-All-Operating-System-0"
               autocomplete={false}
@@ -405,11 +405,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   </ForwardRef>
                 </ul>
               </div>
-            </OptionMenuList>
+            </OptionMenuList_OptionMenuList>
           </div>
-        </ButtonSelect>
-      </ButtonSelect>
-      <ButtonSelect
+        </ButtonSelect_ButtonSelect>
+      </ButtonSelect_ButtonSelect>
+      <ButtonSelect_ButtonSelect
         className="dg-quick-filter-filter dg-quick-filter"
         id="quick-filter-Puppet-installed-1"
         key="2"
@@ -436,7 +436,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         placeholder="Puppet installed"
         type="tertiary"
       >
-        <ButtonSelect
+        <ButtonSelect_ButtonSelect
           anchor="bottom left"
           applyImmediately={false}
           className="dg-quick-filter-filter dg-quick-filter"
@@ -540,7 +540,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                 </Icon>
               </button>
             </Button>
-            <OptionMenuList
+            <OptionMenuList_OptionMenuList
               actionLabel="Apply"
               aria-labelledby="quick-filter-Puppet-installed-1"
               autocomplete={false}
@@ -757,10 +757,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   </ForwardRef>
                 </ul>
               </div>
-            </OptionMenuList>
+            </OptionMenuList_OptionMenuList>
           </div>
-        </ButtonSelect>
-      </ButtonSelect>
+        </ButtonSelect_ButtonSelect>
+      </ButtonSelect_ButtonSelect>
     </div>
   </div>
 </QuickFilter>

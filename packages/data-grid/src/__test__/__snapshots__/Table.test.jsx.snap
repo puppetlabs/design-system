@@ -597,11 +597,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
         as="div"
         className="dg-empty-state-message"
         color="medium"
-        size="medium"
+        size="regular"
         style={Object {}}
       >
         <div
-          className="rc-text rc-text-size-medium rc-text-medium dg-empty-state-message"
+          className="rc-text rc-text-size-regular rc-text-medium dg-empty-state-message"
           style={Object {}}
         >
           Prompt to action or solution
