@@ -25,6 +25,7 @@ import Logo from './react/library/logo';
 import Modal from './react/library/modal';
 import PageContent from './react/library/page-content';
 import Popover from './react/library/popover';
+import Portal from './react/library/portal';
 import Stepper from './react/library/stepper';
 import RadioButton from './react/library/radiobutton';
 import Select from './react/library/select';
@@ -68,6 +69,7 @@ export {
   Overlay,
   PageContent,
   Popover,
+  Portal,
   Stepper,
   RadioButton,
   Select,

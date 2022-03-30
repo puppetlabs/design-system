@@ -77,6 +77,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   emptyStateMessage="Prompt to action or solution"
   fixed={false}
   fixedColumn={false}
+  fixedLastColumn={false}
   headerCheckState={false}
   headerIndeterminateState={false}
   horizontalScroll={false}
@@ -442,6 +443,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   emptyStateMessage="Prompt to action or solution"
   fixed={false}
   fixedColumn={false}
+  fixedLastColumn={false}
   headerCheckState={false}
   headerIndeterminateState={false}
   horizontalScroll={false}
@@ -595,11 +597,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
         as="div"
         className="dg-empty-state-message"
         color="medium"
-        size="regular"
+        size="medium"
         style={Object {}}
       >
         <div
-          className="rc-text rc-text-size-regular rc-text-medium dg-empty-state-message"
+          className="rc-text rc-text-size-medium rc-text-medium dg-empty-state-message"
           style={Object {}}
         >
           Prompt to action or solution

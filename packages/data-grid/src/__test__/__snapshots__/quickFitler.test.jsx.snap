@@ -2,6 +2,7 @@
 
 exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
 <QuickFilter
+  emptyFilterLabel="No items to filter by"
   filters={
     Array [
       Object {
@@ -56,8 +57,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     <div
       className="dg-quick-filter-filters"
     >
-      <ButtonSelect_ButtonSelect
-        className="dg-quick-filter"
+      <ButtonSelect
+        className="dg-quick-filter-filter dg-quick-filter"
         id="quick-filter-All-Operating-System-0"
         key="1"
         onChange={[Function]}
@@ -83,10 +84,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         placeholder="All Operating System"
         type="tertiary"
       >
-        <ButtonSelect_ButtonSelect
+        <ButtonSelect
           anchor="bottom left"
           applyImmediately={false}
-          className="dg-quick-filter"
+          className="dg-quick-filter-filter dg-quick-filter"
           disabled={false}
           icon={null}
           id="quick-filter-All-Operating-System-0"
@@ -121,7 +122,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           width={null}
         >
           <div
-            className="rc-button-select rc-button-select-closed dg-quick-filter"
+            className="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter"
             onBlur={[Function]}
             style={Object {}}
           >
@@ -187,7 +188,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                 </Icon>
               </button>
             </Button>
-            <OptionMenuList_OptionMenuList
+            <OptionMenuList
               actionLabel="Apply"
               aria-labelledby="quick-filter-All-Operating-System-0"
               autocomplete={false}
@@ -404,12 +405,12 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   </ForwardRef>
                 </ul>
               </div>
-            </OptionMenuList_OptionMenuList>
+            </OptionMenuList>
           </div>
-        </ButtonSelect_ButtonSelect>
-      </ButtonSelect_ButtonSelect>
-      <ButtonSelect_ButtonSelect
-        className="dg-quick-filter"
+        </ButtonSelect>
+      </ButtonSelect>
+      <ButtonSelect
+        className="dg-quick-filter-filter dg-quick-filter"
         id="quick-filter-Puppet-installed-1"
         key="2"
         onChange={[Function]}
@@ -435,10 +436,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         placeholder="Puppet installed"
         type="tertiary"
       >
-        <ButtonSelect_ButtonSelect
+        <ButtonSelect
           anchor="bottom left"
           applyImmediately={false}
-          className="dg-quick-filter"
+          className="dg-quick-filter-filter dg-quick-filter"
           disabled={false}
           icon={null}
           id="quick-filter-Puppet-installed-1"
@@ -473,7 +474,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           width={null}
         >
           <div
-            className="rc-button-select rc-button-select-closed dg-quick-filter"
+            className="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter"
             onBlur={[Function]}
             style={Object {}}
           >
@@ -539,7 +540,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                 </Icon>
               </button>
             </Button>
-            <OptionMenuList_OptionMenuList
+            <OptionMenuList
               actionLabel="Apply"
               aria-labelledby="quick-filter-Puppet-installed-1"
               autocomplete={false}
@@ -756,10 +757,10 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   </ForwardRef>
                 </ul>
               </div>
-            </OptionMenuList_OptionMenuList>
+            </OptionMenuList>
           </div>
-        </ButtonSelect_ButtonSelect>
-      </ButtonSelect_ButtonSelect>
+        </ButtonSelect>
+      </ButtonSelect>
     </div>
   </div>
 </QuickFilter>

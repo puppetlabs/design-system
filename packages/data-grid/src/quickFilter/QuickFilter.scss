@@ -1,3 +1,5 @@
+@import '@puppet/sass-variables/_index';
+
 .dg-quick-filter-container{
 
     .dg-quick-filter-filters{
@@ -7,6 +9,17 @@
             padding-right: 8px;
             padding-bottom: 16px;
         }
+        .dg-quick-filter-empty{
+            font-style: italic;
+
+            .rc-menu-list-item-focused{
+                cursor: not-allowed;
+            }
+            .rc-menu-list-item-disabled {
+                .rc-menu-list-item-content {
+                  color: $puppet-n700;
+                }
+            }
+        }
     }
-    
 }
