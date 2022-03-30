@@ -1,3 +1,11 @@
+# react-components 6.0.0-alpha.16 (2022-03-30)
+
+- Merge 5.33.5 into alpha
+
+# data-grid 1.0.0-alpha.3 (2022-03-30)
+
+- Merge 0.6.5 into alpha
+
 # react-components 6.0.0-alpha.15 (2022-03-03)
 
 - BREAKING [PageContent] Move PageContent from react-layouts to react-components #551
@@ -43,6 +51,58 @@
 # react-components 6.0.0-alpha.4 (2021-07-12)
 
 - Upgrade dependencies #450
+
+## data-grid 0.6.5 (2022-03-29)
+
+- [Table] Add `fixedLastColumn` option to data-grid Table (by [@vine77](https://github.com/vine77) in [#559](https://github.com/puppetlabs/design-system/pull/559))
+
+## react-components 5.33.5 (2022-03-29)
+
+- [Portal] Export Portal component for externl use (by [@Krable55](https://github.com/Krable55) in [#561] (https://github.com/puppetlabs/design-system/pull/561))
+
+## data-grid 0.6.4 (2022-03-29)
+
+- [QuickFilter] fix quick filter empty state to allow for undefined options (by [@Jo-Lillie](https://github.com/Jo-Lillie) in [#560] (https://github.com/puppetlabs/design-system/pull/560))
+
+## data-grid 0.6.3 (2022-03-23)
+
+- Allow react 17 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#556](https://github.com/puppetlabs/design-system/pull/556))
+
+## react-components 5.33.4 (2022-03-23)
+
+- Allow react 17 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#556](https://github.com/puppetlabs/design-system/pull/556))
+
+## data-layouts 2.0.0-alpha.7 (2022-03-23)
+
+- Allow react 17 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#556](https://github.com/puppetlabs/design-system/pull/556))
+
+## data-grid 0.6.2 (2022-03-22)
+
+- [QuickFilter] Add quick filter empty state to quick filter component and README file (by [@Jo-Lillie](https://github.com/Jo-Lillie) in [#553] (https://github.com/puppetlabs/design-system/pull/553))
+
+## react-components 5.33.1 (2022-03-10)
+
+- [ConfirmationModal] Add className prop to confirmation modal (by [@Lukeaber](https://github.com/Lukeaber) in [#555](https://github.com/puppetlabs/design-system/pull/555))
+
+## react-components 5.33.2 (2022-03-09)
+
+- [Icon] Add Play icon
+
+## react-components 5.33.1 (2022-03-04)
+
+- [SidebarFooter] Add tooltip option (by [@chrisleicester](https://github.com/chrisleicester) in [#552](https://github.com/puppetlabs/design-system/pull/552))
+
+## react-components 5.33.0 (2022-02-28)
+
+- [Breadcrumb] Add Back type (by [@Lukeaber](https://github.com/Lukeaber) in [#549](https://github.com/puppetlabs/design-system/pull/549))
+
+## react-components 5.32.5 (2022-02-24)
+
+- [Icon] Add change and change warning icon
+
+## react-components 5.32.4 (2022-02-11)
+
+- [Icon] Add exception icon
 
 ## react-components 5.32.3 (2022-02-08)
 

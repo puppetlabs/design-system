@@ -93,19 +93,38 @@
   border-collapse: separate;
   border-spacing: 0;
 
-  th:first-child {
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    z-index: 2;
+  th,
+  td {
+    &:first-child {
+      position: -webkit-sticky;
+      position: sticky;
+      left: 0;
+      z-index: 2;
+    }
   }
 
   td:first-child {
-    position: -webkit-sticky;
-    position: sticky;
-    left: 0;
-    z-index: 2;
     background-color: $puppet-n200;
+  }
+}
+
+.dg-table-fixed-last-column {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+
+  th,
+  td {
+    &:last-child {
+      position: -webkit-sticky;
+      position: sticky;
+      right: 0;
+      z-index: 2;
+    }
+  }
+
+  td:last-child {
+    background-color: $puppet-white;
   }
 }
 
