@@ -1,3 +1,7 @@
+# NEXT react-components alpha
+
+- [Form.Field] Make Form.Field's label prop optional
+
 # react-components 6.0.0-alpha.16 (2022-03-30)
 
 - Merge 5.33.5 into alpha
