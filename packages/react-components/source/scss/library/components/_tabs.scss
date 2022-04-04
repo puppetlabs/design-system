@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 $scroll-button-size: 32px;
 $bottom-border-shadow: inset 0 -2px 1px -1px $puppet-n400;
 
@@ -60,7 +62,7 @@ $bottom-border-shadow: inset 0 -2px 1px -1px $puppet-n400;
   }
 
   .rc-tabs-transparent &:focus {
-    box-shadow: inset 0 0 0 $puppet-common-spacing-base / 2 $puppet-b300;
+    box-shadow: inset 0 0 0 math.div($puppet-common-spacing-base, 2) $puppet-b300;
   }
 
   .rc-button-content {
