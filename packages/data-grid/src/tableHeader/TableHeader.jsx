@@ -1,6 +1,12 @@
 import React from 'react';
-import { string, arrayOf, shape, node, func, bool } from 'prop-types';
-import { Text, Input, ButtonSelect, Badge } from '@puppet/react-components';
+import { string, arrayOf, shape, node, func, bool, oneOf } from 'prop-types';
+import {
+  Text,
+  Input,
+  Button,
+  ButtonSelect,
+  Badge,
+} from '@puppet/react-components';
 import QuickFilter from '../quickFilter';
 import TagBuilder from '../tagBuilder';
 import './TableHeader.scss';
@@ -69,6 +75,29 @@ const propTypes = {
   actionLabel: string,
   /** Callback function called when an action is selected from the dropdown list */
   onActionSelect: func,
+  /** Allows you to pass an array of Action buttons */
+  actionButtons: arrayOf(
+    /** Action button next to actions ( if visible ) to trigger an general action to the table. */
+    shape({
+      /** Text which will be displayed button  */
+      label: string.isRequired,
+      /** Optional icon to be rendered instead of / in addition to button text. */
+      icon: string,
+      /** Button visual variant */
+      type: oneOf([
+        'primary',
+        'secondary',
+        'tertiary',
+        'danger',
+        'transparent',
+        'text',
+      ]),
+      /** Callback function called when the button is clicked */
+      onClick: func.isRequired,
+      /** Loading status of the action */
+      loading: bool,
+    }),
+  ),
   /** Boolean used to conditionally render the showSelectAllBadge */
   showSelectAllBadge: bool,
   /** Text shown in the selectAllBadge */
@@ -99,6 +128,7 @@ const defaultProps = {
   actions: [],
   actionLabel: 'Actions',
   onActionSelect: () => {},
+  actionButtons: [],
   showSelectAllBadge: false,
   selectAllBadgeText: 'Select all *** nodes',
   onSelectAllBadgeClick: () => {},
@@ -123,6 +153,7 @@ function TableHeader({
   actions,
   actionLabel,
   onActionSelect,
+  actionButtons,
   showSelectAllBadge,
   selectAllBadgeText,
   onSelectAllBadgeClick,
@@ -153,16 +184,34 @@ function TableHeader({
             <QuickFilter filters={filters} onFilterSelect={onFilterChange} />
           </div>
         )}
-        {actions.length > 0 ? (
-          <ButtonSelect
-            className="dg-table-action"
-            type="transparent"
-            options={actions}
-            placeholder={actionLabel}
-            anchor="bottom right"
-            onChange={value => onActionSelect(value)}
-          />
-        ) : null}
+        <div className="dg-table-header-actions">
+          {actions.length > 0 ? (
+            <ButtonSelect
+              className="dg-table-action"
+              type="transparent"
+              options={actions}
+              placeholder={actionLabel}
+              anchor="bottom right"
+              onChange={value => onActionSelect(value)}
+            />
+          ) : null}
+          {actionButtons.length > 0 &&
+            actionButtons.map(actionButton => {
+              return typeof actionButton.onClick === 'function' &&
+                actionButton.label !== '' ? (
+                <Button
+                  className="dg-table-action"
+                  icon={actionButton.icon}
+                  onClick={actionButton.onClick}
+                  type={actionButton.type}
+                  loading={actionButton.loading}
+                  key={actionButton.label}
+                >
+                  {actionButton.label}
+                </Button>
+              ) : null;
+            })}
+        </div>
       </div>
       {activeFilters.length > 0 && (
         <TagBuilder

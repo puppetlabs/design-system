@@ -6,6 +6,14 @@
   display: flex;
   padding-bottom: 16px;
 
+  .dg-table-header-actions {
+    display: flex;
+    margin-left: auto;
+    .dg-table-action {
+      margin-right: 8px;
+    }
+  }
+
   .dg-table-header-search {
     max-width: 360px;
   }
@@ -25,9 +33,6 @@
     margin-bottom: 8px;
   }
 
-  .dg-table-action {
-    margin-left: auto;
-  }
 }
 
 .dg-table-header-text-container{

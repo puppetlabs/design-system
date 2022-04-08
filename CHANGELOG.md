@@ -1,3 +1,7 @@
+## data-grid 0.6.5 (2022-04-11)
+
+- [Table] Add Action Buttons on the data-grid Table header (by [@comfucios](https://github.com/comfucios) in [#565](https://github.com/puppetlabs/design-system/pull/565))
+
 ## data-grid 0.6.5 (2022-03-29)
 
 - [Table] Add `fixedLastColumn` option to data-grid Table (by [@vine77](https://github.com/vine77) in [#559](https://github.com/puppetlabs/design-system/pull/559))
