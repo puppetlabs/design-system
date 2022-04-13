@@ -1,3 +1,24 @@
+## data-grid 0.6.6 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## design-system-website 1.4.5 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## react components 5.33.6 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+- Replace usage of / for division in scss files with math.div
+
+## react-layouts 2.0.0-alpha.8 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## uikit 1.0.17 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
 ## data-grid 0.6.5 (2022-04-11)
 
 - [Table] Add Action Buttons on the data-grid Table header (by [@comfucios](https://github.com/comfucios) in [#565](https://github.com/puppetlabs/design-system/pull/565))
