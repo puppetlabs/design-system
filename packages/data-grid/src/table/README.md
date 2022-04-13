@@ -653,6 +653,7 @@ const data = [
     sorted: 'asc',
     Link: <Link href="https://puppet.com/">Help to fix</Link>,
     unique: 6,
+    selectable: false,
   },
   {
     eventType: 'Virus/Malware',
@@ -987,7 +988,7 @@ const columns = [
 
 ### Selection and Pagination
 
-Once we start adding multiple patterns together it is very easy to start confusing the end user. Thats why in the data grid when selecting and paginating together we treat each page header click as page specific and use additional badges in the header for cross pagination selecting and clearing. It's important to remember that a column header checkbox is used to show the state of the page visible. Intermediate and check all states on one page should not be shown on the next.  
+Once we start adding multiple patterns together it is very easy to start confusing the end user. Thats why in the data grid when selecting and paginating together we treat each page header click as page specific and use additional badges in the header for cross pagination selecting and clearing. It's important to remember that a column header checkbox is used to show the state of the page visible. Intermediate and check all states on one page should not be shown on the next.
 
 ```jsx
 import { Link, Heading } from '@puppet/react-components';
@@ -1110,7 +1111,7 @@ class StatefulParent extends React.Component {
 
   onHeaderSelected(checked) {
     const { data: stateData, indeterminateState, show, showSelectAllBadge, CurrentPage, Pages } = this.state;
-    
+
     this.setState({ indeterminateState: false, checkAll: checked });
 
     const x = Pages.arrayOfArrays[CurrentPage - 1]
@@ -1168,10 +1169,10 @@ class StatefulParent extends React.Component {
   }
 
   render() {
-    const { 
+    const {
       CurrentPage,
       data:stateData,
-      indeterminateState, 
+      indeterminateState,
       checkAll: headerCheckboxState,
       nodesPerPage
       } = this.state;
@@ -1196,17 +1197,17 @@ class StatefulParent extends React.Component {
 
     return (
       <div>
-      <Table.TableHeader 
+      <Table.TableHeader
       showSelectAllBadge={selectedCount > 0 && selectedCount !== stateData.length }
       rowCountText={rowCountText}
       onSelectAllBadgeClick={this.onSelectAllBadgeClick}
       showClearAllBadge={selectedCount === stateData.length}
       onClearAllBadgeClick={this.onClearAllBadgeClick}
       selectAllBadgeText={selectAllBadgeText}/>
-        <Table 
-        data={Pages.arrayOfArrays[renderPages]} 
-        columns={columns} 
-        selectable 
+        <Table
+        data={Pages.arrayOfArrays[renderPages]}
+        columns={columns}
+        selectable
         onRowChecked={this.onRowSelected}
         headerIndeterminateState={indeterminateState}
         checkIfIndeterminateState={this.checkIfIndeterminateState}

@@ -1,3 +1,7 @@
+## data-grid 0.6.7 (2022-04-13)
+
+- [Table] Ability to disable a row's checkbox on selectable table (by [@comfucios](https://github.com/comfucios) in [#570](https://github.com/puppetlabs/design-system/pull/570))
+
 ## data-grid 0.6.6 (2022-4-13)
 
 - Replace deprecated node-sass dependency with sass.
