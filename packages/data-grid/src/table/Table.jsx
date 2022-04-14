@@ -255,11 +255,19 @@ class Table extends Component {
                       className="rc-table-cell"
                     >
                       <Checkbox
-                        className="dg-table-checkbox"
+                        className={classnames('dg-table-checkbox', {
+                          'dg-table-checkbox-disabled':
+                            'selectable' in rowData
+                              ? !rowData.selectable
+                              : false,
+                        })}
                         onChange={checked => onRowChecked(checked, rowData)}
                         value={rowData.selected}
                         label=""
                         name=""
+                        disabled={
+                          'selectable' in rowData ? !rowData.selectable : false
+                        }
                       />
                     </td>
                   ) : null}
