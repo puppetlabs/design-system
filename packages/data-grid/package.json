@@ -1,6 +1,6 @@
 {
   "name": "@puppet/data-grid",
-  "version": "0.6.7",
+  "version": "0.6.8",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "dist/index.js",
@@ -31,8 +31,7 @@
     "init": "^0.1.2",
     "lodash": "^4.17.20",
     "namor": "^1.1.2",
-    "prop-types": "^15.7.2",
-    "sb": "^0.2.1"
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",

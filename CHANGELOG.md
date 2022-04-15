@@ -1,3 +1,7 @@
+## data-grid 0.6.8
+
+- Removed unused 'sb' dependency because it contained a vulnerability caught by our security scanner. https://security.snyk.io/vuln/SNYK-JS-ASYNC-2441827
+
 ## data-grid 0.6.7 (2022-04-13)
 
 - [Table] Ability to disable a row's checkbox on selectable table (by [@comfucios](https://github.com/comfucios) in [#570](https://github.com/puppetlabs/design-system/pull/570))
