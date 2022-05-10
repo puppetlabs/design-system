@@ -1,3 +1,7 @@
+## data-grid 0.6.9
+
+- [Table] Ability to display a `disable` a row on a table (by [@comfucios](https://github.com/comfucios) in [#573](https://github.com/puppetlabs/design-system/pull/573))
+
 ## data-grid 0.6.8
 
 - Removed unused 'sb' dependency because it contained a vulnerability caught by our security scanner. https://security.snyk.io/vuln/SNYK-JS-ASYNC-2441827

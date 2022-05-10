@@ -80,6 +80,12 @@
   }
 }
 
+.dg-table-row-disabled {
+  td {
+    color: $puppet-n700;
+  }
+}
+
 .dg-table-row-selected {
   background-color: $puppet-b50;
 
