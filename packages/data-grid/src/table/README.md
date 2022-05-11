@@ -669,6 +669,7 @@ const data = [
     detections: 634,
     Link: <Link href="https://puppet.com/">Help to fix</Link>,
     unique: 2,
+    disabled: true
   },
   {
     eventType: 'URL Filtering',
@@ -676,6 +677,8 @@ const data = [
     detections: 599,
     Link: <Link href="https://puppet.com/">Help to fix</Link>,
     unique: 3,
+    disabled: true,
+    selectable: true,
   },
   {
     eventType: 'Web Reputation',
