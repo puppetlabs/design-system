@@ -236,6 +236,7 @@ class Table extends Component {
                     {
                       'dg-table-row-selected':
                         selectable && rowData.selected === true,
+                      'dg-table-row-disabled': selectable && !!rowData.disabled,
                     },
                   )}
                   key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
@@ -253,11 +254,21 @@ class Table extends Component {
                       className="rc-table-cell"
                     >
                       <Checkbox
-                        className="dg-table-checkbox"
+                        className={classnames('dg-table-checkbox', {
+                          'dg-table-checkbox-disabled':
+                            rowData.disabled || 'selectable' in rowData
+                              ? !rowData.selectable
+                              : false,
+                        })}
                         onChange={checked => onRowChecked(checked, rowData)}
                         value={rowData.selected}
                         label=""
                         name=""
+                        disabled={
+                          rowData.disabled || 'selectable' in rowData
+                            ? !rowData.selectable
+                            : false
+                        }
                       />
                     </td>
                   ) : null}

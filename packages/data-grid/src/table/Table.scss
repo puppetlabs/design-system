@@ -74,6 +74,18 @@
   margin-right: 0;
 }
 
+.dg-table-checkbox-disabled {
+  .rc-checkbox:disabled {
+    background: $puppet-n300;
+  }
+}
+
+.dg-table-row-disabled {
+  td {
+    color: $puppet-n700;
+  }
+}
+
 .dg-table-row-selected {
   background-color: $puppet-b50;
 
