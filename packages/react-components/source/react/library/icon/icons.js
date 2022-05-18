@@ -691,6 +691,10 @@ const icons = {
     ),
   },
 
+  folder: {
+    medium: <path d="M8.172 5H14v10h2V3H9L7 1H0v14h14v-2H2V3h4.172l2 2Z" />,
+  },
+
   gear: {
     medium: (
       <path
