@@ -1,8 +1,12 @@
-## data-grid 0.6.9
+## react-components 5.33.7 (2022-05-18)
+
+- [Icon] Add "folder" icon (by [@vine77](https://github.com/vine77) in [#574](https://github.com/puppetlabs/design-system/pull/574))
+
+## data-grid 0.6.9 (2022-05-11)
 
 - [Table] Ability to display a `disable` a row on a table (by [@comfucios](https://github.com/comfucios) in [#573](https://github.com/puppetlabs/design-system/pull/573))
 
-## data-grid 0.6.8
+## data-grid 0.6.8 (2022-04-20)
 
 - Removed unused 'sb' dependency because it contained a vulnerability caught by our security scanner. https://security.snyk.io/vuln/SNYK-JS-ASYNC-2441827
 
@@ -66,9 +70,11 @@
 ## react-components 5.33.1 (2022-03-10)
 
 - [ConfirmationModal] Add className prop to confirmation modal (by [@Lukeaber](https://github.com/Lukeaber) in [#555](https://github.com/puppetlabs/design-system/pull/555))
+
 ## react-components 5.33.2 (2022-03-09)
 
 - [Icon] Add Play icon
+
 ## react-components 5.33.1 (2022-03-04)
 
 - [SidebarFooter] Add tooltip option (by [@chrisleicester](https://github.com/chrisleicester) in [#552](https://github.com/puppetlabs/design-system/pull/552))
