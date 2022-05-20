@@ -1,6 +1,7 @@
-# NEXT react-components alpha
+# react-components 6.0.0-alpha.17 (2022-05-18)
 
 - [Form.Field] Make Form.Field's label prop optional
+- Pull in react-components 5.33.7
 
 # react-components 6.0.0-alpha.16 (2022-03-30)
 
@@ -55,6 +56,47 @@
 # react-components 6.0.0-alpha.4 (2021-07-12)
 
 - Upgrade dependencies #450
+
+## react-components 5.33.7 (2022-05-18)
+
+- [Icon] Add "folder" icon (by [@vine77](https://github.com/vine77) in [#574](https://github.com/puppetlabs/design-system/pull/574))
+
+## data-grid 0.6.9 (2022-05-11)
+
+- [Table] Ability to display a `disable` a row on a table (by [@comfucios](https://github.com/comfucios) in [#573](https://github.com/puppetlabs/design-system/pull/573))
+
+## data-grid 0.6.8 (2022-04-20)
+
+- Removed unused 'sb' dependency because it contained a vulnerability caught by our security scanner. https://security.snyk.io/vuln/SNYK-JS-ASYNC-2441827
+
+## data-grid 0.6.7 (2022-04-13)
+
+- [Table] Ability to disable a row's checkbox on selectable table (by [@comfucios](https://github.com/comfucios) in [#570](https://github.com/puppetlabs/design-system/pull/570))
+
+## data-grid 0.6.6 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## design-system-website 1.4.5 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## react components 5.33.6 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+- Replace usage of / for division in scss files with math.div
+
+## react-layouts 2.0.0-alpha.8 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## uikit 1.0.17 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## data-grid 0.6.5 (2022-04-11)
+
+- [Table] Add Action Buttons on the data-grid Table header (by [@comfucios](https://github.com/comfucios) in [#565](https://github.com/puppetlabs/design-system/pull/565))
 
 ## data-grid 0.6.5 (2022-03-29)
 

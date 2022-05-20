@@ -518,10 +518,11 @@ class StatefulParent extends React.Component {
 
 ### Table Actions
 
-Table actions are a list of actionable commands with are applied to the selected rows within a table. It is expected that table actions only work with selectable tables. 
+Table actions are a list of actionable commands with are applied to the selected rows within a table. It is expected that table actions only work with selectable tables.
 
 ```jsx
 const onActionClick = filters => {
+
   console.log('An action was selected', filters);
 };
 
@@ -547,4 +548,52 @@ const actions = [
   actions={actions}
   onActionSelect={onActionClick}
 />;
+```
+
+### Table Action Buttons
+
+Table action buttons are buttons that will trigger an action on the dataset. An example of a dataset action is `export`
+
+```jsx
+  class TableHeaderActionButton extends React.Component {
+    constructor(props) {
+      super(props);
+      this.state = {
+        exportLoading: false,
+        scanLoading: false,
+      }
+    }
+
+    onActionButtonClick(button) {
+      this.setState({ [`${button}Loading`]: true});
+      console.log(`Action ${button} was triggered` );
+      setTimeout(()=>{
+        console.log(`Action ${button} finished`)
+        this.setState({ [`${button}Loading`]: false});
+      }, 2000);
+    }
+
+    render() {
+      const { exportLoading, scanLoading } = this.state;
+      return (
+        <TableHeader
+          actionButtons={[{
+            label: 'export',
+            onClick: () => this.onActionButtonClick('export'),
+            loading: exportLoading,
+            icon: 'export',
+          },{
+            label: 'scan',
+            type: 'transparent',
+            onClick: () => this.onActionButtonClick('scan'),
+            loading: scanLoading,
+            icon: 'scan',
+          },
+          ]}
+        />
+      );
+    }
+  }
+
+<TableHeaderActionButton />;
 ```
