@@ -74,6 +74,7 @@ Once you have made a change and verified that it works locally including in the 
 3. **Version**: Update the version to be published, following [semver](https://semver.org/) for patch, minor, and major versions. Note that alpha versions also follow semver, in the form `6.0.0-alpha.3`.
     - Increment the version in the appropriate `package.json` files, e.g. [packages/react-components/package.json](packages/react-components/package.json).
     - Also increment the version in the corresponding `package-lock.json` files. When updating a single package, this is most easily done by simply manually incrementing the `version` field in the `package-lock.json` file to match, but can also be done by running `npm install`, though you may have to run `git clean -dfX` first to force them to update.
+    - Note: Other packages in this project that depend on the incremented package may also need to be udpated to point to the new version, otherwise, you could end up with multiple versions due to the use of lockfiles.
 4. **Review**: Get a +1 on the PR. Feel free to ping people to find a reviewer. The [design-system-codeowners](https://github.com/orgs/puppetlabs/teams/design-system-codeowners/members) team should be able to help.
 5. **Merge**: Merge the PR. Merging to `main` or `releases/alpha` will trigger a Relay workflow that runs the `npm run release` command.
 6. **Notification**: Wait for a successful notification in the #alerts-design-system Slack channel, which could take a half hour or so.
