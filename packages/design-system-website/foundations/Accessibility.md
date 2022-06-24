@@ -1,16 +1,8 @@
-## Goals
-
-- Help people understand why accessibility is important
-- Provide a starting point for accessibility considerations without overwhelming people with a prescriptive list of rules to remember.
-- Internalise accessible design principles to evaluate any design / component
-- Quickly find answers to key questions (ex: what accessibility standard must we meet?)
-- Provide practical resources and tools to get started..
-
 ## Why is accessibility important?
 
 - Accessible design is good design. Accessibility best practices [improve the experience for all users](https://www.w3.org/WAI/business-case/#groups).
 - Designing for accessibility means creating products everyone can use. The more people who can access and experience our products, the more potential users. That’s good for people and good for business.
-- Accessibility is not only good practice, it is required for software used by federal US agencies.
+- Many agencies, companies, and organisations are subject to accessibility legislation in the US, EU, and other nations.
 
 ## The 4 principles of accessibility
 
@@ -36,13 +28,13 @@ Read about the principles in more detail in the [WCAG documentation](https://www
 
 ## Who benefits from accessible design?
 
-**Accessible design helps everyone, including people with:**
+#### Accessible design helps everyone, including people with:
 
 - **Permanent disabilities**, such as missing limbs, blindness, or cognitive impairments.
 - **Temporary limitations**, such as limited mobility after a medical procedure.
 - **Situational limitations**, such as using captions while watching a training video in a noisy office.
 
-**Accessible design accounts for all types of disabilities and limitations, including:**
+#### Accessible design accounts for all types of disabilities and limitations, including:
 
 - Auditory
 - Cognitive
@@ -51,7 +43,7 @@ Read about the principles in more detail in the [WCAG documentation](https://www
 - Speech
 - Visual
 
-**Accessible design accounts for different means of interaction, including:**
+#### Accessible design accounts for different means of interaction, including:
 
 - Screen readers
 - Keyboard navigation
@@ -60,43 +52,43 @@ Read about the principles in more detail in the [WCAG documentation](https://www
 
 ## Frequently asked questions
 
-**What accessibility standard do we use at Puppet?**
+#### What accessibility standard do we use at Puppet?
 
 AA standards WCAG 2.1
 
-**What is the minimum click target size?**
+#### What is the minimum click target size?
 
-The area, not necessarily the object itself, that a use can click on or highlight must be at least 24 x 24px
+The area, not necessarily the object itself, that a user can click on or highlight must be at least 24 x 24px
 
-**What colour contrast should designs meet?**
+#### What colour contrast should designs meet?
 
-AA. You can check this in Figma with the Stark plug in. Regardless of contrast, do not rely solely on colour to communicate information.
+AA. You can check this with a tool like the [Stark colour contrast checker](https://www.getstark.co/). Regardless of contrast, do not rely solely on colour to communicate information.
 
-**What is ARIA? Will that make my application accessible?**
+#### What is ARIA? Will that make my application accessible?
 
 [The first rule of ARIA is do not use ARIA](https://www.w3.org/TR/using-aria/#rule1). ARIA, Accessible Rich Internet Applications, is a supplementary specification with attributes and labels to aid accessibility on the web. It does not replace semantic HTML. Wherever possible, prefer semantic HTML over ARIA. [No ARIA is better than bad ARIA.](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA)
 
-**What about icons, images, and visualisations for users interacting through a screen reader?**
+#### What about icons, images, and visualisations for users interacting through a screen reader?
 
 The experience should be consistent for all users. If someone uses a screen reader, they should hear the same label as a sighted person sees on the screen for that component. This is especially important to consider when employing icons. Icons on their own can be ambiguous for sighted users or potentially result in inconsistency for people using a screen reader when alt text and labels are not considered. [Check out the UI Labels documentation for more details](https://docs.google.com/document/d/14lUYKUkQ9eljg4-Cxa1m2gD3zJTEZ1oObo3dt9IgSwg/edit?usp=sharing).
 
-**What about interactive visuals like charts and other data visualisations? Are they accessible?**
+#### What about interactive visuals like charts and other data visualisations? Are they accessible?
 
 For elements like data visualisations, aim for the information to be accessible in other formats (ex: in a table below or a CSV export). This also benefits all users by providing multiple means to investigate the data. Testing for accessibility standards such as colour contrast and target area sizing are also important to consider in the creation of any interactive charts.
 
-**What do I need to consider to account for keyboard navigation?**
+#### What do I need to consider to account for keyboard navigation?
 
 Make sure there is a focus state for every hover state, and think about the logical flow of information and key anchor points for users. Can they navigate through and focus on everything they need to reach their goals using only a keyboard? Is it clear what area they are focused on? To try for yourself, [take the #NoMouse challenge](https://www.nomouse.org/).
 
-**What should I do about this specific component or use case?**
+#### What should I do about this specific component or use case?
 
 If you’re unsure, ask an a11y evangelist (such as in the [#aff-a11y](https://puppet.slack.com/archives/CF8914CFM) channel) or Google "accessibility + &lt;component>" (such as "accessibility + web forms") and read the latest about it.
 
-**How can I learn more about accessibility?**
+#### How can I learn more about accessibility?
 
 Join the [#aff-a11y](https://puppet.slack.com/archives/CF8914CFM) channel in Slack. Resources are shared all the time and everyone is happy to answer questions and learn together. Also check out the [W3 free digital accessibility foundations course](https://www.w3.org/WAI/fundamentals/foundations-course/) and the other resources below.
 
-### Resources and tools
+## Resources and tools
 
 - The [#aff-a11y](https://puppet.slack.com/archives/CF8914CFM) channel in Slack
 - [W3 free digital accessibility foundations course](https://www.w3.org/WAI/fundamentals/foundations-course/)
