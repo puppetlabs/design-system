@@ -80,7 +80,7 @@ module.exports = {
       sectionDepth: 1,
       sections: [
         {
-          name: 'Accessibility Guide',
+          name: 'Accessibility',
           content: 'foundations/Accessibility.md',
         },
         {
