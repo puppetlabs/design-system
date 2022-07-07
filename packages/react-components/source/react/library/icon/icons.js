@@ -336,6 +336,16 @@ const icons = {
     ),
   },
 
+  'circle-empty': {
+    medium: (
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M8 0c4.411 0 8 3.589 8 8s-3.589 8-8 8-8-3.589-8-8 3.589-8 8-8Zm0 14c3.309 0 6-2.691 6-6s-2.691-6-6-6-6 2.691-6 6 2.691 6 6 6Z"
+      />
+    ),
+  },
+
   clipboard: {
     large: (
       <path
