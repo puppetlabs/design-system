@@ -2,7 +2,7 @@ _Note: Aria attributes to be set on Tooltip and TooltipHoverArea components post
 
 ## Overview
 
-Use tooltips to provide instructional or contextual information beyond what fits in short descriptions. Tooltips fall under two length categories. Short tooltips are one line and their width is determined by the length of content they contain. Long tooltips have a specified width and vary in height to accommodate their content. By default, tooltips are viewed on-hover, but long tooltips have a variation where they’re invoked with a click and need to be explicitly dismissed. Use the long variation if the tooltip contains a link.
+Use tooltips to provide instructional or contextual information beyond what fits in short descriptions. By default, tooltip text is centered and will wrap if the width it exceeds 200px. If anything other than a string is passed to a tooltip, it will adjust to fit the content. Tooltips will remain open if you hover over them, allowing users to click links or interact with content.
 
 ### Microcopy
 
@@ -41,5 +41,26 @@ const childStyle = {
       <Button>I'm a happy button!</Button>
     </TooltipHoverArea>
   </div>
+</div>;
+```
+
+### Example: Enable/Disable `TooltipHoverArea`
+
+```jsx
+const Button = require('../button/Button.js').default;
+const { useState } = require('react');
+
+const [modalIsDisabled, setDisabled] = useState(false);
+
+<div>
+  <TooltipHoverArea
+    disabled={modalIsDisabled}
+    tooltip="I'm a happy tooltip!"
+    anchor="right"
+  >
+    <Button onClick={() => setDisabled(!modalIsDisabled)}>
+      {`Click me to ${!modalIsDisabled ? 'disable' : 'enable'} tooltip`}
+    </Button>
+  </TooltipHoverArea>
 </div>;
 ```

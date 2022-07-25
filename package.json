@@ -19,5 +19,7 @@
   "engines": {
     "node": "12.4.0"
   },
-  "dependencies": {}
+  "dependencies": {
+    "classnames": "^2.3.1"
+  }
 }

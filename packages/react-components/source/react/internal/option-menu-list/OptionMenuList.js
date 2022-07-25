@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import scrollIntoView from 'scroll-into-view-if-needed';
 import { isNil, focus, cancelEvent } from '../../helpers/statics';
+import { optionMenuItemShape } from '../../helpers/customPropTypes';
 
 import {
   UP_KEY_CODE,
@@ -15,7 +16,6 @@ import {
 } from '../../constants';
 
 import OptionMenuListItem from './OptionMenuListItem';
-import Icon from '../../library/icon';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -23,13 +23,13 @@ const propTypes = {
   autocomplete: PropTypes.bool,
   showCancel: PropTypes.bool,
   options: PropTypes.arrayOf(
-    PropTypes.shape({
-      value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
-        .isRequired,
-      label: PropTypes.node.isRequired,
-      icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
-      disabled: PropTypes.bool,
-    }),
+    PropTypes.oneOfType([
+      PropTypes.shape(optionMenuItemShape),
+      PropTypes.shape({
+        ...optionMenuItemShape,
+        value: PropTypes.arrayOf(PropTypes.shape(optionMenuItemShape)),
+      }),
+    ]),
   ),
   selected: PropTypes.oneOfType([
     PropTypes.string,
@@ -72,13 +72,21 @@ const defaultProps = {
 
 const getOptionId = (id, value) => `${id}-${value}`;
 
+const getFocusableOptions = options =>
+  options.map(opt => (Array.isArray(opt.value) ? opt.value : opt)).flat();
+
 const getFocusedId = (focusedIndex, id, options) =>
-  isNil(focusedIndex) || focusedIndex >= options.length
+  typeof focusedIndex !== 'number' || focusedIndex >= options.length
     ? undefined
-    : getOptionId(id, options[focusedIndex].value);
+    : getOptionId(
+        id,
+        getFocusableOptions(options)[Math.max(focusedIndex, 0)].value,
+      );
 
 const getSelectionSet = selection =>
-  new Set(Array.isArray(selection) ? selection : [selection]);
+  new Set(
+    (Array.isArray(selection) ? selection : [selection]).filter(el => !!el),
+  );
 
 class OptionMenuList extends Component {
   constructor(props) {
@@ -132,7 +140,11 @@ class OptionMenuList extends Component {
   }
 
   onMouseEnterItem(focusedIndex) {
-    this.focusItem(focusedIndex);
+    if (typeof focusedIndex === 'number') {
+      this.focusItem(focusedIndex);
+    } else {
+      this.setState({ focusedIndex: null });
+    }
   }
 
   onCancel(e) {
@@ -159,12 +171,15 @@ class OptionMenuList extends Component {
     if (isNil(focusedIndex)) {
       this.focusFirst();
     } else {
-      this.focusItem(Math.min(options.length - 1, focusedIndex + 1));
+      this.focusItem(
+        Math.min(getFocusableOptions(options).length - 1, focusedIndex + 1),
+      );
     }
   }
 
   onKeyDown(e) {
-    const { onEscape, onClickItem } = this.props;
+    const { onEscape, onClickItem, options } = this.props;
+    const { focusedIndex } = this.state;
 
     switch (e.keyCode) {
       case UP_KEY_CODE: {
@@ -189,8 +204,11 @@ class OptionMenuList extends Component {
       }
       case SPACE_KEY_CODE:
       case ENTER_KEY_CODE: {
-        this.selectFocusedItem();
-        onClickItem();
+        const focused = getFocusableOptions(options)[focusedIndex];
+        if (focused && !focused.disabled) {
+          this.selectFocusedItem();
+          onClickItem();
+        }
         cancelEvent(e);
         break;
       }
@@ -245,7 +263,7 @@ class OptionMenuList extends Component {
   focusLast() {
     const { options } = this.props;
 
-    this.focusItem(options.length - 1);
+    this.focusItem(getFocusableOptions(options).length - 1);
   }
 
   focusItem(focusedIndex) {
@@ -290,7 +308,7 @@ class OptionMenuList extends Component {
     const { options } = this.props;
 
     if (!isNil(focusedIndex)) {
-      const { value } = options[focusedIndex];
+      const { value } = getFocusableOptions(options)[focusedIndex];
 
       this.select(value);
     }
@@ -298,17 +316,6 @@ class OptionMenuList extends Component {
 
   /* eslint-disable jsx-a11y/click-events-have-key-events */
   render() {
-    const {
-      onClickItem,
-      onMouseEnterItem,
-      onCancel,
-      onKeyDown,
-      onKeyDownInAction,
-      onFocus,
-      onMenuBlur,
-      onActionBlur,
-    } = this;
-    const { focusedIndex } = this.state;
     const {
       id,
       options,
@@ -323,7 +330,6 @@ class OptionMenuList extends Component {
       className,
       style,
       onBlur,
-      focusedIndex: focussed,
       onFocusItem,
       footer,
       onClickItem: onClick,
@@ -334,8 +340,95 @@ class OptionMenuList extends Component {
       return null;
     }
 
+    const {
+      onClickItem,
+      onMouseEnterItem,
+      onCancel,
+      onKeyDown,
+      onKeyDownInAction,
+      onFocus,
+      onMenuBlur,
+      onActionBlur,
+    } = this;
+
     const selectionSet = getSelectionSet(selected);
-    const focusedId = getFocusedId(focusedIndex, id, options);
+
+    delete rest.focusedIndex;
+    const { focusedIndex } = this.state;
+    const focusedId = getFocusedId(
+      focusedIndex,
+      id,
+      getFocusableOptions(options),
+    );
+
+    const renderListItems = (items, offset = 0) => {
+      const list = [];
+
+      items.forEach(item => {
+        if (Array.isArray(item.value)) {
+          const groupId = `group-${item.value
+            .map(child => child.value)
+            .join('-')}`;
+          const labelId = `${groupId}-label`;
+
+          list.push(
+            <ul
+              role="group"
+              aria-labelledby={labelId}
+              className="rc-menu-list-group"
+              id={groupId}
+              key={groupId}
+            >
+              {item.label && (
+                <OptionMenuListItem
+                  type="heading"
+                  disabled={item.disabled}
+                  id={labelId}
+                  key={labelId}
+                  onMouseEnter={() => onMouseEnterItem(null)}
+                >
+                  {item.label}
+                </OptionMenuListItem>
+              )}
+              {renderListItems(
+                item.value.map(child =>
+                  Object.assign(child, {
+                    disabled: item.disabled || child.disabled,
+                  }),
+                ),
+                list.length + offset,
+              )}
+            </ul>,
+          );
+          // eslint-disable-next-line no-param-reassign
+          offset += item.value.length - 1;
+        } else {
+          const index = list.length + offset;
+          list.push(
+            <OptionMenuListItem
+              id={getOptionId(id, item.value)}
+              key={item.value}
+              focused={index === focusedIndex}
+              selected={selectionSet.has(item.value)}
+              icon={item.icon}
+              svg={item.svg}
+              disabled={item.disabled}
+              onClick={() =>
+                item.disabled ? undefined : onClickItem(item.value)
+              }
+              onMouseEnter={() => onMouseEnterItem(index)}
+              ref={option => {
+                this.optionRefs[index] = option;
+              }}
+            >
+              {item.label}
+            </OptionMenuListItem>,
+          );
+        }
+      });
+
+      return list;
+    };
 
     const list = (
       <ul
@@ -353,24 +446,7 @@ class OptionMenuList extends Component {
         }}
         {...rest}
       >
-        {options.map(({ value, label, icon, svg, disabled }, index) => (
-          <OptionMenuListItem
-            id={getOptionId(id, value)}
-            key={value}
-            focused={index === focusedIndex}
-            selected={selectionSet.has(value)}
-            icon={icon}
-            svg={svg}
-            disabled={disabled}
-            onClick={disabled ? undefined : () => onClickItem(value)}
-            onMouseEnter={() => onMouseEnterItem(index)}
-            ref={option => {
-              this.optionRefs[index] = option;
-            }}
-          >
-            {label}
-          </OptionMenuListItem>
-        ))}
+        {renderListItems(options)}
       </ul>
     );
 

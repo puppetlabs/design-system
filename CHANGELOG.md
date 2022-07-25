@@ -2,6 +2,188 @@
 
 - [TableFooter] Adding custom rows per page prop to TableFooter (by [@cathal41](https://github.com/cathal41) in [#403](https://github.com/puppetlabs/design-system/pull/589))
 
+## data-grid 0.6.10 (2022-07-08)
+
+- Allow React 18 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#583](https://github.com/puppetlabs/design-system/pull/583))
+
+## react-components 5.33.8 (2022-07-08)
+
+- Add `circle-empty` icon (by [@mardotio](https://github.com/mardotio) in [#583](https://github.com/puppetlabs/design-system/pull/583))
+- Allow React 18 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#583](https://github.com/puppetlabs/design-system/pull/583))
+
+## data-layouts 2.0.0-alpha.9 (2022-07-08)
+
+- Allow React 18 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#583](https://github.com/puppetlabs/design-system/pull/583))
+
+## react-components 5.33.7 (2022-05-18)
+
+- [Icon] Add "folder" icon (by [@vine77](https://github.com/vine77) in [#574](https://github.com/puppetlabs/design-system/pull/574))
+
+## data-grid 0.6.9 (2022-05-11)
+
+- [Table] Ability to display a `disable` a row on a table (by [@comfucios](https://github.com/comfucios) in [#573](https://github.com/puppetlabs/design-system/pull/573))
+
+## data-grid 0.6.8 (2022-04-20)
+
+- Removed unused 'sb' dependency because it contained a vulnerability caught by our security scanner. https://security.snyk.io/vuln/SNYK-JS-ASYNC-2441827
+
+## data-grid 0.6.7 (2022-04-13)
+
+- [Table] Ability to disable a row's checkbox on selectable table (by [@comfucios](https://github.com/comfucios) in [#570](https://github.com/puppetlabs/design-system/pull/570))
+
+## data-grid 0.6.6 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## design-system-website 1.4.5 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## react components 5.33.6 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+- Replace usage of / for division in scss files with math.div
+
+## react-layouts 2.0.0-alpha.8 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## uikit 1.0.17 (2022-4-13)
+
+- Replace deprecated node-sass dependency with sass.
+
+## data-grid 0.6.5 (2022-04-11)
+
+- [Table] Add Action Buttons on the data-grid Table header (by [@comfucios](https://github.com/comfucios) in [#565](https://github.com/puppetlabs/design-system/pull/565))
+
+## data-grid 0.6.5 (2022-03-29)
+
+- [Table] Add `fixedLastColumn` option to data-grid Table (by [@vine77](https://github.com/vine77) in [#559](https://github.com/puppetlabs/design-system/pull/559))
+
+## react-components 5.33.5 (2022-03-29)
+
+- [Portal] Export Portal component for externl use (by [@Krable55](https://github.com/Krable55) in [#561] (https://github.com/puppetlabs/design-system/pull/561))
+
+## data-grid 0.6.4 (2022-03-29)
+
+- [QuickFilter] fix quick filter empty state to allow for undefined options (by [@Jo-Lillie](https://github.com/Jo-Lillie) in [#560] (https://github.com/puppetlabs/design-system/pull/560))
+
+## data-grid 0.6.3 (2022-03-23)
+
+- Allow react 17 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#556](https://github.com/puppetlabs/design-system/pull/556))
+
+## react-components 5.33.4 (2022-03-23)
+
+- Allow react 17 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#556](https://github.com/puppetlabs/design-system/pull/556))
+
+## data-layouts 2.0.0-alpha.7 (2022-03-23)
+
+- Allow react 17 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#556](https://github.com/puppetlabs/design-system/pull/556))
+
+## data-grid 0.6.2 (2022-03-22)
+
+- [QuickFilter] Add quick filter empty state to quick filter component and README file (by [@Jo-Lillie](https://github.com/Jo-Lillie) in [#553] (https://github.com/puppetlabs/design-system/pull/553))
+
+## react-components 5.33.1 (2022-03-10)
+
+- [ConfirmationModal] Add className prop to confirmation modal (by [@Lukeaber](https://github.com/Lukeaber) in [#555](https://github.com/puppetlabs/design-system/pull/555))
+
+## react-components 5.33.2 (2022-03-09)
+
+- [Icon] Add Play icon
+
+## react-components 5.33.1 (2022-03-04)
+
+- [SidebarFooter] Add tooltip option (by [@chrisleicester](https://github.com/chrisleicester) in [#552](https://github.com/puppetlabs/design-system/pull/552))
+
+## react-components 5.33.0 (2022-02-28)
+
+- [Breadcrumb] Add Back type (by [@Lukeaber](https://github.com/Lukeaber) in [#549](https://github.com/puppetlabs/design-system/pull/549))
+
+## react-components 5.32.5 (2022-02-24)
+
+- [Icon] Add change and change warning icon
+
+## react-components 5.32.4 (2022-02-11)
+
+- [Icon] Add exception icon
+
+## react-components 5.32.3 (2022-02-08)
+
+- [Code] Add `copyable` to Code component
+
+## react-components 5.32.2 (2022-02-04)
+
+- [Icon] Add unpatched and windows icons
+
+# data-grid 0.6.1 (2021-03-09)
+
+- Fix onRowClick Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#510](https://github.com/puppetlabs/design-system/pull/510))
+
+## react-components 5.32.1 (2022-01-31)
+
+-- [TooltipHoverArea] Prevent udpate method from being called when undefined. (by [@krable55](https://github.com/krable55) in [#504](https://github.com/puppetlabs/design-system/pull/504))
+
+## react-components 5.32.0 (2022-01-11)
+
+- [Form] Pass other props to Form component to form element (by [@vine77](https://github.com/vine77) in [#487](https://github.com/puppetlabs/design-system/pull/487))
+- [TooltipHoverArea] Migrate tooltip to react-popper for smarter positioning and better z-index/overlapping behavior, add centering and multiline options
+
+## data-grid 0.6.0 (2021-12-20)
+
+- [TableActions] Add table action dropdown to the table header component (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
+- [SelectWithPagination] Add's the new conditional rendering, props and implementation pattern for Selection with pagination (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
+
+# react-components 5.31.0 (2021-12-20)
+
+- [Icon] Add ban, pause and caret-right icon (by [@Lukeaber](https://github.com/Lukeaber) in [#483](https://github.com/puppetlabs/design-system/pull/483)
+
+# react-components 5.30.0 (2021-10-27)
+
+- [TooltipHoverArea] Update use CSS for hover and positioning logic. Add caret (by [@krable55](https://github.com/krable55) in [#477](https://github.com/puppetlabs/design-system/pull/477))
+
+# react-components 5.29.4 (2021-09-27)
+
+- [Icon] Add accessibility warning message to Icon docs (by [@cathal](https://github.com/cathal41) in [#466](https://github.com/puppetlabs/design-system/pull/466))
+
+# react-components 5.29.3 (2021-08-23)
+
+- [Stepper] Add Stepper container component (by [@desmondbera](https://github.com/desmondbera)
+  in [#459](https://github.com/puppetlabs/design-system/pull/459))
+- [StepperStep] Add StepperStep component (
+  by [@desmondbera](https://github.com/desmondbera) in [#459](https://github.com/puppetlabs/design-system/pull/459))
+
+# react-components 5.29.2 (2021-07-07)
+
+- [Icon] Add plus-circle-filled by in (by [@cathal41](https://github.com/cathal41) in [#447](https://github.com/puppetlabs/design-system/pull/447))
+- [Select] Show placeholder instead of throwing error if value isn't present in options (by [@vine77](https://github.com/vine77) in [#448](https://github.com/puppetlabs/design-system/pull/448))
+
+# data-grid 0.5.4 (2021-03-09)
+
+- Fix Page Bug (by [@Lukeaber](https://github.com/Lukeaber) in [#437](https://github.com/puppetlabs/design-system/pull/437))
+- Add data-grid search (by [@Lukeaber](https://github.com/Lukeaber) in [#430](https://github.com/puppetlabs/design-system/pull/430))
+
+# react-components 5.29.0 (2021-06-01)
+
+- [Select] Add support for option groups to the Select component and fix keyboard handling of disabled options (by [@caseywilliams](https://github.com/caseywilliams)) in [#431](https://github.com/puppetlabs/design-system/pull/431)
+
+# react-components 5.28.0 (2021-05-06)
+
+- [Alerts] Add Alerts component (by [@vine77](https://github.com/vine77) in [#416](https://github.com/puppetlabs/design-system/pull/416))
+- [Breadcrumb] Add `disabled` prop to Breadcrumb.Section (by [@mardotio](https://github.com/mardotio)) in [#414](https://github.com/puppetlabs/design-system/pull/414)
+- [Icon] Add docs for customizing icon color (by [@vine77](https://github.com/vine77) in [#415](https://github.com/puppetlabs/design-system/pull/415))
+
+# react-components 5.27.3 (2021-04-23)
+
+- [Form] Add `submitDisabled` prop to Form component to disable submit button (by [@cathal41](https://github.com/cathal41) in [#406](https://github.com/puppetlabs/design-system/pull/406))
+- [Form.Field] Update hover target of form field (by [@cathal41](https://github.com/cathal41) in [#409](https://github.com/puppetlabs/design-system/pull/409))
+- [maintenance] Bump ssri from 6.0.1 to 6.0.2 (by [@dependabot](https://github.com/dependabot) in [#411](https://github.com/puppetlabs/design-system/pull/411))
+- [maintenance] Fix Element not defined error during server-side rendering (by [@scotje](https://github.com/scotje) in [#412](https://github.com/puppetlabs/design-system/pull/412))
+
+# react-components 5.27.2 (2021-04-15)
+
+- [Sidebar] Fix hover state for Sidebar.Footer link (by [@vine77](https://github.com/vine77) in [#407](https://github.com/puppetlabs/design-system/pull/407))
+
 # react-components 5.27.1 (2021-04-08)
 
 - [Overlay] Add mechanism for force updating Overlay (by [@mardotio](https://github.com/mardotio) in [#403](https://github.com/puppetlabs/design-system/pull/403))

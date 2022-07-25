@@ -69,8 +69,10 @@ const propTypes = {
   onSort: func,
   /** Optional boolean to cause horizontal scrolling when table extends past the container */
   horizontalScroll: bool,
-  /** Optional boolean to cause the first column to be fixed when horizontalScrool is true */
+  /** Optional boolean to cause the first column to be fixed when horizontalScroll is true */
   fixedColumn: bool,
+  /** Optional boolean to cause the last column to be fixed when horizontalScroll is true */
+  fixedLastColumn: bool,
   /** Optional string to provider header which is visable when no data is available */
   emptyStateHeader: string,
   /** Optional string to provider descriptive message explaining the empty state of the table */
@@ -96,6 +98,7 @@ const defaultProps = {
   sortedColumn: { direction: '', sortDataKey: '' },
   horizontalScroll: false,
   fixedColumn: false,
+  fixedLastColumn: false,
   emptyStateHeader: 'No data available',
   emptyStateMessage: 'Prompt to action or solution',
   loading: false,
@@ -106,7 +109,7 @@ const defaultProps = {
   onHeaderChecked: () => {},
   onRowClick: () => {},
   headerCheckState: false,
-  headerIndeterminateState: true,
+  headerIndeterminateState: false,
 };
 
 const defaultColumnDefs = {
@@ -138,6 +141,15 @@ class Table extends Component {
     return name;
   };
 
+  // Allows the child checkbox to be clicked without calling rowClick
+  handleOnClick = (e, rowData, rowKey, rowIndex) => {
+    const { onRowClick } = this.props;
+
+    if (!e.target.classList.contains('rc-checkbox')) {
+      onRowClick(rowKey, rowIndex, rowData);
+    }
+  };
+
   render() {
     const {
       data,
@@ -149,6 +161,7 @@ class Table extends Component {
       loading,
       loadingMessage,
       fixedColumn,
+      fixedLastColumn,
       horizontalScroll,
       emptyStateHeader,
       emptyStateMessage,
@@ -172,6 +185,7 @@ class Table extends Component {
         className={classnames({
           'dg-table-horizontal-scroll': horizontalScroll,
           'dg-table-fixed-column': fixedColumn,
+          'dg-table-fixed-last-column': fixedLastColumn,
         })}
       >
         <table
@@ -224,10 +238,13 @@ class Table extends Component {
                     {
                       'dg-table-row-selected':
                         selectable && rowData.selected === true,
+                      'dg-table-row-disabled': selectable && !!rowData.disabled,
                     },
                   )}
                   key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
-                  onClick={() => onRowClick(rowKey, rowIndex, rowData)}
+                  onClick={e =>
+                    this.handleOnClick(e, rowData, rowKey, rowIndex)
+                  }
                 >
                   {selectable ? (
                     <td
@@ -239,11 +256,21 @@ class Table extends Component {
                       className="rc-table-cell"
                     >
                       <Checkbox
-                        className="dg-table-checkbox"
+                        className={classnames('dg-table-checkbox', {
+                          'dg-table-checkbox-disabled':
+                            rowData.disabled || 'selectable' in rowData
+                              ? !rowData.selectable
+                              : false,
+                        })}
                         onChange={checked => onRowChecked(checked, rowData)}
                         value={rowData.selected}
                         label=""
                         name=""
+                        disabled={
+                          rowData.disabled || 'selectable' in rowData
+                            ? !rowData.selectable
+                            : false
+                        }
                       />
                     </td>
                   ) : null}

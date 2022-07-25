@@ -1,11 +1,36 @@
 .rc-code {
   @include puppet-type-code();
+  position: relative;
 }
 
 .rc-code-size-small {
   @include puppet-type-code-small();
 }
 
+.rc-code-children {
+  overflow-y: scroll;
+}
+
 .rc-code-block {
-  @include puppet-type-code-block();
+  background-color: $puppet-n100;
+  border-left: 8px solid $puppet-n300;
+  display: block;
+  white-space: pre;
+
+  .rc-code-children {
+    padding: $puppet-common-spacing-base * 3 $puppet-common-spacing-base * 6;
+  }
+}
+
+.rc-code-copyable.rc-code-block {
+  .rc-code-children {
+    padding: $puppet-common-spacing-base * 3 $puppet-common-spacing-base * 10
+      $puppet-common-spacing-base * 3 $puppet-common-spacing-base * 6;
+  }
+
+  .copy {
+    position: absolute;
+    right: $puppet-common-spacing-base * 2;
+    top: $puppet-common-spacing-base * 2;
+  }
 }

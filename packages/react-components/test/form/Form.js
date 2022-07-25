@@ -22,6 +22,14 @@ describe('<Form />', () => {
     );
   });
 
+  it('should propagate user provided custom props', () => {
+    expect(
+      shallow(<Form autocomplete="off" />)
+        .find('form')
+        .prop('autocomplete'),
+    ).to.equal('off');
+  });
+
   describe('action buttons', () => {
     it('should render no actions by default', () => {
       expect(shallow(<Form />)).not.to.have.descendants(Button);

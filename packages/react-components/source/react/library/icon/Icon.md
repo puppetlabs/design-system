@@ -2,6 +2,12 @@
 
 Icons and logos are designed to have consistency in style and spacing. They are output as SVG elements and wrapped in components.
 
+### Accessibility
+
+**Warning**: Be aware that icons render as SVGs that cannot be accessed with tabs or screen reader software. For interactivity, consider using the [Button](#/React%20Components/Button) component with the `icon` prop and a `type` of "transparent".
+
+See also: [Button](#/React%20Components/Button) and [Button Select](#/React%20Components/ButtonSelect)
+
 ### Rendering Icons
 
 To render an icon, either:
@@ -13,8 +19,6 @@ The specific SVG rendered is decided by the following:
 
 1. If there is a unique SVG for the type and size provided, it will be rendered. Unique SVGs are indicated by a green background below.
 2. Otherwise, we scale down the next largest SVG, or if unavailable, scale up the next smallest SVG.
-
-See also: [Button](#/React%20Components/Button) and [Button Select](#/React%20Components/ButtonSelect)
 
 ## Basic Use
 
@@ -94,6 +98,14 @@ const Renderer = () => {
 <Renderer />;
 ```
 
+## Customize icon color
+
+If you need a different color, you can customize it with CSS, targeting the `fill` property. The default color is defined in [_icons.scss](https://github.com/puppetlabs/design-system/blob/main/packages/react-components/source/scss/library/components/_icons.scss). You should be able to do something like `.your-icon { fill: $puppet-purple; }` with Sass.
+
+```jsx
+<Icon type="activity" style={{ fill: '#a263ff' }} />
+```
+
 ## Custom SVG use
 
 To use a custom SVG not included in the chart above, separately specify both the `path` attribute to the `svg` prop and the `viewBox` attribute to the `viewBox` prop.
@@ -129,7 +141,7 @@ const Renderer = () => {
 3. Strip out the wrapping `svg` element, usually (but not always) leaving just a `path`.
 4. Remove all instances of the `fill` attribute so that icons can be styled with CSS. You may also remove `clip-rule` attributes.
 5. Rename dasherized attributes like `fill-rule` with React-compatible properties like `fillRule`.
-6. Add the icon to [icons.js](https://github.com/puppetlabs/design-system/blob/development/packages/react-components/source/react/library/icon/icons.js) in alphabetical order, specifying the icon name and native SVG sizes (from step 2).
+6. Add the icon to [icons.js](https://github.com/puppetlabs/design-system/blob/main/packages/react-components/source/react/library/icon/icons.js) in alphabetical order, specifying the icon name and native SVG sizes (from step 2).
 
 ## Disclaimer
 

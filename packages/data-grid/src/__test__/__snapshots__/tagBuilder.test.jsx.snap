@@ -20,7 +20,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   onRemoveTag={[MockFunction]}
 >
   <div
-    className="dg-tag-bulder-container"
+    className="dg-tag-builder-container"
   >
     <div
       className="dg-tag-container"

@@ -1,0 +1,45 @@
+name: GitHub Pages
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.4.0
+    - run: npm install
+    - run: npm run build --if-present
+    - run: npm test
+
+  deploy:
+
+    needs: test
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: sleep
+      uses: jakejarvis/wait-action@v0.1.0
+      with:
+        time: '40m'
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Set Node version
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12.4.0
+    - name: Install
+      run: (cd packages/design-system-website && npm install && npm run styleguide:build)
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@v4
+      with:
+        token: ${{ secrets.ACCESS_TOKEN }}
+        branch: gh-pages
+        folder: packages/design-system-website/dist

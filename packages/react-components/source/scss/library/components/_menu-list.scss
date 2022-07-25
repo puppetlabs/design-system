@@ -26,6 +26,26 @@
   }
 }
 
+.rc-menu-list-group {
+  border-bottom: solid 1px $puppet-n300;
+  margin: 0 0 4px;
+  padding: 0 0 4px;
+}
+
+.rc-menu-list-group:only-child,
+.rc-menu-list-group:last-child {
+  border-bottom-style: none;
+  border-bottom-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+li + .rc-menu-list-group {
+  border-top: solid 1px $puppet-n300;
+  margin-top: 4px;
+  padding-top: 4px;
+}
+
 .rc-menu-action-container {
   display: flex;
 }
@@ -72,7 +92,17 @@
   cursor: pointer;
   display: flex;
   list-style-type: none;
-  padding: 4px 8px;
+  padding: $puppet-common-spacing-base $puppet-common-spacing-base * 2;
+}
+
+.rc-menu-list-group {
+  .rc-menu-list-item {
+    padding-left: $puppet-common-spacing-base * 3;
+  }
+
+  .rc-menu-list-group-heading {
+    padding-left: $puppet-common-spacing-base * 2;
+  }
 }
 
 .rc-menu-list-item-inner {
@@ -97,6 +127,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.rc-menu-list-group-heading {
+  @include puppet-type-h6();
 }
 
 .rc-menu-list-item-checkmark {

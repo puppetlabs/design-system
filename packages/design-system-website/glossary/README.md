@@ -10,7 +10,7 @@ React components are flexible page elements. Define or nullify props on a given 
 |[Modal](/#/React%20Components/Modal)                                          |
 |[Table](/#/React%20Components/Table)                                          |
 |[Toolbar](/#/React%20Components/Toolbar)                                      |
-|[Sidepanel](/#/React%20Components/Sidepanel)                                  |
+|[SidePanel](/#/React%20Components/SidePanel)                                  |
 |[Content](/#/React%20Components/Content)                                      |
 
 |Navigation                                                                    |
@@ -56,24 +56,5 @@ React components are flexible page elements. Define or nullify props on a given 
 |[Badge](/#/React%20Components/Badge)                                          |
 |[Tag](/#/React%20Components/Tag)                                              |
 |[TooltipHoverArea](/#/React%20Components/TooltipHoverArea)                    |
-
-<br/><br/><br/>
-
-### React layouts
-
-React layouts are ubiquitous combinations of react components needed for most modern web apps.
-
-|Authorization                                                                 |
-|------------------------------------------------------------------------------|
-|[Confirmation](/#/React%20Components/Confirmation)                            |
-|[ForgotPassword](/#/React%20Components/ForgotPassword)                        |
-|[Login](/#/React%20Components/Login)                                          |
-|[ForgotPasswordSent](/#/React%20Components/ForgotPasswordSent)                |
-|[ResetPassword](/#/React%20Components/ResetPassword)                          |
-|[ResetPasswordSuccess](/#/React%20Components/ResetPasswordSuccess)            |
-
-|Grid                                                                          |
-|------------------------------------------------------------------------------|
-|[Columns](/#/React%20Layouts/Columns)                                         |
 
 <br/><br/><br/>

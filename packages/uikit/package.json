@@ -1,6 +1,6 @@
 {
   "name": "@puppet/uikit",
-  "version": "1.0.16",
+  "version": "1.0.17",
   "main": "dist/uikit.js",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
@@ -24,7 +24,7 @@
   ],
   "dependencies": {
     "fs-extra": "^8.1.0",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "jscodeshift": "^0.6.4",
     "klaw-sync": "^6.0.0",
     "ramda": "^0.26.1",

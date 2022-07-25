@@ -25,7 +25,7 @@ const propTypes = {
 
 function TagBuilder({ filters, onRemoveTag, onRemoveAll }) {
   return (
-    <div className="dg-tag-bulder-container">
+    <div className="dg-tag-builder-container">
       <div className="dg-tag-container">
         {filters.map(({ field, fieldLabel, value }, idx) => {
           let displayValue = value;

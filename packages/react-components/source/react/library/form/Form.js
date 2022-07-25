@@ -30,6 +30,8 @@ const propTypes = {
   submitting: PropTypes.bool,
   /** Is the form submittable? If true a submit button will render */
   submittable: PropTypes.bool,
+  /** Will specifically disable the submit button on the form */
+  submitDisabled: PropTypes.bool,
   /** Optional override for the submit button label */
   submitLabel: PropTypes.string,
   /** Optional override for the submit button type */
@@ -65,48 +67,55 @@ const propTypes = {
 };
 
 const defaultProps = {
-  initialValues: {},
-  values: undefined,
-  submittable: false,
-  submitLabel: 'Submit',
-  submitType: 'primary',
-  onSubmit() {},
-  cancellable: false,
-  cancelLabel: 'Cancel',
-  cancelType: 'tertiary',
-  onCancel() {},
-  onChange() {},
-  submitting: false,
-  labelType: 'primary',
-  inline: false,
-  inlineLabelWidth: null,
   actionsPosition: 'left',
-  disabled: false,
-  error: '',
+  cancelLabel: 'Cancel',
+  cancellable: false,
+  cancelType: 'tertiary',
   children: null,
   className: '',
+  disabled: false,
+  error: '',
+  initialValues: {},
+  inline: false,
+  inlineLabelWidth: null,
+  labelType: 'primary',
+  onCancel() {},
+  onChange() {},
+  onSubmit() {},
   style: {},
+  submitDisabled: false,
+  submitLabel: 'Submit',
+  submittable: false,
+  submitting: false,
+  submitType: 'primary',
+  values: undefined,
 };
 
 const Form = forwardRef((props, ref) => {
   const {
-    initialValues: initialValuesProp,
-    values: valuesProp,
-    onChange: onChangeProp,
-    submitting,
-    submittable,
-    submitLabel,
-    submitType,
-    cancellable,
-    cancelLabel,
-    cancelType,
-    onCancel,
     actionsPosition,
-    disabled,
-    error,
+    cancelLabel,
+    cancellable,
+    cancelType,
     children: userProvidedChildren,
     className,
+    disabled,
+    error,
+    initialValues: initialValuesProp,
+    inline,
+    inlineLabelWidth,
+    labelType,
+    onCancel,
+    onChange: onChangeProp,
+    onSubmit: onSubmitProp,
     style,
+    submitDisabled,
+    submitLabel,
+    submittable,
+    submitting,
+    submitType,
+    values: valuesProp,
+    ...otherProps
   } = props;
   const fieldProps = collectFieldProps(userProvidedChildren);
   const fieldPaths = getFieldPaths(fieldProps);
@@ -175,6 +184,7 @@ const Form = forwardRef((props, ref) => {
       onCancel={onCancel}
       noValidate
       ref={ref}
+      {...otherProps}
     >
       {children}
       {error && (
@@ -185,6 +195,7 @@ const Form = forwardRef((props, ref) => {
       <FormActions
         submitting={submitting}
         submittable={submittable}
+        submitDisabled={submitDisabled}
         submitLabel={submitLabel}
         submitType={submitType}
         cancellable={cancellable}

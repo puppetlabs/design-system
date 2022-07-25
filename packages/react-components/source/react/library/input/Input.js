@@ -17,6 +17,9 @@ export const SUPPORTED_TYPES = [
   'number',
   'multiline',
   'hidden',
+  'date',
+  'time',
+  'datetime-local',
 ];
 
 const propTypes = {

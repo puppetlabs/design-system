@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Icon from '../library/icon';
 
 /**
  * Design system available element elevations
@@ -22,7 +23,12 @@ export const anchorOrientation = PropTypes.oneOf([
 
 export const reactRef = PropTypes.oneOfType([
   PropTypes.func,
-  PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  PropTypes.shape({
+    current:
+      typeof Element === 'undefined'
+        ? PropTypes.any
+        : PropTypes.instanceOf(Element),
+  }),
 ]);
 
 const extendedErrorShape = {
@@ -75,4 +81,17 @@ export const deprecated = message => typeChecker => {
 
     return typeChecker(props, key, componentName, location, propFullName);
   };
+};
+
+export const optionMenuItemShape = {
+  /** Value of the option */
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  /** The label to show */
+  label: PropTypes.node.isRequired,
+  /** Optional icon associated with this option */
+  icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
+  /** Optional custom icon associated with this option */
+  svg: PropTypes.element,
+  /** Whether this option is disabled */
+  disabled: PropTypes.bool,
 };

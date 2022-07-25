@@ -82,7 +82,7 @@ There are times when you might need to use only the graphical icon for a Puppet 
 4. Remove all instances of the `fill` attribute so that icons can be styled with CSS. You may also remove `clip-rule` attributes.
 5. Rename dasherized attributes like `fill-rule` with React-compatible properties like `fillRule`.
 6. Add class names to the different `path` segments (so the component can add the correct colors on light and dark backgrounds) for `rc-logo-bug`, `rc-logo-puppet`, and `rc-logo-product`.
-7. Add the icon to [logos.js](https://github.com/puppetlabs/design-system/blob/development/packages/react-components/source/react/library/logo/logos.js), using the same format with viewBox dimensions (from step 2) in a separate property.
+7. Add the icon to [logos.js](https://github.com/puppetlabs/design-system/blob/main/packages/react-components/source/react/library/logo/logos.js), using the same format with viewBox dimensions (from step 2) in a separate property.
 
 ## Related
 

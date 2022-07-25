@@ -55,6 +55,15 @@ By default, code renders as inline type. Pass `type="block"` to change the styli
 and it can be multiple lines`}</Code>
 ```
 
+### Copyable
+
+Add a copy button to a code block with the `copyable` prop.
+
+```jsx
+<Code type="block" copyable>{`This code is formatted as type "block"
+and can by copied with the copy button`}</Code>
+```
+
 ## Related
 
 - [Content](#/React%20Components/Content)

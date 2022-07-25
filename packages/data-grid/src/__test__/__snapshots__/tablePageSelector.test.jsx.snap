@@ -13,7 +13,7 @@ exports[`Page Navigation Check only arrow render 1`] = `
     <Button
       as="button"
       className="rc-page-selector-button"
-      disabled={false}
+      disabled={true}
       forwardRefAs="ref"
       icon="chevron-left"
       iconSize="medium"
@@ -26,8 +26,8 @@ exports[`Page Navigation Check only arrow render 1`] = `
     >
       <button
         aria-label="chevron-left"
-        className="rc-button rc-button-transparent rc-button-bold rc-button-icon rc-button-empty rc-page-selector-button"
-        disabled={false}
+        className="rc-button rc-button-transparent rc-button-bold rc-button-disabled rc-button-icon rc-button-empty rc-page-selector-button"
+        disabled={true}
         onClick={[Function]}
         type="button"
       >

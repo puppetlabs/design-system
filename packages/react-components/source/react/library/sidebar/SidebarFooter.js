@@ -6,6 +6,7 @@ import Heading from '../heading';
 import Text from '../text';
 import Avatar from '../avatar';
 import Button from '../button';
+import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 
 const propTypes = {
   /** The root HTML element  */
@@ -20,6 +21,8 @@ const propTypes = {
   profileIcon: PropTypes.node,
   /** Boolean flag to enable or disable (default) signout button */
   enableSignout: PropTypes.bool,
+  /** Sign-out icon tooltip text */
+  signoutTooltip: PropTypes.string,
   /** Signout callback function */
   onSignout: PropTypes.func,
 };
@@ -31,6 +34,7 @@ const defaultProps = {
   minimized: false,
   profileIcon: null,
   enableSignout: false,
+  signoutTooltip: 'Sign out',
   onSignout: () => {},
 };
 
@@ -41,12 +45,14 @@ const SidebarFooter = ({
   minimized,
   profileIcon: profileIconProp,
   enableSignout,
+  signoutTooltip,
   onSignout,
   ...rest
 }) => {
   const Component = as;
   let meta;
   let signout;
+  const clickable = Boolean(rest.onClick) || as !== defaultProps.as;
 
   if (!minimized) {
     meta = (
@@ -64,12 +70,14 @@ const SidebarFooter = ({
 
     if (enableSignout) {
       signout = (
-        <Button
-          className="rc-sidebar-footer-button-signout"
-          onClick={onSignout}
-        >
-          <Icon type="sign-out" className="rc-sidebar-footer-signout-icon" />
-        </Button>
+        <TooltipHoverArea anchor="top" tooltip={signoutTooltip}>
+          <Button
+            className="rc-sidebar-footer-button-signout"
+            onClick={onSignout}
+          >
+            <Icon type="sign-out" className="rc-sidebar-footer-signout-icon" />
+          </Button>
+        </TooltipHoverArea>
       );
     }
   }
@@ -79,7 +87,7 @@ const SidebarFooter = ({
       <Component
         className={classnames('rc-sidebar-footer-button-user', {
           'rc-sidebar-footer-button-minimized': minimized,
-          'rc-sidebar-footer-clickable': rest.onClick,
+          'rc-sidebar-footer-clickable': clickable,
         })}
         {...rest}
       >

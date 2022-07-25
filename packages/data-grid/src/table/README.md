@@ -4,15 +4,21 @@ The Data Grid package was developed to aid in the structuring of data. By using 
 
 To add the Data Grid package to your library run
 
-**npm install @puppet/Data-Grid**
+```markdown
+npm install @puppet/data-grid
+```
 
 In your .js file which will be rendering the Data Grid Table component you can reference your node modules instance with the following command:
 
-**import { Table } from '@puppet/data-grid';**
+```markdown
+import { Table } from '@puppet/data-grid';
+```
 
 In your app level index.scss add the command below to import the Data Grids styles
 
-**@import '~@puppet/data-grid/dist/index';**
+```markdown
+import '~@puppet/data-grid/dist/index';
+```
 
 ### Basic use
 
@@ -647,6 +653,7 @@ const data = [
     sorted: 'asc',
     Link: <Link href="https://puppet.com/">Help to fix</Link>,
     unique: 6,
+    selectable: false,
   },
   {
     eventType: 'Virus/Malware',
@@ -662,6 +669,7 @@ const data = [
     detections: 634,
     Link: <Link href="https://puppet.com/">Help to fix</Link>,
     unique: 2,
+    disabled: true
   },
   {
     eventType: 'URL Filtering',
@@ -669,6 +677,8 @@ const data = [
     detections: 599,
     Link: <Link href="https://puppet.com/">Help to fix</Link>,
     unique: 3,
+    disabled: true,
+    selectable: true,
   },
   {
     eventType: 'Web Reputation',
@@ -977,4 +987,247 @@ const columns = [
 ];
 
 <Table data={data} columns={columns} />;
+```
+
+### Selection and Pagination
+
+Once we start adding multiple patterns together it is very easy to start confusing the end user. Thats why in the data grid when selecting and paginating together we treat each page header click as page specific and use additional badges in the header for cross pagination selecting and clearing. It's important to remember that a column header checkbox is used to show the state of the page visible. Intermediate and check all states on one page should not be shown on the next.
+
+```jsx
+import { Link, Heading } from '@puppet/react-components';
+import { TablePageSelector, TableFooter } from '../index';
+
+const data = [
+  {
+    eventType: 'Application Control',
+    affectedDevices: 0,
+    detections: 1000,
+    sorted: 'asc',
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 6,
+  },
+  {
+    eventType: 'Virus/Malware',
+    affectedDevices: 20,
+    detections: 634,
+    unique: 1,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+  },
+  {
+    eventType: 'Spyware/Grayware',
+    affectedDevices: 20,
+    detections: 634,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 2,
+  },
+  {
+    eventType: 'URL Filtering',
+    affectedDevices: 16,
+    detections: 599,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 3,
+  },
+  {
+    eventType: 'Web Reputation',
+    affectedDevices: 15,
+    detections: 598,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 4,
+  },
+  {
+    eventType: 'Network Virus',
+    affectedDevices: 15,
+    detections: 497,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 5,
+  },
+
+  {
+    eventType: 'Application Controls',
+    affectedDevices: 0,
+    detections: 0,
+    Link: <Link href="https://puppet.com/">Help to fix</Link>,
+    unique: 7,
+  },
+];
+
+const columns = [
+  {
+    label: 'Event Type1',
+    dataKey: 'eventType',
+  },
+  { label: 'Affected Devices', dataKey: 'affectedDevices' },
+
+  { label: 'Detections', dataKey: 'detections' },
+  { label: 'Linked field', dataKey: 'Link' },
+];
+
+class StatefulParent extends React.Component {
+  constructor() {
+    super();
+    this.state = { CurrentPage: 1, checkAll: false, data, indeterminateState: false, showSelectAllBadge: false, Pages: {arrayOfArrays: []}, nodesPerPage: 5 };
+    this.pageSelectFunc = this.pageSelectFunc.bind(this);
+    this.breakIntoMultiplePages = this.breakIntoMultiplePages.bind(this);
+    this.onRowSelected = this.onRowSelected.bind(this);
+    this.onHeaderSelected = this.onHeaderSelected.bind(this);
+    this.onSelectAllBadgeClick = this.onSelectAllBadgeClick.bind(this);
+    this.onClearAllBadgeClick = this.onClearAllBadgeClick.bind(this);
+  }
+
+  componentWillMount() {
+    const dataToPages =  this.breakIntoMultiplePages(data, 5)
+    this.setState({Pages: dataToPages})
+  }
+
+  pageSelectFunc(newPage) {
+    const { CurrentPage, Pages } = this.state;
+    this.checkIfIndeterminateState(Pages)
+    this.setState({ CurrentPage: newPage });
+  }
+
+  breakIntoMultiplePages(originalArray, pageSize) {
+    const arrayOfArrays = [];
+    for (let i = 0; i < originalArray.length; i += pageSize) {
+      arrayOfArrays.push(originalArray.slice(i, i + pageSize));
+    }
+    return { arrayOfArrays };
+  }
+
+  checkIfIndeterminateState(Pages) {
+    const { data, indeterminateState, checkAll, CurrentPage  } = this.state;
+
+    let selectedOnCurrentPage = Pages.arrayOfArrays[CurrentPage -1].filter(e => e.selected === true);
+    let currentPageLength = Pages.arrayOfArrays[CurrentPage -1].length
+
+    if (selectedOnCurrentPage.length > 0 && indeterminateState === false && checkAll === false) {
+      this.setState({ indeterminateState: true });
+    } else if (
+      (selectedOnCurrentPage.length === 0 && indeterminateState === true) ||
+      (selectedOnCurrentPage.length === 0 && checkAll === true)
+    ) {
+      this.setState({ indeterminateState: false, checkAll: false });
+    }
+    if (selectedOnCurrentPage.length === currentPageLength && checkAll === false) {
+      this.setState({ indeterminateState: false, checkAll: true });
+    }
+  }
+
+  onHeaderSelected(checked) {
+    const { data: stateData, indeterminateState, show, showSelectAllBadge, CurrentPage, Pages } = this.state;
+
+    this.setState({ indeterminateState: false, checkAll: checked });
+
+    const x = Pages.arrayOfArrays[CurrentPage - 1]
+    let newObj = stateData;
+
+    x.forEach((row) => {
+      const y = stateData.findIndex((stateRow) => stateRow.unique === row.unique )
+      const updatedObj = { ...stateData[y], selected: checked };
+      newObj.splice(y,1, updatedObj);
+    })
+
+    this.setState({data: newObj})
+
+  }
+
+
+  onRowSelected(checked, row) {
+    const { data: stateData, checkAll, Pages } = this.state;
+
+    if (checkAll) {
+      this.setState({ checkAll: false });
+    }
+    // find the index of object from array that you want to update
+    const objIndex = stateData.findIndex(obj => obj.unique === row.unique);
+    // make new object of updated object.
+    const updatedObj = { ...stateData[objIndex], selected: checked };
+    // make final new array of objects by combining updated object.
+    const updatedData = [
+      ...stateData.slice(0, objIndex),
+      updatedObj,
+      ...stateData.slice(objIndex + 1),
+    ];
+
+    this.checkIfIndeterminateState(Pages)
+
+    this.setState({ data: updatedData });
+  }
+
+  onSelectAllBadgeClick(){
+    const { data } = this.state;
+    const x = data
+    for (let i = 0; i < x.length; i += 1) {
+      x[i].selected = true;
+    }
+    this.setState({data: x})
+  }
+
+  onClearAllBadgeClick(){
+    const { data } = this.state;
+    const x = data
+    for (let i = 0; i < x.length; i += 1) {
+      x[i].selected = false;
+    }
+    this.setState({data: x})
+  }
+
+  render() {
+    const {
+      CurrentPage,
+      data:stateData,
+      indeterminateState,
+      checkAll: headerCheckboxState,
+      nodesPerPage
+      } = this.state;
+
+    const Pages = this.breakIntoMultiplePages(stateData, 5)
+    const PageLength = Pages.arrayOfArrays[CurrentPage -1].length
+    const PageCount = Pages.arrayOfArrays.length;
+    const renderPages = CurrentPage - 1;
+    const currentNode = `${nodesPerPage * CurrentPage}`;
+    const tableFooterText = `${currentNode -
+      PageLength +
+      1} - ${currentNode} of ${stateData.length} nodes`;
+    const selectAllBadgeText = `Select all ${stateData.length} nodes`
+
+    this.checkIfIndeterminateState(Pages);
+    const selectedCount = stateData.filter(obj => obj.selected === true).length
+
+    let rowCountText = `${stateData.length} nodes`
+    if( selectedCount > 0 ){
+      rowCountText = `${selectedCount} of ${stateData.length} nodes selected`
+    }
+
+    return (
+      <div>
+      <Table.TableHeader
+      showSelectAllBadge={selectedCount > 0 && selectedCount !== stateData.length }
+      rowCountText={rowCountText}
+      onSelectAllBadgeClick={this.onSelectAllBadgeClick}
+      showClearAllBadge={selectedCount === stateData.length}
+      onClearAllBadgeClick={this.onClearAllBadgeClick}
+      selectAllBadgeText={selectAllBadgeText}/>
+        <Table
+        data={Pages.arrayOfArrays[renderPages]}
+        columns={columns}
+        selectable
+        onRowChecked={this.onRowSelected}
+        headerIndeterminateState={indeterminateState}
+        checkIfIndeterminateState={this.checkIfIndeterminateState}
+        headerCheckState={headerCheckboxState}
+        onHeaderChecked={this.onHeaderSelected}
+        />
+        <TableFooter>
+          <TablePageSelector
+            paginationCountText={tableFooterText}
+            currentPage={CurrentPage}
+            pageCount={PageCount}
+            updatePage={ this.pageSelectFunc}
+          />
+        </TableFooter>
+      </div>
+    );
+  }
+}
+<StatefulParent/>;
 ```

@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import classnames from 'classnames';
 import Modal from '../modal';
 import Button from '../button';
 
@@ -24,6 +25,8 @@ const propTypes = {
   onCancel: PropTypes.func,
   /** If true, confirm button will render with a loading spinner */
   confirmButtonLoading: PropTypes.bool,
+  /** Additional classes to add in addition to 'rc-modal' */
+  className: PropTypes.string,
 };
 const defaultProps = {
   title: '',
@@ -36,6 +39,7 @@ const defaultProps = {
   onConfirm: () => {},
   onCancel: () => {},
   confirmButtonLoading: false,
+  className: '',
 };
 
 const ConfirmationModal = ({
@@ -49,8 +53,13 @@ const ConfirmationModal = ({
   onConfirm,
   onCancel,
   confirmButtonLoading,
+  className,
 }) => (
-  <Modal onClose={onCancel} isOpen={isOpen}>
+  <Modal
+    className={classnames('rc-confirmation-modal', className)}
+    onClose={onCancel}
+    isOpen={isOpen}
+  >
     {title && <Modal.Title>{title}</Modal.Title>}
     {description}
     <Modal.Actions>

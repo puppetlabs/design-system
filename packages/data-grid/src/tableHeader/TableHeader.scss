@@ -1,7 +1,50 @@
 @import '@puppet/sass-variables/_index';
 
-.dg-table-row-count {
-  margin-right: 20px;
-  margin-bottom: 16px;
-  font-weight: $puppet-type-weight-heavy;
+
+
+.dg-table-header-content-container {
+  display: flex;
+  padding-bottom: 16px;
+
+  .dg-table-header-actions {
+    display: flex;
+    margin-left: auto;
+    .dg-table-action {
+      margin-right: 8px;
+    }
+  }
+
+  .dg-table-header-search {
+    max-width: 360px;
+  }
+
+  .dg-table-header-vertical-line-separator {
+    border-left: 1px solid $puppet-n400;
+    height: 33px;
+    margin-right: 16px;
+    margin-left: 16px;
+  }
+
+  .dg-quick-filter {
+    padding-bottom: 0px !important;
+  }
+
+  .dg-table-header-tag-builder {
+    margin-bottom: 8px;
+  }
+
+}
+
+.dg-table-header-text-container{
+  display: flex;
+  margin-bottom: 11px;
+
+  .dg-table-row-count {
+    margin-right: 20px;
+    font-weight: $puppet-type-weight-heavy;
+  }
+
+ .dg-table-header-select-all{
+  cursor: pointer;
+ }
 }

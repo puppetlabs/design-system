@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import OptionMenuList from '../../internal/option-menu-list';
-import { anchorOrientation } from '../../helpers/customPropTypes';
-import Icon from '../icon';
+import {
+  anchorOrientation,
+  optionMenuItemShape,
+} from '../../helpers/customPropTypes';
 import Input from '../input';
 import SelectTarget from './SelectTarget';
 import { getDropdownPosition, focus, cancelEvent } from '../../helpers/statics';
@@ -23,16 +25,13 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   /** An Array of select options */
   options: PropTypes.arrayOf(
-    PropTypes.shape({
-      /** Select option value */
-      value: PropTypes.string.isRequired,
-      /** Select option label */
-      label: PropTypes.string.isRequired,
-      /** Optional icon associated with this option */
-      icon: PropTypes.oneOf(Icon.AVAILABLE_ICONS),
-      /** Optional custom icon associated with this option */
-      svg: PropTypes.element,
-    }),
+    PropTypes.oneOfType([
+      PropTypes.shape(optionMenuItemShape),
+      PropTypes.shape({
+        ...optionMenuItemShape,
+        value: PropTypes.arrayOf(PropTypes.shape(optionMenuItemShape)),
+      }),
+    ]),
   ),
   /** Currently selected value or values */
   value: PropTypes.oneOfType([
@@ -130,8 +129,8 @@ class Select extends Component {
     this.getOptions = this.getOptions.bind(this);
   }
 
-  static getDerivedStateFromProps(props, state) {
-    if (isControlled(props) || !state.open) {
+  static getDerivedStateFromProps(props) {
+    if (isControlled(props)) {
       return {
         listValue: props.value,
       };
@@ -283,37 +282,46 @@ class Select extends Component {
   }
 
   getButtonLabel() {
-    const { type, options, value, placeholder } = this.props;
+    const { type, value, placeholder } = this.props;
+
     if (!value || value.length === 0) {
       return placeholder;
     }
 
     if (type === MULTISELECT) {
-      const selectedOptions = options
+      const selectedOptions = this.getOptions()
         .filter(option => value.includes(option.value))
         .map(option => option.selectedLabel || option.label);
 
       return selectedOptions.join(', ');
     }
 
-    const selectedOption = options.find(option => option.value === value);
+    const selectedOption = this.getOptions().find(
+      option => option.value === value,
+    );
+
+    if (!selectedOption) {
+      return placeholder;
+    }
 
     return selectedOption.label;
   }
 
   getOptions() {
     const { options, value, type, onFilter } = this.props;
-    let filteredOptions = options;
+    let opts = options
+      .map(opt => (Array.isArray(opt.value) ? opt.value : opt))
+      .flat();
 
     // If the ingesting app uses the onFilter event handler, it should provide the filtered options
     // Otherwise, let's filter the presumably static list here
     if (value && type === AUTOCOMPLETE && !onFilter) {
-      filteredOptions = options.filter(
+      opts = opts.filter(
         option => option.value.toLowerCase().indexOf(value.toLowerCase()) > -1,
       );
     }
 
-    return filteredOptions;
+    return opts;
   }
 
   closeAndFocusButton() {
@@ -356,22 +364,22 @@ class Select extends Component {
       getButtonLabel,
       onKeyDown,
       onFocusItem,
-      getOptions,
       open: onOpen,
     } = this;
     const { open, menuStyle, listValue, focusedIndex } = this.state;
     const {
-      name,
-      type,
-      disabled,
-      className,
-      style,
-      error,
-      value,
-      placeholder,
       applyImmediately,
-      required,
+      className,
+      disabled,
+      error,
       footer,
+      name,
+      options,
+      placeholder,
+      required,
+      style,
+      type,
+      value,
     } = this.props;
 
     let input;
@@ -457,7 +465,7 @@ class Select extends Component {
           multiple={type === MULTISELECT}
           autocomplete={type === AUTOCOMPLETE}
           showCancel={type === MULTISELECT && !applyImmediately}
-          options={getOptions()}
+          options={options}
           selected={listValue}
           focusedIndex={focusedIndex}
           aria-labelledby={`${name}-label`}

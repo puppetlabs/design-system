@@ -3,6 +3,7 @@ import 'regenerator-runtime/runtime';
 
 import ActionSelect from './react/library/action-select';
 import Alert from './react/library/alert';
+import Alerts from './react/library/alerts';
 import Avatar from './react/library/avatar';
 import Badge from './react/library/badge';
 import Breadcrumb from './react/library/breadcrumb';
@@ -25,6 +26,8 @@ import Loading from './react/library/loading';
 import Logo from './react/library/logo';
 import Modal from './react/library/modal';
 import Popover from './react/library/popover';
+import Portal from './react/library/portal';
+import Stepper from './react/library/stepper';
 import RadioButton from './react/library/radiobutton';
 import Select from './react/library/select';
 import SidePanel from './react/library/sidepanel';
@@ -35,12 +38,13 @@ import Tabs from './react/library/tabs';
 import Tag from './react/library/tag';
 import Text from './react/library/text';
 import Toolbar from './react/library/toolbar';
-import TooltipHoverArea from './react/library/tooltips/TooltipHoverArea';
+import TooltipHoverArea from './react/library/tooltips';
 import Overlay from './react/library/overlay';
 
 export {
   ActionSelect,
   Alert,
+  Alerts,
   Avatar,
   Badge,
   Breadcrumb,
@@ -64,6 +68,8 @@ export {
   Modal,
   Overlay,
   Popover,
+  Portal,
+  Stepper,
   RadioButton,
   Select,
   SidePanel,

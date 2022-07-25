@@ -49,8 +49,12 @@ const filters = [
       },
     ],
   },
+  {
+    fieldLabel: 'Empty filter',
+    field: 'Empty-array',
+    options: [],
+  },
 ];
-
 
 <QuickFilter
 filters={filters}

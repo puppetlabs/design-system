@@ -1,19 +1,19 @@
 @import '~@puppet/sass-variables';
 
-.dg-tag-bulder-container {
-    display: flex;
-   
-    .dg-tag-container {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 16px;
-    
-        .rc-tag {
-            margin-right: 8px !important;
-        }
-    }
+.dg-tag-builder-container {
+  display: flex;
 
-    .dg-tag-remove-all-button {
-        margin: 8px 0 8px 0;
+  .dg-tag-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    .rc-tag {
+      margin-right: 8px !important;
     }
+  }
+
+  .dg-tag-remove-all-button {
+    margin: 8px 0 8px 0;
+  }
 }

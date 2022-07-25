@@ -3,21 +3,77 @@ $puppet-tooltip-hint-color: $puppet-n400 !default;
 $puppet-tooltip-hint-padding: $puppet-common-spacing-base
   $puppet-common-spacing-base * 2 !default;
 $puppet-tooltip-hint-radius: $puppet-common-border-radius !default;
-$puppet-tooltip-hint-elevation: 24 !default;
+$puppet-tooltip-hint-elevation: 1000 !default;
 
-.rc-tooltip-area {
+.rc-tooltip,
+.rc-tooltip[data-popper-reference-hidden] {
+  @include puppet-type-small();
+  background-color: $puppet-tooltip-hint-bg;
+  border-radius: $puppet-tooltip-hint-radius;
+  color: $puppet-tooltip-hint-color;
+  max-width: 200px;
+  opacity: 0;
+  padding: $puppet-tooltip-hint-padding;
+  position: absolute;
+  text-align: center;
+  transition: opacity, $puppet-common-transition-duration ease-in-out;
+  visibility: hidden;
+  z-index: $puppet-tooltip-hint-elevation;
+}
+
+.rc-tooltip[data-show] {
+  opacity: 1;
+  transition: opacity $puppet-common-transition-duration ease-in-out 0s;
+  visibility: visible;
+}
+
+/* stylelint-disable-next-line */
+#rc-tooltip-arrow,
+#rc-tooltip-arrow::before {
+  background: inherit;
+  height: 6px;
+  position: absolute;
+  text-align: initial;
+  width: 6px;
+}
+
+.rc-tooltip-reference {
   display: inline-block;
 }
 
-.rc-tooltip {
-  @include puppet-type-small();
+/* stylelint-disable-next-line */
+#rc-tooltip-arrow {
+  visibility: hidden;
+}
 
-  background: $puppet-tooltip-hint-bg;
-  border-radius: $puppet-tooltip-hint-radius;
-  color: $puppet-tooltip-hint-color;
-  overflow: hidden;
-  padding: $puppet-tooltip-hint-padding;
-  position: fixed;
-  white-space: nowrap;
-  z-index: $puppet-tooltip-hint-elevation;
+/* stylelint-disable-next-line */
+#rc-tooltip-arrow::before {
+  content: '';
+  transform: rotate(45deg);
+  visibility: visible;
+}
+
+/* stylelint-disable-next-line */
+#rc-tooltip-arrow[data-hide] {
+  visibility: hidden;
+}
+
+/* stylelint-disable-next-line */
+.rc-tooltip[data-popper-placement^='top'] > #rc-tooltip-arrow {
+  bottom: -3px;
+}
+
+/* stylelint-disable-next-line */
+.rc-tooltip[data-popper-placement^='bottom'] > #rc-tooltip-arrow {
+  top: -3px;
+}
+
+/* stylelint-disable-next-line */
+.rc-tooltip[data-popper-placement^='left'] > #rc-tooltip-arrow {
+  right: -3px;
+}
+
+/* stylelint-disable-next-line */
+.rc-tooltip[data-popper-placement^='right'] > #rc-tooltip-arrow {
+  left: -3px;
 }
