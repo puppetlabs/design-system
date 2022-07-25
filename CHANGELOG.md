@@ -1,3 +1,7 @@
+# react-components 5.27.2 (2022-07-25)
+
+- [TableFooter] Adding custom rows per page prop to TableFooter (by [@cathal41](https://github.com/cathal41) in [#403](https://github.com/puppetlabs/design-system/pull/403))
+
 # react-components 5.27.1 (2021-04-08)
 
 - [Overlay] Add mechanism for force updating Overlay (by [@mardotio](https://github.com/mardotio) in [#403](https://github.com/puppetlabs/design-system/pull/403))

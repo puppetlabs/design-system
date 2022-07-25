@@ -95,6 +95,12 @@ const propTypes = {
   /** The number of nearest neighbors of the currently selected page that are shown in the numbres list. */
   delta: PropTypes.number,
   children: PropTypes.node,
+  rowsPerPageOptions: PropTypes.arrayOf(
+    PropTypes.shape({
+      value: PropTypes.number,
+      label: PropTypes.string,
+    }),
+  ),
 };
 
 const defaultProps = {
@@ -109,13 +115,13 @@ const defaultProps = {
   updatePage: () => {},
   delta: 1,
   children: undefined,
+  rowsPerPageOptions: [
+    { value: 5, label: '5' },
+    { value: 10, label: '10' },
+    { value: 25, label: '25' },
+    { value: 50, label: '50' },
+  ],
 };
-const rowsPerPageDefaultOptions = [
-  { value: 5, label: '5' },
-  { value: 10, label: '10' },
-  { value: 25, label: '25' },
-  { value: 50, label: '50' },
-];
 
 function TableFooter({
   children,
@@ -129,6 +135,7 @@ function TableFooter({
   pageCount,
   updatePage,
   delta,
+  rowsPerPageOptions,
 }) {
   return (
     <div className="dg-table-footer-container">
@@ -158,7 +165,7 @@ function TableFooter({
                 </Text>
                 <ButtonSelect
                   className="dg-table-footer-rows-per-page-select"
-                  options={rowsPerPageDefaultOptions}
+                  options={rowsPerPageOptions}
                   value={rowsPerPageValue}
                   type="secondary"
                   onChange={onRowPerPageSelect}
