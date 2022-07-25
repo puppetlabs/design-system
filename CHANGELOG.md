@@ -1,4 +1,4 @@
-# react-components 5.27.2 (2022-07-25)
+## data-grid 0.6.11 (2022-07-25)
 
 - [TableFooter] Adding custom rows per page prop to TableFooter (by [@cathal41](https://github.com/cathal41) in [#403](https://github.com/puppetlabs/design-system/pull/589))
 
