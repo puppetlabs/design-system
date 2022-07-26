@@ -1,3 +1,7 @@
+## data-grid 0.6.11 (2022-07-25)
+
+- [TableFooter] Adding custom rows per page prop to TableFooter (by [@cathal41](https://github.com/cathal41) in [#403](https://github.com/puppetlabs/design-system/pull/589))
+
 ## data-grid 0.6.10 (2022-07-08)
 
 - Allow React 18 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#583](https://github.com/puppetlabs/design-system/pull/583))
