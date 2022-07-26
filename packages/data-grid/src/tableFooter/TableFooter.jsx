@@ -116,7 +116,12 @@ const defaultProps = {
   updatePage: () => {},
   delta: 1,
   children: undefined,
-  rowsPerPageOptions: [],
+  rowsPerPageOptions: [
+    { value: 5, label: '5' },
+    { value: 10, label: '10' },
+    { value: 25, label: '25' },
+    { value: 50, label: '50' },
+  ],
 };
 
 function TableFooter({
@@ -133,16 +138,6 @@ function TableFooter({
   delta,
   rowsPerPageOptions,
 }) {
-  const rowsPerPageOptionValues =
-    rowsPerPageOptions.length > 0
-      ? rowsPerPageOptions
-      : [
-          { value: 5, label: '5' },
-          { value: 10, label: '10' },
-          { value: 25, label: '25' },
-          { value: 50, label: '50' },
-        ];
-
   return (
     <div className="dg-table-footer-container">
       {children === undefined ? (
@@ -171,7 +166,7 @@ function TableFooter({
                 </Text>
                 <ButtonSelect
                   className="dg-table-footer-rows-per-page-select"
-                  options={rowsPerPageOptionValues}
+                  options={rowsPerPageOptions}
                   value={rowsPerPageValue}
                   type="secondary"
                   onChange={onRowPerPageSelect}
