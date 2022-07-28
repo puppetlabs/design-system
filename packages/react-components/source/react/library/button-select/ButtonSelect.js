@@ -76,11 +76,11 @@ const propTypes = {
   width: PropTypes.string,
   /** Optional inline style passed to the outer element */
   style: PropTypes.shape({}),
-  /** Optional tooltip that on hover displays the value of the currently selected option*/
+  /** Optional tooltip that on hover displays the value of the currently selected option */
   tooltip: PropTypes.string,
   /** Anchor orientation of the button tooltip */
   tooltipAnchor: PropTypes.string,
-   /** Allows for custom disablement of the button tooltip */
+  /** Allows for custom disablement of the button tooltip */
   tooltipDisabled: PropTypes.bool,
 };
 
@@ -103,7 +103,7 @@ const defaultProps = {
   width: null,
   style: {},
   tooltip: null,
-  tooltipAnchor: "top",
+  tooltipAnchor: 'top',
   tooltipDisabled: false,
 };
 
