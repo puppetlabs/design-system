@@ -102,7 +102,7 @@ const defaultProps = {
   className: '',
   width: null,
   style: {},
-  tooltip: null,
+  tooltip: undefined,
   tooltipAnchor: 'top',
   tooltipDisabled: false,
 };
