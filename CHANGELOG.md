@@ -1,3 +1,7 @@
+## react-components 5.33.9 (2022-07-28)
+
+- Adding optional tooltip to ButtonSelect component (by [@alex501212](https://github.com/alex501212) in [#591](https://github.com/puppetlabs/design-system/pull/591))
+
 ## data-grid 0.6.11 (2022-07-25)
 
 - [TableFooter] Adding custom rows per page prop to TableFooter (by [@cathal41](https://github.com/cathal41) in [#403](https://github.com/puppetlabs/design-system/pull/589))
