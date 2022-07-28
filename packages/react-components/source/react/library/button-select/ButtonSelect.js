@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Button from '../button/Button';
+import TooltipHoverArea from '../tooltips/TooltipHoverArea';
 import OptionMenuList from '../../internal/option-menu-list';
 import { anchorOrientation } from '../../helpers/customPropTypes';
 import Icon from '../icon';
@@ -75,6 +76,12 @@ const propTypes = {
   width: PropTypes.string,
   /** Optional inline style passed to the outer element */
   style: PropTypes.shape({}),
+  /** Optional tooltip that on hover displays the value of the currently selected option*/
+  tooltip: PropTypes.string,
+  /** Anchor orientation of the button tooltip */
+  tooltipAnchor: PropTypes.string,
+   /** Allows for custom disablement of the button tooltip */
+  tooltipDisabled: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -95,6 +102,9 @@ const defaultProps = {
   className: '',
   width: null,
   style: {},
+  tooltip: null,
+  tooltipAnchor: "top",
+  tooltipDisabled: false,
 };
 
 const isControlled = ({ multiple, applyImmediately }) =>
@@ -246,6 +256,9 @@ class ButtonSelect extends Component {
       width,
       style,
       value,
+      tooltip,
+      tooltipAnchor,
+      tooltipDisabled,
     } = this.props;
 
     return (
@@ -264,29 +277,35 @@ class ButtonSelect extends Component {
           this.container = container;
         }}
       >
-        <Button
-          className={classNames('rc-button-select-target', {
-            'rc-button-select-target-multiple': multiple,
-            'rc-button-select-target-selected': value && value.length !== 0,
-          })}
-          type={type}
-          weight={weight}
-          icon={icon}
-          trailingIcon={icon ? null : 'chevron-down'}
-          style={width ? { width, textAlign: 'left' } : null}
-          disabled={disabled}
-          loading={loading}
-          aria-haspopup="true"
-          aria-controls={`${id}-menu`}
-          aria-expanded={open}
-          onClick={onClickButton}
-          innerFocus={innerFocus}
-          ref={button => {
-            this.button = button;
-          }}
+        <TooltipHoverArea
+          tooltip={tooltip}
+          anchor={tooltipAnchor}
+          disabled={!tooltip || tooltipDisabled}
         >
-          {this.getButtonLabel()}
-        </Button>
+          <Button
+            className={classNames('rc-button-select-target', {
+              'rc-button-select-target-multiple': multiple,
+              'rc-button-select-target-selected': value && value.length !== 0,
+            })}
+            type={type}
+            weight={weight}
+            icon={icon}
+            trailingIcon={icon ? null : 'chevron-down'}
+            style={width ? { width, textAlign: 'left' } : null}
+            disabled={disabled}
+            loading={loading}
+            aria-haspopup="true"
+            aria-controls={`${id}-menu`}
+            aria-expanded={open}
+            onClick={onClickButton}
+            innerFocus={innerFocus}
+            ref={button => {
+              this.button = button;
+            }}
+          >
+            {this.getButtonLabel()}
+          </Button>
+        </TooltipHoverArea>
         <OptionMenuList
           id={`${id}-menu`}
           multiple={multiple}
