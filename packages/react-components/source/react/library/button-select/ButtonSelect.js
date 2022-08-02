@@ -277,11 +277,37 @@ class ButtonSelect extends Component {
           this.container = container;
         }}
       >
-        <TooltipHoverArea
-          tooltip={tooltip}
-          anchor={tooltipAnchor}
-          disabled={!tooltip || tooltipDisabled}
-        >
+        {tooltip ? (
+          <TooltipHoverArea
+            tooltip={tooltip}
+            anchor={tooltipAnchor}
+            disabled={tooltipDisabled}
+          >
+            <Button
+              className={classNames('rc-button-select-target', {
+                'rc-button-select-target-multiple': multiple,
+                'rc-button-select-target-selected': value && value.length !== 0,
+              })}
+              type={type}
+              weight={weight}
+              icon={icon}
+              trailingIcon={icon ? null : 'chevron-down'}
+              style={width ? { width, textAlign: 'left' } : null}
+              disabled={disabled}
+              loading={loading}
+              aria-haspopup="true"
+              aria-controls={`${id}-menu`}
+              aria-expanded={open}
+              onClick={onClickButton}
+              innerFocus={innerFocus}
+              ref={button => {
+                this.button = button;
+              }}
+            >
+              {this.getButtonLabel()}
+            </Button>
+          </TooltipHoverArea>
+        ) : (
           <Button
             className={classNames('rc-button-select-target', {
               'rc-button-select-target-multiple': multiple,
@@ -305,7 +331,7 @@ class ButtonSelect extends Component {
           >
             {this.getButtonLabel()}
           </Button>
-        </TooltipHoverArea>
+        )}
         <OptionMenuList
           id={`${id}-menu`}
           multiple={multiple}
