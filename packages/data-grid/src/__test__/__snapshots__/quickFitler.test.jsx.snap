@@ -121,6 +121,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           }
           placeholder="All Operating System"
           style={Object {}}
+          tooltipAnchor="top"
+          tooltipDisabled={false}
           type="tertiary"
           value={null}
           weight="bold"
@@ -473,6 +475,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           }
           placeholder="Puppet installed"
           style={Object {}}
+          tooltipAnchor="top"
+          tooltipDisabled={false}
           type="tertiary"
           value={null}
           weight="bold"
@@ -805,6 +809,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           }
           placeholder="Empty filter"
           style={Object {}}
+          tooltipAnchor="top"
+          tooltipDisabled={false}
           type="tertiary"
           value={null}
           weight="bold"
