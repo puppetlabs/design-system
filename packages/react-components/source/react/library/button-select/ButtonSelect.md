@@ -212,6 +212,30 @@ const options = [
 />;
 ```
 
+### Tooltip
+
+Use the `tooltip` prop to add a tooltip to the button.
+
+```jsx
+const options = [
+  { value: 'one', label: 'One' },
+  { value: 'two', label: 'Two' },
+  { value: 'three', label: 'Three' },
+  { value: 'four', label: 'Four' },
+];
+
+<ButtonSelect
+  tooltip={state.value}
+  tooltipAnchor="top"
+  options={options}
+  value={state.value}
+  onChange={value => {
+    console.log('New Value:', value);
+    setState({ value });
+  }}
+/>;
+```
+
 ## Option properties
 
 ### Custom selected labels
