@@ -4,6 +4,8 @@ import classNames from 'classnames';
 import Button from '../button';
 import Text from '../text';
 
+import AddTagFilter from './AddTagFilter';
+
 const propTypes = {
   /** Tag text or other content */
   label: node.isRequired,
@@ -64,6 +66,7 @@ const Tag = ({
   );
 };
 
+Tag.Filter = AddTagFilter;
 Tag.propTypes = propTypes;
 Tag.defaultProps = defaultProps;
 

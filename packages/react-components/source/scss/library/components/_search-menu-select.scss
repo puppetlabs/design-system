@@ -1,0 +1,84 @@
+.rc-search-menu {
+	display: flex;
+	flex-direction: column;
+	max-width: 500px;
+	min-width: 250px;
+	max-height: 350px;
+	
+	position: absolute;
+	z-index: 10;
+	background-color: $puppet-white;
+	border: 1px solid $puppet-n400;
+	border-radius: $puppet-common-border-radius;
+
+	.rc-search-menu-search{
+		display: flex;
+		flex-direction: column;
+		gap: $puppet-common-spacing-base * 3;
+		padding: $puppet-common-spacing-base * 3;
+	}
+	.rc-search-menu-list{
+		max-height: 250px;
+		overflow-y: auto;
+		padding-left: $puppet-common-spacing-base * 3;
+		padding-right: $puppet-common-spacing-base * 3;
+	}
+	.rc-search-menu-group{
+		display: grid;
+	}
+	.rc-search-menu-list-group {
+		min-height: $puppet-common-spacing-base * 13;
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		flex-grow: 1;
+		border-top: 1px solid $puppet-n300;
+
+		.rc-heading>.rc-icon {
+			float: right;
+		}
+	}
+
+	.rc-search-menu-list-selected-text {
+		display: flex;
+		flex-direction: row;
+		gap: $puppet-common-spacing-base * 2;
+	}
+
+	.rc-search-menu-group-items {
+		padding-bottom: $puppet-common-spacing-base * 3;
+		display: flex;
+		flex-direction: column;
+		gap: $puppet-common-spacing-base * 3;
+	}
+
+	.rc-search-menu-group-container {
+		display: flex;
+		flex-direction: column;
+		gap: $puppet-common-spacing-base * 3;
+
+		&.columns {
+			display: grid;
+			grid-auto-flow: column;
+			grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+			grid-auto-columns: 100px;
+		}
+	}
+
+	.rc-search-menu-list-group-checkbox {
+		display: flex;
+		flex-direction: column;
+
+		.rc-checkbox-input {
+			align-items: unset;
+		}
+	}
+
+	.rc-search-menu-buttons{
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+		border-top: 1px solid $puppet-n400;
+		padding: $puppet-common-spacing-base * 2;
+	}
+}
