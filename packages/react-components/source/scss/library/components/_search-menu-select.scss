@@ -31,11 +31,18 @@
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
-		flex-grow: 1;
 		border-top: 1px solid $puppet-n300;
 
 		.rc-heading>.rc-icon {
 			float: right;
+		}
+	
+		&.rc-button-transparent:hover{
+					background-color: unset;
+					border: unset;
+					border-top: 1px solid $puppet-n300;
+					color: unset;
+					fill: unset;
 		}
 	}
 

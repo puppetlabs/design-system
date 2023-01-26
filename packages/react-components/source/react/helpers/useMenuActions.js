@@ -1,10 +1,11 @@
-import { useRef, useState, useCallback, useEffect } from 'react';
-import { focus, cancelEvent } from '../helpers/statics';
+import React, { useRef, useState, useCallback, useEffect } from 'react';
+import { focus, cancelEvent } from './statics';
 import { usePopper } from 'react-popper';
 import { uniqueId } from 'lodash';
 import classNames from 'classnames';
+import { ESC_KEY_CODE } from '../constants';
 
-const useMenuActions = ({className, onBlur }) => {
+const useMenuActions = ({className, onBlur, onEsc }) => {
 	/** Ref of the menu */
 	const [menuRef, setMenu] = useState(null);
 
@@ -59,39 +60,44 @@ const useMenuActions = ({className, onBlur }) => {
 		},
 	);
 
-	// Handle click outside (onBlur) events
+	// Handle click outside, escape, or onBlur events
 	useEffect(() => {
 		const handleClickOutside = (event) => {
 			const menu = document.getElementById(menuId);
-			if (!menu.contains(event.target)) {
+			if (!menu || !menu.contains(event.target)) {
 				onBlur && onBlur();
 			}
-			
 		};
 
+		const handleEscape = (event) => {
+			const escapeFunc = onEsc || onBlur;
+			if(event.keyCode === ESC_KEY_CODE){
+				escapeFunc && escapeFunc();
+			}
+		}
+
+		document.addEventListener('keydown', handleEscape, true);
 		document.addEventListener('click', handleClickOutside, true);
 		return () => {
+			document.removeEventListener('keydown', handleEscape, true);
 			document.removeEventListener('click', handleClickOutside, true);
 		};
 	}, [onBlur]);
 
 	// Focus on a node by id
-	const focusOnId = (id) => () => {
-		const node = document.getElementById(id);
+	const focusOnId = (node) => () => {
 		if (node) node.focus();
 	};
 
 	const focusMenu = focusOnId(menuRef);
 	const focusTrigger = focusOnId(triggerRef);
 
-	const Arrow = () => ( <span
+	const Arrow = () => (<span
                 id={`${className}-menu-arrow`}
                 style={styles.arrow}
                 {...attributes.arrow}
                 ref={setArrow}
-              />)
-
-	const onMenuKeyDown = () => { }
+              />);
 
 	return {
 		Arrow,

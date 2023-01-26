@@ -7,7 +7,7 @@ import SearchMenuList from '../../internal/search-menu-list';
 import PropTypes from 'prop-types';
 import Tag from './Tag';
 import { isEqual } from 'lodash';
-import useMenuActions from '../../internal/useMenuActions';
+import useMenuActions from '../../helpers/useMenuActions';
 
 const propTypes = {
 	className: PropTypes.string,
@@ -36,7 +36,24 @@ const defaultProps = {
 	style: {}
 };
 
-const AddTagFilter = ({ as: Element, style, type, label, closeOnBlur, className, options, onClick: onClickProp, onClose: onCloseProp, open, hideRemoveButton, columns, onApply, selected: selectedProp, renderTags }) => {
+const AddTagFilter = ({ 
+	as: Element, 
+	style, 
+	type, 
+	label, 
+	closeOnBlur, 
+	onBlur: onBlurProp,
+	onEscape,
+	className, 
+	options, 
+	onClick: onClickProp, 
+	onClose: onCloseProp, 
+	open, 
+	hideRemoveButton, 
+	columns, 
+	onApply, 
+	selected: selectedProp, 
+	renderTags }) => {
 	const [isOpen, setIsOpen] = useState(false);
 	const [selected, setSelected] = useState([]);
 	const onClick = onClickProp ? onClickProp : (() => setIsOpen(true));
@@ -65,21 +82,20 @@ const AddTagFilter = ({ as: Element, style, type, label, closeOnBlur, className,
 		}
 	}, [selectedProp])
 
-	const onBlur = () => {
+	const onBlur = onBlurProp ? onBlurProp : (() => {
 		if (closeOnBlur) {
 			onClose();
 		}
-	}
+	});
 
 	// set refs and common menu handlers
 	const {
+		Arrow,
 		triggerRef,
 		menuRef,
-		setFocus,
-		focus,
 		styles,
 		menuId
-	} = useMenuActions({ onBlur, className: 'rc-tag-filter' });
+	} = useMenuActions({ onBlur, onEscape, className: 'rc-tag-filter' });
 
 	const tags = renderTags ? renderTags : ({ label, name }) => (<Tag
 		type="neutral"
@@ -88,29 +104,28 @@ const AddTagFilter = ({ as: Element, style, type, label, closeOnBlur, className,
 		onClick={() => onClickTag(name)}
 	/>);
 
-	return (<Element className={classNames("rc-tag-filter", className)}>
-		{selected.map(tags)}
-		<Button
-			icon="plus"
-			type={type}
-			hideRemoveButton={hideRemoveButton}
-			ref={triggerRef}
-			onClick={onClick} >
-			{label}
-		</Button>
-		{isOpen && <SearchMenuList
-			id={menuId}
-			style={{ ...style, ...styles.popper }}
-			ref={menuRef}
-			focus={focus}
-			setFocus={setFocus}
-			attributes={styles.attributes}
-			selected={selected}
-			onClose={onClose}
-			columns={columns}
-			onApply={setSelected}
-			items={options} />}
-	</Element>);
+	return (
+		<Element className={classNames("rc-tag-filter", className)}>
+			{selected.map(tags)}
+			<Button
+				icon="plus"
+				type={type}
+				ref={triggerRef}
+				onClick={onClick} >
+				{label}
+			</Button>
+			{isOpen && <SearchMenuList
+				id={menuId}
+				style={{ ...style, ...styles.popper }}
+				menuRef={menuRef}
+				attributes={styles.attributes}
+				selected={selected}
+				onClose={onClose}
+				columns={columns}
+				onApply={setSelected}
+				items={options} />}
+		</Element>
+	);
 }
 
 AddTagFilter.propTypes = propTypes;

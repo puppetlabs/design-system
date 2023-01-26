@@ -60,7 +60,70 @@ const onTagClick = () => {
   </div>
 </div>;
 ```
+### Filter Tag
 
+By adding `hideRemoveButton` to the tag component you can create a static tag in cases where you may want to disable the user from being able to remove it from a list.
+
+```jsx
+import React from 'react';
+import Button from '../Button';
+
+const [selected, onApply] = React.useState([]);
+
+const options = [{
+	group: 'Humans',
+	name: "sara",
+	label: "Sarah Connor",
+}, {
+	group: 'Robots',
+	name: "terminator",
+	label: "Terminator"
+},
+{
+	group: 'Robots',
+	name: "johnny",
+	label: "Johnny 5",
+},
+{
+	group: 'Humans',
+	name: "rocky",
+	label: "Rocky Balboa"
+},
+{
+	group: 'Robots',
+	name: "optimus",
+	label: "Optimus Prime",
+},
+{
+	group: 'Robots',
+	name: "hal",
+	label: "Hal",
+},
+{
+	group: 'Animals',
+	name: "donald",
+	label: "Donald Duck"
+}, 
+];
+
+<div>
+<Button onClick={() => {
+	if(!selected.some(f => f.name === options[1].name)){
+		onApply([...selected, options[1]])
+	}
+	}}>Terminate</Button>
+  <div>
+  {selected.reduce((acc, curr) => acc += ` ${curr.name};`, '')}
+    <Tag.Filter
+	  onApply={onApply}
+	  options={options}
+	  selected={selected}
+	  columns
+    />
+  </div>
+</div>
+
+```
 ## Related
 
 - [Badge](#/React%20Components/Badge)

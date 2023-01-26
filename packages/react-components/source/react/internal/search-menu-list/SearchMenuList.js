@@ -7,17 +7,21 @@ import Button from '../../library/Button';
 import Portal from '../../library/Portal';
 import { isEqual, entries, groupBy, sortBy, xor, values, keyBy } from 'lodash';
 import classNames from 'classnames';
-import useMenuActions from '../useMenuActions';
+import useMenuActions from '../../helpers/useMenuActions';
 import SearchMenuGroup, { getUniqKey } from './SearchMenuGroup';
+import useRovingFocus, {FocusContext} from '../../helpers/useRovingFocus'
+import asMenuItem from '../../helpers/asMenuItem';
+
+const MenuInput = asMenuItem(Input);
 
 export const defaultFilter = (opts = [], search) => {
-	const searchIncludes = (str) => str && str.toLowerCase().includes(search.toLowerCase())
+	const searchIncludes = (str) => str && search.length && str.toLowerCase().includes(search.toLowerCase())
 	return !search
 		? opts
 		: opts.filter((opt) => searchIncludes(opt.label) || searchIncludes(opt.group));
 };
 
-const SearchMenuList = forwardRef(({
+const SearchMenuList = ({
 	as: Element = 'div',
 	asPortal = true,
 	children,
@@ -27,7 +31,6 @@ const SearchMenuList = forwardRef(({
 	searchLabel = 'search',
 	searchPlaceholder = "Search....",
 	filterBy,
-	onBlur,
 	onClose,
 	onApply,
 	columns,
@@ -37,24 +40,16 @@ const SearchMenuList = forwardRef(({
 	applyButtonLabel = 'Apply filters',
 	applyButtonType = "primary",
 	selected = [],
-	focus,
-	setFocus,
 	attributes,
+	menuRef,
 	...props
-}, ref) => {
+}) => {
 	// Use default filter function if none is provided
 	const filterOptions = filterBy ? filterBy : defaultFilter;
 	const [items, setItems] = useState([]);
 	const [searchString, setSearchString] = useState();
 	const [openMenus, setOpenMenus] = useState([]);
 	const [selectedOptions, setSelectedOptions] = useState({});
-	const searchRef = useRef(null);
-
-	useEffect(() => {
-		// focus to the search input when the menu opens
-
-		if (!!searchRef) searchRef.current.focus();
-	}, [searchRef])
 
 	useEffect(() => {
 		const searchResults = filterOptions(itemsProp, searchString)
@@ -69,7 +64,7 @@ const SearchMenuList = forwardRef(({
 			setSelectedOptions(incomingSelections);
 		}
 	}, [selected]);
-
+	
 	// Grouping
 	const grouper = (item) => item.group || '#collector-group';
 	const groupOptions = entries(groupBy(items, grouper));
@@ -80,6 +75,7 @@ const SearchMenuList = forwardRef(({
 		setOpenMenus(newMenus);
 	}
 
+	
 	// Selection
 	const onSelect = (item, checked) => {
 		const key = getUniqKey(item);
@@ -99,61 +95,59 @@ const SearchMenuList = forwardRef(({
 		onApply(values(selectedOptions));
 		onClose();
 	};
-
 	const selectedCount = Object.keys(selectedOptions).length;
-
+	const focusState = useRovingFocus();
 	return (
 		<Portal active={asPortal} target="search-menu">
-			<Element
-				className={classNames('rc-search-menu', className)}
-				style={style}
-				ref={ref}
-				tabIndex={0}
-				{...props}
-				{...attributes}
-			>
-				<div className="rc-search-menu-search">
-					<Input
-						name="search"
-						label={searchLabel}
-						placeholder={searchPlaceholder}
-						value={searchString}
-						trailingButtonIcon="search"
-						trailingButtonProps={{ 'aria-label': 'Search tags' }}
-						placeholder={searchPlaceholder}
-						onChange={setSearchString}
-						inputRef={searchRef}
-					/>
-					<Text className="rc-search-menu-list-selected-text" size='small' color="subtle">
-						<span>{`${selectedCount} filters selected`}</span>
-						{!!selectedCount && <Badge weight="subtle" onClick={onClearSelected} type="danger">Clear selection</Badge>}
-					</Text>
-				</div>
-				<div className='rc-search-menu-list'>
-					{sortedGroups.map(([groupName, groupItems], i) => {
-						const toggleThisGroup = () => toggleGroup(groupName);
-						const isOpen = openMenus.includes(groupName) || !!searchString;
-						return (
-							<SearchMenuGroup
-								index={i}
-								title={groupName}
-								items={groupItems}
-								toggleGroup={toggleThisGroup}
-								isOpen={isOpen}
-								columns={columns}
-								onSelect={onSelect}
-								selectedOptions={selectedOptions}
-							/>
-						)
-					})}
-				</div>
-				<div className='rc-search-menu-buttons'>
-					<Button onClick={onClose} type={cancelButtonType}>{cancelButtonLabel}</Button>
-					<Button onClick={applySelection} type={applyButtonType}>{applyButtonLabel}</Button>
-				</div>
-			</Element>
+			<FocusContext.Provider value={focusState}>
+				<Element
+					className={classNames('rc-search-menu', className)}
+					style={style}
+					ref={menuRef}
+					{...props}
+					{...attributes}
+				>
+					<div className="rc-search-menu-search">
+						<MenuInput
+							name="search"
+							label={searchLabel}
+							placeholder={searchPlaceholder}
+							value={searchString}
+							trailingButtonIcon="search"
+							trailingButtonProps={{ 'aria-label': 'Search tags' }}
+							placeholder={searchPlaceholder}
+							onChange={setSearchString}
+						/>
+						<Text className="rc-search-menu-list-selected-text" size='small' color="subtle">
+							<span>{`${selectedCount} filters selected`}</span>
+							{!!selectedCount && <Badge weight="subtle" onClick={onClearSelected} type="danger">Clear selection</Badge>}
+						</Text>
+					</div>
+					<div className='rc-search-menu-list'>
+						{sortedGroups.map(([groupName, groupItems], i) => {
+							const toggleThisGroup = () => toggleGroup(groupName);
+							const isOpen = openMenus.includes(groupName) || !!searchString;
+							return (
+								<SearchMenuGroup
+									title={groupName}
+									items={groupItems}
+									toggleGroup={toggleThisGroup}
+									isOpen={isOpen}
+									columns={columns}
+									onSelect={onSelect}
+									selectedOptions={selectedOptions}
+								/>
+							)
+						})}
+					</div>
+					<div className='rc-search-menu-buttons'>
+						<Button onClick={onClose} type={cancelButtonType}>{cancelButtonLabel}</Button>
+						<Button onClick={applySelection} type={applyButtonType}>{applyButtonLabel}</Button>
+					</div>
+				</Element>
+			</FocusContext.Provider>
 		</Portal>
 	)
-});
+};
 SearchMenuList.displayName = 'SearchMenuList';
 export default SearchMenuList;
