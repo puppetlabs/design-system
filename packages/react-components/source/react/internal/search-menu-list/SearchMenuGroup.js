@@ -7,6 +7,7 @@ import FormFieldDescription from '../../library/form/internal/FormFieldDescripti
 import { sortBy, chunk, pickBy } from 'lodash';
 import classNames from 'classnames';
 import asMenuItem from '../../helpers/asMenuItem';
+
 import {
   ENTER_KEY_CODE,
   SPACE_KEY_CODE
@@ -23,7 +24,6 @@ const GroupHeading = ({title, isOpen, inputRef, ...props}) => isOpen ? (<Button 
 			</h6>
 		</Button>) : null;
 const GroupCheckbox = asMenuItem(Checkbox);
-
 const MenuGroupHeading = asMenuItem(GroupHeading);
 
 const SearchMenuGroup = ({
