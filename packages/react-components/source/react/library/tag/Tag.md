@@ -62,7 +62,7 @@ const onTagClick = () => {
 ```
 ### Filter Tag
 
-By adding `hideRemoveButton` to the tag component you can create a static tag in cases where you may want to disable the user from being able to remove it from a list.
+Creates a list of tags from a menu of searchable options. Options will be grouped together based on the `group` property. Options without a group are displayed on their own.
 
 ```jsx
 import React from 'react';
@@ -74,6 +74,7 @@ const options = [{
 	group: 'Humans',
 	name: "sara",
 	label: "Sarah Connor",
+	
 }, {
 	group: 'Robots',
 	name: "terminator",
@@ -106,8 +107,10 @@ const options = [{
 }, 
 ];
 
+console.log('Selected', selected);
+
 <div>
-<Button onClick={() => {
+<Button style={{marginBottom: '8px'}} onClick={() => {
 	if(!selected.some(f => f.name === options[1].name)){
 		onApply([...selected, options[1]])
 	}
@@ -115,6 +118,7 @@ const options = [{
   <div>
   {selected.reduce((acc, curr) => acc += ` ${curr.name};`, '')}
     <Tag.Filter
+	  open={false}
 	  onApply={onApply}
 	  options={options}
 	  selected={selected}

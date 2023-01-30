@@ -1,0 +1,38 @@
+.rc-popup-menu {
+	position: absolute;
+	z-index: 10;
+	background-color: $puppet-white;
+	border: 1px solid $puppet-n400;
+	border-radius: $puppet-common-border-radius;
+}
+
+#rc-popup-menu-arrow {
+	visibility: hidden;
+}
+
+/* stylelint-disable-next-line */
+#rc-popup-menu-arrow::before {
+	content: '';
+	transform: rotate(45deg);
+	visibility: visible;
+}
+
+/* stylelint-disable-next-line */
+.rc-popup-menu[data-popper-placement^='top']>#rc-popup-menu-arrow {
+	bottom: -3px;
+}
+
+/* stylelint-disable-next-line */
+.rc-popup-menu[data-popper-placement^='bottom']>#rc-popup-menu-arrow {
+	top: -3px;
+}
+
+/* stylelint-disable-next-line */
+.rc-popup-menu[data-popper-placement^='left']>#rc-popup-menu-arrow {
+	right: -3px;
+}
+
+/* stylelint-disable-next-line */
+.rc-popup-menu[data-popper-placement^='right']>#rc-popup-menu-arrow {
+	left: -3px;
+}

@@ -3,17 +3,16 @@ import { func, string, oneOf, bool, node } from 'prop-types';
 import classNames from 'classnames';
 import Button from '../button';
 import Text from '../text';
-
-import AddTagFilter from './AddTagFilter';
+import Filter from './Filter';
 
 const propTypes = {
   /** Tag text or other content */
   label: node.isRequired,
-  /** Callback function called when clode icon is clicked */
+  /** Callback function called when close icon is clicked */
   onClick: func,
   /** Type dictates tag coloring */
   type: oneOf(['primary', 'neutral']),
-  /** Currently only subtle netural supported */
+  /** Currently only subtle neutral supported */
   emphasis: oneOf(['bold', 'subtle']),
   /** Optional additional classnames */
   className: string,
@@ -66,8 +65,15 @@ const Tag = ({
   );
 };
 
-Tag.Filter = AddTagFilter;
+// Using the render prop here to prevent a circular dependency
+Tag.Filter = ({renderTags, ...props}) => <Filter {...props} renderTags={renderTags ? renderTags : ({label, removeItem}) => ((
+      <Tag
+        type="neutral"
+        emphasis="subtle"
+        label={label}
+        onClick={removeItem}
+      />
+    ))}/>
 Tag.propTypes = propTypes;
 Tag.defaultProps = defaultProps;
-
 export default Tag;

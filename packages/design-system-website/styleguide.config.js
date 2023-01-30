@@ -164,7 +164,7 @@ module.exports = {
         '**/toolbar/Actions.js',
         '**/logo/logos.js',
         '**/breadcrumb/BreadcrumbSection.js',
-		'**/tag/AddTagFilter.js',
+		'**/tag/Filter.js',
         '**/tooltips/Tooltip.js',
       ],
     },

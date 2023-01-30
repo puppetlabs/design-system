@@ -4,12 +4,6 @@
 	max-width: 500px;
 	min-width: 250px;
 	max-height: 350px;
-	
-	position: absolute;
-	z-index: 10;
-	background-color: $puppet-white;
-	border: 1px solid $puppet-n400;
-	border-radius: $puppet-common-border-radius;
 
 	.rc-search-menu-search{
 		display: flex;
