@@ -85,7 +85,7 @@ const defaultState = { nodes: {}, positions: [], indexes: {}, size: 0 };
  * @description Reuseable Hook for managing focusable elements (ex: within a menu or a nav bar). Allows for tabbing and arrow key navigation between nodes, based off their visual hierarchy.
  * @prop {number | undefined} prop.size Initial number of the tabbable elements
  * @prop {function | undefined} prop.getIndex Optional function for determining the specific order for the tab indexes
- * @reference https://opensource.adobe.com/spectrum-web-components/tools/roving-tab-index/
+ * @link https://opensource.adobe.com/spectrum-web-components/tools/roving-tab-index/
  * @returns Roving focus state and action handlers
  */
 export function useRovingFocus() {

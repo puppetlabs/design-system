@@ -8,6 +8,7 @@ import {
   values,
   keyBy,
   uniqueId,
+  remove,
 } from 'lodash';
 import PropTypes from 'prop-types';
 import Input from '../../../library/input';
@@ -39,7 +40,6 @@ const propTypes = {
   onClose: PropTypes.func,
   onApply: PropTypes.func,
   columns: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
-  triggerRef: PropTypes.shape({}),
   cancelButtonLabel: PropTypes.string,
   cancelButtonType: PropTypes.oneOf([
     'primary',
@@ -55,37 +55,59 @@ const propTypes = {
     'text',
   ]),
   selected: PropTypes.arrayOf(PropTypes.shape({})),
-  attributes: PropTypes.shape({}),
-  menuRef: PropTypes.shape({}),
   open: PropTypes.bool,
   onBlur: PropTypes.func,
   onEscape: PropTypes.func,
   renderItems: PropTypes.func,
   clearLabel: PropTypes.string,
+  selectedLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  ungroupedPosition: PropTypes.oneOf(['top', 'bottom']),
+  arrow: PropTypes.bool,
 };
 
 const defaultProps = {
+  /** Label displayed onApply button */
   applyButtonLabel: 'Apply',
+  /** Type of apply button */
   applyButtonType: 'primary',
-  attributes: {},
+  /** Display arrow on menu */
+  arrow: false,
+  /** Label displayed on cancel button */
   cancelButtonLabel: 'Cancel',
+  /** Type of cancel button */
   cancelButtonType: 'tertiary',
+  /** Label displayed in clear badge */
   clearLabel: 'Clear selection',
+  /** Number of columns to display per row. Can ab a boolean or number. If false, options will be displayed in a single column. If true, options will be displayed in two columns. A number can be passed to define columns of 3 or greater. */
   columns: false,
+  /** Function used to filter the options. By default, the filter compares the search query to the group and label props on an option. */
   filterBy: undefined,
+  /** Array of options to display. Each option should be an object with a label and value. the `group` prop can be set to group similar items. Items without a group will be displayed without a group header */
   items: [],
-  menuRef: null,
+  /** Render Prop for displaying something other than grouped checkboxes in the search list */
   renderItems: null,
+  /** Function called when the apply button is clicked. Receives an array of selected options as an argument. */
   onApply: () => null,
+  /** Function called when the search menu is blurred. */
   onBlur: undefined,
+  /** Function called when the search menu is closed. */
   onClose: () => null,
+  /** Function called when the escape key is pressed. */
   onEscape: undefined,
+  /** Boolean indicating whether the search menu is open. */
   open: false,
+  /** Label displayed on search input */
   searchLabel: 'search',
+  /** Placeholder displayed on search input */
   searchPlaceholder: 'Search....',
+  /** Array of selected options. Each option should be an object with a label and value. */
   selected: [],
+  /** Object of styles to apply to the search menu. */
   style: {},
-  triggerRef: null,
+  /** Label of selected count. If a function is provided, the selected count is passed to it. */
+  selectedLabel: 'selected',
+  /** Position of ungrouped items. Can be 'top' or 'bottom' */
+  ungroupedPosition: 'bottom',
 };
 const SearchMenu = ({
   applyButtonLabel,
@@ -103,9 +125,12 @@ const SearchMenu = ({
   searchLabel,
   searchPlaceholder,
   selected,
+  selectedLabel,
   clearLabel,
+  ungroupedPosition,
   renderItems: Renderer,
   style,
+  arrow,
 }) => {
   // Use default filter function if none is provided
   const filterOptions = filterBy || defaultFilter;
@@ -119,7 +144,17 @@ const SearchMenu = ({
   // Grouping
   const grouper = item => item.group || '#collector-group';
   const groupOptions = entries(groupBy(items, grouper));
+  const collector = remove(
+    groupOptions,
+    ([group]) => group === '#collector-group',
+  );
   const sortedGroups = sortBy(groupOptions, ([group]) => group);
+
+  if (ungroupedPosition === 'top') {
+    sortedGroups.unshift(...collector);
+  } else {
+    sortedGroups.push(...collector);
+  }
 
   const toggleGroup = menuName => {
     const newMenus = xor(openMenus, [menuName]);
@@ -163,7 +198,7 @@ const SearchMenu = ({
   const GroupRenderer = Renderer || SearchMenuGroup;
   return (
     <Container
-      arrow
+      arrow={arrow}
       style={style}
       open={open}
       onBlur={onBlur}
@@ -185,7 +220,13 @@ const SearchMenu = ({
           size="small"
           color="subtle"
         >
-          <span>{`${selectedCount} filters selected`}</span>
+          {selectedLabel && (
+            <span>{`${
+              typeof selectedLabel === 'function'
+                ? selectedLabel(selectedCount)
+                : `${selectedCount} ${selectedLabel}`
+            }`}</span>
+          )}
           {!!selectedCount && (
             <Badge weight="subtle" onClick={onClearSelected} type="danger">
               {clearLabel}

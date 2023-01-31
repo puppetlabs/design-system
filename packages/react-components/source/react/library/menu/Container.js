@@ -100,7 +100,7 @@ const Menu = ({
         <Element
           {...ref}
           {...props}
-          {...attributes}
+          {...attributes.popper}
           id={menuId}
           style={{ ...style, ...styles.popper }}
           className={classNames('rc-popup-menu', className)}
@@ -108,9 +108,9 @@ const Menu = ({
           {arrow && (
             <Arrow
               arrowRef={arrowRef}
-              attributes={attributes}
+              attributes={attributes.arrow}
               style={styles.arrow}
-              className={classNames('rc-popup-menu-arrow', className)}
+              className={`${className}-menu-arrow`}
             />
           )}
           {children}

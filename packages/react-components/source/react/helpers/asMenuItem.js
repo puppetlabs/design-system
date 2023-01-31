@@ -16,7 +16,7 @@ import { RovingFocusContext, getTabIndexId } from './useRovingFocus';
  * RovingFocusContext.Consumer > MenuItemHOC(WrappedComponent)}
  *
  */
-const asMenuItem = WrappedComponent => {
+const asMenuItem = (WrappedComponent, withoutOnClick = false) => {
   // Wrap the component in a provider that uses the context props
   const MenuItem = componentProps => {
     const {
@@ -64,7 +64,7 @@ const asMenuItem = WrappedComponent => {
     const handleSelect = (...args) => {
       setFocus(index);
       const { onClick } = componentProps;
-      if (onClick) {
+      if (onClick && !withoutOnClick) {
         onClick(...args);
       }
     };

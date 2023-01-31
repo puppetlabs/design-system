@@ -2,7 +2,12 @@ import { useRef, useState } from 'react';
 import { usePopper } from 'react-popper';
 import { uniqueId } from 'lodash';
 
-const useMenuActions = ({ ...popperOptions }) => {
+/**
+ *@description Hook that returns the necessary refs and event handlers to make a popper.js menu component.
+ * @param {popperOptions} param.popperOptions - Options to pass to the popper instance
+ * @link https://popper.js.org/docs/v2/constructors/
+ */
+const useMenu = ({ popperOptions }) => {
   /** Ref of the menu */
   const [menuRef, setMenu] = useState(null);
 
@@ -26,7 +31,7 @@ const useMenuActions = ({ ...popperOptions }) => {
       enabled: !!arrowRef,
       options: {
         element: arrowRef,
-        padding: 1,
+        // padding: 1,
         offset: [0, 6],
       },
     },
@@ -78,4 +83,4 @@ const useMenuActions = ({ ...popperOptions }) => {
   };
 };
 
-export default useMenuActions;
+export default useMenu;

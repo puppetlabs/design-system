@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Checkbox from '../../../library/checkbox';
 import FormFieldDescription from '../../../library/form/internal/FormFieldDescription';
 import asMenuItem from '../../../helpers/asMenuItem';
-import GroupHeading from './SearchGroupHeading';
+import GroupHeading from './SearchGroupDetail';
 
 const validCheckboxProps = Object.keys(Checkbox.propTypes);
 const validFormFieldDescriptionProps = Object.keys(
@@ -19,7 +19,6 @@ export const getUniqKey = item =>
     : item.label;
 
 const GroupCheckbox = asMenuItem(Checkbox);
-const MenuGroupHeading = asMenuItem(GroupHeading);
 
 const SearchMenuGroupPropTypes = {
   title: PropTypes.string,
@@ -55,56 +54,58 @@ const SearchMenuGroup = ({
     typeof columns === 'number' ? Math.max(2, columns) : 2;
   const sortedItems = sortBy(items, 'label');
   const rows = columns ? chunk(sortedItems, numberOfColumns) : [sortedItems];
-
   // Show fields without a group
   const isGroupCollector = title === '#collector-group';
   const joinIds = row =>
     row.reduce((acc, item) => `${acc}-${getUniqKey(item)}`, '');
   return (
-    <div key={id} className="rc-search-menu-group">
-      <MenuGroupHeading
-        isOpen={!isGroupCollector}
-        title={title}
-        onClick={toggleGroup}
-      />
-      {(isOpen || isGroupCollector) && (
-        <div className="rc-search-menu-group-items">
-          {rows.map(row => (
-            <div
-              key={`rc-search-menu-group-${title}-row-${joinIds(row)}`}
-              className={classNames('rc-search-menu-group-container', {
-                columns: !!columns,
-              })}
-            >
-              {row.map(props => {
-                const checkboxProps = pickBy(props, (value, key) =>
-                  validCheckboxProps.includes(key),
-                );
-                const descriptionProps = pickBy(props, (value, key) =>
-                  validFormFieldDescriptionProps.includes(key),
-                );
-                const isSelected = !!selectedOptions[getUniqKey(props)];
-                const onChange = checked => onSelect(props, checked);
+    <GroupHeading
+      open={isOpen}
+      onClick={toggleGroup}
+      show={!isGroupCollector}
+      title={title}
+      id={`${id}-group-${title}`}
+    >
+      <div
+        className={classNames('rc-search-menu-group-items', {
+          collector: isGroupCollector,
+        })}
+      >
+        {rows.map(row => (
+          <div
+            key={`rc-search-menu-group-${title}-row-${joinIds(row)}`}
+            className={classNames('rc-search-menu-group-container', {
+              columns: !!columns,
+            })}
+          >
+            {row.map(props => {
+              const checkboxProps = pickBy(props, (value, key) =>
+                validCheckboxProps.includes(key),
+              );
+              const descriptionProps = pickBy(props, (value, key) =>
+                validFormFieldDescriptionProps.includes(key),
+              );
+              const isSelected = !!selectedOptions[getUniqKey(props)];
+              const onChange = checked => onSelect(props, checked);
 
-                return (
-                  <div
-                    key={`rc-search-menu-checkbox-${title}-${checkboxProps.label}`}
-                    className="rc-search-menu-list-group-checkbox"
-                  >
-                    <GroupCheckbox
-                      {...checkboxProps}
-                      value={isSelected}
-                      onChange={onChange}
-                    />
-                    <FormFieldDescription {...descriptionProps} />
-                  </div>
-                );
-              })}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
+              return (
+                <div
+                  key={`rc-search-menu-checkbox-${title}-${checkboxProps.label}`}
+                  className="rc-search-menu-list-group-checkbox"
+                >
+                  <GroupCheckbox
+                    {...checkboxProps}
+                    value={isSelected}
+                    onChange={onChange}
+                  />
+                  <FormFieldDescription {...descriptionProps} />
+                </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </GroupHeading>
   );
 };
 

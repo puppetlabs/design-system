@@ -1,3 +1,6 @@
+$spacing-base:  $puppet-common-spacing-base * 3;
+$padding-top-bottom: $spacing-base 0 $spacing-base;
+
 .rc-search-menu {
 	display: flex;
 	flex-direction: column;
@@ -8,55 +11,44 @@
 	.rc-search-menu-search{
 		display: flex;
 		flex-direction: column;
-		gap: $puppet-common-spacing-base * 3;
-		padding: $puppet-common-spacing-base * 3;
+		gap: $spacing-base;
+		padding: $spacing-base;
 	}
 	.rc-search-menu-list{
 		max-height: 250px;
 		overflow-y: auto;
-		padding-left: $puppet-common-spacing-base * 3;
-		padding-right: $puppet-common-spacing-base * 3;
+		padding: $spacing-base;
 	}
-	.rc-search-menu-group{
-		display: grid;
-	}
-	.rc-search-menu-list-group {
-		min-height: $puppet-common-spacing-base * 13;
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		border-top: 1px solid $puppet-n300;
-
-		.rc-heading>.rc-icon {
-			float: right;
-		}
 	
-		&.rc-button-transparent:hover{
-					background-color: unset;
-					border: unset;
-					border-top: 1px solid $puppet-n300;
-					color: unset;
-					fill: unset;
+	.rc-search-menu-list-group {
+		border-top: 1px solid $puppet-n300;
+		padding-top: $puppet-common-spacing-base * 4;
+		padding-bottom: $puppet-common-spacing-base * 4;
+		&.open{
+			padding-bottom: $puppet-common-spacing-base * 2;
 		}
 	}
 
 	.rc-search-menu-list-selected-text {
 		display: flex;
 		flex-direction: row;
-		gap: $puppet-common-spacing-base * 2;
+		gap: $spacing-base;
 	}
 
 	.rc-search-menu-group-items {
-		padding-bottom: $puppet-common-spacing-base * 3;
+		padding: $padding-top-bottom;
 		display: flex;
 		flex-direction: column;
-		gap: $puppet-common-spacing-base * 3;
+		gap: $spacing-base;
+		&.collector{
+			border-top: 1px solid $puppet-n300;
+		}
 	}
 
 	.rc-search-menu-group-container {
 		display: flex;
 		flex-direction: column;
-		gap: $puppet-common-spacing-base * 3;
+		gap: $spacing-base;
 
 		&.columns {
 			display: grid;
@@ -65,7 +57,7 @@
 			grid-auto-columns: 100px;
 		}
 	}
-
+	
 	.rc-search-menu-list-group-checkbox {
 		display: flex;
 		flex-direction: column;

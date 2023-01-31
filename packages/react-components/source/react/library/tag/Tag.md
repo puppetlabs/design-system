@@ -1,6 +1,6 @@
 ## Overview
 
-The `Tag` component was designed and developed to be used primarily alongside the data grid filtering feature, as a clear indication of what filters are actively applied. However the component itself may have further usecases. The `Tag` component has been built on top of the `Button` component in order to make sure it inherit's all its accessability features.
+The `Tag` component was designed and developed to be used primarily alongside the data grid filtering feature, as a clear indication of what filters are actively applied. However the component itself may have further use cases. The `Tag` component has been built on top of the `Button` component in order to make sure it inherit's all its accessability features.
 
 ## Basic Use
 
@@ -60,9 +60,9 @@ const onTagClick = () => {
   </div>
 </div>;
 ```
-### Filter Tag
+### Tag Filter
 
-Creates a list of tags from a menu of searchable options. Options will be grouped together based on the `group` property. Options without a group are displayed on their own.
+Creates a list of tags from a menu of searchable / filterable options. Options will be grouped together based on the `group` property. Options without a group are displayed without a group header.
 
 ```jsx
 import React from 'react';
@@ -108,6 +108,7 @@ const options = [{
 ];
 
 console.log('Selected', selected);
+const selectedText = (count) => `${count} ${count === 1 ? 'tag' : 'tags'} selected`; 
 
 <div>
 <Button style={{marginBottom: '8px'}} onClick={() => {
@@ -122,6 +123,9 @@ console.log('Selected', selected);
 	  onApply={onApply}
 	  options={options}
 	  selected={selected}
+	  selectedLabel={selectedText}
+	  clearLabel="Clear selected tags"
+	  applyButtonLabel="Apply filters"
 	  columns
     />
   </div>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import { ENTER_KEY_CODE } from '../../constants';
 
 const DetailPropTypes = {
   /** The element to use for the detail title */
@@ -25,6 +26,10 @@ const DetailPropTypes = {
   arrow: PropTypes.oneOf(['before', 'after']),
   /** The ref to be used for the detail dropdown */
   inputRef: PropTypes.oneOf[(PropTypes.shape({}), PropTypes.func)],
+  /** If true, will unmount the detail content (children) when closed. Default is set to true. */
+  unmountOnClose: PropTypes.bool,
+  /** The id (key) to be used for the detail dropdown */
+  id: PropTypes.string,
 };
 
 const defaultProps = {
@@ -39,6 +44,8 @@ const defaultProps = {
   onClose: undefined,
   inputRef: null,
   arrow: 'before',
+  unmountOnClose: true,
+  id: ``,
 };
 
 const Detail = ({
@@ -53,10 +60,12 @@ const Detail = ({
   className,
   inputRef,
   arrow,
+  unmountOnClose,
+  id,
 }) => {
   const [showContent, setShowContent] = useState(false);
 
-  const showResourcesToggle = ({ currentTarget = {} }) => {
+  const showContentToggle = ({ currentTarget = {} }) => {
     if (!!showContent !== currentTarget.open) {
       if (currentTarget.open && onOpen) onOpen();
       if (!currentTarget.open && onClose) onClose();
@@ -71,7 +80,10 @@ const Detail = ({
     }
   }, [open, disabled]);
 
-  const keyToggle = e => (e.key === 'Enter' ? showResourcesToggle(e) : null);
+  const keyToggle = e =>
+    e.key === ENTER_KEY_CODE ? showContentToggle(e) : null;
+
+  const unmount = unmountOnClose && !showContent;
 
   return (
     <details
@@ -82,8 +94,9 @@ const Detail = ({
         disabled && 'disabled',
         className,
       )}
-      onToggle={showResourcesToggle}
+      onToggle={showContentToggle}
       open={showContent}
+      itemID={id || title}
     >
       <summary
         ref={inputRef}
@@ -93,7 +106,7 @@ const Detail = ({
       >
         <Element>{title}</Element>
       </summary>
-      <>{children}</>
+      {unmount ? null : children}
     </details>
   );
 };

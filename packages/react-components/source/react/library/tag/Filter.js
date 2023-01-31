@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { isEqual } from 'lodash';
 import Menu from '../menu';
-import Tag from './Tag';
 
 const propTypes = {
   className: PropTypes.string,
@@ -25,7 +24,7 @@ const propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape({})),
   /** Button type */
   type: PropTypes.oneOf(['primary', 'secondary', 'tertiary', 'text']),
-  /** Number of columns to render in the menu. If true, it will render two columns. A number can be provided if more columns are needed. Defaults to false (0 columns)*/
+  /** Number of columns to render in the menu. If true, it will render two columns. A number can be provided if more columns are needed. Defaults to false (0 columns) */
   columns: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   /** Render prop for changing how the selected tags appear. Can be used to display elements other than Tags. */
   renderTags: PropTypes.func,
@@ -37,6 +36,20 @@ const propTypes = {
   onEscape: PropTypes.func,
   /** Additional styles applied to selected tag container */
   style: PropTypes.shape({}),
+  /** Label displayed onApply button */
+  applyButtonLabel: PropTypes.string,
+  /** Type of apply button */
+  applyButtonType: PropTypes.string,
+  /** Label displayed on cancel button */
+  cancelButtonLabel: PropTypes.string,
+  /** Type of cancel button */
+  cancelButtonType: PropTypes.string,
+  /** Label displayed in clear badge */
+  clearLabel: PropTypes.string,
+  /** Label displayed on search input */
+  searchLabel: PropTypes.string,
+  /** Placeholder displayed on search input */
+  searchPlaceholder: PropTypes.string,
 };
 
 const defaultProps = {
@@ -56,6 +69,13 @@ const defaultProps = {
   onEscape: undefined,
   renderTags: null,
   className: '',
+  applyButtonLabel: undefined,
+  applyButtonType: undefined,
+  cancelButtonLabel: undefined,
+  cancelButtonType: undefined,
+  clearLabel: undefined,
+  searchLabel: undefined,
+  searchPlaceholder: undefined,
 };
 
 const TagFilter = ({
@@ -75,6 +95,7 @@ const TagFilter = ({
   selected: selectedProp,
   style,
   renderTags,
+  ...searchMenuProps
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selected, setSelected] = useState([]);
@@ -116,7 +137,9 @@ const TagFilter = ({
     onClose();
   };
 
-  const tags = (props) => renderTags({ ...props, removeItem: () => onRemoveItem(props.name) });
+  const tags = props =>
+    // eslint-disable-next-line react/prop-types
+    renderTags({ ...props, removeItem: () => onRemoveItem(props.name) });
 
   return (
     <Element style={style} className={classNames('rc-tag-filter', className)}>
@@ -127,9 +150,9 @@ const TagFilter = ({
         </Menu.Trigger>
         {isOpen && (
           <Menu.SearchMenu
+            {...searchMenuProps}
             columns={columns}
             items={options}
-            label={labelProp}
             onApply={setSelected}
             onBlur={onBlur}
             onClose={onClose}

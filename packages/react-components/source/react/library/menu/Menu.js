@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import useMenuActions from '../../helpers/useMenuActions';
+import useMenu from '../../helpers/useMenu';
 import MenuContext from './context';
 import Trigger from './Trigger';
 import Container from './Container';
@@ -23,7 +23,7 @@ const Menu = ({ children, ...popperOptions }) => {
   const closeMenu = () => setIsOpen(false);
   const openMenu = () => setIsOpen(true);
 
-  const menuState = useMenuActions(popperOptions);
+  const menuState = useMenu({ popperOptions });
   return (
     <MenuContext.Provider value={{ ...menuState, isOpen, closeMenu, openMenu }}>
       {children}

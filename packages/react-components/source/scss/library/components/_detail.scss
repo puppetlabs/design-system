@@ -18,6 +18,12 @@ details.rc-detail  {
 
 			cursor: pointer;
 		}
+		&:focus-visible {
+			outline: none;
+		}
+		&:focus{
+			box-shadow: $puppet-common-focus-outline;
+		}
 
 		&.before {
 			&::marker {

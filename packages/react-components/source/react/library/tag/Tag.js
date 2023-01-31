@@ -35,6 +35,7 @@ const Tag = ({
   emphasis,
   className,
   hideRemoveButton,
+  ...divProps
 }) => {
   return (
     <div
@@ -44,6 +45,7 @@ const Tag = ({
         `rc-tag-${emphasis}`,
         className,
       )}
+      {...divProps}
     >
       <div
         className={classNames('rc-tag-label-background', {
@@ -66,14 +68,24 @@ const Tag = ({
 };
 
 // Using the render prop here to prevent a circular dependency
-Tag.Filter = ({renderTags, ...props}) => <Filter {...props} renderTags={renderTags ? renderTags : ({label, removeItem}) => ((
-      <Tag
-        type="neutral"
-        emphasis="subtle"
-        label={label}
-        onClick={removeItem}
-      />
-    ))}/>
+// eslint-disable-next-line react/prop-types
+Tag.Filter = ({ renderTags, ...props }) => (
+  <Filter
+    {...props}
+    renderTags={
+      renderTags ||
+      (({ label, removeItem }) => (
+        <Tag
+          type="neutral"
+          emphasis="subtle"
+          label={label}
+          onClick={removeItem}
+          itemID={label}
+        />
+      ))
+    }
+  />
+);
 Tag.propTypes = propTypes;
 Tag.defaultProps = defaultProps;
 export default Tag;
