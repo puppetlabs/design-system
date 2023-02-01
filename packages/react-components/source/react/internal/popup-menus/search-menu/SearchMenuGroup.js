@@ -4,8 +4,8 @@ import classNames from 'classnames';
 import PropTypes from 'prop-types';
 import Checkbox from '../../../library/checkbox';
 import FormFieldDescription from '../../../library/form/internal/FormFieldDescription';
-import asMenuItem from '../../../helpers/asMenuItem';
-import GroupHeading from './SearchGroupDetail';
+import asFocusItem from '../../../helpers/asFocusItem';
+import GroupDetail from './SearchGroupDetail';
 
 const validCheckboxProps = Object.keys(Checkbox.propTypes);
 const validFormFieldDescriptionProps = Object.keys(
@@ -18,7 +18,7 @@ export const getUniqKey = item =>
     ? `${item.uuid || item.group}-${item.label}`
     : item.label;
 
-const GroupCheckbox = asMenuItem(Checkbox);
+const GroupCheckbox = asFocusItem(Checkbox);
 
 const SearchMenuGroupPropTypes = {
   title: PropTypes.string,
@@ -28,6 +28,7 @@ const SearchMenuGroupPropTypes = {
   columns: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
   onSelect: PropTypes.func.isRequired,
   selectedOptions: PropTypes.shape({}),
+  isGroupCollector: PropTypes.bool,
   id: PropTypes.string,
 };
 
@@ -38,16 +39,17 @@ const defaultProps = {
   items: [],
   selectedOptions: {},
   title: '',
+  isGroupCollector: false,
 };
 
 const SearchMenuGroup = ({
   title,
   items = [],
   isOpen = false,
-  toggleGroup,
   columns,
   onSelect,
   selectedOptions = {},
+  isGroupCollector,
   id,
 }) => {
   const numberOfColumns =
@@ -55,13 +57,11 @@ const SearchMenuGroup = ({
   const sortedItems = sortBy(items, 'label');
   const rows = columns ? chunk(sortedItems, numberOfColumns) : [sortedItems];
   // Show fields without a group
-  const isGroupCollector = title === '#collector-group';
   const joinIds = row =>
     row.reduce((acc, item) => `${acc}-${getUniqKey(item)}`, '');
   return (
-    <GroupHeading
+    <GroupDetail
       open={isOpen}
-      onClick={toggleGroup}
       show={!isGroupCollector}
       title={title}
       id={`${id}-group-${title}`}
@@ -87,7 +87,7 @@ const SearchMenuGroup = ({
               );
               const isSelected = !!selectedOptions[getUniqKey(props)];
               const onChange = checked => onSelect(props, checked);
-
+              const onClick = () => onSelect(props, !isSelected);
               return (
                 <div
                   key={`rc-search-menu-checkbox-${title}-${checkboxProps.label}`}
@@ -97,6 +97,7 @@ const SearchMenuGroup = ({
                     {...checkboxProps}
                     value={isSelected}
                     onChange={onChange}
+                    onClick={onClick}
                   />
                   <FormFieldDescription {...descriptionProps} />
                 </div>
@@ -105,7 +106,7 @@ const SearchMenuGroup = ({
           </div>
         ))}
       </div>
-    </GroupHeading>
+    </GroupDetail>
   );
 };
 

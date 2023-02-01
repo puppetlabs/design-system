@@ -54,8 +54,8 @@ const propTypes = {
 
 const defaultProps = {
   as: 'div',
-  label: 'Add filter',
-  open: false,
+  label: 'Add',
+  open: null,
   type: 'secondary',
   closeOnBlur: true,
   options: [],
@@ -78,7 +78,7 @@ const defaultProps = {
   searchPlaceholder: undefined,
 };
 
-const TagFilter = ({
+const TagSearch = ({
   as: Element,
   type,
   label: labelProp,
@@ -151,13 +151,13 @@ const TagFilter = ({
         {isOpen && (
           <Menu.SearchMenu
             {...searchMenuProps}
+            open
             columns={columns}
-            items={options}
+            options={options}
             onApply={setSelected}
             onBlur={onBlur}
             onClose={onClose}
             onEscape={onEscape}
-            open={isOpen}
             selected={selected}
           />
         )}
@@ -166,6 +166,6 @@ const TagFilter = ({
   );
 };
 
-TagFilter.propTypes = propTypes;
-TagFilter.defaultProps = defaultProps;
-export default TagFilter;
+TagSearch.propTypes = propTypes;
+TagSearch.defaultProps = defaultProps;
+export default TagSearch;

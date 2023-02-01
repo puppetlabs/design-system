@@ -3,7 +3,7 @@ import { func, string, oneOf, bool, node } from 'prop-types';
 import classNames from 'classnames';
 import Button from '../button';
 import Text from '../text';
-import Filter from './Filter';
+import Search from './Search';
 
 const propTypes = {
   /** Tag text or other content */
@@ -69,8 +69,8 @@ const Tag = ({
 
 // Using the render prop here to prevent a circular dependency
 // eslint-disable-next-line react/prop-types
-Tag.Filter = ({ renderTags, ...props }) => (
-  <Filter
+Tag.Search = ({ renderTags, ...props }) => (
+  <Search
     {...props}
     renderTags={
       renderTags ||

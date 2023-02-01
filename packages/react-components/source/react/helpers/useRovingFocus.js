@@ -8,6 +8,8 @@ import {
   HOME_KEY_CODE,
   END_KEY_CODE,
   TAB_KEY_CODE,
+  LEFT_KEY_CODE,
+  RIGHT_KEY_CODE,
 } from '../constants';
 
 /**
@@ -16,7 +18,13 @@ import {
  * @returns
  */
 export const getTabIndexId = (props = {}) =>
-  props.tabId || props.name || props.label || props.title || '';
+  props.tabId ||
+  props.id ||
+  props.key ||
+  props.name ||
+  props.label ||
+  props.title ||
+  '';
 
 /**
  * @description maps and array of nodes to this component's tab index id
@@ -55,6 +63,7 @@ const getNodeData = nodes => {
     size,
   };
 };
+const defaultState = { nodes: {}, positions: [], indexes: {}, size: 0 };
 
 /**
  * @description Reducer for managing tabbable nodes
@@ -79,7 +88,6 @@ const reducer = (state, action) => {
       return state;
   }
 };
-const defaultState = { nodes: {}, positions: [], indexes: {}, size: 0 };
 
 /**
  * @description Reuseable Hook for managing focusable elements (ex: within a menu or a nav bar). Allows for tabbing and arrow key navigation between nodes, based off their visual hierarchy.
@@ -101,11 +109,13 @@ export function useRovingFocus() {
     e => {
       switch (e.keyCode) {
         case TAB_KEY_CODE:
+        case RIGHT_KEY_CODE:
         case DOWN_KEY_CODE: {
           cancelEvent(e);
           setFocus(currentFocus === size - 1 ? 0 : currentFocus + 1);
           break;
         }
+        case LEFT_KEY_CODE:
         case UP_KEY_CODE: {
           cancelEvent(e);
           setFocus(currentFocus === 0 ? size - 1 : currentFocus - 1);
@@ -136,15 +146,21 @@ export function useRovingFocus() {
     };
   }, [handleKeyDown]);
 
-  return { currentFocus, size, indexes, setFocus, addTarget, removeTarget };
+  return {
+    currentFocus,
+    size,
+    indexes,
+    setFocus,
+    addTarget,
+    removeTarget,
+  };
 }
 
 export const RovingFocusContext = React.createContext();
 
 /**
- *
- * @param {*} param0
- * @returns
+ * @description Context provider for Roving Focus state for use with asFocusItem HOC
+ * @param {asFocusItem} param.children Wrapped component that contains a asFocusItem HOC somewhere in its tree
  */
 const FocusContext = ({ children }) => {
   const focusState = useRovingFocus();

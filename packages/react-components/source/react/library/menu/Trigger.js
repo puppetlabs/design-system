@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { has } from 'lodash';
 import Button from '../button';
-import MenuContext from './context';
+import MenuContext from '../../internal/popup-menus/menu-context';
 
 const TriggerPropTypes = {
   as: PropTypes.oneOfType([PropTypes.string, PropTypes.func, PropTypes.object]),

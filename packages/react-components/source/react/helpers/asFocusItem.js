@@ -6,7 +6,10 @@ import React, {
   useCallback,
 } from 'react';
 import { uniqueId } from 'lodash';
+import classNames from 'classnames';
 import { RovingFocusContext, getTabIndexId } from './useRovingFocus';
+import MenuContext from '../internal/popup-menus/menu-context';
+import { ENTER_KEY_CODE } from '../constants';
 
 /**
  * @description HOC that adds roving focus to a component. Meant to be used with the RovingFocusProvider, it wraps the menu item component and adds the necessary props and event handlers to make it focusable, keeping the focus order according to it's visual position on the page.
@@ -14,11 +17,11 @@ import { RovingFocusContext, getTabIndexId } from './useRovingFocus';
  * @note The wrapped component must accept an inputRef prop and forward it to the element that should be focused.
  * @returns {
  * RovingFocusContext.Consumer > MenuItemHOC(WrappedComponent)}
- *
  */
-const asMenuItem = (WrappedComponent, withoutOnClick = false) => {
-  // Wrap the component in a provider that uses the context props
+const asFocusItem = WrappedComponent => {
+  // Wrap the component in a providers that uses the context props
   const MenuItem = componentProps => {
+    const { closeMenu, closeOnSelect } = useContext(MenuContext);
     const {
       currentFocus,
       setFocus,
@@ -26,6 +29,7 @@ const asMenuItem = (WrappedComponent, withoutOnClick = false) => {
       removeTarget,
       indexes,
     } = useContext(RovingFocusContext);
+
     const [ref, setRef] = useState(null);
     const { current: id } = useRef(uniqueId(getTabIndexId(componentProps)));
     const [position, setPosition] = useState(null);
@@ -39,7 +43,7 @@ const asMenuItem = (WrappedComponent, withoutOnClick = false) => {
           setPosition(node.getBoundingClientRect());
         }
       },
-      [index, currentFocus],
+      [currentFocus, focus],
     );
 
     useEffect(() => {
@@ -55,32 +59,50 @@ const asMenuItem = (WrappedComponent, withoutOnClick = false) => {
 
     useEffect(() => {
       if (focus && ref) {
-        // Move element into view when it is focused
+        // Move element into view when it is focused and apply focus styles
+        ref.className = classNames(ref.className, { focus });
         ref.focus();
+      } else if (!focus && ref) {
+        // Remove focus styles when the element is not focused
+        ref.className = ref.className.replace(' focus', '');
       }
-    }, [index, currentFocus]);
+    }, [focus]);
 
     // Wrap the component's onClick handler to also set the focus onClick
     const handleSelect = (...args) => {
-      setFocus(index);
       const { onClick } = componentProps;
-      if (onClick && !withoutOnClick) {
+      setFocus(index);
+      if (onClick) {
         onClick(...args);
+        if (closeMenu && closeOnSelect) closeMenu();
+      }
+    };
+
+    const handleKeyDown = (...args) => {
+      const [event] = args;
+      setFocus(index);
+
+      const { onClick } = componentProps;
+      if (onClick && event && event.keyCode === ENTER_KEY_CODE) {
+        onClick(...args);
+        if (closeMenu && closeOnSelect) closeMenu();
       }
     };
 
     return (
       <WrappedComponent
         {...componentProps}
-        onClick={handleSelect}
-        role="menuitem"
         inputRef={setRefNode}
+        onClick={handleSelect}
+        className={classNames(componentProps.className, { focus })}
+        onKeyDown={handleKeyDown}
+        role="menuitem"
         tabIndex={focus ? 0 : -1}
       />
     );
   };
 
-  MenuItem.displayName = `MenuItem(${WrappedComponent.displayName ||
+  MenuItem.displayName = `FocusItem(${WrappedComponent.displayName ||
     WrappedComponent.name})`;
   MenuItem.defaultProps = {
     ...WrappedComponent.defaultProps,
@@ -88,4 +110,4 @@ const asMenuItem = (WrappedComponent, withoutOnClick = false) => {
   return MenuItem;
 };
 
-export default asMenuItem;
+export default asFocusItem;

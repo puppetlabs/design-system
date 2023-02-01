@@ -4,11 +4,11 @@ import {
   entries,
   groupBy,
   sortBy,
-  xor,
   values,
   keyBy,
   uniqueId,
   remove,
+  xor,
 } from 'lodash';
 import PropTypes from 'prop-types';
 import Input from '../../../library/input';
@@ -17,9 +17,12 @@ import Badge from '../../../library/badge';
 import Button from '../../../library/button';
 import SearchMenuGroup, { getUniqKey } from './SearchMenuGroup';
 import Container from '../../../library/menu/Container';
-import asMenuItem from '../../../helpers/asMenuItem';
+import asFocusItem from '../../../helpers/asFocusItem';
 
-const MenuInput = asMenuItem(Input);
+const MenuInput = asFocusItem(Input);
+const MenuButton = asFocusItem(({ inputRef, ...props }) => (
+  <Button ref={inputRef} {...props} />
+));
 
 export const defaultFilter = (opts = [], search) => {
   const searchIncludes = str =>
@@ -32,82 +35,88 @@ export const defaultFilter = (opts = [], search) => {
 };
 
 const propTypes = {
-  items: PropTypes.arrayOf(PropTypes.shape({})),
+  /** Array of options to display. Each option should be an object with a label and value. the `group` prop can be set to group similar items. Items without a group will be displayed without a group header */
+  options: PropTypes.arrayOf(PropTypes.shape({})),
+  /** Object of styles to apply to the search menu. */
   style: PropTypes.shape({}),
+  /** Label displayed on search input */
   searchLabel: PropTypes.string,
+  /** Placeholder displayed on search input */
   searchPlaceholder: PropTypes.string,
+  /** Function used to filter the options. By default, the filter compares the search query to the group and label props on an option. */
   filterBy: PropTypes.func,
+  /** Function called when the search menu is closed. */
   onClose: PropTypes.func,
+  /** Function called when the apply button is clicked. Receives an array of selected options as an argument. */
   onApply: PropTypes.func,
+  /** Number of columns to display per row. Can ab a boolean or number. If false, options will be displayed in a single column. If true, options will be displayed in two columns. A number can be passed to define columns of 3 or greater. */
   columns: PropTypes.oneOfType([PropTypes.bool, PropTypes.number]),
+  /** Label displayed on cancel button */
   cancelButtonLabel: PropTypes.string,
+  /** Type of cancel button */
   cancelButtonType: PropTypes.oneOf([
     'primary',
     'secondary',
     'tertiary',
     'text',
   ]),
+  /** Label displayed onApply button */
   applyButtonLabel: PropTypes.string,
+  /** Type of apply button */
   applyButtonType: PropTypes.oneOf([
     'primary',
     'secondary',
     'tertiary',
     'text',
   ]),
+  /** Array of selected options. Each option should be an object with a label and value. */
   selected: PropTypes.arrayOf(PropTypes.shape({})),
+  /** Boolean indicating whether the search menu is open. */
   open: PropTypes.bool,
+  /** Function called when the search menu is blurred. */
   onBlur: PropTypes.func,
+  /** Function called when the escape key is pressed. */
   onEscape: PropTypes.func,
+  /** Render Prop for displaying something other than grouped checkboxes in the search list */
   renderItems: PropTypes.func,
+  /** Label displayed in clear badge */
   clearLabel: PropTypes.string,
+  /** Label of selected count. If a function is provided, the selected count is passed to it. */
   selectedLabel: PropTypes.oneOfType([PropTypes.string, PropTypes.func]),
+  /** Position of ungrouped items. Can be 'top' or 'bottom'. Defaults to 'bottom' */
   ungroupedPosition: PropTypes.oneOf(['top', 'bottom']),
+  /** Display arrow on menu */
   arrow: PropTypes.bool,
+  /** Displays the text input for the default search menu. If set to false, this input will be hidden and the options can be filtered externally. */
+  displayInput: PropTypes.bool,
+  /** Displays the apply and cancel buttons for the default search menu. If set to false, these buttons will be hidden and the options can be filtered externally. */
+  displayButtons: PropTypes.bool,
 };
 
 const defaultProps = {
-  /** Label displayed onApply button */
   applyButtonLabel: 'Apply',
-  /** Type of apply button */
   applyButtonType: 'primary',
-  /** Display arrow on menu */
   arrow: false,
-  /** Label displayed on cancel button */
   cancelButtonLabel: 'Cancel',
-  /** Type of cancel button */
   cancelButtonType: 'tertiary',
-  /** Label displayed in clear badge */
   clearLabel: 'Clear selection',
-  /** Number of columns to display per row. Can ab a boolean or number. If false, options will be displayed in a single column. If true, options will be displayed in two columns. A number can be passed to define columns of 3 or greater. */
   columns: false,
-  /** Function used to filter the options. By default, the filter compares the search query to the group and label props on an option. */
   filterBy: undefined,
-  /** Array of options to display. Each option should be an object with a label and value. the `group` prop can be set to group similar items. Items without a group will be displayed without a group header */
-  items: [],
-  /** Render Prop for displaying something other than grouped checkboxes in the search list */
+  options: [],
   renderItems: null,
-  /** Function called when the apply button is clicked. Receives an array of selected options as an argument. */
   onApply: () => null,
-  /** Function called when the search menu is blurred. */
   onBlur: undefined,
-  /** Function called when the search menu is closed. */
   onClose: () => null,
-  /** Function called when the escape key is pressed. */
   onEscape: undefined,
-  /** Boolean indicating whether the search menu is open. */
   open: false,
-  /** Label displayed on search input */
   searchLabel: 'search',
-  /** Placeholder displayed on search input */
   searchPlaceholder: 'Search....',
-  /** Array of selected options. Each option should be an object with a label and value. */
   selected: [],
-  /** Object of styles to apply to the search menu. */
   style: {},
-  /** Label of selected count. If a function is provided, the selected count is passed to it. */
   selectedLabel: 'selected',
-  /** Position of ungrouped items. Can be 'top' or 'bottom' */
   ungroupedPosition: 'bottom',
+  displayInput: true,
+  displayButtons: true,
 };
 const SearchMenu = ({
   applyButtonLabel,
@@ -116,7 +125,7 @@ const SearchMenu = ({
   cancelButtonType,
   columns,
   filterBy,
-  items: itemsProp,
+  options: itemsProp,
   onApply,
   onBlur,
   onClose,
@@ -129,6 +138,8 @@ const SearchMenu = ({
   clearLabel,
   ungroupedPosition,
   renderItems: Renderer,
+  displayInput,
+  displayButtons,
   style,
   arrow,
 }) => {
@@ -136,11 +147,15 @@ const SearchMenu = ({
   const filterOptions = filterBy || defaultFilter;
   const [items, setItems] = useState([]);
   const [searchString, setSearchString] = useState();
-  const [openMenus, setOpenMenus] = useState([]);
   const [selectedOptions, setSelectedOptions] = useState({});
+  const [openMenus, setOpenMenus] = useState([]);
 
   const onClearSelected = () => setSelectedOptions({});
 
+  // Search
+  const onSearch = search => {
+    setSearchString(search);
+  };
   // Grouping
   const grouper = item => item.group || '#collector-group';
   const groupOptions = entries(groupBy(items, grouper));
@@ -203,18 +218,22 @@ const SearchMenu = ({
       open={open}
       onBlur={onBlur}
       onEscape={onEscape}
+      onClose={onClose}
       className="rc-search-menu"
+      closeOnSelect={false}
     >
       <div className="rc-search-menu-search">
-        <MenuInput
-          name="search"
-          label={searchLabel}
-          placeholder={searchPlaceholder}
-          value={searchString}
-          trailingButtonIcon="search"
-          trailingButtonProps={{ 'aria-label': 'Search tags' }}
-          onChange={setSearchString}
-        />
+        {displayInput && (
+          <MenuInput
+            name="search"
+            label={searchLabel}
+            placeholder={searchPlaceholder}
+            value={searchString}
+            trailingButtonIcon="search"
+            trailingButtonProps={{ 'aria-label': 'Search tags' }}
+            onChange={onSearch}
+          />
+        )}
         <Text
           className="rc-search-menu-list-selected-text"
           size="small"
@@ -242,24 +261,35 @@ const SearchMenu = ({
             <GroupRenderer
               title={groupName}
               items={groupItems}
-              toggleGroup={toggleThisGroup}
-              isOpen={isOpen}
               columns={columns}
               onSelect={onSelect}
+              toggleGroup={toggleThisGroup}
+              isOpen={isOpen}
               selectedOptions={selectedOptions}
+              isGroupCollector={groupName === '#collector-group'}
               id={uniqueId(`${groupName}-`)}
             />
           );
         })}
       </div>
-      <div className="rc-search-menu-buttons">
-        <Button onClick={onClose} type={cancelButtonType}>
-          {cancelButtonLabel}
-        </Button>
-        <Button onClick={applySelection} type={applyButtonType}>
-          {applyButtonLabel}
-        </Button>
-      </div>
+      {displayButtons && (
+        <div className="rc-search-menu-buttons">
+          <MenuButton
+            id={cancelButtonLabel}
+            onClick={onClose}
+            type={cancelButtonType}
+          >
+            {cancelButtonLabel}
+          </MenuButton>
+          <MenuButton
+            id={applyButtonLabel}
+            onClick={applySelection}
+            type={applyButtonType}
+          >
+            {applyButtonLabel}
+          </MenuButton>
+        </div>
+      )}
     </Container>
   );
 };

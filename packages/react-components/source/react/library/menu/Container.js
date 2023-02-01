@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { has } from 'lodash';
 import classNames from 'classnames';
-import MenuContext from './context';
+import MenuContext from '../../internal/popup-menus/menu-context';
 import Arrow from './Arrow';
 import { ESC_KEY_CODE } from '../../constants';
 import Portal from '../portal';
@@ -17,10 +17,13 @@ const MenuPropTypes = {
   style: PropTypes.shape({}),
   open: PropTypes.bool,
   closeOnBlur: PropTypes.bool,
+  closeOnEscape: PropTypes.bool,
+  closeOnSelect: PropTypes.bool,
   onBlur: PropTypes.func,
   onEscape: PropTypes.func,
   onClose: PropTypes.func,
 };
+
 const MenuDefaultProps = {
   as: 'div',
   asPortal: true,
@@ -28,21 +31,26 @@ const MenuDefaultProps = {
   children: null,
   arrow: false,
   style: {},
-  open: false,
+  open: null,
   closeOnBlur: true,
+  closeOnEscape: true,
+  closeOnSelect: true,
   onBlur: undefined,
   onEscape: undefined,
   onClose: undefined,
 };
-const Menu = ({
+
+const MenuContainer = ({
   as: Element,
-  asPortal = true,
+  asPortal,
   className,
   children,
-  arrow = false,
+  arrow,
   style,
-  open = false,
-  closeOnBlur = true,
+  open,
+  closeOnBlur,
+  closeOnEscape,
+  closeOnSelect,
   onBlur,
   onClose,
   onEscape,
@@ -56,8 +64,12 @@ const Menu = ({
     styles,
     isOpen,
     closeMenu,
+    openMenu,
+    setCloseOnSelect,
+    closeOnSelect: closeOnSelectProvider,
   } = useContext(MenuContext);
 
+  const hideMenu = !isOpen || open === false;
   const ref = has(Element.propTypes || {}, 'inputRef')
     ? { inputRef: menuRef }
     : { ref: menuRef };
@@ -66,34 +78,49 @@ const Menu = ({
     closeMenu();
     if (onClose) onClose();
   };
-  // Handle click outside, escape, or onBlur events
+
   useEffect(() => {
-    const handleClickOutside = event => {
+    // Handle click outside, select, or blur events
+    const handleClick = event => {
       const menu = document.getElementById(menuId);
-      if (!menu || (!menu.contains(event.target) && closeOnBlur)) {
+      if (!hideMenu && !menu.contains(event.target) && closeOnBlur) {
         if (onBlur) onBlur();
-        closeMenu();
+        close();
       }
     };
 
-    const handleEscape = event => {
+    // Handle escape events
+    const handleKeyDown = event => {
       const escapeFunc = onEscape;
-      if (escapeFunc && event.keyCode === ESC_KEY_CODE) {
-        escapeFunc();
-        closeMenu();
+      if (!hideMenu && closeOnEscape && event.keyCode === ESC_KEY_CODE) {
+        if (escapeFunc) escapeFunc();
+        close();
       }
     };
 
-    document.addEventListener('keydown', handleEscape, true);
-    document.addEventListener('click', handleClickOutside, true);
+    document.addEventListener('keydown', handleKeyDown, true);
+    document.addEventListener('click', handleClick, true);
     return () => {
-      document.removeEventListener('keydown', handleEscape, true);
-      document.removeEventListener('click', handleClickOutside, true);
-      close();
+      document.removeEventListener('keydown', handleKeyDown, true);
+      document.removeEventListener('click', handleClick, true);
     };
-  }, [onBlur]);
+  }, [onBlur, onEscape, closeOnBlur, closeOnEscape, closeOnSelect, hideMenu]);
 
-  if (!open || !isOpen) return null;
+  // Control internal open state from 'open' prop if provided
+  useEffect(() => {
+    if (open === false && isOpen) close();
+    if (open && !isOpen) {
+      openMenu();
+    }
+  }, [open, isOpen]);
+
+  useEffect(() => {
+    if (closeOnSelect !== closeOnSelectProvider) {
+      setCloseOnSelect(closeOnSelect);
+    }
+  }, [closeOnSelect]);
+
+  if (hideMenu) return null;
   return (
     <Portal active={asPortal} target="popup-menu">
       <FocusContext>
@@ -119,7 +146,7 @@ const Menu = ({
     </Portal>
   );
 };
-Menu.defaultProps = MenuDefaultProps;
-Menu.propTypes = MenuPropTypes;
+MenuContainer.defaultProps = MenuDefaultProps;
+MenuContainer.propTypes = MenuPropTypes;
 
-export default Menu;
+export default MenuContainer;

@@ -60,9 +60,9 @@ const onTagClick = () => {
   </div>
 </div>;
 ```
-### Tag Filter
+### Tag Search
 
-Creates a list of tags from a menu of searchable / filterable options. Options will be grouped together based on the `group` property. Options without a group are displayed without a group header.
+Creates a list of tags from a menu of searchable / filterable options. Menu options will be grouped together based on the `group` property. Options without a group are displayed without a group header.
 
 ```jsx
 import React from 'react';
@@ -111,24 +111,17 @@ console.log('Selected', selected);
 const selectedText = (count) => `${count} ${count === 1 ? 'tag' : 'tags'} selected`; 
 
 <div>
-<Button style={{marginBottom: '8px'}} onClick={() => {
-	if(!selected.some(f => f.name === options[1].name)){
-		onApply([...selected, options[1]])
-	}
-	}}>Terminate</Button>
-  <div>
   {selected.reduce((acc, curr) => acc += ` ${curr.name};`, '')}
-    <Tag.Filter
+    <Tag.Search
 	  open={false}
 	  onApply={onApply}
 	  options={options}
 	  selected={selected}
 	  selectedLabel={selectedText}
 	  clearLabel="Clear selected tags"
-	  applyButtonLabel="Apply filters"
 	  columns
     />
-  </div>
+
 </div>
 
 ```
@@ -136,3 +129,4 @@ const selectedText = (count) => `${count} ${count === 1 ? 'tag' : 'tags'} select
 
 - [Badge](#/React%20Components/Badge)
 - [Button](#/React%20Components/Button)
+- [Menu.Search](#/React%20Components/Menu)

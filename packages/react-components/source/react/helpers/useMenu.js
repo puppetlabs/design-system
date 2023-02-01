@@ -1,6 +1,7 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { usePopper } from 'react-popper';
 import { uniqueId } from 'lodash';
+import useMutationObserver from './useMutationObserver';
 
 /**
  *@description Hook that returns the necessary refs and event handlers to make a popper.js menu component.
@@ -17,11 +18,14 @@ const useMenu = ({ popperOptions }) => {
   /** Ref of the optional arrow element */
   const [arrowRef, setArrowRef] = useState(null);
 
+  const [closeOnSelect, setCloseOnSelect] = useState(true);
+
   const { current: menuId } = useRef(uniqueId(`menu-`));
   const { current: menuTriggerId } = useRef(uniqueId(`menu-trigger-`));
   const { current: menuArrowId } = useRef(uniqueId(`menu-arrow-`));
 
   const popperModifiers = [
+    // sameWidth,
     {
       name: 'flip',
       enabled: true,
@@ -57,20 +61,50 @@ const useMenu = ({ popperOptions }) => {
     ...popperOptions,
   });
 
-  // Focus on a node by id
-  const focusOnId = node => () => {
+  // Focus on a node
+  const focusOnNode = node => () => {
     if (node) node.focus();
   };
 
-  const focusMenu = focusOnId(menuRef);
-  const focusTrigger = focusOnId(triggerRef);
+  const focusMenu = focusOnNode(menuRef);
+  const focusTrigger = focusOnNode(triggerRef);
 
+  useEffect(() => {
+    // Update the menu after a click or keydown event to ensure the menu is positioned correctly after the DOM has updated
+    const handleUpdate = () => {
+      if (update) setTimeout(update, 10);
+    };
+
+    document.addEventListener('click', handleUpdate, true);
+    document.addEventListener('keydown', handleUpdate, true);
+    document.addEventListener('scroll', handleUpdate, true);
+    document.addEventListener('resize', handleUpdate, true);
+
+    return () => {
+      document.removeEventListener('click', handleUpdate, true);
+      document.removeEventListener('keydown', handleUpdate, true);
+      document.removeEventListener('scroll', handleUpdate, true);
+      document.removeEventListener('resize', handleUpdate, true);
+    };
+  }, [triggerRef, update]);
+
+  const handleUpdate = useCallback(
+    (...args) => {
+      console.log('menuChanged', args);
+    },
+    [menuRef, update],
+  );
+
+  useMutationObserver(menuRef, handleUpdate);
   return {
     menuRef: setMenu,
+    currentMenuRef: menuRef,
     triggerRef: setTrigger,
     arrowRef: setArrowRef,
     focusMenu,
     focusTrigger,
+    setCloseOnSelect,
+    closeOnSelect,
     styles,
     attributes,
     update,

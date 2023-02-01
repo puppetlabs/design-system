@@ -1,10 +1,20 @@
 $arrow-size: 8px;
 $arrow-offset: -4px;
+
 #rc-popup-menu-arrow,
 .rc-popup-menu {
 	z-index: 10;
 	background-color: $puppet-white;
+	.focus:focus-visible {
+		outline: none;
+	}
+
+	.focus:focus {
+		box-shadow: $puppet-common-focus-outline;
+		border-radius: $puppet-common-border-radius;
+	}
 }
+
 .rc-popup-menu {
 	box-shadow: $puppet-common-elevation-200;
 	position: absolute;

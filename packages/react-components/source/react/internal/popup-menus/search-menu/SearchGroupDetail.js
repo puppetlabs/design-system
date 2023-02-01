@@ -1,15 +1,16 @@
 import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
-import asMenuItem from '../../../helpers/asMenuItem';
+import asFocusItem from '../../../helpers/asFocusItem';
 import Detail from '../../../library/detail';
 
-const GroupHeadingPropTypes = {
+const GroupDetailPropTypes = {
   title: PropTypes.string,
   show: PropTypes.bool,
   isOpen: PropTypes.bool,
   inputRef: PropTypes.oneOfType([PropTypes.shape({}), PropTypes.func]),
   id: PropTypes.string,
+  ...Detail.propTypes,
 };
 
 const defaultProps = {
@@ -19,9 +20,8 @@ const defaultProps = {
   title: '',
   id: '',
 };
-// eslint-disable-next-line react/prop-types
-const GroupHeading = ({ title, show, open, onClick, ...props }) =>
-  // eslint-disable-next-line react/prop-types, react/destructuring-assignment
+
+const GroupDetail = ({ title, show, open, onClick, children, ...props }) =>
   show ? (
     <Detail
       {...props}
@@ -32,13 +32,14 @@ const GroupHeading = ({ title, show, open, onClick, ...props }) =>
       open={open}
       arrow="after"
       divider={false}
-    />
+    >
+      {children}
+    </Detail>
   ) : (
-    // eslint-disable-next-line react/destructuring-assignment, react/prop-types
-    props.children
+    children
   );
 
-GroupHeading.propTypes = GroupHeadingPropTypes;
-GroupHeading.defaultProps = defaultProps;
+GroupDetail.propTypes = GroupDetailPropTypes;
+GroupDetail.defaultProps = defaultProps;
 
-export default asMenuItem(GroupHeading);
+export default asFocusItem(GroupDetail);

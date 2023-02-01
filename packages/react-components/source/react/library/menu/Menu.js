@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import useMenu from '../../helpers/useMenu';
-import MenuContext from './context';
+import MenuContext from '../../internal/popup-menus/menu-context';
 import Trigger from './Trigger';
-import Container from './Container';
-import asMenuItem from '../../helpers/asMenuItem';
+import MenuContainer from './Container';
+import asFocusItem from '../../helpers/asFocusItem';
 import SearchMenu from '../../internal/popup-menus/search-menu';
 
 const MenuPropTypes = {
-  className: PropTypes.string,
+  /** Can be any component(s), but is meant to be the `Menu.Trigger` & `Menu.Container` components */
   children: PropTypes.node,
 };
 
 const MenuDefaultProps = {
-  className: '',
   children: null,
 };
 
@@ -35,8 +34,10 @@ Menu.propTypes = MenuPropTypes;
 Menu.defaultProps = MenuDefaultProps;
 
 Menu.Trigger = Trigger;
-Menu.Container = Container;
+Menu.Container = MenuContainer;
+Menu.Item = asFocusItem;
+
+// Ideally, we keep extending the Menu component with other menu types
 Menu.SearchMenu = SearchMenu;
-Menu.Item = asMenuItem;
 
 export default Menu;

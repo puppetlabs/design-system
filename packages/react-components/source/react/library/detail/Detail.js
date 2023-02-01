@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
+import scrollIntoView from 'scroll-into-view-if-needed';
 import { ENTER_KEY_CODE } from '../../constants';
 
 const DetailPropTypes = {
@@ -30,6 +31,8 @@ const DetailPropTypes = {
   unmountOnClose: PropTypes.bool,
   /** The id (key) to be used for the detail dropdown */
   id: PropTypes.string,
+  /** The style to be used for the detail dropdown */
+  style: PropTypes.shape({}),
 };
 
 const defaultProps = {
@@ -46,6 +49,7 @@ const defaultProps = {
   arrow: 'before',
   unmountOnClose: true,
   id: ``,
+  style: undefined,
 };
 
 const Detail = ({
@@ -62,9 +66,10 @@ const Detail = ({
   arrow,
   unmountOnClose,
   id,
+  style,
 }) => {
   const [showContent, setShowContent] = useState(false);
-
+  const contentRef = useRef(null);
   const showContentToggle = ({ currentTarget = {} }) => {
     if (!!showContent !== currentTarget.open) {
       if (currentTarget.open && onOpen) onOpen();
@@ -80,11 +85,20 @@ const Detail = ({
     }
   }, [open, disabled]);
 
+  useEffect(() => {
+    // Scroll into view if the content is open
+    if (showContent && contentRef.current) {
+      scrollIntoView(contentRef.current, {
+        inline: 'end',
+        scrollMode: 'nearest',
+      });
+    }
+  }, [showContent]);
+
   const keyToggle = e =>
     e.key === ENTER_KEY_CODE ? showContentToggle(e) : null;
 
   const unmount = unmountOnClose && !showContent;
-
   return (
     <details
       className={classNames(
@@ -97,6 +111,7 @@ const Detail = ({
       onToggle={showContentToggle}
       open={showContent}
       itemID={id || title}
+      style={style}
     >
       <summary
         ref={inputRef}
@@ -106,7 +121,7 @@ const Detail = ({
       >
         <Element>{title}</Element>
       </summary>
-      {unmount ? null : children}
+      {unmount ? null : <div ref={contentRef}>{children}</div>}
     </details>
   );
 };
