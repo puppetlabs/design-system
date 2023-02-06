@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React, { useCallback, useState, useEffect, useReducer } from 'react';
-import { sortBy } from 'lodash';
+import { sortBy, uniqueId } from 'lodash';
 import { cancelEvent } from './statics';
 import {
   UP_KEY_CODE,
@@ -18,13 +18,12 @@ import {
  * @returns
  */
 export const getTabIndexId = (props = {}) =>
-  props.tabId ||
   props.id ||
   props.key ||
   props.name ||
   props.label ||
   props.title ||
-  '';
+  uniqueId('tab-index-id-');
 
 /**
  * @description maps and array of nodes to this component's tab index id

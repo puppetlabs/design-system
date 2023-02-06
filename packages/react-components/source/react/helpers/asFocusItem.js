@@ -5,7 +5,6 @@ import React, {
   useState,
   useCallback,
 } from 'react';
-import { uniqueId } from 'lodash';
 import classNames from 'classnames';
 import { RovingFocusContext, getTabIndexId } from './useRovingFocus';
 import MenuContext from '../internal/popup-menus/menu-context';
@@ -31,7 +30,7 @@ const asFocusItem = WrappedComponent => {
     } = useContext(RovingFocusContext);
 
     const [ref, setRef] = useState(null);
-    const { current: id } = useRef(uniqueId(getTabIndexId(componentProps)));
+    const { current: id } = useRef(getTabIndexId(componentProps));
     const [position, setPosition] = useState(null);
     const index = indexes[id];
     const focus = index === currentFocus;
@@ -102,8 +101,7 @@ const asFocusItem = WrappedComponent => {
     );
   };
 
-  MenuItem.displayName = `FocusItem(${WrappedComponent.displayName ||
-    WrappedComponent.name})`;
+  MenuItem.displayName = `FocusItem`;
   MenuItem.defaultProps = {
     ...WrappedComponent.defaultProps,
   };
