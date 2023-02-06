@@ -60,6 +60,7 @@ const onTagClick = () => {
   </div>
 </div>;
 ```
+
 ### Tag Search
 
 Creates a list of tags from a menu of searchable / filterable options. Menu options will be grouped together based on the `group` property. Options without a group are displayed without a group header.
@@ -70,61 +71,62 @@ import Button from '../Button';
 
 const [selected, onApply] = React.useState([]);
 
-const options = [{
-	group: 'Humans',
-	name: "sara",
-	label: "Sarah Connor",
-	
-}, {
-	group: 'Robots',
-	name: "terminator",
-	label: "Terminator"
-},
-{
-	group: 'Robots',
-	name: "johnny",
-	label: "Johnny 5",
-},
-{
-	group: 'Humans',
-	name: "rocky",
-	label: "Rocky Balboa"
-},
-{
-	group: 'Robots',
-	name: "optimus",
-	label: "Optimus Prime",
-},
-{
-	group: 'Robots',
-	name: "hal",
-	label: "Hal",
-},
-{
-	group: 'Animals',
-	name: "donald",
-	label: "Donald Duck"
-}, 
+const options = [
+  {
+    group: 'Humans',
+    name: 'sara',
+    label: 'Sarah Connor',
+  },
+  {
+    group: 'Robots',
+    name: 'terminator',
+    label: 'Terminator',
+  },
+  {
+    group: 'Robots',
+    name: 'johnny',
+    label: 'Johnny 5',
+  },
+  {
+    group: 'Humans',
+    name: 'rocky',
+    label: 'Rocky Balboa',
+  },
+  {
+    group: 'Robots',
+    name: 'optimus',
+    label: 'Optimus Prime',
+  },
+  {
+    group: 'Robots',
+    name: 'hal',
+    label: 'Hal',
+  },
+  {
+    group: 'Animals',
+    name: 'donald',
+    label: 'Donald Duck',
+  },
 ];
 
 console.log('Selected', selected);
-const selectedText = (count) => `${count} ${count === 1 ? 'tag' : 'tags'} selected`; 
+const selectedText = count =>
+  `${count} ${count === 1 ? 'tag' : 'tags'} selected`;
 
 <div>
-  {selected.reduce((acc, curr) => acc += ` ${curr.name};`, '')}
-    <Tag.Search
-	  open={false}
-	  onApply={onApply}
-	  options={options}
-	  selected={selected}
-	  selectedLabel={selectedText}
-	  clearLabel="Clear selected tags"
-	  columns
-    />
-
-</div>
-
+  {selected.reduce((acc, curr) => (acc += ` ${curr.name};`), '')}
+  <Tag.Search
+    open={false}
+    onApply={onApply}
+    options={options}
+    selected={selected}
+    selectedLabel={selectedText}
+    clearLabel="Clear selected tags"
+    columns
+  />
+</div>;
 ```
+
 ## Related
 
 - [Badge](#/React%20Components/Badge)

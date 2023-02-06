@@ -95,8 +95,8 @@ const reducer = (state, action) => {
  * @link https://opensource.adobe.com/spectrum-web-components/tools/roving-tab-index/
  * @returns Roving focus state and action handlers
  */
-export function useRovingFocus() {
-  const [currentFocus, setFocus] = useState(0);
+export function useRovingFocus(setFocusOnOpen) {
+  const [currentFocus, setFocus] = useState(setFocusOnOpen ? 0 : -1);
   const [{ size, indexes }, dispatch] = useReducer(reducer, defaultState);
   const removeNode = node => dispatch({ type: 'remove', node });
   const addNode = node => dispatch({ type: 'add', node });
@@ -161,8 +161,8 @@ export const RovingFocusContext = React.createContext();
  * @description Context provider for Roving Focus state for use with asFocusItem HOC
  * @param {asFocusItem} param.children Wrapped component that contains a asFocusItem HOC somewhere in its tree
  */
-const FocusContext = ({ children }) => {
-  const focusState = useRovingFocus();
+const FocusContext = ({ children, setFocusOnOpen }) => {
+  const focusState = useRovingFocus(setFocusOnOpen);
   return (
     <RovingFocusContext.Provider value={focusState}>
       {children}

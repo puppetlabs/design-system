@@ -22,6 +22,7 @@ const MenuPropTypes = {
   onBlur: PropTypes.func,
   onEscape: PropTypes.func,
   onClose: PropTypes.func,
+  setFocusOnOpen: PropTypes.bool,
 };
 
 const MenuDefaultProps = {
@@ -38,6 +39,7 @@ const MenuDefaultProps = {
   onBlur: undefined,
   onEscape: undefined,
   onClose: undefined,
+  setFocusOnOpen: true,
 };
 
 const MenuContainer = ({
@@ -51,6 +53,7 @@ const MenuContainer = ({
   closeOnBlur,
   closeOnEscape,
   closeOnSelect,
+  setFocusOnOpen,
   onBlur,
   onClose,
   onEscape,
@@ -123,7 +126,7 @@ const MenuContainer = ({
   if (hideMenu) return null;
   return (
     <Portal active={asPortal} target="popup-menu">
-      <FocusContext>
+      <FocusContext setFocusOnOpen={setFocusOnOpen}>
         <Element
           {...ref}
           {...props}

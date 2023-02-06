@@ -1,7 +1,6 @@
-import { useRef, useState, useEffect, useCallback } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { usePopper } from 'react-popper';
 import { uniqueId } from 'lodash';
-import useMutationObserver from './useMutationObserver';
 
 /**
  *@description Hook that returns the necessary refs and event handlers to make a popper.js menu component.
@@ -25,7 +24,6 @@ const useMenu = ({ popperOptions }) => {
   const { current: menuArrowId } = useRef(uniqueId(`menu-arrow-`));
 
   const popperModifiers = [
-    // sameWidth,
     {
       name: 'flip',
       enabled: true,
@@ -35,7 +33,6 @@ const useMenu = ({ popperOptions }) => {
       enabled: !!arrowRef,
       options: {
         element: arrowRef,
-        // padding: 1,
         offset: [0, 6],
       },
     },
@@ -88,14 +85,6 @@ const useMenu = ({ popperOptions }) => {
     };
   }, [triggerRef, update]);
 
-  const handleUpdate = useCallback(
-    (...args) => {
-      console.log('menuChanged', args);
-    },
-    [menuRef, update],
-  );
-
-  useMutationObserver(menuRef, handleUpdate);
   return {
     menuRef: setMenu,
     currentMenuRef: menuRef,
