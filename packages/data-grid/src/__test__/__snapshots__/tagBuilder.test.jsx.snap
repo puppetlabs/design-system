@@ -36,6 +36,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         type="primary"
       >
         <div
+          class="dg-filter-tag dg-filter-tag-0"
           className="rc-tag rc-tag-primary rc-tag-bold"
         >
           <div
@@ -122,6 +123,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         type="primary"
       >
         <div
+          class="dg-filter-tag dg-filter-tag-1"
           className="rc-tag rc-tag-primary rc-tag-bold"
         >
           <div
