@@ -50,3 +50,14 @@
     }
   }
 }
+
+.rc-tag-filter {
+  background-color: $puppet-white;
+  border: $puppet-common-border;
+  border-radius: $puppet-common-border-radius;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: $puppet-common-spacing-base;
+  padding: $puppet-common-spacing-base * 2 $puppet-common-spacing-base * 3;
+}

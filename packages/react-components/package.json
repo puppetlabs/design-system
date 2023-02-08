@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-components",
-  "version": "5.33.9",
+  "version": "5.34.0",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "build/library.js",
@@ -83,6 +83,7 @@
     "classnames": "^2.2.6",
     "core-js": "^3.6.5",
     "hoist-non-react-statics": "^3.3.1",
+    "lodash": "^4.17.21",
     "prop-types": "^15.7.2",
     "react-modal": "^3.11.2",
     "react-popper": "^2.2.5",

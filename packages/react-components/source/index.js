@@ -15,6 +15,7 @@ import Code from './react/library/code';
 import ConfirmationModal from './react/library/confirmation-modal';
 import Content from './react/library/content';
 import Copy from './react/library/copy';
+import Detail from './react/library/detail';
 import Drawer from './react/library/drawer';
 import Filters from './react/library/filters';
 import Form from './react/library/form';
@@ -57,6 +58,7 @@ export {
   Content,
   Copy,
   Drawer,
+  Detail,
   Filters,
   Form,
   Heading,
