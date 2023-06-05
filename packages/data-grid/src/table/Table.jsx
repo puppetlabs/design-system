@@ -212,7 +212,7 @@ class Table extends Component {
               <tr className="rc-table-cell">
                 <th
                   className="dg-table-loading-container"
-                  colSpan={columns.length}
+                  colSpan={selectable ? columns.length + 1 : columns.length}
                 >
                   <div className="dg-table-loading-inner-container">
                     <div>

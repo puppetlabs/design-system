@@ -1,3 +1,7 @@
+## data-grid 0.6.12 (2022-07-25)
+
+- [Table] Bug fixing table loader width on selectable tables (by [@Lukeaber](https://github.com/Lukeaber) in [#636](https://github.com/puppetlabs/design-system/pull/636))
+
 ## react-components 5.34.9 (2022-07-28)
 
 - [Menu] Adding Detail, Menu, Menu.Search, and Tag.Search components (by [@krable55](https://github.com/krable55) in [#621](https://github.com/puppetlabs/design-system/pull/621))
