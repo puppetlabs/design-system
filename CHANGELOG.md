@@ -1,6 +1,6 @@
 ## react-components 5.34.10 (2024-02-23)
 
-- [Icon] Add visibility off and delete icon
+- [Icon] Add visibility off icon
 
 ## data-grid 0.6.12 (2022-07-25)
 
