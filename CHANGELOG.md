@@ -1,3 +1,7 @@
+## react-components 5.34.10 (2024-02-23)
+
+- [Icon] Add visibility off and delete icon
+
 ## data-grid 0.6.12 (2022-07-25)
 
 - [Table] Bug fixing table loader width on selectable tables (by [@Lukeaber](https://github.com/Lukeaber) in [#636](https://github.com/puppetlabs/design-system/pull/636))
