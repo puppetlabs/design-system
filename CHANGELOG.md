@@ -1,4 +1,4 @@
-## react-components 5.34.10 (2024-02-23)
+## react-components 5.34.1 (2024-02-23)
 
 - [Icon] Add visibility off icon
 
