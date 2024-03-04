@@ -31,4 +31,4 @@ jobs:
       - name: Install all package dependencies
         run: npm install
       - name: Publish packages
-        run: npm run publish
+        run: npm run release
