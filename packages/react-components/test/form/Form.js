@@ -5,8 +5,8 @@ import sinon from 'sinon';
 
 import Form from '../../source/react/library/form/Form';
 import { isEmpty } from '../../source/react/library/form/internal/methods';
-import Button from '../../source/react/library/button/Button';
-import Alert from '../../source/react/library/alert/Alert';
+import Button from '../../source/react/library/button';
+import Alert from '../../source/react/library/alert';
 
 describe('<Form />', () => {
   it('should propagate user provided className', () => {
