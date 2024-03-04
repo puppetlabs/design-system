@@ -18,7 +18,7 @@ jobs:
       - run: npm run build --if-present
       - run: npm test
 
-  deploy:
+  publish:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -28,6 +28,8 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 12.4.0
+      - name: Setup npm
+        run: echo "//registry.npmjs.org/:_authToken=${{ secrets.ACCESS_TOKEN }}" > ~/.npmrc
       - name: Install all package dependencies
         run: npm install
       - name: Publish packages
