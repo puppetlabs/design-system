@@ -67,7 +67,7 @@ Creates a list of tags from a menu of searchable / filterable options. Menu opti
 
 ```jsx
 import React from 'react';
-import Button from '../Button';
+import Button from '../button';
 
 const [selected, onApply] = React.useState([]);
 

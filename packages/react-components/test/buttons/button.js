@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 
-import Button from '../../source/react/library/button/Button';
+import Button from '../../source/react/library/button';
 
 describe('<Button />', () => {
   jsdom({ skipWindowCheck: true });

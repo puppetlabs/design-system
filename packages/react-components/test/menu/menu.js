@@ -3,8 +3,8 @@ import { shallow, mount } from 'enzyme';
 import { expect } from 'chai';
 import React from 'react';
 import sinon from 'sinon';
-import Menu from '../../source/react/library/menu/Menu';
-import Button from '../../source/react/library/button/Button';
+import Menu from '../../source/react/library/menu';
+import Button from '../../source/react/library/button';
 import MenuContext from '../../source/react/internal/popup-menus/menu-context';
 import { RovingFocusContext } from '../../source/react/helpers/useRovingFocus';
 

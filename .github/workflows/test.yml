@@ -4,7 +4,6 @@ on: [pull_request]
 
 jobs:
   test:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -12,10 +11,10 @@ jobs:
         node-version: [12.4.0]
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: npm install
-    - run: npm run build --if-present
-    - run: npm test
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run build --if-present
+      - run: npm test
