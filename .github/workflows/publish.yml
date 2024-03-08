@@ -21,12 +21,17 @@ jobs:
   publish:
     needs: test
     runs-on: ubuntu-latest
+    env:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Set Node version
         uses: actions/setup-node@v4
+        with:
+          node-version: 12.4.0
+          registry-url: https://registry.npmjs.org
       - name: Install all package dependencies
         run: npm install
       - name: Publish packages
-        run: npm run release
+        run: npm run publish
