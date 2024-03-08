@@ -147,4 +147,9 @@ describe('<Input />', () => {
 
     expect(onClick.called).to.equal(true);
   });
+
+  it('should render the trailing icon button after the input element if trailingButtonIcon is provided', () => {
+    const wrapper = shallow(<Input {...requiredProps} trailingButtonIcon="eye" /> );
+    expect(wrapper.find('div').children().last().is('Button')).to.equal(true);
+  }); 
 });
