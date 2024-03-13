@@ -378,7 +378,7 @@ const connectFull = () => ({
 });
 
 const securityComplianceManagement = () => ({
-  viewBox: '0 0 160 40',
+  viewBox: '0 0 170 40',
   svg: (
     <>
       <path
