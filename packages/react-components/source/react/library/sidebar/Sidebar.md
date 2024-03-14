@@ -23,7 +23,7 @@ import Badge from '../badge';
 <div style={{ position: 'relative', height: '500px' }}>
   <Sidebar>
     <Sidebar.Header
-      logo="pipelines"
+      logo="security-compliance-management"
       ariaLabel="Return to the home page"
       as="a"
       href="/"
@@ -84,7 +84,7 @@ Add the `minimized` boolean prop to Sidebar to render a narrow version with icon
 <div style={{ position: 'relative', height: '500px' }}>
   <Sidebar minimized>
     <Sidebar.Header
-      logo="pipelines"
+      logo="security-compliance-management"
       onClick={() => console.log('logo clicked')}
       ariaLabel="Return to the home page"
     />
