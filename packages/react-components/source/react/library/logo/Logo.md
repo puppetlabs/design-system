@@ -24,11 +24,7 @@ The standard style variation exists for light backgrounds.
   <Logo product="relay" style={{ margin: 5 }} />
   <Logo product="comply" style={{ margin: 5 }} />
   <Logo product="connect" style={{ margin: 5 }} />
-  <Logo
-    inverted
-    product="security-compliance-management"
-    style={{ margin: 5 }}
-  />
+  <Logo product="security-compliance-management" style={{ margin: 5 }} />
   <Logo product="My Product" style={{ margin: 5 }} />
 </div>
 ```
