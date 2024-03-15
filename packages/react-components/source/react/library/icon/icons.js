@@ -965,6 +965,15 @@ const icons = {
     ),
   },
 
+  locked: {
+    medium: (
+      <path
+        fillRule="evenodd"
+        d="M4 4v3H1v9h14V7h-3V4a4 4 0 0 0-8 0m6 0v3H6V4a2 2 0 1 1 4 0M3 9v5h10V9zm5 1a1 1 0 0 0-1 1v1a1 1 0 1 0 2 0v-1a1 1 0 0 0-1-1"
+      />
+    ),
+  },
+
   minus: {
     tiny: <polygon fillRule="evenodd" points="0 3 0 5 8 5 8 3" />,
   },
@@ -1450,6 +1459,15 @@ const icons = {
       <path
         fillRule="evenodd"
         d="M16,5 L0,5 L0,3 L4,3 L4,1 C4,0.448 4.447,0 5,0 L11,0 C11.553,0 12,0.448 12,1 L12,3 L16,3 L16,5 Z M6,2 L6,3 L10,3 L10,2 L6,2 Z M12,7 L14,7 L14,15 C14,15.552 13.553,16 13,16 L3,16 C2.447,16 2,15.552 2,15 L2,7 L4,7 L4,14 L12,14 L12,7 Z M6,7 L7,7 L7,13 L6,13 L6,7 Z M9,7 L10,7 L10,13 L9,13 L9,7 Z"
+      />
+    ),
+  },
+
+  unlocked: {
+    large: (
+      <path
+        fillRule="evenodd"
+        d="M6 6v1.5h3V6a3 3 0 1 1 6 0v4.5H1.5V24h21V10.5H18V6A6 6 0 0 0 6 6M4.5 21v-7.5h15V21zm7.5-6a1.5 1.5 0 0 0-1.5 1.5V18a1.5 1.5 0 0 0 3 0v-1.5A1.5 1.5 0 0 0 12 15"
       />
     ),
   },

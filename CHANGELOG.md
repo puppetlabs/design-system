@@ -1,3 +1,7 @@
+## react-components 5.34.3 (2024-03-15)
+
+- [Icon] Add Locked and Unlocked icons
+
 ## react-components 5.34.2 (2024-03-13)
 
 - [Logo] Add security compliance management logo (by [@Lukeaber](https://github.com/Lukeaber))
