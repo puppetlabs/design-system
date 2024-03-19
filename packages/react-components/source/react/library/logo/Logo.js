@@ -14,6 +14,7 @@ export const SUPPORTED_LOGOS = [
   'remediate',
   'comply',
   'security-compliance-management',
+  'continuous-delivery',
 ];
 
 const propTypes = {

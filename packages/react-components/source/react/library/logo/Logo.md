@@ -25,6 +25,7 @@ The standard style variation exists for light backgrounds.
   <Logo product="comply" style={{ margin: 5 }} />
   <Logo product="connect" style={{ margin: 5 }} />
   <Logo product="security-compliance-management" style={{ margin: 5 }} />
+  <Logo product="continuous-delivery" style={{ margin: 5 }} />
   <Logo product="My Product" style={{ margin: 5 }} />
 </div>
 ```
@@ -57,6 +58,7 @@ This style variation exists for dark backgrounds, where the Puppet logo uses whi
     product="security-compliance-management"
     style={{ margin: 5 }}
   />
+  <Logo inverted product="continuous-delivery" style={{ margin: 5 }} />
   <Logo inverted product="My Product" style={{ margin: 5 }} />
 </div>
 ```
