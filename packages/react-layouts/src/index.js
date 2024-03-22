@@ -1,4 +1,6 @@
 import Authentication from './Authentication';
+import Columns from './Columns';
+import PageContent from './PageContent';
+import 'index.scss';
 
-// eslint-disable-next-line import/prefer-default-export
-export { Authentication };
+export { Authentication, Columns, PageContent };
