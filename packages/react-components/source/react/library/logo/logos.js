@@ -396,7 +396,7 @@ const securityComplianceManagement = () => ({
 });
 
 const continuousDelivery = () => ({
-  viewBox: '0 0 101 33',
+  viewBox: '0 0 170 40',
   svg: (
     <>
       <path
