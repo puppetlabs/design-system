@@ -1,3 +1,7 @@
+## react-components 5.34.5 (2024-03-25)
+
+- [Logo] Bug fixing continuous delivery logo viewBox size (by [@danadoherty639](https://github.com/danadoherty639))
+
 ## react-components 5.34.4 (2024-03-19)
 
 - [Logo] Add continuous delivery logo (by [@mttsltrs](https://github.com/mttsltrs))
