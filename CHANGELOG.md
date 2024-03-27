@@ -1,3 +1,13 @@
+## react-components 5.34.6 (2024-03-28)
+
+- [Logo] Add standalone Puppet logo (by [@petergmurphy](https://github.com/petergmurphy))
+
+## react-layouts 2.0.0-alpha.10 (2024-03-28)
+
+- [Authentication] Fix Authentication component styling issue. This change resolves the problem where the Authentication component's
+styling was not being applied due to the stylesheet not being bundled.  (by [@petergmurphy](https://github.com/petergmurphy))
+- [Authentication] Change the title of the Authentication component from a `h5` to a `h3` element. (by [@petergmurphy](https://github.com/petergmurphy))
+
 ## react-components 5.34.5 (2024-03-25)
 
 - [Logo] Bug fixing continuous delivery logo viewBox size (by [@danadoherty639](https://github.com/danadoherty639))
