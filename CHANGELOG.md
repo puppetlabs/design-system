@@ -57,6 +57,10 @@
 
 - Upgrade dependencies #450
 
+## react-components 5.34.6 (2024-03-28)
+
+- [Logo] Add standalone Puppet logo (by [@petergmurphy](https://github.com/petergmurphy))
+
 ## react-layouts 2.0.0-alpha.10 (2024-03-28)
 
 - [Authentication] Fix Authentication component styling issue. This change resolves the problem where the Authentication component's
