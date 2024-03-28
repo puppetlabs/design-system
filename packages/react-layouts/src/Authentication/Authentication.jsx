@@ -55,7 +55,7 @@ const Authentication = ({
       />
       <Card className="rl-authentication-content">
         <div className="rl-authentication-title">
-          <Heading as="h5">{title}</Heading>
+          <Heading as="h3">{title}</Heading>
           <div className="rl-authentication-subtitle">{subtitle}</div>
         </div>
         {children}
