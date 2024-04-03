@@ -41,28 +41,56 @@ import Button from '../button';
     onClose={() => console.log('Lets do the time warp again')}
     style={{ marginBottom: '20px' }}
   >
-    <Heading as="h3">Just a jump to the left</Heading>
+    <Heading as="h3">left</Heading>
+  </Popover>
+  <Popover
+    side="left-bottom"
+    onClose={() => console.log('Lets do the time warp again')}
+    style={{ marginBottom: '20px' }}
+  >
+    <Heading as="h3">left-bottom</Heading>
   </Popover>
   <Popover
     side="right"
     onClose={() => console.log('Lets do the time warp again')}
     style={{ marginBottom: '20px' }}
   >
-    <Heading as="h3">And a step to the right</Heading>
+    <Heading as="h3">right</Heading>
+  </Popover>
+  <Popover
+    side="right-bottom"
+    onClose={() => console.log('Lets do the time warp again')}
+    style={{ marginBottom: '20px' }}
+  >
+    <Heading as="h3">right-bottom</Heading>
   </Popover>
   <Popover
     side="top"
     onClose={() => console.log('Lets do the time warp again')}
     style={{ marginBottom: '20px' }}
   >
-    <Heading as="h3">With your hands on your hips</Heading>
+    <Heading as="h3">top</Heading>
+  </Popover>
+  <Popover
+    side="top-right"
+    onClose={() => console.log('Lets do the time warp again')}
+    style={{ marginBottom: '20px' }}
+  >
+    <Heading as="h3">top-right</Heading>
   </Popover>
   <Popover
     side="bottom"
     onClose={() => console.log('Lets do the time warp again')}
     style={{ marginBottom: '20px' }}
   >
-    <Heading as="h3">You bring your knees in tight</Heading>
+    <Heading as="h3">bottom</Heading>
+  </Popover>
+  <Popover
+    side="bottom-right"
+    onClose={() => console.log('Lets do the time warp again')}
+    style={{ marginBottom: '20px' }}
+  >
+    <Heading as="h3">bottom-right</Heading>
   </Popover>
 </div>;
 ```
