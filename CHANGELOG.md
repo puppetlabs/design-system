@@ -57,6 +57,10 @@
 
 - Upgrade dependencies #450
 
+## react-components 5.34.7 (2024-04-03)
+
+- [Popover] Add new side prop options to enable rendering the arrow in all corners of the box (by [@sean-mckenna](https://github.com/sean-mckenna)) in [#661](https://github.com/puppetlabs/design-system/pull/661))
+
 ## react-components 5.34.6 (2024-03-28)
 
 - [Logo] Add standalone Puppet logo (by [@petergmurphy](https://github.com/petergmurphy))

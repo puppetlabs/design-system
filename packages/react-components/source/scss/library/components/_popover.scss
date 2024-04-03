@@ -24,12 +24,20 @@ $null-shadow: 0 0 0 0 transparent;
 
 .rc-popover-left::after,
 .rc-popover-left::before,
+.rc-popover-left-bottom::after,
+.rc-popover-left-bottom::before,
 .rc-popover-right::after,
 .rc-popover-right::before,
+.rc-popover-right-bottom::after,
+.rc-popover-right-bottom::before,
 .rc-popover-top::after,
 .rc-popover-top::before,
+.rc-popover-top-right::after,
+.rc-popover-top-right::before,
 .rc-popover-bottom::after,
-.rc-popover-bottom::before {
+.rc-popover-bottom::before,
+.rc-popover-bottom-right::after,
+.rc-popover-bottom-right::before {
   border-style: solid;
   content: '';
   display: block;
@@ -55,6 +63,23 @@ $null-shadow: 0 0 0 0 transparent;
   }
 }
 
+.rc-popover-right-bottom {
+  // arrow body
+  &::after {
+    border-color: transparent transparent transparent $popover-fill-color;
+    border-width: 10px;
+    bottom: 10px;
+    left: 100%;
+  }
+  // arrow 'border'
+  &::before {
+    border-color: transparent transparent transparent $popover-border-color;
+    border-width: 11px;
+    bottom: 9px;
+    left: 100%;
+  }
+}
+
 .rc-popover-left {
   // arrow body
   &::after {
@@ -69,6 +94,23 @@ $null-shadow: 0 0 0 0 transparent;
     border-width: 11px;
     right: 100%;
     top: 9px;
+  }
+}
+
+.rc-popover-left-bottom {
+  // arrow body
+  &::after {
+    border-color: transparent $popover-fill-color transparent transparent;
+    border-width: 10px;
+    bottom: 10px;
+    right: 100%;
+  }
+  // arrow 'border'
+  &::before {
+    border-color: transparent $popover-border-color transparent transparent;
+    border-width: 11px;
+    bottom: 9px;
+    right: 100%;
   }
 }
 
@@ -90,6 +132,24 @@ $null-shadow: 0 0 0 0 transparent;
   }
 }
 
+.rc-popover-top-right {
+  margin-top: 10px;
+  // arrow body
+  &::after {
+    border-color: transparent transparent $popover-fill-color transparent;
+    border-width: 10px;
+    bottom: 100%;
+    right: 10px;
+  }
+  // arrow 'border'
+  &::before {
+    border-color: transparent transparent $popover-border-color transparent;
+    border-width: 11px;
+    bottom: 100%;
+    right: 9px;
+  }
+}
+
 .rc-popover-bottom {
   margin-bottom: 10px;
   // arrow body
@@ -104,6 +164,24 @@ $null-shadow: 0 0 0 0 transparent;
     border-color: $popover-border-color transparent transparent transparent;
     border-width: 11px;
     left: 9px;
+    top: 100%;
+  }
+}
+
+.rc-popover-bottom-right {
+  margin-bottom: 10px;
+  // arrow body
+  &::after {
+    border-color: $popover-fill-color transparent transparent transparent;
+    border-width: 10px;
+    right: 10px;
+    top: 100%;
+  }
+  // arrow 'border'
+  &::before {
+    border-color: $popover-border-color transparent transparent transparent;
+    border-width: 11px;
+    right: 9px;
     top: 100%;
   }
 }
