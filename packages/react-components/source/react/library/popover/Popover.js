@@ -12,7 +12,16 @@ const propTypes = {
   /** Component children */
   children: PropTypes.node,
   /** Side the arrow appears on */
-  side: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  side: PropTypes.oneOf([
+    'top',
+    'top-right',
+    'bottom',
+    'bottom-right',
+    'left',
+    'left-bottom',
+    'right',
+    'right-bottom',
+  ]),
   /** Popover 'elevation' visually indicated with box-shadow */
   elevation: elementElevation,
 };
