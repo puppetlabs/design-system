@@ -68,15 +68,15 @@ $null-shadow: 0 0 0 0 transparent;
   &::after {
     border-color: transparent transparent transparent $popover-fill-color;
     border-width: 10px;
-    left: 100%;
     bottom: 10px;
+    left: 100%;
   }
   // arrow 'border'
   &::before {
     border-color: transparent transparent transparent $popover-border-color;
     border-width: 11px;
-    left: 100%;
     bottom: 9px;
+    left: 100%;
   }
 }
 
@@ -102,15 +102,15 @@ $null-shadow: 0 0 0 0 transparent;
   &::after {
     border-color: transparent $popover-fill-color transparent transparent;
     border-width: 10px;
-    right: 100%;
     bottom: 10px;
+    right: 100%;
   }
   // arrow 'border'
   &::before {
     border-color: transparent $popover-border-color transparent transparent;
     border-width: 11px;
-    right: 100%;
     bottom: 9px;
+    right: 100%;
   }
 }
 
