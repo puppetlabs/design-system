@@ -5,9 +5,28 @@
 # Example: Login
 
 ```jsx
-import { Form } from '@puppet/react-components';
+import { Form, Logo } from '@puppet/react-components';
 
-<Authentication product="My Product" title="Sign in to My Product">
+const FooterExample = () => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '10px',
+      }}
+    >
+      <Logo style={{ height: '19px' }} product="puppet-standalone" />
+      Puppet | Footer example
+    </div>
+  );
+};
+
+<Authentication
+  product="My Product"
+  title="Sign in to My Product"
+  footer={<FooterExample />}
+>
   <Form submittable actionsPosition="block" submitLabel="Sign in">
     <Form.Field
       type="email"
