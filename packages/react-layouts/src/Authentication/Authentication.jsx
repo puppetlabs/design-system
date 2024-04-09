@@ -19,12 +19,15 @@ const propTypes = {
   className: PropTypes.string,
   /** Content, rendered inside a centered card */
   children: PropTypes.node,
+  /** Footer content, rendered below the card */
+  footer: PropTypes.node,
 };
 
 const defaultProps = {
   subtitle: '',
   className: '',
   children: null,
+  footer: null,
 };
 
 const Authentication = ({
@@ -33,6 +36,7 @@ const Authentication = ({
   subtitle,
   className,
   children,
+  footer,
   ...rest
 }) => {
   const logoType = Logo.SUPPORTED_LOGOS.includes(product) ? 'full' : 'bug';
@@ -44,21 +48,24 @@ const Authentication = ({
       innerClassName="rl-authentication"
       {...rest}
     >
-      <Logo
-        type={logoType}
-        className={classNames(
-          'rl-authentication-logo',
-          `rl-authentication-logo-${logoType}`,
-        )}
-        product={product}
-      />
-      <Card className="rl-authentication-content">
-        <div className="rl-authentication-title">
-          <Heading as="h3">{title}</Heading>
-          <div className="rl-authentication-subtitle">{subtitle}</div>
-        </div>
-        {children}
-      </Card>
+      <div className="rl-authentication-content">
+        <Logo
+          type={logoType}
+          className={classNames(
+            'rl-authentication-logo',
+            `rl-authentication-logo-${logoType}`,
+          )}
+          product={product}
+        />
+        <Card className="rl-authentication-card">
+          <div className="rl-authentication-title">
+            <Heading as="h2">{title}</Heading>
+            <div className="rl-authentication-subtitle">{subtitle}</div>
+          </div>
+          {children}
+        </Card>
+      </div>
+      {footer && <footer className="rl-authentication-footer">{footer}</footer>}
     </PageContent>
   );
 };

@@ -57,6 +57,10 @@
 
 - Upgrade dependencies #450
 
+## react-layouts 2.0.0-alpha.11 (2024-04-10)
+
+- [Authentication] Update Authentication component to support a footer prop (by [@petergmurphy](https://github.com/petergmurphy))
+
 ## react-components 5.34.7 (2024-04-03)
 
 - [Popover] Add new side prop options to enable rendering the arrow in all corners of the box (by [@sean-mckenna](https://github.com/sean-mckenna)) in [#661](https://github.com/puppetlabs/design-system/pull/661))
