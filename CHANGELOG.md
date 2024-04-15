@@ -1,3 +1,7 @@
+## react-components 5.34.9 (2024-04-15)
+
+- [Logo] Increase continuous delivery logo viewBox size to fix issue with logo text being cut off when the `expanded` prop is set to true on the logo component (by [@petergmurphy](https://github.com/petergmurphy))
+
 ## react-components 5.34.8 (2024-04-10)
 
 - [Logo] Revert continuous delivery logo viewBox size due to alignment issues (by [@petergmurphy](https://github.com/petergmurphy))
