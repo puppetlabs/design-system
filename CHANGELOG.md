@@ -1,3 +1,7 @@
+## react-components 5.34.9 (2024-04-29)
+
+- [Logo] Adjust Security Compliance Management logo viewBox to match Continuous Delivery (by [@Lukeaber](https://github.com/Lukeaber))
+
 ## react-components 5.34.8 (2024-04-10)
 
 - [Logo] Revert continuous delivery logo viewBox size due to alignment issues (by [@petergmurphy](https://github.com/petergmurphy))
