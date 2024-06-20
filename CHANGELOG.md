@@ -1,3 +1,8 @@
+## react-components 5.34.10 (2024-06-24)
+
+- [Select] Pass through additional props to select inner component (by [@sean-mckenna](https://github.com/sean-mckenna))
+- [Button] Remove button loading background colour (by [@sean-mckenna](https://github.com/sean-mckenna))
+
 ## react-components 5.34.9 (2024-04-29)
 
 - [Logo] Adjust Security Compliance Management logo viewBox to match Continuous Delivery (by [@Lukeaber](https://github.com/Lukeaber))

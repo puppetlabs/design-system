@@ -152,8 +152,7 @@ $puppet-button-padding-vertical: 5px;
     @include button-type-properties(map-get($typedef, hover));
   }
 
-  &:active,
-  &.rc-button-loading {
+  &:active {
     @include button-type-properties(map-get($typedef, active));
   }
 

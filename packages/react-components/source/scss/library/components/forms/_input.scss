@@ -98,7 +98,7 @@
     padding-left: 31px;
   }
 
-  .rc-input-icon.trailing ~ .rc-input {
+  .rc-input:has(+ .rc-input-icon.trailing) {
     padding-right: 31px;
   }
 
@@ -125,7 +125,7 @@
       right: $puppet-common-spacing-base * 4 - 1;
     }
 
-    .rc-input-icon.trailing ~ .rc-input {
+    .rc-input:has(+ .rc-input-icon.trailing) {
       padding-right: $puppet-common-spacing-base * 10 - 1;
     }
   }
