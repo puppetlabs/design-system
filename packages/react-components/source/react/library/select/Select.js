@@ -380,6 +380,11 @@ class Select extends Component {
       style,
       type,
       value,
+      actionLabel,
+      onChange,
+      onFilter,
+      onBlur: onBlurProp,
+      ...restProps
     } = this.props;
 
     let input;
@@ -411,6 +416,7 @@ class Select extends Component {
             }}
             onChange={onValueChange}
             autoComplete="off"
+            {...restProps}
           />
         );
         break;
@@ -431,6 +437,7 @@ class Select extends Component {
               ref={button => {
                 this.button = button;
               }}
+              {...restProps}
             />
             <input
               type="hidden"
