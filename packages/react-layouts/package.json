@@ -10,8 +10,6 @@
     "format": "./scripts/format",
     "lint": "./scripts/lint",
     "prepublish": "npm run build",
-    "start": "./scripts/start",
-    "serve": "./scripts/serve",
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch",

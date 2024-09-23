@@ -6,9 +6,9 @@
   "main": "dist/index.js",
   "scripts": {
     "link": "npm link",
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "watch:dev": "webpack --watch --env.development",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack",
+    "watch": "NODE_OPTIONS=--openssl-legacy-provider webpack --watch",
+    "watch:dev": "NODE_OPTIONS=--openssl-legacy-provider webpack --watch --env.development",
     "test": "jest",
     "test:coverage": "jest --collectCoverage",
     "test:watch": "jest --watch",

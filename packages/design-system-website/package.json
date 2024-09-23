@@ -5,8 +5,8 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "start": "styleguidist server",
-    "styleguide:build": "styleguidist build",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider styleguidist server",
+    "styleguide:build": "NODE_OPTIONS=--openssl-legacy-provider styleguidist build",
     "upgrade": "npx npm-check-updates --upgrade"
   },
   "devDependencies": {

@@ -17,7 +17,7 @@
     "lerna": "^3.22.1"
   },
   "engines": {
-    "node": "12.4.0"
+    "node": ">=18.0.0"
   },
   "dependencies": {
     "classnames": "^2.3.1"
