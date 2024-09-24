@@ -5,5 +5,5 @@
   then
       export $(cat .env.production | xargs)
   fi
-  NODE_OPTIONS=--openssl-legacy-provider NODE_ENV=production ./node_modules/.bin/webpack --config=config/bundle.webpack.config.js
+  NODE_ENV=production ./node_modules/.bin/webpack --config=config/bundle.webpack.config.js
 )

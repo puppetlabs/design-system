@@ -27,8 +27,10 @@ module.exports = env => ({
   },
   output: {
     filename: 'index.js',
-    library: 'data-grid',
-    libraryTarget: 'umd',
+    library: {
+      name: 'data-grid',
+      type: 'umd',
+    },
     path: paths.dist,
     publicPath: './',
   },
