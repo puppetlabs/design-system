@@ -64,13 +64,11 @@ const StepperStep = ({
   subText,
   className,
   ...props
-}) => {
-  return (
-    <li className={classNames(statusType, className)} {...props}>
-      {stepType(children, statusType, stepNumber, subText)}
-    </li>
-  );
-};
+}) => (
+  <li className={classNames(statusType, className)} {...props}>
+    {stepType(children, statusType, stepNumber, subText)}
+  </li>
+);
 StepperStep.propTypes = propTypes;
 StepperStep.defaultProps = defaultProps;
 export default StepperStep;

@@ -13,7 +13,7 @@ const validFormFieldDescriptionProps = Object.keys(
 );
 
 /** Creates unique key from group or uuid and label, or just the label if no group or uuid is provided */
-export const getUniqKey = item =>
+export const getUniqKey = (item) =>
   item.uuid || item.group
     ? `${item.uuid || item.group}-${item.label}`
     : item.label;
@@ -57,7 +57,7 @@ const SearchMenuGroup = ({
   const sortedItems = sortBy(items, 'label');
   const rows = columns ? chunk(sortedItems, numberOfColumns) : [sortedItems];
   // Show fields without a group
-  const joinIds = row =>
+  const joinIds = (row) =>
     row.reduce((acc, item) => `${acc}-${getUniqKey(item)}`, '');
   return (
     <GroupDetail
@@ -71,14 +71,14 @@ const SearchMenuGroup = ({
           collector: isGroupCollector,
         })}
       >
-        {rows.map(row => (
+        {rows.map((row) => (
           <div
             key={`rc-search-menu-group-${title}-row-${joinIds(row)}`}
             className={classNames('rc-search-menu-group-container', {
               columns: !!columns,
             })}
           >
-            {row.map(props => {
+            {row.map((props) => {
               const checkboxProps = pickBy(props, (value, key) =>
                 validCheckboxProps.includes(key),
               );
@@ -86,7 +86,7 @@ const SearchMenuGroup = ({
                 validFormFieldDescriptionProps.includes(key),
               );
               const isSelected = !!selectedOptions[getUniqKey(props)];
-              const onChange = checked => onSelect(props, checked);
+              const onChange = (checked) => onSelect(props, checked);
               const onClick = () => onSelect(props, !isSelected);
               return (
                 <div

@@ -27,7 +27,7 @@ describe('<Switch />', () => {
   });
 
   it('should have an accessible ref method to the inner input element', async () => {
-    const switchNode = await new Promise(resolve => {
+    const switchNode = await new Promise((resolve) => {
       mount(<Switch {...requiredProps} inputRef={resolve} />);
     });
 

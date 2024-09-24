@@ -25,10 +25,12 @@ import Text from '../text';
     </Code>
     <Text as="span">
       {' '}
-      defaults to rendering as a <Code>{`<code>`}</Code> tag so you can use it in
-      line with a <Code>
+      defaults to rendering as a <Code>{`<code>`}</Code> tag so you can use it
+      in line with a{' '}
+      <Code>
         <strong>Text</strong>
-      </Code> component.
+      </Code>{' '}
+      component.
     </Text>
   </div>
 </>;

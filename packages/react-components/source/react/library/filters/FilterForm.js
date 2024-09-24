@@ -17,6 +17,7 @@ const propTypes = {
   cancellable: PropTypes.bool,
   fields: PropTypes.arrayOf(PropTypes.string),
   /** Defaults to the standard set as defined in constants. */
+  // eslint-disable-next-line react/forbid-prop-types
   operators: PropTypes.arrayOf(PropTypes.object),
   actionsPosition: PropTypes.oneOf(['left', 'right']),
   strings: PropTypes.shape({
@@ -59,7 +60,7 @@ const defaultStrings = {
 const defaultProps = {
   onSubmit: () => {},
   onCancel: () => {},
-  onUpdate: filter => filter,
+  onUpdate: (filter) => filter,
   removable: false,
   fields: [],
   filter: {},
@@ -75,8 +76,8 @@ const isValueless = (op, operators) => {
 
   if (typeof op !== 'undefined') {
     ops = operators
-      .filter(o => o.symbol === op)
-      .filter(o => typeof o.noValue !== 'undefined');
+      .filter((o) => o.symbol === op)
+      .filter((o) => typeof o.noValue !== 'undefined');
 
     if (ops.length === 1) {
       valueless = ops[0].noValue;
@@ -134,7 +135,7 @@ class FilterForm extends React.Component {
     const { fields } = this.props;
     const { filter } = this.state;
 
-    return fields.map(field => ({
+    return fields.map((field) => ({
       id: field,
       label: field,
       value: field,
@@ -146,7 +147,7 @@ class FilterForm extends React.Component {
     const { filter } = this.state;
     const { operators } = this.props;
 
-    return operators.map(op => ({
+    return operators.map((op) => ({
       id: op.symbol,
       label: op.label,
       value: op.symbol,

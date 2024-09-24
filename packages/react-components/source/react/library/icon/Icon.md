@@ -35,7 +35,7 @@ const Renderer = () => {
   for (var i = 0; i < names.length; i++) {
     // Unique icon variants have colored bg
     const variants = Object.keys(icons[names[i]] || {});
-    const isUnique = size => variants.includes(size);
+    const isUnique = (size) => variants.includes(size);
 
     components.push(
       <tr key={i}>
@@ -100,7 +100,7 @@ const Renderer = () => {
 
 ## Customize icon color
 
-If you need a different color, you can customize it with CSS, targeting the `fill` property. The default color is defined in [_icons.scss](https://github.com/puppetlabs/design-system/blob/main/packages/react-components/source/scss/library/components/_icons.scss). You should be able to do something like `.your-icon { fill: $puppet-purple; }` with Sass.
+If you need a different color, you can customize it with CSS, targeting the `fill` property. The default color is defined in [\_icons.scss](https://github.com/puppetlabs/design-system/blob/main/packages/react-components/source/scss/library/components/_icons.scss). You should be able to do something like `.your-icon { fill: $puppet-purple; }` with Sass.
 
 ```jsx
 <Icon type="activity" style={{ fill: '#a263ff' }} />

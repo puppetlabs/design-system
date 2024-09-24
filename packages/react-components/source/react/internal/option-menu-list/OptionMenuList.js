@@ -72,8 +72,8 @@ const defaultProps = {
 
 const getOptionId = (id, value) => `${id}-${value}`;
 
-const getFocusableOptions = options =>
-  options.map(opt => (Array.isArray(opt.value) ? opt.value : opt)).flat();
+const getFocusableOptions = (options) =>
+  options.map((opt) => (Array.isArray(opt.value) ? opt.value : opt)).flat();
 
 const getFocusedId = (focusedIndex, id, options) =>
   typeof focusedIndex !== 'number' || focusedIndex >= options.length
@@ -83,9 +83,9 @@ const getFocusedId = (focusedIndex, id, options) =>
         getFocusableOptions(options)[Math.max(focusedIndex, 0)].value,
       );
 
-const getSelectionSet = selection =>
+const getSelectionSet = (selection) =>
   new Set(
-    (Array.isArray(selection) ? selection : [selection]).filter(el => !!el),
+    (Array.isArray(selection) ? selection : [selection]).filter((el) => !!el),
   );
 
 class OptionMenuList extends Component {
@@ -252,6 +252,7 @@ class OptionMenuList extends Component {
     }
   }
 
+  // eslint-disable-next-line react/no-unused-class-component-methods
   focusMenu() {
     focus(this.menu);
   }
@@ -364,10 +365,10 @@ class OptionMenuList extends Component {
     const renderListItems = (items, offset = 0) => {
       const list = [];
 
-      items.forEach(item => {
+      items.forEach((item) => {
         if (Array.isArray(item.value)) {
           const groupId = `group-${item.value
-            .map(child => child.value)
+            .map((child) => child.value)
             .join('-')}`;
           const labelId = `${groupId}-label`;
 
@@ -391,7 +392,7 @@ class OptionMenuList extends Component {
                 </OptionMenuListItem>
               )}
               {renderListItems(
-                item.value.map(child =>
+                item.value.map((child) =>
                   Object.assign(child, {
                     disabled: item.disabled || child.disabled,
                   }),
@@ -417,7 +418,7 @@ class OptionMenuList extends Component {
                 item.disabled ? undefined : onClickItem(item.value)
               }
               onMouseEnter={() => onMouseEnterItem(index)}
-              ref={option => {
+              ref={(option) => {
                 this.optionRefs[index] = option;
               }}
             >
@@ -441,7 +442,7 @@ class OptionMenuList extends Component {
         onKeyDown={onKeyDown}
         onFocus={onFocus}
         onBlur={onMenuBlur}
-        ref={menu => {
+        ref={(menu) => {
           this.menu = menu;
         }}
         {...rest}
@@ -478,7 +479,7 @@ class OptionMenuList extends Component {
               onClick={onActionClick}
               onKeyDown={onKeyDownInAction}
               onBlur={onActionBlur}
-              ref={button => {
+              ref={(button) => {
                 this.button = button;
               }}
             >
@@ -491,7 +492,7 @@ class OptionMenuList extends Component {
                 onClick={onCancel}
                 onKeyDown={onKeyDownInAction}
                 onBlur={onActionBlur}
-                ref={button => {
+                ref={(button) => {
                   this.button = button;
                 }}
               >

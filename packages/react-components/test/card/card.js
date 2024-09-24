@@ -76,7 +76,7 @@ describe('<Card />', () => {
   it('should render elevation class for each allowed element elevation', () => {
     const elevations = [0, 50, 100, 150, 200, 400, 800];
 
-    elevations.forEach(elevation => {
+    elevations.forEach((elevation) => {
       const wrapper = shallow(<Card elevation={elevation} />);
 
       expect(wrapper).to.have.className(`rc-card-elevation-${elevation}`);

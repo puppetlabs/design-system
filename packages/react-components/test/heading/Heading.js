@@ -16,7 +16,7 @@ describe('<Heading />', () => {
     const headings = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
     let matches = 0;
 
-    headings.forEach(elem => {
+    headings.forEach((elem) => {
       const wrapper = shallow(<Heading as={elem}>Heading</Heading>);
 
       if (wrapper.find(elem).length === 1) {

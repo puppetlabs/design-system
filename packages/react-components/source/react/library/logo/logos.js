@@ -183,7 +183,7 @@ const puppetBug = () => ({
   ),
 });
 
-const puppetFull = product => ({
+const puppetFull = (product) => ({
   viewBox: '0 0 160 34',
   svg: (
     <>

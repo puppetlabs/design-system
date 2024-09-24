@@ -14,6 +14,7 @@ const propTypes = {
   onEdit: PropTypes.func,
   onRemove: PropTypes.func,
   /** Defaults to the standard set as defined in constants. */
+  // eslint-disable-next-line react/forbid-prop-types
   operators: PropTypes.arrayOf(PropTypes.object),
 };
 
@@ -26,7 +27,7 @@ const defaultProps = {
 const getOperatorSentenceForm = (op, operators) => {
   let sentenceForm = op;
 
-  operators.forEach(operator => {
+  operators.forEach((operator) => {
     if (operator.symbol === op) {
       sentenceForm = operator.sentence;
     }

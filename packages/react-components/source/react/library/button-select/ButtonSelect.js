@@ -193,13 +193,13 @@ class ButtonSelect extends Component {
     }
     if (multiple) {
       const selectedOptions = options
-        .filter(option => value.includes(option.value))
-        .map(option => option.selectedLabel || option.label);
+        .filter((option) => value.includes(option.value))
+        .map((option) => option.selectedLabel || option.label);
 
       return selectedOptions.join(', ');
     }
 
-    const selectedOption = options.find(option => option.value === value);
+    const selectedOption = options.find((option) => option.value === value);
 
     return selectedOption.selectedLabel || selectedOption.label;
   }
@@ -273,7 +273,7 @@ class ButtonSelect extends Component {
         )}
         style={style}
         onBlur={onBlur}
-        ref={container => {
+        ref={(container) => {
           this.container = container;
         }}
       >
@@ -300,7 +300,7 @@ class ButtonSelect extends Component {
               aria-expanded={open}
               onClick={onClickButton}
               innerFocus={innerFocus}
-              ref={button => {
+              ref={(button) => {
                 this.button = button;
               }}
             >
@@ -325,7 +325,7 @@ class ButtonSelect extends Component {
             aria-expanded={open}
             onClick={onClickButton}
             innerFocus={innerFocus}
-            ref={button => {
+            ref={(button) => {
               this.button = button;
             }}
           >
@@ -344,7 +344,7 @@ class ButtonSelect extends Component {
           onChange={onValueChange}
           style={menuStyle}
           actionLabel={getActionLabel(this.props)}
-          ref={menu => {
+          ref={(menu) => {
             this.menu = menu;
           }}
         />

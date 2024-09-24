@@ -28,7 +28,7 @@ const defaultProps = {
   badge: null,
 };
 
-const SidebarItem = props => {
+const SidebarItem = (props) => {
   const {
     title,
     icon: iconProp,

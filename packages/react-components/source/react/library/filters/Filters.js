@@ -23,6 +23,7 @@ const propTypes = {
   onSwitchView: PropTypes.func,
   removableToggle: PropTypes.bool,
   /** Defaults to the standard set as defined in constants. */
+  // eslint-disable-next-line react/forbid-prop-types
   operators: PropTypes.arrayOf(PropTypes.object),
   strings: PropTypes.shape({
     /* Custom remove label */
@@ -57,7 +58,7 @@ const defaultStrings = {
 const defaultProps = {
   fields: [],
   filters: [],
-  onUpdate: filter => filter,
+  onUpdate: (filter) => filter,
   onChange: () => {},
   addCTA: 'Add filter',
   onSwitchView: () => {},
@@ -69,7 +70,7 @@ const defaultProps = {
 const LIST_VIEW = 'LIST_VIEW';
 const FORM_VIEW = 'FORM_VIEW';
 
-const getFilterKey = filter =>
+const getFilterKey = (filter) =>
   [filter.field, filter.op, filter.value, filter.values, filter.removable].join(
     '',
   );
@@ -120,7 +121,7 @@ class Filters extends React.Component {
     let newFilters = [];
 
     if (editing) {
-      const index = filters.findIndex(f => getFilterKey(f) === editing);
+      const index = filters.findIndex((f) => getFilterKey(f) === editing);
 
       newFilters = [...filters];
       newFilters[index] = filter;
@@ -153,7 +154,7 @@ class Filters extends React.Component {
 
     return () => {
       const newFilters = filters.filter(
-        filter => !(getFilterKey(removed) === getFilterKey(filter)),
+        (filter) => !(getFilterKey(removed) === getFilterKey(filter)),
       );
 
       onChange(newFilters);
@@ -162,7 +163,7 @@ class Filters extends React.Component {
 
   renderFilters() {
     const { operators, filters: propsFilters } = this.props;
-    const filters = propsFilters.map(filter => {
+    const filters = propsFilters.map((filter) => {
       const key = getFilterKey(filter);
 
       return (
@@ -197,14 +198,8 @@ class Filters extends React.Component {
   }
 
   renderForm() {
-    const {
-      removableToggle,
-      fields,
-      operators,
-      strings,
-      filters,
-      onUpdate,
-    } = this.props;
+    const { removableToggle, fields, operators, strings, filters, onUpdate } =
+      this.props;
     const { filter } = this.state;
     let cancellable = true;
 

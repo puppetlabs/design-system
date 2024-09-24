@@ -85,7 +85,7 @@ By default, the HTML [details](https://developer.mozilla.org/en-US/docs/Web/HTML
 const [willUnmount, setWillUnmount] = React.useState();
 const [alwaysMounted, setAlwaysMounted] = React.useState();
 
-const signalWith = fn => () => {
+const signalWith = (fn) => () => {
   fn('Mounted');
   return () => fn('Unmounted');
 };
