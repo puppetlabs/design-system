@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const merge = require('webpack-merge');
 const paths = require('./paths');
-const commonConfig = require('./common.webpack.config.js');
+const commonConfig = require('./common.webpack.config');
 
 module.exports = merge(commonConfig, {
   entry: [paths.client('index.jsx')],
