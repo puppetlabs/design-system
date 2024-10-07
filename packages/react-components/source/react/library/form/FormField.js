@@ -90,7 +90,7 @@ export const formInputInterface = omit(
   propTypes,
 );
 
-const getTypeName = type => (typeof type === 'string' ? type : null);
+const getTypeName = (type) => (typeof type === 'string' ? type : null);
 
 const getLabelStyle = (inlineLabelWidth, inline) => {
   if (inline && inlineLabelWidth) {
@@ -113,7 +113,7 @@ const getFieldStyle = (style, inlineLabelWidth, tabbed) => {
   return style;
 };
 
-const FormField = props => {
+const FormField = (props) => {
   const {
     className,
     description,

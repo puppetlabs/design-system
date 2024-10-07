@@ -164,10 +164,10 @@ module.exports = {
         '**/toolbar/Actions.js',
         '**/logo/logos.js',
         '**/breadcrumb/BreadcrumbSection.js',
-		'**/tag/Search.js',
-		'**/menu/Arrow.js',
-		'**/menu/Container.js',
-		'**/menu/Trigger.js',
+        '**/tag/Search.js',
+        '**/menu/Arrow.js',
+        '**/menu/Container.js',
+        '**/menu/Trigger.js',
         '**/tooltips/Tooltip.js',
       ],
     },
@@ -230,15 +230,13 @@ module.exports = {
                 [
                   '@babel/preset-env',
                   {
-                    useBuiltIns: 'usage',
-                    corejs: '3.0.1',
-                    modules: false,
+                    useBuiltIns: 'entry',
+                    corejs: '3.38.1',
                   },
                 ],
                 '@babel/preset-react',
               ],
               plugins: ['@babel/plugin-proposal-class-properties'],
-
               env: {
                 development: {
                   plugins: ['react-hot-loader/babel'],
@@ -254,7 +252,9 @@ module.exports = {
       ],
     },
     resolve: {
-      modules: [path.resolve(__dirname, 'node_modules')],
+      modules: [
+        path.resolve(__dirname, 'node_modules'),
+      ],
       extensions: ['.js', '.mjs', '.jsx'],
       symlinks: false,
     },
@@ -263,5 +263,5 @@ module.exports = {
     ],
   },
   // Disable sorting component props
-  sortProps: props => props,
+  sortProps: (props) => props,
 };

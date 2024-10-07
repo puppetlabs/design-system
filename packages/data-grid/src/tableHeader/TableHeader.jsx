@@ -192,13 +192,13 @@ function TableHeader({
               options={actions}
               placeholder={actionLabel}
               anchor="bottom right"
-              onChange={value => onActionSelect(value)}
+              onChange={(value) => onActionSelect(value)}
             />
           ) : null}
           {actionButtons.length > 0 &&
-            actionButtons.map(actionButton => {
-              return typeof actionButton.onClick === 'function' &&
-                actionButton.label !== '' ? (
+            actionButtons.map((actionButton) =>
+              typeof actionButton.onClick === 'function' &&
+              actionButton.label !== '' ? (
                 <Button
                   className="dg-table-action"
                   icon={actionButton.icon}
@@ -209,8 +209,8 @@ function TableHeader({
                 >
                   {actionButton.label}
                 </Button>
-              ) : null;
-            })}
+              ) : null,
+            )}
         </div>
       </div>
       {activeFilters.length > 0 && (

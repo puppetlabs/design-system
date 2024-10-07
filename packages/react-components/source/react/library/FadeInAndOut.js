@@ -36,17 +36,18 @@ const defaultProps = {
   children: null,
 };
 
-const FadeInAndOut = props => {
+const FadeInAndOut = (props) => {
   const { in: inProp } = props;
 
   return (
     <Transition in={inProp} timeout={duration}>
-      {state => {
-        if (!props.children) {
+      {(state) => {
+        const { children } = props;
+        if (!children) {
           return null;
         }
 
-        return React.cloneElement(props.children, {
+        return React.cloneElement(children, {
           style: { ...defaultStyle, ...transitionStyles[state] },
         });
       }}

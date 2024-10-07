@@ -59,7 +59,7 @@ const useMenu = ({ popperOptions }) => {
   });
 
   // Focus on a node
-  const focusOnNode = node => () => {
+  const focusOnNode = (node) => () => {
     if (node) node.focus();
   };
 

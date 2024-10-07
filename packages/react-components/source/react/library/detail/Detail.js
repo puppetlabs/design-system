@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/interactive-supports-focus */
 import React, { useEffect, useState, useRef } from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
@@ -95,7 +96,7 @@ const Detail = ({
     }
   }, [showContent]);
 
-  const keyToggle = e =>
+  const keyToggle = (e) =>
     e.key === ENTER_KEY_CODE ? showContentToggle(e) : null;
 
   const unmount = unmountOnClose && !showContent;

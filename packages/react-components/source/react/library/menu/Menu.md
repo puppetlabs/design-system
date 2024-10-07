@@ -23,7 +23,7 @@ const buttonStyle = { margin: '0px' };
 
 const closeMenu = () => setMenu(false);
 const openMenu = () => setMenu(true);
-const closeOnSelect = opt => {
+const closeOnSelect = (opt) => {
   setOption(opt);
   closeMenu();
 };
@@ -101,7 +101,7 @@ const MenuItem = Menu.Item(({ inputRef, ...props }) => (
 ));
 
 const closeMenu = () => setControlledMenu(false);
-const closeOnSelect = opt => {
+const closeOnSelect = (opt) => {
   setOption(opt);
   closeMenu();
 };
@@ -167,50 +167,43 @@ const options = [
     group: 'Humans',
     name: 'sara',
     label: 'Sarah Connor',
-    img:
-      'https://avatars.dicebear.com/v2/avataaars/c81a7563b025b679a8bb8b24452fe954.svg',
+    img: 'https://avatars.dicebear.com/v2/avataaars/c81a7563b025b679a8bb8b24452fe954.svg',
   },
   {
     group: 'Robots',
     name: 'terminator',
     label: 'Terminator',
-    img:
-      'https://robohash.org/2f6e700371a87271586861458ebe77a8?set=set3&bgset=&size=400x400',
+    img: 'https://robohash.org/2f6e700371a87271586861458ebe77a8?set=set3&bgset=&size=400x400',
   },
   {
     group: 'Robots',
     name: 'johnny',
     label: 'Johnny 5',
-    img:
-      'https://robohash.org/c6999e565bac76df630772cf644da9bc?set=set3&bgset=&size=400x400',
+    img: 'https://robohash.org/c6999e565bac76df630772cf644da9bc?set=set3&bgset=&size=400x400',
   },
   {
     group: 'Humans',
     name: 'rocky',
     label: 'Rocky Balboa',
-    img:
-      'https://avatars.dicebear.com/v2/avataaars/4bfe3dd0ca4e5d33f296e93f9bd34dfb.svg',
+    img: 'https://avatars.dicebear.com/v2/avataaars/4bfe3dd0ca4e5d33f296e93f9bd34dfb.svg',
   },
   {
     group: 'Robots',
     name: 'optimus',
     label: 'Optimus Prime',
-    img:
-      'https://robohash.org/264a7d4dc4ba5e64d9c078f5ed2a015d?set=set3&bgset=&size=400x400',
+    img: 'https://robohash.org/264a7d4dc4ba5e64d9c078f5ed2a015d?set=set3&bgset=&size=400x400',
   },
   {
     group: 'Robots',
     name: 'hal',
     label: 'Hal',
-    img:
-      'https://gravatar.com/avatar/25d043733489d080d7595f059aec2cf6?s=400&d=robohash&r=x',
+    img: 'https://gravatar.com/avatar/25d043733489d080d7595f059aec2cf6?s=400&d=robohash&r=x',
   },
   {
     group: 'Animals',
     name: 'nermal',
     label: 'Nermal',
-    img:
-      'https://robohash.org/d900a28e5b9ade0e263a30171b72a73e?set=set4&bgset=&size=400x400',
+    img: 'https://robohash.org/d900a28e5b9ade0e263a30171b72a73e?set=set4&bgset=&size=400x400',
   },
 ];
 
@@ -270,50 +263,43 @@ const options = [
     group: 'Humans',
     name: 'sara',
     label: 'Sarah Connor',
-    img:
-      'https://avatars.dicebear.com/v2/avataaars/c81a7563b025b679a8bb8b24452fe954.svg',
+    img: 'https://avatars.dicebear.com/v2/avataaars/c81a7563b025b679a8bb8b24452fe954.svg',
   },
   {
     group: 'Robots',
     name: 'terminator',
     label: 'Terminator',
-    img:
-      'https://robohash.org/2f6e700371a87271586861458ebe77a8?set=set3&bgset=&size=400x400',
+    img: 'https://robohash.org/2f6e700371a87271586861458ebe77a8?set=set3&bgset=&size=400x400',
   },
   {
     group: 'Robots',
     name: 'johnny',
     label: 'Johnny 5',
-    img:
-      'https://robohash.org/c6999e565bac76df630772cf644da9bc?set=set3&bgset=&size=400x400',
+    img: 'https://robohash.org/c6999e565bac76df630772cf644da9bc?set=set3&bgset=&size=400x400',
   },
   {
     group: 'Humans',
     name: 'rocky',
     label: 'Rocky Balboa',
-    img:
-      'https://avatars.dicebear.com/v2/avataaars/4bfe3dd0ca4e5d33f296e93f9bd34dfb.svg',
+    img: 'https://avatars.dicebear.com/v2/avataaars/4bfe3dd0ca4e5d33f296e93f9bd34dfb.svg',
   },
   {
     group: 'Robots',
     name: 'optimus',
     label: 'Optimus Prime',
-    img:
-      'https://robohash.org/264a7d4dc4ba5e64d9c078f5ed2a015d?set=set3&bgset=&size=400x400',
+    img: 'https://robohash.org/264a7d4dc4ba5e64d9c078f5ed2a015d?set=set3&bgset=&size=400x400',
   },
   {
     group: 'Robots',
     name: 'hal',
     label: 'Hal',
-    img:
-      'https://gravatar.com/avatar/25d043733489d080d7595f059aec2cf6?s=400&d=robohash&r=x',
+    img: 'https://gravatar.com/avatar/25d043733489d080d7595f059aec2cf6?s=400&d=robohash&r=x',
   },
   {
     group: 'Animals',
     name: 'nermal',
     label: 'Nermal',
-    img:
-      'https://robohash.org/d900a28e5b9ade0e263a30171b72a73e?set=set4&bgset=&size=400x400',
+    img: 'https://robohash.org/d900a28e5b9ade0e263a30171b72a73e?set=set4&bgset=&size=400x400',
   },
 ];
 
@@ -374,56 +360,49 @@ const options = [
     group: 'Humans',
     name: 'sara',
     label: 'Sarah Connor',
-    img:
-      'https://avatars.dicebear.com/v2/avataaars/c81a7563b025b679a8bb8b24452fe954.svg',
+    img: 'https://avatars.dicebear.com/v2/avataaars/c81a7563b025b679a8bb8b24452fe954.svg',
     description: 'Hero',
   },
   {
     group: 'Robots',
     name: 'terminator',
     label: 'Terminator',
-    img:
-      'https://robohash.org/2f6e700371a87271586861458ebe77a8?set=set3&bgset=&size=400x400',
+    img: 'https://robohash.org/2f6e700371a87271586861458ebe77a8?set=set3&bgset=&size=400x400',
     description: 'Villain',
   },
   {
     group: 'Robots',
     name: 'johnny',
     label: 'Johnny 5',
-    img:
-      'https://robohash.org/c6999e565bac76df630772cf644da9bc?set=set3&bgset=&size=400x400',
+    img: 'https://robohash.org/c6999e565bac76df630772cf644da9bc?set=set3&bgset=&size=400x400',
     description: 'Hero',
   },
   {
     group: 'Humans',
     name: 'rocky',
     label: 'Rocky Balboa',
-    img:
-      'https://avatars.dicebear.com/v2/avataaars/4bfe3dd0ca4e5d33f296e93f9bd34dfb.svg',
+    img: 'https://avatars.dicebear.com/v2/avataaars/4bfe3dd0ca4e5d33f296e93f9bd34dfb.svg',
     description: 'Hero',
   },
   {
     group: 'Robots',
     name: 'optimus',
     label: 'Optimus Prime',
-    img:
-      'https://robohash.org/264a7d4dc4ba5e64d9c078f5ed2a015d?set=set3&bgset=&size=400x400',
+    img: 'https://robohash.org/264a7d4dc4ba5e64d9c078f5ed2a015d?set=set3&bgset=&size=400x400',
     description: 'Hero',
   },
   {
     group: 'Robots',
     name: 'hal',
     label: 'Hal',
-    img:
-      'https://gravatar.com/avatar/25d043733489d080d7595f059aec2cf6?s=400&d=robohash&r=x',
+    img: 'https://gravatar.com/avatar/25d043733489d080d7595f059aec2cf6?s=400&d=robohash&r=x',
     description: 'Villain',
   },
   {
     group: 'Animals',
     name: 'nermal',
     label: 'Nermal',
-    img:
-      'https://robohash.org/d900a28e5b9ade0e263a30171b72a73e?set=set4&bgset=&size=400x400',
+    img: 'https://robohash.org/d900a28e5b9ade0e263a30171b72a73e?set=set4&bgset=&size=400x400',
     description: 'Neutral',
   },
 ];
@@ -433,7 +412,7 @@ const description = (opts = [], search = '') => {
 
   return !search.length
     ? opts
-    : opts.filter(opt => opt.description.toLowerCase().includes(str));
+    : opts.filter((opt) => opt.description.toLowerCase().includes(str));
 };
 
 <div>

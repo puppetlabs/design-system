@@ -34,7 +34,7 @@ exports[`Page Navigation Check only arrow render 1`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-left"
           viewBox={null}
@@ -43,7 +43,7 @@ exports[`Page Navigation Check only arrow render 1`] = `
             className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -86,7 +86,7 @@ exports[`Page Navigation Check only arrow render 1`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-right"
           viewBox={null}
@@ -95,7 +95,7 @@ exports[`Page Navigation Check only arrow render 1`] = `
             className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -154,7 +154,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-left"
           viewBox={null}
@@ -163,7 +163,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -322,7 +322,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-right"
           viewBox={null}
@@ -331,7 +331,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -390,7 +390,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-left"
           viewBox={null}
@@ -399,7 +399,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
             className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -587,7 +587,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-right"
           viewBox={null}
@@ -596,7 +596,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
             className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -655,7 +655,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-left"
           viewBox={null}
@@ -664,7 +664,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
             className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -881,7 +881,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-right"
           viewBox={null}
@@ -890,7 +890,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 3`] = `
             className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -949,7 +949,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-left"
           viewBox={null}
@@ -958,7 +958,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
             className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -1204,7 +1204,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-right"
           viewBox={null}
@@ -1213,7 +1213,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 4`] = `
             className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -1272,7 +1272,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-left"
           viewBox={null}
@@ -1281,7 +1281,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
             className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -1527,7 +1527,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-right"
           viewBox={null}
@@ -1536,7 +1536,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 5`] = `
             className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -1595,7 +1595,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-left"
           viewBox={null}
@@ -1604,7 +1604,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
             className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -1821,7 +1821,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-right"
           viewBox={null}
@@ -1830,7 +1830,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 6`] = `
             className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -1889,7 +1889,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-left"
           viewBox={null}
@@ -1898,7 +1898,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
             className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -2086,7 +2086,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-right"
           viewBox={null}
@@ -2095,7 +2095,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 7`] = `
             className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -2154,7 +2154,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-left"
           viewBox={null}
@@ -2163,7 +2163,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
             className="rc-icon rc-icon-chevron-left rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }
@@ -2322,7 +2322,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
         <Icon
           className="rc-button-icon-svg"
           size="medium"
-          style={Object {}}
+          style={{}}
           svg={null}
           type="chevron-right"
           viewBox={null}
@@ -2331,7 +2331,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 8`] = `
             className="rc-icon rc-icon-chevron-right rc-button-icon-svg"
             height="16px"
             style={
-              Object {
+              {
                 "height": "16px",
                 "width": "16px",
               }

@@ -17,7 +17,7 @@ const options = [
 <ButtonSelect
   options={options}
   value={state.value}
-  onChange={value => {
+  onChange={(value) => {
     console.log('New Value:', value);
     setState({ value });
   }}
@@ -46,7 +46,7 @@ const style = { display: 'inline-block', margin: 10 };
     placeholder="Select a value"
     style={style}
     value={state.value1}
-    onChange={value1 => {
+    onChange={(value1) => {
       console.log('New Value:', value1);
       setState({ value1 });
     }}
@@ -57,7 +57,7 @@ const style = { display: 'inline-block', margin: 10 };
     placeholder="Select a value"
     style={style}
     value={state.value2}
-    onChange={value2 => {
+    onChange={(value2) => {
       console.log('New Value:', value2);
       setState({ value2 });
     }}
@@ -68,7 +68,7 @@ const style = { display: 'inline-block', margin: 10 };
     placeholder="Select a value"
     style={style}
     value={state.value3}
-    onChange={value3 => {
+    onChange={(value3) => {
       console.log('New Value:', value3);
       setState({ value3 });
     }}
@@ -79,7 +79,7 @@ const style = { display: 'inline-block', margin: 10 };
     placeholder="Select a value"
     style={style}
     value={state.value3}
-    onChange={value3 => {
+    onChange={(value3) => {
       console.log('New Value:', value3);
       setState({ value3 });
     }}
@@ -90,7 +90,7 @@ const style = { display: 'inline-block', margin: 10 };
     placeholder="Select a value"
     style={style}
     value={state.value4}
-    onChange={value4 => {
+    onChange={(value4) => {
       console.log('New Value:', value4);
       setState({ value4 });
     }}
@@ -101,7 +101,7 @@ const style = { display: 'inline-block', margin: 10 };
     placeholder="Select a value"
     style={style}
     value={state.value5}
-    onChange={value5 => {
+    onChange={(value5) => {
       console.log('New Value:', value5);
       setState({ value5 });
     }}
@@ -138,7 +138,7 @@ const style = { display: 'inline-block', margin: 10 };
     placeholder="Select multiple things"
     style={style}
     value={state.value}
-    onChange={value => {
+    onChange={(value) => {
       console.log('New Value', value);
       setState({ value });
     }}
@@ -181,7 +181,7 @@ const style = { display: 'inline-block', margin: 10 };
     placeholder="Select multiple things"
     style={style}
     value={state.value}
-    onChange={value => {
+    onChange={(value) => {
       console.log('New Value', value);
       setState({ value });
     }}
@@ -204,7 +204,7 @@ const options = [
 <ButtonSelect
   options={options}
   value={state.value}
-  onChange={value => {
+  onChange={(value) => {
     console.log('New Value:', value);
     setState({ value });
   }}
@@ -229,7 +229,7 @@ const options = [
   tooltipAnchor="top"
   options={options}
   value={state.value}
-  onChange={value => {
+  onChange={(value) => {
     console.log('New Value:', value);
     setState({ value });
   }}
@@ -261,7 +261,7 @@ const style = { display: 'inline-block', margin: 10 };
     placeholder="Select multiple things"
     style={style}
     value={state.value}
-    onChange={value => {
+    onChange={(value) => {
       console.log('New Value', value);
       setState({ value });
     }}
@@ -284,7 +284,7 @@ const options = [
 <ButtonSelect
   options={options}
   value={state.value}
-  onChange={value => {
+  onChange={(value) => {
     console.log('New Value:', value);
     setState({ value });
   }}
@@ -324,7 +324,7 @@ const options = [
   <ButtonSelect
     options={options}
     value={state.value}
-    onChange={value => {
+    onChange={(value) => {
       console.log('New Value:', value);
       setState({ value });
     }}

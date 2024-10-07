@@ -93,7 +93,7 @@ class ColumnHeader extends Component {
               )}
             >
               <Checkbox
-                onChange={value => onSelectAll(value)}
+                onChange={(value) => onSelectAll(value)}
                 value={selectAllValue}
                 label=""
                 name=""
@@ -109,13 +109,16 @@ class ColumnHeader extends Component {
               })}
               key={dataKey}
               style={style}
-              onClick={e => (sortable ? this.sortColumn(e, dataKey) : () => {})}
-              onKeyPress={e =>
+              onClick={(e) =>
+                sortable ? this.sortColumn(e, dataKey) : () => {}
+              }
+              onKeyPress={(e) =>
                 e.key === 'Enter' ? this.sortColumn(e, dataKey) : null
               }
               tabIndex={sortable ? 0 : null}
             >
               <span
+                // eslint-disable-next-line react/no-unknown-property
                 as="h6"
                 color="medium"
                 className={classnames({

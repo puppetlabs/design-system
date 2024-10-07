@@ -14,10 +14,10 @@ See also: [Code](#/React%20Components/Code) and [FormField](#/React%20Components
 
 ```jsx
 <Copy
-  writeToClipboard={value => {
+  writeToClipboard={(value) => {
     console.log(`overwritten writeToClipboard: '${value}'`);
   }}
-  onCopy={value => {
+  onCopy={(value) => {
     console.log(`copied: '${value}'`);
   }}
 >

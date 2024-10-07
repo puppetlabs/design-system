@@ -110,7 +110,7 @@ const options = [
 ];
 
 console.log('Selected', selected);
-const selectedText = count =>
+const selectedText = (count) =>
   `${count} ${count === 1 ? 'tag' : 'tags'} selected`;
 
 <div>

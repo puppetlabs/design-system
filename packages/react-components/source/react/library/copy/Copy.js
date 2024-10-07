@@ -27,7 +27,7 @@ const defaultProps = {
   onCopy: () => {},
   onCopyError: () => {},
   value: null,
-  writeToClipboard: value => navigator.clipboard.writeText(value),
+  writeToClipboard: (value) => navigator.clipboard.writeText(value),
 };
 
 const Copy = ({

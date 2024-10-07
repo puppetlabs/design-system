@@ -25,40 +25,20 @@ describe('<Breadcrumb />', () => {
   it('renders a Link component for all sections except the last (which renders a Text component)', () => {
     const wrapper = mount(<Breadcrumb>{sections}</Breadcrumb>);
 
-    expect(
-      wrapper
-        .find(Link)
-        .first()
-        .text(),
-    ).to.equal(labels[0]);
+    expect(wrapper.find(Link).first().text()).to.equal(labels[0]);
 
-    expect(
-      wrapper
-        .find(Link)
-        .at(1)
-        .text(),
-    ).to.equal(labels[1]);
+    expect(wrapper.find(Link).at(1).text()).to.equal(labels[1]);
 
     expect(wrapper.find(Text).text()).to.equal(labels[2]);
   });
 
   it('renders default back type correctly', () => {
     const wrapper = mount(<Breadcrumb type="back" />);
-    expect(
-      wrapper
-        .find(Link)
-        .first()
-        .text(),
-    ).to.equal('Back');
+    expect(wrapper.find(Link).first().text()).to.equal('Back');
   });
 
   it('renders backLabel type correctly', () => {
     const wrapper = mount(<Breadcrumb type="back" backLabel="Back to nodes" />);
-    expect(
-      wrapper
-        .find(Link)
-        .first()
-        .text(),
-    ).to.equal('Back to nodes');
+    expect(wrapper.find(Link).first().text()).to.equal('Back to nodes');
   });
 });

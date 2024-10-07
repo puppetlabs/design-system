@@ -1,11 +1,14 @@
+/* eslint-disable no-param-reassign */
 function rewireResolveUrlLoader(config, env = 'development') {
-  const { oneOf } = config.module.rules.find(rule => rule.oneOf !== undefined);
-  const scssRules = oneOf.filter(rule => String(rule.test).includes('scss'));
+  const { oneOf } = config.module.rules.find(
+    (rule) => rule.oneOf !== undefined,
+  );
+  const scssRules = oneOf.filter((rule) => String(rule.test).includes('scss'));
 
-  scssRules.forEach(rule => {
+  scssRules.forEach((rule) => {
     const loaderKey = rule.loader ? 'loader' : 'use';
     const sassLoaderIndex = rule[loaderKey].findIndex(
-      loader =>
+      (loader) =>
         (typeof loader === 'string' && loader.includes('sass-loader')) ||
         (loader.loader && loader.loader.includes('sass-loader')),
     );

@@ -45,7 +45,7 @@ When the checkbox is used outside of a [Form](#Form) component, the user is resp
   name="checkbox-ex-event-handling"
   label="Checkbox label is also clickable"
   value={state.checked}
-  onChange={checked => setState({ checked })}
+  onChange={(checked) => setState({ checked })}
 />
 ```
 
@@ -70,7 +70,7 @@ class IndeterminateExample extends React.Component {
 
   onSelectAll(checked) {
     const { checkBoxes } = this.state;
-    checkBoxes.forEach(box => {
+    checkBoxes.forEach((box) => {
       box.checked = checked;
     });
     this.setState({
@@ -89,7 +89,7 @@ class IndeterminateExample extends React.Component {
   render() {
     const { checkBoxes } = this.state;
     let ticked = 0;
-    checkBoxes.forEach(box => {
+    checkBoxes.forEach((box) => {
       if (box.checked) {
         ticked += 1;
       }
@@ -102,7 +102,7 @@ class IndeterminateExample extends React.Component {
           label="Select All"
           indeterminate={ticked > 0 && ticked < checkBoxes.length}
           value={ticked === checkBoxes.length}
-          onChange={checked => this.onSelectAll(checked)}
+          onChange={(checked) => this.onSelectAll(checked)}
           style={{ fontWeight: 'bold' }}
         />
         {checkBoxes.map((box, i) => (
@@ -111,7 +111,7 @@ class IndeterminateExample extends React.Component {
             label={`Box ${i}`}
             value={box.checked}
             key={i}
-            onChange={checked => this.onClick(checked, i)}
+            onChange={(checked) => this.onClick(checked, i)}
           />
         ))}
       </div>

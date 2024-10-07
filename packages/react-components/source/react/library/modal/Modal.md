@@ -49,14 +49,15 @@ const [open, setOpen] = React.useState(false);
   {open && (
     <Modal onClose={() => setOpen(false)}>
       <Modal.Title>Liber Secundus</Modal.Title>
-      Hic cum uterque me intueretur seseque ad audiendum significarent paratos, Primum,
-      inquam, deprecor, ne me tamquam philosophum putetis scholam vobis aliquam explicaturum,
-      quod ne in ipsis quidem philosophis magnopere umquam probavi. quando enim Socrates,
-      qui parens philosophiae iure dici potest, quicquam tale fecit? eorum erat iste
-      mos qui tum sophistae nominabantur, quorum e numero primus est ausus Leontinus
-      Gorgias in conventu poscere quaestionem, id est iubere dicere, qua de re quis
-      vellet audire. audax negotium, dicerem impudens, nisi hoc institutum postea
-      translatum ad philosophos nostros esset.
+      Hic cum uterque me intueretur seseque ad audiendum significarent paratos,
+      Primum, inquam, deprecor, ne me tamquam philosophum putetis scholam vobis
+      aliquam explicaturum, quod ne in ipsis quidem philosophis magnopere umquam
+      probavi. quando enim Socrates, qui parens philosophiae iure dici potest,
+      quicquam tale fecit? eorum erat iste mos qui tum sophistae nominabantur,
+      quorum e numero primus est ausus Leontinus Gorgias in conventu poscere
+      quaestionem, id est iubere dicere, qua de re quis vellet audire. audax
+      negotium, dicerem impudens, nisi hoc institutum postea translatum ad
+      philosophos nostros esset.
       <Modal.Actions>
         <Button onClick={() => setOpen(false)}>Ubmitsay</Button>
         <Button type="tertiary" onClick={() => setOpen(false)}>
@@ -138,7 +139,8 @@ const [open, setOpen] = React.useState(false);
   {open && (
     <Modal onClose={() => setOpen(false)}>
       <Modal.Title>Right-aligned actions</Modal.Title>
-      The Modal.Actions component here has its actionsPosition prop set to "right".
+      The Modal.Actions component here has its actionsPosition prop set to
+      "right".
       <Modal.Actions actionsPosition="right">
         <Button onClick={() => setOpen(false)}>Ubmitsay</Button>
         <Button type="tertiary" onClick={() => setOpen(false)}>

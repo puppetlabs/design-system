@@ -47,14 +47,8 @@ class Alert extends React.Component {
   }
 
   render() {
-    const {
-      children,
-      type,
-      closeable,
-      elevated,
-      className,
-      ...rest
-    } = this.props;
+    const { children, type, closeable, elevated, className, ...rest } =
+      this.props;
     const classNames = classnames(
       'rc-alert',
       {

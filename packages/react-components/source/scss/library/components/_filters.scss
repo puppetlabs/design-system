@@ -1,3 +1,5 @@
+/* stylelint-disable @stylistic/function-parentheses-space-inside */
+@use 'sass:color';
 // Filters
 // ----------------------------------------------------------------------------
 $puppet-filter-border-color: $puppet-n300;
@@ -7,15 +9,24 @@ $puppet-filter-radius: $puppet-common-border-radius !default;
 $puppet-filter-padding: $puppet-common-spacing-base * 0.5 !default;
 $puppet-filter-placeholder-color: $puppet-type-color-subtle !default;
 $puppet-filter-input-bg: $puppet-white !default;
-$puppet-filter-selected-shadow: 0 0 0 1px $puppet-b500, $puppet-common-elevation-150 !default;
+/* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
+$puppet-filter-selected-shadow:
+  0 0 0 1px $puppet-b500,
+  $puppet-common-elevation-150 !default;
 $puppet-filter-border-active: 1px solid $puppet-b500 !default;
 
 $puppet-filter-select-padding: $puppet-common-spacing-base !default;
 $puppet-filter-select-height: 10px !default; // Todo: Base on grid
 
 $puppet-filter-split-bg: $puppet-n400 !default;
-$puppet-filter-split-menu-bg: darken($puppet-filter-split-bg, 10%) !default;
-$puppet-filter-split-menu-bg-hover: lighten($puppet-filter-split-menu-bg, 15%) !default;
+$puppet-filter-split-menu-bg: color.adjust(
+  $puppet-filter-split-bg,
+  $lightness: -10%
+) !default;
+$puppet-filter-split-menu-bg-hover: color.adjust(
+  $puppet-filter-split-menu-bg,
+  $lightness: 15%
+) !default;
 
 .rc-filters {
   @include puppet-type-body();

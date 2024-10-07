@@ -84,7 +84,7 @@ const MenuContainer = ({
 
   useEffect(() => {
     // Handle click outside, select, or blur events
-    const handleClick = event => {
+    const handleClick = (event) => {
       const menu = document.getElementById(menuId);
       if (!hideMenu && !menu.contains(event.target) && closeOnBlur) {
         if (onBlur) onBlur();
@@ -93,7 +93,7 @@ const MenuContainer = ({
     };
 
     // Handle escape events
-    const handleKeyDown = event => {
+    const handleKeyDown = (event) => {
       const escapeFunc = onEscape;
       if (!hideMenu && closeOnEscape && event.keyCode === ESC_KEY_CODE) {
         if (escapeFunc) escapeFunc();

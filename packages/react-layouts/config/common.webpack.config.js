@@ -31,10 +31,10 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        exclude: [/\.(js|jsx|mjs|html|json|scss)$/],
-        loader: 'file-loader',
-        options: {
-          name: 'assets/[name].[hash].[ext]',
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name].[hash][ext]',
         },
       },
     ],
