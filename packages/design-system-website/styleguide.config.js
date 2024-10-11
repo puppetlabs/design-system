@@ -247,8 +247,15 @@ module.exports = {
           },
         },
         {
-          test: /\.(eot|svg|ttf|woff|woff2|png|jpg)$/,
-          use: 'file-loader',
+          test: /\.(png|jpe?g|gif|svg)$/,
+          type: 'asset',
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/,
+          type: 'asset/resource',
+          generator: {
+            filename: 'assets/[name].[hash][ext]',
+          },
         },
       ],
     },
