@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   title: 'Puppet Design System',
@@ -214,11 +214,12 @@ module.exports = {
         {
           test: /\.scss$/,
           exclude: /node_modules/,
-          use: ExtractTextPlugin.extract([
+          use: [
+            MiniCssExtractPlugin.loader,
             'css-loader',
             'resolve-url-loader',
             { loader: 'sass-loader', options: { sourceMap: true } },
-          ]),
+          ],
         },
         {
           test: /\.jsx?$/,
@@ -252,15 +253,15 @@ module.exports = {
       ],
     },
     resolve: {
-      modules: [
-        path.resolve(__dirname, 'node_modules'),
-      ],
+      modules: [path.resolve(__dirname, 'node_modules')],
       extensions: ['.js', '.mjs', '.jsx'],
       symlinks: false,
+      fallback: {
+        assert: require.resolve('assert'),
+        crypto: false,
+      },
     },
-    plugins: [
-      new ExtractTextPlugin({ filename: 'styleguide.css', allChunks: true }),
-    ],
+    plugins: [new MiniCssExtractPlugin({ filename: 'styleguide.css' })],
   },
   // Disable sorting component props
   sortProps: (props) => props,

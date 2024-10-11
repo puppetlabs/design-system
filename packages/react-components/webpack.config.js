@@ -26,6 +26,7 @@ if (env === 'production') {
 }
 
 module.exports = {
+  target: 'web',
   mode: 'none', // We don't want this feature. See above.
   entry: {
     library: './source/index.js',
