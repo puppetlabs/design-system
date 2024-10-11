@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime';
+
 import ActionSelect from './react/library/action-select';
 import Alert from './react/library/alert';
 import Alerts from './react/library/alerts';

@@ -8,7 +8,7 @@ import {
 } from '../../../helpers/statics';
 import FormField from '../FormField';
 
-export const isEmpty = value => {
+export const isEmpty = (value) => {
   if (typeof value === 'string') {
     return !value || !!value.match(/^\s*$/);
   }
@@ -32,12 +32,12 @@ export const isEmpty = value => {
  * Collects the user provided props for all FormFields into
  * an object, with props indexed by name
  */
-export const collectFieldProps = children => {
+export const collectFieldProps = (children) => {
   const fields = {};
 
   React.Children.toArray(children)
-    .filter(child => child && child.props)
-    .forEach(child => {
+    .filter((child) => child && child.props)
+    .forEach((child) => {
       if (child.props.children) {
         Object.assign(fields, collectFieldProps(child.props.children));
       }
@@ -50,18 +50,18 @@ export const collectFieldProps = children => {
   return fields;
 };
 
-export const isFormValid = fieldProps =>
-  !Object.values(fieldProps).some(props => props.blockingError);
+export const isFormValid = (fieldProps) =>
+  !Object.values(fieldProps).some((props) => props.blockingError);
 
 /**
  * Splits a path string into array segments
  */
-const splitPath = fieldPath => {
+const splitPath = (fieldPath) => {
   if (typeof fieldPath === 'string') {
     return fieldPath
       .split(/[.[\]]+/)
-      .filter(p => p)
-      .map(p => {
+      .filter((p) => p)
+      .map((p) => {
         const maybeNum = Number(p);
 
         return Number.isNaN(maybeNum) ? p : maybeNum;
@@ -112,8 +112,8 @@ export const reconstitute = (flatObject, originalNestedObject, fieldPaths) => {
  * Given an index of field props by name, returns an index of field paths by name,
  * setting the path to be the field name by default if not provided
  */
-export const getFieldPaths = fieldProps =>
-  mapObj(fieldProps, props => props.path || props.name);
+export const getFieldPaths = (fieldProps) =>
+  mapObj(fieldProps, (props) => props.path || props.name);
 
 const renderField = (
   child,
@@ -128,8 +128,8 @@ const renderField = (
 
 export const renderChildren = (children, updatedFieldPropMap) =>
   React.Children.toArray(children)
-    .filter(child => child)
-    .map(child => {
+    .filter((child) => child)
+    .map((child) => {
       /**
        * If the child is a field, do special field rendering
        */
@@ -149,7 +149,7 @@ export const renderChildren = (children, updatedFieldPropMap) =>
       return child;
     });
 
-export const usePrevious = value => {
+export const usePrevious = (value) => {
   const ref = useRef();
 
   useEffect(() => {
@@ -159,7 +159,7 @@ export const usePrevious = value => {
   return ref.current;
 };
 
-const getErrorMessage = error => {
+const getErrorMessage = (error) => {
   if (!error) {
     return '';
   }
@@ -229,77 +229,67 @@ export const updateFieldProps = (
     inlineLabelWidth:
       userProvidedFieldProps.inlineLabelWidth || inlineLabelWidth, // Field overwrites form
     value: values[name],
-    onChange: val => onChange(name, val),
+    onChange: (val) => onChange(name, val),
   };
 };
 
-export const contextualizeOnChange = (
-  values,
-  fieldPaths,
-  originalObject,
-  setValues,
-  isControlled,
-  onChange,
-) => (name, value) => {
-  const newValues = {
-    ...values,
-    [name]: value,
-  };
-
-  if (!isControlled) {
-    setValues(newValues);
-  }
-
-  const unNested = reconstitute(
-    {
+export const contextualizeOnChange =
+  (values, fieldPaths, originalObject, setValues, isControlled, onChange) =>
+  (name, value) => {
+    const newValues = {
       ...values,
       [name]: value,
-    },
-    originalObject,
-    fieldPaths,
-  );
+    };
 
-  onChange(name, unNested);
-};
+    if (!isControlled) {
+      setValues(newValues);
+    }
 
-export const contextualizeOnSubmit = (
-  props,
-  fieldPaths,
-  setValidate,
-  values,
-  onChange,
-) => async e => {
-  e.preventDefault();
-  const {
-    children: userProvidedChildren,
-    onSubmit,
-    initialValues,
-    error,
-  } = props;
+    const unNested = reconstitute(
+      {
+        ...values,
+        [name]: value,
+      },
+      originalObject,
+      fieldPaths,
+    );
 
-  setValidate(true);
+    onChange(name, unNested);
+  };
 
-  /**
-   * Collect child props to run validation again, this time with custom
-   * validators always on
-   */
-  const fieldProps = mapObj(
-    collectFieldProps(userProvidedChildren),
-    userProvidedFieldProps =>
-      updateFieldProps(
-        userProvidedFieldProps,
-        true,
-        props,
-        values,
-        error,
-        fieldPaths,
-        onChange,
-      ),
-  );
+export const contextualizeOnSubmit =
+  (props, fieldPaths, setValidate, values, onChange) => async (e) => {
+    e.preventDefault();
+    const {
+      children: userProvidedChildren,
+      onSubmit,
+      initialValues,
+      error,
+    } = props;
 
-  const isValid = isFormValid(fieldProps);
+    setValidate(true);
 
-  if (isValid) {
-    onSubmit(reconstitute(values, initialValues, fieldPaths));
-  }
-};
+    /**
+     * Collect child props to run validation again, this time with custom
+     * validators always on
+     */
+    const fieldProps = mapObj(
+      collectFieldProps(userProvidedChildren),
+      (userProvidedFieldProps) =>
+        updateFieldProps(
+          userProvidedFieldProps,
+          true,
+          props,
+          values,
+          error,
+          fieldPaths,
+          onChange,
+        ),
+    );
+
+    const isValid = isFormValid(fieldProps);
+
+    if (isValid) {
+      onSubmit(reconstitute(values, initialValues, fieldPaths));
+    }
+  };

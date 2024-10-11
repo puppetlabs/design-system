@@ -17,17 +17,12 @@ import { ENTER_KEY_CODE } from '../constants';
  * @returns {
  * RovingFocusContext.Consumer > MenuItemHOC(WrappedComponent)}
  */
-const asFocusItem = WrappedComponent => {
+const asFocusItem = (WrappedComponent) => {
   // Wrap the component in a providers that uses the context props
-  const MenuItem = componentProps => {
+  const MenuItem = (componentProps) => {
     const { closeMenu, closeOnSelect } = useContext(MenuContext);
-    const {
-      currentFocus,
-      setFocus,
-      addTarget,
-      removeTarget,
-      indexes,
-    } = useContext(RovingFocusContext);
+    const { currentFocus, setFocus, addTarget, removeTarget, indexes } =
+      useContext(RovingFocusContext);
 
     const [ref, setRef] = useState(null);
     const { current: id } = useRef(getTabIndexId(componentProps));
@@ -36,7 +31,7 @@ const asFocusItem = WrappedComponent => {
     const focus = index === currentFocus;
 
     const setRefNode = useCallback(
-      node => {
+      (node) => {
         setRef(node);
         if (node) {
           setPosition(node.getBoundingClientRect());
@@ -88,12 +83,14 @@ const asFocusItem = WrappedComponent => {
       }
     };
 
+    const { className } = componentProps;
+
     return (
       <WrappedComponent
         {...componentProps}
         inputRef={setRefNode}
         onClick={handleSelect}
-        className={classNames(componentProps.className, { focus })}
+        className={classNames(className, { focus })}
         onKeyDown={handleKeyDown}
         role="menuitem"
         tabIndex={focus ? 0 : -1}

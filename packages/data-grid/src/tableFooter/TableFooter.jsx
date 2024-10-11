@@ -141,7 +141,7 @@ function TableFooter({
   return (
     <div className="dg-table-footer-container">
       {children === undefined ? (
-        <React.Fragment>
+        <>
           {rowCountText && (
             <Text
               color="medium"
@@ -161,8 +161,7 @@ function TableFooter({
                   color="medium"
                   size="small"
                 >
-                  {rowsPerPageText}
-                  {':'}
+                  {rowsPerPageText}:
                 </Text>
                 <ButtonSelect
                   className="dg-table-footer-rows-per-page-select"
@@ -183,7 +182,7 @@ function TableFooter({
               />
             )}
           </div>
-        </React.Fragment>
+        </>
       ) : (
         children
       )}

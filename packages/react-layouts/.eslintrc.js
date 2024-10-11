@@ -5,8 +5,13 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    babelOptions: {
+      configFile: path.resolve(__dirname, '.babelrc'),
+    },
+  },
+  extends: ['airbnb', 'prettier'],
   plugins: ['prettier', 'chai-friendly'],
   globals: {
     log: false,
@@ -37,13 +42,12 @@ module.exports = {
       },
     ],
     'react/jsx-props-no-spreading': 0,
+    'react/function-component-definition': 'off',
   },
   settings: {
     'import/resolver': {
       node: {
-        paths: [
-          path.resolve(__dirname, 'src'),
-        ],
+        paths: [path.resolve(__dirname, 'src')],
       },
     },
   },

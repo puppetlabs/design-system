@@ -102,8 +102,8 @@ const TagSearch = ({
   const onClick = onClickProp || (() => setIsOpen(true));
   const onClose = onCloseProp || (() => setIsOpen(false));
 
-  const onRemoveItem = name => {
-    const newSelected = selected.filter(tag => tag.name !== name);
+  const onRemoveItem = (name) => {
+    const newSelected = selected.filter((tag) => tag.name !== name);
     setSelected(newSelected);
   };
 
@@ -137,7 +137,7 @@ const TagSearch = ({
     onClose();
   };
 
-  const tags = props =>
+  const tags = (props) =>
     // eslint-disable-next-line react/prop-types
     renderTags({ ...props, removeItem: () => onRemoveItem(props.name) });
 

@@ -37,7 +37,7 @@ const ExampleSelect = ({ value: initialValue, ...props }) => {
     <Select
       name="test"
       value={value}
-      onChange={val => {
+      onChange={(val) => {
         setValue(val);
       }}
       open
@@ -49,7 +49,7 @@ const ExampleSelect = ({ value: initialValue, ...props }) => {
 const getChoiceByText = (wrapper, name) =>
   wrapper
     .find(OptionMenuListItem)
-    .filterWhere(n => n.text() === name)
+    .filterWhere((n) => n.text() === name)
     .first();
 
 describe('<Select />', () => {
@@ -90,10 +90,7 @@ describe('<Select />', () => {
   it('should respond to onBlur event', () => {
     const onBlur = sinon.spy(() => {});
     const wrapper = mount(<Select name="select-example-one" onBlur={onBlur} />);
-    wrapper
-      .find(Select)
-      .props()
-      .onBlur();
+    wrapper.find(Select).props().onBlur();
     expect(onBlur.called).to.equal(true);
     wrapper.unmount();
   });
@@ -153,10 +150,10 @@ describe('<Select />', () => {
   });
 
   describe('with multiselect', () => {
-    const getApplyButton = wrapper =>
+    const getApplyButton = (wrapper) =>
       wrapper
         .find('button')
-        .filterWhere(n => n.text() === 'Apply')
+        .filterWhere((n) => n.text() === 'Apply')
         .first();
 
     it('allows selection of multiple items on click + Apply', () => {
@@ -165,7 +162,7 @@ describe('<Select />', () => {
       );
       const selections = ['banana', 'parsley', 'kiwi', 'thyme'];
 
-      selections.forEach(item => {
+      selections.forEach((item) => {
         getChoiceByText(wrapper, item).simulate('click');
       });
       getApplyButton(wrapper).simulate('click');
@@ -182,13 +179,13 @@ describe('<Select />', () => {
         <ExampleSelect name="test" options={options} type="multiselect" open />,
       );
       const selections = ['banana', 'parsley', 'kiwi', 'thyme'];
-      selections.forEach(choice => {
+      selections.forEach((choice) => {
         getChoiceByText(wrapper, choice).simulate('click');
       });
       getApplyButton(wrapper).simulate('click');
       wrapper.find(SelectTarget).simulate('click');
 
-      [selections.shift(), selections.shift()].forEach(choice => {
+      [selections.shift(), selections.shift()].forEach((choice) => {
         getChoiceByText(wrapper, choice).simulate('click');
       });
       getApplyButton(wrapper).simulate('click');
@@ -197,12 +194,9 @@ describe('<Select />', () => {
       expect(wrapper.find(SelectTarget).text()).to.equal(
         selections.sort().join(', '),
       );
-      expect(
-        wrapper
-          .find('input')
-          .prop('value')
-          .sort(),
-      ).to.eql(selections.sort());
+      expect(wrapper.find('input').prop('value').sort()).to.eql(
+        selections.sort(),
+      );
     });
 
     it('applies selections without requiring the Apply button when applyImmediately is set', () => {

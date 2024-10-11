@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 
-const getDisplayName = comp => comp.displayName || comp.name || 'Component';
+const getDisplayName = (comp) => comp.displayName || comp.name || 'Component';
 
 /**
  * Higher order component that displays a deprecation message upon mount
@@ -12,7 +12,7 @@ const getDisplayName = comp => comp.displayName || comp.name || 'Component';
  *
  * @param  {String} message Deprecation message
  */
-const deprecate = message => WrappedComponent => {
+const deprecate = (message) => (WrappedComponent) => {
   /**
    * Don't wrap if not in development
    */

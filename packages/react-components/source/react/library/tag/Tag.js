@@ -36,36 +36,34 @@ const Tag = ({
   className,
   hideRemoveButton,
   ...divProps
-}) => {
-  return (
+}) => (
+  <div
+    className={classNames(
+      'rc-tag',
+      `rc-tag-${type}`,
+      `rc-tag-${emphasis}`,
+      className,
+    )}
+    {...divProps}
+  >
     <div
-      className={classNames(
-        'rc-tag',
-        `rc-tag-${type}`,
-        `rc-tag-${emphasis}`,
-        className,
-      )}
-      {...divProps}
+      className={classNames('rc-tag-label-background', {
+        'rc-tag-border': !hideRemoveButton,
+      })}
     >
-      <div
-        className={classNames('rc-tag-label-background', {
-          'rc-tag-border': !hideRemoveButton,
-        })}
-      >
-        <Text className="rc-tag-text">{label}</Text>
-      </div>
-      {!hideRemoveButton && (
-        <Button
-          className="rc-tag-remove-button"
-          onClick={() => onClick()}
-          icon="close"
-          iconSize="small"
-          aria-label="Remove tag"
-        />
-      )}
+      <Text className="rc-tag-text">{label}</Text>
     </div>
-  );
-};
+    {!hideRemoveButton && (
+      <Button
+        className="rc-tag-remove-button"
+        onClick={() => onClick()}
+        icon="close"
+        iconSize="small"
+        aria-label="Remove tag"
+      />
+    )}
+  </div>
+);
 
 // Using the render prop here to prevent a circular dependency
 // eslint-disable-next-line react/prop-types

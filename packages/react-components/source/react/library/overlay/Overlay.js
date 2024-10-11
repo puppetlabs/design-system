@@ -60,7 +60,7 @@ const centerAlignment = (position, { popper }) => {
   }
 };
 
-const overlayOffset = (align, position) => popperValues => {
+const overlayOffset = (align, position) => (popperValues) => {
   switch (align) {
     case 'inner':
       return innerAlignment(position, popperValues);
@@ -71,7 +71,7 @@ const overlayOffset = (align, position) => popperValues => {
   }
 };
 
-const resolveRef = ref => {
+const resolveRef = (ref) => {
   if (!ref || !ref.current) {
     return null;
   }
@@ -79,7 +79,7 @@ const resolveRef = ref => {
   return ref.current.nodeType ? ref.current : null;
 };
 
-const withOffset = offset => ({
+const withOffset = (offset) => ({
   name: 'offset',
   options: { offset },
 });
@@ -99,10 +99,10 @@ const Overlay = forwardRef((props, fRef) => {
   const targetNode = resolveRef(target);
   const [overlayNode, setOverlayNode] = useState(null);
   const mergedRef = useMergeRef(setOverlayNode, fRef);
-  const offsetFn = useMemo(() => overlayOffset(align, position), [
-    align,
-    position,
-  ]);
+  const offsetFn = useMemo(
+    () => overlayOffset(align, position),
+    [align, position],
+  );
   const { styles, attributes, update } = usePopper(targetNode, overlayNode, {
     placement: position,
     modifiers: [withOffset(offset || offsetFn)],

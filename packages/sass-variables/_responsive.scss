@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $breakpoints: (
   'small': 576px,
   'medium': 768px,
@@ -5,8 +7,8 @@ $breakpoints: (
 ) !default;
 
 @mixin respond-above($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (min-width: map-get($breakpoints, $breakpoint)) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (min-width: map.get($breakpoints, $breakpoint)) {
       @content;
     }
   } @else {
@@ -15,8 +17,8 @@ $breakpoints: (
 }
 
 @mixin respond-below($breakpoint) {
-  @if map-has-key($breakpoints, $breakpoint) {
-    @media (max-width: map-get($breakpoints, $breakpoint) - 1) {
+  @if map.has-key($breakpoints, $breakpoint) {
+    @media (max-width: map.get($breakpoints, $breakpoint) - 1) {
       @content;
     }
   } @else {

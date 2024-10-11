@@ -97,19 +97,12 @@ describe('<Tabs.Tab />', () => {
     );
 
     // First tab is active by default
-    expect(wrapper)
-      .to.have.state('activeTab')
-      .equal('one');
+    expect(wrapper).to.have.state('activeTab').equal('one');
 
     // Click on second tab
-    wrapper
-      .find('.rc-button')
-      .at(1)
-      .simulate('click');
+    wrapper.find('.rc-button').at(1).simulate('click');
 
-    expect(wrapper)
-      .to.have.state('activeTab')
-      .equal('two');
+    expect(wrapper).to.have.state('activeTab').equal('two');
   });
 
   // NOTE: I am disabling this test for now. Keydown events now subsequently

@@ -46,10 +46,10 @@ import Code from '../code';
 
 ```jsx
 <Copy
-  writeToClipboard={value => {
+  writeToClipboard={(value) => {
     console.log(`overwritten writeToClipboard: '${value}'`);
   }}
-  onCopy={value => {
+  onCopy={(value) => {
     console.log(`copied: '${value}'`);
   }}
 >

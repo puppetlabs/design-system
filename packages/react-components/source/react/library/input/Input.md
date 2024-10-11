@@ -22,7 +22,7 @@ const exampleStyle = { marginBottom: 10 };
     value={state['input-ex1-value']}
     placeholder="Standard text input (or alternates 'email', 'url', 'search')"
     style={exampleStyle}
-    onChange={value => setState({ 'input-ex1-value': value })}
+    onChange={(value) => setState({ 'input-ex1-value': value })}
   />
   <Input
     name="input-ex2"
@@ -30,7 +30,7 @@ const exampleStyle = { marginBottom: 10 };
     value={state['input-ex2-value']}
     placeholder="Password input"
     style={exampleStyle}
-    onChange={value => setState({ 'input-ex2-value': value })}
+    onChange={(value) => setState({ 'input-ex2-value': value })}
   />
   <Input
     name="input-ex3"
@@ -38,7 +38,7 @@ const exampleStyle = { marginBottom: 10 };
     value={state['input-ex3-value']}
     placeholder="Number input"
     style={exampleStyle}
-    onChange={value => setState({ 'input-ex3-value': value })}
+    onChange={(value) => setState({ 'input-ex3-value': value })}
   />
   <Input
     name="input-ex4"
@@ -46,7 +46,7 @@ const exampleStyle = { marginBottom: 10 };
     value={state['input-ex4-value']}
     placeholder="Disabled input"
     style={exampleStyle}
-    onChange={value => setState({ 'input-ex4-value': value })}
+    onChange={(value) => setState({ 'input-ex4-value': value })}
     disabled
   />
   <Input
@@ -55,7 +55,7 @@ const exampleStyle = { marginBottom: 10 };
     value={state['input-ex5-value']}
     placeholder="Multiline input"
     style={exampleStyle}
-    onChange={value => setState({ 'input-ex5-value': value })}
+    onChange={(value) => setState({ 'input-ex5-value': value })}
   />
 </form>;
 ```
@@ -73,7 +73,7 @@ Inputs are available in a "simple" visual variant, primarily used for in-site se
   placeholder="Search"
   icon="search"
   simple
-  onChange={value => setState({ value })}
+  onChange={(value) => setState({ value })}
 />
 ```
 
@@ -141,7 +141,7 @@ const exampleStyle = { marginBottom: 10 };
     shape="oval"
     placeholder="Search for stuff"
     style={exampleStyle}
-    onChange={value => setState({ 'input-ex11-value': value })}
+    onChange={(value) => setState({ 'input-ex11-value': value })}
   />
   <Input
     name="input-ex12"
@@ -149,7 +149,7 @@ const exampleStyle = { marginBottom: 10 };
     icon="key"
     placeholder="Whatever this thing is, it's probably super secure!"
     style={exampleStyle}
-    onChange={value => setState({ 'input-ex12-value': value })}
+    onChange={(value) => setState({ 'input-ex12-value': value })}
   />
 </div>;
 ```
@@ -172,8 +172,8 @@ const type = state['input-ex13-show'] ? 'text' : 'password';
     trailingButtonProps={{ 'aria-label': 'toggle show/hide text' }}
     placeholder="Use the trailing icon for showing/hiding passwords"
     style={exampleStyle}
-    onChange={value => setState({ 'input-ex13-value': value })}
-    onClickTrailingButton={value =>
+    onChange={(value) => setState({ 'input-ex13-value': value })}
+    onClickTrailingButton={(value) =>
       setState({ 'input-ex13-show': !state['input-ex13-show'] })
     }
   />

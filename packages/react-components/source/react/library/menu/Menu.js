@@ -24,6 +24,7 @@ const Menu = ({ children, ...popperOptions }) => {
 
   const menuState = useMenu({ popperOptions });
   return (
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
     <MenuContext.Provider value={{ ...menuState, isOpen, closeMenu, openMenu }}>
       {children}
     </MenuContext.Provider>

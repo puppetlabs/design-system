@@ -17,7 +17,7 @@ const getNameVariants = require('./getNameVariants/getNameVariants');
  * The preGenerate hook can be used if files need to be overlaid afterwards
  */
 
-const getActions = templatePath => {
+const getActions = (templatePath) => {
   const uikitrcPath = path.resolve(templatePath, '.uikitrc.js');
 
   if (fs.existsSync(uikitrcPath)) {
@@ -48,9 +48,9 @@ const generate = ({ template, name, directory, modules }) => {
     .filter(({ stats }) => !stats.isDirectory())
     .filter(
       ({ path: p }) =>
-        !allExcludedFiles.some(excludedFile => p.endsWith(excludedFile)),
+        !allExcludedFiles.some((excludedFile) => p.endsWith(excludedFile)),
     )
-    .forEach(file => {
+    .forEach((file) => {
       const extension = path.extname(file.path);
       const data = fs.readFileSync(file.path, 'utf8');
 
