@@ -35,7 +35,7 @@ function TagBuilder({ filters, onRemoveTag, onRemoveAll }) {
           const tagLabel = `${fieldLabel} = ${displayValue}`;
           return (
             <Tag
-              class={classNames('dg-filter-tag', `dg-filter-tag-${idx}`)}
+              className={classNames('dg-filter-tag', `dg-filter-tag-${idx}`)}
               onClick={() => onRemoveTag(field)}
               label={tagLabel}
               key={`dg-filter-tag-${idx + 1}`}

@@ -1,5 +1,4 @@
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
@@ -9,13 +8,11 @@ const paths = {
   dist: path.resolve(__dirname, 'dist'),
 };
 
-module.exports = env => ({
+module.exports = (env) => ({
   entry: path.resolve(paths.src, 'index.js'),
   mode: env && env.development ? 'development' : 'production',
-  target: 'node',
   devtool: 'source-map',
   plugins: [
-    new CleanWebpackPlugin(['dist'], { root: paths.root }),
     new MiniCssExtractPlugin({
       filename: 'index.css',
       chunkFilename: '[id].[hash].css',
@@ -27,13 +24,19 @@ module.exports = env => ({
   },
   output: {
     filename: 'index.js',
-    library: 'data-grid',
-    libraryTarget: 'umd',
+    library: {
+      name: 'data-grid',
+      type: 'umd',
+    },
     path: paths.dist,
     publicPath: './',
+    clean: true,
   },
   externals: [
-    nodeExternals({ modulesDir: path.resolve(__dirname, '../node_modules') }),
+    nodeExternals({
+      modulesDir: path.resolve(__dirname, '../../node_modules'),
+    }),
+    nodeExternals({ modulesDir: path.resolve(__dirname, 'node_modules') }),
   ],
   module: {
     rules: [
@@ -75,10 +78,14 @@ module.exports = env => ({
         ],
       },
       {
-        exclude: [/\.(js|jsx|mjs|html|json|scss)$/],
-        loader: 'file-loader',
-        options: {
-          name: 'assets/[name].[hash].[ext]',
+        test: /\.(png|jpe?g|gif|svg)$/,
+        type: 'asset',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name].[hash][ext]',
         },
       },
     ],

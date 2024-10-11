@@ -54,10 +54,10 @@ const columns = [
 ];
 
 const wrapper = mount(
-  <React.Fragment>
+  <>
     <Table columns={columns} data={data} />
     <Table.TableFooter rowCountText="5 reports" />
-  </React.Fragment>,
+  </>,
 );
 
 describe('Row Count', () => {
@@ -71,7 +71,7 @@ describe('Row Count', () => {
 describe('Pagination', () => {
   const mockfunc = jest.fn();
   const wrapper2 = mount(
-    <React.Fragment>
+    <>
       <Table columns={columns} data={data} />
       <Table.TableFooter
         PageSelector
@@ -79,37 +79,22 @@ describe('Pagination', () => {
         pageCount={2}
         updatePage={mockfunc}
       />
-    </React.Fragment>,
+    </>,
   );
   test('Renders correct Pagination content', () => {
-    expect(
-      wrapper2
-        .find('button.rc-page-selector-button')
-        .at(1)
-        .text(),
-    ).toBe('1');
+    expect(wrapper2.find('button.rc-page-selector-button').at(1).text()).toBe(
+      '1',
+    );
 
-    expect(
-      wrapper2
-        .find('button.rc-page-selector-button')
-        .at(2)
-        .text(),
-    ).toBe('2');
+    expect(wrapper2.find('button.rc-page-selector-button').at(2).text()).toBe(
+      '2',
+    );
   });
 
   test('updatePage fires with button clicked', () => {
-    wrapper2
-      .find('button.rc-page-selector-button')
-      .at(1)
-      .simulate('click');
-    wrapper2
-      .find('button.rc-page-selector-button')
-      .at(2)
-      .simulate('click');
-    wrapper2
-      .find('button.rc-page-selector-button')
-      .at(3)
-      .simulate('click');
+    wrapper2.find('button.rc-page-selector-button').at(1).simulate('click');
+    wrapper2.find('button.rc-page-selector-button').at(2).simulate('click');
+    wrapper2.find('button.rc-page-selector-button').at(3).simulate('click');
     expect(mockfunc).toHaveBeenCalledTimes(3);
   });
 });
@@ -117,7 +102,7 @@ describe('Pagination', () => {
 describe('Rows Per Page', () => {
   const mockfunc = jest.fn();
   const wrapper3 = mount(
-    <React.Fragment>
+    <>
       <Table columns={columns} data={data} />
       <Table.TableFooter
         rowCountText="5 reports"
@@ -130,7 +115,7 @@ describe('Rows Per Page', () => {
         pageCount={2}
         updatePage={() => {}}
       />
-    </React.Fragment>,
+    </>,
   );
 
   test('Renders correct Rows Per Page action', () => {
@@ -152,10 +137,7 @@ describe('Rows Per Page', () => {
         'div.dg-table-footer-rows-per-page-select button.rc-button-select-target',
       )
       .simulate('click');
-    wrapper3
-      .find('span.rc-menu-list-item-content')
-      .last()
-      .simulate('click');
+    wrapper3.find('span.rc-menu-list-item-content').last().simulate('click');
 
     expect(mockfunc).toHaveBeenCalledWith(50);
   });

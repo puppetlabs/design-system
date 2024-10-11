@@ -4,53 +4,53 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
 <QuickFilter
   emptyFilterLabel="test empty filter label"
   filters={
-    Array [
-      Object {
+    [
+      {
         "field": "All-Operating-System",
         "fieldLabel": "All Operating System",
-        "options": Array [
-          Object {
+        "options": [
+          {
             "icon": "pencil",
             "label": "linux",
             "value": "linux",
           },
-          Object {
+          {
             "icon": "send",
             "label": "Windows",
             "value": "Windows",
           },
-          Object {
+          {
             "icon": "link",
             "label": "MacOS",
             "value": "MacOS",
           },
         ],
       },
-      Object {
+      {
         "field": "Puppet-installed",
         "fieldLabel": "Puppet installed",
-        "options": Array [
-          Object {
+        "options": [
+          {
             "icon": "pencil",
             "label": "True",
             "value": "True",
           },
-          Object {
+          {
             "icon": "send",
             "label": "False",
             "value": "False",
           },
-          Object {
+          {
             "icon": "link",
             "label": "Unknown",
             "value": "Unknown",
           },
         ],
       },
-      Object {
+      {
         "field": "Empty-array",
         "fieldLabel": "Empty filter",
-        "options": Array [],
+        "options": [],
       },
     ]
   }
@@ -68,18 +68,18 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         key="1"
         onChange={[Function]}
         options={
-          Array [
-            Object {
+          [
+            {
               "icon": "pencil",
               "label": "linux",
               "value": "linux",
             },
-            Object {
+            {
               "icon": "send",
               "label": "Windows",
               "value": "Windows",
             },
-            Object {
+            {
               "icon": "link",
               "label": "MacOS",
               "value": "MacOS",
@@ -101,18 +101,18 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           multiple={false}
           onChange={[Function]}
           options={
-            Array [
-              Object {
+            [
+              {
                 "icon": "pencil",
                 "label": "linux",
                 "value": "linux",
               },
-              Object {
+              {
                 "icon": "send",
                 "label": "Windows",
                 "value": "Windows",
               },
-              Object {
+              {
                 "icon": "link",
                 "label": "MacOS",
                 "value": "MacOS",
@@ -120,7 +120,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             ]
           }
           placeholder="All Operating System"
-          style={Object {}}
+          style={{}}
           tooltipAnchor="top"
           tooltipDisabled={false}
           type="tertiary"
@@ -131,7 +131,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           <div
             className="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter"
             onBlur={[Function]}
-            style={Object {}}
+            style={{}}
           >
             <Button
               aria-controls="quick-filter-All-Operating-System-0-menu"
@@ -170,7 +170,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                 <Icon
                   className="rc-button-icon-svg"
                   size="medium"
-                  style={Object {}}
+                  style={{}}
                   svg={null}
                   type="chevron-down"
                   viewBox={null}
@@ -179,7 +179,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     className="rc-icon rc-icon-chevron-down rc-button-icon-svg"
                     height="16px"
                     style={
-                      Object {
+                      {
                         "height": "16px",
                         "width": "16px",
                       }
@@ -212,18 +212,18 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               onEscape={[Function]}
               onFocusItem={[Function]}
               options={
-                Array [
-                  Object {
+                [
+                  {
                     "icon": "pencil",
                     "label": "linux",
                     "value": "linux",
                   },
-                  Object {
+                  {
                     "icon": "send",
                     "label": "Windows",
                     "value": "Windows",
                   },
-                  Object {
+                  {
                     "icon": "link",
                     "label": "MacOS",
                     "value": "MacOS",
@@ -232,11 +232,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               }
               selected={null}
               showCancel={false}
-              style={Object {}}
+              style={{}}
             >
               <div
                 className="rc-menu-list rc-option-menu-list-single"
-                style={Object {}}
+                style={{}}
               >
                 <ul
                   aria-activedescendant="quick-filter-All-Operating-System-0-menu-linux"
@@ -274,7 +274,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                       <Icon
                         className="rc-menu-list-item-icon"
                         size="medium"
-                        style={Object {}}
+                        style={{}}
                         svg={null}
                         type="pencil"
                         viewBox={null}
@@ -283,7 +283,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                           className="rc-icon rc-icon-pencil rc-menu-list-item-icon"
                           height="16px"
                           style={
-                            Object {
+                            {
                               "height": "16px",
                               "width": "16px",
                             }
@@ -327,7 +327,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                       <Icon
                         className="rc-menu-list-item-icon"
                         size="medium"
-                        style={Object {}}
+                        style={{}}
                         svg={null}
                         type="send"
                         viewBox={null}
@@ -336,7 +336,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                           className="rc-icon rc-icon-send rc-menu-list-item-icon"
                           height="16px"
                           style={
-                            Object {
+                            {
                               "height": "16px",
                               "width": "16px",
                             }
@@ -380,7 +380,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                       <Icon
                         className="rc-menu-list-item-icon"
                         size="medium"
-                        style={Object {}}
+                        style={{}}
                         svg={null}
                         type="link"
                         viewBox={null}
@@ -389,7 +389,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                           className="rc-icon rc-icon-link rc-menu-list-item-icon"
                           height="16px"
                           style={
-                            Object {
+                            {
                               "height": "16px",
                               "width": "16px",
                             }
@@ -422,18 +422,18 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         key="2"
         onChange={[Function]}
         options={
-          Array [
-            Object {
+          [
+            {
               "icon": "pencil",
               "label": "True",
               "value": "True",
             },
-            Object {
+            {
               "icon": "send",
               "label": "False",
               "value": "False",
             },
-            Object {
+            {
               "icon": "link",
               "label": "Unknown",
               "value": "Unknown",
@@ -455,18 +455,18 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           multiple={false}
           onChange={[Function]}
           options={
-            Array [
-              Object {
+            [
+              {
                 "icon": "pencil",
                 "label": "True",
                 "value": "True",
               },
-              Object {
+              {
                 "icon": "send",
                 "label": "False",
                 "value": "False",
               },
-              Object {
+              {
                 "icon": "link",
                 "label": "Unknown",
                 "value": "Unknown",
@@ -474,7 +474,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             ]
           }
           placeholder="Puppet installed"
-          style={Object {}}
+          style={{}}
           tooltipAnchor="top"
           tooltipDisabled={false}
           type="tertiary"
@@ -485,7 +485,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           <div
             className="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter"
             onBlur={[Function]}
-            style={Object {}}
+            style={{}}
           >
             <Button
               aria-controls="quick-filter-Puppet-installed-1-menu"
@@ -524,7 +524,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                 <Icon
                   className="rc-button-icon-svg"
                   size="medium"
-                  style={Object {}}
+                  style={{}}
                   svg={null}
                   type="chevron-down"
                   viewBox={null}
@@ -533,7 +533,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     className="rc-icon rc-icon-chevron-down rc-button-icon-svg"
                     height="16px"
                     style={
-                      Object {
+                      {
                         "height": "16px",
                         "width": "16px",
                       }
@@ -566,18 +566,18 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               onEscape={[Function]}
               onFocusItem={[Function]}
               options={
-                Array [
-                  Object {
+                [
+                  {
                     "icon": "pencil",
                     "label": "True",
                     "value": "True",
                   },
-                  Object {
+                  {
                     "icon": "send",
                     "label": "False",
                     "value": "False",
                   },
-                  Object {
+                  {
                     "icon": "link",
                     "label": "Unknown",
                     "value": "Unknown",
@@ -586,11 +586,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               }
               selected={null}
               showCancel={false}
-              style={Object {}}
+              style={{}}
             >
               <div
                 className="rc-menu-list rc-option-menu-list-single"
-                style={Object {}}
+                style={{}}
               >
                 <ul
                   aria-activedescendant="quick-filter-Puppet-installed-1-menu-True"
@@ -628,7 +628,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                       <Icon
                         className="rc-menu-list-item-icon"
                         size="medium"
-                        style={Object {}}
+                        style={{}}
                         svg={null}
                         type="pencil"
                         viewBox={null}
@@ -637,7 +637,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                           className="rc-icon rc-icon-pencil rc-menu-list-item-icon"
                           height="16px"
                           style={
-                            Object {
+                            {
                               "height": "16px",
                               "width": "16px",
                             }
@@ -681,7 +681,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                       <Icon
                         className="rc-menu-list-item-icon"
                         size="medium"
-                        style={Object {}}
+                        style={{}}
                         svg={null}
                         type="send"
                         viewBox={null}
@@ -690,7 +690,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                           className="rc-icon rc-icon-send rc-menu-list-item-icon"
                           height="16px"
                           style={
-                            Object {
+                            {
                               "height": "16px",
                               "width": "16px",
                             }
@@ -734,7 +734,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                       <Icon
                         className="rc-menu-list-item-icon"
                         size="medium"
-                        style={Object {}}
+                        style={{}}
                         svg={null}
                         type="link"
                         viewBox={null}
@@ -743,7 +743,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                           className="rc-icon rc-icon-link rc-menu-list-item-icon"
                           height="16px"
                           style={
-                            Object {
+                            {
                               "height": "16px",
                               "width": "16px",
                             }
@@ -776,8 +776,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         key="3"
         onChange={[Function]}
         options={
-          Array [
-            Object {
+          [
+            {
               "disabled": true,
               "label": "test empty filter label",
               "value": "",
@@ -799,8 +799,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           multiple={false}
           onChange={[Function]}
           options={
-            Array [
-              Object {
+            [
+              {
                 "disabled": true,
                 "label": "test empty filter label",
                 "value": "",
@@ -808,7 +808,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             ]
           }
           placeholder="Empty filter"
-          style={Object {}}
+          style={{}}
           tooltipAnchor="top"
           tooltipDisabled={false}
           type="tertiary"
@@ -819,7 +819,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           <div
             className="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter dg-quick-filter-empty"
             onBlur={[Function]}
-            style={Object {}}
+            style={{}}
           >
             <Button
               aria-controls="quick-filter-Empty-array-2-menu"
@@ -858,7 +858,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                 <Icon
                   className="rc-button-icon-svg"
                   size="medium"
-                  style={Object {}}
+                  style={{}}
                   svg={null}
                   type="chevron-down"
                   viewBox={null}
@@ -867,7 +867,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                     className="rc-icon rc-icon-chevron-down rc-button-icon-svg"
                     height="16px"
                     style={
-                      Object {
+                      {
                         "height": "16px",
                         "width": "16px",
                       }
@@ -900,8 +900,8 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               onEscape={[Function]}
               onFocusItem={[Function]}
               options={
-                Array [
-                  Object {
+                [
+                  {
                     "disabled": true,
                     "label": "test empty filter label",
                     "value": "",
@@ -910,11 +910,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               }
               selected={null}
               showCancel={false}
-              style={Object {}}
+              style={{}}
             >
               <div
                 className="rc-menu-list rc-option-menu-list-single"
-                style={Object {}}
+                style={{}}
               >
                 <ul
                   aria-activedescendant="quick-filter-Empty-array-2-menu-"

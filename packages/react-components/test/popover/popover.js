@@ -14,9 +14,9 @@ describe('<Popover />', () => {
   });
 
   it('should propagate user supplied className', () => {
-    expect(shallow(<Popover className="my-class">Popover</Popover>)).to.have.className(
-      'my-class',
-    );
+    expect(
+      shallow(<Popover className="my-class">Popover</Popover>),
+    ).to.have.className('my-class');
   });
 
   it('should properly render provided children', () => {
@@ -38,7 +38,7 @@ describe('<Popover />', () => {
   it('should render elevation class for each allowed element elevation', () => {
     const elevations = [0, 50, 100, 150, 200, 400, 800];
 
-    elevations.forEach(elevation => {
+    elevations.forEach((elevation) => {
       const wrapper = shallow(<Popover elevation={elevation} />);
 
       expect(wrapper).to.have.className(`rc-popover-elevation-${elevation}`);

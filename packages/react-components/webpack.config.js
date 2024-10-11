@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const { type } = require('os');
 
 const env = process.env.NODE_ENV || 'development';
 let plugins;
@@ -25,15 +26,19 @@ if (env === 'production') {
 }
 
 module.exports = {
+  target: 'web',
   mode: 'none', // We don't want this feature. See above.
-  node: false,
   entry: {
     library: './source/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: '[name].js',
-    libraryTarget: 'commonjs2',
+    library: {
+      name: 'react-components',
+      type: 'umd',
+    },
+    clean: true,
   },
   externals: [
     nodeExternals({
@@ -47,6 +52,13 @@ module.exports = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: 'babel-loader',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'assets/[name].[hash][ext]',
+        },
       },
     ],
   },

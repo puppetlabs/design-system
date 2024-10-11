@@ -160,7 +160,7 @@ const Form = forwardRef((props, ref) => {
   /**
    * Map of field name to updated props
    */
-  const updatedFieldPropMap = mapObj(fieldProps, userProvidedFieldProps =>
+  const updatedFieldPropMap = mapObj(fieldProps, (userProvidedFieldProps) =>
     updateFieldProps(
       userProvidedFieldProps,
       validate,
@@ -181,7 +181,6 @@ const Form = forwardRef((props, ref) => {
       className={classNames('rc-form', className)}
       style={style}
       onSubmit={onSubmit}
-      onCancel={onCancel}
       noValidate
       ref={ref}
       {...otherProps}

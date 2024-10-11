@@ -38,7 +38,7 @@ const toIndexMap = (acc, { id }, index) => ({ ...acc, [id]: index });
  * @param {node[]} nodes Array of tabbable nodes
  * @returns  A Sorted array of nodes and it's size
  */
-const getIndexes = nodes => {
+const getIndexes = (nodes) => {
   const positions = sortBy(Object.values(nodes), ['y', 'x']);
   const size = positions.length;
   const indexes = positions.reduce(toIndexMap, {});
@@ -54,7 +54,7 @@ const getIndexes = nodes => {
  * 	size: number
  * }
  */
-const getNodeData = nodes => {
+const getNodeData = (nodes) => {
   const [size, indexes] = getIndexes(nodes);
   return {
     nodes,
@@ -98,14 +98,14 @@ const reducer = (state, action) => {
 export function useRovingFocus(setFocusOnOpen) {
   const [currentFocus, setFocus] = useState(setFocusOnOpen ? 0 : -1);
   const [{ size, indexes }, dispatch] = useReducer(reducer, defaultState);
-  const removeNode = node => dispatch({ type: 'remove', node });
-  const addNode = node => dispatch({ type: 'add', node });
+  const removeNode = (node) => dispatch({ type: 'remove', node });
+  const addNode = (node) => dispatch({ type: 'add', node });
 
-  const addTarget = node => addNode(node);
-  const removeTarget = node => removeNode(node);
+  const addTarget = (node) => addNode(node);
+  const removeTarget = (node) => removeNode(node);
 
   const handleKeyDown = useCallback(
-    e => {
+    (e) => {
       switch (e.keyCode) {
         case TAB_KEY_CODE:
         case RIGHT_KEY_CODE:

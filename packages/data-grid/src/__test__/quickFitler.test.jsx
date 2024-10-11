@@ -98,10 +98,7 @@ describe('Check component', () => {
   });
 
   test('onFilterSelect function gets called', () => {
-    wrapper
-      .find('li.rc-menu-list-item')
-      .first()
-      .simulate('click');
+    wrapper.find('li.rc-menu-list-item').first().simulate('click');
     expect(mockfunc).toHaveBeenCalled();
   });
 });

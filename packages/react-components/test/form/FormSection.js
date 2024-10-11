@@ -14,7 +14,7 @@ describe('<FormSection />', () => {
     sandbox = sinon.createSandbox();
     mockTooltip = sandbox
       .stub(ReactDOM, 'createPortal')
-      .callsFake(portal => portal);
+      .callsFake((portal) => portal);
   });
 
   afterEach(() => {

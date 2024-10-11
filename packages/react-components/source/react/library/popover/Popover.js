@@ -41,27 +41,25 @@ const Popover = ({
   side,
   elevation,
   ...rest
-}) => {
-  return (
-    <div
-      className={classNames(
-        'rc-popover',
-        `rc-popover-${side}`,
-        `rc-popover-elevation-${elevation}`,
-        className,
-      )}
-      {...rest}
-    >
-      <Button
-        className="rc-popover-close"
-        icon="x"
-        onClick={onClose}
-        type="transparent"
-      />
-      {children}
-    </div>
-  );
-};
+}) => (
+  <div
+    className={classNames(
+      'rc-popover',
+      `rc-popover-${side}`,
+      `rc-popover-elevation-${elevation}`,
+      className,
+    )}
+    {...rest}
+  >
+    <Button
+      className="rc-popover-close"
+      icon="x"
+      onClick={onClose}
+      type="transparent"
+    />
+    {children}
+  </div>
+);
 
 Popover.propTypes = propTypes;
 Popover.defaultProps = defaultProps;

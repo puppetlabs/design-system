@@ -118,14 +118,14 @@ $null-shadow: 0 0 0 0 transparent;
   margin-top: 10px;
   // arrow body
   &::after {
-    border-color: transparent transparent $popover-fill-color transparent;
+    border-color: transparent transparent $popover-fill-color;
     border-width: 10px;
     bottom: 100%;
     left: 10px;
   }
   // arrow 'border'
   &::before {
-    border-color: transparent transparent $popover-border-color transparent;
+    border-color: transparent transparent $popover-border-color;
     border-width: 11px;
     bottom: 100%;
     left: 9px;
@@ -136,14 +136,14 @@ $null-shadow: 0 0 0 0 transparent;
   margin-top: 10px;
   // arrow body
   &::after {
-    border-color: transparent transparent $popover-fill-color transparent;
+    border-color: transparent transparent $popover-fill-color;
     border-width: 10px;
     bottom: 100%;
     right: 10px;
   }
   // arrow 'border'
   &::before {
-    border-color: transparent transparent $popover-border-color transparent;
+    border-color: transparent transparent $popover-border-color;
     border-width: 11px;
     bottom: 100%;
     right: 9px;

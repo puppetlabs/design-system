@@ -24,13 +24,14 @@ const MenuButton = asFocusItem(({ inputRef, ...props }) => (
   <Button ref={inputRef} {...props} />
 ));
 
+// eslint-disable-next-line default-param-last
 export const defaultFilter = (opts = [], search) => {
-  const searchIncludes = str =>
+  const searchIncludes = (str) =>
     str && search.length && str.toLowerCase().includes(search.toLowerCase());
   return !search
     ? opts
     : opts.filter(
-        opt => searchIncludes(opt.label) || searchIncludes(opt.group),
+        (opt) => searchIncludes(opt.label) || searchIncludes(opt.group),
       );
 };
 
@@ -153,11 +154,11 @@ const SearchMenu = ({
   const onClearSelected = () => setSelectedOptions({});
 
   // Search
-  const onSearch = search => {
+  const onSearch = (search) => {
     setSearchString(search);
   };
   // Grouping
-  const grouper = item => item.group || '#collector-group';
+  const grouper = (item) => item.group || '#collector-group';
   const groupOptions = entries(groupBy(items, grouper));
   const collector = remove(
     groupOptions,
@@ -171,7 +172,7 @@ const SearchMenu = ({
     sortedGroups.push(...collector);
   }
 
-  const toggleGroup = menuName => {
+  const toggleGroup = (menuName) => {
     const newMenus = xor(openMenus, [menuName]);
     setOpenMenus(newMenus);
   };

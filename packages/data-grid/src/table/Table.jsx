@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import {
   arrayOf,
@@ -194,6 +195,7 @@ class Table extends Component {
             { 'rc-table-fixed': fixed },
             className,
           )}
+          // eslint-disable-next-line react/jsx-props-no-spreading
           {...rest}
         >
           <ColumnHeader
@@ -229,94 +231,92 @@ class Table extends Component {
                 </th>
               </tr>
             )}
-            {data.map((rowData, rowIndex) => {
-              return (
-                <tr
-                  className={classnames(
-                    'dg-table-row',
-                    this.classNameTypeManage(rowClassName, rowData, rowIndex),
-                    {
-                      'dg-table-row-selected':
-                        selectable && rowData.selected === true,
-                      'dg-table-row-disabled': selectable && !!rowData.disabled,
-                    },
-                  )}
-                  key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
-                  onClick={e =>
-                    this.handleOnClick(e, rowData, rowKey, rowIndex)
-                  }
-                >
-                  {selectable ? (
-                    <td
-                      key={`checkbox ${this.uniqueIDCheck(
-                        rowKey,
-                        rowData,
-                        rowIndex,
-                      )}`}
-                      className="rc-table-cell"
-                    >
-                      <Checkbox
-                        className={classnames('dg-table-checkbox', {
-                          'dg-table-checkbox-disabled':
-                            rowData.disabled || 'selectable' in rowData
-                              ? !rowData.selectable
-                              : false,
-                        })}
-                        onChange={checked => onRowChecked(checked, rowData)}
-                        value={rowData.selected}
-                        label=""
-                        name=""
-                        disabled={
+            {data.map((rowData, rowIndex) => (
+              <tr
+                className={classnames(
+                  'dg-table-row',
+                  this.classNameTypeManage(rowClassName, rowData, rowIndex),
+                  {
+                    'dg-table-row-selected':
+                      selectable && rowData.selected === true,
+                    'dg-table-row-disabled': selectable && !!rowData.disabled,
+                  },
+                )}
+                key={this.uniqueIDCheck(rowKey, rowData, rowIndex)}
+                onClick={(e) =>
+                  this.handleOnClick(e, rowData, rowKey, rowIndex)
+                }
+              >
+                {selectable ? (
+                  <td
+                    key={`checkbox ${this.uniqueIDCheck(
+                      rowKey,
+                      rowData,
+                      rowIndex,
+                    )}`}
+                    className="rc-table-cell"
+                  >
+                    <Checkbox
+                      className={classnames('dg-table-checkbox', {
+                        'dg-table-checkbox-disabled':
                           rowData.disabled || 'selectable' in rowData
                             ? !rowData.selectable
-                            : false
-                        }
-                      />
-                    </td>
-                  ) : null}
-                  {columns.map((column, columnIndex) => {
-                    const {
-                      cellDataGetter,
-                      cellRenderer,
-                      columnData,
-                      dataKey,
-                      className: columnClassName,
-                      style,
-                    } = {
-                      ...defaultColumnDefs,
-                      ...column,
-                    };
-                    return (
-                      <td
-                        key={`${(rowIndex, dataKey)}`}
-                        className={classnames(
-                          'rc-table-cell',
-                          this.classNameTypeManage(
-                            columnClassName,
-                            dataKey,
-                            columnIndex,
-                          ),
-                        )}
-                        style={style}
-                      >
-                        {cellRenderer({
-                          cellData: cellDataGetter({
-                            dataKey,
-                            columnData,
-                            rowData,
-                          }),
-                          columnData,
-                          columnIndex,
+                            : false,
+                      })}
+                      onChange={(checked) => onRowChecked(checked, rowData)}
+                      value={rowData.selected}
+                      label=""
+                      name=""
+                      disabled={
+                        rowData.disabled || 'selectable' in rowData
+                          ? !rowData.selectable
+                          : false
+                      }
+                    />
+                  </td>
+                ) : null}
+                {columns.map((column, columnIndex) => {
+                  const {
+                    cellDataGetter,
+                    cellRenderer,
+                    columnData,
+                    dataKey,
+                    className: columnClassName,
+                    style,
+                  } = {
+                    ...defaultColumnDefs,
+                    ...column,
+                  };
+                  return (
+                    <td
+                      key={`${(rowIndex, dataKey)}`}
+                      className={classnames(
+                        'rc-table-cell',
+                        this.classNameTypeManage(
+                          columnClassName,
                           dataKey,
+                          columnIndex,
+                        ),
+                      )}
+                      style={style}
+                    >
+                      {cellRenderer({
+                        cellData: cellDataGetter({
+                          dataKey,
+                          columnData,
                           rowData,
-                          rowIndex,
-                        })}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
+                        }),
+                        columnData,
+                        columnIndex,
+                        dataKey,
+                        rowData,
+                        rowIndex,
+                      })}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
           </tbody>
         </table>
         {data.length < 1 ? (

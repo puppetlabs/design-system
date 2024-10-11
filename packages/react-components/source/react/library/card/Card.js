@@ -52,10 +52,8 @@ const Card = ({
   ...rest
 }) => {
   const Element = assignDefaultElement(as, selectable);
-  const {
-    pluckedDescendants: title,
-    otherDescendants: filteredDescendants,
-  } = filterDescendants({ children, components: CardTitle });
+  const { pluckedDescendants: title, otherDescendants: filteredDescendants } =
+    filterDescendants({ children, components: CardTitle });
   const { pluckedDescendants: actions, otherDescendants } = filterDescendants({
     children: filteredDescendants,
     components: [CardAction, CardActionSelect],

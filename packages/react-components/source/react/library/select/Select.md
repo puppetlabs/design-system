@@ -29,7 +29,7 @@ const options = [
   placeholder="Select your language"
   options={options}
   value={value}
-  onChange={newValue => setValue(newValue)}
+  onChange={(newValue) => setValue(newValue)}
 />;
 ```
 
@@ -51,7 +51,7 @@ const options = [
   { value: 'bg', label: 'Bulgarian' },
   { value: 'ca', label: 'Catalan' },
 ];
-const isValueInOptions = options.map(option => option.value).includes(value);
+const isValueInOptions = options.map((option) => option.value).includes(value);
 
 <>
   <Select
@@ -59,7 +59,7 @@ const isValueInOptions = options.map(option => option.value).includes(value);
     placeholder="Select your language"
     options={options}
     value={value}
-    onChange={newValue => setValue(newValue)}
+    onChange={(newValue) => setValue(newValue)}
   />
   {!isValueInOptions && (
     <Alert type="warning" style={{ marginTop: 10 }}>
@@ -101,7 +101,7 @@ const noResults = [
 
 let filteredOptions = [...options];
 if (state.fieldValue !== undefined && state.fieldValue !== '') {
-  filteredOptions = options.filter(options =>
+  filteredOptions = options.filter((options) =>
     options.label.includes(state.fieldValue),
   );
 }
@@ -113,7 +113,7 @@ if (state.fieldValue !== undefined && state.fieldValue !== '') {
     placeholder="Select your fruit"
     style={style}
     value={state.fieldValue}
-    onChange={fieldValue => {
+    onChange={(fieldValue) => {
       console.log('New Value:', fieldValue);
       setState({ fieldValue });
     }}
@@ -163,7 +163,7 @@ const optionsWithGroups = [
   name="select-option-group-example"
   options={optionsWithGroups}
   value={state.value}
-  onChange={value => {
+  onChange={(value) => {
     setState({ value });
   }}
 />;
@@ -200,7 +200,7 @@ const style = { margin: 10 };
     placeholder="Select your language"
     style={style}
     value={state.value}
-    onChange={value => {
+    onChange={(value) => {
       console.log('New Value', value);
       setState({ value });
     }}
@@ -242,7 +242,7 @@ const style = { margin: 10 };
     placeholder="Select your language"
     style={style}
     value={state.value}
-    onChange={value => {
+    onChange={(value) => {
       console.log('New Value', value);
       setState({ value });
     }}
@@ -281,7 +281,7 @@ const style = { margin: 10 };
     placeholder="Select your language"
     style={style}
     value={state.value1}
-    onChange={value1 => {
+    onChange={(value1) => {
       console.log('New Value:', value1);
       setState({ value1 });
     }}
@@ -324,7 +324,7 @@ const options = [
     options={options}
     value={state.value}
     placeholder="Select a source control"
-    onChange={value => {
+    onChange={(value) => {
       console.log('New Value:', value);
       setState({ value });
     }}

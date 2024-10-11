@@ -1,5 +1,5 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
   title: 'Puppet Design System',
@@ -164,10 +164,10 @@ module.exports = {
         '**/toolbar/Actions.js',
         '**/logo/logos.js',
         '**/breadcrumb/BreadcrumbSection.js',
-		'**/tag/Search.js',
-		'**/menu/Arrow.js',
-		'**/menu/Container.js',
-		'**/menu/Trigger.js',
+        '**/tag/Search.js',
+        '**/menu/Arrow.js',
+        '**/menu/Container.js',
+        '**/menu/Trigger.js',
         '**/tooltips/Tooltip.js',
       ],
     },
@@ -214,11 +214,12 @@ module.exports = {
         {
           test: /\.scss$/,
           exclude: /node_modules/,
-          use: ExtractTextPlugin.extract([
+          use: [
+            MiniCssExtractPlugin.loader,
             'css-loader',
             'resolve-url-loader',
             { loader: 'sass-loader', options: { sourceMap: true } },
-          ]),
+          ],
         },
         {
           test: /\.jsx?$/,
@@ -230,15 +231,13 @@ module.exports = {
                 [
                   '@babel/preset-env',
                   {
-                    useBuiltIns: 'usage',
-                    corejs: '3.0.1',
-                    modules: false,
+                    useBuiltIns: 'entry',
+                    corejs: '3.38.1',
                   },
                 ],
                 '@babel/preset-react',
               ],
               plugins: ['@babel/plugin-proposal-class-properties'],
-
               env: {
                 development: {
                   plugins: ['react-hot-loader/babel'],
@@ -248,8 +247,15 @@ module.exports = {
           },
         },
         {
-          test: /\.(eot|svg|ttf|woff|woff2|png|jpg)$/,
-          use: 'file-loader',
+          test: /\.(png|jpe?g|gif|svg)$/,
+          type: 'asset',
+        },
+        {
+          test: /\.(woff|woff2|eot|ttf|otf)$/,
+          type: 'asset/resource',
+          generator: {
+            filename: 'assets/[name].[hash][ext]',
+          },
         },
       ],
     },
@@ -257,11 +263,13 @@ module.exports = {
       modules: [path.resolve(__dirname, 'node_modules')],
       extensions: ['.js', '.mjs', '.jsx'],
       symlinks: false,
+      fallback: {
+        assert: require.resolve('assert'),
+        crypto: false,
+      },
     },
-    plugins: [
-      new ExtractTextPlugin({ filename: 'styleguide.css', allChunks: true }),
-    ],
+    plugins: [new MiniCssExtractPlugin({ filename: 'styleguide.css' })],
   },
   // Disable sorting component props
-  sortProps: props => props,
+  sortProps: (props) => props,
 };

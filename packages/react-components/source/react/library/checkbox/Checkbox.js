@@ -73,7 +73,7 @@ const Checkbox = ({
           'rc-checkbox-error': error,
           'rc-checkbox-indeterminate': indeterminate,
         })}
-        onChange={e => onChange(e.target.checked, e)}
+        onChange={(e) => onChange(e.target.checked, e)}
         {...otherProps}
       />
       {indeterminate ? (

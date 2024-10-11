@@ -105,9 +105,7 @@ describe('<Alert.Error />', () => {
       </Alert>,
     );
 
-    expect(wrapper)
-      .to.have.exactly(1)
-      .descendants('li');
+    expect(wrapper).to.have.exactly(1).descendants('li');
 
     expect(wrapper.find('li')).to.have.text('test2');
   });

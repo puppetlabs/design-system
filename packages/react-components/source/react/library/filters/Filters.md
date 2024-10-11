@@ -10,7 +10,7 @@ const fields = ['Name', 'Date', 'Profit'];
 <Filters
   fields={fields}
   filters={filters}
-  onChange={newFilters => console.log('new filters', newFilters)}
+  onChange={(newFilters) => console.log('new filters', newFilters)}
 />;
 ```
 
@@ -28,6 +28,6 @@ const fields = ['Animal type'];
   removableToggle
   filters={filters}
   fields={fields}
-  onChange={newFilters => console.log('new filters', newFilters)}
+  onChange={(newFilters) => console.log('new filters', newFilters)}
 />;
 ```

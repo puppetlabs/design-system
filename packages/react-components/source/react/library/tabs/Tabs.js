@@ -54,9 +54,9 @@ const defaultProps = {
   type: 'primary',
 };
 
-const collectTabsProps = children =>
+const collectTabsProps = (children) =>
   React.Children.toArray(children)
-    .filter(child => child && child.props && componentHasType(child, Tab))
+    .filter((child) => child && child.props && componentHasType(child, Tab))
     .map((child, index) => ({
       ...child.props,
       id: child.props.id || index,
@@ -66,7 +66,7 @@ const collectTabsProps = children =>
 const getActiveTab = (props, state) => {
   const tabsProps = collectTabsProps(props.children);
 
-  const activeChild = tabsProps.find(p => p.active);
+  const activeChild = tabsProps.find((p) => p.active);
 
   let activeTab;
 
@@ -79,7 +79,7 @@ const getActiveTab = (props, state) => {
     activeTab = tabsProps[0].id;
   }
 
-  const activeIndex = tabsProps.findIndex(p => p.id === activeTab);
+  const activeIndex = tabsProps.findIndex((p) => p.id === activeTab);
 
   return {
     ...state,
@@ -205,10 +205,11 @@ class Tabs extends React.Component {
       direction === 'left' ? -scrollAmount : scrollAmount;
   }
 
+  // eslint-disable-next-line react/no-unused-class-component-methods
   getActiveTab(tabsProps) {
     const { activeTab } = this.state;
 
-    const activeChild = tabsProps.find(props => props.active);
+    const activeChild = tabsProps.find((props) => props.active);
 
     return (activeChild && activeChild.id) || activeTab;
   }
@@ -262,7 +263,7 @@ class Tabs extends React.Component {
           type="transparent"
           icon={`chevron-${direction}`}
           onClick={() => this.onScrollButtonClick(direction)}
-          onKeyUp={e => {
+          onKeyUp={(e) => {
             if (e.keyCode === ENTER_KEY_CODE) {
               this.onScrollButtonClick(direction);
             }
@@ -289,7 +290,7 @@ class Tabs extends React.Component {
 
     const tabsProps = collectTabsProps(userProvidedChildren);
     const otherChildren = React.Children.toArray(userProvidedChildren).filter(
-      child => !componentHasType(child, Tab),
+      (child) => !componentHasType(child, Tab),
     );
 
     return (
@@ -320,7 +321,7 @@ class Tabs extends React.Component {
                   onClick={this.onTabClick}
                   onKeyDown={this.onKeyDown}
                   type={tabType || type}
-                  ref={button => {
+                  ref={(button) => {
                     this.tabButtonRefs[index] = button;
                   }}
                 />

@@ -497,7 +497,7 @@ describe('<Form />', () => {
         b: 'B',
       };
 
-      const invalidIfOdd = field =>
+      const invalidIfOdd = (field) =>
         field.length % 2 === 0 ? false : 'this is bad';
 
       const wrapper = mount(
@@ -540,7 +540,7 @@ describe('<Form />', () => {
         b: 'B',
       };
 
-      const invalidIfOdd = field =>
+      const invalidIfOdd = (field) =>
         field.length % 2 === 0 ? false : 'this is bad';
 
       const wrapper = mount(
@@ -571,11 +571,11 @@ describe('<Form />', () => {
     const emptyThings = ['', ' ', undefined, null, [], {}];
     const fullThings = ['full', 0, ['thing'], { thing: 'full' }];
 
-    emptyThings.forEach(thing => {
+    emptyThings.forEach((thing) => {
       expect(isEmpty(thing)).to.eql(true);
     });
 
-    fullThings.forEach(thing => {
+    fullThings.forEach((thing) => {
       expect(isEmpty(thing)).to.eql(false);
     });
   });

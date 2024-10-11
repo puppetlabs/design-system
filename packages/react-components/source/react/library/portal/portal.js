@@ -45,16 +45,18 @@ const Portal = ({ children, target, active, style, className }) => {
   if (style) Object.assign(portal.style, style);
 
   // Remove portal on unmount
-  useEffect(() => {
-    return () => {
+  useEffect(
+    () => () => {
       const p = document.getElementById(portalId);
       if (p) p.remove();
-    };
-  }, []);
+    },
+    [],
+  );
 
   // Remove portal if not active
   if (!active && portal) portal.remove();
 
+  // eslint-disable-next-line react/jsx-no-useless-fragment
   return <>{active && target ? createPortal(children, portal) : children}</>;
 };
 Portal.propTypes = propTypes;
