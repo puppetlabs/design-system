@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -237,7 +238,7 @@ module.exports = {
                 ],
                 '@babel/preset-react',
               ],
-              plugins: ['@babel/plugin-proposal-class-properties'],
+              plugins: ['@babel/plugin-transform-object-rest-spread'],
               env: {
                 development: {
                   plugins: ['react-hot-loader/babel'],
@@ -264,11 +265,15 @@ module.exports = {
       extensions: ['.js', '.mjs', '.jsx'],
       symlinks: false,
       fallback: {
-        assert: require.resolve('assert'),
         crypto: false,
       },
     },
-    plugins: [new MiniCssExtractPlugin({ filename: 'styleguide.css' })],
+    plugins: [
+      new MiniCssExtractPlugin({ filename: 'styleguide.css' }),
+      new webpack.ProvidePlugin({
+        process: 'process/browser',
+      }),
+    ],
   },
   // Disable sorting component props
   sortProps: (props) => props,

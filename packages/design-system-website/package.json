@@ -11,9 +11,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
-    "@babel/plugin-proposal-class-properties": "^7.10.4",
-    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
-    "@babel/polyfill": "^7.10.4",
+    "@babel/plugin-transform-object-rest-spread": "^7.25.8",
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "@babel/register": "^7.10.5",
@@ -22,7 +20,7 @@
     "@webpack-cli/info": "^2.0.2",
     "@webpack-cli/serve": "^2.0.5",
     "babel-loader": "^9.2.1",
-    "babel-plugin-module-alias": "^1.6.0",
+    "babel-plugin-module-resolver": "^5.0.2",
     "babel-preset-react-hmre": "^1.1.1",
     "chai": "^4.2.0",
     "chai-enzyme": "^1.0.0-beta.1",
@@ -40,6 +38,7 @@
     "mocha-jsdom": "^2.0.0",
     "namor": "^2.0.2",
     "prettier": "^1.19.1",
+    "process": "^0.11.10",
     "react-modal": "^3.11.2",
     "react-router": "^5.2.0",
     "react-transition-group": "^4.4.1",
@@ -50,10 +49,10 @@
     "sinon": "^7.5.0",
     "sinon-chai": "^3.5.0",
     "webpack": "^5.95.0",
-    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^3.11.0",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-dev-server": "^5.1.0",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
