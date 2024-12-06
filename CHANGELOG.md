@@ -57,6 +57,10 @@
 
 - Upgrade dependencies #450
 
+## react-components 5.34.4 (2024-03-19)
+
+- [Logo] Add continuous delivery logo (by [@mttsltrs](https://github.com/mttsltrs))
+
 ## react-components 5.34.3 (2024-03-15)
 
 - [Icon] Add Locked and Unlocked icons
