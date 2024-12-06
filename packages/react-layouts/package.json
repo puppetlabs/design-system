@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-layouts",
-  "version": "2.0.0-alpha.8",
+  "version": "2.0.0-alpha.9",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "dist/react-layouts.js",
@@ -22,8 +22,8 @@
     "access": "public"
   },
   "peerDependencies": {
-    "react": "^16.13.1 || ^17.0.0",
-    "react-dom": "^16.13.1 || ^17.0.0"
+    "react": "^16.13.1 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.13.1 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
     "@puppet/react-components": "^6.0.0-alpha.17",
