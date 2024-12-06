@@ -13,6 +13,7 @@ export const SUPPORTED_LOGOS = [
   'pipelines',
   'remediate',
   'comply',
+  'security-compliance-management',
 ];
 
 const propTypes = {
