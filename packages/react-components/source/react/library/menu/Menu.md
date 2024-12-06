@@ -66,15 +66,15 @@ const closeOnSelect = opt => {
 
 ## Managing Menu Items
 
-#### Menu.Item
+### Menu.Item
 
 To improve accessibility and event handling, the `Menu` component provides the `Menu.Item` [HOC](https://reactjs.org/docs/higher-order-components.html) for managing its internal focusable elements and adding common event handlers. To use, wrap any component that accepts an `innerRef` prop with the `Menu.Item` function.
 
-#### Focus
+### Focus
 
 `Menu.Item` uses the 'roving focus' pattern and is meant to be used for simple menu navigation. The tab index will be tracked automatically according to its x/y location on the page. For more complex menus, it's recommended you add your own focus management.
 
-#### Controlled vs Uncontrolled
+### Controlled vs Uncontrolled
 
 `Menu.Item` will add basic open and close handlers, allowing for a simple uncontrolled menu. `onKeydown` events for the space & enter key will be added to match the onClick event provided to the menu item component.
 
@@ -82,8 +82,8 @@ _To control the menu while using components wrapped in the `Menu.Item` HOC, pass
 
 ```jsx
 import Heading from '../heading';
-import Detail from '../Detail';
-import Button from '../Button';
+import Detail from '../detail';
+import Button from '../button';
 
 const [option, setOption] = React.useState();
 const [openControlledMenu, setControlledMenu] = React.useState(false);
@@ -153,9 +153,8 @@ _\*Note: This is meant ot be a controlled component. The `Menu.SearchMenu` compo
 
 ```jsx
 import Heading from '../heading';
-import Avatar from '../Avatar';
-
-import Detail from '../Detail';
+import Avatar from '../avatar';
+import Detail from '../detail';
 const [selected, setSelected] = React.useState([]);
 const [open, setMenu] = React.useState(false);
 const exampleStyle = { margin: 0, padding: '4px' };
@@ -251,15 +250,14 @@ const options = [
 </div>;
 ```
 
-#### Columns
+### Columns
 
 For a more compact view, columns can be set to true, for two columns, or a number for more than two columns. It's not recommended to display more than 3 columns in a menu.
 
 ```jsx
 import Heading from '../heading';
-import Avatar from '../Avatar';
-
-import Detail from '../Detail';
+import Avatar from '../avatar';
+import Detail from '../detail';
 const [selected, setSelected] = React.useState([]);
 const [open, setMenu] = React.useState(false);
 const exampleStyle = { margin: 0, padding: '4px' };
@@ -362,9 +360,8 @@ The default search function searches for a match against an Item's label and gro
 
 ```jsx
 import Heading from '../heading';
-import Avatar from '../Avatar';
-
-import Detail from '../Detail';
+import Avatar from '../avatar';
+import Detail from '../detail';
 const [selected, setSelected] = React.useState([]);
 const [open, setMenu] = React.useState(false);
 const exampleStyle = { margin: 0, padding: '4px' };
