@@ -57,6 +57,10 @@
 
 - Upgrade dependencies #450
 
+## react-components 5.34.1 (2024-03-08)
+
+- [Input] Bug fixing Input component element order
+
 ## data-grid 0.6.12 (2022-07-25)
 
 - [Table] Bug fixing table loader width on selectable tables (by [@Lukeaber](https://github.com/Lukeaber) in [#636](https://github.com/puppetlabs/design-system/pull/636))

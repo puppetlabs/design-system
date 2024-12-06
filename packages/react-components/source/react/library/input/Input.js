@@ -165,7 +165,6 @@ const Input = ({
     >
       {icon && lIcon}
       {trailingIcon && tIcon}
-      {showTrailingButton && trailingButton}
       <Element
         id={name}
         name={name}
@@ -179,6 +178,7 @@ const Input = ({
         onChange={e => onChange(parseValue(e.target.value), e)}
         {...otherProps}
       />
+      {showTrailingButton && trailingButton}
     </div>
   );
 };
