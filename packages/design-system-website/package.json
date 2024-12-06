@@ -36,6 +36,7 @@
     "enzyme-adapter-react-16": "^1.15.3",
     "file-loader": "^6.2.0",
     "jsdom": "^15.2.1",
+    "mini-css-extract-plugin": "^2.9.2",
     "mocha": "^6.2.3",
     "mocha-jsdom": "^2.0.0",
     "namor": "^2.0.2",
