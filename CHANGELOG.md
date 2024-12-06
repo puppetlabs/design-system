@@ -57,6 +57,15 @@
 
 - Upgrade dependencies #450
 
+## react-components 5.33.9 (2022-07-28)
+
+- Adding optional tooltip to ButtonSelect component (by [@alex501212](https://github.com/alex501212) in [#591](https://github.com/puppetlabs/design-system/pull/591))
+
+## react-components 5.33.8 (2022-07-08)
+
+- Add `circle-empty` icon (by [@mardotio](https://github.com/mardotio) in [#583](https://github.com/puppetlabs/design-system/pull/583))
+- Allow React 18 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#583](https://github.com/puppetlabs/design-system/pull/583))
+
 ## react-components 5.33.7 (2022-05-18)
 
 - [Icon] Add "folder" icon (by [@vine77](https://github.com/vine77) in [#574](https://github.com/puppetlabs/design-system/pull/574))
