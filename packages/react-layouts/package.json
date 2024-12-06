@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-layouts",
-  "version": "2.0.0-alpha.11",
+  "version": "2.0.0-alpha.12",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "dist/react-layouts.js",
