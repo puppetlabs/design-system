@@ -1,6 +1,6 @@
 {
   "name": "@puppet/uikit",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "main": "dist/uikit.js",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",

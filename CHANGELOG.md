@@ -1,3 +1,27 @@
+## uikit1.0.18 (2024-06-24)
+
+- Upgrade dependencies for improved performance and compatibility. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@comfucios](https://github.com/comfucios) in [#676](https://github.com/puppetlabs/design-system/pull/676))
+
+## sass-variables 1.4.5 (2024-06-24)
+
+- Fix deprecated sass warnings. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@comfucios](https://github.com/comfucios) in [#676](https://github.com/puppetlabs/design-system/pull/676))
+
+## react-layouts 2.0.0-alpha.12 (2024-06-24)
+
+- Upgrade to Webpack 5 and update dependencies for improved performance and compatibility. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@comfucios](https://github.com/comfucios) in [#676](https://github.com/puppetlabs/design-system/pull/676))
+
+## react-components 5.34.11 (2024-06-24)
+
+- This includes upgrading webpack to version 5, node to version 20, updating dependencies, and fixing deprecated sass warnings. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@comfucios](https://github.com/comfucios) in [#676](https://github.com/puppetlabs/design-system/pull/676))
+
+## design-system-website 1.4.6 (2024-06-24)
+
+- Upgrade to Webpack 5 and update dependencies for improved performance and compatibility. This upgrade includes optimizations in the build process and ensures that the latest features and fixes are available for use. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@comfucios](https://github.com/comfucios) in [#676](https://github.com/puppetlabs/design-system/pull/676))
+
+## data-grid 0.6.13 (2024-06-24)
+
+- Upgrade dependencies for improved performance and compatibility. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@comfucios](https://github.com/comfucios) in [#676](https://github.com/puppetlabs/design-system/pull/676))
+
 ## react-components 5.34.10 (2024-06-24)
 
 - [Select] Pass through additional props to select inner component (by [@sean-mckenna](https://github.com/sean-mckenna))
