@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@puppet/sass-variables": "^1.4.4",
+    "@puppet/sass-variables": "^2.0.0-alpha.3",
     "classnames": "^2.5.1",
     "core-js": "^3.38.1",
     "hoist-non-react-statics": "^3.3.2",

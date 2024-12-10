@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
-const { type } = require('os');
 
 const env = process.env.NODE_ENV || 'development';
 let plugins;

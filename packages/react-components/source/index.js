@@ -61,7 +61,6 @@ export {
   Copy,
   Drawer,
   Detail,
-  Filters,
   Form,
   Heading,
   Icon,
