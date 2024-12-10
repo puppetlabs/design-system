@@ -5,8 +5,8 @@
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "start": "NODE_OPTIONS=--openssl-legacy-provider styleguidist server",
-    "styleguide:build": "NODE_OPTIONS=--openssl-legacy-provider styleguidist build",
+    "start": "styleguidist server",
+    "styleguide:build": "styleguidist build",
     "upgrade": "npx npm-check-updates --upgrade --interactive"
   },
   "devDependencies": {
@@ -17,7 +17,7 @@
     "@babel/preset-env": "^7.11.0",
     "@babel/preset-react": "^7.10.4",
     "@babel/register": "^7.10.5",
-    "@puppet/sass-variables": "^1.4.3",
+    "@puppet/sass-variables": "^2.0.0-alpha.3",
     "@webpack-cli/configtest": "^2.1.1",
     "@webpack-cli/info": "^2.0.2",
     "@webpack-cli/serve": "^2.0.5",
@@ -50,16 +50,17 @@
     "sinon": "^7.5.0",
     "sinon-chai": "^3.5.0",
     "webpack": "^5.95.0",
-    "webpack-bundle-analyzer": "^3.8.0",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^3.11.0",
     "webpack-node-externals": "^1.7.2"
   },
   "dependencies": {
     "@popperjs/core": "^2.9.2",
-    "@puppet/data-grid": "^0.2.7",
-    "@puppet/react-components": "^5.34.10",
-    "@puppet/react-layouts": "^2.0.0-alpha.4",
+    "@puppet/data-grid": "^1.0.0-alpha.5",
+    "@puppet/react-components": "^6.0.0-alpha.17",
+    "@puppet/react-layouts": "^2.0.0-alpha.6",
+    "acorn-dynamic-import": "^4.0.0",
     "brace": "^0.11.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",

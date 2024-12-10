@@ -73,7 +73,7 @@ const RadioButton = ({
         className={classNames('rc-radiobutton', {
           'rc-radiobutton-error': error,
         })}
-        onChange={(e) => onChange(e.target.checked, e)}
+        onChange={(e) => onChange(value, e)}
         {...otherProps}
       />
       <Icon svg={radioDot.svg} viewBox={radioDot.viewBox} />

@@ -224,7 +224,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-large($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-large-font-family;
   font-size: $puppet-type-large-font-size;
   font-weight: $puppet-type-large-font-weight;
@@ -232,7 +232,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-medium($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-medium-font-family;
   font-size: $puppet-type-medium-font-size;
   font-weight: $puppet-type-medium-font-weight;
@@ -315,12 +315,6 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
   font-weight: $puppet-type-code-tiny-font-weight;
   line-height: $puppet-type-code-tiny-line-height;
 }
-
-  // background-color: $puppet-n100;
-  // border-left: 8px solid $puppet-n300;
-  // display: block;
-  // padding: 0;
-  // white-space: pre;
 
 @mixin puppet-type-code-block() {
   background-color: $puppet-n50;
