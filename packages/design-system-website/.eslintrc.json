@@ -1,8 +1,7 @@
 {
   "env": {
     "browser": true,
-    "es6": true,
-    "mocha": true
+    "es6": true
   },
   "parserOptions": {
     "ecmaVersion": 2017,
@@ -14,9 +13,12 @@
   "rules": {
     "prettier/prettier": "error",
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }],
-    "jsx-a11y/anchor-is-valid": [ "error", {
-      "components": [ "Link" ],
-      "specialLink": [ "as" ]
-    }]
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["as"]
+      }
+    ]
   }
 }

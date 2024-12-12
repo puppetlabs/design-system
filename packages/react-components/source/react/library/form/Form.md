@@ -26,7 +26,7 @@ const initialValues = {
 };
 
 /** Mock api call method */
-const submitForm = values => values;
+const submitForm = (values) => values;
 
 class MyPage extends React.Component {
   constructor(props) {
@@ -123,7 +123,7 @@ const initialValues = {
 };
 
 /** Mock api call method */
-const submitForm = values => values;
+const submitForm = (values) => values;
 
 class MyPage extends React.Component {
   constructor(props) {
@@ -211,7 +211,7 @@ const initialValues = {
 };
 
 /** Mock api call method */
-const submitForm = values => values;
+const submitForm = (values) => values;
 
 class MyPage extends React.Component {
   constructor(props) {

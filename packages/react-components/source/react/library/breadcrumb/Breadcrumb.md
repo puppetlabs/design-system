@@ -33,7 +33,7 @@ The ‘back’ breadcrumb is a simplified version of the breadcrumb that aids wa
 ```jsx
 import Link from '../link';
 
-<Breadcrumb type='back' backLabel="Back to home"/>
+<Breadcrumb type="back" backLabel="Back to home" />;
 ```
 
 ## Related

@@ -147,33 +147,21 @@ describe('Column Prop', () => {
   });
 
   test('Correct labels displayed / Columns render in correct order', () => {
-    expect(
-      wrapper
-        .find('tr.rc-table-header')
-        .childAt(0)
-        .text(),
-    ).toBe(columns[0].label);
+    expect(wrapper.find('tr.rc-table-header').childAt(0).text()).toBe(
+      columns[0].label,
+    );
 
-    expect(
-      wrapper
-        .find('tr.rc-table-header')
-        .childAt(1)
-        .text(),
-    ).toBe(columns[1].label);
+    expect(wrapper.find('tr.rc-table-header').childAt(1).text()).toBe(
+      columns[1].label,
+    );
 
-    expect(
-      wrapper
-        .find('tr.rc-table-header')
-        .childAt(2)
-        .text(),
-    ).toBe(columns[2].label);
+    expect(wrapper.find('tr.rc-table-header').childAt(2).text()).toBe(
+      columns[2].label,
+    );
 
-    expect(
-      wrapper
-        .find('tr.rc-table-header')
-        .childAt(3)
-        .text(),
-    ).toBe(columns[3].label);
+    expect(wrapper.find('tr.rc-table-header').childAt(3).text()).toBe(
+      columns[3].label,
+    );
   });
 
   const data2 = [
@@ -199,12 +187,7 @@ describe('Column Prop', () => {
   const wrapper8 = mount(<Table data={data2} columns={columns2} />);
 
   test('Customs can collect data with dataKey paths', () => {
-    expect(
-      wrapper8
-        .find('td.rc-table-cell')
-        .at(2)
-        .text(),
-    ).toEqual('600');
+    expect(wrapper8.find('td.rc-table-cell').at(2).text()).toEqual('600');
   });
 });
 
@@ -240,7 +223,7 @@ describe('Custom classes', () => {
   // eslint-disable-next-line
   const wrapper7 = mount(
     <Table
-      columns={columns.map(x => ({
+      columns={columns.map((x) => ({
         ...x,
         className: () => columnMockfunc(),
       }))}
@@ -250,7 +233,7 @@ describe('Custom classes', () => {
   );
 
   test('Custom row classname of string is rendered', () => {
-    wrapper6.find('tr.dg-table-row').forEach(node => {
+    wrapper6.find('tr.dg-table-row').forEach((node) => {
       expect(node.hasClass('testRowClassName')).toEqual(true);
     });
   });
@@ -260,7 +243,7 @@ describe('Custom classes', () => {
   });
 
   test('Custom column classname of string is rendered', () => {
-    wrapper6.find('td.rc-table-cell').forEach(node => {
+    wrapper6.find('td.rc-table-cell').forEach((node) => {
       expect(node.hasClass('testColumnClassName')).toEqual(true);
     });
   });
@@ -292,13 +275,10 @@ describe('Selection Props', () => {
         .is('th.dg-table-header-checkbox-container'),
     ).toEqual(true);
   });
-  expect(wrapper9.findWhere(n => n.name() === 'Checkbox')).toHaveLength(8);
+  expect(wrapper9.findWhere((n) => n.name() === 'Checkbox')).toHaveLength(8);
 
   test('When row checkbox is clicked fire onUpdateData', () => {
-    wrapper9
-      .find('.rc-checkbox')
-      .last()
-      .simulate('change');
+    wrapper9.find('.rc-checkbox').last().simulate('change');
     expect(rowCheckMockfunc).toHaveBeenCalled();
   });
 
@@ -327,19 +307,11 @@ describe('Selection Props', () => {
     const wrapper11 = mount(
       <Table data={data3} columns={columns3} selectable />,
     );
-    expect(
-      wrapper11
-        .find('.rc-checkbox')
-        .last()
-        .prop('checked'),
-    ).toEqual(true);
+    expect(wrapper11.find('.rc-checkbox').last().prop('checked')).toEqual(true);
   });
 
   test('When row is clicked fire onRowClick', () => {
-    wrapper9
-      .find('.dg-table-row')
-      .first()
-      .simulate('click');
+    wrapper9.find('.dg-table-row').first().simulate('click');
 
     expect(rowClickMockfunc).toHaveBeenCalledWith(undefined, 0, {
       affectedDevices: 20,

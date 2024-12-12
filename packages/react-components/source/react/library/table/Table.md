@@ -184,7 +184,7 @@ A unique key can also be provided via a function:
 <Table
   data={data}
   columns={columns}
-  rowKey={rowData => rowdata.nested.uniqueKey}
+  rowKey={(rowData) => rowdata.nested.uniqueKey}
 />
 ```
 

@@ -54,7 +54,7 @@ const initialAlerts = [
           key={alert.id}
           type="danger"
           closeable
-          onClose={() => setAlerts(alerts.filter(a => a.id !== alert.id))}
+          onClose={() => setAlerts(alerts.filter((a) => a.id !== alert.id))}
         >
           {alert.message}
         </Alert>

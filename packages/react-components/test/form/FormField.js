@@ -104,7 +104,7 @@ describe('<FormField />', () => {
   });
 
   it('renders an Input for all Input supported types', () => {
-    INPUT_SUPPORTED_TYPES.forEach(type => {
+    INPUT_SUPPORTED_TYPES.forEach((type) => {
       expect(
         mount(<FormField {...requiredProps} type={type} />),
       ).to.have.descendants(Input);
@@ -124,7 +124,7 @@ describe('<FormField />', () => {
   });
 
   it('renders a Select for select and multiselect type', () => {
-    ['select', 'multiselect'].forEach(type => {
+    ['select', 'multiselect'].forEach((type) => {
       expect(
         mount(<FormField {...requiredProps} type={type} />),
       ).to.have.descendants(Select);

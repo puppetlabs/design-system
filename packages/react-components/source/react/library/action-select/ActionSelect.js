@@ -170,7 +170,7 @@ class ActionSelect extends Component {
         )}
         style={style}
         onBlur={this.onBlur}
-        ref={container => {
+        ref={(container) => {
           this.container = container;
         }}
       >
@@ -187,7 +187,7 @@ class ActionSelect extends Component {
           aria-controls={`${id}-menu`}
           aria-expanded={open}
           onClick={this.onClickButton}
-          ref={button => {
+          ref={(button) => {
             this.button = button;
           }}
         >
@@ -200,7 +200,7 @@ class ActionSelect extends Component {
           onActionClick={this.closeAndFocusButton}
           onEscape={this.closeAndFocusButton}
           style={menuStyle}
-          ref={menu => {
+          ref={(menu) => {
             this.menu = menu;
           }}
         />

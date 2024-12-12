@@ -12,7 +12,16 @@ const propTypes = {
   /** Component children */
   children: PropTypes.node,
   /** Side the arrow appears on */
-  side: PropTypes.oneOf(['top', 'bottom', 'left', 'right']),
+  side: PropTypes.oneOf([
+    'top',
+    'top-right',
+    'bottom',
+    'bottom-right',
+    'left',
+    'left-bottom',
+    'right',
+    'right-bottom',
+  ]),
   /** Popover 'elevation' visually indicated with box-shadow */
   elevation: elementElevation,
 };
@@ -32,27 +41,25 @@ const Popover = ({
   side,
   elevation,
   ...rest
-}) => {
-  return (
-    <div
-      className={classNames(
-        'rc-popover',
-        `rc-popover-${side}`,
-        `rc-popover-elevation-${elevation}`,
-        className,
-      )}
-      {...rest}
-    >
-      <Button
-        className="rc-popover-close"
-        icon="x"
-        onClick={onClose}
-        type="transparent"
-      />
-      {children}
-    </div>
-  );
-};
+}) => (
+  <div
+    className={classNames(
+      'rc-popover',
+      `rc-popover-${side}`,
+      `rc-popover-elevation-${elevation}`,
+      className,
+    )}
+    {...rest}
+  >
+    <Button
+      className="rc-popover-close"
+      icon="x"
+      onClick={onClose}
+      type="transparent"
+    />
+    {children}
+  </div>
+);
 
 Popover.propTypes = propTypes;
 Popover.defaultProps = defaultProps;

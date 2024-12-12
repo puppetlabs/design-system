@@ -60,26 +60,27 @@
   font-family: Calibre;
   font-style: normal;
   font-weight: 600;
-  src: url('#{$puppet-common-font-path}/CalibreWeb-Semibold.woff2')
-      format('woff2'),
+  src:
+    url('#{$puppet-common-font-path}/CalibreWeb-Semibold.woff2') format('woff2'),
     url('#{$puppet-common-font-path}/CalibreWeb-Semibold.woff') format('woff');
 }
 @font-face {
   font-family: Calibre;
   font-style: italic;
   font-weight: 600;
-  src: url('#{$puppet-common-font-path}/CalibreWeb-SemiboldItalic.woff2')
-      format('woff2'),
+  src:
+    url('#{$puppet-common-font-path}/CalibreWeb-SemiboldItalic.woff2')
+    format('woff2'),
     url('#{$puppet-common-font-path}/CalibreWeb-SemiboldItalic.woff')
-      format('woff');
+    format('woff');
 }
 
 @font-face {
   font-family: Inconsolata;
   font-style: normal;
   font-weight: 400;
-  src: url('#{$puppet-common-font-path}/Inconsolata-Regular.woff2')
-      format('woff2'),
+  src:
+    url('#{$puppet-common-font-path}/Inconsolata-Regular.woff2') format('woff2'),
     url('#{$puppet-common-font-path}/Inconsolata-Regular.woff') format('woff');
 }
 
@@ -87,6 +88,7 @@
   font-family: Inconsolata;
   font-style: normal;
   font-weight: 700;
-  src: url('#{$puppet-common-font-path}/Inconsolata-Bold.woff2') format('woff2'),
+  src:
+    url('#{$puppet-common-font-path}/Inconsolata-Bold.woff2') format('woff2'),
     url('#{$puppet-common-font-path}/Inconsolata-Bold.woff') format('woff');
 }

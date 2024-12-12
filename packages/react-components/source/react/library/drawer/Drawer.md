@@ -21,7 +21,7 @@ const showMore = 'Show More Content';
 const showLess = 'Show Less Content';
 const buttonType = 'text';
 
-const toggle = state => {
+const toggle = (state) => {
   console.log('New state returned');
   setState({ state });
 };

@@ -51,12 +51,12 @@ const simpleOptions = [
 ];
 
 const getChoiceByText = (wrapper, text) =>
-  wrapper.find(OptionMenuListItem).filterWhere(n => n.text() === text);
+  wrapper.find(OptionMenuListItem).filterWhere((n) => n.text() === text);
 
 const getNthChoice = (wrapper, n) =>
   wrapper
     .find(OptionMenuListItem)
-    .filterWhere(node => node.prop('type') !== 'heading')
+    .filterWhere((node) => node.prop('type') !== 'heading')
     .at(n);
 
 describe('<OptionMenuList />', () => {
@@ -74,12 +74,14 @@ describe('<OptionMenuList />', () => {
   });
 
   it('renders array values as option groups', () => {
-    const wrapper = shallow(<OptionMenuList id="test" options={optionsWithGroups} />);
+    const wrapper = shallow(
+      <OptionMenuList id="test" options={optionsWithGroups} />,
+    );
 
     const group = wrapper.find('ul ul').first();
     const groupHeading = wrapper
       .find(OptionMenuListItem)
-      .filterWhere(n => n.prop('type') === 'heading')
+      .filterWhere((n) => n.prop('type') === 'heading')
       .first();
 
     expect(group.prop('role')).to.equal('group');
@@ -93,28 +95,24 @@ describe('<OptionMenuList />', () => {
     const firstItem = wrapper.find(OptionMenuListItem).first();
     expect(firstItem.prop('focused')).to.equal(true);
     expect(firstItem.prop('selected')).to.equal(false);
-    expect(
-      wrapper
-        .find('ul')
-        .first()
-        .prop('aria-activedescendant'),
-    ).to.equal(firstItem.prop('id'));
+    expect(wrapper.find('ul').first().prop('aria-activedescendant')).to.equal(
+      firstItem.prop('id'),
+    );
   });
 
   it('focuses the first item by default (with option group)', () => {
-    const wrapper = shallow(<OptionMenuList id="test" options={optionsWithGroups} />);
+    const wrapper = shallow(
+      <OptionMenuList id="test" options={optionsWithGroups} />,
+    );
     const firstItem = wrapper
       .find(OptionMenuListItem)
-      .filterWhere(n => n.prop('type') !== 'heading')
+      .filterWhere((n) => n.prop('type') !== 'heading')
       .first();
     expect(firstItem.prop('focused')).to.equal(true);
     expect(firstItem.prop('selected')).to.equal(false);
-    expect(
-      wrapper
-        .find('ul')
-        .first()
-        .prop('aria-activedescendant'),
-    ).to.equal(firstItem.prop('id'));
+    expect(wrapper.find('ul').first().prop('aria-activedescendant')).to.equal(
+      firstItem.prop('id'),
+    );
   });
 
   it('does not allow focus on option group headings, but hovering over a heading removes existing focus', () => {
@@ -130,7 +128,7 @@ describe('<OptionMenuList />', () => {
     const getHeading = () =>
       wrapper
         .find(OptionMenuListItem)
-        .filterWhere(n => n.prop('type') === 'heading')
+        .filterWhere((n) => n.prop('type') === 'heading')
         .first();
 
     expect(getChoiceByText(wrapper, 'peach').prop('focused')).to.equal(true);
@@ -140,9 +138,11 @@ describe('<OptionMenuList />', () => {
   });
 
   it('allows focus but prevents select on disabled items', () => {
-    const wrapper = shallow(<OptionMenuList id="test" options={optionsWithGroups} />);
+    const wrapper = shallow(
+      <OptionMenuList id="test" options={optionsWithGroups} />,
+    );
 
-    wrapper.find(OptionMenuListItem).filterWhere(n => n.value === 'any');
+    wrapper.find(OptionMenuListItem).filterWhere((n) => n.value === 'any');
     getChoiceByText(wrapper, 'any').simulate('mouseenter');
     expect(getChoiceByText(wrapper, 'any').prop('focused')).to.equal(true);
 
@@ -213,10 +213,7 @@ describe('<OptionMenuList />', () => {
       };
 
       new Array(times).fill(null).forEach(() => {
-        wrapper
-          .find('ul')
-          .first()
-          .prop('onKeyDown')(eventObj);
+        wrapper.find('ul').first().prop('onKeyDown')(eventObj);
       });
 
       return eventObj;

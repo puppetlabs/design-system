@@ -1,3 +1,4 @@
+/* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, Text } from '@puppet/react-components';
@@ -57,13 +58,8 @@ class TablePageSelector extends Component {
   };
 
   render() {
-    const {
-      paginationCountText,
-      pageCount,
-      currentPage,
-      updatePage,
-      delta,
-    } = this.props;
+    const { paginationCountText, pageCount, currentPage, updatePage, delta } =
+      this.props;
     const display = this.pagination(currentPage, pageCount, delta);
 
     return (
@@ -83,19 +79,17 @@ class TablePageSelector extends Component {
             disabled={!currentPage || currentPage === 1}
             onClick={() => updatePage(currentPage - 1)}
           />
-          {display.map((i, index) => {
-            return (
-              <Button
-                className="rc-page-selector-button"
-                type={i === currentPage ? 'primary' : 'transparent'}
-                key={(i, index)}
-                disabled={i === '...'}
-                onClick={() => updatePage(i)}
-              >
-                {i}
-              </Button>
-            );
-          })}
+          {display.map((i, index) => (
+            <Button
+              className="rc-page-selector-button"
+              type={i === currentPage ? 'primary' : 'transparent'}
+              key={(i, index)}
+              disabled={i === '...'}
+              onClick={() => updatePage(i)}
+            >
+              {i}
+            </Button>
+          ))}
           <Button
             className="rc-page-selector-button"
             type="transparent"

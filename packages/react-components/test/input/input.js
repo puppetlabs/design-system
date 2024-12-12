@@ -26,11 +26,13 @@ describe('<Input />', () => {
   });
 
   it('renders an html input for supported html input types', () => {
-    const htmlInputTypes = SUPPORTED_TYPES.filter(type => type !== 'multiline');
+    const htmlInputTypes = SUPPORTED_TYPES.filter(
+      (type) => type !== 'multiline',
+    );
 
     const component = shallow(<Input {...requiredProps} />);
 
-    htmlInputTypes.forEach(type => {
+    htmlInputTypes.forEach((type) => {
       component.setProps({ type });
 
       expect(component.find('input')).to.have.prop('type', type);
@@ -76,7 +78,7 @@ describe('<Input />', () => {
   });
 
   it('should have an accessible ref method to the inner input element', async () => {
-    const input = await new Promise(resolve => {
+    const input = await new Promise((resolve) => {
       mount(<Input {...requiredProps} inputRef={resolve} />);
     });
 
@@ -84,7 +86,7 @@ describe('<Input />', () => {
   });
 
   it('should have an accessible ref method to the inner input element', async () => {
-    const input = await new Promise(resolve => {
+    const input = await new Promise((resolve) => {
       mount(<Input {...requiredProps} type="multiline" inputRef={resolve} />);
     });
 
@@ -132,7 +134,13 @@ describe('<Input />', () => {
 
   it('should respond to click events if trailingButtonIcon and onClickTrailingButton are provided', () => {
     const onClick = sinon.spy();
-    const wrapper = mount(<Input {...requiredProps} trailingButtonIcon="eye" onClickTrailingButton={onClick} />);
+    const wrapper = mount(
+      <Input
+        {...requiredProps}
+        trailingButtonIcon="eye"
+        onClickTrailingButton={onClick}
+      />,
+    );
 
     wrapper.find('button').simulate('click');
 
@@ -141,10 +149,23 @@ describe('<Input />', () => {
 
   it('should respond to click events if trailingButtonText and onClickTrailingButton are provided', () => {
     const onClick = sinon.spy();
-    const wrapper = mount(<Input {...requiredProps} trailingButtonText="Click me" onClickTrailingButton={onClick} />);
+    const wrapper = mount(
+      <Input
+        {...requiredProps}
+        trailingButtonText="Click me"
+        onClickTrailingButton={onClick}
+      />,
+    );
 
     wrapper.find('button').simulate('click');
 
     expect(onClick.called).to.equal(true);
+  });
+
+  it('should render the trailing icon button after the input element if trailingButtonIcon is provided', () => {
+    const wrapper = shallow(
+      <Input {...requiredProps} trailingButtonIcon="eye" />,
+    );
+    expect(wrapper.find('div').children().last().is('Button')).to.equal(true);
   });
 });

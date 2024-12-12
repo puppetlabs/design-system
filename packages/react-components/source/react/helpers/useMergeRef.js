@@ -1,20 +1,20 @@
 import { useMemo } from 'react';
 
-const refToFn = ref => {
+const refToFn = (ref) => {
   if (!ref || typeof ref === 'function') {
     return ref;
   }
-  return v => {
+  return (v) => {
     // eslint-disable-next-line no-param-reassign
     ref.current = v;
   };
 };
 
-const useMergeRef = (ref1, ref2) => {
-  return useMemo(() => {
+const useMergeRef = (ref1, ref2) =>
+  useMemo(() => {
     const refFunc1 = refToFn(ref1);
     const refFunc2 = refToFn(ref2);
-    return val => {
+    return (val) => {
       if (refFunc1) {
         refFunc1(val);
       }
@@ -23,6 +23,5 @@ const useMergeRef = (ref1, ref2) => {
       }
     };
   }, [ref1, ref2]);
-};
 
 export default useMergeRef;

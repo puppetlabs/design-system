@@ -1,3 +1,5 @@
+import 'regenerator-runtime/runtime';
+
 import ActionSelect from './react/library/action-select';
 import Alert from './react/library/alert';
 import Alerts from './react/library/alerts';
@@ -13,6 +15,7 @@ import Columns from './react/library/columns';
 import ConfirmationModal from './react/library/confirmation-modal';
 import Content from './react/library/content';
 import Copy from './react/library/copy';
+import Detail from './react/library/detail';
 import Drawer from './react/library/drawer';
 import Form from './react/library/form';
 import Heading from './react/library/heading';
@@ -57,6 +60,7 @@ export {
   Content,
   Copy,
   Drawer,
+  Detail,
   Form,
   Heading,
   Icon,

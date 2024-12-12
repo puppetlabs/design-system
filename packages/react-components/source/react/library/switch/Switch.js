@@ -66,7 +66,7 @@ const Switch = ({
         checked={value}
         ref={inputRef}
         className="rc-switch-checkbox"
-        onChange={e => onChange(e.target.checked, e)}
+        onChange={(e) => onChange(e.target.checked, e)}
         {...otherProps}
       />
       <div className="rc-switch-label" />

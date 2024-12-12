@@ -13,6 +13,9 @@ export const SUPPORTED_LOGOS = [
   'pipelines',
   'remediate',
   'comply',
+  'security-compliance-management',
+  'continuous-delivery',
+  'puppet-standalone',
 ];
 
 const propTypes = {

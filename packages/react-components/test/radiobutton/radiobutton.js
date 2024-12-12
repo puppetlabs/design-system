@@ -46,7 +46,7 @@ describe('<RadioButton />', () => {
   });
 
   it('should have an accessible ref method to the inner input element', async () => {
-    const radiobutton = await new Promise(resolve => {
+    const radiobutton = await new Promise((resolve) => {
       mount(<RadioButton {...requiredProps} inputRef={resolve} />);
     });
 

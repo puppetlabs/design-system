@@ -75,12 +75,7 @@ describe('<Sidebar />', () => {
       const wrapper = shallow(<Sidebar.Item title="test" count={5} />);
 
       expect(wrapper.find('Badge').length).to.eql(1);
-      expect(
-        wrapper
-          .find('Badge')
-          .childAt(0)
-          .text(),
-      ).to.eql('5');
+      expect(wrapper.find('Badge').childAt(0).text()).to.eql('5');
     });
 
     it('should render a custom badge when the prop is provided ', () => {

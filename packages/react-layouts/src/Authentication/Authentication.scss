@@ -4,8 +4,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  min-height: 100%;
+  gap: 32px;
 }
 
 .rl-authentication-logo {
@@ -27,9 +26,17 @@
 
 .rl-authentication-content {
   display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.rl-authentication-card {
+  display: flex;
   margin-top: 32px;
-  max-width: 410px;
   padding: 48px;
+  max-width: 500px;
   width: 100%;
 }
 

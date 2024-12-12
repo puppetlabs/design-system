@@ -1,3 +1,4 @@
+/* stylelint-disable selector-max-id */
 $puppet-tooltip-hint-bg: rgba($puppet-black, 0.9) !default;
 $puppet-tooltip-hint-color: $puppet-n400 !default;
 $puppet-tooltip-hint-padding: $puppet-common-spacing-base
@@ -16,7 +17,9 @@ $puppet-tooltip-hint-elevation: 1000 !default;
   padding: $puppet-tooltip-hint-padding;
   position: absolute;
   text-align: center;
-  transition: opacity, $puppet-common-transition-duration ease-in-out;
+  transition:
+    opacity,
+    $puppet-common-transition-duration ease-in-out;
   visibility: hidden;
   z-index: $puppet-tooltip-hint-elevation;
 }

@@ -15,7 +15,7 @@ const defaultProps = {
   minimized: false,
 };
 
-const SidebarSection = props => {
+const SidebarSection = (props) => {
   const { label: labelProp } = props;
   let label;
   let labelId;

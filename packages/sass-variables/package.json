@@ -12,9 +12,8 @@
     "access": "public"
   },
   "devDependencies": {
-    "prettier": "^2.1.2",
-    "stylelint": "^13.7.2",
-    "stylelint-config-prettier": "^8.0.2",
-    "stylelint-config-sass-guidelines": "^7.1.0"
+    "prettier": "^3.3.3",
+    "stylelint": "^16.9.0",
+    "stylelint-config-sass-guidelines": "^12.1.0"
   }
 }

@@ -16,7 +16,7 @@ import Text from '../text';
 
 const [portalLocation, setPortalLocation] = useState();
 const [portalActive, setPortalActive] = useState(false);
-const renderIn = target => {
+const renderIn = (target) => {
   setPortalLocation(target);
   setPortalActive(!!target);
 };

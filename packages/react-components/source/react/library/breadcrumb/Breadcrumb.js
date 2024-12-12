@@ -36,6 +36,7 @@ const Breadcrumb = ({ children, className, type, backLabel, ...props }) => {
   });
 
   return (
+    // eslint-disable-next-line react/jsx-no-useless-fragment
     <>
       {type === 'standard' ? (
         <nav

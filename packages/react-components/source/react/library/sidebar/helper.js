@@ -1,9 +1,9 @@
 import React from 'react';
 
-const renderChildren = props => {
+const renderChildren = (props) => {
   const { children, minimized } = props;
 
-  return React.Children.map(children, child => {
+  return React.Children.map(children, (child) => {
     const newProps = {
       minimized,
     };

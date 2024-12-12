@@ -1,4 +1,4 @@
 import Authentication from './Authentication';
+import 'index.scss';
 
-// eslint-disable-next-line import/prefer-default-export
-export { Authentication };
+export default { Authentication };
