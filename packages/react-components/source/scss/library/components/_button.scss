@@ -1,3 +1,6 @@
+/* stylelint-disable @stylistic/indentation */
+@use 'sass:map';
+
 $puppet-button-primary: (
   base: (
     background: $puppet-b500,
@@ -129,36 +132,35 @@ $puppet-button-padding-vertical: 5px;
 
 @function disable($basestate) {
   $disabled: (
-    background: disable-color(map-get($basestate, background)),
-    border: disable-color(map-get($basestate, border)),
-    color: disable-color(map-get($basestate, color)),
-    fill: disable-color(map-get($basestate, color)),
+    background: disable-color(map.get($basestate, background)),
+    border: disable-color(map.get($basestate, border)),
+    color: disable-color(map.get($basestate, color)),
+    fill: disable-color(map.get($basestate, color)),
   );
 
   @return $disabled;
 }
 
 @mixin button-type-properties($properties) {
-  background-color: map-get($properties, background);
-  border: 1px solid map-get($properties, border);
-  color: map-get($properties, color);
-  fill: map-get($properties, color);
+  background-color: map.get($properties, background);
+  border: 1px solid map.get($properties, border);
+  color: map.get($properties, color);
+  fill: map.get($properties, color);
 }
 
 @mixin button-type($typedef) {
-  @include button-type-properties(map-get($typedef, base));
+  @include button-type-properties(map.get($typedef, base));
 
   &:hover {
-    @include button-type-properties(map-get($typedef, hover));
+    @include button-type-properties(map.get($typedef, hover));
   }
 
-  &:active,
-  &.rc-button-loading {
-    @include button-type-properties(map-get($typedef, active));
+  &:active {
+    @include button-type-properties(map.get($typedef, active));
   }
 
   &.rc-button-disabled {
-    @include button-type-properties(disable(map-get($typedef, base)));
+    @include button-type-properties(disable(map.get($typedef, base)));
   }
 }
 
@@ -343,7 +345,9 @@ $puppet-button-padding-vertical: 5px;
   }
 }
 
-.rc-button-inner-focus.rc-button-trailing-icon:not(.rc-button-text).rc-button-trailing-icon:focus {
+.rc-button-inner-focus.rc-button-trailing-icon:not(
+    .rc-button-text
+  ).rc-button-trailing-icon:focus {
   &.rc-button-full {
     padding-right: 32px;
   }

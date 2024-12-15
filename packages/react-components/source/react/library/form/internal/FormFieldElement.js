@@ -24,10 +24,10 @@ const propTypes = {
   ]).isRequired,
 };
 
-const isReactComponent = c =>
+const isReactComponent = (c) =>
   (c && c.prototype && c.prototype.isReactComponent) || typeof c === 'function';
 
-const mapTypeToElement = type => {
+const mapTypeToElement = (type) => {
   if (isReactComponent(type)) {
     return type;
   }
@@ -46,7 +46,7 @@ const mapTypeToElement = type => {
   }
 };
 
-const FormFieldElement = props => {
+const FormFieldElement = (props) => {
   const { type } = props;
 
   const elementProps = omit(

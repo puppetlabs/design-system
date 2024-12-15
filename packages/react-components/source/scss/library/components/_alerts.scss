@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 $colors: (
   danger: $puppet-r600,
   danger-border: $puppet-r300,
@@ -23,29 +25,29 @@ $colors: (
 
 @mixin rc-alert-colors($type) {
   &.rc-alert-#{$type} {
-    border: 1px solid map-get($colors, $type + '-border');
+    border: 1px solid map.get($colors, $type + '-border');
 
     .rc-alert-primary-icon {
-      fill: map-get($colors, $type);
+      fill: map.get($colors, $type);
     }
   }
 
   .rc-icon-button-#{$type} {
     .rc-icon-button-icon-svg {
-      fill: map-get($colors, $type);
+      fill: map.get($colors, $type);
     }
 
     &:hover,
     &:focus {
-      background: map-get($colors, $type + '-hover');
+      background: map.get($colors, $type + '-hover');
     }
 
     &:active {
-      background: map-get($colors, $type + '-active');
+      background: map.get($colors, $type + '-active');
     }
 
     &.rc-icon-button-disabled .rc-icon-button-icon-svg {
-      fill: disable-color(map-get($colors, $type));
+      fill: disable-color(map.get($colors, $type));
     }
   }
 }
@@ -101,7 +103,6 @@ $colors: (
   margin: 8px 0;
 }
 
-
 // Icon Button
 // TODO: Consider splitting this out if the component ever stands alone
 
@@ -132,7 +133,7 @@ $colors: (
   }
 
   &:disabled,
-  &[aria-disabled=true] {
+  &[aria-disabled='true'] {
     cursor: default;
     pointer-events: none;
   }

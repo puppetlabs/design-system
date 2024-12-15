@@ -9,12 +9,15 @@
     "test": "lerna run lint && lerna run test",
     "start": "cd packages/design-system-website && npm start",
     "styleguide:build": "cd packages/design-system-website && npm run styleguide:build",
-    "release": "lerna publish --yes from-package",
+    "publish": "lerna publish --yes from-package",
     "upgrade": "npx npm-check-updates --upgrade && lerna run upgrade"
   },
   "devDependencies": {
     "@babel/preset-stage-2": "^7.8.3",
-    "lerna": "^3.22.1"
+    "lerna": "^6.6.2",
+    "mini-css-extract-plugin": "^2.9.1"
   },
-  "dependencies": {}
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }

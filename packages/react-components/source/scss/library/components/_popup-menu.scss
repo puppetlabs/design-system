@@ -1,0 +1,51 @@
+$arrow-size: 8px;
+$arrow-offset: -4px;
+
+.rc-popup-menu-arrow,
+.rc-popup-menu {
+  background-color: $puppet-white;
+  z-index: 10;
+
+  .focus:focus-visible {
+    outline: none;
+  }
+
+  .focus:focus {
+    border-radius: $puppet-common-border-radius;
+    box-shadow: $puppet-common-focus-outline;
+  }
+}
+
+.rc-popup-menu {
+  border: 1px solid $puppet-n400;
+  border-radius: $puppet-common-border-radius;
+  box-shadow: $puppet-common-elevation-200;
+  position: absolute;
+}
+
+.rc-popup-menu-arrow {
+  background: inherit;
+  height: $arrow-size;
+  overflow: hidden;
+  width: $arrow-size;
+}
+
+/* stylelint-disable-next-line */
+.rc-popup-menu[data-popper-placement^='top']>#rc-popup-menu-arrow {
+  bottom: $arrow-offset;
+}
+
+/* stylelint-disable-next-line */
+.rc-popup-menu[data-popper-placement^='bottom']>#rc-popup-menu-arrow {
+  top: $arrow-offset;
+}
+
+/* stylelint-disable-next-line */
+.rc-popup-menu[data-popper-placement^='left']>#rc-popup-menu-arrow {
+  right: $arrow-offset;
+}
+
+/* stylelint-disable-next-line */
+.rc-popup-menu[data-popper-placement^='right']>#rc-popup-menu-arrow {
+  left: $arrow-offset;
+}

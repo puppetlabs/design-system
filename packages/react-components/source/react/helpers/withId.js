@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import hoistStatics from 'hoist-non-react-statics';
 
-const getDisplayName = comp => comp.displayName || comp.name || 'Component';
+const getDisplayName = (comp) => comp.displayName || comp.name || 'Component';
 
 let idCount = 0;
 
@@ -14,7 +14,7 @@ const getId = () => {
 /**
  * Higher order component that generates a unique id
  */
-const withId = WrappedComponent => {
+const withId = (WrappedComponent) => {
   const displayName = getDisplayName(WrappedComponent);
 
   class ComponentWithId extends Component {

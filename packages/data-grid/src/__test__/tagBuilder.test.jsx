@@ -61,10 +61,7 @@ describe('Check component', () => {
   });
 
   test('onRemoveTag get called when close icon is clicked ', () => {
-    wrapper
-      .find('Button.rc-tag-remove-button')
-      .first()
-      .simulate('click');
+    wrapper.find('Button.rc-tag-remove-button').first().simulate('click');
     expect(mockfunc).toHaveBeenCalled();
   });
 

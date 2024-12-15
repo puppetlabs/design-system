@@ -133,8 +133,9 @@ const Input = ({
   /** trailingIcon is deprecated */
   const tIcon = (
     <Icon
-      className={`rc-input-icon trailing ${showTrailingButton &&
-        'with-trailing-button'}`}
+      className={`rc-input-icon trailing ${
+        showTrailingButton && 'with-trailing-button'
+      }`}
       width="16px"
       height="16px"
       type={trailingIcon}
@@ -165,7 +166,6 @@ const Input = ({
     >
       {icon && lIcon}
       {trailingIcon && tIcon}
-      {showTrailingButton && trailingButton}
       <Element
         id={name}
         name={name}
@@ -176,9 +176,10 @@ const Input = ({
           'rc-input-multiline': isMultiline,
         })}
         ref={inputRef}
-        onChange={e => onChange(parseValue(e.target.value), e)}
+        onChange={(e) => onChange(parseValue(e.target.value), e)}
         {...otherProps}
       />
+      {showTrailingButton && trailingButton}
     </div>
   );
 };

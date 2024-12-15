@@ -17,6 +17,7 @@ const defaultProps = {
   flyout: null,
 };
 
+// eslint-disable-next-line react/prop-types
 const FormSectionLegend = ({ title, tooltip, flyout }) => {
   const legend = (
     <legend className="rc-form-section-legend">

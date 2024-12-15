@@ -9,13 +9,13 @@ describe('<Logo />', () => {
   jsdom({ skipWindowCheck: true });
 
   it('renders each of the supported logos without crashing', () => {
-    SUPPORTED_LOGOS.forEach(product => {
+    SUPPORTED_LOGOS.forEach((product) => {
       shallow(<Logo product={product} />);
     });
   });
 
   it('renders each of the supported logo bugs without crashing', () => {
-    SUPPORTED_LOGOS.forEach(product => {
+    SUPPORTED_LOGOS.forEach((product) => {
       shallow(<Logo type="bug" product={product} />);
     });
   });

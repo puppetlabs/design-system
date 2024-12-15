@@ -168,6 +168,7 @@ class ActionMenuList extends Component {
     }
   }
 
+  // eslint-disable-next-line react/no-unused-class-component-methods
   focus() {
     focus(this.listRef);
   }
@@ -215,15 +216,8 @@ class ActionMenuList extends Component {
       onFocus,
     } = this;
     const { focusedIndex } = this.state;
-    const {
-      id,
-      actions,
-      onActionClick,
-      onEscape,
-      className,
-      style,
-      ...rest
-    } = this.props;
+    const { id, actions, onActionClick, onEscape, className, style, ...rest } =
+      this.props;
 
     const focusedId = getFocusedId(focusedIndex, id, actions);
     return (
@@ -240,7 +234,7 @@ class ActionMenuList extends Component {
           onMouseLeave={onMouseLeave}
           onKeyDown={onKeyDown}
           onFocus={onFocus}
-          ref={el => {
+          ref={(el) => {
             this.listRef = el;
           }}
           {...rest}
@@ -261,12 +255,12 @@ class ActionMenuList extends Component {
                 onClick={
                   disabled
                     ? undefined
-                    : e => executeAction(e, onClick, actionId)
+                    : (e) => executeAction(e, onClick, actionId)
                 }
-                ref={el => {
+                ref={(el) => {
                   this.actionRefs[index] = el;
                 }}
-                innerRef={el => {
+                innerRef={(el) => {
                   this.actionInnerRefs[index] = el;
                 }}
                 {...other}

@@ -27,7 +27,7 @@ describe('<Checkbox />', () => {
   });
 
   it('should have an accessible ref method to the inner input element', async () => {
-    const checkbox = await new Promise(resolve => {
+    const checkbox = await new Promise((resolve) => {
       mount(<Checkbox {...requiredProps} inputRef={resolve} />);
     });
 

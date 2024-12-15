@@ -5,20 +5,19 @@ module.exports = {
     browser: true,
     jest: true,
   },
-  parser: 'babel-eslint',
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  parser: '@babel/eslint-parser',
+  parserOptions: {
+    babelOptions: {
+      configFile: path.resolve(__dirname, '.babelrc'),
+    },
+  },
+  extends: ['airbnb', 'prettier'],
   plugins: ['prettier', 'chai-friendly'],
   globals: {
     log: false,
   },
   rules: {
-    'prettier/prettier': [
-      'error',
-      {
-        singleQuote: true,
-        trailingComma: 'all',
-      },
-    ],
+    'prettier/prettier': 'error',
     'no-unused-expressions': 0,
     'chai-friendly/no-unused-expressions': 2,
     'import/no-extraneous-dependencies': [

@@ -14,7 +14,7 @@ global.document = jsdom.window.document;
 
 function copyProps(src, target) {
   const props = Object.getOwnPropertyNames(src)
-    .filter(prop => typeof target[prop] === 'undefined')
+    .filter((prop) => typeof target[prop] === 'undefined')
     .reduce(
       (result, prop) => ({
         ...result,

@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 // Helper function that applies an "opacity" but with white as the base
 // so that we are consistent everywhere (even on dark backgrounds)
 @function disable-color($color) {
@@ -5,5 +7,9 @@
     @return transparent;
   }
 
-  @return mix($color, $puppet-white, $puppet-common-disabled-opacity * 100%);
+  @return color.mix(
+    $color,
+    $puppet-white,
+    $puppet-common-disabled-opacity * 100%
+  );
 }

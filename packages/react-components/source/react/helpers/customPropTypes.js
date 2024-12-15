@@ -5,13 +5,7 @@ import Icon from '../library/icon';
  * Design system available element elevations
  */
 export const elementElevation = PropTypes.oneOf([
-  0,
-  50,
-  100,
-  150,
-  200,
-  400,
-  800,
+  0, 50, 100, 150, 200, 400, 800,
 ]);
 
 export const anchorOrientation = PropTypes.oneOf([
@@ -67,7 +61,7 @@ extendedErrorShape.items = PropTypes.objectOf(error);
  * since default props are assigned before propType checking
  * @param  {String} message Deprecation message
  */
-export const deprecated = message => typeChecker => {
+export const deprecated = (message) => (typeChecker) => {
   if (process.env.NODE_ENV !== 'development') {
     return typeChecker;
   }

@@ -57,6 +57,74 @@
 
 - Upgrade dependencies #450
 
+## react-components 5.34.10 (2024-06-24)
+
+- [Select] Pass through additional props to select inner component (by [@sean-mckenna](https://github.com/sean-mckenna))
+- [Button] Remove button loading background colour (by [@sean-mckenna](https://github.com/sean-mckenna))
+
+## react-components 5.34.9 (2024-04-29)
+
+- [Logo] Adjust Security Compliance Management logo viewBox to match Continuous Delivery (by [@Lukeaber](https://github.com/Lukeaber))
+
+## react-components 5.34.8 (2024-04-10)
+
+- [Logo] Revert continuous delivery logo viewBox size due to alignment issues (by [@petergmurphy](https://github.com/petergmurphy))
+
+## react-layouts 2.0.0-alpha.11 (2024-04-10)
+
+- [Authentication] Update Authentication component to support a footer prop (by [@petergmurphy](https://github.com/petergmurphy))
+
+## react-components 5.34.7 (2024-04-03)
+
+- [Popover] Add new side prop options to enable rendering the arrow in all corners of the box (by [@sean-mckenna](https://github.com/sean-mckenna)) in [#661](https://github.com/puppetlabs/design-system/pull/661))
+
+## react-components 5.34.6 (2024-03-28)
+
+- [Logo] Add standalone Puppet logo (by [@petergmurphy](https://github.com/petergmurphy))
+
+## react-layouts 2.0.0-alpha.10 (2024-03-28)
+
+- [Authentication] Fix Authentication component styling issue. This change resolves the problem where the Authentication component's
+  styling was not being applied due to the stylesheet not being bundled. (by [@petergmurphy](https://github.com/petergmurphy))
+- [Authentication] Change the title of the Authentication component from a `h5` to a `h3` element. (by [@petergmurphy](https://github.com/petergmurphy))
+
+## react-components 5.34.5 (2024-03-25)
+
+- [Logo] Bug fixing continuous delivery logo viewBox size (by [@danadoherty639](https://github.com/danadoherty639))
+
+## react-components 5.34.4 (2024-03-19)
+
+- [Logo] Add continuous delivery logo (by [@mttsltrs](https://github.com/mttsltrs))
+
+## react-components 5.34.3 (2024-03-15)
+
+- [Icon] Add Locked and Unlocked icons
+
+## react-components 5.34.2 (2024-03-13)
+
+- [Logo] Add security compliance management logo (by [@Lukeaber](https://github.com/Lukeaber))
+
+## react-components 5.34.1 (2024-03-08)
+
+- [Input] Bug fixing Input component element order
+
+## data-grid 0.6.12 (2022-07-25)
+
+- [Table] Bug fixing table loader width on selectable tables (by [@Lukeaber](https://github.com/Lukeaber) in [#636](https://github.com/puppetlabs/design-system/pull/636))
+
+## react-components 5.34.0 (2022-07-28)
+
+- [Menu] Adding Detail, Menu, Menu.Search, and Tag.Search components (by [@krable55](https://github.com/krable55) in [#621](https://github.com/puppetlabs/design-system/pull/621))
+
+## react-components 5.33.9 (2022-07-28)
+
+- Adding optional tooltip to ButtonSelect component (by [@alex501212](https://github.com/alex501212) in [#591](https://github.com/puppetlabs/design-system/pull/591))
+
+## react-components 5.33.8 (2022-07-08)
+
+- Add `circle-empty` icon (by [@mardotio](https://github.com/mardotio) in [#583](https://github.com/puppetlabs/design-system/pull/583))
+- Allow React 18 as a peer dependency (by [@mardotio](https://github.com/mardotio) in [#583](https://github.com/puppetlabs/design-system/pull/583))
+
 ## react-components 5.33.7 (2022-05-18)
 
 - [Icon] Add "folder" icon (by [@vine77](https://github.com/vine77) in [#574](https://github.com/puppetlabs/design-system/pull/574))

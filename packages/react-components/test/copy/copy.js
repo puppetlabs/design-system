@@ -22,16 +22,30 @@ describe('<Copy />', () => {
   });
 
   it('should render a child React element and text', () => {
-    expect(shallow(<Copy><Text>Child element with Text component</Text></Copy>)).to.contain(<Text>Child element with Text component</Text>);
+    expect(
+      shallow(
+        <Copy>
+          <Text>Child element with Text component</Text>
+        </Copy>,
+      ),
+    ).to.contain(<Text>Child element with Text component</Text>);
   });
 
   it('should return null if child element does not contain a text node', () => {
-    expect(shallow(<Copy><Text><Text>Too deeply nested</Text></Text></Copy>)).to.be.blank();
+    expect(
+      shallow(
+        <Copy>
+          <Text>
+            <Text>Too deeply nested</Text>
+          </Text>
+        </Copy>,
+      ),
+    ).to.be.blank();
   });
 
   it('should copy to clipboard on button click', async () => {
     const wrapper = mount(
-      <Copy writeToClipboard={writeToClipboard}>Text to copy</Copy>
+      <Copy writeToClipboard={writeToClipboard}>Text to copy</Copy>,
     );
 
     wrapper.find('button').simulate('click');
@@ -43,7 +57,9 @@ describe('<Copy />', () => {
 
   it('should copy child React element text to clipboard', async () => {
     const wrapper = mount(
-      <Copy writeToClipboard={writeToClipboard}><Text>Text to copy</Text></Copy>
+      <Copy writeToClipboard={writeToClipboard}>
+        <Text>Text to copy</Text>
+      </Copy>,
     );
 
     wrapper.find('button').simulate('click');
@@ -55,7 +71,9 @@ describe('<Copy />', () => {
   it('should call the provided callback on button click', async () => {
     const copyCallback = sinon.spy();
     const wrapper = mount(
-      <Copy onCopy={copyCallback} writeToClipboard={writeToClipboard}>Text to copy</Copy>
+      <Copy onCopy={copyCallback} writeToClipboard={writeToClipboard}>
+        Text to copy
+      </Copy>,
     );
 
     wrapper.find('button').simulate('click');
@@ -66,10 +84,14 @@ describe('<Copy />', () => {
 
   it('should call the provided error callback if copy click handler throws an error', async () => {
     const copyError = sinon.spy();
-    const throwError = () => { throw new Error('click-to-copy failed') }
+    const throwError = () => {
+      throw new Error('click-to-copy failed');
+    };
 
     const wrapper = mount(
-      <Copy onCopyError={copyError} writeToClipboard={throwError}>Text to copy</Copy>
+      <Copy onCopyError={copyError} writeToClipboard={throwError}>
+        Text to copy
+      </Copy>,
     );
 
     wrapper.find('button').simulate('click');
@@ -80,7 +102,9 @@ describe('<Copy />', () => {
 
   it('should accept a value prop', async () => {
     const wrapper = mount(
-      <Copy value='Text to copy' writeToClipboard={writeToClipboard}>A different value to render</Copy>
+      <Copy value="Text to copy" writeToClipboard={writeToClipboard}>
+        A different value to render
+      </Copy>,
     );
 
     wrapper.find('button').simulate('click');
@@ -92,7 +116,9 @@ describe('<Copy />', () => {
 
   it('should accept a value prop on a child React element', async () => {
     const wrapper = mount(
-      <Copy writeToClipboard={writeToClipboard}><Text value='Text to copy'>A different value to render</Text></Copy>
+      <Copy writeToClipboard={writeToClipboard}>
+        <Text value="Text to copy">A different value to render</Text>
+      </Copy>,
     );
 
     wrapper.find('button').simulate('click');

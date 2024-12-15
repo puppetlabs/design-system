@@ -32,7 +32,7 @@ const defaultProps = {
   style: {},
 };
 
-const Icon = props => {
+const Icon = (props) => {
   const {
     className,
     type,
@@ -49,7 +49,7 @@ const Icon = props => {
 
   // Let's define the svg and viewbox if not passed in as props
   if (!svg && icon) {
-    const getScaledIcon = variant => icon[variant];
+    const getScaledIcon = (variant) => icon[variant];
     const scaledIcon = getScaledIcon(size);
 
     const defineElements = (element, variant) => {
@@ -69,8 +69,9 @@ const Icon = props => {
       const largerSizes = AVAILABLE_SIZES.slice(0, index).reverse();
       const smallerSizes = AVAILABLE_SIZES.slice(index + 1);
 
-      let closestSize = largerSizes.find(alt => getScaledIcon(alt));
-      closestSize = closestSize || smallerSizes.find(alt => getScaledIcon(alt));
+      let closestSize = largerSizes.find((alt) => getScaledIcon(alt));
+      closestSize =
+        closestSize || smallerSizes.find((alt) => getScaledIcon(alt));
       const closestIcon = getScaledIcon(closestSize);
 
       defineElements(closestIcon, closestSize);

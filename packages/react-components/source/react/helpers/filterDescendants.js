@@ -14,8 +14,8 @@ const filterDescendants = ({ children, components: component }) => {
   const otherDescendants = [];
   const components = Array.isArray(component) ? component : [component];
 
-  Children.toArray(children).forEach(child => {
-    if (child.type && components.some(type => child.type === type)) {
+  Children.toArray(children).forEach((child) => {
+    if (child.type && components.some((type) => child.type === type)) {
       pluckedDescendants.push(child);
     } else if (child.props && child.props.children) {
       const {

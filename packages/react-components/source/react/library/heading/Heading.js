@@ -21,17 +21,9 @@ const defaultProps = {
   hero: false,
 };
 
-const Heading = props => {
-  const {
-    children,
-    as,
-    className,
-    color,
-    hero,
-    allCaps,
-    label,
-    ...others
-  } = props;
+const Heading = (props) => {
+  const { children, as, className, color, hero, allCaps, label, ...others } =
+    props;
   const classNames = classnames(
     'rc-heading',
     {
