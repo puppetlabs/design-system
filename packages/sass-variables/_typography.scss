@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 // Common font families
 $puppet-type-font-family: 'Open Sans', sans-serif !default;
 $puppet-type-font-family-secondary: 'Calibre', sans-serif !default;
@@ -158,7 +160,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 // within Content components, but we do not attempt to dictate type margins
 // outside of that context; see _content.scss for margin values.)
 @mixin puppet-type-hero($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-hero-font-family;
   font-size: $puppet-type-hero-font-size;
   font-weight: $puppet-type-hero-font-weight;
@@ -166,7 +168,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-h1($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-h1-font-family;
   font-size: $puppet-type-h1-font-size;
   font-weight: $puppet-type-h1-font-weight;
@@ -174,7 +176,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-h2($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-h2-font-family;
   font-size: $puppet-type-h2-font-size;
   font-weight: $puppet-type-h2-font-weight;
@@ -182,7 +184,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-h3($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-h3-font-family;
   font-size: $puppet-type-h3-font-size;
   font-weight: $puppet-type-h3-font-weight;
@@ -190,7 +192,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-h4($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-h4-font-family;
   font-size: $puppet-type-h4-font-size;
   font-weight: $puppet-type-h4-font-weight;
@@ -198,7 +200,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-h5($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-h5-font-family;
   font-size: $puppet-type-h5-font-size;
   font-weight: $puppet-type-h5-font-weight;
@@ -206,7 +208,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-h6($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-h6-font-family;
   font-size: $puppet-type-h6-font-size;
   font-weight: $puppet-type-h6-font-weight;
@@ -214,7 +216,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-body($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-body-font-family;
   font-size: $puppet-type-body-font-size;
   font-weight: $puppet-type-body-font-weight;
@@ -222,7 +224,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-large($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-large-font-family;
   font-size: $puppet-type-large-font-size;
   font-weight: $puppet-type-large-font-weight;
@@ -230,7 +232,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-medium($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-medium-font-family;
   font-size: $puppet-type-medium-font-size;
   font-weight: $puppet-type-medium-font-weight;
@@ -238,7 +240,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-small($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-small-font-family;
   font-size: $puppet-type-small-font-size;
   font-weight: $puppet-type-small-font-weight;
@@ -246,7 +248,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-tiny($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-tiny-font-family;
   font-size: $puppet-type-tiny-font-size;
   font-weight: $puppet-type-tiny-font-weight;
@@ -254,7 +256,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-button($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-button-font-family;
   font-size: $puppet-type-button-font-size;
   font-weight: $puppet-type-button-font-weight;
@@ -262,7 +264,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-button-small($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-button-small-font-family;
   font-size: $puppet-type-button-small-font-size;
   font-weight: $puppet-type-button-small-font-weight;
@@ -270,7 +272,7 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
 }
 
 @mixin puppet-type-label($color: base) {
-  color: map-get($puppet-type-colors, $color);
+  color: map.get($puppet-type-colors, $color);
   font-family: $puppet-type-label-font-family;
   font-size: $puppet-type-label-font-size;
   font-weight: $puppet-type-label-font-weight;
@@ -313,12 +315,6 @@ $puppet-type-code-block-line-height: calc(22 / 16) !default;
   font-weight: $puppet-type-code-tiny-font-weight;
   line-height: $puppet-type-code-tiny-line-height;
 }
-
-  // background-color: $puppet-n100;
-  // border-left: 8px solid $puppet-n300;
-  // display: block;
-  // padding: 0;
-  // white-space: pre;
 
 @mixin puppet-type-code-block() {
   background-color: $puppet-n50;

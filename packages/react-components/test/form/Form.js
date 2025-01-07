@@ -5,8 +5,8 @@ import sinon from 'sinon';
 
 import Form from '../../source/react/library/form/Form';
 import { isEmpty } from '../../source/react/library/form/internal/methods';
-import Button from '../../source/react/library/button/Button';
-import Alert from '../../source/react/library/alert/Alert';
+import Button from '../../source/react/library/button';
+import Alert from '../../source/react/library/alert';
 
 describe('<Form />', () => {
   it('should propagate user provided className', () => {
@@ -497,7 +497,7 @@ describe('<Form />', () => {
         b: 'B',
       };
 
-      const invalidIfOdd = field =>
+      const invalidIfOdd = (field) =>
         field.length % 2 === 0 ? false : 'this is bad';
 
       const wrapper = mount(
@@ -540,7 +540,7 @@ describe('<Form />', () => {
         b: 'B',
       };
 
-      const invalidIfOdd = field =>
+      const invalidIfOdd = (field) =>
         field.length % 2 === 0 ? false : 'this is bad';
 
       const wrapper = mount(
@@ -571,11 +571,11 @@ describe('<Form />', () => {
     const emptyThings = ['', ' ', undefined, null, [], {}];
     const fullThings = ['full', 0, ['thing'], { thing: 'full' }];
 
-    emptyThings.forEach(thing => {
+    emptyThings.forEach((thing) => {
       expect(isEmpty(thing)).to.eql(true);
     });
 
-    fullThings.forEach(thing => {
+    fullThings.forEach((thing) => {
       expect(isEmpty(thing)).to.eql(false);
     });
   });

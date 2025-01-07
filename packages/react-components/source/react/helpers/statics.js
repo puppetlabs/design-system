@@ -28,6 +28,7 @@ const isNodeInRoot = (node, root) => {
   return contains;
 };
 
+// eslint-disable-next-line default-param-last
 const getKey = (child = {}, idx) => child.key || String(idx);
 
 const is = (constructor, value) =>
@@ -63,8 +64,8 @@ const omit = (keys, object) => {
   const newObject = {};
 
   Object.keys(object)
-    .filter(key => !keySet.has(key))
-    .forEach(key => {
+    .filter((key) => !keySet.has(key))
+    .forEach((key) => {
       newObject[key] = object[key];
     });
 
@@ -117,6 +118,7 @@ const getDropdownPosition = (target, anchor, margin) => {
         minWidth: width,
       };
     }
+    // eslint-disable-next-line default-case-last
     default:
     case 'bottom left': {
       return {
@@ -128,7 +130,7 @@ const getDropdownPosition = (target, anchor, margin) => {
   }
 };
 
-const isNil = val => val == null;
+const isNil = (val) => val == null;
 
 /**
  * Immutably updates a value at a given index in an array
@@ -191,30 +193,27 @@ export const assocPath = (valuePath, newValue, object) => {
   return assocOrUpdate(prop, newValue, object);
 };
 
-const focus = element => {
+const focus = (element) => {
   // Not type checking that it has a focus method, that's on you!
   if (element) {
     element.focus();
   }
 };
 
-const cancelEvent = e => {
+const cancelEvent = (e) => {
   if (e) {
     e.preventDefault();
     e.stopPropagation();
   }
 };
 
-export const isKeyModified = event => {
-  return (
-    event.getModifierState('Shift') ||
-    event.getModifierState('Fn') ||
-    event.getModifierState('Control') ||
-    event.getModifierState('Alt') ||
-    event.getModifierState('Meta') ||
-    event.getModifierState('OS')
-  );
-};
+export const isKeyModified = (event) =>
+  event.getModifierState('Shift') ||
+  event.getModifierState('Fn') ||
+  event.getModifierState('Control') ||
+  event.getModifierState('Alt') ||
+  event.getModifierState('Meta') ||
+  event.getModifierState('OS');
 
 export {
   unbindParentScroll,

@@ -29,8 +29,8 @@ const options = [
   placeholder="Select your language"
   options={options}
   value={value}
-  onChange={newValue => setValue(newValue)}
-/>
+  onChange={(newValue) => setValue(newValue)}
+/>;
 ```
 
 ### Nonexistent value
@@ -51,7 +51,7 @@ const options = [
   { value: 'bg', label: 'Bulgarian' },
   { value: 'ca', label: 'Catalan' },
 ];
-const isValueInOptions = options.map(option => option.value).includes(value);
+const isValueInOptions = options.map((option) => option.value).includes(value);
 
 <>
   <Select
@@ -59,19 +59,25 @@ const isValueInOptions = options.map(option => option.value).includes(value);
     placeholder="Select your language"
     options={options}
     value={value}
-    onChange={newValue => setValue(newValue)}
+    onChange={(newValue) => setValue(newValue)}
   />
-  {!isValueInOptions && <Alert type="warning" style={{ marginTop: 10 }}>"{value}" is not an option</Alert>}
-</>
+  {!isValueInOptions && (
+    <Alert type="warning" style={{ marginTop: 10 }}>
+      "{value}" is not an option
+    </Alert>
+  )}
+</>;
 ```
 
 ## Variations
 
 ### Autocomplete
 
-With `type` set to `autocomplete`, the `Select` input will accept text and provide filtered menu options accordingly. Full keyboard navigation of the menu options is retained.
+With `type` set to `autocomplete`, the `Select` input will accept text and the menu options can be filtered accordingly. Full keyboard navigation of the menu options is retained.
 
 ```jsx
+const [fieldValue, setFieldValue] = React.useState('');
+
 const options = [
   { value: 'apple', label: 'apple' },
   { value: 'orange', label: 'orange' },
@@ -86,16 +92,30 @@ const options = [
 
 const style = { margin: 10 };
 
+const noResults = [
+  {
+    value: [],
+    label: 'No results found',
+  },
+];
+
+let filteredOptions = [...options];
+if (state.fieldValue !== undefined && state.fieldValue !== '') {
+  filteredOptions = options.filter((options) =>
+    options.label.includes(state.fieldValue),
+  );
+}
+
 <div>
   <Select
     name="autocomplete-example"
-    options={options}
+    options={filteredOptions.length === 0 ? noResults : filteredOptions}
     placeholder="Select your fruit"
     style={style}
-    value={state.value1}
-    onChange={value1 => {
-      console.log('New Value:', value1);
-      setState({ value1 });
+    value={state.fieldValue}
+    onChange={(fieldValue) => {
+      console.log('New Value:', fieldValue);
+      setState({ fieldValue });
     }}
     onBlur={() => {
       console.log('onBlur');
@@ -111,35 +131,40 @@ To render an option group, provide an array of child options as the value for a 
 still have labels, and if a parent is disabled, all its child options will be disabled, too.
 
 ```jsx
-const optionsWithGroups = [{
-  label: "Spices",
-  value: [
-    {label: "Cinnamon", value: "cinnamon"},
-    {label: "Coriander", value: "coriander"},
-    {label: "Cumin", value: "cumin"},
-  ]
-}, {
-  label: "Oil",
-  value: "oil"
-}, {
-  label: "Vinegar",
-  value: "vinegar"
-}, {
-  label: "Herbs",
-  disabled: true,
-  value: [
-    {label: "Parsley", value: "parsley"},
-    {label: "Sage", value: "sage"},
-    {label: "Rosemary", value: "rosemary"},
-  ]
-}];
+const optionsWithGroups = [
+  {
+    label: 'Spices',
+    value: [
+      { label: 'Cinnamon', value: 'cinnamon' },
+      { label: 'Coriander', value: 'coriander' },
+      { label: 'Cumin', value: 'cumin' },
+    ],
+  },
+  {
+    label: 'Oil',
+    value: 'oil',
+  },
+  {
+    label: 'Vinegar',
+    value: 'vinegar',
+  },
+  {
+    label: 'Herbs',
+    disabled: true,
+    value: [
+      { label: 'Parsley', value: 'parsley' },
+      { label: 'Sage', value: 'sage' },
+      { label: 'Rosemary', value: 'rosemary' },
+    ],
+  },
+];
 
 <Select
   name="select-option-group-example"
   options={optionsWithGroups}
   value={state.value}
-  onChange={value => {
-    setState({value});
+  onChange={(value) => {
+    setState({ value });
   }}
 />;
 ```
@@ -175,7 +200,7 @@ const style = { margin: 10 };
     placeholder="Select your language"
     style={style}
     value={state.value}
-    onChange={value => {
+    onChange={(value) => {
       console.log('New Value', value);
       setState({ value });
     }}
@@ -217,7 +242,7 @@ const style = { margin: 10 };
     placeholder="Select your language"
     style={style}
     value={state.value}
-    onChange={value => {
+    onChange={(value) => {
       console.log('New Value', value);
       setState({ value });
     }}
@@ -228,6 +253,7 @@ const style = { margin: 10 };
 ```
 
 ## Option properties
+
 ### Disabled options
 
 Use the `disabled` object property to disable a row in a dropdown.
@@ -255,7 +281,7 @@ const style = { margin: 10 };
     placeholder="Select your language"
     style={style}
     value={state.value1}
-    onChange={value1 => {
+    onChange={(value1) => {
       console.log('New Value:', value1);
       setState({ value1 });
     }}
@@ -298,7 +324,7 @@ const options = [
     options={options}
     value={state.value}
     placeholder="Select a source control"
-    onChange={value => {
+    onChange={(value) => {
       console.log('New Value:', value);
       setState({ value });
     }}

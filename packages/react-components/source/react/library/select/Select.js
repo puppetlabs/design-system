@@ -290,14 +290,14 @@ class Select extends Component {
 
     if (type === MULTISELECT) {
       const selectedOptions = this.getOptions()
-        .filter(option => value.includes(option.value))
-        .map(option => option.selectedLabel || option.label);
+        .filter((option) => value.includes(option.value))
+        .map((option) => option.selectedLabel || option.label);
 
       return selectedOptions.join(', ');
     }
 
     const selectedOption = this.getOptions().find(
-      option => option.value === value,
+      (option) => option.value === value,
     );
 
     if (!selectedOption) {
@@ -310,14 +310,15 @@ class Select extends Component {
   getOptions() {
     const { options, value, type, onFilter } = this.props;
     let opts = options
-      .map(opt => (Array.isArray(opt.value) ? opt.value : opt))
+      .map((opt) => (Array.isArray(opt.value) ? opt.value : opt))
       .flat();
 
     // If the ingesting app uses the onFilter event handler, it should provide the filtered options
     // Otherwise, let's filter the presumably static list here
     if (value && type === AUTOCOMPLETE && !onFilter) {
       opts = opts.filter(
-        option => option.value.toLowerCase().indexOf(value.toLowerCase()) > -1,
+        (option) =>
+          option.value.toLowerCase().indexOf(value.toLowerCase()) > -1,
       );
     }
 
@@ -380,6 +381,11 @@ class Select extends Component {
       style,
       type,
       value,
+      actionLabel,
+      onChange,
+      onFilter,
+      onBlur: onBlurProp,
+      ...restProps
     } = this.props;
 
     let input;
@@ -406,11 +412,12 @@ class Select extends Component {
             onFocus={onOpen}
             onClick={onOpen}
             onKeyDown={onKeyDown}
-            inputRef={button => {
+            inputRef={(button) => {
               this.button = button;
             }}
             onChange={onValueChange}
             autoComplete="off"
+            {...restProps}
           />
         );
         break;
@@ -428,9 +435,10 @@ class Select extends Component {
               value={getButtonLabel()}
               placeholder={placeholder}
               aria-label={placeholder}
-              ref={button => {
+              ref={(button) => {
                 this.button = button;
               }}
+              {...restProps}
             />
             <input
               type="hidden"
@@ -455,7 +463,7 @@ class Select extends Component {
         )}
         style={style}
         onBlur={onBlur}
-        ref={container => {
+        ref={(container) => {
           this.container = container;
         }}
       >
@@ -477,7 +485,7 @@ class Select extends Component {
           footer={footer}
           style={menuStyle}
           actionLabel={getActionLabel(this.props)}
-          ref={menu => {
+          ref={(menu) => {
             this.menu = menu;
           }}
           tabIndex={type === AUTOCOMPLETE ? -1 : 0}

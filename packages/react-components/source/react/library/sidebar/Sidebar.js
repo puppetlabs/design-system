@@ -23,7 +23,7 @@ const defaultProps = {
   children: [],
 };
 
-const Sidebar = props => {
+const Sidebar = (props) => {
   const { className, minimized, ...rest } = props;
   const classNames = classnames('rc-sidebar', className, {
     'rc-sidebar-minimized': minimized,

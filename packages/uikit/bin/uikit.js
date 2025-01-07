@@ -13,7 +13,7 @@ require('yargs') //eslint-disable-line
     command: 'generate <template> <name>',
     aliases: ['g'],
     desc: 'Generate the specified template in the given root directory',
-    builder: yargs => {
+    builder: (yargs) => {
       yargs.positional('template', {
         type: 'string',
         describe: 'The specified template',

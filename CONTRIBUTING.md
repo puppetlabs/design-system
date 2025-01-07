@@ -55,8 +55,8 @@ Run `npm test` in the top folder to test all packages, or `npm test` in the desi
 - Tense: Use the imperative present tense (e.g. "Add feature", not "Added feature") to describe what changed from the consumer's perspective in the commit summary.
 
 | <img src="https://imgs.xkcd.com/comics/git_commit.png" alt="xkcd comic about commit messages"/> |
-| ------------- |
-| <p align="center">Don't do this</p> |
+| ----------------------------------------------------------------------------------------------- |
+| <p align="center">Don't do this</p>                                                             |
 
 See more guidelines for contributors and maintainers in the [Principles, Patterns, and Guidelines](principles-patterns-guidelines.md) doc.
 
@@ -65,16 +65,16 @@ See more guidelines for contributors and maintainers in the [Principles, Pattern
 Once you have made a change and verified that it works locally including in the Styleguidist website, put up a PR. The author should own seeking review and merging/publishing. Publishing packages to npm is automated with Relay when a PR is merged to `main` or `releases/alpha` if Lerna detects a new version in a package's `package.json` that doesn't yet exist on npm.
 
 1. **Branch**: Create a PR from your branch. Note that we usually push the branch directly to this repository rather than a fork.
-    - Target the `main` branch (the default branch) if the change should be published upon merge.
-    - Target the `releases/alpha` branch if it includes a breaking change.
-    - Target a feature branch if the change shouldn't be released yet. For example, a "feature" or "integration" branch can be used if you want to batch up multiple changes into a single release, which would then need to be followed up with another PR from that branch to `main` for a release.
+   - Target the `main` branch (the default branch) if the change should be published upon merge.
+   - Target the `releases/alpha` branch if it includes a breaking change.
+   - Target a feature branch if the change shouldn't be released yet. For example, a "feature" or "integration" branch can be used if you want to batch up multiple changes into a single release, which would then need to be followed up with another PR from that branch to `main` for a release.
 2. **Changelog**: Add a line about your change to the package's CHANGELOG.md.
-    - Add a heading with the release date. Note that you may use "Unreleased" if it's not going to be released yet.
-    - Add context and be specific about the change by prefixing the change with the component affected and referencing props by name.
+   - Add a heading with the release date. Note that you may use "Unreleased" if it's not going to be released yet.
+   - Add context and be specific about the change by prefixing the change with the component affected and referencing props by name.
 3. **Version**: Update the version to be published, following [semver](https://semver.org/) for patch, minor, and major versions. Note that alpha versions also follow semver, in the form `6.0.0-alpha.3`.
-    - Increment the version in the appropriate `package.json` files, e.g. [packages/react-components/package.json](packages/react-components/package.json).
-    - Also increment the version in the corresponding `package-lock.json` files. When updating a single package, this is most easily done by simply manually incrementing the `version` field in the `package-lock.json` file to match, but can also be done by running `npm install`, though you may have to run `git clean -dfX` first to force them to update.
+   - Increment the version in the appropriate `package.json` files, e.g. [packages/react-components/package.json](packages/react-components/package.json).
+   - Also increment the version in the corresponding `package-lock.json` files. When updating a single package, this is most easily done by simply manually incrementing the `version` field in the `package-lock.json` file to match, but can also be done by running `npm install`, though you may have to run `git clean -dfX` first to force them to update.
+   - Note: Other packages in this project that depend on the incremented package may also need to be udpated to point to the new version, otherwise, you could end up with multiple versions due to the use of lockfiles.
 4. **Review**: Get a +1 on the PR. Feel free to ping people to find a reviewer. The [design-system-codeowners](https://github.com/orgs/puppetlabs/teams/design-system-codeowners/members) team should be able to help.
-5. **Merge**: Merge the PR. Merging to `main` or `releases/alpha` will trigger a Relay workflow that runs the `npm run release` command.
-6. **Notification**: Wait for a successful notification in the #alerts-design-system Slack channel, which could take a half hour or so.
-7. **Verify**: Verify the new version got published, e.g. by checking [https://www.npmjs.com/package/@puppet/react-components](https://www.npmjs.com/package/@puppet/react-components).
+5. **Merge**: Merge the PR. Merging to `main` or `releases/alpha` will trigger a github workflow that runs the `npm run publish` command.
+6. **Verify**: Verify the new version got published, e.g. by checking [https://www.npmjs.com/package/@puppet/react-components](https://www.npmjs.com/package/@puppet/react-components).

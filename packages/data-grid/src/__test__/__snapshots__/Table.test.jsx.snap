@@ -4,23 +4,23 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
 <Table
   className=""
   columns={
-    Array [
-      Object {
+    [
+      {
         "className": "testColumnClassName",
         "dataKey": "eventType",
         "label": "Event Type",
       },
-      Object {
+      {
         "className": "testColumnClassName",
         "dataKey": "affectedDevices",
         "label": "Affected Devices",
       },
-      Object {
+      {
         "className": "testColumnClassName",
         "dataKey": "detections",
         "label": "Detections",
       },
-      Object {
+      {
         "className": "testColumnClassName",
         "dataKey": "Link",
         "label": "Linked field",
@@ -28,44 +28,44 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     ]
   }
   data={
-    Array [
-      Object {
+    [
+      {
         "affectedDevices": 20,
         "detections": 634,
         "eventType": "Virus/Malware",
         "id": 0,
       },
-      Object {
+      {
         "affectedDevices": 20,
         "detections": 634,
         "eventType": "Spyware/Grayware",
         "id": 1,
       },
-      Object {
+      {
         "affectedDevices": 15,
         "detections": 598,
         "eventType": "URL Filtering",
         "id": 2,
       },
-      Object {
+      {
         "affectedDevices": 15,
         "detections": 598,
         "eventType": "Web Reputation",
         "id": 3,
       },
-      Object {
+      {
         "affectedDevices": 15,
         "detections": 497,
         "eventType": "Network Virus",
         "id": 4,
       },
-      Object {
+      {
         "affectedDevices": 0,
         "detections": 0,
         "eventType": "Application Control",
         "id": 5,
       },
-      Object {
+      {
         "affectedDevices": 0,
         "detections": 0,
         "eventType": "Application Control",
@@ -90,7 +90,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
   rowClassName={[Function]}
   selectable={false}
   sortedColumn={
-    Object {
+    {
       "direction": "",
       "sortDataKey": "",
     }
@@ -104,23 +104,23 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
     >
       <ColumnHeader
         columns={
-          Array [
-            Object {
+          [
+            {
               "className": "testColumnClassName",
               "dataKey": "eventType",
               "label": "Event Type",
             },
-            Object {
+            {
               "className": "testColumnClassName",
               "dataKey": "affectedDevices",
               "label": "Affected Devices",
             },
-            Object {
+            {
               "className": "testColumnClassName",
               "dataKey": "detections",
               "label": "Detections",
             },
-            Object {
+            {
               "className": "testColumnClassName",
               "dataKey": "Link",
               "label": "Linked field",
@@ -135,7 +135,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         selectAllValue={false}
         selectable={false}
         sortedColumn={
-          Object {
+          {
             "direction": "",
             "sortDataKey": "",
           }
@@ -415,30 +415,30 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
 <Table
   className=""
   columns={
-    Array [
-      Object {
+    [
+      {
         "className": "testColumnClassName",
         "dataKey": "eventType",
         "label": "Event Type",
       },
-      Object {
+      {
         "className": "testColumnClassName",
         "dataKey": "affectedDevices",
         "label": "Affected Devices",
       },
-      Object {
+      {
         "className": "testColumnClassName",
         "dataKey": "detections",
         "label": "Detections",
       },
-      Object {
+      {
         "className": "testColumnClassName",
         "dataKey": "Link",
         "label": "Linked field",
       },
     ]
   }
-  data={Array []}
+  data={[]}
   emptyStateHeader="No data available"
   emptyStateMessage="Prompt to action or solution"
   fixed={false}
@@ -456,7 +456,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
   rowClassName={[Function]}
   selectable={false}
   sortedColumn={
-    Object {
+    {
       "direction": "",
       "sortDataKey": "",
     }
@@ -470,23 +470,23 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
     >
       <ColumnHeader
         columns={
-          Array [
-            Object {
+          [
+            {
               "className": "testColumnClassName",
               "dataKey": "eventType",
               "label": "Event Type",
             },
-            Object {
+            {
               "className": "testColumnClassName",
               "dataKey": "affectedDevices",
               "label": "Affected Devices",
             },
-            Object {
+            {
               "className": "testColumnClassName",
               "dataKey": "detections",
               "label": "Detections",
             },
-            Object {
+            {
               "className": "testColumnClassName",
               "dataKey": "Link",
               "label": "Linked field",
@@ -501,7 +501,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
         selectAllValue={false}
         selectable={false}
         sortedColumn={
-          Object {
+          {
             "direction": "",
             "sortDataKey": "",
           }
@@ -598,11 +598,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
         className="dg-empty-state-message"
         color="medium"
         size="regular"
-        style={Object {}}
+        style={{}}
       >
         <div
           className="rc-text rc-text-size-regular rc-text-medium dg-empty-state-message"
-          style={Object {}}
+          style={{}}
         >
           Prompt to action or solution
         </div>

@@ -1,6 +1,6 @@
 ## Overview
 
-The `Tag` component was designed and developed to be used primarily alongside the data grid filtering feature, as a clear indication of what filters are actively applied. However the component itself may have further usecases. The `Tag` component has been built on top of the `Button` component in order to make sure it inherit's all its accessability features.
+The `Tag` component was designed and developed to be used primarily alongside the data grid filtering feature, as a clear indication of what filters are actively applied. However the component itself may have further use cases. The `Tag` component has been built on top of the `Button` component in order to make sure it inherit's all its accessability features.
 
 ## Basic Use
 
@@ -61,7 +61,74 @@ const onTagClick = () => {
 </div>;
 ```
 
+### Tag Search
+
+Creates a list of tags from a menu of searchable / filterable options. Menu options will be grouped together based on the `group` property. Options without a group are displayed without a group header.
+
+```jsx
+import React from 'react';
+import Button from '../button';
+
+const [selected, onApply] = React.useState([]);
+
+const options = [
+  {
+    group: 'Humans',
+    name: 'sara',
+    label: 'Sarah Connor',
+  },
+  {
+    group: 'Robots',
+    name: 'terminator',
+    label: 'Terminator',
+  },
+  {
+    group: 'Robots',
+    name: 'johnny',
+    label: 'Johnny 5',
+  },
+  {
+    group: 'Humans',
+    name: 'rocky',
+    label: 'Rocky Balboa',
+  },
+  {
+    group: 'Robots',
+    name: 'optimus',
+    label: 'Optimus Prime',
+  },
+  {
+    group: 'Robots',
+    name: 'hal',
+    label: 'Hal',
+  },
+  {
+    group: 'Animals',
+    name: 'donald',
+    label: 'Donald Duck',
+  },
+];
+
+console.log('Selected', selected);
+const selectedText = (count) =>
+  `${count} ${count === 1 ? 'tag' : 'tags'} selected`;
+
+<div>
+  {selected.reduce((acc, curr) => (acc += ` ${curr.name};`), '')}
+  <Tag.Search
+    open={false}
+    onApply={onApply}
+    options={options}
+    selected={selected}
+    selectedLabel={selectedText}
+    clearLabel="Clear selected tags"
+    columns
+  />
+</div>;
+```
+
 ## Related
 
 - [Badge](#/React%20Components/Badge)
 - [Button](#/React%20Components/Button)
+- [Menu.Search](#/React%20Components/Menu)

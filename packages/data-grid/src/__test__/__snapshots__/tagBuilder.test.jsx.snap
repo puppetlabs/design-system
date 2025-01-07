@@ -3,13 +3,13 @@
 exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
 <TagBuilder
   filters={
-    Array [
-      Object {
+    [
+      {
         "field": "all-operating-system",
         "fieldLabel": "All Operating System",
         "value": "Windows",
       },
-      Object {
+      {
         "field": "puppet-installed",
         "fieldLabel": "Puppet Installed",
         "value": "true",
@@ -26,8 +26,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
       className="dg-tag-container"
     >
       <Tag
-        class="dg-filter-tag dg-filter-tag-0"
-        className=""
+        className="dg-filter-tag dg-filter-tag-0"
         emphasis="bold"
         hideRemoveButton={false}
         key="dg-filter-tag-1"
@@ -36,7 +35,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         type="primary"
       >
         <div
-          className="rc-tag rc-tag-primary rc-tag-bold"
+          className="rc-tag rc-tag-primary rc-tag-bold dg-filter-tag dg-filter-tag-0"
         >
           <div
             className="rc-tag-label-background rc-tag-border"
@@ -46,11 +45,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               className="rc-tag-text"
               color={null}
               size="regular"
-              style={Object {}}
+              style={{}}
             >
               <div
                 className="rc-text rc-text-size-regular rc-tag-text"
-                style={Object {}}
+                style={{}}
               >
                 All Operating System = Windows
               </div>
@@ -81,7 +80,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               <Icon
                 className="rc-button-icon-svg"
                 size="small"
-                style={Object {}}
+                style={{}}
                 svg={null}
                 type="close"
                 viewBox={null}
@@ -90,7 +89,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   className="rc-icon rc-icon-close rc-button-icon-svg"
                   height="12px"
                   style={
-                    Object {
+                    {
                       "height": "12px",
                       "width": "12px",
                     }
@@ -112,8 +111,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         </div>
       </Tag>
       <Tag
-        class="dg-filter-tag dg-filter-tag-1"
-        className=""
+        className="dg-filter-tag dg-filter-tag-1"
         emphasis="bold"
         hideRemoveButton={false}
         key="dg-filter-tag-2"
@@ -122,7 +120,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
         type="primary"
       >
         <div
-          className="rc-tag rc-tag-primary rc-tag-bold"
+          className="rc-tag rc-tag-primary rc-tag-bold dg-filter-tag dg-filter-tag-1"
         >
           <div
             className="rc-tag-label-background rc-tag-border"
@@ -132,11 +130,11 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               className="rc-tag-text"
               color={null}
               size="regular"
-              style={Object {}}
+              style={{}}
             >
               <div
                 className="rc-text rc-text-size-regular rc-tag-text"
-                style={Object {}}
+                style={{}}
               >
                 Puppet Installed = true
               </div>
@@ -167,7 +165,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               <Icon
                 className="rc-button-icon-svg"
                 size="small"
-                style={Object {}}
+                style={{}}
                 svg={null}
                 type="close"
                 viewBox={null}
@@ -176,7 +174,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
                   className="rc-icon rc-icon-close rc-button-icon-svg"
                   height="12px"
                   style={
-                    Object {
+                    {
                       "height": "12px",
                       "width": "12px",
                     }
@@ -223,7 +221,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
           <Icon
             className="rc-button-icon-svg"
             size="small"
-            style={Object {}}
+            style={{}}
             svg={null}
             type="close"
             viewBox={null}
@@ -232,7 +230,7 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
               className="rc-icon rc-icon-close rc-button-icon-svg"
               height="12px"
               style={
-                Object {
+                {
                   "height": "12px",
                   "width": "12px",
                 }

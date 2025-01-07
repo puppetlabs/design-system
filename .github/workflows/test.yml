@@ -3,7 +3,7 @@ name: Test
 on:
   push:
     paths-ignore:
-      - '*.md'
+      - "*.md"
 
 jobs:
   test:
@@ -11,11 +11,11 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.4.0]
+        node-version: [20]
 
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm install

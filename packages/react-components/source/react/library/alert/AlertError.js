@@ -7,7 +7,7 @@ const propTypes = {
   error: errorType.isRequired,
 };
 
-const getMessage = error => {
+const getMessage = (error) => {
   if (typeof error === 'string') {
     return error;
   }
@@ -15,10 +15,10 @@ const getMessage = error => {
   return error.message;
 };
 
-const getPublicCauses = error => {
+const getPublicCauses = (error) => {
   const causes = error.causes || [];
 
-  return causes.filter(cause => !cause.sensitivity);
+  return causes.filter((cause) => !cause.sensitivity);
 };
 
 const CauseList = ({ error }) => {
@@ -30,7 +30,7 @@ const CauseList = ({ error }) => {
 
   return (
     <ul className="rc-error-alert-cause-list">
-      {causes.map(cause => {
+      {causes.map((cause) => {
         const message = getMessage(cause);
 
         return (

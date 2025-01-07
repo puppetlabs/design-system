@@ -62,10 +62,9 @@ const [value, setValue] = React.useState('foo');
 <RadioButton
   name="radiobutton-ex-event-handling"
   label="Radio button label is also clickable"
-  value="bar"
-  selectedValue={value}
-  onChange={setValue}
-/>
+  value={state.checked}
+  onChange={(checked) => setState({ checked })}
+/>;
 ```
 
 ## Related

@@ -67,7 +67,7 @@ function QuickFilter({ filters, onFilterSelect, emptyFilterLabel }) {
                 options.length === 0 ? emptyFilterOption : filter.options
               }
               placeholder={filter.fieldLabel}
-              onChange={value =>
+              onChange={(value) =>
                 onFilterSelect(filter.field, filter.fieldLabel, value)
               }
             />
