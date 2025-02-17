@@ -1,4 +1,3 @@
-import namor from 'namor';
 import React from 'react';
 import { Link } from '@puppet/react-components';
 
@@ -11,14 +10,10 @@ const range = (len) => {
 };
 
 const newRow = () => ({
-  eventType: namor.generate({ words: 1, numbers: 0 }),
-  affectedDevices: namor.generate({ words: 1, numbers: 1 }),
+  eventType: 'hello',
+  affectedDevices: 'world',
   detections: Math.floor(Math.random() * 30),
-  Link: (
-    <Link href="https://puppet.com/products/puppet-remediate">
-      {namor.generate({ words: 1, numbers: 1 })}
-    </Link>
-  ),
+  Link: <Link href="https://puppet.com/products/puppet-remediate">cat</Link>,
   unique: Math.floor(Math.random() * 100),
   selected: false,
 });

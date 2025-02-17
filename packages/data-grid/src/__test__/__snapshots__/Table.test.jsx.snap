@@ -1,205 +1,351 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
-<Table
-  className=""
-  columns={
-    [
-      {
-        "className": "testColumnClassName",
-        "dataKey": "eventType",
-        "label": "Event Type",
-      },
-      {
-        "className": "testColumnClassName",
-        "dataKey": "affectedDevices",
-        "label": "Affected Devices",
-      },
-      {
-        "className": "testColumnClassName",
-        "dataKey": "detections",
-        "label": "Detections",
-      },
-      {
-        "className": "testColumnClassName",
-        "dataKey": "Link",
-        "label": "Linked field",
-      },
-    ]
-  }
-  data={
-    [
-      {
-        "affectedDevices": 20,
-        "detections": 634,
-        "eventType": "Virus/Malware",
-        "id": 0,
-      },
-      {
-        "affectedDevices": 20,
-        "detections": 634,
-        "eventType": "Spyware/Grayware",
-        "id": 1,
-      },
-      {
-        "affectedDevices": 15,
-        "detections": 598,
-        "eventType": "URL Filtering",
-        "id": 2,
-      },
-      {
-        "affectedDevices": 15,
-        "detections": 598,
-        "eventType": "Web Reputation",
-        "id": 3,
-      },
-      {
-        "affectedDevices": 15,
-        "detections": 497,
-        "eventType": "Network Virus",
-        "id": 4,
-      },
-      {
-        "affectedDevices": 0,
-        "detections": 0,
-        "eventType": "Application Control",
-        "id": 5,
-      },
-      {
-        "affectedDevices": 0,
-        "detections": 0,
-        "eventType": "Application Control",
-        "id": 6,
-      },
-    ]
-  }
-  emptyStateHeader="No data available"
-  emptyStateMessage="Prompt to action or solution"
-  fixed={false}
-  fixedColumn={false}
-  fixedLastColumn={false}
-  headerCheckState={false}
-  headerIndeterminateState={false}
-  horizontalScroll={false}
-  loading={false}
-  loadingMessage="Loading"
-  onHeaderChecked={[Function]}
-  onRowChecked={[Function]}
-  onRowClick={[Function]}
-  onSort={[Function]}
-  rowClassName={[Function]}
-  selectable={false}
-  sortedColumn={
-    {
-      "direction": "",
-      "sortDataKey": "",
-    }
-  }
->
-  <div
-    className=""
-  >
-    <table
-      className="rc-table"
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class=""
+      >
+        <table
+          class="rc-table"
+        >
+          <thead>
+            <tr
+              class="rc-table-header"
+            >
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Event Type
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Affected Devices
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Detections
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Linked field
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Virus/Malware
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                20
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                634
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Spyware/Grayware
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                21
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                634
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                URL Filtering
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                15
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                598
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Web Reputation
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                15
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                598
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Network Virus
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                15
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                497
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Application Control
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                0
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                0
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Application Control
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                0
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                0
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div
+        class=""
+      >
+        <table
+          class="rc-table"
+        >
+          <thead>
+            <tr
+              class="rc-table-header"
+            >
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Event Type
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Affected Devices
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Detections
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Linked field
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+        <div
+          class="dg-empty-state-container"
+        >
+          <h3
+            class="rc-heading rc-heading-h3 rc-heading-medium dg-empty-state-header"
+          >
+            No data available
+          </h3>
+          <div
+            class="rc-text rc-text-size-medium rc-text-medium dg-empty-state-message"
+          >
+            Prompt to action or solution
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class=""
     >
-      <ColumnHeader
-        columns={
-          [
-            {
-              "className": "testColumnClassName",
-              "dataKey": "eventType",
-              "label": "Event Type",
-            },
-            {
-              "className": "testColumnClassName",
-              "dataKey": "affectedDevices",
-              "label": "Affected Devices",
-            },
-            {
-              "className": "testColumnClassName",
-              "dataKey": "detections",
-              "label": "Detections",
-            },
-            {
-              "className": "testColumnClassName",
-              "dataKey": "Link",
-              "label": "Linked field",
-            },
-          ]
-        }
-        headerIndeterminateState={false}
-        loading={false}
-        loadingMessage="Loading"
-        onSelectAll={[Function]}
-        onSort={[Function]}
-        selectAllValue={false}
-        selectable={false}
-        sortedColumn={
-          {
-            "direction": "",
-            "sortDataKey": "",
-          }
-        }
+      <table
+        class="rc-table"
       >
         <thead>
           <tr
-            className="rc-table-header"
+            class="rc-table-header"
           >
             <th
-              className="rc-table-header-cell"
-              key="eventType"
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              tabIndex={null}
+              class="rc-table-header-cell"
             >
               <span
                 as="h6"
-                className=""
+                class=""
                 color="medium"
               >
                 Event Type
               </span>
             </th>
             <th
-              className="rc-table-header-cell"
-              key="affectedDevices"
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              tabIndex={null}
+              class="rc-table-header-cell"
             >
               <span
                 as="h6"
-                className=""
+                class=""
                 color="medium"
               >
                 Affected Devices
               </span>
             </th>
             <th
-              className="rc-table-header-cell"
-              key="detections"
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              tabIndex={null}
+              class="rc-table-header-cell"
             >
               <span
                 as="h6"
-                className=""
+                class=""
                 color="medium"
               >
                 Detections
               </span>
             </th>
             <th
-              className="rc-table-header-cell"
-              key="Link"
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              tabIndex={null}
+              class="rc-table-header-cell"
             >
               <span
                 as="h6"
-                className=""
+                class=""
                 color="medium"
               >
                 Linked field
@@ -207,365 +353,565 @@ exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
             </th>
           </tr>
         </thead>
-      </ColumnHeader>
-      <tbody>
-        <tr
-          className="dg-table-row"
-          key="0"
-          onClick={[Function]}
-        >
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="eventType"
+        <tbody>
+          <tr
+            class="dg-table-row"
           >
-            Virus/Malware
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="affectedDevices"
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              Virus/Malware
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              20
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              634
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            />
+          </tr>
+          <tr
+            class="dg-table-row"
           >
-            20
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="detections"
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              Spyware/Grayware
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              21
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              634
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            />
+          </tr>
+          <tr
+            class="dg-table-row"
           >
-            634
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="Link"
-          />
-        </tr>
-        <tr
-          className="dg-table-row"
-          key="1"
-          onClick={[Function]}
-        >
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="eventType"
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              URL Filtering
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              15
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              598
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            />
+          </tr>
+          <tr
+            class="dg-table-row"
           >
-            Spyware/Grayware
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="affectedDevices"
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              Web Reputation
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              15
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              598
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            />
+          </tr>
+          <tr
+            class="dg-table-row"
           >
-            20
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="detections"
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              Network Virus
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              15
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              497
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            />
+          </tr>
+          <tr
+            class="dg-table-row"
           >
-            634
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="Link"
-          />
-        </tr>
-        <tr
-          className="dg-table-row"
-          key="2"
-          onClick={[Function]}
-        >
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="eventType"
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              Application Control
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              0
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              0
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            />
+          </tr>
+          <tr
+            class="dg-table-row"
           >
-            URL Filtering
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="affectedDevices"
-          >
-            15
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="detections"
-          >
-            598
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="Link"
-          />
-        </tr>
-        <tr
-          className="dg-table-row"
-          key="3"
-          onClick={[Function]}
-        >
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="eventType"
-          >
-            Web Reputation
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="affectedDevices"
-          >
-            15
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="detections"
-          >
-            598
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="Link"
-          />
-        </tr>
-        <tr
-          className="dg-table-row"
-          key="4"
-          onClick={[Function]}
-        >
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="eventType"
-          >
-            Network Virus
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="affectedDevices"
-          >
-            15
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="detections"
-          >
-            497
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="Link"
-          />
-        </tr>
-        <tr
-          className="dg-table-row"
-          key="5"
-          onClick={[Function]}
-        >
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="eventType"
-          >
-            Application Control
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="affectedDevices"
-          >
-            0
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="detections"
-          >
-            0
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="Link"
-          />
-        </tr>
-        <tr
-          className="dg-table-row"
-          key="6"
-          onClick={[Function]}
-        >
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="eventType"
-          >
-            Application Control
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="affectedDevices"
-          >
-            0
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="detections"
-          >
-            0
-          </td>
-          <td
-            className="rc-table-cell testColumnClassName"
-            key="Link"
-          />
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</Table>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              Application Control
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              0
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            >
+              0
+            </td>
+            <td
+              class="rc-table-cell testColumnClassName"
+            />
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;
 
 exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
-<Table
-  className=""
-  columns={
-    [
-      {
-        "className": "testColumnClassName",
-        "dataKey": "eventType",
-        "label": "Event Type",
-      },
-      {
-        "className": "testColumnClassName",
-        "dataKey": "affectedDevices",
-        "label": "Affected Devices",
-      },
-      {
-        "className": "testColumnClassName",
-        "dataKey": "detections",
-        "label": "Detections",
-      },
-      {
-        "className": "testColumnClassName",
-        "dataKey": "Link",
-        "label": "Linked field",
-      },
-    ]
-  }
-  data={[]}
-  emptyStateHeader="No data available"
-  emptyStateMessage="Prompt to action or solution"
-  fixed={false}
-  fixedColumn={false}
-  fixedLastColumn={false}
-  headerCheckState={false}
-  headerIndeterminateState={false}
-  horizontalScroll={false}
-  loading={false}
-  loadingMessage="Loading"
-  onHeaderChecked={[Function]}
-  onRowChecked={[Function]}
-  onRowClick={[Function]}
-  onSort={[Function]}
-  rowClassName={[Function]}
-  selectable={false}
-  sortedColumn={
-    {
-      "direction": "",
-      "sortDataKey": "",
-    }
-  }
->
-  <div
-    className=""
-  >
-    <table
-      className="rc-table"
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class=""
+      >
+        <table
+          class="rc-table"
+        >
+          <thead>
+            <tr
+              class="rc-table-header"
+            >
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Event Type
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Affected Devices
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Detections
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Linked field
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Virus/Malware
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                20
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                634
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Spyware/Grayware
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                21
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                634
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                URL Filtering
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                15
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                598
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Web Reputation
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                15
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                598
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Network Virus
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                15
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                497
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Application Control
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                0
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                0
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+            <tr
+              class="dg-table-row"
+            >
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                Application Control
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                0
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              >
+                0
+              </td>
+              <td
+                class="rc-table-cell testColumnClassName"
+              />
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <div
+        class=""
+      >
+        <table
+          class="rc-table"
+        >
+          <thead>
+            <tr
+              class="rc-table-header"
+            >
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Event Type
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Affected Devices
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Detections
+                </span>
+              </th>
+              <th
+                class="rc-table-header-cell"
+              >
+                <span
+                  as="h6"
+                  class=""
+                  color="medium"
+                >
+                  Linked field
+                </span>
+              </th>
+            </tr>
+          </thead>
+          <tbody />
+        </table>
+        <div
+          class="dg-empty-state-container"
+        >
+          <h3
+            class="rc-heading rc-heading-h3 rc-heading-medium dg-empty-state-header"
+          >
+            No data available
+          </h3>
+          <div
+            class="rc-text rc-text-size-medium rc-text-medium dg-empty-state-message"
+          >
+            Prompt to action or solution
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class=""
     >
-      <ColumnHeader
-        columns={
-          [
-            {
-              "className": "testColumnClassName",
-              "dataKey": "eventType",
-              "label": "Event Type",
-            },
-            {
-              "className": "testColumnClassName",
-              "dataKey": "affectedDevices",
-              "label": "Affected Devices",
-            },
-            {
-              "className": "testColumnClassName",
-              "dataKey": "detections",
-              "label": "Detections",
-            },
-            {
-              "className": "testColumnClassName",
-              "dataKey": "Link",
-              "label": "Linked field",
-            },
-          ]
-        }
-        headerIndeterminateState={false}
-        loading={false}
-        loadingMessage="Loading"
-        onSelectAll={[Function]}
-        onSort={[Function]}
-        selectAllValue={false}
-        selectable={false}
-        sortedColumn={
-          {
-            "direction": "",
-            "sortDataKey": "",
-          }
-        }
+      <table
+        class="rc-table"
       >
         <thead>
           <tr
-            className="rc-table-header"
+            class="rc-table-header"
           >
             <th
-              className="rc-table-header-cell"
-              key="eventType"
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              tabIndex={null}
+              class="rc-table-header-cell"
             >
               <span
                 as="h6"
-                className=""
+                class=""
                 color="medium"
               >
                 Event Type
               </span>
             </th>
             <th
-              className="rc-table-header-cell"
-              key="affectedDevices"
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              tabIndex={null}
+              class="rc-table-header-cell"
             >
               <span
                 as="h6"
-                className=""
+                class=""
                 color="medium"
               >
                 Affected Devices
               </span>
             </th>
             <th
-              className="rc-table-header-cell"
-              key="detections"
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              tabIndex={null}
+              class="rc-table-header-cell"
             >
               <span
                 as="h6"
-                className=""
+                class=""
                 color="medium"
               >
                 Detections
               </span>
             </th>
             <th
-              className="rc-table-header-cell"
-              key="Link"
-              onClick={[Function]}
-              onKeyPress={[Function]}
-              tabIndex={null}
+              class="rc-table-header-cell"
             >
               <span
                 as="h6"
-                className=""
+                class=""
                 color="medium"
               >
                 Linked field
@@ -573,41 +919,74 @@ exports[`Snapshot test Check component matches previous HTML snapshot 2`] = `
             </th>
           </tr>
         </thead>
-      </ColumnHeader>
-      <tbody />
-    </table>
-    <div
-      className="dg-empty-state-container"
-    >
-      <Heading
-        allCaps={false}
-        as="h3"
-        className="dg-empty-state-header"
-        color="medium"
-        hero={false}
-        label={false}
+        <tbody />
+      </table>
+      <div
+        class="dg-empty-state-container"
       >
         <h3
-          className="rc-heading rc-heading-h3 rc-heading-medium dg-empty-state-header"
+          class="rc-heading rc-heading-h3 rc-heading-medium dg-empty-state-header"
         >
           No data available
         </h3>
-      </Heading>
-      <Text
-        as="div"
-        className="dg-empty-state-message"
-        color="medium"
-        size="medium"
-        style={{}}
-      >
         <div
-          className="rc-text rc-text-size-medium rc-text-medium dg-empty-state-message"
-          style={{}}
+          class="rc-text rc-text-size-medium rc-text-medium dg-empty-state-message"
         >
           Prompt to action or solution
         </div>
-      </Text>
+      </div>
     </div>
-  </div>
-</Table>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;

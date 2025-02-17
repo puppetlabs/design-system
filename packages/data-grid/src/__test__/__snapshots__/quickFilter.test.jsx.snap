@@ -1,0 +1,656 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="dg-quick-filter-container"
+      >
+        <div
+          class="dg-quick-filter-filters"
+        >
+          <div
+            class="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter"
+          >
+            <button
+              aria-controls="quick-filter-All-Operating-System-0-menu"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="All Operating System"
+              class="rc-button rc-button-tertiary rc-button-bold rc-button-trailing-icon rc-button-full rc-button-select-target"
+              type="button"
+            >
+              <span
+                class="rc-button-content"
+              >
+                All Operating System
+              </span>
+              <svg
+                class="rc-icon rc-icon-chevron-down rc-button-icon-svg"
+                height="16px"
+                style="width: 16px; height: 16px;"
+                viewBox="0 0 16 16"
+                width="16px"
+              >
+                <path
+                  d="M8,8.58578644 L10.2928932,6.29289322 C10.6834175,5.90236893 11.3165825,5.90236893 11.7071068,6.29289322 C12.0976311,6.68341751 12.0976311,7.31658249 11.7071068,7.70710678 L8.70710678,10.7071068 C8.31658249,11.0976311 7.68341751,11.0976311 7.29289322,10.7071068 L4.29289322,7.70710678 C3.90236893,7.31658249 3.90236893,6.68341751 4.29289322,6.29289322 C4.68341751,5.90236893 5.31658249,5.90236893 5.70710678,6.29289322 L8,8.58578644 Z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </button>
+            <div
+              class="rc-menu-list rc-option-menu-list-single"
+            >
+              <ul
+                aria-activedescendant="quick-filter-All-Operating-System-0-menu-linux"
+                aria-labelledby="quick-filter-All-Operating-System-0"
+                aria-multiselectable="false"
+                class="rc-menu-list-inner"
+                id="quick-filter-All-Operating-System-0-menu"
+                role="listbox"
+                tabindex="0"
+              >
+                <li
+                  aria-selected="false"
+                  class="rc-menu-list-item rc-menu-list-item-focused"
+                  id="quick-filter-All-Operating-System-0-menu-linux"
+                  role="option"
+                >
+                  <svg
+                    class="rc-icon rc-icon-pencil rc-menu-list-item-icon"
+                    height="16px"
+                    style="width: 16px; height: 16px;"
+                    viewBox="0 0 16 16"
+                    width="16px"
+                  >
+                    <path
+                      d="M11.7,0.3 C11.3,-0.1 10.7,-0.1 10.3,0.3 L0.3,10.3 C0.1,10.5 0,10.7 0,11 L0,15 C0,15.6 0.4,16 1,16 L5,16 C5.3,16 5.5,15.9 5.7,15.7 L15.7,5.7 C16.1,5.3 16.1,4.7 15.7,4.3 L11.7,0.3 Z M4.6,14 L2,14 L2,11.4 L8,5.4 L10.6,8 L4.6,14 Z M12,6.6 L9.4,4 L11,2.4 L13.6,5 L12,6.6 Z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                  <span
+                    class="rc-menu-list-item-content"
+                  >
+                    linux
+                  </span>
+                </li>
+                <li
+                  aria-selected="false"
+                  class="rc-menu-list-item"
+                  id="quick-filter-All-Operating-System-0-menu-Windows"
+                  role="option"
+                >
+                  <svg
+                    class="rc-icon rc-icon-send rc-menu-list-item-icon"
+                    height="16px"
+                    style="width: 16px; height: 16px;"
+                    viewBox="0 0 16 16"
+                    width="16px"
+                  >
+                    <path
+                      d="M7.81128337,12.9555981 L5.50946779,15.6412947 C4.9050714,16.3464882 3.74956258,15.9186292 3.75018206,14.9898706 L3.75379426,9.57429205 C3.72082332,9.38437621 3.74270714,9.18525353 3.82314037,9.00278418 C3.89674186,8.8154288 4.0262993,8.65180555 4.19850626,8.53678387 L8.41350626,5.72147137 C8.87276761,5.41471829 9.49374501,5.53835068 9.80049809,5.99761203 C10.1072512,6.45687339 9.98361878,7.07785078 9.52435743,7.38460386 L6.44520115,9.44125562 L8.02562548,10.6264612 C8.13590952,10.6664419 8.24097536,10.7266474 8.33531397,10.8075017 C8.3949363,10.8586019 8.44706376,10.9151985 8.49158929,10.9759009 L11.534996,13.258239 L13.6658118,2.60517265 L3.01204092,6.86627598 L3.46318096,7.20448619 C3.9033145,7.53444507 3.99260329,8.15869441 3.66261306,8.59878612 C3.33262282,9.03887783 2.70831415,9.12815814 2.26818061,8.79819927 L0.398726887,7.39670908 C-0.223050287,6.9305758 -0.0952406306,5.96372578 0.626304886,5.675135 L14.6332009,0.0729090649 C15.3676141,-0.220828302 16.1349518,0.41739564 15.9798265,1.19294873 L13.1784473,15.1985136 C13.0347282,15.9170408 12.1903775,16.2396066 11.6041163,15.7999525 L7.81128337,12.9555981 Z M6.20782942,11.7531219 L5.75256914,11.4117092 L5.75198667,12.284987 L6.20782942,11.7531219 Z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                  <span
+                    class="rc-menu-list-item-content"
+                  >
+                    Windows
+                  </span>
+                </li>
+                <li
+                  aria-selected="false"
+                  class="rc-menu-list-item"
+                  id="quick-filter-All-Operating-System-0-menu-MacOS"
+                  role="option"
+                >
+                  <svg
+                    class="rc-icon rc-icon-link rc-menu-list-item-icon"
+                    height="16px"
+                    style="width: 16px; height: 16px;"
+                    viewBox="0 0 16 16"
+                    width="16px"
+                  >
+                    <path
+                      d="M4.5,16 C3.3,16 2.2,15.5 1.3,14.7 C-0.5,12.9 -0.5,10.1 1.3,8.3 L2,7.6 L3.4,9 L2.7,9.7 C1.7,10.7 1.7,12.3 2.7,13.3 C3.7,14.3 5.3,14.3 6.3,13.3 L9.3,10.3 C10.3,9.3 10.3,7.7 9.3,6.7 L8.6,6 L10,4.6 L10.7,5.3 C12.5,7.1 12.5,9.9 10.7,11.7 L7.7,14.7 C6.9,15.5 5.7,16 4.5,16 Z M6,11.4 L5.3,10.7 C3.5,8.9 3.5,6.1 5.3,4.3 L8.3,1.3 C9.2,0.4 10.3,0 11.5,0 C12.7,0 13.8,0.5 14.7,1.3 C16.5,3.1 16.5,5.9 14.7,7.7 L14,8.4 L12.6,7 L13.3,6.3 C14.3,5.3 14.3,3.7 13.3,2.7 C12.3,1.7 10.7,1.7 9.7,2.7 L6.7,5.7 C5.7,6.7 5.7,8.3 6.7,9.3 L7.4,10 L6,11.4 Z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                  <span
+                    class="rc-menu-list-item-content"
+                  >
+                    MacOS
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter"
+          >
+            <button
+              aria-controls="quick-filter-Puppet-installed-1-menu"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="Puppet installed"
+              class="rc-button rc-button-tertiary rc-button-bold rc-button-trailing-icon rc-button-full rc-button-select-target"
+              type="button"
+            >
+              <span
+                class="rc-button-content"
+              >
+                Puppet installed
+              </span>
+              <svg
+                class="rc-icon rc-icon-chevron-down rc-button-icon-svg"
+                height="16px"
+                style="width: 16px; height: 16px;"
+                viewBox="0 0 16 16"
+                width="16px"
+              >
+                <path
+                  d="M8,8.58578644 L10.2928932,6.29289322 C10.6834175,5.90236893 11.3165825,5.90236893 11.7071068,6.29289322 C12.0976311,6.68341751 12.0976311,7.31658249 11.7071068,7.70710678 L8.70710678,10.7071068 C8.31658249,11.0976311 7.68341751,11.0976311 7.29289322,10.7071068 L4.29289322,7.70710678 C3.90236893,7.31658249 3.90236893,6.68341751 4.29289322,6.29289322 C4.68341751,5.90236893 5.31658249,5.90236893 5.70710678,6.29289322 L8,8.58578644 Z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </button>
+            <div
+              class="rc-menu-list rc-option-menu-list-single"
+            >
+              <ul
+                aria-activedescendant="quick-filter-Puppet-installed-1-menu-True"
+                aria-labelledby="quick-filter-Puppet-installed-1"
+                aria-multiselectable="false"
+                class="rc-menu-list-inner"
+                id="quick-filter-Puppet-installed-1-menu"
+                role="listbox"
+                tabindex="0"
+              >
+                <li
+                  aria-selected="false"
+                  class="rc-menu-list-item rc-menu-list-item-focused"
+                  id="quick-filter-Puppet-installed-1-menu-True"
+                  role="option"
+                >
+                  <svg
+                    class="rc-icon rc-icon-pencil rc-menu-list-item-icon"
+                    height="16px"
+                    style="width: 16px; height: 16px;"
+                    viewBox="0 0 16 16"
+                    width="16px"
+                  >
+                    <path
+                      d="M11.7,0.3 C11.3,-0.1 10.7,-0.1 10.3,0.3 L0.3,10.3 C0.1,10.5 0,10.7 0,11 L0,15 C0,15.6 0.4,16 1,16 L5,16 C5.3,16 5.5,15.9 5.7,15.7 L15.7,5.7 C16.1,5.3 16.1,4.7 15.7,4.3 L11.7,0.3 Z M4.6,14 L2,14 L2,11.4 L8,5.4 L10.6,8 L4.6,14 Z M12,6.6 L9.4,4 L11,2.4 L13.6,5 L12,6.6 Z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                  <span
+                    class="rc-menu-list-item-content"
+                  >
+                    True
+                  </span>
+                </li>
+                <li
+                  aria-selected="false"
+                  class="rc-menu-list-item"
+                  id="quick-filter-Puppet-installed-1-menu-False"
+                  role="option"
+                >
+                  <svg
+                    class="rc-icon rc-icon-send rc-menu-list-item-icon"
+                    height="16px"
+                    style="width: 16px; height: 16px;"
+                    viewBox="0 0 16 16"
+                    width="16px"
+                  >
+                    <path
+                      d="M7.81128337,12.9555981 L5.50946779,15.6412947 C4.9050714,16.3464882 3.74956258,15.9186292 3.75018206,14.9898706 L3.75379426,9.57429205 C3.72082332,9.38437621 3.74270714,9.18525353 3.82314037,9.00278418 C3.89674186,8.8154288 4.0262993,8.65180555 4.19850626,8.53678387 L8.41350626,5.72147137 C8.87276761,5.41471829 9.49374501,5.53835068 9.80049809,5.99761203 C10.1072512,6.45687339 9.98361878,7.07785078 9.52435743,7.38460386 L6.44520115,9.44125562 L8.02562548,10.6264612 C8.13590952,10.6664419 8.24097536,10.7266474 8.33531397,10.8075017 C8.3949363,10.8586019 8.44706376,10.9151985 8.49158929,10.9759009 L11.534996,13.258239 L13.6658118,2.60517265 L3.01204092,6.86627598 L3.46318096,7.20448619 C3.9033145,7.53444507 3.99260329,8.15869441 3.66261306,8.59878612 C3.33262282,9.03887783 2.70831415,9.12815814 2.26818061,8.79819927 L0.398726887,7.39670908 C-0.223050287,6.9305758 -0.0952406306,5.96372578 0.626304886,5.675135 L14.6332009,0.0729090649 C15.3676141,-0.220828302 16.1349518,0.41739564 15.9798265,1.19294873 L13.1784473,15.1985136 C13.0347282,15.9170408 12.1903775,16.2396066 11.6041163,15.7999525 L7.81128337,12.9555981 Z M6.20782942,11.7531219 L5.75256914,11.4117092 L5.75198667,12.284987 L6.20782942,11.7531219 Z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                  <span
+                    class="rc-menu-list-item-content"
+                  >
+                    False
+                  </span>
+                </li>
+                <li
+                  aria-selected="false"
+                  class="rc-menu-list-item"
+                  id="quick-filter-Puppet-installed-1-menu-Unknown"
+                  role="option"
+                >
+                  <svg
+                    class="rc-icon rc-icon-link rc-menu-list-item-icon"
+                    height="16px"
+                    style="width: 16px; height: 16px;"
+                    viewBox="0 0 16 16"
+                    width="16px"
+                  >
+                    <path
+                      d="M4.5,16 C3.3,16 2.2,15.5 1.3,14.7 C-0.5,12.9 -0.5,10.1 1.3,8.3 L2,7.6 L3.4,9 L2.7,9.7 C1.7,10.7 1.7,12.3 2.7,13.3 C3.7,14.3 5.3,14.3 6.3,13.3 L9.3,10.3 C10.3,9.3 10.3,7.7 9.3,6.7 L8.6,6 L10,4.6 L10.7,5.3 C12.5,7.1 12.5,9.9 10.7,11.7 L7.7,14.7 C6.9,15.5 5.7,16 4.5,16 Z M6,11.4 L5.3,10.7 C3.5,8.9 3.5,6.1 5.3,4.3 L8.3,1.3 C9.2,0.4 10.3,0 11.5,0 C12.7,0 13.8,0.5 14.7,1.3 C16.5,3.1 16.5,5.9 14.7,7.7 L14,8.4 L12.6,7 L13.3,6.3 C14.3,5.3 14.3,3.7 13.3,2.7 C12.3,1.7 10.7,1.7 9.7,2.7 L6.7,5.7 C5.7,6.7 5.7,8.3 6.7,9.3 L7.4,10 L6,11.4 Z"
+                      fill-rule="evenodd"
+                    />
+                  </svg>
+                  <span
+                    class="rc-menu-list-item-content"
+                  >
+                    Unknown
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div
+            class="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter dg-quick-filter-empty"
+          >
+            <button
+              aria-controls="quick-filter-Empty-array-2-menu"
+              aria-expanded="false"
+              aria-haspopup="true"
+              aria-label="Empty filter"
+              class="rc-button rc-button-tertiary rc-button-bold rc-button-trailing-icon rc-button-full rc-button-select-target"
+              type="button"
+            >
+              <span
+                class="rc-button-content"
+              >
+                Empty filter
+              </span>
+              <svg
+                class="rc-icon rc-icon-chevron-down rc-button-icon-svg"
+                height="16px"
+                style="width: 16px; height: 16px;"
+                viewBox="0 0 16 16"
+                width="16px"
+              >
+                <path
+                  d="M8,8.58578644 L10.2928932,6.29289322 C10.6834175,5.90236893 11.3165825,5.90236893 11.7071068,6.29289322 C12.0976311,6.68341751 12.0976311,7.31658249 11.7071068,7.70710678 L8.70710678,10.7071068 C8.31658249,11.0976311 7.68341751,11.0976311 7.29289322,10.7071068 L4.29289322,7.70710678 C3.90236893,7.31658249 3.90236893,6.68341751 4.29289322,6.29289322 C4.68341751,5.90236893 5.31658249,5.90236893 5.70710678,6.29289322 L8,8.58578644 Z"
+                  fill-rule="evenodd"
+                />
+              </svg>
+            </button>
+            <div
+              class="rc-menu-list rc-option-menu-list-single"
+            >
+              <ul
+                aria-activedescendant="quick-filter-Empty-array-2-menu-"
+                aria-labelledby="quick-filter-Empty-array-2"
+                aria-multiselectable="false"
+                class="rc-menu-list-inner"
+                id="quick-filter-Empty-array-2-menu"
+                role="listbox"
+                tabindex="0"
+              >
+                <li
+                  aria-selected="false"
+                  class="rc-menu-list-item rc-menu-list-item-disabled rc-menu-list-item-focused"
+                  id="quick-filter-Empty-array-2-menu-"
+                  role="option"
+                >
+                  <span
+                    class="rc-menu-list-item-content"
+                  >
+                    test empty filter label
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="dg-quick-filter-container"
+    >
+      <div
+        class="dg-quick-filter-filters"
+      >
+        <div
+          class="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter"
+        >
+          <button
+            aria-controls="quick-filter-All-Operating-System-0-menu"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-label="All Operating System"
+            class="rc-button rc-button-tertiary rc-button-bold rc-button-trailing-icon rc-button-full rc-button-select-target"
+            type="button"
+          >
+            <span
+              class="rc-button-content"
+            >
+              All Operating System
+            </span>
+            <svg
+              class="rc-icon rc-icon-chevron-down rc-button-icon-svg"
+              height="16px"
+              style="width: 16px; height: 16px;"
+              viewBox="0 0 16 16"
+              width="16px"
+            >
+              <path
+                d="M8,8.58578644 L10.2928932,6.29289322 C10.6834175,5.90236893 11.3165825,5.90236893 11.7071068,6.29289322 C12.0976311,6.68341751 12.0976311,7.31658249 11.7071068,7.70710678 L8.70710678,10.7071068 C8.31658249,11.0976311 7.68341751,11.0976311 7.29289322,10.7071068 L4.29289322,7.70710678 C3.90236893,7.31658249 3.90236893,6.68341751 4.29289322,6.29289322 C4.68341751,5.90236893 5.31658249,5.90236893 5.70710678,6.29289322 L8,8.58578644 Z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <div
+            class="rc-menu-list rc-option-menu-list-single"
+          >
+            <ul
+              aria-activedescendant="quick-filter-All-Operating-System-0-menu-linux"
+              aria-labelledby="quick-filter-All-Operating-System-0"
+              aria-multiselectable="false"
+              class="rc-menu-list-inner"
+              id="quick-filter-All-Operating-System-0-menu"
+              role="listbox"
+              tabindex="0"
+            >
+              <li
+                aria-selected="false"
+                class="rc-menu-list-item rc-menu-list-item-focused"
+                id="quick-filter-All-Operating-System-0-menu-linux"
+                role="option"
+              >
+                <svg
+                  class="rc-icon rc-icon-pencil rc-menu-list-item-icon"
+                  height="16px"
+                  style="width: 16px; height: 16px;"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M11.7,0.3 C11.3,-0.1 10.7,-0.1 10.3,0.3 L0.3,10.3 C0.1,10.5 0,10.7 0,11 L0,15 C0,15.6 0.4,16 1,16 L5,16 C5.3,16 5.5,15.9 5.7,15.7 L15.7,5.7 C16.1,5.3 16.1,4.7 15.7,4.3 L11.7,0.3 Z M4.6,14 L2,14 L2,11.4 L8,5.4 L10.6,8 L4.6,14 Z M12,6.6 L9.4,4 L11,2.4 L13.6,5 L12,6.6 Z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+                <span
+                  class="rc-menu-list-item-content"
+                >
+                  linux
+                </span>
+              </li>
+              <li
+                aria-selected="false"
+                class="rc-menu-list-item"
+                id="quick-filter-All-Operating-System-0-menu-Windows"
+                role="option"
+              >
+                <svg
+                  class="rc-icon rc-icon-send rc-menu-list-item-icon"
+                  height="16px"
+                  style="width: 16px; height: 16px;"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M7.81128337,12.9555981 L5.50946779,15.6412947 C4.9050714,16.3464882 3.74956258,15.9186292 3.75018206,14.9898706 L3.75379426,9.57429205 C3.72082332,9.38437621 3.74270714,9.18525353 3.82314037,9.00278418 C3.89674186,8.8154288 4.0262993,8.65180555 4.19850626,8.53678387 L8.41350626,5.72147137 C8.87276761,5.41471829 9.49374501,5.53835068 9.80049809,5.99761203 C10.1072512,6.45687339 9.98361878,7.07785078 9.52435743,7.38460386 L6.44520115,9.44125562 L8.02562548,10.6264612 C8.13590952,10.6664419 8.24097536,10.7266474 8.33531397,10.8075017 C8.3949363,10.8586019 8.44706376,10.9151985 8.49158929,10.9759009 L11.534996,13.258239 L13.6658118,2.60517265 L3.01204092,6.86627598 L3.46318096,7.20448619 C3.9033145,7.53444507 3.99260329,8.15869441 3.66261306,8.59878612 C3.33262282,9.03887783 2.70831415,9.12815814 2.26818061,8.79819927 L0.398726887,7.39670908 C-0.223050287,6.9305758 -0.0952406306,5.96372578 0.626304886,5.675135 L14.6332009,0.0729090649 C15.3676141,-0.220828302 16.1349518,0.41739564 15.9798265,1.19294873 L13.1784473,15.1985136 C13.0347282,15.9170408 12.1903775,16.2396066 11.6041163,15.7999525 L7.81128337,12.9555981 Z M6.20782942,11.7531219 L5.75256914,11.4117092 L5.75198667,12.284987 L6.20782942,11.7531219 Z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+                <span
+                  class="rc-menu-list-item-content"
+                >
+                  Windows
+                </span>
+              </li>
+              <li
+                aria-selected="false"
+                class="rc-menu-list-item"
+                id="quick-filter-All-Operating-System-0-menu-MacOS"
+                role="option"
+              >
+                <svg
+                  class="rc-icon rc-icon-link rc-menu-list-item-icon"
+                  height="16px"
+                  style="width: 16px; height: 16px;"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M4.5,16 C3.3,16 2.2,15.5 1.3,14.7 C-0.5,12.9 -0.5,10.1 1.3,8.3 L2,7.6 L3.4,9 L2.7,9.7 C1.7,10.7 1.7,12.3 2.7,13.3 C3.7,14.3 5.3,14.3 6.3,13.3 L9.3,10.3 C10.3,9.3 10.3,7.7 9.3,6.7 L8.6,6 L10,4.6 L10.7,5.3 C12.5,7.1 12.5,9.9 10.7,11.7 L7.7,14.7 C6.9,15.5 5.7,16 4.5,16 Z M6,11.4 L5.3,10.7 C3.5,8.9 3.5,6.1 5.3,4.3 L8.3,1.3 C9.2,0.4 10.3,0 11.5,0 C12.7,0 13.8,0.5 14.7,1.3 C16.5,3.1 16.5,5.9 14.7,7.7 L14,8.4 L12.6,7 L13.3,6.3 C14.3,5.3 14.3,3.7 13.3,2.7 C12.3,1.7 10.7,1.7 9.7,2.7 L6.7,5.7 C5.7,6.7 5.7,8.3 6.7,9.3 L7.4,10 L6,11.4 Z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+                <span
+                  class="rc-menu-list-item-content"
+                >
+                  MacOS
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter"
+        >
+          <button
+            aria-controls="quick-filter-Puppet-installed-1-menu"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-label="Puppet installed"
+            class="rc-button rc-button-tertiary rc-button-bold rc-button-trailing-icon rc-button-full rc-button-select-target"
+            type="button"
+          >
+            <span
+              class="rc-button-content"
+            >
+              Puppet installed
+            </span>
+            <svg
+              class="rc-icon rc-icon-chevron-down rc-button-icon-svg"
+              height="16px"
+              style="width: 16px; height: 16px;"
+              viewBox="0 0 16 16"
+              width="16px"
+            >
+              <path
+                d="M8,8.58578644 L10.2928932,6.29289322 C10.6834175,5.90236893 11.3165825,5.90236893 11.7071068,6.29289322 C12.0976311,6.68341751 12.0976311,7.31658249 11.7071068,7.70710678 L8.70710678,10.7071068 C8.31658249,11.0976311 7.68341751,11.0976311 7.29289322,10.7071068 L4.29289322,7.70710678 C3.90236893,7.31658249 3.90236893,6.68341751 4.29289322,6.29289322 C4.68341751,5.90236893 5.31658249,5.90236893 5.70710678,6.29289322 L8,8.58578644 Z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <div
+            class="rc-menu-list rc-option-menu-list-single"
+          >
+            <ul
+              aria-activedescendant="quick-filter-Puppet-installed-1-menu-True"
+              aria-labelledby="quick-filter-Puppet-installed-1"
+              aria-multiselectable="false"
+              class="rc-menu-list-inner"
+              id="quick-filter-Puppet-installed-1-menu"
+              role="listbox"
+              tabindex="0"
+            >
+              <li
+                aria-selected="false"
+                class="rc-menu-list-item rc-menu-list-item-focused"
+                id="quick-filter-Puppet-installed-1-menu-True"
+                role="option"
+              >
+                <svg
+                  class="rc-icon rc-icon-pencil rc-menu-list-item-icon"
+                  height="16px"
+                  style="width: 16px; height: 16px;"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M11.7,0.3 C11.3,-0.1 10.7,-0.1 10.3,0.3 L0.3,10.3 C0.1,10.5 0,10.7 0,11 L0,15 C0,15.6 0.4,16 1,16 L5,16 C5.3,16 5.5,15.9 5.7,15.7 L15.7,5.7 C16.1,5.3 16.1,4.7 15.7,4.3 L11.7,0.3 Z M4.6,14 L2,14 L2,11.4 L8,5.4 L10.6,8 L4.6,14 Z M12,6.6 L9.4,4 L11,2.4 L13.6,5 L12,6.6 Z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+                <span
+                  class="rc-menu-list-item-content"
+                >
+                  True
+                </span>
+              </li>
+              <li
+                aria-selected="false"
+                class="rc-menu-list-item"
+                id="quick-filter-Puppet-installed-1-menu-False"
+                role="option"
+              >
+                <svg
+                  class="rc-icon rc-icon-send rc-menu-list-item-icon"
+                  height="16px"
+                  style="width: 16px; height: 16px;"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M7.81128337,12.9555981 L5.50946779,15.6412947 C4.9050714,16.3464882 3.74956258,15.9186292 3.75018206,14.9898706 L3.75379426,9.57429205 C3.72082332,9.38437621 3.74270714,9.18525353 3.82314037,9.00278418 C3.89674186,8.8154288 4.0262993,8.65180555 4.19850626,8.53678387 L8.41350626,5.72147137 C8.87276761,5.41471829 9.49374501,5.53835068 9.80049809,5.99761203 C10.1072512,6.45687339 9.98361878,7.07785078 9.52435743,7.38460386 L6.44520115,9.44125562 L8.02562548,10.6264612 C8.13590952,10.6664419 8.24097536,10.7266474 8.33531397,10.8075017 C8.3949363,10.8586019 8.44706376,10.9151985 8.49158929,10.9759009 L11.534996,13.258239 L13.6658118,2.60517265 L3.01204092,6.86627598 L3.46318096,7.20448619 C3.9033145,7.53444507 3.99260329,8.15869441 3.66261306,8.59878612 C3.33262282,9.03887783 2.70831415,9.12815814 2.26818061,8.79819927 L0.398726887,7.39670908 C-0.223050287,6.9305758 -0.0952406306,5.96372578 0.626304886,5.675135 L14.6332009,0.0729090649 C15.3676141,-0.220828302 16.1349518,0.41739564 15.9798265,1.19294873 L13.1784473,15.1985136 C13.0347282,15.9170408 12.1903775,16.2396066 11.6041163,15.7999525 L7.81128337,12.9555981 Z M6.20782942,11.7531219 L5.75256914,11.4117092 L5.75198667,12.284987 L6.20782942,11.7531219 Z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+                <span
+                  class="rc-menu-list-item-content"
+                >
+                  False
+                </span>
+              </li>
+              <li
+                aria-selected="false"
+                class="rc-menu-list-item"
+                id="quick-filter-Puppet-installed-1-menu-Unknown"
+                role="option"
+              >
+                <svg
+                  class="rc-icon rc-icon-link rc-menu-list-item-icon"
+                  height="16px"
+                  style="width: 16px; height: 16px;"
+                  viewBox="0 0 16 16"
+                  width="16px"
+                >
+                  <path
+                    d="M4.5,16 C3.3,16 2.2,15.5 1.3,14.7 C-0.5,12.9 -0.5,10.1 1.3,8.3 L2,7.6 L3.4,9 L2.7,9.7 C1.7,10.7 1.7,12.3 2.7,13.3 C3.7,14.3 5.3,14.3 6.3,13.3 L9.3,10.3 C10.3,9.3 10.3,7.7 9.3,6.7 L8.6,6 L10,4.6 L10.7,5.3 C12.5,7.1 12.5,9.9 10.7,11.7 L7.7,14.7 C6.9,15.5 5.7,16 4.5,16 Z M6,11.4 L5.3,10.7 C3.5,8.9 3.5,6.1 5.3,4.3 L8.3,1.3 C9.2,0.4 10.3,0 11.5,0 C12.7,0 13.8,0.5 14.7,1.3 C16.5,3.1 16.5,5.9 14.7,7.7 L14,8.4 L12.6,7 L13.3,6.3 C14.3,5.3 14.3,3.7 13.3,2.7 C12.3,1.7 10.7,1.7 9.7,2.7 L6.7,5.7 C5.7,6.7 5.7,8.3 6.7,9.3 L7.4,10 L6,11.4 Z"
+                    fill-rule="evenodd"
+                  />
+                </svg>
+                <span
+                  class="rc-menu-list-item-content"
+                >
+                  Unknown
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div
+          class="rc-button-select rc-button-select-closed dg-quick-filter-filter dg-quick-filter dg-quick-filter-empty"
+        >
+          <button
+            aria-controls="quick-filter-Empty-array-2-menu"
+            aria-expanded="false"
+            aria-haspopup="true"
+            aria-label="Empty filter"
+            class="rc-button rc-button-tertiary rc-button-bold rc-button-trailing-icon rc-button-full rc-button-select-target"
+            type="button"
+          >
+            <span
+              class="rc-button-content"
+            >
+              Empty filter
+            </span>
+            <svg
+              class="rc-icon rc-icon-chevron-down rc-button-icon-svg"
+              height="16px"
+              style="width: 16px; height: 16px;"
+              viewBox="0 0 16 16"
+              width="16px"
+            >
+              <path
+                d="M8,8.58578644 L10.2928932,6.29289322 C10.6834175,5.90236893 11.3165825,5.90236893 11.7071068,6.29289322 C12.0976311,6.68341751 12.0976311,7.31658249 11.7071068,7.70710678 L8.70710678,10.7071068 C8.31658249,11.0976311 7.68341751,11.0976311 7.29289322,10.7071068 L4.29289322,7.70710678 C3.90236893,7.31658249 3.90236893,6.68341751 4.29289322,6.29289322 C4.68341751,5.90236893 5.31658249,5.90236893 5.70710678,6.29289322 L8,8.58578644 Z"
+                fill-rule="evenodd"
+              />
+            </svg>
+          </button>
+          <div
+            class="rc-menu-list rc-option-menu-list-single"
+          >
+            <ul
+              aria-activedescendant="quick-filter-Empty-array-2-menu-"
+              aria-labelledby="quick-filter-Empty-array-2"
+              aria-multiselectable="false"
+              class="rc-menu-list-inner"
+              id="quick-filter-Empty-array-2-menu"
+              role="listbox"
+              tabindex="0"
+            >
+              <li
+                aria-selected="false"
+                class="rc-menu-list-item rc-menu-list-item-disabled rc-menu-list-item-focused"
+                id="quick-filter-Empty-array-2-menu-"
+                role="option"
+              >
+                <span
+                  class="rc-menu-list-item-content"
+                >
+                  test empty filter label
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
+`;

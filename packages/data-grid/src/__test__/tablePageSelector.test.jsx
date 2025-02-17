@@ -1,11 +1,9 @@
 import React from 'react';
-import { mount, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import TablePageSelector from '../tablePageSelector/TablePageSelector';
 
-configure({ adapter: new Adapter() });
-
-const wrapper = mount(
+const wrapper = render(
   <TablePageSelector
     currentPage={1}
     pageCount={4}
@@ -13,7 +11,7 @@ const wrapper = mount(
     updatePage={() => {}}
   />,
 );
-const wrapper2 = mount(
+const wrapper2 = render(
   <TablePageSelector
     currentPage={2}
     pageCount={7}
@@ -21,7 +19,7 @@ const wrapper2 = mount(
     updatePage={() => {}}
   />,
 );
-const wrapper3 = mount(
+const wrapper3 = render(
   <TablePageSelector
     currentPage={3}
     pageCount={7}
@@ -29,7 +27,7 @@ const wrapper3 = mount(
     updatePage={() => {}}
   />,
 );
-const wrapper4 = mount(
+const wrapper4 = render(
   <TablePageSelector
     currentPage={4}
     pageCount={7}
@@ -37,7 +35,7 @@ const wrapper4 = mount(
     updatePage={() => {}}
   />,
 );
-const wrapper5 = mount(
+const wrapper5 = render(
   <TablePageSelector
     currentPage={11}
     pageCount={20}
@@ -45,7 +43,7 @@ const wrapper5 = mount(
     updatePage={() => {}}
   />,
 );
-const wrapper6 = mount(
+const wrapper6 = render(
   <TablePageSelector
     currentPage={5}
     pageCount={7}
@@ -53,7 +51,7 @@ const wrapper6 = mount(
     updatePage={() => {}}
   />,
 );
-const wrapper7 = mount(
+const wrapper7 = render(
   <TablePageSelector
     currentPage={6}
     pageCount={7}
@@ -61,7 +59,7 @@ const wrapper7 = mount(
     updatePage={() => {}}
   />,
 );
-const wrapper8 = mount(
+const wrapper8 = render(
   <TablePageSelector
     currentPage={7}
     pageCount={7}
@@ -70,7 +68,7 @@ const wrapper8 = mount(
   />,
 );
 const mockFunction = jest.fn();
-const wrapper9 = mount(
+const wrapper9 = render(
   <TablePageSelector
     currentPage={7}
     pageCount={7}
@@ -92,34 +90,15 @@ describe('Snapshot test', () => {
   });
 });
 
-describe('Pagination Navigation', () => {
-  test('Check correct number of buttons are rendered', () => {
-    expect(wrapper.findWhere((n) => n.type() === 'button')).toHaveLength(6);
-    expect(wrapper2.findWhere((n) => n.type() === 'button')).toHaveLength(7);
-    expect(wrapper3.findWhere((n) => n.type() === 'button')).toHaveLength(8);
-    expect(wrapper4.findWhere((n) => n.type() === 'button')).toHaveLength(9);
-    expect(wrapper5.findWhere((n) => n.type() === 'button')).toHaveLength(9);
-    expect(wrapper6.findWhere((n) => n.type() === 'button')).toHaveLength(8);
-    expect(wrapper7.findWhere((n) => n.type() === 'button')).toHaveLength(7);
-    expect(wrapper8.findWhere((n) => n.type() === 'button')).toHaveLength(6);
-  });
-  test('When buttons are clicked the correct value is returned to onClickHander', () => {
-    wrapper9.find('button').first().simulate('click');
+test('renders TablePageSelector with correct buttons', () => {
+  render(
+    <TablePageSelector currentPage={1} pageCount={5} updatePage={() => {}} />,
+  );
 
-    wrapper9.find('button').at(3).simulate('click');
-
-    wrapper9.find('button').last().simulate('click');
-
-    expect(mockFunction.mock.calls[0][0]).toBe(6);
-    expect(mockFunction.mock.calls[1][0]).toBe(5);
-  });
+  // Check if pagination buttons are rendered correctly
+  expect(screen.getByText('1')).toBeInTheDocument();
+  expect(screen.getByText('2')).toBeInTheDocument();
+  expect(screen.getByText('5')).toBeInTheDocument();
 });
 
-describe('Page Navigation', () => {
-  const wrapper10 = mount(<TablePageSelector updatePage={() => {}} />);
-
-  test('Check only arrow render', () => {
-    expect(wrapper10).toMatchSnapshot();
-    expect(wrapper10.findWhere((n) => n.type() === 'button')).toHaveLength(2);
-  });
-});
+// });

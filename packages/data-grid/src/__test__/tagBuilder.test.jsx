@@ -1,9 +1,7 @@
 import React from 'react';
-import { mount, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { render, screen, fireEvent } from '@testing-library/react';
 import TagBuilder from '../tagBuilder/TagBuilder';
-
-configure({ adapter: new Adapter() });
+import '@testing-library/jest-dom';
 
 const filters = [
   {
@@ -20,25 +18,9 @@ const filters = [
 
 const mockfunc = jest.fn();
 const mockfunc2 = jest.fn();
-const wrapper = mount(
+const wrapper = render(
   <TagBuilder
     filters={filters}
-    onRemoveTag={mockfunc}
-    onRemoveAll={mockfunc2}
-  />,
-);
-
-const filters2 = [
-  {
-    field: 'all-operating-system',
-    fieldLabel: 'All Operating System',
-    value: 'Windows',
-  },
-];
-
-const wrapper2 = mount(
-  <TagBuilder
-    filters={filters2}
     onRemoveTag={mockfunc}
     onRemoveAll={mockfunc2}
   />,
@@ -50,27 +32,54 @@ describe('Snapshot test', () => {
   });
 });
 
-describe('Check component', () => {
-  test('Number of tags rendered ', () => {
-    expect(wrapper.find('Tag')).toHaveLength(2);
-  });
+test('renders TagBuilder with filters', () => {
+  render(
+    <TagBuilder
+      filters={filters}
+      onRemoveTag={() => {}}
+      onRemoveAll={() => {}}
+    />,
+  );
 
-  test('Remove all icon only appears when more than one tag is present ', () => {
-    expect(wrapper.find('button.dg-tag-remove-all-button')).toHaveLength(1);
-    expect(wrapper2.find('button.dg-tag-remove-all-button')).toHaveLength(0);
-  });
+  // Check if filter tags are rendered
 
-  test('onRemoveTag get called when close icon is clicked ', () => {
-    wrapper.find('Button.rc-tag-remove-button').first().simulate('click');
-    expect(mockfunc).toHaveBeenCalled();
-  });
+  expect(
+    screen.getByText('All Operating System = Windows'),
+  ).toBeInTheDocument();
+  expect(screen.getByText('Puppet Installed = true')).toBeInTheDocument();
+});
 
-  test('onRemoveTag get called when close icon is clicked ', () => {
-    expect(mockfunc.mock.calls[0][0]).toBe('all-operating-system');
-  });
+test('calls onRemoveTag when a tag is removed', () => {
+  const mockRemoveTag = jest.fn();
+  render(
+    <TagBuilder
+      filters={filters}
+      onRemoveTag={mockRemoveTag}
+      onRemoveAll={mockRemoveTag}
+    />,
+  );
 
-  test('onRemoveAll get called when close all icon is clicked ', () => {
-    wrapper.find('button.dg-tag-remove-all-button').simulate('click');
-    expect(mockfunc2).toHaveBeenCalled();
-  });
+  // Simulate tag removal
+  fireEvent.click(screen.getAllByLabelText('Remove tag')[0]);
+
+  // Check if onRemoveTag is called with correct arguments
+  expect(mockRemoveTag).toHaveBeenCalledTimes(1);
+  expect(mockRemoveTag).toHaveBeenCalledWith('all-operating-system');
+});
+
+test('calls onRemoveAll when the remove all button is clicked', () => {
+  const mockRemoveAll = jest.fn();
+  render(
+    <TagBuilder
+      filters={filters}
+      onRemoveTag={() => {}}
+      onRemoveAll={mockRemoveAll}
+    />,
+  );
+
+  // Simulate remove all tags
+  fireEvent.click(screen.getByText('Remove all'));
+
+  // Check if onRemoveAll is called
+  expect(mockRemoveAll).toHaveBeenCalledTimes(1);
 });

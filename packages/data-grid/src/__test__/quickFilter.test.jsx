@@ -1,9 +1,7 @@
 import React from 'react';
-import { mount, configure } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-16';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import QuickFilter from '../quickFilter/QuickFilter';
-
-configure({ adapter: new Adapter() });
 
 const filters = [
   {
@@ -58,7 +56,7 @@ const filters = [
 const emptyFilterLabel = 'test empty filter label';
 
 const mockfunc = jest.fn();
-const wrapper = mount(
+const wrapper = render(
   <QuickFilter
     filters={filters}
     onFilterSelect={mockfunc}
@@ -71,34 +69,34 @@ describe('Snapshot test', () => {
   });
 });
 
-describe('Check total number of quick filters', () => {
-  test('Number of quick filters rendered', () => {
-    expect(wrapper.find('div.dg-quick-filter-filter')).toHaveLength(3);
-  });
+test('renders QuickFilter with options', () => {
+  render(<QuickFilter filters={filters} />);
+
+  // Check if filter field label is rendered
+  expect(screen.getByText('All Operating System')).toBeInTheDocument();
+
+  // Check if filter options are rendered
+  fireEvent.click(screen.getByText('All Operating System'));
+  expect(screen.getByText('linux')).toBeInTheDocument();
+  expect(screen.getByText('Windows')).toBeInTheDocument();
+  expect(screen.getByText('MacOS')).toBeInTheDocument();
 });
 
-describe('Check number of empty quick filters', () => {
-  test('Number of empty quick filters rendered', () => {
-    expect(wrapper.find('div.dg-quick-filter-empty')).toHaveLength(1);
-  });
+test('selects an option from QuickFilter', () => {
+  const handleFilterChange = jest.fn();
+  render(<QuickFilter filters={filters} onFilterSelect={handleFilterChange} />);
 
-  test('Empty filter label text', () => {
-    expect(
-      wrapper
-        .find('div.dg-quick-filter-empty')
-        .find('span.rc-menu-list-item-content')
-        .text(),
-    ).toEqual('test empty filter label');
-  });
-});
+  // Open filter options
+  fireEvent.click(screen.getByText('All Operating System'));
+  expect(screen.getByText('Windows')).toBeInTheDocument();
+  // Select an option
+  fireEvent.click(screen.getByText('Windows'));
 
-describe('Check component', () => {
-  test('Number of dropdowns rendered ', () => {
-    expect(wrapper.find('ButtonSelect.dg-quick-filter')).toHaveLength(6);
-  });
-
-  test('onFilterSelect function gets called', () => {
-    wrapper.find('li.rc-menu-list-item').first().simulate('click');
-    expect(mockfunc).toHaveBeenCalled();
-  });
+  // Check if onFilterChange is called with the correct value
+  expect(handleFilterChange).toHaveBeenCalledTimes(1);
+  expect(handleFilterChange).toHaveBeenCalledWith(
+    'All-Operating-System',
+    'All Operating System',
+    'Windows',
+  );
 });

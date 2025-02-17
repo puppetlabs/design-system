@@ -1,257 +1,262 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Snapshot test Check component matches previous HTML snapshot 1`] = `
-<TagBuilder
-  filters={
-    [
-      {
-        "field": "all-operating-system",
-        "fieldLabel": "All Operating System",
-        "value": "Windows",
-      },
-      {
-        "field": "puppet-installed",
-        "fieldLabel": "Puppet Installed",
-        "value": "true",
-      },
-    ]
-  }
-  onRemoveAll={[MockFunction]}
-  onRemoveTag={[MockFunction]}
->
-  <div
-    className="dg-tag-builder-container"
-  >
-    <div
-      className="dg-tag-container"
-    >
-      <Tag
-        className="dg-filter-tag dg-filter-tag-0"
-        emphasis="bold"
-        hideRemoveButton={false}
-        key="dg-filter-tag-1"
-        label="All Operating System = Windows"
-        onClick={[Function]}
-        type="primary"
+{
+  "asFragment": [Function],
+  "baseElement": <body>
+    <div>
+      <div
+        class="dg-tag-builder-container"
       >
         <div
-          className="rc-tag rc-tag-primary rc-tag-bold dg-filter-tag dg-filter-tag-0"
+          class="dg-tag-container"
         >
           <div
-            className="rc-tag-label-background rc-tag-border"
+            class="rc-tag rc-tag-primary rc-tag-bold dg-filter-tag dg-filter-tag-0"
           >
-            <Text
-              as="div"
-              className="rc-tag-text"
-              color={null}
-              size="medium"
-              style={{}}
+            <div
+              class="rc-tag-label-background rc-tag-border"
             >
               <div
-                className="rc-text rc-text-size-medium rc-tag-text"
-                style={{}}
+                class="rc-text rc-text-size-medium rc-tag-text"
               >
                 All Operating System = Windows
               </div>
-            </Text>
-          </div>
-          <Button
-            aria-label="Remove tag"
-            as="button"
-            className="rc-tag-remove-button"
-            disabled={false}
-            forwardRefAs="ref"
-            icon="close"
-            iconSize="small"
-            innerFocus={false}
-            loading={false}
-            onClick={[Function]}
-            trailingIcon={null}
-            type="primary"
-            weight="bold"
-          >
+            </div>
             <button
               aria-label="Remove tag"
-              className="rc-button rc-button-primary rc-button-bold rc-button-icon rc-button-empty rc-tag-remove-button"
-              disabled={false}
-              onClick={[Function]}
+              class="rc-button rc-button-primary rc-button-bold rc-button-icon rc-button-empty rc-tag-remove-button"
               type="button"
             >
-              <Icon
-                className="rc-button-icon-svg"
-                size="small"
-                style={{}}
-                svg={null}
-                type="close"
-                viewBox={null}
+              <svg
+                class="rc-icon rc-icon-close rc-button-icon-svg"
+                height="12px"
+                style="width: 12px; height: 12px;"
+                viewBox="0 0 8 8"
+                width="12px"
               >
-                <svg
-                  className="rc-icon rc-icon-close rc-button-icon-svg"
-                  height="12px"
-                  style={
-                    {
-                      "height": "12px",
-                      "width": "12px",
-                    }
-                  }
-                  viewBox="0 0 8 8"
-                  width="12px"
-                >
-                  <polygon
-                    fillRule="evenodd"
-                    points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
-                  />
-                </svg>
-              </Icon>
+                <polygon
+                  fill-rule="evenodd"
+                  points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
+                />
+              </svg>
               <span
-                className="rc-button-content"
+                class="rc-button-content"
               />
             </button>
-          </Button>
-        </div>
-      </Tag>
-      <Tag
-        className="dg-filter-tag dg-filter-tag-1"
-        emphasis="bold"
-        hideRemoveButton={false}
-        key="dg-filter-tag-2"
-        label="Puppet Installed = true"
-        onClick={[Function]}
-        type="primary"
-      >
-        <div
-          className="rc-tag rc-tag-primary rc-tag-bold dg-filter-tag dg-filter-tag-1"
-        >
+          </div>
           <div
-            className="rc-tag-label-background rc-tag-border"
+            class="rc-tag rc-tag-primary rc-tag-bold dg-filter-tag dg-filter-tag-1"
           >
-            <Text
-              as="div"
-              className="rc-tag-text"
-              color={null}
-              size="medium"
-              style={{}}
+            <div
+              class="rc-tag-label-background rc-tag-border"
             >
               <div
-                className="rc-text rc-text-size-medium rc-tag-text"
-                style={{}}
+                class="rc-text rc-text-size-medium rc-tag-text"
               >
                 Puppet Installed = true
               </div>
-            </Text>
-          </div>
-          <Button
-            aria-label="Remove tag"
-            as="button"
-            className="rc-tag-remove-button"
-            disabled={false}
-            forwardRefAs="ref"
-            icon="close"
-            iconSize="small"
-            innerFocus={false}
-            loading={false}
-            onClick={[Function]}
-            trailingIcon={null}
-            type="primary"
-            weight="bold"
-          >
+            </div>
             <button
               aria-label="Remove tag"
-              className="rc-button rc-button-primary rc-button-bold rc-button-icon rc-button-empty rc-tag-remove-button"
-              disabled={false}
-              onClick={[Function]}
+              class="rc-button rc-button-primary rc-button-bold rc-button-icon rc-button-empty rc-tag-remove-button"
               type="button"
             >
-              <Icon
-                className="rc-button-icon-svg"
-                size="small"
-                style={{}}
-                svg={null}
-                type="close"
-                viewBox={null}
+              <svg
+                class="rc-icon rc-icon-close rc-button-icon-svg"
+                height="12px"
+                style="width: 12px; height: 12px;"
+                viewBox="0 0 8 8"
+                width="12px"
               >
-                <svg
-                  className="rc-icon rc-icon-close rc-button-icon-svg"
-                  height="12px"
-                  style={
-                    {
-                      "height": "12px",
-                      "width": "12px",
-                    }
-                  }
-                  viewBox="0 0 8 8"
-                  width="12px"
-                >
-                  <polygon
-                    fillRule="evenodd"
-                    points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
-                  />
-                </svg>
-              </Icon>
+                <polygon
+                  fill-rule="evenodd"
+                  points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
+                />
+              </svg>
               <span
-                className="rc-button-content"
+                class="rc-button-content"
               />
             </button>
-          </Button>
-        </div>
-      </Tag>
-      <Button
-        as="button"
-        className="dg-tag-remove-all-button"
-        disabled={false}
-        forwardRefAs="ref"
-        icon="close"
-        iconSize="medium"
-        innerFocus={false}
-        loading={false}
-        onClick={[Function]}
-        onKeyDown={[Function]}
-        trailingIcon={null}
-        type="text"
-        weight="bold"
-      >
-        <button
-          aria-label="Remove all"
-          className="rc-button rc-button-text rc-button-bold rc-button-icon rc-button-full dg-tag-remove-all-button"
-          disabled={false}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          type="button"
-        >
-          <Icon
-            className="rc-button-icon-svg"
-            size="small"
-            style={{}}
-            svg={null}
-            type="close"
-            viewBox={null}
+          </div>
+          <button
+            aria-label="Remove all"
+            class="rc-button rc-button-text rc-button-bold rc-button-icon rc-button-full dg-tag-remove-all-button"
+            type="button"
           >
             <svg
-              className="rc-icon rc-icon-close rc-button-icon-svg"
+              class="rc-icon rc-icon-close rc-button-icon-svg"
               height="12px"
-              style={
-                {
-                  "height": "12px",
-                  "width": "12px",
-                }
-              }
+              style="width: 12px; height: 12px;"
               viewBox="0 0 8 8"
               width="12px"
             >
               <polygon
-                fillRule="evenodd"
+                fill-rule="evenodd"
                 points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
               />
             </svg>
-          </Icon>
+            <span
+              class="rc-button-content"
+            >
+              Remove all
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>,
+  "container": <div>
+    <div
+      class="dg-tag-builder-container"
+    >
+      <div
+        class="dg-tag-container"
+      >
+        <div
+          class="rc-tag rc-tag-primary rc-tag-bold dg-filter-tag dg-filter-tag-0"
+        >
+          <div
+            class="rc-tag-label-background rc-tag-border"
+          >
+            <div
+              class="rc-text rc-text-size-medium rc-tag-text"
+            >
+              All Operating System = Windows
+            </div>
+          </div>
+          <button
+            aria-label="Remove tag"
+            class="rc-button rc-button-primary rc-button-bold rc-button-icon rc-button-empty rc-tag-remove-button"
+            type="button"
+          >
+            <svg
+              class="rc-icon rc-icon-close rc-button-icon-svg"
+              height="12px"
+              style="width: 12px; height: 12px;"
+              viewBox="0 0 8 8"
+              width="12px"
+            >
+              <polygon
+                fill-rule="evenodd"
+                points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
+              />
+            </svg>
+            <span
+              class="rc-button-content"
+            />
+          </button>
+        </div>
+        <div
+          class="rc-tag rc-tag-primary rc-tag-bold dg-filter-tag dg-filter-tag-1"
+        >
+          <div
+            class="rc-tag-label-background rc-tag-border"
+          >
+            <div
+              class="rc-text rc-text-size-medium rc-tag-text"
+            >
+              Puppet Installed = true
+            </div>
+          </div>
+          <button
+            aria-label="Remove tag"
+            class="rc-button rc-button-primary rc-button-bold rc-button-icon rc-button-empty rc-tag-remove-button"
+            type="button"
+          >
+            <svg
+              class="rc-icon rc-icon-close rc-button-icon-svg"
+              height="12px"
+              style="width: 12px; height: 12px;"
+              viewBox="0 0 8 8"
+              width="12px"
+            >
+              <polygon
+                fill-rule="evenodd"
+                points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
+              />
+            </svg>
+            <span
+              class="rc-button-content"
+            />
+          </button>
+        </div>
+        <button
+          aria-label="Remove all"
+          class="rc-button rc-button-text rc-button-bold rc-button-icon rc-button-full dg-tag-remove-all-button"
+          type="button"
+        >
+          <svg
+            class="rc-icon rc-icon-close rc-button-icon-svg"
+            height="12px"
+            style="width: 12px; height: 12px;"
+            viewBox="0 0 8 8"
+            width="12px"
+          >
+            <polygon
+              fill-rule="evenodd"
+              points="6.1 .5 4 2.6 1.9 .5 .5 1.9 2.6 4 .5 6.1 1.9 7.5 4 5.4 6.1 7.5 7.5 6.1 5.4 4 7.5 1.9"
+            />
+          </svg>
           <span
-            className="rc-button-content"
+            class="rc-button-content"
           >
             Remove all
           </span>
         </button>
-      </Button>
+      </div>
     </div>
-  </div>
-</TagBuilder>
+  </div>,
+  "debug": [Function],
+  "findAllByAltText": [Function],
+  "findAllByDisplayValue": [Function],
+  "findAllByLabelText": [Function],
+  "findAllByPlaceholderText": [Function],
+  "findAllByRole": [Function],
+  "findAllByTestId": [Function],
+  "findAllByText": [Function],
+  "findAllByTitle": [Function],
+  "findByAltText": [Function],
+  "findByDisplayValue": [Function],
+  "findByLabelText": [Function],
+  "findByPlaceholderText": [Function],
+  "findByRole": [Function],
+  "findByTestId": [Function],
+  "findByText": [Function],
+  "findByTitle": [Function],
+  "getAllByAltText": [Function],
+  "getAllByDisplayValue": [Function],
+  "getAllByLabelText": [Function],
+  "getAllByPlaceholderText": [Function],
+  "getAllByRole": [Function],
+  "getAllByTestId": [Function],
+  "getAllByText": [Function],
+  "getAllByTitle": [Function],
+  "getByAltText": [Function],
+  "getByDisplayValue": [Function],
+  "getByLabelText": [Function],
+  "getByPlaceholderText": [Function],
+  "getByRole": [Function],
+  "getByTestId": [Function],
+  "getByText": [Function],
+  "getByTitle": [Function],
+  "queryAllByAltText": [Function],
+  "queryAllByDisplayValue": [Function],
+  "queryAllByLabelText": [Function],
+  "queryAllByPlaceholderText": [Function],
+  "queryAllByRole": [Function],
+  "queryAllByTestId": [Function],
+  "queryAllByText": [Function],
+  "queryAllByTitle": [Function],
+  "queryByAltText": [Function],
+  "queryByDisplayValue": [Function],
+  "queryByLabelText": [Function],
+  "queryByPlaceholderText": [Function],
+  "queryByRole": [Function],
+  "queryByTestId": [Function],
+  "queryByText": [Function],
+  "queryByTitle": [Function],
+  "rerender": [Function],
+  "unmount": [Function],
+}
 `;
