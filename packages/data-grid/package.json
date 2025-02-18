@@ -14,7 +14,9 @@
     "test:watch": "jest --watch",
     "test:update": "jest --updateSnapshot",
     "format": "eslint --fix src/**/*.{js,jsx} && prettier --write {src}/**/*.{graphql,json,css,md} .babelrc .prettierrc package.json README.md CONTRIBUTING.md",
-    "lint": "eslint src/**/*.{js,jsx} postcss.config.js",
+    "lint": "eslint src/**/*.{js,jsx} postcss.config.js && stylelint src/**/*.{css,scss}",
+    "lint:style": "stylelint src/**/*.{css,scss}",
+    "lint:style:fix": "stylelint src/**/*.{css,scss} --fix",
     "prepare": "npm run build"
   },
   "publishConfig": {
@@ -74,6 +76,9 @@
     "sass": "^1.79.4",
     "sass-loader": "^16.0.2",
     "style-loader": "^4.0.0",
+    "stylelint": "^16.14.1",
+    "stylelint-config-standard": "^37.0.0",
+    "stylelint-prettier": "^5.0.3",
     "url-search-params": "^1.1.0",
     "webpack": "^5.95.0",
     "webpack-cli": "^5.1.4",

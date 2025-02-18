@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import TablePageSelector from '../tablePageSelector/TablePageSelector';
 
@@ -65,15 +65,6 @@ const wrapper8 = render(
     pageCount={7}
     delta={1}
     updatePage={() => {}}
-  />,
-);
-const mockFunction = jest.fn();
-const wrapper9 = render(
-  <TablePageSelector
-    currentPage={7}
-    pageCount={7}
-    delta={2}
-    updatePage={mockFunction}
   />,
 );
 
