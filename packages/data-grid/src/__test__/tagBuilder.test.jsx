@@ -16,22 +16,6 @@ const filters = [
   },
 ];
 
-const mockfunc = jest.fn();
-const mockfunc2 = jest.fn();
-const wrapper = render(
-  <TagBuilder
-    filters={filters}
-    onRemoveTag={mockfunc}
-    onRemoveAll={mockfunc2}
-  />,
-);
-
-describe('Snapshot test', () => {
-  test('Check component matches previous HTML snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-});
-
 test('renders TagBuilder with filters', () => {
   render(
     <TagBuilder

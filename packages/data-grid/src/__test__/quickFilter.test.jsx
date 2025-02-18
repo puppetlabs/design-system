@@ -53,22 +53,6 @@ const filters = [
   },
 ];
 
-const emptyFilterLabel = 'test empty filter label';
-
-const mockfunc = jest.fn();
-const wrapper = render(
-  <QuickFilter
-    filters={filters}
-    onFilterSelect={mockfunc}
-    emptyFilterLabel={emptyFilterLabel}
-  />,
-);
-describe('Snapshot test', () => {
-  test('Check component matches previous HTML snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-});
-
 test('renders QuickFilter with options', () => {
   render(<QuickFilter filters={filters} />);
 

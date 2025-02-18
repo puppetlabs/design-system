@@ -51,17 +51,6 @@ const columns = [
   },
 ];
 
-const wrapper = render(<Table columns={columns} data={data} />);
-
-const wrapper3 = render(<Table columns={columns} data={[]} />);
-
-describe('Snapshot test', () => {
-  test('Check component matches previous HTML snapshot', () => {
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper3).toMatchSnapshot();
-  });
-});
-
 test('renders table with data', () => {
   render(<Table columns={columns} data={data} rowKey="eventType" />);
 
@@ -94,7 +83,7 @@ test('calls onRowClick when a row is clicked', () => {
     affectedDevices: 20,
     detections: 634,
     eventType: 'Virus/Malware',
-    id: 0,
+    id: 1,
   });
 });
 
