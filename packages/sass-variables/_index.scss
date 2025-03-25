@@ -1,6 +1,6 @@
-@import './palettes';
-@import './common';
-@import './fonts';
-@import './typography';
-@import './responsive';
-@import './animations';
+@forward './palettes';
+@forward './common';
+@forward './fonts';
+@forward './typography';
+@forward './responsive';
+@forward './animations';

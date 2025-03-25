@@ -1,3 +1,7 @@
+## sass-variables 1.4.5 (2024-06-24)
+
+- Stop using deprecated @import statements in sass. (by [@Lukeaber](https://github.com/Lukeaber) [#695](https://github.com/puppetlabs/design-system/pull/695))
+
 ## uikit1.0.18 (2024-06-24)
 
 - Upgrade dependencies for improved performance and compatibility. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@comfucios](https://github.com/comfucios) in [#676](https://github.com/puppetlabs/design-system/pull/676))

@@ -1,4 +1,4 @@
-# Puppet  Sass Variables
+# Puppet Sass Variables
 
 Puppet Sass Variables is a set of public Sass variables corresponding to Puppet Design System color palettes, typography, borders, and spacing.
 
@@ -13,7 +13,7 @@ npm install @puppet/sass-variables
 Reference the public variables from your Sass files:
 
 ```scss
-@import '~@puppet/sass-variables/index';
+@use '~@puppet/sass-variables' as *;
 
 .my-text {
   color: $puppet-amber;
@@ -21,7 +21,7 @@ Reference the public variables from your Sass files:
 ```
 
 ```scss
-@import '~@puppet/sass-variables/index';
+@use '~@puppet/sass-variables' as *;
 
 .my-class {
   @include puppet-type-body(subtle);
@@ -31,4 +31,4 @@ Reference the public variables from your Sass files:
 }
 ```
 
-See the Sass files for a complete list of common variables and mixins (e.g. [_common.scss](_common.scss), [_typography.scss](_typography.scss), and color [_palettes.scss](_palettes.scss) )
+See the Sass files for a complete list of common variables and mixins (e.g. [\_common.scss](_common.scss), [\_typography.scss](_typography.scss), and color [\_palettes.scss](_palettes.scss) )
