@@ -1,4 +1,4 @@
-@import '~@puppet/sass-variables/index';
+@use '~@puppet/sass-variables' as *;
 
 .pds-filter {
   margin-bottom: 4 * $puppet-common-spacing-base;

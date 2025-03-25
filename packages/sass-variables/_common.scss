@@ -1,3 +1,5 @@
+@use "palettes";
+
 // This file contains variables considered to be part of the outward-facing API
 // of this library, to be used by consuming apps for one-off components that
 // still need to be consistent with our overall patterns. This variable set should be
@@ -12,24 +14,24 @@ $puppet-common-border-radius: 4px !default;
 $puppet-common-spacing-base: 4px;
 
 // Often used border dividing content
-$puppet-common-border: 1px solid $puppet-n400 !default;
-$puppet-common-border-subtle: 1px solid $puppet-n300 !default;
+$puppet-common-border: 1px solid palettes.$puppet-n400 !default;
+$puppet-common-border-subtle: 1px solid palettes.$puppet-n300 !default;
 
 // Often used content backgrounds
-$puppet-common-bg: $puppet-white !default;
-$puppet-common-bg-subtle: $puppet-n300 !default;
+$puppet-common-bg: palettes.$puppet-white !default;
+$puppet-common-bg-subtle: palettes.$puppet-n300 !default;
 
 // Common focused element outline, implemented as a box shadow
-$puppet-common-focus-outline: 0 0 0 2px $puppet-b300 !default;
+$puppet-common-focus-outline: 0 0 0 2px palettes.$puppet-b300 !default;
 $puppet-common-focus-outline-inset: inset $puppet-common-focus-outline !default;
 
 $puppet-common-disabled-opacity: 0.4;
 
-$puppet-common-elevation-50: 1px 1px 2px rgba($puppet-black, 0.08);
-$puppet-common-elevation-100: 1px 1px 2px rgba($puppet-black, 0.16);
-$puppet-common-elevation-150: 2px 2px 4px rgba($puppet-black, 0.16);
-$puppet-common-elevation-200: 2px 2px 8px rgba($puppet-black, 0.16);
-$puppet-common-elevation-400: 8px 8px 16px rgba($puppet-black, 0.16);
-$puppet-common-elevation-800: 8px 8px 32px rgba($puppet-black, 0.16);
+$puppet-common-elevation-50: 1px 1px 2px rgba(palettes.$puppet-black, 0.08);
+$puppet-common-elevation-100: 1px 1px 2px rgba(palettes.$puppet-black, 0.16);
+$puppet-common-elevation-150: 2px 2px 4px rgba(palettes.$puppet-black, 0.16);
+$puppet-common-elevation-200: 2px 2px 8px rgba(palettes.$puppet-black, 0.16);
+$puppet-common-elevation-400: 8px 8px 16px rgba(palettes.$puppet-black, 0.16);
+$puppet-common-elevation-800: 8px 8px 32px rgba(palettes.$puppet-black, 0.16);
 
 $puppet-common-transition-duration: 0.6s;
