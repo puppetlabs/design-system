@@ -3,73 +3,73 @@
 
 $puppet-button-primary: (
   base: (
-    background: $puppet-b500,
-    border: $puppet-b500,
-    color: $puppet-white,
+    background: $Brand__Background__1__Rest,
+    border: $Brand__Background__1__Rest,
+    color: $Neutral__Foreground__OnBrand__Rest,
   ),
   hover: (
-    background: $puppet-b400,
-    border: $puppet-b400,
-    color: $puppet-white,
+    background: $Brand__Background__1__Hover,
+    border: $Brand__Background__1__Hover,
+    color: $Neutral__Foreground__OnBrand__Rest,
   ),
   active: (
-    background: $puppet-b600,
-    border: $puppet-b600,
-    color: $puppet-white,
+    background: $Brand__Background__1__Pressed,
+    border: $Brand__Background__1__Pressed,
+    color: $Neutral__Foreground__OnBrand__Rest,
   ),
 );
 
 $puppet-button-secondary: (
   base: (
-    background: $puppet-white,
-    border: $puppet-n400,
-    color: $puppet-b500,
+    background: $Brand__Background__2__Rest,
+    border: $Brand__Background__2__Rest,
+    color: $Brand__Foreground__2__Rest,
   ),
   hover: (
-    background: $puppet-white,
-    border: $puppet-n400,
-    color: $puppet-b400,
+    background: $Brand__Background__2__Hover,
+    border: $Brand__Background__2__Hover,
+    color: $Brand__Foreground__2__Hover,
   ),
   active: (
-    background: $puppet-white,
-    border: $puppet-n400,
-    color: $puppet-b600,
+    background: $Brand__Background__2__Pressed,
+    border: $Brand__Background__2__Pressed,
+    color: $Brand__Foreground__2__Pressed,
   ),
 );
 
 $puppet-button-tertiary: (
   base: (
-    background: $puppet-n200,
-    border: $puppet-n400,
-    color: $puppet-n800,
+    background: $Neutral__Background__Transparent__Rest,
+    border: $Neutral__Stroke__1__Rest,
+    color: $Neutral__Foreground__1__Rest,
   ),
   hover: (
-    background: $puppet-n100,
-    border: $puppet-n400,
-    color: $puppet-b400,
+    background: $Neutral__Background__Transparent__Hover,
+    border: $Neutral__Stroke__1__Hover,
+    color: $Neutral__Foreground__1__Hover,
   ),
   active: (
-    background: $puppet-n200,
-    border: $puppet-n400,
-    color: $puppet-b600,
+    background: $Neutral__Background__Transparent__Pressed,
+    border: $Neutral__Stroke__1__Pressed,
+    color: $Neutral__Foreground__1__Pressed,
   ),
 );
 
 $puppet-button-danger: (
   base: (
-    background: $puppet-r500,
-    border: $puppet-r500,
-    color: $puppet-white,
+    background: $Status__Danger__Background__2__Rest,
+    border: $Status__Danger__Stroke__2__Rest,
+    color: $Status__Danger__Foreground__2__Rest,
   ),
   hover: (
-    background: $puppet-r400,
-    border: $puppet-r400,
-    color: $puppet-white,
+    background: $Status__Danger__Background__2__Hover,
+    border: $Status__Danger__Stroke__2__Hover,
+    color: $Status__Danger__Foreground__2__Hover,
   ),
   active: (
-    background: $puppet-r600,
-    border: $puppet-r600,
-    color: $puppet-white,
+    background: $Status__Danger__Background__2__Pressed,
+    border: $Status__Danger__Stroke__2__Pressed,
+    color: $Status__Danger__Foreground__2__Pressed,
   ),
 );
 
@@ -95,17 +95,17 @@ $puppet-button-transparent: (
   base: (
     background: transparent,
     border: transparent,
-    color: $puppet-n700,
+    color: $Neutral__Foreground__2__Rest,
   ),
   hover: (
-    background: $puppet-n200,
-    border: $puppet-n200,
-    color: $puppet-b400,
+    background: $Neutral__Background__Transparent__Rest,
+    border: $Neutral__Stroke__Transparent__Rest,
+    color: $Neutral__Foreground__Brand__Hover,
   ),
   active: (
-    background: $puppet-n200,
-    border: $puppet-n200,
-    color: $puppet-b600,
+    background: $Neutral__Background__Transparent__Rest,
+    border: $Neutral__Stroke__Transparent__Rest,
+    color: $Neutral__Foreground__Brand__Pressed,
   ),
 );
 
@@ -113,17 +113,17 @@ $puppet-button-text: (
   base: (
     background: transparent,
     border: transparent,
-    color: $puppet-b500,
+    color: $Brand__Foreground__2__Rest,
   ),
   hover: (
     background: transparent,
     border: transparent,
-    color: $puppet-b400,
+    color: $Brand__Foreground__2__Hover,
   ),
   active: (
     background: transparent,
     border: transparent,
-    color: $puppet-b600,
+    color: $Brand__Foreground__2__Pressed,
   ),
 );
 

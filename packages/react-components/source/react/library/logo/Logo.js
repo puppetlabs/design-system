@@ -16,6 +16,7 @@ export const SUPPORTED_LOGOS = [
   'security-compliance-management',
   'continuous-delivery',
   'puppet-standalone',
+  'cloud',
 ];
 
 const propTypes = {

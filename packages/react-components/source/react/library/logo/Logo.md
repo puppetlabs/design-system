@@ -86,6 +86,7 @@ There are times when you might need to use only the graphical icon for a Puppet 
 
 ## Adding icons to the Design System
 
+
 1. Run the SVG through [svgo](https://github.com/svg/svgo) to minify and remove redundant data.
 2. Note the viewBox dimensions.
 3. Strip out the wrapping `svg` element, usually (but not always) leaving just a `path`.
@@ -96,4 +97,6 @@ There are times when you might need to use only the graphical icon for a Puppet 
 
 ## Related
 
-- [Icon](#/React%20Components/Icon)
+* [Icon](#/React%20Components/Icon)
+
+

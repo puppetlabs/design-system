@@ -19,9 +19,10 @@ export function StyleGuideRenderer({ children, toc, hasSidebar }) {
       {hasSidebar && (
         <Sidebar>
           <Sidebar.Header
-            logo="Design System"
+            logo="cloud"
+            ariaLabel="Return to the home page"
             as="a"
-            href="#/Puppet%20Design%20System"
+            href="/"
           />
           {toc}
         </Sidebar>
