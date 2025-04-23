@@ -1,5 +1,8 @@
 $puppet-sidebar-bg: $Neutral__Background__2__Rest !default;
-$puppet-sidebar-padding: 16px 12px !default;
+$puppet-sidebar-padding-top-bottom: 16px !default;
+$puppet-sidebar-padding-left-right: 12px !default;
+$puppet-sidebar-padding: $puppet-sidebar-padding-top-bottom
+  $puppet-sidebar-padding-left-right !default;
 $puppet-sidebar-font: $puppet-type-font-family-secondary !default;
 $puppet-sidebar-width: 240px !default;
 $puppet-sidebar-minimized-width: 73px !default;
@@ -40,7 +43,8 @@ $puppet-sidebar-label-color: $Neutral__Foreground__3__Rest !default;
 $puppet-sidebar-label-font: $puppet-type-font-family-secondary !default;
 $puppet-sidebar-label-font-size: 11px !default;
 $puppet-sidebar-label-line-height: $puppet-common-spacing-base * 2 !default;
-$puppet-sidebar-label-margin: $puppet-common-spacing-base * 6 0 $puppet-common-spacing-base * 2 !default;
+$puppet-sidebar-label-margin: $puppet-common-spacing-base * 6 0
+  $puppet-common-spacing-base * 2 !default;
 $puppet-sidebar-label-padding: 0 12px !default;
 $puppet-sidebar-label-text-transform: uppercase !default;
 
@@ -128,7 +132,10 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
 .rc-sidebar-item-title,
 .rc-sidebar-item-karet {
   opacity: 1;
-  transition: visibility 0s linear 0.2s, opacity 0.3s linear, height 0.2s linear;
+  transition:
+    visibility 0s linear 0.2s,
+    opacity 0.3s linear,
+    height 0.2s linear;
   visibility: visible;
   white-space: nowrap;
 }
@@ -260,7 +267,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
     justify-content: flex-start;
     min-width: 0;
     outline: none;
-    padding: 0 0 0 $puppet-sidebar-padding;
+    padding: 0 0 0 $puppet-sidebar-padding-left-right;
     text-align: left;
     text-decoration: none;
 
@@ -332,7 +339,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin-left: $puppet-sidebar-padding;
+  margin-left: $puppet-sidebar-padding-left-right;
   min-width: 0;
 }
 
@@ -358,7 +365,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
 
 .rc-sidebar-footer-meta-username,
 .rc-sidebar-footer-meta-version {
-  color: $puppet-n500;
+  color: $puppet-sidebar-item-color;
 }
 
 .rc-sidebar-footer-meta-version {
