@@ -15,7 +15,8 @@
 }
 
 .rc-logo-inverted {
-  .rc-logo-puppet {
+  .rc-logo-puppet,
+  .rc-logo-cloud {
     fill: #fff;
   }
 }
@@ -41,4 +42,12 @@
   font-size: 21px;
   font-weight: 500;
   letter-spacing: -0.519999981px;
+}
+
+.rc-logo-cloud {
+  fill: #00003a;
+}
+
+.rc-logo-cloud-bug {
+  fill: $Brand__Background__1__Rest;
 }
