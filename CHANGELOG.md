@@ -1,3 +1,11 @@
+## react-layouts 2.0.0-alpha.13 (2025-04-23)
+
+- Rebranding updates. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@koosolek](https://github.com/koosolek) and [@Jo-Lillie](https://github.com/Jo-Lillie) in [#696](https://github.com/puppetlabs/design-system/pull/696))
+
+## react-components 5.35.0 (2025-04-23)
+
+- Rebranding updates. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@koosolek](https://github.com/koosolek) and [@Jo-Lillie](https://github.com/Jo-Lillie) in [#696](https://github.com/puppetlabs/design-system/pull/696))
+
 ## sass-variables 1.5.0 (2025-04-24)
 
 - Rebranding updates. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@koosolek](https://github.com/koosolek) and [@Jo-Lillie](https://github.com/Jo-Lillie)
