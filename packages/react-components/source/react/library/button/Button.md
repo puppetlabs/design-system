@@ -4,9 +4,9 @@ Puppet products use a family of buttons, with each button intended for a differe
 
 ### Microcopy
 
-* When providing a label for a button, use an imperative verb and a noun, for example: Add group. The verb-plus-noun construction increases usability and eliminates ambiguity for localization.
-* Rarely, just the imperative verb is ok (Apply, Add, Remove) if the context is crystal clear.
-* Use sentence-case capitalization: Capitalize the first word, and lowercase all other words except proper nouns.
+- When providing a label for a button, use an imperative verb and a noun, for example: Add group. The verb-plus-noun construction increases usability and eliminates ambiguity for localization.
+- Rarely, just the imperative verb is ok (Apply, Add, Remove) if the context is crystal clear.
+- Use sentence-case capitalization: Capitalize the first word, and lowercase all other words except proper nouns.
 
 ### States and interaction
 
@@ -180,7 +180,7 @@ const buttonStyle = { margin: 2 };
 
 Use icons to assist in understanding the purpose of a button, or to help distinguish the button from similar actions that lie in close proximity. By default, include words to describe the button as this is much more accessible. Icons are available for use in every button type.
 
-*Note*: Indicating states (danger, success, warning) with icon colors is reserved for specific use cases within alerts and messages. Do not use color on icon buttons arbitrarily.
+_Note_: Indicating states (danger, success, warning) with icon colors is reserved for specific use cases within alerts and messages. Do not use color on icon buttons arbitrarily.
 
 #### Example: Transparent buttons with only icons
 
@@ -299,11 +299,9 @@ Add the boolean prop `innerFocus` in cases where a button is inside a container 
 
 ## Related
 
-* [ButtonSelect](#/React%20Components/ButtonSelect)
-* [ActionSelect](#/React%20Components/ActionSelect)
-* [Icon](#/React%20Components/Icon)
-* [Loading](#/React%20Components/Loading)
-* [Form](#/React%20Components/Form)
-* [TooltipHoverArea](#/React%20Components/TooltipHoverArea)
-
-
+- [ButtonSelect](#/React%20Components/ButtonSelect)
+- [ActionSelect](#/React%20Components/ActionSelect)
+- [Icon](#/React%20Components/Icon)
+- [Loading](#/React%20Components/Loading)
+- [Form](#/React%20Components/Form)
+- [TooltipHoverArea](#/React%20Components/TooltipHoverArea)
