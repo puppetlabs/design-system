@@ -1,24 +1,24 @@
 @use 'sass:map';
 
 $colors: (
-  danger: $puppet-r600,
-  danger-border: $puppet-r300,
+  danger: $Status__Danger__Background__2__Rest,
+  danger-border: $Status__Danger__Stroke__2__Rest,
   danger-active: $puppet-r100,
   danger-hover: $puppet-r50,
-  info: $puppet-b600,
-  info-border: $puppet-b300,
+  info: $Brand__Background__1__Rest,
+  info-border: $Brand__Stroke__1__Rest,
   info-active: $puppet-b100,
   info-hover: $puppet-b50,
-  success: $puppet-g700,
-  success-border: $puppet-g400,
+  success: $Status__Success__Background__2__Rest,
+  success-border: $Status__Success__Stroke__2__Rest,
   success-active: $puppet-g100,
   success-hover: $puppet-g50,
-  warning: $puppet-y700,
-  warning-border: $puppet-y300,
+  warning: $Status__Warning__Background__2__Rest,
+  warning-border: $Status__Warning__Stroke__2__Rest,
   warning-active: $puppet-y100,
   warning-hover: $puppet-y50,
   // Neutral type is only available for Icon Button
-  neutral: $puppet-n800,
+  neutral: $Neutral__Foreground__2__Rest,
   neutral-active: $puppet-n100,
   neutral-hover: $puppet-n50,
 );
@@ -94,9 +94,9 @@ $colors: (
 }
 
 .rc-alert .rc-icon-button {
-  border-radius: 0 3px 3px 0; // 3px to account for gap when focussed
   flex-grow: 0;
   flex-shrink: 0;
+  background: $Neutral__Background__1__Rest;
 }
 
 .rc-alert-actions {

@@ -15,61 +15,59 @@
 
 .rc-badge-pill {
   border-radius: 1000px;
-  padding: 0 $puppet-common-spacing-base * 4;
+  padding: 0 $puppet-common-spacing-base * 2;
 }
 
 .rc-badge-bold {
   &.rc-badge-danger {
-    background-color: $puppet-r600;
-    color: $puppet-white;
+    background-color: $Status__Danger__Background__2__Rest;
+    color: $Status__Danger__Foreground__2__Rest;
   }
 
   &.rc-badge-info {
-    background-color: $puppet-b600;
-    color: $puppet-white;
+    background-color: $Status__Informational__Background__2__Rest;
+    color: $Status__Informational__Foreground__2__Rest;
   }
 
   &.rc-badge-neutral {
-    background-color: $puppet-n800;
-    color: $puppet-white;
+    background-color: $Neutral__Background__Inverted__Rest;
+    color: $Neutral__Foreground__Inverted__1__Rest;
   }
 
   &.rc-badge-success {
-    background-color: $puppet-g700;
-    color: $puppet-white;
+    background-color: $Status__Success__Background__2__Rest;
+    color: $Status__Success__Foreground__2__Rest;
   }
 
-
   &.rc-badge-warning {
-    background-color: $puppet-y700;
-    color: $puppet-white;
+    background-color: $Status__Warning__Background__2__Rest;
+    color: $Status__Warning__Foreground__2__Rest;
   }
 }
 
 .rc-badge-subtle {
   &.rc-badge-danger {
-    background-color: $puppet-r100;
-    color: $puppet-r600;
+    background-color: $Status__Danger__Background__1__Rest;
+    color: $Status__Danger__Foreground__1__Rest;
   }
 
   &.rc-badge-info {
-    background-color: $puppet-b100;
-    color: $puppet-b600;
+    background-color: $Status__Informational__Background__1__Rest;
+    color: $Status__Informational__Foreground__1__Rest;
   }
 
   &.rc-badge-neutral {
-    background-color: $puppet-n100;
-    color: $puppet-n800;
+    background-color: $Neutral__Background__2__Rest;
+    color: $Neutral__Foreground__2__Rest;
   }
 
-
   &.rc-badge-success {
-    background-color: $puppet-g100;
-    color: $puppet-g700;
+    background-color: $Status__Success__Background__1__Rest;
+    color: $Status__Success__Foreground__1__Rest;
   }
 
   &.rc-badge-warning {
-    background-color: $puppet-y100;
-    color: $puppet-y700;
+    background-color: $Status__Warning__Background__1__Rest;
+    color: $Status__Warning__Foreground__1__Rest;
   }
 }

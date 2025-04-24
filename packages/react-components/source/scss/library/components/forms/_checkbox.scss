@@ -55,16 +55,16 @@
 }
 
 .rc-checkbox-error.rc-checkbox:checked + .rc-icon {
-  fill: $puppet-r600;
+  fill: $Status__Danger__Background__2__Rest;
 }
 
 .rc-checkbox:checked + .rc-icon {
   display: block;
-  fill: $puppet-b500;
+  fill: $Brand__Background__1__Rest;
 }
 
 .rc-checkbox:hover + .rc-icon {
-  fill: $puppet-b400;
+  fill: $Brand__Background__1__Hover;
 }
 
 .rc-checkbox:disabled,
@@ -74,14 +74,14 @@
   opacity: $puppet-common-disabled-opacity;
 
   + .rc-icon {
-    fill: $puppet-b500;
+    fill: $Neutral__Foreground__Brand__Rest;
     opacity: $puppet-common-disabled-opacity;
   }
 }
 
 .rc-checkbox-indeterminate + .rc-icon {
   display: block;
-  fill: $puppet-b500;
+  fill: $Neutral__Foreground__Brand__Rest;
 }
 
 /* stylelint-enable property-no-vendor-prefix */

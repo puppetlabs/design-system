@@ -1,5 +1,5 @@
 .rc-tag {
-  background: $puppet-b500;
+  background: $Brand__Background__1__Rest;
   border-radius: $puppet-common-border-radius;
   display: flex;
   width: max-content;
@@ -16,7 +16,6 @@
   .rc-tag-text {
     @include puppet-type-button();
     color: $puppet-white;
-    height: 24px;
     padding-bottom: 4px;
     padding-left: 8px;
     padding-right: 8px;

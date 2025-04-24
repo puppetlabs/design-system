@@ -10,48 +10,46 @@ $puppet-button-primary: (
   hover: (
     background: $Brand__Background__1__Hover,
     border: $Brand__Background__1__Hover,
-    color: $Neutral__Foreground__OnBrand__Rest,
   ),
   active: (
     background: $Brand__Background__1__Pressed,
     border: $Brand__Background__1__Pressed,
-    color: $Neutral__Foreground__OnBrand__Rest,
   ),
 );
 
 $puppet-button-secondary: (
   base: (
-    background: $Brand__Background__2__Rest,
-    border: $Brand__Background__2__Rest,
+    background: $Neutral__Background__1__Rest,
+    border: $Neutral__Stroke__1__Rest,
     color: $Brand__Foreground__2__Rest,
   ),
   hover: (
-    background: $Brand__Background__2__Hover,
-    border: $Brand__Background__2__Hover,
+    background: $Neutral__Background__1__Hover,
+    border: $Neutral__Stroke__1__Hover,
     color: $Brand__Foreground__2__Hover,
   ),
   active: (
-    background: $Brand__Background__2__Pressed,
-    border: $Brand__Background__2__Pressed,
+    background: $Neutral__Background__1__Pressed,
+    border: $Neutral__Stroke__1__Pressed,
     color: $Brand__Foreground__2__Pressed,
   ),
 );
 
 $puppet-button-tertiary: (
   base: (
-    background: $Neutral__Background__Transparent__Rest,
+    background: $Neutral__Background__2__Rest,
     border: $Neutral__Stroke__1__Rest,
-    color: $Neutral__Foreground__1__Rest,
+    color: $Neutral__Foreground__2__Rest,
   ),
   hover: (
-    background: $Neutral__Background__Transparent__Hover,
+    background: $Neutral__Background__2__Hover,
     border: $Neutral__Stroke__1__Hover,
-    color: $Neutral__Foreground__1__Hover,
+    color: $Neutral__Foreground__2__Hover,
   ),
   active: (
-    background: $Neutral__Background__Transparent__Pressed,
+    background: $Neutral__Background__2__Pressed,
     border: $Neutral__Stroke__1__Pressed,
-    color: $Neutral__Foreground__1__Pressed,
+    color: $Neutral__Foreground__2__Pressed,
   ),
 );
 
@@ -359,4 +357,26 @@ $puppet-button-padding-vertical: 5px;
 
 .rc-button + .rc-button {
   margin-left: $puppet-common-spacing-base * 2;
+}
+
+.rc-button-group {
+  display: flex;
+  flex-wrap: wrap;
+
+  .rc-button {
+    margin: 0;
+    border-radius: 0;
+  }
+  .rc-button:first-child {
+    border-top-left-radius: $puppet-common-border-radius;
+    border-bottom-left-radius: $puppet-common-border-radius;
+  }
+  .rc-button:last-child {
+    border-top-right-radius: $puppet-common-border-radius;
+    border-bottom-right-radius: $puppet-common-border-radius;
+  }
+  .fill {
+    flex-grow: 1;
+  }
+
 }

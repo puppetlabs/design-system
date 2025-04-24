@@ -2,7 +2,7 @@ $puppet-card-padding: 17px !default;
 
 // All borders are implemented as box-shadow. This is to avoid problems when
 // the active border switchs from 1px wide to 2px wide
-$puppet-card-border: inset 0 0 0 1px $puppet-n400;
+$puppet-card-border: inset 0 0 0 1px $Neutral__Stroke__3__Rest;
 $puppet-card-border-hover: inset 0 0 0 1px $puppet-b500;
 $puppet-card-border-active: inset 0 0 0 1px $puppet-b600;
 

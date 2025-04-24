@@ -17,7 +17,7 @@
 
 .rc-option-menu-list-multiple {
   .rc-menu-list-inner:focus {
-    border: 2px solid $puppet-b300;
+    border: 2px solid $Neutral__Stroke__Focus__2__Rest;
     padding: $puppet-common-spacing-base - 2px;
   }
 
@@ -27,7 +27,7 @@
 }
 
 .rc-menu-list-group {
-  border-bottom: solid 1px $puppet-n300;
+  border-bottom: solid 1px $puppet-common-border-subtle;
   margin: 0 0 4px;
   padding: 0 0 4px;
 }
@@ -41,7 +41,7 @@
 }
 
 li + .rc-menu-list-group {
-  border-top: solid 1px $puppet-n300;
+  border-top: solid 1px $puppet-common-border-subtle;
   margin-top: 4px;
   padding-top: 4px;
 }
@@ -53,10 +53,10 @@ li + .rc-menu-list-group {
 .rc-menu-action {
   @include puppet-type-button-small();
 
-  background-color: $puppet-n50 !important;
+  background-color: $puppet-common-bg-subtle !important;
   border: 0;
   border-top: $puppet-common-border;
-  color: $puppet-b500;
+  color: $Neutral__Foreground__Brand__Rest;
   cursor: pointer;
   display: block;
   flex-grow: 1;
@@ -69,11 +69,11 @@ li + .rc-menu-list-group {
   }
 
   &:hover {
-    color: $puppet-b400;
+    color: $Brand__Background__1__Hover;
   }
 
   &:active {
-    color: $puppet-b600;
+    color: $Brand__Background__1__Rest;
   }
 }
 
@@ -114,10 +114,10 @@ li + .rc-menu-list-group {
 }
 
 .rc-menu-list-item-selected {
-  color: $puppet-b500;
+  color: $Brand__Background__1__Rest;
 
   .rc-menu-list-item-checkmark {
-    fill: $puppet-b500;
+    fill: $Brand__Background__1__Rest;
   }
 }
 
@@ -144,7 +144,7 @@ li + .rc-menu-list-group {
 }
 
 .rc-menu-list-item-focused {
-  background-color: $puppet-n200;
+  background-color: $Neutral__Background__3__Rest;
 }
 
 .rc-menu-footer {

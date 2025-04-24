@@ -19,7 +19,7 @@ export function StyleGuideRenderer({ children, toc, hasSidebar }) {
       {hasSidebar && (
         <Sidebar>
           <Sidebar.Header
-            logo="cloud"
+            logo="puppet-general-new"
             ariaLabel="Return to the home page"
             as="a"
             href="/"

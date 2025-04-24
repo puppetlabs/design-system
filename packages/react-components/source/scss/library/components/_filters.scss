@@ -11,9 +11,9 @@ $puppet-filter-placeholder-color: $puppet-type-color-subtle !default;
 $puppet-filter-input-bg: $puppet-white !default;
 /* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
 $puppet-filter-selected-shadow:
-  0 0 0 1px $puppet-b500,
+  0 0 0 1px $Brand__Background__1__Rest,
   $puppet-common-elevation-150 !default;
-$puppet-filter-border-active: 1px solid $puppet-b500 !default;
+$puppet-filter-border-active: 1px solid $Brand__Background__1__Rest !default;
 
 $puppet-filter-select-padding: $puppet-common-spacing-base !default;
 $puppet-filter-select-height: 10px !default; // Todo: Base on grid
@@ -42,10 +42,10 @@ $puppet-filter-split-menu-bg-hover: color.adjust(
 }
 
 .rc-filters-action:hover {
-  color: $puppet-b500 !important;
+  color: $Brand__Background__1__Rest !important;
 
   .rc-icon {
-    fill: $puppet-b500;
+    fill: $Brand__Background__1__Rest;
   }
 }
 
@@ -106,13 +106,13 @@ $puppet-filter-split-menu-bg-hover: color.adjust(
       background: $puppet-filter-split-bg;
 
       .rc-button-content {
-        color: $puppet-b500;
+        color: $Brand__Background__1__Rest;
         float: right;
       }
 
       &:hover {
         .rc-button-content {
-          color: $puppet-b400;
+          color: $Brand__Background__1__Hover;
         }
       }
     }
