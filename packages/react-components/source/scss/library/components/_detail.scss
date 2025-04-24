@@ -27,8 +27,6 @@ $down-arrow: url("data:image/svg+xml;charset=utf-8,<svg className='dropdown-icon
       color: $Brand__Background__1__Hover;
 
       cursor: pointer;
-      // Changes the color of the arrow svg to $puppet-b500 on hover
-      // filter: invert(26%) sepia(91%) saturate(1706%) hue-rotate(199deg) brightness(97%) contrast(85%);
     }
 
     &.after {
@@ -46,7 +44,6 @@ $down-arrow: url("data:image/svg+xml;charset=utf-8,<svg className='dropdown-icon
 .rc-detail[open] {
   summary {
     &.before::before,
-
     &.after::after {
       content: $down-arrow;
     }

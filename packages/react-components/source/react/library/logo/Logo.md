@@ -28,7 +28,8 @@ The standard style variation exists for light backgrounds.
   <Logo product="continuous-delivery" style={{ margin: 5 }} />
   <Logo product="puppet-standalone" style={{ margin: 5 }} />
   <Logo product="My Product" style={{ margin: 5 }} />
-  <Logo product="cloud" style={{ margin: 5 }} />
+  <Logo product="puppet-general-new" style={{ margin: 5 }} />
+  <Logo product="puppet-cloud" style={{ margin: 5 }} />
 </div>
 ```
 
@@ -63,7 +64,8 @@ This style variation exists for dark backgrounds, where the Puppet logo uses whi
   <Logo inverted product="continuous-delivery" style={{ margin: 5 }} />
   <Logo inverted product="puppet-standalone" style={{ margin: 5 }} />
   <Logo inverted product="My Product" style={{ margin: 5 }} />
-  <Logo inverted product="cloud" style={{ margin: 5 }} />
+  <Logo inverted product="puppet-general-new" style={{ margin: 5 }} />
+  <Logo inverted product="puppet-cloud" style={{ margin: 5 }} />
 </div>
 ```
 
@@ -83,7 +85,7 @@ There are times when you might need to use only the graphical icon for a Puppet 
   <Logo type="bug" product="comply" style={{ margin: 5 }} />
   <Logo type="bug" product="connect" style={{ margin: 5 }} />
   <Logo type="bug" product="My Product" style={{ margin: 5 }} />
-  <Logo type="bug" product="cloud" style={{ margin: 5 }} />
+  <Logo type="bug" product="puppet-general-new" style={{ margin: 5 }} />
 </div>
 ```
 

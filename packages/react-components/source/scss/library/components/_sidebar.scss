@@ -77,7 +77,6 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   background: $puppet-sidebar-logo-bg;
   box-sizing: border-box;
   display: flex;
-  // height: $puppet-sidebar-logo-height;
   overflow: hidden;
   padding: $puppet-sidebar-logo-padding;
   transition: all 0.2s ease-in-out;
@@ -103,9 +102,8 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
 }
 
 .rc-sidebar-navigation > *:first-child {
-  margin-top: 12px !important; 
+  margin-top: 12px;
 }
-
 
 // Sidebar section & items
 
