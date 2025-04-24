@@ -1,15 +1,12 @@
 $puppet-sidebar-bg: $Neutral__Background__2__Rest !default;
-$puppet-sidebar-padding-top-bottom: 16px !default;
-$puppet-sidebar-padding-left-right: 12px !default;
-$puppet-sidebar-padding: $puppet-sidebar-padding-top-bottom
-  $puppet-sidebar-padding-left-right !default;
+$puppet-sidebar-padding: 0 12px !default;
 $puppet-sidebar-font: $puppet-type-font-family-secondary !default;
-$puppet-sidebar-width: 240px !default;
+$puppet-sidebar-width: 256px !default;
 $puppet-sidebar-minimized-width: 73px !default;
 
 $puppet-sidebar-logo-bg: $Neutral__Background__2__Rest !default;
 $puppet-sidebar-logo-height: 72px !default;
-$puppet-sidebar-logo-padding: $puppet-sidebar-padding !default;
+$puppet-sidebar-logo-padding: 20px 12px !default;
 
 $puppet-sidebar-item-bg: $Neutral__Background__2__Rest !default;
 $puppet-sidebar-item-bg-hover: $Neutral__Background__2__Hover !default;
@@ -104,6 +101,11 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   overflow: auto;
   padding: $puppet-sidebar-padding;
 }
+
+.rc-sidebar-navigation > *:first-child {
+  margin-top: 12px !important; 
+}
+
 
 // Sidebar section & items
 
@@ -244,12 +246,14 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
 // Sidebar footer
 
 .rc-sidebar-footer {
+  padding: 16px;
   box-sizing: border-box;
   display: flex;
   height: $puppet-sidebar-footer-height;
   justify-content: space-between;
   overflow: hidden;
   text-decoration: none !important;
+  color: $Neutral__Foreground__2__Rest;
 
   .rc-sidebar-footer-button-user,
   .rc-sidebar-footer-button-signout {
@@ -262,12 +266,12 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   }
 
   .rc-sidebar-footer-button-user {
+    padding: 0;
     border: 0;
     flex: 1;
     justify-content: flex-start;
     min-width: 0;
     outline: none;
-    padding: 0 0 0 $puppet-sidebar-padding-left-right;
     text-align: left;
     text-decoration: none;
 
@@ -283,8 +287,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
 
   .rc-sidebar-footer-button-signout {
     @include rc-button-reset();
-    margin-left: $puppet-sidebar-footer-signout-left-margin;
-    width: $puppet-sidebar-footer-signout-width;
+    padding: 8px;
   }
 
   .rc-sidebar-footer-meta-username,
@@ -339,13 +342,13 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   display: flex;
   flex: 1;
   flex-direction: column;
-  margin-left: $puppet-sidebar-padding-left-right;
   min-width: 0;
+  margin-left: 10px;
 }
 
 .rc-sidebar-footer-meta-user {
   align-items: center;
-  background: $puppet-n500;
+  background: $Brand__Background__2__Rest;
   border-radius: 100px;
   display: flex;
   height: $puppet-sidebar-footer-meta-icon;
@@ -354,7 +357,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
   width: $puppet-sidebar-footer-meta-icon;
 
   .rc-icon {
-    fill: $puppet-sidebar-footer-bg;
+    fill: $Neutral__Foreground__2__Rest;
   }
 
   > * {
@@ -365,7 +368,7 @@ $puppet-sidebar-footer-signout-left-margin: 3px !default;
 
 .rc-sidebar-footer-meta-username,
 .rc-sidebar-footer-meta-version {
-  color: $puppet-sidebar-item-color;
+  color: $Neutral__Foreground__2__Rest;
 }
 
 .rc-sidebar-footer-meta-version {
