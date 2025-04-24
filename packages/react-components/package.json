@@ -11,7 +11,7 @@
     "prepare": "npm run build",
     "complexity": "es6-plato -r -d complexity source/react && open ./complexity/index.html",
     "watch": "nodemon --watch source -x \"npm run build\"",
-    "test": "nyc --require=./test/jsdom.js --reporter=html mocha --require @babel/register --require core-js --require regenerator-runtime/runtime --recursive --exit",
+    "test": "nyc --reporter=html mocha --require @babel/register --require core-js --require regenerator-runtime/runtime --require=./test/jsdom.js --recursive --exit",
     "lint": "npm run js-lint && npm run scss-lint",
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
