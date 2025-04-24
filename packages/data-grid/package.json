@@ -46,7 +46,6 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
-    "caniuse-lite": "^1.0.30001117",
     "core-js": "^3.38.1",
     "css-loader": "^7.1.2",
     "eslint": "^8.57.1",
