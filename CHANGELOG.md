@@ -1,3 +1,7 @@
+## sass-variables 1.5.0 (2025-04-24)
+
+- Rebranding updates. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@koosolek](https://github.com/koosolek) and [@Jo-Lillie](https://github.com/Jo-Lillie)
+
 ## uikit1.0.18 (2024-06-24)
 
 - Upgrade dependencies for improved performance and compatibility. (by [@sean-mckenna](https://github.com/sean-mckenna) and [@comfucios](https://github.com/comfucios) in [#676](https://github.com/puppetlabs/design-system/pull/676))

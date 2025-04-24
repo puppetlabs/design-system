@@ -12,20 +12,23 @@ $puppet-common-border-radius: 4px !default;
 $puppet-common-spacing-base: 4px;
 
 // Often used border dividing content
-$puppet-common-border: 1px solid $puppet-n400 !default;
-$puppet-common-border-subtle: 1px solid $puppet-n300 !default;
+$puppet-common-border: 1px solid $Neutral__Stroke__1__Rest !default;
+$puppet-common-border-subtle: 1px solid $Neutral__Stroke__3__Rest !default;
 
 // Often used content backgrounds
-$puppet-common-bg: $puppet-white !default;
-$puppet-common-bg-subtle: $puppet-n300 !default;
+$puppet-common-bg: $Neutral__Background__1__Rest !default;
+$puppet-common-bg-subtle: $Neutral__Background__2__Rest !default;
 
 // Common focused element outline, implemented as a box shadow
-$puppet-common-focus-outline: 0 0 0 2px $puppet-b300 !default;
+$puppet-common-focus-outline: 0 0 0 2px $Neutral__Stroke__Focus__2__Rest !default;
 $puppet-common-focus-outline-inset: inset $puppet-common-focus-outline !default;
 
 $puppet-common-disabled-opacity: 0.4;
 
-$puppet-common-elevation-50: 1px 1px 2px rgba($puppet-black, 0.08);
+/* stylelint-disable-next-line scss/dollar-variable-colon-space-after */
+$puppet-common-elevation-50:
+  0 2px 4px $Shadow__key,
+  0 0 2px $Shadow__ambient;
 $puppet-common-elevation-100: 1px 1px 2px rgba($puppet-black, 0.16);
 $puppet-common-elevation-150: 2px 2px 4px rgba($puppet-black, 0.16);
 $puppet-common-elevation-200: 2px 2px 8px rgba($puppet-black, 0.16);

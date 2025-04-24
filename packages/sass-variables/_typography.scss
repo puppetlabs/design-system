@@ -1,9 +1,10 @@
 @use 'sass:map';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 
 // Common font families
-$puppet-type-font-family: 'Open Sans', sans-serif !default;
-$puppet-type-font-family-secondary: 'Calibre', sans-serif !default;
-$puppet-type-font-family-monospace: 'Inconsolata', monospace !default;
+$puppet-type-font-family: 'Noto Sans', sans-serif !default;
+$puppet-type-font-family-secondary: 'Noto Sans', sans-serif !default;
+$puppet-type-font-family-monospace: 'Noto Sans Mono', monospace !default;
 
 // Common weights
 $puppet-type-weight-normal: 400 !default;
@@ -13,16 +14,16 @@ $puppet-type-weight-heavy: 600 !default;
 $puppet-type-spacing-medium: 0.4px !default;
 
 // Common colors
-$puppet-type-color-base: $puppet-n900 !default;
-$puppet-type-color-medium: $puppet-n700 !default;
-$puppet-type-color-subtle: $puppet-n600 !default;
-$puppet-type-color-success: $puppet-g700 !default;
-$puppet-type-color-warning: $puppet-y600 !default;
-$puppet-type-color-danger: $puppet-r600 !default;
-$puppet-type-color-link: $puppet-b500 !default;
-$puppet-type-color-link-hover: $puppet-b400 !default;
-$puppet-type-color-link-active: $puppet-b600 !default;
-$puppet-type-color-white: $puppet-white !default;
+$puppet-type-color-base: $Neutral__Foreground__1__Rest !default;
+$puppet-type-color-medium: $Neutral__Foreground__2__Rest !default;
+$puppet-type-color-subtle: $Neutral__Foreground__2__Rest !default;
+$puppet-type-color-success: $Status__Success__Foreground__1__Rest !default;
+$puppet-type-color-warning: $Status__Warning__Foreground__1__Rest !default;
+$puppet-type-color-danger: $Status__Danger__Foreground__1__Rest !default;
+$puppet-type-color-link: $Brand__Foreground__2__Rest !default;
+$puppet-type-color-link-hover: $Brand__Foreground__2__Hover !default;
+$puppet-type-color-link-active: $Brand__Foreground__2__Pressed !default;
+$puppet-type-color-white: $Neutral__Background__1__Rest !default;
 
 // Map is useful internally for mixins below
 $puppet-type-colors: (
@@ -34,28 +35,28 @@ $puppet-type-colors: (
   success: $puppet-type-color-success,
 );
 
-$puppet-type-hero-font-size: 48px !default;
-$puppet-type-hero-line-height: calc(56 / 48) !default;
+$puppet-type-hero-font-size: 44px !default;
+$puppet-type-hero-line-height: calc(52 / 44) !default;
 $puppet-type-hero-font-family: $puppet-type-font-family-secondary !default;
 $puppet-type-hero-font-weight: $puppet-type-weight-heavy !default;
 
-$puppet-type-h1-font-size: 40px !default;
-$puppet-type-h1-line-height: calc(48 / 40) !default;
+$puppet-type-h1-font-size: 32px !default;
+$puppet-type-h1-line-height: calc(40 / 32) !default;
 $puppet-type-h1-font-family: $puppet-type-font-family-secondary !default;
 $puppet-type-h1-font-weight: $puppet-type-weight-heavy !default;
 
-$puppet-type-h2-font-size: 32px !default;
-$puppet-type-h2-line-height: calc(40 / 32) !default;
+$puppet-type-h2-font-size: 28px !default;
+$puppet-type-h2-line-height: calc(36 / 28) !default;
 $puppet-type-h2-font-family: $puppet-type-font-family-secondary !default;
 $puppet-type-h2-font-weight: $puppet-type-weight-heavy !default;
 
-$puppet-type-h3-font-size: 24px !default;
-$puppet-type-h3-line-height: calc(32 / 24) !default;
+$puppet-type-h3-font-size: 20px !default;
+$puppet-type-h3-line-height: calc(28 / 20) !default;
 $puppet-type-h3-font-family: $puppet-type-font-family-secondary !default;
 $puppet-type-h3-font-weight: $puppet-type-weight-heavy !default;
 
-$puppet-type-h4-font-size: 18px !default;
-$puppet-type-h4-line-height: calc(24 / 18) !default;
+$puppet-type-h4-font-size: 16px !default;
+$puppet-type-h4-line-height: calc(22 / 16) !default;
 $puppet-type-h4-font-family: $puppet-type-font-family-secondary !default;
 $puppet-type-h4-font-weight: $puppet-type-weight-heavy !default;
 
@@ -94,8 +95,8 @@ $puppet-type-button-small-line-height: calc(16 / 12) !default;
 $puppet-type-button-small-font-family: $puppet-type-font-family-secondary !default;
 $puppet-type-button-small-font-weight: $puppet-type-weight-heavy !default;
 
-$puppet-type-label-font-size: 11px !default;
-$puppet-type-label-line-height: calc(16 / 11) !default;
+$puppet-type-label-font-size: 10px !default;
+$puppet-type-label-line-height: calc(14 / 10) !default;
 $puppet-type-label-font-family: $puppet-type-font-family-secondary !default;
 $puppet-type-label-font-weight: $puppet-type-weight-heavy !default;
 

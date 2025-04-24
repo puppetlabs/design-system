@@ -39,7 +39,6 @@
     "babel-core": "^6.26.3",
     "babel-jest": "^29.7.0",
     "babel-loader": "^9.2.1",
-    "caniuse-lite": "^1.0.30001664",
     "chai": "^4.5.0",
     "chai-enzyme": "^1.0.0-beta.1",
     "cheerio": "^1.0.0-rc.12",
