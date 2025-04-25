@@ -40,12 +40,12 @@ $puppet-switch-handle-height: $puppet-switch-height -
   width: $puppet-switch-width;
 
   &:checked + .rc-switch-label {
-    background: $puppet-b500;
+    background: $Brand__Background__1__Rest;
     color: $puppet-type-color-white;
   }
 
   &:checked + .rc-switch-label:hover {
-    background: $puppet-b400;
+    background: $Brand__Background__1__Hover;
   }
 
   &:checked + .rc-switch-label .rc-switch-label-off {
@@ -63,7 +63,7 @@ $puppet-switch-handle-height: $puppet-switch-height -
 }
 
 .rc-switch-label {
-  background: $puppet-common-bg-subtle;
+  background: $Neutral__Background__4__Rest;
   border-radius: 1000px;
   box-sizing: content-box;
   color: $puppet-type-color-base;
@@ -87,7 +87,7 @@ $puppet-switch-handle-height: $puppet-switch-height -
   }
 
   &::after {
-    background: $puppet-b500;
+    background: $Brand__Background__1__Rest;
     border-radius: $puppet-switch-handle-height;
     content: '';
     display: block;
@@ -106,7 +106,7 @@ $puppet-switch-handle-height: $puppet-switch-height -
   }
 
   .rc-switch-label-off .rc-icon {
-    fill: $puppet-b500;
+    fill: $Neutral__Foreground__Brand__Rest;
     height: $puppet-switch-icon-length;
     right: $puppet-switch-padding * 1.5;
     width: $puppet-switch-icon-length;
@@ -139,11 +139,11 @@ $puppet-switch-handle-height: $puppet-switch-height -
 }
 
 .rc-switch-checkbox:not(:disabled):checked:hover + .rc-switch-label {
-  background: $puppet-b400;
+  background: $Brand__Background__1__Hover;
 }
 
 .rc-switch-checkbox:not(:disabled):not(:checked):hover + .rc-switch-label::after {
-  background: $puppet-b400;
+  background: $Brand__Background__1__Hover;
 }
 
 .rc-switch-checkbox:disabled,

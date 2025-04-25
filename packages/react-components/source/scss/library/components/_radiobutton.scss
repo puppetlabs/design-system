@@ -60,11 +60,11 @@
 
 .rc-radiobutton:checked + .rc-icon {
   display: block;
-  fill: $puppet-b500;
+  fill: $Brand__Background__1__Rest;
 }
 
 .rc-radiobutton:hover + .rc-icon {
-  fill: $puppet-b400;
+  fill: $Brand__Background__1__Hover;
 }
 
 .rc-radiobutton:disabled,

@@ -11,10 +11,9 @@
 }
 
 .rc-table-bordered {
-  border: $puppet-common-border;
+  border: $puppet-common-border-subtle;
   border-collapse: separate;
   border-radius: $puppet-common-border-radius;
-  box-shadow: $puppet-common-elevation-50;
   overflow: hidden;
 
   .rc-table-row:last-of-type .rc-table-cell {
@@ -26,29 +25,12 @@
 .rc-table-header-cell {
   border-bottom: $puppet-common-border-subtle;
   position: relative;
-
-  // 2px white vertical border on table cells is implemented with a ::before
-  // element to avoid diagonal blending line between the vertical and horizontal
-  // borders
-  &:not(:first-child) {
-    padding-left: 18px;
-  }
-
-  &:not(:first-child)::before {
-    background-color: $puppet-white;
-    bottom: 0;
-    content: '';
-    left: 0;
-    position: absolute;
-    top: 0;
-    width: 2px;
-  }
 }
 
 .rc-table-header-cell {
-  @include puppet-type-h6(medium);
-  background-color: $puppet-n200;
-  padding: 11px 16px;
+  @include puppet-type-small(medium);
+  background-color: $puppet-common-bg-subtle;
+  padding: 8px 16px 6px;
   text-align: left;
 }
 

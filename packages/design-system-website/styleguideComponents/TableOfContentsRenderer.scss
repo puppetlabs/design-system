@@ -1,18 +1,6 @@
 @import '~@puppet/sass-variables/index';
 
 .pds-filter {
-  margin-bottom: 4 * $puppet-common-spacing-base;
-
-  .rc-input {
-    background-color: $puppet-n950;
-    border-color: $puppet-n950;
-    border-radius: 4px;
-    box-sizing: border-box;
-    color: $puppet-n400;
-    height: 32px;
-  }
-
-  .rc-input:hover {
-    border-color: $puppet-n900;
-  }
+  margin-bottom: 2 * $puppet-common-spacing-base;
+  margin-top: 2 * $puppet-common-spacing-base;
 }

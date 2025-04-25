@@ -18,7 +18,7 @@
 }
 
 .dg-column-header-sortable:hover {
-  color: $puppet-b400;
+  color: $Brand__Foreground__Link__Hover;
 }
 
 .dg-column-header-sortable:focus {
@@ -34,7 +34,7 @@
 .dg-column-header-sortable:active {
   border: 0;
   box-shadow: $puppet-common-focus-outline-inset;
-  color: $puppet-b600;
+  color: $Brand__Foreground__Link__Pressed;
 
   &::before {
     width: 0;
@@ -42,7 +42,7 @@
 }
 
 .dg-column-header-label-active {
-  color: $puppet-b500;
+  color: $Brand__Foreground__Link__Rest;
 }
 
 .dg-column-header-icon-container {
@@ -52,13 +52,13 @@
 .dg-column-header-icon-color {
   &.asc {
     .rc-icon-increment-up {
-      fill: $puppet-b500;
+      fill: $Brand__Foreground__Link__Rest;
     }
   }
 
   &.desc {
     .rc-icon-increment-down {
-      fill: $puppet-b500;
+      fill: $Brand__Foreground__Link__Rest;
     }
   }
 }
@@ -87,7 +87,7 @@
 }
 
 .dg-table-row-selected {
-  background-color: $puppet-b50;
+  background-color: $Neutral__Background__2__Rest;
 
   .rc-table-cell::before {
     width: 0;

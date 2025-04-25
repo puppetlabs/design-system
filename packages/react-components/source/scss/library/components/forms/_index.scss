@@ -1,5 +1,5 @@
-$puppet-shared-input-border-hover: 1px solid $puppet-n600;
-$puppet-shared-input-border-error: 1px solid $puppet-r500;
+$puppet-shared-input-border-hover: 1px solid $Neutral__Stroke__1__Hover;
+$puppet-shared-input-border-error: 1px solid $Status__Danger__Stroke__2__Rest;
 
 @import './checkbox';
 @import './forms';

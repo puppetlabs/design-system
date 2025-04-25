@@ -1,6 +1,6 @@
 {
   "name": "@puppet/react-components",
-  "version": "5.34.11",
+  "version": "5.35.0",
   "author": "Puppet, Inc.",
   "license": "Apache-2.0",
   "main": "build/library.js",
@@ -11,7 +11,7 @@
     "prepare": "npm run build",
     "complexity": "es6-plato -r -d complexity source/react && open ./complexity/index.html",
     "watch": "nodemon --watch source -x \"npm run build\"",
-    "test": "nyc --require=./test/jsdom.js --reporter=html mocha --require @babel/register --require core-js --require regenerator-runtime/runtime --recursive --exit",
+    "test": "nyc --reporter=html mocha --require @babel/register --require core-js --require regenerator-runtime/runtime --require=./test/jsdom.js --recursive --exit",
     "lint": "npm run js-lint && npm run scss-lint",
     "js-lint": "eslint --quiet 'source/react/**/*.js'",
     "scss-lint": "stylelint 'source/scss/**/*.scss'",
@@ -73,7 +73,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
-    "@puppet/sass-variables": "^1.4.4",
+    "@puppet/sass-variables": "^1.5.0",
     "classnames": "^2.5.1",
     "core-js": "^3.38.1",
     "hoist-non-react-statics": "^3.3.2",

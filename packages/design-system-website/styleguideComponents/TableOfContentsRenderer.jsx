@@ -22,7 +22,6 @@ export function TableOfContentsRenderer({
       <Input
         name="filter"
         className="pds-filter"
-        simple
         icon="search"
         placeholder="Search"
         value={searchTerm}
